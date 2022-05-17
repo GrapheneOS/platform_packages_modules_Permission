@@ -19,6 +19,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"လုံခြုံရေးစင်တာ ရင်းမြစ်များ"</string>
     <string name="lock_screen_sources_title" msgid="3317906280484627707">"စက်ပစ္စည်းလော့ခ်ချခြင်း"</string>
+    <string name="lock_screen_sources_summary" msgid="7220439741282516496"></string>
     <string name="lock_screen_title" msgid="4069104894527169877">"ဖန်သားပြင်လော့ခ်"</string>
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"အချက်အလက် မရှိသေးပါ"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"ကန့်သတ်ဆက်တင်"</string>
@@ -27,7 +28,11 @@
     <string name="permission_usage_summary" msgid="5323079206029964468">"ခွင့်ပြုချက်များ မကြာသေးမီကသုံးထားသည့် အက်ပ်များကို ပြသည်"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"ခွင့်ပြုချက် မန်နေဂျာ"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"အက်ပ်၏ သင့်ဒေတာအသုံးပြုခွင့်ကို ထိန်းချုပ်သည်"</string>
+    <string name="privacy_controls_title" msgid="5322875777945432395">"ကန့်သတ်ရန် ဆက်တင်များ"</string>
+    <string name="privacy_controls_summary" msgid="2402066941190435424">"မိုက်ခရိုဖုန်း၊ ကင်မရာ စသည်တို့ကို စက်ပစ္စည်းက ဝင်သုံးခွင့်အား ထိန်းချုပ်သည်"</string>
     <string name="advanced_title" msgid="8745436380690561172">"နောက်ထပ်ဆက်တင်များ"</string>
     <string name="advanced_security_title" msgid="1126833338772188155">"နောက်ထပ် လုံခြုံရေးဆက်တင်များ"</string>
     <string name="advanced_security_summary" msgid="6172253327022425123">"အသွင်ဝှက်ခြင်း၊ အထောက်အထားများ စသည်"</string>
+    <string name="advanced_privacy_title" msgid="1117725225706176643">"နောက်ထပ် ကိုယ်ရေးအချက်အလက်လုံခြုံမှု ဆက်တင်များ"</string>
+    <string name="advanced_privacy_summary" msgid="2281203390575069543">"အော်တိုဖြည့်၊ လုပ်ဆောင်ချက် ထိန်းချုပ်မှုများ စသည်"</string>
 </resources>
