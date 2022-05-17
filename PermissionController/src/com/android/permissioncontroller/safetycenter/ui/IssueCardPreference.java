@@ -31,6 +31,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.StyleRes;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
@@ -39,7 +40,7 @@ import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel;
 
 /** A preference that displays a card representing a {@link SafetyCenterIssue}. */
-public class IssueCardPreference extends Preference {
+public class IssueCardPreference extends Preference implements ComparablePreference {
 
     public static final String TAG = IssueCardPreference.class.getSimpleName();
 
@@ -96,6 +97,19 @@ public class IssueCardPreference extends Preference {
         } else {
             dismissButton.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public boolean isSameItem(@NonNull Preference preference) {
+        return (preference instanceof IssueCardPreference) && TextUtils.equals(
+                mIssue.getId(),
+                ((IssueCardPreference) preference).mIssue.getId());
+    }
+
+    @Override
+    public boolean hasSameContents(@NonNull Preference preference) {
+        return (preference instanceof IssueCardPreference)
+                && mIssue.equals(((IssueCardPreference) preference).mIssue);
     }
 
     private class DismissOnClickListener implements View.OnClickListener {
