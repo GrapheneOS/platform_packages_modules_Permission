@@ -236,8 +236,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Apps with this permission can access sensor data about your vital signs"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Apps with this permission can send and view SMS messages"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Apps with this permission can access photos, media and files on your device"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"Apps with this permission can access music and other audio files on your device"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"Apps with this permission can access photos and videos on your device"</string>
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"Apps with this permission can access music and other audio files on this device"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"Apps with this permission can access photos and videos on this device"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Last access: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Currently denied/Last access: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Never accessed"</string>
@@ -447,11 +447,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Approximate"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access your calendar?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to send and view SMS messages?"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access &lt;b&gt;files and documents&lt;/b&gt; on your device?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access &lt;b&gt;photos, videos, music and audio&lt;/b&gt; on your device?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access &lt;b&gt;photos, videos, music, audio and other files&lt;/b&gt; on your device?"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access music and other audio files on this device?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access this device’s photos and videos?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access photos, media and files on your device?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access &lt;b&gt;photos, videos, music and audio&lt;/b&gt; on this device?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access &lt;b&gt;photos, videos, music, audio and other files&lt;/b&gt; on this device?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access music and audio on this device?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access photos and videos on this device?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to record audio?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"The app will only be able to record audio while you’re using the app"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to record audio?"</string>
@@ -473,7 +473,6 @@
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"To let this app access body sensor data all the time, even when you’re not using the app, "<annotation id="link">"go to settings."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Keep allowing &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access body sensor data while the app is in use?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to send you notifications?"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to continue sending you notifications?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Controlled permissions"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Location can be accessed"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Your IT admin is allowing <xliff:g id="APP_NAME">%s</xliff:g> to access your location"</string>

@@ -236,8 +236,10 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Lietotnes, kurām ir šī atļauja, var piekļūt sensoru datiem par jūsu veselības rādījumiem"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Lietotnes, kurām ir šī atļauja, var sūtīt un skatīt īsziņas."</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Lietotnes, kurām ir šī atļauja, var piekļūt ierīcē saglabātajiem fotoattēliem, multivides saturam un failiem"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"Lietotnes, kurām ir šī atļauja, var piekļūt mūzikai un citiem audio failiem jūsu ierīcē"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"Lietotnes, kurām ir šī atļauja, var piekļūt fotoattēliem un video jūsu ierīcē"</string>
+    <!-- no translation found for permission_description_summary_read_media_aural (3354728149930482199) -->
+    <skip />
+    <!-- no translation found for permission_description_summary_read_media_visual (4991801977881732641) -->
+    <skip />
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Pēdējā piekļuve: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Pašreiz tiek liegta / Pēdējā piekļuves reize: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Nekad nav piekļūts"</string>
@@ -340,15 +342,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Tālruņa lietotne"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Lietotnes, kas ļauj jums ierīcē veikt un saņemt tālruņa zvanus"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Vai vēlaties iestatīt <xliff:g id="APP_NAME">%1$s</xliff:g> kā noklusējuma tālruņa lietotni?"</string>
-    <!-- no translation found for role_dialer_request_description (6288839625724909320) -->
-    <skip />
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"Šai lietotnei tiks piešķirta piekļuve jūsu kamerai, kontaktpersonām, mikrofonam, tālrunim un īsziņām"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"numura sastādītājs"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Noklusējuma īsziņu lietotne"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"Īsziņu lietotne"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Lietotnes, kas ļauj sūtīt un saņemt īsziņas, fotoattēlus, videoklipus un citu saturu, izmantojot tālruņa numuru"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Vai vēlaties iestatīt lietotni <xliff:g id="APP_NAME">%1$s</xliff:g> kā noklusējuma lietotni īsziņām?"</string>
-    <!-- no translation found for role_sms_request_description (2691004766132144886) -->
-    <skip />
+    <string name="role_sms_request_description" msgid="2691004766132144886">"Šai lietotnei tiks piešķirta piekļuve jūsu kamerai, kontaktpersonām, failiem un multivides saturam, mikrofonam, tālrunim un īsziņām"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"īsziņa, sūtīt īsziņu, ziņojumi, ziņojumapmaiņa"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"Noklus. ārkārtas izs. lietotne"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"Ārkārtas izsaukumu lietotne"</string>
@@ -449,11 +449,15 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Aptuvena"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt jūsu kalendāram?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; sūtīt un skatīt īsziņas?"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt &lt;b&gt;failiem un dokumentiem&lt;/b&gt; jūsu ierīcē?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt &lt;b&gt;fotoattēliem, video, mūzikai un audio&lt;/b&gt; jūsu ierīcē?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt &lt;b&gt;foto, video, mūzikai, audio u.c. failiem&lt;/b&gt; ierīcē?"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt mūzikai un citiem audio failiem šajā ierīcē?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt fotoattēliem un video šajā ierīcē?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt fotoattēliem, multivides saturam un failiem jūsu ierīcē?"</string>
+    <!-- no translation found for permgrouprequest_storage_q_to_s (8213701872983685505) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_storage_pre_q (168130651144569428) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_aural (2593365397347577812) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_visual (5548780620779729975) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ierakstīt audio?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Lietotne varēs ierakstīt audio tikai tad, kad izmantosiet lietotni."</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ierakstīt audio?"</string>
@@ -475,7 +479,6 @@
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Lai atļautu šai lietotnei piekļūt ķermeņa sensoru datiem vienmēr (pat tad, kad neizmantojat lietotni), "<annotation id="link">"pārejiet uz iestatījumiem"</annotation>"."</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Vai joprojām atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt ķermeņa sensoru datiem, kad izmantojat lietotni?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; sūtīt jums paziņojumus?"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; turpināt sūtīt jums paziņojumus?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Kontrolētās atļaujas"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Atrašanās vietas datiem var piekļūt."</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"IT administrators ir atļāvis lietotnei <xliff:g id="APP_NAME">%s</xliff:g> piekļūt jūsu atrašanās vietas datiem."</string>
