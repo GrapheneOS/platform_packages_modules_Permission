@@ -236,10 +236,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"ይህ ፈቃድ ያላቸው መተግበሪያዎች ስለ የእርስዎ መሠረታዊ ምልክቶች የዳሳሽ ውሂብን መድረስ ይችላሉ"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"ይህ ፈቃድ ያላቸው መተግበሪያዎች የኤስኤምኤስ መልዕክቶችን መላክ እና መመልከት ይችላሉ"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"ይህ ፈቃድ ያላቸው መተግበሪያዎች በመሣሪያዎ ላይ ያሉ ፎቶዎችን፣ ሚዲያን እና ፋይሎችን መድረስ ይችላሉ።"</string>
-    <!-- no translation found for permission_description_summary_read_media_aural (3354728149930482199) -->
-    <skip />
-    <!-- no translation found for permission_description_summary_read_media_visual (4991801977881732641) -->
-    <skip />
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"ይህ ፈቃድ ያላቸው መተግበሪያዎች እዚህ መሣሪያ ላይ ያለ ሙዚቃ እንዲሁም ሌሎች የኦዲዮ ፋይሎች ዘንድ መድረስ ይችላሉ"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"ይህ ፈቃድ ያላቸው መተግበሪያዎች እዚህ መሣሪያ ላይ ያሉ ፎቶዎች እና ቪዲዮዎች ዘንድ መድረስ ይችላሉ"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"የመጨረሻ መዳረሻ፦ <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"አሁን ላይ ተከልክሏል / የመጨረሻ መዳረሻ፦ <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"ተደርሶ አያውቅም"</string>
@@ -456,14 +454,10 @@
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ቀን መቁጠሪያዎን እንዲደርስ ይፈቀድለት?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; የኤስኤምኤስ መልዕክቶችን እንዲልክ እና እንዲመለከት ይፈቀድለት?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; በመሣሪያዎ ላይ ያሉ ፎቶዎችን፣ ማህደረ መረጃን እና ፋይሎችን እንዲደርስ ይፈቀድለት?"</string>
-    <!-- no translation found for permgrouprequest_storage_q_to_s (8213701872983685505) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_pre_q (168130651144569428) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_aural (2593365397347577812) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_visual (5548780620779729975) -->
-    <skip />
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; እዚህ መሣሪያ ላይ ያሉ &lt;b&gt;ፎቶዎች፣ ቪድዮዎች፣ ሙዚቃ እና ኦዲዮ&lt;/b&gt; ዘንድ እንዲደርስ ይፈቀድለት?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; እዚህ መሣሪያ ላይ ያሉ &lt;b&gt;ፎቶዎች፣ ቪድዮዎች፣ሙዚቃ፣ ኦዲዮ እንዲሁም ሌሎች ፋይሎች;/b&amp;gt ዘንድ እንዲደርስ ይፈቀድለት?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; እዚህ መሣሪያ ላይ ያሉ ሙዚቃ እና ኦዲዮ ዘንድ እንዲደርስ ይፈቀድለት?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; እዚህ መሣሪያ ላይ ያሉ ፎቶዎች እና ቪድዮዎች ዘንድ እንዲደርስ ይፈቀድለት?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ኦዲዮን እንዲቀዳ ይፈቀድለት?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"መተግበሪያው ኦዲዮን መቅዳት የሚችለው መተግበሪያውን እርስዎ ሲጠቀሙበት ብቻ ነው"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ኦዲዮን እንዲቀዳ ይፈቀድለት?"</string>

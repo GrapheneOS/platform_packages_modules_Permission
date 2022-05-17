@@ -236,10 +236,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Aplikacije sa ovom dozvolom mogu da pristupaju podacima senzora o vitalnim funkcijama"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Aplikacije sa ovom dozvolom mogu da šalju i pregledaju SMS-ove"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Aplikacije sa ovom dozvolom mogu da pristupaju slikama, medijskom sadržaju i fajlovima na uređaju"</string>
-    <!-- no translation found for permission_description_summary_read_media_aural (3354728149930482199) -->
-    <skip />
-    <!-- no translation found for permission_description_summary_read_media_visual (4991801977881732641) -->
-    <skip />
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"Aplikacije sa ovom dozvolom mogu da pristupaju muzici i drugim audio fajlovima na ovom uređaju"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"Aplikacije sa ovom dozvolom mogu da pristupaju slikama i video snimcima na ovom uređaju"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Poslednji pristup: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Trenutno odbijeno/poslednji pristup: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Bez pristupa"</string>
@@ -456,14 +454,10 @@
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Želite da dozvolite da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa kalendaru?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Želite da dozvolite da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; šalje i pregleda SMS-ove?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Želite da dozvolite da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa slikama, medijskim i drugim fajlovima na uređaju?"</string>
-    <!-- no translation found for permgrouprequest_storage_q_to_s (8213701872983685505) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_pre_q (168130651144569428) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_aural (2593365397347577812) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_visual (5548780620779729975) -->
-    <skip />
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Pristup &lt;b&gt;slikama, videu, muzici i zvuku&lt;/b&gt; na uređaju za &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Pristup slikama, videu, muzici, zvuku i drugom na uređaju za &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Dozvoljavate li pristup muzici i zvuku na ovom uređaju za &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Dozvoljavate li pristup slikama i videu na ovom uređaju za &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Želite da dozvolite da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; snima zvuk?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Aplikacija će moći da snima zvuk samo dok koristite aplikaciju"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Želite da dozvolite da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; snima zvuk?"</string>
