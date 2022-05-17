@@ -43,6 +43,9 @@ android_test {
         "safety-center-internal-data",
         "safety-center-resources-lib",
         "truth-prebuilt",
+        "Nene",
+        "Harrier",
+        "TestApp",
     ],
     test_suites: [
         "cts",
