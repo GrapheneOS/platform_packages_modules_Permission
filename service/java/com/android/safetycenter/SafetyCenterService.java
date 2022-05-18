@@ -317,6 +317,13 @@ public final class SafetyCenterService extends SystemService {
         public SafetyCenterConfig getSafetyCenterConfig() {
             getContext()
                     .enforceCallingOrSelfPermission(MANAGE_SAFETY_CENTER, "getSafetyCenterConfig");
+            // We still return the SafetyCenterConfig object when the API is disabled, as Settings
+            // search works by adding all the entries very rarely (and relies on filtering them out
+            // instead).
+            if (!canUseSafetyCenter()) {
+                Log.w(TAG, "Called getSafetyConfig, but Safety Center is not supported");
+                return null;
+            }
 
             synchronized (mApiLock) {
                 return mSafetyCenterConfigReader.getSafetyCenterConfig();
