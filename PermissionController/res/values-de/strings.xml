@@ -122,7 +122,7 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"Unbekannt"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Privatsphäre­dashboard"</string>
     <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Ansehen, welche Apps zuletzt Berechtigungen genutzt haben"</string>
-    <string name="permission_group_usage_title" msgid="2595013198075285173">"„<xliff:g id="PERMGROUP">%1$s</xliff:g>“-Nutzung"</string>
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g>-Nutzung"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Andere Berechtigungen ansehen"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> und <xliff:g id="NUM">%3$s</xliff:g> weitere"</string>
@@ -236,8 +236,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Apps mit dieser Berechtigung dürfen auf Sensordaten zu deinen Vitalfunktionen zugreifen"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Apps mit dieser Berechtigung können SMS senden und lesen"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Apps mit dieser Berechtigung können auf Fotos, Medien und Dateien auf deinem Gerät zugreifen"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"Apps mit dieser Berechtigung dürfen auf Musik und andere Audiodateien auf deinem Gerät zugreifen"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"Apps mit dieser Berechtigung dürfen auf Fotos und Videos auf deinem Gerät zugreifen"</string>
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"Apps mit dieser Berechtigung dürfen auf Musik- und andere Audiodateien auf diesem Gerät zugreifen"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"Apps mit dieser Berechtigung dürfen auf Fotos und Videos auf diesem Gerät zugreifen"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Letzter Zugriff: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Zurzeit nicht zugelassen/Letzter Zugriff: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Bisher kein Zugriff auf diese Berechtigung"</string>
@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Verwalten aller Dateien zugelassen"</string>
     <string name="ask_header" msgid="2633816846459944376">"Jedes Mal fragen"</string>
     <string name="denied_header" msgid="903209608358177654">"Nicht zugelassen"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Weitere Apps anzeigen, die auf alle Dateien zugreifen können"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 Tag}other{# Tage}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 Stunde}other{# Stunden}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 Minute}other{# Minuten}}"</string>
@@ -332,8 +331,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"Standardapp für digitalen Assistenten"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"App für digitalen Assistenten"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Assistent-Apps können dir bei bestimmten Dingen helfen. Dazu greifen sie auf die Informationen zu, die aktuell auf deinem Bildschirm angezeigt werden. Damit sie dir eine umfassende Hilfe sind, unterstützen einige Apps sowohl Launcher- als auch Spracheingabedienste."</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"<xliff:g id="APP_NAME">%1$s</xliff:g> als Standard-Assistent-App festlegen?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"Erhält Zugriff auf SMS und Anrufliste"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Standard-Browser-App"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Browser-App"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Apps, mit denen du auf das Internet zugreifen kannst und die die entsprechende Seite öffnen, wenn du auf einen Link tippst"</string>
@@ -343,13 +340,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Telefon"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Apps, mit denen du dein Gerät zum Telefonieren benutzen kannst"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g> als Standard-App zum Telefonieren festlegen?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"Kann auf Anrufliste zugreifen und SMS versenden"</string>
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"Diese App erhält Zugriff auf Folgendes: Kamera, Kontakte, Mikrofon, Telefon und SMS"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"telefon"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Standard-SMS-App"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS-App"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Apps, mit denen du über deine Telefonnummer SMS, Fotos, Videos und mehr senden und empfangen kannst"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g>als Standard-SMS-App festlegen?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"Kann auf Kontakte, SMS und Telefon zugreifen"</string>
+    <string name="role_sms_request_description" msgid="2691004766132144886">"Diese App erhält Zugriff auf Folgendes: Kamera, Kontakte, Mikrofon, Dateien und Medien, Telefon und SMS"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"textnachricht, sms, sms schicken, sms senden, nachrichten, mms"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"Standardmäßige Notfall-App"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"App f. Notfallbenachrichtigung"</string>
@@ -450,11 +447,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Ungefähr"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf deinen Kalender zuzugreifen?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, SMS zu senden und aufzurufen?"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf &lt;b&gt;Dateien und Dokumente&lt;/b&gt; auf deinem Gerät zuzugreifen?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf &lt;b&gt;Fotos, Videos, Musik und Audio&lt;/b&gt; auf deinem Gerät zuzugreifen?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf &lt;b&gt;Fotos, Videos, Musik, Audio und andere Dateien&lt;/b&gt; auf deinem Gerät zuzugreifen?"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf Musik und andere Audiodateien auf diesem Gerät zuzugreifen?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf Fotos und Videos auf diesem Gerät zuzugreifen?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf Fotos, Medien und Dateien auf deinem Gerät zuzugreifen?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Darf &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; auf &lt;b&gt;Foto-, Video-, Musik- und Audiodateien&lt;/b&gt; auf diesem Gerät zugreifen?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Darf &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; auf &lt;b&gt;Foto-, Video-, Musik-, Audio- und andere Dateien&lt;/b&gt; auf dem Gerät zugreifen?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Darf &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; auf Musik- und Audiodateien auf diesem Gerät zugreifen?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Darf &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; auf Fotos und Videos auf diesem Gerät zugreifen?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, Audioaufnahmen zu machen?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Diese App kann nur Audioaufnahmen machen, solange du sie verwendest"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, Audioaufnahmen zu machen?"</string>
@@ -474,9 +471,8 @@
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Die App möchte jederzeit auf die Sensordaten zu deinen Vitalfunktionen zugreifen, auch wenn du sie nicht verwendest. Du kannst das "<annotation id="link">"in den Einstellungen ändern"</annotation>"."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf Sensordaten zu deinen Vitalfunktionen zuzugreifen?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Damit diese App dauerhaft auf Daten des Körpersensors zugreifen kann, auch dann, wenn sie nicht verwendet wird, "<annotation id="link">"rufe die Einstellungen auf"</annotation>"."</string>
-    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; Zugriff auf Körpersensordaten bei Benutzung weiter erlauben?"</string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; Zugriff auf Körpersensordaten bei Verwendung weiter erlauben?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, dir Benachrichtigungen zu senden?"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Möchtest du zulassen, dass &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dir weiterhin Benachrichtigungen sendet?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Erteilte Berechtigungen"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Standortzugriff möglich"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Dein IT-Administrator erlaubt der App \"<xliff:g id="APP_NAME">%s</xliff:g>\" den Zugriff auf deinen Standort"</string>
@@ -523,40 +519,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Kürzlich von <xliff:g id="APP_NAME">%1$s</xliff:g> verwendet (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Sicherheit &amp; Datenschutz"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Status prüfen"</string>
-    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
-    <skip />
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"Bestätigen"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"Zurück"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"Der Zugriff auf andere Dateien ist ebenfalls möglich"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"Der Zugriff auf andere Dateien ist ebenfalls nicht möglich"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"Der Zugriff auf andere Dateien ist ebenfalls möglich"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"Der Zugriff auf andere Dateien ist ebenfalls nicht möglich"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"Der Zugriff auf Fotos und Videos ist ebenfalls möglich"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"Der Zugriff auf Fotos und Videos ist ebenfalls nicht möglich"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"Der Zugriff auf Musik- und Audiodateien ist ebenfalls möglich"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"Der Zugriff auf Musik- und Audiodateien ist ebenfalls nicht möglich"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"Diese App unterstützt nicht die neueste Version von Android. Wenn diese App Zugriff auf Musik- und Audiodateien hat, kann sie auch auf Fotos, Videos und andere Dateien zugreifen."</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"Diese App unterstützt nicht die neueste Version von Android. Wenn diese App keinen Zugriff auf Musik- und Audiodateien hat, kann sie auch nicht auf Fotos, Videos und andere Dateien zugreifen."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"Diese App unterstützt nicht die neueste Version von Android. Wenn diese App Zugriff auf Fotos und Videos hat, kann sie auch auf Musik- und Audiodateien sowie andere Dateien zugreifen."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"Diese App unterstützt nicht die neueste Version von Android. Wenn diese App keinen Zugriff auf Fotos und Videos hat, kann sie auch nicht auf Musik- und Audiodateien sowie andere Dateien zugreifen."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"Diese App unterstützt nicht die neueste Version von Android. Wenn diese App Zugriff auf Musik- und Audiodateien hat, kann sie auch auf Fotos und Videos zugreifen."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Diese App unterstützt nicht die neueste Version von Android. Wenn diese App keinen Zugriff auf Musik- und Audiodateien hat, kann sie auch nicht auf Fotos und Videos zugreifen."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Diese App unterstützt nicht die neueste Version von Android. Wenn diese App Zugriff auf Fotos und Videos hat, kann sie auch auf Musik- und Audiodateien zugreifen."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Diese App unterstützt nicht die neueste Version von Android. Wenn diese App keinen Zugriff auf Musik- und Audiodateien hat, kann sie auch nicht auf Fotos und Videos zugreifen."</string>
 </resources>

@@ -236,8 +236,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Bu icazəsi olan tətbiqlər sağlamlığınız haqqında sensor datasına giriş edə bilər"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Bu icazəyə sahib tətbiqlər SMS mesajları göndərə və baxa bilər"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Bu icazəyə sahib tətbiqlər cihazdakı foto, media və fayllara daxil ola bilər"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"Bu icazəsi olan tətbiqlər cihazınızdakı musiqi və digər audio fayllara giriş edə bilər"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"Bu icazəsi olan tətbiqlər cihazınızdakı foto və videolara giriş edə bilər"</string>
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"Bu icazəsi olan tətbiqlər bu cihazdakı musiqi və digər audio fayllara giriş edə bilər"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"Bu icazəsi olan tətbiqlər bu cihazdakı foto və videolara giriş edə bilər"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Son giriş: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Hazırda rədd edilib / Son giriş: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Heç vaxt giriş edilməyib"</string>
@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Bütün fayllara girişi olanlar"</string>
     <string name="ask_header" msgid="2633816846459944376">"Həmişə soruşulsun"</string>
     <string name="denied_header" msgid="903209608358177654">"İcazə verilməyib"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Bütün fayllara giriş edə bilən digər tətbiqlərə baxın"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 gün}other{# gün}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 saat}other{# saat}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 dəqiqə}other{# dəqiqə}}"</string>
@@ -332,8 +331,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"Standart rəqəmsal assistent"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Rəq. assistent tətbiqi"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Köməkçi tətbiqlər ekrandakı məlumatı istifadə edə bilər. Rahat olmaları üçün onlardan bəziləri digər tətbiqlərin işə salınmasını və səsli əmr funksiyasını dəstəkləyir."</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"<xliff:g id="APP_NAME">%1$s</xliff:g> defolt yardım tətbiqi olaraq ayarlansın?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"SMS, zəng siyahısına giriş əldə edir"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Defolt brauzer tətbiqi"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Brauzer tətbiqi"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"İnternet girişini təmin edən və kliklədiyiniz linkləri göstərən tətbiqlər"</string>
@@ -343,13 +340,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Telefon tətbiqi"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Cihazda telefon zəngləri qəbul etməyinizə icazə verən tətbiqlər"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g> defolt telefon tətbiqi olaraq ayarlansın?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"Zəng siyahısına giriş əldə edir, SMS göndərin"</string>
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"Bu tətbiqə Kamera, Kontaktlar, Mikrofon, Telefon və SMS-ə giriş icazəsi veriləcək"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"nömrə yığan"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Defolt SMS tətbiqi"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS tətbiqi"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Telefon nömrəsini istifadə etməklə mesaj, foto, video və digər məlumatları göndərən tətbiqlər."</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g> defolt SMS tətbiqi olaraq ayarlansın?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"Kontaktlar, SMS, telefona giriş əldə edir"</string>
+    <string name="role_sms_request_description" msgid="2691004766132144886">"Bu tətbiqə Kamera, Kontaktlar, Fayllar və sənədlər, Mikrofon, Telefon və SMS-ə giriş icazəsi veriləcək"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"mətn mesajı, mətn yazmaq, mesajlar, mesaj yazmaq"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"Fövqəladə hal üçün defolt tətbiq"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"Fövqəladə hallar üçün tətbiq"</string>
@@ -450,11 +447,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Təxmini"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə təqvimə daxil olmaq icazəsi verilsin?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə SMS mesajları göndərmək və onlara baxmaq icazəsi verilsin?"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinin cihazınızdakı &lt;b&gt;fayllar və sənədlərə&lt;/b&gt; girişinə icazə verilsin?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinin cihazınızdakı &lt;b&gt;foto, video, musiqi və audiolara&lt;/b&gt; girişinə icazə verilsin?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinin cihazınızdakı &lt;b&gt;foto, video, musiqi, audio və digər fayllara&lt;/b&gt; girişinə icazə verilsin?"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə bu cihazdakı musiqi və digər audio fayllara girişinə icazə verilsin?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinin bu cihazdakı foto və videolara girişinə icazə verilsin?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə cihazdakı foto, media və fayllara daxil olmaq icazəsi verilsin?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinin bu cihazdakı &lt;b&gt;foto, video, musiqi və audiolara&lt;/b&gt; girişinə icazə verilsin?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinin bu cihazdakı &lt;b&gt;foto, video, musiqi, audio və digər fayllara&lt;/b&gt; girişinə icazə verilsin?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə bu cihazdakı musiqi və audioya girişinə icazə verilsin?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinin cihazdakı foto və videolara girişinə icazə verilsin?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə səs yazmaq icazəsi verilsin?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Tətbiq yalnız ondan istifadə etiyiniz zaman audio yaza biləcək"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə audio yazmaq icazəsi verilsin?"</string>
@@ -476,7 +473,6 @@
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Tətbiqdən istifadə etmədiyiniz zaman belə, bu tətbiqin bədən sensoru datasına hər zaman giriş etməsinə icazə vermək üçün "<annotation id="link">"ayarlara keçin."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinin istifadə zamanı bədən sensoru datasına giriş etməsinə icazə verilməyə davam edilsin?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə sizə bildiriş göndərmək icazəsi verilsin?"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə sizə yenə də bildiriş göndərmək icazəsi verilsin?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"İdarə edilən icazələr"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Məkana giriş edilə bilər"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"İT admininiz <xliff:g id="APP_NAME">%s</xliff:g> tətbiqinə məkanınıza giriş icazəsi verir"</string>

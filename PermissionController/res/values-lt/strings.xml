@@ -236,8 +236,10 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Programos, kurioms suteiktas šis leidimas, gali pasiekti jutiklių duomenis apie gyvybinius požymius"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Programos, kurioms suteiktas šis leidimas, gali siųsti ir peržiūrėti SMS pranešimus"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Programos, kurioms suteiktas šis leidimas, gali pasiekti nuotraukas, mediją ir failus jūsų įrenginyje"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"Programos, kurioms suteiktas šis leidimas, gali pasiekti muziką ir kitus garso failus jūsų įrenginyje"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"Programos, kurioms suteiktas šis leidimas, gali pasiekti nuotraukas ir vaizdo įrašus jūsų įrenginyje"</string>
+    <!-- no translation found for permission_description_summary_read_media_aural (3354728149930482199) -->
+    <skip />
+    <!-- no translation found for permission_description_summary_read_media_visual (4991801977881732641) -->
+    <skip />
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Paskutinį kartą pasiekta: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Šiuo metu atmesta / paskutinį kartą pasiekta: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Niekada nebuvo pasiekta"</string>
@@ -249,8 +251,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Leidžiama valdyti visus failus"</string>
     <string name="ask_header" msgid="2633816846459944376">"Klausti kaskart"</string>
     <string name="denied_header" msgid="903209608358177654">"Neleidžiama"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Peržiūrėti daugiau programų, galinčių pasiekti visus failus"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 diena}one{# diena}few{# dienos}many{# dienos}other{# dienų}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 valanda}one{# valanda}few{# valandos}many{# valandos}other{# valandų}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 minutė}one{# minutė}few{# minutės}many{# minutės}other{# minučių}}"</string>
@@ -332,8 +333,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"Numat. skaitm. pagelbiklio pr."</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Skaitmeninio pagelbik. pr."</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Pagalbinė programa gali padėti atsižvelgdama į peržiūrimo ekrano informaciją. Kai kurios programos palaiko tiek paleidimo priemonę, tiek įvesties balsu paslaugas, kad galėtų būti naudingos."</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"Nustatyti „<xliff:g id="APP_NAME">%1$s</xliff:g>“ kaip numatytąją pagalbinę programą?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"Gali pasiekti SMS, skambučių žurnalą"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Numatytoji naršyklės programa"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Naršyklės programa"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Programos, leidžiančios pasiekti internetą ir rodomas nuorodas, kurias paliečiate"</string>
@@ -343,13 +342,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Telefono programa"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Programos, leidžiančios atlikti ir priimti telefonų skambučius naudojant įrenginį"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Nustatyti „<xliff:g id="APP_NAME">%1$s</xliff:g>“ kaip numatytąją telefono programą?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"Gali pasiekti skambučių žurnalą, siųsti SMS"</string>
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"Šiai programai bus suteikta prieiga prie Vaizdo kameros, Kontaktų, Mikrofono, Telefono ir SMS"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"numerio rinkiklis"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Numatytoji SMS programa"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS programa"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Programos, leidžiančios naudoti telefono numerį trumpiesiems teksto pranešimams, nuotraukoms, vaizdo įrašams ir kt. siųsti ir gauti"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Nustatyti „<xliff:g id="APP_NAME">%1$s</xliff:g>“ kaip numatytąją SMS programą?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"Gali pasiekti kontaktus, SMS, telefoną"</string>
+    <string name="role_sms_request_description" msgid="2691004766132144886">"Šiai programai bus suteikta prieiga prie Vaizdo kameros, Kontaktų, Failų ir dokumentų, Mikrofono, Telefono ir SMS"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"teksto pranešimas, teksto pranešimų siuntimas, pranešimai, susirašinėjimas"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"Numat. kritin. padėties progr."</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"Kritinės padėties programa"</string>
@@ -450,11 +449,15 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Apytikslė"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Suteikti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; galimybę pasiekti kalendorių?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Leisti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; siųsti ir peržiūrėti SMS pranešimus?"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"Leisti programai &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pasiekti &lt;b&gt;failus ir dokumentus&lt;/b&gt; įrenginyje?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"Leisti programai &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pasiekti &lt;b&gt;nuotraukas, vaizdo, garso įrašus ir muziką&lt;/b&gt; įrenginyje?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"Leisti programai &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pasiekti &lt;b&gt;nuotraukas, vaizdo, garso įrašus, muziką ir kitus failus&lt;/b&gt; įrenginyje?"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"Leisti programai &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pasiekti muziką ir kitus garso failus šiame įrenginyje?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"Leisti programai &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pasiekti šio įrenginio nuotraukas ir vaizdo įrašus?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"Suteikti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; galimybę pasiekti įrenginio nuotraukas, mediją ir failus?"</string>
+    <!-- no translation found for permgrouprequest_storage_q_to_s (8213701872983685505) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_storage_pre_q (168130651144569428) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_aural (2593365397347577812) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_visual (5548780620779729975) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Leisti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; įrašyti garsą?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Programa galės įrašyti garsą, tik kai ją naudosite"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Leisti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; įrašyti garsą?"</string>
@@ -476,7 +479,6 @@
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Jei norite leisti šiai programai pasiekti kūno jutiklių duomenis visą laiką, net kai nenaudojate programos, "<annotation id="link">"eikite į „Nustatymų“ skiltį"</annotation>"."</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Toliau leisti programai &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pasiekti kūno jutiklių duomenis, kai programa naudojama?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Leisti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; siųsti jums pranešimus?"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Leisti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toliau siųsti jums pranešimus?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Valdomi leidimai"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Vietovė pasiekiama"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"IT administratorius leidžia „<xliff:g id="APP_NAME">%s</xliff:g>“ pasiekti jūsų vietovę"</string>
@@ -523,40 +525,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Neseniai naudota „<xliff:g id="APP_NAME">%1$s</xliff:g>“ (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Sauga ir privatumas"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Patikrinkite būseną"</string>
-    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
-    <skip />
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"Patvirtinti"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"Atgal"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"Taip pat bus galima pasiekti kitus failus"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"Taip pat nebus galima pasiekti kitų failų"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"Taip pat bus galima pasiekti kitus failus"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"Taip pat nebus galima pasiekti kitų failų"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"Taip pat bus galima pasiekti nuotraukas ir vaizdo įrašus"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"Taip pat nebus galima pasiekti nuotraukų ir vaizdo įrašų"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"Taip pat bus galima pasiekti muzikos ir garso failus"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"Taip pat nebus galima pasiekti muzikos ir garso failų"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"Ši programa nepalaiko naujausios „Android“ versijos. Jei ši programa gali pasiekti muzikos ir garso failus, ji taip pat galės pasiekti nuotraukas, vaizdo įrašus ir kitus failus."</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"Ši programa nepalaiko naujausios „Android“ versijos. Jei ši programa negali pasiekti muzikos ir garso failų, ji taip pat negalės pasiekti nuotraukų, vaizdo įrašų ir kitų failų."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"Ši programa nepalaiko naujausios „Android“ versijos. Jei ši programa gali pasiekti nuotraukas ir vaizdo įrašus, ji taip pat galės pasiekti muzikos, garso ir kitus failus."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"Ši programa nepalaiko naujausios „Android“ versijos. Jei ši programa negali pasiekti nuotraukų ir vaizdo įrašų, ji taip pat negalės pasiekti muzikos, garso ir kitų failų."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"Ši programa nepalaiko naujausios „Android“ versijos. Jei ši programa gali pasiekti muzikos ir garso failus, ji taip pat galės pasiekti nuotraukas ir vaizdo įrašus."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Ši programa nepalaiko naujausios „Android“ versijos. Jei ši programa negali pasiekti muzikos ir garso failų, ji taip pat negalės pasiekti nuotraukų ir vaizdo įrašų."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Ši programa nepalaiko naujausios „Android“ versijos. Jei ši programa gali pasiekti nuotraukas ir vaizdo įrašus, ji taip pat galės pasiekti muzikos ir garso failus."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Ši programa nepalaiko naujausios „Android“ versijos. Jei ši programa negali pasiekti muzikos ir garso failų, ji taip pat negalės pasiekti nuotraukų ir vaizdo įrašų."</string>
 </resources>
