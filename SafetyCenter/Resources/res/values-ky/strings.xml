@@ -19,6 +19,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"Коопсуздук борборунун ресурстары"</string>
     <string name="lock_screen_sources_title" msgid="3317906280484627707">"Түзмөктүн кулпусу"</string>
+    <string name="lock_screen_sources_summary" msgid="7220439741282516496"></string>
     <string name="lock_screen_title" msgid="4069104894527169877">"Экранды кулпулоо"</string>
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"Азырынча маалымат жок"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"Купуялык"</string>
@@ -29,9 +30,9 @@
     <string name="permission_manager_summary" msgid="8099852107340970790">"Колдонмолордун маалыматты колдонуу мүмкүнчүлүгүн көзөмөлдөө"</string>
     <string name="privacy_controls_title" msgid="5322875777945432395">"Купуялыкты көзөмөлдөө каражаттары"</string>
     <string name="privacy_controls_summary" msgid="2402066941190435424">"Түзмөктүн микрофонду, камераны жана башкаларды колдонуу мүмкүнчүлүгүн көзөмөлдөө"</string>
-    <string name="advanced_title" msgid="8745436380690561172">"Дагы жөндөөлөр"</string>
-    <string name="advanced_security_title" msgid="1126833338772188155">"Дагы коопсуздук жөндөөлөрү"</string>
-    <string name="advanced_security_summary" msgid="6172253327022425123">"Шифрлөө, эсептик дайындар жана башкалар"</string>
+    <string name="advanced_title" msgid="8745436380690561172">"Дагы параметрлер"</string>
+    <string name="advanced_security_title" msgid="1126833338772188155">"Кошумча коопсуздук жөндөөлөрү"</string>
+    <string name="advanced_security_summary" msgid="6172253327022425123">"Шифрлөө, аккаунтка байланыштуу нерселер жана башкалар"</string>
     <string name="advanced_privacy_title" msgid="1117725225706176643">"Кошумча купуялык параметрлери"</string>
-    <string name="advanced_privacy_summary" msgid="2281203390575069543">"Автотолтуруу, аракеттерди көзөмөлдөө жана башкалар"</string>
+    <string name="advanced_privacy_summary" msgid="2281203390575069543">"Автотолтуруу, аракеттерге көз салуу жана башкалар"</string>
 </resources>

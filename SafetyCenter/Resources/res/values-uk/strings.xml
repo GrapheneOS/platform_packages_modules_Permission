@@ -19,12 +19,13 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"Ресурси Центру безпеки"</string>
     <string name="lock_screen_sources_title" msgid="3317906280484627707">"Блокування пристрою"</string>
+    <string name="lock_screen_sources_summary" msgid="7220439741282516496"></string>
     <string name="lock_screen_title" msgid="4069104894527169877">"Блокування екрана"</string>
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"Поки немає інформації"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"Конфіденційність"</string>
     <string name="privacy_sources_summary" msgid="4089719981155120864">"Панель керування, дозволи, параметри"</string>
     <string name="permission_usage_title" msgid="3633779688945350407">"Панель керування дозволами"</string>
-    <string name="permission_usage_summary" msgid="5323079206029964468">"Переглядайте додатки, які нещодавно використовували дозволи"</string>
+    <string name="permission_usage_summary" msgid="5323079206029964468">"Перегляньте, які додатки нещодавно використовували дозволи"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"Диспетчер дозволів"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"Контролюйте доступ додатка до даних"</string>
     <string name="privacy_controls_title" msgid="5322875777945432395">"Налаштування конфіденційності"</string>
