@@ -17,8 +17,6 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="role_dialer_request_description" msgid="6188305064871543419">"මෙම යෙදුමට ඔබට දැනුම්දීම් එවීමට ඉඩ දෙනු ඇති අතර, ඔබගේ කැමරාව, සම්බන්ධතා, මයික්‍රෆෝනය, දුරකථනය සහ SMS වෙත ප්‍රවේශය ලබා දෙනු ඇත"</string>
-    <!-- no translation found for role_sms_request_description (1506966389698625395) -->
-    <skip />
-    <!-- no translation found for permission_description_summary_storage (1917071243213043858) -->
-    <skip />
+    <string name="role_sms_request_description" msgid="1506966389698625395">"මෙම යෙදුමට ඔබට දැනුම්දීම් එවීමට ඉඩ දෙනු ඇති අතර, ඔබගේ කැමරාව, සම්බන්ධතා, Files, මයික්‍රෆෝනය, දුරකථනය සහ SMS වෙත ප්‍රවේශය ලබා දෙනු ඇත"</string>
+    <string name="permission_description_summary_storage" msgid="1917071243213043858">"මෙම අවසරය ඇති යෙදුම්වලට මෙම උපාංගයේ ඇති සියලු ගොනු වෙත ප්‍රවේශ විය හැකිය"</string>
 </resources>
