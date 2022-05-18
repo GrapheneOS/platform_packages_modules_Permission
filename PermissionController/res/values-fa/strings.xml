@@ -41,7 +41,7 @@
     <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g> مجوز غیرفعال است"</string>
     <string name="permission_revoked_all" msgid="3397649017727222283">"همه مجوزها غیرفعال است"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"هیچ‌ موردی غیرفعال نیست"</string>
-    <string name="grant_dialog_button_allow" msgid="5314677880021102550">"مجاز است"</string>
+    <string name="grant_dialog_button_allow" msgid="5314677880021102550">"اجازه دادن"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"همیشه مجاز است"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"هنگام استفاده از برنامه"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"تغییر به مکان دقیق"</string>
@@ -180,7 +180,7 @@
     <string name="app_permission_usage_title" msgid="6676802437831981822">"استفاده از اجازه‌های برنامه"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"دسترسی: <xliff:g id="NUM">%1$s</xliff:g> بار. کل مدت: <xliff:g id="DURATION">%2$s</xliff:g>. آخرین استفاده: <xliff:g id="TIME">%3$s</xliff:g> قبل."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"دسترسی: <xliff:g id="NUM">%1$s</xliff:g> بار. آخرین استفاده: <xliff:g id="TIME">%2$s</xliff:g> قبل."</string>
-    <string name="app_permission_button_allow" msgid="5808039516494774647">"مجاز است"</string>
+    <string name="app_permission_button_allow" msgid="5808039516494774647">"اجازه دادن"</string>
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"اجازه دادن برای مدیریت همه فایل‌ها"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"اجازه دادن فقط برای دسترسی به رسانه‌ها"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"همیشه مجاز است"</string>
@@ -200,7 +200,7 @@
     <string name="auto_revoke_label" msgid="5068393642936571656">"اگر از برنامه استفاده نمی‌شود، اجازه‌ها برداشته شوند"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"برداشتن اجازه‌ها و آزاد کردن فضا"</string>
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"مکث فعالیت برنامه درصورت عدم‌استفاده"</string>
-    <string name="unused_apps_summary" msgid="8839466950318403115">"برداشتن اجازه‌ها، حذف فایل‌های موقت، و توقف اعلان‌ها"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"اجازه‌ها برداشته می‌شود، فایل‌های موقت حذف می‌شود، و اعلان‌ها متوقف می‌شوند"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"برای محافظت از داده‌هایتان، اگر طی چند ماه گذشته از این برنامه استفاده نشده باشد، اجازه‌های آن برداشته خواهد شد."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"برای محافظت از داده‌هایتان، اگر طی چند ماه گذشته از این برنامه استفاده نشده باشد، اجازه‌های زیر برداشته خواهد شد: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"برای محافظت از داده‌هایتان، اجازه‌ها از برنامه‌هایی که طی چند ماه گذشته استفاده نشده‌اند برداشته شده است."</string>
@@ -236,8 +236,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"برنامه‌هایی که این مجوز را داشته باشند می‌توانند به داده‌های حسگر مربوط به نشانه‌های حیاتی دسترسی داشته باشند"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"برنامه‌هایی که این مجوز را داشته باشند می‌توانند هم پیامک ارسال کنند هم آن‌ها را ببینند"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"برنامه‌هایی که این مجوز را داشته باشند می‌توانند به عکس‌ها، رسانه‌ها و فایل‌های موجود در دستگاهتان دسترسی داشته باشند"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"برنامه‌هایی که این اجازه را دارند می‌توانند به موسیقی و دیگر فایل‌های صوتی در دستگاهتان دسترسی داشته باشند"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"برنامه‌هایی که این اجازه را دارند می‌توانند به عکس‌ها و ویدیوهای دستگاهتان دسترسی داشته باشند"</string>
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"برنامه‌هایی که این اجازه را دارند می‌توانند به موسیقی و دیگر فایل‌های صوتی در این دستگاه دسترسی داشته باشند"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"برنامه‌هایی که این اجازه را دارند می‌توانند به عکس‌ها و ویدیوهای این دستگاه دسترسی داشته باشند"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"آخرین دسترسی: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"درحال‌حاضر رد شده است / آخرین دسترسی: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"هرگز دسترسی نداشته است"</string>
@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"مجاز برای مدیریت همه فایل‌ها"</string>
     <string name="ask_header" msgid="2633816846459944376">"هربار پرسیده شود"</string>
     <string name="denied_header" msgid="903209608358177654">"مجاز نیست"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"دیدن برنامه‌های دیگری که به همه فایل‌ها دسترسی دارند"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{یک روز}one{# روز}other{# روز}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{یک ساعت}one{# ساعت}other{# ساعت}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{یک دقیقه}one{# دقیقه}other{# دقیقه}}"</string>
@@ -281,15 +280,8 @@
     <string name="notification_listener_reminder_notification_content" msgid="4740891089329946164">"<xliff:g id="APP_NAME">%s</xliff:g> می‌تواند همه اعلان‌هایتان را بخواند."</string>
     <string name="notification_listener_warning_card_content" msgid="8181427178654279926">"این برنامه می‌تواند همه اعلان‌هایتان را بخواند."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"برداشتن دسترسی"</string>
-    <!-- no translation found for notification_listener_review_app_button_label (4452381557379652037) -->
-    <skip />
+    <string name="notification_listener_review_app_button_label" msgid="4452381557379652037">"مرور همه برنامه‌های دارای دسترسی به اعلان"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"دسترسی برداشته شد"</string>
-    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"مرور برنامهٔ دارای دسترسی به ویژگی‌های دسترس‌پذیری"</string>
-    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> می‌تواند همه محتوای روی صفحه را بخواند، روی برنامه‌های دیگر محتوا نمایش دهد، و تعامل‌هایتان را ردیابی کند."</string>
-    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"این برنامه می‌تواند همه محتوای روی صفحه را بخواند، روی برنامه‌های دیگر محتوا نمایش دهد، و تعامل‌هایتان را ردیابی کند."</string>
-    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"برداشتن دسترسی"</string>
-    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"دیدن برنامه‌های دارای دسترسی به ویژگی‌های دسترس‌پذیری"</string>
-    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"دسترسی برداشته شد"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"برای محافظت از حریم‌خصوصی، اجازه‌های برنامه برداشته شدند"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> طی چند ماه استفاده نشده است. برای مرور، ضربه بزنید."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> و ۱ برنامه دیگر طی چند ماه استفاده نشده‌اند. برای مرور، ضربه بزنید."</string>
@@ -345,8 +337,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"برنامه دستیار دیجیتال پیش‌فرض"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"برنامه دستیار دیجیتال"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"برنامه‌های همیار می‌توانند براساس اطلاعات موجود در صفحه‌ای که در آن هستید، کمکتان کنند. برخی برنامه‌ها از هر دو سرویس راه‌انداز و ورودی صوتی پشتیبانی می‌کنند تا کمک یکپارچه‌ای ارائه دهند."</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"<xliff:g id="APP_NAME">%1$s</xliff:g> به‌عنوان برنامه همیار پیش‌فرض تنظیم شود؟"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"به پیامک و گزارش تماس دسترسی می‌یابد"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"برنامه مرورگر پیش‌فرض"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"برنامه مرورگر"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"برنامه‌هایی که به شما دسترسی به اینترنت را می‌دهند و پیوندهایی را نشان می‌دهند که روی آن‌ها می‌زنید"</string>
@@ -356,13 +346,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"برنامه تلفن"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"برنامه‌هایی که امکان می‌دهند با دستگاهتان تماس تلفنی برقرار و دریافت کنید"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g> به‌عنوان برنامه تلفن پیش‌فرض تنظیم شود؟"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"به گزارش تماس و ارسال پیامک دسترسی می‌یابد"</string>
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"به این برنامه اجازه دسترسی به «دوربین»، «مخاطبین»، «میکروفون»، «تلفن»، و «پیامک» اعطا خواهد شد"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"شماره‌گیر"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"برنامه پیامک پیش‌فرض"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"برنامه پیامک"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"برنامه‌هایی که امکان می‌دهند از شماره تلفنتان برای ارسال و دریافت پیام‌‌های نوشتاری کوتاه، عکس، ویدیو، و موارد دیگر استفاده کنید"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g> به‌عنوان برنامه پیامک پیش‌فرض تنظیم شود؟"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"به مخاطبین، پیامک، و تلفن دسترسی می‌یابد"</string>
+    <string name="role_sms_request_description" msgid="2691004766132144886">"به این برنامه اجازه دسترسی به «دوربین»، «مخاطبین»، «فایل‌ها و رسانه‌ها»، «میکروفون»، «تلفن»، و «پیامک» اعطا خواهد شد"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"پیام نوشتاری، ارسال پیامک، پیام‌ها، پیام‌رسانی"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"برنامه اضطراری پیش‌فرض"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"برنامه اضطراری"</string>
@@ -438,7 +428,7 @@
     <string name="incident_report_dialog_intro" msgid="5897733669850951832">"سیستم مشکلی را تشخیص داده است."</string>
     <string name="incident_report_dialog_text" msgid="5675553296891757523">"<xliff:g id="APP_NAME_0">%1$s</xliff:g> درخواست بارگذاری گزارش اشکالی را دارد که در <xliff:g id="DATE">%2$s</xliff:g> ساعت <xliff:g id="TIME">%3$s</xliff:g> در این دستگاه پیش آمده است. گزارش‌های اشکال شامل اطلاعات شخصی درباره دستگاه شما است یا اطلاعاتی که توسط برنامه‌ها گزارش شده است، برای مثال نام‌های کاربر، داده‌های مکان، شناسه‌های دستگاه و اطلاعات شبکه. گزارش‌های اشکال را تنها با افراد و برنامه‌هایی هم‌رسانی کنید که به آن‌ها در این‌باره اعتماد دارید. به <xliff:g id="APP_NAME_1">%4$s</xliff:g> اجازه بارگذاری گزارش اشکال داده شود؟"</string>
     <string name="incident_report_error_dialog_text" msgid="4189647113387092272">"هنگام پردازش گزارش اشکال برای <xliff:g id="APP_NAME">%1$s</xliff:g> خطایی رخ داد. بنابراین هم‌رسانی داده‌های اشکال‌زدایی دقیق رد شد. از وقفه پیش‌آمده پوزش می‌طلبیم."</string>
-    <string name="incident_report_dialog_allow_label" msgid="2970242967721155239">"مجاز است"</string>
+    <string name="incident_report_dialog_allow_label" msgid="2970242967721155239">"اجازه دادن"</string>
     <string name="incident_report_dialog_deny_label" msgid="3535314290677579383">"مجاز نبودن"</string>
     <string name="adjust_user_sensitive_title" msgid="4196724451314280527">"تنظیمات پیشرفته"</string>
     <string name="menu_adjust_user_sensitive" msgid="6497923610654425780">"تنظیمات پیشرفته"</string>
@@ -463,11 +453,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"تقریبی"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"‏به &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; اجازه داده شود به تقویم شما دسترسی پیدا کند؟"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"‏به «&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&gt;» اجازه داده شود پیامک ارسال و مشاهده کند؟"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"‏به &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; اجازه می‌دهید به &lt;b&gt;فایل‌ها و اسناد&lt;/b&gt; موجود در دستگاهتان دسترسی داشته باشد؟"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"‏به &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; اجازه می‌دهید به &lt;b&gt;عکس‌ها، ویدیوها، موسیقی، و فایل‌های صوتی&lt;/b&gt; در دستگاهتان دسترسی داشته باشد؟"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"‏به &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; اجازه می‌دهید به &lt;b&gt;عکس‌ها، ویدیوها، موسیقی، صوت، و فایل‌های دیگر&lt;/b&gt; در دستگاهتان دسترسی داشته باشد؟"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"‏به &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; اجازه می‌دهید به موسیقی و فایل‌های صوتی دیگر در این دستگاه دسترسی داشته باشد؟"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"‏به &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; اجازه می‌دهید به عکس‌ها و ویدیوهای این دستگاه دسترسی داشته باشد؟"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"‏به برنامه &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&gt; اجازه داده شود به عکس‌ها، رسانه، و فایل‌های موجود در دستگاهتان دسترسی داشته باشد؟"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"‏به &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; اجازه می‌دهید به &lt;b&gt;عکس‌ها، ویدیوها، موسیقی، و فایل‌های صوتی&lt;/b&gt; این دستگاه دسترسی داشته باشد؟"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"‏به &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; اجازه می‌دهید به &lt;b&gt;عکس‌ها، ویدیوها، موسیقی، صوت، و فایل‌های دیگر&lt;/b&gt; این دستگاه دسترسی داشته باشد؟"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"‏به &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; اجازه می‌دهید به فایل‌های موسیقی و صوتی در این دستگاه دسترسی داشته باشد؟"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"‏به &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; اجازه می‌دهید به عکس‌ها و ویدیوهای این دستگاه دسترسی داشته باشد؟"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"‏به &lt;/b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; اجازه داده شود صدا ضبط کند؟"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"این برنامه فقط وقتی از آن استفاده می‌کنید، می‌تواند صدا ضبط کند"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"‏به &lt;/b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; اجازه داده شود صدا ضبط کند؟"</string>
@@ -489,7 +479,6 @@
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"برای اینکه این برنامه بتواند همیشه و حتی زمانی که از برنامه استفاده نمی‌کنید به داده‌های حسگر بدن دسترسی داشته باشد، "<annotation id="link">"به تنظیمات بروید."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"‏به &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; همچنان اجازه داده شود درحین استفاده، به داده‌های حسگر بدن دسترسی داشته باشد؟"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"‏به &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; اجازه داده شود اعلان ارسال کند؟"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"‏به &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; اجازه داده شود همچنان اعلان ارسال کند؟"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"مجوزهای کنترل‌شده"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"می‌توان به مکان دسترسی پیدا کرد"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"سرپرست فناوری اطلاعاتتان به <xliff:g id="APP_NAME">%s</xliff:g> اجازه داده است به مکانتان دسترسی داشته باشد"</string>
@@ -519,6 +508,7 @@
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"این هشدار رد شود؟"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"رد شدن"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"لغو"</string>
+    <string name="safety_center_entries_category_title" msgid="34356964062813115">"تنظیمات"</string>
     <string name="security_settings" msgid="3808106921175271317">"تنظیمات امنیتی"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"اجازه‌های حسگر"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"تنظیمات حریم‌خصوصی"</string>
@@ -539,40 +529,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"اخیراً <xliff:g id="APP_NAME">%1$s</xliff:g> از آن استفاده کرده است (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"امنیت و حریم‌خصوصی"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"بررسی وضعیت"</string>
-    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
-    <skip />
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"تأیید"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"برگشت"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"دسترسی به فایل‌های دیگر نیز مجاز می‌شود"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"دسترسی به فایل‌های دیگر نیز مجاز نمی‌شود"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"دسترسی به فایل‌های دیگر نیز مجاز می‌شود"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"دسترسی به فایل‌های دیگر نیز مجاز نمی‌شود"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"دسترسی به عکس‌ها و ویدیوها نیز مجاز می‌شود"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"دسترسی به عکس‌ها و ویدیوها نیز مجاز نمی‌شود"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"دسترسی به فایل‌های صوتی و موسیقی نیز مجاز می‌شود"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"دسترسی به فایل‌های صوتی و موسیقی نیز مجاز نمی‌شود"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"‏این برنامه از جدیدترین نسخه Android پشتیبانی نمی‌کند. اگر این برنامه بتواند به فایل‌های صوتی و موسیقی دسترسی داشته باشد، اجازه دسترسی به عکس‌ها، ویدیوها، و فایل‌های دیگر را نیز خواهد داشت."</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"‏این برنامه از جدیدترین نسخه Android پشتیبانی نمی‌کند. اگر این برنامه نتواند به فایل‌های صوتی و موسیقی دسترسی داشته باشد، اجازه دسترسی به عکس‌ها، ویدیوها، و فایل‌های دیگر را نیز نخواهد داشت."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"‏این برنامه از جدیدترین نسخه Android پشتیبانی نمی‌کند. اگر این برنامه بتواند به عکس‌ها و ویدیوها دسترسی داشته باشد، اجازه دسترسی به موسیقی، صوت، و فایل‌های دیگر را نیز خواهد داشت."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"‏این برنامه از جدیدترین نسخه Android پشتیبانی نمی‌کند. اگر این برنامه نتواند به عکس‌ها و ویدیوها دسترسی داشته باشد، اجازه دسترسی به موسیقی، صوت، و فایل‌های دیگر را نیز نخواهد داشت."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"‏این برنامه از جدیدترین نسخه Android پشتیبانی نمی‌کند. اگر این برنامه بتواند به فایل‌های صوتی و موسیقی دسترسی داشته باشد، اجازه دسترسی به عکس‌ها و ویدیوها را نیز خواهد داشت."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"‏این برنامه از جدیدترین نسخه Android پشتیبانی نمی‌کند. اگر این برنامه نتواند به فایل‌های صوتی و موسیقی دسترسی داشته باشد، اجازه دسترسی به عکس‌ها و ویدیوها را نیز نخواهد داشت."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"‏این برنامه از جدیدترین نسخه Android پشتیبانی نمی‌کند. اگر این برنامه بتواند به عکس‌ها و ویدیوها دسترسی داشته باشد، اجازه دسترسی به فایل‌های صوتی و موسیقی را نیز خواهد داشت."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"‏این برنامه از جدیدترین نسخه Android پشتیبانی نمی‌کند. اگر این برنامه نتواند به فایل‌های صوتی و موسیقی دسترسی داشته باشد، اجازه دسترسی به عکس‌ها و ویدیوها را نیز نخواهد داشت."</string>
 </resources>

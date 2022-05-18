@@ -236,8 +236,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"אפליקציות עם ההרשאה הזו יכולות לגשת אל נתונים של חיישנים שמודדים את הסימנים החיוניים שלך"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"‏אפליקציות עם ההרשאה הזו יכולות לשלוח ולהציג הודעות SMS"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"אפליקציות עם ההרשאה הזו יכולות לגשת לתמונות, למדיה ולקבצים במכשיר שלך"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"לאפליקציות עם ההרשאה הזו יש גישה למוזיקה ולקובצי אודיו אחרים במכשיר"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"לאפליקציות עם ההרשאה הזו יש גישה לתמונות ולסרטונים במכשיר"</string>
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"לאפליקציות עם ההרשאה הזו יש גישה למוזיקה ולקובצי אודיו אחרים במכשיר"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"לאפליקציות עם ההרשאה הזו יש גישה לתמונות ולסרטונים במכשיר"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"גישה אחרונה: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"חסומה כרגע / גישה אחרונה: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"אף פעם לא הופעלה"</string>
@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"הרשאה לניהול כל הקבצים"</string>
     <string name="ask_header" msgid="2633816846459944376">"יש לשאול בכל פעם"</string>
     <string name="denied_header" msgid="903209608358177654">"אין הרשאה"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"לצפייה באפליקציות נוספות שיכולות לגשת לכל הקבצים"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{יום אחד}two{יומיים}many{# ימים}other{# ימים}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{שעה אחת}two{שעתיים}many{# שעות}other{# שעות}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{דקה אחת}two{# דקות}many{# דקות}other{# דקות}}"</string>
@@ -281,15 +280,8 @@
     <string name="notification_listener_reminder_notification_content" msgid="4740891089329946164">"האפליקציה <xliff:g id="APP_NAME">%s</xliff:g> יכולה לקרוא את כל ההתראות שלך."</string>
     <string name="notification_listener_warning_card_content" msgid="8181427178654279926">"האפליקציה הזו יכולה לקרוא את כל ההתראות שלך."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"הסרת הגישה"</string>
-    <!-- no translation found for notification_listener_review_app_button_label (4452381557379652037) -->
-    <skip />
+    <string name="notification_listener_review_app_button_label" msgid="4452381557379652037">"בדיקה של כל האפליקציות עם הרשאת גישה להתראות"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"הגישה הוסרה"</string>
-    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"יש לבדוק את האפליקציה עם הרשאת הגישה"</string>
-    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"לאפליקציה <xliff:g id="APP_NAME">%s</xliff:g> יש הרשאה לקרוא את כל התכנים במסך, להציג תכנים מעל אפליקציות אחרות ולעקוב אחר האינטראקציות שלך."</string>
-    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"לאפליקציה הזו יש הרשאה לקרוא את כל התכנים במסך, להציג תכנים מעל אפליקציות אחרות ולעקוב אחר האינטראקציות שלך."</string>
-    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"הסרת הגישה"</string>
-    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"הצגת האפליקציות שיש להן הרשאת גישה"</string>
-    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"הגישה הוסרה"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"הוסרו הרשאות הניתנות לאפליקציה כדי להגן על הפרטיות"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"כבר כמה חודשים לא נעשה שימוש באפליקציה <xliff:g id="APP_NAME">%s</xliff:g>. יש להקיש כדי לבדוק."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"כבר כמה חודשים לא נעשה שימוש באפליקציה <xliff:g id="APP_NAME">%s</xliff:g> ובאפליקציה אחת נוספת. יש להקיש כדי לבדוק."</string>
@@ -345,8 +337,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"עוזר דיגיטלי כברירת המחדל"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"אפליקציית עוזר דיגיטלי"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"אפליקציות עזרה יכולות לסייע על סמך המידע שמוצג לך במסך. אפליקציות מסוימות תומכות גם בשירותי מרכז אפליקציות וגם בקלט קולי כדי לספק סיוע משולב."</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"להגדיר את <xliff:g id="APP_NAME">%1$s</xliff:g> בתור אפליקציית העזרה שתשמש כברירת מחדל?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"‏מקבלת גישה אל הודעות SMS ויומן שיחות"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"אפליקציית ברירת מחדל לדפדפן"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"אפליקציית דפדפן"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"אפליקציות שמספקות לך גישה לאינטרנט ומציגות קישורים להקשה"</string>
@@ -356,13 +346,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"אפליקציית טלפון"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"אפליקציות שמאפשרות לך להתקשר ולקבל שיחות במכשיר"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"להגדיר את <xliff:g id="APP_NAME">%1$s</xliff:g> בתור אפליקציית הטלפון שמשמשת כברירת מחדל?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"‏מקבלת גישה אל יומן השיחות ולשליחת SMS"</string>
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"‏האפליקציה הזו תקבל גישה למצלמה, לאנשי הקשר, למיקרופון, לטלפון ול-SMS"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"חייגן"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"‏אפליקציית ברירת המחדל ל-SMS"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"‏אפליקציית SMS"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"אפליקציות שמאפשרות לך להשתמש במספר הטלפון כדי לשלוח ולקבל הודעות טקסט קצרות, תמונות, סרטונים ועוד"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"‏להגדיר את <xliff:g id="APP_NAME">%1$s</xliff:g> כאפליקציית ברירת המחדל ל-SMS?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"‏מקבלת גישה אל אנשי הקשר, הודעות SMS והטלפון"</string>
+    <string name="role_sms_request_description" msgid="2691004766132144886">"‏האפליקציה הזו תקבל גישה למצלמה, לאנשי הקשר, לקבצים ולמדיה, למיקרופון, לטלפון ול-SMS"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"הודעת טקסט, לשלוח הודעת טקסט, הודעות, העברת הודעות"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"אפליקציית ברירת מחדל לחירום"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"אפליקציה לשעת חירום"</string>
@@ -463,11 +453,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"משוער"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה ליומן?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאה לשלוח הודעות SMS ולהציג אותן?"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה &lt;b&gt;לקבצים ולמסמכים&lt;/b&gt; במכשיר?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה &lt;b&gt;לתמונות, לסרטונים, למוזיקה ולאודיו&lt;/b&gt; במכשיר?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה &lt;b&gt;לתמונות, לסרטונים, למוזיקה, לאודיו ולקבצים אחרים&lt;/b&gt; במכשיר?"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה למוזיקה ולקובצי אודיו אחרים במכשיר הזה?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה לתמונות ולסרטונים במכשיר הזה?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה לתמונות, למדיה ולקבצים במכשיר?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"‏לתת לאפליקציה ‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‎‏ הרשאת גישה ‎&lt;b&gt;‎‏לתמונות, לסרטונים, למוזיקה ולאודיו‎&lt;/b&gt;‎‏ במכשיר?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"‏לתת לאפליקציה ‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‎‏ גישה ‎&lt;b&gt;‎‏לתמונות, סרטונים, מוזיקה, אודיו וקבצים אחרים‎&lt;/b&gt;‎‏ במכשיר?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"‏לתת לאפליקציה ‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‎‏ הרשאת גישה למוזיקה ולאודיו במכשיר?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"‏לתת לאפליקציה ‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‎‏ הרשאת גישה לתמונות ולסרטונים במכשיר?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"‏לאשר לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; להקליט אודיו?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"האפליקציה תוכל להקליט אודיו רק כאשר היא בשימוש"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאה להקליט אודיו?"</string>
@@ -489,7 +479,6 @@
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"כדי לאפשר לאפליקציה הזו לגשת לנתונים של החיישנים הגופניים כל הזמן, גם כשהיא לא בשימוש, "<annotation id="link">"צריך להיכנס להגדרות."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"‏להמשיך לאפשר לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; לגשת לנתונים של חיישני גוף כשהיא נמצאת בשימוש?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאה לשלוח לך התראות?"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאה להמשיך לשלוח לך התראות?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"הרשאות בבקרה"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"ניתן לגשת למיקום"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"‏לאפליקציה <xliff:g id="APP_NAME">%s</xliff:g> ניתנה הרשאה ממנהל ה-IT לגשת למיקום שלך"</string>
@@ -519,6 +508,7 @@
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"לסגור את ההתראה הזו?"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"סגירה"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"ביטול"</string>
+    <string name="safety_center_entries_category_title" msgid="34356964062813115">"הגדרות"</string>
     <string name="security_settings" msgid="3808106921175271317">"הגדרות האבטחה"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"הרשאות גישה לחיישן"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"אמצעי בקרה על פרטיות"</string>

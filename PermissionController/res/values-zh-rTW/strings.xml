@@ -236,8 +236,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"具備此權限的應用程式可存取與你生命徵象相關的感應器資料"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"具備此權限的應用程式可傳送及查看簡訊"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"具備此權限的應用程式可存取你裝置上的相片、媒體和檔案"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"具有這項權限的應用程式可以存取裝置上的音樂和其他音訊檔案"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"具有這項權限的應用程式可以存取裝置上的相片和影片"</string>
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"具有這項權限的應用程式可以存取這部裝置上的音樂和其他音訊檔案"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"具有這項權限的應用程式可以存取這部裝置上的相片和影片"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"上次存取時間：<xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"目前拒絕授權/上次存取時間：<xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"從未存取"</string>
@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"可管理所有檔案"</string>
     <string name="ask_header" msgid="2633816846459944376">"每次都詢問"</string>
     <string name="denied_header" msgid="903209608358177654">"不允許"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"查看可存取所有檔案的其他應用程式"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 天}other{# 天}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 小時}other{# 小時}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 分鐘}other{# 分鐘}}"</string>
@@ -281,15 +280,8 @@
     <string name="notification_listener_reminder_notification_content" msgid="4740891089329946164">"「<xliff:g id="APP_NAME">%s</xliff:g>」能讀取你的所有通知。"</string>
     <string name="notification_listener_warning_card_content" msgid="8181427178654279926">"這個應用程式能存讀取你的所有通知。"</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"移除存取權"</string>
-    <!-- no translation found for notification_listener_review_app_button_label (4452381557379652037) -->
-    <skip />
+    <string name="notification_listener_review_app_button_label" msgid="4452381557379652037">"查看可以存取通知的所有應用程式"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"存取權已移除"</string>
-    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"檢查具有無障礙功能存取權的應用程式"</string>
-    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"「<xliff:g id="APP_NAME">%s</xliff:g>」應用程式可以讀取畫面上的所有內容、將內容顯示在其他應用程式上方，以及追蹤你的互動情形。"</string>
-    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"這個應用程式可以讀取畫面上的所有內容、將內容顯示在其他應用程式上方，以及追蹤你的互動情形。"</string>
-    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"移除存取權"</string>
-    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"查看具有無障礙功能存取權的應用程式"</string>
-    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"已移除存取權"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"為保護隱私，系統已移除應用程式權限"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"「<xliff:g id="APP_NAME">%s</xliff:g>」已有數個月未使用。輕觸即可查看。"</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"「<xliff:g id="APP_NAME">%s</xliff:g>」和另外 1 個應用程式已有數個月未使用。輕觸即可查看。"</string>
@@ -345,8 +337,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"預設的數位助理應用程式"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"數位助理應用程式"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"小幫手應用程式可根據你目前瀏覽的畫面資訊，為你提供協助。部分應用程式同時支援啟動器和語音輸入服務，能夠為你提供更完善的協助。"</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"要將「<xliff:g id="APP_NAME">%1$s</xliff:g>」設為預設的小幫手應用程式嗎？"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"取得簡訊和通話記錄的存取權"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"預設的瀏覽器應用程式"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"瀏覽器應用程式"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"這類應用程式可讓你上網及顯示你點選的連結"</string>
@@ -356,13 +346,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"電話應用程式"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"這類應用程式可讓你透過裝置撥打及接聽電話"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"要將「<xliff:g id="APP_NAME">%1$s</xliff:g>」設為預設的電話應用程式嗎？"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"取得通話記錄存取權和簡訊傳送權限"</string>
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"這個應用程式將可存取你的相機、聯絡人、麥克風、電話及簡訊"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"撥號程式"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"預設的簡訊應用程式"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"簡訊應用程式"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"這類應用程式可讓你透過自己的電話號碼收發簡訊、相片、影片和其他內容"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"要將「<xliff:g id="APP_NAME">%1$s</xliff:g>」設為預設的簡訊應用程式嗎？"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"取得聯絡人、簡訊和手機的存取權"</string>
+    <string name="role_sms_request_description" msgid="2691004766132144886">"這個應用程式將可存取你的相機、聯絡人、檔案和媒體、麥克風、電話及簡訊"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"簡訊, 傳送簡訊, 訊息, 傳送訊息"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"預設的緊急應用程式"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"緊急應用程式"</string>
@@ -463,11 +453,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"概略"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」存取你的日曆嗎？"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」傳送及查看簡訊嗎？"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取裝置上的&lt;b&gt;檔案和文件&lt;/b&gt;嗎？"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取裝置上的&lt;b&gt;相片、影片、音樂及音訊&lt;/b&gt;嗎？"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取裝置上的&lt;b&gt;相片、影片、音樂、音訊和其他檔案&lt;/b&gt;嗎？"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取這部裝置上的音樂和其他音訊檔案嗎？"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取這部裝置上的相片和影片嗎？"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」存取裝置中的相片、媒體和檔案嗎？"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取這部裝置上的&lt;b&gt;相片、影片、音樂和音訊&lt;/b&gt;嗎？"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取這部裝置上的&lt;b&gt;相片、影片、音樂、音訊和其他檔案&lt;/b&gt;嗎？"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取這部裝置上的音樂和音訊嗎？"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取這部裝置上的相片和影片嗎？"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」錄音嗎？"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"這個應用程式只有在你使用時才能錄音"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」錄音嗎？"</string>
@@ -489,7 +479,6 @@
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"如要讓這個應用程能隨時存取人體感應器資料 (即使你當下並未使用該應用程式)，請"<annotation id="link">"前往設定"</annotation>"。"</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"要變更允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;應用程式在使用期間存取人體感應器資料嗎？"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;傳送通知嗎？"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;繼續傳送通知嗎？"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"由管理員控管的權限"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"應用程式可存取你的位置資訊"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"目前 IT 管理員允許「<xliff:g id="APP_NAME">%s</xliff:g>」存取你的位置資訊"</string>
@@ -519,6 +508,7 @@
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"要關閉這個警示嗎？"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"關閉"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"取消"</string>
+    <string name="safety_center_entries_category_title" msgid="34356964062813115">"設定"</string>
     <string name="security_settings" msgid="3808106921175271317">"安全性設定"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"感應器權限"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"隱私權控制項"</string>
@@ -539,40 +529,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"「<xliff:g id="APP_NAME">%1$s</xliff:g>」最近用過這項權限 (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"安全性與隱私權"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"檢查狀態"</string>
-    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
-    <skip />
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"確認"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"返回"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"一併允許存取其他檔案"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"同時禁止存取其他檔案"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"一併允許存取其他檔案"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"同時禁止存取其他檔案"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"一併允許存取相片和影片"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"同時禁止存取相片和影片"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"一併允許存取音樂和音訊檔案"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"同時禁止存取音樂和音訊檔案"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"這個應用程式不支援最新版 Android。如果這個應用程式可存取音樂和音訊檔案，也就能存取相片、影片和其他檔案。"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"這個應用程式不支援最新版 Android。如果這個應用程式無法存取音樂和音訊檔案，也就無法存取相片、影片和其他檔案。"</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"這個應用程式不支援最新版 Android。如果這個應用程式可存取相片和影片，也就能存取音樂、音訊和其他檔案。"</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"這個應用程式不支援最新版 Android。如果這個應用程式無法存取相片和影片，也就無法存取音樂、音訊和其他檔案。"</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"這個應用程式不支援最新版 Android。如果這個應用程式可存取音樂和音訊檔案，也就能存取相片和影片。"</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"這個應用程式不支援最新版 Android。如果這個應用程式無法存取音樂和音訊檔案，也就無法存取相片和影片。"</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"這個應用程式不支援最新版 Android。如果這個應用程式可以存取相片和影片，也就能存取音樂和音訊檔案。"</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"這個應用程式不支援最新版 Android。如果這個應用程式無法存取音樂和音訊檔案，也就無法存取相片和影片。"</string>
 </resources>

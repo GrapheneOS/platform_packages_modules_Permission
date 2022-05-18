@@ -236,8 +236,10 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Maa-access ng mga app na may ganitong pahintulot ang data ng sensor tungkol sa iyong mga vital sign"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Makakapagpadala at makakatingin ng mga SMS message ang mga app na may ganitong pahintulot"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Maa-access ng mga app na mayroon ng pahintulot na ito ang mga larawan, media, at file sa iyong device"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"Maa-access ng mga app na mayroon ng pahintulot na ito ang musika at iba pang audio file sa iyong device"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"Maa-access ng mga app na mayroon ng pahintulot na ito ang mga larawan at video sa iyong device"</string>
+    <!-- no translation found for permission_description_summary_read_media_aural (3354728149930482199) -->
+    <skip />
+    <!-- no translation found for permission_description_summary_read_media_visual (4991801977881732641) -->
+    <skip />
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Huling na-access: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Kasalukuyang tinanggihan / Huling pag-access: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Hindi na-access kahit kailan"</string>
@@ -249,8 +251,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Pinapayagang pamahalaan ang lahat ng file"</string>
     <string name="ask_header" msgid="2633816846459944376">"Magtanong palagi"</string>
     <string name="denied_header" msgid="903209608358177654">"Hindi pinapayagan"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Tumingin pa ng mga app na puwedeng mag-access ng lahat ng file"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 araw}one{# araw}other{# na araw}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 oras}one{# oras}other{# na oras}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 minuto}one{# minuto}other{# na minuto}}"</string>
@@ -281,15 +282,8 @@
     <string name="notification_listener_reminder_notification_content" msgid="4740891089329946164">"Mababasa ng <xliff:g id="APP_NAME">%s</xliff:g> ang lahat ng iyong notification."</string>
     <string name="notification_listener_warning_card_content" msgid="8181427178654279926">"Mababasa ng app na ito ang lahat ng iyong notification."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Alisin ang access"</string>
-    <!-- no translation found for notification_listener_review_app_button_label (4452381557379652037) -->
-    <skip />
+    <string name="notification_listener_review_app_button_label" msgid="4452381557379652037">"Suriin ang lahat ng app na may access sa notification"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Inalis ang access"</string>
-    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Suriin ang app na may access sa accessibility"</string>
-    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"Magagawa ng <xliff:g id="APP_NAME">%s</xliff:g> na basahin ang lahat ng content sa screen, magpakita ng content sa ibabaw ng iba pang app, at subaybayan ang iyong mga pakikipag-ugnayan."</string>
-    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Magagawa ng app na ito na basahin ang lahat ng content sa screen, magpakita ng content sa ibabaw ng iba pang app, at subaybayan ang mga pakikipag-ugnayan mo."</string>
-    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Alisin ang access"</string>
-    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"Tingnan ang mga app na may access sa accessibility"</string>
-    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Inalis ang access"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Inalis ang pahintulot sa app para protektahan ang privacy"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"Ilang buwan nang hindi ginagamit ang <xliff:g id="APP_NAME">%s</xliff:g>. I-tap para suriin."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"Ilang buwan nang hindi ginagamit ang <xliff:g id="APP_NAME">%s</xliff:g> at 1 pang app. I-tap para suriin."</string>
@@ -345,8 +339,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"Default digital assistant app"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Digital assistant app"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Makakatulong sa iyo ang mga assist app batay sa impormasyon sa screen na tinitingnan mo. Sinusuportahan ng ilang app ang mga serbisyo ng launcher at input ng boses para magbigay sa iyo ng pinagsama-samang tulong."</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"Itakda ang <xliff:g id="APP_NAME">%1$s</xliff:g> bilang iyong default na assist app?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"Makakakuha ng access sa SMS, log ng tawag"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Default na browser app"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Browser app"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Mga app na nagbibigay sa iyo ng access sa internet at nagpapakita ng mga link na tina-tap mo"</string>
@@ -356,13 +348,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Phone app"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Mga app na nagbibigay-daan sa iyong tumawag at tumanggap ng tawag sa telepono sa device mo"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Itakda ang <xliff:g id="APP_NAME">%1$s</xliff:g> bilang iyong default na phone app?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"Magkaka-access sa log ng tawag, makakapagpadala ng SMS"</string>
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"Mabibigyan ang app na ito ng access sa iyong Camera, Mga Contact, Mikropono, Telepono, at SMS"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"dialer"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Default na SMS app"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS app"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Mga app na nagbibigay-daan sa iyong gamitin ang numero ng telepono mo para magpadala at makatanggap ng maiikling text message, larawan, video, at higit pa"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Itakda ang <xliff:g id="APP_NAME">%1$s</xliff:g> bilang iyong default na SMS app?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"Magkaka-access sa mga contact, SMS, telepono"</string>
+    <string name="role_sms_request_description" msgid="2691004766132144886">"Mabibigyan ang app na ito ng access sa iyong Camera, Mga Contact, Mga file at media, Mikropono, Telepono, at SMS"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"text message, pag-text, mga mensahe, pagmemensahe"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"Default na emergency app"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"Emergency app"</string>
@@ -463,11 +455,15 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Tinatantya"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang iyong kalendaryo?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na magpadala at tumingin ng mga mensaheng SMS?"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang mga &lt;b&gt;file at dokumento&lt;/b&gt; sa iyong device?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang &lt;b&gt;mga larawan, video, musika, at audio&lt;/b&gt; sa device mo?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"Bigyan ng access ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; sa &lt;b&gt;larawan, video, musika, audio, atbp. file&lt;/b&gt; sa devicmoe ?"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang musika at iba pang audio file sa device na ito?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang mga larawan at video ng device na ito?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang mga larawan, media, at file sa iyong device?"</string>
+    <!-- no translation found for permgrouprequest_storage_q_to_s (8213701872983685505) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_storage_pre_q (168130651144569428) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_aural (2593365397347577812) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_visual (5548780620779729975) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na mag-record ng audio?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Makakapag-record lang ng audio ang app habang ginagamit mo ang app"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na mag-record ng audio?"</string>
@@ -489,7 +485,6 @@
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Para pahintulutan ang app na ito na i-access ang data ng sensor ng katawan sa lahat ng oras, kahit na hindi mo ginagamit ang app, "<annotation id="link">"pumunta sa mga setting."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Patuloy na pahintulutan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang data ng sensor ng katawan habang ginagamit ang app?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Payagan ang <xliff:g id="APP_NAME">%1$s</xliff:g> na padalhan ka ng mga notification?"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Payagan ang <xliff:g id="APP_NAME">%1$s</xliff:g> na patuloy kang padalhan ng mga notification?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Kontroladong pahintulot"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Puwedeng i-access ang lokasyon"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Pinapahintulutan ng iyong IT admin ang <xliff:g id="APP_NAME">%s</xliff:g> na i-access ang lokasyon mo"</string>
@@ -519,6 +514,7 @@
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"I-dismiss ang alertong ito?"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"I-dismiss"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Kanselahin"</string>
+    <string name="safety_center_entries_category_title" msgid="34356964062813115">"Mga Setting"</string>
     <string name="security_settings" msgid="3808106921175271317">"Mga Setting ng Seguridad"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Mga Pahintulot sa Sensor"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Mga Kontrol sa Privacy"</string>

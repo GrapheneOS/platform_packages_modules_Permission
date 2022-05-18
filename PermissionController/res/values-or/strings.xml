@@ -236,8 +236,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"ଏହି ଅନୁମତି ଥିବା ଆପ୍‌ଗୁଡ଼ିକ ଆପଣଙ୍କ ବିଷୟରେ ଗୁରୁତ୍ୱପୂର୍ଣ୍ଣ ସୂଚନା ଦେଉଥିବା ସେନ୍ସର୍ ଡାଟା ଆକ୍ସେସ୍ କରିପାରିବ"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"ଏହି ଅନୁମତି ଥିବା ଆପ୍ସ SMS ମେସେଜ୍‌ଗୁଡ଼ିକୁ ପଠାଇପାରିବ ଏବଂ ଦେଖିପାରିବ"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"ଏହି ଅନୁମତି ଥିବା ଆପ୍ସ ଆପଣଙ୍କର ଡିଭାଇସ୍‌ର ଫଟୋ, ମିଡିଆ, ଏବଂ ଫାଇଲ୍‌ଗୁଡ଼ିକୁ ଆକ୍ସେସ୍ କରିପାରେ"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"ଏହି ଅନୁମତି ଥିବା ଆପଗୁଡ଼ିକ ଆପଣଙ୍କ ଡିଭାଇସରେ ମ୍ୟୁଜିକ ଏବଂ ଅନ୍ୟ ଅଡିଓ ଫାଇଲଗୁଡ଼ିକୁ ଆକ୍ସେସ କରିପାରିବ"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"ଏହି ଅନୁମତି ଥିବା ଆପଗୁଡ଼ିକ ଆପଣଙ୍କ ଡିଭାଇସରେ ଫଟୋ ଏବଂ ଭିଡିଓଗୁଡ଼ିକୁ ଆକ୍ସେସ କରିପାରିବ"</string>
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"ଏହି ଅନୁମତି ଥିବା ଆପଗୁଡ଼ିକ ଏହି ଡିଭାଇସରେ ମ୍ୟୁଜିକ ଏବଂ ଅନ୍ୟ ଅଡିଓ ଫାଇଲଗୁଡ଼ିକୁ ଆକ୍ସେସ କରିପାରିବ"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"ଏହି ଅନୁମତି ଥିବା ଆପଗୁଡ଼ିକ ଏହି ଡିଭାଇସରେ ଫଟୋ ଏବଂ ଭିଡିଓଗୁଡ଼ିକୁ ଆକ୍ସେସ କରିପାରିବ"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"ଗତଥର ଆକ୍ସେସ୍ କରାଯାଇଛି: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"ବର୍ତ୍ତମାନ ପ୍ରତ୍ୟାଖ୍ୟାନ କରାଗଲା / ଶେଷ ଥର ଆକ୍ସେସ୍: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"କେବେବି ଆକ୍ସେସ୍ ହୋଇନାହିଁ"</string>
@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"ସମସ୍ତ ଫାଇଲ୍ ପରିଚାଳନା କରିବାକୁ ଅନୁମତି ଦିଆଯାଇଛି"</string>
     <string name="ask_header" msgid="2633816846459944376">"ପ୍ରତ୍ୟେକ ଥର ପଚାରନ୍ତୁ"</string>
     <string name="denied_header" msgid="903209608358177654">"ଅନୁମତି ନାହିଁ"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"ସମସ୍ତ ଫାଇଲକୁ ଆକ୍ସେସ କରିପାରୁଥିବା ଅଧିକ ଆପ୍ସ ଦେଖନ୍ତୁ"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 ଦିନ}other{# ଦିନ}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 ଘଣ୍ଟା}other{# ଘଣ୍ଟା}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 ମିନିଟ}other{# ମିନିଟ}}"</string>
@@ -281,15 +280,8 @@
     <string name="notification_listener_reminder_notification_content" msgid="4740891089329946164">"<xliff:g id="APP_NAME">%s</xliff:g> ଆପଣଙ୍କର ସମସ୍ତ ପ୍ରତିକ୍ରିୟାକୁ ପଢ଼ିପାରିବ।"</string>
     <string name="notification_listener_warning_card_content" msgid="8181427178654279926">"ଏହି ଆପ ଆପଣଙ୍କର ସମସ୍ତ ବିଜ୍ଞପ୍ତିକୁ ପଢ଼ିପାରିବ।"</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"ଆକ୍ସେସ କାଢ଼ି ଦିଅନ୍ତୁ"</string>
-    <!-- no translation found for notification_listener_review_app_button_label (4452381557379652037) -->
-    <skip />
+    <string name="notification_listener_review_app_button_label" msgid="4452381557379652037">"ବିଜ୍ଞପ୍ତି ଆକ୍ସେସ ଥିବା ସମସ୍ତ ଆପର ସମୀକ୍ଷା କରନ୍ତୁ"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"ଆକ୍ସେସ କାଢ଼ି ଦିଆଯାଇଛି"</string>
-    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"ଆକ୍ସେସିବିଲିଟୀ ଆକ୍ସେସ ଥିବା ଆପର ସମୀକ୍ଷା କରନ୍ତୁ"</string>
-    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> ସ୍କ୍ରିନରେ ଥିବା ସମସ୍ତ ବିଷୟବସ୍ତୁକୁ ପଢ଼ିପାରିବ, ଅନ୍ୟ ଆପ୍ସରେ ବିଷୟବସ୍ତୁଗୁଡ଼ିକୁ ଡିସପ୍ଲେ କରିପାରିବ ଏବଂ ଆପଣଙ୍କ ଇଣ୍ଟରାକ୍ସନଗୁଡ଼ିକୁ ଟ୍ରାକ କରିପାରିବ।"</string>
-    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"ଏହି ଆପ ସ୍କ୍ରିନରେ ଥିବା ସମସ୍ତ ବିଷୟବସ୍ତୁକୁ ପଢ଼ିପାରିବ, ଅନ୍ୟ ଆପ୍ସରେ ବିଷୟବସ୍ତୁଗୁଡ଼ିକୁ ଡିସପ୍ଲେ କରିପାରିବ ଏବଂ ଆପଣଙ୍କ ଇଣ୍ଟରାକ୍ସନଗୁଡ଼ିକୁ ଟ୍ରାକ କରିପାରିବ।"</string>
-    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"ଆକ୍ସେସ କାଢ଼ି ଦିଅନ୍ତୁ"</string>
-    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"ଆକ୍ସେସିବିଲିଟୀ ଆକ୍ସେସ ଥିବା ଆପ୍ସକୁ ଦେଖନ୍ତୁ"</string>
-    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"ଆକ୍ସେସ କାଢ଼ି ଦିଆଯାଇଛି"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"ଗୋପନୀୟତାକୁ ସୁରକ୍ଷା ଦେବା ପାଇଁ ଆପ୍ ଅନୁମତିଗୁଡ଼ିକ କାଢ଼ି ଦିଆଯାଇଛି"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g>କୁ କିଛି ମାସ ହେଲା ବ୍ୟବହାର କରାଯାଇନାହିଁ। ସମୀକ୍ଷା କରିବାକୁ ଟାପ୍ କରନ୍ତୁ।"</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> ଏବଂ ଅନ୍ୟ 1ଟି ଆପ୍ କିଛି ମାସ ହେଲା ବ୍ୟବହାର କରାଯାଇନାହିଁ। ସମୀକ୍ଷା କରିବାକୁ ଟାପ୍ କରନ୍ତୁ।"</string>
@@ -345,8 +337,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"ଡିଫଲ୍ଟ ଡିଜିଟାଲ୍ Assistant ଆପ୍"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"ଡିଜିଟାଲ୍ Assistant ଆପ୍"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"ଆପଣ ଦେଖୁଥିବା ସ୍କ୍ରିନ୍‌ ସୂଚନାକୁ ଆଧାର କରି ସହାୟକ ଆପ୍‌ ଆପଣଙ୍କୁ ସାହାଯ୍ୟ କରିପାରିବ। କେତେକ ଆପ୍‌, ଆପଣଙ୍କୁ ଉତ୍ତମ ସହାୟତା ଦେବା ପାଇଁ, ଉଭୟ ଲଞ୍ଚର୍ ଓ ଭଏସ୍‍ ଇନପୁଟ୍‍ ସେବାକୁ ସମର୍ଥନ କରେ।"</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"<xliff:g id="APP_NAME">%1$s</xliff:g>କୁ ଆପଣଙ୍କ ଡିଫଲ୍ଟ ସହାୟକ ଆପ୍‌ ଭାବରେ ସେଟ୍ କରିବେ କି?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"SMS, କଲ୍ ଲଗ୍‌କୁ ଆକ୍ସେସ୍ ପ୍ରାପ୍ତ କରେ"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"ଡିଫଲ୍ଟ ବ୍ରାଉଜର୍‌ ଆପ୍‌"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"ବ୍ରାଉଜର୍‌ ଆପ୍‌"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"ଆପ୍ସ ଯାହା ଆପଣଙ୍କୁ ଇଣ୍ଟର୍ନେଟ୍ ପାଇଁ ଆକ୍ସେସ୍ ଦିଏ ଏବଂ ଆପଣ ଟାପ୍ କରିଥିବା ଲିଙ୍କ୍‌ଗୁଡ଼ିକ ପ୍ରଦର୍ଶନ କରେ"</string>
@@ -356,13 +346,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"ଫୋନ୍ ଆପ୍"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"ଆପ୍ସ, ଯାହା ଆପଣଙ୍କୁ ଆପଣଙ୍କର ଡିଭାଇସ୍‌ରେ ଟେଲିଫୋନ୍ କଲ୍ କରିବାକୁ ଏବଂ ଗ୍ରହଣ କରିବାକୁ ଅନୁମତି ଦିଏ"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g>କୁ ଆପଣଙ୍କ ଡିଫଲ୍ଟ ଫୋନ୍ ଆପ୍ ଭାବରେ ସେଟ୍ କରିବେ କି?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"କଲ୍‌ ଲଗ୍‌କୁ ଆକ୍ସେସ୍ ପ୍ରାପ୍ତ କରେ, SMS ପଠାଏ"</string>
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"ଏହି ଆପକୁ ଆପଣଙ୍କ କ୍ୟାମେରା, ଯୋଗାଯୋଗ, ମାଇକ୍ରୋଫୋନ, ଫୋନ ଏବଂ SMSକୁ ଆକ୍ସେସ ଦିଆଯିବ"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"ଡାୟଲର୍"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"ଡିଫଲ୍ଟ SMS ଆପ୍‌"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS ଆପ୍‌"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"ଆପ୍ସ, ଯାହା ଆପଣଙ୍କ ଫୋନ୍ ନମ୍ବର ବ୍ୟବହାର କରି ଛୋଟ ଟେକ୍ସଟ୍ ମେସେଜ୍, ଫଟୋ, ଭିଡିଓ, ଏବଂ ଅନେକ କିଛି ପଠାଇବା ଏବଂ ପ୍ରାପ୍ତ କରିବାକୁ ଅନୁମତି ଦିଏ"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g>କୁ ଆପଣଙ୍କ ଡିଫଲ୍ଟ SMS ଆପ୍ ଭାବରେ ସେଟ୍ କରିବେ କି?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"ଯୋଗାଯୋଗଗୁଡ଼ିକୁ, SMS, ଫୋନ୍‌କୁ ଆକ୍ସେସ୍ ପ୍ରାପ୍ତ କରେ"</string>
+    <string name="role_sms_request_description" msgid="2691004766132144886">"ଏହି ଆପକୁ ଆପଣଙ୍କ କ୍ୟାମେରା, ଯୋଗାଯୋଗ, ଫାଇଲ ଓ ଡକ୍ୟୁମେଣ୍ଟ ମାଇକ୍ରୋଫୋନ, ଫୋନ ଏବଂ SMSକୁ ଆକ୍ସେସ ଦିଆଯିବ"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"ଟେକ୍ସଟ୍ ମେସେଜ୍, ଟେକ୍ସଟ୍ ଲେଖିବା, ମେସେଜ୍‌ଗୁଡ଼ିକ, ମେସେଜ୍ ପଠାଇବା"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"ଡିଫଲ୍ଟ ଜରୁରୀକାଳୀନ ଆପ୍"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"ଜରୁରୀକାଳୀନ ଆପ୍"</string>
@@ -463,11 +453,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"(ଆନୁମାନିକ)"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଆପଣଙ୍କ କ୍ୟାଲେଣ୍ଡର୍‌କୁ ଆକ୍ସେସ୍‍ କରିବା ପାଇଁ ଅନୁମତି ଦେବେ କି?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ SMS ମେସେଜ୍‍ ପଠାଇବା ଓ ଦେଖିବା ପାଇଁ ଅନୁମତି ଦେବେ କି?"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"ଆପଣଙ୍କ ଡିଭାଇସରେ ଥିବା &lt;b&gt;ଫାଇଲ ଏବଂ ଡକ୍ୟୁମେଣ୍ଟଗୁଡ଼ିକୁ&lt;/b&gt; ଆକ୍ସେସ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"ଆପଣଙ୍କ ଡିଭାଇସରେ ଥିବା &lt;b&gt;ଫଟୋ, ଭିଡିଓ, ମ୍ୟୁଜିକ ଓ ଅଡିଓକୁ&lt;/b&gt; ଆକ୍ସେସ କରିବାକୁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"ଡିଭାଇସରେ &lt;b&gt;ଫଟୋ, ଭିଡିଓ, ମ୍ୟୁଜିକ, ଅଡିଓ ଓ ଅନ୍ୟ ଫାଇଲକୁ&lt;/b&gt; ଆକ୍ସେସ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ?"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"ଏହି ଡିଭାଇସରେ ଥିବା ମ୍ୟୁଜିକ ଏବଂ ଅନ୍ୟ ଅଡିଓ ଫାଇଲଗୁଡ଼ିକୁ ଆକ୍ସେସ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"ଏହି ଡିଭାଇସର ଫଟୋ ଏବଂ ଭିଡିଓଗୁଡ଼ିକୁ ଆକ୍ସେସ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଆପଣଙ୍କ ଡିଭାଇସରେ ଥିବା ଫଟୋ, ମିଡିଆ ଓ ଫାଇଲ୍‍ ଆକ୍ସେସ୍‍ କରିବାକୁ ଅନୁମତି ଦେବେ କି?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"ଏହି ଡିଭାଇସରେ ଥିବା &lt;b&gt;ଫଟୋ, ଭିଡିଓ, ମ୍ୟୁଜିକ ଓ ଅଡିଓ&lt;/b&gt;କୁ ଆକ୍ସେସ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"ଏ ଡିଭାଇସରେ &lt;b&gt;ଫଟୋ, ଭିଡିଓ, ମ୍ୟୁଜିକ, ଅଡିଓ ଓ ଅନ୍ୟ ଫାଇଲ&lt;/b&gt; ଆକ୍ସେସ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"ଏହି ଡିଭାଇସରେ ଥିବା ମ୍ୟୁଜିକ ଏବଂ ଅଡିଓକୁ ଆକ୍ସେସ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"ଏହି ଡିଭାଇସରେ ଥିବା ଫଟୋ ଏବଂ ଭିଡିଓଗୁଡ଼ିକୁ ଆକ୍ସେସ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅଡିଓ ରେକର୍ଡ କରିବା ପାଇଁ ଅନୁମତି ଦେବେ କି?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"ଆପଣ ଆପକୁ ବ୍ୟବହାର କରୁଥିବା ସମୟରେ କେବଳ ଏହା ଅଡିଓ ରେକର୍ଡ କରିବାକୁ ସକ୍ଷମ ହେବ"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅଡିଓ ରେକର୍ଡ କରିବାକୁ ଅନୁମତି ଦେବେ କି?"</string>
@@ -489,7 +479,6 @@
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"ଆପଣ ଆପ ବ୍ୟବହାର କରୁନଥିଲେ ମଧ୍ୟ, ବଡି ସେନ୍ସର ଡାଟାକୁ ସର୍ବଦା ଆକ୍ସେସ କରିବା ନିମନ୍ତେ ଏହି ଆପକୁ ଅନୁମତି ଦେବା ପାଇଁ, "<annotation id="link">"ସେଟିଂସକୁ ଯାଆନ୍ତୁ।"</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ଆପ ବ୍ୟବହାରରେ ଥିବା ସମୟରେ ବଡି ସେନ୍ସର ଡାଟାକୁ ଆକ୍ସେସ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବା ଜାରି ରଖିବେ?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"ଆପଣଙ୍କୁ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକ ପଠାଇବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ?"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"ଆପଣଙ୍କୁ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକ ପଠାଇବା ଜାରି ରଖିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; କୁ ଅନୁମତି ଦେବେ?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"ନିୟନ୍ତ୍ରିତ ଅନୁରୋଧଗୁଡ଼ିକ"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"ଲୋକେସନ୍ ଆକ୍ସେସ୍ କରାଯାଇପାରିବ"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"ଆପଣଙ୍କ IT ଆଡମିନ୍ <xliff:g id="APP_NAME">%s</xliff:g>କୁ ଆପଣଙ୍କ ଲୋକେସନ୍ ଆକ୍ସେସ୍ କରିବାକୁ ଅନୁମତି ଦେଉଛନ୍ତି"</string>
@@ -519,6 +508,7 @@
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"ଏହି ଆଲର୍ଟକୁ ଖାରଜ କରିବେ?"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"ଖାରଜ କରନ୍ତୁ"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"ବାତିଲ୍ କରନ୍ତୁ"</string>
+    <string name="safety_center_entries_category_title" msgid="34356964062813115">"ସେଟିଂସ"</string>
     <string name="security_settings" msgid="3808106921175271317">"ସୁରକ୍ଷା ସେଟିଂସ"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"ସେନ୍ସର ଅନୁମତିଗୁଡ଼ିକ"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"ଗୋପନୀୟତା ନିୟନ୍ତ୍ରଣଗୁଡ଼ିକ"</string>
@@ -539,40 +529,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"ଏବେ <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) ଦ୍ୱାରା ବ୍ୟବହାର କରାଯାଉଛି"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"ସୁରକ୍ଷା ଏବଂ ଗୋପନୀୟତା"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"ସ୍ଥିତି ଯାଞ୍ଚ କରନ୍ତୁ"</string>
-    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
-    <skip />
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"ସୁନିଶ୍ଚିତ କରନ୍ତୁ"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"ପଛକୁ ଫେରନ୍ତୁ"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"ଅନ୍ୟ ଫାଇଲଗୁଡ଼ିକୁ ମଧ୍ୟ ଆକ୍ସେସ କରିବା ପାଇଁ ଅନୁମତି ଦିଆଯିବ"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"ଅନ୍ୟ ଫାଇଲଗୁଡ଼ିକୁ ମଧ୍ୟ ଆକ୍ସେସ କରିବା ପାଇଁ ଅନୁମତି ଦିଆଯିବ ନାହିଁ"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"ଅନ୍ୟ ଫାଇଲଗୁଡ଼ିକୁ ମଧ୍ୟ ଆକ୍ସେସ କରିବା ପାଇଁ ଅନୁମତି ଦିଆଯିବ"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"ଅନ୍ୟ ଫାଇଲଗୁଡ଼ିକୁ ମଧ୍ୟ ଆକ୍ସେସ କରିବା ପାଇଁ ଅନୁମତି ଦିଆଯିବ ନାହିଁ"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"ଫଟୋ ଏବଂ ଭିଡିଓଗୁଡ଼ିକୁ ମଧ୍ୟ ଆକ୍ସେସ କରିବା ପାଇଁ ଅନୁମତି ଦିଆଯିବ"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"ଫଟୋ ଏବଂ ଭିଡିଓଗୁଡ଼ିକୁ ମଧ୍ୟ ଆକ୍ସେସ କରିବା ପାଇଁ ଅନୁମତି ଦିଆଯିବ ନାହିଁ"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"ମ୍ୟୁଜିକ ଏବଂ ଅଡ଼ିଓ ଫାଇଲଗୁଡ଼ିକୁ ମଧ୍ୟ ଆକ୍ସେସ କରିବା ପାଇଁ ଅନୁମତି ଦିଆଯିବ"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"ମ୍ୟୁଜିକ ଏବଂ ଅଡ଼ିଓ ଫାଇଲଗୁଡ଼ିକୁ ମଧ୍ୟ ଆକ୍ସେସ କରିବା ପାଇଁ ଅନୁମତି ଦିଆଯିବ ନାହିଁ"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"ଏହି ଆପ Androidର ନବୀନତମ ସଂସ୍କରଣକୁ ସମର୍ଥନ କରେ ନାହିଁ। ଯଦି ଏହି ଆପ ମ୍ୟୁଜିକ ଏବଂ ଅଡିଓ ଫାଇଲଗୁଡ଼ିକୁ ଆକ୍ସେସ କରିପାରିବ, ତେବେ ଫଟୋ, ଭିଡିଓ ଏବଂ ଅନ୍ୟ ଫାଇଲଗୁଡ଼ିକୁ ମଧ୍ୟ ଆକ୍ସେସ କରିବା ପାଇଁ ଏହାକୁ ଅନୁମତି ଦିଆଯିବ।"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"ଏହି ଆପ Androidର ନବୀନତମ ସଂସ୍କରଣକୁ ସମର୍ଥନ କରେ ନାହିଁ। ଯଦି ଏହି ଆପ ମ୍ୟୁଜିକ ଏବଂ ଅଡିଓ ଫାଇଲଗୁଡ଼ିକୁ ଆକ୍ସେସ କରିପାରିବ ନାହିଁ, ତେବେ ଫଟୋ, ଭିଡିଓ ଏବଂ ଅନ୍ୟ ଫାଇଲଗୁଡ଼ିକୁ ମଧ୍ୟ ଆକ୍ସେସ କରିବା ପାଇଁ ଏହାକୁ ଅନୁମତି ଦିଆଯିବ ନାହିଁ।"</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"ଏହି ଆପ Androidର ନବୀନତମ ସଂସ୍କରଣକୁ ସମର୍ଥନ କରେ ନାହିଁ। ଯଦି ଏହି ଆପ ଫଟୋ ଏବଂ ଭିଡିଓଗୁଡ଼ିକୁ ଆକ୍ସେସ କରିପାରିବ, ତେବେ ମ୍ୟୁଜିକ, ଅଡିଓ ଏବଂ ଅନ୍ୟ ଫାଇଲଗୁଡ଼ିକୁ ମଧ୍ୟ ଆକ୍ସେସ କରିବା ପାଇଁ ଏହାକୁ ଅନୁମତି ଦିଆଯିବ।"</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"ଏହି ଆପ Androidର ନବୀନତମ ସଂସ୍କରଣକୁ ସମର୍ଥନ କରେ ନାହିଁ। ଯଦି ଏହି ଆପ ଫଟୋ ଏବଂ ଭିଡିଓଗୁଡ଼ିକୁ ଆକ୍ସେସ କରିପାରିବ ନାହିଁ, ତେବେ ମ୍ୟୁଜିକ, ଅଡିଓ ଏବଂ ଅନ୍ୟ ଫାଇଲଗୁଡ଼ିକୁ ମଧ୍ୟ ଆକ୍ସେସ କରିବା ପାଇଁ ଏହାକୁ ଅନୁମତି ଦିଆଯିବ ନାହିଁ।"</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"ଏହି ଆପ Androidର ନବୀନତମ ସଂସ୍କରଣକୁ ସମର୍ଥନ କରେ ନାହିଁ। ଯଦି ଏହି ଆପ ମ୍ୟୁଜିକ ଏବଂ ଅଡିଓ ଫାଇଲଗୁଡ଼ିକୁ ଆକ୍ସେସ କରିପାରିବ, ତେବେ ଫଟୋ ଏବଂ ଭିଡିଓଗୁଡ଼ିକୁ ମଧ୍ୟ ଆକ୍ସେସ କରିବା ପାଇଁ ଏହାକୁ ଅନୁମତି ଦିଆଯିବ।"</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"ଏହି ଆପ Androidର ନବୀନତମ ସଂସ୍କରଣକୁ ସମର୍ଥନ କରେ ନାହିଁ। ଯଦି ଏହି ଆପ ମ୍ୟୁଜିକ ଏବଂ ଅଡିଓ ଫାଇଲଗୁଡ଼ିକୁ ଆକ୍ସେସ କରିପାରିବ ନାହିଁ, ତେବେ ଫଟୋ ଏବଂ ଭିଡିଓଗୁଡ଼ିକୁ ମଧ୍ୟ ଆକ୍ସେସ କରିବା ପାଇଁ ଏହାକୁ ଅନୁମତି ଦିଆଯିବ ନାହିଁ।"</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"ଏହି ଆପ Androidର ନବୀନତମ ସଂସ୍କରଣକୁ ସମର୍ଥନ କରେ ନାହିଁ। ଯଦି ଏହି ଆପ ଫଟୋ ଏବଂ ଭିଡିଓଗୁଡ଼ିକୁ ଆକ୍ସେସ କରିପାରିବ, ତେବେ ମ୍ୟୁଜିକ ଏବଂ ଅଡିଓ ଫାଇଲଗୁଡ଼ିକୁ ମଧ୍ୟ ଆକ୍ସେସ କରିବା ପାଇଁ ଏହାକୁ ଅନୁମତି ଦିଆଯିବ।"</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"ଏହି ଆପ Androidର ନବୀନତମ ସଂସ୍କରଣକୁ ସମର୍ଥନ କରେ ନାହିଁ। ଯଦି ଏହି ଆପ ମ୍ୟୁଜିକ ଏବଂ ଅଡିଓ ଫାଇଲଗୁଡ଼ିକୁ ଆକ୍ସେସ କରିପାରିବ ନାହିଁ, ତେବେ ଫଟୋ ଏବଂ ଭିଡିଓଗୁଡ଼ିକୁ ମଧ୍ୟ ଆକ୍ସେସ କରିବା ପାଇଁ ଏହାକୁ ଅନୁମତି ଦିଆଯିବ ନାହିଁ।"</string>
 </resources>
