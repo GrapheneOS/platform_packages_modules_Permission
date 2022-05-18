@@ -65,4 +65,8 @@ class SafetyCenterEnabledChangedReceiver : BroadcastReceiver() {
             },
             READ_SAFETY_CENTER_STATUS,
             WRITE_DEVICE_CONFIG)
+
+    fun reset() {
+        safetyCenterEnabledChangedChannel.cancel()
+    }
 }
