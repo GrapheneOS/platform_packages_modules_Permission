@@ -710,7 +710,7 @@ class GrantPermissionsViewModel(
 
         // Do not attempt to grant background access if foreground access is not either already
         // granted or requested
-        if (isBackground && !group.foreground.isGrantedExcludeRevokeWhenRequestedPermissions &&
+        if (isBackground && !group.foreground.isGrantedExcludingRWROrAllRWR &&
             !hasForegroundRequest) {
             Log.w(LOG_TAG, "Cannot grant $perm as the matching foreground permission is not " +
                 "already granted.")
@@ -724,8 +724,8 @@ class GrantPermissionsViewModel(
 
         // TODO(b/205888750): remove isRuntimePermReview line once confident in
         //  REVIEW_REQUIRED flag setting
-        if ((isBackground && group.background.isGrantedExcludeRevokeWhenRequestedPermissions ||
-            !isBackground && group.foreground.isGrantedExcludeRevokeWhenRequestedPermissions) &&
+        if ((isBackground && group.background.isGrantedExcludingRWROrAllRWR ||
+            !isBackground && group.foreground.isGrantedExcludingRWROrAllRWR) &&
             !group.isRuntimePermReviewRequired) {
             // If FINE location is not granted, do not grant it automatically when COARSE
             // location is already granted.
