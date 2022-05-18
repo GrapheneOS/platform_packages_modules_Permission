@@ -236,8 +236,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Les aplicacions amb aquest permís poden accedir a les dades dels sensors sobre les teves constants vitals"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Les aplicacions amb aquest permís poden veure i enviar missatges SMS"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Les aplicacions amb aquest permís poden accedir a les fotos, al contingut multimèdia i als fitxers del dispositiu"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"Les aplicacions amb aquest permís poden accedir a la música i altres fitxers d\'àudio del dispositiu"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"Les aplicacions amb aquest permís poden accedir a les fotos i els vídeos del dispositiu"</string>
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"Les aplicacions amb aquest permís poden accedir a la música i altres fitxers d\'àudio d\'aquest dispositiu"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"Les aplicacions amb aquest permís poden accedir a les fotos i els vídeos d\'aquest dispositiu"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Últim accés: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Actualment denegat / Últim accés: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"No s\'hi ha accedit mai"</string>
@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Poden gestionar tots els fitxers"</string>
     <string name="ask_header" msgid="2633816846459944376">"Pregunta sempre"</string>
     <string name="denied_header" msgid="903209608358177654">"Sense permís"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Mostra més aplicacions que poden accedir a tots els fitxers"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 dia}other{# dies}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 hora}other{# hores}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 minut}other{# minuts}}"</string>
@@ -332,8 +331,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"Assistent digital predeterminat"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Aplicació de l\'assistent digital"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Les aplicacions d\'assistència et poden ajudar en funció de la informació que es mostri a la pantalla. Algunes aplicacions admeten tant el menú d\'aplicacions com els serveis d\'entrada de veu per oferir-te una assistència integrada."</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"Vols establir <xliff:g id="APP_NAME">%1$s</xliff:g> com a aplicació d\'assistència predeterminada?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"Tindrà accés als SMS i al registre de trucades"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Aplicació de navegador predeterminada"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Aplicació de navegador"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Aplicacions que et donen accés a Internet i que mostren els enllaços que toques"</string>
@@ -343,13 +340,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Aplicació de telèfon"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Aplicacions que et permeten fer i rebre trucades al dispositiu"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Vols establir <xliff:g id="APP_NAME">%1$s</xliff:g> com a aplicació de telèfon predeterminada?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"Tindrà accés al registre de trucades i podrà enviar SMS"</string>
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"Aquesta aplicació tindrà accés a la càmera, als contactes, al micròfon, al telèfon i als SMS"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"marcador"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Aplicació d\'SMS predeterminada"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"Aplicació d\'SMS"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Aplicacions que et permeten utilitzar el número de telèfon per enviar i rebre missatges curts de text, fotos, vídeos i més"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Vols establir <xliff:g id="APP_NAME">%1$s</xliff:g> com a aplicació d\'SMS predeterminada?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"Tindrà accés als contactes, als SMS i al telèfon"</string>
+    <string name="role_sms_request_description" msgid="2691004766132144886">"Aquesta aplicació tindrà accés a la càmera, als contactes, als fitxers i contingut multimèdia, al micròfon, al telèfon i als SMS"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"missatge de text, enviar missatges, missatges, missatgeria"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"Aplicació d\'emergència predeterminada"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"Aplicació d\'emergència"</string>
@@ -450,11 +447,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Aproximada"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi al calendari?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; enviï i llegeixi missatges SMS?"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi als &lt;b&gt;fitxers i documents&lt;/b&gt; del dispositiu?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi als &lt;b&gt;vídeos, fotos, música i àudio&lt;/b&gt; del dispositiu?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi a &lt;b&gt;vídeos, fotos, música, àudio i altres fitxers&lt;/b&gt;?"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi a la música i a altres fitxers d\'àudio d\'aquest dispositiu?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi a les fotos i els vídeos d\'aquest dispositiu?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi a fotos, contingut multimèdia i fitxers del dispositiu?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi als &lt;b&gt;vídeos, fotos, música i àudio&lt;/b&gt; del dispositiu?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi a &lt;b&gt;vídeos, fotos, música, àudio i altres fitxers&lt;/b&gt;?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi a la música i l\'àudio d\'aquest dispositiu?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi a les fotos i els vídeos d\'aquest dispositiu?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; gravi àudio?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"L\'aplicació només podrà gravar àudio mentre l\'estiguis utilitzant"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; gravi àudio?"</string>
@@ -476,7 +473,6 @@
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Per permetre que l\'aplicació accedeixi sempre a les dades del sensor corporal, fins i tot quan no la utilitzis, "<annotation id="link">"ves a la configuració"</annotation>"."</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Vols continuar permetent que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi a les dades del sensor corporal mentre s\'utilitza?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; t\'enviï notificacions?"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; continuï enviant-te notificacions?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Permisos controlats"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Es pot accedir a la ubicació"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"El teu administrador de TI permet que <xliff:g id="APP_NAME">%s</xliff:g> accedeixi a la teva ubicació"</string>
@@ -523,40 +519,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Utilitzat recentment per <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Seguretat i privadesa"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Comprova l\'estat"</string>
-    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
-    <skip />
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"Confirma"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"Enrere"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"També es permetrà l\'accés a altres fitxers"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"Tampoc no es permetrà l\'accés a altres fitxers"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"També es permetrà l\'accés a altres fitxers"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"Tampoc no es permetrà l\'accés a altres fitxers"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"També es permetrà l\'accés a fotos i vídeos"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"Tampoc no es permetrà l\'accés a fotos i vídeos"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"També es permetrà l\'accés a fitxers de música i d\'àudio"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"Tampoc no es permetrà l\'accés a fitxers de música i d\'àudio"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"Aquesta aplicació no és compatible amb la darrera versió d\'Android. Si aquesta aplicació pot accedir a fitxers de música i d\'àudio, també podrà accedir a fotos, vídeos i altres fitxers."</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"Aquesta aplicació no és compatible amb la darrera versió d\'Android. Si aquesta aplicació no pot accedir a fitxers de música i d\'àudio, tampoc podrà accedir a fotos, vídeos i altres fitxers."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"Aquesta aplicació no és compatible amb la darrera versió d\'Android. Si aquesta aplicació pot accedir a fotos i vídeos, també podrà accedir a fitxers de música, d\'àudio i altres fitxers."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"Aquesta aplicació no és compatible amb la darrera versió d\'Android. Si aquesta aplicació no pot accedir a fotos i vídeos, tampoc no podrà accedir a fitxers de música, d\'àudio i altres fitxers."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"Aquesta aplicació no és compatible amb la darrera versió d\'Android. Si aquesta aplicació pot accedir a fitxers de música i d\'àudio, també podrà accedir a fotos i vídeos."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Aquesta aplicació no és compatible amb la darrera versió d\'Android. Si aquesta aplicació no pot accedir a fitxers de música i d\'àudio, tampoc no podrà accedir a fotos i vídeos."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Aquesta aplicació no és compatible amb la darrera versió d\'Android. Si aquesta aplicació pot accedir a fotos i vídeos, també podrà accedir a fitxers de música i d\'àudio."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Aquesta aplicació no és compatible amb la darrera versió d\'Android. Si aquesta aplicació no pot accedir a fitxers de música i d\'àudio, tampoc no podrà accedir a fotos i vídeos."</string>
 </resources>

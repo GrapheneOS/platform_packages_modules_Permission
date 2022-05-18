@@ -236,8 +236,10 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Forrit með þessa heimild hafa aðgang að skynjaragögnum um lífsmörk þín"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Forrit með þessa heimild geta sent og skoðað SMS-skilaboð"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Forrit sem hafa þessa heimild hafa aðgang að myndum, efni og skrám í tækinu þínu"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"Forrit með þessa heimild hafa aðgang að tónlist og öðrum hljóðskrám í tækinu þínu"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"Forrit með þessa heimild hafa aðgang að myndum og myndskeiðum í tækinu þínu"</string>
+    <!-- no translation found for permission_description_summary_read_media_aural (3354728149930482199) -->
+    <skip />
+    <!-- no translation found for permission_description_summary_read_media_visual (4991801977881732641) -->
+    <skip />
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Síðast notuð: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Hafnað eins og er / síðast notuð: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Aldrei notuð"</string>
@@ -249,8 +251,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Leyfði stjórnun á öllum skrám"</string>
     <string name="ask_header" msgid="2633816846459944376">"Spyrja alltaf"</string>
     <string name="denied_header" msgid="903209608358177654">"Ekki heimilað"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Sjá fleiri forrit sem geta opnað allar skrár"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 dagur}one{# dagur}other{# dagar}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 klukkustund}one{# klukkustund}other{# klukkustundir}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 mínúta}one{# mínúta}other{# mínútur}}"</string>
@@ -332,8 +333,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"Sjálfgefið hjálparaforrit"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Forrit stafræns hjálpara"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Aðstoðarforrit geta notað upplýsingar á skjánum til að hjálpa þér. Sum forrit styðja bæði ræsiforrit og raddinntak til að geta veitt þér heildstæða aðstoð."</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"Velja <xliff:g id="APP_NAME">%1$s</xliff:g> sem sjálfgefið aðstoðarforrit?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"Fær aðgang að SMS-skilaboðum og símtalaskrám"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Sjálfgefið vafraforrit"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Vafraforrit"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Forrit sem veita þér aðgang að netinu og birta tengla sem þú ýtir á"</string>
@@ -343,13 +342,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Símaforrit"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Forrit sem gera þér kleift að hringja og svara símtölum í tækinu"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Velja <xliff:g id="APP_NAME">%1$s</xliff:g> sem sjálfgefið símaforrit?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"Fær aðgang að símtalaskrám og getur sent SMS-skilaboð"</string>
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"Þetta fær aðgang að myndavélinni, tengiliðunum, hljóðnemanum, símanum og SMS-skilaboðum"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"hringiforrit"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Sjálfgefið SMS-forrit"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS-forrit"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Forrit sem gera þér kleift að nota símanúmerið þitt til að senda og taka á móti stuttum textaskilaboðum, myndum, myndskeiðum og fleira"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Velja <xliff:g id="APP_NAME">%1$s</xliff:g> sem sjálfgefið SMS-forrit?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"Fær aðgang að tengiliðum, SMS-skilaboðum og síma"</string>
+    <string name="role_sms_request_description" msgid="2691004766132144886">"Þetta fær aðgang að myndavélinni, tengiliðunum, skrám og margmiðlunarefni, hljóðnemanum, símanum og SMS-skilaboðum"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"skilaboð, textaskilaboð, SMS-skilaboð, SMS"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"Sjálfgefið neyðarforrit"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"Neyðarforrit"</string>
@@ -450,11 +449,15 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Áætluð"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Viltu veita &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aðgang að dagatalinu þínu?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Viltu leyfa &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; að senda og skoða SMS-skilaboð?"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"Veita &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aðgang að &lt;b&gt;skrám og skjölum&lt;/b&gt; í tækinu?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"Veita &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aðgang að &lt;b&gt;myndum, myndskeiðum, tónlist og hljóði&lt;/b&gt; í tækinu?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"Veita &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aðgang að &lt;b&gt;myndum, myndskeiðum, tónlist, hljóði og öðrum skrám&lt;/b&gt; í tækinu?"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"Veita &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aðgang að tónlist og öðrum hljóðskrám í þessu tæki?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"Veita &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aðgang að myndum og myndskeiðum í þessu tæki?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"Viltu veita &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aðgang að myndum, efni og skrám í tækinu?"</string>
+    <!-- no translation found for permgrouprequest_storage_q_to_s (8213701872983685505) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_storage_pre_q (168130651144569428) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_aural (2593365397347577812) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_visual (5548780620779729975) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Leyfa &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; að taka upp hljóð?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Forritið mun aðeins geta tekið upp hljóð þegar þú ert að nota forritið"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Viltu leyfa &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; að taka upp hljóð?"</string>
@@ -476,7 +479,6 @@
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Til að veita þessu forriti samfelldan aðgang að gögnum líkamsskynjara skaltu "<annotation id="link">"opna stillingarnar."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Veita &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; áfram aðgang að gögnum líkamsskynjara á meðan forritið er í notkun?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Leyfa &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; að senda þér tilkynningar?"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Leyfa &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; að halda áfram að senda þér tilkynningar?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Stýrðar heimildir"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Hægt er að nálgast upplýsingar um staðsetningu"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Kerfisstjórinn þinn leyfir forritinu „<xliff:g id="APP_NAME">%s</xliff:g>“ að fá upplýsingar um staðsetningu þína"</string>
@@ -523,40 +525,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Nýlega notað af <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Öryggi og persónuvernd"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Athuga stöðu"</string>
-    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
-    <skip />
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"Staðfesta"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"Til baka"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"Aðgangur að öðrum skrám verður einnig leyfður"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"Aðgangur að öðrum skrám verður heldur ekki leyfður"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"Aðgangur að öðrum skrám verður einnig leyfður"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"Aðgangur að öðrum skrám verður heldur ekki leyfður"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"Aðgangur að myndum og myndskeiðum verður einnig leyfður"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"Aðgangur að myndum og myndskeiðum verður heldur ekki leyfður"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"Aðgangur að tónlist og hljóðskrám verður einnig leyfður"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"Aðgangur að tónlist og hljóðskrám verður heldur ekki leyfður"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"Þetta forrit styður ekki nýjustu útgáfu Android. Ef forritið hefur aðgang að tónlist og hljóðskrám fær það einnig aðgang að myndum, myndskeiðum og öðrum skrám."</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"Þetta forrit styður ekki nýjustu útgáfu Android. Ef forritið hefur ekki aðgang að tónlist og hljóðskrám fær það ekki heldur aðgang að myndum, myndskeiðum og öðrum skrám."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"Þetta forrit styður ekki nýjustu útgáfu Android. Ef forritið hefur aðgang að myndum og myndskeiðum fær það einnig aðgang að tónlist, hljóðskrám og öðrum skrám."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"Þetta forrit styður ekki nýjustu útgáfu Android. Ef forritið hefur ekki aðgang að myndum og myndskeiðum fær það ekki heldur aðgang að tónlist, hljóðskrám og öðrum skrám."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"Þetta forrit styður ekki nýjustu útgáfu Android. Ef forritið hefur aðgang að tónlist og hljóðskrám fær það einnig aðgang að myndum og myndskeiðum."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Þetta forrit styður ekki nýjustu útgáfu Android. Ef forritið hefur ekki aðgang að tónlist og hljóðskrám fær það ekki heldur aðgang að myndum og myndskeiðum."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Þetta forrit styður ekki nýjustu útgáfu Android. Ef forritið hefur aðgang að myndum og myndskeiðum fær það einnig aðgang að tónlist og hljóðskrám."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Þetta forrit styður ekki nýjustu útgáfu Android. Ef forritið hefur ekki aðgang að tónlist og hljóðskrám fær það ekki heldur aðgang að myndum og myndskeiðum."</string>
 </resources>
