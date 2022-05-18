@@ -1016,7 +1016,6 @@ final class SafetyCenterDataTracker {
 
         // TODO(b/222838784): Validate that the intent action is available.
 
-        // TODO(b/219699223): Is it safe to create a PendingIntent as system server here?
         // This call is required for getIntentSender() to be allowed to send as another package.
         final long identity = Binder.clearCallingIdentity();
         try {
@@ -1029,7 +1028,12 @@ final class SafetyCenterDataTracker {
 
     @Nullable
     private Context toPackageContextAsUser(@Nullable String packageName, @UserIdInt int userId) {
-        String contextPackageName = packageName == null ? mContext.getPackageName() : packageName;
+        String contextPackageName =
+                packageName == null
+                        // TODO(b/233047525): We should likely use the listener's or caller's
+                        // package name here.
+                        ? mContext.getPackageManager().getPermissionControllerPackageName()
+                        : packageName;
         // This call requires the INTERACT_ACROSS_USERS permission.
         final long identity = Binder.clearCallingIdentity();
         try {
@@ -1047,7 +1051,7 @@ final class SafetyCenterDataTracker {
      * Returns a {@link String} resource from the given {@code stringId}, using the {@link
      * SafetyCenterResourcesContext}.
      *
-     * <p>Throws a {@link NullPointerException} if the resource cannot be accessed.
+     * <p>Throws a {@link Resources.NotFoundException} if the resource cannot be accessed.
      */
     @NonNull
     private String getString(@StringRes int stringId) {

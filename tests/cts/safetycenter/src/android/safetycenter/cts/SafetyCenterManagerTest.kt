@@ -19,6 +19,7 @@ package android.safetycenter.cts
 import android.Manifest.permission.MANAGE_SAFETY_CENTER
 import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.UserHandle
 import android.safetycenter.SafetyCenterData
@@ -229,6 +230,9 @@ class SafetyCenterManagerTest {
             emptyList(),
             listOf(safetyCenterEntryOrGroupCritical),
             emptyList())
+    private val stubPendingIntent =
+        PendingIntent.getActivity(
+            context, 0 /* requestCode */, Intent("Stub"), PendingIntent.FLAG_IMMUTABLE)
     private val safetyCenterEntryGeneric =
         SafetyCenterEntry.Builder("ID", "OK")
             .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNKNOWN)
@@ -236,16 +240,15 @@ class SafetyCenterManagerTest {
             .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
             .setSeverityUnspecifiedIconType(SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION)
             .build()
-    private val safetyCenterStaticEntryGroupFromComplexConfig = SafetyCenterStaticEntryGroup(
-        "OK",
-        listOf(
-            SafetyCenterStaticEntry.Builder("OK")
-                .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
-                .build(),
-            SafetyCenterStaticEntry.Builder("OK")
-                .setSummary("OK")
-                .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
-                .build()))
+    private val safetyCenterStaticEntryGroupFromComplexConfig =
+        SafetyCenterStaticEntryGroup(
+            "OK",
+            listOf(
+                SafetyCenterStaticEntry.Builder("OK").setPendingIntent(stubPendingIntent).build(),
+                SafetyCenterStaticEntry.Builder("OK")
+                    .setSummary("OK")
+                    .setPendingIntent(stubPendingIntent)
+                    .build()))
     private val safetyCenterDataFromComplexConfig =
         SafetyCenterData(
             safetyCenterStatusUnknown,
@@ -1575,7 +1578,8 @@ class SafetyCenterManagerTest {
             .build()
 
     private fun normalizePendingIntent(pendingIntent: PendingIntent?) =
-        if (pendingIntent?.creatorPackage == "android") safetySourceCtsData.redirectPendingIntent
+        if (pendingIntent != null && pendingIntent.creatorPackage != context.packageName)
+            stubPendingIntent
         else pendingIntent
 
     companion object {
