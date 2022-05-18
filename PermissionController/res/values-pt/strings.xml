@@ -509,7 +509,7 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Os dados do microfone ainda poderão ser compartilhados quando você ligar para um número de emergência."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Mudar"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Segurança e privacidade"</string>
-    <string name="safety_center_rescan_button" msgid="8047036829052958144">"Ler"</string>
+    <string name="safety_center_rescan_button" msgid="8047036829052958144">"Escanear"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Dispensar"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Dispensar o alerta?"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Dispensar"</string>

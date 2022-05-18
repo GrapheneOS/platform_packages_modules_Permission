@@ -236,10 +236,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"កម្មវិធី​ដែលមាន​ការអនុញ្ញាត​នេះ​អាច​ចូលប្រើ​ទិន្នន័យឧបករណ៍ចាប់សញ្ញាអំពីសញ្ញា​មុខងារសំខាន់ៗ​របស់រាងកាយ​អ្នក"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"កម្មវិធី​ដែលមាន​ការអនុញ្ញាត​នេះ​អាចផ្ញើ និងមើលសារ SMS"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"កម្មវិធី​ដែលមាន​ការអនុញ្ញាត​នេះ​អាច​ចូលប្រើ​រូបថត មេឌៀ និងឯកសារ​នៅលើ​ឧបករណ៍​របស់អ្នក"</string>
-    <!-- no translation found for permission_description_summary_read_media_aural (3354728149930482199) -->
-    <skip />
-    <!-- no translation found for permission_description_summary_read_media_visual (4991801977881732641) -->
-    <skip />
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"កម្មវិធី​ដែលមាន​ការអនុញ្ញាតនេះ​អាចចូលប្រើ​ប្រាស់តន្ត្រី និង​ឯកសារសំឡេង​ផ្សេងទៀត​នៅលើឧបករណ៍​នេះ"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"កម្មវិធី​ដែលមាន​ការអនុញ្ញាតនេះ​អាចចូលប្រើប្រាស់​រូបថត និងវីដេអូ​នៅលើ​ឧបករណ៍នេះ"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"ការចូលប្រើ​ចុងក្រោយ៖ <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"បានបដិសេធក្នុងពេលបច្ចុប្បន្ន / ចូលប្រើ​ចុងក្រោយ៖ <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"មិនធ្លាប់​ចូលប្រើ"</string>
@@ -456,14 +454,10 @@
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ចូលប្រើ​ប្រតិទិនរបស់អ្នក?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ផ្ញើ និង​មើលសារ SMS ?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ចូលប្រើ​រូបថត មេឌៀ និងឯកសារនៅលើ​ឧបករណ៍របស់អ្នក?"</string>
-    <!-- no translation found for permgrouprequest_storage_q_to_s (8213701872983685505) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_pre_q (168130651144569428) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_aural (2593365397347577812) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_visual (5548780620779729975) -->
-    <skip />
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ចូលប្រើប្រាស់&lt;b&gt;រូបថត វីដេអូ តន្ត្រី និងសំឡេង&lt;/b&gt;នៅលើឧបករណ៍នេះទេ?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ចូលប្រើ &lt;b&gt;រូបថត វីដេអូ តន្ត្រី សំឡេង និងឯកសារផ្សេងទៀត&lt;/b&gt;នៅលើឧបករណ៍នេះទេ?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ចូលប្រើប្រាស់តន្ត្រី និងសំឡេងនៅលើឧបករណ៍នេះទេ?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ចូលប្រើប្រាស់រូបថត និងវីដេអូនៅលើឧបករណ៍នេះទេ?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ថតសំឡេង?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"កម្មវិធីនេះនឹងអាចថតសំឡេង នៅពេលអ្នកកំពុងប្រើប្រាស់កម្មវិធីតែប៉ុណ្ណោះ"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ថតសំឡេងឬ?"</string>

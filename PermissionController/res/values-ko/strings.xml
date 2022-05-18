@@ -236,10 +236,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"이 권한이 있는 앱은 생체 신호에 관한 센서 데이터에 액세스할 수 있습니다."</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"이 권한이 있는 앱은 SMS 메시지를 보내고 확인할 수 있습니다."</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"이 권한이 있는 앱은 기기에 저장된 사진, 미디어, 파일에 액세스할 수 있습니다."</string>
-    <!-- no translation found for permission_description_summary_read_media_aural (3354728149930482199) -->
-    <skip />
-    <!-- no translation found for permission_description_summary_read_media_visual (4991801977881732641) -->
-    <skip />
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"이 권한이 있는 앱은 기기의 음악 및 기타 오디오 파일에 액세스할 수 있습니다."</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"이 권한이 있는 앱은 기기의 사진 및 동영상에 액세스할 수 있습니다."</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"마지막 액세스: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"현재 거부됨/마지막 액세스: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"액세스하지 않음"</string>
@@ -456,14 +454,10 @@
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 내 캘린더에 액세스하도록 허용하시겠습니까?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 SMS 메시지를 전송하고 보도록 허용하시겠습니까?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 기기의 사진, 미디어, 파일에 액세스하도록 허용하시겠습니까?"</string>
-    <!-- no translation found for permgrouprequest_storage_q_to_s (8213701872983685505) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_pre_q (168130651144569428) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_aural (2593365397347577812) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_visual (5548780620779729975) -->
-    <skip />
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 기기의 &lt;b&gt;사진, 동영상, 음악 및 오디오&lt;/b&gt;에 액세스하도록 허용하시겠습니까?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 기기의 &lt;b&gt;사진, 동영상, 음악, 오디오 및 기타 파일&lt;/b&gt;에 액세스하도록 허용하시겠습니까?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 기기의 음악 및 오디오에 액세스하도록 허용하시겠습니까?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 기기의 사진 및 동영상에 액세스하도록 허용하시겠습니까?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 오디오를 녹음하도록 허용하시겠습니까?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"앱을 사용하고 있는 동안에만 앱에서 오디오를 녹음할 수 있습니다."</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 오디오를 녹음하도록 허용하시겠습니까?"</string>
