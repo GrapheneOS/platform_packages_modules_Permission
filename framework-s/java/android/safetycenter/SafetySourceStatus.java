@@ -319,8 +319,7 @@ public final class SafetySourceStatus implements Parcelable {
                     return value;
                 default:
             }
-            throw new IllegalArgumentException(
-                    String.format("Unexpected IconType for IconAction: %s", value));
+            throw new IllegalArgumentException("Unexpected IconType for IconAction: " + value);
         }
     }
 
@@ -409,6 +408,6 @@ public final class SafetySourceStatus implements Parcelable {
             default:
         }
         throw new IllegalArgumentException(
-                String.format("Unexpected SeverityLevel for SafetySourceStatus: %s", value));
+                "Unexpected SeverityLevel for SafetySourceStatus: " + value);
     }
 }

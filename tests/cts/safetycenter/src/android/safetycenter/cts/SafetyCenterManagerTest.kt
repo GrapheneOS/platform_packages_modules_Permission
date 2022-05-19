@@ -412,9 +412,7 @@ class SafetyCenterManagerTest {
                 safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.unspecified)
             }
 
-        assertThat(thrown)
-            .hasMessageThat()
-            .isEqualTo("Unexpected safety source \"$SINGLE_SOURCE_ID\"")
+        assertThat(thrown).hasMessageThat().isEqualTo("Unexpected safety source: $SINGLE_SOURCE_ID")
     }
 
     @Test
@@ -428,7 +426,7 @@ class SafetyCenterManagerTest {
 
         assertThat(thrown)
             .hasMessageThat()
-            .isEqualTo("Unexpected safety source \"$STATIC_BAREBONE_ID\"")
+            .isEqualTo("Unexpected safety source: $STATIC_BAREBONE_ID")
     }
 
     @Test
@@ -444,8 +442,8 @@ class SafetyCenterManagerTest {
         assertThat(thrown)
             .hasMessageThat()
             .isEqualTo(
-                "Unexpected package name \"${context.packageName}\" for safety source " +
-                    "\"$DYNAMIC_OTHER_PACKAGE_ID\"")
+                "Unexpected package name: ${context.packageName}, for safety source: " +
+                    DYNAMIC_OTHER_PACKAGE_ID)
     }
 
     @Test
@@ -455,9 +453,7 @@ class SafetyCenterManagerTest {
                 safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceData = null)
             }
 
-        assertThat(thrown)
-            .hasMessageThat()
-            .isEqualTo("Unexpected safety source \"$SINGLE_SOURCE_ID\"")
+        assertThat(thrown).hasMessageThat().isEqualTo("Unexpected safety source: $SINGLE_SOURCE_ID")
     }
 
     @Test
@@ -471,7 +467,7 @@ class SafetyCenterManagerTest {
 
         assertThat(thrown)
             .hasMessageThat()
-            .isEqualTo("Unexpected safety source \"$STATIC_BAREBONE_ID\"")
+            .isEqualTo("Unexpected safety source: $STATIC_BAREBONE_ID")
     }
 
     @Test
@@ -486,8 +482,8 @@ class SafetyCenterManagerTest {
         assertThat(thrown)
             .hasMessageThat()
             .isEqualTo(
-                "Unexpected package name \"${context.packageName}\" for safety source " +
-                    "\"$DYNAMIC_OTHER_PACKAGE_ID\"")
+                "Unexpected package name: ${context.packageName}, for safety source: " +
+                    DYNAMIC_OTHER_PACKAGE_ID)
     }
 
     @Test
@@ -502,7 +498,7 @@ class SafetyCenterManagerTest {
 
         assertThat(thrown)
             .hasMessageThat()
-            .isEqualTo("Unexpected status for issue only safety source \"$ISSUE_ONLY_BAREBONE_ID\"")
+            .isEqualTo("Unexpected status for issue only safety source: $ISSUE_ONLY_BAREBONE_ID")
     }
 
     @Test
@@ -518,7 +514,7 @@ class SafetyCenterManagerTest {
 
         assertThat(thrown)
             .hasMessageThat()
-            .isEqualTo("Missing status for dynamic safety source \"$DYNAMIC_BAREBONE_ID\"")
+            .isEqualTo("Missing status for dynamic safety source: $DYNAMIC_BAREBONE_ID")
     }
 
     @Test
@@ -558,9 +554,9 @@ class SafetyCenterManagerTest {
         assertThat(thrown)
             .hasMessageThat()
             .isEqualTo(
-                "Unexpected severity level \"${
+                "Unexpected severity level: ${
                     SafetySourceData.SEVERITY_LEVEL_INFORMATION
-                }\" for issue in safety source \"$SINGLE_SOURCE_ID\"")
+                }, for issue in safety source: $SINGLE_SOURCE_ID")
     }
 
     @Test
@@ -576,9 +572,9 @@ class SafetyCenterManagerTest {
         assertThat(thrown)
             .hasMessageThat()
             .isEqualTo(
-                "Unexpected severity level \"${
+                "Unexpected severity level: ${
                     SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING
-                }\" for safety source \"$SINGLE_SOURCE_ID\"")
+                }, for safety source: $SINGLE_SOURCE_ID")
     }
 
     @Test
@@ -606,9 +602,9 @@ class SafetyCenterManagerTest {
         assertThat(thrown)
             .hasMessageThat()
             .isEqualTo(
-                "Unexpected severity level \"${
+                "Unexpected severity level: ${
                     SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING
-                }\" for safety source \"$DYNAMIC_ALL_OPTIONAL_ID\"")
+                }, for safety source: $DYNAMIC_ALL_OPTIONAL_ID")
     }
 
     @Test
@@ -637,9 +633,9 @@ class SafetyCenterManagerTest {
         assertThat(thrown)
             .hasMessageThat()
             .isEqualTo(
-                "Unexpected severity level \"${
+                "Unexpected severity level: ${
                     SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING
-                }\" for issue in safety source \"$ISSUE_ONLY_ALL_OPTIONAL_ID\"")
+                }, for issue in safety source: $ISSUE_ONLY_ALL_OPTIONAL_ID")
     }
 
     @Test
@@ -680,9 +676,7 @@ class SafetyCenterManagerTest {
                 safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
             }
 
-        assertThat(thrown)
-            .hasMessageThat()
-            .isEqualTo("Unexpected safety source \"$SINGLE_SOURCE_ID\"")
+        assertThat(thrown).hasMessageThat().isEqualTo("Unexpected safety source: $SINGLE_SOURCE_ID")
     }
 
     @Test
@@ -696,7 +690,7 @@ class SafetyCenterManagerTest {
 
         assertThat(thrown)
             .hasMessageThat()
-            .isEqualTo("Unexpected safety source \"$STATIC_BAREBONE_ID\"")
+            .isEqualTo("Unexpected safety source: $STATIC_BAREBONE_ID")
     }
 
     @Test
@@ -711,8 +705,8 @@ class SafetyCenterManagerTest {
         assertThat(thrown)
             .hasMessageThat()
             .isEqualTo(
-                "Unexpected package name \"${context.packageName}\" for safety source " +
-                    "\"$DYNAMIC_OTHER_PACKAGE_ID\"")
+                "Unexpected package name: ${context.packageName}, for safety source: " +
+                    DYNAMIC_OTHER_PACKAGE_ID)
     }
 
     @Test
@@ -755,9 +749,7 @@ class SafetyCenterManagerTest {
                     SINGLE_SOURCE_ID, SafetySourceErrorDetails(EVENT_SOURCE_STATE_CHANGED))
             }
 
-        assertThat(thrown)
-            .hasMessageThat()
-            .isEqualTo("Unexpected safety source \"$SINGLE_SOURCE_ID\"")
+        assertThat(thrown).hasMessageThat().isEqualTo("Unexpected safety source: $SINGLE_SOURCE_ID")
     }
 
     @Test
@@ -772,7 +764,7 @@ class SafetyCenterManagerTest {
 
         assertThat(thrown)
             .hasMessageThat()
-            .isEqualTo("Unexpected safety source \"$STATIC_BAREBONE_ID\"")
+            .isEqualTo("Unexpected safety source: $STATIC_BAREBONE_ID")
     }
 
     @Test
@@ -788,8 +780,8 @@ class SafetyCenterManagerTest {
         assertThat(thrown)
             .hasMessageThat()
             .isEqualTo(
-                "Unexpected package name \"${context.packageName}\" for safety source " +
-                    "\"$DYNAMIC_OTHER_PACKAGE_ID\"")
+                "Unexpected package name: ${context.packageName}, for safety source: " +
+                    DYNAMIC_OTHER_PACKAGE_ID)
     }
 
     @Test
@@ -874,7 +866,7 @@ class SafetyCenterManagerTest {
     fun refreshSafetySources_withRefreshReasonRescanButtonClick_sourceSendsRescanData() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.REFRESH_FETCH_FRESH_DATA, SINGLE_SOURCE_ID)] =
+                SafetySourceDataKey(Reason.REFRESH_FETCH_FRESH_DATA, SINGLE_SOURCE_ID)] =
             safetySourceCtsData.criticalWithIssue
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
@@ -889,7 +881,7 @@ class SafetyCenterManagerTest {
     fun refreshSafetySources_withRefreshReasonPageOpen_sourceSendsPageOpenData() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
+                SafetySourceDataKey(Reason.REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
             safetySourceCtsData.information
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
@@ -904,7 +896,7 @@ class SafetyCenterManagerTest {
     fun refreshSafetySources_withRefreshReasonPageOpen_notCalledIfSourceDoesntSupportPageOpen() {
         safetyCenterCtsHelper.setConfig(NO_PAGE_OPEN_CONFIG)
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
+                SafetySourceDataKey(Reason.REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
             safetySourceCtsData.information
 
         assertFailsWith(TimeoutCancellationException::class) {
@@ -922,7 +914,7 @@ class SafetyCenterManagerTest {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.information)
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.REFRESH_FETCH_FRESH_DATA, SINGLE_SOURCE_ID)] = null
+                SafetySourceDataKey(Reason.REFRESH_FETCH_FRESH_DATA, SINGLE_SOURCE_ID)] = null
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
             REFRESH_REASON_RESCAN_BUTTON_CLICK)
@@ -936,10 +928,10 @@ class SafetyCenterManagerTest {
     fun refreshSafetySources_withMultipleSourcesInConfig_multipleSourcesSendData() {
         safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.REFRESH_FETCH_FRESH_DATA, SOURCE_ID_1)] =
+                SafetySourceDataKey(Reason.REFRESH_FETCH_FRESH_DATA, SOURCE_ID_1)] =
             safetySourceCtsData.criticalWithIssue
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.REFRESH_FETCH_FRESH_DATA, SOURCE_ID_3)] =
+                SafetySourceDataKey(Reason.REFRESH_FETCH_FRESH_DATA, SOURCE_ID_3)] =
             safetySourceCtsData.information
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
@@ -960,10 +952,10 @@ class SafetyCenterManagerTest {
     fun refreshSafetySources_withMultipleSourcesOnPageOpen_onlyUpdatesAllowedSources() {
         safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.REFRESH_GET_DATA, SOURCE_ID_1)] =
+                SafetySourceDataKey(Reason.REFRESH_GET_DATA, SOURCE_ID_1)] =
             safetySourceCtsData.criticalWithIssue
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.REFRESH_GET_DATA, SOURCE_ID_3)] =
+                SafetySourceDataKey(Reason.REFRESH_GET_DATA, SOURCE_ID_3)] =
             safetySourceCtsData.information
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
@@ -984,7 +976,7 @@ class SafetyCenterManagerTest {
     fun refreshSafetySources_whenReceiverDoesNotHavePermission_sourceDoesNotSendData() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.REFRESH_FETCH_FRESH_DATA, SINGLE_SOURCE_ID)] =
+                SafetySourceDataKey(Reason.REFRESH_FETCH_FRESH_DATA, SINGLE_SOURCE_ID)] =
             safetySourceCtsData.criticalWithIssue
 
         safetyCenterManager.refreshSafetySourcesWithPermission(REFRESH_REASON_RESCAN_BUTTON_CLICK)
@@ -1000,7 +992,7 @@ class SafetyCenterManagerTest {
     @Test
     fun refreshSafetySources_whenSourceNotInConfig_sourceDoesNotSendData() {
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
+                SafetySourceDataKey(Reason.REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
             safetySourceCtsData.information
 
         assertFailsWith(TimeoutCancellationException::class) {
@@ -1039,7 +1031,7 @@ class SafetyCenterManagerTest {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         safetyCenterCtsHelper.setEnabled(false)
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
+                SafetySourceDataKey(Reason.REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
             safetySourceCtsData.information
 
         assertFailsWith(TimeoutCancellationException::class) {
@@ -1055,7 +1047,7 @@ class SafetyCenterManagerTest {
     fun refreshSafetySources_refreshAfterSuccessfulRefresh_completesSuccessfully() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
+                SafetySourceDataKey(Reason.REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
             safetySourceCtsData.information
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
@@ -1066,7 +1058,7 @@ class SafetyCenterManagerTest {
         assertThat(apiSafetySourceData1).isEqualTo(safetySourceCtsData.information)
 
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
+                SafetySourceDataKey(Reason.REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
             safetySourceCtsData.criticalWithIssue
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
@@ -1086,7 +1078,7 @@ class SafetyCenterManagerTest {
 
         // Don't wait for the ongoing refresh to timeout.
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
+                SafetySourceDataKey(Reason.REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
             safetySourceCtsData.information
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
@@ -1104,7 +1096,7 @@ class SafetyCenterManagerTest {
                 safetyCenterManager.refreshSafetySourcesWithPermission(143201)
             }
 
-        assertThat(thrown).hasMessageThat().isEqualTo("Invalid refresh reason: 143201")
+        assertThat(thrown).hasMessageThat().isEqualTo("Unexpected refresh reason: 143201")
     }
 
     @Test
@@ -1433,7 +1425,7 @@ class SafetyCenterManagerTest {
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithIssue)
         val listener = safetyCenterCtsHelper.addListener()
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.RESOLVING_ACTION, SINGLE_SOURCE_ID)] =
+                SafetySourceDataKey(Reason.RESOLVING_ACTION, SINGLE_SOURCE_ID)] =
             safetySourceCtsData.information
 
         safetyCenterManager.executeSafetyCenterIssueActionWithReceiverPermissionAndWait(
@@ -1455,7 +1447,7 @@ class SafetyCenterManagerTest {
         val listener = safetyCenterCtsHelper.addListener()
         SafetySourceReceiver.shouldReportSafetySourceError = true
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.RESOLVING_ACTION, SINGLE_SOURCE_ID)] =
+                SafetySourceDataKey(Reason.RESOLVING_ACTION, SINGLE_SOURCE_ID)] =
             safetySourceCtsData.information
 
         safetyCenterManager.executeSafetyCenterIssueActionWithReceiverPermissionAndWait(

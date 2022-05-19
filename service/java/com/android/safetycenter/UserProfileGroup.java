@@ -85,9 +85,10 @@ final class UserProfileGroup {
             } else {
                 Log.w(
                         TAG,
-                        String.format(
-                                "Found multiple profile owner user ids: %s, %s",
-                                profileOwnerUserId, userProfileId));
+                        "Found multiple profile owner user ids: "
+                                + profileOwnerUserId
+                                + ", "
+                                + userProfileId);
             }
         }
 
