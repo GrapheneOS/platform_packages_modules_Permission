@@ -20,6 +20,7 @@ import android.content.Context;
 import android.safetycenter.SafetyCenterEntry;
 import android.safetycenter.SafetyCenterEntryGroup;
 import android.text.TextUtils;
+import android.view.View;
 import android.view.ViewGroup.MarginLayoutParams;
 
 import androidx.annotation.NonNull;
@@ -44,6 +45,9 @@ public class SafetyGroupHeaderEntryPreference extends Preference {
         setLayoutResource(R.layout.preference_expanded_group_entry);
         setWidgetLayoutResource(R.layout.preference_expanded_group_widget);
         setTitle(group.getTitle());
+
+        // TODO(b/222126985): make back selectable to return the Ripple effect
+        setSelectable(false);
         setOnPreferenceClickListener(
                 unused -> {
                     // TODO(b/222126985): implement collapsing UX
@@ -62,6 +66,9 @@ public class SafetyGroupHeaderEntryPreference extends Preference {
             params.topMargin = topMargin;
             holder.itemView.setLayoutParams(params);
         }
+
+        // TODO(b/222126985): show a proper icon based on current state
+        holder.findViewById(R.id.expanded_icon).setVisibility(View.GONE);
     }
 
     boolean isSameItem(Preference other) {
