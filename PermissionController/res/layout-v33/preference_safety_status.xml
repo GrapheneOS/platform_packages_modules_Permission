@@ -64,7 +64,7 @@
         android:text="@string/summary_placeholder"
         android:textAppearance="@style/TextAppearance.SafetyStatusSummary" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/rescan_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -72,7 +72,8 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="24dp"
         android:text="@string/safety_center_rescan_button"
-        style="@style/SafetyCenter.RescanButton"  />
+        style="@style/SafetyCenter.MaterialActionButton"
+    />
 
     <com.android.permissioncontroller.permission.ui.widget.SafetyProtectionSectionView
         android:layout_width="wrap_content"
