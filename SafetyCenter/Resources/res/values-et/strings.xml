@@ -19,6 +19,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"Turbekeskuse ressursid"</string>
     <string name="lock_screen_sources_title" msgid="3317906280484627707">"Seadme lukustus"</string>
+    <string name="lock_screen_sources_summary" msgid="7220439741282516496"></string>
     <string name="lock_screen_title" msgid="4069104894527169877">"Ekraanilukk"</string>
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"Teavet ei ole veel"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"Privaatsus"</string>
@@ -31,7 +32,7 @@
     <string name="privacy_controls_summary" msgid="2402066941190435424">"Seadme juurdepääsu haldamine mikrofonile, kaamerale ja muule"</string>
     <string name="advanced_title" msgid="8745436380690561172">"Rohkem seadeid"</string>
     <string name="advanced_security_title" msgid="1126833338772188155">"Rohkem turvaseadeid"</string>
-    <string name="advanced_security_summary" msgid="6172253327022425123">"Krüpteerimine, mandaat ja muu"</string>
+    <string name="advanced_security_summary" msgid="6172253327022425123">"Krüpteerimine, mandaadid ja muu"</string>
     <string name="advanced_privacy_title" msgid="1117725225706176643">"Rohkem privaatsusseadeid"</string>
     <string name="advanced_privacy_summary" msgid="2281203390575069543">"Automaattäide, kontotegevuste haldus ja muu"</string>
 </resources>

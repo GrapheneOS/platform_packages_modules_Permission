@@ -74,7 +74,7 @@
     <string name="storage_supergroup_warning_allow" msgid="103093462784523190">"हे ॲप Android च्या जुन्या आवृत्तीसाठी डिझाइन केले होते. तुम्ही या परवानगीला अनुमती दिल्यास, पूर्ण स्टोरेजच्या (फोटो, व्हिडिओ, संगीत, ऑडिओ आणि इतर फाइल यांच्या समावेशासह) अ‍ॅक्सेसला अनुमती दिली जाईल."</string>
     <string name="storage_supergroup_warning_deny" msgid="6420765672683284347">"हे ॲप Android च्या जुन्या आवृत्तीसाठी डिझाइन केले होते. तुम्ही ही परवानगी नाकारल्यास, पूर्ण स्टोरेजच्या (फोटो, व्हिडिओ, संगीत, ऑडिओ आणि इतर फाइल यांच्या समावेशासह) अ‍ॅक्सेस नाकारला जाईल."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"अज्ञात क्रिया करा"</string>
-    <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g> पैकी <xliff:g id="COUNT_1">%2$d</xliff:g> अ‍ॅप्सना परवानगी दिली"</string>
+    <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_1">%2$d</xliff:g> पैकी <xliff:g id="COUNT_0">%1$d</xliff:g> अ‍ॅप्सना परवानगी दिली"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> अ‍ॅप्सना अनुमती आहे"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"सिस्टम दर्शवा"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"सिस्टम लपवा"</string>
@@ -190,7 +190,7 @@
     <string name="precise_image_description" msgid="6349638632303619872">"अचूक स्थान"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"अंदाजे स्‍थान"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"अचूक स्थान वापरा"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"अचूक स्थान बंद असते तेव्हा, ॲप्स तुमचे अंदाजे स्थान अ‍ॅक्सेस करू शकतात"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"अचूक स्थान बंद असते, तेव्हा ॲप्स तुमचे अंदाजे स्थान अ‍ॅक्सेस करू शकतात"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> परवानगी"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"या अ‍ॅपसाठी <xliff:g id="PERM">%1$s</xliff:g> चा अ‍ॅक्सेस द्या"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"सर्व <xliff:g id="APP">%1$s</xliff:g> परवानग्या पहा"</string>
@@ -236,21 +236,20 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"ही परवानगी असलेली अ‍ॅप्स तुमच्या महत्त्वाच्या लक्षणांबद्दलचा सेन्सर डेटा अ‍ॅक्सेस करू शकतात"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"ही परवानगी असलेली अ‍ॅप्स एसएमएस मेसेज पाठवू आणि पाहू शकतात"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"ही परवानगी असलेली अ‍ॅप्स तुमच्या डिव्हाइसवरील फोटो, मीडिया आणि फाइल अ‍ॅक्सेस करू शकतात"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"ही परवानगी असलेली अ‍ॅप्स तुमच्या डिव्हाइसवरील संगीत आणि इतर ऑडिओ फाइल अ‍ॅक्सेस करू शकतात"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"ही परवानगी असलेली अ‍ॅप्स तुमच्या डिव्हाइसवरील फोटो आणि व्हिडिओ अ‍ॅक्सेस करू शकतात"</string>
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"ही परवानगी असलेली अ‍ॅप्स या डिव्हाइसवरील संगीत आणि इतर ऑडिओ फाइल अ‍ॅक्सेस करू शकतात"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"ही परवानगी असलेली अ‍ॅप्स या डिव्हाइसवरील फोटो आणि व्हिडिओ अ‍ॅक्सेस करू शकतात"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"शेवटचा अ‍ॅक्सेस: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"सध्या नाकारली आहे / शेवटचे अ‍ॅक्सेस केले: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"कधीही अ‍ॅक्सेस केलेले नाही"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"नाकारले / कधीही अ‍ॅक्सेस केले नाही"</string>
-    <string name="allowed_header" msgid="7769277978004790414">"अनुमती असलेले"</string>
+    <string name="allowed_header" msgid="7769277978004790414">"अनुमती असलेली"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"नेहमी अनुमती आहे"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"फक्त वापरत असताना अनुमती आहे"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"फक्त मीडिया ॲक्सेस करण्यासाठी अनुमती दिली आहे"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"सर्व फाइल व्यवस्थापित करण्यास अनुमती दिली आहे"</string>
     <string name="ask_header" msgid="2633816846459944376">"प्रत्येक वेळी विचारा"</string>
     <string name="denied_header" msgid="903209608358177654">"अनुमती नाही"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"सर्व फाइलचा ॲक्सेस असलेली आणखी ॲप्स पहा"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{एक दिवस}other{# दिवस}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{एक तास}other{# तास}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{एक मिनिट}other{# मिनिटे}}"</string>
@@ -281,15 +280,8 @@
     <string name="notification_listener_reminder_notification_content" msgid="4740891089329946164">"<xliff:g id="APP_NAME">%s</xliff:g> तुमच्या सर्व सूचना वाचू शकते."</string>
     <string name="notification_listener_warning_card_content" msgid="8181427178654279926">"हे अ‍ॅप तुमच्या सर्व सूचना वाचू शकते."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"अ‍ॅक्सेस काढून टाका"</string>
-    <!-- no translation found for notification_listener_review_app_button_label (4452381557379652037) -->
-    <skip />
+    <string name="notification_listener_review_app_button_label" msgid="4452381557379652037">"सूचना अ‍ॅक्सेस वापरून सर्व अ‍ॅप्सचे पुनरावलोकन करा"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"अ‍ॅक्सेस काढून टाकला"</string>
-    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"अ‍ॅक्सेसिबिलिटी अ‍ॅक्सेससह अ‍ॅपचे पुनरावलोकन करा"</string>
-    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> हे स्क्रीनवरील सर्व आशय वाचू शकते, इतर अ‍ॅप्सवर आशय प्रदर्शित करू शकते आणि तुमच्या संवादाचा मागोवा ठेवू शकते."</string>
-    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"हे अ‍ॅप स्क्रीनवरील सर्व आशय वाचू शकते, इतर अ‍ॅप्सवर आशय प्रदर्शित करू शकते आणि तुमच्या संवादाचा मागोवा ठेवू शकते."</string>
-    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"अ‍ॅक्सेस काढून टाका"</string>
-    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"अ‍ॅक्सेसिबिलिटी अ‍ॅक्सेस असलेली अ‍ॅप्स पहा"</string>
-    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"अ‍ॅक्सेस काढून टाकला"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"गोपनीयता संरक्षित करण्यासाठी अ‍ॅप परवानग्या काढून टाकल्या"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> काही महिन्यांपासून वापरलेले नाही. परीक्षण करण्यासाठी टॅप करा."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> आणि एक इतर ॲप काही महिन्यांपासून वापरलेले नाही. परीक्षण करण्यासाठी टॅप करा."</string>
@@ -345,8 +337,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"डीफॉल्ट डिजिटल साहाय्यक अ‍ॅप"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"डिजिटल असिस्टंट अ‍ॅप"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"साहाय्यक अ‍ॅप्स तुम्ही पाहत असलेल्या स्क्रीनवरील माहितीच्या आधारावर तुम्हाला मदत करू शकतात. काही अ‍ॅप्स तुम्हाला एकत्रित साहाय्य देण्यासाठी लाँचर आणि व्हॉइस इनपुट सेवा दोन्हींना सपोर्ट करतात."</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"<xliff:g id="APP_NAME">%1$s</xliff:g> तुमचे डीफॉल्ट साहाय्य अ‍ॅप म्हणून सेट करायचे?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"एसएमएस, कॉल लॉगचा अ‍ॅक्सेस मिळवते"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"डीफॉल्ट ब्राउझर अ‍ॅप"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"ब्राउझर अ‍ॅप"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"तुम्हाला इंटरनेटचा आणि तुम्ही टॅप करत असलेल्या डिस्प्ले लिंकचा अ‍ॅक्सेस देणारी अ‍ॅप्स"</string>
@@ -356,13 +346,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"फोन अ‍ॅप"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"तुम्हाला तुमच्या डिव्हाइसवर टेलिफोन कॉल करू आणि घेऊ देणारी अ‍ॅप्स"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g> तुमचे डीफॉल्ट फोन अ‍ॅप म्हणून सेट करायचे?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"कॉल लॉगचा अ‍ॅक्सेस मिळवते, एसएमएस पाठवते"</string>
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"या ॲपला तुमच्या कॅमेरा, संपर्क, मायक्रोफोन, फोन आणि एसएमएसचा ॲक्सेस दिला जाईल"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"डायलर"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"डीफॉल्ट एसएमएस अ‍ॅप"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"एसएमएस अ‍ॅप"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"एसएमएस, फोटो, व्हिडिओ आणि बरेच काही पाठवण्यासाठी आणि मिळवण्यासाठी तुम्हाला तुमचा फोन नंबर वापरू देणारी अ‍ॅप्स"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g> तुमचे डीफॉल्ट एसएमएस अ‍ॅप म्हणून सेट करायचे?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"संपर्क, एसएमएस, फोनचा अ‍ॅक्सेस मिळवते"</string>
+    <string name="role_sms_request_description" msgid="2691004766132144886">"या ॲपला तुमच्या कॅमेरा, संपर्क, फाइल आणि मीडिया, मायक्रोफोन, फोन व एसएमएसचा ॲक्सेस दिला जाईल"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"एसएमएस, एसएमएस पाठवणे, मेसेज, मेसेजिंग"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"डीफॉल्ट आणीबाणी अ‍ॅप"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"आणीबाणी अ‍ॅप"</string>
@@ -449,11 +439,11 @@
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"व्हॉइस असिस्टंट अ‍ॅक्टिव्हेट करण्यासाठी मायक्रोफोन वापरला जाईल तेव्हा स्टेटस बारमध्ये आयकन दाखवा"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला तुमच्या डिव्हाइसवरील फोटो आणि मीडिया अ‍ॅक्सेस करू द्यायचा?"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला तुमचे संपर्क अ‍ॅक्सेस करू द्यायचे?"</string>
-    <string name="permgrouprequest_location" msgid="6990232580121067883">"&lt;<xliff:g id="APP_NAME">%1$s</xliff:g>&gt; ला या डिव्हाइसचे स्थान ॲक्सेस करू द्यायचे आहे का?"</string>
+    <string name="permgrouprequest_location" msgid="6990232580121067883">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला या डिव्हाइसचे स्थान ॲक्सेस करू द्यायचे आहे का?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"तुम्ही अ‍ॅप वापरत असताना अ‍ॅपला फक्त स्थानाचा अ‍ॅक्सेस असेल"</string>
-    <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"&lt;<xliff:g id="APP_NAME">%1$s</xliff:g>&gt; ला या डिव्हाइसचे स्थान ॲक्सेस करू द्यायचे आहे का?"</string>
+    <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला या डिव्हाइसचे स्थान ॲक्सेस करू द्यायचे आहे का?"</string>
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"तुम्ही अ‍ॅप वापरत नसतानादेखील कदाचित या ॲपला नेहमी तुमचे स्थान ॲक्सेस करायचे आहे."<annotation id="link">"सेटिंग्जमधून अनुमती द्या."</annotation></string>
-    <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;<xliff:g id="APP_NAME">%1$s</xliff:g>&gt; चा स्थान ॲक्सेस बदलायचा आहे का?"</string>
+    <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; चा स्थान ॲक्सेस बदलायचा आहे का?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"तुम्ही अ‍ॅप वापरत नसतानादेखील या ॲपला नेहमी तुमचे स्थान ॲक्सेस करायचे आहे. "<annotation id="link">"सेटिंग्जमधून अनुमती द्या."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला जवळील डिव्हाइस शोधण्याची, त्यांच्याशी कनेक्ट व त्यांचे संबंधित स्थान निर्धारित करण्याची अनुमती द्यायची का?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला जवळील डिव्हाइस शोधण्याची, त्यांच्याशी कनेक्ट व त्यांचे संबंधित स्थान निर्धारित करण्याची अनुमती द्यायची का? "<annotation id="link">"सेटिंग्जमध्ये अनुमती द्या."</annotation></string>
@@ -463,11 +453,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"अंदाजे"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला तुमचे कॅलेंडर अ‍ॅक्सेस करू द्यायचे?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला एसएमएस पाठवू आणि पाहू द्यायचे?"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला तुमच्या डिव्हाइसवरील &lt;b&gt;फाइल आणि दस्तऐवज&lt;/b&gt; अ‍ॅक्सेस करण्याची अनुमती द्यायची आहे का?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला तुमच्या डिव्हाइसवरील &lt;b&gt;फोटो, व्हिडिओ, संगीत आणि ऑडिओ&lt;/b&gt; अ‍ॅक्सेस करण्याची अनुमती द्यायची आहे का?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला तुमच्या डिव्हाइसवरील &lt;b&gt;फोटो, व्हिडिओ, संगीत, ऑडिओ व इतर फाइल&lt;/b&gt; अ‍ॅक्सेस करण्याची अनुमती द्यायची आहे का?"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला या डिव्हाइसवरील संगीत आणि इतर ऑडिओ फाइल अ‍ॅक्सेस करण्याची अनुमती द्यायची आहे का?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला या डिव्हाइसवरील फोटो आणि व्हिडिओ अ‍ॅक्सेस करण्याची अनुमती द्यायची आहे का?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला तुमच्या डिव्हाइसवरील फोटो, मीडिया आणि फाइल अ‍ॅक्सेस करू द्यायच्या?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला या डिव्हाइसवरील &lt;b&gt;फोटो, व्हिडिओ, संगीत आणि ऑडिओ&lt;/b&gt; अ‍ॅक्सेस करू द्यायचा आहे का?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला या डिव्हाइसवरील &lt;b&gt;फोटो, व्हिडिओ, संगीत, ऑडिओ व इतर फाइल&lt;/b&gt; अ‍ॅक्सेस करू द्यायच्या?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला या डिव्हाइसवरील संगीत आणि ऑडिओ अ‍ॅक्सेस करण्याची अनुमती द्यायची आहे का?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला या डिव्हाइसवरील फोटो आणि व्हिडिओ अ‍ॅक्सेस करण्याची अनुमती द्यायची आहे का?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला ऑडिओ रेकॉर्ड करू द्यायचा?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"ॲप फक्त तुम्ही ॲप वापरत असतानाच ऑडिओ रेकॉर्ड करू शकते"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला ऑडिओ रेकॉर्ड करायची अनुमती द्यायची?"</string>
@@ -489,7 +479,6 @@
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"तुम्ही ॲप वापरत नसतानादेखील या ॲपला शरीर सेन्सर डेटा नेहमी अ‍ॅक्सेस करू देण्यासाठी, "<annotation id="link">"सेटिंग्जवर जा."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ॲप वापरात असताना &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला शरीर सेन्सर डेटा अ‍ॅक्सेस करण्याची अनुमती देणे सुरू ठेवायचे आहे का?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला तुम्हाला सूचना पाठवू द्यायचे का?"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला तुम्हाला सूचना पाठवणे सुरू ठेवू द्यायचे का?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"नियंत्रित परवानग्या"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"स्थान अ‍ॅक्सेस करता येऊ शकते"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"तुमचा आयटी ॲडमिन <xliff:g id="APP_NAME">%s</xliff:g> ला तुमचे स्थान अ‍ॅक्सेस करण्याची अनुमती देत आहे"</string>
@@ -519,6 +508,7 @@
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"ही सूचना डिसमिस करायची का?"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"डिसमिस करा"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"रद्द करा"</string>
+    <string name="safety_center_entries_category_title" msgid="34356964062813115">"सेटिंग्ज"</string>
     <string name="security_settings" msgid="3808106921175271317">"सुरक्षा सेटिंग्ज"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"सेन्सर परवानग्या"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"गोपनीयता नियंत्रणे"</string>

@@ -19,6 +19,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"Izvori Centra za sigurnost"</string>
     <string name="lock_screen_sources_title" msgid="3317906280484627707">"Zaključavanje uređaja"</string>
+    <string name="lock_screen_sources_summary" msgid="7220439741282516496"></string>
     <string name="lock_screen_title" msgid="4069104894527169877">"Zaključavanje ekrana"</string>
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"Još uvijek nema informacija"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"Privatnost"</string>
@@ -28,10 +29,10 @@
     <string name="permission_manager_title" msgid="5277347862821255015">"Upravitelj odobrenja"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"Kontrolirajte pristup aplikacija podacima"</string>
     <string name="privacy_controls_title" msgid="5322875777945432395">"Kontrole privatnosti"</string>
-    <string name="privacy_controls_summary" msgid="2402066941190435424">"Kontrolirajte pristup uređaja mikrofonu, kameri i još mnogo toga"</string>
+    <string name="privacy_controls_summary" msgid="2402066941190435424">"Kontrolirajte pristup uređaja mikrofonu, kameri i drugom"</string>
     <string name="advanced_title" msgid="8745436380690561172">"Više postavki"</string>
     <string name="advanced_security_title" msgid="1126833338772188155">"Više postavki sigurnosti"</string>
-    <string name="advanced_security_summary" msgid="6172253327022425123">"Šifriranje, akreditivi i još mnogo toga"</string>
+    <string name="advanced_security_summary" msgid="6172253327022425123">"Šifriranje, akreditivi i drugo"</string>
     <string name="advanced_privacy_title" msgid="1117725225706176643">"Više postavki privatnosti"</string>
-    <string name="advanced_privacy_summary" msgid="2281203390575069543">"Automatsko popunjavanje, kontrole aktivnosti i još mnogo toga"</string>
+    <string name="advanced_privacy_summary" msgid="2281203390575069543">"Automatsko popunjavanje, kontrole aktivnosti i drugo"</string>
 </resources>

@@ -19,6 +19,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"সুরক্ষা কেন্দ্র রিসোর্স"</string>
     <string name="lock_screen_sources_title" msgid="3317906280484627707">"ডিভাইস লক"</string>
+    <string name="lock_screen_sources_summary" msgid="7220439741282516496"></string>
     <string name="lock_screen_title" msgid="4069104894527169877">"স্ক্রিন লক"</string>
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"এখনও কোনও তথ্য নেই"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"গোপনীয়তা"</string>
@@ -33,5 +34,5 @@
     <string name="advanced_security_title" msgid="1126833338772188155">"আরও নিরাপত্তা সেটিংস"</string>
     <string name="advanced_security_summary" msgid="6172253327022425123">"এনক্রিপশন, ক্রেডেনশিয়াল এবং আরও অনেক কিছু"</string>
     <string name="advanced_privacy_title" msgid="1117725225706176643">"আরও গোপনীয়তা সেটিংস"</string>
-    <string name="advanced_privacy_summary" msgid="2281203390575069543">"অটোফিল, অ্যাক্টিভিটি এবং আরও অনেক কিছু"</string>
+    <string name="advanced_privacy_summary" msgid="2281203390575069543">"অটোফিল, অ্যাক্টিভিটি নিয়ন্ত্রণ এবং আরও অনেক কিছু"</string>
 </resources>
