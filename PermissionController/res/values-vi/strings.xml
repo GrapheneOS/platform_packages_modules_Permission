@@ -236,10 +236,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Các ứng dụng có quyền này có thể truy cập vào dữ liệu cảm biến về những dấu hiệu sinh tồn của bạn"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Các ứng dụng có quyền này có thể gửi và xem tin nhắn SMS"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Các ứng dụng có quyền này có thể truy cập vào ảnh, nội dung nghe nhìn và tệp trên thiết bị của bạn"</string>
-    <!-- no translation found for permission_description_summary_read_media_aural (3354728149930482199) -->
-    <skip />
-    <!-- no translation found for permission_description_summary_read_media_visual (4991801977881732641) -->
-    <skip />
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"Các ứng dụng được cấp quyền này có thể truy cập vào nhạc và tệp âm thanh khác trên thiết bị này"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"Các ứng dụng được cấp quyền này có thể truy cập vào ảnh và video trên thiết bị này"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Lần truy cập gần đây nhất: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Hiện đã từ chối/Lần truy cập gần đây nhất: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Chưa bao giờ truy cập"</string>
@@ -450,14 +448,10 @@
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào lịch của bạn?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; gửi và xem tin nhắn SMS?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào ảnh, nội dung nghe nhìn và tệp trên thiết bị của bạn?"</string>
-    <!-- no translation found for permgrouprequest_storage_q_to_s (8213701872983685505) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_pre_q (168130651144569428) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_aural (2593365397347577812) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_visual (5548780620779729975) -->
-    <skip />
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào &lt;b&gt;ảnh, video, nhạc và âm thanh&lt;/b&gt; trên thiết bị này?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào &lt;b&gt;ảnh, video, nhạc, âm thanh và các tệp khác&lt;/b&gt; trên thiết bị này?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào nhạc và âm thanh trên thiết bị này?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào ảnh và video trên thiết bị này?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ghi âm?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Ứng dụng này chỉ có thể ghi âm khi bạn đang dùng ứng dụng"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ghi âm?"</string>
