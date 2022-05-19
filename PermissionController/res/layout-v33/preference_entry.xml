@@ -34,10 +34,13 @@
             android:id="@android:id/icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:maxWidth="48dp"
-            app:maxHeight="48dp" />
+            android:layout_gravity="center" />
     </FrameLayout>
+
+    <Space
+        android:id="@+id/empty_space"
+        android:layout_width="24dp"
+        android:layout_height="0dp" />
 
     <LinearLayout
         android:layout_width="0dp"
