@@ -136,13 +136,13 @@ final class SafetyCenterDataTracker {
         if (!validateRequest(safetySourceData, safetySourceId, packageName, userId)) {
             return false;
         }
-        boolean safetyEventChangedSafetyCenterData =
+        boolean safetyCenterDataHasChanged =
                 processSafetyEvent(safetySourceId, safetyEvent, userId);
 
         SafetySourceKey key = SafetySourceKey.of(safetySourceId, userId);
         SafetySourceData existingSafetySourceData = mSafetySourceDataForKey.get(key);
         if (Objects.equals(safetySourceData, existingSafetySourceData)) {
-            return safetyEventChangedSafetyCenterData;
+            return safetyCenterDataHasChanged;
         }
 
         if (safetySourceData == null) {
@@ -205,7 +205,7 @@ final class SafetyCenterDataTracker {
             return null;
         }
         // TODO(b/229080761): Implement proper error message.
-        return new SafetyCenterErrorDetails("Error");
+        return new SafetyCenterErrorDetails("Error reported from source: " + safetySourceId);
     }
 
     /**
@@ -228,12 +228,13 @@ final class SafetyCenterDataTracker {
     }
 
     /**
-     * Unmarks the given {@link SafetyCenterIssueActionId} as in-flight and returns whether it was
-     * in-flight prior to this call.
+     * Unmarks the given {@link SafetyCenterIssueActionId} as in-flight and returns whether it
+     * caused the underlying {@link SafetyCenterData} to change.
      */
     boolean unmarkSafetyCenterIssueActionAsInFlight(
             @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
-        return mSafetyCenterIssueActionsInFlight.remove(safetyCenterIssueActionId);
+        return mSafetyCenterIssueActionsInFlight.remove(safetyCenterIssueActionId)
+                && getSafetySourceIssueAction(safetyCenterIssueActionId) != null;
     }
 
     /** Dismisses the given {@link SafetyCenterIssueId}. */
