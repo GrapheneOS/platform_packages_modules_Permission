@@ -103,7 +103,7 @@ class SafetySourceCtsData(private val context: Context) {
                 SEVERITY_LEVEL_RECOMMENDATION,
                 "issue_type_id")
             .addAction(
-                Action.Builder("recommendation_action_id", "See issue", redirectPendingIntent)
+                Action.Builder(RECOMMENDATION_ISSUE_ACTION_ID, "See issue", redirectPendingIntent)
                     .build())
             .build()
 
@@ -172,6 +172,12 @@ class SafetySourceCtsData(private val context: Context) {
                     .build())
 
     companion object {
+        /** Issue ID for [recommendationIssue]. */
+        const val RECOMMENDATION_ISSUE_ID = "recommendation_issue_id"
+
+        /** Action ID for the action in [recommendationIssue]. */
+        const val RECOMMENDATION_ISSUE_ACTION_ID = "recommendation_issue_action_id"
+
         /** Issue ID for [criticalIssue]. */
         const val CRITICAL_ISSUE_ID = "critical_issue_id"
 
