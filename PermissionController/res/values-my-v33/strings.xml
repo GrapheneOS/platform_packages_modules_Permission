@@ -17,8 +17,6 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="role_dialer_request_description" msgid="6188305064871543419">"‘အကြောင်းကြားချက်များ’ သင့်ထံပို့ခွင့်ကို ဤအက်ပ်အား ပေးမည်ဖြစ်ပြီး သင်၏ ‘ကင်မရာ’၊ ‘အဆက်အသွယ်များ’၊ ‘မိုက်ခရိုဖုန်း’၊ ‘ဖုန်း’ နှင့် ‘SMS စာတိုစနစ်’ တို့ကို သုံးခွင့်ပေးပါမည်"</string>
-    <!-- no translation found for role_sms_request_description (1506966389698625395) -->
-    <skip />
-    <!-- no translation found for permission_description_summary_storage (1917071243213043858) -->
-    <skip />
+    <string name="role_sms_request_description" msgid="1506966389698625395">"‘အကြောင်းကြားချက်များ’ သင့်ထံပို့ခွင့်ကို ဤအက်ပ်အား ပေးမည်ဖြစ်ပြီး သင်၏ ‘ကင်မရာ’၊ ‘အဆက်အသွယ်များ’၊ Files၊ ‘မိုက်ခရိုဖုန်း’၊ ‘ဖုန်း’ နှင့် ‘SMS စာတိုစနစ်’ တို့ကို သုံးခွင့်ပေးပါမည်"</string>
+    <string name="permission_description_summary_storage" msgid="1917071243213043858">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်များသည် စက်ပေါ်ရှိ ဖိုင်အားလုံးကို သုံးနိုင်သည်"</string>
 </resources>
