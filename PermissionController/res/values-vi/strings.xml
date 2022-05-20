@@ -236,7 +236,7 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Các ứng dụng có quyền này có thể truy cập vào dữ liệu cảm biến về những dấu hiệu sinh tồn của bạn"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Các ứng dụng có quyền này có thể gửi và xem tin nhắn SMS"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Các ứng dụng có quyền này có thể truy cập vào ảnh, nội dung nghe nhìn và tệp trên thiết bị của bạn"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"Các ứng dụng được cấp quyền này có thể truy cập vào nhạc và tệp âm thanh khác trên thiết bị này"</string>
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"Các ứng dụng được cấp quyền này có thể truy cập vào nhạc và các tệp âm thanh khác trên thiết bị này"</string>
     <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"Các ứng dụng được cấp quyền này có thể truy cập vào ảnh và video trên thiết bị này"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Lần truy cập gần đây nhất: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Hiện đã từ chối/Lần truy cập gần đây nhất: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
