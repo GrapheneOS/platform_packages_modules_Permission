@@ -55,9 +55,9 @@
     <string name="unused_apps" msgid="2058057455175955094">"Programu zisizotumika"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"Hakuna programu zisizotumika"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"Hakuna programu zisizotumika"</string>
-    <string name="review_permission_decisions" msgid="309559429150613632">"Uamuzi wa ruhusa za hivi majuzi"</string>
+    <string name="review_permission_decisions" msgid="309559429150613632">"Uamuzi wa ruhusa wa hivi majuzi"</string>
     <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Angalia uamuzi wa ruhusa zote za hivi majuzi"</string>
-    <string name="review_permission_decisions_empty" msgid="8120775336417279806">"Hakuna uamuzi wa ruhusa za hivi majuzi"</string>
+    <string name="review_permission_decisions_empty" msgid="8120775336417279806">"Hakuna uamuzi wa ruhusa wa hivi majuzi"</string>
     <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Dhibiti ufikiaji wa data kwenye kalenda, rekodi za nambari za simu na zaidi"</string>
     <string name="granted_permission_decision" msgid="7824827491551861365">"Umeipa <xliff:g id="APP_NAME">%1$s</xliff:g> ruhusa ya kufikia <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="denied_permission_decision" msgid="5308961501779563781">"Umeinyima <xliff:g id="APP_NAME">%1$s</xliff:g> ruhusa ya kufikia<xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
@@ -454,9 +454,9 @@
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie kalenda yako?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; itume na ione ujumbe wa SMS?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Ungependa &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie picha, maudhui na faili kwenye kifaa chako?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie &lt;b&gt;picha, video, muziki na faili za sauti&lt;/b&gt; kwenye kifaa hiki?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Ruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie &lt;b&gt;picha, video, muziki, faili za sauti na zingine&lt;/b&gt; kwenye kifaa hiki?"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie muziki na faili za sauti kwenye kifaa hiki?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie &lt;b&gt;picha, video, muziki na sauti&lt;/b&gt; kwenye kifaa hiki?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie &lt;b&gt;picha, video, muziki, sauti na faili zingine&lt;/b&gt; kwenye kifaa hiki?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie muziki na sauti kwenye kifaa hiki?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie picha na video kwenye kifaa hiki?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; kurekodi sauti?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Programu itaweza kurekodi sauti unapoitumia tu"</string>
