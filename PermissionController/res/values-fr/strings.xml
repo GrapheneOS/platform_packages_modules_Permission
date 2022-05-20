@@ -68,7 +68,7 @@
     <string name="default_permission_description" msgid="4624464917726285203">"effectuer une action inconnue"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g> application(s) autorisée(s) sur <xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> applications autorisées"</string>
-    <string name="menu_show_system" msgid="4254021607027872504">"Afficher les applications système"</string>
+    <string name="menu_show_system" msgid="4254021607027872504">"Voir applis système"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Masquer les applications système"</string>
     <string name="manage_permission" msgid="2895385393037061964">"Gérer l\'autorisation"</string>
     <string name="no_apps" msgid="2412612731628386816">"Aucune application"</string>

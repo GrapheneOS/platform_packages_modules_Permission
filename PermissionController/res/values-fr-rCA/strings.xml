@@ -174,7 +174,7 @@
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> application</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> applications</item>
     </plurals>
-    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Inutilisée au cours des dernières 24 heures"</string>
+    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Aucune utilisation au cours des dernières 24 heures"</string>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
       <item quantity="one">Utilisation : <xliff:g id="NUMBER">%1$d</xliff:g> application</item>
       <item quantity="other">Utilisation : <xliff:g id="NUMBER">%1$d</xliff:g> applications</item>

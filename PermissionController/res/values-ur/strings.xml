@@ -174,7 +174,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ایپس</item>
       <item quantity="one">1 ایپ</item>
     </plurals>
-    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"پچھلے 24 گھنٹے میں اجازت کا استعمال نہیں کیا گیا"</string>
+    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"گزشتہ 24 گھنٹے میں استعمال نہیں کی گئی"</string>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
       <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> ایپس کے ذریعے استعمال کردہ</item>
       <item quantity="one">1 ایپ کے ذریعے استعمال کردہ</item>
