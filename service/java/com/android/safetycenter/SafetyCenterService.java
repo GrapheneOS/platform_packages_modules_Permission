@@ -33,7 +33,6 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Binder;
-import android.os.RemoteCallbackList;
 import android.provider.DeviceConfig;
 import android.provider.DeviceConfig.OnPropertiesChangedListener;
 import android.safetycenter.IOnSafetyCenterDataChangedListener;
@@ -96,7 +95,7 @@ public final class SafetyCenterService extends SystemService {
     // TODO(b/218285164): Decide final timeout and use a Device Config value instead so that this
     //  duration can be easily adjusted. Once done, add a test that overrides this Device Config
     //  value in CTS tests.
-    private static final Duration RESOLVE_ACTION_TIMEOUT = Duration.ofSeconds(10);
+    private static final Duration RESOLVING_ACTION_TIMEOUT = Duration.ofSeconds(10);
 
     private final Object mApiLock = new Object();
 
@@ -197,9 +196,6 @@ public final class SafetyCenterService extends SystemService {
             }
 
             UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
-
-            SafetyCenterData safetyCenterData;
-            List<RemoteCallbackList<IOnSafetyCenterDataChangedListener>> listeners;
             synchronized (mApiLock) {
                 boolean hasUpdate =
                         mSafetyCenterDataTracker.setSafetySourceData(
@@ -207,12 +203,11 @@ public final class SafetyCenterService extends SystemService {
                 if (!hasUpdate) {
                     return;
                 }
-                safetyCenterData = mSafetyCenterDataTracker.getSafetyCenterData(userProfileGroup);
-                listeners = mSafetyCenterListeners.getListeners(userProfileGroup);
+                mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
+                        userProfileGroup,
+                        mSafetyCenterDataTracker.getSafetyCenterData(userProfileGroup),
+                        null);
             }
-
-            // TODO(b/228832622): Ensure listeners are called only when data changes.
-            SafetyCenterListeners.deliverUpdate(listeners, safetyCenterData, null);
         }
 
         @Override
@@ -257,30 +252,24 @@ public final class SafetyCenterService extends SystemService {
             }
 
             UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
-
-            SafetyCenterData safetyCenterData = null;
-            SafetyCenterErrorDetails safetyCenterErrorDetails;
-            List<RemoteCallbackList<IOnSafetyCenterDataChangedListener>> listeners;
             synchronized (mApiLock) {
                 boolean hasUpdate =
                         mSafetyCenterDataTracker.reportSafetySourceError(
                                 errorDetails, safetySourceId, packageName, userId);
-                safetyCenterErrorDetails =
+                SafetyCenterErrorDetails safetyCenterErrorDetails =
                         mSafetyCenterDataTracker.getSafetyCenterErrorDetails(
                                 safetySourceId, errorDetails);
                 if (safetyCenterErrorDetails == null && !hasUpdate) {
                     return;
                 }
+                SafetyCenterData safetyCenterData = null;
                 if (hasUpdate) {
                     safetyCenterData =
                             mSafetyCenterDataTracker.getSafetyCenterData(userProfileGroup);
                 }
-                listeners = mSafetyCenterListeners.getListeners(userProfileGroup);
+                mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
+                        userProfileGroup, safetyCenterData, safetyCenterErrorDetails);
             }
-
-            // TODO(b/228832622): Ensure listeners are called only when data changes.
-            SafetyCenterListeners.deliverUpdate(
-                    listeners, safetyCenterData, safetyCenterErrorDetails);
         }
 
         @Override
@@ -360,17 +349,16 @@ public final class SafetyCenterService extends SystemService {
             }
 
             UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
-
-            SafetyCenterData safetyCenterData;
             synchronized (mApiLock) {
                 boolean registered = mSafetyCenterListeners.addListener(listener, userId);
                 if (!registered) {
                     return;
                 }
-                safetyCenterData = mSafetyCenterDataTracker.getSafetyCenterData(userProfileGroup);
+                SafetyCenterListeners.deliverUpdate(
+                        listener,
+                        mSafetyCenterDataTracker.getSafetyCenterData(userProfileGroup),
+                        null);
             }
-
-            SafetyCenterListeners.deliverUpdate(listener, safetyCenterData, null);
         }
 
         @Override
@@ -407,8 +395,6 @@ public final class SafetyCenterService extends SystemService {
                     "dismissSafetyCenterIssue", userProfileGroup, safetyCenterIssueId.getUserId());
 
             SafetySourceIssue safetySourceIssue;
-            SafetyCenterData safetyCenterData;
-            List<RemoteCallbackList<IOnSafetyCenterDataChangedListener>> listeners;
             synchronized (mApiLock) {
                 safetySourceIssue =
                         mSafetyCenterDataTracker.getSafetySourceIssue(safetyCenterIssueId);
@@ -420,12 +406,11 @@ public final class SafetyCenterService extends SystemService {
                     return;
                 }
                 mSafetyCenterDataTracker.dismissSafetyCenterIssue(safetyCenterIssueId);
-                safetyCenterData = mSafetyCenterDataTracker.getSafetyCenterData(userProfileGroup);
-                listeners = mSafetyCenterListeners.getListeners(userProfileGroup);
+                mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
+                        userProfileGroup,
+                        mSafetyCenterDataTracker.getSafetyCenterData(userProfileGroup),
+                        null);
             }
-
-            // TODO(b/228832622): Ensure listeners are called only when data changes.
-            SafetyCenterListeners.deliverUpdate(listeners, safetyCenterData, null);
 
             PendingIntent onDismissPendingIntent = safetySourceIssue.getOnDismissPendingIntent();
             if (onDismissPendingIntent != null) {
@@ -462,8 +447,6 @@ public final class SafetyCenterService extends SystemService {
                     safetyCenterIssueId.getUserId());
 
             SafetySourceIssue.Action safetySourceIssueAction;
-            SafetyCenterData safetyCenterData = null;
-            List<RemoteCallbackList<IOnSafetyCenterDataChangedListener>> listeners = null;
             synchronized (mApiLock) {
                 safetySourceIssueAction =
                         mSafetyCenterDataTracker.getSafetySourceIssueAction(
@@ -478,23 +461,18 @@ public final class SafetyCenterService extends SystemService {
                 if (safetySourceIssueAction.willResolve()) {
                     mSafetyCenterDataTracker.markSafetyCenterIssueActionAsInFlight(
                             safetyCenterIssueActionId);
-                    safetyCenterData =
-                            mSafetyCenterDataTracker.getSafetyCenterData(userProfileGroup);
-                    listeners = mSafetyCenterListeners.getListeners(userProfileGroup);
+                    ResolvingActionTimeout resolvingActionTimeout =
+                            new ResolvingActionTimeout(safetyCenterIssueActionId, userProfileGroup);
+                    BackgroundThread.getHandler()
+                            .postDelayed(
+                                    resolvingActionTimeout, RESOLVING_ACTION_TIMEOUT.toMillis());
+                    mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
+                            userProfileGroup,
+                            mSafetyCenterDataTracker.getSafetyCenterData(userProfileGroup),
+                            null);
                 }
             }
 
-            if (safetySourceIssueAction.willResolve()) {
-                ResolvingActionTimeout resolvingActionTimeout =
-                        new ResolvingActionTimeout(safetyCenterIssueActionId, userProfileGroup);
-                BackgroundThread.getHandler()
-                        .postDelayed(resolvingActionTimeout, RESOLVE_ACTION_TIMEOUT.toMillis());
-            }
-
-            if (listeners != null) {
-                // TODO(b/228832622): Ensure listeners are called only when data changes.
-                SafetyCenterListeners.deliverUpdate(listeners, safetyCenterData, null);
-            }
             // TODO(b/229080116): Unmark as in flight if there is an issue dispatching the
             //  PendingIntent.
             dispatchPendingIntent(safetySourceIssueAction.getPendingIntent());
@@ -694,24 +672,18 @@ public final class SafetyCenterService extends SystemService {
 
         @Override
         public void run() {
-            List<RemoteCallbackList<IOnSafetyCenterDataChangedListener>> listeners;
-            SafetyCenterData safetyCenterData;
             synchronized (mApiLock) {
                 boolean hasClearedRefresh =
                         mSafetyCenterRefreshTracker.clearRefresh(mRefreshBroadcastId);
                 if (!hasClearedRefresh) {
                     return;
                 }
-                safetyCenterData = mSafetyCenterDataTracker.getSafetyCenterData(mUserProfileGroup);
-                listeners = mSafetyCenterListeners.getListeners(mUserProfileGroup);
+                mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
+                        mUserProfileGroup,
+                        mSafetyCenterDataTracker.getSafetyCenterData(mUserProfileGroup),
+                        // TODO(b/229080761): Implement proper error message.
+                        new SafetyCenterErrorDetails("Refresh timeout"));
             }
-
-            // TODO(b/228832622): Ensure listeners are called only when data changes.
-            SafetyCenterListeners.deliverUpdate(
-                    listeners,
-                    safetyCenterData,
-                    // TODO(b/229080761): Implement proper error message.
-                    new SafetyCenterErrorDetails("Refresh timeout"));
         }
     }
 
@@ -730,8 +702,6 @@ public final class SafetyCenterService extends SystemService {
 
         @Override
         public void run() {
-            List<RemoteCallbackList<IOnSafetyCenterDataChangedListener>> listeners;
-            SafetyCenterData safetyCenterData;
             synchronized (mApiLock) {
                 boolean safetyCenterDataHasChanged =
                         mSafetyCenterDataTracker.unmarkSafetyCenterIssueActionAsInFlight(
@@ -739,16 +709,12 @@ public final class SafetyCenterService extends SystemService {
                 if (!safetyCenterDataHasChanged) {
                     return;
                 }
-                safetyCenterData = mSafetyCenterDataTracker.getSafetyCenterData(mUserProfileGroup);
-                listeners = mSafetyCenterListeners.getListeners(mUserProfileGroup);
+                mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
+                        mUserProfileGroup,
+                        mSafetyCenterDataTracker.getSafetyCenterData(mUserProfileGroup),
+                        // TODO(b/229080761): Implement proper error message.
+                        new SafetyCenterErrorDetails("Resolving action timeout"));
             }
-
-            // TODO(b/228832622): Ensure listeners are called only when data changes.
-            SafetyCenterListeners.deliverUpdate(
-                    listeners,
-                    safetyCenterData,
-                    // TODO(b/229080761): Implement proper error message.
-                    new SafetyCenterErrorDetails("Resolve action timeout"));
         }
     }
 
