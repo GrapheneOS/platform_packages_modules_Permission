@@ -393,28 +393,37 @@ public final class SafetyCenterService extends SystemService {
             UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
             enforceSameUserProfileGroup(
                     "dismissSafetyCenterIssue", userProfileGroup, safetyCenterIssueId.getUserId());
-
-            SafetySourceIssue safetySourceIssue;
             synchronized (mApiLock) {
-                safetySourceIssue =
+                SafetySourceIssue safetySourceIssue =
                         mSafetyCenterDataTracker.getSafetySourceIssue(safetyCenterIssueId);
                 if (safetySourceIssue == null) {
                     Log.w(
                             TAG,
                             "Attempt to dismiss an issue that is not provided by the source, or "
                                     + "that was dismissed already");
+                    // Don't send the error to the UI here, since it could happen when clicking the
+                    // button multiple times in a row.
                     return;
                 }
                 mSafetyCenterDataTracker.dismissSafetyCenterIssue(safetyCenterIssueId);
+                PendingIntent onDismissPendingIntent =
+                        safetySourceIssue.getOnDismissPendingIntent();
+                if (onDismissPendingIntent != null
+                        && !dispatchPendingIntent(onDismissPendingIntent)) {
+                    Log.w(
+                            TAG,
+                            "Error dispatching dismissal for issue: "
+                                    + safetyCenterIssueId.getSafetySourceIssueId()
+                                    + ", of source: "
+                                    + safetyCenterIssueId.getSafetySourceId());
+                    // We still consider the dismissal a success if there is an error dispatching
+                    // the dismissal PendingIntent, since SafetyCenter won't surface this warning
+                    // anymore.
+                }
                 mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
                         userProfileGroup,
                         mSafetyCenterDataTracker.getSafetyCenterData(userProfileGroup),
                         null);
-            }
-
-            PendingIntent onDismissPendingIntent = safetySourceIssue.getOnDismissPendingIntent();
-            if (onDismissPendingIntent != null) {
-                dispatchPendingIntent(onDismissPendingIntent);
             }
         }
 
@@ -445,10 +454,8 @@ public final class SafetyCenterService extends SystemService {
                     "executeSafetyCenterIssueAction",
                     userProfileGroup,
                     safetyCenterIssueId.getUserId());
-
-            SafetySourceIssue.Action safetySourceIssueAction;
             synchronized (mApiLock) {
-                safetySourceIssueAction =
+                SafetySourceIssue.Action safetySourceIssueAction =
                         mSafetyCenterDataTracker.getSafetySourceIssueAction(
                                 safetyCenterIssueActionId);
                 if (safetySourceIssueAction == null) {
@@ -456,6 +463,28 @@ public final class SafetyCenterService extends SystemService {
                             TAG,
                             "Attempt to execute an issue action that is not provided by the source,"
                                     + " that was dismissed, or is already in flight");
+                    // Don't send the error to the UI here, since it could happen when clicking the
+                    // button multiple times in a row.
+                    return;
+                }
+                if (!dispatchPendingIntent(safetySourceIssueAction.getPendingIntent())) {
+                    Log.w(
+                            TAG,
+                            "Error dispatching action: "
+                                    + safetyCenterIssueActionId.getSafetySourceIssueActionId()
+                                    + ", for issue: "
+                                    + safetyCenterIssueActionId
+                                            .getSafetyCenterIssueId()
+                                            .getSafetySourceIssueId()
+                                    + ", of source: "
+                                    + safetyCenterIssueActionId
+                                            .getSafetyCenterIssueId()
+                                            .getSafetySourceId());
+                    mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
+                            userProfileGroup,
+                            null,
+                            // TODO(b/229080761): Implement proper error message.
+                            new SafetyCenterErrorDetails("Error executing action"));
                     return;
                 }
                 if (safetySourceIssueAction.willResolve()) {
@@ -472,10 +501,6 @@ public final class SafetyCenterService extends SystemService {
                             null);
                 }
             }
-
-            // TODO(b/229080116): Unmark as in flight if there is an issue dispatching the
-            //  PendingIntent.
-            dispatchPendingIntent(safetySourceIssueAction.getPendingIntent());
         }
 
         @Override
@@ -587,12 +612,13 @@ public final class SafetyCenterService extends SystemService {
             }
         }
 
-        private void dispatchPendingIntent(@NonNull PendingIntent pendingIntent) {
+        private boolean dispatchPendingIntent(@NonNull PendingIntent pendingIntent) {
             try {
                 pendingIntent.send();
+                return true;
             } catch (PendingIntent.CanceledException ex) {
                 Log.w(TAG, "Couldn't dispatch PendingIntent", ex);
-                // TODO(b/229080116): Propagate error with listeners here?
+                return false;
             }
         }
     }
