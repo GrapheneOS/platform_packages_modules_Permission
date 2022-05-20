@@ -59,7 +59,7 @@
     <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Zobrazit všechna nedávná rozhodnutí o oprávnění"</string>
     <string name="review_permission_decisions_empty" msgid="8120775336417279806">"Žádná nedávná rozhodnutí o oprávnění"</string>
     <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Správa přístupu k datům kalendáře, seznamům hovorů atd."</string>
-    <string name="granted_permission_decision" msgid="7824827491551861365">"Aplikaci <xliff:g id="APP_NAME">%1$s</xliff:g> jste udělili oprávnění <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
+    <string name="granted_permission_decision" msgid="7824827491551861365">"Aplikaci <xliff:g id="APP_NAME">%1$s</xliff:g> jste udělili přístupové oprávnění pro <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="denied_permission_decision" msgid="5308961501779563781">"Aplikaci <xliff:g id="APP_NAME">%1$s</xliff:g> jste zamítli oprávnění <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{dnes}=1{včera}few{před # dny}many{před # dne}other{před # dny}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Deaktivovat aplikaci"</string>
@@ -236,10 +236,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Aplikace s tímto oprávněním mají přístup k datům ze snímačů vašich životních funkcí"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Aplikace s tímto oprávněním mohou odesílat a zobrazovat SMS"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Aplikace s tímto oprávněním mají přístup k  fotkám, médiím a souborům v zařízení"</string>
-    <!-- no translation found for permission_description_summary_read_media_aural (3354728149930482199) -->
-    <skip />
-    <!-- no translation found for permission_description_summary_read_media_visual (4991801977881732641) -->
-    <skip />
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"Aplikace s tímto oprávněním mají přístup k hudbě a dalším zvukovým souborům v zařízení"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"Aplikace s tímto oprávněním mají přístup k fotkám a videím v zařízení"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Poslední přístup: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Zakázáno / naposledy použito: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Žádný přístup"</string>
@@ -456,14 +454,10 @@
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; přístup ke kalendáři?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; odesílat a zobrazovat SMS?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; přístup k fotkám, mediálnímu obsahu a souborům v zařízení?"</string>
-    <!-- no translation found for permgrouprequest_storage_q_to_s (8213701872983685505) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_pre_q (168130651144569428) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_aural (2593365397347577812) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_visual (5548780620779729975) -->
-    <skip />
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; přístup k &lt;b&gt;fotkám, videím, hudbě a zvuku&lt;/b&gt; v zařízení?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; přístup k &lt;b&gt;fotkám, videím, hudbě, zvuku a dalším souborům&lt;/b&gt; v zařízení?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; přístup k hudbě a zvuku v zařízení?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; přístup k fotkám a videím v zařízení?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; nahrávat zvuk?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Aplikace bude moci zaznamenávat zvuk, pouze když ji budete používat"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; nahrávat zvuk?"</string>
