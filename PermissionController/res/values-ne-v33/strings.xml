@@ -17,10 +17,8 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="role_dialer_request_description" msgid="6188305064871543419">"यो एपलाई तपाईंलाई सूचना पठाउने अनुमतिका साथै क्यामेरा, कन्ट्याक्ट, माइक्रोफोन, फोन र SMS हेर्ने तथा प्रयोग गर्ने अनुमति दिइने छ"</string>
-    <!-- no translation found for role_sms_request_description (1506966389698625395) -->
-    <skip />
-    <!-- no translation found for permission_description_summary_storage (1917071243213043858) -->
-    <skip />
+    <string name="role_sms_request_description" msgid="1506966389698625395">"यो एपलाई तपाईंलाई सूचना पठाउने अनुमतिका साथै क्यामेरा, कन्ट्याक्ट, फाइल, माइक्रोफोन, फोन र SMS हेर्ने तथा प्रयोग गर्ने अनुमति दिइने छ"</string>
+    <string name="permission_description_summary_storage" msgid="1917071243213043858">"यो अनुमति पाएका एपहरूले यस डिभाइसमा रहेका सबै फाइलहरू प्रयोग गर्न सक्छन्"</string>
     <string name="work_policy_title" msgid="832967780713677409">"तपाईंको कार्यसम्बन्धी नीतिको जानकारी"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"तपाईंका IT एडमिनले व्यवस्थापन गर्ने सेटिङ"</string>
 </resources>
