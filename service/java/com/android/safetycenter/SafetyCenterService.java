@@ -337,7 +337,11 @@ public final class SafetyCenterService extends SystemService {
                     .enforceCallingOrSelfPermission(MANAGE_SAFETY_CENTER, "getSafetyCenterData");
             if (!enforceCrossUserPermission("getSafetyCenterData", userId)
                     || !checkApiEnabled("getSafetyCenterData")) {
-                return SafetyCenterDataTracker.getDefaultSafetyCenterData();
+                // This call is thread safe and there is no need to hold the mApiLock
+                @SuppressWarnings("GuardedBy")
+                SafetyCenterData defaultData =
+                        mSafetyCenterDataTracker.getDefaultSafetyCenterData();
+                return defaultData;
             }
 
             UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
