@@ -78,7 +78,7 @@ class SafetyCenterUnsupportedTest {
     }
 
     @Test
-    fun launchActivity_showsSecurityTitle() {
+    fun launchActivity_showsSettingsTitle() {
         // TODO(b/232284056): Check if we can remove these test restrictions
         assumeFalse(packageManager.hasSystemFeature(FEATURE_AUTOMOTIVE))
         assumeFalse(packageManager.hasSystemFeature(FEATURE_LEANBACK))
