@@ -236,8 +236,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Aplikacje z tym uprawnieniem mają dostęp do danych z czujnika podstawowych funkcji życiowych"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Aplikacje z tym uprawnieniem mogą wysyłać i wyświetlać SMS-y"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Aplikacje z tym uprawnieniem mają dostęp do zdjęć, multimediów i plików na urządzeniu"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"Aplikacje z tym uprawnieniem mają dostęp do muzyki i innych plików audio na tym urządzeniu"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"Aplikacje z tym uprawnieniem mają dostęp do zdjęć i filmów na tym urządzeniu"</string>
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"Aplikacje z tymi uprawnieniami mają dostęp do muzyki i innych plików audio na tym urządzeniu"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"Aplikacje z tymi uprawnieniami mają dostęp do zdjęć i filmów na tym urządzeniu"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Ostatnie użycie: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Aktualnie odmowa / ostatni dostęp: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Nigdy nie użyto"</string>
