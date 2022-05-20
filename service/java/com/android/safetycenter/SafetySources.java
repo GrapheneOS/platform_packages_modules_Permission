@@ -44,7 +44,7 @@ final class SafetySources {
             case SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY:
                 return true;
         }
-        Log.w(TAG, String.format("Unexpected safety source type: %s", safetySourceType));
+        Log.w(TAG, "Unexpected safety source type: " + safetySourceType);
         return false;
     }
 
@@ -58,7 +58,7 @@ final class SafetySources {
             case SafetySource.PROFILE_ALL:
                 return true;
         }
-        Log.w(TAG, String.format("Unexpected safety source profile: %s", safetySourceProfile));
+        Log.w(TAG, "Unexpected safety source profile: " + safetySourceProfile);
         return false;
     }
 
@@ -73,7 +73,7 @@ final class SafetySources {
                 return safetySource.getInitialDisplayState()
                         == SafetySource.INITIAL_DISPLAY_STATE_HIDDEN;
         }
-        Log.w(TAG, String.format("Unexpected safety source type: %s", safetySourceType));
+        Log.w(TAG, "Unexpected safety source type: " + safetySourceType);
         return false;
     }
 
@@ -88,7 +88,7 @@ final class SafetySources {
                 return safetySource.getInitialDisplayState()
                         == SafetySource.INITIAL_DISPLAY_STATE_DISABLED;
         }
-        Log.w(TAG, String.format("Unexpected safety source type: %s", safetySourceType));
+        Log.w(TAG, "Unexpected safety source type: " + safetySourceType);
         return false;
     }
 }

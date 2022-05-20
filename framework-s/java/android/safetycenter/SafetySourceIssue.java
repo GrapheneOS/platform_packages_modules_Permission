@@ -626,7 +626,7 @@ public final class SafetySourceIssue implements Parcelable {
             default:
         }
         throw new IllegalArgumentException(
-                String.format("Unexpected SeverityLevel for SafetySourceIssue: %s", value));
+                "Unexpected SeverityLevel for SafetySourceIssue: " + value);
     }
 
     @IssueCategory
@@ -639,6 +639,6 @@ public final class SafetySourceIssue implements Parcelable {
             default:
         }
         throw new IllegalArgumentException(
-                String.format("Unexpected IssueCategory for SafetySourceIssue: %s", value));
+                "Unexpected IssueCategory for SafetySourceIssue: " + value);
     }
 }

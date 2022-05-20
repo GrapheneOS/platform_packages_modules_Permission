@@ -160,10 +160,11 @@ final class SafetyCenterRefreshTracker {
         if (mRefreshInProgress == null || !mRefreshInProgress.getId().equals(refreshBroadcastId)) {
             Log.w(
                     TAG,
-                    String.format(
-                            "%s called for invalid refresh broadcast id: %s; no such refresh in"
-                                    + " progress",
-                            methodName, refreshBroadcastId));
+                    methodName
+                            + " called for invalid refresh broadcast id: "
+                            + refreshBroadcastId
+                            + "; no such refresh in"
+                            + " progress");
             return false;
         }
         return true;

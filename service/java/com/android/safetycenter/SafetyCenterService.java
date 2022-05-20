@@ -445,9 +445,11 @@ public final class SafetyCenterService extends SystemService {
                     SafetyCenterIds.issueActionIdFromString(issueActionId);
             if (!safetyCenterIssueActionId.getSafetyCenterIssueId().equals(safetyCenterIssueId)) {
                 throw new IllegalArgumentException(
-                        String.format(
-                                "issueId: %s and issueActionId: %s do not match",
-                                safetyCenterIssueId, safetyCenterIssueActionId));
+                        "issueId: "
+                                + safetyCenterIssueId
+                                + " and issueActionId: "
+                                + safetyCenterIssueActionId
+                                + " do not match");
             }
             UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
             enforceSameUserProfileGroup(
@@ -570,9 +572,10 @@ public final class SafetyCenterService extends SystemService {
                 }
             }
             throw new SecurityException(
-                    String.format(
-                            "%s requires any of: %s, but none were granted",
-                            message, Arrays.toString(permissions)));
+                    message
+                            + " requires any of: "
+                            + Arrays.toString(permissions)
+                            + ", but none were granted");
         }
 
         /** Enforces cross user permission and returns whether the user is existent. */
@@ -581,10 +584,11 @@ public final class SafetyCenterService extends SystemService {
             if (!UserUtils.isUserExistent(userId, getContext())) {
                 Log.e(
                         TAG,
-                        String.format(
-                                "Called %s with user id %s, which does not correspond to an"
-                                        + " existing user",
-                                message, userId));
+                        "Called "
+                                + message
+                                + " with user id "
+                                + userId
+                                + ", which does not correspond to an existing user");
                 return false;
             }
             // TODO(b/223132917): Check if user is enabled, running and/or if quiet mode is enabled?
@@ -593,7 +597,7 @@ public final class SafetyCenterService extends SystemService {
 
         private boolean checkApiEnabled(@NonNull String message) {
             if (!isApiEnabled()) {
-                Log.w(TAG, String.format("Called %s, but Safety Center is disabled", message));
+                Log.w(TAG, "Called " + message + ", but Safety Center is disabled");
                 return false;
             }
             return true;
@@ -605,10 +609,11 @@ public final class SafetyCenterService extends SystemService {
                 @UserIdInt int userId) {
             if (!userProfileGroup.contains(userId)) {
                 throw new SecurityException(
-                        String.format(
-                                "%s requires target user id %s to be within the same profile group"
-                                        + " of the caller: %s",
-                                message, userId, userProfileGroup));
+                        message
+                                + " requires target user id "
+                                + userId
+                                + " to be within the same profile group of the caller: "
+                                + userProfileGroup);
             }
         }
 

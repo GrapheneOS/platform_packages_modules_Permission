@@ -209,15 +209,12 @@ public final class SafetyEvent implements Parcelable {
         return "SafetyEvent{"
                 + "mType="
                 + mType
-                + ", mRefreshBroadcastId='"
+                + ", mRefreshBroadcastId="
                 + mRefreshBroadcastId
-                + '\''
-                + ", mSafetySourceIssueId='"
+                + ", mSafetySourceIssueId="
                 + mSafetySourceIssueId
-                + '\''
-                + ", mSafetySourceIssueActionId='"
+                + ", mSafetySourceIssueActionId="
                 + mSafetySourceIssueActionId
-                + '\''
                 + '}';
     }
 
@@ -296,16 +293,12 @@ public final class SafetyEvent implements Parcelable {
                 case SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED:
                     if (mSafetySourceIssueId == null) {
                         throw new IllegalArgumentException(
-                                String.format(
-                                        "Missing issue id for resolving action safety event (%s)",
-                                        mType));
+                                "Missing issue id for resolving action safety event: " + mType);
                     }
                     if (mSafetySourceIssueActionId == null) {
                         throw new IllegalArgumentException(
-                                String.format(
-                                        "Missing issue action id for resolving action safety event "
-                                                + "(%s)",
-                                        mType));
+                                "Missing issue action id for resolving action safety event: "
+                                        + mType);
                     }
                     break;
                 case SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED:
@@ -330,7 +323,6 @@ public final class SafetyEvent implements Parcelable {
                 return value;
             default:
         }
-        throw new IllegalArgumentException(
-                String.format("Unexpected Type for SafetyEvent: %s", value));
+        throw new IllegalArgumentException("Unexpected Type for SafetyEvent: " + value);
     }
 }

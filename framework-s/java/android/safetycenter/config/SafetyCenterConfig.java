@@ -147,7 +147,7 @@ public final class SafetyCenterConfig implements Parcelable {
                 String groupId = safetySourcesGroup.getId();
                 if (safetySourcesGroupsIds.contains(groupId)) {
                     throw new IllegalStateException(
-                            String.format("Duplicate id %s among safety sources groups", groupId));
+                            "Duplicate id " + groupId + " among safety sources groups");
                 }
                 safetySourcesGroupsIds.add(groupId);
                 List<SafetySource> safetySources = safetySourcesGroup.getSafetySources();
@@ -157,7 +157,7 @@ public final class SafetyCenterConfig implements Parcelable {
                     String sourceId = staticSafetySource.getId();
                     if (safetySourceIds.contains(sourceId)) {
                         throw new IllegalStateException(
-                                String.format("Duplicate id %s among safety sources", sourceId));
+                                "Duplicate id " + sourceId + " among safety sources");
                     }
                     safetySourceIds.add(sourceId);
                 }
