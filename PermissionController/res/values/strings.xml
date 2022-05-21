@@ -1626,4 +1626,7 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <!-- TODO: b/231974769: Label for button to view recent location access [CHAR LIMIT=60] [DO NOT TRANSLATE]-->
     <string name="safety_center_view_recent_location_access">See recent location access</string>
 
+    <!-- Content description for close button of the security and privacy quick settings [CHAR LIMIT=NONE] -->
+    <string name="security_privacy_qs_close_button">Close</string>
+
 </resources>
