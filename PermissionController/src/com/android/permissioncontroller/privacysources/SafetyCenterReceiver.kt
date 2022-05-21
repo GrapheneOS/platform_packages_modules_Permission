@@ -28,11 +28,9 @@ import android.safetycenter.SafetyCenterManager.ACTION_SAFETY_CENTER_ENABLED_CHA
 import android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCE_IDS
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.PermissionControllerApplication
-import com.android.permissioncontroller.permission.service.LocationAccessCheck
 import com.android.permissioncontroller.permission.service.v33.SafetyCenterQsTileService
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.privacysources.WorkPolicyInfo.Companion.WORK_POLICY_INFO_SOURCE_ID
-
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Default
@@ -43,10 +41,8 @@ private fun createMapOfSourceIdsToSources(context: Context): Map<String, Privacy
         return emptyMap()
     }
     return mapOf(
-            SC_NLS_SOURCE_ID to NotificationListenerPrivacySource(),
-            WORK_POLICY_INFO_SOURCE_ID to WorkPolicyInfo.create(context),
-            LocationAccessCheck.BG_LOCATION_SOURCE_ID to LocationAccessPrivacySource()
-    )
+        SC_NLS_SOURCE_ID to NotificationListenerPrivacySource(),
+        WORK_POLICY_INFO_SOURCE_ID to WorkPolicyInfo.create(context))
 }
 
 class SafetyCenterReceiver(

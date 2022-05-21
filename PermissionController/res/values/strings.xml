@@ -1612,18 +1612,4 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="media_confirm_dialog_message_q_to_s_visual_allow">This app doesn\u2019t support the latest version of Android. If this app can access photos and videos, it will also be allowed to access music and audio files.</string>
     <!-- Message for media confirm dialog (when user denies visual group of q_to_s app) [CHAR LIMIT=NONE] -->
     <string name="media_confirm_dialog_message_q_to_s_visual_deny">This app doesn\u2019t support the latest version of Android. If this app can\u2019t access music and audio files, it also won\u2019t be allowed to access photos and videos.</string>
-
-    <!-- TODO: b/231974769: Title for background location access reminder notification [CHAR LIMIT=60] [DO NOT TRANSLATE] -->
-    <string name="safety_center_background_location_access_reminder_notification_title">Review app with background location access</string>
-    <!-- TODO: b/231974769: Content for background location access reminder notification [CHAR LIMIT=80] [DO NOT TRANSLATE]-->
-    <string name="safety_center_background_location_access_reminder_notification_content"><xliff:g id="app_name" example="Gmail">%s</xliff:g> can always access your location even when the app is closed.</string>
-    <!-- TODO: b/231974769: Title for background location access reminder warning card [CHAR LIMIT=80] [DO NOT TRANSLATE]-->
-    <string name="safety_center_background_location_access_reminder_title">An app has access to your location in the background</string>
-    <!-- TODO: b/231974769: Content for background location access reminder warning card [CHAR LIMIT=80] [DO NOT TRANSLATE]-->
-    <string name="safety_center_background_location_access_reminder_summary">This app can always access your location, even when closed.</string>
-    <!-- TODO: b/231974769: Success message when background location access permission is changed [CHAR LIMIT=40] [DO NOT TRANSLATE]-->
-    <string name="safety_center_background_location_access_revoked">Changed location access</string>
-    <!-- TODO: b/231974769: Label for button to view recent location access [CHAR LIMIT=60] [DO NOT TRANSLATE]-->
-    <string name="safety_center_view_recent_location_access">See recent location access</string>
-
 </resources>
