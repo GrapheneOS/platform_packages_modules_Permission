@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 The Android Open Source Project
+ * Copyright (C) 2021 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,6 @@
  */
 
 package com.android.permissioncontroller.safetycenter.ui;
-
-import static com.android.permissioncontroller.safetycenter.SafetyCenterConstants.QUICK_SETTINGS_SAFETY_CENTER_FRAGMENT;
 
 import static java.util.Objects.requireNonNull;
 
@@ -57,14 +55,14 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
     private static final String ENTRIES_GROUP_KEY = "entries_group";
     private static final String STATIC_ENTRIES_GROUP_KEY = "static_entries_group";
 
-    @Nullable private final ViewModelProvider.Factory mSafetyCenterViewModelFactoryOverride;
+    @Nullable
+    private final ViewModelProvider.Factory mSafetyCenterViewModelFactoryOverride;
 
     private SafetyStatusPreference mSafetyStatusPreference;
     private PreferenceGroup mIssuesGroup;
     private PreferenceGroup mEntriesGroup;
     private PreferenceGroup mStaticEntriesGroup;
     private SafetyCenterViewModel mViewModel;
-    private boolean mIsQuickSettingsFragment;
 
     public SafetyCenterDashboardFragment() {
         this(null);
@@ -86,26 +84,8 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
                 : new LiveSafetyCenterViewModelFactory(requireActivity().getApplication());
     }
 
-    /**
-     * Create instance of SafetyCenterDashboardFragment with the arguments set
-     *
-     * @param isQuickSettingsFragment Denoting if it is the quick settings fragment
-     * @return SafetyCenterDashboardFragment with the arguments set
-     */
-    public static SafetyCenterDashboardFragment newInstance(boolean isQuickSettingsFragment) {
-        Bundle args = new Bundle();
-        args.putBoolean(QUICK_SETTINGS_SAFETY_CENTER_FRAGMENT, isQuickSettingsFragment);
-        SafetyCenterDashboardFragment frag = new SafetyCenterDashboardFragment();
-        frag.setArguments(args);
-        return frag;
-    }
-
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        if (getArguments() != null) {
-            mIsQuickSettingsFragment =
-                    getArguments().getBoolean(QUICK_SETTINGS_SAFETY_CENTER_FRAGMENT, false);
-        }
         setPreferencesFromResource(R.xml.safety_center_dashboard, rootKey);
 
         mViewModel =
@@ -124,12 +104,6 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
         mIssuesGroup = getPreferenceScreen().findPreference(ISSUES_GROUP_KEY);
         mEntriesGroup = getPreferenceScreen().findPreference(ENTRIES_GROUP_KEY);
         mStaticEntriesGroup = getPreferenceScreen().findPreference(STATIC_ENTRIES_GROUP_KEY);
-        if (mIsQuickSettingsFragment) {
-            getPreferenceScreen().removePreference(mEntriesGroup);
-            mEntriesGroup = null;
-            getPreferenceScreen().removePreference(mStaticEntriesGroup);
-            mStaticEntriesGroup = null;
-        }
 
         mViewModel.getSafetyCenterLiveData().observe(this, this::renderSafetyCenterData);
         mViewModel.getErrorLiveData().observe(this, this::displayErrorDetails);
@@ -153,11 +127,10 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
 
         // TODO(b/208212820): Only update entries that have changed since last
         // update, rather than deleting and re-adding all.
+
         updateIssues(context, data.getIssues());
-        if (!mIsQuickSettingsFragment) {
-            updateSafetyEntries(context, data.getEntriesOrGroups());
-            updateStaticSafetyEntries(context, data.getStaticEntryGroups());
-        }
+        updateSafetyEntries(context, data.getEntriesOrGroups());
+        updateStaticSafetyEntries(context, data.getStaticEntryGroups());
     }
 
     private void displayErrorDetails(@Nullable SafetyCenterErrorDetails errorDetails) {
@@ -170,17 +143,9 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
     private void updateIssues(Context context, List<SafetyCenterIssue> issues) {
         mIssuesGroup.removeAll();
 
-        if (!mIsQuickSettingsFragment) {
-            issues.stream()
-                    .map(issue -> new IssueCardPreference(context, mViewModel, issue))
-                    .forEachOrdered(mIssuesGroup::addPreference);
-        } else if (issues.size() > 0) {
-            // Only show 1 issue in QS
-            SafetyCenterIssue issue = issues.get(0);
-            IssueCardPreference issueCardPreference =
-                    new IssueCardPreference(context, mViewModel, issue);
-            mIssuesGroup.addPreference(issueCardPreference);
-        }
+        issues.stream()
+                .map(issue -> new IssueCardPreference(context, mViewModel, issue))
+                .forEachOrdered(mIssuesGroup::addPreference);
     }
 
     // TODO(b/208212820): Add groups and move to separate controller
@@ -258,4 +223,5 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
             }
         }
     }
+
 }

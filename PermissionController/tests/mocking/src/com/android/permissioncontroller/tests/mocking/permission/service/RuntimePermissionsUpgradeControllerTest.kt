@@ -208,12 +208,10 @@ class RuntimePermissionsUpgradeControllerTest {
      */
     private fun upgradeIfNeeded() {
         val completionCallback = CompletableFuture<Unit>()
-        runWithShellPermissionIdentity {
-            RuntimePermissionsUpgradeController.upgradeIfNeeded(application, Runnable {
-                completionCallback.complete(Unit)
-            })
-            completionCallback.join()
-        }
+        RuntimePermissionsUpgradeController.upgradeIfNeeded(application, Runnable {
+            completionCallback.complete(Unit)
+        })
+        completionCallback.join()
     }
 
     private fun setInitialDatabaseVersion(initialVersion: Int) {
@@ -514,15 +512,5 @@ class RuntimePermissionsUpgradeControllerTest {
     ) : Package(name, permissions, true) {
         constructor(name: String, vararg permission: Permission) :
                 this(name, permission.toList())
-    }
-
-    private fun <R> runWithShellPermissionIdentity(block: () -> R): R {
-        val uiAutomation = InstrumentationRegistry.getInstrumentation().getUiAutomation()
-        uiAutomation.adoptShellPermissionIdentity()
-        try {
-            return block()
-        } finally {
-            uiAutomation.dropShellPermissionIdentity()
-        }
     }
 }
