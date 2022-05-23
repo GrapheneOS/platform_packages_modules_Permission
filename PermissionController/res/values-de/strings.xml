@@ -454,10 +454,10 @@
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf deinen Kalender zuzugreifen?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, SMS zu senden und aufzurufen?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf Fotos, Medien und Dateien auf deinem Gerät zuzugreifen?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Darf &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; auf &lt;b&gt;Foto-, Video-, Musik- und Audiodateien&lt;/b&gt; auf diesem Gerät zugreifen?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Darf &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; auf &lt;b&gt;Foto-, Video-, Musik-, Audio- und andere Dateien&lt;/b&gt; auf dem Gerät zugreifen?"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Darf &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; auf Musik- und Audiodateien auf diesem Gerät zugreifen?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Darf &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; auf Fotos und Videos auf diesem Gerät zugreifen?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf &lt;b&gt;Foto-, Video-, Musik- und Audiodateien&lt;/b&gt; auf diesem Gerät zuzugreifen?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf &lt;b&gt;Foto-, Video-, Musik-, Audio- und andere Dateien&lt;/b&gt; auf diesem Gerät zuzugreifen?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf Musik- und Audiodateien auf diesem Gerät zuzugreifen?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf Fotos und Videos auf diesem Gerät zuzugreifen?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, Audioaufnahmen zu machen?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Diese App kann nur Audioaufnahmen machen, solange du sie verwendest"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, Audioaufnahmen zu machen?"</string>

@@ -230,7 +230,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"इस अनुमति वाले ऐप्लिकेशन, फ़ोटो खींच सकते हैं और वीडियो रिकॉर्ड कर सकते हैं"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"इस अनुमति वाले ऐप्लिकेशन आपके संपर्कों को ऐक्सेस कर सकते हैं"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"जिन ऐप्लिकेशन के पास यह अनुमति होगी वे डिवाइस की जगह की जानकारी ऐक्सेस कर सकते हैं"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"ऐसे ऐप्लिकेशन जिन्हें यह अनुमति दी गई है, वे आस-पास मौजूद डिवाइसों को खोज सकते हैं, उनसे कनेक्ट कर सकते हैं, और उनकी जगह की जानकारी का पता लगा सकते हैं"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"जिन ऐप्लिकेशन के पास यह अनुमति है वे आस-पास मौजूद डिवाइसों को खोज सकते हैं, उनसे कनेक्ट कर सकते हैं, और उनकी जगह की जानकारी का पता लगा सकते हैं"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"इस अनुमति वाले ऐप्लिकेशन ऑडियो रिकॉर्ड कर सकते हैं"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"इस अनुमति वाले ऐप्लिकेशन, फ़ोन कॉल कर सकते हैं और कॉल को मैनेज कर सकते हैं"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"इस अनुमति वाले ऐप्लिकेशन, आपके बारे में खास जानकारी देने वाली चीज़ों को बताने वाले सेंसर डेटा को ऐक्सेस कर सकते हैं"</string>
