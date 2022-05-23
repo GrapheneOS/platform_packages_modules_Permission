@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.tests.mocking.permission.service.v33
+package com.android.permissioncontroller.tests.mocking.permission.service
 
 import android.app.job.JobScheduler
 import android.content.Context
@@ -26,8 +26,8 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.dx.mockito.inline.extended.ExtendedMockito
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.PermissionControllerApplication
-import com.android.permissioncontroller.permission.service.v33.PersistedStoragePackageUninstalledReceiver
-import com.android.permissioncontroller.tests.mocking.permission.data.v33.FakeEventStorage
+import com.android.permissioncontroller.permission.service.PersistedStoragePackageUninstalledReceiver
+import com.android.permissioncontroller.tests.mocking.permission.data.FakeEventStorage
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
