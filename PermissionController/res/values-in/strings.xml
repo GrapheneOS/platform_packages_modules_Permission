@@ -58,7 +58,7 @@
     <string name="review_permission_decisions" msgid="309559429150613632">"Keputusan izin terbaru"</string>
     <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Lihat semua keputusan izin terbaru"</string>
     <string name="review_permission_decisions_empty" msgid="8120775336417279806">"Tidak ada keputusan izin terbaru"</string>
-    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Mengelola akses data ke kalender, log panggilan, dan lainnya"</string>
+    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Kelola akses data ke kalender, log panggilan, dan lainnya"</string>
     <string name="granted_permission_decision" msgid="7824827491551861365">"Anda memberi <xliff:g id="APP_NAME">%1$s</xliff:g> akses ke <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="denied_permission_decision" msgid="5308961501779563781">"Anda menolak akses <xliff:g id="APP_NAME">%1$s</xliff:g> ke <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Hari ini}=1{1 hari lalu}other{# hari lalu}}"</string>
@@ -236,10 +236,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Aplikasi dengan izin ini dapat mengakses data sensor tentang tanda-tanda vital Anda"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Aplikasi dengan izin ini dapat mengirim dan menampilkan pesan SMS"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Aplikasi dengan izin ini dapat mengakses foto, media, dan file di perangkat Anda"</string>
-    <!-- no translation found for permission_description_summary_read_media_aural (3354728149930482199) -->
-    <skip />
-    <!-- no translation found for permission_description_summary_read_media_visual (4991801977881732641) -->
-    <skip />
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"Aplikasi yang memiliki izin ini dapat mengakses file musik dan audio lainnya di perangkat ini"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"Aplikasi yang memiliki izin ini dapat mengakses foto dan video di perangkat ini"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Akses terakhir: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Saat ini ditolak / Akses terakhir: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Tidak pernah mengakses"</string>
@@ -450,14 +448,10 @@
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses kalender?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengirim dan melihat SMS?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses foto, media, dan file di perangkat?"</string>
-    <!-- no translation found for permgrouprequest_storage_q_to_s (8213701872983685505) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_pre_q (168130651144569428) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_aural (2593365397347577812) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_visual (5548780620779729975) -->
-    <skip />
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses &lt;b&gt;foto, video, musik, dan audio&lt;/b&gt; di perangkat ini?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses &lt;b&gt;foto, video, musik, audio, dan file lainnya&lt;/b&gt; di perangkat ini?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses musik dan audio di perangkat ini?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses foto dan video di perangkat ini?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; merekam audio?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Aplikasi hanya dapat merekam audio saat aplikasi sedang digunakan"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; merekam audio?"</string>
