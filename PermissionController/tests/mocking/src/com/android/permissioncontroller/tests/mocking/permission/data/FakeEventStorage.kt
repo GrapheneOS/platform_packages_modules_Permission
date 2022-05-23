@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.tests.mocking.permission.data.v33
+package com.android.permissioncontroller.tests.mocking.permission.data
 
-import com.android.permissioncontroller.permission.data.v33.PermissionEvent
-import com.android.permissioncontroller.permission.service.v33.PermissionEventStorage
+import com.android.permissioncontroller.permission.data.PermissionEvent
+import com.android.permissioncontroller.permission.service.PermissionEventStorage
 
 /**
  * Fake event storage class used for tests
