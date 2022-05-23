@@ -181,7 +181,14 @@ public final class Utils {
     public static final String PROPERTY_PERMISSION_EVENTS_CHECK_OLD_FREQUENCY_MILLIS =
             "permission_events_check_old_frequency_millis";
 
-    /** The time an app needs to be unused in order to be hibernated */
+    /**
+     * Whether to store the exact time for permission changes. Only for use in tests and should
+     * not be modified in prod.
+     */
+    public static final String PROPERTY_PERMISSION_CHANGES_STORE_EXACT_TIME =
+            "permission_changes_store_exact_time";
+
+    /** The max amount of time permission data can stay in the storage before being scrubbed */
     public static final String PROPERTY_PERMISSION_DECISIONS_MAX_DATA_AGE_MILLIS =
             "permission_decisions_max_data_age_millis";
 
