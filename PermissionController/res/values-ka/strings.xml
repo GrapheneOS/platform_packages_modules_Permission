@@ -236,7 +236,7 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"ამ ნებართვის მქონე აპებს შეუძლიათ წვდომა სენსორის მონაცემებზე თქვენი სასიცოცხლო ფუნქციების შესახებ"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"ამ ნებართვის მქონე აპებს შეუძლიათ SMS შეტყობინებების გაგზავნა და ნახვა"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"ამ ნებართვის მქონე აპებს შეუძლიათ წვდომა თქვენს მოწყობილობაზე არსებულ ფოტოებზე, მედიაზე და ფაილებზე"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"ამ ნებართვის მქონე აპებს შეუძლიათ წვდომა ამ მოწყობილობის მუსიკასა და სხვა აუდიოფაილებზე"</string>
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"ამ ნებართვის მქონე აპებს შეუძლიათ წვდომა თქვენი მოწყობილობის მუსიკასა და სხვა აუდიოფაილებზე"</string>
     <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"ამ ნებართვის მქონე აპებს შეუძლიათ წვდომა ამ მოწყობილობის ფოტოებსა და ვიდეოებზე"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"ბოლო წვდომა: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"ამჟამად უარყოფილი / ბოლო წვდომა: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>

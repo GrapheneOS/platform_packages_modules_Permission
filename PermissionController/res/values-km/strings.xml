@@ -59,7 +59,7 @@
     <string name="review_permission_decisions_view_all" msgid="90391040431566130">"មើលការសម្រេចថ្មីៗលើការអនុញ្ញាតទាំងអស់"</string>
     <string name="review_permission_decisions_empty" msgid="8120775336417279806">"មិនមានការសម្រេចថ្មីៗលើការអនុញ្ញាតទេ"</string>
     <string name="auto_permission_manager_summary" msgid="9157438376234301354">"គ្រប់គ្រងការចូលប្រើទិន្នន័យនៃប្រតិទិន កំណត់ហេតុហៅទូរសព្ទ និងអ្វីៗជាច្រើនទៀត"</string>
-    <string name="granted_permission_decision" msgid="7824827491551861365">"អ្នកបានផ្ដល់សិទ្ធិឱ្យ <xliff:g id="APP_NAME">%1$s</xliff:g> ចូលប្រើ <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
+    <string name="granted_permission_decision" msgid="7824827491551861365">"អ្នកបានផ្ដល់សិទ្ធិឱ្យ <xliff:g id="APP_NAME">%1$s</xliff:g> ចូលប្រើ​<xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="denied_permission_decision" msgid="5308961501779563781">"អ្នកបានបដិសេធមិនឱ្យ <xliff:g id="APP_NAME">%1$s</xliff:g> ចូលប្រើ <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{ថ្ងៃនេះ}=1{1 ថ្ងៃមុន}other{# ថ្ងៃមុន}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"បិទកម្មវិធី"</string>
@@ -263,8 +263,8 @@
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{កម្មវិធី​ដែលមិនប្រើ​ចំនួន #}other{កម្មវិធី​ដែលមិនប្រើ​ចំនួន #}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"ការអនុញ្ញាត និងឯកសារបណ្ដោះអាសន្ន​ត្រូវបានលុបចេញ ហើយការជូនដំណឹងត្រូវបានបញ្ឈប់។ សូមចុច ដើម្បី​ពិនិត្យមើល។"</string>
     <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"ពិនិត្យមើល​ការអនុញ្ញាត​ថ្មីៗ"</string>
-    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"នៅពេល​បើកបរ អ្នកបានផ្ដល់​សិទ្ធិចូលប្រើ <xliff:g id="PERMISSION">%2$s</xliff:g> ដល់ <xliff:g id="APP">%1$s</xliff:g>"</string>
-    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"នៅពេល​បើកបរ អ្នកបានផ្ដល់​សិទ្ធិចូលប្រើ <xliff:g id="PERMISSION_1">%2$s</xliff:g> និង <xliff:g id="PERMISSION_2">%3$s</xliff:g> ដល់ <xliff:g id="APP">%1$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"នៅពេល​កំពុងបើកបរ អ្នកបានផ្ដល់​សិទ្ធិចូលប្រើ​<xliff:g id="PERMISSION">%2$s</xliff:g>​ទៅឱ្យ <xliff:g id="APP">%1$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"នៅពេល​កំពុងបើកបរ អ្នកបានផ្ដល់​សិទ្ធិចូលប្រើ​<xliff:g id="PERMISSION_1">%2$s</xliff:g> និង​<xliff:g id="PERMISSION_2">%3$s</xliff:g>​ទៅឱ្យ <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"នៅពេល​បើកបរ អ្នកបានផ្ដល់​សិទ្ធិចូលប្រើ​ចំនួន <xliff:g id="COUNT">%1$d</xliff:g> ដល់ <xliff:g id="APP">%2$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{នៅពេល​បើកបរ អ្នកបានផ្ដល់​សិទ្ធិចូលប្រើដល់ <xliff:g id="APP_0">%1$s</xliff:g> និង​កម្មវិធី # ទៀត}other{នៅពេល​បើកបរ អ្នកបានផ្ដល់​សិទ្ធិចូលប្រើដល់ <xliff:g id="APP_1">%1$s</xliff:g> និង​កម្មវិធី # ទៀត}}"</string>
     <string name="go_to_settings" msgid="1053735612211228335">"ចូលទៅការកំណត់"</string>

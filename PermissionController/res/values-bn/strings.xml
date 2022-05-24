@@ -456,8 +456,8 @@
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে আপনার ডিভাইসের ফটো, মিডিয়া এবং ফাইলে অ্যাক্সেস দেবেন?"</string>
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"এই ডিভাইসে &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে &lt;b&gt;ফটো, ভিডিও, মিউজিক এবং অডিও&lt;/b&gt; অ্যাক্সেসের অনুমতি দেবেন?"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"এই ডিভাইসে &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে &lt;b&gt;ফটো, ভিডিও, মিউজিক, অডিও ও অন্যান্য ফাইল&lt;/b&gt; অ্যাক্সেসের অনুমতি দেবেন?"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"এই ডিভাইসে &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে মিউজিক এবং অডিও ফাইল অ্যাক্সেসের অনুমতি দেবেন?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"এই ডিভাইসে &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে ফটো এবং ভিডিও অ্যাক্সেসের অনুমতি দেবেন?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"এই ডিভাইসে &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে মিউজিক ও অডিও ফাইল অ্যাক্সেসের অনুমতি দেবেন?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"এই ডিভাইসে &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে ফটো ও ভিডিও অ্যাক্সেসের অনুমতি দেবেন?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে অডিও রেকর্ড করার অনুমতি দেবেন?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"আপনি এই অ্যাপ ব্যবহার করার সময়েই শুধুমাত্র সেটি অডিও রেকর্ড করতে পারবে"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে অডিও রেকর্ড করার অনুমতি দিতে চান?"</string>
