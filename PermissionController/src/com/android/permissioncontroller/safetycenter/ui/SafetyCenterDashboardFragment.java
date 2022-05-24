@@ -39,6 +39,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceGroup;
+import androidx.preference.PreferenceScreen;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.safetycenter.ui.model.LiveSafetyCenterViewModelFactory;
@@ -89,6 +91,18 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
         return mSafetyCenterViewModelFactoryOverride != null
                 ? mSafetyCenterViewModelFactoryOverride
                 : new LiveSafetyCenterViewModelFactory(requireActivity().getApplication());
+    }
+
+    @Override
+    protected RecyclerView.Adapter onCreateAdapter(PreferenceScreen preferenceScreen) {
+        /* By default, the PreferenceGroupAdapter does setHasStableIds(true).
+         * Since each Preference is internally allocated with an auto-incremented ID,
+         * it does not allow us to gracefully update only changed preferences based on
+         * SafetyPreferenceComparisonCallback.
+         * In order to allow the list to track the changes we need to ignore the Preference IDs. */
+        RecyclerView.Adapter adapter = super.onCreateAdapter(preferenceScreen);
+        adapter.setHasStableIds(false);
+        return adapter;
     }
 
     @Override
@@ -245,7 +259,7 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
         mStaticEntriesGroup.removeAll();
 
         for (SafetyCenterStaticEntryGroup group : staticEntryGroups) {
-            PreferenceCategory category = new PreferenceCategory(context);
+            PreferenceCategory category = new ComparablePreferenceCategory(context);
             category.setTitle(group.getTitle());
             mStaticEntriesGroup.addPreference(category);
 

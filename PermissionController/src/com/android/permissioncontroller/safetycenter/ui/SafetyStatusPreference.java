@@ -18,6 +18,7 @@ package com.android.permissioncontroller.safetycenter.ui;
 
 import android.content.Context;
 import android.safetycenter.SafetyCenterStatus;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -25,6 +26,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.preference.Preference;
@@ -32,8 +34,10 @@ import androidx.preference.PreferenceViewHolder;
 
 import com.android.permissioncontroller.R;
 
+import java.util.Objects;
+
 /** Preference which displays a visual representation of {@link SafetyCenterStatus}. */
-public class SafetyStatusPreference extends Preference {
+public class SafetyStatusPreference extends Preference implements ComparablePreference {
     private static final String TAG = "SafetyStatusPreference";
 
     @Nullable private SafetyCenterStatus mStatus;
@@ -141,5 +145,17 @@ public class SafetyStatusPreference extends Preference {
                         String.format("Unexpected OverallSeverityLevel: %s", overallSeverityLevel));
                 return R.color.safety_center_button_info;
         }
+    }
+
+    @Override
+    public boolean isSameItem(@NonNull Preference preference) {
+        return preference instanceof SafetyStatusPreference
+                && TextUtils.equals(getKey(), preference.getKey());
+    }
+
+    @Override
+    public boolean hasSameContents(@NonNull Preference preference) {
+        return preference instanceof SafetyStatusPreference
+                && Objects.equals(mStatus, (((SafetyStatusPreference) preference).mStatus));
     }
 }

@@ -24,17 +24,17 @@
         android:order="-3"
         app:selectable="false" />
 
-    <PreferenceCategory
+    <com.android.permissioncontroller.safetycenter.ui.ComparablePreferenceCategory
         android:key="issues_group"
         android:layout="@layout/spaced_preference_category_no_label"
         app:selectable="false" />
 
-    <PreferenceCategory
+    <com.android.permissioncontroller.safetycenter.ui.ComparablePreferenceCategory
         android:key="entries_group"
         android:title="@string/safety_center_entries_category_title"
         app:selectable="false" />
 
-    <PreferenceCategory
+    <com.android.permissioncontroller.safetycenter.ui.ComparablePreferenceCategory
         android:key="static_entries_group"
         android:layout="@layout/spaced_preference_category_no_label"
         app:selectable="false" />

@@ -29,7 +29,7 @@ import androidx.preference.PreferenceViewHolder;
 import com.android.permissioncontroller.R;
 
 /** A preference that displays a visual representation of a {@link SafetyCenterEntry}. */
-public class SafetyGroupHeaderEntryPreference extends Preference {
+public class SafetyGroupHeaderEntryPreference extends Preference implements ComparablePreference {
 
     private static final String TAG = SafetyGroupHeaderEntryPreference.class.getSimpleName();
 
@@ -64,13 +64,15 @@ public class SafetyGroupHeaderEntryPreference extends Preference {
         }
     }
 
-    boolean isSameItem(Preference other) {
+    @Override
+    public boolean isSameItem(@NonNull Preference other) {
         return mId != null
                 && other instanceof SafetyGroupHeaderEntryPreference
                 && TextUtils.equals(mId, ((SafetyGroupHeaderEntryPreference) other).mId);
     }
 
-    boolean hasSameContents(Preference other) {
+    @Override
+    public boolean hasSameContents(@NonNull Preference other) {
         if (other instanceof SafetyGroupHeaderEntryPreference) {
             SafetyGroupHeaderEntryPreference o = (SafetyGroupHeaderEntryPreference) other;
             return TextUtils.equals(getTitle(), o.getTitle()) && mPosition == o.mPosition;

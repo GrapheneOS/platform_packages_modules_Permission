@@ -33,7 +33,7 @@ class MoreIssuesCardPreference(
     val numberOfHiddenIssues: Int,
     val firstHiddenIssueSeverityLevel: Int,
     val onClickListener: OnPreferenceClickListener
-) : Preference(context) {
+) : Preference(context), ComparablePreference {
 
     init {
         layoutResource = R.layout.preference_more_issues_card
@@ -68,6 +68,17 @@ class MoreIssuesCardPreference(
                 R.drawable.ic_safety_null_state
             }
         }
+    }
+
+    override fun isSameItem(preference: Preference): Boolean {
+        return preference is MoreIssuesCardPreference
+    }
+
+    override fun hasSameContents(preference: Preference): Boolean {
+        return preference is MoreIssuesCardPreference &&
+                numberOfHiddenIssues == preference.numberOfHiddenIssues &&
+                firstHiddenIssueSeverityLevel == preference.firstHiddenIssueSeverityLevel &&
+                preferencWidgetIconResourceId == preference.preferencWidgetIconResourceId
     }
 
     companion object {
