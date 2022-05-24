@@ -89,7 +89,7 @@ abstract class BasePermissionEventStorage<T : PermissionEvent>(
 
             val originalCount = existingEvents.size
             val newEvents = existingEvents.filter {
-                (System.currentTimeMillis() - it.eventTime) <= getMaxDataAgeMs()
+                return (System.currentTimeMillis() - it.eventTime) <= getMaxDataAgeMs()
             }
 
             DumpableLog.d(LOG_TAG,
