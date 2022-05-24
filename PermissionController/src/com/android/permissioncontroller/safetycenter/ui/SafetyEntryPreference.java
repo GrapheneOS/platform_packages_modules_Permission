@@ -89,6 +89,8 @@ public final class SafetyEntryPreference extends Preference implements Comparabl
                                 == SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON;
         holder.findViewById(R.id.icon_frame)
                 .setVisibility(hideIcon ? View.GONE : View.VISIBLE);
+        holder.findViewById(R.id.empty_space)
+                .setVisibility(hideIcon ? View.VISIBLE : View.GONE);
     }
 
     private static int selectIconResId(SafetyCenterEntry entry) {
