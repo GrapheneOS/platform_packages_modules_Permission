@@ -326,7 +326,7 @@ final class SafetyCenterDataTracker {
      * Returns a default {@link SafetyCenterData} object to be returned when the API is disabled.
      */
     @NonNull
-    static SafetyCenterData getDefaultSafetyCenterData() {
+    SafetyCenterData getDefaultSafetyCenterData() {
         return new SafetyCenterData(
                 new SafetyCenterStatus.Builder(
                                 getSafetyCenterStatusTitle(
@@ -1036,6 +1036,22 @@ final class SafetyCenterDataTracker {
     }
 
     /**
+     * Returns a {@link String} resource from the given {@code name}, using the {@link
+     * SafetyCenterResourcesContext}.
+     *
+     * <p>Returns an empty string if the resource cannot be accessed.
+     */
+    @NonNull
+    private String getStringByName(@NonNull String name) {
+        String value = mSafetyCenterResourcesContext.getStringByName(name);
+        if (value == null) {
+            Log.w(TAG, "String resource \"" + name + "\" not found");
+            return "";
+        }
+        return value;
+    }
+
+    /**
      * Returns a {@link String} resource from the given {@code stringId}, using the {@link
      * SafetyCenterResourcesContext}.
      *
@@ -1189,36 +1205,34 @@ final class SafetyCenterDataTracker {
         return SafetyCenterEntry.IconAction.ICON_ACTION_TYPE_INFO;
     }
 
-    // TODO(b/218801295): Use the right strings and localize them.
-    private static String getSafetyCenterStatusTitle(
+    private String getSafetyCenterStatusTitle(
             @SafetyCenterStatus.OverallSeverityLevel int overallSeverityLevel) {
         switch (overallSeverityLevel) {
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN:
-                return "Unknown";
+                return getStringByName("overall_severity_level_unknown_title");
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK:
-                return "All good";
+                return getStringByName("overall_severity_level_ok_title");
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_RECOMMENDATION:
-                return "Some warnings";
+                return getStringByName("overall_severity_level_recommendation_title");
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING:
-                return "Uh-oh";
+                return getStringByName("overall_severity_level_critical_warning_title");
         }
 
         Log.w(TAG, "Unexpected SafetyCenterStatus.OverallSeverityLevel: " + overallSeverityLevel);
         return "";
     }
 
-    // TODO(b/218801295): Use the right strings and localize them.
-    private static String getSafetyCenterStatusSummary(
+    private String getSafetyCenterStatusSummary(
             @SafetyCenterStatus.OverallSeverityLevel int overallSeverityLevel) {
         switch (overallSeverityLevel) {
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN:
-                return "Unknown safety status";
+                return getStringByName("overall_severity_level_unknown_summary");
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK:
-                return "No problemo maestro";
+                return getStringByName("overall_severity_level_ok_summary");
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_RECOMMENDATION:
-                return "Careful there";
+                return getStringByName("overall_severity_level_recommendation_summary");
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING:
-                return "Code red";
+                return getStringByName("overall_severity_level_critical_warning_summary");
         }
 
         Log.w(TAG, "Unexpected SafetyCenterStatus.OverallSeverityLevel: " + overallSeverityLevel);
