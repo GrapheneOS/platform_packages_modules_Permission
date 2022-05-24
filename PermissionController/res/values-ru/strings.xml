@@ -58,7 +58,7 @@
     <string name="review_permission_decisions" msgid="309559429150613632">"Действия с разрешениями"</string>
     <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Все недавние действия с разрешениями"</string>
     <string name="review_permission_decisions_empty" msgid="8120775336417279806">"Нет недавних действий с разрешениями"</string>
-    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Управление доступом к данным Календаря, Списка вызовов и др."</string>
+    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Управление доступом к календарю, списку вызовов и другим данным"</string>
     <string name="granted_permission_decision" msgid="7824827491551861365">"Вы предоставили приложению \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" доступ к разрешению \"<xliff:g id="PERMISSION_NAME">%2$s</xliff:g>\""</string>
     <string name="denied_permission_decision" msgid="5308961501779563781">"Вы запретили приложению \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" доступ к разрешению \"<xliff:g id="PERMISSION_NAME">%2$s</xliff:g>\""</string>
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Сегодня}=1{1 день назад}one{# день назад}few{# дня назад}many{# дней назад}other{# дня назад}}"</string>
@@ -236,8 +236,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Приложения с этим разрешением могут получать доступ к данным датчиков основных показателей жизнедеятельности."</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Приложения с этим разрешением могут отправлять и просматривать SMS-сообщения."</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Приложения с этим разрешением могут получать доступ к фотографиям, медиа и другим файлам на вашем устройстве."</string>
-    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"У приложений с этим разрешением будет доступ к музыке и другим аудиофайлам на устройстве"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"У приложений с этим разрешением будет доступ к фото и видео на устройстве"</string>
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"Приложения с этим разрешением могут получать доступ к музыке и другим аудиофайлам на устройстве."</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"Приложения с этим разрешением могут получать доступ к фото и видео на устройстве."</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Последний раз использовано: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Временно запрещено / Последний доступ: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Не использовалось"</string>
