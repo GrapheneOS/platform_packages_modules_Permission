@@ -71,8 +71,8 @@
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"ಆ್ಯಪ್ ಮಾಹಿತಿಯನ್ನು ತೆರೆಯಿರಿ"</string>
     <string name="additional_permissions_more" msgid="5681220714755304407">"{count,plural, =1{# ಇನ್ನಷ್ಟು}one{# ಇನ್ನಷ್ಟು}other{# ಇನ್ನಷ್ಟು}}"</string>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"ಈ ಆ್ಯಪ್‌ Android ನ ಹಳೆಯ ಆವೃತ್ತಿಗೆ ವಿನ್ಯಾಸಗೊಳಿಸಲಾಗಿತ್ತು. ಅನುಮತಿ ನಿರಾಕರಿಸುವಿಕೆ ಇನ್ನು ಮುಂದೆ ಉದ್ದೇಶಿಸಿದಂತೆ ಕಾರ್ಯನಿರ್ವಹಿಸದೆ ಇರುವುದಕ್ಕೆ ಇದು ಕಾರಣವಾಗಬಹುದು."</string>
-    <string name="storage_supergroup_warning_allow" msgid="103093462784523190">"ಈ ಆ್ಯಪ್‌ ಅನ್ನು Android ನ ಹಳೆಯ ಆವೃತ್ತಿಗೆ ವಿನ್ಯಾಸಗೊಳಿಸಲಾಗಿದೆ. ನೀವು ಈ ಅನುಮತಿಯನ್ನು ಅನುಮೋದಿಸಿದರೆ, ನಂತರ ಎಲ್ಲಾ ಸಂಗ್ರಹಣೆಗೆ (ಫೋಟೋಗಳು, ವೀಡಿಯೊಗಳು, ಸಂಗೀತ, ಆಡಿಯೊ ಮತ್ತು ಇತರ ಫೈಲ್‌ಗಳು ಸೇರಿದಂತೆ) ಪ್ರವೇಶವನ್ನು ಅನುಮತಿಸಲಾಗುತ್ತದೆ."</string>
-    <string name="storage_supergroup_warning_deny" msgid="6420765672683284347">"ಈ ಆ್ಯಪ್‌ ಅನ್ನು Android ನ ಹಳೆಯ ಆವೃತ್ತಿಗೆ ವಿನ್ಯಾಸಗೊಳಿಸಲಾಗಿದೆ. ನೀವು ಈ ಅನುಮತಿಯನ್ನು ನಿರಾಕರಿಸಿದರೆ, ನಂತರ ಎಲ್ಲಾ ಸಂಗ್ರಹಣೆಗೆ (ಫೋಟೋಗಳು, ವೀಡಿಯೊಗಳು, ಸಂಗೀತ, ಆಡಿಯೊ ಮತ್ತು ಇತರ ಫೈಲ್‌ಗಳು ಸೇರಿದಂತೆ) ಪ್ರವೇಶವನ್ನು ನಿರಾಕರಿಸಲಾಗುತ್ತದೆ."</string>
+    <string name="storage_supergroup_warning_allow" msgid="103093462784523190">"ಈ ಆ್ಯಪ್‌ ಅನ್ನು Android ನ ಹಳೆಯ ಆವೃತ್ತಿಗೆ ವಿನ್ಯಾಸಗೊಳಿಸಲಾಗಿದೆ. ನೀವು ಈ ಅನುಮತಿಯನ್ನು ಅನುಮೋದಿಸಿದರೆ, ನಂತರ ಎಲ್ಲಾ ಸಂಗ್ರಹಣೆಗೆ (ಫೋಟೋಗಳು, ವೀಡಿಯೊಗಳು, ಸಂಗೀತ, ಆಡಿಯೋ ಮತ್ತು ಇತರ ಫೈಲ್‌ಗಳು ಸೇರಿದಂತೆ) ಪ್ರವೇಶವನ್ನು ಅನುಮತಿಸಲಾಗುತ್ತದೆ."</string>
+    <string name="storage_supergroup_warning_deny" msgid="6420765672683284347">"ಈ ಆ್ಯಪ್‌ ಅನ್ನು Android ನ ಹಳೆಯ ಆವೃತ್ತಿಗೆ ವಿನ್ಯಾಸಗೊಳಿಸಲಾಗಿದೆ. ನೀವು ಈ ಅನುಮತಿಯನ್ನು ನಿರಾಕರಿಸಿದರೆ, ನಂತರ ಎಲ್ಲಾ ಸಂಗ್ರಹಣೆಗೆ (ಫೋಟೋಗಳು, ವೀಡಿಯೊಗಳು, ಸಂಗೀತ, ಆಡಿಯೋ ಮತ್ತು ಇತರ ಫೈಲ್‌ಗಳು ಸೇರಿದಂತೆ) ಪ್ರವೇಶವನ್ನು ನಿರಾಕರಿಸಲಾಗುತ್ತದೆ."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"ಅಪರಿಚಿತ ಕ್ರಿಯೆಯನ್ನು ಮಾಡಿ"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_1">%2$d</xliff:g> ರಲ್ಲಿ <xliff:g id="COUNT_0">%1$d</xliff:g> ಆ್ಯಪ್‌ಗಳನ್ನು ಅನುಮತಿಸಲಾಗಿದೆ"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> ಆ್ಯಪ್‌ಗಳನ್ನು ಅನುಮತಿಸಲಾಗಿದೆ"</string>
@@ -231,13 +231,13 @@
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು ನಿಮ್ಮ ಸಂಪರ್ಕಗಳನ್ನು ಪ್ರವೇಶಿಸಬಹುದು"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು ಈ ಸಾಧನದ ಸ್ಥಳವನ್ನು ಪ್ರವೇಶಿಸಬಹುದು"</string>
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು ಸಮೀಪದಲ್ಲಿರುವ ಸಾಧನಗಳನ್ನು ಹುಡುಕಬಹುದು, ಅವುಗಳಿಗೆ ಕನೆಕ್ಟ್ ಮಾಡಬಹುದು ಮತ್ತು ಅವುಗಳ ಸಂಬಂಧಿತ ಸ್ಥಾನವನ್ನು ನಿರ್ಧರಿಸಬಹುದು"</string>
-    <string name="permission_description_summary_microphone" msgid="630834800308329907">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು ಆಡಿಯೊ ರೆಕಾರ್ಡ್ ಮಾಡಬಹುದು"</string>
+    <string name="permission_description_summary_microphone" msgid="630834800308329907">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು ಆಡಿಯೋ ರೆಕಾರ್ಡ್ ಮಾಡಬಹುದು"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು ಫೋನ್ ಕರೆಗಳನ್ನು ಮಾಡಬಹುದು ಮತ್ತು ನಿರ್ವಹಿಸಬಹುದು"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು ನಿಮ್ಮ ಪ್ರಮುಖ ವೈದ್ಯಕೀಯ ಮಾಪನಗಳ ಕುರಿತ ಸೆನ್ಸರ್ ಡೇಟಾವನ್ನು ಪ್ರವೇಶಿಸಬಹುದು"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು SMS ಸಂದೇಶಗಳನ್ನು ಕಳುಹಿಸಬಹುದು ಮತ್ತು ವೀಕ್ಷಿಸಬಹುದು"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"ಈ ಅನುಮತಿಯ ಜೊತೆಗೆ ಆ್ಯಪ್‌ಗಳು ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿ ಫೋಟೋಗಳು, ಮಾಧ್ಯಮ ಮತ್ತು ಫೈಲ್‌ಗಳನ್ನು ಪ್ರವೇಶಿಸಬಹುದು"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿರುವ ಸಂಗೀತ ಮತ್ತು ಇತರ ಆಡಿಯೊ ಫೈಲ್‌ಗಳನ್ನು ಪ್ರವೇಶಿಸಬಹುದು"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿರುವ ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳನ್ನು ಪ್ರವೇಶಿಸಬಹುದು"</string>
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು ಈ ಸಾಧನದಲ್ಲಿನ ಸಂಗೀತ ಮತ್ತು ಇತರ ಆಡಿಯೋ ಫೈಲ್‌ಗಳನ್ನು ಪ್ರವೇಶಿಸಬಹುದು"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು ಈ ಸಾಧನದಲ್ಲಿನ ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳನ್ನು ಪ್ರವೇಶಿಸಬಹುದು"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"ಕೊನೆಯ ಪ್ರವೇಶ:<xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"ಪ್ರಸ್ತುತ ನಿರಾಕರಿಸಿರುವುದು / ಕೊನೆಯದಾಗಿ ಪ್ರವೇಶಿಸಿರುವುದು: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"ಎಂದಿಗೂ ಪ್ರವೇಶಿಸಿಲ್ಲ"</string>
@@ -455,11 +455,11 @@
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"ಎಸ್‌ಎಂಎಸ್‌ ಸಂದೇಶಗಳನ್ನು ಕಳುಹಿಸಲು ಮತ್ತು ವೀಕ್ಷಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"ಸಾಧನದಲ್ಲಿ ಫೋಟೋಗಳು, ಮಾಧ್ಯಮ, ಫೈಲ್‌ಗಳನ್ನು ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"ಈ ಸಾಧನದಲ್ಲಿರುವ &lt;b&gt;ಫೋಟೋಗಳು, ವೀಡಿಯೊಗಳು, ಸಂಗೀತ, ಆಡಿಯೊವನ್ನು&lt;/b&gt; ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೆ?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"ಈ ಸಾಧನದಲ್ಲಿರುವ &lt;b&gt;ಫೋಟೋಗಳು, ವೀಡಿಯೊಗಳು, ಸಂಗೀತ, ಆಡಿಯೊ, ಇತರ ಫೈಲ್‌ಗಳನ್ನು&lt;/b&gt; ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೆ?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"ಈ ಸಾಧನದಲ್ಲಿರುವ &lt;b&gt;ಫೋಟೋಗಳು, ವೀಡಿಯೊಗಳು, ಸಂಗೀತ, ಆಡಿಯೋ, ಇತರ ಫೈಲ್‌ಗಳನ್ನು&lt;/b&gt; ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೆ?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"ಈ ಸಾಧನದಲ್ಲಿರುವ ಸಂಗೀತ ಮತ್ತು ಆಡಿಯೊವನ್ನು ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೆ?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"ಈ ಸಾಧನದಲ್ಲಿರುವ ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳನ್ನು ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೆ?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"ಆಡಿಯೋ ರೆಕಾರ್ಡ್‌ ಮಾಡಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
-    <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"ನೀವು ಆ್ಯಪ್ ಬಳಸುತ್ತಿರುವಾಗ ಮಾತ್ರ ಆ್ಯಪ್‌ಗೆ ಆಡಿಯೊ ರೆಕಾರ್ಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗುತ್ತದೆ"</string>
+    <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"ನೀವು ಆ್ಯಪ್ ಬಳಸುತ್ತಿರುವಾಗ ಮಾತ್ರ ಆ್ಯಪ್‌ಗೆ ಆಡಿಯೋ ರೆಕಾರ್ಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗುತ್ತದೆ"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"ಆಡಿಯೋ ರೆಕಾರ್ಡ್‌ ಮಾಡಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಆ್ಯಪ್‌ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"ನೀವು ಈ ಆ್ಯಪ್ ಅನ್ನು ಬಳಸದಿರುವಾಗಲೂ ಸಹ, ಈ ಆ್ಯಪ್ ಯಾವಾಗಲೂ ಆಡಿಯೊವನ್ನು ರೆಕಾರ್ಡ್ ಮಾಡಲು ಬಯಸಬಹುದು. "<annotation id="link">"ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಅನುಮತಿಸಿ."</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಆ್ಯಪ್‌ಗಾಗಿ ಮೈಕ್ರೋಫೋನ್ ಪ್ರವೇಶವನ್ನು ಬದಲಾಯಿಸಬೇಕೆ?"</string>
