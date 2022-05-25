@@ -14,16 +14,17 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.service
+package com.android.permissioncontroller.permission.service.v33
 
-import android.annotation.SuppressLint
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.android.permissioncontroller.PermissionControllerApplication
-import com.android.permissioncontroller.permission.data.PermissionEvent
-import com.android.permissioncontroller.permission.service.v33.PermissionDecisionStorageImpl
+import com.android.permissioncontroller.permission.data.v33.PermissionEvent
 
 /**
  * Singleton of all supported [PermissionEventStorage] on the device.
  */
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class PermissionEventStorageImpls {
     companion object {
         @Volatile
@@ -34,10 +35,9 @@ class PermissionEventStorageImpls {
                 INSTANCE ?: createInstance().also { INSTANCE = it }
             }
 
-        @SuppressLint("NewApi")
         private fun createInstance(): List<PermissionEventStorage<out PermissionEvent>> {
+            // TODO(205642821): Add storage for permission change events
             val list = mutableListOf<PermissionEventStorage<out PermissionEvent>>()
-            list.add(PermissionChangeStorageImpl.getInstance())
             val context = PermissionControllerApplication.get().applicationContext
             if (PermissionDecisionStorageImpl.isRecordPermissionsSupported(context)) {
                 list.add(PermissionDecisionStorageImpl.getInstance())
