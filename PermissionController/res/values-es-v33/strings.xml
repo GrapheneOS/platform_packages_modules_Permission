@@ -17,8 +17,6 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="role_dialer_request_description" msgid="6188305064871543419">"Esta aplicación podrá enviarte notificaciones, y tendrá acceso a la cámara, a los contactos, al micrófono, al teléfono y a los SMS"</string>
-    <!-- no translation found for role_sms_request_description (1506966389698625395) -->
-    <skip />
-    <!-- no translation found for permission_description_summary_storage (1917071243213043858) -->
-    <skip />
+    <string name="role_sms_request_description" msgid="1506966389698625395">"Esta aplicación podrá enviarte notificaciones, y tendrá acceso a la cámara, a los contactos, a los archivos, al micrófono, al teléfono y a los SMS"</string>
+    <string name="permission_description_summary_storage" msgid="1917071243213043858">"Las aplicaciones que tienen este permiso pueden acceder a todos los archivos de este dispositivo"</string>
 </resources>
