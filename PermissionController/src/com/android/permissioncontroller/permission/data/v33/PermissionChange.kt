@@ -14,16 +14,19 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.data
+package com.android.permissioncontroller.permission.data.v33
+
+import android.os.Build
+import androidx.annotation.RequiresApi
 
 /**
- * A record of a permission event caused by the user.
- *
- * @param packageName package name of the app the event is for
- * @param eventTime the time of the event, in epoch time. Should be rounded to day-level
- * precision for user privacy.
+ * A record of the user changing permissions for the app but not including any information on what
+ * actual decision was made. This information is not included for privacy reasons and allows us to
+ * persist the data for longer periods of time than we'd be able to otherwise
+ * (e.g. [PermissionDecision]).
  */
-abstract class PermissionEvent(
-    open val packageName: String,
-    open val eventTime: Long
-)
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
+data class PermissionChange(
+    override val packageName: String,
+    override val eventTime: Long
+) : PermissionEvent(packageName, eventTime)
