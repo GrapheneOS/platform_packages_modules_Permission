@@ -21,4 +21,10 @@
     <string name="permission_description_summary_storage" msgid="1917071243213043858">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು ಈ ಸಾಧನದಲ್ಲಿರುವ ಎಲ್ಲಾ ಫೈಲ್‌ಗಳನ್ನು ಪ್ರವೇಶಿಸಬಹುದು"</string>
     <string name="work_policy_title" msgid="832967780713677409">"ನಿಮ್ಮ ಕೆಲಸದ ನೀತಿಯ ಮಾಹಿತಿ"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ನಿಮ್ಮ IT ನಿರ್ವಾಹಕರು ನಿರ್ವಹಿಸುತ್ತಾರೆ"</string>
+    <!-- no translation found for safety_center_more_issues_card_title (8599419758014246517) -->
+    <skip />
+    <!-- no translation found for safety_center_more_issues_status_icon_content_description (8597351743567707802) -->
+    <skip />
+    <!-- no translation found for safety_center_more_issues_expand_button_content_description (8997241228390831958) -->
+    <skip />
 </resources>
