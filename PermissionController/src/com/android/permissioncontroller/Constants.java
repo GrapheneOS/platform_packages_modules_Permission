@@ -21,7 +21,7 @@ import android.os.Build;
 import androidx.annotation.RequiresApi;
 
 import com.android.permissioncontroller.hibernation.HibernationJobService;
-import com.android.permissioncontroller.permission.service.PermissionEventCleanupJobService;
+import com.android.permissioncontroller.permission.service.v33.PermissionEventCleanupJobService;
 
 /**
  * App-global constants
