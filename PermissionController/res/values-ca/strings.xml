@@ -455,7 +455,7 @@
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; enviï i llegeixi missatges SMS?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi a fotos, contingut multimèdia i fitxers del dispositiu?"</string>
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi als &lt;b&gt;vídeos, fotos, música i àudio&lt;/b&gt; del dispositiu?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi a &lt;b&gt;vídeos, fotos, música, àudio i altres fitxers&lt;/b&gt;?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi als &lt;b&gt;vídeos, fotos, música, àudio i altres fitxers&lt;/b&gt;?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi a la música i l\'àudio d\'aquest dispositiu?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi a les fotos i els vídeos d\'aquest dispositiu?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; gravi àudio?"</string>

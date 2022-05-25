@@ -455,7 +455,7 @@
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; የኤስኤምኤስ መልዕክቶችን እንዲልክ እና እንዲመለከት ይፈቀድለት?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; በመሣሪያዎ ላይ ያሉ ፎቶዎችን፣ ማህደረ መረጃን እና ፋይሎችን እንዲደርስ ይፈቀድለት?"</string>
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; በመሣሪያዎ ላይ ያሉ &lt;b&gt;ፎቶዎችን፣ ቪዲዮዎችን፣ ሙዚቃን እና ኦዲዮን&lt;/b&gt; እንዲደርስ ይፈቀድለት?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; በመሣሪያዎ ላይ ያሉ &lt;b&gt;ፎቶዎችን፣ ቪዲዮዎችን፣ ሙዚቃን፣ ኦዲዮን፣ ቪዲዮዎችን እና ሌሎች ፋይሎችን&lt;/b&gt; እንዲደርስ ይፈቀድለት?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; በመሣሪያዎ ላይ ያሉ &lt;b&gt;ፎቶዎችን፣ ቪዲዮዎችን፣ ሙዚቃን፣ ኦዲዮን፣ ቪዲዮዎችን እና ሌሎች ፋይሎችን&lt;/b&gt; ዘንድ እንዲደርስ ይፈቀድለት?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; በዚህ መሣሪያ ላይ ያለ ሙዚቃን እና ሌሎች የኦዲዮ ፋይሎችን እንዲደርስ ይፈቀድለት?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; በዚህ መሣሪያ ላይ ያሉ ፎቶዎችን እና ቪዲዮዎችን እንዲደርስ ይፈቀድለት?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ኦዲዮን እንዲቀዳ ይፈቀድለት?"</string>
