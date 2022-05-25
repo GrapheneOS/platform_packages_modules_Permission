@@ -527,8 +527,8 @@
     <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"ଅନ୍ୟ ଫାଇଲଗୁଡ଼ିକୁ ମଧ୍ୟ ଆକ୍ସେସ କରିବା ପାଇଁ ଅନୁମତି ଦିଆଯିବ ନାହିଁ"</string>
     <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"ଫଟୋ ଏବଂ ଭିଡିଓଗୁଡ଼ିକୁ ମଧ୍ୟ ଆକ୍ସେସ କରିବା ପାଇଁ ଅନୁମତି ଦିଆଯିବ"</string>
     <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"ଫଟୋ ଏବଂ ଭିଡିଓଗୁଡ଼ିକୁ ମଧ୍ୟ ଆକ୍ସେସ କରିବା ପାଇଁ ଅନୁମତି ଦିଆଯିବ ନାହିଁ"</string>
-    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"ମ୍ୟୁଜିକ ଏବଂ ଅଡ଼ିଓ ଫାଇଲଗୁଡ଼ିକୁ ମଧ୍ୟ ଆକ୍ସେସ କରିବା ପାଇଁ ଅନୁମତି ଦିଆଯିବ"</string>
-    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"ମ୍ୟୁଜିକ ଏବଂ ଅଡ଼ିଓ ଫାଇଲଗୁଡ଼ିକୁ ମଧ୍ୟ ଆକ୍ସେସ କରିବା ପାଇଁ ଅନୁମତି ଦିଆଯିବ ନାହିଁ"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"ମ୍ୟୁଜିକ ଏବଂ ଅଡିଓ ଫାଇଲଗୁଡ଼ିକୁ ମଧ୍ୟ ଆକ୍ସେସ କରିବା ପାଇଁ ଅନୁମତି ଦିଆଯିବ"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"ମ୍ୟୁଜିକ ଏବଂ ଅଡିଓ ଫାଇଲଗୁଡ଼ିକୁ ମଧ୍ୟ ଆକ୍ସେସ କରିବା ପାଇଁ ଅନୁମତି ଦିଆଯିବ ନାହିଁ"</string>
     <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"ଏହି ଆପ Androidର ନବୀନତମ ସଂସ୍କରଣକୁ ସମର୍ଥନ କରେ ନାହିଁ। ଯଦି ଏହି ଆପ ମ୍ୟୁଜିକ ଏବଂ ଅଡିଓ ଫାଇଲଗୁଡ଼ିକୁ ଆକ୍ସେସ କରିପାରିବ, ତେବେ ଫଟୋ, ଭିଡିଓ ଏବଂ ଅନ୍ୟ ଫାଇଲଗୁଡ଼ିକୁ ମଧ୍ୟ ଆକ୍ସେସ କରିବା ପାଇଁ ଏହାକୁ ଅନୁମତି ଦିଆଯିବ।"</string>
     <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"ଏହି ଆପ Androidର ନବୀନତମ ସଂସ୍କରଣକୁ ସମର୍ଥନ କରେ ନାହିଁ। ଯଦି ଏହି ଆପ ମ୍ୟୁଜିକ ଏବଂ ଅଡିଓ ଫାଇଲଗୁଡ଼ିକୁ ଆକ୍ସେସ କରିପାରିବ ନାହିଁ, ତେବେ ଫଟୋ, ଭିଡିଓ ଏବଂ ଅନ୍ୟ ଫାଇଲଗୁଡ଼ିକୁ ମଧ୍ୟ ଆକ୍ସେସ କରିବା ପାଇଁ ଏହାକୁ ଅନୁମତି ଦିଆଯିବ ନାହିଁ।"</string>
     <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"ଏହି ଆପ Androidର ନବୀନତମ ସଂସ୍କରଣକୁ ସମର୍ଥନ କରେ ନାହିଁ। ଯଦି ଏହି ଆପ ଫଟୋ ଏବଂ ଭିଡିଓଗୁଡ଼ିକୁ ଆକ୍ସେସ କରିପାରିବ, ତେବେ ମ୍ୟୁଜିକ, ଅଡିଓ ଏବଂ ଅନ୍ୟ ଫାଇଲଗୁଡ଼ିକୁ ମଧ୍ୟ ଆକ୍ସେସ କରିବା ପାଇଁ ଏହାକୁ ଅନୁମତି ଦିଆଯିବ।"</string>
