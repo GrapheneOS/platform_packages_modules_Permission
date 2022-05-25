@@ -454,8 +454,8 @@
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问您的日历吗？"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;发送和查看短信吗？"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"要允许“<xliff:g id="APP_NAME">%1$s</xliff:g>”&lt;b&gt;&lt;/b&gt;访问您设备上的照片、媒体内容和文件吗？"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问此设备上的&lt;b&gt;照片、视频、音乐和音频&lt;/b&gt;？"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问此设备上的&lt;b&gt;照片、视频、音乐、音频和其他文件&lt;/b&gt;？"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"要允许“&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;”访问此设备上的&lt;b&gt;照片、视频、音乐和音频&lt;/b&gt;吗？"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"要允许“&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;”访问此设备上的&lt;b&gt;照片、视频、音乐、音频和其他文件&lt;/b&gt;吗？"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问此设备上的音乐和音频？"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问此设备上的照片和视频？"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;录音吗？"</string>
@@ -531,14 +531,14 @@
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"查看状态"</string>
     <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"确认"</string>
     <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"返回"</string>
-    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"也将能够访问其他文件"</string>
-    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"也将无法访问其他文件"</string>
-    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"也将能够访问其他文件"</string>
-    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"也将无法访问其他文件"</string>
-    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"也将能够访问照片和视频"</string>
-    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"也将无法访问照片和视频"</string>
-    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"也将能够访问音乐和音频文件"</string>
-    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"也将无法访问音乐和音频文件"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"同时也将允许访问其他文件"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"同时也会禁止访问其他文件"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"同时也将允许访问其他文件"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"同时也会禁止访问其他文件"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"同时也将允许访问照片和视频"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"同时也会禁止访问照片和视频"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"同时也将允许访问音乐和音频文件"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"同时也会禁止访问音乐和音频文件"</string>
     <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"此应用不支持最新版 Android 系统。如果此应用能够访问音乐和音频文件，那么它也将能够访问照片、视频和其他文件。"</string>
     <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"此应用不支持最新版 Android 系统。如果此应用无法访问音乐和音频文件，那么它也将无法访问照片、视频和其他文件。"</string>
     <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"此应用不支持最新版 Android 系统。如果此应用能够访问照片和视频，那么它也将能够访问音乐、音频和其他文件。"</string>

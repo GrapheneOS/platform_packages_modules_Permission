@@ -532,13 +532,13 @@
     <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"Подтвердить"</string>
     <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"Назад"</string>
     <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"Будет предоставлен доступ и к другим файлам"</string>
-    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"Доступ к другим файлам не будет предоставлен"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"Доступа к другим файлам тоже не будет"</string>
     <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"Будет предоставлен доступ и к другим файлам"</string>
-    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"Доступ к другим файлам не будет предоставлен"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"Доступа к другим файлам тоже не будет"</string>
     <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"Будет предоставлен доступ к фотографиям и видео"</string>
-    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"Доступ к фотографиям и видео не будет предоставлен"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"Доступа к фотографиям и видео тоже не будет"</string>
     <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"Будет предоставлен доступ к музыке и аудиофайлам"</string>
-    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"Доступ к музыке и аудиофайлам не будет предоставлен"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"Доступа к музыке и аудиофайлам тоже не будет"</string>
     <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"Это приложение не поддерживает последнюю версию Android. Если у него есть доступ к музыке и аудиофайлам, ему также будет предоставлен доступ к фотографиям, видео и другому контенту."</string>
     <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"Это приложение не поддерживает последнюю версию Android. Если у него нет доступа к музыке и аудиофайлам, у него также не будет доступа к фотографиям, видео и другому контенту."</string>
     <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"Это приложение не поддерживает последнюю версию Android. Если у него есть доступ к фотографиям и видео, ему также будет предоставлен доступ к музыке, аудиофайлам и другому контенту."</string>
