@@ -256,14 +256,11 @@ class GrantPermissionsViewModel(
 
                 val states = groupStates.filter { it.key.first == groupName }
                 if (states.isNotEmpty()) {
-                    // some requests might have been granted, check for that
-                    // TODO(b/205888750): remove isRuntimePermReview line once confident in
-                    //  REVIEW_REQUIRED flag setting
                     for ((key, state) in states) {
                         val allAffectedGranted = state.affectedPermissions.all { perm ->
                             appPermGroup.permissions[perm]?.isGrantedIncludingAppOp == true &&
                                 appPermGroup.permissions[perm]?.isRevokeWhenRequested == false
-                        } && !appPermGroup.isRuntimePermReviewRequired
+                        }
                         if (allAffectedGranted) {
                             groupStates[key]!!.state = STATE_ALLOWED
                         }
@@ -722,11 +719,8 @@ class GrantPermissionsViewModel(
             return STATE_SKIPPED
         }
 
-        // TODO(b/205888750): remove isRuntimePermReview line once confident in
-        //  REVIEW_REQUIRED flag setting
         if ((isBackground && group.background.isGrantedExcludeRevokeWhenRequestedPermissions ||
-            !isBackground && group.foreground.isGrantedExcludeRevokeWhenRequestedPermissions) &&
-            !group.isRuntimePermReviewRequired) {
+            !isBackground && group.foreground.isGrantedExcludeRevokeWhenRequestedPermissions)) {
             // If FINE location is not granted, do not grant it automatically when COARSE
             // location is already granted.
             if (group.permGroupName == LOCATION &&
@@ -752,11 +746,6 @@ class GrantPermissionsViewModel(
             } else {
                 STATE_ALLOWED
             }
-        } else if (group.isRuntimePermReviewRequired) {
-            // TODO(b/205888750): uncomment line if it is deemed necessary to deal with bad flag
-            // state
-            // KotlinUtils.setGroupFlags(app, group, FLAG_PERMISSION_REVIEW_REQUIRED to false,
-            //    filterPermissions = listOf(perm))
         }
         return STATE_UNKNOWN
     }
