@@ -33,6 +33,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Binder;
+import android.os.Handler;
 import android.provider.DeviceConfig;
 import android.provider.DeviceConfig.OnPropertiesChangedListener;
 import android.safetycenter.IOnSafetyCenterDataChangedListener;
@@ -61,6 +62,7 @@ import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 import com.android.server.SystemService;
 
 import java.time.Duration;
+import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -100,6 +102,9 @@ public final class SafetyCenterService extends SystemService {
     private static final Duration RESOLVING_ACTION_TIMEOUT = Duration.ofSeconds(10);
 
     private final Object mApiLock = new Object();
+
+    @GuardedBy("mApiLock")
+    private final SafetyCenterTimeouts mSafetyCenterTimeouts = new SafetyCenterTimeouts();
 
     @GuardedBy("mApiLock")
     private final SafetyCenterListeners mSafetyCenterListeners = new SafetyCenterListeners();
@@ -278,11 +283,11 @@ public final class SafetyCenterService extends SystemService {
                 refreshBroadcastId =
                         mSafetyCenterRefreshTracker.reportRefreshInProgress(
                                 refreshReason, userProfileGroup);
-            }
 
-            RefreshTimeout refreshTimeout =
-                    new RefreshTimeout(refreshBroadcastId, userProfileGroup);
-            BackgroundThread.getHandler().postDelayed(refreshTimeout, REFRESH_TIMEOUT.toMillis());
+                RefreshTimeout refreshTimeout =
+                        new RefreshTimeout(refreshBroadcastId, userProfileGroup);
+                mSafetyCenterTimeouts.add(refreshTimeout, REFRESH_TIMEOUT);
+            }
 
             mSafetyCenterBroadcastDispatcher.sendRefreshSafetySources(
                     broadcasts, refreshBroadcastId, refreshReason, userProfileGroup);
@@ -482,9 +487,7 @@ public final class SafetyCenterService extends SystemService {
                             safetyCenterIssueActionId);
                     ResolvingActionTimeout resolvingActionTimeout =
                             new ResolvingActionTimeout(safetyCenterIssueActionId, userProfileGroup);
-                    BackgroundThread.getHandler()
-                            .postDelayed(
-                                    resolvingActionTimeout, RESOLVING_ACTION_TIMEOUT.toMillis());
+                    mSafetyCenterTimeouts.add(resolvingActionTimeout, RESOLVING_ACTION_TIMEOUT);
                     deliverListenersUpdateLocked(userProfileGroup, true, null);
                 }
             }
@@ -501,6 +504,7 @@ public final class SafetyCenterService extends SystemService {
 
             synchronized (mApiLock) {
                 mSafetyCenterDataTracker.clear();
+                mSafetyCenterTimeouts.clear();
                 // TODO(b/223550097): Should we dispatch a new listener update here? This call can
                 //  modify the SafetyCenterData.
             }
@@ -519,6 +523,7 @@ public final class SafetyCenterService extends SystemService {
             synchronized (mApiLock) {
                 mSafetyCenterConfigReader.setConfigOverrideForTests(safetyCenterConfig);
                 mSafetyCenterDataTracker.clear();
+                mSafetyCenterTimeouts.clear();
                 // TODO(b/223550097): Should we clear the listeners here? Or should we dispatch a
                 //  new listener update since the SafetyCenterData will have changed?
             }
@@ -536,6 +541,7 @@ public final class SafetyCenterService extends SystemService {
             synchronized (mApiLock) {
                 mSafetyCenterConfigReader.clearConfigOverrideForTests();
                 mSafetyCenterDataTracker.clear();
+                mSafetyCenterTimeouts.clear();
                 // TODO(b/223550097): Should we clear the listeners here? Or should we dispatch a
                 //  new listener update since the SafetyCenterData will have changed?
             }
@@ -668,6 +674,7 @@ public final class SafetyCenterService extends SystemService {
             synchronized (mApiLock) {
                 broadcasts = mSafetyCenterConfigReader.getBroadcasts();
                 mSafetyCenterDataTracker.clear();
+                mSafetyCenterTimeouts.clear();
                 mSafetyCenterListeners.clear();
             }
 
@@ -690,6 +697,7 @@ public final class SafetyCenterService extends SystemService {
         @Override
         public void run() {
             synchronized (mApiLock) {
+                mSafetyCenterTimeouts.remove(this);
                 boolean hasClearedRefresh =
                         mSafetyCenterRefreshTracker.clearRefresh(mRefreshBroadcastId);
                 if (!hasClearedRefresh) {
@@ -720,6 +728,7 @@ public final class SafetyCenterService extends SystemService {
         @Override
         public void run() {
             synchronized (mApiLock) {
+                mSafetyCenterTimeouts.remove(this);
                 boolean safetyCenterDataHasChanged =
                         mSafetyCenterDataTracker.unmarkSafetyCenterIssueActionAsInFlight(
                                 mSafetyCenterIssueActionId);
@@ -731,6 +740,46 @@ public final class SafetyCenterService extends SystemService {
                         true,
                         // TODO(b/229080761): Implement proper error message.
                         new SafetyCenterErrorDetails("Resolving action timeout"));
+            }
+        }
+    }
+
+    /**
+     * A wrapper class to track the timeouts that are currently in flight.
+     *
+     * <p>This class isn't thread safe. Thread safety must be handled by the caller.
+     */
+    @NotThreadSafe
+    private static final class SafetyCenterTimeouts {
+
+        /**
+         * The maximum number of timeouts we are tracking at a given time. This is to avoid having
+         * the {@code mTimeouts} queue grow unbounded. In practice, we should never have more than 1
+         * or 2 timeouts in flight.
+         */
+        private static final int MAX_TRACKED = 10;
+
+        private final ArrayDeque<Runnable> mTimeouts = new ArrayDeque<>(MAX_TRACKED);
+        private final Handler mBackgroundHandler = BackgroundThread.getHandler();
+
+        SafetyCenterTimeouts() {}
+
+        private void add(@NonNull Runnable timeoutAction, @NonNull Duration timeoutDuration) {
+            if (mTimeouts.size() + 1 >= MAX_TRACKED) {
+                remove(mTimeouts.pollFirst());
+            }
+            mTimeouts.addLast(timeoutAction);
+            mBackgroundHandler.postDelayed(timeoutAction, timeoutDuration.toMillis());
+        }
+
+        private void remove(@NonNull Runnable timeoutAction) {
+            mTimeouts.remove(timeoutAction);
+            mBackgroundHandler.removeCallbacks(timeoutAction);
+        }
+
+        private void clear() {
+            while (!mTimeouts.isEmpty()) {
+                mBackgroundHandler.removeCallbacks(mTimeouts.pollFirst());
             }
         }
     }
