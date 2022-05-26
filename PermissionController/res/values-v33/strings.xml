@@ -28,4 +28,12 @@
     <string name="work_policy_title" >Your work policy info</string>
     <!-- Summary for the "Your Work Policy" for Advanced Settings in Safety Center for managed devices. [CHAR LIMIT=NONE]-->
     <string name="work_policy_summary">Settings managed by your IT admin</string>
+
+    <!-- Title for the "See all alerts"/"More issues" card in Safety Center [CHAR LIMIT=NONE]-->
+    <string name="safety_center_more_issues_card_title">See all alerts</string>
+    <!-- TODO(b/222126828): Update More Issues card status icon content description -->
+    <!-- Content description for the "See all alerts"/"More issues" card overall status icon in Safety Center[CHAR LIMIT=NONE] -->
+    <string name="safety_center_more_issues_status_icon_content_description">See all alerts</string>
+    <!-- Content description for the "See all alerts"/"More issues" card buttons and icons in Safety Center[CHAR LIMIT=NONE] -->
+    <string name="safety_center_more_issues_expand_button_content_description">See all alerts</string>
 </resources>

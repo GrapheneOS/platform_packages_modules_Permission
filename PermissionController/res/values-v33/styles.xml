@@ -144,6 +144,20 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="SafetyCenter.IssueCard.MoreIssues"
+           parent="@style/SafetyCenter.IssueCard">
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+        <item name="android:background">@drawable/safety_center_more_issues_card_background</item>
+    </style>
+
+    <style name="SafetyCenter.IssueCard.MoreIssues.Title"
+           parent="@android:style/TextAppearance.DeviceDefault">
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineHeight">20sp</item>
+    </style>
+
     <style name="IndicatorCardView"
            xmlns:card_view="http://schemas.android.com/apk/res-auto"
            xmlns:app="http://schemas.android.com/apk/res-auto" >

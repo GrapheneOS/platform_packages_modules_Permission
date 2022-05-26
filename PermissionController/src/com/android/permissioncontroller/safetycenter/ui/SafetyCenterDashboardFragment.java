@@ -32,6 +32,7 @@ import android.safetycenter.SafetyCenterStatus;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 import androidx.lifecycle.ViewModelProvider;
@@ -44,6 +45,9 @@ import com.android.permissioncontroller.safetycenter.ui.model.LiveSafetyCenterVi
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
+import kotlin.Unit;
 
 /** Dashboard fragment for the Safety Center. */
 public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompat {
@@ -54,15 +58,18 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
     private static final String ISSUES_GROUP_KEY = "issues_group";
     private static final String ENTRIES_GROUP_KEY = "entries_group";
     private static final String STATIC_ENTRIES_GROUP_KEY = "static_entries_group";
+    private static final String EXPAND_ISSUE_GROUP_SAVED_INSTANCE_STATE_KEY =
+            "expand_issue_group_saved_instance_state_key";
 
-    @Nullable
-    private final ViewModelProvider.Factory mSafetyCenterViewModelFactoryOverride;
+    @Nullable private final ViewModelProvider.Factory mSafetyCenterViewModelFactoryOverride;
 
     private SafetyStatusPreference mSafetyStatusPreference;
     private PreferenceGroup mIssuesGroup;
     private PreferenceGroup mEntriesGroup;
     private PreferenceGroup mStaticEntriesGroup;
     private SafetyCenterViewModel mViewModel;
+
+    private boolean mExpandIssuesGroup = false;
 
     public SafetyCenterDashboardFragment() {
         this(null);
@@ -88,6 +95,12 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.safety_center_dashboard, rootKey);
 
+        if (savedInstanceState != null) {
+            mExpandIssuesGroup =
+                    savedInstanceState.getBoolean(
+                            EXPAND_ISSUE_GROUP_SAVED_INSTANCE_STATE_KEY, false);
+        }
+
         mViewModel =
                 new ViewModelProvider(requireActivity(), getSafetyCenterViewModelFactory())
                         .get(SafetyCenterViewModel.class);
@@ -111,6 +124,12 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
 
         getPreferenceManager()
                 .setPreferenceComparisonCallback(new SafetyPreferenceComparisonCallback());
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(EXPAND_ISSUE_GROUP_SAVED_INSTANCE_STATE_KEY, mExpandIssuesGroup);
     }
 
     private void renderSafetyCenterData(@Nullable SafetyCenterData data) {
@@ -144,9 +163,20 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
     private void updateIssues(Context context, List<SafetyCenterIssue> issues) {
         mIssuesGroup.removeAll();
 
-        issues.stream()
-                .map(issue -> new IssueCardPreference(context, mViewModel, issue))
-                .forEachOrdered(mIssuesGroup::addPreference);
+        List<IssueCardPreference> issueCardPreferenceList =
+                issues.stream()
+                        .map(issue -> new IssueCardPreference(context, mViewModel, issue))
+                        .collect(Collectors.toUnmodifiableList());
+        CollapsableIssuesCardHelper issueCardHelper =
+                new CollapsableIssuesCardHelper(
+                        context,
+                        issueCardPreferenceList,
+                        mExpandIssuesGroup,
+                        () -> {
+                            mExpandIssuesGroup = true;
+                            return Unit.INSTANCE;
+                        });
+        issueCardHelper.addIssues(mIssuesGroup);
     }
 
     // TODO(b/208212820): Add groups and move to separate controller
@@ -224,5 +254,4 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
             }
         }
     }
-
 }
