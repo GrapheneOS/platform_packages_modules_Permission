@@ -23,6 +23,7 @@ import android.os.Build.VERSION_CODES.TIRAMISU
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.cts.testing.Coroutines.TIMEOUT_SHORT
 import android.safetycenter.cts.testing.SafetyCenterActivityLauncher.launchSafetyCenterActivity
+import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.getSafetyCenterConfigWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.isSafetyCenterEnabledWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.setSafetyCenterConfigForTestsWithPermission
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_CONFIG
@@ -119,5 +120,12 @@ class SafetyCenterUnsupportedTest {
             SafetySourceReceiver.setSafetyCenterEnabledWithReceiverPermissionAndWait(
                 false, TIMEOUT_SHORT)
         }
+    }
+
+    @Test
+    fun getSafetyCenterConfig_isNull() {
+        val config = safetyCenterManager.getSafetyCenterConfigWithPermission()
+
+        assertThat(config).isNull()
     }
 }

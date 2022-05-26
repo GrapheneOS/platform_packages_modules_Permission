@@ -40,8 +40,8 @@ class SafetyCenterCtsHelper(private val context: Context) {
 
     private val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)!!
     private val safetyCenterFlagsSnapshot = SafetyCenterFlags.snapshot
-    private val enabledChangedReceivers = mutableListOf<SafetyCenterEnabledChangedReceiver>()
     private val listeners = mutableListOf<SafetyCenterCtsListener>()
+    private val enabledChangedReceivers = mutableListOf<SafetyCenterEnabledChangedReceiver>()
 
     private var currentConfigContainsCtsSource = false
 

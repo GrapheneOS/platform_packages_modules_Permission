@@ -767,11 +767,19 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    fun getSafetyCenterConfig_isNotNull() {
+    fun getSafetyCenterConfig_withFlagEnabled_isNotNull() {
         val config = safetyCenterManager.getSafetyCenterConfigWithPermission()
 
         assertThat(config).isNotNull()
-        assertThat(config).isNotEqualTo(SINGLE_SOURCE_CONFIG)
+    }
+
+    @Test
+    fun getSafetyCenterConfig_withFlagDisabled_isNotNull() {
+        safetyCenterCtsHelper.setEnabled(false)
+
+        val config = safetyCenterManager.getSafetyCenterConfigWithPermission()
+
+        assertThat(config).isNotNull()
     }
 
     @Test
