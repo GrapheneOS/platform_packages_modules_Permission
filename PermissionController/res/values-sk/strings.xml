@@ -449,7 +449,7 @@
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; odosielať a zobrazovať správy SMS?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k fotkám, médiám a súborom v zariadení?"</string>
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k &lt;b&gt;fotkám, videám, hudbe a zvuku&lt;/b&gt; v tomto zariadení?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Povoliť ap. &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k &lt;b&gt;fotkám, videám, hudbe, zvuku a ďalším súborom&lt;/b&gt; v tomto zar.?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k &lt;b&gt;fotkám, videám, hudbe, zvuku a ďalším súborom&lt;/b&gt; v tomto zariadení?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k hudbe a zvuku v tomto zariadení?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k fotkám a videám v tomto zariadení?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; nahrávať zvuk?"</string>
@@ -528,7 +528,7 @@
     <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"Bude povolený aj prístup k fotkám a videám"</string>
     <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"Nebude povolený ani prístup k fotkám a videám"</string>
     <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"Bude povolený aj prístup k hudobným a zvukovým súborom"</string>
-    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"Nebude povolený ani prístup k ďalším hudobným a zvukovým súborom"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"Nebude povolený ani prístup k hudobným a zvukovým súborom"</string>
     <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"Táto aplikácia nepodporuje najnovšiu verziu Androidu. Ak má táto aplikácia prístup k hudobným a zvukovým súborom, bude ho mať aj k fotkám, videám a ďalším súborom."</string>
     <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"Táto aplikácia nepodporuje najnovšiu verziu Androidu. Ak táto aplikácia nemá prístup k hudobným a zvukovým súborom, nebude ho mať ani k fotkám, videám a ďalším súborom."</string>
     <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"Táto aplikácia nepodporuje najnovšiu verziu Androidu. Ak má táto aplikácia prístup k fotkám a videám, bude ho mať aj k hudobným, zvukovým a ďalším súborom."</string>
