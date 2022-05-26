@@ -17,4 +17,5 @@
 <resources>
     <dimen name="safety_center_card_margin">2dp</dimen>
     <dimen name="safety_center_list_margin">16dp</dimen>
+    <dimen name="safety_center_action_button_list_margin">16dp</dimen>
 </resources>
