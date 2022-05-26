@@ -65,6 +65,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Executor;
 
+import javax.annotation.concurrent.NotThreadSafe;
+
 /**
  * Service for the safety center.
  *
@@ -200,13 +202,7 @@ public final class SafetyCenterService extends SystemService {
                 boolean hasUpdate =
                         mSafetyCenterDataTracker.setSafetySourceData(
                                 safetySourceData, safetySourceId, safetyEvent, packageName, userId);
-                if (!hasUpdate) {
-                    return;
-                }
-                mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
-                        userProfileGroup,
-                        mSafetyCenterDataTracker.getSafetyCenterData(userProfileGroup),
-                        null);
+                deliverListenersUpdateLocked(userProfileGroup, hasUpdate, null);
             }
         }
 
@@ -259,16 +255,7 @@ public final class SafetyCenterService extends SystemService {
                 SafetyCenterErrorDetails safetyCenterErrorDetails =
                         mSafetyCenterDataTracker.getSafetyCenterErrorDetails(
                                 safetySourceId, errorDetails);
-                if (safetyCenterErrorDetails == null && !hasUpdate) {
-                    return;
-                }
-                SafetyCenterData safetyCenterData = null;
-                if (hasUpdate) {
-                    safetyCenterData =
-                            mSafetyCenterDataTracker.getSafetyCenterData(userProfileGroup);
-                }
-                mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
-                        userProfileGroup, safetyCenterData, safetyCenterErrorDetails);
+                deliverListenersUpdateLocked(userProfileGroup, hasUpdate, safetyCenterErrorDetails);
             }
         }
 
@@ -424,10 +411,7 @@ public final class SafetyCenterService extends SystemService {
                     // the dismissal PendingIntent, since SafetyCenter won't surface this warning
                     // anymore.
                 }
-                mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
-                        userProfileGroup,
-                        mSafetyCenterDataTracker.getSafetyCenterData(userProfileGroup),
-                        null);
+                deliverListenersUpdateLocked(userProfileGroup, true, null);
             }
         }
 
@@ -486,9 +470,9 @@ public final class SafetyCenterService extends SystemService {
                                     + safetyCenterIssueActionId
                                             .getSafetyCenterIssueId()
                                             .getSafetySourceId());
-                    mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
+                    deliverListenersUpdateLocked(
                             userProfileGroup,
-                            null,
+                            false,
                             // TODO(b/229080761): Implement proper error message.
                             new SafetyCenterErrorDetails("Error executing action"));
                     return;
@@ -501,10 +485,7 @@ public final class SafetyCenterService extends SystemService {
                     BackgroundThread.getHandler()
                             .postDelayed(
                                     resolvingActionTimeout, RESOLVING_ACTION_TIMEOUT.toMillis());
-                    mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
-                            userProfileGroup,
-                            mSafetyCenterDataTracker.getSafetyCenterData(userProfileGroup),
-                            null);
+                    deliverListenersUpdateLocked(userProfileGroup, true, null);
                 }
             }
         }
@@ -642,12 +623,13 @@ public final class SafetyCenterService extends SystemService {
      *
      * <p>This listener is not thread-safe; it should be called on a single thread.
      */
+    @NotThreadSafe
     private final class SafetyCenterEnabledListener implements OnPropertiesChangedListener {
 
         private boolean mSafetyCenterEnabled;
 
         @Override
-        public void onPropertiesChanged(DeviceConfig.Properties properties) {
+        public void onPropertiesChanged(@NonNull DeviceConfig.Properties properties) {
             if (!properties.getKeyset().contains(PROPERTY_SAFETY_CENTER_ENABLED)) {
                 return;
             }
@@ -713,9 +695,9 @@ public final class SafetyCenterService extends SystemService {
                 if (!hasClearedRefresh) {
                     return;
                 }
-                mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
+                deliverListenersUpdateLocked(
                         mUserProfileGroup,
-                        mSafetyCenterDataTracker.getSafetyCenterData(mUserProfileGroup),
+                        true,
                         // TODO(b/229080761): Implement proper error message.
                         new SafetyCenterErrorDetails("Refresh timeout"));
             }
@@ -744,9 +726,9 @@ public final class SafetyCenterService extends SystemService {
                 if (!safetyCenterDataHasChanged) {
                     return;
                 }
-                mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
+                deliverListenersUpdateLocked(
                         mUserProfileGroup,
-                        mSafetyCenterDataTracker.getSafetyCenterData(mUserProfileGroup),
+                        true,
                         // TODO(b/229080761): Implement proper error message.
                         new SafetyCenterErrorDetails("Resolving action timeout"));
             }
@@ -768,5 +750,28 @@ public final class SafetyCenterService extends SystemService {
         } finally {
             Binder.restoreCallingIdentity(callingId);
         }
+    }
+
+    @GuardedBy("mApiLock")
+    private boolean deliverListenersUpdateLocked(
+            @NonNull UserProfileGroup userProfileGroup,
+            boolean updateSafetyCenterData,
+            @Nullable SafetyCenterErrorDetails safetyCenterErrorDetails) {
+        boolean needToUpdateListeners = updateSafetyCenterData || safetyCenterErrorDetails != null;
+        if (!needToUpdateListeners) {
+            return false;
+        }
+        boolean hasListeners =
+                mSafetyCenterListeners.hasListenersForUserProfileGroup(userProfileGroup);
+        if (!hasListeners) {
+            return false;
+        }
+        SafetyCenterData safetyCenterData = null;
+        if (updateSafetyCenterData) {
+            safetyCenterData = mSafetyCenterDataTracker.getSafetyCenterData(userProfileGroup);
+        }
+        mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
+                userProfileGroup, safetyCenterData, safetyCenterErrorDetails);
+        return true;
     }
 }

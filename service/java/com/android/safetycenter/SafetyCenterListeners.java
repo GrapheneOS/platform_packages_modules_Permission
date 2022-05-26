@@ -97,24 +97,21 @@ final class SafetyCenterListeners {
         }
     }
 
-    private void deliverUpdateForUserId(
-            @UserIdInt int userId,
-            @Nullable SafetyCenterData safetyCenterData,
-            @Nullable SafetyCenterErrorDetails safetyCenterErrorDetails) {
-        RemoteCallbackList<IOnSafetyCenterDataChangedListener> listenersForUserId =
-                mSafetyCenterDataChangedListeners.get(userId);
-        if (listenersForUserId == null) {
-            return;
+    /**
+     * Returns whether there are any {@link IOnSafetyCenterDataChangedListener}s registered for the
+     * given {@link UserProfileGroup}.
+     */
+    boolean hasListenersForUserProfileGroup(@NonNull UserProfileGroup userProfileGroup) {
+        if (hasListenersForUserId(userProfileGroup.getProfileOwnerUserId())) {
+            return true;
         }
-        int i = listenersForUserId.beginBroadcast();
-        while (i > 0) {
-            i--;
-            deliverUpdate(
-                    listenersForUserId.getBroadcastItem(i),
-                    safetyCenterData,
-                    safetyCenterErrorDetails);
+        int[] managedProfilesUserIds = userProfileGroup.getManagedProfilesUserIds();
+        for (int i = 0; i < managedProfilesUserIds.length; i++) {
+            if (hasListenersForUserId(managedProfilesUserIds[i])) {
+                return true;
+            }
         }
-        listenersForUserId.finishBroadcast();
+        return false;
     }
 
     /**
@@ -167,6 +164,35 @@ final class SafetyCenterListeners {
             listeners.kill();
         }
         mSafetyCenterDataChangedListeners.clear();
+    }
+
+    private void deliverUpdateForUserId(
+            @UserIdInt int userId,
+            @Nullable SafetyCenterData safetyCenterData,
+            @Nullable SafetyCenterErrorDetails safetyCenterErrorDetails) {
+        RemoteCallbackList<IOnSafetyCenterDataChangedListener> listenersForUserId =
+                mSafetyCenterDataChangedListeners.get(userId);
+        if (listenersForUserId == null) {
+            return;
+        }
+        int i = listenersForUserId.beginBroadcast();
+        while (i > 0) {
+            i--;
+            deliverUpdate(
+                    listenersForUserId.getBroadcastItem(i),
+                    safetyCenterData,
+                    safetyCenterErrorDetails);
+        }
+        listenersForUserId.finishBroadcast();
+    }
+
+    private boolean hasListenersForUserId(@UserIdInt int userId) {
+        RemoteCallbackList<IOnSafetyCenterDataChangedListener> listenersForUserId =
+                mSafetyCenterDataChangedListeners.get(userId);
+        if (listenersForUserId == null) {
+            return false;
+        }
+        return listenersForUserId.getRegisteredCallbackCount() != 0;
     }
 
     /**

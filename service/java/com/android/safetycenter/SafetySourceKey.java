@@ -41,8 +41,8 @@ final class SafetySourceKey {
         mUserId = userId;
     }
 
-    @NonNull
     /** Creates a {@link SafetySourceKey}. */
+    @NonNull
     static SafetySourceKey of(@NonNull String sourceId, @UserIdInt int userId) {
         return new SafetySourceKey(sourceId, userId);
     }
