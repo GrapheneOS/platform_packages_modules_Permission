@@ -733,10 +733,10 @@ public final class SafetyCenterService extends SystemService {
             List<RemoteCallbackList<IOnSafetyCenterDataChangedListener>> listeners;
             SafetyCenterData safetyCenterData;
             synchronized (mApiLock) {
-                boolean hasClearedInFlightAction =
+                boolean safetyCenterDataHasChanged =
                         mSafetyCenterDataTracker.unmarkSafetyCenterIssueActionAsInFlight(
                                 mSafetyCenterIssueActionId);
-                if (!hasClearedInFlightAction) {
+                if (!safetyCenterDataHasChanged) {
                     return;
                 }
                 safetyCenterData = mSafetyCenterDataTracker.getSafetyCenterData(mUserProfileGroup);
