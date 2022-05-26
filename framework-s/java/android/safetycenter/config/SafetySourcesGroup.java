@@ -239,9 +239,8 @@ public final class SafetySourcesGroup implements Parcelable {
     @Override
     public String toString() {
         return "SafetySourcesGroup{"
-                + "mId='"
+                + "mId="
                 + mId
-                + '\''
                 + ", mTitleResId="
                 + mTitleResId
                 + ", mSummaryResId="

@@ -461,21 +461,18 @@ public final class SafetySource implements Parcelable {
         return "SafetySource{"
                 + "mType="
                 + mType
-                + ", mId='"
+                + ", mId="
                 + mId
-                + '\''
-                + ", mPackageName='"
+                + ", mPackageName="
                 + mPackageName
-                + '\''
                 + ", mTitleResId="
                 + mTitleResId
                 + ", mTitleForWorkResId="
                 + mTitleForWorkResId
                 + ", mSummaryResId="
                 + mSummaryResId
-                + ", mIntentAction='"
+                + ", mIntentAction="
                 + mIntentAction
-                + '\''
                 + ", mProfile="
                 + mProfile
                 + ", mInitialDisplayState="

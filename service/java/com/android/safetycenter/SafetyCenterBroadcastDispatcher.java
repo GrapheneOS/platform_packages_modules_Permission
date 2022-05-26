@@ -248,6 +248,6 @@ final class SafetyCenterBroadcastDispatcher {
             case REFRESH_REASON_OTHER:
                 return EXTRA_REFRESH_REQUEST_TYPE_GET_DATA;
         }
-        throw new IllegalArgumentException("Invalid refresh reason: " + refreshReason);
+        throw new IllegalArgumentException("Unexpected refresh reason: " + refreshReason);
     }
 }

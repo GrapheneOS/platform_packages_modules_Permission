@@ -412,9 +412,7 @@ class SafetyCenterManagerTest {
                 safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.unspecified)
             }
 
-        assertThat(thrown)
-            .hasMessageThat()
-            .isEqualTo("Unexpected safety source \"$SINGLE_SOURCE_ID\"")
+        assertThat(thrown).hasMessageThat().isEqualTo("Unexpected safety source: $SINGLE_SOURCE_ID")
     }
 
     @Test
@@ -428,7 +426,7 @@ class SafetyCenterManagerTest {
 
         assertThat(thrown)
             .hasMessageThat()
-            .isEqualTo("Unexpected safety source \"$STATIC_BAREBONE_ID\"")
+            .isEqualTo("Unexpected safety source: $STATIC_BAREBONE_ID")
     }
 
     @Test
@@ -444,8 +442,8 @@ class SafetyCenterManagerTest {
         assertThat(thrown)
             .hasMessageThat()
             .isEqualTo(
-                "Unexpected package name \"${context.packageName}\" for safety source " +
-                    "\"$DYNAMIC_OTHER_PACKAGE_ID\"")
+                "Unexpected package name: ${context.packageName}, for safety source: " +
+                    DYNAMIC_OTHER_PACKAGE_ID)
     }
 
     @Test
@@ -455,9 +453,7 @@ class SafetyCenterManagerTest {
                 safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceData = null)
             }
 
-        assertThat(thrown)
-            .hasMessageThat()
-            .isEqualTo("Unexpected safety source \"$SINGLE_SOURCE_ID\"")
+        assertThat(thrown).hasMessageThat().isEqualTo("Unexpected safety source: $SINGLE_SOURCE_ID")
     }
 
     @Test
@@ -471,7 +467,7 @@ class SafetyCenterManagerTest {
 
         assertThat(thrown)
             .hasMessageThat()
-            .isEqualTo("Unexpected safety source \"$STATIC_BAREBONE_ID\"")
+            .isEqualTo("Unexpected safety source: $STATIC_BAREBONE_ID")
     }
 
     @Test
@@ -486,8 +482,8 @@ class SafetyCenterManagerTest {
         assertThat(thrown)
             .hasMessageThat()
             .isEqualTo(
-                "Unexpected package name \"${context.packageName}\" for safety source " +
-                    "\"$DYNAMIC_OTHER_PACKAGE_ID\"")
+                "Unexpected package name: ${context.packageName}, for safety source: " +
+                    DYNAMIC_OTHER_PACKAGE_ID)
     }
 
     @Test
@@ -502,7 +498,7 @@ class SafetyCenterManagerTest {
 
         assertThat(thrown)
             .hasMessageThat()
-            .isEqualTo("Unexpected status for issue only safety source \"$ISSUE_ONLY_BAREBONE_ID\"")
+            .isEqualTo("Unexpected status for issue only safety source: $ISSUE_ONLY_BAREBONE_ID")
     }
 
     @Test
@@ -518,7 +514,7 @@ class SafetyCenterManagerTest {
 
         assertThat(thrown)
             .hasMessageThat()
-            .isEqualTo("Missing status for dynamic safety source \"$DYNAMIC_BAREBONE_ID\"")
+            .isEqualTo("Missing status for dynamic safety source: $DYNAMIC_BAREBONE_ID")
     }
 
     @Test
@@ -558,9 +554,9 @@ class SafetyCenterManagerTest {
         assertThat(thrown)
             .hasMessageThat()
             .isEqualTo(
-                "Unexpected severity level \"${
+                "Unexpected severity level: ${
                     SafetySourceData.SEVERITY_LEVEL_INFORMATION
-                }\" for issue in safety source \"$SINGLE_SOURCE_ID\"")
+                }, for issue in safety source: $SINGLE_SOURCE_ID")
     }
 
     @Test
@@ -576,9 +572,9 @@ class SafetyCenterManagerTest {
         assertThat(thrown)
             .hasMessageThat()
             .isEqualTo(
-                "Unexpected severity level \"${
+                "Unexpected severity level: ${
                     SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING
-                }\" for safety source \"$SINGLE_SOURCE_ID\"")
+                }, for safety source: $SINGLE_SOURCE_ID")
     }
 
     @Test
@@ -606,9 +602,9 @@ class SafetyCenterManagerTest {
         assertThat(thrown)
             .hasMessageThat()
             .isEqualTo(
-                "Unexpected severity level \"${
+                "Unexpected severity level: ${
                     SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING
-                }\" for safety source \"$DYNAMIC_ALL_OPTIONAL_ID\"")
+                }, for safety source: $DYNAMIC_ALL_OPTIONAL_ID")
     }
 
     @Test
@@ -637,9 +633,9 @@ class SafetyCenterManagerTest {
         assertThat(thrown)
             .hasMessageThat()
             .isEqualTo(
-                "Unexpected severity level \"${
+                "Unexpected severity level: ${
                     SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING
-                }\" for issue in safety source \"$ISSUE_ONLY_ALL_OPTIONAL_ID\"")
+                }, for issue in safety source: $ISSUE_ONLY_ALL_OPTIONAL_ID")
     }
 
     @Test
@@ -680,9 +676,7 @@ class SafetyCenterManagerTest {
                 safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
             }
 
-        assertThat(thrown)
-            .hasMessageThat()
-            .isEqualTo("Unexpected safety source \"$SINGLE_SOURCE_ID\"")
+        assertThat(thrown).hasMessageThat().isEqualTo("Unexpected safety source: $SINGLE_SOURCE_ID")
     }
 
     @Test
@@ -696,7 +690,7 @@ class SafetyCenterManagerTest {
 
         assertThat(thrown)
             .hasMessageThat()
-            .isEqualTo("Unexpected safety source \"$STATIC_BAREBONE_ID\"")
+            .isEqualTo("Unexpected safety source: $STATIC_BAREBONE_ID")
     }
 
     @Test
@@ -711,8 +705,8 @@ class SafetyCenterManagerTest {
         assertThat(thrown)
             .hasMessageThat()
             .isEqualTo(
-                "Unexpected package name \"${context.packageName}\" for safety source " +
-                    "\"$DYNAMIC_OTHER_PACKAGE_ID\"")
+                "Unexpected package name: ${context.packageName}, for safety source: " +
+                    DYNAMIC_OTHER_PACKAGE_ID)
     }
 
     @Test
@@ -755,9 +749,7 @@ class SafetyCenterManagerTest {
                     SINGLE_SOURCE_ID, SafetySourceErrorDetails(EVENT_SOURCE_STATE_CHANGED))
             }
 
-        assertThat(thrown)
-            .hasMessageThat()
-            .isEqualTo("Unexpected safety source \"$SINGLE_SOURCE_ID\"")
+        assertThat(thrown).hasMessageThat().isEqualTo("Unexpected safety source: $SINGLE_SOURCE_ID")
     }
 
     @Test
@@ -772,7 +764,7 @@ class SafetyCenterManagerTest {
 
         assertThat(thrown)
             .hasMessageThat()
-            .isEqualTo("Unexpected safety source \"$STATIC_BAREBONE_ID\"")
+            .isEqualTo("Unexpected safety source: $STATIC_BAREBONE_ID")
     }
 
     @Test
@@ -788,8 +780,8 @@ class SafetyCenterManagerTest {
         assertThat(thrown)
             .hasMessageThat()
             .isEqualTo(
-                "Unexpected package name \"${context.packageName}\" for safety source " +
-                    "\"$DYNAMIC_OTHER_PACKAGE_ID\"")
+                "Unexpected package name: ${context.packageName}, for safety source: " +
+                    DYNAMIC_OTHER_PACKAGE_ID)
     }
 
     @Test
@@ -1104,7 +1096,7 @@ class SafetyCenterManagerTest {
                 safetyCenterManager.refreshSafetySourcesWithPermission(143201)
             }
 
-        assertThat(thrown).hasMessageThat().isEqualTo("Invalid refresh reason: 143201")
+        assertThat(thrown).hasMessageThat().isEqualTo("Unexpected refresh reason: 143201")
     }
 
     @Test
