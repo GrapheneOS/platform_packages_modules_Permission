@@ -71,7 +71,7 @@ class MoreIssuesCardPreference(
     }
 
     override fun isSameItem(preference: Preference): Boolean {
-        return preference is MoreIssuesCardPreference
+        return hasSameContents(preference)
     }
 
     override fun hasSameContents(preference: Preference): Boolean {
