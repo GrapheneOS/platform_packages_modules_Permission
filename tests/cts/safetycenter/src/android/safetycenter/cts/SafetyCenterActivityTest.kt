@@ -40,7 +40,6 @@ import android.util.Log
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
-import com.android.compatibility.common.util.UiAutomatorUtils.getUiDevice
 import com.android.compatibility.common.util.UiAutomatorUtils.waitFindObject
 import com.android.compatibility.common.util.UiAutomatorUtils.waitFindObjectOrNull
 import java.time.Duration
@@ -169,9 +168,7 @@ class SafetyCenterActivityTest {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.information)
 
-        context.launchSafetyCenterActivity {
-            findButton("Scan")
-        }
+        context.launchSafetyCenterActivity { findButton("Scan") }
     }
 
     @Test
@@ -179,9 +176,7 @@ class SafetyCenterActivityTest {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.informationWithIssue)
 
-        context.launchSafetyCenterActivity {
-            waitButtonNotDisplayed("Scan")
-        }
+        context.launchSafetyCenterActivity { waitButtonNotDisplayed("Scan") }
     }
 
     // TODO(b/232104227): Add tests for issues dismissible without confirmation and non-dismissible
@@ -225,37 +220,6 @@ class SafetyCenterActivityTest {
             waitFindObject(By.text("See all alerts")).click()
 
             waitTextNotDisplayed("See all alerts")
-            assertIssueDisplayed(safetySourceCtsData.recommendationIssue)
-            assertIssueDisplayed(safetySourceCtsData.informationIssue)
-        }
-    }
-
-    @Test
-    fun moreIssuesCard_activityStopStart_cardsStillExpanded() {
-        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
-        safetyCenterCtsHelper.setData(SOURCE_ID_1, safetySourceCtsData.criticalWithIssue)
-        safetyCenterCtsHelper.setData(SOURCE_ID_2, safetySourceCtsData.recommendationWithIssue)
-        safetyCenterCtsHelper.setData(SOURCE_ID_3, safetySourceCtsData.informationWithIssue)
-
-        context.launchSafetyCenterActivity {
-            // Expand cards
-            waitFindObject(By.text("See all alerts")).click()
-
-            // Verify cards initially expanded
-            waitTextNotDisplayed("See all alerts")
-            assertIssueDisplayed(safetySourceCtsData.criticalIssue)
-            assertIssueDisplayed(safetySourceCtsData.recommendationIssue)
-            assertIssueDisplayed(safetySourceCtsData.informationIssue)
-
-            // Stop activity, start activity to trigger usage of savedinstancestate
-            val uiDevice = getUiDevice()
-            uiDevice.sleep()
-            uiDevice.wakeUp()
-            uiDevice.waitForIdle()
-
-            // Verify cards remain expanded
-            waitTextNotDisplayed("See all alerts")
-            assertIssueDisplayed(safetySourceCtsData.criticalIssue)
             assertIssueDisplayed(safetySourceCtsData.recommendationIssue)
             assertIssueDisplayed(safetySourceCtsData.informationIssue)
         }
