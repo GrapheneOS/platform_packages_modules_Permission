@@ -94,6 +94,20 @@ class SafetySourceCtsData(private val context: Context) {
             .addIssue(informationIssue)
             .build()
 
+    /** A [SafetySourceIssue] with a [SEVERITY_LEVEL_RECOMMENDATION] and a redirection [Action]. */
+    val recommendationIssue =
+        SafetySourceIssue.Builder(
+            "recommendation_issue_id",
+            "Recommendation issue title",
+            "Recommendation issue summary",
+            SEVERITY_LEVEL_RECOMMENDATION,
+            "issue_type_id")
+            .addAction(
+                Action.Builder(
+                    "recommendation_action_id", "See issue", redirectPendingIntent)
+                    .build())
+            .build()
+
     /**
      * A [SafetySourceData] with a [SEVERITY_LEVEL_RECOMMENDATION] [SafetySourceIssue] and
      * [SafetySourceStatus].
@@ -107,18 +121,7 @@ class SafetySourceCtsData(private val context: Context) {
                         SEVERITY_LEVEL_RECOMMENDATION)
                     .setPendingIntent(redirectPendingIntent)
                     .build())
-            .addIssue(
-                SafetySourceIssue.Builder(
-                        "recommendation_issue_id",
-                        "Recommendation issue title",
-                        "Recommendation issue summary",
-                        SEVERITY_LEVEL_RECOMMENDATION,
-                        "issue_type_id")
-                    .addAction(
-                        Action.Builder(
-                                "recommendation_action_id", "See issue", redirectPendingIntent)
-                            .build())
-                    .build())
+            .addIssue(recommendationIssue)
             .build()
 
     /** A [PendingIntent] used by the resolving [Action] in [criticalIssue]. */
@@ -179,5 +182,12 @@ class SafetySourceCtsData(private val context: Context) {
         /** A [SafetyEvent] to push arbitrary changes to SafetyCenter. */
         val EVENT_SOURCE_STATE_CHANGED =
             SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
+
+        /** A utility to create a [SafetySourceData] object containing only issues. */
+        fun issuesOnly(vararg issues: SafetySourceIssue): SafetySourceData {
+            val builder = SafetySourceData.Builder()
+            issues.forEach { builder.addIssue(it) }
+            return builder.build()
+        }
     }
 }
