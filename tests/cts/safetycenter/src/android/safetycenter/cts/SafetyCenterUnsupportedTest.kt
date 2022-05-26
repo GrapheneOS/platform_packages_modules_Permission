@@ -17,19 +17,16 @@
 package android.safetycenter.cts
 
 import android.content.Context
-import android.content.IntentFilter
 import android.content.pm.PackageManager.FEATURE_AUTOMOTIVE
 import android.content.pm.PackageManager.FEATURE_LEANBACK
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.safetycenter.SafetyCenterManager
-import android.safetycenter.SafetyCenterManager.ACTION_SAFETY_CENTER_ENABLED_CHANGED
 import android.safetycenter.cts.testing.Coroutines.TIMEOUT_SHORT
 import android.safetycenter.cts.testing.SafetyCenterActivityLauncher.launchSafetyCenterActivity
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.isSafetyCenterEnabledWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.setSafetyCenterConfigForTestsWithPermission
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsHelper
-import android.safetycenter.cts.testing.SafetyCenterEnabledChangedReceiver
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import android.safetycenter.cts.testing.SafetySourceReceiver
 import android.support.test.uiautomator.By
@@ -42,6 +39,7 @@ import kotlin.test.assertFailsWith
 import kotlinx.coroutines.TimeoutCancellationException
 import org.junit.After
 import org.junit.Assume.assumeFalse
+import org.junit.Assume.assumeTrue
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -53,15 +51,28 @@ class SafetyCenterUnsupportedTest {
     private val packageManager = context.packageManager
     private val safetyCenterCtsHelper = SafetyCenterCtsHelper(context)
     private val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)!!
+    // JUnit's Assume is not supported in @BeforeClass by the CTS tests runner, so this is used to
+    // manually skip the setup and teardown methods.
+    private val shouldRunTests = !context.deviceSupportsSafetyCenter()
 
     @Before
     fun assumeDeviceDoesntSupportSafetyCenterToRunTests() {
-        assumeFalse(context.deviceSupportsSafetyCenter())
+        assumeTrue(shouldRunTests)
     }
 
     @Before
+    fun enableSafetyCenterBeforeTest() {
+        if (!shouldRunTests) {
+            return
+        }
+        safetyCenterCtsHelper.setEnabled(true)
+    }
+
     @After
-    fun clearDataBetweenTest() {
+    fun clearDataAfterTest() {
+        if (!shouldRunTests) {
+            return
+        }
         safetyCenterCtsHelper.reset()
     }
 
@@ -71,9 +82,7 @@ class SafetyCenterUnsupportedTest {
         assumeFalse(packageManager.hasSystemFeature(FEATURE_AUTOMOTIVE))
         assumeFalse(packageManager.hasSystemFeature(FEATURE_LEANBACK))
 
-        context.launchSafetyCenterActivity {
-            waitFindObject(By.text("Settings"))
-        }
+        context.launchSafetyCenterActivity { waitFindObject(By.text("Settings")) }
     }
 
     @Test
@@ -94,15 +103,12 @@ class SafetyCenterUnsupportedTest {
 
     @Test
     fun safetyCenterEnabledChanged_withImplicitReceiver_doesntCallReceiver() {
-        val enabledChangedReceiver = SafetyCenterEnabledChangedReceiver()
-        context.registerReceiver(
-            enabledChangedReceiver, IntentFilter(ACTION_SAFETY_CENTER_ENABLED_CHANGED))
+        val enabledChangedReceiver = safetyCenterCtsHelper.addEnabledChangedReceiver()
 
         assertFailsWith(TimeoutCancellationException::class) {
             enabledChangedReceiver.setSafetyCenterEnabledWithReceiverPermissionAndWait(
                 false, TIMEOUT_SHORT)
         }
-        context.unregisterReceiver(enabledChangedReceiver)
     }
 
     @Test

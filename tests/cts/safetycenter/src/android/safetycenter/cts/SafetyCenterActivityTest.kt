@@ -51,15 +51,28 @@ class SafetyCenterActivityTest {
 
     private val safetyCenterCtsHelper = SafetyCenterCtsHelper(context)
     private val safetySourceCtsData = SafetySourceCtsData(context)
+    // JUnit's Assume is not supported in @BeforeClass by the CTS tests runner, so this is used to
+    // manually skip the setup and teardown methods.
+    private val shouldRunTests = context.deviceSupportsSafetyCenter()
 
     @Before
     fun assumeDeviceSupportsSafetyCenterToRunTests() {
-        assumeTrue(context.deviceSupportsSafetyCenter())
+        assumeTrue(shouldRunTests)
     }
 
     @Before
+    fun enableSafetyCenterBeforeTest() {
+        if (!shouldRunTests) {
+            return
+        }
+        safetyCenterCtsHelper.setEnabled(true)
+    }
+
     @After
-    fun clearDataBetweenTest() {
+    fun clearDataAfterTest() {
+        if (!shouldRunTests) {
+            return
+        }
         safetyCenterCtsHelper.reset()
     }
 
@@ -75,9 +88,7 @@ class SafetyCenterActivityTest {
     fun launchActivity_withFlagDisabled_showsSettingsTitle() {
         safetyCenterCtsHelper.setEnabled(false)
 
-        context.launchSafetyCenterActivity {
-            waitFindObject(By.text("Settings"))
-        }
+        context.launchSafetyCenterActivity { waitFindObject(By.text("Settings")) }
     }
 
     @Test

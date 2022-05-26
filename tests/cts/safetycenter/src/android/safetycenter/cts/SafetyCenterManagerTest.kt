@@ -18,7 +18,6 @@ package android.safetycenter.cts
 
 import android.Manifest.permission.MANAGE_SAFETY_CENTER
 import android.content.Context
-import android.content.IntentFilter
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.UserHandle
 import android.safetycenter.SafetyCenterData
@@ -33,7 +32,6 @@ import android.safetycenter.SafetyCenterErrorDetails
 import android.safetycenter.SafetyCenterIssue
 import android.safetycenter.SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_CRITICAL_WARNING
 import android.safetycenter.SafetyCenterManager
-import android.safetycenter.SafetyCenterManager.ACTION_SAFETY_CENTER_ENABLED_CHANGED
 import android.safetycenter.SafetyCenterManager.OnSafetyCenterDataChangedListener
 import android.safetycenter.SafetyCenterManager.REFRESH_REASON_PAGE_OPEN
 import android.safetycenter.SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK
@@ -67,7 +65,6 @@ import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_2
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_3
 import android.safetycenter.cts.testing.SafetyCenterCtsHelper
 import android.safetycenter.cts.testing.SafetyCenterCtsListener
-import android.safetycenter.cts.testing.SafetyCenterEnabledChangedReceiver
 import android.safetycenter.cts.testing.SafetyCenterFlags
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import android.safetycenter.cts.testing.SafetySourceCtsData
@@ -215,15 +212,28 @@ class SafetyCenterManagerTest {
             emptyList(),
             listOf(safetyCenterEntryOrGroupCritical),
             emptyList())
+    // JUnit's Assume is not supported in @BeforeClass by the CTS tests runner, so this is used to
+    // manually skip the setup and teardown methods.
+    private val shouldRunTests = context.deviceSupportsSafetyCenter()
 
     @Before
     fun assumeDeviceSupportsSafetyCenterToRunTests() {
-        assumeTrue(context.deviceSupportsSafetyCenter())
+        assumeTrue(shouldRunTests)
     }
 
     @Before
+    fun enableSafetyCenterBeforeTest() {
+        if (!shouldRunTests) {
+            return
+        }
+        safetyCenterCtsHelper.setEnabled(true)
+    }
+
     @After
-    fun clearDataBetweenTest() {
+    fun clearDataAfterTest() {
+        if (!shouldRunTests) {
+            return
+        }
         safetyCenterCtsHelper.reset()
     }
 
@@ -444,9 +454,7 @@ class SafetyCenterManagerTest {
 
     @Test
     fun safetyCenterEnabledChanged_whenImplicitReceiverHasPermission_receiverCalled() {
-        val enabledChangedReceiver = SafetyCenterEnabledChangedReceiver()
-        context.registerReceiver(
-            enabledChangedReceiver, IntentFilter(ACTION_SAFETY_CENTER_ENABLED_CHANGED))
+        val enabledChangedReceiver = safetyCenterCtsHelper.addEnabledChangedReceiver()
 
         var receiverValue =
             enabledChangedReceiver.setSafetyCenterEnabledWithReceiverPermissionAndWait(false)
@@ -457,21 +465,17 @@ class SafetyCenterManagerTest {
             enabledChangedReceiver.setSafetyCenterEnabledWithReceiverPermissionAndWait(true)
 
         assertThat(toggledReceiverValue).isTrue()
-        context.unregisterReceiver(enabledChangedReceiver)
     }
 
     @Test
     fun safetyCenterEnabledChanged_whenImplicitReceiverDoesNotHavePermission_receiverNotCalled() {
-        val enabledChangedReceiver = SafetyCenterEnabledChangedReceiver()
-        context.registerReceiver(
-            enabledChangedReceiver, IntentFilter(ACTION_SAFETY_CENTER_ENABLED_CHANGED))
+        val enabledChangedReceiver = safetyCenterCtsHelper.addEnabledChangedReceiver()
 
-        SafetyCenterFlags.setSafetyCenterEnabled(false)
+        SafetyCenterFlags.isEnabled = false
 
         assertFailsWith(TimeoutCancellationException::class) {
             enabledChangedReceiver.receiveSafetyCenterEnabledChanged(TIMEOUT_SHORT)
         }
-        context.unregisterReceiver(enabledChangedReceiver)
     }
 
     @Test
@@ -503,7 +507,7 @@ class SafetyCenterManagerTest {
     fun safetyCenterEnabledChanged_whenSourceReceiverDoesNotHavePermission_receiverNotCalled() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
 
-        SafetyCenterFlags.setSafetyCenterEnabled(false)
+        SafetyCenterFlags.isEnabled = false
 
         assertFailsWith(TimeoutCancellationException::class) {
             SafetySourceReceiver.receiveSafetyCenterEnabledChanged(TIMEOUT_SHORT)
