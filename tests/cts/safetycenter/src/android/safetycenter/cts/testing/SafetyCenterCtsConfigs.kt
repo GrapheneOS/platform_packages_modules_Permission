@@ -104,6 +104,18 @@ object SafetyCenterCtsConfigs {
     const val ISSUE_ONLY_GROUP_ID = "issue_only"
 
     /**
+     * ID of a [SafetySourcesGroup] provided by [COMPLEX_CONFIG], containing sources:
+     * [DYNAMIC_IN_COLLAPSIBLE_ID], [STATIC_IN_COLLAPSIBLE_ID].
+     */
+    const val MIXED_COLLAPSIBLE_GROUP_ID = "mixed_collapsible"
+
+    /**
+     * ID of a [SafetySourcesGroup] provided by [COMPLEX_CONFIG], containing sources:
+     * [DYNAMIC_IN_RIGID_ID], [STATIC_IN_RIGID_ID].
+     */
+    const val MIXED_RIGID_GROUP_ID = "mixed_rigid"
+
+    /**
      * ID of a source provided by [COMPLEX_CONFIG], this is a dynamic, primary profile only, visible
      * source for which only the required fields are set.
      */
@@ -165,6 +177,30 @@ object SafetyCenterCtsConfigs {
      * refresh on page open flag and a max severity level of recommendation.
      */
     const val ISSUE_ONLY_ALL_OPTIONAL_ID = "issue_only_all_optional"
+
+    /**
+     * ID of a source provided by [COMPLEX_CONFIG], this is a generic, dynamic, primary profile
+     * only, visible source.
+     */
+    const val DYNAMIC_IN_COLLAPSIBLE_ID = "dynamic_in_collapsible"
+
+    /**
+     * ID of a source provided by [COMPLEX_CONFIG], this is a generic, dynamic, primary profile
+     * only, visible source.
+     */
+    const val DYNAMIC_IN_RIGID_ID = "dynamic_in_rigid"
+
+    /**
+     * ID of a source provided by [COMPLEX_CONFIG], this is a generic, static, primary profile only
+     * source.
+     */
+    const val STATIC_IN_COLLAPSIBLE_ID = "static_in_collapsible"
+
+    /**
+     * ID of a source provided by [COMPLEX_CONFIG], this is a generic, static, primary profile only
+     * source.
+     */
+    const val STATIC_IN_RIGID_ID = "static_in_rigid"
 
     /** Package name the [DYNAMIC_OTHER_PACKAGE_ID] source used in [COMPLEX_CONFIG]. */
     const val OTHER_PACKAGE_NAME = "other_package_name"
@@ -270,8 +306,6 @@ object SafetyCenterCtsConfigs {
                     .addSafetySource(
                         dynamicSafetySourceBuilder(DYNAMIC_OTHER_PACKAGE_ID)
                             .setPackageName(OTHER_PACKAGE_NAME)
-                            .setIntentAction(null)
-                            .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_DISABLED)
                             .build())
                     .build())
             .addSafetySourcesGroup(
@@ -299,6 +333,17 @@ object SafetyCenterCtsConfigs {
                             .setLoggingAllowed(false)
                             .build())
                     .build())
+            .addSafetySourcesGroup(
+                safetySourcesGroupBuilder(MIXED_COLLAPSIBLE_GROUP_ID)
+                    .addSafetySource(dynamicSafetySource(DYNAMIC_IN_COLLAPSIBLE_ID))
+                    .addSafetySource(staticSafetySource(STATIC_IN_COLLAPSIBLE_ID))
+                    .build())
+            .addSafetySourcesGroup(
+                safetySourcesGroupBuilder(MIXED_RIGID_GROUP_ID)
+                    .setSummaryResId(Resources.ID_NULL)
+                    .addSafetySource(dynamicSafetySource(DYNAMIC_IN_RIGID_ID))
+                    .addSafetySource(staticSafetySource(STATIC_IN_RIGID_ID))
+                    .build())
             .build()
 
     private fun dynamicSafetySourceBuilder(id: String) =
@@ -320,6 +365,8 @@ object SafetyCenterCtsConfigs {
             .setSummaryResId(android.R.string.ok)
             .setIntentAction(ACTION_SAFETY_CENTER)
             .setProfile(SafetySource.PROFILE_PRIMARY)
+
+    private fun staticSafetySource(id: String) = staticSafetySourceBuilder(id).build()
 
     private fun issueOnlySafetySourceBuilder(id: String) =
         SafetySource.Builder(SAFETY_SOURCE_TYPE_ISSUE_ONLY)
