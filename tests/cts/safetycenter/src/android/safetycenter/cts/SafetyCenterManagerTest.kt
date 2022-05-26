@@ -1388,6 +1388,12 @@ class SafetyCenterManagerTest {
 
         val safetyCenterDataFromListener = listener.receiveSafetyCenterData()
         assertThat(safetyCenterDataFromListener).isEqualTo(safetyCenterDataCriticalWithoutIssue)
+
+        // Pushing data without the issue does not update the listener.
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.critical)
+        assertFailsWith(TimeoutCancellationException::class) {
+            listener.receiveSafetyCenterData(TIMEOUT_SHORT)
+        }
     }
 
     @Test
