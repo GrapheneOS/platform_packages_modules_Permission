@@ -527,8 +527,6 @@ final class SafetyCenterDataTracker {
         }
 
         // TODO(b/223349473): Reorder safetyCenterIssues based on some criteria.
-        // TODO(b/229189269): Populate refresh status in SafetyCenterStatus using data from the
-        // SafetyCenterRefreshTracker.
         int safetyCenterOverallSeverityLevel =
                 entryToSafetyCenterStatusOverallLevel(maxSafetyCenterEntryLevel);
         return new SafetyCenterData(
@@ -536,6 +534,7 @@ final class SafetyCenterDataTracker {
                                 getSafetyCenterStatusTitle(safetyCenterOverallSeverityLevel),
                                 getSafetyCenterStatusSummary(safetyCenterOverallSeverityLevel))
                         .setSeverityLevel(safetyCenterOverallSeverityLevel)
+                        .setRefreshStatus(mSafetyCenterRefreshTracker.getRefreshStatus())
                         .build(),
                 safetyCenterIssues,
                 safetyCenterEntryOrGroups,

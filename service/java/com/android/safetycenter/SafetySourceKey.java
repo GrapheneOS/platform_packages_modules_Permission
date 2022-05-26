@@ -59,6 +59,16 @@ final class SafetySourceKey {
                 + '}';
     }
 
+    @NonNull
+    public String getSourceId() {
+        return mSourceId;
+    }
+
+    @UserIdInt
+    public int getUserId() {
+        return mUserId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

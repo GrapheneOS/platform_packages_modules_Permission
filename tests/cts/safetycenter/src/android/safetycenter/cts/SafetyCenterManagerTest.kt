@@ -46,6 +46,9 @@ import android.safetycenter.SafetyCenterStatus
 import android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING
 import android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK
 import android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN
+import android.safetycenter.SafetyCenterStatus.REFRESH_STATUS_DATA_FETCH_IN_PROGRESS
+import android.safetycenter.SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS
+import android.safetycenter.SafetyCenterStatus.REFRESH_STATUS_NONE
 import android.safetycenter.SafetySourceData
 import android.safetycenter.SafetySourceErrorDetails
 import android.safetycenter.cts.testing.Coroutines.TIMEOUT_SHORT
@@ -1018,6 +1021,9 @@ class SafetyCenterManagerTest {
     @Test
     fun refreshSafetySources_sendsDifferentBroadcastIdsOnEachMethodCall() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        SafetySourceReceiver.safetySourceData[
+                SafetySourceDataKey(Reason.REFRESH_FETCH_FRESH_DATA, SINGLE_SOURCE_ID)] =
+            safetySourceCtsData.information
 
         val broadcastId1 =
             safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
@@ -1117,6 +1123,40 @@ class SafetyCenterManagerTest {
         assertFailsWith(SecurityException::class) {
             safetyCenterManager.refreshSafetySources(REFRESH_REASON_RESCAN_BUTTON_CLICK)
         }
+    }
+
+    @Test
+    fun refreshSafetySources_withRefreshReasonRescanButtonClick_notifiesUiDuringRescan() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        SafetySourceReceiver.safetySourceData[
+                SafetySourceDataKey(Reason.REFRESH_FETCH_FRESH_DATA, SINGLE_SOURCE_ID)] =
+            safetySourceCtsData.information
+        val listener = safetyCenterCtsHelper.addListener()
+
+        safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+            REFRESH_REASON_RESCAN_BUTTON_CLICK)
+        val refreshStatus1 = listener.receiveSafetyCenterData().status.refreshStatus
+        val refreshStatus2 = listener.receiveSafetyCenterData().status.refreshStatus
+
+        assertThat(refreshStatus1).isEqualTo(REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS)
+        assertThat(refreshStatus2).isEqualTo(REFRESH_STATUS_NONE)
+    }
+
+    @Test
+    fun refreshSafetySources_withRefreshReasonPageOpen_notifiesUiWithFetch() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        SafetySourceReceiver.safetySourceData[
+                SafetySourceDataKey(Reason.REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
+            safetySourceCtsData.information
+        val listener = safetyCenterCtsHelper.addListener()
+
+        safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+            REFRESH_REASON_PAGE_OPEN)
+        val refreshStatus1 = listener.receiveSafetyCenterData().status.refreshStatus
+        val refreshStatus2 = listener.receiveSafetyCenterData().status.refreshStatus
+
+        assertThat(refreshStatus1).isEqualTo(REFRESH_STATUS_DATA_FETCH_IN_PROGRESS)
+        assertThat(refreshStatus2).isEqualTo(REFRESH_STATUS_NONE)
     }
 
     @Test
