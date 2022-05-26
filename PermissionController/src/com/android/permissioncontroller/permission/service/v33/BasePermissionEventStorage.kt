@@ -14,14 +14,16 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.service
+package com.android.permissioncontroller.permission.service.v33
 
 import android.app.job.JobScheduler
 import android.content.Context
+import android.os.Build
 import android.util.AtomicFile
 import android.util.Log
+import androidx.annotation.RequiresApi
 import com.android.permissioncontroller.DumpableLog
-import com.android.permissioncontroller.permission.data.PermissionEvent
+import com.android.permissioncontroller.permission.data.v33.PermissionEvent
 import org.xmlpull.v1.XmlPullParserException
 import java.io.File
 import java.io.FileOutputStream
@@ -33,6 +35,7 @@ import java.io.OutputStream
  * Thread-safe implementation of [PermissionEventStorage] using an XML file as the
  * database.
  */
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 abstract class BasePermissionEventStorage<T : PermissionEvent>(
     private val context: Context,
     jobScheduler: JobScheduler = context.getSystemService(JobScheduler::class.java)!!
@@ -86,7 +89,7 @@ abstract class BasePermissionEventStorage<T : PermissionEvent>(
 
             val originalCount = existingEvents.size
             val newEvents = existingEvents.filter {
-                (System.currentTimeMillis() - it.eventTime) <= getMaxDataAgeMs()
+                return (System.currentTimeMillis() - it.eventTime) <= getMaxDataAgeMs()
             }
 
             DumpableLog.d(LOG_TAG,
