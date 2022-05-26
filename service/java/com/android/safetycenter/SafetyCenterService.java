@@ -287,10 +287,7 @@ public final class SafetyCenterService extends SystemService {
                         new RefreshTimeout(refreshBroadcastId, userProfileGroup);
                 mSafetyCenterTimeouts.add(refreshTimeout, REFRESH_TIMEOUT);
 
-                mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
-                        userProfileGroup,
-                        mSafetyCenterDataTracker.getSafetyCenterData(userProfileGroup),
-                        null);
+                deliverListenersUpdateLocked(userProfileGroup, true, null);
             }
 
             mSafetyCenterBroadcastDispatcher.sendRefreshSafetySources(

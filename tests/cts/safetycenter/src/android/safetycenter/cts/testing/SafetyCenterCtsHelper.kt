@@ -31,6 +31,7 @@ import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.isS
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.removeOnSafetyCenterDataChangedListenerWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.setSafetyCenterConfigForTestsWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.setSafetySourceDataWithPermission
+import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import android.safetycenter.cts.testing.SafetyCenterFlags.isSafetyCenterEnabled
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.EVENT_SOURCE_STATE_CHANGED
 import com.google.common.util.concurrent.MoreExecutors.directExecutor
@@ -71,7 +72,13 @@ class SafetyCenterCtsHelper(private val context: Context) {
         if (currentValue == value) {
             return
         }
-        setEnabledWaitingForBroadcastIdle(value)
+        if (context.deviceSupportsSafetyCenter()) {
+            setEnabledWaitingForBroadcastIdle(value)
+        } else {
+            // No broadcasts are dispatched when toggling the flag when SafetyCenter is not
+            // supported by the device.
+            SafetyCenterFlags.isEnabled = value
+        }
     }
 
     /** Adds and returns a runtime-registered [SafetyCenterEnabledChangedReceiver]. */

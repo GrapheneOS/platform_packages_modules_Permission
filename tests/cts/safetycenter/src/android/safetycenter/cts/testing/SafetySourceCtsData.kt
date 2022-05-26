@@ -172,6 +172,12 @@ class SafetySourceCtsData(private val context: Context) {
                     .build())
 
     companion object {
+        /** Issue ID for [informationIssue]. */
+        const val INFORMATION_ISSUE_ID = "information_issue_id"
+
+        /** Action ID for the redirection action in [informationIssue]. */
+        const val INFORMATION_ISSUE_ACTION_ID = "information_issue_action_id"
+
         /** Issue ID for [recommendationIssue]. */
         const val RECOMMENDATION_ISSUE_ID = "recommendation_issue_id"
 
@@ -183,15 +189,6 @@ class SafetySourceCtsData(private val context: Context) {
 
         /** Action ID for the resolving action in [criticalIssue]. */
         const val CRITICAL_ISSUE_ACTION_ID = "critical_issue_action_id"
-
-        /** Issue ID for [recommendationIssue]. */
-        const val RECOMMENDATION_ISSUE_ID = "recommendation_issue_id"
-
-        /** Issue ID for [informationIssue]. */
-        const val INFORMATION_ISSUE_ID = "information_issue_id"
-
-        /** Action ID for the redirection action in [informationIssue]. */
-        const val INFORMATION_ISSUE_ACTION_ID = "information_issue_action_id"
 
         /** A [SafetyEvent] to push arbitrary changes to SafetyCenter. */
         val EVENT_SOURCE_STATE_CHANGED =
