@@ -69,6 +69,17 @@ public final class SafetyCenterIds {
     }
 
     /**
+     * Converts a String to a {@link SafetyCenterIssueKey}.
+     *
+     * <p>Throws an {@link IllegalArgumentException} if the String couldn't be converted to a {@link
+     * SafetyCenterIssueKey}.
+     */
+    @NonNull
+    public static SafetyCenterIssueKey issueKeyFromString(@NonNull String encoded) {
+        return decodeToProto(SafetyCenterIssueKey.parser(), encoded);
+    }
+
+    /**
      * Converts a String to a {@link SafetyCenterIssueActionId}.
      *
      * <p>Throws an {@link IllegalArgumentException} if the String couldn't be converted to a {@link

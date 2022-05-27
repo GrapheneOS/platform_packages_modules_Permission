@@ -114,6 +114,7 @@ java_sdk_library {
         "modules-utils-os",
         "safety-center-config",
         "safety-center-internal-data",
+        "safety-center-persistence",
         "safety-center-resources-lib",
         "service-permission-shared",
     ],
