@@ -66,7 +66,7 @@ class SafetySourceCtsData(private val context: Context) {
                 "Information issue title",
                 "Information issue summary",
                 SEVERITY_LEVEL_INFORMATION,
-                "issue_type_id")
+                ISSUE_TYPE_ID)
             .addAction(
                 Action.Builder(INFORMATION_ISSUE_ACTION_ID, "Review", redirectPendingIntent)
                     .build())
@@ -115,7 +115,7 @@ class SafetySourceCtsData(private val context: Context) {
                 "Recommendation issue title",
                 "Recommendation issue summary",
                 SEVERITY_LEVEL_RECOMMENDATION,
-                "issue_type_id")
+                ISSUE_TYPE_ID)
             .addAction(
                 Action.Builder(RECOMMENDATION_ISSUE_ACTION_ID, "See issue", redirectPendingIntent)
                     .build())
@@ -157,7 +157,7 @@ class SafetySourceCtsData(private val context: Context) {
                 "Critical issue title",
                 "Critical issue summary",
                 SEVERITY_LEVEL_CRITICAL_WARNING,
-                "issue_type_id")
+                ISSUE_TYPE_ID)
             .addAction(
                 Action.Builder(
                         CRITICAL_ISSUE_ACTION_ID, "Solve issue", criticalIssueActionPendingIntent)
@@ -197,6 +197,9 @@ class SafetySourceCtsData(private val context: Context) {
 
         /** Action ID for the resolving action in [criticalIssue]. */
         const val CRITICAL_ISSUE_ACTION_ID = "critical_issue_action_id"
+
+        /** Issue type ID for all the SafetySourceIssue in this file */
+        const val ISSUE_TYPE_ID = "issue_type_id"
 
         /** A [SafetyEvent] to push arbitrary changes to SafetyCenter. */
         val EVENT_SOURCE_STATE_CHANGED =

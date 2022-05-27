@@ -36,6 +36,15 @@ message SafetyCenterEntryId {
 
 // An id for issues provided by the Safety Center.
 message SafetyCenterIssueId {
+  reserved 1, 2, 3;
+  // Key that has a 1 to 1 mapping with a safety source issue.
+  optional SafetyCenterIssueKey safety_center_issue_key = 4;
+  // The ID of the type of the safety source issue.
+  optional string issue_type_id = 5;
+}
+
+// Key that has a 1 to 1 mapping with a safety source issue.
+message SafetyCenterIssueKey {
   // The ID of the safety source that the issue originated from.
   optional string safety_source_id = 1;
   // The ID of the safety source issue that the issue originated from.
@@ -46,8 +55,9 @@ message SafetyCenterIssueId {
 
 // An id for issue actions provided by the Safety Center.
 message SafetyCenterIssueActionId {
-  // The `SafetyCenterIssueId` associated with this action.
-  optional SafetyCenterIssueId safety_center_issue_id = 1;
+  reserved 1;
   // The ID of the safety source issue action that the action originated from.
   optional string safety_source_issue_action_id = 2;
+  // `SafetyCenterIssueKey` associated with this action.
+  optional SafetyCenterIssueKey safety_center_issue_key = 3;
 }
