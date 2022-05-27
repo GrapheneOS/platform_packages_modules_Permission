@@ -743,8 +743,9 @@ public final class SafetyCenterService extends SystemService {
                 deliverListenersUpdateLocked(
                         mUserProfileGroup,
                         true,
+                        // TODO(b/234110665): Add SafetyCenterErrorDetails once all sources work
                         // TODO(b/229080761): Implement proper error message.
-                        new SafetyCenterErrorDetails("Resolving action timeout"));
+                        null);
             }
         }
     }

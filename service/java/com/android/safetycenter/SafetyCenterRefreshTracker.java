@@ -158,8 +158,7 @@ final class SafetyCenterRefreshTracker {
     // TODO(b/229188900): Should we stop any scheduled broadcasts from going out?
     void clearRefresh() {
         if (mRefreshInProgress != null) {
-            Log.v(TAG, "Clearing refresh with refreshBroadcastId:" + mRefreshInProgress.getId());
-            mRefreshInProgress = null;
+            clearRefresh(mRefreshInProgress.getId());
         } else {
             Log.v(TAG, "Clear refresh called but no refresh in progress");
         }
