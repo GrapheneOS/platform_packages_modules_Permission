@@ -219,9 +219,8 @@ public final class SafetyCenterIssue implements Parcelable {
     @Override
     public String toString() {
         return "SafetyCenterIssue{"
-                + "mId='"
+                + "mId="
                 + mId
-                + '\''
                 + ", mTitle="
                 + mTitle
                 + ", mSubtitle="
@@ -628,6 +627,6 @@ public final class SafetyCenterIssue implements Parcelable {
             default:
         }
         throw new IllegalArgumentException(
-                String.format("Unexpected IssueSeverityLevel for SafetyCenterIssue: %s", value));
+                "Unexpected IssueSeverityLevel for SafetyCenterIssue: " + value);
     }
 }

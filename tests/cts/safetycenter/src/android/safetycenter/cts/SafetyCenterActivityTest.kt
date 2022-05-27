@@ -23,14 +23,20 @@ import android.safetycenter.SafetySourceData
 import android.safetycenter.SafetySourceIssue
 import android.safetycenter.cts.testing.SafetyCenterActivityLauncher.launchSafetyCenterActivity
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MULTIPLE_SOURCES_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_ID
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_1
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_2
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_3
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.STATIC_SOURCES_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsHelper
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import android.safetycenter.cts.testing.SafetySourceCtsData
 import android.support.test.uiautomator.By
+import android.support.test.uiautomator.BySelector
 import android.support.test.uiautomator.UiObject2
+import android.util.Log
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
@@ -51,15 +57,28 @@ class SafetyCenterActivityTest {
 
     private val safetyCenterCtsHelper = SafetyCenterCtsHelper(context)
     private val safetySourceCtsData = SafetySourceCtsData(context)
+    // JUnit's Assume is not supported in @BeforeClass by the CTS tests runner, so this is used to
+    // manually skip the setup and teardown methods.
+    private val shouldRunTests = context.deviceSupportsSafetyCenter()
 
     @Before
     fun assumeDeviceSupportsSafetyCenterToRunTests() {
-        assumeTrue(context.deviceSupportsSafetyCenter())
+        assumeTrue(shouldRunTests)
     }
 
     @Before
+    fun enableSafetyCenterBeforeTest() {
+        if (!shouldRunTests) {
+            return
+        }
+        safetyCenterCtsHelper.setEnabled(true)
+    }
+
     @After
-    fun clearDataBetweenTest() {
+    fun clearDataAfterTest() {
+        if (!shouldRunTests) {
+            return
+        }
         safetyCenterCtsHelper.reset()
     }
 
@@ -75,9 +94,7 @@ class SafetyCenterActivityTest {
     fun launchActivity_withFlagDisabled_showsSettingsTitle() {
         safetyCenterCtsHelper.setEnabled(false)
 
-        context.launchSafetyCenterActivity {
-            waitFindObject(By.text("Settings"))
-        }
+        context.launchSafetyCenterActivity { waitFindObject(By.text("Settings")) }
     }
 
     @Test
@@ -128,6 +145,7 @@ class SafetyCenterActivityTest {
             findButton("Dismiss").click()
 
             assertIssueNotDisplayed(safetySourceCtsData.criticalIssue)
+            findButton("Scan")
         }
     }
 
@@ -145,8 +163,67 @@ class SafetyCenterActivityTest {
         }
     }
 
+    @Test
+    fun launchActivity_withNoIssues_hasRescanButton() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.information)
+
+        context.launchSafetyCenterActivity { findButton("Scan") }
+    }
+
+    @Test
+    fun launchActivity_withIssue_doesNotHaveRescanButton() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.informationWithIssue)
+
+        context.launchSafetyCenterActivity { waitButtonNotDisplayed("Scan") }
+    }
+
     // TODO(b/232104227): Add tests for issues dismissible without confirmation and non-dismissible
     // issues if and when the service supports them.
+
+    @Test
+    fun moreIssuesCard_underMaxShownIssues_noMoreIssuesCard() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithIssue)
+
+        context.launchSafetyCenterActivity {
+            assertIssueDisplayed(safetySourceCtsData.criticalIssue)
+            waitTextNotDisplayed("See all alerts")
+        }
+    }
+
+    @Test
+    fun moreIssuesCard_moreIssuesCardShown_additionalIssueCardsCollapsed() {
+        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
+        safetyCenterCtsHelper.setData(SOURCE_ID_1, safetySourceCtsData.criticalWithIssue)
+        safetyCenterCtsHelper.setData(SOURCE_ID_2, safetySourceCtsData.recommendationWithIssue)
+        safetyCenterCtsHelper.setData(SOURCE_ID_3, safetySourceCtsData.informationWithIssue)
+
+        context.launchSafetyCenterActivity {
+            assertIssueDisplayed(safetySourceCtsData.criticalIssue)
+            waitFindObject(By.text("See all alerts"))
+            assertIssueNotDisplayed(safetySourceCtsData.recommendationIssue)
+            assertIssueNotDisplayed(safetySourceCtsData.informationIssue)
+        }
+    }
+
+    @Test
+    fun moreIssuesCard_expandAdditionalIssueCards() {
+        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
+        safetyCenterCtsHelper.setData(SOURCE_ID_1, safetySourceCtsData.criticalWithIssue)
+        safetyCenterCtsHelper.setData(SOURCE_ID_2, safetySourceCtsData.recommendationWithIssue)
+        safetyCenterCtsHelper.setData(SOURCE_ID_3, safetySourceCtsData.informationWithIssue)
+
+        context.launchSafetyCenterActivity {
+            assertIssueDisplayed(safetySourceCtsData.criticalIssue)
+            waitFindObject(By.text("See all alerts")).click()
+
+            waitTextNotDisplayed("See all alerts")
+            assertIssueDisplayed(safetySourceCtsData.recommendationIssue)
+            assertIssueDisplayed(safetySourceCtsData.informationIssue)
+        }
+    }
 
     private fun assertSourceDataDisplayed(sourceData: SafetySourceData) {
         findAllText(sourceData.status?.title, sourceData.status?.summary)
@@ -169,8 +246,15 @@ class SafetyCenterActivityTest {
     }
 
     private fun findButton(label: CharSequence): UiObject2 {
-        return waitFindObject(
-            By.clickable(true).text(Pattern.compile("$label|${label.toString().uppercase()}")))
+        return waitFindObject(buttonSelector(label))
+    }
+
+    private fun waitButtonNotDisplayed(label: CharSequence) {
+        waitNotDisplayed(buttonSelector(label))
+    }
+
+    private fun buttonSelector(label: CharSequence): BySelector {
+        return By.clickable(true).text(Pattern.compile("$label|${label.toString().uppercase()}"))
     }
 
     private fun findAllText(vararg textToFind: CharSequence?) {
@@ -178,11 +262,22 @@ class SafetyCenterActivityTest {
     }
 
     private fun waitTextNotDisplayed(text: String) {
+        waitNotDisplayed(By.text(text))
+    }
+
+    private fun waitNotDisplayed(selector: BySelector) {
         val startMillis = SystemClock.elapsedRealtime()
         while (true) {
-            if (waitFindObjectOrNull(By.text(text), NOT_DISPLAYED_CHECK_INTERVAL.toMillis()) ==
-                null) {
-                return
+            try {
+                if (waitFindObjectOrNull(selector, NOT_DISPLAYED_CHECK_INTERVAL.toMillis()) ==
+                    null) {
+                    return
+                }
+            } catch (e: android.support.test.uiautomator.StaleObjectException) {
+                Log.d(
+                    TAG,
+                    "StaleObjectException while calling waitTextNotDisplayed, will retry " +
+                        "if within timeout.")
             }
             if (Duration.ofMillis(SystemClock.elapsedRealtime() - startMillis) >=
                 NOT_DISPLAYED_TIMEOUT) {
@@ -191,11 +286,12 @@ class SafetyCenterActivityTest {
             Thread.sleep(NOT_DISPLAYED_CHECK_INTERVAL.toMillis())
         }
         throw AssertionError(
-            "View with text $text is still displayed after waiting for at least" +
+            "View matching selector $selector is still displayed after waiting for at least" +
                 "$NOT_DISPLAYED_TIMEOUT")
     }
 
     companion object {
+        private val TAG = SafetyCenterActivityTest::class.java.simpleName
         private val NOT_DISPLAYED_TIMEOUT = Duration.ofSeconds(20)
         private val NOT_DISPLAYED_CHECK_INTERVAL = Duration.ofMillis(100)
     }

@@ -32,18 +32,24 @@ import android.safetycenter.SafetyCenterStatus;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceGroup;
+import androidx.preference.PreferenceScreen;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.safetycenter.ui.model.LiveSafetyCenterViewModelFactory;
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
+import kotlin.Unit;
 
 /** Dashboard fragment for the Safety Center. */
 public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompat {
@@ -54,15 +60,18 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
     private static final String ISSUES_GROUP_KEY = "issues_group";
     private static final String ENTRIES_GROUP_KEY = "entries_group";
     private static final String STATIC_ENTRIES_GROUP_KEY = "static_entries_group";
+    private static final String EXPAND_ISSUE_GROUP_SAVED_INSTANCE_STATE_KEY =
+            "expand_issue_group_saved_instance_state_key";
 
-    @Nullable
-    private final ViewModelProvider.Factory mSafetyCenterViewModelFactoryOverride;
+    @Nullable private final ViewModelProvider.Factory mSafetyCenterViewModelFactoryOverride;
 
     private SafetyStatusPreference mSafetyStatusPreference;
     private PreferenceGroup mIssuesGroup;
     private PreferenceGroup mEntriesGroup;
     private PreferenceGroup mStaticEntriesGroup;
     private SafetyCenterViewModel mViewModel;
+
+    private boolean mExpandIssuesGroup = false;
 
     public SafetyCenterDashboardFragment() {
         this(null);
@@ -85,8 +94,26 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
     }
 
     @Override
+    protected RecyclerView.Adapter onCreateAdapter(PreferenceScreen preferenceScreen) {
+        /* By default, the PreferenceGroupAdapter does setHasStableIds(true).
+         * Since each Preference is internally allocated with an auto-incremented ID,
+         * it does not allow us to gracefully update only changed preferences based on
+         * SafetyPreferenceComparisonCallback.
+         * In order to allow the list to track the changes we need to ignore the Preference IDs. */
+        RecyclerView.Adapter adapter = super.onCreateAdapter(preferenceScreen);
+        adapter.setHasStableIds(false);
+        return adapter;
+    }
+
+    @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.safety_center_dashboard, rootKey);
+
+        if (savedInstanceState != null) {
+            mExpandIssuesGroup =
+                    savedInstanceState.getBoolean(
+                            EXPAND_ISSUE_GROUP_SAVED_INSTANCE_STATE_KEY, false);
+        }
 
         mViewModel =
                 new ViewModelProvider(requireActivity(), getSafetyCenterViewModelFactory())
@@ -113,6 +140,12 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
                 .setPreferenceComparisonCallback(new SafetyPreferenceComparisonCallback());
     }
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(EXPAND_ISSUE_GROUP_SAVED_INSTANCE_STATE_KEY, mExpandIssuesGroup);
+    }
+
     private void renderSafetyCenterData(@Nullable SafetyCenterData data) {
         if (data == null) return;
 
@@ -124,6 +157,7 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
         }
 
         mSafetyStatusPreference.setSafetyStatus(data.getStatus());
+        mSafetyStatusPreference.setHasIssues(!data.getIssues().isEmpty());
 
         // TODO(b/208212820): Only update entries that have changed since last
         // update, rather than deleting and re-adding all.
@@ -143,9 +177,20 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
     private void updateIssues(Context context, List<SafetyCenterIssue> issues) {
         mIssuesGroup.removeAll();
 
-        issues.stream()
-                .map(issue -> new IssueCardPreference(context, mViewModel, issue))
-                .forEachOrdered(mIssuesGroup::addPreference);
+        List<IssueCardPreference> issueCardPreferenceList =
+                issues.stream()
+                        .map(issue -> new IssueCardPreference(context, mViewModel, issue))
+                        .collect(Collectors.toUnmodifiableList());
+        CollapsableIssuesCardHelper issueCardHelper =
+                new CollapsableIssuesCardHelper(
+                        context,
+                        issueCardPreferenceList,
+                        mExpandIssuesGroup,
+                        () -> {
+                            mExpandIssuesGroup = true;
+                            return Unit.INSTANCE;
+                        });
+        issueCardHelper.addIssues(mIssuesGroup);
     }
 
     // TODO(b/208212820): Add groups and move to separate controller
@@ -214,7 +259,7 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
         mStaticEntriesGroup.removeAll();
 
         for (SafetyCenterStaticEntryGroup group : staticEntryGroups) {
-            PreferenceCategory category = new PreferenceCategory(context);
+            PreferenceCategory category = new ComparablePreferenceCategory(context);
             category.setTitle(group.getTitle());
             mStaticEntriesGroup.addPreference(category);
 
@@ -223,5 +268,4 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
             }
         }
     }
-
 }

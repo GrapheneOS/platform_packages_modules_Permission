@@ -94,6 +94,19 @@ class SafetySourceCtsData(private val context: Context) {
             .addIssue(informationIssue)
             .build()
 
+    /** A [SafetySourceIssue] with a [SEVERITY_LEVEL_RECOMMENDATION] and a redirection [Action]. */
+    val recommendationIssue =
+        SafetySourceIssue.Builder(
+                RECOMMENDATION_ISSUE_ID,
+                "Recommendation issue title",
+                "Recommendation issue summary",
+                SEVERITY_LEVEL_RECOMMENDATION,
+                "issue_type_id")
+            .addAction(
+                Action.Builder(RECOMMENDATION_ISSUE_ACTION_ID, "See issue", redirectPendingIntent)
+                    .build())
+            .build()
+
     /**
      * A [SafetySourceData] with a [SEVERITY_LEVEL_RECOMMENDATION] [SafetySourceIssue] and
      * [SafetySourceStatus].
@@ -107,18 +120,7 @@ class SafetySourceCtsData(private val context: Context) {
                         SEVERITY_LEVEL_RECOMMENDATION)
                     .setPendingIntent(redirectPendingIntent)
                     .build())
-            .addIssue(
-                SafetySourceIssue.Builder(
-                        "recommendation_issue_id",
-                        "Recommendation issue title",
-                        "Recommendation issue summary",
-                        SEVERITY_LEVEL_RECOMMENDATION,
-                        "issue_type_id")
-                    .addAction(
-                        Action.Builder(
-                                "recommendation_action_id", "See issue", redirectPendingIntent)
-                            .build())
-                    .build())
+            .addIssue(recommendationIssue)
             .build()
 
     /** A [PendingIntent] used by the resolving [Action] in [criticalIssue]. */
@@ -153,31 +155,50 @@ class SafetySourceCtsData(private val context: Context) {
      * A [SafetySourceData] with a [SEVERITY_LEVEL_CRITICAL_WARNING] [SafetySourceIssue] and
      * [SafetySourceStatus].
      */
-    val criticalWithIssue =
+    val criticalWithIssue = criticalBuilder().addIssue(criticalIssue).build()
+
+    /**
+     * A [SafetySourceData] with a [SEVERITY_LEVEL_CRITICAL_WARNING] [SafetySourceStatus], but no
+     * issue.
+     */
+    val critical = criticalBuilder().build()
+
+    private fun criticalBuilder() =
         SafetySourceData.Builder()
             .setStatus(
                 SafetySourceStatus.Builder(
                         "Critical title", "Critical summary", SEVERITY_LEVEL_CRITICAL_WARNING)
                     .setPendingIntent(redirectPendingIntent)
                     .build())
-            .addIssue(criticalIssue)
-            .build()
 
     companion object {
-        /** Issue ID for [criticalIssue]. */
-        const val CRITICAL_ISSUE_ID = "critical_issue_id"
-
-        /** Action ID for the resolving action in [criticalIssue]. */
-        const val CRITICAL_ISSUE_ACTION_ID = "critical_issue_action_id"
-
         /** Issue ID for [informationIssue]. */
         const val INFORMATION_ISSUE_ID = "information_issue_id"
 
         /** Action ID for the redirection action in [informationIssue]. */
         const val INFORMATION_ISSUE_ACTION_ID = "information_issue_action_id"
 
+        /** Issue ID for [recommendationIssue]. */
+        const val RECOMMENDATION_ISSUE_ID = "recommendation_issue_id"
+
+        /** Action ID for the action in [recommendationIssue]. */
+        const val RECOMMENDATION_ISSUE_ACTION_ID = "recommendation_issue_action_id"
+
+        /** Issue ID for [criticalIssue]. */
+        const val CRITICAL_ISSUE_ID = "critical_issue_id"
+
+        /** Action ID for the resolving action in [criticalIssue]. */
+        const val CRITICAL_ISSUE_ACTION_ID = "critical_issue_action_id"
+
         /** A [SafetyEvent] to push arbitrary changes to SafetyCenter. */
         val EVENT_SOURCE_STATE_CHANGED =
             SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
+
+        /** A utility to create a [SafetySourceData] object containing only issues. */
+        fun issuesOnly(vararg issues: SafetySourceIssue): SafetySourceData {
+            val builder = SafetySourceData.Builder()
+            issues.forEach { builder.addIssue(it) }
+            return builder.build()
+        }
     }
 }

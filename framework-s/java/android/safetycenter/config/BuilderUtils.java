@@ -39,12 +39,12 @@ final class BuilderUtils {
             boolean prohibited,
             @Nullable Object defaultValue) {
         if (attribute == null && required) {
-            throw new IllegalStateException(String.format("Required attribute %s missing", name));
+            throw new IllegalStateException("Required attribute " + name + " missing");
         }
         boolean nonDefaultValueProvided = !Objects.equals(attribute, defaultValue);
         boolean checkProhibited = prohibited && nonDefaultValueProvided;
         if (attribute != null && checkProhibited) {
-            throw new IllegalStateException(String.format("Prohibited attribute %s present", name));
+            throw new IllegalStateException("Prohibited attribute " + name + " present");
         }
     }
 
@@ -67,7 +67,7 @@ final class BuilderUtils {
             return Resources.ID_NULL;
         }
         if (required && value == Resources.ID_NULL) {
-            throw new IllegalStateException(String.format("Required attribute %s invalid", name));
+            throw new IllegalStateException("Required attribute " + name + " invalid");
         }
         return value;
     }
@@ -89,7 +89,7 @@ final class BuilderUtils {
             found |= (value == validValues[i]);
         }
         if (!found) {
-            throw new IllegalStateException(String.format("Attribute %s invalid", name));
+            throw new IllegalStateException("Attribute " + name + " invalid");
         }
         return value;
     }

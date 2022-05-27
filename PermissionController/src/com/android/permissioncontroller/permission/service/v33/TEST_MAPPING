@@ -1,0 +1,8 @@
+{
+  "presubmit": [
+    {
+      "file_patterns": ["SafetyCenterQsTileService\\.kt"],
+      "name": "CtsSafetyCenterTestCases"
+    }
+  ]
+}

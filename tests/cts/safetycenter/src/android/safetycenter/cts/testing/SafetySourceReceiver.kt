@@ -265,8 +265,7 @@ class SafetySourceReceiver : BroadcastReceiver() {
             val inlineActionKey =
                 SafetySourceDataKey(SafetySourceDataKey.Reason.RESOLVING_ACTION, sourceId)
             if (!safetySourceData.containsKey(inlineActionKey)) {
-                throw IllegalStateException(
-                    "Attempt to reply to an inline action when no data provided for it")
+                return
             }
             if (shouldReportSafetySourceError) {
                 reportSafetySourceError(

@@ -50,8 +50,7 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
     private static final String APEX_MODULE_NAME = "com.android.permission";
 
     /**
-     * The path where the Permission apex is mounted.
-     * Current value = "/apex/com.android.permission"
+     * The path where the Permission apex is mounted. Current value = "/apex/com.android.permission"
      */
     private static final String APEX_MODULE_PATH =
             new File("/apex", APEX_MODULE_NAME).getAbsolutePath();
@@ -60,29 +59,22 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
     private static final String CONFIG_NAME = "safety_center_config";
 
     /** Intent action that is used to identify the Safety Center resources APK */
-    @NonNull
-    private final String mResourcesApkAction;
+    @NonNull private final String mResourcesApkAction;
 
     /** The path where the Safety Center resources APK is expected to be installed */
-    @Nullable
-    private final String mResourcesApkPath;
+    @Nullable private final String mResourcesApkPath;
 
     /** Raw XML config resource name */
-    @NonNull
-    private final String mConfigName;
+    @NonNull private final String mConfigName;
 
     /** Specific flags used for retrieving resolve info */
     private final int mFlags;
 
     // Cached package name and resources from the resources APK
-    @Nullable
-    private String mResourcesApkPkgName;
-    @Nullable
-    private AssetManager mAssetsFromApk;
-    @Nullable
-    private Resources mResourcesFromApk;
-    @Nullable
-    private Resources.Theme mThemeFromApk;
+    @Nullable private String mResourcesApkPkgName;
+    @Nullable private AssetManager mAssetsFromApk;
+    @Nullable private Resources mResourcesFromApk;
+    @Nullable private Resources.Theme mThemeFromApk;
 
     public SafetyCenterResourcesContext(@NonNull Context contextBase) {
         super(contextBase);
@@ -92,8 +84,12 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
         mFlags = PackageManager.MATCH_SYSTEM_ONLY;
     }
 
-    SafetyCenterResourcesContext(@NonNull Context contextBase, @NonNull String resourcesApkAction,
-            @Nullable String resourcesApkPath, @NonNull String configName, int flags) {
+    SafetyCenterResourcesContext(
+            @NonNull Context contextBase,
+            @NonNull String resourcesApkAction,
+            @Nullable String resourcesApkPath,
+            @NonNull String configName,
+            int flags) {
         super(contextBase);
         mResourcesApkAction = requireNonNull(resourcesApkAction);
         mResourcesApkPath = resourcesApkPath;
@@ -109,8 +105,8 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
             return mResourcesApkPkgName;
         }
 
-        List<ResolveInfo> resolveInfos = getPackageManager().queryIntentActivities(
-                new Intent(mResourcesApkAction), mFlags);
+        List<ResolveInfo> resolveInfos =
+                getPackageManager().queryIntentActivities(new Intent(mResourcesApkAction), mFlags);
 
         if (resolveInfos.size() > 1) {
             // multiple apps found, log a warning, but continue
@@ -118,9 +114,12 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
             final int resolveInfosSize = resolveInfos.size();
             for (int i = 0; i < resolveInfosSize; i++) {
                 ResolveInfo resolveInfo = resolveInfos.get(i);
-                Log.w(TAG, String.format("- pkg:%s at:%s",
-                        resolveInfo.activityInfo.applicationInfo.packageName,
-                        resolveInfo.activityInfo.applicationInfo.sourceDir));
+                Log.w(
+                        TAG,
+                        String.format(
+                                "- pkg:%s at:%s",
+                                resolveInfo.activityInfo.applicationInfo.packageName,
+                                resolveInfo.activityInfo.applicationInfo.sourceDir));
             }
         }
 
@@ -131,7 +130,7 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
             ResolveInfo resolveInfo = resolveInfos.get(i);
             if (mResourcesApkPath != null
                     && !resolveInfo.activityInfo.applicationInfo.sourceDir.startsWith(
-                    mResourcesApkPath)) {
+                            mResourcesApkPath)) {
                 // skip apps that don't live in the Permission apex
                 continue;
             }
@@ -141,7 +140,8 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
 
         if (info == null) {
             // Resource APK not loaded yet, print a stack trace to see where this is called from
-            Log.e(TAG,
+            Log.e(
+                    TAG,
                     "Attempted to fetch resources before Safety Center resources APK is loaded!",
                     new IllegalStateException());
             return null;
@@ -153,7 +153,7 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
     }
 
     /**
-     * Get the raw XML resource representing the Safety Center configuration from the Safety Center
+     * Gets the raw XML resource representing the Safety Center configuration from the Safety Center
      * resources APK.
      */
     @Nullable
@@ -171,6 +171,26 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
             return null;
         }
         return resources.openRawResource(id);
+    }
+
+    /** Gets a string resource by name from the Safety Center resources APK. */
+    @Nullable
+    public String getStringByName(@NonNull String name) {
+        String resourcePkgName = getResourcesApkPkgName();
+        if (resourcePkgName == null) {
+            return null;
+        }
+        Resources resources = getResources();
+        if (resources == null) {
+            return null;
+        }
+        // TODO(b/227738283): profile the performance of this operation and consider adding caching
+        //  or finding some alternative solution.
+        int id = resources.getIdentifier(name, "string", resourcePkgName);
+        if (id == Resources.ID_NULL) {
+            return null;
+        }
+        return resources.getString(id);
     }
 
     @Nullable

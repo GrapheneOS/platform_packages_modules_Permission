@@ -136,13 +136,13 @@ final class SafetyCenterDataTracker {
         if (!validateRequest(safetySourceData, safetySourceId, packageName, userId)) {
             return false;
         }
-        boolean safetyEventChangedSafetyCenterData =
+        boolean safetyCenterDataHasChanged =
                 processSafetyEvent(safetySourceId, safetyEvent, userId);
 
         SafetySourceKey key = SafetySourceKey.of(safetySourceId, userId);
         SafetySourceData existingSafetySourceData = mSafetySourceDataForKey.get(key);
         if (Objects.equals(safetySourceData, existingSafetySourceData)) {
-            return safetyEventChangedSafetyCenterData;
+            return safetyCenterDataHasChanged;
         }
 
         if (safetySourceData == null) {
@@ -205,7 +205,7 @@ final class SafetyCenterDataTracker {
             return null;
         }
         // TODO(b/229080761): Implement proper error message.
-        return new SafetyCenterErrorDetails("Error");
+        return new SafetyCenterErrorDetails("Error reported from source: " + safetySourceId);
     }
 
     /**
@@ -228,12 +228,13 @@ final class SafetyCenterDataTracker {
     }
 
     /**
-     * Unmarks the given {@link SafetyCenterIssueActionId} as in-flight and returns whether it was
-     * in-flight prior to this call.
+     * Unmarks the given {@link SafetyCenterIssueActionId} as in-flight and returns whether it
+     * caused the underlying {@link SafetyCenterData} to change.
      */
     boolean unmarkSafetyCenterIssueActionAsInFlight(
             @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
-        return mSafetyCenterIssueActionsInFlight.remove(safetyCenterIssueActionId);
+        return mSafetyCenterIssueActionsInFlight.remove(safetyCenterIssueActionId)
+                && getSafetySourceIssueAction(safetyCenterIssueActionId) != null;
     }
 
     /** Dismisses the given {@link SafetyCenterIssueId}. */
@@ -325,7 +326,7 @@ final class SafetyCenterDataTracker {
      * Returns a default {@link SafetyCenterData} object to be returned when the API is disabled.
      */
     @NonNull
-    static SafetyCenterData getDefaultSafetyCenterData() {
+    SafetyCenterData getDefaultSafetyCenterData() {
         return new SafetyCenterData(
                 new SafetyCenterStatus.Builder(
                                 getSafetyCenterStatusTitle(
@@ -359,16 +360,16 @@ final class SafetyCenterDataTracker {
         SafetySource safetySource =
                 mSafetyCenterConfigReader.getExternalSafetySource(safetySourceId);
         if (safetySource == null) {
-            throw new IllegalArgumentException(
-                    String.format("Unexpected safety source \"%s\"", safetySourceId));
+            throw new IllegalArgumentException("Unexpected safety source: " + safetySourceId);
         }
 
         // TODO(b/222330089): Security: check certs?
         if (!packageName.equals(safetySource.getPackageName())) {
             throw new IllegalArgumentException(
-                    String.format(
-                            "Unexpected package name \"%s\" for safety source \"%s\"",
-                            packageName, safetySourceId));
+                    "Unexpected package name: "
+                            + packageName
+                            + ", for safety source: "
+                            + safetySourceId);
         }
 
         // TODO(b/222327845): Security: check package is installed for user?
@@ -376,9 +377,7 @@ final class SafetyCenterDataTracker {
         if (UserUtils.isManagedProfile(userId, mContext)
                 && !SafetySources.supportsManagedProfiles(safetySource)) {
             throw new IllegalArgumentException(
-                    String.format(
-                            "Unexpected managed profile request for safety source \"%s\"",
-                            safetySourceId));
+                    "Unexpected managed profile request for safety source: " + safetySourceId);
         }
 
         boolean retrievingOrClearingData = safetySourceData == null;
@@ -389,16 +388,13 @@ final class SafetyCenterDataTracker {
         if (safetySource.getType() == SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY
                 && safetySourceData.getStatus() != null) {
             throw new IllegalArgumentException(
-                    String.format(
-                            "Unexpected status for issue only safety source \"%s\"",
-                            safetySourceId));
+                    "Unexpected status for issue only safety source: " + safetySourceId);
         }
 
         if (safetySource.getType() == SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC
                 && safetySourceData.getStatus() == null) {
             throw new IllegalArgumentException(
-                    String.format(
-                            "Missing status for dynamic safety source \"%s\"", safetySourceId));
+                    "Missing status for dynamic safety source: " + safetySourceId);
         }
 
         if (safetySourceData.getStatus() != null) {
@@ -410,9 +406,10 @@ final class SafetyCenterDataTracker {
 
             if (sourceSeverityLevel > maxSourceSeverityLevel) {
                 throw new IllegalArgumentException(
-                        String.format(
-                                "Unexpected severity level \"%d\" for safety source \"%s\"",
-                                sourceSeverityLevel, safetySourceId));
+                        "Unexpected severity level: "
+                                + sourceSeverityLevel
+                                + ", for safety source: "
+                                + safetySourceId);
             }
         }
 
@@ -420,10 +417,10 @@ final class SafetyCenterDataTracker {
             int issueSeverityLevel = safetySourceData.getIssues().get(i).getSeverityLevel();
             if (issueSeverityLevel > safetySource.getMaxSeverityLevel()) {
                 throw new IllegalArgumentException(
-                        String.format(
-                                "Unexpected severity level \"%d\" for issue in safety source"
-                                        + " \"%s\"",
-                                issueSeverityLevel, safetySourceId));
+                        "Unexpected severity level: "
+                                + issueSeverityLevel
+                                + ", for issue in safety source: "
+                                + safetySourceId);
             }
         }
 
@@ -441,10 +438,9 @@ final class SafetyCenterDataTracker {
                 if (refreshBroadcastId == null) {
                     Log.w(
                             TAG,
-                            String.format(
-                                    "Received safety event of type %d without a refresh broadcast"
-                                            + " id.",
-                                    safetyEvent.getType()));
+                            "Received safety event of type "
+                                    + safetyEvent.getType()
+                                    + " without a refresh broadcast id");
                     return false;
                 }
                 return mSafetyCenterRefreshTracker.reportSourceRefreshCompleted(
@@ -455,20 +451,18 @@ final class SafetyCenterDataTracker {
                 if (safetySourceIssueId == null) {
                     Log.w(
                             TAG,
-                            String.format(
-                                    "Received safety event of type %d without a safety source issue"
-                                            + " id.",
-                                    safetyEvent.getType()));
+                            "Received safety event of type "
+                                    + safetyEvent.getType()
+                                    + " without a safety source issue id");
                     return false;
                 }
                 String safetySourceIssueActionId = safetyEvent.getSafetySourceIssueActionId();
                 if (safetySourceIssueActionId == null) {
                     Log.w(
                             TAG,
-                            String.format(
-                                    "Received safety event of type %d without a safety source issue"
-                                            + " action id.",
-                                    safetyEvent.getType()));
+                            "Received safety event of type "
+                                    + safetyEvent.getType()
+                                    + " without a safety source issue action id");
                     return false;
                 }
                 SafetyCenterIssueId safetyCenterIssueId =
@@ -533,8 +527,6 @@ final class SafetyCenterDataTracker {
         }
 
         // TODO(b/223349473): Reorder safetyCenterIssues based on some criteria.
-        // TODO(b/229189269): Populate refresh status in SafetyCenterStatus using data from the
-        // SafetyCenterRefreshTracker.
         int safetyCenterOverallSeverityLevel =
                 entryToSafetyCenterStatusOverallLevel(maxSafetyCenterEntryLevel);
         return new SafetyCenterData(
@@ -542,6 +534,7 @@ final class SafetyCenterDataTracker {
                                 getSafetyCenterStatusTitle(safetyCenterOverallSeverityLevel),
                                 getSafetyCenterStatusSummary(safetyCenterOverallSeverityLevel))
                         .setSeverityLevel(safetyCenterOverallSeverityLevel)
+                        .setRefreshStatus(mSafetyCenterRefreshTracker.getRefreshStatus())
                         .build(),
                 safetyCenterIssues,
                 safetyCenterEntryOrGroups,
@@ -853,9 +846,7 @@ final class SafetyCenterDataTracker {
         }
         Log.w(
                 TAG,
-                String.format(
-                        "Unknown safety source type found in collapsible group: %s",
-                        safetySource.getType()));
+                "Unknown safety source type found in collapsible group: " + safetySource.getType());
         return null;
     }
 
@@ -964,11 +955,7 @@ final class SafetyCenterDataTracker {
             case SafetySource.SAFETY_SOURCE_TYPE_STATIC:
                 return toDefaultSafetyCenterStaticEntry(safetySource, null, isUserManaged, userId);
         }
-        Log.w(
-                TAG,
-                String.format(
-                        "Unknown safety source type found in rigid group: %s",
-                        safetySource.getType()));
+        Log.w(TAG, "Unknown safety source type found in rigid group: " + safetySource.getType());
         return null;
     }
 
@@ -1016,7 +1003,6 @@ final class SafetyCenterDataTracker {
 
         // TODO(b/222838784): Validate that the intent action is available.
 
-        // TODO(b/219699223): Is it safe to create a PendingIntent as system server here?
         // This call is required for getIntentSender() to be allowed to send as another package.
         final long identity = Binder.clearCallingIdentity();
         try {
@@ -1029,14 +1015,19 @@ final class SafetyCenterDataTracker {
 
     @Nullable
     private Context toPackageContextAsUser(@Nullable String packageName, @UserIdInt int userId) {
-        String contextPackageName = packageName == null ? mContext.getPackageName() : packageName;
+        String contextPackageName =
+                packageName == null
+                        // TODO(b/233047525): We should likely use the listener's or caller's
+                        // package name here.
+                        ? mContext.getPackageManager().getPermissionControllerPackageName()
+                        : packageName;
         // This call requires the INTERACT_ACROSS_USERS permission.
         final long identity = Binder.clearCallingIdentity();
         try {
             return mContext.createPackageContextAsUser(
                     contextPackageName, 0, UserHandle.of(userId));
         } catch (NameNotFoundException e) {
-            Log.w(TAG, String.format("Package name %s not found", contextPackageName), e);
+            Log.w(TAG, "Package name " + contextPackageName + " not found", e);
             return null;
         } finally {
             Binder.restoreCallingIdentity(identity);
@@ -1044,10 +1035,26 @@ final class SafetyCenterDataTracker {
     }
 
     /**
+     * Returns a {@link String} resource from the given {@code name}, using the {@link
+     * SafetyCenterResourcesContext}.
+     *
+     * <p>Returns an empty string if the resource cannot be accessed.
+     */
+    @NonNull
+    private String getStringByName(@NonNull String name) {
+        String value = mSafetyCenterResourcesContext.getStringByName(name);
+        if (value == null) {
+            Log.w(TAG, "String resource \"" + name + "\" not found");
+            return "";
+        }
+        return value;
+    }
+
+    /**
      * Returns a {@link String} resource from the given {@code stringId}, using the {@link
      * SafetyCenterResourcesContext}.
      *
-     * <p>Throws a {@link NullPointerException} if the resource cannot be accessed.
+     * <p>Throws a {@link Resources.NotFoundException} if the resource cannot be accessed.
      */
     @NonNull
     private String getString(@StringRes int stringId) {
@@ -1096,9 +1103,8 @@ final class SafetyCenterDataTracker {
 
         Log.w(
                 TAG,
-                String.format(
-                        "Unexpected SafetyCenterEntry.EntrySeverityLevel: %s",
-                        safetyCenterEntrySeverityLevel));
+                "Unexpected SafetyCenterEntry.EntrySeverityLevel: "
+                        + safetyCenterEntrySeverityLevel);
         return SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN;
     }
 
@@ -1116,9 +1122,8 @@ final class SafetyCenterDataTracker {
 
         Log.w(
                 TAG,
-                String.format(
-                        "Unexpected SafetyCenterIssue.IssueSeverityLevel: %s",
-                        safetyCenterIssueSeverityLevel));
+                "Unexpected SafetyCenterIssue.IssueSeverityLevel: "
+                        + safetyCenterIssueSeverityLevel);
         return SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN;
     }
 
@@ -1138,9 +1143,8 @@ final class SafetyCenterDataTracker {
 
         Log.w(
                 TAG,
-                String.format(
-                        "Unexpected SafetySourceData.SeverityLevel in SafetySourceStatus: %s",
-                        safetySourceSeverityLevel));
+                "Unexpected SafetySourceData.SeverityLevel in SafetySourceStatus: "
+                        + safetySourceSeverityLevel);
         return SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN;
     }
 
@@ -1164,9 +1168,8 @@ final class SafetyCenterDataTracker {
 
         Log.w(
                 TAG,
-                String.format(
-                        "Unexpected SafetySourceData.SeverityLevel in SafetySourceIssue: %s",
-                        safetySourceIssueSeverityLevel));
+                "Unexpected SafetySourceData.SeverityLevel in SafetySourceIssue: "
+                        + safetySourceIssueSeverityLevel);
         return SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_OK;
     }
 
@@ -1180,10 +1183,7 @@ final class SafetyCenterDataTracker {
                 return SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_PRIVACY;
         }
 
-        Log.w(
-                TAG,
-                String.format(
-                        "Unexpected SafetySourcesGroup.StatelessIconType: %s", statelessIconType));
+        Log.w(TAG, "Unexpected SafetySourcesGroup.StatelessIconType: " + statelessIconType);
         return SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON;
     }
 
@@ -1199,53 +1199,42 @@ final class SafetyCenterDataTracker {
 
         Log.w(
                 TAG,
-                String.format(
-                        "Unexpected SafetySourceStatus.IconAction.IconActionType: %s",
-                        safetySourceIconActionType));
+                "Unexpected SafetySourceStatus.IconAction.IconActionType: "
+                        + safetySourceIconActionType);
         return SafetyCenterEntry.IconAction.ICON_ACTION_TYPE_INFO;
     }
 
-    // TODO(b/218801295): Use the right strings and localize them.
-    private static String getSafetyCenterStatusTitle(
+    private String getSafetyCenterStatusTitle(
             @SafetyCenterStatus.OverallSeverityLevel int overallSeverityLevel) {
         switch (overallSeverityLevel) {
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN:
-                return "Unknown";
+                return getStringByName("overall_severity_level_unknown_title");
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK:
-                return "All good";
+                return getStringByName("overall_severity_level_ok_title");
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_RECOMMENDATION:
-                return "Some warnings";
+                return getStringByName("overall_severity_level_recommendation_title");
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING:
-                return "Uh-oh";
+                return getStringByName("overall_severity_level_critical_warning_title");
         }
 
-        Log.w(
-                TAG,
-                String.format(
-                        "Unexpected SafetyCenterStatus.OverallSeverityLevel: %s",
-                        overallSeverityLevel));
+        Log.w(TAG, "Unexpected SafetyCenterStatus.OverallSeverityLevel: " + overallSeverityLevel);
         return "";
     }
 
-    // TODO(b/218801295): Use the right strings and localize them.
-    private static String getSafetyCenterStatusSummary(
+    private String getSafetyCenterStatusSummary(
             @SafetyCenterStatus.OverallSeverityLevel int overallSeverityLevel) {
         switch (overallSeverityLevel) {
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN:
-                return "Unknown safety status";
+                return getStringByName("overall_severity_level_unknown_summary");
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK:
-                return "No problemo maestro";
+                return getStringByName("overall_severity_level_ok_summary");
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_RECOMMENDATION:
-                return "Careful there";
+                return getStringByName("overall_severity_level_recommendation_summary");
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING:
-                return "Code red";
+                return getStringByName("overall_severity_level_critical_warning_summary");
         }
 
-        Log.w(
-                TAG,
-                String.format(
-                        "Unexpected SafetyCenterStatus.OverallSeverityLevel: %s",
-                        overallSeverityLevel));
+        Log.w(TAG, "Unexpected SafetyCenterStatus.OverallSeverityLevel: " + overallSeverityLevel);
         return "";
     }
 }

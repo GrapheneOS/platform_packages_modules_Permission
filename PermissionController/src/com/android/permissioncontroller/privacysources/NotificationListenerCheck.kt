@@ -70,9 +70,6 @@ import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.Utils.getSystemServiceSafe
 import com.android.permissioncontroller.privacysources.SafetyCenterReceiver.RefreshEvent
-import com.android.permissioncontroller.privacysources.SafetyCenterReceiver.RefreshEvent.EVENT_DEVICE_REBOOTED
-import com.android.permissioncontroller.privacysources.SafetyCenterReceiver.RefreshEvent.EVENT_REFRESH_REQUESTED
-import com.android.permissioncontroller.privacysources.SafetyCenterReceiver.RefreshEvent.UNKNOWN
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.Default
 import kotlinx.coroutines.GlobalScope
@@ -593,8 +590,8 @@ internal class NotificationListenerCheckInternal(
             colorResId = R.color.safety_center_info
         } else {
             // Generic branding. Settings label, gear icon, and system accent color
-            appLabel = Utils.getSettingsLabelForNotifications(parentUserContext.packageManager)
-            smallIconResId = R.drawable.ic_settings_24dp
+            appLabel = parentUserContext.getString(R.string.safety_center_notification_app_label)
+            smallIconResId = R.drawable.ic_settings_notification
             colorResId = android.R.color.system_notification_accent_color
         }
 
@@ -1146,9 +1143,6 @@ class NotificationListenerPackageResetHandler : BroadcastReceiver() {
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class NotificationListenerPrivacySource : PrivacySource {
     override fun safetyCenterEnabledChanged(context: Context, enabled: Boolean) {
-        if (!isNotificationListenerCheckFlagEnabled()) {
-            return
-        }
         NotificationListenerCheckInternal(context, null).run {
             removeAnyNotification()
         }
@@ -1163,18 +1157,7 @@ class NotificationListenerPrivacySource : PrivacySource {
             return
         }
 
-        val safetyRefreshEvent = when (refreshEvent) {
-            UNKNOWN ->
-                SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
-            EVENT_DEVICE_REBOOTED ->
-                SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_REBOOTED).build()
-            EVENT_REFRESH_REQUESTED -> {
-                val refreshBroadcastId = intent.getStringExtra(
-                    SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID)
-                SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
-                    .setRefreshBroadcastId(refreshBroadcastId).build()
-            }
-        }
+        val safetyRefreshEvent = getSafetyCenterEvent(refreshEvent, intent)
 
         NotificationListenerCheckInternal(context, null).run {
             sendIssuesToSafetyCenter(safetyRefreshEvent)
