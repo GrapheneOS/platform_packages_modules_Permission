@@ -14,5 +14,19 @@
  * limitations under the License.
  */
 
-@androidx.annotation.RequiresApi(android.os.Build.VERSION_CODES.TIRAMISU)
-package com.android.permissioncontroller.permission.ui.handheld.v33;
+package com.android.permissioncontroller.safetycenter;
+
+/** App-global constants */
+public class SafetyCenterConstants {
+    /**
+     * Key for the argument noting that it is the quick settings safety center dashboard fragment
+     */
+    public static final String QUICK_SETTINGS_SAFETY_CENTER_FRAGMENT =
+            "QUICK_SETTINGS_SAFETY_CENTER_FRAGMENT";
+
+    public static final String EXPAND_ISSUE_GROUP_SAVED_INSTANCE_STATE_KEY =
+            "expand_issue_group_saved_instance_state_key";
+
+    public static final String EXPAND_ISSUE_GROUP_QS_FRAGMENT_KEY =
+            "expand_issue_group_qs_fragment_key";
+}

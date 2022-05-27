@@ -17,8 +17,11 @@
 package com.android.permissioncontroller.safetycenter.ui
 
 import android.content.Context
+import android.content.Intent
+import android.content.Intent.ACTION_SAFETY_CENTER
 import androidx.preference.PreferenceGroup
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.safetycenter.SafetyCenterConstants.EXPAND_ISSUE_GROUP_QS_FRAGMENT_KEY
 
 /**
  * Helper class to hide issue cards if over a predefined limit and handle revealing hidden issue
@@ -32,9 +35,10 @@ import com.android.permissioncontroller.R
  * @param expandPreferencesListener Listener used to inform preference fragment of expansion
  */
 class CollapsableIssuesCardHelper(
-    context: Context,
+    val context: Context,
     val issueCardPreferences: List<IssueCardPreference>,
     val expandIssueCards: Boolean,
+    val isQuickSettingsFragment: Boolean = false,
     val expandPreferencesListener: () -> Unit
 ) {
     private val numberOfHiddenIssues = issueCardPreferences.size - MAX_SHOWN_ISSUES_COLLAPSED
@@ -69,23 +73,29 @@ class CollapsableIssuesCardHelper(
             return null
         }
         val firstHiddenIssue = issueCardPreferences[MAX_SHOWN_ISSUES_COLLAPSED]
+        val prefIconResourceId =
+            if (isQuickSettingsFragment) R.drawable.ic_chevron_right else R.drawable.ic_expand_more
         return MoreIssuesCardPreference(
-            context,
-            R.drawable.ic_expand_more,
-            numberOfHiddenIssues,
-            firstHiddenIssue.severityLevel) {
+            context, prefIconResourceId, numberOfHiddenIssues, firstHiddenIssue.severityLevel) {
             expand()
             true
         }
     }
 
     private fun expand() {
+        if (isQuickSettingsFragment) {
+            // Navigate to Safety center with issues expanded
+            val safetyCenterIntent = Intent(ACTION_SAFETY_CENTER)
+            safetyCenterIntent.putExtra(EXPAND_ISSUE_GROUP_QS_FRAGMENT_KEY, true)
+            context.startActivity(safetyCenterIntent)
+            return
+        }
+
         for (preference in issueCardPreferences) {
             preference.isVisible = true
         }
         moreIssuesCardPreference?.isVisible = false
-
-        // Notify host so cards can state expanded on refresh or restart of fragment
+        // Notify host so cards can stay expanded on refresh or restart of fragment
         expandPreferencesListener()
     }
 
