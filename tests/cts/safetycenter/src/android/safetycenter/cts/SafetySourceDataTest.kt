@@ -188,6 +188,29 @@ class SafetySourceDataTest {
     }
 
     @Test
+    fun build_withRecommendationStatusAndRecommendationIssues_doesNotThrow() {
+        val builder =
+            SafetySourceData.Builder()
+                .setStatus(createStatus(SEVERITY_LEVEL_RECOMMENDATION))
+                .addIssue(createIssue(SEVERITY_LEVEL_RECOMMENDATION))
+
+        assertThat(builder.build()).isNotNull()
+    }
+
+    @Test
+    fun build_withUnspecifiedStatusAndRecommendationIssues_throwsIllegalArgumentException() {
+        val builder =
+            SafetySourceData.Builder()
+                .setStatus(createStatus(SEVERITY_LEVEL_UNSPECIFIED))
+                .addIssue(createIssue(SEVERITY_LEVEL_RECOMMENDATION))
+
+        val exception = assertFailsWith(IllegalArgumentException::class) { builder.build() }
+        assertThat(exception)
+            .hasMessageThat()
+            .isEqualTo("Safety source data must have issues that match its status severity level")
+    }
+
+    @Test
     fun build_withInformationStatusAndRecommendationIssues_throwsIllegalArgumentException() {
         val builder =
             SafetySourceData.Builder()
@@ -197,37 +220,31 @@ class SafetySourceDataTest {
         val exception = assertFailsWith(IllegalArgumentException::class) { builder.build() }
         assertThat(exception)
             .hasMessageThat()
-            .isEqualTo(
-                "Safety source data must not contain any issue with a severity level both greater" +
-                    " than SEVERITY_LEVEL_INFORMATION and greater than the status severity level")
+            .isEqualTo("Safety source data must have issues that match its status severity level")
     }
 
     @Test
-    fun build_withRecommendationStatusAndNoIssues_doesNotThrow() {
+    fun build_withRecommendationStatusAndNoIssues_throwsIllegalArgumentException() {
         val builder =
             SafetySourceData.Builder().setStatus(createStatus(SEVERITY_LEVEL_RECOMMENDATION))
 
-        assertThat(builder.build()).isNotNull()
+        val exception = assertFailsWith(IllegalArgumentException::class) { builder.build() }
+        assertThat(exception)
+            .hasMessageThat()
+            .isEqualTo("Safety source data must have issues that match its status severity level")
     }
 
     @Test
-    fun build_withRecommendationStatusAndInformationIssues_doesNotThrow() {
+    fun build_withRecommendationStatusAndInformationIssues_throwsIllegalArgumentException() {
         val builder =
             SafetySourceData.Builder()
                 .setStatus(createStatus(SEVERITY_LEVEL_RECOMMENDATION))
                 .addIssue(createIssue(SEVERITY_LEVEL_INFORMATION))
 
-        assertThat(builder.build()).isNotNull()
-    }
-
-    @Test
-    fun build_withRecommendationStatusAndRecommendationIssues_doesNotThrow() {
-        val builder =
-            SafetySourceData.Builder()
-                .setStatus(createStatus(SEVERITY_LEVEL_RECOMMENDATION))
-                .addIssue(createIssue(SEVERITY_LEVEL_RECOMMENDATION))
-
-        assertThat(builder.build()).isNotNull()
+        val exception = assertFailsWith(IllegalArgumentException::class) { builder.build() }
+        assertThat(exception)
+            .hasMessageThat()
+            .isEqualTo("Safety source data must have issues that match its status severity level")
     }
 
     @Test
@@ -240,9 +257,7 @@ class SafetySourceDataTest {
         val exception = assertFailsWith(IllegalArgumentException::class) { builder.build() }
         assertThat(exception)
             .hasMessageThat()
-            .isEqualTo(
-                "Safety source data must not contain any issue with a severity level both greater" +
-                    " than SEVERITY_LEVEL_INFORMATION and greater than the status severity level")
+            .isEqualTo("Safety source data must have issues that match its status severity level")
     }
 
     @Test

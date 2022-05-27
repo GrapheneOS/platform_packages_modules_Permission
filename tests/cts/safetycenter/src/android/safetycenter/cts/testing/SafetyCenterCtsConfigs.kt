@@ -191,6 +191,12 @@ object SafetyCenterCtsConfigs {
     const val DYNAMIC_IN_RIGID_ID = "dynamic_in_rigid"
 
     /**
+     * ID of a source provided by [COMPLEX_CONFIG], this is an issue-only, primary profile only
+     * source.
+     */
+    const val ISSUE_ONLY_IN_RIGID_ID = "issue_only_in_rigid"
+
+    /**
      * ID of a source provided by [COMPLEX_CONFIG], this is a generic, static, primary profile only
      * source.
      */
@@ -343,8 +349,11 @@ object SafetyCenterCtsConfigs {
                     .setSummaryResId(Resources.ID_NULL)
                     .addSafetySource(dynamicSafetySource(DYNAMIC_IN_RIGID_ID))
                     .addSafetySource(staticSafetySource(STATIC_IN_RIGID_ID))
+                    .addSafetySource(issueOnlySafetySource(ISSUE_ONLY_IN_RIGID_ID))
                     .build())
             .build()
+
+    private fun dynamicSafetySource(id: String) = dynamicSafetySourceBuilder(id).build()
 
     private fun dynamicSafetySourceBuilder(id: String) =
         SafetySource.Builder(SAFETY_SOURCE_TYPE_DYNAMIC)
@@ -356,7 +365,7 @@ object SafetyCenterCtsConfigs {
             .setProfile(SafetySource.PROFILE_PRIMARY)
             .setRefreshOnPageOpenAllowed(true)
 
-    private fun dynamicSafetySource(id: String) = dynamicSafetySourceBuilder(id).build()
+    private fun staticSafetySource(id: String) = staticSafetySourceBuilder(id).build()
 
     private fun staticSafetySourceBuilder(id: String) =
         SafetySource.Builder(SAFETY_SOURCE_TYPE_STATIC)
@@ -366,7 +375,7 @@ object SafetyCenterCtsConfigs {
             .setIntentAction(ACTION_SAFETY_CENTER)
             .setProfile(SafetySource.PROFILE_PRIMARY)
 
-    private fun staticSafetySource(id: String) = staticSafetySourceBuilder(id).build()
+    private fun issueOnlySafetySource(id: String) = issueOnlySafetySourceBuilder(id).build()
 
     private fun issueOnlySafetySourceBuilder(id: String) =
         SafetySource.Builder(SAFETY_SOURCE_TYPE_ISSUE_ONLY)
