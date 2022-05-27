@@ -40,6 +40,7 @@ import android.util.Log
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
+import com.android.compatibility.common.util.UiAutomatorUtils.getUiDevice
 import com.android.compatibility.common.util.UiAutomatorUtils.waitFindObject
 import com.android.compatibility.common.util.UiAutomatorUtils.waitFindObjectOrNull
 import java.time.Duration
@@ -80,6 +81,11 @@ class SafetyCenterActivityTest {
             return
         }
         safetyCenterCtsHelper.reset()
+    }
+
+    @After
+    fun resetDeviceState() {
+        resetDeviceRotation()
     }
 
     @Test
@@ -217,9 +223,42 @@ class SafetyCenterActivityTest {
 
         context.launchSafetyCenterActivity {
             assertIssueDisplayed(safetySourceCtsData.criticalIssue)
-            waitFindObject(By.text("See all alerts")).click()
 
+            expandMoreIssuesCard()
+
+            // Verify cards expanded
             waitTextNotDisplayed("See all alerts")
+            assertIssueDisplayed(safetySourceCtsData.criticalIssue)
+            assertIssueDisplayed(safetySourceCtsData.recommendationIssue)
+            assertIssueDisplayed(safetySourceCtsData.informationIssue)
+        }
+    }
+
+    @Test
+    fun moreIssuesCard_rotation_cardsStillExpanded() {
+        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
+        safetyCenterCtsHelper.setData(SOURCE_ID_1, safetySourceCtsData.criticalWithIssue)
+        safetyCenterCtsHelper.setData(SOURCE_ID_2, safetySourceCtsData.recommendationWithIssue)
+        safetyCenterCtsHelper.setData(SOURCE_ID_3, safetySourceCtsData.informationWithIssue)
+
+        context.launchSafetyCenterActivity {
+            expandMoreIssuesCard()
+
+            val uiDevice = getUiDevice()
+            uiDevice.waitForIdle()
+
+            // Verify cards initially expanded
+            waitTextNotDisplayed("See all alerts")
+            assertIssueDisplayed(safetySourceCtsData.criticalIssue)
+            assertIssueDisplayed(safetySourceCtsData.recommendationIssue)
+            assertIssueDisplayed(safetySourceCtsData.informationIssue)
+
+            // Device rotation to trigger usage of savedinstancestate via config update
+            rotateDevice()
+
+            // Verify cards remain expanded
+            waitTextNotDisplayed("See all alerts")
+            assertIssueDisplayed(safetySourceCtsData.criticalIssue)
             assertIssueDisplayed(safetySourceCtsData.recommendationIssue)
             assertIssueDisplayed(safetySourceCtsData.informationIssue)
         }
@@ -258,7 +297,8 @@ class SafetyCenterActivityTest {
     }
 
     private fun findAllText(vararg textToFind: CharSequence?) {
-        for (text in textToFind) if (text != null) waitFindObject(By.text(text.toString()))
+        for (text in textToFind) if (text != null)
+            waitFindObject(By.text(text.toString()), FIND_TEXT_TIMEOUT.toMillis())
     }
 
     private fun waitTextNotDisplayed(text: String) {
@@ -290,9 +330,32 @@ class SafetyCenterActivityTest {
                 "$NOT_DISPLAYED_TIMEOUT")
     }
 
+    private fun expandMoreIssuesCard() {
+        waitFindObject(By.text("See all alerts")).click()
+    }
+
+    private fun rotateDevice() {
+        val uiDevice = getUiDevice()
+        if (uiDevice.isNaturalOrientation()) {
+            uiDevice.setOrientationLeft()
+        } else {
+            uiDevice.setOrientationNatural()
+        }
+        uiDevice.waitForIdle()
+    }
+
+    private fun resetDeviceRotation() {
+        val uiDevice = getUiDevice()
+        if (!uiDevice.isNaturalOrientation()) {
+            uiDevice.setOrientationNatural()
+            uiDevice.waitForIdle()
+        }
+    }
+
     companion object {
         private val TAG = SafetyCenterActivityTest::class.java.simpleName
         private val NOT_DISPLAYED_TIMEOUT = Duration.ofSeconds(20)
         private val NOT_DISPLAYED_CHECK_INTERVAL = Duration.ofMillis(100)
+        private val FIND_TEXT_TIMEOUT = Duration.ofSeconds(25)
     }
 }
