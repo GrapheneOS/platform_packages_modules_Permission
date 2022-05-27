@@ -323,10 +323,7 @@ public final class SafetySourceIssue implements Parcelable {
      *
      * <p>The user will be allowed to invoke the action from the UI by clicking on a UI element and
      * consequently resolve the issue.
-     *
-     * @hide
      */
-    @SystemApi
     public static final class Action implements Parcelable {
 
         @NonNull

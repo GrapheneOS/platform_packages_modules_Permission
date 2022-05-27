@@ -124,11 +124,11 @@ final class SafetyCenterConfigReader {
      * calls will be no-oped).
      */
     @Nullable
-    SafetySource getExternalSafetySource(@NonNull String safetySourceId) {
-        SafetySource safetySourceInCurrentConfig =
+    ExternalSafetySource getExternalSafetySource(@NonNull String safetySourceId) {
+        ExternalSafetySource externalSafetySourceInCurrentConfig =
                 getCurrentConfigInternal().getExternalSafetySources().get(safetySourceId);
-        if (safetySourceInCurrentConfig != null) {
-            return safetySourceInCurrentConfig;
+        if (externalSafetySourceInCurrentConfig != null) {
+            return externalSafetySourceInCurrentConfig;
         }
 
         return mConfigInternalFromXml.getExternalSafetySources().get(safetySourceId);
@@ -193,12 +193,12 @@ final class SafetyCenterConfigReader {
     private static final class SafetyCenterConfigInternal {
 
         @NonNull private final SafetyCenterConfig mConfig;
-        @NonNull private final ArrayMap<String, SafetySource> mExternalSafetySources;
+        @NonNull private final ArrayMap<String, ExternalSafetySource> mExternalSafetySources;
         @NonNull private final List<Broadcast> mBroadcasts;
 
         private SafetyCenterConfigInternal(
                 @NonNull SafetyCenterConfig safetyCenterConfig,
-                @NonNull ArrayMap<String, SafetySource> externalSafetySources,
+                @NonNull ArrayMap<String, ExternalSafetySource> externalSafetySources,
                 @NonNull List<Broadcast> broadcasts) {
             mConfig = safetyCenterConfig;
             mExternalSafetySources = externalSafetySources;
@@ -211,7 +211,7 @@ final class SafetyCenterConfigReader {
         }
 
         @NonNull
-        private ArrayMap<String, SafetySource> getExternalSafetySources() {
+        private ArrayMap<String, ExternalSafetySource> getExternalSafetySources() {
             return mExternalSafetySources;
         }
 
@@ -255,9 +255,9 @@ final class SafetyCenterConfigReader {
         }
 
         @NonNull
-        private static ArrayMap<String, SafetySource> extractExternalSafetySources(
+        private static ArrayMap<String, ExternalSafetySource> extractExternalSafetySources(
                 @NonNull SafetyCenterConfig safetyCenterConfig) {
-            ArrayMap<String, SafetySource> externalSafetySources = new ArrayMap<>();
+            ArrayMap<String, ExternalSafetySource> externalSafetySources = new ArrayMap<>();
             List<SafetySourcesGroup> safetySourcesGroups =
                     safetyCenterConfig.getSafetySourcesGroups();
             for (int i = 0; i < safetySourcesGroups.size(); i++) {
@@ -271,7 +271,14 @@ final class SafetyCenterConfigReader {
                         continue;
                     }
 
-                    externalSafetySources.put(safetySource.getId(), safetySource);
+                    boolean hasEntryInRigidGroup =
+                            safetySource.getType() == SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC
+                                    && safetySourcesGroup.getType()
+                                            == SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_RIGID;
+
+                    externalSafetySources.put(
+                            safetySource.getId(),
+                            new ExternalSafetySource(safetySource, hasEntryInRigidGroup));
                 }
             }
 
@@ -306,7 +313,6 @@ final class SafetyCenterConfigReader {
                     if (safetySource.isRefreshOnPageOpenAllowed()) {
                         broadcast.mSourceIdsForProfileOwnerOnPageOpen.add(safetySource.getId());
                     }
-                    // TODO(b/217688797): This might also be handled by the source directly.
                     boolean needsManagedProfilesBroadcast =
                             SafetySources.supportsManagedProfiles(safetySource);
                     if (needsManagedProfilesBroadcast) {
@@ -320,6 +326,56 @@ final class SafetyCenterConfigReader {
             }
 
             return broadcasts;
+        }
+    }
+
+    /** A wrapper class around a {@link SafetySource} that is providing data externally. */
+    static final class ExternalSafetySource {
+        @NonNull private final SafetySource mSafetySource;
+        @NonNull private final boolean mHasEntryInRigidGroup;
+
+        private ExternalSafetySource(
+                @NonNull SafetySource safetySource, boolean hasEntryInRigidGroup) {
+            mSafetySource = safetySource;
+            mHasEntryInRigidGroup = hasEntryInRigidGroup;
+        }
+
+        /** Returns the external {@link SafetySource}. */
+        @NonNull
+        public SafetySource getSafetySource() {
+            return mSafetySource;
+        }
+
+        /**
+         * Returns whether the external {@link SafetySource} has an entry in a rigid {@link
+         * SafetySourcesGroup}.
+         */
+        public boolean hasEntryInRigidGroup() {
+            return mHasEntryInRigidGroup;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof ExternalSafetySource)) return false;
+            ExternalSafetySource that = (ExternalSafetySource) o;
+            return mHasEntryInRigidGroup == that.mHasEntryInRigidGroup
+                    && mSafetySource.equals(that.mSafetySource);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(mSafetySource, mHasEntryInRigidGroup);
+        }
+
+        @Override
+        public String toString() {
+            return "ExternalSafetySource{"
+                    + "mSafetySource="
+                    + mSafetySource
+                    + ", mHasEntryInRigidGroup="
+                    + mHasEntryInRigidGroup
+                    + '}';
         }
     }
 

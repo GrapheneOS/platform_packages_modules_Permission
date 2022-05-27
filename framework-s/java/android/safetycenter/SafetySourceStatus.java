@@ -208,10 +208,7 @@ public final class SafetySourceStatus implements Parcelable {
      * <p>The action will be shown as a clickable icon chosen from a predefined set of icons (see
      * {@link IconType}). The icon should indicate to the user what action will be performed on
      * clicking on it.
-     *
-     * @hide
      */
-    @SystemApi
     public static final class IconAction implements Parcelable {
 
         @NonNull

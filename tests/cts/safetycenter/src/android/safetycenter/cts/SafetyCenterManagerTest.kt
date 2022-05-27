@@ -37,6 +37,7 @@ import android.safetycenter.SafetyCenterEntryOrGroup
 import android.safetycenter.SafetyCenterErrorDetails
 import android.safetycenter.SafetyCenterIssue
 import android.safetycenter.SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_CRITICAL_WARNING
+import android.safetycenter.SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_OK
 import android.safetycenter.SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_RECOMMENDATION
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyCenterManager.OnSafetyCenterDataChangedListener
@@ -47,14 +48,11 @@ import android.safetycenter.SafetyCenterStaticEntryGroup
 import android.safetycenter.SafetyCenterStatus
 import android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING
 import android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK
-import android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN
 import android.safetycenter.SafetyCenterStatus.REFRESH_STATUS_DATA_FETCH_IN_PROGRESS
 import android.safetycenter.SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS
 import android.safetycenter.SafetyCenterStatus.REFRESH_STATUS_NONE
 import android.safetycenter.SafetySourceData
-import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_RECOMMENDATION
 import android.safetycenter.SafetySourceErrorDetails
-import android.safetycenter.SafetySourceStatus
 import android.safetycenter.cts.testing.Coroutines.TIMEOUT_SHORT
 import android.safetycenter.cts.testing.FakeExecutor
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.addOnSafetyCenterDataChangedListenerWithPermission
@@ -79,9 +77,11 @@ import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_GROUP_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_HIDDEN_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_HIDDEN_WITH_SEARCH_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_IN_COLLAPSIBLE_ID
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_IN_RIGID_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_OTHER_PACKAGE_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.ISSUE_ONLY_ALL_OPTIONAL_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.ISSUE_ONLY_BAREBONE_ID
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.ISSUE_ONLY_IN_RIGID_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MIXED_COLLAPSIBLE_GROUP_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MULTIPLE_SOURCES_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.NO_PAGE_OPEN_CONFIG
@@ -102,6 +102,8 @@ import android.safetycenter.cts.testing.SafetySourceCtsData
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.CRITICAL_ISSUE_ACTION_ID
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.CRITICAL_ISSUE_ID
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.EVENT_SOURCE_STATE_CHANGED
+import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.INFORMATION_ISSUE_ACTION_ID
+import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.INFORMATION_ISSUE_ID
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.RECOMMENDATION_ISSUE_ACTION_ID
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.RECOMMENDATION_ISSUE_ID
 import android.safetycenter.cts.testing.SafetySourceReceiver
@@ -136,11 +138,6 @@ class SafetyCenterManagerTest {
     private val stubPendingIntent =
         PendingIntent.getActivity(
             context, 0 /* requestCode */, Intent("Stub"), PendingIntent.FLAG_IMMUTABLE)
-
-    private val safetyCenterStatusUnknown =
-        SafetyCenterStatus.Builder("Unknown", "Unknown safety status")
-            .setSeverityLevel(OVERALL_SEVERITY_LEVEL_UNKNOWN)
-            .build()
 
     private val safetyCenterStatusOk =
         SafetyCenterStatus.Builder("All good", "No problemo maestro")
@@ -196,48 +193,65 @@ class SafetyCenterManagerTest {
                     .setPendingIntent(stubPendingIntent)
                     .build()))
 
+    private val safetyCenterStaticEntryGroupMixedUpdatedFromComplexConfig =
+        SafetyCenterStaticEntryGroup(
+            "OK",
+            listOf(
+                SafetyCenterStaticEntry.Builder("Unspecified title")
+                    .setSummary("Unspecified summary")
+                    .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
+                    .build(),
+                SafetyCenterStaticEntry.Builder("OK")
+                    .setSummary("OK")
+                    .setPendingIntent(stubPendingIntent)
+                    .build()))
+
     private val safetyCenterDataFromConfig =
         SafetyCenterData(
-            safetyCenterStatusUnknown,
+            safetyCenterStatusOk,
             emptyList(),
             listOf(
                 SafetyCenterEntryOrGroup(
                     safetyCenterEntryDefaultBuilder(SINGLE_SOURCE_ID).build())),
             emptyList())
+
     private val safetyCenterDataUnspecified =
         SafetyCenterData(
             safetyCenterStatusOk,
             emptyList(),
             listOf(SafetyCenterEntryOrGroup(safetyCenterEntryUnspecified(SINGLE_SOURCE_ID))),
             emptyList())
+
     private val safetyCenterDataOk =
         SafetyCenterData(
             safetyCenterStatusOk,
             emptyList(),
             listOf(SafetyCenterEntryOrGroup(safetyCenterEntryOk(SINGLE_SOURCE_ID))),
             emptyList())
+
     private val safetyCenterDataCritical =
         SafetyCenterData(
             safetyCenterStatusCritical,
             listOf(safetyCenterIssueCritical(SINGLE_SOURCE_ID)),
             listOf(safetyCenterEntryOrGroupCritical),
             emptyList())
+
     private val safetyCenterDataCriticalInFlightAction =
         SafetyCenterData(
             safetyCenterStatusCritical,
             listOf(safetyCenterIssueCritical(SINGLE_SOURCE_ID, isActionInFlight = true)),
             listOf(safetyCenterEntryOrGroupCritical),
             emptyList())
-    private val safetyCenterDataCriticalWithoutIssue =
+
+    private val safetyCenterDataCriticalWithDismissedIssue =
         SafetyCenterData(
-            safetyCenterStatusCritical,
+            safetyCenterStatusOk,
             emptyList(),
             listOf(safetyCenterEntryOrGroupCritical),
             emptyList())
+
     private val safetyCenterDataFromComplexConfig =
         SafetyCenterData(
-            // TODO(b/233230927): Fix the logic, it does not seem right that the status is okay just
-            //  because of the presence of static sources in collapsible groups.
             safetyCenterStatusOk,
             emptyList(),
             listOf(
@@ -266,24 +280,29 @@ class SafetyCenterManagerTest {
             listOf(
                 safetyCenterStaticEntryGroupFromComplexConfig,
                 safetyCenterStaticEntryGroupMixedFromComplexConfig))
+
     private val safetyCenterDataFromComplexConfigUpdated =
         SafetyCenterData(
             safetyCenterStatusCritical,
             listOf(
-                safetyCenterIssueRecommendation(DYNAMIC_DISABLED_ID),
+                safetyCenterIssueCritical(DYNAMIC_BAREBONE_ID),
                 safetyCenterIssueCritical(ISSUE_ONLY_BAREBONE_ID),
-                safetyCenterIssueRecommendation(ISSUE_ONLY_ALL_OPTIONAL_ID)),
+                safetyCenterIssueRecommendation(DYNAMIC_DISABLED_ID),
+                safetyCenterIssueRecommendation(ISSUE_ONLY_ALL_OPTIONAL_ID),
+                safetyCenterIssueInformation(DYNAMIC_IN_RIGID_ID),
+                safetyCenterIssueInformation(ISSUE_ONLY_IN_RIGID_ID)),
             listOf(
                 SafetyCenterEntryOrGroup(
                     SafetyCenterEntryGroup.Builder(
                             SafetyCenterCtsData.entryGroupId(DYNAMIC_GROUP_ID), "OK")
-                        .setSeverityLevel(ENTRY_SEVERITY_LEVEL_RECOMMENDATION)
+                        .setSeverityLevel(ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING)
                         .setSeverityUnspecifiedIconType(SEVERITY_UNSPECIFIED_ICON_TYPE_PRIVACY)
-                        .setSummary("First recommendation summary")
+                        // TODO(b/229076771): Check that the first summary of the most critical
+                        // entries is used.
+                        .setSummary("Critical summary")
                         .setEntries(
                             listOf(
-                                safetyCenterEntryRecommendation(
-                                    DYNAMIC_BAREBONE_ID, summary = "First recommendation summary"),
+                                safetyCenterEntryCritical(DYNAMIC_BAREBONE_ID),
                                 safetyCenterEntryDefaultBuilder(DYNAMIC_ALL_OPTIONAL_ID)
                                     .setEnabled(false)
                                     .build(),
@@ -299,7 +318,7 @@ class SafetyCenterManagerTest {
                 safetyCenterEntryGroupMixedFromComplexConfig),
             listOf(
                 safetyCenterStaticEntryGroupFromComplexConfig,
-                safetyCenterStaticEntryGroupMixedFromComplexConfig))
+                safetyCenterStaticEntryGroupMixedUpdatedFromComplexConfig))
 
     // JUnit's Assume is not supported in @BeforeClass by the CTS tests runner, so this is used to
     // manually skip the setup and teardown methods.
@@ -385,6 +404,18 @@ class SafetyCenterManagerTest {
     }
 
     @Test
+    fun setSafetySourceData_sourceInRigidGroupUnspecified_setsValue() {
+        safetyCenterCtsHelper.setConfig(COMPLEX_CONFIG)
+
+        val dataToSet = safetySourceCtsData.unspecified
+        safetyCenterCtsHelper.setData(DYNAMIC_IN_RIGID_ID, dataToSet)
+
+        val apiSafetySourceData =
+            safetyCenterManager.getSafetySourceDataWithPermission(DYNAMIC_IN_RIGID_ID)
+        assertThat(apiSafetySourceData).isEqualTo(dataToSet)
+    }
+
+    @Test
     fun setSafetySourceData_unknownId_throwsIllegalArgumentException() {
         val thrown =
             assertFailsWith(IllegalArgumentException::class) {
@@ -423,6 +454,22 @@ class SafetyCenterManagerTest {
             .isEqualTo(
                 "Unexpected package name: ${context.packageName}, for safety source: " +
                     DYNAMIC_OTHER_PACKAGE_ID)
+    }
+
+    @Test
+    fun setSafetySourceData_sourceInRigidGroupNotUnspecified_throwsIllegalArgumentException() {
+        safetyCenterCtsHelper.setConfig(COMPLEX_CONFIG)
+
+        val thrown =
+            assertFailsWith(IllegalArgumentException::class) {
+                safetyCenterCtsHelper.setData(DYNAMIC_IN_RIGID_ID, safetySourceCtsData.information)
+            }
+
+        assertThat(thrown)
+            .hasMessageThat()
+            .isEqualTo(
+                "Safety source: $DYNAMIC_IN_RIGID_ID is in a rigid group but specified a severity" +
+                    " level: ${SafetySourceData.SEVERITY_LEVEL_INFORMATION}")
     }
 
     @Test
@@ -1207,17 +1254,7 @@ class SafetyCenterManagerTest {
     @Test
     fun getSafetyCenterData_withComplexConfigWithSomeDataProvided_returnsDataProvided() {
         safetyCenterCtsHelper.setConfig(COMPLEX_CONFIG)
-        safetyCenterCtsHelper.setData(
-            DYNAMIC_BAREBONE_ID,
-            SafetySourceData.Builder()
-                .setStatus(
-                    SafetySourceStatus.Builder(
-                            "Recommendation title",
-                            "First recommendation summary",
-                            SEVERITY_LEVEL_RECOMMENDATION)
-                        .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
-                        .build())
-                .build())
+        safetyCenterCtsHelper.setData(DYNAMIC_BAREBONE_ID, safetySourceCtsData.criticalWithIssue)
         safetyCenterCtsHelper.setData(
             DYNAMIC_DISABLED_ID, safetySourceCtsData.recommendationWithIssue)
         safetyCenterCtsHelper.setData(DYNAMIC_HIDDEN_ID, safetySourceCtsData.unspecified)
@@ -1229,6 +1266,10 @@ class SafetyCenterManagerTest {
         safetyCenterCtsHelper.setData(
             ISSUE_ONLY_ALL_OPTIONAL_ID,
             SafetySourceCtsData.issuesOnly(safetySourceCtsData.recommendationIssue))
+        safetyCenterCtsHelper.setData(DYNAMIC_IN_RIGID_ID, safetySourceCtsData.unspecifiedWithIssue)
+        safetyCenterCtsHelper.setData(
+            ISSUE_ONLY_IN_RIGID_ID,
+            SafetySourceCtsData.issuesOnly(safetySourceCtsData.informationIssue))
 
         val apiSafetyCenterData =
             safetyCenterManager.getSafetyCenterDataWithPermission().normalize()
@@ -1449,12 +1490,8 @@ class SafetyCenterManagerTest {
             SafetyCenterCtsData.issueId(SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID))
 
         val safetyCenterDataFromListener = listener.receiveSafetyCenterData()
-        assertThat(safetyCenterDataFromListener).isEqualTo(safetyCenterDataCriticalWithoutIssue)
-        // Pushing data without the issue does not update the listener.
-        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.critical)
-        assertFailsWith(TimeoutCancellationException::class) {
-            listener.receiveSafetyCenterData(TIMEOUT_SHORT)
-        }
+        assertThat(safetyCenterDataFromListener)
+            .isEqualTo(safetyCenterDataCriticalWithDismissedIssue)
     }
 
     @Test
@@ -1801,6 +1838,22 @@ class SafetyCenterManagerTest {
             .setSummary("Critical summary")
             .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
             .setSeverityUnspecifiedIconType(SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION)
+            .build()
+
+    private fun safetyCenterIssueInformation(sourceId: String) =
+        SafetyCenterIssue.Builder(
+                SafetyCenterCtsData.issueId(sourceId, INFORMATION_ISSUE_ID),
+                "Information issue title",
+                "Information issue summary")
+            .setSeverityLevel(ISSUE_SEVERITY_LEVEL_OK)
+            .setActions(
+                listOf(
+                    SafetyCenterIssue.Action.Builder(
+                            SafetyCenterCtsData.issueActionId(
+                                sourceId, INFORMATION_ISSUE_ID, INFORMATION_ISSUE_ACTION_ID),
+                            "Review",
+                            safetySourceCtsData.redirectPendingIntent)
+                        .build()))
             .build()
 
     private fun safetyCenterIssueRecommendation(sourceId: String) =
