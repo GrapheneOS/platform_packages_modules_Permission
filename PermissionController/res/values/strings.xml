@@ -1612,4 +1612,8 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="media_confirm_dialog_message_q_to_s_visual_allow">This app doesn\u2019t support the latest version of Android. If this app can access photos and videos, it will also be allowed to access music and audio files.</string>
     <!-- Message for media confirm dialog (when user denies visual group of q_to_s app) [CHAR LIMIT=NONE] -->
     <string name="media_confirm_dialog_message_q_to_s_visual_deny">This app doesn\u2019t support the latest version of Android. If this app can\u2019t access music and audio files, it also won\u2019t be allowed to access photos and videos.</string>
+
+    <!-- Content description for close button of the security and privacy quick settings [CHAR LIMIT=NONE] -->
+    <string name="security_privacy_qs_close_button">Close</string>
+
 </resources>
