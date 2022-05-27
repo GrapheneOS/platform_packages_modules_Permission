@@ -21,10 +21,7 @@
     <string name="permission_description_summary_storage" msgid="1917071243213043858">"ഈ അനുമതിയുള്ള ആപ്പുകൾക്ക് ഈ ഉപകരണത്തിലെ എല്ലാ ഫയലുകളും ആക്‌സസ് ചെയ്യാനാകും"</string>
     <string name="work_policy_title" msgid="832967780713677409">"നിങ്ങളുടെ ഔദ്യോഗിക നയ വിവരങ്ങൾ"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"നിങ്ങളുടെ ഐടി അഡ്‌മിൻ മാനേജ് ചെയ്യുന്ന ക്രമീകരണം"</string>
-    <!-- no translation found for safety_center_more_issues_card_title (8599419758014246517) -->
-    <skip />
-    <!-- no translation found for safety_center_more_issues_status_icon_content_description (8597351743567707802) -->
-    <skip />
-    <!-- no translation found for safety_center_more_issues_expand_button_content_description (8997241228390831958) -->
-    <skip />
+    <string name="safety_center_more_issues_card_title" msgid="8599419758014246517">"എല്ലാ മുന്നറിയിപ്പുകളും കാണുക"</string>
+    <string name="safety_center_more_issues_status_icon_content_description" msgid="8597351743567707802">"എല്ലാ മുന്നറിയിപ്പുകളും കാണുക"</string>
+    <string name="safety_center_more_issues_expand_button_content_description" msgid="8997241228390831958">"എല്ലാ മുന്നറിയിപ്പുകളും കാണുക"</string>
 </resources>
