@@ -189,15 +189,11 @@ data class LightAppPermGroup(
         val isGranted = specialLocationGrant ?: permissions.any { it.value.isGrantedIncludingAppOp }
 
         /**
-         * Whether this App Permission SubGroup should be treated as granted. This means either:
-         * 1) At least one permission was granted excluding auto-granted permissions (i.e., granted
-         * during install time with flag RevokeWhenRequested.) Or,
-         * 2) All permissions were auto-granted (all permissions are all granted and all
-         * RevokeWhenRequested.)
+         * Whether any of this App Permission SubGroup's permissions are granted excluding
+         * auto granted permissions during install time with flag RevokeWhenRequested
          */
-        val isGrantedExcludingRWROrAllRWR = specialLocationGrant ?: (permissions
-            .any { it.value.isGrantedIncludingAppOp && !it.value.isRevokeWhenRequested } ||
-            permissions.all { it.value.isGrantedIncludingAppOp && it.value.isRevokeWhenRequested })
+        val isGrantedExcludeRevokeWhenRequestedPermissions = specialLocationGrant ?: permissions
+            .any { it.value.isGrantedIncludingAppOp && !it.value.isRevokeWhenRequested }
 
         /**
          * Whether any of this App Permission SubGroup's permissions are granted by default
