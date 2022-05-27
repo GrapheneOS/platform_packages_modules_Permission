@@ -59,15 +59,6 @@ class SafetySourceCtsData(private val context: Context) {
                     .build())
             .build()
 
-    /** A [SafetySourceData] with a [SEVERITY_LEVEL_INFORMATION] [SafetySourceStatus]. */
-    val information =
-        SafetySourceData.Builder()
-            .setStatus(
-                SafetySourceStatus.Builder("Ok title", "Ok summary", SEVERITY_LEVEL_INFORMATION)
-                    .setPendingIntent(redirectPendingIntent)
-                    .build())
-            .build()
-
     /** A [SafetySourceIssue] with a [SEVERITY_LEVEL_INFORMATION] and a redirection [Action]. */
     val informationIssue =
         SafetySourceIssue.Builder(
@@ -78,6 +69,29 @@ class SafetySourceCtsData(private val context: Context) {
                 "issue_type_id")
             .addAction(
                 Action.Builder(INFORMATION_ISSUE_ACTION_ID, "Review", redirectPendingIntent)
+                    .build())
+            .build()
+
+    /**
+     * A [SafetySourceData] with a [SEVERITY_LEVEL_UNSPECIFIED] [SafetySourceIssue] and
+     * [SafetySourceStatus].
+     */
+    val unspecifiedWithIssue =
+        SafetySourceData.Builder()
+            .setStatus(
+                SafetySourceStatus.Builder(
+                        "Unspecified title", "Unspecified summary", SEVERITY_LEVEL_UNSPECIFIED)
+                    .setPendingIntent(redirectPendingIntent)
+                    .build())
+            .addIssue(informationIssue)
+            .build()
+
+    /** A [SafetySourceData] with a [SEVERITY_LEVEL_INFORMATION] [SafetySourceStatus]. */
+    val information =
+        SafetySourceData.Builder()
+            .setStatus(
+                SafetySourceStatus.Builder("Ok title", "Ok summary", SEVERITY_LEVEL_INFORMATION)
+                    .setPendingIntent(redirectPendingIntent)
                     .build())
             .build()
 
@@ -155,21 +169,15 @@ class SafetySourceCtsData(private val context: Context) {
      * A [SafetySourceData] with a [SEVERITY_LEVEL_CRITICAL_WARNING] [SafetySourceIssue] and
      * [SafetySourceStatus].
      */
-    val criticalWithIssue = criticalBuilder().addIssue(criticalIssue).build()
-
-    /**
-     * A [SafetySourceData] with a [SEVERITY_LEVEL_CRITICAL_WARNING] [SafetySourceStatus], but no
-     * issue.
-     */
-    val critical = criticalBuilder().build()
-
-    private fun criticalBuilder() =
+    val criticalWithIssue =
         SafetySourceData.Builder()
             .setStatus(
                 SafetySourceStatus.Builder(
                         "Critical title", "Critical summary", SEVERITY_LEVEL_CRITICAL_WARNING)
                     .setPendingIntent(redirectPendingIntent)
                     .build())
+            .addIssue(criticalIssue)
+            .build()
 
     companion object {
         /** Issue ID for [informationIssue]. */
