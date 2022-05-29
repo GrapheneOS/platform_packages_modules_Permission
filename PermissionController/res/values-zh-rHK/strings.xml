@@ -160,7 +160,7 @@
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"過去 1 分鐘內的權限使用情況"</string>
     <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"過去 24 小時內未使用"</string>
     <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"過去 7 天內未使用"</string>
-    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{使用權限的應用程式數量：1 個}other{使用權限的應用程式數量：# 個}}"</string>
+    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{有 1 個應用程式使用過}other{有 # 個應用程式使用過}}"</string>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"在「資訊主頁」查看全部"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"篩選條件：<xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"移除篩選器"</string>
