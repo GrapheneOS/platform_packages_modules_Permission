@@ -256,7 +256,6 @@ final class SafetyCenterDataTracker {
         mSafetySourceDataForKey.clear();
         mDismissedSafetyCenterIssues.clear();
         mSafetyCenterIssueActionsInFlight.clear();
-        mSafetyCenterRefreshTracker.clearRefresh();
     }
 
     /**
