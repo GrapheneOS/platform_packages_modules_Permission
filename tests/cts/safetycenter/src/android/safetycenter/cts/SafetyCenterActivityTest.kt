@@ -185,9 +185,6 @@ class SafetyCenterActivityTest {
         context.launchSafetyCenterActivity { waitButtonNotDisplayed("Scan") }
     }
 
-    // TODO(b/232104227): Add tests for issues dismissible without confirmation and non-dismissible
-    // issues if and when the service supports them.
-
     @Test
     fun moreIssuesCard_underMaxShownIssues_noMoreIssuesCard() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
@@ -336,7 +333,7 @@ class SafetyCenterActivityTest {
 
     private fun rotateDevice() {
         val uiDevice = getUiDevice()
-        if (uiDevice.isNaturalOrientation()) {
+        if (uiDevice.isNaturalOrientation) {
             uiDevice.setOrientationLeft()
         } else {
             uiDevice.setOrientationNatural()
@@ -346,7 +343,7 @@ class SafetyCenterActivityTest {
 
     private fun resetDeviceRotation() {
         val uiDevice = getUiDevice()
-        if (!uiDevice.isNaturalOrientation()) {
+        if (!uiDevice.isNaturalOrientation) {
             uiDevice.setOrientationNatural()
             uiDevice.waitForIdle()
         }
