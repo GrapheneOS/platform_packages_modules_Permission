@@ -31,6 +31,7 @@ import com.android.permissioncontroller.DumpableLog
 import com.android.permissioncontroller.PermissionControllerStatsLog
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_GRANT_REQUEST_RESULT_REPORTED
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_GRANT_REQUEST_RESULT_REPORTED__RESULT__AUTO_UNUSED_APP_PERMISSION_REVOKED
+import com.android.permissioncontroller.hibernation.getUnusedThresholdMs
 import com.android.permissioncontroller.permission.data.LightAppPermGroupLiveData
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData
 import com.android.permissioncontroller.permission.data.get
@@ -77,12 +78,23 @@ suspend fun revokeAppPermissions(
             continue
         }
 
+        val pkgPermChanges = PermissionChangeStorageImpl.getInstance().loadEvents()
+            .associateBy { it.packageName }
         // For each autorevoke-eligible app...
         userApps.forEachInParallel(Main) { pkg: LightPackageInfo ->
             if (pkg.grantedPermissions.isEmpty()) {
                 return@forEachInParallel
             }
             val packageName = pkg.packageName
+            val pkgPermChange = pkgPermChanges[packageName]
+            val now = System.currentTimeMillis()
+            if (pkgPermChange != null && now - pkgPermChange.eventTime < getUnusedThresholdMs()) {
+                if (DEBUG_AUTO_REVOKE) {
+                    DumpableLog.i(LOG_TAG, "Not revoking because permissions were changed " +
+                        "recently for package $packageName")
+                }
+                return@forEachInParallel
+            }
             val targetSdk = pkg.targetSdkVersion
             val pkgPermGroups: Map<String, List<String>> =
                 PackagePermissionsLiveData[packageName, user]
