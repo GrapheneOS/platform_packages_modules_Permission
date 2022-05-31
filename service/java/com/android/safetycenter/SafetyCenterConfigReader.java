@@ -309,9 +309,9 @@ final class SafetyCenterConfigReader {
                         packageNameToBroadcast.put(safetySource.getPackageName(), broadcast);
                         broadcasts.add(broadcast);
                     }
-                    broadcast.mSourceIdsForProfileOwner.add(safetySource.getId());
+                    broadcast.mSourceIdsForProfileParent.add(safetySource.getId());
                     if (safetySource.isRefreshOnPageOpenAllowed()) {
-                        broadcast.mSourceIdsForProfileOwnerOnPageOpen.add(safetySource.getId());
+                        broadcast.mSourceIdsForProfileParentOnPageOpen.add(safetySource.getId());
                     }
                     boolean needsManagedProfilesBroadcast =
                             SafetySources.supportsManagedProfiles(safetySource);
@@ -384,8 +384,8 @@ final class SafetyCenterConfigReader {
 
         @NonNull private final String mPackageName;
 
-        private final List<String> mSourceIdsForProfileOwner = new ArrayList<>();
-        private final List<String> mSourceIdsForProfileOwnerOnPageOpen = new ArrayList<>();
+        private final List<String> mSourceIdsForProfileParent = new ArrayList<>();
+        private final List<String> mSourceIdsForProfileParentOnPageOpen = new ArrayList<>();
         private final List<String> mSourceIdsForManagedProfiles = new ArrayList<>();
         private final List<String> mSourceIdsForManagedProfilesOnPageOpen = new ArrayList<>();
 
@@ -407,11 +407,11 @@ final class SafetyCenterConfigReader {
          * @param refreshReason the {@link RefreshReason} for the broadcast
          */
         @NonNull
-        public List<String> getSourceIdsForProfileOwner(@RefreshReason int refreshReason) {
+        public List<String> getSourceIdsForProfileParent(@RefreshReason int refreshReason) {
             if (refreshReason == SafetyCenterManager.REFRESH_REASON_PAGE_OPEN) {
-                return unmodifiableList(mSourceIdsForProfileOwnerOnPageOpen);
+                return unmodifiableList(mSourceIdsForProfileParentOnPageOpen);
             }
-            return unmodifiableList(mSourceIdsForProfileOwner);
+            return unmodifiableList(mSourceIdsForProfileParent);
         }
 
         /**
@@ -435,9 +435,9 @@ final class SafetyCenterConfigReader {
             if (!(o instanceof Broadcast)) return false;
             Broadcast that = (Broadcast) o;
             return mPackageName.equals(that.mPackageName)
-                    && mSourceIdsForProfileOwner.equals(that.mSourceIdsForProfileOwner)
-                    && mSourceIdsForProfileOwnerOnPageOpen.equals(
-                            that.mSourceIdsForProfileOwnerOnPageOpen)
+                    && mSourceIdsForProfileParent.equals(that.mSourceIdsForProfileParent)
+                    && mSourceIdsForProfileParentOnPageOpen.equals(
+                            that.mSourceIdsForProfileParentOnPageOpen)
                     && mSourceIdsForManagedProfiles.equals(that.mSourceIdsForManagedProfiles)
                     && mSourceIdsForManagedProfilesOnPageOpen.equals(
                             that.mSourceIdsForManagedProfilesOnPageOpen);
@@ -447,8 +447,8 @@ final class SafetyCenterConfigReader {
         public int hashCode() {
             return Objects.hash(
                     mPackageName,
-                    mSourceIdsForProfileOwner,
-                    mSourceIdsForProfileOwnerOnPageOpen,
+                    mSourceIdsForProfileParent,
+                    mSourceIdsForProfileParentOnPageOpen,
                     mSourceIdsForManagedProfiles,
                     mSourceIdsForManagedProfilesOnPageOpen);
         }
@@ -458,10 +458,10 @@ final class SafetyCenterConfigReader {
             return "Broadcast{"
                     + "mPackageName="
                     + mPackageName
-                    + ", mSourceIdsForProfileOwner="
-                    + mSourceIdsForProfileOwner
-                    + ", mSourceIdsForProfileOwnerOnPageOpen="
-                    + mSourceIdsForProfileOwnerOnPageOpen
+                    + ", mSourceIdsForProfileParent="
+                    + mSourceIdsForProfileParent
+                    + ", mSourceIdsForProfileParentOnPageOpen="
+                    + mSourceIdsForProfileParentOnPageOpen
                     + ", mSourceIdsForManagedProfiles="
                     + mSourceIdsForManagedProfiles
                     + ", mSourceIdsForManagedProfilesOnPageOpen="

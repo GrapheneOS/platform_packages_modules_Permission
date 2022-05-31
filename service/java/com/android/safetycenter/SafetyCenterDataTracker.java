@@ -575,7 +575,7 @@ final class SafetyCenterDataTracker {
                             addSafetyCenterIssues(
                                     safetyCenterIssues,
                                     safetySource,
-                                    userProfileGroup.getProfileOwnerUserId()));
+                                    userProfileGroup.getProfileParentUserId()));
 
             if (!SafetySources.supportsManagedProfiles(safetySource)) {
                 continue;
@@ -704,7 +704,7 @@ final class SafetyCenterDataTracker {
                                     entries,
                                     safetySource,
                                     false,
-                                    userProfileGroup.getProfileOwnerUserId()));
+                                    userProfileGroup.getProfileParentUserId()));
 
             if (!SafetySources.supportsManagedProfiles(safetySource)) {
                 continue;
@@ -903,7 +903,7 @@ final class SafetyCenterDataTracker {
             SafetySource safetySource = safetySources.get(i);
 
             addSafetyCenterStaticEntry(
-                    staticEntries, safetySource, false, userProfileGroup.getProfileOwnerUserId());
+                    staticEntries, safetySource, false, userProfileGroup.getProfileParentUserId());
 
             if (!SafetySources.supportsManagedProfiles(safetySource)) {
                 continue;
