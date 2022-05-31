@@ -87,7 +87,7 @@ final class SafetyCenterListeners {
             @Nullable SafetyCenterData safetyCenterData,
             @Nullable SafetyCenterErrorDetails safetyCenterErrorDetails) {
         deliverUpdateForUserId(
-                userProfileGroup.getProfileOwnerUserId(),
+                userProfileGroup.getProfileParentUserId(),
                 safetyCenterData,
                 safetyCenterErrorDetails);
         int[] managedProfilesUserIds = userProfileGroup.getManagedProfilesUserIds();
@@ -102,7 +102,7 @@ final class SafetyCenterListeners {
      * given {@link UserProfileGroup}.
      */
     boolean hasListenersForUserProfileGroup(@NonNull UserProfileGroup userProfileGroup) {
-        if (hasListenersForUserId(userProfileGroup.getProfileOwnerUserId())) {
+        if (hasListenersForUserId(userProfileGroup.getProfileParentUserId())) {
             return true;
         }
         int[] managedProfilesUserIds = userProfileGroup.getManagedProfilesUserIds();

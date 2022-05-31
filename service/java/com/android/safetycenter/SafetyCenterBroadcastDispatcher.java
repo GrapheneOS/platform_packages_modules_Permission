@@ -134,18 +134,18 @@ final class SafetyCenterBroadcastDispatcher {
             @NonNull UserProfileGroup userProfileGroup,
             @NonNull String broadcastId) {
         int requestType = toRefreshRequestType(refreshReason);
-        List<String> profileOwnerSourceIds = broadcast.getSourceIdsForProfileOwner(refreshReason);
-        if (!profileOwnerSourceIds.isEmpty()) {
-            int profileOwnerUserId = userProfileGroup.getProfileOwnerUserId();
+        List<String> profileParentSourceIds = broadcast.getSourceIdsForProfileParent(refreshReason);
+        if (!profileParentSourceIds.isEmpty()) {
+            int profileParentUserId = userProfileGroup.getProfileParentUserId();
             Intent broadcastIntent =
                     createRefreshSafetySourcesBroadcastIntent(
                             requestType,
                             broadcast.getPackageName(),
-                            profileOwnerSourceIds,
+                            profileParentSourceIds,
                             broadcastId);
             sendBroadcast(
                     broadcastIntent,
-                    UserHandle.of(profileOwnerUserId),
+                    UserHandle.of(profileParentUserId),
                     SEND_SAFETY_CENTER_UPDATE,
                     broadcastOptions);
         }
