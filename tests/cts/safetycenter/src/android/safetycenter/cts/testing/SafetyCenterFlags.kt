@@ -23,7 +23,7 @@ import android.content.res.Resources
 import android.provider.DeviceConfig
 import android.provider.DeviceConfig.NAMESPACE_PRIVACY
 import android.provider.DeviceConfig.Properties
-import com.android.compatibility.common.util.SystemUtil.callWithShellPermissionIdentity
+import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermissionIdentity
 
 /** A class that facilitates working with Safety Center flags. */
 // TODO(b/219553295): Add timeout flags.
@@ -48,25 +48,17 @@ object SafetyCenterFlags {
                 READ_DEVICE_CONFIG)
         set(value) {
             callWithShellPermissionIdentity(
-                { setSafetyCenterEnabledWithoutPermission(value) }, WRITE_DEVICE_CONFIG)
+                {
+                    val valueWasSet =
+                        DeviceConfig.setProperty(
+                            NAMESPACE_PRIVACY,
+                            PROPERTY_SAFETY_CENTER_ENABLED,
+                            /* value = */ value.toString(),
+                            /* makeDefault = */ false)
+                    require(valueWasSet) { "Could not set Safety Center flag value to: $value" }
+                },
+                WRITE_DEVICE_CONFIG)
         }
-
-    /**
-     * Sets the Safety Center device config flag to the given boolean [value], but without holding
-     * the [WRITE_DEVICE_CONFIG] permission.
-     *
-     * [callWithShellPermissionIdentity] mutates a global state, so it is not possible to modify
-     * [isEnabled] within another call to [callWithShellPermissionIdentity].
-     */
-    fun setSafetyCenterEnabledWithoutPermission(value: Boolean) {
-        val valueWasSet =
-            DeviceConfig.setProperty(
-                NAMESPACE_PRIVACY,
-                PROPERTY_SAFETY_CENTER_ENABLED,
-                /* value = */ value.toString(),
-                /* makeDefault = */ false)
-        require(valueWasSet) { "Could not set Safety Center flag value to: $value" }
-    }
 
     /**
      * Returns a snapshot of all the Safety Center flags.
