@@ -26,7 +26,7 @@ import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetySourceData
 import android.safetycenter.SafetySourceErrorDetails
 import android.safetycenter.config.SafetyCenterConfig
-import com.android.compatibility.common.util.SystemUtil.callWithShellPermissionIdentity
+import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermissionIdentity
 import java.util.concurrent.Executor
 
 /**

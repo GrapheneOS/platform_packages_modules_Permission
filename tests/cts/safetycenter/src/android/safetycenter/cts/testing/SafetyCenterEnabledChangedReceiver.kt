@@ -17,7 +17,6 @@
 package android.safetycenter.cts.testing
 
 import android.Manifest.permission.READ_SAFETY_CENTER_STATUS
-import android.Manifest.permission.WRITE_DEVICE_CONFIG
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -25,7 +24,7 @@ import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyCenterManager.ACTION_SAFETY_CENTER_ENABLED_CHANGED
 import android.safetycenter.cts.testing.Coroutines.TIMEOUT_LONG
 import android.safetycenter.cts.testing.Coroutines.runBlockingWithTimeout
-import com.android.compatibility.common.util.SystemUtil.callWithShellPermissionIdentity
+import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermissionIdentity
 import java.time.Duration
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.Channel.Factory.UNLIMITED
@@ -60,11 +59,10 @@ class SafetyCenterEnabledChangedReceiver : BroadcastReceiver() {
     ) =
         callWithShellPermissionIdentity(
             {
-                SafetyCenterFlags.setSafetyCenterEnabledWithoutPermission(value)
+                SafetyCenterFlags.isEnabled = value
                 receiveSafetyCenterEnabledChanged(timeout)
             },
-            READ_SAFETY_CENTER_STATUS,
-            WRITE_DEVICE_CONFIG)
+            READ_SAFETY_CENTER_STATUS)
 
     fun reset() {
         safetyCenterEnabledChangedChannel.cancel()
