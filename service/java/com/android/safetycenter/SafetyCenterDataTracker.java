@@ -656,8 +656,6 @@ final class SafetyCenterDataTracker {
                     toSafetyCenterIssueAction(safetySourceIssueAction, safetyCenterIssueId));
         }
 
-        // TODO(b/218817233): Add dismissible and shouldConfirmDismissal. Still TBD by UX: green
-        //  issues won't have confirm on dismiss and red might not be dismissible.
         return new SafetyCenterIssue.Builder(
                         SafetyCenterIds.encodeToString(safetyCenterIssueId),
                         safetySourceIssue.getTitle(),
