@@ -16,9 +16,7 @@
 
 package android.safetycenter.cts.testing
 
-import android.Manifest.permission.MANAGE_SAFETY_CENTER
 import android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE
-import android.Manifest.permission.WRITE_DEVICE_CONFIG
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -38,7 +36,9 @@ import android.safetycenter.SafetySourceData
 import android.safetycenter.SafetySourceErrorDetails
 import android.safetycenter.cts.testing.Coroutines.TIMEOUT_LONG
 import android.safetycenter.cts.testing.Coroutines.runBlockingWithTimeout
-import com.android.compatibility.common.util.SystemUtil.callWithShellPermissionIdentity
+import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.executeSafetyCenterIssueActionWithPermission
+import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.refreshSafetySourcesWithPermission
+import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermissionIdentity
 import java.time.Duration
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.Channel.Factory.UNLIMITED
@@ -175,11 +175,10 @@ class SafetySourceReceiver : BroadcastReceiver() {
         ) =
             callWithShellPermissionIdentity(
                 {
-                    refreshSafetySources(refreshReason)
+                    refreshSafetySourcesWithPermission(refreshReason)
                     receiveRefreshSafetySources(timeout)
                 },
-                SEND_SAFETY_CENTER_UPDATE,
-                MANAGE_SAFETY_CENTER)
+                SEND_SAFETY_CENTER_UPDATE)
 
         fun setSafetyCenterEnabledWithReceiverPermissionAndWait(
             value: Boolean,
@@ -187,11 +186,10 @@ class SafetySourceReceiver : BroadcastReceiver() {
         ) =
             callWithShellPermissionIdentity(
                 {
-                    SafetyCenterFlags.setSafetyCenterEnabledWithoutPermission(value)
+                    SafetyCenterFlags.isEnabled = value
                     receiveSafetyCenterEnabledChanged(timeout)
                 },
-                SEND_SAFETY_CENTER_UPDATE,
-                WRITE_DEVICE_CONFIG)
+                SEND_SAFETY_CENTER_UPDATE)
 
         fun SafetyCenterManager.executeSafetyCenterIssueActionWithReceiverPermissionAndWait(
             issueId: String,
@@ -200,11 +198,10 @@ class SafetySourceReceiver : BroadcastReceiver() {
         ) =
             callWithShellPermissionIdentity(
                 {
-                    executeSafetyCenterIssueAction(issueId, issueActionId)
+                    executeSafetyCenterIssueActionWithPermission(issueId, issueActionId)
                     receiveInlineAction(timeout)
                 },
-                SEND_SAFETY_CENTER_UPDATE,
-                MANAGE_SAFETY_CENTER)
+                SEND_SAFETY_CENTER_UPDATE)
 
         private fun createRefreshEvent(broadcastId: String) =
             SafetyEvent.Builder(SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
