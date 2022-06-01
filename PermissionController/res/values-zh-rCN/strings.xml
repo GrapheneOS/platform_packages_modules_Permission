@@ -547,4 +547,6 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"此应用不支持最新版 Android 系统。如果此应用无法访问音乐和音频文件，那么它也将无法访问照片和视频。"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"此应用不支持最新版 Android 系统。如果此应用能够访问照片和视频，那么它也将能够访问音乐和音频文件。"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"此应用不支持最新版 Android 系统。如果此应用无法访问音乐和音频文件，那么它也将无法访问照片和视频。"</string>
+    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
+    <skip />
 </resources>

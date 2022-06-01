@@ -547,4 +547,6 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Az alkalmazás nem támogatja az Android legújabb verzióját. Ha az alkalmazás nem férhet hozzá a zenékhez és a hangfájlokhoz, akkor ugyanúgy a fotókhoz és a videókhoz sem férhet hozzá."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Az alkalmazás nem támogatja az Android legújabb verzióját. Ha az alkalmazás hozzáférhet a fotókhoz és videókhoz, akkor hozzáférhet a zenékhez és a hangfájlokhoz is."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Az alkalmazás nem támogatja az Android legújabb verzióját. Ha az alkalmazás nem férhet hozzá a zenékhez és a hangfájlokhoz, akkor ugyanúgy a fotókhoz és a videókhoz sem férhet hozzá."</string>
+    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
+    <skip />
 </resources>

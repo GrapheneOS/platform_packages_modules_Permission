@@ -547,4 +547,6 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"‏این برنامه از جدیدترین نسخه Android پشتیبانی نمی‌کند. اگر این برنامه نتواند به فایل‌های صوتی و موسیقی دسترسی داشته باشد، اجازه دسترسی به عکس‌ها و ویدیوها را نیز نخواهد داشت."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"‏این برنامه از جدیدترین نسخه Android پشتیبانی نمی‌کند. اگر این برنامه بتواند به عکس‌ها و ویدیوها دسترسی داشته باشد، اجازه دسترسی به فایل‌های صوتی و موسیقی را نیز خواهد داشت."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"‏این برنامه از جدیدترین نسخه Android پشتیبانی نمی‌کند. اگر این برنامه نتواند به فایل‌های صوتی و موسیقی دسترسی داشته باشد، اجازه دسترسی به عکس‌ها و ویدیوها را نیز نخواهد داشت."</string>
+    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
+    <skip />
 </resources>
