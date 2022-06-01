@@ -16,7 +16,6 @@
 
 package android.safetycenter.cts
 
-import android.Manifest.permission.MANAGE_SAFETY_CENTER
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
@@ -116,7 +115,6 @@ import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.refreshSa
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
-import com.android.compatibility.common.util.SystemUtil.callWithShellPermissionIdentity
 import com.google.common.truth.Truth.assertThat
 import com.google.common.util.concurrent.MoreExecutors.directExecutor
 import kotlin.test.assertFailsWith
@@ -1369,29 +1367,22 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    // Permission is held for the entire test to avoid a racy scenario where the shell identity is
-    // dropped while it's being acquired on another thread.
     fun addOnSafetyCenterDataChangedListener_oneShot_doesntDeadlock() {
-        callWithShellPermissionIdentity(
-            {
-                val listener = SafetyCenterCtsListener()
-                val oneShotListener =
-                    object : OnSafetyCenterDataChangedListener {
-                        override fun onSafetyCenterDataChanged(safetyCenterData: SafetyCenterData) {
-                            safetyCenterManager.removeOnSafetyCenterDataChangedListener(this)
-                            listener.onSafetyCenterDataChanged(safetyCenterData)
-                        }
-                    }
-                safetyCenterManager.addOnSafetyCenterDataChangedListener(
-                    directExecutor(), oneShotListener)
+        val listener = SafetyCenterCtsListener()
+        val oneShotListener =
+            object : OnSafetyCenterDataChangedListener {
+                override fun onSafetyCenterDataChanged(safetyCenterData: SafetyCenterData) {
+                    safetyCenterManager.removeOnSafetyCenterDataChangedListenerWithPermission(this)
+                    listener.onSafetyCenterDataChanged(safetyCenterData)
+                }
+            }
+        safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
+            directExecutor(), oneShotListener)
 
-                // Check that we don't deadlock when using a one-shot listener: this is because
-                // adding the listener could call the listener while holding a lock on the binder
-                // thread-pool; causing a deadlock when attempting to call the `SafetyCenterManager`
-                // from that listener.
-                listener.receiveSafetyCenterData()
-            },
-            MANAGE_SAFETY_CENTER)
+        // Check that we don't deadlock when using a one-shot listener. This is because adding the
+        // listener could call it while holding a lock; which would cause a deadlock if the listener
+        // wasn't oneway.
+        listener.receiveSafetyCenterData()
     }
 
     @Test

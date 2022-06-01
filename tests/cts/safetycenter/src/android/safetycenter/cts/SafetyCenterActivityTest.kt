@@ -35,6 +35,8 @@ import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCe
 import android.safetycenter.cts.testing.SafetySourceCtsData
 import android.support.test.uiautomator.By
 import android.support.test.uiautomator.BySelector
+import android.support.test.uiautomator.StaleObjectException
+import android.support.test.uiautomator.UiDevice
 import android.support.test.uiautomator.UiObject2
 import android.util.Log
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
@@ -81,11 +83,7 @@ class SafetyCenterActivityTest {
             return
         }
         safetyCenterCtsHelper.reset()
-    }
-
-    @After
-    fun resetDeviceState() {
-        resetDeviceRotation()
+        getUiDevice().resetRotation()
     }
 
     @Test
@@ -185,9 +183,6 @@ class SafetyCenterActivityTest {
         context.launchSafetyCenterActivity { waitButtonNotDisplayed("Scan") }
     }
 
-    // TODO(b/232104227): Add tests for issues dismissible without confirmation and non-dismissible
-    // issues if and when the service supports them.
-
     @Test
     fun moreIssuesCard_underMaxShownIssues_noMoreIssuesCard() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
@@ -254,7 +249,7 @@ class SafetyCenterActivityTest {
             assertIssueDisplayed(safetySourceCtsData.informationIssue)
 
             // Device rotation to trigger usage of savedinstancestate via config update
-            rotateDevice()
+            uiDevice.rotate()
 
             // Verify cards remain expanded
             waitTextNotDisplayed("See all alerts")
@@ -313,7 +308,7 @@ class SafetyCenterActivityTest {
                     null) {
                     return
                 }
-            } catch (e: android.support.test.uiautomator.StaleObjectException) {
+            } catch (e: StaleObjectException) {
                 Log.d(
                     TAG,
                     "StaleObjectException while calling waitTextNotDisplayed, will retry " +
@@ -334,28 +329,27 @@ class SafetyCenterActivityTest {
         waitFindObject(By.text("See all alerts")).click()
     }
 
-    private fun rotateDevice() {
-        val uiDevice = getUiDevice()
-        if (uiDevice.isNaturalOrientation()) {
-            uiDevice.setOrientationLeft()
-        } else {
-            uiDevice.setOrientationNatural()
-        }
-        uiDevice.waitForIdle()
-    }
-
-    private fun resetDeviceRotation() {
-        val uiDevice = getUiDevice()
-        if (!uiDevice.isNaturalOrientation()) {
-            uiDevice.setOrientationNatural()
-            uiDevice.waitForIdle()
-        }
-    }
-
     companion object {
         private val TAG = SafetyCenterActivityTest::class.java.simpleName
         private val NOT_DISPLAYED_TIMEOUT = Duration.ofSeconds(20)
         private val NOT_DISPLAYED_CHECK_INTERVAL = Duration.ofMillis(100)
         private val FIND_TEXT_TIMEOUT = Duration.ofSeconds(25)
+
+        private fun UiDevice.rotate() {
+            if (isNaturalOrientation) {
+                setOrientationLeft()
+            } else {
+                setOrientationNatural()
+            }
+            waitForIdle()
+        }
+
+        private fun UiDevice.resetRotation() {
+            if (isNaturalOrientation) {
+                return
+            }
+            setOrientationNatural()
+            waitForIdle()
+        }
     }
 }

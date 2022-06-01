@@ -575,7 +575,7 @@ final class SafetyCenterDataTracker {
                             addSafetyCenterIssues(
                                     safetyCenterIssues,
                                     safetySource,
-                                    userProfileGroup.getProfileOwnerUserId()));
+                                    userProfileGroup.getProfileParentUserId()));
 
             if (!SafetySources.supportsManagedProfiles(safetySource)) {
                 continue;
@@ -656,8 +656,6 @@ final class SafetyCenterDataTracker {
                     toSafetyCenterIssueAction(safetySourceIssueAction, safetyCenterIssueId));
         }
 
-        // TODO(b/218817233): Add dismissible and shouldConfirmDismissal. Still TBD by UX: green
-        //  issues won't have confirm on dismiss and red might not be dismissible.
         return new SafetyCenterIssue.Builder(
                         SafetyCenterIds.encodeToString(safetyCenterIssueId),
                         safetySourceIssue.getTitle(),
@@ -706,7 +704,7 @@ final class SafetyCenterDataTracker {
                                     entries,
                                     safetySource,
                                     false,
-                                    userProfileGroup.getProfileOwnerUserId()));
+                                    userProfileGroup.getProfileParentUserId()));
 
             if (!SafetySources.supportsManagedProfiles(safetySource)) {
                 continue;
@@ -905,7 +903,7 @@ final class SafetyCenterDataTracker {
             SafetySource safetySource = safetySources.get(i);
 
             addSafetyCenterStaticEntry(
-                    staticEntries, safetySource, false, userProfileGroup.getProfileOwnerUserId());
+                    staticEntries, safetySource, false, userProfileGroup.getProfileParentUserId());
 
             if (!SafetySources.supportsManagedProfiles(safetySource)) {
                 continue;

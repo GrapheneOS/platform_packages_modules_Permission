@@ -30,6 +30,7 @@ import com.android.bedstead.harrier.annotations.EnsureHasWorkProfile
 import com.android.bedstead.harrier.annotations.enterprise.EnsureHasDeviceOwner
 import com.android.compatibility.common.util.UiAutomatorUtils.waitFindObject
 import org.junit.After
+import org.junit.Assume.assumeTrue
 import org.junit.Before
 import org.junit.ClassRule
 import org.junit.Ignore
@@ -50,6 +51,11 @@ class SafetyCenterManagedDeviceTest {
     // JUnit's Assume is not supported in @BeforeClass by the CTS tests runner, so this is used to
     // manually skip the setup and teardown methods.
     private val shouldRunTests = context.deviceSupportsSafetyCenter()
+
+    @Before
+    fun assumeDeviceSupportsSafetyCenterToRunTests() {
+        assumeTrue(shouldRunTests)
+    }
 
     @Before
     fun enableSafetyCenterBeforeTest() {
