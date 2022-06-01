@@ -1486,6 +1486,21 @@ class SafetyCenterManagerTest {
     }
 
     @Test
+    fun dismissSafetyCenterIssue_existingWithDifferentIssueType_callsListenerAndDismisses() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithIssue)
+        val listener = safetyCenterCtsHelper.addListener()
+
+        safetyCenterManager.dismissSafetyCenterIssueWithPermission(
+            SafetyCenterCtsData.issueId(
+                SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID, issueTypeId = "some_other_issue_type_id"))
+
+        val safetyCenterDataFromListener = listener.receiveSafetyCenterData()
+        assertThat(safetyCenterDataFromListener)
+            .isEqualTo(safetyCenterDataCriticalWithDismissedIssue)
+    }
+
+    @Test
     fun dismissSafetyCenterIssue_nonExisting_doesntCallListenerOrDismiss() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithIssue)
@@ -1509,6 +1524,23 @@ class SafetyCenterManagerTest {
 
         safetyCenterManager.dismissSafetyCenterIssueWithPermission(
             SafetyCenterCtsData.issueId(SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID))
+
+        assertFailsWith(TimeoutCancellationException::class) {
+            listener.receiveSafetyCenterData(TIMEOUT_SHORT)
+        }
+    }
+
+    @Test
+    fun dismissSafetyCenterIssue_dismissedWithDifferentIssueType_doesntCallListenerOrDismiss() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithIssue)
+        safetyCenterManager.dismissSafetyCenterIssueWithPermission(
+            SafetyCenterCtsData.issueId(SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID))
+        val listener = safetyCenterCtsHelper.addListener()
+
+        safetyCenterManager.dismissSafetyCenterIssueWithPermission(
+            SafetyCenterCtsData.issueId(
+                SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID, issueTypeId = "some_other_issue_type_id"))
 
         assertFailsWith(TimeoutCancellationException::class) {
             listener.receiveSafetyCenterData(TIMEOUT_SHORT)
@@ -1541,7 +1573,8 @@ class SafetyCenterManagerTest {
     fun dismissSafetyCenterIssue_invalidUser_throwsSecurityException() {
         assertFailsWith(SecurityException::class) {
             safetyCenterManager.dismissSafetyCenterIssueWithPermission(
-                SafetyCenterCtsData.issueId(SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID, USER_NULL))
+                SafetyCenterCtsData.issueId(
+                    SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID, userId = USER_NULL))
         }
     }
 
@@ -1680,9 +1713,13 @@ class SafetyCenterManagerTest {
     fun executeSafetyCenterIssueAction_invalidUser_throwsSecurityException() {
         assertFailsWith(SecurityException::class) {
             safetyCenterManager.executeSafetyCenterIssueActionWithPermission(
-                SafetyCenterCtsData.issueId(SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID, USER_NULL),
+                SafetyCenterCtsData.issueId(
+                    SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID, userId = USER_NULL),
                 SafetyCenterCtsData.issueActionId(
-                    SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID, CRITICAL_ISSUE_ACTION_ID, USER_NULL))
+                    SINGLE_SOURCE_ID,
+                    CRITICAL_ISSUE_ID,
+                    CRITICAL_ISSUE_ACTION_ID,
+                    userId = USER_NULL))
         }
     }
 

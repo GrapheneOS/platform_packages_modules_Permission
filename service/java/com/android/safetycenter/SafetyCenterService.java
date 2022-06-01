@@ -58,6 +58,7 @@ import com.android.safetycenter.SafetyCenterConfigReader.Broadcast;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
 import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueId;
+import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 import com.android.server.SystemService;
 
@@ -387,12 +388,14 @@ public final class SafetyCenterService extends SystemService {
             }
 
             SafetyCenterIssueId safetyCenterIssueId = SafetyCenterIds.issueIdFromString(issueId);
+            SafetyCenterIssueKey safetyCenterIssueKey =
+                    safetyCenterIssueId.getSafetyCenterIssueKey();
             UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
             enforceSameUserProfileGroup(
-                    "dismissSafetyCenterIssue", userProfileGroup, safetyCenterIssueId.getUserId());
+                    "dismissSafetyCenterIssue", userProfileGroup, safetyCenterIssueKey.getUserId());
             synchronized (mApiLock) {
                 SafetySourceIssue safetySourceIssue =
-                        mSafetyCenterDataTracker.getSafetySourceIssue(safetyCenterIssueId);
+                        mSafetyCenterDataTracker.getSafetySourceIssue(safetyCenterIssueKey);
                 if (safetySourceIssue == null) {
                     Log.w(
                             TAG,
@@ -402,7 +405,7 @@ public final class SafetyCenterService extends SystemService {
                     // button multiple times in a row.
                     return;
                 }
-                mSafetyCenterDataTracker.dismissSafetyCenterIssue(safetyCenterIssueId);
+                mSafetyCenterDataTracker.dismissSafetyCenterIssue(safetyCenterIssueKey);
                 PendingIntent onDismissPendingIntent =
                         safetySourceIssue.getOnDismissPendingIntent();
                 if (onDismissPendingIntent != null
@@ -410,9 +413,9 @@ public final class SafetyCenterService extends SystemService {
                     Log.w(
                             TAG,
                             "Error dispatching dismissal for issue: "
-                                    + safetyCenterIssueId.getSafetySourceIssueId()
+                                    + safetyCenterIssueKey.getSafetySourceIssueId()
                                     + ", of source: "
-                                    + safetyCenterIssueId.getSafetySourceId());
+                                    + safetyCenterIssueKey.getSafetySourceId());
                     // We still consider the dismissal a success if there is an error dispatching
                     // the dismissal PendingIntent, since SafetyCenter won't surface this warning
                     // anymore.
@@ -435,9 +438,11 @@ public final class SafetyCenterService extends SystemService {
             }
 
             SafetyCenterIssueId safetyCenterIssueId = SafetyCenterIds.issueIdFromString(issueId);
+            SafetyCenterIssueKey safetyCenterIssueKey =
+                    safetyCenterIssueId.getSafetyCenterIssueKey();
             SafetyCenterIssueActionId safetyCenterIssueActionId =
                     SafetyCenterIds.issueActionIdFromString(issueActionId);
-            if (!safetyCenterIssueActionId.getSafetyCenterIssueId().equals(safetyCenterIssueId)) {
+            if (!safetyCenterIssueActionId.getSafetyCenterIssueKey().equals(safetyCenterIssueKey)) {
                 throw new IllegalArgumentException(
                         "issueId: "
                                 + safetyCenterIssueId
@@ -449,7 +454,7 @@ public final class SafetyCenterService extends SystemService {
             enforceSameUserProfileGroup(
                     "executeSafetyCenterIssueAction",
                     userProfileGroup,
-                    safetyCenterIssueId.getUserId());
+                    safetyCenterIssueKey.getUserId());
             synchronized (mApiLock) {
                 SafetySourceIssue.Action safetySourceIssueAction =
                         mSafetyCenterDataTracker.getSafetySourceIssueAction(
@@ -469,13 +474,9 @@ public final class SafetyCenterService extends SystemService {
                             "Error dispatching action: "
                                     + safetyCenterIssueActionId.getSafetySourceIssueActionId()
                                     + ", for issue: "
-                                    + safetyCenterIssueActionId
-                                            .getSafetyCenterIssueId()
-                                            .getSafetySourceIssueId()
+                                    + safetyCenterIssueKey.getSafetySourceIssueId()
                                     + ", of source: "
-                                    + safetyCenterIssueActionId
-                                            .getSafetyCenterIssueId()
-                                            .getSafetySourceId());
+                                    + safetyCenterIssueKey.getSafetySourceId());
                     deliverListenersUpdateLocked(
                             userProfileGroup,
                             false,
