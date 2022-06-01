@@ -116,18 +116,18 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
     private static int toStatusImageResId(int overallSeverityLevel) {
         switch (overallSeverityLevel) {
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN:
-                return R.drawable.safety_status_info;
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK:
                 return R.drawable.safety_status_info;
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_RECOMMENDATION:
                 return R.drawable.safety_status_recommendation;
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING:
                 return R.drawable.safety_status_warn;
+            default:
+                Log.w(
+                        TAG,
+                        String.format("Unexpected OverallSeverityLevel: %s", overallSeverityLevel));
+                return R.drawable.safety_status_info;
         }
-        throw new IllegalArgumentException(
-                String.format(
-                        "Unexpected SafetyCenterStatus.OverallSeverityLevel: %s",
-                        overallSeverityLevel));
     }
 
     private static int toButtonColor(int overallSeverityLevel) {
