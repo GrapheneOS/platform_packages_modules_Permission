@@ -1107,6 +1107,29 @@ class SafetyCenterManagerTest {
     }
 
     @Test
+    fun refreshSafetySources_waitForPreviousRefreshToTimeout_completesSuccessfully() {
+        SafetyCenterFlags.refreshTimeout = TIMEOUT_SHORT
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+
+        safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+            REFRESH_REASON_PAGE_OPEN)
+        val apiSafetySourceData1 =
+            safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
+        assertThat(apiSafetySourceData1).isNull()
+        // Wait for the ongoing refresh to timeout.
+        Thread.sleep(TIMEOUT_SHORT.toMillis())
+        SafetySourceReceiver.safetySourceData[
+                SafetySourceDataKey(REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
+            safetySourceCtsData.information
+
+        safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+            REFRESH_REASON_PAGE_OPEN)
+        val apiSafetySourceData2 =
+            safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
+        assertThat(apiSafetySourceData2).isEqualTo(safetySourceCtsData.information)
+    }
+
+    @Test
     fun refreshSafetySources_withoutAllowingPreviousRefreshToTimeout_completesSuccessfully() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
