@@ -547,4 +547,6 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"यह ऐप्लिकेशन, Android के नए वर्शन पर काम नहीं करता है. अगर यह ऐप्लिकेशन संगीत और ऑडियो फ़ाइलों को ऐक्सेस नहीं कर सकता, तो यह फ़ोटो और वीडियो को भी ऐक्सेस नहीं कर सकेगा."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"यह ऐप्लिकेशन, Android के नए वर्शन पर काम नहीं करता है. अगर यह ऐप्लिकेशन फ़ोटो और वीडियो को ऐक्सेस कर सकता है, तो यह संगीत और ऑडियो फ़ाइलों को भी ऐक्सेस कर सकेगा."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"यह ऐप्लिकेशन, Android के नए वर्शन पर काम नहीं करता है. अगर यह ऐप्लिकेशन संगीत और ऑडियो फ़ाइलों को ऐक्सेस नहीं कर सकता, तो यह फ़ोटो और वीडियो को भी ऐक्सेस नहीं कर सकेगा."</string>
+    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
+    <skip />
 </resources>

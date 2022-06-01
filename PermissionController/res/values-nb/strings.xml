@@ -547,4 +547,6 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Denne appen støtter ikke den nyeste versjonen av Android. Hvis denne appen ikke har tilgang til musikk- og lydfiler, har den heller ikke tilgang til bilder og videoer."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Denne appen støtter ikke den nyeste versjonen av Android. Hvis denne appen har tilgang til bilder og videoer, har den også tilgang til musikk- og lydfiler."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Denne appen støtter ikke den nyeste versjonen av Android. Hvis denne appen ikke har tilgang til musikk- og lydfiler, har den heller ikke tilgang til bilder og videoer."</string>
+    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
+    <skip />
 </resources>

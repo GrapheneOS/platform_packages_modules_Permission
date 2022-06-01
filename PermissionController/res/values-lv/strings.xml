@@ -547,4 +547,6 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Šī lietotne neatbalsta jaunāko Android versiju. Ja šī lietotne nevar piekļūt mūzikas un audio failiem, tai netiks atļauts piekļūt arī fotoattēliem un video."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Šī lietotne neatbalsta jaunāko Android versiju. Ja šī lietotne var piekļūt fotoattēliem un video, tai tiks atļauts piekļūt arī mūzikai un audio failiem."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Šī lietotne neatbalsta jaunāko Android versiju. Ja šī lietotne nevar piekļūt mūzikas un audio failiem, tai netiks atļauts piekļūt arī fotoattēliem un video."</string>
+    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
+    <skip />
 </resources>
