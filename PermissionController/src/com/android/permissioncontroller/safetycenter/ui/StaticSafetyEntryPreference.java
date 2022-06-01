@@ -16,15 +16,19 @@
 
 package com.android.permissioncontroller.safetycenter.ui;
 
+import static android.os.Build.VERSION_CODES.TIRAMISU;
+
 import android.content.Context;
 import android.safetycenter.SafetyCenterStaticEntry;
 import android.text.TextUtils;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.preference.Preference;
 
 /** A preference which displays a visual representation of a {@link SafetyCenterStaticEntry}. */
+@RequiresApi(TIRAMISU)
 public class StaticSafetyEntryPreference extends Preference implements ComparablePreference {
 
     private static final String TAG = StaticSafetyEntryPreference.class.getSimpleName();

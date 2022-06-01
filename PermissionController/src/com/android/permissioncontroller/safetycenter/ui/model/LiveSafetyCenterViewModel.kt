@@ -17,10 +17,12 @@
 package com.android.permissioncontroller.safetycenter.ui.model
 
 import android.app.Application
+import android.os.Build
 import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterErrorDetails
 import android.safetycenter.SafetyCenterIssue
 import android.safetycenter.SafetyCenterManager
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat.getMainExecutor
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
@@ -30,6 +32,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
 /* A SafetyCenterViewModel that talks to the real backing service for Safety Center. */
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class LiveSafetyCenterViewModel(app: Application) : SafetyCenterViewModel(app) {
 
     override val safetyCenterLiveData: LiveData<SafetyCenterData>
@@ -95,6 +98,7 @@ class LiveSafetyCenterViewModel(app: Application) : SafetyCenterViewModel(app) {
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class LiveSafetyCenterViewModelFactory(private val app: Application) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         @Suppress("UNCHECKED_CAST") return LiveSafetyCenterViewModel(app) as T
