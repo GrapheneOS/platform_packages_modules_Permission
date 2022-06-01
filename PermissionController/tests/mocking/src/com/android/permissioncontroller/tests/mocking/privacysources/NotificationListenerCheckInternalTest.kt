@@ -30,6 +30,7 @@ import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetySourceData
 import android.safetycenter.SafetySourceIssue
+import androidx.core.util.Preconditions
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
@@ -41,9 +42,9 @@ import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.privacysources.DisableNotificationListenerComponentHandler
 import com.android.permissioncontroller.privacysources.NotificationListenerActionCardDismissalReceiver
-import com.android.permissioncontroller.privacysources.NotificationListenerCheckJobService
 import com.android.permissioncontroller.privacysources.NotificationListenerCheckInternal
 import com.android.permissioncontroller.privacysources.NotificationListenerCheckInternal.NlsComponent
+import com.android.permissioncontroller.privacysources.NotificationListenerCheckJobService
 import com.android.permissioncontroller.privacysources.SC_NLS_DISABLE_ACTION_ID
 import com.android.permissioncontroller.privacysources.SC_NLS_SOURCE_ID
 import com.google.common.truth.Truth.assertThat
@@ -416,7 +417,8 @@ class NotificationListenerCheckInternalTest {
                 any(ApplicationInfo::class.java))
         }
 
-        val safetySourceIssue = notificationListenerCheck.createSafetySourceIssue(testComponent)
+        val safetySourceIssue = Preconditions.checkNotNull(
+            notificationListenerCheck.createSafetySourceIssue(testComponent))
 
         val expectedId = "notification_listener_${testComponent.flattenToString()}"
         val expectedTitle = context.getString(
