@@ -222,7 +222,7 @@
     <string name="last_opened_summary" msgid="5248984030024968808">"A app foi aberta pela última vez a <xliff:g id="DATE">%s</xliff:g>."</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Último acesso a <xliff:g id="DATE">%s</xliff:g>."</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Se permitir a gestão de todos os ficheiros, esta app pode aceder, modificar e eliminar todos os ficheiros no armazenamento comum neste dispositivo ou nos dispositivos de armazenamento associados. A app pode aceder aos ficheiros sem lhe pedir autorização."</string>
-    <string name="special_file_access_dialog" msgid="583804114020740610">"Pretende permitir que esta app aceda, modifique e elimine ficheiros no dispositivo ou em qualquer dispositivo de armazenamento associado? Esta app pode aceder aos ficheiros sem lhe pedir autorização."</string>
+    <string name="special_file_access_dialog" msgid="583804114020740610">"Permitir que esta app aceda, modifique e elimine ficheiros no dispositivo ou em qualquer dispositivo de armazenamento associado? Esta app pode aceder aos ficheiros sem lhe pedir autorização."</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"As apps com esta autorização podem <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"As apps com esta autorização podem aceder aos dados da sua atividade física, como caminhar, andar de bicicleta, conduzir, contar os passos, etc."</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"As apps com esta autorização podem aceder ao seu calendário"</string>
@@ -442,7 +442,7 @@
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; encontre, determine a posição relativa dos dispositivos próximos e se ligue aos mesmos?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; encontre, determine a posição relativa dos dispositivos próximos e se ligue aos mesmos? "<annotation id="link">"Permita nas Definições."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Alterar o acesso à localização da app <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> de aproximada para exata?"</string>
-    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Pretende permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aceda à localização aproximada deste dispositivo?"</string>
+    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aceda à localização aproximada deste dispositivo?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Exata"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Aproximada"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aceda ao calendário?"</string>
@@ -454,14 +454,14 @@
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aceda a fotos e vídeos neste dispositivo?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; grave áudio?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"A app apenas poderá gravar áudio enquanto a estiver a utilizar."</string>
-    <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Pretende permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; grave áudio?"</string>
+    <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; grave áudio?"</string>
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"Esta app pode pretender gravar áudio sempre, mesmo quando não a está a utilizar. "<annotation id="link">"Permita-o nas Definições."</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"Pretende alterar o acesso ao microfone para a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"Esta app pretende gravar áudio sempre, mesmo quando não a está a utilizar. "<annotation id="link">"Permita-o nas Definições."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aceda à sua atividade física?"</string>
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tire fotos e grave vídeo?"</string>
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"A app apenas poderá tirar fotos e gravar vídeos enquanto a estiver a utilizar."</string>
-    <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"Pretende permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tire fotos e grave vídeo?"</string>
+    <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tire fotos e grave vídeo?"</string>
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"Esta app pode pretender tirar fotos e gravar vídeos sempre, mesmo quando não a está a utilizar. "<annotation id="link">"Permita-o nas Definições."</annotation></string>
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"Pretende alterar o acesso à câmara para a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Esta app pretende tirar fotos e gravar vídeos sempre, mesmo quando não a está a utilizar. "<annotation id="link">"Permita-o nas Definições."</annotation></string>

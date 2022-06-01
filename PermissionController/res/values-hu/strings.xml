@@ -522,13 +522,13 @@
     <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"Megerősítés"</string>
     <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"Vissza"</string>
     <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"Az egyéb fájlokhoz való hozzáférés szintén engedélyezett"</string>
-    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"Az egyéb fájlokhoz való hozzáférés szintén nem engedélyezett"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"Az egyéb fájlokhoz való hozzáférés sem engedélyezett"</string>
     <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"Az egyéb fájlokhoz való hozzáférés szintén engedélyezett"</string>
-    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"Az egyéb fájlokhoz való hozzáférés szintén nem engedélyezett"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"Az egyéb fájlokhoz való hozzáférés sem engedélyezett"</string>
     <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"A fotókhoz és videókhoz való hozzáférés szintén engedélyezett"</string>
-    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"A fotókhoz és videókhoz való hozzáférés szintén nem engedélyezett"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"A fotókhoz és videókhoz való hozzáférés sem engedélyezett"</string>
     <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"A zenékhez és a hangfájlokhoz való hozzáférés szintén engedélyezett"</string>
-    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"A zenékhez és a hangfájlokhoz való hozzáférés szintén nem engedélyezett"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"A zenékhez és a hangfájlokhoz való hozzáférés sem engedélyezett"</string>
     <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"Az alkalmazás nem támogatja az Android legújabb verzióját. Ha az alkalmazás hozzáférhet a zenékhez és a hangfájlokhoz, akkor hozzáférhet a fotókhoz, videókhoz és az egyéb fájlokhoz is."</string>
     <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"Az alkalmazás nem támogatja az Android legújabb verzióját. Ha az alkalmazás nem férhet hozzá a zenei és hangfájlokhoz, akkor ugyanúgy a fotókhoz, a videókhoz és az egyéb fájlokhoz sem férhet hozzá."</string>
     <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"Az alkalmazás nem támogatja az Android legújabb verzióját. Ha az alkalmazás hozzáférhet a fotókhoz és videókhoz, akkor hozzáférhet a zenékhez, a hanganyagokhoz és az egyéb fájlokhoz is."</string>
