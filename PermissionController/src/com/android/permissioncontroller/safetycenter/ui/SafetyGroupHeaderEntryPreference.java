@@ -58,8 +58,8 @@ public class SafetyGroupHeaderEntryPreference extends Preference implements Comp
     @Override
     public void onBindViewHolder(@NonNull PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
-        holder.itemView.setBackgroundResource(mPosition.toBackgroundDrawableResId());
-        final int topMargin = mPosition.toTopMargin(getContext());
+        holder.itemView.setBackgroundResource(mPosition.getBackgroundDrawableResId());
+        final int topMargin = mPosition.getTopMargin(getContext());
 
         final MarginLayoutParams params = (MarginLayoutParams) holder.itemView.getLayoutParams();
         if (params.topMargin != topMargin) {
