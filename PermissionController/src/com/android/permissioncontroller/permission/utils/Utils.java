@@ -85,6 +85,7 @@ import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import androidx.annotation.ColorRes;
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -849,6 +850,19 @@ public final class Utils {
 
     public static Drawable applyTint(Context context, int iconResId, int attr) {
         return applyTint(context, context.getDrawable(iconResId), attr);
+    }
+
+    /**
+     * Get the color resource id based on the attribute
+     *
+     * @return Resource id for the color
+     */
+    @ColorRes
+    public static int getColorResId(Context context, int attr) {
+        Theme theme = context.getTheme();
+        TypedValue typedValue = new TypedValue();
+        theme.resolveAttribute(attr, typedValue, true);
+        return typedValue.resourceId;
     }
 
     public static List<ApplicationInfo> getAllInstalledApplications(Context context) {
