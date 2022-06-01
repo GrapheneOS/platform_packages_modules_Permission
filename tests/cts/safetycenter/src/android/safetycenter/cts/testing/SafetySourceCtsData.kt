@@ -95,6 +95,16 @@ class SafetySourceCtsData(private val context: Context) {
                     .build())
             .build()
 
+    /** A [SafetySourceData] with a [SEVERITY_LEVEL_INFORMATION] [SafetySourceStatus] */
+    val informationForWork =
+        SafetySourceData.Builder()
+            .setStatus(
+                SafetySourceStatus.Builder(
+                        "Ok title for Work", "Ok summary", SEVERITY_LEVEL_INFORMATION)
+                    .setPendingIntent(redirectPendingIntent)
+                    .build())
+            .build()
+
     /**
      * A [SafetySourceData] with a [SEVERITY_LEVEL_INFORMATION] [SafetySourceIssue] and
      * [SafetySourceStatus].
