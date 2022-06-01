@@ -20,11 +20,13 @@ import android.os.UserHandle
 import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterStatus
 import android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN
+import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.ISSUE_TYPE_ID
 import com.android.safetycenter.internaldata.SafetyCenterEntryGroupId
 import com.android.safetycenter.internaldata.SafetyCenterEntryId
 import com.android.safetycenter.internaldata.SafetyCenterIds
 import com.android.safetycenter.internaldata.SafetyCenterIssueActionId
 import com.android.safetycenter.internaldata.SafetyCenterIssueId
+import com.android.safetycenter.internaldata.SafetyCenterIssueKey
 
 /**
  * A class that provides [SafetyCenterData] objects and associated constants to facilitate asserting
@@ -53,12 +55,21 @@ object SafetyCenterCtsData {
             SafetyCenterEntryId.newBuilder().setSafetySourceId(sourceId).setUserId(userId).build())
 
     /** Creates an ID for a Safety Center issue. */
-    fun issueId(sourceId: String, sourceIssueId: String, userId: Int = UserHandle.myUserId()) =
+    fun issueId(
+        sourceId: String,
+        sourceIssueId: String,
+        issueTypeId: String = ISSUE_TYPE_ID,
+        userId: Int = UserHandle.myUserId()
+    ) =
         SafetyCenterIds.encodeToString(
             SafetyCenterIssueId.newBuilder()
-                .setSafetySourceId(sourceId)
-                .setSafetySourceIssueId(sourceIssueId)
-                .setUserId(userId)
+                .setSafetyCenterIssueKey(
+                    SafetyCenterIssueKey.newBuilder()
+                        .setSafetySourceId(sourceId)
+                        .setSafetySourceIssueId(sourceIssueId)
+                        .setUserId(userId)
+                        .build())
+                .setIssueTypeId(issueTypeId)
                 .build())
 
     /** Creates an ID for a Safety Center issue action. */
@@ -70,8 +81,8 @@ object SafetyCenterCtsData {
     ) =
         SafetyCenterIds.encodeToString(
             SafetyCenterIssueActionId.newBuilder()
-                .setSafetyCenterIssueId(
-                    SafetyCenterIssueId.newBuilder()
+                .setSafetyCenterIssueKey(
+                    SafetyCenterIssueKey.newBuilder()
                         .setSafetySourceId(sourceId)
                         .setSafetySourceIssueId(sourceIssueId)
                         .setUserId(userId)
