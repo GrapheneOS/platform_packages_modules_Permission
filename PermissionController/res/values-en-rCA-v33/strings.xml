@@ -21,4 +21,7 @@
     <string name="permission_description_summary_storage" msgid="1917071243213043858">"Apps with this permission can access all files on this device"</string>
     <string name="work_policy_title" msgid="832967780713677409">"Your work policy info"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"Settings managed by your IT admin"</string>
+    <string name="safety_center_more_issues_card_title" msgid="8599419758014246517">"See all alerts"</string>
+    <string name="safety_center_more_issues_status_icon_content_description" msgid="8597351743567707802">"See all alerts"</string>
+    <string name="safety_center_more_issues_expand_button_content_description" msgid="8997241228390831958">"See all alerts"</string>
 </resources>
