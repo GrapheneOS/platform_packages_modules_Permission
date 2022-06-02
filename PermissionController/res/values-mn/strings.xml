@@ -547,4 +547,6 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Энэ апп Android-н хамгийн сүүлийн үеийн хувилбарыг дэмждэггүй. Хэрэв энэ апп хөгжим болон аудио файлд хандах боломжгүй бол үүнийг мөн зураг, видеонд хандахыг зөвшөөрөхгүй."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Энэ апп Android-н хамгийн сүүлийн үеийн хувилбарыг дэмждэггүй. Хэрэв энэ апп зураг болон видеонд хандах боломжтой бол үүнийг мөн хөгжим, аудио файлд хандахыг зөвшөөрнө."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Энэ апп Android-н хамгийн сүүлийн үеийн хувилбарыг дэмждэггүй. Хэрэв энэ апп хөгжим болон аудио файлд хандах боломжгүй бол үүнийг мөн зураг, видеонд хандахыг зөвшөөрөхгүй."</string>
+    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
+    <skip />
 </resources>

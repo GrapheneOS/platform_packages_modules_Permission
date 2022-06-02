@@ -547,4 +547,6 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Ši programa nepalaiko naujausios „Android“ versijos. Jei ši programa negali pasiekti muzikos ir garso failų, ji taip pat negalės pasiekti nuotraukų ir vaizdo įrašų."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Ši programa nepalaiko naujausios „Android“ versijos. Jei ši programa gali pasiekti nuotraukas ir vaizdo įrašus, ji taip pat galės pasiekti muzikos ir garso failus."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Ši programa nepalaiko naujausios „Android“ versijos. Jei ši programa negali pasiekti muzikos ir garso failų, ji taip pat negalės pasiekti nuotraukų ir vaizdo įrašų."</string>
+    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
+    <skip />
 </resources>

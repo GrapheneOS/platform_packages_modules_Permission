@@ -547,4 +547,6 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"このアプリは最新バージョンの Android に対応していません。このアプリが音楽ファイルや音声ファイルにアクセスできない場合は、写真や動画へのアクセスも許可されません。"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"このアプリは最新バージョンの Android に対応していません。このアプリが写真や動画にアクセスできる場合は、音楽ファイルや音声ファイルへのアクセスも許可されます。"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"このアプリは最新バージョンの Android に対応していません。このアプリが音楽ファイルや音声ファイルにアクセスできない場合は、写真や動画へのアクセスも許可されません。"</string>
+    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
+    <skip />
 </resources>
