@@ -547,4 +547,6 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"এই অ্যাপ Android-এর লেটেস্ট ভার্সনে কাজ করে না। এই অ্যাপ যদি মিউজিক এবং অডিও ফাইল অ্যাক্সেস করতে না পারে, তাহলে ফটো ও ভিডিও অ্যাক্সেস করারও অনুমতি থাকবে না।"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"এই অ্যাপ Android-এর লেটেস্ট ভার্সনে কাজ করে না। এই অ্যাপ যদি ফটো এবং ভিডিও অ্যাক্সেস করতে পারে, তাহলে মিউজিক ও অডিও ফাইল অ্যাক্সেস করারও অনুমতি থাকবে।"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"এই অ্যাপ Android-এর লেটেস্ট ভার্সনে কাজ করে না। এই অ্যাপ যদি মিউজিক এবং অডিও ফাইল অ্যাক্সেস করতে না পারে, তাহলে ফটো ও ভিডিও অ্যাক্সেস করারও অনুমতি থাকবে না।"</string>
+    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
+    <skip />
 </resources>

@@ -547,4 +547,6 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Esta app no es compatible con la versión más reciente de Android. Si esta app no puede acceder a archivos de música ni audio, tampoco podrá acceder a fotos y videos."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Esta app no es compatible con la versión más reciente de Android. Si esta app puede acceder a fotos y videos, también podrá acceder a archivos de música y audio."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Esta app no es compatible con la versión más reciente de Android. Si esta app no puede acceder a archivos de música o audio, tampoco podrá acceder a fotos y videos."</string>
+    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
+    <skip />
 </resources>

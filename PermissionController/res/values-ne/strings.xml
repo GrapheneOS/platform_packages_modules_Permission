@@ -547,4 +547,6 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"यो एप Android को नवीनतम संस्करणमा काम गर्दैन। यो एपले सङ्गीत तथा अडियो फाइलहरू प्रयोग गर्न सक्दैन भने यसले फोटो र भिडियोहरू पनि प्रयोग गर्न पाउने छैन।"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"यो एप Android को नवीनतम संस्करणमा काम गर्दैन। यो एपले फोटो तथा भिडियोहरू प्रयोग गर्न सक्छ भने यसले सङ्गीत र अडियो फाइलहरू पनि प्रयोग गर्न पाउने छ।"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"यो एप Android को नवीनतम संस्करणमा काम गर्दैन। यो एपले सङ्गीत तथा अडियो फाइलहरू प्रयोग गर्न सक्दैन भने यसले फोटो र भिडियोहरू पनि प्रयोग गर्न पाउने छैन।"</string>
+    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
+    <skip />
 </resources>

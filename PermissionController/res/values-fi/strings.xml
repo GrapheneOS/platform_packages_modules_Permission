@@ -547,4 +547,6 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Sovellus ei tue Androidin viimeisintä versiota. Jos sovelluksella ei ole pääsyä musiikki‑ ja audiotiedostoihin, se ei myöskään saa pääsyä valokuviin ja videoihin."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Sovellus ei tue Androidin viimeisintä versiota. Jos sovelluksella on pääsy kuviin ja videoihin, se saa pääsyn myös musiikki- ja audiotiedostoihin."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Sovellus ei tue Androidin viimeisintä versiota. Jos sovelluksella ei ole pääsyä musiikki‑ ja audiotiedostoihin, se ei myöskään saa pääsyä valokuviin ja videoihin."</string>
+    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
+    <skip />
 </resources>

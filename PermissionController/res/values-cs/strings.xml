@@ -547,4 +547,6 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Tato aplikace nepodporuje nejnovější verzi Androidu. Pokud tato aplikace nemá přístup k hudbě a zvukovým souborům, nebude mít přístup ani k fotografiím a videím."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Tato aplikace nepodporuje nejnovější verzi Androidu. Pokud má tato aplikace přístup k fotografiím a videím, bude mít přístup i k hudbě a zvukovým souborům."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Tato aplikace nepodporuje nejnovější verzi Androidu. Pokud tato aplikace nemá přístup k hudbě a zvukovým souborům, nebude mít přístup ani k fotografiím a videím."</string>
+    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
+    <skip />
 </resources>
