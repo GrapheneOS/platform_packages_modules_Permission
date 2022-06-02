@@ -478,7 +478,7 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问与您的生命体征相关的传感器数据吗？"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"如要允许此应用始终可以访问身体传感器数据（即使在您未使用此应用时），请"<annotation id="link">"前往设置"</annotation>"。"</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"始终允许“<xliff:g id="APP_NAME">%1$s</xliff:g>”在使用中时访问身体传感器数据？"</string>
-    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"允许 &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 向您发送通知吗？"</string>
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;向您发送通知吗？"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"受控权限"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"应用可使用位置信息"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"您的 IT 管理员允许“<xliff:g id="APP_NAME">%s</xliff:g>”使用您的位置信息"</string>

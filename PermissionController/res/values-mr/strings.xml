@@ -494,8 +494,8 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"कोणतेही नाही"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"मागील\n२४ तास"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"मागील\nसात दिवसातील"</string>
-    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> हे Android द्वारे संरक्षित आहे. तुमच्या या डिव्हाइसवरील डेटावर प्रक्रिया केली जात असल्यामुळे या अ‍ॅपच्या परवानगीचा वापर तुमच्या गोपनीयता डॅशबोर्डवरील स्टेटस बारवर दाखवण्यात आलेला नाही."</string>
-    <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> हे Android द्वारे संरक्षित आहे. तुमच्या या डिव्हाइसवरील डेटावर प्रक्रिया केली जात असल्यामुळे या अ‍ॅपच्या परवानगीचा वापर तुमच्या गोपनीयता डॅशबोर्डवर दाखवण्यात आलेला नाही."</string>
+    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> हे Android द्वारे सुरक्षित आहे. तुमच्या या डिव्हाइसवरील डेटावर प्रक्रिया केली जात असल्यामुळे या अ‍ॅपच्या परवानगीचा वापर तुमच्या गोपनीयता डॅशबोर्डवरील स्टेटस बारवर दाखवण्यात आलेला नाही."</string>
+    <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> हे Android द्वारे सुरक्षित आहे. तुमच्या या डिव्हाइसवरील डेटावर प्रक्रिया केली जात असल्यामुळे या अ‍ॅपच्या परवानगीचा वापर तुमच्या गोपनीयता डॅशबोर्डवर दाखवण्यात आलेला नाही."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"डिव्हाइसचा कॅमेरा ब्लॉक केला आहे"</string>
     <string name="blocked_microphone_title" msgid="1631517143648232585">"डिव्हाइसचा मायक्रोफोन ब्लॉक केला आहे"</string>
     <string name="blocked_location_title" msgid="2005608279812892383">"डिव्हाइसचे स्थान बंद आहे"</string>
@@ -547,6 +547,5 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"हे अ‍ॅप Android च्या नवीनतम आवृत्तीला सपोर्ट करत नाही. हे अ‍ॅप संगीत आणि ऑडिओ फाइल अ‍ॅक्सेस करू शकत नसल्यास, त्याला फोटो व व्हिडिओ अ‍ॅक्सेस करण्याचीदेखील अनुमती दिली जाणार नाही."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"हे अ‍ॅप Android च्या नवीनतम आवृत्तीला सपोर्ट करत नाही. हे अ‍ॅप फोटो आणि व्हिडिओ अ‍ॅक्सेस करू शकत असल्यास, त्याला संगीत व ऑडिओ फाइल अ‍ॅक्सेस करण्याचीदेखील अनुमती दिली जाईल."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"हे अ‍ॅप Android च्या नवीनतम आवृत्तीला सपोर्ट करत नाही. हे अ‍ॅप संगीत आणि ऑडिओ फाइल अ‍ॅक्सेस करू शकत नसल्यास, त्याला फोटो व व्हिडिओ अ‍ॅक्सेस करण्याचीदेखील अनुमती दिली जाणार नाही."</string>
-    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
-    <skip />
+    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"बंद करा"</string>
 </resources>

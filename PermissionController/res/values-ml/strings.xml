@@ -494,8 +494,8 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"ഒന്നുമില്ല"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"കഴിഞ്ഞ\n24 മണിക്കൂർ"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"കഴിഞ്ഞ\n7 ദിവസം"</string>
-    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> ആപ്പിനെ Android പരിരക്ഷിക്കുന്നു. നിങ്ങളുടെ ഡാറ്റ ഈ ഉപകരണത്തിൽ പ്രോസസ് ചെയ്യുന്നതിനാൽ, ഈ ആപ്പിന്റെ അനുമതി ഉപയോഗം നിങ്ങളുടെ സ്വകാര്യതാ ഡാഷ്ബോർഡിലെ സ്റ്റാറ്റസ് ബാറിൽ കാണിക്കില്ല."</string>
-    <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> ആപ്പിനെ Android പരിരക്ഷിക്കുന്നു. നിങ്ങളുടെ ഡാറ്റ ഈ ഉപകരണത്തിൽ പ്രോസസ് ചെയ്യുന്നതിനാൽ ഈ ആപ്പിന്റെ അനുമതി ഉപയോഗം നിങ്ങളുടെ സ്വകാര്യതാ ഡാഷ്ബോർഡിൽ കാണിക്കില്ല."</string>
+    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> ആപ്പിന് Android സുരക്ഷയൊരുക്കുന്നു. നിങ്ങളുടെ ഡാറ്റ ഈ ഉപകരണത്തിൽ പ്രോസസ് ചെയ്യുന്നതിനാൽ, ഈ ആപ്പിന്റെ അനുമതി ഉപയോഗം നിങ്ങളുടെ സ്വകാര്യതാ ഡാഷ്ബോർഡിലെ സ്റ്റാറ്റസ് ബാറിൽ കാണിക്കില്ല."</string>
+    <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> ആപ്പിന് Android സുരക്ഷയൊരുക്കുന്നു. നിങ്ങളുടെ ഡാറ്റ ഈ ഉപകരണത്തിൽ പ്രോസസ് ചെയ്യുന്നതിനാൽ ഈ ആപ്പിന്റെ അനുമതി ഉപയോഗം നിങ്ങളുടെ സ്വകാര്യതാ ഡാഷ്ബോർഡിൽ കാണിക്കില്ല."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"ഉപകരണത്തിന്റെ ക്യാമറ ബ്ലോക്ക് ചെയ്‌തിരിക്കുന്നു"</string>
     <string name="blocked_microphone_title" msgid="1631517143648232585">"ഉപകരണ മൈക്രോഫോൺ ബ്ലോക്ക് ചെയ്തിരിക്കുന്നു"</string>
     <string name="blocked_location_title" msgid="2005608279812892383">"ഉപകരണ ലൊക്കേഷൻ ഓഫാണ്"</string>
@@ -547,6 +547,5 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Android-ന്റെ ഏറ്റവും പുതിയ പതിപ്പിനെ ഈ ആപ്പ് പിന്തുണയ്ക്കുന്നില്ല. ഈ ആപ്പിന് സംഗീതവും ഓഡിയോ ഫയലുകളും ആക്‌സസ് ചെയ്യാൻ കഴിയുന്നില്ലെങ്കിൽ, ഫോട്ടോകളും വീഡിയോകളും ആക്‌സസ് ചെയ്യാനും ഇതിനെ അനുവദിക്കില്ല."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Android-ന്റെ ഏറ്റവും പുതിയ പതിപ്പിനെ ഈ ആപ്പ് പിന്തുണയ്ക്കുന്നില്ല. ഈ ആപ്പിന് ഫോട്ടോകളും വീഡിയോകളും ആക്‌സസ് ചെയ്യാൻ കഴിയുമെങ്കിൽ, സംഗീതവും ഓഡിയോ ഫയലുകളും ആക്‌സസ് ചെയ്യാനും ഇതിനെ അനുവദിക്കും."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Android-ന്റെ ഏറ്റവും പുതിയ പതിപ്പിനെ ഈ ആപ്പ് പിന്തുണയ്ക്കുന്നില്ല. ഈ ആപ്പിന് സംഗീതവും ഓഡിയോ ഫയലുകളും ആക്‌സസ് ചെയ്യാൻ കഴിയുന്നില്ലെങ്കിൽ, ഫോട്ടോകളും വീഡിയോകളും ആക്‌സസ് ചെയ്യാനും ഇതിനെ അനുവദിക്കില്ല."</string>
-    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
-    <skip />
+    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"അടയ്ക്കുക"</string>
 </resources>
