@@ -38,5 +38,7 @@
         <!-- Buttons -->
         <item name="scActionButtonStyle">@style/SafetyCenter.MaterialActionButton</item>
         <item name="scSecondaryActionButtonStyle">@style/SafetyCenter.MaterialActionButton.Secondary</item>
+
+        <item name="colorScShieldAccent">@color/sc_shield_accent</item>
     </style>
 </resources>

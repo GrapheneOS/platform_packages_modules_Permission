@@ -17,13 +17,15 @@
 package com.android.permissioncontroller.safetycenter.ui;
 
 import android.content.Context;
+import android.graphics.drawable.Animatable2;
+import android.graphics.drawable.AnimatedVectorDrawable;
+import android.graphics.drawable.Drawable;
 import android.safetycenter.SafetyCenterStatus;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -40,8 +42,10 @@ import java.util.Objects;
 public class SafetyStatusPreference extends Preference implements ComparablePreference {
     private static final String TAG = "SafetyStatusPreference";
 
-    @Nullable private SafetyCenterStatus mStatus;
-    @Nullable private View.OnClickListener mRescanButtonOnClickListener;
+    @Nullable
+    private SafetyCenterStatus mStatus;
+    @Nullable
+    private View.OnClickListener mRescanButtonOnClickListener;
     private boolean mHasIssues;
 
     public SafetyStatusPreference(Context context, AttributeSet attrs) {
@@ -49,6 +53,10 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
         mHasIssues = false;
         setLayoutResource(R.layout.preference_safety_status);
     }
+
+    private boolean mRefreshRunning;
+
+    private boolean mRefreshEnding;
 
     @Override
     public void onBindViewHolder(PreferenceViewHolder holder) {
@@ -59,43 +67,112 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
         }
 
         ImageView statusImage = (ImageView) holder.findViewById(R.id.status_image);
-        statusImage.setImageResource(toStatusImageResId(mStatus.getSeverityLevel()));
-
+        View rescanButton = holder.findViewById(R.id.rescan_button);
+        if (!mRefreshRunning) {
+            statusImage.setImageResource(toStatusImageResId(mStatus.getSeverityLevel()));
+            rescanButton.setBackgroundTintList(
+                    ContextCompat.getColorStateList(
+                            getContext(), toButtonColor(mStatus.getSeverityLevel())));
+        } else {
+            rescanButton.setEnabled(false);
+        }
         ((TextView) holder.findViewById(R.id.status_title)).setText(mStatus.getTitle());
         ((TextView) holder.findViewById(R.id.status_summary)).setText(mStatus.getSummary());
 
-        ProgressBar rescanProgressBar = (ProgressBar) holder.findViewById(R.id.rescan_progress_bar);
-
-        View rescanButton = holder.findViewById(R.id.rescan_button);
-        rescanButton.setBackgroundTintList(
-                ContextCompat.getColorStateList(
-                        getContext(), toButtonColor(mStatus.getSeverityLevel())));
         if (mRescanButtonOnClickListener != null) {
             rescanButton.setOnClickListener(view -> mRescanButtonOnClickListener.onClick(view));
         }
 
         if (mStatus.getRefreshStatus()
-                == SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS) {
-            startRescanAnimation(statusImage, rescanButton, rescanProgressBar);
-        } else {
-            endRescanAnimation(statusImage, rescanProgressBar, rescanButton);
+                == SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS && !mRefreshRunning) {
+            startRescanAnimation(statusImage, rescanButton);
+            mRefreshRunning = true;
+        } else if (mRefreshRunning && !mRefreshEnding) {
+            mRefreshEnding = true;
+            endRescanAnimation(statusImage, rescanButton);
         }
     }
 
     private void startRescanAnimation(
-            ImageView statusImage, View rescanButton, ProgressBar rescanProgressBar) {
-        rescanButton.setVisibility(View.VISIBLE);
-        statusImage.setVisibility(View.INVISIBLE);
-        rescanProgressBar.setVisibility(View.VISIBLE);
+            ImageView statusImage, View rescanButton) {
+        statusImage.setImageResource(R.drawable.status_info_to_scanning_anim);
+        AnimatedVectorDrawable animation = (AnimatedVectorDrawable) statusImage.getDrawable();
+        animation.registerAnimationCallback(
+                new Animatable2.AnimationCallback() {
+                    @Override
+                    public void onAnimationEnd(Drawable drawable) {
+                        statusImage.setImageResource(R.drawable.status_scanning_anim);
+                        AnimatedVectorDrawable scanningAnim =
+                                (AnimatedVectorDrawable) statusImage.getDrawable();
+                        scanningAnim.registerAnimationCallback(
+                                new Animatable2.AnimationCallback() {
+                                    @Override
+                                    public void onAnimationEnd(Drawable drawable) {
+                                        ((AnimatedVectorDrawable) drawable).start();
+                                    }
+                                });
+                        scanningAnim.start();
+                    }
+                });
+        animation.start();
         rescanButton.setEnabled(false);
     }
 
     private void endRescanAnimation(
-            ImageView statusImage, ProgressBar rescanProgressBar, View rescanButton) {
-        statusImage.setVisibility(View.VISIBLE);
-        rescanProgressBar.setVisibility(View.INVISIBLE);
+            ImageView statusImage, View rescanButton) {
+        Drawable statusDrawable = statusImage.getDrawable();
+        if (!(statusDrawable instanceof AnimatedVectorDrawable)) {
+            return;
+        }
+        AnimatedVectorDrawable animatedStatusDrawable = (AnimatedVectorDrawable) statusDrawable;
+
+        if (!animatedStatusDrawable.isRunning()) {
+            return;
+        }
+
+        animatedStatusDrawable.clearAnimationCallbacks();
+        animatedStatusDrawable.registerAnimationCallback(
+                new Animatable2.AnimationCallback() {
+                    @Override
+                    public void onAnimationEnd(Drawable drawable) {
+                        int exitAnimation = getEndingAnimation();
+                        statusImage.setImageResource(exitAnimation);
+                        AnimatedVectorDrawable animatedDrawable =
+                                (AnimatedVectorDrawable) statusImage.getDrawable();
+                        animatedDrawable.registerAnimationCallback(
+                                new Animatable2.AnimationCallback() {
+                                    @Override
+                                    public void onAnimationEnd(Drawable drawable) {
+                                        super.onAnimationEnd(drawable);
+                                        finishScanAnimation(statusImage, rescanButton);
+                                    }
+                                }
+                        );
+                        animatedDrawable.start();
+                    }
+                });
+    }
+
+    private int getEndingAnimation() {
+        switch (mStatus.getSeverityLevel()) {
+            case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING:
+                return R.drawable.status_scanning_to_warn_anim;
+            case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_RECOMMENDATION:
+                return R.drawable.status_scanning_to_recommend_anim;
+            default:
+                return R.drawable.status_scanning_to_info_anim;
+        }
+    }
+
+    private void finishScanAnimation(ImageView statusImage, View rescanButton) {
+        statusImage.setImageResource(toStatusImageResId(
+                mStatus.getSeverityLevel()));
+        mRefreshRunning = false;
+        mRefreshEnding = false;
         rescanButton.setEnabled(true);
-        rescanButton.setVisibility(mHasIssues ? View.GONE : View.VISIBLE);
+        rescanButton.setVisibility(mStatus.getSeverityLevel()
+                != SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK
+                ? View.GONE : View.VISIBLE);
     }
 
     void setSafetyStatus(SafetyCenterStatus status) {
