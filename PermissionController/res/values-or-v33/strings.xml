@@ -21,4 +21,7 @@
     <string name="permission_description_summary_storage" msgid="1917071243213043858">"ଏହି ଅନୁମତି ଥିବା ଆପ୍ସ ଏଇ ଡିଭାଇସରେ ସମସ୍ତ ଫାଇଲକୁ ଆକ୍ସେସ କରିପାରିବ"</string>
     <string name="work_policy_title" msgid="832967780713677409">"ଆପଣଙ୍କ ୱାର୍କ ନୀତି ସୂଚନା"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"ଆପଣଙ୍କ IT ଆଡମିନଙ୍କ ଦ୍ୱାରା ପରିଚାଳିତ ସେଟିଂସ"</string>
+    <string name="safety_center_more_issues_card_title" msgid="8599419758014246517">"ସମସ୍ତ ଆଲର୍ଟ ଦେଖନ୍ତୁ"</string>
+    <string name="safety_center_more_issues_status_icon_content_description" msgid="8597351743567707802">"ସମସ୍ତ ଆଲର୍ଟ ଦେଖନ୍ତୁ"</string>
+    <string name="safety_center_more_issues_expand_button_content_description" msgid="8997241228390831958">"ସମସ୍ତ ଆଲର୍ଟ ଦେଖନ୍ତୁ"</string>
 </resources>
