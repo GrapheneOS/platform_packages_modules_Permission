@@ -21,10 +21,7 @@
     <string name="permission_description_summary_storage" msgid="1917071243213043858">"이 권한이 있는 앱은 기기의 모든 파일에 액세스할 수 있습니다."</string>
     <string name="work_policy_title" msgid="832967780713677409">"직장 프로필 정책 정보"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"IT 관리자가 관리하는 설정"</string>
-    <!-- no translation found for safety_center_more_issues_card_title (8599419758014246517) -->
-    <skip />
-    <!-- no translation found for safety_center_more_issues_status_icon_content_description (8597351743567707802) -->
-    <skip />
-    <!-- no translation found for safety_center_more_issues_expand_button_content_description (8997241228390831958) -->
-    <skip />
+    <string name="safety_center_more_issues_card_title" msgid="8599419758014246517">"모든 알림 보기"</string>
+    <string name="safety_center_more_issues_status_icon_content_description" msgid="8597351743567707802">"모든 알림 보기"</string>
+    <string name="safety_center_more_issues_expand_button_content_description" msgid="8997241228390831958">"모든 알림 보기"</string>
 </resources>

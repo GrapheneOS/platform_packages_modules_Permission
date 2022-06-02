@@ -21,10 +21,7 @@
     <string name="permission_description_summary_storage" msgid="1917071243213043858">"Додатки з цим дозволом мають доступ до всіх файлів на цьому пристрої"</string>
     <string name="work_policy_title" msgid="832967780713677409">"Інформація про правила роботи"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"Налаштування, якими керує ваш системний адміністратор"</string>
-    <!-- no translation found for safety_center_more_issues_card_title (8599419758014246517) -->
-    <skip />
-    <!-- no translation found for safety_center_more_issues_status_icon_content_description (8597351743567707802) -->
-    <skip />
-    <!-- no translation found for safety_center_more_issues_expand_button_content_description (8997241228390831958) -->
-    <skip />
+    <string name="safety_center_more_issues_card_title" msgid="8599419758014246517">"Переглянути всі сповіщення"</string>
+    <string name="safety_center_more_issues_status_icon_content_description" msgid="8597351743567707802">"Переглянути всі сповіщення"</string>
+    <string name="safety_center_more_issues_expand_button_content_description" msgid="8997241228390831958">"Переглянути всі сповіщення"</string>
 </resources>
