@@ -16,7 +16,9 @@
 
 package com.android.permissioncontroller.permission.service.v33
 
+import android.content.ComponentName
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.IBinder
 import android.safetycenter.SafetyCenterManager
 import android.service.quicksettings.Tile
@@ -31,13 +33,12 @@ class SafetyCenterQsTileService : TileService() {
 
     override fun onBind(intent: Intent?): IBinder? {
         val scManager = getSystemService(SafetyCenterManager::class.java)!!
-        /*
         if (!scManager.isSafetyCenterEnabled) {
-            packageManager.setComponentEnabledSetting(ComponentName(this, this::class.java),
+            packageManager.setComponentEnabledSetting(
+                ComponentName(this, this::class.java),
                 PackageManager.COMPONENT_ENABLED_STATE_DISABLED, 0)
             disabled = true
         }
-         */
 
         return super.onBind(intent)
     }
