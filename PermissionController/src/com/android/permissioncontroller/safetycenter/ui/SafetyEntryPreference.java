@@ -73,8 +73,8 @@ public final class SafetyEntryPreference extends Preference implements Comparabl
     @Override
     public void onBindViewHolder(@NonNull PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
-        holder.itemView.setBackgroundResource(mPosition.toBackgroundDrawableResId());
-        final int topMargin = mPosition.toTopMargin(holder.itemView.getContext());
+        holder.itemView.setBackgroundResource(mPosition.getBackgroundDrawableResId());
+        final int topMargin = mPosition.getTopMargin(holder.itemView.getContext());
 
         final ViewGroup.MarginLayoutParams params =
                 (ViewGroup.MarginLayoutParams) holder.itemView.getLayoutParams();
