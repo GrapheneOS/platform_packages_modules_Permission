@@ -547,6 +547,5 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"แอปนี้ไม่รองรับ Android เวอร์ชันล่าสุด หาก​แอปนี้เข้าถึงไฟล์เพลงและไฟล์เสียงไม่ได้ ก็จะไม่ได้รับอนุญาตให้เข้าถึงรูปภาพและวิดีโอด้วย"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"แอปนี้ไม่รองรับ Android เวอร์ชันล่าสุด หาก​แอปนี้เข้าถึงรูปภาพและวิดีโอได้ ก็จะได้รับอนุญาตให้เข้าถึงไฟล์เพลงและไฟล์เสียงด้วย"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"แอปนี้ไม่รองรับ Android เวอร์ชันล่าสุด หาก​แอปนี้เข้าถึงไฟล์เพลงและไฟล์เสียงไม่ได้ ก็จะไม่ได้รับอนุญาตให้เข้าถึงรูปภาพและวิดีโอด้วย"</string>
-    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
-    <skip />
+    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"ปิด"</string>
 </resources>

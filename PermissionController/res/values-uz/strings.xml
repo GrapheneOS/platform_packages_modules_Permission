@@ -547,6 +547,5 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Bu ilova eng oxirgi Android versiyasi bilan ishlamaydi. Agar bu ilova musiqa va audio fayllarga kira olmasa, unga suratlar va videolarga ham kirishiga ruxsat berilmaydi."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Bu ilova eng oxirgi Android versiyasi bilan ishlamaydi. Agar bu ilova suratlar va videolarga kira olsa, unga musiqa, va audio fayllarga ham kirishiga ruxsat beriladi."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Bu ilova eng oxirgi Android versiyasi bilan ishlamaydi. Agar bu ilova musiqa va audio fayllarga kira olmasa, unga suratlar va videolarga ham kirishiga ruxsat berilmaydi."</string>
-    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
-    <skip />
+    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"Yopish"</string>
 </resources>
