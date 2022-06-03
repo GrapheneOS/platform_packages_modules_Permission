@@ -547,4 +547,6 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Bu uygulamada Android\'in en son sürümü desteklenmiyor. Bu uygulama müzik ve ses dosyalarına erişemezse fotoğraflara ve videolara da erişmesine izin verilmez."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Bu uygulamada Android\'in en son sürümü desteklenmiyor. Bu uygulama fotoğraflara ve videolara erişebilirse müzik ve ses dosyalarına da erişmesine izin verilir."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Bu uygulamada Android\'in en son sürümü desteklenmiyor. Bu uygulama müzik ve ses dosyalarına erişemezse fotoğraflara ve videolara da erişmesine izin verilmez."</string>
+    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
+    <skip />
 </resources>

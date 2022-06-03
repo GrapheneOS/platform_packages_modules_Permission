@@ -455,7 +455,7 @@
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; envíe y vea SMS?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"¿Quieres permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a las fotos, el contenido multimedia y los archivos de tu dispositivo?"</string>
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a &lt;b&gt;fotos, videos, música y audio&lt;/b&gt; del dispositivo?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"¿Permitir acceso a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; a &lt;b&gt;fotos, videos, música, audio y otros&lt;/b&gt; del dispositivo?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a &lt;b&gt;fotos, videos, música, audio y otros archivos&lt;/b&gt; del dispositivo?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a la música y otros archivos de audio en este dispositivo?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a las fotos y los videos del dispositivo?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; grabe audio?"</string>
@@ -547,4 +547,6 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Esta app no es compatible con la versión más reciente de Android. Si esta app no puede acceder a archivos de música ni audio, tampoco podrá acceder a fotos y videos."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Esta app no es compatible con la versión más reciente de Android. Si esta app puede acceder a fotos y videos, también podrá acceder a archivos de música y audio."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Esta app no es compatible con la versión más reciente de Android. Si esta app no puede acceder a archivos de música o audio, tampoco podrá acceder a fotos y videos."</string>
+    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
+    <skip />
 </resources>

@@ -21,4 +21,7 @@
     <string name="permission_description_summary_storage" msgid="1917071243213043858">"Aplikacije s tim dopuštenjem mogu pristupati svim datotekama na ovom uređaju"</string>
     <string name="work_policy_title" msgid="832967780713677409">"Informacije o pravilima za posao"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"Postavkama upravlja vaš IT administrator"</string>
+    <string name="safety_center_more_issues_card_title" msgid="8599419758014246517">"Prikaži sva upozorenja"</string>
+    <string name="safety_center_more_issues_status_icon_content_description" msgid="8597351743567707802">"Prikaži sva upozorenja"</string>
+    <string name="safety_center_more_issues_expand_button_content_description" msgid="8997241228390831958">"Prikaži sva upozorenja"</string>
 </resources>

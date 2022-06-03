@@ -547,4 +547,6 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"앱이 최신 버전의 Android를 지원하지 않습니다. 앱이 음악 및 오디오 파일에 액세스할 수 없는 경우 사진 및 동영상에 대한 액세스도 허용되지 않습니다."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"앱이 최신 버전의 Android를 지원하지 않습니다. 앱이 사진 및 동영상에 액세스할 수 있는 경우 음악 및 오디오 파일에 대한 액세스도 허용됩니다."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"앱이 최신 버전의 Android를 지원하지 않습니다. 앱이 음악 및 오디오 파일에 액세스할 수 없는 경우 사진 및 동영상에 대한 액세스도 허용되지 않습니다."</string>
+    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
+    <skip />
 </resources>

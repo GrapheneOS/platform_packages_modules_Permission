@@ -21,4 +21,7 @@
     <string name="permission_description_summary_storage" msgid="1917071243213043858">"இந்த அனுமதியைக் கொண்டுள்ள ஆப்ஸால் இந்தச் சாதனத்திலுள்ள அனைத்து ஃபைல்களையும் அணுக முடியும்"</string>
     <string name="work_policy_title" msgid="832967780713677409">"உங்கள் பணிக் கணக்கின் கொள்கை பற்றிய தகவல்கள்"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"உங்கள் IT நிர்வாகியால் நிர்வகிக்கப்படும் அமைப்புகள்"</string>
+    <string name="safety_center_more_issues_card_title" msgid="8599419758014246517">"அனைத்து அறிவிப்புகளையும் காட்டுதல்"</string>
+    <string name="safety_center_more_issues_status_icon_content_description" msgid="8597351743567707802">"அனைத்து அறிவிப்புகளையும் காட்டும்"</string>
+    <string name="safety_center_more_issues_expand_button_content_description" msgid="8997241228390831958">"அனைத்து அறிவிப்புகளையும் காட்டும்"</string>
 </resources>

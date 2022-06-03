@@ -21,4 +21,7 @@
     <string name="permission_description_summary_storage" msgid="1917071243213043858">"កម្មវិធីដែលមានការអនុញ្ញាតនេះអាចចូលប្រើប្រាស់ឯកសារទាំងអស់នៅលើឧបករណ៍នេះ"</string>
     <string name="work_policy_title" msgid="832967780713677409">"ព័ត៌មាន​អំពីគោលការណ៍ការងារ​របស់អ្នក"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"ការកំណត់​​ដែល​ស្ថិត​ក្រោម​ការ​គ្រប់គ្រងដោយ​​អ្នកគ្រប់គ្រង​ផ្នែកព័ត៌មានវិទ្យា​របស់អ្នក"</string>
+    <string name="safety_center_more_issues_card_title" msgid="8599419758014246517">"មើលការជូន​ដំណឹងទាំងអស់"</string>
+    <string name="safety_center_more_issues_status_icon_content_description" msgid="8597351743567707802">"មើលការជូន​ដំណឹងទាំងអស់"</string>
+    <string name="safety_center_more_issues_expand_button_content_description" msgid="8997241228390831958">"មើលការជូន​ដំណឹងទាំងអស់"</string>
 </resources>

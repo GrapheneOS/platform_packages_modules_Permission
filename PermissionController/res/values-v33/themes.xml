@@ -37,10 +37,7 @@
         <item name="colorScIconInfo">@color/gm_green_500</item>
         <item name="colorScIconRecommend">@color/gm_yellow_500</item>
         <item name="colorScIconWarn">@color/gm_red_500</item>
-
-        <!-- Buttons -->
-        <item name="scActionButtonStyle">@style/SafetyCenter.MaterialActionButton</item>
-        <item name="scSecondaryActionButtonStyle">@style/SafetyCenter.MaterialActionButton.Secondary</item>
+        <item name="colorScShieldAccent">@color/sc_shield_accent</item>
     </style>
 
     <style name="Theme.SafetyCenter" parent="Theme.PermissionController.Settings.FilterTouches">
@@ -65,5 +62,7 @@
         <!-- Buttons -->
         <item name="scActionButtonStyle">@style/SafetyCenter.MaterialActionButton</item>
         <item name="scSecondaryActionButtonStyle">@style/SafetyCenter.MaterialActionButton.Secondary</item>
+
+        <item name="colorScShieldAccent">@color/sc_shield_accent</item>
     </style>
 </resources>
