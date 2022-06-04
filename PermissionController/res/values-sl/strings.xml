@@ -488,8 +488,8 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Brez"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"V zadnjih\n24 urah"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Zadnjih\n7 dni"</string>
-    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Varnost aplikacije <xliff:g id="APP_NAME">%1$s</xliff:g> zagotavlja Android. Ker obdelava podatkov poteka v tej napravi, uporaba dovoljenj za to aplikacijo ni prikazana v vrstici stanja ali na nadzorni plošči za zasebnost."</string>
-    <string name="exempt_info_label" msgid="6286190981253476699">"Varnost aplikacije <xliff:g id="APP_NAME">%1$s</xliff:g> zagotavlja Android. Ker obdelava podatkov poteka v tej napravi, uporaba dovoljenj za to aplikacijo ni prikazana na nadzorni plošči za zasebnost."</string>
+    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g> je zaščitena z Androidom. Ker obdelava podatkov poteka v tej napravi, uporaba dovoljenj za to aplikacijo ni prikazana v vrstici stanja ali na nadzorni plošči za zasebnost."</string>
+    <string name="exempt_info_label" msgid="6286190981253476699">"Aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g> je zaščitena z Androidom. Ker obdelava podatkov poteka v tej napravi, uporaba dovoljenj za to aplikacijo ni prikazana na nadzorni plošči za zasebnost."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Fotoaparat naprave je blokiran"</string>
     <string name="blocked_microphone_title" msgid="1631517143648232585">"Mikrofon naprave je blokiran"</string>
     <string name="blocked_location_title" msgid="2005608279812892383">"Lokacija naprave je izklopljena"</string>
