@@ -547,6 +547,5 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Diese App unterstützt nicht die neueste Version von Android. Wenn diese App keinen Zugriff auf Musik- und Audiodateien hat, kann sie auch nicht auf Fotos und Videos zugreifen."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Diese App unterstützt nicht die neueste Version von Android. Wenn diese App Zugriff auf Fotos und Videos hat, kann sie auch auf Musik- und Audiodateien zugreifen."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Diese App unterstützt nicht die neueste Version von Android. Wenn diese App keinen Zugriff auf Musik- und Audiodateien hat, kann sie auch nicht auf Fotos und Videos zugreifen."</string>
-    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
-    <skip />
+    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"Schließen"</string>
 </resources>

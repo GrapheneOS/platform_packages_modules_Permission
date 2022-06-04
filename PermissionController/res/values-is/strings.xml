@@ -547,6 +547,5 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Þetta forrit styður ekki nýjustu útgáfu Android. Ef forritið hefur ekki aðgang að tónlist og hljóðskrám fær það ekki heldur aðgang að myndum og myndskeiðum."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Þetta forrit styður ekki nýjustu útgáfu Android. Ef forritið hefur aðgang að myndum og myndskeiðum fær það einnig aðgang að tónlist og hljóðskrám."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Þetta forrit styður ekki nýjustu útgáfu Android. Ef forritið hefur ekki aðgang að tónlist og hljóðskrám fær það ekki heldur aðgang að myndum og myndskeiðum."</string>
-    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
-    <skip />
+    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"Loka"</string>
 </resources>

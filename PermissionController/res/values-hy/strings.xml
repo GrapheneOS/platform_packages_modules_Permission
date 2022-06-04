@@ -547,6 +547,5 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Այս հավելվածը չի աջակցում Android-ի վերջին տարբերակը։ Եթե հավելվածը չունենա երաժշտության և աուդիո ֆայլերի օգտագործման թույլտվություն, նրան նաև հասանելի չեն լինի լուսանկարները և տեսանյութերը։"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Այս հավելվածը չի աջակցում Android-ի վերջին տարբերակը։ Եթե հավելվածն ունենա լուսանկարների և տեսանյութերի օգտագործման թույլտվություն, նրան նաև հասանելի կլինեն երաժշտությունը և աուդիո ֆայլերը։"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Այս հավելվածը չի աջակցում Android-ի վերջին տարբերակը։ Եթե հավելվածը չունենա երաժշտության և աուդիո ֆայլերի օգտագործման թույլտվություն, նրան նաև հասանելի չեն լինի լուսանկարները և տեսանյութերը։"</string>
-    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
-    <skip />
+    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"Փակել"</string>
 </resources>

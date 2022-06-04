@@ -547,6 +547,5 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Апликацијава не ја поддржува најновата верзија на Android. Ако оваа апликација не може да пристапува до музички и аудиодатотеки, тогаш нема да ѝ биде дозволено да пристапува и до фотографии и видеа."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Апликацијава не ја поддржува најновата верзија на Android. Ако оваа апликација може да пристапува до фотографии и видеа, тогаш ќе ѝ биде дозволено да пристапува и до музички и аудиодатотеки."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Апликацијава не ја поддржува најновата верзија на Android. Ако оваа апликација не може да пристапува до музички и аудиодатотеки, тогаш нема да ѝ биде дозволено да пристапува и до фотографии и видеа."</string>
-    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
-    <skip />
+    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"Затвори"</string>
 </resources>
