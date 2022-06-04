@@ -472,7 +472,7 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问与您的生命体征相关的传感器数据吗？"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"如要允许此应用始终可以访问身体传感器数据（即使在您未使用此应用时），请"<annotation id="link">"前往设置"</annotation>"。"</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"始终允许“<xliff:g id="APP_NAME">%1$s</xliff:g>”在使用中时访问身体传感器数据？"</string>
-    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"允许 &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 向您发送通知吗？"</string>
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;向您发送通知吗？"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"受控权限"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"应用可使用位置信息"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"您的 IT 管理员允许“<xliff:g id="APP_NAME">%s</xliff:g>”使用您的位置信息"</string>
@@ -488,8 +488,8 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"无"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"过去 24 小时\n"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"过去\n7 天"</string>
-    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Android 会为<xliff:g id="APP_NAME">%1$s</xliff:g>提供保护。系统是在这个设备上处理您的数据，因此状态栏或隐私信息中心不会显示这个应用的权限使用情况。"</string>
-    <string name="exempt_info_label" msgid="6286190981253476699">"Android 会为<xliff:g id="APP_NAME">%1$s</xliff:g>提供保护。系统是在这个设备上处理您的数据，因此隐私信息中心不会显示这个应用的权限使用情况。"</string>
+    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"“<xliff:g id="APP_NAME">%1$s</xliff:g>”受 Android 保护。由于您的数据是在此设备上处理，因此状态栏或隐私信息中心不会显示这个应用的权限使用情况。"</string>
+    <string name="exempt_info_label" msgid="6286190981253476699">"“<xliff:g id="APP_NAME">%1$s</xliff:g>”受 Android 保护。由于您的数据是在此设备上处理，因此隐私信息中心不会显示这个应用的权限使用情况。"</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"设备摄像头已被屏蔽"</string>
     <string name="blocked_microphone_title" msgid="1631517143648232585">"设备麦克风已被屏蔽"</string>
     <string name="blocked_location_title" msgid="2005608279812892383">"设备位置信息功能已关闭"</string>
