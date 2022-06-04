@@ -547,6 +547,5 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Denne app understøtter ikke den seneste version af Android. Hvis denne app ikke har adgang til musik og lydfiler, får den heller ikke adgang til billeder og videoer."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Denne app understøtter ikke den seneste version af Android. Hvis denne app har adgang til billeder og videoer, får den også adgang til musik og lydfiler."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Denne app understøtter ikke den seneste version af Android. Hvis denne app ikke har adgang til musik og lydfiler, får den heller ikke adgang til billeder og videoer."</string>
-    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
-    <skip />
+    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"Luk"</string>
 </resources>

@@ -547,6 +547,5 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Aplicația nu acceptă cea mai recentă versiune Android. Dacă aplicația nu poate accesa muzică și fișiere audio, nu va putea să acceseze fotografii și videoclipuri."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Aplicația nu acceptă cea mai recentă versiune Android. Dacă aplicația poate accesa fotografii și videoclipuri, va putea să acceseze și muzică și fișiere audio."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Aplicația nu acceptă cea mai recentă versiune Android. Dacă aplicația nu poate accesa muzică și fișiere audio, nu va putea să acceseze fotografii și videoclipuri."</string>
-    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
-    <skip />
+    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"Închideți"</string>
 </resources>
