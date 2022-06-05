@@ -39,7 +39,6 @@ class UnusedAppPreference(
     user: UserHandle,
     context: Context
 ) : SmartIconLoadPackagePermissionPreference(app, packageName, user, context), RemovablePref {
-    private var removeButton: ImageButton? = null
     private var removeRunnable: Runnable? = null
     private var removeButtonEnabled: Boolean = false
 
@@ -50,24 +49,18 @@ class UnusedAppPreference(
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
         super.onBindViewHolder(holder)
 
-        removeButton = holder.findViewById(R.id.uninstall_button) as ImageButton
-        bindRemoveButtonRunnable(removeRunnable)
+        val removeButton = holder.findViewById(R.id.uninstall_button) as ImageButton
+        removeButton?.setOnClickListener {
+            removeRunnable?.run()
+        }
         removeButton?.isEnabled = removeButtonEnabled
     }
 
     override fun setRemoveClickRunnable(runnable: Runnable) {
         removeRunnable = runnable
-        bindRemoveButtonRunnable(removeRunnable)
     }
 
     override fun setRemoveComponentEnabled(enabled: Boolean) {
         removeButtonEnabled = enabled
-        removeButton?.isEnabled = enabled
-    }
-
-    private fun bindRemoveButtonRunnable(runnable: Runnable?) {
-        removeButton?.setOnClickListener {
-            runnable?.run()
-        }
     }
 }
