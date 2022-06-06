@@ -33,7 +33,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
-import android.os.UserManager
 import android.provider.DeviceConfig
 import android.provider.Settings
 import android.safetycenter.SafetyCenterManager
@@ -86,12 +85,6 @@ private const val DEBUG = false
 @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.TIRAMISU)
 private fun isAccessibilitySourceSupported(): Boolean {
     return SdkLevel.isAtLeastT()
-}
-
-@RequiresApi(Build.VERSION_CODES.TIRAMISU)
-private fun isProfile(context: Context): Boolean {
-    val userManager = getSystemServiceSafe(context, UserManager::class.java)
-    return userManager.isProfile
 }
 
 fun isAccessibilitySourceEnabled(): Boolean {
@@ -740,6 +733,8 @@ class AccessibilitySourceService(
             )
         }
     }
+
+    override val shouldProcessProfileRequest: Boolean = false
 
     override fun safetyCenterEnabledChanged(context: Context, enabled: Boolean) {
         if (!enabled) { // safety center disabled event

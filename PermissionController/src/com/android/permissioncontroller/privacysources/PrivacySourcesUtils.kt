@@ -15,13 +15,20 @@
  */
 
 @file:JvmName("PrivacySourcesUtils")
+
 package com.android.permissioncontroller.privacysources
 
+import android.content.Context
 import android.content.Intent
+import android.os.Build
+import android.os.UserManager
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyEvent
+import androidx.annotation.RequiresApi
+import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.privacysources.SafetyCenterReceiver.RefreshEvent
 
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 fun getSafetyCenterEvent(refreshEvent: RefreshEvent, intent: Intent): SafetyEvent {
     return when (refreshEvent) {
         RefreshEvent.UNKNOWN ->
@@ -29,11 +36,17 @@ fun getSafetyCenterEvent(refreshEvent: RefreshEvent, intent: Intent): SafetyEven
         RefreshEvent.EVENT_DEVICE_REBOOTED ->
             SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_REBOOTED).build()
         RefreshEvent.EVENT_REFRESH_REQUESTED -> {
-            val refreshBroadcastId = intent.getStringExtra(
-                SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID
-            )
+            val refreshBroadcastId =
+                intent.getStringExtra(SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID)
             SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
-                .setRefreshBroadcastId(refreshBroadcastId).build()
+                .setRefreshBroadcastId(refreshBroadcastId)
+                .build()
         }
     }
+}
+
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
+fun isProfile(context: Context): Boolean {
+    val userManager = Utils.getSystemServiceSafe(context, UserManager::class.java)
+    return userManager.isProfile
 }
