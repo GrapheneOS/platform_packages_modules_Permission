@@ -25,7 +25,7 @@
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"برنامه یافت نشد"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"مجاز نیست"</string>
     <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"مجاز نیست و دیگر سؤال نشود"</string>
-    <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"حفظ کردن «هنگامی که از برنامه استفاده می‌شود»"</string>
+    <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"تغییر ندادن اجازه «هنگامی که از برنامه استفاده می‌شود»"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"«فقط این بار» نگه داشته شود"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"اطلاعات بیشتر"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"درهرصورت مجاز نیست"</string>
@@ -39,7 +39,7 @@
     <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g> مجوز غیرفعال است"</string>
     <string name="permission_revoked_all" msgid="3397649017727222283">"همه مجوزها غیرفعال است"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"هیچ‌ موردی غیرفعال نیست"</string>
-    <string name="grant_dialog_button_allow" msgid="5314677880021102550">"مجاز است"</string>
+    <string name="grant_dialog_button_allow" msgid="5314677880021102550">"اجازه دادن"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"همیشه مجاز است"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"هنگام استفاده از برنامه"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"تغییر به مکان دقیق"</string>
@@ -202,7 +202,7 @@
     <string name="app_permission_usage_title" msgid="6676802437831981822">"استفاده از اجازه‌های برنامه"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"دسترسی: <xliff:g id="NUM">%1$s</xliff:g> بار. کل مدت: <xliff:g id="DURATION">%2$s</xliff:g>. آخرین استفاده: <xliff:g id="TIME">%3$s</xliff:g> قبل."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"دسترسی: <xliff:g id="NUM">%1$s</xliff:g> بار. آخرین استفاده: <xliff:g id="TIME">%2$s</xliff:g> قبل."</string>
-    <string name="app_permission_button_allow" msgid="5808039516494774647">"مجاز است"</string>
+    <string name="app_permission_button_allow" msgid="5808039516494774647">"اجازه دادن"</string>
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"اجازه دادن برای مدیریت همه فایل‌ها"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"اجازه دادن فقط برای دسترسی به رسانه‌ها"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"همیشه مجاز است"</string>
@@ -361,7 +361,7 @@
     <string name="role_browser_short_label" msgid="6745009127123292296">"برنامه مرورگر"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"برنامه‌هایی که به شما دسترسی به اینترنت را می‌دهند و پیوندهایی را نشان می‌دهند که روی آن‌ها می‌زنید"</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"<xliff:g id="APP_NAME">%1$s</xliff:g> به‌عنوان برنامه مرورگر پیش‌فرض تنظیم شود؟"</string>
-    <string name="role_browser_request_description" msgid="5888803407905985941">"مجوز نیاز نیست"</string>
+    <string name="role_browser_request_description" msgid="5888803407905985941">"اجازه لازم نیست"</string>
     <string name="role_dialer_label" msgid="1100224146343237968">"برنامه تلفن پیش‌فرض"</string>
     <string name="role_dialer_short_label" msgid="7186888549465352489">"برنامه تلفن"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"برنامه‌هایی که امکان می‌دهند با دستگاهتان تماس تلفنی برقرار و دریافت کنید"</string>
@@ -378,24 +378,24 @@
     <string name="role_emergency_short_label" msgid="2388431453335350348">"برنامه اضطراری"</string>
     <string name="role_emergency_description" msgid="5051840234887686630">"برنامه‌هایی که امکان می‌دهند اطلاعات پزشکی‌تان را ثبت کنید و آن‌ها را برای مسئولان خدمات اضطراری دسترس‌پذیر کنید، درباره رویدادهای آب‌وهوایی شدید و فجایع هشدار دریافت کنید، و هنگام نیاز به کمک، دیگران را مطلع کنید."</string>
     <string name="role_emergency_request_title" msgid="8469579020654348567">"<xliff:g id="APP_NAME">%1$s</xliff:g> به‌عنوان برنامه اضطراری پیش‌فرض تنظیم شود؟"</string>
-    <string name="role_emergency_request_description" msgid="131645948770262850">"مجوز نیاز نیست"</string>
+    <string name="role_emergency_request_description" msgid="131645948770262850">"اجازه لازم نیست"</string>
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"ice"</string>
     <string name="role_home_label" msgid="3871847846649769412">"برنامه صفحه اصلی پیش‌فرض"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"برنامه صفحه اصلی"</string>
     <string name="role_home_description" msgid="7997371519626556675">"‏برنامه‌های عموماً موسوم به راه‌انداز، که جایگزین صفحه‌های اصلی در دستگاه Android می‌شوند و امکان دسترسی به محتواها و ویژگی‌های دستگاه را می‌دهند"</string>
     <string name="role_home_request_title" msgid="738136983453341081">"<xliff:g id="APP_NAME">%1$s</xliff:g> به‌عنوان برنامه صفحه اصلی پیش‌فرض تنظیم شود؟"</string>
-    <string name="role_home_request_description" msgid="2658833966716057673">"مجوز نیاز نیست"</string>
+    <string name="role_home_request_description" msgid="2658833966716057673">"اجازه لازم نیست"</string>
     <string name="role_home_search_keywords" msgid="3830755001192666285">"راه‌انداز"</string>
     <string name="role_call_redirection_label" msgid="5785304207206147590">"برنامه هدایت تماس پیش‌فرض"</string>
     <string name="role_call_redirection_short_label" msgid="7568143419571217757">"برنامه هدایت تماس"</string>
     <string name="role_call_redirection_description" msgid="6091669882014664420">"برنامه‌هایی که امکان می‌دهند تماس‌های خروجی را به شماره تلفن دیگری بازارسال کنید"</string>
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"<xliff:g id="APP_NAME">%1$s</xliff:g> به‌عنوان برنامه هدایت تماس پیش‌فرض تنظیم شود؟"</string>
-    <string name="role_call_redirection_request_description" msgid="3118895714178527164">"مجوز نیاز نیست"</string>
+    <string name="role_call_redirection_request_description" msgid="3118895714178527164">"اجازه لازم نیست"</string>
     <string name="role_call_screening_label" msgid="883935222060878724">"شناسه تماس‌گیرنده و برنامه هرزنامه پیش‌فرض"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"شناسه تماس‌گیرنده و برنامه هرزنامه"</string>
     <string name="role_call_screening_description" msgid="2349431420497468981">"برنامه‌هایی که به شما امکان می‌دهند تماس‌ها را شناسایی کنید و هرزنامه‌ها، تماس‌های تلفنی خودکار، یا شماره‌های ناخواسته را مسدود کنید."</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> به‌عنوان شناسه تماس‌گیرنده و برنامه هرزنامه‌ پیش‌فرض تنظیم شود؟"</string>
-    <string name="role_call_screening_request_description" msgid="7338511921032446006">"مجوز نیاز نیست"</string>
+    <string name="role_call_screening_request_description" msgid="7338511921032446006">"اجازه لازم نیست"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> می‌تواند با اعلان‌های شما تعامل داشته باشد و به اجازه‌های تلفن، پیامک، مخاطبین، و «تقویم» دسترسی یابد."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"برنامه پیش‌فرض کنونی"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"دوباره سؤال نشود"</string>
@@ -441,7 +441,7 @@
     <string name="incident_report_dialog_intro" msgid="5897733669850951832">"سیستم مشکلی را تشخیص داده است."</string>
     <string name="incident_report_dialog_text" msgid="5675553296891757523">"<xliff:g id="APP_NAME_0">%1$s</xliff:g> درخواست بارگذاری گزارش اشکالی را دارد که در <xliff:g id="DATE">%2$s</xliff:g> ساعت <xliff:g id="TIME">%3$s</xliff:g> در این دستگاه پیش آمده است. گزارش‌های اشکال شامل اطلاعات شخصی درباره دستگاه شما است یا اطلاعاتی که توسط برنامه‌ها گزارش شده است، برای مثال نام‌های کاربر، داده‌های مکان، شناسه‌های دستگاه و اطلاعات شبکه. گزارش‌های اشکال را تنها با افراد و برنامه‌هایی هم‌رسانی کنید که به آن‌ها در این‌باره اعتماد دارید. به <xliff:g id="APP_NAME_1">%4$s</xliff:g> اجازه بارگذاری گزارش اشکال داده شود؟"</string>
     <string name="incident_report_error_dialog_text" msgid="4189647113387092272">"هنگام پردازش گزارش اشکال برای <xliff:g id="APP_NAME">%1$s</xliff:g> خطایی رخ داد. بنابراین هم‌رسانی داده‌های اشکال‌زدایی دقیق رد شد. از وقفه پیش‌آمده پوزش می‌طلبیم."</string>
-    <string name="incident_report_dialog_allow_label" msgid="2970242967721155239">"مجاز است"</string>
+    <string name="incident_report_dialog_allow_label" msgid="2970242967721155239">"اجازه دادن"</string>
     <string name="incident_report_dialog_deny_label" msgid="3535314290677579383">"مجاز نبودن"</string>
     <string name="adjust_user_sensitive_title" msgid="4196724451314280527">"تنظیمات پیشرفته"</string>
     <string name="menu_adjust_user_sensitive" msgid="6497923610654425780">"تنظیمات پیشرفته"</string>

@@ -51,7 +51,7 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"アプリ"</string>
     <string name="app_permissions" msgid="3369917736607944781">"アプリの権限"</string>
     <string name="unused_apps" msgid="2058057455175955094">"使用されていないアプリ"</string>
-    <string name="no_unused_apps" msgid="12809387670415295">"使用されていないアプリなし"</string>
+    <string name="no_unused_apps" msgid="12809387670415295">"使用されていないアプリはありません"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"使用していないアプリ: 0 個"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"アプリを無効にする"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"このアプリを無効にすると、Android などの他のアプリが正しく動作しなくなるおそれがあります。このアプリはデバイスにプリインストールされているため、削除できません。無効にするには、このアプリをオフにし、デバイスにアプリが表示されないようにします。"</string>
@@ -258,13 +258,13 @@
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"現在は許可しない / 最終アクセス: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"未アクセス"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"許可しない / 未アクセス"</string>
-    <string name="allowed_header" msgid="7769277978004790414">"許可されているアプリ"</string>
+    <string name="allowed_header" msgid="7769277978004790414">"許可"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"常に許可"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"使用中のみ許可"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"メディアへのアクセスのみが許可されたアプリ"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"すべてのファイルの管理が許可されたアプリ"</string>
     <string name="ask_header" msgid="2633816846459944376">"毎回確認する"</string>
-    <string name="denied_header" msgid="903209608358177654">"許可されてないアプリ"</string>
+    <string name="denied_header" msgid="903209608358177654">"許可しない"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g>日</item>
       <item quantity="one">1日</item>

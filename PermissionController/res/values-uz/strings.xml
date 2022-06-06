@@ -41,7 +41,7 @@
     <string name="permission_revoked_none" msgid="9213345075484381180">"hech biri o‘chirilmagan"</string>
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Ruxsat"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Har doim ruxsat"</string>
-    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Bu ilova ishlayotganda"</string>
+    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Bu ilova ishlayotganida"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Aniq joylashuvga oʻzgartirish"</string>
     <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Taxminiy joyolashuvni saqlash"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Faqat shu safar"</string>
@@ -55,7 +55,7 @@
     <string name="zero_unused_apps" msgid="9024448554157499748">"0 ta ishlatilmagan ilova"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Ilovani faolsizlantirish"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Agar bu ilovani faolsizlantirsangiz, Android va boshqa ilovalar bundan buyon kutilganidek ishlamasligi mumkin. Yodda tuting, agar bu ilova qurilmangizga oldindan oʻrnatilgan boʻlsa, uni oʻchirib tashlash imkonsiz. Faolsizlantirish orqali bu ilova nofaol holatga keladi va qurilmangizda berkitiladi."</string>
-    <string name="app_permission_manager" msgid="3903811137630909550">"Ruxsatlar"</string>
+    <string name="app_permission_manager" msgid="3903811137630909550">"Ruxsatlar boshqaruvi"</string>
     <string name="never_ask_again" msgid="4728762438198560329">"Boshqa so‘ralmasin"</string>
     <string name="no_permissions" msgid="3881676756371148563">"Ruxsat talab qilinmaydi"</string>
     <string name="additional_permissions" msgid="5801285469338873430">"Qo‘shimcha ruxsatlar"</string>
@@ -109,7 +109,7 @@
     <string name="message_staging" msgid="9110563899955511866">"Kutib turing…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Noaniq"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Maxfiylik boshqaruv paneli"</string>
-    <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> axborotidan foydalanish"</string>
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> ruxsatidan foydalanish"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Boshqa ruxsatlarni koʻrish"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> va yana <xliff:g id="NUM">%3$s</xliff:g> ta"</string>
@@ -357,7 +357,7 @@
     <string name="role_assistant_description" msgid="6622458130459922952">"Yordamchi ilovalar siz koʻrayotganda ekrandagi maʼlumotlar asosida sizga yordam beradi. Baʼzi ilovalar sizga umumlashgan koʻmak berish maqsadida ham ishga tushirish paneli, ham ovoz bilan yozish xizmatlarini qoʻllab-quvvatlaydi."</string>
     <string name="role_assistant_request_title" msgid="5964976301922776060">"<xliff:g id="APP_NAME">%1$s</xliff:g> asosiy yordamchi ilova sifatida sozlansinmi?"</string>
     <string name="role_assistant_request_description" msgid="6836644847620178483">"SMS va chaqiruv qaydlaridan foydalana oladi"</string>
-    <string name="role_browser_label" msgid="2877796144554070207">"Asosiy brauzer ilovasi"</string>
+    <string name="role_browser_label" msgid="2877796144554070207">"Birlamchi brauzer ilovasi"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Brauzer ilovasi"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Internetga kirish va havolalarni ochish imkonini beruvchi ilovalar"</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"<xliff:g id="APP_NAME">%1$s</xliff:g> birlamchi brauzer sifatida belgilansinmi?"</string>
@@ -482,7 +482,7 @@
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Bu ilova doimo, hatto undan foydalanmagan vaqtlaringizda ham rasm va videoga olishi mumkin. "<annotation id="link">"Sozlamalar orqali ruxsat bering."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uchun telefoningizdagi chaqiruvlar tarixiga kirish ruxsati berilsinmi?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uchun telefon chaqiruvlarini amalga oshirish va boshqarish ruxsati berilsinmi?"</string>
-    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uchun organizm holati haqidagi sezgichlar axborotlariga ruxsat berilsinmi?"</string>
+    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uchun tana holati haqidagi sensor axborotlariga ruxsat berilsinmi?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Boshqariluvchi ruxsatlar"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Joylashuv axborotiga ruxsati bor"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"AT administratori <xliff:g id="APP_NAME">%s</xliff:g> ilovasiga joylashuvingiz haqidagi axborotdan foydalanishga ruxsat bergan"</string>

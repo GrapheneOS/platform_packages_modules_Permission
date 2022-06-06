@@ -275,7 +275,7 @@
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Programos, kurioms suteiktas šis leidimas, gali rasti netoliese esančius įrenginius, prisijungti prie jų ir nustatyti apytikslį atstumą"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Programos, kurioms suteiktas šis leidimas, gali įrašyti garsą"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Programos, kurioms suteiktas šis leidimas, gal atlikti ir tvarkyti telefonų skambučius"</string>
-    <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Programos, kurioms suteiktas šis leidimas, gali pasiekti jutiklių duomenis apie gyvybinius ženklus"</string>
+    <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Programos, kurioms suteiktas šis leidimas, gali pasiekti jutiklių duomenis apie gyvybinius požymius"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Programos, kurioms suteiktas šis leidimas, gali siųsti ir peržiūrėti SMS pranešimus"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Programos, kurioms suteiktas šis leidimas, gali pasiekti nuotraukas, mediją ir failus jūsų įrenginyje"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Paskutinį kartą pasiekta: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
@@ -489,7 +489,7 @@
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Rodyti padėjėjo aktyviklio aptikimą"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Rodyti piktogramą būsenos juostoje, kai naudojant mikrofoną aktyvinama pagalba balsu"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"Suteikti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; galimybę pasiekti įrenginio nuotraukas ir mediją?"</string>
-    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Suteikti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; galimybę pasiekti kontaktus?"</string>
+    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Leisti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pasiekti kontaktus?"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"Leisti programai &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pasiekti įrenginio vietovę?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"Programa galės pasiekti vietovę, tik kai ją naudosite"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"Leisti programai &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pasiekti įrenginio vietovę?"</string>

@@ -68,7 +68,7 @@
     <string name="default_permission_description" msgid="4624464917726285203">"bilinmeyen bir işlem gerçekleştirme"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g> / <xliff:g id="COUNT_1">%2$d</xliff:g> uygulamaya izin veriliyor"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> uygulamaya izin veriliyor"</string>
-    <string name="menu_show_system" msgid="4254021607027872504">"Sisteme ait olanları göster"</string>
+    <string name="menu_show_system" msgid="4254021607027872504">"Sistemi göster"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Sisteme ait olanları gizle"</string>
     <string name="manage_permission" msgid="2895385393037061964">"İzni yönet"</string>
     <string name="no_apps" msgid="2412612731628386816">"Uygulama yok"</string>
@@ -493,7 +493,7 @@
     <string name="additional_permissions_description" msgid="2186611950890732112">"Uygulamalara tanımlanan izinler."</string>
     <string name="privdash_label_camera" msgid="1426440033626198096">"Kamera"</string>
     <string name="privdash_label_microphone" msgid="8415035835803511693">"Mikrofon"</string>
-    <string name="privdash_label_location" msgid="6882400763866489291">"Yer"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"Konum"</string>
     <string name="privdash_label_other" msgid="3710394147423236033">"Diğer"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"Yok"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Son\n24 saat"</string>

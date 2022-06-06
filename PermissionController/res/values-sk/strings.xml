@@ -41,7 +41,7 @@
     <string name="permission_revoked_none" msgid="9213345075484381180">"žiadne nie sú zakázané"</string>
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Povoliť"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Povoliť vždy"</string>
-    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Pri používaní aplikácie"</string>
+    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Počas používania aplikácie"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Zmeniť na presnú polohu"</string>
     <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Ponechať približnú polohu"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Iba tentokrát"</string>
@@ -68,7 +68,7 @@
     </plurals>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"Táto aplikácia bola navrhnutá pre staršiu verziu Androidu. Odmietnutie povolenia môže spôsobiť, že nebude optimálne fungovať."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"umožňuje vykonať neznámu akciu"</string>
-    <string name="app_permissions_group_summary" msgid="8788419008958284002">"Povolené pri <xliff:g id="COUNT_0">%1$d</xliff:g> z <xliff:g id="COUNT_1">%2$d</xliff:g> aplik."</string>
+    <string name="app_permissions_group_summary" msgid="8788419008958284002">"Povolené pri <xliff:g id="COUNT_0">%1$d</xliff:g> z(o) <xliff:g id="COUNT_1">%2$d</xliff:g> aplik."</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"Počet povolených aplikácií: <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Zobraziť systémové"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Skryť systémové"</string>
@@ -110,7 +110,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"Aktuálne povolenia"</string>
     <string name="message_staging" msgid="9110563899955511866">"Aplikácia je zavádzaná po etapách…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Neznáme"</string>
-    <string name="permission_usage_title" msgid="1568233336351734538">"Panel na ochranu súkromia"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"Panel ochrany súkromia"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> – používanie"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Zobraziť ostatné povolenia"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>

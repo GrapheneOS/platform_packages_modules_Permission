@@ -184,7 +184,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> de aplic.</item>
       <item quantity="one">O aplic.</item>
     </plurals>
-    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Nu a fost folosită în ultimele 24 de ore"</string>
+    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Nu s-a(u) folosit în ultimele 24 de ore"</string>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
       <item quantity="few">Folosită de <xliff:g id="NUMBER">%1$d</xliff:g> aplicații</item>
       <item quantity="other">Folosită de <xliff:g id="NUMBER">%1$d</xliff:g> de aplicații</item>

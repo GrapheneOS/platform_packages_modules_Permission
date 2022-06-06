@@ -113,7 +113,7 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Shiko lejet e tjera"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> dhe <xliff:g id="NUM">%3$s</xliff:g> të tjera"</string>
-    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Kronologjia se kur e kanë përdorur aplikacionet <xliff:g id="PERMGROUP">%1$s</xliff:g> tënd në 24 orët e fundit"</string>
+    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Kronologjia se kur është përdorur \"<xliff:g id="PERMGROUP">%1$s</xliff:g>\" nga aplikacionet në 24 orët e fundit"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Kur ky aplikacion ka përdorur lejen për: <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Mëso më shumë"</string>
     <string name="permission_usage_duration_and_proxy" msgid="573959201368716399">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
@@ -174,7 +174,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> aplikacione</item>
       <item quantity="one">1 aplikacion</item>
     </plurals>
-    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Nuk është përdorur në 24 orët e fundit"</string>
+    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Asnjë përdorim gjatë 24 orëve të fundit"</string>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
       <item quantity="other">Përdorur nga <xliff:g id="NUMBER">%1$d</xliff:g> aplikacione</item>
       <item quantity="one">Përdorur nga 1 aplikacion</item>
@@ -460,7 +460,7 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Ky aplikacion dëshiron të ketë qasje në vendndodhjen tënde gjatë gjithë kohës, edhe kur nuk po e përdor aplikacionin. "<annotation id="link">"Lejoje te cilësimet"</annotation>"."</string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Të lejohet &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të gjejë, lidhet dhe përcaktojë pozicionin relativ të pajisjeve në afërsi?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Të lejohet &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të gjejë, lidhet dhe përcaktojë pozicionin relativ të pajisjeve në afërsi? "<annotation id="link">"Lejoje te cilësimet."</annotation></string>
-    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Të ndryshohet qasja e <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> te vendndodhja nga \"e përafërt në \"e saktë\"?"</string>
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Të ndryshohet qasja që ka <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> te vendndodhja nga \"e përafërt\" në \"e saktë\"?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Të lejohet që &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të ketë qasje te vendndodhja e përafërt e kësaj pajisjeje?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"E saktë"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"E përafërt"</string>

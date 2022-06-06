@@ -41,7 +41,7 @@
     <string name="permission_revoked_none" msgid="9213345075484381180">"ninguno inhabilitado"</string>
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Permitir"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Permitir siempre"</string>
-    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Solo si la aplicación está en uso"</string>
+    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Mientras se usa la aplicación"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Cambiar a ubicación precisa"</string>
     <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Mantener ubicación aproximada"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Solo esta vez"</string>
@@ -89,7 +89,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"Permitir siempre"</string>
-    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Permitir solo si la aplicación está en uso"</string>
+    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Permitir solo mientras se usa la aplicación"</string>
     <string name="permission_access_never" msgid="4647014230217936900">"No permitir"</string>
     <string name="loading" msgid="4789365003890741082">"Cargando…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"Todos los permisos"</string>
@@ -113,7 +113,7 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Ver otros permisos"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>, <xliff:g id="NUM">%3$s</xliff:g> más"</string>
-    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Cronología de cuándo han usado las aplicaciones tu <xliff:g id="PERMGROUP">%1$s</xliff:g> en las últimas 24 horas"</string>
+    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Cronología de cuándo han usado las aplicaciones el permiso <xliff:g id="PERMGROUP">%1$s</xliff:g> en las últimas 24 horas"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Cuándo ha utilizado esta aplicación tu permiso de <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Más información"</string>
     <string name="permission_usage_duration_and_proxy" msgid="573959201368716399">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
@@ -206,7 +206,7 @@
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"Permitir gestionar todos los archivos"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Permitir acceso solo al contenido multimedia"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Permitir siempre"</string>
-    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Permitir solo si la aplicación está en uso"</string>
+    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Permitir solo mientras se usa la aplicación"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Preguntar siempre"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"No permitir"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Ubicación precisa"</string>
@@ -240,7 +240,7 @@
     <string name="last_opened_summary" msgid="5248984030024968808">"La aplicación se abrió por última vez el <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Se abrió por última vez el <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Si permites la gestión de todos los archivos, esta aplicación podrá consultar, modificar y eliminar cualquier archivo que haya en el almacenamiento común de este dispositivo o en los dispositivos de almacenamiento conectados. Es posible que acceda a archivos sin preguntarte."</string>
-    <string name="special_file_access_dialog" msgid="583804114020740610">"¿Quieres permitir que esta aplicación pueda consultar, modificar y eliminar archivos de este dispositivo o de los dispositivos de almacenamiento conectados? Quizá acceda a archivos sin solicitarlo explícitamente."</string>
+    <string name="special_file_access_dialog" msgid="583804114020740610">"¿Permitir que esta aplicación pueda consultar, modificar y eliminar archivos de este dispositivo o de los dispositivos de almacenamiento conectados? Quizá acceda a archivos sin solicitarlo explícitamente."</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"Las aplicaciones con este permiso pueden <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Las aplicaciones con este permiso pueden acceder a tu actividad física, como paseos a pie o en bici, trayectos en coche, número de pasos y más"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Las aplicaciones con este permiso pueden acceder a tu calendario"</string>
@@ -439,7 +439,7 @@
     <string name="incident_report_notification_text" msgid="3376480583513587923">"<xliff:g id="APP_NAME">%1$s</xliff:g> quiere subir información de depuración."</string>
     <string name="incident_report_dialog_title" msgid="669104389325204095">"¿Quieres compartir datos de depuración?"</string>
     <string name="incident_report_dialog_intro" msgid="5897733669850951832">"El sistema ha detectado un problema."</string>
-    <string name="incident_report_dialog_text" msgid="5675553296891757523">"<xliff:g id="APP_NAME_0">%1$s</xliff:g> solicita subir el informe de errores de este dispositivo generado el <xliff:g id="DATE">%2$s</xliff:g> a las <xliff:g id="TIME">%3$s</xliff:g>. Los informes de errores incluyen información personal sobre el dispositivo o datos registrados por las aplicaciones, como nombres de usuario, datos de ubicación, identificadores del dispositivo e información de red. Comparte estos informes únicamente con personas y aplicaciones de confianza. ¿Quieres permitir que <xliff:g id="APP_NAME_1">%4$s</xliff:g> suba un informe de errores?"</string>
+    <string name="incident_report_dialog_text" msgid="5675553296891757523">"<xliff:g id="APP_NAME_0">%1$s</xliff:g> solicita subir el informe de errores de este dispositivo generado el <xliff:g id="DATE">%2$s</xliff:g> a las <xliff:g id="TIME">%3$s</xliff:g>. Los informes de errores incluyen información personal sobre el dispositivo o datos registrados por las aplicaciones, como nombres de usuario, datos de ubicación, identificadores del dispositivo e información de red. Comparte estos informes únicamente con personas y aplicaciones de confianza. ¿Permitir que <xliff:g id="APP_NAME_1">%4$s</xliff:g> suba un informe de errores?"</string>
     <string name="incident_report_error_dialog_text" msgid="4189647113387092272">"No se ha podido procesar el informe de errores de <xliff:g id="APP_NAME">%1$s</xliff:g>, por lo que no se han podido compartir los datos de depuración detallados. Sentimos las molestias."</string>
     <string name="incident_report_dialog_allow_label" msgid="2970242967721155239">"Permitir"</string>
     <string name="incident_report_dialog_deny_label" msgid="3535314290677579383">"Denegar"</string>
@@ -469,14 +469,14 @@
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a las fotos, al contenido multimedia y a los archivos de tu dispositivo?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; grabe audio?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"La aplicación solo podrá grabar audio mientras la estés usando."</string>
-    <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"¿Quieres permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; grabe audio?"</string>
+    <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; grabe audio?"</string>
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"Es posible que esta aplicación deba grabar audio en todo momento, aunque no se esté usando. Puedes darle este permiso en "<annotation id="link">"Ajustes."</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"¿Quieres cambiar el acceso de &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; al micrófono?"</string>
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"Esta aplicación debe grabar audio en todo momento, aunque no la estés usando. "<annotation id="link">"Puedes darle este permiso en Ajustes."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a tu actividad física?"</string>
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; haga fotos y grabe vídeos?"</string>
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"La aplicación solo podrá hacer fotografías y grabar vídeos mientras la estés usando."</string>
-    <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"¿Quieres permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; haga fotos y grabe vídeos?"</string>
+    <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; haga fotos y grabe vídeos?"</string>
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"Es posible que esta aplicación deba hacer fotografías y grabar vídeos en todo momento, aunque no se esté usando. "<annotation id="link">"Puedes darle este permiso en Ajustes."</annotation></string>
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"¿Quieres cambiar el acceso de &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; a la cámara?"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Esta aplicación debe hacer fotografías y grabar vídeos en todo momento, aunque no la estés usando. "<annotation id="link">"Puedes darle este permiso en Ajustes."</annotation></string>
