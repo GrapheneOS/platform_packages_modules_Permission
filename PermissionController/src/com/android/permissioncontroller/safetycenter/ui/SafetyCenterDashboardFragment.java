@@ -17,7 +17,6 @@
 package com.android.permissioncontroller.safetycenter.ui;
 
 import static com.android.permissioncontroller.safetycenter.SafetyCenterConstants.EXPAND_ISSUE_GROUP_QS_FRAGMENT_KEY;
-import static com.android.permissioncontroller.safetycenter.SafetyCenterConstants.EXPAND_ISSUE_GROUP_SAVED_INSTANCE_STATE_KEY;
 import static com.android.permissioncontroller.safetycenter.SafetyCenterConstants.QUICK_SETTINGS_SAFETY_CENTER_FRAGMENT;
 
 import static java.util.Objects.requireNonNull;
@@ -53,8 +52,6 @@ import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewMo
 import java.util.List;
 import java.util.stream.Collectors;
 
-import kotlin.Unit;
-
 /** Dashboard fragment for the Safety Center. */
 public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompat {
 
@@ -66,6 +63,8 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
     private static final String STATIC_ENTRIES_GROUP_KEY = "static_entries_group";
 
     @Nullable private final ViewModelProvider.Factory mSafetyCenterViewModelFactoryOverride;
+    private final CollapsableIssuesCardHelper mCollapsableIssuesCardHelper =
+            new CollapsableIssuesCardHelper();
 
     private SafetyStatusPreference mSafetyStatusPreference;
     private PreferenceGroup mIssuesGroup;
@@ -73,8 +72,6 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
     private PreferenceGroup mStaticEntriesGroup;
     private SafetyCenterViewModel mViewModel;
     private boolean mIsQuickSettingsFragment;
-
-    private boolean mExpandIssuesGroup = false;
 
     public SafetyCenterDashboardFragment() {
         this(null);
@@ -130,16 +127,15 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
         }
         setPreferencesFromResource(R.xml.safety_center_dashboard, rootKey);
         // Check if we've navigated from QS and issues should be expanded
-        mExpandIssuesGroup =
+        boolean expandIssuesGroup =
                 getActivity()
                         .getIntent()
                         .getBooleanExtra(EXPAND_ISSUE_GROUP_QS_FRAGMENT_KEY, false);
 
-        if (savedInstanceState != null) {
-            mExpandIssuesGroup =
-                    savedInstanceState.getBoolean(
-                            EXPAND_ISSUE_GROUP_SAVED_INSTANCE_STATE_KEY, false);
-        }
+        // Set quick settings state first and allow restored state to override if necessary
+        mCollapsableIssuesCardHelper.setQuickSettingsState(
+                mIsQuickSettingsFragment, expandIssuesGroup);
+        mCollapsableIssuesCardHelper.restoreState(savedInstanceState);
 
         mViewModel =
                 new ViewModelProvider(requireActivity(), getSafetyCenterViewModelFactory())
@@ -175,7 +171,7 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putBoolean(EXPAND_ISSUE_GROUP_SAVED_INSTANCE_STATE_KEY, mExpandIssuesGroup);
+        mCollapsableIssuesCardHelper.saveState(outState);
     }
 
     private void renderSafetyCenterData(@Nullable SafetyCenterData data) {
@@ -213,17 +209,7 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
                 issues.stream()
                         .map(issue -> new IssueCardPreference(context, mViewModel, issue))
                         .collect(Collectors.toUnmodifiableList());
-        CollapsableIssuesCardHelper issueCardHelper =
-                new CollapsableIssuesCardHelper(
-                        context,
-                        issueCardPreferenceList,
-                        mExpandIssuesGroup,
-                        mIsQuickSettingsFragment,
-                        () -> {
-                            mExpandIssuesGroup = true;
-                            return Unit.INSTANCE;
-                        });
-        issueCardHelper.addIssues(mIssuesGroup);
+        mCollapsableIssuesCardHelper.addIssues(context, mIssuesGroup, issueCardPreferenceList);
     }
 
     // TODO(b/208212820): Add groups and move to separate controller
