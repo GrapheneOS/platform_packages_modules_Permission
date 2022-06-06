@@ -19,87 +19,154 @@ package com.android.permissioncontroller.safetycenter.ui
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_SAFETY_CENTER
+import android.os.Bundle
+import android.safetycenter.SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_OK
 import androidx.preference.PreferenceGroup
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.safetycenter.SafetyCenterConstants.EXPAND_ISSUE_GROUP_QS_FRAGMENT_KEY
+import kotlin.math.max
 
 /**
  * Helper class to hide issue cards if over a predefined limit and handle revealing hidden issue
  * cards when the more issues preference is clicked
- *
- * @param context Current context
- * @param issueCardPreferences {@link List} of {@link IssueCardPreference} to add to the preference
- * fragment
- * @param expandIssueCards {@code true} if issue cards should be initially expanded, {@code false}
- * otherwise
- * @param expandPreferencesListener Listener used to inform preference fragment of expansion
  */
-class CollapsableIssuesCardHelper(
-    val context: Context,
-    val issueCardPreferences: List<IssueCardPreference>,
-    val expandIssueCards: Boolean,
-    val isQuickSettingsFragment: Boolean = false,
-    val expandPreferencesListener: () -> Unit
-) {
-    private val numberOfHiddenIssues = issueCardPreferences.size - MAX_SHOWN_ISSUES_COLLAPSED
-    private val hasHiddenIssueCards = !expandIssueCards && numberOfHiddenIssues > 0
-    private var moreIssuesCardPreference: MoreIssuesCardPreference? =
-        getMoreIssuesCardPreferenceOrNull(context)
+class CollapsableIssuesCardHelper {
+    private var isQuickSettingsFragment: Boolean = false
+    private var issueCardsExpanded: Boolean = false
 
     /**
-     * Add the [IssueCardPreference] managed by this helper to the specified [ ]
+     * Sets QuickSetting specific state for use to determine correct issue section expansion state
+     * as well ass more issues card icon values
      *
-     * @param preferenceGroup Preference group to add preference to
+     * <p> Note the issueCardsExpanded value set here may be overridden here by calls to
+     * restoreState
+     *
+     * @param isQuickSettingsFragment {@code true} if CollapsableIssuesCardHelper is being used in
+     * quick settings fragment
+     * @param issueCardsExpanded Whether issue cards should be expanded or not when added to
+     * preference screen
      */
-    fun addIssues(preferenceGroup: PreferenceGroup) {
-        if (issueCardPreferences.isEmpty()) {
-            return
-        }
-        for (i in issueCardPreferences.indices) {
-            val issueCardPreference: IssueCardPreference = issueCardPreferences[i]
-            if (i == MAX_SHOWN_ISSUES_COLLAPSED &&
-                hasHiddenIssueCards &&
-                moreIssuesCardPreference != null) {
-                preferenceGroup.addPreference(moreIssuesCardPreference)
-            }
-            issueCardPreference.isVisible = i < MAX_SHOWN_ISSUES_COLLAPSED || expandIssueCards
-            preferenceGroup.addPreference(issueCardPreference)
-        }
+    fun setQuickSettingsState(isQuickSettingsFragment: Boolean, issueCardsExpanded: Boolean) {
+        this.isQuickSettingsFragment = isQuickSettingsFragment
+        this.issueCardsExpanded = issueCardsExpanded
     }
 
-    private fun getMoreIssuesCardPreferenceOrNull(context: Context): MoreIssuesCardPreference? {
-        if (!hasHiddenIssueCards) {
-            // Not enough issues show more issues card
-            return null
+    /** Restore previously saved state from [Bundle] */
+    fun restoreState(state: Bundle?) {
+        if (state == null) {
+            return
         }
-        val firstHiddenIssue = issueCardPreferences[MAX_SHOWN_ISSUES_COLLAPSED]
+        // Apply the previously saved state
+        issueCardsExpanded = state.getBoolean(EXPAND_ISSUE_GROUP_SAVED_INSTANCE_STATE_KEY, false)
+    }
+
+    /** Save current state to provided [Bundle] */
+    fun saveState(outState: Bundle) =
+        outState.putBoolean(EXPAND_ISSUE_GROUP_SAVED_INSTANCE_STATE_KEY, issueCardsExpanded)
+
+    /**
+     * Add the [IssueCardPreference] managed by this helper to the specified [PreferenceGroup]
+     *
+     * @param context Current context
+     * @param issuesPreferenceGroup Preference group to add preference to
+     * @param issueCardPreferences {@link List} of {@link IssueCardPreference} to add to the
+     * preference fragment
+     */
+    fun addIssues(
+        context: Context,
+        issuesPreferenceGroup: PreferenceGroup,
+        issueCardPreferences: List<IssueCardPreference>
+    ) {
+        val moreIssuesCardPreference =
+            createMoreIssuesCardPreference(context, issuesPreferenceGroup, issueCardPreferences)
+        addIssuesToPreferenceGroupAndSetVisibility(
+            issuesPreferenceGroup,
+            issueCardPreferences,
+            moreIssuesCardPreference,
+            issueCardsExpanded)
+    }
+
+    private fun createMoreIssuesCardPreference(
+        context: Context,
+        issuesPreferenceGroup: PreferenceGroup,
+        issueCardPreferences: List<IssueCardPreference>
+    ): MoreIssuesCardPreference {
         val prefIconResourceId =
             if (isQuickSettingsFragment) R.drawable.ic_chevron_right else R.drawable.ic_expand_more
+        val numberOfHiddenIssue: Int = getNumberOfHiddenIssues(issueCardPreferences)
+        val firstHiddenIssueSeverityLevel: Int =
+            getFirstHiddenIssueSeverityLevel(issueCardPreferences)
+
         return MoreIssuesCardPreference(
-            context, prefIconResourceId, numberOfHiddenIssues, firstHiddenIssue.severityLevel) {
-            expand()
+            context, prefIconResourceId, numberOfHiddenIssue, firstHiddenIssueSeverityLevel) {
+            if (isQuickSettingsFragment) {
+                goToSafetyCenter(context)
+            } else {
+                expand(issuesPreferenceGroup)
+            }
             true
         }
     }
 
-    private fun expand() {
-        if (isQuickSettingsFragment) {
-            // Navigate to Safety center with issues expanded
-            val safetyCenterIntent = Intent(ACTION_SAFETY_CENTER)
-            safetyCenterIntent.putExtra(EXPAND_ISSUE_GROUP_QS_FRAGMENT_KEY, true)
-            context.startActivity(safetyCenterIntent)
+    private fun expand(issuesPreferenceGroup: PreferenceGroup) {
+        if (issueCardsExpanded) {
             return
         }
 
-        for (preference in issueCardPreferences) {
-            preference.isVisible = true
+        val numberOfPreferences = issuesPreferenceGroup.preferenceCount
+        for (i in 0 until numberOfPreferences) {
+            val preference = issuesPreferenceGroup.getPreference(i)
+            when {
+                // preferences with index under MAX_SHOWN_ISSUES_COLLAPSED are already visible
+                i < MAX_SHOWN_ISSUES_COLLAPSED -> continue
+                // "more issues" preference has index of MAX_SHOWN_ISSUES_COLLAPSED and must be
+                // hidden after expansion of issues
+                i == MAX_SHOWN_ISSUES_COLLAPSED -> preference.isVisible = false
+                // All further issue preferences must be shown
+                else -> preference.isVisible = true
+            }
         }
-        moreIssuesCardPreference?.isVisible = false
-        // Notify host so cards can stay expanded on refresh or restart of fragment
-        expandPreferencesListener()
+        issueCardsExpanded = true
+    }
+
+    private fun goToSafetyCenter(context: Context) {
+        // Navigate to Safety center with issues expanded
+        val safetyCenterIntent = Intent(ACTION_SAFETY_CENTER)
+        safetyCenterIntent.putExtra(EXPAND_ISSUE_GROUP_QS_FRAGMENT_KEY, true)
+        context.startActivity(safetyCenterIntent)
     }
 
     companion object {
+        private const val EXPAND_ISSUE_GROUP_SAVED_INSTANCE_STATE_KEY =
+            "expand_issue_group_saved_instance_state_key"
         private const val MAX_SHOWN_ISSUES_COLLAPSED = 1
+
+        private fun getNumberOfHiddenIssues(issueCardPreferences: List<IssueCardPreference>): Int =
+            max(0, issueCardPreferences.size - MAX_SHOWN_ISSUES_COLLAPSED)
+
+        private fun getFirstHiddenIssueSeverityLevel(
+            issueCardPreferences: List<IssueCardPreference>
+        ): Int {
+            val firstHiddenIssue: IssueCardPreference? =
+                issueCardPreferences.getOrNull(MAX_SHOWN_ISSUES_COLLAPSED)
+            // If no first hidden issue, default to ISSUE_SEVERITY_LEVEL_OK
+            return firstHiddenIssue?.severityLevel ?: ISSUE_SEVERITY_LEVEL_OK
+        }
+
+        private fun addIssuesToPreferenceGroupAndSetVisibility(
+            issuesPreferenceGroup: PreferenceGroup,
+            issueCardPreferences: List<IssueCardPreference>,
+            moreIssuesCardPreference: MoreIssuesCardPreference,
+            issueCardsExpanded: Boolean
+        ) {
+            issueCardPreferences.forEachIndexed { index, issueCardPreference ->
+                if (index == MAX_SHOWN_ISSUES_COLLAPSED && !issueCardsExpanded) {
+                    issuesPreferenceGroup.addPreference(moreIssuesCardPreference)
+                }
+                issueCardPreference.isVisible =
+                    index < MAX_SHOWN_ISSUES_COLLAPSED || issueCardsExpanded
+                issuesPreferenceGroup.addPreference(issueCardPreference)
+            }
+        }
     }
 }
