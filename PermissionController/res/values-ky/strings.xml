@@ -488,8 +488,8 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Жок"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Акыркы\n24 саат"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Акыркы\n7 күндө"</string>
-    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> Android тарабынан корголгон. Колдонмодогу нерселериңиз ушул түзмөктө иштетилгендиктен, бул колдонмонун уруксаттарды пайдалануу статистикасы абал тилкесинде же купуялык тактаңызда көрүнбөйт."</string>
-    <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> Android тарабынан корголгон. Колдонмодогу нерселериңиз ушул түзмөктө иштетилгендиктен, бул колдонмонун уруксаттарды пайдалануу статистикасы купуялык тактаңызда көрүнбөйт."</string>
+    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> Android тарабынан корголот. Колдонмодогу нерселериңиз ушул түзмөктө иштетилгендиктен, бул колдонмонун уруксаттарды пайдалануу статистикасы абал тилкесинде же купуялык тактаңызда көрүнбөйт."</string>
+    <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> Android тарабынан корголот. Колдонмодогу нерселериңиз ушул түзмөктө иштетилгендиктен, бул колдонмонун уруксаттарды пайдалануу статистикасы купуялык тактаңызда көрүнбөйт."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Түзмөктүн камерасы бөгөттөлгөн"</string>
     <string name="blocked_microphone_title" msgid="1631517143648232585">"Түзмөктүн микрофону бөгөттөлгөн"</string>
     <string name="blocked_location_title" msgid="2005608279812892383">"Түзмөктүн жайгашкан жери өчүк"</string>
