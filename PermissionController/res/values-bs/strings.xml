@@ -547,6 +547,5 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Ova aplikacija ne podržava najnoviju verziju Androida. Ako ova aplikacija ne može pristupiti muzičkim i audio fajlovima, neće joj biti dozvoljen pristup ni fotografijama i videozapisima."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Ova aplikacija ne podržava najnoviju verziju Androida. Ako ova aplikacija može pristupiti fotografijama i videozapisima, bit će joj također dozvoljen pristup muzičkim i audio fajlovima."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Ova aplikacija ne podržava najnoviju verziju Androida. Ako ova aplikacija ne može pristupiti muzičkim i audio fajlovima, neće joj biti dozvoljen pristup ni fotografijama i videozapisima."</string>
-    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
-    <skip />
+    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"Zatvaranje"</string>
 </resources>

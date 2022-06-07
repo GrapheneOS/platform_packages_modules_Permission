@@ -547,6 +547,5 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Aquesta aplicació no és compatible amb la darrera versió d\'Android. Si aquesta aplicació no pot accedir a fitxers de música i d\'àudio, tampoc no podrà accedir a fotos i vídeos."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Aquesta aplicació no és compatible amb la darrera versió d\'Android. Si aquesta aplicació pot accedir a fotos i vídeos, també podrà accedir a fitxers de música i d\'àudio."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Aquesta aplicació no és compatible amb la darrera versió d\'Android. Si aquesta aplicació no pot accedir a fitxers de música i d\'àudio, tampoc no podrà accedir a fotos i vídeos."</string>
-    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
-    <skip />
+    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"Tanca"</string>
 </resources>
