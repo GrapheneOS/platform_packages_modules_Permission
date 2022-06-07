@@ -547,6 +547,5 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Esta aplicación non é compatible coa última versión de Android. Se non pode acceder a ficheiros de música e audio, tampouco terá acceso a fotos e vídeos."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Esta aplicación non é compatible coa última versión de Android. Se pode acceder a fotos e vídeos, tamén terá acceso a ficheiros de música e audio."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Esta aplicación non é compatible coa última versión de Android. Se non pode acceder a ficheiros de música e audio, tampouco terá acceso a fotos e vídeos."</string>
-    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
-    <skip />
+    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"Pechar"</string>
 </resources>

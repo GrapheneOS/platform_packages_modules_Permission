@@ -547,6 +547,5 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"此應用程式不支援 Android 最新版本。如果此應用程式無法存取音樂和音訊檔案，也就無法存取相片和影片。"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"此應用程式不支援 Android 最新版本。如果此應用程式可存取相片和影片，也就能存取音樂和音訊檔案。"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"此應用程式不支援 Android 最新版本。如果此應用程式無法存取音樂和音訊檔案，也就無法存取相片和影片。"</string>
-    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
-    <skip />
+    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"關閉"</string>
 </resources>

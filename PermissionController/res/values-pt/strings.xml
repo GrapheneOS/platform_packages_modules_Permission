@@ -59,8 +59,8 @@
     <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Ver todas as decisões recentes de permissão"</string>
     <string name="review_permission_decisions_empty" msgid="8120775336417279806">"Nenhuma decisão recente de permissão"</string>
     <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Gerencie o acesso a dados da agenda, registros de chamadas e muito mais"</string>
-    <string name="granted_permission_decision" msgid="7824827491551861365">"O acesso do app <xliff:g id="APP_NAME">%1$s</xliff:g> à permissão de <xliff:g id="PERMISSION_NAME">%2$s</xliff:g> foi concedido"</string>
-    <string name="denied_permission_decision" msgid="5308961501779563781">"O acesso do app <xliff:g id="APP_NAME">%1$s</xliff:g> à permissão de <xliff:g id="PERMISSION_NAME">%2$s</xliff:g> foi negado"</string>
+    <string name="granted_permission_decision" msgid="7824827491551861365">"Você deu ao app <xliff:g id="APP_NAME">%1$s</xliff:g> permissão para acessar <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
+    <string name="denied_permission_decision" msgid="5308961501779563781">"Você não permitiu que o app <xliff:g id="APP_NAME">%1$s</xliff:g> acesse <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Hoje}=1{1 dia atrás}one{# dia atrás}other{# dias atrás}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Desativar app"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Se você desativar este app, o Android e outros apps poderão deixar de funcionar como deveriam. Não é possível excluir esse app porque ele veio pré-instalado no seu dispositivo. Ao optar pela desativação, você desativa o app e o oculta no dispositivo."</string>
@@ -494,8 +494,8 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Nenhuma"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Últimas\n24 horas"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Nos últimos\nsete dias"</string>
-    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"O app <xliff:g id="APP_NAME">%1$s</xliff:g> é protegido pelo Android. Como seus dados são processados no dispositivo, o uso da permissão do app não é mostrado na barra de status nem no painel de privacidade."</string>
-    <string name="exempt_info_label" msgid="6286190981253476699">"O app <xliff:g id="APP_NAME">%1$s</xliff:g> é protegido pelo Android. Como seus dados são processados no dispositivo, o uso da permissão do app não é mostrado no painel de privacidade."</string>
+    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"O app <xliff:g id="APP_NAME">%1$s</xliff:g> é Protegido pelo Android. Como seus dados são processados no dispositivo, o uso da permissão do app não é mostrado na barra de status nem no painel de privacidade."</string>
+    <string name="exempt_info_label" msgid="6286190981253476699">"O app <xliff:g id="APP_NAME">%1$s</xliff:g> é Protegido pelo Android. Como seus dados são processados no dispositivo, o uso da permissão do app não é mostrado no painel de privacidade."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"A câmera do dispositivo está bloqueada"</string>
     <string name="blocked_microphone_title" msgid="1631517143648232585">"O microfone do dispositivo está bloqueado"</string>
     <string name="blocked_location_title" msgid="2005608279812892383">"A localização do dispositivo está desativada"</string>
@@ -547,6 +547,5 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Este app não tem suporte à versão mais recente do Android. Se ele não puder acessar arquivos de áudio e música, também não vai poder acessar fotos e vídeos."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Este app não tem suporte à versão mais recente do Android. Se ele puder acessar fotos e vídeos, também vai poder acessar arquivos de áudio e música."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Este app não tem suporte à versão mais recente do Android. Se ele não puder acessar arquivos de áudio e música, também não vai poder acessar fotos e vídeos."</string>
-    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
-    <skip />
+    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"Fechar"</string>
 </resources>
