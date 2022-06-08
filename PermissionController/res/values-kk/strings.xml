@@ -488,8 +488,8 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Жоқ"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Соңғы\n24 сағатта"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Соңғы\n7 күн"</string>
-    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасы Android арқылы қорғалады. Деректеріңіз осы құрылғыда өңделетіндіктен, бұл қолданба рұқсатының пайдаланылуы күй жолағында немесе құпиялылық тақтасында көрсетілмейді."</string>
-    <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасы Android арқылы қорғалады. Деректеріңіз осы құрылғыда өңделетіндіктен, бұл қолданба рұқсатының пайдаланылуы құпиялылық тақтасында көрсетілмейді."</string>
+    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасын Android қорғайды. Деректеріңіз осы құрылғыда өңделетіндіктен, бұл қолданба рұқсатының пайдаланылуы күй жолағында немесе құпиялылық тақтасында көрсетілмейді."</string>
+    <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасын Android қорғайды. Деректеріңіз осы құрылғыда өңделетіндіктен, бұл қолданба рұқсатының пайдаланылуы құпиялылық тақтасында көрсетілмейді."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Құрылғы камерасы бөгелген"</string>
     <string name="blocked_microphone_title" msgid="1631517143648232585">"Құрылғы микрофоны бөгелген"</string>
     <string name="blocked_location_title" msgid="2005608279812892383">"Құрылғы геодерегі өшірулі"</string>
