@@ -16,12 +16,12 @@
 
 package com.android.permissioncontroller.safetycenter.ui;
 
-import static com.android.permissioncontroller.safetycenter.SafetyCenterConstants.EXPAND_ISSUE_GROUP_QS_FRAGMENT_KEY;
 import static com.android.permissioncontroller.safetycenter.SafetyCenterConstants.QUICK_SETTINGS_SAFETY_CENTER_FRAGMENT;
 
 import static java.util.Objects.requireNonNull;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.safetycenter.SafetyCenterData;
 import android.safetycenter.SafetyCenterEntry;
@@ -37,6 +37,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.annotation.VisibleForTesting;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.PreferenceCategory;
@@ -53,6 +54,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /** Dashboard fragment for the Safety Center. */
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompat {
 
     private static final String TAG = SafetyCenterDashboardFragment.class.getSimpleName();
@@ -121,20 +123,21 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+        setPreferencesFromResource(R.xml.safety_center_dashboard, rootKey);
+
         if (getArguments() != null) {
             mIsQuickSettingsFragment =
                     getArguments().getBoolean(QUICK_SETTINGS_SAFETY_CENTER_FRAGMENT, false);
         }
-        setPreferencesFromResource(R.xml.safety_center_dashboard, rootKey);
-        // Check if we've navigated from QS and issues should be expanded
-        boolean expandIssuesGroup =
-                getActivity()
-                        .getIntent()
-                        .getBooleanExtra(EXPAND_ISSUE_GROUP_QS_FRAGMENT_KEY, false);
+
+        ParsedSafetyCenterIntent parsedSafetyCenterIntent =
+                ParsedSafetyCenterIntent.toSafetyCenterIntent(getActivity().getIntent());
+        mCollapsableIssuesCardHelper
+                .setFocusedIssueKey(parsedSafetyCenterIntent.getSafetyCenterIssueKey());
 
         // Set quick settings state first and allow restored state to override if necessary
         mCollapsableIssuesCardHelper.setQuickSettingsState(
-                mIsQuickSettingsFragment, expandIssuesGroup);
+                mIsQuickSettingsFragment, parsedSafetyCenterIntent.getShouldExpandIssuesGroup());
         mCollapsableIssuesCardHelper.restoreState(savedInstanceState);
 
         mViewModel =
