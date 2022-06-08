@@ -1,0 +1,23 @@
+apply plugin: 'java'
+
+//create a single Jar with all dependencies
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Main-Class': 'com.android.development.SdkGenerator'
+    }
+    baseName = project.name + '-all'
+    from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.smali:dexlib2:2.2.7'
+    implementation 'org.ow2.asm:asm:7.0'
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"

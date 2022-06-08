@@ -1,0 +1,30 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    compileSdk TARGET_SDK.toInteger()
+    buildToolsVersion = BUILD_TOOLS_VERSION
+    defaultConfig {
+        minSdkVersion TARGET_SDK.toInteger()
+        targetSdkVersion TARGET_SDK.toInteger()
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("${ANDROID_TOP}/vendor/google/certs/devkeys/platform.keystore")
+        }
+    }
+
+    // Disable release builds from android studio
+    android.variantFilter { variant ->
+        if (variant.buildType.name.endsWith('release')) {
+            variant.setIgnore(true)
+        }
+    }
+}
