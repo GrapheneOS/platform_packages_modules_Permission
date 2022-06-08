@@ -30,7 +30,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
@@ -42,10 +41,8 @@ import java.util.Objects;
 public class SafetyStatusPreference extends Preference implements ComparablePreference {
     private static final String TAG = "SafetyStatusPreference";
 
-    @Nullable
-    private SafetyCenterStatus mStatus;
-    @Nullable
-    private View.OnClickListener mRescanButtonOnClickListener;
+    @Nullable private SafetyCenterStatus mStatus;
+    @Nullable private View.OnClickListener mRescanButtonOnClickListener;
     private boolean mHasIssues;
 
     public SafetyStatusPreference(Context context, AttributeSet attrs) {
@@ -70,9 +67,6 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
         View rescanButton = holder.findViewById(R.id.rescan_button);
         if (!mRefreshRunning) {
             statusImage.setImageResource(toStatusImageResId(mStatus.getSeverityLevel()));
-            rescanButton.setBackgroundTintList(
-                    ContextCompat.getColorStateList(
-                            getContext(), toButtonColor(mStatus.getSeverityLevel())));
         } else {
             rescanButton.setEnabled(false);
         }
@@ -83,18 +77,19 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
             rescanButton.setOnClickListener(view -> mRescanButtonOnClickListener.onClick(view));
         }
 
-        if (mStatus.getRefreshStatus()
-                == SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS && !mRefreshRunning) {
+        if (mStatus.getRefreshStatus() == SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS
+                && !mRefreshRunning) {
             startRescanAnimation(statusImage, rescanButton);
             mRefreshRunning = true;
         } else if (mRefreshRunning && !mRefreshEnding) {
             mRefreshEnding = true;
             endRescanAnimation(statusImage, rescanButton);
+        } else {
+            updateRescanButtonVisibility(rescanButton);
         }
     }
 
-    private void startRescanAnimation(
-            ImageView statusImage, View rescanButton) {
+    private void startRescanAnimation(ImageView statusImage, View rescanButton) {
         statusImage.setImageResource(R.drawable.status_info_to_scanning_anim);
         AnimatedVectorDrawable animation = (AnimatedVectorDrawable) statusImage.getDrawable();
         animation.registerAnimationCallback(
@@ -115,11 +110,11 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
                     }
                 });
         animation.start();
+        updateRescanButtonVisibility(rescanButton);
         rescanButton.setEnabled(false);
     }
 
-    private void endRescanAnimation(
-            ImageView statusImage, View rescanButton) {
+    private void endRescanAnimation(ImageView statusImage, View rescanButton) {
         Drawable statusDrawable = statusImage.getDrawable();
         if (!(statusDrawable instanceof AnimatedVectorDrawable)) {
             return;
@@ -146,8 +141,7 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
                                         super.onAnimationEnd(drawable);
                                         finishScanAnimation(statusImage, rescanButton);
                                     }
-                                }
-                        );
+                                });
                         animatedDrawable.start();
                     }
                 });
@@ -165,14 +159,11 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
     }
 
     private void finishScanAnimation(ImageView statusImage, View rescanButton) {
-        statusImage.setImageResource(toStatusImageResId(
-                mStatus.getSeverityLevel()));
+        statusImage.setImageResource(toStatusImageResId(mStatus.getSeverityLevel()));
         mRefreshRunning = false;
         mRefreshEnding = false;
         rescanButton.setEnabled(true);
-        rescanButton.setVisibility(mStatus.getSeverityLevel()
-                != SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK
-                ? View.GONE : View.VISIBLE);
+        updateRescanButtonVisibility(rescanButton);
     }
 
     void setSafetyStatus(SafetyCenterStatus status) {
@@ -190,6 +181,14 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
         notifyChanged();
     }
 
+    private void updateRescanButtonVisibility(View rescanButton) {
+        rescanButton.setVisibility(
+                mStatus.getSeverityLevel() != SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK
+                                || mHasIssues
+                        ? View.GONE
+                        : View.VISIBLE);
+    }
+
     private static int toStatusImageResId(int overallSeverityLevel) {
         switch (overallSeverityLevel) {
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN:
@@ -204,23 +203,6 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
                         TAG,
                         String.format("Unexpected OverallSeverityLevel: %s", overallSeverityLevel));
                 return R.drawable.safety_status_info;
-        }
-    }
-
-    private static int toButtonColor(int overallSeverityLevel) {
-        switch (overallSeverityLevel) {
-            case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN:
-            case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK:
-                return R.color.safety_center_button_info;
-            case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_RECOMMENDATION:
-                return R.color.safety_center_button_recommend;
-            case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING:
-                return R.color.safety_center_button_warn;
-            default:
-                Log.w(
-                        TAG,
-                        String.format("Unexpected OverallSeverityLevel: %s", overallSeverityLevel));
-                return R.color.safety_center_button_info;
         }
     }
 
