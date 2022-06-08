@@ -997,6 +997,7 @@
             </activity>
         </required-components>
         <permissions>
+            <permission-set name="notifications" />
             <permission name="android.permission.MANAGE_DOCUMENTS" />
             <permission name="android.permission.CACHE_CONTENT" />
             <permission name="android.permission.REMOVE_TASKS" />
