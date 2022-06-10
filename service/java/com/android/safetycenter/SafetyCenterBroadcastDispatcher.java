@@ -47,9 +47,11 @@ import android.provider.DeviceConfig;
 import android.safetycenter.SafetyCenterManager;
 import android.safetycenter.SafetyCenterManager.RefreshReason;
 import android.safetycenter.SafetyCenterManager.RefreshRequestType;
+import android.util.ArraySet;
 
 import androidx.annotation.RequiresApi;
 
+import com.android.permission.util.UserUtils;
 import com.android.safetycenter.SafetyCenterConfigReader.Broadcast;
 
 import java.time.Duration;
@@ -116,20 +118,50 @@ final class SafetyCenterBroadcastDispatcher {
     //  rely on SafetyCenterManager#isSafetyCenterEnabled()?
     void sendEnabledChanged(@NonNull List<Broadcast> broadcasts) {
         BroadcastOptions broadcastOptions = createBroadcastOptions();
+        ArraySet<UserProfileGroup> userProfileGroups = getAllUserProfileGroups();
 
         for (int i = 0; i < broadcasts.size(); i++) {
             Broadcast broadcast = broadcasts.get(i);
+            Intent broadcastIntent =
+                    createEnabledChangedBroadcastIntent(broadcast.getPackageName());
 
-            sendBroadcast(
-                    createEnabledChangedBroadcastIntent(broadcast.getPackageName()),
-                    UserHandle.ALL,
-                    SEND_SAFETY_CENTER_UPDATE,
-                    broadcastOptions);
+            for (int j = 0; j < userProfileGroups.size(); j++) {
+                UserProfileGroup userProfileGroup = userProfileGroups.valueAt(j);
+
+                List<String> profileParentSourceIds =
+                        broadcast.getSourceIdsForProfileParent(
+                                REFRESH_REASON_SAFETY_CENTER_ENABLED);
+                if (!profileParentSourceIds.isEmpty()) {
+                    int profileParentUserId = userProfileGroup.getProfileParentUserId();
+
+                    sendBroadcast(
+                            broadcastIntent,
+                            UserHandle.of(profileParentUserId),
+                            SEND_SAFETY_CENTER_UPDATE,
+                            broadcastOptions);
+                }
+
+                List<String> managedProfilesSourceIds =
+                        broadcast.getSourceIdsForManagedProfiles(
+                                REFRESH_REASON_SAFETY_CENTER_ENABLED);
+                if (!managedProfilesSourceIds.isEmpty()) {
+                    int[] managedProfilesUserIds = userProfileGroup.getManagedProfilesUserIds();
+                    for (int k = 0; k < managedProfilesUserIds.length; k++) {
+                        int managedProfileUserId = managedProfilesUserIds[k];
+
+                        sendBroadcast(
+                                broadcastIntent,
+                                UserHandle.of(managedProfileUserId),
+                                SEND_SAFETY_CENTER_UPDATE,
+                                broadcastOptions);
+                    }
+                }
+            }
         }
 
         sendBroadcast(
                 createEnabledChangedBroadcastIntent(),
-                UserHandle.ALL,
+                UserHandle.SYSTEM,
                 READ_SAFETY_CENTER_STATUS,
                 null);
     }
@@ -150,6 +182,7 @@ final class SafetyCenterBroadcastDispatcher {
                             broadcast.getPackageName(),
                             profileParentSourceIds,
                             broadcastId);
+
             sendBroadcast(
                     broadcastIntent,
                     UserHandle.of(profileParentUserId),
@@ -194,6 +227,20 @@ final class SafetyCenterBroadcastDispatcher {
         } finally {
             Binder.restoreCallingIdentity(callingId);
         }
+    }
+
+    @NonNull
+    private ArraySet<UserProfileGroup> getAllUserProfileGroups() {
+        ArraySet<UserProfileGroup> userProfileGroups = new ArraySet<>();
+        List<UserHandle> userHandles = UserUtils.getUserHandles(mContext);
+        for (int i = 0; i < userHandles.size(); i++) {
+            UserHandle userHandle = userHandles.get(i);
+
+            UserProfileGroup userProfileGroup =
+                    UserProfileGroup.from(mContext, userHandle.getIdentifier());
+            userProfileGroups.add(userProfileGroup);
+        }
+        return userProfileGroups;
     }
 
     @NonNull
