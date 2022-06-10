@@ -95,6 +95,7 @@ import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.STATIC_IN_COLLAPS
 import android.safetycenter.cts.testing.SafetyCenterCtsData
 import android.safetycenter.cts.testing.SafetyCenterCtsHelper
 import android.safetycenter.cts.testing.SafetyCenterCtsListener
+import android.safetycenter.cts.testing.SafetyCenterEnabledChangedReceiver
 import android.safetycenter.cts.testing.SafetyCenterFlags
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import android.safetycenter.cts.testing.SafetySourceCtsData
@@ -833,7 +834,7 @@ class SafetyCenterManagerTest {
 
     @Test
     fun safetyCenterEnabledChanged_whenImplicitReceiverHasPermission_receiverCalled() {
-        val enabledChangedReceiver = safetyCenterCtsHelper.addEnabledChangedReceiver()
+        val enabledChangedReceiver = SafetyCenterEnabledChangedReceiver(context)
 
         var receiverValue =
             enabledChangedReceiver.setSafetyCenterEnabledWithReceiverPermissionAndWait(false)
@@ -844,17 +845,19 @@ class SafetyCenterManagerTest {
             enabledChangedReceiver.setSafetyCenterEnabledWithReceiverPermissionAndWait(true)
 
         assertThat(toggledReceiverValue).isTrue()
+        enabledChangedReceiver.unregister()
     }
 
     @Test
     fun safetyCenterEnabledChanged_whenImplicitReceiverDoesntHavePermission_receiverNotCalled() {
-        val enabledChangedReceiver = safetyCenterCtsHelper.addEnabledChangedReceiver()
+        val enabledChangedReceiver = SafetyCenterEnabledChangedReceiver(context)
 
         SafetyCenterFlags.isEnabled = false
 
         assertFailsWith(TimeoutCancellationException::class) {
             enabledChangedReceiver.receiveSafetyCenterEnabledChanged(TIMEOUT_SHORT)
         }
+        enabledChangedReceiver.unregister()
     }
 
     @Test
