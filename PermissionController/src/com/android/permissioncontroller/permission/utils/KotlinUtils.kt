@@ -46,6 +46,7 @@ import android.content.pm.PackageManager.MATCH_DIRECT_BOOT_AWARE
 import android.content.pm.PackageManager.MATCH_DIRECT_BOOT_UNAWARE
 import android.content.pm.PermissionGroupInfo
 import android.content.pm.PermissionInfo
+import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
@@ -1132,13 +1133,17 @@ object KotlinUtils {
      * We show the resources only if
      * (1) the build version is T or after and
      * (2) the feature flag safety_protection_enabled is enabled and
-     * (3) the resources exist (currently the resources only exist on GMS devices)
+     * (3) the config value config_safetyProtectionEnabled is enabled/true and
+     * (4) the resources exist (currently the resources only exist on GMS devices)
      */
     @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.TIRAMISU)
     fun shouldShowSafetyProtectionResources(context: Context): Boolean {
         return SdkLevel.isAtLeastT() &&
             DeviceConfig.getBoolean(
                 DeviceConfig.NAMESPACE_PRIVACY, SAFETY_PROTECTION_RESOURCES_ENABLED, false) &&
+            context.getResources().getBoolean(
+                Resources.getSystem()
+                    .getIdentifier("config_safetyProtectionEnabled", "bool", "android")) &&
             context.getDrawable(android.R.drawable.ic_safety_protection) != null &&
             !context.getString(android.R.string.safety_protection_display_text).isNullOrEmpty()
     }
