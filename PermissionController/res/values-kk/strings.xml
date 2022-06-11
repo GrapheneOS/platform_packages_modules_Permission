@@ -494,8 +494,8 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Жоқ"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Соңғы\n24 сағатта"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Соңғы\n7 күн"</string>
-    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасы Android арқылы қорғалады. Деректеріңіз осы құрылғыда өңделетіндіктен, бұл қолданба рұқсатының пайдаланылуы күй жолағында немесе құпиялылық тақтасында көрсетілмейді."</string>
-    <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасы Android арқылы қорғалады. Деректеріңіз осы құрылғыда өңделетіндіктен, бұл қолданба рұқсатының пайдаланылуы құпиялылық тақтасында көрсетілмейді."</string>
+    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасын Android қорғайды. Деректеріңіз осы құрылғыда өңделетіндіктен, бұл қолданба рұқсатының пайдаланылуы күй жолағында немесе құпиялылық тақтасында көрсетілмейді."</string>
+    <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасын Android қорғайды. Деректеріңіз осы құрылғыда өңделетіндіктен, бұл қолданба рұқсатының пайдаланылуы құпиялылық тақтасында көрсетілмейді."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Құрылғы камерасы бөгелген"</string>
     <string name="blocked_microphone_title" msgid="1631517143648232585">"Құрылғы микрофоны бөгелген"</string>
     <string name="blocked_location_title" msgid="2005608279812892383">"Құрылғы геодерегі өшірулі"</string>
@@ -547,6 +547,5 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Бұл қолданба Android жүйесінің соңғы нұсқасын қолдамайды. Егер осы қолданба музыканы және аудиофайлдарды пайдалана алмаса, онда ол фотосуреттерді және бейнелерді пайдалана алмайтын болады."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Бұл қолданба Android жүйесінің соңғы нұсқасын қолдамайды. Егер осы қолданба фотосуреттерді және бейнелерді пайдалана алса, онда ол музыканы, аудиожазбаларды пайдалана алатын болады."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Бұл қолданба Android жүйесінің соңғы нұсқасын қолдамайды. Егер осы қолданба музыканы және аудиофайлдарды пайдалана алмаса, онда ол фотосуреттерді және бейнелерді пайдалана алмайтын болады."</string>
-    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
-    <skip />
+    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"Жабу"</string>
 </resources>
