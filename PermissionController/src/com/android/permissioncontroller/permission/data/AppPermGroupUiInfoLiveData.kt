@@ -124,8 +124,9 @@ class AppPermGroupUiInfoLiveData private constructor(
         val requestedPermissionInfos =
             allPermInfos.filter { permissionState.containsKey(it.key) }.values
 
-        val shouldShow = packageInfo.enabled && isGrantableAndNotLegacyPlatform(packageInfo,
-            groupInfo, requestedPermissionInfos)
+        val shouldShow = packageInfo.enabled &&
+            isGrantableAndNotLegacyPlatform(packageInfo, groupInfo, requestedPermissionInfos) &&
+            (!isStorage || Utils.shouldShowStorage(packageInfo))
 
         val isSystemApp = !isUserSensitive(permissionState)
 
