@@ -160,6 +160,9 @@ class AppPermissionGroupsViewModel(
             for (groupName in groups) {
                 val isSystem = Utils.getPlatformPermissionGroups().contains(groupName)
                 appPermGroupUiInfoLiveDatas[groupName]?.value?.let { uiInfo ->
+                    if (SdkLevel.isAtLeastT() && !uiInfo.shouldShow) {
+                        return@let
+                    }
                     if (groupName == Manifest.permission_group.STORAGE &&
                         (fullStorageState?.isGranted == true && !fullStorageState.isLegacy)) {
                         groupGrantStates[Category.ALLOWED]!!.add(
@@ -169,10 +172,14 @@ class AppPermissionGroupsViewModel(
                     when (uiInfo.permGrantState) {
                         PermGrantState.PERMS_ALLOWED -> {
                             val subtitle = if (groupName == Manifest.permission_group.STORAGE) {
-                                if (fullStorageState?.isLegacy == true) {
-                                    PermSubtitle.ALL_FILES
+                                if (SdkLevel.isAtLeastT()) {
+                                    PermSubtitle.NONE
                                 } else {
-                                    PermSubtitle.MEDIA_ONLY
+                                    if (fullStorageState?.isLegacy == true) {
+                                        PermSubtitle.ALL_FILES
+                                    } else {
+                                        PermSubtitle.MEDIA_ONLY
+                                    }
                                 }
                             } else {
                                 PermSubtitle.NONE
@@ -270,7 +277,7 @@ class AppPermissionGroupsViewModel(
         packageName: String
     ) {
         if (!SdkLevel.isAtLeastS()) {
-            return;
+            return
         }
 
         val aggregateDataFilterBeginDays = if (is7DayToggleEnabled())
