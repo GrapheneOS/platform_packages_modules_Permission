@@ -52,7 +52,7 @@ import androidx.annotation.Keep;
 import androidx.annotation.RequiresApi;
 
 import com.android.internal.annotations.GuardedBy;
-import com.android.modules.utils.BackgroundThread;
+import com.android.permission.util.ForegroundThread;
 import com.android.permission.util.UserUtils;
 import com.android.safetycenter.SafetyCenterConfigReader.Broadcast;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
@@ -176,12 +176,12 @@ public final class SafetyCenterService extends SystemService {
     @Override
     public void onBootPhase(int phase) {
         if (phase == SystemService.PHASE_BOOT_COMPLETED && canUseSafetyCenter()) {
-            Executor backgroundThreadExecutor = BackgroundThread.getExecutor();
+            Executor foregroundThreadExecutor = ForegroundThread.getExecutor();
             SafetyCenterEnabledListener listener = new SafetyCenterEnabledListener();
             // Ensure the listener is called first with the current state on the same thread.
-            backgroundThreadExecutor.execute(listener::setInitialState);
+            foregroundThreadExecutor.execute(listener::setInitialState);
             DeviceConfig.addOnPropertiesChangedListener(
-                    DeviceConfig.NAMESPACE_PRIVACY, backgroundThreadExecutor, listener);
+                    DeviceConfig.NAMESPACE_PRIVACY, foregroundThreadExecutor, listener);
         }
     }
 
@@ -774,7 +774,7 @@ public final class SafetyCenterService extends SystemService {
         private static final int MAX_TRACKED = 10;
 
         private final ArrayDeque<Runnable> mTimeouts = new ArrayDeque<>(MAX_TRACKED);
-        private final Handler mBackgroundHandler = BackgroundThread.getHandler();
+        private final Handler mForegroundHandler = ForegroundThread.getHandler();
 
         SafetyCenterTimeouts() {}
 
@@ -783,17 +783,17 @@ public final class SafetyCenterService extends SystemService {
                 remove(mTimeouts.pollFirst());
             }
             mTimeouts.addLast(timeoutAction);
-            mBackgroundHandler.postDelayed(timeoutAction, timeoutDuration.toMillis());
+            mForegroundHandler.postDelayed(timeoutAction, timeoutDuration.toMillis());
         }
 
         private void remove(@NonNull Runnable timeoutAction) {
             mTimeouts.remove(timeoutAction);
-            mBackgroundHandler.removeCallbacks(timeoutAction);
+            mForegroundHandler.removeCallbacks(timeoutAction);
         }
 
         private void clear() {
             while (!mTimeouts.isEmpty()) {
-                mBackgroundHandler.removeCallbacks(mTimeouts.pollFirst());
+                mForegroundHandler.removeCallbacks(mTimeouts.pollFirst());
             }
         }
     }
