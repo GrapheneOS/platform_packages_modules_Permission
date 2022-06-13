@@ -135,6 +135,7 @@ android_app {
         "safety-center-internal-data",
         "SettingsLibUtils",
         "modules-utils-build_system",
+        "safety-center-resources-lib",
     ],
 
     proto: {
