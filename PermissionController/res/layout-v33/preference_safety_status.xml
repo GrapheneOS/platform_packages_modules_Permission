@@ -66,6 +66,7 @@
         style="@style/SafetyCenter.MaterialActionButton" />
 
     <com.android.permissioncontroller.permission.ui.widget.SafetyProtectionSectionView
+        android:id="@+id/safety_protection_section_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/rescan_button"
