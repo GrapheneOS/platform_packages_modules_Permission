@@ -547,6 +547,5 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Le app ayilusekeli uhlobo lwakamuva le-Android. Uma le app ingakwazi ukufinyelela umculo nomsindo kumafayela, ngeke ivunyelwe nokufinyelela izithombe namavidiyo."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Le app ayilusekeli uhlobo lwakamuva le-Android. Uma le app ikwazi ukufinyelela izithombe namavidiyo, izovunyelwa nokufinyelela umculo namanye amafayela omsindo."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Le app ayilusekeli uhlobo lwakamuva le-Android. Uma le app ingakwazi ukufinyelela umculo nomsindo kumafayela, ngeke ivunyelwe nokufinyelela izithombe namavidiyo."</string>
-    <!-- no translation found for security_privacy_qs_close_button (6788105863103224114) -->
-    <skip />
+    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"Vala"</string>
 </resources>
