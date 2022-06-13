@@ -26,6 +26,7 @@ import android.safetycenter.SafetyCenterManager.ACTION_SAFETY_CENTER_ENABLED_CHA
 import android.safetycenter.cts.testing.Coroutines.TIMEOUT_LONG
 import android.safetycenter.cts.testing.Coroutines.runBlockingWithTimeout
 import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermissionIdentity
+import android.safetycenter.cts.testing.WaitForBroadcastIdle.waitForBroadcastIdle
 import java.time.Duration
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.Channel.Factory.UNLIMITED
@@ -55,22 +56,30 @@ class SafetyCenterEnabledChangedReceiver(private val context: Context) : Broadca
         }
     }
 
-    fun receiveSafetyCenterEnabledChanged(timeout: Duration = TIMEOUT_LONG) =
-        runBlockingWithTimeout(timeout) { safetyCenterEnabledChangedChannel.receive() }
-
     fun setSafetyCenterEnabledWithReceiverPermissionAndWait(
         value: Boolean,
         timeout: Duration = TIMEOUT_LONG
     ) =
         callWithShellPermissionIdentity(
-            {
-                SafetyCenterFlags.isEnabled = value
-                receiveSafetyCenterEnabledChanged(timeout)
-            },
+            { setSafetyCenterEnabledWithoutReceiverPermissionAndWait(value, timeout) },
             READ_SAFETY_CENTER_STATUS)
+
+    fun setSafetyCenterEnabledWithoutReceiverPermissionAndWait(
+        value: Boolean,
+        timeout: Duration
+    ): Boolean {
+        SafetyCenterFlags.isEnabled = value
+        if (timeout < TIMEOUT_LONG) {
+            context.waitForBroadcastIdle()
+        }
+        return receiveSafetyCenterEnabledChanged(timeout)
+    }
 
     fun unregister() {
         context.unregisterReceiver(this)
         safetyCenterEnabledChangedChannel.cancel()
     }
+
+    private fun receiveSafetyCenterEnabledChanged(timeout: Duration = TIMEOUT_LONG): Boolean =
+        runBlockingWithTimeout(timeout) { safetyCenterEnabledChangedChannel.receive() }
 }
