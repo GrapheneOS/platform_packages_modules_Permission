@@ -19,10 +19,10 @@ package android.safetycenter.cts.config
 import android.content.res.Resources
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.safetycenter.config.SafetySource
-import android.safetycenter.cts.testing.EqualsHashCodeToStringTester
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.ext.truth.os.ParcelableSubject.assertThat
 import androidx.test.filters.SdkSuppress
+import com.android.permission.testing.EqualsHashCodeToStringTester
 import com.google.common.truth.Truth.assertThat
 import org.junit.Assert.assertThrows
 import org.junit.Test
