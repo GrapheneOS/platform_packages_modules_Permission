@@ -17,9 +17,7 @@
 package android.safetycenter.cts.testing
 
 import android.content.Context
-import android.content.IntentFilter
 import android.safetycenter.SafetyCenterManager
-import android.safetycenter.SafetyCenterManager.ACTION_SAFETY_CENTER_ENABLED_CHANGED
 import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetySourceData
 import android.safetycenter.config.SafetyCenterConfig
@@ -42,7 +40,6 @@ class SafetyCenterCtsHelper(private val context: Context) {
     private val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)!!
     private val safetyCenterFlagsSnapshot = SafetyCenterFlags.snapshot
     private val listeners = mutableListOf<SafetyCenterCtsListener>()
-    private val enabledChangedReceivers = mutableListOf<SafetyCenterEnabledChangedReceiver>()
 
     private var currentConfigContainsCtsSource = false
 
@@ -59,11 +56,6 @@ class SafetyCenterCtsHelper(private val context: Context) {
         currentConfigContainsCtsSource = false
         resetFlags()
         SafetySourceReceiver.reset()
-        enabledChangedReceivers.forEach {
-            context.unregisterReceiver(it)
-            it.reset()
-        }
-        enabledChangedReceivers.clear()
     }
 
     /** Enables or disables SafetyCenter based on [value]. */
@@ -79,15 +71,6 @@ class SafetyCenterCtsHelper(private val context: Context) {
             // supported by the device.
             SafetyCenterFlags.isEnabled = value
         }
-    }
-
-    /** Adds and returns a runtime-registered [SafetyCenterEnabledChangedReceiver]. */
-    fun addEnabledChangedReceiver(): SafetyCenterEnabledChangedReceiver {
-        val enabledChangedReceiver = SafetyCenterEnabledChangedReceiver()
-        context.registerReceiver(
-            enabledChangedReceiver, IntentFilter(ACTION_SAFETY_CENTER_ENABLED_CHANGED))
-        enabledChangedReceivers.add(enabledChangedReceiver)
-        return enabledChangedReceiver
     }
 
     /** Sets the given [SafetyCenterConfig]. */
@@ -145,7 +128,9 @@ class SafetyCenterCtsHelper(private val context: Context) {
             // broadcasts are dispatched asynchronously, a wrong sequencing could still cause
             // failures (e.g: 1: flag switched, 2: test finishes, 3: new test starts, 4: a CTS
             // config is set, 5: broadcast from 1 dispatched).
-            addEnabledChangedReceiver().setSafetyCenterEnabledWithReceiverPermissionAndWait(value)
+            val enabledChangedReceiver = SafetyCenterEnabledChangedReceiver(context)
+            enabledChangedReceiver.setSafetyCenterEnabledWithReceiverPermissionAndWait(value)
+            enabledChangedReceiver.unregister()
         }
         // NOTE: We could be using ActivityManager#waitForBroadcastIdle() to achieve the same thing.
         // However:
