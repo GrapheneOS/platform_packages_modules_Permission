@@ -248,7 +248,7 @@
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Autorizzate solo per contenuti multimediali"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Autorizzate per gestire tutti i file"</string>
     <string name="ask_header" msgid="2633816846459944376">"Chiedi ogni volta"</string>
-    <string name="denied_header" msgid="903209608358177654">"Autorizzazione non concessa"</string>
+    <string name="denied_header" msgid="903209608358177654">"Non autorizzate"</string>
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Visualizza altre app che possono accedere a tutti i file"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 giorno}other{# giorni}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 ora}other{# ore}}"</string>
