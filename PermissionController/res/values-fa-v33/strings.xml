@@ -20,7 +20,7 @@
     <string name="role_sms_request_description" msgid="1506966389698625395">"این برنامه اجازه خواهد داشت برای شما «اعلان» ارسال کند و به «دوربین»، «مخاطبین»، «فایل‌ها»، «میکروفون»، «تلفن»، و «پیامک» دسترسی خواهد داشت"</string>
     <string name="permission_description_summary_storage" msgid="1917071243213043858">"برنامه‌های دارای این اجازه می‌توانند به همه فایل‌های این دستگاه دسترسی داشته باشند"</string>
     <string name="work_policy_title" msgid="832967780713677409">"اطلاعات خط‌مشی کار شما"</string>
-    <string name="work_policy_summary" msgid="3886113358084963931">"تنظیمات مدیریت‌شده توسط سرپرست سیستم شما"</string>
+    <string name="work_policy_summary" msgid="3886113358084963931">"تنظیمات مدیریت‌شده توسط سرپرست فناوری اطلاعات شما"</string>
     <string name="safety_center_more_issues_card_title" msgid="8599419758014246517">"دیدن همه هشدارها"</string>
     <string name="safety_center_more_issues_status_icon_content_description" msgid="8597351743567707802">"دیدن همه هشدارها"</string>
     <string name="safety_center_more_issues_expand_button_content_description" msgid="8997241228390831958">"دیدن همه هشدارها"</string>
