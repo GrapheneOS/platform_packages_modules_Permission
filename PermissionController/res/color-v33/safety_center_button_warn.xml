@@ -15,6 +15,7 @@
   -->
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:color="@color/gm_red_400" android:alpha="0.5" />
+    <!-- disabled is 30% opacity -->
+    <item android:state_enabled="false" android:color="@color/gm_red_400" android:alpha="0.3" />
     <item android:color="@color/gm_red_400" />
 </selector>
