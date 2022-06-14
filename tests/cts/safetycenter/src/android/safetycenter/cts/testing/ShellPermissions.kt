@@ -18,7 +18,6 @@ package android.safetycenter.cts.testing
 
 import android.app.UiAutomation
 import android.app.UiAutomation.ALL_PERMISSIONS
-import android.safetycenter.cts.testing.ShellPermissions.adoptShellPermissionIdentityFor
 import androidx.annotation.GuardedBy
 import androidx.test.InstrumentationRegistry.getInstrumentation
 import com.android.compatibility.common.util.SystemUtil

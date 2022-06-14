@@ -113,6 +113,7 @@ import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.SafetySou
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.SafetySourceDataKey.Reason.RESOLVING_ACTION
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.executeSafetyCenterIssueActionWithReceiverPermissionAndWait
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.refreshSafetySourcesWithReceiverPermissionAndWait
+import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.refreshSafetySourcesWithoutReceiverPermissionAndWait
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
@@ -852,10 +853,9 @@ class SafetyCenterManagerTest {
     fun safetyCenterEnabledChanged_whenImplicitReceiverDoesntHavePermission_receiverNotCalled() {
         val enabledChangedReceiver = SafetyCenterEnabledChangedReceiver(context)
 
-        SafetyCenterFlags.isEnabled = false
-
         assertFailsWith(TimeoutCancellationException::class) {
-            enabledChangedReceiver.receiveSafetyCenterEnabledChanged(TIMEOUT_SHORT)
+            enabledChangedReceiver.setSafetyCenterEnabledWithoutReceiverPermissionAndWait(
+                false, TIMEOUT_SHORT)
         }
         enabledChangedReceiver.unregister()
     }
@@ -889,10 +889,9 @@ class SafetyCenterManagerTest {
     fun safetyCenterEnabledChanged_whenSourceReceiverDoesntHavePermission_receiverNotCalled() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
 
-        SafetyCenterFlags.isEnabled = false
-
         assertFailsWith(TimeoutCancellationException::class) {
-            SafetySourceReceiver.receiveSafetyCenterEnabledChanged(TIMEOUT_SHORT)
+            SafetySourceReceiver.setSafetyCenterEnabledWithoutReceiverPermissionAndWait(
+                false, TIMEOUT_SHORT)
         }
     }
 
@@ -1020,10 +1019,9 @@ class SafetyCenterManagerTest {
                 SafetySourceDataKey(REFRESH_FETCH_FRESH_DATA, SINGLE_SOURCE_ID)] =
             safetySourceCtsData.criticalWithIssue
 
-        safetyCenterManager.refreshSafetySourcesWithPermission(REFRESH_REASON_RESCAN_BUTTON_CLICK)
-
         assertFailsWith(TimeoutCancellationException::class) {
-            SafetySourceReceiver.receiveRefreshSafetySources(TIMEOUT_SHORT)
+            safetyCenterManager.refreshSafetySourcesWithoutReceiverPermissionAndWait(
+                REFRESH_REASON_RESCAN_BUTTON_CLICK, TIMEOUT_SHORT)
         }
         val apiSafetySourceData =
             safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
