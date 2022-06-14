@@ -60,6 +60,7 @@ import com.android.permission.compat.UserHandleCompat;
 import com.android.permission.util.ArrayUtils;
 import com.android.permission.util.CollectionUtils;
 import com.android.permission.util.ForegroundThread;
+import com.android.permission.util.PackageUtils;
 import com.android.permission.util.PermissionUtils;
 import com.android.permission.util.ThrottledRunnable;
 import com.android.server.LocalManagerRegistry;
@@ -705,20 +706,26 @@ public class RoleService extends SystemService implements RoleUserState.Callback
 
         @Override
         public String getSmsRoleHolder(int userId) {
-            PermissionUtils.enforceCrossUserPermission(userId, false, "getSmsRoleHolder",
-                    getContext());
+            final Context context = getContext();
+            PermissionUtils.enforceCrossUserPermission(userId, false, "getSmsRoleHolder", context);
             if (!isUserExistent(userId)) {
                 Log.e(LOG_TAG, "user " + userId + " does not exist");
                 return null;
             }
 
+            final String packageName;
             final long identity = Binder.clearCallingIdentity();
             try {
-                return CollectionUtils.firstOrNull(getRoleHoldersAsUser(RoleManager.ROLE_SMS,
+                packageName = CollectionUtils.firstOrNull(getRoleHoldersAsUser(RoleManager.ROLE_SMS,
                         userId));
             } finally {
                 Binder.restoreCallingIdentity(identity);
             }
+            if (packageName != null && !PackageUtils.canCallingOrSelfPackageQuery(packageName,
+                    userId, context)) {
+                return null;
+            }
+            return packageName;
         }
 
         @Override
