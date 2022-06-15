@@ -16,6 +16,36 @@
   -->
 
 <resources>
+    <style name="Theme.SafetyCenterQs" parent="@android:style/Theme.DeviceDefault.NoActionBar">
+        <item name="android:filterTouchesWhenObscured">true</item>
+
+        <!-- Safety Center Quick Settings uses dark mode resources -->
+        <item name="colorSurface">@color/sc_surface_dark</item>
+        <item name="colorSurfaceVariant">@color/sc_surface_variant_dark</item>
+        <item name="colorAccentPrimary">@color/sc_accent_primary_dark</item>
+
+        <item name="colorScStatusInfo">@color/gm_green_500</item>
+        <item name="colorScStatusRecommend">@color/gm_yellow_500</item>
+        <item name="colorScStatusWarn">@color/gm_red_500</item>
+
+        <item name="colorScStatusBackgroundInfo">?attr/colorSurfaceVariant</item>
+        <item name="colorScStatusBackgroundRecommend">?attr/colorSurfaceVariant</item>
+        <item name="colorScStatusBackgroundWarn">?attr/colorSurfaceVariant</item>
+
+        <item name="textColorScActionButton">@android:color/black</item>
+        <item name="textColorScSecondaryActionButton">?android:attr/textColorPrimary</item>
+
+        <item name="colorScIconInfo">@color/gm_green_500</item>
+        <item name="colorScIconRecommend">@color/gm_yellow_500</item>
+        <item name="colorScIconWarn">@color/gm_red_500</item>
+
+        <!-- Buttons -->
+        <item name="scActionButtonStyle">@style/SafetyCenter.MaterialActionButton</item>
+        <item name="scSecondaryActionButtonStyle">@style/SafetyCenter.MaterialActionButton.Secondary</item>
+
+        <item name="colorScShieldAccent">@color/sc_shield_accent</item>
+    </style>
+
     <style name="Theme.SafetyCenter" parent="Theme.PermissionController.Settings.FilterTouches">
         <item name="colorSurface">@color/sc_surface_dark</item>
         <item name="colorSurfaceVariant">@color/sc_surface_variant_dark</item>
@@ -30,6 +60,7 @@
         <item name="colorScStatusBackgroundWarn">?attr/colorSurfaceVariant</item>
 
         <item name="textColorScActionButton">@android:color/black</item>
+        <item name="textColorScSecondaryActionButton">?android:attr/textColorPrimary</item>
 
         <item name="colorScIconInfo">@color/gm_green_500</item>
         <item name="colorScIconRecommend">@color/gm_yellow_500</item>
