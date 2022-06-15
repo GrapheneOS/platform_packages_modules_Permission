@@ -42,9 +42,6 @@ const val PROPERTY_LOCATION_INDICATORS_ENABLED = "location_indicators_enabled"
 /* Whether location accuracy feature is enabled */
 const val PROPERTY_LOCATION_ACCURACY_ENABLED = "location_accuracy_enabled"
 
-/** Whether subattribution is enabled in Permissions Hub. */
-const val PROPERTY_PERMISSIONS_HUB_SUBATTRIBUTION_ENABLED = "permissions_hub_subattribution_enabled"
-
 /** Whether to show 7-day toggle in privacy hub.  */
 private const val PRIVACY_DASHBOARD_7_DAY_TOGGLE = "privacy_dashboard_7_day_toggle"
 
@@ -85,21 +82,12 @@ fun is7DayToggleEnabled(): Boolean {
 }
 
 /**
- * Whether the Permissions Hub Subattribution flag is enabled
- *
- * @return whether the flag is enabled
- */
-fun isPermissionsHubSubattributionFlagEnabled(): Boolean {
-    return DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
-            PROPERTY_PERMISSIONS_HUB_SUBATTRIBUTION_ENABLED, true)
-}
-/**
  * Whether to show the subattribution in the Permissions Dashboard
  *
  * @return whether to show subattribution in the Permissions Dashboard.
  */
 fun shouldShowSubattributionInPermissionsDashboard(): Boolean {
-    return SdkLevel.isAtLeastS() && isPermissionsHubSubattributionFlagEnabled()
+    return SdkLevel.isAtLeastS()
 }
 
 /**
