@@ -456,7 +456,7 @@
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"გსურთ, მიანიჭოთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>-ს&lt;/b&gt; თქვენს მოწყობილობაზე არსებულ ფოტოებზე, მედია-კონტენტზე და ფაილებზე წვდომის ნებართვა?"</string>
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"მიანიჭებთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ის წვდომას ამ მოწყ. &lt;b&gt;ფოტოებზე, ვიდეოებზე, მუსიკასა და აუდიოფაილებზე&lt;/b&gt;?"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"მიანიჭებთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ის წვდომას თქვენი მოწყ. &lt;b&gt;ფოტოებზე, ვიდეოებზე, მუსიკაზე, აუდიო და სხვა &lt;/b&gt;?"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"მიანიჭებთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ის წვდომას თქვენი მოწყობილობის მუსიკასა და აუდიოფაილებზე?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"მიანიჭებთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ს წვდომას თქვენი მოწყობილობის მუსიკასა და აუდიოფაილებზე?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"მიანიჭებთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ის წვდომას თქვენი მოწყობილობის ფოტოებსა და ვიდეოებზე?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"გსურთ, მიანიჭოთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>-ს&lt;/b&gt; აუდიოს ჩაწერის ნებართვა?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"ეს აპი აუდიოს ჩაწერას მხოლოდ მაშინ შეძლებს, როცა მას იყენებთ"</string>
