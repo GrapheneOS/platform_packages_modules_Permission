@@ -102,7 +102,6 @@ public final class SafetyCenterService extends SystemService {
      * Device Config flag that determines the time for which Safety Center will wait for a source to
      * respond to a resolving action before timing out.
      */
-    // TODO(b/228969290): Add CTS tests for resolving actions timing out.
     private static final String PROPERTY_RESOLVING_ACTION_TIMEOUT_MILLIS =
             "safety_center_resolve_action_timeout_millis";
 
