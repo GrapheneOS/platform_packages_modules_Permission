@@ -74,7 +74,7 @@
 
     <style name="SafetyCenter.MaterialActionButton"
            parent="@style/Widget.MaterialComponents.Button.UnelevatedButton">
-        <item name="android:theme">@style/Theme.MaterialComponents.DayNight</item>
+        <item name="android:theme">@style/Theme.MaterialComponents</item>
         <item name="android:height">56dp</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
@@ -86,12 +86,12 @@
 
     <style name="SafetyCenter.MaterialActionButton.Secondary"
            parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="android:theme">@style/Theme.MaterialComponents.DayNight</item>
+        <item name="android:theme">@style/Theme.MaterialComponents</item>
         <item name="android:height">56dp</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
         <item name="android:textAppearance">@style/SafetyCenter.ActionButton.Secondary.Text</item>
-        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textColor">?attr/textColorScSecondaryActionButton</item>
         <item name="cornerRadius">12dp</item>
         <item name="rippleColor">?android:colorControlHighlight</item>
     </style>
@@ -109,7 +109,7 @@
         <item name="android:capitalize">sentences</item>
         <item name="android:textSize">14sp</item>
         <item name="android:lineHeight">20sp</item>
-        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textColor">?attr/textColorScSecondaryActionButton</item>
     </style>
 
     <style name="SafetyCenter.StatusCard"
