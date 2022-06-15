@@ -21,6 +21,8 @@
     <string name="overall_severity_level_unknown_summary" description="TODO" translatable="false">Unknown safety status</string>
     <string name="overall_severity_level_ok_title" description="TODO" translatable="false">All good</string>
     <string name="overall_severity_level_ok_summary" description="TODO" translatable="false">No problemo maestro</string>
+    <string name="overall_severity_level_ok_review_title" description="TODO" translatable="false">Add more protection</string>
+    <string name="overall_severity_level_ok_review_summary" description="TODO" translatable="false">Review your settings</string>
     <string name="overall_severity_level_recommendation_title" description="TODO" translatable="false">Some warnings</string>
     <string name="overall_severity_level_recommendation_summary" description="TODO" translatable="false">Careful there</string>
     <string name="overall_severity_level_critical_warning_title" description="TODO" translatable="false">Uh-oh</string>
