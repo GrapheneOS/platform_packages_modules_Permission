@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package android.safetycenter.cts.testing
+package com.android.permission.testing
 
 import com.google.common.base.Equivalence
 import com.google.common.testing.EqualsTester
