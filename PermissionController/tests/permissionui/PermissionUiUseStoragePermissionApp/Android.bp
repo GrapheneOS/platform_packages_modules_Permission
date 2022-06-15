@@ -28,5 +28,5 @@ package {
 android_test_helper_app {
     name: "PermissionUiUseStoragePermissionApp",
 
-    sdk_version: "30",
+    sdk_version: "28",
 }
