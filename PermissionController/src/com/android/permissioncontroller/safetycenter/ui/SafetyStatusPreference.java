@@ -38,6 +38,8 @@ import androidx.preference.PreferenceViewHolder;
 
 import com.android.permissioncontroller.R;
 
+import com.google.android.material.button.MaterialButton;
+
 import java.util.Objects;
 
 /** Preference which displays a visual representation of {@link SafetyCenterStatus}. */
@@ -47,6 +49,8 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
 
     @Nullable private SafetyCenterStatus mStatus;
     @Nullable private View.OnClickListener mRescanButtonOnClickListener;
+    @Nullable private View.OnClickListener mReviewSettingsOnClickListener;
+    private boolean mHasPendingActions;
     private boolean mHasIssues;
 
     public SafetyStatusPreference(Context context, AttributeSet attrs) {
@@ -56,7 +60,6 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
     }
 
     private boolean mRefreshRunning;
-
     private boolean mRefreshEnding;
 
     @Override
@@ -67,33 +70,47 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
             return;
         }
 
+        Context context = getContext();
         ImageView statusImage = (ImageView) holder.findViewById(R.id.status_image);
-        View rescanButton = holder.findViewById(R.id.rescan_button);
+        MaterialButton rescanButton = (MaterialButton) holder.findViewById(R.id.rescan_button);
+        MaterialButton pendingActionsRescanButton = (MaterialButton) holder.findViewById(
+                R.id.pending_actions_rescan_button);
+        View reviewSettingsButton = holder.findViewById(R.id.review_settings_button);
+        TextView summaryTextView = ((TextView) holder.findViewById(R.id.status_summary));
+        ((TextView) holder.findViewById(R.id.status_title)).setText(mStatus.getTitle());
+        if (mHasPendingActions) {
+            reviewSettingsButton.setOnClickListener(mReviewSettingsOnClickListener);
+            reviewSettingsButton.setVisibility(View.VISIBLE);
+            summaryTextView.setText(context.getString(R.string.safety_center_qs_status_summary));
+        } else {
+            reviewSettingsButton.setVisibility(View.GONE);
+            summaryTextView.setText(mStatus.getSummary());
+        }
+        rescanButton = updateRescanButtonUi(rescanButton, pendingActionsRescanButton);
+
         if (!mRefreshRunning) {
             statusImage.setImageResource(toStatusImageResId(mStatus.getSeverityLevel()));
         } else {
             rescanButton.setEnabled(false);
         }
-        ((TextView) holder.findViewById(R.id.status_title)).setText(mStatus.getTitle());
-        ((TextView) holder.findViewById(R.id.status_summary)).setText(mStatus.getSummary());
         holder.findViewById(R.id.status_title_and_summary).setContentDescription(
                 getContext().getString(
                         R.string.safety_status_preference_title_and_summary_content_description,
                         mStatus.getTitle(), mStatus.getSummary()));
 
         // Hide the Safety Protection branding if there are any issue cards
-        View safetyProtectionSectionView =
-                holder.findViewById(R.id.safety_protection_section_view);
+        View safetyProtectionSectionView = holder.findViewById(R.id.safety_protection_section_view);
         safetyProtectionSectionView.setVisibility(mHasIssues ? View.GONE : View.VISIBLE);
 
         if (mRescanButtonOnClickListener != null) {
             rescanButton.setOnClickListener(view -> mRescanButtonOnClickListener.onClick(view));
         }
 
-        boolean inRefreshStatus = mStatus.getRefreshStatus()
-                == SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS
-                || mStatus.getRefreshStatus()
-                == SafetyCenterStatus.REFRESH_STATUS_DATA_FETCH_IN_PROGRESS;
+        boolean inRefreshStatus =
+                mStatus.getRefreshStatus()
+                        == SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS
+                        || mStatus.getRefreshStatus()
+                        == SafetyCenterStatus.REFRESH_STATUS_DATA_FETCH_IN_PROGRESS;
         if (inRefreshStatus && !mRefreshRunning) {
             startRescanAnimation(statusImage, rescanButton);
             mRefreshRunning = true;
@@ -182,6 +199,22 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
         updateRescanButtonVisibility(rescanButton);
     }
 
+    /**
+     * Updates UI for the rescan button depending on the pending actions state and returns the
+     * correctly styled rescan button
+     */
+    private MaterialButton updateRescanButtonUi(MaterialButton rescanButton,
+            MaterialButton pendingActionsRescanButton) {
+        if (mHasPendingActions) {
+            rescanButton.setVisibility(View.GONE);
+            pendingActionsRescanButton.setVisibility(View.VISIBLE);
+            return pendingActionsRescanButton;
+        }
+        pendingActionsRescanButton.setVisibility(View.GONE);
+        rescanButton.setVisibility(View.VISIBLE);
+        return rescanButton;
+    }
+
     void setSafetyStatus(SafetyCenterStatus status) {
         mStatus = status;
         notifyChanged();
@@ -189,6 +222,16 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
 
     void setHasIssues(boolean hasIssues) {
         mHasIssues = hasIssues;
+        notifyChanged();
+    }
+
+    /**
+     * System has pending actions when the user security and privacy signals are deemed to be safe,
+     * but the user has previously dismissed some warnings that may need their review
+     */
+    void setHasPendingActions(boolean hasPendingActions, View.OnClickListener listener) {
+        mHasPendingActions = hasPendingActions;
+        mReviewSettingsOnClickListener = listener;
         notifyChanged();
     }
 
@@ -200,7 +243,7 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
     private void updateRescanButtonVisibility(View rescanButton) {
         rescanButton.setVisibility(
                 mStatus.getSeverityLevel() != SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK
-                                || mHasIssues
+                        || mHasIssues
                         ? View.GONE
                         : View.VISIBLE);
     }

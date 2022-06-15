@@ -18,12 +18,15 @@ package com.android.permissioncontroller.safetycenter.ui.model
 
 import android.app.Application
 import android.os.Build
+import android.content.Intent
+import android.content.Intent.ACTION_SAFETY_CENTER
 import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterErrorDetails
 import android.safetycenter.SafetyCenterIssue
 import android.safetycenter.SafetyCenterManager
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat.getMainExecutor
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
@@ -60,6 +63,10 @@ class LiveSafetyCenterViewModel(app: Application) : SafetyCenterViewModel(app) {
 
     override fun clearError() {
         _errorLiveData.value = null
+    }
+
+    override fun navigateToSafetyCenter(fragment: Fragment) {
+        fragment.startActivity(Intent(ACTION_SAFETY_CENTER))
     }
 
     override fun refresh() {

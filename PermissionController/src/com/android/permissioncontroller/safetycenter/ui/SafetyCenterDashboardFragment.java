@@ -201,6 +201,24 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
         if (!mIsQuickSettingsFragment) {
             updateSafetyEntries(context, data.getEntriesOrGroups());
             updateStaticSafetyEntries(context, data.getStaticEntryGroups());
+        } else {
+            setPendingActionState(data);
+        }
+    }
+
+    /**
+     * Determine if there are pending actions and set pending actions state
+     */
+    private void setPendingActionState(SafetyCenterData data) {
+        int overallSeverityLevel = data.getStatus().getSeverityLevel();
+        int maxEntrySeverityLevel = getMaxSeverityLevel(data.getEntriesOrGroups());
+        if (overallSeverityLevel == SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK
+                && maxEntrySeverityLevel > SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK) {
+            mSafetyStatusPreference.setHasPendingActions(
+                    true, l -> mViewModel.navigateToSafetyCenter(this));
+        } else {
+            mSafetyStatusPreference.setHasPendingActions(
+                    false, null);
         }
     }
 
@@ -247,6 +265,27 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
         }
     }
 
+    private int getMaxSeverityLevel(List<SafetyCenterEntryOrGroup> entriesOrGroups) {
+        int maxEntrySeverityLevel = SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN;
+
+        for (int i = 0, size = entriesOrGroups.size(); i < size; i++) {
+            SafetyCenterEntryOrGroup entryOrGroup = entriesOrGroups.get(i);
+            SafetyCenterEntry entry = entryOrGroup.getEntry();
+            SafetyCenterEntryGroup group = entryOrGroup.getEntryGroup();
+
+            if (entry != null) {
+                maxEntrySeverityLevel = Math.max(maxEntrySeverityLevel, entry.getSeverityLevel());
+            } else if (group != null) {
+                List<SafetyCenterEntry> entries = group.getEntries();
+                for (SafetyCenterEntry groupEntry : entries) {
+                    maxEntrySeverityLevel =
+                            Math.max(maxEntrySeverityLevel, groupEntry.getSeverityLevel());
+                }
+            }
+        }
+        return maxEntrySeverityLevel;
+    }
+
     private void addTopLevelEntry(
             Context context,
             SafetyCenterEntry entry,
@@ -273,8 +312,8 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
                                 : PositionInCardList.CARD_START));
 
         List<SafetyCenterEntry> entries = group.getEntries();
-        for (int j = 0, last = entries.size() - 1; j <= last; j++) {
-            boolean isCardEnd = j == last;
+        for (int i = 0, last = entries.size() - 1; i <= last; i++) {
+            boolean isCardEnd = i == last;
             boolean isListEnd = isLastCard && isCardEnd;
             PositionInCardList positionInCardList =
                     PositionInCardList.calculate(
@@ -283,7 +322,7 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
                             /* isCardStart= */ false,
                             isCardEnd);
             mEntriesGroup.addPreference(
-                    new SafetyEntryPreference(context, entries.get(j), positionInCardList));
+                    new SafetyEntryPreference(context, entries.get(i), positionInCardList));
         }
     }
 
