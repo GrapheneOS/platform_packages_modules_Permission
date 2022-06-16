@@ -27,6 +27,8 @@ import android.os.UserManager;
 import com.android.internal.util.Preconditions;
 import com.android.permission.compat.UserHandleCompat;
 
+import java.util.List;
+
 /** Utility class to deal with Android users. */
 public final class UserUtils {
 
@@ -57,11 +59,17 @@ public final class UserUtils {
 
     /** Returns whether a given {@code userId} corresponds to an existing user. */
     public static boolean isUserExistent(@UserIdInt int userId, @NonNull Context context) {
+        return getUserHandles(context).contains(UserHandle.of(userId));
+    }
+
+    /** Returns all the alive users on the device. */
+    @NonNull
+    public static List<UserHandle> getUserHandles(@NonNull Context context) {
         UserManager userManager = context.getSystemService(UserManager.class);
         // This call requires the MANAGE_USERS permission.
         final long identity = Binder.clearCallingIdentity();
         try {
-            return userManager.getUserHandles(true).contains(UserHandle.of(userId));
+            return userManager.getUserHandles(true);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
