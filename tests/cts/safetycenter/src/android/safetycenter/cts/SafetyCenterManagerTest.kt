@@ -144,6 +144,11 @@ class SafetyCenterManagerTest {
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_OK)
             .build()
 
+    private val safetyCenterStatusOkReview =
+        SafetyCenterStatus.Builder("Add more protection", "Review your settings")
+            .setSeverityLevel(OVERALL_SEVERITY_LEVEL_OK)
+            .build()
+
     private val safetyCenterStatusCritical =
         SafetyCenterStatus.Builder("Uh-oh", "Code red")
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING)
@@ -245,7 +250,7 @@ class SafetyCenterManagerTest {
 
     private val safetyCenterDataCriticalWithDismissedIssue =
         SafetyCenterData(
-            safetyCenterStatusOk,
+            safetyCenterStatusOkReview,
             emptyList(),
             listOf(safetyCenterEntryOrGroupCritical),
             emptyList())
