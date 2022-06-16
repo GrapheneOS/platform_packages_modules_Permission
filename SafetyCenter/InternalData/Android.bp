@@ -41,5 +41,5 @@ java_library {
     },
     installable: false,
     min_sdk_version: "30",
-    sdk_version: "module_current",
+    sdk_version: "system_current",
 }
