@@ -18,9 +18,9 @@ package com.android.safetycenter.internaldata;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
-import android.annotation.NonNull;
 import android.util.Base64;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
 import com.google.protobuf.InvalidProtocolBufferException;
