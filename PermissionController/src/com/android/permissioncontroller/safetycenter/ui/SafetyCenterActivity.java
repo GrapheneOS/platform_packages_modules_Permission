@@ -18,17 +18,20 @@ package com.android.permissioncontroller.safetycenter.ui;
 import static android.content.Intent.FLAG_ACTIVITY_FORWARD_RESULT;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.safetycenter.SafetyCenterManager;
 import android.util.Log;
 
 import androidx.annotation.Keep;
+import androidx.annotation.RequiresApi;
 
 import com.android.permissioncontroller.R;
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
 
 /** Entry-point activity for SafetyCenter. */
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @Keep
 public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
 

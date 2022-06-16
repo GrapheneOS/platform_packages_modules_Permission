@@ -102,6 +102,7 @@ android_test {
         "android.car",
         "car-ui-lib",
         "libprotobuf-java-lite",
+        "safety-center-internal-data",
         "SettingsLibUtils",
         "modules-utils-build_system",
 
