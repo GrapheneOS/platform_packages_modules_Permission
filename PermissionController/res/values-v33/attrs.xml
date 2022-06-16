@@ -26,6 +26,7 @@
     <attr name="colorScStatusBackgroundRecommend" format="color" />
     <attr name="colorScStatusBackgroundWarn" format="color" />
     <attr name="textColorScActionButton" format="color" />
+    <attr name="textColorScSecondaryActionButton" format="color" />
     <attr name="colorScIconInfo" format="color" />
     <attr name="colorScIconRecommend" format="color" />
     <attr name="colorScIconWarn" format="color" />

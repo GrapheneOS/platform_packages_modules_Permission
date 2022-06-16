@@ -345,10 +345,10 @@ class SafetyCenterActivityTest {
         }
 
         private fun UiDevice.resetRotation() {
-            if (isNaturalOrientation) {
-                return
+            if (!isNaturalOrientation) {
+                setOrientationNatural()
             }
-            setOrientationNatural()
+            unfreezeRotation()
             waitForIdle()
         }
     }

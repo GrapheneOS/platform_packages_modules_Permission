@@ -16,14 +16,12 @@
 
 package android.safetycenter.cts.testing
 
-import android.Manifest.permission.DUMP
-import android.app.ActivityManager
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_SAFETY_CENTER
 import android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
-import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermissionIdentity
+import android.safetycenter.cts.testing.WaitForBroadcastIdle.waitForBroadcastIdle
 import com.android.compatibility.common.util.UiAutomatorUtils
 
 /** A class that provides a way to launch the SafetyCenter activity in tests. */
@@ -39,8 +37,7 @@ object SafetyCenterActivityLauncher {
         // prior to opening the SafetyCenterActivity. This shouldn't be necessary but there seems
         // to some racyness when enabling the SafetyCenter QS tile while opening the
         // SafetyCenterActivity which causes the window to be removed.
-        val activityManager = getSystemService(ActivityManager::class.java)!!
-        callWithShellPermissionIdentity({ activityManager.waitForBroadcastIdle() }, DUMP)
+        waitForBroadcastIdle()
         val uiDevice = UiAutomatorUtils.getUiDevice()
         uiDevice.waitForIdle()
         startActivity(launchSafetyCenterIntent)

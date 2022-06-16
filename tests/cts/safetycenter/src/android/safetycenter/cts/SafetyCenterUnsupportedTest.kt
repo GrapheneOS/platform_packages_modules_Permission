@@ -43,6 +43,7 @@ import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsData
 import android.safetycenter.cts.testing.SafetyCenterCtsHelper
 import android.safetycenter.cts.testing.SafetyCenterCtsListener
+import android.safetycenter.cts.testing.SafetyCenterEnabledChangedReceiver
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import android.safetycenter.cts.testing.SafetySourceCtsData
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.CRITICAL_ISSUE_ACTION_ID
@@ -182,12 +183,13 @@ class SafetyCenterUnsupportedTest {
 
     @Test
     fun safetyCenterEnabledChanged_withImplicitReceiver_doesntCallReceiver() {
-        val enabledChangedReceiver = safetyCenterCtsHelper.addEnabledChangedReceiver()
+        val enabledChangedReceiver = SafetyCenterEnabledChangedReceiver(context)
 
         assertFailsWith(TimeoutCancellationException::class) {
             enabledChangedReceiver.setSafetyCenterEnabledWithReceiverPermissionAndWait(
                 false, TIMEOUT_SHORT)
         }
+        enabledChangedReceiver.unregister()
     }
 
     @Test
