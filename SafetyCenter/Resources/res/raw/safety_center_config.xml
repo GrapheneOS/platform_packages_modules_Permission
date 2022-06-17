@@ -60,15 +60,23 @@
             <issue-only-safety-source
                 id="AndroidAccessibility"
                 packageName="com.android.permissioncontroller"
-                profile="primary_profile_only"/>
+                profile="all_profiles"
+                refreshOnPageOpenAllowed="true"/>
             <issue-only-safety-source
                 id="AndroidNotificationListener"
                 packageName="com.android.permissioncontroller"
-                profile="primary_profile_only"/>
+                profile="primary_profile_only"
+                refreshOnPageOpenAllowed="true"/>
             <issue-only-safety-source
                 id="AndroidBackgroundLocation"
                 packageName="com.android.permissioncontroller"
-                profile="primary_profile_only"/>
+                profile="all_profiles"
+                refreshOnPageOpenAllowed="true"/>
+            <issue-only-safety-source
+                id="AndroidPermissionAutoRevoke"
+                packageName="com.android.permissioncontroller"
+                profile="all_profiles"
+                refreshOnPageOpenAllowed="true"/>
         </safety-sources-group>
         <safety-sources-group
             id="AndroidAdvancedSources"
