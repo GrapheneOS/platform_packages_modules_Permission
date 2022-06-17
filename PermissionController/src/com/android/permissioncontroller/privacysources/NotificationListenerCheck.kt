@@ -40,7 +40,6 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.os.UserManager
 import android.provider.DeviceConfig
 import android.provider.Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS
 import android.safetycenter.SafetyCenterManager
@@ -187,12 +186,6 @@ private fun checkNotificationListenerCheckEnabled(context: Context): Boolean {
     return checkNotificationListenerCheckSupported() &&
         isNotificationListenerCheckFlagEnabled() &&
         getSystemServiceSafe(context, SafetyCenterManager::class.java).isSafetyCenterEnabled
-}
-
-@RequiresApi(Build.VERSION_CODES.TIRAMISU)
-private fun isProfile(context: Context): Boolean {
-    val userManager = getSystemServiceSafe(context, UserManager::class.java)
-    return userManager.isProfile
 }
 
 private fun getSafetySourceIssueIdFromComponentName(componentName: ComponentName): String {
@@ -1083,6 +1076,8 @@ class NotificationListenerPackageResetHandler : BroadcastReceiver() {
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class NotificationListenerPrivacySource : PrivacySource {
+    override val shouldProcessProfileRequest: Boolean = false
+
     override fun safetyCenterEnabledChanged(context: Context, enabled: Boolean) {
         NotificationListenerCheckInternal(context, null).run { removeAnyNotification() }
     }
