@@ -17,10 +17,12 @@
 package com.android.permissioncontroller.tests.mocking.privacysources
 
 import android.content.Context
+import android.content.ContextWrapper
 import android.content.Intent
 import android.content.Intent.ACTION_BOOT_COMPLETED
 import android.content.pm.PackageManager
 import android.os.Build
+import android.os.UserManager
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyCenterManager.ACTION_REFRESH_SAFETY_SOURCES
 import android.safetycenter.SafetyCenterManager.ACTION_SAFETY_CENTER_ENABLED_CHANGED
@@ -29,6 +31,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import com.android.dx.mockito.inline.extended.ExtendedMockito
 import com.android.permissioncontroller.PermissionControllerApplication
+import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.privacysources.PrivacySource
 import com.android.permissioncontroller.privacysources.SafetyCenterReceiver
 import com.android.permissioncontroller.privacysources.SafetyCenterReceiver.RefreshEvent.EVENT_DEVICE_REBOOTED
@@ -43,6 +46,8 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.ArgumentMatchers.any
+import org.mockito.ArgumentMatchers.eq
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.Mockito.`when` as whenever
@@ -77,6 +82,8 @@ class SafetyCenterReceiverTest {
     lateinit var mockPrivacySource: PrivacySource
     @Mock
     lateinit var mockPrivacySource2: PrivacySource
+    @Mock
+    lateinit var mockUserManager: UserManager
 
     private lateinit var mockitoSession: MockitoSession
     private lateinit var safetyCenterReceiver: SafetyCenterReceiver
@@ -92,14 +99,24 @@ class SafetyCenterReceiverTest {
 
         mockitoSession = ExtendedMockito.mockitoSession()
             .mockStatic(PermissionControllerApplication::class.java)
+            .mockStatic(Utils::class.java)
             .strictness(Strictness.LENIENT).startMocking()
 
         whenever(PermissionControllerApplication.get()).thenReturn(application)
         whenever(application.applicationContext).thenReturn(application)
-        whenever(application.getSystemService(SafetyCenterManager::class.java))
-            .thenReturn(mockSafetyCenterManager)
         whenever(application.packageManager).thenReturn(mockPackageManager)
         whenever(mockSafetyCenterManager.isSafetyCenterEnabled).thenReturn(true)
+        whenever(
+            Utils.getSystemServiceSafe(
+                any(ContextWrapper::class.java), eq(UserManager::class.java)
+            ))
+            .thenReturn(mockUserManager)
+        whenever(
+            Utils.getSystemServiceSafe(
+                any(ContextWrapper::class.java), eq(SafetyCenterManager::class.java)
+            ))
+            .thenReturn(mockSafetyCenterManager)
+        whenever(mockUserManager.isProfile).thenReturn(false)
 
         safetyCenterReceiver = SafetyCenterReceiver(::privacySourceMap, testCoroutineDispatcher)
 
