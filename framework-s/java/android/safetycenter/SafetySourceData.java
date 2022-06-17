@@ -35,8 +35,10 @@ import androidx.annotation.RequiresApi;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * Data class used by safety sources to propagate safety information such as their safety status and
@@ -254,11 +256,11 @@ public final class SafetySourceData implements Parcelable {
         @NonNull
         public SafetySourceData build() {
             List<SafetySourceIssue> issues = unmodifiableList(new ArrayList<>(mIssues));
+            int issuesMaxSeverityLevel = getIssuesMaxSeverityLevelEnforcingUniqueIds(issues);
             if (mStatus == null) {
                 return new SafetySourceData(null, issues);
             }
             int statusSeverityLevel = mStatus.getSeverityLevel();
-            int issuesMaxSeverityLevel = getIssuesMaxSeverityLevel(issues);
             boolean requiresAttention = issuesMaxSeverityLevel > SEVERITY_LEVEL_INFORMATION;
             if (requiresAttention) {
                 checkArgument(
@@ -269,10 +271,19 @@ public final class SafetySourceData implements Parcelable {
             return new SafetySourceData(mStatus, issues);
         }
 
-        private static int getIssuesMaxSeverityLevel(@NonNull List<SafetySourceIssue> issues) {
+        private static int getIssuesMaxSeverityLevelEnforcingUniqueIds(
+                @NonNull List<SafetySourceIssue> issues) {
             int max = Integer.MIN_VALUE;
+            Set<String> issueIds = new HashSet<>();
             for (int i = 0; i < issues.size(); i++) {
-                max = Math.max(max, issues.get(i).getSeverityLevel());
+                SafetySourceIssue safetySourceIssue = issues.get(i);
+
+                String issueId = safetySourceIssue.getId();
+                checkArgument(
+                        !issueIds.contains(issueId),
+                        "Safety source data cannot have duplicate issue ids");
+                max = Math.max(max, safetySourceIssue.getSeverityLevel());
+                issueIds.add(issueId);
             }
             return max;
         }

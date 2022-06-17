@@ -38,8 +38,10 @@ import androidx.annotation.RequiresApi;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * Data for a safety source issue in the Safety Center page.
@@ -592,6 +594,7 @@ public final class SafetySourceIssue implements Parcelable {
         @NonNull
         public SafetySourceIssue build() {
             List<SafetySourceIssue.Action> actions = unmodifiableList(new ArrayList<>(mActions));
+            enforceUniqueActionIds(actions);
             checkArgument(!actions.isEmpty(), "Safety source issue must contain at least 1 action");
             checkArgument(
                     actions.size() <= 2,
@@ -606,6 +609,20 @@ public final class SafetySourceIssue implements Parcelable {
                     actions,
                     mOnDismissPendingIntent,
                     mIssueTypeId);
+        }
+
+        private static void enforceUniqueActionIds(
+                @NonNull List<SafetySourceIssue.Action> actions) {
+            Set<String> actionIds = new HashSet<>();
+            for (int i = 0; i < actions.size(); i++) {
+                SafetySourceIssue.Action action = actions.get(i);
+
+                String actionId = action.getId();
+                checkArgument(
+                        !actionIds.contains(actionId),
+                        "Safety source issue cannot have duplicate action ids");
+                actionIds.add(actionId);
+            }
         }
     }
 
