@@ -63,6 +63,8 @@ class SafetyCenterStaticEntryTest {
     fun getTitle_returnsTitle() {
         assertThat(staticEntry1.title).isEqualTo(title1)
         assertThat(staticEntry2.title).isEqualTo(title2)
+        assertThat(SafetyCenterStaticEntry.Builder(staticEntry1).setTitle(title2).build().title)
+            .isEqualTo(title2)
     }
 
     @Test
@@ -115,18 +117,13 @@ class SafetyCenterStaticEntryTest {
                     .setPendingIntent(pendingIntent1)
                     .build())
             .addEqualityGroup(
-                SafetyCenterStaticEntry.Builder("a different title")
-                    .setSummary("a summary")
-                    .setPendingIntent(pendingIntent1)
-                    .build())
+                SafetyCenterStaticEntry.Builder(staticEntry1).setTitle("a different title").build())
             .addEqualityGroup(
-                SafetyCenterStaticEntry.Builder("a title")
+                SafetyCenterStaticEntry.Builder(staticEntry1)
                     .setSummary("a different summary")
-                    .setPendingIntent(pendingIntent1)
                     .build())
             .addEqualityGroup(
-                SafetyCenterStaticEntry.Builder("a title")
-                    .setSummary("a summary")
+                SafetyCenterStaticEntry.Builder(staticEntry1)
                     .setPendingIntent(pendingIntent2)
                     .build())
             .test()
