@@ -534,6 +534,25 @@ class SafetySourceIssueTest {
     }
 
     @Test
+    fun build_withDuplicateActionIds_throwsIllegalArgumentException() {
+        val safetySourceIssueBuilder =
+            SafetySourceIssue.Builder(
+                    "Issue id",
+                    "Issue title",
+                    "Issue summary",
+                    SEVERITY_LEVEL_INFORMATION,
+                    "issue_type_id")
+                .addAction(action1)
+                .addAction(action1)
+
+        val exception =
+            assertFailsWith(IllegalArgumentException::class) { safetySourceIssueBuilder.build() }
+        assertThat(exception)
+            .hasMessageThat()
+            .isEqualTo("Safety source issue cannot have duplicate action ids")
+    }
+
+    @Test
     fun build_withNoActions_throwsIllegalArgumentException() {
         val safetySourceIssueBuilder =
             SafetySourceIssue.Builder(
@@ -561,7 +580,7 @@ class SafetySourceIssueTest {
                     "issue_type_id")
                 .addAction(action1)
                 .addAction(action2)
-                .addAction(action1)
+                .addAction(action3)
 
         val exception =
             assertFailsWith(IllegalArgumentException::class) { safetySourceIssueBuilder.build() }
