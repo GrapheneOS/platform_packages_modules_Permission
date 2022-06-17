@@ -44,7 +44,8 @@ private fun createMapOfSourceIdsToSources(context: Context): Map<String, Privacy
     }
     return mapOf(
         SC_NLS_SOURCE_ID to NotificationListenerPrivacySource(),
-        WORK_POLICY_INFO_SOURCE_ID to WorkPolicyInfo.create(context))
+        WORK_POLICY_INFO_SOURCE_ID to WorkPolicyInfo.create(context),
+        SC_ACCESSIBILITY_SOURCE_ID to AccessibilitySourceService(context))
 }
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
