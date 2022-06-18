@@ -22,6 +22,11 @@ import android.content.Intent
 interface PrivacySource {
 
     /**
+     * It is {@code true} for privacy source that wants to receive broadcasts signals for profiles
+     */
+    val shouldProcessProfileRequest: Boolean
+
+    /**
      * Indicates that permission controller has received the safety center enabled changed broadcast
      *
      * <p> Invoked when {@link SafetyCenterManager.ACTION_SAFETY_CENTER_ENABLED_CHANGED} received
@@ -31,15 +36,14 @@ interface PrivacySource {
      */
     fun safetyCenterEnabledChanged(context: Context, enabled: Boolean)
 
-    /** Indicates that permission controller has received the safety center rescan broadcast.
-     * context: Context of the broadcast
-     * intent: Intent of the broadcast
-     * refreshEvent: Enum explaining why this rescan was triggered. If the value is
-     * EVENT_REFRESH_REQUESTED, get the broadcast id using code below,
-     * val refreshBroadcastId = intent.getStringExtra(SafetyCenterManager
-     * .EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID)
-     * and add it to the safety event, when sending SafetyCenterManager#setSafetyCenterUpdate
-     * val safetyEvent = SafetyEvent.Builder(SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
+    /**
+     * Indicates that permission controller has received the safety center rescan broadcast.
+     * context: Context of the broadcast intent: Intent of the broadcast refreshEvent: Enum
+     * explaining why this rescan was triggered. If the value is EVENT_REFRESH_REQUESTED, get the
+     * broadcast id using code below, val refreshBroadcastId =
+     * intent.getStringExtra(SafetyCenterManager .EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID) and add
+     * it to the safety event, when sending SafetyCenterManager#setSafetyCenterUpdate val
+     * safetyEvent = SafetyEvent.Builder(SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
      * .setRefreshBroadcastId(refreshBroadcastId).build()
      */
     fun rescanAndPushSafetyCenterData(

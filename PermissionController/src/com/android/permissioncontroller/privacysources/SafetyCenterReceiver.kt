@@ -22,10 +22,12 @@ import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_BOOT_COMPLETED
 import android.content.pm.PackageManager
+import android.os.Build
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyCenterManager.ACTION_REFRESH_SAFETY_SOURCES
 import android.safetycenter.SafetyCenterManager.ACTION_SAFETY_CENTER_ENABLED_CHANGED
 import android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCE_IDS
+import androidx.annotation.RequiresApi
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.service.v33.SafetyCenterQsTileService
@@ -42,9 +44,11 @@ private fun createMapOfSourceIdsToSources(context: Context): Map<String, Privacy
     }
     return mapOf(
         SC_NLS_SOURCE_ID to NotificationListenerPrivacySource(),
-        WORK_POLICY_INFO_SOURCE_ID to WorkPolicyInfo.create(context))
+        WORK_POLICY_INFO_SOURCE_ID to WorkPolicyInfo.create(context),
+        SC_ACCESSIBILITY_SOURCE_ID to AccessibilitySourceService(context))
 }
 
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class SafetyCenterReceiver(
     private val getMapOfSourceIdsToSources: (Context) -> Map<String, PrivacySource> =
         ::createMapOfSourceIdsToSources,
@@ -109,7 +113,9 @@ class SafetyCenterReceiver(
     ) {
         privacySources.forEach { source ->
             CoroutineScope(dispatcher).launch {
-                source.safetyCenterEnabledChanged(context, enabled)
+                if (source.shouldProcessRequest(context)) {
+                    source.safetyCenterEnabledChanged(context, enabled)
+                }
             }
         }
         updateTileVisibility(context, enabled)
@@ -138,9 +144,18 @@ class SafetyCenterReceiver(
     ) {
         for (sourceId in sourceIdsToRefresh) {
             CoroutineScope(dispatcher).launch {
-                mapOfSourceIdsToSources[sourceId]?.rescanAndPushSafetyCenterData(
-                    context, intent, refreshEvent)
+                val privacySource = mapOfSourceIdsToSources[sourceId] ?: return@launch
+                if (privacySource.shouldProcessRequest(context)) {
+                    privacySource.rescanAndPushSafetyCenterData(context, intent, refreshEvent)
+                }
             }
         }
+    }
+
+    private fun PrivacySource.shouldProcessRequest(context: Context): Boolean {
+        if (!isProfile(context)) {
+            return true
+        }
+        return shouldProcessProfileRequest
     }
 }

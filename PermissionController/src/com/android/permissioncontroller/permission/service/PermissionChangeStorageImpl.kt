@@ -36,8 +36,6 @@ import java.io.OutputStream
 import java.nio.charset.StandardCharsets
 import java.text.ParseException
 import java.text.SimpleDateFormat
-import java.time.Instant
-import java.time.temporal.ChronoUnit
 import java.util.Date
 import java.util.Locale
 
@@ -164,8 +162,7 @@ class PermissionChangeStorageImpl(
                 ?: throw IllegalArgumentException(
                     "Could not parse date $changeDate on package $packageName")
             if (truncateToDay) {
-                changeTime =
-                    Instant.ofEpochMilli(changeTime).truncatedTo(ChronoUnit.DAYS).toEpochMilli()
+                changeTime = dateFormat.parse(dateFormat.format(Date(changeTime))).time
             }
             change = PermissionChange(packageName, changeTime)
         } catch (e: XmlPullParserException) {
