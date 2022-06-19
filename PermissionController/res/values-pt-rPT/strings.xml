@@ -174,7 +174,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> apps</item>
       <item quantity="one">1 app</item>
     </plurals>
-    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Não utilizada nas últimas 24 horas"</string>
+    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Sem utilização nas últimas 24 horas"</string>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
       <item quantity="other">Utilização: <xliff:g id="NUMBER">%1$d</xliff:g> apps</item>
       <item quantity="one">Utilização: 1 app</item>
