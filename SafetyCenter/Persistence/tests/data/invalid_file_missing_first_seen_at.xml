@@ -1,4 +1,4 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <issues version="0">
-    <issue source_id="source_id" issue_id="issue_id" />
+    <issue key="key" />
 </issues>

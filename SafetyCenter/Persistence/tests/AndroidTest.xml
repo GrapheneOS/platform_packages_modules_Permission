@@ -50,10 +50,8 @@
                 value="/data/local/tmp/com/safetycenter/persistence/tests/invalid_file_invalid_version.xml" />
         <option name="push-file" key="invalid_file_missing_first_seen_at.xml"
                 value="/data/local/tmp/com/safetycenter/persistence/tests/invalid_file_missing_first_seen_at.xml" />
-        <option name="push-file" key="invalid_file_missing_issue_id.xml"
-                value="/data/local/tmp/com/safetycenter/persistence/tests/invalid_file_missing_issue_id.xml" />
-        <option name="push-file" key="invalid_file_missing_source_id.xml"
-                value="/data/local/tmp/com/safetycenter/persistence/tests/invalid_file_missing_source_id.xml" />
+        <option name="push-file" key="invalid_file_missing_key.xml"
+                value="/data/local/tmp/com/safetycenter/persistence/tests/invalid_file_missing_key.xml" />
         <option name="push-file" key="invalid_file_missing_version.xml"
                 value="/data/local/tmp/com/safetycenter/persistence/tests/invalid_file_missing_version.xml" />
         <option name="push-file" key="invalid_file_wrong_root.xml"
