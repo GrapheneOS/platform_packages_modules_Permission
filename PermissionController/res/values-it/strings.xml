@@ -264,7 +264,7 @@
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Autorizzate solo per contenuti multimediali"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Autorizzate per gestire tutti i file"</string>
     <string name="ask_header" msgid="2633816846459944376">"Chiedi ogni volta"</string>
-    <string name="denied_header" msgid="903209608358177654">"Autorizzazione non concessa"</string>
+    <string name="denied_header" msgid="903209608358177654">"Non autorizzate"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> giorni</item>
       <item quantity="one">1 giorno</item>
