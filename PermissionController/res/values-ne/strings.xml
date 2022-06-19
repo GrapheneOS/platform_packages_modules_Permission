@@ -41,7 +41,7 @@
     <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g> अनुमति असक्षम पारिएको छ"</string>
     <string name="permission_revoked_all" msgid="3397649017727222283">"सबै अनुमति असक्षम पारिएको छ"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"कुनै पनि असक्षम पारिएको छैन"</string>
-    <string name="grant_dialog_button_allow" msgid="5314677880021102550">"अनुमति दिनुहोस्"</string>
+    <string name="grant_dialog_button_allow" msgid="5314677880021102550">"अनुमति दिइयोस्"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"सधैँ अनुमति दिइयोस्"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"एप चलाएका बेला"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"सटीक लोकेसन प्रयोग गरियोस्"</string>
