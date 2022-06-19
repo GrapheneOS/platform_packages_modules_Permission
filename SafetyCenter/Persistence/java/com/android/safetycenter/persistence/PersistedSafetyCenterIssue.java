@@ -26,37 +26,26 @@ import java.time.Instant;
 import java.util.Objects;
 
 /**
- * Data class containing all the identifiers and metadata of a safety source issue related to a user
- * that should be persisted.
+ * Data class containing all the identifiers and metadata of a safety source issue that should be
+ * persisted.
  */
 @RequiresApi(TIRAMISU)
 public final class PersistedSafetyCenterIssue {
-    @NonNull private final String mSourceId;
-    @NonNull private final String mIssueId;
+    @NonNull private final String mKey;
     @NonNull private final Instant mFirstSeenAt;
     @Nullable private final Instant mDismissedAt;
 
     private PersistedSafetyCenterIssue(
-            @NonNull String sourceId,
-            @NonNull String issueId,
-            @NonNull Instant firstSeenAt,
-            @Nullable Instant dismissedAt) {
-        mSourceId = sourceId;
-        mIssueId = issueId;
+            @NonNull String key, @NonNull Instant firstSeenAt, @Nullable Instant dismissedAt) {
+        mKey = key;
         mFirstSeenAt = firstSeenAt;
         mDismissedAt = dismissedAt;
     }
 
-    /** The unique identifier for a safety source. */
+    /** The unique key for a safety source issue. */
     @NonNull
-    public String getSourceId() {
-        return mSourceId;
-    }
-
-    /** The unique identifier for an issue in a safety source. */
-    @NonNull
-    public String getIssueId() {
-        return mIssueId;
+    public String getKey() {
+        return mKey;
     }
 
     /** The instant when this issue was first seen. */
@@ -76,24 +65,21 @@ public final class PersistedSafetyCenterIssue {
         if (this == o) return true;
         if (!(o instanceof PersistedSafetyCenterIssue)) return false;
         PersistedSafetyCenterIssue that = (PersistedSafetyCenterIssue) o;
-        return Objects.equals(mSourceId, that.mSourceId)
-                && Objects.equals(mIssueId, that.mIssueId)
+        return Objects.equals(mKey, that.mKey)
                 && Objects.equals(mFirstSeenAt, that.mFirstSeenAt)
                 && Objects.equals(mDismissedAt, that.mDismissedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mSourceId, mIssueId, mFirstSeenAt, mDismissedAt);
+        return Objects.hash(mKey, mFirstSeenAt, mDismissedAt);
     }
 
     @Override
     public String toString() {
         return "PersistedSafetyCenterIssue{"
-                + "mSourceId="
-                + mSourceId
-                + ", mIssueId="
-                + mIssueId
+                + "mKey="
+                + mKey
                 + ", mFirstSeenAt="
                 + mFirstSeenAt
                 + ", mDismissedAt="
@@ -103,25 +89,17 @@ public final class PersistedSafetyCenterIssue {
 
     /** Builder class for {@link PersistedSafetyCenterIssue}. */
     public static final class Builder {
-        @Nullable private String mSourceId;
-        @Nullable private String mIssueId;
+        @Nullable private String mKey;
         @Nullable private Instant mFirstSeenAt;
         @Nullable private Instant mDismissedAt;
 
         /** Creates a {@link Builder} for a {@link PersistedSafetyCenterIssue}. */
         public Builder() {}
 
-        /** The unique identifier for a safety source. */
+        /** The unique key for a safety source issue. */
         @NonNull
-        public Builder setSourceId(@Nullable String sourceId) {
-            mSourceId = sourceId;
-            return this;
-        }
-
-        /** The unique identifier for an issue in a safety source. */
-        @NonNull
-        public Builder setIssueId(@Nullable String issueId) {
-            mIssueId = issueId;
+        public Builder setKey(@Nullable String key) {
+            mKey = key;
             return this;
         }
 
@@ -146,17 +124,15 @@ public final class PersistedSafetyCenterIssue {
          */
         @NonNull
         public PersistedSafetyCenterIssue build() {
-            validateRequiredAttribute(mSourceId, "source id");
-            validateRequiredAttribute(mIssueId, "issue id");
+            validateRequiredAttribute(mKey, "key");
             validateRequiredAttribute(mFirstSeenAt, "first seen at");
 
-            return new PersistedSafetyCenterIssue(mSourceId, mIssueId, mFirstSeenAt, mDismissedAt);
+            return new PersistedSafetyCenterIssue(mKey, mFirstSeenAt, mDismissedAt);
         }
     }
 
     private static void validateRequiredAttribute(
-            @Nullable Object attribute,
-            @NonNull String name) {
+            @Nullable Object attribute, @NonNull String name) {
         if (attribute == null) {
             throw new IllegalStateException("Required attribute " + name + " missing");
         }
