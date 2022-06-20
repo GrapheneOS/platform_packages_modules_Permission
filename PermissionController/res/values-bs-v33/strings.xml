@@ -18,7 +18,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="role_dialer_request_description" msgid="6188305064871543419">"Ovoj aplikaciji će biti dozvoljeno da vam šalje obavještenja i dobit će pristup vašoj Kameri, Kontaktima, Mikrofonu, Telefonu i SMS-u"</string>
     <string name="role_sms_request_description" msgid="1506966389698625395">"Ovoj aplikaciji će biti dozvoljeno da vam šalje obavještenja i dobit će pristup vašoj Kameri, Kontaktima, Fajlovima, Mikrofonu, Telefonu i SMS-u"</string>
-    <string name="permission_description_summary_storage" msgid="1917071243213043858">"Aplikacije s ovim odobrenjem mogu pristupiti svim fajlovima na ovom uređaju"</string>
+    <string name="permission_description_summary_storage" msgid="1917071243213043858">"Aplikacije s ovim odobrenjem mogu pristupati svim fajlovima na ovom uređaju"</string>
     <string name="work_policy_title" msgid="832967780713677409">"Informacije o radnim pravilima"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"Postavkama upravlja vaš IT administrator"</string>
     <string name="safety_center_more_issues_card_title" msgid="8599419758014246517">"Pregledajte sva upozorenja"</string>
