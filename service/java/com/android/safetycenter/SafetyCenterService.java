@@ -31,11 +31,15 @@ import android.annotation.WorkerThread;
 import android.app.AppOpsManager;
 import android.app.PendingIntent;
 import android.content.ApexEnvironment;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Binder;
 import android.os.Handler;
+import android.os.UserHandle;
 import android.provider.DeviceConfig;
 import android.provider.DeviceConfig.OnPropertiesChangedListener;
 import android.safetycenter.IOnSafetyCenterDataChangedListener;
@@ -48,6 +52,7 @@ import android.safetycenter.SafetySourceData;
 import android.safetycenter.SafetySourceErrorDetails;
 import android.safetycenter.SafetySourceIssue;
 import android.safetycenter.config.SafetyCenterConfig;
+import android.text.TextUtils;
 import android.util.Log;
 
 import androidx.annotation.Keep;
@@ -192,6 +197,7 @@ public final class SafetyCenterService extends SystemService {
                 mConfigAvailable = mSafetyCenterConfigReader.loadConfig();
                 if (mConfigAvailable) {
                     readSafetyCenterIssueCacheFileLocked();
+                    registerUserRemovedReceiver();
                 }
             }
         }
@@ -873,6 +879,41 @@ public final class SafetyCenterService extends SystemService {
         mSafetyCenterTimeouts.clear();
         mSafetyCenterRefreshTracker.clearRefresh();
         scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked();
+    }
+
+    private void onRemoveUser(@UserIdInt int userId) {
+        UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
+        synchronized (mApiLock) {
+            mSafetyCenterDataTracker.clearForUser(userId);
+            mSafetyCenterListeners.clearForUser(userId);
+            mSafetyCenterRefreshTracker.clearRefreshForUser(userId);
+            deliverListenersUpdateLocked(userProfileGroup, true, null);
+            scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked();
+        }
+    }
+
+    private void registerUserRemovedReceiver() {
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(Intent.ACTION_USER_REMOVED);
+        getContext()
+                .registerReceiverForAllUsers(
+                        new BroadcastReceiver() {
+                            @Override
+                            public void onReceive(
+                                    @NonNull Context context, @NonNull Intent intent) {
+                                if (TextUtils.equals(
+                                        intent.getAction(), Intent.ACTION_USER_REMOVED)) {
+                                    int userId =
+                                            intent.getParcelableExtra(
+                                                            Intent.EXTRA_USER, UserHandle.class)
+                                                    .getIdentifier();
+                                    onRemoveUser(userId);
+                                }
+                            }
+                        },
+                        intentFilter,
+                        null,
+                        null);
     }
 
     /**
