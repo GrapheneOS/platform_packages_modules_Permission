@@ -407,6 +407,17 @@
             </intent-filter>
         </provider>
 
+        <provider android:name="com.android.permissioncontroller.safetycenter.service.SafetyCenterSearchIndexablesProvider"
+            android:authorities="com.android.permissioncontroller.safetycenter"
+            android:multiprocess="false"
+            android:exported="true"
+            android:grantUriPermissions="true"
+            android:permission="android.permission.READ_SEARCH_INDEXABLES">
+            <intent-filter>
+                <action android:name="android.content.action.SEARCH_INDEXABLES_PROVIDER" />
+            </intent-filter>
+        </provider>
+
         <service android:name="com.android.permissioncontroller.permission.service.PermissionControllerServiceImpl"
                  android:exported="true"
                  android:visibleToInstantApps="true">

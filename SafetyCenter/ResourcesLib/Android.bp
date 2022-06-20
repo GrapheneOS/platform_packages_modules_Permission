@@ -25,7 +25,7 @@ java_library {
         "java/**/*.java",
     ],
     libs: [
-        "framework-annotations-lib",
+        "androidx.annotation_annotation",
     ],
     apex_available: [
         "com.android.permission",
@@ -33,5 +33,5 @@ java_library {
     ],
     installable: false,
     min_sdk_version: "30",
-    sdk_version: "module_current",
+    sdk_version: "system_current",
 }
