@@ -450,8 +450,8 @@
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"¿Quieres permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a las fotos, el contenido multimedia y los archivos de tu dispositivo?"</string>
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a &lt;b&gt;fotos, videos, música y audio&lt;/b&gt; del dispositivo?"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a &lt;b&gt;fotos, videos, música, audio y otros archivos&lt;/b&gt; del dispositivo?"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a la música y otros archivos de audio en este dispositivo?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a las fotos y los videos del dispositivo?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a la música y los archivos de audio de este dispositivo?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a las fotos y los videos de este dispositivo?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; grabe audio?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"La app solo podrá grabar audio cuando esté en uso"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; grabe audio?"</string>
