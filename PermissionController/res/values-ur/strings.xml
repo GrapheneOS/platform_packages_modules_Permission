@@ -456,8 +456,8 @@
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو آپ کے آلہ پر تصاویر، میڈیا اور فائلوں تک رسائی کی اجازت دیں؟"</string>
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"‏اس آلے پر &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو &lt;b&gt;تصاویر، ویڈیوز، موسیقی اور آڈیو&lt;/b&gt; تک رسائی کی اجازت دیں؟"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"‏اس آلے پر &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو &lt;b&gt;تصاویر، ویڈیوز، موسیقی، آڈیو اور دیگر فائلز&lt;/b&gt; تک رسائی کی اجازت دیں؟"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"‏;lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&amp;gt&amp; کو اس آلے پر موسیقی اور آڈیو تک رسائی کی اجازت دیں؟"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"‏;lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&amp;gt&amp; کو اس آلے پر تصاویر اور ویڈیوز تک رسائی کی اجازت دیں؟"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"‏اس آلے پر &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو موسیقی اور آڈیو تک رسائی کی اجازت دیں؟"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"‏اس آلے پر &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو تصاویر اور ویڈیوز تک رسائی کی اجازت دیں؟"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو آڈیو ریکارڈ کرنے کی اجازت دیں؟"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"جب آپ ایپ استعمال کر رہے ہوں تب ایپ صرف آڈیو ریکارڈ کر پائے گی"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو آڈیو ریکارڈ کرنے کی اجازت دیں؟"</string>

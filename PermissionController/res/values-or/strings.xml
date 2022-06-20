@@ -237,7 +237,7 @@
     <string name="permission_description_summary_sms" msgid="725999468547768517">"ଏହି ଅନୁମତି ଥିବା ଆପ୍ସ SMS ମେସେଜ୍‌ଗୁଡ଼ିକୁ ପଠାଇପାରିବ ଏବଂ ଦେଖିପାରିବ"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"ଏହି ଅନୁମତି ଥିବା ଆପ୍ସ ଆପଣଙ୍କର ଡିଭାଇସ୍‌ର ଫଟୋ, ମିଡିଆ, ଏବଂ ଫାଇଲ୍‌ଗୁଡ଼ିକୁ ଆକ୍ସେସ୍ କରିପାରେ"</string>
     <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"ଏହି ଅନୁମତି ଥିବା ଆପଗୁଡ଼ିକ ଏହି ଡିଭାଇସରେ ମ୍ୟୁଜିକ ଏବଂ ଅନ୍ୟ ଅଡିଓ ଫାଇଲଗୁଡ଼ିକୁ ଆକ୍ସେସ କରିପାରିବ"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"ଏହି ଅନୁମତି ଥିବା ଆପଗୁଡ଼ିକ ଏହି ଡିଭାଇସରେ ଫଟୋ ଏବଂ ଭିଡିଓଗୁଡ଼ିକୁ ଆକ୍ସେସ କରିପାରିବ"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"ଏହି ଡିଭାଇସରେ ଫଟୋ ଏବଂ ଭିଡିଓଗୁଡ଼ିକୁ ଏହି ଅନୁମତି ଥିବା ଆପ୍ସ ଆକ୍ସେସ କରିପାରିବ"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"ଗତଥର ଆକ୍ସେସ୍ କରାଯାଇଛି: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"ବର୍ତ୍ତମାନ ପ୍ରତ୍ୟାଖ୍ୟାନ କରାଗଲା / ଶେଷ ଥର ଆକ୍ସେସ୍: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"କେବେବି ଆକ୍ସେସ୍ ହୋଇନାହିଁ"</string>
