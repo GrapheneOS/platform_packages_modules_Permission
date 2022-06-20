@@ -52,6 +52,7 @@ import android.safetycenter.SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PRO
 import android.safetycenter.SafetyCenterStatus.REFRESH_STATUS_NONE
 import android.safetycenter.SafetySourceData
 import android.safetycenter.SafetySourceErrorDetails
+import android.safetycenter.cts.testing.Coroutines.TIMEOUT_LONG
 import android.safetycenter.cts.testing.Coroutines.TIMEOUT_SHORT
 import android.safetycenter.cts.testing.FakeExecutor
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.addOnSafetyCenterDataChangedListenerWithPermission
@@ -1145,6 +1146,7 @@ class SafetyCenterManagerTest {
         assertThat(apiSafetySourceData1).isNull()
         // Wait for the ongoing refresh to timeout.
         Thread.sleep(TIMEOUT_SHORT.toMillis())
+        SafetyCenterFlags.refreshTimeout = TIMEOUT_LONG
         SafetySourceReceiver.safetySourceData[
                 SafetySourceDataKey(REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
             safetySourceCtsData.information
@@ -1758,6 +1760,7 @@ class SafetyCenterManagerTest {
         listener.receiveSafetyCenterData()
         listener.receiveSafetyCenterData()
         listener.receiveSafetyCenterErrorDetails()
+        SafetyCenterFlags.resolveActionTimeout = TIMEOUT_LONG
         SafetySourceReceiver.safetySourceData[
                 SafetySourceDataKey(RESOLVING_ACTION, SINGLE_SOURCE_ID)] =
             safetySourceCtsData.information

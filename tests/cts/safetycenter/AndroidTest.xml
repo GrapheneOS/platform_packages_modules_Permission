@@ -48,6 +48,5 @@
         <option name="package" value="android.safetycenter.cts"/>
         <option name="exclude-annotation" value="org.junit.Ignore"/>
         <option name="runtime-hint" value="5m"/>
-        <option name="test-timeout" value="300000" />
     </test>
 </configuration>
