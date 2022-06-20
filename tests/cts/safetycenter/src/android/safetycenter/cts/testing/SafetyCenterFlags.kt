@@ -48,6 +48,13 @@ object SafetyCenterFlags {
         "safety_center_resolve_action_timeout_millis"
 
     /**
+     * Device config flag containing a comma delimited lists of source IDs that we won't track when
+     * deciding if a broadcast is completed. We still send broadcasts to (and handle API calls from)
+     * these sources as normal.
+     */
+    private const val PROPERTY_UNTRACKED_SOURCES = "safety_center_untracked_sources"
+
+    /**
      * Default time for which a Safety Center refresh is allowed to wait for a source to respond to
      * a refresh request before timing out and marking the refresh as finished.
      */
@@ -108,6 +115,36 @@ object SafetyCenterFlags {
                 PROPERTY_SAFETY_CENTER_RESOLVE_ACTION_TIMEOUT,
                 RESOLVE_ACTION_TIMEOUT_DEFAULT_DURATION)
         set(value) = writeDurationProperty(PROPERTY_SAFETY_CENTER_RESOLVE_ACTION_TIMEOUT, value)
+
+    /**
+     * A property that allows getting and setting the [PROPERTY_UNTRACKED_SOURCES] device config
+     * flag.
+     */
+    var untrackedSources: Set<String>
+        get() =
+            callWithShellPermissionIdentity(
+                {
+                    DeviceConfig.getString(
+                            NAMESPACE_PRIVACY, PROPERTY_UNTRACKED_SOURCES, /* defaultValue */ "")
+                        .split(",")
+                        .toSet()
+                },
+                READ_DEVICE_CONFIG)
+        set(value) {
+            callWithShellPermissionIdentity(
+                {
+                    val valueWasSet =
+                        DeviceConfig.setProperty(
+                            NAMESPACE_PRIVACY,
+                            PROPERTY_UNTRACKED_SOURCES,
+                            /* value = */ value.joinToString(","),
+                            /* makeDefault = */ false)
+                    require(valueWasSet) {
+                        "Could not set $PROPERTY_UNTRACKED_SOURCES flag value to: $value"
+                    }
+                },
+                WRITE_DEVICE_CONFIG)
+        }
 
     private fun readDurationProperty(name: String, defaultValue: Duration) =
         callWithShellPermissionIdentity(
