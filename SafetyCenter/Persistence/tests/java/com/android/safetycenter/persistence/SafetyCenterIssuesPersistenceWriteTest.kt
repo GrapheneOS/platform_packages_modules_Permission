@@ -43,8 +43,8 @@ class SafetyCenterIssuesPersistenceWriteTest {
         val file = File.createTempFile(params.fileName, "xml")
         file.deleteOnExit()
 
-        SafetyCenterIssuesPersistence.writeForUser(params.original, file)
-        val read = SafetyCenterIssuesPersistence.readForUser(file)
+        SafetyCenterIssuesPersistence.write(params.original, file)
+        val read = SafetyCenterIssuesPersistence.read(file)
 
         assertThat(read).isEqualTo(params.original)
     }
@@ -60,13 +60,11 @@ class SafetyCenterIssuesPersistenceWriteTest {
                     "valid_file_with_issues_written.xml",
                     listOf(
                         PersistedSafetyCenterIssue.Builder()
-                            .setSourceId("source_id")
-                            .setIssueId("issue_id")
+                            .setKey("key1")
                             .setFirstSeenAt(Instant.ofEpochMilli(1654041600000))
                             .build(),
                         PersistedSafetyCenterIssue.Builder()
-                            .setSourceId("source_id")
-                            .setIssueId("issue_id")
+                            .setKey("key2")
                             .setFirstSeenAt(Instant.ofEpochMilli(1654041600000))
                             .setDismissedAt(Instant.ofEpochMilli(1654214400000))
                             .build())))

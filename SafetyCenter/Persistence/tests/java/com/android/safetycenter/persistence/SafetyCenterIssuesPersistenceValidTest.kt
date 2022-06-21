@@ -43,7 +43,7 @@ class SafetyCenterIssuesPersistenceValidTest {
     fun validFile_matchesExpected() {
         val file = File(PATH + params.fileName)
 
-        val actual = SafetyCenterIssuesPersistence.readForUser(file)
+        val actual = SafetyCenterIssuesPersistence.read(file)
 
         assertThat(actual).isEqualTo(params.expected)
     }
@@ -59,13 +59,11 @@ class SafetyCenterIssuesPersistenceValidTest {
                     "valid_file.xml",
                     listOf(
                         PersistedSafetyCenterIssue.Builder()
-                            .setSourceId("source_id_1")
-                            .setIssueId("issue_id_1")
+                            .setKey("key1")
                             .setFirstSeenAt(Instant.ofEpochMilli(1654041600000))
                             .build(),
                         PersistedSafetyCenterIssue.Builder()
-                            .setSourceId("source_id_2")
-                            .setIssueId("issue_id_2")
+                            .setKey("key2")
                             .setFirstSeenAt(Instant.ofEpochMilli(1654128000000))
                             .setDismissedAt(Instant.ofEpochMilli(1654214400000))
                             .build())))

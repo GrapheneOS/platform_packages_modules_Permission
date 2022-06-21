@@ -59,8 +59,7 @@ public final class SafetyCenterIssuesPersistence {
     private static final String TAG_ISSUE = "issue";
 
     private static final String ATTRIBUTE_VERSION = "version";
-    private static final String ATTRIBUTE_SOURCE_ID = "source_id";
-    private static final String ATTRIBUTE_ISSUE_ID = "issue_id";
+    private static final String ATTRIBUTE_KEY = "key";
     private static final String ATTRIBUTE_FIRST_SEEN_AT = "first_seen_at_epoch_millis";
     private static final String ATTRIBUTE_DISMISSED_AT = "dismissed_at_epoch_millis";
 
@@ -79,7 +78,7 @@ public final class SafetyCenterIssuesPersistence {
      * @throws PersistenceException if there is an unexpected error while reading the file
      */
     @NonNull
-    public static List<PersistedSafetyCenterIssue> readForUser(@NonNull File file)
+    public static List<PersistedSafetyCenterIssue> read(@NonNull File file)
             throws PersistenceException {
         XmlPullParser parser = Xml.newPullParser();
         try (FileInputStream inputStream = new AtomicFile(file).openRead()) {
@@ -148,11 +147,8 @@ public final class SafetyCenterIssuesPersistence {
         PersistedSafetyCenterIssue.Builder builder = new PersistedSafetyCenterIssue.Builder();
         for (int i = 0; i < parser.getAttributeCount(); i++) {
             switch (parser.getAttributeName(i)) {
-                case ATTRIBUTE_SOURCE_ID:
-                    builder.setSourceId(parser.getAttributeValue(i));
-                    break;
-                case ATTRIBUTE_ISSUE_ID:
-                    builder.setIssueId(parser.getAttributeValue(i));
+                case ATTRIBUTE_KEY:
+                    builder.setKey(parser.getAttributeValue(i));
                     break;
                 case ATTRIBUTE_FIRST_SEEN_AT:
                     builder.setFirstSeenAt(
@@ -226,7 +222,7 @@ public final class SafetyCenterIssuesPersistence {
      * @param persistedSafetyCenterIssues the issue states to write
      * @param file the file to write to
      */
-    public static void writeForUser(
+    public static void write(
             @NonNull List<PersistedSafetyCenterIssue> persistedSafetyCenterIssues,
             @NonNull File file) {
         AtomicFile atomicFile = new AtomicFile(file);
@@ -267,9 +263,7 @@ public final class SafetyCenterIssuesPersistence {
                     persistedSafetyCenterIssues.get(i);
 
             serializer.startTag(null, TAG_ISSUE);
-            serializer.attribute(
-                    null, ATTRIBUTE_SOURCE_ID, persistedSafetyCenterIssue.getSourceId());
-            serializer.attribute(null, ATTRIBUTE_ISSUE_ID, persistedSafetyCenterIssue.getIssueId());
+            serializer.attribute(null, ATTRIBUTE_KEY, persistedSafetyCenterIssue.getKey());
             serializer.attribute(
                     null,
                     ATTRIBUTE_FIRST_SEEN_AT,
