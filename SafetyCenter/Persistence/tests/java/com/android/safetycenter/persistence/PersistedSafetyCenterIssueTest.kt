@@ -31,15 +31,9 @@ import java.time.Instant
 class PersistedSafetyCenterIssueTest {
 
     @Test
-    fun getSourceId_returnsSourceId() {
-        assertThat(ACTIVE_ISSUE.sourceId).isEqualTo(ACTIVE_ISSUE_SOURCE_ID)
-        assertThat(DISMISSED_ISSUE.sourceId).isEqualTo(DISMISSED_ISSUE_SOURCE_ID)
-    }
-
-    @Test
-    fun getIssueId_returnsIssueId() {
-        assertThat(ACTIVE_ISSUE.issueId).isEqualTo(ACTIVE_ISSUE_ISSUE_ID)
-        assertThat(DISMISSED_ISSUE.issueId).isEqualTo(DISMISSED_ISSUE_ISSUE_ID)
+    fun getKey_returnsKey() {
+        assertThat(ACTIVE_ISSUE.key).isEqualTo(ACTIVE_ISSUE_KEY)
+        assertThat(DISMISSED_ISSUE.key).isEqualTo(DISMISSED_ISSUE_KEY)
     }
 
     @Test
@@ -60,36 +54,25 @@ class PersistedSafetyCenterIssueTest {
             .addEqualityGroup(
                 ACTIVE_ISSUE,
                 PersistedSafetyCenterIssue.Builder()
-                    .setSourceId(ACTIVE_ISSUE_SOURCE_ID)
-                    .setIssueId(ACTIVE_ISSUE_ISSUE_ID)
+                    .setKey(ACTIVE_ISSUE_KEY)
                     .setFirstSeenAt(INSTANT)
                     .build())
             .addEqualityGroup(DISMISSED_ISSUE)
             .addEqualityGroup(
                 PersistedSafetyCenterIssue.Builder()
-                    .setSourceId("other")
-                    .setIssueId(DISMISSED_ISSUE_ISSUE_ID)
+                    .setKey("other")
                     .setFirstSeenAt(INSTANT)
                     .setDismissedAt(INSTANT)
                     .build())
             .addEqualityGroup(
                 PersistedSafetyCenterIssue.Builder()
-                    .setSourceId(DISMISSED_ISSUE_SOURCE_ID)
-                    .setIssueId("other")
-                    .setFirstSeenAt(INSTANT)
-                    .setDismissedAt(INSTANT)
-                    .build())
-            .addEqualityGroup(
-                PersistedSafetyCenterIssue.Builder()
-                    .setSourceId(DISMISSED_ISSUE_SOURCE_ID)
-                    .setIssueId(DISMISSED_ISSUE_ISSUE_ID)
+                    .setKey(DISMISSED_ISSUE_KEY)
                     .setFirstSeenAt(Instant.ofEpochMilli(0))
                     .setDismissedAt(INSTANT)
                     .build())
             .addEqualityGroup(
                 PersistedSafetyCenterIssue.Builder()
-                    .setSourceId(DISMISSED_ISSUE_SOURCE_ID)
-                    .setIssueId(DISMISSED_ISSUE_ISSUE_ID)
+                    .setKey(DISMISSED_ISSUE_KEY)
                     .setFirstSeenAt(INSTANT)
                     .setDismissedAt(Instant.ofEpochMilli(0))
                     .build())
@@ -97,24 +80,19 @@ class PersistedSafetyCenterIssueTest {
     }
 
     companion object {
-        private const val ACTIVE_ISSUE_SOURCE_ID = "active_source"
-        private const val ACTIVE_ISSUE_ISSUE_ID = "active_issue"
-        private const val DISMISSED_ISSUE_SOURCE_ID = "dismissed_source"
-        private const val DISMISSED_ISSUE_ISSUE_ID = "dismissed_issue"
+        private const val ACTIVE_ISSUE_KEY = "active_key"
+        private const val DISMISSED_ISSUE_KEY = "dismissed_key"
         private val INSTANT = Instant.ofEpochMilli(1654041600000)
 
-        // TODO(b/230078826): Consider extracting shared constants to a separate file.
         private val ACTIVE_ISSUE =
             PersistedSafetyCenterIssue.Builder()
-                .setSourceId(ACTIVE_ISSUE_SOURCE_ID)
-                .setIssueId(ACTIVE_ISSUE_ISSUE_ID)
+                .setKey(ACTIVE_ISSUE_KEY)
                 .setFirstSeenAt(INSTANT)
                 .build()
 
         private val DISMISSED_ISSUE =
             PersistedSafetyCenterIssue.Builder()
-                .setSourceId(DISMISSED_ISSUE_SOURCE_ID)
-                .setIssueId(DISMISSED_ISSUE_ISSUE_ID)
+                .setKey(DISMISSED_ISSUE_KEY)
                 .setFirstSeenAt(INSTANT)
                 .setDismissedAt(INSTANT)
                 .build()

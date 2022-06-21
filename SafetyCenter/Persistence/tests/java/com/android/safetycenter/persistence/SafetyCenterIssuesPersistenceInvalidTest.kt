@@ -47,7 +47,7 @@ class SafetyCenterIssuesPersistenceInvalidTest {
 
         val thrown =
             assertThrows(PersistenceException::class.java) {
-                SafetyCenterIssuesPersistence.readForUser(file)
+                SafetyCenterIssuesPersistence.read(file)
             }
 
         assertThat(thrown).hasMessageThat().isEqualTo(params.errorMessage)
@@ -102,15 +102,10 @@ class SafetyCenterIssuesPersistenceInvalidTest {
                     "Element issue invalid",
                     "Required attribute first seen at missing"),
                 Params(
-                    "MissingIssueId",
-                    "invalid_file_missing_issue_id.xml",
+                    "MissingKey",
+                    "invalid_file_missing_key.xml",
                     "Element issue invalid",
-                    "Required attribute issue id missing"),
-                Params(
-                    "MissingSourceId",
-                    "invalid_file_missing_source_id.xml",
-                    "Element issue invalid",
-                    "Required attribute source id missing"),
+                    "Required attribute key missing"),
                 Params(
                     "MissingVersion",
                     "invalid_file_missing_version.xml",
