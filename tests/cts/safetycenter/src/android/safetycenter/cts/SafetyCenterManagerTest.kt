@@ -52,6 +52,7 @@ import android.safetycenter.SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PRO
 import android.safetycenter.SafetyCenterStatus.REFRESH_STATUS_NONE
 import android.safetycenter.SafetySourceData
 import android.safetycenter.SafetySourceErrorDetails
+import android.safetycenter.cts.testing.Coroutines.TIMEOUT_LONG
 import android.safetycenter.cts.testing.Coroutines.TIMEOUT_SHORT
 import android.safetycenter.cts.testing.FakeExecutor
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.addOnSafetyCenterDataChangedListenerWithPermission
@@ -774,6 +775,27 @@ class SafetyCenterManagerTest {
     }
 
     @Test
+    // This test runs the default no-op implementation of OnSafetyCenterDataChangedListener#onError
+    // for code coverage purposes.
+    fun reportSafetySourceError_withDefaultErrorListener() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        val fakeExecutor = FakeExecutor()
+        val listener =
+            object : OnSafetyCenterDataChangedListener {
+                override fun onSafetyCenterDataChanged(safetyCenterData: SafetyCenterData) {}
+            }
+        safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
+            fakeExecutor, listener)
+        fakeExecutor.getNextTask().run()
+
+        safetyCenterManager.reportSafetySourceErrorWithPermission(
+            SINGLE_SOURCE_ID, SafetySourceErrorDetails(EVENT_SOURCE_STATE_CHANGED))
+        fakeExecutor.getNextTask().run()
+
+        safetyCenterManager.removeOnSafetyCenterDataChangedListenerWithPermission(listener)
+    }
+
+    @Test
     fun reportSafetySourceError_unknownId_throwsIllegalArgumentException() {
         val thrown =
             assertFailsWith(IllegalArgumentException::class) {
@@ -1124,6 +1146,7 @@ class SafetyCenterManagerTest {
         assertThat(apiSafetySourceData1).isNull()
         // Wait for the ongoing refresh to timeout.
         Thread.sleep(TIMEOUT_SHORT.toMillis())
+        SafetyCenterFlags.refreshTimeout = TIMEOUT_LONG
         SafetySourceReceiver.safetySourceData[
                 SafetySourceDataKey(REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
             safetySourceCtsData.information
@@ -1737,6 +1760,7 @@ class SafetyCenterManagerTest {
         listener.receiveSafetyCenterData()
         listener.receiveSafetyCenterData()
         listener.receiveSafetyCenterErrorDetails()
+        SafetyCenterFlags.resolveActionTimeout = TIMEOUT_LONG
         SafetySourceReceiver.safetySourceData[
                 SafetySourceDataKey(RESOLVING_ACTION, SINGLE_SOURCE_ID)] =
             safetySourceCtsData.information
