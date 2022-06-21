@@ -27,7 +27,6 @@ java_library {
     ],
     libs: [
         "androidx.annotation_annotation",
-        "framework-annotations-lib",
     ],
     apex_available: [
         "com.android.permission",

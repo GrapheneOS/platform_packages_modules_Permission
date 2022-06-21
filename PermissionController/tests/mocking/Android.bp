@@ -105,6 +105,8 @@ android_test {
         "safety-center-internal-data",
         "SettingsLibUtils",
         "modules-utils-build_system",
+        "safety-center-resources-lib",
+        "safety-center-internal-data",
 
         "androidx.test.rules",
         "androidx.test.ext.truth",
