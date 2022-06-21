@@ -24,6 +24,8 @@ import android.database.MatrixCursor
 import android.os.Build
 import android.os.UserManager
 import android.provider.SearchIndexablesContract.INDEXABLES_RAW_COLUMNS
+import android.provider.SearchIndexablesContract.NON_INDEXABLES_KEYS_COLUMNS
+import android.provider.SearchIndexablesContract.NonIndexableKey
 import android.provider.SearchIndexablesContract.RawData.COLUMN_INTENT_ACTION
 import android.provider.SearchIndexablesContract.RawData.COLUMN_KEY
 import android.provider.SearchIndexablesContract.RawData.COLUMN_KEYWORDS
@@ -33,6 +35,7 @@ import android.provider.SearchIndexablesContract.RawData.COLUMN_TITLE
 import android.safetycenter.SafetyCenterEntry
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.config.SafetySource
+import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC
 import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY
 import androidx.annotation.RequiresApi
 import com.android.permissioncontroller.R
@@ -57,23 +60,45 @@ class SafetyCenterSearchIndexablesProvider : BaseSearchIndexablesProvider() {
         val context = requireContext()
         val safetyCenterManager: SafetyCenterManager? =
                 context.getSystemService(SafetyCenterManager::class.java)
+        val resourcesContext = SafetyCenterResourcesContext(context)
         val cursor = MatrixCursor(INDEXABLES_RAW_COLUMNS)
+
+        val screenTitle = context.getString(R.string.safety_center_dashboard_page_title)
+
+        safetyCenterManager?.safetySources
+                ?.filter { it.type != SAFETY_SOURCE_TYPE_ISSUE_ONLY }
+                ?.forEach { safetySource ->
+                    cursor.addSafetySourceRow(
+                            context,
+                            safetySource,
+                            resourcesContext,
+                            safetyCenterManager,
+                            screenTitle
+                    )
+                }
+
+        return cursor
+    }
+
+    override fun queryNonIndexableKeys(projection: Array<out String>?): Cursor {
+        val context = requireContext()
+        val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)
+        val cursor = MatrixCursor(NON_INDEXABLES_KEYS_COLUMNS)
+        val userManager = context.getSystemService(UserManager::class.java) ?: return cursor
+        val keysToRemove = mutableSetOf<String>()
+
         if (safetyCenterManager?.isSafetyCenterEnabled == true) {
-            val resourcesContext = SafetyCenterResourcesContext(context)
+            collectAllRemovableKeys(safetyCenterManager, keysToRemove) {
+                // we are only removing dynamic sources from search, so all the static will remain
+                it.type == SAFETY_SOURCE_TYPE_DYNAMIC
+            }
+            keepActiveEntriesFromRemoval(safetyCenterManager, userManager, keysToRemove)
+        } else {
+            collectAllRemovableKeys(safetyCenterManager, keysToRemove) { true }
+        }
 
-            val screenTitle = context.getString(R.string.safety_center_dashboard_page_title)
-
-            safetyCenterManager.safetySources
-                    ?.filter { it.type != SAFETY_SOURCE_TYPE_ISSUE_ONLY }
-                    ?.forEach { safetySource ->
-                        cursor.addSafetySourceRow(
-                                context,
-                                safetySource,
-                                resourcesContext,
-                                safetyCenterManager,
-                                screenTitle
-                        )
-                    }
+        keysToRemove.forEach { key ->
+            cursor.newRow().add(NonIndexableKey.COLUMN_KEY_VALUE, key)
         }
         return cursor
     }
@@ -145,6 +170,42 @@ class SafetyCenterSearchIndexablesProvider : BaseSearchIndexablesProvider() {
                 ?.safetySourcesGroups
                 ?.asSequence()
                 ?.flatMap { it.safetySources }
+
+    private fun collectAllRemovableKeys(
+        safetyCenterManager: SafetyCenterManager?,
+        keysToRemove: MutableSet<String>,
+        filter: (SafetySource) -> Boolean
+    ) {
+        safetyCenterManager?.safetySources
+                ?.asSequence()
+                ?.filter(filter)
+                ?.forEach { safetySource ->
+                    keysToRemove.add(safetySource.id.addSuffix(isWorkProfile = false))
+                    if (safetySource.profile == SafetySource.PROFILE_ALL) {
+                        keysToRemove.add(safetySource.id.addSuffix(isWorkProfile = true))
+                    }
+                }
+    }
+
+    private fun keepActiveEntriesFromRemoval(
+        safetyCenterManager: SafetyCenterManager?,
+        userManager: UserManager,
+        keysToRemove: MutableSet<String>
+    ) {
+        safetyCenterManager?.safetyEntries?.forEach {
+            keepEntryFromRemoval(it, userManager, keysToRemove)
+        }
+    }
+
+    private fun keepEntryFromRemoval(
+        safetyCenterEntry: SafetyCenterEntry,
+        userManager: UserManager,
+        keysToRemove: MutableSet<String>
+    ) {
+        val entryId = safetyCenterEntry.entryId
+        val isWorkProfile = userManager.isManagedProfile(entryId.userId)
+        keysToRemove.remove(entryId.safetySourceId.addSuffix(isWorkProfile))
+    }
 
     private val SafetyCenterManager.safetyEntries: Sequence<SafetyCenterEntry>
         get() = safetyCenterData
