@@ -449,7 +449,7 @@
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na magpadala at tumingin ng mga mensaheng SMS?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang mga larawan, media, at file sa iyong device?"</string>
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang &lt;b&gt;mga larawan, video, musika, at audio&lt;/b&gt; sa device?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Ipa-access sa &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ang &lt;b&gt;mga larawan, video, musika, audio, at iba pang file&lt;/b&gt; sa device?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang &lt;b&gt;mga larawan, video, musika, audio, at iba pang file&lt;/b&gt; sa device?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang musika at audio sa device na ito?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang mga larawan at video sa device na ito?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na mag-record ng audio?"</string>

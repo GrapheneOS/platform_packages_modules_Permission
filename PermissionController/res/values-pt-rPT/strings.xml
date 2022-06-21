@@ -158,7 +158,7 @@
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Utilização das autorizações na última hora"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Utilização das autorizações nos últimos 15 minutos"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Utilização das autorizações no último minuto"</string>
-    <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"Não utilizado nas últimas 24 horas"</string>
+    <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"Sem utilização nas últimas 24 horas"</string>
     <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"Não utilizada nos últimos 7 dias"</string>
     <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Utilização: 1 app}other{Utilização: # apps}}"</string>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Ver tudo no painel de controlo"</string>
