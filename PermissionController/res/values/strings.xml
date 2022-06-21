@@ -1534,6 +1534,8 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="safety_center_issue_card_cancel_dismiss_button">Cancel</string>
     <!-- Title for a section that contains security and privacy related settings on the Security and Privacy page [CHAR LIMIT=60] -->
     <string name="safety_center_entries_category_title">Settings</string>
+    <!-- Content description for the safety status preference title and summary in the Safety Center [CHAR LIMIT=NONE]-->
+    <string name="safety_status_preference_title_and_summary_content_description">Security and privacy status. <xliff:g id="overall safety status" example="Looks Good">%1$s</xliff:g>. <xliff:g id="summary of device status" example="This device is up to date">%2$s</xliff:g></string>
     <!-- Label for the button that takes the user to the settings page for Android Security  [CHAR LIMIT=60] -->
     <string name="security_settings">Security Settings</string>
     <!-- Label for the permission usage section of safety center QS page[CHAR LIMIT=30] -->

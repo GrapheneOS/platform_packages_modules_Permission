@@ -72,6 +72,10 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
         }
         ((TextView) holder.findViewById(R.id.status_title)).setText(mStatus.getTitle());
         ((TextView) holder.findViewById(R.id.status_summary)).setText(mStatus.getSummary());
+        holder.findViewById(R.id.status_title_and_summary).setContentDescription(
+                getContext().getString(
+                        R.string.safety_status_preference_title_and_summary_content_description,
+                        mStatus.getTitle(), mStatus.getSummary()));
 
         // Hide the Safety Protection branding if there are any issue cards
         View safetyProtectionSectionView =
