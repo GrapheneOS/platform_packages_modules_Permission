@@ -491,11 +491,14 @@ final class SafetyCenterDataTracker {
         if (packageName == null) {
             context = mContext;
         } else {
+            final long identity = Binder.clearCallingIdentity();
             try {
                 context = mContext.createPackageContext(packageName, 0);
             } catch (NameNotFoundException e) {
                 Log.w(TAG, String.format("Package name %s not found", packageName), e);
                 return null;
+            } finally {
+                Binder.restoreCallingIdentity(identity);
             }
         }
         // TODO(b/222838784): Validate that the intent action is available.
