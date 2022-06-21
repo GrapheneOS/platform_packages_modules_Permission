@@ -82,8 +82,11 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
             rescanButton.setOnClickListener(view -> mRescanButtonOnClickListener.onClick(view));
         }
 
-        if (mStatus.getRefreshStatus() == SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS
-                && !mRefreshRunning) {
+        boolean inRefreshStatus = mStatus.getRefreshStatus()
+                == SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS
+                || mStatus.getRefreshStatus()
+                == SafetyCenterStatus.REFRESH_STATUS_DATA_FETCH_IN_PROGRESS;
+        if (inRefreshStatus && !mRefreshRunning) {
             startRescanAnimation(statusImage, rescanButton);
             mRefreshRunning = true;
         } else if (mRefreshRunning && !mRefreshEnding) {
