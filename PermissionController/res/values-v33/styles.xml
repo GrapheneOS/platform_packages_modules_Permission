@@ -34,6 +34,62 @@
         <item name="android:background">@drawable/safety_center_button_background</item>
     </style>
 
+    <style name="SafetyCenterIndicatorCardView"
+           xmlns:app="http://schemas.android.com/apk/res-auto" >
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="app:cardCornerRadius">24dp</item>
+        <item name="app:cardElevation">0dp</item>
+        <item name="app:cardBackgroundColor">?attr/colorSurface</item>
+        <item name="android:layout_marginTop">16dp</item>
+    </style>
+
+    <style name="SafetyCenterIndicatorImageView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:layout_marginTop">28dp</item>
+        <item name="android:layout_marginBottom">28dp</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="SafetyCenterIndicatorTitleText">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">23dp</item>
+    </style>
+
+    <style name="SafetyCenterIndicatorLabelText">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginBottom">23dp</item>
+    </style>
+
+    <style name="SafetyCenterIndicatorExpandView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">24dp</item>
+        <item name="android:layout_marginTop">32dp</item>
+        <item name="android:layout_marginBottom">32dp</item>
+    </style>
+
+    <style name="SafetyCenterIndicatorActionButton"
+           parent="@style/SafetyCenter.MaterialActionButton.Secondary">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:layout_marginEnd">24dp</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="SafetyCenterIndicatorSecondaryActionButton"
+           parent="@style/SafetyCenterIndicatorActionButton">
+        <item name="android:layout_marginBottom">24dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+    </style>
+
     <!-- END SAFETY CENTER QUICK SETTINGS PAGE -->
 
     <!-- START SAFETY CENTER SETTINGS PAGE -->
@@ -191,42 +247,6 @@
         <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:textSize">14sp</item>
         <item name="android:lineHeight">20sp</item>
-    </style>
-
-    <style name="IndicatorCardView"
-           xmlns:card_view="http://schemas.android.com/apk/res-auto"
-           xmlns:app="http://schemas.android.com/apk/res-auto" >
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="app:cardCornerRadius">20dp</item>
-        <item name="app:cardElevation">0dp</item>
-        <item name="app:cardBackgroundColor">#2f3133</item>
-        <item name="card_view:contentPaddingBottom">15dp</item>
-        <item name="card_view:contentPaddingTop">15dp</item>
-        <item name="card_view:contentPaddingLeft">15dp</item>
-        <item name="card_view:contentPaddingRight">15dp</item>
-    </style>
-
-    <style name="ExpandedCardView" parent="Theme.MaterialComponents">
-        <item name="android:layout_marginBottom">0dp</item>
-        <item name="android:layout_marginStart">0dp</item>
-        <item name="android:layout_marginEnd">0dp</item>
-        <item name="cardElevation">0dp</item>
-        <item name="cardBackgroundColor">#454749</item>
-    </style>
-
-    <style name="TopCornersCardView" parent="ExpandedCardView">
-        <item name="cornerSizeTopRight">8dp</item>
-        <item name="cornerSizeTopLeft">8dp</item>
-        <item name="cornerSizeBottomRight">0dp</item>
-        <item name="cornerSizeBottomLeft">0dp</item>
-    </style>
-
-    <style name="BottomCornersCardView" parent="ExpandedCardView">
-        <item name="cornerSizeTopRight">0dp</item>
-        <item name="cornerSizeTopLeft">0dp</item>
-        <item name="cornerSizeBottomRight">8dp</item>
-        <item name="cornerSizeBottomLeft">8dp</item>
     </style>
 
     <style name="SafetyCenter.EntryCard"
