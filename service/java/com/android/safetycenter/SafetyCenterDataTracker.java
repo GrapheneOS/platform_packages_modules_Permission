@@ -30,6 +30,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.icu.text.ListFormatter;
+import android.icu.text.MessageFormat;
 import android.icu.util.ULocale;
 import android.os.Binder;
 import android.os.UserHandle;
@@ -72,6 +73,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 import javax.annotation.concurrent.NotThreadSafe;
@@ -412,7 +414,9 @@ final class SafetyCenterDataTracker {
                                 getSafetyCenterStatusTitle(
                                         SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN, false),
                                 getSafetyCenterStatusSummary(
-                                        SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN, false))
+                                        SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN,
+                                        0,
+                                        false))
                         .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN)
                         .build(),
                 emptyList(),
@@ -720,7 +724,9 @@ final class SafetyCenterDataTracker {
                                 getSafetyCenterStatusTitle(
                                         safetyCenterOverallSeverityLevel, hasSettingsToReview),
                                 getSafetyCenterStatusSummary(
-                                        safetyCenterOverallSeverityLevel, hasSettingsToReview))
+                                        safetyCenterOverallSeverityLevel,
+                                        safetyCenterIssues.size(),
+                                        hasSettingsToReview))
                         .setSeverityLevel(safetyCenterOverallSeverityLevel)
                         .setRefreshStatus(mSafetyCenterRefreshTracker.getRefreshStatus())
                         .build(),
@@ -1232,6 +1238,18 @@ final class SafetyCenterDataTracker {
     @NonNull
     private String getStringByName(@NonNull String name) {
         String value = mSafetyCenterResourcesContext.getStringByName(name);
+        return emptyIfNamedResourceIsNull(name, value);
+    }
+
+    /** Same as {@link #getStringByName(String)} but with {@code formatArgs}. */
+    @NonNull
+    private String getStringByName(@NonNull String name, Object... formatArgs) {
+        String value = mSafetyCenterResourcesContext.getStringByName(name, formatArgs);
+        return emptyIfNamedResourceIsNull(name, value);
+    }
+
+    @NonNull
+    private static String emptyIfNamedResourceIsNull(@NonNull String name, @Nullable String value) {
         if (value == null) {
             Log.w(TAG, "String resource \"" + name + "\" not found");
             return "";
@@ -1396,7 +1414,6 @@ final class SafetyCenterDataTracker {
             boolean hasSettingsToReview) {
         switch (overallSeverityLevel) {
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN:
-                return getStringByName("overall_severity_level_unknown_title");
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK:
                 if (hasSettingsToReview) {
                     return getStringByName("overall_severity_level_ok_review_title");
@@ -1414,19 +1431,27 @@ final class SafetyCenterDataTracker {
 
     private String getSafetyCenterStatusSummary(
             @SafetyCenterStatus.OverallSeverityLevel int overallSeverityLevel,
+            int numberOfIssues,
             boolean hasSettingsToReview) {
         switch (overallSeverityLevel) {
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN:
-                return getStringByName("overall_severity_level_unknown_summary");
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK:
-                if (hasSettingsToReview) {
-                    return getStringByName("overall_severity_level_ok_review_summary");
+                if (numberOfIssues == 0) {
+                    if (hasSettingsToReview) {
+                        return getStringByName("overall_severity_level_ok_review_summary");
+                    }
+                    return getStringByName("overall_severity_level_ok_summary");
                 }
-                return getStringByName("overall_severity_level_ok_summary");
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_RECOMMENDATION:
-                return getStringByName("overall_severity_level_recommendation_summary");
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING:
-                return getStringByName("overall_severity_level_critical_warning_summary");
+                MessageFormat messageFormat =
+                        new MessageFormat(
+                                getStringByName(
+                                        "overall_severity_n_alerts_summary", numberOfIssues),
+                                Locale.getDefault());
+                ArrayMap<String, Object> arguments = new ArrayMap<>();
+                arguments.put("count", numberOfIssues);
+                return messageFormat.format(arguments);
         }
 
         Log.w(TAG, "Unexpected SafetyCenterStatus.OverallSeverityLevel: " + overallSeverityLevel);
