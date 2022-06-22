@@ -16,15 +16,27 @@
   -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- TODO(b/218801295): Use the right strings and localize them. -->
-    <string name="overall_severity_level_unknown_title" description="TODO" translatable="false">Unknown</string>
-    <string name="overall_severity_level_unknown_summary" description="TODO" translatable="false">Unknown safety status</string>
-    <string name="overall_severity_level_ok_title" description="TODO" translatable="false">All good</string>
-    <string name="overall_severity_level_ok_summary" description="TODO" translatable="false">No problemo maestro</string>
-    <string name="overall_severity_level_ok_review_title" description="TODO" translatable="false">Add more protection</string>
-    <string name="overall_severity_level_ok_review_summary" description="TODO" translatable="false">Review your settings</string>
-    <string name="overall_severity_level_recommendation_title" description="TODO" translatable="false">Some warnings</string>
-    <string name="overall_severity_level_recommendation_summary" description="TODO" translatable="false">Careful there</string>
-    <string name="overall_severity_level_critical_warning_title" description="TODO" translatable="false">Uh-oh</string>
-    <string name="overall_severity_level_critical_warning_summary" description="TODO" translatable="false">Code red</string>
+    <!-- Title for the overall Safety Center status when the user security and privacy signals are deemed to be safe [CHAR LIMIT=35] -->
+    <string name="overall_severity_level_ok_title">Looks good</string>
+
+    <!-- Summary for the overall Safety Center status when the user security and privacy signals are deemed to be safe [CHAR LIMIT=60] -->
+    <string name="overall_severity_level_ok_summary">This device is protected</string>
+
+    <!-- Title for the overall Safety Center status when the user security and privacy signals are deemed to be safe, but the user has previously dismissed some warnings that may need their review [CHAR LIMIT=35] -->
+    <string name="overall_severity_level_ok_review_title">Add more protection</string>
+
+    <!-- Summary for the overall Safety Center status when the user security and privacy signals are deemed to be safe, but the user has previously dismissed some warnings that may need their review [CHAR LIMIT=60] -->
+    <string name="overall_severity_level_ok_review_summary">Review your settings</string>
+
+    <!-- Title for the overall Safety Center status when the user security and privacy signals could potentially put them at risk [CHAR LIMIT=35] -->
+    <string name="overall_severity_level_recommendation_title">Device may be at risk</string>
+
+    <!-- Title for the overall Safety Center status when the user security and privacy signals are putting them at risk [CHAR LIMIT=35] -->
+    <string name="overall_severity_level_critical_warning_title">Device is at risk</string>
+
+    <!-- Summary for the overall Safety Center status when the user security and privacy signals contain alerts that could range from minor suggestions to warnings or critical issues. The number of alerts is given as a parameter [CHAR LIMIT=60] -->
+    <string name="overall_severity_n_alerts_summary">{count, plural,
+        =1      {# alert}
+        other   {# alerts}
+    }</string>
 </resources>
