@@ -97,6 +97,9 @@
             </intent-filter>
         </receiver>
 
+        <receiver android:name="com.android.permissioncontroller.hibernation.DismissHandler"
+            android:enabled="@bool/is_at_least_t"/>
+
         <receiver android:name="com.android.permissioncontroller.permission.service.LocationAccessCheck$NotificationDeleteHandler" />
 
         <receiver android:name="com.android.permissioncontroller.permission.service.LocationAccessCheck$NotificationClickHandler" />

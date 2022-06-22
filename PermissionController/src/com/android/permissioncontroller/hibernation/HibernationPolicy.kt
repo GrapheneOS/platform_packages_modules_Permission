@@ -27,6 +27,9 @@ import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
+import android.app.PendingIntent.FLAG_IMMUTABLE
+import android.app.PendingIntent.FLAG_ONE_SHOT
+import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.app.admin.DeviceAdminReceiver
 import android.app.admin.DevicePolicyManager
 import android.app.job.JobInfo
@@ -41,9 +44,12 @@ import android.content.BroadcastReceiver
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
+import android.content.Intent.FLAG_RECEIVER_FOREGROUND
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PERMISSION_GRANTED
+import android.os.Build
 import android.os.Bundle
 import android.os.Process
 import android.os.UserHandle
@@ -53,6 +59,10 @@ import android.provider.DeviceConfig
 import android.provider.DeviceConfig.NAMESPACE_APP_HIBERNATION
 import android.provider.Settings
 import android.safetycenter.SafetyCenterManager
+import android.safetycenter.SafetyEvent
+import android.safetycenter.SafetySourceData
+import android.safetycenter.SafetySourceIssue
+import android.safetycenter.SafetySourceIssue.Action
 import android.service.autofill.AutofillService
 import android.service.dreams.DreamService
 import android.service.notification.NotificationListenerService
@@ -64,6 +74,7 @@ import android.text.Html
 import android.util.Log
 import android.view.inputmethod.InputMethod
 import androidx.annotation.MainThread
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.MutableLiveData
 import androidx.preference.PreferenceManager
 import com.android.modules.utils.build.SdkLevel
@@ -91,13 +102,13 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.StringUtils
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.forEachInParallel
+import java.util.Date
+import java.util.Random
+import java.util.concurrent.TimeUnit
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import java.util.Date
-import java.util.Random
-import java.util.concurrent.TimeUnit
 
 private const val LOG_TAG = "HibernationPolicy"
 const val DEBUG_OVERRIDE_THRESHOLDS = false
@@ -122,7 +133,9 @@ private fun getCheckFrequencyMs() = DeviceConfig.getLong(
         Utils.PROPERTY_HIBERNATION_CHECK_FREQUENCY_MILLIS,
         DEFAULT_CHECK_FREQUENCY_MS)
 
-private val PREF_KEY_FIRST_BOOT_TIME = "first_boot_time"
+private const val PREF_KEY_FIRST_BOOT_TIME = "first_boot_time"
+private const val PREFS_FILE_NAME = "unused_apps_prefs"
+private const val PREF_KEY_UNUSED_APPS_REVIEW = "unused_apps_need_review"
 
 fun isHibernationEnabled(): Boolean {
     return SdkLevel.isAtLeastS() &&
@@ -138,6 +151,77 @@ fun hibernationTargetsPreSApps(): Boolean {
     return DeviceConfig.getBoolean(NAMESPACE_APP_HIBERNATION,
         Utils.PROPERTY_HIBERNATION_TARGETS_PRE_S_APPS,
         false /* defaultValue */)
+}
+
+/**
+ * Remove the unused apps notification.
+ */
+fun cancelUnusedAppsNotification(context: Context) {
+    context.getSystemService(NotificationManager::class.java)!!.cancel(
+        HibernationJobService::class.java.simpleName,
+        Constants.UNUSED_APPS_NOTIFICATION_ID)
+}
+
+/**
+ * Checks if we need to show the safety center card and sends the appropriate source data. If
+ * the user has not reviewed the latest auto-revoked apps, we show the card. Otherwise, we ensure
+ * nothing is shown.
+ */
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
+fun rescanAndPushDataToSafetyCenter(
+    context: Context,
+    sessionId: Long,
+    safetyEvent: SafetyEvent
+) {
+    val safetyCenterManager: SafetyCenterManager =
+        context.getSystemService(SafetyCenterManager::class.java)!!
+    if (getUnusedAppsReviewNeeded(context)) {
+        val seeUnusedAppsAction = Action.Builder(
+            Constants.UNUSED_APPS_SAFETY_CENTER_SEE_UNUSED_APPS_ID,
+            context.getString(R.string.unused_apps_safety_center_action_title),
+            makeUnusedAppsIntent(context, sessionId))
+            .build()
+
+        val issue = SafetySourceIssue.Builder(
+            Constants.UNUSED_APPS_SAFETY_CENTER_ISSUE_ID,
+            context.getString(R.string.unused_apps_safety_center_card_title),
+            context.getString(R.string.unused_apps_safety_center_card_content),
+            SafetySourceData.SEVERITY_LEVEL_INFORMATION,
+            Constants.UNUSED_APPS_SAFETY_CENTER_ISSUE_ID)
+            .addAction(seeUnusedAppsAction)
+            .setOnDismissPendingIntent(makeDismissIntent(context, sessionId))
+            .build()
+
+        val safetySourceData = SafetySourceData.Builder()
+            .addIssue(issue)
+            .build()
+
+        safetyCenterManager.setSafetySourceData(
+            Constants.UNUSED_APPS_SAFETY_CENTER_SOURCE_ID,
+            safetySourceData,
+            safetyEvent)
+    } else {
+        safetyCenterManager.setSafetySourceData(
+            Constants.UNUSED_APPS_SAFETY_CENTER_SOURCE_ID,
+            /* safetySourceData= */ null,
+            safetyEvent)
+    }
+}
+
+/**
+ * Set whether we show the safety center card to the user to review their auto-revoked permissions.
+ */
+fun setUnusedAppsReviewNeeded(context: Context, needsReview: Boolean) {
+    val sharedPreferences = context.sharedPreferences
+    if (sharedPreferences.contains(PREF_KEY_UNUSED_APPS_REVIEW) &&
+        sharedPreferences.getBoolean(PREF_KEY_UNUSED_APPS_REVIEW, false) == needsReview) {
+        return
+    }
+    sharedPreferences.edit().putBoolean(PREF_KEY_UNUSED_APPS_REVIEW, needsReview).apply()
+}
+
+private fun getUnusedAppsReviewNeeded(context: Context): Boolean {
+    return context.sharedPreferences.getBoolean(PREF_KEY_UNUSED_APPS_REVIEW, false)
 }
 
 /**
@@ -550,6 +634,40 @@ private val Context.firstBootTime: Long get() {
 }
 
 /**
+ * Make intent to go to unused apps page.
+ */
+private fun makeUnusedAppsIntent(context: Context, sessionId: Long): PendingIntent {
+    val clickIntent = Intent(Intent.ACTION_MANAGE_UNUSED_APPS).apply {
+        putExtra(Constants.EXTRA_SESSION_ID, sessionId)
+        flags = FLAG_ACTIVITY_NEW_TASK
+    }
+    val pendingIntent = PendingIntent.getActivity(context, 0, clickIntent,
+        FLAG_UPDATE_CURRENT or FLAG_IMMUTABLE)
+    return pendingIntent
+}
+
+/**
+ * Make intent for when safety center card is dismissed.
+ */
+private fun makeDismissIntent(context: Context, sessionId: Long): PendingIntent {
+    val dismissIntent = Intent(context, DismissHandler::class.java).apply {
+        putExtra(Constants.EXTRA_SESSION_ID, sessionId)
+        flags = FLAG_RECEIVER_FOREGROUND
+    }
+    return PendingIntent.getBroadcast(context, /* requestCode= */ 0, dismissIntent,
+        FLAG_ONE_SHOT or FLAG_UPDATE_CURRENT or FLAG_IMMUTABLE)
+}
+
+/**
+ * Broadcast receiver class for when safety center card is dismissed.
+ */
+class DismissHandler : BroadcastReceiver() {
+    override fun onReceive(context: Context?, intent: Intent?) {
+        setUnusedAppsReviewNeeded(context!!, false)
+    }
+}
+
+/**
  * A job to check for apps unused in the last [getUnusedThresholdMs]ms every
  * [getCheckFrequencyMs]ms and hibernate the app / revoke their runtime permissions.
  */
@@ -592,6 +710,16 @@ class HibernationJobService : JobService() {
                 val unusedApps: Set<Pair<String, UserHandle>> = hibernatedApps + revokedApps
                 if (unusedApps.isNotEmpty()) {
                     showUnusedAppsNotification(unusedApps.size, sessionId)
+                    if (SdkLevel.isAtLeastT() &&
+                        revokedApps.isNotEmpty() &&
+                        getSystemService(SafetyCenterManager::class.java)!!.isSafetyCenterEnabled) {
+                        setUnusedAppsReviewNeeded(this@HibernationJobService, true)
+                        rescanAndPushDataToSafetyCenter(
+                            this@HibernationJobService,
+                            sessionId,
+                            SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED)
+                                .build())
+                    }
                 }
             } catch (e: Exception) {
                 DumpableLog.e(LOG_TAG, "Failed to auto-revoke permissions", e)
@@ -608,14 +736,6 @@ class HibernationJobService : JobService() {
                 Constants.PERMISSION_REMINDER_CHANNEL_ID, getString(R.string.permission_reminders),
                 NotificationManager.IMPORTANCE_LOW)
         notificationManager.createNotificationChannel(permissionReminderChannel)
-
-        val clickIntent = Intent(Intent.ACTION_MANAGE_UNUSED_APPS).apply {
-            putExtra(Constants.EXTRA_SESSION_ID, sessionId)
-            flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        }
-        val pendingIntent = PendingIntent.getActivity(this, 0, clickIntent,
-            PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_UPDATE_CURRENT or
-            PendingIntent.FLAG_IMMUTABLE)
 
         var notifTitle: String
         var notifContent: String
@@ -635,7 +755,7 @@ class HibernationJobService : JobService() {
             .setStyle(Notification.BigTextStyle().bigText(notifContent))
             .setColor(getColor(android.R.color.system_notification_accent_color))
             .setAutoCancel(true)
-            .setContentIntent(pendingIntent)
+            .setContentIntent(makeUnusedAppsIntent(this, sessionId))
         val extras = Bundle()
         if (SdkLevel.isAtLeastT() &&
             getSystemService(SafetyCenterManager::class.java)!!.isSafetyCenterEnabled) {

@@ -21,6 +21,7 @@ import static android.view.WindowManager.LayoutParams.SYSTEM_FLAG_HIDE_NON_SYSTE
 import static com.android.permissioncontroller.Constants.ACTION_MANAGE_AUTO_REVOKE;
 import static com.android.permissioncontroller.Constants.EXTRA_SESSION_ID;
 import static com.android.permissioncontroller.Constants.INVALID_SESSION_ID;
+import static com.android.permissioncontroller.Constants.UNUSED_APPS_SAFETY_CENTER_SOURCE_ID;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_GROUPS_FRAGMENT_AUTO_REVOKE_ACTION;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_GROUPS_FRAGMENT_AUTO_REVOKE_ACTION__ACTION__OPENED_FOR_AUTO_REVOKE;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_GROUPS_FRAGMENT_AUTO_REVOKE_ACTION__ACTION__OPENED_FROM_INTENT;
@@ -38,6 +39,8 @@ import android.os.Bundle;
 import android.os.Process;
 import android.os.UserHandle;
 import android.permission.PermissionManager;
+import android.safetycenter.SafetyCenterManager;
+import android.safetycenter.SafetyEvent;
 import android.util.Log;
 import android.view.MenuItem;
 
@@ -47,10 +50,12 @@ import androidx.navigation.NavInflater;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.Constants;
 import com.android.permissioncontroller.DeviceUtils;
 import com.android.permissioncontroller.PermissionControllerStatsLog;
 import com.android.permissioncontroller.R;
+import com.android.permissioncontroller.hibernation.HibernationPolicyKt;
 import com.android.permissioncontroller.permission.ui.auto.AutoAllAppPermissionsFragment;
 import com.android.permissioncontroller.permission.ui.auto.AutoAppPermissionsFragment;
 import com.android.permissioncontroller.permission.ui.auto.AutoManageStandardPermissionsFragment;
@@ -376,6 +381,21 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                 Log.i(LOG_TAG, "sessionId " + sessionId + " starting auto revoke fragment"
                         + " from notification");
                 PermissionControllerStatsLog.write(AUTO_REVOKE_NOTIFICATION_CLICKED, sessionId);
+                if (SdkLevel.isAtLeastT()) {
+                    SafetyCenterManager safetyCenterManager =
+                            getSystemService(SafetyCenterManager.class);
+                    if (safetyCenterManager.isSafetyCenterEnabled()
+                            && !safetyCenterManager.getSafetySourceData(
+                                    UNUSED_APPS_SAFETY_CENTER_SOURCE_ID).getIssues().isEmpty()) {
+                        // Clear source data as user has reviewed their unused apps
+                        HibernationPolicyKt.setUnusedAppsReviewNeeded(this, false);
+                        HibernationPolicyKt.rescanAndPushDataToSafetyCenter(this, sessionId,
+                                new SafetyEvent.Builder(
+                                        SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED)
+                                        .build());
+                        HibernationPolicyKt.cancelUnusedAppsNotification(this);
+                    }
+                }
 
                 if (DeviceUtils.isAuto(this)) {
                     androidXFragment = AutoUnusedAppsFragment.newInstance();
