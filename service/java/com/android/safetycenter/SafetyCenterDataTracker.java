@@ -320,7 +320,7 @@ final class SafetyCenterDataTracker {
     }
 
     /**
-     * Dismisses the given {@link SafetyCenterIssueId}.
+     * Dismisses the given {@link SafetyCenterIssueKey}.
      *
      * <p>This method may modify the Safety Center issue cache and change the value reported by
      * {@link #isSafetyCenterIssueCacheDirty} to {@code true}.
@@ -334,21 +334,7 @@ final class SafetyCenterDataTracker {
     }
 
     /**
-     * Clears all the {@link SafetySourceData}, dismissed {@link SafetyCenterIssueId}, in flight
-     * {@link SafetyCenterIssueActionId} and any refresh in progress so far, for all users.
-     *
-     * <p>This method will modify the Safety Center issue cache and change the value reported by
-     * {@link #isSafetyCenterIssueCacheDirty} to {@code true}.
-     */
-    void clear() {
-        mSafetySourceDataForKey.clear();
-        mSafetyCenterIssueCache.clear();
-        mSafetyCenterIssueCacheDirty = true;
-        mSafetyCenterIssueActionsInFlight.clear();
-    }
-
-    /**
-     * Returns the {@link SafetySourceIssue} associated with the given {@link SafetyCenterIssueId}.
+     * Returns the {@link SafetySourceIssue} associated with the given {@link SafetyCenterIssueKey}.
      *
      * <p>Returns {@code null} if there is no such {@link SafetySourceIssue}, or if it's been
      * dismissed.
@@ -432,6 +418,54 @@ final class SafetyCenterDataTracker {
                 emptyList(),
                 emptyList(),
                 emptyList());
+    }
+
+    /**
+     * Clears all the {@link SafetySourceData}, metadata associated with {@link
+     * SafetyCenterIssueKey}s, in flight {@link SafetyCenterIssueActionId} and any refresh in
+     * progress so far, for all users.
+     *
+     * <p>This method will modify the Safety Center issue cache and change the value reported by
+     * {@link #isSafetyCenterIssueCacheDirty} to {@code true}.
+     */
+    void clear() {
+        mSafetySourceDataForKey.clear();
+        mSafetyCenterIssueCache.clear();
+        mSafetyCenterIssueCacheDirty = true;
+        mSafetyCenterIssueActionsInFlight.clear();
+    }
+
+    /**
+     * Clears all the {@link SafetySourceData}, metadata associated with {@link
+     * SafetyCenterIssueKey}s, in flight {@link SafetyCenterIssueActionId} and any refresh in
+     * progress so far, for the given user.
+     *
+     * <p>This method may modify the Safety Center issue cache and change the value reported by
+     * {@link #isSafetyCenterIssueCacheDirty} to {@code true}.
+     */
+    void clearForUser(@UserIdInt int userId) {
+        // Loop in reverse index order to be able to remove entries while iterating.
+        for (int i = mSafetySourceDataForKey.size() - 1; i >= 0; i--) {
+            SafetySourceKey sourceKey = mSafetySourceDataForKey.keyAt(i);
+            if (sourceKey.getUserId() == userId) {
+                mSafetySourceDataForKey.removeAt(i);
+            }
+        }
+        // Loop in reverse index order to be able to remove entries while iterating.
+        for (int i = mSafetyCenterIssueCache.size() - 1; i >= 0; i--) {
+            SafetyCenterIssueKey issueKey = mSafetyCenterIssueCache.keyAt(i);
+            if (issueKey.getUserId() == userId) {
+                mSafetyCenterIssueCache.removeAt(i);
+                mSafetyCenterIssueCacheDirty = true;
+            }
+        }
+        // Loop in reverse index order to be able to remove entries while iterating.
+        for (int i = mSafetyCenterIssueActionsInFlight.size() - 1; i >= 0; i--) {
+            SafetyCenterIssueActionId issueActionId = mSafetyCenterIssueActionsInFlight.valueAt(i);
+            if (issueActionId.getSafetyCenterIssueKey().getUserId() == userId) {
+                mSafetyCenterIssueActionsInFlight.removeAt(i);
+            }
+        }
     }
 
     private boolean isDismissed(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
