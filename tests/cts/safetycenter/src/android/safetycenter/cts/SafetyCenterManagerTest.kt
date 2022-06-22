@@ -47,6 +47,7 @@ import android.safetycenter.SafetyCenterStaticEntryGroup
 import android.safetycenter.SafetyCenterStatus
 import android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING
 import android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK
+import android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_RECOMMENDATION
 import android.safetycenter.SafetyCenterStatus.REFRESH_STATUS_DATA_FETCH_IN_PROGRESS
 import android.safetycenter.SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS
 import android.safetycenter.SafetyCenterStatus.REFRESH_STATUS_NONE
@@ -141,7 +142,17 @@ class SafetyCenterManagerTest {
             context, 0 /* requestCode */, Intent("Stub"), PendingIntent.FLAG_IMMUTABLE)
 
     private val safetyCenterStatusOk =
-        SafetyCenterStatus.Builder("All good", "No problemo maestro")
+        SafetyCenterStatus.Builder("Looks good", "This device is protected")
+            .setSeverityLevel(OVERALL_SEVERITY_LEVEL_OK)
+            .build()
+
+    private val safetyCenterStatusOkOneAlert =
+        SafetyCenterStatus.Builder("Looks good", "1 alert")
+            .setSeverityLevel(OVERALL_SEVERITY_LEVEL_OK)
+            .build()
+
+    private val safetyCenterStatusOkReviewOneAlert =
+        SafetyCenterStatus.Builder("Add more protection", "1 alert")
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_OK)
             .build()
 
@@ -150,8 +161,18 @@ class SafetyCenterManagerTest {
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_OK)
             .build()
 
-    private val safetyCenterStatusCritical =
-        SafetyCenterStatus.Builder("Uh-oh", "Code red")
+    private val safetyCenterStatusRecommendationOneAlert =
+        SafetyCenterStatus.Builder("Device may be at risk", "1 alert")
+            .setSeverityLevel(OVERALL_SEVERITY_LEVEL_RECOMMENDATION)
+            .build()
+
+    private val safetyCenterStatusCriticalOneAlert =
+        SafetyCenterStatus.Builder("Device is at risk", "1 alert")
+            .setSeverityLevel(OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING)
+            .build()
+
+    private val safetyCenterStatusCriticalSixAlerts =
+        SafetyCenterStatus.Builder("Device is at risk", "6 alerts")
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING)
             .build()
 
@@ -235,24 +256,45 @@ class SafetyCenterManagerTest {
             listOf(SafetyCenterEntryOrGroup(safetyCenterEntryOk(SINGLE_SOURCE_ID))),
             emptyList())
 
-    private val safetyCenterDataCritical =
+    private val safetyCenterDataOkOneAlert =
         SafetyCenterData(
-            safetyCenterStatusCritical,
+            safetyCenterStatusOkOneAlert,
+            listOf(safetyCenterIssueInformation(SINGLE_SOURCE_ID)),
+            listOf(SafetyCenterEntryOrGroup(safetyCenterEntryOk(SINGLE_SOURCE_ID))),
+            emptyList())
+
+    private val safetyCenterDataOkReview =
+        SafetyCenterData(
+            safetyCenterStatusOkReview,
+            emptyList(),
+            listOf(safetyCenterEntryOrGroupCritical),
+            emptyList())
+
+    private val safetyCenterDataOkReviewOneAlert =
+        SafetyCenterData(
+            safetyCenterStatusOkReviewOneAlert,
+            listOf(safetyCenterIssueInformation(SINGLE_SOURCE_ID)),
+            listOf(safetyCenterEntryOrGroupCritical),
+            emptyList())
+
+    private val safetyCenterDataRecommendationOneAlert =
+        SafetyCenterData(
+            safetyCenterStatusRecommendationOneAlert,
+            listOf(safetyCenterIssueRecommendation(SINGLE_SOURCE_ID)),
+            listOf(SafetyCenterEntryOrGroup(safetyCenterEntryRecommendation(SINGLE_SOURCE_ID))),
+            emptyList())
+
+    private val safetyCenterDataCriticalOneAlert =
+        SafetyCenterData(
+            safetyCenterStatusCriticalOneAlert,
             listOf(safetyCenterIssueCritical(SINGLE_SOURCE_ID)),
             listOf(safetyCenterEntryOrGroupCritical),
             emptyList())
 
-    private val safetyCenterDataCriticalInFlightAction =
+    private val safetyCenterDataCriticalOneAlertInFlight =
         SafetyCenterData(
-            safetyCenterStatusCritical,
+            safetyCenterStatusCriticalOneAlert,
             listOf(safetyCenterIssueCritical(SINGLE_SOURCE_ID, isActionInFlight = true)),
-            listOf(safetyCenterEntryOrGroupCritical),
-            emptyList())
-
-    private val safetyCenterDataCriticalWithDismissedIssue =
-        SafetyCenterData(
-            safetyCenterStatusOkReview,
-            emptyList(),
             listOf(safetyCenterEntryOrGroupCritical),
             emptyList())
 
@@ -289,7 +331,7 @@ class SafetyCenterManagerTest {
 
     private val safetyCenterDataFromComplexConfigUpdated =
         SafetyCenterData(
-            safetyCenterStatusCritical,
+            safetyCenterStatusCriticalSixAlerts,
             listOf(
                 safetyCenterIssueCritical(DYNAMIC_BAREBONE_ID),
                 safetyCenterIssueCritical(ISSUE_ONLY_BAREBONE_ID),
@@ -1298,7 +1340,38 @@ class SafetyCenterManagerTest {
         val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
 
         assertThat(apiSafetyCenterData).isNotEqualTo(previousApiSafetyCenterData)
-        assertThat(apiSafetyCenterData).isEqualTo(safetyCenterDataCritical)
+        assertThat(apiSafetyCenterData).isEqualTo(safetyCenterDataCriticalOneAlert)
+    }
+
+    @Test
+    fun getSafetyCenterData_withInformationIssue_returnsOverallStatusOkWithOneAlert() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.informationWithIssue)
+
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+
+        assertThat(apiSafetyCenterData).isEqualTo(safetyCenterDataOkOneAlert)
+    }
+
+    @Test
+    fun getSafetyCenterData_withCriticalStatusAndInfoIssue_returnsOverallStatusOkReviewOneAlert() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(
+            SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithInformationIssue)
+
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+
+        assertThat(apiSafetyCenterData).isEqualTo(safetyCenterDataOkReviewOneAlert)
+    }
+
+    @Test
+    fun getSafetyCenterData_withRecommendationIssue_returnsOverallStatusRecommendationOneAlert() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.recommendationWithIssue)
+
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+
+        assertThat(apiSafetyCenterData).isEqualTo(safetyCenterDataRecommendationOneAlert)
     }
 
     @Test
@@ -1373,7 +1446,7 @@ class SafetyCenterManagerTest {
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithIssue)
         val safetyCenterDataFromListener = listener.receiveSafetyCenterData()
 
-        assertThat(safetyCenterDataFromListener).isEqualTo(safetyCenterDataCritical)
+        assertThat(safetyCenterDataFromListener).isEqualTo(safetyCenterDataCriticalOneAlert)
     }
 
     @Test
@@ -1533,8 +1606,30 @@ class SafetyCenterManagerTest {
             SafetyCenterCtsData.issueId(SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID))
 
         val safetyCenterDataFromListener = listener.receiveSafetyCenterData()
-        assertThat(safetyCenterDataFromListener)
-            .isEqualTo(safetyCenterDataCriticalWithDismissedIssue)
+        assertThat(safetyCenterDataFromListener).isEqualTo(safetyCenterDataOkReview)
+    }
+
+    @Test
+    fun dismissSafetyCenterIssue_issueShowsUpAgainIfSourceStopsSendingItAtLeastOnce() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithIssue)
+        safetyCenterManager.dismissSafetyCenterIssueWithPermission(
+            SafetyCenterCtsData.issueId(SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID))
+        val listener = safetyCenterCtsHelper.addListener()
+
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.information)
+
+        val safetyCenterDataAfterSourceStopsSendingDismissedIssue =
+            listener.receiveSafetyCenterData()
+        assertThat(safetyCenterDataAfterSourceStopsSendingDismissedIssue)
+            .isEqualTo(safetyCenterDataOk)
+
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithIssue)
+
+        val safetyCenterDataAfterSourcePushesDismissedIssueAgain =
+            listener.receiveSafetyCenterData()
+        assertThat(safetyCenterDataAfterSourcePushesDismissedIssueAgain)
+            .isEqualTo(safetyCenterDataCriticalOneAlert)
     }
 
     @Test
@@ -1548,8 +1643,7 @@ class SafetyCenterManagerTest {
                 SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID, issueTypeId = "some_other_issue_type_id"))
 
         val safetyCenterDataFromListener = listener.receiveSafetyCenterData()
-        assertThat(safetyCenterDataFromListener)
-            .isEqualTo(safetyCenterDataCriticalWithDismissedIssue)
+        assertThat(safetyCenterDataFromListener).isEqualTo(safetyCenterDataOkReview)
     }
 
     @Test
@@ -1653,7 +1747,7 @@ class SafetyCenterManagerTest {
 
         val safetyCenterDataFromListenerDuringInlineAction = listener.receiveSafetyCenterData()
         assertThat(safetyCenterDataFromListenerDuringInlineAction)
-            .isEqualTo(safetyCenterDataCriticalInFlightAction)
+            .isEqualTo(safetyCenterDataCriticalOneAlertInFlight)
         val safetyCenterDataFromListenerAfterInlineAction = listener.receiveSafetyCenterData()
         assertThat(safetyCenterDataFromListenerAfterInlineAction).isEqualTo(safetyCenterDataOk)
     }
@@ -1675,10 +1769,10 @@ class SafetyCenterManagerTest {
 
         val safetyCenterDataFromListenerDuringInlineAction = listener.receiveSafetyCenterData()
         assertThat(safetyCenterDataFromListenerDuringInlineAction)
-            .isEqualTo(safetyCenterDataCriticalInFlightAction)
+            .isEqualTo(safetyCenterDataCriticalOneAlertInFlight)
         val safetyCenterDataFromListenerAfterInlineAction = listener.receiveSafetyCenterData()
         assertThat(safetyCenterDataFromListenerAfterInlineAction)
-            .isEqualTo(safetyCenterDataCritical)
+            .isEqualTo(safetyCenterDataCriticalOneAlert)
         val error = listener.receiveSafetyCenterErrorDetails()
         assertThat(error)
             .isEqualTo(SafetyCenterErrorDetails("Error reported from source: $SINGLE_SOURCE_ID"))
@@ -1739,10 +1833,10 @@ class SafetyCenterManagerTest {
 
         val safetyCenterDataFromListenerDuringInlineAction = listener.receiveSafetyCenterData()
         assertThat(safetyCenterDataFromListenerDuringInlineAction)
-            .isEqualTo(safetyCenterDataCriticalInFlightAction)
+            .isEqualTo(safetyCenterDataCriticalOneAlertInFlight)
         val safetyCenterDataFromListenerAfterInlineAction = listener.receiveSafetyCenterData()
         assertThat(safetyCenterDataFromListenerAfterInlineAction)
-            .isEqualTo(safetyCenterDataCritical)
+            .isEqualTo(safetyCenterDataCriticalOneAlert)
         val error = listener.receiveSafetyCenterErrorDetails()
         assertThat(error).isEqualTo(SafetyCenterErrorDetails("Resolving action timeout"))
     }
@@ -1772,7 +1866,7 @@ class SafetyCenterManagerTest {
 
         val safetyCenterDataFromListenerDuringInlineAction = listener.receiveSafetyCenterData()
         assertThat(safetyCenterDataFromListenerDuringInlineAction)
-            .isEqualTo(safetyCenterDataCriticalInFlightAction)
+            .isEqualTo(safetyCenterDataCriticalOneAlertInFlight)
         val safetyCenterDataFromListenerAfterInlineAction = listener.receiveSafetyCenterData()
         assertThat(safetyCenterDataFromListenerAfterInlineAction).isEqualTo(safetyCenterDataOk)
     }

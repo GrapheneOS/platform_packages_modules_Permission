@@ -37,7 +37,7 @@ object SafetyCenterCtsData {
     /** The default [SafetyCenterData] returned by the Safety Center APIs. */
     val DEFAULT =
         SafetyCenterData(
-            SafetyCenterStatus.Builder("Unknown", "Unknown safety status")
+            SafetyCenterStatus.Builder("Looks good", "This device is protected")
                 .setSeverityLevel(OVERALL_SEVERITY_LEVEL_UNKNOWN)
                 .build(),
             emptyList(),
