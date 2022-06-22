@@ -49,10 +49,15 @@ final class UserProfileGroup {
 
     @NonNull private final int[] mManagedProfilesUserIds;
 
+    @NonNull private final int[] mManagedRunningProfilesUserIds;
+
     private UserProfileGroup(
-            @UserIdInt int profileParentUserId, @NonNull int[] managedProfilesUserIds) {
+            @UserIdInt int profileParentUserId,
+            @NonNull int[] managedProfilesUserIds,
+            int[] managedRunningProfilesUserIds) {
         mProfileParentUserId = profileParentUserId;
         mManagedProfilesUserIds = managedProfilesUserIds;
+        mManagedRunningProfilesUserIds = managedRunningProfilesUserIds;
     }
 
     /**
@@ -71,7 +76,9 @@ final class UserProfileGroup {
         }
 
         int[] managedProfilesUserIds = new int[userProfiles.size()];
+        int[] managedRunningProfilesUserIds = new int[userProfiles.size()];
         int managedProfilesUserIdsLen = 0;
+        int managedRunningProfilesUserIdsLen = 0;
         for (int i = 0; i < userProfiles.size(); i++) {
             UserHandle userProfileHandle = userProfiles.get(i);
             int userProfileId = userProfileHandle.getIdentifier();
@@ -79,12 +86,17 @@ final class UserProfileGroup {
             // TODO(b/223132917): Check if user running and/or if quiet mode is enabled?
             if (UserUtils.isManagedProfile(userProfileId, context)) {
                 managedProfilesUserIds[managedProfilesUserIdsLen++] = userProfileId;
+                if (UserUtils.isProfileRunning(userProfileId, context)) {
+                    managedRunningProfilesUserIds[managedRunningProfilesUserIdsLen++] =
+                            userProfileId;
+                }
             }
         }
 
         return new UserProfileGroup(
                 profileParentUserId,
-                Arrays.copyOf(managedProfilesUserIds, managedProfilesUserIdsLen));
+                Arrays.copyOf(managedProfilesUserIds, managedProfilesUserIdsLen),
+                Arrays.copyOf(managedRunningProfilesUserIds, managedRunningProfilesUserIdsLen));
     }
 
     @NonNull
@@ -141,6 +153,11 @@ final class UserProfileGroup {
         return mManagedProfilesUserIds;
     }
 
+    /** Returns the running managed profile user ids of the {@link UserProfileGroup}. */
+    int[] getManagedRunningProfilesUserIds() {
+        return mManagedRunningProfilesUserIds;
+    }
+
     /** Returns whether the {@link UserProfileGroup} contains the given {@code userId}. */
     boolean contains(@UserIdInt int userId) {
         if (userId == mProfileParentUserId) {
@@ -162,14 +179,17 @@ final class UserProfileGroup {
         if (!(o instanceof UserProfileGroup)) return false;
         UserProfileGroup that = (UserProfileGroup) o;
         return mProfileParentUserId == that.mProfileParentUserId
-                && Arrays.equals(mManagedProfilesUserIds, that.mManagedProfilesUserIds);
+                && Arrays.equals(mManagedProfilesUserIds, that.mManagedProfilesUserIds)
+                && Arrays.equals(
+                        mManagedRunningProfilesUserIds, that.mManagedRunningProfilesUserIds);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(mProfileParentUserId);
-        result = 31 * result + Arrays.hashCode(mManagedProfilesUserIds);
-        return result;
+        return Objects.hash(
+                mProfileParentUserId,
+                Arrays.hashCode(mManagedProfilesUserIds),
+                Arrays.hashCode(mManagedRunningProfilesUserIds));
     }
 
     @Override
@@ -179,6 +199,8 @@ final class UserProfileGroup {
                 + mProfileParentUserId
                 + ", mManagedProfilesUserIds="
                 + Arrays.toString(mManagedProfilesUserIds)
+                + ", mManagedRunningProfilesUserIds="
+                + Arrays.toString(mManagedRunningProfilesUserIds)
                 + '}';
     }
 }

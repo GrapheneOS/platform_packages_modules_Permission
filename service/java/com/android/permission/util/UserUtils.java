@@ -35,25 +35,29 @@ public final class UserUtils {
     private UserUtils() {}
 
     /** Enforces cross user permission for the calling UID and the given {@code userId}. */
-    public static void enforceCrossUserPermission(@UserIdInt int userId, boolean allowAll,
-            @NonNull String message, @NonNull Context context) {
+    public static void enforceCrossUserPermission(
+            @UserIdInt int userId,
+            boolean allowAll,
+            @NonNull String message,
+            @NonNull Context context) {
         final int callingUid = Binder.getCallingUid();
         final int callingUserId = UserHandleCompat.getUserId(callingUid);
         if (userId == callingUserId) {
             return;
         }
-        Preconditions.checkArgument(userId >= UserHandleCompat.USER_SYSTEM
-                || (allowAll && userId == UserHandleCompat.USER_ALL), "Invalid user " + userId);
+        Preconditions.checkArgument(
+                userId >= UserHandleCompat.USER_SYSTEM
+                        || (allowAll && userId == UserHandleCompat.USER_ALL),
+                "Invalid user " + userId);
         context.enforceCallingOrSelfPermission(
                 android.Manifest.permission.INTERACT_ACROSS_USERS_FULL, message);
         if (callingUid != Process.SHELL_UID || userId < UserHandleCompat.USER_SYSTEM) {
             return;
         }
         UserManager userManager = context.getSystemService(UserManager.class);
-        if (userManager.hasUserRestrictionForUser(UserManager.DISALLOW_DEBUGGING_FEATURES,
-                UserHandle.of(userId))) {
-            throw new SecurityException("Shell does not have permission to access user "
-                    + userId);
+        if (userManager.hasUserRestrictionForUser(
+                UserManager.DISALLOW_DEBUGGING_FEATURES, UserHandle.of(userId))) {
+            throw new SecurityException("Shell does not have permission to access user " + userId);
         }
     }
 
@@ -82,6 +86,22 @@ public final class UserUtils {
         final long identity = Binder.clearCallingIdentity();
         try {
             return userManager.isManagedProfile(userId);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Returns whether a given {@code userId} corresponds to a running managed profile, i.e. the
+     * user is running and the quiet mode is not enabled.
+     */
+    public static boolean isProfileRunning(@UserIdInt int userId, @NonNull Context context) {
+        UserManager userManager = context.getSystemService(UserManager.class);
+        // This call requires the QUERY_USERS permission
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return userManager.isUserRunning(UserHandle.of(userId))
+                    && !userManager.isQuietModeEnabled(UserHandle.of(userId));
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
