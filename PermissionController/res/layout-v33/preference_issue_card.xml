@@ -36,7 +36,7 @@
 
     <TextView
         android:id="@+id/issue_card_title"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/summary_placeholder"
         app:layout_constraintTop_toTopOf="parent"
