@@ -18,4 +18,6 @@
     <dimen name="safety_center_card_margin">2dp</dimen>
     <dimen name="safety_center_list_margin">16dp</dimen>
     <dimen name="safety_center_action_button_list_margin">16dp</dimen>
+    <dimen name="safety_center_indicator_card_icon_margin">28dp</dimen>
+    <dimen name="safety_center_indicator_expand_button_background">24dp</dimen>
 </resources>
