@@ -903,7 +903,7 @@ class SafetyCenterManagerTest {
     fun safetyCenterEnabledChanged_whenImplicitReceiverHasPermission_receiverCalled() {
         val enabledChangedReceiver = SafetyCenterEnabledChangedReceiver(context)
 
-        var receiverValue =
+        val receiverValue =
             enabledChangedReceiver.setSafetyCenterEnabledWithReceiverPermissionAndWait(false)
 
         assertThat(receiverValue).isFalse()
@@ -930,7 +930,7 @@ class SafetyCenterManagerTest {
     fun safetyCenterEnabledChanged_whenSourceReceiverHasPermission_receiverCalled() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
 
-        var receiverValue =
+        val receiverValue =
             SafetySourceReceiver.setSafetyCenterEnabledWithReceiverPermissionAndWait(false)
 
         assertThat(receiverValue).isFalse()
@@ -1177,6 +1177,7 @@ class SafetyCenterManagerTest {
     fun refreshSafetySources_waitForPreviousRefreshToTimeout_completesSuccessfully() {
         SafetyCenterFlags.refreshTimeout = TIMEOUT_SHORT
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        val listener = safetyCenterCtsHelper.addListener()
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
             REFRESH_REASON_PAGE_OPEN)
@@ -1184,7 +1185,7 @@ class SafetyCenterManagerTest {
             safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
         assertThat(apiSafetySourceData1).isNull()
         // Wait for the ongoing refresh to timeout.
-        Thread.sleep(TIMEOUT_SHORT.toMillis())
+        listener.receiveSafetyCenterErrorDetails()
         SafetyCenterFlags.refreshTimeout = TIMEOUT_LONG
         SafetySourceReceiver.safetySourceData[
                 SafetySourceDataKey(REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
@@ -1212,6 +1213,84 @@ class SafetyCenterManagerTest {
         val apiSafetySourceData =
             safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
         assertThat(apiSafetySourceData).isEqualTo(safetySourceCtsData.information)
+    }
+
+    @Test
+    fun refreshSafetySources_withTrackedSourceThatTimesOut_timesOut() {
+        SafetyCenterFlags.refreshTimeout = TIMEOUT_SHORT
+        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
+        // SOURCE_ID_1 will timeout
+        for (sourceId in listOf(SOURCE_ID_2, SOURCE_ID_3)) {
+            SafetySourceReceiver.safetySourceData[
+                    SafetySourceDataKey(REFRESH_FETCH_FRESH_DATA, sourceId)] =
+                safetySourceCtsData.information
+        }
+        val listener = safetyCenterCtsHelper.addListener()
+
+        safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+            REFRESH_REASON_RESCAN_BUTTON_CLICK)
+        val safetyCenterErrorDetailsFromListener = listener.receiveSafetyCenterErrorDetails()
+
+        // TODO(b/229080761): Implement proper error message.
+        assertThat(safetyCenterErrorDetailsFromListener)
+            .isEqualTo(SafetyCenterErrorDetails("Scan timeout"))
+    }
+
+    @Test
+    fun refreshSafetySources_withUntrackedSourceThatTimesOut_doesNotTimeOut() {
+        SafetyCenterFlags.refreshTimeout = TIMEOUT_SHORT
+        SafetyCenterFlags.untrackedSources = setOf(SOURCE_ID_1)
+        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
+        // SOURCE_ID_1 will timeout
+        for (sourceId in listOf(SOURCE_ID_2, SOURCE_ID_3)) {
+            SafetySourceReceiver.safetySourceData[
+                    SafetySourceDataKey(REFRESH_FETCH_FRESH_DATA, sourceId)] =
+                safetySourceCtsData.information
+        }
+        val listener = safetyCenterCtsHelper.addListener()
+
+        safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+            REFRESH_REASON_RESCAN_BUTTON_CLICK)
+
+        assertFailsWith(TimeoutCancellationException::class) {
+            listener.receiveSafetyCenterErrorDetails()
+        }
+    }
+
+    @Test
+    fun refreshSafetySources_withMultipleUntrackedSourcesThatTimeOut_doesNotTimeOut() {
+        SafetyCenterFlags.refreshTimeout = TIMEOUT_SHORT
+        SafetyCenterFlags.untrackedSources = setOf(SOURCE_ID_1, SOURCE_ID_2)
+        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
+        // SOURCE_ID_1 and SOURCE_ID_2 will timeout
+        SafetySourceReceiver.safetySourceData[
+                SafetySourceDataKey(REFRESH_FETCH_FRESH_DATA, SOURCE_ID_3)] =
+            safetySourceCtsData.information
+        val listener = safetyCenterCtsHelper.addListener()
+
+        safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+            REFRESH_REASON_RESCAN_BUTTON_CLICK)
+
+        assertFailsWith(TimeoutCancellationException::class) {
+            listener.receiveSafetyCenterErrorDetails()
+        }
+    }
+
+    @Test
+    fun refreshSafetySources_withEmptyUntrackedSourceConfigAndSourceThatTimesOut_timesOut() {
+        SafetyCenterFlags.refreshTimeout = TIMEOUT_SHORT
+        SafetyCenterFlags.untrackedSources = emptySet()
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        // SOURCE_ID_1 will timeout
+        val listener = safetyCenterCtsHelper.addListener()
+
+        safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+            REFRESH_REASON_RESCAN_BUTTON_CLICK)
+        val safetyCenterErrorDetailsFromListener = listener.receiveSafetyCenterErrorDetails()
+
+        // TODO(b/229080761): Implement proper error message.
+        assertThat(safetyCenterErrorDetailsFromListener)
+            .isEqualTo(SafetyCenterErrorDetails("Scan timeout"))
     }
 
     @Test
