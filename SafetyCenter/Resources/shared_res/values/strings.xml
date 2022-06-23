@@ -39,4 +39,13 @@
         =1      {# alert}
         other   {# alerts}
     }</string>
+
+    <!-- An error shown to the user when we failed to navigate to a specific page [CHAR LIMIT=50] -->
+    <string name="redirecting_error">Couldn\’t open page</string>
+
+    <!-- An error shown to the user when we failed to resolve an alert that they attempted to resolve directly from the Safety Center screen [CHAR LIMIT=50] -->
+    <string name="resolving_action_error">Couldn\’t resolve alert</string>
+
+    <!-- An error shown to the user when we failed to refresh the overall Safety Center status. This happens when at least one safety signal did not get back to Safety Center within an arbitrary timeout [CHAR LIMIT=50] -->
+    <string name="refresh_timeout">Couldn\’t refresh status</string>
 </resources>

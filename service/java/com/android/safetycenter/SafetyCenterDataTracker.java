@@ -22,13 +22,11 @@ import static java.util.Collections.emptyList;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
-import android.annotation.StringRes;
 import android.annotation.UserIdInt;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.res.Resources;
 import android.icu.text.ListFormatter;
 import android.icu.text.MessageFormat;
 import android.icu.util.ULocale;
@@ -38,7 +36,6 @@ import android.safetycenter.SafetyCenterData;
 import android.safetycenter.SafetyCenterEntry;
 import android.safetycenter.SafetyCenterEntryGroup;
 import android.safetycenter.SafetyCenterEntryOrGroup;
-import android.safetycenter.SafetyCenterErrorDetails;
 import android.safetycenter.SafetyCenterIssue;
 import android.safetycenter.SafetyCenterStaticEntry;
 import android.safetycenter.SafetyCenterStaticEntryGroup;
@@ -273,23 +270,14 @@ final class SafetyCenterDataTracker {
         if (!validateRequest(null, safetySourceId, packageName, userId)) {
             return false;
         }
+        Log.w(
+                TAG,
+                "Error reported from source: "
+                        + safetySourceId
+                        + ", for event: "
+                        + safetySourceErrorDetails.getSafetyEvent());
         return processSafetyEvent(
                 safetySourceId, safetySourceErrorDetails.getSafetyEvent(), userId);
-    }
-
-    /**
-     * Returns a {@link SafetyCenterErrorDetails} based on a {@link SafetySourceErrorDetails}, if
-     * any should be displayed.
-     */
-    @Nullable
-    SafetyCenterErrorDetails getSafetyCenterErrorDetails(
-            @NonNull String safetySourceId,
-            @NonNull SafetySourceErrorDetails safetySourceErrorDetails) {
-        if (!mSafetyCenterConfigReader.isExternalSafetySourceActive(safetySourceId)) {
-            return null;
-        }
-        // TODO(b/229080761): Implement proper error message.
-        return new SafetyCenterErrorDetails("Error reported from source: " + safetySourceId);
     }
 
     /**
@@ -916,7 +904,9 @@ final class SafetyCenterDataTracker {
                     SafetyCenterEntryGroupId.newBuilder()
                             .setSafetySourcesGroupId(safetySourcesGroup.getId())
                             .build();
-            CharSequence groupSummary = getOptionalString(safetySourcesGroup.getSummaryResId());
+            CharSequence groupSummary =
+                    mSafetyCenterResourcesContext.getOptionalString(
+                            safetySourcesGroup.getSummaryResId());
             if (groupSafetyCenterEntryLevel > SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK) {
                 for (int i = 0; i < entries.size(); i++) {
                     SafetyCenterEntry entry = entries.get(i);
@@ -946,7 +936,8 @@ final class SafetyCenterDataTracker {
                             new SafetyCenterEntryGroup.Builder(
                                             SafetyCenterIds.encodeToString(
                                                     safetyCenterEntryGroupId),
-                                            getString(safetySourcesGroup.getTitleResId()))
+                                            mSafetyCenterResourcesContext.getString(
+                                                    safetySourcesGroup.getTitleResId()))
                                     .setSeverityLevel(groupSafetyCenterEntryLevel)
                                     .setSummary(groupSummary)
                                     .setEntries(entries)
@@ -1067,14 +1058,16 @@ final class SafetyCenterDataTracker {
         boolean enabled =
                 pendingIntent != null && !SafetySources.isDefaultEntryDisabled(safetySource);
         CharSequence title =
-                getString(
+                mSafetyCenterResourcesContext.getString(
                         isUserManaged
                                 ? safetySource.getTitleForWorkResId()
                                 : safetySource.getTitleResId());
         return new SafetyCenterEntry.Builder(
                         SafetyCenterIds.encodeToString(safetyCenterEntryId), title)
                 .setSeverityLevel(entrySeverityLevel)
-                .setSummary(getOptionalString(safetySource.getSummaryResId()))
+                .setSummary(
+                        mSafetyCenterResourcesContext.getOptionalString(
+                                safetySource.getSummaryResId()))
                 .setEnabled(enabled)
                 .setPendingIntent(pendingIntent)
                 .setSeverityUnspecifiedIconType(severityUnspecifiedIconType)
@@ -1107,7 +1100,8 @@ final class SafetyCenterDataTracker {
 
         safetyCenterStaticEntryGroups.add(
                 new SafetyCenterStaticEntryGroup(
-                        getString(safetySourcesGroup.getTitleResId()), staticEntries));
+                        mSafetyCenterResourcesContext.getString(safetySourcesGroup.getTitleResId()),
+                        staticEntries));
     }
 
     private void addSafetyCenterStaticEntry(
@@ -1173,13 +1167,15 @@ final class SafetyCenterDataTracker {
         }
 
         CharSequence title =
-                getString(
+                mSafetyCenterResourcesContext.getString(
                         isUserManaged
                                 ? safetySource.getTitleForWorkResId()
                                 : safetySource.getTitleResId());
 
         return new SafetyCenterStaticEntry.Builder(title)
-                .setSummary(getOptionalString(safetySource.getSummaryResId()))
+                .setSummary(
+                        mSafetyCenterResourcesContext.getOptionalString(
+                                safetySource.getSummaryResId()))
                 .setPendingIntent(pendingIntent)
                 .build();
     }
@@ -1227,60 +1223,6 @@ final class SafetyCenterDataTracker {
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
-    }
-
-    /**
-     * Returns a {@link String} resource from the given {@code name}, using the {@link
-     * SafetyCenterResourcesContext}.
-     *
-     * <p>Returns an empty string if the resource cannot be accessed.
-     */
-    @NonNull
-    private String getStringByName(@NonNull String name) {
-        String value = mSafetyCenterResourcesContext.getStringByName(name);
-        return emptyIfNamedResourceIsNull(name, value);
-    }
-
-    /** Same as {@link #getStringByName(String)} but with {@code formatArgs}. */
-    @NonNull
-    private String getStringByName(@NonNull String name, Object... formatArgs) {
-        String value = mSafetyCenterResourcesContext.getStringByName(name, formatArgs);
-        return emptyIfNamedResourceIsNull(name, value);
-    }
-
-    @NonNull
-    private static String emptyIfNamedResourceIsNull(@NonNull String name, @Nullable String value) {
-        if (value == null) {
-            Log.w(TAG, "String resource \"" + name + "\" not found");
-            return "";
-        }
-        return value;
-    }
-
-    /**
-     * Returns a {@link String} resource from the given {@code stringId}, using the {@link
-     * SafetyCenterResourcesContext}.
-     *
-     * <p>Throws a {@link Resources.NotFoundException} if the resource cannot be accessed.
-     */
-    @NonNull
-    private String getString(@StringRes int stringId) {
-        return mSafetyCenterResourcesContext.getString(stringId);
-    }
-
-    /**
-     * Returns an optional {@link String} resource from the given {@code stringId}, using the {@link
-     * SafetyCenterResourcesContext}.
-     *
-     * <p>Returns {@code null} if {@code stringId} is equal to {@link Resources#ID_NULL}. Otherwise,
-     * throws a {@link Resources.NotFoundException} if the resource cannot be accessed.
-     */
-    @Nullable
-    private String getOptionalString(@StringRes int stringId) {
-        if (stringId == Resources.ID_NULL) {
-            return null;
-        }
-        return getString(stringId);
     }
 
     @Nullable
@@ -1416,13 +1358,17 @@ final class SafetyCenterDataTracker {
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN:
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK:
                 if (hasSettingsToReview) {
-                    return getStringByName("overall_severity_level_ok_review_title");
+                    return mSafetyCenterResourcesContext.getStringByName(
+                            "overall_severity_level_ok_review_title");
                 }
-                return getStringByName("overall_severity_level_ok_title");
+                return mSafetyCenterResourcesContext.getStringByName(
+                        "overall_severity_level_ok_title");
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_RECOMMENDATION:
-                return getStringByName("overall_severity_level_recommendation_title");
+                return mSafetyCenterResourcesContext.getStringByName(
+                        "overall_severity_level_recommendation_title");
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING:
-                return getStringByName("overall_severity_level_critical_warning_title");
+                return mSafetyCenterResourcesContext.getStringByName(
+                        "overall_severity_level_critical_warning_title");
         }
 
         Log.w(TAG, "Unexpected SafetyCenterStatus.OverallSeverityLevel: " + overallSeverityLevel);
@@ -1438,15 +1384,17 @@ final class SafetyCenterDataTracker {
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK:
                 if (numberOfIssues == 0) {
                     if (hasSettingsToReview) {
-                        return getStringByName("overall_severity_level_ok_review_summary");
+                        return mSafetyCenterResourcesContext.getStringByName(
+                                "overall_severity_level_ok_review_summary");
                     }
-                    return getStringByName("overall_severity_level_ok_summary");
+                    return mSafetyCenterResourcesContext.getStringByName(
+                            "overall_severity_level_ok_summary");
                 }
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_RECOMMENDATION:
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING:
                 MessageFormat messageFormat =
                         new MessageFormat(
-                                getStringByName(
+                                mSafetyCenterResourcesContext.getStringByName(
                                         "overall_severity_n_alerts_summary", numberOfIssues),
                                 Locale.getDefault());
                 ArrayMap<String, Object> arguments = new ArrayMap<>();

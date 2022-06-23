@@ -59,7 +59,7 @@ class SafetySourceCtsData(private val context: Context) {
                     .build())
             .build()
 
-    /** A [SafetySourceIssue] with a [SEVERITY_LEVEL_INFORMATION] and a redirection [Action]. */
+    /** A [SafetySourceIssue] with a [SEVERITY_LEVEL_INFORMATION] and a redirecting [Action]. */
     val informationIssue =
         SafetySourceIssue.Builder(
                 INFORMATION_ISSUE_ID,
@@ -73,8 +73,8 @@ class SafetySourceCtsData(private val context: Context) {
             .build()
 
     /**
-     * A [SafetySourceData] with a [SEVERITY_LEVEL_UNSPECIFIED] [SafetySourceIssue] and
-     * [SafetySourceStatus].
+     * A [SafetySourceData] with a [SEVERITY_LEVEL_INFORMATION] redirecting [SafetySourceIssue] and
+     * a [SEVERITY_LEVEL_UNSPECIFIED] [SafetySourceStatus].
      */
     val unspecifiedWithIssue =
         SafetySourceData.Builder()
@@ -95,7 +95,10 @@ class SafetySourceCtsData(private val context: Context) {
                     .build())
             .build()
 
-    /** A [SafetySourceData] with a [SEVERITY_LEVEL_INFORMATION] [SafetySourceStatus] */
+    /**
+     * A [SafetySourceData] with a [SEVERITY_LEVEL_INFORMATION] [SafetySourceStatus], to be used for
+     * a managed profile entry.
+     */
     val informationForWork =
         SafetySourceData.Builder()
             .setStatus(
@@ -106,7 +109,7 @@ class SafetySourceCtsData(private val context: Context) {
             .build()
 
     /**
-     * A [SafetySourceData] with a [SEVERITY_LEVEL_INFORMATION] [SafetySourceIssue] and
+     * A [SafetySourceData] with a [SEVERITY_LEVEL_INFORMATION] redirecting [SafetySourceIssue] and
      * [SafetySourceStatus].
      */
     val informationWithIssue =
@@ -118,7 +121,7 @@ class SafetySourceCtsData(private val context: Context) {
             .addIssue(informationIssue)
             .build()
 
-    /** A [SafetySourceIssue] with a [SEVERITY_LEVEL_RECOMMENDATION] and a redirection [Action]. */
+    /** A [SafetySourceIssue] with a [SEVERITY_LEVEL_RECOMMENDATION] and a redirecting [Action]. */
     val recommendationIssue =
         SafetySourceIssue.Builder(
                 RECOMMENDATION_ISSUE_ID,
@@ -132,8 +135,8 @@ class SafetySourceCtsData(private val context: Context) {
             .build()
 
     /**
-     * A [SafetySourceData] with a [SEVERITY_LEVEL_RECOMMENDATION] [SafetySourceIssue] and
-     * [SafetySourceStatus].
+     * A [SafetySourceData] with a [SEVERITY_LEVEL_RECOMMENDATION] redirecting [SafetySourceIssue]
+     * and [SafetySourceStatus].
      */
     val recommendationWithIssue =
         SafetySourceData.Builder()
@@ -147,7 +150,7 @@ class SafetySourceCtsData(private val context: Context) {
             .addIssue(recommendationIssue)
             .build()
 
-    /** A [PendingIntent] used by the resolving [Action] in [criticalIssue]. */
+    /** A [PendingIntent] used by the resolving [Action] in [criticalResolvingIssue]. */
     val criticalIssueActionPendingIntent =
         PendingIntent.getBroadcast(
             context,
@@ -161,7 +164,7 @@ class SafetySourceCtsData(private val context: Context) {
             PendingIntent.FLAG_IMMUTABLE)
 
     /** A [SafetySourceIssue] with a [SEVERITY_LEVEL_CRITICAL_WARNING] and a resolving [Action]. */
-    val criticalIssue =
+    val criticalResolvingIssue =
         SafetySourceIssue.Builder(
                 CRITICAL_ISSUE_ID,
                 "Critical issue title",
@@ -176,12 +179,12 @@ class SafetySourceCtsData(private val context: Context) {
             .build()
 
     /**
-     * Another [SafetySourceIssue] with a [SEVERITY_LEVEL_CRITICAL_WARNING] and a non-resolving
+     * Another [SafetySourceIssue] with a [SEVERITY_LEVEL_CRITICAL_WARNING] and a redirecting
      * [Action].
      */
-    val criticalIssue2 =
+    val criticalRedirectingIssue =
         SafetySourceIssue.Builder(
-                CRITICAL_ISSUE_ID_2,
+                CRITICAL_ISSUE_ID,
                 "Critical issue title 2",
                 "Critical issue summary 2",
                 SEVERITY_LEVEL_CRITICAL_WARNING,
@@ -192,22 +195,22 @@ class SafetySourceCtsData(private val context: Context) {
             .build()
 
     /**
-     * A [SafetySourceData] with a [SEVERITY_LEVEL_CRITICAL_WARNING] [SafetySourceIssue] and
-     * [SafetySourceStatus].
+     * A [SafetySourceData] with a [SEVERITY_LEVEL_CRITICAL_WARNING] resolving [SafetySourceIssue]
+     * and [SafetySourceStatus].
      */
-    val criticalWithIssue =
+    val criticalWithResolvingIssue =
         SafetySourceData.Builder()
             .setStatus(
                 SafetySourceStatus.Builder(
                         "Critical title", "Critical summary", SEVERITY_LEVEL_CRITICAL_WARNING)
                     .setPendingIntent(redirectPendingIntent)
                     .build())
-            .addIssue(criticalIssue)
+            .addIssue(criticalResolvingIssue)
             .build()
 
     /**
-     * A [SafetySourceData] with a [SEVERITY_LEVEL_INFORMATION] [SafetySourceIssue] and
-     * [SafetySourceStatus].
+     * A [SafetySourceData] with a [SEVERITY_LEVEL_INFORMATION] redirecting [SafetySourceIssue] and
+     * [SEVERITY_LEVEL_CRITICAL_WARNING] [SafetySourceStatus].
      */
     val criticalWithInformationIssue =
         SafetySourceData.Builder()
@@ -220,45 +223,42 @@ class SafetySourceCtsData(private val context: Context) {
             .build()
 
     /**
-     * Another [SafetySourceData] with a [SEVERITY_LEVEL_CRITICAL_WARNING] [SafetySourceIssue] and
-     * [SafetySourceStatus].
+     * Another [SafetySourceData] with a [SEVERITY_LEVEL_CRITICAL_WARNING] redirecting
+     * [SafetySourceIssue] and [SafetySourceStatus].
      */
-    val criticalWithIssue2 =
+    val criticalWithRedirectingIssue =
         SafetySourceData.Builder()
             .setStatus(
                 SafetySourceStatus.Builder(
                         "Critical title 2", "Critical summary 2", SEVERITY_LEVEL_CRITICAL_WARNING)
                     .setPendingIntent(redirectPendingIntent)
                     .build())
-            .addIssue(criticalIssue2)
+            .addIssue(criticalRedirectingIssue)
             .build()
 
     companion object {
         /** Issue ID for [informationIssue]. */
         const val INFORMATION_ISSUE_ID = "information_issue_id"
 
-        /** Action ID for the redirection action in [informationIssue]. */
+        /** Action ID for the redirecting action in [informationIssue]. */
         const val INFORMATION_ISSUE_ACTION_ID = "information_issue_action_id"
 
         /** Issue ID for [recommendationIssue]. */
         const val RECOMMENDATION_ISSUE_ID = "recommendation_issue_id"
 
-        /** Action ID for the action in [recommendationIssue]. */
+        /** Action ID for the redirecting action in [recommendationIssue]. */
         const val RECOMMENDATION_ISSUE_ACTION_ID = "recommendation_issue_action_id"
 
-        /** Issue ID for [criticalIssue]. */
+        /** Issue ID for the critical issues in this file. */
         const val CRITICAL_ISSUE_ID = "critical_issue_id"
 
-        /** Issue ID for second [criticalIssue]. */
-        const val CRITICAL_ISSUE_ID_2 = "critical_issue_id_2"
-
-        /** Action ID for the resolving action in [criticalIssue]. */
+        /** Action ID for the critical actions in this file. */
         const val CRITICAL_ISSUE_ACTION_ID = "critical_issue_action_id"
 
-        /** Issue type ID for all the SafetySourceIssue in this file */
+        /** Issue type ID for all the issues in this file */
         const val ISSUE_TYPE_ID = "issue_type_id"
 
-        /** A [SafetyEvent] to push arbitrary changes to SafetyCenter. */
+        /** A [SafetyEvent] to push arbitrary changes to Safety Center. */
         val EVENT_SOURCE_STATE_CHANGED =
             SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
 
