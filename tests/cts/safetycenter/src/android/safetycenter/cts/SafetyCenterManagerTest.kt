@@ -18,7 +18,6 @@ package android.safetycenter.cts
 
 import android.app.PendingIntent
 import android.content.Context
-import android.content.Intent
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.UserHandle.USER_NULL
 import android.safetycenter.SafetyCenterData
@@ -95,6 +94,8 @@ import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_3
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.STATIC_BAREBONE_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.STATIC_IN_COLLAPSIBLE_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsData
+import android.safetycenter.cts.testing.SafetyCenterCtsData.normalize
+import android.safetycenter.cts.testing.SafetyCenterCtsData.stubPendingIntent
 import android.safetycenter.cts.testing.SafetyCenterCtsHelper
 import android.safetycenter.cts.testing.SafetyCenterCtsListener
 import android.safetycenter.cts.testing.SafetyCenterEnabledChangedReceiver
@@ -136,10 +137,6 @@ class SafetyCenterManagerTest {
     private val safetyCenterCtsHelper = SafetyCenterCtsHelper(context)
     private val safetySourceCtsData = SafetySourceCtsData(context)
     private val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)!!
-
-    private val stubPendingIntent =
-        PendingIntent.getActivity(
-            context, 0 /* requestCode */, Intent("Stub"), PendingIntent.FLAG_IMMUTABLE)
 
     private val safetyCenterStatusOk =
         SafetyCenterStatus.Builder("Looks good", "This device is protected")
@@ -2115,29 +2112,4 @@ class SafetyCenterManagerTest {
                         .setIsInFlight(isActionInFlight)
                         .build()))
             .build()
-
-    private fun SafetyCenterData.normalize() =
-        SafetyCenterData(
-            status,
-            issues,
-            entriesOrGroups.map {
-                if (it.entry != null) SafetyCenterEntryOrGroup(it.entry!!.normalize())
-                else SafetyCenterEntryOrGroup(it.entryGroup!!.normalize())
-            },
-            staticEntryGroups.map { it.normalize() })
-
-    private fun SafetyCenterEntryGroup.normalize() =
-        SafetyCenterEntryGroup.Builder(this).setEntries(entries.map { it.normalize() }).build()
-
-    private fun SafetyCenterEntry.normalize() =
-        SafetyCenterEntry.Builder(this).setPendingIntent(pendingIntent.normalize()).build()
-
-    private fun SafetyCenterStaticEntryGroup.normalize() =
-        SafetyCenterStaticEntryGroup(title, staticEntries.map { it.normalize() })
-
-    private fun SafetyCenterStaticEntry.normalize() =
-        SafetyCenterStaticEntry.Builder(this).setPendingIntent(pendingIntent.normalize()).build()
-
-    private fun PendingIntent?.normalize() =
-        if (this != null && creatorPackage != context.packageName) stubPendingIntent else this
 }
