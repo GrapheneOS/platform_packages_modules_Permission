@@ -47,6 +47,4 @@
     <color name="safety_center_recommend">@color/gm_yellow_500</color>
     <color name="safety_center_warn">@color/gm_red_500</color>
 
-    <color name="safety_center_done">#767676</color>
-    <color name="safety_center_qs_background">#2f3133</color>
 </resources>

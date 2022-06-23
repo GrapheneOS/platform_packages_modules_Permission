@@ -57,58 +57,68 @@ class SafetyCenterQsViewModel(
     private val locationManager: LocationManager =
         app.getSystemService(LocationManager::class.java)!!
 
-    val lightAppPermMap = mutableMapOf<Triple<String, String, UserHandle>, LightAppPermGroup?>()
+    val lightAppPermMap = mutableMapOf<LightAppPermissionGroupUsageKey, LightAppPermGroup?>()
+    val revokedUsages = mutableSetOf<PermissionGroupUsage>()
 
-    val permDataLoadedLiveData = object
-        : SmartUpdateMediatorLiveData<Boolean>() {
+    val permDataLoadedLiveData =
+        object : SmartUpdateMediatorLiveData<Boolean>() {
 
-        private val lightAppPermLiveDatas = mutableMapOf<Triple<String, String, UserHandle>,
-            LightAppPermGroupLiveData>()
+            private val lightAppPermLiveDatas =
+                mutableMapOf<LightAppPermissionGroupUsageKey, LightAppPermGroupLiveData>()
 
-        init {
-            for (permGroupUsage in permGroupUsages) {
-                val pgTriple = Triple(permGroupUsage.packageName,
-                    permGroupUsage.permissionGroupName,
-                    UserHandle.getUserHandleForUid(permGroupUsage.uid))
-                val appPermGroupLiveData = LightAppPermGroupLiveData[pgTriple]
-                lightAppPermLiveDatas[pgTriple] = appPermGroupLiveData
-                addSource(appPermGroupLiveData) {
-                    update()
+            init {
+                for (permGroupUsage in permGroupUsages) {
+                    val packageName = permGroupUsage.packageName
+                    val permissionGroupName = permGroupUsage.permissionGroupName
+                    val userHandle = UserHandle.getUserHandleForUid(permGroupUsage.uid)
+                    val lightAppPermissionGroupUsageKey =
+                        LightAppPermissionGroupUsageKey(
+                            packageName, permissionGroupName, userHandle)
+                    val appPermGroupLiveData: LightAppPermGroupLiveData =
+                        LightAppPermGroupLiveData[
+                            Triple(packageName, permissionGroupName, userHandle)]
+                    lightAppPermLiveDatas[lightAppPermissionGroupUsageKey] = appPermGroupLiveData
+                    addSource(appPermGroupLiveData) { update() }
                 }
             }
-        }
 
-        override fun onUpdate() {
-            if (!lightAppPermLiveDatas.all { it.value.isInitialized }) {
-                return
+            override fun onUpdate() {
+                if (!lightAppPermLiveDatas.all { it.value.isInitialized }) {
+                    return
+                }
+                for ((lightAppPermissionGroupUsageKey, lightAppPermLiveData) in
+                    lightAppPermLiveDatas) {
+                    lightAppPermMap[lightAppPermissionGroupUsageKey] = lightAppPermLiveData.value
+                }
+                value = true
             }
-            for ((pgTriple, lightAppPermLiveData) in lightAppPermLiveDatas) {
-                lightAppPermMap[pgTriple] = lightAppPermLiveData.value
-            }
-            value = true
         }
-    }
 
     fun shouldAllowRevoke(usage: PermissionGroupUsage): Boolean {
-        val pgTriple = Triple(usage.packageName,
+        val group = lightAppPermMap[LightAppPermissionGroupUsageKey(
+                usage.packageName,
                 usage.permissionGroupName,
-                UserHandle.getUserHandleForUid(usage.uid))
-        val group = lightAppPermMap[pgTriple] ?: return false
+                UserHandle.getUserHandleForUid(usage.uid))] ?: return false
         return group.supportsRuntimePerms &&
-                !group.hasInstallToRuntimeSplit &&
-                !group.isBackgroundFixed &&
-                !group.isForegroundFixed &&
-                !group.isGrantedByDefault
+            !group.hasInstallToRuntimeSplit &&
+            !group.isBackgroundFixed &&
+            !group.isForegroundFixed &&
+            !group.isGrantedByDefault
     }
 
     fun revokePermission(usage: PermissionGroupUsage) {
-        val group = lightAppPermMap.get(Triple(usage.packageName, usage.permissionGroupName,
-            UserHandle.getUserHandleForUid(usage.uid))) ?: return
+        val group =
+            lightAppPermMap[LightAppPermissionGroupUsageKey(
+                    usage.packageName,
+                    usage.permissionGroupName,
+                    UserHandle.getUserHandleForUid(usage.uid))]
+                ?: return
 
         if (group != null) {
             KotlinUtils.revokeForegroundRuntimePermissions(app, group)
             KotlinUtils.revokeBackgroundRuntimePermissions(app, group)
         }
+        revokedUsages.add(usage)
     }
 
     fun toggleSensor(groupName: String) {
@@ -136,15 +146,20 @@ class SafetyCenterQsViewModel(
     }
 
     val sensorPrivacyLiveData: SmartUpdateMediatorLiveData<Map<String, Boolean>> =
-        object : SmartUpdateMediatorLiveData<Map<String, Boolean>>(),
-            SensorPrivacyManager.OnSensorPrivacyChangedListener, LocationUtils.LocationListener {
+        object :
+            SmartUpdateMediatorLiveData<Map<String, Boolean>>(),
+            SensorPrivacyManager.OnSensorPrivacyChangedListener,
+            LocationUtils.LocationListener {
             override fun onUpdate() {
                 val cameraEnabled = !sensorPrivacyManager.isSensorPrivacyEnabled(Sensors.CAMERA)
                 val micEnabled = !sensorPrivacyManager.isSensorPrivacyEnabled(Sensors.MICROPHONE)
                 val locationEnabled =
                     locationManager.isLocationEnabledForUser(Process.myUserHandle())
-                value = mapOf(CAMERA to cameraEnabled, MICROPHONE to micEnabled,
-                    LOCATION to locationEnabled)
+                value =
+                    mapOf(
+                        CAMERA to cameraEnabled,
+                        MICROPHONE to micEnabled,
+                        LOCATION to locationEnabled)
             }
 
             override fun onSensorPrivacyChanged(sensor: Int, enabled: Boolean) {
@@ -179,19 +194,19 @@ class SafetyCenterQsViewModel(
         fragment.startActivity(getDefaultManageAppPermissionsIntent(usage.packageName, usage.uid))
     }
 
-    fun getStartViewPermissionUsageIntent(context: Context, usage: PermissionGroupUsage):
-        Intent? {
+    fun getStartViewPermissionUsageIntent(context: Context, usage: PermissionGroupUsage): Intent? {
         var intent: Intent = Intent(Intent.ACTION_MANAGE_PERMISSION_USAGE)
         intent.setPackage(usage.packageName)
         intent.putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, usage.permissionGroupName)
         intent.putExtra(Intent.EXTRA_ATTRIBUTION_TAGS, arrayOf(usage.attributionTag.toString()))
         intent.putExtra(Intent.EXTRA_SHOWING_ATTRIBUTION, true)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        val resolveInfo: ResolveInfo? = context.packageManager.resolveActivity(
-            intent, PackageManager.ResolveInfoFlags.of(0))
-        if (resolveInfo != null && resolveInfo.activityInfo != null &&
+        val resolveInfo: ResolveInfo? =
+            context.packageManager.resolveActivity(intent, PackageManager.ResolveInfoFlags.of(0))
+        if (resolveInfo != null &&
+            resolveInfo.activityInfo != null &&
             resolveInfo.activityInfo.permission ==
-            android.Manifest.permission.START_VIEW_PERMISSION_USAGE) {
+                android.Manifest.permission.START_VIEW_PERMISSION_USAGE) {
             intent.component = ComponentName(usage.packageName, resolveInfo.activityInfo.name)
             return intent
         }
@@ -211,6 +226,12 @@ class SafetyCenterQsViewModel(
         seeUsageIntent.putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, permGroupName)
         fragment.startActivity(seeUsageIntent)
     }
+
+    data class LightAppPermissionGroupUsageKey(
+        val packageName: String,
+        val permissionGroupName: String,
+        val userHandle: UserHandle
+    )
 }
 
 /**

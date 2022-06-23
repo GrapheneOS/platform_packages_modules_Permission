@@ -27,13 +27,19 @@ import static java.util.Objects.requireNonNull;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
+import android.annotation.WorkerThread;
 import android.app.AppOpsManager;
 import android.app.PendingIntent;
+import android.content.ApexEnvironment;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Binder;
 import android.os.Handler;
+import android.os.UserHandle;
 import android.provider.DeviceConfig;
 import android.provider.DeviceConfig.OnPropertiesChangedListener;
 import android.safetycenter.IOnSafetyCenterDataChangedListener;
@@ -46,12 +52,14 @@ import android.safetycenter.SafetySourceData;
 import android.safetycenter.SafetySourceErrorDetails;
 import android.safetycenter.SafetySourceIssue;
 import android.safetycenter.config.SafetyCenterConfig;
+import android.text.TextUtils;
 import android.util.Log;
 
 import androidx.annotation.Keep;
 import androidx.annotation.RequiresApi;
 
 import com.android.internal.annotations.GuardedBy;
+import com.android.modules.utils.BackgroundThread;
 import com.android.permission.util.ForegroundThread;
 import com.android.permission.util.UserUtils;
 import com.android.safetycenter.SafetyCenterConfigReader.Broadcast;
@@ -59,11 +67,16 @@ import com.android.safetycenter.internaldata.SafetyCenterIds;
 import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
+import com.android.safetycenter.persistence.PersistedSafetyCenterIssue;
+import com.android.safetycenter.persistence.PersistenceException;
+import com.android.safetycenter.persistence.SafetyCenterIssuesPersistence;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 import com.android.server.SystemService;
 
+import java.io.File;
 import java.time.Duration;
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -112,6 +125,17 @@ public final class SafetyCenterService extends SystemService {
     private static final Duration RESOLVING_ACTION_TIMEOUT_DEFAULT_DURATION =
             Duration.ofSeconds(10);
 
+    /** The APEX name used to retrieve the APEX owned data directories. */
+    private static final String APEX_MODULE_NAME = "com.android.permission";
+
+    /** The name of the file used to persist the Safety Center issue cache. */
+    private static final String SAFETY_CENTER_ISSUES_CACHE_FILE_NAME = "safety_center_issues.xml";
+
+    /** The time delay used to throttle and aggregate writes to disk. */
+    private static final long WRITE_DELAY_MILLIS = 500;
+
+    private final Handler mWriteHandler = BackgroundThread.getHandler();
+
     private final Object mApiLock = new Object();
 
     @GuardedBy("mApiLock")
@@ -131,6 +155,9 @@ public final class SafetyCenterService extends SystemService {
     @GuardedBy("mApiLock")
     @NonNull
     private final SafetyCenterDataTracker mSafetyCenterDataTracker;
+
+    @GuardedBy("mApiLock")
+    private boolean mSafetyCenterIssueCacheWriteScheduled;
 
     @NonNull private final SafetyCenterBroadcastDispatcher mSafetyCenterBroadcastDispatcher;
 
@@ -168,6 +195,10 @@ public final class SafetyCenterService extends SystemService {
         if (mDeviceSupportsSafetyCenter) {
             synchronized (mApiLock) {
                 mConfigAvailable = mSafetyCenterConfigReader.loadConfig();
+                if (mConfigAvailable) {
+                    readSafetyCenterIssueCacheFileLocked();
+                    registerUserRemovedReceiver();
+                }
             }
         }
     }
@@ -219,6 +250,7 @@ public final class SafetyCenterService extends SystemService {
                         mSafetyCenterDataTracker.setSafetySourceData(
                                 safetySourceData, safetySourceId, safetyEvent, packageName, userId);
                 deliverListenersUpdateLocked(userProfileGroup, hasUpdate, null);
+                scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked();
             }
         }
 
@@ -416,6 +448,7 @@ public final class SafetyCenterService extends SystemService {
                     return;
                 }
                 mSafetyCenterDataTracker.dismissSafetyCenterIssue(safetyCenterIssueKey);
+                scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked();
                 PendingIntent onDismissPendingIntent =
                         safetySourceIssue.getOnDismissPendingIntent();
                 if (onDismissPendingIntent != null
@@ -515,6 +548,7 @@ public final class SafetyCenterService extends SystemService {
             }
 
             synchronized (mApiLock) {
+                // TODO(b/236693607): Should tests leave real data untouched?
                 clearDataLocked();
                 // TODO(b/223550097): Should we dispatch a new listener update here? This call can
                 //  modify the SafetyCenterData.
@@ -533,6 +567,7 @@ public final class SafetyCenterService extends SystemService {
 
             synchronized (mApiLock) {
                 mSafetyCenterConfigReader.setConfigOverrideForTests(safetyCenterConfig);
+                // TODO(b/236693607): Should tests leave real data untouched?
                 clearDataLocked();
                 // TODO(b/223550097): Should we clear the listeners here? Or should we dispatch a
                 //  new listener update since the SafetyCenterData will have changed?
@@ -550,6 +585,7 @@ public final class SafetyCenterService extends SystemService {
 
             synchronized (mApiLock) {
                 mSafetyCenterConfigReader.clearConfigOverrideForTests();
+                // TODO(b/236693607): Should tests leave real data untouched?
                 clearDataLocked();
                 // TODO(b/223550097): Should we clear the listeners here? Or should we dispatch a
                 //  new listener update since the SafetyCenterData will have changed?
@@ -842,6 +878,42 @@ public final class SafetyCenterService extends SystemService {
         mSafetyCenterDataTracker.clear();
         mSafetyCenterTimeouts.clear();
         mSafetyCenterRefreshTracker.clearRefresh();
+        scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked();
+    }
+
+    private void onRemoveUser(@UserIdInt int userId) {
+        UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
+        synchronized (mApiLock) {
+            mSafetyCenterDataTracker.clearForUser(userId);
+            mSafetyCenterListeners.clearForUser(userId);
+            mSafetyCenterRefreshTracker.clearRefreshForUser(userId);
+            deliverListenersUpdateLocked(userProfileGroup, true, null);
+            scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked();
+        }
+    }
+
+    private void registerUserRemovedReceiver() {
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(Intent.ACTION_USER_REMOVED);
+        getContext()
+                .registerReceiverForAllUsers(
+                        new BroadcastReceiver() {
+                            @Override
+                            public void onReceive(
+                                    @NonNull Context context, @NonNull Intent intent) {
+                                if (TextUtils.equals(
+                                        intent.getAction(), Intent.ACTION_USER_REMOVED)) {
+                                    int userId =
+                                            intent.getParcelableExtra(
+                                                            Intent.EXTRA_USER, UserHandle.class)
+                                                    .getIdentifier();
+                                    onRemoveUser(userId);
+                                }
+                            }
+                        },
+                        intentFilter,
+                        null,
+                        null);
     }
 
     /**
@@ -878,5 +950,57 @@ public final class SafetyCenterService extends SystemService {
         } finally {
             Binder.restoreCallingIdentity(callingId);
         }
+    }
+
+    /** Schedule writing the cache to file. */
+    @GuardedBy("mApiLock")
+    private void scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked() {
+        if (!mSafetyCenterDataTracker.isSafetyCenterIssueCacheDirty()) {
+            return;
+        }
+        if (!mSafetyCenterIssueCacheWriteScheduled) {
+            mWriteHandler.postDelayed(this::writeSafetyCenterIssueCacheFile, WRITE_DELAY_MILLIS);
+            mSafetyCenterIssueCacheWriteScheduled = true;
+        }
+    }
+
+    @WorkerThread
+    private void writeSafetyCenterIssueCacheFile() {
+        List<PersistedSafetyCenterIssue> persistedSafetyCenterIssues;
+
+        synchronized (mApiLock) {
+            mSafetyCenterIssueCacheWriteScheduled = false;
+            persistedSafetyCenterIssues = mSafetyCenterDataTracker.snapshotSafetyCenterIssueCache();
+            // Since all write operations are scheduled in the same background thread, we can safely
+            // release the lock after creating a snapshot and know that all snapshots will be
+            // written in the correct order even if we are not holding the lock.
+        }
+
+        SafetyCenterIssuesPersistence.write(
+                persistedSafetyCenterIssues, getSafetyCenterIssueCacheFile());
+    }
+
+    @GuardedBy("mApiLock")
+    private void readSafetyCenterIssueCacheFileLocked() {
+        List<PersistedSafetyCenterIssue> persistedSafetyCenterIssues = new ArrayList<>();
+
+        try {
+            persistedSafetyCenterIssues =
+                    SafetyCenterIssuesPersistence.read(getSafetyCenterIssueCacheFile());
+            Log.i(TAG, "Safety Center persisted issues read successfully");
+        } catch (PersistenceException e) {
+            Log.e(TAG, "Cannot read Safety Center persisted issues", e);
+        }
+
+        mSafetyCenterDataTracker.loadSafetyCenterIssueCache(persistedSafetyCenterIssues);
+        scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked();
+    }
+
+    @NonNull
+    private static File getSafetyCenterIssueCacheFile() {
+        ApexEnvironment apexEnvironment = ApexEnvironment.getApexEnvironment(APEX_MODULE_NAME);
+        File dataDirectory = apexEnvironment.getDeviceProtectedDataDir();
+        // It should resolve to /data/misc/apexdata/com.android.permission/safety_center_issues.xml
+        return new File(dataDirectory, SAFETY_CENTER_ISSUES_CACHE_FILE_NAME);
     }
 }
