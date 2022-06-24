@@ -22,6 +22,8 @@ import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_RESCAN_BUT
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
+import android.os.Binder;
+import android.provider.DeviceConfig;
 import android.safetycenter.SafetyCenterManager.RefreshReason;
 import android.safetycenter.SafetyCenterStatus;
 import android.safetycenter.SafetyCenterStatus.RefreshStatus;
@@ -46,6 +48,10 @@ import javax.annotation.concurrent.NotThreadSafe;
 @NotThreadSafe
 final class SafetyCenterRefreshTracker {
     private static final String TAG = "SafetyCenterRefreshTrac";
+    private static final String PROPERTY_UNTRACKED_SOURCES = "safety_center_untracked_sources";
+    // TODO(b/236102780): update to "" after cl/456081904 is merged
+    public static final String DEFAULT_UNTRACKED_SOURCES =
+            "AndroidAccessibility,AndroidBackgroundLocation,AndroidPermissionAutoRevoke";
 
     @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
 
@@ -86,26 +92,30 @@ final class SafetyCenterRefreshTracker {
                         + refreshBroadcastId);
 
         mRefreshInProgress =
-                new RefreshInProgress(refreshBroadcastId, refreshReason, userProfileGroup);
+                new RefreshInProgress(
+                        refreshBroadcastId,
+                        refreshReason,
+                        userProfileGroup,
+                        getUntrackedSourceIds());
 
         for (int i = 0; i < broadcasts.size(); i++) {
             Broadcast broadcast = broadcasts.get(i);
             List<String> profileParentSourceIds =
                     broadcast.getSourceIdsForProfileParent(refreshReason);
             for (int j = 0; j < profileParentSourceIds.size(); j++) {
+                String profileParentSourceId = profileParentSourceIds.get(j);
                 mRefreshInProgress.addSourceRefreshInFlight(
                         SafetySourceKey.of(
-                                profileParentSourceIds.get(j),
-                                userProfileGroup.getProfileParentUserId()));
+                                profileParentSourceId, userProfileGroup.getProfileParentUserId()));
             }
             List<String> managedProfilesSourceIds =
                     broadcast.getSourceIdsForManagedProfiles(refreshReason);
+            int[] managedProfilesUserIds = userProfileGroup.getManagedProfilesUserIds();
             for (int j = 0; j < managedProfilesSourceIds.size(); j++) {
-                int[] managedProfilesUserIds = userProfileGroup.getManagedProfilesUserIds();
+                String managedProfilesSourceId = managedProfilesSourceIds.get(j);
                 for (int k = 0; k < managedProfilesUserIds.length; k++) {
                     mRefreshInProgress.addSourceRefreshInFlight(
-                            SafetySourceKey.of(
-                                    managedProfilesSourceIds.get(j), managedProfilesUserIds[k]));
+                            SafetySourceKey.of(managedProfilesSourceId, managedProfilesUserIds[k]));
                 }
             }
         }
@@ -221,6 +231,29 @@ final class SafetyCenterRefreshTracker {
         return true;
     }
 
+    /**
+     * Returns the IDs of sources that should not be tracked, for example because they are
+     * mid-rollout. Broadcasts are still sent to these sources.
+     */
+    private static ArraySet<String> getUntrackedSourceIds() {
+        String untrackedSourcesConfigString = getUntrackedSourcesConfigString();
+        String[] untrackedSourcesList = untrackedSourcesConfigString.split(",");
+        return new ArraySet<>(untrackedSourcesList);
+    }
+
+    private static String getUntrackedSourcesConfigString() {
+        // This call requires the READ_DEVICE_CONFIG permission.
+        final long callingId = Binder.clearCallingIdentity();
+        try {
+            return DeviceConfig.getString(
+                    DeviceConfig.NAMESPACE_PRIVACY,
+                    PROPERTY_UNTRACKED_SOURCES,
+                    DEFAULT_UNTRACKED_SOURCES);
+        } finally {
+            Binder.restoreCallingIdentity(callingId);
+        }
+    }
+
     /** Class representing the state of a refresh in progress. */
     private static final class RefreshInProgress {
         @NonNull private final String mId;
@@ -228,15 +261,18 @@ final class SafetyCenterRefreshTracker {
         @NonNull private final UserProfileGroup mUserProfileGroup;
 
         @NonNull private final ArraySet<SafetySourceKey> mSourceRefreshInFlight = new ArraySet<>();
+        @NonNull private ArraySet<String> mUntrackedSourcesIds;
 
         /** Creates a {@link RefreshInProgress}. */
         RefreshInProgress(
                 @NonNull String id,
                 @RefreshReason int reason,
-                @NonNull UserProfileGroup userProfileGroup) {
+                @NonNull UserProfileGroup userProfileGroup,
+                @NonNull ArraySet<String> untrackedSourceIds) {
             mId = id;
             mReason = reason;
             mUserProfileGroup = userProfileGroup;
+            mUntrackedSourcesIds = untrackedSourceIds;
         }
 
         /**
@@ -262,7 +298,10 @@ final class SafetyCenterRefreshTracker {
         }
 
         private void addSourceRefreshInFlight(@NonNull SafetySourceKey safetySourceKey) {
-            mSourceRefreshInFlight.add(safetySourceKey);
+            boolean tracked = isTracked(safetySourceKey);
+            if (tracked) {
+                mSourceRefreshInFlight.add(safetySourceKey);
+            }
             Log.v(
                     TAG,
                     "Refresh started for sourceId:"
@@ -271,13 +310,16 @@ final class SafetyCenterRefreshTracker {
                             + safetySourceKey.getUserId()
                             + " with refreshBroadcastId:"
                             + mId
-                            + ", now "
+                            + " & tracking:"
+                            + tracked
+                            + " , now "
                             + mSourceRefreshInFlight.size()
-                            + " in flight.");
+                            + " tracked sources in flight.");
         }
 
         private void markSourceRefreshAsComplete(@NonNull SafetySourceKey safetySourceKey) {
             mSourceRefreshInFlight.remove(safetySourceKey);
+            boolean tracked = isTracked(safetySourceKey);
             Log.v(
                     TAG,
                     "Refresh completed for sourceId:"
@@ -286,9 +328,15 @@ final class SafetyCenterRefreshTracker {
                             + safetySourceKey.getUserId()
                             + " with refreshBroadcastId:"
                             + mId
+                            + " & tracking:"
+                            + tracked
                             + ", "
                             + mSourceRefreshInFlight.size()
-                            + " still in flight.");
+                            + " tracked sources still in flight.");
+        }
+
+        private boolean isTracked(SafetySourceKey safetySourceKey) {
+            return !mUntrackedSourcesIds.contains(safetySourceKey.getSourceId());
         }
 
         private void clearForUser(@UserIdInt int userId) {

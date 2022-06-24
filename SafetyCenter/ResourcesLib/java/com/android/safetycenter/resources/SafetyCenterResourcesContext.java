@@ -29,6 +29,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
 import androidx.annotation.VisibleForTesting;
 
 import java.io.File;
@@ -176,21 +177,39 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
     /** Gets a string resource by name from the Safety Center resources APK. */
     @Nullable
     public String getStringByName(@NonNull String name) {
-        String resourcePkgName = getResourcesApkPkgName();
-        if (resourcePkgName == null) {
-            return null;
-        }
-        Resources resources = getResources();
-        if (resources == null) {
-            return null;
-        }
-        // TODO(b/227738283): profile the performance of this operation and consider adding caching
-        //  or finding some alternative solution.
-        int id = resources.getIdentifier(name, "string", resourcePkgName);
+        int id = getStringRes(name);
         if (id == Resources.ID_NULL) {
             return null;
         }
-        return resources.getString(id);
+        return getResources().getString(id);
+    }
+
+    /**
+     * Gets a string resource by name from the Safety Center resources APK, with the given {@code
+     * formatArgs}.
+     */
+    @Nullable
+    public String getStringByName(@NonNull String name, Object... formatArgs) {
+        int id = getStringRes(name);
+        if (id == Resources.ID_NULL) {
+            return null;
+        }
+        return getResources().getString(id, formatArgs);
+    }
+
+    @StringRes
+    private int getStringRes(@NonNull String name) {
+        String resourcePkgName = getResourcesApkPkgName();
+        if (resourcePkgName == null) {
+            return Resources.ID_NULL;
+        }
+        Resources resources = getResources();
+        if (resources == null) {
+            return Resources.ID_NULL;
+        }
+        // TODO(b/227738283): profile the performance of this operation and consider adding caching
+        //  or finding some alternative solution.
+        return resources.getIdentifier(name, "string", resourcePkgName);
     }
 
     @Nullable
