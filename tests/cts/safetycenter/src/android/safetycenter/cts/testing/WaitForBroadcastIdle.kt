@@ -24,7 +24,7 @@ import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermission
 import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.TimeoutCancellationException
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.runInterruptible
 
 /** A class that allows waiting for the broadcast queue to be idle. */
 object WaitForBroadcastIdle {
@@ -43,9 +43,7 @@ object WaitForBroadcastIdle {
     // cannot apply to blocking code.
     private suspend fun Context.waitForBroadcastIdleAsync() {
         val activityManager = getSystemService(ActivityManager::class.java)!!
-        withContext(Dispatchers.Default) {
-            activityManager.waitForBroadcastIdle()
-        }
+        runInterruptible(Dispatchers.IO) { activityManager.waitForBroadcastIdle() }
     }
 
     private const val TAG = "WaitForBroadcastIdle"
