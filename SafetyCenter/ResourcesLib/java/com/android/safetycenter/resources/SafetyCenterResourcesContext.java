@@ -174,27 +174,53 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
         return resources.openRawResource(id);
     }
 
-    /** Gets a string resource by name from the Safety Center resources APK. */
+    /**
+     * Returns an optional {@link String} resource from the given {@code stringId}.
+     *
+     * <p>Returns {@code null} if {@code stringId} is equal to {@link Resources#ID_NULL}. Otherwise,
+     * throws a {@link Resources.NotFoundException} if the resource cannot be accessed.
+     */
     @Nullable
-    public String getStringByName(@NonNull String name) {
-        int id = getStringRes(name);
-        if (id == Resources.ID_NULL) {
+    public String getOptionalString(@StringRes int stringId) {
+        if (stringId == Resources.ID_NULL) {
             return null;
         }
-        return getResources().getString(id);
+        return getString(stringId);
+    }
+
+    /** Same as {@link #getOptionalString(int)} but with the given {@code formatArgs}. */
+    @Nullable
+    public String getOptionalString(@StringRes int stringId, @NonNull Object... formatArgs) {
+        if (stringId == Resources.ID_NULL) {
+            return null;
+        }
+        return getString(stringId, formatArgs);
     }
 
     /**
-     * Gets a string resource by name from the Safety Center resources APK, with the given {@code
-     * formatArgs}.
+     * Gets a string resource by name from the Safety Center resources APK, and returns an empty
+     * string if the resource does not exist.
      */
+    @Nullable
+    public String getStringByName(@NonNull String name) {
+        int id = getStringRes(name);
+        return emptyIfNamedResourceIsNull(name, getOptionalString(id));
+    }
+
+    /** Same as {@link #getStringByName(String)} but with the given {@code formatArgs}. */
     @Nullable
     public String getStringByName(@NonNull String name, Object... formatArgs) {
         int id = getStringRes(name);
-        if (id == Resources.ID_NULL) {
-            return null;
+        return emptyIfNamedResourceIsNull(name, getOptionalString(id, formatArgs));
+    }
+
+    @NonNull
+    private static String emptyIfNamedResourceIsNull(@NonNull String name, @Nullable String value) {
+        if (value == null) {
+            Log.w(TAG, "String resource " + name + " not found");
+            return "";
         }
-        return getResources().getString(id, formatArgs);
+        return value;
     }
 
     @StringRes
