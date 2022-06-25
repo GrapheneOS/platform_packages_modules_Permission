@@ -135,7 +135,9 @@ class SafetyCenterUnsupportedTest {
     fun setAndGetSafetySourceData_doesntSetData() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(SINGLE_SOURCE_CONFIG)
         safetyCenterManager.setSafetySourceDataWithPermission(
-            SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithIssue, EVENT_SOURCE_STATE_CHANGED)
+            SINGLE_SOURCE_ID,
+            safetySourceCtsData.criticalWithResolvingIssue,
+            EVENT_SOURCE_STATE_CHANGED)
 
         val apiSafetySourceData =
             safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
@@ -159,18 +161,14 @@ class SafetyCenterUnsupportedTest {
     }
 
     @Test
-    fun reportSafetySourceError_doesntCallErrorListener() {
+    fun reportSafetySourceError_doesntCheckRequest() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(SINGLE_SOURCE_CONFIG)
         val listener = SafetyCenterCtsListener()
         safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
             directExecutor(), listener)
 
         safetyCenterManager.reportSafetySourceErrorWithPermission(
-            SINGLE_SOURCE_ID, SafetySourceErrorDetails(EVENT_SOURCE_STATE_CHANGED))
-
-        assertFailsWith(TimeoutCancellationException::class) {
-            listener.receiveSafetyCenterErrorDetails(TIMEOUT_SHORT)
-        }
+            "unknown_id", SafetySourceErrorDetails(EVENT_SOURCE_STATE_CHANGED))
     }
 
     @Test
@@ -294,7 +292,9 @@ class SafetyCenterUnsupportedTest {
     fun dismissSafetyCenterIssue_doesntCallListenerOrDismiss() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(SINGLE_SOURCE_CONFIG)
         safetyCenterManager.setSafetySourceDataWithPermission(
-            SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithIssue, EVENT_SOURCE_STATE_CHANGED)
+            SINGLE_SOURCE_ID,
+            safetySourceCtsData.criticalWithResolvingIssue,
+            EVENT_SOURCE_STATE_CHANGED)
         val listener = SafetyCenterCtsListener()
         safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
             directExecutor(), listener)
@@ -318,7 +318,9 @@ class SafetyCenterUnsupportedTest {
     fun executeSafetyCenterIssueAction_doesntCallListenerOrExecute() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(SINGLE_SOURCE_CONFIG)
         safetyCenterManager.setSafetySourceDataWithPermission(
-            SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithIssue, EVENT_SOURCE_STATE_CHANGED)
+            SINGLE_SOURCE_ID,
+            safetySourceCtsData.criticalWithResolvingIssue,
+            EVENT_SOURCE_STATE_CHANGED)
         val listener = SafetyCenterCtsListener()
         safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
             directExecutor(), listener)
@@ -346,7 +348,9 @@ class SafetyCenterUnsupportedTest {
     fun clearAllSafetySourceDataForTests_doesntClearData() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(SINGLE_SOURCE_CONFIG)
         safetyCenterManager.setSafetySourceDataWithPermission(
-            SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithIssue, EVENT_SOURCE_STATE_CHANGED)
+            SINGLE_SOURCE_ID,
+            safetySourceCtsData.criticalWithResolvingIssue,
+            EVENT_SOURCE_STATE_CHANGED)
         val apiSafetySourceDataBeforeClearing =
             safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
 

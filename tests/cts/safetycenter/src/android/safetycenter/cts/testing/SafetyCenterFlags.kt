@@ -27,7 +27,6 @@ import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermission
 import java.time.Duration
 
 /** A class that facilitates working with Safety Center flags. */
-// TODO(b/219553295): Add timeout flags.
 object SafetyCenterFlags {
 
     /** Flag that determines whether SafetyCenter is enabled. */
@@ -73,25 +72,9 @@ object SafetyCenterFlags {
 
     /** A property that allows getting and modifying [PROPERTY_SAFETY_CENTER_ENABLED]. */
     var isEnabled: Boolean
-        get() =
-            callWithShellPermissionIdentity(
-                {
-                    DeviceConfig.getBoolean(
-                        NAMESPACE_PRIVACY, PROPERTY_SAFETY_CENTER_ENABLED, /* defaultValue */ false)
-                },
-                READ_DEVICE_CONFIG)
+        get() = readFlag(PROPERTY_SAFETY_CENTER_ENABLED, defaultValue = false) { it.toBoolean() }
         set(value) {
-            callWithShellPermissionIdentity(
-                {
-                    val valueWasSet =
-                        DeviceConfig.setProperty(
-                            NAMESPACE_PRIVACY,
-                            PROPERTY_SAFETY_CENTER_ENABLED,
-                            /* value = */ value.toString(),
-                            /* makeDefault = */ false)
-                    require(valueWasSet) { "Could not set Safety Center flag value to: $value" }
-                },
-                WRITE_DEVICE_CONFIG)
+            writeFlag(PROPERTY_SAFETY_CENTER_ENABLED, value.toString())
         }
 
     /**
@@ -100,10 +83,12 @@ object SafetyCenterFlags {
      */
     var refreshTimeout: Duration
         get() =
-            readDurationProperty(
+            readFlag(
                 PROPERTY_SAFETY_CENTER_REFRESH_SOURCE_TIMEOUT,
-                REFRESH_SOURCE_TIMEOUT_DEFAULT_DURATION)
-        set(value) = writeDurationProperty(PROPERTY_SAFETY_CENTER_REFRESH_SOURCE_TIMEOUT, value)
+                REFRESH_SOURCE_TIMEOUT_DEFAULT_DURATION) { Duration.ofMillis(it.toLong()) }
+        set(value) {
+            writeFlag(PROPERTY_SAFETY_CENTER_REFRESH_SOURCE_TIMEOUT, value.toMillis().toString())
+        }
 
     /**
      * A property that allows getting and setting the
@@ -111,10 +96,12 @@ object SafetyCenterFlags {
      */
     var resolveActionTimeout: Duration
         get() =
-            readDurationProperty(
+            readFlag(
                 PROPERTY_SAFETY_CENTER_RESOLVE_ACTION_TIMEOUT,
-                RESOLVE_ACTION_TIMEOUT_DEFAULT_DURATION)
-        set(value) = writeDurationProperty(PROPERTY_SAFETY_CENTER_RESOLVE_ACTION_TIMEOUT, value)
+                RESOLVE_ACTION_TIMEOUT_DEFAULT_DURATION) { Duration.ofMillis(it.toLong()) }
+        set(value) {
+            writeFlag(PROPERTY_SAFETY_CENTER_RESOLVE_ACTION_TIMEOUT, value.toMillis().toString())
+        }
 
     /**
      * A property that allows getting and setting the [PROPERTY_UNTRACKED_SOURCES] device config
@@ -122,50 +109,35 @@ object SafetyCenterFlags {
      */
     var untrackedSources: Set<String>
         get() =
-            callWithShellPermissionIdentity(
-                {
-                    DeviceConfig.getString(
-                            NAMESPACE_PRIVACY, PROPERTY_UNTRACKED_SOURCES, /* defaultValue */ "")
-                        .split(",")
-                        .toSet()
-                },
-                READ_DEVICE_CONFIG)
+            readFlag(PROPERTY_UNTRACKED_SOURCES, defaultValue = emptySet()) {
+                it.split(",").toSet()
+            }
         set(value) {
-            callWithShellPermissionIdentity(
-                {
-                    val valueWasSet =
-                        DeviceConfig.setProperty(
-                            NAMESPACE_PRIVACY,
-                            PROPERTY_UNTRACKED_SOURCES,
-                            /* value = */ value.joinToString(","),
-                            /* makeDefault = */ false)
-                    require(valueWasSet) {
-                        "Could not set $PROPERTY_UNTRACKED_SOURCES flag value to: $value"
-                    }
-                },
-                WRITE_DEVICE_CONFIG)
+            writeFlag(PROPERTY_UNTRACKED_SOURCES, value.joinToString(","))
         }
 
-    private fun readDurationProperty(name: String, defaultValue: Duration) =
+    private fun <T> readFlag(name: String, defaultValue: T, parseFromString: (String) -> T) =
         callWithShellPermissionIdentity(
             {
-                Duration.ofMillis(
-                    DeviceConfig.getLong(NAMESPACE_PRIVACY, name, defaultValue.toMillis()))
+                val value = DeviceConfig.getProperty(NAMESPACE_PRIVACY, name)
+                if (value == null) {
+                    defaultValue
+                } else {
+                    parseFromString(value)
+                }
             },
             READ_DEVICE_CONFIG)
 
-    private fun writeDurationProperty(name: String, value: Duration) =
+    private fun writeFlag(name: String, stringValue: String) {
         callWithShellPermissionIdentity(
             {
                 val valueWasSet =
                     DeviceConfig.setProperty(
-                        NAMESPACE_PRIVACY,
-                        name,
-                        value.toMillis().toString(),
-                        /* makeDefault = */ false)
-                require(valueWasSet) { "Could not set $name to: $value" }
+                        NAMESPACE_PRIVACY, name, stringValue, /* makeDefault = */ false)
+                require(valueWasSet) { "Could not set $name to: $stringValue" }
             },
             WRITE_DEVICE_CONFIG)
+    }
 
     /**
      * Returns a snapshot of all the Safety Center flags.
