@@ -448,7 +448,8 @@ public final class SafetyCenterManager {
     @NonNull
     public SafetyCenterData getSafetyCenterData() {
         try {
-            return mService.getSafetyCenterData(mContext.getUser().getIdentifier());
+            return mService.getSafetyCenterData(
+                    mContext.getPackageName(), mContext.getUser().getIdentifier());
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }
@@ -472,7 +473,7 @@ public final class SafetyCenterManager {
             ListenerDelegate delegate = new ListenerDelegate(executor, listener);
             try {
                 mService.addOnSafetyCenterDataChangedListener(
-                        delegate, mContext.getUser().getIdentifier());
+                        delegate, mContext.getPackageName(), mContext.getUser().getIdentifier());
             } catch (RemoteException e) {
                 throw e.rethrowFromSystemServer();
             }

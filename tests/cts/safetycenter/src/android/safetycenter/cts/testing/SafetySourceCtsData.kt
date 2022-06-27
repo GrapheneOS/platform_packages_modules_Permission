@@ -19,6 +19,7 @@ package android.safetycenter.cts.testing
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.content.Intent.ACTION_SAFETY_CENTER
 import android.content.Intent.FLAG_RECEIVER_FOREGROUND
 import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetySourceData
@@ -42,12 +43,7 @@ import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.EXTRA_INL
 class SafetySourceCtsData(private val context: Context) {
 
     /** A [PendingIntent] that redirects to the SafetyCenter page. */
-    val redirectPendingIntent =
-        PendingIntent.getActivity(
-            context,
-            0 /* requestCode */,
-            Intent(Intent.ACTION_SAFETY_CENTER),
-            PendingIntent.FLAG_IMMUTABLE)
+    val redirectPendingIntent = createRedirectPendingIntent(context)
 
     /** A [SafetySourceData] with a [SEVERITY_LEVEL_UNSPECIFIED] [SafetySourceStatus]. */
     val unspecified =
@@ -262,11 +258,19 @@ class SafetySourceCtsData(private val context: Context) {
         val EVENT_SOURCE_STATE_CHANGED =
             SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
 
-        /** A utility to create a [SafetySourceData] object containing only issues. */
+        /** Returns a [SafetySourceData] object containing only the given [issues]. */
         fun issuesOnly(vararg issues: SafetySourceIssue): SafetySourceData {
             val builder = SafetySourceData.Builder()
             issues.forEach { builder.addIssue(it) }
             return builder.build()
         }
+
+        /** Returns a [PendingIntent] that redirects to the given [intentAction]'s page. */
+        fun createRedirectPendingIntent(
+            context: Context,
+            intentAction: String = ACTION_SAFETY_CENTER
+        ): PendingIntent =
+            PendingIntent.getActivity(
+                context, 0 /* requestCode */, Intent(intentAction), PendingIntent.FLAG_IMMUTABLE)
     }
 }
