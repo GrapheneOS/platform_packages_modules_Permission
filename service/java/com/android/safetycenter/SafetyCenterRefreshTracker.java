@@ -257,9 +257,9 @@ final class SafetyCenterRefreshTracker {
         @NonNull private final String mId;
         @RefreshReason private final int mReason;
         @NonNull private final UserProfileGroup mUserProfileGroup;
+        @NonNull private final ArraySet<String> mUntrackedSourcesIds;
 
-        @NonNull private final ArraySet<SafetySourceKey> mSourceRefreshInFlight = new ArraySet<>();
-        @NonNull private ArraySet<String> mUntrackedSourcesIds;
+        private final ArraySet<SafetySourceKey> mSourceRefreshInFlight = new ArraySet<>();
 
         /** Creates a {@link RefreshInProgress}. */
         RefreshInProgress(
