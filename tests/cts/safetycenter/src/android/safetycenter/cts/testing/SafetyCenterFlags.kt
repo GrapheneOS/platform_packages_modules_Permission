@@ -128,12 +128,12 @@ object SafetyCenterFlags {
             },
             READ_DEVICE_CONFIG)
 
-    private fun writeFlag(name: String, stringValue: String) {
+    private fun writeFlag(name: String, stringValue: String?) {
         callWithShellPermissionIdentity(
             {
                 val valueWasSet =
                     DeviceConfig.setProperty(
-                        NAMESPACE_PRIVACY, name, stringValue, /* makeDefault = */ false)
+                        NAMESPACE_PRIVACY, name, stringValue, /* makeDefault */ false)
                 require(valueWasSet) { "Could not set $name to: $stringValue" }
             },
             WRITE_DEVICE_CONFIG)
@@ -147,13 +147,26 @@ object SafetyCenterFlags {
      */
     val snapshot: Properties by lazy {
         callWithShellPermissionIdentity(
-            { DeviceConfig.getProperties(NAMESPACE_PRIVACY) }, READ_DEVICE_CONFIG)
+            {
+                DeviceConfig.getProperties(
+                    NAMESPACE_PRIVACY,
+                    PROPERTY_SAFETY_CENTER_ENABLED,
+                    PROPERTY_SAFETY_CENTER_REFRESH_SOURCE_TIMEOUT,
+                    PROPERTY_SAFETY_CENTER_RESOLVE_ACTION_TIMEOUT,
+                    PROPERTY_UNTRACKED_SOURCES)
+            },
+            READ_DEVICE_CONFIG)
     }
 
     /** Resets the Safety Center flags based on the given [snapshot]. */
     fun reset(snapshot: Properties) {
-        callWithShellPermissionIdentity(
-            { DeviceConfig.setProperties(snapshot) }, WRITE_DEVICE_CONFIG)
+        // Write flags one by one instead of using `DeviceConfig#setProperties` as the latter does
+        // not work when DeviceConfig sync is disabled.
+        snapshot.keyset.forEach {
+            val key = it
+            val value = snapshot.getString(key, /* defaultValue */ null)
+            writeFlag(key, value)
+        }
     }
 
     /** Returns the [PROPERTY_SAFETY_CENTER_ENABLED] of the Safety Center flags snapshot. */
