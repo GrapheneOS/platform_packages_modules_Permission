@@ -34,6 +34,7 @@ import androidx.annotation.RequiresApi;
 
 import com.android.permission.util.UserUtils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -60,6 +61,37 @@ final class UserProfileGroup {
         mManagedRunningProfilesUserIds = managedRunningProfilesUserIds;
     }
 
+    /** Returns all the alive {@link UserProfileGroup}s. */
+    static List<UserProfileGroup> getAllUserProfileGroups(@NonNull Context context) {
+        List<UserProfileGroup> userProfileGroups = new ArrayList<>();
+        List<UserHandle> userHandles = UserUtils.getUserHandles(context);
+        for (int i = 0; i < userHandles.size(); i++) {
+            UserHandle userHandle = userHandles.get(i);
+            int userId = userHandle.getIdentifier();
+
+            if (userProfileGroupsContain(userProfileGroups, userId)) {
+                continue;
+            }
+
+            UserProfileGroup userProfileGroup = UserProfileGroup.from(context, userId);
+            userProfileGroups.add(userProfileGroup);
+        }
+        return userProfileGroups;
+    }
+
+    private static boolean userProfileGroupsContain(
+            @NonNull List<UserProfileGroup> userProfileGroups, @UserIdInt int userId) {
+        for (int i = 0; i < userProfileGroups.size(); i++) {
+            UserProfileGroup userProfileGroup = userProfileGroups.get(i);
+
+            if (userProfileGroup.contains(userId)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     /**
      * Returns the {@link UserProfileGroup} associated with the given {@code userId}.
      *
@@ -83,7 +115,6 @@ final class UserProfileGroup {
             UserHandle userProfileHandle = userProfiles.get(i);
             int userProfileId = userProfileHandle.getIdentifier();
 
-            // TODO(b/223132917): Check if user running and/or if quiet mode is enabled?
             if (UserUtils.isManagedProfile(userProfileId, context)) {
                 managedProfilesUserIds[managedProfilesUserIdsLen++] = userProfileId;
                 if (UserUtils.isProfileRunning(userProfileId, context)) {

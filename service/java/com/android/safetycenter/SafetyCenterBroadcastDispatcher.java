@@ -47,11 +47,9 @@ import android.provider.DeviceConfig;
 import android.safetycenter.SafetyCenterManager;
 import android.safetycenter.SafetyCenterManager.RefreshReason;
 import android.safetycenter.SafetyCenterManager.RefreshRequestType;
-import android.util.ArraySet;
 
 import androidx.annotation.RequiresApi;
 
-import com.android.permission.util.UserUtils;
 import com.android.safetycenter.SafetyCenterConfigReader.Broadcast;
 
 import java.time.Duration;
@@ -118,7 +116,8 @@ final class SafetyCenterBroadcastDispatcher {
     //  rely on SafetyCenterManager#isSafetyCenterEnabled()?
     void sendEnabledChanged(@NonNull List<Broadcast> broadcasts) {
         BroadcastOptions broadcastOptions = createBroadcastOptions();
-        ArraySet<UserProfileGroup> userProfileGroups = getAllUserProfileGroups();
+        List<UserProfileGroup> userProfileGroups =
+                UserProfileGroup.getAllUserProfileGroups(mContext);
 
         for (int i = 0; i < broadcasts.size(); i++) {
             Broadcast broadcast = broadcasts.get(i);
@@ -126,7 +125,7 @@ final class SafetyCenterBroadcastDispatcher {
                     createEnabledChangedBroadcastIntent(broadcast.getPackageName());
 
             for (int j = 0; j < userProfileGroups.size(); j++) {
-                UserProfileGroup userProfileGroup = userProfileGroups.valueAt(j);
+                UserProfileGroup userProfileGroup = userProfileGroups.get(j);
 
                 List<String> profileParentSourceIds =
                         broadcast.getSourceIdsForProfileParent(
@@ -228,20 +227,6 @@ final class SafetyCenterBroadcastDispatcher {
         } finally {
             Binder.restoreCallingIdentity(callingId);
         }
-    }
-
-    @NonNull
-    private ArraySet<UserProfileGroup> getAllUserProfileGroups() {
-        ArraySet<UserProfileGroup> userProfileGroups = new ArraySet<>();
-        List<UserHandle> userHandles = UserUtils.getUserHandles(mContext);
-        for (int i = 0; i < userHandles.size(); i++) {
-            UserHandle userHandle = userHandles.get(i);
-
-            UserProfileGroup userProfileGroup =
-                    UserProfileGroup.from(mContext, userHandle.getIdentifier());
-            userProfileGroups.add(userProfileGroup);
-        }
-        return userProfileGroups;
     }
 
     @NonNull
