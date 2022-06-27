@@ -109,10 +109,13 @@ final class SafetyCenterRefreshTracker {
                     broadcast.getSourceIdsForManagedProfiles(refreshReason);
             for (int j = 0; j < managedProfilesSourceIds.size(); j++) {
                 String managedProfilesSourceId = managedProfilesSourceIds.get(j);
-                int[] managedProfilesUserIds = userProfileGroup.getManagedProfilesUserIds();
-                for (int k = 0; k < managedProfilesUserIds.length; k++) {
+                int[] managedRunningProfilesUserIds =
+                        userProfileGroup.getManagedRunningProfilesUserIds();
+                for (int k = 0; k < managedRunningProfilesUserIds.length; k++) {
+                    int managedRunningProfileUserId = managedRunningProfilesUserIds[k];
                     mRefreshInProgress.addSourceRefreshInFlight(
-                            SafetySourceKey.of(managedProfilesSourceId, managedProfilesUserIds[k]));
+                            SafetySourceKey.of(
+                                    managedProfilesSourceId, managedRunningProfileUserId));
                 }
             }
         }

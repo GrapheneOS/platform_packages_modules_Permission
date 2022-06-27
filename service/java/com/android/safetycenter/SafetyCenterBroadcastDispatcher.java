@@ -145,13 +145,13 @@ final class SafetyCenterBroadcastDispatcher {
                         broadcast.getSourceIdsForManagedProfiles(
                                 REFRESH_REASON_SAFETY_CENTER_ENABLED);
                 if (!managedProfilesSourceIds.isEmpty()) {
-                    int[] managedProfilesUserIds = userProfileGroup.getManagedProfilesUserIds();
-                    for (int k = 0; k < managedProfilesUserIds.length; k++) {
-                        int managedProfileUserId = managedProfilesUserIds[k];
-
+                    int[] managedRunningProfilesUserIds =
+                            userProfileGroup.getManagedRunningProfilesUserIds();
+                    for (int k = 0; k < managedRunningProfilesUserIds.length; k++) {
+                        int managedRunningProfileUserId = managedRunningProfilesUserIds[k];
                         sendBroadcast(
                                 broadcastIntent,
-                                UserHandle.of(managedProfileUserId),
+                                UserHandle.of(managedRunningProfileUserId),
                                 SEND_SAFETY_CENTER_UPDATE,
                                 broadcastOptions);
                     }
@@ -192,9 +192,10 @@ final class SafetyCenterBroadcastDispatcher {
         List<String> managedProfilesSourceIds =
                 broadcast.getSourceIdsForManagedProfiles(refreshReason);
         if (!managedProfilesSourceIds.isEmpty()) {
-            int[] managedProfilesUserIds = userProfileGroup.getManagedProfilesUserIds();
-            for (int i = 0; i < managedProfilesUserIds.length; i++) {
-                int managedProfileUserId = managedProfilesUserIds[i];
+            int[] managedRunningProfilesUserIds =
+                    userProfileGroup.getManagedRunningProfilesUserIds();
+            for (int i = 0; i < managedRunningProfilesUserIds.length; i++) {
+                int managedRunningProfilesUserId = managedRunningProfilesUserIds[i];
                 Intent broadcastIntent =
                         createRefreshSafetySourcesBroadcastIntent(
                                 requestType,
@@ -204,7 +205,7 @@ final class SafetyCenterBroadcastDispatcher {
 
                 sendBroadcast(
                         broadcastIntent,
-                        UserHandle.of(managedProfileUserId),
+                        UserHandle.of(managedRunningProfilesUserId),
                         SEND_SAFETY_CENTER_UPDATE,
                         broadcastOptions);
             }

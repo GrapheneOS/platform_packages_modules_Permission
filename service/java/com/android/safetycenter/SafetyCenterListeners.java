@@ -90,10 +90,11 @@ final class SafetyCenterListeners {
                 userProfileGroup.getProfileParentUserId(),
                 safetyCenterData,
                 safetyCenterErrorDetails);
-        int[] managedProfilesUserIds = userProfileGroup.getManagedProfilesUserIds();
-        for (int i = 0; i < managedProfilesUserIds.length; i++) {
+        int[] managedRunningProfilesUserIds = userProfileGroup.getManagedRunningProfilesUserIds();
+        for (int i = 0; i < managedRunningProfilesUserIds.length; i++) {
+            int managedRunningProfileUserId = managedRunningProfilesUserIds[i];
             deliverUpdateForUserId(
-                    managedProfilesUserIds[i], safetyCenterData, safetyCenterErrorDetails);
+                    managedRunningProfileUserId, safetyCenterData, safetyCenterErrorDetails);
         }
     }
 
