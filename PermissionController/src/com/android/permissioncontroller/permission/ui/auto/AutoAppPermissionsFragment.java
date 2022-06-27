@@ -23,6 +23,7 @@ import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_
 import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSIONS_FRAGMENT_VIEWED__CATEGORY__ALLOWED_FOREGROUND;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSIONS_FRAGMENT_VIEWED__CATEGORY__DENIED;
 import static com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_CALLER_NAME;
+import static com.android.permissioncontroller.permission.ui.handheld.v31.DashboardUtilsKt.is7DayToggleEnabled;
 
 import static java.util.concurrent.TimeUnit.DAYS;
 
@@ -49,12 +50,13 @@ import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.PermissionControllerStatsLog;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.auto.AutoSettingsFrameFragment;
-import com.android.permissioncontroller.permission.model.AppPermissionUsage;
-import com.android.permissioncontroller.permission.model.PermissionUsages;
+import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage;
+import com.android.permissioncontroller.permission.model.v31.PermissionUsages;
 import com.android.permissioncontroller.permission.ui.Category;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModel;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModelFactory;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
+import com.android.permissioncontroller.permission.utils.StringUtils;
 
 import java.text.Collator;
 import java.time.Instant;
@@ -144,9 +146,12 @@ public class AutoAppPermissionsFragment extends AutoSettingsFrameFragment implem
         if (SdkLevel.isAtLeastS()) {
             mPermissionUsages = new PermissionUsages(getContext());
 
+            long aggregateDataFilterBeginDays = is7DayToggleEnabled()
+                    ? AppPermissionGroupsViewModel.AGGREGATE_DATA_FILTER_BEGIN_DAYS_7 :
+                    AppPermissionGroupsViewModel.AGGREGATE_DATA_FILTER_BEGIN_DAYS_1;
+
             long filterTimeBeginMillis = Math.max(System.currentTimeMillis()
-                            - DAYS.toMillis(
-                    AppPermissionGroupsViewModel.AGGREGATE_DATA_FILTER_BEGIN_DAYS),
+                            - DAYS.toMillis(aggregateDataFilterBeginDays),
                     Instant.EPOCH.toEpochMilli());
             mPermissionUsages.load(null, null, filterTimeBeginMillis, Long.MAX_VALUE,
                     PermissionUsages.USAGE_FLAG_LAST, getActivity().getLoaderManager(),
@@ -316,9 +321,8 @@ public class AutoAppPermissionsFragment extends AutoSettingsFrameFragment implem
                     .commit();
             return true;
         });
-        extraPerms.setSummary(getResources().getQuantityString(
-                R.plurals.additional_permissions_more, numExtraPerms,
-                numExtraPerms));
+        extraPerms.setSummary(StringUtils.getIcuPluralsString(getContext(),
+                R.string.additional_permissions_more, numExtraPerms));
         category.addPreference(extraPerms);
     }
 
