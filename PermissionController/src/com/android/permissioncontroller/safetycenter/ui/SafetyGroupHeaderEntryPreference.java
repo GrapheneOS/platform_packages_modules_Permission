@@ -16,6 +16,8 @@
 
 package com.android.permissioncontroller.safetycenter.ui;
 
+import static android.os.Build.VERSION_CODES.TIRAMISU;
+
 import android.content.Context;
 import android.safetycenter.SafetyCenterEntry;
 import android.safetycenter.SafetyCenterEntryGroup;
@@ -24,12 +26,14 @@ import android.view.View;
 import android.view.ViewGroup.MarginLayoutParams;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
 import com.android.permissioncontroller.R;
 
 /** A preference that displays a visual representation of a {@link SafetyCenterEntry}. */
+@RequiresApi(TIRAMISU)
 public class SafetyGroupHeaderEntryPreference extends Preference implements ComparablePreference {
 
     private static final String TAG = SafetyGroupHeaderEntryPreference.class.getSimpleName();

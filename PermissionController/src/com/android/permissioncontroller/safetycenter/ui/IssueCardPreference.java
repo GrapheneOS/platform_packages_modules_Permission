@@ -16,14 +16,16 @@
 
 package com.android.permissioncontroller.safetycenter.ui;
 
+import static android.os.Build.VERSION_CODES.TIRAMISU;
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 import static java.util.Objects.requireNonNull;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
-import android.os.Build;
+import android.os.Bundle;
 import android.safetycenter.SafetyCenterIssue;
 import android.text.TextUtils;
 import android.util.Log;
@@ -34,9 +36,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
@@ -49,21 +54,26 @@ import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 import com.google.android.material.button.MaterialButton;
 
 /** A preference that displays a card representing a {@link SafetyCenterIssue}. */
-@RequiresApi(Build.VERSION_CODES.TIRAMISU)
+@RequiresApi(TIRAMISU)
 public class IssueCardPreference extends Preference implements ComparablePreference {
 
     public static final String TAG = IssueCardPreference.class.getSimpleName();
 
     private final SafetyCenterViewModel mSafetyCenterViewModel;
     private final SafetyCenterIssue mIssue;
+    private final FragmentManager mDialogFragmentManager;
 
     public IssueCardPreference(
-            Context context, SafetyCenterViewModel safetyCenterViewModel, SafetyCenterIssue issue) {
+            Context context,
+            SafetyCenterViewModel safetyCenterViewModel,
+            SafetyCenterIssue issue,
+            FragmentManager dialogFragmentManager) {
         super(context);
         setLayoutResource(R.layout.preference_issue_card);
 
         mSafetyCenterViewModel = requireNonNull(safetyCenterViewModel);
         mIssue = requireNonNull(issue);
+        mDialogFragmentManager = dialogFragmentManager;
     }
 
     @Override
@@ -142,15 +152,41 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
     private class ConfirmDismissalOnClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            new AlertDialog.Builder(getContext())
+            ConfirmDismissalDialogFragment.newInstance(mIssue)
+                    .showNow(mDialogFragmentManager, /* tag= */ null);
+        }
+    }
+
+    /** Fragment to display a dismissal confirmation dialog for an {@link IssueCardPreference}. */
+    public static class ConfirmDismissalDialogFragment extends DialogFragment {
+        private static final String ISSUE_KEY = "confirm_dialog_sc_issue";
+
+        private static ConfirmDismissalDialogFragment newInstance(SafetyCenterIssue issue) {
+            ConfirmDismissalDialogFragment fragment = new ConfirmDismissalDialogFragment();
+
+            Bundle args = new Bundle();
+            args.putParcelable(ISSUE_KEY, issue);
+            fragment.setArguments(args);
+
+            return fragment;
+        }
+
+        @Override
+        public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+            SafetyCenterViewModel safetyCenterViewModel =
+                    ((SafetyCenterDashboardFragment) requireParentFragment())
+                            .getSafetyCenterViewModel();
+            SafetyCenterIssue issue =
+                    requireNonNull(
+                            requireArguments().getParcelable(ISSUE_KEY, SafetyCenterIssue.class));
+            return new AlertDialog.Builder(getContext())
                     .setTitle(R.string.safety_center_issue_card_dismiss_confirmation_title)
                     .setPositiveButton(
                             R.string.safety_center_issue_card_confirm_dismiss_button,
-                            (dialog, which) -> mSafetyCenterViewModel.dismissIssue(mIssue))
+                            (dialog, which) -> safetyCenterViewModel.dismissIssue(issue))
                     .setNegativeButton(
                             R.string.safety_center_issue_card_cancel_dismiss_button, null)
-                    .create()
-                    .show();
+                    .create();
         }
     }
 
