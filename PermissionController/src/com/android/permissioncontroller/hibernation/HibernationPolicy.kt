@@ -51,6 +51,7 @@ import android.os.UserManager
 import android.printservice.PrintService
 import android.provider.DeviceConfig
 import android.provider.DeviceConfig.NAMESPACE_APP_HIBERNATION
+import android.provider.Settings
 import android.service.autofill.AutofillService
 import android.service.dreams.DreamService
 import android.service.notification.NotificationListenerService
@@ -391,6 +392,20 @@ suspend fun isPackageHibernationExemptBySystem(
         }
         return true
     }
+
+    val context = PermissionControllerApplication.get()
+    if (context.getSystemService(DevicePolicyManager::class.java)!!.isDeviceManaged) {
+        // TODO(b/237065504): Use proper system API to check if the device is financed in U.
+        val isFinancedDevice = Settings.Global.getInt(
+                context.contentResolver, "device_owner_type", 0) == 1
+        if (!isFinancedDevice) {
+            if (DEBUG_HIBERNATION_POLICY) {
+                DumpableLog.i(LOG_TAG, "Exempted ${pkg.packageName} - device is managed")
+            }
+            return true
+        }
+    }
+
     val carrierPrivilegedStatus = CarrierPrivilegedStatusLiveData[pkg.packageName]
             .getInitializedValue()
     if (carrierPrivilegedStatus != CARRIER_PRIVILEGE_STATUS_HAS_ACCESS &&
@@ -417,7 +432,6 @@ suspend fun isPackageHibernationExemptBySystem(
         return true
     }
 
-    val context = PermissionControllerApplication.get()
     if (SdkLevel.isAtLeastS()) {
         val hasInstallOrUpdatePermissions =
                 context.checkPermission(
