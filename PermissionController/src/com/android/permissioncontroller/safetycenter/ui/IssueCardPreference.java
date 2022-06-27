@@ -62,6 +62,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
     private final SafetyCenterViewModel mSafetyCenterViewModel;
     private final SafetyCenterIssue mIssue;
     private final FragmentManager mDialogFragmentManager;
+    private final SafetyCenterIssueId mDecodedIssueId;
 
     public IssueCardPreference(
             Context context,
@@ -74,11 +75,22 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
         mSafetyCenterViewModel = requireNonNull(safetyCenterViewModel);
         mIssue = requireNonNull(issue);
         mDialogFragmentManager = dialogFragmentManager;
+        mDecodedIssueId = SafetyCenterIds.issueIdFromString(mIssue.getId());
     }
 
     @Override
     public void onBindViewHolder(PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
+
+        mSafetyCenterViewModel
+                .getInteractionLogger()
+                .record(
+                        Action.SAFETY_ISSUE_VIEWED,
+                        LogSeverityLevel.fromIssueSeverityLevel(mIssue.getSeverityLevel()),
+                        mDecodedIssueId.getSafetyCenterIssueKey().getSafetySourceId(),
+                        SafetySourceProfileType.fromUserId(
+                                mDecodedIssueId.getSafetyCenterIssueKey().getUserId()),
+                        mDecodedIssueId.getIssueTypeId());
 
         configureDismissButton(holder.findViewById(R.id.issue_card_dismiss_btn));
 
@@ -111,12 +123,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
 
     /** Returns the {@link SafetyCenterIssueKey} associated with this {@link IssueCardPreference} */
     public SafetyCenterIssueKey getIssueKey() {
-        SafetyCenterIssueId safetyCenterIssueId = SafetyCenterIds.issueIdFromString(mIssue.getId());
-        if (!safetyCenterIssueId.hasSafetyCenterIssueKey()) {
-            Log.d(TAG, "preference has no issue key");
-            return null;
-        }
-        return safetyCenterIssueId.getSafetyCenterIssueKey();
+        return mDecodedIssueId.getSafetyCenterIssueKey();
     }
 
     private void configureDismissButton(View dismissButton) {
