@@ -109,10 +109,13 @@ final class SafetyCenterRefreshTracker {
                     broadcast.getSourceIdsForManagedProfiles(refreshReason);
             for (int j = 0; j < managedProfilesSourceIds.size(); j++) {
                 String managedProfilesSourceId = managedProfilesSourceIds.get(j);
-                int[] managedProfilesUserIds = userProfileGroup.getManagedProfilesUserIds();
-                for (int k = 0; k < managedProfilesUserIds.length; k++) {
+                int[] managedRunningProfilesUserIds =
+                        userProfileGroup.getManagedRunningProfilesUserIds();
+                for (int k = 0; k < managedRunningProfilesUserIds.length; k++) {
+                    int managedRunningProfileUserId = managedRunningProfilesUserIds[k];
                     mRefreshInProgress.addSourceRefreshInFlight(
-                            SafetySourceKey.of(managedProfilesSourceId, managedProfilesUserIds[k]));
+                            SafetySourceKey.of(
+                                    managedProfilesSourceId, managedRunningProfileUserId));
                 }
             }
         }
@@ -254,9 +257,9 @@ final class SafetyCenterRefreshTracker {
         @NonNull private final String mId;
         @RefreshReason private final int mReason;
         @NonNull private final UserProfileGroup mUserProfileGroup;
+        @NonNull private final ArraySet<String> mUntrackedSourcesIds;
 
-        @NonNull private final ArraySet<SafetySourceKey> mSourceRefreshInFlight = new ArraySet<>();
-        @NonNull private ArraySet<String> mUntrackedSourcesIds;
+        private final ArraySet<SafetySourceKey> mSourceRefreshInFlight = new ArraySet<>();
 
         /** Creates a {@link RefreshInProgress}. */
         RefreshInProgress(

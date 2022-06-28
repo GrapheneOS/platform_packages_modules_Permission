@@ -34,6 +34,7 @@ import androidx.annotation.RequiresApi;
 
 import com.android.permission.util.UserUtils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -49,10 +50,46 @@ final class UserProfileGroup {
 
     @NonNull private final int[] mManagedProfilesUserIds;
 
+    @NonNull private final int[] mManagedRunningProfilesUserIds;
+
     private UserProfileGroup(
-            @UserIdInt int profileParentUserId, @NonNull int[] managedProfilesUserIds) {
+            @UserIdInt int profileParentUserId,
+            @NonNull int[] managedProfilesUserIds,
+            int[] managedRunningProfilesUserIds) {
         mProfileParentUserId = profileParentUserId;
         mManagedProfilesUserIds = managedProfilesUserIds;
+        mManagedRunningProfilesUserIds = managedRunningProfilesUserIds;
+    }
+
+    /** Returns all the alive {@link UserProfileGroup}s. */
+    static List<UserProfileGroup> getAllUserProfileGroups(@NonNull Context context) {
+        List<UserProfileGroup> userProfileGroups = new ArrayList<>();
+        List<UserHandle> userHandles = UserUtils.getUserHandles(context);
+        for (int i = 0; i < userHandles.size(); i++) {
+            UserHandle userHandle = userHandles.get(i);
+            int userId = userHandle.getIdentifier();
+
+            if (userProfileGroupsContain(userProfileGroups, userId)) {
+                continue;
+            }
+
+            UserProfileGroup userProfileGroup = UserProfileGroup.from(context, userId);
+            userProfileGroups.add(userProfileGroup);
+        }
+        return userProfileGroups;
+    }
+
+    private static boolean userProfileGroupsContain(
+            @NonNull List<UserProfileGroup> userProfileGroups, @UserIdInt int userId) {
+        for (int i = 0; i < userProfileGroups.size(); i++) {
+            UserProfileGroup userProfileGroup = userProfileGroups.get(i);
+
+            if (userProfileGroup.contains(userId)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -71,20 +108,26 @@ final class UserProfileGroup {
         }
 
         int[] managedProfilesUserIds = new int[userProfiles.size()];
+        int[] managedRunningProfilesUserIds = new int[userProfiles.size()];
         int managedProfilesUserIdsLen = 0;
+        int managedRunningProfilesUserIdsLen = 0;
         for (int i = 0; i < userProfiles.size(); i++) {
             UserHandle userProfileHandle = userProfiles.get(i);
             int userProfileId = userProfileHandle.getIdentifier();
 
-            // TODO(b/223132917): Check if user running and/or if quiet mode is enabled?
             if (UserUtils.isManagedProfile(userProfileId, context)) {
                 managedProfilesUserIds[managedProfilesUserIdsLen++] = userProfileId;
+                if (UserUtils.isProfileRunning(userProfileId, context)) {
+                    managedRunningProfilesUserIds[managedRunningProfilesUserIdsLen++] =
+                            userProfileId;
+                }
             }
         }
 
         return new UserProfileGroup(
                 profileParentUserId,
-                Arrays.copyOf(managedProfilesUserIds, managedProfilesUserIdsLen));
+                Arrays.copyOf(managedProfilesUserIds, managedProfilesUserIdsLen),
+                Arrays.copyOf(managedRunningProfilesUserIds, managedRunningProfilesUserIdsLen));
     }
 
     @NonNull
@@ -141,6 +184,11 @@ final class UserProfileGroup {
         return mManagedProfilesUserIds;
     }
 
+    /** Returns the running managed profile user ids of the {@link UserProfileGroup}. */
+    int[] getManagedRunningProfilesUserIds() {
+        return mManagedRunningProfilesUserIds;
+    }
+
     /** Returns whether the {@link UserProfileGroup} contains the given {@code userId}. */
     boolean contains(@UserIdInt int userId) {
         if (userId == mProfileParentUserId) {
@@ -162,14 +210,17 @@ final class UserProfileGroup {
         if (!(o instanceof UserProfileGroup)) return false;
         UserProfileGroup that = (UserProfileGroup) o;
         return mProfileParentUserId == that.mProfileParentUserId
-                && Arrays.equals(mManagedProfilesUserIds, that.mManagedProfilesUserIds);
+                && Arrays.equals(mManagedProfilesUserIds, that.mManagedProfilesUserIds)
+                && Arrays.equals(
+                        mManagedRunningProfilesUserIds, that.mManagedRunningProfilesUserIds);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(mProfileParentUserId);
-        result = 31 * result + Arrays.hashCode(mManagedProfilesUserIds);
-        return result;
+        return Objects.hash(
+                mProfileParentUserId,
+                Arrays.hashCode(mManagedProfilesUserIds),
+                Arrays.hashCode(mManagedRunningProfilesUserIds));
     }
 
     @Override
@@ -179,6 +230,8 @@ final class UserProfileGroup {
                 + mProfileParentUserId
                 + ", mManagedProfilesUserIds="
                 + Arrays.toString(mManagedProfilesUserIds)
+                + ", mManagedRunningProfilesUserIds="
+                + Arrays.toString(mManagedRunningProfilesUserIds)
                 + '}';
     }
 }
