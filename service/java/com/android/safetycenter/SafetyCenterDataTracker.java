@@ -704,8 +704,10 @@ final class SafetyCenterDataTracker {
             }
         }
 
+        // LINT.IfChange(pendingActions)
         boolean hasSettingsToReview =
                 safetyCenterEntriesSeverityLevel > safetyCenterOverallSeverityLevel;
+        // LINT.ThenChange(packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/safetycenter/ui/SafetyCenterDashboardFragment.java:pendingActionsQs)
         safetyCenterIssues.sort(SAFETY_CENTER_ISSUES_BY_SEVERITY_DESCENDING);
         return new SafetyCenterData(
                 new SafetyCenterStatus.Builder(
@@ -781,7 +783,7 @@ final class SafetyCenterDataTracker {
         List<SafetySourceIssue> safetySourceIssues = safetySourceData.getIssues();
         for (int i = 0; i < safetySourceIssues.size(); i++) {
             SafetySourceIssue safetySourceIssue = safetySourceIssues.get(i);
-
+            // LINT.IfChange(maxSeverityCalculation)
             SafetyCenterIssue safetyCenterIssue =
                     toSafetyCenterIssue(safetySourceIssue, safetySource, userId);
             if (safetyCenterIssue == null) {
@@ -796,6 +798,7 @@ final class SafetyCenterDataTracker {
         }
 
         return safetyCenterIssuesOverallSeverityLevel;
+        // LINT.ThenChange(packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/safetycenter/ui/SafetyCenterDashboardFragment.java:maxSeverityCalculationQs)
     }
 
     @Nullable

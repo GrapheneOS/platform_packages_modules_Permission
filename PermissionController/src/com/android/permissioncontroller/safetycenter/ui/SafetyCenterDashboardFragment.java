@@ -211,6 +211,7 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
      */
     private void setPendingActionState(SafetyCenterData data) {
         int overallSeverityLevel = data.getStatus().getSeverityLevel();
+        // LINT.IfChange(pendingActionsQs)
         int maxEntrySeverityLevel = getMaxSeverityLevel(data.getEntriesOrGroups());
         if (overallSeverityLevel == SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK
                 && maxEntrySeverityLevel > SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK) {
@@ -220,6 +221,7 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
             mSafetyStatusPreference.setHasPendingActions(
                     false, null);
         }
+        // LINT.ThenChange(packages/modules/Permission/service/java/com/android/safetycenter/SafetyCenterDataTracker.java:pendingActions)
     }
 
     private void displayErrorDetails(@Nullable SafetyCenterErrorDetails errorDetails) {
@@ -267,7 +269,7 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
 
     private int getMaxSeverityLevel(List<SafetyCenterEntryOrGroup> entriesOrGroups) {
         int maxEntrySeverityLevel = SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN;
-
+        // LINT.IfChange(maxSeverityCalculationQs)
         for (int i = 0, size = entriesOrGroups.size(); i < size; i++) {
             SafetyCenterEntryOrGroup entryOrGroup = entriesOrGroups.get(i);
             SafetyCenterEntry entry = entryOrGroup.getEntry();
@@ -284,6 +286,7 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
             }
         }
         return maxEntrySeverityLevel;
+        // LINT.ThenChange(packages/modules/Permission/service/java/com/android/safetycenter/SafetyCenterDataTracker.java:maxSeverityCalculation)
     }
 
     private void addTopLevelEntry(
