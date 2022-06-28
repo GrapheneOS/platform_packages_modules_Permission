@@ -52,6 +52,7 @@ import android.printservice.PrintService
 import android.provider.DeviceConfig
 import android.provider.DeviceConfig.NAMESPACE_APP_HIBERNATION
 import android.provider.Settings
+import android.safetycenter.SafetyCenterManager
 import android.service.autofill.AutofillService
 import android.service.dreams.DreamService
 import android.service.notification.NotificationListenerService
@@ -59,6 +60,7 @@ import android.service.voice.VoiceInteractionService
 import android.service.wallpaper.WallpaperService
 import android.telephony.TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS
 import android.telephony.TelephonyManager.CARRIER_PRIVILEGE_STATUS_NO_ACCESS
+import android.text.Html
 import android.util.Log
 import android.view.inputmethod.InputMethod
 import androidx.annotation.MainThread
@@ -85,6 +87,7 @@ import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.data.getUnusedPackages
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
 import com.android.permissioncontroller.permission.service.revokeAppPermissions
+import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.StringUtils
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.forEachInParallel
@@ -630,15 +633,35 @@ class HibernationJobService : JobService() {
             .setContentTitle(notifTitle)
             .setContentText(notifContent)
             .setStyle(Notification.BigTextStyle().bigText(notifContent))
-            .setSmallIcon(R.drawable.ic_settings_24dp)
             .setColor(getColor(android.R.color.system_notification_accent_color))
             .setAutoCancel(true)
             .setContentIntent(pendingIntent)
-        Utils.getSettingsLabelForNotifications(applicationContext.packageManager)?.let {
-            settingsLabel ->
-            val extras = Bundle()
-            extras.putString(Notification.EXTRA_SUBSTITUTE_APP_NAME, settingsLabel.toString())
-            b.addExtras(extras)
+        val extras = Bundle()
+        if (SdkLevel.isAtLeastT() &&
+            getSystemService(SafetyCenterManager::class.java)!!.isSafetyCenterEnabled) {
+            if (KotlinUtils.shouldShowSafetyProtectionResources(this)) {
+                // Use Protected by Android branding
+                extras.putString(Notification.EXTRA_SUBSTITUTE_APP_NAME,
+                    Html.fromHtml(getString(android.R.string.safety_protection_display_text),
+                        /* flags= */ 0).toString())
+                b.setSmallIcon(android.R.drawable.ic_safety_protection)
+                    .setColor(getColor(R.color.safety_center_info))
+                    .addExtras(extras)
+            } else {
+                // Use non-GMS PbA branding
+                extras.putString(Notification.EXTRA_SUBSTITUTE_APP_NAME,
+                    getString(R.string.safety_center_notification_app_label))
+                b.setSmallIcon(R.drawable.ic_settings_notification)
+                    .addExtras(extras)
+            }
+        } else {
+            // Use standard Settings branding
+            Utils.getSettingsLabelForNotifications(applicationContext.packageManager)?.let {
+                settingsLabel ->
+                extras.putString(Notification.EXTRA_SUBSTITUTE_APP_NAME, settingsLabel.toString())
+                b.setSmallIcon(R.drawable.ic_settings_24dp)
+                    .addExtras(extras)
+            }
         }
 
         notificationManager.notify(HibernationJobService::class.java.simpleName,
