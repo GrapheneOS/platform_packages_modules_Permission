@@ -17,14 +17,17 @@
 package com.android.permissioncontroller.safetycenter.ui.model
 
 import android.app.Application
+import android.os.Build
 import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterErrorDetails
 import android.safetycenter.SafetyCenterIssue
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 abstract class SafetyCenterViewModel(protected val app: Application) : AndroidViewModel(app) {
 
     abstract val safetyCenterLiveData: LiveData<SafetyCenterData>
