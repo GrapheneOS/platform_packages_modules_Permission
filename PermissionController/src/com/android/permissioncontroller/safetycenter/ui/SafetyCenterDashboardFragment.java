@@ -16,12 +16,13 @@
 
 package com.android.permissioncontroller.safetycenter.ui;
 
+import static android.os.Build.VERSION_CODES.TIRAMISU;
+
 import static com.android.permissioncontroller.safetycenter.SafetyCenterConstants.QUICK_SETTINGS_SAFETY_CENTER_FRAGMENT;
 
 import static java.util.Objects.requireNonNull;
 
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.safetycenter.SafetyCenterData;
 import android.safetycenter.SafetyCenterEntry;
@@ -54,7 +55,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /** Dashboard fragment for the Safety Center. */
-@RequiresApi(Build.VERSION_CODES.TIRAMISU)
+@RequiresApi(TIRAMISU)
 public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompat {
 
     private static final String TAG = SafetyCenterDashboardFragment.class.getSimpleName();
@@ -177,6 +178,10 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
         mCollapsableIssuesCardHelper.saveState(outState);
     }
 
+    SafetyCenterViewModel getSafetyCenterViewModel() {
+        return mViewModel;
+    }
+
     private void renderSafetyCenterData(@Nullable SafetyCenterData data) {
         if (data == null) return;
 
@@ -210,7 +215,13 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
         mIssuesGroup.removeAll();
         List<IssueCardPreference> issueCardPreferenceList =
                 issues.stream()
-                        .map(issue -> new IssueCardPreference(context, mViewModel, issue))
+                        .map(
+                                issue ->
+                                        new IssueCardPreference(
+                                                context,
+                                                mViewModel,
+                                                issue,
+                                                getChildFragmentManager()))
                         .collect(Collectors.toUnmodifiableList());
         mCollapsableIssuesCardHelper.addIssues(context, mIssuesGroup, issueCardPreferenceList);
     }

@@ -16,6 +16,8 @@
 
 package com.android.permissioncontroller.safetycenter.ui;
 
+import static android.os.Build.VERSION_CODES.TIRAMISU;
+
 import android.content.Context;
 import android.graphics.drawable.Animatable2;
 import android.graphics.drawable.AnimatedVectorDrawable;
@@ -30,6 +32,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
@@ -38,6 +41,7 @@ import com.android.permissioncontroller.R;
 import java.util.Objects;
 
 /** Preference which displays a visual representation of {@link SafetyCenterStatus}. */
+@RequiresApi(TIRAMISU)
 public class SafetyStatusPreference extends Preference implements ComparablePreference {
     private static final String TAG = "SafetyStatusPreference";
 

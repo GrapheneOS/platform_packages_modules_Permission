@@ -16,10 +16,14 @@
 
 package com.android.permissioncontroller.safetycenter.ui;
 
+import static android.os.Build.VERSION_CODES.TIRAMISU;
+
+import androidx.annotation.RequiresApi;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceManager.PreferenceComparisonCallback;
 
 /** A {@link PreferenceComparisonCallback} to identify changed preferences of Safety Center. */
+@RequiresApi(TIRAMISU)
 class SafetyPreferenceComparisonCallback extends PreferenceComparisonCallback {
 
     @Override
