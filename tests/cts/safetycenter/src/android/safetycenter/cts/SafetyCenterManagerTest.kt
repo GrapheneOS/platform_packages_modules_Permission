@@ -154,7 +154,7 @@ class SafetyCenterManagerTest {
             .build()
 
     private val safetyCenterStatusOkReview =
-        SafetyCenterStatus.Builder("Add more protection", "Review your settings")
+        SafetyCenterStatus.Builder("Add more protection", "Check the settings below")
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_OK)
             .build()
 

@@ -22,6 +22,7 @@ import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterErrorDetails
 import android.safetycenter.SafetyCenterIssue
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
@@ -41,6 +42,8 @@ abstract class SafetyCenterViewModel(protected val app: Application) : AndroidVi
     abstract fun rescan()
 
     abstract fun clearError()
+
+    abstract fun navigateToSafetyCenter(fragment: Fragment)
 
     protected abstract fun refresh()
 
