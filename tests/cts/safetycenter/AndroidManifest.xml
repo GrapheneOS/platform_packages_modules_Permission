@@ -24,6 +24,7 @@
                 <action android:name="android.safetycenter.action.SAFETY_CENTER_ENABLED_CHANGED"/>
                 <action android:name="android.safetycenter.action.REFRESH_SAFETY_SOURCES"/>
                 <action android:name="android.safetycenter.cts.testing.action.HANDLE_INLINE_ACTION"/>
+                <action android:name="android.safetycenter.cts.testing.action.HANDLE_DISMISSED_ISSUE"/>
             </intent-filter>
         </receiver>
 
