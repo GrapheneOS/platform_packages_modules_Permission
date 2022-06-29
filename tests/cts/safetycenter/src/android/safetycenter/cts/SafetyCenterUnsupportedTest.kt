@@ -19,7 +19,6 @@ package android.safetycenter.cts
 import android.content.Context
 import android.content.pm.PackageManager.FEATURE_AUTOMOTIVE
 import android.content.pm.PackageManager.FEATURE_LEANBACK
-import android.os.Build.VERSION_CODES.TIRAMISU
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyCenterManager.REFRESH_REASON_PAGE_OPEN
 import android.safetycenter.SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK
@@ -55,7 +54,6 @@ import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.refreshSa
 import android.support.test.uiautomator.By
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.filters.SdkSuppress
 import com.android.compatibility.common.util.UiAutomatorUtils.waitFindObject
 import com.google.common.truth.Truth.assertThat
 import com.google.common.util.concurrent.MoreExecutors.directExecutor
@@ -68,8 +66,8 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
+/** CTS tests for our APIs and UI on devices that do not support Safety Center. */
 @RunWith(AndroidJUnit4::class)
-@SdkSuppress(minSdkVersion = TIRAMISU, codeName = "Tiramisu")
 class SafetyCenterUnsupportedTest {
     private val context: Context = getApplicationContext()
     private val packageManager = context.packageManager
