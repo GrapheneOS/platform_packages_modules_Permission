@@ -16,8 +16,6 @@
 
 package com.android.safetycenter.persistence
 
-import android.os.Build.VERSION_CODES.TIRAMISU
-import androidx.test.filters.SdkSuppress
 import com.android.safetycenter.persistence.PersistenceConstants.PATH
 import com.google.common.truth.Truth.assertThat
 import java.io.File
@@ -27,7 +25,6 @@ import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 
 @RunWith(Parameterized::class)
-@SdkSuppress(minSdkVersion = TIRAMISU, codeName = "Tiramisu")
 class SafetyCenterIssuesPersistenceValidTest {
     data class Params(
         private val testName: String,

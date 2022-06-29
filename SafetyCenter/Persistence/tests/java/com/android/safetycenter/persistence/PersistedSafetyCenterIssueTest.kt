@@ -16,18 +16,15 @@
 
 package com.android.safetycenter.persistence
 
-import android.os.Build.VERSION_CODES.TIRAMISU
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.filters.SdkSuppress
 import com.android.permission.testing.EqualsHashCodeToStringTester
 import com.google.common.truth.Truth.assertThat
+import java.time.Instant
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.time.Instant
 
 /** CTS tests for [PersistedSafetyCenterIssue]. */
 @RunWith(AndroidJUnit4::class)
-@SdkSuppress(minSdkVersion = TIRAMISU, codeName = "Tiramisu")
 class PersistedSafetyCenterIssueTest {
 
     @Test
