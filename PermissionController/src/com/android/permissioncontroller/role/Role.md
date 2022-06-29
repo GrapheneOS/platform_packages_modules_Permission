@@ -61,8 +61,10 @@ is optional and defaults to `false`.
 - `label`: The string resource for the label of the role, e.g. `@string/role_sms_label`, which says
 "Default SMS app". For default apps, this string will appear in the default app detail page as the
 title. This attribute is required if the role is `visible`.
-- `minSdkVersion`: The minimum SDK version for the role to be available, e.g. `31` for Android S.
-This attribute is optional and defaults to `Build.VERSION_CODES.BASE`.
+- `maxSdkVersion`: The maximum SDK version for the role to be available (inclusive), e.g. `31` for
+Android S. This attribute is optional and defaults to `Build.VERSION_CODES.CUR_DEVELOPMENT`.
+- `minSdkVersion`: The minimum SDK version for the role to be available (inclusive), e.g. `31` for
+Android S. This attribute is optional and defaults to `Build.VERSION_CODES.BASE`.
 - `requestDescription`: The string resource for the description in the request role dialog, e.g.
 `@string/role_sms_request_description`, which says "Gets access to contacts, SMS, phone". This
 description should describe to the user the privileges that are going to be granted, and should not
