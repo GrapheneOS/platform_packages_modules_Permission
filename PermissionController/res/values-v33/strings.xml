@@ -36,4 +36,9 @@
     <string name="safety_center_more_issues_status_icon_content_description">See all alerts</string>
     <!-- Content description for the "See all alerts"/"More issues" card buttons and icons in Safety Center[CHAR LIMIT=NONE] -->
     <string name="safety_center_more_issues_expand_button_content_description">See all alerts</string>
+
+    <!--Summary for safety center status card QS in case of pending actions [CHAR LIMIT=NONE] -->
+    <string name="safety_center_qs_status_summary">Review your settings</string>
+    <!--Label for the button that takes the user to Safety center in case of pending actions [CHAR LIMIT=NONE] -->
+    <string name="safety_center_review_settings_button">Review settings</string>
 </resources>

@@ -60,14 +60,41 @@
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/rescan_button"
+        android:id="@+id/review_settings_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/status_image"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="24dp"
+        android:text="@string/safety_center_review_settings_button"
+        app:backgroundTint="@color/safety_center_button_info"
+        android:visibility="gone"
+        style="@style/SafetyCenter.MaterialActionButton" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/rescan_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/review_settings_button"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="24dp"
         android:text="@string/safety_center_rescan_button"
         app:backgroundTint="@color/safety_center_button_info"
+        style="@style/SafetyCenter.MaterialActionButton" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/pending_actions_rescan_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/review_settings_button"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/safety_center_action_button_list_margin"
+        android:text="@string/safety_center_rescan_button"
+        app:backgroundTint="@color/sc_surface_dark"
+        app:strokeWidth="@dimen/mtrl_btn_stroke_size"
+        app:strokeColor="@color/safety_center_button_info"
+        android:textColor="?android:attr/textColorPrimary"
+        android:visibility="gone"
         style="@style/SafetyCenter.MaterialActionButton" />
 
     <com.android.permissioncontroller.permission.ui.widget.SafetyProtectionSectionView

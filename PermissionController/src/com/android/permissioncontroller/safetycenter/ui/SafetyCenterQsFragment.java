@@ -19,6 +19,7 @@ package com.android.permissioncontroller.permission.ui.handheld.v33;
 import static android.Manifest.permission_group.CAMERA;
 import static android.Manifest.permission_group.LOCATION;
 import static android.Manifest.permission_group.MICROPHONE;
+import static android.os.Build.VERSION_CODES.TIRAMISU;
 
 import static com.android.permissioncontroller.Constants.EXTRA_SESSION_ID;
 import static com.android.permissioncontroller.Constants.INVALID_SESSION_ID;
@@ -27,7 +28,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.permission.PermissionGroupUsage;
@@ -69,7 +69,7 @@ import java.util.Map;
  * current safety and privacy status of their device, including showing mic/camera usage, and having
  * mic/camera/location toggles.
  */
-@RequiresApi(Build.VERSION_CODES.TIRAMISU)
+@RequiresApi(TIRAMISU)
 public class SafetyCenterQsFragment extends Fragment {
     private static final ArrayMap<String, Integer> sToggleButtons = new ArrayMap<>();
 

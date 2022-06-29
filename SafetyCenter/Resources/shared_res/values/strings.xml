@@ -26,7 +26,7 @@
     <string name="overall_severity_level_ok_review_title">Add more protection</string>
 
     <!-- Summary for the overall Safety Center status when the user security and privacy signals are deemed to be safe, but the user has previously dismissed some warnings that may need their review [CHAR LIMIT=60] -->
-    <string name="overall_severity_level_ok_review_summary">Review your settings</string>
+    <string name="overall_severity_level_ok_review_summary">Check the settings below</string>
 
     <!-- Title for the overall Safety Center status when the user security and privacy signals could potentially put them at risk [CHAR LIMIT=35] -->
     <string name="overall_severity_level_recommendation_title">Device may be at risk</string>
@@ -49,3 +49,4 @@
     <!-- An error shown to the user when we failed to refresh the overall Safety Center status. This happens when at least one safety signal did not get back to Safety Center within an arbitrary timeout [CHAR LIMIT=50] -->
     <string name="refresh_timeout">Couldn\’t refresh status</string>
 </resources>
+
