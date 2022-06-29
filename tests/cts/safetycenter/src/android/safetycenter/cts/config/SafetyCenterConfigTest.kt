@@ -16,11 +16,9 @@
 
 package android.safetycenter.cts.config
 
-import android.os.Build.VERSION_CODES.TIRAMISU
 import android.safetycenter.config.SafetyCenterConfig
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.ext.truth.os.ParcelableSubject.assertThat
-import androidx.test.filters.SdkSuppress
 import com.android.permission.testing.EqualsHashCodeToStringTester
 import com.google.common.truth.Truth.assertThat
 import kotlin.test.assertFailsWith
@@ -29,7 +27,6 @@ import org.junit.runner.RunWith
 
 /** CTS tests for [SafetyCenterConfig]. */
 @RunWith(AndroidJUnit4::class)
-@SdkSuppress(minSdkVersion = TIRAMISU, codeName = "Tiramisu")
 class SafetyCenterConfigTest {
 
     @Test
