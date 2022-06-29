@@ -19,7 +19,6 @@ package android.safetycenter.cts.config
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager.ResolveInfoFlags
-import android.os.Build.VERSION_CODES.TIRAMISU
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.getSafetyCenterConfigWithPermission
@@ -27,7 +26,6 @@ import android.safetycenter.cts.testing.SafetyCenterCtsHelper
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.filters.SdkSuppress
 import com.android.safetycenter.config.SafetyCenterConfigParser
 import com.android.safetycenter.resources.SafetyCenterResourcesContext
 import com.google.common.truth.Truth.assertThat
@@ -38,8 +36,8 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
+/** CTS tests for the Safety Center XML config file. */
 @RunWith(AndroidJUnit4::class)
-@SdkSuppress(minSdkVersion = TIRAMISU, codeName = "Tiramisu")
 class XmlConfigTest {
     private val context: Context = getApplicationContext()
     private val safetyCenterContext = SafetyCenterResourcesContext(context)

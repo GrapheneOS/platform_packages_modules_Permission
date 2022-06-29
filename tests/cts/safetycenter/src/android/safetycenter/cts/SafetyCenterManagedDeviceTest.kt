@@ -66,9 +66,11 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
+/** CTS tests for our APIs and UI on a managed device (e.g. with managed profile(s)). */
 @Ignore
-// TODO(b/234108780): enable when we figure a way to make sure these don't fail due to timeout error
 @RunWith(BedsteadJUnit4::class)
+// TODO(b/234108780): Enable these back when we figure a way to make sure they don't fail due to
+// timeouts with Bedstead.
 class SafetyCenterManagedDeviceTest {
 
     companion object {
@@ -169,7 +171,7 @@ class SafetyCenterManagedDeviceTest {
     @EnsureHasWorkProfile
     fun getSafetyCenterData_staticSourceWithWorkProfile_shouldBeAbleToGetData() {
         val safetyCenterStatusOk =
-            SafetyCenterStatus.Builder("All good", "No problemo maestro")
+            SafetyCenterStatus.Builder("Looks good", "This device is protected")
                 .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK)
                 .build()
         val staticEntry =
