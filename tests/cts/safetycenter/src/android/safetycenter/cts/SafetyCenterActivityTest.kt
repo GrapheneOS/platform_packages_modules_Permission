@@ -143,6 +143,20 @@ class SafetyCenterActivityTest {
     }
 
     @Test
+    fun issueCard_greenIssue_noDismissalConfirmationAndDismisses() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.informationWithIssue)
+
+        context.launchSafetyCenterActivity {
+            waitFindObject(By.desc("Dismiss")).click()
+
+            assertSourceIssueNotDisplayed(safetySourceCtsData.informationIssue)
+            assertSourceDataDisplayed(safetySourceCtsData.information)
+            findButton("Scan")
+        }
+    }
+
+    @Test
     fun issueCard_confirmsDismissal_dismisses() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         safetyCenterCtsHelper.setData(
