@@ -41,7 +41,6 @@ import android.safetycenter.SafetySourceData
 import android.safetycenter.SafetySourceIssue
 import android.service.notification.StatusBarNotification
 import android.text.Html
-import android.util.ArraySet
 import android.util.Log
 import android.view.accessibility.AccessibilityManager
 import androidx.annotation.ChecksSdkIntAtLeast
@@ -64,12 +63,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
-import java.io.BufferedReader
-import java.io.BufferedWriter
-import java.io.FileNotFoundException
-import java.io.IOException
-import java.io.InputStreamReader
-import java.io.OutputStreamWriter
 import java.util.Random
 import java.util.concurrent.TimeUnit
 import java.util.function.BooleanSupplier
@@ -126,6 +119,10 @@ class AccessibilitySourceService(
         NotificationManager::class.java)
     private val safetyCenterManager = getSystemServiceSafe(parentUserContext,
         SafetyCenterManager::class.java)
+    private val a11yDataFile = parentUserContext.getFileStreamPath(
+        Constants.ACCESSIBILITY_SERVICES_ALREADY_NOTIFIED_FILE)
+
+    private val storageService = TextStorageRepository(a11yDataFile)
 
     @WorkerThread
     internal suspend fun processAccessibilityJob(
@@ -487,7 +484,7 @@ class AccessibilitySourceService(
                     notificationShownTime = System.currentTimeMillis()
                 )
         notifiedComponentsMap[componentName] = componentToMarkNotified
-        persistNotifiedComponentsLocked(notifiedComponentsMap.values)
+        persistNotifiedComponentsLocked(notifiedComponentsMap.values.toList())
     }
 
     /**
@@ -497,57 +494,9 @@ class AccessibilitySourceService(
      */
     @WorkerThread
     @VisibleForTesting
-    internal suspend fun loadNotifiedComponentsLocked(): ArraySet<AccessibilityComponent> {
+    internal suspend fun loadNotifiedComponentsLocked(): List<AccessibilityComponent> {
         return withContext(Dispatchers.IO) {
-            try {
-                BufferedReader(
-                    InputStreamReader(
-                        parentUserContext.openFileInput(
-                            Constants.ACCESSIBILITY_SERVICES_ALREADY_NOTIFIED_FILE
-                        )
-                    )
-                ).use { reader ->
-                    val accessibilityComponents = ArraySet<AccessibilityComponent>()
-
-                    /*
-                     * The format of the file is
-                     * <flattened component> <time of notification> <time resolved>
-                     * e.g.
-                     *
-                     * com.one.package/Class 1234567890 1234567890
-                     * com.two.package/Class 1234567890 1234567890
-                     * com.three.package/Class 1234567890 1234567890
-                     */
-                    while (true) {
-                        val line = reader.readLine() ?: break
-                        val lineComponents = line.split(" ".toRegex()).toTypedArray()
-                        val componentName = ComponentName.unflattenFromString(lineComponents[0])
-                        val notificationShownTime: Long = lineComponents[1].toLong()
-                        val signalResolvedTime: Long = lineComponents[2].toLong()
-                        if (componentName != null) {
-                            accessibilityComponents.add(
-                                AccessibilityComponent(
-                                    componentName,
-                                    notificationShownTime,
-                                    signalResolvedTime
-                                )
-                            )
-                        } else {
-                            Log.w(LOG_TAG, "Not restoring state \"$line\" as component is unknown")
-                        }
-                    }
-                    return@withContext accessibilityComponents
-                }
-            } catch (ignored: FileNotFoundException) {
-                return@withContext ArraySet<AccessibilityComponent>()
-            } catch (e: Exception) {
-                Log.w(
-                    LOG_TAG,
-                    "Could not read ${Constants.ACCESSIBILITY_SERVICES_ALREADY_NOTIFIED_FILE}",
-                    e
-                )
-                return@withContext ArraySet<AccessibilityComponent>()
-            }
+            storageService.readData(a11yDataCreator)
         }
     }
 
@@ -558,43 +507,10 @@ class AccessibilitySourceService(
      */
     @WorkerThread
     private suspend fun persistNotifiedComponentsLocked(
-        accessibilityComponents: Collection<AccessibilityComponent>
+        accessibilityComponents: List<AccessibilityComponent>
     ) {
         withContext(Dispatchers.IO) {
-            try {
-                BufferedWriter(
-                    OutputStreamWriter(
-                        parentUserContext.openFileOutput(
-                            Constants.ACCESSIBILITY_SERVICES_ALREADY_NOTIFIED_FILE,
-                            Context.MODE_PRIVATE
-                        )
-                    )
-                ).use { writer ->
-                    /*
-                     * The format of the file is
-                     * <flattened component> <time of notification> <time resolved>
-                     * e.g.
-                     *
-                     * com.one.package/Class 1234567890 1234567890
-                     * com.two.package/Class 1234567890 1234567890
-                     * com.three.package/Class 1234567890 1234567890
-                     */
-                    for (component in accessibilityComponents) {
-                        writer.append(component.componentName.flattenToString())
-                            .append(' ')
-                            .append(component.notificationShownTime.toString())
-                            .append(' ')
-                            .append(component.signalResolvedTime.toString())
-                        writer.newLine()
-                    }
-                }
-            } catch (e: IOException) {
-                Log.e(
-                    LOG_TAG,
-                    "Could not write to ${Constants.ACCESSIBILITY_SERVICES_ALREADY_NOTIFIED_FILE}",
-                    e
-                )
-            }
+            storageService.persistData(accessibilityComponents)
         }
     }
 
@@ -679,6 +595,15 @@ class AccessibilitySourceService(
         /** lock for processing a job */
         private val lock = Mutex()
 
+        private val a11yDataCreator = object : PrivacySourceData.Creator<AccessibilityComponent> {
+            override fun fromStorageData(data: String): AccessibilityComponent {
+                val components = data.split(" ")
+                val a11yService = ComponentName.unflattenFromString(components[0])!!
+                val notificationShownTime: Long = components[1].toLong()
+                return AccessibilityComponent(a11yService, notificationShownTime)
+            }
+        }
+
         /**
          * Get time in between two periodic checks.
          *
@@ -757,9 +682,12 @@ class AccessibilitySourceService(
     @VisibleForTesting
     internal data class AccessibilityComponent(
         val componentName: ComponentName,
-        val notificationShownTime: Long = 0L,
-        val signalResolvedTime: Long = 0L
-    )
+        val notificationShownTime: Long = 0L
+    ) : PrivacySourceData {
+        override fun toStorageData(): String {
+            return componentName.flattenToString() + " " + notificationShownTime
+        }
+    }
 }
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
