@@ -830,12 +830,15 @@ final class SafetyCenterDataTracker {
                             safetyCenterIssueId.getSafetyCenterIssueKey()));
         }
 
+        int safetyCenterIssueSeverityLevel =
+                toSafetyCenterIssueSeverityLevel(safetySourceIssue.getSeverityLevel());
         return new SafetyCenterIssue.Builder(
                         SafetyCenterIds.encodeToString(safetyCenterIssueId),
                         safetySourceIssue.getTitle(),
                         safetySourceIssue.getSummary())
-                .setSeverityLevel(
-                        toSafetyCenterIssueSeverityLevel(safetySourceIssue.getSeverityLevel()))
+                .setSeverityLevel(safetyCenterIssueSeverityLevel)
+                .setShouldConfirmDismissal(
+                        safetyCenterIssueSeverityLevel > SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_OK)
                 .setSubtitle(safetySourceIssue.getSubtitle())
                 .setActions(safetyCenterIssueActions)
                 .build();

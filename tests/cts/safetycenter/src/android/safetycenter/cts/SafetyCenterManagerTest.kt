@@ -2185,6 +2185,7 @@ class SafetyCenterManagerTest {
                 "Information issue title",
                 "Information issue summary")
             .setSeverityLevel(ISSUE_SEVERITY_LEVEL_OK)
+            .setShouldConfirmDismissal(false)
             .setActions(
                 listOf(
                     SafetyCenterIssue.Action.Builder(
