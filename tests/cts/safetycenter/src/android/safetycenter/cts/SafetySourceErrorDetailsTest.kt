@@ -16,12 +16,10 @@
 
 package android.safetycenter.cts
 
-import android.os.Build
 import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetySourceErrorDetails
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.ext.truth.os.ParcelableSubject.assertThat
-import androidx.test.filters.SdkSuppress
 import com.android.permission.testing.EqualsHashCodeToStringTester
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
@@ -29,7 +27,6 @@ import org.junit.runner.RunWith
 
 /** CTS tests for [SafetySourceErrorDetails]. */
 @RunWith(AndroidJUnit4::class)
-@SdkSuppress(minSdkVersion = Build.VERSION_CODES.TIRAMISU, codeName = "Tiramisu")
 class SafetySourceErrorDetailsTest {
     @Test
     fun getSafetyEvent_returnsSafetyEvent() {

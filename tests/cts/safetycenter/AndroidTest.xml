@@ -16,10 +16,8 @@
   -->
 <configuration description="Config for CTS SafetyCenter test cases">
 
-    <!-- TODO(b/207111503): Use Sdk33ModuleController once available, and remove @SdkSuppress
-         annotations -->
     <object
-        class="com.android.tradefed.testtype.suite.module.Sdk31ModuleController"
+        class="com.android.tradefed.testtype.suite.module.Sdk33ModuleController"
         type="module_controller"/>
 
     <option name="config-descriptor:metadata" key="component" value="framework"/>
