@@ -281,16 +281,17 @@ final class SafetyCenterDataTracker {
     }
 
     /**
-     * Returns the current {@link SafetyCenterData} for the given {@link UserProfileGroup},
-     * aggregated from all the {@link SafetySourceData} set so far.
+     * Returns the current {@link SafetyCenterData} for the given {@code packageName} and {@link
+     * UserProfileGroup}, aggregated from all the {@link SafetySourceData} set so far.
      *
      * <p>If a {@link SafetySourceData} was not set, the default value from the {@link
      * SafetyCenterConfig} is used.
      */
     @NonNull
-    SafetyCenterData getSafetyCenterData(@NonNull UserProfileGroup userProfileGroup) {
+    SafetyCenterData getSafetyCenterData(
+            @NonNull String packageName, @NonNull UserProfileGroup userProfileGroup) {
         return getSafetyCenterData(
-                mSafetyCenterConfigReader.getSafetySourcesGroups(), userProfileGroup);
+                mSafetyCenterConfigReader.getSafetySourcesGroups(), packageName, userProfileGroup);
     }
 
     /** Marks the given {@link SafetyCenterIssueActionId} as in-flight. */
@@ -666,6 +667,7 @@ final class SafetyCenterDataTracker {
     @NonNull
     private SafetyCenterData getSafetyCenterData(
             @NonNull List<SafetySourcesGroup> safetySourcesGroups,
+            @NonNull String packageName,
             @NonNull UserProfileGroup userProfileGroup) {
         int safetyCenterOverallSeverityLevel = SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK;
         int safetyCenterEntriesSeverityLevel = SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK;
@@ -690,11 +692,15 @@ final class SafetyCenterDataTracker {
                                     addSafetyCenterEntryGroup(
                                             safetyCenterEntryOrGroups,
                                             safetySourcesGroup,
+                                            packageName,
                                             userProfileGroup));
                     break;
                 case SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_RIGID:
                     addSafetyCenterStaticEntryGroup(
-                            safetyCenterStaticEntryGroups, safetySourcesGroup, userProfileGroup);
+                            safetyCenterStaticEntryGroups,
+                            safetySourcesGroup,
+                            packageName,
+                            userProfileGroup);
                     break;
                 case SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_HIDDEN:
                     break;
@@ -864,6 +870,7 @@ final class SafetyCenterDataTracker {
     private int addSafetyCenterEntryGroup(
             @NonNull List<SafetyCenterEntryOrGroup> safetyCenterEntryOrGroups,
             @NonNull SafetySourcesGroup safetySourcesGroup,
+            @NonNull String defaultPackageName,
             @NonNull UserProfileGroup userProfileGroup) {
         int groupSafetyCenterEntryLevel = SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN;
 
@@ -878,6 +885,7 @@ final class SafetyCenterDataTracker {
                             addSafetyCenterEntry(
                                     entries,
                                     safetySource,
+                                    defaultPackageName,
                                     false,
                                     userProfileGroup.getProfileParentUserId()));
 
@@ -893,7 +901,11 @@ final class SafetyCenterDataTracker {
                         Math.max(
                                 groupSafetyCenterEntryLevel,
                                 addSafetyCenterEntry(
-                                        entries, safetySource, true, managedProfileUserId));
+                                        entries,
+                                        safetySource,
+                                        defaultPackageName,
+                                        true,
+                                        managedProfileUserId));
             }
         }
 
@@ -953,10 +965,11 @@ final class SafetyCenterDataTracker {
     private int addSafetyCenterEntry(
             @NonNull List<SafetyCenterEntry> entries,
             @NonNull SafetySource safetySource,
+            @NonNull String defaultPackageName,
             boolean isUserManaged,
             @UserIdInt int userId) {
         SafetyCenterEntry safetyCenterEntry =
-                toSafetyCenterEntry(safetySource, isUserManaged, userId);
+                toSafetyCenterEntry(safetySource, defaultPackageName, isUserManaged, userId);
         if (safetyCenterEntry == null) {
             return SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN;
         }
@@ -968,7 +981,10 @@ final class SafetyCenterDataTracker {
 
     @Nullable
     private SafetyCenterEntry toSafetyCenterEntry(
-            @NonNull SafetySource safetySource, boolean isUserManaged, @UserIdInt int userId) {
+            @NonNull SafetySource safetySource,
+            @NonNull String defaultPackageName,
+            boolean isUserManaged,
+            @UserIdInt int userId) {
         switch (safetySource.getType()) {
             case SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY:
                 return null;
@@ -1024,7 +1040,7 @@ final class SafetyCenterDataTracker {
             case SafetySource.SAFETY_SOURCE_TYPE_STATIC:
                 return toDefaultSafetyCenterEntry(
                         safetySource,
-                        null,
+                        defaultPackageName,
                         SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED,
                         SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON,
                         isUserManaged,
@@ -1039,7 +1055,7 @@ final class SafetyCenterDataTracker {
     @Nullable
     private SafetyCenterEntry toDefaultSafetyCenterEntry(
             @NonNull SafetySource safetySource,
-            @Nullable String packageName,
+            @NonNull String packageName,
             @SafetyCenterEntry.EntrySeverityLevel int entrySeverityLevel,
             @SafetyCenterEntry.SeverityUnspecifiedIconType int severityUnspecifiedIconType,
             boolean isUserManaged,
@@ -1077,6 +1093,7 @@ final class SafetyCenterDataTracker {
     private void addSafetyCenterStaticEntryGroup(
             @NonNull List<SafetyCenterStaticEntryGroup> safetyCenterStaticEntryGroups,
             @NonNull SafetySourcesGroup safetySourcesGroup,
+            @NonNull String defaultPackageName,
             @NonNull UserProfileGroup userProfileGroup) {
         List<SafetySource> safetySources = safetySourcesGroup.getSafetySources();
         List<SafetyCenterStaticEntry> staticEntries = new ArrayList<>(safetySources.size());
@@ -1084,7 +1101,11 @@ final class SafetyCenterDataTracker {
             SafetySource safetySource = safetySources.get(i);
 
             addSafetyCenterStaticEntry(
-                    staticEntries, safetySource, false, userProfileGroup.getProfileParentUserId());
+                    staticEntries,
+                    safetySource,
+                    defaultPackageName,
+                    false,
+                    userProfileGroup.getProfileParentUserId());
 
             if (!SafetySources.supportsManagedProfiles(safetySource)) {
                 continue;
@@ -1094,7 +1115,12 @@ final class SafetyCenterDataTracker {
             for (int j = 0; j < managedProfilesUserIds.length; j++) {
                 int managedProfileUserId = managedProfilesUserIds[j];
 
-                addSafetyCenterStaticEntry(staticEntries, safetySource, true, managedProfileUserId);
+                addSafetyCenterStaticEntry(
+                        staticEntries,
+                        safetySource,
+                        defaultPackageName,
+                        true,
+                        managedProfileUserId);
             }
         }
 
@@ -1107,10 +1133,11 @@ final class SafetyCenterDataTracker {
     private void addSafetyCenterStaticEntry(
             @NonNull List<SafetyCenterStaticEntry> staticEntries,
             @NonNull SafetySource safetySource,
+            @NonNull String defaultPackageName,
             boolean isUserManaged,
             @UserIdInt int userId) {
         SafetyCenterStaticEntry staticEntry =
-                toSafetyCenterStaticEntry(safetySource, isUserManaged, userId);
+                toSafetyCenterStaticEntry(safetySource, defaultPackageName, isUserManaged, userId);
         if (staticEntry == null) {
             return;
         }
@@ -1119,7 +1146,10 @@ final class SafetyCenterDataTracker {
 
     @Nullable
     private SafetyCenterStaticEntry toSafetyCenterStaticEntry(
-            @NonNull SafetySource safetySource, boolean isUserManaged, @UserIdInt int userId) {
+            @NonNull SafetySource safetySource,
+            @NonNull String defaultPackageName,
+            boolean isUserManaged,
+            @UserIdInt int userId) {
         switch (safetySource.getType()) {
             case SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY:
                 return null;
@@ -1142,7 +1172,8 @@ final class SafetyCenterDataTracker {
                 return toDefaultSafetyCenterStaticEntry(
                         safetySource, safetySource.getPackageName(), isUserManaged, userId);
             case SafetySource.SAFETY_SOURCE_TYPE_STATIC:
-                return toDefaultSafetyCenterStaticEntry(safetySource, null, isUserManaged, userId);
+                return toDefaultSafetyCenterStaticEntry(
+                        safetySource, defaultPackageName, isUserManaged, userId);
         }
         Log.w(TAG, "Unknown safety source type found in rigid group: " + safetySource.getType());
         return null;
@@ -1151,7 +1182,7 @@ final class SafetyCenterDataTracker {
     @Nullable
     private SafetyCenterStaticEntry toDefaultSafetyCenterStaticEntry(
             @NonNull SafetySource safetySource,
-            @Nullable String packageName,
+            @NonNull String packageName,
             boolean isUserManaged,
             @UserIdInt int userId) {
         if (SafetySources.isDefaultEntryHidden(safetySource)) {
@@ -1182,7 +1213,7 @@ final class SafetyCenterDataTracker {
 
     @Nullable
     private PendingIntent toPendingIntent(
-            @Nullable String intentAction, @Nullable String packageName, @UserIdInt int userId) {
+            @Nullable String intentAction, @NonNull String packageName, @UserIdInt int userId) {
         if (intentAction == null) {
             return null;
         }
@@ -1205,20 +1236,13 @@ final class SafetyCenterDataTracker {
     }
 
     @Nullable
-    private Context toPackageContextAsUser(@Nullable String packageName, @UserIdInt int userId) {
-        String contextPackageName =
-                packageName == null
-                        // TODO(b/233047525): We should likely use the listener's or caller's
-                        // package name here.
-                        ? mContext.getPackageManager().getPermissionControllerPackageName()
-                        : packageName;
+    private Context toPackageContextAsUser(@NonNull String packageName, @UserIdInt int userId) {
         // This call requires the INTERACT_ACROSS_USERS permission.
         final long identity = Binder.clearCallingIdentity();
         try {
-            return mContext.createPackageContextAsUser(
-                    contextPackageName, 0, UserHandle.of(userId));
+            return mContext.createPackageContextAsUser(packageName, 0, UserHandle.of(userId));
         } catch (NameNotFoundException e) {
-            Log.w(TAG, "Package name " + contextPackageName + " not found", e);
+            Log.w(TAG, "Package name " + packageName + " not found", e);
             return null;
         } finally {
             Binder.restoreCallingIdentity(identity);

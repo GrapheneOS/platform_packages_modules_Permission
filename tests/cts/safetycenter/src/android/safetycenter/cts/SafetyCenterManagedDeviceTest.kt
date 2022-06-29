@@ -42,8 +42,6 @@ import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_CON
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.STATIC_ALL_PROFILE_SOURCES_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.getWorkPolicyInfoConfig
-import android.safetycenter.cts.testing.SafetyCenterCtsData.normalize
-import android.safetycenter.cts.testing.SafetyCenterCtsData.stubPendingIntent
 import android.safetycenter.cts.testing.SafetyCenterCtsHelper
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import android.safetycenter.cts.testing.SafetySourceCtsData
@@ -176,13 +174,14 @@ class SafetyCenterManagedDeviceTest {
                 .build()
         val staticEntry =
             SafetyCenterStaticEntry.Builder("OK")
-                .setPendingIntent(stubPendingIntent)
+                .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
                 .setSummary("OK")
                 .build()
         val staticEntryForWork =
             SafetyCenterStaticEntry.Builder("Attention")
                 .setSummary("OK")
-                .setPendingIntent(stubPendingIntent)
+                .setPendingIntent(
+                    SafetySourceCtsData.createRedirectPendingIntent(getManagedContext()))
                 .build()
         val safetyCenterStaticData =
             SafetyCenterData(
@@ -192,8 +191,7 @@ class SafetyCenterManagedDeviceTest {
                 listOf(SafetyCenterStaticEntryGroup("OK", listOf(staticEntry, staticEntryForWork))))
 
         safetyCenterCtsHelper.setConfig(STATIC_ALL_PROFILE_SOURCES_CONFIG)
-        val apiSafetySourceData =
-            safetyCenterManager.getSafetyCenterDataWithPermission().normalize()
+        val apiSafetySourceData = safetyCenterManager.getSafetyCenterDataWithPermission()
 
         assertThat(apiSafetySourceData).isEqualTo(safetyCenterStaticData)
     }
