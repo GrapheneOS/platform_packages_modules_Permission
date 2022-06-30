@@ -17,9 +17,7 @@
 package com.android.safetycenter.config
 
 import android.content.Context
-import android.os.Build.VERSION_CODES.TIRAMISU
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
-import androidx.test.filters.SdkSuppress
 import com.android.safetycenter.config.tests.R
 import com.google.common.truth.Truth.assertThat
 import org.junit.Assert.assertThrows
@@ -28,7 +26,6 @@ import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 
 @RunWith(Parameterized::class)
-@SdkSuppress(minSdkVersion = TIRAMISU, codeName = "Tiramisu")
 class ParserConfigInvalidTest {
     private val context: Context = getApplicationContext()
 
