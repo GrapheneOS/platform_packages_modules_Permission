@@ -26,7 +26,7 @@
     <string name="privacy_sources_summary" msgid="4089719981155120864">"Painel, permissões, controles"</string>
     <string name="permission_usage_title" msgid="3633779688945350407">"Painel de privacidade"</string>
     <string name="permission_usage_summary" msgid="5323079206029964468">"Mostra quais apps usaram as permissões recentemente"</string>
-    <string name="permission_manager_title" msgid="5277347862821255015">"Gerenciador de permissões"</string>
+    <string name="permission_manager_title" msgid="5277347862821255015">"Gestão de permissões"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"Controlar o acesso de apps aos seus dados"</string>
     <string name="privacy_controls_title" msgid="5322875777945432395">"Controles de privacidade"</string>
     <string name="privacy_controls_summary" msgid="2402066941190435424">"Controlar o acesso do dispositivo ao microfone, à câmera e muito mais"</string>
