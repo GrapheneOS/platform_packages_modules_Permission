@@ -20,7 +20,7 @@
     <option name="test-suite-tag" value="apct" />
     <option name="test-suite-tag" value="apct-instrumentation" />
     <option name="test-tag" value="SafetyCenterConfigTests" />
-    <object type="module_controller" class="com.android.tradefed.testtype.suite.module.Sdk30ModuleController" />
+    <object type="module_controller" class="com.android.tradefed.testtype.suite.module.Sdk33ModuleController" />
 
     <!-- Install test and resources -->
     <target_preparer class="com.android.tradefed.targetprep.TestAppInstallSetup">
