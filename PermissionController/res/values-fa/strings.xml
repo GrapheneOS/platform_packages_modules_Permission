@@ -120,7 +120,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"مجوزهای کنونی"</string>
     <string name="message_staging" msgid="9110563899955511866">"مرحله‌بندی برنامه…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"نامشخص"</string>
-    <string name="permission_usage_title" msgid="1568233336351734538">"داشبورد حریم‌خصوصی"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"داشبورد حریم خصوصی"</string>
     <string name="auto_permission_usage_summary" msgid="7335667266743337075">"مشاهده برنامه‌هایی که اخیراً از اجازه‌ها استفاده کرده‌اند"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"استفاده از <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"دیدن اجازه‌های دیگر"</string>
@@ -257,7 +257,7 @@
     <string name="permission_reminders" msgid="6528257957664832636">"یادآوری‌های مجوز"</string>
     <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"۱ برنامه استفاده‌نشده"</string>
     <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> برنامه استفاده‌نشده"</string>
-    <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"برای محافظت از حریم‌خصوصی شما، اجازه‌ها برداشته شد. برای مرور، ضربه بزنید"</string>
+    <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"برای محافظت از حریم خصوصی شما، اجازه‌ها برداشته شد. برای مرور، ضربه بزنید"</string>
     <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"اجازه‌های مربوط به برنامه‌های استفاده‌نشده برداشته شد"</string>
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"برخی از برنامه‌ها به‌مدت چند ماه استفاده نشده‌اند. برای مرور، ضربه بزنید."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# برنامه استفاده‌نشده}one{# برنامه استفاده‌نشده}other{# برنامه استفاده‌نشده}}"</string>
@@ -273,16 +273,16 @@
     <string name="permission_removed_page_title" msgid="2627436155091001209">"اجازه‌ها برداشته شد"</string>
     <string name="all_unused_apps_category_title" msgid="755663524704745414">"همه برنامه‌های استفاده‌نشده"</string>
     <string name="months_ago" msgid="1766026492610646354">"<xliff:g id="COUNT">%1$d</xliff:g> ماه قبل"</string>
-    <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"برای محافظت از حریم‌خصوصی شما، اجازه‌ها برداشته شد"</string>
+    <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"برای محافظت از حریم خصوصی شما، اجازه‌ها برداشته شد"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> به موقعیت مکانی شما در پس‌زمینه دسترسی دارد"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"این برنامه همیشه می‌تواند به مکانتان دسترسی داشته باشد. برای تغییر دادن، ضربه بزنید."</string>
-    <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"برای محافظت از حریم‌خصوصی، اجازه‌های برنامه برداشته شدند"</string>
+    <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"برای محافظت از حریم خصوصی، اجازه‌های برنامه برداشته شدند"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> طی چند ماه استفاده نشده است. برای مرور، ضربه بزنید."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> و ۱ برنامه دیگر طی چند ماه استفاده نشده‌اند. برای مرور، ضربه بزنید."</string>
     <string name="auto_revoke_after_notification_content_many" msgid="4774106206289751220">"<xliff:g id="APP_NAME">%1$s</xliff:g> و <xliff:g id="NUMBER_OF_APPS">%2$s</xliff:g> برنامه دیگر طی چند ماه استفاده نشده‌اند. برای مرور، ضربه بزنید."</string>
     <string name="auto_revoke_before_notification_title_one" msgid="6758024954464359876">"۱ برنامه استفاده نشده است"</string>
     <string name="auto_revoke_before_notification_title_many" msgid="4415543943846385685">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> برنامه استفاده نشده‌اند"</string>
-    <string name="auto_revoke_before_notification_content_one" msgid="1156635373417068822">"برای محافظت از حریم‌خصوصی، اجازه‌ها برداشته خواهند شد. برای مرور، ضربه بزنید."</string>
+    <string name="auto_revoke_before_notification_content_one" msgid="1156635373417068822">"برای محافظت از حریم خصوصی، اجازه‌ها برداشته خواهند شد. برای مرور، ضربه بزنید."</string>
     <string name="unused_apps_title" msgid="8589298917717872239">"برنامه‌های استفاده‌نشده"</string>
     <string name="unused_apps_subtitle_after" msgid="2034267519506357898">"اجازه‌ها از این برنامه‌ها برداشته شد"</string>
     <string name="unused_apps_subtitle_before" msgid="5233302577076132427">"اجازه‌ها از این برنامه‌ها برداشته خواهند شد"</string>
@@ -496,12 +496,12 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"برای برنامه‌ها و سرویس‌ها"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"هنگام تماس با شماره‌های اضطراری، ممکن است همچنان داده‌های میکروفون هم‌رسانی شود."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"تغییر"</string>
-    <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"امنیت و حریم‌خصوصی"</string>
+    <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"امنیت و حریم خصوصی"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"اسکن"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"رد کردن"</string>
     <string name="security_settings" msgid="3808106921175271317">"تنظیمات امنیتی"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"اجازه‌های حسگر"</string>
-    <string name="privacy_controls_qs" msgid="471793881466080745">"تنظیمات حریم‌خصوصی"</string>
+    <string name="privacy_controls_qs" msgid="471793881466080745">"تنظیمات حریم خصوصی"</string>
     <string name="permissions_removed_qs" msgid="8957319130625294572">"اجازه برداشته شده است"</string>
     <string name="camera_usage_qs" msgid="7943349178368641820">"دیدن کاربردهای دیگر از دوربین"</string>
     <string name="microphone_usage_qs" msgid="2393193350541830472">"دیدن کاربردهای دیگر میکروفون"</string>
@@ -517,7 +517,7 @@
     <string name="recent_app_usage_1_qs" msgid="261450184773310741">"اخیراً <xliff:g id="APP_NAME">%1$s</xliff:g> از آن استفاده کرده است (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
     <string name="active_app_usage_2_qs" msgid="6107866785243565283">"<xliff:g id="APP_NAME">%1$s</xliff:g> درحال استفاده از آن است (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"اخیراً <xliff:g id="APP_NAME">%1$s</xliff:g> از آن استفاده کرده است (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
-    <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"امنیت و حریم‌خصوصی"</string>
+    <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"امنیت و حریم خصوصی"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"بررسی وضعیت"</string>
     <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"تأیید"</string>
     <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"برگشت"</string>
