@@ -25,7 +25,7 @@
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"ไม่พบแอปพลิเคชัน"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"ไม่อนุญาต"</string>
     <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"ไม่อนุญาตและไม่ต้องถามอีก"</string>
-    <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"คงไว้ “เมื่อมีการใช้แอป”"</string>
+    <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"คงไว้ที่ “เมื่อมีการใช้แอป”"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"คงไว้ที่ “เฉพาะครั้งนี้”"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"ข้อมูลเพิ่มเติม"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"ยังคงไม่อนุญาต"</string>
