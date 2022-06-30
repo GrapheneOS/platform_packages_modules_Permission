@@ -69,6 +69,23 @@ class SafetySourceCtsData(private val context: Context) {
             .build()
 
     /**
+     * A [SafetySourceIssue] with a [SEVERITY_LEVEL_INFORMATION] and a redirecting [Action]. With
+     * subtitle provided.
+     */
+    val informationIssueWithSubtitle =
+        SafetySourceIssue.Builder(
+            INFORMATION_ISSUE_ID,
+            "Information issue title",
+            "Information issue summary",
+            SEVERITY_LEVEL_INFORMATION,
+            ISSUE_TYPE_ID)
+            .setSubtitle("Information issue subtitle")
+            .addAction(
+                Action.Builder(INFORMATION_ISSUE_ACTION_ID, "Review", redirectPendingIntent)
+                    .build())
+            .build()
+
+    /**
      * A [SafetySourceData] with a [SEVERITY_LEVEL_INFORMATION] redirecting [SafetySourceIssue] and
      * a [SEVERITY_LEVEL_UNSPECIFIED] [SafetySourceStatus].
      */
@@ -115,6 +132,19 @@ class SafetySourceCtsData(private val context: Context) {
                     .setPendingIntent(redirectPendingIntent)
                     .build())
             .addIssue(informationIssue)
+            .build()
+
+    /**
+     * A [SafetySourceData] with a [SEVERITY_LEVEL_INFORMATION] redirecting [SafetySourceIssue] and
+     * [SafetySourceStatus].
+     */
+    val informationWithSubtitleIssue =
+        SafetySourceData.Builder()
+            .setStatus(
+                SafetySourceStatus.Builder("Ok title", "Ok summary", SEVERITY_LEVEL_INFORMATION)
+                    .setPendingIntent(redirectPendingIntent)
+                    .build())
+            .addIssue(informationIssueWithSubtitle)
             .build()
 
     /** A [SafetySourceIssue] with a [SEVERITY_LEVEL_RECOMMENDATION] and a redirecting [Action]. */

@@ -141,6 +141,46 @@ class SafetyCenterActivityTest {
     }
 
     @Test
+    fun updatingSafetySourceData_withoutSubtitle_newIssueWithSubtitle() {
+        val initialDataToDisplay = safetySourceCtsData.informationWithIssue
+        val updatedDataToDisplay = safetySourceCtsData.informationWithSubtitleIssue
+
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, initialDataToDisplay)
+
+        context.launchSafetyCenterActivity {
+            assertSourceIssueDisplayed(safetySourceCtsData.informationIssue)
+
+            safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, updatedDataToDisplay)
+            getUiDevice()
+                .waitForWindowUpdate(/* from any window*/ null, DATA_UPDATE_TIMEOUT.toMillis())
+
+            assertSourceIssueDisplayed(safetySourceCtsData.informationIssueWithSubtitle)
+        }
+    }
+
+    @Test
+    fun updatingSafetySourceData_withSubtitle_newIssueWithoutSubtitle() {
+        val initialDataToDisplay = safetySourceCtsData.informationWithSubtitleIssue
+        val updatedDataToDisplay = safetySourceCtsData.informationWithIssue
+
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, initialDataToDisplay)
+
+        context.launchSafetyCenterActivity {
+            assertSourceIssueDisplayed(safetySourceCtsData.informationIssueWithSubtitle)
+
+            safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, updatedDataToDisplay)
+            getUiDevice()
+                .waitForWindowUpdate(/* from any window*/ null, DATA_UPDATE_TIMEOUT.toMillis())
+
+            waitTextNotDisplayed(
+                safetySourceCtsData.informationIssueWithSubtitle.subtitle.toString())
+            assertSourceIssueDisplayed(safetySourceCtsData.informationIssue)
+        }
+    }
+
+    @Test
     fun issueCard_greenIssue_noDismissalConfirmationAndDismisses() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.informationWithIssue)
@@ -440,6 +480,7 @@ class SafetyCenterActivityTest {
     companion object {
         private const val EXPAND_ISSUE_GROUP_QS_FRAGMENT_KEY = "expand_issue_group_qs_fragment_key"
         private val DIALOG_ROTATION_TIMEOUT = Duration.ofSeconds(1)
+        private val DATA_UPDATE_TIMEOUT = Duration.ofSeconds(1)
 
         private fun UiDevice.rotate() {
             if (isNaturalOrientation) {
