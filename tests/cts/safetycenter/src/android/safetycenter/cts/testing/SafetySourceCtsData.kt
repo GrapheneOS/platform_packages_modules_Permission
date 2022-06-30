@@ -74,11 +74,11 @@ class SafetySourceCtsData(private val context: Context) {
      */
     val informationIssueWithSubtitle =
         SafetySourceIssue.Builder(
-            INFORMATION_ISSUE_ID,
-            "Information issue title",
-            "Information issue summary",
-            SEVERITY_LEVEL_INFORMATION,
-            ISSUE_TYPE_ID)
+                INFORMATION_ISSUE_ID,
+                "Information issue title",
+                "Information issue summary",
+                SEVERITY_LEVEL_INFORMATION,
+                ISSUE_TYPE_ID)
             .setSubtitle("Information issue subtitle")
             .addAction(
                 Action.Builder(INFORMATION_ISSUE_ACTION_ID, "Review", redirectPendingIntent)
