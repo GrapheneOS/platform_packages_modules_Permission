@@ -80,6 +80,7 @@ public class RoleParser {
     private static final String ATTRIBUTE_EXCLUSIVE = "exclusive";
     private static final String ATTRIBUTE_FALL_BACK_TO_DEFAULT_HOLDER = "fallBackToDefaultHolder";
     private static final String ATTRIBUTE_LABEL = "label";
+    private static final String ATTRIBUTE_MAX_SDK_VERSION = "maxSdkVersion";
     private static final String ATTRIBUTE_MIN_SDK_VERSION = "minSdkVersion";
     private static final String ATTRIBUTE_OVERRIDE_USER_WHEN_GRANTING = "overrideUserWhenGranting";
     private static final String ATTRIBUTE_QUERY_FLAGS = "queryFlags";
@@ -350,8 +351,17 @@ public class RoleParser {
         boolean fallBackToDefaultHolder = getAttributeBooleanValue(parser,
                 ATTRIBUTE_FALL_BACK_TO_DEFAULT_HOLDER, false);
 
+        int maxSdkVersion = getAttributeIntValue(parser, ATTRIBUTE_MAX_SDK_VERSION,
+                Build.VERSION_CODES.CUR_DEVELOPMENT);
         int minSdkVersion = getAttributeIntValue(parser, ATTRIBUTE_MIN_SDK_VERSION,
                 Build.VERSION_CODES.BASE);
+        if (minSdkVersion > maxSdkVersion) {
+            throwOrLogMessage("minSdkVersion " + minSdkVersion
+                    + " cannot be greater than maxSdkVersion " + maxSdkVersion + " for role: "
+                    + name);
+            skipCurrentTag(parser);
+            return null;
+        }
 
         boolean overrideUserWhenGranting = getAttributeBooleanValue(parser,
                 ATTRIBUTE_OVERRIDE_USER_WHEN_GRANTING, false);
@@ -478,7 +488,7 @@ public class RoleParser {
         }
         return new Role(name, allowBypassingQualification, behavior, defaultHoldersResourceName,
                 descriptionResource, exclusive, fallBackToDefaultHolder, labelResource,
-                minSdkVersion, overrideUserWhenGranting, requestDescriptionResource,
+                maxSdkVersion, minSdkVersion, overrideUserWhenGranting, requestDescriptionResource,
                 requestTitleResource, requestable, searchKeywordsResource, shortLabelResource,
                 showNone, statik, systemOnly, visible, requiredComponents, permissions,
                 appOpPermissions, appOps, preferredActivities);

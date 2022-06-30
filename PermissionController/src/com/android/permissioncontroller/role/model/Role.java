@@ -124,6 +124,11 @@ public class Role {
     private final int mLabelResource;
 
     /**
+     * The maximum SDK version for this role to be available.
+     */
+    private final int mMaxSdkVersion;
+
+    /**
      * The minimum SDK version for this role to be available.
      */
     private final int mMinSdkVersion;
@@ -221,11 +226,12 @@ public class Role {
     public Role(@NonNull String name, boolean allowBypassingQualification,
             @Nullable RoleBehavior behavior, @Nullable String defaultHoldersResourceName,
             @StringRes int descriptionResource, boolean exclusive, boolean fallBackToDefaultHolder,
-            @StringRes int labelResource, int minSdkVersion, boolean overrideUserWhenGranting,
-            @StringRes int requestDescriptionResource, @StringRes int requestTitleResource,
-            boolean requestable, @StringRes int searchKeywordsResource,
-            @StringRes int shortLabelResource, boolean showNone, boolean statik, boolean systemOnly,
-            boolean visible, @NonNull List<RequiredComponent> requiredComponents,
+            @StringRes int labelResource, int maxSdkVersion, int minSdkVersion,
+            boolean overrideUserWhenGranting, @StringRes int requestDescriptionResource,
+            @StringRes int requestTitleResource, boolean requestable,
+            @StringRes int searchKeywordsResource, @StringRes int shortLabelResource,
+            boolean showNone, boolean statik, boolean systemOnly, boolean visible,
+            @NonNull List<RequiredComponent> requiredComponents,
             @NonNull List<Permission> permissions, @NonNull List<String> appOpPermissions,
             @NonNull List<AppOp> appOps, @NonNull List<PreferredActivity> preferredActivities) {
         mName = name;
@@ -236,6 +242,7 @@ public class Role {
         mExclusive = exclusive;
         mFallBackToDefaultHolder = fallBackToDefaultHolder;
         mLabelResource = labelResource;
+        mMaxSdkVersion = maxSdkVersion;
         mMinSdkVersion = minSdkVersion;
         mOverrideUserWhenGranting = overrideUserWhenGranting;
         mRequestDescriptionResource = requestDescriptionResource;
@@ -380,11 +387,12 @@ public class Role {
      * @return whether this role is available based on SDK version
      */
     boolean isAvailableBySdkVersion() {
-        // Workaround to match the value 33+ for T+ in roles.xml before SDK finalization.
-        if (mMinSdkVersion >= 33) {
-            return SdkLevel.isAtLeastT();
+        // Workaround to match the value 34+ for U+ in roles.xml before SDK finalization.
+        if (mMinSdkVersion >= 34) {
+            return SdkLevel.isAtLeastU();
         } else {
-            return Build.VERSION.SDK_INT >= mMinSdkVersion;
+            return Build.VERSION.SDK_INT >= mMinSdkVersion
+                    && Build.VERSION.SDK_INT <= mMaxSdkVersion;
         }
     }
 
@@ -1060,6 +1068,7 @@ public class Role {
                 + ", mExclusive=" + mExclusive
                 + ", mFallBackToDefaultHolder=" + mFallBackToDefaultHolder
                 + ", mLabelResource=" + mLabelResource
+                + ", mMaxSdkVersion=" + mMaxSdkVersion
                 + ", mMinSdkVersion=" + mMinSdkVersion
                 + ", mOverrideUserWhenGranting=" + mOverrideUserWhenGranting
                 + ", mRequestDescriptionResource=" + mRequestDescriptionResource

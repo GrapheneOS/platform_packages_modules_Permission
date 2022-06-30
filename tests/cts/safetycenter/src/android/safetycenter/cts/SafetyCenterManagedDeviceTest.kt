@@ -42,8 +42,6 @@ import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_CON
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.STATIC_ALL_PROFILE_SOURCES_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.getWorkPolicyInfoConfig
-import android.safetycenter.cts.testing.SafetyCenterCtsData.normalize
-import android.safetycenter.cts.testing.SafetyCenterCtsData.stubPendingIntent
 import android.safetycenter.cts.testing.SafetyCenterCtsHelper
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import android.safetycenter.cts.testing.SafetySourceCtsData
@@ -68,9 +66,11 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
+/** CTS tests for our APIs and UI on a managed device (e.g. with managed profile(s)). */
 @Ignore
-// TODO(b/234108780): enable when we figure a way to make sure these don't fail due to timeout error
 @RunWith(BedsteadJUnit4::class)
+// TODO(b/234108780): Enable these back when we figure a way to make sure they don't fail due to
+// timeouts with Bedstead.
 class SafetyCenterManagedDeviceTest {
 
     companion object {
@@ -171,18 +171,19 @@ class SafetyCenterManagedDeviceTest {
     @EnsureHasWorkProfile
     fun getSafetyCenterData_staticSourceWithWorkProfile_shouldBeAbleToGetData() {
         val safetyCenterStatusOk =
-            SafetyCenterStatus.Builder("All good", "No problemo maestro")
+            SafetyCenterStatus.Builder("Looks good", "This device is protected")
                 .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK)
                 .build()
         val staticEntry =
             SafetyCenterStaticEntry.Builder("OK")
-                .setPendingIntent(stubPendingIntent)
+                .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
                 .setSummary("OK")
                 .build()
         val staticEntryForWork =
             SafetyCenterStaticEntry.Builder("Attention")
                 .setSummary("OK")
-                .setPendingIntent(stubPendingIntent)
+                .setPendingIntent(
+                    SafetySourceCtsData.createRedirectPendingIntent(getManagedContext()))
                 .build()
         val safetyCenterStaticData =
             SafetyCenterData(
@@ -192,8 +193,7 @@ class SafetyCenterManagedDeviceTest {
                 listOf(SafetyCenterStaticEntryGroup("OK", listOf(staticEntry, staticEntryForWork))))
 
         safetyCenterCtsHelper.setConfig(STATIC_ALL_PROFILE_SOURCES_CONFIG)
-        val apiSafetySourceData =
-            safetyCenterManager.getSafetyCenterDataWithPermission().normalize()
+        val apiSafetySourceData = safetyCenterManager.getSafetyCenterDataWithPermission()
 
         assertThat(apiSafetySourceData).isEqualTo(safetyCenterStaticData)
     }

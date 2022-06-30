@@ -16,10 +16,8 @@
   -->
 <configuration description="Config for CTS SafetyCenter test cases">
 
-    <!-- TODO(b/207111503): Use Sdk33ModuleController once available, and remove @SdkSuppress
-         annotations -->
     <object
-        class="com.android.tradefed.testtype.suite.module.Sdk31ModuleController"
+        class="com.android.tradefed.testtype.suite.module.Sdk33ModuleController"
         type="module_controller"/>
 
     <option name="config-descriptor:metadata" key="component" value="framework"/>
@@ -34,8 +32,10 @@
     <option name="test-suite-tag" value="cts"/>
 
     <target_preparer class="com.android.tradefed.targetprep.DeviceSetup">
-        <option name="force-skip-system-props"
-                value="true"/> <!-- avoid restarting device -->
+        <!-- Avoid restarting device. -->
+        <option name="force-skip-system-props" value="true"/>
+        <!-- Disable syncing to prevent overwriting flags during testing. -->
+        <option name="disable-device-config-sync" value="true" />
     </target_preparer>
 
     <target_preparer

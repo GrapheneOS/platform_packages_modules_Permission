@@ -17,7 +17,6 @@
 package android.safetycenter.cts
 
 import android.content.Context
-import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.Bundle
 import android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_ID
 import android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_ISSUE_ID
@@ -47,7 +46,6 @@ import android.support.test.uiautomator.By
 import android.support.test.uiautomator.UiDevice
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.filters.SdkSuppress
 import com.android.compatibility.common.util.UiAutomatorUtils.getUiDevice
 import com.android.compatibility.common.util.UiAutomatorUtils.waitFindObject
 import java.time.Duration
@@ -57,8 +55,8 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
+/** CTS tests for the Safety Center Activity. */
 @RunWith(AndroidJUnit4::class)
-@SdkSuppress(minSdkVersion = TIRAMISU, codeName = "Tiramisu")
 class SafetyCenterActivityTest {
     private val context: Context = getApplicationContext()
 
@@ -139,6 +137,20 @@ class SafetyCenterActivityTest {
             safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, dataToDisplay)
 
             assertSourceDataDisplayed(dataToDisplay)
+        }
+    }
+
+    @Test
+    fun issueCard_greenIssue_noDismissalConfirmationAndDismisses() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.informationWithIssue)
+
+        context.launchSafetyCenterActivity {
+            waitFindObject(By.desc("Dismiss")).click()
+
+            assertSourceIssueNotDisplayed(safetySourceCtsData.informationIssue)
+            assertSourceDataDisplayed(safetySourceCtsData.information)
+            findButton("Scan")
         }
     }
 

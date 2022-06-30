@@ -18,7 +18,6 @@ package android.safetycenter.cts
 
 import android.app.PendingIntent
 import android.content.Context
-import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.UserHandle.USER_NULL
 import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterEntry
@@ -94,8 +93,6 @@ import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_3
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.STATIC_BAREBONE_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.STATIC_IN_COLLAPSIBLE_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsData
-import android.safetycenter.cts.testing.SafetyCenterCtsData.normalize
-import android.safetycenter.cts.testing.SafetyCenterCtsData.stubPendingIntent
 import android.safetycenter.cts.testing.SafetyCenterCtsHelper
 import android.safetycenter.cts.testing.SafetyCenterCtsListener
 import android.safetycenter.cts.testing.SafetyCenterEnabledChangedReceiver
@@ -119,7 +116,6 @@ import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.refreshSa
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.refreshSafetySourcesWithoutReceiverPermissionAndWait
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.filters.SdkSuppress
 import com.google.common.truth.Truth.assertThat
 import com.google.common.util.concurrent.MoreExecutors.directExecutor
 import kotlin.test.assertFailsWith
@@ -130,8 +126,8 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
+/** CTS tests for [SafetyCenterManager]. */
 @RunWith(AndroidJUnit4::class)
-@SdkSuppress(minSdkVersion = TIRAMISU, codeName = "Tiramisu")
 class SafetyCenterManagerTest {
     private val context: Context = getApplicationContext()
     private val safetyCenterCtsHelper = SafetyCenterCtsHelper(context)
@@ -189,7 +185,7 @@ class SafetyCenterManagerTest {
                                 SafetyCenterCtsData.entryId(STATIC_IN_COLLAPSIBLE_ID), "OK")
                             .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNSPECIFIED)
                             .setSummary("OK")
-                            .setPendingIntent(stubPendingIntent)
+                            .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
                             .setSeverityUnspecifiedIconType(SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON)
                             .build()))
                 .build())
@@ -198,10 +194,12 @@ class SafetyCenterManagerTest {
         SafetyCenterStaticEntryGroup(
             "OK",
             listOf(
-                SafetyCenterStaticEntry.Builder("OK").setPendingIntent(stubPendingIntent).build(),
+                SafetyCenterStaticEntry.Builder("OK")
+                    .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
+                    .build(),
                 SafetyCenterStaticEntry.Builder("OK")
                     .setSummary("OK")
-                    .setPendingIntent(stubPendingIntent)
+                    .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
                     .build()))
 
     private val safetyCenterStaticEntryGroupMixedFromComplexConfig =
@@ -214,7 +212,7 @@ class SafetyCenterManagerTest {
                     .build(),
                 SafetyCenterStaticEntry.Builder("OK")
                     .setSummary("OK")
-                    .setPendingIntent(stubPendingIntent)
+                    .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
                     .build()))
 
     private val safetyCenterStaticEntryGroupMixedUpdatedFromComplexConfig =
@@ -227,7 +225,7 @@ class SafetyCenterManagerTest {
                     .build(),
                 SafetyCenterStaticEntry.Builder("OK")
                     .setSummary("OK")
-                    .setPendingIntent(stubPendingIntent)
+                    .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
                     .build()))
 
     private val safetyCenterDataFromConfig =
@@ -1349,8 +1347,7 @@ class SafetyCenterManagerTest {
     fun getSafetyCenterData_withComplexConfigWithoutDataProvided_returnsDataFromConfig() {
         safetyCenterCtsHelper.setConfig(COMPLEX_CONFIG)
 
-        val apiSafetyCenterData =
-            safetyCenterManager.getSafetyCenterDataWithPermission().normalize()
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
 
         assertThat(apiSafetyCenterData).isEqualTo(safetyCenterDataFromComplexConfig)
     }
@@ -1432,8 +1429,7 @@ class SafetyCenterManagerTest {
             ISSUE_ONLY_IN_RIGID_ID,
             SafetySourceCtsData.issuesOnly(safetySourceCtsData.informationIssue))
 
-        val apiSafetyCenterData =
-            safetyCenterManager.getSafetyCenterDataWithPermission().normalize()
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
 
         assertThat(apiSafetyCenterData).isEqualTo(safetyCenterDataFromComplexConfigUpdated)
     }
@@ -2185,6 +2181,7 @@ class SafetyCenterManagerTest {
                 "Information issue title",
                 "Information issue summary")
             .setSeverityLevel(ISSUE_SEVERITY_LEVEL_OK)
+            .setShouldConfirmDismissal(false)
             .setActions(
                 listOf(
                     SafetyCenterIssue.Action.Builder(
