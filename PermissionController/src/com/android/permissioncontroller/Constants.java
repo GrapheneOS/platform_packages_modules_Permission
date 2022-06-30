@@ -249,6 +249,12 @@ public class Constants {
             "com.android.permissioncontroller.extra.SESSION_ID";
 
     /**
+     * Intent extra used to pass privacy source details to safety center.
+     */
+    public static final String EXTRA_PRIVACY_SOURCE =
+            "com.android.permissioncontroller.extra.PRIVACY_SOURCE";
+
+    /**
      * Invalid session id.
      */
     public static final long INVALID_SESSION_ID = 0;
