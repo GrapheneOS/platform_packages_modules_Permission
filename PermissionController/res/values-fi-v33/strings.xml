@@ -24,4 +24,8 @@
     <string name="safety_center_more_issues_card_title" msgid="8599419758014246517">"Näytä kaikki ilmoitukset"</string>
     <string name="safety_center_more_issues_status_icon_content_description" msgid="8597351743567707802">"Näytä kaikki ilmoitukset"</string>
     <string name="safety_center_more_issues_expand_button_content_description" msgid="8997241228390831958">"Näytä kaikki ilmoitukset"</string>
+    <!-- no translation found for safety_center_qs_status_summary (1880058297997805144) -->
+    <skip />
+    <!-- no translation found for safety_center_review_settings_button (938981137942443930) -->
+    <skip />
 </resources>
