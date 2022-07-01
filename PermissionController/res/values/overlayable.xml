@@ -58,6 +58,7 @@
 
             <item type="style" name="PermissionGrantButtonAllow" />
             <item type="style" name="PermissionGrantButtonAllowForeground" />
+            <item type="style" name="PermissionGrantButtonAllowOneTime" />
             <item type="style" name="PermissionGrantButtonDeny" />
             <item type="style" name="PermissionGrantButtonNoUpgrade" />
             <!-- END PERMISSION GRANT DIALOG -->
