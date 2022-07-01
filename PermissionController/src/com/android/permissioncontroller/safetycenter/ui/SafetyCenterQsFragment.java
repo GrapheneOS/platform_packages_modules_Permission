@@ -32,6 +32,8 @@ import android.os.Bundle;
 import android.os.UserHandle;
 import android.permission.PermissionGroupUsage;
 import android.permission.PermissionManager;
+import android.transition.AutoTransition;
+import android.transition.TransitionManager;
 import android.util.ArrayMap;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -223,7 +225,8 @@ public class SafetyCenterQsFragment extends Fragment {
                 continue;
             }
 
-            setIndicatorExpansionBehavior(parentIndicatorLayout, expandedLayout, expandView);
+            setIndicatorExpansionBehavior(parentIndicatorLayout, expandedLayout,
+                    expandView);
 
             // Configure the indicator action buttons
             configureIndicatorActionButtons(
@@ -354,20 +357,23 @@ public class SafetyCenterQsFragment extends Fragment {
         expandView.setOnClickListener(createExpansionListener(expandedLayout, expandView));
     }
 
-    private View.OnClickListener createExpansionListener(
-            ConstraintLayout expandedLayout, ImageView expandView) {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (expandedLayout.getVisibility() == View.VISIBLE) {
-                    expandedLayout.setVisibility(View.GONE);
-                    expandView.setImageDrawable(
-                            constructExpandButton(mContext.getDrawable(R.drawable.ic_expand_more)));
-                } else {
-                    expandedLayout.setVisibility(View.VISIBLE);
-                    expandView.setImageDrawable(
-                            constructExpandButton(mContext.getDrawable(R.drawable.ic_expand_less)));
-                }
+    private View.OnClickListener createExpansionListener(ConstraintLayout expandedLayout,
+            ImageView expandView) {
+        AutoTransition transition = new AutoTransition();
+        // Get the entire fragment as a viewgroup in order to animate it nicely in case of
+        // expand/collapse
+        ViewGroup indicatorCardViewGroup = (ViewGroup) mRootView;
+        return v -> {
+            if (expandedLayout.getVisibility() == View.VISIBLE) {
+                TransitionManager.beginDelayedTransition(indicatorCardViewGroup, transition);
+                expandedLayout.setVisibility(View.GONE);
+                expandView.setImageDrawable(
+                        constructExpandButton(mContext.getDrawable(R.drawable.ic_expand_more)));
+            } else {
+                TransitionManager.beginDelayedTransition(indicatorCardViewGroup, transition);
+                expandedLayout.setVisibility(View.VISIBLE);
+                expandView.setImageDrawable(
+                        constructExpandButton(mContext.getDrawable(R.drawable.ic_expand_less)));
             }
         };
     }
