@@ -22,17 +22,17 @@
     <string name="lock_screen_sources_summary" msgid="7220439741282516496"></string>
     <string name="lock_screen_title" msgid="4069104894527169877">"قفل صفحه"</string>
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"هنوز اطلاعاتی دردسترس نیست"</string>
-    <string name="privacy_sources_title" msgid="4061110826457365957">"حریم‌خصوصی"</string>
+    <string name="privacy_sources_title" msgid="4061110826457365957">"حریم خصوصی"</string>
     <string name="privacy_sources_summary" msgid="4089719981155120864">"داشبورد، اجازه‌ها، کنترل‌ها"</string>
-    <string name="permission_usage_title" msgid="3633779688945350407">"داشبورد حریم‌خصوصی"</string>
+    <string name="permission_usage_title" msgid="3633779688945350407">"داشبورد حریم خصوصی"</string>
     <string name="permission_usage_summary" msgid="5323079206029964468">"نمایش برنامه‌هایی که اخیراً از اجازه‌ها استفاده کرده‌اند"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"مدیر اجازه‌ها"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"کنترل دسترسی برنامه به داده‌های شما"</string>
-    <string name="privacy_controls_title" msgid="5322875777945432395">"تنظیمات حریم‌خصوصی"</string>
+    <string name="privacy_controls_title" msgid="5322875777945432395">"تنظیمات حریم خصوصی"</string>
     <string name="privacy_controls_summary" msgid="2402066941190435424">"کنترل دسترسی دستگاه به میکروفون، دوربین، و غیره"</string>
     <string name="advanced_title" msgid="8745436380690561172">"تنظیمات بیشتر"</string>
     <string name="advanced_security_title" msgid="1126833338772188155">"تنظیمات امنیتی بیشتر"</string>
     <string name="advanced_security_summary" msgid="6172253327022425123">"رمزگذاری، اطلاعات کاربری، و غیره"</string>
-    <string name="advanced_privacy_title" msgid="1117725225706176643">"تنظیمات حریم‌خصوصی بیشتر"</string>
+    <string name="advanced_privacy_title" msgid="1117725225706176643">"تنظیمات حریم خصوصی بیشتر"</string>
     <string name="advanced_privacy_summary" msgid="2281203390575069543">"تکمیل خودکار، کنترل‌های فعالیت، و غیره"</string>
 </resources>
