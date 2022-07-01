@@ -93,10 +93,16 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
         } else {
             rescanButton.setEnabled(false);
         }
-        holder.findViewById(R.id.status_title_and_summary).setContentDescription(
-                getContext().getString(
-                        R.string.safety_status_preference_title_and_summary_content_description,
-                        mStatus.getTitle(), mStatus.getSummary()));
+
+        int contentDescriptionResId =
+                R.string.safety_status_preference_title_and_summary_content_description;
+        holder.findViewById(R.id.status_title_and_summary)
+                .setContentDescription(
+                        getContext()
+                                .getString(
+                                        contentDescriptionResId,
+                                        mStatus.getTitle(),
+                                        mStatus.getSummary()));
 
         // Hide the Safety Protection branding if there are any issue cards
         View safetyProtectionSectionView = holder.findViewById(R.id.safety_protection_section_view);
@@ -108,9 +114,7 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
 
         boolean inRefreshStatus =
                 mStatus.getRefreshStatus()
-                        == SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS
-                        || mStatus.getRefreshStatus()
-                        == SafetyCenterStatus.REFRESH_STATUS_DATA_FETCH_IN_PROGRESS;
+                        == SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS;
         if (inRefreshStatus && !mRefreshRunning) {
             startRescanAnimation(statusImage, rescanButton);
             mRefreshRunning = true;
