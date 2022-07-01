@@ -18,7 +18,7 @@
 
 <configuration description="Runs unit tests for the Safety Center Config library.">
     <option name="test-tag" value="SafetyCenterConfigTests" />
-    <object type="module_controller" class="com.android.tradefed.testtype.suite.module.Sdk30ModuleController" />
+    <object type="module_controller" class="com.android.tradefed.testtype.suite.module.Sdk33ModuleController" />
 
     <!-- Install test -->
     <target_preparer class="com.android.tradefed.targetprep.TestAppInstallSetup">

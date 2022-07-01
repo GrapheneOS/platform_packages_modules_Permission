@@ -49,7 +49,7 @@ import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.CRITICAL_I
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.CRITICAL_ISSUE_ID
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.EVENT_SOURCE_STATE_CHANGED
 import android.safetycenter.cts.testing.SafetySourceReceiver
-import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.executeSafetyCenterIssueActionWithReceiverPermissionAndWait
+import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.executeSafetyCenterIssueActionWithPermissionAndWait
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.refreshSafetySourcesWithReceiverPermissionAndWait
 import android.support.test.uiautomator.By
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
@@ -324,7 +324,7 @@ class SafetyCenterUnsupportedTest {
             directExecutor(), listener)
 
         assertFailsWith(TimeoutCancellationException::class) {
-            safetyCenterManager.executeSafetyCenterIssueActionWithReceiverPermissionAndWait(
+            safetyCenterManager.executeSafetyCenterIssueActionWithPermissionAndWait(
                 SafetyCenterCtsData.issueId(SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID),
                 SafetyCenterCtsData.issueActionId(
                     SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID, CRITICAL_ISSUE_ACTION_ID),
