@@ -509,6 +509,7 @@
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"ပယ်ရန်"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"မလုပ်တော့"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"ဆက်တင်များ"</string>
+    <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"လုံခြုံရေးနှင့် ကိုယ်ရေးအချက်အလက်လုံခြုံမှု အခြေအနေ။ <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>။ <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"လုံခြုံရေး ဆက်တင်များ"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"အာရုံခံကိရိယာ ခွင့်ပြုချက်များ"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"ကန့်သတ်ရန် ဆက်တင်များ"</string>
