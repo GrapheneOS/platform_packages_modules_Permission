@@ -59,8 +59,8 @@
     <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Az összes friss engedélyezési döntés megtekintése"</string>
     <string name="review_permission_decisions_empty" msgid="8120775336417279806">"Nincsenek friss engedélyezési döntések"</string>
     <string name="auto_permission_manager_summary" msgid="9157438376234301354">"A naptár, a hívásnaplók és egyebek adataihoz való hozzáférés kezelése"</string>
-    <string name="granted_permission_decision" msgid="7824827491551861365">"Ön engedélyezte a(z) <xliff:g id="APP_NAME">%1$s</xliff:g> alkalmazás számára a következőhöz való hozzáférést <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
-    <string name="denied_permission_decision" msgid="5308961501779563781">"Ön megtagadta a(z) <xliff:g id="APP_NAME">%1$s</xliff:g> alkalmazás számára a következőhöz való hozzáférést: <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
+    <string name="granted_permission_decision" msgid="7824827491551861365">"Ön engedélyezte a(z) <xliff:g id="APP_NAME">%1$s</xliff:g> számára a következőhöz való hozzáférést: <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
+    <string name="denied_permission_decision" msgid="5308961501779563781">"Ön megtagadta a(z) <xliff:g id="APP_NAME">%1$s</xliff:g> számára a következőhöz való hozzáférést: <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Ma}=1{1 napja}other{# napja}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Alkalmazás letiltása"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Ha letiltja ezt az alkalmazást, akkor előfordulhat, hogy az Android- és más alkalmazások nem működnek majd megfelelően. Ne feledje, hogy az alkalmazást nem törölheti, mert előre telepítették az eszközre. A letiltással kikapcsolja ezt az alkalmazást, és elrejti az eszközön."</string>
