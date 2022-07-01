@@ -58,13 +58,13 @@
     <string name="review_permission_decisions" msgid="309559429150613632">"Decisões recentes de permissão"</string>
     <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Ver todas as decisões recentes de permissão"</string>
     <string name="review_permission_decisions_empty" msgid="8120775336417279806">"Nenhuma decisão recente de permissão"</string>
-    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Gerencie o acesso a dados da agenda, registros de chamadas e muito mais"</string>
+    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Gerencie o acesso a dados da agenda, registros de ligações e mais"</string>
     <string name="granted_permission_decision" msgid="7824827491551861365">"Você permitiu que o app <xliff:g id="APP_NAME">%1$s</xliff:g> acesse <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="denied_permission_decision" msgid="5308961501779563781">"Você não permitiu que o app <xliff:g id="APP_NAME">%1$s</xliff:g> acesse <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Hoje}=1{1 dia atrás}one{# dia atrás}other{# dias atrás}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Desativar app"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Se você desativar este app, o Android e outros apps poderão deixar de funcionar como deveriam. Não é possível excluir esse app porque ele veio pré-instalado no seu dispositivo. Ao optar pela desativação, você desativa o app e o oculta no dispositivo."</string>
-    <string name="app_permission_manager" msgid="3903811137630909550">"Gerenciador de permissões"</string>
+    <string name="app_permission_manager" msgid="3903811137630909550">"Gestão de permissões"</string>
     <string name="never_ask_again" msgid="4728762438198560329">"Não perguntar novamente"</string>
     <string name="no_permissions" msgid="3881676756371148563">"Sem permissões"</string>
     <string name="additional_permissions" msgid="5801285469338873430">"Outras permissões"</string>
@@ -263,10 +263,10 @@
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# app não usado}one{# app não usado}other{# apps não usados}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"As permissões e os arquivos temporários foram removidos, e as notificações foram interrompidas. Toque para revisar."</string>
     <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Conferir as permissões recentes"</string>
-    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Enquanto dirigia, você deu ao app <xliff:g id="APP">%1$s</xliff:g> acesso à permissão de <xliff:g id="PERMISSION">%2$s</xliff:g>"</string>
-    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Enquanto dirigia, você deu ao app <xliff:g id="APP">%1$s</xliff:g> acesso à permissão de <xliff:g id="PERMISSION_1">%2$s</xliff:g> e <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Enquanto dirigia, você deu ao app <xliff:g id="APP">%1$s</xliff:g> acesso a: <xliff:g id="PERMISSION">%2$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Enquanto dirigia, você deu ao app <xliff:g id="APP">%1$s</xliff:g> acesso a: <xliff:g id="PERMISSION_1">%2$s</xliff:g> e <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Enquanto dirigia, você concedeu <xliff:g id="COUNT">%1$d</xliff:g> permissões ao app <xliff:g id="APP">%2$s</xliff:g>"</string>
-    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Enquanto dirigia, você concedeu acesso ao <xliff:g id="APP_0">%1$s</xliff:g> e # outro app}one{Enquanto dirigia, você concedeu acesso ao <xliff:g id="APP_1">%1$s</xliff:g> e # outro app}other{Enquanto dirigia, você concedeu acesso ao <xliff:g id="APP_1">%1$s</xliff:g> e # outros apps}}"</string>
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Enquanto dirigia, você permitiu o acesso de <xliff:g id="APP_0">%1$s</xliff:g> e # outro app}one{Enquanto dirigia, você permitiu o acesso de <xliff:g id="APP_1">%1$s</xliff:g> e # outro app}other{Enquanto dirigia, você permitiu o acesso de <xliff:g id="APP_1">%1$s</xliff:g> e # outros apps}}"</string>
     <string name="go_to_settings" msgid="1053735612211228335">"Ir para Configurações"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Alguns apps não foram usados nos últimos meses"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Permissões removidas"</string>

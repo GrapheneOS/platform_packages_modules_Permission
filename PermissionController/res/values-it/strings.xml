@@ -55,10 +55,10 @@
     <string name="unused_apps" msgid="2058057455175955094">"App inutilizzate"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"Nessuna app inutilizzata"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"0 app inutilizzate"</string>
-    <string name="review_permission_decisions" msgid="309559429150613632">"Decisioni autorizzaz. recenti"</string>
+    <string name="review_permission_decisions" msgid="309559429150613632">"Decisioni recenti per le autorizzazioni"</string>
     <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Visualizza tutte le decisioni recenti relative all\'autorizzazione"</string>
     <string name="review_permission_decisions_empty" msgid="8120775336417279806">"Nessuna decisione recente relativa all\'autorizzazione"</string>
-    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Gestisci l\'accesso ai dati relativi a calendario, registri chiamate e non solo"</string>
+    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Gestisci l\'accesso ai dati relativi a calendario, registri chiamate e altro"</string>
     <string name="granted_permission_decision" msgid="7824827491551861365">"Hai consentito l\'accesso dell\'app <xliff:g id="APP_NAME">%1$s</xliff:g> a: <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="denied_permission_decision" msgid="5308961501779563781">"Hai negato l\'accesso dell\'app <xliff:g id="APP_NAME">%1$s</xliff:g> a: <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Oggi}=1{1 giorno fa}other{# giorni fa}}"</string>
