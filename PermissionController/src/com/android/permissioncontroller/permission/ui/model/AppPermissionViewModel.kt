@@ -32,6 +32,7 @@ import android.os.Bundle
 import android.os.UserHandle
 import android.util.Log
 import androidx.annotation.ChecksSdkIntAtLeast
+import androidx.annotation.RequiresApi
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
@@ -689,6 +690,7 @@ class AppPermissionViewModel(
         }
     }
 
+    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.TIRAMISU)
     private fun expandsToStorageSupergroup(group: LightAppPermGroup): Boolean {
         return group.packageInfo.targetSdkVersion <= Build.VERSION_CODES.S_V2 &&
             group.permGroupName in Utils.STORAGE_SUPERGROUP_PERMISSIONS
@@ -704,7 +706,7 @@ class AppPermissionViewModel(
         }
     }
 
-    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.TIRAMISU)
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     private fun showMediaConfirmDialog(
         setOneTime: Boolean,
         confirmDialog: ConfirmDialogShowingFragment,
