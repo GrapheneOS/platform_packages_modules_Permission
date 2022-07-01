@@ -21,4 +21,5 @@
     <dimen name="safety_center_indicator_card_icon_margin">28dp</dimen>
     <dimen name="safety_center_indicator_expand_button_background">24dp</dimen>
     <dimen name="safety_center_top_action_button_margin">24dp</dimen>
+    <dimen name="safety_center_issue_card_dismiss_button_touch_target_size">48dp</dimen>
 </resources>
