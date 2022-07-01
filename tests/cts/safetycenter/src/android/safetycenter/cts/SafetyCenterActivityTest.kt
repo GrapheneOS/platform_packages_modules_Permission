@@ -34,6 +34,7 @@ import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCe
 import android.safetycenter.cts.testing.SafetySourceCtsData
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.CRITICAL_ISSUE_ID
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.RECOMMENDATION_ISSUE_ID
+import android.safetycenter.cts.testing.SettingsPackage.getSettingsPackageName
 import android.safetycenter.cts.testing.UiTestHelper.assertSourceDataDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.assertSourceIssueDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.assertSourceIssueNotDisplayed
@@ -97,10 +98,12 @@ class SafetyCenterActivityTest {
     }
 
     @Test
-    fun launchActivity_withFlagDisabled_showsSettingsTitle() {
+    fun launchActivity_withFlagDisabled_opensSettings() {
         safetyCenterCtsHelper.setEnabled(false)
 
-        context.launchSafetyCenterActivity { waitFindObject(By.text("Settings")) }
+        context.launchSafetyCenterActivity {
+            waitFindObject(By.pkg(context.getSettingsPackageName()))
+        }
     }
 
     @Test
