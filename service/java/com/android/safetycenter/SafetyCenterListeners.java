@@ -27,6 +27,7 @@ import android.os.RemoteException;
 import android.safetycenter.IOnSafetyCenterDataChangedListener;
 import android.safetycenter.SafetyCenterData;
 import android.safetycenter.SafetyCenterErrorDetails;
+import android.util.ArrayMap;
 import android.util.Log;
 import android.util.SparseArray;
 
@@ -92,16 +93,34 @@ final class SafetyCenterListeners {
      * @param safetyCenterErrorDetails the relevant {@link SafetyCenterErrorDetails} to deliver to
      *     listeners, if any
      */
-    void deliverUpdate(
+    void deliverUpdateForUserProfileGroup(
             @NonNull UserProfileGroup userProfileGroup,
             boolean updateSafetyCenterData,
             @Nullable SafetyCenterErrorDetails safetyCenterErrorDetails) {
         boolean needToUpdateListeners = updateSafetyCenterData || safetyCenterErrorDetails != null;
-        if (!needToUpdateListeners || !hasListenersForUserProfileGroup(userProfileGroup)) {
+        if (!needToUpdateListeners) {
             return;
         }
-        deliverUpdateForUserProfileGroup(
-                userProfileGroup, updateSafetyCenterData, safetyCenterErrorDetails);
+
+        ArrayMap<String, SafetyCenterData> safetyCenterDataCache = new ArrayMap<>();
+        deliverUpdateForUser(
+                userProfileGroup.getProfileParentUserId(),
+                userProfileGroup,
+                safetyCenterDataCache,
+                updateSafetyCenterData,
+                safetyCenterErrorDetails);
+
+        int[] managedRunningProfilesUserIds = userProfileGroup.getManagedRunningProfilesUserIds();
+        for (int i = 0; i < managedRunningProfilesUserIds.length; i++) {
+            int managedRunningProfileUserId = managedRunningProfilesUserIds[i];
+
+            deliverUpdateForUser(
+                    managedRunningProfileUserId,
+                    userProfileGroup,
+                    safetyCenterDataCache,
+                    updateSafetyCenterData,
+                    safetyCenterErrorDetails);
+        }
     }
 
     /**
@@ -170,29 +189,10 @@ final class SafetyCenterListeners {
         mSafetyCenterDataChangedListeners.clear();
     }
 
-    private void deliverUpdateForUserProfileGroup(
-            @NonNull UserProfileGroup userProfileGroup,
-            boolean updateSafetyCenterData,
-            @Nullable SafetyCenterErrorDetails safetyCenterErrorDetails) {
-        deliverUpdateForUser(
-                userProfileGroup.getProfileParentUserId(),
-                userProfileGroup,
-                updateSafetyCenterData,
-                safetyCenterErrorDetails);
-        int[] managedRunningProfilesUserIds = userProfileGroup.getManagedRunningProfilesUserIds();
-        for (int i = 0; i < managedRunningProfilesUserIds.length; i++) {
-            int managedRunningProfileUserId = managedRunningProfilesUserIds[i];
-            deliverUpdateForUser(
-                    managedRunningProfileUserId,
-                    userProfileGroup,
-                    updateSafetyCenterData,
-                    safetyCenterErrorDetails);
-        }
-    }
-
     private void deliverUpdateForUser(
             @UserIdInt int userId,
             @NonNull UserProfileGroup userProfileGroup,
+            @NonNull ArrayMap<String, SafetyCenterData> safetyCenterDataCache,
             boolean updateSafetyCenterData,
             @Nullable SafetyCenterErrorDetails safetyCenterErrorDetails) {
         RemoteCallbackList<IOnSafetyCenterDataChangedListener> listenersForUserId =
@@ -208,35 +208,20 @@ final class SafetyCenterListeners {
                             listenersForUserId.getBroadcastItem(i);
             SafetyCenterData safetyCenterData = null;
             if (updateSafetyCenterData) {
-                safetyCenterData =
-                        mSafetyCenterDataTracker.getSafetyCenterData(
-                                listenerWrapper.getPackageName(), userProfileGroup);
+                String packageName = listenerWrapper.getPackageName();
+                SafetyCenterData cachedSafetyCenterData = safetyCenterDataCache.get(packageName);
+                if (cachedSafetyCenterData != null) {
+                    safetyCenterData = cachedSafetyCenterData;
+                } else {
+                    safetyCenterData =
+                            mSafetyCenterDataTracker.getSafetyCenterData(
+                                    packageName, userProfileGroup);
+                    safetyCenterDataCache.put(packageName, safetyCenterData);
+                }
             }
             deliverUpdateForListener(listenerWrapper, safetyCenterData, safetyCenterErrorDetails);
         }
         listenersForUserId.finishBroadcast();
-    }
-
-    private boolean hasListenersForUserProfileGroup(@NonNull UserProfileGroup userProfileGroup) {
-        if (hasListenersForUser(userProfileGroup.getProfileParentUserId())) {
-            return true;
-        }
-        int[] managedRunningProfilesUserIds = userProfileGroup.getManagedRunningProfilesUserIds();
-        for (int i = 0; i < managedRunningProfilesUserIds.length; i++) {
-            if (hasListenersForUser(managedRunningProfilesUserIds[i])) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private boolean hasListenersForUser(@UserIdInt int userId) {
-        RemoteCallbackList<IOnSafetyCenterDataChangedListener> listenersForUserId =
-                mSafetyCenterDataChangedListeners.get(userId);
-        if (listenersForUserId == null) {
-            return false;
-        }
-        return listenersForUserId.getRegisteredCallbackCount() != 0;
     }
 
     /**
