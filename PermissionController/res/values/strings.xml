@@ -1628,4 +1628,6 @@ Optionally, you can specify which additional files and folders it can see."
 are effectively parts of one app. Storage Scopes are shared among them, same applies to permission grants, network usage stats etc."
     </string>
 
+    <string name="sscopes_config_link_disabled">To use Storage Scopes, deny all storage permissions for this app.</string>
+
 </resources>
