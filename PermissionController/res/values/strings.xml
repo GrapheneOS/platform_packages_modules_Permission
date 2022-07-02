@@ -1594,4 +1594,38 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="grant_dialog_button_allow_in_settings">Allow (in Settings)</string>
     <string name="configure_storage_scopes">Configure Storage Scopes</string>
 
+    <string name="sscopes">Storage Scopes</string>
+    <string name="sscopes_folders">Folders</string>
+    <string name="sscopes_files">Files</string>
+    <string name="sscopes_btn_add_folder">Add folder</string>
+    <string name="sscopes_btn_add_file">Add file</string>
+    <string name="sscopes_menu_item_turn_off">Turn off</string>
+    <string name="sscopes_main_storage">Main storage</string>
+
+    <string name="sscopes_list_is_full">Scope list is full</string>
+    <string name="sscopes_unknown_location">Unknown scope</string>
+
+    <string name="sscopes_enable">Enable Storage Scopes</string>
+
+    <string name="sscopes_deny_storage_permissions">Deny all storage permissions before using Storage Scopes.</string>
+    <string name="sscopes_open_settings">Open settings</string>
+
+    <string name="sscopes_disabled_footer">
+"When enabled, this app will assume that it has a storage access permission, despite not actually having it.
+The app will see only those files that were created by it.
+
+Optionally, you can specify which additional files and folders it can see."
+    </string>
+    <string name="sscopes_empty_footer">
+"This app sees only those files that were created by it.
+
+Optionally, you can specify which additional files and folders it can see."
+    </string>
+
+    <string name="sscopes_shared_uid_warning">
+"Note that
+%1$s
+are effectively parts of one app. Storage Scopes are shared among them, same applies to permission grants, network usage stats etc."
+    </string>
+
 </resources>
