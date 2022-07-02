@@ -252,7 +252,8 @@ public final class SafetyCenterService extends SystemService {
                 boolean hasUpdate =
                         mSafetyCenterDataTracker.setSafetySourceData(
                                 safetySourceData, safetySourceId, safetyEvent, packageName, userId);
-                mSafetyCenterListeners.deliverUpdate(userProfileGroup, hasUpdate, null);
+                mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
+                        userProfileGroup, hasUpdate, null);
                 scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked();
             }
         }
@@ -312,7 +313,7 @@ public final class SafetyCenterService extends SystemService {
                                     mSafetyCenterResourcesContext.getStringByName(
                                             "resolving_action_error"));
                 }
-                mSafetyCenterListeners.deliverUpdate(
+                mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
                         userProfileGroup, hasUpdate, safetyCenterErrorDetails);
             }
         }
@@ -340,7 +341,8 @@ public final class SafetyCenterService extends SystemService {
                         new RefreshTimeout(refreshBroadcastId, userProfileGroup);
                 mSafetyCenterTimeouts.add(refreshTimeout, getRefreshTimeout());
 
-                mSafetyCenterListeners.deliverUpdate(userProfileGroup, true, null);
+                mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
+                        userProfileGroup, true, null);
             }
 
             mSafetyCenterBroadcastDispatcher.sendRefreshSafetySources(
@@ -481,7 +483,8 @@ public final class SafetyCenterService extends SystemService {
                     // the dismissal PendingIntent, since SafetyCenter won't surface this warning
                     // anymore.
                 }
-                mSafetyCenterListeners.deliverUpdate(userProfileGroup, true, null);
+                mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
+                        userProfileGroup, true, null);
             }
         }
 
@@ -547,7 +550,7 @@ public final class SafetyCenterService extends SystemService {
                         errorMessage =
                                 mSafetyCenterResourcesContext.getStringByName("redirecting_error");
                     }
-                    mSafetyCenterListeners.deliverUpdate(
+                    mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
                             userProfileGroup, false, new SafetyCenterErrorDetails(errorMessage));
                     return;
                 }
@@ -557,7 +560,8 @@ public final class SafetyCenterService extends SystemService {
                     ResolvingActionTimeout resolvingActionTimeout =
                             new ResolvingActionTimeout(safetyCenterIssueActionId, userProfileGroup);
                     mSafetyCenterTimeouts.add(resolvingActionTimeout, getResolvingActionTimeout());
-                    mSafetyCenterListeners.deliverUpdate(userProfileGroup, true, null);
+                    mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
+                            userProfileGroup, true, null);
                 }
             }
         }
@@ -771,7 +775,7 @@ public final class SafetyCenterService extends SystemService {
                 if (!hasClearedRefresh) {
                     return;
                 }
-                mSafetyCenterListeners.deliverUpdate(
+                mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
                         mUserProfileGroup,
                         true,
                         new SafetyCenterErrorDetails(
@@ -807,7 +811,7 @@ public final class SafetyCenterService extends SystemService {
                 if (!safetyCenterDataHasChanged) {
                     return;
                 }
-                mSafetyCenterListeners.deliverUpdate(
+                mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
                         mUserProfileGroup,
                         true,
                         new SafetyCenterErrorDetails(
@@ -888,7 +892,7 @@ public final class SafetyCenterService extends SystemService {
             mSafetyCenterDataTracker.clearForUser(userId);
             mSafetyCenterListeners.clearForUser(userId);
             mSafetyCenterRefreshTracker.clearRefreshForUser(userId);
-            mSafetyCenterListeners.deliverUpdate(userProfileGroup, true, null);
+            mSafetyCenterListeners.deliverUpdateForUserProfileGroup(userProfileGroup, true, null);
             scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked();
         }
     }

@@ -87,16 +87,23 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
             summaryTextView.setText(mStatus.getSummary());
         }
         rescanButton = updateRescanButtonUi(rescanButton, pendingActionsRescanButton);
+        updateRescanButtonVisibility(rescanButton);
 
         if (!mRefreshRunning) {
             statusImage.setImageResource(toStatusImageResId(mStatus.getSeverityLevel()));
         } else {
             rescanButton.setEnabled(false);
         }
-        holder.findViewById(R.id.status_title_and_summary).setContentDescription(
-                getContext().getString(
-                        R.string.safety_status_preference_title_and_summary_content_description,
-                        mStatus.getTitle(), mStatus.getSummary()));
+
+        int contentDescriptionResId =
+                R.string.safety_status_preference_title_and_summary_content_description;
+        holder.findViewById(R.id.status_title_and_summary)
+                .setContentDescription(
+                        getContext()
+                                .getString(
+                                        contentDescriptionResId,
+                                        mStatus.getTitle(),
+                                        mStatus.getSummary()));
 
         // Hide the Safety Protection branding if there are any issue cards
         View safetyProtectionSectionView = holder.findViewById(R.id.safety_protection_section_view);
@@ -108,17 +115,13 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
 
         boolean inRefreshStatus =
                 mStatus.getRefreshStatus()
-                        == SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS
-                        || mStatus.getRefreshStatus()
-                        == SafetyCenterStatus.REFRESH_STATUS_DATA_FETCH_IN_PROGRESS;
+                        == SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS;
         if (inRefreshStatus && !mRefreshRunning) {
             startRescanAnimation(statusImage, rescanButton);
             mRefreshRunning = true;
-        } else if (mRefreshRunning && !mRefreshEnding) {
+        } else if (!inRefreshStatus && mRefreshRunning && !mRefreshEnding) {
             mRefreshEnding = true;
             endRescanAnimation(statusImage, rescanButton);
-        } else {
-            updateRescanButtonVisibility(rescanButton);
         }
     }
 
@@ -136,7 +139,11 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
                                 new Animatable2.AnimationCallback() {
                                     @Override
                                     public void onAnimationEnd(Drawable drawable) {
-                                        ((AnimatedVectorDrawable) drawable).start();
+                                        if (mRefreshRunning) {
+                                            scanningAnim.start();
+                                        } else {
+                                            scanningAnim.clearAnimationCallbacks();
+                                        }
                                     }
                                 });
                         scanningAnim.start();
@@ -150,11 +157,13 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
     private void endRescanAnimation(ImageView statusImage, View rescanButton) {
         Drawable statusDrawable = statusImage.getDrawable();
         if (!(statusDrawable instanceof AnimatedVectorDrawable)) {
+            finishScanAnimation(statusImage, rescanButton);
             return;
         }
         AnimatedVectorDrawable animatedStatusDrawable = (AnimatedVectorDrawable) statusDrawable;
 
         if (!animatedStatusDrawable.isRunning()) {
+            finishScanAnimation(statusImage, rescanButton);
             return;
         }
 
