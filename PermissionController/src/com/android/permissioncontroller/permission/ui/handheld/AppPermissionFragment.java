@@ -68,6 +68,7 @@ import androidx.annotation.StringRes;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.data.FullStoragePermissionAppsLiveData.FullStoragePackageState;
@@ -78,6 +79,8 @@ import com.android.permissioncontroller.permission.ui.model.AppPermissionViewMod
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ChangeRequest;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModelFactory;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
+import com.android.permissioncontroller.sscopes.StorageScopesFragment;
+import com.android.permissioncontroller.sscopes.StorageScopesUtils;
 import com.android.settingslib.RestrictedLockUtils;
 import com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 import com.android.settingslib.widget.ActionBarShadowController;
@@ -441,6 +444,8 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         mAllowAlwaysButton.setText(R.string.app_permission_button_allow_all_files);
         mAllowForegroundButton.setText(R.string.app_permission_button_allow_media_only);
 
+        setupStorageScopesLink(v);
+
         if (storageState == null) {
             textView.setVisibility(View.GONE);
             return;
@@ -600,5 +605,41 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
             AppPermissionFragment fragment = (AppPermissionFragment) getParentFragment();
             fragment.setRadioButtonsState(fragment.mViewModel.getButtonStateLiveData().getValue());
         }
+    }
+
+    private CharSequence mOrigDenyButtonText;
+
+    private void setupStorageScopesLink(View rootView) {
+        if (StorageScopesUtils.storageScopesEnabled(mPackageName)) {
+            if (mOrigDenyButtonText == null) {
+                mOrigDenyButtonText = mDenyButton.getText();
+            }
+            mDenyButton.setText(mOrigDenyButtonText + " (+ " + getString(R.string.sscopes) + ")");
+        } else {
+            if (mOrigDenyButtonText != null) {
+                mDenyButton.setText(mOrigDenyButtonText);
+            }
+        }
+
+        ViewGroup layout = rootView.requireViewById(R.id.layout_configure_storage_scopes_link);
+
+        boolean show = false;
+
+        if (mDenyButton.isChecked()) {
+            show = android.content.pm.GosPackageState.attachableToPackage(mPackageName);
+        }
+
+        if (!show) {
+            layout.setVisibility(View.GONE);
+            return;
+        }
+
+        TextView text = layout.requireViewById(R.id.configure_storage_scopes);
+        text.setOnClickListener(v -> {
+            Bundle args = StorageScopesFragment.createArgs(mPackageName);
+            NavHostFragment.findNavController(this).navigate(R.id.storage_scopes, args);
+        });
+
+        layout.setVisibility(View.VISIBLE);
     }
 }
