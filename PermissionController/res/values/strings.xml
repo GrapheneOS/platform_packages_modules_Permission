@@ -1594,4 +1594,40 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="grant_dialog_button_allow_in_settings">Allow (in Settings)</string>
     <string name="configure_storage_scopes">Configure Storage Scopes</string>
 
+    <string name="sscopes">Storage Scopes</string>
+    <string name="sscopes_folders">Folders</string>
+    <string name="sscopes_files">Files</string>
+    <string name="sscopes_btn_add_folder">Add folder</string>
+    <string name="sscopes_btn_add_file">Add file</string>
+    <string name="sscopes_btn_add_image">Add image</string>
+    <string name="sscopes_menu_item_turn_off">Turn off</string>
+    <string name="sscopes_main_storage">Main storage</string>
+
+    <string name="sscopes_list_is_full">Scope list is full</string>
+    <string name="sscopes_unknown_location">Unknown scope</string>
+
+    <string name="sscopes_enable">Enable Storage Scopes</string>
+
+    <string name="sscopes_deny_storage_permissions">Deny all storage permissions before using Storage Scopes.</string>
+    <string name="sscopes_open_settings">Open settings</string>
+
+    <string name="sscopes_disabled_footer">
+"Enabling Storage Scopes will make this app assume that it has all storage permissions that it asked for, despite not actually having any of them.
+
+An app that doesn’t have any storage permissions is still allowed to create files and access files that it created, regardless of whether Storage Scopes is enabled."
+    </string>
+    <string name="sscopes_empty_footer">
+"This app assumes that it has all storage permissions that it asked for, regardless of whether it actually has them.
+
+An app that doesn’t have any storage permissions is still allowed to create files and access files that it created, regardless of whether Storage Scopes is enabled.
+
+Optionally, you can grant this app access to additional files and folders (ie to those that weren’t created by the app itself)."
+    </string>
+
+    <string name="sscopes_shared_uid_warning">
+"Note that
+%1$s
+are effectively parts of one app. State of Storage Scopes is shared among them, same applies to permission grants, network usage stats etc."
+    </string>
+
 </resources>
