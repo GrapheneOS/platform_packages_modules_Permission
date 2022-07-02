@@ -119,6 +119,8 @@ android_app {
         "SettingsLibFooterPreference",
         "SettingsLibRadioButtonPreference",
         "SettingsLibTwoTargetPreference",
+        "SettingsLibActionButtonsPreference",
+        "SettingsLibMainSwitchPreference",
         "androidx.annotation_annotation",
         "permissioncontroller-statsd",
         "car-ui-lib",
