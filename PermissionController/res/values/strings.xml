@@ -1586,4 +1586,12 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
 
     <!-- Summary text if tracking permission usage is not supported [CHAR LIMIT=60] -->
     <string name="permission_usage_preference_summary_not_supported">Tracking usage not yet supported</string>
+
+    <!-- Same labels as the ones in Settings -> Special app access -> {"All files access", "Media management apps"} -->
+    <string name="sscopes_manage_external_storage_request">Allow &lt;b>%1$s&lt;/b> access to manage all files?</string>
+    <string name="sscopes_manage_media_request">Allow &lt;b>%1$s&lt;/b> to manage media?</string>
+
+    <string name="grant_dialog_button_allow_in_settings">Allow (in Settings)</string>
+    <string name="configure_storage_scopes">Configure Storage Scopes</string>
+
 </resources>
