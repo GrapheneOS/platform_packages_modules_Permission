@@ -346,6 +346,24 @@
 
         <receiver android:name="com.android.permissioncontroller.permission.service.ExemptRestrictedPermission"
                   android:exported="false" />
+
+        <!-- based on GrantPermissionsActivity-->
+        <activity
+            android:name="com.android.permissioncontroller.sscopes.BroadStorageAccessPromptActivity"
+            android:configChanges="keyboardHidden|screenSize"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:theme="@style/GrantPermissions.FilterTouches"
+            android:inheritShowWhenLocked="true"
+            android:hardwareAccelerated="false"
+        >
+            <intent-filter>
+                <action android:name="android.settings.MANAGE_APP_ALL_FILES_ACCESS_PERMISSION" />
+                <action android:name="android.settings.REQUEST_MANAGE_MEDIA" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
