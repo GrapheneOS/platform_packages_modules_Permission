@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_configure_storage_scopes_link"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:orientation="vertical"
+    android:visibility="gone"
+>
+    <View
+        android:layout_height="1dp"
+        android:layout_width="match_parent"
+        android:background="@drawable/list_divider" />
+
+    <TextView
+        android:id="@+id/configure_storage_scopes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+
+        android:clickable="true"
+        android:focusable="true"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="?android:attr/textColorPrimary"
+        android:background="?android:attr/selectableItemBackground"
+    />
+
+    <View
+        android:layout_height="1dp"
+        android:layout_width="match_parent"
+        android:background="@drawable/list_divider" />
+
+</LinearLayout>
