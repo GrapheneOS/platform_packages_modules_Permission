@@ -59,8 +59,8 @@
     <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Shiko të gjitha vendimet e fundit për lejet"</string>
     <string name="review_permission_decisions_empty" msgid="8120775336417279806">"Nuk ka vendime të fundit për lejet"</string>
     <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Menaxho qasjen te të dhënat e kalendarit, evidencave të telefonatave etj."</string>
-    <string name="granted_permission_decision" msgid="7824827491551861365">"I dhe <xliff:g id="APP_NAME">%1$s</xliff:g> qasje në <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
-    <string name="denied_permission_decision" msgid="5308961501779563781">"I refuzove <xliff:g id="APP_NAME">%1$s</xliff:g> qasje në <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
+    <string name="granted_permission_decision" msgid="7824827491551861365">"I dhe \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" qasje te <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
+    <string name="denied_permission_decision" msgid="5308961501779563781">"I refuzove \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" qasje te <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Sot}=1{1 ditë më parë}other{# ditë më parë}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Çaktivizo aplikacionin"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Nëse e çaktivizon këtë aplikacion, Android dhe aplikacionet e tjera mund të mos funksionojnë më siç pritet. Ki parasysh se nuk mund ta fshish këtë aplikacion pasi ai ka ardhur i instaluar paraprakisht në pajisjen tënde. Duke e çaktivizuar, mund ta kalosh këtë aplikacion në joaktiv dhe ta fshehësh në pajisjen tënde."</string>
@@ -263,8 +263,8 @@
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# aplikacion i papërdorur}other{# aplikacione të papërdorura}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Lejet dhe skedarët e përkohshëm janë hequr dhe njoftimet janë ndaluar. Trokit për t\'i rishikuar."</string>
     <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Kontrollo lejet e fundit"</string>
-    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Gjatë drejtimit të makinës, i ke dhënë <xliff:g id="APP">%1$s</xliff:g> qasje në <xliff:g id="PERMISSION">%2$s</xliff:g>"</string>
-    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Gjatë drejtimit të makinës, i ke dhënë <xliff:g id="APP">%1$s</xliff:g> qasje në <xliff:g id="PERMISSION_1">%2$s</xliff:g> dhe <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Gjatë drejtimit të makinës, i ke dhënë \"<xliff:g id="APP">%1$s</xliff:g>\" qasje te <xliff:g id="PERMISSION">%2$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Gjatë drejtimit të makinës, i ke dhënë \"<xliff:g id="APP">%1$s</xliff:g>\" qasje te <xliff:g id="PERMISSION_1">%2$s</xliff:g> dhe <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Gjatë drejtimit të makinës, i ke dhënë <xliff:g id="COUNT">%1$d</xliff:g> leje <xliff:g id="APP">%2$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Gjatë drejtimit të makinës, i ke dhënë qasje <xliff:g id="APP_0">%1$s</xliff:g> dhe # aplikacioni tjetër}other{Gjatë drejtimit të makinës, i ke dhënë qasje <xliff:g id="APP_1">%1$s</xliff:g> dhe # aplikacioneve të tjera}}"</string>
     <string name="go_to_settings" msgid="1053735612211228335">"Shko te \"Cilësimet\""</string>
