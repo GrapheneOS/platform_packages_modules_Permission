@@ -236,8 +236,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"এই অনুমতি থকা এপে আপোনাৰ দেহৰ গুৰুত্বপূৰ্ণ অংগসমূহৰ অৱস্থাৰ বিষয়ে ছেন্সৰৰ ডেটা লাভ কৰিব পাৰে"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"এই অনুমতি থকা এপ্‌সমূহে পাঠ বাৰ্তা পঠিয়াব আৰু চাব পাৰে"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"এই অনুমতিটো লাভ কৰা এপে আপোনাৰ ডিভাইচত থকা ফট’, মিডিয়া আৰু ফাইল এক্সেছ কৰিব পাৰে"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"এই অনুমতিটো লাভ কৰা এপে আপোনাৰ ডিভাইচত থকা সংগীত আৰু অন্য অডিঅ’ ফাইল এক্সেছ কৰিব পাৰে"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"এই অনুমতিটো লাভ কৰা এপে আপোনাৰ ডিভাইচত থকা ফট’ আৰু ভিডিঅ’ এক্সেছ কৰিব পাৰে"</string>
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"এই অনুমতিটো লাভ কৰা এপে এই ডিভাইচটোত থকা সংগীত আৰু অন্য অডিঅ’ ফাইল এক্সেছ কৰিব পাৰে"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"এই অনুমতিটো লাভ কৰা এপে এই ডিভাইচটোত থকা ফট’ আৰু ভিডিঅ’ এক্সেছ কৰিব পাৰে"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"অন্তিমবাৰ এক্সেছ কৰা হৈছিল: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"বৰ্তমান অগ্ৰাহ্য কৰা হৈছে/ অন্তিমবাৰ এক্সেছ কৰা হৈছিল: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"কেতিয়াও এক্সেছ কৰা নাই"</string>
@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"আটাইবোৰ ফাইল পৰিচালনা কৰিবলৈ অনুমতি আছে"</string>
     <string name="ask_header" msgid="2633816846459944376">"প্ৰতিবাৰতে সোধক"</string>
     <string name="denied_header" msgid="903209608358177654">"অনুমতি নাই"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"আপোনাৰ ডিভাইচৰ বাবে অত্যাৱশ্যকীয় কাৰ্যকাৰিতা থকা কিছুমান এপৰ আপোনাৰ আটাইবোৰ ফাইললৈ বিশেষ এক্সেছ থাকিব পাৰে"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"আটাইবোৰ এক্সেছ থকা ফাইলৰ এপ্‌সমূহ চাওক"</string>
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"আটাইবোৰ ফাইল এক্সেছ কৰিব পৰা অধিক এপ্‌ চাওক"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{১ দিন}one{# দিন}other{# দিন}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{১ ঘণ্টা}one{# ঘণ্টা}other{# ঘণ্টা}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{১ মিনিট}one{# মিনিট}other{# মিনিট}}"</string>
@@ -332,8 +331,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"ডিফ’ল্ট ডিজিটেল সহায়ক এপ্‌"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"ডিজিটেল সহায়ক এপ্‌"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"আপুনি চাই থকা স্ক্ৰীনৰ তথ্যৰ ভিত্তিত সহায়ক এপে আপোনাক সহায় কৰিব পাৰে। কিছুমান এপে লঞ্চাৰ আৰু ধ্বনি ইনপুট দুয়োটা সেৱাই আগবঢ়াব পাৰে যাৰ দ্বাৰা আপুনি একীকৃত সহায় লাভ কৰিব পাৰে।"</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"<xliff:g id="APP_NAME">%1$s</xliff:g>ক আপোনাৰ ডিফ’ল্ট সহায়ক এপ্ হিচাপে ছেট কৰিবনে?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"এছএমএছ আৰু কল লগৰ এক্সেছ লাভ কৰে"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"ডিফ’ল্ট ব্ৰাউজাৰ এপ্"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"ব্ৰাউজাৰ এপ্"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"যিবোৰ এপে আপোনাক ইণ্টাৰনেট আৰু আপুনি টিপা ডিছপ্লে’ লিংকৰ এক্সেছ দিয়ে"</string>
@@ -343,13 +340,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"ফ’ন এপ্"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"যিবোৰ এপে আপোনাক নিজৰ ডিভাইচৰ পৰা টেলিফ’ন কল কৰিবলৈ বা গ্ৰহণ কৰিবলৈ অনুমতি দিয়ে"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g>ক আপোনাৰ ডিফ’ল্ট ফ’ন এপ্ হিচাপে ছেট কৰিবনে?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"কল লগ আৰু এছএমএছ পঠিওৱাৰ এক্সেছ লাভ কৰে"</string>
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"এই এপ্‌টোক আপোনাৰ কেমেৰা, সম্পৰ্ক, মাইক্ৰ’ফ’ন, ফ’ন আৰু এছএমএছৰ এক্সেছ দিয়া হ’ব"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"ডায়েলাৰ"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"ডিফ’ল্ট এছএমএছ এপ্"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"এছএমএছ এপ্"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"যিবোৰ এপে আপোনাক নিজৰ ফ’ন নম্বৰ ব্যৱহাৰ কৰি চমু পাঠ বাৰ্তা, ফট’, ভিডিঅ’ আৰু অন্য সমল পঠিওৱাৰ অনুমতি দিয়ে"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g>ক আপোনাৰ ডিফ’ল্ট এছএমএছ এপ্ হিচাপে ছেট কৰিবনে?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"সম্পৰ্কসূচী, এছএমএছ আৰু ফ’নৰ এক্সেছ লাভ কৰে"</string>
+    <string name="role_sms_request_description" msgid="2691004766132144886">"এই এপ্‌টোক আপোনাৰ কেমেৰা, সম্পৰ্ক, ফাইল আৰু মিডিয়া, মাইক্ৰ’ফ’ন, ফ’ন আৰু এছএমএছৰ এক্সেছ দিয়া হ’ব"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"পাঠ বাৰ্তা, পাঠ বাৰ্তা পঠিওৱা, বাৰ্তাসমূহ, বাৰ্তা পঠিওৱা"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"ডিফ’ল্ট জৰুৰীকালীন এপ্"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"জৰুৰীকালীন এপ্"</string>
@@ -450,11 +447,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"আনুমানিক"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক আপোনাৰ কেলেণ্ডাৰ চাবলৈ অনুমতি দিবনে?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক এছএমএছ বাৰ্তা পঠিয়াবলৈ আৰু চাবলৈ অনুমতি দিবনে?"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক আপোনাৰ ডিভাইচত &lt;b&gt;ফাইল আৰু নথি&lt;/b&gt; এক্সেছ কৰিবলৈ অনুমতি দিবনে?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক আপোনাৰ ডিভাইচত &lt;b&gt;ফট’, ভিডিঅ’, সংগীত আৰু অডিঅ’&lt;/b&gt; এক্সেছ কৰিবলৈ দিবনে?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক আপোনাৰ ডিভাইচত &lt;b&gt;ফট’, ভিডিঅ’, সংগীত, অডিঅ’ আৰু অন্য ফাইল&lt;/b&gt; এক্সেছ কৰিবলৈ দিবনে?"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক এই ডিভাইচটোত সংগীত আৰু অন্য অডিঅ’ ফাইল এক্সেছ কৰিবলৈ অনুমতি দিবনে?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&amp;gtক এই ডিভাইচটোত ফট’ আৰু ভিডিঅ’ এক্সেছ কৰিবলৈ অনুমতি দিবনে?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক আপোনাৰ ডিভাইচত থকা ফট\', মিডিয়া আৰু ফাইল চাবলৈ অনুমতি দিবনে?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক এই ডিভাইচটোত থকা &lt;b&gt;ফট’, ভিডিঅ’, সংগীত আৰু অডিঅ’&lt;/b&gt; এক্সেছ কৰিবলৈ দিবনে?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক এই ডিভাইচটোত থকা &lt;b&gt;ফট’, ভিডিঅ’, সংগীত, অডিঅ’ আৰু অন্য ফাইল&lt;/b&gt; এক্সেছ কৰিবলৈ দিবনে?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক এই ডিভাইচটোত থকা সংগীত আৰু অডিঅ’ এক্সেছ কৰিবলৈ অনুমতি দিবনে?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক এই ডিভাইচটোত থকা ফট’ আৰু ভিডিঅ’ এক্সেছ কৰিবলৈ অনুমতি দিবনে?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক অডিঅ\' ৰেকৰ্ড কৰিবলৈ অনুমতি দিবনে?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"আপুনি এই এপ্‌টো ব্যৱহাৰ কৰি থকাৰ সময়তহে কেৱল ই অডিঅ’ ৰেকৰ্ড কৰিব পাৰিব"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক অডিঅ’ ৰেকৰ্ড কৰিবলৈ অনুমতি দিবনে?"</string>
@@ -476,7 +473,6 @@
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"এই এপ্‌টোক আপুনি এইটো ব্যৱহাৰ কৰি নথকা সময়কো ধৰি সকলো সময়তে শৰীৰৰ ছেন্সৰৰ ডেটা এক্সেছ কৰিবলৈ দিবলৈ, "<annotation id="link">"ছেটিঙলৈ যাওক।"</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"এপ্‌টো ব্যৱহাৰ কৰি থকাৰ সময়ত &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক শৰীৰৰ ছেন্সৰৰ ডেটা এক্সেছ কৰিবলৈ অনুমতি দি থাকিবনে?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক আপোনালৈ জাননী পঠিয়াবলৈ অনুমতি দিবনে?"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক আপোনালৈ জাননী পঠিয়াই থাকিবলৈ অনুমতি দিবনে?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"নিয়ন্ত্ৰিত অনুমতিসমূহ"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"অৱস্থান এক্সেছ কৰিব পাৰি"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"আপোনাৰ আইটি প্ৰশাসকে <xliff:g id="APP_NAME">%s</xliff:g>ক আপোনাৰ অৱস্থান এক্সেছ কৰাৰ অনুমতি দিছে"</string>
@@ -523,4 +519,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"শেহতীয়াকৈ <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)এ ব্যৱহাৰ কৰিছে"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"সুৰক্ষা আৰু গোপনীয়তা"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"স্থিতি পৰীক্ষা কৰক"</string>
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"নিশ্চিত কৰক"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"উভতি যাওক"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"অন্য ফাইলো এক্সেছ কৰিবলৈ দিয়া হ’ব"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"অন্য ফাইলো এক্সেছ কৰিবলৈ দিয়া নহ’ব"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"অন্য ফাইলো এক্সেছ কৰিবলৈ দিয়া হ’ব"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"অন্য ফাইলো এক্সেছ কৰিবলৈ দিয়া নহ’ব"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"ফট’ আৰু ভিডিঅ’ও এক্সেছ কৰিবলৈ দিয়া হ’ব"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"ফট’ আৰু ভিডিঅ’ও এক্সেছ কৰিবলৈ দিয়া নহ’ব"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"সংগীত আৰু অডিঅ’ ফাইলো এক্সেছ কৰিবলৈ দিয়া হ’ব"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"সংগীত আৰু অডিঅ’ ফাইলো এক্সেছ কৰিবলৈ দিয়া নহ’ব"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"এই এপ্‌টোৱে Androidৰ শেহতীয়া সংস্কৰণ সমৰ্থন নকৰে। যদি এই এপ্‌টোৱে সংগীত আৰু অডিঅ’ ফাইল এক্সেছ কৰিব পাৰে, ইয়াক ফট’, ভিডিঅ’ আৰু অন্য ফাইলো এক্সেছ কৰিবলৈ দিয়া হ’ব।"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"এই এপ্‌টোৱে Androidৰ শেহতীয়া সংস্কৰণ সমৰ্থন নকৰে। যদি এই এপ্‌টোৱে সংগীত আৰু অডিঅ’ ফাইল এক্সেছ কৰিব নোৱাৰে, ইয়াক ফট’, ভিডিঅ’ আৰু অন্য ফাইলো এক্সেছ কৰিবলৈ দিয়া নহ’ব।"</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"এই এপ্‌টোৱে Androidৰ শেহতীয়া সংস্কৰণ সমৰ্থন নকৰে। যদি এই এপ্‌টোৱে ফট’ আৰু ভিডিঅ’ এক্সেছ কৰিব পাৰে, ইয়াক সংগীত, অডিঅ’ আৰু অন্য ফাইলো এক্সেছ কৰিবলৈ দিয়া হ’ব।"</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"এই এপ্‌টোৱে Androidৰ শেহতীয়া সংস্কৰণ সমৰ্থন নকৰে। যদি এই এপ্‌টোৱে ফট’ আৰু ভিডিঅ’ এক্সেছ কৰিব নোৱাৰে, ইয়াক সংগীত, অডিঅ’ আৰু অন্য ফাইলো এক্সেছ কৰিবলৈ দিয়া নহ’ব।"</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"এই এপ্‌টোৱে Androidৰ শেহতীয়া সংস্কৰণ সমৰ্থন নকৰে। যদি এই এপ্‌টোৱে সংগীত আৰু অডিঅ’ ফাইল এক্সেছ কৰিব পাৰে, ইয়াক ফট’ আৰু ভিডিঅ’ও এক্সেছ কৰিবলৈ দিয়া হ’ব।"</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"এই এপ্‌টোৱে Androidৰ শেহতীয়া সংস্কৰণ সমৰ্থন নকৰে। যদি এই এপ্‌টোৱে সংগীত আৰু অডিঅ’ ফাইল এক্সেছ কৰিব নোৱাৰে, ইয়াক ফট’ আৰু ভিডিঅ’ও এক্সেছ কৰিবলৈ দিয়া নহ’ব।"</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"এই এপ্‌টোৱে Androidৰ শেহতীয়া সংস্কৰণ সমৰ্থন নকৰে। যদি এই এপ্‌টোৱে ফট’ আৰু ভিডিঅ’ এক্সেছ কৰিব পাৰে, ইয়াক সংগীত আৰু অডিঅ’ ফাইলো এক্সেছ কৰিবলৈ দিয়া হ’ব।"</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"এই এপ্‌টোৱে Androidৰ শেহতীয়া সংস্কৰণ সমৰ্থন নকৰে। যদি এই এপ্‌টোৱে সংগীত আৰু অডিঅ’ ফাইল এক্সেছ কৰিব নোৱাৰে, ইয়াক ফট’ আৰু ভিডিঅ’ও এক্সেছ কৰিবলৈ দিয়া নহ’ব।"</string>
 </resources>
