@@ -192,7 +192,7 @@
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"ನಿಖರವಾದ ಸ್ಥಳವನ್ನು ಬಳಸಿ"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"ನಿಖರವಾದ ಸ್ಥಳ ಆಫ್ ಆಗಿರುವಾಗ, ಆ್ಯಪ್‌ಗಳು ನಿಮ್ಮ ಅಂದಾಜು ಸ್ಥಳವನ್ನು ಪ್ರವೇಶಿಸಬಹುದು"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> ಅನುಮತಿ"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"ಈ <xliff:g id="PERM">%1$s</xliff:g> ಆ್ಯಪ್‌ಗಾಗಿ ಪ್ರವೇಶದ ಅನುಮತಿ"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"ಈ ಆ್ಯಪ್‌ಗಾಗಿ <xliff:g id="PERM">%1$s</xliff:g> ಆ್ಯಕ್ಸೆಸ್"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"ಎಲ್ಲಾ <xliff:g id="APP">%1$s</xliff:g> ಅನುಮತಿಗಳನ್ನು ವೀಕ್ಷಿಸಿ"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಎಲ್ಲಾ ಆ್ಯಪ್‌ಗಳನ್ನು ವೀಕ್ಷಿಸಿ"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"ಅಸಿಸ್ಟೆಂಟ್‌ನ ಮೈಕ್ರೋಫೋನ್ ಬಳಕೆಯನ್ನು ತೋರಿಸಿ"</string>

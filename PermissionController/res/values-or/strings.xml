@@ -26,7 +26,7 @@
     <string name="uninstall_or_disable" msgid="4496612999740858933">"ଅନଇନଷ୍ଟଲ୍ କରନ୍ତୁ କିମ୍ବା ଅକ୍ଷମ କରନ୍ତୁ"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"ଆପ୍‍ ମିଳିଲା ନାହିଁ"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"ଅନୁମତି ଦିଅନ୍ତୁ ନାହିଁ"</string>
-    <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"ଅନୁମତି ଦିଅନ୍ତୁ ନାହିଁ ଏବଂ ପୁଣ ପଚାରନ୍ତୁ ନାହିଁ"</string>
+    <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"ଅନୁମତି ଦିଅନ୍ତୁ ନାହିଁ ଏବଂ ପୁଣି ପଚାରନ୍ତୁ ନାହିଁ"</string>
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“ଆପଟି ବ୍ୟବହାରରେ ଥିବା ସମୟରେ”କୁ ରଖନ୍ତୁ"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"“କେବଳ ଏହି ସମୟ” ରଖନ୍ତୁ"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"ଅଧିକ ସୂଚନା"</string>
@@ -37,7 +37,7 @@
     <string name="permission_add_background_warning_template" msgid="1812914855915092273">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ସବୁବେଳେ <xliff:g id="ACTION">%2$s</xliff:g>କୁ ଅନୁମତି ଦେବେ?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"କେବଳ ଆପ୍‍ ବ୍ୟବହାର ସମୟରେ"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"ସର୍ବଦା"</string>
-    <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"ଅନୁମତି ଦିଅନ୍ତୁ ନାହିଁ ଏବଂ ପୁଣ ପଚାରନ୍ତୁ ନାହିଁ"</string>
+    <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"ଅନୁମତି ଦିଅନ୍ତୁ ନାହିଁ ଏବଂ ପୁଣି ପଚାରନ୍ତୁ ନାହିଁ"</string>
     <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g> ଅନୁମତି ଅକ୍ଷମ କରାଯାଇଛି"</string>
     <string name="permission_revoked_all" msgid="3397649017727222283">"ସମସ୍ତ ଅନୁମତି ଅକ୍ଷମ କରାଯାଇଛି"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"କୌଣସି ଅନୁମତି ଅକ୍ଷମ କରାଯାଇନାହିଁ"</string>
