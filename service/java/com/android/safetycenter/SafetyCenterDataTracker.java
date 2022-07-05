@@ -401,9 +401,12 @@ final class SafetyCenterDataTracker {
         return new SafetyCenterData(
                 new SafetyCenterStatus.Builder(
                                 getSafetyCenterStatusTitle(
-                                        SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN, false),
+                                        SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN,
+                                        SafetyCenterStatus.REFRESH_STATUS_NONE,
+                                        false),
                                 getSafetyCenterStatusSummary(
                                         SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN,
+                                        SafetyCenterStatus.REFRESH_STATUS_NONE,
                                         0,
                                         false))
                         .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN)
@@ -715,16 +718,20 @@ final class SafetyCenterDataTracker {
                 safetyCenterEntriesSeverityLevel > safetyCenterOverallSeverityLevel;
         // LINT.ThenChange(packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/safetycenter/ui/SafetyCenterDashboardFragment.java:pendingActionsQs)
         safetyCenterIssues.sort(SAFETY_CENTER_ISSUES_BY_SEVERITY_DESCENDING);
+        int refreshStatus = mSafetyCenterRefreshTracker.getRefreshStatus();
         return new SafetyCenterData(
                 new SafetyCenterStatus.Builder(
                                 getSafetyCenterStatusTitle(
-                                        safetyCenterOverallSeverityLevel, hasSettingsToReview),
+                                        safetyCenterOverallSeverityLevel,
+                                        refreshStatus,
+                                        hasSettingsToReview),
                                 getSafetyCenterStatusSummary(
                                         safetyCenterOverallSeverityLevel,
+                                        refreshStatus,
                                         safetyCenterIssues.size(),
                                         hasSettingsToReview))
                         .setSeverityLevel(safetyCenterOverallSeverityLevel)
-                        .setRefreshStatus(mSafetyCenterRefreshTracker.getRefreshStatus())
+                        .setRefreshStatus(refreshStatus)
                         .build(),
                 safetyCenterIssues,
                 safetyCenterEntryOrGroups,
@@ -1383,7 +1390,12 @@ final class SafetyCenterDataTracker {
 
     private String getSafetyCenterStatusTitle(
             @SafetyCenterStatus.OverallSeverityLevel int overallSeverityLevel,
+            @SafetyCenterStatus.RefreshStatus int refreshStatus,
             boolean hasSettingsToReview) {
+        String refreshStatusTitle = getSafetyCenterRefreshStatusTitle(refreshStatus);
+        if (refreshStatusTitle != null) {
+            return refreshStatusTitle;
+        }
         switch (overallSeverityLevel) {
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN:
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK:
@@ -1407,8 +1419,13 @@ final class SafetyCenterDataTracker {
 
     private String getSafetyCenterStatusSummary(
             @SafetyCenterStatus.OverallSeverityLevel int overallSeverityLevel,
+            @SafetyCenterStatus.RefreshStatus int refreshStatus,
             int numberOfIssues,
             boolean hasSettingsToReview) {
+        String refreshStatusSummary = getSafetyCenterRefreshStatusSummary(refreshStatus);
+        if (refreshStatusSummary != null) {
+            return refreshStatusSummary;
+        }
         switch (overallSeverityLevel) {
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN:
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK:
@@ -1434,6 +1451,38 @@ final class SafetyCenterDataTracker {
 
         Log.w(TAG, "Unexpected SafetyCenterStatus.OverallSeverityLevel: " + overallSeverityLevel);
         return "";
+    }
+
+    @Nullable
+    private String getSafetyCenterRefreshStatusTitle(
+            @SafetyCenterStatus.RefreshStatus int refreshStatus) {
+        switch (refreshStatus) {
+            case SafetyCenterStatus.REFRESH_STATUS_NONE:
+                return null;
+            case SafetyCenterStatus.REFRESH_STATUS_DATA_FETCH_IN_PROGRESS:
+                return mSafetyCenterResourcesContext.getStringByName("loading_title");
+            case SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS:
+                return mSafetyCenterResourcesContext.getStringByName("scanning_title");
+        }
+
+        Log.w(TAG, "Unexpected SafetyCenterStatus.RefreshStatus: " + refreshStatus);
+        return null;
+    }
+
+    @Nullable
+    private String getSafetyCenterRefreshStatusSummary(
+            @SafetyCenterStatus.RefreshStatus int refreshStatus) {
+        switch (refreshStatus) {
+            case SafetyCenterStatus.REFRESH_STATUS_NONE:
+                return null;
+            case SafetyCenterStatus.REFRESH_STATUS_DATA_FETCH_IN_PROGRESS:
+                return mSafetyCenterResourcesContext.getStringByName("loading_summary");
+            case SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS:
+                return mSafetyCenterResourcesContext.getStringByName("scanning_summary");
+        }
+
+        Log.w(TAG, "Unexpected SafetyCenterStatus.RefreshStatus: " + refreshStatus);
+        return null;
     }
 
     /** A comparator to order {@link SafetyCenterIssue}s by severity level descending. */
