@@ -1274,10 +1274,13 @@ class SafetyCenterManagerTest {
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
             REFRESH_REASON_RESCAN_BUTTON_CLICK)
 
-        val refreshStatus1 = listener.receiveSafetyCenterData().status.refreshStatus
-        assertThat(refreshStatus1).isEqualTo(REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS)
-        val refreshStatus2 = listener.receiveSafetyCenterData().status.refreshStatus
-        assertThat(refreshStatus2).isEqualTo(REFRESH_STATUS_NONE)
+        val status1 = listener.receiveSafetyCenterData().status
+        assertThat(status1.refreshStatus).isEqualTo(REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS)
+        assertThat(status1.title.toString()).isEqualTo("Scanning…")
+        assertThat(status1.summary.toString()).isEqualTo("Checking status")
+        val status2 = listener.receiveSafetyCenterData().status
+        assertThat(status2.refreshStatus).isEqualTo(REFRESH_STATUS_NONE)
+        assertThat(status2).isEqualTo(safetyCenterStatusOk)
     }
 
     @Test
@@ -1291,10 +1294,13 @@ class SafetyCenterManagerTest {
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
             REFRESH_REASON_PAGE_OPEN)
 
-        val refreshStatus1 = listener.receiveSafetyCenterData().status.refreshStatus
-        assertThat(refreshStatus1).isEqualTo(REFRESH_STATUS_DATA_FETCH_IN_PROGRESS)
-        val refreshStatus2 = listener.receiveSafetyCenterData().status.refreshStatus
-        assertThat(refreshStatus2).isEqualTo(REFRESH_STATUS_NONE)
+        val status1 = listener.receiveSafetyCenterData().status
+        assertThat(status1.refreshStatus).isEqualTo(REFRESH_STATUS_DATA_FETCH_IN_PROGRESS)
+        assertThat(status1.title.toString()).isEqualTo("Loading…")
+        assertThat(status1.summary.toString()).isEqualTo("Details available soon")
+        val status2 = listener.receiveSafetyCenterData().status
+        assertThat(status2.refreshStatus).isEqualTo(REFRESH_STATUS_NONE)
+        assertThat(status2).isEqualTo(safetyCenterStatusOk)
     }
 
     @Test
