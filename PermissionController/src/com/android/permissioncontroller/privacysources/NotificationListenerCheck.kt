@@ -27,6 +27,7 @@ import android.app.job.JobInfo
 import android.app.job.JobParameters
 import android.app.job.JobScheduler
 import android.app.job.JobService
+import android.app.role.RoleManager
 import android.content.BroadcastReceiver
 import android.content.ComponentName
 import android.content.Context
@@ -215,11 +216,34 @@ internal class NotificationListenerCheckInternal(
 ) {
     private val parentUserContext = Utils.getParentUserContext(context)
     private val random = Random()
+    private val exemptPackages: Set<String> =
+        getExemptedPackages(getSystemServiceSafe(parentUserContext, RoleManager::class.java))
 
     companion object {
         @VisibleForTesting const val SC_NLS_ISSUE_TYPE_ID = "notification_listener_privacy_issue"
         @VisibleForTesting
         const val SC_SHOW_NLS_SETTINGS_ACTION_ID = "show_notification_listener_settings"
+
+        private const val SYSTEM_PKG = "android"
+
+        private const val SYSTEM_AMBIENT_AUDIO_INTELLIGENCE =
+            "android.app.role.SYSTEM_AMBIENT_AUDIO_INTELLIGENCE"
+        private const val SYSTEM_UI_INTELLIGENCE = "android.app.role.SYSTEM_UI_INTELLIGENCE"
+        private const val SYSTEM_AUDIO_INTELLIGENCE = "android.app.role.SYSTEM_AUDIO_INTELLIGENCE"
+        private const val SYSTEM_NOTIFICATION_INTELLIGENCE =
+            "android.app.role.SYSTEM_NOTIFICATION_INTELLIGENCE"
+        private const val SYSTEM_TEXT_INTELLIGENCE = "android.app.role.SYSTEM_TEXT_INTELLIGENCE"
+        private const val SYSTEM_VISUAL_INTELLIGENCE = "android.app.role.SYSTEM_VISUAL_INTELLIGENCE"
+
+        // This excludes System intelligence roles
+        private val EXEMPTED_ROLES = arrayOf(
+            SYSTEM_AMBIENT_AUDIO_INTELLIGENCE,
+            SYSTEM_UI_INTELLIGENCE,
+            SYSTEM_AUDIO_INTELLIGENCE,
+            SYSTEM_NOTIFICATION_INTELLIGENCE,
+            SYSTEM_TEXT_INTELLIGENCE,
+            SYSTEM_VISUAL_INTELLIGENCE
+        )
 
         /** Lock required for all public methods */
         private val nlsLock = Mutex()
@@ -282,7 +306,7 @@ internal class NotificationListenerCheckInternal(
 
     /**
      * Get the [components][ComponentName] which have enabled notification listeners for the
-     * parent/context user
+     * parent/context user. Excludes exempt packages.
      *
      * @throws InterruptedException If [.shouldCancel]
      */
@@ -294,12 +318,32 @@ internal class NotificationListenerCheckInternal(
             getSystemServiceSafe(parentUserContext, NotificationManager::class.java)
                 .enabledNotificationListeners
 
+        // Filter to components not in exempt packages
+        val enabledNotificationListenersExcludingExemptPackages =
+            enabledNotificationListeners.filter { !exemptPackages.contains(it.packageName) }
+
         if (DEBUG) {
-            Log.d(TAG, "enabledNotificationListeners = " + "$enabledNotificationListeners")
+            Log.d(
+                TAG,
+                "enabledNotificationListeners=$enabledNotificationListeners\n" +
+                    "enabledNotificationListenersExcludingExemptPackages=" +
+                    "$enabledNotificationListenersExcludingExemptPackages")
         }
 
         throwInterruptedExceptionIfTaskIsCanceled()
-        return enabledNotificationListeners
+        return enabledNotificationListenersExcludingExemptPackages
+    }
+
+    /**
+     * Get all the exempted packages.
+     */
+    fun getExemptedPackages(roleManager: RoleManager): Set<String> {
+        val exemptedPackages: MutableSet<String> = HashSet()
+        exemptedPackages.add(SYSTEM_PKG)
+        EXEMPTED_ROLES.forEach { role ->
+            exemptedPackages.addAll(roleManager.getRoleHolders(role))
+        }
+        return exemptedPackages
     }
 
     private fun componentHasBeenNotifiedWithinInterval(component: NlsComponent): Boolean {
