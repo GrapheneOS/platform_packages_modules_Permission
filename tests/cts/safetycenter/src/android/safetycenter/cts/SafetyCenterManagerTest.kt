@@ -1276,8 +1276,8 @@ class SafetyCenterManagerTest {
 
         val status1 = listener.receiveSafetyCenterData().status
         assertThat(status1.refreshStatus).isEqualTo(REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS)
-        assertThat(status1.title.toString()).isEqualTo("Scanning…")
-        assertThat(status1.summary.toString()).isEqualTo("Checking status")
+        assertThat(status1.title.toString()).isEqualTo("Scanning")
+        assertThat(status1.summary.toString()).isEqualTo("Checking device status…")
         val status2 = listener.receiveSafetyCenterData().status
         assertThat(status2.refreshStatus).isEqualTo(REFRESH_STATUS_NONE)
         assertThat(status2).isEqualTo(safetyCenterStatusOk)
@@ -1296,8 +1296,8 @@ class SafetyCenterManagerTest {
 
         val status1 = listener.receiveSafetyCenterData().status
         assertThat(status1.refreshStatus).isEqualTo(REFRESH_STATUS_DATA_FETCH_IN_PROGRESS)
-        assertThat(status1.title.toString()).isEqualTo("Loading…")
-        assertThat(status1.summary.toString()).isEqualTo("Details available soon")
+        assertThat(status1.title.toString()).isEqualTo(safetyCenterStatusOk.title.toString())
+        assertThat(status1.summary.toString()).isEqualTo("Checking device status…")
         val status2 = listener.receiveSafetyCenterData().status
         assertThat(status2.refreshStatus).isEqualTo(REFRESH_STATUS_NONE)
         assertThat(status2).isEqualTo(safetyCenterStatusOk)
