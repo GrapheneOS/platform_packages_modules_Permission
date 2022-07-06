@@ -59,8 +59,8 @@
     <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Zobrazenie všetkých nedávnych rozhodnutí o povolení"</string>
     <string name="review_permission_decisions_empty" msgid="8120775336417279806">"Žiadne nedávne rozhodnutia o povolení"</string>
     <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Spravujte prístup k údajom kalendára, zoznamu hovorov a ďalších funkcií"</string>
-    <string name="granted_permission_decision" msgid="7824827491551861365">"Aplikácii <xliff:g id="APP_NAME">%1$s</xliff:g> ste udelili prístup k povoleniu <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
-    <string name="denied_permission_decision" msgid="5308961501779563781">"Zamietli ste prístup aplikácie <xliff:g id="APP_NAME">%1$s</xliff:g> k povoleniu <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
+    <string name="granted_permission_decision" msgid="7824827491551861365">"Aplikácii <xliff:g id="APP_NAME">%1$s</xliff:g> ste udelili povolenie <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
+    <string name="denied_permission_decision" msgid="5308961501779563781">"Aplikácii <xliff:g id="APP_NAME">%1$s</xliff:g> ste zamietli povolenie <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Dnes}=1{Pred 1 dňom}few{Pred # dňami}many{Pred # dňa}other{Pred # dňami}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Deaktivovať aplikáciu"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Ak aplikáciu deaktivujete, systém a ďalšie aplikácie už nemusia fungovať podľa očakávaní. Upozorňujeme, že túto aplikáciu nemôžete odstrániť, pretože bola vo vašom zariadení predinštalovaná. Deaktiváciou ju vypnete a skryjete v zariadení."</string>
@@ -263,7 +263,7 @@
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# nepoužívaná aplikácia}few{# nepoužívané aplikácie}many{# unused apps}other{# nepoužívaných aplikácií}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Povolenia a dočasné súbory boli odstránené a upozornenia boli zastavené. Skontrolujte to klepnutím."</string>
     <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Skontrolujte nedávne povolenia"</string>
-    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Počas jazdy ste udelili aplikácii <xliff:g id="APP">%1$s</xliff:g> prístup k povoleniu <xliff:g id="PERMISSION">%2$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Počas jazdy ste udelili aplikácii <xliff:g id="APP">%1$s</xliff:g> povolenie <xliff:g id="PERMISSION">%2$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Počas jazdy ste udelili aplikácii <xliff:g id="APP">%1$s</xliff:g> prístup k povoleniam <xliff:g id="PERMISSION_1">%2$s</xliff:g> &amp; <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Počas jazdy ste udelili aplikácii <xliff:g id="APP">%2$s</xliff:g> tento počet povolení: <xliff:g id="COUNT">%1$d</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Počas jazdy ste udelili prístup aplikácii <xliff:g id="APP_0">%1$s</xliff:g> a # ďalšej}few{Počas jazdy ste udelili prístup aplikácii <xliff:g id="APP_1">%1$s</xliff:g> a # ďalším}many{While driving, you gave <xliff:g id="APP_1">%1$s</xliff:g> &amp; # other apps access}other{Počas jazdy ste udelili prístup aplikácii <xliff:g id="APP_1">%1$s</xliff:g> a # ďalším}}"</string>

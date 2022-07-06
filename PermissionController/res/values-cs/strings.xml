@@ -60,7 +60,7 @@
     <string name="review_permission_decisions_empty" msgid="8120775336417279806">"Žádná nedávná rozhodnutí o oprávnění"</string>
     <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Správa přístupu k datům kalendáře, seznamům hovorů atd."</string>
     <string name="granted_permission_decision" msgid="7824827491551861365">"Aplikaci <xliff:g id="APP_NAME">%1$s</xliff:g> jste udělili přístupové oprávnění pro <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
-    <string name="denied_permission_decision" msgid="5308961501779563781">"Aplikaci <xliff:g id="APP_NAME">%1$s</xliff:g> jste zamítli oprávnění <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
+    <string name="denied_permission_decision" msgid="5308961501779563781">"Aplikaci <xliff:g id="APP_NAME">%1$s</xliff:g> jste zamítli přístupové oprávnění pro <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{dnes}=1{včera}few{před # dny}many{před # dne}other{před # dny}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Deaktivovat aplikaci"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Pokud tuto aplikaci deaktivujete, systém Android a ostatní aplikace nemusejí fungovat správně. Připomínáme, že tuto aplikaci nelze smazat, protože byla v zařízení předinstalována. Deaktivováním ji vypnete a skryjete."</string>
