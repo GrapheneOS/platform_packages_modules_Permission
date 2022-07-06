@@ -16,17 +16,11 @@
   -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Title for the overall Safety Center status when we're loading the user security and privacy signals [CHAR LIMIT=35] -->
-    <string name="loading_title">Loading…</string>
+    <!-- Title for the overall Safety Center status when the user has requested a rescan of their security and privacy signals [CHAR LIMIT=35] -->
+    <string name="scanning_title">Scanning</string>
 
     <!-- Summary for the overall Safety Center status when we're loading the user security and privacy signals [CHAR LIMIT=60] -->
-    <string name="loading_summary">Details available soon</string>
-
-    <!-- Title for the overall Safety Center status when the user has requested a rescan of their security and privacy signals [CHAR LIMIT=35] -->
-    <string name="scanning_title">Scanning…</string>
-
-    <!-- Summary for the overall Safety Center status when the user has requested a rescan of their security and privacy signals [CHAR LIMIT=60] -->
-    <string name="scanning_summary">Checking status</string>
+    <string name="loading_summary">Checking device status…</string>
 
     <!-- Title for the overall Safety Center status when the user security and privacy signals are deemed to be safe [CHAR LIMIT=35] -->
     <string name="overall_severity_level_ok_title">Looks good</string>

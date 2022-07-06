@@ -1458,9 +1458,8 @@ final class SafetyCenterDataTracker {
             @SafetyCenterStatus.RefreshStatus int refreshStatus) {
         switch (refreshStatus) {
             case SafetyCenterStatus.REFRESH_STATUS_NONE:
-                return null;
             case SafetyCenterStatus.REFRESH_STATUS_DATA_FETCH_IN_PROGRESS:
-                return mSafetyCenterResourcesContext.getStringByName("loading_title");
+                return null;
             case SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS:
                 return mSafetyCenterResourcesContext.getStringByName("scanning_title");
         }
@@ -1476,9 +1475,8 @@ final class SafetyCenterDataTracker {
             case SafetyCenterStatus.REFRESH_STATUS_NONE:
                 return null;
             case SafetyCenterStatus.REFRESH_STATUS_DATA_FETCH_IN_PROGRESS:
-                return mSafetyCenterResourcesContext.getStringByName("loading_summary");
             case SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS:
-                return mSafetyCenterResourcesContext.getStringByName("scanning_summary");
+                return mSafetyCenterResourcesContext.getStringByName("loading_summary");
         }
 
         Log.w(TAG, "Unexpected SafetyCenterStatus.RefreshStatus: " + refreshStatus);
