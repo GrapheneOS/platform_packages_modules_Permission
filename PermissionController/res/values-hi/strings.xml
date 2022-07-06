@@ -267,7 +267,7 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"आपने गाड़ी चलाते समय, <xliff:g id="APP">%1$s</xliff:g> को <xliff:g id="PERMISSION_1">%2$s</xliff:g> और <xliff:g id="PERMISSION_2">%3$s</xliff:g> का ऐक्सेस दिया था"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"आपने गाड़ी चलाते समय, <xliff:g id="APP">%2$s</xliff:g> को <xliff:g id="COUNT">%1$d</xliff:g> अनुमतियां दी थीं"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{आपने गाड़ी चलाते समय, <xliff:g id="APP_0">%1$s</xliff:g> और # अन्य ऐप्लिकेशन को ऐक्सेस दिया था}one{आपने गाड़ी चलाते समय, <xliff:g id="APP_1">%1$s</xliff:g> और # अन्य ऐप्लिकेशन को ऐक्सेस दिया था}other{आपने गाड़ी चलाते समय, <xliff:g id="APP_1">%1$s</xliff:g> और # अन्य ऐप्लिकेशन को ऐक्सेस दिया था}}"</string>
-    <string name="go_to_settings" msgid="1053735612211228335">"\'सेटिंग\' पर जाएं"</string>
+    <string name="go_to_settings" msgid="1053735612211228335">"सेटिंग पर जाएं"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"कुछ ऐप्लिकेशन का इस्तेमाल कुछ महीनों से नहीं किया गया है"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"वे ऐप्लिकेशन जिनकी अनुमतियां हटाई गई हैं"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"वे ऐप्लिकेशन जिनकी अनुमतियां हटाई गई हैं"</string>
@@ -445,7 +445,7 @@
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"क्या आप &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को इस डिवाइस की जगह की अनुमानित जानकारी ऐक्सेस करने की अनुमति देना चाहते हैं?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"सटीक जगह"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"अनुमानित जगह"</string>
-    <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को अपना कैलेंडर देखने की अनुमति देना चाहते हैं?"</string>
+    <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को अपना कैलेंडर ऐक्सेस करने की अनुमति देना है?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को एसएमएस (मैसेज) भेजने और देखने की अनुमति देना चाहते हैं?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को डिवाइस पर मौजूद फ़ोटो, ऑडियो-वीडियो, और फ़ाइलें ऐक्सेस करने की अनुमति देना चाहते हैं?"</string>
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को इस डिवाइस में मौजूद &lt;b&gt;फ़ोटो, वीडियो, संगीत, और ऑडियो&lt;/b&gt; का ऐक्सेस देना है?"</string>

@@ -121,7 +121,7 @@
     <string name="message_staging" msgid="9110563899955511866">"Приложението се подготвя…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Неизвестно"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Управление на поверителността"</string>
-    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Преглед на прилож., които наскоро са използвали разрешения"</string>
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Преглед на приложенията, които наскоро са използвали разрешения"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Използване на <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Вижте други разрешения"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
