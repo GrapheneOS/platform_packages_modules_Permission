@@ -263,8 +263,8 @@
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# برنامه استفاده‌نشده}one{# برنامه استفاده‌نشده}other{# برنامه استفاده‌نشده}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"اجازه‌ها و فایل‌های موقت حذف شده‌اند و اعلان‌ها متوقف شده‌اند. برای مرور، ضربه بزنید."</string>
     <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"بررسی اجازه‌های اخیر"</string>
-    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"درحین رانندگی، به <xliff:g id="APP">%1$s</xliff:g> اجازه دادید به <xliff:g id="PERMISSION">%2$s</xliff:g> دسترسی داشته باشد"</string>
-    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"درحین رانندگی، به <xliff:g id="APP">%1$s</xliff:g> اجازه دادید به <xliff:g id="PERMISSION_1">%2$s</xliff:g> و <xliff:g id="PERMISSION_2">%3$s</xliff:g> دسترسی داشته باشد"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"درحین رانندگی، به <xliff:g id="APP">%1$s</xliff:g> اجازه دسترسی به <xliff:g id="PERMISSION">%2$s</xliff:g> را دادید"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"درحین رانندگی، به <xliff:g id="APP">%1$s</xliff:g> اجازه دسترسی به <xliff:g id="PERMISSION_1">%2$s</xliff:g> و <xliff:g id="PERMISSION_2">%3$s</xliff:g> را دادید"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"درحین رانندگی، <xliff:g id="COUNT">%1$d</xliff:g> اجازه به <xliff:g id="APP">%2$s</xliff:g> اعطا کردید"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{درحین رانندگی، به <xliff:g id="APP_0">%1$s</xliff:g> و # برنامه دیگر اجازه دسترسی دادید}one{درحین رانندگی، به <xliff:g id="APP_1">%1$s</xliff:g> و # برنامه دیگر اجازه دسترسی دادید}other{درحین رانندگی، به <xliff:g id="APP_1">%1$s</xliff:g> و # برنامه دیگر اجازه دسترسی دادید}}"</string>
     <string name="go_to_settings" msgid="1053735612211228335">"رفتن به «تنظیمات»"</string>
@@ -445,7 +445,7 @@
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"‏به &lt;b&amp;gt؛<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&amp;gt؛ اجازه داده شود به مکان تقریبی این دستگاه دسترسی پیدا کند؟"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"دقیق"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"تقریبی"</string>
-    <string name="permgrouprequest_calendar" msgid="1493150855673603806">"‏به &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; اجازه داده شود به تقویم شما دسترسی پیدا کند؟"</string>
+    <string name="permgrouprequest_calendar" msgid="1493150855673603806">"‏به &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; اجازه دسترسی به تقویمتان داده شود؟"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"‏به «&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&gt;» اجازه داده شود پیامک ارسال و مشاهده کند؟"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"‏به برنامه &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&gt; اجازه داده شود به عکس‌ها، رسانه، و فایل‌های موجود در دستگاهتان دسترسی داشته باشد؟"</string>
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"‏به &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; اجازه می‌دهید به &lt;b&gt;عکس‌ها، ویدیوها، موسیقی، و فایل‌های صوتی&lt;/b&gt; این دستگاه دسترسی داشته باشد؟"</string>
