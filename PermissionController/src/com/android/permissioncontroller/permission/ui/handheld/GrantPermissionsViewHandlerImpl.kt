@@ -19,6 +19,7 @@ package com.android.permissioncontroller.permission.ui.handheld
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.app.Activity
+import android.app.StorageScope
 import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.ImageDecoder
@@ -53,6 +54,7 @@ import android.widget.RadioGroup
 import android.widget.TextView
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_ALWAYS_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_FOREGROUND_BUTTON
@@ -520,6 +522,14 @@ class GrantPermissionsViewHandlerImpl(
                 resultListener!!.onPermissionGrantResult(groupName, affectedForegroundPermissions,
                     DENIED_DO_NOT_ASK_AGAIN)
             }
+            GrantPermissionsActivity.STORAGE_SCOPES_BUTTON -> {
+                view.performAccessibilityAction(
+                    AccessibilityNodeInfo.ACTION_CLEAR_ACCESSIBILITY_FOCUS, null)
+                if (resultListener != null) {
+                    mActivity.startActivityForResult(StorageScope.createConfigActivityIntent(mAppPackageName),
+                            GrantPermissionsActivity.CONFIGURE_STORAGE_SCOPES_REQUEST_CODE)
+                }
+            }
         }
     }
 
@@ -567,6 +577,8 @@ class GrantPermissionsViewHandlerImpl(
                 NO_UPGRADE_OT_BUTTON)
             BUTTON_RES_ID_TO_NUM.put(R.id.permission_no_upgrade_one_time_and_dont_ask_again_button,
                 NO_UPGRADE_OT_AND_DONT_ASK_AGAIN_BUTTON)
+            BUTTON_RES_ID_TO_NUM.put(R.id.permission_storage_scopes_button,
+                GrantPermissionsActivity.STORAGE_SCOPES_BUTTON)
 
             LOCATION_RES_ID_TO_NUM.put(R.id.permission_location_accuracy, LOCATION_ACCURACY_LAYOUT)
             LOCATION_RES_ID_TO_NUM.put(R.id.permission_location_accuracy_radio_fine,
