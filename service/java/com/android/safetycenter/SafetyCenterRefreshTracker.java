@@ -176,21 +176,27 @@ final class SafetyCenterRefreshTracker {
     }
 
     /**
-     * Clears the refresh in progress with the given id, and returns whether it was ongoing.
+     * Clears the refresh in progress with the given id, and returns the {@link SafetySourceKey}s
+     * that were still in-flight prior to doing that, if any.
+     *
+     * <p>Returns {@code null} if there was no refresh in progress with the given {@code
+     * refreshBroadcastId}.
      *
      * <p>Note that this method simply clears the tracking of a refresh, and does not prevent
      * scheduled broadcasts being sent by {@link
      * android.safetycenter.SafetyCenterManager#refreshSafetySources}.
      */
     // TODO(b/229188900): Should we stop any scheduled broadcasts from going out?
-    boolean clearRefresh(@NonNull String refreshBroadcastId) {
+    @Nullable
+    ArraySet<SafetySourceKey> clearRefresh(@NonNull String refreshBroadcastId) {
         if (!checkMethodValid("clearRefresh", refreshBroadcastId)) {
-            return false;
+            return null;
         }
 
         Log.v(TAG, "Clearing refresh with refreshBroadcastId:" + refreshBroadcastId);
+        ArraySet<SafetySourceKey> stillInFlight = mRefreshInProgress.getSourceRefreshInFlight();
         mRefreshInProgress = null;
-        return true;
+        return stillInFlight;
     }
 
     /**
@@ -279,20 +285,26 @@ final class SafetyCenterRefreshTracker {
          * in the refresh.
          */
         @NonNull
-        String getId() {
+        private String getId() {
             return mId;
         }
 
         /** Returns the {@link RefreshReason} that was given for this {@link RefreshInProgress}. */
         @RefreshReason
-        int getReason() {
+        private int getReason() {
             return mReason;
         }
 
         /** Returns the {@link UserProfileGroup} for which there is a {@link RefreshInProgress}. */
         @NonNull
-        UserProfileGroup getUserProfileGroup() {
+        private UserProfileGroup getUserProfileGroup() {
             return mUserProfileGroup;
+        }
+
+        /** Returns the {@link SafetySourceKey} that are in-flight. */
+        @NonNull
+        private ArraySet<SafetySourceKey> getSourceRefreshInFlight() {
+            return mSourceRefreshInFlight;
         }
 
         private void addSourceRefreshInFlight(@NonNull SafetySourceKey safetySourceKey) {
