@@ -141,6 +141,10 @@ class AccessibilitySourceService(
     ) {
         lock.withLock {
             try {
+                var sessionId = Constants.INVALID_SESSION_ID
+                while (sessionId == Constants.INVALID_SESSION_ID) {
+                    sessionId = random.nextLong()
+                }
                 if (DEBUG) {
                     Log.v(LOG_TAG, "safety center accessibility privacy job started.")
                 }
@@ -180,12 +184,12 @@ class AccessibilitySourceService(
                             toBeNotifiedServices[random.nextInt(toBeNotifiedServices.size)]
                         createPermissionReminderChannel()
                         interruptJobIfCanceled(cancel)
-                        sendNotification(serviceToBeNotified)
+                        sendNotification(serviceToBeNotified, sessionId)
                     }
                 }
 
                 interruptJobIfCanceled(cancel)
-                sendIssuesToSafetyCenter(a11yServiceList)
+                sendIssuesToSafetyCenter(a11yServiceList, sessionId)
                 jobService.jobFinished(params, false)
             } catch (ex: InterruptedException) {
                 Log.w(LOG_TAG, "cancel request for safety center accessibility job received.")
@@ -202,14 +206,13 @@ class AccessibilitySourceService(
     /**
      * sends a notification for a given accessibility package
      */
-    private suspend fun sendNotification(serviceToBeNotified: AccessibilityServiceInfo) {
+    private suspend fun sendNotification(
+        serviceToBeNotified: AccessibilityServiceInfo,
+        sessionId: Long
+    ) {
         val pkgLabel = serviceToBeNotified.resolveInfo.loadLabel(packageManager)
         val componentName = ComponentName.unflattenFromString(serviceToBeNotified.id)!!
         val uid = serviceToBeNotified.resolveInfo.serviceInfo.applicationInfo.uid
-        var sessionId = Constants.INVALID_SESSION_ID
-        while (sessionId == Constants.INVALID_SESSION_ID) {
-            sessionId = random.nextLong()
-        }
 
         val notificationDeleteIntent =
             Intent(parentUserContext, AccessibilityNotificationDeleteHandler::class.java).apply {
@@ -313,16 +316,15 @@ class AccessibilitySourceService(
      * @param a11yService enabled 3rd party accessibility service
      * @return safety source issue, shown as the warning card in safety center
      */
-    private fun createSafetySourceIssue(a11yService: AccessibilityServiceInfo): SafetySourceIssue {
+    private fun createSafetySourceIssue(
+        a11yService: AccessibilityServiceInfo,
+        sessionId: Long
+    ): SafetySourceIssue {
         val componentName = ComponentName.unflattenFromString(a11yService.id)!!
         val safetySourceIssueId = "accessibility_${componentName.flattenToString()}"
         val pkgLabel = a11yService.resolveInfo.loadLabel(packageManager).toString()
         val uid = a11yService.resolveInfo.serviceInfo.applicationInfo.uid
 
-        var sessionId = Constants.INVALID_SESSION_ID
-        while (sessionId == Constants.INVALID_SESSION_ID) {
-            sessionId = random.nextLong()
-        }
         val removeAccessPendingIntent = getRemoveAccessPendingIntent(
             context,
             componentName,
@@ -456,11 +458,12 @@ class AccessibilitySourceService(
         )
     }
 
-    fun sendIssuesToSafetyCenter(
+    private fun sendIssuesToSafetyCenter(
         a11yServiceList: List<AccessibilityServiceInfo>,
+        sessionId: Long,
         safetyEvent: SafetyEvent = sourceStateChanged
     ) {
-        val pendingIssues = a11yServiceList.map { createSafetySourceIssue(it) }
+        val pendingIssues = a11yServiceList.map { createSafetySourceIssue(it, sessionId) }
         val dataBuilder = SafetySourceData.Builder()
         pendingIssues.forEach { dataBuilder.addIssue(it) }
         val safetySourceData = dataBuilder.build()
@@ -472,6 +475,17 @@ class AccessibilitySourceService(
             safetySourceData,
             safetyEvent
         )
+    }
+
+    fun sendIssuesToSafetyCenter(
+        a11yServiceList: List<AccessibilityServiceInfo>,
+        safetyEvent: SafetyEvent = sourceStateChanged
+    ) {
+        var sessionId = Constants.INVALID_SESSION_ID
+        while (sessionId == Constants.INVALID_SESSION_ID) {
+            sessionId = random.nextLong()
+        }
+        sendIssuesToSafetyCenter(a11yServiceList, sessionId, safetyEvent)
     }
 
     fun sendIssuesToSafetyCenter(safetyEvent: SafetyEvent = sourceStateChanged) {
