@@ -24,6 +24,7 @@ import android.app.Activity
 import android.app.Application
 import android.app.admin.DevicePolicyManager
 import android.content.Intent
+import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.FLAG_PERMISSION_POLICY_FIXED
 import android.content.pm.PackageManager.FLAG_PERMISSION_USER_FIXED
@@ -415,6 +416,9 @@ class GrantPermissionsViewModel(
                 }
                 buttonVisibilities[LINK_TO_SETTINGS] =
                     detailMessage != RequestMessage.NO_MESSAGE
+                buttonVisibilities[GrantPermissionsActivity.STORAGE_SCOPES_BUTTON] =
+                     groupInfo.name == Manifest.permission_group.STORAGE
+                             && android.content.pm.GosPackageState.attachableToPackage(packageName)
 
                 // Show location permission dialogs based on location permissions
                 val locationVisibilities = MutableList(NEXT_LOCATION_DIALOG) { false }
