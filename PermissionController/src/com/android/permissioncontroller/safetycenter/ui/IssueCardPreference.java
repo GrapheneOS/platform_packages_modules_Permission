@@ -25,16 +25,20 @@ import static java.util.Objects.requireNonNull;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.safetycenter.SafetyCenterIssue;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.TouchDelegate;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.DimenRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -126,9 +130,34 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
                             ? new ConfirmDismissalOnClickListener()
                             : new DismissOnClickListener());
             dismissButton.setVisibility(View.VISIBLE);
+
+            configureTouchTarget(
+                    dismissButton,
+                    R.dimen.safety_center_issue_card_dismiss_button_touch_target_size);
         } else {
             dismissButton.setVisibility(View.GONE);
         }
+    }
+
+    private void configureTouchTarget(View view, @DimenRes int minTouchTargetSizeResource) {
+        View parent = (View) view.getParent();
+        Resources res = view.getContext().getResources();
+        int minTouchTargetSize = res.getDimensionPixelSize(minTouchTargetSizeResource);
+
+        // Defer getHitRect so that it's called after the parent's children are laid out.
+        parent.post(
+                () -> {
+                    Rect hitRect = new Rect();
+                    view.getHitRect(hitRect);
+                    int currentTouchTargetWidth = hitRect.width();
+                    if (currentTouchTargetWidth < minTouchTargetSize) {
+                        // inset adjustment is applied to top, bottom, left, right, divide width
+                        // difference by two to get adjustment
+                        int adjustInsetBy = (minTouchTargetSize - currentTouchTargetWidth) / 2;
+                        hitRect.inset(-adjustInsetBy, -adjustInsetBy);
+                        parent.setTouchDelegate(new TouchDelegate(hitRect, view));
+                    }
+                });
     }
 
     @Override
