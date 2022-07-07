@@ -418,7 +418,7 @@ class NotificationListenerCheckInternalTest {
         }
 
         val safetySourceIssue = Preconditions.checkNotNull(
-            notificationListenerCheck.createSafetySourceIssue(testComponent))
+            notificationListenerCheck.createSafetySourceIssue(testComponent, 0))
 
         val expectedId = "notification_listener_${testComponent.flattenToString()}"
         val expectedTitle = context.getString(

@@ -296,7 +296,9 @@ class NotificationListenerPrivacySourceTest {
 
     private fun createExpectedSafetyCenterData(): SafetySourceData {
         val pendingIssues =
-            enabledComponents.mapNotNull { notificationListenerCheck.createSafetySourceIssue(it) }
+            enabledComponents.mapNotNull {
+                notificationListenerCheck.createSafetySourceIssue(it, 0)
+            }
         val dataBuilder = SafetySourceData.Builder()
         pendingIssues.forEach { dataBuilder.addIssue(it) }
         return dataBuilder.build()
