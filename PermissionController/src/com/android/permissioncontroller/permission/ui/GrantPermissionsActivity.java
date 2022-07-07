@@ -63,6 +63,7 @@ import com.android.permissioncontroller.permission.ui.model.v31.GrantPermissions
 import com.android.permissioncontroller.permission.ui.wear.GrantPermissionsWearViewHandler;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
+import com.android.permissioncontroller.sscopes.StorageScopesUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -83,7 +84,7 @@ public class GrantPermissionsActivity extends SettingsActivity
             + "_REQUEST_ID";
     public static final String ANNOTATION_ID = "link";
 
-    public static final int NEXT_BUTTON = 11;
+    public static final int NEXT_BUTTON = 12;
     public static final int ALLOW_BUTTON = 0;
     public static final int ALLOW_ALWAYS_BUTTON = 1; // Used in auto
     public static final int ALLOW_FOREGROUND_BUTTON = 2;
@@ -95,6 +96,7 @@ public class GrantPermissionsActivity extends SettingsActivity
     public static final int NO_UPGRADE_OT_BUTTON = 8; // one-time
     public static final int NO_UPGRADE_OT_AND_DONT_ASK_AGAIN_BUTTON = 9; // one-time
     public static final int LINK_TO_SETTINGS = 10;
+    public static final int STORAGE_SCOPES_BUTTON = 11;
 
     public static final int NEXT_LOCATION_DIALOG = 6;
     public static final int LOCATION_ACCURACY_LAYOUT = 0;
@@ -528,6 +530,8 @@ public class GrantPermissionsActivity extends SettingsActivity
     }
 
 
+    public static final int CONFIGURE_STORAGE_SCOPES_REQUEST_CODE = 100;
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -536,6 +540,10 @@ public class GrantPermissionsActivity extends SettingsActivity
         if (requestCode == APP_PERMISSION_REQUEST_CODE && callback != null) {
             callback.accept(data);
             mViewModel.setActivityResultCallback(null);
+        } else if (requestCode == CONFIGURE_STORAGE_SCOPES_REQUEST_CODE) {
+            if (StorageScopesUtils.storageScopesEnabled(mTargetPackage)) {
+                onPermissionGrantResult(android.Manifest.permission_group.STORAGE, GrantPermissionsViewHandler.DENIED);
+            }
         }
     }
 
