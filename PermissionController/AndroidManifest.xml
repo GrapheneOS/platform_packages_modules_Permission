@@ -104,6 +104,9 @@
         <receiver android:name="com.android.permissioncontroller.permission.service.LocationAccessCheck$SafetyCenterPrimaryActionHandler"
                   android:enabled="@bool/is_at_least_t" />
 
+        <receiver android:name="com.android.permissioncontroller.permission.service.LocationAccessCheck$WarningCardDismissalHandler"
+                  android:enabled="@bool/is_at_least_t"/>
+
         <receiver android:name="com.android.permissioncontroller.permission.service.LocationAccessCheck$PackageResetHandler"
                   android:exported="true">
             <intent-filter>
