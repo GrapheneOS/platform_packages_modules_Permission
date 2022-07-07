@@ -17,6 +17,7 @@
 package com.android.permissioncontroller.tests.mocking.privacysources
 
 import android.app.NotificationManager
+import android.app.role.RoleManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.ContextWrapper
@@ -49,6 +50,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.ArgumentMatchers.any
 import org.mockito.ArgumentMatchers.anyBoolean
+import org.mockito.ArgumentMatchers.anyString
 import org.mockito.ArgumentMatchers.eq
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
@@ -68,6 +70,8 @@ class NotificationListenerPrivacySourceTest {
     lateinit var mockSafetyCenterManager: SafetyCenterManager
     @Mock
     lateinit var mockNotificationManager: NotificationManager
+    @Mock
+    lateinit var mockRoleManager: RoleManager
     @Mock
     lateinit var mockUserManager: UserManager
 
@@ -136,6 +140,13 @@ class NotificationListenerPrivacySourceTest {
             .thenReturn(mockNotificationManager)
         whenever(mockNotificationManager.enabledNotificationListeners)
             .thenReturn(listOf(testComponent1, testComponent2))
+
+        whenever(Utils.getSystemServiceSafe(
+            any(ContextWrapper::class.java),
+            eq(RoleManager::class.java)))
+            .thenReturn(mockRoleManager)
+        whenever(mockRoleManager.getRoleHolders(anyString()))
+            .thenReturn(emptyList())
 
         // Setup Safety Center
         whenever(Utils.getSystemServiceSafe(
