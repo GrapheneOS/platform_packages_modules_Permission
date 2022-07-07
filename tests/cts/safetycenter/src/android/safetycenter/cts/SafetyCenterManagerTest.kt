@@ -256,6 +256,13 @@ class SafetyCenterManagerTest {
             listOf(SafetyCenterEntryOrGroup(safetyCenterEntryOk(SINGLE_SOURCE_ID))),
             emptyList())
 
+    private val safetyCenterDataOkReviewError =
+        SafetyCenterData(
+            safetyCenterStatusOkReview,
+            emptyList(),
+            listOf(SafetyCenterEntryOrGroup(safetyCenterEntryError(SINGLE_SOURCE_ID))),
+            emptyList())
+
     private val safetyCenterDataOkOneAlert =
         SafetyCenterData(
             safetyCenterStatusOkOneAlert,
@@ -811,6 +818,21 @@ class SafetyCenterManagerTest {
     }
 
     @Test
+    fun reportSafetySourceError_notifiesErrorEntryButDoesntCallErrorListener() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        val listener = safetyCenterCtsHelper.addListener()
+
+        safetyCenterManager.reportSafetySourceErrorWithPermission(
+            SINGLE_SOURCE_ID, SafetySourceErrorDetails(EVENT_SOURCE_STATE_CHANGED))
+
+        val safetyCenterDataFromListener = listener.receiveSafetyCenterData()
+        assertThat(safetyCenterDataFromListener).isEqualTo(safetyCenterDataOkReviewError)
+        assertFailsWith(TimeoutCancellationException::class) {
+            listener.receiveSafetyCenterErrorDetails(TIMEOUT_SHORT)
+        }
+    }
+
+    @Test
     fun reportSafetySourceError_unknownId_throwsIllegalArgumentException() {
         val thrown =
             assertFailsWith(IllegalArgumentException::class) {
@@ -854,13 +876,17 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    fun reportSafetySourceError_withFlagDisabled_doesntCheckRequest() {
+    fun reportSafetySourceError_withFlagDisabled_doesntCallListener() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         val listener = safetyCenterCtsHelper.addListener()
         safetyCenterCtsHelper.setEnabled(false)
 
         safetyCenterManager.reportSafetySourceErrorWithPermission(
-            "unknown_id", SafetySourceErrorDetails(EVENT_SOURCE_STATE_CHANGED))
+            SINGLE_SOURCE_ID, SafetySourceErrorDetails(EVENT_SOURCE_STATE_CHANGED))
+
+        assertFailsWith(TimeoutCancellationException::class) {
+            listener.receiveSafetyCenterData(TIMEOUT_SHORT)
+        }
     }
 
     @Test
@@ -1201,8 +1227,8 @@ class SafetyCenterManagerTest {
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
             REFRESH_REASON_RESCAN_BUTTON_CLICK)
-        val safetyCenterErrorDetailsFromListener = listener.receiveSafetyCenterErrorDetails()
 
+        val safetyCenterErrorDetailsFromListener = listener.receiveSafetyCenterErrorDetails()
         assertThat(safetyCenterErrorDetailsFromListener)
             .isEqualTo(SafetyCenterErrorDetails("Couldn’t refresh status"))
     }
@@ -1257,8 +1283,8 @@ class SafetyCenterManagerTest {
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
             REFRESH_REASON_RESCAN_BUTTON_CLICK)
-        val safetyCenterErrorDetailsFromListener = listener.receiveSafetyCenterErrorDetails()
 
+        val safetyCenterErrorDetailsFromListener = listener.receiveSafetyCenterErrorDetails()
         assertThat(safetyCenterErrorDetailsFromListener)
             .isEqualTo(SafetyCenterErrorDetails("Couldn’t refresh status"))
     }
@@ -2193,6 +2219,9 @@ class SafetyCenterManagerTest {
             .setSummary("OK")
             .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
             .setSeverityUnspecifiedIconType(SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION)
+
+    private fun safetyCenterEntryError(sourceId: String) =
+        safetyCenterEntryDefaultBuilder(sourceId).setSummary("Couldn’t check status").build()
 
     private fun safetyCenterEntryUnspecified(
         sourceId: String,

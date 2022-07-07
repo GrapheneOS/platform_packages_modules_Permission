@@ -155,14 +155,18 @@ class SafetyCenterUnsupportedTest {
     }
 
     @Test
-    fun reportSafetySourceError_doesntCheckRequest() {
+    fun reportSafetySourceError_doesntCallListener() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(SINGLE_SOURCE_CONFIG)
         val listener = SafetyCenterCtsListener()
         safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
             directExecutor(), listener)
 
         safetyCenterManager.reportSafetySourceErrorWithPermission(
-            "unknown_id", SafetySourceErrorDetails(EVENT_SOURCE_STATE_CHANGED))
+            SINGLE_SOURCE_ID, SafetySourceErrorDetails(EVENT_SOURCE_STATE_CHANGED))
+
+        assertFailsWith(TimeoutCancellationException::class) {
+            listener.receiveSafetyCenterData(TIMEOUT_SHORT)
+        }
     }
 
     @Test

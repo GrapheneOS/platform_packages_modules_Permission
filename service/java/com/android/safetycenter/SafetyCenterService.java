@@ -54,6 +54,7 @@ import android.safetycenter.SafetySourceErrorDetails;
 import android.safetycenter.SafetySourceIssue;
 import android.safetycenter.config.SafetyCenterConfig;
 import android.text.TextUtils;
+import android.util.ArraySet;
 import android.util.Log;
 
 import androidx.annotation.Keep;
@@ -333,6 +334,7 @@ public final class SafetyCenterService extends SystemService {
 
             synchronized (mApiLock) {
                 broadcasts = mSafetyCenterConfigReader.getBroadcasts();
+                mSafetyCenterDataTracker.clearSafetySourceErrors();
                 refreshBroadcastId =
                         mSafetyCenterRefreshTracker.reportRefreshInProgress(
                                 refreshReason, userProfileGroup);
@@ -770,11 +772,12 @@ public final class SafetyCenterService extends SystemService {
         public void run() {
             synchronized (mApiLock) {
                 mSafetyCenterTimeouts.remove(this);
-                boolean hasClearedRefresh =
+                ArraySet<SafetySourceKey> stillInFlight =
                         mSafetyCenterRefreshTracker.clearRefresh(mRefreshBroadcastId);
-                if (!hasClearedRefresh) {
+                if (stillInFlight == null) {
                     return;
                 }
+                // TODO(b/237057234): Mark sources still in-flight has having errored-out.
                 mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
                         mUserProfileGroup,
                         true,

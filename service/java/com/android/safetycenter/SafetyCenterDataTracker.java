@@ -95,6 +95,7 @@ final class SafetyCenterDataTracker {
 
     private final ArrayMap<SafetySourceKey, SafetySourceData> mSafetySourceDataForKey =
             new ArrayMap<>();
+    private final ArraySet<SafetySourceKey> mSafetySourceErrors = new ArraySet<>();
 
     private final ArrayMap<SafetyCenterIssueKey, IssueData> mSafetyCenterIssueCache =
             new ArrayMap<>();
@@ -212,13 +213,15 @@ final class SafetyCenterDataTracker {
         if (!validateRequest(safetySourceData, safetySourceId, packageName, userId)) {
             return false;
         }
-        boolean safetyCenterDataHasChanged =
+        boolean safetyEventChangedSafetyCenterData =
                 processSafetyEvent(safetySourceId, safetyEvent, userId);
 
         SafetySourceKey key = SafetySourceKey.of(safetySourceId, userId);
+        boolean removingSafetySourceErrorChangedSafetyCenterData = mSafetySourceErrors.remove(key);
         SafetySourceData existingSafetySourceData = mSafetySourceDataForKey.get(key);
         if (Objects.equals(safetySourceData, existingSafetySourceData)) {
-            return safetyCenterDataHasChanged;
+            return safetyEventChangedSafetyCenterData
+                    || removingSafetySourceErrorChangedSafetyCenterData;
         }
 
         ArraySet<String> issueIds = new ArraySet<>();
@@ -270,14 +273,38 @@ final class SafetyCenterDataTracker {
         if (!validateRequest(null, safetySourceId, packageName, userId)) {
             return false;
         }
-        Log.w(
-                TAG,
-                "Error reported from source: "
-                        + safetySourceId
-                        + ", for event: "
-                        + safetySourceErrorDetails.getSafetyEvent());
-        return processSafetyEvent(
-                safetySourceId, safetySourceErrorDetails.getSafetyEvent(), userId);
+        SafetyEvent safetyEvent = safetySourceErrorDetails.getSafetyEvent();
+        Log.w(TAG, "Error reported from source: " + safetySourceId + ", for event: " + safetyEvent);
+
+        boolean safetyEventChangedSafetyCenterData =
+                processSafetyEvent(safetySourceId, safetyEvent, userId);
+        int safetyEventType = safetyEvent.getType();
+        if (safetyEventType == SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED
+                || safetyEventType == SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED) {
+            return safetyEventChangedSafetyCenterData;
+        }
+
+        SafetySourceKey key = SafetySourceKey.of(safetySourceId, userId);
+        boolean safetySourceErrorChangedSafetyCenterData = setSafetySourceError(key);
+        return safetyEventChangedSafetyCenterData || safetySourceErrorChangedSafetyCenterData;
+    }
+
+    /** Marks the given {@link SafetySourceKey} as having errored-out. */
+    boolean setSafetySourceError(@NonNull SafetySourceKey safetySourceKey) {
+        boolean removingSafetySourceDataChangedSafetyCenterData =
+                mSafetySourceDataForKey.remove(safetySourceKey) != null;
+        boolean addingSafetySourceErrorChangedSafetyCenterData =
+                mSafetySourceErrors.add(safetySourceKey);
+        return removingSafetySourceDataChangedSafetyCenterData
+                || addingSafetySourceErrorChangedSafetyCenterData;
+    }
+
+    /**
+     * Clears all safety source errors received so far, this is useful e.g. when starting a new
+     * broadcast.
+     */
+    void clearSafetySourceErrors() {
+        mSafetySourceErrors.clear();
     }
 
     /**
@@ -417,7 +444,7 @@ final class SafetyCenterDataTracker {
     }
 
     /**
-     * Clears all the {@link SafetySourceData}, metadata associated with {@link
+     * Clears all the {@link SafetySourceData} and errors, metadata associated with {@link
      * SafetyCenterIssueKey}s, in flight {@link SafetyCenterIssueActionId} and any refresh in
      * progress so far, for all users.
      *
@@ -426,6 +453,7 @@ final class SafetyCenterDataTracker {
      */
     void clear() {
         mSafetySourceDataForKey.clear();
+        mSafetySourceErrors.clear();
         mSafetyCenterIssueCache.clear();
         mSafetyCenterIssueCacheDirty = true;
         mSafetyCenterIssueActionsInFlight.clear();
@@ -677,6 +705,8 @@ final class SafetyCenterDataTracker {
         List<SafetyCenterIssue> safetyCenterIssues = new ArrayList<>();
         List<SafetyCenterEntryOrGroup> safetyCenterEntryOrGroups = new ArrayList<>();
         List<SafetyCenterStaticEntryGroup> safetyCenterStaticEntryGroups = new ArrayList<>();
+        SafetyCenterOverallStatusErrorState safetyCenterOverallStatusErrorState =
+                new SafetyCenterOverallStatusErrorState();
 
         for (int i = 0; i < safetySourcesGroups.size(); i++) {
             SafetySourcesGroup safetySourcesGroup = safetySourcesGroups.get(i);
@@ -695,6 +725,7 @@ final class SafetyCenterDataTracker {
                                     addSafetyCenterEntryGroup(
                                             safetyCenterEntryOrGroups,
                                             safetySourcesGroup,
+                                            safetyCenterOverallStatusErrorState,
                                             packageName,
                                             userProfileGroup));
                     break;
@@ -702,6 +733,7 @@ final class SafetyCenterDataTracker {
                     addSafetyCenterStaticEntryGroup(
                             safetyCenterStaticEntryGroups,
                             safetySourcesGroup,
+                            safetyCenterOverallStatusErrorState,
                             packageName,
                             userProfileGroup);
                     break;
@@ -713,10 +745,9 @@ final class SafetyCenterDataTracker {
             }
         }
 
-        // LINT.IfChange(pendingActions)
         boolean hasSettingsToReview =
-                safetyCenterEntriesSeverityLevel > safetyCenterOverallSeverityLevel;
-        // LINT.ThenChange(packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/safetycenter/ui/SafetyCenterDashboardFragment.java:pendingActionsQs)
+                safetyCenterEntriesSeverityLevel > safetyCenterOverallSeverityLevel
+                        || safetyCenterOverallStatusErrorState.mHasAtLeastOneUserVisibleError;
         safetyCenterIssues.sort(SAFETY_CENTER_ISSUES_BY_SEVERITY_DESCENDING);
         int refreshStatus = mSafetyCenterRefreshTracker.getRefreshStatus();
         return new SafetyCenterData(
@@ -796,7 +827,6 @@ final class SafetyCenterDataTracker {
         List<SafetySourceIssue> safetySourceIssues = safetySourceData.getIssues();
         for (int i = 0; i < safetySourceIssues.size(); i++) {
             SafetySourceIssue safetySourceIssue = safetySourceIssues.get(i);
-            // LINT.IfChange(maxSeverityCalculation)
             SafetyCenterIssue safetyCenterIssue =
                     toSafetyCenterIssue(safetySourceIssue, safetySource, userId);
             if (safetyCenterIssue == null) {
@@ -811,7 +841,6 @@ final class SafetyCenterDataTracker {
         }
 
         return safetyCenterIssuesOverallSeverityLevel;
-        // LINT.ThenChange(packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/safetycenter/ui/SafetyCenterDashboardFragment.java:maxSeverityCalculationQs)
     }
 
     @Nullable
@@ -883,6 +912,7 @@ final class SafetyCenterDataTracker {
     private int addSafetyCenterEntryGroup(
             @NonNull List<SafetyCenterEntryOrGroup> safetyCenterEntryOrGroups,
             @NonNull SafetySourcesGroup safetySourcesGroup,
+            @NonNull SafetyCenterOverallStatusErrorState safetyCenterOverallStatusErrorState,
             @NonNull String defaultPackageName,
             @NonNull UserProfileGroup userProfileGroup) {
         int groupSafetyCenterEntryLevel = SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN;
@@ -898,6 +928,7 @@ final class SafetyCenterDataTracker {
                             addSafetyCenterEntry(
                                     entries,
                                     safetySource,
+                                    safetyCenterOverallStatusErrorState,
                                     defaultPackageName,
                                     false,
                                     userProfileGroup.getProfileParentUserId()));
@@ -916,6 +947,7 @@ final class SafetyCenterDataTracker {
                                 addSafetyCenterEntry(
                                         entries,
                                         safetySource,
+                                        safetyCenterOverallStatusErrorState,
                                         defaultPackageName,
                                         true,
                                         managedProfileUserId));
@@ -978,6 +1010,7 @@ final class SafetyCenterDataTracker {
     private int addSafetyCenterEntry(
             @NonNull List<SafetyCenterEntry> entries,
             @NonNull SafetySource safetySource,
+            @NonNull SafetyCenterOverallStatusErrorState safetyCenterOverallStatusErrorState,
             @NonNull String defaultPackageName,
             boolean isUserManaged,
             @UserIdInt int userId) {
@@ -987,6 +1020,8 @@ final class SafetyCenterDataTracker {
             return SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN;
         }
 
+        safetyCenterOverallStatusErrorState.mHasAtLeastOneUserVisibleError |=
+                mSafetySourceErrors.contains(SafetySourceKey.of(safetySource.getId(), userId));
         entries.add(safetyCenterEntry);
 
         return safetyCenterEntry.getSeverityLevel();
@@ -1091,12 +1126,15 @@ final class SafetyCenterDataTracker {
                         isUserManaged
                                 ? safetySource.getTitleForWorkResId()
                                 : safetySource.getTitleResId());
+        CharSequence summary =
+                mSafetySourceErrors.contains(SafetySourceKey.of(safetySource.getId(), userId))
+                        ? mSafetyCenterResourcesContext.getStringByName("refresh_error")
+                        : mSafetyCenterResourcesContext.getOptionalString(
+                                safetySource.getSummaryResId());
         return new SafetyCenterEntry.Builder(
                         SafetyCenterIds.encodeToString(safetyCenterEntryId), title)
                 .setSeverityLevel(entrySeverityLevel)
-                .setSummary(
-                        mSafetyCenterResourcesContext.getOptionalString(
-                                safetySource.getSummaryResId()))
+                .setSummary(summary)
                 .setEnabled(enabled)
                 .setPendingIntent(pendingIntent)
                 .setSeverityUnspecifiedIconType(severityUnspecifiedIconType)
@@ -1106,6 +1144,7 @@ final class SafetyCenterDataTracker {
     private void addSafetyCenterStaticEntryGroup(
             @NonNull List<SafetyCenterStaticEntryGroup> safetyCenterStaticEntryGroups,
             @NonNull SafetySourcesGroup safetySourcesGroup,
+            @NonNull SafetyCenterOverallStatusErrorState safetyCenterOverallStatusErrorState,
             @NonNull String defaultPackageName,
             @NonNull UserProfileGroup userProfileGroup) {
         List<SafetySource> safetySources = safetySourcesGroup.getSafetySources();
@@ -1116,6 +1155,7 @@ final class SafetyCenterDataTracker {
             addSafetyCenterStaticEntry(
                     staticEntries,
                     safetySource,
+                    safetyCenterOverallStatusErrorState,
                     defaultPackageName,
                     false,
                     userProfileGroup.getProfileParentUserId());
@@ -1131,6 +1171,7 @@ final class SafetyCenterDataTracker {
                 addSafetyCenterStaticEntry(
                         staticEntries,
                         safetySource,
+                        safetyCenterOverallStatusErrorState,
                         defaultPackageName,
                         true,
                         managedProfileUserId);
@@ -1146,6 +1187,7 @@ final class SafetyCenterDataTracker {
     private void addSafetyCenterStaticEntry(
             @NonNull List<SafetyCenterStaticEntry> staticEntries,
             @NonNull SafetySource safetySource,
+            @NonNull SafetyCenterOverallStatusErrorState safetyCenterOverallStatusErrorState,
             @NonNull String defaultPackageName,
             boolean isUserManaged,
             @UserIdInt int userId) {
@@ -1154,6 +1196,8 @@ final class SafetyCenterDataTracker {
         if (staticEntry == null) {
             return;
         }
+        safetyCenterOverallStatusErrorState.mHasAtLeastOneUserVisibleError |=
+                mSafetySourceErrors.contains(SafetySourceKey.of(safetySource.getId(), userId));
         staticEntries.add(staticEntry);
     }
 
@@ -1215,11 +1259,13 @@ final class SafetyCenterDataTracker {
                         isUserManaged
                                 ? safetySource.getTitleForWorkResId()
                                 : safetySource.getTitleResId());
-
+        CharSequence summary =
+                mSafetySourceErrors.contains(SafetySourceKey.of(safetySource.getId(), userId))
+                        ? mSafetyCenterResourcesContext.getStringByName("refresh_error")
+                        : mSafetyCenterResourcesContext.getOptionalString(
+                                safetySource.getSummaryResId());
         return new SafetyCenterStaticEntry.Builder(title)
-                .setSummary(
-                        mSafetyCenterResourcesContext.getOptionalString(
-                                safetySource.getSummaryResId()))
+                .setSummary(summary)
                 .setPendingIntent(pendingIntent)
                 .build();
     }
@@ -1520,5 +1566,13 @@ final class SafetyCenterDataTracker {
         public void setDismissedAt(@Nullable Instant dismissedAt) {
             mDismissedAt = dismissedAt;
         }
+    }
+
+    /**
+     * An internal mutable class to keep track of the overall {@link SafetyCenterStatus} error
+     * state; i.e. whether there is at least one user-visible entry that is showing an error.
+     */
+    private static final class SafetyCenterOverallStatusErrorState {
+        private boolean mHasAtLeastOneUserVisibleError = false;
     }
 }
