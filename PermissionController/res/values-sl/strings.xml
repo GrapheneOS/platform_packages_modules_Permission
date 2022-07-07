@@ -60,7 +60,7 @@
     <string name="review_permission_decisions_empty" msgid="8120775336417279806">"Ni nedavnih odločitev o dovoljenjih"</string>
     <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Upravljanje dostopa do podatkov koledarja, dnevnikov klicev in drugega."</string>
     <string name="granted_permission_decision" msgid="7824827491551861365">"Aplikaciji <xliff:g id="APP_NAME">%1$s</xliff:g> ste odobrili dovoljenje: <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>."</string>
-    <string name="denied_permission_decision" msgid="5308961501779563781">"Aplikaciji <xliff:g id="APP_NAME">%1$s</xliff:g> ste zavrnili dostop do dovoljenja za <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>."</string>
+    <string name="denied_permission_decision" msgid="5308961501779563781">"Aplikaciji <xliff:g id="APP_NAME">%1$s</xliff:g> ste zavrnili dovoljenje: <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>."</string>
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Danes}=1{Pred 1 dnevom}one{Pred # dnevom}two{Pred # dnevoma}few{Pred # dnevi}other{Pred # dnevi}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Onemogočanje aplikacije"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Če onemogočite to aplikacijo, Android in druge aplikacije morda ne bodo več delovali, kot bi morali. Upoštevajte, da te aplikacije ni mogoče izbrisati, ker je bila vnaprej nameščena v napravi. Če jo onemogočite, jo boste izklopili in skrili v napravi."</string>

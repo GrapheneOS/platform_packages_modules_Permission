@@ -56,9 +56,9 @@
     <string name="no_unused_apps" msgid="12809387670415295">"Бардык колдонмолор иштетилүүдө"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"Колдонулбаган колдонмолор: 0"</string>
     <string name="review_permission_decisions" msgid="309559429150613632">"Уруксаттарга байланыштуу аракеттер"</string>
-    <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Уруксаттар боюнча алынган бардык соңку чечимдерди көрүү"</string>
-    <string name="review_permission_decisions_empty" msgid="8120775336417279806">"Уруксаттар боюнча соңку алынган чечимдер жок"</string>
-    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Жылнаамадагы, чалуулар тизмесиндеги ж.б. маалыматты көрүү мүмкүнчүлүгүн башкаруу"</string>
+    <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Уруксаттар боюнча көрүлгөн соңку аракеттер"</string>
+    <string name="review_permission_decisions_empty" msgid="8120775336417279806">"Уруксаттар боюнча эч кандай аракет көрүлө элек"</string>
+    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Жылнаамадагы, чалуулар тизмесиндеги ж.б. маалыматты көрүү мүмкүнчүлүгүн тескейсиз"</string>
     <string name="granted_permission_decision" msgid="7824827491551861365">"<xliff:g id="APP_NAME">%1$s</xliff:g> колдонмосуна төмөнкүгө уруксат бердиңиз: <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="denied_permission_decision" msgid="5308961501779563781">"<xliff:g id="APP_NAME">%1$s</xliff:g> колдонмосуна төмөнкүгө өтүүгө тыюу салдыңыз: <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Бүгүн}=1{1 күн мурун}other{# күн мурун}}"</string>

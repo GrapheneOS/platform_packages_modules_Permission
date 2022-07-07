@@ -184,7 +184,7 @@
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"Permet la gestió de tots els fitxers"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Permet l\'accés només als fitxers multimèdia"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Permet sempre"</string>
-    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Permet mentre s\'utilitza l\'aplicació"</string>
+    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Permet només mentre s\'utilitza l\'aplicació"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Pregunta sempre"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"No permetis"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Ubicació exacta"</string>

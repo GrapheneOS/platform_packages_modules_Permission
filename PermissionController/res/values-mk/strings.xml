@@ -51,14 +51,14 @@
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Дозволи управување со сите датотеки"</string>
     <string name="grant_dialog_button_allow_media_only" msgid="4832877658422573832">"Дозволете пристап до датотеките со аудиовизуелни содржини"</string>
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Апликации"</string>
-    <string name="app_permissions" msgid="3369917736607944781">"Дозволи за апликацијата"</string>
+    <string name="app_permissions" msgid="3369917736607944781">"Дозволи за апликации"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Некористени апликации"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"Нема некористени апликации"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"0 некористени апликации"</string>
     <string name="review_permission_decisions" msgid="309559429150613632">"Неодамнешни одлуки за дозволи"</string>
     <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Прикажи ги сите неодамнешни одлуки за дозволи"</string>
     <string name="review_permission_decisions_empty" msgid="8120775336417279806">"Нема неодамнешни одлуки за дозволи"</string>
-    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"да управува со пристапот до податоци од календарот, евиденцијата на повици и др."</string>
+    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Управувајте со пристапот до податоци од календарот, евиденцијата на повици и др."</string>
     <string name="granted_permission_decision" msgid="7824827491551861365">"Одобривте пристап за <xliff:g id="APP_NAME">%1$s</xliff:g> до <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="denied_permission_decision" msgid="5308961501779563781">"Не одобривте пристап за <xliff:g id="APP_NAME">%1$s</xliff:g> до <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Денес}=1{Пред 1 ден}one{Пред # ден}other{Пред # дена}}"</string>
