@@ -201,14 +201,14 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
      * Gets a string resource by name from the Safety Center resources APK, and returns an empty
      * string if the resource does not exist.
      */
-    @Nullable
+    @NonNull
     public String getStringByName(@NonNull String name) {
         int id = getStringRes(name);
         return emptyIfNamedResourceIsNull(name, getOptionalString(id));
     }
 
     /** Same as {@link #getStringByName(String)} but with the given {@code formatArgs}. */
-    @Nullable
+    @NonNull
     public String getStringByName(@NonNull String name, Object... formatArgs) {
         int id = getStringRes(name);
         return emptyIfNamedResourceIsNull(name, getOptionalString(id, formatArgs));
