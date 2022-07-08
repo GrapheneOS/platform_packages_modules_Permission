@@ -271,6 +271,7 @@
 
         <activity android:name="com.android.permissioncontroller.permission.ui.SafetyCenterQsActivity"
                   android:excludeFromRecents="true"
+                  android:launchMode="singleInstance"
                   android:exported="true"
                   android:theme="@style/Theme.SafetyCenterQs"
                   android:permission="android.permission.REVOKE_RUNTIME_PERMISSIONS">
