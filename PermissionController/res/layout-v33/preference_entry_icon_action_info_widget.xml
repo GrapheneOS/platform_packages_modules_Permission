@@ -14,13 +14,9 @@
   ~ limitations under the License.
   -->
 
-<resources>
-    <dimen name="safety_center_card_margin">2dp</dimen>
-    <dimen name="safety_center_list_margin">16dp</dimen>
-    <dimen name="safety_center_action_button_list_margin">16dp</dimen>
-    <dimen name="safety_center_indicator_card_icon_margin">28dp</dimen>
-    <dimen name="safety_center_indicator_expand_button_background">24dp</dimen>
-    <dimen name="safety_center_top_action_button_margin">24dp</dimen>
-    <dimen name="safety_center_issue_card_dismiss_button_touch_target_size">48dp</dimen>
-    <dimen name="safety_center_entry_padding_end">24dp</dimen>
-</resources>
+<ImageButton
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/icon_action_button"
+    android:src="@drawable/ic_settings_info"
+    android:contentDescription="@string/safety_center_info_label"
+    style="@style/SafetyCenter.EntryCard.IconAction"/>
