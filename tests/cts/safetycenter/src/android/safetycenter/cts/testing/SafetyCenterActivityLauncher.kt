@@ -16,12 +16,15 @@
 
 package android.safetycenter.cts.testing
 
-import android.os.Bundle
+import android.Manifest.permission.REVOKE_RUNTIME_PERMISSIONS
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_SAFETY_CENTER
+import android.content.Intent.ACTION_VIEW_SAFETY_CENTER_QS
 import android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
+import android.os.Bundle
+import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermissionIdentity
 import android.safetycenter.cts.testing.WaitForBroadcastIdle.waitForBroadcastIdle
 import com.android.compatibility.common.util.UiAutomatorUtils
 
@@ -30,23 +33,36 @@ object SafetyCenterActivityLauncher {
 
     /** Launches the SafetyCenter activity and exits it once [block] completes. */
     fun Context.launchSafetyCenterActivity(intentExtras: Bundle? = null, block: () -> Unit) {
-        val launchSafetyCenterIntent =
-            Intent(ACTION_SAFETY_CENTER)
-                .addFlags(FLAG_ACTIVITY_NEW_TASK)
-                .addFlags(FLAG_ACTIVITY_CLEAR_TASK)
-
-        intentExtras?.let {
-            launchSafetyCenterIntent.putExtras(it)
-        }
+        val launchSafetyCenterIntent = createIntent(ACTION_SAFETY_CENTER, intentExtras)
 
         // Wait for the PermissionController's SafetyCenterReceiver broadcast to be fully dispatched
         // prior to opening the SafetyCenterActivity. This shouldn't be necessary but there seems
         // to some racyness when enabling the SafetyCenter QS tile while opening the
         // SafetyCenterActivity which causes the window to be removed.
         waitForBroadcastIdle()
-        val uiDevice = UiAutomatorUtils.getUiDevice()
-        uiDevice.waitForIdle()
+        UiAutomatorUtils.getUiDevice().waitForIdle()
         startActivity(launchSafetyCenterIntent)
+        executeBlockAndExit(block)
+    }
+
+    /** Launches the SafetyCenter Quick Settings activity and exits it once [block] completes. */
+    fun Context.launchSafetyCenterQsActivity(intentExtras: Bundle? = null, block: () -> Unit) {
+        val launchSafetyCenterQsIntent = createIntent(ACTION_VIEW_SAFETY_CENTER_QS, intentExtras)
+        UiAutomatorUtils.getUiDevice().waitForIdle()
+        callWithShellPermissionIdentity(
+            { startActivity(launchSafetyCenterQsIntent) }, REVOKE_RUNTIME_PERMISSIONS)
+        executeBlockAndExit(block)
+    }
+
+    private fun createIntent(intentAction: String, intentExtras: Bundle?): Intent {
+        val launchIntent =
+            Intent(intentAction).addFlags(FLAG_ACTIVITY_NEW_TASK).addFlags(FLAG_ACTIVITY_CLEAR_TASK)
+        intentExtras?.let { launchIntent.putExtras(it) }
+        return launchIntent
+    }
+
+    private fun executeBlockAndExit(block: () -> Unit) {
+        val uiDevice = UiAutomatorUtils.getUiDevice()
         uiDevice.waitForIdle()
         block()
         uiDevice.pressBack()
