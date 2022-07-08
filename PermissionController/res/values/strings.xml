@@ -819,6 +819,15 @@
     <!-- The notification content for the hibernation reminder notification [CHAR LIMIT=none] -->
     <string name="unused_apps_notification_content">Permissions and temporary files have been removed and notifications were stopped. Tap to review.</string>
 
+    <!-- TODO(b/237446729): The safety center card title for apps being auto-revoked [DO NOT TRANSLATE] [CHAR LIMIT=60] -->
+    <string name="unused_apps_safety_center_card_title">App permissions removed</string>
+
+    <!-- TODO(b/237446729): The safety center card summary for apps being auto-revoked [DO NOT TRANSLATE] [CHAR LIMIT=60] -->
+    <string name="unused_apps_safety_center_card_content">To protect your privacy, permissions from some apps that you haven\u2019t used in a few months have been removed.</string>
+
+    <!-- TODO(b/237446729): The action on the auto-revoked card to see unused apps [DO NOT TRANSLATE] [CHAR LIMIT=60] -->
+    <string name="unused_apps_safety_center_action_title">See unused apps</string>
+
     <!-- The notification title for the notification that shows up at the end of a drive where the user made a permission decision [CHAR LIMIT=60] -->
     <string name="post_drive_permission_decision_reminder_title">Check recent permissions</string>
 
