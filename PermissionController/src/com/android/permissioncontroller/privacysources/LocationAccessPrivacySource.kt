@@ -38,6 +38,6 @@ class LocationAccessPrivacySource : PrivacySource {
         refreshEvent: RefreshEvent
     ) {
         val safetyRefreshEvent = getSafetyCenterEvent(refreshEvent, intent)
-        LocationAccessCheck(context, null).rescanAndPushSafetyCenterData(safetyRefreshEvent)
+        LocationAccessCheck(context, null).rescanAndPushSafetyCenterData(safetyRefreshEvent, null)
     }
 }
