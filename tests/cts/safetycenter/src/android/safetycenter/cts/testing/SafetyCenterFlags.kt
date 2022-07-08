@@ -33,6 +33,12 @@ object SafetyCenterFlags {
     private const val PROPERTY_SAFETY_CENTER_ENABLED = "safety_center_is_enabled"
 
     /**
+     * Flag that determines whether we should show error entries for sources that timeout when
+     * refreshing them.
+     */
+    private const val PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT = "show_error_entries_on_timeout"
+
+    /**
      * Flag that determines the time for which a Safety Center refresh is allowed to wait for a
      * source to respond to a refresh request before timing out and marking the refresh as finished.
      */
@@ -75,6 +81,16 @@ object SafetyCenterFlags {
         get() = readFlag(PROPERTY_SAFETY_CENTER_ENABLED, defaultValue = false) { it.toBoolean() }
         set(value) {
             writeFlag(PROPERTY_SAFETY_CENTER_ENABLED, value.toString())
+        }
+
+    /** A property that allows getting and modifying [PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT]. */
+    var showErrorEntriesOnTimeout: Boolean
+        get() =
+            readFlag(PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT, defaultValue = false) {
+                it.toBoolean()
+            }
+        set(value) {
+            writeFlag(PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT, value.toString())
         }
 
     /**
@@ -151,6 +167,7 @@ object SafetyCenterFlags {
                 DeviceConfig.getProperties(
                     NAMESPACE_PRIVACY,
                     PROPERTY_SAFETY_CENTER_ENABLED,
+                    PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT,
                     PROPERTY_SAFETY_CENTER_REFRESH_SOURCE_TIMEOUT,
                     PROPERTY_SAFETY_CENTER_RESOLVE_ACTION_TIMEOUT,
                     PROPERTY_UNTRACKED_SOURCES)

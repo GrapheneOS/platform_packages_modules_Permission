@@ -141,6 +141,12 @@ class SafetyCenterManagerTest {
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_OK)
             .build()
 
+    private val safetyCenterStatusOkScanning =
+        SafetyCenterStatus.Builder("Scanning", "Checking device status…")
+            .setSeverityLevel(OVERALL_SEVERITY_LEVEL_OK)
+            .setRefreshStatus(REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS)
+            .build()
+
     private val safetyCenterStatusOkOneAlert =
         SafetyCenterStatus.Builder("Looks good", "1 alert")
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_OK)
@@ -232,6 +238,15 @@ class SafetyCenterManagerTest {
                     .setSummary("OK")
                     .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
                     .build()))
+
+    private val safetyCenterDataFromConfigScanning =
+        SafetyCenterData(
+            safetyCenterStatusOkScanning,
+            emptyList(),
+            listOf(
+                SafetyCenterEntryOrGroup(
+                    safetyCenterEntryDefaultBuilder(SINGLE_SOURCE_ID).build())),
+            emptyList())
 
     private val safetyCenterDataFromConfig =
         SafetyCenterData(
@@ -396,7 +411,7 @@ class SafetyCenterManagerTest {
         if (!shouldRunTests) {
             return
         }
-        safetyCenterCtsHelper.setEnabled(true)
+        safetyCenterCtsHelper.setup()
     }
 
     @After
@@ -1276,7 +1291,6 @@ class SafetyCenterManagerTest {
     @Test
     fun refreshSafetySources_withEmptyUntrackedSourceConfigAndSourceThatTimesOut_timesOut() {
         SafetyCenterFlags.refreshTimeout = TIMEOUT_SHORT
-        SafetyCenterFlags.untrackedSources = emptySet()
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         // SINGLE_SOURCE_ID will timeout
         val listener = safetyCenterCtsHelper.addListener()
@@ -1287,6 +1301,49 @@ class SafetyCenterManagerTest {
         val safetyCenterErrorDetailsFromListener = listener.receiveSafetyCenterErrorDetails()
         assertThat(safetyCenterErrorDetailsFromListener)
             .isEqualTo(SafetyCenterErrorDetails("Couldn’t refresh status"))
+    }
+
+    @Test
+    fun refreshSafetySources_withShowEntriesOnTimeout_marksSafetySourceAsError() {
+        SafetyCenterFlags.refreshTimeout = TIMEOUT_SHORT
+        SafetyCenterFlags.showErrorEntriesOnTimeout = true
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        val listener = safetyCenterCtsHelper.addListener()
+
+        safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+            REFRESH_REASON_RESCAN_BUTTON_CLICK)
+
+        val safetyCenterBeforeTimeout = listener.receiveSafetyCenterData()
+        assertThat(safetyCenterBeforeTimeout).isEqualTo(safetyCenterDataFromConfigScanning)
+        val safetyCenterDataAfterTimeout = listener.receiveSafetyCenterData()
+        assertThat(safetyCenterDataAfterTimeout).isEqualTo(safetyCenterDataOkReviewError)
+        assertFailsWith(TimeoutCancellationException::class) {
+            listener.receiveSafetyCenterErrorDetails(TIMEOUT_SHORT)
+        }
+    }
+
+    @Test
+    fun refreshSafetySources_withShowEntriesOnTimeout_stopsShowingErrorWhenTryingAgain() {
+        SafetyCenterFlags.refreshTimeout = TIMEOUT_SHORT
+        SafetyCenterFlags.showErrorEntriesOnTimeout = true
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        val listener = safetyCenterCtsHelper.addListener()
+        safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+            REFRESH_REASON_RESCAN_BUTTON_CLICK)
+        listener.receiveSafetyCenterData()
+        listener.receiveSafetyCenterData()
+
+        SafetyCenterFlags.refreshTimeout = TIMEOUT_LONG
+        SafetySourceReceiver.safetySourceData[
+                SafetySourceDataKey(REFRESH_FETCH_FRESH_DATA, SINGLE_SOURCE_ID)] =
+            safetySourceCtsData.information
+        safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+            REFRESH_REASON_RESCAN_BUTTON_CLICK)
+
+        val safetyCenterDataWhenTryingAgain = listener.receiveSafetyCenterData()
+        assertThat(safetyCenterDataWhenTryingAgain).isEqualTo(safetyCenterDataFromConfigScanning)
+        val safetyCenterDataWhenFinishingRefresh = listener.receiveSafetyCenterData()
+        assertThat(safetyCenterDataWhenFinishingRefresh).isEqualTo(safetyCenterDataOk)
     }
 
     @Test
