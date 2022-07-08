@@ -204,6 +204,16 @@ final class UserProfileGroup {
         return false;
     }
 
+    /** Returns whether the given {@code userId} is associated with a running managed profile. */
+    boolean isManagedUserRunning(@UserIdInt int userId) {
+        for (int i = 0; i < mManagedRunningProfilesUserIds.length; i++) {
+            if (userId == mManagedRunningProfilesUserIds[i]) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

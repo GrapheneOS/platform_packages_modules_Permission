@@ -20,6 +20,7 @@ import android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.os.UserManager
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyCenterManager.ACTION_REFRESH_SAFETY_SOURCES
 import android.safetycenter.SafetyCenterManager.ACTION_SAFETY_CENTER_ENABLED_CHANGED
@@ -51,6 +52,12 @@ import kotlinx.coroutines.channels.Channel.Factory.UNLIMITED
 /** Broadcast receiver used for testing broadcasts sent to safety sources. */
 class SafetySourceReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent?) {
+        val userManager = context.getSystemService(UserManager::class.java)!!
+        if (!userManager.isSystemUser) {
+            // Ignore multi-users calls to this receiver for now, as we're not testing multi-users
+            // broadcasts. When we do, we'll ensure that they don't leak between the tests.
+            return
+        }
         if (intent == null) {
             throw IllegalArgumentException("Received null intent")
         }
