@@ -50,6 +50,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.safetycenter.ui.model.LiveSafetyCenterViewModelFactory;
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel;
+import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -133,8 +134,8 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
 
         ParsedSafetyCenterIntent parsedSafetyCenterIntent =
                 ParsedSafetyCenterIntent.toSafetyCenterIntent(getActivity().getIntent());
-        mCollapsableIssuesCardHelper
-                .setFocusedIssueKey(parsedSafetyCenterIntent.getSafetyCenterIssueKey());
+        mCollapsableIssuesCardHelper.setFocusedIssueKey(
+                parsedSafetyCenterIntent.getSafetyCenterIssueKey());
 
         // Set quick settings state first and allow restored state to override if necessary
         mCollapsableIssuesCardHelper.setQuickSettingsState(
@@ -202,26 +203,24 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
             updateSafetyEntries(context, data.getEntriesOrGroups());
             updateStaticSafetyEntries(context, data.getStaticEntryGroups());
         } else {
-            setPendingActionState(data);
+            SafetyCenterResourcesContext safetyCenterResourcesContext =
+                    new SafetyCenterResourcesContext(context);
+            boolean hasSettingsToReview =
+                    safetyCenterResourcesContext
+                            .getStringByName("overall_severity_level_ok_review_summary")
+                            .equals(data.getStatus().getSummary().toString());
+            setPendingActionState(hasSettingsToReview);
         }
     }
 
-    /**
-     * Determine if there are pending actions and set pending actions state
-     */
-    private void setPendingActionState(SafetyCenterData data) {
-        int overallSeverityLevel = data.getStatus().getSeverityLevel();
-        // LINT.IfChange(pendingActionsQs)
-        int maxEntrySeverityLevel = getMaxSeverityLevel(data.getEntriesOrGroups());
-        if (overallSeverityLevel == SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK
-                && maxEntrySeverityLevel > SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK) {
+    /** Determine if there are pending actions and set pending actions state */
+    private void setPendingActionState(boolean hasSettingsToReview) {
+        if (hasSettingsToReview) {
             mSafetyStatusPreference.setHasPendingActions(
                     true, l -> mViewModel.navigateToSafetyCenter(this));
         } else {
-            mSafetyStatusPreference.setHasPendingActions(
-                    false, null);
+            mSafetyStatusPreference.setHasPendingActions(false, null);
         }
-        // LINT.ThenChange(packages/modules/Permission/service/java/com/android/safetycenter/SafetyCenterDataTracker.java:pendingActions)
     }
 
     private void displayErrorDetails(@Nullable SafetyCenterErrorDetails errorDetails) {
@@ -265,28 +264,6 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
                 addGroupEntries(context, group, isFirstElement, isLastElement);
             }
         }
-    }
-
-    private int getMaxSeverityLevel(List<SafetyCenterEntryOrGroup> entriesOrGroups) {
-        int maxEntrySeverityLevel = SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN;
-        // LINT.IfChange(maxSeverityCalculationQs)
-        for (int i = 0, size = entriesOrGroups.size(); i < size; i++) {
-            SafetyCenterEntryOrGroup entryOrGroup = entriesOrGroups.get(i);
-            SafetyCenterEntry entry = entryOrGroup.getEntry();
-            SafetyCenterEntryGroup group = entryOrGroup.getEntryGroup();
-
-            if (entry != null) {
-                maxEntrySeverityLevel = Math.max(maxEntrySeverityLevel, entry.getSeverityLevel());
-            } else if (group != null) {
-                List<SafetyCenterEntry> entries = group.getEntries();
-                for (SafetyCenterEntry groupEntry : entries) {
-                    maxEntrySeverityLevel =
-                            Math.max(maxEntrySeverityLevel, groupEntry.getSeverityLevel());
-                }
-            }
-        }
-        return maxEntrySeverityLevel;
-        // LINT.ThenChange(packages/modules/Permission/service/java/com/android/safetycenter/SafetyCenterDataTracker.java:maxSeverityCalculation)
     }
 
     private void addTopLevelEntry(

@@ -57,7 +57,7 @@ class XmlConfigTest {
         if (!shouldRunTests) {
             return
         }
-        safetyCenterCtsHelper.setEnabled(true)
+        safetyCenterCtsHelper.setup()
     }
 
     @After

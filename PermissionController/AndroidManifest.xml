@@ -97,12 +97,18 @@
             </intent-filter>
         </receiver>
 
+        <receiver android:name="com.android.permissioncontroller.hibernation.DismissHandler"
+            android:enabled="@bool/is_at_least_t"/>
+
         <receiver android:name="com.android.permissioncontroller.permission.service.LocationAccessCheck$NotificationDeleteHandler" />
 
         <receiver android:name="com.android.permissioncontroller.permission.service.LocationAccessCheck$NotificationClickHandler" />
 
         <receiver android:name="com.android.permissioncontroller.permission.service.LocationAccessCheck$SafetyCenterPrimaryActionHandler"
                   android:enabled="@bool/is_at_least_t" />
+
+        <receiver android:name="com.android.permissioncontroller.permission.service.LocationAccessCheck$WarningCardDismissalHandler"
+                  android:enabled="@bool/is_at_least_t"/>
 
         <receiver android:name="com.android.permissioncontroller.permission.service.LocationAccessCheck$PackageResetHandler"
                   android:exported="true">
@@ -268,6 +274,7 @@
 
         <activity android:name="com.android.permissioncontroller.permission.ui.SafetyCenterQsActivity"
                   android:excludeFromRecents="true"
+                  android:launchMode="singleInstance"
                   android:exported="true"
                   android:theme="@style/Theme.SafetyCenterQs"
                   android:permission="android.permission.REVOKE_RUNTIME_PERMISSIONS">

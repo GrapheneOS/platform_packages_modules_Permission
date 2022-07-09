@@ -22,6 +22,7 @@ import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetySourceData
 import android.safetycenter.config.SafetyCenterConfig
 import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_STATIC
+import android.safetycenter.cts.testing.Coroutines.TIMEOUT_LONG
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.addOnSafetyCenterDataChangedListenerWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.clearAllSafetySourceDataForTestsWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.clearSafetyCenterConfigForTestsWithPermission
@@ -42,6 +43,18 @@ class SafetyCenterCtsHelper(private val context: Context) {
     private val listeners = mutableListOf<SafetyCenterCtsListener>()
 
     private var currentConfigContainsCtsSource = false
+
+    /**
+     * Sets up the state of Safety Center by enabling it on the device and setting default flag
+     * values. To be called before each test.
+     */
+    fun setup() {
+        SafetyCenterFlags.showErrorEntriesOnTimeout = false
+        SafetyCenterFlags.resolveActionTimeout = TIMEOUT_LONG
+        SafetyCenterFlags.refreshTimeout = TIMEOUT_LONG
+        SafetyCenterFlags.untrackedSources = emptySet()
+        setEnabled(true)
+    }
 
     /** Resets the state of Safety Center. To be called after each test. */
     fun reset() {

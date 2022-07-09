@@ -699,7 +699,7 @@ public class LocationAccessCheck {
                 .setStyle(new Notification.BigTextStyle().bigText(notificationContent))
                 .setSmallIcon(smallIconResId)
                 .setColor(mContext.getColor(colorResId))
-                .setDeleteIntent(createDismissIntent(pkgName, sessionId, uid))
+                .setDeleteIntent(createNotificationDismissIntent(pkgName, sessionId, uid))
                 .setContentIntent(createNotificationClickIntent(pkgName, user, sessionId))
                 .setAutoCancel(true);
 
@@ -976,11 +976,11 @@ public class LocationAccessCheck {
                 SafetySourceData.SEVERITY_LEVEL_INFORMATION, id).setSubtitle(
                 pkgLabel).addAction(revokeAction).addAction(
                 viewLocationUsageAction).setOnDismissPendingIntent(
-                createDismissIntent(pkgName, sessionId, pkgInfo.applicationInfo.uid));
+                createWarningCardDismissalIntent(pkgName, sessionId, pkgInfo.applicationInfo.uid));
         return b.build();
     }
 
-    private PendingIntent createDismissIntent(String pkgName, long sessionId, int uid) {
+    private PendingIntent createNotificationDismissIntent(String pkgName, long sessionId, int uid) {
         Intent dismissIntent = new Intent(mContext, NotificationDeleteHandler.class);
         dismissIntent.putExtra(EXTRA_PACKAGE_NAME, pkgName);
         dismissIntent.putExtra(EXTRA_SESSION_ID, sessionId);
@@ -1005,6 +1005,18 @@ public class LocationAccessCheck {
         }
         clickIntent.addFlags(FLAG_ACTIVITY_NEW_TASK | FLAG_ACTIVITY_MULTIPLE_TASK);
         return PendingIntent.getActivity(mContext, 0, clickIntent,
+                FLAG_ONE_SHOT | FLAG_UPDATE_CURRENT | FLAG_IMMUTABLE);
+    }
+
+    private PendingIntent createWarningCardDismissalIntent(String pkgName, long sessionId,
+            int uid) {
+        Intent dismissIntent = new Intent(mContext, WarningCardDismissalHandler.class);
+        dismissIntent.putExtra(EXTRA_PACKAGE_NAME, pkgName);
+        dismissIntent.putExtra(EXTRA_SESSION_ID, sessionId);
+        dismissIntent.putExtra(EXTRA_UID, uid);
+        dismissIntent.putExtra(EXTRA_USER, getUserHandleForUid(uid));
+        dismissIntent.setFlags(FLAG_RECEIVER_FOREGROUND);
+        return PendingIntent.getBroadcast(mContext, 0, dismissIntent,
                 FLAG_ONE_SHOT | FLAG_UPDATE_CURRENT | FLAG_IMMUTABLE);
     }
 
@@ -1214,6 +1226,26 @@ public class LocationAccessCheck {
 
     private static String createLocationRevokeActionId(String packageName) {
         return REVOKE_LOCATION_ACCESS_ID_PREFIX + packageName;
+    }
+
+    /**
+     * Handle the case where the warning card is dismissed by the user in Safety center
+     */
+    public static class WarningCardDismissalHandler extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String pkg = getStringExtraSafe(intent, EXTRA_PACKAGE_NAME);
+            UserHandle user = getParcelableExtraSafe(intent, EXTRA_USER);
+            long sessionId = intent.getLongExtra(EXTRA_SESSION_ID, INVALID_SESSION_ID);
+            int uid = intent.getIntExtra(EXTRA_UID, -1);
+            Log.v(LOG_TAG,
+                    "Location access check warning card dismissed with sessionId=" + sessionId + ""
+                            + " uid=" + uid + " pkgName=" + pkg);
+
+            LocationAccessCheck locationAccessCheck = new LocationAccessCheck(context, null);
+            locationAccessCheck.markAsNotified(pkg, user);
+            locationAccessCheck.cancelBackgroundAccessWarningNotification(pkg, user);
+        }
     }
 
     /**

@@ -54,6 +54,7 @@ import android.safetycenter.SafetySourceErrorDetails;
 import android.safetycenter.SafetySourceIssue;
 import android.safetycenter.config.SafetyCenterConfig;
 import android.text.TextUtils;
+import android.util.ArraySet;
 import android.util.Log;
 
 import androidx.annotation.Keep;
@@ -97,6 +98,13 @@ public final class SafetyCenterService extends SystemService {
 
     /** Phenotype flag that determines whether SafetyCenter is enabled. */
     private static final String PROPERTY_SAFETY_CENTER_ENABLED = "safety_center_is_enabled";
+
+    /**
+     * Phenotype flag that determines whether we should show error entries for sources that timeout
+     * when refreshing them.
+     */
+    private static final String PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT =
+            "show_error_entries_on_timeout";
 
     /**
      * Device Config flag that determines the time for which a Safety Center refresh is allowed to
@@ -333,6 +341,7 @@ public final class SafetyCenterService extends SystemService {
 
             synchronized (mApiLock) {
                 broadcasts = mSafetyCenterConfigReader.getBroadcasts();
+                mSafetyCenterDataTracker.clearSafetySourceErrors();
                 refreshBroadcastId =
                         mSafetyCenterRefreshTracker.reportRefreshInProgress(
                                 refreshReason, userProfileGroup);
@@ -621,7 +630,7 @@ public final class SafetyCenterService extends SystemService {
         }
 
         private boolean isApiEnabled() {
-            return canUseSafetyCenter() && getSafetyCenterEnabledProperty();
+            return canUseSafetyCenter() && getSafetyCenterEnabled();
         }
 
         private void enforceAnyCallingOrSelfPermissions(
@@ -721,7 +730,7 @@ public final class SafetyCenterService extends SystemService {
         }
 
         private void setInitialState() {
-            mSafetyCenterEnabled = getSafetyCenterEnabledProperty();
+            mSafetyCenterEnabled = getSafetyCenterEnabled();
         }
 
         private void onSafetyCenterEnabledChanged(boolean safetyCenterEnabled) {
@@ -770,16 +779,25 @@ public final class SafetyCenterService extends SystemService {
         public void run() {
             synchronized (mApiLock) {
                 mSafetyCenterTimeouts.remove(this);
-                boolean hasClearedRefresh =
+                ArraySet<SafetySourceKey> stillInFlight =
                         mSafetyCenterRefreshTracker.clearRefresh(mRefreshBroadcastId);
-                if (!hasClearedRefresh) {
+                if (stillInFlight == null) {
                     return;
+                }
+                boolean showErrorEntriesOnTimeout = getShowErrorEntriesOnTimeout();
+                if (showErrorEntriesOnTimeout) {
+                    for (int i = 0; i < stillInFlight.size(); i++) {
+                        mSafetyCenterDataTracker.setSafetySourceError(stillInFlight.valueAt(i));
+                    }
                 }
                 mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
                         mUserProfileGroup,
                         true,
-                        new SafetyCenterErrorDetails(
-                                mSafetyCenterResourcesContext.getStringByName("refresh_timeout")));
+                        showErrorEntriesOnTimeout
+                                ? null
+                                : new SafetyCenterErrorDetails(
+                                        mSafetyCenterResourcesContext.getStringByName(
+                                                "refresh_timeout")));
             }
 
             Log.v(
@@ -865,7 +883,7 @@ public final class SafetyCenterService extends SystemService {
         return mDeviceSupportsSafetyCenter && mConfigAvailable;
     }
 
-    private boolean getSafetyCenterEnabledProperty() {
+    private boolean getSafetyCenterEnabled() {
         // This call requires the READ_DEVICE_CONFIG permission.
         final long callingId = Binder.clearCallingIdentity();
         try {
@@ -878,22 +896,42 @@ public final class SafetyCenterService extends SystemService {
         }
     }
 
-    @GuardedBy("mApiLock")
-    private void clearDataLocked() {
-        mSafetyCenterDataTracker.clear();
-        mSafetyCenterTimeouts.clear();
-        mSafetyCenterRefreshTracker.clearRefresh();
-        scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked();
+    private boolean getShowErrorEntriesOnTimeout() {
+        // This call requires the READ_DEVICE_CONFIG permission.
+        final long callingId = Binder.clearCallingIdentity();
+        try {
+            return DeviceConfig.getBoolean(
+                    DeviceConfig.NAMESPACE_PRIVACY, PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT, false);
+        } finally {
+            Binder.restoreCallingIdentity(callingId);
+        }
     }
 
-    private void onRemoveUser(@UserIdInt int userId) {
-        UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
-        synchronized (mApiLock) {
-            mSafetyCenterDataTracker.clearForUser(userId);
-            mSafetyCenterListeners.clearForUser(userId);
-            mSafetyCenterRefreshTracker.clearRefreshForUser(userId);
-            mSafetyCenterListeners.deliverUpdateForUserProfileGroup(userProfileGroup, true, null);
-            scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked();
+    private Duration getRefreshTimeout() {
+        // This call requires the READ_DEVICE_CONFIG permission.
+        final long callingId = Binder.clearCallingIdentity();
+        try {
+            return Duration.ofMillis(
+                    DeviceConfig.getLong(
+                            DeviceConfig.NAMESPACE_PRIVACY,
+                            PROPERTY_REFRESH_SOURCE_TIMEOUT_MILLIS,
+                            REFRESH_SOURCE_TIMEOUT_DEFAULT_DURATION.toMillis()));
+        } finally {
+            Binder.restoreCallingIdentity(callingId);
+        }
+    }
+
+    private Duration getResolvingActionTimeout() {
+        // This call requires the READ_DEVICE_CONFIG permission.
+        final long callingId = Binder.clearCallingIdentity();
+        try {
+            return Duration.ofMillis(
+                    DeviceConfig.getLong(
+                            DeviceConfig.NAMESPACE_PRIVACY,
+                            PROPERTY_RESOLVING_ACTION_TIMEOUT_MILLIS,
+                            RESOLVING_ACTION_TIMEOUT_DEFAULT_DURATION.toMillis()));
+        } finally {
+            Binder.restoreCallingIdentity(callingId);
         }
     }
 
@@ -921,39 +959,14 @@ public final class SafetyCenterService extends SystemService {
                         null);
     }
 
-    /**
-     * Returns the time for which a Safety Center refresh is allowed to wait for a source to respond
-     * to a refresh request before timing out and marking the refresh as finished.
-     */
-    private Duration getRefreshTimeout() {
-        // This call requires the READ_DEVICE_CONFIG permission.
-        final long callingId = Binder.clearCallingIdentity();
-        try {
-            return Duration.ofMillis(
-                    DeviceConfig.getLong(
-                            DeviceConfig.NAMESPACE_PRIVACY,
-                            PROPERTY_REFRESH_SOURCE_TIMEOUT_MILLIS,
-                            REFRESH_SOURCE_TIMEOUT_DEFAULT_DURATION.toMillis()));
-        } finally {
-            Binder.restoreCallingIdentity(callingId);
-        }
-    }
-
-    /**
-     * Returns the time for which Safety Center will wait for a source to respond to a resolving
-     * action before timing out.
-     */
-    private Duration getResolvingActionTimeout() {
-        // This call requires the READ_DEVICE_CONFIG permission.
-        final long callingId = Binder.clearCallingIdentity();
-        try {
-            return Duration.ofMillis(
-                    DeviceConfig.getLong(
-                            DeviceConfig.NAMESPACE_PRIVACY,
-                            PROPERTY_RESOLVING_ACTION_TIMEOUT_MILLIS,
-                            RESOLVING_ACTION_TIMEOUT_DEFAULT_DURATION.toMillis()));
-        } finally {
-            Binder.restoreCallingIdentity(callingId);
+    private void onRemoveUser(@UserIdInt int userId) {
+        UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
+        synchronized (mApiLock) {
+            mSafetyCenterDataTracker.clearForUser(userId);
+            mSafetyCenterListeners.clearForUser(userId);
+            mSafetyCenterRefreshTracker.clearRefreshForUser(userId);
+            mSafetyCenterListeners.deliverUpdateForUserProfileGroup(userProfileGroup, true, null);
+            scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked();
         }
     }
 
@@ -1007,5 +1020,13 @@ public final class SafetyCenterService extends SystemService {
         File dataDirectory = apexEnvironment.getDeviceProtectedDataDir();
         // It should resolve to /data/misc/apexdata/com.android.permission/safety_center_issues.xml
         return new File(dataDirectory, SAFETY_CENTER_ISSUES_CACHE_FILE_NAME);
+    }
+
+    @GuardedBy("mApiLock")
+    private void clearDataLocked() {
+        mSafetyCenterDataTracker.clear();
+        mSafetyCenterTimeouts.clear();
+        mSafetyCenterRefreshTracker.clearRefresh();
+        scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked();
     }
 }
