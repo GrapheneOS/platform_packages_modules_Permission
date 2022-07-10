@@ -57,5 +57,8 @@
 
     <!-- An error shown to the user when we failed to refresh the status of a Safety Center entry [CHAR LIMIT=60] -->
     <string name="refresh_error">Couldn\’t check status</string>
+
+    <!-- The summary for sources supporting work profile shown to the user in quiet mode. [CHAR LIMIT=NONE] -->
+    <string name="work_profile_paused">Work profile is paused</string>
 </resources>
 
