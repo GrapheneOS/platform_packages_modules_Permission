@@ -16,7 +16,6 @@
 
 <safety-center-config>
     <safety-sources-config>
-        <!-- TODO(b/214567659): Finalize base XML config -->
         <safety-sources-group
             id="AndroidLockScreenSources"
             title="@com.android.safetycenter.resources:string/lock_screen_sources_title"
@@ -28,14 +27,16 @@
                 title="@com.android.safetycenter.resources:string/lock_screen_title"
                 summary="@com.android.safetycenter.resources:string/lock_screen_summary_disabled"
                 searchTerms="@com.android.safetycenter.resources:string/lock_screen_search_terms"
-                initialDisplayState="disabled"/>
+                initialDisplayState="disabled"
+                refreshOnPageOpenAllowed="true"/>
             <dynamic-safety-source
                 id="AndroidBiometrics"
                 packageName="com.android.settings"
                 profile="primary_profile_only"
                 title="@com.android.safetycenter.resources:string/biometrics_title"
                 searchTerms="@com.android.safetycenter.resources:string/biometrics_search_terms"
-                initialDisplayState="hidden"/>
+                initialDisplayState="hidden"
+                refreshOnPageOpenAllowed="true"/>
         </safety-sources-group>
         <safety-sources-group
             id="AndroidPrivacySources"
@@ -91,7 +92,8 @@
                 id="AndroidWorkPolicyInfo"
                 packageName="com.android.permissioncontroller"
                 profile="primary_profile_only"
-                initialDisplayState="hidden"/>
+                initialDisplayState="hidden"
+                refreshOnPageOpenAllowed="true"/>
             <static-safety-source
                 id="AndroidAdvancedSecurity"
                 profile="primary_profile_only"
