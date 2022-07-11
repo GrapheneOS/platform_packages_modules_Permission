@@ -28,11 +28,12 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.ParcelFileDescriptor;
 import android.os.UserHandle;
 import android.os.storage.StorageManager;
 import android.os.storage.StorageVolume;
 import android.provider.DocumentsContract;
-import android.provider.MediaStore;
+import android.system.Os;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
@@ -179,34 +180,34 @@ public class StorageScopesUtils {
     }
 
     static String fileUriToPath(Context ctx, Uri uri, List<StorageVolume> cachedVolumes) {
-        ContentResolver cr = ctx.getContentResolver();
+        String unverifiedPath = null;
 
-        /*
-        To convert Uri to a file path, both Uri permission and storage access permission are needed.
-        PermissionController doesn't have the latter. MediaProvider has it, but doesn't have the Uri
-        permission, so grant it temporarily.
-         */
+        try (ParcelFileDescriptor pfd = ctx.getContentResolver().openFile(uri, "r", null)) {
+            String fdPath = "/proc/self/fd/" + pfd.getFd();
 
-        final int grantFlags = Intent.FLAG_GRANT_READ_URI_PERMISSION;
-        ctx.grantUriPermission(MEDIA_PROVIDER_PACKAGE, uri, grantFlags);
+            String realpath = Os.readlink(fdPath);
 
-        Bundle res = null;
-        try {
-            res = cr.call(MediaStore.AUTHORITY, StorageScope.MEDIA_PROVIDER_METHOD_CONVERT_URI_TO_FILE_PATH, uri.toString(), null);
+            if (realpath.startsWith("/mnt/user/")) {
+                // devices that launched with Android 11+ mount shared storage differently
+                realpath = realpath.replaceFirst("/mnt/user/" + UserHandle.myUserId() + "/", "/storage/");
+            }
+
+            if (new File(realpath).isFile()) {
+                unverifiedPath = realpath;
+            } else {
+                Log.d(TAG, realpath + " is not a file, " + Os.stat(realpath));
+            }
         } catch (Exception e) {
             Log.d(TAG, "unable to convert uri " + uri + " to path", e);
-        } finally {
-            ctx.revokeUriPermission(MEDIA_PROVIDER_PACKAGE, uri, grantFlags);
+            return null;
         }
 
-        if (res != null) {
-            String path = res.getString(Intent.EXTRA_TEXT);
-
-            if (validateScopePath(path, ctx, cachedVolumes)) {
-                return path;
-            }
+        if (validateScopePath(unverifiedPath, ctx, cachedVolumes)) {
+            String path = unverifiedPath;
+            return path;
         }
 
+        Log.d(TAG, "invalid path " + unverifiedPath);
         return null;
     }
 
@@ -285,7 +286,7 @@ public class StorageScopesUtils {
                     return 0;
                 }
 
-                // for targetSdk < 23 apps runtime permission are enforced via AppOps
+                // for targetSdk < 23 apps runtime permissions are enforced via AppOps
 
                 String op = AppOpsManager.permissionToOp(permission);
                 if (appOps.unsafeCheckOpNoThrow(op, uid, pkgName) == AppOpsManager.MODE_ALLOWED) {
