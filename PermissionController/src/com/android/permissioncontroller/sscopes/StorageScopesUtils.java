@@ -24,6 +24,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.GosPackageState;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -245,14 +246,18 @@ public class StorageScopesUtils {
         return res.toString();
     }
 
-    static boolean packageHasStoragePermission(Context ctx, String pkgName) {
+    static final int STORAGE_PERMISSION_TYPE_FILES_AND_MEDIA = 1;
+    static final int STORAGE_PERMISSION_TYPE_ALL_FILES_ACCESS = 2;
+    static final int STORAGE_PERMISSION_TYPE_MEDIA_MANAGEMENT = 3;
+
+    static int packageHasStoragePermission(Context ctx, String pkgName) {
         PackageManager pm = ctx.getPackageManager();
 
         int uid;
         try {
             uid = pm.getPackageUid(pkgName, 0);
         } catch (PackageManager.NameNotFoundException e) {
-            return false;
+            return 0;
         }
 
         String[] perms = {
@@ -274,17 +279,17 @@ public class StorageScopesUtils {
             if (pm.checkPermission(permission, pkgName) == PackageManager.PERMISSION_GRANTED) {
                 try {
                     if (pm.getApplicationInfo(pkgName, 0).targetSdkVersion >= 23) {
-                        return true;
+                        return STORAGE_PERMISSION_TYPE_FILES_AND_MEDIA;
                     }
                 } catch (PackageManager.NameNotFoundException e) {
-                    return false;
+                    return 0;
                 }
 
                 // for targetSdk < 23 apps runtime permission are enforced via AppOps
 
                 String op = AppOpsManager.permissionToOp(permission);
                 if (appOps.unsafeCheckOpNoThrow(op, uid, pkgName) == AppOpsManager.MODE_ALLOWED) {
-                    return true;
+                    return STORAGE_PERMISSION_TYPE_FILES_AND_MEDIA;
                 }
             }
         }
@@ -298,11 +303,29 @@ public class StorageScopesUtils {
             String op = AppOpsManager.permissionToOp(opPerm);
 
             if (appOps.unsafeCheckOpNoThrow(op, uid, pkgName) == AppOpsManager.MODE_ALLOWED) {
-                return true;
+                if (Manifest.permission.MANAGE_MEDIA.equals(opPerm)) {
+                    return STORAGE_PERMISSION_TYPE_MEDIA_MANAGEMENT;
+                }
+
+                try {
+                    PackageInfo pi = pm.getPackageInfo(pkgName, PackageManager.GET_PERMISSIONS);
+                    List<String> permissions = Arrays.asList(pi.requestedPermissions);
+
+                    // "Files and media" section will not show up in the Permissions screen if
+                    // only "All files access" permission is requested
+                    if (permissions.contains(Manifest.permission.READ_EXTERNAL_STORAGE)
+                            || permissions.contains(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                        return STORAGE_PERMISSION_TYPE_FILES_AND_MEDIA;
+                    } else {
+                        return STORAGE_PERMISSION_TYPE_ALL_FILES_ACCESS;
+                    }
+                } catch (Exception e) {
+                    return STORAGE_PERMISSION_TYPE_FILES_AND_MEDIA;
+                }
             }
         }
 
-        return false;
+        return 0;
     }
 
     static boolean isUtf16(String str) {

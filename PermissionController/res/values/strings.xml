@@ -1359,7 +1359,8 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
 
     <string name="sscopes_enable">Enable Storage Scopes</string>
 
-    <string name="sscopes_deny_storage_permission">Deny the “Files and media“ permission before using this feature</string>
+    <string name="sscopes_deny_storage_permissions">Deny all storage permissions before using Storage Scopes.</string>
+    <string name="sscopes_open_settings">Open settings</string>
 
     <string name="sscopes_disabled_footer">
 "When enabled, this app will assume that it has the “Files and media“ permission, despite not actually having it.
