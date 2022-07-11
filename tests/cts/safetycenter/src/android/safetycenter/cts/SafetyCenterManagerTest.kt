@@ -1107,6 +1107,31 @@ class SafetyCenterManagerTest {
     }
 
     @Test
+    fun refreshSafetySources_repliesWithWrongBroadcastId_doesntCompleteRefresh() {
+        SafetyCenterFlags.refreshTimeout = TIMEOUT_SHORT
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        SafetySourceReceiver.safetySourceData[
+                SafetySourceDataKey(REFRESH_FETCH_FRESH_DATA, SINGLE_SOURCE_ID)] =
+            safetySourceCtsData.information
+        SafetySourceReceiver.overrideBroadcastId = "invalid"
+        val listener = safetyCenterCtsHelper.addListener()
+
+        safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+            REFRESH_REASON_RESCAN_BUTTON_CLICK)
+
+        // Because wrong ID, refresh hasn't finished. Wait for timeout.
+        listener.receiveSafetyCenterErrorDetails()
+        SafetyCenterFlags.refreshTimeout = TIMEOUT_LONG
+
+        SafetySourceReceiver.overrideBroadcastId = null
+        safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+            REFRESH_REASON_PAGE_OPEN)
+        val apiSafetySourceData =
+            safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
+        assertThat(apiSafetySourceData).isEqualTo(safetySourceCtsData.information)
+    }
+
+    @Test
     fun refreshSafetySources_refreshAfterSuccessfulRefresh_completesSuccessfully() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         SafetySourceReceiver.safetySourceData[
@@ -2064,7 +2089,86 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    fun executeSafetyCenterIssueAction_idsDontMatch_throwsIllegalArgumentException() {
+    fun executeSafetyCenterIssueAction_issueIdDoesNotMatch_throwsErrorAndDoesNotResolveIssue() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(
+            SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithResolvingIssue)
+        val listener = safetyCenterCtsHelper.addListener()
+        SafetySourceReceiver.safetySourceData[
+                SafetySourceDataKey(RESOLVE_ACTION, SINGLE_SOURCE_ID)] =
+            safetySourceCtsData.information
+
+        assertFailsWith(IllegalArgumentException::class) {
+            safetyCenterManager.executeSafetyCenterIssueActionWithPermissionAndWait(
+                SafetyCenterCtsData.issueId(SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID),
+                SafetyCenterCtsData.issueActionId(
+                    SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID + "invalid", CRITICAL_ISSUE_ACTION_ID
+                ),
+                TIMEOUT_SHORT)
+        }
+
+        assertFailsWith(TimeoutCancellationException::class) {
+            listener.receiveSafetyCenterData(TIMEOUT_SHORT)
+        }
+    }
+
+    @Test
+    fun executeSafetyCenterIssueAction_actionIdDoesNotMatch_doesNotResolveIssue() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(
+            SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithResolvingIssue)
+        val listener = safetyCenterCtsHelper.addListener()
+        SafetySourceReceiver.safetySourceData[
+                SafetySourceDataKey(RESOLVE_ACTION, SINGLE_SOURCE_ID)] =
+            safetySourceCtsData.information
+
+        assertFailsWith(TimeoutCancellationException::class) {
+            safetyCenterManager.executeSafetyCenterIssueActionWithPermissionAndWait(
+                SafetyCenterCtsData.issueId(SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID),
+                SafetyCenterCtsData.issueActionId(
+                    SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID, CRITICAL_ISSUE_ACTION_ID + "invalid"
+                ),
+                TIMEOUT_SHORT)
+        }
+
+        assertFailsWith(TimeoutCancellationException::class) {
+            listener.receiveSafetyCenterData(TIMEOUT_SHORT)
+        }
+    }
+
+    @Test
+    fun executeSafetyCenterIssueAction_idsDontMatch_canStillResolve() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(
+            SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithResolvingIssue)
+        val listener = safetyCenterCtsHelper.addListener()
+        SafetySourceReceiver.safetySourceData[
+                SafetySourceDataKey(RESOLVE_ACTION, SINGLE_SOURCE_ID)] =
+            safetySourceCtsData.information
+        assertFailsWith(IllegalArgumentException::class) {
+            safetyCenterManager.executeSafetyCenterIssueActionWithPermissionAndWait(
+                SafetyCenterCtsData.issueId(SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID),
+                SafetyCenterCtsData.issueActionId(
+                    SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID + "invalid", CRITICAL_ISSUE_ACTION_ID
+                ),
+                TIMEOUT_SHORT)
+        }
+
+        safetyCenterManager.executeSafetyCenterIssueActionWithPermissionAndWait(
+            SafetyCenterCtsData.issueId(SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID),
+            SafetyCenterCtsData.issueActionId(
+                SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID, CRITICAL_ISSUE_ACTION_ID
+            )
+        )
+
+        val safetyCenterDataFromListenerDuringInlineAction = listener.receiveSafetyCenterData()
+        assertThat(safetyCenterDataFromListenerDuringInlineAction)
+            .isEqualTo(safetyCenterDataCriticalOneAlertInFlight)
+        val safetyCenterDataFromListenerAfterInlineAction = listener.receiveSafetyCenterData()
+        assertThat(safetyCenterDataFromListenerAfterInlineAction).isEqualTo(safetyCenterDataOk)
+    }
+    @Test
+    fun executeSafetyCenterIssueAction_sourceIdsDontMatch_throwsIllegalArgumentException() {
         assertFailsWith(IllegalArgumentException::class) {
             safetyCenterManager.executeSafetyCenterIssueActionWithPermission(
                 SafetyCenterCtsData.issueId(SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID),
