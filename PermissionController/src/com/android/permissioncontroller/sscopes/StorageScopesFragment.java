@@ -274,9 +274,6 @@ public final class StorageScopesFragment extends SettingsWithLargeHeader {
 
             StorageScopePreference p = new StorageScopePreference(ctx);
             p.setTitle(StorageScopesUtils.pathToUiLabel(ctx, storageVolumes, new File(scope.path)));
-            if (!scope.isWritable()) {
-                p.setSummary(R.string.sscopes_read_only);
-            }
 
             p.setRightIcon(ctx.getDrawable(R.drawable.ic_sscopes_remove), v -> removeScope(scope));
             p.setSelectable(false);
