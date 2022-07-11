@@ -72,6 +72,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.annotation.concurrent.NotThreadSafe;
 
@@ -430,6 +431,7 @@ final class SafetyCenterDataTracker {
                                 getSafetyCenterStatusTitle(
                                         SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN,
                                         SafetyCenterStatus.REFRESH_STATUS_NONE,
+                                        new ArraySet<>(),
                                         false),
                                 getSafetyCenterStatusSummary(
                                         SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN,
@@ -703,6 +705,7 @@ final class SafetyCenterDataTracker {
         int safetyCenterOverallSeverityLevel = SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK;
         int safetyCenterEntriesSeverityLevel = SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK;
         List<SafetyCenterIssue> safetyCenterIssues = new ArrayList<>();
+        Set<Integer> allCurrentIssueCategories = new ArraySet<>();
         List<SafetyCenterEntryOrGroup> safetyCenterEntryOrGroups = new ArrayList<>();
         List<SafetyCenterStaticEntryGroup> safetyCenterStaticEntryGroups = new ArrayList<>();
         SafetyCenterOverallStatusErrorState safetyCenterOverallStatusErrorState =
@@ -715,7 +718,10 @@ final class SafetyCenterDataTracker {
                     Math.max(
                             safetyCenterOverallSeverityLevel,
                             addSafetyCenterIssues(
-                                    safetyCenterIssues, safetySourcesGroup, userProfileGroup));
+                                    safetyCenterIssues,
+                                    allCurrentIssueCategories,
+                                    safetySourcesGroup,
+                                    userProfileGroup));
             int safetySourcesGroupType = safetySourcesGroup.getType();
             switch (safetySourcesGroupType) {
                 case SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_COLLAPSIBLE:
@@ -755,6 +761,7 @@ final class SafetyCenterDataTracker {
                                 getSafetyCenterStatusTitle(
                                         safetyCenterOverallSeverityLevel,
                                         refreshStatus,
+                                        allCurrentIssueCategories,
                                         hasSettingsToReview),
                                 getSafetyCenterStatusSummary(
                                         safetyCenterOverallSeverityLevel,
@@ -772,6 +779,7 @@ final class SafetyCenterDataTracker {
     @SafetyCenterStatus.OverallSeverityLevel
     private int addSafetyCenterIssues(
             @NonNull List<SafetyCenterIssue> safetyCenterIssues,
+            @NonNull Set<Integer> allCurrentIssueCategories,
             @NonNull SafetySourcesGroup safetySourcesGroup,
             @NonNull UserProfileGroup userProfileGroup) {
         int safetyCenterIssuesOverallSeverityLevel = SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK;
@@ -788,6 +796,7 @@ final class SafetyCenterDataTracker {
                             safetyCenterIssuesOverallSeverityLevel,
                             addSafetyCenterIssues(
                                     safetyCenterIssues,
+                                    allCurrentIssueCategories,
                                     safetySource,
                                     userProfileGroup.getProfileParentUserId()));
 
@@ -805,6 +814,7 @@ final class SafetyCenterDataTracker {
                                 safetyCenterIssuesOverallSeverityLevel,
                                 addSafetyCenterIssues(
                                         safetyCenterIssues,
+                                        allCurrentIssueCategories,
                                         safetySource,
                                         managedRunningProfileUserId));
             }
@@ -816,6 +826,7 @@ final class SafetyCenterDataTracker {
     @SafetyCenterStatus.OverallSeverityLevel
     private int addSafetyCenterIssues(
             @NonNull List<SafetyCenterIssue> safetyCenterIssues,
+            @NonNull Set<Integer> allCurrentIssueCategories,
             @NonNull SafetySource safetySource,
             @UserIdInt int userId) {
         SafetySourceKey key = SafetySourceKey.of(safetySource.getId(), userId);
@@ -841,6 +852,8 @@ final class SafetyCenterDataTracker {
                             toSafetyCenterStatusOverallSeverityLevel(
                                     safetySourceIssue.getSeverityLevel()));
             safetyCenterIssues.add(safetyCenterIssue);
+
+            allCurrentIssueCategories.add(safetySourceIssue.getIssueCategory());
         }
 
         return safetyCenterIssuesOverallSeverityLevel;
@@ -1483,11 +1496,16 @@ final class SafetyCenterDataTracker {
     private String getSafetyCenterStatusTitle(
             @SafetyCenterStatus.OverallSeverityLevel int overallSeverityLevel,
             @SafetyCenterStatus.RefreshStatus int refreshStatus,
+            @NonNull Set<Integer> allCurrentIssueCategories,
             boolean hasSettingsToReview) {
         String refreshStatusTitle = getSafetyCenterRefreshStatusTitle(refreshStatus);
         if (refreshStatusTitle != null) {
             return refreshStatusTitle;
         }
+        boolean onlyAccountIssuesPresent =
+                allCurrentIssueCategories.size() == 1
+                        && allCurrentIssueCategories.contains(
+                                SafetySourceIssue.ISSUE_CATEGORY_ACCOUNT);
         switch (overallSeverityLevel) {
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN:
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK:
@@ -1498,9 +1516,17 @@ final class SafetyCenterDataTracker {
                 return mSafetyCenterResourcesContext.getStringByName(
                         "overall_severity_level_ok_title");
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_RECOMMENDATION:
+                if (onlyAccountIssuesPresent) {
+                    return mSafetyCenterResourcesContext.getStringByName(
+                            "overall_severity_level_account_recommendation_title");
+                }
                 return mSafetyCenterResourcesContext.getStringByName(
                         "overall_severity_level_recommendation_title");
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING:
+                if (onlyAccountIssuesPresent) {
+                    return mSafetyCenterResourcesContext.getStringByName(
+                            "overall_severity_level_critical_account_warning_title");
+                }
                 return mSafetyCenterResourcesContext.getStringByName(
                         "overall_severity_level_critical_warning_title");
         }
