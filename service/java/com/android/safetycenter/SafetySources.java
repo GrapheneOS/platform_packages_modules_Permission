@@ -91,4 +91,6 @@ final class SafetySources {
         Log.w(TAG, "Unexpected safety source type: " + safetySourceType);
         return false;
     }
+
+    private SafetySources() {}
 }
