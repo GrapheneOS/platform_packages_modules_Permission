@@ -22,8 +22,6 @@ import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_RESCAN_BUT
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
-import android.os.Binder;
-import android.provider.DeviceConfig;
 import android.safetycenter.SafetyCenterManager.RefreshReason;
 import android.safetycenter.SafetyCenterStatus;
 import android.safetycenter.SafetyCenterStatus.RefreshStatus;
@@ -48,7 +46,6 @@ import javax.annotation.concurrent.NotThreadSafe;
 @NotThreadSafe
 final class SafetyCenterRefreshTracker {
     private static final String TAG = "SafetyCenterRefreshTrac";
-    private static final String PROPERTY_UNTRACKED_SOURCES = "safety_center_untracked_sources";
 
     @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
 
@@ -93,7 +90,7 @@ final class SafetyCenterRefreshTracker {
                         refreshBroadcastId,
                         refreshReason,
                         userProfileGroup,
-                        getUntrackedSourceIds());
+                        SafetyCenterFlags.getUntrackedSourceIds());
 
         for (int i = 0; i < broadcasts.size(); i++) {
             Broadcast broadcast = broadcasts.get(i);
@@ -235,27 +232,6 @@ final class SafetyCenterRefreshTracker {
             return false;
         }
         return true;
-    }
-
-    /**
-     * Returns the IDs of sources that should not be tracked, for example because they are
-     * mid-rollout. Broadcasts are still sent to these sources.
-     */
-    private static ArraySet<String> getUntrackedSourceIds() {
-        String untrackedSourcesConfigString = getUntrackedSourcesConfigString();
-        String[] untrackedSourcesList = untrackedSourcesConfigString.split(",");
-        return new ArraySet<>(untrackedSourcesList);
-    }
-
-    private static String getUntrackedSourcesConfigString() {
-        // This call requires the READ_DEVICE_CONFIG permission.
-        final long callingId = Binder.clearCallingIdentity();
-        try {
-            return DeviceConfig.getString(
-                    DeviceConfig.NAMESPACE_PRIVACY, PROPERTY_UNTRACKED_SOURCES, "");
-        } finally {
-            Binder.restoreCallingIdentity(callingId);
-        }
     }
 
     /** Class representing the state of a refresh in progress. */
