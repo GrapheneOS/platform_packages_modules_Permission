@@ -27,12 +27,11 @@ import android.safetycenter.SafetyCenterManager
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat.getMainExecutor
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.DefaultLifecycleObserver
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import java.util.concurrent.atomic.AtomicBoolean
 
 /* A SafetyCenterViewModel that talks to the real backing service for Safety Center. */
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
@@ -45,6 +44,8 @@ class LiveSafetyCenterViewModel(app: Application) : SafetyCenterViewModel(app) {
 
     private val _safetyCenterLiveData = SafetyCenterLiveData()
     private val _errorLiveData = MutableLiveData<SafetyCenterErrorDetails>()
+
+    private var changingConfigurations = AtomicBoolean(false)
 
     private val safetyCenterManager = app.getSystemService(SafetyCenterManager::class.java)!!
 
@@ -69,8 +70,15 @@ class LiveSafetyCenterViewModel(app: Application) : SafetyCenterViewModel(app) {
         fragment.startActivity(Intent(ACTION_SAFETY_CENTER))
     }
 
-    override fun refresh() {
-        safetyCenterManager.refreshSafetySources(SafetyCenterManager.REFRESH_REASON_PAGE_OPEN)
+    override fun pageOpen() {
+        if (!changingConfigurations.getAndSet(false)) {
+            // Refresh unless this is a config change
+            safetyCenterManager.refreshSafetySources(SafetyCenterManager.REFRESH_REASON_PAGE_OPEN)
+        }
+    }
+
+    override fun changingConfigurations() {
+        changingConfigurations.set(true)
     }
 
     inner class SafetyCenterLiveData :
@@ -93,14 +101,6 @@ class LiveSafetyCenterViewModel(app: Application) : SafetyCenterViewModel(app) {
 
         override fun onError(errorDetails: SafetyCenterErrorDetails) {
             _errorLiveData.value = errorDetails
-        }
-    }
-
-    inner class AutoRefreshManager : DefaultLifecycleObserver {
-        // TODO(b/222323674): We may need to do this in onResume to cover certain edge cases.
-        // i.e. FMD changed from quick settings while SC is open
-        override fun onStart(owner: LifecycleOwner) {
-            refresh()
         }
     }
 }

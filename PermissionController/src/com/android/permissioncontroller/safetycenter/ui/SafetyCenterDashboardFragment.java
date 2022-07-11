@@ -22,6 +22,7 @@ import static com.android.permissioncontroller.safetycenter.SafetyCenterConstant
 
 import static java.util.Objects.requireNonNull;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.safetycenter.SafetyCenterData;
@@ -167,16 +168,32 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
 
         mViewModel.getSafetyCenterLiveData().observe(this, this::renderSafetyCenterData);
         mViewModel.getErrorLiveData().observe(this, this::displayErrorDetails);
-        getLifecycle().addObserver(mViewModel.getAutoRefreshManager());
 
         getPreferenceManager()
                 .setPreferenceComparisonCallback(new SafetyPreferenceComparisonCallback());
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        // TODO(b/222323674): We may need to do this in onResume to cover certain edge cases.
+        // i.e. FMD changed from quick settings while SC is open
+        mViewModel.pageOpen();
+    }
+
+    @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         mCollapsableIssuesCardHelper.saveState(outState);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Activity activity = getActivity();
+        if (activity != null && activity.isChangingConfigurations()) {
+            mViewModel.changingConfigurations();
+        }
     }
 
     SafetyCenterViewModel getSafetyCenterViewModel() {
