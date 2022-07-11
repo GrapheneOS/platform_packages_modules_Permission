@@ -92,6 +92,7 @@ import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_2
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_3
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.STATIC_BAREBONE_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.STATIC_IN_COLLAPSIBLE_ID
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.getLockScreenSourceConfig
 import android.safetycenter.cts.testing.SafetyCenterCtsData
 import android.safetycenter.cts.testing.SafetyCenterCtsHelper
 import android.safetycenter.cts.testing.SafetyCenterCtsListener
@@ -118,6 +119,7 @@ import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.refreshSa
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.refreshSafetySourcesWithoutReceiverPermissionAndWait
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.android.compatibility.common.preconditions.ScreenLockHelper
 import com.android.safetycenter.resources.SafetyCenterResourcesContext
 import com.google.common.truth.Truth.assertThat
 import com.google.common.util.concurrent.MoreExecutors.directExecutor
@@ -2346,6 +2348,46 @@ class SafetyCenterManagerTest {
         assertFailsWith(SecurityException::class) {
             safetyCenterManager.clearSafetyCenterConfigForTests()
         }
+    }
+
+    @Test
+    fun lockScreenSource_withoutReplaceLockScreenIconActionFlag_doesntReplace() {
+        // Must have a screen lock for the icon action to be set
+        assumeTrue(ScreenLockHelper.isDeviceSecure(context))
+        safetyCenterCtsHelper.setConfig(context.getLockScreenSourceConfig())
+        val listener = safetyCenterCtsHelper.addListener()
+        SafetyCenterFlags.replaceLockScreenIconAction = false
+
+        safetyCenterManager.refreshSafetySourcesWithPermission(REFRESH_REASON_PAGE_OPEN)
+        // Skip loading data.
+        listener.receiveSafetyCenterData()
+
+        val lockScreenSafetyCenterData = listener.receiveSafetyCenterData()
+        val lockScreenEntry = lockScreenSafetyCenterData.entriesOrGroups.first().entry!!
+        val entryPendingIntent = lockScreenEntry.pendingIntent!!
+        val iconActionPendingIntent = lockScreenEntry.iconAction!!.pendingIntent
+        // This test passes for now but will eventually start failing once we introduce the fix in
+        // the Settings app. This will warn if the assumption is failed rather than fail, at which
+        // point we can remove this test (and potentially even this magnificent hack).
+        assumeTrue(iconActionPendingIntent == entryPendingIntent)
+    }
+
+    @Test
+    fun lockScreenSource_withReplaceLockScreenIconActionFlag_replaces() {
+        // Must have a screen lock for the icon action to be set
+        assumeTrue(ScreenLockHelper.isDeviceSecure(context))
+        safetyCenterCtsHelper.setConfig(context.getLockScreenSourceConfig())
+        val listener = safetyCenterCtsHelper.addListener()
+
+        safetyCenterManager.refreshSafetySourcesWithPermission(REFRESH_REASON_PAGE_OPEN)
+        // Skip loading data.
+        listener.receiveSafetyCenterData()
+
+        val lockScreenSafetyCenterData = listener.receiveSafetyCenterData()
+        val lockScreenEntry = lockScreenSafetyCenterData.entriesOrGroups.first().entry!!
+        val entryPendingIntent = lockScreenEntry.pendingIntent!!
+        val iconActionPendingIntent = lockScreenEntry.iconAction!!.pendingIntent
+        assertThat(iconActionPendingIntent).isNotEqualTo(entryPendingIntent)
     }
 
     private fun safetyCenterEntryDefaultBuilder(sourceId: String) =

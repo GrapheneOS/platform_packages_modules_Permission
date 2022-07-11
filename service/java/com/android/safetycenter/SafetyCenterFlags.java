@@ -37,6 +37,9 @@ final class SafetyCenterFlags {
     private static final String PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT =
             "show_error_entries_on_timeout";
 
+    private static final String PROPERTY_REPLACE_LOCK_SCREEN_ICON_ACTION =
+            "safety_center_replace_lock_screen_icon_action";
+
     private static final String PROPERTY_REFRESH_SOURCE_TIMEOUT_MILLIS =
             "safety_center_refresh_source_timeout_millis";
 
@@ -65,6 +68,14 @@ final class SafetyCenterFlags {
      */
     static boolean getShowErrorEntriesOnTimeout() {
         return getBoolean(PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT, false);
+    }
+
+    /**
+     * Returns whether we should replace the lock screen source's {@link
+     * android.safetycenter.SafetySourceStatus.IconAction}.
+     */
+    static boolean getReplaceLockScreenIconAction() {
+        return getBoolean(PROPERTY_REPLACE_LOCK_SCREEN_ICON_ACTION, true);
     }
 
     /**

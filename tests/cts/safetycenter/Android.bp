@@ -33,6 +33,7 @@ android_test {
         "androidx.test.ext.junit",
         "androidx.test.ext.truth",
         "androidx.test.uiautomator_uiautomator",
+        "compatibility-device-preconditions",
         "compatibility-device-util-axt",
         "ctstestrunner-axt",
         "kotlin-stdlib",
