@@ -226,8 +226,18 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
         Button button =
                 isFirstButton ? createFirstButton(context) : createSubsequentButton(context);
         button.setText(action.getLabel());
-        button.setOnClickListener(
-                view -> mSafetyCenterViewModel.executeIssueAction(mIssue, action));
+        button.setEnabled(!action.isInFlight());
+        button.setOnClickListener((view) -> {
+            if (action.willResolve()) {
+                // Disable the button to prevent double-taps.
+                // We ideally want to do this on any button press, however out of an abundance of
+                // caution we only do it with actions that indicate they will resolve (and therefore
+                // we can rely on a model update to redraw state). We expect the model to update
+                // with either isInFlight() or simply removing/updating the issue.
+                button.setEnabled(false);
+            }
+            mSafetyCenterViewModel.executeIssueAction(mIssue, action);
+        });
         return button;
     }
 
