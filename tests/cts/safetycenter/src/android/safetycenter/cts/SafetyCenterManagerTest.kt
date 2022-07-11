@@ -118,6 +118,7 @@ import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.refreshSa
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.refreshSafetySourcesWithoutReceiverPermissionAndWait
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.android.safetycenter.resources.SafetyCenterResourcesContext
 import com.google.common.truth.Truth.assertThat
 import com.google.common.util.concurrent.MoreExecutors.directExecutor
 import kotlin.test.assertFailsWith
@@ -132,6 +133,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class SafetyCenterManagerTest {
     private val context: Context = getApplicationContext()
+    private val safetyCenterResourcesContext = SafetyCenterResourcesContext(context)
     private val safetyCenterCtsHelper = SafetyCenterCtsHelper(context)
     private val safetySourceCtsData = SafetySourceCtsData(context)
     private val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)!!
@@ -167,8 +169,29 @@ class SafetyCenterManagerTest {
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_RECOMMENDATION)
             .build()
 
+    private val safetyCenterStatusAccountRecommendationOneAlert =
+        SafetyCenterStatus.Builder(
+                safetyCenterResourcesContext.getStringByName(
+                    "overall_severity_level_account_recommendation_title"),
+                "1 alert")
+            .setSeverityLevel(OVERALL_SEVERITY_LEVEL_RECOMMENDATION)
+            .build()
+
     private val safetyCenterStatusCriticalOneAlert =
         SafetyCenterStatus.Builder("Device is at risk", "1 alert")
+            .setSeverityLevel(OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING)
+            .build()
+
+    private val safetyCenterStatusCriticalTwoAlerts =
+        SafetyCenterStatus.Builder("Device is at risk", "2 alerts")
+            .setSeverityLevel(OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING)
+            .build()
+
+    private val safetyCenterStatusAccountCriticalOneAlert =
+        SafetyCenterStatus.Builder(
+                safetyCenterResourcesContext.getStringByName(
+                    "overall_severity_level_critical_account_warning_title"),
+                "1 alert")
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING)
             .build()
 
@@ -313,10 +336,33 @@ class SafetyCenterManagerTest {
             listOf(SafetyCenterEntryOrGroup(safetyCenterEntryRecommendation(SINGLE_SOURCE_ID))),
             emptyList())
 
+    private val safetyCenterDataAccountRecommendationOneAlert =
+        SafetyCenterData(
+            safetyCenterStatusAccountRecommendationOneAlert,
+            listOf(safetyCenterIssueRecommendation(SINGLE_SOURCE_ID)),
+            listOf(SafetyCenterEntryOrGroup(safetyCenterEntryRecommendation(SINGLE_SOURCE_ID))),
+            emptyList())
+
     private val safetyCenterDataCriticalOneAlert =
         SafetyCenterData(
             safetyCenterStatusCriticalOneAlert,
             listOf(safetyCenterIssueCritical(SINGLE_SOURCE_ID)),
+            listOf(safetyCenterEntryOrGroupCritical),
+            emptyList())
+
+    private val safetyCenterDataAccountCriticalOneAlert =
+        SafetyCenterData(
+            safetyCenterStatusAccountCriticalOneAlert,
+            listOf(safetyCenterIssueCritical(SINGLE_SOURCE_ID)),
+            listOf(safetyCenterEntryOrGroupCritical),
+            emptyList())
+
+    private val safetyCenterDataCriticalTwoAlerts =
+        SafetyCenterData(
+            safetyCenterStatusCriticalTwoAlerts,
+            listOf(
+                safetyCenterIssueCritical(SINGLE_SOURCE_ID),
+                safetyCenterIssueRecommendation(SINGLE_SOURCE_ID)),
             listOf(safetyCenterEntryOrGroupCritical),
             emptyList())
 
@@ -1507,6 +1553,38 @@ class SafetyCenterManagerTest {
         val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
 
         assertThat(apiSafetyCenterData).isEqualTo(safetyCenterDataRecommendationOneAlert)
+    }
+
+    @Test
+    fun getSafetyCenterData_withAccountIssue_returnsOverallStatusAccountRecommendationOneAlert() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(
+            SINGLE_SOURCE_ID, safetySourceCtsData.recommendationWithAccountIssue)
+
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+
+        assertThat(apiSafetyCenterData).isEqualTo(safetyCenterDataAccountRecommendationOneAlert)
+    }
+
+    @Test
+    fun getSafetyCenterData_withAccountIssue_returnsOverallStatusAccountCriticalOneAlert() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(
+            SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithResolvingAccountIssue)
+
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+
+        assertThat(apiSafetyCenterData).isEqualTo(safetyCenterDataAccountCriticalOneAlert)
+    }
+
+    @Test
+    fun getSafetyCenterData_withAccountAndOtherIssue_returnsOverallStatusCriticalTwoAlerts() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithTwoIssues)
+
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+
+        assertThat(apiSafetyCenterData).isEqualTo(safetyCenterDataCriticalTwoAlerts)
     }
 
     @Test
