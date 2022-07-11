@@ -358,8 +358,8 @@
             android:hardwareAccelerated="false"
         >
             <intent-filter>
-                <action android:name="android.settings.MANAGE_APP_ALL_FILES_ACCESS_PERMISSION" />
-                <action android:name="android.settings.REQUEST_MANAGE_MEDIA" />
+                <action android:name="android.settings.MANAGE_APP_ALL_FILES_ACCESS_PERMISSION_PROMPT" />
+                <action android:name="android.settings.REQUEST_MANAGE_MEDIA_PROMPT" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:scheme="package" />
             </intent-filter>

@@ -24,6 +24,8 @@ import com.android.permissioncontroller.permission.utils.Utils;
 // based on .permission.ui.GrantPermissionsActivity  and .permission.ui.handheld.GrantPermissionsViewHandlerImpl
 public class BroadStorageAccessPromptActivity extends SettingsActivity implements View.OnClickListener {
 
+    private static final String INTENT_SUFFIX = "_PROMPT";
+
     private Intent intent;
     private ApplicationInfo appInfo;
     private String pkgName;
@@ -38,10 +40,10 @@ public class BroadStorageAccessPromptActivity extends SettingsActivity implement
         }
 
         switch (action) {
-            case Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION:
+            case Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION + INTENT_SUFFIX:
                 promptStringRes = R.string.sscopes_manage_external_storage_request;
                 break;
-            case Settings.ACTION_REQUEST_MANAGE_MEDIA:
+            case Settings.ACTION_REQUEST_MANAGE_MEDIA + INTENT_SUFFIX:
                 promptStringRes = R.string.sscopes_manage_media_request;
                 break;
             default:
@@ -122,7 +124,9 @@ public class BroadStorageAccessPromptActivity extends SettingsActivity implement
     public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.permission_allow_button) {
-            Intent i = new Intent(intent.getAction() + "_INNER", intent.getData());
+            String promptAction = intent.getAction();
+            String origAction = promptAction.substring(0, promptAction.length() - INTENT_SUFFIX.length());
+            Intent i = new Intent(origAction, intent.getData());
             startActivity(i);
         } else if (id == R.id.permission_storage_scopes_button) {
             Intent i = StorageScope.createConfigActivityIntent(pkgName);
