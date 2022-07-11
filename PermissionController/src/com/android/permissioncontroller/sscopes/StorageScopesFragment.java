@@ -17,6 +17,7 @@
 package com.android.permissioncontroller.sscopes;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Application;
 import android.app.StorageScope;
 import android.app.compat.gms.GmsCompat;
@@ -35,6 +36,7 @@ import android.os.storage.StorageManager;
 import android.os.storage.StorageVolume;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -61,6 +63,8 @@ import java.util.List;
 import java.util.Objects;
 
 import static com.android.permissioncontroller.permission.ui.handheld.UtilsKt.pressBack;
+import static com.android.permissioncontroller.sscopes.StorageScopesUtils.STORAGE_PERMISSION_TYPE_ALL_FILES_ACCESS;
+import static com.android.permissioncontroller.sscopes.StorageScopesUtils.STORAGE_PERMISSION_TYPE_MEDIA_MANAGEMENT;
 import static com.android.permissioncontroller.sscopes.StorageScopesUtils.arrayListOf;
 import static com.android.permissioncontroller.sscopes.StorageScopesUtils.getFullLabelForPackage;
 import static com.android.permissioncontroller.sscopes.StorageScopesUtils.getStorageScopes;
@@ -151,10 +155,40 @@ public final class StorageScopesFragment extends SettingsWithLargeHeader {
         setPreferenceScreen(preferenceScreen);
     }
 
+    private boolean skipUpdates;
+
     void update() {
-        if (packageHasStoragePermission(context, pkgName)) {
-            showToast(R.string.sscopes_deny_storage_permission);
-            pressBack(this);
+        if (skipUpdates) {
+            return;
+        }
+
+        final int storagePermissionType = packageHasStoragePermission(context, pkgName);
+
+        if (storagePermissionType != 0) {
+            AlertDialog.Builder b = new AlertDialog.Builder(context);
+            b.setMessage(R.string.sscopes_deny_storage_permissions);
+            b.setOnDismissListener(dialog -> getActivity().finish());
+            b.setPositiveButton(R.string.sscopes_open_settings, (dialog, which) -> {
+                Uri uri = Uri.fromParts("package", pkgName, null);
+                Intent i;
+                switch (storagePermissionType) {
+                    case STORAGE_PERMISSION_TYPE_ALL_FILES_ACCESS:
+                        i = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION, uri);
+                        break;
+                    case STORAGE_PERMISSION_TYPE_MEDIA_MANAGEMENT:
+                        i = new Intent(Settings.ACTION_REQUEST_MANAGE_MEDIA, uri);
+                        break;
+                    default:
+                        i = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, uri);
+                }
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(i);
+            });
+
+            b.show();
+
+            preferenceScreen.removeAll();
+            skipUpdates = true;
             return;
         }
 
