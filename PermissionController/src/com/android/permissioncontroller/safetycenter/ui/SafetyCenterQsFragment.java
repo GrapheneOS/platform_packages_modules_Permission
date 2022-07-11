@@ -354,7 +354,6 @@ public class SafetyCenterQsFragment extends Fragment {
             ImageView expandView) {
         parentIndicatorLayout.setOnClickListener(
                 createExpansionListener(expandedLayout, expandView));
-        expandView.setOnClickListener(createExpansionListener(expandedLayout, expandView));
     }
 
     private View.OnClickListener createExpansionListener(ConstraintLayout expandedLayout,
@@ -365,17 +364,33 @@ public class SafetyCenterQsFragment extends Fragment {
         ViewGroup indicatorCardViewGroup = (ViewGroup) mRootView;
         return v -> {
             if (expandedLayout.getVisibility() == View.VISIBLE) {
-                TransitionManager.beginDelayedTransition(indicatorCardViewGroup, transition);
+                // Enable -> Press -> Hide the expanded card for a continuous ripple effect
+                expandedLayout.setEnabled(true);
+                pressButton(expandedLayout);
                 expandedLayout.setVisibility(View.GONE);
+                TransitionManager.beginDelayedTransition(indicatorCardViewGroup, transition);
                 expandView.setImageDrawable(
                         constructExpandButton(mContext.getDrawable(R.drawable.ic_expand_more)));
             } else {
-                TransitionManager.beginDelayedTransition(indicatorCardViewGroup, transition);
+                // Show -> Press -> Disable the expanded card for a continuous ripple effect
                 expandedLayout.setVisibility(View.VISIBLE);
+                pressButton(expandedLayout);
+                expandedLayout.setEnabled(false);
+                TransitionManager.beginDelayedTransition(indicatorCardViewGroup, transition);
                 expandView.setImageDrawable(
                         constructExpandButton(mContext.getDrawable(R.drawable.ic_expand_less)));
             }
         };
+    }
+
+    /**
+     * To get the expanded card to ripple at the same time as the parent card we must simulate a
+     * user press on the expanded card
+     */
+    private void pressButton(View buttonToBePressed) {
+        buttonToBePressed.setPressed(true);
+        buttonToBePressed.setPressed(false);
+        buttonToBePressed.performClick();
     }
 
     private String generateUsageLabel(PermissionGroupUsage usage) {
