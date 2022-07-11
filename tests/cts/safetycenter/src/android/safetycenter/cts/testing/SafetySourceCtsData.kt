@@ -161,6 +161,23 @@ class SafetySourceCtsData(private val context: Context) {
                     .build())
             .build()
 
+    /**
+     * A [SafetySourceIssue] with a [SEVERITY_LEVEL_RECOMMENDATION] and a redirecting [Action],
+     * related to the account.
+     */
+    val accountRecommendationIssue =
+        SafetySourceIssue.Builder(
+                RECOMMENDATION_ISSUE_ID,
+                "Recommendation issue title",
+                "Recommendation issue summary",
+                SEVERITY_LEVEL_RECOMMENDATION,
+                ISSUE_TYPE_ID)
+            .addAction(
+                Action.Builder(RECOMMENDATION_ISSUE_ACTION_ID, "See issue", redirectPendingIntent)
+                    .build())
+            .setIssueCategory(SafetySourceIssue.ISSUE_CATEGORY_ACCOUNT)
+            .build()
+
     private val dismissIssuePendingIntent =
         broadcastPendingIntent(
             Intent(ACTION_HANDLE_DISMISSED_ISSUE).putExtra(EXTRA_SOURCE_ID, SINGLE_SOURCE_ID))
@@ -195,6 +212,22 @@ class SafetySourceCtsData(private val context: Context) {
                     .setPendingIntent(redirectPendingIntent)
                     .build())
             .addIssue(recommendationIssue)
+            .build()
+
+    /**
+     * A [SafetySourceData] with a [SEVERITY_LEVEL_RECOMMENDATION] redirecting [SafetySourceIssue]
+     * and [SafetySourceStatus], only containing an account issue.
+     */
+    val recommendationWithAccountIssue =
+        SafetySourceData.Builder()
+            .setStatus(
+                SafetySourceStatus.Builder(
+                        "Recommendation title",
+                        "Recommendation summary",
+                        SEVERITY_LEVEL_RECOMMENDATION)
+                    .setPendingIntent(redirectPendingIntent)
+                    .build())
+            .addIssue(accountRecommendationIssue)
             .build()
 
     /**
@@ -253,6 +286,25 @@ class SafetySourceCtsData(private val context: Context) {
             .build()
 
     /**
+     * Account related [SafetySourceIssue] with a [SEVERITY_LEVEL_CRITICAL_WARNING] and a resolving
+     * [Action].
+     */
+    val criticalResolvingAccountIssue =
+        SafetySourceIssue.Builder(
+                CRITICAL_ISSUE_ID,
+                "Critical issue title",
+                "Critical issue summary",
+                SEVERITY_LEVEL_CRITICAL_WARNING,
+                ISSUE_TYPE_ID)
+            .addAction(
+                Action.Builder(
+                        CRITICAL_ISSUE_ACTION_ID, "Solve issue", criticalIssueActionPendingIntent)
+                    .setWillResolve(true)
+                    .build())
+            .setIssueCategory(SafetySourceIssue.ISSUE_CATEGORY_ACCOUNT)
+            .build()
+
+    /**
      * A [SafetySourceData] with a [SEVERITY_LEVEL_CRITICAL_WARNING] resolving [SafetySourceIssue]
      * and [SafetySourceStatus].
      */
@@ -281,6 +333,22 @@ class SafetySourceCtsData(private val context: Context) {
             .build()
 
     /**
+     * A [SafetySourceData] with a [SEVERITY_LEVEL_CRITICAL_WARNING] and a
+     * [SEVERITY_LEVEL_RECOMMENDATION] [SafetySourceIssue]s and [SEVERITY_LEVEL_CRITICAL_WARNING]
+     * [SafetySourceStatus]. One issue is account related, other isn't.
+     */
+    val criticalWithTwoIssues =
+        SafetySourceData.Builder()
+            .setStatus(
+                SafetySourceStatus.Builder(
+                        "Critical title", "Critical summary", SEVERITY_LEVEL_CRITICAL_WARNING)
+                    .setPendingIntent(redirectPendingIntent)
+                    .build())
+            .addIssue(criticalResolvingAccountIssue)
+            .addIssue(recommendationIssue)
+            .build()
+
+    /**
      * Another [SafetySourceData] with a [SEVERITY_LEVEL_CRITICAL_WARNING] redirecting
      * [SafetySourceIssue] and [SafetySourceStatus].
      */
@@ -292,6 +360,20 @@ class SafetySourceCtsData(private val context: Context) {
                     .setPendingIntent(redirectPendingIntent)
                     .build())
             .addIssue(criticalRedirectingIssue)
+            .build()
+
+    /**
+     * Another [SafetySourceData] with a [SEVERITY_LEVEL_CRITICAL_WARNING] resolving account related
+     * [SafetySourceIssue] and [SafetySourceStatus].
+     */
+    val criticalWithResolvingAccountIssue =
+        SafetySourceData.Builder()
+            .setStatus(
+                SafetySourceStatus.Builder(
+                        "Critical title", "Critical summary", SEVERITY_LEVEL_CRITICAL_WARNING)
+                    .setPendingIntent(redirectPendingIntent)
+                    .build())
+            .addIssue(criticalResolvingAccountIssue)
             .build()
 
     private fun broadcastPendingIntent(intent: Intent): PendingIntent =
