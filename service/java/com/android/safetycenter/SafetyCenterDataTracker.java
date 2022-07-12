@@ -301,11 +301,17 @@ final class SafetyCenterDataTracker {
     }
 
     /**
-     * Clears all safety source errors received so far, this is useful e.g. when starting a new
-     * broadcast.
+     * Clears all safety source errors received so far for the given {@link UserProfileGroup}, this
+     * is useful e.g. when starting a new broadcast.
      */
-    void clearSafetySourceErrors() {
-        mSafetySourceErrors.clear();
+    void clearSafetySourceErrors(@NonNull UserProfileGroup userProfileGroup) {
+        // Loop in reverse index order to be able to remove entries while iterating.
+        for (int i = mSafetySourceErrors.size() - 1; i >= 0; i--) {
+            SafetySourceKey sourceKey = mSafetySourceErrors.valueAt(i);
+            if (userProfileGroup.contains(sourceKey.getUserId())) {
+                mSafetySourceErrors.removeAt(i);
+            }
+        }
     }
 
     /**
@@ -475,6 +481,13 @@ final class SafetyCenterDataTracker {
             SafetySourceKey sourceKey = mSafetySourceDataForKey.keyAt(i);
             if (sourceKey.getUserId() == userId) {
                 mSafetySourceDataForKey.removeAt(i);
+            }
+        }
+        // Loop in reverse index order to be able to remove entries while iterating.
+        for (int i = mSafetySourceErrors.size() - 1; i >= 0; i--) {
+            SafetySourceKey sourceKey = mSafetySourceErrors.valueAt(i);
+            if (sourceKey.getUserId() == userId) {
+                mSafetySourceErrors.removeAt(i);
             }
         }
         // Loop in reverse index order to be able to remove entries while iterating.
