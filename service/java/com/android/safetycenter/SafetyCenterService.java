@@ -305,7 +305,7 @@ public final class SafetyCenterService extends SystemService {
 
             synchronized (mApiLock) {
                 broadcasts = mSafetyCenterConfigReader.getBroadcasts();
-                mSafetyCenterDataTracker.clearSafetySourceErrors();
+                mSafetyCenterDataTracker.clearSafetySourceErrors(userProfileGroup);
                 refreshBroadcastId =
                         mSafetyCenterRefreshTracker.reportRefreshInProgress(
                                 refreshReason, userProfileGroup);
