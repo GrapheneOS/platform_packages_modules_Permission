@@ -66,11 +66,14 @@ class SafetySourceReceiver : BroadcastReceiver() {
 
         when (val action = intent.action) {
             ACTION_REFRESH_SAFETY_SOURCES -> {
-                val broadcastId = intent.getStringExtra(EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID)
+                // Get the broadcast ID from the override or the intent
+                val broadcastId = overrideBroadcastId
+                    ?: intent.getStringExtra(EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID)
                 if (broadcastId.isNullOrEmpty()) {
                     throw IllegalArgumentException(
                         "Received refresh intent with no broadcast id specified")
                 }
+
                 val sourceIds = intent.getStringArrayExtra(EXTRA_REFRESH_SAFETY_SOURCE_IDS)
                 if (sourceIds.isNullOrEmpty()) {
                     throw IllegalArgumentException(
@@ -173,8 +176,15 @@ class SafetySourceReceiver : BroadcastReceiver() {
          */
         val safetySourceData = mutableMapOf<SafetySourceDataKey, SafetySourceData?>()
 
+        /**
+         * The broadcast ID to use when responding to broadcasts. If set to null, the receiver
+         * will respond with the broadcast ID read directly from the received broadcast.
+         */
+        @Volatile var overrideBroadcastId: String? = null
+
         fun reset() {
             shouldReportSafetySourceError = false
+            overrideBroadcastId = null
             safetySourceData.clear()
             refreshSafetySourcesChannel.cancel()
             refreshSafetySourcesChannel = Channel(UNLIMITED)
