@@ -23,6 +23,8 @@ import static android.os.Build.VERSION_CODES.TIRAMISU;
 import static android.safetycenter.SafetyCenterManager.RefreshReason;
 import static android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED;
 
+import static com.android.safetycenter.SafetyCenterFlags.PROPERTY_SAFETY_CENTER_ENABLED;
+
 import static java.util.Objects.requireNonNull;
 
 import android.annotation.NonNull;
@@ -95,44 +97,6 @@ import javax.annotation.concurrent.NotThreadSafe;
 public final class SafetyCenterService extends SystemService {
 
     private static final String TAG = "SafetyCenterService";
-
-    /** Phenotype flag that determines whether SafetyCenter is enabled. */
-    private static final String PROPERTY_SAFETY_CENTER_ENABLED = "safety_center_is_enabled";
-
-    /**
-     * Phenotype flag that determines whether we should show error entries for sources that timeout
-     * when refreshing them.
-     */
-    private static final String PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT =
-            "show_error_entries_on_timeout";
-
-    /**
-     * Device Config flag that determines the time for which a Safety Center refresh is allowed to
-     * wait for a source to respond to a refresh request before timing out and marking the refresh
-     * as finished.
-     */
-    private static final String PROPERTY_REFRESH_SOURCE_TIMEOUT_MILLIS =
-            "safety_center_refresh_source_timeout_millis";
-
-    /**
-     * Default time for which a Safety Center refresh is allowed to wait for a source to respond to
-     * a refresh request before timing out and marking the refresh as finished.
-     */
-    private static final Duration REFRESH_SOURCE_TIMEOUT_DEFAULT_DURATION = Duration.ofSeconds(10);
-
-    /**
-     * Device Config flag that determines the time for which Safety Center will wait for a source to
-     * respond to a resolving action before timing out.
-     */
-    private static final String PROPERTY_RESOLVING_ACTION_TIMEOUT_MILLIS =
-            "safety_center_resolve_action_timeout_millis";
-
-    /**
-     * Default time for which Safety Center will wait for a source to respond to a resolving action
-     * before timing out.
-     */
-    private static final Duration RESOLVING_ACTION_TIMEOUT_DEFAULT_DURATION =
-            Duration.ofSeconds(10);
 
     /** The APEX name used to retrieve the APEX owned data directories. */
     private static final String APEX_MODULE_NAME = "com.android.permission";
@@ -348,7 +312,7 @@ public final class SafetyCenterService extends SystemService {
 
                 RefreshTimeout refreshTimeout =
                         new RefreshTimeout(refreshBroadcastId, userProfileGroup);
-                mSafetyCenterTimeouts.add(refreshTimeout, getRefreshTimeout());
+                mSafetyCenterTimeouts.add(refreshTimeout, SafetyCenterFlags.getRefreshTimeout());
 
                 mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
                         userProfileGroup, true, null);
@@ -568,7 +532,8 @@ public final class SafetyCenterService extends SystemService {
                             safetyCenterIssueActionId);
                     ResolvingActionTimeout resolvingActionTimeout =
                             new ResolvingActionTimeout(safetyCenterIssueActionId, userProfileGroup);
-                    mSafetyCenterTimeouts.add(resolvingActionTimeout, getResolvingActionTimeout());
+                    mSafetyCenterTimeouts.add(
+                            resolvingActionTimeout, SafetyCenterFlags.getResolvingActionTimeout());
                     mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
                             userProfileGroup, true, null);
                 }
@@ -630,7 +595,7 @@ public final class SafetyCenterService extends SystemService {
         }
 
         private boolean isApiEnabled() {
-            return canUseSafetyCenter() && getSafetyCenterEnabled();
+            return canUseSafetyCenter() && SafetyCenterFlags.getSafetyCenterEnabled();
         }
 
         private void enforceAnyCallingOrSelfPermissions(
@@ -702,12 +667,14 @@ public final class SafetyCenterService extends SystemService {
     }
 
     /**
-     * An {@link OnPropertiesChangedListener} for {@link #PROPERTY_SAFETY_CENTER_ENABLED} that sends
-     * broadcasts when the SafetyCenter property is enabled or disabled.
+     * An {@link OnPropertiesChangedListener} for {@link
+     * SafetyCenterFlags#PROPERTY_SAFETY_CENTER_ENABLED} that sends broadcasts when the SafetyCenter
+     * property is enabled or disabled.
      *
-     * <p>This listener assumes that the {@link #PROPERTY_SAFETY_CENTER_ENABLED} value maps to
-     * {@link SafetyCenterManager#isSafetyCenterEnabled()}. It should only be registered if the
-     * device supports SafetyCenter and the {@link SafetyCenterConfig} was loaded successfully.
+     * <p>This listener assumes that the {@link SafetyCenterFlags#PROPERTY_SAFETY_CENTER_ENABLED}
+     * value maps to {@link SafetyCenterManager#isSafetyCenterEnabled()}. It should only be
+     * registered if the device supports SafetyCenter and the {@link SafetyCenterConfig} was loaded
+     * successfully.
      *
      * <p>This listener is not thread-safe; it should be called on a single thread.
      */
@@ -730,7 +697,7 @@ public final class SafetyCenterService extends SystemService {
         }
 
         private void setInitialState() {
-            mSafetyCenterEnabled = getSafetyCenterEnabled();
+            mSafetyCenterEnabled = SafetyCenterFlags.getSafetyCenterEnabled();
         }
 
         private void onSafetyCenterEnabledChanged(boolean safetyCenterEnabled) {
@@ -784,7 +751,8 @@ public final class SafetyCenterService extends SystemService {
                 if (stillInFlight == null) {
                     return;
                 }
-                boolean showErrorEntriesOnTimeout = getShowErrorEntriesOnTimeout();
+                boolean showErrorEntriesOnTimeout =
+                        SafetyCenterFlags.getShowErrorEntriesOnTimeout();
                 if (showErrorEntriesOnTimeout) {
                     for (int i = 0; i < stillInFlight.size(); i++) {
                         mSafetyCenterDataTracker.setSafetySourceError(stillInFlight.valueAt(i));
@@ -881,58 +849,6 @@ public final class SafetyCenterService extends SystemService {
 
     private boolean canUseSafetyCenter() {
         return mDeviceSupportsSafetyCenter && mConfigAvailable;
-    }
-
-    private boolean getSafetyCenterEnabled() {
-        // This call requires the READ_DEVICE_CONFIG permission.
-        final long callingId = Binder.clearCallingIdentity();
-        try {
-            return DeviceConfig.getBoolean(
-                    DeviceConfig.NAMESPACE_PRIVACY,
-                    PROPERTY_SAFETY_CENTER_ENABLED,
-                    /* defaultValue = */ false);
-        } finally {
-            Binder.restoreCallingIdentity(callingId);
-        }
-    }
-
-    private boolean getShowErrorEntriesOnTimeout() {
-        // This call requires the READ_DEVICE_CONFIG permission.
-        final long callingId = Binder.clearCallingIdentity();
-        try {
-            return DeviceConfig.getBoolean(
-                    DeviceConfig.NAMESPACE_PRIVACY, PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT, false);
-        } finally {
-            Binder.restoreCallingIdentity(callingId);
-        }
-    }
-
-    private Duration getRefreshTimeout() {
-        // This call requires the READ_DEVICE_CONFIG permission.
-        final long callingId = Binder.clearCallingIdentity();
-        try {
-            return Duration.ofMillis(
-                    DeviceConfig.getLong(
-                            DeviceConfig.NAMESPACE_PRIVACY,
-                            PROPERTY_REFRESH_SOURCE_TIMEOUT_MILLIS,
-                            REFRESH_SOURCE_TIMEOUT_DEFAULT_DURATION.toMillis()));
-        } finally {
-            Binder.restoreCallingIdentity(callingId);
-        }
-    }
-
-    private Duration getResolvingActionTimeout() {
-        // This call requires the READ_DEVICE_CONFIG permission.
-        final long callingId = Binder.clearCallingIdentity();
-        try {
-            return Duration.ofMillis(
-                    DeviceConfig.getLong(
-                            DeviceConfig.NAMESPACE_PRIVACY,
-                            PROPERTY_RESOLVING_ACTION_TIMEOUT_MILLIS,
-                            RESOLVING_ACTION_TIMEOUT_DEFAULT_DURATION.toMillis()));
-        } finally {
-            Binder.restoreCallingIdentity(callingId);
-        }
     }
 
     private void registerUserRemovedReceiver() {

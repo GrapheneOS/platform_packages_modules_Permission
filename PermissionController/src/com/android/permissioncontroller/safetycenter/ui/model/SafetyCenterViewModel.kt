@@ -24,8 +24,6 @@ import android.safetycenter.SafetyCenterIssue
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.DefaultLifecycleObserver
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
@@ -33,7 +31,6 @@ abstract class SafetyCenterViewModel(protected val app: Application) : AndroidVi
 
     abstract val safetyCenterLiveData: LiveData<SafetyCenterData>
     abstract val errorLiveData: LiveData<SafetyCenterErrorDetails>
-    val autoRefreshManager = AutoRefreshManager()
 
     abstract fun dismissIssue(issue: SafetyCenterIssue)
 
@@ -45,13 +42,7 @@ abstract class SafetyCenterViewModel(protected val app: Application) : AndroidVi
 
     abstract fun navigateToSafetyCenter(fragment: Fragment)
 
-    protected abstract fun refresh()
+    abstract fun pageOpen()
 
-    inner class AutoRefreshManager : DefaultLifecycleObserver {
-        // TODO(b/222323674): We may need to do this in onResume to cover certain edge cases.
-        // i.e. FMD changed from quick settings while SC is open
-        override fun onStart(owner: LifecycleOwner) {
-            refresh()
-        }
-    }
+    abstract fun changingConfigurations()
 }
