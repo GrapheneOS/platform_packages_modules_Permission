@@ -110,6 +110,9 @@ java_sdk_library {
         "service-permission-shared",
         "service-permission-streaming-proto-java-gen",
     ],
+    errorprone: {
+        javacflags: ["-Xep:GuardedBy:ERROR"],
+    },
     exclude_kotlinc_generated_files: true,
     jarjar_rules: ":permission-jarjar-rules",
     kotlincflags: [
