@@ -253,9 +253,26 @@
            parent="android:Widget.DeviceDefault">
         <item name="android:layout_marginStart">16dp</item>
         <item name="android:layout_marginEnd">16dp</item>
-        <item name="android:paddingEnd">24dp</item>
+        <item name="android:paddingEnd">@dimen/safety_center_entry_padding_end</item>
         <item name="android:paddingTop">20dp</item>
         <item name="android:paddingBottom">20dp</item>
+    </style>
+
+    <style name="SafetyCenter.EntryCard.Divider"
+        parent="android:Widget.DeviceDefault">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">28dp</item>
+        <item name="android:background">?android:attr/textColorSecondary</item>
+    </style>
+
+    <style name="SafetyCenter.EntryCard.IconAction"
+        parent="android:Widget.DeviceDefault.Button.Borderless">
+        <item name="android:layout_width">68dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:paddingEnd">@dimen/safety_center_entry_padding_end</item>
+        <item name="android:background">@drawable/safety_entry_icon_action_background</item>
     </style>
 
     <style name="SafetyCenter.GroupHeader"
