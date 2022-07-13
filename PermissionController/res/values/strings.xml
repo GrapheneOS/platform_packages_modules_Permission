@@ -1363,7 +1363,7 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="sscopes_open_settings">Open settings</string>
 
     <string name="sscopes_disabled_footer">
-"When enabled, this app will assume that it has the “Files and media“ permission, despite not actually having it.
+"When enabled, this app will assume that it has a storage access permission, despite not actually having it.
 The app will see only those files that were created by it.
 
 Optionally, you can specify which additional files and folders it can see."
