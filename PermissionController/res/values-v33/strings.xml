@@ -41,4 +41,10 @@
     <string name="safety_center_qs_status_summary">Review your settings</string>
     <!--Label for the button that takes the user to Safety center in case of pending actions [CHAR LIMIT=NONE] -->
     <string name="safety_center_review_settings_button">Review settings</string>
+
+    <!-- Content description for the Gear icon -->
+    <string name="safety_center_gear_label">Settings</string>
+    <!-- Content description for the Information icon -->
+    <string name="safety_center_info_label">Information</string>
+
 </resources>

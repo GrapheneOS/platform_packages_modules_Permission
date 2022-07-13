@@ -26,6 +26,7 @@ import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC
 import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY
 import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_STATIC
 import android.safetycenter.config.SafetySourcesGroup
+import android.safetycenter.cts.testing.SettingsPackage.getSettingsPackageName
 
 /**
  * A class that provides [SafetyCenterConfig] objects and associated constants to facilitate setting
@@ -323,7 +324,7 @@ object SafetyCenterCtsConfigs {
     val STATIC_ALL_PROFILE_SOURCES_CONFIG =
         SafetyCenterConfig.Builder().addSafetySourcesGroup(STATIC_ALL_PROFILE_SOURCE_GROUP).build()
 
-    /** [SafetyCenterConfig] using in CTS tests for Your Work Policy Info source. */
+    /** [SafetyCenterConfig] used in CTS tests for Your Work Policy Info source. */
     fun Context.getWorkPolicyInfoConfig() =
         SafetyCenterConfig.Builder()
             .addSafetySourcesGroup(
@@ -337,6 +338,19 @@ object SafetyCenterCtsConfigs {
                             .setProfile(SafetySource.PROFILE_PRIMARY)
                             .setRefreshOnPageOpenAllowed(true)
                             .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_HIDDEN)
+                            .build())
+                    .build())
+            .build()
+
+    /** [SafetyCenterConfig] used in CTS tests to replicate the lock screen source. */
+    fun Context.getLockScreenSourceConfig() =
+        SafetyCenterConfig.Builder()
+            .addSafetySourcesGroup(
+                safetySourcesGroupBuilder("AndroidLockScreenSources")
+                    .addSafetySource(
+                        dynamicSafetySourceBuilder("AndroidLockScreen")
+                            .setPackageName(getSettingsPackageName())
+                            .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_DISABLED)
                             .build())
                     .build())
             .build()

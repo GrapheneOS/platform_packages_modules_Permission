@@ -24,9 +24,11 @@ import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.app.PendingIntent;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Resources;
 import android.icu.text.ListFormatter;
 import android.icu.text.MessageFormat;
 import android.icu.util.ULocale;
@@ -88,7 +90,9 @@ final class SafetyCenterDataTracker {
 
     private static final String TAG = "SafetyCenterDataTracker";
 
-    private static final String ANDROID_LOCK_SCREEN_SOURCES_ID = "AndroidLockScreenSources";
+    private static final String ANDROID_LOCK_SCREEN_SOURCES_GROUP_ID = "AndroidLockScreenSources";
+    private static final String ANDROID_LOCK_SCREEN_SOURCE_ID = "AndroidLockScreen";
+    private static final int ANDROID_LOCK_SCREEN_ICON_ACTION_REQ_CODE = 86;
 
     private static final SafetyCenterIssuesBySeverityDescending
             SAFETY_CENTER_ISSUES_BY_SEVERITY_DESCENDING =
@@ -301,11 +305,17 @@ final class SafetyCenterDataTracker {
     }
 
     /**
-     * Clears all safety source errors received so far, this is useful e.g. when starting a new
-     * broadcast.
+     * Clears all safety source errors received so far for the given {@link UserProfileGroup}, this
+     * is useful e.g. when starting a new broadcast.
      */
-    void clearSafetySourceErrors() {
-        mSafetySourceErrors.clear();
+    void clearSafetySourceErrors(@NonNull UserProfileGroup userProfileGroup) {
+        // Loop in reverse index order to be able to remove entries while iterating.
+        for (int i = mSafetySourceErrors.size() - 1; i >= 0; i--) {
+            SafetySourceKey sourceKey = mSafetySourceErrors.valueAt(i);
+            if (userProfileGroup.contains(sourceKey.getUserId())) {
+                mSafetySourceErrors.removeAt(i);
+            }
+        }
     }
 
     /**
@@ -475,6 +485,13 @@ final class SafetyCenterDataTracker {
             SafetySourceKey sourceKey = mSafetySourceDataForKey.keyAt(i);
             if (sourceKey.getUserId() == userId) {
                 mSafetySourceDataForKey.removeAt(i);
+            }
+        }
+        // Loop in reverse index order to be able to remove entries while iterating.
+        for (int i = mSafetySourceErrors.size() - 1; i >= 0; i--) {
+            SafetySourceKey sourceKey = mSafetySourceErrors.valueAt(i);
+            if (sourceKey.getUserId() == userId) {
+                mSafetySourceErrors.removeAt(i);
             }
         }
         // Loop in reverse index order to be able to remove entries while iterating.
@@ -995,7 +1012,7 @@ final class SafetyCenterDataTracker {
                         break;
                     }
                 }
-            } else if (safetySourcesGroup.getId().equals(ANDROID_LOCK_SCREEN_SOURCES_ID)
+            } else if (safetySourcesGroup.getId().equals(ANDROID_LOCK_SCREEN_SOURCES_GROUP_ID)
                     && TextUtils.isEmpty(groupSummary)) {
                 List<CharSequence> titles = new ArrayList<>();
                 for (int i = 0; i < entries.size(); i++) {
@@ -1098,12 +1115,16 @@ final class SafetyCenterDataTracker {
                                     .setSeverityUnspecifiedIconType(severityUnspecifiedIconType)
                                     .setPendingIntent(pendingIntent);
                     SafetySourceStatus.IconAction iconAction = safetySourceStatus.getIconAction();
-                    if (iconAction != null) {
-                        builder.setIconAction(
-                                new SafetyCenterEntry.IconAction(
-                                        toSafetyCenterEntryIconActionType(iconAction.getIconType()),
-                                        iconAction.getPendingIntent()));
+                    if (iconAction == null) {
+                        return builder.build();
                     }
+                    PendingIntent iconActionPendingIntent =
+                            toIconActionPendingIntent(
+                                    safetySource.getId(), iconAction.getPendingIntent());
+                    builder.setIconAction(
+                            new SafetyCenterEntry.IconAction(
+                                    toSafetyCenterEntryIconActionType(iconAction.getIconType()),
+                                    iconActionPendingIntent));
                     return builder.build();
                 }
                 return toDefaultSafetyCenterEntry(
@@ -1350,6 +1371,79 @@ final class SafetyCenterDataTracker {
                     context, 0, new Intent(intentAction), PendingIntent.FLAG_IMMUTABLE);
         } finally {
             Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Potentially overrides the Settings IconAction PendingIntent for the AndroidLockScreen source.
+     *
+     * <p>This is done because of a bug in the Settings app where the PendingIntent created ends up
+     * referencing the one from the main entry. The reason for this is that PendingIntent instances
+     * are cached and keyed by an object which does not take into account the underlying intent
+     * extras; and these two intents only differ by the extras that they set. We fix this issue by
+     * recreating the desired Intent and PendingIntent here, using a specific request code for the
+     * PendingIntent to ensure a new instance is created (the key does take into account the request
+     * code).
+     */
+    @NonNull
+    private PendingIntent toIconActionPendingIntent(
+            @NonNull String sourceId, @NonNull PendingIntent pendingIntent) {
+        if (!ANDROID_LOCK_SCREEN_SOURCE_ID.equals(sourceId)) {
+            return pendingIntent;
+        }
+        if (!SafetyCenterFlags.getReplaceLockScreenIconAction()) {
+            return pendingIntent;
+        }
+        String packageName = pendingIntent.getCreatorPackage();
+        UserHandle userHandle = pendingIntent.getCreatorUserHandle();
+        PendingIntent pendingIntentOverride =
+                createLockScreenIconActionPendingIntentOverride(
+                        packageName, userHandle.getIdentifier());
+        if (pendingIntentOverride == null) {
+            return pendingIntent;
+        }
+        return pendingIntentOverride;
+    }
+
+    @Nullable
+    private PendingIntent createLockScreenIconActionPendingIntentOverride(
+            @NonNull String settingsPackageName, @UserIdInt int userId) {
+        Context packageContext = toPackageContextAsUser(settingsPackageName, userId);
+        if (packageContext == null) {
+            return null;
+        }
+        Resources settingsResources = packageContext.getResources();
+        int hasSettingsFixedIssueResourceId =
+                settingsResources.getIdentifier(
+                        "config_isSafetyCenterLockScreenPendingIntentFixed",
+                        "bool",
+                        settingsPackageName);
+        if (hasSettingsFixedIssueResourceId != Resources.ID_NULL) {
+            boolean hasSettingsFixedIssue =
+                    settingsResources.getBoolean(hasSettingsFixedIssueResourceId);
+            if (hasSettingsFixedIssue) {
+                return null;
+            }
+        }
+        Intent intent =
+                new Intent(Intent.ACTION_MAIN)
+                        .setComponent(
+                                new ComponentName(
+                                        settingsPackageName, settingsPackageName + ".SubSettings"))
+                        .putExtra(
+                                ":settings:show_fragment",
+                                settingsPackageName + ".security.screenlock.ScreenLockSettings")
+                        .putExtra(":settings:source_metrics", 1917)
+                        .putExtra("page_transition_type", 0);
+        final long callingId = Binder.clearCallingIdentity();
+        try {
+            return PendingIntent.getActivity(
+                    packageContext,
+                    ANDROID_LOCK_SCREEN_ICON_ACTION_REQ_CODE,
+                    intent,
+                    PendingIntent.FLAG_IMMUTABLE);
+        } finally {
+            Binder.restoreCallingIdentity(callingId);
         }
     }
 
