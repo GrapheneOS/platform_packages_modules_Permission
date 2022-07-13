@@ -49,6 +49,8 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -58,6 +60,7 @@ import com.android.permissioncontroller.permission.ui.model.v33.SafetyCenterQsVi
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.permissioncontroller.safetycenter.ui.SafetyCenterDashboardFragment;
+import com.android.permissioncontroller.safetycenter.ui.SafetyCenterTouchTarget;
 
 import com.google.android.material.button.MaterialButton;
 
@@ -150,7 +153,10 @@ public class SafetyCenterQsFragment extends Fragment {
             mRootView.setVisibility(View.GONE);
         }
         root.setBackgroundColor(android.R.color.background_dark);
-        root.findViewById(R.id.close_button).setOnClickListener((v) -> requireActivity().finish());
+        View closeButton = root.findViewById(R.id.close_button);
+        closeButton.setOnClickListener((v) -> requireActivity().finish());
+        SafetyCenterTouchTarget.configureSize(
+                closeButton, R.dimen.safety_center_icon_button_touch_target_size);
 
         View securitySettings = root.findViewById(R.id.security_settings_button);
         securitySettings.setOnClickListener((v) -> mViewModel.navigateToSecuritySettings(this));
@@ -162,6 +168,11 @@ public class SafetyCenterQsFragment extends Fragment {
         securitySettings.findViewById(R.id.arrow_icon).setVisibility(View.VISIBLE);
         ((ImageView) securitySettings.findViewById(R.id.arrow_icon))
                 .setImageDrawable(mContext.getDrawable(R.drawable.forward_arrow));
+        ViewCompat.replaceAccessibilityAction(
+                securitySettings,
+                AccessibilityNodeInfoCompat.AccessibilityActionCompat.ACTION_CLICK,
+                mContext.getString(R.string.safety_center_qs_open_action),
+                null);
 
         getChildFragmentManager()
                 .beginTransaction()
@@ -525,6 +536,18 @@ public class SafetyCenterQsFragment extends Fragment {
             blockedStatus.setTextColor(colorSecondary);
             groupLabel.setTextColor(colorPrimary);
             iconView.setImageDrawable(icon);
+
+            int contentDescriptionResId = R.string.safety_center_qs_privacy_control;
+            toggle.setContentDescription(
+                    mContext.getString(
+                            contentDescriptionResId,
+                            groupLabel.getText(),
+                            blockedStatus.getText()));
+            ViewCompat.replaceAccessibilityAction(
+                    toggle,
+                    AccessibilityNodeInfoCompat.AccessibilityActionCompat.ACTION_CLICK,
+                    mContext.getString(R.string.safety_center_qs_toggle_action),
+                    null);
         }
     }
 
