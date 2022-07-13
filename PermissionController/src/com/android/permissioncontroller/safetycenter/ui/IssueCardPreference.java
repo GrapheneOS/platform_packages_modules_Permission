@@ -26,6 +26,8 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.safetycenter.SafetyCenterIssue;
 import android.text.TextUtils;
 import android.util.Log;
@@ -53,6 +55,8 @@ import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 
 import com.google.android.material.button.MaterialButton;
 
+import java.util.Objects;
+
 /** A preference that displays a card representing a {@link SafetyCenterIssue}. */
 @RequiresApi(TIRAMISU)
 public class IssueCardPreference extends Preference implements ComparablePreference {
@@ -63,11 +67,13 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
     private final SafetyCenterIssue mIssue;
     private final FragmentManager mDialogFragmentManager;
     private final SafetyCenterIssueId mDecodedIssueId;
+    @Nullable private String mResolvedIssueActionId;
 
     public IssueCardPreference(
             Context context,
             SafetyCenterViewModel safetyCenterViewModel,
             SafetyCenterIssue issue,
+            @Nullable String resolvedIssueActionId,
             FragmentManager dialogFragmentManager) {
         super(context);
         setLayoutResource(R.layout.preference_issue_card);
@@ -76,6 +82,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
         mIssue = requireNonNull(issue);
         mDialogFragmentManager = dialogFragmentManager;
         mDecodedIssueId = SafetyCenterIds.issueIdFromString(mIssue.getId());
+        mResolvedIssueActionId = resolvedIssueActionId;
     }
 
     @Override
@@ -85,7 +92,8 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
         configureDismissButton(holder.findViewById(R.id.issue_card_dismiss_btn));
 
         ((TextView) holder.findViewById(R.id.issue_card_title)).setText(mIssue.getTitle());
-        ((TextView) holder.findViewById(R.id.issue_card_summary)).setText(mIssue.getSummary());
+        TextView issueCardSummary = (TextView) holder.findViewById(R.id.issue_card_summary);
+        issueCardSummary.setText(mIssue.getSummary());
 
         CharSequence subtitle = mIssue.getSubtitle();
         TextView subtitleTextView = (TextView) holder.findViewById(R.id.issue_card_subtitle);
@@ -94,20 +102,22 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
             subtitleTextView.setVisibility(View.GONE);
             contentDescription =
                     getContext()
-                        .getString(
-                                R.string.safety_center_issue_card_content_description,
-                                mIssue.getTitle(),
-                                mIssue.getSummary());
+                            .getString(
+                                    R.string.safety_center_issue_card_content_description,
+                                    mIssue.getTitle(),
+                                    mIssue.getSummary());
         } else {
             subtitleTextView.setText(subtitle);
             subtitleTextView.setVisibility(View.VISIBLE);
+            int contentDescriptionResId =
+                    R.string.safety_center_issue_card_content_description_with_subtitle;
             contentDescription =
                     getContext()
-                        .getString(
-                                R.string.safety_center_issue_card_content_description_with_subtitle,
-                                mIssue.getTitle(),
-                                mIssue.getSubtitle(),
-                                mIssue.getSummary());
+                            .getString(
+                                    contentDescriptionResId,
+                                    mIssue.getTitle(),
+                                    mIssue.getSubtitle(),
+                                    mIssue.getSummary());
         }
         holder.itemView.setContentDescription(contentDescription);
         holder.itemView.setClickable(false);
@@ -120,6 +130,26 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
             buttonList.addView(
                     buildActionButton(action, holder.itemView.getContext(), isFirstButton));
             isFirstButton = false;
+
+            // TODO(b/237368717): implement issue resolution confirmation UI
+            if (mResolvedIssueActionId != null && mResolvedIssueActionId.equals(action.getId())) {
+                CharSequence successMessage = action.getSuccessMessage();
+                if (TextUtils.isEmpty(successMessage)) {
+                    issueCardSummary.setText(R.string.safety_center_issue_resolution_fallback);
+                } else {
+                    issueCardSummary.setText(successMessage);
+                }
+
+                // TODO(b/237368717): remove once confirmation ui animation is implemented
+                new Handler(Looper.myLooper())
+                        .postDelayed(
+                                () -> {
+                                    mResolvedIssueActionId = null;
+                                    mSafetyCenterViewModel.markIssueResolvedUiCompleted(
+                                            mIssue.getId());
+                                },
+                                5000);
+            }
         }
 
         mSafetyCenterViewModel
@@ -161,7 +191,10 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
     @Override
     public boolean hasSameContents(@NonNull Preference preference) {
         return (preference instanceof IssueCardPreference)
-                && mIssue.equals(((IssueCardPreference) preference).mIssue);
+                && mIssue.equals(((IssueCardPreference) preference).mIssue)
+                && Objects.equals(
+                        mResolvedIssueActionId,
+                        ((IssueCardPreference) preference).mResolvedIssueActionId);
     }
 
     private class DismissOnClickListener implements View.OnClickListener {

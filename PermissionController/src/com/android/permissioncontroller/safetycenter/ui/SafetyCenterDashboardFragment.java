@@ -53,11 +53,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.permissioncontroller.Constants;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.safetycenter.ui.model.LiveSafetyCenterViewModelFactory;
+import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterUiData;
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Map;
 
 /** Dashboard fragment for the Safety Center. */
 @RequiresApi(TIRAMISU)
@@ -172,7 +173,7 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
             mStaticEntriesGroup = null;
         }
 
-        mViewModel.getSafetyCenterLiveData().observe(this, this::renderSafetyCenterData);
+        mViewModel.getSafetyCenterUiLiveData().observe(this, this::renderSafetyCenterData);
         mViewModel.getErrorLiveData().observe(this, this::displayErrorDetails);
 
         getPreferenceManager()
@@ -222,8 +223,9 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
         return mViewModel;
     }
 
-    private void renderSafetyCenterData(@Nullable SafetyCenterData data) {
-        if (data == null) return;
+    private void renderSafetyCenterData(@Nullable SafetyCenterUiData uiData) {
+        if (uiData == null) return;
+        SafetyCenterData data = uiData.getSafetyCenterData();
 
         Log.i(TAG, String.format("renderSafetyCenterData called with: %s", data));
 
@@ -237,7 +239,7 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
 
         // TODO(b/208212820): Only update entries that have changed since last
         // update, rather than deleting and re-adding all.
-        updateIssues(context, data.getIssues());
+        updateIssues(context, data.getIssues(), uiData.getResolvedIssues());
         if (!mIsQuickSettingsFragment) {
             updateSafetyEntries(context, data.getEntriesOrGroups());
             updateStaticSafetyEntries(context, data.getStaticEntryGroups());
@@ -274,19 +276,16 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
         mViewModel.clearError();
     }
 
-    private void updateIssues(Context context, List<SafetyCenterIssue> issues) {
+    private void updateIssues(
+            Context context, List<SafetyCenterIssue> issues, Map<String, String> resolvedIssues) {
         mIssuesGroup.removeAll();
-        List<IssueCardPreference> issueCardPreferenceList =
-                issues.stream()
-                        .map(
-                                issue ->
-                                        new IssueCardPreference(
-                                                context,
-                                                mViewModel,
-                                                issue,
-                                                getChildFragmentManager()))
-                        .collect(Collectors.toUnmodifiableList());
-        mCollapsableIssuesCardHelper.addIssues(context, mIssuesGroup, issueCardPreferenceList);
+        mCollapsableIssuesCardHelper.addIssues(
+                context,
+                mViewModel,
+                getChildFragmentManager(),
+                mIssuesGroup,
+                issues,
+                resolvedIssues);
     }
 
     // TODO(b/208212820): Add groups and move to separate controller
