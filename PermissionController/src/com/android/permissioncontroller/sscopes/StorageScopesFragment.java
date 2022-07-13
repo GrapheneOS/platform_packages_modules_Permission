@@ -241,11 +241,13 @@ public final class StorageScopesFragment extends SettingsWithLargeHeader {
             }
 
             footer.setSummary(summary.toString());
-            // TODO
-            if (false) footer.setLearnMoreAction((v) -> {
-                String link = "https://grapheneos.org/usage";
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(link)));
-            });
+
+            if (scopes == null || scopes.length == 0) {
+                footer.setLearnMoreAction((v) -> {
+                    String link = "https://grapheneos.org/usage#storage-access";
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(link)));
+                });
+            }
         }
         addOrRemove(footer, addFooter);
 
