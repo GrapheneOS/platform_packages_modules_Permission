@@ -509,6 +509,7 @@
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Ketepikan"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Batal"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"Tetapan"</string>
+    <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"Status keselamatan dan privasi. <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>. <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"Tetapan Keselamatan"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Kebenaran Penderia"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Kawalan Privasi"</string>
@@ -547,5 +548,4 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Apl ini tidak menyokong versi terkini Android. Jika apl ini tidak boleh mengakses fail muzik dan audio, apl ini juga akan tidak dibenarkan untuk mengakses foto dan video."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Apl ini tidak menyokong versi terkini Android. Jika apl ini boleh mengakses foto dan video, apl ini juga akan dibenarkan untuk mengakses fail muzik dan audio."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Apl ini tidak menyokong versi terkini Android. Jika apl ini tidak boleh mengakses fail muzik dan audio, apl ini juga akan tidak dibenarkan untuk mengakses foto dan video."</string>
-    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"Tutup"</string>
 </resources>

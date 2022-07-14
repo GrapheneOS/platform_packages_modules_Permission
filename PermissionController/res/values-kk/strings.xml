@@ -55,10 +55,10 @@
     <string name="unused_apps" msgid="2058057455175955094">"Пайдаланылмайтын қолданбалар"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"Пайдаланылмайтын қолданбалар жоқ"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"0 пайдаланылмайтын қолданба бар"</string>
-    <string name="review_permission_decisions" msgid="309559429150613632">"Рұқсаттары бар әрекеттер"</string>
+    <string name="review_permission_decisions" msgid="309559429150613632">"Рұқсат беру әрекеттері"</string>
     <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Рұқсаттары бар соңғы барлық әрекетті көру"</string>
     <string name="review_permission_decisions_empty" msgid="8120775336417279806">"Рұқсаттары бар соңғы әрекеттер жоқ"</string>
-    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Күнтізбе, қоңырау журналдары және т.б. деректерін пайдалануды басқару"</string>
+    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Күнтізбе, қоңырау журналдары және т.б. деректерін пайдалануды реттеңіз."</string>
     <string name="granted_permission_decision" msgid="7824827491551861365">"<xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасына <xliff:g id="PERMISSION_NAME">%2$s</xliff:g> рұқсатын пайдалануға мүмкіндік бердіңіз."</string>
     <string name="denied_permission_decision" msgid="5308961501779563781">"<xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасына <xliff:g id="PERMISSION_NAME">%2$s</xliff:g> рұқсатын пайдалануға тыйым салдыңыз."</string>
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Бүгін}=1{1 күн бұрын}other{# күн бұрын}}"</string>
@@ -509,6 +509,7 @@
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Жабу"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Бас тарту"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"Параметрлер"</string>
+    <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"Қауіпсіздік пен құпиялылық күйі. <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>. <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"Қауіпсіздік параметрлері"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Датчик пайдалану рұқсаттары"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Құпиялылық параметрлері"</string>
@@ -547,5 +548,4 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Бұл қолданба Android жүйесінің соңғы нұсқасын қолдамайды. Егер осы қолданба музыканы және аудиофайлдарды пайдалана алмаса, онда ол фотосуреттерді және бейнелерді пайдалана алмайтын болады."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Бұл қолданба Android жүйесінің соңғы нұсқасын қолдамайды. Егер осы қолданба фотосуреттерді және бейнелерді пайдалана алса, онда ол музыканы, аудиожазбаларды пайдалана алатын болады."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Бұл қолданба Android жүйесінің соңғы нұсқасын қолдамайды. Егер осы қолданба музыканы және аудиофайлдарды пайдалана алмаса, онда ол фотосуреттерді және бейнелерді пайдалана алмайтын болады."</string>
-    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"Жабу"</string>
 </resources>

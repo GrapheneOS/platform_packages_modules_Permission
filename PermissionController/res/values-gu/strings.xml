@@ -509,6 +509,7 @@
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"છોડી દો"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"રદ કરો"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"સેટિંગ"</string>
+    <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"સુરક્ષા અને પ્રાઇવસીનું સ્ટેટસ. <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>. <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"સુરક્ષા સેટિંગ"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"સેન્સર સંબંધિત પરવાનગીઓ"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"પ્રાઇવસીને લગતાં નિયંત્રણો"</string>
@@ -547,5 +548,4 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"આ ઍપ Androidના નવીનતમ વર્ઝનને સપોર્ટ કરતી નથી. જો આ ઍપ મ્યુઝિક અને ઑડિયો ફાઇલોને ઍક્સેસ કરી શકતી ન હોય, તો તેને ફોટા અને વીડિયોને પણ ઍક્સેસ કરવાની મંજૂરી આપવામાં આવશે નહીં."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"આ ઍપ Androidના નવીનતમ વર્ઝનને સપોર્ટ કરતી નથી. જો આ ઍપ ફોટા અને વીડિયોને ઍક્સેસ કરી શકતી હોય, તો તેને મ્યુઝિક અને ઑડિયો ફાઇલોને પણ ઍક્સેસ કરવાની મંજૂરી આપવામાં આવશે."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"આ ઍપ Androidના નવીનતમ વર્ઝનને સપોર્ટ કરતી નથી. જો આ ઍપ મ્યુઝિક અને ઑડિયો ફાઇલોને ઍક્સેસ કરી શકતી ન હોય, તો તેને ફોટા અને વીડિયોને પણ ઍક્સેસ કરવાની મંજૂરી આપવામાં આવશે નહીં."</string>
-    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"બંધ કરો"</string>
 </resources>

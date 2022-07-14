@@ -509,6 +509,7 @@
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"ច្រានចោល"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"បោះបង់"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"ការកំណត់"</string>
+    <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"ស្ថានភាពសុវត្ថិភាព និង​ឯកជនភាព។ <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>។ <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"ការកំណត់​សុវត្ថិភាព"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"ការអនុញ្ញាតឧបករណ៍ចាប់សញ្ញា"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"ការគ្រប់គ្រង​ឯកជនភាព"</string>
@@ -547,5 +548,4 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"កម្មវិធីនេះ​មិនស្គាល់កំណែ​ចុងក្រោយបំផុត​របស់ Android ទេ។ ប្រសិនបើ​កម្មវិធីនេះ​មិនអាចចូលប្រើ​ឯកសារសំឡេង និង​តន្ត្រីបានទេ នោះវាក៏នឹង​មិនត្រូវបានអនុញ្ញាត​ឱ្យចូលប្រើ​រូបថត និង​វីដេអូ​ផងដែរ។"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"កម្មវិធីនេះ​មិនស្គាល់កំណែ​ចុងក្រោយបំផុត​របស់ Android ទេ។ ប្រសិនបើ​កម្មវិធីនេះ​អាចចូលប្រើ​រូបថត និង​វីដេអូបាន នោះវាក៏នឹង​ត្រូវបានអនុញ្ញាតឱ្យ​ចូលប្រើ​ឯកសារសំឡេង និងតន្ត្រី​ផងដែរ។"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"កម្មវិធីនេះ​មិនស្គាល់កំណែ​ចុងក្រោយបំផុត​របស់ Android ទេ។ ប្រសិនបើ​កម្មវិធីនេះ​មិនអាចចូលប្រើ​ឯកសារសំឡេង និង​តន្ត្រីបានទេ នោះវាក៏នឹង​មិនត្រូវបានអនុញ្ញាត​ឱ្យចូលប្រើ​រូបថត និង​វីដេអូ​ផងដែរ។"</string>
-    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"បិទ"</string>
 </resources>

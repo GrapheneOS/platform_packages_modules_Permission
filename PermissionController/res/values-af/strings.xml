@@ -509,6 +509,7 @@
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Maak toe"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Kanselleer"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"Instellings"</string>
+    <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"Sekuriteit- en privaatheidstatus. <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>. <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"Sekuriteitinstellings"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Sensortoestemmings"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Privaatheidkontroles"</string>
@@ -547,5 +548,4 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Hierdie program steun nie die jongste weergawe van Android nie. As hierdie program nie toegang tot musiek- en oudiolêers het nie, sal dit ook nie toegelaat word om toegang tot foto\'s en video\'s te kry nie."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Hierdie program steun nie die jongste weergawe van Android nie. As hierdie program toegang tot foto\'s en video\'s het, sal dit ook toegelaat word toegang tot musiek-, oudio- en ander lêers te kry."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Hierdie program steun nie die jongste weergawe van Android nie. As hierdie program nie toegang tot musiek- en oudiolêers het nie, sal dit ook nie toegelaat word om toegang tot foto\'s en video\'s te kry nie."</string>
-    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"Maak toe"</string>
 </resources>

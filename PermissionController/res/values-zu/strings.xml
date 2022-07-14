@@ -82,7 +82,7 @@
     <string name="menu_show_24_hours_data" msgid="8228054833323380780">"Bonisa amahora angama-24"</string>
     <string name="manage_permission" msgid="2895385393037061964">"Phatha izimvume"</string>
     <string name="no_apps" msgid="2412612731628386816">"Azikho izinhlelo zokusebenza"</string>
-    <string name="location_settings" msgid="3624412509133422562">"Izilungiselelo Zendawo"</string>
+    <string name="location_settings" msgid="3624412509133422562">"Amasethingi Endawo"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> ingumhlinzeki wamasevisi wendawo kule divayisi. Ukufinyelela kwendawo kungashintshwa kusuka kuzilungiselelo zendawo."</string>
     <string name="system_warning" msgid="1173400963234358816">"Uma unqabela le mvume, izici eziyisisekelo zedivayisi yakho zingahle zingasasebenzi njengoba zihlosiwe."</string>
     <string name="deny_read_media_visual_warning" msgid="3982586279917232827">"Le app iklanyelwe uhlobo lwakudala le-Android. Uma unqabela le app ukufinyelela izithombe namavidiyo, ukufinyelela kumculo nokunye okulalelwayo nakho kuzonqatshelwa."</string>
@@ -509,6 +509,7 @@
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Chitha"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Khansela"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"Amasethingi"</string>
+    <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"Isimo sokuvikeleka nobumfihlo. <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>. <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"Amasethingi wokuvikeleka"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Izimvume Zenzwa"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Izilawuli Zokwemfihlo"</string>
@@ -547,5 +548,4 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Le app ayilusekeli uhlobo lwakamuva le-Android. Uma le app ingakwazi ukufinyelela umculo nomsindo kumafayela, ngeke ivunyelwe nokufinyelela izithombe namavidiyo."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Le app ayilusekeli uhlobo lwakamuva le-Android. Uma le app ikwazi ukufinyelela izithombe namavidiyo, izovunyelwa nokufinyelela umculo namanye amafayela omsindo."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Le app ayilusekeli uhlobo lwakamuva le-Android. Uma le app ingakwazi ukufinyelela umculo nomsindo kumafayela, ngeke ivunyelwe nokufinyelela izithombe namavidiyo."</string>
-    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"Vala"</string>
 </resources>

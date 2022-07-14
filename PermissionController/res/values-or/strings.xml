@@ -19,14 +19,14 @@
     <string name="app_name" msgid="6098036489833144040">"ଅନୁମତି ନିୟନ୍ତ୍ରକ"</string>
     <string name="ok" msgid="1936281769725676272">"ଓକେ"</string>
     <string name="permission_search_keyword" msgid="1214451577494730543">"ଅନୁମତିଗୁଡ଼ିକ"</string>
-    <string name="cancel" msgid="8943320028373963831">"ବାତିଲ୍‌ କରନ୍ତୁ"</string>
+    <string name="cancel" msgid="8943320028373963831">"ବାତିଲ କରନ୍ତୁ"</string>
     <string name="back" msgid="6249950659061523680">"ପଛକୁ ଫେରନ୍ତୁ"</string>
     <string name="available" msgid="6007778121920339498">"ଉପଲବ୍ଧ ଅଛି"</string>
     <string name="blocked" msgid="9195547604866033708">"ବ୍ଲକ କରାଯାଇଛି"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"ଅନଇନଷ୍ଟଲ୍ କରନ୍ତୁ କିମ୍ବା ଅକ୍ଷମ କରନ୍ତୁ"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"ଆପ୍‍ ମିଳିଲା ନାହିଁ"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"ଅନୁମତି ଦିଅନ୍ତୁ ନାହିଁ"</string>
-    <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"ଅନୁମତି ଦିଅନ୍ତୁ ନାହିଁ ଏବଂ ପୁଣ ପଚାରନ୍ତୁ ନାହିଁ"</string>
+    <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"ଅନୁମତି ଦିଅନ୍ତୁ ନାହିଁ ଏବଂ ପୁଣି ପଚାରନ୍ତୁ ନାହିଁ"</string>
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“ଆପଟି ବ୍ୟବହାରରେ ଥିବା ସମୟରେ”କୁ ରଖନ୍ତୁ"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"“କେବଳ ଏହି ସମୟ” ରଖନ୍ତୁ"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"ଅଧିକ ସୂଚନା"</string>
@@ -37,7 +37,7 @@
     <string name="permission_add_background_warning_template" msgid="1812914855915092273">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ସବୁବେଳେ <xliff:g id="ACTION">%2$s</xliff:g>କୁ ଅନୁମତି ଦେବେ?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"କେବଳ ଆପ୍‍ ବ୍ୟବହାର ସମୟରେ"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"ସର୍ବଦା"</string>
-    <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"ଅନୁମତି ଦିଅନ୍ତୁ ନାହିଁ ଏବଂ ପୁଣ ପଚାରନ୍ତୁ ନାହିଁ"</string>
+    <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"ଅନୁମତି ଦିଅନ୍ତୁ ନାହିଁ ଏବଂ ପୁଣି ପଚାରନ୍ତୁ ନାହିଁ"</string>
     <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g> ଅନୁମତି ଅକ୍ଷମ କରାଯାଇଛି"</string>
     <string name="permission_revoked_all" msgid="3397649017727222283">"ସମସ୍ତ ଅନୁମତି ଅକ୍ଷମ କରାଯାଇଛି"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"କୌଣସି ଅନୁମତି ଅକ୍ଷମ କରାଯାଇନାହିଁ"</string>
@@ -114,7 +114,7 @@
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"ୱିୟର୍‌ରେ ଇନଷ୍ଟଲ୍‍/ଅନଇନଷ୍ଟଲ୍‍ କାର୍ଯ୍ୟଗୁଡ଼ିକ ସମର୍ଥନ କରେନାହିଁ।"</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ଆକ୍ସେସ୍‍ କରିବା ପାଇଁ କେଉଁସବୁ ଅନୁମତି ଦିଆଯିବ, ତାହା ବାଛନ୍ତୁ"</string>
     <string name="permission_review_title_template_update" msgid="3232333580548588657">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ଅପଡେଟ୍‍ କରାଯାଇଛି। ଏହି ଆପ୍‍ କେଉଁସବୁ ଆକ୍ସେସ୍‍ କରିପାରିବ, ତାହା ବାଛନ୍ତୁ।"</string>
-    <string name="review_button_cancel" msgid="2191147944056548886">"ବାତିଲ୍ କରନ୍ତୁ"</string>
+    <string name="review_button_cancel" msgid="2191147944056548886">"ବାତିଲ କରନ୍ତୁ"</string>
     <string name="review_button_continue" msgid="2527918375047602199">"ଜାରି ରଖନ୍ତୁ"</string>
     <string name="new_permissions_category" msgid="552995090178417611">"ନୂଆ ଅନୁମତିଗୁଡ଼ିକ"</string>
     <string name="current_permissions_category" msgid="4292990083585728880">"ବର୍ତ୍ତମାନର ଅନୁମତିଗୁଡ଼ିକ"</string>
@@ -507,8 +507,9 @@
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"ଖାରଜ କରନ୍ତୁ"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"ଏହି ଆଲର୍ଟକୁ ଖାରଜ କରିବେ?"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"ଖାରଜ କରନ୍ତୁ"</string>
-    <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"ବାତିଲ୍ କରନ୍ତୁ"</string>
+    <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"ବାତିଲ କରନ୍ତୁ"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"ସେଟିଂସ"</string>
+    <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"ସୁରକ୍ଷା ଏବଂ ଗୋପନୀୟତା ସ୍ଥିତି। <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>। <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"ସୁରକ୍ଷା ସେଟିଂସ"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"ସେନ୍ସର ଅନୁମତିଗୁଡ଼ିକ"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"ଗୋପନୀୟତା ନିୟନ୍ତ୍ରଣଗୁଡ଼ିକ"</string>
@@ -547,5 +548,4 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"ଏହି ଆପ Androidର ନବୀନତମ ସଂସ୍କରଣକୁ ସମର୍ଥନ କରେ ନାହିଁ। ଯଦି ଏହି ଆପ ମ୍ୟୁଜିକ ଏବଂ ଅଡିଓ ଫାଇଲଗୁଡ଼ିକୁ ଆକ୍ସେସ କରିପାରିବ ନାହିଁ, ତେବେ ଫଟୋ ଏବଂ ଭିଡିଓଗୁଡ଼ିକୁ ମଧ୍ୟ ଆକ୍ସେସ କରିବା ପାଇଁ ଏହାକୁ ଅନୁମତି ଦିଆଯିବ ନାହିଁ।"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"ଏହି ଆପ Androidର ନବୀନତମ ସଂସ୍କରଣକୁ ସମର୍ଥନ କରେ ନାହିଁ। ଯଦି ଏହି ଆପ ଫଟୋ ଏବଂ ଭିଡିଓଗୁଡ଼ିକୁ ଆକ୍ସେସ କରିପାରିବ, ତେବେ ମ୍ୟୁଜିକ ଏବଂ ଅଡିଓ ଫାଇଲଗୁଡ଼ିକୁ ମଧ୍ୟ ଆକ୍ସେସ କରିବା ପାଇଁ ଏହାକୁ ଅନୁମତି ଦିଆଯିବ।"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"ଏହି ଆପ Androidର ନବୀନତମ ସଂସ୍କରଣକୁ ସମର୍ଥନ କରେ ନାହିଁ। ଯଦି ଏହି ଆପ ମ୍ୟୁଜିକ ଏବଂ ଅଡିଓ ଫାଇଲଗୁଡ଼ିକୁ ଆକ୍ସେସ କରିପାରିବ ନାହିଁ, ତେବେ ଫଟୋ ଏବଂ ଭିଡିଓଗୁଡ଼ିକୁ ମଧ୍ୟ ଆକ୍ସେସ କରିବା ପାଇଁ ଏହାକୁ ଅନୁମତି ଦିଆଯିବ ନାହିଁ।"</string>
-    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"ବନ୍ଦ କରନ୍ତୁ"</string>
 </resources>

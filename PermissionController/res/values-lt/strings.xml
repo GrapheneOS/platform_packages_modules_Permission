@@ -509,6 +509,7 @@
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Atsisakyti"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Atšaukti"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"Nustatymai"</string>
+    <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"Saugos ir privatumo būsena. <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>. <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"Saugos nustatymai"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Jutiklių leidimai"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Privatumo valdikliai"</string>
@@ -547,5 +548,4 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Ši programa nepalaiko naujausios „Android“ versijos. Jei ši programa negali pasiekti muzikos ir garso failų, ji taip pat negalės pasiekti nuotraukų ir vaizdo įrašų."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Ši programa nepalaiko naujausios „Android“ versijos. Jei ši programa gali pasiekti nuotraukas ir vaizdo įrašus, ji taip pat galės pasiekti muzikos ir garso failus."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Ši programa nepalaiko naujausios „Android“ versijos. Jei ši programa negali pasiekti muzikos ir garso failų, ji taip pat negalės pasiekti nuotraukų ir vaizdo įrašų."</string>
-    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"Uždaryti"</string>
 </resources>
