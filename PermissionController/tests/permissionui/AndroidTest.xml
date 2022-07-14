@@ -21,6 +21,7 @@
     <option name="test-suite-tag" value="apct-instrumentation" />
     <option name="test-tag" value="PermissionUiTestCases" />
     <object type="module_controller" class="com.android.tradefed.testtype.suite.module.Sdk30ModuleController" />
+    <option name="config-descriptor:metadata" key="mainline-param" value="com.google.android.permission.apex" />
 
     <!-- Install test -->
     <target_preparer class="com.android.tradefed.targetprep.TestAppInstallSetup">

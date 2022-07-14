@@ -16,6 +16,16 @@
       "name": "CtsSafetyCenterTestCases"
     }
   ],
+  "mainline-presubmit": [
+    {
+      "name": "CtsSafetyCenterTestCases[com.google.android.permission.apex]",
+      "options": [
+        {
+          "exclude-annotation": "android.platform.test.annotations.FlakyTest"
+        }
+      ]
+    }
+  ],
   "postsubmit": [
     {
       "name": "CtsPermissionTestCases",
