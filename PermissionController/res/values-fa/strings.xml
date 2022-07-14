@@ -264,7 +264,7 @@
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"مجاز فقط برای دسترسی به رسانه‌ها"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"مجاز برای مدیریت همه فایل‌ها"</string>
     <string name="ask_header" msgid="2633816846459944376">"هربار پرسیده شود"</string>
-    <string name="denied_header" msgid="903209608358177654">"مجاز نیست"</string>
+    <string name="denied_header" msgid="903209608358177654">"اجازه ندادن"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> روز</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> روز</item>

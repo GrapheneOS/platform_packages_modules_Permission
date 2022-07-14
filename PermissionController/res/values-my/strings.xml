@@ -127,7 +127,7 @@
     </plurals>
     <plurals name="duration_used_minutes" formatted="false" msgid="3422338854436291744">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> မိနစ်</item>
-      <item quantity="one">1 မိနစ်</item>
+      <item quantity="one">၁ မိနစ်</item>
     </plurals>
     <plurals name="duration_used_seconds" formatted="false" msgid="2726799598314248110">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> စက္ကန့်</item>

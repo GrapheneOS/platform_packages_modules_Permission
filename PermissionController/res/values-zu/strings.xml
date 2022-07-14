@@ -71,7 +71,7 @@
     <string name="menu_hide_system" msgid="3855390843744028465">"Fihla isistimu"</string>
     <string name="manage_permission" msgid="2895385393037061964">"Phatha izimvume"</string>
     <string name="no_apps" msgid="2412612731628386816">"Azikho izinhlelo zokusebenza"</string>
-    <string name="location_settings" msgid="3624412509133422562">"Izilungiselelo Zendawo"</string>
+    <string name="location_settings" msgid="3624412509133422562">"Amasethingi Endawo"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> ingumhlinzeki wamasevisi wendawo kule divayisi. Ukufinyelela kwendawo kungashintshwa kusuka kuzilungiselelo zendawo."</string>
     <string name="system_warning" msgid="1173400963234358816">"Uma unqabela le mvume, izici eziyisisekelo zedivayisi yakho zingahle zingasasebenzi njengoba zihlosiwe."</string>
     <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"Uma unqabela le mvume, ezinye izici zedivayisi yakho eziphethwe yile app zingase zingasasebenzi njengoba kuhlosiwe."</string>
