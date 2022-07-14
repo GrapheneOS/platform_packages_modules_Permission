@@ -1624,9 +1624,6 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <!-- Message for media confirm dialog (when user denies visual group of q_to_s app) [CHAR LIMIT=NONE] -->
     <string name="media_confirm_dialog_message_q_to_s_visual_deny">This app doesn\u2019t support the latest version of Android. If this app can\u2019t access music and audio files, it also won\u2019t be allowed to access photos and videos.</string>
 
-    <!-- Content description for close button of the security and privacy quick settings [CHAR LIMIT=NONE] -->
-    <string name="security_privacy_qs_close_button">Close</string>
-
     <!-- TODO: b/231974769: Title for background location access reminder notification [CHAR LIMIT=60] [DO NOT TRANSLATE] -->
     <string name="safety_center_background_location_access_notification_title">Review app with background location access</string>
     <!-- TODO: b/231974769: Content for background location access reminder notification [CHAR LIMIT=80] [DO NOT TRANSLATE]-->

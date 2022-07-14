@@ -172,7 +172,7 @@ public final class SafetyCenterService extends SystemService {
                 mConfigAvailable = mSafetyCenterConfigReader.loadConfig();
                 if (mConfigAvailable) {
                     readSafetyCenterIssueCacheFileLocked();
-                    registerUserRemovedReceiver();
+                    registerUserChangesReceiver();
                 }
             }
         }
@@ -297,29 +297,7 @@ public final class SafetyCenterService extends SystemService {
                     || !checkApiEnabled("refreshSafetySources")) {
                 return;
             }
-
-            UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
-
-            List<Broadcast> broadcasts;
-            String refreshBroadcastId;
-
-            synchronized (mApiLock) {
-                broadcasts = mSafetyCenterConfigReader.getBroadcasts();
-                mSafetyCenterDataTracker.clearSafetySourceErrors(userProfileGroup);
-                refreshBroadcastId =
-                        mSafetyCenterRefreshTracker.reportRefreshInProgress(
-                                refreshReason, userProfileGroup);
-
-                RefreshTimeout refreshTimeout =
-                        new RefreshTimeout(refreshBroadcastId, userProfileGroup);
-                mSafetyCenterTimeouts.add(refreshTimeout, SafetyCenterFlags.getRefreshTimeout());
-
-                mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
-                        userProfileGroup, true, null);
-            }
-
-            mSafetyCenterBroadcastDispatcher.sendRefreshSafetySources(
-                    broadcasts, refreshBroadcastId, refreshReason, userProfileGroup);
+            startRefreshingSafetySources(refreshReason, userId);
         }
 
         @Override
@@ -851,9 +829,11 @@ public final class SafetyCenterService extends SystemService {
         return mDeviceSupportsSafetyCenter && mConfigAvailable;
     }
 
-    private void registerUserRemovedReceiver() {
+    private void registerUserChangesReceiver() {
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(Intent.ACTION_USER_REMOVED);
+        intentFilter.addAction(Intent.ACTION_MANAGED_PROFILE_AVAILABLE);
+        intentFilter.addAction(Intent.ACTION_MANAGED_PROFILE_UNAVAILABLE);
         getContext()
                 .registerReceiverForAllUsers(
                         new BroadcastReceiver() {
@@ -867,6 +847,24 @@ public final class SafetyCenterService extends SystemService {
                                                             Intent.EXTRA_USER, UserHandle.class)
                                                     .getIdentifier();
                                     onRemoveUser(userId);
+                                }
+                                if (TextUtils.equals(
+                                        intent.getAction(),
+                                        Intent.ACTION_MANAGED_PROFILE_UNAVAILABLE)) {
+                                    int userId =
+                                            intent.getParcelableExtra(
+                                                            Intent.EXTRA_USER, UserHandle.class)
+                                                    .getIdentifier();
+                                    onEnableQuietMode(userId);
+                                }
+                                if (TextUtils.equals(
+                                        intent.getAction(),
+                                        Intent.ACTION_MANAGED_PROFILE_AVAILABLE)) {
+                                    int userId =
+                                            intent.getParcelableExtra(
+                                                            Intent.EXTRA_USER, UserHandle.class)
+                                                    .getIdentifier();
+                                    onDisableQuietMode(userId);
                                 }
                             }
                         },
@@ -884,6 +882,38 @@ public final class SafetyCenterService extends SystemService {
             mSafetyCenterListeners.deliverUpdateForUserProfileGroup(userProfileGroup, true, null);
             scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked();
         }
+    }
+
+    private void onEnableQuietMode(@UserIdInt int userId) {
+        onRemoveUser(userId);
+        startRefreshingSafetySources(SafetyCenterManager.REFRESH_REASON_OTHER, userId);
+    }
+
+    private void onDisableQuietMode(@UserIdInt int userId) {
+        startRefreshingSafetySources(SafetyCenterManager.REFRESH_REASON_OTHER, userId);
+    }
+
+    private void startRefreshingSafetySources(
+            @RefreshReason int refreshReason, @UserIdInt int userId) {
+        UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
+        List<Broadcast> broadcasts;
+        String refreshBroadcastId;
+        synchronized (mApiLock) {
+            broadcasts = mSafetyCenterConfigReader.getBroadcasts();
+            mSafetyCenterDataTracker.clearSafetySourceErrors(userProfileGroup);
+            refreshBroadcastId =
+                    mSafetyCenterRefreshTracker.reportRefreshInProgress(
+                            refreshReason, userProfileGroup);
+
+            RefreshTimeout refreshTimeout =
+                    new RefreshTimeout(refreshBroadcastId, userProfileGroup);
+            mSafetyCenterTimeouts.add(refreshTimeout, SafetyCenterFlags.getRefreshTimeout());
+
+            mSafetyCenterListeners.deliverUpdateForUserProfileGroup(userProfileGroup, true, null);
+        }
+
+        mSafetyCenterBroadcastDispatcher.sendRefreshSafetySources(
+                broadcasts, refreshBroadcastId, refreshReason, userProfileGroup);
     }
 
     /** Schedule writing the cache to file. */

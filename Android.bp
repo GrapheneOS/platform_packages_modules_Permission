@@ -60,8 +60,11 @@ filegroup {
 
 sdk {
     name: "permission-module-sdk",
-    bootclasspath_fragments: ["com.android.permission-bootclasspath-fragment"],
-    systemserverclasspath_fragments: ["com.android.permission-systemserverclasspath-fragment"],
+    apexes: [
+        // Adds exportable dependencies of the APEX to the sdk,
+        // e.g. *classpath_fragments.
+        "com.android.permission",
+    ],
 }
 
 // Encapsulate the contributions made by the com.android.permission to the bootclasspath.

@@ -139,6 +139,7 @@ android_app {
         "SettingsLibUtils",
         "modules-utils-build_system",
         "safety-center-resources-lib",
+        "lottie",
     ],
 
     proto: {

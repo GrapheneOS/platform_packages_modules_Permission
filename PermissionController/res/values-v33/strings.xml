@@ -39,6 +39,16 @@
 
     <!--Summary for safety center status card QS in case of pending actions [CHAR LIMIT=NONE] -->
     <string name="safety_center_qs_status_summary">Review your settings</string>
+    <!-- Content description for the safety center quick settings page landing [CHAR LIMIT=NONE] -->
+    <string name="safety_center_qs_page_landing">Security and Privacy quick settings</string>
+    <!-- Content description for close button of the safety center quick settings [CHAR LIMIT=NONE] -->
+    <string name="safety_center_qs_close_button">Close</string>
+    <!-- Content description for the privacy controls of the safety center quick settings [CHAR LIMIT=NONE] -->
+    <string name="safety_center_qs_privacy_control">Switch. %1$s. %2$s</string>
+    <!-- Label for toggling controls of the safety center quick settings [CHAR LIMIT=NONE] -->
+    <string name="safety_center_qs_toggle_action">Toggle</string>
+    <!-- Label for opening safety center from quick settings [CHAR LIMIT=NONE] -->
+    <string name="safety_center_qs_open_action">Open</string>
     <!--Label for the button that takes the user to Safety center in case of pending actions [CHAR LIMIT=NONE] -->
     <string name="safety_center_review_settings_button">Review settings</string>
 
