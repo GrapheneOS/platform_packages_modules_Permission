@@ -30,6 +30,8 @@ import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED
 import android.safetycenter.SafetySourceIssue
 import android.safetycenter.SafetySourceIssue.Action
 import android.safetycenter.SafetySourceStatus
+import android.safetycenter.SafetySourceStatus.IconAction
+import android.safetycenter.SafetySourceStatus.IconAction.ICON_TYPE_GEAR
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_ID
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.ACTION_HANDLE_DISMISSED_ISSUE
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.ACTION_HANDLE_INLINE_ACTION
@@ -106,6 +108,19 @@ class SafetySourceCtsData(private val context: Context) {
             .setStatus(
                 SafetySourceStatus.Builder("Ok title", "Ok summary", SEVERITY_LEVEL_INFORMATION)
                     .setPendingIntent(redirectPendingIntent)
+                    .build())
+            .build()
+
+    /**
+     * A [SafetySourceData] with a [SEVERITY_LEVEL_INFORMATION] [SafetySourceStatus] and an
+     * [IconAction] defined.
+     */
+    val informationWithIconAction =
+        SafetySourceData.Builder()
+            .setStatus(
+                SafetySourceStatus.Builder("Ok title", "Ok summary", SEVERITY_LEVEL_INFORMATION)
+                    .setPendingIntent(redirectPendingIntent)
+                    .setIconAction(IconAction(ICON_TYPE_GEAR, redirectPendingIntent))
                     .build())
             .build()
 
