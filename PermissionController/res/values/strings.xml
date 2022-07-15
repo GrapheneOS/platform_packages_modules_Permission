@@ -1530,9 +1530,9 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="blocked_sensor_button_label">Change</string>
 
     <!-- Title for page containing overall view of device safety status [CHAR LIMIT=30] -->
-    <string name="safety_center_dashboard_page_title">Security &amp; Privacy</string>
+    <string name="safety_center_dashboard_page_title">Security &amp; privacy</string>
     <!-- Label for the button that triggers a new scan for safety center data [CHAR LIMIT=60] -->
-    <string name="safety_center_rescan_button">Scan</string>
+    <string name="safety_center_rescan_button">Scan device</string>
     <!-- Content description for the button dismisses a safety center issue [CHAR LIMIT=NONE] -->
     <string name="safety_center_issue_card_dismiss_button">Dismiss</string>
     <!-- Title for a dialog confirming if a user wants to dismiss a safety center issue [CHAR LIMIT=NONE] -->
@@ -1549,18 +1549,28 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="security_settings">Security Settings</string>
     <!-- Label for the permission usage section of safety center QS page[CHAR LIMIT=30] -->
     <string name="sensor_permissions_qs">Sensor Permissions</string>
+    <!-- Title of the safety and privacy quick settings tile [CHAR LIMIT=NONE] -->
+    <string name="safety_privacy_qs_tile_title">Security &amp; privacy</string>
+    <!-- Subtitle of the safety and privacy quick settings tile [CHAR LIMIT=NONE] -->
+    <string name="safety_privacy_qs_tile_subtitle">Check status</string>
     <!-- Label for the privacy controls section of safety center QS page [CHAR LIMIT=30] -->
-    <string name="privacy_controls_qs">Privacy Controls</string>
+    <string name="privacy_controls_qs">Your privacy controls</string>
+    <!-- Label for the button that opens safety center in safety center QS page [CHAR LIMIT=30] -->
+    <string name="security_settings_button_label_qs">More settings</string>
+    <!-- Label for the toggle that changes camera access in safety center QS page [CHAR LIMIT=30] -->
+    <string name="camera_toggle_label_qs">Camera access</string>
+    <!-- Label for the toggle that changes microphone access in safety center QS page [CHAR LIMIT=30] -->
+    <string name="microphone_toggle_label_qs">Mic access</string>
     <!-- Label when permissions were removed via safety center QS page [CHAR LIMIT=30] -->
     <string name="permissions_removed_qs">Permission removed</string>
-    <!-- Label to see camera usage in safety center QS page [CHAR LIMIT=50] -->
-    <string name="camera_usage_qs">See more camera usage</string>
-    <!-- Label to see microphone usage in safety center QS page [CHAR LIMIT=50] -->
-    <string name="microphone_usage_qs">See more microphone usage</string>
-    <!-- Label to remove camera permission in safety center QS page [CHAR LIMIT=50] -->
-    <string name="remove_camera_qs">Remove camera permission</string>
-    <!-- Label to remove microphone permission in safety center QS page [CHAR LIMIT=50] -->
-    <string name="remove_microphone_qs">Remove microphone permission</string>
+    <!-- Label to see apps with camera access in safety center QS page [CHAR LIMIT=50] -->
+    <string name="camera_usage_qs">See apps with camera access</string>
+    <!-- Label to see apps with microphone access in safety center QS page [CHAR LIMIT=50] -->
+    <string name="microphone_usage_qs">See apps with mic access</string>
+    <!-- Label to remove camera permission for an app in safety center QS page [CHAR LIMIT=50] -->
+    <string name="remove_camera_qs">Remove permission for this app</string>
+    <!-- Label to remove microphone permission for an app in safety center QS page [CHAR LIMIT=50] -->
+    <string name="remove_microphone_qs">Remove permission for this app</string>
     <!-- Label to manage service in safety center QS page [CHAR LIMIT=50] -->
     <string name="manage_service_qs">Manage service</string>
     <!-- Label to manage permissions in safety center QS page [CHAR LIMIT=50] -->
@@ -1581,11 +1591,6 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="active_app_usage_2_qs">Being used by <xliff:g id="app_name" example="Gmail">%1$s</xliff:g> (<xliff:g id="attribution_label" example="For Wallet">%2$s</xliff:g>  \u2022 <xliff:g id="proxy_label" example="Speech services">%3$s</xliff:g>)</string>
     <!-- Label for recent app usage with sub-attribution and proxy label in safety center QS page [CHAR LIMIT=NONE] -->
     <string name="recent_app_usage_2_qs">Recently used by <xliff:g id="app_name" example="Gmail">%1$s</xliff:g> (<xliff:g id="attribution_label" example="For Wallet">%2$s</xliff:g>  \u2022 <xliff:g id="proxy_label" example="Speech services">%3$s</xliff:g>)</string>
-
-    <!-- Title of the safety and privacy quick settings tile [CHAR LIMIT=NONE] -->
-    <string name="safety_privacy_qs_tile_title">Security &amp; Privacy</string>
-    <!-- Subtitle of the safety and privacy quick settings tile [CHAR LIMIT=NONE] -->
-    <string name="safety_privacy_qs_tile_subtitle">Check status</string>
 
     <!-- Positive button for media confirm dialog [CHAR LIMIT=40] -->
     <string name="media_confirm_dialog_positive_button">Confirm</string>

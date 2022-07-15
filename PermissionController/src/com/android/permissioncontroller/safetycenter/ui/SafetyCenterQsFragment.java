@@ -161,7 +161,7 @@ public class SafetyCenterQsFragment extends Fragment {
         View securitySettings = root.findViewById(R.id.security_settings_button);
         securitySettings.setOnClickListener((v) -> mViewModel.navigateToSecuritySettings(this));
         ((TextView) securitySettings.findViewById(R.id.toggle_sensor_name))
-                .setText(R.string.settings);
+                .setText(R.string.security_settings_button_label_qs);
         securitySettings.findViewById(R.id.toggle_sensor_status).setVisibility(View.GONE);
         ((ImageView) securitySettings.findViewById(R.id.toggle_sensor_icon))
                 .setImageDrawable(mContext.getDrawable(R.drawable.settings_gear));
@@ -514,7 +514,7 @@ public class SafetyCenterQsFragment extends Fragment {
             }
 
             TextView groupLabel = toggle.findViewById(R.id.toggle_sensor_name);
-            groupLabel.setText(KotlinUtils.INSTANCE.getPermGroupLabel(mContext, groupName));
+            groupLabel.setText(getToggleLabel(groupName));
             TextView blockedStatus = toggle.findViewById(R.id.toggle_sensor_status);
             ImageView iconView = toggle.findViewById(R.id.toggle_sensor_icon);
             boolean sensorEnabled =
@@ -564,6 +564,16 @@ public class SafetyCenterQsFragment extends Fragment {
         mContext.getTheme().resolveAttribute(attribute, value, true);
         int colorRes = value.resourceId != 0 ? value.resourceId : value.data;
         return mContext.getColor(colorRes);
+    }
+
+    private CharSequence getToggleLabel(String permissionGroup) {
+        switch (permissionGroup) {
+            case MICROPHONE:
+                return mContext.getString(R.string.microphone_toggle_label_qs);
+            case CAMERA:
+                return mContext.getString(R.string.camera_toggle_label_qs);
+        }
+        return KotlinUtils.INSTANCE.getPermGroupLabel(mContext, permissionGroup);
     }
 
     private static int getRemovePermissionText(String permissionGroup) {
