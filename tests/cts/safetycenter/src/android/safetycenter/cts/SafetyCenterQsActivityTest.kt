@@ -68,12 +68,12 @@ class SafetyCenterQsActivityTest {
             PermissionManager.EXTRA_PERMISSION_USAGES, ArrayList<PermissionGroupUsage>())
         context.launchSafetyCenterQsActivity(bundle) {
             // Verify page landing descriptions
-            waitFindObject(By.desc("Security and Privacy quick settings"))
+            waitFindObject(By.desc("Security and privacy quick settings"))
             waitFindObject(By.desc("Close"))
 
             // Verify privacy controls descriptions
-            waitFindObject(By.desc("Switch. Camera. Available"))
-            waitFindObject(By.desc("Switch. Microphone. Available"))
+            waitFindObject(By.desc("Switch. Camera access. Available"))
+            waitFindObject(By.desc("Switch. Mic access. Available"))
             waitFindObject(By.desc("Switch. Location. Available"))
         }
     }

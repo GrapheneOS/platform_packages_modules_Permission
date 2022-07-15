@@ -93,7 +93,7 @@ class SafetyCenterActivityTest {
     fun launchActivity_withFlagEnabled_showsSecurityAndPrivacyTitle() {
         context.launchSafetyCenterActivity {
             // CollapsingToolbar title can't be found by text, so using description instead.
-            waitFindObject(By.desc("Security & Privacy"))
+            waitFindObject(By.desc("Security & privacy"))
         }
     }
 
@@ -193,7 +193,7 @@ class SafetyCenterActivityTest {
 
             assertSourceIssueNotDisplayed(safetySourceCtsData.informationIssue)
             assertSourceDataDisplayed(safetySourceCtsData.information)
-            findButton("Scan")
+            findButton("Scan device")
         }
     }
 
@@ -209,7 +209,7 @@ class SafetyCenterActivityTest {
             findButton("Dismiss").click()
 
             assertSourceIssueNotDisplayed(safetySourceCtsData.criticalResolvingIssue)
-            findButton("Scan")
+            findButton("Scan device")
         }
     }
 
@@ -231,7 +231,7 @@ class SafetyCenterActivityTest {
             findButton("Dismiss").click()
 
             assertSourceIssueNotDisplayed(safetySourceCtsData.criticalResolvingIssue)
-            findButton("Scan")
+            findButton("Scan device")
         }
     }
 
@@ -276,7 +276,7 @@ class SafetyCenterActivityTest {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.information)
 
-        context.launchSafetyCenterActivity { findButton("Scan") }
+        context.launchSafetyCenterActivity { findButton("Scan device") }
     }
 
     @Test
@@ -284,7 +284,7 @@ class SafetyCenterActivityTest {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.informationWithIssue)
 
-        context.launchSafetyCenterActivity { waitButtonNotDisplayed("Scan") }
+        context.launchSafetyCenterActivity { waitButtonNotDisplayed("Scan device") }
     }
 
     @Test

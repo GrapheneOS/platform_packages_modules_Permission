@@ -56,5 +56,5 @@
     <!-- Title for the overall Safety Center status when the user security and privacy signals could potentially put their account at risk [CHAR LIMIT=35] -->
     <string name="overall_severity_level_account_recommendation_title">Account may be at risk</string>
     <!-- Title for the overall Safety Center status when the user security and privacy signals are putting their account at risk [CHAR LIMIT=35] -->
-    <string name="overall_severity_level_critical_account_warning_title">Account at risk</string>
+    <string name="overall_severity_level_critical_account_warning_title">Account is at risk</string>
 </resources>

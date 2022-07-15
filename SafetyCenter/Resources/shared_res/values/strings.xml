@@ -26,7 +26,7 @@
     <string name="overall_severity_level_ok_title">Looks good</string>
 
     <!-- Summary for the overall Safety Center status when the user security and privacy signals are deemed to be safe [CHAR LIMIT=60] -->
-    <string name="overall_severity_level_ok_summary">This device is protected</string>
+    <string name="overall_severity_level_ok_summary">No problems found</string>
 
     <!-- Title for the overall Safety Center status when the user security and privacy signals are deemed to be safe, but the user has settings that may need their review [CHAR LIMIT=35] -->
     <string name="overall_severity_level_ok_review_title">Review settings</string>
