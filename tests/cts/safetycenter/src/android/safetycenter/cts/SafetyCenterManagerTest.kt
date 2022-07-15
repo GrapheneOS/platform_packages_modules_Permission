@@ -142,7 +142,7 @@ class SafetyCenterManagerTest {
     private val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)!!
 
     private val safetyCenterStatusOk =
-        SafetyCenterStatus.Builder("Looks good", "This device is protected")
+        SafetyCenterStatus.Builder("Looks good", "No problems found")
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_OK)
             .build()
 
