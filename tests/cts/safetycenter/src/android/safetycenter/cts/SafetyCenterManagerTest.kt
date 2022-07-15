@@ -147,7 +147,7 @@ class SafetyCenterManagerTest {
             .build()
 
     private val safetyCenterStatusOkScanning =
-        SafetyCenterStatus.Builder("Scanning", "Checking device status…")
+        SafetyCenterStatus.Builder("Scanning", "Checking device settings…")
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_OK)
             .setRefreshStatus(REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS)
             .build()
@@ -158,12 +158,12 @@ class SafetyCenterManagerTest {
             .build()
 
     private val safetyCenterStatusOkReviewOneAlert =
-        SafetyCenterStatus.Builder("Add more protection", "1 alert")
+        SafetyCenterStatus.Builder("Review settings", "1 alert")
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_OK)
             .build()
 
     private val safetyCenterStatusOkReview =
-        SafetyCenterStatus.Builder("Add more protection", "Check the settings below")
+        SafetyCenterStatus.Builder("Review settings", "Check settings list")
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_OK)
             .build()
 
@@ -1331,7 +1331,7 @@ class SafetyCenterManagerTest {
 
         val safetyCenterErrorDetailsFromListener = listener.receiveSafetyCenterErrorDetails()
         assertThat(safetyCenterErrorDetailsFromListener)
-            .isEqualTo(SafetyCenterErrorDetails("Couldn’t refresh status"))
+            .isEqualTo(SafetyCenterErrorDetails("Couldn’t refresh settings"))
     }
 
     @Test
@@ -1386,7 +1386,7 @@ class SafetyCenterManagerTest {
 
         val safetyCenterErrorDetailsFromListener = listener.receiveSafetyCenterErrorDetails()
         assertThat(safetyCenterErrorDetailsFromListener)
-            .isEqualTo(SafetyCenterErrorDetails("Couldn’t refresh status"))
+            .isEqualTo(SafetyCenterErrorDetails("Couldn’t refresh settings"))
     }
 
     @Test
@@ -1446,7 +1446,7 @@ class SafetyCenterManagerTest {
         val status1 = listener.receiveSafetyCenterData().status
         assertThat(status1.refreshStatus).isEqualTo(REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS)
         assertThat(status1.title.toString()).isEqualTo("Scanning")
-        assertThat(status1.summary.toString()).isEqualTo("Checking device status…")
+        assertThat(status1.summary.toString()).isEqualTo("Checking device settings…")
         val status2 = listener.receiveSafetyCenterData().status
         assertThat(status2.refreshStatus).isEqualTo(REFRESH_STATUS_NONE)
         assertThat(status2).isEqualTo(safetyCenterStatusOk)
@@ -1466,7 +1466,7 @@ class SafetyCenterManagerTest {
         val status1 = listener.receiveSafetyCenterData().status
         assertThat(status1.refreshStatus).isEqualTo(REFRESH_STATUS_DATA_FETCH_IN_PROGRESS)
         assertThat(status1.title.toString()).isEqualTo(safetyCenterStatusOk.title.toString())
-        assertThat(status1.summary.toString()).isEqualTo("Checking device status…")
+        assertThat(status1.summary.toString()).isEqualTo("Checking device settings…")
         val status2 = listener.receiveSafetyCenterData().status
         assertThat(status2.refreshStatus).isEqualTo(REFRESH_STATUS_NONE)
         assertThat(status2).isEqualTo(safetyCenterStatusOk)
@@ -2289,8 +2289,7 @@ class SafetyCenterManagerTest {
             safetyCenterManager.executeSafetyCenterIssueActionWithPermissionAndWait(
                 SafetyCenterCtsData.issueId(SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID),
                 SafetyCenterCtsData.issueActionId(
-                    SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID + "invalid", CRITICAL_ISSUE_ACTION_ID
-                ),
+                    SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID + "invalid", CRITICAL_ISSUE_ACTION_ID),
                 TIMEOUT_SHORT)
         }
 
@@ -2313,8 +2312,7 @@ class SafetyCenterManagerTest {
             safetyCenterManager.executeSafetyCenterIssueActionWithPermissionAndWait(
                 SafetyCenterCtsData.issueId(SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID),
                 SafetyCenterCtsData.issueActionId(
-                    SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID, CRITICAL_ISSUE_ACTION_ID + "invalid"
-                ),
+                    SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID, CRITICAL_ISSUE_ACTION_ID + "invalid"),
                 TIMEOUT_SHORT)
         }
 
@@ -2336,17 +2334,14 @@ class SafetyCenterManagerTest {
             safetyCenterManager.executeSafetyCenterIssueActionWithPermissionAndWait(
                 SafetyCenterCtsData.issueId(SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID),
                 SafetyCenterCtsData.issueActionId(
-                    SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID + "invalid", CRITICAL_ISSUE_ACTION_ID
-                ),
+                    SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID + "invalid", CRITICAL_ISSUE_ACTION_ID),
                 TIMEOUT_SHORT)
         }
 
         safetyCenterManager.executeSafetyCenterIssueActionWithPermissionAndWait(
             SafetyCenterCtsData.issueId(SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID),
             SafetyCenterCtsData.issueActionId(
-                SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID, CRITICAL_ISSUE_ACTION_ID
-            )
-        )
+                SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID, CRITICAL_ISSUE_ACTION_ID))
 
         val safetyCenterDataFromListenerDuringInlineAction = listener.receiveSafetyCenterData()
         assertThat(safetyCenterDataFromListenerDuringInlineAction)
@@ -2526,7 +2521,7 @@ class SafetyCenterManagerTest {
             .setSeverityUnspecifiedIconType(SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION)
 
     private fun safetyCenterEntryError(sourceId: String) =
-        safetyCenterEntryDefaultBuilder(sourceId).setSummary("Couldn’t check status").build()
+        safetyCenterEntryDefaultBuilder(sourceId).setSummary("Couldn’t check info").build()
 
     private fun safetyCenterEntryUnspecified(
         sourceId: String,
