@@ -5,6 +5,48 @@
             "options": [
                 {
                     "include-filter": "android.permission.cts.BackgroundPermissionsTest"
+                },
+                {
+                    "include-filter": "android.permission.cts.LocationAccessCheckTest"
+                },
+                {
+                    "include-filter": "android.permission.cts.NotificationListenerCheckTest"
+                },
+                {
+                    "include-filter": "android.permission.cts.OneTimePermissionTest"
+                },
+                {
+                    "include-filter": "android.permission.cts.PermissionControllerTest"
+                },
+                {
+                    "include-filter": "android.permission.cts.PlatformPermissionGroupMappingTest"
+                },
+                {
+                    "exclude-annotation": "android.platform.test.annotations.FlakyTest"
+                }
+            ]
+        },
+        {
+            "name": "PermissionUiTestCases",
+            "options": [
+                {
+                    "exclude-annotation": "android.platform.test.annotations.FlakyTest"
+                },
+                // TODO(b/238773220): These tests currently fails on R base image
+                {
+                    "exclude-filter": "com.android.permissioncontroller.permissionui.ui.handheld.ManageCustomPermissionsFragmentTest#groupSummaryGetsUpdatedWhenPermissionGetsGranted"
+                },
+                {
+                    "exclude-filter": "com.android.permissioncontroller.permissionui.ui.handheld.ManageCustomPermissionsFragmentTest#groupSummaryGetsUpdatedWhenPermissionGetsRevoked"
+                },
+                {
+                    "exclude-filter": "com.android.permissioncontroller.permissionui.ui.handheld.ManageStandardPermissionsFragmentTest#additionalPermissionSummaryGetUpdateWhenAppGetsInstalled"
+                },
+                {
+                    "exclude-filter": "com.android.permissioncontroller.permissionui.ui.handheld.ManageStandardPermissionsFragmentTest#additionalPermissionSummaryGetUpdateWhenDefinerGetsUninstalled"
+                },
+                {
+                    "exclude-filter": "com.android.permissioncontroller.permissionui.ui.handheld.ManageStandardPermissionsFragmentTest#additionalPermissionSummaryGetUpdateWhenUserGetsUninstalled"
                 }
             ]
         },
@@ -13,6 +55,12 @@
             "options": [
                 {
                     "include-filter": "android.os.cts.AutoRevokeTest"
+                },
+                {
+                    "include-filter": "android.os.cts.AppHibernationIntegrationTest"
+                },
+                {
+                    "exclude-annotation": "android.platform.test.annotations.FlakyTest"
                 }
             ]
         }
@@ -21,6 +69,84 @@
         {
             "name": "CtsPermission3TestCases",
             "options": [
+                {
+                    "exclude-annotation": "android.platform.test.annotations.FlakyTest"
+                }
+            ]
+        }
+    ],
+    "mainline-presubmit": [
+        {
+            "name": "CtsPermissionTestCases[com.google.android.permission.apex]",
+            "options": [
+                {
+                    "include-filter": "android.permission.cts.BackgroundPermissionsTest"
+                },
+                {
+                    "include-filter": "android.permission.cts.LocationAccessCheckTest"
+                },
+                {
+                    "include-filter": "android.permission.cts.NotificationListenerCheckTest"
+                },
+                {
+                    "include-filter": "android.permission.cts.OneTimePermissionTest"
+                },
+                {
+                    "include-filter": "android.permission.cts.PermissionControllerTest"
+                },
+                {
+                    "include-filter": "android.permission.cts.PlatformPermissionGroupMappingTest"
+                },
+                {
+                    "exclude-annotation": "android.platform.test.annotations.FlakyTest"
+                }
+            ]
+        },
+        {
+            "name": "CtsPermission3TestCases[com.google.android.permission.apex]",
+            "options": [
+                {
+                    "exclude-annotation": "android.platform.test.annotations.FlakyTest"
+                }
+            ]
+        },
+        {
+            "name": "PermissionUiTestCases[com.google.android.permission.apex]",
+            "options": [
+                {
+                    "exclude-annotation": "android.platform.test.annotations.FlakyTest"
+                },
+                // TODO(b/238773220): These tests currently fails on R base image
+                {
+                    "exclude-filter": "com.android.permissioncontroller.permissionui.ui.handheld.ManageCustomPermissionsFragmentTest#groupSummaryGetsUpdatedWhenPermissionGetsGranted"
+                },
+                {
+                    "exclude-filter": "com.android.permissioncontroller.permissionui.ui.handheld.ManageCustomPermissionsFragmentTest#groupSummaryGetsUpdatedWhenPermissionGetsRevoked"
+                },
+                {
+                    "exclude-filter": "com.android.permissioncontroller.permissionui.ui.handheld.ManageStandardPermissionsFragmentTest#additionalPermissionSummaryGetUpdateWhenAppGetsInstalled"
+                },
+                {
+                    "exclude-filter": "com.android.permissioncontroller.permissionui.ui.handheld.ManageStandardPermissionsFragmentTest#additionalPermissionSummaryGetUpdateWhenDefinerGetsUninstalled"
+                },
+                {
+                    "exclude-filter": "com.android.permissioncontroller.permissionui.ui.handheld.ManageStandardPermissionsFragmentTest#additionalPermissionSummaryGetUpdateWhenUserGetsUninstalled"
+                }
+            ]
+        },
+        {
+            "name": "CtsOsTestCases[com.google.android.permission.apex]",
+            "options": [
+                {
+                    "include-filter": "android.os.cts.AutoRevokeTest"
+                },
+                {
+                    "include-filter": "android.os.cts.AppHibernationIntegrationTest"
+                },
+                // TODO(b/238677038): This test currently fails on R base image
+                {
+                    "exclude-filter": "android.os.cts.AutoRevokeTest#testUnusedApp_uninstallApp"
+                },
                 {
                     "exclude-annotation": "android.platform.test.annotations.FlakyTest"
                 }
