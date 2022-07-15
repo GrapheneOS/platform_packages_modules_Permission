@@ -110,7 +110,6 @@
         <item name="android:gravity">center_horizontal</item>
         <item name="android:layout_marginEnd">16dp</item>
         <item name="android:drawablePadding">8dp</item>
-        <item name="android:gravity">center_horizontal</item>
     </style>
 
     <style name="PermissionLocationAccuracyRadioCoarse">
@@ -119,7 +118,6 @@
         <item name="android:gravity">center_horizontal</item>
         <item name="android:layout_marginStart">16dp</item>
         <item name="android:drawablePadding">8dp</item>
-        <item name="android:gravity">center_horizontal</item>
     </style>
 
     <style name="PermissionLocationAccuracyFineImageView">
