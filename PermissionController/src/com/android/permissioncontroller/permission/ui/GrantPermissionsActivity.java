@@ -31,6 +31,8 @@ import static com.android.permissioncontroller.permission.utils.Utils.getRequest
 
 import android.app.KeyguardManager;
 import android.content.Intent;
+import android.content.pm.AppPermissionUtils;
+import android.content.pm.GosPackageState;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.drawable.Icon;
@@ -205,6 +207,15 @@ public class GrantPermissionsActivity extends SettingsActivity
         }
         mOriginalRequestedPermissions = mRequestedPermissions;
 
+
+        String[] requestedPermissionsForViewModel = filterRequestedPermissionsForViewModel(
+                mTargetPackage, mRequestedPermissions);
+        if (requestedPermissionsForViewModel.length == 0) {
+            mForceResultDelivery = true;
+            setResultAndFinish();
+            return;
+        }
+
         synchronized (sCurrentGrantRequests) {
             mKey = new Pair<>(mTargetPackage, getTaskId());
             if (!sCurrentGrantRequests.containsKey(mKey)) {
@@ -243,7 +254,7 @@ public class GrantPermissionsActivity extends SettingsActivity
         }
 
         GrantPermissionsViewModelFactory factory = new GrantPermissionsViewModelFactory(
-                getApplication(), mTargetPackage, mRequestedPermissions, mSessionId, icicle);
+                getApplication(), mTargetPackage, requestedPermissionsForViewModel, mSessionId, icicle);
         mViewModel = factory.create(GrantPermissionsViewModel.class);
         mViewModel.getRequestInfosLiveData().observe(this, this::onRequestInfoLoad);
 
@@ -670,11 +681,20 @@ public class GrantPermissionsActivity extends SettingsActivity
                     ? mOriginalRequestedPermissions : new String[0];
             int[] grantResults = new int[resultPermissions.length];
 
-            if ((mDelegated || (mViewModel != null && mViewModel.shouldReturnPermissionState()))
+            if (mForceResultDelivery || (mDelegated || (mViewModel != null && mViewModel.shouldReturnPermissionState()))
                     && mTargetPackage != null) {
                 PackageManager pm = getPackageManager();
+
+                GosPackageState ps = GosPackageState.get(mTargetPackage);
+
                 for (int i = 0; i < resultPermissions.length; i++) {
                     grantResults[i] = pm.checkPermission(resultPermissions[i], mTargetPackage);
+
+                    if (ps != null && grantResults[i] != PackageManager.PERMISSION_GRANTED) {
+                        if (AppPermissionUtils.shouldSpoofPermissionRequestResult(ps, resultPermissions[i])) {
+                            grantResults[i] = PackageManager.PERMISSION_GRANTED;
+                        }
+                    }
                 }
             } else {
                 grantResults = new int[0];
@@ -786,5 +806,19 @@ public class GrantPermissionsActivity extends SettingsActivity
                 }
             }
         }
+    }
+
+    private boolean mForceResultDelivery;
+
+    private static String[] filterRequestedPermissionsForViewModel(String packageName, String[] requestedPermissions) {
+        GosPackageState ps = GosPackageState.get(packageName);
+
+        if (ps == null) {
+            return requestedPermissions;
+        }
+
+        return Arrays.stream(requestedPermissions)
+                .filter(perm -> !AppPermissionUtils.shouldSkipPermissionRequestDialog(ps, perm))
+                .toArray(String[]::new);
     }
 }
