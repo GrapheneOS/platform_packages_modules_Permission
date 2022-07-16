@@ -527,8 +527,8 @@
     <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"Der Zugriff auf andere Dateien ist ebenfalls nicht möglich"</string>
     <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"Der Zugriff auf Fotos und Videos ist ebenfalls möglich"</string>
     <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"Der Zugriff auf Fotos und Videos ist ebenfalls nicht möglich"</string>
-    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"Der Zugriff auf Musik- und Audiodateien ist ebenfalls möglich"</string>
-    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"Der Zugriff auf Musik- und Audiodateien ist ebenfalls nicht möglich"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"Der Zugriff auf Musik- und Audiodateien ist möglich"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"Der Zugriff auf Musik- und Audiodateien ist nicht möglich"</string>
     <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"Diese App unterstützt nicht die neueste Version von Android. Wenn diese App Zugriff auf Musik- und Audiodateien hat, kann sie auch auf Fotos, Videos und andere Dateien zugreifen."</string>
     <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"Diese App unterstützt nicht die neueste Version von Android. Wenn diese App keinen Zugriff auf Musik- und Audiodateien hat, kann sie auch nicht auf Fotos, Videos und andere Dateien zugreifen."</string>
     <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"Diese App unterstützt nicht die neueste Version von Android. Wenn diese App Zugriff auf Fotos und Videos hat, kann sie auch auf Musik- und Audiodateien sowie andere Dateien zugreifen."</string>
