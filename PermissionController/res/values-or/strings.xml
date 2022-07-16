@@ -19,7 +19,7 @@
     <string name="app_name" msgid="6098036489833144040">"ଅନୁମତି ନିୟନ୍ତ୍ରକ"</string>
     <string name="ok" msgid="1936281769725676272">"ଓକେ"</string>
     <string name="permission_search_keyword" msgid="1214451577494730543">"ଅନୁମତିଗୁଡ଼ିକ"</string>
-    <string name="cancel" msgid="8943320028373963831">"ବାତିଲ୍‌ କରନ୍ତୁ"</string>
+    <string name="cancel" msgid="8943320028373963831">"ବାତିଲ କରନ୍ତୁ"</string>
     <string name="back" msgid="6249950659061523680">"ପଛକୁ ଫେରନ୍ତୁ"</string>
     <string name="available" msgid="6007778121920339498">"ଉପଲବ୍ଧ ଅଛି"</string>
     <string name="blocked" msgid="9195547604866033708">"ବ୍ଲକ କରାଯାଇଛି"</string>
@@ -114,7 +114,7 @@
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"ୱିୟର୍‌ରେ ଇନଷ୍ଟଲ୍‍/ଅନଇନଷ୍ଟଲ୍‍ କାର୍ଯ୍ୟଗୁଡ଼ିକ ସମର୍ଥନ କରେନାହିଁ।"</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ଆକ୍ସେସ୍‍ କରିବା ପାଇଁ କେଉଁସବୁ ଅନୁମତି ଦିଆଯିବ, ତାହା ବାଛନ୍ତୁ"</string>
     <string name="permission_review_title_template_update" msgid="3232333580548588657">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ଅପଡେଟ୍‍ କରାଯାଇଛି। ଏହି ଆପ୍‍ କେଉଁସବୁ ଆକ୍ସେସ୍‍ କରିପାରିବ, ତାହା ବାଛନ୍ତୁ।"</string>
-    <string name="review_button_cancel" msgid="2191147944056548886">"ବାତିଲ୍ କରନ୍ତୁ"</string>
+    <string name="review_button_cancel" msgid="2191147944056548886">"ବାତିଲ କରନ୍ତୁ"</string>
     <string name="review_button_continue" msgid="2527918375047602199">"ଜାରି ରଖନ୍ତୁ"</string>
     <string name="new_permissions_category" msgid="552995090178417611">"ନୂଆ ଅନୁମତିଗୁଡ଼ିକ"</string>
     <string name="current_permissions_category" msgid="4292990083585728880">"ବର୍ତ୍ତମାନର ଅନୁମତିଗୁଡ଼ିକ"</string>

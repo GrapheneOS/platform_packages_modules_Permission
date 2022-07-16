@@ -82,7 +82,7 @@
     <string name="menu_show_24_hours_data" msgid="8228054833323380780">"Bonisa amahora angama-24"</string>
     <string name="manage_permission" msgid="2895385393037061964">"Phatha izimvume"</string>
     <string name="no_apps" msgid="2412612731628386816">"Azikho izinhlelo zokusebenza"</string>
-    <string name="location_settings" msgid="3624412509133422562">"Izilungiselelo Zendawo"</string>
+    <string name="location_settings" msgid="3624412509133422562">"Amasethingi Endawo"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> ingumhlinzeki wamasevisi wendawo kule divayisi. Ukufinyelela kwendawo kungashintshwa kusuka kuzilungiselelo zendawo."</string>
     <string name="system_warning" msgid="1173400963234358816">"Uma unqabela le mvume, izici eziyisisekelo zedivayisi yakho zingahle zingasasebenzi njengoba zihlosiwe."</string>
     <string name="deny_read_media_visual_warning" msgid="3982586279917232827">"Le app iklanyelwe uhlobo lwakudala le-Android. Uma unqabela le app ukufinyelela izithombe namavidiyo, ukufinyelela kumculo nokunye okulalelwayo nakho kuzonqatshelwa."</string>
