@@ -189,7 +189,7 @@
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Nepovoliť"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Presná poloha"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Približná poloha"</string>
-    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Použiť presnú polohu"</string>
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Používať presnú polohu"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Keď je presná poloha vypnutá, aplikácie majú prístup k vašej približnej polohe"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>: povolenie"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"<xliff:g id="PERM">%1$s</xliff:g>: prístup tejto aplikácie"</string>
@@ -481,7 +481,7 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Povolenia používané iba systémovými aplikáciami."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"Ďalšie povolenia"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"Povolenia definované aplikáciami."</string>
-    <string name="privdash_label_camera" msgid="1426440033626198096">"Fotoaparát"</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"Kamera"</string>
     <string name="privdash_label_microphone" msgid="8415035835803511693">"Mikrofón"</string>
     <string name="privdash_label_location" msgid="6882400763866489291">"Poloha"</string>
     <string name="privdash_label_other" msgid="3710394147423236033">"Iné"</string>
