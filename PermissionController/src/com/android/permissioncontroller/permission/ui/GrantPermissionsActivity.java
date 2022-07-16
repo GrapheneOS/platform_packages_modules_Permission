@@ -47,6 +47,8 @@ import android.app.KeyguardManager;
 import android.app.ecm.EnhancedConfirmationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.AppPermissionUtils;
+import android.content.pm.GosPackageState;
 import android.content.pm.PackageItemInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
@@ -363,12 +365,20 @@ public class GrantPermissionsActivity extends SettingsActivity
             return;
         }
 
+        List<String> requestedPermissionsForViewModel = filterRequestedPermissionsForViewModel(
+                mTargetPackage, mRequestedPermissions);
+        if (requestedPermissionsForViewModel.isEmpty()) {
+            mForceResultDelivery = true;
+            setResultAndFinish();
+            return;
+        }
+
         GrantPermissionsViewModelFactory factory =
                 new GrantPermissionsViewModelFactory(
                         getApplication(),
                         mTargetPackage,
                         mTargetDeviceId,
-                        mRequestedPermissions,
+                        requestedPermissionsForViewModel,
                         mSystemRequestedPermissions,
                         mSessionId,
                         icicle);
@@ -1188,11 +1198,18 @@ public class GrantPermissionsActivity extends SettingsActivity
             String[] resultPermissions = mOriginalRequestedPermissions;
             int[] grantResults = new int[resultPermissions.length];
 
-            if ((mDelegated || (mViewModel != null && mViewModel.shouldReturnPermissionState()))
+            if (mForceResultDelivery || (mDelegated || (mViewModel != null && mViewModel.shouldReturnPermissionState()))
                     && mTargetPackage != null) {
+                GosPackageState ps = GosPackageState.get(mTargetPackage, getUser());
                 for (int i = 0; i < resultPermissions.length; i++) {
                     String permission = resultPermissions[i];
                     grantResults[i] = mPackageManager.checkPermission(permission, mTargetPackage);
+
+                    if (grantResults[i] != PackageManager.PERMISSION_GRANTED) {
+                        if (AppPermissionUtils.shouldSpoofPermissionRequestResult(ps, permission)) {
+                            grantResults[i] = PackageManager.PERMISSION_GRANTED;
+                        }
+                    }
                 }
             } else {
                 grantResults = new int[0];
@@ -1381,5 +1398,15 @@ public class GrantPermissionsActivity extends SettingsActivity
                 "Permission Rationale does not support %s", permissionGroupName);
 
         return R.string.permission_rationale_message_location;
+    }
+
+    private boolean mForceResultDelivery;
+
+    private List<String> filterRequestedPermissionsForViewModel(String packageName, List<String> requestedPermissions) {
+        GosPackageState ps = GosPackageState.get(packageName, getUser());
+
+        return requestedPermissions.stream()
+                .filter(perm -> !AppPermissionUtils.shouldSkipPermissionRequestDialog(ps, perm))
+                .toList();
     }
 }
