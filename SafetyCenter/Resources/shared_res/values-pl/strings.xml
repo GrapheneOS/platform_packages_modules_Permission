@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  ~ Copyright (C) 2022 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+   -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="scanning_title" msgid="5424849039854311398">"Skanowanie"</string>
+    <string name="loading_summary" msgid="8287412091422889811">"Sprawdzam stan urządzenia…"</string>
+    <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"W porządku"</string>
+    <string name="overall_severity_level_ok_summary" msgid="255849804128707819">"To urządzenie jest chronione"</string>
+    <string name="overall_severity_level_ok_review_title" msgid="4870096573610601585">"Dodaj więcej zabezpieczeń"</string>
+    <string name="overall_severity_level_ok_review_summary" msgid="6674687043153844604">"Sprawdź te ustawienia"</string>
+    <string name="overall_severity_level_recommendation_title" msgid="5477942982532824601">"Urządzenie może być zagrożone"</string>
+    <string name="overall_severity_level_critical_warning_title" msgid="2043894328485989618">"Urządzenie jest zagrożone"</string>
+    <string name="overall_severity_n_alerts_summary" msgid="1105615451561197136">"{count,plural, =1{# alert}few{# alerty}many{# alertów}other{# alertu}}"</string>
+    <string name="redirecting_error" msgid="8146983632878233202">"Nie udało się otworzyć strony"</string>
+    <string name="resolving_action_error" msgid="371968886143262375">"Nie udało się rozwiązać problemu z alertu"</string>
+    <string name="refresh_timeout" msgid="5699772984139071348">"Nie udało się odświeżyć stanu"</string>
+    <!-- no translation found for refresh_error (2698996273941446865) -->
+    <skip />
+    <string name="work_profile_paused" msgid="7037400224040869079">"Wstrzymano profil służbowy"</string>
+</resources>
