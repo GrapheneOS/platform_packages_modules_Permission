@@ -20,19 +20,19 @@
     <string name="scanning_title">Scanning</string>
 
     <!-- Summary for the overall Safety Center status when we're loading the user security and privacy signals [CHAR LIMIT=60] -->
-    <string name="loading_summary">Checking device status…</string>
+    <string name="loading_summary">Checking device settings…</string>
 
     <!-- Title for the overall Safety Center status when the user security and privacy signals are deemed to be safe [CHAR LIMIT=35] -->
     <string name="overall_severity_level_ok_title">Looks good</string>
 
     <!-- Summary for the overall Safety Center status when the user security and privacy signals are deemed to be safe [CHAR LIMIT=60] -->
-    <string name="overall_severity_level_ok_summary">This device is protected</string>
+    <string name="overall_severity_level_ok_summary">No problems found</string>
 
-    <!-- Title for the overall Safety Center status when the user security and privacy signals are deemed to be safe, but the user has previously dismissed some warnings that may need their review [CHAR LIMIT=35] -->
-    <string name="overall_severity_level_ok_review_title">Add more protection</string>
+    <!-- Title for the overall Safety Center status when the user security and privacy signals are deemed to be safe, but the user has settings that may need their review [CHAR LIMIT=35] -->
+    <string name="overall_severity_level_ok_review_title">Review settings</string>
 
-    <!-- Summary for the overall Safety Center status when the user security and privacy signals are deemed to be safe, but the user has previously dismissed some warnings that may need their review [CHAR LIMIT=60] -->
-    <string name="overall_severity_level_ok_review_summary">Check the settings below</string>
+    <!-- Summary for the overall Safety Center status when the user security and privacy signals are deemed to be safe, but the user has settings that may need their review [CHAR LIMIT=60] -->
+    <string name="overall_severity_level_ok_review_summary">Check settings list</string>
 
     <!-- Title for the overall Safety Center status when the user security and privacy signals could potentially put them at risk [CHAR LIMIT=35] -->
     <string name="overall_severity_level_recommendation_title">Device may be at risk</string>
@@ -53,10 +53,10 @@
     <string name="resolving_action_error">Couldn\’t resolve alert</string>
 
     <!-- An error shown to the user when we failed to refresh the overall Safety Center status. This happens when at least one safety signal did not get back to Safety Center within an arbitrary timeout [CHAR LIMIT=50] -->
-    <string name="refresh_timeout">Couldn\’t refresh status</string>
+    <string name="refresh_timeout">Couldn\’t refresh settings</string>
 
     <!-- An error shown to the user when we failed to refresh the status of a Safety Center entry [CHAR LIMIT=60] -->
-    <string name="refresh_error">Couldn\’t check status</string>
+    <string name="refresh_error">Couldn\’t check info</string>
 
     <!-- The summary for sources supporting work profile shown to the user in quiet mode. [CHAR LIMIT=NONE] -->
     <string name="work_profile_paused">Work profile is paused</string>

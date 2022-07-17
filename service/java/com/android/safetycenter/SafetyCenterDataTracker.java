@@ -74,7 +74,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
-import java.util.Set;
 
 import javax.annotation.concurrent.NotThreadSafe;
 
@@ -722,7 +721,7 @@ final class SafetyCenterDataTracker {
         int safetyCenterOverallSeverityLevel = SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK;
         int safetyCenterEntriesSeverityLevel = SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK;
         List<SafetyCenterIssue> safetyCenterIssues = new ArrayList<>();
-        Set<Integer> allCurrentIssueCategories = new ArraySet<>();
+        ArraySet<Integer> allCurrentIssueCategories = new ArraySet<>();
         List<SafetyCenterEntryOrGroup> safetyCenterEntryOrGroups = new ArrayList<>();
         List<SafetyCenterStaticEntryGroup> safetyCenterStaticEntryGroups = new ArrayList<>();
         SafetyCenterOverallStatusErrorState safetyCenterOverallStatusErrorState =
@@ -796,7 +795,7 @@ final class SafetyCenterDataTracker {
     @SafetyCenterStatus.OverallSeverityLevel
     private int addSafetyCenterIssues(
             @NonNull List<SafetyCenterIssue> safetyCenterIssues,
-            @NonNull Set<Integer> allCurrentIssueCategories,
+            @NonNull ArraySet<Integer> allCurrentIssueCategories,
             @NonNull SafetySourcesGroup safetySourcesGroup,
             @NonNull UserProfileGroup userProfileGroup) {
         int safetyCenterIssuesOverallSeverityLevel = SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK;
@@ -843,7 +842,7 @@ final class SafetyCenterDataTracker {
     @SafetyCenterStatus.OverallSeverityLevel
     private int addSafetyCenterIssues(
             @NonNull List<SafetyCenterIssue> safetyCenterIssues,
-            @NonNull Set<Integer> allCurrentIssueCategories,
+            @NonNull ArraySet<Integer> allCurrentIssueCategories,
             @NonNull SafetySource safetySource,
             @UserIdInt int userId) {
         SafetySourceKey key = SafetySourceKey.of(safetySource.getId(), userId);
@@ -1590,7 +1589,7 @@ final class SafetyCenterDataTracker {
     private String getSafetyCenterStatusTitle(
             @SafetyCenterStatus.OverallSeverityLevel int overallSeverityLevel,
             @SafetyCenterStatus.RefreshStatus int refreshStatus,
-            @NonNull Set<Integer> allCurrentIssueCategories,
+            @NonNull ArraySet<Integer> allCurrentIssueCategories,
             boolean hasSettingsToReview) {
         String refreshStatusTitle = getSafetyCenterRefreshStatusTitle(refreshStatus);
         if (refreshStatusTitle != null) {

@@ -38,9 +38,9 @@
     <string name="safety_center_more_issues_expand_button_content_description">See all alerts</string>
 
     <!--Summary for safety center status card QS in case of pending actions [CHAR LIMIT=NONE] -->
-    <string name="safety_center_qs_status_summary">Review your settings</string>
+    <string name="safety_center_qs_status_summary">Check settings that can add protection to your device</string>
     <!-- Content description for the safety center quick settings page landing [CHAR LIMIT=NONE] -->
-    <string name="safety_center_qs_page_landing">Security and Privacy quick settings</string>
+    <string name="safety_center_qs_page_landing">Security and privacy quick settings</string>
     <!-- Content description for close button of the safety center quick settings [CHAR LIMIT=NONE] -->
     <string name="safety_center_qs_close_button">Close</string>
     <!-- Content description for the privacy controls of the safety center quick settings [CHAR LIMIT=NONE] -->

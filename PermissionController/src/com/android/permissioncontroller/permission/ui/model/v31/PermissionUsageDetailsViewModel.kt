@@ -36,16 +36,17 @@ import androidx.preference.PreferenceScreen
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.model.AppPermissionGroup
+import com.android.permissioncontroller.permission.model.legacy.PermissionApps.PermissionApp
 import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
 import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage.GroupUsage
 import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage.GroupUsage.AttributionLabelledGroupUsage
 import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage.TimelineUsage
 import com.android.permissioncontroller.permission.model.v31.PermissionUsages
-import com.android.permissioncontroller.permission.model.legacy.PermissionApps.PermissionApp
 import com.android.permissioncontroller.permission.ui.handheld.v31.getDurationUsedStr
 import com.android.permissioncontroller.permission.ui.handheld.v31.is7DayToggleEnabled
 import com.android.permissioncontroller.permission.ui.handheld.v31.shouldShowSubattributionInPermissionsDashboard
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPackageLabel
+import com.android.permissioncontroller.permission.utils.StringUtils
 import com.android.permissioncontroller.permission.utils.SubattributionUtils
 import com.android.permissioncontroller.permission.utils.Utils
 import java.time.Clock
@@ -461,28 +462,32 @@ class PermissionUsageDetailsViewModel(
      */
     private fun initializeTimeFilter(context: Context) {
         filterTimes.add(
-            TimeFilterItem(Long.MAX_VALUE,
-            context.getString(R.string.permission_usage_any_time))
+            TimeFilterItem(Long.MAX_VALUE, context.getString(R.string.permission_usage_any_time))
         )
         filterTimes.add(
             TimeFilterItem(DAYS.toMillis(7),
-            context.getString(R.string.permission_usage_last_7_days))
+                StringUtils.getIcuPluralsString(context,
+                    R.string.permission_usage_last_n_days, 7))
         )
         filterTimes.add(
             TimeFilterItem(DAYS.toMillis(1),
-            context.getString(R.string.permission_usage_last_day))
+                StringUtils.getIcuPluralsString(context,
+                    R.string.permission_usage_last_n_days, 1))
         )
         filterTimes.add(
             TimeFilterItem(TimeUnit.HOURS.toMillis(1),
-            context.getString(R.string.permission_usage_last_hour))
+                StringUtils.getIcuPluralsString(context,
+                    R.string.permission_usage_last_n_hours, 1))
         )
         filterTimes.add(
             TimeFilterItem(TimeUnit.MINUTES.toMillis(15),
-            context.getString(R.string.permission_usage_last_15_minutes))
+                StringUtils.getIcuPluralsString(context,
+                    R.string.permission_usage_last_n_minutes, 15))
         )
         filterTimes.add(
             TimeFilterItem(TimeUnit.MINUTES.toMillis(1),
-            context.getString(R.string.permission_usage_last_minute))
+                StringUtils.getIcuPluralsString(context,
+                    R.string.permission_usage_last_n_minutes, 1))
         )
 
         // TODO: theianchen add code for filtering by time here.

@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (C) 2021 The Android Open Source Project
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2022 The Android Open Source Project
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -15,17 +16,11 @@
   -->
 
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:height="24dp"
-    android:width="24dp"
-    android:viewportHeight="24"
-    android:viewportWidth="24">
-
-    <path
-        android:pathData="M10,10m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"
-        android:fillColor="?android:attr/textColorSecondary"/>
-
-    <path
-        android:pathData="M4.0179,10V9.0079H10,15.9821V10,10.9921H10,4.0179Z"
-        android:strokeWidth="0.0198413"
-        android:fillColor="?android:attr/colorBackground"/>
+    android:width="20dp"
+    android:height="20dp"
+    android:viewportWidth="20"
+    android:viewportHeight="20">
+  <path
+      android:fillColor="?android:attr/textColorSecondary"
+      android:pathData="M10,2a8,8 0,1 0,8 8A8,8 0,0 0,10 2ZM15,11L5,11L5,9L15,9Z"/>
 </vector>
