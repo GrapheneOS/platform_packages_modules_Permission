@@ -121,7 +121,7 @@
     <string name="message_staging" msgid="9110563899955511866">"Приложението се подготвя…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Неизвестно"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Управление на поверителността"</string>
-    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Преглед на прилож., които наскоро са използвали разрешения"</string>
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Преглед на приложенията, които наскоро са използвали разрешения"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Използване на <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Вижте други разрешения"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -509,6 +509,7 @@
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Отхвърляне"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Отказ"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"Настройки"</string>
+    <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"Състояние на сигурността и поверителността. <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>. <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"Настройки за сигурност"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Разрешения за сензорите"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Контроли за поверителност"</string>
@@ -547,5 +548,4 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Това приложение не поддържа най-новата версия на Android. Ако то няма достъп до музиката и аудиофайловете, няма да има разрешение за достъп и до снимките и видеоклиповете."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Това приложение не поддържа най-новата версия на Android. Ако то има достъп до снимките и видеоклиповете, ще има разрешение за достъп и до музиката и аудиофайловете."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Това приложение не поддържа най-новата версия на Android. Ако то няма достъп до музиката и аудиофайловете, няма да има разрешение за достъп и до снимките и видеоклиповете."</string>
-    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"Затваряне"</string>
 </resources>

@@ -509,6 +509,7 @@
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"ปิด"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"ยกเลิก"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"การตั้งค่า"</string>
+    <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"สถานะความปลอดภัยและความเป็นส่วนตัว <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g> <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"การตั้งค่าการรักษาความปลอดภัย"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"สิทธิ์ใช้เซ็นเซอร์"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"การควบคุมความเป็นส่วนตัว"</string>
@@ -547,5 +548,4 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"แอปนี้ไม่รองรับ Android เวอร์ชันล่าสุด หาก​แอปนี้เข้าถึงไฟล์เพลงและไฟล์เสียงไม่ได้ ก็จะไม่ได้รับอนุญาตให้เข้าถึงรูปภาพและวิดีโอด้วย"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"แอปนี้ไม่รองรับ Android เวอร์ชันล่าสุด หาก​แอปนี้เข้าถึงรูปภาพและวิดีโอได้ ก็จะได้รับอนุญาตให้เข้าถึงไฟล์เพลงและไฟล์เสียงด้วย"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"แอปนี้ไม่รองรับ Android เวอร์ชันล่าสุด หาก​แอปนี้เข้าถึงไฟล์เพลงและไฟล์เสียงไม่ได้ ก็จะไม่ได้รับอนุญาตให้เข้าถึงรูปภาพและวิดีโอด้วย"</string>
-    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"ปิด"</string>
 </resources>

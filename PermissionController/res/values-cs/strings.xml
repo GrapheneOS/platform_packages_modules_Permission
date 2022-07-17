@@ -60,7 +60,7 @@
     <string name="review_permission_decisions_empty" msgid="8120775336417279806">"Žádná nedávná rozhodnutí o oprávnění"</string>
     <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Správa přístupu k datům kalendáře, seznamům hovorů atd."</string>
     <string name="granted_permission_decision" msgid="7824827491551861365">"Aplikaci <xliff:g id="APP_NAME">%1$s</xliff:g> jste udělili přístupové oprávnění pro <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
-    <string name="denied_permission_decision" msgid="5308961501779563781">"Aplikaci <xliff:g id="APP_NAME">%1$s</xliff:g> jste zamítli oprávnění <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
+    <string name="denied_permission_decision" msgid="5308961501779563781">"Aplikaci <xliff:g id="APP_NAME">%1$s</xliff:g> jste zamítli přístupové oprávnění pro <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{dnes}=1{včera}few{před # dny}many{před # dne}other{před # dny}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Deaktivovat aplikaci"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Pokud tuto aplikaci deaktivujete, systém Android a ostatní aplikace nemusejí fungovat správně. Připomínáme, že tuto aplikaci nelze smazat, protože byla v zařízení předinstalována. Deaktivováním ji vypnete a skryjete."</string>
@@ -509,6 +509,7 @@
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Zavřít"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Zrušit"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"Nastavení"</string>
+    <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"Stav ochrany soukromí a zabezpečení. <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>. <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"Nastavení zabezpečení"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Oprávnění k senzoru"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Nastavení ochrany soukromí"</string>
@@ -547,5 +548,4 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Tato aplikace nepodporuje nejnovější verzi Androidu. Pokud tato aplikace nemá přístup k hudbě a zvukovým souborům, nebude mít přístup ani k fotografiím a videím."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Tato aplikace nepodporuje nejnovější verzi Androidu. Pokud má tato aplikace přístup k fotografiím a videím, bude mít přístup i k hudbě a zvukovým souborům."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Tato aplikace nepodporuje nejnovější verzi Androidu. Pokud tato aplikace nemá přístup k hudbě a zvukovým souborům, nebude mít přístup ani k fotografiím a videím."</string>
-    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"Zavřít"</string>
 </resources>

@@ -55,9 +55,9 @@
     <string name="unused_apps" msgid="2058057455175955094">"未使用的应用"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"没有未使用的应用"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"没有未使用的应用"</string>
-    <string name="review_permission_decisions" msgid="309559429150613632">"最近的权限决策"</string>
-    <string name="review_permission_decisions_view_all" msgid="90391040431566130">"查看最近的所有权限决策"</string>
-    <string name="review_permission_decisions_empty" msgid="8120775336417279806">"最近没有任何权限决策"</string>
+    <string name="review_permission_decisions" msgid="309559429150613632">"最近的权限决定"</string>
+    <string name="review_permission_decisions_view_all" msgid="90391040431566130">"查看最近的所有权限决定"</string>
+    <string name="review_permission_decisions_empty" msgid="8120775336417279806">"最近没有任何权限决定"</string>
     <string name="auto_permission_manager_summary" msgid="9157438376234301354">"管理日历、通话记录等的数据访问权限"</string>
     <string name="granted_permission_decision" msgid="7824827491551861365">"您为“<xliff:g id="APP_NAME">%1$s</xliff:g>”授予了<xliff:g id="PERMISSION_NAME">%2$s</xliff:g>访问权限"</string>
     <string name="denied_permission_decision" msgid="5308961501779563781">"您拒绝为“<xliff:g id="APP_NAME">%1$s</xliff:g>”授予<xliff:g id="PERMISSION_NAME">%2$s</xliff:g>访问权限"</string>
@@ -509,6 +509,7 @@
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"忽略"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"取消"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"设置"</string>
+    <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"安全和隐私状态。<xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>。<xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"安全设置"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"传感器权限"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"隐私控件"</string>
@@ -547,5 +548,4 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"此应用不支持最新版 Android 系统。如果此应用无法访问音乐和音频文件，那么它也将无法访问照片和视频。"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"此应用不支持最新版 Android 系统。如果此应用能够访问照片和视频，那么它也将能够访问音乐和音频文件。"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"此应用不支持最新版 Android 系统。如果此应用无法访问音乐和音频文件，那么它也将无法访问照片和视频。"</string>
-    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"关闭"</string>
 </resources>

@@ -136,7 +136,7 @@
     <string name="history_preference_subtext_3" msgid="758761785983094351">"<xliff:g id="ATTRIBUTION_NAME">%1$s</xliff:g> • <xliff:g id="APP_NAME">%2$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%3$s</xliff:g>"</string>
     <string name="duration_used_days" msgid="8293010131040301793">"{count,plural, =1{1 ရက်}other{# ရက်}}"</string>
     <string name="duration_used_hours" msgid="1128716208752263576">"{count,plural, =1{1 နာရီ}other{# နာရီ}}"</string>
-    <string name="duration_used_minutes" msgid="5335824115042576567">"{count,plural, =1{1 မိနစ်}other{# မိနစ်}}"</string>
+    <string name="duration_used_minutes" msgid="5335824115042576567">"{count,plural, =1{၁ မိနစ်}other{# မိနစ်}}"</string>
     <string name="duration_used_seconds" msgid="6543746449171675028">"{count,plural, =1{၁ စက္ကန့်}other{# စက္ကန့်}}"</string>
     <string name="permission_usage_any_permission" msgid="6358023078298106997">"မည်သည့် ခွင့်ပြုချက်မဆို"</string>
     <string name="permission_usage_any_time" msgid="3802087027301631827">"အချိန်မရွေး"</string>
@@ -252,8 +252,8 @@
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"ဖိုင်အားလုံးသုံးနိုင်သည့် နောက်ထပ်အက်ပ်များ ကြည့်ရန်"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 ရက်}other{# ရက်}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 နာရီ}other{# နာရီ}}"</string>
-    <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 မိနစ်}other{# မိနစ်}}"</string>
-    <string name="seconds" msgid="5397771912131132690">"{count,plural, =1{1 စက္ကန့်}other{# စက္ကန့်}}"</string>
+    <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{၁ မိနစ်}other{# မိနစ်}}"</string>
+    <string name="seconds" msgid="5397771912131132690">"{count,plural, =1{၁ စက္ကန့်}other{# စက္ကန့်}}"</string>
     <string name="permission_reminders" msgid="6528257957664832636">"ခွင့်ပြုချက် သတိပေးမှုများ"</string>
     <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"အသုံးမပြုသောအက်ပ် 1 ခု"</string>
     <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"အသုံးမပြုသောအက်ပ် <xliff:g id="NUMBER_OF_APPS">%s</xliff:g> ခု"</string>
@@ -509,6 +509,7 @@
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"ပယ်ရန်"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"မလုပ်တော့"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"ဆက်တင်များ"</string>
+    <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"လုံခြုံရေးနှင့် ကိုယ်ရေးအချက်အလက်လုံခြုံမှု အခြေအနေ။ <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>။ <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"လုံခြုံရေး ဆက်တင်များ"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"အာရုံခံကိရိယာ ခွင့်ပြုချက်များ"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"ကန့်သတ်ရန် ဆက်တင်များ"</string>
@@ -547,5 +548,4 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"ဤအက်ပ်က Android နောက်ဆုံးဗားရှင်းကို မပံ့ပိုးပါ။ ဤအက်ပ်သည် သီချင်းနှင့် အသံဖိုင်များကို ဖွင့်ခွင့်မရှိပါက ဓာတ်ပုံနှင့် ဗီဒီယိုများ ဖွင့်ရန်လည်း ၎င်းကို ခွင့်ပြုမည်မဟုတ်ပါ။"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"ဤအက်ပ်က Android နောက်ဆုံးဗားရှင်းကို မပံ့ပိုးပါ။ ဤအက်ပ်သည် ဓာတ်ပုံနှင့် ဗီဒီယိုများကို ဖွင့်ခွင့်ရှိပါက သီချင်းနှင့် အသံဖိုင်များ ဖွင့်ရန်လည်း ၎င်းကိုခွင့်ပြုမည်။"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"ဤအက်ပ်က Android နောက်ဆုံးဗားရှင်းကို မပံ့ပိုးပါ။ ဤအက်ပ်သည် သီချင်းနှင့် အသံဖိုင်များကို ဖွင့်ခွင့်မရှိပါက ဓာတ်ပုံနှင့် ဗီဒီယိုများ ဖွင့်ရန်လည်း ၎င်းကို ခွင့်ပြုမည်မဟုတ်ပါ။"</string>
-    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"ပိတ်ရန်"</string>
 </resources>

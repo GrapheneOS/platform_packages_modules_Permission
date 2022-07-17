@@ -509,6 +509,7 @@
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"অগ্ৰাহ্য কৰক"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"বাতিল কৰক"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"ছেটিং"</string>
+    <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"সুৰক্ষা আৰু গোপনীয়তাৰ স্থিতি। <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>। <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"সুৰক্ষা সম্পৰ্কীয় ছেটিং"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"ছেন্সৰৰ অনুমতি"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"গোপনীয়তাৰ নিয়ন্ত্ৰণ"</string>
@@ -547,5 +548,4 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"এই এপ্‌টোৱে Androidৰ শেহতীয়া সংস্কৰণ সমৰ্থন নকৰে। যদি এই এপ্‌টোৱে সংগীত আৰু অডিঅ’ ফাইল এক্সেছ কৰিব নোৱাৰে, ইয়াক ফট’ আৰু ভিডিঅ’ও এক্সেছ কৰিবলৈ দিয়া নহ’ব।"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"এই এপ্‌টোৱে Androidৰ শেহতীয়া সংস্কৰণ সমৰ্থন নকৰে। যদি এই এপ্‌টোৱে ফট’ আৰু ভিডিঅ’ এক্সেছ কৰিব পাৰে, ইয়াক সংগীত আৰু অডিঅ’ ফাইলো এক্সেছ কৰিবলৈ দিয়া হ’ব।"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"এই এপ্‌টোৱে Androidৰ শেহতীয়া সংস্কৰণ সমৰ্থন নকৰে। যদি এই এপ্‌টোৱে সংগীত আৰু অডিঅ’ ফাইল এক্সেছ কৰিব নোৱাৰে, ইয়াক ফট’ আৰু ভিডিঅ’ও এক্সেছ কৰিবলৈ দিয়া নহ’ব।"</string>
-    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"বন্ধ কৰক"</string>
 </resources>

@@ -509,6 +509,7 @@
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"डिसमिस करा"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"रद्द करा"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"सेटिंग्ज"</string>
+    <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"सुरक्षा आणि गोपनीयता स्टेटस. <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>. <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"सुरक्षा सेटिंग्ज"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"सेन्सर परवानग्या"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"गोपनीयता नियंत्रणे"</string>
@@ -547,5 +548,4 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"हे अ‍ॅप Android च्या नवीनतम आवृत्तीला सपोर्ट करत नाही. हे अ‍ॅप संगीत आणि ऑडिओ फाइल अ‍ॅक्सेस करू शकत नसल्यास, त्याला फोटो व व्हिडिओ अ‍ॅक्सेस करण्याचीदेखील अनुमती दिली जाणार नाही."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"हे अ‍ॅप Android च्या नवीनतम आवृत्तीला सपोर्ट करत नाही. हे अ‍ॅप फोटो आणि व्हिडिओ अ‍ॅक्सेस करू शकत असल्यास, त्याला संगीत व ऑडिओ फाइल अ‍ॅक्सेस करण्याचीदेखील अनुमती दिली जाईल."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"हे अ‍ॅप Android च्या नवीनतम आवृत्तीला सपोर्ट करत नाही. हे अ‍ॅप संगीत आणि ऑडिओ फाइल अ‍ॅक्सेस करू शकत नसल्यास, त्याला फोटो व व्हिडिओ अ‍ॅक्सेस करण्याचीदेखील अनुमती दिली जाणार नाही."</string>
-    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"बंद करा"</string>
 </resources>

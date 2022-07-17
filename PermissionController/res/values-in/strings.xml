@@ -262,7 +262,7 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Beberapa aplikasi tidak digunakan dalam beberapa bulan. Ketuk untuk meninjau."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# aplikasi tidak digunakan}other{# aplikasi tidak digunakan}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Izin dan file sementara telah dihapus dan notifikasi dihentikan. Ketuk untuk meninjau."</string>
-    <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Memeriksa izin terbaru"</string>
+    <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Periksa izin terbaru"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Saat mengemudi, Anda memberikan akses <xliff:g id="APP">%1$s</xliff:g> ke <xliff:g id="PERMISSION">%2$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Saat mengemudi, Anda memberikan akses <xliff:g id="APP">%1$s</xliff:g> ke <xliff:g id="PERMISSION_1">%2$s</xliff:g> &amp; <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Saat mengemudi, Anda memberikan <xliff:g id="COUNT">%1$d</xliff:g> izin ke <xliff:g id="APP">%2$s</xliff:g>"</string>
@@ -509,6 +509,7 @@
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Tutup"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Batal"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"Setelan"</string>
+    <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"Status keamanan dan privasi. <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>. <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"Setelan Keamanan"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Izin Sensor"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Kontrol Privasi"</string>
@@ -547,5 +548,4 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Aplikasi ini tidak mendukung versi terbaru Android. Jika tidak dapat mengakses file musik dan audio, aplikasi ini juga tidak akan diizinkan mengakses foto dan video."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Aplikasi ini tidak mendukung versi terbaru Android. Jika dapat mengakses foto dan video, aplikasi ini juga akan diizinkan mengakses file musik dan audio."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Aplikasi ini tidak mendukung versi terbaru Android. Jika tidak dapat mengakses file musik dan audio, aplikasi ini juga tidak akan diizinkan mengakses foto dan video."</string>
-    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"Tutup"</string>
 </resources>

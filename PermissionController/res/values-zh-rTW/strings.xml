@@ -509,6 +509,7 @@
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"關閉"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"取消"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"設定"</string>
+    <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"安全性與隱私權狀態。<xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>。<xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"安全性設定"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"感應器權限"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"隱私權控制項"</string>
@@ -547,5 +548,4 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"這個應用程式不支援最新版 Android。如果這個應用程式無法存取音樂和音訊檔案，也就無法存取相片和影片。"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"這個應用程式不支援最新版 Android。如果這個應用程式可以存取相片和影片，也就能存取音樂和音訊檔案。"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"這個應用程式不支援最新版 Android。如果這個應用程式無法存取音樂和音訊檔案，也就無法存取相片和影片。"</string>
-    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"關閉"</string>
 </resources>

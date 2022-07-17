@@ -59,8 +59,8 @@
     <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Az összes friss engedélyezési döntés megtekintése"</string>
     <string name="review_permission_decisions_empty" msgid="8120775336417279806">"Nincsenek friss engedélyezési döntések"</string>
     <string name="auto_permission_manager_summary" msgid="9157438376234301354">"A naptár, a hívásnaplók és egyebek adataihoz való hozzáférés kezelése"</string>
-    <string name="granted_permission_decision" msgid="7824827491551861365">"Ön engedélyezte a(z) <xliff:g id="APP_NAME">%1$s</xliff:g> alkalmazás számára a következőhöz való hozzáférést <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
-    <string name="denied_permission_decision" msgid="5308961501779563781">"Ön megtagadta a(z) <xliff:g id="APP_NAME">%1$s</xliff:g> alkalmazás számára a következőhöz való hozzáférést: <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
+    <string name="granted_permission_decision" msgid="7824827491551861365">"Ön engedélyezte a(z) <xliff:g id="APP_NAME">%1$s</xliff:g> számára a következőhöz való hozzáférést: <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
+    <string name="denied_permission_decision" msgid="5308961501779563781">"Ön megtagadta a(z) <xliff:g id="APP_NAME">%1$s</xliff:g> számára a következőhöz való hozzáférést: <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Ma}=1{1 napja}other{# napja}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Alkalmazás letiltása"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Ha letiltja ezt az alkalmazást, akkor előfordulhat, hogy az Android- és más alkalmazások nem működnek majd megfelelően. Ne feledje, hogy az alkalmazást nem törölheti, mert előre telepítették az eszközre. A letiltással kikapcsolja ezt az alkalmazást, és elrejti az eszközön."</string>
@@ -509,6 +509,7 @@
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Bezárás"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Mégse"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"Beállítások"</string>
+    <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"Biztonsági és adatvédelmi állapot. <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>. <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>."</string>
     <string name="security_settings" msgid="3808106921175271317">"Biztonsági beállítások"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Érzékelőengedélyek"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Adatvédelmi beállítások"</string>
@@ -547,5 +548,4 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Az alkalmazás nem támogatja az Android legújabb verzióját. Ha az alkalmazás nem férhet hozzá a zenékhez és a hangfájlokhoz, akkor ugyanúgy a fotókhoz és a videókhoz sem férhet hozzá."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Az alkalmazás nem támogatja az Android legújabb verzióját. Ha az alkalmazás hozzáférhet a fotókhoz és videókhoz, akkor hozzáférhet a zenékhez és a hangfájlokhoz is."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Az alkalmazás nem támogatja az Android legújabb verzióját. Ha az alkalmazás nem férhet hozzá a zenékhez és a hangfájlokhoz, akkor ugyanúgy a fotókhoz és a videókhoz sem férhet hozzá."</string>
-    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"Bezárás"</string>
 </resources>

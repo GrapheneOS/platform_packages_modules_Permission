@@ -51,14 +51,14 @@
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Дозволи управување со сите датотеки"</string>
     <string name="grant_dialog_button_allow_media_only" msgid="4832877658422573832">"Дозволете пристап до датотеките со аудиовизуелни содржини"</string>
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Апликации"</string>
-    <string name="app_permissions" msgid="3369917736607944781">"Дозволи за апликацијата"</string>
+    <string name="app_permissions" msgid="3369917736607944781">"Дозволи за апликации"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Некористени апликации"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"Нема некористени апликации"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"0 некористени апликации"</string>
     <string name="review_permission_decisions" msgid="309559429150613632">"Неодамнешни одлуки за дозволи"</string>
     <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Прикажи ги сите неодамнешни одлуки за дозволи"</string>
     <string name="review_permission_decisions_empty" msgid="8120775336417279806">"Нема неодамнешни одлуки за дозволи"</string>
-    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"да управува со пристапот до податоци од календарот, евиденцијата на повици и др."</string>
+    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Управувајте со пристапот до податоци од календарот, евиденцијата на повици и др."</string>
     <string name="granted_permission_decision" msgid="7824827491551861365">"Одобривте пристап за <xliff:g id="APP_NAME">%1$s</xliff:g> до <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="denied_permission_decision" msgid="5308961501779563781">"Не одобривте пристап за <xliff:g id="APP_NAME">%1$s</xliff:g> до <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Денес}=1{Пред 1 ден}one{Пред # ден}other{Пред # дена}}"</string>
@@ -509,6 +509,7 @@
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Отфрли"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Откажи"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"Поставки"</string>
+    <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"Статус на безбедност и приватност. <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>. <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"Поставки за безбедност"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Дозволи за сензор"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Контроли за приватност"</string>
@@ -547,5 +548,4 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Апликацијава не ја поддржува најновата верзија на Android. Ако оваа апликација не може да пристапува до музички и аудиодатотеки, тогаш нема да ѝ биде дозволено да пристапува и до фотографии и видеа."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Апликацијава не ја поддржува најновата верзија на Android. Ако оваа апликација може да пристапува до фотографии и видеа, тогаш ќе ѝ биде дозволено да пристапува и до музички и аудиодатотеки."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Апликацијава не ја поддржува најновата верзија на Android. Ако оваа апликација не може да пристапува до музички и аудиодатотеки, тогаш нема да ѝ биде дозволено да пристапува и до фотографии и видеа."</string>
-    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"Затвори"</string>
 </resources>

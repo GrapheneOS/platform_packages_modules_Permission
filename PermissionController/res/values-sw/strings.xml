@@ -60,7 +60,7 @@
     <string name="review_permission_decisions_empty" msgid="8120775336417279806">"Hakuna uamuzi wa ruhusa wa hivi majuzi"</string>
     <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Dhibiti ufikiaji wa data kwenye kalenda, rekodi za nambari za simu na zaidi"</string>
     <string name="granted_permission_decision" msgid="7824827491551861365">"Umeipa <xliff:g id="APP_NAME">%1$s</xliff:g> ruhusa ya kufikia <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
-    <string name="denied_permission_decision" msgid="5308961501779563781">"Umeinyima <xliff:g id="APP_NAME">%1$s</xliff:g> ruhusa ya kufikia<xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
+    <string name="denied_permission_decision" msgid="5308961501779563781">"Umeinyima <xliff:g id="APP_NAME">%1$s</xliff:g> ruhusa ya kufikia <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Leo}=1{Siku moja iliyopita}other{Siku # zilizopita}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Zima programu"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Ukizima programu hii, huenda Android na programu zingine zikakosa kufanya kazi tena kama zilivyokusudiwa. Kumbuka, huwezi kufuta programu hii kwa kuwa ilisakinishwa mapema kwenye kifaa chako. Kwa kuizima, unazima programu hii na kuificha kwenye kifaa chako."</string>
@@ -263,9 +263,9 @@
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{Programu # isiyotumika}other{Programu # zisizotumika}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Ruhusa na faili za muda zimeondolewa na arifa zimesimamishwa. Gusa ili ukague."</string>
     <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Angalia ruhusa za hivi majuzi"</string>
-    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Wakati wa kuendesha, uliipa <xliff:g id="APP">%1$s</xliff:g> uwezo wa kufikia <xliff:g id="PERMISSION">%2$s</xliff:g>"</string>
-    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Wakati wa kuendesha, uliipa <xliff:g id="APP">%1$s</xliff:g> uwezo wa kufikia <xliff:g id="PERMISSION_1">%2$s</xliff:g> na <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
-    <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Wakati wa kuendesha, uliipa <xliff:g id="APP">%2$s</xliff:g> ruhusa <xliff:g id="COUNT">%1$d</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Wakati wa kuendesha gari, uliipa <xliff:g id="APP">%1$s</xliff:g> uwezo wa kufikia <xliff:g id="PERMISSION">%2$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Wakati wa kuendesha gari, uliipa <xliff:g id="APP">%1$s</xliff:g> uwezo wa kufikia <xliff:g id="PERMISSION_1">%2$s</xliff:g> na <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Wakati wa kuendesha gari, uliipa <xliff:g id="APP">%2$s</xliff:g> ruhusa <xliff:g id="COUNT">%1$d</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Ulipokuwa ukiendesha gari, uliipa <xliff:g id="APP_0">%1$s</xliff:g> na programu nyingine # ruhusa ya kufikia}other{Ulipokuwa ukiendesha gari, uliipa <xliff:g id="APP_1">%1$s</xliff:g> na programu zingine # ruhusa ya kufikia}}"</string>
     <string name="go_to_settings" msgid="1053735612211228335">"Nenda kwenye Mipangilio"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Baadhi ya programu hazijatumiwa kwa miezi michache"</string>
@@ -509,6 +509,7 @@
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Ondoa"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Ghairi"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"Mipangilio"</string>
+    <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"Hali ya usalama na faragha. <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>. <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"Mipangilio ya Usalama"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Ruhusa za Kitambuzi"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Vidhibiti vya Faragha"</string>
@@ -547,5 +548,4 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Programu hii haiwezi kutumia toleo jipya zaidi la Android. Iwapo programu hii haitaweza kufikia faili za muziki na sauti, haitaruhusiwa pia kufikia picha na video."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Programu hii haiwezi kutumia toleo jipya zaidi la Android. Iwapo programu hii itaweza kufikia picha na video, itaruhusiwa pia kufikia muziki na faili za sauti."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Programu hii haiwezi kutumia toleo jipya zaidi la Android. Iwapo programu hii haitaweza kufikia faili za muziki na sauti, haitaruhusiwa pia kufikia picha na video."</string>
-    <string name="security_privacy_qs_close_button" msgid="6788105863103224114">"Funga"</string>
 </resources>
