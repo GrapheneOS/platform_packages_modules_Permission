@@ -21,7 +21,6 @@
         android:paddingTop="16dp"
         android:paddingBottom="16dp"
 
-        android:text="@string/configure_storage_scopes"
         android:clickable="true"
         android:focusable="true"
         android:textAppearance="?android:attr/textAppearanceMedium"
