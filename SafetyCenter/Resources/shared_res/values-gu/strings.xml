@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  ~ Copyright (C) 2022 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+   -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="scanning_title" msgid="5424849039854311398">"સ્કૅનિંગ"</string>
+    <string name="loading_summary" msgid="8287412091422889811">"ડિવાઇસનું સ્ટેટસ ચેક કરી રહ્યાં છીએ…"</string>
+    <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"સરસ દેખાય છે"</string>
+    <string name="overall_severity_level_ok_summary" msgid="255849804128707819">"આ ડિવાઇસ સુરક્ષિત છે"</string>
+    <string name="overall_severity_level_ok_review_title" msgid="4870096573610601585">"વધુ સંરક્ષણ ઉમેરો"</string>
+    <string name="overall_severity_level_ok_review_summary" msgid="6674687043153844604">"નીચે સેટિંગ ચેક કરો"</string>
+    <string name="overall_severity_level_recommendation_title" msgid="5477942982532824601">"ડિવાઇસ કદાચ જોખમમાં હોઈ શકે"</string>
+    <string name="overall_severity_level_critical_warning_title" msgid="2043894328485989618">"ડિવાઇસ જોખમમાં છે"</string>
+    <string name="overall_severity_n_alerts_summary" msgid="1105615451561197136">"{count,plural, =1{# અલર્ટ}one{# અલર્ટ}other{# અલર્ટ}}"</string>
+    <string name="redirecting_error" msgid="8146983632878233202">"પેજ ખોલી શક્યા નથી"</string>
+    <string name="resolving_action_error" msgid="371968886143262375">"અલર્ટનું નિરાકરણ લાવી શક્યા નથી"</string>
+    <string name="refresh_timeout" msgid="5699772984139071348">"સ્ટેટસ રિફ્રેશ કરી શક્યા નથી"</string>
+    <string name="refresh_error" msgid="2698996273941446865">"સ્ટેટસ ચેક કરી શકાયું નથી"</string>
+    <!-- no translation found for work_profile_paused (7037400224040869079) -->
+    <skip />
+</resources>
