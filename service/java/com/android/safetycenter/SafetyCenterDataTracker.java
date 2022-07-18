@@ -1363,11 +1363,17 @@ final class SafetyCenterDataTracker {
 
         // TODO(b/222838784): Validate that the intent action is available.
 
+        return toPendingIntent(context, 0, new Intent(intentAction));
+    }
+
+    @NonNull
+    private static PendingIntent toPendingIntent(
+            @NonNull Context packageContext, int requestCode, @NonNull Intent intent) {
         // This call is required for getIntentSender() to be allowed to send as another package.
         final long identity = Binder.clearCallingIdentity();
         try {
             return PendingIntent.getActivity(
-                    context, 0, new Intent(intentAction), PendingIntent.FLAG_IMMUTABLE);
+                    packageContext, requestCode, intent, PendingIntent.FLAG_IMMUTABLE);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -1393,23 +1399,11 @@ final class SafetyCenterDataTracker {
         if (!SafetyCenterFlags.getReplaceLockScreenIconAction()) {
             return pendingIntent;
         }
-        String packageName = pendingIntent.getCreatorPackage();
-        UserHandle userHandle = pendingIntent.getCreatorUserHandle();
-        PendingIntent pendingIntentOverride =
-                createLockScreenIconActionPendingIntentOverride(
-                        packageName, userHandle.getIdentifier());
-        if (pendingIntentOverride == null) {
-            return pendingIntent;
-        }
-        return pendingIntentOverride;
-    }
-
-    @Nullable
-    private PendingIntent createLockScreenIconActionPendingIntentOverride(
-            @NonNull String settingsPackageName, @UserIdInt int userId) {
+        String settingsPackageName = pendingIntent.getCreatorPackage();
+        int userId = pendingIntent.getCreatorUserHandle().getIdentifier();
         Context packageContext = toPackageContextAsUser(settingsPackageName, userId);
         if (packageContext == null) {
-            return null;
+            return pendingIntent;
         }
         Resources settingsResources = packageContext.getResources();
         int hasSettingsFixedIssueResourceId =
@@ -1421,7 +1415,7 @@ final class SafetyCenterDataTracker {
             boolean hasSettingsFixedIssue =
                     settingsResources.getBoolean(hasSettingsFixedIssueResourceId);
             if (hasSettingsFixedIssue) {
-                return null;
+                return pendingIntent;
             }
         }
         Intent intent =
@@ -1434,16 +1428,17 @@ final class SafetyCenterDataTracker {
                                 settingsPackageName + ".security.screenlock.ScreenLockSettings")
                         .putExtra(":settings:source_metrics", 1917)
                         .putExtra("page_transition_type", 0);
-        final long callingId = Binder.clearCallingIdentity();
-        try {
-            return PendingIntent.getActivity(
-                    packageContext,
-                    ANDROID_LOCK_SCREEN_ICON_ACTION_REQ_CODE,
-                    intent,
-                    PendingIntent.FLAG_IMMUTABLE);
-        } finally {
-            Binder.restoreCallingIdentity(callingId);
+        PendingIntent offendingPendingIntent = toPendingIntent(packageContext, 0, intent);
+        if (!offendingPendingIntent.equals(pendingIntent)) {
+            return pendingIntent;
         }
+        // If creating that PendingIntent with request code 0 returns the same value as the
+        // PendingIntent that was sent to Safety Center, then we’re most likely hitting the caching
+        // issue described in this method’s documentation.
+        // i.e. the intent action and component of the cached PendingIntent are the same, but the
+        // extras are actually different so we should ensure we create a brand new PendingIntent by
+        // changing the request code.
+        return toPendingIntent(packageContext, ANDROID_LOCK_SCREEN_ICON_ACTION_REQ_CODE, intent);
     }
 
     @Nullable
