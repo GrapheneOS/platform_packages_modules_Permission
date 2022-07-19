@@ -435,8 +435,7 @@ public class SafetyCenterQsFragment extends Fragment {
             String permGroupName,
             String usageText,
             boolean isActiveUsage) {
-        CharSequence permGroupLabel =
-                KotlinUtils.INSTANCE.getPermGroupLabel(mContext, permGroupName);
+        CharSequence permGroupLabel = getPermGroupLabel(permGroupName);
         ImageView iconView = indicatorParentLayout.findViewById(R.id.indicator_icon);
 
         Drawable background = mContext.getDrawable(R.drawable.indicator_background_circle);
@@ -514,7 +513,7 @@ public class SafetyCenterQsFragment extends Fragment {
             }
 
             TextView groupLabel = toggle.findViewById(R.id.toggle_sensor_name);
-            groupLabel.setText(getToggleLabel(groupName));
+            groupLabel.setText(getPermGroupLabel(groupName));
             TextView blockedStatus = toggle.findViewById(R.id.toggle_sensor_status);
             ImageView iconView = toggle.findViewById(R.id.toggle_sensor_icon);
             boolean sensorEnabled =
@@ -566,7 +565,7 @@ public class SafetyCenterQsFragment extends Fragment {
         return mContext.getColor(colorRes);
     }
 
-    private CharSequence getToggleLabel(String permissionGroup) {
+    private CharSequence getPermGroupLabel(String permissionGroup) {
         switch (permissionGroup) {
             case MICROPHONE:
                 return mContext.getString(R.string.microphone_toggle_label_qs);
