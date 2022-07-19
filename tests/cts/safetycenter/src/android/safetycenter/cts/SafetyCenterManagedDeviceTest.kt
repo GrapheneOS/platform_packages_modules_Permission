@@ -61,6 +61,7 @@ import com.android.bedstead.harrier.DeviceState
 import com.android.bedstead.harrier.OptionalBoolean.TRUE
 import com.android.bedstead.harrier.annotations.EnsureHasWorkProfile
 import com.android.bedstead.harrier.annotations.enterprise.EnsureHasDeviceOwner
+import com.android.safetycenter.resources.SafetyCenterResourcesContext
 import com.google.common.truth.Truth.assertThat
 import kotlin.test.assertFailsWith
 import org.junit.After
@@ -84,6 +85,7 @@ class SafetyCenterManagedDeviceTest {
     }
 
     private val context: Context = ApplicationProvider.getApplicationContext()
+    private val safetyCenterResourcesContext = SafetyCenterResourcesContext.forTests(context)
     private val safetyCenterCtsHelper = SafetyCenterCtsHelper(context)
     private val safetySourceCtsData = SafetySourceCtsData(context)
     private val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)!!
@@ -111,7 +113,9 @@ class SafetyCenterManagedDeviceTest {
     private val staticEntryForWorkQuietMode
         get() =
             SafetyCenterStaticEntry.Builder("Attention")
-                .setSummary("Work profile is paused")
+                // TODO(b/233188021): This needs to use the Entreprise API to override the "work"
+                // keyword.
+                .setSummary(safetyCenterResourcesContext.getStringByName("work_profile_paused"))
                 .setPendingIntent(redirectPendingIntentForWork)
                 .build()
 
@@ -349,7 +353,9 @@ class SafetyCenterManagedDeviceTest {
                     SafetyCenterCtsData.entryId(SINGLE_SOURCE_ALL_PROFILE_ID, managedUserId),
                     context.getString(DYNAMIC_ALL_PROFILE_SAFETY_SOURCE.titleForWorkResId))
                 .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNKNOWN)
-                .setSummary("Work profile is paused")
+                // TODO(b/233188021): This needs to use the Entreprise API to override the "work"
+                // keyword.
+                .setSummary(safetyCenterResourcesContext.getStringByName("work_profile_paused"))
                 .setPendingIntent(redirectPendingIntentForWork)
                 .setSeverityUnspecifiedIconType(
                     SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION)

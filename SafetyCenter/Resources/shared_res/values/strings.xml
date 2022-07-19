@@ -40,6 +40,12 @@
     <!-- Title for the overall Safety Center status when the user security and privacy signals are putting them at risk [CHAR LIMIT=35] -->
     <string name="overall_severity_level_critical_warning_title">Device is at risk</string>
 
+    <!-- Title for the overall Safety Center status when the user security and privacy signals could potentially put their personal safety at risk [CHAR LIMIT=35] -->
+    <string name="overall_severity_level_safety_recommendation_title">You may be at risk</string>
+
+    <!-- Title for the overall Safety Center status when the user security and privacy signals are putting their personal safety at risk [CHAR LIMIT=35] -->
+    <string name="overall_severity_level_critical_safety_warning_title">You are at risk</string>
+
     <!-- Summary for the overall Safety Center status when the user security and privacy signals contain alerts that could range from minor suggestions to warnings or critical issues. The number of alerts is given as a parameter [CHAR LIMIT=60] -->
     <string name="overall_severity_n_alerts_summary">{count, plural,
         =1      {# alert}
@@ -56,7 +62,7 @@
     <string name="refresh_timeout">Couldn\’t refresh settings</string>
 
     <!-- An error shown to the user when we failed to refresh the status of a Safety Center entry [CHAR LIMIT=60] -->
-    <string name="refresh_error">Couldn\’t check info</string>
+    <string name="refresh_error">Couldn\’t check setting</string>
 
     <!-- The summary for sources supporting work profile shown to the user in quiet mode. [CHAR LIMIT=NONE] -->
     <string name="work_profile_paused">Work profile is paused</string>
