@@ -87,9 +87,7 @@ class SafetyEventTest {
 
         assertThat(exception)
             .hasMessageThat()
-            .isEqualTo(
-                "Missing issue action id for resolving action safety event " +
-                    "($SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)")
+            .startsWith("Missing issue action id for resolving action safety event")
     }
 
     @Test
@@ -103,9 +101,7 @@ class SafetyEventTest {
 
         assertThat(exception)
             .hasMessageThat()
-            .isEqualTo(
-                "Missing issue id for resolving action safety event " +
-                    "($SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)")
+            .startsWith("Missing issue id for resolving action safety event")
     }
 
     @Test
@@ -119,9 +115,7 @@ class SafetyEventTest {
 
         assertThat(exception)
             .hasMessageThat()
-            .isEqualTo(
-                "Missing issue action id for resolving action safety event " +
-                    "($SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED)")
+            .startsWith("Missing issue action id for resolving action safety event")
     }
 
     @Test
@@ -135,9 +129,7 @@ class SafetyEventTest {
 
         assertThat(exception)
             .hasMessageThat()
-            .isEqualTo(
-                "Missing issue id for resolving action safety event " +
-                    "($SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED)")
+            .startsWith("Missing issue id for resolving action safety event")
     }
 
     @Test
