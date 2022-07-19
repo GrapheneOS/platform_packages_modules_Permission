@@ -33,7 +33,7 @@ import androidx.annotation.RequiresApi;
 import com.android.safetycenter.SafetyCenterConfigReader.Broadcast;
 
 import java.util.List;
-import java.util.Objects;
+import java.util.UUID;
 
 import javax.annotation.concurrent.NotThreadSafe;
 
@@ -53,6 +53,7 @@ final class SafetyCenterRefreshTracker {
     // TODO(b/229060064): Should we allow one refresh at a time per UserProfileGroup rather than
     //  one global refresh?
     private RefreshInProgress mRefreshInProgress = null;
+    private int mRefreshCounter = 0;
 
     /**
      * Creates a {@link SafetyCenterRefreshTracker} using the given {@link
@@ -61,8 +62,6 @@ final class SafetyCenterRefreshTracker {
     SafetyCenterRefreshTracker(@NonNull SafetyCenterConfigReader safetyCenterConfigReader) {
         mSafetyCenterConfigReader = safetyCenterConfigReader;
     }
-
-    private int mRefreshCounter = 0;
 
     /**
      * Reports that a new refresh is in progress and returns the broadcast id associated with this
@@ -76,8 +75,7 @@ final class SafetyCenterRefreshTracker {
         }
 
         List<Broadcast> broadcasts = mSafetyCenterConfigReader.getBroadcasts();
-        String refreshBroadcastId =
-                Objects.hash(refreshReason, broadcasts, userProfileGroup) + "_" + mRefreshCounter++;
+        String refreshBroadcastId = String.format("%s_%d", UUID.randomUUID(), mRefreshCounter++);
         Log.v(
                 TAG,
                 "Starting a new refresh with refreshReason:"
