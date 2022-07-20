@@ -1642,4 +1642,30 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <!-- TODO: b/231974769: Label for button to view recent location access [CHAR LIMIT=60] [DO NOT TRANSLATE]-->
     <string name="safety_center_view_recent_location_access">See recent location access</string>
 
+    <!-- Do not translate. config value for the camera toggle -->
+    <string name="camera_toggle_enable_config">camera_toggle_enabled</string>
+    <!-- Do not translate. config value for the mic toggle -->
+    <string name="mic_toggle_enable_config">mic_toggle_enabled</string>
+    <!-- Do not translate. config value for whether to show clipboard access notifications -->
+    <string name="clipboard_show_access_notifications_config">clipboard_show_access_notifications</string>
+    <!-- Do not translate. config value for the default state of the clipboard access notifications -->
+    <string name="show_access_notifications_default_config">show_access_notifications</string>
+
+    <!-- Title of the Privacy controls page[CHAR LIMIT=NONE] -->
+    <string name="privacy_controls_title">Privacy controls</string>
+    <!-- Label for the camera use toggle [CHAR LIMIT=40] -->
+    <string name="camera_toggle_title">Camera access</string>
+    <!-- Label for the mic use toggle [CHAR LIMIT=40] -->
+    <string name="mic_toggle_title">Microphone access</string>
+    <!-- Describes what is affected by a permission toggle [CHAR LIMIT=NONE] -->
+    <string name="perm_toggle_description">For apps and services</string>
+    <!-- Describes what is affected by the mic toggle [CHAR LIMIT=NONE] -->
+    <string name="mic_toggle_description">For apps and services. If this setting is off, microphone data may still be shared when you call an emergency number.</string>
+    <!-- Subtitle for the link to location settings [CHAR LIMIT=NONE] -->
+    <string name="location_settings_subtitle">See apps and services that have access to location</string>
+    <!-- Title for toggle controlling whether notifications are shown when an app pastes from clipboard. [CHAR LIMIT=50] -->
+    <string name="show_clip_access_notification_title">Show clipboard access</string>
+    <!-- Summary for toggle controlling whether notifications are shown when an app pastes from clipboard. [CHAR LIMIT=NONE] -->
+    <string name="show_clip_access_notification_summary">Show a message when apps access text, images, or other content you\u2019ve copied</string>
+
 </resources>
