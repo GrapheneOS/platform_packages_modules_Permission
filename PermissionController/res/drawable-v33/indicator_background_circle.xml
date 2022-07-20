@@ -13,13 +13,17 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-       android:shape="oval"
-       android:id="@id/background"
-       android:gravity="center">
-    <size
-        android:height="@dimen/ongoing_appops_dialog_circle_size"
-        android:width="@dimen/ongoing_appops_dialog_circle_size"/>
-    <solid android:color="@android:color/white" />
-</shape>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+        android:color="?android:colorControlHighlight">
+    <item android:id="@android:id/background">
+        <shape
+            android:shape="oval"
+            android:id="@id/background"
+            android:gravity="center">
+            <size
+                android:height="@dimen/ongoing_appops_dialog_circle_size"
+                android:width="@dimen/ongoing_appops_dialog_circle_size"/>
+            <solid android:color="@android:color/white"/>
+        </shape>
+    </item>
+</ripple>
