@@ -29,4 +29,6 @@ public class SafetyCenterConstants {
 
     public static final String EXPAND_ISSUE_GROUP_QS_FRAGMENT_KEY =
             "expand_issue_group_qs_fragment_key";
+
+    public static final String EXTRA_NAVIGATION_SOURCE = "navigation_source_intent_extra";
 }
