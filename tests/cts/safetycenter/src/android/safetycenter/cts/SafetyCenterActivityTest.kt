@@ -26,7 +26,9 @@ import android.support.test.uiautomator.By
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
+import com.android.compatibility.common.util.ApiTest
 import com.android.compatibility.common.util.UiAutomatorUtils.waitFindObject
+import java.util.regex.Pattern
 import org.junit.Assume.assumeTrue
 import org.junit.Before
 import org.junit.Test
@@ -34,6 +36,7 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 @SdkSuppress(minSdkVersion = TIRAMISU, codeName = "Tiramisu")
+@ApiTest(apis = ["android.content.Intent#ACTION_SAFETY_CENTER"])
 class SafetyCenterActivityTest {
     private val context: Context = getApplicationContext()
 
@@ -49,7 +52,7 @@ class SafetyCenterActivityTest {
         startSafetyCenterActivity()
 
         // CollapsingToolbar title can't be found by text, so using description instead.
-        waitFindObject(By.desc("Security & Privacy"))
+        waitFindObject(By.desc(Pattern.compile("Security & [Pp]rivacy")))
     }
 
     @Test
