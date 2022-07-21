@@ -43,10 +43,13 @@ public final class PrivacyControlsFragment extends PreferenceFragmentCompat {
     }
 
     private PrivacyControlsViewModel mViewModel;
+    private String mRootKey;
+    private boolean mPrefsSet;
 
     @Override
     public void onCreatePreferences(Bundle bundle, String rootKey) {
-        setPreferencesFromResource(R.layout.privacy_controls, rootKey);
+        mRootKey = rootKey;
+        mPrefsSet = false;
 
         PrivacyControlsViewModelFactory factory = new PrivacyControlsViewModelFactory(
                 getActivity().getApplication());
@@ -55,9 +58,15 @@ public final class PrivacyControlsFragment extends PreferenceFragmentCompat {
     }
 
     private void setPreferences(Map<Pref, PrefState> prefStates) {
+        // Delaying setting of preferences, in order to avoid disabled prefs being briefly visible
+        if (!mPrefsSet) {
+            setPreferencesFromResource(R.xml.privacy_controls, mRootKey);
+            mPrefsSet = true;
+        }
         setSwitchPreference(prefStates.get(Pref.MIC), Pref.MIC);
         setSwitchPreference(prefStates.get(Pref.CAMERA), Pref.CAMERA);
         setSwitchPreference(prefStates.get(Pref.CLIPBOARD), Pref.CLIPBOARD);
+        setSwitchPreference(prefStates.get(Pref.SHOW_PASSWORD), Pref.SHOW_PASSWORD);
         findPreference(Pref.LOCATION.getKey()).setOnPreferenceClickListener((v) -> {
             mViewModel.handlePrefClick(this, Pref.LOCATION, null);
             return true;
