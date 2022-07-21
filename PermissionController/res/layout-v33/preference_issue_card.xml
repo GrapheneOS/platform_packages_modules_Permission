@@ -78,6 +78,7 @@
         android:layout_height="match_parent"
         app:layout_constraintTop_toBottomOf="@id/issue_card_action_button_list"
         android:text="Protected by Android"
+        android:importantForAccessibility="no"
         style="@style/SafetyCenter.IssueCard.Footer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
