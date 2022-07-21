@@ -819,14 +819,14 @@
     <!-- The notification content for the hibernation reminder notification [CHAR LIMIT=none] -->
     <string name="unused_apps_notification_content">Permissions and temporary files have been removed and notifications were stopped. Tap to review.</string>
 
-    <!-- TODO(b/237446729): The safety center card title for apps being auto-revoked [DO NOT TRANSLATE] [CHAR LIMIT=60] -->
-    <string name="unused_apps_safety_center_card_title">App permissions removed</string>
+    <!-- The safety center card title for apps being auto-revoked [CHAR LIMIT=60] -->
+    <string name="unused_apps_safety_center_card_title">Review apps with permissions removed</string>
 
-    <!-- TODO(b/237446729): The safety center card summary for apps being auto-revoked [DO NOT TRANSLATE] [CHAR LIMIT=60] -->
-    <string name="unused_apps_safety_center_card_content">To protect your privacy, permissions from some apps that you haven\u2019t used in a few months have been removed.</string>
+    <!-- The safety center card summary for apps being auto-revoked [CHAR LIMIT=none] -->
+    <string name="unused_apps_safety_center_card_content">For apps that you haven\u2019t used in a while, permissions and temporary files were removed and notifications were stopped.</string>
 
-    <!-- TODO(b/237446729): The action on the auto-revoked card to see unused apps [DO NOT TRANSLATE] [CHAR LIMIT=60] -->
-    <string name="unused_apps_safety_center_action_title">See unused apps</string>
+    <!-- The action on the auto-revoked card to see unused apps [CHAR LIMIT=60] -->
+    <string name="unused_apps_safety_center_action_title">Review apps</string>
 
     <!-- The notification title for the notification that shows up at the end of a drive where the user made a permission decision [CHAR LIMIT=60] -->
     <string name="post_drive_permission_decision_reminder_title">Check recent permissions</string>
@@ -874,42 +874,42 @@
     <string name="background_location_access_reminder_notification_content">This app can always access your location. Tap to change.</string>
 
     <!-- The notification title for background location access reminder notification [CHAR LIMIT=60] -->
-    <string name="notification_listener_reminder_notification_title">Review app with notification listener access</string>
+    <string name="notification_listener_reminder_notification_title">Review app with access to your notifications</string>
 
     <!-- The notification content for background location access reminder notification [CHAR LIMIT=none] -->
-    <string name="notification_listener_reminder_notification_content"><xliff:g id="app_name" example="Gmail">%s</xliff:g> can read all your notifications.</string>
+    <string name="notification_listener_reminder_notification_content"><xliff:g id="app_name" example="Gmail">%s</xliff:g> can access the content of all your notifications</string>
 
     <!-- The warning card (in safety center) content for notification listener access [CHAR LIMIT=none] -->
-    <string name="notification_listener_warning_card_content">This app can read all your notifications.</string>
+    <string name="notification_listener_warning_card_content">This app can access the content of all of your notifications. Some apps require this access to function as intended.</string>
 
     <!-- The label for remove access button on safety center warning card [CHAR LIMIT=60] -->
     <string name="notification_listener_remove_access_button_label">Remove access</string>
 
     <!-- The label for notification listener settings button from safety center warning card [CHAR LIMIT=60] -->
-    <string name="notification_listener_review_app_button_label">Review all apps with notification access</string>
+    <string name="notification_listener_review_app_button_label">See more options</string>
 
     <!-- Success message for remove access action on safety center warning card [CHAR LIMIT=60] -->
     <string name="notification_listener_remove_access_success_label">Access removed</string>
 
-    <!-- TODO(b/231585524): The notification title for accessibility access (3rd party apps) reminder notification [DO NOT TRANSLATE] [CHAR LIMIT=60] -->
-    <string name="accessibility_access_reminder_notification_title">Review app with accessibility access</string>
+    <!-- The title for notification reminders, and for warning cards in safety center, for apps with full device (accessibility) access [CHAR LIMIT=60] -->
+    <string name="accessibility_access_reminder_notification_title">Review app with full device access</string>
 
-    <!-- TODO(b/231585524): The notification content for accessibility access reminder notification [DO NOT TRANSLATE] [CHAR LIMIT=none] -->
-    <string name="accessibility_access_reminder_notification_content"><xliff:g id="app_name" example="Gmail">%s</xliff:g> can read all contents on the screen, display contents over other apps and track your interactions</string>
+    <!-- The notification content for full device (accessibility) access reminder notification [CHAR LIMIT=none] -->
+    <string name="accessibility_access_reminder_notification_content"><xliff:g id="app_name" example="Gmail">%s</xliff:g> can view your screen and perform actions on your device. Accessibility apps need this type of access to function as intended.</string>
 
-    <!-- TODO(b/231585524): The warning card (in safety center) content for accessibility access [DO NOT TRANSLATE] [CHAR LIMIT=none] -->
-    <string name="accessibility_access_warning_card_content">This app can read all contents on the screen and display contents over other apps. It can track your interactions and interact with apps on your behalf.</string>
+    <!-- The warning card (in safety center) content for full device (accessibility) access [CHAR LIMIT=none] -->
+    <string name="accessibility_access_warning_card_content">This app can view your screen and perform actions on your device. Accessibility apps need this type of access to function as intended, but check the app and make sure you trust it.</string>
 
-    <!-- TODO(b/231585524): The label for remove access button on safety center warning card [DO NOT TRANSLATE] [CHAR LIMIT=60] -->
+    <!-- The label for button on safety center warning card to remove full (accessibility) access from a given app [CHAR LIMIT=60] -->
     <string name="accessibility_remove_access_button_label">Remove access</string>
 
-    <!-- TODO(b/231585524): The label accessibility page button from safety center warning card [DO NOT TRANSLATE] [CHAR LIMIT=60] -->
-    <string name="accessibility_show_all_apps_button_label">View apps with accessibility access</string>
+    <!-- The label button on safety center warning card to view full list of apps with full (accessibility) access [CHAR LIMIT=60] -->
+    <string name="accessibility_show_all_apps_button_label">View apps with full access</string>
 
-    <!-- TODO(b/231585524): Success message for remove access action on safety center warning card [DO NOT TRANSLATE] [CHAR LIMIT=60] -->
+    <!-- Success message for remove access action on safety center warning card [CHAR LIMIT=60] -->
     <string name="accessibility_remove_access_success_label">Access removed</string>
 
-    <!-- TODO(b/231585524): Fallback app name (for notifications) in case PbA not available [DO NOT TRANSLATE] [CHAR LIMIT=60] -->
+    <!-- Fallback for notification title (name of app delivering notification) in case PbA string not defined [CHAR LIMIT=60] -->
     <string name="safety_center_notification_app_label">Android System</string>
 
     <!-- The notification title for the notification that a permission auto revoke has happened [CHAR LIMIT=60] -->
@@ -1629,18 +1629,18 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <!-- Message for media confirm dialog (when user denies visual group of q_to_s app) [CHAR LIMIT=NONE] -->
     <string name="media_confirm_dialog_message_q_to_s_visual_deny">This app doesn\u2019t support the latest version of Android. If this app can\u2019t access music and audio files, it also won\u2019t be allowed to access photos and videos.</string>
 
-    <!-- TODO: b/231974769: Title for background location access reminder notification [CHAR LIMIT=60] [DO NOT TRANSLATE] -->
+    <!-- Title for background location access reminder notification [CHAR LIMIT=80] -->
     <string name="safety_center_background_location_access_notification_title">Review app with background location access</string>
-    <!-- TODO: b/231974769: Content for background location access reminder notification [CHAR LIMIT=80] [DO NOT TRANSLATE]-->
-    <string name="safety_center_background_location_access_reminder_notification_content"><xliff:g id="app_name" example="Gmail">%s</xliff:g> can always access your location even when the app is closed.</string>
-    <!-- TODO: b/231974769: Title for background location access reminder warning card [CHAR LIMIT=80] [DO NOT TRANSLATE]-->
-    <string name="safety_center_background_location_access_reminder_title">An app has access to your location in the background</string>
-    <!-- TODO: b/231974769: Content for background location access reminder warning card [CHAR LIMIT=80] [DO NOT TRANSLATE]-->
-    <string name="safety_center_background_location_access_reminder_summary">This app can always access your location, even when closed.</string>
-    <!-- TODO: b/231974769: Success message when background location access permission is changed [CHAR LIMIT=40] [DO NOT TRANSLATE]-->
-    <string name="safety_center_background_location_access_revoked">Changed location access</string>
-    <!-- TODO: b/231974769: Label for button to view recent location access [CHAR LIMIT=60] [DO NOT TRANSLATE]-->
-    <string name="safety_center_view_recent_location_access">See recent location access</string>
+    <!-- Content for background location access reminder notification [CHAR LIMIT=80]-->
+    <string name="safety_center_background_location_access_reminder_notification_content"><xliff:g id="app_name" example="Gmail">%s</xliff:g> can always access your location, even when the app is closed</string>
+    <!-- Title for background location access reminder warning card [CHAR LIMIT=80]-->
+    <string name="safety_center_background_location_access_reminder_title">Review app with background location access</string>
+    <!-- Content for background location access reminder warning card [CHAR LIMIT=80]-->
+    <string name="safety_center_background_location_access_reminder_summary">This app can always access your location, even when it\u2019s closed.</string>
+    <!-- Success message when background location access permission is changed [CHAR LIMIT=40]-->
+    <string name="safety_center_background_location_access_revoked">Access changed</string>
+    <!-- Label for button to view recent location access [CHAR LIMIT=60]-->
+    <string name="safety_center_view_recent_location_access">See recent location usage</string>
 
     <!-- Do not translate. config value for the camera toggle -->
     <string name="camera_toggle_enable_config">camera_toggle_enabled</string>
