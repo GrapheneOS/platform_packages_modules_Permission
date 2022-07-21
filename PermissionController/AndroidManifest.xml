@@ -517,6 +517,11 @@
                 <action android:name="android.intent.action.SAFETY_CENTER"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
+            <!-- Higher priority than the settings version of controls, so this should handle it -->
+            <intent-filter android:priority="100">
+                <action android:name="android.settings.PRIVACY_CONTROLS"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
 
     </application>
