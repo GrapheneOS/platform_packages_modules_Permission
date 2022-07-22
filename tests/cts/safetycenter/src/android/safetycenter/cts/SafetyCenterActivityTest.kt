@@ -185,6 +185,18 @@ class SafetyCenterActivityTest {
     }
 
     @Test
+    fun statusCard_withoutIssues_hasContentDescriptions() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.information)
+
+        context.launchSafetyCenterActivity {
+            waitFindObject(By.descContains("Security and privacy status"))
+            findButton("Scan device")
+            waitNotDisplayed(By.desc("Protected by Android"))
+        }
+    }
+
+    @Test
     fun issueCard_criticalIssue_hasContentDescriptions() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         safetyCenterCtsHelper.setData(
