@@ -18,19 +18,27 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="scanning_title" msgid="5424849039854311398">"Po skanohet"</string>
-    <string name="loading_summary" msgid="8287412091422889811">"Po kontrollohet statusi i pajisjes…"</string>
+    <!-- no translation found for loading_summary (3740846439782713910) -->
+    <skip />
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Duket mirë"</string>
-    <string name="overall_severity_level_ok_summary" msgid="255849804128707819">"Kjo pajisje është e mbrojtur"</string>
-    <string name="overall_severity_level_ok_review_title" msgid="4870096573610601585">"Shto më shumë mbrojtje"</string>
-    <string name="overall_severity_level_ok_review_summary" msgid="6674687043153844604">"Kontrollo cilësimet më poshtë"</string>
+    <!-- no translation found for overall_severity_level_ok_summary (7219520381757200598) -->
+    <skip />
+    <!-- no translation found for overall_severity_level_ok_review_title (1494321117696765360) -->
+    <skip />
+    <!-- no translation found for overall_severity_level_ok_review_summary (7743619617413076275) -->
+    <skip />
     <string name="overall_severity_level_recommendation_title" msgid="5477942982532824601">"Pajisja mund të jetë në rrezik"</string>
     <string name="overall_severity_level_critical_warning_title" msgid="2043894328485989618">"Pajisja është në rrezik"</string>
+    <!-- no translation found for overall_severity_level_safety_recommendation_title (6436208984463981167) -->
+    <skip />
+    <!-- no translation found for overall_severity_level_critical_safety_warning_title (1039142045555227172) -->
+    <skip />
     <string name="overall_severity_n_alerts_summary" msgid="1105615451561197136">"{count,plural, =1{# sinjalizim}other{# sinjalizime}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Faqja nuk mund të hapej"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Sinjalizimi nuk mund të zgjidhej"</string>
-    <string name="refresh_timeout" msgid="5699772984139071348">"Statusi nuk mund të rifreskohej"</string>
-    <!-- no translation found for refresh_error (2698996273941446865) -->
+    <!-- no translation found for refresh_timeout (251734999692581852) -->
     <skip />
-    <!-- no translation found for work_profile_paused (7037400224040869079) -->
+    <!-- no translation found for refresh_error (6941786638077164066) -->
     <skip />
+    <string name="work_profile_paused" msgid="7037400224040869079">"Profili i punës është në pauzë"</string>
 </resources>
