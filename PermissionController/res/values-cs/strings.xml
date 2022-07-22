@@ -170,7 +170,7 @@
     <string name="permission_usage_summary_background" msgid="6136171928959340697">"Poslední přístup: <xliff:g id="TIME">%1$s</xliff:g>\nPoslední přístup na pozadí"</string>
     <string name="permission_usage_any_permission" msgid="6358023078298106997">"Všechna oprávnění"</string>
     <string name="permission_usage_any_time" msgid="3802087027301631827">"Kdykoli"</string>
-    <string name="permission_usage_last_7_days" msgid="7386221251886130065">"Posledních 7 dnů"</string>
+    <string name="permission_usage_last_7_days" msgid="7386221251886130065">"Posledních 7 dní"</string>
     <string name="permission_usage_last_day" msgid="1512880889737305115">"Posledních 24 hodin"</string>
     <string name="permission_usage_last_hour" msgid="3866005205535400264">"Poslední hodina"</string>
     <string name="permission_usage_last_15_minutes" msgid="9077554653436200702">"Posledních 15 minut"</string>
