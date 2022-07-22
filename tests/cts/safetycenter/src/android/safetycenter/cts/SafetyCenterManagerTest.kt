@@ -89,6 +89,7 @@ import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.NO_PAGE_OPEN_CONF
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SEVERITY_ZERO_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_ID
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_OTHER_PACKAGE_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_1
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_2
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_3
@@ -1419,6 +1420,19 @@ class SafetyCenterManagerTest {
             .isEqualTo(
                 SafetyCenterErrorDetails(
                     safetyCenterResourcesContext.getStringByName("refresh_timeout")))
+    }
+
+    @Test
+    fun refreshSafetySources_withTrackedSourceThatHasNoReceiver_doesNotTimeOut() {
+        SafetyCenterFlags.refreshTimeout = TIMEOUT_SHORT
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_OTHER_PACKAGE_CONFIG)
+        val listener = safetyCenterCtsHelper.addListener()
+
+        safetyCenterManager.refreshSafetySourcesWithPermission(REFRESH_REASON_RESCAN_BUTTON_CLICK)
+
+        assertFailsWith(TimeoutCancellationException::class) {
+            listener.receiveSafetyCenterErrorDetails(TIMEOUT_SHORT)
+        }
     }
 
     @Test
