@@ -194,6 +194,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
                             requireArguments().getParcelable(ISSUE_KEY, SafetyCenterIssue.class));
             return new AlertDialog.Builder(getContext())
                     .setTitle(R.string.safety_center_issue_card_dismiss_confirmation_title)
+                    .setMessage(R.string.safety_center_issue_card_dismiss_confirmation_message)
                     .setPositiveButton(
                             R.string.safety_center_issue_card_confirm_dismiss_button,
                             (dialog, which) -> safetyCenterViewModel.dismissIssue(issue))
