@@ -262,6 +262,12 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"കുറച്ച് മാസങ്ങളായി ചില ആപ്പുകൾ ഉപയോഗിച്ചിട്ടില്ല. അവലോകനം ചെയ്യാൻ ടാപ്പ് ചെയ്യുക."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{ഉപയോഗിക്കാത്ത # ആപ്പ്}other{ഉപയോഗിക്കാത്ത # ആപ്പുകൾ}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"അനുമതികളും താൽക്കാലിക ഫയലുകളും നീക്കം ചെയ്‌തു, അറിയിപ്പുകൾ നിർത്തി. അവലോകനം ചെയ്യാൻ ടാപ്പ് ചെയ്യുക."</string>
+    <!-- no translation found for unused_apps_safety_center_card_title (5638409355530099149) -->
+    <skip />
+    <!-- no translation found for unused_apps_safety_center_card_content (1088557243627427820) -->
+    <skip />
+    <!-- no translation found for unused_apps_safety_center_action_title (8865914432518993194) -->
+    <skip />
     <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"അടുത്തിടെ നൽകിയ അനുമതികൾ പരിശോധിക്കുക"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"ഡ്രൈവ് ചെയ്യുന്നതിനിടെ നിങ്ങൾ <xliff:g id="APP">%1$s</xliff:g> ആപ്പിന് <xliff:g id="PERMISSION">%2$s</xliff:g> ആക്‌സസ് നൽകി"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"ഡ്രൈവ് ചെയ്യുന്നതിനിടെ നിങ്ങൾ <xliff:g id="APP">%1$s</xliff:g> ആപ്പിന് <xliff:g id="PERMISSION_1">%2$s</xliff:g>, <xliff:g id="PERMISSION_2">%3$s</xliff:g> എന്നിവയിലേക്ക് ആക്‌സസ് നൽകി"</string>
@@ -276,12 +282,28 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"നിങ്ങളുടെ സ്വകാര്യത പരിരക്ഷിക്കാൻ അനുമതികൾ നീക്കം ചെയ്തു"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g>-ന് നിങ്ങളുടെ ലൊക്കേഷൻ പശ്ചാത്തലത്തിൽ ലഭിച്ചു"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"ഈ ആപ്പിന് എപ്പോഴും നിങ്ങളുടെ ലൊക്കേഷൻ ആക്‌സസ് ചെയ്യാനാവും. മാറ്റാൻ ടാപ്പ് ചെയ്യുക."</string>
-    <string name="notification_listener_reminder_notification_title" msgid="6214106302085018939">"അറിയിപ്പ് ലിസണർ ആക്‌സസ് ഉപയോഗിച്ച് ആപ്പ് അവലോകനം ചെയ്യുക"</string>
-    <string name="notification_listener_reminder_notification_content" msgid="4740891089329946164">"നിങ്ങളുടെ എല്ലാ അറിയിപ്പുകളും വായിക്കാൻ <xliff:g id="APP_NAME">%s</xliff:g> ആപ്പിന് കഴിയും."</string>
-    <string name="notification_listener_warning_card_content" msgid="8181427178654279926">"നിങ്ങളുടെ എല്ലാ അറിയിപ്പുകളും വായിക്കാൻ ഈ ആപ്പിന് കഴിയും."</string>
+    <!-- no translation found for notification_listener_reminder_notification_title (3747210460187479091) -->
+    <skip />
+    <!-- no translation found for notification_listener_reminder_notification_content (4936171153668563578) -->
+    <skip />
+    <!-- no translation found for notification_listener_warning_card_content (274394600993750005) -->
+    <skip />
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"ആക്‌സസ് നീക്കം ചെയ്യുക"</string>
-    <string name="notification_listener_review_app_button_label" msgid="4452381557379652037">"അറിയിപ്പ് ആക്‌സസുള്ള എല്ലാ ആപ്പുകളും അവലോകനം ചെയ്യുക"</string>
+    <!-- no translation found for notification_listener_review_app_button_label (3433073281029143924) -->
+    <skip />
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"ആക്‌സസ് നീക്കം ചെയ്‌തു"</string>
+    <!-- no translation found for accessibility_access_reminder_notification_title (2971317234668807566) -->
+    <skip />
+    <!-- no translation found for accessibility_access_reminder_notification_content (7389454158175306720) -->
+    <skip />
+    <!-- no translation found for accessibility_access_warning_card_content (4370327190293217358) -->
+    <skip />
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"ആക്‌സസ് നീക്കം ചെയ്യുക"</string>
+    <!-- no translation found for accessibility_show_all_apps_button_label (960067249326392280) -->
+    <skip />
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"ആക്‌സസ് നീക്കം ചെയ്‌തു"</string>
+    <!-- no translation found for safety_center_notification_app_label (2457720616141926534) -->
+    <skip />
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"സ്വകാര്യത പരിരക്ഷിക്കാൻ ആപ്പ് അനുമതികൾ നീക്കം ചെയ്തു"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"കുറച്ച് മാസങ്ങളായി <xliff:g id="APP_NAME">%s</xliff:g> ഉപയോഗിച്ചിട്ടില്ല. അവലോകനം ചെയ്യുന്നതിന് ടാപ്പ് ചെയ്യുക."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> എന്നതും മറ്റൊരു ആപ്പും കുറച്ച് മാസങ്ങളായി ഉപയോഗിച്ചിട്ടില്ല. അവലോകനം ചെയ്യുന്നതിന് ടാപ്പ് ചെയ്യുക."</string>
@@ -502,8 +524,10 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"ആപ്പുകൾക്കും സേവനങ്ങൾക്കും"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"നിങ്ങൾ ഒരു അടിയന്തര നമ്പറിലേക്ക് കോൾ ചെയ്യുമ്പോൾ തുടർന്നും മൈക്രോഫോൺ ഡാറ്റ പങ്കിട്ടേക്കാം."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"മാറ്റുക"</string>
-    <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"സുരക്ഷയും സ്വകാര്യതയും"</string>
-    <string name="safety_center_rescan_button" msgid="8047036829052958144">"സ്‌കാൻ ചെയ്യുക"</string>
+    <!-- no translation found for safety_center_dashboard_page_title (2810774008694315854) -->
+    <skip />
+    <!-- no translation found for safety_center_rescan_button (4517514567809409596) -->
+    <skip />
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"ഡിസ്‌മിസ് ചെയ്യുക"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"ഈ മുന്നറിയിപ്പ് ഡിസ്‌മിസ് ചെയ്യണോ?"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"ഡിസ്‌മിസ് ചെയ്യുക"</string>
@@ -511,13 +535,28 @@
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"ക്രമീകരണം"</string>
     <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"സുരക്ഷ, സ്വകാര്യതാ നില. <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>. <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"സുരക്ഷാ ക്രമീകരണം"</string>
-    <string name="sensor_permissions_qs" msgid="4365989229426201877">"സെൻസർ അനുമതികൾ"</string>
-    <string name="privacy_controls_qs" msgid="471793881466080745">"സ്വകാര്യതാ നിയന്ത്രണങ്ങൾ"</string>
+    <!-- no translation found for sensor_permissions_qs (1022267900031317472) -->
+    <skip />
+    <!-- no translation found for safety_privacy_qs_tile_title (727301867710374052) -->
+    <skip />
+    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"നില പരിശോധിക്കുക"</string>
+    <!-- no translation found for privacy_controls_qs (5780144882040591169) -->
+    <skip />
+    <!-- no translation found for security_settings_button_label_qs (8280343822465962330) -->
+    <skip />
+    <!-- no translation found for camera_toggle_label_qs (3880261453066157285) -->
+    <skip />
+    <!-- no translation found for microphone_toggle_label_qs (8132912469813396552) -->
+    <skip />
     <string name="permissions_removed_qs" msgid="8957319130625294572">"അനുമതി നീക്കം ചെയ്തു"</string>
-    <string name="camera_usage_qs" msgid="7943349178368641820">"കൂടുതൽ ക്യാമറാ ഉപയോഗം കാണുക"</string>
-    <string name="microphone_usage_qs" msgid="2393193350541830472">"കൂടുതൽ മൈക്രോഫോൺ ഉപയോഗം കാണുക"</string>
-    <string name="remove_camera_qs" msgid="8209716677879809162">"ക്യാമറാ അനുമതി നീക്കം ചെയ്യുക"</string>
-    <string name="remove_microphone_qs" msgid="2893536836641560183">"മൈക്രോഫോൺ അനുമതി നീക്കം ചെയ്യുക"</string>
+    <!-- no translation found for camera_usage_qs (134093544497365716) -->
+    <skip />
+    <!-- no translation found for microphone_usage_qs (5054432134389894202) -->
+    <skip />
+    <!-- no translation found for remove_camera_qs (3649996161066883350) -->
+    <skip />
+    <!-- no translation found for remove_microphone_qs (1276551965129953198) -->
+    <skip />
     <string name="manage_service_qs" msgid="7862555549364153805">"സേവനം മാനേജ് ചെയ്യുക"</string>
     <string name="manage_permissions_qs" msgid="3780541819763475434">"അനുമതികൾ മാനേജ് ചെയ്യുക"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"ഫോൺ കോൾ ഉപയോഗിക്കുന്നു"</string>
@@ -528,8 +567,6 @@
     <string name="recent_app_usage_1_qs" msgid="261450184773310741">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>) അടുത്തിടെ ഉപയോഗിച്ചു"</string>
     <string name="active_app_usage_2_qs" msgid="6107866785243565283">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) ഉപയോഗിക്കുന്നു"</string>
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) അടുത്തിടെ ഉപയോഗിച്ചു"</string>
-    <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"സുരക്ഷയും സ്വകാര്യതയും"</string>
-    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"നില പരിശോധിക്കുക"</string>
     <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"സ്ഥിരീകരിക്കുക"</string>
     <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"മടങ്ങുക"</string>
     <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"മറ്റ് ഫയലുകളിലേക്കുള്ള ആക്‌സസും അനുവദിക്കും"</string>
@@ -548,4 +585,32 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Android-ന്റെ ഏറ്റവും പുതിയ പതിപ്പിനെ ഈ ആപ്പ് പിന്തുണയ്ക്കുന്നില്ല. ഈ ആപ്പിന് സംഗീതവും ഓഡിയോ ഫയലുകളും ആക്‌സസ് ചെയ്യാൻ കഴിയുന്നില്ലെങ്കിൽ, ഫോട്ടോകളും വീഡിയോകളും ആക്‌സസ് ചെയ്യാനും ഇതിനെ അനുവദിക്കില്ല."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Android-ന്റെ ഏറ്റവും പുതിയ പതിപ്പിനെ ഈ ആപ്പ് പിന്തുണയ്ക്കുന്നില്ല. ഈ ആപ്പിന് ഫോട്ടോകളും വീഡിയോകളും ആക്‌സസ് ചെയ്യാൻ കഴിയുമെങ്കിൽ, സംഗീതവും ഓഡിയോ ഫയലുകളും ആക്‌സസ് ചെയ്യാനും ഇതിനെ അനുവദിക്കും."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Android-ന്റെ ഏറ്റവും പുതിയ പതിപ്പിനെ ഈ ആപ്പ് പിന്തുണയ്ക്കുന്നില്ല. ഈ ആപ്പിന് സംഗീതവും ഓഡിയോ ഫയലുകളും ആക്‌സസ് ചെയ്യാൻ കഴിയുന്നില്ലെങ്കിൽ, ഫോട്ടോകളും വീഡിയോകളും ആക്‌സസ് ചെയ്യാനും ഇതിനെ അനുവദിക്കില്ല."</string>
+    <!-- no translation found for safety_center_background_location_access_notification_title (8933610618810588237) -->
+    <skip />
+    <!-- no translation found for safety_center_background_location_access_reminder_notification_content (4066560182507301022) -->
+    <skip />
+    <!-- no translation found for safety_center_background_location_access_reminder_title (5477847038103863843) -->
+    <skip />
+    <!-- no translation found for safety_center_background_location_access_reminder_summary (8276755741395332974) -->
+    <skip />
+    <!-- no translation found for safety_center_background_location_access_revoked (6972274943343442213) -->
+    <skip />
+    <!-- no translation found for safety_center_view_recent_location_access (3524391299490678243) -->
+    <skip />
+    <!-- no translation found for privacy_controls_title (7605929972256835199) -->
+    <skip />
+    <!-- no translation found for camera_toggle_title (1251201397431837666) -->
+    <skip />
+    <!-- no translation found for mic_toggle_title (2649991093496110162) -->
+    <skip />
+    <!-- no translation found for perm_toggle_description (7801326363741451379) -->
+    <skip />
+    <!-- no translation found for mic_toggle_description (9163104307990677157) -->
+    <skip />
+    <!-- no translation found for location_settings_subtitle (2328360561197430695) -->
+    <skip />
+    <!-- no translation found for show_clip_access_notification_title (5168467637351109096) -->
+    <skip />
+    <!-- no translation found for show_clip_access_notification_summary (3532020182782112687) -->
+    <skip />
 </resources>

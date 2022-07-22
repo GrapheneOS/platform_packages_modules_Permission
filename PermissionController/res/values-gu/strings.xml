@@ -262,6 +262,12 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"અમુક ઍપનો થોડા મહિનામાં ઉપયોગ થયો નથી. રિવ્યૂ કરવા માટે ટૅપ કરો."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{બિનવપરાયેલી # ઍપ}one{બિનવપરાયેલી # ઍપ}other{બિનવપરાયેલી # ઍપ}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"પરવાનગીઓ અને હંગામી ફાઇલો કાઢી નાખવામાં આવી છે અને નોટિફિકેશન બંધ કરવામાં આવ્યા છે. રિવ્યૂ કરવા માટે ટૅપ કરો."</string>
+    <!-- no translation found for unused_apps_safety_center_card_title (5638409355530099149) -->
+    <skip />
+    <!-- no translation found for unused_apps_safety_center_card_content (1088557243627427820) -->
+    <skip />
+    <!-- no translation found for unused_apps_safety_center_action_title (8865914432518993194) -->
+    <skip />
     <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"તાજેતરમાં આપેલી પરવાનગીઓ ચેક કરો"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"ડ્રાઇવ કરતી વખતે, તમે <xliff:g id="APP">%1$s</xliff:g>ને <xliff:g id="PERMISSION">%2$s</xliff:g>નો ઍક્સેસ આપ્યો"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"ડ્રાઇવ કરતી વખતે, તમે <xliff:g id="APP">%1$s</xliff:g>ને <xliff:g id="PERMISSION_1">%2$s</xliff:g> અને <xliff:g id="PERMISSION_2">%3$s</xliff:g>નો ઍક્સેસ આપ્યો"</string>
@@ -276,12 +282,28 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"તમારી પ્રાઇવસીનું રક્ષણ કરવા માટે પરવાનગીઓ દૂર કરવામાં આવી"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g>એ બૅકગ્રાઉન્ડમાં તમારું સ્થાન ઍક્સેસ કર્યુ છે"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"આ ઍપ હંમેશાં તમારા સ્થાનને ઍક્સેસ કરી શકે છે. ફેરફાર કરવા માટે ટૅપ કરો."</string>
-    <string name="notification_listener_reminder_notification_title" msgid="6214106302085018939">"નોટિફિકેશન સાંભળવાનો ઍક્સેસ ધરાવતી ઍપનો રિવ્યૂ કરો"</string>
-    <string name="notification_listener_reminder_notification_content" msgid="4740891089329946164">"<xliff:g id="APP_NAME">%s</xliff:g> તમારા બધા નોટિફિકેશન વાંચી શકે છે."</string>
-    <string name="notification_listener_warning_card_content" msgid="8181427178654279926">"આ ઍપ તમારા બધા નોટિફિકેશન વાંચી શકે છે."</string>
+    <!-- no translation found for notification_listener_reminder_notification_title (3747210460187479091) -->
+    <skip />
+    <!-- no translation found for notification_listener_reminder_notification_content (4936171153668563578) -->
+    <skip />
+    <!-- no translation found for notification_listener_warning_card_content (274394600993750005) -->
+    <skip />
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"ઍક્સેસ કાઢી નાખો"</string>
-    <string name="notification_listener_review_app_button_label" msgid="4452381557379652037">"નોટિફિકેશનનો ઍક્સેસ ધરાવતી તમામ ઍપનો રિવ્યૂ કરો"</string>
+    <!-- no translation found for notification_listener_review_app_button_label (3433073281029143924) -->
+    <skip />
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"ઍક્સેસ કાઢી નાખ્યો"</string>
+    <!-- no translation found for accessibility_access_reminder_notification_title (2971317234668807566) -->
+    <skip />
+    <!-- no translation found for accessibility_access_reminder_notification_content (7389454158175306720) -->
+    <skip />
+    <!-- no translation found for accessibility_access_warning_card_content (4370327190293217358) -->
+    <skip />
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"ઍક્સેસ કાઢો"</string>
+    <!-- no translation found for accessibility_show_all_apps_button_label (960067249326392280) -->
+    <skip />
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"ઍક્સેસ કાઢી નાખ્યો"</string>
+    <!-- no translation found for safety_center_notification_app_label (2457720616141926534) -->
+    <skip />
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"પ્રાઇવસીની સુરક્ષા કરવા માટે ઍપ્લિકેશન પરવાનગીઓ કાઢી નાખી"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g>નો થોડા મહિનાથી ઉપયોગ કરવામાં આવ્યો નથી. રિવ્યૂ કરવા માટે ટૅપ કરો."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> અને 1 અન્ય ઍપનો થોડા મહિનાથી ઉપયોગ કરવામાં આવ્યો નથી. રિવ્યૂ કરવા માટે ટૅપ કરો."</string>
@@ -502,8 +524,10 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"ઍપ અને સેવાઓ માટે"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"જ્યારે તમે ઇમર્જન્સી નંબર પર કૉલ કરો ત્યારે કદાચ માઇક્રોફોનનો ડેટા હજી પણ શેર કરવામાં આવી શકે છે."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"બદલો"</string>
-    <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"સુરક્ષા અને પ્રાઇવસી"</string>
-    <string name="safety_center_rescan_button" msgid="8047036829052958144">"સ્કૅન કરો"</string>
+    <!-- no translation found for safety_center_dashboard_page_title (2810774008694315854) -->
+    <skip />
+    <!-- no translation found for safety_center_rescan_button (4517514567809409596) -->
+    <skip />
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"છોડી દો"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"શું આ અલર્ટને છોડી દઈએ?"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"છોડી દો"</string>
@@ -511,13 +535,28 @@
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"સેટિંગ"</string>
     <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"સુરક્ષા અને પ્રાઇવસીનું સ્ટેટસ. <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>. <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"સુરક્ષા સેટિંગ"</string>
-    <string name="sensor_permissions_qs" msgid="4365989229426201877">"સેન્સર સંબંધિત પરવાનગીઓ"</string>
-    <string name="privacy_controls_qs" msgid="471793881466080745">"પ્રાઇવસીને લગતાં નિયંત્રણો"</string>
+    <!-- no translation found for sensor_permissions_qs (1022267900031317472) -->
+    <skip />
+    <!-- no translation found for safety_privacy_qs_tile_title (727301867710374052) -->
+    <skip />
+    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"સ્ટેટસ ચેક કરો"</string>
+    <!-- no translation found for privacy_controls_qs (5780144882040591169) -->
+    <skip />
+    <!-- no translation found for security_settings_button_label_qs (8280343822465962330) -->
+    <skip />
+    <!-- no translation found for camera_toggle_label_qs (3880261453066157285) -->
+    <skip />
+    <!-- no translation found for microphone_toggle_label_qs (8132912469813396552) -->
+    <skip />
     <string name="permissions_removed_qs" msgid="8957319130625294572">"પરવાનગી કાઢી નાખવામાં આવી"</string>
-    <string name="camera_usage_qs" msgid="7943349178368641820">"કૅમેરાના ઉપયોગ વિશે વધુ માહિતી જુઓ"</string>
-    <string name="microphone_usage_qs" msgid="2393193350541830472">"માઇક્રોફોનના ઉપયોગ વિશે વધુ માહિતી જુઓ"</string>
-    <string name="remove_camera_qs" msgid="8209716677879809162">"કૅમેરા સંબંધિત પરવાનગી કાઢી નાખો"</string>
-    <string name="remove_microphone_qs" msgid="2893536836641560183">"માઇક્રોફોન સંબંધિત પરવાનગી કાઢી નાખો"</string>
+    <!-- no translation found for camera_usage_qs (134093544497365716) -->
+    <skip />
+    <!-- no translation found for microphone_usage_qs (5054432134389894202) -->
+    <skip />
+    <!-- no translation found for remove_camera_qs (3649996161066883350) -->
+    <skip />
+    <!-- no translation found for remove_microphone_qs (1276551965129953198) -->
+    <skip />
     <string name="manage_service_qs" msgid="7862555549364153805">"સેવા મેનેજ કરો"</string>
     <string name="manage_permissions_qs" msgid="3780541819763475434">"પરવાનગીઓને મેનેજ કરો"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"ફોન કૉલ દ્વારા ઉપયોગ કરવામાં આવી રહ્યો છે"</string>
@@ -528,8 +567,6 @@
     <string name="recent_app_usage_1_qs" msgid="261450184773310741">"<xliff:g id="APP_NAME">%1$s</xliff:g> દ્વારા તાજેતરમાં ઉપયોગ કરવામાં આવ્યો (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
     <string name="active_app_usage_2_qs" msgid="6107866785243565283">"<xliff:g id="APP_NAME">%1$s</xliff:g> દ્વારા ઉપયોગ કરવામાં આવી રહ્યો છે (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"<xliff:g id="APP_NAME">%1$s</xliff:g> દ્વારા તાજેતરમાં ઉપયોગ કરવામાં આવ્યો (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
-    <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"સુરક્ષા અને પ્રાઇવસી"</string>
-    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"સ્ટેટસ ચેક કરો"</string>
     <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"કન્ફર્મ કરો"</string>
     <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"પાછળ"</string>
     <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"અન્ય ફાઇલોને પણ ઍક્સેસ કરવાની મંજૂરી આપવામાં આવશે"</string>
@@ -548,4 +585,32 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"આ ઍપ Androidના નવીનતમ વર્ઝનને સપોર્ટ કરતી નથી. જો આ ઍપ મ્યુઝિક અને ઑડિયો ફાઇલોને ઍક્સેસ કરી શકતી ન હોય, તો તેને ફોટા અને વીડિયોને પણ ઍક્સેસ કરવાની મંજૂરી આપવામાં આવશે નહીં."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"આ ઍપ Androidના નવીનતમ વર્ઝનને સપોર્ટ કરતી નથી. જો આ ઍપ ફોટા અને વીડિયોને ઍક્સેસ કરી શકતી હોય, તો તેને મ્યુઝિક અને ઑડિયો ફાઇલોને પણ ઍક્સેસ કરવાની મંજૂરી આપવામાં આવશે."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"આ ઍપ Androidના નવીનતમ વર્ઝનને સપોર્ટ કરતી નથી. જો આ ઍપ મ્યુઝિક અને ઑડિયો ફાઇલોને ઍક્સેસ કરી શકતી ન હોય, તો તેને ફોટા અને વીડિયોને પણ ઍક્સેસ કરવાની મંજૂરી આપવામાં આવશે નહીં."</string>
+    <!-- no translation found for safety_center_background_location_access_notification_title (8933610618810588237) -->
+    <skip />
+    <!-- no translation found for safety_center_background_location_access_reminder_notification_content (4066560182507301022) -->
+    <skip />
+    <!-- no translation found for safety_center_background_location_access_reminder_title (5477847038103863843) -->
+    <skip />
+    <!-- no translation found for safety_center_background_location_access_reminder_summary (8276755741395332974) -->
+    <skip />
+    <!-- no translation found for safety_center_background_location_access_revoked (6972274943343442213) -->
+    <skip />
+    <!-- no translation found for safety_center_view_recent_location_access (3524391299490678243) -->
+    <skip />
+    <!-- no translation found for privacy_controls_title (7605929972256835199) -->
+    <skip />
+    <!-- no translation found for camera_toggle_title (1251201397431837666) -->
+    <skip />
+    <!-- no translation found for mic_toggle_title (2649991093496110162) -->
+    <skip />
+    <!-- no translation found for perm_toggle_description (7801326363741451379) -->
+    <skip />
+    <!-- no translation found for mic_toggle_description (9163104307990677157) -->
+    <skip />
+    <!-- no translation found for location_settings_subtitle (2328360561197430695) -->
+    <skip />
+    <!-- no translation found for show_clip_access_notification_title (5168467637351109096) -->
+    <skip />
+    <!-- no translation found for show_clip_access_notification_summary (3532020182782112687) -->
+    <skip />
 </resources>

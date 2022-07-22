@@ -262,6 +262,12 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Kai kurios programos nebuvo naudojamos kelis mėnesius. Palieskite ir peržiūrėkite."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# nenaudojama programa}one{# nenaudojama programa}few{# nenaudojamos programos}many{# nenaudojamos programos}other{# nenaudojamų programų}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Leidimai ir laikinieji failai pašalinti, o pranešimai sustabdyti. Palieskite ir peržiūrėkite."</string>
+    <!-- no translation found for unused_apps_safety_center_card_title (5638409355530099149) -->
+    <skip />
+    <!-- no translation found for unused_apps_safety_center_card_content (1088557243627427820) -->
+    <skip />
+    <!-- no translation found for unused_apps_safety_center_action_title (8865914432518993194) -->
+    <skip />
     <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Naujausių leidimų patikra"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Vairuodami suteikėte programai „<xliff:g id="APP">%1$s</xliff:g>“ prieigą prie šio leidimo: <xliff:g id="PERMISSION">%2$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Vairuodami suteikėte programai „<xliff:g id="APP">%1$s</xliff:g>“ prieigą prie šių leidimų: <xliff:g id="PERMISSION_1">%2$s</xliff:g> ir <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
@@ -276,12 +282,28 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Leidimai pašalinti siekiant užtikrinti jūsų privatumą"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"Programa „<xliff:g id="APP_NAME">%s</xliff:g>“ gavo vietovės duomenis fone"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Ši programa visada gali pasiekti jūsų vietovę. Palieskite, kad pakeistumėte."</string>
-    <string name="notification_listener_reminder_notification_title" msgid="6214106302085018939">"Programos su pranešimų apdorojimo priemonės prieiga peržiūra"</string>
-    <string name="notification_listener_reminder_notification_content" msgid="4740891089329946164">"„<xliff:g id="APP_NAME">%s</xliff:g>“ gali skaityti visus jūsų pranešimus."</string>
-    <string name="notification_listener_warning_card_content" msgid="8181427178654279926">"Ši programa gali skaityti visus jūsų pranešimus."</string>
+    <!-- no translation found for notification_listener_reminder_notification_title (3747210460187479091) -->
+    <skip />
+    <!-- no translation found for notification_listener_reminder_notification_content (4936171153668563578) -->
+    <skip />
+    <!-- no translation found for notification_listener_warning_card_content (274394600993750005) -->
+    <skip />
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Prieigos pašalinimas"</string>
-    <string name="notification_listener_review_app_button_label" msgid="4452381557379652037">"Peržiūrėkite visas prieigą prie pranešimų gavusias programas"</string>
+    <!-- no translation found for notification_listener_review_app_button_label (3433073281029143924) -->
+    <skip />
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Prieiga pašalinta"</string>
+    <!-- no translation found for accessibility_access_reminder_notification_title (2971317234668807566) -->
+    <skip />
+    <!-- no translation found for accessibility_access_reminder_notification_content (7389454158175306720) -->
+    <skip />
+    <!-- no translation found for accessibility_access_warning_card_content (4370327190293217358) -->
+    <skip />
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Pašalinti prieigą"</string>
+    <!-- no translation found for accessibility_show_all_apps_button_label (960067249326392280) -->
+    <skip />
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Prieiga pašalinta"</string>
+    <!-- no translation found for safety_center_notification_app_label (2457720616141926534) -->
+    <skip />
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Programos leidimai pašalinti siekiant užtikrinti privatumą"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"„<xliff:g id="APP_NAME">%s</xliff:g>“ nebuvo naudojama kelis mėnesius. Palieskite ir peržiūrėkite."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"„<xliff:g id="APP_NAME">%s</xliff:g>“ ir dar viena programa nebuvo naudojamos kelis mėnesius. Palieskite ir peržiūrėkite."</string>
@@ -502,8 +524,10 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Programos ir paslaugos"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Mikrofono duomenys vis tiek gali būti bendrinami, skambinant pagalbos numeriu."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Pakeisti"</string>
-    <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Sauga ir privatumas"</string>
-    <string name="safety_center_rescan_button" msgid="8047036829052958144">"Nuskaityti"</string>
+    <!-- no translation found for safety_center_dashboard_page_title (2810774008694315854) -->
+    <skip />
+    <!-- no translation found for safety_center_rescan_button (4517514567809409596) -->
+    <skip />
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Atsisakyti"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Atsisakyti šio įspėjimo?"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Atsisakyti"</string>
@@ -511,13 +535,28 @@
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"Nustatymai"</string>
     <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"Saugos ir privatumo būsena. <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>. <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"Saugos nustatymai"</string>
-    <string name="sensor_permissions_qs" msgid="4365989229426201877">"Jutiklių leidimai"</string>
-    <string name="privacy_controls_qs" msgid="471793881466080745">"Privatumo valdikliai"</string>
+    <!-- no translation found for sensor_permissions_qs (1022267900031317472) -->
+    <skip />
+    <!-- no translation found for safety_privacy_qs_tile_title (727301867710374052) -->
+    <skip />
+    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Patikrinkite būseną"</string>
+    <!-- no translation found for privacy_controls_qs (5780144882040591169) -->
+    <skip />
+    <!-- no translation found for security_settings_button_label_qs (8280343822465962330) -->
+    <skip />
+    <!-- no translation found for camera_toggle_label_qs (3880261453066157285) -->
+    <skip />
+    <!-- no translation found for microphone_toggle_label_qs (8132912469813396552) -->
+    <skip />
     <string name="permissions_removed_qs" msgid="8957319130625294572">"Leidimas pašalintas"</string>
-    <string name="camera_usage_qs" msgid="7943349178368641820">"Žr. daugiau vaizdo kameros naudojimo atvejų"</string>
-    <string name="microphone_usage_qs" msgid="2393193350541830472">"Žr. daugiau mikrofono naudojimo atvejų"</string>
-    <string name="remove_camera_qs" msgid="8209716677879809162">"Pašalinti vaizdo kameros leidimą"</string>
-    <string name="remove_microphone_qs" msgid="2893536836641560183">"Pašalinti mikrofono leidimą"</string>
+    <!-- no translation found for camera_usage_qs (134093544497365716) -->
+    <skip />
+    <!-- no translation found for microphone_usage_qs (5054432134389894202) -->
+    <skip />
+    <!-- no translation found for remove_camera_qs (3649996161066883350) -->
+    <skip />
+    <!-- no translation found for remove_microphone_qs (1276551965129953198) -->
+    <skip />
     <string name="manage_service_qs" msgid="7862555549364153805">"Tvarkyti paslaugą"</string>
     <string name="manage_permissions_qs" msgid="3780541819763475434">"Tvarkyti leidimus"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Naudojama telefono skambučiui"</string>
@@ -528,8 +567,6 @@
     <string name="recent_app_usage_1_qs" msgid="261450184773310741">"Neseniai naudota „<xliff:g id="APP_NAME">%1$s</xliff:g>“ (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
     <string name="active_app_usage_2_qs" msgid="6107866785243565283">"Naudojama „<xliff:g id="APP_NAME">%1$s</xliff:g>“ (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Neseniai naudota „<xliff:g id="APP_NAME">%1$s</xliff:g>“ (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
-    <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Sauga ir privatumas"</string>
-    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Patikrinkite būseną"</string>
     <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"Patvirtinti"</string>
     <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"Atgal"</string>
     <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"Taip pat bus galima pasiekti kitus failus"</string>
@@ -548,4 +585,32 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Ši programa nepalaiko naujausios „Android“ versijos. Jei ši programa negali pasiekti muzikos ir garso failų, ji taip pat negalės pasiekti nuotraukų ir vaizdo įrašų."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Ši programa nepalaiko naujausios „Android“ versijos. Jei ši programa gali pasiekti nuotraukas ir vaizdo įrašus, ji taip pat galės pasiekti muzikos ir garso failus."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Ši programa nepalaiko naujausios „Android“ versijos. Jei ši programa negali pasiekti muzikos ir garso failų, ji taip pat negalės pasiekti nuotraukų ir vaizdo įrašų."</string>
+    <!-- no translation found for safety_center_background_location_access_notification_title (8933610618810588237) -->
+    <skip />
+    <!-- no translation found for safety_center_background_location_access_reminder_notification_content (4066560182507301022) -->
+    <skip />
+    <!-- no translation found for safety_center_background_location_access_reminder_title (5477847038103863843) -->
+    <skip />
+    <!-- no translation found for safety_center_background_location_access_reminder_summary (8276755741395332974) -->
+    <skip />
+    <!-- no translation found for safety_center_background_location_access_revoked (6972274943343442213) -->
+    <skip />
+    <!-- no translation found for safety_center_view_recent_location_access (3524391299490678243) -->
+    <skip />
+    <!-- no translation found for privacy_controls_title (7605929972256835199) -->
+    <skip />
+    <!-- no translation found for camera_toggle_title (1251201397431837666) -->
+    <skip />
+    <!-- no translation found for mic_toggle_title (2649991093496110162) -->
+    <skip />
+    <!-- no translation found for perm_toggle_description (7801326363741451379) -->
+    <skip />
+    <!-- no translation found for mic_toggle_description (9163104307990677157) -->
+    <skip />
+    <!-- no translation found for location_settings_subtitle (2328360561197430695) -->
+    <skip />
+    <!-- no translation found for show_clip_access_notification_title (5168467637351109096) -->
+    <skip />
+    <!-- no translation found for show_clip_access_notification_summary (3532020182782112687) -->
+    <skip />
 </resources>
