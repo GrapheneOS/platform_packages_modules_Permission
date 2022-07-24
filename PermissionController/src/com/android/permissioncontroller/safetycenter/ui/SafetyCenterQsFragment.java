@@ -246,8 +246,12 @@ public class SafetyCenterQsFragment extends Fragment {
                 continue;
             }
 
-            setIndicatorExpansionBehavior(parentIndicatorLayout, expandedLayout,
-                    expandView);
+            setIndicatorExpansionBehavior(parentIndicatorLayout, expandedLayout, expandView);
+            ViewCompat.replaceAccessibilityAction(
+                    parentIndicatorLayout,
+                    AccessibilityNodeInfoCompat.AccessibilityActionCompat.ACTION_CLICK,
+                    mContext.getString(R.string.safety_center_qs_expand_action),
+                    null);
 
             // Configure the indicator action buttons
             configureIndicatorActionButtons(
@@ -367,6 +371,7 @@ public class SafetyCenterQsFragment extends Fragment {
         // Set label to show on permission revoke
         TextView labelView = parentIndicatorLayout.findViewById(R.id.indicator_label);
         labelView.setText(R.string.permissions_removed_qs);
+        labelView.setContentDescription(mContext.getString(R.string.permissions_removed_qs));
     }
 
     private void setIndicatorExpansionBehavior(
@@ -392,6 +397,11 @@ public class SafetyCenterQsFragment extends Fragment {
                 TransitionManager.beginDelayedTransition(indicatorCardViewGroup, transition);
                 expandView.setImageDrawable(
                         constructExpandButton(mContext.getDrawable(R.drawable.ic_expand_more)));
+                ViewCompat.replaceAccessibilityAction(
+                        v,
+                        AccessibilityNodeInfoCompat.AccessibilityActionCompat.ACTION_CLICK,
+                        mContext.getString(R.string.safety_center_qs_expand_action),
+                        null);
             } else {
                 // Show -> Press -> Disable the expanded card for a continuous ripple effect
                 expandedLayout.setVisibility(View.VISIBLE);
@@ -400,6 +410,11 @@ public class SafetyCenterQsFragment extends Fragment {
                 TransitionManager.beginDelayedTransition(indicatorCardViewGroup, transition);
                 expandView.setImageDrawable(
                         constructExpandButton(mContext.getDrawable(R.drawable.ic_expand_less)));
+                ViewCompat.replaceAccessibilityAction(
+                        v,
+                        AccessibilityNodeInfoCompat.AccessibilityActionCompat.ACTION_CLICK,
+                        mContext.getString(R.string.safety_center_qs_collapse_action),
+                        null);
             }
         };
     }

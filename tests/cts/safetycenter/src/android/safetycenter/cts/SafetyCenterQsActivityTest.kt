@@ -16,13 +16,17 @@
 
 package android.safetycenter.cts
 
+import android.Manifest.permission.MANAGE_SENSOR_PRIVACY
+import android.Manifest.permission.OBSERVE_SENSOR_PRIVACY
 import android.content.Context
-import android.os.Bundle
-import android.permission.PermissionGroupUsage
-import android.permission.PermissionManager
+import android.hardware.SensorPrivacyManager
+import android.hardware.SensorPrivacyManager.Sensors.CAMERA
+import android.hardware.SensorPrivacyManager.Sensors.MICROPHONE
+import android.hardware.SensorPrivacyManager.TOGGLE_TYPE_SOFTWARE
 import android.safetycenter.cts.testing.SafetyCenterActivityLauncher.launchSafetyCenterQsActivity
 import android.safetycenter.cts.testing.SafetyCenterCtsHelper
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
+import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermissionIdentity
 import android.support.test.uiautomator.By
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -38,7 +42,13 @@ import org.junit.runner.RunWith
 class SafetyCenterQsActivityTest {
     private val context: Context = getApplicationContext()
     private val safetyCenterCtsHelper = SafetyCenterCtsHelper(context)
-    private val shouldRunTests = context.deviceSupportsSafetyCenter()
+    private val sensorPrivacyManager = context.getSystemService(SensorPrivacyManager::class.java)!!
+    private var shouldRunTests =
+        context.deviceSupportsSafetyCenter() &&
+            deviceSupportsSensorToggle(CAMERA) &&
+            deviceSupportsSensorToggle(MICROPHONE)
+    private var oldCameraState: Boolean = false
+    private var oldMicrophoneState: Boolean = false
 
     @Before
     fun assumeDeviceSupportsSafetyCenterToRunTests() {
@@ -61,20 +71,72 @@ class SafetyCenterQsActivityTest {
         safetyCenterCtsHelper.reset()
     }
 
+    @Before
+    fun enablePrivacyControlsBeforeTest() {
+        if (!shouldRunTests) {
+            return
+        }
+        oldCameraState = isSensorEnabled(CAMERA)
+        setSensorState(CAMERA, true)
+
+        oldMicrophoneState = isSensorEnabled(MICROPHONE)
+        setSensorState(MICROPHONE, true)
+    }
+
+    @After
+    fun restorePrivacyControlsAfterTest() {
+        if (!shouldRunTests) {
+            return
+        }
+        setSensorState(CAMERA, oldCameraState)
+        setSensorState(MICROPHONE, oldMicrophoneState)
+    }
+
     @Test
     fun launchActivity_fromQuickSettings_hasContentDescriptions() {
-        val bundle = Bundle()
-        bundle.putParcelableArrayList(
-            PermissionManager.EXTRA_PERMISSION_USAGES, ArrayList<PermissionGroupUsage>())
-        context.launchSafetyCenterQsActivity(bundle) {
+        context.launchSafetyCenterQsActivity() {
             // Verify page landing descriptions
             waitFindObject(By.desc("Security and privacy quick settings"))
+            waitFindObject(By.text("Your privacy controls"))
             waitFindObject(By.desc("Close"))
 
             // Verify privacy controls descriptions
             waitFindObject(By.desc("Switch. Camera access. Available"))
             waitFindObject(By.desc("Switch. Mic access. Available"))
-            waitFindObject(By.desc("Switch. Location. Available"))
         }
+    }
+
+    @Test
+    fun launchActivity_togglePrivacyControls_hasUpdatedDescriptions() {
+        context.launchSafetyCenterQsActivity() {
+            // Toggle privacy controls
+            waitFindObject(By.desc("Switch. Camera access. Available")).click()
+            waitFindObject(By.desc("Switch. Mic access. Available")).click()
+
+            // Verify updated state of privacy controls
+            waitFindObject(By.desc("Switch. Camera access. Blocked"))
+            waitFindObject(By.desc("Switch. Mic access. Blocked"))
+        }
+    }
+
+    private fun deviceSupportsSensorToggle(sensor: Int): Boolean {
+        return sensorPrivacyManager.supportsSensorToggle(sensor) &&
+            sensorPrivacyManager.supportsSensorToggle(TOGGLE_TYPE_SOFTWARE, sensor)
+    }
+
+    private fun isSensorEnabled(sensor: Int): Boolean {
+        val isSensorDisabled = callWithShellPermissionIdentity(
+            { sensorPrivacyManager.isSensorPrivacyEnabled(TOGGLE_TYPE_SOFTWARE, sensor) },
+            OBSERVE_SENSOR_PRIVACY)
+        return !isSensorDisabled
+    }
+
+    private fun setSensorState(sensor: Int, enabled: Boolean) {
+        val disableSensor = !enabled
+        // The sensor is enabled iff the privacy control is disabled.
+        callWithShellPermissionIdentity(
+            { sensorPrivacyManager.setSensorPrivacy(sensor, disableSensor) },
+            MANAGE_SENSOR_PRIVACY,
+            OBSERVE_SENSOR_PRIVACY)
     }
 }
