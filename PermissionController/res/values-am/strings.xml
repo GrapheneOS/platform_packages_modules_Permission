@@ -134,17 +134,22 @@
     <string name="auto_permission_usage_timeline_summary" msgid="2713135806453218703">"<xliff:g id="ACCESS_TIME">%1$s</xliff:g> • <xliff:g id="SUMMARY_TEXT">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_3" msgid="758761785983094351">"<xliff:g id="ATTRIBUTION_NAME">%1$s</xliff:g> • <xliff:g id="APP_NAME">%2$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%3$s</xliff:g>"</string>
-    <string name="duration_used_days" msgid="8293010131040301793">"{count,plural, =1{1 ቀን}one{# ቀኖች}other{# ቀኖች}}"</string>
-    <string name="duration_used_hours" msgid="1128716208752263576">"{count,plural, =1{1 ሰዓት}one{# ሰዓቶች}other{# ሰዓቶች}}"</string>
-    <string name="duration_used_minutes" msgid="5335824115042576567">"{count,plural, =1{1 ደቂቃ}one{# ደቂቃዎች}other{# ደቂቃዎች}}"</string>
-    <string name="duration_used_seconds" msgid="6543746449171675028">"{count,plural, =1{1 ሴኮ}one{# ሰከንዶች}other{# ሰከንዶች}}"</string>
+    <!-- no translation found for duration_used_days (8238355545812998877) -->
+    <skip />
+    <!-- no translation found for duration_used_hours (4983814806123370332) -->
+    <skip />
+    <!-- no translation found for duration_used_minutes (1701379522897227819) -->
+    <skip />
+    <!-- no translation found for duration_used_seconds (4067390990568727715) -->
+    <skip />
     <string name="permission_usage_any_permission" msgid="6358023078298106997">"ማናቸውም ፈቃድ"</string>
     <string name="permission_usage_any_time" msgid="3802087027301631827">"በማንኛውም ጊዜ"</string>
-    <string name="permission_usage_last_7_days" msgid="7386221251886130065">"ባለፉት 7 ቀኖች"</string>
-    <string name="permission_usage_last_day" msgid="1512880889737305115">"ባለፉት 24 ሰዓቶች"</string>
-    <string name="permission_usage_last_hour" msgid="3866005205535400264">"ባለፈው 1 ሰዓት"</string>
-    <string name="permission_usage_last_15_minutes" msgid="9077554653436200702">"ባለፉት 15 ደቂቃዎች"</string>
-    <string name="permission_usage_last_minute" msgid="7297055967335176238">"ባለፈው 1 ደቂቃ"</string>
+    <!-- no translation found for permission_usage_last_n_days (7882626467375714145) -->
+    <skip />
+    <!-- no translation found for permission_usage_last_n_hours (8490466053680267858) -->
+    <skip />
+    <!-- no translation found for permission_usage_last_n_minutes (7817864229878281983) -->
+    <skip />
     <string name="no_permission_usages" msgid="9119517454177289331">"ምንም ፈቃድ አጠቃቀሞች የሉም"</string>
     <string name="permission_usage_list_title_any_time" msgid="8718257027381592407">"በማናቸውም ጊዜ ያለ የቅርብ ጊዜ መዳረስ"</string>
     <string name="permission_usage_list_title_last_7_days" msgid="9048542342670890615">"ባለፉት 7 ቀናት በጣም የቅርብ ጊዜ መዳረስ"</string>
@@ -158,8 +163,10 @@
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"ባለፈው 1 ሰዓት የፈቃድ አጠቃቀም"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"ባለፉት 15 ደቂቃዎች ውስጥ የፈቃድ አጠቃቀም"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"ባለፈው 1 ደቂቃ የፈቃድ አጠቃቀም"</string>
-    <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"ባለፉት 24 ሰዓታት ውስጥ ስራ ላይ አልዋለም"</string>
-    <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"ባለፉት 7 ቀናት ውስጥ ስራ ላይ አልዋለም"</string>
+    <!-- no translation found for permission_usage_preference_summary_not_used_in_past_n_days (4771868094611359651) -->
+    <skip />
+    <!-- no translation found for permission_usage_preference_summary_not_used_in_past_n_hours (3828973177433435742) -->
+    <skip />
     <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{በ1 መተግበሪያ ስራ ላይ ውሏል}one{በ# መተግበሪያዎች ስራ ላይ ውለዋል}other{በ# መተግበሪያዎች ስራ ላይ ውለዋል}}"</string>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"ሁሉንም በዳሽ ቦርድ ውስጥ ይመልከቱ"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"የተጣራው በ፦ <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -251,9 +258,12 @@
     <string name="denied_header" msgid="903209608358177654">"አይፈቀድም"</string>
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"ሁሉንም ፋይሎች መድረስ የሚችሉ ተጨማሪ መተግበሪያዎችን ይመልከቱ"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 ቀን}one{# ቀኖች}other{# ቀኖች}}"</string>
-    <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 ሰዓት}one{# ሰዓቶች}other{# ሰዓቶች}}"</string>
-    <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 ደቂቃ}one{# ደቂቃዎች}other{# ደቂቃዎች}}"</string>
-    <string name="seconds" msgid="5397771912131132690">"{count,plural, =1{1 ሰከንድ}one{# ሰከንዶች}other{# ሰከንዶች}}"</string>
+    <!-- no translation found for hours (7302866489666950038) -->
+    <skip />
+    <!-- no translation found for minutes (4868414855445375753) -->
+    <skip />
+    <!-- no translation found for seconds (5893958182059842734) -->
+    <skip />
     <string name="permission_reminders" msgid="6528257957664832636">"የፈቃድ አስታዋሾች"</string>
     <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"1 ጥቅም ላይ ያልዋለ መተግበሪያ"</string>
     <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> ጥቅም ላይ ያልዋሉ መተግበሪያዎች"</string>
@@ -502,8 +512,10 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"ለመተግበሪያዎች እና አገልግሎቶች"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"እርስዎ ወደ አንድ የአደጋ ጊዜ ቁጥር ሲደውሉ የማይክሮፎን ውሂብ አሁንም ሊጋራ ይችላል።"</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"ቀይር"</string>
-    <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"ደህንነት እና ግላዊነት"</string>
-    <string name="safety_center_rescan_button" msgid="8047036829052958144">"ቃኝ"</string>
+    <!-- no translation found for safety_center_dashboard_page_title (2810774008694315854) -->
+    <skip />
+    <!-- no translation found for safety_center_rescan_button (4517514567809409596) -->
+    <skip />
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"አሰናብት"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"ይህ ማንቂያ ይሰናበት?"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"አሰናብት"</string>
@@ -511,13 +523,28 @@
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"ቅንብሮች"</string>
     <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"የደህንነት እና የግላዊነት ሁኔታ። <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>። <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"የደህንነት ቅንብሮች"</string>
-    <string name="sensor_permissions_qs" msgid="4365989229426201877">"የዳሳሽ ፈቃዶች"</string>
-    <string name="privacy_controls_qs" msgid="471793881466080745">"የግላዊነት ቁጥጥሮች"</string>
+    <!-- no translation found for sensor_permissions_qs (1022267900031317472) -->
+    <skip />
+    <!-- no translation found for safety_privacy_qs_tile_title (727301867710374052) -->
+    <skip />
+    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"ሁኔታ አረጋግጥ"</string>
+    <!-- no translation found for privacy_controls_qs (5780144882040591169) -->
+    <skip />
+    <!-- no translation found for security_settings_button_label_qs (8280343822465962330) -->
+    <skip />
+    <!-- no translation found for camera_toggle_label_qs (3880261453066157285) -->
+    <skip />
+    <!-- no translation found for microphone_toggle_label_qs (8132912469813396552) -->
+    <skip />
     <string name="permissions_removed_qs" msgid="8957319130625294572">"ፈቃድ ተወግዷል"</string>
-    <string name="camera_usage_qs" msgid="7943349178368641820">"ተጨማሪ የካሜራ አጠቃቀምን ይመልከቱ"</string>
-    <string name="microphone_usage_qs" msgid="2393193350541830472">"ተጨማሪ የማይክሮፎን አጠቃቀም ይመልከቱ"</string>
-    <string name="remove_camera_qs" msgid="8209716677879809162">"የካሜራ ፈቃድ ያስወግዱ"</string>
-    <string name="remove_microphone_qs" msgid="2893536836641560183">"የማይክሮፎን ፈቃድ ያስወግዱ"</string>
+    <!-- no translation found for camera_usage_qs (134093544497365716) -->
+    <skip />
+    <!-- no translation found for microphone_usage_qs (5054432134389894202) -->
+    <skip />
+    <!-- no translation found for remove_camera_qs (3649996161066883350) -->
+    <skip />
+    <!-- no translation found for remove_microphone_qs (1276551965129953198) -->
+    <skip />
     <string name="manage_service_qs" msgid="7862555549364153805">"አገልግሎት ያስተዳድሩ"</string>
     <string name="manage_permissions_qs" msgid="3780541819763475434">"ፈቃዶችን ያስተዳድሩ"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"በስልክ ጥሪ ስራ ላይ እየዋለ ነው"</string>
@@ -528,8 +555,6 @@
     <string name="recent_app_usage_1_qs" msgid="261450184773310741">"በቅርብ ጊዜ በ<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>) ስራ ላይ ውሏል"</string>
     <string name="active_app_usage_2_qs" msgid="6107866785243565283">"በ<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) ስራ ላይ እየዋለ ነው"</string>
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"በቅርብ ጊዜ በ<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) ስራ ላይ ውሏል"</string>
-    <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"ደህንነት እና ግላዊነት"</string>
-    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"ሁኔታ አረጋግጥ"</string>
     <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"አረጋግጥ"</string>
     <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"ተመለስ"</string>
     <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"የሌሎች ፋይሎች መዳረሻም ይፈቀዳል"</string>
@@ -548,4 +573,20 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"ይህ መተግበሪያ የቅርቡን የAndroid ስሪት አይደግፍም። ይህ መተግበሪያ ሙዚቃ እና ኦዲዮ ፋይሎችን መድረስ ካልቻለ ፎቶዎች እና ቪዲዮዎች እንዲደርስ አይፈቀድለትም።"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"ይህ መተግበሪያ የቅርቡን የAndroid ስሪት አይደግፍም። ይህ መተግበሪያ ፎቶዎች፣ ቪዲዮዎች መድረስ ከቻለ ሙዚቃ እና ሌሎች ፋይሎችንም እንዲደርስ ይፈቀድለታል።"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"ይህ መተግበሪያ የቅርቡን የAndroid ስሪት አይደግፍም። ይህ መተግበሪያ ሙዚቃ እና ኦዲዮ ፋይሎችን መድረስ ካልቻለ ፎቶዎች እና ቪዲዮዎች እንዲደርስ አይፈቀድለትም።"</string>
+    <!-- no translation found for privacy_controls_title (7605929972256835199) -->
+    <skip />
+    <!-- no translation found for camera_toggle_title (1251201397431837666) -->
+    <skip />
+    <!-- no translation found for mic_toggle_title (2649991093496110162) -->
+    <skip />
+    <!-- no translation found for perm_toggle_description (7801326363741451379) -->
+    <skip />
+    <!-- no translation found for mic_toggle_description (9163104307990677157) -->
+    <skip />
+    <!-- no translation found for location_settings_subtitle (2328360561197430695) -->
+    <skip />
+    <!-- no translation found for show_clip_access_notification_title (5168467637351109096) -->
+    <skip />
+    <!-- no translation found for show_clip_access_notification_summary (3532020182782112687) -->
+    <skip />
 </resources>
