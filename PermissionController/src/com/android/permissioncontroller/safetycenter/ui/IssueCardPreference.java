@@ -99,12 +99,28 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
 
         CharSequence subtitle = mIssue.getSubtitle();
         TextView subtitleTextView = (TextView) holder.findViewById(R.id.issue_card_subtitle);
+        CharSequence contentDescription;
         if (TextUtils.isEmpty(subtitle)) {
             subtitleTextView.setVisibility(View.GONE);
+            contentDescription =
+                    getContext()
+                        .getString(
+                                R.string.safety_center_issue_card_content_description,
+                                mIssue.getTitle(),
+                                mIssue.getSummary());
         } else {
             subtitleTextView.setText(subtitle);
             subtitleTextView.setVisibility(View.VISIBLE);
+            contentDescription =
+                    getContext()
+                        .getString(
+                                R.string.safety_center_issue_card_content_description_with_subtitle,
+                                mIssue.getTitle(),
+                                mIssue.getSubtitle(),
+                                mIssue.getSummary());
         }
+        holder.itemView.setContentDescription(contentDescription);
+        holder.itemView.setClickable(false);
 
         LinearLayout buttonList =
                 ((LinearLayout) holder.findViewById(R.id.issue_card_action_button_list));
