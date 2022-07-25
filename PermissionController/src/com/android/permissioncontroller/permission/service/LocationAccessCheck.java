@@ -887,7 +887,7 @@ public class LocationAccessCheck {
 
         return DeviceConfig.getBoolean(
                 DeviceConfig.NAMESPACE_PRIVACY,
-                PROPERTY_BG_LOCATION_CHECK_ENABLED, false)
+                PROPERTY_BG_LOCATION_CHECK_ENABLED, true)
                 && getSystemServiceSafe(mContext,
                 SafetyCenterManager.class).isSafetyCenterEnabled();
     }
