@@ -71,13 +71,11 @@
         android:orientation="vertical"
         style="@style/SafetyCenter.IssueCard.ActionButtonList" />
 
-    <!-- add protected by android in strings.xml TODO (b/222127412)-->
-    <TextView
+    <com.android.permissioncontroller.permission.ui.widget.SafetyProtectionSectionView
         android:id="@+id/issue_card_protected_by_android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintTop_toBottomOf="@id/issue_card_action_button_list"
-        android:text="Protected by Android"
         android:importantForAccessibility="no"
         style="@style/SafetyCenter.IssueCard.Footer" />
 
