@@ -36,16 +36,13 @@ import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveD
 import com.android.settingslib.RestrictedLockUtils
 import com.android.settingslib.RestrictedLockUtils.EnforcedAdmin
 
-/**
- * Viewmodel for the privacy controls page.
- */
+/** Viewmodel for the privacy controls page. */
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class PrivacyControlsViewModel(private val app: Application) : AndroidViewModel(app) {
 
     private val sensorPrivacyManager: SensorPrivacyManager =
         app.getSystemService(SensorPrivacyManager::class.java)!!
-    private val userManager: UserManager =
-        app.getSystemService(UserManager::class.java)!!
+    private val userManager: UserManager = app.getSystemService(UserManager::class.java)!!
 
     private val CONFIG_CLIPBOARD_SHOW_ACCESS_NOTIFICATIONS =
         app.getString(R.string.clipboard_show_access_notifications_config)
@@ -58,41 +55,54 @@ class PrivacyControlsViewModel(private val app: Application) : AndroidViewModel(
         MIC("privacy_mic_toggle"),
         CAMERA("privacy_camera_toggle"),
         LOCATION("privacy_location_access"),
-        CLIPBOARD("show_clip_access_notification")
+        CLIPBOARD("show_clip_access_notification"),
+        SHOW_PASSWORD("show_password")
     }
 
     data class PrefState(val visible: Boolean, val checked: Boolean, val admin: EnforcedAdmin?)
 
-    val controlStateLiveData: SmartUpdateMediatorLiveData<Map<Pref, PrefState>> = object :
-        SmartUpdateMediatorLiveData<@JvmSuppressWildcards Map<Pref, PrefState>>(),
-        SensorPrivacyManager.OnSensorPrivacyChangedListener {
+    val controlStateLiveData: SmartUpdateMediatorLiveData<Map<Pref, PrefState>> =
+        object :
+            SmartUpdateMediatorLiveData<@JvmSuppressWildcards Map<Pref, PrefState>>(),
+            SensorPrivacyManager.OnSensorPrivacyChangedListener {
 
-        override fun onUpdate() {
-            val shownPrefs = mutableMapOf<Pref, PrefState>()
-            shownPrefs[Pref.CAMERA] = getSensorToggleState(Sensors.CAMERA,
-                UserManager.DISALLOW_CAMERA_TOGGLE, CONFIG_CAMERA_TOGGLE_ENABLED)
-            shownPrefs[Pref.MIC] = getSensorToggleState(Sensors.MICROPHONE,
-                UserManager.DISALLOW_MICROPHONE_TOGGLE, CONFIG_MIC_TOGGLE_ENABLED)
-            shownPrefs[Pref.CLIPBOARD] = PrefState(visible = true,
-                checked = isClipboardEnabled(), admin = null)
-            value = shownPrefs
-        }
+            override fun onUpdate() {
+                val shownPrefs = mutableMapOf<Pref, PrefState>()
+                shownPrefs[Pref.CAMERA] =
+                    getSensorToggleState(
+                        Sensors.CAMERA,
+                        UserManager.DISALLOW_CAMERA_TOGGLE,
+                        CONFIG_CAMERA_TOGGLE_ENABLED)
+                shownPrefs[Pref.MIC] =
+                    getSensorToggleState(
+                        Sensors.MICROPHONE,
+                        UserManager.DISALLOW_MICROPHONE_TOGGLE,
+                        CONFIG_MIC_TOGGLE_ENABLED)
+                shownPrefs[Pref.CLIPBOARD] =
+                    PrefState(visible = true, checked = isClipboardEnabled(), admin = null)
+                shownPrefs[Pref.SHOW_PASSWORD] =
+                    PrefState(
+                        visible = shouldDisplayShowPasswordToggle(),
+                        checked = isShowPasswordEnabled(),
+                        admin = null)
+                value = shownPrefs
+            }
 
-        override fun onActive() {
-            sensorPrivacyManager.addSensorPrivacyListener(this)
-            super.onActive()
-            update()
-        }
+            override fun onActive() {
+                sensorPrivacyManager.addSensorPrivacyListener(this)
+                super.onActive()
+                update()
+            }
 
-        override fun onInactive() {
-            super.onInactive()
-            sensorPrivacyManager.removeSensorPrivacyListener(this)
-        }
+            override fun onInactive() {
+                super.onInactive()
+                sensorPrivacyManager.removeSensorPrivacyListener(this)
+            }
 
-        override fun onSensorPrivacyChanged(sensor: Int, enabled: Boolean) {
-            update()
+            override fun onSensorPrivacyChanged(sensor: Int, enabled: Boolean) {
+                update()
+            }
         }
-    }
 
     fun handlePrefClick(fragment: Fragment, pref: Pref, admin: EnforcedAdmin?) {
         when (pref) {
@@ -100,6 +110,7 @@ class PrivacyControlsViewModel(private val app: Application) : AndroidViewModel(
             Pref.CAMERA -> toggleSensorOrShowAdmin(fragment, Sensors.CAMERA, admin)
             Pref.LOCATION -> goToLocation(fragment)
             Pref.CLIPBOARD -> toggleClipboard()
+            Pref.SHOW_PASSWORD -> toggleShowPassword()
         }
     }
 
@@ -122,32 +133,50 @@ class PrivacyControlsViewModel(private val app: Application) : AndroidViewModel(
         enableConfig: String
     ): PrefState {
         val admin = RestrictedLockUtils.getProfileOrDeviceOwner(app, Process.myUserHandle())
-        val sensorConfigEnabled = DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
-            enableConfig, true)
+        val sensorConfigEnabled =
+            DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY, enableConfig, true)
         return PrefState(
-            visible = sensorConfigEnabled &&
-                sensorPrivacyManager.supportsSensorToggle(sensor),
+            visible = sensorConfigEnabled && sensorPrivacyManager.supportsSensorToggle(sensor),
             checked = !sensorPrivacyManager.isSensorPrivacyEnabled(TOGGLE_TYPE_SOFTWARE, sensor),
-            admin = if (userManager.getUserRestrictionSources(restriction, Process.myUserHandle())
+            admin =
+                if (userManager
+                    .getUserRestrictionSources(restriction, Process.myUserHandle())
                     .isNotEmpty()) {
-                admin
-            } else {
-                null
-            })
+                    admin
+                } else {
+                    null
+                })
     }
 
     private fun isClipboardEnabled(): Boolean {
-        val clipboardDefaultEnabled = DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_CLIPBOARD,
-            CONFIG_SHOW_ACCESS_NOTIFICATIONS_DEFAULT, true)
+        val clipboardDefaultEnabled =
+            DeviceConfig.getBoolean(
+                DeviceConfig.NAMESPACE_CLIPBOARD, CONFIG_SHOW_ACCESS_NOTIFICATIONS_DEFAULT, true)
         val defaultSetting = if (clipboardDefaultEnabled) 1 else 0
-        return Settings.Secure.getInt(app.contentResolver,
-            CONFIG_CLIPBOARD_SHOW_ACCESS_NOTIFICATIONS, defaultSetting) != 0
+        return Settings.Secure.getInt(
+            app.contentResolver, CONFIG_CLIPBOARD_SHOW_ACCESS_NOTIFICATIONS, defaultSetting) != 0
     }
 
     private fun toggleClipboard() {
         val newState = if (isClipboardEnabled()) 0 else 1
-        Settings.Secure.putInt(app.contentResolver, CONFIG_CLIPBOARD_SHOW_ACCESS_NOTIFICATIONS,
-            newState)
+        Settings.Secure.putInt(
+            app.contentResolver, CONFIG_CLIPBOARD_SHOW_ACCESS_NOTIFICATIONS, newState)
+    }
+
+    private fun isShowPasswordEnabled(): Boolean {
+        return Settings.System.getInt(app.contentResolver, Settings.System.TEXT_SHOW_PASSWORD, 1) !=
+            0
+    }
+
+    private fun toggleShowPassword() {
+        Settings.System.putInt(
+            app.contentResolver,
+            Settings.System.TEXT_SHOW_PASSWORD,
+            if (isShowPasswordEnabled()) 0 else 1)
+    }
+
+    private fun shouldDisplayShowPasswordToggle(): Boolean {
+        return app.resources.getBoolean(R.bool.config_display_show_password_toggle)
     }
 }
 
@@ -161,7 +190,6 @@ class PrivacyControlsViewModelFactory(
     private val app: Application,
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        @Suppress("UNCHECKED_CAST")
-        return PrivacyControlsViewModel(app) as T
+        @Suppress("UNCHECKED_CAST") return PrivacyControlsViewModel(app) as T
     }
 }
