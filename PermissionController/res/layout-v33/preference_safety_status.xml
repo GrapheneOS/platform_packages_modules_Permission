@@ -33,13 +33,15 @@
         android:src="@drawable/safety_status_info" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="4dp"
         android:layout_marginStart="16dp"
+        android:layout_marginEnd="24dp"
         android:id="@+id/status_title_and_summary"
         app:layout_constraintStart_toEndOf="@id/status_image"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
@@ -54,7 +56,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/status_title"
-            android:paddingBottom="8dp"
             android:text="@string/summary_placeholder"
             android:textAppearance="@style/TextAppearance.SafetyStatusSummary"/>
     </LinearLayout>
@@ -63,7 +64,7 @@
         android:id="@+id/review_settings_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/status_image"
+        app:layout_constraintTop_toBottomOf="@id/status_title_and_summary"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="24dp"
         android:text="@string/safety_center_review_settings_button"
