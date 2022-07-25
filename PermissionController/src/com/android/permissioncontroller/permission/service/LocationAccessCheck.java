@@ -686,9 +686,9 @@ public class LocationAccessCheck {
         int smallIconResId;
         int colorResId = android.R.color.system_notification_accent_color;
         if (safetyCenterBgLocationReminderEnabled) {
-            String pbaLabel = mContext.getString(android.R.string.safety_protection_display_text);
-            if (pbaLabel.length() > 0) {
-                appLabel = Html.fromHtml(pbaLabel, 0);
+            if (KotlinUtils.INSTANCE.shouldShowSafetyProtectionResources(mContext)) {
+                appLabel = Html.fromHtml(
+                    mContext.getString(android.R.string.safety_protection_display_text), 0);
                 smallIconResId = android.R.drawable.ic_safety_protection;
                 colorResId = R.color.safety_center_info;
             } else {
