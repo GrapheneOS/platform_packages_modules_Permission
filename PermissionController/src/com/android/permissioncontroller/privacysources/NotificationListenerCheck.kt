@@ -76,6 +76,7 @@ import com.android.permissioncontroller.PermissionControllerStatsLog.PRIVACY_SIG
 import com.android.permissioncontroller.PermissionControllerStatsLog.PRIVACY_SIGNAL_NOTIFICATION_INTERACTION__ACTION__NOTIFICATION_SHOWN
 import com.android.permissioncontroller.PermissionControllerStatsLog.PRIVACY_SIGNAL_NOTIFICATION_INTERACTION__PRIVACY_SOURCE__NOTIFICATION_LISTENER
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.Utils.getSystemServiceSafe
 import com.android.permissioncontroller.privacysources.SafetyCenterReceiver.RefreshEvent
@@ -607,16 +608,14 @@ internal class NotificationListenerCheckInternal(
                 R.string.notification_listener_reminder_notification_content, pkgLabel)
 
         // Use PbA branding if available, otherwise default to more generic branding
-        val pbaLabel =
-            Html.fromHtml(
-                    parentUserContext.getString(android.R.string.safety_protection_display_text), 0)
-                .toString()
         val appLabel: CharSequence?
         val smallIconResId: Int
         val colorResId: Int
-        if (pbaLabel != null && pbaLabel.isNotEmpty()) {
+        if (KotlinUtils.shouldShowSafetyProtectionResources(parentUserContext)) {
             // PbA branding and colors
-            appLabel = pbaLabel
+            val pbaHtmlString =
+                parentUserContext.getString(android.R.string.safety_protection_display_text)
+            appLabel = Html.fromHtml(pbaHtmlString, 0).toString()
             smallIconResId = android.R.drawable.ic_safety_protection
             colorResId = R.color.safety_center_info
         } else {
