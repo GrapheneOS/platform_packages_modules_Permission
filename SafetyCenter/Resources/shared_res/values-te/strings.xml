@@ -18,18 +18,27 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="scanning_title" msgid="5424849039854311398">"స్కానింగ్"</string>
-    <string name="loading_summary" msgid="8287412091422889811">"పరికర స్టేటస్‌ను చెక్ చేస్తోంది…"</string>
+    <!-- no translation found for loading_summary (3740846439782713910) -->
+    <skip />
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"అంతా బాగానే ఉంది"</string>
-    <string name="overall_severity_level_ok_summary" msgid="255849804128707819">"ఈ పరికరం సురక్షితం చేయబడింది"</string>
-    <string name="overall_severity_level_ok_review_title" msgid="4870096573610601585">"మరింత రక్షణను జోడించండి"</string>
-    <string name="overall_severity_level_ok_review_summary" msgid="6674687043153844604">"దిగువున ఉన్న సెట్టింగ్‌లను చెక్ చేయండి"</string>
+    <!-- no translation found for overall_severity_level_ok_summary (7219520381757200598) -->
+    <skip />
+    <!-- no translation found for overall_severity_level_ok_review_title (1494321117696765360) -->
+    <skip />
+    <!-- no translation found for overall_severity_level_ok_review_summary (7743619617413076275) -->
+    <skip />
     <string name="overall_severity_level_recommendation_title" msgid="5477942982532824601">"పరికరం ప్రమాదంలో ఉండవచ్చు"</string>
     <string name="overall_severity_level_critical_warning_title" msgid="2043894328485989618">"పరికరం ప్రమాదంలో ఉంది"</string>
+    <!-- no translation found for overall_severity_level_safety_recommendation_title (6436208984463981167) -->
+    <skip />
+    <!-- no translation found for overall_severity_level_critical_safety_warning_title (1039142045555227172) -->
+    <skip />
     <string name="overall_severity_n_alerts_summary" msgid="1105615451561197136">"{count,plural, =1{# అలర్ట్}other{# అలర్ట్‌లు}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"పేజీని తెరవడం సాధ్యపడలేదు"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"అలర్ట్‌ను పరిష్కరించడం సాధ్యపడలేదు"</string>
-    <string name="refresh_timeout" msgid="5699772984139071348">"స్టేటస్‌ను రిఫ్రెష్ చేయడం సాధ్యపడలేదు"</string>
-    <string name="refresh_error" msgid="2698996273941446865">"స్టేటస్‌ను చెక్ చేయడం సాధ్యపడలేదు"</string>
-    <!-- no translation found for work_profile_paused (7037400224040869079) -->
+    <!-- no translation found for refresh_timeout (251734999692581852) -->
     <skip />
+    <!-- no translation found for refresh_error (6941786638077164066) -->
+    <skip />
+    <string name="work_profile_paused" msgid="7037400224040869079">"వర్క్ ప్రొఫైల్ పాజ్ చేయబడింది"</string>
 </resources>

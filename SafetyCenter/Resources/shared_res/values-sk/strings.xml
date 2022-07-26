@@ -18,17 +18,22 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="scanning_title" msgid="5424849039854311398">"Kontroluje sa"</string>
-    <string name="loading_summary" msgid="8287412091422889811">"Kontroluje sa stav zariadenia…"</string>
+    <string name="loading_summary" msgid="3740846439782713910">"Kontrolujú sa nastavenia zariadenia…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Je to v poriadku"</string>
-    <string name="overall_severity_level_ok_summary" msgid="255849804128707819">"Toto zariadenie je chránené"</string>
-    <string name="overall_severity_level_ok_review_title" msgid="4870096573610601585">"Pridajte ďalšiu úroveň ochrany"</string>
-    <string name="overall_severity_level_ok_review_summary" msgid="6674687043153844604">"Skontrolujte nastavenia nižšie"</string>
+    <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"Nenašli sa žiadne problémy"</string>
+    <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Kontrola nastavení"</string>
+    <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Kontrolný zoznam nastavení"</string>
     <string name="overall_severity_level_recommendation_title" msgid="5477942982532824601">"Zariadenie môže byť ohrozené"</string>
     <string name="overall_severity_level_critical_warning_title" msgid="2043894328485989618">"Zariadenie je ohrozené"</string>
+    <!-- no translation found for overall_severity_level_safety_recommendation_title (6436208984463981167) -->
+    <skip />
+    <!-- no translation found for overall_severity_level_critical_safety_warning_title (1039142045555227172) -->
+    <skip />
     <string name="overall_severity_n_alerts_summary" msgid="1105615451561197136">"{count,plural, =1{# upozornenie}few{# upozornenia}many{# alerts}other{# upozornení}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Stránku sa nepodarilo otvoriť"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Upozornenie sa nepodarilo vyriešiť"</string>
-    <string name="refresh_timeout" msgid="5699772984139071348">"Stav sa nepodarilo obnoviť"</string>
-    <string name="refresh_error" msgid="2698996273941446865">"Stav sa nepodarilo skontrolovať"</string>
+    <string name="refresh_timeout" msgid="251734999692581852">"Nastavenia sa nepodarilo obnoviť"</string>
+    <!-- no translation found for refresh_error (6941786638077164066) -->
+    <skip />
     <string name="work_profile_paused" msgid="7037400224040869079">"Pracovný profil je pozastavený"</string>
 </resources>

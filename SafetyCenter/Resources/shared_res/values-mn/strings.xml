@@ -18,17 +18,22 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="scanning_title" msgid="5424849039854311398">"Скан хийж байна"</string>
-    <string name="loading_summary" msgid="8287412091422889811">"Төхөөрөмжийн төлөвийг шалгаж байна…"</string>
+    <string name="loading_summary" msgid="3740846439782713910">"Төхөөрөмжийн тохиргоог шалгаж байна…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Сайн байна"</string>
-    <string name="overall_severity_level_ok_summary" msgid="255849804128707819">"Энэ төхөөрөмжийг хамгаалсан"</string>
-    <string name="overall_severity_level_ok_review_title" msgid="4870096573610601585">"Нэмэлт хамгаалалт нэмнэ үү"</string>
-    <string name="overall_severity_level_ok_review_summary" msgid="6674687043153844604">"Доорх тохиргоог шалгана уу"</string>
+    <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"Асуудал олдсонгүй"</string>
+    <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Тохиргоог шалгах"</string>
+    <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Тохиргооны жагсаалтыг шалгах"</string>
     <string name="overall_severity_level_recommendation_title" msgid="5477942982532824601">"Төхөөрөмж эрсдэлд байж магадгүй"</string>
     <string name="overall_severity_level_critical_warning_title" msgid="2043894328485989618">"Төхөөрөмж эрсдэлд байна"</string>
+    <!-- no translation found for overall_severity_level_safety_recommendation_title (6436208984463981167) -->
+    <skip />
+    <!-- no translation found for overall_severity_level_critical_safety_warning_title (1039142045555227172) -->
+    <skip />
     <string name="overall_severity_n_alerts_summary" msgid="1105615451561197136">"{count,plural, =1{# сэрэмжлүүлэг}other{# сэрэмжлүүлэг}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Хуудсыг нээж чадсангүй"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Сэрэмжлүүлгийг шийдвэрлэж чадсангүй"</string>
-    <string name="refresh_timeout" msgid="5699772984139071348">"Төлөвийг сэргээж чадсангүй"</string>
-    <string name="refresh_error" msgid="2698996273941446865">"Төлөвийг шалгаж чадсангүй"</string>
+    <string name="refresh_timeout" msgid="251734999692581852">"Тохиргоог сэргээж чадсангүй"</string>
+    <!-- no translation found for refresh_error (6941786638077164066) -->
+    <skip />
     <string name="work_profile_paused" msgid="7037400224040869079">"Ажлын профайлыг түр зогсоосон"</string>
 </resources>

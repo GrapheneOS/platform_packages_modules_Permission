@@ -18,18 +18,27 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="scanning_title" msgid="5424849039854311398">"掃描"</string>
-    <string name="loading_summary" msgid="8287412091422889811">"檢查裝置狀態…"</string>
+    <!-- no translation found for loading_summary (3740846439782713910) -->
+    <skip />
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"沒有問題"</string>
-    <string name="overall_severity_level_ok_summary" msgid="255849804128707819">"此裝置已受到妥善保護"</string>
-    <string name="overall_severity_level_ok_review_title" msgid="4870096573610601585">"新增更多保護措施"</string>
-    <string name="overall_severity_level_ok_review_summary" msgid="6674687043153844604">"檢查以下設定"</string>
+    <!-- no translation found for overall_severity_level_ok_summary (7219520381757200598) -->
+    <skip />
+    <!-- no translation found for overall_severity_level_ok_review_title (1494321117696765360) -->
+    <skip />
+    <!-- no translation found for overall_severity_level_ok_review_summary (7743619617413076275) -->
+    <skip />
     <string name="overall_severity_level_recommendation_title" msgid="5477942982532824601">"裝置可能有風險"</string>
     <string name="overall_severity_level_critical_warning_title" msgid="2043894328485989618">"裝置目前有風險"</string>
+    <!-- no translation found for overall_severity_level_safety_recommendation_title (6436208984463981167) -->
+    <skip />
+    <!-- no translation found for overall_severity_level_critical_safety_warning_title (1039142045555227172) -->
+    <skip />
     <string name="overall_severity_n_alerts_summary" msgid="1105615451561197136">"{count,plural, =1{# 個警示}other{# 個警示}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"無法開啟網頁"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"無法解決警示"</string>
-    <string name="refresh_timeout" msgid="5699772984139071348">"無法重新整理狀態"</string>
-    <string name="refresh_error" msgid="2698996273941446865">"無法檢查狀態"</string>
-    <!-- no translation found for work_profile_paused (7037400224040869079) -->
+    <!-- no translation found for refresh_timeout (251734999692581852) -->
     <skip />
+    <!-- no translation found for refresh_error (6941786638077164066) -->
+    <skip />
+    <string name="work_profile_paused" msgid="7037400224040869079">"工作資料夾已暫停"</string>
 </resources>
