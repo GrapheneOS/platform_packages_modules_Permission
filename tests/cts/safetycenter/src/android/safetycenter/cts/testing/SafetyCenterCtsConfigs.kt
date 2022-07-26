@@ -233,6 +233,15 @@ object SafetyCenterCtsConfigs {
                 .setRefreshOnPageOpenAllowed(true)
                 .build())
 
+    /** A dynamic source with [OTHER_PACKAGE_NAME] */
+    val DYNAMIC_OTHER_PACKAGE_SAFETY_SOURCE =
+        dynamicSafetySourceBuilder(DYNAMIC_OTHER_PACKAGE_ID)
+            .setPackageName(OTHER_PACKAGE_NAME)
+            .build()
+
+    /** A [SafetyCenterConfig] with a dynamic source in a different, missing package. */
+    val SINGLE_SOURCE_OTHER_PACKAGE_CONFIG = singleSourceConfig(DYNAMIC_OTHER_PACKAGE_SAFETY_SOURCE)
+
     /** A dynamic PROFILE_ALL source provided by [SINGLE_SOURCE_ALL_PROFILE_CONFIG]. */
     val DYNAMIC_ALL_PROFILE_SAFETY_SOURCE =
         dynamicSafetySourceBuilder(SINGLE_SOURCE_ALL_PROFILE_ID)
@@ -393,10 +402,7 @@ object SafetyCenterCtsConfigs {
                             .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_HIDDEN)
                             .setSearchTermsResId(android.R.string.ok)
                             .build())
-                    .addSafetySource(
-                        dynamicSafetySourceBuilder(DYNAMIC_OTHER_PACKAGE_ID)
-                            .setPackageName(OTHER_PACKAGE_NAME)
-                            .build())
+                    .addSafetySource(DYNAMIC_OTHER_PACKAGE_SAFETY_SOURCE)
                     .build())
             .addSafetySourcesGroup(
                 safetySourcesGroupBuilder(STATIC_GROUP_ID)
