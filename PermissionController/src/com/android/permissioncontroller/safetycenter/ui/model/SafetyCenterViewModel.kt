@@ -33,7 +33,7 @@ abstract class SafetyCenterViewModel(protected val app: Application) : AndroidVi
 
     abstract val safetyCenterLiveData: LiveData<SafetyCenterData>
     abstract val errorLiveData: LiveData<SafetyCenterErrorDetails>
-    val interactionLogger = InteractionLogger()
+    abstract val interactionLogger: InteractionLogger
 
     abstract fun dismissIssue(issue: SafetyCenterIssue)
 

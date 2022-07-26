@@ -38,6 +38,7 @@ import java.security.MessageDigest
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class InteractionLogger(
+    val noLogSourceIds: Set<String>,
     var sessionId: Long = Constants.INVALID_SESSION_ID,
     var viewType: ViewType = ViewType.UNKNOWN,
     var navigationSource: NavigationSource = NavigationSource.UNKNOWN,
@@ -52,6 +53,10 @@ class InteractionLogger(
         issueTypeId: String? = null,
         sensor: Sensor = Sensor.UNKNOWN
     ) {
+        if (noLogSourceIds.contains(sourceId)) {
+            return
+        }
+
         PermissionControllerStatsLog.write(
             PermissionControllerStatsLog.SAFETY_CENTER_INTERACTION_REPORTED,
             sessionId,
@@ -321,11 +326,11 @@ enum class Sensor(val statsLogValue: Int) {
 
         @JvmStatic
         fun fromPermissionGroupName(permissionGroupName: String?) =
-                when (permissionGroupName) {
-                    PERMISSION_GROUP_CAMERA -> CAMERA
-                    PERMISSION_GROUP_MICROPHONE -> MICROPHONE
-                    PERMISSION_GROUP_LOCATION -> LOCATION
-                    else -> UNKNOWN
-                }
+            when (permissionGroupName) {
+                PERMISSION_GROUP_CAMERA -> CAMERA
+                PERMISSION_GROUP_MICROPHONE -> MICROPHONE
+                PERMISSION_GROUP_LOCATION -> LOCATION
+                else -> UNKNOWN
+            }
     }
 }
