@@ -262,6 +262,12 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Ορισμένες εφαρμογές δεν έχουν χρησιμοποιηθεί τους τελευταίους μήνες. Πατήστε για έλεγχο."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# εφαρμογή που δεν χρησιμοποιείται}other{# εφαρμογές που δεν χρησιμοποιούνται}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Οι άδειες και τα προσωρινά αρχεία καταργήθηκαν και οι ειδοποιήσεις διακόπηκαν. Πατήστε για έλεγχο."</string>
+    <!-- no translation found for unused_apps_safety_center_card_title (5638409355530099149) -->
+    <skip />
+    <!-- no translation found for unused_apps_safety_center_card_content (1088557243627427820) -->
+    <skip />
+    <!-- no translation found for unused_apps_safety_center_action_title (8865914432518993194) -->
+    <skip />
     <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Έλεγχος πρόσφατων αδειών"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Ενώ οδηγούσατε, εκχωρήσατε στην εφαρμογή <xliff:g id="APP">%1$s</xliff:g> πρόσβαση στην άδεια <xliff:g id="PERMISSION">%2$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Ενώ οδηγούσατε, εκχωρήσατε στην εφαρμογή <xliff:g id="APP">%1$s</xliff:g> πρόσβαση στις άδειες <xliff:g id="PERMISSION_1">%2$s</xliff:g> και <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
@@ -276,12 +282,28 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Οι άδειες καταργήθηκαν για την προστασία του απορρήτου σας"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"Η εφαρμογή <xliff:g id="APP_NAME">%s</xliff:g> έλαβε την τοποθεσία σας στο παρασκήνιο"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Αυτή η εφαρμογή μπορεί να έχει πάντα πρόσβαση στην τοποθεσία σας. Πατήστε για να αλλάξετε τη ρύθμιση."</string>
-    <string name="notification_listener_reminder_notification_title" msgid="6214106302085018939">"Έλεγχος εφαρμογής με πρόσβαση σε λειτ. αναμονής ειδοποιήσεων"</string>
-    <string name="notification_listener_reminder_notification_content" msgid="4740891089329946164">"Η εφαρμογή <xliff:g id="APP_NAME">%s</xliff:g> μπορεί να διαβάζει όλες τις ειδοποιήσεις σας."</string>
-    <string name="notification_listener_warning_card_content" msgid="8181427178654279926">"Αυτή η εφαρμογή μπορεί να διαβάζει όλες τις ειδοποιήσεις σας."</string>
+    <!-- no translation found for notification_listener_reminder_notification_title (3747210460187479091) -->
+    <skip />
+    <!-- no translation found for notification_listener_reminder_notification_content (4936171153668563578) -->
+    <skip />
+    <!-- no translation found for notification_listener_warning_card_content (274394600993750005) -->
+    <skip />
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Κατάργηση πρόσβασης"</string>
-    <string name="notification_listener_review_app_button_label" msgid="4452381557379652037">"Έλεγχος όλων των εφαρμογών με πρόσβαση ειδοποιήσεων"</string>
+    <!-- no translation found for notification_listener_review_app_button_label (3433073281029143924) -->
+    <skip />
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Η πρόσβαση καταργήθηκε"</string>
+    <!-- no translation found for accessibility_access_reminder_notification_title (2971317234668807566) -->
+    <skip />
+    <!-- no translation found for accessibility_access_reminder_notification_content (7389454158175306720) -->
+    <skip />
+    <!-- no translation found for accessibility_access_warning_card_content (4370327190293217358) -->
+    <skip />
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Κατάργηση πρόσβασης"</string>
+    <!-- no translation found for accessibility_show_all_apps_button_label (960067249326392280) -->
+    <skip />
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Η πρόσβαση καταργήθηκε"</string>
+    <!-- no translation found for safety_center_notification_app_label (2457720616141926534) -->
+    <skip />
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Οι άδειες εφαρμογών καταργήθηκαν για προστασία απορρήτου."</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"Η εφαρμογή <xliff:g id="APP_NAME">%s</xliff:g> δεν έχει χρησιμοποιηθεί τους τελευταίους μήνες. Πατήστε για έλεγχο."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"Η εφαρμογή <xliff:g id="APP_NAME">%s</xliff:g> και 1 ακόμη εφαρμογή δεν έχουν χρησιμοποιηθεί τους τελευταίους μήνες. Πατήστε για έλεγχο."</string>
@@ -502,8 +524,8 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Για εφαρμογές και υπηρεσίες"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Ενδέχεται να κοινοποιηθούν δεδομένα μικροφώνου κατά την κλήση ενός αριθμού έκτακτης ανάγκης."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Αλλαγή"</string>
-    <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Ασφάλεια και Απόρρητο"</string>
-    <string name="safety_center_rescan_button" msgid="8047036829052958144">"Σάρωση"</string>
+    <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Ασφάλεια και απόρρητο"</string>
+    <string name="safety_center_rescan_button" msgid="4517514567809409596">"Σάρωση συσκευής"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Παράβλεψη"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Παράβλεψη αυτής της ειδοποίησης;"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Παράβλεψη"</string>
@@ -511,13 +533,19 @@
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"Ρυθμίσεις"</string>
     <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"Κατάσταση ασφάλειας και απορρήτου <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>. <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"Ρυθμίσεις ασφαλείας"</string>
-    <string name="sensor_permissions_qs" msgid="4365989229426201877">"Άδειες αισθητήρων"</string>
-    <string name="privacy_controls_qs" msgid="471793881466080745">"Στοιχεία ελέγχου απορρήτου"</string>
+    <!-- no translation found for sensor_permissions_qs (1022267900031317472) -->
+    <skip />
+    <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"Ασφάλεια και απόρρητο"</string>
+    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Έλεγχος κατάστασης"</string>
+    <string name="privacy_controls_qs" msgid="5780144882040591169">"Τα στοιχ. ελέγχ. απορρήτου σας"</string>
+    <string name="security_settings_button_label_qs" msgid="8280343822465962330">"Περισσότερες ρυθμίσεις"</string>
+    <string name="camera_toggle_label_qs" msgid="3880261453066157285">"Πρόσβαση κάμερας"</string>
+    <string name="microphone_toggle_label_qs" msgid="8132912469813396552">"Πρόσβαση μικροφώνου"</string>
     <string name="permissions_removed_qs" msgid="8957319130625294572">"Η άδεια καταργήθηκε"</string>
-    <string name="camera_usage_qs" msgid="7943349178368641820">"Δείτε περισσότερα για τη χρήση της κάμερας"</string>
-    <string name="microphone_usage_qs" msgid="2393193350541830472">"Δείτε περισσότερα για τη χρήση του μικροφώνου"</string>
-    <string name="remove_camera_qs" msgid="8209716677879809162">"Κατάργηση άδειας για την κάμερα"</string>
-    <string name="remove_microphone_qs" msgid="2893536836641560183">"Κατάργηση άδειας για το μικρόφωνο"</string>
+    <string name="camera_usage_qs" msgid="134093544497365716">"Εμφάνιση εφαρμογών με πρόσβαση στην κάμερα"</string>
+    <string name="microphone_usage_qs" msgid="5054432134389894202">"Εμφάνιση εφαρμογών με πρόσβαση στο μικρόφωνο"</string>
+    <string name="remove_camera_qs" msgid="3649996161066883350">"Κατάργηση άδειας για αυτήν την εφαρμογή"</string>
+    <string name="remove_microphone_qs" msgid="1276551965129953198">"Κατάργηση άδειας για αυτήν την εφαρμογή"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Διαχείριση υπηρεσίας"</string>
     <string name="manage_permissions_qs" msgid="3780541819763475434">"Διαχείριση αδειών"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Χρησιμοποιείται από την τηλεφωνική κλήση"</string>
@@ -528,8 +556,6 @@
     <string name="recent_app_usage_1_qs" msgid="261450184773310741">"Χρησιμοποιήθηκε πρόσφατα από την εφαρμογή <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
     <string name="active_app_usage_2_qs" msgid="6107866785243565283">"Χρησιμοποιείται από την εφαρμογή <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Χρησιμοποιήθηκε πρόσφατα από την εφαρμογή <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
-    <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Ασφάλεια και Απόρρητο"</string>
-    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Έλεγχος κατάστασης"</string>
     <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"Επιβεβαίωση"</string>
     <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"Πίσω"</string>
     <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"Θα επιτρέπεται επίσης η πρόσβαση σε άλλα αρχεία"</string>
@@ -548,4 +574,32 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Αυτή η εφαρμογή δεν υποστηρίζει την πιο πρόσφατη έκδοση του Android. Εάν αυτή η εφαρμογή δεν έχει πρόσβαση σε αρχεία μουσικής και ήχου, δεν θα έχει επίσης πρόσβαση σε φωτογραφίες και βίντεο."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Αυτή η εφαρμογή δεν υποστηρίζει την πιο πρόσφατη έκδοση του Android. Εάν αυτή η εφαρμογή έχει πρόσβαση σε φωτογραφίες και βίντεο, θα έχει επίσης πρόσβαση σε αρχεία μουσικής και ήχου."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Αυτή η εφαρμογή δεν υποστηρίζει την πιο πρόσφατη έκδοση του Android. Εάν αυτή η εφαρμογή δεν έχει πρόσβαση σε αρχεία μουσικής και ήχου, δεν θα έχει επίσης πρόσβαση σε φωτογραφίες και βίντεο."</string>
+    <!-- no translation found for safety_center_background_location_access_notification_title (8933610618810588237) -->
+    <skip />
+    <!-- no translation found for safety_center_background_location_access_reminder_notification_content (4066560182507301022) -->
+    <skip />
+    <!-- no translation found for safety_center_background_location_access_reminder_title (5477847038103863843) -->
+    <skip />
+    <!-- no translation found for safety_center_background_location_access_reminder_summary (8276755741395332974) -->
+    <skip />
+    <!-- no translation found for safety_center_background_location_access_revoked (6972274943343442213) -->
+    <skip />
+    <!-- no translation found for safety_center_view_recent_location_access (3524391299490678243) -->
+    <skip />
+    <!-- no translation found for privacy_controls_title (7605929972256835199) -->
+    <skip />
+    <!-- no translation found for camera_toggle_title (1251201397431837666) -->
+    <skip />
+    <!-- no translation found for mic_toggle_title (2649991093496110162) -->
+    <skip />
+    <!-- no translation found for perm_toggle_description (7801326363741451379) -->
+    <skip />
+    <!-- no translation found for mic_toggle_description (9163104307990677157) -->
+    <skip />
+    <!-- no translation found for location_settings_subtitle (2328360561197430695) -->
+    <skip />
+    <!-- no translation found for show_clip_access_notification_title (5168467637351109096) -->
+    <skip />
+    <!-- no translation found for show_clip_access_notification_summary (3532020182782112687) -->
+    <skip />
 </resources>
