@@ -1565,10 +1565,10 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="microphone_toggle_label_qs">Mic access</string>
     <!-- Label when permissions were removed via safety center QS page [CHAR LIMIT=30] -->
     <string name="permissions_removed_qs">Permission removed</string>
-    <!-- Label to see apps with camera access in safety center QS page [CHAR LIMIT=50] -->
-    <string name="camera_usage_qs">See apps with camera access</string>
-    <!-- Label to see apps with microphone access in safety center QS page [CHAR LIMIT=50] -->
-    <string name="microphone_usage_qs">See apps with mic access</string>
+    <!-- Label to see camera usage in safety center QS page [CHAR LIMIT=50] -->
+    <string name="camera_usage_qs">See recent camera usage</string>
+    <!-- Label to see microphone usage in safety center QS page [CHAR LIMIT=50] -->
+    <string name="microphone_usage_qs">See recent mic usage</string>
     <!-- Label to remove camera permission for an app in safety center QS page [CHAR LIMIT=50] -->
     <string name="remove_camera_qs">Remove permission for this app</string>
     <!-- Label to remove microphone permission for an app in safety center QS page [CHAR LIMIT=50] -->
