@@ -214,6 +214,7 @@ class CollapsableIssuesCardHelper {
         // Navigate to Safety center with issues expanded
         val safetyCenterIntent = Intent(ACTION_SAFETY_CENTER)
         safetyCenterIntent.putExtra(EXPAND_ISSUE_GROUP_QS_FRAGMENT_KEY, true)
+        NavigationSource.QUICK_SETTINGS_TILE.addToIntent(safetyCenterIntent)
         context.startActivity(safetyCenterIntent)
     }
 

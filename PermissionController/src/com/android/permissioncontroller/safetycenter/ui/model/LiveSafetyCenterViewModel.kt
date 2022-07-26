@@ -17,9 +17,9 @@
 package com.android.permissioncontroller.safetycenter.ui.model
 
 import android.app.Application
-import android.os.Build
 import android.content.Intent
 import android.content.Intent.ACTION_SAFETY_CENTER
+import android.os.Build
 import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterErrorDetails
 import android.safetycenter.SafetyCenterIssue
@@ -31,6 +31,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.android.permissioncontroller.safetycenter.ui.NavigationSource
 import java.util.concurrent.atomic.AtomicBoolean
 
 /* A SafetyCenterViewModel that talks to the real backing service for Safety Center. */
@@ -66,8 +67,14 @@ class LiveSafetyCenterViewModel(app: Application) : SafetyCenterViewModel(app) {
         _errorLiveData.value = null
     }
 
-    override fun navigateToSafetyCenter(fragment: Fragment) {
-        fragment.startActivity(Intent(ACTION_SAFETY_CENTER))
+    override fun navigateToSafetyCenter(fragment: Fragment, navigationSource: NavigationSource?) {
+        val intent = Intent(ACTION_SAFETY_CENTER)
+
+        if (navigationSource != null) {
+            navigationSource.addToIntent(intent)
+        }
+
+        fragment.startActivity(intent)
     }
 
     override fun pageOpen() {

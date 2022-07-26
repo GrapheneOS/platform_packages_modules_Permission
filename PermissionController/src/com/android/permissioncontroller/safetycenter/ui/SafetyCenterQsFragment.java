@@ -59,8 +59,11 @@ import com.android.permissioncontroller.permission.ui.model.v33.SafetyCenterQsVi
 import com.android.permissioncontroller.permission.ui.model.v33.SafetyCenterQsViewModelFactory;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
+import com.android.permissioncontroller.safetycenter.ui.NavigationSource;
 import com.android.permissioncontroller.safetycenter.ui.SafetyCenterDashboardFragment;
 import com.android.permissioncontroller.safetycenter.ui.SafetyCenterTouchTarget;
+import com.android.permissioncontroller.safetycenter.ui.model.LiveSafetyCenterViewModelFactory;
+import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel;
 
 import com.google.android.material.button.MaterialButton;
 
@@ -158,8 +161,15 @@ public class SafetyCenterQsFragment extends Fragment {
         SafetyCenterTouchTarget.configureSize(
                 closeButton, R.dimen.safety_center_icon_button_touch_target_size);
 
+        SafetyCenterViewModel safetyCenterViewModel =
+                new ViewModelProvider(
+                        requireActivity(),
+                        new LiveSafetyCenterViewModelFactory(requireActivity().getApplication()))
+                        .get(SafetyCenterViewModel.class);
         View securitySettings = root.findViewById(R.id.security_settings_button);
-        securitySettings.setOnClickListener((v) -> mViewModel.navigateToSecuritySettings(this));
+        securitySettings.setOnClickListener(
+                (v) -> safetyCenterViewModel.navigateToSafetyCenter(
+                        this, NavigationSource.QUICK_SETTINGS_TILE));
         ((TextView) securitySettings.findViewById(R.id.toggle_sensor_name))
                 .setText(R.string.security_settings_button_label_qs);
         securitySettings.findViewById(R.id.toggle_sensor_status).setVisibility(View.GONE);
@@ -179,7 +189,7 @@ public class SafetyCenterQsFragment extends Fragment {
                 .add(
                         R.id.safety_center_prefs,
                         SafetyCenterDashboardFragment.newInstance(
-                                /* isQuickSettingsFragment= */ true))
+                                mSessionId, /* isQuickSettingsFragment= */ true))
                 .commitNow();
         return root;
     }
