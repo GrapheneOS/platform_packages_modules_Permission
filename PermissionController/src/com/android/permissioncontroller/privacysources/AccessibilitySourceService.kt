@@ -61,6 +61,7 @@ import com.android.permissioncontroller.PermissionControllerStatsLog.PRIVACY_SIG
 import com.android.permissioncontroller.PermissionControllerStatsLog.PRIVACY_SIGNAL_NOTIFICATION_INTERACTION__ACTION__NOTIFICATION_SHOWN
 import com.android.permissioncontroller.PermissionControllerStatsLog.PRIVACY_SIGNAL_NOTIFICATION_INTERACTION__PRIVACY_SOURCE__A11Y_SERVICE
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.Utils.getSystemServiceSafe
 import com.android.permissioncontroller.privacysources.SafetyCenterReceiver.RefreshEvent
@@ -285,13 +286,12 @@ class AccessibilitySourceService(
 
     private fun getNotificationResource(): NotificationResource {
         // Use PbA branding if available, otherwise default to more generic branding
-        val pbaLabel = Html.fromHtml(parentUserContext.getString(
-                android.R.string.safety_protection_display_text), 0)
         val appLabel: String
         val smallIconResId: Int
         val colorResId: Int
-        if (pbaLabel != null && pbaLabel.isNotEmpty()) {
-            appLabel = pbaLabel.toString()
+        if (KotlinUtils.shouldShowSafetyProtectionResources(parentUserContext)) {
+            appLabel = Html.fromHtml(parentUserContext.getString(
+                    android.R.string.safety_protection_display_text), 0).toString()
             smallIconResId = android.R.drawable.ic_safety_protection
             colorResId = R.color.safety_center_info
         } else {
