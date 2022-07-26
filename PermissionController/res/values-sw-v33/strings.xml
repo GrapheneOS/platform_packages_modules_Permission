@@ -24,20 +24,15 @@
     <string name="safety_center_more_issues_card_title" msgid="8599419758014246517">"Angalia tahadhari zote"</string>
     <string name="safety_center_more_issues_status_icon_content_description" msgid="8597351743567707802">"Angalia tahadhari zote"</string>
     <string name="safety_center_more_issues_expand_button_content_description" msgid="8997241228390831958">"Angalia tahadhari zote"</string>
-    <string name="safety_center_qs_status_summary" msgid="1880058297997805144">"Kagua mipangilio yako"</string>
-    <!-- no translation found for safety_center_qs_page_landing (3989992603993495347) -->
+    <!-- no translation found for safety_center_qs_status_summary (5193925895830451177) -->
     <skip />
-    <!-- no translation found for safety_center_qs_close_button (1352313308176244599) -->
+    <!-- no translation found for safety_center_qs_page_landing (1717368301679228128) -->
     <skip />
-    <!-- no translation found for safety_center_qs_privacy_control (182198757833749612) -->
-    <skip />
-    <!-- no translation found for safety_center_qs_toggle_action (5920465736488119255) -->
-    <skip />
-    <!-- no translation found for safety_center_qs_open_action (2760200829912423728) -->
-    <skip />
+    <string name="safety_center_qs_close_button" msgid="1352313308176244599">"Funga"</string>
+    <string name="safety_center_qs_privacy_control" msgid="182198757833749612">"Badilisha. %1$s. %2$s"</string>
+    <string name="safety_center_qs_toggle_action" msgid="5920465736488119255">"Geuza"</string>
+    <string name="safety_center_qs_open_action" msgid="2760200829912423728">"Fungua"</string>
     <string name="safety_center_review_settings_button" msgid="938981137942443930">"Kagua mipangilio"</string>
-    <!-- no translation found for safety_center_gear_label (5175877094379694098) -->
-    <skip />
-    <!-- no translation found for safety_center_info_label (8993181584061825412) -->
-    <skip />
+    <string name="safety_center_gear_label" msgid="5175877094379694098">"Mipangilio"</string>
+    <string name="safety_center_info_label" msgid="8993181584061825412">"Maelezo"</string>
 </resources>

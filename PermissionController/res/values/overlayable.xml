@@ -298,6 +298,7 @@
             <item type="string" name="mic_toggle_enable_config"/>
             <item type="string" name="clipboard_show_access_notifications_config"/>
             <item type="string" name="show_access_notifications_default_config"/>
+            <item type="bool" name="config_display_show_password_toggle"/>
             <!-- END PRIVACY CONTROLS CONFIGS -->
 
         </policy>
