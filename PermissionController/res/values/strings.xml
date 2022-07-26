@@ -1546,6 +1546,8 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="safety_center_issue_card_dismiss_button">Dismiss</string>
     <!-- Title for a dialog confirming if a user wants to dismiss a safety center issue [CHAR LIMIT=NONE] -->
     <string name="safety_center_issue_card_dismiss_confirmation_title">Dismiss this alert?</string>
+    <!-- Message for a dialog confirming if a user wants to dismiss a safety center issue [CHAR LIMIT=NONE] -->
+    <string name="safety_center_issue_card_dismiss_confirmation_message">Review your security and privacy settings any time to add more protection</string>
     <!-- Label for a button to dismiss a safety center issue in a confirmation dialog [CHAR LIMIT=30] -->
     <string name="safety_center_issue_card_confirm_dismiss_button">Dismiss</string>
     <!-- Label for a button to cancel dismissing a safety center issue in a confirmation dialog [CHAR LIMIT=30] -->

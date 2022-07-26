@@ -222,12 +222,18 @@ class SafetyCenterActivityTest {
         context.launchSafetyCenterActivity {
             waitFindObject(By.desc("Dismiss")).click()
             waitFindObject(By.text("Dismiss this alert?"))
+            waitFindObject(
+                By.text(
+                    "Review your security and privacy settings any time to add more protection"))
 
             getUiDevice().rotate()
             getUiDevice()
                 .waitForWindowUpdate(/* from any window*/ null, DIALOG_ROTATION_TIMEOUT.toMillis())
 
             waitFindObject(By.text("Dismiss this alert?"))
+            waitFindObject(
+                By.text(
+                    "Review your security and privacy settings any time to add more protection"))
             findButton("Dismiss").click()
 
             assertSourceIssueNotDisplayed(safetySourceCtsData.criticalResolvingIssue)
