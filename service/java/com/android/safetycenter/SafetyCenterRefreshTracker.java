@@ -66,7 +66,7 @@ final class SafetyCenterRefreshTracker {
             Log.w(TAG, "Replacing an ongoing refresh");
         }
 
-        String refreshBroadcastId = String.format("%s_%d", UUID.randomUUID(), mRefreshCounter++);
+        String refreshBroadcastId = UUID.randomUUID() + "_" + mRefreshCounter++;
         Log.v(
                 TAG,
                 "Starting a new refresh with refreshReason:"
