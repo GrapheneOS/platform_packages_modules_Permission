@@ -857,6 +857,7 @@ internal class NotificationListenerCheckInternal(
             .addAction(disableNlsAction)
             .addAction(showNotificationListenerSettingsAction)
             .setOnDismissPendingIntent(actionCardDismissPendingIntent)
+            .setIssueCategory(SafetySourceIssue.ISSUE_CATEGORY_DEVICE)
             .build()
     }
 
