@@ -371,8 +371,7 @@ class AccessibilitySourceService(
         val summary = parentUserContext.getString(
             R.string.accessibility_access_warning_card_content)
 
-        return SafetySourceIssue
-            .Builder(
+        return SafetySourceIssue.Builder(
                 "accessibility_${componentName.flattenToString()}",
                 title,
                 summary,
@@ -383,6 +382,7 @@ class AccessibilitySourceService(
             .addAction(accessibilityActivityAction)
             .setSubtitle(pkgLabel)
             .setOnDismissPendingIntent(warningCardDismissPendingIntent)
+            .setIssueCategory(SafetySourceIssue.ISSUE_CATEGORY_DEVICE)
             .build()
     }
 
