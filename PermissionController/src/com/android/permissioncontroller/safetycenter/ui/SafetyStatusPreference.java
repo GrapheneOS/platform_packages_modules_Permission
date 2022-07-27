@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 The Android Open Source Project
+ * Copyright (C) 2022 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -62,6 +62,7 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
 
     private boolean mRefreshRunning;
     private boolean mRefreshEnding;
+    private int mCurrentSeverityLevel = SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN;
 
     @Override
     public void onBindViewHolder(PreferenceViewHolder holder) {
@@ -112,26 +113,31 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
 
         rescanButton.setOnClickListener(unused -> requireViewModel().rescan());
 
+        int refreshStatus = mStatus.getRefreshStatus();
         boolean inRefreshStatus =
-                mStatus.getRefreshStatus()
-                        == SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS;
+                refreshStatus == SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS
+                        || refreshStatus
+                        == SafetyCenterStatus.REFRESH_STATUS_DATA_FETCH_IN_PROGRESS;
         if (inRefreshStatus && !mRefreshRunning) {
-            startRescanAnimation(statusImage, rescanButton);
+            startScanningAnimation(statusImage, rescanButton);
             mRefreshRunning = true;
         } else if (!inRefreshStatus && mRefreshRunning && !mRefreshEnding) {
             mRefreshEnding = true;
-            endRescanAnimation(statusImage, rescanButton);
+            endScanningAnimation(statusImage, rescanButton);
         }
     }
 
-    private void startRescanAnimation(ImageView statusImage, View rescanButton) {
-        statusImage.setImageResource(R.drawable.status_info_to_scanning_anim);
+    private void startScanningAnimation(ImageView statusImage, View rescanButton) {
+        int currentSeverityLevel = mStatus.getSeverityLevel();
+        statusImage.setImageResource(
+                StatusAnimationResolver.getScanningStartAnimation(currentSeverityLevel));
         AnimatedVectorDrawable animation = (AnimatedVectorDrawable) statusImage.getDrawable();
         animation.registerAnimationCallback(
                 new Animatable2.AnimationCallback() {
                     @Override
                     public void onAnimationEnd(Drawable drawable) {
-                        statusImage.setImageResource(R.drawable.status_scanning_anim);
+                        statusImage.setImageResource(
+                                StatusAnimationResolver.getScanningAnimation(currentSeverityLevel));
                         AnimatedVectorDrawable scanningAnim =
                                 (AnimatedVectorDrawable) statusImage.getDrawable();
                         scanningAnim.registerAnimationCallback(
@@ -149,11 +155,12 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
                     }
                 });
         animation.start();
+        mCurrentSeverityLevel = currentSeverityLevel;
         updateRescanButtonVisibility(rescanButton);
         rescanButton.setEnabled(false);
     }
 
-    private void endRescanAnimation(ImageView statusImage, View rescanButton) {
+    private void endScanningAnimation(ImageView statusImage, View rescanButton) {
         Drawable statusDrawable = statusImage.getDrawable();
         if (!(statusDrawable instanceof AnimatedVectorDrawable)) {
             finishScanAnimation(statusImage, rescanButton);
@@ -166,13 +173,15 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
             return;
         }
 
+        int scanningSeverityLevel = mCurrentSeverityLevel;
         animatedStatusDrawable.clearAnimationCallbacks();
         animatedStatusDrawable.registerAnimationCallback(
                 new Animatable2.AnimationCallback() {
                     @Override
                     public void onAnimationEnd(Drawable drawable) {
-                        int exitAnimation = getEndingAnimation();
-                        statusImage.setImageResource(exitAnimation);
+                        statusImage.setImageResource(
+                                StatusAnimationResolver.getScanningEndAnimation(
+                                        scanningSeverityLevel, mStatus.getSeverityLevel()));
                         AnimatedVectorDrawable animatedDrawable =
                                 (AnimatedVectorDrawable) statusImage.getDrawable();
                         animatedDrawable.registerAnimationCallback(
@@ -188,19 +197,9 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
                 });
     }
 
-    private int getEndingAnimation() {
-        switch (mStatus.getSeverityLevel()) {
-            case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING:
-                return R.drawable.status_scanning_to_warn_anim;
-            case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_RECOMMENDATION:
-                return R.drawable.status_scanning_to_recommend_anim;
-            default:
-                return R.drawable.status_scanning_to_info_anim;
-        }
-    }
-
     private void finishScanAnimation(ImageView statusImage, View rescanButton) {
         statusImage.setImageResource(toStatusImageResId(mStatus.getSeverityLevel()));
+        mCurrentSeverityLevel = mStatus.getSeverityLevel();
         mRefreshRunning = false;
         mRefreshEnding = false;
         rescanButton.setEnabled(true);
@@ -254,7 +253,7 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
     private void updateRescanButtonVisibility(View rescanButton) {
         rescanButton.setVisibility(
                 mStatus.getSeverityLevel() != SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK
-                                || mHasIssues
+                        || mHasIssues
                         ? View.GONE
                         : View.VISIBLE);
     }
