@@ -62,6 +62,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
     private final SafetyCenterViewModel mSafetyCenterViewModel;
     private final SafetyCenterIssue mIssue;
     private final FragmentManager mDialogFragmentManager;
+    private final SafetyCenterIssueId mDecodedIssueId;
 
     public IssueCardPreference(
             Context context,
@@ -74,11 +75,22 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
         mSafetyCenterViewModel = requireNonNull(safetyCenterViewModel);
         mIssue = requireNonNull(issue);
         mDialogFragmentManager = dialogFragmentManager;
+        mDecodedIssueId = SafetyCenterIds.issueIdFromString(mIssue.getId());
     }
 
     @Override
     public void onBindViewHolder(PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
+
+        mSafetyCenterViewModel
+                .getInteractionLogger()
+                .record(
+                        Action.SAFETY_ISSUE_VIEWED,
+                        LogSeverityLevel.fromIssueSeverityLevel(mIssue.getSeverityLevel()),
+                        mDecodedIssueId.getSafetyCenterIssueKey().getSafetySourceId(),
+                        SafetySourceProfileType.fromUserId(
+                                mDecodedIssueId.getSafetyCenterIssueKey().getUserId()),
+                        mDecodedIssueId.getIssueTypeId());
 
         configureDismissButton(holder.findViewById(R.id.issue_card_dismiss_btn));
 
@@ -87,12 +99,28 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
 
         CharSequence subtitle = mIssue.getSubtitle();
         TextView subtitleTextView = (TextView) holder.findViewById(R.id.issue_card_subtitle);
+        CharSequence contentDescription;
         if (TextUtils.isEmpty(subtitle)) {
             subtitleTextView.setVisibility(View.GONE);
+            contentDescription =
+                    getContext()
+                        .getString(
+                                R.string.safety_center_issue_card_content_description,
+                                mIssue.getTitle(),
+                                mIssue.getSummary());
         } else {
             subtitleTextView.setText(subtitle);
             subtitleTextView.setVisibility(View.VISIBLE);
+            contentDescription =
+                    getContext()
+                        .getString(
+                                R.string.safety_center_issue_card_content_description_with_subtitle,
+                                mIssue.getTitle(),
+                                mIssue.getSubtitle(),
+                                mIssue.getSummary());
         }
+        holder.itemView.setContentDescription(contentDescription);
+        holder.itemView.setClickable(false);
 
         LinearLayout buttonList =
                 ((LinearLayout) holder.findViewById(R.id.issue_card_action_button_list));
@@ -111,12 +139,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
 
     /** Returns the {@link SafetyCenterIssueKey} associated with this {@link IssueCardPreference} */
     public SafetyCenterIssueKey getIssueKey() {
-        SafetyCenterIssueId safetyCenterIssueId = SafetyCenterIds.issueIdFromString(mIssue.getId());
-        if (!safetyCenterIssueId.hasSafetyCenterIssueKey()) {
-            Log.d(TAG, "preference has no issue key");
-            return null;
-        }
-        return safetyCenterIssueId.getSafetyCenterIssueKey();
+        return mDecodedIssueId.getSafetyCenterIssueKey();
     }
 
     private void configureDismissButton(View dismissButton) {
@@ -187,6 +210,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
                             requireArguments().getParcelable(ISSUE_KEY, SafetyCenterIssue.class));
             return new AlertDialog.Builder(getContext())
                     .setTitle(R.string.safety_center_issue_card_dismiss_confirmation_title)
+                    .setMessage(R.string.safety_center_issue_card_dismiss_confirmation_message)
                     .setPositiveButton(
                             R.string.safety_center_issue_card_confirm_dismiss_button,
                             (dialog, which) -> safetyCenterViewModel.dismissIssue(issue))

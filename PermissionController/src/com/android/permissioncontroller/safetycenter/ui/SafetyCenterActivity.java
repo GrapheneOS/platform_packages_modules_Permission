@@ -33,6 +33,7 @@ import androidx.preference.PreferenceFragmentCompat;
 import com.android.permissioncontroller.Constants;
 import com.android.permissioncontroller.PermissionControllerStatsLog;
 import com.android.permissioncontroller.R;
+import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
 
 /** Entry-point activity for SafetyCenter. */
@@ -57,12 +58,15 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
         } else {
             logPrivacySourceMetric();
             setTitle(getString(R.string.safety_center_dashboard_page_title));
-            frag = SafetyCenterDashboardFragment.newInstance(/* isQSFrag */ false);
+            frag = SafetyCenterDashboardFragment.newInstance(
+                    Utils.getOrGenerateSessionId(getIntent()),
+                    /* isQuickSettingsFragment= */ false);
         }
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .add(R.id.content_frame, frag).commitNow();
+                    .add(R.id.content_frame, frag)
+                    .commitNow();
         }
     }
 
@@ -97,8 +101,7 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
                     privacySource,
                     uid,
                     PRIVACY_SIGNAL_NOTIFICATION_INTERACTION__ACTION__NOTIFICATION_CLICKED,
-                    sessionId
-            );
+                    sessionId);
         }
     }
 }

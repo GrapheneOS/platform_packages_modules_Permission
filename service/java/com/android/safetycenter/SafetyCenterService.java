@@ -134,7 +134,9 @@ public final class SafetyCenterService extends SystemService {
     @GuardedBy("mApiLock")
     private boolean mSafetyCenterIssueCacheWriteScheduled;
 
-    @NonNull private final SafetyCenterBroadcastDispatcher mSafetyCenterBroadcastDispatcher;
+    @GuardedBy("mApiLock")
+    @NonNull
+    private final SafetyCenterBroadcastDispatcher mSafetyCenterBroadcastDispatcher;
 
     @NonNull private final AppOpsManager mAppOpsManager;
     private final boolean mDeviceSupportsSafetyCenter;
@@ -146,7 +148,7 @@ public final class SafetyCenterService extends SystemService {
         super(context);
         mSafetyCenterResourcesContext = new SafetyCenterResourcesContext(context);
         mSafetyCenterConfigReader = new SafetyCenterConfigReader(mSafetyCenterResourcesContext);
-        mSafetyCenterRefreshTracker = new SafetyCenterRefreshTracker(mSafetyCenterConfigReader);
+        mSafetyCenterRefreshTracker = new SafetyCenterRefreshTracker();
         mSafetyCenterDataTracker =
                 new SafetyCenterDataTracker(
                         context,
@@ -154,7 +156,8 @@ public final class SafetyCenterService extends SystemService {
                         mSafetyCenterConfigReader,
                         mSafetyCenterRefreshTracker);
         mSafetyCenterListeners = new SafetyCenterListeners(mSafetyCenterDataTracker);
-        mSafetyCenterBroadcastDispatcher = new SafetyCenterBroadcastDispatcher(context);
+        mSafetyCenterBroadcastDispatcher =
+                new SafetyCenterBroadcastDispatcher(context, mSafetyCenterRefreshTracker);
         mAppOpsManager = requireNonNull(context.getSystemService(AppOpsManager.class));
         mDeviceSupportsSafetyCenter =
                 context.getResources()
@@ -688,23 +691,19 @@ public final class SafetyCenterService extends SystemService {
         }
 
         private void onApiEnabled() {
-            List<Broadcast> broadcasts;
             synchronized (mApiLock) {
-                broadcasts = mSafetyCenterConfigReader.getBroadcasts();
+                List<Broadcast> broadcasts = mSafetyCenterConfigReader.getBroadcasts();
+                mSafetyCenterBroadcastDispatcher.sendEnabledChanged(broadcasts);
             }
-
-            mSafetyCenterBroadcastDispatcher.sendEnabledChanged(broadcasts);
         }
 
         private void onApiDisabled() {
-            List<Broadcast> broadcasts;
             synchronized (mApiLock) {
-                broadcasts = mSafetyCenterConfigReader.getBroadcasts();
                 clearDataLocked();
                 mSafetyCenterListeners.clear();
+                List<Broadcast> broadcasts = mSafetyCenterConfigReader.getBroadcasts();
+                mSafetyCenterBroadcastDispatcher.sendEnabledChanged(broadcasts);
             }
-
-            mSafetyCenterBroadcastDispatcher.sendEnabledChanged(broadcasts);
         }
     }
 
@@ -726,7 +725,7 @@ public final class SafetyCenterService extends SystemService {
                 mSafetyCenterTimeouts.remove(this);
                 ArraySet<SafetySourceKey> stillInFlight =
                         mSafetyCenterRefreshTracker.clearRefresh(mRefreshBroadcastId);
-                if (stillInFlight == null) {
+                if (stillInFlight == null || stillInFlight.isEmpty()) {
                     return;
                 }
                 boolean showErrorEntriesOnTimeout =
@@ -896,12 +895,9 @@ public final class SafetyCenterService extends SystemService {
     private void startRefreshingSafetySources(
             @RefreshReason int refreshReason, @UserIdInt int userId) {
         UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
-        List<Broadcast> broadcasts;
-        String refreshBroadcastId;
         synchronized (mApiLock) {
-            broadcasts = mSafetyCenterConfigReader.getBroadcasts();
             mSafetyCenterDataTracker.clearSafetySourceErrors(userProfileGroup);
-            refreshBroadcastId =
+            String refreshBroadcastId =
                     mSafetyCenterRefreshTracker.reportRefreshInProgress(
                             refreshReason, userProfileGroup);
 
@@ -910,10 +906,11 @@ public final class SafetyCenterService extends SystemService {
             mSafetyCenterTimeouts.add(refreshTimeout, SafetyCenterFlags.getRefreshTimeout());
 
             mSafetyCenterListeners.deliverUpdateForUserProfileGroup(userProfileGroup, true, null);
-        }
 
-        mSafetyCenterBroadcastDispatcher.sendRefreshSafetySources(
-                broadcasts, refreshBroadcastId, refreshReason, userProfileGroup);
+            List<Broadcast> broadcasts = mSafetyCenterConfigReader.getBroadcasts();
+            mSafetyCenterBroadcastDispatcher.sendRefreshSafetySources(
+                    broadcasts, refreshBroadcastId, refreshReason, userProfileGroup);
+        }
     }
 
     /** Schedule writing the cache to file. */

@@ -16,17 +16,20 @@
 
 package android.safetycenter.cts.testing
 
+import android.content.Context
 import android.os.UserHandle
 import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterStatus
 import android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.ISSUE_TYPE_ID
+import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import com.android.safetycenter.internaldata.SafetyCenterEntryGroupId
 import com.android.safetycenter.internaldata.SafetyCenterEntryId
 import com.android.safetycenter.internaldata.SafetyCenterIds
 import com.android.safetycenter.internaldata.SafetyCenterIssueActionId
 import com.android.safetycenter.internaldata.SafetyCenterIssueId
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey
+import com.android.safetycenter.resources.SafetyCenterResourcesContext
 
 /**
  * A class that provides [SafetyCenterData] objects and associated constants to facilitate asserting
@@ -35,14 +38,22 @@ import com.android.safetycenter.internaldata.SafetyCenterIssueKey
 object SafetyCenterCtsData {
 
     /** The default [SafetyCenterData] returned by the Safety Center APIs. */
-    val DEFAULT =
-        SafetyCenterData(
-            SafetyCenterStatus.Builder("Looks good", "No problems found")
-                .setSeverityLevel(OVERALL_SEVERITY_LEVEL_UNKNOWN)
-                .build(),
-            emptyList(),
-            emptyList(),
-            emptyList())
+    val DEFAULT: SafetyCenterData
+        get() {
+            val context: Context = getApplicationContext()
+            val safetyCenterResourcesContext = SafetyCenterResourcesContext.forTests(context)
+            return SafetyCenterData(
+                SafetyCenterStatus.Builder(
+                        safetyCenterResourcesContext.getStringByName(
+                            "overall_severity_level_ok_title"),
+                        safetyCenterResourcesContext.getStringByName(
+                            "overall_severity_level_ok_summary"))
+                    .setSeverityLevel(OVERALL_SEVERITY_LEVEL_UNKNOWN)
+                    .build(),
+                emptyList(),
+                emptyList(),
+                emptyList())
+        }
 
     /** Creates an ID for a Safety Center entry group. */
     fun entryGroupId(sourcesGroupId: String) =

@@ -42,6 +42,7 @@ import android.safetycenter.cts.testing.UiTestHelper.expandMoreIssuesCard
 import android.safetycenter.cts.testing.UiTestHelper.findAllText
 import android.safetycenter.cts.testing.UiTestHelper.findButton
 import android.safetycenter.cts.testing.UiTestHelper.waitButtonNotDisplayed
+import android.safetycenter.cts.testing.UiTestHelper.waitNotDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.waitTextNotDisplayed
 import android.support.test.uiautomator.By
 import android.support.test.uiautomator.UiDevice
@@ -184,6 +185,33 @@ class SafetyCenterActivityTest {
     }
 
     @Test
+    fun issueCard_criticalIssue_hasContentDescriptions() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(
+            SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithResolvingIssue)
+
+        context.launchSafetyCenterActivity {
+            waitFindObject(By.desc("Alert. Critical issue title. Critical issue summary"))
+            findButton("Solve issue")
+            waitNotDisplayed(By.desc("Protected by Android"))
+        }
+    }
+
+    @Test
+    fun issueCard_informationIssueWithSubtitle_hasContentDescriptions() {
+        val sourceIssue = safetySourceCtsData.informationWithSubtitleIssue
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, sourceIssue)
+        val expectedString =
+            "Alert. Information issue title. Information issue subtitle. Information issue summary"
+
+        context.launchSafetyCenterActivity {
+            waitFindObject(By.desc(expectedString))
+            findButton("Review")
+            waitNotDisplayed(By.desc("Protected by Android"))
+        }
+    }
+
     fun issueCard_greenIssue_noDismissalConfirmationAndDismisses() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.informationWithIssue)
@@ -222,12 +250,18 @@ class SafetyCenterActivityTest {
         context.launchSafetyCenterActivity {
             waitFindObject(By.desc("Dismiss")).click()
             waitFindObject(By.text("Dismiss this alert?"))
+            waitFindObject(
+                By.text(
+                    "Review your security and privacy settings any time to add more protection"))
 
             getUiDevice().rotate()
             getUiDevice()
                 .waitForWindowUpdate(/* from any window*/ null, DIALOG_ROTATION_TIMEOUT.toMillis())
 
             waitFindObject(By.text("Dismiss this alert?"))
+            waitFindObject(
+                By.text(
+                    "Review your security and privacy settings any time to add more protection"))
             findButton("Dismiss").click()
 
             assertSourceIssueNotDisplayed(safetySourceCtsData.criticalResolvingIssue)

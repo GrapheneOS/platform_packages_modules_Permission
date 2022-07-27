@@ -46,6 +46,7 @@ import android.os.UserHandle;
 import android.safetycenter.SafetyCenterManager;
 import android.safetycenter.SafetyCenterManager.RefreshReason;
 import android.safetycenter.SafetyCenterManager.RefreshRequestType;
+import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
@@ -54,19 +55,29 @@ import com.android.safetycenter.SafetyCenterConfigReader.Broadcast;
 import java.time.Duration;
 import java.util.List;
 
+import javax.annotation.concurrent.NotThreadSafe;
+
 /**
  * A class that dispatches SafetyCenter broadcasts.
  *
- * <p>This class is thread safe as it does not contain any mutable state.
+ * <p>This class isn't thread safe. Thread safety must be handled by the caller.
  */
 @RequiresApi(TIRAMISU)
+@NotThreadSafe
 final class SafetyCenterBroadcastDispatcher {
+    private static final String TAG = "SafetyCenterBroadcastDispatcher";
 
     @NonNull private final Context mContext;
+    @NonNull private final SafetyCenterRefreshTracker mRefreshTracker;
 
-    /** Creates a {@link SafetyCenterBroadcastDispatcher} using the given {@link Context}. */
-    SafetyCenterBroadcastDispatcher(@NonNull Context context) {
+    /**
+     * Creates a {@link SafetyCenterBroadcastDispatcher} using the given {@link Context} and {@link
+     * SafetyCenterRefreshTracker}.
+     */
+    SafetyCenterBroadcastDispatcher(
+            @NonNull Context context, @NonNull SafetyCenterRefreshTracker refreshTracker) {
         mContext = context;
+        mRefreshTracker = refreshTracker;
     }
 
     /**
@@ -165,11 +176,17 @@ final class SafetyCenterBroadcastDispatcher {
                             profileParentSourceIds,
                             broadcastId);
 
-            sendBroadcast(
-                    broadcastIntent,
-                    UserHandle.of(profileParentUserId),
-                    SEND_SAFETY_CENTER_UPDATE,
-                    broadcastOptions);
+            boolean sent =
+                    sendBroadcast(
+                            broadcastIntent,
+                            UserHandle.of(profileParentUserId),
+                            SEND_SAFETY_CENTER_UPDATE,
+                            broadcastOptions);
+
+            if (sent) {
+                mRefreshTracker.reportSourceRefreshesInFlight(
+                        broadcastId, profileParentSourceIds, profileParentUserId);
+            }
         }
         List<String> managedProfilesSourceIds =
                 broadcast.getSourceIdsForManagedProfiles(refreshReason);
@@ -185,20 +202,32 @@ final class SafetyCenterBroadcastDispatcher {
                                 managedProfilesSourceIds,
                                 broadcastId);
 
-                sendBroadcast(
-                        broadcastIntent,
-                        UserHandle.of(managedRunningProfilesUserId),
-                        SEND_SAFETY_CENTER_UPDATE,
-                        broadcastOptions);
+                boolean sent =
+                        sendBroadcast(
+                                broadcastIntent,
+                                UserHandle.of(managedRunningProfilesUserId),
+                                SEND_SAFETY_CENTER_UPDATE,
+                                broadcastOptions);
+
+                if (sent) {
+                    mRefreshTracker.reportSourceRefreshesInFlight(
+                            broadcastId, managedProfilesSourceIds, managedRunningProfilesUserId);
+                }
             }
         }
     }
 
-    private void sendBroadcast(
+    private boolean sendBroadcast(
             @NonNull Intent broadcastIntent,
             @NonNull UserHandle userHandle,
             @NonNull String permission,
             @Nullable BroadcastOptions broadcastOptions) {
+        if (!doesBroadcastResolve(broadcastIntent)) {
+            Log.w(TAG, "No receiver for intent targeting " + broadcastIntent.getPackage());
+            return false;
+        }
+        Log.v(TAG, "Found receiver for intent targeting " + broadcastIntent.getPackage());
+
         // The following operation requires the INTERACT_ACROSS_USERS permission.
         final long callingId = Binder.clearCallingIdentity();
         try {
@@ -207,9 +236,14 @@ final class SafetyCenterBroadcastDispatcher {
                     userHandle,
                     permission,
                     broadcastOptions == null ? null : broadcastOptions.toBundle());
+            return true;
         } finally {
             Binder.restoreCallingIdentity(callingId);
         }
+    }
+
+    private boolean doesBroadcastResolve(@NonNull Intent broadcastIntent) {
+        return !mContext.getPackageManager().queryBroadcastReceivers(broadcastIntent, 0).isEmpty();
     }
 
     @NonNull

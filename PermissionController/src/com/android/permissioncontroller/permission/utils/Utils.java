@@ -42,6 +42,7 @@ import static android.content.pm.PackageManager.FLAG_PERMISSION_USER_SENSITIVE_W
 import static android.content.pm.PackageManager.MATCH_SYSTEM_ONLY;
 import static android.os.UserHandle.myUserId;
 
+import static com.android.permissioncontroller.Constants.EXTRA_SESSION_ID;
 import static com.android.permissioncontroller.Constants.INVALID_SESSION_ID;
 
 import static java.lang.annotation.RetentionPolicy.SOURCE;
@@ -1324,6 +1325,20 @@ public final class Utils {
     }
 
     /**
+     * Retrieves an existing session ID from the given intent or generates a new one if none is
+     * present.
+     *
+     * @return A valid session ID.
+     */
+    public static long getOrGenerateSessionId(Intent intent) {
+        long sessionId = intent.getLongExtra(EXTRA_SESSION_ID, INVALID_SESSION_ID);
+        if (sessionId == INVALID_SESSION_ID) {
+            sessionId = getValidSessionId();
+        }
+        return sessionId;
+    }
+
+    /**
      * Gets the label of the Settings application
      *
      * @param pm The packageManager used to get the activity resolution
@@ -1352,7 +1367,18 @@ public final class Utils {
         // In android TV, parental control accounts are managed profiles
         return !userManager.getEnabledProfiles().contains(user)
                 || (userManager.isManagedProfile(user.getIdentifier())
-                && !DeviceUtils.isTelevision(app));
+                    && !DeviceUtils.isTelevision(app));
+    }
+
+    /**
+     * Determines if a given user ID belongs to a managed profile user.
+     * @param userId The user ID to check
+     * @return true if the user is a managed profile
+     */
+    public static boolean isUserManagedProfile(int userId) {
+        return PermissionControllerApplication.get()
+                .getSystemService(UserManager.class)
+                .isManagedProfile(userId);
     }
 
     /**

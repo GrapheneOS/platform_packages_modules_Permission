@@ -40,7 +40,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class XmlConfigTest {
     private val context: Context = getApplicationContext()
-    private val safetyCenterContext = SafetyCenterResourcesContext(context)
+    private val safetyCenterContext = SafetyCenterResourcesContext.forTests(context)
     private val safetyCenterCtsHelper = SafetyCenterCtsHelper(context)
     private val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)!!
     // JUnit's Assume is not supported in @BeforeClass by the CTS tests runner, so this is used to

@@ -15,7 +15,7 @@
      limitations under the License.
 -->
 
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Description when an app requests to become the default dialer app. [CHAR LIMIT=NONE] -->
     <string name="role_dialer_request_description">This app will be allowed to send you Notifications, and will be given access to your Camera, Contacts, Microphone, Phone, and SMS</string>
     <!-- Description when an app requests to become the default SMS app. [CHAR LIMIT=NONE] -->
@@ -36,6 +36,10 @@
     <string name="safety_center_more_issues_status_icon_content_description">See all alerts</string>
     <!-- Content description for the "See all alerts"/"More issues" card buttons and icons in Safety Center[CHAR LIMIT=NONE] -->
     <string name="safety_center_more_issues_expand_button_content_description">See all alerts</string>
+    <!-- Content description containing the title and summary of a safety center issue card preference [CHAR LIMIT=NONE]-->
+    <string name="safety_center_issue_card_content_description">Alert. <xliff:g id="issue card title" example="Protect your account">%1$s</xliff:g>. <xliff:g id="issue card summary" example="Secure your account in the Security Checkup">%2$s</xliff:g></string>
+    <!-- Content description containing the title, subtitle and summary of a safety center issue card preference [CHAR LIMIT=NONE]-->
+    <string name="safety_center_issue_card_content_description_with_subtitle">Alert. <xliff:g id="issue card title" example="Protect your account">%1$s</xliff:g>. <xliff:g id="issue card subtitle" example="testemail@google.com">%2$s</xliff:g>. <xliff:g id="issue card summary" example="Secure your account in the Security Checkup">%3$s</xliff:g></string>
 
     <!--Summary for safety center status card QS in case of pending actions [CHAR LIMIT=NONE] -->
     <string name="safety_center_qs_status_summary">Check settings that can add protection to your device</string>

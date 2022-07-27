@@ -71,6 +71,12 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
     /** Specific flags used for retrieving resolve info */
     private final int mFlags;
 
+    /**
+     * Whether we should fallback with an empty string when calling {@link #getStringByName} for a
+     * string resource that does not exist.
+     */
+    private final boolean mShouldFallbackIfNamedResourceNotFound;
+
     // Cached package name and resources from the resources APK
     @Nullable private String mResourcesApkPkgName;
     @Nullable private AssetManager mAssetsFromApk;
@@ -78,24 +84,41 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
     @Nullable private Resources.Theme mThemeFromApk;
 
     public SafetyCenterResourcesContext(@NonNull Context contextBase) {
-        super(contextBase);
-        mResourcesApkAction = RESOURCES_APK_ACTION;
-        mResourcesApkPath = APEX_MODULE_PATH;
-        mConfigName = CONFIG_NAME;
-        mFlags = PackageManager.MATCH_SYSTEM_ONLY;
+        this(contextBase, /* shouldFallbackIfNamedResourceNotFound */ true);
     }
 
+    private SafetyCenterResourcesContext(
+            @NonNull Context contextBase, boolean shouldFallbackIfNamedResourceNotFound) {
+        this(
+                contextBase,
+                RESOURCES_APK_ACTION,
+                APEX_MODULE_PATH,
+                CONFIG_NAME,
+                PackageManager.MATCH_SYSTEM_ONLY,
+                shouldFallbackIfNamedResourceNotFound);
+    }
+
+    @VisibleForTesting
     SafetyCenterResourcesContext(
             @NonNull Context contextBase,
             @NonNull String resourcesApkAction,
             @Nullable String resourcesApkPath,
             @NonNull String configName,
-            int flags) {
+            int flags,
+            boolean shouldFallbackIfNamedResourceNotFound) {
         super(contextBase);
         mResourcesApkAction = requireNonNull(resourcesApkAction);
         mResourcesApkPath = resourcesApkPath;
         mConfigName = requireNonNull(configName);
         mFlags = flags;
+        mShouldFallbackIfNamedResourceNotFound = shouldFallbackIfNamedResourceNotFound;
+    }
+
+    /** Creates a new {@link SafetyCenterResourcesContext} for testing. */
+    @VisibleForTesting
+    public static SafetyCenterResourcesContext forTests(@NonNull Context contextBase) {
+        return new SafetyCenterResourcesContext(
+                contextBase, /* shouldFallbackIfNamedResourceNotFound */ false);
     }
 
     /** Get the package name of the Safety Center resources APK. */
@@ -199,28 +222,33 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
 
     /**
      * Gets a string resource by name from the Safety Center resources APK, and returns an empty
-     * string if the resource does not exist.
+     * string if the resource does not exist (or throws a {@link Resources.NotFoundException} if
+     * {@link #mShouldFallbackIfNamedResourceNotFound} is {@code false}).
      */
     @NonNull
     public String getStringByName(@NonNull String name) {
         int id = getStringRes(name);
-        return emptyIfNamedResourceIsNull(name, getOptionalString(id));
+        return maybeFallbackIfNamedResourceIsNull(name, getOptionalString(id));
     }
 
     /** Same as {@link #getStringByName(String)} but with the given {@code formatArgs}. */
     @NonNull
     public String getStringByName(@NonNull String name, Object... formatArgs) {
         int id = getStringRes(name);
-        return emptyIfNamedResourceIsNull(name, getOptionalString(id, formatArgs));
+        return maybeFallbackIfNamedResourceIsNull(name, getOptionalString(id, formatArgs));
     }
 
     @NonNull
-    private static String emptyIfNamedResourceIsNull(@NonNull String name, @Nullable String value) {
-        if (value == null) {
-            Log.w(TAG, "String resource " + name + " not found");
-            return "";
+    private String maybeFallbackIfNamedResourceIsNull(
+            @NonNull String name, @Nullable String value) {
+        if (value != null) {
+            return value;
         }
-        return value;
+        if (!mShouldFallbackIfNamedResourceNotFound) {
+            throw new Resources.NotFoundException();
+        }
+        Log.w(TAG, "String resource " + name + " not found");
+        return "";
     }
 
     @StringRes
