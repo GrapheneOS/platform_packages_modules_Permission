@@ -999,15 +999,21 @@ public class LocationAccessCheck {
 
         CharSequence pkgLabel = mPackageManager.getApplicationLabel(pkgInfo.applicationInfo);
 
-        SafetySourceIssue.Builder b = new SafetySourceIssue.Builder(id, mContext.getString(
-                R.string.safety_center_background_location_access_reminder_title),
+        return new SafetySourceIssue.Builder(
+                id,
+                mContext.getString(
+                        R.string.safety_center_background_location_access_reminder_title),
                 mContext.getString(
                         R.string.safety_center_background_location_access_reminder_summary),
-                SafetySourceData.SEVERITY_LEVEL_INFORMATION, id).setSubtitle(
-                pkgLabel).addAction(revokeAction).addAction(
-                viewLocationUsageAction).setOnDismissPendingIntent(
-                createWarningCardDismissalIntent(pkgName, sessionId, uid));
-        return b.build();
+                SafetySourceData.SEVERITY_LEVEL_INFORMATION,
+                id)
+                .setSubtitle(pkgLabel)
+                .addAction(revokeAction)
+                .addAction(viewLocationUsageAction)
+                .setOnDismissPendingIntent(
+                        createWarningCardDismissalIntent(pkgName, sessionId, uid))
+                .setIssueCategory(SafetySourceIssue.ISSUE_CATEGORY_DEVICE)
+                .build();
     }
 
     private PendingIntent createNotificationDismissIntent(String pkgName, long sessionId, int uid) {
