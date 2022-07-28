@@ -25,6 +25,7 @@ import android.util.ArraySet;
 
 import androidx.annotation.RequiresApi;
 
+import java.io.PrintWriter;
 import java.time.Duration;
 
 /** A class to access the Safety Center {@link DeviceConfig} flags. */
@@ -57,6 +58,31 @@ final class SafetyCenterFlags {
             Duration.ofSeconds(10);
 
     private static final Duration FGS_ALLOWLIST_DEFAULT_DURATION = Duration.ofSeconds(20);
+
+    /**
+     * Dumps state for debugging purposes.
+     *
+     * @param fout {@link PrintWriter} to write to
+     */
+    static void dump(@NonNull PrintWriter fout) {
+        fout.println("FLAGS");
+        printFlag(fout, PROPERTY_SAFETY_CENTER_ENABLED, getSafetyCenterEnabled());
+        printFlag(fout, PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT, getShowErrorEntriesOnTimeout());
+        printFlag(fout, PROPERTY_REPLACE_LOCK_SCREEN_ICON_ACTION, getReplaceLockScreenIconAction());
+        printFlag(fout, PROPERTY_REFRESH_SOURCE_TIMEOUT_MILLIS, getRefreshTimeout());
+        printFlag(fout, PROPERTY_RESOLVING_ACTION_TIMEOUT_MILLIS, getResolvingActionTimeout());
+        printFlag(fout, PROPERTY_FGS_ALLOWLIST_DURATION_MILLIS, getFgsAllowlistDuration());
+        printFlag(fout, PROPERTY_UNTRACKED_SOURCES, getUntrackedSourceIds());
+        fout.println();
+    }
+
+    private static void printFlag(PrintWriter pw, String key, Duration duration) {
+        printFlag(pw, key, duration.toMillis() + " (" + duration + ")");
+    }
+
+    private static void printFlag(PrintWriter pw, String key, Object value) {
+        pw.println("\t" + key + "=" + value);
+    }
 
     /** Returns whether Safety Center is enabled. */
     static boolean getSafetyCenterEnabled() {
