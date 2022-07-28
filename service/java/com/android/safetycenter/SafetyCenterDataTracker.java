@@ -68,6 +68,7 @@ import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 import com.android.safetycenter.persistence.PersistedSafetyCenterIssue;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 
+import java.io.PrintWriter;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -468,6 +469,52 @@ final class SafetyCenterDataTracker {
         mSafetyCenterIssueCache.clear();
         mSafetyCenterIssueCacheDirty = true;
         mSafetyCenterIssueActionsInFlight.clear();
+    }
+
+    /**
+     * Dumps state for debugging purposes.
+     *
+     * @param fout {@link PrintWriter} to write to
+     */
+    void dump(@NonNull PrintWriter fout) {
+        int dataCount = mSafetySourceDataForKey.size();
+        fout.println("SOURCE DATA (" + dataCount + ")");
+        for (int i = 0; i < dataCount; i++) {
+            SafetySourceKey key = mSafetySourceDataForKey.keyAt(i);
+            SafetySourceData data = mSafetySourceDataForKey.valueAt(i);
+            fout.println("\t[" + i + "] " + key + " -> " + data);
+        }
+        fout.println();
+
+        int errorCount = mSafetySourceErrors.size();
+        fout.println("SOURCE ERRORS (" + errorCount + ")");
+        for (int i = 0; i < errorCount; i++) {
+            SafetySourceKey key = mSafetySourceErrors.valueAt(i);
+            fout.println("\t[" + i + "] " + key.toString());
+        }
+        fout.println();
+
+        int issueCacheCount = mSafetyCenterIssueCache.size();
+        fout.println(
+                "ISSUE CACHE ("
+                        + issueCacheCount
+                        + ", dirty="
+                        + mSafetyCenterIssueCacheDirty
+                        + ")");
+        for (int i = 0; i < issueCacheCount; i++) {
+            SafetyCenterIssueKey key = mSafetyCenterIssueCache.keyAt(i);
+            IssueData data = mSafetyCenterIssueCache.valueAt(i);
+            fout.println("\t[" + i + "] " + key.toString() + " -> " + data.toString());
+        }
+        fout.println();
+
+        int actionInFlightCount = mSafetyCenterIssueActionsInFlight.size();
+        fout.println("ACTIONS IN FLIGHT (" + actionInFlightCount + ")");
+        for (int i = 0; i < actionInFlightCount; i++) {
+            SafetyCenterIssueActionId id = mSafetyCenterIssueActionsInFlight.valueAt(i);
+            fout.println("\t[" + i + "] " + id.toString());
+        }
+        fout.println();
     }
 
     /**
@@ -1725,6 +1772,16 @@ final class SafetyCenterDataTracker {
 
         public void setDismissedAt(@Nullable Instant dismissedAt) {
             mDismissedAt = dismissedAt;
+        }
+
+        @Override
+        public String toString() {
+            return "IssueData{"
+                    + "mFirstSeenAt="
+                    + mFirstSeenAt
+                    + ", mDismissedAt="
+                    + mDismissedAt
+                    + '}';
         }
     }
 
