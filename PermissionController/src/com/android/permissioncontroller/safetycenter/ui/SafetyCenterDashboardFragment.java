@@ -71,10 +71,9 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
     private static final String STATIC_ENTRIES_GROUP_KEY = "static_entries_group";
 
     @Nullable private final ViewModelProvider.Factory mSafetyCenterViewModelFactoryOverride;
-    private final CollapsableIssuesCardHelper mCollapsableIssuesCardHelper =
-            new CollapsableIssuesCardHelper();
 
     private SafetyStatusPreference mSafetyStatusPreference;
+    private CollapsableIssuesCardHelper mCollapsableIssuesCardHelper;
     private PreferenceGroup mIssuesGroup;
     private PreferenceGroup mEntriesGroup;
     private PreferenceGroup mStaticEntriesGroup;
@@ -139,6 +138,11 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
                     getArguments().getBoolean(QUICK_SETTINGS_SAFETY_CENTER_FRAGMENT, false);
         }
 
+        mViewModel =
+                new ViewModelProvider(requireActivity(), getSafetyCenterViewModelFactory())
+                        .get(SafetyCenterViewModel.class);
+
+        mCollapsableIssuesCardHelper = new CollapsableIssuesCardHelper(mViewModel);
         ParsedSafetyCenterIntent parsedSafetyCenterIntent =
                 ParsedSafetyCenterIntent.toSafetyCenterIntent(getActivity().getIntent());
         mCollapsableIssuesCardHelper.setFocusedIssueKey(
@@ -148,10 +152,6 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
         mCollapsableIssuesCardHelper.setQuickSettingsState(
                 mIsQuickSettingsFragment, parsedSafetyCenterIntent.getShouldExpandIssuesGroup());
         mCollapsableIssuesCardHelper.restoreState(savedInstanceState);
-
-        mViewModel =
-                new ViewModelProvider(requireActivity(), getSafetyCenterViewModelFactory())
-                        .get(SafetyCenterViewModel.class);
 
         mSafetyStatusPreference =
                 requireNonNull(getPreferenceScreen().findPreference(SAFETY_STATUS_KEY));
@@ -257,9 +257,11 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
         if (hasSettingsToReview) {
             mSafetyStatusPreference.setHasPendingActions(
                     true,
-                    l ->
-                            mViewModel.navigateToSafetyCenter(
-                                    this, NavigationSource.QUICK_SETTINGS_TILE));
+                    l -> {
+                        mViewModel.navigateToSafetyCenter(
+                                this, NavigationSource.QUICK_SETTINGS_TILE);
+                        mViewModel.getInteractionLogger().record(Action.REVIEW_SETTINGS_CLICKED);
+                    });
         } else {
             mSafetyStatusPreference.setHasPendingActions(false, null);
         }
@@ -317,7 +319,8 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
                 new SafetyEntryPreference(
                         context,
                         entry,
-                        PositionInCardList.calculate(isFirstElement, isLastElement)));
+                        PositionInCardList.calculate(isFirstElement, isLastElement),
+                        mViewModel));
     }
 
     private void addGroupEntries(
@@ -344,7 +347,8 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
                             /* isCardStart= */ false,
                             isCardEnd);
             mEntriesGroup.addPreference(
-                    new SafetyEntryPreference(context, entries.get(i), positionInCardList));
+                    new SafetyEntryPreference(
+                            context, entries.get(i), positionInCardList, mViewModel));
         }
     }
 
@@ -358,7 +362,7 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
             mStaticEntriesGroup.addPreference(category);
 
             for (SafetyCenterStaticEntry entry : group.getStaticEntries()) {
-                category.addPreference(new StaticSafetyEntryPreference(context, entry));
+                category.addPreference(new StaticSafetyEntryPreference(context, entry, mViewModel));
             }
         }
     }

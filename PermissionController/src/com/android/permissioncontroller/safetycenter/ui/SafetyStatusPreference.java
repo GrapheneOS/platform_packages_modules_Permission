@@ -111,7 +111,11 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
         View safetyProtectionSectionView = holder.findViewById(R.id.safety_protection_section_view);
         safetyProtectionSectionView.setVisibility(mHasIssues ? View.GONE : View.VISIBLE);
 
-        rescanButton.setOnClickListener(unused -> requireViewModel().rescan());
+        rescanButton.setOnClickListener(unused -> {
+            SafetyCenterViewModel viewModel = requireViewModel();
+            viewModel.rescan();
+            viewModel.getInteractionLogger().record(Action.SCAN_INITIATED);
+        });
 
         int refreshStatus = mStatus.getRefreshStatus();
         boolean inRefreshStatus =

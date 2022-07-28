@@ -27,6 +27,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.preference.Preference;
 
+import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel;
+
 /** A preference which displays a visual representation of a {@link SafetyCenterStaticEntry}. */
 @RequiresApi(TIRAMISU)
 public class StaticSafetyEntryPreference extends Preference implements ComparablePreference {
@@ -34,32 +36,44 @@ public class StaticSafetyEntryPreference extends Preference implements Comparabl
     private static final String TAG = StaticSafetyEntryPreference.class.getSimpleName();
 
     private final SafetyCenterStaticEntry mEntry;
+    private final SafetyCenterViewModel mViewModel;
 
-    public StaticSafetyEntryPreference(Context context, SafetyCenterStaticEntry entry) {
+    public StaticSafetyEntryPreference(
+            Context context, SafetyCenterStaticEntry entry, SafetyCenterViewModel viewModel) {
         super(context);
         mEntry = entry;
+        mViewModel = viewModel;
         setTitle(entry.getTitle());
         setSummary(entry.getSummary());
         if (entry.getPendingIntent() != null) {
-            setOnPreferenceClickListener(unused -> {
-                try {
-                    entry.getPendingIntent().send();
-                } catch (Exception ex) {
-                    Log.e(TAG,
-                            String.format(
-                                    "Failed to execute pending intent for static entry: %s", entry),
-                            ex);
-                }
-                return true;
-            });
+            setOnPreferenceClickListener(
+                    unused -> {
+                        try {
+                            mEntry.getPendingIntent().send();
+                        } catch (Exception ex) {
+                            Log.e(
+                                    TAG,
+                                    String.format(
+                                            "Failed to execute pending intent for static entry: %s",
+                                            mEntry),
+                                    ex);
+                        }
+
+                        // SafetyCenterStaticEntry does not expose an ID, so we're unable to log
+                        // what source this static entry belonged to.
+                        mViewModel.getInteractionLogger().record(Action.STATIC_ENTRY_CLICKED);
+
+                        return true;
+                    });
         }
     }
 
     @Override
     public boolean isSameItem(@NonNull Preference preference) {
         return preference instanceof StaticSafetyEntryPreference
-                && TextUtils.equals(mEntry.getTitle(),
-                ((StaticSafetyEntryPreference) preference).mEntry.getTitle());
+                && TextUtils.equals(
+                        mEntry.getTitle(),
+                        ((StaticSafetyEntryPreference) preference).mEntry.getTitle());
     }
 
     @Override

@@ -16,10 +16,14 @@
 
 package com.android.permissioncontroller.safetycenter.ui
 
+import android.Manifest.permission_group.CAMERA as PERMISSION_GROUP_CAMERA
+import android.Manifest.permission_group.LOCATION as PERMISSION_GROUP_LOCATION
+import android.Manifest.permission_group.MICROPHONE as PERMISSION_GROUP_MICROPHONE
 import android.content.Intent
 import android.os.Build
 import android.permission.PermissionGroupUsage
 import android.permission.PermissionManager
+import android.safetycenter.SafetyCenterEntry
 import android.safetycenter.SafetyCenterIssue
 import android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_ISSUE_ID
 import android.safetycenter.SafetyCenterStatus
@@ -28,14 +32,13 @@ import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.PermissionControllerStatsLog
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.safetycenter.SafetyCenterConstants
+import com.android.safetycenter.internaldata.SafetyCenterIds
 import java.math.BigInteger
 import java.security.MessageDigest
-import android.Manifest.permission_group.CAMERA as PERMISSION_GROUP_CAMERA
-import android.Manifest.permission_group.LOCATION as PERMISSION_GROUP_LOCATION
-import android.Manifest.permission_group.MICROPHONE as PERMISSION_GROUP_MICROPHONE
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class InteractionLogger(
+    val noLogSourceIds: Set<String>,
     var sessionId: Long = Constants.INVALID_SESSION_ID,
     var viewType: ViewType = ViewType.UNKNOWN,
     var navigationSource: NavigationSource = NavigationSource.UNKNOWN,
@@ -50,6 +53,10 @@ class InteractionLogger(
         issueTypeId: String? = null,
         sensor: Sensor = Sensor.UNKNOWN
     ) {
+        if (noLogSourceIds.contains(sourceId)) {
+            return
+        }
+
         PermissionControllerStatsLog.write(
             PermissionControllerStatsLog.SAFETY_CENTER_INTERACTION_REPORTED,
             sessionId,
@@ -61,6 +68,30 @@ class InteractionLogger(
             sourceProfileType.statsLogValue,
             encodeStringId(issueTypeId),
             (if (sensor != Sensor.UNKNOWN) sensor else navigationSensor).statsLogValue)
+    }
+
+    fun recordForIssue(action: Action, issue: SafetyCenterIssue) {
+        val decodedId = SafetyCenterIds.issueIdFromString(issue.id)
+        record(
+            action,
+            LogSeverityLevel.fromIssueSeverityLevel(issue.severityLevel),
+            sourceId = decodedId.safetyCenterIssueKey.safetySourceId,
+            sourceProfileType =
+                SafetySourceProfileType.fromUserId(decodedId.safetyCenterIssueKey.userId),
+            issueTypeId = decodedId.issueTypeId)
+    }
+
+    fun recordForEntry(action: Action, entry: SafetyCenterEntry) {
+        val decodedId = SafetyCenterIds.entryIdFromString(entry.id)
+        record(
+            action,
+            LogSeverityLevel.fromEntrySeverityLevel(entry.severityLevel),
+            sourceId = decodedId.safetySourceId,
+            sourceProfileType = SafetySourceProfileType.fromUserId(decodedId.userId))
+    }
+
+    fun recordForSensor(action: Action, sensor: Sensor) {
+        record(action = action, sensor = sensor)
     }
 
     private companion object {
@@ -232,6 +263,16 @@ enum class LogSeverityLevel(val statsLogValue: Int) {
                 SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_CRITICAL_WARNING -> CRITICAL_WARNING
                 else -> UNKNOWN
             }
+
+        @JvmStatic
+        fun fromEntrySeverityLevel(entryLevel: Int): LogSeverityLevel =
+            when (entryLevel) {
+                SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK -> OK
+                SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_RECOMMENDATION -> RECOMMENDATION
+                SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING -> CRITICAL_WARNING
+                SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED -> UNSPECIFIED
+                else -> UNKNOWN
+            }
     }
 }
 
@@ -264,28 +305,32 @@ enum class Sensor(val statsLogValue: Int) {
 
     companion object {
         @JvmStatic
-        fun fromIntent(intent: Intent): Sensor =
-            if (intent.action == Intent.ACTION_VIEW_SAFETY_CENTER_QS) {
-                fromPermissionGroupUsages(
-                    intent.getParcelableArrayListExtra(
-                        PermissionManager.EXTRA_PERMISSION_USAGES,
-                        PermissionGroupUsage::class.java))
-            } else {
-                UNKNOWN
-            }
+        fun fromIntent(intent: Intent): Sensor {
+            if (intent.action != Intent.ACTION_VIEW_SAFETY_CENTER_QS) return UNKNOWN
 
-        private fun fromPermissionGroupUsages(usages: List<PermissionGroupUsage>?): Sensor {
+            val usages =
+                intent.getParcelableArrayListExtra(
+                    PermissionManager.EXTRA_PERMISSION_USAGES, PermissionGroupUsage::class.java)
+
             // Multiple usages may be in effect, but we can only log one. Log unknown in this
-            // scenario until we have a better solution (an explicit value approved for logging).
+            // scenario until we have a better solution (an explicit value approved for
+            // logging).
             if (usages != null && usages.size > 1) return UNKNOWN
 
-            val permissionGroupUsage = usages?.firstOrNull()
-            return when (permissionGroupUsage?.permissionGroupName) {
+            return fromPermissionGroupUsage(usages?.firstOrNull())
+        }
+
+        @JvmStatic
+        fun fromPermissionGroupUsage(usage: PermissionGroupUsage?) =
+            fromPermissionGroupName(usage?.permissionGroupName)
+
+        @JvmStatic
+        fun fromPermissionGroupName(permissionGroupName: String?) =
+            when (permissionGroupName) {
                 PERMISSION_GROUP_CAMERA -> CAMERA
                 PERMISSION_GROUP_MICROPHONE -> MICROPHONE
                 PERMISSION_GROUP_LOCATION -> LOCATION
                 else -> UNKNOWN
             }
-        }
     }
 }
