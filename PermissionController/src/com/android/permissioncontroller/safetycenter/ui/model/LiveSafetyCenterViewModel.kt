@@ -24,6 +24,7 @@ import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterErrorDetails
 import android.safetycenter.SafetyCenterIssue
 import android.safetycenter.SafetyCenterManager
+import android.safetycenter.config.SafetySource
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat.getMainExecutor
 import androidx.fragment.app.Fragment
@@ -31,6 +32,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.android.permissioncontroller.safetycenter.ui.InteractionLogger
 import com.android.permissioncontroller.safetycenter.ui.NavigationSource
 import java.util.concurrent.atomic.AtomicBoolean
 
@@ -38,13 +40,39 @@ import java.util.concurrent.atomic.AtomicBoolean
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class LiveSafetyCenterViewModel(app: Application) : SafetyCenterViewModel(app) {
 
-    override val safetyCenterLiveData: LiveData<SafetyCenterData>
-        get() = _safetyCenterLiveData
-    override val errorLiveData: LiveData<SafetyCenterErrorDetails>
-        get() = _errorLiveData
+    override val safetyCenterLiveData: LiveData<SafetyCenterData> by this::_safetyCenterLiveData
+    override val errorLiveData: LiveData<SafetyCenterErrorDetails> by this::_errorLiveData
 
     private val _safetyCenterLiveData = SafetyCenterLiveData()
     private val _errorLiveData = MutableLiveData<SafetyCenterErrorDetails>()
+
+    override val interactionLogger: InteractionLogger by lazy {
+        fun isLoggable(safetySource: SafetySource): Boolean {
+            return try {
+                safetySource.isLoggingAllowed
+            } catch (ex: UnsupportedOperationException) {
+                // isLoggingAllowed will throw if you call it on a static source :(
+                // Default to logging all sources that don't support this config value.
+                true
+            }
+        }
+
+        // Fetching the config to build this set of source IDs requires IPC, so we do this
+        // initialization lazily.
+        val safetyCenterConfig = safetyCenterManager.safetyCenterConfig
+
+        InteractionLogger(
+            if (safetyCenterConfig != null) {
+                safetyCenterConfig.safetySourcesGroups
+                    .asSequence()
+                    .flatMap { it.safetySources }
+                    .filterNot(::isLoggable)
+                    .map { it.id }
+                    .toSet()
+            } else {
+                setOf()
+            })
+    }
 
     private var changingConfigurations = AtomicBoolean(false)
 

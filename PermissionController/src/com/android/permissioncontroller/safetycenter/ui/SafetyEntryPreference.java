@@ -32,6 +32,7 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
 import com.android.permissioncontroller.R;
+import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel;
 
 /** A preference that displays a visual representation of a {@link SafetyCenterEntry}. */
 @RequiresApi(TIRAMISU)
@@ -41,13 +42,18 @@ public final class SafetyEntryPreference extends Preference implements Comparabl
 
     private final PositionInCardList mPosition;
     private final SafetyCenterEntry mEntry;
+    private final SafetyCenterViewModel mViewModel;
 
     public SafetyEntryPreference(
-            Context context, SafetyCenterEntry entry, PositionInCardList position) {
+            Context context,
+            SafetyCenterEntry entry,
+            PositionInCardList position,
+            SafetyCenterViewModel viewModel) {
         super(context);
 
         mEntry = entry;
         mPosition = position;
+        mViewModel = viewModel;
 
         setLayoutResource(R.layout.preference_entry);
         setTitle(entry.getTitle());
@@ -61,6 +67,9 @@ public final class SafetyEntryPreference extends Preference implements Comparabl
                     unused -> {
                         try {
                             pendingIntent.send();
+                            mViewModel
+                                    .getInteractionLogger()
+                                    .recordForEntry(Action.ENTRY_CLICKED, mEntry);
                         } catch (Exception ex) {
                             Log.e(
                                     TAG,
@@ -105,7 +114,13 @@ public final class SafetyEntryPreference extends Preference implements Comparabl
         SafetyCenterEntry.IconAction iconAction = mEntry.getIconAction();
         if (iconAction != null) {
             holder.findViewById(R.id.icon_action_button)
-                    .setOnClickListener(view -> sendIconActionIntent(iconAction));
+                    .setOnClickListener(
+                            view -> {
+                                sendIconActionIntent(iconAction);
+                                mViewModel
+                                        .getInteractionLogger()
+                                        .recordForEntry(Action.ENTRY_ICON_ACTION_CLICKED, mEntry);
+                            });
             holder.itemView.setPaddingRelative(
                     holder.itemView.getPaddingStart(),
                     holder.itemView.getPaddingTop(),
