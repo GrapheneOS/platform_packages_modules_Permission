@@ -144,7 +144,7 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
 
         mCollapsableIssuesCardHelper = new CollapsableIssuesCardHelper(mViewModel);
         ParsedSafetyCenterIntent parsedSafetyCenterIntent =
-                ParsedSafetyCenterIntent.toSafetyCenterIntent(getActivity().getIntent());
+                ParsedSafetyCenterIntent.toSafetyCenterIntent(requireActivity().getIntent());
         mCollapsableIssuesCardHelper.setFocusedIssueKey(
                 parsedSafetyCenterIntent.getSafetyCenterIssueKey());
 
@@ -182,12 +182,15 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
     @Override
     public void onStart() {
         super.onStart();
-        // TODO(b/222323674): We may need to do this in onResume to cover certain edge cases.
-        // i.e. FMD changed from quick settings while SC is open
-        mViewModel.pageOpen();
 
         configureInteractionLogger();
         mViewModel.getInteractionLogger().record(Action.SAFETY_CENTER_VIEWED);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mViewModel.pageOpen();
     }
 
     private void configureInteractionLogger() {
