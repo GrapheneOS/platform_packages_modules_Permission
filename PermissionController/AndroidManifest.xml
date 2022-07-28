@@ -416,6 +416,7 @@
 
         <provider android:name="com.android.permissioncontroller.safetycenter.service.SafetyCenterSearchIndexablesProvider"
             android:authorities="com.android.permissioncontroller.safetycenter"
+            android:enabled="@bool/is_at_least_t"
             android:multiprocess="false"
             android:exported="true"
             android:grantUriPermissions="true"
