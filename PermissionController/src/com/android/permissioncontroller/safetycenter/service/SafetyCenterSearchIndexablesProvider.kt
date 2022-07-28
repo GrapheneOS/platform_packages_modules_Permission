@@ -38,6 +38,7 @@ import android.safetycenter.config.SafetySource
 import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC
 import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY
 import androidx.annotation.RequiresApi
+import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.service.BaseSearchIndexablesProvider
 import com.android.safetycenter.internaldata.SafetyCenterEntryId
@@ -57,11 +58,15 @@ class SafetyCenterSearchIndexablesProvider : BaseSearchIndexablesProvider() {
     }
 
     override fun queryRawData(projection: Array<out String>?): Cursor {
+        val cursor = MatrixCursor(INDEXABLES_RAW_COLUMNS)
+        if (!SdkLevel.isAtLeastT()) {
+            return cursor
+        }
+
         val context = requireContext()
         val safetyCenterManager: SafetyCenterManager? =
                 context.getSystemService(SafetyCenterManager::class.java)
         val resourcesContext = SafetyCenterResourcesContext(context)
-        val cursor = MatrixCursor(INDEXABLES_RAW_COLUMNS)
 
         val screenTitle = context.getString(R.string.safety_center_dashboard_page_title)
 
@@ -81,9 +86,13 @@ class SafetyCenterSearchIndexablesProvider : BaseSearchIndexablesProvider() {
     }
 
     override fun queryNonIndexableKeys(projection: Array<out String>?): Cursor {
+        val cursor = MatrixCursor(NON_INDEXABLES_KEYS_COLUMNS)
+        if (!SdkLevel.isAtLeastT()) {
+            return cursor
+        }
+
         val context = requireContext()
         val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)
-        val cursor = MatrixCursor(NON_INDEXABLES_KEYS_COLUMNS)
         val userManager = context.getSystemService(UserManager::class.java) ?: return cursor
         val keysToRemove = mutableSetOf<String>()
 
