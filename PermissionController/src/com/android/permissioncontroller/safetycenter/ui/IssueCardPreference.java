@@ -26,8 +26,6 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.safetycenter.SafetyCenterIssue;
 import android.text.TextUtils;
 import android.util.Log;
@@ -63,6 +61,8 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
 
     public static final String TAG = IssueCardPreference.class.getSimpleName();
 
+    private final IssueCardAnimator mIssueCardAnimator = new IssueCardAnimator(
+            this::markIssueResolvedUiCompleted);
     private final SafetyCenterViewModel mSafetyCenterViewModel;
     private final SafetyCenterIssue mIssue;
     private final FragmentManager mDialogFragmentManager;
@@ -89,11 +89,14 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
     public void onBindViewHolder(PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
 
+        // Set default group visibility in case view is being reused
+        holder.findViewById(R.id.default_issue_content).setVisibility(View.VISIBLE);
+        holder.findViewById(R.id.resolved_issue_content).setVisibility(View.GONE);
+
         configureDismissButton(holder.findViewById(R.id.issue_card_dismiss_btn));
 
         ((TextView) holder.findViewById(R.id.issue_card_title)).setText(mIssue.getTitle());
-        TextView issueCardSummary = (TextView) holder.findViewById(R.id.issue_card_summary);
-        issueCardSummary.setText(mIssue.getSummary());
+        ((TextView) holder.findViewById(R.id.issue_card_summary)).setText(mIssue.getSummary());
 
         CharSequence subtitle = mIssue.getSubtitle();
         TextView subtitleTextView = (TextView) holder.findViewById(R.id.issue_card_subtitle);
@@ -131,24 +134,11 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
                     buildActionButton(action, holder.itemView.getContext(), isFirstButton));
             isFirstButton = false;
 
-            // TODO(b/237368717): implement issue resolution confirmation UI
             if (mResolvedIssueActionId != null && mResolvedIssueActionId.equals(action.getId())) {
-                CharSequence successMessage = action.getSuccessMessage();
-                if (TextUtils.isEmpty(successMessage)) {
-                    issueCardSummary.setText(R.string.safety_center_issue_resolution_fallback);
-                } else {
-                    issueCardSummary.setText(successMessage);
-                }
-
-                // TODO(b/237368717): remove once confirmation ui animation is implemented
-                new Handler(Looper.myLooper())
-                        .postDelayed(
-                                () -> {
-                                    mResolvedIssueActionId = null;
-                                    mSafetyCenterViewModel.markIssueResolvedUiCompleted(
-                                            mIssue.getId());
-                                },
-                                5000);
+                mIssueCardAnimator.transitionToIssueResolvedThenMarkComplete(
+                        getContext(),
+                        holder,
+                        action);
             }
         }
 
@@ -325,6 +315,13 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
             default:
                 Log.w(TAG, String.format("Unexpected issueSeverityLevel: %s", issueSeverityLevel));
                 return R.color.safety_center_button_info;
+        }
+    }
+
+    private void markIssueResolvedUiCompleted() {
+        if (mResolvedIssueActionId != null) {
+            mResolvedIssueActionId = null;
+            mSafetyCenterViewModel.markIssueResolvedUiCompleted(mIssue.getId());
         }
     }
 }

@@ -22,6 +22,8 @@ import android.content.Context;
 import android.graphics.drawable.Animatable2;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
 import android.safetycenter.SafetyCenterData;
 import android.safetycenter.SafetyCenterStatus;
 import android.text.TextUtils;
@@ -292,13 +294,13 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
 
     void setSafetyStatus(SafetyCenterStatus status) {
         mStatus = status;
-        notifyChanged();
+        safeNotifyChanged();
     }
 
     void setSafetyData(SafetyCenterData data) {
         mHasIssues = data.getIssues().size() > 0;
         mStatus = data.getStatus();
-        notifyChanged();
+        safeNotifyChanged();
     }
 
     void setViewModel(SafetyCenterViewModel viewModel) {
@@ -316,7 +318,7 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
     void setHasPendingActions(boolean hasPendingActions, View.OnClickListener listener) {
         mHasPendingActions = hasPendingActions;
         mReviewSettingsOnClickListener = listener;
-        notifyChanged();
+        safeNotifyChanged();
     }
 
     private void setRescanButtonState(View rescanButton) {
@@ -326,6 +328,12 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
                         ? View.GONE
                         : View.VISIBLE);
         rescanButton.setEnabled(!isRefreshInProgress());
+    }
+
+    // Calling notifyChanged while recyclerview is scrolling or computing layout will result in an
+    // IllegalStateException. Post to handler to wait for UI to settle.
+    private void safeNotifyChanged() {
+        new Handler(Looper.getMainLooper()).post(() -> notifyChanged());
     }
 
     private static int toStatusImageResId(int overallSeverityLevel) {
