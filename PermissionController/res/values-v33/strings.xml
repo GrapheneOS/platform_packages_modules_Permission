@@ -47,8 +47,12 @@
     <string name="safety_center_qs_page_landing">Security and privacy quick settings</string>
     <!-- Content description for close button of the safety center quick settings [CHAR LIMIT=NONE] -->
     <string name="safety_center_qs_close_button">Close</string>
+    <!-- Label for expanding the permission usage card in safety center quick settings [CHAR LIMIT=NONE] -->
+    <string name="safety_center_qs_expand_action">Expand and show options</string>
+    <!-- Label for collapsing the permission usage card in safety center quick settings [CHAR LIMIT=NONE] -->
+    <string name="safety_center_qs_collapse_action">Collapse</string>
     <!-- Content description for the privacy controls of the safety center quick settings [CHAR LIMIT=NONE] -->
-    <string name="safety_center_qs_privacy_control">Switch. %1$s. %2$s</string>
+    <string name="safety_center_qs_privacy_control">Switch. <xliff:g id="privacy control title" example="Camera">%1$s</xliff:g>. <xliff:g id="privacy control status" example="Available">%2$s</xliff:g></string>
     <!-- Label for toggling controls of the safety center quick settings [CHAR LIMIT=NONE] -->
     <string name="safety_center_qs_toggle_action">Toggle</string>
     <!-- Label for opening safety center from quick settings [CHAR LIMIT=NONE] -->
