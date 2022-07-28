@@ -96,6 +96,7 @@
                   android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="com.android.permissioncontroller.action.SET_UP_HIBERNATION" />
             </intent-filter>
         </receiver>
 
