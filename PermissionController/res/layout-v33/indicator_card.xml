@@ -31,6 +31,7 @@
         style="@style/SafetyCenterIndicatorForeground">
         <ImageView
             android:id="@+id/indicator_icon"
+            android:importantForAccessibility="no"
             style="@style/SafetyCenterIndicatorImageView"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

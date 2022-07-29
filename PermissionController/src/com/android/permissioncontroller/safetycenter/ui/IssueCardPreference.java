@@ -82,16 +82,6 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
     public void onBindViewHolder(PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
 
-        mSafetyCenterViewModel
-                .getInteractionLogger()
-                .record(
-                        Action.SAFETY_ISSUE_VIEWED,
-                        LogSeverityLevel.fromIssueSeverityLevel(mIssue.getSeverityLevel()),
-                        mDecodedIssueId.getSafetyCenterIssueKey().getSafetySourceId(),
-                        SafetySourceProfileType.fromUserId(
-                                mDecodedIssueId.getSafetyCenterIssueKey().getUserId()),
-                        mDecodedIssueId.getIssueTypeId());
-
         configureDismissButton(holder.findViewById(R.id.issue_card_dismiss_btn));
 
         ((TextView) holder.findViewById(R.id.issue_card_title)).setText(mIssue.getTitle());
@@ -131,6 +121,10 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
                     buildActionButton(action, holder.itemView.getContext(), isFirstButton));
             isFirstButton = false;
         }
+
+        mSafetyCenterViewModel
+                .getInteractionLogger()
+                .recordForIssue(Action.SAFETY_ISSUE_VIEWED, mIssue);
     }
 
     public int getSeverityLevel() {
@@ -151,8 +145,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
             dismissButton.setVisibility(View.VISIBLE);
 
             SafetyCenterTouchTarget.configureSize(
-                    dismissButton,
-                    R.dimen.safety_center_icon_button_touch_target_size);
+                    dismissButton, R.dimen.safety_center_icon_button_touch_target_size);
         } else {
             dismissButton.setVisibility(View.GONE);
         }
@@ -175,6 +168,9 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
         @Override
         public void onClick(View v) {
             mSafetyCenterViewModel.dismissIssue(mIssue);
+            mSafetyCenterViewModel
+                    .getInteractionLogger()
+                    .recordForIssue(Action.ISSUE_DISMISS_CLICKED, mIssue);
         }
     }
 
@@ -213,7 +209,12 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
                     .setMessage(R.string.safety_center_issue_card_dismiss_confirmation_message)
                     .setPositiveButton(
                             R.string.safety_center_issue_card_confirm_dismiss_button,
-                            (dialog, which) -> safetyCenterViewModel.dismissIssue(issue))
+                            (dialog, which) -> {
+                                safetyCenterViewModel.dismissIssue(issue);
+                                safetyCenterViewModel
+                                        .getInteractionLogger()
+                                        .recordForIssue(Action.ISSUE_DISMISS_CLICKED, issue);
+                            })
                     .setNegativeButton(
                             R.string.safety_center_issue_card_cancel_dismiss_button, null)
                     .create();
@@ -226,17 +227,26 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
                 isFirstButton ? createFirstButton(context) : createSubsequentButton(context);
         button.setText(action.getLabel());
         button.setEnabled(!action.isInFlight());
-        button.setOnClickListener((view) -> {
-            if (action.willResolve()) {
-                // Disable the button to prevent double-taps.
-                // We ideally want to do this on any button press, however out of an abundance of
-                // caution we only do it with actions that indicate they will resolve (and therefore
-                // we can rely on a model update to redraw state). We expect the model to update
-                // with either isInFlight() or simply removing/updating the issue.
-                button.setEnabled(false);
-            }
-            mSafetyCenterViewModel.executeIssueAction(mIssue, action);
-        });
+        button.setOnClickListener(
+                (view) -> {
+                    if (action.willResolve()) {
+                        // Disable the button to prevent double-taps.
+                        // We ideally want to do this on any button press, however out of an
+                        // abundance of caution we only do it with actions that indicate they will
+                        // resolve (and therefore we can rely on a model update to redraw state).
+                        // We expect the model to update with either isInFlight() or simply
+                        // removing/updating the issue.
+                        button.setEnabled(false);
+                    }
+                    mSafetyCenterViewModel.executeIssueAction(mIssue, action);
+                    mSafetyCenterViewModel
+                            .getInteractionLogger()
+                            .recordForIssue(
+                                    isFirstButton
+                                            ? Action.ISSUE_PRIMARY_ACTION_CLICKED
+                                            : Action.ISSUE_SECONDARY_ACTION_CLICKED,
+                                    mIssue);
+                });
         return button;
     }
 

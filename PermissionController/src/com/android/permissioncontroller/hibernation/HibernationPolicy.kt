@@ -190,6 +190,7 @@ fun rescanAndPushDataToSafetyCenter(
             Constants.UNUSED_APPS_SAFETY_CENTER_ISSUE_ID)
             .addAction(seeUnusedAppsAction)
             .setOnDismissPendingIntent(makeDismissIntent(context, sessionId))
+            .setIssueCategory(SafetySourceIssue.ISSUE_CATEGORY_DEVICE)
             .build()
 
         val safetySourceData = SafetySourceData.Builder()

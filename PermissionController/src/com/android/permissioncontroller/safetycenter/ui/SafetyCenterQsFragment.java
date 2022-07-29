@@ -59,9 +59,11 @@ import com.android.permissioncontroller.permission.ui.model.v33.SafetyCenterQsVi
 import com.android.permissioncontroller.permission.ui.model.v33.SafetyCenterQsViewModelFactory;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
+import com.android.permissioncontroller.safetycenter.ui.Action;
 import com.android.permissioncontroller.safetycenter.ui.NavigationSource;
 import com.android.permissioncontroller.safetycenter.ui.SafetyCenterDashboardFragment;
 import com.android.permissioncontroller.safetycenter.ui.SafetyCenterTouchTarget;
+import com.android.permissioncontroller.safetycenter.ui.Sensor;
 import com.android.permissioncontroller.safetycenter.ui.model.LiveSafetyCenterViewModelFactory;
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel;
 
@@ -92,6 +94,8 @@ public class SafetyCenterQsFragment extends Fragment {
         sToggleButtons.put(MICROPHONE, R.id.mic_toggle);
         sToggleButtons.put(LOCATION, R.id.location_toggle);
     }
+
+    private SafetyCenterViewModel mSafetyCenterViewModel;
 
     /**
      * Create instance of SafetyCenterDashboardFragment with the arguments set
@@ -161,15 +165,17 @@ public class SafetyCenterQsFragment extends Fragment {
         SafetyCenterTouchTarget.configureSize(
                 closeButton, R.dimen.safety_center_icon_button_touch_target_size);
 
-        SafetyCenterViewModel safetyCenterViewModel =
+        mSafetyCenterViewModel =
                 new ViewModelProvider(
-                        requireActivity(),
-                        new LiveSafetyCenterViewModelFactory(requireActivity().getApplication()))
+                                requireActivity(),
+                                new LiveSafetyCenterViewModelFactory(
+                                        requireActivity().getApplication()))
                         .get(SafetyCenterViewModel.class);
         View securitySettings = root.findViewById(R.id.security_settings_button);
         securitySettings.setOnClickListener(
-                (v) -> safetyCenterViewModel.navigateToSafetyCenter(
-                        this, NavigationSource.QUICK_SETTINGS_TILE));
+                (v) ->
+                        mSafetyCenterViewModel.navigateToSafetyCenter(
+                                this, NavigationSource.QUICK_SETTINGS_TILE));
         ((TextView) securitySettings.findViewById(R.id.toggle_sensor_name))
                 .setText(R.string.security_settings_button_label_qs);
         securitySettings.findViewById(R.id.toggle_sensor_status).setVisibility(View.GONE);
@@ -214,8 +220,9 @@ public class SafetyCenterQsFragment extends Fragment {
         permissionSectionTitleView.setVisibility(View.VISIBLE);
         LinearLayout usageLayout = rootView.findViewById(R.id.permission_usage);
         Collections.sort(
-                mPermGroupUsages, (pguA, pguB) -> getAppLabel(pguA).toString().compareTo(
-                        getAppLabel(pguB).toString()));
+                mPermGroupUsages,
+                (pguA, pguB) ->
+                        getAppLabel(pguA).toString().compareTo(getAppLabel(pguB).toString()));
 
         for (PermissionGroupUsage usage : mPermGroupUsages) {
             View cardView = View.inflate(mContext, R.layout.indicator_card, usageLayout);
@@ -246,8 +253,12 @@ public class SafetyCenterQsFragment extends Fragment {
                 continue;
             }
 
-            setIndicatorExpansionBehavior(parentIndicatorLayout, expandedLayout,
-                    expandView);
+            setIndicatorExpansionBehavior(parentIndicatorLayout, expandedLayout, expandView);
+            ViewCompat.replaceAccessibilityAction(
+                    parentIndicatorLayout,
+                    AccessibilityNodeInfoCompat.AccessibilityActionCompat.ACTION_CLICK,
+                    mContext.getString(R.string.safety_center_qs_expand_action),
+                    null);
 
             // Configure the indicator action buttons
             configureIndicatorActionButtons(
@@ -292,6 +303,11 @@ public class SafetyCenterQsFragment extends Fragment {
                         parentIndicatorLayout.callOnClick();
                         disableIndicatorCardUi(parentIndicatorLayout, expandView);
                         revokePermission(usage);
+                        mSafetyCenterViewModel
+                                .getInteractionLogger()
+                                .recordForSensor(
+                                        Action.SENSOR_PERMISSION_REVOKE_CLICKED,
+                                        Sensor.fromPermissionGroupUsage(usage));
                     });
         } else {
             setPrimaryActionClickListener(primaryActionButton, usage, manageServiceIntent);
@@ -307,6 +323,11 @@ public class SafetyCenterQsFragment extends Fragment {
         seeUsageButton.setOnClickListener(
                 l -> {
                     mViewModel.navigateToSeeUsage(this, usage.getPermissionGroupName());
+                    mSafetyCenterViewModel
+                            .getInteractionLogger()
+                            .recordForSensor(
+                                    Action.SENSOR_PERMISSION_SEE_USAGES_CLICKED,
+                                    Sensor.fromPermissionGroupUsage(usage));
                 });
     }
 
@@ -316,11 +337,23 @@ public class SafetyCenterQsFragment extends Fragment {
             primaryActionButton.setOnClickListener(
                     l -> {
                         mViewModel.navigateToManageService(this, manageServiceIntent);
+                        mSafetyCenterViewModel
+                                .getInteractionLogger()
+                                .recordForSensor(
+                                        // Unfortunate name, but this is used for all primary
+                                        // CTAs on the permission usage cards.
+                                        Action.SENSOR_PERMISSION_REVOKE_CLICKED,
+                                        Sensor.fromPermissionGroupUsage(usage));
                     });
         } else {
             primaryActionButton.setOnClickListener(
                     l -> {
                         mViewModel.navigateToManageAppPermissions(this, usage);
+                        mSafetyCenterViewModel
+                                .getInteractionLogger()
+                                .recordForSensor(
+                                        Action.SENSOR_PERMISSION_REVOKE_CLICKED,
+                                        Sensor.fromPermissionGroupUsage(usage));
                     });
         }
     }
@@ -367,6 +400,7 @@ public class SafetyCenterQsFragment extends Fragment {
         // Set label to show on permission revoke
         TextView labelView = parentIndicatorLayout.findViewById(R.id.indicator_label);
         labelView.setText(R.string.permissions_removed_qs);
+        labelView.setContentDescription(mContext.getString(R.string.permissions_removed_qs));
     }
 
     private void setIndicatorExpansionBehavior(
@@ -377,8 +411,8 @@ public class SafetyCenterQsFragment extends Fragment {
                 createExpansionListener(expandedLayout, expandView));
     }
 
-    private View.OnClickListener createExpansionListener(ConstraintLayout expandedLayout,
-            ImageView expandView) {
+    private View.OnClickListener createExpansionListener(
+            ConstraintLayout expandedLayout, ImageView expandView) {
         AutoTransition transition = new AutoTransition();
         // Get the entire fragment as a viewgroup in order to animate it nicely in case of
         // expand/collapse
@@ -392,6 +426,11 @@ public class SafetyCenterQsFragment extends Fragment {
                 TransitionManager.beginDelayedTransition(indicatorCardViewGroup, transition);
                 expandView.setImageDrawable(
                         constructExpandButton(mContext.getDrawable(R.drawable.ic_expand_more)));
+                ViewCompat.replaceAccessibilityAction(
+                        v,
+                        AccessibilityNodeInfoCompat.AccessibilityActionCompat.ACTION_CLICK,
+                        mContext.getString(R.string.safety_center_qs_expand_action),
+                        null);
             } else {
                 // Show -> Press -> Disable the expanded card for a continuous ripple effect
                 expandedLayout.setVisibility(View.VISIBLE);
@@ -400,6 +439,11 @@ public class SafetyCenterQsFragment extends Fragment {
                 TransitionManager.beginDelayedTransition(indicatorCardViewGroup, transition);
                 expandView.setImageDrawable(
                         constructExpandButton(mContext.getDrawable(R.drawable.ic_expand_less)));
+                ViewCompat.replaceAccessibilityAction(
+                        v,
+                        AccessibilityNodeInfoCompat.AccessibilityActionCompat.ACTION_CLICK,
+                        mContext.getString(R.string.safety_center_qs_collapse_action),
+                        null);
             }
         };
     }
@@ -504,8 +548,10 @@ public class SafetyCenterQsFragment extends Fragment {
                 mContext.getDrawable(R.drawable.indicator_background_circle).mutate();
         expandButtonBackground.setTint(mContext.getColor(R.color.sc_surface_variant_dark));
         int size =
-                (int) getResources().getDimension(
-                        R.dimen.safety_center_indicator_expand_button_background);
+                (int)
+                        getResources()
+                                .getDimension(
+                                        R.dimen.safety_center_indicator_expand_button_background);
         return constructIcon(expandButtonIcon, expandButtonBackground, size, size);
     }
 
@@ -534,7 +580,15 @@ public class SafetyCenterQsFragment extends Fragment {
             View toggle = rootView.findViewById(sToggleButtons.valueAt(i));
             String groupName = sToggleButtons.keyAt(i);
             if (!toggle.hasOnClickListeners()) {
-                toggle.setOnClickListener((v) -> mViewModel.toggleSensor(groupName));
+                toggle.setOnClickListener(
+                        (v) -> {
+                            mViewModel.toggleSensor(groupName);
+                            mSafetyCenterViewModel
+                                    .getInteractionLogger()
+                                    .recordForSensor(
+                                            Action.PRIVACY_CONTROL_TOGGLE_CLICKED,
+                                            Sensor.fromPermissionGroupName(groupName));
+                        });
             }
 
             TextView groupLabel = toggle.findViewById(R.id.toggle_sensor_name);

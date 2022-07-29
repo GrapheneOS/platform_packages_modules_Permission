@@ -60,7 +60,9 @@
                 android:layout_marginTop="20dp"
                 android:text="@string/sensor_permissions_qs"
                 android:textColor="?android:attr/textColorPrimary"
-                android:visibility="gone"/>
+                android:visibility="gone"
+                android:focusable="true"
+                android:importantForAccessibility="yes"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -74,7 +76,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:textColor="?android:attr/textColorPrimary"
-                android:text="@string/privacy_controls_qs"/>
+                android:text="@string/privacy_controls_qs"
+                android:focusable="true"
+                android:importantForAccessibility="yes"/>
 
             <LinearLayout
                 android:layout_width="match_parent"

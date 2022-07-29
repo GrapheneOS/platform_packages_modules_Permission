@@ -30,6 +30,7 @@ import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.UUID;
 
@@ -66,7 +67,7 @@ final class SafetyCenterRefreshTracker {
             Log.w(TAG, "Replacing an ongoing refresh");
         }
 
-        String refreshBroadcastId = String.format("%s_%d", UUID.randomUUID(), mRefreshCounter++);
+        String refreshBroadcastId = UUID.randomUUID() + "_" + mRefreshCounter++;
         Log.v(
                 TAG,
                 "Starting a new refresh with refreshReason:"
@@ -223,6 +224,24 @@ final class SafetyCenterRefreshTracker {
         return true;
     }
 
+    /**
+     * Dumps state for debugging purposes.
+     *
+     * @param fout {@link PrintWriter} to write to
+     */
+    void dump(@NonNull PrintWriter fout) {
+        fout.println(
+                "REFRESH IN PROGRESS ("
+                        + (mRefreshInProgress != null)
+                        + ", counter="
+                        + mRefreshCounter
+                        + ")");
+        if (mRefreshInProgress != null) {
+            fout.println("\t" + mRefreshInProgress);
+        }
+        fout.println();
+    }
+
     /** Class representing the state of a refresh in progress. */
     private static final class RefreshInProgress {
         @NonNull private final String mId;
@@ -326,6 +345,23 @@ final class SafetyCenterRefreshTracker {
 
         private boolean isComplete() {
             return mSourceRefreshInFlight.isEmpty();
+        }
+
+        @Override
+        public String toString() {
+            return "RefreshInProgress{"
+                    + "mId='"
+                    + mId
+                    + '\''
+                    + ", mReason="
+                    + mReason
+                    + ", mUserProfileGroup="
+                    + mUserProfileGroup
+                    + ", mUntrackedSourcesIds="
+                    + mUntrackedSourcesIds
+                    + ", mSourceRefreshInFlight="
+                    + mSourceRefreshInFlight
+                    + '}';
         }
     }
 }

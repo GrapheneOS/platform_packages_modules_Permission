@@ -33,6 +33,7 @@ import android.util.SparseArray;
 
 import androidx.annotation.RequiresApi;
 
+import java.io.PrintWriter;
 import java.util.concurrent.atomic.AtomicReference;
 
 import javax.annotation.concurrent.NotThreadSafe;
@@ -225,6 +226,30 @@ final class SafetyCenterListeners {
     }
 
     /**
+     * Dumps state for debugging purposes.
+     *
+     * @param fout {@link PrintWriter} to write to
+     */
+    void dump(@NonNull PrintWriter fout) {
+        int userIdCount = mSafetyCenterDataChangedListeners.size();
+        fout.println("DATA CHANGED LISTENERS (" + userIdCount + " user IDs)");
+        for (int i = 0; i < userIdCount; i++) {
+            int userId = mSafetyCenterDataChangedListeners.keyAt(i);
+            RemoteCallbackList<IOnSafetyCenterDataChangedListener> listeners =
+                    mSafetyCenterDataChangedListeners.valueAt(i);
+            if (listeners == null) {
+                continue;
+            }
+            int listenerCount = listeners.getRegisteredCallbackCount();
+            fout.println("\t[" + i + "] user " + userId + " (" + listenerCount + " listeners)");
+            for (int j = 0; j < listenerCount; j++) {
+                fout.println("\t\t[" + j + "] " + listeners.getRegisteredCallbackItem(j));
+            }
+        }
+        fout.println();
+    }
+
+    /**
      * A wrapper around an {@link IOnSafetyCenterDataChangedListener} to ensure it is only called
      * when the {@link SafetyCenterData} actually changes.
      */
@@ -266,6 +291,19 @@ final class SafetyCenterListeners {
         @NonNull
         public String getPackageName() {
             return mPackageName;
+        }
+
+        @Override
+        public String toString() {
+            return "OnSafetyCenterDataChangedListenerWrapper{"
+                    + "mDelegate="
+                    + mDelegate
+                    + ", mPackageName='"
+                    + mPackageName
+                    + '\''
+                    + ", mLastSafetyCenterData="
+                    + mLastSafetyCenterData
+                    + '}';
         }
     }
 }
