@@ -391,6 +391,37 @@ class SafetySourceCtsData(private val context: Context) {
             .addIssue(criticalResolvingAccountIssue)
             .build()
 
+    /**
+     * A function to generate simple [SafetySourceData] with the given entry [severityLevel] and
+     * [entrySummary], and an optional issue with the same [severityLevel].
+     */
+    fun buildSafetySourceDataWithSummary(
+        severityLevel: Int,
+        entrySummary: String,
+        withIssue: Boolean = false
+    ) =
+        SafetySourceData.Builder()
+            .setStatus(
+                SafetySourceStatus.Builder("Entry title", entrySummary, severityLevel)
+                    .setPendingIntent(redirectPendingIntent)
+                    .build())
+            .apply {
+                if (withIssue) {
+                    addIssue(
+                        SafetySourceIssue.Builder(
+                                "issue_id",
+                                "Issue title",
+                                "Issue summary",
+                                severityLevel,
+                                ISSUE_TYPE_ID)
+                            .addAction(
+                                Action.Builder("action_id", "Action", redirectPendingIntent)
+                                    .build())
+                            .build())
+                }
+            }
+            .build()
+
     private fun broadcastPendingIntent(intent: Intent): PendingIntent =
         PendingIntent.getBroadcast(
             context,
