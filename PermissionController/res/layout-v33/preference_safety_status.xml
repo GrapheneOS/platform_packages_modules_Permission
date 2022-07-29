@@ -17,97 +17,49 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     android:clickable="false"
-    style="@style/SafetyCenter.StatusCard">
+    style="@style/SafetyCenterCard.Status">
 
     <ImageView
         android:id="@+id/status_image"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:scaleType="centerInside"
-        android:gravity="center"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         android:importantForAccessibility="no"
-        android:src="@drawable/safety_status_info" />
+        android:src="@drawable/safety_status_info"
+        style="@style/SafetyCenterStatusImage" />
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="4dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="24dp"
         android:id="@+id/status_title_and_summary"
-        app:layout_constraintStart_toEndOf="@id/status_image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        style="@style/SafetyCenterStatusTitleAndSummaryContainer">
 
         <TextView
             android:id="@+id/status_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="@string/summary_placeholder"
-            android:textAppearance="@style/TextAppearance.SafetyStatusTitle"/>
+            style="@style/SafetyCenterStatusTitle" />
 
         <TextView
             android:id="@+id/status_summary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/status_title"
             android:text="@string/summary_placeholder"
-            android:textAppearance="@style/TextAppearance.SafetyStatusSummary"/>
+            style="@style/SafetyCenterStatusSummary" />
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/review_settings_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/status_title_and_summary"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="24dp"
         android:text="@string/safety_center_review_settings_button"
-        app:backgroundTint="@color/safety_center_button_info"
         android:visibility="gone"
-        style="@style/SafetyCenter.MaterialActionButton" />
+        style="@style/SafetyCenterStatusButton.ReviewSettings" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/rescan_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/review_settings_button"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="24dp"
         android:text="@string/safety_center_rescan_button"
-        app:backgroundTint="@color/safety_center_button_info"
-        style="@style/SafetyCenter.MaterialActionButton" />
+        style="@style/SafetyCenterStatusButton.Rescan" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/pending_actions_rescan_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/review_settings_button"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="@dimen/safety_center_action_button_list_margin"
         android:text="@string/safety_center_rescan_button"
-        app:backgroundTint="@color/sc_surface_dark"
-        app:strokeWidth="@dimen/mtrl_btn_stroke_size"
-        app:strokeColor="@color/safety_center_button_info"
-        android:textColor="?android:attr/textColorPrimary"
         android:visibility="gone"
-        style="@style/SafetyCenter.MaterialActionButton" />
+        style="@style/SafetyCenterStatusButton.PendingActionsRescan" />
 
     <com.android.permissioncontroller.permission.ui.widget.SafetyProtectionSectionView
         android:id="@+id/safety_protection_section_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/rescan_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="0dp"
-        android:layout_gravity="center"
-        android:importantForAccessibility="noHideDescendants"/>
+        android:importantForAccessibility="noHideDescendants"
+        style="@style/SafetyCenterStatusSafetyProtectionView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
