@@ -93,7 +93,7 @@ final class SafetyCenterFlags {
      * Returns whether we should show error entries for sources that timeout when refreshing them.
      */
     static boolean getShowErrorEntriesOnTimeout() {
-        return getBoolean(PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT, false);
+        return getBoolean(PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT, true);
     }
 
     /**
