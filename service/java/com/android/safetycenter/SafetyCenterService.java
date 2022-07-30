@@ -20,6 +20,7 @@ import static android.Manifest.permission.MANAGE_SAFETY_CENTER;
 import static android.Manifest.permission.READ_SAFETY_CENTER_STATUS;
 import static android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE;
 import static android.os.Build.VERSION_CODES.TIRAMISU;
+import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_OTHER;
 import static android.safetycenter.SafetyCenterManager.RefreshReason;
 import static android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED;
 
@@ -42,6 +43,7 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Binder;
 import android.os.Handler;
+import android.os.ParcelFileDescriptor;
 import android.os.UserHandle;
 import android.provider.DeviceConfig;
 import android.provider.DeviceConfig.OnPropertiesChangedListener;
@@ -652,6 +654,21 @@ public final class SafetyCenterService extends SystemService {
             }
         }
 
+        @Override
+        public int handleShellCommand(
+                @NonNull ParcelFileDescriptor in,
+                @NonNull ParcelFileDescriptor out,
+                @NonNull ParcelFileDescriptor err,
+                @NonNull String[] args) {
+            return new SafetyCenterShellCommandHandler(this)
+                    .exec(
+                            this,
+                            in.getFileDescriptor(),
+                            out.getFileDescriptor(),
+                            err.getFileDescriptor(),
+                            args);
+        }
+
         /**
          * Dumps state for debugging purposes.
          *
@@ -969,11 +986,11 @@ public final class SafetyCenterService extends SystemService {
 
     private void onEnableQuietMode(@UserIdInt int userId) {
         onRemoveUser(userId);
-        startRefreshingSafetySources(SafetyCenterManager.REFRESH_REASON_OTHER, userId);
+        startRefreshingSafetySources(REFRESH_REASON_OTHER, userId);
     }
 
     private void onDisableQuietMode(@UserIdInt int userId) {
-        startRefreshingSafetySources(SafetyCenterManager.REFRESH_REASON_OTHER, userId);
+        startRefreshingSafetySources(REFRESH_REASON_OTHER, userId);
     }
 
     private void startRefreshingSafetySources(
