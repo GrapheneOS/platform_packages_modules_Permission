@@ -46,6 +46,12 @@ class PersistedSafetyCenterIssueTest {
     }
 
     @Test
+    fun getDismissCount_returnsDismissCount() {
+        assertThat(ACTIVE_ISSUE.dismissCount).isEqualTo(0)
+        assertThat(DISMISSED_ISSUE.dismissCount).isEqualTo(1)
+    }
+
+    @Test
     fun equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
         EqualsHashCodeToStringTester()
             .addEqualityGroup(
@@ -60,18 +66,28 @@ class PersistedSafetyCenterIssueTest {
                     .setKey("other")
                     .setFirstSeenAt(INSTANT)
                     .setDismissedAt(INSTANT)
+                    .setDismissCount(1)
                     .build())
             .addEqualityGroup(
                 PersistedSafetyCenterIssue.Builder()
                     .setKey(DISMISSED_ISSUE_KEY)
                     .setFirstSeenAt(Instant.ofEpochMilli(0))
                     .setDismissedAt(INSTANT)
+                    .setDismissCount(1)
                     .build())
             .addEqualityGroup(
                 PersistedSafetyCenterIssue.Builder()
                     .setKey(DISMISSED_ISSUE_KEY)
                     .setFirstSeenAt(INSTANT)
                     .setDismissedAt(Instant.ofEpochMilli(0))
+                    .setDismissCount(1)
+                    .build())
+            .addEqualityGroup(
+                PersistedSafetyCenterIssue.Builder()
+                    .setKey(DISMISSED_ISSUE_KEY)
+                    .setFirstSeenAt(INSTANT)
+                    .setDismissedAt(INSTANT)
+                    .setDismissCount(99)
                     .build())
             .test()
     }
@@ -92,6 +108,7 @@ class PersistedSafetyCenterIssueTest {
                 .setKey(DISMISSED_ISSUE_KEY)
                 .setFirstSeenAt(INSTANT)
                 .setDismissedAt(INSTANT)
+                .setDismissCount(1)
                 .build()
     }
 }
