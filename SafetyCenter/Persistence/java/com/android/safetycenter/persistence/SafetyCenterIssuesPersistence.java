@@ -62,9 +62,11 @@ public final class SafetyCenterIssuesPersistence {
     private static final String ATTRIBUTE_KEY = "key";
     private static final String ATTRIBUTE_FIRST_SEEN_AT = "first_seen_at_epoch_millis";
     private static final String ATTRIBUTE_DISMISSED_AT = "dismissed_at_epoch_millis";
+    private static final String ATTRIBUTE_DISMISS_COUNT = "dismiss_count";
 
     private static final int NO_VERSION = -1;
-    private static final int CURRENT_VERSION = 0;
+    private static final int CURRENT_VERSION = 1;
+    private static final int COMPATIBLE_VERSION = 0;
 
     private SafetyCenterIssuesPersistence() {}
 
@@ -127,7 +129,7 @@ public final class SafetyCenterIssuesPersistence {
         if (version == NO_VERSION) {
             throw new PersistenceException("Missing version");
         }
-        if (version != CURRENT_VERSION) {
+        if (version != CURRENT_VERSION && version != COMPATIBLE_VERSION) {
             throw new PersistenceException("Unsupported version: " + version);
         }
 
@@ -144,6 +146,8 @@ public final class SafetyCenterIssuesPersistence {
     @NonNull
     private static PersistedSafetyCenterIssue parseIssue(@NonNull XmlPullParser parser)
             throws IOException, PersistenceException, XmlPullParserException {
+        boolean hasDismissedAt = false;
+        boolean hasDismissCount = false;
         PersistedSafetyCenterIssue.Builder builder = new PersistedSafetyCenterIssue.Builder();
         for (int i = 0; i < parser.getAttributeCount(); i++) {
             switch (parser.getAttributeName(i)) {
@@ -155,12 +159,27 @@ public final class SafetyCenterIssuesPersistence {
                             parseInstant(parser.getAttributeValue(i), parser.getAttributeName(i)));
                     break;
                 case ATTRIBUTE_DISMISSED_AT:
+                    hasDismissedAt = true;
                     builder.setDismissedAt(
                             parseInstant(parser.getAttributeValue(i), parser.getAttributeName(i)));
+                    break;
+                case ATTRIBUTE_DISMISS_COUNT:
+                    hasDismissCount = true;
+                    try {
+                        builder.setDismissCount(
+                                parseInteger(
+                                        parser.getAttributeValue(i), parser.getAttributeName(i)));
+                    } catch (IllegalArgumentException e) {
+                        throw attributeInvalid(
+                                parser.getAttributeValue(i), parser.getAttributeName(i), e);
+                    }
                     break;
                 default:
                     throw attributeUnexpected(parser.getAttributeName(i));
             }
+        }
+        if (hasDismissedAt && !hasDismissCount) {
+            builder.setDismissCount(1);
         }
         parser.nextTag();
         validateElementEnd(parser, TAG_ISSUE);

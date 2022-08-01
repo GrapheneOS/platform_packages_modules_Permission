@@ -64,6 +64,7 @@ class SafetyCenterIssuesPersistenceWriteTest {
                             .setKey("key2")
                             .setFirstSeenAt(Instant.ofEpochMilli(1654041600000))
                             .setDismissedAt(Instant.ofEpochMilli(1654214400000))
+                            .setDismissCount(1)
                             .build())))
     }
 }
