@@ -159,6 +159,7 @@ final class SafetyCenterDataTracker {
                             .setKey(encodedKey)
                             .setFirstSeenAt(issueData.getFirstSeenAt())
                             .setDismissedAt(issueData.getDismissedAt())
+                            .setDismissCount(issueData.getDismissCount())
                             .build());
         }
 
@@ -190,6 +191,7 @@ final class SafetyCenterDataTracker {
 
             IssueData issueData = new IssueData(persistedSafetyCenterIssue.getFirstSeenAt());
             issueData.setDismissedAt(persistedSafetyCenterIssue.getDismissedAt());
+            issueData.setDismissCount(persistedSafetyCenterIssue.getDismissCount());
             mSafetyCenterIssueCache.put(key, issueData);
         }
     }
@@ -358,6 +360,7 @@ final class SafetyCenterDataTracker {
         IssueData issueData = mSafetyCenterIssueCache.get(safetyCenterIssueKey);
         if (issueData != null) {
             issueData.setDismissedAt(Instant.now());
+            issueData.setDismissCount(issueData.getDismissCount() + 1);
             mSafetyCenterIssueCacheDirty = true;
         }
     }
@@ -1850,6 +1853,7 @@ final class SafetyCenterDataTracker {
     private static final class IssueData {
         @NonNull private final Instant mFirstSeenAt;
         @Nullable private Instant mDismissedAt;
+        private int mDismissCount;
 
         private IssueData(@NonNull Instant firstSeenAt) {
             mFirstSeenAt = firstSeenAt;
@@ -1869,6 +1873,14 @@ final class SafetyCenterDataTracker {
             mDismissedAt = dismissedAt;
         }
 
+        public int getDismissCount() {
+            return mDismissCount;
+        }
+
+        public void setDismissCount(int dismissCount) {
+            mDismissCount = dismissCount;
+        }
+
         @Override
         public String toString() {
             return "IssueData{"
@@ -1876,6 +1888,8 @@ final class SafetyCenterDataTracker {
                     + mFirstSeenAt
                     + ", mDismissedAt="
                     + mDismissedAt
+                    + ", mDismissCount="
+                    + mDismissCount
                     + '}';
         }
     }
