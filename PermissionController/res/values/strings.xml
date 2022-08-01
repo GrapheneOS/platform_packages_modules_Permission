@@ -873,14 +873,14 @@
     <!-- The notification content for background location access reminder notification [CHAR LIMIT=none] -->
     <string name="background_location_access_reminder_notification_content">This app can always access your location. Tap to change.</string>
 
-    <!-- The notification title for background location access reminder notification [CHAR LIMIT=60] -->
+    <!-- The notification title for notification listener reminder notification [CHAR LIMIT=60] -->
     <string name="notification_listener_reminder_notification_title">Review app with access to your notifications</string>
 
-    <!-- The notification content for background location access reminder notification [CHAR LIMIT=none] -->
-    <string name="notification_listener_reminder_notification_content"><xliff:g id="app_name" example="Gmail">%s</xliff:g> can access the content of all your notifications</string>
+    <!-- The notification content for notification listener reminder notification [CHAR LIMIT=none] -->
+    <string name="notification_listener_reminder_notification_content"><xliff:g id="app_name" example="Gmail">%s</xliff:g> can dismiss, act on, and access content inside your notifications</string>
 
     <!-- The warning card (in safety center) content for notification listener access [CHAR LIMIT=none] -->
-    <string name="notification_listener_warning_card_content">This app can access the content of all of your notifications. Some apps require this access to function as intended.</string>
+    <string name="notification_listener_warning_card_content">This app can dismiss, act on, and access content inside your notifications. Some apps require this access to function as intended.</string>
 
     <!-- The label for remove access button on safety center warning card [CHAR LIMIT=60] -->
     <string name="notification_listener_remove_access_button_label">Remove access</string>
