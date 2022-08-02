@@ -57,7 +57,6 @@ import android.safetycenter.SafetySourceData;
 import android.safetycenter.SafetySourceErrorDetails;
 import android.safetycenter.SafetySourceIssue;
 import android.safetycenter.config.SafetyCenterConfig;
-import android.text.TextUtils;
 import android.util.ArraySet;
 import android.util.Log;
 
@@ -183,7 +182,7 @@ public final class SafetyCenterService extends SystemService {
                 mConfigAvailable = mSafetyCenterConfigReader.loadConfig();
                 if (mConfigAvailable) {
                     readSafetyCenterIssueCacheFileLocked();
-                    registerUserChangesReceiver();
+                    new UserBroadcastReceiver().register(getContext());
                 }
             }
         }
@@ -929,68 +928,71 @@ public final class SafetyCenterService extends SystemService {
         return mDeviceSupportsSafetyCenter && mConfigAvailable;
     }
 
-    private void registerUserChangesReceiver() {
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(Intent.ACTION_USER_REMOVED);
-        intentFilter.addAction(Intent.ACTION_MANAGED_PROFILE_AVAILABLE);
-        intentFilter.addAction(Intent.ACTION_MANAGED_PROFILE_UNAVAILABLE);
-        getContext()
-                .registerReceiverForAllUsers(
-                        new BroadcastReceiver() {
-                            @Override
-                            public void onReceive(
-                                    @NonNull Context context, @NonNull Intent intent) {
-                                if (TextUtils.equals(
-                                        intent.getAction(), Intent.ACTION_USER_REMOVED)) {
-                                    int userId =
-                                            intent.getParcelableExtra(
-                                                            Intent.EXTRA_USER, UserHandle.class)
-                                                    .getIdentifier();
-                                    onRemoveUser(userId);
-                                }
-                                if (TextUtils.equals(
-                                        intent.getAction(),
-                                        Intent.ACTION_MANAGED_PROFILE_UNAVAILABLE)) {
-                                    int userId =
-                                            intent.getParcelableExtra(
-                                                            Intent.EXTRA_USER, UserHandle.class)
-                                                    .getIdentifier();
-                                    onEnableQuietMode(userId);
-                                }
-                                if (TextUtils.equals(
-                                        intent.getAction(),
-                                        Intent.ACTION_MANAGED_PROFILE_AVAILABLE)) {
-                                    int userId =
-                                            intent.getParcelableExtra(
-                                                            Intent.EXTRA_USER, UserHandle.class)
-                                                    .getIdentifier();
-                                    onDisableQuietMode(userId);
-                                }
-                            }
-                        },
-                        intentFilter,
-                        null,
-                        null);
+    /**
+     * {@link BroadcastReceiver} which handles user and work profile related broadcasts that Safety
+     * Center is interested including quiet mode turning on/off and accounts being added/removed.
+     */
+    private final class UserBroadcastReceiver extends BroadcastReceiver {
+
+        private static final String TAG = "UserBroadcastReceiver";
+
+        @NonNull
+        void register(@NonNull Context context) {
+            IntentFilter filter = new IntentFilter();
+            filter.addAction(Intent.ACTION_USER_ADDED);
+            filter.addAction(Intent.ACTION_USER_REMOVED);
+            filter.addAction(Intent.ACTION_MANAGED_PROFILE_ADDED);
+            filter.addAction(Intent.ACTION_MANAGED_PROFILE_REMOVED);
+            filter.addAction(Intent.ACTION_MANAGED_PROFILE_AVAILABLE);
+            filter.addAction(Intent.ACTION_MANAGED_PROFILE_UNAVAILABLE);
+            context.registerReceiverForAllUsers(this, filter, null, null);
+        }
+
+        @Override
+        public void onReceive(@NonNull Context context, @NonNull Intent intent) {
+            String action = intent.getAction();
+            if (action == null) {
+                Log.w(TAG, "Received broadcast with null action!");
+                return;
+            }
+
+            UserHandle userHandle = intent.getParcelableExtra(Intent.EXTRA_USER, UserHandle.class);
+            if (userHandle == null) {
+                Log.w(TAG, "Received " + action + " broadcast missing user extra!");
+                return;
+            }
+
+            int userId = userHandle.getIdentifier();
+            Log.d(TAG, "Received " + action + " broadcast for user " + userId);
+
+            switch (action) {
+                case Intent.ACTION_USER_REMOVED:
+                case Intent.ACTION_MANAGED_PROFILE_REMOVED:
+                    removeUser(userId, true);
+                    break;
+                case Intent.ACTION_MANAGED_PROFILE_UNAVAILABLE:
+                    removeUser(userId, false);
+                    // fall through!
+                case Intent.ACTION_USER_ADDED:
+                case Intent.ACTION_MANAGED_PROFILE_ADDED:
+                case Intent.ACTION_MANAGED_PROFILE_AVAILABLE:
+                    startRefreshingSafetySources(REFRESH_REASON_OTHER, userId);
+                    break;
+            }
+        }
     }
 
-    private void onRemoveUser(@UserIdInt int userId) {
+    private void removeUser(@UserIdInt int userId, boolean clearDataPermanently) {
         UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
         synchronized (mApiLock) {
-            mSafetyCenterDataTracker.clearForUser(userId);
+            if (clearDataPermanently) {
+                mSafetyCenterDataTracker.clearForUser(userId);
+            }
             mSafetyCenterListeners.clearForUser(userId);
             mSafetyCenterRefreshTracker.clearRefreshForUser(userId);
             mSafetyCenterListeners.deliverUpdateForUserProfileGroup(userProfileGroup, true, null);
             scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked();
         }
-    }
-
-    private void onEnableQuietMode(@UserIdInt int userId) {
-        onRemoveUser(userId);
-        startRefreshingSafetySources(REFRESH_REASON_OTHER, userId);
-    }
-
-    private void onDisableQuietMode(@UserIdInt int userId) {
-        startRefreshingSafetySources(REFRESH_REASON_OTHER, userId);
     }
 
     private void startRefreshingSafetySources(
