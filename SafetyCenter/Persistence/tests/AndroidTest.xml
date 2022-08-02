@@ -42,6 +42,12 @@
                 value="/data/local/tmp/com/safetycenter/persistence/tests/invalid_file_extra_element.xml" />
         <option name="push-file" key="invalid_file_extra_root.txt"
                 value="/data/local/tmp/com/safetycenter/persistence/tests/invalid_file_extra_root.txt" />
+        <option name="push-file" key="invalid_file_inconsistent_dismiss_count.xml"
+                value="/data/local/tmp/com/safetycenter/persistence/tests/invalid_file_inconsistent_dismiss_count.xml" />
+        <option name="push-file" key="invalid_file_inconsistent_dismissed_at.xml"
+                value="/data/local/tmp/com/safetycenter/persistence/tests/invalid_file_inconsistent_dismissed_at.xml" />
+        <option name="push-file" key="invalid_file_invalid_dismiss_count.xml"
+                value="/data/local/tmp/com/safetycenter/persistence/tests/invalid_file_invalid_dismiss_count.xml" />
         <option name="push-file" key="invalid_file_invalid_dismissed_at.xml"
                 value="/data/local/tmp/com/safetycenter/persistence/tests/invalid_file_invalid_dismissed_at.xml" />
         <option name="push-file" key="invalid_file_invalid_first_seen_at.xml"
@@ -54,12 +60,16 @@
                 value="/data/local/tmp/com/safetycenter/persistence/tests/invalid_file_missing_key.xml" />
         <option name="push-file" key="invalid_file_missing_version.xml"
                 value="/data/local/tmp/com/safetycenter/persistence/tests/invalid_file_missing_version.xml" />
+        <option name="push-file" key="invalid_file_negative_dismiss_count.xml"
+                value="/data/local/tmp/com/safetycenter/persistence/tests/invalid_file_negative_dismiss_count.xml" />
         <option name="push-file" key="invalid_file_wrong_root.xml"
                 value="/data/local/tmp/com/safetycenter/persistence/tests/invalid_file_wrong_root.xml" />
         <option name="push-file" key="invalid_file_wrong_version.xml"
                 value="/data/local/tmp/com/safetycenter/persistence/tests/invalid_file_wrong_version.xml" />
-        <option name="push-file" key="valid_file.xml"
-                value="/data/local/tmp/com/safetycenter/persistence/tests/valid_file.xml" />
+        <option name="push-file" key="valid_file_v0.xml"
+                value="/data/local/tmp/com/safetycenter/persistence/tests/valid_file_v0.xml" />
+        <option name="push-file" key="valid_file_v1.xml"
+                value="/data/local/tmp/com/safetycenter/persistence/tests/valid_file_v1.xml" />
     </target_preparer>
 
     <test class="com.android.tradefed.testtype.AndroidJUnitTest" >

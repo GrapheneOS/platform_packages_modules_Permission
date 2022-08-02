@@ -31,14 +31,7 @@
     android:clipToPadding="false"
     android:baselineAligned="false">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:maxWidth="24dp"
-        android:maxHeight="24dp"
-        android:paddingEnd="24dp"
-        android:src="@drawable/ic_expand_more" />
+    <include layout="@layout/image_frame"/>
 
     <RelativeLayout
         android:layout_width="0dp"
