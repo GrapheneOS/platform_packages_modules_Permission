@@ -21,7 +21,10 @@ import static android.os.Build.VERSION_CODES.TIRAMISU;
 import android.annotation.NonNull;
 import android.os.Binder;
 import android.provider.DeviceConfig;
+import android.safetycenter.SafetySourceData;
+import android.util.ArrayMap;
 import android.util.ArraySet;
+import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
@@ -31,6 +34,8 @@ import java.time.Duration;
 /** A class to access the Safety Center {@link DeviceConfig} flags. */
 @RequiresApi(TIRAMISU)
 final class SafetyCenterFlags {
+
+    private static final String TAG = "SafetyCenterFlags";
 
     /** {@link DeviceConfig} property name for {@link #getSafetyCenterEnabled()}. */
     static final String PROPERTY_SAFETY_CENTER_ENABLED = "safety_center_is_enabled";
@@ -50,6 +55,12 @@ final class SafetyCenterFlags {
     private static final String PROPERTY_FGS_ALLOWLIST_DURATION_MILLIS =
             "safety_center_refresh_fgs_allowlist_duration_millis";
 
+    private static final String PROPERTY_RESURFACE_ISSUE_MAX_COUNTS =
+            "safety_center_resurface_issue_max_counts";
+
+    private static final String PROPERTY_RESURFACE_ISSUE_DELAYS_MILLIS =
+            "safety_center_resurface_issue_delays_millis";
+
     private static final String PROPERTY_UNTRACKED_SOURCES = "safety_center_untracked_sources";
 
     private static final Duration REFRESH_SOURCE_TIMEOUT_DEFAULT_DURATION = Duration.ofSeconds(10);
@@ -58,6 +69,10 @@ final class SafetyCenterFlags {
             Duration.ofSeconds(10);
 
     private static final Duration FGS_ALLOWLIST_DEFAULT_DURATION = Duration.ofSeconds(20);
+
+    private static final long RESURFACE_ISSUE_DEFAULT_MAX_COUNT = 0;
+
+    private static final Duration RESURFACE_ISSUE_DEFAULT_DELAY = Duration.ofDays(180);
 
     /**
      * Dumps state for debugging purposes.
@@ -73,6 +88,8 @@ final class SafetyCenterFlags {
         printFlag(fout, PROPERTY_RESOLVING_ACTION_TIMEOUT_MILLIS, getResolvingActionTimeout());
         printFlag(fout, PROPERTY_FGS_ALLOWLIST_DURATION_MILLIS, getFgsAllowlistDuration());
         printFlag(fout, PROPERTY_UNTRACKED_SOURCES, getUntrackedSourceIds());
+        printFlag(fout, PROPERTY_RESURFACE_ISSUE_MAX_COUNTS, getResurfaceIssueMaxCounts());
+        printFlag(fout, PROPERTY_RESURFACE_ISSUE_DELAYS_MILLIS, getResurfaceIssueDelaysMillis());
         fout.println();
     }
 
@@ -143,6 +160,56 @@ final class SafetyCenterFlags {
         return new ArraySet<>(untrackedSourcesList);
     }
 
+    /**
+     * Returns the number of times an issue of the given {@link SafetySourceData.SeverityLevel}
+     * should be resurfaced.
+     */
+    static long getResurfaceIssueMaxCount(@SafetySourceData.SeverityLevel int severityLevel) {
+        Long maxCount = getResurfaceIssueMaxCounts().get(severityLevel);
+        if (maxCount != null) {
+            return maxCount;
+        }
+        return RESURFACE_ISSUE_DEFAULT_MAX_COUNT;
+    }
+
+    /**
+     * Returns a map where the key is an issue {@link SafetySourceData.SeverityLevel} and the value
+     * is the number of times an issue of this {@link SafetySourceData.SeverityLevel} should be
+     * resurfaced.
+     */
+    @NonNull
+    private static ArrayMap<Integer, Long> getResurfaceIssueMaxCounts() {
+        String maxCountsConfigString = getString(PROPERTY_RESURFACE_ISSUE_MAX_COUNTS, "");
+        return convertStringConfigToMap(maxCountsConfigString);
+    }
+
+    /**
+     * Returns the time after which a dismissed issue of the given {@link
+     * SafetySourceData.SeverityLevel} will resurface if it has not reached the maximum count for
+     * which a dismissed issue of the given {@link SafetySourceData.SeverityLevel} should be
+     * resurfaced.
+     */
+    @NonNull
+    static Duration getResurfaceIssueDelay(@SafetySourceData.SeverityLevel int severityLevel) {
+        Long delayMillis = getResurfaceIssueDelaysMillis().get(severityLevel);
+        if (delayMillis != null) {
+            return Duration.ofMillis(delayMillis);
+        }
+        return RESURFACE_ISSUE_DEFAULT_DELAY;
+    }
+
+    /**
+     * Returns a map where the key is an issue {@link SafetySourceData.SeverityLevel} and the value
+     * is the time in milliseconds after which a dismissed issue of this {@link
+     * SafetySourceData.SeverityLevel} will resurface if it has not reached the maximum count for
+     * which a dismissed issue of this {@link SafetySourceData.SeverityLevel} should be resurfaced.
+     */
+    @NonNull
+    private static ArrayMap<Integer, Long> getResurfaceIssueDelaysMillis() {
+        String delaysConfigString = getString(PROPERTY_RESURFACE_ISSUE_DELAYS_MILLIS, "");
+        return convertStringConfigToMap(delaysConfigString);
+    }
+
     @NonNull
     private static Duration getDuration(@NonNull String property, @NonNull Duration defaultValue) {
         return Duration.ofMillis(getLong(property, defaultValue.toMillis()));
@@ -177,6 +244,29 @@ final class SafetyCenterFlags {
         } finally {
             Binder.restoreCallingIdentity(callingId);
         }
+    }
+
+    /** Converts a comma separated list of colon separated pairs into an integer to long map. */
+    @NonNull
+    private static ArrayMap<Integer, Long> convertStringConfigToMap(@NonNull String input) {
+        ArrayMap<Integer, Long> map = new ArrayMap<>();
+        if (input.isEmpty()) {
+            return map;
+        }
+        String[] pairsList = input.split(",");
+        for (int i = 0; i < pairsList.length; i++) {
+            String[] pair = pairsList[i].split(":");
+            if (pair.length != 2) {
+                Log.w(TAG, "Badly formatted string config: " + input);
+                continue;
+            }
+            try {
+                map.put(Integer.parseInt(pair[0]), Long.parseLong(pair[1]));
+            } catch (NumberFormatException e) {
+                Log.w(TAG, "Badly formatted string config: " + input, e);
+            }
+        }
+        return map;
     }
 
     private SafetyCenterFlags() {}
