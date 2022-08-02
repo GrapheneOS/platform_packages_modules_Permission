@@ -41,6 +41,11 @@
     <!-- Content description containing the title, subtitle and summary of a safety center issue card preference [CHAR LIMIT=NONE]-->
     <string name="safety_center_issue_card_content_description_with_subtitle">Alert. <xliff:g id="issue card title" example="Protect your account">%1$s</xliff:g>. <xliff:g id="issue card subtitle" example="testemail@google.com">%2$s</xliff:g>. <xliff:g id="issue card summary" example="Secure your account in the Security Checkup">%3$s</xliff:g></string>
 
+    <!-- TODO(b/237368717): Update issue resolution confirmation fallback string -->
+    <!-- Issue resolution confirmation text [CHAR LIMIT=NONE]-->
+    <string name="safety_center_issue_resolution_fallback">Complete</string>
+
+
     <!--Summary for safety center status card QS in case of pending actions [CHAR LIMIT=NONE] -->
     <string name="safety_center_qs_status_summary">Check settings that can add protection to your device</string>
     <!-- Content description for the safety center quick settings page landing [CHAR LIMIT=NONE] -->

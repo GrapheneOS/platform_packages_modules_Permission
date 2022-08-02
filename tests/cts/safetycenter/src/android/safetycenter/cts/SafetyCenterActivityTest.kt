@@ -16,10 +16,12 @@
 
 package android.safetycenter.cts
 
+import android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE
 import android.content.Context
 import android.os.Bundle
 import android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_ID
 import android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_ISSUE_ID
+import android.safetycenter.cts.testing.Coroutines.TIMEOUT_SHORT
 import android.safetycenter.cts.testing.SafetyCenterActivityLauncher.launchSafetyCenterActivity
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MULTIPLE_SOURCES_CONFIG
@@ -30,11 +32,16 @@ import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_2
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_3
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.STATIC_SOURCES_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsHelper
+import android.safetycenter.cts.testing.SafetyCenterFlags
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import android.safetycenter.cts.testing.SafetySourceCtsData
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.CRITICAL_ISSUE_ID
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.RECOMMENDATION_ISSUE_ID
+import android.safetycenter.cts.testing.SafetySourceReceiver
+import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.SafetySourceDataKey
+import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.SafetySourceDataKey.Reason.RESOLVE_ACTION
 import android.safetycenter.cts.testing.SettingsPackage.getSettingsPackageName
+import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermissionIdentity
 import android.safetycenter.cts.testing.UiTestHelper.assertSourceDataDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.assertSourceIssueDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.assertSourceIssueNotDisplayed
@@ -314,6 +321,119 @@ class SafetyCenterActivityTest {
             findButton("Cancel").click()
 
             assertSourceIssueDisplayed(safetySourceCtsData.criticalResolvingIssue)
+        }
+    }
+
+    @Test
+    fun issueCard_resolveIssue_successConfirmationShown_issueDismisses() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+
+        // Set the initial data for the source
+        safetyCenterCtsHelper.setData(
+            SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithResolvingIssueWithSuccessMessage)
+
+        // Clear the data when action is triggered to simulate resolution.
+        SafetySourceReceiver.safetySourceData[
+                SafetySourceDataKey(RESOLVE_ACTION, SINGLE_SOURCE_ID)] = null
+
+        context.launchSafetyCenterActivity {
+            callWithShellPermissionIdentity(
+                {
+                    val action = safetySourceCtsData.criticalResolvingActionWithSuccessMessage
+                    waitFindObject(By.text(action.label.toString())).click()
+
+                    // Success message should show up if issue marked as resolved
+                    val successMessage = action.successMessage.toString()
+                    waitFindObject(By.text(successMessage))
+
+                    // Wait for success message to go away, verify issue no longer displayed
+                    waitTextNotDisplayed(successMessage)
+                    assertSourceIssueNotDisplayed(
+                        safetySourceCtsData.criticalResolvingIssueWithSuccessMessage)
+                },
+                SEND_SAFETY_CENTER_UPDATE)
+        }
+    }
+
+    @Test
+    fun issueCard_resolveIssue_noSuccessMessage_defaultSuccessMessageShown_issueDismisses() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+
+        // Set the initial data for the source
+        safetyCenterCtsHelper.setData(
+            SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithResolvingIssue)
+
+        // Clear the data when action is triggered to simulate resolution.
+        SafetySourceReceiver.safetySourceData[
+                SafetySourceDataKey(RESOLVE_ACTION, SINGLE_SOURCE_ID)] = null
+
+        context.launchSafetyCenterActivity {
+            callWithShellPermissionIdentity(
+                {
+                    val action = safetySourceCtsData.criticalResolvingAction
+                    waitFindObject(By.text(action.label.toString())).click()
+
+                    // Default success message should show up if issue marked as resolved
+                    waitFindObject(By.text("Complete"))
+
+                    // Wait for success message to go away, verify issue no longer displayed
+                    waitTextNotDisplayed("Complete")
+                    assertSourceIssueNotDisplayed(safetySourceCtsData.criticalResolvingIssue)
+                },
+                SEND_SAFETY_CENTER_UPDATE)
+        }
+    }
+
+    @Test
+    fun issueCard_resolvingInflightIssueFailed_issueRemains() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+
+        // Set the initial data for the source
+        val data = safetySourceCtsData.criticalWithResolvingIssue
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
+
+        // Respond with an error when the action is triggered
+        SafetySourceReceiver.safetySourceData[
+                SafetySourceDataKey(RESOLVE_ACTION, SINGLE_SOURCE_ID)] = null
+        SafetySourceReceiver.shouldReportSafetySourceError = true
+
+        context.launchSafetyCenterActivity {
+            callWithShellPermissionIdentity(
+                {
+                    val action = safetySourceCtsData.criticalResolvingAction
+                    waitFindObject(By.text(action.label.toString())).click()
+
+                    // criticalResolvingAction does not define a success message, check for default
+                    waitTextNotDisplayed("Complete")
+                    assertSourceIssueDisplayed(safetySourceCtsData.criticalResolvingIssue)
+                },
+                SEND_SAFETY_CENTER_UPDATE)
+        }
+    }
+
+    @Test
+    fun issueCard_resolvingInFlightIssueTimesOut_issueRemains() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+
+        // Set the initial data for the source
+        val data = safetySourceCtsData.criticalWithResolvingIssue
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
+
+        SafetyCenterFlags.resolveActionTimeout = TIMEOUT_SHORT
+
+        // Set no data at all on the receiver, will ignore incoming call.
+
+        context.launchSafetyCenterActivity {
+            callWithShellPermissionIdentity(
+                {
+                    val action = safetySourceCtsData.criticalResolvingAction
+                    waitFindObject(By.text(action.label.toString())).click()
+
+                    // criticalResolvingAction does not define a success message, check for default
+                    waitTextNotDisplayed("Complete")
+                    assertSourceIssueDisplayed(safetySourceCtsData.criticalResolvingIssue)
+                },
+                SEND_SAFETY_CENTER_UPDATE)
         }
     }
 

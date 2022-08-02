@@ -31,13 +31,21 @@ import com.android.permissioncontroller.safetycenter.ui.NavigationSource
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 abstract class SafetyCenterViewModel(protected val app: Application) : AndroidViewModel(app) {
 
-    abstract val safetyCenterLiveData: LiveData<SafetyCenterData>
+    abstract val safetyCenterUiLiveData: LiveData<SafetyCenterUiData>
     abstract val errorLiveData: LiveData<SafetyCenterErrorDetails>
     abstract val interactionLogger: InteractionLogger
 
     abstract fun dismissIssue(issue: SafetyCenterIssue)
 
     abstract fun executeIssueAction(issue: SafetyCenterIssue, action: SafetyCenterIssue.Action)
+
+    /**
+     * Marks a resolved [SafetyCenterIssue] as fully complete, meaning the resolution success
+     * message has been shown
+     *
+     * @param issueId Resolved issue that has completed its UI update and view can be removed
+     */
+    abstract fun markIssueResolvedUiCompleted(issueId: IssueId)
 
     abstract fun rescan()
 
@@ -52,3 +60,12 @@ abstract class SafetyCenterViewModel(protected val app: Application) : AndroidVi
 
     abstract fun changingConfigurations()
 }
+
+typealias IssueId = String
+
+typealias ActionId = String
+
+data class SafetyCenterUiData(
+    val safetyCenterData: SafetyCenterData,
+    val resolvedIssues: Map<IssueId, ActionId> = emptyMap()
+)
