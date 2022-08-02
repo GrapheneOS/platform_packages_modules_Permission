@@ -23,6 +23,7 @@ import android.content.res.Resources
 import android.provider.DeviceConfig
 import android.provider.DeviceConfig.NAMESPACE_PRIVACY
 import android.provider.DeviceConfig.Properties
+import android.safetycenter.SafetySourceData
 import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermissionIdentity
 import java.time.Duration
 
@@ -64,6 +65,24 @@ object SafetyCenterFlags {
     private const val PROPERTY_UNTRACKED_SOURCES = "safety_center_untracked_sources"
 
     /**
+     * Device Config flag containing a map (a comma separated list of colon separated pairs) where
+     * the key is an issue [SafetySourceData.SeverityLevel] and the value is the number of times an
+     * issue of this [SafetySourceData.SeverityLevel] should be resurfaced.
+     */
+    private const val PROPERTY_RESURFACE_ISSUE_MAX_COUNTS =
+        "safety_center_resurface_issue_max_counts"
+
+    /**
+     * Device Config flag containing a map (a comma separated list of colon separated pairs) where
+     * the key is an issue [SafetySourceData.SeverityLevel] and the value is the time after which a
+     * dismissed issue of this [SafetySourceData.SeverityLevel] will resurface if it has not reached
+     * the maximum count for which a dismissed issue of this [SafetySourceData.SeverityLevel] should
+     * be resurfaced.
+     */
+    private const val PROPERTY_RESURFACE_ISSUE_DELAYS_MILLIS =
+        "safety_center_resurface_issue_delays_millis"
+
+    /**
      * Default time for which a Safety Center refresh is allowed to wait for a source to respond to
      * a refresh request before timing out and marking the refresh as finished.
      */
@@ -74,6 +93,12 @@ object SafetyCenterFlags {
      * before timing out.
      */
     private val RESOLVE_ACTION_TIMEOUT_DEFAULT_DURATION = Duration.ofSeconds(10)
+
+    /** Default maximum number of times that Safety Center will resurface a dismissed issue. */
+    private const val RESURFACE_ISSUE_DEFAULT_MAX_COUNT: Long = 0
+
+    /** Default time for which Safety Center will wait before resurfacing a dismissed issue. */
+    private val RESURFACE_ISSUE_DEFAULT_DELAY = Duration.ofDays(180)
 
     /** Returns whether the device supports Safety Center. */
     fun Context.deviceSupportsSafetyCenter() =
@@ -155,6 +180,53 @@ object SafetyCenterFlags {
             writeFlag(PROPERTY_UNTRACKED_SOURCES, value.joinToString(","))
         }
 
+    /**
+     * A property that allows getting and setting the [PROPERTY_RESURFACE_ISSUE_MAX_COUNTS] device
+     * config flag.
+     */
+    var resurfaceIssueMaxCounts: Map<Int, Long>
+        get() =
+            readFlag(PROPERTY_RESURFACE_ISSUE_MAX_COUNTS, defaultValue = emptyMap()) {
+                it.toMap(String::toInt, String::toLong)
+            }
+        set(value) {
+            writeFlag(
+                PROPERTY_RESURFACE_ISSUE_MAX_COUNTS,
+                value.joinToListOfPairsString(Int::toString, Long::toString))
+        }
+
+    /**
+     * A property that allows getting and setting the [PROPERTY_RESURFACE_ISSUE_DELAYS_MILLIS]
+     * device config flag.
+     */
+    var resurfaceIssueDelays: Map<Int, Duration>
+        get() =
+            readFlag(PROPERTY_RESURFACE_ISSUE_DELAYS_MILLIS, defaultValue = emptyMap()) {
+                it.toMap(String::toInt, { valueString -> Duration.ofMillis(valueString.toLong()) })
+            }
+        set(value) {
+            writeFlag(
+                PROPERTY_RESURFACE_ISSUE_DELAYS_MILLIS,
+                value.joinToListOfPairsString(
+                    Int::toString, { value -> value.toMillis().toString() }))
+        }
+
+    /** Converts a comma separated list of colon separated pairs into a map. */
+    private fun <K, V> String.toMap(
+        keyFromString: (String) -> K,
+        valueFromString: (String) -> V
+    ): Map<K, V> =
+        split(",").associate { pair ->
+            val (keyString, valueString) = pair.split(":")
+            keyFromString(keyString) to valueFromString(valueString)
+        }
+
+    /** Converts a map into a comma separated list of colon separated pairs. */
+    private fun <K, V> Map<K, V>.joinToListOfPairsString(
+        stringFromKey: (K) -> String,
+        stringFromValue: (V) -> String
+    ): String = map { "${stringFromKey(it.key)}:${stringFromValue(it.value)}" }.joinToString(",")
+
     private fun <T> readFlag(name: String, defaultValue: T, parseFromString: (String) -> T) =
         callWithShellPermissionIdentity(
             {
@@ -194,7 +266,9 @@ object SafetyCenterFlags {
                     PROPERTY_REPLACE_LOCK_SCREEN_ICON_ACTION,
                     PROPERTY_SAFETY_CENTER_REFRESH_SOURCE_TIMEOUT,
                     PROPERTY_SAFETY_CENTER_RESOLVE_ACTION_TIMEOUT,
-                    PROPERTY_UNTRACKED_SOURCES)
+                    PROPERTY_UNTRACKED_SOURCES,
+                    PROPERTY_RESURFACE_ISSUE_MAX_COUNTS,
+                    PROPERTY_RESURFACE_ISSUE_DELAYS_MILLIS)
             },
             READ_DEVICE_CONFIG)
     }
