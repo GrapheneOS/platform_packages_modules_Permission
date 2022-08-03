@@ -100,10 +100,12 @@ public final class GrantPermissionsViewHandlerImpl implements GrantPermissionsVi
         mSoftDenyButton.setOnClickListener(this);
         mHardDenyButton.setOnClickListener(this);
 
-        mRootView.addOnLayoutChangeListener((view, l, t, r, b, oldL, oldT, oldR, oldB) -> {
-            mRootView.setUnrestrictedPreferKeepClearRects(
-                    Collections.singletonList(new Rect(0, 0, r - l, b - t)));
-        });
+        if (SdkLevel.isAtLeastT()) {
+            mRootView.addOnLayoutChangeListener((view, l, t, r, b, oldL, oldT, oldR, oldB) -> {
+                mRootView.setUnrestrictedPreferKeepClearRects(
+                        Collections.singletonList(new Rect(0, 0, r - l, b - t)));
+            });
+        }
 
         return mRootView;
     }
