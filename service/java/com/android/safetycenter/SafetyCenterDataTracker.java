@@ -69,7 +69,6 @@ import com.android.safetycenter.persistence.PersistedSafetyCenterIssue;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 
 import java.io.PrintWriter;
-import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -359,13 +358,11 @@ final class SafetyCenterDataTracker {
      */
     void dismissSafetyCenterIssue(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
         IssueData issueData = mSafetyCenterIssueCache.get(safetyCenterIssueKey);
-        if (issueData == null) {
-            Log.w(TAG, "Issue missing when writing to cache for key: " + safetyCenterIssueKey);
-            return;
+        if (issueData != null) {
+            issueData.setDismissedAt(Instant.now());
+            issueData.setDismissCount(issueData.getDismissCount() + 1);
+            mSafetyCenterIssueCacheDirty = true;
         }
-        issueData.setDismissedAt(Instant.now());
-        issueData.setDismissCount(issueData.getDismissCount() + 1);
-        mSafetyCenterIssueCacheDirty = true;
     }
 
     /**
@@ -376,6 +373,10 @@ final class SafetyCenterDataTracker {
      */
     @Nullable
     SafetySourceIssue getSafetySourceIssue(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
+        if (isDismissed(safetyCenterIssueKey)) {
+            return null;
+        }
+
         SafetySourceKey key =
                 SafetySourceKey.of(
                         safetyCenterIssueKey.getSafetySourceId(), safetyCenterIssueKey.getUserId());
@@ -385,24 +386,15 @@ final class SafetyCenterDataTracker {
         }
         List<SafetySourceIssue> safetySourceIssues = safetySourceData.getIssues();
 
-        SafetySourceIssue targetIssue = null;
         for (int i = 0; i < safetySourceIssues.size(); i++) {
             SafetySourceIssue safetySourceIssue = safetySourceIssues.get(i);
 
             if (safetyCenterIssueKey.getSafetySourceIssueId().equals(safetySourceIssue.getId())) {
-                targetIssue = safetySourceIssue;
-                break;
+                return safetySourceIssue;
             }
         }
-        if (targetIssue == null) {
-            return null;
-        }
 
-        if (isDismissed(safetyCenterIssueKey, targetIssue.getSeverityLevel())) {
-            return null;
-        }
-
-        return targetIssue;
+        return null;
     }
 
     /**
@@ -568,37 +560,12 @@ final class SafetyCenterDataTracker {
         }
     }
 
-    private boolean isDismissed(
-            @NonNull SafetyCenterIssueKey safetyCenterIssueKey,
-            @SafetySourceData.SeverityLevel int safetySourceIssueSeverityLevel) {
+    private boolean isDismissed(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
         IssueData issueData = mSafetyCenterIssueCache.get(safetyCenterIssueKey);
         if (issueData == null) {
-            Log.w(TAG, "Issue missing when reading from cache for key: " + safetyCenterIssueKey);
             return false;
         }
-
-        Instant dismissedAt = issueData.getDismissedAt();
-        boolean hasNeverBeenDismissed = dismissedAt == null;
-        if (hasNeverBeenDismissed) {
-            return false;
-        }
-
-        long maxCount = SafetyCenterFlags.getResurfaceIssueMaxCount(safetySourceIssueSeverityLevel);
-        Duration delay = SafetyCenterFlags.getResurfaceIssueDelay(safetySourceIssueSeverityLevel);
-
-        boolean hasAlreadyResurfacedTheMaxAllowedNumberOfTimes =
-                issueData.getDismissCount() > maxCount;
-        if (hasAlreadyResurfacedTheMaxAllowedNumberOfTimes) {
-            return true;
-        }
-
-        Duration timeSinceLastDismissal = Duration.between(dismissedAt, Instant.now());
-        boolean isTimeToResurface = timeSinceLastDismissal.compareTo(delay) >= 0;
-        if (isTimeToResurface) {
-            return false;
-        }
-
-        return true;
+        return issueData.getDismissedAt() != null;
     }
 
     private boolean isInFlight(@NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
@@ -975,9 +942,7 @@ final class SafetyCenterDataTracker {
                         .setIssueTypeId(safetySourceIssue.getIssueTypeId())
                         .build();
 
-        if (isDismissed(
-                safetyCenterIssueId.getSafetyCenterIssueKey(),
-                safetySourceIssue.getSeverityLevel())) {
+        if (isDismissed(safetyCenterIssueId.getSafetyCenterIssueKey())) {
             return null;
         }
 
