@@ -24,6 +24,7 @@ import android.safetycenter.SafetyCenterEntryGroup;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -32,31 +33,58 @@ import androidx.preference.PreferenceViewHolder;
 
 import com.android.permissioncontroller.R;
 
-/** A preference that displays a visual representation of a {@link SafetyCenterEntry}. */
+import java.util.function.Consumer;
+
+/**
+ * A preference that displays a visual representation of a header for
+ * {@link SafetyCenterEntryGroup}.
+ */
 @RequiresApi(TIRAMISU)
 public class SafetyGroupHeaderEntryPreference extends Preference implements ComparablePreference {
 
     private static final String TAG = SafetyGroupHeaderEntryPreference.class.getSimpleName();
 
-    private final String mId;
+    private final SafetyCenterEntryGroup mGroup;
     private final PositionInCardList mPosition;
+    private final boolean mIsExpanded;
 
     public SafetyGroupHeaderEntryPreference(
-            Context context, SafetyCenterEntryGroup group, PositionInCardList position) {
+            Context context,
+            SafetyCenterEntryGroup group,
+            PositionInCardList position,
+            boolean isExpanded,
+            Consumer<String> onClick) {
         super(context);
-        mId = group.getId();
+        mGroup = group;
         mPosition = position;
-        setLayoutResource(R.layout.preference_expanded_group_entry);
-        setWidgetLayoutResource(R.layout.preference_expanded_group_widget);
+        mIsExpanded = isExpanded;
+        setLayoutResource(
+                isExpanded
+                        ? R.layout.preference_expanded_group_entry
+                        : R.layout.preference_collapsed_group_entry);
+
         setTitle(group.getTitle());
 
-        // TODO(b/222126985): make back selectable to return the Ripple effect
-        setSelectable(false);
+        if (!isExpanded) {
+            setSummary(group.getSummary());
+            setIcon(
+                    SeverityIconPicker.selectIconResId(
+                            group.getSeverityLevel(), group.getSeverityUnspecifiedIconType()));
+        }
+
         setOnPreferenceClickListener(
                 unused -> {
-                    // TODO(b/222126985): implement collapsing UX
+                    onClick.accept(group.getId());
                     return true;
                 });
+    }
+
+    public String getGroupId() {
+        return mGroup != null ? mGroup.getId() : null;
+    }
+
+    public boolean isExpanded() {
+        return mIsExpanded;
     }
 
     @Override
@@ -71,22 +99,38 @@ public class SafetyGroupHeaderEntryPreference extends Preference implements Comp
             holder.itemView.setLayoutParams(params);
         }
 
-        // TODO(b/222126985): show a proper icon based on current state
-        holder.findViewById(R.id.expanded_icon).setVisibility(View.GONE);
+        if (!mIsExpanded) {
+            boolean hideIcon =
+                    mGroup.getSeverityLevel() == SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED
+                            && mGroup.getSeverityUnspecifiedIconType()
+                            == SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON;
+            holder.findViewById(R.id.icon_frame).setVisibility(hideIcon ? View.GONE : View.VISIBLE);
+            holder.findViewById(R.id.empty_space)
+                    .setVisibility(hideIcon ? View.VISIBLE : View.GONE);
+        }
+
+        ImageView chevronIcon = (ImageView) holder.findViewById(R.id.chevron_icon);
+        chevronIcon.setImageResource(
+                mIsExpanded
+                        ? R.drawable.ic_safety_group_collapse
+                        : R.drawable.ic_safety_group_expand);
     }
 
     @Override
     public boolean isSameItem(@NonNull Preference other) {
-        return mId != null
+        return mGroup != null
                 && other instanceof SafetyGroupHeaderEntryPreference
-                && TextUtils.equals(mId, ((SafetyGroupHeaderEntryPreference) other).mId);
+                && TextUtils.equals(
+                getGroupId(), ((SafetyGroupHeaderEntryPreference) other).getGroupId());
     }
 
     @Override
     public boolean hasSameContents(@NonNull Preference other) {
         if (other instanceof SafetyGroupHeaderEntryPreference) {
             SafetyGroupHeaderEntryPreference o = (SafetyGroupHeaderEntryPreference) other;
-            return TextUtils.equals(getTitle(), o.getTitle()) && mPosition == o.mPosition;
+            return TextUtils.equals(getTitle(), o.getTitle())
+                    && mPosition == o.mPosition
+                    && mIsExpanded == o.mIsExpanded;
         }
         return false;
     }

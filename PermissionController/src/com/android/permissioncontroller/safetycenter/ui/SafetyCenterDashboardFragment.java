@@ -78,6 +78,8 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
 
     private SafetyStatusPreference mSafetyStatusPreference;
     private CollapsableIssuesCardHelper mCollapsableIssuesCardHelper;
+    private final CollapsableGroupCardHelper mCollapsableGroupCardHelper =
+            new CollapsableGroupCardHelper();
     private PreferenceGroup mIssuesGroup;
     private PreferenceGroup mEntriesGroup;
     private PreferenceGroup mStaticEntriesGroup;
@@ -160,6 +162,8 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
                 mIsQuickSettingsFragment, parsedSafetyCenterIntent.getShouldExpandIssuesGroup());
         mCollapsableIssuesCardHelper.restoreState(savedInstanceState);
 
+        mCollapsableGroupCardHelper.restoreState(savedInstanceState);
+
         mSafetyStatusPreference =
                 requireNonNull(getPreferenceScreen().findPreference(SAFETY_STATUS_KEY));
         // TODO: Use real strings here, or set more sensible defaults in the layout
@@ -217,6 +221,7 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         mCollapsableIssuesCardHelper.saveState(outState);
+        mCollapsableGroupCardHelper.saveState(outState);
     }
 
     @Override
@@ -315,6 +320,8 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
                 addGroupEntries(context, group, isFirstElement, isLastElement);
             }
         }
+
+        mCollapsableGroupCardHelper.updatePreferenceVisibility(mEntriesGroup);
     }
 
     private void addTopLevelEntry(
@@ -327,6 +334,7 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
                         context,
                         getTaskIdForEntry(entry),
                         entry,
+                        /* groupId */ null,
                         PositionInCardList.calculate(isFirstElement, isLastElement),
                         mViewModel));
     }
@@ -336,32 +344,64 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
             SafetyCenterEntryGroup group,
             boolean isFirstCard,
             boolean isLastCard) {
+        // adding collapsed group entry, which will be visible initially
+        mEntriesGroup.addPreference(
+                new SafetyGroupHeaderEntryPreference(
+                        context,
+                        group,
+                        isFirstCard
+                                ? isLastCard ? PositionInCardList.LIST_START_END
+                                : PositionInCardList.LIST_START_CARD_END
+                                : isLastCard ? PositionInCardList.CARD_START_LIST_END
+                                        : PositionInCardList.CARD_START_END,
+                        /* isExpanded */ false,
+                        this::expandGroup
+                )
+        );
+
+        // adding expanded group entry, which will be hidden initially
         mEntriesGroup.addPreference(
                 new SafetyGroupHeaderEntryPreference(
                         context,
                         group,
                         isFirstCard
                                 ? PositionInCardList.LIST_START
-                                : PositionInCardList.CARD_START));
+                                : PositionInCardList.CARD_START,
+                        /* isExpanded */ true,
+                        this::collapseGroup
+                )
+        );
 
+        // adding group entries, but they are will be hidden initially until group is expanded
         List<SafetyCenterEntry> entries = group.getEntries();
         for (int i = 0, last = entries.size() - 1; i <= last; i++) {
             boolean isCardEnd = i == last;
             boolean isListEnd = isLastCard && isCardEnd;
             PositionInCardList positionInCardList =
                     PositionInCardList.calculate(
-                            /* isListStart= */ false,
+                            /* isListStart */ false,
                             isListEnd,
-                            /* isCardStart= */ false,
+                            /* isCardStart */ false,
                             isCardEnd);
             mEntriesGroup.addPreference(
                     new SafetyEntryPreference(
                             context,
                             getTaskIdForEntry(entries.get(i)),
                             entries.get(i),
+                            group.getId(),
                             positionInCardList,
                             mViewModel));
         }
+    }
+
+    private void expandGroup(String groupId) {
+        mCollapsableGroupCardHelper.expandGroup(groupId);
+        mCollapsableGroupCardHelper.updatePreferenceVisibility(mEntriesGroup);
+    }
+
+    private void collapseGroup(String groupId) {
+        mCollapsableGroupCardHelper.collapseGroup(groupId);
+        mCollapsableGroupCardHelper.updatePreferenceVisibility(mEntriesGroup);
     }
 
     private void updateStaticSafetyEntries(
