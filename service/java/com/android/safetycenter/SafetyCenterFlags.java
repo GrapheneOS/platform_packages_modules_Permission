@@ -63,6 +63,9 @@ final class SafetyCenterFlags {
 
     private static final String PROPERTY_UNTRACKED_SOURCES = "safety_center_untracked_sources";
 
+    private static final String PROPERTY_NO_BACKGROUND_REFRESH_SOURCES =
+            "safety_center_no_background_refresh_sources";
+
     private static final Duration REFRESH_SOURCE_TIMEOUT_DEFAULT_DURATION = Duration.ofSeconds(10);
 
     private static final Duration RESOLVING_ACTION_TIMEOUT_DEFAULT_DURATION =
@@ -90,6 +93,7 @@ final class SafetyCenterFlags {
         printFlag(fout, PROPERTY_UNTRACKED_SOURCES, getUntrackedSourceIds());
         printFlag(fout, PROPERTY_RESURFACE_ISSUE_MAX_COUNTS, getResurfaceIssueMaxCounts());
         printFlag(fout, PROPERTY_RESURFACE_ISSUE_DELAYS_MILLIS, getResurfaceIssueDelaysMillis());
+        printFlag(fout, PROPERTY_NO_BACKGROUND_REFRESH_SOURCES, getNoBackgroundRefreshSourceIds());
         fout.println();
     }
 
@@ -155,9 +159,16 @@ final class SafetyCenterFlags {
      */
     @NonNull
     static ArraySet<String> getUntrackedSourceIds() {
-        String untrackedSourcesConfigString = getString(PROPERTY_UNTRACKED_SOURCES, "");
-        String[] untrackedSourcesList = untrackedSourcesConfigString.split(",");
-        return new ArraySet<>(untrackedSourcesList);
+        return getCommaSeparatedStrings(PROPERTY_UNTRACKED_SOURCES);
+    }
+
+    /**
+     * Returns the IDs of sources that should only be refreshed when Safety Center is on screen. We
+     * will refresh these sources only on page open and when the scan button is clicked.
+     */
+    @NonNull
+    static ArraySet<String> getNoBackgroundRefreshSourceIds() {
+        return getCommaSeparatedStrings(PROPERTY_NO_BACKGROUND_REFRESH_SOURCES);
     }
 
     /**
@@ -233,6 +244,11 @@ final class SafetyCenterFlags {
         } finally {
             Binder.restoreCallingIdentity(callingId);
         }
+    }
+
+    @NonNull
+    private static ArraySet<String> getCommaSeparatedStrings(@NonNull String property) {
+        return new ArraySet<>(getString(property, "").split(","));
     }
 
     @NonNull
