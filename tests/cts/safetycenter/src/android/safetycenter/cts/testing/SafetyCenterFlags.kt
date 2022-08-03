@@ -83,6 +83,13 @@ object SafetyCenterFlags {
         "safety_center_resurface_issue_delays_millis"
 
     /**
+     * Comma delimited list of IDs of sources that should only be refreshed when Safety Center is on
+     * screen. We will refresh these sources only on page open and when the scan button is clicked.
+     */
+    private const val PROPERTY_NO_BACKGROUND_REFRESH_SOURCES =
+        "safety_center_no_background_refresh_sources"
+
+    /**
      * Default time for which a Safety Center refresh is allowed to wait for a source to respond to
      * a refresh request before timing out and marking the refresh as finished.
      */
@@ -211,6 +218,19 @@ object SafetyCenterFlags {
                     Int::toString, { value -> value.toMillis().toString() }))
         }
 
+    /**
+     * A property that allows getting and setting the [PROPERTY_NO_BACKGROUND_REFRESH_SOURCES]
+     * device config flag.
+     */
+    var noBackgroundRefreshSources: Set<String>
+        get() =
+            readFlag(PROPERTY_NO_BACKGROUND_REFRESH_SOURCES, defaultValue = emptySet()) {
+                it.split(",").toSet()
+            }
+        set(value) {
+            writeFlag(PROPERTY_NO_BACKGROUND_REFRESH_SOURCES, value.joinToString(","))
+        }
+
     /** Converts a comma separated list of colon separated pairs into a map. */
     private fun <K, V> String.toMap(
         keyFromString: (String) -> K,
@@ -268,7 +288,8 @@ object SafetyCenterFlags {
                     PROPERTY_SAFETY_CENTER_RESOLVE_ACTION_TIMEOUT,
                     PROPERTY_UNTRACKED_SOURCES,
                     PROPERTY_RESURFACE_ISSUE_MAX_COUNTS,
-                    PROPERTY_RESURFACE_ISSUE_DELAYS_MILLIS)
+                    PROPERTY_RESURFACE_ISSUE_DELAYS_MILLIS,
+                    PROPERTY_NO_BACKGROUND_REFRESH_SOURCES)
             },
             READ_DEVICE_CONFIG)
     }
