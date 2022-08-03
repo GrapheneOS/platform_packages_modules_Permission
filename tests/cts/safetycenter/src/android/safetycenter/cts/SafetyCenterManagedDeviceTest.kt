@@ -252,9 +252,10 @@ class SafetyCenterManagedDeviceTest {
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun setSafetySourceData_issuesOnlySourceWithWorkProfile_shouldBeAbleToSetData() {
         val managedSafetyCenterManager = getManagedSafetyCenterManager()
-        val dataToSet = SafetySourceCtsData.issuesOnly(safetySourceCtsData.recommendationIssue)
+        val dataToSet =
+            SafetySourceCtsData.issuesOnly(safetySourceCtsData.recommendationGeneralIssue)
         val dataToSetForWork =
-            SafetySourceCtsData.issuesOnly(safetySourceCtsData.criticalResolvingIssue)
+            SafetySourceCtsData.issuesOnly(safetySourceCtsData.criticalResolvingGeneralIssue)
         safetyCenterCtsHelper.setConfig(ISSUE_ONLY_SOURCE_ALL_PROFILE_CONFIG)
         safetyCenterCtsHelper.setData(ISSUE_ONLY_ALL_PROFILE_SOURCE_ID, dataToSet)
         managedSafetyCenterManager.setSafetySourceDataWithPermissionForManagedUser(
