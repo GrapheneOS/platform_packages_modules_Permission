@@ -269,6 +269,12 @@ class SafetySourceCtsData(private val context: Context) {
                 .putExtra(EXTRA_SOURCE_ISSUE_ID, CRITICAL_ISSUE_ID)
                 .putExtra(EXTRA_SOURCE_ISSUE_ACTION_ID, CRITICAL_ISSUE_ACTION_ID))
 
+    /** A resolving Critical [Action] */
+    val criticalResolvingAction =
+        Action.Builder(CRITICAL_ISSUE_ACTION_ID, "Solve issue", criticalIssueActionPendingIntent)
+            .setWillResolve(true)
+            .build()
+
     /** A [SafetySourceIssue] with a [SEVERITY_LEVEL_CRITICAL_WARNING] and a resolving [Action]. */
     val criticalResolvingIssue =
         SafetySourceIssue.Builder(
@@ -277,11 +283,25 @@ class SafetySourceCtsData(private val context: Context) {
                 "Critical issue summary",
                 SEVERITY_LEVEL_CRITICAL_WARNING,
                 ISSUE_TYPE_ID)
-            .addAction(
-                Action.Builder(
-                        CRITICAL_ISSUE_ACTION_ID, "Solve issue", criticalIssueActionPendingIntent)
-                    .setWillResolve(true)
-                    .build())
+            .addAction(criticalResolvingAction)
+            .build()
+
+    /** A resolving Critical [Action] that declares a success message */
+    val criticalResolvingActionWithSuccessMessage =
+        Action.Builder(CRITICAL_ISSUE_ACTION_ID, "Solve issue", criticalIssueActionPendingIntent)
+            .setWillResolve(true)
+            .setSuccessMessage("Issue solved")
+            .build()
+
+    /** A [SafetySourceIssue] with a [SEVERITY_LEVEL_CRITICAL_WARNING] and a resolving [Action]. */
+    val criticalResolvingIssueWithSuccessMessage =
+        SafetySourceIssue.Builder(
+                CRITICAL_ISSUE_ID,
+                "Critical issue title",
+                "Critical issue summary",
+                SEVERITY_LEVEL_CRITICAL_WARNING,
+                ISSUE_TYPE_ID)
+            .addAction(criticalResolvingActionWithSuccessMessage)
             .build()
 
     /**
@@ -331,6 +351,20 @@ class SafetySourceCtsData(private val context: Context) {
                     .setPendingIntent(redirectPendingIntent)
                     .build())
             .addIssue(criticalResolvingIssue)
+            .build()
+
+    /**
+     * A [SafetySourceData] with a [SEVERITY_LEVEL_CRITICAL_WARNING] resolving [SafetySourceIssue]
+     * and [SafetySourceStatus].
+     */
+    val criticalWithResolvingIssueWithSuccessMessage =
+        SafetySourceData.Builder()
+            .setStatus(
+                SafetySourceStatus.Builder(
+                        "Critical title", "Critical summary", SEVERITY_LEVEL_CRITICAL_WARNING)
+                    .setPendingIntent(redirectPendingIntent)
+                    .build())
+            .addIssue(criticalResolvingIssueWithSuccessMessage)
             .build()
 
     /**

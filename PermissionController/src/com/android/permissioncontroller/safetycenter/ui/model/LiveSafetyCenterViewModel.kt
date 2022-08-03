@@ -25,6 +25,8 @@ import android.safetycenter.SafetyCenterErrorDetails
 import android.safetycenter.SafetyCenterIssue
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.config.SafetySource
+import android.util.Log
+import androidx.annotation.MainThread
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat.getMainExecutor
 import androidx.fragment.app.Fragment
@@ -40,7 +42,8 @@ import java.util.concurrent.atomic.AtomicBoolean
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class LiveSafetyCenterViewModel(app: Application) : SafetyCenterViewModel(app) {
 
-    override val safetyCenterLiveData: LiveData<SafetyCenterData> by this::_safetyCenterLiveData
+    private val TAG: String = LiveSafetyCenterViewModel::class.java.simpleName
+    override val safetyCenterUiLiveData: LiveData<SafetyCenterUiData> by this::_safetyCenterLiveData
     override val errorLiveData: LiveData<SafetyCenterErrorDetails> by this::_errorLiveData
 
     private val _safetyCenterLiveData = SafetyCenterLiveData()
@@ -86,6 +89,10 @@ class LiveSafetyCenterViewModel(app: Application) : SafetyCenterViewModel(app) {
         safetyCenterManager.executeSafetyCenterIssueAction(issue.id, action.id)
     }
 
+    override fun markIssueResolvedUiCompleted(issueId: IssueId) {
+        _safetyCenterLiveData.markIssueResolvedUiCompleted(issueId)
+    }
+
     override fun rescan() {
         safetyCenterManager.refreshSafetySources(
             SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK)
@@ -117,28 +124,120 @@ class LiveSafetyCenterViewModel(app: Application) : SafetyCenterViewModel(app) {
     }
 
     inner class SafetyCenterLiveData :
-        MutableLiveData<SafetyCenterData>(), SafetyCenterManager.OnSafetyCenterDataChangedListener {
+        MutableLiveData<SafetyCenterUiData>(),
+        SafetyCenterManager.OnSafetyCenterDataChangedListener {
+
+        // Managing the data queue isn't designed to support multithreading. Any methods that
+        // manipulate it, or the inFlight or resolved issues lists should only be called on the
+        // main thread, and are marked accordingly.
+        private val safetyCenterDataQueue = ArrayDeque<SafetyCenterData>()
+        private var currentInFlightIssues = mapOf<IssueId, ActionId>()
+        private val currentResolvedIssues = mutableMapOf<IssueId, ActionId>()
 
         override fun onActive() {
             safetyCenterManager.addOnSafetyCenterDataChangedListener(
-                getMainExecutor(app.applicationContext), this)
+                    getMainExecutor(app.applicationContext), this)
             super.onActive()
         }
 
         override fun onInactive() {
             safetyCenterManager.removeOnSafetyCenterDataChangedListener(this)
+
+            // Remove all the tracked state and start from scratch when active again.
+            currentInFlightIssues = mapOf()
+            currentResolvedIssues.clear()
+            safetyCenterDataQueue.clear()
             super.onInactive()
         }
 
+        @MainThread
         override fun onSafetyCenterDataChanged(data: SafetyCenterData) {
-            value = data
+            safetyCenterDataQueue.addLast(data)
+            maybeProcessDataToNextResolvedIssues()
         }
 
         override fun onError(errorDetails: SafetyCenterErrorDetails) {
             _errorLiveData.value = errorDetails
         }
+
+        @MainThread
+        private fun maybeProcessDataToNextResolvedIssues() {
+            // Only process data updates while we aren't waiting for issue resolution animations
+            // to complete.
+            if (currentResolvedIssues.isNotEmpty()) {
+                Log.d(
+                        TAG,
+                        "Received SafetyCenterData while issue resolution animations" +
+                                " occurring. Will update UI with new data soon.")
+                return
+            }
+
+            while (safetyCenterDataQueue.isNotEmpty() && currentResolvedIssues.isEmpty()) {
+                val nextSafetyCenterData = safetyCenterDataQueue.first()
+
+                // Calculate newly resolved issues by diffing the tracked in-flight issues and the
+                // current update. Resolved issues are formerly in-flight issues that no longer
+                // appear in a subsequent SafetyCenterData update.
+                val nextResolvedIssues: Map<IssueId, ActionId> =
+                        determineResolvedIssues(nextSafetyCenterData, currentInFlightIssues)
+
+                // Save the set of in-flight issues to diff against the next data update.
+                currentInFlightIssues = nextSafetyCenterData.getInFlightIssues()
+
+                if (nextResolvedIssues.isEmpty()) {
+                    sendNextData()
+                } else {
+                    currentResolvedIssues.putAll(nextResolvedIssues)
+                    sendResolvedIssuesAndCurrentData()
+                }
+            }
+        }
+
+        private fun determineResolvedIssues(
+            incomingData: SafetyCenterData,
+            inFlightIssues: Map<IssueId, ActionId>
+        ): Map<IssueId, ActionId> {
+            // Any previously in-flight issue that does not appear in the incoming SafetyCenterData
+            // is considered resolved.
+            val issueIdSet: Set<IssueId> = incomingData.issues.map { issue -> issue.id }.toSet()
+            return inFlightIssues.filterNot { issue -> issueIdSet.contains(issue.key) }
+        }
+
+        private fun sendNextData() {
+            value = SafetyCenterUiData(safetyCenterDataQueue.removeFirst())
+        }
+
+        private fun sendResolvedIssuesAndCurrentData() {
+            val currentData = value?.safetyCenterData
+            if (currentData == null || currentResolvedIssues.isEmpty()) {
+                // There can only be resolved issues after receiving data with in-flight issues,
+                // so we should always have already sent data here.
+                throw IllegalArgumentException("No current data or no resolved issues")
+            }
+
+            // The current SafetyCenterData still contains the resolved SafetyCenterIssue objects.
+            // Send it with the resolved IDs so the UI can generate the correct preferences and
+            // trigger the right animations for issue resolution.
+            value = SafetyCenterUiData(currentData, currentResolvedIssues)
+        }
+
+        @MainThread
+        fun markIssueResolvedUiCompleted(issueId: IssueId) {
+            currentResolvedIssues.remove(issueId)
+            maybeProcessDataToNextResolvedIssues()
+        }
     }
 }
+
+private fun SafetyCenterData.getInFlightIssues(): Map<IssueId, ActionId> =
+    issues
+        .map { issue ->
+            issue.actions
+                .filter { it.isInFlight }
+                .map { issue.id to it.id }
+        }
+        .flatten()
+        .toMap()
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class LiveSafetyCenterViewModelFactory(private val app: Application) : ViewModelProvider.Factory {
