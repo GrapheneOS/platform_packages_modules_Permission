@@ -40,6 +40,7 @@ import android.safetycenter.SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_OK
 import android.safetycenter.SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_RECOMMENDATION
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyCenterManager.OnSafetyCenterDataChangedListener
+import android.safetycenter.SafetyCenterManager.REFRESH_REASON_OTHER
 import android.safetycenter.SafetyCenterManager.REFRESH_REASON_PAGE_OPEN
 import android.safetycenter.SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK
 import android.safetycenter.SafetyCenterStaticEntry
@@ -1598,6 +1599,62 @@ class SafetyCenterManagerTest {
             }
 
         assertThat(thrown).hasMessageThat().isEqualTo("Unexpected refresh reason: 143201")
+    }
+
+    @Test
+    fun refreshSafetySources_withRefreshReasonOther_backgroundRefreshDeniedSourcesDoNotSendData() {
+        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
+        // All three sources have data
+        SafetySourceReceiver.safetySourceData[SafetySourceDataKey(REFRESH_GET_DATA, SOURCE_ID_1)] =
+            safetySourceCtsData.criticalWithResolvingGeneralIssue
+        SafetySourceReceiver.safetySourceData[SafetySourceDataKey(REFRESH_GET_DATA, SOURCE_ID_2)] =
+            safetySourceCtsData.information
+        SafetySourceReceiver.safetySourceData[SafetySourceDataKey(REFRESH_GET_DATA, SOURCE_ID_3)] =
+            safetySourceCtsData.information
+        // But sources 1 and 3 should not be refreshed in background
+        SafetyCenterFlags.backgroundRefreshDeniedSources = setOf(SOURCE_ID_1, SOURCE_ID_3)
+
+        safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(REFRESH_REASON_OTHER)
+
+        val apiSafetySourceData1 =
+            safetyCenterManager.getSafetySourceDataWithPermission(SOURCE_ID_1)
+        assertThat(apiSafetySourceData1).isNull()
+        val apiSafetySourceData2 =
+            safetyCenterManager.getSafetySourceDataWithPermission(SOURCE_ID_2)
+        assertThat(apiSafetySourceData2).isEqualTo(safetySourceCtsData.information)
+        val apiSafetySourceData3 =
+            safetyCenterManager.getSafetySourceDataWithPermission(SOURCE_ID_3)
+        assertThat(apiSafetySourceData3).isNull()
+    }
+
+    @Test
+    fun refreshSafetySources_withRefreshReasonPageOpen_noBackgroundRefreshSourceSendsData() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        SafetySourceReceiver.safetySourceData[
+                SafetySourceDataKey(REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
+            safetySourceCtsData.criticalWithResolvingGeneralIssue
+        SafetyCenterFlags.backgroundRefreshDeniedSources = setOf(SINGLE_SOURCE_ID)
+
+        safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+            REFRESH_REASON_PAGE_OPEN)
+
+        val sourceData = safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
+        assertThat(sourceData).isEqualTo(safetySourceCtsData.criticalWithResolvingGeneralIssue)
+    }
+
+    @Test
+    fun refreshSafetySources_withRefreshReasonButtonClicked_noBackgroundRefreshSourceSendsData() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        SafetySourceReceiver.safetySourceData[
+                SafetySourceDataKey(REFRESH_FETCH_FRESH_DATA, SINGLE_SOURCE_ID)] =
+            safetySourceCtsData.criticalWithResolvingGeneralIssue
+        SafetyCenterFlags.backgroundRefreshDeniedSources = setOf(SINGLE_SOURCE_ID)
+
+        safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+            REFRESH_REASON_RESCAN_BUTTON_CLICK)
+
+        val sourceData = safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
+        assertThat(sourceData).isEqualTo(safetySourceCtsData.criticalWithResolvingGeneralIssue)
     }
 
     @Test

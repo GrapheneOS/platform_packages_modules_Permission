@@ -56,7 +56,7 @@ class SafetyCenterCtsHelper(private val context: Context) {
         SafetyCenterFlags.untrackedSources = emptySet()
         SafetyCenterFlags.resurfaceIssueMaxCounts = emptyMap()
         SafetyCenterFlags.resurfaceIssueDelays = emptyMap()
-        SafetyCenterFlags.noBackgroundRefreshSources = emptySet()
+        SafetyCenterFlags.backgroundRefreshDeniedSources = emptySet()
         setAllRefreshTimeoutsTo(TIMEOUT_LONG)
         setEnabled(true)
     }
