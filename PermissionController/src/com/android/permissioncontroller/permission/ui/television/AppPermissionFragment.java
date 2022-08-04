@@ -34,7 +34,6 @@ import static com.android.permissioncontroller.permission.ui.GrantPermissionsVie
 import static com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_CALLER_NAME;
 import static com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_RESULT_PERMISSION_INTERACTED;
 import static com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_RESULT_PERMISSION_RESULT;
-import static com.android.permissioncontroller.permission.ui.handheld.UtilsKt.pressBack;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -272,7 +271,7 @@ public class AppPermissionFragment extends SettingsWithHeader
 
     private void setRadioButtonsState(Map<ButtonType, ButtonState> states) {
         if (states == null && mViewModel.getButtonStateLiveData().isInitialized()) {
-            pressBack(this);
+            getFragmentManager().popBackStack();
             Log.w(LOG_TAG, "invalid package " + mPackageName + " or perm group "
                     + mPermGroupName);
             Toast.makeText(
