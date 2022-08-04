@@ -130,7 +130,7 @@ class SafetyCenterUnsupportedTest {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(SINGLE_SOURCE_CONFIG)
         safetyCenterManager.setSafetySourceDataWithPermission(
             SINGLE_SOURCE_ID,
-            safetySourceCtsData.criticalWithResolvingIssue,
+            safetySourceCtsData.criticalWithResolvingGeneralIssue,
             EVENT_SOURCE_STATE_CHANGED)
 
         val apiSafetySourceData =
@@ -291,7 +291,7 @@ class SafetyCenterUnsupportedTest {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(SINGLE_SOURCE_CONFIG)
         safetyCenterManager.setSafetySourceDataWithPermission(
             SINGLE_SOURCE_ID,
-            safetySourceCtsData.criticalWithResolvingIssue,
+            safetySourceCtsData.criticalWithResolvingGeneralIssue,
             EVENT_SOURCE_STATE_CHANGED)
         val listener = SafetyCenterCtsListener()
         safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
@@ -317,7 +317,7 @@ class SafetyCenterUnsupportedTest {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(SINGLE_SOURCE_CONFIG)
         safetyCenterManager.setSafetySourceDataWithPermission(
             SINGLE_SOURCE_ID,
-            safetySourceCtsData.criticalWithResolvingIssue,
+            safetySourceCtsData.criticalWithResolvingGeneralIssue,
             EVENT_SOURCE_STATE_CHANGED)
         val listener = SafetyCenterCtsListener()
         safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
@@ -347,7 +347,7 @@ class SafetyCenterUnsupportedTest {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(SINGLE_SOURCE_CONFIG)
         safetyCenterManager.setSafetySourceDataWithPermission(
             SINGLE_SOURCE_ID,
-            safetySourceCtsData.criticalWithResolvingIssue,
+            safetySourceCtsData.criticalWithResolvingGeneralIssue,
             EVENT_SOURCE_STATE_CHANGED)
         val apiSafetySourceDataBeforeClearing =
             safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
