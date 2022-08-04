@@ -60,6 +60,7 @@ import android.safetycenter.SafetySourceErrorDetails
 import android.safetycenter.SafetySourceIssue
 import android.safetycenter.cts.testing.Coroutines.TIMEOUT_LONG
 import android.safetycenter.cts.testing.Coroutines.TIMEOUT_SHORT
+import android.safetycenter.cts.testing.Coroutines.waitForWithTimeout
 import android.safetycenter.cts.testing.FakeExecutor
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.addOnSafetyCenterDataChangedListenerWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.clearAllSafetySourceDataForTestsWithPermission
@@ -138,8 +139,10 @@ import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.compatibility.common.preconditions.ScreenLockHelper
 import com.android.safetycenter.resources.SafetyCenterResourcesContext
+import com.google.common.base.Preconditions.checkState
 import com.google.common.truth.Truth.assertThat
 import com.google.common.util.concurrent.MoreExecutors.directExecutor
+import java.time.Duration
 import java.util.Locale
 import kotlin.test.assertFailsWith
 import kotlinx.coroutines.TimeoutCancellationException
@@ -2496,6 +2499,133 @@ class SafetyCenterManagerTest {
     }
 
     @Test
+    fun dismissSafetyCenterIssue_withEmptyMaxCountMap_doesNotResurface() {
+        SafetyCenterFlags.resurfaceIssueMaxCounts = emptyMap()
+        SafetyCenterFlags.resurfaceIssueDelays = mapOf(SEVERITY_LEVEL_INFORMATION to Duration.ZERO)
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.informationWithIssue)
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+        checkState(apiSafetyCenterData == safetyCenterDataOkOneAlert)
+
+        safetyCenterManager.dismissSafetyCenterIssueWithPermission(
+            SafetyCenterCtsData.issueId(SINGLE_SOURCE_ID, INFORMATION_ISSUE_ID))
+
+        assertFailsWith(TimeoutCancellationException::class) {
+            waitForWithTimeout(timeout = TIMEOUT_SHORT) {
+                val hasResurfaced =
+                    safetyCenterManager.getSafetyCenterDataWithPermission() != safetyCenterDataOk
+                hasResurfaced
+            }
+        }
+    }
+
+    @Test
+    fun dismissSafetyCenterIssue_withZeroMaxCount_doesNotResurface() {
+        SafetyCenterFlags.resurfaceIssueMaxCounts =
+            mapOf(
+                SEVERITY_LEVEL_INFORMATION to 0L,
+                SEVERITY_LEVEL_RECOMMENDATION to 99L,
+                SEVERITY_LEVEL_CRITICAL_WARNING to 99L)
+        SafetyCenterFlags.resurfaceIssueDelays =
+            mapOf(
+                SEVERITY_LEVEL_INFORMATION to Duration.ZERO,
+                SEVERITY_LEVEL_RECOMMENDATION to Duration.ZERO,
+                SEVERITY_LEVEL_CRITICAL_WARNING to Duration.ZERO)
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.informationWithIssue)
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+        checkState(apiSafetyCenterData == safetyCenterDataOkOneAlert)
+
+        safetyCenterManager.dismissSafetyCenterIssueWithPermission(
+            SafetyCenterCtsData.issueId(SINGLE_SOURCE_ID, INFORMATION_ISSUE_ID))
+
+        assertFailsWith(TimeoutCancellationException::class) {
+            waitForWithTimeout(timeout = TIMEOUT_SHORT) {
+                val hasResurfaced =
+                    safetyCenterManager.getSafetyCenterDataWithPermission() != safetyCenterDataOk
+                hasResurfaced
+            }
+        }
+    }
+
+    @Test
+    fun dismissSafetyCenterIssue_withTwoMaxCount_resurfacesTwice() {
+        SafetyCenterFlags.resurfaceIssueMaxCounts =
+            mapOf(
+                SEVERITY_LEVEL_INFORMATION to 0L,
+                SEVERITY_LEVEL_RECOMMENDATION to 0L,
+                SEVERITY_LEVEL_CRITICAL_WARNING to 2L)
+        SafetyCenterFlags.resurfaceIssueDelays =
+            mapOf(
+                SEVERITY_LEVEL_INFORMATION to RESURFACE_DELAY,
+                SEVERITY_LEVEL_RECOMMENDATION to RESURFACE_DELAY,
+                SEVERITY_LEVEL_CRITICAL_WARNING to Duration.ZERO)
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(
+            SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithResolvingDeviceIssue)
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+        checkState(apiSafetyCenterData == safetyCenterDataDeviceCriticalOneAlert)
+
+        safetyCenterManager.dismissSafetyCenterIssueWithPermission(
+            SafetyCenterCtsData.issueId(SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID))
+        val apiSafetyCenterDataResurface = safetyCenterManager.getSafetyCenterDataWithPermission()
+        checkState(apiSafetyCenterDataResurface == safetyCenterDataDeviceCriticalOneAlert)
+        safetyCenterManager.dismissSafetyCenterIssueWithPermission(
+            SafetyCenterCtsData.issueId(SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID))
+        val apiSafetyCenterDataResurfaceAgain =
+            safetyCenterManager.getSafetyCenterDataWithPermission()
+        checkState(apiSafetyCenterDataResurfaceAgain == safetyCenterDataDeviceCriticalOneAlert)
+        safetyCenterManager.dismissSafetyCenterIssueWithPermission(
+            SafetyCenterCtsData.issueId(SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID))
+
+        assertFailsWith(TimeoutCancellationException::class) {
+            waitForWithTimeout(timeout = TIMEOUT_SHORT) {
+                val hasResurfaced =
+                    safetyCenterManager.getSafetyCenterDataWithPermission() !=
+                        safetyCenterDataOkReviewCriticalEntry
+                hasResurfaced
+            }
+        }
+    }
+
+    @Test
+    fun dismissSafetyCenterIssue_withNonZeroMaxCountAndNonZeroDelay_resurfacesAfterDelay() {
+        // We cannot rely on a listener in this test to assert on the API content at all times!
+        // The listener will not receive an update when a dismissed issue resurfaces, and it will
+        // not receive an update after subsequent dismissals because as far as the listener cache is
+        // concerned the dismissed issue never resurfaced. This is working as intended.
+        SafetyCenterFlags.resurfaceIssueMaxCounts =
+            mapOf(
+                SEVERITY_LEVEL_INFORMATION to 0L,
+                SEVERITY_LEVEL_RECOMMENDATION to 99L,
+                SEVERITY_LEVEL_CRITICAL_WARNING to 0L)
+        SafetyCenterFlags.resurfaceIssueDelays =
+            mapOf(
+                SEVERITY_LEVEL_INFORMATION to Duration.ZERO,
+                SEVERITY_LEVEL_RECOMMENDATION to RESURFACE_DELAY,
+                SEVERITY_LEVEL_CRITICAL_WARNING to Duration.ZERO)
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(
+            SINGLE_SOURCE_ID, safetySourceCtsData.recommendationWithDeviceIssue)
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+        checkState(apiSafetyCenterData == safetyCenterDataDeviceRecommendationOneAlert)
+        val listener = safetyCenterCtsHelper.addListener()
+
+        safetyCenterManager.dismissSafetyCenterIssueWithPermission(
+            SafetyCenterCtsData.issueId(SINGLE_SOURCE_ID, RECOMMENDATION_ISSUE_ID))
+
+        val safetyCenterDataAfterDismissal = listener.receiveSafetyCenterData()
+        assertThat(safetyCenterDataAfterDismissal)
+            .isEqualTo(safetyCenterDataOkReviewRecommendationEntry)
+        waitForWithTimeout(timeout = RESURFACE_TIMEOUT, checkPeriod = RESURFACE_CHECK) {
+            val hasResurfacedExactly =
+                safetyCenterManager.getSafetyCenterDataWithPermission() ==
+                    safetyCenterDataDeviceRecommendationOneAlert
+            hasResurfacedExactly
+        }
+    }
+
+    @Test
     fun dismissSafetyCenterIssue_withFlagDisabled_doesntCallListenerOrDismiss() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         safetyCenterCtsHelper.setData(
@@ -3136,5 +3266,16 @@ class SafetyCenterManagerTest {
         val arguments = ArrayMap<String, Any>()
         arguments["count"] = count
         return messageFormat.format(arguments)
+    }
+
+    companion object {
+        private val RESURFACE_DELAY = Duration.ofMillis(500)
+        // Wait 1.5 times the RESURFACE_DELAY before asserting whether an issue has or has not
+        // resurfaced. Use a constant additive error buffer if we increase the delay considerably.
+        private val RESURFACE_TIMEOUT = RESURFACE_DELAY.multipliedBy(3).dividedBy(2)
+        // Check more than once during a RESURFACE_DELAY before asserting whether an issue has or
+        // has not resurfaced. Use a different check logic (focused at the expected resurface time)
+        // if we increase the delay considerably.
+        private val RESURFACE_CHECK = RESURFACE_DELAY.dividedBy(4)
     }
 }
