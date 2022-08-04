@@ -22,7 +22,7 @@
 
     <ImageView
         android:id="@android:id/icon"
-        android:contentDescription="@string/safety_center_more_issues_status_icon_content_description"
+        android:importantForAccessibility="no"
         android:src="@drawable/safety_status_info"
         style="@style/SafetyCenterMoreIssuesIcon"/>
 
@@ -33,6 +33,7 @@
 
     <LinearLayout
         android:id="@android:id/widget_frame"
-        style="@style/SafetyCenterMoreIssuesWidgetFrame"/>
+        style="@style/SafetyCenterMoreIssuesWidgetFrame"
+        android:importantForAccessibility="noHideDescendants"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
