@@ -58,6 +58,14 @@ object SafetyCenterCtsConfigs {
      */
     val SINGLE_SOURCE_CONFIG = singleSourceConfig(dynamicSafetySource(SINGLE_SOURCE_ID))
 
+    /**
+     * A simple [SafetyCenterConfig] with an invalid intent action for CTS tests with a single
+     * source of id [SINGLE_SOURCE_ID].
+     */
+    val SINGLE_SOURCE_INVALID_INTENT_CONFIG =
+        singleSourceConfig(
+            dynamicSafetySourceBuilder(SINGLE_SOURCE_ID).setIntentAction("stub").build())
+
     /** A simple [SafetyCenterConfig] for CTS tests with a source max severity level of 0. */
     val SEVERITY_ZERO_CONFIG =
         singleSourceConfig(
@@ -264,15 +272,20 @@ object SafetyCenterCtsConfigs {
     /** A [SafetyCenterConfig] with a dynamic source in a different, missing package. */
     val SINGLE_SOURCE_OTHER_PACKAGE_CONFIG = singleSourceConfig(DYNAMIC_OTHER_PACKAGE_SAFETY_SOURCE)
 
-    /** A dynamic PROFILE_ALL source provided by [SINGLE_SOURCE_ALL_PROFILE_CONFIG]. */
-    val DYNAMIC_ALL_PROFILE_SAFETY_SOURCE =
+    private fun dynamicAllProfileSafetySourceBuilder() =
         dynamicSafetySourceBuilder(SINGLE_SOURCE_ALL_PROFILE_ID)
             .setProfile(SafetySource.PROFILE_ALL)
             .setTitleForWorkResId(android.R.string.paste)
-            .build()
 
     /** A simple [SafetyCenterConfig] with a source supporting all profiles. */
-    val SINGLE_SOURCE_ALL_PROFILE_CONFIG = singleSourceConfig(DYNAMIC_ALL_PROFILE_SAFETY_SOURCE)
+    val SINGLE_SOURCE_ALL_PROFILE_CONFIG =
+        singleSourceConfig(dynamicAllProfileSafetySourceBuilder().build())
+
+    /**
+     * A simple [SafetyCenterConfig] with a source supporting all profiles with an invalid intent.
+     */
+    val SINGLE_SOURCE_ALL_PROFILE_INVALID_INTENT_CONFIG =
+        singleSourceConfig(dynamicAllProfileSafetySourceBuilder().setIntentAction("stub").build())
 
     /** A simple [SafetyCenterConfig] for CTS tests with multiple sources. */
     val MULTIPLE_SOURCES_CONFIG =
