@@ -19,17 +19,7 @@ package com.android.permissioncontroller.permission.ui.handheld
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.app.Activity
-import android.content.res.Configuration
-import android.graphics.Color
-import android.graphics.ImageDecoder
-import android.graphics.Paint
-import android.graphics.Path
-import android.graphics.PixelFormat
-import android.graphics.PorterDuff
-import android.graphics.PorterDuffXfermode
 import android.graphics.Typeface
-import android.graphics.drawable.AnimatedImageDrawable
-import android.graphics.drawable.Drawable
 import android.graphics.drawable.Icon
 import android.os.Bundle
 import android.os.UserHandle
@@ -51,6 +41,9 @@ import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
+import androidx.annotation.RawRes
+import com.airbnb.lottie.LottieCompositionFactory
+import com.airbnb.lottie.LottieDrawable
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_ALWAYS_BUTTON
@@ -88,7 +81,7 @@ class GrantPermissionsViewHandlerImpl(
     private val LOCATION_ACCURACY_DIALOGS = listOf(DIALOG_WITH_BOTH_LOCATIONS,
             DIALOG_WITH_FINE_LOCATION_ONLY, DIALOG_WITH_COARSE_LOCATION_ONLY)
     private val LOCATION_ACCURACY_IMAGE_DIAMETER = mActivity.resources.getDimension(
-            R.dimen.location_accuracy_image_size).toInt()
+            R.dimen.location_accuracy_image_size)
 
     private var resultListener: GrantPermissionsViewHandler.ResultListener? = null
 
@@ -105,10 +98,10 @@ class GrantPermissionsViewHandlerImpl(
     private var isLocationPermissionDialogActionClicked: Boolean = false
     private var coarseRadioButton: RadioButton? = null
     private var fineRadioButton: RadioButton? = null
-    private var coarseOffDrawable: AnimatedImageDrawable? = null
-    private var coarseOnDrawable: AnimatedImageDrawable? = null
-    private var fineOffDrawable: AnimatedImageDrawable? = null
-    private var fineOnDrawable: AnimatedImageDrawable? = null
+    private var coarseOffDrawable: LottieDrawable? = null
+    private var coarseOnDrawable: LottieDrawable? = null
+    private var fineOffDrawable: LottieDrawable? = null
+    private var fineOnDrawable: LottieDrawable? = null
 
     // Views
     private var iconView: ImageView? = null
@@ -184,8 +177,8 @@ class GrantPermissionsViewHandlerImpl(
         updateButtons()
         updateLocationVisibilities()
 
-        //      Animate change in size
-        //      Grow or shrink the content container to size of new content
+        // Animate change in size
+        // Grow or shrink the content container to size of new content
         val growShrinkToNewContentSize = ChangeBounds()
         growShrinkToNewContentSize.duration = ANIMATION_DURATION_MILLIS
         growShrinkToNewContentSize.interpolator = AnimationUtils.loadInterpolator(mActivity,
@@ -237,6 +230,7 @@ class GrantPermissionsViewHandlerImpl(
             val locationView = rootView.findViewById<View>(LOCATION_RES_ID_TO_NUM.keyAt(i))
             locationViews[LOCATION_RES_ID_TO_NUM.valueAt(i)] = locationView
         }
+
         initializeAnimatedImages()
 
         // Set location accuracy radio buttons' click listeners
@@ -253,44 +247,18 @@ class GrantPermissionsViewHandlerImpl(
         return rootView
     }
 
-    private fun initializeAnimatedImages() {
-        val isDarkMode = (mActivity.resources.configuration.uiMode and
-                Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
-        val coarseOffDrawableId = if (isDarkMode) R.drawable.coarse_off_dark
-            else R.drawable.coarse_off_light
-        val coarseOnDrawableId = if (isDarkMode) R.drawable.coarse_on_dark
-            else R.drawable.coarse_on_light
-        val fineOffDrawableId = if (isDarkMode) R.drawable.fine_off_dark
-            else R.drawable.fine_off_light
-        val fineOnDrawableId = if (isDarkMode) R.drawable.fine_on_dark else R.drawable.fine_on_light
-
-        coarseOffDrawable = getDrawableFromId(coarseOffDrawableId) as AnimatedImageDrawable
-        coarseOnDrawable = getDrawableFromId(coarseOnDrawableId) as AnimatedImageDrawable
-        fineOffDrawable = getDrawableFromId(fineOffDrawableId) as AnimatedImageDrawable
-        fineOnDrawable = getDrawableFromId(fineOnDrawableId) as AnimatedImageDrawable
+    private fun getLottieDrawable(@RawRes rawResId: Int): LottieDrawable {
+        val drawable = LottieDrawable()
+        drawable.composition = LottieCompositionFactory.fromRawResSync(mActivity, rawResId).value
+        drawable.scale = LOCATION_ACCURACY_IMAGE_DIAMETER / drawable.composition.bounds.width()
+        return drawable
     }
 
-    private fun getDrawableFromId(drawableId: Int): Drawable {
-        val source = ImageDecoder.createSource(mActivity.resources, drawableId)
-        return ImageDecoder.decodeDrawable(source) { decoder, _, _ ->
-            decoder.setTargetSize(LOCATION_ACCURACY_IMAGE_DIAMETER,
-                    LOCATION_ACCURACY_IMAGE_DIAMETER)
-            decoder.setPostProcessor { canvas ->
-                // This will crop the image to circle image.
-                val path = Path()
-                path.fillType = Path.FillType.INVERSE_EVEN_ODD
-                val width: Int = canvas.width
-                val height: Int = canvas.height
-                path.addRoundRect(0f, 0f, width.toFloat(), height.toFloat(),
-                        width.toFloat() / 2, height.toFloat() / 2, Path.Direction.CW)
-                val paint = Paint()
-                paint.isAntiAlias = true
-                paint.color = Color.TRANSPARENT
-                paint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC)
-                canvas.drawPath(path, paint)
-                PixelFormat.TRANSLUCENT
-            }
-        }
+    private fun initializeAnimatedImages() {
+        coarseOffDrawable = getLottieDrawable(R.raw.coarse_loc_off)
+        coarseOnDrawable = getLottieDrawable(R.raw.coarse_loc_on)
+        fineOffDrawable = getLottieDrawable(R.raw.fine_loc_off)
+        fineOnDrawable = getLottieDrawable(R.raw.fine_loc_on)
     }
 
     override fun updateWindowAttributes(outLayoutParams: LayoutParams) {
@@ -430,8 +398,8 @@ class GrantPermissionsViewHandlerImpl(
                     null, null)
             fineRadioButton?.setCompoundDrawablesWithIntrinsicBounds(null, fineOffDrawable,
                     null, null)
-            coarseOnDrawable?.start()
             fineOffDrawable?.start()
+            coarseOnDrawable?.start()
             coarseRadioButton?.setTypeface(null, Typeface.BOLD)
             fineRadioButton?.setTypeface(null, Typeface.NORMAL)
         }
