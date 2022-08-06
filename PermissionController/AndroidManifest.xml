@@ -62,6 +62,7 @@
     <!--SYSTEM_APPLICATION_OVERLAY will be granted on T+, as installer protection is added in T -->
     <uses-permission android:name="android.permission.SYSTEM_APPLICATION_OVERLAY"/>
     <uses-permission android:name="android.permission.SET_UNRESTRICTED_KEEP_CLEAR_AREAS"/>
+    <uses-permission android:name="android.permission.START_TASKS_FROM_RECENTS" />
 
     <application android:name="com.android.permissioncontroller.PermissionControllerApplication"
             android:label="@string/app_name"
