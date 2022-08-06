@@ -18,6 +18,9 @@ package com.android.permissioncontroller.safetycenter.ui;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
+import static com.android.permissioncontroller.safetycenter.SafetyCenterConstants.INVALID_TASK_ID;
+
+import android.app.ActivityOptions;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.safetycenter.SafetyCenterEntry;
@@ -46,6 +49,7 @@ public final class SafetyEntryPreference extends Preference implements Comparabl
 
     public SafetyEntryPreference(
             Context context,
+            int taskId,
             SafetyCenterEntry entry,
             PositionInCardList position,
             SafetyCenterViewModel viewModel) {
@@ -66,7 +70,12 @@ public final class SafetyEntryPreference extends Preference implements Comparabl
             setOnPreferenceClickListener(
                     unused -> {
                         try {
-                            pendingIntent.send();
+                            ActivityOptions options = ActivityOptions.makeBasic();
+                            if (taskId != INVALID_TASK_ID) {
+                                options.setLaunchTaskId(taskId);
+                            }
+                            entry.getPendingIntent()
+                                    .send(context, 0, null, null, null, null, options.toBundle());
                             mViewModel
                                     .getInteractionLogger()
                                     .recordForEntry(Action.ENTRY_CLICKED, mEntry);
