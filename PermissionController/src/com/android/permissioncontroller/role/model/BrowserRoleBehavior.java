@@ -136,8 +136,8 @@ public class BrowserRoleBehavior implements RoleBehavior {
         //      #grantDefaultPermissionsToDefaultBrowser(java.lang.String, int)
         if (SdkLevel.isAtLeastS()) {
             if (PackageUtils.isSystemPackage(packageName, context)) {
-                Permissions.grant(packageName, SYSTEM_BROWSER_PERMISSIONS, false, false, false,
-                        true, false, context);
+                Permissions.grant(packageName, SYSTEM_BROWSER_PERMISSIONS, false, false, true,
+                        false, false, context);
             }
         }
     }
@@ -146,7 +146,7 @@ public class BrowserRoleBehavior implements RoleBehavior {
     public void revoke(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
         if (SdkLevel.isAtLeastT()) {
             if (PackageUtils.isSystemPackage(packageName, context)) {
-                Permissions.revoke(packageName, SYSTEM_BROWSER_PERMISSIONS, false, true, false,
+                Permissions.revoke(packageName, SYSTEM_BROWSER_PERMISSIONS, true, false, false,
                         context);
             }
         }
