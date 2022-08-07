@@ -30,7 +30,7 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Mantener en \"Mientras la app está en uso\""</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Mantener \"Solo esta vez\""</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Más información"</string>
-    <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"No permitir de ninguna manera"</string>
+    <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"No permitir igualmente"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Ignorar"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> de <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
     <string name="permission_warning_template" msgid="2247087781222679458">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; realice la siguiente acción: <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
