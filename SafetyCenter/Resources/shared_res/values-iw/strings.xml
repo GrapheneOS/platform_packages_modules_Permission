@@ -23,17 +23,17 @@
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"לא נמצאו בעיות"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"בדיקת ההגדרות"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"בדיקה של רשימת ההגדרות"</string>
-    <string name="overall_severity_level_recommendation_title" msgid="5477942982532824601">"המכשיר עלול להיות בסיכון"</string>
-    <string name="overall_severity_level_critical_warning_title" msgid="2043894328485989618">"המכשיר בסיכון"</string>
-    <!-- no translation found for overall_severity_level_safety_recommendation_title (6436208984463981167) -->
+    <!-- no translation found for overall_severity_level_device_recommendation_title (5250040236433061827) -->
     <skip />
-    <!-- no translation found for overall_severity_level_critical_safety_warning_title (1039142045555227172) -->
+    <!-- no translation found for overall_severity_level_critical_device_warning_title (5901771721834272596) -->
     <skip />
+    <string name="overall_severity_level_safety_recommendation_title" msgid="6436208984463981167">"ייתכן שקיים סיכון"</string>
+    <string name="overall_severity_level_critical_safety_warning_title" msgid="1039142045555227172">"קיים סיכון"</string>
     <string name="overall_severity_n_alerts_summary" msgid="1105615451561197136">"{count,plural, =1{התראה #}two{# התראות}many{# התראות}other{# התראות}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"לא ניתן היה לפתוח את הדף"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"לא ניתן היה לפתור את הבעיה בהתראה"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"לא ניתן היה לרענן את ההגדרות"</string>
-    <!-- no translation found for refresh_error (6941786638077164066) -->
-    <skip />
+    <string name="refresh_error" msgid="255412333381376201">"לא ניתן היה לבדוק את ההגדרה {count,plural, =1{}two{הגדרות}many{הגדרות}other{הגדרות}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"פרופיל העבודה מושהה"</string>
+    <string name="group_unknown_summary" msgid="6951386960814105641">"אין עדיין פרטים"</string>
 </resources>

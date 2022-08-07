@@ -23,17 +23,17 @@
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"Асуудал олдсонгүй"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Тохиргоог шалгах"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Тохиргооны жагсаалтыг шалгах"</string>
-    <string name="overall_severity_level_recommendation_title" msgid="5477942982532824601">"Төхөөрөмж эрсдэлд байж магадгүй"</string>
-    <string name="overall_severity_level_critical_warning_title" msgid="2043894328485989618">"Төхөөрөмж эрсдэлд байна"</string>
-    <!-- no translation found for overall_severity_level_safety_recommendation_title (6436208984463981167) -->
+    <!-- no translation found for overall_severity_level_device_recommendation_title (5250040236433061827) -->
     <skip />
-    <!-- no translation found for overall_severity_level_critical_safety_warning_title (1039142045555227172) -->
+    <!-- no translation found for overall_severity_level_critical_device_warning_title (5901771721834272596) -->
     <skip />
+    <string name="overall_severity_level_safety_recommendation_title" msgid="6436208984463981167">"Та эрсдэлд байж магадгүй"</string>
+    <string name="overall_severity_level_critical_safety_warning_title" msgid="1039142045555227172">"Та эрсдэлд байна"</string>
     <string name="overall_severity_n_alerts_summary" msgid="1105615451561197136">"{count,plural, =1{# сэрэмжлүүлэг}other{# сэрэмжлүүлэг}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Хуудсыг нээж чадсангүй"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Сэрэмжлүүлгийг шийдвэрлэж чадсангүй"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"Тохиргоог сэргээж чадсангүй"</string>
-    <!-- no translation found for refresh_error (6941786638077164066) -->
-    <skip />
+    <string name="refresh_error" msgid="255412333381376201">"{count,plural, =1{тохиргоо}other{тохиргоо}}-г шалгаж чадсангүй"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"Ажлын профайлыг түр зогсоосон"</string>
+    <string name="group_unknown_summary" msgid="6951386960814105641">"Мэдээлэл хараахан алга"</string>
 </resources>
