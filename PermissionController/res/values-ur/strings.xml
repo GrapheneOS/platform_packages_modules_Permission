@@ -262,12 +262,9 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"کچھ ایپس کا استعمال کچھ مہینوں سے نہیں کیا گیا ہے۔ جائزے کے لیے تھپتھپائیں۔"</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# غیر مستعمل ایپ}other{# غیر مستعمل ایپس}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"اجازتوں اور عارضی فائلز کو ہٹا دیا گیا ہے اور اطلاعات کو روک دیا گیا۔ جائزے کے لیے تھپتھپائیں۔"</string>
-    <!-- no translation found for unused_apps_safety_center_card_title (5638409355530099149) -->
-    <skip />
-    <!-- no translation found for unused_apps_safety_center_card_content (1088557243627427820) -->
-    <skip />
-    <!-- no translation found for unused_apps_safety_center_action_title (8865914432518993194) -->
-    <skip />
+    <string name="unused_apps_safety_center_card_title" msgid="5638409355530099149">"ہٹائی گئی اجازتوں والی ایپس کا جائزہ لیں"</string>
+    <string name="unused_apps_safety_center_card_content" msgid="1088557243627427820">"آپ نے جن ایپس کا کچھ عرصے سے استعمال نہیں کیا ہے ان کی اجازتیں اور عارضی فائلز ہٹا دی گئیں اور اطلاعات کو روک دیا گیا۔"</string>
+    <string name="unused_apps_safety_center_action_title" msgid="8865914432518993194">"ایپس کا جائزہ لیں"</string>
     <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"حالیہ اجازتیں چیک کریں"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"ڈرائیونگ کے دوران، آپ نے <xliff:g id="APP">%1$s</xliff:g> کو <xliff:g id="PERMISSION">%2$s</xliff:g> تک رسائی دی"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"ڈرائیونگ کے دوران، آپ نے <xliff:g id="APP">%1$s</xliff:g> کو <xliff:g id="PERMISSION_1">%2$s</xliff:g> اور <xliff:g id="PERMISSION_2">%3$s</xliff:g> تک رسائی دی"</string>
@@ -282,28 +279,19 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"آپ کی رازداری کی حفاظت کے لیے اجازتوں کو ہٹایا گیا"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> نے پس منظر میں آپ کا مقام حاصل کر لیا ہے"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"یہ ایپ ہمیشہ آپ کے مقام تک رسائی حاصل کر سکتی ہے۔ تبدیل کرنے کے لیے تھپتھپائیں۔"</string>
-    <!-- no translation found for notification_listener_reminder_notification_title (3747210460187479091) -->
-    <skip />
-    <!-- no translation found for notification_listener_reminder_notification_content (4936171153668563578) -->
-    <skip />
-    <!-- no translation found for notification_listener_warning_card_content (274394600993750005) -->
-    <skip />
+    <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"اپنی اطلاعات کی رسائی والی ایپ کا جائزہ لیں"</string>
+    <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g> آپ کی اطلاعات کے اندر مواد کو برخاست کر سکتی، اس پر کارروائی کر سکتی اور اس تک رسائی حاصل کر سکتی ہے"</string>
+    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"یہ ایپ آپ کی اطلاعات کے اندر مواد کو برخاست کر سکتی، اس پر کارروائی کر سکتی اور اس تک رسائی حاصل کر سکتی ہے کچھ ایپس کو حسب منشا کام کرنے کے لیے اس رسائی کی ضرورت ہوتی ہے۔"</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"رسائی ہٹائیں"</string>
-    <!-- no translation found for notification_listener_review_app_button_label (3433073281029143924) -->
-    <skip />
+    <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"مزید اختیارات دیکھیں"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"رسائی ہٹا دی گئی"</string>
-    <!-- no translation found for accessibility_access_reminder_notification_title (2971317234668807566) -->
-    <skip />
-    <!-- no translation found for accessibility_access_reminder_notification_content (7389454158175306720) -->
-    <skip />
-    <!-- no translation found for accessibility_access_warning_card_content (4370327190293217358) -->
-    <skip />
+    <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"آلے کی مکمل رسائی کے ساتھ ایپ کا جائزہ لیں"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> آپ کی اسکرین دیکھ اور آپ کے آلے پر کارروائیاں کر سکتی ہے۔ ایکسیسبیلٹی ایپس کو حسب منشا کام کرنے کے لیے اس قسم کی رسائی کی ضرورت ہوتی ہے۔"</string>
+    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"یہ ایپ آپ کی اسکرین دیکھ اور آپ کے آلے پر کارروائیاں کر سکتی ہے۔ ایکسیسبیلٹی ایپس کو حسب منشا کام کرنے کے لیے اس قسم کی رسائی کی ضرورت ہوتی ہے لیکن ایپ کو چیک کریں اور یقینی بنائیں کہ آپ اس پر اعتماد کرتے ہیں۔"</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"رسائی ہٹائیں"</string>
-    <!-- no translation found for accessibility_show_all_apps_button_label (960067249326392280) -->
-    <skip />
+    <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"مکمل رسائی والی ایپس دیکھیں"</string>
     <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"رسائی ہٹا دی گئی"</string>
-    <!-- no translation found for safety_center_notification_app_label (2457720616141926534) -->
-    <skip />
+    <string name="safety_center_notification_app_label" msgid="2457720616141926534">"‏Android سسٹم"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"رازداری کی حفاظت کے لیے ایپ کی اجازتوں کو ہٹایا گیا"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> کا استعمال کچھ مہینوں سے نہیں کیا گیا ہے۔ جائزہ کے لیے تھپتھپائیں۔"</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> اور 1 دیگر ایپس کا استعمال کچھ مہینوں سے نہیں کیا گیا ہے۔ جائزہ کے لیے تھپتھپائیں۔"</string>
@@ -524,39 +512,28 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"ایپس اور سروسز کے لیے"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"جب آپ ایمرجنسی نمبر پر کال کرتے ہیں تو مائیکروفون کے ڈیٹا کا اب بھی اشتراک کیا جا سکتا ہے۔"</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"تبدیل کریں"</string>
-    <!-- no translation found for safety_center_dashboard_page_title (2810774008694315854) -->
-    <skip />
-    <!-- no translation found for safety_center_rescan_button (4517514567809409596) -->
-    <skip />
+    <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"سیکیورٹی اور رازداری"</string>
+    <string name="safety_center_rescan_button" msgid="4517514567809409596">"آلہ اسکین کریں"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"برخاست کریں"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"اس الرٹ کو برخاست کریں؟"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"مزید تحفظ شامل کرنے کے لیے کسی بھی وقت اپنی سیکیورٹی اور رازداری کی ترتیبات کا جائزہ لیں"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"برخاست کریں"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"منسوخ کریں"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"ترتیبات"</string>
     <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"سیکیورٹی اور رازداری کا اسٹیٹس۔ <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>۔ <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"سیکیورٹی کی ترتیبات"</string>
-    <!-- no translation found for sensor_permissions_qs (1022267900031317472) -->
-    <skip />
-    <!-- no translation found for safety_privacy_qs_tile_title (727301867710374052) -->
-    <skip />
+    <string name="sensor_permissions_qs" msgid="1022267900031317472">"اجازتیں"</string>
+    <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"سیکیورٹی اور رازداری"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"صورتحال چیک کریں"</string>
-    <!-- no translation found for privacy_controls_qs (5780144882040591169) -->
-    <skip />
-    <!-- no translation found for security_settings_button_label_qs (8280343822465962330) -->
-    <skip />
-    <!-- no translation found for camera_toggle_label_qs (3880261453066157285) -->
-    <skip />
-    <!-- no translation found for microphone_toggle_label_qs (8132912469813396552) -->
-    <skip />
+    <string name="privacy_controls_qs" msgid="5780144882040591169">"آپ کی رازداری کے کنٹرولز"</string>
+    <string name="security_settings_button_label_qs" msgid="8280343822465962330">"مزید ترتیبات"</string>
+    <string name="camera_toggle_label_qs" msgid="3880261453066157285">"کیمرا تک رسائی"</string>
+    <string name="microphone_toggle_label_qs" msgid="8132912469813396552">"مائیکروفون تک رسائی"</string>
     <string name="permissions_removed_qs" msgid="8957319130625294572">"اجازت کو ہٹایا گیا"</string>
-    <!-- no translation found for camera_usage_qs (134093544497365716) -->
-    <skip />
-    <!-- no translation found for microphone_usage_qs (5054432134389894202) -->
-    <skip />
-    <!-- no translation found for remove_camera_qs (3649996161066883350) -->
-    <skip />
-    <!-- no translation found for remove_microphone_qs (1276551965129953198) -->
-    <skip />
+    <string name="camera_usage_qs" msgid="4394233566086665994">"کیمرے کا حالیہ استعمال دیکھیں"</string>
+    <string name="microphone_usage_qs" msgid="8527666682168170417">"مائیک کا حالیہ استعمال دیکھیں"</string>
+    <string name="remove_camera_qs" msgid="3649996161066883350">"اس ایپ کے لیے اجازت ہٹائیں"</string>
+    <string name="remove_microphone_qs" msgid="1276551965129953198">"اس ایپ کے لیے اجازت ہٹائیں"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"سروس کا نظم کریں"</string>
     <string name="manage_permissions_qs" msgid="3780541819763475434">"اجازتوں کا نظم کریں"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"فون کال کے ذریعے استعمال کیا جا رہا ہے"</string>
@@ -585,32 +562,20 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"‏یہ ایپ Android کے تازہ ترین ورژن کو سپورٹ نہیں کرتی ہے۔ اگر یہ ایپ موسیقی اور آڈیو فائلز تک رسائی حاصل نہیں کر سکتی ہے تو اسے تصاویر اور ویڈیوز تک رسائی کی بھی اجازت نہیں ہوگی۔"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"‏یہ ایپ Android کے تازہ ترین ورژن کو سپورٹ نہیں کرتی ہے۔ اگر یہ ایپ تصاویر اور ویڈیوز تک رسائی حاصل کر سکتی ہے تو اسے موسیقی اور آڈیو فائلز تک رسائی کی بھی اجازت ہوگی۔"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"‏یہ ایپ Android کے تازہ ترین ورژن کو سپورٹ نہیں کرتی ہے۔ اگر یہ ایپ موسیقی اور آڈیو فائلز تک رسائی حاصل نہیں کر سکتی ہے تو اسے تصاویر اور ویڈیوز تک رسائی کی بھی اجازت نہیں ہوگی۔"</string>
-    <!-- no translation found for safety_center_background_location_access_notification_title (8933610618810588237) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_notification_content (4066560182507301022) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_title (5477847038103863843) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_summary (8276755741395332974) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_revoked (6972274943343442213) -->
-    <skip />
-    <!-- no translation found for safety_center_view_recent_location_access (3524391299490678243) -->
-    <skip />
-    <!-- no translation found for privacy_controls_title (7605929972256835199) -->
-    <skip />
-    <!-- no translation found for camera_toggle_title (1251201397431837666) -->
-    <skip />
-    <!-- no translation found for mic_toggle_title (2649991093496110162) -->
-    <skip />
-    <!-- no translation found for perm_toggle_description (7801326363741451379) -->
-    <skip />
-    <!-- no translation found for mic_toggle_description (9163104307990677157) -->
-    <skip />
-    <!-- no translation found for location_settings_subtitle (2328360561197430695) -->
-    <skip />
-    <!-- no translation found for show_clip_access_notification_title (5168467637351109096) -->
-    <skip />
-    <!-- no translation found for show_clip_access_notification_summary (3532020182782112687) -->
-    <skip />
+    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"پس منظر میں مقام کے ڈیٹا کی رسائی والی ایپ کا جائزہ لیں"</string>
+    <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> ایپ کے بند ہونے پر بھی ہمیشہ آپ کے مقام تک رسائی حاصل کر سکتی ہے"</string>
+    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"پس منظر میں مقام کے ڈیٹا کی رسائی والی ایپ کا جائزہ لیں"</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"یہ ایپ بند ہونے پر بھی ہمیشہ آپ کے مقام تک رسائی حاصل کر سکتی ہے۔"</string>
+    <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"رسائی تبدیل ہو گئی"</string>
+    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"حالیہ مقام کا استعمال دیکھیں"</string>
+    <string name="privacy_controls_title" msgid="7605929972256835199">"رازداری سے متعلق کنٹرولز"</string>
+    <string name="camera_toggle_title" msgid="1251201397431837666">"کیمرا تک رسائی"</string>
+    <string name="mic_toggle_title" msgid="2649991093496110162">"مائیکروفون تک رسائی"</string>
+    <string name="perm_toggle_description" msgid="7801326363741451379">"ایپس اور سروسز کے لیے"</string>
+    <string name="mic_toggle_description" msgid="9163104307990677157">"ایپس اور سروسز کے لیے۔ اگر یہ ترتیب آف ہو تو آپ کے ایمرجنسی نمبر پر کال کرتے وقت بھی مائیکروفون کے ڈیٹا کا اشتراک کیا جا سکتا ہے۔"</string>
+    <string name="location_settings_subtitle" msgid="2328360561197430695">"ایسی ایپس اور سروسز دیکھیں جن کو مقام تک رسائی حاصل ہے"</string>
+    <string name="show_clip_access_notification_title" msgid="5168467637351109096">"کلپ بورڈ تک رسائی دکھائیں"</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"ایپس کے آپ کے کاپی کردہ ٹیکسٹ، تصاویر یا دیگر مواد تک رسائی حاصل کرنے پر پیغام دکھائیں"</string>
+    <string name="show_password_title" msgid="2877269286984684659">"پاس ورڈز دکھائیں"</string>
+    <string name="show_password_summary" msgid="1110166488865981610">"ٹائپ کرتے وقت حروف کو مختصر طور پر ڈسپلے کریں"</string>
 </resources>

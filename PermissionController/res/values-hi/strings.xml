@@ -84,7 +84,7 @@
     <string name="no_apps" msgid="2412612731628386816">"किसी ऐप्लिकेशन को इस अनुमति की ज़रूरत नहीं है"</string>
     <string name="location_settings" msgid="3624412509133422562">"जगह की जानकारी की सेटिंग"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> से इस डिवाइस पर जगह की जानकारी मिलती है. जगह की जानकारी की सेटिंग में जाकर जगह की जानकरी ऐक्सेस करने की अनुमति में बदलाव किया जा सकता है."</string>
-    <string name="system_warning" msgid="1173400963234358816">"अगर आप यह अनुमति नहीं देते हैं, तो हो सकता है कि आपके डिवाइस की बुनियादी सुविधाएं ठीक तरह से काम न करें."</string>
+    <string name="system_warning" msgid="1173400963234358816">"यह अनुमति न देने पर, तो हो सकता है कि आपके डिवाइस की बुनियादी सुविधाएं ठीक से काम न करें."</string>
     <string name="deny_read_media_visual_warning" msgid="3982586279917232827">"यह ऐप्लिकेशन, Android के पुराने वर्शन के लिए बनाया गया था. यह ऐप्लिकेशन, फ़ोटो और वीडियो का ऐक्सेस न मिलने पर, संगीत और दूसरे ऑडियो को भी ऐक्सेस नहीं कर पाएगा."</string>
     <string name="deny_read_media_aural_warning" msgid="8928699919508646732">"यह ऐप्लिकेशन, Android के पुराने वर्शन के लिए बनाया गया था. यह ऐप्लिकेशन, संगीत और दूसरे ऑडियो का ऐक्सेस न मिलने पर, फ़ोटो और वीडियो को भी ऐक्सेस नहीं कर पाएगा."</string>
     <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"अगर आप यह अनुमति नहीं देते हैं, तो आपके डिवाइस पर इस ऐप्लिकेशन के ज़रिए मैनेज की जाने वाली कुछ सुविधाएं, ठीक तरह से काम नहीं करेंगी."</string>
@@ -262,12 +262,9 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"कुछ ऐप्लिकेशन का इस्तेमाल कुछ महीनों से नहीं किया गया है. देखने के लिए टैप करें."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{इस्तेमाल न होने वाला # ऐप्लिकेशन}one{इस्तेमाल न होने वाला # ऐप्लिकेशन}other{इस्तेमाल न होने वाले # ऐप्लिकेशन}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"ऐप्लिकेशन को दी गई अनुमतियां और डिवाइस पर कुछ समय तक रहने वाली फ़ाइलें हटा दी गई हैं. साथ ही, सूचनाएं रोक दी गई हैं. देखने के लिए टैप करें."</string>
-    <!-- no translation found for unused_apps_safety_center_card_title (5638409355530099149) -->
-    <skip />
-    <!-- no translation found for unused_apps_safety_center_card_content (1088557243627427820) -->
-    <skip />
-    <!-- no translation found for unused_apps_safety_center_action_title (8865914432518993194) -->
-    <skip />
+    <string name="unused_apps_safety_center_card_title" msgid="5638409355530099149">"जिन ऐप्लिकेशन के लिए अनुमतियां हट गई हैं उनकी समीक्षा करें"</string>
+    <string name="unused_apps_safety_center_card_content" msgid="1088557243627427820">"आपने जिन ऐप्लिकेशन का काफ़ी समय से इस्तेमाल नहीं किया है उनके लिए अनुमतियों और डिवाइस पर कुछ समय के लिए सेव की गई फ़ाइलों को हटा दिया गया है. साथ ही, उनसे जुड़ी सूचनाएं पाने की सुविधा को रोक दिया गया है."</string>
+    <string name="unused_apps_safety_center_action_title" msgid="8865914432518993194">"इस्तेमाल न किए जाने वाले ऐप्लिकेशन की समीक्षा करें"</string>
     <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"हाल ही में दी गई अनुमतियां देखें"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"आपने गाड़ी चलाते समय, <xliff:g id="APP">%1$s</xliff:g> को <xliff:g id="PERMISSION">%2$s</xliff:g> का ऐक्सेस दिया था"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"आपने गाड़ी चलाते समय, <xliff:g id="APP">%1$s</xliff:g> को <xliff:g id="PERMISSION_1">%2$s</xliff:g> और <xliff:g id="PERMISSION_2">%3$s</xliff:g> का ऐक्सेस दिया था"</string>
@@ -282,28 +279,21 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"आपकी निजता की सुरक्षा के लिए अनुमतियां हटाई गई हैं"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> अब बैकग्राउंड में आपकी जगह की जानकारी ऐक्सेस कर सकता है"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"यह ऐप्लिकेशन हमेशा आपकी जगह की जानकारी ऐक्सेस कर सकता है. बदलने के लिए टैप करें."</string>
-    <!-- no translation found for notification_listener_reminder_notification_title (3747210460187479091) -->
+    <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"सूचनाओं का ऐक्सेस रखने वाले ऐप्लिकेशन की समीक्षा करें"</string>
+    <!-- no translation found for notification_listener_reminder_notification_content (831476101108863427) -->
     <skip />
-    <!-- no translation found for notification_listener_reminder_notification_content (4936171153668563578) -->
-    <skip />
-    <!-- no translation found for notification_listener_warning_card_content (274394600993750005) -->
+    <!-- no translation found for notification_listener_warning_card_content (7840973324284115893) -->
     <skip />
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"ऐक्सेस हटाएं"</string>
-    <!-- no translation found for notification_listener_review_app_button_label (3433073281029143924) -->
-    <skip />
+    <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"ज़्यादा विकल्प देखें"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"ऐक्सेस हटाया गया"</string>
-    <!-- no translation found for accessibility_access_reminder_notification_title (2971317234668807566) -->
-    <skip />
-    <!-- no translation found for accessibility_access_reminder_notification_content (7389454158175306720) -->
-    <skip />
-    <!-- no translation found for accessibility_access_warning_card_content (4370327190293217358) -->
-    <skip />
+    <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"डिवाइस का पूरा ऐक्सेस रखने वाले ऐप्लिकेशन की समीक्षा करें"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> आपके डिवाइस की स्क्रीन देख सकता है. साथ ही, यह आपके डिवाइस पर कार्रवाइयां कर सकता है. सुलभता से जुड़े ऐप्लिकेशन को सही तरीके से काम करने के लिए, इस तरह के ऐक्सेस की ज़रूरत होती है."</string>
+    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"यह ऐप्लिकेशन आपके डिवाइस की स्क्रीन देख सकता है. साथ ही, यह आपके डिवाइस पर कार्रवाइयां कर सकता है. सुलभता से जुड़े ऐप्लिकेशन को सही तरीके से काम करने के लिए, इस तरह के ऐक्सेस की ज़रूरत होती है. हालांकि, ऐक्सेस देने से पहले ऐप्लिकेशन की जांच कर लें और पक्का करें कि यह भरोसेमंद हो."</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"ऐक्सेस हटाएं"</string>
-    <!-- no translation found for accessibility_show_all_apps_button_label (960067249326392280) -->
-    <skip />
+    <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"डिवाइस का पूरा ऐक्सेस रखने वाले ऐप्लिकेशन देखें"</string>
     <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"ऐक्सेस हटाया गया"</string>
-    <!-- no translation found for safety_center_notification_app_label (2457720616141926534) -->
-    <skip />
+    <string name="safety_center_notification_app_label" msgid="2457720616141926534">"Android System"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"निजता की सुरक्षा के लिए ऐप्लिकेशन की अनुमतियां हटाई गई हैं"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> का कुछ महीनों से इस्तेमाल नहीं किया गया है. देखने के लिए टैप करें."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> और 1 दूसरी ऐप्लिकेशन का कुछ महीनों से इस्तेमाल नहीं किया गया है. देखने के लिए टैप करें."</string>
@@ -524,39 +514,28 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"ऐप्लिकेशन और सेवाओं के लिए"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"जब आपातकालीन नंबर पर कॉल किया जाता है, तो माइक ब्लॉक होने के बावजूद माइक्रोफ़ोन का डेटा शेयर किया जा सकता है."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"बदलें"</string>
-    <!-- no translation found for safety_center_dashboard_page_title (2810774008694315854) -->
-    <skip />
-    <!-- no translation found for safety_center_rescan_button (4517514567809409596) -->
-    <skip />
+    <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"सुरक्षा और निजता"</string>
+    <string name="safety_center_rescan_button" msgid="4517514567809409596">"डिवाइस स्कैन करें"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"खारिज करें"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"क्या इस चेतावनी को खारिज करना है?"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"जब चाहें अपनी सुरक्षा और निजता की सेटिंग की समीक्षा करें और डिवाइस की सुरक्षा बढ़ाएं"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"खारिज करें"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"अभी नहीं"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"सेटिंग"</string>
     <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"सुरक्षा और निजता की स्थिति <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>. <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"सुरक्षा सेटिंग"</string>
-    <!-- no translation found for sensor_permissions_qs (1022267900031317472) -->
-    <skip />
-    <!-- no translation found for safety_privacy_qs_tile_title (727301867710374052) -->
-    <skip />
+    <string name="sensor_permissions_qs" msgid="1022267900031317472">"अनुमतियां"</string>
+    <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"सुरक्षा और निजता"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"स्थिति देखें"</string>
-    <!-- no translation found for privacy_controls_qs (5780144882040591169) -->
-    <skip />
-    <!-- no translation found for security_settings_button_label_qs (8280343822465962330) -->
-    <skip />
-    <!-- no translation found for camera_toggle_label_qs (3880261453066157285) -->
-    <skip />
-    <!-- no translation found for microphone_toggle_label_qs (8132912469813396552) -->
-    <skip />
+    <string name="privacy_controls_qs" msgid="5780144882040591169">"आपकी निजता सेटिंग"</string>
+    <string name="security_settings_button_label_qs" msgid="8280343822465962330">"अन्य सेटिंग"</string>
+    <string name="camera_toggle_label_qs" msgid="3880261453066157285">"कैमरे का ऐक्सेस"</string>
+    <string name="microphone_toggle_label_qs" msgid="8132912469813396552">"माइक्रोफ़ोन का ऐक्सेस"</string>
     <string name="permissions_removed_qs" msgid="8957319130625294572">"अनुमति हटाई गई"</string>
-    <!-- no translation found for camera_usage_qs (134093544497365716) -->
-    <skip />
-    <!-- no translation found for microphone_usage_qs (5054432134389894202) -->
-    <skip />
-    <!-- no translation found for remove_camera_qs (3649996161066883350) -->
-    <skip />
-    <!-- no translation found for remove_microphone_qs (1276551965129953198) -->
-    <skip />
+    <string name="camera_usage_qs" msgid="4394233566086665994">"हाल ही में कैमरा इस्तेमाल करने की जानकारी देखें"</string>
+    <string name="microphone_usage_qs" msgid="8527666682168170417">"हाल ही में माइक इस्तेमाल करने की जानकारी देखें"</string>
+    <string name="remove_camera_qs" msgid="3649996161066883350">"ऐप्लिकेशन के लिए कैमरे का ऐक्सेस रोकें"</string>
+    <string name="remove_microphone_qs" msgid="1276551965129953198">"ऐप्लिकेशन के लिए कैमरे का ऐक्सेस रोकें"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"सेवा मैनेज करें"</string>
     <string name="manage_permissions_qs" msgid="3780541819763475434">"अनुमतियां मैनेज करें"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"किसी खास फ़ोन कॉल के लिए इस्तेमाल हो रहा है"</string>
@@ -585,32 +564,20 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"यह ऐप्लिकेशन, Android के नए वर्शन पर काम नहीं करता है. अगर यह ऐप्लिकेशन संगीत और ऑडियो फ़ाइलों को ऐक्सेस नहीं कर सकता, तो यह फ़ोटो और वीडियो को भी ऐक्सेस नहीं कर सकेगा."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"यह ऐप्लिकेशन, Android के नए वर्शन पर काम नहीं करता है. अगर यह ऐप्लिकेशन फ़ोटो और वीडियो को ऐक्सेस कर सकता है, तो यह संगीत और ऑडियो फ़ाइलों को भी ऐक्सेस कर सकेगा."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"यह ऐप्लिकेशन, Android के नए वर्शन पर काम नहीं करता है. अगर यह ऐप्लिकेशन संगीत और ऑडियो फ़ाइलों को ऐक्सेस नहीं कर सकता, तो यह फ़ोटो और वीडियो को भी ऐक्सेस नहीं कर सकेगा."</string>
-    <!-- no translation found for safety_center_background_location_access_notification_title (8933610618810588237) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_notification_content (4066560182507301022) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_title (5477847038103863843) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_summary (8276755741395332974) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_revoked (6972274943343442213) -->
-    <skip />
-    <!-- no translation found for safety_center_view_recent_location_access (3524391299490678243) -->
-    <skip />
-    <!-- no translation found for privacy_controls_title (7605929972256835199) -->
-    <skip />
-    <!-- no translation found for camera_toggle_title (1251201397431837666) -->
-    <skip />
-    <!-- no translation found for mic_toggle_title (2649991093496110162) -->
-    <skip />
-    <!-- no translation found for perm_toggle_description (7801326363741451379) -->
-    <skip />
-    <!-- no translation found for mic_toggle_description (9163104307990677157) -->
-    <skip />
-    <!-- no translation found for location_settings_subtitle (2328360561197430695) -->
-    <skip />
-    <!-- no translation found for show_clip_access_notification_title (5168467637351109096) -->
-    <skip />
-    <!-- no translation found for show_clip_access_notification_summary (3532020182782112687) -->
-    <skip />
+    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"बैकग्राउंड में जगह की जानकारी को ऐक्सेस करने वाले ऐप्लिकेशन की समीक्षा करें"</string>
+    <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> बंद होने पर भी, आपके डिवाइस की जगह की जानकारी को ऐक्सेस कर सकता है"</string>
+    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"बैकग्राउंड में जगह की जानकारी को ऐक्सेस करने वाले ऐप्लिकेशन की समीक्षा करें"</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"यह ऐप्लिकेशन बंद होने पर भी, आपके डिवाइस की जगह की जानकारी को ऐक्सेस कर सकता है."</string>
+    <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"ऐक्सेस करने से जुड़ी अनुमति बदली गई"</string>
+    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"हाल ही में ऐक्सेस की गई जगह की जानकारी देखें"</string>
+    <string name="privacy_controls_title" msgid="7605929972256835199">"निजता सेटिंग"</string>
+    <string name="camera_toggle_title" msgid="1251201397431837666">"कैमरे का ऐक्सेस"</string>
+    <string name="mic_toggle_title" msgid="2649991093496110162">"माइक्रोफ़ोन का ऐक्सेस"</string>
+    <string name="perm_toggle_description" msgid="7801326363741451379">"ऐप्लिकेशन और सेवाओं के लिए"</string>
+    <string name="mic_toggle_description" msgid="9163104307990677157">"ऐप्लिकेशन और सेवाओं के लिए. इस सेटिंग के बंद होने पर भी, माइक्रोफ़ोन डेटा को शेयर किया जा सकता है. ऐसा तब होता है, जब किसी आपातकालीन नंबर पर कॉल किया जाता है."</string>
+    <string name="location_settings_subtitle" msgid="2328360561197430695">"उन ऐप्लिकेशन और सेवाओं को देखें जिनके पास जगह की जानकारी का ऐक्सेस है"</string>
+    <string name="show_clip_access_notification_title" msgid="5168467637351109096">"क्लिपबोर्ड का डेटा ऐक्सेस किए जाने पर मैसेज पाएं"</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"जब कोई ऐप्लिकेशन आपके कॉपी किए गए टेक्स्ट, इमेज या अन्य कॉन्टेंट को ऐक्सेस करे, तो मैसेज से इसकी सूचना पाएं"</string>
+    <string name="show_password_title" msgid="2877269286984684659">"पासवर्ड दिखाएं"</string>
+    <string name="show_password_summary" msgid="1110166488865981610">"टाइप करते समय वर्ण दिखाएं"</string>
 </resources>

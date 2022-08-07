@@ -262,12 +262,9 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"កម្មវិធី​មួយចំនួន​មិនត្រូវបាន​ប្រើប្រាស់​រយៈពេល​ពីរបីខែហើយ។ សូមចុច ដើម្បី​ពិនិត្យមើល។"</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{កម្មវិធី​ដែលមិនប្រើ​ចំនួន #}other{កម្មវិធី​ដែលមិនប្រើ​ចំនួន #}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"ការអនុញ្ញាត និងឯកសារបណ្ដោះអាសន្ន​ត្រូវបានលុបចេញ ហើយការជូនដំណឹងត្រូវបានបញ្ឈប់។ សូមចុច ដើម្បី​ពិនិត្យមើល។"</string>
-    <!-- no translation found for unused_apps_safety_center_card_title (5638409355530099149) -->
-    <skip />
-    <!-- no translation found for unused_apps_safety_center_card_content (1088557243627427820) -->
-    <skip />
-    <!-- no translation found for unused_apps_safety_center_action_title (8865914432518993194) -->
-    <skip />
+    <string name="unused_apps_safety_center_card_title" msgid="5638409355530099149">"ពិនិត្យ​មើល​កម្មវិធីដែល​បាន​ដក​ការអនុញ្ញាត"</string>
+    <string name="unused_apps_safety_center_card_content" msgid="1088557243627427820">"ចំពោះកម្មវិធីដែលអ្នកមិនបានប្រើមួយរយៈ ការអនុញ្ញាត និងឯកសារបណ្ដោះអាសន្ន​ត្រូវ​បាន​ដក​ ហើយ​ការជូន​ដំណឹង​ត្រូវ​បាន​បញ្ឈប់។"</string>
+    <string name="unused_apps_safety_center_action_title" msgid="8865914432518993194">"ពិនិត្យមើល​កម្មវិធី"</string>
     <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"ពិនិត្យមើល​ការអនុញ្ញាត​ថ្មីៗ"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"នៅពេល​កំពុងបើកបរ អ្នកបានផ្ដល់​សិទ្ធិចូលប្រើ​<xliff:g id="PERMISSION">%2$s</xliff:g>​ទៅឱ្យ <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"នៅពេល​កំពុងបើកបរ អ្នកបានផ្ដល់​សិទ្ធិចូលប្រើ​<xliff:g id="PERMISSION_1">%2$s</xliff:g> និង​<xliff:g id="PERMISSION_2">%3$s</xliff:g>​ទៅឱ្យ <xliff:g id="APP">%1$s</xliff:g>"</string>
@@ -282,28 +279,21 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"បានដក​ការអនុញ្ញាត ដើម្បីការពារ​ឯកជនភាព​របស់អ្នក"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> បានទទួល​ទីតាំង​របស់អ្នក​នៅផ្ទៃខាងក្រោយ"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"កម្មវិធី​នេះ​អាច​ចូលប្រើប្រាស់​ទីតាំង​របស់អ្នក​បានជា​និច្ច។ សូម​ចុច​ដើម្បី​ប្ដូរ។"</string>
-    <!-- no translation found for notification_listener_reminder_notification_title (3747210460187479091) -->
+    <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"ពិនិត្យមើលកម្មវិធីដែលមានសិទ្ធិចូលប្រើការជូនដំណឹងរបស់អ្នក"</string>
+    <!-- no translation found for notification_listener_reminder_notification_content (831476101108863427) -->
     <skip />
-    <!-- no translation found for notification_listener_reminder_notification_content (4936171153668563578) -->
-    <skip />
-    <!-- no translation found for notification_listener_warning_card_content (274394600993750005) -->
+    <!-- no translation found for notification_listener_warning_card_content (7840973324284115893) -->
     <skip />
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"ដក​សិទ្ធិចូលប្រើចេញ"</string>
-    <!-- no translation found for notification_listener_review_app_button_label (3433073281029143924) -->
-    <skip />
+    <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"មើល​ជម្រើស​ច្រើនទៀត"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"បានដក​សិទ្ធិចូលប្រើចេញ"</string>
-    <!-- no translation found for accessibility_access_reminder_notification_title (2971317234668807566) -->
-    <skip />
-    <!-- no translation found for accessibility_access_reminder_notification_content (7389454158175306720) -->
-    <skip />
-    <!-- no translation found for accessibility_access_warning_card_content (4370327190293217358) -->
-    <skip />
+    <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"ពិនិត្យមើលកម្មវិធីដែលមានសិទ្ធិចូលប្រើឧបករណ៍ពេញលេញ"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> អាច​មើល​អេក្រង់​របស់​អ្នក និង​ធ្វើ​សកម្មភាព​លើ​ឧបករណ៍​របស់​អ្នក។ កម្មវិធី​ភាពងាយស្រួល​ត្រូវការ​សិទ្ធិ​ចូល​ប្រើ​ប្រភេទ​នេះ ដើម្បី​ដំណើរការ​ដូច​ចង់​បាន។"</string>
+    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"កម្មវិធី​នេះ​អាច​មើល​អេក្រង់​របស់​អ្នក និង​ធ្វើ​សកម្មភាព​លើ​ឧបករណ៍​របស់​អ្នក។ កម្មវិធី​ភាពងាយស្រួល​ត្រូវការ​សិទ្ធិ​ចូល​ប្រើ​ប្រភេទ​នេះ ដើម្បី​ដំណើរការ​ដូច​ចង់​បាន ប៉ុន្តែ​សូម​ពិនិត្យ​មើល​កម្មវិធី និង​ប្រាកដ​ថា អ្នក​ទុក​ចិត្ត​កម្មវិធី​នេះ។"</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"ដក​សិទ្ធិចូលប្រើប្រាស់​ចេញ"</string>
-    <!-- no translation found for accessibility_show_all_apps_button_label (960067249326392280) -->
-    <skip />
+    <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"មើល​កម្មវិធី​ដែល​មាន​សិទ្ធិ​ចូល​ប្រើ​ពេញលេញ"</string>
     <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"បានដក​សិទ្ធិចូលប្រើចេញ"</string>
-    <!-- no translation found for safety_center_notification_app_label (2457720616141926534) -->
-    <skip />
+    <string name="safety_center_notification_app_label" msgid="2457720616141926534">"ប្រព័ន្ធ Android"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"បានដក​ការអនុញ្ញាត​កម្មវិធីចេញ ដើម្បី​ការពារ​ឯកជនភាព"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> មិនត្រូវបាន​ប្រើប្រាស់​រយៈពេល​ពីរបីខែ​ហើយ។ សូមចុច ដើម្បី​ពិនិត្យមើល។"</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> និង​កម្មវិធី 1 ផ្សេងទៀត​មិនត្រូវបាន​ប្រើប្រាស់​រយៈពេល​ពីរបីខែ​ហើយ។ សូមចុច ដើម្បី​ពិនិត្យមើល។"</string>
@@ -524,39 +514,28 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"សម្រាប់កម្មវិធី និងសេវាកម្ម"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"ទិន្នន័យមីក្រូហ្វូន​នៅតែអាចត្រូវ​បានចែករំលែក​ដដែល នៅពេលអ្នក​ហៅទៅលេខសង្គ្រោះបន្ទាន់។"</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"ផ្លាស់ប្ដូរ"</string>
-    <!-- no translation found for safety_center_dashboard_page_title (2810774008694315854) -->
-    <skip />
-    <!-- no translation found for safety_center_rescan_button (4517514567809409596) -->
-    <skip />
+    <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"សុវត្ថិភាព និងឯកជនភាព"</string>
+    <string name="safety_center_rescan_button" msgid="4517514567809409596">"ស្កេនឧបករណ៍"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"ច្រានចោល"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"ច្រានចោលការជូនដំណឹងនេះឬ?"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"ពិនិត្យមើលការកំណត់ឯកជនភាព និងសុវត្ថិភាពរបស់អ្នកបានគ្រប់ពេល ដើម្បីបន្ថែមការការពារឱ្យកាន់តែខ្ពស់"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"ច្រានចោល"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"បោះបង់"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"ការកំណត់"</string>
     <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"ស្ថានភាពសុវត្ថិភាព និង​ឯកជនភាព។ <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>។ <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"ការកំណត់​សុវត្ថិភាព"</string>
-    <!-- no translation found for sensor_permissions_qs (1022267900031317472) -->
-    <skip />
-    <!-- no translation found for safety_privacy_qs_tile_title (727301867710374052) -->
-    <skip />
+    <string name="sensor_permissions_qs" msgid="1022267900031317472">"ការអនុញ្ញាត"</string>
+    <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"សុវត្ថិភាព និងឯកជនភាព"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"ពិនិត្យ​​ស្ថានភាព"</string>
-    <!-- no translation found for privacy_controls_qs (5780144882040591169) -->
-    <skip />
-    <!-- no translation found for security_settings_button_label_qs (8280343822465962330) -->
-    <skip />
-    <!-- no translation found for camera_toggle_label_qs (3880261453066157285) -->
-    <skip />
-    <!-- no translation found for microphone_toggle_label_qs (8132912469813396552) -->
-    <skip />
+    <string name="privacy_controls_qs" msgid="5780144882040591169">"ការគ្រប់គ្រង​ឯកជនភាពរបស់អ្នក"</string>
+    <string name="security_settings_button_label_qs" msgid="8280343822465962330">"ការកំណត់ច្រើនទៀត"</string>
+    <string name="camera_toggle_label_qs" msgid="3880261453066157285">"សិទ្ធិចូលប្រើ​កាមេរ៉ា"</string>
+    <string name="microphone_toggle_label_qs" msgid="8132912469813396552">"សិទ្ធិចូលប្រើ​មីក្រូហ្វូន"</string>
     <string name="permissions_removed_qs" msgid="8957319130625294572">"បានដក​ការអនុញ្ញាត"</string>
-    <!-- no translation found for camera_usage_qs (134093544497365716) -->
-    <skip />
-    <!-- no translation found for microphone_usage_qs (5054432134389894202) -->
-    <skip />
-    <!-- no translation found for remove_camera_qs (3649996161066883350) -->
-    <skip />
-    <!-- no translation found for remove_microphone_qs (1276551965129953198) -->
-    <skip />
+    <string name="camera_usage_qs" msgid="4394233566086665994">"មើល​ការប្រើប្រាស់​កាមេរ៉ា​ថ្មីៗ​នេះ"</string>
+    <string name="microphone_usage_qs" msgid="8527666682168170417">"មើល​ការប្រើប្រាស់​មីក្រូហ្វូន​ថ្មីៗ​នេះ"</string>
+    <string name="remove_camera_qs" msgid="3649996161066883350">"ដកការអនុញ្ញាតសម្រាប់កម្មវិធីនេះ"</string>
+    <string name="remove_microphone_qs" msgid="1276551965129953198">"ដកការអនុញ្ញាតសម្រាប់កម្មវិធីនេះ"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"គ្រប់គ្រង​សេវាកម្ម"</string>
     <string name="manage_permissions_qs" msgid="3780541819763475434">"គ្រប់គ្រង​ការអនុញ្ញាត"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"កំពុងប្រើដោយការហៅទូរសព្ទ"</string>
@@ -585,32 +564,20 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"កម្មវិធីនេះ​មិនស្គាល់កំណែ​ចុងក្រោយបំផុត​របស់ Android ទេ។ ប្រសិនបើ​កម្មវិធីនេះ​មិនអាចចូលប្រើ​ឯកសារសំឡេង និង​តន្ត្រីបានទេ នោះវាក៏នឹង​មិនត្រូវបានអនុញ្ញាត​ឱ្យចូលប្រើ​រូបថត និង​វីដេអូ​ផងដែរ។"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"កម្មវិធីនេះ​មិនស្គាល់កំណែ​ចុងក្រោយបំផុត​របស់ Android ទេ។ ប្រសិនបើ​កម្មវិធីនេះ​អាចចូលប្រើ​រូបថត និង​វីដេអូបាន នោះវាក៏នឹង​ត្រូវបានអនុញ្ញាតឱ្យ​ចូលប្រើ​ឯកសារសំឡេង និងតន្ត្រី​ផងដែរ។"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"កម្មវិធីនេះ​មិនស្គាល់កំណែ​ចុងក្រោយបំផុត​របស់ Android ទេ។ ប្រសិនបើ​កម្មវិធីនេះ​មិនអាចចូលប្រើ​ឯកសារសំឡេង និង​តន្ត្រីបានទេ នោះវាក៏នឹង​មិនត្រូវបានអនុញ្ញាត​ឱ្យចូលប្រើ​រូបថត និង​វីដេអូ​ផងដែរ។"</string>
-    <!-- no translation found for safety_center_background_location_access_notification_title (8933610618810588237) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_notification_content (4066560182507301022) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_title (5477847038103863843) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_summary (8276755741395332974) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_revoked (6972274943343442213) -->
-    <skip />
-    <!-- no translation found for safety_center_view_recent_location_access (3524391299490678243) -->
-    <skip />
-    <!-- no translation found for privacy_controls_title (7605929972256835199) -->
-    <skip />
-    <!-- no translation found for camera_toggle_title (1251201397431837666) -->
-    <skip />
-    <!-- no translation found for mic_toggle_title (2649991093496110162) -->
-    <skip />
-    <!-- no translation found for perm_toggle_description (7801326363741451379) -->
-    <skip />
-    <!-- no translation found for mic_toggle_description (9163104307990677157) -->
-    <skip />
-    <!-- no translation found for location_settings_subtitle (2328360561197430695) -->
-    <skip />
-    <!-- no translation found for show_clip_access_notification_title (5168467637351109096) -->
-    <skip />
-    <!-- no translation found for show_clip_access_notification_summary (3532020182782112687) -->
-    <skip />
+    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"ពិនិត្យមើល​កម្មវិធី​ដែល​មាន​សិទ្ធិ​ចូល​ប្រើ​ទីតាំង​នៅ​ផ្ទៃ​ខាង​ក្រោយ"</string>
+    <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> អាច​ចូល​ប្រើទីតាំងរបស់អ្នក​បានជានិច្ច សូម្បីពេលកម្មវិធីនេះត្រូវបានបិទ"</string>
+    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"ពិនិត្យមើល​កម្មវិធី​ដែល​មាន​សិទ្ធិ​ចូល​ប្រើ​ទីតាំង​នៅ​ផ្ទៃ​ខាង​ក្រោយ"</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"កម្មវិធីនេះអាចចូលប្រើទីតាំងរបស់អ្នកបានជានិច្ច សូម្បីពេលកម្មវិធីនេះត្រូវបានបិទ។"</string>
+    <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"បាន​ប្ដូរ​សិទ្ធិ​ចូល​ប្រើ"</string>
+    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"មើល​ការប្រើប្រាស់​ទីតាំង​ថ្មីៗ"</string>
+    <string name="privacy_controls_title" msgid="7605929972256835199">"ការគ្រប់គ្រង​ឯកជនភាព"</string>
+    <string name="camera_toggle_title" msgid="1251201397431837666">"ការចូលប្រើ​កាមេរ៉ា"</string>
+    <string name="mic_toggle_title" msgid="2649991093496110162">"ការចូលប្រើ​មីក្រូហ្វូន"</string>
+    <string name="perm_toggle_description" msgid="7801326363741451379">"សម្រាប់កម្មវិធី និងសេវាកម្ម"</string>
+    <string name="mic_toggle_description" msgid="9163104307990677157">"សម្រាប់កម្មវិធី និងសេវាកម្ម។ ប្រសិនបើការកំណត់នេះ​ត្រូវ​បាន​បិទ ទិន្នន័យមីក្រូហ្វូននៅតែអាចត្រូវបានចែករំលែកដដែល នៅពេលអ្នកហៅទៅលេខសង្គ្រោះបន្ទាន់។"</string>
+    <string name="location_settings_subtitle" msgid="2328360561197430695">"មើល​កម្មវិធី និង​សេវាកម្ម​ដែល​មាន​សិទ្ធិ​ចូល​ប្រើ​ទីតាំង"</string>
+    <string name="show_clip_access_notification_title" msgid="5168467637351109096">"បង្ហាញការចូលប្រើឃ្លីបបត"</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"បង្ហាញសារ នៅពេលកម្មវិធីចូលប្រើអត្ថបទ រូបភាព ឬខ្លឹមសារផ្សេងទៀតដែលអ្នកបានចម្លង"</string>
+    <string name="show_password_title" msgid="2877269286984684659">"បង្ហាញ​ពាក្យ​សម្ងាត់"</string>
+    <string name="show_password_summary" msgid="1110166488865981610">"បង្ហាញ​តួអក្សរ​មួយភ្លែត​ខណៈ​ពេល​អ្នក​វាយ​បញ្ចូល"</string>
 </resources>

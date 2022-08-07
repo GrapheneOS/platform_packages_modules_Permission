@@ -262,12 +262,9 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Einige Apps wurden seit mehreren Monaten nicht genutzt. Zum Prüfen tippen."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# nicht verwendete App}other{# nicht verwendete Apps}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Berechtigungen und temporäre Dateien wurden entfernt und Benachrichtigungen wurden gestoppt. Zum Prüfen tippen."</string>
-    <!-- no translation found for unused_apps_safety_center_card_title (5638409355530099149) -->
-    <skip />
-    <!-- no translation found for unused_apps_safety_center_card_content (1088557243627427820) -->
-    <skip />
-    <!-- no translation found for unused_apps_safety_center_action_title (8865914432518993194) -->
-    <skip />
+    <string name="unused_apps_safety_center_card_title" msgid="5638409355530099149">"Apps prüfen, für die Berechtigungen entfernt wurden"</string>
+    <string name="unused_apps_safety_center_card_content" msgid="1088557243627427820">"Wenn du eine App einige Zeit lang nicht mehr verwendet hast, wurden Berechtigungen und temporäre Dateien entfernt und Benachrichtigungen pausiert."</string>
+    <string name="unused_apps_safety_center_action_title" msgid="8865914432518993194">"Apps prüfen"</string>
     <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Zuletzt gewährte Berechtigungen prüfen"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Während der Fahrt hast du <xliff:g id="APP">%1$s</xliff:g> Zugriff auf die Berechtigung „<xliff:g id="PERMISSION">%2$s</xliff:g>“ gewährt"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Während der Fahrt hast du <xliff:g id="APP">%1$s</xliff:g> Zugriff auf die Berechtigungen „<xliff:g id="PERMISSION_1">%2$s</xliff:g>“ &amp; „<xliff:g id="PERMISSION_2">%3$s</xliff:g>“ gewährt"</string>
@@ -282,28 +279,21 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Berechtigungen zum Schutz deiner Privatsphäre entfernt"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> greift im Hintergrund auf deinen Standort zu"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Diese App kann immer auf deinen Standort zugreifen. Zum Ändern hier tippen."</string>
-    <!-- no translation found for notification_listener_reminder_notification_title (3747210460187479091) -->
+    <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"App mit Zugriff auf deine Benachrichtigungen prüfen"</string>
+    <!-- no translation found for notification_listener_reminder_notification_content (831476101108863427) -->
     <skip />
-    <!-- no translation found for notification_listener_reminder_notification_content (4936171153668563578) -->
-    <skip />
-    <!-- no translation found for notification_listener_warning_card_content (274394600993750005) -->
+    <!-- no translation found for notification_listener_warning_card_content (7840973324284115893) -->
     <skip />
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Zugriff entfernen"</string>
-    <!-- no translation found for notification_listener_review_app_button_label (3433073281029143924) -->
-    <skip />
+    <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"Weitere Optionen ansehen"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Zugriff entfernt"</string>
-    <!-- no translation found for accessibility_access_reminder_notification_title (2971317234668807566) -->
-    <skip />
-    <!-- no translation found for accessibility_access_reminder_notification_content (7389454158175306720) -->
-    <skip />
-    <!-- no translation found for accessibility_access_warning_card_content (4370327190293217358) -->
-    <skip />
+    <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"App mit vollständigem Gerätezugriff prüfen"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> kann deinen Bildschirm sehen und Aktionen auf deinem Gerät ausführen. Bedienungshilfen-Apps benötigen diesen Zugriff, um wie vorgesehen zu funktionieren."</string>
+    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"Diese App kann deinen Bildschirm sehen und Aktionen auf deinem Gerät ausführen. Bedienungshilfen-Apps benötigen diesen Zugriff, um wie vorgesehen zu funktionieren – prüfe jedoch, ob die App vertrauenswürdig ist."</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Zugriff entfernen"</string>
-    <!-- no translation found for accessibility_show_all_apps_button_label (960067249326392280) -->
-    <skip />
+    <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"Apps mit vollständigem Zugriff ansehen"</string>
     <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Zugriff entfernt"</string>
-    <!-- no translation found for safety_center_notification_app_label (2457720616141926534) -->
-    <skip />
+    <string name="safety_center_notification_app_label" msgid="2457720616141926534">"Android-System"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"App-Berechtigungen zum Schutz der Privatsphäre entfernt"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> ist seit einigen Monaten nicht genutzt worden. Zum Prüfen tippen."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> und 1 weitere App sind seit einigen Monaten nicht genutzt worden. Zum Prüfen tippen."</string>
@@ -524,39 +514,28 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Für Apps und Dienste"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Die Mikrofondaten können immer noch geteilt werden, wenn du den Notruf wählst."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Ändern"</string>
-    <!-- no translation found for safety_center_dashboard_page_title (2810774008694315854) -->
-    <skip />
-    <!-- no translation found for safety_center_rescan_button (4517514567809409596) -->
-    <skip />
+    <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Sicherheit und Datenschutz"</string>
+    <string name="safety_center_rescan_button" msgid="4517514567809409596">"Gerät prüfen"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Schließen"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Diese Warnung schließen?"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"Du kannst jederzeit deine Sicherheits- und Datenschutzeinstellungen überprüfen, um deine Daten besser zu schützen"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Schließen"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Abbrechen"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"Einstellungen"</string>
     <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"Sicherheits- und Datenschutzstatus. <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>. <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"Sicherheitseinstellungen"</string>
-    <!-- no translation found for sensor_permissions_qs (1022267900031317472) -->
-    <skip />
-    <!-- no translation found for safety_privacy_qs_tile_title (727301867710374052) -->
-    <skip />
+    <string name="sensor_permissions_qs" msgid="1022267900031317472">"Berechtigungen"</string>
+    <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"Sicherheit und Datenschutz"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Status prüfen"</string>
-    <!-- no translation found for privacy_controls_qs (5780144882040591169) -->
-    <skip />
-    <!-- no translation found for security_settings_button_label_qs (8280343822465962330) -->
-    <skip />
-    <!-- no translation found for camera_toggle_label_qs (3880261453066157285) -->
-    <skip />
-    <!-- no translation found for microphone_toggle_label_qs (8132912469813396552) -->
-    <skip />
+    <string name="privacy_controls_qs" msgid="5780144882040591169">"Datenschutzeinstellungen"</string>
+    <string name="security_settings_button_label_qs" msgid="8280343822465962330">"Weitere Einstellungen"</string>
+    <string name="camera_toggle_label_qs" msgid="3880261453066157285">"Kamerazugriff"</string>
+    <string name="microphone_toggle_label_qs" msgid="8132912469813396552">"Mikrofonzugriff"</string>
     <string name="permissions_removed_qs" msgid="8957319130625294572">"Berechtigung entfernt"</string>
-    <!-- no translation found for camera_usage_qs (134093544497365716) -->
-    <skip />
-    <!-- no translation found for microphone_usage_qs (5054432134389894202) -->
-    <skip />
-    <!-- no translation found for remove_camera_qs (3649996161066883350) -->
-    <skip />
-    <!-- no translation found for remove_microphone_qs (1276551965129953198) -->
-    <skip />
+    <string name="camera_usage_qs" msgid="4394233566086665994">"Kürzliche Kameranutzung ansehen"</string>
+    <string name="microphone_usage_qs" msgid="8527666682168170417">"Kürzliche Mikrofonnutzung ansehen"</string>
+    <string name="remove_camera_qs" msgid="3649996161066883350">"Berechtigung für diese App entfernen"</string>
+    <string name="remove_microphone_qs" msgid="1276551965129953198">"Berechtigung für diese App entfernen"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Dienst verwalten"</string>
     <string name="manage_permissions_qs" msgid="3780541819763475434">"Berechtigungen verwalten"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Im Telefonanruf verwendet"</string>
@@ -585,32 +564,20 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Diese App unterstützt nicht die neueste Version von Android. Wenn diese App keinen Zugriff auf Musik- und Audiodateien hat, kann sie auch nicht auf Fotos und Videos zugreifen."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Diese App unterstützt nicht die neueste Version von Android. Wenn diese App Zugriff auf Fotos und Videos hat, kann sie auch auf Musik- und Audiodateien zugreifen."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Diese App unterstützt nicht die neueste Version von Android. Wenn diese App keinen Zugriff auf Musik- und Audiodateien hat, kann sie auch nicht auf Fotos und Videos zugreifen."</string>
-    <!-- no translation found for safety_center_background_location_access_notification_title (8933610618810588237) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_notification_content (4066560182507301022) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_title (5477847038103863843) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_summary (8276755741395332974) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_revoked (6972274943343442213) -->
-    <skip />
-    <!-- no translation found for safety_center_view_recent_location_access (3524391299490678243) -->
-    <skip />
-    <!-- no translation found for privacy_controls_title (7605929972256835199) -->
-    <skip />
-    <!-- no translation found for camera_toggle_title (1251201397431837666) -->
-    <skip />
-    <!-- no translation found for mic_toggle_title (2649991093496110162) -->
-    <skip />
-    <!-- no translation found for perm_toggle_description (7801326363741451379) -->
-    <skip />
-    <!-- no translation found for mic_toggle_description (9163104307990677157) -->
-    <skip />
-    <!-- no translation found for location_settings_subtitle (2328360561197430695) -->
-    <skip />
-    <!-- no translation found for show_clip_access_notification_title (5168467637351109096) -->
-    <skip />
-    <!-- no translation found for show_clip_access_notification_summary (3532020182782112687) -->
-    <skip />
+    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"App mit Zugriff auf die Standortermittlung im Hintergrund prüfen"</string>
+    <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> kann auch dann auf deinen Standort zugreifen, wenn die App geschlossen ist"</string>
+    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"App mit Zugriff auf die Standortermittlung im Hintergrund prüfen"</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Diese App kann auch dann auf deinen Standort zugreifen, wenn sie geschlossen ist."</string>
+    <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Zugriff geändert"</string>
+    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Kürzliche Standortnutzung ansehen"</string>
+    <string name="privacy_controls_title" msgid="7605929972256835199">"Datenschutzeinstellungen"</string>
+    <string name="camera_toggle_title" msgid="1251201397431837666">"Kamerazugriff"</string>
+    <string name="mic_toggle_title" msgid="2649991093496110162">"Mikrofonzugriff"</string>
+    <string name="perm_toggle_description" msgid="7801326363741451379">"Für Apps und Dienste"</string>
+    <string name="mic_toggle_description" msgid="9163104307990677157">"Für Apps und Dienste. Wenn diese Einstellung deaktiviert ist, können Mikrofondaten dennoch freigegeben werden, wenn du den Notruf wählst."</string>
+    <string name="location_settings_subtitle" msgid="2328360561197430695">"Apps und Dienste sehen, die Zugriff auf diesen Standort haben"</string>
+    <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Zugriff auf Zwischenablage anzeigen"</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Eine Meldung wird angezeigt, wenn Apps auf Text, Bilder oder andere Inhalte zugreifen, die du kopiert hast"</string>
+    <string name="show_password_title" msgid="2877269286984684659">"Passwörter anzeigen"</string>
+    <string name="show_password_summary" msgid="1110166488865981610">"Zeichen während der Eingabe kurz anzeigen"</string>
 </resources>

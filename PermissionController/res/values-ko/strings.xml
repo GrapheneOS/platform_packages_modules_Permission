@@ -262,12 +262,9 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"일부 앱을 몇 개월 동안 사용하지 않았습니다. 검토하려면 탭하세요."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{사용하지 않는 앱 #개}other{사용하지 않는 앱 #개}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"권한 및 임시 파일이 삭제되었으며 알림이 중단되었습니다. 확인하려면 탭하세요."</string>
-    <!-- no translation found for unused_apps_safety_center_card_title (5638409355530099149) -->
-    <skip />
-    <!-- no translation found for unused_apps_safety_center_card_content (1088557243627427820) -->
-    <skip />
-    <!-- no translation found for unused_apps_safety_center_action_title (8865914432518993194) -->
-    <skip />
+    <string name="unused_apps_safety_center_card_title" msgid="5638409355530099149">"권한이 삭제된 앱 검토하기"</string>
+    <string name="unused_apps_safety_center_card_content" msgid="1088557243627427820">"한동안 사용하지 않은 앱의 권한과 임시 파일이 삭제되었으며 알림이 중지되었습니다."</string>
+    <string name="unused_apps_safety_center_action_title" msgid="8865914432518993194">"앱 검토하기"</string>
     <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"최근 권한 확인하기"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"운전 중 <xliff:g id="APP">%1$s</xliff:g>에 <xliff:g id="PERMISSION">%2$s</xliff:g> 액세스 권한을 부여했습니다."</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"운전 중 <xliff:g id="APP">%1$s</xliff:g>에 <xliff:g id="PERMISSION_1">%2$s</xliff:g> 및 <xliff:g id="PERMISSION_2">%3$s</xliff:g> 액세스 권한을 부여했습니다."</string>
@@ -282,28 +279,21 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"개인정보 보호를 위해 권한이 삭제됨"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g>에서 백그라운드에서 내 위치에 액세스함"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"이 앱에서 내 위치에 항상 액세스할 수 있습니다. 변경하려면 탭하세요."</string>
-    <!-- no translation found for notification_listener_reminder_notification_title (3747210460187479091) -->
+    <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"알림 액세스 권한이 있는 앱 검토하기"</string>
+    <!-- no translation found for notification_listener_reminder_notification_content (831476101108863427) -->
     <skip />
-    <!-- no translation found for notification_listener_reminder_notification_content (4936171153668563578) -->
-    <skip />
-    <!-- no translation found for notification_listener_warning_card_content (274394600993750005) -->
+    <!-- no translation found for notification_listener_warning_card_content (7840973324284115893) -->
     <skip />
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"액세스 권한 삭제"</string>
-    <!-- no translation found for notification_listener_review_app_button_label (3433073281029143924) -->
-    <skip />
+    <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"옵션 더보기"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"액세스 권한 삭제됨"</string>
-    <!-- no translation found for accessibility_access_reminder_notification_title (2971317234668807566) -->
-    <skip />
-    <!-- no translation found for accessibility_access_reminder_notification_content (7389454158175306720) -->
-    <skip />
-    <!-- no translation found for accessibility_access_warning_card_content (4370327190293217358) -->
-    <skip />
+    <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"전체 기기 액세스 권한이 있는 앱 검토하기"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> 앱이 화면을 보고 기기에서 작업을 실행할 수 있습니다. 접근성 앱이 제대로 작동하려면 이러한 유형의 액세스 권한이 필요합니다."</string>
+    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"앱이 화면을 보고 기기에서 작업을 실행할 수 있습니다. 접근성 앱이 제대로 작동하려면 이러한 유형의 액세스 권한이 필요합니다. 믿을 수 있는 앱인지 확인해 보시기 바랍니다."</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"액세스 권한 삭제"</string>
-    <!-- no translation found for accessibility_show_all_apps_button_label (960067249326392280) -->
-    <skip />
+    <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"전체 액세스 권한이 있는 앱 보기"</string>
     <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"액세스 권한이 삭제되었습니다."</string>
-    <!-- no translation found for safety_center_notification_app_label (2457720616141926534) -->
-    <skip />
+    <string name="safety_center_notification_app_label" msgid="2457720616141926534">"Android 시스템"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"개인정보 보호를 위해 앱 권한이 삭제됨"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> 앱을 몇 개월 동안 사용하지 않았습니다. 검토하려면 탭하세요."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> 외 1개 앱을 몇 개월 동안 사용하지 않았습니다. 검토하려면 탭하세요."</string>
@@ -524,39 +514,28 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"앱 및 서비스의 경우"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"긴급 전화번호로 전화를 걸 때도 마이크 데이터가 공유될 수 있습니다."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"변경"</string>
-    <!-- no translation found for safety_center_dashboard_page_title (2810774008694315854) -->
-    <skip />
-    <!-- no translation found for safety_center_rescan_button (4517514567809409596) -->
-    <skip />
+    <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"보안 및 개인 정보 보호"</string>
+    <string name="safety_center_rescan_button" msgid="4517514567809409596">"기기 스캔"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"닫기"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"이 알림을 닫으시겠습니까?"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"언제든지 보안 및 개인 정보 보호 설정을 검토하고 보안을 추가하세요."</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"닫기"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"취소"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"설정"</string>
     <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"보안 및 개인 정보 보호 상태입니다. <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>. <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"보안 설정"</string>
-    <!-- no translation found for sensor_permissions_qs (1022267900031317472) -->
-    <skip />
-    <!-- no translation found for safety_privacy_qs_tile_title (727301867710374052) -->
-    <skip />
+    <string name="sensor_permissions_qs" msgid="1022267900031317472">"권한"</string>
+    <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"보안 및 개인 정보 보호"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"상태 확인"</string>
-    <!-- no translation found for privacy_controls_qs (5780144882040591169) -->
-    <skip />
-    <!-- no translation found for security_settings_button_label_qs (8280343822465962330) -->
-    <skip />
-    <!-- no translation found for camera_toggle_label_qs (3880261453066157285) -->
-    <skip />
-    <!-- no translation found for microphone_toggle_label_qs (8132912469813396552) -->
-    <skip />
+    <string name="privacy_controls_qs" msgid="5780144882040591169">"개인 정보 보호 설정"</string>
+    <string name="security_settings_button_label_qs" msgid="8280343822465962330">"기타 설정"</string>
+    <string name="camera_toggle_label_qs" msgid="3880261453066157285">"카메라 액세스"</string>
+    <string name="microphone_toggle_label_qs" msgid="8132912469813396552">"마이크 액세스"</string>
     <string name="permissions_removed_qs" msgid="8957319130625294572">"권한 삭제됨"</string>
-    <!-- no translation found for camera_usage_qs (134093544497365716) -->
-    <skip />
-    <!-- no translation found for microphone_usage_qs (5054432134389894202) -->
-    <skip />
-    <!-- no translation found for remove_camera_qs (3649996161066883350) -->
-    <skip />
-    <!-- no translation found for remove_microphone_qs (1276551965129953198) -->
-    <skip />
+    <string name="camera_usage_qs" msgid="4394233566086665994">"최근 카메라 사용 내역 보기"</string>
+    <string name="microphone_usage_qs" msgid="8527666682168170417">"최근 마이크 사용 내역 보기"</string>
+    <string name="remove_camera_qs" msgid="3649996161066883350">"이 앱의 권한 삭제"</string>
+    <string name="remove_microphone_qs" msgid="1276551965129953198">"이 앱의 권한 삭제"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"서비스 관리"</string>
     <string name="manage_permissions_qs" msgid="3780541819763475434">"권한 관리"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"전화 통화에서 사용 중"</string>
@@ -585,32 +564,20 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"앱이 최신 버전의 Android를 지원하지 않습니다. 앱이 음악 및 오디오 파일에 액세스할 수 없는 경우 사진 및 동영상에 대한 액세스도 허용되지 않습니다."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"앱이 최신 버전의 Android를 지원하지 않습니다. 앱이 사진 및 동영상에 액세스할 수 있는 경우 음악 및 오디오 파일에 대한 액세스도 허용됩니다."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"앱이 최신 버전의 Android를 지원하지 않습니다. 앱이 음악 및 오디오 파일에 액세스할 수 없는 경우 사진 및 동영상에 대한 액세스도 허용되지 않습니다."</string>
-    <!-- no translation found for safety_center_background_location_access_notification_title (8933610618810588237) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_notification_content (4066560182507301022) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_title (5477847038103863843) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_summary (8276755741395332974) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_revoked (6972274943343442213) -->
-    <skip />
-    <!-- no translation found for safety_center_view_recent_location_access (3524391299490678243) -->
-    <skip />
-    <!-- no translation found for privacy_controls_title (7605929972256835199) -->
-    <skip />
-    <!-- no translation found for camera_toggle_title (1251201397431837666) -->
-    <skip />
-    <!-- no translation found for mic_toggle_title (2649991093496110162) -->
-    <skip />
-    <!-- no translation found for perm_toggle_description (7801326363741451379) -->
-    <skip />
-    <!-- no translation found for mic_toggle_description (9163104307990677157) -->
-    <skip />
-    <!-- no translation found for location_settings_subtitle (2328360561197430695) -->
-    <skip />
-    <!-- no translation found for show_clip_access_notification_title (5168467637351109096) -->
-    <skip />
-    <!-- no translation found for show_clip_access_notification_summary (3532020182782112687) -->
-    <skip />
+    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"백그라운드 위치 액세스 권한이 있는 앱 검토하기"</string>
+    <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> 앱은 닫혀 있는 동안에도 내 위치 정보에 항상 액세스할 수 있습니다."</string>
+    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"백그라운드 위치 액세스 권한이 있는 앱 검토하기"</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"앱이 닫혀 있는 동안에도 내 위치 정보에 항상 액세스할 수 있습니다."</string>
+    <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"액세스 권한이 변경되었습니다."</string>
+    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"최근 위치 정보 사용 내역 보기"</string>
+    <string name="privacy_controls_title" msgid="7605929972256835199">"개인 정보 보호 설정"</string>
+    <string name="camera_toggle_title" msgid="1251201397431837666">"카메라 액세스"</string>
+    <string name="mic_toggle_title" msgid="2649991093496110162">"마이크 액세스"</string>
+    <string name="perm_toggle_description" msgid="7801326363741451379">"앱 및 서비스에 적용됩니다."</string>
+    <string name="mic_toggle_description" msgid="9163104307990677157">"앱 및 서비스에 적용됩니다. 설정이 꺼져 있어도 긴급 전화번호로 전화를 걸 때는 마이크 데이터가 공유될 수 있습니다."</string>
+    <string name="location_settings_subtitle" msgid="2328360561197430695">"위치에 액세스할 수 있는 앱과 서비스 보기"</string>
+    <string name="show_clip_access_notification_title" msgid="5168467637351109096">"클립보드 액세스 시 알림 표시"</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"앱이 복사된 텍스트, 이미지 또는 기타 콘텐츠에 액세스할 때 메시지 표시"</string>
+    <string name="show_password_title" msgid="2877269286984684659">"비밀번호 표시"</string>
+    <string name="show_password_summary" msgid="1110166488865981610">"입력할 때 잠깐 표시"</string>
 </resources>

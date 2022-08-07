@@ -262,12 +262,9 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Aplikazio batzuk ez dira erabili zenbait hilabetez. Sakatu berrikusteko."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{Erabiltzen ez den # aplikazio}other{Erabiltzen ez diren # aplikazio}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Baimenak eta aldi baterako fitxategiak kendu, eta jakinarazpenak gelditu egin dira. Sakatu berrikusteko."</string>
-    <!-- no translation found for unused_apps_safety_center_card_title (5638409355530099149) -->
-    <skip />
-    <!-- no translation found for unused_apps_safety_center_card_content (1088557243627427820) -->
-    <skip />
-    <!-- no translation found for unused_apps_safety_center_action_title (8865914432518993194) -->
-    <skip />
+    <string name="unused_apps_safety_center_card_title" msgid="5638409355530099149">"Berrikusi baimenak kenduta dauzkaten aplikazioak"</string>
+    <string name="unused_apps_safety_center_card_content" msgid="1088557243627427820">"Aspaldi erabili ez dituzun aplikazioen baimenak eta aldi baterako fitxategiak kendu dira, eta aplikazioekin erlazionatutako jakinarazpenak gelditu dira."</string>
+    <string name="unused_apps_safety_center_action_title" msgid="8865914432518993194">"Berrikusi aplikazioak"</string>
     <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Ikusi eman berri dituzun baimenak"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Gidatu bitartean, <xliff:g id="PERMISSION">%2$s</xliff:g> atzitzeko baimena eman diozu <xliff:g id="APP">%1$s</xliff:g> aplikazioari"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Gidatu bitartean, <xliff:g id="PERMISSION_1">%2$s</xliff:g> eta <xliff:g id="PERMISSION_2">%3$s</xliff:g> atzitzeko baimena eman diozu <xliff:g id="APP">%1$s</xliff:g> aplikazioari"</string>
@@ -282,28 +279,21 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Baimenak kendu egin dira zure pribatutasuna babesteko"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> aplikazioak kokapena atzitu du atzeko planoan"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Aplikazio honek beti atzi dezake kokapena. Sakatu aldatzeko."</string>
-    <!-- no translation found for notification_listener_reminder_notification_title (3747210460187479091) -->
+    <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"Berrikusi jakinarazpen guztietarako sarbidea duen aplikazioa"</string>
+    <!-- no translation found for notification_listener_reminder_notification_content (831476101108863427) -->
     <skip />
-    <!-- no translation found for notification_listener_reminder_notification_content (4936171153668563578) -->
-    <skip />
-    <!-- no translation found for notification_listener_warning_card_content (274394600993750005) -->
+    <!-- no translation found for notification_listener_warning_card_content (7840973324284115893) -->
     <skip />
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Kendu sarbidea"</string>
-    <!-- no translation found for notification_listener_review_app_button_label (3433073281029143924) -->
-    <skip />
+    <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"Ikusi aukera gehiago"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Kendu da sarbidea"</string>
-    <!-- no translation found for accessibility_access_reminder_notification_title (2971317234668807566) -->
-    <skip />
-    <!-- no translation found for accessibility_access_reminder_notification_content (7389454158175306720) -->
-    <skip />
-    <!-- no translation found for accessibility_access_warning_card_content (4370327190293217358) -->
-    <skip />
+    <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"Berrikusi gailua atzitzeko baimen osoa duen aplikazioa"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> aplikazioak pantaila ikus dezake, eta gailuan ekintzak egin. Erabilerraztasun-aplikazioek sarbide mota hori behar dute behar bezala funtzionatzeko."</string>
+    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"Aplikazioak pantaila ikus dezake, eta gailuan ekintzak egin. Erabilerraztasun-aplikazioek sarbide mota hori behar dute behar bezala funtzionatzeko, baina ikusi aplikazioa eta ziurtatu hartaz fidatzen zarela."</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Kendu sarbidea"</string>
-    <!-- no translation found for accessibility_show_all_apps_button_label (960067249326392280) -->
-    <skip />
+    <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"Ikusi sarbide osoa duten aplikazioak"</string>
     <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Kendu da sarbidea"</string>
-    <!-- no translation found for safety_center_notification_app_label (2457720616141926534) -->
-    <skip />
+    <string name="safety_center_notification_app_label" msgid="2457720616141926534">"Android sistema"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Aplikazio-baimenak kendu dira pribatutasuna babesteko"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> aplikazioa ez da erabili hainbat hilabetean zehar. Sakatu berrikusteko."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> eta beste aplikazio bat ez dira erabili hainbat hilabetean zehar. Sakatu berrikusteko."</string>
@@ -524,39 +514,28 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Aplikazio eta zerbitzuetarako"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Agian mikrofonotik lortutako datuak larrialdietarako zenbaki batera deitzen duzunean partekatuko dira."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Aldatu"</string>
-    <!-- no translation found for safety_center_dashboard_page_title (2810774008694315854) -->
-    <skip />
-    <!-- no translation found for safety_center_rescan_button (4517514567809409596) -->
-    <skip />
+    <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Segurtasuna eta pribatutasuna"</string>
+    <string name="safety_center_rescan_button" msgid="4517514567809409596">"Aztertu gailua"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Baztertu"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Alerta hau baztertu nahi duzu?"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"Berrikusi segurtasun- eta pribatutasun-ezarpenak edonoiz babesa handitzeko"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Baztertu"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Utzi"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"Ezarpenak"</string>
     <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"Segurtasun- eta pribatutasun-egoera. <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>. <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"Segurtasun-ezarpenak"</string>
-    <!-- no translation found for sensor_permissions_qs (1022267900031317472) -->
-    <skip />
-    <!-- no translation found for safety_privacy_qs_tile_title (727301867710374052) -->
-    <skip />
+    <string name="sensor_permissions_qs" msgid="1022267900031317472">"Baimenak"</string>
+    <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"Segurtasuna eta pribatutasuna"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Egiaztatu egoera"</string>
-    <!-- no translation found for privacy_controls_qs (5780144882040591169) -->
-    <skip />
-    <!-- no translation found for security_settings_button_label_qs (8280343822465962330) -->
-    <skip />
-    <!-- no translation found for camera_toggle_label_qs (3880261453066157285) -->
-    <skip />
-    <!-- no translation found for microphone_toggle_label_qs (8132912469813396552) -->
-    <skip />
+    <string name="privacy_controls_qs" msgid="5780144882040591169">"Pribatutasun-ezarpenak"</string>
+    <string name="security_settings_button_label_qs" msgid="8280343822465962330">"Ezarpen gehiago"</string>
+    <string name="camera_toggle_label_qs" msgid="3880261453066157285">"Kamera atzitzeko baimena"</string>
+    <string name="microphone_toggle_label_qs" msgid="8132912469813396552">"Mikrofonoa atzitzeko baimena"</string>
     <string name="permissions_removed_qs" msgid="8957319130625294572">"Kendu egin da baimena"</string>
-    <!-- no translation found for camera_usage_qs (134093544497365716) -->
-    <skip />
-    <!-- no translation found for microphone_usage_qs (5054432134389894202) -->
-    <skip />
-    <!-- no translation found for remove_camera_qs (3649996161066883350) -->
-    <skip />
-    <!-- no translation found for remove_microphone_qs (1276551965129953198) -->
-    <skip />
+    <string name="camera_usage_qs" msgid="4394233566086665994">"Ikusi kameraren azkenaldiko erabilera"</string>
+    <string name="microphone_usage_qs" msgid="8527666682168170417">"Ikusi mikrofonoaren azkenaldiko erabilera"</string>
+    <string name="remove_camera_qs" msgid="3649996161066883350">"Kendu baimena aplikazio honi"</string>
+    <string name="remove_microphone_qs" msgid="1276551965129953198">"Kendu baimena aplikazio honi"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Kudeatu zerbitzua"</string>
     <string name="manage_permissions_qs" msgid="3780541819763475434">"Kudeatu baimenak"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Telefono-deiak darabil"</string>
@@ -585,32 +564,20 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Aplikazioa ez da Android-en azken bertsioarekin bateragarria. Aplikazioak musika- eta audio-fitxategiak atzitu ezin baditu, ez du izango argazkiak eta bideoak atzitzeko baimenik."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Aplikazioa ez da Android-en azken bertsioarekin bateragarria. Aplikazioak argazkiak eta bideoak atzi baditzake, musika- eta audio-fitxategiak atzitzeko baimena ere izango du."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Aplikazioa ez da Android-en azken bertsioarekin bateragarria. Aplikazioak musika- eta audio-fitxategiak atzitu ezin baditu, ez du izango argazkiak eta bideoak atzitzeko baimenik."</string>
-    <!-- no translation found for safety_center_background_location_access_notification_title (8933610618810588237) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_notification_content (4066560182507301022) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_title (5477847038103863843) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_summary (8276755741395332974) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_revoked (6972274943343442213) -->
-    <skip />
-    <!-- no translation found for safety_center_view_recent_location_access (3524391299490678243) -->
-    <skip />
-    <!-- no translation found for privacy_controls_title (7605929972256835199) -->
-    <skip />
-    <!-- no translation found for camera_toggle_title (1251201397431837666) -->
-    <skip />
-    <!-- no translation found for mic_toggle_title (2649991093496110162) -->
-    <skip />
-    <!-- no translation found for perm_toggle_description (7801326363741451379) -->
-    <skip />
-    <!-- no translation found for mic_toggle_description (9163104307990677157) -->
-    <skip />
-    <!-- no translation found for location_settings_subtitle (2328360561197430695) -->
-    <skip />
-    <!-- no translation found for show_clip_access_notification_title (5168467637351109096) -->
-    <skip />
-    <!-- no translation found for show_clip_access_notification_summary (3532020182782112687) -->
-    <skip />
+    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Berrikusi kokapena atzeko planoan atzitzeko baimena duen aplikazioa"</string>
+    <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> aplikazioak beti atzi dezake kokapena, nahiz eta itxita egon"</string>
+    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Berrikusi kokapena atzeko planoan atzitzeko baimena duen aplikazioa"</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Aplikazioak beti atzi dezake kokapena, nahiz eta itxita egon."</string>
+    <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Aldatu da sarbidea"</string>
+    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Ikusi kokapenaren azken erabilera"</string>
+    <string name="privacy_controls_title" msgid="7605929972256835199">"Pribatutasun-ezarpenak"</string>
+    <string name="camera_toggle_title" msgid="1251201397431837666">"Kamera atzitzeko baimena"</string>
+    <string name="mic_toggle_title" msgid="2649991093496110162">"Mikrofonoa atzitzeko baimena"</string>
+    <string name="perm_toggle_description" msgid="7801326363741451379">"Aplikazio eta zerbitzuetarako"</string>
+    <string name="mic_toggle_description" msgid="9163104307990677157">"Aplikazio eta zerbitzuetarako. Ezarpena desaktibatuta badago, baliteke mikrofonoaren bidez lortutako datuak larrialdietarako zenbaki batera deitzen duzunean partekatzea."</string>
+    <string name="location_settings_subtitle" msgid="2328360561197430695">"Ikusi kokapena atzi dezaketen aplikazioak eta zerbitzuak"</string>
+    <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Erakutsi arbela atzitzen denean"</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Erakutsi mezu bat aplikazio batek kopiatu dituzun testuak, irudiak edo edukiak atzitzen dituenean"</string>
+    <string name="show_password_title" msgid="2877269286984684659">"Erakutsi pasahitzak"</string>
+    <string name="show_password_summary" msgid="1110166488865981610">"Idatzi ahala, erakutsi karaktereak laburki"</string>
 </resources>
