@@ -24,12 +24,16 @@
     <string name="safety_center_more_issues_card_title" msgid="8599419758014246517">"Prikaži sva upozorenja"</string>
     <string name="safety_center_more_issues_status_icon_content_description" msgid="8597351743567707802">"Prikaži sva upozorenja"</string>
     <string name="safety_center_more_issues_expand_button_content_description" msgid="8997241228390831958">"Prikaži sva upozorenja"</string>
-    <!-- no translation found for safety_center_qs_status_summary (5193925895830451177) -->
+    <string name="safety_center_issue_card_content_description" msgid="1281390769721765363">"Upozorenje. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%2$s</xliff:g>"</string>
+    <string name="safety_center_issue_card_content_description_with_subtitle" msgid="5504040663935313539">"Upozorenje. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUBTITLE">%2$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%3$s</xliff:g>"</string>
+    <!-- no translation found for safety_center_issue_resolution_fallback (397036766466689354) -->
     <skip />
-    <!-- no translation found for safety_center_qs_page_landing (1717368301679228128) -->
-    <skip />
+    <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"Provjerite postavke koje mogu vašem uređaju dodati zaštitu"</string>
+    <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"Brze postavke sigurnosti i privatnosti"</string>
     <string name="safety_center_qs_close_button" msgid="1352313308176244599">"Zatvori"</string>
-    <string name="safety_center_qs_privacy_control" msgid="182198757833749612">"Prebaci. %1$s. %2$s"</string>
+    <string name="safety_center_qs_expand_action" msgid="2193190557696484169">"Opcije proširivanja i prikazivanja"</string>
+    <string name="safety_center_qs_collapse_action" msgid="5809657430125309183">"Sažmi"</string>
+    <string name="safety_center_qs_privacy_control" msgid="1160682635058529673">"Prebaci. <xliff:g id="PRIVACY_CONTROL_TITLE">%1$s</xliff:g>. <xliff:g id="PRIVACY_CONTROL_STATUS">%2$s</xliff:g>"</string>
     <string name="safety_center_qs_toggle_action" msgid="5920465736488119255">"Promijeni"</string>
     <string name="safety_center_qs_open_action" msgid="2760200829912423728">"Otvori"</string>
     <string name="safety_center_review_settings_button" msgid="938981137942443930">"Pregledaj postavke"</string>
