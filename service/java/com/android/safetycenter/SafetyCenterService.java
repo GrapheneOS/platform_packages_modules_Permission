@@ -84,11 +84,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
-import java.time.Duration;
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.Executor;
 
@@ -587,7 +584,7 @@ public final class SafetyCenterService extends SystemService {
         }
 
         private void enforceAnyCallingOrSelfPermissions(
-                @NonNull String message, String... permissions) {
+                @NonNull String message, @NonNull String... permissions) {
             if (permissions.length == 0) {
                 throw new IllegalArgumentException("Must check at least one permission");
             }
@@ -865,62 +862,6 @@ public final class SafetyCenterService extends SystemService {
                     + ", mUserProfileGroup="
                     + mUserProfileGroup
                     + '}';
-        }
-    }
-
-    /**
-     * A wrapper class to track the timeouts that are currently in flight.
-     *
-     * <p>This class isn't thread safe. Thread safety must be handled by the caller.
-     */
-    @NotThreadSafe
-    private static final class SafetyCenterTimeouts {
-
-        /**
-         * The maximum number of timeouts we are tracking at a given time. This is to avoid having
-         * the {@code mTimeouts} queue grow unbounded. In practice, we should never have more than 1
-         * or 2 timeouts in flight.
-         */
-        private static final int MAX_TRACKED = 10;
-
-        private final ArrayDeque<Runnable> mTimeouts = new ArrayDeque<>(MAX_TRACKED);
-        private final Handler mForegroundHandler = ForegroundThread.getHandler();
-
-        SafetyCenterTimeouts() {}
-
-        private void add(@NonNull Runnable timeoutAction, @NonNull Duration timeoutDuration) {
-            if (mTimeouts.size() + 1 >= MAX_TRACKED) {
-                remove(mTimeouts.pollFirst());
-            }
-            mTimeouts.addLast(timeoutAction);
-            mForegroundHandler.postDelayed(timeoutAction, timeoutDuration.toMillis());
-        }
-
-        private void remove(@NonNull Runnable timeoutAction) {
-            mTimeouts.remove(timeoutAction);
-            mForegroundHandler.removeCallbacks(timeoutAction);
-        }
-
-        private void clear() {
-            while (!mTimeouts.isEmpty()) {
-                mForegroundHandler.removeCallbacks(mTimeouts.pollFirst());
-            }
-        }
-
-        /**
-         * Dumps state for debugging purposes.
-         *
-         * @param fout {@link PrintWriter} to write to
-         */
-        void dump(@NonNull PrintWriter fout) {
-            int count = mTimeouts.size();
-            fout.println("TIMEOUTS (" + count + ")");
-            Iterator<Runnable> it = mTimeouts.iterator();
-            int i = 0;
-            while (it.hasNext()) {
-                fout.println("\t[" + i++ + "] " + it.next());
-            }
-            fout.println();
         }
     }
 
