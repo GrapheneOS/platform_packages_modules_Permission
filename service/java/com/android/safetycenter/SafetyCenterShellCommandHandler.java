@@ -24,6 +24,8 @@ import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_PAGE_OPEN;
 import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK;
 import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_SAFETY_CENTER_ENABLED;
 
+import static java.util.Collections.unmodifiableMap;
+
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
@@ -36,7 +38,6 @@ import androidx.annotation.RequiresApi;
 import com.android.modules.utils.BasicShellCommandHandler;
 
 import java.io.PrintWriter;
-import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -44,22 +45,9 @@ import java.util.Map;
 @RequiresApi(TIRAMISU)
 final class SafetyCenterShellCommandHandler extends BasicShellCommandHandler {
 
-    @NonNull private final ISafetyCenterManager mSafetyCenterManager;
-
     @NonNull private static final Map<String, Integer> REASONS = createReasonMap();
 
-    @NonNull
-    private static Map<String, Integer> createReasonMap() {
-        // LinkedHashMap so that options get printed in order
-        LinkedHashMap<String, Integer> reasons = new LinkedHashMap<>(6);
-        reasons.put("PAGE_OPEN", REFRESH_REASON_PAGE_OPEN);
-        reasons.put("BUTTON_CLICK", REFRESH_REASON_RESCAN_BUTTON_CLICK);
-        reasons.put("REBOOT", REFRESH_REASON_DEVICE_REBOOT);
-        reasons.put("LOCALE_CHANGE", REFRESH_REASON_DEVICE_LOCALE_CHANGE);
-        reasons.put("SAFETY_CENTER_ENABLED", REFRESH_REASON_SAFETY_CENTER_ENABLED);
-        reasons.put("OTHER", REFRESH_REASON_OTHER);
-        return Collections.unmodifiableMap(reasons);
-    }
+    @NonNull private final ISafetyCenterManager mSafetyCenterManager;
 
     SafetyCenterShellCommandHandler(@NonNull ISafetyCenterManager safetyCenterManager) {
         mSafetyCenterManager = safetyCenterManager;
@@ -116,7 +104,7 @@ final class SafetyCenterShellCommandHandler extends BasicShellCommandHandler {
             }
             opt = getNextOption();
         }
-        getOutPrintWriter().println("Starting refresh...");
+        getOutPrintWriter().println("Starting refresh…");
         mSafetyCenterManager.refreshSafetySources(reason, userId);
         return 0;
     }
@@ -143,7 +131,7 @@ final class SafetyCenterShellCommandHandler extends BasicShellCommandHandler {
     }
 
     private int onClearData() throws RemoteException {
-        getOutPrintWriter().println("Clearing all data...");
+        getOutPrintWriter().println("Clearing all data…");
         mSafetyCenterManager.clearAllSafetySourceDataForTests();
         return 0;
     }
@@ -176,5 +164,18 @@ final class SafetyCenterShellCommandHandler extends BasicShellCommandHandler {
         for (int i = 0; i < description.length; i++) {
             pw.println("    " + description[i]);
         }
+    }
+
+    @NonNull
+    private static Map<String, Integer> createReasonMap() {
+        // LinkedHashMap so that options get printed in order
+        LinkedHashMap<String, Integer> reasons = new LinkedHashMap<>(6);
+        reasons.put("PAGE_OPEN", REFRESH_REASON_PAGE_OPEN);
+        reasons.put("BUTTON_CLICK", REFRESH_REASON_RESCAN_BUTTON_CLICK);
+        reasons.put("REBOOT", REFRESH_REASON_DEVICE_REBOOT);
+        reasons.put("LOCALE_CHANGE", REFRESH_REASON_DEVICE_LOCALE_CHANGE);
+        reasons.put("SAFETY_CENTER_ENABLED", REFRESH_REASON_SAFETY_CENTER_ENABLED);
+        reasons.put("OTHER", REFRESH_REASON_OTHER);
+        return unmodifiableMap(reasons);
     }
 }
