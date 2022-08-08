@@ -27,7 +27,10 @@ import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.PackageManager.ResolveInfoFlags;
+import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
 import android.icu.text.ListFormatter;
 import android.icu.text.MessageFormat;
@@ -1242,7 +1245,8 @@ final class SafetyCenterDataTracker {
                                 toPendingIntent(
                                         safetySource.getIntentAction(),
                                         safetySource.getPackageName(),
-                                        userId);
+                                        userId,
+                                        false);
                         enabled = enabled && pendingIntent != null;
                     }
                     SafetyCenterEntryId safetyCenterEntryId =
@@ -1318,8 +1322,10 @@ final class SafetyCenterDataTracker {
                         .setSafetySourceId(safetySource.getId())
                         .setUserId(userId)
                         .build();
+        boolean isQuietModeEnabled = isUserManaged && !isManagedUserRunning;
         PendingIntent pendingIntent =
-                toPendingIntent(safetySource.getIntentAction(), packageName, userId);
+                toPendingIntent(
+                        safetySource.getIntentAction(), packageName, userId, isQuietModeEnabled);
         boolean enabled =
                 pendingIntent != null && !SafetySources.isDefaultEntryDisabled(safetySource);
         CharSequence title =
@@ -1471,9 +1477,10 @@ final class SafetyCenterDataTracker {
         if (SafetySources.isDefaultEntryHidden(safetySource)) {
             return null;
         }
-
+        boolean isQuietModeEnabled = isUserManaged && !isManagedUserRunning;
         PendingIntent pendingIntent =
-                toPendingIntent(safetySource.getIntentAction(), packageName, userId);
+                toPendingIntent(
+                        safetySource.getIntentAction(), packageName, userId, isQuietModeEnabled);
 
         if (pendingIntent == null) {
             // TODO(b/222838784): Decide strategy for static entries when the intent is null.
@@ -1501,19 +1508,42 @@ final class SafetyCenterDataTracker {
 
     @Nullable
     private PendingIntent toPendingIntent(
-            @Nullable String intentAction, @NonNull String packageName, @UserIdInt int userId) {
+            @Nullable String intentAction,
+            @NonNull String packageName,
+            @UserIdInt int userId,
+            boolean isQuietModeEnabled) {
         if (intentAction == null) {
             return null;
         }
-
         Context context = toPackageContextAsUser(packageName, userId);
         if (context == null) {
             return null;
         }
-
-        // TODO(b/222838784): Validate that the intent action is available.
-
+        if (!isIntentActionValid(context, intentAction, userId, isQuietModeEnabled)) {
+            return null;
+        }
         return toPendingIntent(context, 0, new Intent(intentAction));
+    }
+
+    private boolean isIntentActionValid(
+            @NonNull Context context,
+            @NonNull String intentAction,
+            @UserIdInt int userId,
+            boolean isQuietModeEnabled) {
+        if (context == null || intentAction == null) {
+            return false;
+        }
+        // TODO(b/241743286)
+        //  queryIntentActivities does not return any activity when work profile is in quiet mode
+        if (isQuietModeEnabled) {
+            return true;
+        }
+        Intent intent = new Intent(intentAction);
+        PackageManager packageManager = context.getPackageManager();
+        List<ResolveInfo> activities =
+                packageManager.queryIntentActivitiesAsUser(
+                        intent, ResolveInfoFlags.of(0), UserHandle.of(userId));
+        return !activities.isEmpty();
     }
 
     @NonNull
