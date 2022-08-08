@@ -16,6 +16,5 @@
   -->
 <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/expanded_icon"
-    android:layout_width="24dp"
-    android:layout_height="24dp"
-    android:src="@drawable/ic_safety_group_collapse" />
+    android:src="@drawable/ic_safety_group_collapse"
+    style="@style/SafetyCenterExpandedGroupIcon"/>
