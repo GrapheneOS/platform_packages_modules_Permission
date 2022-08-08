@@ -69,16 +69,17 @@ final class SafetyCenterBroadcastDispatcher {
     private static final String TAG = "SafetyCenterBroadcastDispatcher";
 
     @NonNull private final Context mContext;
-    @NonNull private final SafetyCenterRefreshTracker mRefreshTracker;
+    @NonNull private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker;
 
     /**
      * Creates a {@link SafetyCenterBroadcastDispatcher} using the given {@link Context} and {@link
      * SafetyCenterRefreshTracker}.
      */
     SafetyCenterBroadcastDispatcher(
-            @NonNull Context context, @NonNull SafetyCenterRefreshTracker refreshTracker) {
+            @NonNull Context context,
+            @NonNull SafetyCenterRefreshTracker safetyCenterRefreshTracker) {
         mContext = context;
-        mRefreshTracker = refreshTracker;
+        mSafetyCenterRefreshTracker = safetyCenterRefreshTracker;
     }
 
     /**
@@ -154,7 +155,8 @@ final class SafetyCenterBroadcastDispatcher {
             Intent intent = createRefreshIntent(requestType, packageName, sourceIds, broadcastId);
             boolean sent = sendBroadcastIfResolves(intent, UserHandle.of(userId), broadcastOptions);
             if (sent) {
-                mRefreshTracker.reportSourceRefreshesInFlight(broadcastId, sourceIds, userId);
+                mSafetyCenterRefreshTracker.reportSourceRefreshesInFlight(
+                        broadcastId, sourceIds, userId);
             }
         }
     }
@@ -278,13 +280,11 @@ final class SafetyCenterBroadcastDispatcher {
             result.put(userProfileGroup.getProfileParentUserId(), profileParentSources);
         }
 
-        if (managedProfileIds.length > 0) {
-            List<String> managedProfileSources =
-                    broadcast.getSourceIdsForManagedProfiles(refreshReason);
-            if (!managedProfileSources.isEmpty()) {
-                for (int i = 0; i < managedProfileIds.length; i++) {
-                    result.put(managedProfileIds[i], managedProfileSources);
-                }
+        List<String> managedProfileSources =
+                broadcast.getSourceIdsForManagedProfiles(refreshReason);
+        if (!managedProfileSources.isEmpty()) {
+            for (int i = 0; i < managedProfileIds.length; i++) {
+                result.put(managedProfileIds[i], managedProfileSources);
             }
         }
 
