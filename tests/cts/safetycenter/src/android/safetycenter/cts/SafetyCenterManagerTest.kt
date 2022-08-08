@@ -2168,11 +2168,6 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    fun getSafetyCenterData_withoutPermission_throwsSecurityException() {
-        assertFailsWith(SecurityException::class) { safetyCenterManager.safetyCenterData }
-    }
-
-    @Test
     fun getSafetyCenterData_defaultDataWithIncorrectIntent_returnsDisabledEntries() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_INVALID_INTENT_CONFIG)
 
@@ -2190,6 +2185,11 @@ class SafetyCenterManagerTest {
                             .build())),
                 emptyList())
         assertThat(safetyCenterData).isEqualTo(expectedSafetyCenterData)
+    }
+
+    @Test
+    fun getSafetyCenterData_withoutPermission_throwsSecurityException() {
+        assertFailsWith(SecurityException::class) { safetyCenterManager.safetyCenterData }
     }
 
     @Test
