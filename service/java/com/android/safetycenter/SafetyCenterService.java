@@ -947,7 +947,8 @@ public final class SafetyCenterService extends SystemService {
 
             RefreshTimeout refreshTimeout =
                     new RefreshTimeout(refreshBroadcastId, userProfileGroup);
-            mSafetyCenterTimeouts.add(refreshTimeout, SafetyCenterFlags.getRefreshTimeout());
+            mSafetyCenterTimeouts.add(
+                    refreshTimeout, SafetyCenterFlags.getRefreshSourcesTimeout(refreshReason));
 
             mSafetyCenterListeners.deliverUpdateForUserProfileGroup(userProfileGroup, true, null);
 
