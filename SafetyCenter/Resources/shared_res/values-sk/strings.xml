@@ -23,17 +23,17 @@
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"Nenašli sa žiadne problémy"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Kontrola nastavení"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Kontrolný zoznam nastavení"</string>
-    <string name="overall_severity_level_recommendation_title" msgid="5477942982532824601">"Zariadenie môže byť ohrozené"</string>
-    <string name="overall_severity_level_critical_warning_title" msgid="2043894328485989618">"Zariadenie je ohrozené"</string>
-    <!-- no translation found for overall_severity_level_safety_recommendation_title (6436208984463981167) -->
+    <!-- no translation found for overall_severity_level_device_recommendation_title (5250040236433061827) -->
     <skip />
-    <!-- no translation found for overall_severity_level_critical_safety_warning_title (1039142045555227172) -->
+    <!-- no translation found for overall_severity_level_critical_device_warning_title (5901771721834272596) -->
     <skip />
+    <string name="overall_severity_level_safety_recommendation_title" msgid="6436208984463981167">"Vaše zabezpečenie môže byť ohrozené"</string>
+    <string name="overall_severity_level_critical_safety_warning_title" msgid="1039142045555227172">"Vaše zabezpečenie je ohrozené"</string>
     <string name="overall_severity_n_alerts_summary" msgid="1105615451561197136">"{count,plural, =1{# upozornenie}few{# upozornenia}many{# alerts}other{# upozornení}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Stránku sa nepodarilo otvoriť"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Upozornenie sa nepodarilo vyriešiť"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"Nastavenia sa nepodarilo obnoviť"</string>
-    <!-- no translation found for refresh_error (6941786638077164066) -->
-    <skip />
+    <string name="refresh_error" msgid="255412333381376201">"Nepodarilo sa skontrolovať {count,plural, =1{nastavenie}few{nastavenia}many{settings}other{nastavení}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"Pracovný profil je pozastavený"</string>
+    <string name="group_unknown_summary" msgid="6951386960814105641">"Zatiaľ žiadne informácie"</string>
 </resources>

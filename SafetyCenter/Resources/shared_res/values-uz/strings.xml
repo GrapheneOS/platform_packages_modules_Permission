@@ -23,14 +23,17 @@
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"Hech qanday muammo topilmadi"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Sozlamalarni tekshirish"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Sozlamalar roʻyxatini tekshirish"</string>
-    <string name="overall_severity_level_recommendation_title" msgid="5477942982532824601">"Qurilma xavf ostida boʻlishi mumkin"</string>
-    <string name="overall_severity_level_critical_warning_title" msgid="2043894328485989618">"Qurilma xavf ostida"</string>
+    <!-- no translation found for overall_severity_level_device_recommendation_title (5250040236433061827) -->
+    <skip />
+    <!-- no translation found for overall_severity_level_critical_device_warning_title (5901771721834272596) -->
+    <skip />
     <string name="overall_severity_level_safety_recommendation_title" msgid="6436208984463981167">"Xavf ostida boʻlishingiz mumkin"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="1039142045555227172">"Xavf ostidasiz"</string>
     <string name="overall_severity_n_alerts_summary" msgid="1105615451561197136">"{count,plural, =1{# ta ogohlantirish}other{# ta ogohlantirish}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Sahifa ochilmadi"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Ogohlantirish hal qilinmadi"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"Sozlamalar yangilanmadi"</string>
-    <string name="refresh_error" msgid="6941786638077164066">"Sozlama tekshirilmadi"</string>
+    <string name="refresh_error" msgid="255412333381376201">"{count,plural, =1{Sozlama}other{Sozlamalar}} tekshirilmadi"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"Ish profili pauzada"</string>
+    <string name="group_unknown_summary" msgid="6951386960814105641">"Hali axborot olinmadi"</string>
 </resources>
