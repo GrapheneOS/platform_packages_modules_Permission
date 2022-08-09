@@ -17,64 +17,36 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:baselineAligned="false"
-    android:minHeight="?android:attr/listPreferredItemHeight"
-    android:gravity="center_vertical"
-    android:orientation="horizontal"
-    style="@style/SafetyCenter.EntryCard">
+    style="@style/SafetyCenterEntry">
 
     <FrameLayout
         android:id="@+id/icon_frame"
-        android:layout_width="68dp"
-        android:layout_height="match_parent">
+        style="@style/SafetyCenterEntryIconFrame">
         <ImageView
             android:id="@android:id/icon"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_gravity="center" />
+            style="@style/SafetyCenterEntryIcon"/>
     </FrameLayout>
 
     <Space
         android:id="@+id/empty_space"
-        android:layout_width="24dp"
-        android:layout_height="match_parent" />
+        style="@style/SafetyCenterEntryEmptySpace"/>
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        style="@style/SafetyCenterEntryTextContainer">
 
         <TextView android:id="@android:id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="?android:attr/textColorPrimary"
-            android:ellipsize="marquee"
-            android:fadingEdge="horizontal" />
+            style="@style/SafetyCenterEntryTitle" />
 
         <TextView android:id="@android:id/summary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="?android:attr/textColorSecondary"
-            android:maxLines="4" />
+            style="@style/SafetyCenterEntrySummary" />
 
     </LinearLayout>
 
     <!-- A preference could place its optional widget here. This will be hidden if no widget layout
      is set for the preference. -->
     <LinearLayout android:id="@android:id/widget_frame"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-        <View style="@style/SafetyCenter.EntryCard.Divider" />
+        style="@style/SafetyCenterEntryWidgetFrame">
+        <View style="@style/SafetyCenterEntryDivider" />
         <!-- PreferenceGroupAdapter will inflate widget layouts here -->
     </LinearLayout>
 </LinearLayout>
