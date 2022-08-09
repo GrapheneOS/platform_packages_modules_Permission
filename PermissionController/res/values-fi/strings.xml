@@ -262,12 +262,9 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Joitain sovelluksia ei ole käytetty muutamaan kuukauteen. Tarkista napauttamalla."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# käyttämätön sovellus}other{# käyttämätöntä sovellusta}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Luvat ja väliaikaiset tiedostot on poistettu ja ilmoitukset lopetettu. Tarkista napauttamalla."</string>
-    <!-- no translation found for unused_apps_safety_center_card_title (5638409355530099149) -->
-    <skip />
-    <!-- no translation found for unused_apps_safety_center_card_content (1088557243627427820) -->
-    <skip />
-    <!-- no translation found for unused_apps_safety_center_action_title (8865914432518993194) -->
-    <skip />
+    <string name="unused_apps_safety_center_card_title" msgid="5638409355530099149">"Tarkista sovellukset, joiden lupia poistettiin"</string>
+    <string name="unused_apps_safety_center_card_content" msgid="1088557243627427820">"Lupia ja väliaikaisia tiedostoja on poistettu ja ilmoituksia estetty sovelluksista, joita et ole käyttänyt viime aikoina."</string>
+    <string name="unused_apps_safety_center_action_title" msgid="8865914432518993194">"Tarkista sovellukset"</string>
     <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Tarkista viimeaikaiset luvat"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"<xliff:g id="APP">%1$s</xliff:g> sai ajon aikana tämän luvan: <xliff:g id="PERMISSION">%2$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"<xliff:g id="APP">%1$s</xliff:g> sai ajon aikana nämä luvat: <xliff:g id="PERMISSION_1">%2$s</xliff:g> ja <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
@@ -282,28 +279,21 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Luvat poistettu tietoturvasyistä"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> sai sijaintitietosi taustalla"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Tämä sovellus voi aina käyttää sijaintiasi. Muuta napauttamalla."</string>
-    <!-- no translation found for notification_listener_reminder_notification_title (3747210460187479091) -->
+    <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"Tarkista sovellus, jolla on pääsy ilmoituksiisi"</string>
+    <!-- no translation found for notification_listener_reminder_notification_content (831476101108863427) -->
     <skip />
-    <!-- no translation found for notification_listener_reminder_notification_content (4936171153668563578) -->
-    <skip />
-    <!-- no translation found for notification_listener_warning_card_content (274394600993750005) -->
+    <!-- no translation found for notification_listener_warning_card_content (7840973324284115893) -->
     <skip />
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Poista pääsyoikeus"</string>
-    <!-- no translation found for notification_listener_review_app_button_label (3433073281029143924) -->
-    <skip />
+    <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"Katso lisää vaihtoehtoja"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Pääsyoikeus on poistettu"</string>
-    <!-- no translation found for accessibility_access_reminder_notification_title (2971317234668807566) -->
-    <skip />
-    <!-- no translation found for accessibility_access_reminder_notification_content (7389454158175306720) -->
-    <skip />
-    <!-- no translation found for accessibility_access_warning_card_content (4370327190293217358) -->
-    <skip />
+    <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"Tarkista sovellus, jolla on laitteiden täydet pääsyoikeudet"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> voi nähdä näyttösi ja suorittaa toimintoja laitteellasi. Saavutettavuussovellukset tarvitsevat tämäntyyppisen pääsyn, jotta ne toimivat oikein."</string>
+    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"Sovellus voi nähdä näyttösi ja suorittaa toimintoja laitteellasi. Saavutettavuussovellukset tarvitsevat tämäntyyppisen pääsyn, jotta ne toimivat oikein. Varmista kuitenkin, että voit luottaa sovellukseen."</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Poista pääsyoikeus"</string>
-    <!-- no translation found for accessibility_show_all_apps_button_label (960067249326392280) -->
-    <skip />
+    <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"Tarkista sovellukset, joilla on täydet pääsyoikeudet"</string>
     <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Pääsyoikeus on poistettu"</string>
-    <!-- no translation found for safety_center_notification_app_label (2457720616141926534) -->
-    <skip />
+    <string name="safety_center_notification_app_label" msgid="2457720616141926534">"Android-järjestelmä"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Sovellusten luvat poistettu tietoturvasyistä"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> ei ole ollut käytössä muutamaan kuukauteen. Tarkista napauttamalla."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> ja 1 muu sovellus ei ole ollut käytössä muutamaan kuukauteen. Tarkista napauttamalla."</string>
@@ -524,39 +514,28 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Sovellusten ja palvelujen osalta"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Mikrofonidataa saatetaan silti jakaa, kun soitat hätänumeroon."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Muuta"</string>
-    <!-- no translation found for safety_center_dashboard_page_title (2810774008694315854) -->
-    <skip />
-    <!-- no translation found for safety_center_rescan_button (4517514567809409596) -->
-    <skip />
+    <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Tietoturva ja yksityisyys"</string>
+    <string name="safety_center_rescan_button" msgid="4517514567809409596">"Tarkista laite"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Ohita"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Ohitetaanko tämä hälytys?"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"Tarkista tietoturva- ja yksityisyysasetuksesi milloin tahansa parantaaksesi suojausta"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Ohita"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Peru"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"Asetukset"</string>
     <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"Tietoturvan ja yksityisyyden tila. <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>. <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"Turvallisuusasetukset"</string>
-    <!-- no translation found for sensor_permissions_qs (1022267900031317472) -->
-    <skip />
-    <!-- no translation found for safety_privacy_qs_tile_title (727301867710374052) -->
-    <skip />
+    <string name="sensor_permissions_qs" msgid="1022267900031317472">"Luvat"</string>
+    <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"Tietoturva ja yksityisyys"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Tarkista tila"</string>
-    <!-- no translation found for privacy_controls_qs (5780144882040591169) -->
-    <skip />
-    <!-- no translation found for security_settings_button_label_qs (8280343822465962330) -->
-    <skip />
-    <!-- no translation found for camera_toggle_label_qs (3880261453066157285) -->
-    <skip />
-    <!-- no translation found for microphone_toggle_label_qs (8132912469813396552) -->
-    <skip />
+    <string name="privacy_controls_qs" msgid="5780144882040591169">"Tietosuojahallinta"</string>
+    <string name="security_settings_button_label_qs" msgid="8280343822465962330">"Lisää asetuksia"</string>
+    <string name="camera_toggle_label_qs" msgid="3880261453066157285">"Pääsy kameraan"</string>
+    <string name="microphone_toggle_label_qs" msgid="8132912469813396552">"Pääsy mikrofoniin"</string>
     <string name="permissions_removed_qs" msgid="8957319130625294572">"Lupa poistettu"</string>
-    <!-- no translation found for camera_usage_qs (134093544497365716) -->
-    <skip />
-    <!-- no translation found for microphone_usage_qs (5054432134389894202) -->
-    <skip />
-    <!-- no translation found for remove_camera_qs (3649996161066883350) -->
-    <skip />
-    <!-- no translation found for remove_microphone_qs (1276551965129953198) -->
-    <skip />
+    <string name="camera_usage_qs" msgid="4394233566086665994">"Katso viimeaikainen kameran käyttö"</string>
+    <string name="microphone_usage_qs" msgid="8527666682168170417">"Katso viimeaikainen mikrofonin käyttö"</string>
+    <string name="remove_camera_qs" msgid="3649996161066883350">"Poista lupa tältä sovellukselta"</string>
+    <string name="remove_microphone_qs" msgid="1276551965129953198">"Poista lupa tältä sovellukselta"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Ylläpidä palvelua"</string>
     <string name="manage_permissions_qs" msgid="3780541819763475434">"Lupien valitseminen"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Puhelu käyttää tätä"</string>
@@ -585,32 +564,20 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Sovellus ei tue Androidin viimeisintä versiota. Jos sovelluksella ei ole pääsyä musiikki‑ ja audiotiedostoihin, se ei myöskään saa pääsyä valokuviin ja videoihin."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Sovellus ei tue Androidin viimeisintä versiota. Jos sovelluksella on pääsy kuviin ja videoihin, se saa pääsyn myös musiikki- ja audiotiedostoihin."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Sovellus ei tue Androidin viimeisintä versiota. Jos sovelluksella ei ole pääsyä musiikki‑ ja audiotiedostoihin, se ei myöskään saa pääsyä valokuviin ja videoihin."</string>
-    <!-- no translation found for safety_center_background_location_access_notification_title (8933610618810588237) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_notification_content (4066560182507301022) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_title (5477847038103863843) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_summary (8276755741395332974) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_revoked (6972274943343442213) -->
-    <skip />
-    <!-- no translation found for safety_center_view_recent_location_access (3524391299490678243) -->
-    <skip />
-    <!-- no translation found for privacy_controls_title (7605929972256835199) -->
-    <skip />
-    <!-- no translation found for camera_toggle_title (1251201397431837666) -->
-    <skip />
-    <!-- no translation found for mic_toggle_title (2649991093496110162) -->
-    <skip />
-    <!-- no translation found for perm_toggle_description (7801326363741451379) -->
-    <skip />
-    <!-- no translation found for mic_toggle_description (9163104307990677157) -->
-    <skip />
-    <!-- no translation found for location_settings_subtitle (2328360561197430695) -->
-    <skip />
-    <!-- no translation found for show_clip_access_notification_title (5168467637351109096) -->
-    <skip />
-    <!-- no translation found for show_clip_access_notification_summary (3532020182782112687) -->
-    <skip />
+    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Tarkista sovellus, jolla on pääsy taustasijaintiin"</string>
+    <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"Sovellus (<xliff:g id="APP_NAME">%s</xliff:g>) voi käyttää sijaintiasi aina, vaikka sovellus ei olisi päällä"</string>
+    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Tarkista sovellus, jolla on pääsy taustasijaintiin"</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Sovellus voi käyttää sijaintiasi aina, vaikka sovellus ei olisi päällä."</string>
+    <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Pääsyoikeudet muutettu"</string>
+    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Katso viimeisin sijainnin käyttö"</string>
+    <string name="privacy_controls_title" msgid="7605929972256835199">"Yksityisyysasetukset"</string>
+    <string name="camera_toggle_title" msgid="1251201397431837666">"Pääsy kameraan"</string>
+    <string name="mic_toggle_title" msgid="2649991093496110162">"Pääsy mikrofoniin"</string>
+    <string name="perm_toggle_description" msgid="7801326363741451379">"Sovellukset ja palvelut"</string>
+    <string name="mic_toggle_description" msgid="9163104307990677157">"Sovellukset ja palvelut. Vaikka asetus olisi poissa päältä, mikrofonidataa saatetaan silti jakaa, kun soitat hätänumeroon."</string>
+    <string name="location_settings_subtitle" msgid="2328360561197430695">"Katso sovellukset ja palvelut, joilla on pääsy sijaintiin"</string>
+    <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Näytä ilmoituksia leikepöydän käytöstä"</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Näytä viesti, kun sovellukset käyttävät kopioimaasi tekstiä, kuvia tai muuta sisältöä"</string>
+    <string name="show_password_title" msgid="2877269286984684659">"Näytä salasanat"</string>
+    <string name="show_password_summary" msgid="1110166488865981610">"Näytä kirjaimet hetkellisesti, kun kirjoitat"</string>
 </resources>

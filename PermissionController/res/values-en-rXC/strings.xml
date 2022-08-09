@@ -262,12 +262,9 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‎‎‎‏‏‏‎‎‏‎‎‎‏‏‎‎‏‎‏‏‎‏‏‎‎‎‏‏‎‏‎‏‎‏‏‏‎‎‏‏‎‎‎‏‎‎‏‏‎‏‏‎‎‎‎‏‎‎‏‏‏‏‎Some apps haven’t been used in a few months. Tap to review.‎‏‎‎‏‎"</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‏‏‎‏‏‏‏‏‎‎‎‎‏‎‏‎‏‏‏‎‎‏‏‎‏‏‎‏‏‏‎‎‎‎‏‎‎‏‏‎‏‏‎‏‏‏‏‎‏‎‎‏‏‎‏‎‎‎‎‏‏‎# unused app‎‏‎‎‏‎}other{‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‏‏‎‏‏‏‏‏‎‎‎‎‏‎‏‎‏‏‏‎‎‏‏‎‏‏‎‏‏‏‎‎‎‎‏‎‎‏‏‎‏‏‎‏‏‏‏‎‏‎‎‏‏‎‏‎‎‎‎‏‏‎# unused apps‎‏‎‎‏‎}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‏‏‏‏‏‏‎‎‏‏‎‏‏‎‏‎‎‏‏‎‎‎‎‏‎‎‎‏‎‎‎‎‎‎‏‏‏‎‏‏‏‎‎‏‏‎‎‎‏‎‏‎‏‎‏‏‏‏‏‏‎‎Permissions and temporary files have been removed and notifications were stopped. Tap to review.‎‏‎‎‏‎"</string>
-    <!-- no translation found for unused_apps_safety_center_card_title (5638409355530099149) -->
-    <skip />
-    <!-- no translation found for unused_apps_safety_center_card_content (1088557243627427820) -->
-    <skip />
-    <!-- no translation found for unused_apps_safety_center_action_title (8865914432518993194) -->
-    <skip />
+    <string name="unused_apps_safety_center_card_title" msgid="5638409355530099149">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‎‎‏‏‏‎‎‎‏‏‏‏‏‏‏‎‏‎‎‏‏‏‎‏‏‎‏‏‏‏‎‏‏‎‏‏‏‎‏‎‎‏‏‏‎‎‎‏‎‏‏‎‎‏‏‏‎‎‏‏‎‏‎Review apps with permissions removed‎‏‎‎‏‎"</string>
+    <string name="unused_apps_safety_center_card_content" msgid="1088557243627427820">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‎‎‏‏‏‏‎‎‎‏‏‎‏‏‎‏‎‏‎‏‎‏‎‎‎‎‏‎‏‏‏‎‏‏‎‎‎‎‎‎‎‏‎‏‏‏‎‏‎‏‎‏‏‏‏‏‏‎‏‏‎‎‎For apps that you haven’t used in a while, permissions and temporary files were removed and notifications were stopped.‎‏‎‎‏‎"</string>
+    <string name="unused_apps_safety_center_action_title" msgid="8865914432518993194">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‏‏‎‏‏‎‎‎‎‏‎‏‎‎‎‎‎‏‏‏‎‎‎‏‏‎‎‏‏‏‏‏‎‎‏‏‏‎‏‎‎‏‏‎‏‏‎‏‏‎‏‎‏‎‎‏‎‏‎‏‎‎Review apps‎‏‎‎‏‎"</string>
     <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‎‏‏‎‎‎‏‏‏‏‎‏‎‎‏‎‏‏‏‏‎‏‎‎‏‏‎‏‎‏‏‏‎‏‏‏‏‏‏‏‏‏‎‏‎‎‎‏‎‎‏‏‏‎‏‎‏‎‎‏‎‎‎‎Check recent permissions‎‏‎‎‏‎"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‎‎‏‎‎‏‎‏‎‎‏‏‏‎‎‎‏‎‏‎‏‏‏‏‎‎‎‎‎‏‎‏‎‎‏‏‎‎‎‏‎‏‎‏‎‏‏‎‎‎‏‏‏‏‎‎‏‎‎‏‏‏‎While driving, you gave ‎‏‎‎‏‏‎<xliff:g id="APP">%1$s</xliff:g>‎‏‎‎‏‏‏‎ access to ‎‏‎‎‏‏‎<xliff:g id="PERMISSION">%2$s</xliff:g>‎‏‎‎‏‏‏‎‎‏‎‎‏‎"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‎‎‏‎‎‏‎‏‎‏‎‎‏‎‏‎‏‎‏‏‏‎‏‎‎‎‎‏‎‏‏‏‏‎‏‏‎‏‏‎‎‎‏‎‏‎‏‎‏‏‏‏‎‏‏‎‎‏‎‏‎‏‎While driving, you gave ‎‏‎‎‏‏‎<xliff:g id="APP">%1$s</xliff:g>‎‏‎‎‏‏‏‎ access to ‎‏‎‎‏‏‎<xliff:g id="PERMISSION_1">%2$s</xliff:g>‎‏‎‎‏‏‏‎ &amp; ‎‏‎‎‏‏‎<xliff:g id="PERMISSION_2">%3$s</xliff:g>‎‏‎‎‏‏‏‎‎‏‎‎‏‎"</string>
@@ -282,30 +279,19 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‎‎‏‏‎‎‏‎‎‏‎‎‏‏‏‎‏‏‏‎‎‏‏‏‎‏‏‏‏‎‎‎‎‎‏‎‏‏‎‎‏‏‏‏‎‎‏‎‏‎‎‏‎‎‎‏‏‏‏‎‎‏‎Permissions removed to protect your privacy‎‏‎‎‏‎"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‎‎‏‏‏‏‏‏‎‏‎‏‎‎‏‏‏‎‏‏‎‏‏‎‏‎‏‎‏‎‏‏‏‏‏‏‏‎‏‎‎‎‎‏‎‏‎‎‏‎‏‎‏‎‎‎‎‎‏‏‏‎‎‎‏‎‎‏‏‎<xliff:g id="APP_NAME">%s</xliff:g>‎‏‎‎‏‏‏‎ got your location in the background‎‏‎‎‏‎"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‎‏‏‎‎‎‎‎‏‎‎‎‏‎‏‎‎‏‎‎‎‎‏‎‎‏‎‎‎‏‎‎‏‏‎‎‎‏‎‏‎‏‎‏‏‏‏‏‎‎‏‏‏‏‏‎‎‎‏‎‏‎This app can always access your location. Tap to change.‎‏‎‎‏‎"</string>
-    <!-- no translation found for notification_listener_reminder_notification_title (3747210460187479091) -->
-    <skip />
-    <!-- no translation found for notification_listener_reminder_notification_content (4936171153668563578) -->
-    <skip />
-    <!-- no translation found for notification_listener_warning_card_content (274394600993750005) -->
-    <skip />
+    <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‏‎‏‎‎‎‎‎‎‎‎‎‎‏‏‎‎‎‏‎‎‎‎‎‎‏‏‏‏‎‏‎‏‏‎‏‎‎‎‎‏‏‎‏‎‎‏‎‎‏‏‎‎‎‎‏‏‎‎‏‏‎Review app with access to your notifications‎‏‎‎‏‎"</string>
+    <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‎‎‏‎‏‏‏‎‎‎‏‎‎‏‏‏‏‏‏‏‏‏‎‎‎‏‏‎‏‏‏‏‎‎‏‏‎‏‏‏‎‏‎‎‏‎‎‎‎‏‎‎‎‏‏‏‎‎‎‎‏‏‎‎‏‎‎‏‏‎<xliff:g id="APP_NAME">%s</xliff:g>‎‏‎‎‏‏‏‎ can dismiss, act on, and access content inside your notifications‎‏‎‎‏‎"</string>
+    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‎‏‏‎‎‏‏‎‏‎‎‎‎‏‎‏‏‏‎‏‏‏‎‏‏‎‎‎‏‏‏‏‏‎‏‏‏‎‏‎‎‎‏‎‎‏‎‏‏‏‎‏‏‏‎‏‏‎‏‎‏‎This app can dismiss, act on, and access content inside your notifications. Some apps require this access to function as intended.‎‏‎‎‏‎"</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‎‎‎‏‎‏‎‎‎‏‏‏‏‎‎‎‎‎‎‏‏‎‏‎‏‎‎‎‎‏‎‏‎‏‏‎‎‏‏‎‎‏‎‏‏‎‎‎‎‏‏‏‎‎‎‎‎‏‎‎‏‎Remove access‎‏‎‎‏‎"</string>
-    <!-- no translation found for notification_listener_review_app_button_label (3433073281029143924) -->
-    <skip />
+    <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‎‏‏‏‏‏‎‏‎‎‏‎‎‏‎‏‏‏‎‎‏‏‏‏‏‎‏‎‏‏‎‏‏‏‎‏‏‏‎‏‎‎‎‎‎‎‏‏‏‏‏‎‏‎‏‏‏‎‏‎‎‎See more options‎‏‎‎‏‎"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‎‎‎‏‎‎‏‏‎‎‎‏‎‎‎‏‏‏‏‏‎‏‎‎‎‏‏‏‏‎‎‏‏‏‎‎‏‏‎‏‎‎‏‏‎‎‎‏‏‎‎‏‏‏‏‎‏‎‎‏‏‎Access removed‎‏‎‎‏‎"</string>
-    <!-- no translation found for accessibility_access_reminder_notification_title (2971317234668807566) -->
-    <skip />
-    <!-- no translation found for accessibility_access_reminder_notification_content (7389454158175306720) -->
-    <skip />
-    <!-- no translation found for accessibility_access_warning_card_content (4370327190293217358) -->
-    <skip />
-    <!-- no translation found for accessibility_remove_access_button_label (44145801526711640) -->
-    <skip />
-    <!-- no translation found for accessibility_show_all_apps_button_label (960067249326392280) -->
-    <skip />
-    <!-- no translation found for accessibility_remove_access_success_label (4380995302917014670) -->
-    <skip />
-    <!-- no translation found for safety_center_notification_app_label (2457720616141926534) -->
-    <skip />
+    <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‎‏‎‎‏‎‎‏‏‏‏‎‎‎‎‏‏‏‏‎‏‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‎‏‏‎‏‏‏‎‎‎‏‎‎‏‎‏‏‎‎‎‏‏‏‎‎Review app with full device access‎‏‎‎‏‎"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‎‎‏‏‎‏‎‎‎‏‏‎‎‏‎‎‏‏‏‎‏‎‏‏‎‎‏‏‏‏‏‏‎‎‏‏‎‎‎‎‏‎‎‏‎‏‎‎‎‎‎‏‏‏‏‏‎‎‎‎‎‎‎‏‎‎‏‏‎<xliff:g id="APP_NAME">%s</xliff:g>‎‏‎‎‏‏‏‎ can view your screen and perform actions on your device. Accessibility apps need this type of access to function as intended.‎‏‎‎‏‎"</string>
+    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‏‏‏‎‎‏‎‏‎‎‏‏‎‏‎‎‎‎‏‎‏‎‏‏‎‏‏‎‎‏‎‏‏‎‎‎‏‏‎‏‎‏‎‎‎‏‎‎‎‎‎‎‎‎‏‎‎‏‏‏‎‎This app can view your screen and perform actions on your device. Accessibility apps need this type of access to function as intended, but check the app and make sure you trust it.‎‏‎‎‏‎"</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‎‎‎‏‎‎‏‏‏‎‎‏‏‎‏‎‏‏‎‎‏‎‏‏‏‏‏‎‏‏‎‎‎‏‎‎‏‎‏‎‎‏‏‎‎‎‏‎‏‎‏‎‏‎‏‏‎‎‎‎Remove access‎‏‎‎‏‎"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‎‎‏‏‎‏‎‏‎‏‎‎‏‎‏‏‎‏‏‎‎‎‎‎‎‏‎‎‏‏‏‎‎‏‏‏‎‎‏‎‎‏‎‏‏‎‎‎‎‎‎‎‏‏‏‏‎‏‏‎‎‎‎View apps with full access‎‏‎‎‏‎"</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‏‏‏‎‎‏‏‎‎‏‏‎‎‎‏‏‎‏‏‎‎‎‎‎‎‎‏‎‎‎‎‏‏‏‎‎‏‎‎‎‎‎‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‏‏‏‎‎Access removed‎‏‎‎‏‎"</string>
+    <string name="safety_center_notification_app_label" msgid="2457720616141926534">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‎‎‎‏‎‎‎‎‏‏‎‏‏‏‎‎‏‎‎‏‏‏‏‏‎‎‎‎‎‏‏‏‏‏‎‏‎‎‏‎‎‏‎‏‏‎‎‏‏‎‎‎‎‏‎‎‎‎‏‏‎‎Android System‎‏‎‎‏‎"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‎‎‏‎‏‏‎‎‏‎‏‏‏‏‏‏‎‎‎‎‎‎‏‏‏‏‎‎‏‏‎‎‏‏‏‏‎‎‎‎‏‏‏‎‎‎‎‎‎‎‏‎‎‏‏‏‎‎‎‏‏‏‎App permissions removed to protect privacy‎‏‎‎‏‎"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‎‏‏‏‏‎‎‏‏‎‏‏‎‎‏‏‎‎‏‏‎‏‎‎‏‎‎‏‏‏‏‎‏‏‎‎‏‏‏‏‎‎‏‎‎‎‏‎‎‏‎‏‏‎‎‎‏‎‎‎‎‏‎‎‏‎‎‏‏‎<xliff:g id="APP_NAME">%s</xliff:g>‎‏‎‎‏‏‏‎ hasn’t been used in a few months. Tap to review.‎‏‎‎‏‎"</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‏‏‏‏‎‎‏‏‎‏‎‎‎‏‎‏‎‎‎‏‏‎‏‎‎‎‏‎‏‎‏‏‎‎‏‏‎‏‏‏‎‏‎‎‎‏‎‏‏‎‎‏‎‏‎‎‏‎‏‎‎‎‎‏‎‎‏‏‎<xliff:g id="APP_NAME">%s</xliff:g>‎‏‎‎‏‏‏‎ and 1 other app haven’t been used in a few months. Tap to review.‎‏‎‎‏‎"</string>
@@ -530,6 +516,7 @@
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‏‏‏‏‎‏‎‏‏‎‎‎‏‎‏‏‎‏‏‏‏‏‎‎‏‎‎‎‎‏‎‎‎‏‎‎‏‏‏‏‎‏‏‏‎‏‎‏‎‎‎‏‎‎‎‏‏‏‏‎‎‎Scan device‎‏‎‎‏‎"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‎‎‎‏‏‎‏‏‏‏‏‎‎‎‎‏‏‏‎‏‎‎‏‎‎‎‏‎‎‎‎‏‏‎‏‎‏‏‎‏‎‏‎‎‏‏‏‎‏‏‏‏‎‎‏‏‎‎‎‎‏‎‎Dismiss‎‏‎‎‏‎"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‎‎‏‎‏‏‏‏‏‎‎‏‏‏‏‏‏‏‏‏‎‏‎‏‏‏‎‎‏‏‏‏‏‎‏‏‏‏‏‎‏‏‏‏‏‎‏‎‏‎‏‎‎‎‏‎‏‏‏‏‎‎Dismiss this alert?‎‏‎‎‏‎"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‏‎‏‎‎‎‏‏‎‎‏‎‎‏‏‏‏‏‎‏‏‎‏‎‏‎‏‏‎‏‎‎‎‎‏‎‏‏‎‏‎‎‎‏‎‎‏‏‏‎‎‏‏‎‎‏‏‏‎‏‏‎Review your security and privacy settings any time to add more protection‎‏‎‎‏‎"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‎‏‎‎‎‏‏‎‏‎‏‎‎‎‏‎‏‎‏‎‎‎‎‎‏‏‎‎‎‏‎‏‎‏‏‎‏‎‎‏‏‎‏‏‏‎‏‏‏‎‎‏‏‏‎‏‏‏‏‏‎‎‎Dismiss‎‏‎‎‏‎"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‎‎‏‏‏‏‏‏‎‎‏‎‎‏‎‎‎‏‏‏‎‎‎‏‎‏‏‏‏‏‏‏‏‏‎‎‏‏‏‏‏‏‎‎‏‏‎‎‏‏‏‏‏‏‏‎‏‏‎‏‎‎Cancel‎‏‎‎‏‎"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‎‏‏‏‏‏‏‏‎‏‎‎‎‎‎‏‏‏‏‎‏‏‏‏‎‏‎‎‎‎‎‏‏‏‎‏‎‎‎‎‏‏‎‎‏‎‏‏‎‏‏‏‎‏‏‏‎‏‏‎Settings‎‏‎‎‏‎"</string>
@@ -543,8 +530,8 @@
     <string name="camera_toggle_label_qs" msgid="3880261453066157285">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‏‎‏‎‏‏‏‎‏‏‎‎‏‎‏‏‏‎‏‎‏‎‎‏‏‏‎‏‏‏‎‏‎‏‎‎‏‏‎‏‎‎‏‏‎‎‎‏‏‏‏‎‎‏‏‏‎‎‏‎‏‎Camera access‎‏‎‎‏‎"</string>
     <string name="microphone_toggle_label_qs" msgid="8132912469813396552">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‏‎‎‎‎‏‏‎‏‏‏‎‏‏‏‏‎‏‎‎‎‏‏‎‎‏‏‎‏‎‎‏‎‎‎‎‎‏‎‎‏‎‎‏‎‏‎‎‎‎‏‎‎‎‏‎‎‏‎‎‎‎Mic access‎‏‎‎‏‎"</string>
     <string name="permissions_removed_qs" msgid="8957319130625294572">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‏‏‏‎‎‎‏‎‎‏‏‏‎‏‏‎‎‏‎‏‎‎‏‎‎‏‎‏‎‏‎‎‏‏‎‎‎‏‎‏‏‏‎‏‏‎‏‎‎‎‎‎‎‏‏‏‎‏‏‎‎‎Permission removed‎‏‎‎‏‎"</string>
-    <string name="camera_usage_qs" msgid="134093544497365716">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‎‎‏‏‏‏‎‏‏‏‎‎‎‏‏‎‎‏‎‏‎‏‎‏‏‏‏‎‎‏‎‎‎‏‏‎‎‏‏‏‎‎‎‎‎‏‎‎‎‎‏‎‏‏‎‏‎‏‎‎‎See apps with camera access‎‏‎‎‏‎"</string>
-    <string name="microphone_usage_qs" msgid="5054432134389894202">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‎‎‎‏‏‎‎‎‏‎‎‏‎‎‏‏‏‏‎‎‏‏‎‎‏‏‏‏‏‏‎‎‏‎‎‏‏‏‏‎‏‎‎‎‎‏‎‎‎‎‏‏‎‎‎‎‏‏‏‎‏‎‎See apps with mic access‎‏‎‎‏‎"</string>
+    <string name="camera_usage_qs" msgid="4394233566086665994">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‏‏‏‎‎‏‏‏‏‏‎‏‏‎‏‏‏‎‏‎‎‎‎‏‎‎‏‎‏‏‎‎‎‏‏‏‎‏‎‏‏‎‎‎‏‏‎‎‏‎‏‏‏‎‎‎‎‏‎‏‎‎See recent camera usage‎‏‎‎‏‎"</string>
+    <string name="microphone_usage_qs" msgid="8527666682168170417">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‏‎‏‏‎‎‏‎‏‏‎‎‎‎‏‎‏‏‎‏‏‏‎‏‎‏‎‏‎‎‏‏‏‏‎‎‏‏‎‎‏‎‎‎‏‎‏‎‏‎‏‏‏‏‎‏‏‎‎‎‏‎See recent mic usage‎‏‎‎‏‎"</string>
     <string name="remove_camera_qs" msgid="3649996161066883350">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‏‎‎‏‎‏‎‏‎‎‏‏‏‎‏‏‎‎‏‎‎‎‎‏‎‏‎‏‏‏‎‎‎‎‎‏‏‏‏‏‎‏‏‏‎‎‏‎‏‏‎‎‏‎‎‎‏‎‏‏‎‎Remove permission for this app‎‏‎‎‏‎"</string>
     <string name="remove_microphone_qs" msgid="1276551965129953198">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‎‏‏‎‎‎‏‏‎‏‏‎‏‏‏‎‎‏‏‏‎‎‏‎‎‏‏‏‏‏‏‏‎‏‏‎‎‏‎‏‏‏‎‎‏‎‏‏‏‎‎‏‏‏‏‏‎‏‎‏‏‏‎‎Remove permission for this app‎‏‎‎‏‎"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‎‏‏‎‏‎‎‎‏‏‏‎‏‎‏‏‎‏‎‎‎‏‎‎‏‏‏‎‏‎‏‎‏‎‎‏‎‏‎‏‎‎‎‎‎‎‏‏‎‏‏‎‏‏‏‎‎‏‏‎‏‎Manage service‎‏‎‎‏‎"</string>
@@ -575,18 +562,12 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‎‏‏‏‏‎‏‏‎‏‎‎‎‎‎‏‏‏‎‎‏‏‎‏‎‎‏‎‎‏‎‏‎‏‏‏‎‏‎‎‏‎‎‏‎‏‎‎‎‏‏‎‏‎‎‎‏‏‎‏‏‏‎This app doesn’t support the latest version of Android. If this app can’t access music and audio files, it also won’t be allowed to access photos and videos.‎‏‎‎‏‎"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‏‎‎‎‎‏‎‏‎‎‎‎‏‏‏‏‎‎‏‏‎‎‎‏‎‏‎‏‏‏‏‎‎‏‎‏‏‏‎‎‎‎‎‎‎‏‎‏‏‎‎‎‏‏‏‏‏‎‎‎‎‎This app doesn’t support the latest version of Android. If this app can access photos and videos, it will also be allowed to access music and audio files.‎‏‎‎‏‎"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‎‏‏‏‏‎‏‏‏‎‎‏‎‎‎‎‎‎‎‎‏‏‏‎‏‏‏‏‏‏‎‏‎‎‏‏‎‏‏‏‏‏‏‏‏‏‎‏‏‎‎‏‏‎‎‎‏‎‎‏‎‎‎‎This app doesn’t support the latest version of Android. If this app can’t access music and audio files, it also won’t be allowed to access photos and videos.‎‏‎‎‏‎"</string>
-    <!-- no translation found for safety_center_background_location_access_notification_title (8933610618810588237) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_notification_content (4066560182507301022) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_title (5477847038103863843) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_summary (8276755741395332974) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_revoked (6972274943343442213) -->
-    <skip />
-    <!-- no translation found for safety_center_view_recent_location_access (3524391299490678243) -->
-    <skip />
+    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‏‏‎‏‏‏‏‏‏‏‎‏‎‏‎‎‎‏‏‏‏‏‎‎‎‎‏‏‎‏‎‎‎‎‏‏‏‏‏‎‏‏‏‎‎‏‏‎‏‏‏‎‎‎‏‎‎‏‏‎‏‎Review app with background location access‎‏‎‎‏‎"</string>
+    <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‏‏‎‎‎‎‏‏‎‏‏‏‏‎‏‎‏‎‎‏‎‏‏‏‏‎‎‎‎‏‏‎‎‎‎‎‎‎‎‎‏‏‎‎‎‎‏‏‎‏‎‎‎‏‎‎‏‏‏‏‎‎‎‏‎‎‏‏‎<xliff:g id="APP_NAME">%s</xliff:g>‎‏‎‎‏‏‏‎ can always access your location, even when the app is closed‎‏‎‎‏‎"</string>
+    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‎‎‏‏‎‎‎‎‎‎‎‏‎‏‎‎‏‏‏‎‎‎‏‏‎‏‏‎‏‏‏‎‏‏‏‎‎‎‎‎‎‏‏‎‏‏‎‏‎‎‎‎‏‎‎‎‏‎‎‎‏‏‎Review app with background location access‎‏‎‎‏‎"</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‏‎‎‏‎‏‏‎‏‏‏‎‎‏‏‏‏‎‎‎‏‎‏‏‏‏‏‏‎‏‎‏‎‎‎‏‎‏‎‎‎‏‎‏‏‎‎‏‎‏‏‏‏‎‏‏‎‏‏‏‎‎This app can always access your location, even when it’s closed.‎‏‎‎‏‎"</string>
+    <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‎‎‎‎‎‏‏‎‎‎‎‏‎‎‏‏‏‏‏‏‏‎‎‎‏‏‏‏‎‏‏‎‎‏‎‏‎‎‏‎‏‎‏‏‏‏‎‏‏‏‎‎‏‎‎‏‎‎‏‎‏‎Access changed‎‏‎‎‏‎"</string>
+    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‏‎‎‎‎‏‏‏‎‏‎‎‏‎‎‏‎‎‏‏‏‎‎‏‏‎‏‏‎‏‎‏‏‏‏‏‏‏‎‎‏‏‏‏‎‏‎‎‎‎‏‎‏‏‏‏‎‎‎‏‏‎See recent location usage‎‏‎‎‏‎"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‎‏‎‎‏‏‎‎‎‏‏‎‏‏‎‏‏‎‎‎‏‎‎‎‎‎‎‏‏‎‎‎‎‎‏‏‎‏‏‎‏‏‏‎‏‏‎‎‎‎‏‏‎‎‏‏‏‏‏‏‏‎Privacy controls‎‏‎‎‏‎"</string>
     <string name="camera_toggle_title" msgid="1251201397431837666">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‎‏‏‎‎‎‏‎‏‎‏‏‏‎‏‎‎‏‎‏‎‎‏‎‎‎‎‏‎‏‎‏‎‏‏‎‏‎‎‎‏‏‎‎‏‎‏‏‎‏‎‎‎‏‏‏‏‏‎‎‎‏‎‎Camera access‎‏‎‎‏‎"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‎‎‏‎‎‏‏‎‎‎‏‏‎‏‎‏‎‏‎‎‎‏‏‎‏‏‎‏‏‏‏‏‏‏‎‎‏‏‏‎‎‏‎‎‎‏‏‎‏‏‏‎‎‎‏‎‏‎‎‏‎‎Microphone access‎‏‎‎‏‎"</string>
@@ -595,4 +576,6 @@
     <string name="location_settings_subtitle" msgid="2328360561197430695">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‎‎‎‎‎‎‏‎‎‏‏‏‏‏‏‏‏‏‏‏‏‏‎‎‏‏‎‎‎‎‎‎‏‏‏‏‏‎‎‏‏‎‎‏‏‏‎‏‏‎‏‏‏‏‎‏‎‎‏‏‏‎See apps and services that have access to location‎‏‎‎‏‎"</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‎‎‎‏‏‏‏‎‏‏‏‎‏‎‎‎‎‏‎‏‎‏‏‏‏‎‏‏‏‎‏‎‏‏‎‏‎‏‎‏‏‎‏‎‏‎‎‏‎‏‎‎‎‏‏‏‏‎‏‎‎‎‎Show clipboard access‎‏‎‎‏‎"</string>
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‏‎‎‎‏‎‎‎‎‎‏‎‎‎‏‎‎‎‎‎‏‏‎‏‎‎‏‎‎‏‎‎‎‏‏‏‎‎‎‏‏‏‏‎‎‏‏‏‏‎‎‏‏‏‎‏‎‏‏‏‏‎Show a message when apps access text, images, or other content you’ve copied‎‏‎‎‏‎"</string>
+    <string name="show_password_title" msgid="2877269286984684659">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‎‎‏‏‏‏‏‏‎‏‏‏‎‎‎‎‏‏‏‎‏‎‎‏‎‏‏‎‎‎‎‎‎‏‏‎‏‏‏‎‏‏‏‎‏‎‎‎‏‎‏‎‎‎‏‏‏‎‎‏‏‎Show passwords‎‏‎‎‏‎"</string>
+    <string name="show_password_summary" msgid="1110166488865981610">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‎‎‏‏‏‏‎‏‏‎‏‎‎‎‎‎‎‏‏‎‏‎‏‎‎‎‏‎‏‎‎‎‏‎‏‎‏‎‎‏‏‎‎‏‏‎‎‏‎‎‎‏‎‎‏‎‏‎‏‎‏‎‎Display characters briefly as you type‎‏‎‎‏‎"</string>
 </resources>

@@ -262,12 +262,9 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Bạn không dùng một số ứng dụng trong vài tháng qua. Nhấn để xem."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# ứng dụng không dùng đến}other{# ứng dụng không dùng đến}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Các quyền và tệp tạm thời đã bị xóa. Thông báo đã bị chặn. Hãy nhấn để xem lại."</string>
-    <!-- no translation found for unused_apps_safety_center_card_title (5638409355530099149) -->
-    <skip />
-    <!-- no translation found for unused_apps_safety_center_card_content (1088557243627427820) -->
-    <skip />
-    <!-- no translation found for unused_apps_safety_center_action_title (8865914432518993194) -->
-    <skip />
+    <string name="unused_apps_safety_center_card_title" msgid="5638409355530099149">"Xem lại ứng dụng bị xoá quyền"</string>
+    <string name="unused_apps_safety_center_card_content" msgid="1088557243627427820">"Đối với ứng dụng bạn không dùng đến sau một thời gian, các quyền và tệp tạm thời đã bị xoá và các thông báo không được gửi nữa."</string>
+    <string name="unused_apps_safety_center_action_title" msgid="8865914432518993194">"Xem lại ứng dụng"</string>
     <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Kiểm tra các quyền đã cấp gần đây"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Trong khi lái xe, bạn đã cấp cho <xliff:g id="APP">%1$s</xliff:g> quyền truy cập vào <xliff:g id="PERMISSION">%2$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Trong khi lái xe, bạn đã cấp cho <xliff:g id="APP">%1$s</xliff:g> quyền truy cập vào <xliff:g id="PERMISSION_1">%2$s</xliff:g> và <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
@@ -282,28 +279,21 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Đã thu hồi các quyền để bảo vệ quyền riêng tư của bạn"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> đã truy cập thông tin vị trí của bạn trong nền"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Ứng dụng này luôn có thể truy cập vào thông tin vị trí của bạn. Hãy nhấn để thay đổi."</string>
-    <!-- no translation found for notification_listener_reminder_notification_title (3747210460187479091) -->
+    <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"Xem lại ứng dụng có quyền truy cập vào thông báo"</string>
+    <!-- no translation found for notification_listener_reminder_notification_content (831476101108863427) -->
     <skip />
-    <!-- no translation found for notification_listener_reminder_notification_content (4936171153668563578) -->
-    <skip />
-    <!-- no translation found for notification_listener_warning_card_content (274394600993750005) -->
+    <!-- no translation found for notification_listener_warning_card_content (7840973324284115893) -->
     <skip />
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Xóa quyền truy cập"</string>
-    <!-- no translation found for notification_listener_review_app_button_label (3433073281029143924) -->
-    <skip />
+    <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"Xem tuỳ chọn khác"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Đã xóa quyền truy cập"</string>
-    <!-- no translation found for accessibility_access_reminder_notification_title (2971317234668807566) -->
-    <skip />
-    <!-- no translation found for accessibility_access_reminder_notification_content (7389454158175306720) -->
-    <skip />
-    <!-- no translation found for accessibility_access_warning_card_content (4370327190293217358) -->
-    <skip />
+    <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"Xem lại ứng dụng có đầy đủ quyền truy cập trên thiết bị"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> có thể xem màn hình và thực hiện thao tác trên thiết bị của bạn. Ứng dụng hỗ trợ tiếp cận cần loại quyền truy cập này để cung cấp được chức năng như mong muốn."</string>
+    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"Ứng dụng này có thể xem màn hình và thực hiện thao tác trên thiết bị của bạn. Ứng dụng hỗ trợ tiếp cận cần loại quyền truy cập này để cung cấp được chức năng như mong muốn, nhưng hãy kiểm tra để đảm bảo ứng dụng này đáng tin cậy."</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Xoá quyền truy cập"</string>
-    <!-- no translation found for accessibility_show_all_apps_button_label (960067249326392280) -->
-    <skip />
+    <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"Xem những ứng dụng có đầy đủ quyền truy cập"</string>
     <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Đã xoá quyền truy cập"</string>
-    <!-- no translation found for safety_center_notification_app_label (2457720616141926534) -->
-    <skip />
+    <string name="safety_center_notification_app_label" msgid="2457720616141926534">"Hệ thống Android"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Đã thu hồi các quyền ứng dụng nhằm bảo vệ quyền riêng tư"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"Bạn chưa dùng <xliff:g id="APP_NAME">%s</xliff:g> trong vài tháng. Nhấn để xem lại."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"Bạn chưa dùng <xliff:g id="APP_NAME">%s</xliff:g> và 1 ứng dụng khác trong vài tháng. Nhấn để xem lại."</string>
@@ -524,39 +514,28 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Đối với các ứng dụng và dịch vụ"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Dữ liệu thu được qua micrô vẫn có thể được chia sẻ khi bạn gọi đến số khẩn cấp."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Thay đổi"</string>
-    <!-- no translation found for safety_center_dashboard_page_title (2810774008694315854) -->
-    <skip />
-    <!-- no translation found for safety_center_rescan_button (4517514567809409596) -->
-    <skip />
+    <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Tính bảo mật &amp; quyền riêng tư"</string>
+    <string name="safety_center_rescan_button" msgid="4517514567809409596">"Quét thiết bị"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Đóng"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Đóng cảnh báo này?"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"Hãy xem lại chế độ cài đặt quyền riêng tư và bảo mật để tăng cường biện pháp bảo vệ"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Đóng"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Huỷ"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"Cài đặt"</string>
     <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"Trạng thái bảo mật và quyền riêng tư. <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>. <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"Cài đặt bảo mật"</string>
-    <!-- no translation found for sensor_permissions_qs (1022267900031317472) -->
-    <skip />
-    <!-- no translation found for safety_privacy_qs_tile_title (727301867710374052) -->
-    <skip />
+    <string name="sensor_permissions_qs" msgid="1022267900031317472">"Quyền truy cập"</string>
+    <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"Tính bảo mật &amp; quyền riêng tư"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Kiểm tra trạng thái"</string>
-    <!-- no translation found for privacy_controls_qs (5780144882040591169) -->
-    <skip />
-    <!-- no translation found for security_settings_button_label_qs (8280343822465962330) -->
-    <skip />
-    <!-- no translation found for camera_toggle_label_qs (3880261453066157285) -->
-    <skip />
-    <!-- no translation found for microphone_toggle_label_qs (8132912469813396552) -->
-    <skip />
+    <string name="privacy_controls_qs" msgid="5780144882040591169">"Các chế độ kiểm soát quyền riêng tư"</string>
+    <string name="security_settings_button_label_qs" msgid="8280343822465962330">"Tùy chọn cài đặt khác"</string>
+    <string name="camera_toggle_label_qs" msgid="3880261453066157285">"Truy cập máy ảnh"</string>
+    <string name="microphone_toggle_label_qs" msgid="8132912469813396552">"Truy cập micrô"</string>
     <string name="permissions_removed_qs" msgid="8957319130625294572">"Đã thu hồi quyền sử dụng"</string>
-    <!-- no translation found for camera_usage_qs (134093544497365716) -->
-    <skip />
-    <!-- no translation found for microphone_usage_qs (5054432134389894202) -->
-    <skip />
-    <!-- no translation found for remove_camera_qs (3649996161066883350) -->
-    <skip />
-    <!-- no translation found for remove_microphone_qs (1276551965129953198) -->
-    <skip />
+    <string name="camera_usage_qs" msgid="4394233566086665994">"Xem mức sử dụng của máy ảnh gần đây"</string>
+    <string name="microphone_usage_qs" msgid="8527666682168170417">"Xem mức sử dụng của micrô gần đây"</string>
+    <string name="remove_camera_qs" msgid="3649996161066883350">"Xóa quyền truy cập đối với ứng dụng này"</string>
+    <string name="remove_microphone_qs" msgid="1276551965129953198">"Xóa quyền truy cập đối với ứng dụng này"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Quản lý dịch vụ"</string>
     <string name="manage_permissions_qs" msgid="3780541819763475434">"Quản lý quyền"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Đang được dùng cho một cuộc gọi điện thoại"</string>
@@ -585,32 +564,20 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Ứng dụng này không hỗ trợ phiên bản Android mới nhất. Nếu ứng dụng này không thể truy cập vào tệp nhạc và âm thanh, nó cũng sẽ không được phép truy cập vào ảnh và video."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Ứng dụng này không hỗ trợ phiên bản Android mới nhất. Nếu ứng dụng này có thể truy cập vào ảnh và video, nó cũng sẽ được phép truy cập vào các tệp âm thanh và nhạc."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Ứng dụng này không hỗ trợ phiên bản Android mới nhất. Nếu ứng dụng này không thể truy cập vào tệp nhạc và âm thanh, nó cũng sẽ không được phép truy cập vào ảnh và video."</string>
-    <!-- no translation found for safety_center_background_location_access_notification_title (8933610618810588237) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_notification_content (4066560182507301022) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_title (5477847038103863843) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_summary (8276755741395332974) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_revoked (6972274943343442213) -->
-    <skip />
-    <!-- no translation found for safety_center_view_recent_location_access (3524391299490678243) -->
-    <skip />
-    <!-- no translation found for privacy_controls_title (7605929972256835199) -->
-    <skip />
-    <!-- no translation found for camera_toggle_title (1251201397431837666) -->
-    <skip />
-    <!-- no translation found for mic_toggle_title (2649991093496110162) -->
-    <skip />
-    <!-- no translation found for perm_toggle_description (7801326363741451379) -->
-    <skip />
-    <!-- no translation found for mic_toggle_description (9163104307990677157) -->
-    <skip />
-    <!-- no translation found for location_settings_subtitle (2328360561197430695) -->
-    <skip />
-    <!-- no translation found for show_clip_access_notification_title (5168467637351109096) -->
-    <skip />
-    <!-- no translation found for show_clip_access_notification_summary (3532020182782112687) -->
-    <skip />
+    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Xem lại ứng dụng có quyền truy cập thông tin vị trí ở chế độ nền"</string>
+    <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> luôn truy cập được vào thông tin vị trí của bạn, ngay cả khi đang đóng"</string>
+    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Xem lại ứng dụng có quyền truy cập thông tin vị trí ở chế độ nền"</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Ứng dụng này luôn truy cập được thông tin vị trí của bạn, ngay cả khi đang đóng"</string>
+    <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Đã thay đổi quyền truy cập"</string>
+    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Xem thông tin gần đây về việc sử dụng thông tin vị trí"</string>
+    <string name="privacy_controls_title" msgid="7605929972256835199">"Chế độ kiểm soát quyền riêng tư"</string>
+    <string name="camera_toggle_title" msgid="1251201397431837666">"Quyền truy cập máy ảnh"</string>
+    <string name="mic_toggle_title" msgid="2649991093496110162">"Quyền truy cập micrô"</string>
+    <string name="perm_toggle_description" msgid="7801326363741451379">"Đối với các ứng dụng và dịch vụ"</string>
+    <string name="mic_toggle_description" msgid="9163104307990677157">"Đối với các ứng dụng và dịch vụ. Nếu chế độ cài đặt này tắt, dữ liệu thu được qua micrô vẫn có thể được chia sẻ khi bạn gọi đến số khẩn cấp."</string>
+    <string name="location_settings_subtitle" msgid="2328360561197430695">"Xem các ứng dụng và dịch vụ có quyền truy cập vào thông tin vị trí của thiết bị"</string>
+    <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Hiện quyền truy cập vào bảng nhớ tạm"</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Hiện thông báo khi có ứng dụng truy cập vào văn bản, hình ảnh hoặc nội dung khác mà bạn đã sao chép"</string>
+    <string name="show_password_title" msgid="2877269286984684659">"Hiển thị mật khẩu"</string>
+    <string name="show_password_summary" msgid="1110166488865981610">"Hiển thị các ký tự ngắn gọn khi bạn nhập"</string>
 </resources>

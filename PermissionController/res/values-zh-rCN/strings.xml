@@ -262,12 +262,9 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"一些应用已连续几个月未使用过。点按即可查看。"</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# 个未使用的应用}other{# 个未使用的应用}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"系统已移除权限和临时文件，并停止通知功能。点按即可查看。"</string>
-    <!-- no translation found for unused_apps_safety_center_card_title (5638409355530099149) -->
-    <skip />
-    <!-- no translation found for unused_apps_safety_center_card_content (1088557243627427820) -->
-    <skip />
-    <!-- no translation found for unused_apps_safety_center_action_title (8865914432518993194) -->
-    <skip />
+    <string name="unused_apps_safety_center_card_title" msgid="5638409355530099149">"查看已移除相关权限的应用"</string>
+    <string name="unused_apps_safety_center_card_content" msgid="1088557243627427820">"对于您已有一段时间未使用的应用，系统会移除相关权限和临时文件，并停止通知功能。"</string>
+    <string name="unused_apps_safety_center_action_title" msgid="8865914432518993194">"查看应用"</string>
     <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"查看最近授予的权限"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"您在行车期间向“<xliff:g id="APP">%1$s</xliff:g>”授予了<xliff:g id="PERMISSION">%2$s</xliff:g>权限"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"您在行车期间向“<xliff:g id="APP">%1$s</xliff:g>”授予了<xliff:g id="PERMISSION_1">%2$s</xliff:g>和<xliff:g id="PERMISSION_2">%3$s</xliff:g>权限"</string>
@@ -282,28 +279,21 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"为保护您的隐私，系统已移除这些权限"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g>在后台获取了您的位置信息"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"此应用随时可以使用您的位置信息。点按即可更改。"</string>
-    <!-- no translation found for notification_listener_reminder_notification_title (3747210460187479091) -->
+    <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"查看具有通知访问权限的应用"</string>
+    <!-- no translation found for notification_listener_reminder_notification_content (831476101108863427) -->
     <skip />
-    <!-- no translation found for notification_listener_reminder_notification_content (4936171153668563578) -->
-    <skip />
-    <!-- no translation found for notification_listener_warning_card_content (274394600993750005) -->
+    <!-- no translation found for notification_listener_warning_card_content (7840973324284115893) -->
     <skip />
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"撤消访问权限"</string>
-    <!-- no translation found for notification_listener_review_app_button_label (3433073281029143924) -->
-    <skip />
+    <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"查看更多选项"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"已撤消访问权限"</string>
-    <!-- no translation found for accessibility_access_reminder_notification_title (2971317234668807566) -->
-    <skip />
-    <!-- no translation found for accessibility_access_reminder_notification_content (7389454158175306720) -->
-    <skip />
-    <!-- no translation found for accessibility_access_warning_card_content (4370327190293217358) -->
-    <skip />
+    <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"查看拥有设备完全访问权限的应用"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"“<xliff:g id="APP_NAME">%s</xliff:g>”可以查看您的屏幕，并在您的设备上执行操作。无障碍应用需要此类权限才能正常运行。"</string>
+    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"此应用可以查看您的屏幕，并在您的设备上执行操作。无障碍应用需要此类权限才能正常运行，不过请首先检查应用是否可信。"</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"移除访问权限"</string>
-    <!-- no translation found for accessibility_show_all_apps_button_label (960067249326392280) -->
-    <skip />
+    <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"查看具有完全访问权限的应用"</string>
     <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"已移除访问权限"</string>
-    <!-- no translation found for safety_center_notification_app_label (2457720616141926534) -->
-    <skip />
+    <string name="safety_center_notification_app_label" msgid="2457720616141926534">"Android 系统"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"为保护隐私，系统已移除应用权限"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g>在几个月内未使用过。点按即可查看。"</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g>和另外 1 个应用在几个月内未使用过。点按即可查看。"</string>
@@ -524,39 +514,28 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"针对应用和服务"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"当您拨打紧急电话号码时，系统可能仍会分享麦克风数据。"</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"更改"</string>
-    <!-- no translation found for safety_center_dashboard_page_title (2810774008694315854) -->
-    <skip />
-    <!-- no translation found for safety_center_rescan_button (4517514567809409596) -->
-    <skip />
+    <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"安全性和隐私权"</string>
+    <string name="safety_center_rescan_button" msgid="4517514567809409596">"扫描设备"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"关闭"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"要忽略此提醒吗？"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"您可以随时查看安全和隐私设置并加强保护"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"忽略"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"取消"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"设置"</string>
     <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"安全和隐私状态。<xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>。<xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"安全设置"</string>
-    <!-- no translation found for sensor_permissions_qs (1022267900031317472) -->
-    <skip />
-    <!-- no translation found for safety_privacy_qs_tile_title (727301867710374052) -->
-    <skip />
+    <string name="sensor_permissions_qs" msgid="1022267900031317472">"权限"</string>
+    <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"安全性和隐私权"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"查看状态"</string>
-    <!-- no translation found for privacy_controls_qs (5780144882040591169) -->
-    <skip />
-    <!-- no translation found for security_settings_button_label_qs (8280343822465962330) -->
-    <skip />
-    <!-- no translation found for camera_toggle_label_qs (3880261453066157285) -->
-    <skip />
-    <!-- no translation found for microphone_toggle_label_qs (8132912469813396552) -->
-    <skip />
+    <string name="privacy_controls_qs" msgid="5780144882040591169">"您的隐私控制项"</string>
+    <string name="security_settings_button_label_qs" msgid="8280343822465962330">"更多设置"</string>
+    <string name="camera_toggle_label_qs" msgid="3880261453066157285">"相机使用权限"</string>
+    <string name="microphone_toggle_label_qs" msgid="8132912469813396552">"麦克风使用权限"</string>
     <string name="permissions_removed_qs" msgid="8957319130625294572">"已移除权限"</string>
-    <!-- no translation found for camera_usage_qs (134093544497365716) -->
-    <skip />
-    <!-- no translation found for microphone_usage_qs (5054432134389894202) -->
-    <skip />
-    <!-- no translation found for remove_camera_qs (3649996161066883350) -->
-    <skip />
-    <!-- no translation found for remove_microphone_qs (1276551965129953198) -->
-    <skip />
+    <string name="camera_usage_qs" msgid="4394233566086665994">"查看近期相机使用情况"</string>
+    <string name="microphone_usage_qs" msgid="8527666682168170417">"查看近期麦克风使用情况"</string>
+    <string name="remove_camera_qs" msgid="3649996161066883350">"移除此应用的相机使用权限"</string>
+    <string name="remove_microphone_qs" msgid="1276551965129953198">"移除此应用的麦克风使用权限"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"管理服务"</string>
     <string name="manage_permissions_qs" msgid="3780541819763475434">"管理权限"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"通话正在使用"</string>
@@ -585,32 +564,20 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"此应用不支持最新版 Android 系统。如果此应用无法访问音乐和音频文件，那么它也将无法访问照片和视频。"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"此应用不支持最新版 Android 系统。如果此应用能够访问照片和视频，那么它也将能够访问音乐和音频文件。"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"此应用不支持最新版 Android 系统。如果此应用无法访问音乐和音频文件，那么它也将无法访问照片和视频。"</string>
-    <!-- no translation found for safety_center_background_location_access_notification_title (8933610618810588237) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_notification_content (4066560182507301022) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_title (5477847038103863843) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_summary (8276755741395332974) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_revoked (6972274943343442213) -->
-    <skip />
-    <!-- no translation found for safety_center_view_recent_location_access (3524391299490678243) -->
-    <skip />
-    <!-- no translation found for privacy_controls_title (7605929972256835199) -->
-    <skip />
-    <!-- no translation found for camera_toggle_title (1251201397431837666) -->
-    <skip />
-    <!-- no translation found for mic_toggle_title (2649991093496110162) -->
-    <skip />
-    <!-- no translation found for perm_toggle_description (7801326363741451379) -->
-    <skip />
-    <!-- no translation found for mic_toggle_description (9163104307990677157) -->
-    <skip />
-    <!-- no translation found for location_settings_subtitle (2328360561197430695) -->
-    <skip />
-    <!-- no translation found for show_clip_access_notification_title (5168467637351109096) -->
-    <skip />
-    <!-- no translation found for show_clip_access_notification_summary (3532020182782112687) -->
-    <skip />
+    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"查看具有后台位置信息访问权限的应用"</string>
+    <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"“<xliff:g id="APP_NAME">%s</xliff:g>”始终可以访问您的位置信息，即使应用已关闭"</string>
+    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"查看具有后台位置信息访问权限的应用"</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"此应用始终可以访问您的位置信息，即使应用已关闭。"</string>
+    <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"访问权限已更改"</string>
+    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"查看近期位置信息使用情况"</string>
+    <string name="privacy_controls_title" msgid="7605929972256835199">"隐私控制"</string>
+    <string name="camera_toggle_title" msgid="1251201397431837666">"摄像头使用权限"</string>
+    <string name="mic_toggle_title" msgid="2649991093496110162">"麦克风使用权限"</string>
+    <string name="perm_toggle_description" msgid="7801326363741451379">"针对应用和服务"</string>
+    <string name="mic_toggle_description" msgid="9163104307990677157">"针对应用和服务。如果您关闭此设置，那么当您拨打紧急电话号码时，系统可能仍会分享麦克风数据。"</string>
+    <string name="location_settings_subtitle" msgid="2328360561197430695">"查看能够访问位置信息的应用和服务"</string>
+    <string name="show_clip_access_notification_title" msgid="5168467637351109096">"显示剪贴板访问通知"</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"系统会在应用访问您复制的文字、图片或其他内容时显示一条消息"</string>
+    <string name="show_password_title" msgid="2877269286984684659">"显示密码"</string>
+    <string name="show_password_summary" msgid="1110166488865981610">"输入时短暂显示字符"</string>
 </resources>

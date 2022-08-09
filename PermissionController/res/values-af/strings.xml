@@ -262,12 +262,9 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Sommige programme is \'n paar maande laas gebruik. Tik om te na te gaan."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# ongebruikte program}other{# ongebruikte programme}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Toestemmings en tydelike lêers is verwyder en kennisgewings is gestop. Tik om na te gaan."</string>
-    <!-- no translation found for unused_apps_safety_center_card_title (5638409355530099149) -->
-    <skip />
-    <!-- no translation found for unused_apps_safety_center_card_content (1088557243627427820) -->
-    <skip />
-    <!-- no translation found for unused_apps_safety_center_action_title (8865914432518993194) -->
-    <skip />
+    <string name="unused_apps_safety_center_card_title" msgid="5638409355530099149">"Gaan programme na waarvoor toestemmings verwyder is"</string>
+    <string name="unused_apps_safety_center_card_content" msgid="1088557243627427820">"Toestemmings en tydelike lêers is verwyder en kennisgewings is gestop vir programme wat jy ’n ruk lank nie gebruik het nie."</string>
+    <string name="unused_apps_safety_center_action_title" msgid="8865914432518993194">"Gaan programme na"</string>
     <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Gaan onlangse toestemmings na"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Terwyl jy bestuur het, het jy <xliff:g id="APP">%1$s</xliff:g> toegang gegee tot <xliff:g id="PERMISSION">%2$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Terwyl jy bestuur het, het jy <xliff:g id="APP">%1$s</xliff:g> toegang gegee tot <xliff:g id="PERMISSION_1">%2$s</xliff:g> en <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
@@ -282,28 +279,19 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Toestemmings is verwyder om jou privaatheid te beskerm"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> het jou ligging op die agtergrond gekry"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Hierdie program het altyd toegang tot jou ligging. Tik om te verander."</string>
-    <!-- no translation found for notification_listener_reminder_notification_title (3747210460187479091) -->
-    <skip />
-    <!-- no translation found for notification_listener_reminder_notification_content (4936171153668563578) -->
-    <skip />
-    <!-- no translation found for notification_listener_warning_card_content (274394600993750005) -->
-    <skip />
+    <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"Gaan program met toegang tot jou kennisgewings na"</string>
+    <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g> kan inhoud in jou kennisgewings toemaak, daarop reageer en toegang daartoe kry"</string>
+    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"Hierdie program kan inhoud in jou kennisgewings toemaak, daarop reageer en toegang daartoe kry. Sommige programme het hierdie toegang nodig om te werk soos hulle moet."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Verwyder toegang"</string>
-    <!-- no translation found for notification_listener_review_app_button_label (3433073281029143924) -->
-    <skip />
+    <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"Sien meer opsies"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Toegang is verwyder"</string>
-    <!-- no translation found for accessibility_access_reminder_notification_title (2971317234668807566) -->
-    <skip />
-    <!-- no translation found for accessibility_access_reminder_notification_content (7389454158175306720) -->
-    <skip />
-    <!-- no translation found for accessibility_access_warning_card_content (4370327190293217358) -->
-    <skip />
+    <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"Gaan program met volle toesteltoegang na"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> kan jou skerm sien en handelinge op jou toestel uitvoer. Toeganklikheidprogramme het hierdie soort toegang nodig om te werk soos hulle moet."</string>
+    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"Hierdie program kan jou skerm sien en handelinge op jou toestel uitvoer. Toeganklikheidprogramme het hierdie soort toegang nodig om te werk soos hulle moet, maar gaan die program na en maak seker dat jy dit kan vertrou."</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Verwyder toegang"</string>
-    <!-- no translation found for accessibility_show_all_apps_button_label (960067249326392280) -->
-    <skip />
+    <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"Bekyk program met volle toegang"</string>
     <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Toegang is verwyder"</string>
-    <!-- no translation found for safety_center_notification_app_label (2457720616141926534) -->
-    <skip />
+    <string name="safety_center_notification_app_label" msgid="2457720616141926534">"Android-stelsel"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Programtoestemmings is verwyder om privaatheid te beskerm"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> is vir \'n paar maande nie gebruik nie. Tik om te kontroleer."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> en 1 ander program is vir \'n paar maande nie gebruik nie. Tik om te kontroleer."</string>
@@ -524,39 +512,28 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Vir programme en dienste"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Mikrofoondata kan steeds gedeel word wanneer jy \'n noodnommer bel."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Verander"</string>
-    <!-- no translation found for safety_center_dashboard_page_title (2810774008694315854) -->
-    <skip />
-    <!-- no translation found for safety_center_rescan_button (4517514567809409596) -->
-    <skip />
+    <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Sekuriteit en privaatheid"</string>
+    <string name="safety_center_rescan_button" msgid="4517514567809409596">"Skandeer toestel"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Maak toe"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Maak hierdie waarskuwing toe?"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"Gaan jou sekuriteit- en privaatheidinstellings enige tyd na om nog beskerming by te voeg"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Maak toe"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Kanselleer"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"Instellings"</string>
     <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"Sekuriteit- en privaatheidstatus. <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>. <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"Sekuriteitinstellings"</string>
-    <!-- no translation found for sensor_permissions_qs (1022267900031317472) -->
-    <skip />
-    <!-- no translation found for safety_privacy_qs_tile_title (727301867710374052) -->
-    <skip />
+    <string name="sensor_permissions_qs" msgid="1022267900031317472">"Toestemmings"</string>
+    <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"Sekuriteit en privaatheid"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Gaan status na"</string>
-    <!-- no translation found for privacy_controls_qs (5780144882040591169) -->
-    <skip />
-    <!-- no translation found for security_settings_button_label_qs (8280343822465962330) -->
-    <skip />
-    <!-- no translation found for camera_toggle_label_qs (3880261453066157285) -->
-    <skip />
-    <!-- no translation found for microphone_toggle_label_qs (8132912469813396552) -->
-    <skip />
+    <string name="privacy_controls_qs" msgid="5780144882040591169">"Jou privaatheidkontroles"</string>
+    <string name="security_settings_button_label_qs" msgid="8280343822465962330">"Nog instellings"</string>
+    <string name="camera_toggle_label_qs" msgid="3880261453066157285">"Kameratoegang"</string>
+    <string name="microphone_toggle_label_qs" msgid="8132912469813396552">"Mikrofoontoegang"</string>
     <string name="permissions_removed_qs" msgid="8957319130625294572">"Toestemming is verwyder"</string>
-    <!-- no translation found for camera_usage_qs (134093544497365716) -->
-    <skip />
-    <!-- no translation found for microphone_usage_qs (5054432134389894202) -->
-    <skip />
-    <!-- no translation found for remove_camera_qs (3649996161066883350) -->
-    <skip />
-    <!-- no translation found for remove_microphone_qs (1276551965129953198) -->
-    <skip />
+    <string name="camera_usage_qs" msgid="4394233566086665994">"Sien onlangse kameragebruik"</string>
+    <string name="microphone_usage_qs" msgid="8527666682168170417">"Sien onlangse mikrofoongebruik"</string>
+    <string name="remove_camera_qs" msgid="3649996161066883350">"Verwyder toestemming vir hierdie program"</string>
+    <string name="remove_microphone_qs" msgid="1276551965129953198">"Verwyder toestemming vir hierdie program"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Bestuur diens"</string>
     <string name="manage_permissions_qs" msgid="3780541819763475434">"Bestuur toestemmings"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Word tans gebruik deur foonoproep"</string>
@@ -585,32 +562,20 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Hierdie program steun nie die jongste weergawe van Android nie. As hierdie program nie toegang tot musiek- en oudiolêers het nie, sal dit ook nie toegelaat word om toegang tot foto\'s en video\'s te kry nie."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Hierdie program steun nie die jongste weergawe van Android nie. As hierdie program toegang tot foto\'s en video\'s het, sal dit ook toegelaat word toegang tot musiek-, oudio- en ander lêers te kry."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Hierdie program steun nie die jongste weergawe van Android nie. As hierdie program nie toegang tot musiek- en oudiolêers het nie, sal dit ook nie toegelaat word om toegang tot foto\'s en video\'s te kry nie."</string>
-    <!-- no translation found for safety_center_background_location_access_notification_title (8933610618810588237) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_notification_content (4066560182507301022) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_title (5477847038103863843) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_reminder_summary (8276755741395332974) -->
-    <skip />
-    <!-- no translation found for safety_center_background_location_access_revoked (6972274943343442213) -->
-    <skip />
-    <!-- no translation found for safety_center_view_recent_location_access (3524391299490678243) -->
-    <skip />
-    <!-- no translation found for privacy_controls_title (7605929972256835199) -->
-    <skip />
-    <!-- no translation found for camera_toggle_title (1251201397431837666) -->
-    <skip />
-    <!-- no translation found for mic_toggle_title (2649991093496110162) -->
-    <skip />
-    <!-- no translation found for perm_toggle_description (7801326363741451379) -->
-    <skip />
-    <!-- no translation found for mic_toggle_description (9163104307990677157) -->
-    <skip />
-    <!-- no translation found for location_settings_subtitle (2328360561197430695) -->
-    <skip />
-    <!-- no translation found for show_clip_access_notification_title (5168467637351109096) -->
-    <skip />
-    <!-- no translation found for show_clip_access_notification_summary (3532020182782112687) -->
-    <skip />
+    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Gaan program met agtergrondliggingtoegang na"</string>
+    <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> het altyd toegang tot jou ligging, selfs wanneer die program toe is"</string>
+    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Gaan program met agtergrondliggingtoegang na"</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Hierdie program het altyd toegang tot jou ligging, selfs wanneer dit toe is."</string>
+    <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Toegang is verander"</string>
+    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Sien onlangse ligginggebruik"</string>
+    <string name="privacy_controls_title" msgid="7605929972256835199">"Privaatheidkontroles"</string>
+    <string name="camera_toggle_title" msgid="1251201397431837666">"Kameratoegang"</string>
+    <string name="mic_toggle_title" msgid="2649991093496110162">"Mikrofoontoegang"</string>
+    <string name="perm_toggle_description" msgid="7801326363741451379">"Vir programme en dienste"</string>
+    <string name="mic_toggle_description" msgid="9163104307990677157">"Vir programme en dienste. As hierdie instelling af is, kan mikrofoondata steeds gedeel word wanneer jy ’n noodnommer bel."</string>
+    <string name="location_settings_subtitle" msgid="2328360561197430695">"Sien programme en dienste met toegang tot ligging"</string>
+    <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Wys knipbordtoegang"</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Wys ’n boodskap wanneer programme toegang het tot teks, prente of ander inhoud wat jy gekopieer het"</string>
+    <string name="show_password_title" msgid="2877269286984684659">"Wys wagwoorde"</string>
+    <string name="show_password_summary" msgid="1110166488865981610">"Wys karakters kortliks terwyl jy tik"</string>
 </resources>
