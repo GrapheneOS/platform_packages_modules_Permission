@@ -24,7 +24,6 @@
         style="@style/SafetyCenterMoreIssuesWidgetTitle" />
     <ImageView
         android:id="@+id/widget_icon"
-        android:contentDescription="@string/safety_center_more_issues_expand_button_content_description"
         android:src="@drawable/ic_expand_more"
         style="@style/SafetyCenterMoreIssuesWidgetIcon" />
 </androidx.constraintlayout.widget.ConstraintLayout>
