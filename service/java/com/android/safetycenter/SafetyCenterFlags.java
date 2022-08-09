@@ -61,8 +61,8 @@ final class SafetyCenterFlags {
 
     private static final String PROPERTY_UNTRACKED_SOURCES = "safety_center_untracked_sources";
 
-    private static final String PROPERTY_NO_BACKGROUND_REFRESH_SOURCES =
-            "safety_center_no_background_refresh_sources";
+    private static final String PROPERTY_BACKGROUND_REFRESH_DENIED_SOURCES =
+            "safety_center_background_refresh_denied_sources";
 
     private static final String PROPERTY_REFRESH_SOURCES_TIMEOUTS_MILLIS =
             "safety_center_refresh_sources_timeouts_millis";
@@ -93,7 +93,10 @@ final class SafetyCenterFlags {
         printFlag(fout, PROPERTY_UNTRACKED_SOURCES, getUntrackedSourceIds());
         printFlag(fout, PROPERTY_RESURFACE_ISSUE_MAX_COUNTS, getResurfaceIssueMaxCounts());
         printFlag(fout, PROPERTY_RESURFACE_ISSUE_DELAYS_MILLIS, getResurfaceIssueDelaysMillis());
-        printFlag(fout, PROPERTY_NO_BACKGROUND_REFRESH_SOURCES, getNoBackgroundRefreshSourceIds());
+        printFlag(
+                fout,
+                PROPERTY_BACKGROUND_REFRESH_DENIED_SOURCES,
+                getBackgroundRefreshDeniedSourceIds());
         printFlag(
                 fout, PROPERTY_REFRESH_SOURCES_TIMEOUTS_MILLIS, getRefreshSourcesTimeoutsMillis());
         fout.println();
@@ -160,8 +163,8 @@ final class SafetyCenterFlags {
      * will refresh these sources only on page open and when the scan button is clicked.
      */
     @NonNull
-    static ArraySet<String> getNoBackgroundRefreshSourceIds() {
-        return getCommaSeparatedStrings(PROPERTY_NO_BACKGROUND_REFRESH_SOURCES);
+    static ArraySet<String> getBackgroundRefreshDeniedSourceIds() {
+        return getCommaSeparatedStrings(PROPERTY_BACKGROUND_REFRESH_DENIED_SOURCES);
     }
 
     /**

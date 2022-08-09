@@ -54,7 +54,10 @@ import androidx.annotation.RequiresApi;
 import com.android.safetycenter.SafetyCenterConfigReader.Broadcast;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.concurrent.NotThreadSafe;
 
@@ -146,12 +149,23 @@ final class SafetyCenterBroadcastDispatcher {
             @NonNull String broadcastId) {
         int requestType = toRefreshRequestType(refreshReason);
         String packageName = broadcast.getPackageName();
+        Set<String> deniedSourceIds = getRefreshDeniedSourceIds(refreshReason);
         SparseArray<List<String>> userIdsToSourceIds =
                 getUserIdsToSourceIds(broadcast, userProfileGroup, refreshReason);
 
         for (int i = 0; i < userIdsToSourceIds.size(); i++) {
             int userId = userIdsToSourceIds.keyAt(i);
             List<String> sourceIds = userIdsToSourceIds.valueAt(i);
+
+            if (!deniedSourceIds.isEmpty()) {
+                sourceIds = new ArrayList<>(sourceIds);
+                sourceIds.removeAll(deniedSourceIds);
+            }
+
+            if (sourceIds.isEmpty()) {
+                continue;
+            }
+
             Intent intent = createRefreshIntent(requestType, packageName, sourceIds, broadcastId);
             boolean sent = sendBroadcastIfResolves(intent, UserHandle.of(userId), broadcastOptions);
             if (sent) {
@@ -256,6 +270,31 @@ final class SafetyCenterBroadcastDispatcher {
                 return EXTRA_REFRESH_REQUEST_TYPE_GET_DATA;
         }
         throw new IllegalArgumentException("Unexpected refresh reason: " + refreshReason);
+    }
+
+    /** Returns {@code true} if {@code refreshReason} corresponds to a "background refresh". */
+    private static boolean isBackgroundRefresh(@RefreshReason int refreshReason) {
+        switch (refreshReason) {
+            case REFRESH_REASON_DEVICE_REBOOT:
+            case REFRESH_REASON_DEVICE_LOCALE_CHANGE:
+            case REFRESH_REASON_SAFETY_CENTER_ENABLED:
+            case REFRESH_REASON_OTHER:
+                return true;
+            case REFRESH_REASON_PAGE_OPEN:
+            case REFRESH_REASON_RESCAN_BUTTON_CLICK:
+                return false;
+        }
+        throw new IllegalArgumentException("Unexpected refresh reason: " + refreshReason);
+    }
+
+    /** Returns the list of source IDs for which refreshing is denied for the given reason. */
+    @NonNull
+    private static Set<String> getRefreshDeniedSourceIds(@RefreshReason int refreshReason) {
+        if (isBackgroundRefresh(refreshReason)) {
+            return SafetyCenterFlags.getBackgroundRefreshDeniedSourceIds();
+        } else {
+            return Collections.emptySet();
+        }
     }
 
     /**
