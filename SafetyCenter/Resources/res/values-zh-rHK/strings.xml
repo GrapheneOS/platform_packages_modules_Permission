@@ -44,6 +44,5 @@
     <string name="advanced_privacy_summary" msgid="2281203390575069543">"自動填入、活動控制項等等"</string>
     <string name="advanced_privacy_search_terms" msgid="5044404599789175222"></string>
     <string name="overall_severity_level_account_recommendation_title" msgid="6524855037045765671">"帳戶可能面臨風險"</string>
-    <!-- no translation found for overall_severity_level_critical_account_warning_title (3294187096461368277) -->
-    <skip />
+    <string name="overall_severity_level_critical_account_warning_title" msgid="3294187096461368277">"裝置正面臨風險"</string>
 </resources>
