@@ -22,9 +22,12 @@ import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.DrawableRes
+import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat.AccessibilityActionCompat.ACTION_CLICK
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.permission.utils.StringUtils
 
 /** A preference that displays a card linking to a list of more {@link SafetyCenterIssue}. */
 class MoreIssuesCardPreference(
@@ -51,6 +54,15 @@ class MoreIssuesCardPreference(
         widgetIcon?.setImageResource(preferencWidgetIconResourceId)
         val widgetTitle = holder.findViewById(R.id.widget_title) as? TextView
         widgetTitle?.text = numberOfHiddenIssues.toString()
+
+        val expansionString =
+            StringUtils.getIcuPluralsString(
+                context,
+                R.string.safety_center_more_issues_card_expand_action,
+                numberOfHiddenIssues)
+        // Replacing the on-click label to indicate the number of hidden issues. The on-click
+        // command is set to null so that it uses the existing expansion behaviour.
+        ViewCompat.replaceAccessibilityAction(holder.itemView, ACTION_CLICK, expansionString, null)
     }
 
     @DrawableRes
