@@ -97,6 +97,7 @@ import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.NO_PAGE_OPEN_CONF
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SEVERITY_ZERO_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_ID
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_INVALID_INTENT_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_OTHER_PACKAGE_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_1
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_2
@@ -2164,6 +2165,26 @@ class SafetyCenterManagerTest {
         val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
 
         assertThat(apiSafetyCenterData).isEqualTo(SafetyCenterCtsData.DEFAULT)
+    }
+
+    @Test
+    fun getSafetyCenterData_defaultDataWithIncorrectIntent_returnsDisabledEntries() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_INVALID_INTENT_CONFIG)
+
+        val safetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+
+        val expectedSafetyCenterData =
+            SafetyCenterData(
+                safetyCenterStatusOk,
+                emptyList(),
+                listOf(
+                    SafetyCenterEntryOrGroup(
+                        safetyCenterEntryDefaultBuilder(SINGLE_SOURCE_ID)
+                            .setPendingIntent(null)
+                            .setEnabled(false)
+                            .build())),
+                emptyList())
+        assertThat(safetyCenterData).isEqualTo(expectedSafetyCenterData)
     }
 
     @Test

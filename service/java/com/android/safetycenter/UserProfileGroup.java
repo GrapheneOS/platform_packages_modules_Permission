@@ -47,9 +47,7 @@ import java.util.Objects;
 final class UserProfileGroup {
 
     @UserIdInt private final int mProfileParentUserId;
-
     @NonNull private final int[] mManagedProfilesUserIds;
-
     @NonNull private final int[] mManagedRunningProfilesUserIds;
 
     private UserProfileGroup(

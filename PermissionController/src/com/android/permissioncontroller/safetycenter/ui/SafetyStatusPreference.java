@@ -125,9 +125,13 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
         boolean shouldChangeIcon = mSettledSeverityLevel != severityLevel;
 
         if (shouldStartScanAnimation && !mIsIconChangeAnimationRunning) {
+            mSettledSeverityLevel = severityLevel;
             startScanningAnimation(statusImage);
         } else if (shouldStartScanAnimation) {
             mQueuedScanAnimationSeverityLevel = severityLevel;
+        } else if (mIsScanAnimationRunning && shouldChangeIcon) {
+            mSettledSeverityLevel = severityLevel;
+            continueScanningAnimation(statusImage);
         } else if (shouldEndScanAnimation) {
             endScanningAnimation(statusImage, rescanButton);
         } else if (shouldChangeIcon && !mIsScanAnimationRunning) {
@@ -148,33 +152,42 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
 
     private void startScanningAnimation(ImageView statusImage) {
         mIsScanAnimationRunning = true;
-        int currentSeverityLevel = mStatus.getSeverityLevel();
         statusImage.setImageResource(
-                StatusAnimationResolver.getScanningStartAnimation(currentSeverityLevel));
+                StatusAnimationResolver.getScanningStartAnimation(mSettledSeverityLevel));
         AnimatedVectorDrawable animation = (AnimatedVectorDrawable) statusImage.getDrawable();
         animation.registerAnimationCallback(
                 new Animatable2.AnimationCallback() {
                     @Override
                     public void onAnimationEnd(Drawable drawable) {
-                        statusImage.setImageResource(
-                                StatusAnimationResolver.getScanningAnimation(currentSeverityLevel));
-                        AnimatedVectorDrawable scanningAnim =
-                                (AnimatedVectorDrawable) statusImage.getDrawable();
-                        scanningAnim.registerAnimationCallback(
-                                new Animatable2.AnimationCallback() {
-                                    @Override
-                                    public void onAnimationEnd(Drawable drawable) {
-                                        if (mIsScanAnimationRunning && isRefreshInProgress()) {
-                                            scanningAnim.start();
-                                        } else {
-                                            scanningAnim.clearAnimationCallbacks();
-                                        }
-                                    }
-                                });
-                        scanningAnim.start();
+                        continueScanningAnimation(statusImage);
                     }
                 });
         animation.start();
+    }
+
+    private void continueScanningAnimation(ImageView statusImage) {
+        // clear previous scan animation in case we need to continue with different severity level
+        Drawable statusDrawable = statusImage.getDrawable();
+        if (statusDrawable instanceof AnimatedVectorDrawable) {
+            ((AnimatedVectorDrawable) statusDrawable).clearAnimationCallbacks();
+        }
+
+        statusImage.setImageResource(
+                StatusAnimationResolver.getScanningAnimation(mSettledSeverityLevel));
+        AnimatedVectorDrawable scanningAnim =
+                (AnimatedVectorDrawable) statusImage.getDrawable();
+        scanningAnim.registerAnimationCallback(
+                new Animatable2.AnimationCallback() {
+                    @Override
+                    public void onAnimationEnd(Drawable drawable) {
+                        if (mIsScanAnimationRunning && isRefreshInProgress()) {
+                            scanningAnim.start();
+                        } else {
+                            scanningAnim.clearAnimationCallbacks();
+                        }
+                    }
+                });
+        scanningAnim.start();
     }
 
     private void endScanningAnimation(ImageView statusImage, View rescanButton) {
