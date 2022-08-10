@@ -1223,6 +1223,15 @@
     <!-- Description for the companion device computer profile role. [CHAR LIMIT=NONE] -->
     <string name="role_companion_device_computer_description">This service shares your photos, media, and notifications from your phone to other devices.</string>
 
+    <!-- Label for the NOTES role. [CHAR LIMIT=30] -->
+    <string name="role_notes_label">Default note taking app</string>
+    <!-- Short label for the NOTES role. [CHAR LIMIT=30] -->
+    <string name="role_notes_short_label">Note taking app</string>
+    <!-- Description for the NOTES role. [CHAR LIMIT=NONE] -->
+    <string name="role_notes_description">Apps that allow you to take notes</string>
+    <!-- Search keywords for the NOTES role. [CHAR LIMIT=NONE] -->
+    <string name="role_notes_search_keywords">notes</string>
+
     <!-- Subtitle for the application that is the current default application [CHAR LIMIT=30] -->
     <string name="request_role_current_default">Current default</string>
 

@@ -129,6 +129,14 @@ public final class RoleManager {
     public static final String ROLE_CALL_SCREENING = "android.app.role.CALL_SCREENING";
 
     /**
+     * The name of the notes role.
+     *
+     * @see Intent#ACTION_CREATE_NOTE
+     * @see Intent#EXTRA_USE_STYLUS_MODE
+     */
+    public static final String ROLE_NOTES = "android.app.role.NOTES";
+
+    /**
      * The name of the system wellbeing role.
      *
      * @hide
