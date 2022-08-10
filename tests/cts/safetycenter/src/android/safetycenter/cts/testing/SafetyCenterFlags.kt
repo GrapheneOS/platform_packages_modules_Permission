@@ -45,10 +45,11 @@ object SafetyCenterFlags {
 
     /**
      * Flag that determines the time for which a Safety Center refresh is allowed to wait for a
-     * source to respond to a refresh request before timing out and marking the refresh as finished.
+     * source to respond to a refresh request before timing out and marking the refresh as finished,
+     * depending on the refresh reason.
      */
-    private const val PROPERTY_SAFETY_CENTER_REFRESH_SOURCE_TIMEOUT =
-        "safety_center_refresh_source_timeout_millis"
+    private const val PROPERTY_REFRESH_SOURCES_TIMEOUTS_MILLIS =
+        "safety_center_refresh_sources_timeouts_millis"
 
     /**
      * Device Config flag that determines the time for which Safety Center will wait for a source to
@@ -86,8 +87,8 @@ object SafetyCenterFlags {
      * Comma delimited list of IDs of sources that should only be refreshed when Safety Center is on
      * screen. We will refresh these sources only on page open and when the scan button is clicked.
      */
-    private const val PROPERTY_NO_BACKGROUND_REFRESH_SOURCES =
-        "safety_center_no_background_refresh_sources"
+    private const val PROPERTY_BACKGROUND_REFRESH_DENIED_SOURCES =
+        "safety_center_background_refresh_denied_sources"
 
     /**
      * Default time for which a Safety Center refresh is allowed to wait for a source to respond to
@@ -149,16 +150,19 @@ object SafetyCenterFlags {
         }
 
     /**
-     * A property that allows getting and setting the
-     * [PROPERTY_SAFETY_CENTER_REFRESH_SOURCE_TIMEOUT] device config flag.
+     * A property that allows getting and setting the [PROPERTY_REFRESH_SOURCES_TIMEOUTS_MILLIS]
+     * device config flag.
      */
-    var refreshTimeout: Duration
+    var refreshTimeouts: Map<Int, Duration>
         get() =
-            readFlag(
-                PROPERTY_SAFETY_CENTER_REFRESH_SOURCE_TIMEOUT,
-                REFRESH_SOURCE_TIMEOUT_DEFAULT_DURATION) { Duration.ofMillis(it.toLong()) }
+            readFlag(PROPERTY_REFRESH_SOURCES_TIMEOUTS_MILLIS, defaultValue = emptyMap()) {
+                it.toMap(String::toInt, { valueString -> Duration.ofMillis(valueString.toLong()) })
+            }
         set(value) {
-            writeFlag(PROPERTY_SAFETY_CENTER_REFRESH_SOURCE_TIMEOUT, value.toMillis().toString())
+            writeFlag(
+                PROPERTY_REFRESH_SOURCES_TIMEOUTS_MILLIS,
+                value.joinToListOfPairsString(
+                    Int::toString, { value -> value.toMillis().toString() }))
         }
 
     /**
@@ -219,16 +223,16 @@ object SafetyCenterFlags {
         }
 
     /**
-     * A property that allows getting and setting the [PROPERTY_NO_BACKGROUND_REFRESH_SOURCES]
+     * A property that allows getting and setting the [PROPERTY_BACKGROUND_REFRESH_DENIED_SOURCES]
      * device config flag.
      */
-    var noBackgroundRefreshSources: Set<String>
+    var backgroundRefreshDeniedSources: Set<String>
         get() =
-            readFlag(PROPERTY_NO_BACKGROUND_REFRESH_SOURCES, defaultValue = emptySet()) {
+            readFlag(PROPERTY_BACKGROUND_REFRESH_DENIED_SOURCES, defaultValue = emptySet()) {
                 it.split(",").toSet()
             }
         set(value) {
-            writeFlag(PROPERTY_NO_BACKGROUND_REFRESH_SOURCES, value.joinToString(","))
+            writeFlag(PROPERTY_BACKGROUND_REFRESH_DENIED_SOURCES, value.joinToString(","))
         }
 
     /** Converts a comma separated list of colon separated pairs into a map. */
@@ -284,12 +288,12 @@ object SafetyCenterFlags {
                     PROPERTY_SAFETY_CENTER_ENABLED,
                     PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT,
                     PROPERTY_REPLACE_LOCK_SCREEN_ICON_ACTION,
-                    PROPERTY_SAFETY_CENTER_REFRESH_SOURCE_TIMEOUT,
+                    PROPERTY_REFRESH_SOURCES_TIMEOUTS_MILLIS,
                     PROPERTY_SAFETY_CENTER_RESOLVE_ACTION_TIMEOUT,
                     PROPERTY_UNTRACKED_SOURCES,
                     PROPERTY_RESURFACE_ISSUE_MAX_COUNTS,
                     PROPERTY_RESURFACE_ISSUE_DELAYS_MILLIS,
-                    PROPERTY_NO_BACKGROUND_REFRESH_SOURCES)
+                    PROPERTY_BACKGROUND_REFRESH_DENIED_SOURCES)
             },
             READ_DEVICE_CONFIG)
     }

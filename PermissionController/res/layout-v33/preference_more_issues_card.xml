@@ -16,48 +16,24 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/issue_card"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:clickable="false"
-    style="@style/SafetyCenter.IssueCard.MoreIssues">
+    style="@style/SafetyCenterMoreIssues">
 
     <ImageView
         android:id="@android:id/icon"
-        android:contentDescription="@string/safety_center_more_issues_status_icon_content_description"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:gravity="center"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/safety_status_info" />
+        android:importantForAccessibility="no"
+        android:src="@drawable/safety_status_info"
+        style="@style/SafetyCenterMoreIssuesIcon"/>
 
     <TextView
         android:id="@android:id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:maxLines="1"
         android:text="@string/summary_placeholder"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@android:id/icon"
-        app:layout_constraintEnd_toStartOf="@android:id/widget_frame"
-        app:layout_constraintHorizontal_bias="0"
-        style="@style/SafetyCenter.IssueCard.MoreIssues.Title" />
+        style="@style/SafetyCenterMoreIssuesTitle" />
 
     <LinearLayout
         android:id="@android:id/widget_frame"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:gravity="center_vertical"
-        android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        style="@style/SafetyCenterMoreIssuesWidgetFrame"
+        android:importantForAccessibility="noHideDescendants"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

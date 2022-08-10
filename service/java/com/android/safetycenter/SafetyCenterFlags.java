@@ -17,6 +17,7 @@
 package com.android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
+import static android.safetycenter.SafetyCenterManager.RefreshReason;
 
 import android.annotation.NonNull;
 import android.os.Binder;
@@ -46,9 +47,6 @@ final class SafetyCenterFlags {
     private static final String PROPERTY_REPLACE_LOCK_SCREEN_ICON_ACTION =
             "safety_center_replace_lock_screen_icon_action";
 
-    private static final String PROPERTY_REFRESH_SOURCE_TIMEOUT_MILLIS =
-            "safety_center_refresh_source_timeout_millis";
-
     private static final String PROPERTY_RESOLVING_ACTION_TIMEOUT_MILLIS =
             "safety_center_resolve_action_timeout_millis";
 
@@ -63,10 +61,13 @@ final class SafetyCenterFlags {
 
     private static final String PROPERTY_UNTRACKED_SOURCES = "safety_center_untracked_sources";
 
-    private static final String PROPERTY_NO_BACKGROUND_REFRESH_SOURCES =
-            "safety_center_no_background_refresh_sources";
+    private static final String PROPERTY_BACKGROUND_REFRESH_DENIED_SOURCES =
+            "safety_center_background_refresh_denied_sources";
 
-    private static final Duration REFRESH_SOURCE_TIMEOUT_DEFAULT_DURATION = Duration.ofSeconds(10);
+    private static final String PROPERTY_REFRESH_SOURCES_TIMEOUTS_MILLIS =
+            "safety_center_refresh_sources_timeouts_millis";
+
+    private static final Duration REFRESH_SOURCES_TIMEOUT_DEFAULT_DURATION = Duration.ofSeconds(15);
 
     private static final Duration RESOLVING_ACTION_TIMEOUT_DEFAULT_DURATION =
             Duration.ofSeconds(10);
@@ -87,13 +88,17 @@ final class SafetyCenterFlags {
         printFlag(fout, PROPERTY_SAFETY_CENTER_ENABLED, getSafetyCenterEnabled());
         printFlag(fout, PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT, getShowErrorEntriesOnTimeout());
         printFlag(fout, PROPERTY_REPLACE_LOCK_SCREEN_ICON_ACTION, getReplaceLockScreenIconAction());
-        printFlag(fout, PROPERTY_REFRESH_SOURCE_TIMEOUT_MILLIS, getRefreshTimeout());
         printFlag(fout, PROPERTY_RESOLVING_ACTION_TIMEOUT_MILLIS, getResolvingActionTimeout());
         printFlag(fout, PROPERTY_FGS_ALLOWLIST_DURATION_MILLIS, getFgsAllowlistDuration());
         printFlag(fout, PROPERTY_UNTRACKED_SOURCES, getUntrackedSourceIds());
         printFlag(fout, PROPERTY_RESURFACE_ISSUE_MAX_COUNTS, getResurfaceIssueMaxCounts());
         printFlag(fout, PROPERTY_RESURFACE_ISSUE_DELAYS_MILLIS, getResurfaceIssueDelaysMillis());
-        printFlag(fout, PROPERTY_NO_BACKGROUND_REFRESH_SOURCES, getNoBackgroundRefreshSourceIds());
+        printFlag(
+                fout,
+                PROPERTY_BACKGROUND_REFRESH_DENIED_SOURCES,
+                getBackgroundRefreshDeniedSourceIds());
+        printFlag(
+                fout, PROPERTY_REFRESH_SOURCES_TIMEOUTS_MILLIS, getRefreshSourcesTimeoutsMillis());
         fout.println();
     }
 
@@ -123,15 +128,6 @@ final class SafetyCenterFlags {
      */
     static boolean getReplaceLockScreenIconAction() {
         return getBoolean(PROPERTY_REPLACE_LOCK_SCREEN_ICON_ACTION, true);
-    }
-
-    /**
-     * Returns the time for which a Safety Center refresh is allowed to wait for a source to respond
-     * to a refresh request before timing out and marking the refresh as completed.
-     */
-    static Duration getRefreshTimeout() {
-        return getDuration(
-                PROPERTY_REFRESH_SOURCE_TIMEOUT_MILLIS, REFRESH_SOURCE_TIMEOUT_DEFAULT_DURATION);
     }
 
     /**
@@ -167,8 +163,32 @@ final class SafetyCenterFlags {
      * will refresh these sources only on page open and when the scan button is clicked.
      */
     @NonNull
-    static ArraySet<String> getNoBackgroundRefreshSourceIds() {
-        return getCommaSeparatedStrings(PROPERTY_NO_BACKGROUND_REFRESH_SOURCES);
+    static ArraySet<String> getBackgroundRefreshDeniedSourceIds() {
+        return getCommaSeparatedStrings(PROPERTY_BACKGROUND_REFRESH_DENIED_SOURCES);
+    }
+
+    /**
+     * Returns the time for which a Safety Center refresh is allowed to wait for a source to respond
+     * to a refresh request before timing out and marking the refresh as completed, based on the
+     * reason for the refresh.
+     */
+    static Duration getRefreshSourcesTimeout(@RefreshReason int refreshReason) {
+        Long timeout = getRefreshSourcesTimeoutsMillis().get(refreshReason);
+        if (timeout != null) {
+            return Duration.ofMillis(timeout);
+        }
+        return REFRESH_SOURCES_TIMEOUT_DEFAULT_DURATION;
+    }
+
+    /**
+     * Returns a map where the key is a {@link RefreshReason} and the value is the timeout in millis
+     * after which SafetyCenter would time out and mark the refresh as completed, despite not
+     * getting a response from the source.
+     */
+    @NonNull
+    private static ArrayMap<Integer, Long> getRefreshSourcesTimeoutsMillis() {
+        String refreshSourcesTimeouts = getString(PROPERTY_REFRESH_SOURCES_TIMEOUTS_MILLIS, "");
+        return convertStringConfigToMap(refreshSourcesTimeouts);
     }
 
     /**
