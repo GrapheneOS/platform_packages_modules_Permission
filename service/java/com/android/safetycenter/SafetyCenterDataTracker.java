@@ -18,6 +18,21 @@ package com.android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
+import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED;
+import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SAFETY_SOURCE_PROFILE_TYPE__PROFILE_TYPE_MANAGED;
+import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SAFETY_SOURCE_PROFILE_TYPE__PROFILE_TYPE_PERSONAL;
+import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SEVERITY_LEVEL__SAFETY_SEVERITY_CRITICAL_WARNING;
+import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SEVERITY_LEVEL__SAFETY_SEVERITY_LEVEL_UNKNOWN;
+import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SEVERITY_LEVEL__SAFETY_SEVERITY_OK;
+import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SEVERITY_LEVEL__SAFETY_SEVERITY_RECOMMENDATION;
+import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SEVERITY_LEVEL__SAFETY_SEVERITY_UNSPECIFIED;
+import static com.android.permission.PermissionStatsLog.SAFETY_STATE;
+import static com.android.permission.PermissionStatsLog.SAFETY_STATE__OVERALL_SEVERITY_LEVEL__SAFETY_SEVERITY_CRITICAL_WARNING;
+import static com.android.permission.PermissionStatsLog.SAFETY_STATE__OVERALL_SEVERITY_LEVEL__SAFETY_SEVERITY_LEVEL_UNKNOWN;
+import static com.android.permission.PermissionStatsLog.SAFETY_STATE__OVERALL_SEVERITY_LEVEL__SAFETY_SEVERITY_OK;
+import static com.android.permission.PermissionStatsLog.SAFETY_STATE__OVERALL_SEVERITY_LEVEL__SAFETY_SEVERITY_RECOMMENDATION;
+import static com.android.permission.PermissionStatsLog.SAFETY_STATE__OVERALL_SEVERITY_LEVEL__SAFETY_SEVERITY_UNSPECIFIED;
+
 import static java.util.Collections.emptyList;
 
 import android.annotation.NonNull;
@@ -57,9 +72,11 @@ import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.util.ArraySet;
 import android.util.Log;
+import android.util.StatsEvent;
 
 import androidx.annotation.RequiresApi;
 
+import com.android.permission.PermissionStatsLog;
 import com.android.permission.util.UserUtils;
 import com.android.safetycenter.SafetyCenterConfigReader.ExternalSafetySource;
 import com.android.safetycenter.internaldata.SafetyCenterEntryGroupId;
@@ -72,6 +89,9 @@ import com.android.safetycenter.persistence.PersistedSafetyCenterIssue;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 
 import java.io.PrintWriter;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -493,6 +513,46 @@ final class SafetyCenterDataTracker {
     }
 
     /**
+     * Clears all the {@link SafetySourceData}, metadata associated with {@link
+     * SafetyCenterIssueKey}s, in flight {@link SafetyCenterIssueActionId} and any refresh in
+     * progress so far, for the given user.
+     *
+     * <p>This method may modify the Safety Center issue cache and change the value reported by
+     * {@link #isSafetyCenterIssueCacheDirty} to {@code true}.
+     */
+    void clearForUser(@UserIdInt int userId) {
+        // Loop in reverse index order to be able to remove entries while iterating.
+        for (int i = mSafetySourceDataForKey.size() - 1; i >= 0; i--) {
+            SafetySourceKey sourceKey = mSafetySourceDataForKey.keyAt(i);
+            if (sourceKey.getUserId() == userId) {
+                mSafetySourceDataForKey.removeAt(i);
+            }
+        }
+        // Loop in reverse index order to be able to remove entries while iterating.
+        for (int i = mSafetySourceErrors.size() - 1; i >= 0; i--) {
+            SafetySourceKey sourceKey = mSafetySourceErrors.valueAt(i);
+            if (sourceKey.getUserId() == userId) {
+                mSafetySourceErrors.removeAt(i);
+            }
+        }
+        // Loop in reverse index order to be able to remove entries while iterating.
+        for (int i = mSafetyCenterIssueCache.size() - 1; i >= 0; i--) {
+            SafetyCenterIssueKey issueKey = mSafetyCenterIssueCache.keyAt(i);
+            if (issueKey.getUserId() == userId) {
+                mSafetyCenterIssueCache.removeAt(i);
+                mSafetyCenterIssueCacheDirty = true;
+            }
+        }
+        // Loop in reverse index order to be able to remove entries while iterating.
+        for (int i = mSafetyCenterIssueActionsInFlight.size() - 1; i >= 0; i--) {
+            SafetyCenterIssueActionId issueActionId = mSafetyCenterIssueActionsInFlight.valueAt(i);
+            if (issueActionId.getSafetyCenterIssueKey().getUserId() == userId) {
+                mSafetyCenterIssueActionsInFlight.removeAt(i);
+            }
+        }
+    }
+
+    /**
      * Dumps state for debugging purposes.
      *
      * @param fout {@link PrintWriter} to write to
@@ -539,43 +599,120 @@ final class SafetyCenterDataTracker {
     }
 
     /**
-     * Clears all the {@link SafetySourceData}, metadata associated with {@link
-     * SafetyCenterIssueKey}s, in flight {@link SafetyCenterIssueActionId} and any refresh in
-     * progress so far, for the given user.
-     *
-     * <p>This method may modify the Safety Center issue cache and change the value reported by
-     * {@link #isSafetyCenterIssueCacheDirty} to {@code true}.
+     * Pulls the {@link PermissionStatsLog#SAFETY_STATE} atom and writes all relevant {@link
+     * PermissionStatsLog#SAFETY_SOURCE_STATE_COLLECTED} atoms for the given {@link
+     * UserProfileGroup}.
      */
-    void clearForUser(@UserIdInt int userId) {
-        // Loop in reverse index order to be able to remove entries while iterating.
-        for (int i = mSafetySourceDataForKey.size() - 1; i >= 0; i--) {
-            SafetySourceKey sourceKey = mSafetySourceDataForKey.keyAt(i);
-            if (sourceKey.getUserId() == userId) {
-                mSafetySourceDataForKey.removeAt(i);
-            }
-        }
-        // Loop in reverse index order to be able to remove entries while iterating.
-        for (int i = mSafetySourceErrors.size() - 1; i >= 0; i--) {
-            SafetySourceKey sourceKey = mSafetySourceErrors.valueAt(i);
-            if (sourceKey.getUserId() == userId) {
-                mSafetySourceErrors.removeAt(i);
-            }
-        }
-        // Loop in reverse index order to be able to remove entries while iterating.
-        for (int i = mSafetyCenterIssueCache.size() - 1; i >= 0; i--) {
+    void pullAndWriteAtoms(
+            @NonNull UserProfileGroup userProfileGroup, @NonNull List<StatsEvent> statsEvents) {
+        pullOverallSafetyStateAtom(userProfileGroup, statsEvents);
+        // The SAFETY_SOURCE_STATE_COLLECTED atoms are written instead of being pulled, as they do
+        // not support pull.
+        writeSafetySourceStateCollectedAtoms(userProfileGroup);
+    }
+
+    private void pullOverallSafetyStateAtom(
+            @NonNull UserProfileGroup userProfileGroup, @NonNull List<StatsEvent> statsEvents) {
+        SafetyCenterData safetyCenterData = getSafetyCenterData("android", userProfileGroup);
+        int safetyStateOverallSeverityLevel =
+                toSafetyStateOverallSeverityLevel(safetyCenterData.getStatus().getSeverityLevel());
+        long openIssuesCount = safetyCenterData.getIssues().size();
+        long dismissedIssuesCount = 0;
+        for (int i = 0; i < mSafetyCenterIssueCache.size(); i++) {
             SafetyCenterIssueKey issueKey = mSafetyCenterIssueCache.keyAt(i);
-            if (issueKey.getUserId() == userId) {
-                mSafetyCenterIssueCache.removeAt(i);
-                mSafetyCenterIssueCacheDirty = true;
+            IssueData issueData = mSafetyCenterIssueCache.valueAt(i);
+
+            if (mSafetyCenterConfigReader.isExternalSafetySourceActive(issueKey.getSafetySourceId())
+                    && userProfileGroup.contains(issueKey.getUserId())
+                    && issueData.getDismissedAt() != null) {
+                dismissedIssuesCount++;
             }
         }
-        // Loop in reverse index order to be able to remove entries while iterating.
-        for (int i = mSafetyCenterIssueActionsInFlight.size() - 1; i >= 0; i--) {
-            SafetyCenterIssueActionId issueActionId = mSafetyCenterIssueActionsInFlight.valueAt(i);
-            if (issueActionId.getSafetyCenterIssueKey().getUserId() == userId) {
-                mSafetyCenterIssueActionsInFlight.removeAt(i);
+        statsEvents.add(
+                PermissionStatsLog.buildStatsEvent(
+                        SAFETY_STATE,
+                        safetyStateOverallSeverityLevel,
+                        openIssuesCount,
+                        dismissedIssuesCount));
+    }
+
+    private void writeSafetySourceStateCollectedAtoms(@NonNull UserProfileGroup userProfileGroup) {
+        List<SafetySourcesGroup> safetySourcesGroups =
+                mSafetyCenterConfigReader.getSafetyCenterConfig().getSafetySourcesGroups();
+        for (int i = 0; i < safetySourcesGroups.size(); i++) {
+            SafetySourcesGroup safetySourcesGroup = safetySourcesGroups.get(i);
+            List<SafetySource> safetySources = safetySourcesGroup.getSafetySources();
+
+            for (int j = 0; j < safetySources.size(); j++) {
+                SafetySource safetySource = safetySources.get(j);
+
+                if (!SafetySources.isExternal(safetySource)) {
+                    continue;
+                }
+
+                writeSafetySourceStateCollectedAtom(
+                        safetySource.getId(), userProfileGroup.getProfileParentUserId(), false);
+
+                if (!SafetySources.supportsManagedProfiles(safetySource)) {
+                    continue;
+                }
+
+                int[] managedRunningProfilesUserIds =
+                        userProfileGroup.getManagedRunningProfilesUserIds();
+                for (int k = 0; k < managedRunningProfilesUserIds.length; k++) {
+                    writeSafetySourceStateCollectedAtom(
+                            safetySource.getId(), managedRunningProfilesUserIds[k], true);
+                }
             }
         }
+    }
+
+    private void writeSafetySourceStateCollectedAtom(
+            @NonNull String safetySourceId, @UserIdInt int userId, boolean isUserManaged) {
+        SafetySourceKey key = SafetySourceKey.of(safetySourceId, userId);
+        SafetySourceData safetySourceData = mSafetySourceDataForKey.get(key);
+        SafetySourceStatus safetySourceStatus = getSafetySourceStatus(safetySourceData);
+        List<SafetySourceIssue> safetySourceIssues =
+                safetySourceData == null ? emptyList() : safetySourceData.getIssues();
+
+        long encodedSafetySourceId = getEncodedSafetySourceSourceId(safetySourceId);
+        int safetySourceStateCollectedProfileType =
+                isUserManaged
+                        ? SAFETY_SOURCE_STATE_COLLECTED__SAFETY_SOURCE_PROFILE_TYPE__PROFILE_TYPE_MANAGED
+                        : SAFETY_SOURCE_STATE_COLLECTED__SAFETY_SOURCE_PROFILE_TYPE__PROFILE_TYPE_PERSONAL;
+        // Returns UNKNOWN for issue-only safety sources; since we are only logging the entry's
+        // severity level.
+        int safetySourceStateCollectedSeverityLevel =
+                safetySourceStatus == null
+                        ? SAFETY_SOURCE_STATE_COLLECTED__SEVERITY_LEVEL__SAFETY_SEVERITY_LEVEL_UNKNOWN
+                        : toSafetySourceStateCollectedSeverityLevel(
+                                safetySourceStatus.getSeverityLevel());
+        long openIssuesCount = 0;
+        long dismissedIssuesCount = 0;
+        for (int i = 0; i < safetySourceIssues.size(); i++) {
+            SafetySourceIssue safetySourceIssue = safetySourceIssues.get(i);
+            SafetyCenterIssueKey safetyCenterIssueKey =
+                    SafetyCenterIssueKey.newBuilder()
+                            .setSafetySourceId(safetySourceId)
+                            .setSafetySourceIssueId(safetySourceIssue.getId())
+                            .setUserId(userId)
+                            .build();
+
+            IssueData issueData = mSafetyCenterIssueCache.get(safetyCenterIssueKey);
+            if (issueData == null || issueData.getDismissedAt() == null) {
+                openIssuesCount++;
+            } else {
+                dismissedIssuesCount++;
+            }
+        }
+
+        PermissionStatsLog.write(
+                SAFETY_SOURCE_STATE_COLLECTED,
+                encodedSafetySourceId,
+                safetySourceStateCollectedProfileType,
+                safetySourceStateCollectedSeverityLevel,
+                openIssuesCount,
+                dismissedIssuesCount);
     }
 
     private boolean isDismissed(
@@ -1758,6 +1895,55 @@ final class SafetyCenterDataTracker {
                 "Unexpected SafetySourceStatus.IconAction.IconActionType: "
                         + safetySourceIconActionType);
         return SafetyCenterEntry.IconAction.ICON_ACTION_TYPE_INFO;
+    }
+
+    private static int toSafetyStateOverallSeverityLevel(
+            @SafetyCenterStatus.OverallSeverityLevel int safetyCenterStatusOverallSeverityLevel) {
+        switch (safetyCenterStatusOverallSeverityLevel) {
+            case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN:
+                // Using UNSPECIFIED for the UNKNOWN case as we technically got the data here.
+                // UNKNOWN should be reserved for cases where the data couldn't be fetched.
+                return SAFETY_STATE__OVERALL_SEVERITY_LEVEL__SAFETY_SEVERITY_UNSPECIFIED;
+            case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK:
+                return SAFETY_STATE__OVERALL_SEVERITY_LEVEL__SAFETY_SEVERITY_OK;
+            case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_RECOMMENDATION:
+                return SAFETY_STATE__OVERALL_SEVERITY_LEVEL__SAFETY_SEVERITY_RECOMMENDATION;
+            case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING:
+                return SAFETY_STATE__OVERALL_SEVERITY_LEVEL__SAFETY_SEVERITY_CRITICAL_WARNING;
+        }
+        Log.w(
+                TAG,
+                "Unexpected SafetyCenterStatus.OverallSeverityLevel: "
+                        + safetyCenterStatusOverallSeverityLevel);
+        return SAFETY_STATE__OVERALL_SEVERITY_LEVEL__SAFETY_SEVERITY_LEVEL_UNKNOWN;
+    }
+
+    private static int toSafetySourceStateCollectedSeverityLevel(
+            @SafetySourceData.SeverityLevel int safetySourceSeverityLevel) {
+        switch (safetySourceSeverityLevel) {
+            case SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED:
+                return SAFETY_SOURCE_STATE_COLLECTED__SEVERITY_LEVEL__SAFETY_SEVERITY_UNSPECIFIED;
+            case SafetySourceData.SEVERITY_LEVEL_INFORMATION:
+                return SAFETY_SOURCE_STATE_COLLECTED__SEVERITY_LEVEL__SAFETY_SEVERITY_OK;
+            case SafetySourceData.SEVERITY_LEVEL_RECOMMENDATION:
+                return SAFETY_SOURCE_STATE_COLLECTED__SEVERITY_LEVEL__SAFETY_SEVERITY_RECOMMENDATION;
+            case SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING:
+                return SAFETY_SOURCE_STATE_COLLECTED__SEVERITY_LEVEL__SAFETY_SEVERITY_CRITICAL_WARNING;
+        }
+        Log.w(TAG, "Unexpected SafetySourceData.SeverityLevel: " + safetySourceSeverityLevel);
+        return SAFETY_SOURCE_STATE_COLLECTED__SEVERITY_LEVEL__SAFETY_SEVERITY_LEVEL_UNKNOWN;
+    }
+
+    private static long getEncodedSafetySourceSourceId(@NonNull String safetySourceId) {
+        MessageDigest messageDigest;
+        try {
+            messageDigest = MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException e) {
+            Log.w(TAG, "Couldn't encode safety source id: " + safetySourceId, e);
+            return 0;
+        }
+        messageDigest.update(safetySourceId.getBytes());
+        return new BigInteger(messageDigest.digest()).longValue();
     }
 
     private String getSafetyCenterStatusTitle(
