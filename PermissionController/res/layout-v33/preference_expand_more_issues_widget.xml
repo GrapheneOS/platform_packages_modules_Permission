@@ -16,35 +16,14 @@
   -->
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/widget"
-    android:layout_width="wrap_content"
-    android:layout_height="28dp"
-    android:paddingStart="8dp"
-    android:paddingEnd="8dp"
-    android:orientation="vertical"
     android:clickable="false"
-    android:background="@drawable/safety_center_card_widget_background">
+    style="@style/SafetyCenterMoreIssuesWidget">
     <TextView
         android:id="@+id/widget_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="2dp"
-        android:maxLines="1"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/widget_icon"
-        style="@style/SafetyCenter.IssueCard.MoreIssues.Title" />
+        style="@style/SafetyCenterMoreIssuesWidgetTitle" />
     <ImageView
         android:id="@+id/widget_icon"
-        android:contentDescription="@string/safety_center_more_issues_expand_button_content_description"
-        android:layout_width="16dp"
-        android:layout_height="16dp"
-        android:gravity="center"
-        android:scaleType="fitCenter"
         android:src="@drawable/ic_expand_more"
-        android:tint="?android:attr/textColorPrimary"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        style="@style/SafetyCenterMoreIssuesWidgetIcon" />
 </androidx.constraintlayout.widget.ConstraintLayout>

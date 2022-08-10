@@ -119,7 +119,7 @@ public final class SafetyEntryPreference extends Preference implements Comparabl
                                 == SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON;
         holder.findViewById(R.id.icon_frame).setVisibility(hideIcon ? View.GONE : View.VISIBLE);
         holder.findViewById(R.id.empty_space).setVisibility(hideIcon ? View.VISIBLE : View.GONE);
-
+        enableOrDisableEntry(holder);
         SafetyCenterEntry.IconAction iconAction = mEntry.getIconAction();
         if (iconAction != null) {
             holder.findViewById(R.id.icon_action_button)
@@ -172,6 +172,18 @@ public final class SafetyEntryPreference extends Preference implements Comparabl
         }
         Log.e(TAG, String.format("Unexpected SafetyCenterEntry.EntrySeverityLevel: %s", entry));
         return R.drawable.ic_safety_null_state;
+    }
+
+    /** We are doing this because we need some entries to look disabled but still be clickable. */
+    private void enableOrDisableEntry(@NonNull PreferenceViewHolder holder) {
+        holder.itemView.setEnabled(mEntry.getPendingIntent() != null);
+        if (mEntry.isEnabled()) {
+            holder.findViewById(android.R.id.title).setAlpha(1F);
+            holder.findViewById(android.R.id.summary).setAlpha(1F);
+        } else {
+            holder.findViewById(android.R.id.title).setAlpha(0.4F);
+            holder.findViewById(android.R.id.summary).setAlpha(0.4F);
+        }
     }
 
     private static int selectSeverityUnspecifiedIconResId(SafetyCenterEntry entry) {

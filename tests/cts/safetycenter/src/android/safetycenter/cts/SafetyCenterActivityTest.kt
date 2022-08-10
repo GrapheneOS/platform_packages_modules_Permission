@@ -374,10 +374,10 @@ class SafetyCenterActivityTest {
                     waitFindObject(By.text(action.label.toString())).click()
 
                     // Default success message should show up if issue marked as resolved
-                    waitFindObject(By.text("Complete"))
+                    waitFindObject(By.text(DEFAULT_SAFETY_CENTER_RESOLVED_ISSUE_SUCCESS_MESSAGE))
 
                     // Wait for success message to go away, verify issue no longer displayed
-                    waitTextNotDisplayed("Complete")
+                    waitTextNotDisplayed(DEFAULT_SAFETY_CENTER_RESOLVED_ISSUE_SUCCESS_MESSAGE)
                     assertSourceIssueNotDisplayed(safetySourceCtsData.criticalResolvingGeneralIssue)
                 },
                 SEND_SAFETY_CENTER_UPDATE)
@@ -404,7 +404,7 @@ class SafetyCenterActivityTest {
                     waitFindObject(By.text(action.label.toString())).click()
 
                     // criticalResolvingAction does not define a success message, check for default
-                    waitTextNotDisplayed("Complete")
+                    waitTextNotDisplayed(DEFAULT_SAFETY_CENTER_RESOLVED_ISSUE_SUCCESS_MESSAGE)
                     assertSourceIssueDisplayed(safetySourceCtsData.criticalResolvingGeneralIssue)
                 },
                 SEND_SAFETY_CENTER_UPDATE)
@@ -430,7 +430,7 @@ class SafetyCenterActivityTest {
                     waitFindObject(By.text(action.label.toString())).click()
 
                     // criticalResolvingAction does not define a success message, check for default
-                    waitTextNotDisplayed("Complete")
+                    waitTextNotDisplayed(DEFAULT_SAFETY_CENTER_RESOLVED_ISSUE_SUCCESS_MESSAGE)
                     assertSourceIssueDisplayed(safetySourceCtsData.criticalResolvingGeneralIssue)
                 },
                 SEND_SAFETY_CENTER_UPDATE)
@@ -664,6 +664,7 @@ class SafetyCenterActivityTest {
     }
 
     companion object {
+        private const val DEFAULT_SAFETY_CENTER_RESOLVED_ISSUE_SUCCESS_MESSAGE = "Action complete"
         private const val EXPAND_ISSUE_GROUP_QS_FRAGMENT_KEY = "expand_issue_group_qs_fragment_key"
         private val DIALOG_ROTATION_TIMEOUT = Duration.ofSeconds(1)
         private val DATA_UPDATE_TIMEOUT = Duration.ofSeconds(1)

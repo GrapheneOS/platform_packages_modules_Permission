@@ -19,4 +19,4 @@
     android:id="@+id/icon_action_button"
     android:src="@drawable/ic_settings_gear"
     android:contentDescription="@string/safety_center_gear_label"
-    style="@style/SafetyCenter.EntryCard.IconAction"/>
+    style="@style/SafetyCenterEntryIconAction"/>

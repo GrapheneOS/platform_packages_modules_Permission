@@ -34,6 +34,7 @@ import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCe
 import android.safetycenter.cts.testing.SafetyCenterFlags.isSafetyCenterEnabled
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.EVENT_SOURCE_STATE_CHANGED
 import com.google.common.util.concurrent.MoreExecutors.directExecutor
+import java.time.Duration
 
 /** A class that facilitates settings up Safety Center in tests. */
 class SafetyCenterCtsHelper(private val context: Context) {
@@ -52,11 +53,11 @@ class SafetyCenterCtsHelper(private val context: Context) {
         SafetyCenterFlags.showErrorEntriesOnTimeout = false
         SafetyCenterFlags.replaceLockScreenIconAction = true
         SafetyCenterFlags.resolveActionTimeout = TIMEOUT_LONG
-        SafetyCenterFlags.refreshTimeout = TIMEOUT_LONG
         SafetyCenterFlags.untrackedSources = emptySet()
         SafetyCenterFlags.resurfaceIssueMaxCounts = emptyMap()
         SafetyCenterFlags.resurfaceIssueDelays = emptyMap()
-        SafetyCenterFlags.noBackgroundRefreshSources = emptySet()
+        SafetyCenterFlags.backgroundRefreshDeniedSources = emptySet()
+        setAllRefreshTimeoutsTo(TIMEOUT_LONG)
         setEnabled(true)
     }
 
@@ -128,6 +129,17 @@ class SafetyCenterCtsHelper(private val context: Context) {
         require(isEnabled())
         safetyCenterManager.setSafetySourceDataWithPermission(
             safetySourceId, safetySourceData, safetyEvent)
+    }
+
+    fun setAllRefreshTimeoutsTo(refreshTimeout: Duration) {
+        SafetyCenterFlags.refreshTimeouts =
+            mapOf(
+                SafetyCenterManager.REFRESH_REASON_PAGE_OPEN to refreshTimeout,
+                SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK to refreshTimeout,
+                SafetyCenterManager.REFRESH_REASON_DEVICE_REBOOT to refreshTimeout,
+                SafetyCenterManager.REFRESH_REASON_DEVICE_LOCALE_CHANGE to refreshTimeout,
+                SafetyCenterManager.REFRESH_REASON_SAFETY_CENTER_ENABLED to refreshTimeout,
+                SafetyCenterManager.REFRESH_REASON_OTHER to refreshTimeout)
     }
 
     private fun resetFlags() {
