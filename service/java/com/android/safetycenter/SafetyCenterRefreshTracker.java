@@ -88,7 +88,7 @@ final class SafetyCenterRefreshTracker {
     /** Returns the current refresh status. */
     @RefreshStatus
     int getRefreshStatus() {
-        if (mRefreshInProgress == null) {
+        if (mRefreshInProgress == null || mRefreshInProgress.isComplete()) {
             return SafetyCenterStatus.REFRESH_STATUS_NONE;
         }
 
@@ -136,6 +136,7 @@ final class SafetyCenterRefreshTracker {
             return false;
         }
 
+        Log.v(TAG, "Refresh with id: " + mRefreshInProgress.getId() + " completed");
         mRefreshInProgress = null;
         return true;
     }
@@ -147,7 +148,6 @@ final class SafetyCenterRefreshTracker {
      * scheduled broadcasts being sent by {@link
      * android.safetycenter.SafetyCenterManager#refreshSafetySources}.
      */
-    // TODO(b/229188900): Should we stop any scheduled broadcasts from going out?
     void clearRefresh() {
         if (mRefreshInProgress != null) {
             clearRefresh(mRefreshInProgress.getId());
@@ -161,13 +161,12 @@ final class SafetyCenterRefreshTracker {
      * that were still in-flight prior to doing that, if any.
      *
      * <p>Returns {@code null} if there was no refresh in progress with the given {@code
-     * refreshBroadcastId}.
+     * refreshBroadcastId} or if it was already complete.
      *
      * <p>Note that this method simply clears the tracking of a refresh, and does not prevent
      * scheduled broadcasts being sent by {@link
      * android.safetycenter.SafetyCenterManager#refreshSafetySources}.
      */
-    // TODO(b/229188900): Should we stop any scheduled broadcasts from going out?
     @Nullable
     ArraySet<SafetySourceKey> clearRefresh(@NonNull String refreshBroadcastId) {
         if (!checkMethodValid("clearRefresh", refreshBroadcastId)) {
@@ -181,9 +180,9 @@ final class SafetyCenterRefreshTracker {
 
         if (clearedRefresh.isComplete()) {
             return null;
-        } else {
-            return clearedRefresh.getSourceRefreshInFlight();
         }
+
+        return clearedRefresh.getSourceRefreshInFlight();
     }
 
     /**
@@ -195,17 +194,12 @@ final class SafetyCenterRefreshTracker {
      */
     // TODO(b/229188900): Should we stop any scheduled broadcasts from going out?
     void clearRefreshForUser(@UserIdInt int userId) {
-        if (mRefreshInProgress != null) {
-            if (mRefreshInProgress.getUserProfileGroup().getProfileParentUserId() == userId) {
-                clearRefresh();
-            } else {
-                mRefreshInProgress.clearForUser(userId);
-                if (mRefreshInProgress.isComplete()) {
-                    mRefreshInProgress = null;
-                }
-            }
-        } else {
+        if (mRefreshInProgress == null) {
             Log.v(TAG, "Clear refresh for user called but no refresh in progress");
+            return;
+        }
+        if (mRefreshInProgress.clearForUser(userId)) {
+            clearRefresh();
         }
     }
 
@@ -333,7 +327,14 @@ final class SafetyCenterRefreshTracker {
             return !mUntrackedSourcesIds.contains(safetySourceKey.getSourceId());
         }
 
-        private void clearForUser(@UserIdInt int userId) {
+        /**
+         * Clears the data for the given {@code userId} and returns whether that caused the entire
+         * refresh to complete.
+         */
+        private boolean clearForUser(@UserIdInt int userId) {
+            if (mUserProfileGroup.getProfileParentUserId() == userId) {
+                return true;
+            }
             // Loop in reverse index order to be able to remove entries while iterating.
             for (int i = mSourceRefreshInFlight.size() - 1; i >= 0; i--) {
                 SafetySourceKey sourceKey = mSourceRefreshInFlight.valueAt(i);
@@ -341,6 +342,7 @@ final class SafetyCenterRefreshTracker {
                     mSourceRefreshInFlight.removeAt(i);
                 }
             }
+            return isComplete();
         }
 
         private boolean isComplete() {
