@@ -46,11 +46,13 @@ public final class SafetyEntryPreference extends Preference implements Comparabl
     private final PositionInCardList mPosition;
     private final SafetyCenterEntry mEntry;
     private final SafetyCenterViewModel mViewModel;
+    private final CharSequence mGroupId;
 
     public SafetyEntryPreference(
             Context context,
             int taskId,
             SafetyCenterEntry entry,
+            CharSequence groupId,
             PositionInCardList position,
             SafetyCenterViewModel viewModel) {
         super(context);
@@ -58,12 +60,14 @@ public final class SafetyEntryPreference extends Preference implements Comparabl
         mEntry = entry;
         mPosition = position;
         mViewModel = viewModel;
+        mGroupId = groupId;
 
         setLayoutResource(R.layout.preference_entry);
         setTitle(entry.getTitle());
         setSummary(entry.getSummary());
 
-        setIcon(selectIconResId(mEntry));
+        setIcon(SeverityIconPicker.selectIconResId(
+                mEntry.getSeverityLevel(), mEntry.getSeverityUnspecifiedIconType()));
 
         PendingIntent pendingIntent = entry.getPendingIntent();
         if (pendingIntent != null) {
@@ -116,10 +120,10 @@ public final class SafetyEntryPreference extends Preference implements Comparabl
         boolean hideIcon =
                 mEntry.getSeverityLevel() == SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED
                         && mEntry.getSeverityUnspecifiedIconType()
-                                == SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON;
+                        == SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON;
         holder.findViewById(R.id.icon_frame).setVisibility(hideIcon ? View.GONE : View.VISIBLE);
         holder.findViewById(R.id.empty_space).setVisibility(hideIcon ? View.VISIBLE : View.GONE);
-
+        enableOrDisableEntry(holder);
         SafetyCenterEntry.IconAction iconAction = mEntry.getIconAction();
         if (iconAction != null) {
             holder.findViewById(R.id.icon_action_button)
@@ -157,40 +161,27 @@ public final class SafetyEntryPreference extends Preference implements Comparabl
         }
     }
 
-    private static int selectIconResId(SafetyCenterEntry entry) {
-        switch (entry.getSeverityLevel()) {
-            case SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN:
-                return R.drawable.ic_safety_null_state;
-            case SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED:
-                return selectSeverityUnspecifiedIconResId(entry);
-            case SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK:
-                return R.drawable.ic_safety_info;
-            case SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_RECOMMENDATION:
-                return R.drawable.ic_safety_recommendation;
-            case SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING:
-                return R.drawable.ic_safety_warn;
+    /** We are doing this because we need some entries to look disabled but still be clickable. */
+    private void enableOrDisableEntry(@NonNull PreferenceViewHolder holder) {
+        holder.itemView.setEnabled(mEntry.getPendingIntent() != null);
+        if (mEntry.isEnabled()) {
+            holder.findViewById(android.R.id.title).setAlpha(1F);
+            holder.findViewById(android.R.id.summary).setAlpha(1F);
+        } else {
+            holder.findViewById(android.R.id.title).setAlpha(0.4F);
+            holder.findViewById(android.R.id.summary).setAlpha(0.4F);
         }
-        Log.e(TAG, String.format("Unexpected SafetyCenterEntry.EntrySeverityLevel: %s", entry));
-        return R.drawable.ic_safety_null_state;
     }
 
-    private static int selectSeverityUnspecifiedIconResId(SafetyCenterEntry entry) {
-        switch (entry.getSeverityUnspecifiedIconType()) {
-            case SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON:
-                return R.drawable.ic_safety_empty;
-            case SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_PRIVACY:
-                return R.drawable.ic_privacy;
-            case SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION:
-                return R.drawable.ic_safety_null_state;
-        }
-        Log.e(TAG, String.format("Unexpected SafetyCenterEntry.SeverityNoneIconType: %s", entry));
-        return R.drawable.ic_safety_null_state;
+    public CharSequence getGroupId() {
+        return mGroupId;
     }
 
     @Override
     public boolean isSameItem(@NonNull Preference other) {
         return other instanceof SafetyEntryPreference
-                && TextUtils.equals(mEntry.getId(), ((SafetyEntryPreference) other).mEntry.getId());
+                && TextUtils.equals(mEntry.getId(), ((SafetyEntryPreference) other).mEntry.getId())
+                && TextUtils.equals(mGroupId, ((SafetyEntryPreference) other).mGroupId);
     }
 
     @Override

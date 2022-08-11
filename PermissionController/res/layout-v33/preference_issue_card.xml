@@ -16,6 +16,7 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/issue_card"
     android:clickable="false"
     style="@style/SafetyCenterCard.Issue">
@@ -49,5 +50,30 @@
         android:id="@+id/issue_card_protected_by_android"
         android:importantForAccessibility="no"
         style="@style/SafetyCenterIssueFooter" />
+
+    <ImageView
+        android:id="@+id/resolved_issue_image"
+        android:src="@drawable/safety_center_issue_resolved_avd"
+        android:importantForAccessibility="no"
+        style="@style/SafetyCenterIssueCardResolvedImage" />
+
+    <TextView
+        android:id="@+id/resolved_issue_text"
+        android:text="@string/safety_center_resolved_issue_fallback"
+        style="@style/SafetyCenterIssueCardResolvedTitle" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/default_issue_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:constraint_referenced_ids="issue_card_dismiss_btn,issue_card_title,issue_card_subtitle,issue_card_summary,issue_card_action_button_list,issue_card_protected_by_android" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/resolved_issue_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="resolved_issue_image,resolved_issue_text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

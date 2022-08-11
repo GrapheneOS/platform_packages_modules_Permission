@@ -262,7 +262,6 @@
     <!-- END SAFETY STATUS CARD -->
 
     <style name="SafetyCenterCard.Issue" parent="@style/SafetyCenterCard">
-        <item name="android:orientation">vertical</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
@@ -316,10 +315,12 @@
     <style name="SafetyCenterIssueActionButtonList"
         parent="android:Widget.DeviceDefault">
         <item name="android:layout_marginTop">20dp</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
         <item name="android:orientation">vertical</item>
         <item name="app:layout_constraintTop_toBottomOf">@id/issue_card_summary</item>
+        <item name="app:layout_constraintStart_toStartOf">parent</item>
+        <item name="app:layout_constraintEnd_toEndOf">parent</item>
     </style>
 
     <style name="SafetyCenterIssueFooter"
@@ -328,9 +329,43 @@
         <item name="android:textSize">11sp</item>
         <item name="android:paddingTop">20dp</item>
         <item name="android:gravity">center</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
         <item name="app:layout_constraintTop_toBottomOf">@id/issue_card_action_button_list</item>
+        <item name="app:layout_constraintStart_toStartOf">parent</item>
+        <item name="app:layout_constraintEnd_toEndOf">parent</item>
+    </style>
+
+    <style name="SafetyCenterIssueCardResolvedImage" parent="android:Widget.DeviceDefault">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:gravity">center</item>
+        <item name="app:layout_constraintWidth_default">wrap</item>
+        <item name="app:layout_constraintHeight_default">wrap</item>
+        <item name="app:layout_constraintWidth_max">112dp</item>
+        <item name="app:layout_constraintHeight_max">112dp</item>
+        <item name="app:layout_constraintWidth_min">84dp</item>
+        <item name="app:layout_constraintHeight_min">84dp</item>
+        <item name="app:layout_constraintTop_toTopOf">parent</item>
+        <item name="app:layout_constraintBottom_toTopOf">@+id/resolved_issue_text</item>
+        <item name="app:layout_constraintStart_toStartOf">parent</item>
+        <item name="app:layout_constraintEnd_toEndOf">parent</item>
+        <item name="app:layout_constraintVertical_chainStyle">packed</item>
+    </style>
+
+    <style name="SafetyCenterIssueCardResolvedTitle"
+           parent="@android:style/TextAppearance.DeviceDefault.Medium">
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineHeight">24sp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="app:layout_constraintTop_toBottomOf">@+id/resolved_issue_image</item>
+        <item name="app:layout_constraintBottom_toBottomOf">parent</item>
+        <item name="app:layout_constraintStart_toStartOf">parent</item>
+        <item name="app:layout_constraintEnd_toEndOf">parent</item>
     </style>
 
     <style name="SafetyCenterMoreIssues"
