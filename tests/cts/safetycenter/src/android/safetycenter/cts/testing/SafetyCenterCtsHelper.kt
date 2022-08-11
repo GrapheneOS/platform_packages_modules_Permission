@@ -68,6 +68,8 @@ class SafetyCenterCtsHelper(private val context: Context) {
         SafetyCenterFlags.resurfaceIssueDelays = emptyMap()
         SafetyCenterFlags.backgroundRefreshDeniedSources = emptySet()
         SafetyCenterFlags.issueCategoryAllowlists = emptyMap()
+        SafetyCenterFlags.hideResolvedIssueUiTransitionDelay =
+            SafetyCenterFlags.HIDE_RESOLVED_UI_TRANSITION_DELAY_DEFAULT_DURATION
         setAllRefreshTimeoutsTo(TIMEOUT_LONG)
         setEnabled(true)
     }
