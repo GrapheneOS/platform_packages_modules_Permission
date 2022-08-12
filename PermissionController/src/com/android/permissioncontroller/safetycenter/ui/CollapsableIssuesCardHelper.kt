@@ -43,6 +43,7 @@ class CollapsableIssuesCardHelper(val safetyCenterViewModel: SafetyCenterViewMod
     private var isQuickSettingsFragment: Boolean = false
     private var issueCardsExpanded: Boolean = false
     private var focusedSafetyCenterIssueKey: SafetyCenterIssueKey? = null
+    private var previousMoreIssuesCardData: MoreIssuesCardData? = null
 
     fun setFocusedIssueKey(safetyCenterIssueKey: SafetyCenterIssueKey?) {
         focusedSafetyCenterIssueKey = safetyCenterIssueKey
@@ -105,12 +106,18 @@ class CollapsableIssuesCardHelper(val safetyCenterViewModel: SafetyCenterViewMod
 
         val (reorderedIssueCardPreferences, numberOfIssuesToShowWhenCollapsed) =
             maybeReorderFocusedSafetyCenterIssueInList(issueCardPreferenceList)
+
+        val nextMoreIssuesCardData =
+            createMoreIssuesCardData(
+                reorderedIssueCardPreferences, numberOfIssuesToShowWhenCollapsed)
+
         val moreIssuesCardPreference =
             createMoreIssuesCardPreference(
-                context,
-                issuesPreferenceGroup,
-                reorderedIssueCardPreferences,
-                numberOfIssuesToShowWhenCollapsed)
+                context, issuesPreferenceGroup, previousMoreIssuesCardData, nextMoreIssuesCardData)
+
+        // Keep track of previously presented more issues data to assist with transitions
+        previousMoreIssuesCardData = nextMoreIssuesCardData
+
         addIssuesToPreferenceGroupAndSetVisibility(
             issuesPreferenceGroup,
             reorderedIssueCardPreferences,
@@ -183,22 +190,30 @@ class CollapsableIssuesCardHelper(val safetyCenterViewModel: SafetyCenterViewMod
         }
     }
 
-    private fun createMoreIssuesCardPreference(
-        context: Context,
-        issuesPreferenceGroup: PreferenceGroup,
+    private fun createMoreIssuesCardData(
         issueCardPreferences: List<IssueCardPreference>,
         numberOfIssuesToShowWhenCollapsed: Int
-    ): MoreIssuesCardPreference {
-        val prefIconResourceId =
-            if (isQuickSettingsFragment) R.drawable.ic_chevron_right else R.drawable.ic_expand_more
+    ): MoreIssuesCardData {
         val numberOfHiddenIssue: Int =
             getNumberOfHiddenIssues(issueCardPreferences, numberOfIssuesToShowWhenCollapsed)
         val firstHiddenIssueSeverityLevel: Int =
             getFirstHiddenIssueSeverityLevel(
                 issueCardPreferences, numberOfIssuesToShowWhenCollapsed)
 
+        return MoreIssuesCardData(firstHiddenIssueSeverityLevel, numberOfHiddenIssue)
+    }
+
+    private fun createMoreIssuesCardPreference(
+        context: Context,
+        issuesPreferenceGroup: PreferenceGroup,
+        previousMoreIssuesCardData: MoreIssuesCardData?,
+        nextMoreIssuesCardData: MoreIssuesCardData
+    ): MoreIssuesCardPreference {
+        val prefIconResourceId =
+            if (isQuickSettingsFragment) R.drawable.ic_chevron_right else R.drawable.ic_expand_more
+
         return MoreIssuesCardPreference(
-            context, prefIconResourceId, numberOfHiddenIssue, firstHiddenIssueSeverityLevel) {
+            context, prefIconResourceId, previousMoreIssuesCardData, nextMoreIssuesCardData) {
             if (isQuickSettingsFragment) {
                 goToSafetyCenter(context)
             } else {

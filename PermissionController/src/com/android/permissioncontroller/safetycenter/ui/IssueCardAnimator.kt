@@ -126,6 +126,7 @@ class IssueCardAnimator(val callback: AnimationCallback) {
     private fun transitionResolvedIssueUiToHiddenAndMarkComplete(resolvedIssueContentGroup: View) {
         val hideTransition = hideResolvedUiTransition
             .clone()
+            .setInterpolator(linearInterpolator)
             .addListener(
                 object : TransitionListenerAdapter() {
                     override fun onTransitionEnd(transition: Transition) {
