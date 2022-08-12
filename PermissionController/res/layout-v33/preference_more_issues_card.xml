@@ -21,7 +21,7 @@
     style="@style/SafetyCenterMoreIssues">
 
     <ImageView
-        android:id="@android:id/icon"
+        android:id="@+id/status_icon"
         android:importantForAccessibility="no"
         android:src="@drawable/safety_status_info"
         style="@style/SafetyCenterMoreIssuesIcon"/>
