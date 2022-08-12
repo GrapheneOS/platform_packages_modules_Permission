@@ -546,7 +546,7 @@ public class GrantPermissionsActivity extends SettingsActivity
             return;
         }
 
-        if (name.equals(mPreMergeShownGroupName)) {
+        if (name == null || name.equals(mPreMergeShownGroupName)) {
             mPreMergeShownGroupName = null;
         }
 
