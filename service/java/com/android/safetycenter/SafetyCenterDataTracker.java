@@ -638,7 +638,7 @@ final class SafetyCenterDataTracker {
 
     private void writeSafetySourceStateCollectedAtoms(@NonNull UserProfileGroup userProfileGroup) {
         List<SafetySourcesGroup> safetySourcesGroups =
-                mSafetyCenterConfigReader.getSafetyCenterConfig().getSafetySourcesGroups();
+                mSafetyCenterConfigReader.getSafetySourcesGroups();
         for (int i = 0; i < safetySourcesGroups.size(); i++) {
             SafetySourcesGroup safetySourcesGroup = safetySourcesGroups.get(i);
             List<SafetySource> safetySources = safetySourcesGroup.getSafetySources();
