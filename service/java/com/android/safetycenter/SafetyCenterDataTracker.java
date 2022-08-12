@@ -876,11 +876,21 @@ final class SafetyCenterDataTracker {
         List<SafetySourceIssue> safetySourceIssues = safetySourceData.getIssues();
 
         for (int i = 0; i < safetySourceIssues.size(); i++) {
-            int issueSeverityLevel = safetySourceIssues.get(i).getSeverityLevel();
+            SafetySourceIssue safetySourceIssue = safetySourceIssues.get(i);
+            int issueSeverityLevel = safetySourceIssue.getSeverityLevel();
             if (issueSeverityLevel > safetySource.getMaxSeverityLevel()) {
                 throw new IllegalArgumentException(
                         "Unexpected severity level: "
                                 + issueSeverityLevel
+                                + ", for issue in safety source: "
+                                + safetySourceId);
+            }
+
+            int issueCategory = safetySourceIssue.getIssueCategory();
+            if (!SafetyCenterFlags.isIssueCategoryAllowedForSource(issueCategory, safetySourceId)) {
+                throw new IllegalArgumentException(
+                        "Unexpected issue category: "
+                                + issueCategory
                                 + ", for issue in safety source: "
                                 + safetySourceId);
             }
