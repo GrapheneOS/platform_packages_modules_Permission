@@ -54,6 +54,7 @@ import java.util.List;
 public class PermissionControlPreference extends Preference {
     private final @NonNull Context mContext;
     private @Nullable Drawable mWidgetIcon;
+    private @Nullable String mWidgetIconContentDescription;
     private @Nullable View.OnClickListener mWidgetIconOnClickListener;
     private @Nullable String mGranted;
     private boolean mUseSmallerIcon;
@@ -117,8 +118,10 @@ public class PermissionControlPreference extends Preference {
      * @param widgetIcon the icon to use.
      * @param listener the onClickListener attached to the icon.
      */
-    public void setRightIcon(@NonNull Drawable widgetIcon, @NonNull View.OnClickListener listener) {
+    public void setRightIcon(@NonNull Drawable widgetIcon,
+            @NonNull String widgetIconContentDescription, @NonNull View.OnClickListener listener) {
         mWidgetIcon = widgetIcon;
+        mWidgetIconContentDescription = widgetIconContentDescription;
         setWidgetLayoutResource(R.layout.image_view_with_divider);
         mWidgetIconOnClickListener = listener;
     }
@@ -181,9 +184,16 @@ public class PermissionControlPreference extends Preference {
 
         if (mWidgetIcon != null) {
             View widgetFrame = holder.findViewById(android.R.id.widget_frame);
-            ((ImageView) widgetFrame.findViewById(R.id.icon)).setImageDrawable(mWidgetIcon);
+            ImageView widgetIcon = widgetFrame.findViewById(R.id.icon);
+            widgetIcon.setImageDrawable(mWidgetIcon);
+            widgetIcon.setContentDescription(mWidgetIconContentDescription);
+
             if (mWidgetIconOnClickListener != null) {
                 widgetFrame.findViewById(R.id.icon).setOnClickListener(mWidgetIconOnClickListener);
+                View preferenceRootView = holder.itemView;
+                preferenceRootView.setPaddingRelative(
+                        preferenceRootView.getPaddingStart(), preferenceRootView.getPaddingTop(),
+                        0, preferenceRootView.getPaddingBottom());
             }
         }
 
