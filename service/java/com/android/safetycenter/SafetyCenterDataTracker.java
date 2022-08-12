@@ -1664,7 +1664,7 @@ final class SafetyCenterDataTracker {
         return toPendingIntent(context, 0, new Intent(intentAction));
     }
 
-    private boolean isIntentActionValid(
+    private static boolean isIntentActionValid(
             @NonNull Context context,
             @NonNull String intentAction,
             @UserIdInt int userId,
@@ -1675,11 +1675,21 @@ final class SafetyCenterDataTracker {
             return true;
         }
         Intent intent = new Intent(intentAction);
+        return !queryIntentActivitiesAsUser(context, intent, UserHandle.of(userId)).isEmpty();
+    }
+
+    @NonNull
+    private static List<ResolveInfo> queryIntentActivitiesAsUser(
+            @NonNull Context context, @NonNull Intent intent, @NonNull UserHandle userHandle) {
         PackageManager packageManager = context.getPackageManager();
-        List<ResolveInfo> activities =
-                packageManager.queryIntentActivitiesAsUser(
-                        intent, ResolveInfoFlags.of(0), UserHandle.of(userId));
-        return !activities.isEmpty();
+        final long callingIdentity = Binder.clearCallingIdentity();
+        // This call requires the INTERACT_ACROSS_USERS permission.
+        try {
+            return packageManager.queryIntentActivitiesAsUser(
+                    intent, ResolveInfoFlags.of(0), userHandle);
+        } finally {
+            Binder.restoreCallingIdentity(callingIdentity);
+        }
     }
 
     @NonNull
