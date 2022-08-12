@@ -35,6 +35,9 @@ import android.safetycenter.cts.testing.SettingsPackage.getSettingsPackageName
 object SafetyCenterCtsConfigs {
     private const val CTS_PACKAGE_NAME = "android.safetycenter.cts"
 
+    /** ID of a source not used in any config. */
+    const val SAMPLE_SOURCE_ID = "cts_sample_source_id"
+
     /**
      * ID of the only source provided in [SINGLE_SOURCE_CONFIG], [SEVERITY_ZERO_CONFIG] and
      * [NO_PAGE_OPEN_CONFIG].
