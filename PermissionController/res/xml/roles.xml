@@ -600,6 +600,7 @@
             <permission name="android.permission.ADD_ALWAYS_UNLOCKED_DISPLAY" minSdkVersion="33" />
             <permission name="android.permission.SUBSCRIBE_TO_KEYGUARD_LOCKED_STATE"
                 minSdkVersion="33" />
+            <permission name="android.permission.MANAGE_DEVICE_LOCK_STATE" minSdkVersion="34" />
         </permissions>
     </role>
 
@@ -1339,6 +1340,19 @@
             <permission name="android.permission.QUERY_AUDIO_STATE" />
             <permission name="android.permission.DEVICE_POWER" />
             <permission name="android.permission.NET_TUNNELING" />
+        </permissions>
+    </role>
+
+    <!--
+     ~ A role assigned to the financing kiosk app
+    -->
+    <role
+        name="android.app.role.FINANCED_DEVICE_KIOSK"
+        exclusive="true"
+        minSdkVersion="34"
+        visible="false">
+        <permissions>
+            <permission name="android.permission.MANAGE_DEVICE_LOCK_STATE" />
         </permissions>
     </role>
 </roles>
