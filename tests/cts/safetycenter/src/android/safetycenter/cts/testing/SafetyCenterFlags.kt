@@ -84,6 +84,14 @@ object SafetyCenterFlags {
         "safety_center_resurface_issue_delays_millis"
 
     /**
+     * Device Config flag containing a map (a comma separated list of colon separated pairs) where
+     * the key is an issue [SafetySourceIssue.IssueCategory] and the value is a
+     * vertical-bar-delimited list of IDs of safety sources that are allowed to send issues with
+     * this category.
+     */
+    private const val PROPERTY_ISSUE_CATEGORY_ALLOWLISTS = "safety_center_issue_category_allowlists"
+
+    /**
      * Comma delimited list of IDs of sources that should only be refreshed when Safety Center is on
      * screen. We will refresh these sources only on page open and when the scan button is clicked.
      */
@@ -235,6 +243,21 @@ object SafetyCenterFlags {
             writeFlag(PROPERTY_BACKGROUND_REFRESH_DENIED_SOURCES, value.joinToString(","))
         }
 
+    /**
+     * A property that allows getting and setting the [PROPERTY_ISSUE_CATEGORY_ALLOWLISTS] device
+     * config flag.
+     */
+    var issueCategoryAllowlists: Map<Int, Set<String>>
+        get() =
+            readFlag(PROPERTY_ISSUE_CATEGORY_ALLOWLISTS, defaultValue = emptyMap()) {
+                it.toMap(String::toInt, { valueString -> valueString.split("|").toSet() })
+            }
+        set(value) {
+            writeFlag(
+                PROPERTY_ISSUE_CATEGORY_ALLOWLISTS,
+                value.joinToListOfPairsString(Int::toString, { value -> value.joinToString("|") }))
+        }
+
     /** Converts a comma separated list of colon separated pairs into a map. */
     private fun <K, V> String.toMap(
         keyFromString: (String) -> K,
@@ -293,7 +316,8 @@ object SafetyCenterFlags {
                     PROPERTY_UNTRACKED_SOURCES,
                     PROPERTY_RESURFACE_ISSUE_MAX_COUNTS,
                     PROPERTY_RESURFACE_ISSUE_DELAYS_MILLIS,
-                    PROPERTY_BACKGROUND_REFRESH_DENIED_SOURCES)
+                    PROPERTY_BACKGROUND_REFRESH_DENIED_SOURCES,
+                    PROPERTY_ISSUE_CATEGORY_ALLOWLISTS)
             },
             READ_DEVICE_CONFIG)
     }
