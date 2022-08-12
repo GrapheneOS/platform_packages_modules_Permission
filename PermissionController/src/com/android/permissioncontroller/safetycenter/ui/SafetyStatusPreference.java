@@ -109,11 +109,12 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
         View safetyProtectionSectionView = holder.findViewById(R.id.safety_protection_section_view);
         safetyProtectionSectionView.setVisibility(mHasIssues ? View.GONE : View.VISIBLE);
 
-        rescanButton.setOnClickListener(unused -> {
-            SafetyCenterViewModel viewModel = requireViewModel();
-            viewModel.rescan();
-            viewModel.getInteractionLogger().record(Action.SCAN_INITIATED);
-        });
+        rescanButton.setOnClickListener(
+                unused -> {
+                    SafetyCenterViewModel viewModel = requireViewModel();
+                    viewModel.rescan();
+                    viewModel.getInteractionLogger().record(Action.SCAN_INITIATED);
+                });
 
         updateStatusIcon(statusImage, rescanButton);
     }
@@ -148,8 +149,7 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
     private boolean isRefreshInProgress() {
         int refreshStatus = mStatus.getRefreshStatus();
         return refreshStatus == SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS
-                || refreshStatus
-                == SafetyCenterStatus.REFRESH_STATUS_DATA_FETCH_IN_PROGRESS;
+                || refreshStatus == SafetyCenterStatus.REFRESH_STATUS_DATA_FETCH_IN_PROGRESS;
     }
 
     private void startScanningAnimation(ImageView statusImage) {
@@ -239,8 +239,7 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
     private void startIconChangeAnimation(ImageView statusImage) {
         int changeAnimationResId =
                 StatusAnimationResolver.getStatusChangeAnimation(
-                        mSettledSeverityLevel,
-                        mStatus.getSeverityLevel());
+                        mSettledSeverityLevel, mStatus.getSeverityLevel());
         if (changeAnimationResId == 0) {
             setSettledStatus(statusImage);
             return;
@@ -324,7 +323,7 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
     private void setRescanButtonState(View rescanButton) {
         rescanButton.setVisibility(
                 mStatus.getSeverityLevel() != SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK
-                        || mHasIssues
+                                || mHasIssues
                         ? View.GONE
                         : View.VISIBLE);
         rescanButton.setEnabled(!isRefreshInProgress());
@@ -365,7 +364,6 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
             return false;
         }
         SafetyStatusPreference other = (SafetyStatusPreference) preference;
-        return Objects.equals(mStatus, other.mStatus)
-                && mHasIssues == other.mHasIssues;
+        return Objects.equals(mStatus, other.mStatus) && mHasIssues == other.mHasIssues;
     }
 }

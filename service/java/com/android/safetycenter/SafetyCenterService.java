@@ -24,6 +24,7 @@ import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_OTHER;
 import static android.safetycenter.SafetyCenterManager.RefreshReason;
 import static android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED;
 
+import static com.android.permission.PermissionStatsLog.SAFETY_STATE;
 import static com.android.safetycenter.SafetyCenterFlags.PROPERTY_SAFETY_CENTER_ENABLED;
 
 import static java.util.Objects.requireNonNull;
@@ -34,6 +35,9 @@ import android.annotation.UserIdInt;
 import android.annotation.WorkerThread;
 import android.app.AppOpsManager;
 import android.app.PendingIntent;
+import android.app.StatsManager;
+import android.app.StatsManager.PullAtomMetadata;
+import android.app.StatsManager.StatsPullAtomCallback;
 import android.content.ApexEnvironment;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -59,12 +63,14 @@ import android.safetycenter.SafetySourceIssue;
 import android.safetycenter.config.SafetyCenterConfig;
 import android.util.ArraySet;
 import android.util.Log;
+import android.util.StatsEvent;
 
 import androidx.annotation.Keep;
 import androidx.annotation.RequiresApi;
 
 import com.android.internal.annotations.GuardedBy;
 import com.android.modules.utils.BackgroundThread;
+import com.android.permission.PermissionStatsLog;
 import com.android.permission.util.ForegroundThread;
 import com.android.permission.util.UserUtils;
 import com.android.safetycenter.SafetyCenterConfigReader.Broadcast;
@@ -188,13 +194,29 @@ public final class SafetyCenterService extends SystemService {
     @Override
     public void onBootPhase(int phase) {
         if (phase == SystemService.PHASE_BOOT_COMPLETED && canUseSafetyCenter()) {
-            Executor foregroundThreadExecutor = ForegroundThread.getExecutor();
-            SafetyCenterEnabledListener listener = new SafetyCenterEnabledListener();
-            // Ensure the listener is called first with the current state on the same thread.
-            foregroundThreadExecutor.execute(listener::setInitialState);
-            DeviceConfig.addOnPropertiesChangedListener(
-                    DeviceConfig.NAMESPACE_PRIVACY, foregroundThreadExecutor, listener);
+            registerSafetyCenterEnabledListener();
+            registerSafetyCenterPullAtomCallback();
         }
+    }
+
+    private void registerSafetyCenterEnabledListener() {
+        Executor foregroundThreadExecutor = ForegroundThread.getExecutor();
+        SafetyCenterEnabledListener listener = new SafetyCenterEnabledListener();
+        // Ensure the listener is called first with the current state on the same thread.
+        foregroundThreadExecutor.execute(listener::setInitialState);
+        DeviceConfig.addOnPropertiesChangedListener(
+                DeviceConfig.NAMESPACE_PRIVACY, foregroundThreadExecutor, listener);
+    }
+
+    private void registerSafetyCenterPullAtomCallback() {
+        StatsManager statsManager =
+                requireNonNull(getContext().getSystemService(StatsManager.class));
+        PullAtomMetadata defaultMetadata = null;
+        statsManager.setPullAtomCallback(
+                SAFETY_STATE,
+                defaultMetadata,
+                BackgroundThread.getExecutor(),
+                new SafetyCenterPullAtomCallback());
     }
 
     /** Service implementation of {@link ISafetyCenterManager.Stub}. */
@@ -764,6 +786,48 @@ public final class SafetyCenterService extends SystemService {
                 List<Broadcast> broadcasts = mSafetyCenterConfigReader.getBroadcasts();
                 mSafetyCenterBroadcastDispatcher.sendEnabledChanged(broadcasts);
             }
+        }
+    }
+
+    /**
+     * A {@link StatsPullAtomCallback} that provides data for {@link
+     * PermissionStatsLog#SAFETY_STATE} when called by the {@link StatsManager}.
+     */
+    private final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback {
+
+        private SafetyCenterPullAtomCallback() {}
+
+        @Override
+        public int onPullAtom(int atomTag, @NonNull List<StatsEvent> statsEvents) {
+            if (atomTag != SAFETY_STATE) {
+                Log.w(
+                        TAG,
+                        "Attempt to pull atom: "
+                                + atomTag
+                                + ", but only SAFETY_STATE is supported");
+                return StatsManager.PULL_SKIP;
+            }
+            if (!SafetyCenterFlags.getSafetyCenterEnabled()) {
+                Log.w(TAG, "Attempt to pull SAFETY_STATE, but Safety Center is disabled");
+                return StatsManager.PULL_SKIP;
+            }
+            List<UserProfileGroup> userProfileGroups =
+                    UserProfileGroup.getAllUserProfileGroups(getContext());
+            synchronized (mApiLock) {
+                if (mSafetyCenterConfigReader.isOverrideForTestsActive()) {
+                    Log.i(TAG, "Pulling and writing atoms with a test config override…");
+                    // We only log this and proceed with the call here, as we still want to be able
+                    // to assert the content of the logs in CTS tests. We may want to filter this
+                    // out in the future if this turns out to skew the collected events.
+                } else {
+                    Log.i(TAG, "Pulling and writing atoms…");
+                }
+                for (int i = 0; i < userProfileGroups.size(); i++) {
+                    mSafetyCenterDataTracker.pullAndWriteAtoms(
+                            userProfileGroups.get(i), statsEvents);
+                }
+            }
+            return StatsManager.PULL_SUCCESS;
         }
     }
 
