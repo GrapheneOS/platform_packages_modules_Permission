@@ -638,7 +638,7 @@ final class SafetyCenterDataTracker {
 
     private void writeSafetySourceStateCollectedAtoms(@NonNull UserProfileGroup userProfileGroup) {
         List<SafetySourcesGroup> safetySourcesGroups =
-                mSafetyCenterConfigReader.getSafetyCenterConfig().getSafetySourcesGroups();
+                mSafetyCenterConfigReader.getSafetySourcesGroups();
         for (int i = 0; i < safetySourcesGroups.size(); i++) {
             SafetySourcesGroup safetySourcesGroup = safetySourcesGroups.get(i);
             List<SafetySource> safetySources = safetySourcesGroup.getSafetySources();
@@ -876,11 +876,21 @@ final class SafetyCenterDataTracker {
         List<SafetySourceIssue> safetySourceIssues = safetySourceData.getIssues();
 
         for (int i = 0; i < safetySourceIssues.size(); i++) {
-            int issueSeverityLevel = safetySourceIssues.get(i).getSeverityLevel();
+            SafetySourceIssue safetySourceIssue = safetySourceIssues.get(i);
+            int issueSeverityLevel = safetySourceIssue.getSeverityLevel();
             if (issueSeverityLevel > safetySource.getMaxSeverityLevel()) {
                 throw new IllegalArgumentException(
                         "Unexpected severity level: "
                                 + issueSeverityLevel
+                                + ", for issue in safety source: "
+                                + safetySourceId);
+            }
+
+            int issueCategory = safetySourceIssue.getIssueCategory();
+            if (!SafetyCenterFlags.isIssueCategoryAllowedForSource(issueCategory, safetySourceId)) {
+                throw new IllegalArgumentException(
+                        "Unexpected issue category: "
+                                + issueCategory
                                 + ", for issue in safety source: "
                                 + safetySourceId);
             }
@@ -1664,7 +1674,7 @@ final class SafetyCenterDataTracker {
         return toPendingIntent(context, 0, new Intent(intentAction));
     }
 
-    private boolean isIntentActionValid(
+    private static boolean isIntentActionValid(
             @NonNull Context context,
             @NonNull String intentAction,
             @UserIdInt int userId,
@@ -1675,11 +1685,21 @@ final class SafetyCenterDataTracker {
             return true;
         }
         Intent intent = new Intent(intentAction);
+        return !queryIntentActivitiesAsUser(context, intent, UserHandle.of(userId)).isEmpty();
+    }
+
+    @NonNull
+    private static List<ResolveInfo> queryIntentActivitiesAsUser(
+            @NonNull Context context, @NonNull Intent intent, @NonNull UserHandle userHandle) {
         PackageManager packageManager = context.getPackageManager();
-        List<ResolveInfo> activities =
-                packageManager.queryIntentActivitiesAsUser(
-                        intent, ResolveInfoFlags.of(0), UserHandle.of(userId));
-        return !activities.isEmpty();
+        final long callingIdentity = Binder.clearCallingIdentity();
+        // This call requires the INTERACT_ACROSS_USERS permission.
+        try {
+            return packageManager.queryIntentActivitiesAsUser(
+                    intent, ResolveInfoFlags.of(0), userHandle);
+        } finally {
+            Binder.restoreCallingIdentity(callingIdentity);
+        }
     }
 
     @NonNull
