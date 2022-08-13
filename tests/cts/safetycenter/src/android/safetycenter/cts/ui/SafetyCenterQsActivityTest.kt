@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package android.safetycenter.cts
+package android.safetycenter.cts.ui
 
 import android.Manifest.permission.MANAGE_SENSOR_PRIVACY
 import android.Manifest.permission.OBSERVE_SENSOR_PRIVACY

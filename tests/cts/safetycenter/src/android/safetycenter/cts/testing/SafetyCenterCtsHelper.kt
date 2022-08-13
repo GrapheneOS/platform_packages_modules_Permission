@@ -35,6 +35,7 @@ import android.safetycenter.cts.testing.SafetyCenterFlags.isSafetyCenterEnabled
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.EVENT_SOURCE_STATE_CHANGED
 import com.google.common.util.concurrent.MoreExecutors.directExecutor
 import java.time.Duration
+import java.util.regex.Pattern
 
 /** A class that facilitates settings up Safety Center in tests. */
 class SafetyCenterCtsHelper(private val context: Context) {
@@ -44,6 +45,15 @@ class SafetyCenterCtsHelper(private val context: Context) {
     private val listeners = mutableListOf<SafetyCenterCtsListener>()
 
     private var currentConfigContainsCtsSource = false
+
+    companion object {
+        const val STATUS_CARD_RESCAN_BUTTON_LABEL = "Scan device"
+        const val STATUS_CARD_TITLE_INFO = "Looks good"
+        val STATUS_CARD_TITLE_RECOMMENDATION_REGEX =
+            Pattern.compile("(You|Device) may be at risk")
+        val STATUS_CARD_TITLE_CRITICAL_WARNING_REGEX =
+            Pattern.compile("(You are|Device is) at risk")
+    }
 
     /**
      * Sets up the state of Safety Center by enabling it on the device and setting default flag
