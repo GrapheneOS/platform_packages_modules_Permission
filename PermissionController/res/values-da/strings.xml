@@ -200,7 +200,7 @@
     <string name="auto_revoke_label" msgid="5068393642936571656">"Fjern tilladelser, hvis appen ikke bruges"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Fjern tilladelser, og frigør plads"</string>
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"Sæt appaktivitet på pause ved inaktivitet"</string>
-    <string name="unused_apps_summary" msgid="8839466950318403115">"Fjern tilladelser, slet midlertidige filer og stop notifikationer"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Fjern tilladelser, slet midlertidige filer, og stop notifikationer"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Hvis appen ikke bliver brugt i et par måneder, fjernes tilladelser for appen for at beskytte dine data."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Hvis appen ikke bliver brugt i et par måneder, fjernes følgende tilladelser for at beskytte dine data: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Tilladelserne til apps, du ikke har brugt i et par måneder, er blevet fjernet for at beskytte dine data."</string>
