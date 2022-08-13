@@ -387,6 +387,9 @@
     <!-- Link text for intent out to location provider [CHAR LIMIT=20] -->
     <string name="permission_usage_access_dialog_learn_more">Learn more</string>
 
+    <!-- Content description for the learn more info icon on Privacy Dashboard and app permission groups page [CHAR LIMIT=100] -->
+    <string name="learn_more_content_description">Learn more about <xliff:g id="permgroup" example="Location">%1$s</xliff:g></string>
+
     <!-- Summary for preference to manage a permission for a group like location or microphone [CHAR LIMIT=60] -->
     <string name="manage_permission_summary">Control app access to your <xliff:g id="permgroup" example="Location">%1$s</xliff:g></string>
 
