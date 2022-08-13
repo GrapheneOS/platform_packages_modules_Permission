@@ -139,7 +139,7 @@ public class PermissionHistoryPreference extends Preference {
         permissionIcon.setImageDrawable(mAppIcon);
 
         ImageView widgetView = widgetFrame.findViewById(R.id.icon);
-        setInfoIcon(widgetView);
+        setInfoIcon(holder, widgetView);
 
         View dashLine = widget.findViewById(R.id.permission_history_dash_line);
         dashLine.setVisibility(mIsLastUsage ? View.GONE : View.VISIBLE);
@@ -156,7 +156,7 @@ public class PermissionHistoryPreference extends Preference {
         });
     }
 
-    private void setInfoIcon(ImageView widgetView) {
+    private void setInfoIcon(@NonNull PreferenceViewHolder holder, ImageView widgetView) {
         if (mIntent != null) {
             widgetView.setImageDrawable(mWidgetIcon);
             widgetView.setOnClickListener(v -> {
@@ -171,6 +171,9 @@ public class PermissionHistoryPreference extends Preference {
                     Log.e(LOG_TAG, "No activity found for viewing permission usage.");
                 }
             });
+            View preferenceRootView = holder.itemView;
+            preferenceRootView.setPaddingRelative(preferenceRootView.getPaddingStart(),
+                    preferenceRootView.getPaddingTop(), 0, preferenceRootView.getPaddingBottom());
         }
     }
 

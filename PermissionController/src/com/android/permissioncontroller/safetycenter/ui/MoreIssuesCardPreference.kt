@@ -32,37 +32,70 @@ import com.android.permissioncontroller.permission.utils.StringUtils
 /** A preference that displays a card linking to a list of more {@link SafetyCenterIssue}. */
 class MoreIssuesCardPreference(
     context: Context,
-    @DrawableRes val preferencWidgetIconResourceId: Int,
-    val numberOfHiddenIssues: Int,
-    val firstHiddenIssueSeverityLevel: Int,
+    @DrawableRes val preferenceWidgetIconResourceId: Int,
+    val previousMoreIssuesCardData: MoreIssuesCardData?,
+    val newMoreIssuesCardData: MoreIssuesCardData,
     val onClickListener: OnPreferenceClickListener
 ) : Preference(context), ComparablePreference {
+
+    private var moreIssuesCardAnimator = MoreIssuesCardAnimator()
 
     init {
         layoutResource = R.layout.preference_more_issues_card
         widgetLayoutResource = R.layout.preference_expand_more_issues_widget
         onPreferenceClickListener = onClickListener
 
-        setIcon(selectIconResId(firstHiddenIssueSeverityLevel))
         setTitle(R.string.safety_center_more_issues_card_title)
     }
 
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
         super.onBindViewHolder(holder)
 
-        val widgetIcon = holder.findViewById(R.id.widget_icon) as? ImageView
-        widgetIcon?.setImageResource(preferencWidgetIconResourceId)
-        val widgetTitle = holder.findViewById(R.id.widget_title) as? TextView
-        widgetTitle?.text = numberOfHiddenIssues.toString()
+        val statusIcon = holder.findViewById(R.id.status_icon) as ImageView
+        setCurrentSeverityLevel(statusIcon)
+        val widgetIcon = holder.findViewById(R.id.widget_icon) as ImageView
+        widgetIcon.setImageResource(preferenceWidgetIconResourceId)
+        val widgetTitle = holder.findViewById(R.id.widget_title) as TextView
+        updateHiddenIssueCount(widgetTitle)
 
         val expansionString =
             StringUtils.getIcuPluralsString(
                 context,
                 R.string.safety_center_more_issues_card_expand_action,
-                numberOfHiddenIssues)
+                newMoreIssuesCardData.hiddenIssueCount)
         // Replacing the on-click label to indicate the number of hidden issues. The on-click
         // command is set to null so that it uses the existing expansion behaviour.
         ViewCompat.replaceAccessibilityAction(holder.itemView, ACTION_CLICK, expansionString, null)
+    }
+
+    private fun updateHiddenIssueCount(textView: TextView) {
+        moreIssuesCardAnimator.cancelTextChangeAnimation(textView)
+
+        val previousText = previousMoreIssuesCardData?.hiddenIssueCount.toString()
+        val newText = newMoreIssuesCardData.hiddenIssueCount.toString()
+        val animateTextChange = !previousText.isNullOrEmpty() && previousText != newText
+
+        if (animateTextChange) {
+            textView.text = previousText
+            moreIssuesCardAnimator.animateChangeText(textView, newText)
+        } else {
+            textView.text = newText
+        }
+    }
+
+    private fun setCurrentSeverityLevel(statusIcon: ImageView) {
+        moreIssuesCardAnimator.cancelStatusAnimation(statusIcon)
+
+        if (previousMoreIssuesCardData != null &&
+            previousMoreIssuesCardData.severityLevel != newMoreIssuesCardData.severityLevel) {
+            moreIssuesCardAnimator.animateStatusIconsChange(
+                statusIcon,
+                previousMoreIssuesCardData.severityLevel,
+                newMoreIssuesCardData.severityLevel,
+                selectIconResId(newMoreIssuesCardData.severityLevel))
+        } else {
+            statusIcon.setImageResource(selectIconResId(newMoreIssuesCardData.severityLevel))
+        }
     }
 
     @DrawableRes
@@ -83,17 +116,19 @@ class MoreIssuesCardPreference(
     }
 
     override fun isSameItem(preference: Preference): Boolean {
-        return hasSameContents(preference)
+        return preference is MoreIssuesCardPreference
     }
 
     override fun hasSameContents(preference: Preference): Boolean {
         return preference is MoreIssuesCardPreference &&
-                numberOfHiddenIssues == preference.numberOfHiddenIssues &&
-                firstHiddenIssueSeverityLevel == preference.firstHiddenIssueSeverityLevel &&
-                preferencWidgetIconResourceId == preference.preferencWidgetIconResourceId
+            previousMoreIssuesCardData == preference.previousMoreIssuesCardData &&
+            newMoreIssuesCardData == preference.newMoreIssuesCardData &&
+            preferenceWidgetIconResourceId == preference.preferenceWidgetIconResourceId
     }
 
     companion object {
         val TAG: String = MoreIssuesCardPreference::class.java.simpleName
     }
 }
+
+data class MoreIssuesCardData(val severityLevel: Int, val hiddenIssueCount: Int)
