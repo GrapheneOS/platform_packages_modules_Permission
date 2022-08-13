@@ -370,6 +370,8 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
                             resolveInfo.activityInfo.packageName, resolveInfo.activityInfo.name));
                     preference.setRightIcon(
                             context.getDrawable(R.drawable.ic_info_outline),
+                            context.getString(R.string.learn_more_content_description,
+                                    KotlinUtils.INSTANCE.getPermGroupLabel(context, groupName)),
                             v -> {
                                 try {
                                     startActivity(viewUsageIntent);
