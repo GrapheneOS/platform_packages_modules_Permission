@@ -386,7 +386,7 @@
         <item name="android:maxLines">1</item>
         <item name="app:layout_constraintTop_toTopOf">parent</item>
         <item name="app:layout_constraintBottom_toBottomOf">parent</item>
-        <item name="app:layout_constraintStart_toEndOf">@android:id/icon</item>
+        <item name="app:layout_constraintStart_toEndOf">@id/status_icon</item>
         <item name="app:layout_constraintEnd_toStartOf">@android:id/widget_frame</item>
         <item name="app:layout_constraintHorizontal_bias">0</item>
     </style>
@@ -398,7 +398,6 @@
         <item name="android:gravity">center</item>
         <item name="app:layout_constraintTop_toTopOf">parent</item>
         <item name="app:layout_constraintBottom_toBottomOf">parent</item>
-        <item name="app:layout_constraintStart_toStartOf">parent</item>
         <item name="app:layout_constraintStart_toStartOf">parent</item>
     </style>
 

@@ -20,10 +20,11 @@ import static android.os.Build.VERSION_CODES.TIRAMISU;
 import static android.safetycenter.SafetyCenterManager.RefreshReason;
 
 import android.annotation.NonNull;
+import android.annotation.Nullable;
 import android.os.Binder;
 import android.provider.DeviceConfig;
 import android.safetycenter.SafetySourceData;
-import android.util.ArrayMap;
+import android.safetycenter.SafetySourceIssue;
 import android.util.ArraySet;
 import android.util.Log;
 
@@ -66,6 +67,9 @@ final class SafetyCenterFlags {
 
     private static final String PROPERTY_REFRESH_SOURCES_TIMEOUTS_MILLIS =
             "safety_center_refresh_sources_timeouts_millis";
+
+    private static final String PROPERTY_ISSUE_CATEGORY_ALLOWLISTS =
+            "safety_center_issue_category_allowlists";
 
     private static final Duration REFRESH_SOURCES_TIMEOUT_DEFAULT_DURATION = Duration.ofSeconds(15);
 
@@ -173,7 +177,8 @@ final class SafetyCenterFlags {
      * reason for the refresh.
      */
     static Duration getRefreshSourcesTimeout(@RefreshReason int refreshReason) {
-        Long timeout = getRefreshSourcesTimeoutsMillis().get(refreshReason);
+        String refreshSourcesTimeouts = getRefreshSourcesTimeoutsMillis();
+        Long timeout = getLongValueFromStringMapping(refreshSourcesTimeouts, refreshReason);
         if (timeout != null) {
             return Duration.ofMillis(timeout);
         }
@@ -181,14 +186,13 @@ final class SafetyCenterFlags {
     }
 
     /**
-     * Returns a map where the key is a {@link RefreshReason} and the value is the timeout in millis
-     * after which SafetyCenter would time out and mark the refresh as completed, despite not
-     * getting a response from the source.
+     * Returns a comma-delimited list of colon-delimited pairs where the left value is a {@link
+     * RefreshReason} and the right value is the refresh timeout applied for each source in case of
+     * a refresh.
      */
     @NonNull
-    private static ArrayMap<Integer, Long> getRefreshSourcesTimeoutsMillis() {
-        String refreshSourcesTimeouts = getString(PROPERTY_REFRESH_SOURCES_TIMEOUTS_MILLIS, "");
-        return convertStringConfigToMap(refreshSourcesTimeouts);
+    private static String getRefreshSourcesTimeoutsMillis() {
+        return getString(PROPERTY_REFRESH_SOURCES_TIMEOUTS_MILLIS, "");
     }
 
     /**
@@ -196,7 +200,8 @@ final class SafetyCenterFlags {
      * should be resurfaced.
      */
     static long getResurfaceIssueMaxCount(@SafetySourceData.SeverityLevel int severityLevel) {
-        Long maxCount = getResurfaceIssueMaxCounts().get(severityLevel);
+        String maxCountsConfigString = getResurfaceIssueMaxCounts();
+        Long maxCount = getLongValueFromStringMapping(maxCountsConfigString, severityLevel);
         if (maxCount != null) {
             return maxCount;
         }
@@ -204,14 +209,13 @@ final class SafetyCenterFlags {
     }
 
     /**
-     * Returns a map where the key is an issue {@link SafetySourceData.SeverityLevel} and the value
-     * is the number of times an issue of this {@link SafetySourceData.SeverityLevel} should be
-     * resurfaced.
+     * Returns a comma-delimited list of colon-delimited pairs where the left value is an issue
+     * {@link SafetySourceData.SeverityLevel} and the right value is the number of times an issue of
+     * this {@link SafetySourceData.SeverityLevel} should be resurfaced.
      */
     @NonNull
-    private static ArrayMap<Integer, Long> getResurfaceIssueMaxCounts() {
-        String maxCountsConfigString = getString(PROPERTY_RESURFACE_ISSUE_MAX_COUNTS, "");
-        return convertStringConfigToMap(maxCountsConfigString);
+    private static String getResurfaceIssueMaxCounts() {
+        return getString(PROPERTY_RESURFACE_ISSUE_MAX_COUNTS, "");
     }
 
     /**
@@ -222,7 +226,8 @@ final class SafetyCenterFlags {
      */
     @NonNull
     static Duration getResurfaceIssueDelay(@SafetySourceData.SeverityLevel int severityLevel) {
-        Long delayMillis = getResurfaceIssueDelaysMillis().get(severityLevel);
+        String delaysConfigString = getResurfaceIssueDelaysMillis();
+        Long delayMillis = getLongValueFromStringMapping(delaysConfigString, severityLevel);
         if (delayMillis != null) {
             return Duration.ofMillis(delayMillis);
         }
@@ -230,15 +235,47 @@ final class SafetyCenterFlags {
     }
 
     /**
-     * Returns a map where the key is an issue {@link SafetySourceData.SeverityLevel} and the value
-     * is the time in milliseconds after which a dismissed issue of this {@link
-     * SafetySourceData.SeverityLevel} will resurface if it has not reached the maximum count for
-     * which a dismissed issue of this {@link SafetySourceData.SeverityLevel} should be resurfaced.
+     * Returns a comma-delimited list of colon-delimited pairs where the left value is an issue
+     * {@link SafetySourceData.SeverityLevel} and the right value is the time after which a
+     * dismissed issue of this safety source severity level will resurface if it has not reached the
+     * maximum count for which a dismissed issue of this {@link SafetySourceData.SeverityLevel}
+     * should be resurfaced.
      */
     @NonNull
-    private static ArrayMap<Integer, Long> getResurfaceIssueDelaysMillis() {
-        String delaysConfigString = getString(PROPERTY_RESURFACE_ISSUE_DELAYS_MILLIS, "");
-        return convertStringConfigToMap(delaysConfigString);
+    private static String getResurfaceIssueDelaysMillis() {
+        return getString(PROPERTY_RESURFACE_ISSUE_DELAYS_MILLIS, "");
+    }
+
+    /**
+     * Returns whether a safety source is allowed to send issues for the given {@link
+     * SafetySourceIssue.IssueCategory}.
+     */
+    @NonNull
+    static boolean isIssueCategoryAllowedForSource(
+            @SafetySourceIssue.IssueCategory int issueCategory, @NonNull String safetySourceId) {
+        String issueCategoryAllowlists = getIssueCategoryAllowlists();
+        String allowlistString =
+                getStringValueFromStringMapping(issueCategoryAllowlists, issueCategory);
+        if (allowlistString == null) {
+            return true;
+        }
+        String[] allowlistArray = allowlistString.split("\\|");
+        for (int i = 0; i < allowlistArray.length; i++) {
+            if (allowlistArray[i].equals(safetySourceId)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Returns a comma-delimited list of colon-delimited pairs where the left value is an issue
+     * {@link SafetySourceIssue.IssueCategory} and the right value is a vertical-bar-delimited list
+     * of IDs of safety sources that are allowed to send issues with this category.
+     */
+    @NonNull
+    private static String getIssueCategoryAllowlists() {
+        return getString(PROPERTY_ISSUE_CATEGORY_ALLOWLISTS, "");
     }
 
     @NonNull
@@ -282,27 +319,55 @@ final class SafetyCenterFlags {
         }
     }
 
-    /** Converts a comma separated list of colon separated pairs into an integer to long map. */
-    @NonNull
-    private static ArrayMap<Integer, Long> convertStringConfigToMap(@NonNull String input) {
-        ArrayMap<Integer, Long> map = new ArrayMap<>();
-        if (input.isEmpty()) {
-            return map;
+    /**
+     * Gets a long value for the provided integer key in a comma separated list of colon separated
+     * pairs of integers and longs.
+     */
+    @Nullable
+    private static Long getLongValueFromStringMapping(@NonNull String config, int key) {
+        String valueString = getStringValueFromStringMapping(config, key);
+        if (valueString == null) {
+            return null;
         }
-        String[] pairsList = input.split(",");
+        try {
+            return Long.parseLong(valueString);
+        } catch (NumberFormatException e) {
+            Log.w(TAG, "Badly formatted string config: " + config, e);
+            return null;
+        }
+    }
+
+    /**
+     * Gets a value for the provided integer key in a comma separated list of colon separated pairs
+     * of integers and strings.
+     */
+    @Nullable
+    private static String getStringValueFromStringMapping(@NonNull String config, int key) {
+        return getStringValueFromStringMapping(config, Integer.toString(key));
+    }
+
+    /**
+     * Gets a value for the provided key in a comma separated list of colon separated key-value
+     * string pairs.
+     */
+    @Nullable
+    private static String getStringValueFromStringMapping(
+            @NonNull String config, @NonNull String key) {
+        if (config.isEmpty()) {
+            return null;
+        }
+        String[] pairsList = config.split(",");
         for (int i = 0; i < pairsList.length; i++) {
-            String[] pair = pairsList[i].split(":");
+            String[] pair = pairsList[i].split(":", -1 /* allow trailing empty strings */);
             if (pair.length != 2) {
-                Log.w(TAG, "Badly formatted string config: " + input);
+                Log.w(TAG, "Badly formatted string config: " + config);
                 continue;
             }
-            try {
-                map.put(Integer.parseInt(pair[0]), Long.parseLong(pair[1]));
-            } catch (NumberFormatException e) {
-                Log.w(TAG, "Badly formatted string config: " + input, e);
+            if (pair[0].equals(key)) {
+                return pair[1];
             }
         }
-        return map;
+        return null;
     }
 
     private SafetyCenterFlags() {}

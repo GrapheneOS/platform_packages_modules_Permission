@@ -41,6 +41,9 @@ import android.annotation.Nullable;
 import android.app.BroadcastOptions;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.ResolveInfoFlags;
+import android.content.pm.ResolveInfo;
 import android.os.Binder;
 import android.os.UserHandle;
 import android.safetycenter.SafetyCenterManager;
@@ -216,11 +219,21 @@ final class SafetyCenterBroadcastDispatcher {
             @NonNull Intent intent,
             @NonNull UserHandle userHandle,
             @Nullable BroadcastOptions broadcastOptions) {
-        if (!doesBroadcastResolve(intent)) {
-            Log.w(TAG, "No receiver for intent targeting " + intent.getPackage());
+        if (!doesBroadcastResolve(intent, userHandle)) {
+            Log.w(
+                    TAG,
+                    "No receiver for intent targeting "
+                            + intent.getPackage()
+                            + " and user "
+                            + userHandle);
             return false;
         }
-        Log.v(TAG, "Found receiver for intent targeting " + intent.getPackage());
+        Log.v(
+                TAG,
+                "Found receiver for intent targeting "
+                        + intent.getPackage()
+                        + " and user "
+                        + userHandle);
         sendBroadcast(intent, userHandle, SEND_SAFETY_CENTER_UPDATE, broadcastOptions);
         return true;
     }
@@ -243,8 +256,23 @@ final class SafetyCenterBroadcastDispatcher {
         }
     }
 
-    private boolean doesBroadcastResolve(@NonNull Intent broadcastIntent) {
-        return !mContext.getPackageManager().queryBroadcastReceivers(broadcastIntent, 0).isEmpty();
+    private boolean doesBroadcastResolve(
+            @NonNull Intent broadcastIntent, @NonNull UserHandle userHandle) {
+        return !queryBroadcastReceiversAsUser(broadcastIntent, userHandle).isEmpty();
+    }
+
+    @NonNull
+    private List<ResolveInfo> queryBroadcastReceiversAsUser(
+            @NonNull Intent broadcastIntent, @NonNull UserHandle userHandle) {
+        PackageManager packageManager = mContext.getPackageManager();
+        final long callingIdentity = Binder.clearCallingIdentity();
+        // This call requires the INTERACT_ACROSS_USERS permission.
+        try {
+            return packageManager.queryBroadcastReceiversAsUser(
+                    broadcastIntent, ResolveInfoFlags.of(0), userHandle);
+        } finally {
+            Binder.restoreCallingIdentity(callingIdentity);
+        }
     }
 
     @NonNull

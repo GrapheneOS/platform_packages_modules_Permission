@@ -59,6 +59,9 @@ import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_RECOMMENDATION
 import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED
 import android.safetycenter.SafetySourceErrorDetails
 import android.safetycenter.SafetySourceIssue
+import android.safetycenter.SafetySourceIssue.ISSUE_CATEGORY_ACCOUNT
+import android.safetycenter.SafetySourceIssue.ISSUE_CATEGORY_DEVICE
+import android.safetycenter.SafetySourceIssue.ISSUE_CATEGORY_GENERAL
 import android.safetycenter.cts.testing.Coroutines.TIMEOUT_LONG
 import android.safetycenter.cts.testing.Coroutines.TIMEOUT_SHORT
 import android.safetycenter.cts.testing.Coroutines.waitForWithTimeout
@@ -95,6 +98,7 @@ import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.ISSUE_ONLY_IN_RIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MIXED_COLLAPSIBLE_GROUP_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MULTIPLE_SOURCES_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.NO_PAGE_OPEN_CONFIG
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SAMPLE_SOURCE_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SEVERITY_ZERO_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_ID
@@ -885,6 +889,91 @@ class SafetyCenterManagerTest {
                 "Unexpected severity level: ${
                     SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING
                 }, for issue in safety source: $ISSUE_ONLY_ALL_OPTIONAL_ID")
+    }
+
+    @Test
+    fun setSafetySourceData_withEmptyCategoryAllowlists_met() {
+        SafetyCenterFlags.issueCategoryAllowlists = emptyMap()
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+
+        val dataToSet = safetySourceCtsData.recommendationWithAccountIssue
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, dataToSet)
+
+        val apiSafetySourceData =
+            safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
+        assertThat(apiSafetySourceData).isEqualTo(dataToSet)
+    }
+
+    @Test
+    fun setSafetySourceData_withMissingAllowlistForCategory_met() {
+        SafetyCenterFlags.issueCategoryAllowlists =
+            mapOf(
+                ISSUE_CATEGORY_DEVICE to setOf(SAMPLE_SOURCE_ID),
+                ISSUE_CATEGORY_GENERAL to setOf(SAMPLE_SOURCE_ID))
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+
+        val dataToSet = safetySourceCtsData.recommendationWithAccountIssue
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, dataToSet)
+
+        val apiSafetySourceData =
+            safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
+        assertThat(apiSafetySourceData).isEqualTo(dataToSet)
+    }
+
+    @Test
+    fun setSafetySourceData_withAllowlistedSourceForCategory_met() {
+        SafetyCenterFlags.issueCategoryAllowlists =
+            mapOf(
+                ISSUE_CATEGORY_ACCOUNT to setOf(SINGLE_SOURCE_ID, SAMPLE_SOURCE_ID),
+                ISSUE_CATEGORY_DEVICE to setOf(SAMPLE_SOURCE_ID),
+                ISSUE_CATEGORY_GENERAL to setOf(SAMPLE_SOURCE_ID))
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+
+        val dataToSet = safetySourceCtsData.recommendationWithAccountIssue
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, dataToSet)
+
+        val apiSafetySourceData =
+            safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
+        assertThat(apiSafetySourceData).isEqualTo(dataToSet)
+    }
+
+    @Test
+    fun setSafetySourceData_withEmptyAllowlistForCategory_notMet() {
+        SafetyCenterFlags.issueCategoryAllowlists = mapOf(ISSUE_CATEGORY_ACCOUNT to emptySet())
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+
+        val thrown =
+            assertFailsWith(IllegalArgumentException::class) {
+                safetyCenterCtsHelper.setData(
+                    SINGLE_SOURCE_ID, safetySourceCtsData.recommendationWithAccountIssue)
+            }
+
+        assertThat(thrown)
+            .hasMessageThat()
+            .isEqualTo(
+                "Unexpected issue category: $ISSUE_CATEGORY_ACCOUNT, for issue in safety source: " +
+                    SINGLE_SOURCE_ID)
+    }
+
+    @Test
+    fun setSafetySourceData_withoutSourceInAllowlistForCategory_notMet() {
+        SafetyCenterFlags.issueCategoryAllowlists =
+            mapOf(
+                ISSUE_CATEGORY_ACCOUNT to setOf(SAMPLE_SOURCE_ID),
+                ISSUE_CATEGORY_DEVICE to setOf(SINGLE_SOURCE_ID))
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+
+        val thrown =
+            assertFailsWith(IllegalArgumentException::class) {
+                safetyCenterCtsHelper.setData(
+                    SINGLE_SOURCE_ID, safetySourceCtsData.recommendationWithAccountIssue)
+            }
+
+        assertThat(thrown)
+            .hasMessageThat()
+            .isEqualTo(
+                "Unexpected issue category: $ISSUE_CATEGORY_ACCOUNT, for issue in safety source: " +
+                    SINGLE_SOURCE_ID)
     }
 
     @Test
