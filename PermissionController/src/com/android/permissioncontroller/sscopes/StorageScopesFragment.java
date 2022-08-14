@@ -255,26 +255,24 @@ public final class StorageScopesFragment extends SettingsWithLargeHeader {
     }
 
     private void setEnabled(boolean enabled) {
-        GosPackageState curPs = GosPackageState.get(pkgName);
-        int curFlags = curPs != null ? curPs.flags : 0;
-
-        int newPsFlags;
         boolean killUid;
         if (enabled) {
-            newPsFlags = curFlags | GosPackageState.FLAG_STORAGE_SCOPES_ENABLED;
             // GMS often needs a restart to properly handle permission grants
             killUid = GmsCompat.isGmsApp(pkgName, Process.myUserHandle().getIdentifier());
         } else {
-            newPsFlags = curFlags & (~GosPackageState.FLAG_STORAGE_SCOPES_ENABLED);
             killUid = true;
         }
 
-        GosPackageState newPs = GosPackageState.set(pkgName, newPsFlags, null, killUid);
+        GosPackageState newPs = GosPackageState.edit(pkgName)
+                .setFlagsState(GosPackageState.FLAG_STORAGE_SCOPES_ENABLED, enabled)
+                .setStorageScopes(null) // always empty initially
+                .setKillUidAfterApply(killUid)
+                .apply();
 
         invalidateMediaProviderCache(null);
 
         if (newPs == null && enabled) {
-            // failed to updated GosPackageState, likely because package was uninstalled
+            // failed to updated GosPackageState, likely because the package was uninstalled
             pressBack(this);
             return;
         }
@@ -340,14 +338,11 @@ public final class StorageScopesFragment extends SettingsWithLargeHeader {
         scopesArray = scopesList.toArray(new StorageScope[0]);
 
         byte[] serializedScopes = StorageScope.serializeArray(scopesArray);
-        int flags = ps.flags | GosPackageState.FLAG_STORAGE_SCOPES_ENABLED;
 
-        GosPackageState newPs = null;
-        try {
-            newPs = GosPackageState.set(pkgName, flags, serializedScopes, false);
-        } catch (IllegalArgumentException e) {
-            Log.d(TAG, "unable to remove StorageScope", e);
-        }
+        GosPackageState newPs = ps.edit()
+                .addFlags(GosPackageState.FLAG_STORAGE_SCOPES_ENABLED)
+                .setStorageScopes(serializedScopes)
+                .apply();
 
         if (newPs == null) {
             pressBack(this);
@@ -498,13 +493,15 @@ public final class StorageScopesFragment extends SettingsWithLargeHeader {
 
         StorageScope[] scopesArray = currentScopes.toArray(new StorageScope[0]);
 
-        GosPackageState newPkgState = GosPackageState.set(pkgName, curPkgState.flags | GosPackageState.FLAG_STORAGE_SCOPES_ENABLED,
-                StorageScope.serializeArray(scopesArray), false);
+        GosPackageState newPkgState = GosPackageState.edit(pkgName)
+                .addFlags(GosPackageState.FLAG_STORAGE_SCOPES_ENABLED)
+                .setStorageScopes(StorageScope.serializeArray(scopesArray))
+                .apply();
 
         invalidateMediaProviderCache(addedPaths);
 
         if (newPkgState == null) {
-            // unable to save newPkgState, likely because package was racily uninstalled
+            // unable to save newPkgState, likely because the package was racily uninstalled
             pressBack(this);
             return;
         }
