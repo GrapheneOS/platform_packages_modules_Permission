@@ -1405,13 +1405,16 @@ final class SafetyCenterDataTracker {
                                     .build();
                     int severityUnspecifiedIconType =
                             SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION;
+                    int severityLevel =
+                            enabled
+                                    ? toSafetyCenterEntrySeverityLevel(
+                                            safetySourceStatus.getSeverityLevel())
+                                    : SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED;
                     SafetyCenterEntry.Builder builder =
                             new SafetyCenterEntry.Builder(
                                             SafetyCenterIds.encodeToString(safetyCenterEntryId),
                                             safetySourceStatus.getTitle())
-                                    .setSeverityLevel(
-                                            toSafetyCenterEntrySeverityLevel(
-                                                    safetySourceStatus.getSeverityLevel()))
+                                    .setSeverityLevel(severityLevel)
                                     .setSummary(safetySourceStatus.getSummary())
                                     .setEnabled(enabled)
                                     .setSeverityUnspecifiedIconType(severityUnspecifiedIconType)
