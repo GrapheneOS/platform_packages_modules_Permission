@@ -18,13 +18,13 @@ package com.android.permissioncontroller.safetycenter.ui;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
-import android.app.ActivityOptions;
 import android.content.Context;
 import android.safetycenter.SafetyCenterStaticEntry;
 import android.text.TextUtils;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.preference.Preference;
 
@@ -41,7 +41,7 @@ public class StaticSafetyEntryPreference extends Preference implements Comparabl
 
     public StaticSafetyEntryPreference(
             Context context,
-            int taskId,
+            @Nullable Integer launchTaskId,
             SafetyCenterStaticEntry entry,
             SafetyCenterViewModel viewModel) {
         super(context);
@@ -53,10 +53,7 @@ public class StaticSafetyEntryPreference extends Preference implements Comparabl
             setOnPreferenceClickListener(
                     unused -> {
                         try {
-                            ActivityOptions options = ActivityOptions.makeBasic();
-                            options.setLaunchTaskId(taskId);
-                            mEntry.getPendingIntent()
-                                    .send(context, 0, null, null, null, null, options.toBundle());
+                            PendingIntentSender.send(mEntry.getPendingIntent(), launchTaskId);
                         } catch (Exception ex) {
                             Log.e(
                                     TAG,

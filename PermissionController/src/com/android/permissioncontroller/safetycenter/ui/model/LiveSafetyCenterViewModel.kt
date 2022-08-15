@@ -37,6 +37,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.android.permissioncontroller.safetycenter.ui.InteractionLogger
 import com.android.permissioncontroller.safetycenter.ui.NavigationSource
+import com.android.safetycenter.internaldata.SafetyCenterIds
 
 /* A SafetyCenterViewModel that talks to the real backing service for Safety Center. */
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
@@ -85,8 +86,22 @@ class LiveSafetyCenterViewModel(app: Application) : SafetyCenterViewModel(app) {
         safetyCenterManager.dismissSafetyCenterIssue(issue.id)
     }
 
-    override fun executeIssueAction(issue: SafetyCenterIssue, action: SafetyCenterIssue.Action) {
-        safetyCenterManager.executeSafetyCenterIssueAction(issue.id, action.id)
+    override fun executeIssueAction(
+        issue: SafetyCenterIssue,
+        action: SafetyCenterIssue.Action,
+        launchTaskId: Int?
+    ) {
+        val issueId =
+            if (launchTaskId != null) {
+                SafetyCenterIds.encodeToString(
+                    SafetyCenterIds.issueIdFromString(issue.id)
+                        .toBuilder()
+                        .setTaskId(launchTaskId)
+                        .build())
+            } else {
+                issue.id
+            }
+        safetyCenterManager.executeSafetyCenterIssueAction(issueId, action.id)
     }
 
     override fun markIssueResolvedUiCompleted(issueId: IssueId) {
@@ -170,9 +185,9 @@ class LiveSafetyCenterViewModel(app: Application) : SafetyCenterViewModel(app) {
             // to complete.
             if (currentResolvedIssues.isNotEmpty()) {
                 Log.d(
-                        TAG,
-                        "Received SafetyCenterData while issue resolution animations" +
-                                " occurring. Will update UI with new data soon.")
+                    TAG,
+                    "Received SafetyCenterData while issue resolution animations" +
+                        " occurring. Will update UI with new data soon.")
                 return
             }
 
@@ -183,7 +198,7 @@ class LiveSafetyCenterViewModel(app: Application) : SafetyCenterViewModel(app) {
                 // current update. Resolved issues are formerly in-flight issues that no longer
                 // appear in a subsequent SafetyCenterData update.
                 val nextResolvedIssues: Map<IssueId, ActionId> =
-                        determineResolvedIssues(nextData.buildIssueIdSet())
+                    determineResolvedIssues(nextData.buildIssueIdSet())
 
                 // Save the set of in-flight issues to diff against the next data update, removing
                 // the now-resolved, formerly in-flight issues. If these are not tracked separately
