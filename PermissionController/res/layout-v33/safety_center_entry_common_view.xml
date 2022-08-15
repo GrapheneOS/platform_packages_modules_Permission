@@ -15,14 +15,16 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License
   -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/SafetyCenterEntry">
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:parentTag="LinearLayout">
 
     <FrameLayout
         android:id="@+id/icon_frame"
         style="@style/SafetyCenterEntryIconFrame">
         <ImageView
-            android:id="@android:id/icon"
+            android:id="@+id/icon"
             android:importantForAccessibility="no"
             style="@style/SafetyCenterEntryIcon"/>
     </FrameLayout>
@@ -34,15 +36,11 @@
     <LinearLayout
         style="@style/SafetyCenterEntryTextContainer">
 
-        <TextView android:id="@android:id/title"
+        <TextView android:id="@+id/title"
             style="@style/SafetyCenterEntryTitle" />
 
-        <TextView android:id="@android:id/summary"
+        <TextView android:id="@+id/summary"
             style="@style/SafetyCenterEntrySummary" />
 
     </LinearLayout>
-
-    <ImageView android:id="@+id/chevron_icon"
-        android:layout_height="match_parent"
-        style="@style/SafetyCenterExpandedGroupIcon" />
-</LinearLayout>
+</merge>
