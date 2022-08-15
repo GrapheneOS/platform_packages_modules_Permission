@@ -19,6 +19,7 @@ package com.android.permissioncontroller.tests.mocking.privacysources
 import android.app.job.JobParameters
 import android.content.ComponentName
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Build
 import android.provider.DeviceConfig
 import androidx.test.core.app.ApplicationProvider
@@ -26,17 +27,15 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry
 import com.android.dx.mockito.inline.extended.ExtendedMockito
-import com.android.permissioncontroller.Constants
-import com.android.permissioncontroller.privacysources.AccessibilitySourceService
-import com.android.permissioncontroller.privacysources.AccessibilitySourceService.AccessibilityComponent
 import com.android.permissioncontroller.privacysources.AccessibilityJobService
+import com.android.permissioncontroller.privacysources.AccessibilitySourceService
 import com.android.permissioncontroller.privacysources.PROPERTY_SC_ACCESSIBILITY_SOURCE_ENABLED
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
-import org.junit.Test
 import org.junit.runner.RunWith
+import org.junit.Test
 import org.mockito.ArgumentMatchers.anyBoolean
 import org.mockito.ArgumentMatchers.eq
 import org.mockito.Mock
@@ -44,8 +43,8 @@ import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
 import org.mockito.MockitoAnnotations
 import org.mockito.MockitoSession
-import org.mockito.quality.Strictness
 import org.mockito.Mockito.`when` as whenever
+import org.mockito.quality.Strictness
 
 /**
  * Unit tests for internal [AccessibilitySourceService]
@@ -64,6 +63,7 @@ class AccessibilitySourceServiceTest {
     private lateinit var mockitoSession: MockitoSession
     private lateinit var accessibilitySourceService: AccessibilitySourceService
     private var shouldCancel = false
+    private lateinit var sharedPref: SharedPreferences
 
     @Before
     fun setup() {
@@ -77,16 +77,16 @@ class AccessibilitySourceServiceTest {
         accessibilitySourceService = runWithShellPermissionIdentity {
             AccessibilitySourceService(context)
         }
-
+        sharedPref = accessibilitySourceService.getSharedPreference()
+        sharedPref.edit().clear().apply()
         setAccessibilityFeatureFlag(true)
     }
 
     @After
     fun cleanup() {
-        // cleanup ACCESSIBILITY_SERVICES_ALREADY_NOTIFIED_FILE
-        context.deleteFile(Constants.ACCESSIBILITY_SERVICES_ALREADY_NOTIFIED_FILE)
         shouldCancel = false
         mockitoSession.finishMocking()
+        sharedPref.edit().clear().apply()
     }
 
     @Test
@@ -106,176 +106,78 @@ class AccessibilitySourceServiceTest {
     }
 
     @Test
-    fun markAsNotified() {
-        var initialComponents: Set<AccessibilityComponent> = getNotifiedComponents()
-        assertThat(initialComponents).isEmpty()
+    fun markServiceAsNotified() {
+        val a11yService = ComponentName("com.test.package", "AccessibilityService")
+        runBlocking {
+            accessibilitySourceService.markServiceAsNotified(a11yService)
+        }
 
-        val testComponent = ComponentName("com.test.package", "TestClass")
-        val startTime = System.currentTimeMillis()
-
-        // Mark as notified, and get the resulting list of Components
-        // Filter to the component that match the test component
-        // Ensure size is equal to one (not empty)
-        // Get the component
-        val component: AccessibilityComponent = runBlocking {
-            accessibilitySourceService.markAsNotified(testComponent)
-            getNotifiedComponents()
-        }.filter { it.componentName == testComponent }
-            .also { assertThat(it.size).isEqualTo(1) }[0]
-
-        // Verify notified time is not zero, and at least the test start time
-        assertThat(component.notificationShownTime).isNotEqualTo(0L)
-        assertThat(component.notificationShownTime).isAtLeast(startTime)
+        val storedServices = getNotifiedServices()
+        assertThat(storedServices.size).isEqualTo(1)
+        assertThat(storedServices.iterator().next()).isEqualTo(a11yService.flattenToShortString())
     }
 
     @Test
     fun markAsNotifiedWithSecondComponent() {
-        var components: Set<AccessibilityComponent> = getNotifiedComponents()
-        assertThat(components).isEmpty()
-
         val testComponent = ComponentName("com.test.package", "TestClass")
         val testComponent2 = ComponentName("com.test.package2", "TestClass2")
 
-        // Mark as notified, and get the resulting list of Components
-        components = runBlocking {
-            accessibilitySourceService.markAsNotified(testComponent)
-            getNotifiedComponents()
+        var notifiedServices = runBlocking {
+            accessibilitySourceService.markServiceAsNotified(testComponent)
+            getNotifiedServices()
         }
-        // Expected # components is 1
-        assertThat(components.size).isEqualTo(1)
+        assertThat(notifiedServices.size).isEqualTo(1)
+        assertThat(notifiedServices.iterator().next())
+            .isEqualTo(testComponent.flattenToShortString())
 
-        // Filter to the component that match the test component
-        // Ensure size is equal to one (not empty)
-        // Get the component
-        val firstComponent = components
-            .filter { it.componentName == testComponent }
-            .also { assertThat(it.size).isEqualTo(1) }[0]
-
-        // Mark second component as notified, and get the resulting list of Components
-        components = runBlocking {
-            accessibilitySourceService.markAsNotified(testComponent2)
-            getNotifiedComponents()
+        notifiedServices = runBlocking {
+            accessibilitySourceService.markServiceAsNotified(testComponent2)
+            getNotifiedServices()
         }
-        // Expected # components is 2
-        assertThat(components.size).isEqualTo(2)
-
-        // Filter to the component that match the test component
-        // Ensure size is equal to one (not empty)
-        // Get the component
-        val secondComponent = components
-            .filter { it.componentName == testComponent2 }
-            .also { assertThat(it.size).isEqualTo(1) }[0]
-
-        // Ensure second component marked notified after first component
-        assertThat(secondComponent.notificationShownTime)
-            .isGreaterThan(firstComponent.notificationShownTime)
+        assertThat(notifiedServices.size).isEqualTo(2)
+        val expectedServices = listOf(testComponent, testComponent2)
+        expectedServices.forEach {
+            assertThat(notifiedServices.contains(it.flattenToShortString())).isTrue()
+        }
     }
-
     @Test
-    fun markAsNotifiedWithMultipleComponents() {
-        var components: Set<AccessibilityComponent> = getNotifiedComponents()
-        assertThat(components).isEmpty()
+    fun removeNotifiedService() {
+        val a11yService = ComponentName("com.test.package", "AccessibilityService")
+        val a11yService2 = ComponentName("com.test.package", "AccessibilityService2")
+        val a11yService3 = ComponentName("com.test.package", "AccessibilityService3")
+        val allServices = listOf(a11yService, a11yService2, a11yService3)
 
-        val testComponent = ComponentName("com.test.package", "TestClass")
-        val testComponent2 = ComponentName("com.test.package2", "TestClass2")
-
-        // Mark as notified, and get the resulting list of Components
-        components = runBlocking {
-            accessibilitySourceService.markAsNotified(testComponent)
-            getNotifiedComponents()
+        val notifiedServices = runBlocking {
+            allServices.forEach {
+                accessibilitySourceService.markServiceAsNotified(it)
+            }
+            accessibilitySourceService.removeFromNotifiedServices(a11yService2)
+            getNotifiedServices()
         }
-        // Expected # components is 1
-        assertThat(components.size).isEqualTo(1)
-
-        // Filter to the component that match the test component
-        // Ensure size is equal to one (not empty)
-        // Get the component
-        val firstComponent = components
-            .filter { it.componentName == testComponent }
-            .also { assertThat(it.size).isEqualTo(1) }[0]
-
-        // Mark second component as notified, and get the resulting list of Components
-        components = runBlocking {
-            accessibilitySourceService.markAsNotified(testComponent2)
-            getNotifiedComponents()
+        val expectedServices = listOf(a11yService, a11yService3)
+        assertThat(notifiedServices.size).isEqualTo(2)
+        expectedServices.forEach {
+            assertThat(notifiedServices.contains(it.flattenToShortString())).isTrue()
         }
-        // Expected # components is 2
-        assertThat(components.size).isEqualTo(2)
-
-        // Verify first notified component still present
-        assertThat(components.contains(firstComponent)).isTrue()
-    }
-
-    @Test
-    fun markAsNotifiedForNotificationTimestamp() {
-        val testComponent = ComponentName("com.test.package", "TestClass")
-
-        // Mark as notified, and get the resulting list of Components
-        // Filter to the component that match the test component
-        // Ensure size is equal to one (not empty)
-        // Get the component
-        val initialComponent: AccessibilityComponent? = runBlocking {
-            accessibilitySourceService.markAsNotified(testComponent)
-            getNotifiedComponents()
-        }.filter { it.componentName == testComponent }
-            .also { assertThat(it.size).isEqualTo(1) }
-            .getOrNull(0)
-
-        assertThat(initialComponent).isNotNull()
-
-        // Mark as notified *again*, and get the resulting list of Components
-        // Filter to the component that match the test component
-        // Ensure size is equal to one (not empty)
-        // Get the component
-        val updatedComponent: AccessibilityComponent? = runBlocking {
-            accessibilitySourceService.markAsNotified(testComponent)
-            getNotifiedComponents()
-        }.filter { it.componentName == testComponent }
-            .also { assertThat(it.size).isEqualTo(1) }
-            .getOrNull(0)
-
-        assertThat(updatedComponent).isNotNull()
-
-        // Verify updated Component has an updated notificationShownTime
-        assertThat(updatedComponent!!.notificationShownTime)
-            .isGreaterThan(initialComponent!!.notificationShownTime)
     }
 
     @Test
     fun removePackageState() {
         val testComponent = ComponentName("com.test.package", "TestClass")
-        val testComponent2 = ComponentName("com.test.package2", "TestClass2")
-        val testComponents = listOf(testComponent, testComponent2)
+        val testComponent2 = ComponentName("com.test.package", "TestClass2")
+        val testComponent3 = ComponentName("com.test.package2", "TestClass3")
+        val testComponents = listOf(testComponent, testComponent2, testComponent3)
 
-        // Mark all components as notified, and get the resulting list of Components
-        val initialComponents = runBlocking {
+        val notifiedServices = runBlocking {
             testComponents.forEach {
-                accessibilitySourceService.markAsNotified(it)
+                accessibilitySourceService.markServiceAsNotified(it)
             }
-            getNotifiedComponents().map { it.componentName }
+            accessibilitySourceService.removePackageState(testComponent.packageName)
+            getNotifiedServices()
         }
 
-        // Verify expected components are present
-        assertThat(initialComponents).isNotNull()
-        assertThat(initialComponents.size).isEqualTo(testComponents.size)
-        testComponents.forEach {
-            assertThat(initialComponents.contains(it)).isTrue()
-        }
-
-        // Forget about test package, and get the resulting list of Components
-        // Filter to the component that match the test component
-        val updatedComponents = runWithShellPermissionIdentity {
-            runBlocking {
-                accessibilitySourceService.removePackageState(testComponent.packageName)
-                getNotifiedComponents().map { it.componentName }
-            }
-        }
-
-        // Verify expected components are present
-        assertThat(updatedComponents).isNotNull()
-        assertThat(updatedComponents.size).isEqualTo(testComponents.size - 1)
-        assertThat(updatedComponents.contains(testComponent)).isFalse()
-        assertThat(updatedComponents.contains(testComponent2)).isTrue()
+        assertThat(notifiedServices.size).isEqualTo(1)
+        assertThat(notifiedServices.contains(testComponent3.flattenToShortString())).isTrue()
     }
 
     @Test
@@ -284,32 +186,15 @@ class AccessibilitySourceServiceTest {
         val testComponent2 = ComponentName("com.test.package", "TestClass2")
         val testComponents = listOf(testComponent, testComponent2)
 
-        // Mark all components as notified, and get the resulting list of Components
-        val initialComponents = runBlocking {
+        val notifiedServices = runBlocking {
             testComponents.forEach {
-                accessibilitySourceService.markAsNotified(it)
+                accessibilitySourceService.markServiceAsNotified(it)
             }
-            getNotifiedComponents().map { it.componentName }
+            accessibilitySourceService.removePackageState(testComponent.packageName)
+            getNotifiedServices()
         }
 
-        // Verify expected components are present
-        assertThat(initialComponents).isNotNull()
-        assertThat(initialComponents.size).isEqualTo(testComponents.size)
-        testComponents.forEach {
-            assertThat(initialComponents.contains(it)).isTrue()
-        }
-
-        // Forget about test package, and get the resulting list of Components
-        // Filter to the component that match the test component
-        val updatedComponents = runWithShellPermissionIdentity {
-            runBlocking {
-                accessibilitySourceService.removePackageState(testComponent.packageName)
-                getNotifiedComponents().map { it.componentName }
-            }
-        }
-
-        // Ensure empty
-        assertThat(updatedComponents).isEmpty()
+        assertThat(notifiedServices).isEmpty()
     }
 
     @Test
@@ -317,7 +202,7 @@ class AccessibilitySourceServiceTest {
         val testComponent = ComponentName("com.test.package", "TestClass")
 
         // Get the initial list of Components
-        val initialComponents = getNotifiedComponents().map { it.componentName }
+        val initialComponents = getNotifiedServices()
 
         // Verify no components are present
         assertThat(initialComponents).isEmpty()
@@ -328,7 +213,7 @@ class AccessibilitySourceServiceTest {
             runBlocking {
                 // Verify this should not fail!
                 accessibilitySourceService.removePackageState(testComponent.packageName)
-                getNotifiedComponents().map { it.componentName }
+                getNotifiedServices()
             }
         }
 
@@ -346,8 +231,11 @@ class AccessibilitySourceServiceTest {
         ).thenReturn(enabled)
     }
 
-    private fun getNotifiedComponents(): Set<AccessibilityComponent> = runBlocking {
-        accessibilitySourceService.loadNotifiedComponentsLocked().toSet()
+    private fun getNotifiedServices(): MutableSet<String> {
+        return sharedPref.getStringSet(
+            AccessibilitySourceService.KEY_ALREADY_NOTIFIED_SERVICES,
+            mutableSetOf<String>()
+        )!!
     }
 
     private fun <R> runWithShellPermissionIdentity(block: () -> R): R {
