@@ -38,6 +38,14 @@
     update the string "quick_settings_camera_mic_blocked" in SystemUi [CHAR LIMIT=NONE] -->
     <string name="blocked">Blocked</string>
 
+    <!-- Label indicating sensor is on. If you update this string, please update the string
+    "switch_bar_on" in SystemUI or do not use the default string for the LocationTile [CHAR LIMIT=NONE] -->
+    <string name="on">On</string>
+
+    <!-- Label indicating sensor is off. If you update this string, please update the string
+    "switch_bar_off" in SystemUI or do not use the default string for the LocationTile [CHAR LIMIT=NONE] -->
+    <string name="off">Off</string>
+
     <!-- Button label for uninstall or disable actions [CHAR LIMIT=none] -->
     <string name="uninstall_or_disable">Uninstall or disable</string>
 
@@ -653,9 +661,6 @@
 
     <!-- Title for a page where users can manage whether or not they want Android to automatically remove permissions [CHAR LIMIT=40] -->
     <string name="auto_manage_title">Manage permissions automatically</string>
-
-    <!-- Label for an "off" button [CHAR LIMIT=30] -->
-    <string name="off">Off</string>
 
     <!-- Summary describing the permissions that have been removed from an app, when one permission is removed [CHAR LIMIT=none] -->
     <string name="auto_revoked_app_summary_one"><xliff:g id="permission_name" example="Location">%s</xliff:g> permission removed</string>
