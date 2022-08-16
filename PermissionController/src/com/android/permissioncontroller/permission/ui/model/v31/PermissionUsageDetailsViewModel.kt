@@ -299,27 +299,6 @@ class PermissionUsageDetailsViewModel(
         internal const val SHOULD_SHOW_SYSTEM_KEY = "showSystem"
         internal const val SHOULD_SHOW_7_DAYS_KEY = "show7Days"
 
-        /** Returns all op names for all permissions in a list of permission groups. */
-        val opNames =
-            listOf(
-                    Manifest.permission_group.CAMERA,
-                    Manifest.permission_group.LOCATION,
-                    Manifest.permission_group.MICROPHONE,
-                )
-                .flatMap { group -> PermissionMapping.getPlatformPermissionNamesOfGroup(group) }
-                .mapNotNull { permName -> AppOpsManager.permissionToOp(permName) }
-                .toMutableSet()
-                .apply {
-                    add(OPSTR_PHONE_CALL_MICROPHONE)
-                    add(OPSTR_PHONE_CALL_CAMERA)
-                    if (SdkLevel.isAtLeastT()) {
-                        add(AppOpsManager.OPSTR_RECEIVE_AMBIENT_TRIGGER_AUDIO)
-                    }
-                    if (isLocationByPassEnabled()) {
-                        add(AppOpsManager.OPSTR_EMERGENCY_LOCATION)
-                    }
-                }
-
         /** Creates the [Intent] for the click action of a privacy dashboard app usage event. */
         fun createHistoryPreferenceClickIntent(
             context: Context,
