@@ -112,6 +112,18 @@ class SafetySourceCtsData(private val context: Context) {
             .build()
 
     /**
+     * A [SafetySourceData] with a [SEVERITY_LEVEL_INFORMATION] [SafetySourceStatus] and null
+     * pending intent.
+     */
+    val informationWithNullIntent =
+        SafetySourceData.Builder()
+            .setStatus(
+                SafetySourceStatus.Builder("Ok title", "Ok summary", SEVERITY_LEVEL_INFORMATION)
+                    .setPendingIntent(null)
+                    .build())
+            .build()
+
+    /**
      * A [SafetySourceData] with a [SEVERITY_LEVEL_INFORMATION] [SafetySourceStatus] and an
      * [IconAction] defined.
      */
