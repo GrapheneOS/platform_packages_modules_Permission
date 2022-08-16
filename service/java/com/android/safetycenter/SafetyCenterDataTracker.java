@@ -113,7 +113,7 @@ final class SafetyCenterDataTracker {
 
     private final ArraySet<SafetySourceKey> mSafetySourceErrors = new ArraySet<>();
 
-    private final ArrayMap<SafetyCenterIssueKey, IssueData> mSafetyCenterIssueCache =
+    private final ArrayMap<SafetyCenterIssueKey, SafetyCenterIssueData> mSafetyCenterIssueCache =
             new ArrayMap<>();
 
     private final ArrayMap<SafetyCenterIssueActionId, Long> mSafetyCenterIssueActionsInFlight =
@@ -168,13 +168,13 @@ final class SafetyCenterDataTracker {
 
         for (int i = 0; i < mSafetyCenterIssueCache.size(); i++) {
             String encodedKey = SafetyCenterIds.encodeToString(mSafetyCenterIssueCache.keyAt(i));
-            IssueData issueData = mSafetyCenterIssueCache.valueAt(i);
+            SafetyCenterIssueData safetyCenterIssueData = mSafetyCenterIssueCache.valueAt(i);
             persistedSafetyCenterIssues.add(
                     new PersistedSafetyCenterIssue.Builder()
                             .setKey(encodedKey)
-                            .setFirstSeenAt(issueData.getFirstSeenAt())
-                            .setDismissedAt(issueData.getDismissedAt())
-                            .setDismissCount(issueData.getDismissCount())
+                            .setFirstSeenAt(safetyCenterIssueData.getFirstSeenAt())
+                            .setDismissedAt(safetyCenterIssueData.getDismissedAt())
+                            .setDismissCount(safetyCenterIssueData.getDismissCount())
                             .build());
         }
 
@@ -204,10 +204,11 @@ final class SafetyCenterDataTracker {
                 continue;
             }
 
-            IssueData issueData = new IssueData(persistedSafetyCenterIssue.getFirstSeenAt());
-            issueData.setDismissedAt(persistedSafetyCenterIssue.getDismissedAt());
-            issueData.setDismissCount(persistedSafetyCenterIssue.getDismissCount());
-            mSafetyCenterIssueCache.put(key, issueData);
+            SafetyCenterIssueData safetyCenterIssueData =
+                    new SafetyCenterIssueData(persistedSafetyCenterIssue.getFirstSeenAt());
+            safetyCenterIssueData.setDismissedAt(persistedSafetyCenterIssue.getDismissedAt());
+            safetyCenterIssueData.setDismissCount(persistedSafetyCenterIssue.getDismissCount());
+            mSafetyCenterIssueCache.put(key, safetyCenterIssueData);
         }
     }
 
@@ -392,18 +393,13 @@ final class SafetyCenterDataTracker {
      * {@link #isSafetyCenterIssueCacheDirty} to {@code true}.
      */
     void dismissSafetyCenterIssue(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
-        IssueData issueData = mSafetyCenterIssueCache.get(safetyCenterIssueKey);
-        if (issueData == null) {
-            Log.w(
-                    TAG,
-                    "Issue missing when writing to cache: "
-                            + safetyCenterIssueKey.getSafetySourceIssueId()
-                            + ", of source: "
-                            + safetyCenterIssueKey.getSafetySourceId());
+        SafetyCenterIssueData safetyCenterIssueData =
+                getSafetyCenterIssueData(safetyCenterIssueKey, "dismissing");
+        if (safetyCenterIssueData == null) {
             return;
         }
-        issueData.setDismissedAt(Instant.now());
-        issueData.setDismissCount(issueData.getDismissCount() + 1);
+        safetyCenterIssueData.setDismissedAt(Instant.now());
+        safetyCenterIssueData.setDismissCount(safetyCenterIssueData.getDismissCount() + 1);
         mSafetyCenterIssueCacheDirty = true;
     }
 
@@ -593,7 +589,7 @@ final class SafetyCenterDataTracker {
                         + ")");
         for (int i = 0; i < issueCacheCount; i++) {
             SafetyCenterIssueKey key = mSafetyCenterIssueCache.keyAt(i);
-            IssueData data = mSafetyCenterIssueCache.valueAt(i);
+            SafetyCenterIssueData data = mSafetyCenterIssueCache.valueAt(i);
             fout.println("\t[" + i + "] " + key + " -> " + data);
         }
         fout.println();
@@ -629,11 +625,11 @@ final class SafetyCenterDataTracker {
         long dismissedIssuesCount = 0;
         for (int i = 0; i < mSafetyCenterIssueCache.size(); i++) {
             SafetyCenterIssueKey issueKey = mSafetyCenterIssueCache.keyAt(i);
-            IssueData issueData = mSafetyCenterIssueCache.valueAt(i);
+            SafetyCenterIssueData safetyCenterIssueData = mSafetyCenterIssueCache.valueAt(i);
 
             if (mSafetyCenterConfigReader.isExternalSafetySourceActive(issueKey.getSafetySourceId())
                     && userProfileGroup.contains(issueKey.getUserId())
-                    && issueData.getDismissedAt() != null) {
+                    && safetyCenterIssueData.getDismissedAt() != null) {
                 dismissedIssuesCount++;
             }
         }
@@ -695,8 +691,9 @@ final class SafetyCenterDataTracker {
                             .setUserId(userId)
                             .build();
 
-            IssueData issueData = mSafetyCenterIssueCache.get(safetyCenterIssueKey);
-            if (issueData == null || issueData.getDismissedAt() == null) {
+            SafetyCenterIssueData safetyCenterIssueData =
+                    getSafetyCenterIssueData(safetyCenterIssueKey, "logging");
+            if (safetyCenterIssueData == null || safetyCenterIssueData.getDismissedAt() == null) {
                 openIssuesCount++;
                 maxSeverityLevel = Math.max(maxSeverityLevel, safetySourceIssue.getSeverityLevel());
             } else {
@@ -719,20 +716,15 @@ final class SafetyCenterDataTracker {
     private boolean isDismissed(
             @NonNull SafetyCenterIssueKey safetyCenterIssueKey,
             @SafetySourceData.SeverityLevel int safetySourceIssueSeverityLevel) {
-        IssueData issueData = mSafetyCenterIssueCache.get(safetyCenterIssueKey);
-        if (issueData == null) {
-            Log.w(
-                    TAG,
-                    "Issue missing when reading from cache: "
-                            + safetyCenterIssueKey.getSafetySourceIssueId()
-                            + ", of source: "
-                            + safetyCenterIssueKey.getSafetySourceId());
+        SafetyCenterIssueData safetyCenterIssueData =
+                getSafetyCenterIssueData(safetyCenterIssueKey, "checking if dismissed");
+        if (safetyCenterIssueData == null) {
             return false;
         }
 
-        Instant dismissedAt = issueData.getDismissedAt();
-        boolean hasNeverBeenDismissed = dismissedAt == null;
-        if (hasNeverBeenDismissed) {
+        Instant dismissedAt = safetyCenterIssueData.getDismissedAt();
+        boolean isNotCurrentlyDismissed = dismissedAt == null;
+        if (isNotCurrentlyDismissed) {
             return false;
         }
 
@@ -740,7 +732,7 @@ final class SafetyCenterDataTracker {
         Duration delay = SafetyCenterFlags.getResurfaceIssueDelay(safetySourceIssueSeverityLevel);
 
         boolean hasAlreadyResurfacedTheMaxAllowedNumberOfTimes =
-                issueData.getDismissCount() > maxCount;
+                safetyCenterIssueData.getDismissCount() > maxCount;
         if (hasAlreadyResurfacedTheMaxAllowedNumberOfTimes) {
             return true;
         }
@@ -756,6 +748,23 @@ final class SafetyCenterDataTracker {
 
     private boolean isInFlight(@NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
         return mSafetyCenterIssueActionsInFlight.containsKey(safetyCenterIssueActionId);
+    }
+
+    @Nullable
+    private SafetyCenterIssueData getSafetyCenterIssueData(
+            @NonNull SafetyCenterIssueKey safetyCenterIssueKey, @NonNull String reason) {
+        SafetyCenterIssueData safetyCenterIssueData =
+                mSafetyCenterIssueCache.get(safetyCenterIssueKey);
+        if (safetyCenterIssueData == null) {
+            Log.w(
+                    TAG,
+                    "Issue missing when reading from cache for "
+                            + reason
+                            + ": "
+                            + SafetyCenterIds.toUserFriendlyString(safetyCenterIssueKey));
+            return null;
+        }
+        return safetyCenterIssueData;
     }
 
     private void updateSafetyCenterIssueCache(
@@ -789,7 +798,7 @@ final class SafetyCenterDataTracker {
                             .build();
             boolean isIssueNewlyReported = !mSafetyCenterIssueCache.containsKey(issueKey);
             if (isIssueNewlyReported) {
-                mSafetyCenterIssueCache.put(issueKey, new IssueData(Instant.now()));
+                mSafetyCenterIssueCache.put(issueKey, new SafetyCenterIssueData(Instant.now()));
                 mSafetyCenterIssueCacheDirty = true;
             }
         }
@@ -1685,26 +1694,27 @@ final class SafetyCenterDataTracker {
     private static List<ResolveInfo> queryIntentActivitiesAsUser(
             @NonNull Context context, @NonNull Intent intent, @NonNull UserHandle userHandle) {
         PackageManager packageManager = context.getPackageManager();
-        final long callingIdentity = Binder.clearCallingIdentity();
         // This call requires the INTERACT_ACROSS_USERS permission.
+        final long callingId = Binder.clearCallingIdentity();
         try {
             return packageManager.queryIntentActivitiesAsUser(
                     intent, ResolveInfoFlags.of(0), userHandle);
         } finally {
-            Binder.restoreCallingIdentity(callingIdentity);
+            Binder.restoreCallingIdentity(callingId);
         }
     }
 
     @NonNull
     private static PendingIntent toPendingIntent(
             @NonNull Context packageContext, int requestCode, @NonNull Intent intent) {
-        // This call is required for getIntentSender() to be allowed to send as another package.
-        final long identity = Binder.clearCallingIdentity();
+        // This call requires Binder identity to be cleared for getIntentSender() to be allowed to
+        // send as another package.
+        final long callingId = Binder.clearCallingIdentity();
         try {
             return PendingIntent.getActivity(
                     packageContext, requestCode, intent, PendingIntent.FLAG_IMMUTABLE);
         } finally {
-            Binder.restoreCallingIdentity(identity);
+            Binder.restoreCallingIdentity(callingId);
         }
     }
 
@@ -1773,14 +1783,14 @@ final class SafetyCenterDataTracker {
     @Nullable
     private Context toPackageContextAsUser(@NonNull String packageName, @UserIdInt int userId) {
         // This call requires the INTERACT_ACROSS_USERS permission.
-        final long identity = Binder.clearCallingIdentity();
+        final long callingId = Binder.clearCallingIdentity();
         try {
             return mContext.createPackageContextAsUser(packageName, 0, UserHandle.of(userId));
         } catch (NameNotFoundException e) {
             Log.w(TAG, "Package name " + packageName + " not found", e);
             return null;
         } finally {
-            Binder.restoreCallingIdentity(identity);
+            Binder.restoreCallingIdentity(callingId);
         }
     }
 
@@ -2134,34 +2144,36 @@ final class SafetyCenterDataTracker {
      * An internal mutable data structure to track extra metadata associated with a {@link
      * SafetyCenterIssue}.
      */
-    private static final class IssueData {
+    private static final class SafetyCenterIssueData {
+
         @NonNull private final Instant mFirstSeenAt;
+
         @Nullable private Instant mDismissedAt;
         private int mDismissCount;
 
-        private IssueData(@NonNull Instant firstSeenAt) {
+        private SafetyCenterIssueData(@NonNull Instant firstSeenAt) {
             mFirstSeenAt = firstSeenAt;
         }
 
         @NonNull
-        public Instant getFirstSeenAt() {
+        private Instant getFirstSeenAt() {
             return mFirstSeenAt;
         }
 
         @Nullable
-        public Instant getDismissedAt() {
+        private Instant getDismissedAt() {
             return mDismissedAt;
         }
 
-        public void setDismissedAt(@Nullable Instant dismissedAt) {
+        private void setDismissedAt(@Nullable Instant dismissedAt) {
             mDismissedAt = dismissedAt;
         }
 
-        public int getDismissCount() {
+        private int getDismissCount() {
             return mDismissCount;
         }
 
-        public void setDismissCount(int dismissCount) {
+        private void setDismissCount(int dismissCount) {
             mDismissCount = dismissCount;
         }
 

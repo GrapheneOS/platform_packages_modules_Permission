@@ -50,14 +50,7 @@ final class SafetySourceKey {
 
     @Override
     public String toString() {
-        return "SafetySourceKey{"
-                + "mSourceId='"
-                + mSourceId
-                + '\''
-                + ", mUserId="
-                + mUserId
-                + '\''
-                + '}';
+        return "SafetySourceKey{" + "mSourceId='" + mSourceId + "', mUserId=" + mUserId + '}';
     }
 
     @NonNull

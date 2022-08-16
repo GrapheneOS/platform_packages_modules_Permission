@@ -152,11 +152,11 @@ final class UserProfileGroup {
     @NonNull
     private static List<UserHandle> getEnabledUserProfiles(@NonNull UserManager userManager) {
         // This call requires the QUERY_USERS permission.
-        final long callingIdentity = Binder.clearCallingIdentity();
+        final long callingId = Binder.clearCallingIdentity();
         try {
             return userManager.getUserProfiles();
         } finally {
-            Binder.restoreCallingIdentity(callingIdentity);
+            Binder.restoreCallingIdentity(callingId);
         }
     }
 
@@ -164,11 +164,11 @@ final class UserProfileGroup {
     private static UserHandle getProfileParent(
             @NonNull UserManager userManager, @UserIdInt int userId) {
         // This call requires the INTERACT_ACROSS_USERS permission.
-        final long callingIdentity = Binder.clearCallingIdentity();
+        final long callingId = Binder.clearCallingIdentity();
         try {
             return userManager.getProfileParent(UserHandle.of(userId));
         } finally {
-            Binder.restoreCallingIdentity(callingIdentity);
+            Binder.restoreCallingIdentity(callingId);
         }
     }
 

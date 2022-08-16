@@ -490,10 +490,9 @@ public final class SafetyCenterService extends SystemService {
                     SafetyCenterIds.issueActionIdFromString(issueActionId);
             if (!safetyCenterIssueActionId.getSafetyCenterIssueKey().equals(safetyCenterIssueKey)) {
                 throw new IllegalArgumentException(
-                        "issueId: "
-                                + safetyCenterIssueId
-                                + " and issueActionId: "
-                                + safetyCenterIssueActionId
+                        SafetyCenterIds.toUserFriendlyString(safetyCenterIssueId)
+                                + " and "
+                                + SafetyCenterIds.toUserFriendlyString(safetyCenterIssueActionId)
                                 + " do not match");
             }
             UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
@@ -518,11 +517,8 @@ public final class SafetyCenterService extends SystemService {
                     Log.w(
                             TAG,
                             "Error dispatching action: "
-                                    + safetyCenterIssueActionId.getSafetySourceIssueActionId()
-                                    + ", for issue: "
-                                    + safetyCenterIssueKey.getSafetySourceIssueId()
-                                    + ", of source: "
-                                    + safetyCenterIssueKey.getSafetySourceId());
+                                    + SafetyCenterIds.toUserFriendlyString(
+                                            safetyCenterIssueActionId));
                     CharSequence errorMessage;
                     if (safetySourceIssueAction.willResolve()) {
                         errorMessage =
@@ -922,7 +918,7 @@ public final class SafetyCenterService extends SystemService {
         public String toString() {
             return "ResolvingActionTimeout{"
                     + "mSafetyCenterIssueActionId="
-                    + mSafetyCenterIssueActionId
+                    + SafetyCenterIds.toUserFriendlyString(mSafetyCenterIssueActionId)
                     + ", mUserProfileGroup="
                     + mUserProfileGroup
                     + '}';
