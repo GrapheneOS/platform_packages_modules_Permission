@@ -602,15 +602,14 @@ public class SafetyCenterQsFragment extends Fragment {
             int colorPrimary = getTextColor(true, sensorEnabled);
             int colorSecondary = getTextColor(false, sensorEnabled);
             if (sensorEnabled) {
-                blockedStatus.setText(R.string.available);
                 toggle.setBackgroundResource(R.drawable.safety_center_button_background);
                 icon = KotlinUtils.INSTANCE.getPermGroupIcon(mContext, groupName, colorPrimary);
             } else {
-                blockedStatus.setText(R.string.blocked);
                 toggle.setBackgroundResource(R.drawable.safety_center_button_background_dark);
                 icon = mContext.getDrawable(getBlockedIconResId(groupName));
                 icon.setTint(colorPrimary);
             }
+            blockedStatus.setText(getSensorStatusTextResId(groupName, sensorEnabled));
             blockedStatus.setTextColor(colorSecondary);
             groupLabel.setTextColor(colorPrimary);
             iconView.setImageDrawable(icon);
@@ -676,5 +675,13 @@ public class SafetyCenterQsFragment extends Fragment {
                 return R.drawable.ic_location_blocked;
         }
         return -1;
+    }
+
+    private static int getSensorStatusTextResId(String permissionGroup, boolean enabled) {
+        switch (permissionGroup) {
+            case LOCATION:
+                return enabled ? R.string.on : R.string.off;
+        }
+        return enabled ? R.string.available : R.string.blocked;
     }
 }

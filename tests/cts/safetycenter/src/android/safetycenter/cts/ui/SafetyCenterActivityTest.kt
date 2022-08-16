@@ -21,6 +21,7 @@ import android.content.Context
 import android.os.Bundle
 import android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_ID
 import android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_ISSUE_ID
+import android.safetycenter.cts.testing.Coroutines.TIMEOUT_LONG
 import android.safetycenter.cts.testing.Coroutines.TIMEOUT_SHORT
 import android.safetycenter.cts.testing.SafetyCenterActivityLauncher.launchSafetyCenterActivity
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs
@@ -326,6 +327,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun issueCard_resolveIssue_successConfirmationShown_issueDismisses() {
+        SafetyCenterFlags.hideResolvedIssueUiTransitionDelay = TIMEOUT_LONG
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
 
         // Set the initial data for the source
@@ -357,6 +359,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun issueCard_resolveIssue_noSuccessMessage_defaultSuccessMessageShown_issueDismisses() {
+        SafetyCenterFlags.hideResolvedIssueUiTransitionDelay = TIMEOUT_LONG
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
 
         // Set the initial data for the source

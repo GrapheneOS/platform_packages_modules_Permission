@@ -2334,6 +2334,29 @@ class SafetyCenterManagerTest {
     }
 
     @Test
+    fun getSafetyCenterData_withInvalidDefaultIntent_shouldReturnUnspecifiedSeverityLevel() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_INVALID_INTENT_CONFIG)
+        safetyCenterCtsHelper.setData(
+            SINGLE_SOURCE_ID, safetySourceCtsData.informationWithNullIntent)
+
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+
+        val expectedSafetyCenterData =
+            SafetyCenterData(
+                safetyCenterStatusOk,
+                emptyList(),
+                listOf(
+                    SafetyCenterEntryOrGroup(
+                        safetyCenterEntryOkBuilder(SINGLE_SOURCE_ID)
+                            .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNSPECIFIED)
+                            .setPendingIntent(null)
+                            .setEnabled(false)
+                            .build())),
+                emptyList())
+        assertThat(apiSafetyCenterData).isEqualTo(expectedSafetyCenterData)
+    }
+
+    @Test
     fun getSafetyCenterData_withoutPermission_throwsSecurityException() {
         assertFailsWith(SecurityException::class) { safetyCenterManager.safetyCenterData }
     }

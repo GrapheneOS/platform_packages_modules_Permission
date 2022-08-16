@@ -59,6 +59,13 @@ object SafetyCenterFlags {
         "safety_center_resolve_action_timeout_millis"
 
     /**
+     * Device Config flag that determines the time for which Safety Center will wait before starting
+     * dismissal of resolved issue UI
+     */
+    private const val PROPERTY_HIDE_RESOLVED_UI_TRANSITION_DELAY_MILLIS =
+        "safety_center_hide_resolved_ui_transition_delay_millis"
+
+    /**
      * Device config flag containing a comma delimited lists of source IDs that we won't track when
      * deciding if a broadcast is completed. We still send broadcasts to (and handle API calls from)
      * these sources as normal.
@@ -109,6 +116,9 @@ object SafetyCenterFlags {
      * before timing out.
      */
     private val RESOLVE_ACTION_TIMEOUT_DEFAULT_DURATION = Duration.ofSeconds(10)
+
+    /** Default time for which Safety Center will show the resolved issue UI before fading out */
+    internal val HIDE_RESOLVED_UI_TRANSITION_DELAY_DEFAULT_DURATION = Duration.ofMillis(400)
 
     /** Default maximum number of times that Safety Center will resurface a dismissed issue. */
     private const val RESURFACE_ISSUE_DEFAULT_MAX_COUNT: Long = 0
@@ -184,6 +194,22 @@ object SafetyCenterFlags {
                 RESOLVE_ACTION_TIMEOUT_DEFAULT_DURATION) { Duration.ofMillis(it.toLong()) }
         set(value) {
             writeFlag(PROPERTY_SAFETY_CENTER_RESOLVE_ACTION_TIMEOUT, value.toMillis().toString())
+        }
+
+    /**
+     * A property that allows getting and setting the
+     * [PROPERTY_SAFETY_CENTER_RESOLVE_ACTION_TIMEOUT] device config flag.
+     */
+    var hideResolvedIssueUiTransitionDelay: Duration
+        get() =
+            readFlag(
+                PROPERTY_HIDE_RESOLVED_UI_TRANSITION_DELAY_MILLIS,
+                HIDE_RESOLVED_UI_TRANSITION_DELAY_DEFAULT_DURATION) {
+                Duration.ofMillis(it.toLong())
+            }
+        set(value) {
+            writeFlag(
+                PROPERTY_HIDE_RESOLVED_UI_TRANSITION_DELAY_MILLIS, value.toMillis().toString())
         }
 
     /**
@@ -313,6 +339,7 @@ object SafetyCenterFlags {
                     PROPERTY_REPLACE_LOCK_SCREEN_ICON_ACTION,
                     PROPERTY_REFRESH_SOURCES_TIMEOUTS_MILLIS,
                     PROPERTY_SAFETY_CENTER_RESOLVE_ACTION_TIMEOUT,
+                    PROPERTY_HIDE_RESOLVED_UI_TRANSITION_DELAY_MILLIS,
                     PROPERTY_UNTRACKED_SOURCES,
                     PROPERTY_RESURFACE_ISSUE_MAX_COUNTS,
                     PROPERTY_RESURFACE_ISSUE_DELAYS_MILLIS,
