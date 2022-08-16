@@ -358,7 +358,7 @@ class SafetyCenterActivityTest {
     }
 
     @Test
-    fun issueCard_resolveIssue_noSuccessMessage_defaultSuccessMessageShown_issueDismisses() {
+    fun issueCard_resolveIssue_noSuccessMessage_noResolutionUiShown_issueDismisses() {
         SafetyCenterFlags.hideResolvedIssueUiTransitionDelay = TIMEOUT_LONG
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
 
@@ -375,9 +375,6 @@ class SafetyCenterActivityTest {
                 {
                     val action = safetySourceCtsData.criticalResolvingAction
                     waitFindObject(By.text(action.label.toString())).click()
-
-                    // Default success message should show up if issue marked as resolved
-                    waitFindObject(By.text(DEFAULT_SAFETY_CENTER_RESOLVED_ISSUE_SUCCESS_MESSAGE))
 
                     // Wait for success message to go away, verify issue no longer displayed
                     waitTextNotDisplayed(DEFAULT_SAFETY_CENTER_RESOLVED_ISSUE_SUCCESS_MESSAGE)
