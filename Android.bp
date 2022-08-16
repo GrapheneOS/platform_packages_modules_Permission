@@ -27,10 +27,16 @@ apex_defaults {
     defaults: ["r-launched-apex-module"],
     bootclasspath_fragments: ["com.android.permission-bootclasspath-fragment"],
     systemserverclasspath_fragments: ["com.android.permission-systemserverclasspath-fragment"],
-    prebuilts: ["current_sdkinfo"],
+    prebuilts: [
+        "current_sdkinfo",
+        "privapp_allowlist_com.android.permissioncontroller.xml",
+    ],
     key: "com.android.permission.key",
     certificate: ":com.android.permission.certificate",
-    apps: ["PermissionController"],
+    apps: [
+        "PermissionController",
+        "SafetyCenterResources",
+    ],
     // Indicates that pre-installed version of this apex can be compressed.
     // Whether it actually will be compressed is controlled on per-device basis.
     compressible: true,
@@ -103,6 +109,7 @@ bootclasspath_fragment {
         // result in a build failure due to inconsistent flags.
         package_prefixes: [
             "android.app.role",
+            "android.safetycenter",
             "com.android.permission",
         ],
     },
