@@ -24,6 +24,7 @@
         style="@style/SafetyCenterEntryIconFrame">
         <ImageView
             android:id="@android:id/icon"
+            android:importantForAccessibility="no"
             style="@style/SafetyCenterEntryIcon"/>
     </FrameLayout>
 
