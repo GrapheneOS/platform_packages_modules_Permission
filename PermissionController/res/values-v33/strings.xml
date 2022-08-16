@@ -29,6 +29,18 @@
     <!-- Summary for the "Your Work Policy" for Advanced Settings in Safety Center for managed devices. [CHAR LIMIT=NONE]-->
     <string name="work_policy_summary">Settings managed by your IT admin</string>
 
+    <!-- Label for expanding an entry group in Safety Center [CHAR LIMIT=NONE] -->
+    <string name="safety_center_entry_group_expand_action">Expand and show list</string>
+    <!-- Label for collapsing an entry group in Safety Center [CHAR LIMIT=NONE] -->
+    <string name="safety_center_entry_group_collapse_action">Collapse list and hide settings</string>
+    <!-- Content description for a safety center entry group [CHAR LIMIT=NONE]-->
+    <string name="safety_center_entry_group_content_description">List. <xliff:g id="entry title" example="App security">%1$s</xliff:g>. <xliff:g id="entry summary" example="Scanning is on">%2$s</xliff:g></string>
+    <!-- Content description for a safety center entry group with actions needed [CHAR LIMIT=NONE]-->
+    <string name="safety_center_entry_group_with_actions_needed_content_description">List. <xliff:g id="entry title" example="App security">%1$s</xliff:g>. Actions needed. <xliff:g id="entry summary" example="Scanning is on">%2$s</xliff:g></string>
+    <!-- Content description for a safety center entry group item [CHAR LIMIT=NONE]-->
+    <string name="safety_center_entry_group_item_content_description">List item. <xliff:g id="entry item title" example="App security">%1$s</xliff:g>. <xliff:g id="entry item summary" example="Scanning is on">%2$s</xliff:g></string>
+    <!-- Content description for a safety center entry [CHAR LIMIT=NONE]-->
+    <string name="safety_center_entry_content_description"> <xliff:g id="entry item title" example="App security">%1$s</xliff:g>. <xliff:g id="entry item summary" example="Scanning is on">%2$s</xliff:g></string>
     <!-- Title for the "See all alerts"/"More issues" card in Safety Center [CHAR LIMIT=NONE]-->
     <string name="safety_center_more_issues_card_title">See all alerts</string>
     <!-- Label for expanding the "See all alerts"/"More issues" card in Safety Center [CHAR LIMIT=NONE] -->
