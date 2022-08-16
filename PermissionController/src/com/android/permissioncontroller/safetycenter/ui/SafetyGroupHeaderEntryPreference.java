@@ -28,6 +28,8 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
@@ -114,6 +116,28 @@ public class SafetyGroupHeaderEntryPreference extends Preference implements Comp
                 mIsExpanded
                         ? R.drawable.ic_safety_group_collapse
                         : R.drawable.ic_safety_group_expand);
+
+        // When status is yellow/red, adding an "Actions needed" before the summary is read.
+        int resourceId =
+                mGroup.getSeverityLevel() >= SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_RECOMMENDATION
+                        ? R.string.safety_center_entry_group_with_actions_needed_content_description
+                        : R.string.safety_center_entry_group_content_description;
+        holder.itemView.setContentDescription(
+                mIsExpanded
+                        ? getTitle()
+                        : getContext().getString(resourceId, getTitle(), getSummary()));
+
+        // Replacing the on-click label to indicate the expand/collapse action. The on-click command
+        // is set to null so that it uses the existing expand/collapse behaviour.
+        ViewCompat.replaceAccessibilityAction(
+                holder.itemView,
+                AccessibilityNodeInfoCompat.AccessibilityActionCompat.ACTION_CLICK,
+                getContext()
+                        .getString(
+                                mIsExpanded
+                                        ? R.string.safety_center_entry_group_collapse_action
+                                        : R.string.safety_center_entry_group_expand_action),
+                null);
     }
 
     @Override

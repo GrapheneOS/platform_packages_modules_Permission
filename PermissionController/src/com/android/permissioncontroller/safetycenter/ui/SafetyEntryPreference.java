@@ -148,6 +148,15 @@ public final class SafetyEntryPreference extends Preference implements Comparabl
                             .getDimensionPixelSize(R.dimen.safety_center_entry_padding_end),
                     holder.itemView.getPaddingBottom());
         }
+
+        // Setting a customized description for entries that are part of an expandable group.
+        // Whereas for non-expandable entries, the default description of title and summary is used.
+        int resourceId =
+                mGroupId != null
+                        ? R.string.safety_center_entry_group_item_content_description
+                        : R.string.safety_center_entry_content_description;
+        holder.itemView.setContentDescription(
+                getContext().getString(resourceId, getTitle(), getSummary()));
     }
 
     private void sendIconActionIntent(SafetyCenterEntry.IconAction iconAction) {
