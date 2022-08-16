@@ -49,6 +49,7 @@ import android.safetycenter.SafetyCenterStatus
 import android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING
 import android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK
 import android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_RECOMMENDATION
+import android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN
 import android.safetycenter.SafetyCenterStatus.REFRESH_STATUS_DATA_FETCH_IN_PROGRESS
 import android.safetycenter.SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS
 import android.safetycenter.SafetyCenterStatus.REFRESH_STATUS_NONE
@@ -167,6 +168,15 @@ class SafetyCenterManagerTest {
     private val safetySourceCtsData = SafetySourceCtsData(context)
     private val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)!!
 
+    private val safetyCenterStatusUnknown =
+        SafetyCenterStatus.Builder(
+                safetyCenterResourcesContext.getStringByName(
+                    "overall_severity_level_ok_review_title"),
+                safetyCenterResourcesContext.getStringByName(
+                    "overall_severity_level_ok_review_summary"))
+            .setSeverityLevel(OVERALL_SEVERITY_LEVEL_UNKNOWN)
+            .build()
+
     private val safetyCenterStatusOk =
         SafetyCenterStatus.Builder(
                 safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_title"),
@@ -174,11 +184,11 @@ class SafetyCenterManagerTest {
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_OK)
             .build()
 
-    private val safetyCenterStatusOkScanning =
+    private val safetyCenterStatusUnknownScanning =
         SafetyCenterStatus.Builder(
                 safetyCenterResourcesContext.getStringByName("scanning_title"),
                 safetyCenterResourcesContext.getStringByName("loading_summary"))
-            .setSeverityLevel(OVERALL_SEVERITY_LEVEL_OK)
+            .setSeverityLevel(OVERALL_SEVERITY_LEVEL_UNKNOWN)
             .setRefreshStatus(REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS)
             .build()
 
@@ -350,7 +360,7 @@ class SafetyCenterManagerTest {
 
     private val safetyCenterDataFromConfigScanning =
         SafetyCenterData(
-            safetyCenterStatusOkScanning,
+            safetyCenterStatusUnknownScanning,
             emptyList(),
             listOf(
                 SafetyCenterEntryOrGroup(
@@ -359,7 +369,7 @@ class SafetyCenterManagerTest {
 
     private val safetyCenterDataFromConfig =
         SafetyCenterData(
-            safetyCenterStatusOk,
+            safetyCenterStatusUnknown,
             emptyList(),
             listOf(
                 SafetyCenterEntryOrGroup(
@@ -392,9 +402,9 @@ class SafetyCenterManagerTest {
                         .build())),
             emptyList())
 
-    private val safetyCenterDataOkReviewError =
+    private val safetyCenterDataUnknownReviewError =
         SafetyCenterData(
-            safetyCenterStatusOkReview,
+            safetyCenterStatusUnknown,
             emptyList(),
             listOf(SafetyCenterEntryOrGroup(safetyCenterEntryError(SINGLE_SOURCE_ID))),
             emptyList())
@@ -478,7 +488,7 @@ class SafetyCenterManagerTest {
 
     private val safetyCenterDataFromComplexConfig =
         SafetyCenterData(
-            safetyCenterStatusOk,
+            safetyCenterStatusUnknown,
             emptyList(),
             listOf(
                 SafetyCenterEntryOrGroup(
@@ -1076,7 +1086,7 @@ class SafetyCenterManagerTest {
             SINGLE_SOURCE_ID, SafetySourceErrorDetails(EVENT_SOURCE_STATE_CHANGED))
 
         val safetyCenterDataFromListener = listener.receiveSafetyCenterData()
-        assertThat(safetyCenterDataFromListener).isEqualTo(safetyCenterDataOkReviewError)
+        assertThat(safetyCenterDataFromListener).isEqualTo(safetyCenterDataUnknownReviewError)
         assertFailsWith(TimeoutCancellationException::class) {
             listener.receiveSafetyCenterErrorDetails(TIMEOUT_SHORT)
         }
@@ -1596,7 +1606,7 @@ class SafetyCenterManagerTest {
         val safetyCenterBeforeTimeout = listener.receiveSafetyCenterData()
         assertThat(safetyCenterBeforeTimeout).isEqualTo(safetyCenterDataFromConfigScanning)
         val safetyCenterDataAfterTimeout = listener.receiveSafetyCenterData()
-        assertThat(safetyCenterDataAfterTimeout).isEqualTo(safetyCenterDataOkReviewError)
+        assertThat(safetyCenterDataAfterTimeout).isEqualTo(safetyCenterDataUnknownReviewError)
         assertFailsWith(TimeoutCancellationException::class) {
             listener.receiveSafetyCenterErrorDetails(TIMEOUT_SHORT)
         }
@@ -1632,6 +1642,7 @@ class SafetyCenterManagerTest {
         SafetySourceReceiver.safetySourceData[
                 SafetySourceDataKey(REFRESH_FETCH_FRESH_DATA, SINGLE_SOURCE_ID)] =
             safetySourceCtsData.information
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.information)
         val listener = safetyCenterCtsHelper.addListener()
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
@@ -1654,6 +1665,29 @@ class SafetyCenterManagerTest {
         SafetySourceReceiver.safetySourceData[
                 SafetySourceDataKey(REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
             safetySourceCtsData.information
+        val listener = safetyCenterCtsHelper.addListener()
+
+        safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+            REFRESH_REASON_PAGE_OPEN)
+
+        val status1 = listener.receiveSafetyCenterData().status
+        assertThat(status1.refreshStatus).isEqualTo(REFRESH_STATUS_DATA_FETCH_IN_PROGRESS)
+        assertThat(status1.title.toString())
+            .isEqualTo(safetyCenterResourcesContext.getStringByName("scanning_title"))
+        assertThat(status1.summary.toString())
+            .isEqualTo(safetyCenterResourcesContext.getStringByName("loading_summary"))
+        val status2 = listener.receiveSafetyCenterData().status
+        assertThat(status2.refreshStatus).isEqualTo(REFRESH_STATUS_NONE)
+        assertThat(status2).isEqualTo(safetyCenterStatusOk)
+    }
+
+    @Test
+    fun refreshSafetySources_pageOpenRefreshWithPreExistingData_notifiesUiWithExistingTitle() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        SafetySourceReceiver.safetySourceData[
+                SafetySourceDataKey(REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
+            safetySourceCtsData.information
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.information)
         val listener = safetyCenterCtsHelper.addListener()
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
@@ -2321,7 +2355,7 @@ class SafetyCenterManagerTest {
 
         val expectedSafetyCenterData =
             SafetyCenterData(
-                safetyCenterStatusOk,
+                safetyCenterStatusUnknown,
                 emptyList(),
                 listOf(
                     SafetyCenterEntryOrGroup(

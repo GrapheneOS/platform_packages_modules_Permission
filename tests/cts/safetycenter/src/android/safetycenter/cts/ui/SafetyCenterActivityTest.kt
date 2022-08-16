@@ -33,7 +33,6 @@ import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_2
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_3
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.STATIC_SOURCES_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsHelper
-import android.safetycenter.cts.testing.SafetyCenterCtsHelper.Companion.STATUS_CARD_RESCAN_BUTTON_LABEL
 import android.safetycenter.cts.testing.SafetyCenterFlags
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import android.safetycenter.cts.testing.SafetySourceCtsData
@@ -44,6 +43,7 @@ import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.SafetySou
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.SafetySourceDataKey.Reason.RESOLVE_ACTION
 import android.safetycenter.cts.testing.SettingsPackage.getSettingsPackageName
 import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermissionIdentity
+import android.safetycenter.cts.testing.UiTestHelper.STATUS_CARD_RESCAN_BUTTON_LABEL
 import android.safetycenter.cts.testing.UiTestHelper.assertSourceDataDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.assertSourceIssueDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.assertSourceIssueNotDisplayed
