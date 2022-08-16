@@ -36,10 +36,21 @@ import com.android.permissioncontroller.permission.utils.StringUtils
 @RequiresApi(Build.VERSION_CODES.S)
 object PermissionUsageControlPreferenceUtils {
 
-    private val SENSOR_DATA_PERMISSIONS: List<String> = listOf(
+    val SENSOR_DATA_PERMISSIONS: List<String> = listOf(
         Manifest.permission_group.LOCATION,
         Manifest.permission_group.CAMERA,
-        Manifest.permission_group.MICROPHONE
+        Manifest.permission_group.MICROPHONE,
+        Manifest.permission_group.SENSORS,
+        Manifest.permission_group.CALENDAR,
+        Manifest.permission_group.CALL_LOG,
+        Manifest.permission_group.CONTACTS,
+        Manifest.permission_group.READ_MEDIA_VISUAL,
+        Manifest.permission_group.READ_MEDIA_AURAL,
+        Manifest.permission_group.STORAGE,
+        Manifest.permission_group.NEARBY_DEVICES,
+        Manifest.permission_group.PHONE,
+        Manifest.permission_group.ACTIVITY_RECOGNITION,
+        Manifest.permission_group.SMS,
     )
 
     @JvmStatic
@@ -107,7 +118,7 @@ object PermissionUsageControlPreferenceUtils {
             Manifest.permission_group.MICROPHONE -> {
                 PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__MICROPHONE_ACCESS_TIMELINE_VIEWED
             }
-            else -> 0
+            else -> return
         }
         PermissionControllerStatsLog.write(PERMISSION_USAGE_FRAGMENT_INTERACTION, sessionId, act)
     }
