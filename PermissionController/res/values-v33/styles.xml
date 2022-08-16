@@ -348,7 +348,7 @@
         <item name="app:layout_constraintWidth_min">84dp</item>
         <item name="app:layout_constraintHeight_min">84dp</item>
         <item name="app:layout_constraintTop_toTopOf">parent</item>
-        <item name="app:layout_constraintBottom_toTopOf">@+id/resolved_issue_text</item>
+        <item name="app:layout_constraintBottom_toTopOf">@id/resolved_issue_text</item>
         <item name="app:layout_constraintStart_toStartOf">parent</item>
         <item name="app:layout_constraintEnd_toEndOf">parent</item>
         <item name="app:layout_constraintVertical_chainStyle">packed</item>
@@ -363,7 +363,7 @@
         <item name="android:gravity">center</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="app:layout_constraintTop_toBottomOf">@+id/resolved_issue_image</item>
+        <item name="app:layout_constraintTop_toBottomOf">@id/resolved_issue_image</item>
         <item name="app:layout_constraintBottom_toBottomOf">parent</item>
         <item name="app:layout_constraintStart_toStartOf">parent</item>
         <item name="app:layout_constraintEnd_toEndOf">parent</item>
@@ -436,7 +436,7 @@
         <item name="android:maxLines">1</item>
         <item name="app:layout_constraintTop_toTopOf">parent</item>
         <item name="app:layout_constraintBottom_toBottomOf">parent</item>
-        <item name="app:layout_constraintEnd_toStartOf">@+id/widget_icon</item>
+        <item name="app:layout_constraintEnd_toStartOf">@id/widget_icon</item>
         <item name="app:layout_constraintHorizontal_bias">0</item>
     </style>
 

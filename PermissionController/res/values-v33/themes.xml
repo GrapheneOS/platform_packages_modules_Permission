@@ -38,6 +38,7 @@
         <item name="colorScIconInfo">@color/gm_green_500</item>
         <item name="colorScIconRecommend">@color/gm_yellow_500</item>
         <item name="colorScIconWarn">@color/gm_red_500</item>
+        <item name="colorScIconNull">@color/gm_grey_600</item>
 
         <!-- Buttons -->
         <item name="scActionButtonStyle">@style/SafetyCenter.MaterialActionButton</item>
@@ -65,6 +66,7 @@
         <item name="colorScIconInfo">@color/gm_green_500</item>
         <item name="colorScIconRecommend">@color/gm_yellow_500</item>
         <item name="colorScIconWarn">@color/gm_red_500</item>
+        <item name="colorScIconNull">@color/gm_grey_600</item>
 
         <!-- Buttons -->
         <item name="scActionButtonStyle">@style/SafetyCenter.MaterialActionButton</item>
