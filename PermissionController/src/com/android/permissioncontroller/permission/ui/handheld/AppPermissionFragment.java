@@ -437,6 +437,8 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         if (mViewModel.getFullStorageStateLiveData().isInitialized()) {
             setSpecialStorageState(mViewModel.getFullStorageStateLiveData().getValue());
         }
+
+        setupStorageScopesLink();
     }
 
     private void setButtonState(CompoundButton button, AppPermissionViewModel.ButtonState state) {
@@ -464,8 +466,6 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
 
         mAllowAlwaysButton.setText(R.string.app_permission_button_allow_all_files);
         mAllowForegroundButton.setText(R.string.app_permission_button_allow_media_only);
-
-        setupStorageScopesLink(v);
 
         if (storageState == null) {
             textView.setVisibility(View.GONE);
@@ -653,7 +653,21 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
 
     private CharSequence mOrigDenyButtonText;
 
-    private void setupStorageScopesLink(View rootView) {
+    private void setupStorageScopesLink() {
+        View rootView = getView();
+        if (rootView == null) {
+            return;
+        }
+
+        switch (mPermGroupName) {
+            case android.Manifest.permission_group.STORAGE:
+            case android.Manifest.permission_group.READ_MEDIA_AURAL:
+            case android.Manifest.permission_group.READ_MEDIA_VISUAL:
+                break;
+            default:
+                return;
+        }
+
         if (StorageScopesUtils.storageScopesEnabled(mPackageName)) {
             if (mOrigDenyButtonText == null) {
                 mOrigDenyButtonText = mDenyButton.getText();
