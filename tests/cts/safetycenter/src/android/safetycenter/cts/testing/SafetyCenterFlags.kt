@@ -37,7 +37,8 @@ object SafetyCenterFlags {
      * Flag that determines whether we should show error entries for sources that timeout when
      * refreshing them.
      */
-    private const val PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT = "show_error_entries_on_timeout"
+    private const val PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT =
+        "safety_center_show_error_entries_on_timeout"
 
     /** Flag that determines whether we should replace the IconAction of the lock screen source. */
     private const val PROPERTY_REPLACE_LOCK_SCREEN_ICON_ACTION =
