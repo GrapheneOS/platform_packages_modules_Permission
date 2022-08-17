@@ -553,6 +553,8 @@ public class GrantPermissionsActivity extends SettingsActivity
         } else if (requestCode == CONFIGURE_STORAGE_SCOPES_REQUEST_CODE) {
             if (StorageScopesUtils.storageScopesEnabled(mTargetPackage)) {
                 onPermissionGrantResult(android.Manifest.permission_group.STORAGE, GrantPermissionsViewHandler.DENIED);
+                onPermissionGrantResult(android.Manifest.permission_group.READ_MEDIA_AURAL, GrantPermissionsViewHandler.DENIED);
+                onPermissionGrantResult(android.Manifest.permission_group.READ_MEDIA_VISUAL, GrantPermissionsViewHandler.DENIED);
             }
         }
     }
