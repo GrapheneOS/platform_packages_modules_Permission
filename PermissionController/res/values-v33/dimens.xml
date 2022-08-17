@@ -27,4 +27,5 @@
     <dimen name="safety_center_group_header_expanded_padding_bottom">8dp</dimen>
     <dimen name="safety_center_group_header_collapsed_padding_top">20dp</dimen>
     <dimen name="safety_center_group_header_collapsed_padding_bottom">20dp</dimen>
+    <dimen name="safety_center_card_margin_bottom">24dp</dimen>
 </resources>
