@@ -527,7 +527,7 @@ class SafetySourceIssueTest {
                     "issue_type_id")
                 .addAction(action1)
                 .addAction(action2)
-                .addAction(action1)
+                .addAction(action3)
 
         val exception =
             assertFailsWith(IllegalArgumentException::class) { safetySourceIssueBuilder.build() }

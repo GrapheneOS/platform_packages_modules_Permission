@@ -164,12 +164,7 @@ class SafetySourceDataTest {
                 .setStatus(createStatus(SEVERITY_LEVEL_INFORMATION))
                 .addIssue(createIssue(SEVERITY_LEVEL_RECOMMENDATION))
 
-        val exception = assertFailsWith(IllegalArgumentException::class) { builder.build() }
-        assertThat(exception)
-            .hasMessageThat()
-            .isEqualTo(
-                "Safety source data must not contain any issue with a severity level both greater" +
-                    " than SEVERITY_LEVEL_INFORMATION and greater than the status severity level")
+        assertFailsWith(IllegalArgumentException::class) { builder.build() }
     }
 
     @Test
@@ -207,12 +202,7 @@ class SafetySourceDataTest {
                 .setStatus(createStatus(SEVERITY_LEVEL_RECOMMENDATION))
                 .addIssue(createIssue(SEVERITY_LEVEL_CRITICAL_WARNING))
 
-        val exception = assertFailsWith(IllegalArgumentException::class) { builder.build() }
-        assertThat(exception)
-            .hasMessageThat()
-            .isEqualTo(
-                "Safety source data must not contain any issue with a severity level both greater" +
-                    " than SEVERITY_LEVEL_INFORMATION and greater than the status severity level")
+        assertFailsWith(IllegalArgumentException::class) { builder.build() }
     }
 
     @Test
