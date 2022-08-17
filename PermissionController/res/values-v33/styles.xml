@@ -578,4 +578,10 @@
         <item name="android:layout_width">24dp</item>
         <item name="android:layout_height">24dp</item>
     </style>
+
+    <style name="SafetyCenterNoLabelPreferenceCategory"
+           parent="android:Widget.DeviceDefault">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">16dp</item>
+    </style>
 </resources>
