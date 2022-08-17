@@ -20,6 +20,8 @@ import android.content.Context
 import android.provider.Settings
 import android.text.TextUtils
 import android.util.Log
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 
 /**
  * Code reference from https://source.corp.google.com/android/frameworks/base/packages/SettingsLib/
@@ -28,29 +30,33 @@ import android.util.Log
 object AccessibilitySettingsUtil {
     private const val ENABLED_ACCESSIBILITY_SERVICES_SEPARATOR = ':'
     private val LOG_TAG = AccessibilitySettingsUtil::class.java.simpleName
+    private val lock = Mutex()
 
     /**
      * Changes an accessibility component's state.
      */
-    fun disableAccessibilityService(context: Context, serviceToBeDisabled: ComponentName) {
-        val settingsEnabledA11yServices = getEnabledServicesFromSettings(context)
-        if (settingsEnabledA11yServices.isEmpty() ||
-            !settingsEnabledA11yServices.contains(serviceToBeDisabled)) {
-            Log.w(LOG_TAG, "${serviceToBeDisabled.toShortString()} is already disabled " +
-                "or not installed.")
-            return
+    suspend fun disableAccessibilityService(context: Context, serviceToBeDisabled: ComponentName) {
+        lock.withLock {
+            val settingsEnabledA11yServices = getEnabledServicesFromSettings(context)
+            if (settingsEnabledA11yServices.isEmpty() ||
+                !settingsEnabledA11yServices.contains(serviceToBeDisabled)
+            ) {
+                Log.w(LOG_TAG, "${serviceToBeDisabled.toShortString()} is already disabled " +
+                    "or not installed.")
+                return
+            }
+
+            settingsEnabledA11yServices.remove(serviceToBeDisabled)
+
+            val updatedEnabledServices = settingsEnabledA11yServices.map { it.flattenToString() }
+                .joinToString(separator = ENABLED_ACCESSIBILITY_SERVICES_SEPARATOR.toString())
+
+            Settings.Secure.putString(
+                context.contentResolver,
+                Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES,
+                updatedEnabledServices
+            )
         }
-
-        settingsEnabledA11yServices.remove(serviceToBeDisabled)
-
-        val updatedEnabledServices = settingsEnabledA11yServices.map { it.flattenToString() }
-            .joinToString(separator = ENABLED_ACCESSIBILITY_SERVICES_SEPARATOR.toString())
-
-        Settings.Secure.putString(
-            context.contentResolver,
-            Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES,
-            updatedEnabledServices
-        )
     }
 
     /**

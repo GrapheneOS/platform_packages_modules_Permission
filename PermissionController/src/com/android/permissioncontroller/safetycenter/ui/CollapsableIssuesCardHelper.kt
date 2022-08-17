@@ -133,21 +133,20 @@ class CollapsableIssuesCardHelper(val safetyCenterViewModel: SafetyCenterViewMod
     private fun maybeReorderFocusedSafetyCenterIssueInList(
         issueCardPreferences: List<IssueCardPreference>
     ): ReorderedSafetyCenterIssueList {
-        focusedSafetyCenterIssueKey?.let { focusedIssueKey ->
-            val mutablePreferencesList = issueCardPreferences.toMutableList()
-            val focusedIssueCardPreference: IssueCardPreference? =
-                findAndRemovePreferenceInList(focusedIssueKey, mutablePreferencesList)
+        val mutablePreferencesList = issueCardPreferences.toMutableList()
+        val focusedIssueCardPreference: IssueCardPreference? = focusedSafetyCenterIssueKey?.let {
+            findAndRemovePreferenceInList(it, mutablePreferencesList)
+        }
 
-            // If focused issue preference found, place at/near top of list and return new list and
-            // correct number of issue to show while collapsed
-            focusedIssueCardPreference?.let { issueCardPreference ->
-                val focusedIssuePlacement =
-                    getFocusedIssuePlacement(issueCardPreference, mutablePreferencesList)
-                mutablePreferencesList.add(focusedIssuePlacement.index, issueCardPreference)
-                return ReorderedSafetyCenterIssueList(
+        // If focused issue preference found, place at/near top of list and return new list and
+        // correct number of issue to show while collapsed
+        if (focusedIssueCardPreference != null) {
+            val focusedIssuePlacement =
+                getFocusedIssuePlacement(focusedIssueCardPreference, mutablePreferencesList)
+            mutablePreferencesList.add(focusedIssuePlacement.index, focusedIssueCardPreference)
+            return ReorderedSafetyCenterIssueList(
                     mutablePreferencesList.toList(),
                     focusedIssuePlacement.numberForShownIssuesCollapsed)
-            }
         }
 
         return ReorderedSafetyCenterIssueList(
