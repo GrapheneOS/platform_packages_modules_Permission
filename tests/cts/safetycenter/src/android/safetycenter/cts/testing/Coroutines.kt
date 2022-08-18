@@ -54,5 +54,5 @@ object Coroutines {
     val TIMEOUT_LONG: Duration = Duration.ofSeconds(15)
 
     /** A short timeout, to be used for actions that are expected not to complete. */
-    val TIMEOUT_SHORT: Duration = Duration.ofMillis(500)
+    val TIMEOUT_SHORT: Duration = Duration.ofMillis(750)
 }
