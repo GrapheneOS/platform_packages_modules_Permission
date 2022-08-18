@@ -27,6 +27,9 @@ import static java.util.Objects.requireNonNull;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.safetycenter.SafetyCenterData;
 import android.safetycenter.SafetyCenterEntry;
@@ -188,6 +191,17 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
 
         getPreferenceManager()
                 .setPreferenceComparisonCallback(new SafetyPreferenceComparisonCallback());
+    }
+
+    // Set the default divider line between preferences to be transparent
+    @Override
+    public void setDivider(Drawable divider) {
+        super.setDivider(new ColorDrawable(Color.TRANSPARENT));
+    }
+
+    @Override
+    public void setDividerHeight(int height) {
+        super.setDividerHeight(0);
     }
 
     @Override
