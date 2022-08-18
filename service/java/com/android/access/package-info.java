@@ -14,18 +14,9 @@
  * limitations under the License.
  */
 
-package com.android.permission.access.external
-
-interface UserHandle {
-    companion object {
-        fun getAppId(uid: Int): Int {
-            throw NotImplementedError()
-        }
-    }
-}
-
-object UserHandleCompat {
-    fun getUserId(uid: Int): Int {
-        throw NotImplementedError()
-    }
-}
+/**
+ * @hide
+ * TODO(b/146466118) remove this javadoc tag
+ */
+@android.annotation.Hide
+package com.android.access;
