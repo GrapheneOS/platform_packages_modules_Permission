@@ -1386,7 +1386,7 @@ class SafetyCenterManagerTest {
 
     @Test
     fun refreshSafetySources_repliesWithWrongBroadcastId_doesntCompleteRefresh() {
-        safetyCenterCtsHelper.setAllRefreshTimeoutsTo(TIMEOUT_SHORT)
+        SafetyCenterFlags.setAllRefreshTimeoutsTo(TIMEOUT_SHORT)
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         SafetySourceReceiver.safetySourceData[
                 SafetySourceDataKey(REFRESH_FETCH_FRESH_DATA, SINGLE_SOURCE_ID)] =
@@ -1399,7 +1399,7 @@ class SafetyCenterManagerTest {
 
         // Because wrong ID, refresh hasn't finished. Wait for timeout.
         listener.receiveSafetyCenterErrorDetails()
-        safetyCenterCtsHelper.setAllRefreshTimeoutsTo(TIMEOUT_LONG)
+        SafetyCenterFlags.setAllRefreshTimeoutsTo(TIMEOUT_LONG)
 
         SafetySourceReceiver.overrideBroadcastId = null
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
@@ -1451,7 +1451,7 @@ class SafetyCenterManagerTest {
 
     @Test
     fun refreshSafetySources_waitForPreviousRefreshToTimeout_completesSuccessfully() {
-        safetyCenterCtsHelper.setAllRefreshTimeoutsTo(TIMEOUT_SHORT)
+        SafetyCenterFlags.setAllRefreshTimeoutsTo(TIMEOUT_SHORT)
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         val listener = safetyCenterCtsHelper.addListener()
 
@@ -1462,7 +1462,7 @@ class SafetyCenterManagerTest {
         assertThat(apiSafetySourceData1).isNull()
         // Wait for the ongoing refresh to timeout.
         listener.receiveSafetyCenterErrorDetails()
-        safetyCenterCtsHelper.setAllRefreshTimeoutsTo(TIMEOUT_LONG)
+        SafetyCenterFlags.setAllRefreshTimeoutsTo(TIMEOUT_LONG)
         SafetySourceReceiver.safetySourceData[
                 SafetySourceDataKey(REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
             safetySourceCtsData.information
@@ -1493,7 +1493,7 @@ class SafetyCenterManagerTest {
 
     @Test
     fun refreshSafetySources_withTrackedSourceThatTimesOut_timesOut() {
-        safetyCenterCtsHelper.setAllRefreshTimeoutsTo(TIMEOUT_SHORT)
+        SafetyCenterFlags.setAllRefreshTimeoutsTo(TIMEOUT_SHORT)
         safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
         // SOURCE_ID_1 will timeout
         for (sourceId in listOf(SOURCE_ID_2, SOURCE_ID_3)) {
@@ -1515,7 +1515,7 @@ class SafetyCenterManagerTest {
 
     @Test
     fun refreshSafetySources_withUntrackedSourceThatTimesOut_doesNotTimeOut() {
-        safetyCenterCtsHelper.setAllRefreshTimeoutsTo(TIMEOUT_SHORT)
+        SafetyCenterFlags.setAllRefreshTimeoutsTo(TIMEOUT_SHORT)
         SafetyCenterFlags.untrackedSources = setOf(SOURCE_ID_1)
         safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
         // SOURCE_ID_1 will timeout
@@ -1536,7 +1536,7 @@ class SafetyCenterManagerTest {
 
     @Test
     fun refreshSafetySources_withMultipleUntrackedSourcesThatTimeOut_doesNotTimeOut() {
-        safetyCenterCtsHelper.setAllRefreshTimeoutsTo(TIMEOUT_SHORT)
+        SafetyCenterFlags.setAllRefreshTimeoutsTo(TIMEOUT_SHORT)
         SafetyCenterFlags.untrackedSources = setOf(SOURCE_ID_1, SOURCE_ID_2)
         safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
         // SOURCE_ID_1 and SOURCE_ID_2 will timeout
@@ -1555,7 +1555,7 @@ class SafetyCenterManagerTest {
 
     @Test
     fun refreshSafetySources_withEmptyUntrackedSourceConfigAndSourceThatTimesOut_timesOut() {
-        safetyCenterCtsHelper.setAllRefreshTimeoutsTo(TIMEOUT_SHORT)
+        SafetyCenterFlags.setAllRefreshTimeoutsTo(TIMEOUT_SHORT)
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         // SINGLE_SOURCE_ID will timeout
         val listener = safetyCenterCtsHelper.addListener()
@@ -1572,7 +1572,7 @@ class SafetyCenterManagerTest {
 
     @Test
     fun refreshSafetySources_withTrackedSourceThatHasNoReceiver_doesNotTimeOut() {
-        safetyCenterCtsHelper.setAllRefreshTimeoutsTo(TIMEOUT_SHORT)
+        SafetyCenterFlags.setAllRefreshTimeoutsTo(TIMEOUT_SHORT)
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_OTHER_PACKAGE_CONFIG)
         val listener = safetyCenterCtsHelper.addListener()
 
@@ -1585,7 +1585,7 @@ class SafetyCenterManagerTest {
 
     @Test
     fun refreshSafetySources_withShowEntriesOnTimeout_marksSafetySourceAsError() {
-        safetyCenterCtsHelper.setAllRefreshTimeoutsTo(TIMEOUT_SHORT)
+        SafetyCenterFlags.setAllRefreshTimeoutsTo(TIMEOUT_SHORT)
         SafetyCenterFlags.showErrorEntriesOnTimeout = true
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         val listener = safetyCenterCtsHelper.addListener()
@@ -1604,7 +1604,7 @@ class SafetyCenterManagerTest {
 
     @Test
     fun refreshSafetySources_withShowEntriesOnTimeout_stopsShowingErrorWhenTryingAgain() {
-        safetyCenterCtsHelper.setAllRefreshTimeoutsTo(TIMEOUT_SHORT)
+        SafetyCenterFlags.setAllRefreshTimeoutsTo(TIMEOUT_SHORT)
         SafetyCenterFlags.showErrorEntriesOnTimeout = true
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         val listener = safetyCenterCtsHelper.addListener()
@@ -1613,7 +1613,7 @@ class SafetyCenterManagerTest {
         listener.receiveSafetyCenterData()
         listener.receiveSafetyCenterData()
 
-        safetyCenterCtsHelper.setAllRefreshTimeoutsTo(TIMEOUT_LONG)
+        SafetyCenterFlags.setAllRefreshTimeoutsTo(TIMEOUT_LONG)
         SafetySourceReceiver.safetySourceData[
                 SafetySourceDataKey(REFRESH_FETCH_FRESH_DATA, SINGLE_SOURCE_ID)] =
             safetySourceCtsData.information
