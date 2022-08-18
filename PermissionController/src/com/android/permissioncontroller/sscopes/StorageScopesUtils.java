@@ -264,13 +264,9 @@ public class StorageScopesUtils {
         String[] perms = {
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 // WRITE_EXTERNAL_STORAGE grants READ permission automatically
-
-                // TODO uncomment after rebase onto AOSP T
-                /*
                 Manifest.permission.READ_MEDIA_AUDIO,
                 Manifest.permission.READ_MEDIA_IMAGES,
                 Manifest.permission.READ_MEDIA_VIDEO,
-                 */
         };
 
         AppOpsManager appOps = ctx.getSystemService(AppOpsManager.class);
