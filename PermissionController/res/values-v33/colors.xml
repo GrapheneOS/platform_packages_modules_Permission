@@ -27,6 +27,7 @@
     <color name="gm_green_600">#1E8E3E</color>
     <color name="gm_yellow_600">#F9AB00</color>
     <color name="gm_red_600">#C5221F</color>
+    <color name="gm_grey_600">#80868B</color>
 
     <color name="gm_green_500">#34A853</color>
     <color name="gm_yellow_500">#FBBC04</color>
@@ -35,6 +36,10 @@
     <color name="gm_green_400">#5BB974</color>
     <color name="gm_yellow_400">#FCC934</color>
     <color name="gm_red_400">#EE675C</color>
+
+    <color name="gm_green_300">#81C995</color>
+    <color name="gm_yellow_300">#FDD663</color>
+    <color name="gm_red_300">#F28B82</color>
 
     <color name="gm_green_100">#CEEAD6</color>
     <color name="gm_yellow_100">#FEEFC3</color>

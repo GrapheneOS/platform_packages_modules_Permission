@@ -43,7 +43,7 @@ final class SafetyCenterFlags {
     static final String PROPERTY_SAFETY_CENTER_ENABLED = "safety_center_is_enabled";
 
     private static final String PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT =
-            "show_error_entries_on_timeout";
+            "safety_center_show_error_entries_on_timeout";
 
     private static final String PROPERTY_REPLACE_LOCK_SCREEN_ICON_ACTION =
             "safety_center_replace_lock_screen_icon_action";

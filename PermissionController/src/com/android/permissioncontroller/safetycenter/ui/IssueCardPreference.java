@@ -35,6 +35,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.ColorRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -279,7 +280,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
         Button button = new MaterialButton(themedContext, null, R.attr.scActionButtonStyle);
         button.setBackgroundTintList(
                 ContextCompat.getColorStateList(
-                        context, getButtonColorFromSeverity(mIssue.getSeverityLevel())));
+                        context, getPrimaryButtonColorFromSeverity(mIssue.getSeverityLevel())));
 
         button.setLayoutParams(new ViewGroup.MarginLayoutParams(MATCH_PARENT, WRAP_CONTENT));
         return button;
@@ -292,7 +293,8 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
                 new MaterialButton(themedContext, null, R.attr.scSecondaryActionButtonStyle);
         button.setStrokeColor(
                 ContextCompat.getColorStateList(
-                        context, getButtonColorFromSeverity(mIssue.getSeverityLevel())));
+                        context,
+                        getSecondaryButtonStrokeColorFromSeverity(mIssue.getSeverityLevel())));
 
         int margin =
                 context.getResources()
@@ -304,17 +306,40 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
         return button;
     }
 
-    private static int getButtonColorFromSeverity(int issueSeverityLevel) {
+    @ColorRes
+    private static int getPrimaryButtonColorFromSeverity(int issueSeverityLevel) {
+        return pickColorForSeverityLevel(
+                issueSeverityLevel,
+                R.color.safety_center_button_info,
+                R.color.safety_center_button_recommend,
+                R.color.safety_center_button_warn);
+    }
+
+    @ColorRes
+    private static int getSecondaryButtonStrokeColorFromSeverity(int issueSeverityLevel) {
+        return pickColorForSeverityLevel(
+                issueSeverityLevel,
+                R.color.safety_center_outline_button_info,
+                R.color.safety_center_outline_button_recommend,
+                R.color.safety_center_outline_button_warn);
+    }
+
+    @ColorRes
+    private static int pickColorForSeverityLevel(
+            int issueSeverityLevel,
+            @ColorRes int infoColor,
+            @ColorRes int recommendColor,
+            @ColorRes int warnColor) {
         switch (issueSeverityLevel) {
             case SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_OK:
-                return R.color.safety_center_button_info;
+                return infoColor;
             case SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_RECOMMENDATION:
-                return R.color.safety_center_button_recommend;
+                return recommendColor;
             case SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_CRITICAL_WARNING:
-                return R.color.safety_center_button_warn;
+                return warnColor;
             default:
                 Log.w(TAG, String.format("Unexpected issueSeverityLevel: %s", issueSeverityLevel));
-                return R.color.safety_center_button_info;
+                return infoColor;
         }
     }
 
