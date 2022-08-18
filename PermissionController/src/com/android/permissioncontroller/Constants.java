@@ -82,14 +82,6 @@ public class Constants {
     /**
      * Name of file to containing the packages we already showed a notification for.
      *
-     * @see com.android.permissioncontroller.privacysources.NotificationListenerCheck
-     */
-    public static final String NOTIFICATION_LISTENER_CHECK_ALREADY_NOTIFIED_FILE =
-            "packages_already_notified_notification_listener";
-
-    /**
-     * Name of file to containing the packages we already showed a notification for.
-     *
      * @see com.android.permissioncontroller.permission.service.NotificationListenerCheck
      */
     public static final String ACCESSIBILITY_SERVICES_ALREADY_NOTIFIED_FILE =
