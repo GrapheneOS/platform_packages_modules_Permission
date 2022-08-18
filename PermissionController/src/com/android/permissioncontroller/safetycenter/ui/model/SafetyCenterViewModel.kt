@@ -37,7 +37,11 @@ abstract class SafetyCenterViewModel(protected val app: Application) : AndroidVi
 
     abstract fun dismissIssue(issue: SafetyCenterIssue)
 
-    abstract fun executeIssueAction(issue: SafetyCenterIssue, action: SafetyCenterIssue.Action)
+    abstract fun executeIssueAction(
+        issue: SafetyCenterIssue,
+        action: SafetyCenterIssue.Action,
+        launchTaskId: Int?
+    )
 
     /**
      * Marks a resolved [SafetyCenterIssue] as fully complete, meaning the resolution success
