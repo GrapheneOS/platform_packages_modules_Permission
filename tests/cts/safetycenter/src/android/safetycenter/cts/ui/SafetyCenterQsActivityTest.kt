@@ -125,18 +125,18 @@ class SafetyCenterQsActivityTest {
     }
 
     private fun isSensorEnabled(sensor: Int): Boolean {
-        val isSensorDisabled = callWithShellPermissionIdentity(
-            { sensorPrivacyManager.isSensorPrivacyEnabled(TOGGLE_TYPE_SOFTWARE, sensor) },
-            OBSERVE_SENSOR_PRIVACY)
+        val isSensorDisabled =
+            callWithShellPermissionIdentity(OBSERVE_SENSOR_PRIVACY) {
+                sensorPrivacyManager.isSensorPrivacyEnabled(TOGGLE_TYPE_SOFTWARE, sensor)
+            }
         return !isSensorDisabled
     }
 
     private fun setSensorState(sensor: Int, enabled: Boolean) {
         val disableSensor = !enabled
         // The sensor is enabled iff the privacy control is disabled.
-        callWithShellPermissionIdentity(
-            { sensorPrivacyManager.setSensorPrivacy(sensor, disableSensor) },
-            MANAGE_SENSOR_PRIVACY,
-            OBSERVE_SENSOR_PRIVACY)
+        callWithShellPermissionIdentity(MANAGE_SENSOR_PRIVACY, OBSERVE_SENSOR_PRIVACY) {
+            sensorPrivacyManager.setSensorPrivacy(sensor, disableSensor)
+        }
     }
 }

@@ -125,12 +125,10 @@ class SafetyCenterManagedDeviceTest {
 
     private val redirectPendingIntentForWork
         get() =
-            callWithShellPermissionIdentity(
-                {
-                    SafetySourceCtsData.createRedirectPendingIntent(
-                        getContextForUser(deviceState.workProfile().userHandle()))
-                },
-                INTERACT_ACROSS_USERS)
+            callWithShellPermissionIdentity(INTERACT_ACROSS_USERS) {
+                SafetySourceCtsData.createRedirectPendingIntent(
+                    getContextForUser(deviceState.workProfile().userHandle()))
+            }
 
     private fun safetyCenterEntryBuilder(id: String) =
         SafetyCenterEntry.Builder(id, "OK")
@@ -491,23 +489,25 @@ class SafetyCenterManagedDeviceTest {
     }
 
     private fun getContextForUser(userHandle: UserHandle): Context {
-        return callWithShellPermissionIdentity(
-            { context.createContextAsUser(userHandle, 0) }, INTERACT_ACROSS_USERS_FULL)
+        return callWithShellPermissionIdentity(INTERACT_ACROSS_USERS_FULL) {
+            context.createContextAsUser(userHandle, 0)
+        }
     }
 
     private fun SafetyCenterManager.getSafetySourceDataWithInteractAcrossUsersPermission(
         id: String
     ): SafetySourceData? =
-        callWithShellPermissionIdentity(
-            { getSafetySourceDataWithPermission(id) }, INTERACT_ACROSS_USERS_FULL)
+        callWithShellPermissionIdentity(INTERACT_ACROSS_USERS_FULL) {
+            getSafetySourceDataWithPermission(id)
+        }
 
     private fun SafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
         id: String,
         dataToSet: SafetySourceData
     ) =
-        callWithShellPermissionIdentity(
-            { setSafetySourceDataWithPermission(id, dataToSet, EVENT_SOURCE_STATE_CHANGED) },
-            INTERACT_ACROSS_USERS_FULL)
+        callWithShellPermissionIdentity(INTERACT_ACROSS_USERS_FULL) {
+            setSafetySourceDataWithPermission(id, dataToSet, EVENT_SOURCE_STATE_CHANGED)
+        }
 
     private fun setQuietMode(value: Boolean) {
         deviceState.workProfile().setQuietMode(value)
