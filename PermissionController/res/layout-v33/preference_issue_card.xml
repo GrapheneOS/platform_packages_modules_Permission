@@ -49,7 +49,7 @@
     <com.android.permissioncontroller.permission.ui.widget.SafetyProtectionSectionView
         android:id="@+id/issue_card_protected_by_android"
         android:importantForAccessibility="no"
-        style="@style/SafetyCenterIssueFooter" />
+        style="@style/SafetyCenterIssueSafetyProtectionSection" />
 
     <ImageView
         android:id="@+id/resolved_issue_image"
