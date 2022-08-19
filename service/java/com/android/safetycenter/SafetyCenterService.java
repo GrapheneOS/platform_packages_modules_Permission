@@ -638,7 +638,6 @@ public final class SafetyCenterService extends SystemService {
                                 + ", which does not correspond to an existing user");
                 return false;
             }
-            // TODO(b/223132917): Check if user is enabled, running and/or if quiet mode is enabled?
             return true;
         }
 
