@@ -18,19 +18,8 @@ package com.android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
-import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED;
-import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SAFETY_SOURCE_PROFILE_TYPE__PROFILE_TYPE_MANAGED;
-import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SAFETY_SOURCE_PROFILE_TYPE__PROFILE_TYPE_PERSONAL;
-import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SEVERITY_LEVEL__SAFETY_SEVERITY_CRITICAL_WARNING;
-import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SEVERITY_LEVEL__SAFETY_SEVERITY_LEVEL_UNKNOWN;
-import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SEVERITY_LEVEL__SAFETY_SEVERITY_OK;
-import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SEVERITY_LEVEL__SAFETY_SEVERITY_RECOMMENDATION;
-import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SEVERITY_LEVEL__SAFETY_SEVERITY_UNSPECIFIED;
-import static com.android.permission.PermissionStatsLog.SAFETY_STATE;
-import static com.android.permission.PermissionStatsLog.SAFETY_STATE__OVERALL_SEVERITY_LEVEL__SAFETY_SEVERITY_CRITICAL_WARNING;
-import static com.android.permission.PermissionStatsLog.SAFETY_STATE__OVERALL_SEVERITY_LEVEL__SAFETY_SEVERITY_LEVEL_UNKNOWN;
-import static com.android.permission.PermissionStatsLog.SAFETY_STATE__OVERALL_SEVERITY_LEVEL__SAFETY_SEVERITY_OK;
-import static com.android.permission.PermissionStatsLog.SAFETY_STATE__OVERALL_SEVERITY_LEVEL__SAFETY_SEVERITY_RECOMMENDATION;
+import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__ERROR;
+import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__SUCCESS;
 
 import static java.util.Collections.emptyList;
 
@@ -50,6 +39,7 @@ import android.icu.text.ListFormatter;
 import android.icu.text.MessageFormat;
 import android.icu.util.ULocale;
 import android.os.Binder;
+import android.os.SystemClock;
 import android.os.UserHandle;
 import android.safetycenter.SafetyCenterData;
 import android.safetycenter.SafetyCenterEntry;
@@ -88,9 +78,6 @@ import com.android.safetycenter.persistence.PersistedSafetyCenterIssue;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 
 import java.io.PrintWriter;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -129,13 +116,14 @@ final class SafetyCenterDataTracker {
     private final ArrayMap<SafetyCenterIssueKey, IssueData> mSafetyCenterIssueCache =
             new ArrayMap<>();
 
-    private final ArraySet<SafetyCenterIssueActionId> mSafetyCenterIssueActionsInFlight =
-            new ArraySet<>();
+    private final ArrayMap<SafetyCenterIssueActionId, Long> mSafetyCenterIssueActionsInFlight =
+            new ArrayMap<>();
 
     @NonNull private final Context mContext;
     @NonNull private final SafetyCenterResourcesContext mSafetyCenterResourcesContext;
     @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
     @NonNull private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker;
+    @NonNull private final WestworldLogger mWestworldLogger;
 
     private boolean mSafetyCenterIssueCacheDirty = false;
 
@@ -148,11 +136,13 @@ final class SafetyCenterDataTracker {
             @NonNull Context context,
             @NonNull SafetyCenterResourcesContext safetyCenterResourcesContext,
             @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
-            @NonNull SafetyCenterRefreshTracker safetyCenterRefreshTracker) {
+            @NonNull SafetyCenterRefreshTracker safetyCenterRefreshTracker,
+            @NonNull WestworldLogger westworldLogger) {
         mContext = context;
         mSafetyCenterResourcesContext = safetyCenterResourcesContext;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
         mSafetyCenterRefreshTracker = safetyCenterRefreshTracker;
+        mWestworldLogger = westworldLogger;
     }
 
     /**
@@ -360,19 +350,39 @@ final class SafetyCenterDataTracker {
     }
 
     /** Marks the given {@link SafetyCenterIssueActionId} as in-flight. */
-    void markSafetyCenterIssueActionAsInFlight(
+    void markSafetyCenterIssueActionInFlight(
             @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
-        mSafetyCenterIssueActionsInFlight.add(safetyCenterIssueActionId);
+        mSafetyCenterIssueActionsInFlight.put(
+                safetyCenterIssueActionId, SystemClock.elapsedRealtime());
     }
 
     /**
-     * Unmarks the given {@link SafetyCenterIssueActionId} as in-flight and returns whether it
-     * caused the underlying {@link SafetyCenterData} to change.
+     * Unmarks the given {@link SafetyCenterIssueActionId} as in-flight, logs that event to
+     * Westworld with the given {@code result} value, and returns {@code true} if the underlying
+     * {@link SafetyCenterData} changed.
      */
-    boolean unmarkSafetyCenterIssueActionAsInFlight(
-            @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
-        return mSafetyCenterIssueActionsInFlight.remove(safetyCenterIssueActionId)
-                && getSafetySourceIssueAction(safetyCenterIssueActionId) != null;
+    boolean unmarkSafetyCenterIssueActionInFlight(
+            @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId,
+            @WestworldLogger.SystemEventResult int result) {
+        Long startTime = mSafetyCenterIssueActionsInFlight.remove(safetyCenterIssueActionId);
+        if (startTime == null) {
+            Log.w(TAG, "Attempted to unmark unknown action: " + safetyCenterIssueActionId);
+            return false;
+        }
+
+        SafetyCenterIssueKey issueKey = safetyCenterIssueActionId.getSafetyCenterIssueKey();
+        SafetySourceIssue issue = getSafetySourceIssue(issueKey);
+        if (issue != null) {
+            Duration timeTaken = Duration.ofMillis(SystemClock.elapsedRealtime() - startTime);
+            mWestworldLogger.writeInlineActionSystemEvent(
+                    issueKey.getSafetySourceId(),
+                    issueKey.getUserId(),
+                    issue.getIssueTypeId(),
+                    timeTaken,
+                    result);
+        }
+
+        return getSafetySourceIssueAction(safetyCenterIssueActionId) != null;
     }
 
     /**
@@ -544,7 +554,7 @@ final class SafetyCenterDataTracker {
         }
         // Loop in reverse index order to be able to remove entries while iterating.
         for (int i = mSafetyCenterIssueActionsInFlight.size() - 1; i >= 0; i--) {
-            SafetyCenterIssueActionId issueActionId = mSafetyCenterIssueActionsInFlight.valueAt(i);
+            SafetyCenterIssueActionId issueActionId = mSafetyCenterIssueActionsInFlight.keyAt(i);
             if (issueActionId.getSafetyCenterIssueKey().getUserId() == userId) {
                 mSafetyCenterIssueActionsInFlight.removeAt(i);
             }
@@ -591,8 +601,10 @@ final class SafetyCenterDataTracker {
         int actionInFlightCount = mSafetyCenterIssueActionsInFlight.size();
         fout.println("ACTIONS IN FLIGHT (" + actionInFlightCount + ")");
         for (int i = 0; i < actionInFlightCount; i++) {
-            SafetyCenterIssueActionId id = mSafetyCenterIssueActionsInFlight.valueAt(i);
-            fout.println("\t[" + i + "] " + id);
+            SafetyCenterIssueActionId id = mSafetyCenterIssueActionsInFlight.keyAt(i);
+            long startTime = mSafetyCenterIssueActionsInFlight.valueAt(i);
+            long durationMillis = SystemClock.elapsedRealtime() - startTime;
+            fout.println("\t[" + i + "] " + id + "(duration=" + durationMillis + "ms)");
         }
         fout.println();
     }
@@ -613,8 +625,6 @@ final class SafetyCenterDataTracker {
     private void pullOverallSafetyStateAtom(
             @NonNull UserProfileGroup userProfileGroup, @NonNull List<StatsEvent> statsEvents) {
         SafetyCenterData safetyCenterData = getSafetyCenterData("android", userProfileGroup);
-        int safetyStateOverallSeverityLevel =
-                toSafetyStateOverallSeverityLevel(safetyCenterData.getStatus().getSeverityLevel());
         long openIssuesCount = safetyCenterData.getIssues().size();
         long dismissedIssuesCount = 0;
         for (int i = 0; i < mSafetyCenterIssueCache.size(); i++) {
@@ -627,12 +637,12 @@ final class SafetyCenterDataTracker {
                 dismissedIssuesCount++;
             }
         }
-        statsEvents.add(
-                PermissionStatsLog.buildStatsEvent(
-                        SAFETY_STATE,
-                        safetyStateOverallSeverityLevel,
+        StatsEvent overallSafetyStateEvent =
+                WestworldLogger.newSafetyStateEvent(
+                        safetyCenterData.getStatus().getSeverityLevel(),
                         openIssuesCount,
-                        dismissedIssuesCount));
+                        dismissedIssuesCount);
+        statsEvents.add(overallSafetyStateEvent);
     }
 
     private void writeSafetySourceStateCollectedAtoms(@NonNull UserProfileGroup userProfileGroup) {
@@ -673,14 +683,7 @@ final class SafetyCenterDataTracker {
         SafetySourceStatus safetySourceStatus = getSafetySourceStatus(safetySourceData);
         List<SafetySourceIssue> safetySourceIssues =
                 safetySourceData == null ? emptyList() : safetySourceData.getIssues();
-
-        long encodedSafetySourceId = getEncodedSafetySourceSourceId(safetySourceId);
-        int safetySourceStateCollectedProfileType =
-                isUserManaged
-                        ? SAFETY_SOURCE_STATE_COLLECTED__SAFETY_SOURCE_PROFILE_TYPE__PROFILE_TYPE_MANAGED
-                        : SAFETY_SOURCE_STATE_COLLECTED__SAFETY_SOURCE_PROFILE_TYPE__PROFILE_TYPE_PERSONAL;
-
-        int maxIssuesSeverityLevel = Integer.MIN_VALUE;
+        int maxSeverityLevel = Integer.MIN_VALUE;
         long openIssuesCount = 0;
         long dismissedIssuesCount = 0;
         for (int i = 0; i < safetySourceIssues.size(); i++) {
@@ -695,29 +698,20 @@ final class SafetyCenterDataTracker {
             IssueData issueData = mSafetyCenterIssueCache.get(safetyCenterIssueKey);
             if (issueData == null || issueData.getDismissedAt() == null) {
                 openIssuesCount++;
-                maxIssuesSeverityLevel =
-                        Math.max(maxIssuesSeverityLevel, safetySourceIssue.getSeverityLevel());
+                maxSeverityLevel = Math.max(maxSeverityLevel, safetySourceIssue.getSeverityLevel());
             } else {
                 dismissedIssuesCount++;
             }
         }
-
-        int safetySourceStateCollectedSeverityLevel =
-                SAFETY_SOURCE_STATE_COLLECTED__SEVERITY_LEVEL__SAFETY_SEVERITY_LEVEL_UNKNOWN;
-        int safetySourceSeverityLevel =
-                safetySourceStatus == null
-                        ? maxIssuesSeverityLevel
-                        : Math.max(maxIssuesSeverityLevel, safetySourceStatus.getSeverityLevel());
-        if (safetySourceSeverityLevel != Integer.MIN_VALUE) {
-            safetySourceStateCollectedSeverityLevel =
-                    toSafetySourceStateCollectedSeverityLevel(safetySourceSeverityLevel);
+        if (safetySourceStatus != null) {
+            maxSeverityLevel = Math.max(maxSeverityLevel, safetySourceStatus.getSeverityLevel());
         }
+        Integer maxSeverityOrNull = maxSeverityLevel > Integer.MIN_VALUE ? maxSeverityLevel : null;
 
-        PermissionStatsLog.write(
-                SAFETY_SOURCE_STATE_COLLECTED,
-                encodedSafetySourceId,
-                safetySourceStateCollectedProfileType,
-                safetySourceStateCollectedSeverityLevel,
+        mWestworldLogger.writeSafetySourceStateCollected(
+                safetySourceId,
+                isUserManaged,
+                maxSeverityOrNull,
                 openIssuesCount,
                 dismissedIssuesCount);
     }
@@ -761,7 +755,7 @@ final class SafetyCenterDataTracker {
     }
 
     private boolean isInFlight(@NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
-        return mSafetyCenterIssueActionsInFlight.contains(safetyCenterIssueActionId);
+        return mSafetyCenterIssueActionsInFlight.containsKey(safetyCenterIssueActionId);
     }
 
     private void updateSafetyCenterIssueCache(
@@ -955,7 +949,11 @@ final class SafetyCenterDataTracker {
                                 .setSafetyCenterIssueKey(safetyCenterIssueKey)
                                 .setSafetySourceIssueActionId(safetySourceIssueActionId)
                                 .build();
-                return unmarkSafetyCenterIssueActionAsInFlight(safetyCenterIssueActionId);
+                int result =
+                        type == SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED
+                                ? SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__SUCCESS
+                                : SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__ERROR;
+                return unmarkSafetyCenterIssueActionInFlight(safetyCenterIssueActionId, result);
             case SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED:
             case SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_LOCALE_CHANGED:
             case SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_REBOOTED:
@@ -1910,53 +1908,6 @@ final class SafetyCenterDataTracker {
                 "Unexpected SafetySourceStatus.IconAction.IconActionType: "
                         + safetySourceIconActionType);
         return SafetyCenterEntry.IconAction.ICON_ACTION_TYPE_INFO;
-    }
-
-    private static int toSafetyStateOverallSeverityLevel(
-            @SafetyCenterStatus.OverallSeverityLevel int safetyCenterStatusOverallSeverityLevel) {
-        switch (safetyCenterStatusOverallSeverityLevel) {
-            case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN:
-                return SAFETY_STATE__OVERALL_SEVERITY_LEVEL__SAFETY_SEVERITY_LEVEL_UNKNOWN;
-            case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK:
-                return SAFETY_STATE__OVERALL_SEVERITY_LEVEL__SAFETY_SEVERITY_OK;
-            case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_RECOMMENDATION:
-                return SAFETY_STATE__OVERALL_SEVERITY_LEVEL__SAFETY_SEVERITY_RECOMMENDATION;
-            case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING:
-                return SAFETY_STATE__OVERALL_SEVERITY_LEVEL__SAFETY_SEVERITY_CRITICAL_WARNING;
-        }
-        Log.w(
-                TAG,
-                "Unexpected SafetyCenterStatus.OverallSeverityLevel: "
-                        + safetyCenterStatusOverallSeverityLevel);
-        return SAFETY_STATE__OVERALL_SEVERITY_LEVEL__SAFETY_SEVERITY_LEVEL_UNKNOWN;
-    }
-
-    private static int toSafetySourceStateCollectedSeverityLevel(
-            @SafetySourceData.SeverityLevel int safetySourceSeverityLevel) {
-        switch (safetySourceSeverityLevel) {
-            case SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED:
-                return SAFETY_SOURCE_STATE_COLLECTED__SEVERITY_LEVEL__SAFETY_SEVERITY_UNSPECIFIED;
-            case SafetySourceData.SEVERITY_LEVEL_INFORMATION:
-                return SAFETY_SOURCE_STATE_COLLECTED__SEVERITY_LEVEL__SAFETY_SEVERITY_OK;
-            case SafetySourceData.SEVERITY_LEVEL_RECOMMENDATION:
-                return SAFETY_SOURCE_STATE_COLLECTED__SEVERITY_LEVEL__SAFETY_SEVERITY_RECOMMENDATION;
-            case SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING:
-                return SAFETY_SOURCE_STATE_COLLECTED__SEVERITY_LEVEL__SAFETY_SEVERITY_CRITICAL_WARNING;
-        }
-        Log.w(TAG, "Unexpected SafetySourceData.SeverityLevel: " + safetySourceSeverityLevel);
-        return SAFETY_SOURCE_STATE_COLLECTED__SEVERITY_LEVEL__SAFETY_SEVERITY_LEVEL_UNKNOWN;
-    }
-
-    private static long getEncodedSafetySourceSourceId(@NonNull String safetySourceId) {
-        MessageDigest messageDigest;
-        try {
-            messageDigest = MessageDigest.getInstance("MD5");
-        } catch (NoSuchAlgorithmException e) {
-            Log.w(TAG, "Couldn't encode safety source id: " + safetySourceId, e);
-            return 0;
-        }
-        messageDigest.update(safetySourceId.getBytes());
-        return new BigInteger(messageDigest.digest()).longValue();
     }
 
     private String getSafetyCenterStatusTitle(
