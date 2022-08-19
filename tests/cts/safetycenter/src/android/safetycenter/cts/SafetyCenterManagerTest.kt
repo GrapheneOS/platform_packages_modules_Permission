@@ -16,9 +16,7 @@
 
 package android.safetycenter.cts
 
-import android.app.PendingIntent
 import android.content.Context
-import android.icu.text.MessageFormat
 import android.os.UserHandle.USER_NULL
 import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterEntry
@@ -29,15 +27,10 @@ import android.safetycenter.SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN
 import android.safetycenter.SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED
 import android.safetycenter.SafetyCenterEntry.IconAction.ICON_ACTION_TYPE_GEAR
 import android.safetycenter.SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON
-import android.safetycenter.SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION
 import android.safetycenter.SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_PRIVACY
 import android.safetycenter.SafetyCenterEntryGroup
 import android.safetycenter.SafetyCenterEntryOrGroup
 import android.safetycenter.SafetyCenterErrorDetails
-import android.safetycenter.SafetyCenterIssue
-import android.safetycenter.SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_CRITICAL_WARNING
-import android.safetycenter.SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_OK
-import android.safetycenter.SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_RECOMMENDATION
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyCenterManager.OnSafetyCenterDataChangedListener
 import android.safetycenter.SafetyCenterManager.REFRESH_REASON_OTHER
@@ -127,9 +120,7 @@ import android.safetycenter.cts.testing.SafetySourceCtsData
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.CRITICAL_ISSUE_ACTION_ID
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.CRITICAL_ISSUE_ID
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.EVENT_SOURCE_STATE_CHANGED
-import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.INFORMATION_ISSUE_ACTION_ID
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.INFORMATION_ISSUE_ID
-import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.RECOMMENDATION_ISSUE_ACTION_ID
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.RECOMMENDATION_ISSUE_ID
 import android.safetycenter.cts.testing.SafetySourceReceiver
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.SafetySourceDataKey
@@ -141,7 +132,6 @@ import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.dismissSa
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.executeSafetyCenterIssueActionWithPermissionAndWait
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.refreshSafetySourcesWithReceiverPermissionAndWait
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.refreshSafetySourcesWithoutReceiverPermissionAndWait
-import android.util.ArrayMap
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.compatibility.common.preconditions.ScreenLockHelper
@@ -150,7 +140,6 @@ import com.google.common.base.Preconditions.checkState
 import com.google.common.truth.Truth.assertThat
 import com.google.common.util.concurrent.MoreExecutors.directExecutor
 import java.time.Duration
-import java.util.Locale
 import kotlin.test.assertFailsWith
 import kotlinx.coroutines.TimeoutCancellationException
 import org.junit.After
@@ -166,16 +155,8 @@ class SafetyCenterManagerTest {
     private val safetyCenterResourcesContext = SafetyCenterResourcesContext.forTests(context)
     private val safetyCenterCtsHelper = SafetyCenterCtsHelper(context)
     private val safetySourceCtsData = SafetySourceCtsData(context)
+    private val safetyCenterCtsData = SafetyCenterCtsData(context)
     private val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)!!
-
-    private val safetyCenterStatusUnknown =
-        SafetyCenterStatus.Builder(
-                safetyCenterResourcesContext.getStringByName(
-                    "overall_severity_level_ok_review_title"),
-                safetyCenterResourcesContext.getStringByName(
-                    "overall_severity_level_ok_review_summary"))
-            .setSeverityLevel(OVERALL_SEVERITY_LEVEL_UNKNOWN)
-            .build()
 
     private val safetyCenterStatusOk =
         SafetyCenterStatus.Builder(
@@ -195,7 +176,7 @@ class SafetyCenterManagerTest {
     private val safetyCenterStatusOkOneAlert =
         SafetyCenterStatus.Builder(
                 safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_title"),
-                getAlertString(1))
+                safetyCenterCtsData.getAlertString(1))
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_OK)
             .build()
 
@@ -203,7 +184,7 @@ class SafetyCenterManagerTest {
         SafetyCenterStatus.Builder(
                 safetyCenterResourcesContext.getStringByName(
                     "overall_severity_level_ok_review_title"),
-                getAlertString(1))
+                safetyCenterCtsData.getAlertString(1))
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_OK)
             .build()
 
@@ -220,7 +201,7 @@ class SafetyCenterManagerTest {
         SafetyCenterStatus.Builder(
                 safetyCenterResourcesContext.getStringByName(
                     "overall_severity_level_safety_recommendation_title"),
-                getAlertString(1))
+                safetyCenterCtsData.getAlertString(1))
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_RECOMMENDATION)
             .build()
 
@@ -228,7 +209,7 @@ class SafetyCenterManagerTest {
         SafetyCenterStatus.Builder(
                 safetyCenterResourcesContext.getStringByName(
                     "overall_severity_level_account_recommendation_title"),
-                getAlertString(1))
+                safetyCenterCtsData.getAlertString(1))
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_RECOMMENDATION)
             .build()
 
@@ -236,7 +217,7 @@ class SafetyCenterManagerTest {
         SafetyCenterStatus.Builder(
                 safetyCenterResourcesContext.getStringByName(
                     "overall_severity_level_device_recommendation_title"),
-                getAlertString(1))
+                safetyCenterCtsData.getAlertString(1))
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_RECOMMENDATION)
             .build()
 
@@ -244,7 +225,7 @@ class SafetyCenterManagerTest {
         SafetyCenterStatus.Builder(
                 safetyCenterResourcesContext.getStringByName(
                     "overall_severity_level_critical_safety_warning_title"),
-                getAlertString(1))
+                safetyCenterCtsData.getAlertString(1))
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING)
             .build()
 
@@ -252,7 +233,7 @@ class SafetyCenterManagerTest {
         SafetyCenterStatus.Builder(
                 safetyCenterResourcesContext.getStringByName(
                     "overall_severity_level_critical_safety_warning_title"),
-                getAlertString(2))
+                safetyCenterCtsData.getAlertString(2))
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING)
             .build()
 
@@ -260,7 +241,7 @@ class SafetyCenterManagerTest {
         SafetyCenterStatus.Builder(
                 safetyCenterResourcesContext.getStringByName(
                     "overall_severity_level_critical_account_warning_title"),
-                getAlertString(1))
+                safetyCenterCtsData.getAlertString(1))
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING)
             .build()
 
@@ -268,7 +249,7 @@ class SafetyCenterManagerTest {
         SafetyCenterStatus.Builder(
                 safetyCenterResourcesContext.getStringByName(
                     "overall_severity_level_critical_account_warning_title"),
-                getAlertString(2))
+                safetyCenterCtsData.getAlertString(2))
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING)
             .build()
 
@@ -276,7 +257,7 @@ class SafetyCenterManagerTest {
         SafetyCenterStatus.Builder(
                 safetyCenterResourcesContext.getStringByName(
                     "overall_severity_level_critical_device_warning_title"),
-                getAlertString(1))
+                safetyCenterCtsData.getAlertString(1))
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING)
             .build()
 
@@ -284,23 +265,16 @@ class SafetyCenterManagerTest {
         SafetyCenterStatus.Builder(
                 safetyCenterResourcesContext.getStringByName(
                     "overall_severity_level_critical_device_warning_title"),
-                getAlertString(2))
-            .setSeverityLevel(OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING)
-            .build()
-
-    private val safetyCenterStatusCriticalSixAlerts =
-        SafetyCenterStatus.Builder(
-                safetyCenterResourcesContext.getStringByName(
-                    "overall_severity_level_critical_safety_warning_title"),
-                getAlertString(6))
+                safetyCenterCtsData.getAlertString(2))
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING)
             .build()
 
     private val safetyCenterEntryOrGroupRecommendation =
-        SafetyCenterEntryOrGroup(safetyCenterEntryRecommendation(SINGLE_SOURCE_ID))
+        SafetyCenterEntryOrGroup(
+            safetyCenterCtsData.safetyCenterEntryRecommendation(SINGLE_SOURCE_ID))
 
     private val safetyCenterEntryOrGroupCritical =
-        SafetyCenterEntryOrGroup(safetyCenterEntryCritical(SINGLE_SOURCE_ID))
+        SafetyCenterEntryOrGroup(safetyCenterCtsData.safetyCenterEntryCritical(SINGLE_SOURCE_ID))
 
     private val safetyCenterEntryGroupMixedFromComplexConfig =
         SafetyCenterEntryOrGroup(
@@ -310,7 +284,7 @@ class SafetyCenterManagerTest {
                 .setSummary(safetyCenterResourcesContext.getStringByName("group_unknown_summary"))
                 .setEntries(
                     listOf(
-                        safetyCenterEntryDefaultBuilder(DYNAMIC_IN_COLLAPSIBLE_ID).build(),
+                        safetyCenterCtsData.safetyCenterEntryDefault(DYNAMIC_IN_COLLAPSIBLE_ID),
                         SafetyCenterEntry.Builder(
                                 SafetyCenterCtsData.entryId(STATIC_IN_COLLAPSIBLE_ID), "OK")
                             .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNSPECIFIED)
@@ -364,30 +338,34 @@ class SafetyCenterManagerTest {
             emptyList(),
             listOf(
                 SafetyCenterEntryOrGroup(
-                    safetyCenterEntryDefaultBuilder(SINGLE_SOURCE_ID).build())),
+                    safetyCenterCtsData.safetyCenterEntryDefault(SINGLE_SOURCE_ID))),
             emptyList())
 
     private val safetyCenterDataFromConfig =
         SafetyCenterData(
-            safetyCenterStatusUnknown,
+            safetyCenterCtsData.safetyCenterStatusUnknown,
             emptyList(),
             listOf(
                 SafetyCenterEntryOrGroup(
-                    safetyCenterEntryDefaultBuilder(SINGLE_SOURCE_ID).build())),
+                    safetyCenterCtsData.safetyCenterEntryDefault(SINGLE_SOURCE_ID))),
             emptyList())
 
     private val safetyCenterDataUnspecified =
         SafetyCenterData(
             safetyCenterStatusOk,
             emptyList(),
-            listOf(SafetyCenterEntryOrGroup(safetyCenterEntryUnspecified(SINGLE_SOURCE_ID))),
+            listOf(
+                SafetyCenterEntryOrGroup(
+                    safetyCenterCtsData.safetyCenterEntryUnspecified(SINGLE_SOURCE_ID))),
             emptyList())
 
     private val safetyCenterDataOk =
         SafetyCenterData(
             safetyCenterStatusOk,
             emptyList(),
-            listOf(SafetyCenterEntryOrGroup(safetyCenterEntryOk(SINGLE_SOURCE_ID))),
+            listOf(
+                SafetyCenterEntryOrGroup(
+                    safetyCenterCtsData.safetyCenterEntryOk(SINGLE_SOURCE_ID))),
             emptyList())
 
     private val safetyCenterDataOkWithIconAction =
@@ -396,7 +374,8 @@ class SafetyCenterManagerTest {
             emptyList(),
             listOf(
                 SafetyCenterEntryOrGroup(
-                    safetyCenterEntryOkBuilder(SINGLE_SOURCE_ID)
+                    safetyCenterCtsData
+                        .safetyCenterEntryOkBuilder(SINGLE_SOURCE_ID)
                         .setIconAction(
                             ICON_ACTION_TYPE_GEAR, safetySourceCtsData.redirectPendingIntent)
                         .build())),
@@ -404,16 +383,20 @@ class SafetyCenterManagerTest {
 
     private val safetyCenterDataUnknownReviewError =
         SafetyCenterData(
-            safetyCenterStatusUnknown,
+            safetyCenterCtsData.safetyCenterStatusUnknown,
             emptyList(),
-            listOf(SafetyCenterEntryOrGroup(safetyCenterEntryError(SINGLE_SOURCE_ID))),
+            listOf(
+                SafetyCenterEntryOrGroup(
+                    safetyCenterCtsData.safetyCenterEntryError(SINGLE_SOURCE_ID))),
             emptyList())
 
     private val safetyCenterDataOkOneAlert =
         SafetyCenterData(
             safetyCenterStatusOkOneAlert,
-            listOf(safetyCenterIssueInformation(SINGLE_SOURCE_ID)),
-            listOf(SafetyCenterEntryOrGroup(safetyCenterEntryOk(SINGLE_SOURCE_ID))),
+            listOf(safetyCenterCtsData.safetyCenterIssueInformation(SINGLE_SOURCE_ID)),
+            listOf(
+                SafetyCenterEntryOrGroup(
+                    safetyCenterCtsData.safetyCenterEntryOk(SINGLE_SOURCE_ID))),
             emptyList())
 
     private val safetyCenterDataOkReviewCriticalEntry =
@@ -433,62 +416,70 @@ class SafetyCenterManagerTest {
     private val safetyCenterDataOkReviewOneAlert =
         SafetyCenterData(
             safetyCenterStatusOkReviewOneAlert,
-            listOf(safetyCenterIssueInformation(SINGLE_SOURCE_ID)),
+            listOf(safetyCenterCtsData.safetyCenterIssueInformation(SINGLE_SOURCE_ID)),
             listOf(safetyCenterEntryOrGroupCritical),
             emptyList())
 
     private val safetyCenterDataGeneralRecommendationOneAlert =
         SafetyCenterData(
             safetyCenterStatusGeneralRecommendationOneAlert,
-            listOf(safetyCenterIssueRecommendation(SINGLE_SOURCE_ID)),
-            listOf(SafetyCenterEntryOrGroup(safetyCenterEntryRecommendation(SINGLE_SOURCE_ID))),
+            listOf(safetyCenterCtsData.safetyCenterIssueRecommendation(SINGLE_SOURCE_ID)),
+            listOf(
+                SafetyCenterEntryOrGroup(
+                    safetyCenterCtsData.safetyCenterEntryRecommendation(SINGLE_SOURCE_ID))),
             emptyList())
 
     private val safetyCenterDataAccountRecommendationOneAlert =
         SafetyCenterData(
             safetyCenterStatusAccountRecommendationOneAlert,
-            listOf(safetyCenterIssueRecommendation(SINGLE_SOURCE_ID)),
-            listOf(SafetyCenterEntryOrGroup(safetyCenterEntryRecommendation(SINGLE_SOURCE_ID))),
+            listOf(safetyCenterCtsData.safetyCenterIssueRecommendation(SINGLE_SOURCE_ID)),
+            listOf(
+                SafetyCenterEntryOrGroup(
+                    safetyCenterCtsData.safetyCenterEntryRecommendation(SINGLE_SOURCE_ID))),
             emptyList())
 
     private val safetyCenterDataDeviceRecommendationOneAlert =
         SafetyCenterData(
             safetyCenterStatusDeviceRecommendationOneAlert,
-            listOf(safetyCenterIssueRecommendation(SINGLE_SOURCE_ID)),
-            listOf(SafetyCenterEntryOrGroup(safetyCenterEntryRecommendation(SINGLE_SOURCE_ID))),
+            listOf(safetyCenterCtsData.safetyCenterIssueRecommendation(SINGLE_SOURCE_ID)),
+            listOf(
+                SafetyCenterEntryOrGroup(
+                    safetyCenterCtsData.safetyCenterEntryRecommendation(SINGLE_SOURCE_ID))),
             emptyList())
 
     private val safetyCenterDataGeneralCriticalOneAlert =
         SafetyCenterData(
             safetyCenterStatusGeneralCriticalOneAlert,
-            listOf(safetyCenterIssueCritical(SINGLE_SOURCE_ID)),
+            listOf(safetyCenterCtsData.safetyCenterIssueCritical(SINGLE_SOURCE_ID)),
             listOf(safetyCenterEntryOrGroupCritical),
             emptyList())
 
     private val safetyCenterDataAccountCriticalOneAlert =
         SafetyCenterData(
             safetyCenterStatusAccountCriticalOneAlert,
-            listOf(safetyCenterIssueCritical(SINGLE_SOURCE_ID)),
+            listOf(safetyCenterCtsData.safetyCenterIssueCritical(SINGLE_SOURCE_ID)),
             listOf(safetyCenterEntryOrGroupCritical),
             emptyList())
 
     private val safetyCenterDataDeviceCriticalOneAlert =
         SafetyCenterData(
             safetyCenterStatusDeviceCriticalOneAlert,
-            listOf(safetyCenterIssueCritical(SINGLE_SOURCE_ID)),
+            listOf(safetyCenterCtsData.safetyCenterIssueCritical(SINGLE_SOURCE_ID)),
             listOf(safetyCenterEntryOrGroupCritical),
             emptyList())
 
     private val safetyCenterDataCriticalOneAlertInFlight =
         SafetyCenterData(
             safetyCenterStatusGeneralCriticalOneAlert,
-            listOf(safetyCenterIssueCritical(SINGLE_SOURCE_ID, isActionInFlight = true)),
+            listOf(
+                safetyCenterCtsData.safetyCenterIssueCritical(
+                    SINGLE_SOURCE_ID, isActionInFlight = true)),
             listOf(safetyCenterEntryOrGroupCritical),
             emptyList())
 
     private val safetyCenterDataFromComplexConfig =
         SafetyCenterData(
-            safetyCenterStatusUnknown,
+            safetyCenterCtsData.safetyCenterStatusUnknown,
             emptyList(),
             listOf(
                 SafetyCenterEntryOrGroup(
@@ -500,15 +491,18 @@ class SafetyCenterManagerTest {
                         .setSeverityUnspecifiedIconType(SEVERITY_UNSPECIFIED_ICON_TYPE_PRIVACY)
                         .setEntries(
                             listOf(
-                                safetyCenterEntryDefaultBuilder(DYNAMIC_BAREBONE_ID).build(),
-                                safetyCenterEntryDefaultBuilder(DYNAMIC_ALL_OPTIONAL_ID)
+                                safetyCenterCtsData.safetyCenterEntryDefault(DYNAMIC_BAREBONE_ID),
+                                safetyCenterCtsData
+                                    .safetyCenterEntryDefaultBuilder(DYNAMIC_ALL_OPTIONAL_ID)
                                     .setEnabled(false)
                                     .build(),
-                                safetyCenterEntryDefaultBuilder(DYNAMIC_DISABLED_ID)
+                                safetyCenterCtsData
+                                    .safetyCenterEntryDefaultBuilder(DYNAMIC_DISABLED_ID)
                                     .setPendingIntent(null)
                                     .setEnabled(false)
                                     .build(),
-                                safetyCenterEntryDefaultBuilder(DYNAMIC_OTHER_PACKAGE_ID)
+                                safetyCenterCtsData
+                                    .safetyCenterEntryDefaultBuilder(DYNAMIC_OTHER_PACKAGE_ID)
                                     .setPendingIntent(null)
                                     .setEnabled(false)
                                     .build()))
@@ -520,14 +514,14 @@ class SafetyCenterManagerTest {
 
     private val safetyCenterDataFromComplexConfigUpdated =
         SafetyCenterData(
-            safetyCenterStatusCriticalSixAlerts,
+            safetyCenterCtsData.safetyCenterStatusCritical(6),
             listOf(
-                safetyCenterIssueCritical(DYNAMIC_BAREBONE_ID),
-                safetyCenterIssueCritical(ISSUE_ONLY_BAREBONE_ID),
-                safetyCenterIssueRecommendation(DYNAMIC_DISABLED_ID),
-                safetyCenterIssueRecommendation(ISSUE_ONLY_ALL_OPTIONAL_ID),
-                safetyCenterIssueInformation(DYNAMIC_IN_RIGID_ID),
-                safetyCenterIssueInformation(ISSUE_ONLY_IN_RIGID_ID)),
+                safetyCenterCtsData.safetyCenterIssueCritical(DYNAMIC_BAREBONE_ID),
+                safetyCenterCtsData.safetyCenterIssueCritical(ISSUE_ONLY_BAREBONE_ID),
+                safetyCenterCtsData.safetyCenterIssueRecommendation(DYNAMIC_DISABLED_ID),
+                safetyCenterCtsData.safetyCenterIssueRecommendation(ISSUE_ONLY_ALL_OPTIONAL_ID),
+                safetyCenterCtsData.safetyCenterIssueInformation(DYNAMIC_IN_RIGID_ID),
+                safetyCenterCtsData.safetyCenterIssueInformation(ISSUE_ONLY_IN_RIGID_ID)),
             listOf(
                 SafetyCenterEntryOrGroup(
                     SafetyCenterEntryGroup.Builder(
@@ -537,15 +531,19 @@ class SafetyCenterManagerTest {
                         .setSummary("Critical summary")
                         .setEntries(
                             listOf(
-                                safetyCenterEntryCritical(DYNAMIC_BAREBONE_ID),
-                                safetyCenterEntryDefaultBuilder(DYNAMIC_ALL_OPTIONAL_ID)
+                                safetyCenterCtsData.safetyCenterEntryCritical(DYNAMIC_BAREBONE_ID),
+                                safetyCenterCtsData
+                                    .safetyCenterEntryDefaultBuilder(DYNAMIC_ALL_OPTIONAL_ID)
                                     .setEnabled(false)
                                     .build(),
-                                safetyCenterEntryRecommendation(DYNAMIC_DISABLED_ID),
-                                safetyCenterEntryUnspecified(
+                                safetyCenterCtsData.safetyCenterEntryRecommendation(
+                                    DYNAMIC_DISABLED_ID),
+                                safetyCenterCtsData.safetyCenterEntryUnspecified(
                                     DYNAMIC_HIDDEN_ID, pendingIntent = null),
-                                safetyCenterEntryOk(DYNAMIC_HIDDEN_WITH_SEARCH_ID),
-                                safetyCenterEntryDefaultBuilder(DYNAMIC_OTHER_PACKAGE_ID)
+                                safetyCenterCtsData.safetyCenterEntryOk(
+                                    DYNAMIC_HIDDEN_WITH_SEARCH_ID),
+                                safetyCenterCtsData
+                                    .safetyCenterEntryDefaultBuilder(DYNAMIC_OTHER_PACKAGE_ID)
                                     .setPendingIntent(null)
                                     .setEnabled(false)
                                     .build()))
@@ -2275,7 +2273,7 @@ class SafetyCenterManagerTest {
         val group =
             safetyCenterManager.getSafetyCenterDataWithPermission().getGroup(SUMMARY_TEST_GROUP_ID)
 
-        assertThat(group.summary).isEqualTo(getRefreshErrorString(2))
+        assertThat(group.summary).isEqualTo(safetyCenterCtsData.getRefreshErrorString(2))
         assertThat(group.severityLevel).isEqualTo(ENTRY_SEVERITY_LEVEL_UNKNOWN)
     }
 
@@ -2306,7 +2304,7 @@ class SafetyCenterManagerTest {
         val group =
             safetyCenterManager.getSafetyCenterDataWithPermission().getGroup(SUMMARY_TEST_GROUP_ID)
 
-        assertThat(group.summary).isEqualTo(getRefreshErrorString(1))
+        assertThat(group.summary).isEqualTo(safetyCenterCtsData.getRefreshErrorString(1))
         assertThat(group.severityLevel).isEqualTo(ENTRY_SEVERITY_LEVEL_UNKNOWN)
     }
 
@@ -2408,11 +2406,12 @@ class SafetyCenterManagerTest {
 
         val expectedSafetyCenterData =
             SafetyCenterData(
-                safetyCenterStatusUnknown,
+                safetyCenterCtsData.safetyCenterStatusUnknown,
                 emptyList(),
                 listOf(
                     SafetyCenterEntryOrGroup(
-                        safetyCenterEntryDefaultBuilder(SINGLE_SOURCE_ID)
+                        safetyCenterCtsData
+                            .safetyCenterEntryDefaultBuilder(SINGLE_SOURCE_ID)
                             .setPendingIntent(null)
                             .setEnabled(false)
                             .build())),
@@ -2434,7 +2433,8 @@ class SafetyCenterManagerTest {
                 emptyList(),
                 listOf(
                     SafetyCenterEntryOrGroup(
-                        safetyCenterEntryOkBuilder(SINGLE_SOURCE_ID)
+                        safetyCenterCtsData
+                            .safetyCenterEntryOkBuilder(SINGLE_SOURCE_ID)
                             .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNSPECIFIED)
                             .setPendingIntent(null)
                             .setEnabled(false)
@@ -3427,122 +3427,6 @@ class SafetyCenterManagerTest {
         entriesOrGroups
             .first { it.entryGroup?.id == SafetyCenterCtsData.entryGroupId(groupId) }
             .entryGroup!!
-
-    private fun safetyCenterEntryDefaultBuilder(sourceId: String) =
-        SafetyCenterEntry.Builder(SafetyCenterCtsData.entryId(sourceId), "OK")
-            .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNKNOWN)
-            .setSummary("OK")
-            .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
-            .setSeverityUnspecifiedIconType(SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION)
-
-    private fun safetyCenterEntryError(sourceId: String) =
-        safetyCenterEntryDefaultBuilder(sourceId).setSummary(getRefreshErrorString(1)).build()
-
-    private fun safetyCenterEntryUnspecified(
-        sourceId: String,
-        pendingIntent: PendingIntent? = safetySourceCtsData.redirectPendingIntent
-    ) =
-        SafetyCenterEntry.Builder(SafetyCenterCtsData.entryId(sourceId), "Unspecified title")
-            .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNSPECIFIED)
-            .setSummary("Unspecified summary")
-            .setPendingIntent(pendingIntent)
-            .setEnabled(false)
-            .setSeverityUnspecifiedIconType(SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION)
-            .build()
-
-    private fun safetyCenterEntryOkBuilder(sourceId: String) =
-        SafetyCenterEntry.Builder(SafetyCenterCtsData.entryId(sourceId), "Ok title")
-            .setSeverityLevel(ENTRY_SEVERITY_LEVEL_OK)
-            .setSummary("Ok summary")
-            .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
-            .setSeverityUnspecifiedIconType(SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION)
-
-    private fun safetyCenterEntryOk(sourceId: String) = safetyCenterEntryOkBuilder(sourceId).build()
-
-    private fun safetyCenterEntryRecommendation(
-        sourceId: String,
-        summary: String = "Recommendation summary"
-    ) =
-        SafetyCenterEntry.Builder(SafetyCenterCtsData.entryId(sourceId), "Recommendation title")
-            .setSeverityLevel(ENTRY_SEVERITY_LEVEL_RECOMMENDATION)
-            .setSummary(summary)
-            .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
-            .setSeverityUnspecifiedIconType(SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION)
-            .build()
-
-    private fun safetyCenterEntryCritical(sourceId: String) =
-        SafetyCenterEntry.Builder(SafetyCenterCtsData.entryId(sourceId), "Critical title")
-            .setSeverityLevel(ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING)
-            .setSummary("Critical summary")
-            .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
-            .setSeverityUnspecifiedIconType(SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION)
-            .build()
-
-    private fun safetyCenterIssueInformation(sourceId: String) =
-        SafetyCenterIssue.Builder(
-                SafetyCenterCtsData.issueId(sourceId, INFORMATION_ISSUE_ID),
-                "Information issue title",
-                "Information issue summary")
-            .setSeverityLevel(ISSUE_SEVERITY_LEVEL_OK)
-            .setShouldConfirmDismissal(false)
-            .setActions(
-                listOf(
-                    SafetyCenterIssue.Action.Builder(
-                            SafetyCenterCtsData.issueActionId(
-                                sourceId, INFORMATION_ISSUE_ID, INFORMATION_ISSUE_ACTION_ID),
-                            "Review",
-                            safetySourceCtsData.redirectPendingIntent)
-                        .build()))
-            .build()
-
-    private fun safetyCenterIssueRecommendation(sourceId: String) =
-        SafetyCenterIssue.Builder(
-                SafetyCenterCtsData.issueId(sourceId, RECOMMENDATION_ISSUE_ID),
-                "Recommendation issue title",
-                "Recommendation issue summary")
-            .setSeverityLevel(ISSUE_SEVERITY_LEVEL_RECOMMENDATION)
-            .setActions(
-                listOf(
-                    SafetyCenterIssue.Action.Builder(
-                            SafetyCenterCtsData.issueActionId(
-                                sourceId, RECOMMENDATION_ISSUE_ID, RECOMMENDATION_ISSUE_ACTION_ID),
-                            "See issue",
-                            safetySourceCtsData.redirectPendingIntent)
-                        .build()))
-            .build()
-
-    private fun safetyCenterIssueCritical(sourceId: String, isActionInFlight: Boolean = false) =
-        SafetyCenterIssue.Builder(
-                SafetyCenterCtsData.issueId(sourceId, CRITICAL_ISSUE_ID),
-                "Critical issue title",
-                "Critical issue summary")
-            .setSeverityLevel(ISSUE_SEVERITY_LEVEL_CRITICAL_WARNING)
-            .setActions(
-                listOf(
-                    SafetyCenterIssue.Action.Builder(
-                            SafetyCenterCtsData.issueActionId(
-                                sourceId, CRITICAL_ISSUE_ID, CRITICAL_ISSUE_ACTION_ID),
-                            "Solve issue",
-                            safetySourceCtsData.criticalIssueActionPendingIntent)
-                        .setWillResolve(true)
-                        .setIsInFlight(isActionInFlight)
-                        .build()))
-            .build()
-
-    private fun getAlertString(numAlerts: Int): String =
-        getIcuPluralsString("overall_severity_n_alerts_summary", numAlerts)
-
-    private fun getRefreshErrorString(numberOfErrorEntries: Int): String =
-        getIcuPluralsString("refresh_error", numberOfErrorEntries)
-
-    private fun getIcuPluralsString(name: String, count: Int, vararg formatArgs: Any): String {
-        val messageFormat =
-            MessageFormat(
-                safetyCenterResourcesContext.getStringByName(name, formatArgs), Locale.getDefault())
-        val arguments = ArrayMap<String, Any>()
-        arguments["count"] = count
-        return messageFormat.format(arguments)
-    }
 
     companion object {
         private val RESURFACE_DELAY = Duration.ofMillis(500)
