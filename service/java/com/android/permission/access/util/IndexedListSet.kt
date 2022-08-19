@@ -1,0 +1,104 @@
+/*
+ * Copyright (C) 2021 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.android.permission.access.util
+
+class IndexedListSet<T> private constructor(
+    private val list: ArrayList<T>
+) : MutableSet<T> {
+    constructor() : this(ArrayList())
+
+    override val size: Int
+        get() = list.size
+
+    override fun contains(element: T): Boolean = list.contains(element)
+
+    override fun isEmpty(): Boolean = list.isEmpty()
+
+    override fun iterator(): MutableIterator<T> = list.iterator()
+
+    override fun containsAll(elements: Collection<T>): Boolean {
+        throw NotImplementedError()
+    }
+
+    fun elementAt(index: Int): T = list[index]
+
+    fun indexOf(element: T): Int = list.indexOf(element)
+
+    override fun add(element: T): Boolean =
+        if (list.contains(element)) {
+            false
+        } else {
+            list.add(element)
+            true
+        }
+
+    override fun remove(element: T): Boolean = list.remove(element)
+
+    override fun clear() {
+        list.clear()
+    }
+
+    override fun addAll(elements: Collection<T>): Boolean {
+        throw NotImplementedError()
+    }
+
+    override fun removeAll(elements: Collection<T>): Boolean {
+        throw NotImplementedError()
+    }
+
+    override fun retainAll(elements: Collection<T>): Boolean {
+        throw NotImplementedError()
+    }
+
+    fun removeAt(index: Int): T? = list.removeAt(index)
+
+    fun copy(): IndexedListSet<T> = IndexedListSet(ArrayList(list))
+}
+
+inline fun <T> IndexedListSet<T>.allIndexed(predicate: (Int, T) -> Boolean): Boolean {
+    for (index in 0 until size) {
+        if (!predicate(index, elementAt(index))) {
+            return false
+        }
+    }
+    return true
+}
+
+inline fun <T> IndexedListSet<T>.anyIndexed(predicate: (Int, T) -> Boolean): Boolean {
+    for (index in 0 until size) {
+        if (predicate(index, elementAt(index))) {
+            return true
+        }
+    }
+    return false
+}
+
+inline fun <T> IndexedListSet<T>.forEachIndexed(action: (Int, T) -> Unit) {
+    for (index in indices) {
+        action(index, elementAt(index))
+    }
+}
+
+@Suppress("NOTHING_TO_INLINE")
+inline operator fun <T> IndexedListSet<T>.minusAssign(element: T) {
+    remove(element)
+}
+
+@Suppress("NOTHING_TO_INLINE")
+inline operator fun <T> IndexedListSet<T>.plusAssign(element: T) {
+    add(element)
+}
