@@ -130,7 +130,7 @@ private val DEFAULT_NOTIFICATION_LISTENER_CHECK_PACKAGE_INTERVAL_MILLIS = DAYS.t
 
 private fun isNotificationListenerCheckFlagEnabled(): Boolean {
     return DeviceConfig.getBoolean(
-        DeviceConfig.NAMESPACE_PRIVACY, PROPERTY_NOTIFICATION_LISTENER_CHECK_ENABLED, false)
+        DeviceConfig.NAMESPACE_PRIVACY, PROPERTY_NOTIFICATION_LISTENER_CHECK_ENABLED, true)
 }
 
 /**
