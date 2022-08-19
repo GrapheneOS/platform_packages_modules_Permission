@@ -246,9 +246,8 @@ class SafetyCenterManagedDeviceTest {
             getSafetyCenterManagerForUser(deviceState.workProfile().userHandle())
         val setDataForWork = safetySourceCtsData.informationForWork
         assertFailsWith(IllegalArgumentException::class) {
-            managedSafetyCenterManager
-                .setSafetySourceDataWithInteractAcrossUsersPermission(
-                    ISSUE_ONLY_ALL_OPTIONAL_ID, setDataForWork)
+            managedSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
+                ISSUE_ONLY_ALL_OPTIONAL_ID, setDataForWork)
         }
     }
 
@@ -303,9 +302,8 @@ class SafetyCenterManagedDeviceTest {
             getSafetyCenterManagerForUser(deviceState.workProfile().userHandle())
         val setDataForWork = safetySourceCtsData.informationForWork
         assertFailsWith(IllegalArgumentException::class) {
-            managedSafetyCenterManager
-                .setSafetySourceDataWithInteractAcrossUsersPermission(
-                    SINGLE_SOURCE_ID, setDataForWork)
+            managedSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
+                SINGLE_SOURCE_ID, setDataForWork)
         }
     }
 
@@ -471,9 +469,8 @@ class SafetyCenterManagedDeviceTest {
             getSafetyCenterManagerForUser(deviceState.secondaryUser().userHandle())
         deviceState.secondaryUser().stop()
 
-        secondaryUserSafetyCenterManager
-            .setSafetySourceDataWithInteractAcrossUsersPermission(
-                SINGLE_SOURCE_ID, dataToSet)
+        secondaryUserSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
+            SINGLE_SOURCE_ID, dataToSet)
         val apiSafetySourceData =
             secondaryUserSafetyCenterManager.getSafetySourceDataWithInteractAcrossUsersPermission(
                 SINGLE_SOURCE_ID)

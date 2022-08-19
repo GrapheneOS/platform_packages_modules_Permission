@@ -476,9 +476,9 @@ final class SafetyCenterConfigReader {
         @Override
         public String toString() {
             return "Broadcast{"
-                    + "mPackageName="
+                    + "mPackageName='"
                     + mPackageName
-                    + ", mSourceIdsForProfileParent="
+                    + "', mSourceIdsForProfileParent="
                     + mSourceIdsForProfileParent
                     + ", mSourceIdsForProfileParentOnPageOpen="
                     + mSourceIdsForProfileParentOnPageOpen

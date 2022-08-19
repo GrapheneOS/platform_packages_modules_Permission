@@ -96,15 +96,65 @@ public final class SafetyCenterIds {
         return Base64.encodeToString(message.toByteArray(), ENCODING_FLAGS);
     }
 
+    /**
+     * Converts a {@link SafetyCenterIssueKey} to a readable string.
+     *
+     * <p>This is necessary as the implementation of {@link #toString()} for Java lite protos is
+     * optimized in production builds and does not return a user-readable output.
+     */
     @NonNull
-    private static <T extends MessageLite> T decodeToProto(@NonNull Parser<T> parser,
-            @NonNull String encoded) {
+    public static String toUserFriendlyString(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
+        return "SafetyCenterIssueKey{safetySourceId='"
+                + safetyCenterIssueKey.getSafetySourceId()
+                + "', safetySourceIssueId='"
+                + safetyCenterIssueKey.getSafetySourceIssueId()
+                + "', userId="
+                + safetyCenterIssueKey.getUserId()
+                + "}";
+    }
+
+    /**
+     * Converts a {@link SafetyCenterIssueId} to a readable string.
+     *
+     * <p>This is necessary as the implementation of {@link #toString()} for Java lite protos is
+     * optimized in production builds and does not return a user-readable output.
+     */
+    @NonNull
+    public static String toUserFriendlyString(@NonNull SafetyCenterIssueId safetyCenterIssueId) {
+        return "SafetyCenterIssueId{safetyCenterIssueKey="
+                + toUserFriendlyString(safetyCenterIssueId.getSafetyCenterIssueKey())
+                + ", issueTypeId='"
+                + safetyCenterIssueId.getIssueTypeId()
+                + "'}";
+    }
+
+    /**
+     * Converts a {@link SafetyCenterIssueActionId} to a readable string.
+     *
+     * <p>This is necessary as the implementation of {@link #toString()} for Java lite protos is
+     * optimized in production builds and does not return a user-readable output.
+     */
+    @NonNull
+    public static String toUserFriendlyString(
+            @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
+        return "SafetyCenterIssueActionId{safetyCenterIssueKey="
+                + toUserFriendlyString(safetyCenterIssueActionId.getSafetyCenterIssueKey())
+                + ", safetySourceIssueActionId='"
+                + safetyCenterIssueActionId.getSafetySourceIssueActionId()
+                + "'}";
+    }
+
+    @NonNull
+    private static <T extends MessageLite> T decodeToProto(
+            @NonNull Parser<T> parser, @NonNull String encoded) {
         try {
             return parser.parseFrom(Base64.decode(encoded, ENCODING_FLAGS));
         } catch (InvalidProtocolBufferException e) {
             throw new IllegalArgumentException(
-                    String.format("Invalid ID: %s couldn't be parsed with %s", encoded,
-                            parser.getClass().getSimpleName()));
+                    "Invalid ID: "
+                            + encoded
+                            + " couldn't be parsed with "
+                            + parser.getClass().getSimpleName());
         }
     }
 }
