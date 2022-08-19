@@ -24,8 +24,6 @@ import static android.os.PowerExemptionManager.REASON_REFRESH_SAFETY_SOURCES;
 import static android.os.PowerExemptionManager.TEMPORARY_ALLOW_LIST_TYPE_FOREGROUND_SERVICE_ALLOWED;
 import static android.safetycenter.SafetyCenterManager.ACTION_REFRESH_SAFETY_SOURCES;
 import static android.safetycenter.SafetyCenterManager.ACTION_SAFETY_CENTER_ENABLED_CHANGED;
-import static android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_REQUEST_TYPE_FETCH_FRESH_DATA;
-import static android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_REQUEST_TYPE_GET_DATA;
 import static android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID;
 import static android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE;
 import static android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCE_IDS;
@@ -35,6 +33,8 @@ import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_OTHER;
 import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_PAGE_OPEN;
 import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK;
 import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_SAFETY_CENTER_ENABLED;
+
+import static com.android.safetycenter.RefreshReasons.toRefreshRequestType;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
@@ -320,21 +320,6 @@ final class SafetyCenterBroadcastDispatcher {
             Binder.restoreCallingIdentity(callingId);
         }
         return broadcastOptions;
-    }
-
-    @RefreshRequestType
-    private static int toRefreshRequestType(@RefreshReason int refreshReason) {
-        switch (refreshReason) {
-            case REFRESH_REASON_RESCAN_BUTTON_CLICK:
-                return EXTRA_REFRESH_REQUEST_TYPE_FETCH_FRESH_DATA;
-            case REFRESH_REASON_PAGE_OPEN:
-            case REFRESH_REASON_DEVICE_REBOOT:
-            case REFRESH_REASON_DEVICE_LOCALE_CHANGE:
-            case REFRESH_REASON_SAFETY_CENTER_ENABLED:
-            case REFRESH_REASON_OTHER:
-                return EXTRA_REFRESH_REQUEST_TYPE_GET_DATA;
-        }
-        throw new IllegalArgumentException("Unexpected refresh reason: " + refreshReason);
     }
 
     /** Returns {@code true} if {@code refreshReason} corresponds to a "background refresh". */
