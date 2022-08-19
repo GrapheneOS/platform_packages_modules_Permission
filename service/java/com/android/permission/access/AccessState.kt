@@ -33,24 +33,29 @@ class AccessState private constructor(
 class SystemState private constructor(
     val userIds: IntSet,
     val packageStates: IndexedMap<String, PackageState>,
+    val disabledSystemPackageStates: IndexedMap<String, PackageState>,
     val appIds: IntMap<IndexedListSet<String>>,
     val permissionGroups: IndexedMap<String, PermissionGroupInfo>,
     val permissionTrees: IndexedMap<String, Permission>,
     val permissions: IndexedMap<String, Permission>
 ) : WritableState() {
-    constructor() : this(IntSet(), IndexedMap(), IntMap(), IndexedMap(), IndexedMap(), IndexedMap())
+    constructor() : this(
+        IntSet(), IndexedMap(), IndexedMap(), IntMap(), IndexedMap(), IndexedMap(), IndexedMap()
+    )
 
     fun copy(): SystemState =
         SystemState(
-            userIds.copy(), packageStates.copy { it }, appIds.copy { it.copy() },
-            permissionGroups.copy { it }, permissionTrees.copy { it }, permissions.copy { it }
+            userIds.copy(), packageStates.copy { it }, disabledSystemPackageStates.copy { it },
+            appIds.copy { it.copy() }, permissionGroups.copy { it },
+            permissionTrees.copy { it }, permissions.copy { it }
         )
 }
 
 class UserState private constructor(
+    // A map of (appId to a map of (permissionName to permissionFlags))
     val permissionFlags: IntMap<IndexedMap<String, Int>>,
     val uidAppOpModes: IntMap<IndexedMap<String, Int>>,
-    val packageAppOpModes: IndexedMap<String, IndexedMap<String, Int>>,
+    val packageAppOpModes: IndexedMap<String, IndexedMap<String, Int>>
 ) : WritableState() {
     constructor() : this(IntMap(), IntMap(), IndexedMap())
 

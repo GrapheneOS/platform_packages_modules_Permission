@@ -18,16 +18,26 @@ package com.android.permission.access.data
 
 import android.content.pm.PermissionInfo
 
-class Permission(
+data class Permission(
     val permissionInfo: PermissionInfo,
+    val isReconciled: Boolean,
     val type: Int,
-    val isReconciled: Boolean
+    val appId: Int
 ) {
     val name: String
         get() = permissionInfo.name
 
     val packageName: String
         get() = permissionInfo.packageName
+
+    val isDynamic: Boolean
+        get() = type == TYPE_DYNAMIC
+
+    val protectionLevel: Int
+        get() = permissionInfo.protectionLevel
+
+    val knownCerts: Set<String>
+        get() = permissionInfo.knownCerts
 
     companion object {
         // The permission is defined in an application manifest.

@@ -70,9 +70,31 @@ inline fun <K, V> IndexedMap<K, V>.forEachValueIndexed(action: (Int, V) -> Unit)
     }
 }
 
+inline fun <K, V> IndexedMap<K, V>.removeAllIndexed(predicate: (Int, K, V) -> Boolean) {
+    for (index in size - 1 downTo 0) {
+        if (predicate(index, keyAt(index), valueAt(index))) {
+            removeAt(index)
+        }
+    }
+}
+
 inline fun <K, V> IndexedMap<K, V>.getOrPut(key: K, defaultValue: () -> V): V {
     get(key)?.let { return it }
     return defaultValue().also { put(key, it) }
+}
+
+@Suppress("NOTHING_TO_INLINE")
+inline fun <K, V> IndexedMap<K, V>.getWithDefault(key: K, defaultValue: V): V {
+    return get(key) ?: defaultValue
+}
+
+@Suppress("NOTHING_TO_INLINE")
+inline fun <K, V> IndexedMap<K, V>.putWithDefault(key: K, value: V, defaultValue: V) {
+    if (value == defaultValue) {
+        remove(key)
+    } else {
+        put(key, value)
+    }
 }
 
 @Suppress("NOTHING_TO_INLINE")

@@ -17,5 +17,6 @@
 package com.android.permission.access.permission
 
 object PermissionFlags {
-    const val DENIED = 0
+    const val INSTALL_GRANTED = 1 shl 0
+    const val INSTALL_REVOKED = 1 shl 1
 }
