@@ -65,6 +65,9 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.Utils.getSystemServiceSafe
 import com.android.permissioncontroller.privacysources.SafetyCenterReceiver.RefreshEvent
+import java.util.Random
+import java.util.concurrent.TimeUnit
+import java.util.function.BooleanSupplier
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -73,9 +76,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
-import java.util.Random
-import java.util.concurrent.TimeUnit
-import java.util.function.BooleanSupplier
 
 @VisibleForTesting
 const val PROPERTY_SC_ACCESSIBILITY_SOURCE_ENABLED = "sc_accessibility_source_enabled"
@@ -94,7 +94,7 @@ fun isAccessibilitySourceEnabled(): Boolean {
     return DeviceConfig.getBoolean(
         DeviceConfig.NAMESPACE_PRIVACY,
         PROPERTY_SC_ACCESSIBILITY_SOURCE_ENABLED,
-        false
+        true
     )
 }
 
