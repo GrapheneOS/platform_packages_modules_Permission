@@ -103,6 +103,40 @@
 
     <!-- START SAFETY CENTER SETTINGS PAGE -->
 
+    <style name="TextAppearance.SafetyCenter.Headline"
+        parent="@android:style/TextAppearance.DeviceDefault.Headline" />
+
+    <style name="TextAppearance.SafetyCenter.Headline.Status">
+        <item name="android:textSize">22sp</item>
+        <item name="android:lineHeight">28sp</item>
+    </style>
+    <style name="TextAppearance.SafetyCenter.Headline.Issue">
+        <item name="android:textSize">18sp</item>
+        <item name="android:lineHeight">24sp</item>
+    </style>
+    <style name="TextAppearance.SafetyCenter.Headline.Entry">
+        <item name="android:textSize">20sp</item>
+        <item name="android:lineHeight">24sp</item>
+    </style>
+
+    <style name="TextAppearance.SafetyCenter.Body"
+        parent="@android:style/TextAppearance.DeviceDefault.Small">
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineHeight">20sp</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+
+    <style name="TextAppearance.SafetyCenter.ActionButton"
+        parent="@android:style/TextAppearance.DeviceDefault.Medium">
+        <item name="android:capitalize">sentences</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineHeight">20sp</item>
+    </style>
+
+    <style name="TextAppearance.SafetyCenter.ActionButton.Secondary">
+        <item name="android:textColor">?attr/textColorScSecondaryActionButton</item>
+    </style>
+
     <style name="SafetyCenterCard"
         parent="android:Widget.DeviceDefault">
         <item name="android:paddingStart">24dp</item>
@@ -129,7 +163,7 @@
         <item name="android:height">56dp</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
-        <item name="android:textAppearance">@style/SafetyCenter.ActionButton.Text</item>
+        <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.ActionButton</item>
         <item name="android:textColor">?attr/textColorScActionButton</item>
         <item name="cornerRadius">12dp</item>
         <item name="rippleColor">?android:colorControlHighlight</item>
@@ -141,26 +175,12 @@
         <item name="android:height">56dp</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
-        <item name="android:textAppearance">@style/SafetyCenter.ActionButton.Secondary.Text</item>
+        <item name="android:textAppearance">
+            @style/TextAppearance.SafetyCenter.ActionButton.Secondary
+        </item>
         <item name="android:textColor">?attr/textColorScSecondaryActionButton</item>
         <item name="cornerRadius">12dp</item>
         <item name="rippleColor">?android:colorControlHighlight</item>
-    </style>
-
-    <style name="SafetyCenter.ActionButton.Text"
-           parent="@android:style/TextAppearance.DeviceDefault.Medium">
-        <item name="android:capitalize">sentences</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:lineHeight">20sp</item>
-        <item name="android:textColor">?attr/textColorScActionButton</item>
-    </style>
-
-    <style name="SafetyCenter.ActionButton.Secondary.Text"
-           parent="@android:style/TextAppearance.DeviceDefault.Medium">
-        <item name="android:capitalize">sentences</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:lineHeight">20sp</item>
-        <item name="android:textColor">?attr/textColorScSecondaryActionButton</item>
     </style>
 
     <!-- START SAFETY STATUS CARD -->
@@ -200,21 +220,14 @@
     <style name="SafetyCenterStatusTitle" parent="android:Widget.DeviceDefault">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textAppearance">@style/TextAppearance.SafetyStatusTitle</item>
-    </style>
-
-    <style name="TextAppearance.SafetyStatusSummary"
-        parent="@android:style/TextAppearance.DeviceDefault.Small">
-        <item name="android:textSize">14sp</item>
-        <item name="android:lineHeight">20sp</item>
-        <item name="android:textColor">?android:attr/textColorSecondary</item>
+        <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Headline.Status</item>
     </style>
 
     <style name="SafetyCenterStatusSummary" parent="android:Widget.DeviceDefault">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="app:layout_constraintTop_toBottomOf">@id/status_title</item>
-        <item name="android:textAppearance">@style/TextAppearance.SafetyStatusSummary</item>
+        <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Body</item>
     </style>
 
     <style name="SafetyCenterStatusButton" parent="SafetyCenter.MaterialActionButton" />
@@ -276,11 +289,8 @@
         <item name="app:layout_constraintEnd_toEndOf">parent</item>
     </style>
 
-    <style name="SafetyCenterIssueTitle"
-        parent="@android:style/TextAppearance.Material.Subhead">
-        <item name="android:textSize">18sp</item>
-        <item name="android:lineHeight">24sp</item>
-        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    <style name="SafetyCenterIssueTitle">
+        <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Headline.Issue</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginEnd">24dp</item>
@@ -291,22 +301,16 @@
         <item name="app:layout_constraintEnd_toStartOf">@id/issue_card_dismiss_btn</item>
     </style>
 
-    <style name="SafetyCenterIssueSubtitle"
-        parent="@android:style/TextAppearance.DeviceDefault">
-        <item name="android:textColor">?android:attr/textColorSecondary</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:lineHeight">20sp</item>
+    <style name="SafetyCenterIssueSubtitle">
+        <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Body</item>
         <item name="android:layout_marginTop">4dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="app:layout_constraintTop_toBottomOf">@id/issue_card_title</item>
     </style>
 
-    <style name="SafetyCenterIssueSummary"
-        parent="@android:style/TextAppearance.DeviceDefault">
-        <item name="android:textColor">?android:attr/textColorSecondary</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:lineHeight">20sp</item>
+    <style name="SafetyCenterIssueSummary">
+        <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Body</item>
         <item name="android:layout_marginTop">16dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
@@ -324,10 +328,7 @@
         <item name="app:layout_constraintEnd_toEndOf">parent</item>
     </style>
 
-    <style name="SafetyCenterIssueFooter"
-           parent="@android:style/TextAppearance.DeviceDefault.Small">
-        <item name="android:textColor">?android:attr/textColorSecondary</item>
-        <item name="android:textSize">11sp</item>
+    <style name="SafetyCenterIssueSafetyProtectionSection">
         <item name="android:paddingTop">20dp</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_height">wrap_content</item>
@@ -356,6 +357,7 @@
 
     <style name="SafetyCenterIssueCardResolvedTitle"
            parent="@android:style/TextAppearance.DeviceDefault.Medium">
+<!--     TODO extract this   -->
         <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:textSize">16sp</item>
         <item name="android:lineHeight">24sp</item>
@@ -376,11 +378,9 @@
         <item name="android:background">@drawable/safety_center_more_issues_card_background</item>
     </style>
 
-    <style name="SafetyCenterMoreIssuesTitle"
-           parent="@android:style/TextAppearance.DeviceDefault">
+    <style name="SafetyCenterMoreIssuesTitle">
+        <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Body</item>
         <item name="android:textColor">?android:attr/textColorPrimary</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:lineHeight">20sp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_marginStart">20dp</item>
@@ -425,11 +425,9 @@
         <item name="android:background">@drawable/safety_center_card_widget_background</item>
     </style>
 
-    <style name="SafetyCenterMoreIssuesWidgetTitle"
-           parent="@android:style/TextAppearance.DeviceDefault">
+    <style name="SafetyCenterMoreIssuesWidgetTitle">
+        <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Body</item>
         <item name="android:textColor">?android:attr/textColorPrimary</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:lineHeight">20sp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_marginEnd">2dp</item>
@@ -514,8 +512,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:singleLine">true</item>
-        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
-        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Headline.Entry</item>
         <item name="android:ellipsize">marquee</item>
         <item name="android:fadingEdge">horizontal</item>
     </style>
@@ -525,8 +522,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">4dp</item>
-        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
-        <item name="android:textColor">?android:attr/textColorSecondary</item>
+        <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Body</item>
         <item name="android:maxLines">4</item>
     </style>
 
@@ -561,7 +557,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
         <item name="android:maxLines">4</item>
-        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+        <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Body</item>
         <item name="android:textColor">?android:attr/textColorPrimary</item>
     </style>
 
