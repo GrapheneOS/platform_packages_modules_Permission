@@ -67,8 +67,9 @@ class SafetySourceReceiver : BroadcastReceiver() {
         when (val action = intent.action) {
             ACTION_REFRESH_SAFETY_SOURCES -> {
                 // Get the broadcast ID from the override or the intent
-                val broadcastId = overrideBroadcastId
-                    ?: intent.getStringExtra(EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID)
+                val broadcastId =
+                    overrideBroadcastId
+                        ?: intent.getStringExtra(EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID)
                 if (broadcastId.isNullOrEmpty()) {
                     throw IllegalArgumentException(
                         "Received refresh intent with no broadcast id specified")
@@ -177,8 +178,8 @@ class SafetySourceReceiver : BroadcastReceiver() {
         val safetySourceData = mutableMapOf<SafetySourceDataKey, SafetySourceData?>()
 
         /**
-         * The broadcast ID to use when responding to broadcasts. If set to null, the receiver
-         * will respond with the broadcast ID read directly from the received broadcast.
+         * The broadcast ID to use when responding to broadcasts. If set to null, the receiver will
+         * respond with the broadcast ID read directly from the received broadcast.
          */
         @Volatile var overrideBroadcastId: String? = null
 
@@ -200,9 +201,9 @@ class SafetySourceReceiver : BroadcastReceiver() {
             refreshReason: Int,
             timeout: Duration = TIMEOUT_LONG
         ) =
-            callWithShellPermissionIdentity(
-                { refreshSafetySourcesWithoutReceiverPermissionAndWait(refreshReason, timeout) },
-                SEND_SAFETY_CENTER_UPDATE)
+            callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
+                refreshSafetySourcesWithoutReceiverPermissionAndWait(refreshReason, timeout)
+            }
 
         fun SafetyCenterManager.refreshSafetySourcesWithoutReceiverPermissionAndWait(
             refreshReason: Int,
@@ -219,9 +220,9 @@ class SafetySourceReceiver : BroadcastReceiver() {
             value: Boolean,
             timeout: Duration = TIMEOUT_LONG
         ) =
-            callWithShellPermissionIdentity(
-                { setSafetyCenterEnabledWithoutReceiverPermissionAndWait(value, timeout) },
-                SEND_SAFETY_CENTER_UPDATE)
+            callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
+                setSafetyCenterEnabledWithoutReceiverPermissionAndWait(value, timeout)
+            }
 
         fun setSafetyCenterEnabledWithoutReceiverPermissionAndWait(
             value: Boolean,
@@ -239,24 +240,20 @@ class SafetySourceReceiver : BroadcastReceiver() {
             issueActionId: String,
             timeout: Duration = TIMEOUT_LONG
         ) {
-            callWithShellPermissionIdentity(
-                {
-                    executeSafetyCenterIssueActionWithPermission(issueId, issueActionId)
-                    receiveInlineAction(timeout)
-                },
-                SEND_SAFETY_CENTER_UPDATE)
+            callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
+                executeSafetyCenterIssueActionWithPermission(issueId, issueActionId)
+                receiveInlineAction(timeout)
+            }
         }
 
         fun SafetyCenterManager.dismissSafetyCenterIssueWithPermissionAndWait(
             issueId: String,
             timeout: Duration = TIMEOUT_LONG
         ) {
-            callWithShellPermissionIdentity(
-                {
-                    dismissSafetyCenterIssueWithPermission(issueId)
-                    receiveDismissIssue(timeout)
-                },
-                SEND_SAFETY_CENTER_UPDATE)
+            callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
+                dismissSafetyCenterIssueWithPermission(issueId)
+                receiveDismissIssue(timeout)
+            }
         }
 
         private fun createRefreshEvent(broadcastId: String) =

@@ -339,21 +339,19 @@ class SafetyCenterActivityTest {
                 SafetySourceDataKey(RESOLVE_ACTION, SINGLE_SOURCE_ID)] = null
 
         context.launchSafetyCenterActivity {
-            callWithShellPermissionIdentity(
-                {
-                    val action = safetySourceCtsData.criticalResolvingActionWithSuccessMessage
-                    waitFindObject(By.text(action.label.toString())).click()
+            callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
+                val action = safetySourceCtsData.criticalResolvingActionWithSuccessMessage
+                waitFindObject(By.text(action.label.toString())).click()
 
-                    // Success message should show up if issue marked as resolved
-                    val successMessage = action.successMessage.toString()
-                    waitFindObject(By.text(successMessage))
+                // Success message should show up if issue marked as resolved
+                val successMessage = action.successMessage.toString()
+                waitFindObject(By.text(successMessage))
 
-                    // Wait for success message to go away, verify issue no longer displayed
-                    waitTextNotDisplayed(successMessage)
-                    assertSourceIssueNotDisplayed(
-                        safetySourceCtsData.criticalResolvingIssueWithSuccessMessage)
-                },
-                SEND_SAFETY_CENTER_UPDATE)
+                // Wait for success message to go away, verify issue no longer displayed
+                waitTextNotDisplayed(successMessage)
+                assertSourceIssueNotDisplayed(
+                    safetySourceCtsData.criticalResolvingIssueWithSuccessMessage)
+            }
         }
     }
 
@@ -371,16 +369,14 @@ class SafetyCenterActivityTest {
                 SafetySourceDataKey(RESOLVE_ACTION, SINGLE_SOURCE_ID)] = null
 
         context.launchSafetyCenterActivity {
-            callWithShellPermissionIdentity(
-                {
-                    val action = safetySourceCtsData.criticalResolvingAction
-                    waitFindObject(By.text(action.label.toString())).click()
+            callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
+                val action = safetySourceCtsData.criticalResolvingAction
+                waitFindObject(By.text(action.label.toString())).click()
 
-                    // Wait for success message to go away, verify issue no longer displayed
-                    waitTextNotDisplayed(DEFAULT_SAFETY_CENTER_RESOLVED_ISSUE_SUCCESS_MESSAGE)
-                    assertSourceIssueNotDisplayed(safetySourceCtsData.criticalResolvingGeneralIssue)
-                },
-                SEND_SAFETY_CENTER_UPDATE)
+                // Wait for success message to go away, verify issue no longer displayed
+                waitTextNotDisplayed(DEFAULT_SAFETY_CENTER_RESOLVED_ISSUE_SUCCESS_MESSAGE)
+                assertSourceIssueNotDisplayed(safetySourceCtsData.criticalResolvingGeneralIssue)
+            }
         }
     }
 
@@ -398,16 +394,14 @@ class SafetyCenterActivityTest {
         SafetySourceReceiver.shouldReportSafetySourceError = true
 
         context.launchSafetyCenterActivity {
-            callWithShellPermissionIdentity(
-                {
-                    val action = safetySourceCtsData.criticalResolvingAction
-                    waitFindObject(By.text(action.label.toString())).click()
+            callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
+                val action = safetySourceCtsData.criticalResolvingAction
+                waitFindObject(By.text(action.label.toString())).click()
 
-                    // criticalResolvingAction does not define a success message, check for default
-                    waitTextNotDisplayed(DEFAULT_SAFETY_CENTER_RESOLVED_ISSUE_SUCCESS_MESSAGE)
-                    assertSourceIssueDisplayed(safetySourceCtsData.criticalResolvingGeneralIssue)
-                },
-                SEND_SAFETY_CENTER_UPDATE)
+                // criticalResolvingAction does not define a success message, check for default
+                waitTextNotDisplayed(DEFAULT_SAFETY_CENTER_RESOLVED_ISSUE_SUCCESS_MESSAGE)
+                assertSourceIssueDisplayed(safetySourceCtsData.criticalResolvingGeneralIssue)
+            }
         }
     }
 
@@ -424,16 +418,14 @@ class SafetyCenterActivityTest {
         // Set no data at all on the receiver, will ignore incoming call.
 
         context.launchSafetyCenterActivity {
-            callWithShellPermissionIdentity(
-                {
-                    val action = safetySourceCtsData.criticalResolvingAction
-                    waitFindObject(By.text(action.label.toString())).click()
+            callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
+                val action = safetySourceCtsData.criticalResolvingAction
+                waitFindObject(By.text(action.label.toString())).click()
 
-                    // criticalResolvingAction does not define a success message, check for default
-                    waitTextNotDisplayed(DEFAULT_SAFETY_CENTER_RESOLVED_ISSUE_SUCCESS_MESSAGE)
-                    assertSourceIssueDisplayed(safetySourceCtsData.criticalResolvingGeneralIssue)
-                },
-                SEND_SAFETY_CENTER_UPDATE)
+                // criticalResolvingAction does not define a success message, check for default
+                waitTextNotDisplayed(DEFAULT_SAFETY_CENTER_RESOLVED_ISSUE_SUCCESS_MESSAGE)
+                assertSourceIssueDisplayed(safetySourceCtsData.criticalResolvingGeneralIssue)
+            }
         }
     }
 

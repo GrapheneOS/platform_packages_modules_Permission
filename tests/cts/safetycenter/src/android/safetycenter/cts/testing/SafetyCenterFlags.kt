@@ -201,11 +201,9 @@ object SafetyCenterFlags {
     @Volatile lateinit var snapshot: Properties
 
     private val lazySnapshot: Properties by lazy {
-        callWithShellPermissionIdentity(
-            {
-                DeviceConfig.getProperties(NAMESPACE_PRIVACY, *FLAGS.map { it.name }.toTypedArray())
-            },
-            READ_DEVICE_CONFIG)
+        callWithShellPermissionIdentity(READ_DEVICE_CONFIG) {
+            DeviceConfig.getProperties(NAMESPACE_PRIVACY, *FLAGS.map { it.name }.toTypedArray())
+        }
     }
 
     /**
@@ -325,17 +323,16 @@ object SafetyCenterFlags {
     }
 
     private fun readDeviceConfigProperty(name: String): String? =
-        callWithShellPermissionIdentity(
-            { DeviceConfig.getProperty(NAMESPACE_PRIVACY, name) }, READ_DEVICE_CONFIG)
+        callWithShellPermissionIdentity(READ_DEVICE_CONFIG) {
+            DeviceConfig.getProperty(NAMESPACE_PRIVACY, name)
+        }
 
     private fun writeDeviceConfigProperty(name: String, stringValue: String?) {
-        callWithShellPermissionIdentity(
-            {
-                val valueWasSet =
-                    DeviceConfig.setProperty(
-                        NAMESPACE_PRIVACY, name, stringValue, /* makeDefault */ false)
-                require(valueWasSet) { "Could not set $name to: $stringValue" }
-            },
-            WRITE_DEVICE_CONFIG)
+        callWithShellPermissionIdentity(WRITE_DEVICE_CONFIG) {
+            val valueWasSet =
+                DeviceConfig.setProperty(
+                    NAMESPACE_PRIVACY, name, stringValue, /* makeDefault */ false)
+            require(valueWasSet) { "Could not set $name to: $stringValue" }
+        }
     }
 }
