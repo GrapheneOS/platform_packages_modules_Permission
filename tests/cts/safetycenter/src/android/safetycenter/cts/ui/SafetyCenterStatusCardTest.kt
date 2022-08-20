@@ -20,27 +20,26 @@ import android.safetycenter.cts.testing.SafetyCenterActivityLauncher.launchSafet
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsHelper
-import android.safetycenter.cts.testing.SafetyCenterCtsHelper.Companion.STATUS_CARD_RESCAN_BUTTON_LABEL
-import android.safetycenter.cts.testing.SafetyCenterCtsHelper.Companion.STATUS_CARD_TITLE_CRITICAL_WARNING_REGEX
-import android.safetycenter.cts.testing.SafetyCenterCtsHelper.Companion.STATUS_CARD_TITLE_INFO
-import android.safetycenter.cts.testing.SafetyCenterCtsHelper.Companion.STATUS_CARD_TITLE_RECOMMENDATION_REGEX
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import android.safetycenter.cts.testing.SafetySourceCtsData
-import android.safetycenter.cts.testing.UiTestHelper
+import android.safetycenter.cts.testing.UiTestHelper.STATUS_CARD_RESCAN_BUTTON_LABEL
+import android.safetycenter.cts.testing.UiTestHelper.findButton
+import android.safetycenter.cts.testing.UiTestHelper.waitButtonNotDisplayed
 import android.support.test.uiautomator.By
-import androidx.test.core.app.ApplicationProvider
+import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.compatibility.common.util.UiAutomatorUtils.waitFindObject
+import java.util.regex.Pattern
 import org.junit.After
-import org.junit.Assume
+import org.junit.Assume.assumeTrue
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
-/** CTS tests for the Safety Center Status Card.  */
+/** CTS tests for the Safety Center Status Card. */
 @RunWith(AndroidJUnit4::class)
 class SafetyCenterStatusCardTest {
-    private val context: Context = ApplicationProvider.getApplicationContext()
+    private val context: Context = getApplicationContext()
 
     private val safetyCenterCtsHelper = SafetyCenterCtsHelper(context)
     private val safetySourceCtsData = SafetySourceCtsData(context)
@@ -51,7 +50,7 @@ class SafetyCenterStatusCardTest {
 
     @Before
     fun assumeDeviceSupportsSafetyCenterToRunTests() {
-        Assume.assumeTrue(shouldRunTests)
+        assumeTrue(shouldRunTests)
     }
 
     @Before
@@ -73,11 +72,10 @@ class SafetyCenterStatusCardTest {
     @Test
     fun statusCard_displaysStatusOnLoad() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
-        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID,
-            safetySourceCtsData.informationWithIconAction)
-        context.launchSafetyCenterActivity {
-            waitFindObject(By.text(STATUS_CARD_TITLE_INFO))
-        }
+        safetyCenterCtsHelper.setData(
+            SINGLE_SOURCE_ID, safetySourceCtsData.informationWithIconAction)
+
+        context.launchSafetyCenterActivity { waitFindObject(By.text(STATUS_CARD_TITLE_INFO)) }
     }
 
     @Test
@@ -85,9 +83,7 @@ class SafetyCenterStatusCardTest {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.information)
 
-        context.launchSafetyCenterActivity {
-            UiTestHelper.findButton(STATUS_CARD_RESCAN_BUTTON_LABEL)
-        }
+        context.launchSafetyCenterActivity { findButton(STATUS_CARD_RESCAN_BUTTON_LABEL) }
     }
 
     @Test
@@ -97,31 +93,38 @@ class SafetyCenterStatusCardTest {
 
         context.launchSafetyCenterActivity {
             waitFindObject(By.text(STATUS_CARD_TITLE_INFO))
-            UiTestHelper.waitButtonNotDisplayed(STATUS_CARD_RESCAN_BUTTON_LABEL)
+            waitButtonNotDisplayed(STATUS_CARD_RESCAN_BUTTON_LABEL)
         }
     }
 
     @Test
     fun statusCard_withRecommendationIssue_doesNotHaveRescanButton() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
-        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData
-            .recommendationWithGeneralIssue)
+        safetyCenterCtsHelper.setData(
+            SINGLE_SOURCE_ID, safetySourceCtsData.recommendationWithGeneralIssue)
 
         context.launchSafetyCenterActivity {
             waitFindObject(By.text(STATUS_CARD_TITLE_RECOMMENDATION_REGEX))
-            UiTestHelper.waitButtonNotDisplayed(STATUS_CARD_RESCAN_BUTTON_LABEL)
+            waitButtonNotDisplayed(STATUS_CARD_RESCAN_BUTTON_LABEL)
         }
     }
 
     @Test
     fun statusCard_withCriticalWarningIssue_doesNotHaveRescanButton() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
-        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID,
-            safetySourceCtsData.criticalWithResolvingGeneralIssue)
+        safetyCenterCtsHelper.setData(
+            SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithResolvingGeneralIssue)
 
         context.launchSafetyCenterActivity {
             waitFindObject(By.text(STATUS_CARD_TITLE_CRITICAL_WARNING_REGEX))
-            UiTestHelper.waitButtonNotDisplayed(STATUS_CARD_RESCAN_BUTTON_LABEL)
+            waitButtonNotDisplayed(STATUS_CARD_RESCAN_BUTTON_LABEL)
         }
+    }
+
+    companion object {
+        const val STATUS_CARD_TITLE_INFO = "Looks good"
+        val STATUS_CARD_TITLE_RECOMMENDATION_REGEX = Pattern.compile("(You|Device) may be at risk")
+        val STATUS_CARD_TITLE_CRITICAL_WARNING_REGEX =
+            Pattern.compile("(You are|Device is) at risk")
     }
 }

@@ -14,11 +14,8 @@
  * limitations under the License.
  */
 
-package com.android.access
+package com.android.permission.access
 
-import androidx.annotation.Keep
-
-@Keep
-class AccessCheckingService {
-    var list = mutableListOf<Any>()
+object AccessDecisions {
+    const val DENIED = 0
 }

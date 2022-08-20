@@ -49,8 +49,9 @@ object SafetyCenterActivityLauncher {
     fun Context.launchSafetyCenterQsActivity(intentExtras: Bundle? = null, block: () -> Unit) {
         val launchSafetyCenterQsIntent = createIntent(ACTION_VIEW_SAFETY_CENTER_QS, intentExtras)
         UiAutomatorUtils.getUiDevice().waitForIdle()
-        callWithShellPermissionIdentity(
-            { startActivity(launchSafetyCenterQsIntent) }, REVOKE_RUNTIME_PERMISSIONS)
+        callWithShellPermissionIdentity(REVOKE_RUNTIME_PERMISSIONS) {
+            startActivity(launchSafetyCenterQsIntent)
+        }
         executeBlockAndExit(block)
     }
 

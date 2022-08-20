@@ -24,6 +24,7 @@ import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_OTHER;
 import static android.safetycenter.SafetyCenterManager.RefreshReason;
 import static android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED;
 
+import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__TIMEOUT;
 import static com.android.permission.PermissionStatsLog.SAFETY_STATE;
 import static com.android.safetycenter.SafetyCenterFlags.PROPERTY_SAFETY_CENTER_ENABLED;
 
@@ -163,7 +164,8 @@ public final class SafetyCenterService extends SystemService {
                         context,
                         mSafetyCenterResourcesContext,
                         mSafetyCenterConfigReader,
-                        mSafetyCenterRefreshTracker);
+                        mSafetyCenterRefreshTracker,
+                        new WestworldLogger(context));
         mSafetyCenterListeners = new SafetyCenterListeners(mSafetyCenterDataTracker);
         mSafetyCenterBroadcastDispatcher =
                 new SafetyCenterBroadcastDispatcher(
@@ -488,10 +490,9 @@ public final class SafetyCenterService extends SystemService {
                     SafetyCenterIds.issueActionIdFromString(issueActionId);
             if (!safetyCenterIssueActionId.getSafetyCenterIssueKey().equals(safetyCenterIssueKey)) {
                 throw new IllegalArgumentException(
-                        "issueId: "
-                                + safetyCenterIssueId
-                                + " and issueActionId: "
-                                + safetyCenterIssueActionId
+                        SafetyCenterIds.toUserFriendlyString(safetyCenterIssueId)
+                                + " and "
+                                + SafetyCenterIds.toUserFriendlyString(safetyCenterIssueActionId)
                                 + " do not match");
             }
             UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
@@ -516,11 +517,8 @@ public final class SafetyCenterService extends SystemService {
                     Log.w(
                             TAG,
                             "Error dispatching action: "
-                                    + safetyCenterIssueActionId.getSafetySourceIssueActionId()
-                                    + ", for issue: "
-                                    + safetyCenterIssueKey.getSafetySourceIssueId()
-                                    + ", of source: "
-                                    + safetyCenterIssueKey.getSafetySourceId());
+                                    + SafetyCenterIds.toUserFriendlyString(
+                                            safetyCenterIssueActionId));
                     CharSequence errorMessage;
                     if (safetySourceIssueAction.willResolve()) {
                         errorMessage =
@@ -535,7 +533,7 @@ public final class SafetyCenterService extends SystemService {
                     return;
                 }
                 if (safetySourceIssueAction.willResolve()) {
-                    mSafetyCenterDataTracker.markSafetyCenterIssueActionAsInFlight(
+                    mSafetyCenterDataTracker.markSafetyCenterIssueActionInFlight(
                             safetyCenterIssueActionId);
                     ResolvingActionTimeout resolvingActionTimeout =
                             new ResolvingActionTimeout(safetyCenterIssueActionId, userProfileGroup);
@@ -636,7 +634,6 @@ public final class SafetyCenterService extends SystemService {
                                 + ", which does not correspond to an existing user");
                 return false;
             }
-            // TODO(b/223132917): Check if user is enabled, running and/or if quiet mode is enabled?
             return true;
         }
 
@@ -902,8 +899,9 @@ public final class SafetyCenterService extends SystemService {
             synchronized (mApiLock) {
                 mSafetyCenterTimeouts.remove(this);
                 boolean safetyCenterDataHasChanged =
-                        mSafetyCenterDataTracker.unmarkSafetyCenterIssueActionAsInFlight(
-                                mSafetyCenterIssueActionId);
+                        mSafetyCenterDataTracker.unmarkSafetyCenterIssueActionInFlight(
+                                mSafetyCenterIssueActionId,
+                                SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__TIMEOUT);
                 if (!safetyCenterDataHasChanged) {
                     return;
                 }
@@ -920,7 +918,7 @@ public final class SafetyCenterService extends SystemService {
         public String toString() {
             return "ResolvingActionTimeout{"
                     + "mSafetyCenterIssueActionId="
-                    + mSafetyCenterIssueActionId
+                    + SafetyCenterIds.toUserFriendlyString(mSafetyCenterIssueActionId)
                     + ", mUserProfileGroup="
                     + mUserProfileGroup
                     + '}';
