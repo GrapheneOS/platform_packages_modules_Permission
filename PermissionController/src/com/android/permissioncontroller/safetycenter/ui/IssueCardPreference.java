@@ -62,20 +62,22 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
 
     public static final String TAG = IssueCardPreference.class.getSimpleName();
 
-    private final IssueCardAnimator mIssueCardAnimator = new IssueCardAnimator(
-            this::markIssueResolvedUiCompleted);
+    private final IssueCardAnimator mIssueCardAnimator =
+            new IssueCardAnimator(this::markIssueResolvedUiCompleted);
     private final SafetyCenterViewModel mSafetyCenterViewModel;
     private final SafetyCenterIssue mIssue;
     private final FragmentManager mDialogFragmentManager;
     private final SafetyCenterIssueId mDecodedIssueId;
     @Nullable private String mResolvedIssueActionId;
+    @Nullable private final Integer mTaskId;
 
     public IssueCardPreference(
             Context context,
             SafetyCenterViewModel safetyCenterViewModel,
             SafetyCenterIssue issue,
             @Nullable String resolvedIssueActionId,
-            FragmentManager dialogFragmentManager) {
+            FragmentManager dialogFragmentManager,
+            @Nullable Integer launchTaskId) {
         super(context);
         setLayoutResource(R.layout.preference_issue_card);
 
@@ -84,6 +86,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
         mDialogFragmentManager = dialogFragmentManager;
         mDecodedIssueId = SafetyCenterIds.issueIdFromString(mIssue.getId());
         mResolvedIssueActionId = resolvedIssueActionId;
+        mTaskId = launchTaskId;
     }
 
     @Override
@@ -137,9 +140,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
 
             if (mResolvedIssueActionId != null && mResolvedIssueActionId.equals(action.getId())) {
                 mIssueCardAnimator.transitionToIssueResolvedThenMarkComplete(
-                        getContext(),
-                        holder,
-                        action);
+                        getContext(), holder, action);
             }
         }
 
@@ -262,7 +263,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
                         // removing/updating the issue.
                         button.setEnabled(false);
                     }
-                    mSafetyCenterViewModel.executeIssueAction(mIssue, action);
+                    mSafetyCenterViewModel.executeIssueAction(mIssue, action, mTaskId);
                     mSafetyCenterViewModel
                             .getInteractionLogger()
                             .recordForIssue(
