@@ -37,7 +37,7 @@ object ShellPermissions {
      * Note that [SystemUtil.callWithShellPermissionIdentity] should NOT be used together with this
      * method.
      */
-    fun <T> callWithShellPermissionIdentity(block: () -> T, vararg permissions: String): T {
+    fun <T> callWithShellPermissionIdentity(vararg permissions: String, block: () -> T): T {
         val uiAutomation = getInstrumentation().getUiAutomation()
         val permissionsToAddForThisBlock =
             if (permissions.isEmpty()) {

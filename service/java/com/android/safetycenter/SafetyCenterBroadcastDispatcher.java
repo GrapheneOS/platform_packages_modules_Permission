@@ -243,7 +243,7 @@ final class SafetyCenterBroadcastDispatcher {
             @NonNull UserHandle userHandle,
             @NonNull String permission,
             @Nullable BroadcastOptions broadcastOptions) {
-        // The following operation requires the INTERACT_ACROSS_USERS permission.
+        // This call requires the INTERACT_ACROSS_USERS permission.
         final long callingId = Binder.clearCallingIdentity();
         try {
             mContext.sendBroadcastAsUser(
@@ -265,13 +265,13 @@ final class SafetyCenterBroadcastDispatcher {
     private List<ResolveInfo> queryBroadcastReceiversAsUser(
             @NonNull Intent broadcastIntent, @NonNull UserHandle userHandle) {
         PackageManager packageManager = mContext.getPackageManager();
-        final long callingIdentity = Binder.clearCallingIdentity();
         // This call requires the INTERACT_ACROSS_USERS permission.
+        final long callingId = Binder.clearCallingIdentity();
         try {
             return packageManager.queryBroadcastReceiversAsUser(
                     broadcastIntent, ResolveInfoFlags.of(0), userHandle);
         } finally {
-            Binder.restoreCallingIdentity(callingIdentity);
+            Binder.restoreCallingIdentity(callingId);
         }
     }
 
@@ -308,7 +308,7 @@ final class SafetyCenterBroadcastDispatcher {
     private static BroadcastOptions createBroadcastOptions() {
         BroadcastOptions broadcastOptions = BroadcastOptions.makeBasic();
         Duration allowListDuration = SafetyCenterFlags.getFgsAllowlistDuration();
-        // The following operation requires the START_FOREGROUND_SERVICES_FROM_BACKGROUND.
+        // This call requires the START_FOREGROUND_SERVICES_FROM_BACKGROUND permission.
         final long callingId = Binder.clearCallingIdentity();
         try {
             broadcastOptions.setTemporaryAppAllowlist(

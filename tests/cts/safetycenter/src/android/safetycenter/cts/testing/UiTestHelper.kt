@@ -32,6 +32,8 @@ import java.util.regex.Pattern
 /** A class that helps with UI testing. */
 object UiTestHelper {
 
+    const val STATUS_CARD_RESCAN_BUTTON_LABEL = "Scan device"
+
     private val NOT_DISPLAYED_TIMEOUT = Duration.ofSeconds(20)
     private val NOT_DISPLAYED_CHECK_INTERVAL = Duration.ofMillis(100)
     private val FIND_TEXT_TIMEOUT = Duration.ofSeconds(25)

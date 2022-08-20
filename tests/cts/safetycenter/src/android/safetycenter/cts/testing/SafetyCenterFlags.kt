@@ -23,345 +23,316 @@ import android.content.res.Resources
 import android.provider.DeviceConfig
 import android.provider.DeviceConfig.NAMESPACE_PRIVACY
 import android.provider.DeviceConfig.Properties
+import android.safetycenter.SafetyCenterManager.REFRESH_REASON_DEVICE_LOCALE_CHANGE
+import android.safetycenter.SafetyCenterManager.REFRESH_REASON_DEVICE_REBOOT
+import android.safetycenter.SafetyCenterManager.REFRESH_REASON_OTHER
+import android.safetycenter.SafetyCenterManager.REFRESH_REASON_PAGE_OPEN
+import android.safetycenter.SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK
+import android.safetycenter.SafetyCenterManager.REFRESH_REASON_SAFETY_CENTER_ENABLED
 import android.safetycenter.SafetySourceData
+import android.safetycenter.cts.testing.Coroutines.TIMEOUT_LONG
 import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermissionIdentity
 import java.time.Duration
+import kotlin.reflect.KProperty
 
 /** A class that facilitates working with Safety Center flags. */
 object SafetyCenterFlags {
 
     /** Flag that determines whether SafetyCenter is enabled. */
-    private const val PROPERTY_SAFETY_CENTER_ENABLED = "safety_center_is_enabled"
+    private val isEnabledFlag =
+        Flag("safety_center_is_enabled", defaultValue = false, BooleanParser())
 
     /**
      * Flag that determines whether we should show error entries for sources that timeout when
      * refreshing them.
      */
-    private const val PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT =
-        "safety_center_show_error_entries_on_timeout"
+    private val showErrorEntriesOnTimeoutFlag =
+        Flag("safety_center_show_error_entries_on_timeout", defaultValue = false, BooleanParser())
 
     /** Flag that determines whether we should replace the IconAction of the lock screen source. */
-    private const val PROPERTY_REPLACE_LOCK_SCREEN_ICON_ACTION =
-        "safety_center_replace_lock_screen_icon_action"
+    private val replaceLockScreenIconActionFlag =
+        Flag("safety_center_replace_lock_screen_icon_action", defaultValue = true, BooleanParser())
 
     /**
      * Flag that determines the time for which a Safety Center refresh is allowed to wait for a
      * source to respond to a refresh request before timing out and marking the refresh as finished,
      * depending on the refresh reason.
      */
-    private const val PROPERTY_REFRESH_SOURCES_TIMEOUTS_MILLIS =
-        "safety_center_refresh_sources_timeouts_millis"
+    private val refreshSourceTimeoutsFlag =
+        Flag(
+            "safety_center_refresh_sources_timeouts_millis",
+            defaultValue = getAllRefreshTimeoutsMap(TIMEOUT_LONG),
+            MapParser(IntParser(), DurationParser()))
 
     /**
-     * Device Config flag that determines the time for which Safety Center will wait for a source to
-     * respond to a resolving action before timing out.
+     * Flag that determines the time for which Safety Center will wait for a source to respond to a
+     * resolving action before timing out.
      */
-    private const val PROPERTY_SAFETY_CENTER_RESOLVE_ACTION_TIMEOUT =
-        "safety_center_resolve_action_timeout_millis"
+    private val resolveActionTimeoutFlag =
+        Flag(
+            "safety_center_resolve_action_timeout_millis",
+            defaultValue = TIMEOUT_LONG,
+            DurationParser())
 
     /**
-     * Device Config flag that determines the time for which Safety Center will wait before starting
-     * dismissal of resolved issue UI
+     * Flag that determines the time for which Safety Center will wait before starting dismissal of
+     * resolved issue UI
      */
-    private const val PROPERTY_HIDE_RESOLVED_UI_TRANSITION_DELAY_MILLIS =
-        "safety_center_hide_resolved_ui_transition_delay_millis"
+    private val hideResolveUiTransitionDelayFlag =
+        Flag(
+            "safety_center_hide_resolved_ui_transition_delay_millis",
+            defaultValue = Duration.ofMillis(400),
+            DurationParser())
 
     /**
-     * Device config flag containing a comma delimited lists of source IDs that we won't track when
-     * deciding if a broadcast is completed. We still send broadcasts to (and handle API calls from)
-     * these sources as normal.
+     * Flag containing a comma delimited lists of source IDs that we won't track when deciding if a
+     * broadcast is completed. We still send broadcasts to (and handle API calls from) these sources
+     * as normal.
      */
-    private const val PROPERTY_UNTRACKED_SOURCES = "safety_center_untracked_sources"
+    private val untrackedSourcesFlag =
+        Flag(
+            "safety_center_untracked_sources", defaultValue = emptySet(), SetParser(StringParser()))
 
     /**
-     * Device Config flag containing a map (a comma separated list of colon separated pairs) where
-     * the key is an issue [SafetySourceData.SeverityLevel] and the value is the number of times an
-     * issue of this [SafetySourceData.SeverityLevel] should be resurfaced.
+     * Flag containing a map (a comma separated list of colon separated pairs) where the key is an
+     * issue [SafetySourceData.SeverityLevel] and the value is the number of times an issue of this
+     * [SafetySourceData.SeverityLevel] should be resurfaced.
      */
-    private const val PROPERTY_RESURFACE_ISSUE_MAX_COUNTS =
-        "safety_center_resurface_issue_max_counts"
+    private val resurfaceIssueMaxCountsFlag =
+        Flag(
+            "safety_center_resurface_issue_max_counts",
+            defaultValue = emptyMap(),
+            MapParser(IntParser(), LongParser()))
 
     /**
-     * Device Config flag containing a map (a comma separated list of colon separated pairs) where
-     * the key is an issue [SafetySourceData.SeverityLevel] and the value is the time after which a
-     * dismissed issue of this [SafetySourceData.SeverityLevel] will resurface if it has not reached
-     * the maximum count for which a dismissed issue of this [SafetySourceData.SeverityLevel] should
-     * be resurfaced.
+     * Flag containing a map (a comma separated list of colon separated pairs) where the key is an
+     * issue [SafetySourceData.SeverityLevel] and the value is the time after which a dismissed
+     * issue of this [SafetySourceData.SeverityLevel] will resurface if it has not reached the
+     * maximum count for which a dismissed issue of this [SafetySourceData.SeverityLevel] should be
+     * resurfaced.
      */
-    private const val PROPERTY_RESURFACE_ISSUE_DELAYS_MILLIS =
-        "safety_center_resurface_issue_delays_millis"
+    private val resurfaceIssueDelaysFlag =
+        Flag(
+            "safety_center_resurface_issue_delays_millis",
+            defaultValue = emptyMap(),
+            MapParser(IntParser(), DurationParser()))
 
     /**
-     * Device Config flag containing a map (a comma separated list of colon separated pairs) where
-     * the key is an issue [SafetySourceIssue.IssueCategory] and the value is a
-     * vertical-bar-delimited list of IDs of safety sources that are allowed to send issues with
-     * this category.
+     * Flag containing a map (a comma separated list of colon separated pairs) where the key is an
+     * issue [SafetySourceIssue.IssueCategory] and the value is a vertical-bar-delimited list of IDs
+     * of safety sources that are allowed to send issues with this category.
      */
-    private const val PROPERTY_ISSUE_CATEGORY_ALLOWLISTS = "safety_center_issue_category_allowlists"
+    private val issueCategoryAllowlistsFlag =
+        Flag(
+            "safety_center_issue_category_allowlists",
+            defaultValue = emptyMap(),
+            MapParser(IntParser(), SetParser(StringParser(), delimiter = "|")))
 
     /**
-     * Comma delimited list of IDs of sources that should only be refreshed when Safety Center is on
-     * screen. We will refresh these sources only on page open and when the scan button is clicked.
+     * Flag that represents a comma delimited list of IDs of sources that should only be refreshed
+     * when Safety Center is on screen. We will refresh these sources only on page open and when the
+     * scan button is clicked.
      */
-    private const val PROPERTY_BACKGROUND_REFRESH_DENIED_SOURCES =
-        "safety_center_background_refresh_denied_sources"
+    private val backgroundRefreshDeniedSourcesFlag =
+        Flag(
+            "safety_center_background_refresh_denied_sources",
+            defaultValue = emptySet(),
+            SetParser(StringParser()))
 
-    /**
-     * Default time for which a Safety Center refresh is allowed to wait for a source to respond to
-     * a refresh request before timing out and marking the refresh as finished.
-     */
-    private val REFRESH_SOURCE_TIMEOUT_DEFAULT_DURATION = Duration.ofSeconds(10)
-
-    /**
-     * Default time for which Safety Center will wait for a source to respond to a resolving action
-     * before timing out.
-     */
-    private val RESOLVE_ACTION_TIMEOUT_DEFAULT_DURATION = Duration.ofSeconds(10)
-
-    /** Default time for which Safety Center will show the resolved issue UI before fading out */
-    internal val HIDE_RESOLVED_UI_TRANSITION_DELAY_DEFAULT_DURATION = Duration.ofMillis(400)
-
-    /** Default maximum number of times that Safety Center will resurface a dismissed issue. */
-    private const val RESURFACE_ISSUE_DEFAULT_MAX_COUNT: Long = 0
-
-    /** Default time for which Safety Center will wait before resurfacing a dismissed issue. */
-    private val RESURFACE_ISSUE_DEFAULT_DELAY = Duration.ofDays(180)
+    /** Every Safety Center flag. */
+    private val FLAGS: List<Flag<*>> =
+        listOf(
+            isEnabledFlag,
+            showErrorEntriesOnTimeoutFlag,
+            replaceLockScreenIconActionFlag,
+            refreshSourceTimeoutsFlag,
+            resolveActionTimeoutFlag,
+            hideResolveUiTransitionDelayFlag,
+            untrackedSourcesFlag,
+            resurfaceIssueMaxCountsFlag,
+            resurfaceIssueDelaysFlag,
+            issueCategoryAllowlistsFlag,
+            backgroundRefreshDeniedSourcesFlag)
 
     /** Returns whether the device supports Safety Center. */
     fun Context.deviceSupportsSafetyCenter() =
         resources.getBoolean(
             Resources.getSystem().getIdentifier("config_enableSafetyCenter", "bool", "android"))
 
-    /**
-     * A property that allows getting and modifying the [PROPERTY_SAFETY_CENTER_ENABLED] device
-     * config flag.
-     */
-    var isEnabled: Boolean
-        get() = readFlag(PROPERTY_SAFETY_CENTER_ENABLED, defaultValue = false) { it.toBoolean() }
-        set(value) {
-            writeFlag(PROPERTY_SAFETY_CENTER_ENABLED, value.toString())
-        }
+    /** A property that allows getting and setting the [isEnabledFlag]. */
+    var isEnabled: Boolean by isEnabledFlag
 
-    /**
-     * A property that allows getting and modifying the [PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT]
-     * device config flag.
-     */
-    var showErrorEntriesOnTimeout: Boolean
-        get() =
-            readFlag(PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT, defaultValue = false) {
-                it.toBoolean()
-            }
-        set(value) {
-            writeFlag(PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT, value.toString())
-        }
+    /** A property that allows getting and setting the [showErrorEntriesOnTimeoutFlag]. */
+    var showErrorEntriesOnTimeout: Boolean by showErrorEntriesOnTimeoutFlag
 
-    /**
-     * A property that allows getting and modifying the [PROPERTY_REPLACE_LOCK_SCREEN_ICON_ACTION]
-     * device config flag.
-     */
-    var replaceLockScreenIconAction: Boolean
-        get() =
-            readFlag(PROPERTY_REPLACE_LOCK_SCREEN_ICON_ACTION, defaultValue = true) {
-                it.toBoolean()
-            }
-        set(value) {
-            writeFlag(PROPERTY_REPLACE_LOCK_SCREEN_ICON_ACTION, value.toString())
-        }
+    /** A property that allows getting and setting the [replaceLockScreenIconActionFlag]. */
+    var replaceLockScreenIconAction: Boolean by replaceLockScreenIconActionFlag
 
-    /**
-     * A property that allows getting and setting the [PROPERTY_REFRESH_SOURCES_TIMEOUTS_MILLIS]
-     * device config flag.
-     */
-    var refreshTimeouts: Map<Int, Duration>
-        get() =
-            readFlag(PROPERTY_REFRESH_SOURCES_TIMEOUTS_MILLIS, defaultValue = emptyMap()) {
-                it.toMap(String::toInt, { valueString -> Duration.ofMillis(valueString.toLong()) })
-            }
-        set(value) {
-            writeFlag(
-                PROPERTY_REFRESH_SOURCES_TIMEOUTS_MILLIS,
-                value.joinToListOfPairsString(
-                    Int::toString, { value -> value.toMillis().toString() }))
-        }
+    /** A property that allows getting and setting the [refreshSourceTimeoutsFlag]. */
+    var refreshTimeouts: Map<Int, Duration> by refreshSourceTimeoutsFlag
 
-    /**
-     * A property that allows getting and setting the
-     * [PROPERTY_SAFETY_CENTER_RESOLVE_ACTION_TIMEOUT] device config flag.
-     */
-    var resolveActionTimeout: Duration
-        get() =
-            readFlag(
-                PROPERTY_SAFETY_CENTER_RESOLVE_ACTION_TIMEOUT,
-                RESOLVE_ACTION_TIMEOUT_DEFAULT_DURATION) { Duration.ofMillis(it.toLong()) }
-        set(value) {
-            writeFlag(PROPERTY_SAFETY_CENTER_RESOLVE_ACTION_TIMEOUT, value.toMillis().toString())
-        }
+    /** A property that allows getting and setting the [resolveActionTimeoutFlag]. */
+    var resolveActionTimeout: Duration by resolveActionTimeoutFlag
 
-    /**
-     * A property that allows getting and setting the
-     * [PROPERTY_SAFETY_CENTER_RESOLVE_ACTION_TIMEOUT] device config flag.
-     */
-    var hideResolvedIssueUiTransitionDelay: Duration
-        get() =
-            readFlag(
-                PROPERTY_HIDE_RESOLVED_UI_TRANSITION_DELAY_MILLIS,
-                HIDE_RESOLVED_UI_TRANSITION_DELAY_DEFAULT_DURATION) {
-                Duration.ofMillis(it.toLong())
-            }
-        set(value) {
-            writeFlag(
-                PROPERTY_HIDE_RESOLVED_UI_TRANSITION_DELAY_MILLIS, value.toMillis().toString())
-        }
+    /** A property that allows getting and setting the [hideResolveUiTransitionDelayFlag]. */
+    var hideResolvedIssueUiTransitionDelay: Duration by hideResolveUiTransitionDelayFlag
 
-    /**
-     * A property that allows getting and setting the [PROPERTY_UNTRACKED_SOURCES] device config
-     * flag.
-     */
-    var untrackedSources: Set<String>
-        get() =
-            readFlag(PROPERTY_UNTRACKED_SOURCES, defaultValue = emptySet()) {
-                it.split(",").toSet()
-            }
-        set(value) {
-            writeFlag(PROPERTY_UNTRACKED_SOURCES, value.joinToString(","))
-        }
+    /** A property that allows getting and setting the [untrackedSourcesFlag]. */
+    var untrackedSources: Set<String> by untrackedSourcesFlag
 
-    /**
-     * A property that allows getting and setting the [PROPERTY_RESURFACE_ISSUE_MAX_COUNTS] device
-     * config flag.
-     */
-    var resurfaceIssueMaxCounts: Map<Int, Long>
-        get() =
-            readFlag(PROPERTY_RESURFACE_ISSUE_MAX_COUNTS, defaultValue = emptyMap()) {
-                it.toMap(String::toInt, String::toLong)
-            }
-        set(value) {
-            writeFlag(
-                PROPERTY_RESURFACE_ISSUE_MAX_COUNTS,
-                value.joinToListOfPairsString(Int::toString, Long::toString))
-        }
+    /** A property that allows getting and setting the [resurfaceIssueMaxCountsFlag]. */
+    var resurfaceIssueMaxCounts: Map<Int, Long> by resurfaceIssueMaxCountsFlag
 
-    /**
-     * A property that allows getting and setting the [PROPERTY_RESURFACE_ISSUE_DELAYS_MILLIS]
-     * device config flag.
-     */
-    var resurfaceIssueDelays: Map<Int, Duration>
-        get() =
-            readFlag(PROPERTY_RESURFACE_ISSUE_DELAYS_MILLIS, defaultValue = emptyMap()) {
-                it.toMap(String::toInt, { valueString -> Duration.ofMillis(valueString.toLong()) })
-            }
-        set(value) {
-            writeFlag(
-                PROPERTY_RESURFACE_ISSUE_DELAYS_MILLIS,
-                value.joinToListOfPairsString(
-                    Int::toString, { value -> value.toMillis().toString() }))
-        }
+    /** A property that allows getting and setting the [resurfaceIssueDelaysFlag]. */
+    var resurfaceIssueDelays: Map<Int, Duration> by resurfaceIssueDelaysFlag
 
-    /**
-     * A property that allows getting and setting the [PROPERTY_BACKGROUND_REFRESH_DENIED_SOURCES]
-     * device config flag.
-     */
-    var backgroundRefreshDeniedSources: Set<String>
-        get() =
-            readFlag(PROPERTY_BACKGROUND_REFRESH_DENIED_SOURCES, defaultValue = emptySet()) {
-                it.split(",").toSet()
-            }
-        set(value) {
-            writeFlag(PROPERTY_BACKGROUND_REFRESH_DENIED_SOURCES, value.joinToString(","))
-        }
+    /** A property that allows getting and setting the [issueCategoryAllowlistsFlag]. */
+    var issueCategoryAllowlists: Map<Int, Set<String>> by issueCategoryAllowlistsFlag
 
-    /**
-     * A property that allows getting and setting the [PROPERTY_ISSUE_CATEGORY_ALLOWLISTS] device
-     * config flag.
-     */
-    var issueCategoryAllowlists: Map<Int, Set<String>>
-        get() =
-            readFlag(PROPERTY_ISSUE_CATEGORY_ALLOWLISTS, defaultValue = emptyMap()) {
-                it.toMap(String::toInt, { valueString -> valueString.split("|").toSet() })
-            }
-        set(value) {
-            writeFlag(
-                PROPERTY_ISSUE_CATEGORY_ALLOWLISTS,
-                value.joinToListOfPairsString(Int::toString, { value -> value.joinToString("|") }))
-        }
-
-    /** Converts a comma separated list of colon separated pairs into a map. */
-    private fun <K, V> String.toMap(
-        keyFromString: (String) -> K,
-        valueFromString: (String) -> V
-    ): Map<K, V> =
-        split(",").associate { pair ->
-            val (keyString, valueString) = pair.split(":")
-            keyFromString(keyString) to valueFromString(valueString)
-        }
-
-    /** Converts a map into a comma separated list of colon separated pairs. */
-    private fun <K, V> Map<K, V>.joinToListOfPairsString(
-        stringFromKey: (K) -> String,
-        stringFromValue: (V) -> String
-    ): String = map { "${stringFromKey(it.key)}:${stringFromValue(it.value)}" }.joinToString(",")
-
-    private fun <T> readFlag(name: String, defaultValue: T, parseFromString: (String) -> T) =
-        callWithShellPermissionIdentity(
-            {
-                val value = DeviceConfig.getProperty(NAMESPACE_PRIVACY, name)
-                if (value == null) {
-                    defaultValue
-                } else {
-                    parseFromString(value)
-                }
-            },
-            READ_DEVICE_CONFIG)
-
-    private fun writeFlag(name: String, stringValue: String?) {
-        callWithShellPermissionIdentity(
-            {
-                val valueWasSet =
-                    DeviceConfig.setProperty(
-                        NAMESPACE_PRIVACY, name, stringValue, /* makeDefault */ false)
-                require(valueWasSet) { "Could not set $name to: $stringValue" }
-            },
-            WRITE_DEVICE_CONFIG)
-    }
+    /** A property that allows getting and setting the [backgroundRefreshDeniedSourcesFlag]. */
+    var backgroundRefreshDeniedSources: Set<String> by backgroundRefreshDeniedSourcesFlag
 
     /**
      * Returns a snapshot of all the Safety Center flags.
      *
-     * This snapshot is only taken once and cached afterwards. This must be called at least once
-     * prior to modifying any flag.
+     * This snapshot is only taken once and cached afterwards. [setup] must be called at least once
+     * prior to modifying any flag for the snapshot to be taken with the right values.
      */
-    val snapshot: Properties by lazy {
-        callWithShellPermissionIdentity(
-            {
-                DeviceConfig.getProperties(
-                    NAMESPACE_PRIVACY,
-                    PROPERTY_SAFETY_CENTER_ENABLED,
-                    PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT,
-                    PROPERTY_REPLACE_LOCK_SCREEN_ICON_ACTION,
-                    PROPERTY_REFRESH_SOURCES_TIMEOUTS_MILLIS,
-                    PROPERTY_SAFETY_CENTER_RESOLVE_ACTION_TIMEOUT,
-                    PROPERTY_HIDE_RESOLVED_UI_TRANSITION_DELAY_MILLIS,
-                    PROPERTY_UNTRACKED_SOURCES,
-                    PROPERTY_RESURFACE_ISSUE_MAX_COUNTS,
-                    PROPERTY_RESURFACE_ISSUE_DELAYS_MILLIS,
-                    PROPERTY_BACKGROUND_REFRESH_DENIED_SOURCES,
-                    PROPERTY_ISSUE_CATEGORY_ALLOWLISTS)
-            },
-            READ_DEVICE_CONFIG)
+    @Volatile lateinit var snapshot: Properties
+
+    private val lazySnapshot: Properties by lazy {
+        callWithShellPermissionIdentity(READ_DEVICE_CONFIG) {
+            DeviceConfig.getProperties(NAMESPACE_PRIVACY, *FLAGS.map { it.name }.toTypedArray())
+        }
     }
 
-    /** Resets the Safety Center flags based on the given [snapshot]. */
-    fun reset(snapshot: Properties) {
+    /**
+     * Takes a snapshot of all Safety Center flags and sets them up to their default values.
+     *
+     * This doesn't apply to [isEnabled] as it is handled separately by [SafetyCenterCtsHelper]:
+     * there is a listener that listens to changes to this flag in system server, and we need to
+     * ensure we wait for it to complete when modifying this flag.
+     */
+    fun setup() {
+        snapshot = lazySnapshot
+        FLAGS.filter { it.name != isEnabledFlag.name }
+            .forEach { writeDeviceConfigProperty(it.name, it.defaultStringValue) }
+    }
+
+    /** Resets the Safety Center flags based on the existing [snapshot] captured during [setup]. */
+    fun reset() {
         // Write flags one by one instead of using `DeviceConfig#setProperties` as the latter does
         // not work when DeviceConfig sync is disabled.
         snapshot.keyset.forEach {
             val key = it
             val value = snapshot.getString(key, /* defaultValue */ null)
-            writeFlag(key, value)
+            writeDeviceConfigProperty(key, value)
         }
     }
 
-    /** Returns the [PROPERTY_SAFETY_CENTER_ENABLED] of the Safety Center flags snapshot. */
+    /** Sets the [refreshTimeouts] for all refresh reasons to the given [refreshTimeout]. */
+    fun setAllRefreshTimeoutsTo(refreshTimeout: Duration) {
+        refreshTimeouts = getAllRefreshTimeoutsMap(refreshTimeout)
+    }
+
+    /** Returns the [isEnabledFlag] value of the Safety Center flags snapshot. */
     fun Properties.isSafetyCenterEnabled() =
-        getBoolean(PROPERTY_SAFETY_CENTER_ENABLED, /* defaultValue */ false)
+        getBoolean(isEnabledFlag.name, /* defaultValue */ false)
+
+    private fun getAllRefreshTimeoutsMap(refreshTimeout: Duration) =
+        mapOf(
+            REFRESH_REASON_PAGE_OPEN to refreshTimeout,
+            REFRESH_REASON_RESCAN_BUTTON_CLICK to refreshTimeout,
+            REFRESH_REASON_DEVICE_REBOOT to refreshTimeout,
+            REFRESH_REASON_DEVICE_LOCALE_CHANGE to refreshTimeout,
+            REFRESH_REASON_SAFETY_CENTER_ENABLED to refreshTimeout,
+            REFRESH_REASON_OTHER to refreshTimeout)
+
+    private interface Parser<T> {
+        fun parseFromString(stringValue: String): T
+
+        fun toString(value: T): String = value.toString()
+    }
+
+    private class StringParser : Parser<String> {
+        override fun parseFromString(stringValue: String) = stringValue
+    }
+
+    private class BooleanParser : Parser<Boolean> {
+        override fun parseFromString(stringValue: String) = stringValue.toBoolean()
+    }
+
+    private class IntParser : Parser<Int> {
+        override fun parseFromString(stringValue: String) = stringValue.toInt()
+    }
+
+    private class LongParser : Parser<Long> {
+        override fun parseFromString(stringValue: String) = stringValue.toLong()
+    }
+
+    private class DurationParser : Parser<Duration> {
+        override fun parseFromString(stringValue: String) = Duration.ofMillis(stringValue.toLong())
+
+        override fun toString(value: Duration) = value.toMillis().toString()
+    }
+
+    private class SetParser<T>(
+        private val elementParser: Parser<T>,
+        private val delimiter: String = ","
+    ) : Parser<Set<T>> {
+        override fun parseFromString(stringValue: String) =
+            stringValue.split(delimiter).map(elementParser::parseFromString).toSet()
+
+        override fun toString(value: Set<T>) =
+            value.joinToString(delimiter, transform = elementParser::toString)
+    }
+
+    private class MapParser<K, V>(
+        private val keyParser: Parser<K>,
+        private val valueParser: Parser<V>,
+        private val entriesDelimiter: String = ",",
+        private val pairDelimiter: String = ":"
+    ) : Parser<Map<K, V>> {
+        override fun parseFromString(stringValue: String) =
+            stringValue.split(entriesDelimiter).associate { pair ->
+                val (keyString, valueString) = pair.split(pairDelimiter)
+                keyParser.parseFromString(keyString) to valueParser.parseFromString(valueString)
+            }
+
+        override fun toString(value: Map<K, V>) =
+            value
+                .map {
+                    "${keyParser.toString(it.key)}${pairDelimiter}${valueParser.toString(it.value)}"
+                }
+                .joinToString(entriesDelimiter)
+    }
+
+    private class Flag<T>(
+        val name: String,
+        private val defaultValue: T,
+        private val parser: Parser<T>
+    ) {
+        val defaultStringValue = parser.toString(defaultValue)
+
+        operator fun getValue(thisRef: Any?, property: KProperty<*>): T =
+            readDeviceConfigProperty(name)?.let(parser::parseFromString) ?: defaultValue
+
+        operator fun setValue(thisRef: Any?, property: KProperty<*>, value: T) {
+            writeDeviceConfigProperty(name, parser.toString(value))
+        }
+    }
+
+    private fun readDeviceConfigProperty(name: String): String? =
+        callWithShellPermissionIdentity(READ_DEVICE_CONFIG) {
+            DeviceConfig.getProperty(NAMESPACE_PRIVACY, name)
+        }
+
+    private fun writeDeviceConfigProperty(name: String, stringValue: String?) {
+        callWithShellPermissionIdentity(WRITE_DEVICE_CONFIG) {
+            val valueWasSet =
+                DeviceConfig.setProperty(
+                    NAMESPACE_PRIVACY, name, stringValue, /* makeDefault */ false)
+            require(valueWasSet) { "Could not set $name to: $stringValue" }
+        }
+    }
 }

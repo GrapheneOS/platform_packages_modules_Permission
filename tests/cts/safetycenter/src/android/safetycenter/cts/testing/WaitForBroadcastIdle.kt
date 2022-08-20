@@ -27,6 +27,6 @@ object WaitForBroadcastIdle {
     /** Waits for the broadcast queue to be idle. */
     fun Context.waitForBroadcastIdle() {
         val activityManager = getSystemService(ActivityManager::class.java)!!
-        callWithShellPermissionIdentity({ activityManager.waitForBroadcastIdle() }, DUMP)
+        callWithShellPermissionIdentity(DUMP) { activityManager.waitForBroadcastIdle() }
     }
 }
