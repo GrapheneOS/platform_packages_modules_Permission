@@ -31,6 +31,4 @@ public class SafetyCenterConstants {
             "expand_issue_group_qs_fragment_key";
 
     public static final String EXTRA_NAVIGATION_SOURCE = "navigation_source_intent_extra";
-
-    public static final int INVALID_TASK_ID = -1;
 }

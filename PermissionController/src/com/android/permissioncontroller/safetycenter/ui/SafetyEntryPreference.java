@@ -18,9 +18,6 @@ package com.android.permissioncontroller.safetycenter.ui;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
-import static com.android.permissioncontroller.safetycenter.SafetyCenterConstants.INVALID_TASK_ID;
-
-import android.app.ActivityOptions;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.safetycenter.SafetyCenterEntry;
@@ -30,6 +27,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
@@ -47,10 +45,11 @@ public final class SafetyEntryPreference extends Preference implements Comparabl
     private final SafetyCenterEntry mEntry;
     private final SafetyCenterViewModel mViewModel;
     private final CharSequence mGroupId;
+    @Nullable private final Integer mLaunchTaskId;
 
     public SafetyEntryPreference(
             Context context,
-            int taskId,
+            @Nullable Integer launchTaskId,
             SafetyCenterEntry entry,
             CharSequence groupId,
             PositionInCardList position,
@@ -61,25 +60,22 @@ public final class SafetyEntryPreference extends Preference implements Comparabl
         mPosition = position;
         mViewModel = viewModel;
         mGroupId = groupId;
+        mLaunchTaskId = launchTaskId;
 
         setLayoutResource(R.layout.preference_entry);
         setTitle(entry.getTitle());
         setSummary(entry.getSummary());
 
-        setIcon(SeverityIconPicker.selectIconResId(
-                mEntry.getSeverityLevel(), mEntry.getSeverityUnspecifiedIconType()));
+        setIcon(
+                SeverityIconPicker.selectIconResId(
+                        mEntry.getSeverityLevel(), mEntry.getSeverityUnspecifiedIconType()));
 
         PendingIntent pendingIntent = entry.getPendingIntent();
         if (pendingIntent != null) {
             setOnPreferenceClickListener(
                     unused -> {
                         try {
-                            ActivityOptions options = ActivityOptions.makeBasic();
-                            if (taskId != INVALID_TASK_ID) {
-                                options.setLaunchTaskId(taskId);
-                            }
-                            entry.getPendingIntent()
-                                    .send(context, 0, null, null, null, null, options.toBundle());
+                            PendingIntentSender.send(entry.getPendingIntent(), mLaunchTaskId);
                             mViewModel
                                     .getInteractionLogger()
                                     .recordForEntry(Action.ENTRY_CLICKED, mEntry);
@@ -120,7 +116,7 @@ public final class SafetyEntryPreference extends Preference implements Comparabl
         boolean hideIcon =
                 mEntry.getSeverityLevel() == SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED
                         && mEntry.getSeverityUnspecifiedIconType()
-                        == SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON;
+                                == SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON;
         holder.findViewById(R.id.icon_frame).setVisibility(hideIcon ? View.GONE : View.VISIBLE);
         holder.findViewById(R.id.empty_space).setVisibility(hideIcon ? View.VISIBLE : View.GONE);
         enableOrDisableEntry(holder);
@@ -161,7 +157,7 @@ public final class SafetyEntryPreference extends Preference implements Comparabl
 
     private void sendIconActionIntent(SafetyCenterEntry.IconAction iconAction) {
         try {
-            iconAction.getPendingIntent().send();
+            PendingIntentSender.send(iconAction.getPendingIntent(), mLaunchTaskId);
         } catch (Exception ex) {
             Log.e(
                     TAG,
