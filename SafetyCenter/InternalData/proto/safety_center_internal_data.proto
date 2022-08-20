@@ -41,6 +41,8 @@ message SafetyCenterIssueId {
   optional SafetyCenterIssueKey safety_center_issue_key = 4;
   // The ID of the type of the safety source issue.
   optional string issue_type_id = 5;
+  // A task ID to launch the issue's actions in, if applicable.
+  optional int32 taskId = 6;
 }
 
 // Key that has a 1 to 1 mapping with a safety source issue.

@@ -19,6 +19,7 @@ package com.android.safetycenter;
 import static android.Manifest.permission.MANAGE_SAFETY_CENTER;
 import static android.Manifest.permission.READ_SAFETY_CENTER_STATUS;
 import static android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE;
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_OTHER;
 import static android.safetycenter.SafetyCenterManager.RefreshReason;
@@ -34,6 +35,7 @@ import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.annotation.WorkerThread;
+import android.app.ActivityOptions;
 import android.app.AppOpsManager;
 import android.app.PendingIntent;
 import android.app.StatsManager;
@@ -44,7 +46,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Binder;
 import android.os.Handler;
@@ -113,6 +114,10 @@ public final class SafetyCenterService extends SystemService {
 
     /** The name of the file used to persist the Safety Center issue cache. */
     private static final String SAFETY_CENTER_ISSUES_CACHE_FILE_NAME = "safety_center_issues.xml";
+
+    /** The START_TASKS_FROM_RECENTS permission. TODO b/242905922 remove once in API */
+    public static final String START_TASKS_FROM_RECENTS =
+            "android.permission.START_TASKS_FROM_RECENTS";
 
     /** The time delay used to throttle and aggregate writes to disk. */
     private static final long WRITE_DELAY_MILLIS = 500;
@@ -454,7 +459,7 @@ public final class SafetyCenterService extends SystemService {
                 PendingIntent onDismissPendingIntent =
                         safetySourceIssue.getOnDismissPendingIntent();
                 if (onDismissPendingIntent != null
-                        && !dispatchPendingIntent(onDismissPendingIntent)) {
+                        && !dispatchPendingIntent(onDismissPendingIntent, null)) {
                     Log.w(
                             TAG,
                             "Error dispatching dismissal for issue: "
@@ -513,7 +518,10 @@ public final class SafetyCenterService extends SystemService {
                     // button multiple times in a row.
                     return;
                 }
-                if (!dispatchPendingIntent(safetySourceIssueAction.getPendingIntent())) {
+
+                Integer taskId =
+                        safetyCenterIssueId.hasTaskId() ? safetyCenterIssueId.getTaskId() : null;
+                if (!dispatchPendingIntent(safetySourceIssueAction.getPendingIntent(), taskId)) {
                     Log.w(
                             TAG,
                             "Error dispatching action: "
@@ -610,7 +618,7 @@ public final class SafetyCenterService extends SystemService {
             }
             for (int i = 0; i < permissions.length; i++) {
                 if (getContext().checkCallingOrSelfPermission(permissions[i])
-                        == PackageManager.PERMISSION_GRANTED) {
+                        == PERMISSION_GRANTED) {
                     return;
                 }
             }
@@ -659,9 +667,18 @@ public final class SafetyCenterService extends SystemService {
             }
         }
 
-        private boolean dispatchPendingIntent(@NonNull PendingIntent pendingIntent) {
+        private boolean dispatchPendingIntent(
+                @NonNull PendingIntent pendingIntent, @Nullable Integer taskId) {
             try {
-                pendingIntent.send();
+                if (taskId != null
+                        && getContext().checkCallingOrSelfPermission(START_TASKS_FROM_RECENTS)
+                                == PERMISSION_GRANTED) {
+                    ActivityOptions options = ActivityOptions.makeBasic();
+                    options.setLaunchTaskId(taskId);
+                    pendingIntent.send(null, 0, null, null, null, null, options.toBundle());
+                } else {
+                    pendingIntent.send();
+                }
                 return true;
             } catch (PendingIntent.CanceledException ex) {
                 Log.w(TAG, "Couldn't dispatch PendingIntent", ex);
@@ -708,7 +725,7 @@ public final class SafetyCenterService extends SystemService {
 
         private boolean checkDumpPermission(@NonNull PrintWriter writer) {
             if (getContext().checkCallingOrSelfPermission(android.Manifest.permission.DUMP)
-                    != PackageManager.PERMISSION_GRANTED) {
+                    != PERMISSION_GRANTED) {
                 writer.println(
                         "Permission Denial: can't dump "
                                 + "safety_center"

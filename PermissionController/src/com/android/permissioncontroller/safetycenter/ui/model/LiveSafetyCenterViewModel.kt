@@ -37,6 +37,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.android.permissioncontroller.safetycenter.ui.InteractionLogger
 import com.android.permissioncontroller.safetycenter.ui.NavigationSource
+import com.android.safetycenter.internaldata.SafetyCenterIds
 
 /* A SafetyCenterViewModel that talks to the real backing service for Safety Center. */
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
@@ -85,8 +86,22 @@ class LiveSafetyCenterViewModel(app: Application) : SafetyCenterViewModel(app) {
         safetyCenterManager.dismissSafetyCenterIssue(issue.id)
     }
 
-    override fun executeIssueAction(issue: SafetyCenterIssue, action: SafetyCenterIssue.Action) {
-        safetyCenterManager.executeSafetyCenterIssueAction(issue.id, action.id)
+    override fun executeIssueAction(
+        issue: SafetyCenterIssue,
+        action: SafetyCenterIssue.Action,
+        launchTaskId: Int?
+    ) {
+        val issueId =
+            if (launchTaskId != null) {
+                SafetyCenterIds.encodeToString(
+                    SafetyCenterIds.issueIdFromString(issue.id)
+                        .toBuilder()
+                        .setTaskId(launchTaskId)
+                        .build())
+            } else {
+                issue.id
+            }
+        safetyCenterManager.executeSafetyCenterIssueAction(issueId, action.id)
     }
 
     override fun markIssueResolvedUiCompleted(issueId: IssueId) {
