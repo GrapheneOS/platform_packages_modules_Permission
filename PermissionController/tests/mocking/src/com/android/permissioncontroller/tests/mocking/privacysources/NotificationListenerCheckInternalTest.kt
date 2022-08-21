@@ -37,13 +37,12 @@ import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry
 import com.android.dx.mockito.inline.extended.ExtendedMockito
 import com.android.dx.mockito.inline.extended.ExtendedMockito.doReturn
-import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.privacysources.DisableNotificationListenerComponentHandler
 import com.android.permissioncontroller.privacysources.NotificationListenerActionCardDismissalReceiver
 import com.android.permissioncontroller.privacysources.NotificationListenerCheckInternal
-import com.android.permissioncontroller.privacysources.NotificationListenerCheckInternal.NlsComponent
+import com.android.permissioncontroller.privacysources.NotificationListenerCheckInternal.Companion.NLS_PREFERENCE_FILE
 import com.android.permissioncontroller.privacysources.NotificationListenerCheckJobService
 import com.android.permissioncontroller.privacysources.SC_NLS_DISABLE_ACTION_ID
 import com.android.permissioncontroller.privacysources.SC_NLS_SOURCE_ID
@@ -106,8 +105,11 @@ class NotificationListenerCheckInternalTest {
 
     @After
     fun cleanup() {
-        // cleanup NOTIFICATION_LISTENER_CHECK_ALREADY_NOTIFIED_FILE
-        context.deleteFile(Constants.NOTIFICATION_LISTENER_CHECK_ALREADY_NOTIFIED_FILE)
+        // cleanup NLS_PREFERENCE_FILE
+        context.getSharedPreferences(NLS_PREFERENCE_FILE, Context.MODE_PRIVATE)
+            .edit()
+            .clear()
+            .apply()
 
         shouldCancel = false
         mockitoSession.finishMocking()
@@ -161,41 +163,66 @@ class NotificationListenerCheckInternalTest {
     }
 
     @Test
+    fun updateNotifiedComponents() {
+        val testComponent = ComponentName("com.test.package", "TestClass")
+        val testComponent2 = ComponentName("com.test.package2", "TestClass2")
+        val testComponents = listOf(testComponent, testComponent2)
+
+        // Mark single component as notified, and get the resulting list of ComponentNames
+        val initialNlsComponents = runBlocking {
+            notificationListenerCheck.updateNotifiedComponents(listOf(testComponent))
+            getNotifiedComponents()
+        }
+
+        // Verify expected components are present
+        assertThat(initialNlsComponents).isNotNull()
+        assertThat(initialNlsComponents.size).isEqualTo(1)
+        assertThat(initialNlsComponents.contains(testComponent)).isTrue()
+
+        // Mark all components as notified, and get the resulting list of ComponentNames
+        val updatedNlsComponents = runWithShellPermissionIdentity {
+            runBlocking {
+                notificationListenerCheck.updateNotifiedComponents(testComponents)
+                getNotifiedComponents()
+            }
+        }
+
+        // Verify expected components are present
+        assertThat(updatedNlsComponents).isNotNull()
+        assertThat(updatedNlsComponents.size).isEqualTo(testComponents.size)
+        testComponents.forEach { assertThat(updatedNlsComponents.contains(it)).isTrue() }
+    }
+
+    @Test
     fun markAsNotified() {
-        var initialNlsComponents: Set<NlsComponent> = getNotifiedComponents()
+        var initialNlsComponents: Set<ComponentName> = getNotifiedComponents()
         assertThat(initialNlsComponents).isEmpty()
 
         val testComponent = ComponentName("com.test.package", "TestClass")
-        val startTime = System.currentTimeMillis()
 
-        // Mark as notified, and get the resulting list of NlsComponents
+        // Mark as notified, and get the resulting list of ComponentName
         // Filter to the component that match the test component
         // Ensure size is equal to one (not empty)
         // Get the component
-        val nlsComponent: NlsComponent =
-            runBlocking {
-                    notificationListenerCheck.markAsNotified(testComponent)
-                    getNotifiedComponents()
-                }
-                .filter { it.componentName == testComponent }
-                .also { assertThat(it.size).isEqualTo(1) }[0]
-
-        // Verify notified time is not zero, and at least the test start time
-        assertThat(nlsComponent.notificationShownTime).isNotEqualTo(0L)
-        assertThat(nlsComponent.notificationShownTime).isAtLeast(startTime)
+        runBlocking {
+                notificationListenerCheck.markComponentAsNotified(testComponent)
+                getNotifiedComponents()
+            }
+            .filter { it == testComponent }
+            .also { assertThat(it.size).isEqualTo(1) }[0]
     }
 
     @Test
     fun markAsNotified_notifySecondComponent() {
-        var nlsComponents: Set<NlsComponent> = getNotifiedComponents()
+        var nlsComponents: Set<ComponentName> = getNotifiedComponents()
         assertThat(nlsComponents).isEmpty()
 
         val testComponent = ComponentName("com.test.package", "TestClass")
         val testComponent2 = ComponentName("com.test.package2", "TestClass2")
 
-        // Mark as notified, and get the resulting list of NlsComponents
+        // Mark as notified, and get the resulting list of ComponentNames
         nlsComponents = runBlocking {
-            notificationListenerCheck.markAsNotified(testComponent)
+            notificationListenerCheck.markComponentAsNotified(testComponent)
             getNotifiedComponents()
         }
         // Expected # components is 1
@@ -206,12 +233,12 @@ class NotificationListenerCheckInternalTest {
         // Get the component
         val firstComponent =
             nlsComponents
-                .filter { it.componentName == testComponent }
+                .filter { it == testComponent }
                 .also { assertThat(it.size).isEqualTo(1) }[0]
 
-        // Mark second component as notified, and get the resulting list of NlsComponents
+        // Mark second component as notified, and get the resulting list of ComponentNames
         nlsComponents = runBlocking {
-            notificationListenerCheck.markAsNotified(testComponent2)
+            notificationListenerCheck.markComponentAsNotified(testComponent2)
             getNotifiedComponents()
         }
         // Expected # components is 2
@@ -222,25 +249,21 @@ class NotificationListenerCheckInternalTest {
         // Get the component
         val secondComponent =
             nlsComponents
-                .filter { it.componentName == testComponent2 }
+                .filter { it == testComponent2 }
                 .also { assertThat(it.size).isEqualTo(1) }[0]
-
-        // Ensure second component marked notified after first component
-        assertThat(secondComponent.notificationShownTime)
-            .isGreaterThan(firstComponent.notificationShownTime)
     }
 
     @Test
     fun markAsNotified_notifySecondComponent_ensureFirstComponentNotModified() {
-        var nlsComponents: Set<NlsComponent> = getNotifiedComponents()
+        var nlsComponents: Set<ComponentName> = getNotifiedComponents()
         assertThat(nlsComponents).isEmpty()
 
         val testComponent = ComponentName("com.test.package", "TestClass")
         val testComponent2 = ComponentName("com.test.package2", "TestClass2")
 
-        // Mark as notified, and get the resulting list of NlsComponents
+        // Mark as notified, and get the resulting list of ComponentNames
         nlsComponents = runBlocking {
-            notificationListenerCheck.markAsNotified(testComponent)
+            notificationListenerCheck.markComponentAsNotified(testComponent)
             getNotifiedComponents()
         }
         // Expected # components is 1
@@ -251,12 +274,12 @@ class NotificationListenerCheckInternalTest {
         // Get the component
         val firstComponent =
             nlsComponents
-                .filter { it.componentName == testComponent }
+                .filter { it == testComponent }
                 .also { assertThat(it.size).isEqualTo(1) }[0]
 
-        // Mark second component as notified, and get the resulting list of NlsComponents
+        // Mark second component as notified, and get the resulting list of ComponentNames
         nlsComponents = runBlocking {
-            notificationListenerCheck.markAsNotified(testComponent2)
+            notificationListenerCheck.markComponentAsNotified(testComponent2)
             getNotifiedComponents()
         }
         // Expected # components is 2
@@ -267,54 +290,15 @@ class NotificationListenerCheckInternalTest {
     }
 
     @Test
-    fun markAsNotifiedTwice_updatedNotificationTime() {
-        val testComponent = ComponentName("com.test.package", "TestClass")
-
-        // Mark as notified, and get the resulting list of NlsComponents
-        // Filter to the component that match the test component
-        // Ensure size is equal to one (not empty)
-        // Get the component
-        val initialNlsComponent: NlsComponent? =
-            runBlocking {
-                    notificationListenerCheck.markAsNotified(testComponent)
-                    getNotifiedComponents()
-                }
-                .filter { it.componentName == testComponent }
-                .also { assertThat(it.size).isEqualTo(1) }
-                .getOrNull(0)
-
-        assertThat(initialNlsComponent).isNotNull()
-
-        // Mark as notified *again*, and get the resulting list of NlsComponents
-        // Filter to the component that match the test component
-        // Ensure size is equal to one (not empty)
-        // Get the component
-        val updatedNlsComponent: NlsComponent? =
-            runBlocking {
-                    notificationListenerCheck.markAsNotified(testComponent)
-                    getNotifiedComponents()
-                }
-                .filter { it.componentName == testComponent }
-                .also { assertThat(it.size).isEqualTo(1) }
-                .getOrNull(0)
-
-        assertThat(updatedNlsComponent).isNotNull()
-
-        // Verify updated NlsComponent has an updated notificationShownTime
-        assertThat(updatedNlsComponent!!.notificationShownTime)
-            .isGreaterThan(initialNlsComponent!!.notificationShownTime)
-    }
-
-    @Test
-    fun removePackageState() {
+    fun removeFromNotifiedComponents() {
         val testComponent = ComponentName("com.test.package", "TestClass")
         val testComponent2 = ComponentName("com.test.package2", "TestClass2")
         val testComponents = listOf(testComponent, testComponent2)
 
-        // Mark all components as notified, and get the resulting list of NlsComponents
+        // Mark all components as notified, and get the resulting list of ComponentNames
         val initialNlsComponents = runBlocking {
-            testComponents.forEach { notificationListenerCheck.markAsNotified(it) }
-            getNotifiedComponents().map { it.componentName }
+            testComponents.forEach { notificationListenerCheck.markComponentAsNotified(it) }
+            getNotifiedComponents()
         }
 
         // Verify expected components are present
@@ -322,12 +306,12 @@ class NotificationListenerCheckInternalTest {
         assertThat(initialNlsComponents.size).isEqualTo(testComponents.size)
         testComponents.forEach { assertThat(initialNlsComponents.contains(it)).isTrue() }
 
-        // Forget about test package, and get the resulting list of NlsComponents
+        // Forget about test package, and get the resulting list of ComponentNames
         // Filter to the component that match the test component
         val updatedNlsComponents = runWithShellPermissionIdentity {
             runBlocking {
-                notificationListenerCheck.removePackageState(testComponent.packageName)
-                getNotifiedComponents().map { it.componentName }
+                notificationListenerCheck.removeFromNotifiedComponents(testComponent.packageName)
+                getNotifiedComponents()
             }
         }
 
@@ -339,15 +323,15 @@ class NotificationListenerCheckInternalTest {
     }
 
     @Test
-    fun removePackageState_multipleNlsPerPackage() {
+    fun removeFromNotifiedComponents_multipleNlsPerPackage() {
         val testComponent = ComponentName("com.test.package", "TestClass")
         val testComponent2 = ComponentName("com.test.package", "TestClass2")
         val testComponents = listOf(testComponent, testComponent2)
 
-        // Mark all components as notified, and get the resulting list of NlsComponents
+        // Mark all components as notified, and get the resulting list of ComponentNames
         val initialNlsComponents = runBlocking {
-            testComponents.forEach { notificationListenerCheck.markAsNotified(it) }
-            getNotifiedComponents().map { it.componentName }
+            testComponents.forEach { notificationListenerCheck.markComponentAsNotified(it) }
+            getNotifiedComponents()
         }
 
         // Verify expected components are present
@@ -355,12 +339,12 @@ class NotificationListenerCheckInternalTest {
         assertThat(initialNlsComponents.size).isEqualTo(testComponents.size)
         testComponents.forEach { assertThat(initialNlsComponents.contains(it)).isTrue() }
 
-        // Forget about test package, and get the resulting list of NlsComponents
+        // Forget about test package, and get the resulting list of ComponentNames
         // Filter to the component that match the test component
         val updatedNlsComponents = runWithShellPermissionIdentity {
             runBlocking {
-                notificationListenerCheck.removePackageState(testComponent.packageName)
-                getNotifiedComponents().map { it.componentName }
+                notificationListenerCheck.removeFromNotifiedComponents(testComponent.packageName)
+                getNotifiedComponents()
             }
         }
 
@@ -369,22 +353,22 @@ class NotificationListenerCheckInternalTest {
     }
 
     @Test
-    fun removePackageState_noPreviouslyNotifiedPackage() {
+    fun removeFromNotifiedComponents_noPreviouslyNotifiedPackage() {
         val testComponent = ComponentName("com.test.package", "TestClass")
 
         // Get the initial list of Nls Components
-        val initialNlsComponents = getNotifiedComponents().map { it.componentName }
+        val initialNlsComponents = getNotifiedComponents()
 
         // Verify no components are present
         assertThat(initialNlsComponents).isEmpty()
 
-        // Forget about test package, and get the resulting list of NlsComponents
+        // Forget about test package, and get the resulting list of ComponentNames
         // Filter to the component that match the test component
         val updatedNlsComponents = runWithShellPermissionIdentity {
             runBlocking {
                 // Verify this should not fail!
-                notificationListenerCheck.removePackageState(testComponent.packageName)
-                getNotifiedComponents().map { it.componentName }
+                notificationListenerCheck.removeFromNotifiedComponents(testComponent.packageName)
+                getNotifiedComponents()
             }
         }
 
@@ -451,8 +435,11 @@ class NotificationListenerCheckInternalTest {
         assertThat(safetySourceIssue.actions).containsExactly(expectedAction2, expectedAction1)
     }
 
-    private fun getNotifiedComponents(): Set<NlsComponent> = runBlocking {
-        notificationListenerCheck.loadNotifiedComponentsLocked()
+    private fun getNotifiedComponents(): Set<ComponentName> = runBlocking {
+        notificationListenerCheck
+            .getNotifiedComponents()
+            .mapNotNull { ComponentName.unflattenFromString(it) }
+            .toSet()
     }
 
     /** @return [PendingIntent] for remove access button on the warning card. */
