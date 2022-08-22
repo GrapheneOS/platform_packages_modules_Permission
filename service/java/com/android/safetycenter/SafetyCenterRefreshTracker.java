@@ -19,18 +19,26 @@ package com.android.safetycenter;
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK;
 
+import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__TIMEOUT;
+import static com.android.safetycenter.RefreshReasons.toRefreshRequestType;
+import static com.android.safetycenter.WestworldLogger.toSystemEventResult;
+
+import android.annotation.ElapsedRealtimeLong;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
+import android.os.SystemClock;
 import android.safetycenter.SafetyCenterManager.RefreshReason;
 import android.safetycenter.SafetyCenterStatus;
 import android.safetycenter.SafetyCenterStatus.RefreshStatus;
+import android.util.ArrayMap;
 import android.util.ArraySet;
 import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
 import java.io.PrintWriter;
+import java.time.Duration;
 import java.util.List;
 import java.util.UUID;
 
@@ -53,8 +61,11 @@ final class SafetyCenterRefreshTracker {
 
     private int mRefreshCounter = 0;
 
-    /** Creates a {@link SafetyCenterRefreshTracker}. */
-    SafetyCenterRefreshTracker() {}
+    @NonNull private final WestworldLogger mWestworldLogger;
+
+    SafetyCenterRefreshTracker(@NonNull WestworldLogger westworldLogger) {
+        mWestworldLogger = westworldLogger;
+    }
 
     /**
      * Reports that a new refresh is in progress and returns the broadcast id associated with this
@@ -108,81 +119,79 @@ final class SafetyCenterRefreshTracker {
             @NonNull String refreshBroadcastId,
             @NonNull List<String> sourceIds,
             @UserIdInt int userId) {
-        if (!checkMethodValid("reportSourceRefreshesInFlight", refreshBroadcastId)) {
+        if (!checkRefreshInProgress("reportSourceRefreshesInFlight", refreshBroadcastId)) {
             return;
         }
         for (int i = 0; i < sourceIds.size(); i++) {
             SafetySourceKey key = SafetySourceKey.of(sourceIds.get(i), userId);
-            mRefreshInProgress.addSourceRefreshInFlight(key);
+            mRefreshInProgress.markSourceRefreshInFlight(key);
         }
     }
 
     /**
-     * Reports that a source has completed its refresh, and returns whether this caused the refresh
-     * to complete.
+     * Reports that a source has completed its refresh, and returns {@code true} if the whole
+     * current refresh is now complete.
      *
      * <p>If a source calls {@code reportSafetySourceError}, then this method is also used to mark
-     * the refresh as completed.
+     * the refresh as completed. The {@code successful} parameter indicates whether the refresh
+     * completed successfully or not.
+     *
+     * <p>Completed refreshes are tracked in Westworld.
      */
     boolean reportSourceRefreshCompleted(
-            @NonNull String refreshBroadcastId, @NonNull String sourceId, @UserIdInt int userId) {
-        if (!checkMethodValid("reportSourceRefreshCompleted", refreshBroadcastId)) {
+            @NonNull String refreshBroadcastId,
+            @NonNull String sourceId,
+            @UserIdInt int userId,
+            boolean successful) {
+        if (!checkRefreshInProgress("reportSourceRefreshCompleted", refreshBroadcastId)) {
             return false;
         }
 
-        mRefreshInProgress.markSourceRefreshAsComplete(SafetySourceKey.of(sourceId, userId));
+        SafetySourceKey sourceKey = SafetySourceKey.of(sourceId, userId);
+        Duration duration = mRefreshInProgress.markSourceRefreshComplete(sourceKey, successful);
+        int requestType = toRefreshRequestType(mRefreshInProgress.getReason());
+
+        if (duration != null) {
+            int sourceResult = toSystemEventResult(successful);
+            mWestworldLogger.writeSourceRefreshSystemEvent(
+                    requestType, sourceId, userId, duration, sourceResult);
+        }
 
         if (!mRefreshInProgress.isComplete()) {
             return false;
         }
 
         Log.v(TAG, "Refresh with id: " + mRefreshInProgress.getId() + " completed");
+        int wholeResult = toSystemEventResult(mRefreshInProgress.hasAnyTrackedSourceErrors());
+        mWestworldLogger.writeWholeRefreshSystemEvent(
+                requestType, mRefreshInProgress.getDurationSinceStart(), wholeResult);
         mRefreshInProgress = null;
         return true;
     }
 
     /**
-     * Clears any ongoing refresh in progress.
+     * Clears any ongoing refresh in progress, if any.
      *
      * <p>Note that this method simply clears the tracking of a refresh, and does not prevent
      * scheduled broadcasts being sent by {@link
      * android.safetycenter.SafetyCenterManager#refreshSafetySources}.
      */
     void clearRefresh() {
-        if (mRefreshInProgress != null) {
-            clearRefresh(mRefreshInProgress.getId());
-        } else {
-            Log.v(TAG, "Clear refresh called but no refresh in progress");
-        }
+        clearRefreshInternal();
     }
 
     /**
-     * Clears the refresh in progress with the given id, and returns the {@link SafetySourceKey}s
-     * that were still in-flight prior to doing that, if any.
-     *
-     * <p>Returns {@code null} if there was no refresh in progress with the given {@code
-     * refreshBroadcastId} or if it was already complete.
+     * Clears the refresh in progress, if there is any with the given id.
      *
      * <p>Note that this method simply clears the tracking of a refresh, and does not prevent
      * scheduled broadcasts being sent by {@link
      * android.safetycenter.SafetyCenterManager#refreshSafetySources}.
      */
-    @Nullable
-    ArraySet<SafetySourceKey> clearRefresh(@NonNull String refreshBroadcastId) {
-        if (!checkMethodValid("clearRefresh", refreshBroadcastId)) {
-            return null;
+    void clearRefresh(@NonNull String refreshBroadcastId) {
+        if (!checkRefreshInProgress("clearRefresh", refreshBroadcastId)) {
+            return;
         }
-
-        Log.v(TAG, "Clearing refresh with refreshBroadcastId:" + refreshBroadcastId);
-
-        RefreshInProgress clearedRefresh = mRefreshInProgress;
-        mRefreshInProgress = null;
-
-        if (clearedRefresh.isComplete()) {
-            return null;
-        }
-
-        return clearedRefresh.getSourceRefreshInFlight();
+        clearRefreshInternal();
     }
 
     /**
@@ -192,18 +201,86 @@ final class SafetyCenterRefreshTracker {
      * scheduled broadcasts being sent by {@link
      * android.safetycenter.SafetyCenterManager#refreshSafetySources}.
      */
-    // TODO(b/229188900): Should we stop any scheduled broadcasts from going out?
     void clearRefreshForUser(@UserIdInt int userId) {
         if (mRefreshInProgress == null) {
             Log.v(TAG, "Clear refresh for user called but no refresh in progress");
             return;
         }
         if (mRefreshInProgress.clearForUser(userId)) {
-            clearRefresh();
+            clearRefreshInternal();
         }
     }
 
-    private boolean checkMethodValid(
+    /**
+     * Clears the refresh in progress with the given id, and returns the {@link SafetySourceKey}s
+     * that were still in-flight prior to doing that, if any.
+     *
+     * <p>Returns {@code null} if there was no refresh in progress with the given {@code
+     * refreshBroadcastId}, or if it was already complete.
+     *
+     * <p>Note that this method simply clears the tracking of a refresh, and does not prevent
+     * scheduled broadcasts being sent by {@link
+     * android.safetycenter.SafetyCenterManager#refreshSafetySources}.
+     */
+    @Nullable
+    ArraySet<SafetySourceKey> timeoutRefresh(@NonNull String refreshBroadcastId) {
+        if (!checkRefreshInProgress("timeoutRefresh", refreshBroadcastId)) {
+            return null;
+        }
+
+        RefreshInProgress clearedRefresh = clearRefreshInternal();
+
+        if (clearedRefresh == null || clearedRefresh.isComplete()) {
+            return null;
+        }
+
+        ArraySet<SafetySourceKey> timedOutSources = clearedRefresh.getSourceRefreshesInFlight();
+        int requestType = toRefreshRequestType(clearedRefresh.getReason());
+
+        for (int i = 0; i < timedOutSources.size(); i++) {
+            SafetySourceKey sourceKey = timedOutSources.valueAt(i);
+            Duration duration = clearedRefresh.getDurationSinceSourceStart(sourceKey);
+            if (duration != null) {
+                mWestworldLogger.writeSourceRefreshSystemEvent(
+                        requestType,
+                        sourceKey.getSourceId(),
+                        sourceKey.getUserId(),
+                        duration,
+                        SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__TIMEOUT);
+            }
+        }
+
+        mWestworldLogger.writeWholeRefreshSystemEvent(
+                requestType,
+                clearedRefresh.getDurationSinceStart(),
+                SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__TIMEOUT);
+
+        return timedOutSources;
+    }
+
+    /**
+     * Clears the any refresh in progress and returns it for the caller to do what it needs to.
+     *
+     * <p>If there was no refresh in progress then {@code null} is returned.
+     */
+    @Nullable
+    private RefreshInProgress clearRefreshInternal() {
+        if (mRefreshInProgress == null) {
+            Log.v(TAG, "Clear refresh called but no refresh in progress");
+            return null;
+        }
+
+        RefreshInProgress refreshToClear = mRefreshInProgress;
+        Log.v(TAG, "Clearing refresh with refreshBroadcastId:" + refreshToClear.getId());
+        mRefreshInProgress = null;
+        return refreshToClear;
+    }
+
+    /**
+     * Returns {@code true} if there is currently a refresh in progress with the given ID, or logs a
+     * helpful warning and returns {@code false} if not.
+     */
+    private boolean checkRefreshInProgress(
             @NonNull String methodName, @NonNull String refreshBroadcastId) {
         if (mRefreshInProgress == null || !mRefreshInProgress.getId().equals(refreshBroadcastId)) {
             Log.w(
@@ -218,11 +295,7 @@ final class SafetyCenterRefreshTracker {
         return true;
     }
 
-    /**
-     * Dumps state for debugging purposes.
-     *
-     * @param fout {@link PrintWriter} to write to
-     */
+    /** Dumps state for debugging purposes. */
     void dump(@NonNull PrintWriter fout) {
         fout.println(
                 "REFRESH IN PROGRESS ("
@@ -238,14 +311,20 @@ final class SafetyCenterRefreshTracker {
 
     /** Class representing the state of a refresh in progress. */
     private static final class RefreshInProgress {
+
         @NonNull private final String mId;
         @RefreshReason private final int mReason;
         @NonNull private final UserProfileGroup mUserProfileGroup;
         @NonNull private final ArraySet<String> mUntrackedSourcesIds;
+        @ElapsedRealtimeLong private final long mStartElapsedMillis;
 
-        private final ArraySet<SafetySourceKey> mSourceRefreshInFlight = new ArraySet<>();
+        // The values in this map are the start times of each source refresh. The alternative of
+        // using mStartTime as the start time of all source refreshes was considered, but this
+        // approach is less sensitive to delays/implementation changes in broadcast dispatch.
+        private final ArrayMap<SafetySourceKey, Long> mSourceRefreshesInFlight = new ArrayMap<>();
 
-        /** Creates a {@link RefreshInProgress}. */
+        private boolean mAnyTrackedSourceErrors = false;
+
         RefreshInProgress(
                 @NonNull String id,
                 @RefreshReason int reason,
@@ -255,6 +334,7 @@ final class SafetyCenterRefreshTracker {
             mReason = reason;
             mUserProfileGroup = userProfileGroup;
             mUntrackedSourcesIds = untrackedSourceIds;
+            mStartElapsedMillis = SystemClock.elapsedRealtime();
         }
 
         /**
@@ -273,22 +353,37 @@ final class SafetyCenterRefreshTracker {
             return mReason;
         }
 
-        /** Returns the {@link UserProfileGroup} for which there is a {@link RefreshInProgress}. */
+        /** Returns the {@link Duration} since this refresh started. */
         @NonNull
-        private UserProfileGroup getUserProfileGroup() {
-            return mUserProfileGroup;
+        public Duration getDurationSinceStart() {
+            return Duration.ofMillis(SystemClock.elapsedRealtime() - mStartElapsedMillis);
         }
 
-        /** Returns the {@link SafetySourceKey} that are in-flight. */
-        @NonNull
-        private ArraySet<SafetySourceKey> getSourceRefreshInFlight() {
-            return mSourceRefreshInFlight;
+        @Nullable
+        private Duration getDurationSinceSourceStart(@NonNull SafetySourceKey safetySourceKey) {
+            Long startElapsedMillis = mSourceRefreshesInFlight.get(safetySourceKey);
+            if (startElapsedMillis == null) {
+                return null;
+            }
+            return Duration.ofMillis(SystemClock.elapsedRealtime() - startElapsedMillis);
         }
 
-        private void addSourceRefreshInFlight(@NonNull SafetySourceKey safetySourceKey) {
+        /** Returns the {@link SafetySourceKey} of all in-flight source refreshes. */
+        @NonNull
+        private ArraySet<SafetySourceKey> getSourceRefreshesInFlight() {
+            return new ArraySet<>(mSourceRefreshesInFlight.keySet());
+        }
+
+        /** Returns {@code true} if any refresh of a tracked source completed with an error. */
+        private boolean hasAnyTrackedSourceErrors() {
+            return mAnyTrackedSourceErrors;
+        }
+
+        private void markSourceRefreshInFlight(@NonNull SafetySourceKey safetySourceKey) {
             boolean tracked = isTracked(safetySourceKey);
+            long currentElapsedMillis = SystemClock.elapsedRealtime();
             if (tracked) {
-                mSourceRefreshInFlight.add(safetySourceKey);
+                mSourceRefreshesInFlight.put(safetySourceKey, currentElapsedMillis);
             }
             Log.v(
                     TAG,
@@ -298,16 +393,28 @@ final class SafetyCenterRefreshTracker {
                             + safetySourceKey.getUserId()
                             + " with refreshBroadcastId:"
                             + mId
+                            + " at currentElapsedMillis:"
+                            + currentElapsedMillis
                             + " & tracking:"
                             + tracked
-                            + " , now "
-                            + mSourceRefreshInFlight.size()
+                            + ", now "
+                            + mSourceRefreshesInFlight.size()
                             + " tracked sources in flight.");
         }
 
-        private void markSourceRefreshAsComplete(@NonNull SafetySourceKey safetySourceKey) {
-            mSourceRefreshInFlight.remove(safetySourceKey);
+        @Nullable
+        private Duration markSourceRefreshComplete(
+                @NonNull SafetySourceKey safetySourceKey, boolean successful) {
+            Long startElapsedMillis = mSourceRefreshesInFlight.remove(safetySourceKey);
+
+            if (startElapsedMillis == null) {
+                return null;
+            }
+
             boolean tracked = isTracked(safetySourceKey);
+            mAnyTrackedSourceErrors |= (tracked && !successful);
+            Duration duration =
+                    Duration.ofMillis(SystemClock.elapsedRealtime() - startElapsedMillis);
             Log.v(
                     TAG,
                     "Refresh completed for sourceId:"
@@ -316,11 +423,16 @@ final class SafetyCenterRefreshTracker {
                             + safetySourceKey.getUserId()
                             + " with refreshBroadcastId:"
                             + mId
+                            + " duration:"
+                            + duration
+                            + " successful:"
+                            + successful
                             + " & tracking:"
                             + tracked
                             + ", "
-                            + mSourceRefreshInFlight.size()
+                            + mSourceRefreshesInFlight.size()
                             + " tracked sources still in flight.");
+            return duration;
         }
 
         private boolean isTracked(SafetySourceKey safetySourceKey) {
@@ -336,17 +448,17 @@ final class SafetyCenterRefreshTracker {
                 return true;
             }
             // Loop in reverse index order to be able to remove entries while iterating.
-            for (int i = mSourceRefreshInFlight.size() - 1; i >= 0; i--) {
-                SafetySourceKey sourceKey = mSourceRefreshInFlight.valueAt(i);
+            for (int i = mSourceRefreshesInFlight.size() - 1; i >= 0; i--) {
+                SafetySourceKey sourceKey = mSourceRefreshesInFlight.keyAt(i);
                 if (sourceKey.getUserId() == userId) {
-                    mSourceRefreshInFlight.removeAt(i);
+                    mSourceRefreshesInFlight.removeAt(i);
                 }
             }
             return isComplete();
         }
 
         private boolean isComplete() {
-            return mSourceRefreshInFlight.isEmpty();
+            return mSourceRefreshesInFlight.isEmpty();
         }
 
         @Override
@@ -361,8 +473,12 @@ final class SafetyCenterRefreshTracker {
                     + mUserProfileGroup
                     + ", mUntrackedSourcesIds="
                     + mUntrackedSourcesIds
-                    + ", mSourceRefreshInFlight="
-                    + mSourceRefreshInFlight
+                    + ", mSourceRefreshesInFlight="
+                    + mSourceRefreshesInFlight
+                    + ", mStartElapsedMillis="
+                    + mStartElapsedMillis
+                    + ", mAnyTrackedSourceErrors="
+                    + mAnyTrackedSourceErrors
                     + '}';
         }
     }
