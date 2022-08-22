@@ -23,10 +23,8 @@
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"कोई समस्या नहीं मिली"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"सेटिंग देखें"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"सेटिंग की लिस्ट की जांच करें"</string>
-    <!-- no translation found for overall_severity_level_device_recommendation_title (5250040236433061827) -->
-    <skip />
-    <!-- no translation found for overall_severity_level_critical_device_warning_title (5901771721834272596) -->
-    <skip />
+    <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"डिवाइस की सुरक्षा शायद खतरे में है"</string>
+    <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"डिवाइस की सुरक्षा खतरे में है"</string>
     <string name="overall_severity_level_safety_recommendation_title" msgid="6436208984463981167">"शायद आपकी सुरक्षा खतरे में है"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="1039142045555227172">"आपकी सुरक्षा खतरे में है"</string>
     <string name="overall_severity_n_alerts_summary" msgid="1105615451561197136">"{count,plural, =1{# चेतावनी}one{# चेतावनी}other{# चेतावनियां}}"</string>
