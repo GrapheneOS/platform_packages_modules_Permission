@@ -25,7 +25,7 @@
     <string name="lock_screen_search_terms" msgid="2678486357779794826">"စက်လော့ခ်ချခြင်း၊ ဖန်သားပြင်လော့ခ်၊ လော့ခ် မျက်နှာပြင်၊ လော့ခ်မျက်နှာပြင်၊ စကားဝှက်၊ ပင်၊ ပုံစံ"</string>
     <string name="biometrics_title" msgid="5859504610285212938">"ဇီဝမက်ထရစ် အချက်အလက်များ"</string>
     <string name="biometrics_search_terms" msgid="6040319118762671981">"လက်ဗွေ၊ လက်ချောင်း၊ လက်ဗွေထည့်ခြင်း၊ မျက်နှာပြ လော့ခ်ဖွင့်ခြင်း၊ မျက်နှာ"</string>
-    <string name="privacy_sources_title" msgid="4061110826457365957">"ကန့်သတ်ဆက်တင်"</string>
+    <string name="privacy_sources_title" msgid="4061110826457365957">"ကိုယ်ရေးအချက်အလက်လုံခြုံမှု"</string>
     <string name="privacy_sources_summary" msgid="4089719981155120864">"ဒက်ရှ်ဘုတ်၊ ခွင့်ပြုချက်များ၊ သတ်မှတ်ချက်များ"</string>
     <string name="permission_usage_title" msgid="3633779688945350407">"ကိုယ်ရေးအချက်အလက်လုံခြုံမှု ဒက်ရှ်ဘုတ်"</string>
     <string name="permission_usage_summary" msgid="5323079206029964468">"ခွင့်ပြုချက်များ မကြာသေးမီကသုံးထားသည့် အက်ပ်များကို ပြသည်"</string>
