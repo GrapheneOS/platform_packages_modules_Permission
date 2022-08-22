@@ -18,5 +18,5 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="role_dialer_request_description" msgid="6188305064871543419">"আপনাকে বিজ্ঞপ্তি পাঠানোর জন্য এই অ্যাপকে অনুমতি দেওয়া হবে এবং ক্যামেরা, পরিচিতি, মাইক্রোফোন, ফোন ও এসএমএস অ্যাক্সেস করতে পারবে"</string>
     <string name="role_sms_request_description" msgid="1506966389698625395">"এই অ্যাপকে বিজ্ঞপ্তি পাঠানোর জন্য এবং আপনার ক্যামেরা, পরিচিতি, ফাইল, মাইক্রোফোন, ফোন ও এসএমএস অ্যাক্সেসের অনুমতি দেওয়া হবে"</string>
-    <string name="permission_description_summary_storage" msgid="1917071243213043858">"এই অনুমতি পেলে অ্যাপ এই ডিভাইসে সব ফাইল অ্যাক্সেস করতে পারবে"</string>
+    <string name="permission_description_summary_storage" msgid="1917071243213043858">"এই অনুমতি পাওয়া সমস্ত অ্যাপ এই ডিভাইসের সব ফাইল অ্যাক্সেস করতে পারবে"</string>
 </resources>
