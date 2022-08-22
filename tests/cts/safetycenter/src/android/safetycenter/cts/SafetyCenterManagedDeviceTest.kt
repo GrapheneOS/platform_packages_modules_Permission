@@ -193,24 +193,11 @@ class SafetyCenterManagedDeviceTest {
 
     @Test
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
-    fun launchActivity_sourceWithWorkProfile_showBothEntriesWithDefaultInformation() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_ALL_PROFILE_CONFIG)
-
-        val title = "Ok"
-        val titleForWork = "Paste"
-        context.launchSafetyCenterActivity { findAllText(title, titleForWork) }
-    }
-
-    @Test
-    @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun getSafetySourceData_withoutInteractAcrossUserPermission_shouldThrowError() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_ALL_PROFILE_CONFIG)
+        val setDataForWork = safetySourceCtsData.informationForWork
         val managedSafetyCenterManager =
             getSafetyCenterManagerForUser(deviceState.workProfile().userHandle())
-        val setData = safetySourceCtsData.information
-        val setDataForWork = safetySourceCtsData.informationForWork
-
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_ALL_PROFILE_CONFIG)
-        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ALL_PROFILE_ID, setData)
         managedSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
             SINGLE_SOURCE_ALL_PROFILE_ID, setDataForWork)
 
@@ -237,95 +224,64 @@ class SafetyCenterManagedDeviceTest {
 
     @Test
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
-    fun setSafetySourceData_primaryProfileIssueOnlySource_shouldNotBeAbleToSetDataToWorkProfile() {
-        safetyCenterCtsHelper.setConfig(ISSUE_ONLY_SOURCE_CONFIG)
-
-        val managedSafetyCenterManager =
-            getSafetyCenterManagerForUser(deviceState.workProfile().userHandle())
-        val setDataForWork = safetySourceCtsData.informationForWork
-        assertFailsWith(IllegalArgumentException::class) {
-            managedSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
-                ISSUE_ONLY_ALL_OPTIONAL_ID, setDataForWork)
-        }
-    }
-
-    @Test
-    @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
-    fun setSafetySourceData_withoutInteractAcrossUserPermission_shouldThrowError() {
+    fun getSafetySourceData_withQuietModeEnabled_dataIsNotCleared() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_ALL_PROFILE_CONFIG)
-        val setData = safetySourceCtsData.information
-        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ALL_PROFILE_ID, setData)
-        val managedSafetyCenterManager =
-            getSafetyCenterManagerForUser(deviceState.workProfile().userHandle())
         val setDataForWork = safetySourceCtsData.informationForWork
-        managedSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
-            SINGLE_SOURCE_ALL_PROFILE_ID, setDataForWork)
-
-        assertFailsWith(SecurityException::class) {
-            managedSafetyCenterManager.setSafetySourceData(
-                SINGLE_SOURCE_ALL_PROFILE_ID, setDataForWork, EVENT_SOURCE_STATE_CHANGED)
-        }
-    }
-
-    @Test
-    @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
-    fun setSafetySourceData_issuesOnlySourceWithWorkProfile_shouldBeAbleToSetData() {
         val managedSafetyCenterManager =
             getSafetyCenterManagerForUser(deviceState.workProfile().userHandle())
-        val dataToSet =
-            SafetySourceCtsData.issuesOnly(safetySourceCtsData.recommendationGeneralIssue)
-        val dataToSetForWork =
-            SafetySourceCtsData.issuesOnly(safetySourceCtsData.criticalResolvingGeneralIssue)
-        safetyCenterCtsHelper.setConfig(ISSUE_ONLY_SOURCE_ALL_PROFILE_CONFIG)
-        safetyCenterCtsHelper.setData(ISSUE_ONLY_ALL_PROFILE_SOURCE_ID, dataToSet)
-        managedSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
-            ISSUE_ONLY_ALL_PROFILE_SOURCE_ID, dataToSetForWork)
-
-        val apiSafetySourceData =
-            safetyCenterManager.getSafetySourceDataWithPermission(ISSUE_ONLY_ALL_PROFILE_SOURCE_ID)
-        val apiSafetySourceDataForWork =
-            managedSafetyCenterManager.getSafetySourceDataWithInteractAcrossUsersPermission(
-                ISSUE_ONLY_ALL_PROFILE_SOURCE_ID)
-
-        assertThat(apiSafetySourceData).isEqualTo(dataToSet)
-        assertThat(apiSafetySourceDataForWork).isEqualTo(dataToSetForWork)
-    }
-
-    @Test
-    @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
-    fun setSafetySourceData_primaryProfileSource_shouldNotBeAbleToSetDataToWorkProfile() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
-
-        val managedSafetyCenterManager =
-            getSafetyCenterManagerForUser(deviceState.workProfile().userHandle())
-        val setDataForWork = safetySourceCtsData.informationForWork
-        assertFailsWith(IllegalArgumentException::class) {
-            managedSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
-                SINGLE_SOURCE_ID, setDataForWork)
-        }
-    }
-
-    @Test
-    @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
-    fun setSafetySourceData_sourceWithWorkProfile_bothEntriesShouldShowWhenQuietModeIsEnabled() {
-        val managedSafetyCenterManager =
-            getSafetyCenterManagerForUser(deviceState.workProfile().userHandle())
-        val setData = safetySourceCtsData.information
-        val setDataForWork = safetySourceCtsData.informationForWork
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_ALL_PROFILE_CONFIG)
-        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ALL_PROFILE_ID, setData)
         managedSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
             SINGLE_SOURCE_ALL_PROFILE_ID, setDataForWork)
 
         setQuietMode(true)
-        val apiSafetySourceData =
-            safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ALL_PROFILE_ID)
         val apiSafetySourceDataForWork =
             managedSafetyCenterManager.getSafetySourceDataWithInteractAcrossUsersPermission(
                 SINGLE_SOURCE_ALL_PROFILE_ID)
 
-        assertThat(apiSafetySourceData).isEqualTo(setData)
         assertThat(apiSafetySourceDataForWork).isEqualTo(setDataForWork)
+    }
+
+    @Test
+    @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
+    fun getSafetyCenterData_dynamicSourceWithWorkProfile_showsDefaultEntryWhenNoDataIsProvided() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_ALL_PROFILE_CONFIG)
+
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+
+        val entry =
+            SafetyCenterEntry.Builder(
+                    SafetyCenterCtsData.entryId(SINGLE_SOURCE_ALL_PROFILE_ID), "OK")
+                .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNKNOWN)
+                .setSummary("OK")
+                .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
+                .setSeverityUnspecifiedIconType(
+                    SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION)
+                .build()
+        val managedUserId = deviceState.workProfile().id()
+        val entryForWork =
+            SafetyCenterEntry.Builder(
+                    SafetyCenterCtsData.entryId(SINGLE_SOURCE_ALL_PROFILE_ID, managedUserId),
+                    "Paste")
+                .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNKNOWN)
+                .setSummary("OK")
+                .setPendingIntent(redirectPendingIntentForWork)
+                .setSeverityUnspecifiedIconType(
+                    SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION)
+                .build()
+        val entryGroup =
+            SafetyCenterEntryGroup.Builder(
+                    SafetyCenterCtsData.entryGroupId(SINGLE_SOURCE_GROUP_ID), "OK")
+                .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNKNOWN)
+                .setSeverityUnspecifiedIconType(SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON)
+                .setSummary("No info yet")
+                .setEntries(listOf(entry, entryForWork))
+                .build()
+        val safetyCenterData =
+            SafetyCenterData(
+                safetyCenterStatusOk,
+                emptyList(),
+                listOf(SafetyCenterEntryOrGroup(entryGroup)),
+                emptyList())
+        assertThat(apiSafetyCenterData).isEqualTo(safetyCenterData)
     }
 
     @Test
@@ -349,14 +305,13 @@ class SafetyCenterManagedDeviceTest {
 
     @Test
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
-    fun setSafetySourceData_quietModeEnabled_workEntryShouldBeDisabled() {
+    fun getSafetySourceCenter_quietModeEnabled_shouldHaveWorkProfilePausedSummary() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_ALL_PROFILE_CONFIG)
+        val setData = safetySourceCtsData.information
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ALL_PROFILE_ID, setData)
+        val setDataForWork = safetySourceCtsData.informationForWork
         val managedSafetyCenterManager =
             getSafetyCenterManagerForUser(deviceState.workProfile().userHandle())
-        val setData = safetySourceCtsData.information
-        val setDataForWork = safetySourceCtsData.informationForWork
-        val managedUserId = deviceState.workProfile().id()
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_ALL_PROFILE_CONFIG)
-        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ALL_PROFILE_ID, setData)
         managedSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
             SINGLE_SOURCE_ALL_PROFILE_ID, setDataForWork)
 
@@ -372,7 +327,7 @@ class SafetyCenterManagedDeviceTest {
                 .setSeverityUnspecifiedIconType(
                     SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION)
                 .build()
-
+        val managedUserId = deviceState.workProfile().id()
         val entryForWork =
             SafetyCenterEntry.Builder(
                     SafetyCenterCtsData.entryId(SINGLE_SOURCE_ALL_PROFILE_ID, managedUserId),
@@ -405,39 +360,17 @@ class SafetyCenterManagedDeviceTest {
 
     @Test
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
-    fun setSafetySourceData_sourceWithWorkProfile_shouldBeAbleToSetData() {
-        val managedSafetyCenterManager =
-            getSafetyCenterManagerForUser(deviceState.workProfile().userHandle())
-        val setData = safetySourceCtsData.information
-        val setDataForWork = safetySourceCtsData.informationForWork
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_ALL_PROFILE_CONFIG)
-        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ALL_PROFILE_ID, setData)
-        managedSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
-            SINGLE_SOURCE_ALL_PROFILE_ID, setDataForWork)
-
-        val apiSafetySourceData =
-            safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ALL_PROFILE_ID)
-        val apiSafetySourceDataForWork =
-            managedSafetyCenterManager.getSafetySourceDataWithInteractAcrossUsersPermission(
-                SINGLE_SOURCE_ALL_PROFILE_ID)
-
-        assertThat(apiSafetySourceData).isEqualTo(setData)
-        assertThat(apiSafetySourceDataForWork).isEqualTo(setDataForWork)
-    }
-
-    @Test
-    @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun getSafetyCenterData_defaultDataWithInvalidIntent_shouldBeDisabled() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_ALL_PROFILE_INVALID_INTENT_CONFIG)
 
         val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
 
-        val managedUserId = deviceState.workProfile().id()
         val entry =
             safetyCenterEntryBuilder(SafetyCenterCtsData.entryId(SINGLE_SOURCE_ALL_PROFILE_ID))
                 .setEnabled(false)
                 .setPendingIntent(null)
                 .build()
+        val managedUserId = deviceState.workProfile().id()
         val entryForWork =
             safetyCenterEntryBuilder(
                     SafetyCenterCtsData.entryId(SINGLE_SOURCE_ALL_PROFILE_ID, managedUserId))
@@ -459,20 +392,110 @@ class SafetyCenterManagedDeviceTest {
     }
 
     @Test
+    @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
+    fun setSafetySourceData_primaryProfileIssueOnlySource_shouldNotBeAbleToSetDataToWorkProfile() {
+        safetyCenterCtsHelper.setConfig(ISSUE_ONLY_SOURCE_CONFIG)
+
+        val managedSafetyCenterManager =
+            getSafetyCenterManagerForUser(deviceState.workProfile().userHandle())
+        val setDataForWork = safetySourceCtsData.informationForWork
+        assertFailsWith(IllegalArgumentException::class) {
+            managedSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
+                ISSUE_ONLY_ALL_OPTIONAL_ID, setDataForWork)
+        }
+    }
+
+    @Test
+    @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
+    fun setSafetySourceData_withoutInteractAcrossUserPermission_shouldThrowError() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_ALL_PROFILE_CONFIG)
+        val setDataForWork = safetySourceCtsData.informationForWork
+        val managedSafetyCenterManager =
+            getSafetyCenterManagerForUser(deviceState.workProfile().userHandle())
+        managedSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
+            SINGLE_SOURCE_ALL_PROFILE_ID, setDataForWork)
+
+        assertFailsWith(SecurityException::class) {
+            managedSafetyCenterManager.setSafetySourceData(
+                SINGLE_SOURCE_ALL_PROFILE_ID, setDataForWork, EVENT_SOURCE_STATE_CHANGED)
+        }
+    }
+
+    @Test
+    @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
+    fun setSafetySourceData_issuesOnlySourceWithWorkProfile_shouldBeAbleToSetData() {
+        safetyCenterCtsHelper.setConfig(ISSUE_ONLY_SOURCE_ALL_PROFILE_CONFIG)
+        val dataToSet =
+            SafetySourceCtsData.issuesOnly(safetySourceCtsData.recommendationGeneralIssue)
+        safetyCenterCtsHelper.setData(ISSUE_ONLY_ALL_PROFILE_SOURCE_ID, dataToSet)
+        val managedSafetyCenterManager =
+            getSafetyCenterManagerForUser(deviceState.workProfile().userHandle())
+        val dataToSetForWork =
+            SafetySourceCtsData.issuesOnly(safetySourceCtsData.criticalResolvingGeneralIssue)
+        managedSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
+            ISSUE_ONLY_ALL_PROFILE_SOURCE_ID, dataToSetForWork)
+
+        val apiSafetySourceData =
+            safetyCenterManager.getSafetySourceDataWithPermission(ISSUE_ONLY_ALL_PROFILE_SOURCE_ID)
+        val apiSafetySourceDataForWork =
+            managedSafetyCenterManager.getSafetySourceDataWithInteractAcrossUsersPermission(
+                ISSUE_ONLY_ALL_PROFILE_SOURCE_ID)
+
+        assertThat(apiSafetySourceData).isEqualTo(dataToSet)
+        assertThat(apiSafetySourceDataForWork).isEqualTo(dataToSetForWork)
+    }
+
+    @Test
+    @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
+    fun setSafetySourceData_primaryProfileSource_shouldNotBeAbleToSetDataToWorkProfile() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+
+        val managedSafetyCenterManager =
+            getSafetyCenterManagerForUser(deviceState.workProfile().userHandle())
+        val setDataForWork = safetySourceCtsData.informationForWork
+        assertFailsWith(IllegalArgumentException::class) {
+            managedSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
+                SINGLE_SOURCE_ID, setDataForWork)
+        }
+    }
+
+    @Test
+    @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
+    fun setSafetySourceData_sourceWithWorkProfile_shouldBeAbleToSetData() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_ALL_PROFILE_CONFIG)
+
+        val setData = safetySourceCtsData.information
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ALL_PROFILE_ID, setData)
+        val setDataForWork = safetySourceCtsData.informationForWork
+        val managedSafetyCenterManager =
+            getSafetyCenterManagerForUser(deviceState.workProfile().userHandle())
+        managedSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
+            SINGLE_SOURCE_ALL_PROFILE_ID, setDataForWork)
+
+        val apiSafetySourceData =
+            safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ALL_PROFILE_ID)
+        val apiSafetySourceDataForWork =
+            managedSafetyCenterManager.getSafetySourceDataWithInteractAcrossUsersPermission(
+                SINGLE_SOURCE_ALL_PROFILE_ID)
+        assertThat(apiSafetySourceData).isEqualTo(setData)
+        assertThat(apiSafetySourceDataForWork).isEqualTo(setDataForWork)
+    }
+
+    @Test
     @EnsureHasSecondaryUser(installInstrumentedApp = TRUE)
     fun setSafetySourceData_forStoppedUser_shouldSetData() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        deviceState.secondaryUser().stop()
+
         val dataToSet = safetySourceCtsData.unspecified
         val secondaryUserSafetyCenterManager =
             getSafetyCenterManagerForUser(deviceState.secondaryUser().userHandle())
-        deviceState.secondaryUser().stop()
-
         secondaryUserSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
             SINGLE_SOURCE_ID, dataToSet)
+
         val apiSafetySourceData =
             secondaryUserSafetyCenterManager.getSafetySourceDataWithInteractAcrossUsersPermission(
                 SINGLE_SOURCE_ID)
-
         assertThat(apiSafetySourceData).isEqualTo(dataToSet)
     }
 
