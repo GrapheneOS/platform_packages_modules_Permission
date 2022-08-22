@@ -187,25 +187,34 @@ class IssueCardAnimator(val callback: AnimationCallback) {
         private val HIDE_ISSUE_CONTENT_TRANSITION_DURATION = Duration.ofMillis(333)
         private val SHOW_RESOLVED_TEXT_TRANSITION_DELAY = Duration.ofMillis(133)
         private val SHOW_RESOLVED_TEXT_TRANSITION_DURATION = Duration.ofMillis(250)
-        private val HIDE_RESOLVED_UI_TRANSITION_DELAY = Duration.ofMillis(
-            DeviceConfig.getLong(DeviceConfig.NAMESPACE_PRIVACY,
-                PROPERTY_HIDE_RESOLVED_UI_TRANSITION_DELAY_MILLIS,
-                400))
         private val HIDE_RESOLVED_UI_TRANSITION_DURATION = Duration.ofMillis(167)
+
+        // Using getter due to reliance on DeviceConfig property modification in tests
+        private val hideResolvedUiTransitionDelay
+            get() = Duration.ofMillis(
+                DeviceConfig.getLong(DeviceConfig.NAMESPACE_PRIVACY,
+                    PROPERTY_HIDE_RESOLVED_UI_TRANSITION_DELAY_MILLIS,
+                    400))
+
         private val linearInterpolator = LinearInterpolator()
+
         private val hideIssueContentTransition =
             Fade(Fade.OUT).setDuration(HIDE_ISSUE_CONTENT_TRANSITION_DURATION.toMillis())
+
         private val showResolvedImageTransition =
             Fade(Fade.IN)
                 // Fade is used for visibility transformation. Image to be shown immediately
                 .setDuration(0)
                 .addTarget(R.id.resolved_issue_image)
+
         private val showResolvedTextTransition = Fade(Fade.IN)
             .setStartDelay(SHOW_RESOLVED_TEXT_TRANSITION_DELAY.toMillis())
             .setDuration(SHOW_RESOLVED_TEXT_TRANSITION_DURATION.toMillis())
             .addTarget(R.id.resolved_issue_text)
-        private val hideResolvedUiTransition = Fade(Fade.OUT)
-            .setStartDelay(HIDE_RESOLVED_UI_TRANSITION_DELAY.toMillis())
-            .setDuration(HIDE_RESOLVED_UI_TRANSITION_DURATION.toMillis())
+
+        private val hideResolvedUiTransition
+            get() = Fade(Fade.OUT)
+                .setStartDelay(hideResolvedUiTransitionDelay.toMillis())
+                .setDuration(HIDE_RESOLVED_UI_TRANSITION_DURATION.toMillis())
     }
 }
