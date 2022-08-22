@@ -1475,10 +1475,12 @@ final class SafetyCenterDataTracker {
         boolean enabled =
                 pendingIntent != null && !SafetySources.isDefaultEntryDisabled(safetySource);
         CharSequence title =
-                mSafetyCenterResourcesContext.getString(
-                        isUserManaged
-                                ? safetySource.getTitleForWorkResId()
-                                : safetySource.getTitleResId());
+                isUserManaged
+                        ? DevicePolicyResources.getSafetySourceWorkString(
+                                mSafetyCenterResourcesContext,
+                                safetySource.getId(),
+                                safetySource.getTitleForWorkResId())
+                        : mSafetyCenterResourcesContext.getString(safetySource.getTitleResId());
         CharSequence summary =
                 mSafetySourceErrors.contains(SafetySourceKey.of(safetySource.getId(), userId))
                         ? getRefreshErrorString(1)
@@ -1486,7 +1488,8 @@ final class SafetyCenterDataTracker {
                                 safetySource.getSummaryResId());
         if (isQuietModeEnabled) {
             enabled = false;
-            summary = mSafetyCenterResourcesContext.getStringByName("work_profile_paused");
+            summary =
+                    DevicePolicyResources.getWorkProfilePausedString(mSafetyCenterResourcesContext);
         }
         return new SafetyCenterEntry.Builder(
                         SafetyCenterIds.encodeToString(safetyCenterEntryId), title)
@@ -1639,17 +1642,20 @@ final class SafetyCenterDataTracker {
         }
 
         CharSequence title =
-                mSafetyCenterResourcesContext.getString(
-                        isUserManaged
-                                ? safetySource.getTitleForWorkResId()
-                                : safetySource.getTitleResId());
+                isUserManaged
+                        ? DevicePolicyResources.getSafetySourceWorkString(
+                                mSafetyCenterResourcesContext,
+                                safetySource.getId(),
+                                safetySource.getTitleForWorkResId())
+                        : mSafetyCenterResourcesContext.getString(safetySource.getTitleResId());
         CharSequence summary =
                 mSafetySourceErrors.contains(SafetySourceKey.of(safetySource.getId(), userId))
                         ? getRefreshErrorString(1)
                         : mSafetyCenterResourcesContext.getOptionalString(
                                 safetySource.getSummaryResId());
         if (isQuietModeEnabled) {
-            summary = mSafetyCenterResourcesContext.getStringByName("work_profile_paused");
+            summary =
+                    DevicePolicyResources.getWorkProfilePausedString(mSafetyCenterResourcesContext);
         }
         return new SafetyCenterStaticEntry.Builder(title)
                 .setSummary(summary)

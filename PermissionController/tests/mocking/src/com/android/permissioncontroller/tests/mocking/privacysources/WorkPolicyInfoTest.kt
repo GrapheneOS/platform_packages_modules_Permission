@@ -31,7 +31,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import com.android.dx.mockito.inline.extended.ExtendedMockito
 import com.android.permissioncontroller.PermissionControllerApplication
-import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.privacysources.SafetyCenterReceiver
 import com.android.permissioncontroller.privacysources.SafetyCenterReceiver.RefreshEvent
@@ -42,6 +41,7 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.ArgumentMatchers.any
+import org.mockito.ArgumentMatchers.anyInt
 import org.mockito.ArgumentMatchers.eq
 import org.mockito.Mock
 import org.mockito.Mockito
@@ -67,6 +67,8 @@ class WorkPolicyInfoTest {
         // Real context is used in order to avoid mocking resources and other expected things
         // eg: context.userId, context.getText etc
         var context: Context = ApplicationProvider.getApplicationContext()
+        const val WORK_POLICY_TITLE: String = "workPolicyTitle"
+        const val WORK_POLICY_SUMMARY: String = "workPolicySummary"
     }
 
     @Before
@@ -90,6 +92,18 @@ class WorkPolicyInfoTest {
                     any(ContextWrapper::class.java), eq(SafetyCenterManager::class.java)))
             .thenReturn(mockSafetyCenterManager)
         whenever(mockUserManager.isProfile).thenReturn(false)
+        whenever(
+                Utils.getEnterpriseString(
+                    any(ContextWrapper::class.java),
+                    eq(WorkPolicyInfo.WORK_POLICY_TITLE),
+                    anyInt()))
+            .thenReturn(WORK_POLICY_TITLE)
+        whenever(
+                Utils.getEnterpriseString(
+                    any(ContextWrapper::class.java),
+                    eq(WorkPolicyInfo.WORK_POLICY_SUMMARY),
+                    anyInt()))
+            .thenReturn(WORK_POLICY_SUMMARY)
 
         whenever(PermissionControllerApplication.get()).thenReturn(application)
         whenever(application.applicationContext).thenReturn(application)
@@ -118,8 +132,8 @@ class WorkPolicyInfoTest {
             PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
         val expectedSafetySourceStatus: SafetySourceStatus =
             SafetySourceStatus.Builder(
-                    context.getText(R.string.work_policy_title),
-                    context.getText(R.string.work_policy_summary),
+                    WORK_POLICY_TITLE,
+                    WORK_POLICY_SUMMARY,
                     SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED)
                 .setPendingIntent(pendingIntent)
                 .build()
@@ -181,8 +195,8 @@ class WorkPolicyInfoTest {
             PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
         val expectedSafetySourceStatus: SafetySourceStatus =
             SafetySourceStatus.Builder(
-                    context.getText(R.string.work_policy_title),
-                    context.getText(R.string.work_policy_summary),
+                    WORK_POLICY_TITLE,
+                    WORK_POLICY_SUMMARY,
                     SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED)
                 .setPendingIntent(pendingIntent)
                 .build()
@@ -217,8 +231,8 @@ class WorkPolicyInfoTest {
             PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
         val expectedSafetySourceStatus: SafetySourceStatus =
             SafetySourceStatus.Builder(
-                    context.getText(R.string.work_policy_title),
-                    context.getText(R.string.work_policy_summary),
+                    WORK_POLICY_TITLE,
+                    WORK_POLICY_SUMMARY,
                     SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED)
                 .setPendingIntent(pendingIntent)
                 .build()
@@ -254,8 +268,8 @@ class WorkPolicyInfoTest {
 
         val expectedSafetySourceStatus: SafetySourceStatus =
             SafetySourceStatus.Builder(
-                    context.getText(R.string.work_policy_title),
-                    context.getText(R.string.work_policy_summary),
+                    WORK_POLICY_TITLE,
+                    WORK_POLICY_SUMMARY,
                     SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED)
                 .setPendingIntent(pendingIntent)
                 .build()
