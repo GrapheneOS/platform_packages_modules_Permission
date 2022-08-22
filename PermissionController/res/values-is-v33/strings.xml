@@ -21,13 +21,17 @@
     <string name="permission_description_summary_storage" msgid="1917071243213043858">"Forrit með þessa heimild hafa aðgang að öllum skrám í þessu tæki"</string>
     <string name="work_policy_title" msgid="832967780713677409">"Upplýsingar um vinnureglurnar þínar"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"Kerfisstjóri stjórnar stillingum"</string>
+    <string name="safety_center_entry_group_expand_action" msgid="5358289574941779652">"Stækka og sýna lista"</string>
+    <string name="safety_center_entry_group_collapse_action" msgid="1525710152244405656">"Draga lista saman og fela stillingar"</string>
+    <string name="safety_center_entry_group_content_description" msgid="7048420958214443333">"Listi. <xliff:g id="ENTRY_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>"</string>
+    <string name="safety_center_entry_group_with_actions_needed_content_description" msgid="2708884606775932657">"Listi. <xliff:g id="ENTRY_TITLE">%1$s</xliff:g>. Aðgerða þörf. <xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>"</string>
+    <string name="safety_center_entry_group_item_content_description" msgid="7348298582877249787">"Listaatriði. <xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
+    <string name="safety_center_entry_content_description" msgid="3639565652938224321">"<xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_more_issues_card_title" msgid="8599419758014246517">"Sjá allar viðvaranir"</string>
-    <string name="safety_center_more_issues_status_icon_content_description" msgid="8597351743567707802">"Sjá allar viðvaranir"</string>
-    <string name="safety_center_more_issues_expand_button_content_description" msgid="8997241228390831958">"Sjá allar viðvaranir"</string>
+    <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{Stækka og sjá eina viðvörun í viðbót}one{Stækka og sjá # viðvörun í viðbót}other{Stækka og sjá # viðvaranir í viðbót}}"</string>
     <string name="safety_center_issue_card_content_description" msgid="1281390769721765363">"Viðvörun. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_issue_card_content_description_with_subtitle" msgid="5504040663935313539">"Viðvörun. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUBTITLE">%2$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%3$s</xliff:g>"</string>
-    <!-- no translation found for safety_center_issue_resolution_fallback (397036766466689354) -->
-    <skip />
+    <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"Aðgerð lokið"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"Skoðunarstillingar sem geta bætt öryggi tækisins þíns"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"Flýtistillingar öryggis og persónuverndar"</string>
     <string name="safety_center_qs_close_button" msgid="1352313308176244599">"Loka"</string>
