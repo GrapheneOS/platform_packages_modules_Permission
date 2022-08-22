@@ -23,6 +23,8 @@
     <string name="back" msgid="6249950659061523680">"பின்செல்"</string>
     <string name="available" msgid="6007778121920339498">"உள்ளது"</string>
     <string name="blocked" msgid="9195547604866033708">"தடுக்கப்பட்டது"</string>
+    <string name="on" msgid="280241003226755921">"இயக்கப்பட்டுள்ளது"</string>
+    <string name="off" msgid="1438489226422866263">"ஆஃப்"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"நிறுவல் நீக்கு அல்லது முடக்கு"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"ஆப்ஸ் இல்லை"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"அனுமதிக்க வேண்டாம்"</string>
@@ -130,6 +132,7 @@
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"கடந்த 7 நாட்களில் <xliff:g id="PERMGROUP">%1$s</xliff:g> ஐ ஆப்ஸ் பயன்படுத்தியதற்கான காலப்பதிவு"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"இந்த ஆப்ஸ் <xliff:g id="PERMGROUP">%1$s</xliff:g> அனுமதியைப் பயன்படுத்தியபோது"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"மேலும் அறிக"</string>
+    <string name="learn_more_content_description" msgid="8673699744544502539">"<xliff:g id="PERMGROUP">%1$s</xliff:g> குறித்து மேலும் அறிக"</string>
     <string name="manage_permission_summary" msgid="4117555482684114317">"உங்கள் <xliff:g id="PERMGROUP">%1$s</xliff:g>க்கான ஆப்ஸின் அணுகலைக் கட்டுப்படுத்தலாம்"</string>
     <string name="auto_permission_usage_timeline_summary" msgid="2713135806453218703">"<xliff:g id="ACCESS_TIME">%1$s</xliff:g> • <xliff:g id="SUMMARY_TEXT">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
@@ -211,7 +214,6 @@
     <string name="auto_revocable_permissions_two" msgid="4874067408752041716">"<xliff:g id="PERM_0">%1$s</xliff:g>, <xliff:g id="PERM_1">%2$s</xliff:g> அனுமதிகள் அகற்றப்படும்."</string>
     <string name="auto_revocable_permissions_many" msgid="1521807896206032992">"அகற்றப்படவிருக்கும் அனுமதிகள்: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_manage_title" msgid="7693181026874842935">"அனுமதிகளைத் தானாகவே நிர்வகித்தல்"</string>
-    <string name="off" msgid="1438489226422866263">"ஆஃப்"</string>
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"<xliff:g id="PERMISSION_NAME">%s</xliff:g> தொடர்பான அனுமதி அகற்றப்பட்டது"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> மற்றும் <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> தொடர்பான அனுமதிகள் அகற்றப்பட்டன"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> மற்றும் பிற <xliff:g id="NUMBER">%2$s</xliff:g> அனுமதிகள் அகற்றப்பட்டன"</string>
@@ -280,10 +282,8 @@
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> ஆப்ஸ் உங்கள் இருப்பிடத்தைப் பின்புலத்தில் பெற்றது"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"எப்பொழுதும் உங்கள் இருப்பிடத்தை இந்த ஆப்ஸால் பயன்படுத்த இயலும். மாற்றத் தட்டவும்."</string>
     <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"அறிவிப்புகளுக்கான அணுகலுள்ள ஆப்ஸை மதிப்பாய்வு செய்யுங்கள்"</string>
-    <!-- no translation found for notification_listener_reminder_notification_content (831476101108863427) -->
-    <skip />
-    <!-- no translation found for notification_listener_warning_card_content (7840973324284115893) -->
-    <skip />
+    <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g> ஆப்ஸால் உங்கள் அறிவிப்புகளில் உள்ள உள்ளடக்கத்தை அணுகவும் நிராகரிக்கவும் அவற்றின் மீது செயல்படவும் முடியும்"</string>
+    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"இந்த ஆப்ஸால் உங்கள் அறிவிப்புகளில் உள்ள உள்ளடக்கத்தை அணுகவும் நிராகரிக்கவும் அவற்றின் மீது செயல்படவும் முடியும். சில ஆப்ஸ் சரியாகச் செயல்படுவதற்கு இந்த அணுகல் தேவை."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"அணுகலை அகற்று"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"மேலும் விருப்பங்களைக் காட்டு"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"அணுகல் அகற்றப்பட்டது"</string>

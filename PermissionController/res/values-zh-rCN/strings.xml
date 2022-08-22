@@ -23,6 +23,8 @@
     <string name="back" msgid="6249950659061523680">"返回"</string>
     <string name="available" msgid="6007778121920339498">"可用"</string>
     <string name="blocked" msgid="9195547604866033708">"已禁用"</string>
+    <string name="on" msgid="280241003226755921">"已开启"</string>
+    <string name="off" msgid="1438489226422866263">"关闭"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"卸载或停用"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"未找到应用"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"不允许"</string>
@@ -130,6 +132,7 @@
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"过去 7 天内应用使用“<xliff:g id="PERMGROUP">%1$s</xliff:g>”权限的时间轴"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"该应用何时使用了您的<xliff:g id="PERMGROUP">%1$s</xliff:g>权限"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"了解详情"</string>
+    <string name="learn_more_content_description" msgid="8673699744544502539">"详细了解<xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="manage_permission_summary" msgid="4117555482684114317">"控制应用对您<xliff:g id="PERMGROUP">%1$s</xliff:g>的使用权"</string>
     <string name="auto_permission_usage_timeline_summary" msgid="2713135806453218703">"<xliff:g id="ACCESS_TIME">%1$s</xliff:g> • <xliff:g id="SUMMARY_TEXT">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
@@ -211,7 +214,6 @@
     <string name="auto_revocable_permissions_two" msgid="4874067408752041716">"<xliff:g id="PERM_0">%1$s</xliff:g>和<xliff:g id="PERM_1">%2$s</xliff:g>权限将被移除。"</string>
     <string name="auto_revocable_permissions_many" msgid="1521807896206032992">"即将被移除的权限：<xliff:g id="PERMS">%1$s</xliff:g>。"</string>
     <string name="auto_manage_title" msgid="7693181026874842935">"自动管理权限"</string>
-    <string name="off" msgid="1438489226422866263">"关闭"</string>
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"已移除<xliff:g id="PERMISSION_NAME">%s</xliff:g>权限"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"已移除<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>以及<xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>权限"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"已移除<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>权限及另外 <xliff:g id="NUMBER">%2$s</xliff:g> 项权限"</string>
@@ -280,10 +282,8 @@
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g>在后台获取了您的位置信息"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"此应用随时可以使用您的位置信息。点按即可更改。"</string>
     <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"查看具有通知访问权限的应用"</string>
-    <!-- no translation found for notification_listener_reminder_notification_content (831476101108863427) -->
-    <skip />
-    <!-- no translation found for notification_listener_warning_card_content (7840973324284115893) -->
-    <skip />
+    <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g>可以不显示您通知中的内容，也可以处理和访问它们"</string>
+    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"此应用可以不显示您通知中的内容，也可以处理和访问它们部分应用需要此类权限才能正常运行。"</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"撤消访问权限"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"查看更多选项"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"已撤消访问权限"</string>

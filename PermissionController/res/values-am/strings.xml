@@ -23,6 +23,8 @@
     <string name="back" msgid="6249950659061523680">"ተመለስ"</string>
     <string name="available" msgid="6007778121920339498">"ይገኛል"</string>
     <string name="blocked" msgid="9195547604866033708">"ታግዷል"</string>
+    <string name="on" msgid="280241003226755921">"በርቷል"</string>
+    <string name="off" msgid="1438489226422866263">"ቅናሽ"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"አራግፍ ወይም አሰናክል"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"ትግበራ አልተገኘም"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"አትፍቀድ"</string>
@@ -130,6 +132,7 @@
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"መተግበሪያዎች ባለፉት 7 ቀናት ውስጥ የእርስዎን <xliff:g id="PERMGROUP">%1$s</xliff:g> ሲጠቀሙበት የነበሩበት የጊዜ መስመር"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"ይህ መተግበሪያ የእርስዎን የ<xliff:g id="PERMGROUP">%1$s</xliff:g> ፈቃድ ሲጠቀም"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"የበለጠ ለመረዳት"</string>
+    <string name="learn_more_content_description" msgid="8673699744544502539">"ስለ<xliff:g id="PERMGROUP">%1$s</xliff:g> የበለጠ ይወቁ"</string>
     <string name="manage_permission_summary" msgid="4117555482684114317">"የእርስዎን <xliff:g id="PERMGROUP">%1$s</xliff:g> የመተግበሪያ መዳረሻ ይቆጣጠሩ"</string>
     <string name="auto_permission_usage_timeline_summary" msgid="2713135806453218703">"<xliff:g id="ACCESS_TIME">%1$s</xliff:g> • <xliff:g id="SUMMARY_TEXT">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
@@ -211,7 +214,6 @@
     <string name="auto_revocable_permissions_two" msgid="4874067408752041716">"የ<xliff:g id="PERM_0">%1$s</xliff:g> እና የ<xliff:g id="PERM_1">%2$s</xliff:g> ፈቃዶች ይወገዳሉ።"</string>
     <string name="auto_revocable_permissions_many" msgid="1521807896206032992">"የሚወገዱ ፈቃዶች፦ <xliff:g id="PERMS">%1$s</xliff:g>።"</string>
     <string name="auto_manage_title" msgid="7693181026874842935">"ፈቃዶችን በራስ-ሰር አቀናብር"</string>
-    <string name="off" msgid="1438489226422866263">"ቅናሽ"</string>
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"የ<xliff:g id="PERMISSION_NAME">%s</xliff:g> ፈቃድ ተወግዷል"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"የ<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> እና <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> ፈቃዶች ተወግደዋል"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> እና <xliff:g id="NUMBER">%2$s</xliff:g> ሌሎች ፈቃዶች ተወግደዋል"</string>
@@ -280,10 +282,8 @@
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> በበስተጀርባ አካባቢዎን አግኝተዋል"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"ይህ መተግበሪያ በማንኛውም ጊዜ አካባቢዎን መድረስ ይችላል። ለመቀየር መታ ያድርጉ።"</string>
     <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"ለማሳወቂያዎችዎ መዳረሻ ያለውን መተግበሪያ ይገምግሙ"</string>
-    <!-- no translation found for notification_listener_reminder_notification_content (831476101108863427) -->
-    <skip />
-    <!-- no translation found for notification_listener_warning_card_content (7840973324284115893) -->
-    <skip />
+    <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g> በማሳወቂያዎችዎ ውስጥ ያለ ይዘትን ማሰናበት፣ በእሱ ላይ እርምጃ መውሰድ እና መድረስ ይችላል"</string>
+    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"ይህ መተግበሪያ በማሳወቂያዎችዎ ውስጥ ያለ ይዘትን ማሰናበት፣ በእሱ ላይ እርምጃ መውሰድ እና መድረስ ይችላል። የተወሰኑ መተግበሪያዎች እንደታሰቡት እንዲሰሩ ይህ መዳረሻ ያስፈልጋቸዋል።"</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"መዳረሻን አስወግድ"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"ተጨማሪ አማራጮችን ይመልከቱ"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"መዳረሻ ተወግዷል"</string>
@@ -365,7 +365,7 @@
     <string name="role_sms_description" msgid="3424020199148153513">"አጫጭር የጽሑፍ መልዕክቶችን፣ ፎቶዎችን፣ ቪዲዮዎችን እና ተጨማሪ ነገሮችን ለመላክ እና ለመቀበል የእርስዎን ስልክ ለመጠቀም እንዲችሉ የሚፈቅድልዎት መተግበሪያዎች"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g> እንደ የእርስዎ ነባሪ የኤስኤምኤስ መተግበሪያ ይዋቀር?"</string>
     <string name="role_sms_request_description" msgid="2691004766132144886">"ይህ መተግበሪያ የእርስዎን ካሜራ፣ ዕውቂያዎች፣ ፋይሎች እና ሚዲያ፣ ማይክሮፎን፣ ስልክ እና ኤስኤምኤስ መዳረሻ ይሰጠዋል"</string>
-    <string name="role_sms_search_keywords" msgid="8022048144395047352">"የጽሑፍ መልዕክት፣ ጽሑፍ መላክ፣ መልዕክቶች፣ መልዕክት መላላኪያ"</string>
+    <string name="role_sms_search_keywords" msgid="8022048144395047352">"የጽሁፍ መልዕክት፣ ጽሁፍ መላክ፣ መልዕክቶች፣ መልዕክት መላላኪያ"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"ነባሪ የድንገተኛ አደጋ መተግበሪያ"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"የድንገተኛ አደጋ መተግበሪያ"</string>
     <string name="role_emergency_description" msgid="5051840234887686630">"የእርስዎን የሕክምና መረጃ እንዲቀርጽ እና ለድንገተኛ አደጋ ሕክምና ምላሽ ሰጪዎች ተዳራሽ እንዲሆን እንዲያደርጉ የሚያስችልዎት፣ ስለ በጣም መጥፎ የአየር ሁኔታ ክስተቶችን እና አደጋዎችን በተመለከተ ማንቂያዎችን ለማግኘት፣ እርስዎ እገዛ በሚያስፈልግዎት ጊዜ ለሌሎች ሊያሳውቁ የሚችሉ መተግበሪያዎች"</string>

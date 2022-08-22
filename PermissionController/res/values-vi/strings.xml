@@ -23,6 +23,8 @@
     <string name="back" msgid="6249950659061523680">"Quay lại"</string>
     <string name="available" msgid="6007778121920339498">"Được phép"</string>
     <string name="blocked" msgid="9195547604866033708">"Bị chặn"</string>
+    <string name="on" msgid="280241003226755921">"Đang bật"</string>
+    <string name="off" msgid="1438489226422866263">"Tắt"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Gỡ cài đặt hoặc vô hiệu hóa"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Không tìm thấy ứng dụng"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"Không cho phép"</string>
@@ -130,6 +132,7 @@
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Lịch trình các ứng dụng dùng <xliff:g id="PERMGROUP">%1$s</xliff:g> của bạn trong 7 ngày qua"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Thời điểm ứng dụng này sử dụng quyền <xliff:g id="PERMGROUP">%1$s</xliff:g> của bạn"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Tìm hiểu thêm"</string>
+    <string name="learn_more_content_description" msgid="8673699744544502539">"Tìm hiểu thêm về <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="manage_permission_summary" msgid="4117555482684114317">"Kiểm soát quyền truy cập của ứng dụng vào <xliff:g id="PERMGROUP">%1$s</xliff:g> của bạn"</string>
     <string name="auto_permission_usage_timeline_summary" msgid="2713135806453218703">"<xliff:g id="ACCESS_TIME">%1$s</xliff:g> • <xliff:g id="SUMMARY_TEXT">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
@@ -211,7 +214,6 @@
     <string name="auto_revocable_permissions_two" msgid="4874067408752041716">"Các quyền <xliff:g id="PERM_0">%1$s</xliff:g> và <xliff:g id="PERM_1">%2$s</xliff:g> sẽ bị xóa."</string>
     <string name="auto_revocable_permissions_many" msgid="1521807896206032992">"Các quyền sau sẽ bị xóa: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_manage_title" msgid="7693181026874842935">"Tự động quản lý các quyền"</string>
-    <string name="off" msgid="1438489226422866263">"Tắt"</string>
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"Đã thu hồi quyền sử dụng <xliff:g id="PERMISSION_NAME">%s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Đã thu hồi quyền đối với <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> và <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Đã thu hồi quyền sử dụng <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> và <xliff:g id="NUMBER">%2$s</xliff:g> quyền khác"</string>
@@ -280,10 +282,8 @@
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> đã truy cập thông tin vị trí của bạn trong nền"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Ứng dụng này luôn có thể truy cập vào thông tin vị trí của bạn. Hãy nhấn để thay đổi."</string>
     <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"Xem lại ứng dụng có quyền truy cập vào thông báo"</string>
-    <!-- no translation found for notification_listener_reminder_notification_content (831476101108863427) -->
-    <skip />
-    <!-- no translation found for notification_listener_warning_card_content (7840973324284115893) -->
-    <skip />
+    <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g> có thể loại bỏ, xử lý và truy cập nội dung bên trong thông báo của bạn"</string>
+    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"Ứng dụng này có thể loại bỏ, xử lý và truy cập nội dung bên trong thông báo của bạn Một số ứng dụng cần có quyền truy cập này để cung cấp được chức năng như mong muốn."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Xóa quyền truy cập"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"Xem tuỳ chọn khác"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Đã xóa quyền truy cập"</string>

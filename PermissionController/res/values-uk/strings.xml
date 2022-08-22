@@ -23,6 +23,8 @@
     <string name="back" msgid="6249950659061523680">"Назад"</string>
     <string name="available" msgid="6007778121920339498">"Доступно"</string>
     <string name="blocked" msgid="9195547604866033708">"Заблоковано"</string>
+    <string name="on" msgid="280241003226755921">"Увімкнено"</string>
+    <string name="off" msgid="1438489226422866263">"Вимкнути"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Видалити або вимкнути"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Додаток не знайдено"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"Не дозволяти"</string>
@@ -130,6 +132,7 @@
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Хронологія використання додатками дозволу \"<xliff:g id="PERMGROUP">%1$s</xliff:g>\" за останні 7 днів"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Коли цей додаток використовував ваш дозвіл \"<xliff:g id="PERMGROUP">%1$s</xliff:g>\""</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Докладніше"</string>
+    <string name="learn_more_content_description" msgid="8673699744544502539">"Докладніше про групу дозволів \"<xliff:g id="PERMGROUP">%1$s</xliff:g>\""</string>
     <string name="manage_permission_summary" msgid="4117555482684114317">"Контролюйте доступ додатків до <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="auto_permission_usage_timeline_summary" msgid="2713135806453218703">"<xliff:g id="ACCESS_TIME">%1$s</xliff:g> • <xliff:g id="SUMMARY_TEXT">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
@@ -199,7 +202,7 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Налаштування невикористовуваних додатків"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Відкликати дозволи, якщо додаток не використовується"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Вилучати дозволи й звільняти місце"</string>
-    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Призупинити дії в неактивному додатку"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Призупиняти роботу в неактивний період"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"Вилучити дозволи, видалити тимчасові файли та зупинити сповіщення"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Щоб захистити ваші дані, дозволи для цього додатка буде автоматично скасовано, якщо ви не будете користуватися ним кілька місяців."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Якщо додаток не використовується впродовж кількох місяців, для захисту ваших даних буде скасовано такі дозволи: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
@@ -211,7 +214,6 @@
     <string name="auto_revocable_permissions_two" msgid="4874067408752041716">"Дозволи \"<xliff:g id="PERM_0">%1$s</xliff:g>\" і \"<xliff:g id="PERM_1">%2$s</xliff:g>\" буде відкликано."</string>
     <string name="auto_revocable_permissions_many" msgid="1521807896206032992">"Дозволи, які буде відкликано: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_manage_title" msgid="7693181026874842935">"Керувати дозволами автоматично"</string>
-    <string name="off" msgid="1438489226422866263">"Вимкнути"</string>
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"Дозвіл додатка \"<xliff:g id="PERMISSION_NAME">%s</xliff:g>\" скасовано"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Дозволи \"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>\" та \"<xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>\" скасовано"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Дозвіл \"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>\" і ще <xliff:g id="NUMBER">%2$s</xliff:g> скасовано"</string>
@@ -280,10 +282,8 @@
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"Додаток <xliff:g id="APP_NAME">%s</xliff:g> визначив ваше місцезнаходження у фоновому режимі"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Цей додаток завжди має доступ до геоданих пристрою. Торкніться, щоб змінити це."</string>
     <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"Перегляньте додаток із доступом до ваших сповіщень"</string>
-    <!-- no translation found for notification_listener_reminder_notification_content (831476101108863427) -->
-    <skip />
-    <!-- no translation found for notification_listener_warning_card_content (7840973324284115893) -->
-    <skip />
+    <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"Додаток <xliff:g id="APP_NAME">%s</xliff:g> може закривати ваші сповіщення, реагувати на них і отримувати доступ до їх вмісту"</string>
+    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"Цей додаток може закривати ваші сповіщення, реагувати на них і отримувати доступ до їх вмісту. Деяким додаткам такий доступ потрібен для належної роботи."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Заборонити доступ"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"Перегляньте інші варіанти"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Доступ заборонено"</string>

@@ -23,6 +23,8 @@
     <string name="back" msgid="6249950659061523680">"Назад"</string>
     <string name="available" msgid="6007778121920339498">"Доступно"</string>
     <string name="blocked" msgid="9195547604866033708">"Заблокировано"</string>
+    <string name="on" msgid="280241003226755921">"Включено"</string>
+    <string name="off" msgid="1438489226422866263">"Отключить"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Удалить или отключить"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Приложение не найдено"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"Запретить"</string>
@@ -130,6 +132,7 @@
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Хронология использования разрешения \"<xliff:g id="PERMGROUP">%1$s</xliff:g>\" за последние 7 дней"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Когда приложение использовало разрешение \"<xliff:g id="PERMGROUP">%1$s</xliff:g>\""</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Подробнее…"</string>
+    <string name="learn_more_content_description" msgid="8673699744544502539">"<xliff:g id="PERMGROUP">%1$s</xliff:g>: подробнее"</string>
     <string name="manage_permission_summary" msgid="4117555482684114317">"Настроить доступ приложений к группе разрешений \"<xliff:g id="PERMGROUP">%1$s</xliff:g>\""</string>
     <string name="auto_permission_usage_timeline_summary" msgid="2713135806453218703">"<xliff:g id="ACCESS_TIME">%1$s</xliff:g> • <xliff:g id="SUMMARY_TEXT">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
@@ -211,7 +214,6 @@
     <string name="auto_revocable_permissions_two" msgid="4874067408752041716">"Разрешения \"<xliff:g id="PERM_0">%1$s</xliff:g>\" и \"<xliff:g id="PERM_1">%2$s</xliff:g>\" будут отозваны"</string>
     <string name="auto_revocable_permissions_many" msgid="1521807896206032992">"Разрешения, которые будут отозваны: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_manage_title" msgid="7693181026874842935">"Автоматическое управление разрешениями"</string>
-    <string name="off" msgid="1438489226422866263">"Отключить"</string>
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"Отозвано разрешение \"<xliff:g id="PERMISSION_NAME">%s</xliff:g>\"."</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Отозваны разрешения \"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>\" и \"<xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>\"."</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Отозвано разрешение \"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>\" и ещё <xliff:g id="NUMBER">%2$s</xliff:g>."</string>
@@ -223,7 +225,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Использовалось <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Если вы разрешите приложению управлять всеми файлами, оно сможет просматривать, изменять и удалять любые файлы в общем хранилище на этом устройстве, а также на подключенных запоминающих устройствах. При этом оно сможет получать доступ к файлам без вашего ведома."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Разрешить этому приложению просматривать, изменять и удалять любые файлы на этом устройстве, а также на подключенных запоминающих устройствах? Приложение сможет получать доступ к файлам без вашего ведома."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"C этим разрешением <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Приложения с разрешением <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Приложения с этим разрешением могут получать доступ к данным о вашей физической активности, включая количество пройденных шагов и продолжительность прогулок и поездок на велосипеде."</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Приложения с этим разрешением могут получать доступ к календарю."</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Приложения с этим разрешением могут читать список вызовов и создавать записи в нем."</string>
@@ -280,10 +282,8 @@
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"Приложению \"<xliff:g id="APP_NAME">%s</xliff:g>\" в фоновом режиме доступны геоданные"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"У этого приложения есть постоянный доступ к сведениям о вашем местоположении. Нажмите, чтобы изменить настройки."</string>
     <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"Проверьте приложение с доступом к уведомлениям"</string>
-    <!-- no translation found for notification_listener_reminder_notification_content (831476101108863427) -->
-    <skip />
-    <!-- no translation found for notification_listener_warning_card_content (7840973324284115893) -->
-    <skip />
+    <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"Приложение \"<xliff:g id="APP_NAME">%s</xliff:g>\" может взаимодействовать с уведомлениями, в том числе скрывать их и получать к ним доступ."</string>
+    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"Приложение может взаимодействовать с уведомлениями, в том числе скрывать их и получать к ним доступ. Это необходимо для правильной работы приложения."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Запретить доступ"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"Показать дополнительные параметры"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Доступ закрыт"</string>
@@ -457,7 +457,7 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Этому приложению может потребоваться доступ к вашему местоположению, даже когда вы им не пользуетесь. Предоставьте разрешение в "<annotation id="link">"настройках"</annotation>"."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Изменить настройки доступа к данным о местоположении для приложения &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Этому приложению требуется доступ к вашему местоположению, даже когда вы им не пользуетесь. Предоставьте разрешение в "<annotation id="link">"настройках"</annotation>"."</string>
-    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Разрешить приложению \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" находить устройства поблизости, подключаться к ним и определять их относительное позиционирование?"</string>
+    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Разрешить приложению \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" находить устройства поблизости, подключаться к ним и определять их относительное положение?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Разрешить приложению \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" находить устройства поблизости, подключаться к ним и определять их относительное позиционирование? "<annotation id="link">"Открыть настройки"</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Изменить местоположение в приложении \"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>\" с приблизительного на точное?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным о приблизительном местоположении устройства?"</string>

@@ -23,6 +23,8 @@
     <string name="back" msgid="6249950659061523680">"Enrere"</string>
     <string name="available" msgid="6007778121920339498">"Disponible"</string>
     <string name="blocked" msgid="9195547604866033708">"Bloquejat"</string>
+    <string name="on" msgid="280241003226755921">"Activat"</string>
+    <string name="off" msgid="1438489226422866263">"Desactiva"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Desinstal·la o Desactiva"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"No s\'ha trobat l\'aplicació"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"No permetis"</string>
@@ -130,6 +132,7 @@
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Cronologia de l\'ús que han fet les aplicacions del permís <xliff:g id="PERMGROUP">%1$s</xliff:g> durant els 7 darrers dies"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Quan aquesta aplicació ha utilitzat el permís <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Més informació"</string>
+    <string name="learn_more_content_description" msgid="8673699744544502539">"Més informació sobre <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="manage_permission_summary" msgid="4117555482684114317">"Controla l\'accés de les aplicacions a: <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="auto_permission_usage_timeline_summary" msgid="2713135806453218703">"<xliff:g id="ACCESS_TIME">%1$s</xliff:g> • <xliff:g id="SUMMARY_TEXT">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
@@ -211,7 +214,6 @@
     <string name="auto_revocable_permissions_two" msgid="4874067408752041716">"Se suprimiran els permisos <xliff:g id="PERM_0">%1$s</xliff:g> i <xliff:g id="PERM_1">%2$s</xliff:g>."</string>
     <string name="auto_revocable_permissions_many" msgid="1521807896206032992">"Permisos que se suprimiran: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_manage_title" msgid="7693181026874842935">"Gestiona els permisos automàticament"</string>
-    <string name="off" msgid="1438489226422866263">"Desactiva"</string>
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"S\'ha suprimit el permís <xliff:g id="PERMISSION_NAME">%s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Els permisos <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> i <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> s\'han suprimit"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"El permís <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> i <xliff:g id="NUMBER">%2$s</xliff:g> permisos més s\'han suprimit"</string>
@@ -280,10 +282,8 @@
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> ha obtingut la teva ubicació en segon pla"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Aquesta aplicació pot accedir a la teva ubicació en qualsevol moment. Toca per canviar-ho."</string>
     <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"Revisa l\'aplicació amb accés a les notificacions"</string>
-    <!-- no translation found for notification_listener_reminder_notification_content (831476101108863427) -->
-    <skip />
-    <!-- no translation found for notification_listener_warning_card_content (7840973324284115893) -->
-    <skip />
+    <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g> pot ignorar contingut dins de les teves notificacions, així com també accedir-hi o interaccionar-hi"</string>
+    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"Aquesta aplicació pot ignorar contingut dins de les teves notificacions, així com també accedir-hi o interaccionar-hi. Algunes aplicacions requereixen aquest accés perquè funcionin de la manera prevista."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Suprimeix l\'accés"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"Mostra més opcions"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"S\'ha suprimit l\'accés"</string>

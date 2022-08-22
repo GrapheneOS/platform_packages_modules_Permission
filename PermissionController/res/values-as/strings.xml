@@ -23,6 +23,8 @@
     <string name="back" msgid="6249950659061523680">"উভতি যাওক"</string>
     <string name="available" msgid="6007778121920339498">"উপলব্ধ"</string>
     <string name="blocked" msgid="9195547604866033708">"অৱৰোধ কৰা আছে"</string>
+    <string name="on" msgid="280241003226755921">"অন আছে"</string>
+    <string name="off" msgid="1438489226422866263">"অফ আছে"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"আনইনষ্টল অথবা অক্ষম কৰক"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"এপ্ পোৱা নগ\'ল"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"অনুমতি নিদিব"</string>
@@ -130,6 +132,7 @@
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"এপে যোৱা ৭ দিনত আপোনাৰ <xliff:g id="PERMGROUP">%1$s</xliff:g> ব্যৱহাৰ কৰাৰ টাইমলাইন"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"এই এপ্‌টোৱে কেতিয়া আপোনাৰ <xliff:g id="PERMGROUP">%1$s</xliff:g> অনুমতি ব্যৱহাৰ কৰিছিল"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"অধিক জানক"</string>
+    <string name="learn_more_content_description" msgid="8673699744544502539">"<xliff:g id="PERMGROUP">%1$s</xliff:g>ৰ বিষয়ে অধিক জানক"</string>
     <string name="manage_permission_summary" msgid="4117555482684114317">"আপোনাৰ <xliff:g id="PERMGROUP">%1$s</xliff:g>লৈ এপৰ এক্সেছ নিয়ন্ত্ৰণ কৰক"</string>
     <string name="auto_permission_usage_timeline_summary" msgid="2713135806453218703">"<xliff:g id="ACCESS_TIME">%1$s</xliff:g> • <xliff:g id="SUMMARY_TEXT">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
@@ -211,7 +214,6 @@
     <string name="auto_revocable_permissions_two" msgid="4874067408752041716">"<xliff:g id="PERM_0">%1$s</xliff:g> আৰু <xliff:g id="PERM_1">%2$s</xliff:g>ৰ অনুমতিসমূহ আঁতৰোৱা হ’ব।"</string>
     <string name="auto_revocable_permissions_many" msgid="1521807896206032992">"আঁতৰাবলগা অনুমতিসমূহ: <xliff:g id="PERMS">%1$s</xliff:g>।"</string>
     <string name="auto_manage_title" msgid="7693181026874842935">"অনুমতিসমূহ স্বয়ংক্ৰিয়ভাৱে পৰিচালনা কৰক"</string>
-    <string name="off" msgid="1438489226422866263">"অফ আছে"</string>
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"<xliff:g id="PERMISSION_NAME">%s</xliff:g>ৰ অনুমতি আঁতৰোৱা হ\'ল"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> আৰু <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>ৰ অনুমতিসমূহ আঁতৰোৱা হ\'ল"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>ৰ আৰু <xliff:g id="NUMBER">%2$s</xliff:g> টা অন্য অনুমতি আঁতৰোৱা হ\'ল"</string>
@@ -223,7 +225,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"অন্তিমবাৰ <xliff:g id="DATE">%s</xliff:g>ত খোলা হৈছিল"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"আপুনি যদি আটাইবোৰ ফাইল পৰিচালনাৰ অনুমতি দিয়ে, এই এপ্‌টোৱে এই ডিভাইচটোৰ যৌথ ষ্ট\'ৰেজত থকা যিকোনো ফাইল অথবা সংযুক্ত ষ্ট\'ৰেজ ডিভাইচসমূহ এক্সেছ কৰিব, সংশোধন কৰিব আৰু মচিব পাৰে। এপ্‌টোৱে আপোনাক নোসোধাকৈয়ে ফাইলসমূহ এক্সেছ কৰিব পাৰে।"</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"এই এপ্‌টোক ডিভাইচটোত থকা অথবা যিকোনো সংযুক্ত ষ্ট\'ৰেজ ডিভাইচসমূহৰ ফাইলসমূহ এক্সেছ কৰিবলৈ, সংশোধন কৰিবলৈ আৰু মচিবলৈ অনুমতি দিবনে? এই এপ্‌টোৱে আপোনাক নোসোধাকৈয়ে ফাইলসমূহ এক্সেছ কৰিব পাৰে।"</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"অনুমতি থকা এপ্‌সমূহে <xliff:g id="DESCRIPTION">%1$s</xliff:g> কৰিব পাৰে"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"অনুমতি থকা এপ্‌সমূহে <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"এই অনুমতিটো লাভ কৰা এপে আপোনাৰ শাৰীৰিক কাৰ্যকলাপ, যেনে খোজকঢ়া, বাইক চলোৱা, গাড়ী চলোৱা, পদক্ষেপৰ পৰিমাণ আৰু বহুতো তথ্য এক্সেছ কৰিব পাৰে"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"এই অনুমতি থকা এপ্‌সমূহে আপোনাৰ কেলেণ্ডাৰ এক্সেছ কৰিব পাৰে"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"এই অনুমতি থকা এপ্‌সমূহে ফ’ন কল লগ পঢ়িব আৰু লিখিব পাৰে"</string>
@@ -280,10 +282,8 @@
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g>এ নেপথ্যত আপোনাৰ অৱস্থান লাভ কৰিছে"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"এই এপটোৱে সদায় আপোনাৰ অৱস্থান এক্সেছ কৰিব পাৰে। সলনি কৰিবলৈ টিপক।"</string>
     <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"আপোনাৰ জাননীৰ এক্সেছ থকা এপ্‌সমূহ পৰ্যালোচনা কৰক"</string>
-    <!-- no translation found for notification_listener_reminder_notification_content (831476101108863427) -->
-    <skip />
-    <!-- no translation found for notification_listener_warning_card_content (7840973324284115893) -->
-    <skip />
+    <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g>এ আপোনাৰ জাননীৰ ভিতৰত থকা সমল অগ্ৰাহ্য কৰিব, তাৰ ওপৰত কাৰ্যব্যৱস্থা গ্ৰহণ কৰিব আৰু সেয়া এক্সেছ কৰিব পাৰে"</string>
+    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"এই এপ্‌টোৱে আপোনাৰ জাননীৰ ভিতৰত থকা সমল অগ্ৰাহ্য কৰিব, তাৰ ওপৰত কাৰ্যব্যৱস্থা গ্ৰহণ কৰিব আৰু সেয়া এক্সেছ কৰিব পাৰে। কিছুমান এপক বিচৰা ধৰণে কাম কৰিবলৈ এই এক্সেছটোৰ প্ৰয়োজন হয়।"</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"এক্সেছ আঁতৰাওক"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"অধিক বিকল্প চাওক"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"এক্সেছ আঁতৰোৱা হৈছে"</string>

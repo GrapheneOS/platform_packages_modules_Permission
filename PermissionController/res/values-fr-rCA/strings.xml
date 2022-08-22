@@ -23,6 +23,8 @@
     <string name="back" msgid="6249950659061523680">"Retour"</string>
     <string name="available" msgid="6007778121920339498">"Accessible"</string>
     <string name="blocked" msgid="9195547604866033708">"Bloqué"</string>
+    <string name="on" msgid="280241003226755921">"Activé"</string>
+    <string name="off" msgid="1438489226422866263">"Désactivé"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Désinstaller ou désactiver"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Application non trouvée"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"Ne pas autoriser"</string>
@@ -130,6 +132,7 @@
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Chronologie des moments où les applications ont utilisé votre <xliff:g id="PERMGROUP">%1$s</xliff:g> au cours des 7 derniers jours"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Lorsque cette application a utilisé votre autorisation de <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"En savoir plus"</string>
+    <string name="learn_more_content_description" msgid="8673699744544502539">"En savoir plus sur <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="manage_permission_summary" msgid="4117555482684114317">"Contrôlez l\'accès par les applications à votre groupe <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="auto_permission_usage_timeline_summary" msgid="2713135806453218703">"<xliff:g id="ACCESS_TIME">%1$s</xliff:g> • <xliff:g id="SUMMARY_TEXT">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
@@ -211,7 +214,6 @@
     <string name="auto_revocable_permissions_two" msgid="4874067408752041716">"Les autorisations <xliff:g id="PERM_0">%1$s</xliff:g> et <xliff:g id="PERM_1">%2$s</xliff:g> seront supprimées."</string>
     <string name="auto_revocable_permissions_many" msgid="1521807896206032992">"Autorisations qui seront supprimées : <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_manage_title" msgid="7693181026874842935">"Gérer les autorisations automatiquement"</string>
-    <string name="off" msgid="1438489226422866263">"Désactivé"</string>
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"L\'autorisation <xliff:g id="PERMISSION_NAME">%s</xliff:g> a été supprimée"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Les autorisations <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> et <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> ont été supprimées"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"L\'autorisation <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> et <xliff:g id="NUMBER">%2$s</xliff:g> autres ont été supprimées"</string>
@@ -279,15 +281,13 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Les autorisations ont été supprimées afin de protéger votre confidentialité"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"L\'application <xliff:g id="APP_NAME">%s</xliff:g> a accédé à votre position en arrière-plan"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Cette application peut toujours accéder à votre position. Touchez l\'écran pour modifier cela."</string>
-    <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"Voir les applications ayant accès à vos notifications"</string>
-    <!-- no translation found for notification_listener_reminder_notification_content (831476101108863427) -->
-    <skip />
-    <!-- no translation found for notification_listener_warning_card_content (7840973324284115893) -->
-    <skip />
+    <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"Voir l\'application ayant accès à vos notifications"</string>
+    <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g> peut ignorer et gérer le contenu de vos notifications de même qu\'y accéder"</string>
+    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"Cette application peut ignorer et gérer le contenu de vos notifications de même qu\'y accéder. Certaines applications ont besoin de cet accès pour fonctionner correctement."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Retirer l\'accès"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"Afficher d\'autres options"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Accès retiré"</string>
-    <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"Voir les applications ayant un accès complet à l\'appareil"</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"Voir l\'application ayant un accès complet à l\'appareil"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> peut voir votre écran et effectuer des actions sur votre appareil. Les applications d\'accessibilité ont besoin de ce type d\'accès pour fonctionner correctement."</string>
     <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"Cette application peut voir votre écran et effectuer des actions sur votre appareil. Les applications d\'accessibilité ont besoin de ce type d\'accès pour fonctionner correctement, mais vérifiez d\'abord l\'application et assurez-vous qu\'elle est fiable."</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Retirer l\'accès"</string>

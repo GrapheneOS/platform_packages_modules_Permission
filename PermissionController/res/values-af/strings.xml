@@ -23,6 +23,8 @@
     <string name="back" msgid="6249950659061523680">"Terug"</string>
     <string name="available" msgid="6007778121920339498">"Beskikbaar"</string>
     <string name="blocked" msgid="9195547604866033708">"Geblokkeer"</string>
+    <string name="on" msgid="280241003226755921">"Aan"</string>
+    <string name="off" msgid="1438489226422866263">"Af"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Deïnstalleer of deaktiveer"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Program nie gevind nie"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"Moenie toelaat nie"</string>
@@ -130,6 +132,7 @@
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Tydlyn van wanneer programme jou <xliff:g id="PERMGROUP">%1$s</xliff:g> in die afgelope 7 dae gebruik het"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Wanneer hierdie program jou <xliff:g id="PERMGROUP">%1$s</xliff:g>-toestemming gebruik het"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Kom meer te wete"</string>
+    <string name="learn_more_content_description" msgid="8673699744544502539">"Kom meer te wete oor <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="manage_permission_summary" msgid="4117555482684114317">"Beheer programtoegang tot jou <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="auto_permission_usage_timeline_summary" msgid="2713135806453218703">"<xliff:g id="ACCESS_TIME">%1$s</xliff:g> • <xliff:g id="SUMMARY_TEXT">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
@@ -211,7 +214,6 @@
     <string name="auto_revocable_permissions_two" msgid="4874067408752041716">"<xliff:g id="PERM_0">%1$s</xliff:g> en <xliff:g id="PERM_1">%2$s</xliff:g> toestemmings sal verwyder word."</string>
     <string name="auto_revocable_permissions_many" msgid="1521807896206032992">"Toestemmings wat verwyder sal word: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_manage_title" msgid="7693181026874842935">"Bestuur toestemmings outomaties"</string>
-    <string name="off" msgid="1438489226422866263">"Af"</string>
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"<xliff:g id="PERMISSION_NAME">%s</xliff:g>-toestemming verwyder"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>- en <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>-toestemming verwyder"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> en <xliff:g id="NUMBER">%2$s</xliff:g> ander toestemmings verwyder"</string>
@@ -223,7 +225,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"<xliff:g id="DATE">%s</xliff:g> laas oopgemaak"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"As jy toelaat dat alle lêers bestuur word, kan hierdie program enige lêers in gedeelde bergingspasie op hierdie toestel en gekoppelde bergingtoestelle kry, wysig en uitvee. Die program kan toegang tot lêers kry sonder om jou te vra."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Laat hierdie program toe om lêers op die toestel en enige gekoppelde bergingtoestelle te kry, te wysig en uit te vee? Hierdie program kan toegang tot lêers kry sonder om jou te vra."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Programme met hierdie toestemming kan <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Programme met hierdie toestemming <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Programme met hierdie toestemming kan ingaan by fisieke aktiwiteit, soos stap, fietsry, ry, treëtelling, en meer"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Programme met hierdie toestemming kan toegang tot jou kalender kry"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Programme met hierdie toestemming kan foonoproeprekord lees en skryf"</string>
