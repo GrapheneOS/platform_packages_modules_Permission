@@ -23,6 +23,8 @@
     <string name="back" msgid="6249950659061523680">"واپس جائیں"</string>
     <string name="available" msgid="6007778121920339498">"دستیاب ہے"</string>
     <string name="blocked" msgid="9195547604866033708">"مسدود کردہ"</string>
+    <string name="on" msgid="280241003226755921">"آن"</string>
+    <string name="off" msgid="1438489226422866263">"آف کریں"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"اَن انسٹال یا غیر فعال کریں"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"ایپ نہیں ملی"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"اجازت نہ دیں"</string>
@@ -130,6 +132,7 @@
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"گزشتہ 7 دن میں جب ایپس نے آپ کے <xliff:g id="PERMGROUP">%1$s</xliff:g> کا استعمال کیا، اس کا ٹائم لائن"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"جب اس ایپ نے آپ کی <xliff:g id="PERMGROUP">%1$s</xliff:g> اجازت کا استعمال کیا"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"مزید جانیں"</string>
+    <string name="learn_more_content_description" msgid="8673699744544502539">"<xliff:g id="PERMGROUP">%1$s</xliff:g> کے بارے میں مزید جانیں"</string>
     <string name="manage_permission_summary" msgid="4117555482684114317">"اپنے <xliff:g id="PERMGROUP">%1$s</xliff:g> تک ایپ کی رسائی کو کنٹرول کریں"</string>
     <string name="auto_permission_usage_timeline_summary" msgid="2713135806453218703">"<xliff:g id="ACCESS_TIME">%1$s</xliff:g> • <xliff:g id="SUMMARY_TEXT">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
@@ -211,7 +214,6 @@
     <string name="auto_revocable_permissions_two" msgid="4874067408752041716">"<xliff:g id="PERM_0">%1$s</xliff:g> اور <xliff:g id="PERM_1">%2$s</xliff:g> کی اجازتیں ہٹا دی جائیں گی۔"</string>
     <string name="auto_revocable_permissions_many" msgid="1521807896206032992">"وہ اجازتیں جو ہٹا دی جائیں گی: <xliff:g id="PERMS">%1$s</xliff:g>۔"</string>
     <string name="auto_manage_title" msgid="7693181026874842935">"خودکار طور پر اجازتوں کا نظم کریں"</string>
-    <string name="off" msgid="1438489226422866263">"آف کریں"</string>
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"<xliff:g id="PERMISSION_NAME">%s</xliff:g> اجازت کو ہٹایا گیا"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> اور <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> اجازتوں کو ہٹایا گیا"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> اور <xliff:g id="NUMBER">%2$s</xliff:g> دیگر اجازتوں کو ہٹایا گیا"</string>
@@ -363,7 +365,7 @@
     <string name="role_sms_description" msgid="3424020199148153513">"وہ ایپس جو مختصر متنی پیغامات، تصاویر، ویڈیوز وغیرہ بھیجنے اور وصول کرنے کے لیے آپ کو اپنا فون نمبر استعمال کرنے کی اجازت دیتی ہیں"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"‏<xliff:g id="APP_NAME">%1$s</xliff:g> کو آپ کی ڈیفالٹ SMS ایپ کے بطور سیٹ کریں؟"</string>
     <string name="role_sms_request_description" msgid="2691004766132144886">"‏اس ایپ کو آپ کے کیمرا، رابطوں، فائلز اور میڈیا، مائیکروفون، فون اور SMS تک رسائی دی جائے گی"</string>
-    <string name="role_sms_search_keywords" msgid="8022048144395047352">"متنی پیغام، پیغام بھیجنا، پیغامات، پیغام رسانی"</string>
+    <string name="role_sms_search_keywords" msgid="8022048144395047352">"ٹیکسٹ پیغام، پیغام بھیجنا، پیغامات، پیغام رسانی"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"ڈیفالٹ ہنگامی ایپ"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"ہنگامی ایپ"</string>
     <string name="role_emergency_description" msgid="5051840234887686630">"وہ ایپس جو آپ کو آپ کی طبی معلومات ریکارڈ کرنے اور اسے ہنگامی طبی مدد فراہم کنندگان کے لیے قابل رسائی بنانے؛ خطرناک موسمی واقعات اور آفات کے بارے میں الرٹس حاصل کرنے؛ آپ کو مدد درکار ہونے پر دوسروں کو اطلاع دینے کی اجازت دیتی ہیں"</string>

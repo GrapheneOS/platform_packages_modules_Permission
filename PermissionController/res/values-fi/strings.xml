@@ -23,6 +23,8 @@
     <string name="back" msgid="6249950659061523680">"Takaisin"</string>
     <string name="available" msgid="6007778121920339498">"Käytettävissä"</string>
     <string name="blocked" msgid="9195547604866033708">"Estetty"</string>
+    <string name="on" msgid="280241003226755921">"Päällä"</string>
+    <string name="off" msgid="1438489226422866263">"Pois päältä"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Poista käytöstä tai laitteelta"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Sovellusta ei löydy"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"Älä salli"</string>
@@ -130,6 +132,7 @@
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Aikajanalta näet, milloin <xliff:g id="PERMGROUP">%1$s</xliff:g> on ollut käytössä eri sovelluksissa 7 viime päivän aikana"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Milloin tämä sovellus käytti seuraavaa lupaa: <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Lue lisää"</string>
+    <string name="learn_more_content_description" msgid="8673699744544502539">"Lue lisää: <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="manage_permission_summary" msgid="4117555482684114317">"Päätä sovelluksen pääsystä tähän: <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="auto_permission_usage_timeline_summary" msgid="2713135806453218703">"<xliff:g id="ACCESS_TIME">%1$s</xliff:g> • <xliff:g id="SUMMARY_TEXT">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
@@ -196,7 +199,7 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Näytä kaikki luvat, jotka <xliff:g id="APP">%1$s</xliff:g> on saanut"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Näytä kaikki sovellukset, joilla on tämä lupa"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Näytä Assistantin mikrofonin käyttö"</string>
-    <string name="unused_apps_category_title" msgid="2988455616845243901">"Käyttämättömät sovellusasetukset"</string>
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"Käyttämättömien sovellusten asetukset"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Poista luvat, jos sovellusta ei käytetä"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Poista lupia ja vapauta tilaa"</string>
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"Keskeytä sovellustoim. jos ei käytössä"</string>
@@ -211,7 +214,6 @@
     <string name="auto_revocable_permissions_two" msgid="4874067408752041716">"Seuraavat käyttöluvat poistetaan: <xliff:g id="PERM_0">%1$s</xliff:g> ja <xliff:g id="PERM_1">%2$s</xliff:g>."</string>
     <string name="auto_revocable_permissions_many" msgid="1521807896206032992">"Nämä käyttöluvat poistetaan: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_manage_title" msgid="7693181026874842935">"Lupien automaattinen ylläpito"</string>
-    <string name="off" msgid="1438489226422866263">"Pois päältä"</string>
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"Lupa poistettu: <xliff:g id="PERMISSION_NAME">%s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Luvat poistettu: <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> ja <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ja <xliff:g id="NUMBER">%2$s</xliff:g> muuta käyttöoikeutta poistettiin"</string>
@@ -280,10 +282,8 @@
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> sai sijaintitietosi taustalla"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Tämä sovellus voi aina käyttää sijaintiasi. Muuta napauttamalla."</string>
     <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"Tarkista sovellus, jolla on pääsy ilmoituksiisi"</string>
-    <!-- no translation found for notification_listener_reminder_notification_content (831476101108863427) -->
-    <skip />
-    <!-- no translation found for notification_listener_warning_card_content (7840973324284115893) -->
-    <skip />
+    <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g> voi hylätä sisältöä sekä reagoida ja päästä sisältöön ilmoitusten sisällä"</string>
+    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"Sovellus voi hylätä sisältöä sekä reagoida ja päästä sisältöön ilmoitusten sisällä. Jotkin sovellukset tarvitsevat pääsyn toimiakseen oikein."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Poista pääsyoikeus"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"Katso lisää vaihtoehtoja"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Pääsyoikeus on poistettu"</string>

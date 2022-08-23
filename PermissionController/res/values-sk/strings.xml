@@ -23,6 +23,8 @@
     <string name="back" msgid="6249950659061523680">"Späť"</string>
     <string name="available" msgid="6007778121920339498">"Dostupné"</string>
     <string name="blocked" msgid="9195547604866033708">"Blokované"</string>
+    <string name="on" msgid="280241003226755921">"Zapnutý"</string>
+    <string name="off" msgid="1438489226422866263">"Vypnuté"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Odinštalovať alebo deaktivovať"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Aplikácia sa nenašla"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"Nepovoliť"</string>
@@ -130,6 +132,7 @@
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"<xliff:g id="PERMGROUP">%1$s</xliff:g> – časová os používania aplikáciami za posledných 7 dní"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Keď táto aplikácia používala povolenie <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Ďalšie informácie"</string>
+    <string name="learn_more_content_description" msgid="8673699744544502539">"Ďalšie informácie o skupine povolení <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="manage_permission_summary" msgid="4117555482684114317">"Ovládanie prístupu aplikácií k skupine <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="auto_permission_usage_timeline_summary" msgid="2713135806453218703">"<xliff:g id="ACCESS_TIME">%1$s</xliff:g> • <xliff:g id="SUMMARY_TEXT">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
@@ -211,7 +214,6 @@
     <string name="auto_revocable_permissions_two" msgid="4874067408752041716">"Povolenia <xliff:g id="PERM_0">%1$s</xliff:g> a <xliff:g id="PERM_1">%2$s</xliff:g> budú odstránené."</string>
     <string name="auto_revocable_permissions_many" msgid="1521807896206032992">"Povolenia, ktoré budú odstránené: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_manage_title" msgid="7693181026874842935">"Automatické spravovanie povolení"</string>
-    <string name="off" msgid="1438489226422866263">"Vypnuté"</string>
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"Bolo odstránené povolenie <xliff:g id="PERMISSION_NAME">%s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Boli odstránené povolenia <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> a <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Bolo odstránené povolenie <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> a ďalšie (<xliff:g id="NUMBER">%2$s</xliff:g>)"</string>
@@ -280,10 +282,8 @@
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"Aplikácia <xliff:g id="APP_NAME">%s</xliff:g> získala vašu polohu na pozadí"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Táto aplikácia má neobmedzený prístup k polohe. Klepnutím to zmeníte."</string>
     <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"Skontrolujte aplikáciu s prístupom k upozorneniam"</string>
-    <!-- no translation found for notification_listener_reminder_notification_content (831476101108863427) -->
-    <skip />
-    <!-- no translation found for notification_listener_warning_card_content (7840973324284115893) -->
-    <skip />
+    <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g> môže zavrieť a použiť vaše upozornenia, ale aj získať prístup k ich obsahu"</string>
+    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"Táto aplikácia môže zavrieť a použiť vaše upozornenia, ale aj získať prístup k ich obsahu. Niektoré aplikácie vyžadujú tento prístup, aby mohli správne fungovať."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Odstrániť prístup"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"Zobraziť viac možností"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Prístup bol odstránený"</string>
@@ -457,7 +457,7 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Táto aplikácia môže požadovať nepretržitý prístup k vašej polohe, aj keď ju nepoužívate. "<annotation id="link">"Povolíte ho v nastaveniach."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Chcete zmeniť prístup k polohe pre aplikáciu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Táto aplikácia požaduje nepretržitý prístup k vašej polohe, aj keď ju nepoužívate. "<annotation id="link">"Povolíte ho v nastaveniach."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Chcete aplikácii <xliff:g id="APP_NAME">%1$s</xliff:g> povoliť vyhľadávať zariadenia v okolí, pripájať sa k nim a určovať ich vzájomnú polohu?"</string>
+    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Chcete aplikácii <xliff:g id="APP_NAME">%1$s</xliff:g> povoliť vyhľadávať zariadenia v okolí, pripájať sa k nim a určovať ich relatívnu polohu?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Chcete aplikácii <xliff:g id="APP_NAME">%1$s</xliff:g> povoliť vyhľadávať zariadenia v okolí, pripájať sa k nim a určovať ich vzájomnú polohu? "<annotation id="link">"Urobte to v nastaveniach."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Chcete zmeniť prístup k polohe aplikácie <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> z približnej polohy na presnú?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k približnej polohe tohto zariadenia?"</string>

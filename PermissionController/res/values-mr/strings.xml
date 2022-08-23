@@ -23,6 +23,8 @@
     <string name="back" msgid="6249950659061523680">"परत"</string>
     <string name="available" msgid="6007778121920339498">"उपलब्ध आहे"</string>
     <string name="blocked" msgid="9195547604866033708">"ब्लॉक केला आहे"</string>
+    <string name="on" msgid="280241003226755921">"सुरू आहे"</string>
+    <string name="off" msgid="1438489226422866263">"बंद करा"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"अनइंस्टॉल करा किंवा बंद करा"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"अ‍ॅप आढळले नाही"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"अनुमती देऊ नका"</string>
@@ -130,6 +132,7 @@
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"ॲप्सनी मागील सात दिवसांमध्ये तुमचे <xliff:g id="PERMGROUP">%1$s</xliff:g> वापरलेल्याची टाइमलाइन"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"या ॲपने तुमची <xliff:g id="PERMGROUP">%1$s</xliff:g> परवानगी वापरली तेव्हा"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"अधिक जाणून घ्या"</string>
+    <string name="learn_more_content_description" msgid="8673699744544502539">"<xliff:g id="PERMGROUP">%1$s</xliff:g> बद्दल अधिक जाणून घ्या"</string>
     <string name="manage_permission_summary" msgid="4117555482684114317">"तुमच्या <xliff:g id="PERMGROUP">%1$s</xliff:g> साठीचा ॲप अ‍ॅक्सेस नियंत्रित करा"</string>
     <string name="auto_permission_usage_timeline_summary" msgid="2713135806453218703">"<xliff:g id="ACCESS_TIME">%1$s</xliff:g> • <xliff:g id="SUMMARY_TEXT">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
@@ -211,7 +214,6 @@
     <string name="auto_revocable_permissions_two" msgid="4874067408752041716">"<xliff:g id="PERM_0">%1$s</xliff:g> आणि <xliff:g id="PERM_1">%2$s</xliff:g> परवानग्या काढून टाकल्या जातील."</string>
     <string name="auto_revocable_permissions_many" msgid="1521807896206032992">"परवानग्या काढून टाकल्या जातील: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_manage_title" msgid="7693181026874842935">"परवानग्या आपोआप व्यवस्थापित करा"</string>
-    <string name="off" msgid="1438489226422866263">"बंद करा"</string>
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"<xliff:g id="PERMISSION_NAME">%s</xliff:g> परवानग्या काढल्या गेल्या"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> आणि <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> परवानग्या काढल्या गेल्या"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> आणि इतर <xliff:g id="NUMBER">%2$s</xliff:g> परवानग्या काढल्या गेल्या"</string>

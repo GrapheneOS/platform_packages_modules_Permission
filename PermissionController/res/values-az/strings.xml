@@ -23,6 +23,8 @@
     <string name="back" msgid="6249950659061523680">"Geri"</string>
     <string name="available" msgid="6007778121920339498">"Əlçatan"</string>
     <string name="blocked" msgid="9195547604866033708">"Bloklanıb"</string>
+    <string name="on" msgid="280241003226755921">"Aktiv"</string>
+    <string name="off" msgid="1438489226422866263">"Deaktiv"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Ləğv edin və ya deaktiv edin"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Tətbiq tapılmadı"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"İcazə verməyin"</string>
@@ -130,6 +132,7 @@
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"<xliff:g id="PERMGROUP">%1$s</xliff:g> icazənizin son 7 gün ərzində tətbiqlərin nə zaman istifadə edildiyini göstərən taymlayn"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Bu tətbiqin <xliff:g id="PERMGROUP">%1$s</xliff:g> icazənizdən istifadə etdiyi vaxt"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Ətraflı məlumat"</string>
+    <string name="learn_more_content_description" msgid="8673699744544502539">"<xliff:g id="PERMGROUP">%1$s</xliff:g> haqqında ətraflı məlumat"</string>
     <string name="manage_permission_summary" msgid="4117555482684114317">"<xliff:g id="PERMGROUP">%1$s</xliff:g> üçün tətbiq girişinə nəzarət edin"</string>
     <string name="auto_permission_usage_timeline_summary" msgid="2713135806453218703">"<xliff:g id="ACCESS_TIME">%1$s</xliff:g> • <xliff:g id="SUMMARY_TEXT">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
@@ -211,7 +214,6 @@
     <string name="auto_revocable_permissions_two" msgid="4874067408752041716">"<xliff:g id="PERM_0">%1$s</xliff:g> və <xliff:g id="PERM_1">%2$s</xliff:g> icazələri silinəcək."</string>
     <string name="auto_revocable_permissions_many" msgid="1521807896206032992">"Silinəcək icazələr: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_manage_title" msgid="7693181026874842935">"İcazələrin avtomatik idarə edilməsi"</string>
-    <string name="off" msgid="1438489226422866263">"Deaktiv"</string>
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"<xliff:g id="PERMISSION_NAME">%s</xliff:g> icazəsi silindi"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> və <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> icazəsi silindi"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> və digər <xliff:g id="NUMBER">%2$s</xliff:g> icazə silindi"</string>
@@ -280,10 +282,8 @@
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> arxa fonda məkanınıza daxil oldu"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Bu tətbiq daima məkana daxil ola bilər. Dəyişmək üçün klikləyin."</string>
     <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"Bildirişlərinizə girişi olan tətbiqi nəzərdən keçirin"</string>
-    <!-- no translation found for notification_listener_reminder_notification_content (831476101108863427) -->
-    <skip />
-    <!-- no translation found for notification_listener_warning_card_content (7840973324284115893) -->
-    <skip />
+    <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g> bildirişlərinizi qapada, əməliyyat edə və məzmuna giriş edə bilər"</string>
+    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"Bu tətbiq bildirişlərinizi qapada, əməliyyat edə və məzmuna giriş edə bilər. Bəzi tətbiqlər nəzərdə tutulduğu kimi işləmək üçün bu girişə ehtiyac duyur."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Girişi silin"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"Digər seçimlərə baxın"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Giriş silindi"</string>

@@ -23,6 +23,8 @@
     <string name="back" msgid="6249950659061523680">"Terug"</string>
     <string name="available" msgid="6007778121920339498">"Beschikbaar"</string>
     <string name="blocked" msgid="9195547604866033708">"Geblokkeerd"</string>
+    <string name="on" msgid="280241003226755921">"Aan"</string>
+    <string name="off" msgid="1438489226422866263">"Uit"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Verwijderen of uitzetten"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"App niet gevonden"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"Niet toestaan"</string>
@@ -130,6 +132,7 @@
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Tijdlijn van wanneer apps in de afgelopen 7 dagen je <xliff:g id="PERMGROUP">%1$s</xliff:g> hebben gebruikt"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Wanneer deze app het recht voor <xliff:g id="PERMGROUP">%1$s</xliff:g> heeft gebruikt"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Meer informatie"</string>
+    <string name="learn_more_content_description" msgid="8673699744544502539">"Meer informatie over <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="manage_permission_summary" msgid="4117555482684114317">"App-toegang tot je <xliff:g id="PERMGROUP">%1$s</xliff:g> beheren"</string>
     <string name="auto_permission_usage_timeline_summary" msgid="2713135806453218703">"<xliff:g id="ACCESS_TIME">%1$s</xliff:g> • <xliff:g id="SUMMARY_TEXT">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
@@ -191,7 +194,7 @@
     <string name="approximate_image_description" msgid="938803699637069884">"Geschatte locatie"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Exacte locatie gebruiken"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Als de exacte locatie uitstaat, hebben apps toegang tot je geschatte locatie"</string>
-    <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> rechten"</string>
+    <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>-rechten"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Toegang tot <xliff:g id="PERM">%1$s</xliff:g> voor deze app"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Alle rechten van <xliff:g id="APP">%1$s</xliff:g> bekijken"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Alle apps met dit recht bekijken"</string>
@@ -211,7 +214,6 @@
     <string name="auto_revocable_permissions_two" msgid="4874067408752041716">"Rechten voor <xliff:g id="PERM_0">%1$s</xliff:g> en <xliff:g id="PERM_1">%2$s</xliff:g> worden verwijderd."</string>
     <string name="auto_revocable_permissions_many" msgid="1521807896206032992">"Rechten die worden verwijderd: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_manage_title" msgid="7693181026874842935">"Rechten automatisch beheren"</string>
-    <string name="off" msgid="1438489226422866263">"Uit"</string>
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"Recht voor <xliff:g id="PERMISSION_NAME">%s</xliff:g> verwijderd"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Rechten voor <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> en <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> verwijderd"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> en <xliff:g id="NUMBER">%2$s</xliff:g> andere rechten zijn verwijderd"</string>
@@ -249,7 +251,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Alle bestanden beheren"</string>
     <string name="ask_header" msgid="2633816846459944376">"Altijd vragen"</string>
     <string name="denied_header" msgid="903209608358177654">"Niet toegestaan"</string>
-    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Bekijk meer apps die toegang tot alle bestanden hebben"</string>
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Bekijk meer apps die toegang tot alle bestanden hebben."</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 dag}other{# dagen}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 uur}other{# uur}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 minuut}other{# minuten}}"</string>
