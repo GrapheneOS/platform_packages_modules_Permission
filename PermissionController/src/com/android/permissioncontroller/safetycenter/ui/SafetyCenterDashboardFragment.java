@@ -340,8 +340,6 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
                 addGroupEntries(context, group, isFirstElement, isLastElement);
             }
         }
-
-        mCollapsableGroupCardHelper.updatePreferenceVisibility(mEntriesGroup);
     }
 
     private void addTopLevelEntry(
@@ -363,45 +361,23 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
             SafetyCenterEntryGroup group,
             boolean isFirstCard,
             boolean isLastCard) {
-        // adding collapsed group entry, which will be visible initially
         mEntriesGroup.addPreference(
                 new SafetyGroupPreference(
                         context,
                         group,
-                        /* isExpanded */ false,
+                        mCollapsableGroupCardHelper::isGroupExpanded,
                         isFirstCard,
                         isLastCard,
                         this::getTaskIdForEntry,
                         mViewModel,
                         (groupId) -> {
-                            expandGroup(groupId);
+                            mCollapsableGroupCardHelper.onGroupExpanded(groupId);
                             return Unit.INSTANCE;
-                        }));
-
-        // adding expanded group entry, which will be hidden initially
-        mEntriesGroup.addPreference(
-                new SafetyGroupPreference(
-                        context,
-                        group,
-                        /* isExpanded */ true,
-                        isFirstCard,
-                        isLastCard,
-                        this::getTaskIdForEntry,
-                        mViewModel,
+                        },
                         (groupId) -> {
-                            collapseGroup(groupId);
+                            mCollapsableGroupCardHelper.onGroupCollapsed(groupId);
                             return Unit.INSTANCE;
                         }));
-    }
-
-    private void expandGroup(String groupId) {
-        mCollapsableGroupCardHelper.expandGroup(groupId);
-        mCollapsableGroupCardHelper.updatePreferenceVisibility(mEntriesGroup);
-    }
-
-    private void collapseGroup(String groupId) {
-        mCollapsableGroupCardHelper.collapseGroup(groupId);
-        mCollapsableGroupCardHelper.updatePreferenceVisibility(mEntriesGroup);
     }
 
     private void updateStaticSafetyEntries(

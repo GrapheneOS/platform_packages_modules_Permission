@@ -34,12 +34,13 @@ import com.android.permissioncontroller.safetycenter.ui.view.SafetyEntryGroupVie
 class SafetyGroupPreference(
     context: Context,
     private val group: SafetyCenterEntryGroup,
-    val isExpanded: Boolean,
+    private val isExpanded: (String) -> Boolean,
     private val isFirstCard: Boolean,
     private val isLastCard: Boolean,
     private val getTaskIdForEntry: (String) -> Int,
     private val viewModel: SafetyCenterViewModel,
-    private val onClickListener: (String) -> Unit
+    private val onExpandedListener: (String) -> Unit,
+    private val onCollapsedListener: (String) -> Unit
 ) : Preference(context), ComparablePreference {
 
     val groupId = group.id
@@ -58,7 +59,8 @@ class SafetyGroupPreference(
                 isLastCard,
                 getTaskIdForEntry,
                 viewModel,
-                onClickListener
+                onExpandedListener,
+                onCollapsedListener
         )
     }
 
@@ -69,7 +71,6 @@ class SafetyGroupPreference(
     override fun hasSameContents(other: Preference): Boolean =
             other is SafetyGroupPreference &&
                     group == other.group &&
-                    isExpanded == other.isExpanded &&
                     isFirstCard == other.isFirstCard &&
                     isLastCard == other.isLastCard
 }
