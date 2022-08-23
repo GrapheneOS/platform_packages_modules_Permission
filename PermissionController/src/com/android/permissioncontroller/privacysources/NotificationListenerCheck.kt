@@ -196,7 +196,8 @@ internal class NotificationListenerCheckInternal(
     private val sharedPrefs: SharedPreferences =
         parentUserContext.getSharedPreferences(NLS_PREFERENCE_FILE, MODE_PRIVATE)
     private val exemptPackages: Set<String> =
-        getExemptedPackages(getSystemServiceSafe(parentUserContext, RoleManager::class.java))
+        getExemptedPackages(getSystemServiceSafe(parentUserContext, RoleManager::class.java),
+                parentUserContext)
 
     companion object {
         @VisibleForTesting const val NLS_PREFERENCE_FILE = "nls_preference"
@@ -324,10 +325,11 @@ internal class NotificationListenerCheckInternal(
     }
 
     /** Get all the exempted packages. */
-    fun getExemptedPackages(roleManager: RoleManager): Set<String> {
+    fun getExemptedPackages(roleManager: RoleManager, context: Context): Set<String> {
         val exemptedPackages: MutableSet<String> = HashSet()
         exemptedPackages.add(SYSTEM_PKG)
         EXEMPTED_ROLES.forEach { role -> exemptedPackages.addAll(roleManager.getRoleHolders(role)) }
+        exemptedPackages.addAll(NotificationListenerPregrants.getPregrantedPackages(context))
         return exemptedPackages
     }
 
@@ -361,10 +363,12 @@ internal class NotificationListenerCheckInternal(
         sharedPrefsLock.withLock {
             val notifiedComponents = getNotifiedComponents()
             val filteredServices =
-                notifiedComponents.filter {
-                    val notifiedComponentName = ComponentName.unflattenFromString(it)
-                    return@filter notifiedComponentName?.packageName != packageName
-                }.toSet()
+                notifiedComponents
+                    .filter {
+                        val notifiedComponentName = ComponentName.unflattenFromString(it)
+                        return@filter notifiedComponentName?.packageName != packageName
+                    }
+                    .toSet()
             if (filteredServices.size < notifiedComponents.size) {
                 sharedPrefs
                     .edit()
@@ -385,16 +389,20 @@ internal class NotificationListenerCheckInternal(
         if (currentTimeMillis() -
             sharedPrefs.getLong(KEY_LAST_NOTIFICATION_LISTENER_NOTIFICATION_SHOWN, 0) <
             getInBetweenNotificationsMillis()) {
-            Log.v(
-                TAG,
-                "Notification not posted, within " +
-                    "$DEFAULT_NOTIFICATION_LISTENER_CHECK_INTERVAL_MILLIS ms")
+            if (DEBUG) {
+                Log.v(
+                    TAG,
+                    "Notification not posted, within " +
+                        "$DEFAULT_NOTIFICATION_LISTENER_CHECK_INTERVAL_MILLIS ms")
+            }
             return
         }
 
         // Check for existing notification first, exit if one already present
         if (getCurrentlyShownNotificationLocked() != null) {
-            Log.v(TAG, "Notification not posted, previous notification has not been dismissed")
+            if (DEBUG) {
+                Log.v(TAG, "Notification not posted, previous notification has not been dismissed")
+            }
             return
         }
 
@@ -405,7 +413,9 @@ internal class NotificationListenerCheckInternal(
             throwInterruptedExceptionIfTaskIsCanceled()
 
             if (componentsInternal.isEmpty()) {
-                Log.v(TAG, "Notification not posted, no unnotified enabled listeners")
+                if (DEBUG) {
+                    Log.v(TAG, "Notification not posted, no unnotified enabled listeners")
+                }
                 return
             }
 
@@ -926,10 +936,12 @@ class NotificationListenerCheckNotificationDeleteHandler : BroadcastReceiver() {
         GlobalScope.launch(Default) {
             NotificationListenerCheckInternal(context, null).markComponentAsNotified(componentName)
         }
-        Log.v(
-            TAG,
-            "Notification listener check notification declined with component=" +
-                "${componentName.flattenToString()} , uid=$uid, sessionId=$sessionId")
+        if (DEBUG) {
+            Log.v(
+                TAG,
+                "Notification listener check notification declined with component=" +
+                    "${componentName.flattenToString()} , uid=$uid, sessionId=$sessionId")
+        }
         PermissionControllerStatsLog.write(
             PRIVACY_SIGNAL_NOTIFICATION_INTERACTION,
             PRIVACY_SIGNAL_NOTIFICATION_INTERACTION__PRIVACY_SOURCE__NOTIFICATION_LISTENER,
