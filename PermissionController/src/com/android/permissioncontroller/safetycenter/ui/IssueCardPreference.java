@@ -144,9 +144,31 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
             }
         }
 
+        configureSafetyProtectionView(holder);
+
         mSafetyCenterViewModel
                 .getInteractionLogger()
                 .recordForIssue(Action.SAFETY_ISSUE_VIEWED, mIssue);
+    }
+
+    private void configureSafetyProtectionView(PreferenceViewHolder holder) {
+        View safetyProtectionSectionView =
+                holder.findViewById(R.id.issue_card_protected_by_android);
+        if (safetyProtectionSectionView.getVisibility() == View.GONE) {
+            holder.itemView.setPaddingRelative(
+                    holder.itemView.getPaddingStart(),
+                    holder.itemView.getPaddingTop(),
+                    holder.itemView.getPaddingEnd(),
+                    /* bottom = */ getContext()
+                            .getResources()
+                            .getDimensionPixelSize(R.dimen.safety_center_card_margin_bottom));
+        } else {
+            holder.itemView.setPaddingRelative(
+                    holder.itemView.getPaddingStart(),
+                    holder.itemView.getPaddingTop(),
+                    holder.itemView.getPaddingEnd(),
+                    /* bottom = */ 0);
+        }
     }
 
     public int getSeverityLevel() {
