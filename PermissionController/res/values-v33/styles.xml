@@ -306,6 +306,7 @@
         <item name="android:layout_marginTop">4dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
+        <item name="app:layout_constraintStart_toStartOf">@id/issue_card_title</item>
         <item name="app:layout_constraintTop_toBottomOf">@id/issue_card_title</item>
     </style>
 
@@ -314,6 +315,7 @@
         <item name="android:layout_marginTop">16dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
+        <item name="app:layout_constraintStart_toStartOf">@id/issue_card_title</item>
         <item name="app:layout_constraintTop_toBottomOf">@id/issue_card_subtitle</item>
     </style>
 
