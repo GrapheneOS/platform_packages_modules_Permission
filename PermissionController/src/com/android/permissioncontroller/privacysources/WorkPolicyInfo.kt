@@ -45,6 +45,8 @@ class WorkPolicyInfo(private val workPolicyUtils: WorkPolicyUtils) : PrivacySour
 
     companion object {
         const val WORK_POLICY_INFO_SOURCE_ID = "AndroidWorkPolicyInfo"
+        const val WORK_POLICY_TITLE = "SafetyCenter.WORK_POLICY_TITLE"
+        const val WORK_POLICY_SUMMARY = "SafetyCenter.WORK_POLICY_SUMMARY"
         fun create(context: Context): WorkPolicyInfo {
             val workPolicyUtils = WorkPolicyUtils(context)
             return WorkPolicyInfo(workPolicyUtils)
@@ -99,8 +101,10 @@ class WorkPolicyInfo(private val workPolicyUtils: WorkPolicyUtils) : PrivacySour
 
         val safetySourceStatus: SafetySourceStatus =
             SafetySourceStatus.Builder(
-                    context.getText(R.string.work_policy_title),
-                    context.getText(R.string.work_policy_summary),
+                    Utils.getEnterpriseString(
+                        context, WORK_POLICY_TITLE, R.string.work_policy_title),
+                    Utils.getEnterpriseString(
+                        context, WORK_POLICY_SUMMARY, R.string.work_policy_summary),
                     SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED)
                 .setPendingIntent(pendingIntent)
                 .build()
