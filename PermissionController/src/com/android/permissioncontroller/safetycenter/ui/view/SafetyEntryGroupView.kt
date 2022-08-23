@@ -17,6 +17,9 @@
 package com.android.permissioncontroller.safetycenter.ui.view
 
 import android.content.Context
+import android.graphics.drawable.Animatable2.AnimationCallback
+import android.graphics.drawable.AnimatedVectorDrawable
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.safetycenter.SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_RECOMMENDATION
 import android.safetycenter.SafetyCenterEntryGroup
@@ -26,9 +29,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.annotation.DrawableRes
 import androidx.annotation.RequiresApi
 import androidx.core.view.ViewCompat
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
+import androidx.transition.AutoTransition
+import androidx.transition.TransitionManager
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.safetycenter.ui.PositionInCardList
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel
@@ -43,6 +49,7 @@ internal class SafetyEntryGroupView @JvmOverloads constructor(
 
     private companion object {
         val TAG = SafetyEntryGroupView::class.java.simpleName
+        const val EXPAND_COLLAPSE_ANIMATION_DURATION_MS = 183L
     }
 
     init {
@@ -66,19 +73,21 @@ internal class SafetyEntryGroupView @JvmOverloads constructor(
 
     fun showGroup(
         group: SafetyCenterEntryGroup,
-        initiallyExpanded: Boolean,
+        initiallyExpanded: (String) -> Boolean,
         isFirstCard: Boolean,
         isLastCard: Boolean,
         getTaskIdForEntry: (String) -> Int,
         viewModel: SafetyCenterViewModel,
-        onClickListener: (String) -> Unit
+        onGroupExpanded: (String) -> Unit,
+        onGroupCollapsed: (String) -> Unit
     ) {
         applyPosition(isFirstCard, isLastCard)
         showGroupDetails(group)
         showGroupEntries(group, getTaskIdForEntry, viewModel)
-        setupExpandedState(group, initiallyExpanded)
-        setOnClickListener { onClickListener(group.id) }
-        setAccessibilityAttributes(group)
+        setupExpandedState(group, initiallyExpanded(group.id))
+        setOnClickListener {
+            toggleExpandedState(group, onGroupExpanded, onGroupCollapsed)
+        }
     }
 
     private fun applyPosition(isFirstCard: Boolean, isLastCard: Boolean) {
@@ -116,12 +125,24 @@ internal class SafetyEntryGroupView @JvmOverloads constructor(
         expandedHeaderView?.visibility = if (shouldBeExpanded) View.VISIBLE else View.GONE
         entriesContainerView?.visibility = if (shouldBeExpanded) View.VISIBLE else View.GONE
 
-        chevronIconView?.setImageResource(
-                if (shouldBeExpanded) {
+        if (isExpanded == null) {
+            chevronIconView?.setImageResource(
+                    if (shouldBeExpanded) {
+                        R.drawable.ic_safety_group_collapse
+                    } else {
+                        R.drawable.ic_safety_group_expand
+                    })
+        } else if (shouldBeExpanded) {
+            chevronIconView?.animate(
+                    R.drawable.safety_center_group_expand_anim,
                     R.drawable.ic_safety_group_collapse
-                } else {
+            )
+        } else {
+            chevronIconView?.animate(
+                    R.drawable.safety_center_group_collapse_anim,
                     R.drawable.ic_safety_group_expand
-                })
+            )
+        }
 
         isExpanded = shouldBeExpanded
 
@@ -138,6 +159,23 @@ internal class SafetyEntryGroupView @JvmOverloads constructor(
                 }
         )
         setPaddingRelative(paddingStart, newPaddingTop, paddingEnd, newPaddingBottom)
+
+        // accessibility attributes depend on the expanded state
+        // and should be updated every time this state changes
+        setAccessibilityAttributes(group)
+    }
+
+    private fun ImageView.animate(@DrawableRes animationRes: Int, @DrawableRes imageRes: Int) {
+        (drawable as? AnimatedVectorDrawable)?.clearAnimationCallbacks()
+        setImageResource(animationRes)
+        (drawable as? AnimatedVectorDrawable)?.apply {
+            registerAnimationCallback(object : AnimationCallback() {
+                override fun onAnimationEnd(drawable: Drawable?) {
+                    setImageResource(imageRes)
+                }
+            })
+            start()
+        }
     }
 
     private fun showGroupEntries(
@@ -191,5 +229,24 @@ internal class SafetyEntryGroupView @JvmOverloads constructor(
                 AccessibilityNodeInfoCompat.AccessibilityActionCompat.ACTION_CLICK,
                 context.getString(accessibilityActionResId),
                 null)
+    }
+
+    private fun toggleExpandedState(
+        group: SafetyCenterEntryGroup,
+        onGroupExpanded: (String) -> Unit,
+        onGroupCollapsed: (String) -> Unit
+    ) {
+        val transition = AutoTransition()
+        transition.duration = EXPAND_COLLAPSE_ANIMATION_DURATION_MS
+        TransitionManager.beginDelayedTransition(rootView as ViewGroup, transition)
+
+        val shouldBeExpanded = isExpanded != true
+        setupExpandedState(group, shouldBeExpanded)
+
+        if (shouldBeExpanded) {
+            onGroupExpanded(group.id)
+        } else {
+            onGroupCollapsed(group.id)
+        }
     }
 }
