@@ -34,5 +34,5 @@
     <string name="advanced_security_title" msgid="1126833338772188155">"Weitere Sicher­heits­einstellungen"</string>
     <string name="advanced_security_summary" msgid="6172253327022425123">"Verschlüsselung, Anmeldedaten und mehr"</string>
     <string name="advanced_privacy_title" msgid="1117725225706176643">"Weitere Datenschutzeinstellungen"</string>
-    <string name="advanced_privacy_summary" msgid="2281203390575069543">"Automatisches Ausfüllen, Aktivitätseinstellungen und mehr"</string>
+    <string name="advanced_privacy_summary" msgid="2281203390575069543">"Autofill, Aktivitätseinstellungen und mehr"</string>
 </resources>
