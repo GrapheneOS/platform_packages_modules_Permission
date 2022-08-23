@@ -16,38 +16,5 @@
   ~ limitations under the License
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/SafetyCenterEntry">
-
-    <FrameLayout
-        android:id="@+id/icon_frame"
-        style="@style/SafetyCenterEntryIconFrame">
-        <ImageView
-            android:id="@android:id/icon"
-            android:importantForAccessibility="no"
-            style="@style/SafetyCenterEntryIcon"/>
-    </FrameLayout>
-
-    <Space
-        android:id="@+id/empty_space"
-        style="@style/SafetyCenterEntryEmptySpace"/>
-
-    <LinearLayout
-        style="@style/SafetyCenterEntryTextContainer">
-
-        <TextView android:id="@android:id/title"
-            style="@style/SafetyCenterEntryTitle" />
-
-        <TextView android:id="@android:id/summary"
-            style="@style/SafetyCenterEntrySummary" />
-
-    </LinearLayout>
-
-    <!-- A preference could place its optional widget here. This will be hidden if no widget layout
-     is set for the preference. -->
-    <LinearLayout android:id="@android:id/widget_frame"
-        style="@style/SafetyCenterEntryWidgetFrame">
-        <View style="@style/SafetyCenterEntryDivider" />
-        <!-- PreferenceGroupAdapter will inflate widget layouts here -->
-    </LinearLayout>
-</LinearLayout>
+<com.android.permissioncontroller.safetycenter.ui.view.SafetyEntryView
+    style="@style/SafetyCenterEntry" />
