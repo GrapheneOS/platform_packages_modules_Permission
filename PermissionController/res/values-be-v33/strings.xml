@@ -21,13 +21,23 @@
     <string name="permission_description_summary_storage" msgid="1917071243213043858">"Праграмы з такім дазволам могуць атрымліваць доступ да ўсіх файлаў на гэтай прыладзе"</string>
     <string name="work_policy_title" msgid="832967780713677409">"Інфармацыя пра вашу працоўную палітыку"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"Наладамі кіруе ваш ІТ-адміністратар"</string>
+    <!-- no translation found for safety_center_entry_group_expand_action (5358289574941779652) -->
+    <skip />
+    <!-- no translation found for safety_center_entry_group_collapse_action (1525710152244405656) -->
+    <skip />
+    <!-- no translation found for safety_center_entry_group_content_description (7048420958214443333) -->
+    <skip />
+    <!-- no translation found for safety_center_entry_group_with_actions_needed_content_description (2708884606775932657) -->
+    <skip />
+    <!-- no translation found for safety_center_entry_group_item_content_description (7348298582877249787) -->
+    <skip />
+    <!-- no translation found for safety_center_entry_content_description (3639565652938224321) -->
+    <skip />
     <string name="safety_center_more_issues_card_title" msgid="8599419758014246517">"Праглядзець усе абвесткі"</string>
-    <string name="safety_center_more_issues_status_icon_content_description" msgid="8597351743567707802">"Праглядзець усе абвесткі"</string>
-    <string name="safety_center_more_issues_expand_button_content_description" msgid="8997241228390831958">"Праглядзець усе абвесткі"</string>
+    <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{Разгарніце, каб убачыць яшчэ адну абвестку}one{Разгарніце, каб убачыць яшчэ # абвестку}few{Разгарніце, каб убачыць яшчэ # абвесткі}many{Разгарніце, каб убачыць яшчэ # абвестак}other{Разгарніце, каб убачыць яшчэ # абвесткі}}"</string>
     <string name="safety_center_issue_card_content_description" msgid="1281390769721765363">"Абвестка. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_issue_card_content_description_with_subtitle" msgid="5504040663935313539">"Абвестка. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUBTITLE">%2$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%3$s</xliff:g>"</string>
-    <!-- no translation found for safety_center_issue_resolution_fallback (397036766466689354) -->
-    <skip />
+    <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"Дзеянне завершана"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"Праверце налады, якія могуць павысіць бяспеку вашай прылады"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"Хуткія налады бяспекі і прыватнасці"</string>
     <string name="safety_center_qs_close_button" msgid="1352313308176244599">"Закрыць"</string>
