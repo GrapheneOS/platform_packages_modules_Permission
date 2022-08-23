@@ -19,12 +19,9 @@ package com.android.permissioncontroller.safetycenter.ui.view
 import android.content.Context
 import android.os.Build
 import android.safetycenter.SafetyCenterEntry
-import android.safetycenter.SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED
 import android.safetycenter.SafetyCenterEntry.IconAction.ICON_ACTION_TYPE_GEAR
-import android.safetycenter.SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON
 import android.util.AttributeSet
 import android.util.Log
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -34,7 +31,6 @@ import com.android.permissioncontroller.R
 import com.android.permissioncontroller.safetycenter.ui.Action
 import com.android.permissioncontroller.safetycenter.ui.PendingIntentSender
 import com.android.permissioncontroller.safetycenter.ui.PositionInCardList
-import com.android.permissioncontroller.safetycenter.ui.SeverityIconPicker
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
@@ -53,17 +49,14 @@ internal class SafetyEntryView @JvmOverloads constructor(
         inflate(context, R.layout.view_entry, this)
     }
 
-    private val titleView: TextView? by lazy { findViewById(R.id.title) }
-    private val summaryView: TextView? by lazy { findViewById(R.id.summary) }
-    private val iconView: ImageView? by lazy { findViewById(R.id.icon) }
-    private val iconFrame: View? by lazy { findViewById(R.id.icon_frame) }
-    private val emptySpace: View? by lazy { findViewById(R.id.empty_space) }
+    private val commonEntryView: SafetyEntryCommonViewsManager? by lazy {
+        SafetyEntryCommonViewsManager(this)
+    }
     private val widgetFrame: ViewGroup? by lazy { findViewById(R.id.widget_frame) }
 
     fun showEntry(
         entry: SafetyCenterEntry,
         position: PositionInCardList,
-        isGroupEntry: Boolean,
         launchTaskId: Int?,
         viewModel: SafetyCenterViewModel
     ) {
@@ -80,20 +73,15 @@ internal class SafetyEntryView @JvmOverloads constructor(
         setupEntryClickListener(entry, launchTaskId, viewModel)
         enableOrDisableEntry(entry)
         setupIconActionButton(entry, launchTaskId, viewModel)
-        setContentDescription(entry, isGroupEntry)
+        setContentDescription(entry, position == PositionInCardList.INSIDE_GROUP)
     }
 
     private fun showEntryDetails(entry: SafetyCenterEntry) {
-        titleView?.showText(entry.title)
-        summaryView?.showText(entry.summary)
-
-        iconView?.setImageResource(SeverityIconPicker.selectIconResId(
-                entry.severityLevel, entry.severityUnspecifiedIconType))
-
-        val hideIcon = (entry.severityLevel == ENTRY_SEVERITY_LEVEL_UNSPECIFIED &&
-                entry.severityUnspecifiedIconType == SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON)
-        iconFrame?.visibility = if (hideIcon) GONE else VISIBLE
-        emptySpace?.visibility = if (hideIcon) VISIBLE else GONE
+        commonEntryView?.showDetails(
+                entry.title,
+                entry.summary,
+                entry.severityLevel,
+                entry.severityUnspecifiedIconType)
     }
 
     private fun TextView.showText(text: CharSequence?) {
@@ -188,13 +176,7 @@ internal class SafetyEntryView @JvmOverloads constructor(
     /** We are doing this because we need some entries to look disabled but still be clickable. */
     private fun enableOrDisableEntry(entry: SafetyCenterEntry) {
         isEnabled = entry.pendingIntent != null
-        if (entry.isEnabled) {
-            titleView?.alpha = 1f
-            summaryView?.alpha = 1f
-        } else {
-            titleView?.alpha = 0.4f
-            summaryView?.alpha = 0.4f
-        }
+        commonEntryView?.changeEnabledState(entry.isEnabled)
     }
 
     private fun setContentDescription(entry: SafetyCenterEntry, isGroupEntry: Boolean) {

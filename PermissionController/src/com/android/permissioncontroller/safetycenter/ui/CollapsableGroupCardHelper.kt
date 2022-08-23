@@ -53,17 +53,16 @@ internal class CollapsableGroupCardHelper {
         expandedGroups.add(groupId)
     }
 
+    private fun isGroupExpanded(groupId: CharSequence): Boolean =
+        expandedGroups.contains(groupId)
+
     fun updatePreferenceVisibility(group: PreferenceGroup) {
         val preferenceCount = group.preferenceCount
         for (i in 0 until preferenceCount) {
             when (val preference = group.getPreference(i)) {
-                is SafetyGroupHeaderEntryPreference -> {
-                    val shouldShowExpanded = expandedGroups.contains(preference.groupId)
+                is SafetyGroupPreference -> {
+                    val shouldShowExpanded = isGroupExpanded(preference.groupId)
                     preference.isVisible = preference.isExpanded == shouldShowExpanded
-                }
-                is SafetyEntryPreference -> {
-                    preference.isVisible = preference.groupId == null ||
-                            expandedGroups.contains(preference.groupId)
                 }
             }
         }

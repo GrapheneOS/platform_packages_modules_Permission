@@ -38,6 +38,7 @@ import com.android.permissioncontroller.R
  * in the group).
  */
 internal enum class PositionInCardList(val backgroundDrawableResId: Int) {
+    INSIDE_GROUP(R.drawable.safety_group_entry_background),
     LIST_START_END(R.drawable.safety_entity_top_large_bottom_large_background),
     LIST_START(R.drawable.safety_entity_top_large_bottom_flat_background),
     LIST_START_CARD_END(R.drawable.safety_entity_top_large_bottom_small_background),

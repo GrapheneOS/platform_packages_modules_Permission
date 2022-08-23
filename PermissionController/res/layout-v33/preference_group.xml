@@ -16,17 +16,5 @@
   ~ limitations under the License
   -->
 
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:parentTag="LinearLayout">
-
-    <include layout="@layout/safety_center_entry_common_view" />
-
-    <!-- A preference could place its optional widget here. This will be hidden if no widget layout
-     is set for the preference. -->
-    <LinearLayout android:id="@+id/widget_frame"
-        style="@style/SafetyCenterEntryWidgetFrame">
-        <View style="@style/SafetyCenterEntryDivider" />
-        <!-- PreferenceGroupAdapter will inflate widget layouts here -->
-    </LinearLayout>
-</merge>
+<com.android.permissioncontroller.safetycenter.ui.view.SafetyEntryGroupView
+    style="@style/SafetyCenterGroup" />
