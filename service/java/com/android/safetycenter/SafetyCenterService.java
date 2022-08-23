@@ -672,6 +672,7 @@ public final class SafetyCenterService extends SystemService {
                 @NonNull PendingIntent pendingIntent, @Nullable Integer taskId) {
             try {
                 if (taskId != null
+                        && pendingIntent.isActivity()
                         && getContext().checkCallingOrSelfPermission(START_TASKS_FROM_RECENTS)
                                 == PERMISSION_GRANTED) {
                     ActivityOptions options = ActivityOptions.makeBasic();
