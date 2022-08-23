@@ -20,18 +20,6 @@
     android:key="privacy_controls_page"
     android:title="@string/privacy_controls_title">
 
-    <!-- Clipboard access notifications toggle -->
-    <com.android.permissioncontroller.safetycenter.ui.ClickableDisabledSwitchPreference
-        android:key="show_clip_access_notification"
-        android:title="@string/show_clip_access_notification_title"
-        android:summary="@string/show_clip_access_notification_summary" />
-
-    <!-- Show password toggle-->
-    <com.android.permissioncontroller.safetycenter.ui.ClickableDisabledSwitchPreference
-        android:key="show_password"
-        android:title="@string/show_password_title"
-        android:summary="@string/show_password_summary"/>
-
     <!-- Camera toggle -->
     <com.android.permissioncontroller.safetycenter.ui.ClickableDisabledSwitchPreference
         android:key="privacy_camera_toggle"
@@ -43,6 +31,18 @@
         android:key="privacy_mic_toggle"
         android:title="@string/mic_toggle_title"
         android:summary="@string/mic_toggle_description"/>
+
+    <!-- Clipboard access notifications toggle -->
+    <com.android.permissioncontroller.safetycenter.ui.ClickableDisabledSwitchPreference
+        android:key="show_clip_access_notification"
+        android:title="@string/show_clip_access_notification_title"
+        android:summary="@string/show_clip_access_notification_summary" />
+
+    <!-- Show password toggle-->
+    <com.android.permissioncontroller.safetycenter.ui.ClickableDisabledSwitchPreference
+        android:key="show_password"
+        android:title="@string/show_password_title"
+        android:summary="@string/show_password_summary"/>
 
     <!-- Location link -->
     <Preference
