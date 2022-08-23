@@ -20,13 +20,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:parentTag="LinearLayout">
 
-    <include layout="@layout/safety_center_entry_common_view" />
+    <LinearLayout
+        style="@style/SafetyCenterGroupHeader">
 
-    <!-- A preference could place its optional widget here. This will be hidden if no widget layout
-     is set for the preference. -->
-    <LinearLayout android:id="@+id/widget_frame"
-        style="@style/SafetyCenterEntryWidgetFrame">
-        <View style="@style/SafetyCenterEntryDivider" />
-        <!-- PreferenceGroupAdapter will inflate widget layouts here -->
+        <LinearLayout android:id="@+id/collapsed_header"
+            style="@style/SafetyCenterCollapsedGroupHeader">
+
+            <include layout="@layout/safety_center_entry_common_view" />
+
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/expanded_header"
+            style="@style/SafetyCenterExpandedGroupHeader">
+
+            <TextView android:id="@+id/title"
+                style="@style/SafetyCenterExpandedGroupTitle"/>
+
+        </LinearLayout>
+
+        <ImageView android:id="@+id/chevron_icon"
+            style="@style/SafetyCenterExpandedGroupIcon" />
+
     </LinearLayout>
+
+    <LinearLayout android:id="@+id/entries_container"
+        style="@style/SafetyCenterGroupEntries"/>
+
 </merge>

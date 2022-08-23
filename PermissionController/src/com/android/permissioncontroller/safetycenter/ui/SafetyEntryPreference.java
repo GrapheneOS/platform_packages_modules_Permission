@@ -41,14 +41,12 @@ public final class SafetyEntryPreference extends Preference implements Comparabl
     private final PositionInCardList mPosition;
     private final SafetyCenterEntry mEntry;
     private final SafetyCenterViewModel mViewModel;
-    private final CharSequence mGroupId;
     @Nullable private final Integer mLaunchTaskId;
 
     public SafetyEntryPreference(
             Context context,
             @Nullable Integer launchTaskId,
             SafetyCenterEntry entry,
-            CharSequence groupId,
             PositionInCardList position,
             SafetyCenterViewModel viewModel) {
         super(context);
@@ -56,7 +54,6 @@ public final class SafetyEntryPreference extends Preference implements Comparabl
         mEntry = entry;
         mPosition = position;
         mViewModel = viewModel;
-        mGroupId = groupId;
         mLaunchTaskId = launchTaskId;
 
         setLayoutResource(R.layout.preference_entry);
@@ -66,19 +63,13 @@ public final class SafetyEntryPreference extends Preference implements Comparabl
     public void onBindViewHolder(@NonNull PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
 
-        ((SafetyEntryView) holder.itemView).showEntry(
-                mEntry, mPosition, mGroupId != null, mLaunchTaskId, mViewModel);
-    }
-
-    public CharSequence getGroupId() {
-        return mGroupId;
+        ((SafetyEntryView) holder.itemView).showEntry(mEntry, mPosition, mLaunchTaskId, mViewModel);
     }
 
     @Override
     public boolean isSameItem(@NonNull Preference other) {
         return other instanceof SafetyEntryPreference
-                && TextUtils.equals(mEntry.getId(), ((SafetyEntryPreference) other).mEntry.getId())
-                && TextUtils.equals(mGroupId, ((SafetyEntryPreference) other).mGroupId);
+                && TextUtils.equals(mEntry.getId(), ((SafetyEntryPreference) other).mEntry.getId());
     }
 
     @Override
