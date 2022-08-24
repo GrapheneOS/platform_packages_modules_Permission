@@ -18,8 +18,7 @@ package com.android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
-import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__ERROR;
-import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__SUCCESS;
+import static com.android.safetycenter.WestworldLogger.toSystemEventResult;
 
 import static java.util.Collections.emptyList;
 
@@ -127,11 +126,6 @@ final class SafetyCenterDataTracker {
 
     private boolean mSafetyCenterIssueCacheDirty = false;
 
-    /**
-     * Creates a {@link SafetyCenterDataTracker} using the given {@link Context}, {@link
-     * SafetyCenterResourcesContext}, {@link SafetyCenterConfigReader} and {@link
-     * SafetyCenterRefreshTracker}.
-     */
     SafetyCenterDataTracker(
             @NonNull Context context,
             @NonNull SafetyCenterResourcesContext safetyCenterResourcesContext,
@@ -237,7 +231,7 @@ final class SafetyCenterDataTracker {
             return false;
         }
         boolean safetyEventChangedSafetyCenterData =
-                processSafetyEvent(safetySourceId, safetyEvent, userId);
+                processSafetyEvent(safetySourceId, safetyEvent, userId, false);
 
         SafetySourceKey key = SafetySourceKey.of(safetySourceId, userId);
         boolean removingSafetySourceErrorChangedSafetyCenterData = mSafetySourceErrors.remove(key);
@@ -300,7 +294,7 @@ final class SafetyCenterDataTracker {
         Log.w(TAG, "Error reported from source: " + safetySourceId + ", for event: " + safetyEvent);
 
         boolean safetyEventChangedSafetyCenterData =
-                processSafetyEvent(safetySourceId, safetyEvent, userId);
+                processSafetyEvent(safetySourceId, safetyEvent, userId, true);
         int safetyEventType = safetyEvent.getType();
         if (safetyEventType == SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED
                 || safetyEventType == SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED) {
@@ -365,8 +359,9 @@ final class SafetyCenterDataTracker {
     boolean unmarkSafetyCenterIssueActionInFlight(
             @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId,
             @WestworldLogger.SystemEventResult int result) {
-        Long startTime = mSafetyCenterIssueActionsInFlight.remove(safetyCenterIssueActionId);
-        if (startTime == null) {
+        Long startElapsedMillis =
+                mSafetyCenterIssueActionsInFlight.remove(safetyCenterIssueActionId);
+        if (startElapsedMillis == null) {
             Log.w(TAG, "Attempted to unmark unknown action: " + safetyCenterIssueActionId);
             return false;
         }
@@ -374,12 +369,13 @@ final class SafetyCenterDataTracker {
         SafetyCenterIssueKey issueKey = safetyCenterIssueActionId.getSafetyCenterIssueKey();
         SafetySourceIssue issue = getSafetySourceIssue(issueKey);
         if (issue != null) {
-            Duration timeTaken = Duration.ofMillis(SystemClock.elapsedRealtime() - startTime);
+            Duration duration =
+                    Duration.ofMillis(SystemClock.elapsedRealtime() - startElapsedMillis);
             mWestworldLogger.writeInlineActionSystemEvent(
                     issueKey.getSafetySourceId(),
                     issueKey.getUserId(),
                     issue.getIssueTypeId(),
-                    timeTaken,
+                    duration,
                     result);
         }
 
@@ -598,8 +594,8 @@ final class SafetyCenterDataTracker {
         fout.println("ACTIONS IN FLIGHT (" + actionInFlightCount + ")");
         for (int i = 0; i < actionInFlightCount; i++) {
             SafetyCenterIssueActionId id = mSafetyCenterIssueActionsInFlight.keyAt(i);
-            long startTime = mSafetyCenterIssueActionsInFlight.valueAt(i);
-            long durationMillis = SystemClock.elapsedRealtime() - startTime;
+            long startElapsedMillis = mSafetyCenterIssueActionsInFlight.valueAt(i);
+            long durationMillis = SystemClock.elapsedRealtime() - startElapsedMillis;
             fout.println("\t[" + i + "] " + id + "(duration=" + durationMillis + "ms)");
         }
         fout.println();
@@ -912,7 +908,8 @@ final class SafetyCenterDataTracker {
     private boolean processSafetyEvent(
             @NonNull String safetySourceId,
             @NonNull SafetyEvent safetyEvent,
-            @UserIdInt int userId) {
+            @UserIdInt int userId,
+            boolean isError) {
         int type = safetyEvent.getType();
         switch (type) {
             case SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED:
@@ -926,7 +923,7 @@ final class SafetyCenterDataTracker {
                     return false;
                 }
                 return mSafetyCenterRefreshTracker.reportSourceRefreshCompleted(
-                        refreshBroadcastId, safetySourceId, userId);
+                        refreshBroadcastId, safetySourceId, userId, !isError);
             case SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED:
             case SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED:
                 String safetySourceIssueId = safetyEvent.getSafetySourceIssueId();
@@ -958,10 +955,8 @@ final class SafetyCenterDataTracker {
                                 .setSafetyCenterIssueKey(safetyCenterIssueKey)
                                 .setSafetySourceIssueActionId(safetySourceIssueActionId)
                                 .build();
-                int result =
-                        type == SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED
-                                ? SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__SUCCESS
-                                : SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__ERROR;
+                boolean success = type == SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED;
+                int result = toSystemEventResult(success);
                 return unmarkSafetyCenterIssueActionInFlight(safetyCenterIssueActionId, result);
             case SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED:
             case SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_LOCALE_CHANGED:

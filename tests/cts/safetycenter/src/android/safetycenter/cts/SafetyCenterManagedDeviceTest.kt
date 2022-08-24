@@ -103,6 +103,14 @@ class SafetyCenterManagedDeviceTest {
                 safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_summary"))
             .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK)
             .build()
+    private val safetyCenterStatusUnknown =
+        SafetyCenterStatus.Builder(
+                safetyCenterResourcesContext.getStringByName(
+                    "overall_severity_level_ok_review_title"),
+                safetyCenterResourcesContext.getStringByName(
+                    "overall_severity_level_ok_review_summary"))
+            .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN)
+            .build()
     private val staticEntry =
         SafetyCenterStaticEntry.Builder("OK")
             .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
@@ -277,7 +285,7 @@ class SafetyCenterManagedDeviceTest {
                 .build()
         val safetyCenterData =
             SafetyCenterData(
-                safetyCenterStatusOk,
+                safetyCenterStatusUnknown,
                 emptyList(),
                 listOf(SafetyCenterEntryOrGroup(entryGroup)),
                 emptyList())
@@ -384,7 +392,7 @@ class SafetyCenterManagedDeviceTest {
                 .build()
         val expectedSafetyCenterData =
             SafetyCenterData(
-                safetyCenterStatusOk,
+                safetyCenterStatusUnknown,
                 emptyList(),
                 listOf(SafetyCenterEntryOrGroup(entryGroup)),
                 emptyList())

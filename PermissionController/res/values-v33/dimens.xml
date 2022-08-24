@@ -23,4 +23,8 @@
     <dimen name="safety_center_top_action_button_margin">24dp</dimen>
     <dimen name="safety_center_icon_button_touch_target_size">48dp</dimen>
     <dimen name="safety_center_entry_padding_end">24dp</dimen>
+    <dimen name="safety_center_group_header_expanded_padding_top">24dp</dimen>
+    <dimen name="safety_center_group_header_expanded_padding_bottom">8dp</dimen>
+    <dimen name="safety_center_group_header_collapsed_padding_top">20dp</dimen>
+    <dimen name="safety_center_group_header_collapsed_padding_bottom">20dp</dimen>
 </resources>

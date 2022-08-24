@@ -28,12 +28,11 @@ import android.safetycenter.SafetyCenterManager;
 import android.util.Log;
 
 import androidx.annotation.RequiresApi;
-import androidx.preference.PreferenceFragmentCompat;
+import androidx.fragment.app.Fragment;
 
 import com.android.permissioncontroller.Constants;
 import com.android.permissioncontroller.PermissionControllerStatsLog;
 import com.android.permissioncontroller.R;
-import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
 
 /** Entry-point activity for SafetyCenter. */
@@ -51,16 +50,14 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
 
         if (maybeRedirectIfDisabled()) return;
 
-        PreferenceFragmentCompat frag;
+        Fragment frag;
         if (getIntent().getAction().equals(PRIVACY_CONTROLS_ACTION)) {
             setTitle(R.string.privacy_controls_title);
             frag = PrivacyControlsFragment.newInstance();
         } else {
             logPrivacySourceMetric();
             setTitle(getString(R.string.safety_center_dashboard_page_title));
-            frag = SafetyCenterDashboardFragment.newInstance(
-                    Utils.getOrGenerateSessionId(getIntent()),
-                    /* isQuickSettingsFragment= */ false);
+            frag = new SafetyCenterScrollWrapperFragment();
         }
         if (savedInstanceState == null) {
             getSupportFragmentManager()

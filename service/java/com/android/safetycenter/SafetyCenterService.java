@@ -161,16 +161,17 @@ public final class SafetyCenterService extends SystemService {
 
     public SafetyCenterService(@NonNull Context context) {
         super(context);
+        WestworldLogger westworldLogger = new WestworldLogger(context);
         mSafetyCenterResourcesContext = new SafetyCenterResourcesContext(context);
         mSafetyCenterConfigReader = new SafetyCenterConfigReader(mSafetyCenterResourcesContext);
-        mSafetyCenterRefreshTracker = new SafetyCenterRefreshTracker();
+        mSafetyCenterRefreshTracker = new SafetyCenterRefreshTracker(westworldLogger);
         mSafetyCenterDataTracker =
                 new SafetyCenterDataTracker(
                         context,
                         mSafetyCenterResourcesContext,
                         mSafetyCenterConfigReader,
                         mSafetyCenterRefreshTracker,
-                        new WestworldLogger(context));
+                        westworldLogger);
         mSafetyCenterListeners = new SafetyCenterListeners(mSafetyCenterDataTracker);
         mSafetyCenterBroadcastDispatcher =
                 new SafetyCenterBroadcastDispatcher(
@@ -671,6 +672,7 @@ public final class SafetyCenterService extends SystemService {
                 @NonNull PendingIntent pendingIntent, @Nullable Integer taskId) {
             try {
                 if (taskId != null
+                        && pendingIntent.isActivity()
                         && getContext().checkCallingOrSelfPermission(START_TASKS_FROM_RECENTS)
                                 == PERMISSION_GRANTED) {
                     ActivityOptions options = ActivityOptions.makeBasic();
@@ -860,8 +862,8 @@ public final class SafetyCenterService extends SystemService {
             synchronized (mApiLock) {
                 mSafetyCenterTimeouts.remove(this);
                 ArraySet<SafetySourceKey> stillInFlight =
-                        mSafetyCenterRefreshTracker.clearRefresh(mRefreshBroadcastId);
-                if (stillInFlight == null || stillInFlight.isEmpty()) {
+                        mSafetyCenterRefreshTracker.timeoutRefresh(mRefreshBroadcastId);
+                if (stillInFlight == null) {
                     return;
                 }
                 boolean showErrorEntriesOnTimeout =
