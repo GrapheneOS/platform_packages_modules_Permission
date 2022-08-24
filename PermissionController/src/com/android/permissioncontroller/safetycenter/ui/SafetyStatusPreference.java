@@ -40,6 +40,7 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
 import com.android.permissioncontroller.R;
+import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel;
 
 import com.google.android.material.button.MaterialButton;
@@ -105,10 +106,6 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
                                         mStatus.getTitle(),
                                         mStatus.getSummary()));
 
-        // Hide the Safety Protection branding if there are any issue cards
-        View safetyProtectionSectionView = holder.findViewById(R.id.safety_protection_section_view);
-        safetyProtectionSectionView.setVisibility(mHasIssues ? View.GONE : View.VISIBLE);
-
         rescanButton.setOnClickListener(
                 unused -> {
                     SafetyCenterViewModel viewModel = requireViewModel();
@@ -117,6 +114,31 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
                 });
 
         updateStatusIcon(statusImage, rescanButton);
+
+        configureSafetyProtectionView(holder, context);
+    }
+
+    private void configureSafetyProtectionView(PreferenceViewHolder holder, Context context) {
+        View safetyProtectionSectionView = holder.findViewById(R.id.safety_protection_section_view);
+        if (KotlinUtils.INSTANCE.shouldShowSafetyProtectionResources(context)) {
+            // Hide the Safety Protection branding if there are any issue cards
+            safetyProtectionSectionView.setVisibility(mHasIssues ? View.GONE : View.VISIBLE);
+        }
+        if (safetyProtectionSectionView.getVisibility() == View.GONE) {
+            holder.itemView.setPaddingRelative(
+                    holder.itemView.getPaddingStart(),
+                    holder.itemView.getPaddingTop(),
+                    holder.itemView.getPaddingEnd(),
+                    /* bottom = */ getContext()
+                            .getResources()
+                            .getDimensionPixelSize(R.dimen.safety_center_card_margin_bottom));
+        } else {
+            holder.itemView.setPaddingRelative(
+                    holder.itemView.getPaddingStart(),
+                    holder.itemView.getPaddingTop(),
+                    holder.itemView.getPaddingEnd(),
+                    /* bottom = */ 0);
+        }
     }
 
     private void updateStatusIcon(ImageView statusImage, View rescanButton) {
