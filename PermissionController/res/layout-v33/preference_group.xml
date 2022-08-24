@@ -16,5 +16,5 @@
   ~ limitations under the License
   -->
 
-<com.android.permissioncontroller.safetycenter.ui.view.SafetyEntryView
-    style="@style/SafetyCenterEntry" />
+<com.android.permissioncontroller.safetycenter.ui.view.SafetyEntryGroupView
+    style="@style/SafetyCenterGroup" />

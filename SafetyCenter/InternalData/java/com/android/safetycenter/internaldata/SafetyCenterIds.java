@@ -125,7 +125,9 @@ public final class SafetyCenterIds {
                 + toUserFriendlyString(safetyCenterIssueId.getSafetyCenterIssueKey())
                 + ", issueTypeId='"
                 + safetyCenterIssueId.getIssueTypeId()
-                + "'}";
+                + "', taskId="
+                + safetyCenterIssueId.getTaskId()
+                + "}";
     }
 
     /**

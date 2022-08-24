@@ -19,7 +19,6 @@ package com.android.permissioncontroller.safetycenter.ui
 import android.os.Build
 import android.os.Bundle
 import androidx.annotation.RequiresApi
-import androidx.preference.PreferenceGroup
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 internal class CollapsableGroupCardHelper {
@@ -45,27 +44,14 @@ internal class CollapsableGroupCardHelper {
         )
     }
 
-    fun collapseGroup(groupId: String) {
+    fun onGroupCollapsed(groupId: String) {
         expandedGroups.remove(groupId)
     }
 
-    fun expandGroup(groupId: String) {
+    fun onGroupExpanded(groupId: String) {
         expandedGroups.add(groupId)
     }
 
-    fun updatePreferenceVisibility(group: PreferenceGroup) {
-        val preferenceCount = group.preferenceCount
-        for (i in 0 until preferenceCount) {
-            when (val preference = group.getPreference(i)) {
-                is SafetyGroupHeaderEntryPreference -> {
-                    val shouldShowExpanded = expandedGroups.contains(preference.groupId)
-                    preference.isVisible = preference.isExpanded == shouldShowExpanded
-                }
-                is SafetyEntryPreference -> {
-                    preference.isVisible = preference.groupId == null ||
-                            expandedGroups.contains(preference.groupId)
-                }
-            }
-        }
-    }
+    fun isGroupExpanded(groupId: CharSequence): Boolean =
+        expandedGroups.contains(groupId)
 }
