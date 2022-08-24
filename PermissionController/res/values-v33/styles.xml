@@ -522,10 +522,9 @@
            parent="android:Widget.DeviceDefault">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:singleLine">true</item>
         <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Headline.Entry</item>
-        <item name="android:ellipsize">marquee</item>
-        <item name="android:fadingEdge">horizontal</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">4</item>
     </style>
 
     <style name="SafetyCenterEntrySummary"
@@ -533,6 +532,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Body</item>
+        <item name="android:ellipsize">end</item>
         <item name="android:maxLines">4</item>
     </style>
 
@@ -591,9 +591,10 @@
            parent="android:Widget.DeviceDefault">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:maxLines">4</item>
         <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Body</item>
         <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">4</item>
     </style>
 
     <style name="SafetyCenterGroupEntries"
@@ -654,10 +655,9 @@
         parent="android:Widget.DeviceDefault">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:singleLine">true</item>
         <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Headline.Entry</item>
-        <item name="android:ellipsize">marquee</item>
-        <item name="android:fadingEdge">horizontal</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">4</item>
     </style>
 
     <style name="SafetyCenterStaticEntrySummary"
@@ -665,6 +665,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Body</item>
+        <item name="android:ellipsize">end</item>
         <item name="android:maxLines">4</item>
     </style>
 
