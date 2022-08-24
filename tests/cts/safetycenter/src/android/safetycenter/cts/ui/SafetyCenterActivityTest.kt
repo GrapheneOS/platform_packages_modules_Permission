@@ -214,6 +214,11 @@ class SafetyCenterActivityTest {
             waitFindObject(By.desc("Alert. Critical issue title. Critical issue summary"))
             findButton("Solve issue")
             waitNotDisplayed(By.desc("Protected by Android"))
+
+            // Since we already have a combined content description for the issue card, the below
+            // tests ensure that we don't make the individual views visible to a11y technologies.
+            waitNotDisplayed(By.desc("Critical issue title"))
+            waitNotDisplayed(By.desc("Critical issue summary"))
         }
     }
 
@@ -229,6 +234,12 @@ class SafetyCenterActivityTest {
             waitFindObject(By.desc(expectedString))
             findButton("Review")
             waitNotDisplayed(By.desc("Protected by Android"))
+
+            // Since we already have a combined content description for the issue card, the below
+            // tests ensure that we don't make the individual views visible to a11y technologies.
+            waitNotDisplayed(By.desc("Information issue title"))
+            waitNotDisplayed(By.desc("Information issue subtitle"))
+            waitNotDisplayed(By.desc("Information issue summary"))
         }
     }
 
