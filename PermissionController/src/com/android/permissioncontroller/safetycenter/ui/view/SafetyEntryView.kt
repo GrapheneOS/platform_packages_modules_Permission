@@ -113,6 +113,10 @@ internal class SafetyEntryView @JvmOverloads constructor(
                             ex)
                 }
             }
+        } else {
+            // Ensure that views without listeners can still be focused by accessibility services
+            // TODO b/243713158: Set the proper accessibility focus in style, rather than in code
+            isFocusable = true
         }
     }
 
