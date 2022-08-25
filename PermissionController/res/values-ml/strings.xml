@@ -337,7 +337,7 @@
     <string name="role_browser_request_title" msgid="2895200507835937192">"<xliff:g id="APP_NAME">%1$s</xliff:g> എന്നത് നിങ്ങളുടെ ഡിഫോൾട്ട് ബ്രൗസർ ആപ്പായി സജ്ജീകരിക്കണോ?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"അനുമതികൾ ആവശ്യമില്ല"</string>
     <string name="role_dialer_label" msgid="1100224146343237968">"ഡിഫോൾട്ട് ഫോൺ ആപ്പ്"</string>
-    <string name="role_dialer_short_label" msgid="7186888549465352489">"ഫോൺ ആപ്പ്"</string>
+    <string name="role_dialer_short_label" msgid="7186888549465352489">"Phone ആപ്പ്"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"നിങ്ങളുടെ ഉപകരണത്തിൽ ടെലിഫോൺ കോളുകൾ ചെയ്യാനും സ്വീകരിക്കാനും അനുവദിക്കുന്ന ആപ്പുകൾ"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g> എന്നതിനെ നിങ്ങളുടെ ഡിഫോൾട്ട് ഫോൺ ആപ്പായി സജ്ജീകരിക്കണോ?"</string>
     <string name="role_dialer_request_description" msgid="6288839625724909320">"ഈ ആപ്പിന് നിങ്ങളുടെ ക്യാമറ, കോൺടാക്റ്റുകൾ, മൈക്രോഫോൺ, ഫോൺ, SMS എന്നിവയിലേക്ക് ആക്‌സസ് നൽകും"</string>
