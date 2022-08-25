@@ -22,7 +22,7 @@
     <string name="cancel" msgid="8943320028373963831">"Ghairi"</string>
     <string name="back" msgid="6249950659061523680">"Rudi nyuma"</string>
     <string name="available" msgid="6007778121920339498">"Inaruhusiwa kufikia"</string>
-    <string name="blocked" msgid="9195547604866033708">"Umezuiwa kufikia"</string>
+    <string name="blocked" msgid="9195547604866033708">"Imezuiwa kufikia"</string>
     <string name="on" msgid="280241003226755921">"Imewashwa"</string>
     <string name="off" msgid="1438489226422866263">"Imezimwa"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Ondoa au uzime"</string>
@@ -534,8 +534,8 @@
     <string name="permissions_removed_qs" msgid="8957319130625294572">"Ruhusa imeondolewa"</string>
     <string name="camera_usage_qs" msgid="4394233566086665994">"Angalia matumizi ya hivi karibuni ya kamera"</string>
     <string name="microphone_usage_qs" msgid="8527666682168170417">"Angalia matumizi ya hivi karibuni ya maikrofoni"</string>
-    <string name="remove_camera_qs" msgid="3649996161066883350">"Ondoa ruhusa kwenye programu hii"</string>
-    <string name="remove_microphone_qs" msgid="1276551965129953198">"Ondoa ruhusa kwenye programu hii"</string>
+    <string name="remove_camera_qs" msgid="3649996161066883350">"Ondolea programu hii ruhusa"</string>
+    <string name="remove_microphone_qs" msgid="1276551965129953198">"Ondolea programu hii ruhusa"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Dhibiti huduma"</string>
     <string name="manage_permissions_qs" msgid="3780541819763475434">"Dhibiti ruhusa"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Inatumiwa na simu"</string>

@@ -23,8 +23,7 @@
     <string name="back" msgid="6249950659061523680">"वापस जाएं"</string>
     <string name="available" msgid="6007778121920339498">"उपलब्ध है"</string>
     <string name="blocked" msgid="9195547604866033708">"ब्लॉक किया गया"</string>
-    <!-- no translation found for on (280241003226755921) -->
-    <skip />
+    <string name="on" msgid="280241003226755921">"चालू है"</string>
     <string name="off" msgid="1438489226422866263">"बंद करें"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"अनइंस्टॉल करें या बंद करें"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"ऐप्लिकेशन नहीं मिला"</string>
@@ -133,8 +132,7 @@
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"पिछले सात दिनों में, ऐप्लिकेशन ने आपकी <xliff:g id="PERMGROUP">%1$s</xliff:g> का इस्तेमाल कब किया, इसकी टाइमलाइन"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"जब इस ऐप्लिकेशन ने आपकी <xliff:g id="PERMGROUP">%1$s</xliff:g> अनुमति का इस्तेमाल किया"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"ज़्यादा जानें"</string>
-    <!-- no translation found for learn_more_content_description (8673699744544502539) -->
-    <skip />
+    <string name="learn_more_content_description" msgid="8673699744544502539">"<xliff:g id="PERMGROUP">%1$s</xliff:g> के बारे में ज़्यादा जानें"</string>
     <string name="manage_permission_summary" msgid="4117555482684114317">"तय करें कि <xliff:g id="PERMGROUP">%1$s</xliff:g> का इस्तेमाल कौनसे ऐप्लिकेशन कर सकेंगे"</string>
     <string name="auto_permission_usage_timeline_summary" msgid="2713135806453218703">"<xliff:g id="ACCESS_TIME">%1$s</xliff:g> • <xliff:g id="SUMMARY_TEXT">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
@@ -283,7 +281,7 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"आपकी निजता की सुरक्षा के लिए अनुमतियां हटाई गई हैं"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> अब बैकग्राउंड में आपकी जगह की जानकारी ऐक्सेस कर सकता है"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"यह ऐप्लिकेशन हमेशा आपकी जगह की जानकारी ऐक्सेस कर सकता है. बदलने के लिए टैप करें."</string>
-    <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"सूचनाओं का ऐक्सेस रखने वाले ऐप्लिकेशन की समीक्षा करें"</string>
+    <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"ऐसे ऐप्लिकेशन देखें जिनके पास सूचनाओं का ऐक्सेस है"</string>
     <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g> आपकी सूचनाओं में मौजूद कॉन्टेंट को खारिज कर सकता है. साथ ही, उस पर कार्रवाई कर सकता है और उसे ऐक्सेस भी कर सकता है"</string>
     <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"यह ऐप्लिकेशन आपकी सूचनाओं में मौजूद कॉन्टेंट को खारिज कर सकता है. साथ ही, उस पर कार्रवाई कर सकता है और उसे ऐक्सेस भी कर सकता है. कुछ ऐप्लिकेशन को सही तरीके से काम करने के लिए, इस तरह के ऐक्सेस की ज़रूरत होती है."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"ऐक्सेस हटाएं"</string>
@@ -520,7 +518,7 @@
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"डिवाइस स्कैन करें"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"खारिज करें"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"क्या इस चेतावनी को खारिज करना है?"</string>
-    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"जब चाहें अपनी सुरक्षा और निजता की सेटिंग की समीक्षा करें और डिवाइस की सुरक्षा बढ़ाएं"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"डिवाइस की सुरक्षा बढ़ाने के लिए, जब चाहें अपनी सुरक्षा और निजता सेटिंग की समीक्षा करें"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"खारिज करें"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"अभी नहीं"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"सेटिंग"</string>
@@ -537,7 +535,7 @@
     <string name="camera_usage_qs" msgid="4394233566086665994">"हाल ही में कैमरा इस्तेमाल करने की जानकारी देखें"</string>
     <string name="microphone_usage_qs" msgid="8527666682168170417">"हाल ही में माइक इस्तेमाल करने की जानकारी देखें"</string>
     <string name="remove_camera_qs" msgid="3649996161066883350">"ऐप्लिकेशन के लिए कैमरे का ऐक्सेस रोकें"</string>
-    <string name="remove_microphone_qs" msgid="1276551965129953198">"ऐप्लिकेशन के लिए कैमरे का ऐक्सेस रोकें"</string>
+    <string name="remove_microphone_qs" msgid="1276551965129953198">"ऐप्लिकेशन के लिए माइक्रोफ़ोन का ऐक्सेस रोकें"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"सेवा मैनेज करें"</string>
     <string name="manage_permissions_qs" msgid="3780541819763475434">"अनुमतियां मैनेज करें"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"किसी खास फ़ोन कॉल के लिए इस्तेमाल हो रहा है"</string>

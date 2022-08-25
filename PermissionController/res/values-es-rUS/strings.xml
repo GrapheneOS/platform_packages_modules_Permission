@@ -317,23 +317,23 @@
     <string name="app_perms_24h_access" msgid="99069906850627181">"Último acceso: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Último acceso: ayer a la(s) <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_7d_access" msgid="4945055548894683751">"Último acceso: <xliff:g id="TIME_DATE_0">%1$s</xliff:g> a la(s) <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
-    <string name="app_perms_content_provider_24h" msgid="1055526027667508972">"Acceso en las últimas 24 horas"</string>
-    <string name="app_perms_content_provider_7d" msgid="3215454898257814868">"Acceso en los últimos 7 días"</string>
+    <string name="app_perms_content_provider_24h" msgid="1055526027667508972">"Accedió en las últimas 24 horas"</string>
+    <string name="app_perms_content_provider_7d" msgid="3215454898257814868">"Accedió en los últimos 7 días"</string>
     <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Último acceso: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Con permiso permanente"</string>
     <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Último acceso: ayer a la(s) <xliff:g id="TIME_DATE">%1$s</xliff:g> • Con permiso permanente"</string>
     <string name="app_perms_7d_access_background" msgid="408099213372185627">"Último acceso: <xliff:g id="TIME_DATE_0">%1$s</xliff:g> a la(s) <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Con permiso permanente"</string>
-    <string name="app_perms_content_provider_24h_background" msgid="3825902995186961496">"Acceso en las últimas 24 horas • Con permiso permanente"</string>
-    <string name="app_perms_content_provider_7d_background" msgid="4818839672116463542">"Acceso en los últimos 7 días • Con permiso permanente"</string>
+    <string name="app_perms_content_provider_24h_background" msgid="3825902995186961496">"Accedió en las últimas 24 horas • Con permiso permanente"</string>
+    <string name="app_perms_content_provider_7d_background" msgid="4818839672116463542">"Accedió en los últimos 7 días • Con permiso permanente"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Último acceso: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Contenido multimedia"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Último acceso: ayer a la(s) <xliff:g id="TIME_DATE">%1$s</xliff:g> • Contenido multimedia"</string>
     <string name="app_perms_7d_access_media_only" msgid="1031096653668235200">"Último acceso: <xliff:g id="TIME_DATE_0">%1$s</xliff:g> a la(s) <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Contenido multimedia"</string>
-    <string name="app_perms_content_provider_24h_media_only" msgid="7797963000596179491">"Acceso en las últimas 24 horas • Contenido multimedia"</string>
-    <string name="app_perms_content_provider_7d_media_only" msgid="8446239884570262243">"Acceso en los últimos 7 días • Contenido multimedia"</string>
+    <string name="app_perms_content_provider_24h_media_only" msgid="7797963000596179491">"Accedió en las últimas 24 horas • Contenido multimedia"</string>
+    <string name="app_perms_content_provider_7d_media_only" msgid="8446239884570262243">"Accedió en los últimos 7 días • Contenido multimedia"</string>
     <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"Último acceso: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Todos los archivos"</string>
     <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"Último acceso: ayer a la(s) <xliff:g id="TIME_DATE">%1$s</xliff:g> • Todos los archivos"</string>
     <string name="app_perms_7d_access_all_files" msgid="8246193786397635824">"Último acceso: <xliff:g id="TIME_DATE_0">%1$s</xliff:g> a la(s) <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Todos los archivos"</string>
-    <string name="app_perms_content_provider_24h_all_files" msgid="573104317727770850">"Acceso en las últimas 24 horas • Todos los archivos"</string>
-    <string name="app_perms_content_provider_7d_all_files" msgid="7962416229708835558">"Acceso en los últimos 7 días • Todos los archivos"</string>
+    <string name="app_perms_content_provider_24h_all_files" msgid="573104317727770850">"Accedió en las últimas 24 horas • Todos los archivos"</string>
+    <string name="app_perms_content_provider_7d_all_files" msgid="7962416229708835558">"Accedió en los últimos 7 días • Todos los archivos"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"No se otorgó ningún permiso"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"No se rechazó ningún permiso"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"No se le otorgó permiso a ninguna app"</string>

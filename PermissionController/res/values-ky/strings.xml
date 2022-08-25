@@ -281,9 +281,9 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Купуялыгыңызды коргоо максатында, уруксаттар өчүрүлөт"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> жайгашкан жериңизди фондон алды"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Бул колдонмо кайда жүргөнүңүздү ар дайым билип турат. Аны өзгөртүү үчүн таптап коюңуз."</string>
-    <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"Билдирмелерди көрүү мүмкүнчүлүгү бар колдонмону карап чыгуу"</string>
+    <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"Билдирмелерди көрө алган колдонмону караңыз"</string>
     <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g> билдирмелерди жаап, алар боюнча аракеттерди аткарып жана көрө алат"</string>
-    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"Бул колдонмо билдирмелерди жаап, алар боюнча аракеттерди аткарып жана көрө алат. Айрым колдонмолордун ойдогудай иштеши үчүн мүмкүнчүлүктөрдүн ушундай түрлөрүн берүү талап кылынат."</string>
+    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"Бул колдонмо билдирмелер менен иштеп, аларды жашырып жана көрө алат. Бул колдонмонун туура иштеши үчүн керек."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Кирүү мүмкүнчүлүгүн өчүрүү"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"Дагы башка параметрлерди көрүү"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Кирүү мүмкүнчүлүгү өчүрүлдү"</string>
@@ -517,8 +517,8 @@
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Коопсуздук жана купуялык"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"Түзмөктү текшерүү"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Жабуу"</string>
-    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Бул эскертүү четке кагылсынбы?"</string>
-    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"Коопсуздукту жакшыраак коргоо үчүн коопсуздук жана купуялык параметрлерин каалаган убакта карап чыгыңыз"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Эскертүүнү жабасызбы?"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"Купуялык жана коопсуздук параметрлерин каалаган убакта текшерип, өзгөртө аласыз"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Четке кагуу"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Жок"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"Параметрлер"</string>
@@ -564,10 +564,10 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Бул колдонмо Android\'дин акыркы версиясына жаңырбайт. Эгер ага ырлар менен аудиофайлдар жеткиликсиз болсо, сүрөттөр менен видеолор да жеткиликсиз болот."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Бул колдонмо Android\'дин акыркы версиясына жаңырбайт. Эгер ага сүрөттөр менен видеолор жеткиликсиз болсо, ырлар менен аудио файлдар да жеткиликсиз болот."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Бул колдонмо Android\'дин акыркы версиясына жаңырбайт. Эгер ага ырлар менен аудиофайлдар жеткиликсиз болсо, сүрөттөр менен видеолор да жеткиликсиз болот."</string>
-    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Фондук режимде жайгашкан жерди аныктоо мүмкүнчүлүгү бар колдонмону карап чыгуу"</string>
+    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Фондук режимде жайгашкан жерди аныктай алган колдонмону караңыз"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> жүргөн жериңизди ар дайым, колдонмо жабылып турганда да, көрө алат"</string>
-    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Фондук режимде жайгашкан жерди аныктоо мүмкүнчүлүгү бар колдонмону карап чыгуу"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Бул колдонмо жүргөн жериңизди ар дайым, ал жабылып турганда да, көрө алат."</string>
+    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Фондук режимде жайгашкан жерди аныктай алган колдонмону караңыз"</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Бул колдонмо жүргөн жериңизди ар дайым көрө алат (жабылып турса да)."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Кирүү мүмкүнчүлүгү өзгөрдү"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Жайгашкан жер акыркы жолу качан аныкталганын көрүү"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Купуялыкты көзөмөлдөө каражаттары"</string>

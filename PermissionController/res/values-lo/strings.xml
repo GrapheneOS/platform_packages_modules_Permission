@@ -534,8 +534,8 @@
     <string name="permissions_removed_qs" msgid="8957319130625294572">"ລຶບການອະນຸຍາດອອກແລ້ວ"</string>
     <string name="camera_usage_qs" msgid="4394233566086665994">"ເບິ່ງການນຳໃຊ້ກ້ອງຖ່າຍຮູບຫຼ້າສຸດ"</string>
     <string name="microphone_usage_qs" msgid="8527666682168170417">"ເບິ່ງການນໍາໃຊ້ໄມຫຼ້າສຸດ"</string>
-    <string name="remove_camera_qs" msgid="3649996161066883350">"ເອົາການອະນຸຍາດສໍາລັບແອັບນີ້ອອກ"</string>
-    <string name="remove_microphone_qs" msgid="1276551965129953198">"ເອົາການອະນຸຍາດສໍາລັບແອັບນີ້ອອກ"</string>
+    <string name="remove_camera_qs" msgid="3649996161066883350">"ລຶບການອະນຸຍາດສໍາລັບແອັບນີ້ອອກ"</string>
+    <string name="remove_microphone_qs" msgid="1276551965129953198">"ລຶບການອະນຸຍາດສໍາລັບແອັບນີ້ອອກ"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"ຈັດການບໍລິການ"</string>
     <string name="manage_permissions_qs" msgid="3780541819763475434">"ຈັດການການອະນຸຍາດ"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"ກຳລັງຖືກໃຊ້ໂດຍການໂທລະສັບ"</string>

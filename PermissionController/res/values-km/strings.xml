@@ -518,7 +518,7 @@
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"ស្កេនឧបករណ៍"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"ច្រានចោល"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"ច្រានចោលការជូនដំណឹងនេះឬ?"</string>
-    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"ពិនិត្យមើលការកំណត់ឯកជនភាព និងសុវត្ថិភាពរបស់អ្នកបានគ្រប់ពេល ដើម្បីបន្ថែមការការពារឱ្យកាន់តែខ្ពស់"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"ពិនិត្យមើលការកំណត់ឯកជនភាព និងសុវត្ថិភាពរបស់អ្នកបានគ្រប់ពេល ដើម្បីផ្ដល់ការការពារបន្ថែម"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"ច្រានចោល"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"បោះបង់"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"ការកំណត់"</string>

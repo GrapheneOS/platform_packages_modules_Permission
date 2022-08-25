@@ -284,7 +284,7 @@
     <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"ตรวจสอบแอปที่มีสิทธิ์เข้าถึงการแจ้งเตือน"</string>
     <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"\"<xliff:g id="APP_NAME">%s</xliff:g>\" สามารถปิด เข้าถึง และดำเนินการกับเนื้อหาในการแจ้งเตือนได้"</string>
     <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"แอปนี้สามารถปิด เข้าถึง และดำเนินการกับเนื้อหาในการแจ้งเตือนได้ บางแอปต้องมีสิทธิ์เข้าถึงประเภทนี้เพื่อให้ทำงานได้ตามวัตถุประสงค์"</string>
-    <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"นำสิทธิ์เข้าถึงออก"</string>
+    <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"ยกเลิกสิทธิ์เข้าถึง"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"ดูตัวเลือกเพิ่มเติม"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"นำสิทธิ์เข้าถึงออกแล้ว"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"ตรวจสอบแอปที่มีสิทธิ์เข้าถึงอุปกรณ์แบบเต็มรูปแบบ"</string>

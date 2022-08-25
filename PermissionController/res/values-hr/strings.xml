@@ -132,7 +132,7 @@
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Kad su aplikacije koristile dopuštenje <xliff:g id="PERMGROUP">%1$s</xliff:g> u posljednjih sedam dana"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Kad je ova aplikacija koristili vaše dopuštenje <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Saznajte više"</string>
-    <string name="learn_more_content_description" msgid="8673699744544502539">"Saznajte više o opciji <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
+    <string name="learn_more_content_description" msgid="8673699744544502539">"Saznajte što podrazumijeva <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="manage_permission_summary" msgid="4117555482684114317">"Upravlja pristupom aplikacije za: <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="auto_permission_usage_timeline_summary" msgid="2713135806453218703">"<xliff:g id="ACCESS_TIME">%1$s</xliff:g> • <xliff:g id="SUMMARY_TEXT">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
