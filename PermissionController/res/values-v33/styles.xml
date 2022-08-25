@@ -466,8 +466,8 @@
         <item name="android:layout_marginStart">16dp</item>
         <item name="android:layout_marginEnd">16dp</item>
         <item name="android:paddingEnd">@dimen/safety_center_entry_padding_end</item>
-        <item name="android:paddingTop">20dp</item>
-        <item name="android:paddingBottom">20dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
         <item name="android:baselineAligned">false</item>
         <item name="android:minHeight">?android:attr/listPreferredItemHeight</item>
         <item name="android:gravity">center_vertical</item>
@@ -491,8 +491,10 @@
 
     <style name="SafetyCenterEntryIconFrame"
            parent="android:Widget.DeviceDefault">
-        <item name="android:layout_width">68dp</item>
+        <item name="android:layout_width">64dp</item>
         <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingEnd">20dp</item>
     </style>
 
     <style name="SafetyCenterEntryIcon"
@@ -530,7 +532,6 @@
            parent="android:Widget.DeviceDefault">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">4dp</item>
         <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Body</item>
         <item name="android:maxLines">4</item>
     </style>
@@ -597,7 +598,7 @@
 
     <style name="SafetyCenterGroupEntries"
         parent="android:Widget.DeviceDefault">
-        <item name="android:paddingBottom">18dp</item>
+        <item name="android:paddingBottom">14dp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">vertical</item>
@@ -628,11 +629,43 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingEnd">@dimen/safety_center_entry_padding_end</item>
-        <item name="android:paddingTop">20dp</item>
-        <item name="android:paddingBottom">20dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
         <item name="android:baselineAligned">false</item>
         <item name="android:minHeight">?android:attr/listPreferredItemHeight</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:orientation">horizontal</item>
     </style>
+
+    <style name="SafetyCenterStaticEntry"
+        parent="android:Widget.DeviceDefault">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingEnd">24dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:minHeight">?android:attr/listPreferredItemHeight</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="SafetyCenterStaticEntryTitle"
+        parent="android:Widget.DeviceDefault">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Headline.Entry</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:fadingEdge">horizontal</item>
+    </style>
+
+    <style name="SafetyCenterStaticEntrySummary"
+        parent="android:Widget.DeviceDefault">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Body</item>
+        <item name="android:maxLines">4</item>
+    </style>
+
 </resources>
