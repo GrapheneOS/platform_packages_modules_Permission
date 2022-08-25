@@ -18,11 +18,11 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="scanning_title" msgid="5424849039854311398">"स्कैन किया जा रहा है"</string>
-    <string name="loading_summary" msgid="3740846439782713910">"डिवाइस की सेटिंग की जांच हो रही है…"</string>
+    <string name="loading_summary" msgid="3740846439782713910">"डिवाइस सेटिंग की जांच हो रही है…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"डिवाइस सुरक्षित लग रहा है"</string>
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"कोई समस्या नहीं मिली"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"सेटिंग देखें"</string>
-    <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"सेटिंग की लिस्ट की जांच करें"</string>
+    <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"सेटिंग की सूची देखें"</string>
     <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"डिवाइस की सुरक्षा शायद खतरे में है"</string>
     <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"डिवाइस की सुरक्षा खतरे में है"</string>
     <string name="overall_severity_level_safety_recommendation_title" msgid="6436208984463981167">"शायद आपकी सुरक्षा खतरे में है"</string>
