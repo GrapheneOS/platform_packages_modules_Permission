@@ -25,9 +25,10 @@ android_test {
     srcs: [
         "java/**/*.kt",
     ],
-    required: [
-        "SafetyCenterConfigTestsOverlay",
+    data: [
+        ":SafetyCenterConfigTestsOverlay",
     ],
+    per_testcase_directory: true,
     static_libs: [
         "compatibility-device-util-axt",
         "kotlinx-coroutines-android",
