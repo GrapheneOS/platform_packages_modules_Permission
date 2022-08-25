@@ -1170,7 +1170,7 @@ final class SafetyCenterDataTracker {
             @NonNull SafetySourcesGroup safetySourcesGroup,
             @NonNull String defaultPackageName,
             @NonNull UserProfileGroup userProfileGroup) {
-        int groupSafetyCenterEntryLevel = SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN;
+        int groupSafetyCenterEntryLevel = SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED;
 
         List<SafetySource> safetySources = safetySourcesGroup.getSafetySources();
         List<SafetyCenterEntry> entries = new ArrayList<>(safetySources.size());
@@ -1178,7 +1178,7 @@ final class SafetyCenterDataTracker {
             SafetySource safetySource = safetySources.get(i);
 
             groupSafetyCenterEntryLevel =
-                    Math.max(
+                    mergeSafetyCenterEntrySeverityLevels(
                             groupSafetyCenterEntryLevel,
                             addSafetyCenterEntry(
                                     safetyCenterOverallState,
@@ -1200,7 +1200,7 @@ final class SafetyCenterDataTracker {
                         userProfileGroup.isManagedUserRunning(managedProfileUserId);
 
                 groupSafetyCenterEntryLevel =
-                        Math.max(
+                        mergeSafetyCenterEntrySeverityLevels(
                                 groupSafetyCenterEntryLevel,
                                 addSafetyCenterEntry(
                                         safetyCenterOverallState,
@@ -1244,82 +1244,104 @@ final class SafetyCenterDataTracker {
                                 .build()));
     }
 
+    @SafetyCenterEntry.EntrySeverityLevel
+    private static int mergeSafetyCenterEntrySeverityLevels(
+            @SafetyCenterEntry.EntrySeverityLevel int left,
+            @SafetyCenterEntry.EntrySeverityLevel int right) {
+        if (left > SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK
+                || right > SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK) {
+            return Math.max(left, right);
+        }
+        if (left == SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN
+                || right == SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN) {
+            return SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN;
+        }
+        return Math.max(left, right);
+    }
+
     @Nullable
     private CharSequence getSafetyCenterEntryGroupSummary(
             @NonNull SafetySourcesGroup safetySourcesGroup,
             @SafetyCenterEntry.EntrySeverityLevel int groupSafetyCenterEntryLevel,
             @NonNull List<SafetyCenterEntry> entries) {
+        switch (groupSafetyCenterEntryLevel) {
+            case SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING:
+            case SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_RECOMMENDATION:
+            case SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK:
+                for (int i = 0; i < entries.size(); i++) {
+                    SafetyCenterEntry entry = entries.get(i);
 
-        // if there is any critical entry, use the summary of the first critical entry
-        // else if there is any recommendation entry, use the summary of the first recommendation
-        // entry
-        if (groupSafetyCenterEntryLevel >= SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_RECOMMENDATION) {
-            for (int i = 0; i < entries.size(); i++) {
-                SafetyCenterEntry entry = entries.get(i);
+                    CharSequence entrySummary = entry.getSummary();
+                    if (entry.getSeverityLevel() != groupSafetyCenterEntryLevel
+                            || entrySummary == null) {
+                        continue;
+                    }
 
-                CharSequence entrySummary = entry.getSummary();
-                if (entry.getSeverityLevel() == groupSafetyCenterEntryLevel
-                        && entrySummary != null) {
-                    return entrySummary;
-                }
-            }
-        }
+                    if (groupSafetyCenterEntryLevel > SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK) {
+                        return entrySummary;
+                    }
 
-        // else if there is any information entry with an information issue, use the summary of
-        // the first information source with an information issue
-        if (groupSafetyCenterEntryLevel >= SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK) {
-            for (int i = 0; i < entries.size(); i++) {
-                SafetyCenterEntry entry = entries.get(i);
-                CharSequence entrySummary = entry.getSummary();
-                if (entry.getSeverityLevel() == SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK
-                        && entrySummary != null) {
                     SafetySourceKey key = toSafetySourceKey(entry.getId());
                     SafetySourceData safetySourceData = mSafetySourceDataForKey.get(key);
                     boolean hasIssues =
                             safetySourceData != null && !safetySourceData.getIssues().isEmpty();
+
                     if (hasIssues) {
                         return entrySummary;
                     }
                 }
-            }
-        }
 
-        // else if there is any information entry, use the default summary
-        if (groupSafetyCenterEntryLevel >= SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK) {
-            return getDefaultGroupSummary(safetySourcesGroup, entries);
-        }
-
-        // else if all entry are unspecified, use the default summary
-        if (groupSafetyCenterEntryLevel >= SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED) {
-            boolean areAllEntriesUnspecified = true;
-            for (int i = 0; i < entries.size(); i++) {
-                SafetyCenterEntry entry = entries.get(i);
-                if (entry.getSeverityLevel()
-                        != SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED) {
-                    areAllEntriesUnspecified = false;
-                    break;
-                }
-            }
-            if (areAllEntriesUnspecified) {
                 return getDefaultGroupSummary(safetySourcesGroup, entries);
-            }
+            case SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED:
+                return getDefaultGroupSummary(safetySourcesGroup, entries);
+            case SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN:
+                int errorEntries = 0;
+                for (int i = 0; i < entries.size(); i++) {
+                    SafetyCenterEntry entry = entries.get(i);
+
+                    SafetySourceKey key = toSafetySourceKey(entry.getId());
+                    if (mSafetySourceErrors.contains(key)) {
+                        errorEntries++;
+                    }
+                }
+
+                if (errorEntries > 0) {
+                    return getRefreshErrorString(errorEntries);
+                }
+
+                return mSafetyCenterResourcesContext.getStringByName("group_unknown_summary");
         }
 
-        // else if there is an unknown entry with an error, show the error state summary
-        int errorEntries = 0;
-        for (int i = 0; i < entries.size(); i++) {
-            SafetyCenterEntry entry = entries.get(i);
-            SafetySourceKey key = toSafetySourceKey(entry.getId());
-            if (mSafetySourceErrors.contains(key)) {
-                errorEntries++;
+        Log.w(
+                TAG,
+                "Unexpected SafetyCenterEntry.EntrySeverityLevel for SafetyCenterEntryGroup: "
+                        + groupSafetyCenterEntryLevel);
+        return getDefaultGroupSummary(safetySourcesGroup, entries);
+    }
+
+    @Nullable
+    private CharSequence getDefaultGroupSummary(
+            @NonNull SafetySourcesGroup safetySourcesGroup,
+            @NonNull List<SafetyCenterEntry> entries) {
+        CharSequence groupSummary =
+                mSafetyCenterResourcesContext.getOptionalString(
+                        safetySourcesGroup.getSummaryResId());
+
+        if (safetySourcesGroup.getId().equals(ANDROID_LOCK_SCREEN_SOURCES_GROUP_ID)
+                && TextUtils.isEmpty(groupSummary)) {
+            List<CharSequence> titles = new ArrayList<>();
+            for (int i = 0; i < entries.size(); i++) {
+                titles.add(entries.get(i).getTitle());
             }
-        }
-        if (errorEntries > 0) {
-            return getRefreshErrorString(errorEntries);
+            groupSummary =
+                    ListFormatter.getInstance(
+                                    ULocale.getDefault(ULocale.Category.FORMAT),
+                                    ListFormatter.Type.UNITS,
+                                    ListFormatter.Width.WIDE)
+                            .format(titles);
         }
 
-        // else show the unknown state summary
-        return mSafetyCenterResourcesContext.getStringByName("group_unknown_summary");
+        return groupSummary;
     }
 
     @SafetyCenterEntry.EntrySeverityLevel
@@ -1339,7 +1361,7 @@ final class SafetyCenterDataTracker {
                         isUserManaged,
                         isManagedUserRunning);
         if (safetyCenterEntry == null) {
-            return SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN;
+            return SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED;
         }
 
         safetyCenterOverallState.addEntryOverallSeverityLevel(
@@ -1911,6 +1933,7 @@ final class SafetyCenterDataTracker {
         return SafetyCenterEntry.IconAction.ICON_ACTION_TYPE_INFO;
     }
 
+    @NonNull
     private String getSafetyCenterStatusTitle(
             @SafetyCenterStatus.OverallSeverityLevel int overallSeverityLevel,
             @NonNull List<SafetyCenterIssueWithCategory> safetyCenterIssuesWithCategories,
@@ -1975,6 +1998,7 @@ final class SafetyCenterDataTracker {
         return generalString;
     }
 
+    @NonNull
     private String getSafetyCenterStatusSummary(
             @SafetyCenterStatus.OverallSeverityLevel int overallSeverityLevel,
             @SafetyCenterStatus.RefreshStatus int refreshStatus,
@@ -2003,31 +2027,6 @@ final class SafetyCenterDataTracker {
 
         Log.w(TAG, "Unexpected SafetyCenterStatus.OverallSeverityLevel: " + overallSeverityLevel);
         return "";
-    }
-
-    @Nullable
-    private CharSequence getDefaultGroupSummary(
-            @NonNull SafetySourcesGroup safetySourcesGroup,
-            @NonNull List<SafetyCenterEntry> entries) {
-        CharSequence groupSummary =
-                mSafetyCenterResourcesContext.getOptionalString(
-                        safetySourcesGroup.getSummaryResId());
-
-        if (safetySourcesGroup.getId().equals(ANDROID_LOCK_SCREEN_SOURCES_GROUP_ID)
-                && TextUtils.isEmpty(groupSummary)) {
-            List<CharSequence> titles = new ArrayList<>();
-            for (int i = 0; i < entries.size(); i++) {
-                titles.add(entries.get(i).getTitle());
-            }
-            groupSummary =
-                    ListFormatter.getInstance(
-                                    ULocale.getDefault(ULocale.Category.FORMAT),
-                                    ListFormatter.Type.UNITS,
-                                    ListFormatter.Width.WIDE)
-                            .format(titles);
-        }
-
-        return groupSummary;
     }
 
     @NonNull
@@ -2081,7 +2080,7 @@ final class SafetyCenterDataTracker {
     }
 
     @NonNull
-    SafetySourceKey toSafetySourceKey(@NonNull String safetyCenterEntryIdString) {
+    private static SafetySourceKey toSafetySourceKey(@NonNull String safetyCenterEntryIdString) {
         SafetyCenterEntryId id = SafetyCenterIds.entryIdFromString(safetyCenterEntryIdString);
         return SafetySourceKey.of(id.getSafetySourceId(), id.getUserId());
     }
