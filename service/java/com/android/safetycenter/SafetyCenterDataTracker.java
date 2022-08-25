@@ -477,19 +477,9 @@ final class SafetyCenterDataTracker {
      * Returns a default {@link SafetyCenterData} object to be returned when the API is disabled.
      */
     @NonNull
-    SafetyCenterData getDefaultSafetyCenterData() {
+    static SafetyCenterData getDefaultSafetyCenterData() {
         return new SafetyCenterData(
-                new SafetyCenterStatus.Builder(
-                                getSafetyCenterStatusTitle(
-                                        SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN,
-                                        new ArrayList<>(),
-                                        SafetyCenterStatus.REFRESH_STATUS_NONE,
-                                        false),
-                                getSafetyCenterStatusSummary(
-                                        SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN,
-                                        SafetyCenterStatus.REFRESH_STATUS_NONE,
-                                        0,
-                                        false))
+                new SafetyCenterStatus.Builder("", "")
                         .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN)
                         .build(),
                 emptyList(),
