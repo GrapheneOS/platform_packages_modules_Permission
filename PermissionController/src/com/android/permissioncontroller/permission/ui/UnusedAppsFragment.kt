@@ -24,6 +24,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.UserHandle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -42,11 +45,11 @@ import com.android.permissioncontroller.permission.ui.model.UnusedAppsViewModel.
 import com.android.permissioncontroller.permission.ui.model.UnusedAppsViewModelFactory
 import com.android.permissioncontroller.permission.utils.IPC
 import com.android.permissioncontroller.permission.utils.KotlinUtils
+import java.text.Collator
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.text.Collator
 
 /**
  * A fragment displaying all applications that are unused as well as the option to remove them
@@ -90,8 +93,11 @@ class UnusedAppsFragment<PF, UnusedAppPref> : Fragment()
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val preferenceFragment: PF = requirePreferenceFragment()
         isFirstLoad = true
 
@@ -125,6 +131,7 @@ class UnusedAppsFragment<PF, UnusedAppPref> : Fragment()
         } else {
             updatePackages(viewModel.unusedPackageCategoriesLiveData.value!!)
         }
+        return super.onCreateView(inflater, container, savedInstanceState)
     }
 
     override fun onStart() {

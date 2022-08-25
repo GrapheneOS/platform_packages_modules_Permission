@@ -44,8 +44,6 @@ class MoreIssuesCardPreference(
         layoutResource = R.layout.preference_more_issues_card
         widgetLayoutResource = R.layout.preference_expand_more_issues_widget
         onPreferenceClickListener = onClickListener
-
-        setTitle(R.string.safety_center_more_issues_card_title)
     }
 
     override fun onBindViewHolder(holder: PreferenceViewHolder) {

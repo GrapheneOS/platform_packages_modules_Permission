@@ -142,7 +142,7 @@
         <item name="android:paddingStart">24dp</item>
         <item name="android:paddingEnd">24dp</item>
         <item name="android:paddingTop">24dp</item>
-        <item name="android:paddingBottom">24dp</item>
+        <item name="android:paddingBottom">@dimen/safety_center_card_margin_bottom</item>
         <item name="android:layout_marginStart">16dp</item>
         <item name="android:layout_marginEnd">16dp</item>
         <item name="android:layout_marginTop">8dp</item>
@@ -160,11 +160,17 @@
     <style name="SafetyCenter.MaterialActionButton"
            parent="@style/Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="android:theme">@style/Theme.MaterialComponents</item>
-        <item name="android:height">56dp</item>
+        <item name="android:minHeight">56dp</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingEnd">24dp</item>
+        <item name="android:paddingTop">18dp</item>
+        <item name="android:paddingBottom">18dp</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
         <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.ActionButton</item>
         <item name="android:textColor">?attr/textColorScActionButton</item>
+        <item name="android:maxLines">3</item>
+        <item name="android:ellipsize">end</item>
         <item name="cornerRadius">12dp</item>
         <item name="rippleColor">?android:colorControlHighlight</item>
     </style>
@@ -268,9 +274,9 @@
         <item name="app:layout_constraintTop_toBottomOf">@id/rescan_button</item>
         <item name="app:layout_constraintStart_toStartOf">parent</item>
         <item name="app:layout_constraintEnd_toEndOf">parent</item>
-        <item name="android:layout_marginTop">20dp</item>
-        <item name="android:layout_marginBottom">0dp</item>
         <item name="android:layout_gravity">center</item>
+        <item name="android:paddingTop">20dp</item>
+        <item name="android:paddingBottom">20dp</item>
     </style>
     <!-- END SAFETY STATUS CARD -->
 
@@ -306,6 +312,7 @@
         <item name="android:layout_marginTop">4dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
+        <item name="app:layout_constraintStart_toStartOf">@id/issue_card_title</item>
         <item name="app:layout_constraintTop_toBottomOf">@id/issue_card_title</item>
     </style>
 
@@ -314,6 +321,7 @@
         <item name="android:layout_marginTop">16dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
+        <item name="app:layout_constraintStart_toStartOf">@id/issue_card_title</item>
         <item name="app:layout_constraintTop_toBottomOf">@id/issue_card_subtitle</item>
     </style>
 
@@ -329,13 +337,14 @@
     </style>
 
     <style name="SafetyCenterIssueSafetyProtectionSection">
-        <item name="android:paddingTop">20dp</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">0dp</item>
         <item name="app:layout_constraintTop_toBottomOf">@id/issue_card_action_button_list</item>
         <item name="app:layout_constraintStart_toStartOf">parent</item>
         <item name="app:layout_constraintEnd_toEndOf">parent</item>
+        <item name="android:paddingTop">20dp</item>
+        <item name="android:paddingBottom">20dp</item>
     </style>
 
     <style name="SafetyCenterIssueCardResolvedImage" parent="android:Widget.DeviceDefault">
@@ -382,9 +391,11 @@
         <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Body</item>
         <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
         <item name="android:layout_marginStart">20dp</item>
-        <item name="android:maxLines">1</item>
+        <item name="android:layout_marginEnd">20dp</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
         <item name="app:layout_constraintTop_toTopOf">parent</item>
         <item name="app:layout_constraintBottom_toBottomOf">parent</item>
         <item name="app:layout_constraintStart_toEndOf">@id/status_icon</item>
@@ -406,7 +417,6 @@
            parent="android:Widget.DeviceDefault">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_marginStart">20dp</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:orientation">vertical</item>
         <item name="app:layout_constraintTop_toTopOf">parent</item>
@@ -418,7 +428,6 @@
            parent="android:Widget.DeviceDefault">
         <item name="android:layout_height">28dp</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_marginStart">20dp</item>
         <item name="android:orientation">vertical</item>
         <item name="android:paddingStart">8dp</item>
         <item name="android:paddingEnd">8dp</item>
