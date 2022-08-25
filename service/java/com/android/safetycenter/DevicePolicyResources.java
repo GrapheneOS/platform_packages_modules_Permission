@@ -23,6 +23,7 @@ import android.annotation.StringRes;
 import android.app.admin.DevicePolicyManager;
 import android.app.admin.DevicePolicyResourcesManager;
 import android.content.Context;
+import android.os.Binder;
 
 import androidx.annotation.RequiresApi;
 
@@ -70,8 +71,17 @@ final class DevicePolicyResources {
             @NonNull Context context,
             @NonNull String devicePolicyIdentifier,
             @NonNull Supplier<String> defaultValueLoader) {
-        return context.getSystemService(DevicePolicyManager.class)
-                .getResources()
-                .getString(SAFETY_CENTER_PREFIX + devicePolicyIdentifier, defaultValueLoader);
+        // This call requires the caller’s identity to match the package name of the given context.
+        // However, the SafetyCenterResourcesContext’s has package name "android", which does not
+        // necessarily match the caller’s package when making Binder calls, so the calling identity
+        // has to be cleared.
+        final long callingId = Binder.clearCallingIdentity();
+        try {
+            return context.getSystemService(DevicePolicyManager.class)
+                    .getResources()
+                    .getString(SAFETY_CENTER_PREFIX + devicePolicyIdentifier, defaultValueLoader);
+        } finally {
+            Binder.restoreCallingIdentity(callingId);
+        }
     }
 }
