@@ -23,10 +23,8 @@
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"未發現問題"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"檢查設定"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"查看設定清單"</string>
-    <!-- no translation found for overall_severity_level_device_recommendation_title (5250040236433061827) -->
-    <skip />
-    <!-- no translation found for overall_severity_level_critical_device_warning_title (5901771721834272596) -->
-    <skip />
+    <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"裝置可能面臨風險"</string>
+    <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"裝置正面臨風險"</string>
     <string name="overall_severity_level_safety_recommendation_title" msgid="6436208984463981167">"您可能面臨風險"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="1039142045555227172">"您正面臨風險"</string>
     <string name="overall_severity_n_alerts_summary" msgid="1105615451561197136">"{count,plural, =1{# 個警示}other{# 個警示}}"</string>

@@ -23,10 +23,8 @@
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"Не се најдени проблеми"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Прегледајте ги поставките"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Проверете го списокот со поставки"</string>
-    <!-- no translation found for overall_severity_level_device_recommendation_title (5250040236433061827) -->
-    <skip />
-    <!-- no translation found for overall_severity_level_critical_device_warning_title (5901771721834272596) -->
-    <skip />
+    <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"Уредот можеби е изложен на ризик"</string>
+    <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"Уредот е изложен на ризик"</string>
     <string name="overall_severity_level_safety_recommendation_title" msgid="6436208984463981167">"Можеби сте под ризик"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="1039142045555227172">"Под ризик сте"</string>
     <string name="overall_severity_n_alerts_summary" msgid="1105615451561197136">"{count,plural, =1{# предупредување}one{# предупредување}other{# предупредувања}}"</string>

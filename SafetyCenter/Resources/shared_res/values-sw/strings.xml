@@ -23,13 +23,11 @@
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"Haikupata hitilafu yoyote"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Kagua mipangilio"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Kagua orodha ya mipangilio"</string>
-    <!-- no translation found for overall_severity_level_device_recommendation_title (5250040236433061827) -->
-    <skip />
-    <!-- no translation found for overall_severity_level_critical_device_warning_title (5901771721834272596) -->
-    <skip />
+    <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"Huenda kifaa kikawa hatarini"</string>
+    <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"Kifaa kiko hatarini"</string>
     <string name="overall_severity_level_safety_recommendation_title" msgid="6436208984463981167">"Huenda uko hatarini"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="1039142045555227172">"Uko hatarini"</string>
-    <string name="overall_severity_n_alerts_summary" msgid="1105615451561197136">"{count,plural, =1{Arifa #}other{Arifa#}}"</string>
+    <string name="overall_severity_n_alerts_summary" msgid="1105615451561197136">"{count,plural, =1{Arifa #}other{Arifa #}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Imeshindwa kufungua ukurasa"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Imeshindwa kutia alama kuwa arifa imeshughulikiwa"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"Tumeshindwa kuonyesha upya mipangilio"</string>
