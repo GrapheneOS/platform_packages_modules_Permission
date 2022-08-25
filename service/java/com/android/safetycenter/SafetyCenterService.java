@@ -365,11 +365,7 @@ public final class SafetyCenterService extends SystemService {
             mAppOpsManager.checkPackage(Binder.getCallingUid(), packageName);
             if (!enforceCrossUserPermission("getSafetyCenterData", userId)
                     || !checkApiEnabled("getSafetyCenterData")) {
-                // This call is thread safe and there is no need to hold the mApiLock
-                @SuppressWarnings("GuardedBy")
-                SafetyCenterData defaultData =
-                        mSafetyCenterDataTracker.getDefaultSafetyCenterData();
-                return defaultData;
+                return SafetyCenterDataTracker.getDefaultSafetyCenterData();
             }
 
             UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
