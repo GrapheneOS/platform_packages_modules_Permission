@@ -199,7 +199,7 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"إعدادات التطبيقات غير المُستخدَمة"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"إزالة الأذونات في حال عدم استخدام التطبيق"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"إزالة الأذونات وإخلاء مساحة"</string>
-    <string name="unused_apps_label_v2" msgid="7058776770056517980">"إيقاف نشاط تطبيق مؤقتًا عند عدم استخدامه"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"إيقاف نشاط التطبيق مؤقتًا عند عدم استخدامه"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"إزالة الأذونات وحذف الملفات المؤقتة وإيقاف الإشعارات"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"لحماية بياناتك، ستتم إزالة أذونات هذا التطبيق إذا لم يتم استخدامه لبضعة أشهر."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"لحماية بياناتك، إذا لم يتم استخدام التطبيق لبضعة أشهر، ستتم إزالة الأذونات التالية: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
