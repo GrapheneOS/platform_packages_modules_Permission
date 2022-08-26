@@ -55,7 +55,6 @@ final class SafetyCenterListeners {
     private final SparseArray<RemoteCallbackList<IOnSafetyCenterDataChangedListener>>
             mSafetyCenterDataChangedListeners = new SparseArray<>();
 
-    /** Creates a {@link SafetyCenterListeners} with the given {@link SafetyCenterDataTracker}. */
     SafetyCenterListeners(@NonNull SafetyCenterDataTracker safetyCenterDataTracker) {
         mSafetyCenterDataTracker = safetyCenterDataTracker;
     }

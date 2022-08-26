@@ -71,6 +71,9 @@ final class SafetyCenterFlags {
     private static final String PROPERTY_ISSUE_CATEGORY_ALLOWLISTS =
             "safety_center_issue_category_allowlists";
 
+    private static final String PROPERTY_ALLOW_WESTWORLD_LOGGING_IN_TESTS =
+            "safety_center_allow_westworld_logging_in_tests";
+
     private static final Duration REFRESH_SOURCES_TIMEOUT_DEFAULT_DURATION = Duration.ofSeconds(15);
 
     private static final Duration RESOLVING_ACTION_TIMEOUT_DEFAULT_DURATION =
@@ -103,6 +106,8 @@ final class SafetyCenterFlags {
                 getBackgroundRefreshDeniedSourceIds());
         printFlag(
                 fout, PROPERTY_REFRESH_SOURCES_TIMEOUTS_MILLIS, getRefreshSourcesTimeoutsMillis());
+        printFlag(
+                fout, PROPERTY_ALLOW_WESTWORLD_LOGGING_IN_TESTS, getAllowWestworldLoggingInTests());
         fout.println();
     }
 
@@ -276,6 +281,11 @@ final class SafetyCenterFlags {
     @NonNull
     private static String getIssueCategoryAllowlists() {
         return getString(PROPERTY_ISSUE_CATEGORY_ALLOWLISTS, "");
+    }
+
+    /** Returns whether we allow Westworld logging in tests. */
+    static boolean getAllowWestworldLoggingInTests() {
+        return getBoolean(PROPERTY_ALLOW_WESTWORLD_LOGGING_IN_TESTS, false);
     }
 
     @NonNull
