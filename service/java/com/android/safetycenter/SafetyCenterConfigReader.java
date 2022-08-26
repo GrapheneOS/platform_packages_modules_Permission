@@ -143,9 +143,12 @@ final class SafetyCenterConfigReader {
         return getCurrentConfigInternal().getExternalSafetySources().containsKey(safetySourceId);
     }
 
-    /** Returns whether the {@link SafetyCenterConfig} is currently overridden. */
-    boolean isOverrideForTestsActive() {
-        return mConfigInternalOverrideForTests != null;
+    /** Returns whether the {@link SafetyCenterConfig} allows Westworld logging. */
+    boolean allowsWestworldLogging() {
+        if (!isOverrideForTestsActive()) {
+            return true;
+        }
+        return SafetyCenterFlags.getAllowWestworldLoggingInTests();
     }
 
     /**
@@ -155,6 +158,11 @@ final class SafetyCenterConfigReader {
     @NonNull
     List<Broadcast> getBroadcasts() {
         return getCurrentConfigInternal().getBroadcasts();
+    }
+
+    /** Returns whether the {@link SafetyCenterConfig} is currently overridden for tests. */
+    private boolean isOverrideForTestsActive() {
+        return mConfigInternalOverrideForTests != null;
     }
 
     @NonNull
