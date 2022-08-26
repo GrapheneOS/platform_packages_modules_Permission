@@ -41,9 +41,6 @@ import android.annotation.Nullable;
 import android.app.BroadcastOptions;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.ResolveInfoFlags;
-import android.content.pm.ResolveInfo;
 import android.os.Binder;
 import android.os.UserHandle;
 import android.safetycenter.SafetyCenterManager;
@@ -54,6 +51,7 @@ import android.util.SparseArray;
 
 import androidx.annotation.RequiresApi;
 
+import com.android.permission.util.PackageUtils;
 import com.android.safetycenter.SafetyCenterConfigReader.Broadcast;
 
 import java.time.Duration;
@@ -258,21 +256,9 @@ final class SafetyCenterBroadcastDispatcher {
 
     private boolean doesBroadcastResolve(
             @NonNull Intent broadcastIntent, @NonNull UserHandle userHandle) {
-        return !queryBroadcastReceiversAsUser(broadcastIntent, userHandle).isEmpty();
-    }
-
-    @NonNull
-    private List<ResolveInfo> queryBroadcastReceiversAsUser(
-            @NonNull Intent broadcastIntent, @NonNull UserHandle userHandle) {
-        PackageManager packageManager = mContext.getPackageManager();
-        // This call requires the INTERACT_ACROSS_USERS permission.
-        final long callingId = Binder.clearCallingIdentity();
-        try {
-            return packageManager.queryBroadcastReceiversAsUser(
-                    broadcastIntent, ResolveInfoFlags.of(0), userHandle);
-        } finally {
-            Binder.restoreCallingIdentity(callingId);
-        }
+        return !PackageUtils.queryUnfilteredBroadcastReceiversAsUser(
+                        broadcastIntent, 0, userHandle.getIdentifier(), mContext)
+                .isEmpty();
     }
 
     @NonNull
