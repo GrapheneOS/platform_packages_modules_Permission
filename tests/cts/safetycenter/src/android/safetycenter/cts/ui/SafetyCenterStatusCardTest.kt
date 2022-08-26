@@ -15,6 +15,7 @@
  */
 package android.safetycenter.cts.ui
 
+import android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE
 import android.content.Context
 import android.safetycenter.cts.testing.SafetyCenterActivityLauncher.launchSafetyCenterActivity
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_CONFIG
@@ -22,6 +23,9 @@ import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsHelper
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import android.safetycenter.cts.testing.SafetySourceCtsData
+import android.safetycenter.cts.testing.SafetySourceReceiver
+import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.SafetySourceDataKey
+import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermissionIdentity
 import android.safetycenter.cts.testing.UiTestHelper.STATUS_CARD_RESCAN_BUTTON_LABEL
 import android.safetycenter.cts.testing.UiTestHelper.findButton
 import android.safetycenter.cts.testing.UiTestHelper.waitButtonNotDisplayed
@@ -29,12 +33,12 @@ import android.support.test.uiautomator.By
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.compatibility.common.util.UiAutomatorUtils.waitFindObject
-import java.util.regex.Pattern
 import org.junit.After
 import org.junit.Assume.assumeTrue
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import java.util.regex.Pattern
 
 /** CTS tests for the Safety Center Status Card. */
 @RunWith(AndroidJUnit4::class)
@@ -84,6 +88,24 @@ class SafetyCenterStatusCardTest {
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.information)
 
         context.launchSafetyCenterActivity { findButton(STATUS_CARD_RESCAN_BUTTON_LABEL) }
+    }
+
+    @Test
+    fun statusCard_withUnknownStatusAndNoIssues_hasRescanButton() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+
+        SafetySourceReceiver.safetySourceData[
+                SafetySourceDataKey(
+                    SafetySourceDataKey.Reason.REFRESH_GET_DATA,
+                    SINGLE_SOURCE_ID
+                )] = null
+        SafetySourceReceiver.shouldReportSafetySourceError = true
+
+        context.launchSafetyCenterActivity {
+            callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
+                findButton(STATUS_CARD_RESCAN_BUTTON_LABEL)
+            }
+        }
     }
 
     @Test
