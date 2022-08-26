@@ -559,11 +559,13 @@ public final class SafetyCenterService extends SystemService {
                 return;
             }
 
+            List<UserProfileGroup> userProfileGroups =
+                    UserProfileGroup.getAllUserProfileGroups(getContext());
             synchronized (mApiLock) {
                 // TODO(b/236693607): Should tests leave real data untouched?
                 clearDataLocked();
-                // TODO(b/223550097): Should we dispatch a new listener update here? This call can
-                //  modify the SafetyCenterData.
+                mSafetyCenterListeners.deliverUpdateForUserProfileGroups(
+                        userProfileGroups, true, null);
             }
         }
 
@@ -577,12 +579,14 @@ public final class SafetyCenterService extends SystemService {
                 return;
             }
 
+            List<UserProfileGroup> userProfileGroups =
+                    UserProfileGroup.getAllUserProfileGroups(getContext());
             synchronized (mApiLock) {
                 mSafetyCenterConfigReader.setConfigOverrideForTests(safetyCenterConfig);
                 // TODO(b/236693607): Should tests leave real data untouched?
                 clearDataLocked();
-                // TODO(b/223550097): Should we clear the listeners here? Or should we dispatch a
-                //  new listener update since the SafetyCenterData will have changed?
+                mSafetyCenterListeners.deliverUpdateForUserProfileGroups(
+                        userProfileGroups, true, null);
             }
         }
 
@@ -595,12 +599,14 @@ public final class SafetyCenterService extends SystemService {
                 return;
             }
 
+            List<UserProfileGroup> userProfileGroups =
+                    UserProfileGroup.getAllUserProfileGroups(getContext());
             synchronized (mApiLock) {
                 mSafetyCenterConfigReader.clearConfigOverrideForTests();
                 // TODO(b/236693607): Should tests leave real data untouched?
                 clearDataLocked();
-                // TODO(b/223550097): Should we clear the listeners here? Or should we dispatch a
-                //  new listener update since the SafetyCenterData will have changed?
+                mSafetyCenterListeners.deliverUpdateForUserProfileGroups(
+                        userProfileGroups, true, null);
             }
         }
 
