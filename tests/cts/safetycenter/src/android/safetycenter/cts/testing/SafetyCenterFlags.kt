@@ -219,15 +219,23 @@ object SafetyCenterFlags {
             .forEach { writeDeviceConfigProperty(it.name, it.defaultStringValue) }
     }
 
-    /** Resets the Safety Center flags based on the existing [snapshot] captured during [setup]. */
+    /**
+     * Resets the Safety Center flags based on the existing [snapshot] captured during [setup].
+     *
+     * This doesn't apply to [isEnabled] as it is handled separately by [SafetyCenterCtsHelper]:
+     * there is a listener that listens to changes to this flag in system server, and we need to
+     * ensure we wait for it to complete when modifying this flag.
+     */
     fun reset() {
         // Write flags one by one instead of using `DeviceConfig#setProperties` as the latter does
-        // not work when DeviceConfig sync is disabled.
-        snapshot.keyset.forEach {
-            val key = it
-            val value = snapshot.getString(key, /* defaultValue */ null)
-            writeDeviceConfigProperty(key, value)
-        }
+        // not work when DeviceConfig sync is disabled and does not take uninitialized values into
+        // account.
+        FLAGS.filter { it.name != isEnabledFlag.name }
+            .forEach {
+                val key = it.name
+                val value = snapshot.getString(key, /* defaultValue */ null)
+                writeDeviceConfigProperty(key, value)
+            }
     }
 
     /** Sets the [refreshTimeouts] for all refresh reasons to the given [refreshTimeout]. */
