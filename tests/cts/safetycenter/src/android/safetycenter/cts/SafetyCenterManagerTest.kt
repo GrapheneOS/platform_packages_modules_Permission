@@ -306,7 +306,7 @@ class SafetyCenterManagerTest {
         SafetyCenterEntryOrGroup(
             SafetyCenterEntryGroup.Builder(
                     SafetyCenterCtsData.entryGroupId(MIXED_COLLAPSIBLE_GROUP_ID), "OK")
-                .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNSPECIFIED)
+                .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNKNOWN)
                 .setSummary(safetyCenterResourcesContext.getStringByName("group_unknown_summary"))
                 .setEntries(
                     listOf(
@@ -495,9 +495,9 @@ class SafetyCenterManagerTest {
                     SafetyCenterEntryGroup.Builder(
                             SafetyCenterCtsData.entryGroupId(DYNAMIC_GROUP_ID), "OK")
                         .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNKNOWN)
-                        .setSeverityUnspecifiedIconType(SEVERITY_UNSPECIFIED_ICON_TYPE_PRIVACY)
                         .setSummary(
                             safetyCenterResourcesContext.getStringByName("group_unknown_summary"))
+                        .setSeverityUnspecifiedIconType(SEVERITY_UNSPECIFIED_ICON_TYPE_PRIVACY)
                         .setEntries(
                             listOf(
                                 safetyCenterEntryDefaultBuilder(DYNAMIC_BAREBONE_ID).build(),
@@ -2055,7 +2055,7 @@ class SafetyCenterManagerTest {
             SOURCE_ID_4,
             safetySourceCtsData.buildSafetySourceDataWithSummary(
                 severityLevel = SEVERITY_LEVEL_INFORMATION,
-                entrySummary = "information with issues",
+                entrySummary = "information with issue",
                 withIssue = true))
         safetyCenterCtsHelper.setData(
             SOURCE_ID_5,
@@ -2071,12 +2071,11 @@ class SafetyCenterManagerTest {
                 severityLevel = SEVERITY_LEVEL_CRITICAL_WARNING, entrySummary = "critical 2"))
         // STATIC_IN_COLLAPSIBLE_ID behaves like an UNSPECIFIED dynamic entry
 
-        val summary =
-            safetyCenterManager
-                .getSafetyCenterDataWithPermission()
-                .getGroupSummary(SUMMARY_TEST_GROUP_ID)
+        val group =
+            safetyCenterManager.getSafetyCenterDataWithPermission().getGroup(SUMMARY_TEST_GROUP_ID)
 
-        assertThat(summary).isEqualTo("critical 1")
+        assertThat(group.summary).isEqualTo("critical 1")
+        assertThat(group.severityLevel).isEqualTo(ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING)
     }
 
     @Test
@@ -2097,7 +2096,7 @@ class SafetyCenterManagerTest {
             SOURCE_ID_4,
             safetySourceCtsData.buildSafetySourceDataWithSummary(
                 severityLevel = SEVERITY_LEVEL_INFORMATION,
-                entrySummary = "information with issues",
+                entrySummary = "information with issue",
                 withIssue = true))
         safetyCenterCtsHelper.setData(
             SOURCE_ID_5,
@@ -2110,82 +2109,104 @@ class SafetyCenterManagerTest {
         // SOURCE_ID_7 leave as an UNKNOWN dynamic entry
         // STATIC_IN_COLLAPSIBLE_ID behaves like an UNSPECIFIED dynamic entry
 
-        val summary =
-            safetyCenterManager
-                .getSafetyCenterDataWithPermission()
-                .getGroupSummary(SUMMARY_TEST_GROUP_ID)
+        val group =
+            safetyCenterManager.getSafetyCenterDataWithPermission().getGroup(SUMMARY_TEST_GROUP_ID)
 
-        assertThat(summary).isEqualTo("recommendation 1")
+        assertThat(group.summary).isEqualTo("recommendation 1")
+        assertThat(group.severityLevel).isEqualTo(ENTRY_SEVERITY_LEVEL_RECOMMENDATION)
     }
 
     @Test
-    fun getSafetyCenterData_withInformationWithIssuesEntriesAsMax_usesInformationSummaryForGroup() {
+    fun getSafetyCenterData_withInformationWithIssueEntriesAsMax_usesInformationSummaryForGroup() {
         safetyCenterCtsHelper.setConfig(SUMMARY_TEST_CONFIG)
-        safetyCenterManager.reportSafetySourceErrorWithPermission(
-            SOURCE_ID_1, SafetySourceErrorDetails(EVENT_SOURCE_STATE_CHANGED))
+        safetyCenterCtsHelper.setData(
+            SOURCE_ID_1,
+            safetySourceCtsData.buildSafetySourceDataWithSummary(
+                severityLevel = SEVERITY_LEVEL_UNSPECIFIED, entrySummary = "unspecified 1"))
         safetyCenterCtsHelper.setData(
             SOURCE_ID_2,
             safetySourceCtsData.buildSafetySourceDataWithSummary(
-                severityLevel = SEVERITY_LEVEL_UNSPECIFIED, entrySummary = "unspecified"))
+                severityLevel = SEVERITY_LEVEL_UNSPECIFIED, entrySummary = "unspecified 2"))
         safetyCenterCtsHelper.setData(
             SOURCE_ID_3,
             safetySourceCtsData.buildSafetySourceDataWithSummary(
                 severityLevel = SEVERITY_LEVEL_INFORMATION,
-                entrySummary = "information without issues"))
+                entrySummary = "information without issues 1"))
         safetyCenterCtsHelper.setData(
             SOURCE_ID_4,
             safetySourceCtsData.buildSafetySourceDataWithSummary(
                 severityLevel = SEVERITY_LEVEL_INFORMATION,
-                entrySummary = "information with issues 1",
+                entrySummary = "information with issue 1",
                 withIssue = true))
         safetyCenterCtsHelper.setData(
             SOURCE_ID_5,
             safetySourceCtsData.buildSafetySourceDataWithSummary(
                 severityLevel = SEVERITY_LEVEL_INFORMATION,
-                entrySummary = "information with issues 2",
+                entrySummary = "information with issue 2",
                 withIssue = true))
-        // SOURCE_ID_6 leave as an UNKNOWN dynamic entry
-        // SOURCE_ID_7 leave as an UNKNOWN dynamic entry
+        safetyCenterCtsHelper.setData(
+            SOURCE_ID_6,
+            safetySourceCtsData.buildSafetySourceDataWithSummary(
+                severityLevel = SEVERITY_LEVEL_INFORMATION,
+                entrySummary = "information without issues 2"))
+        safetyCenterCtsHelper.setData(
+            SOURCE_ID_7,
+            safetySourceCtsData.buildSafetySourceDataWithSummary(
+                severityLevel = SEVERITY_LEVEL_UNSPECIFIED, entrySummary = "unspecified 3"))
         // STATIC_IN_COLLAPSIBLE_ID behaves like an UNSPECIFIED dynamic entry
 
-        val summary =
-            safetyCenterManager
-                .getSafetyCenterDataWithPermission()
-                .getGroupSummary(SUMMARY_TEST_GROUP_ID)
+        val group =
+            safetyCenterManager.getSafetyCenterDataWithPermission().getGroup(SUMMARY_TEST_GROUP_ID)
 
-        assertThat(summary).isEqualTo("information with issues 1")
+        assertThat(group.summary).isEqualTo("information with issue 1")
+        assertThat(group.severityLevel).isEqualTo(ENTRY_SEVERITY_LEVEL_OK)
     }
 
     @Test
     fun getSafetyCenterData_withInformationEntriesAsMax_usesDefaultSummaryForGroup() {
         safetyCenterCtsHelper.setConfig(SUMMARY_TEST_CONFIG)
-        safetyCenterManager.reportSafetySourceErrorWithPermission(
-            SOURCE_ID_1, SafetySourceErrorDetails(EVENT_SOURCE_STATE_CHANGED))
+        safetyCenterCtsHelper.setData(
+            SOURCE_ID_1,
+            safetySourceCtsData.buildSafetySourceDataWithSummary(
+                severityLevel = SEVERITY_LEVEL_UNSPECIFIED, entrySummary = "unspecified 1"))
         safetyCenterCtsHelper.setData(
             SOURCE_ID_2,
             safetySourceCtsData.buildSafetySourceDataWithSummary(
-                severityLevel = SEVERITY_LEVEL_UNSPECIFIED, entrySummary = "unspecified"))
+                severityLevel = SEVERITY_LEVEL_UNSPECIFIED, entrySummary = "unspecified 2"))
         safetyCenterCtsHelper.setData(
             SOURCE_ID_3,
             safetySourceCtsData.buildSafetySourceDataWithSummary(
                 severityLevel = SEVERITY_LEVEL_INFORMATION,
-                entrySummary = "information without issues"))
-        // SOURCE_ID_4 leave as an UNKNOWN dynamic entry
-        // SOURCE_ID_5 leave as an UNKNOWN dynamic entry
-        // SOURCE_ID_6 leave as an UNKNOWN dynamic entry
-        // SOURCE_ID_7 leave as an UNKNOWN dynamic entry
+                entrySummary = "information without issues 1"))
+        safetyCenterCtsHelper.setData(
+            SOURCE_ID_4,
+            safetySourceCtsData.buildSafetySourceDataWithSummary(
+                severityLevel = SEVERITY_LEVEL_INFORMATION,
+                entrySummary = "information without issues 2"))
+        safetyCenterCtsHelper.setData(
+            SOURCE_ID_5,
+            safetySourceCtsData.buildSafetySourceDataWithSummary(
+                severityLevel = SEVERITY_LEVEL_UNSPECIFIED, entrySummary = "unspecified 3"))
+        safetyCenterCtsHelper.setData(
+            SOURCE_ID_6,
+            safetySourceCtsData.buildSafetySourceDataWithSummary(
+                severityLevel = SEVERITY_LEVEL_INFORMATION,
+                entrySummary = "information without issues 3"))
+        safetyCenterCtsHelper.setData(
+            SOURCE_ID_7,
+            safetySourceCtsData.buildSafetySourceDataWithSummary(
+                severityLevel = SEVERITY_LEVEL_UNSPECIFIED, entrySummary = "unspecified 4"))
         // STATIC_IN_COLLAPSIBLE_ID behaves like an UNSPECIFIED dynamic entry
 
-        val summary =
-            safetyCenterManager
-                .getSafetyCenterDataWithPermission()
-                .getGroupSummary(SUMMARY_TEST_GROUP_ID)
+        val group =
+            safetyCenterManager.getSafetyCenterDataWithPermission().getGroup(SUMMARY_TEST_GROUP_ID)
 
-        assertThat(summary).isEqualTo("OK")
+        assertThat(group.summary).isEqualTo("OK")
+        assertThat(group.severityLevel).isEqualTo(ENTRY_SEVERITY_LEVEL_OK)
     }
 
     @Test
-    fun getSafetyCenterData_withAllUnspecifiedEntries_usesDefaultSummaryForGroup() {
+    fun getSafetyCenterData_withUnspecifiedEntriesAsMax_usesDefaultSummaryForGroup() {
         safetyCenterCtsHelper.setConfig(SUMMARY_TEST_CONFIG)
         safetyCenterCtsHelper.setData(
             SOURCE_ID_1,
@@ -2206,7 +2227,9 @@ class SafetyCenterManagerTest {
         safetyCenterCtsHelper.setData(
             SOURCE_ID_5,
             safetySourceCtsData.buildSafetySourceDataWithSummary(
-                severityLevel = SEVERITY_LEVEL_UNSPECIFIED, entrySummary = "unspecified 5"))
+                severityLevel = SEVERITY_LEVEL_UNSPECIFIED,
+                entrySummary = "unspecified with issue",
+                withIssue = true))
         safetyCenterCtsHelper.setData(
             SOURCE_ID_6,
             safetySourceCtsData.buildSafetySourceDataWithSummary(
@@ -2217,125 +2240,155 @@ class SafetyCenterManagerTest {
                 severityLevel = SEVERITY_LEVEL_UNSPECIFIED, entrySummary = "unspecified 7"))
         // STATIC_IN_COLLAPSIBLE_ID behaves like an UNSPECIFIED dynamic entry
 
-        val summary =
-            safetyCenterManager
-                .getSafetyCenterDataWithPermission()
-                .getGroupSummary(SUMMARY_TEST_GROUP_ID)
+        val group =
+            safetyCenterManager.getSafetyCenterDataWithPermission().getGroup(SUMMARY_TEST_GROUP_ID)
 
-        assertThat(summary).isEqualTo("OK")
+        assertThat(group.summary).isEqualTo("OK")
+        assertThat(group.severityLevel).isEqualTo(ENTRY_SEVERITY_LEVEL_UNSPECIFIED)
     }
 
     @Test
-    fun getSafetyCenterData_withErrorEntriesAsMax_usesPluralErrorSummaryForGroup() {
+    fun getSafetyCenterData_withErrorEntries_usesPluralErrorSummaryForGroup() {
         safetyCenterCtsHelper.setConfig(SUMMARY_TEST_CONFIG)
         safetyCenterManager.reportSafetySourceErrorWithPermission(
             SOURCE_ID_1, SafetySourceErrorDetails(EVENT_SOURCE_STATE_CHANGED))
         safetyCenterManager.reportSafetySourceErrorWithPermission(
             SOURCE_ID_2, SafetySourceErrorDetails(EVENT_SOURCE_STATE_CHANGED))
-        // SOURCE_ID_3 leave as an UNKNOWN dynamic entry
-        // SOURCE_ID_4 leave as an UNKNOWN dynamic entry
-        // SOURCE_ID_5 leave as an UNKNOWN dynamic entry
-        // SOURCE_ID_6 leave as an UNKNOWN dynamic entry
         safetyCenterCtsHelper.setData(
-            SOURCE_ID_7,
+            SOURCE_ID_3,
+            safetySourceCtsData.buildSafetySourceDataWithSummary(
+                severityLevel = SEVERITY_LEVEL_INFORMATION,
+                entrySummary = "information with issue",
+                withIssue = true))
+        safetyCenterCtsHelper.setData(
+            SOURCE_ID_4,
             safetySourceCtsData.buildSafetySourceDataWithSummary(
                 severityLevel = SEVERITY_LEVEL_UNSPECIFIED, entrySummary = "unspecified"))
+        // SOURCE_ID_5 leave as an UNKNOWN dynamic entry
+        safetyCenterCtsHelper.setData(
+            SOURCE_ID_6,
+            safetySourceCtsData.buildSafetySourceDataWithSummary(
+                severityLevel = SEVERITY_LEVEL_INFORMATION, entrySummary = "information"))
+        // SOURCE_ID_7 leave as an UNKNOWN dynamic entry
         // STATIC_IN_COLLAPSIBLE_ID behaves like an UNSPECIFIED dynamic entry
 
-        val summary =
-            safetyCenterManager
-                .getSafetyCenterDataWithPermission()
-                .getGroupSummary(SUMMARY_TEST_GROUP_ID)
+        val group =
+            safetyCenterManager.getSafetyCenterDataWithPermission().getGroup(SUMMARY_TEST_GROUP_ID)
 
-        assertThat(summary).isEqualTo(getRefreshErrorString(2))
+        assertThat(group.summary).isEqualTo(getRefreshErrorString(2))
+        assertThat(group.severityLevel).isEqualTo(ENTRY_SEVERITY_LEVEL_UNKNOWN)
     }
 
     @Test
-    fun getSafetyCenterData_withErrorEntryAsMax_usesSingularErrorSummaryForGroup() {
+    fun getSafetyCenterData_withErrorEntry_usesSingularErrorSummaryForGroup() {
         safetyCenterCtsHelper.setConfig(SUMMARY_TEST_CONFIG)
         safetyCenterManager.reportSafetySourceErrorWithPermission(
             SOURCE_ID_1, SafetySourceErrorDetails(EVENT_SOURCE_STATE_CHANGED))
         // SOURCE_ID_2 leave as an UNKNOWN dynamic entry
-        // SOURCE_ID_3 leave as an UNKNOWN dynamic entry
-        // SOURCE_ID_4 leave as an UNKNOWN dynamic entry
+        safetyCenterCtsHelper.setData(
+            SOURCE_ID_3,
+            safetySourceCtsData.buildSafetySourceDataWithSummary(
+                severityLevel = SEVERITY_LEVEL_INFORMATION,
+                entrySummary = "information with issue",
+                withIssue = true))
+        safetyCenterCtsHelper.setData(
+            SOURCE_ID_4,
+            safetySourceCtsData.buildSafetySourceDataWithSummary(
+                severityLevel = SEVERITY_LEVEL_UNSPECIFIED, entrySummary = "unspecified"))
         // SOURCE_ID_5 leave as an UNKNOWN dynamic entry
         // SOURCE_ID_6 leave as an UNKNOWN dynamic entry
         safetyCenterCtsHelper.setData(
             SOURCE_ID_7,
             safetySourceCtsData.buildSafetySourceDataWithSummary(
-                severityLevel = SEVERITY_LEVEL_UNSPECIFIED, entrySummary = "unspecified"))
+                severityLevel = SEVERITY_LEVEL_INFORMATION, entrySummary = "information"))
         // STATIC_IN_COLLAPSIBLE_ID behaves like an UNSPECIFIED dynamic entry
 
-        val summary =
-            safetyCenterManager
-                .getSafetyCenterDataWithPermission()
-                .getGroupSummary(SUMMARY_TEST_GROUP_ID)
+        val group =
+            safetyCenterManager.getSafetyCenterDataWithPermission().getGroup(SUMMARY_TEST_GROUP_ID)
 
-        assertThat(summary).isEqualTo(getRefreshErrorString(1))
+        assertThat(group.summary).isEqualTo(getRefreshErrorString(1))
+        assertThat(group.severityLevel).isEqualTo(ENTRY_SEVERITY_LEVEL_UNKNOWN)
     }
 
     @Test
-    fun getSafetyCenterData_withUnknownEntriesAsMax_usesUnknownSummaryForGroup() {
+    fun getSafetyCenterData_withUnknownEntries_usesUnknownSummaryForGroup() {
         safetyCenterCtsHelper.setConfig(SUMMARY_TEST_CONFIG)
         // SOURCE_ID_1 leave as an UNKNOWN dynamic entry
         // SOURCE_ID_2 leave as an UNKNOWN dynamic entry
-        // SOURCE_ID_3 leave as an UNKNOWN dynamic entry
-        // SOURCE_ID_4 leave as an UNKNOWN dynamic entry
-        // SOURCE_ID_5 leave as an UNKNOWN dynamic entry
+        safetyCenterCtsHelper.setData(
+            SOURCE_ID_3,
+            safetySourceCtsData.buildSafetySourceDataWithSummary(
+                severityLevel = SEVERITY_LEVEL_INFORMATION,
+                entrySummary = "information with issue",
+                withIssue = true))
+        safetyCenterCtsHelper.setData(
+            SOURCE_ID_4,
+            safetySourceCtsData.buildSafetySourceDataWithSummary(
+                severityLevel = SEVERITY_LEVEL_UNSPECIFIED, entrySummary = "unspecified"))
+        safetyCenterCtsHelper.setData(
+            SOURCE_ID_5,
+            safetySourceCtsData.buildSafetySourceDataWithSummary(
+                severityLevel = SEVERITY_LEVEL_INFORMATION, entrySummary = "information"))
         // SOURCE_ID_6 leave as an UNKNOWN dynamic entry
         safetyCenterCtsHelper.setData(
             SOURCE_ID_7,
             safetySourceCtsData.buildSafetySourceDataWithSummary(
-                severityLevel = SEVERITY_LEVEL_UNSPECIFIED, entrySummary = "unspecified"))
+                severityLevel = SEVERITY_LEVEL_UNSPECIFIED,
+                entrySummary = "unspecified with issue",
+                withIssue = true))
         // STATIC_IN_COLLAPSIBLE_ID behaves like an UNSPECIFIED dynamic entry
 
-        val summary =
-            safetyCenterManager
-                .getSafetyCenterDataWithPermission()
-                .getGroupSummary(SUMMARY_TEST_GROUP_ID)
+        val group =
+            safetyCenterManager.getSafetyCenterDataWithPermission().getGroup(SUMMARY_TEST_GROUP_ID)
 
-        assertThat(summary)
+        assertThat(group.summary)
             .isEqualTo(safetyCenterResourcesContext.getStringByName("group_unknown_summary"))
+        assertThat(group.severityLevel).isEqualTo(ENTRY_SEVERITY_LEVEL_UNKNOWN)
     }
 
     @Test
     fun getSafetyCenterData_withAndroidLockScreenGroup_returnsCombinedTitlesAsSummaryForGroup() {
         safetyCenterCtsHelper.setConfig(ANDROID_LOCK_SCREEN_SOURCES_CONFIG)
 
-        val initialSummary =
+        val initialGroup =
             safetyCenterManager
                 .getSafetyCenterDataWithPermission()
-                .getGroupSummary(ANDROID_LOCK_SCREEN_SOURCES_GROUP_ID)
+                .getGroup(ANDROID_LOCK_SCREEN_SOURCES_GROUP_ID)
 
-        assertThat(initialSummary)
+        assertThat(initialGroup.summary)
             .isEqualTo(safetyCenterResourcesContext.getStringByName("group_unknown_summary"))
+        assertThat(initialGroup.severityLevel).isEqualTo(ENTRY_SEVERITY_LEVEL_UNKNOWN)
 
+        safetyCenterCtsHelper.setData(DYNAMIC_BAREBONE_ID, safetySourceCtsData.unspecified)
         safetyCenterCtsHelper.setData(DYNAMIC_DISABLED_ID, safetySourceCtsData.information)
 
-        val partialSummary =
+        val partialGroup =
             safetyCenterManager
                 .getSafetyCenterDataWithPermission()
-                .getGroupSummary(ANDROID_LOCK_SCREEN_SOURCES_GROUP_ID)
+                .getGroup(ANDROID_LOCK_SCREEN_SOURCES_GROUP_ID)
 
-        assertThat(partialSummary).isEqualTo("OK, Ok title")
+        assertThat(partialGroup.summary).isEqualTo("Unspecified title, Ok title")
+        assertThat(partialGroup.severityLevel).isEqualTo(ENTRY_SEVERITY_LEVEL_OK)
 
-        safetyCenterCtsHelper.setData(DYNAMIC_HIDDEN_ID, safetySourceCtsData.unspecified)
+        safetyCenterCtsHelper.setData(DYNAMIC_HIDDEN_ID, safetySourceCtsData.information)
 
-        val fullSummary =
+        val fullGroup =
             safetyCenterManager
                 .getSafetyCenterDataWithPermission()
-                .getGroupSummary(ANDROID_LOCK_SCREEN_SOURCES_GROUP_ID)
+                .getGroup(ANDROID_LOCK_SCREEN_SOURCES_GROUP_ID)
 
-        assertThat(fullSummary).isEqualTo("OK, Unspecified title, Ok title")
+        assertThat(fullGroup.summary).isEqualTo("Unspecified title, Ok title, Ok title")
+        assertThat(fullGroup.severityLevel).isEqualTo(ENTRY_SEVERITY_LEVEL_OK)
 
         safetyCenterCtsHelper.setData(DYNAMIC_DISABLED_ID, safetySourceCtsData.informationWithIssue)
 
-        val recommendationSummary =
+        val informationWithIssueGroup =
             safetyCenterManager
                 .getSafetyCenterDataWithPermission()
-                .getGroupSummary(ANDROID_LOCK_SCREEN_SOURCES_GROUP_ID)
+                .getGroup(ANDROID_LOCK_SCREEN_SOURCES_GROUP_ID)
 
-        assertThat(recommendationSummary).isEqualTo("Ok summary")
+        assertThat(informationWithIssueGroup.summary).isEqualTo("Ok summary")
+        assertThat(informationWithIssueGroup.severityLevel).isEqualTo(ENTRY_SEVERITY_LEVEL_OK)
     }
 
     @Test
@@ -3370,11 +3423,10 @@ class SafetyCenterManagerTest {
         assertThat(iconActionPendingIntent).isNotEqualTo(entryPendingIntent)
     }
 
-    private fun SafetyCenterData.getGroupSummary(groupId: String): CharSequence =
+    private fun SafetyCenterData.getGroup(groupId: String): SafetyCenterEntryGroup =
         entriesOrGroups
             .first { it.entryGroup?.id == SafetyCenterCtsData.entryGroupId(groupId) }
             .entryGroup!!
-            .summary!!
 
     private fun safetyCenterEntryDefaultBuilder(sourceId: String) =
         SafetyCenterEntry.Builder(SafetyCenterCtsData.entryId(sourceId), "OK")

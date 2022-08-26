@@ -56,15 +56,13 @@ android_test {
         "mts-permission",
     ],
 
-    required: [
-        "CtsAppThatRequestsLocationPermission29",
-    ],
-
     data: [
+        ":CtsAppThatRequestsLocationPermission29",
         ":PermissionUiUseStoragePermissionApp",
         ":PermissionUiUseCameraPermissionApp",
         ":PermissionUiDefineAdditionalPermissionApp",
         ":PermissionUiUseAdditionalPermissionApp",
         ":PermissionUiUseTwoAdditionalPermissionsApp",
-    ]
+    ],
+    per_testcase_directory: true,
 }

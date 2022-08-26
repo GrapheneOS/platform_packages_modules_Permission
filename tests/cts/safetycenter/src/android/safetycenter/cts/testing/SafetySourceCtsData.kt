@@ -38,6 +38,7 @@ import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.ACTION_HA
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.EXTRA_SOURCE_ID
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.EXTRA_SOURCE_ISSUE_ACTION_ID
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.EXTRA_SOURCE_ISSUE_ID
+import kotlin.math.max
 
 /**
  * A class that provides [SafetySourceData] objects and associated constants to facilitate setting
@@ -448,7 +449,7 @@ class SafetySourceCtsData(private val context: Context) {
                                 "issue_id",
                                 "Issue title",
                                 "Issue summary",
-                                severityLevel,
+                                max(severityLevel, SEVERITY_LEVEL_INFORMATION),
                                 ISSUE_TYPE_ID)
                             .addAction(
                                 Action.Builder("action_id", "Action", redirectPendingIntent)
