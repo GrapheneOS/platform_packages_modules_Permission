@@ -26,18 +26,40 @@ import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_PAGE_OPEN;
 import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK;
 import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_SAFETY_CENTER_ENABLED;
 
-import android.safetycenter.SafetyCenterManager;
+import android.safetycenter.SafetyCenterManager.RefreshReason;
+import android.safetycenter.SafetyCenterManager.RefreshRequestType;
+import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
-/** Helpers to do with {@link SafetyCenterManager.RefreshReason}. */
+/** Helpers to do with {@link RefreshReason}. */
 @RequiresApi(TIRAMISU)
 final class RefreshReasons {
 
+    private static final String TAG = "RefreshReasons";
+
     private RefreshReasons() {}
 
-    @SafetyCenterManager.RefreshRequestType
-    static int toRefreshRequestType(@SafetyCenterManager.RefreshReason int refreshReason) {
+    /**
+     * Validates the given {@link RefreshReason}, and throws an {@link IllegalArgumentException} in
+     * case of unexpected value.
+     */
+    static void validate(@RefreshReason int refreshReason) {
+        switch (refreshReason) {
+            case REFRESH_REASON_RESCAN_BUTTON_CLICK:
+            case REFRESH_REASON_PAGE_OPEN:
+            case REFRESH_REASON_DEVICE_REBOOT:
+            case REFRESH_REASON_DEVICE_LOCALE_CHANGE:
+            case REFRESH_REASON_SAFETY_CENTER_ENABLED:
+            case REFRESH_REASON_OTHER:
+                return;
+        }
+        throw new IllegalArgumentException("Unexpected refresh reason: " + refreshReason);
+    }
+
+    /** Converts the given {@link RefreshReason} to a {@link RefreshRequestType}. */
+    @RefreshRequestType
+    static int toRefreshRequestType(@RefreshReason int refreshReason) {
         switch (refreshReason) {
             case REFRESH_REASON_RESCAN_BUTTON_CLICK:
                 return EXTRA_REFRESH_REQUEST_TYPE_FETCH_FRESH_DATA;
@@ -48,6 +70,25 @@ final class RefreshReasons {
             case REFRESH_REASON_OTHER:
                 return EXTRA_REFRESH_REQUEST_TYPE_GET_DATA;
         }
-        throw new IllegalArgumentException("Unexpected refresh reason: " + refreshReason);
+        Log.w(TAG, "Unexpected refresh reason: " + refreshReason);
+        return EXTRA_REFRESH_REQUEST_TYPE_GET_DATA;
+    }
+
+    /**
+     * Returns {@code true} if the given {@link RefreshReason} corresponds to a background refresh.
+     */
+    static boolean isBackgroundRefresh(@RefreshReason int refreshReason) {
+        switch (refreshReason) {
+            case REFRESH_REASON_DEVICE_REBOOT:
+            case REFRESH_REASON_DEVICE_LOCALE_CHANGE:
+            case REFRESH_REASON_SAFETY_CENTER_ENABLED:
+            case REFRESH_REASON_OTHER:
+                return true;
+            case REFRESH_REASON_PAGE_OPEN:
+            case REFRESH_REASON_RESCAN_BUTTON_CLICK:
+                return false;
+        }
+        Log.w(TAG, "Unexpected refresh reason: " + refreshReason);
+        return false;
     }
 }
