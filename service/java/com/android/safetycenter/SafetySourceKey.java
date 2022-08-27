@@ -42,7 +42,7 @@ final class SafetySourceKey {
         mUserId = userId;
     }
 
-    /** Creates a {@link SafetySourceKey}. */
+    /** Creates a {@link SafetySourceKey} for the given {@code sourceId} and {@code userId}. */
     @NonNull
     static SafetySourceKey of(@NonNull String sourceId, @UserIdInt int userId) {
         return new SafetySourceKey(sourceId, userId);
@@ -53,11 +53,13 @@ final class SafetySourceKey {
         return "SafetySourceKey{" + "mSourceId='" + mSourceId + "', mUserId=" + mUserId + '}';
     }
 
+    /** Returns the source id of this {@link SafetySourceKey}. */
     @NonNull
     public String getSourceId() {
         return mSourceId;
     }
 
+    /** Returns the user id of this {@link SafetySourceKey}. */
     @UserIdInt
     public int getUserId() {
         return mUserId;
