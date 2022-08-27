@@ -21,18 +21,12 @@
     <string name="permission_description_summary_storage" msgid="1917071243213043858">"ଏହି ଅନୁମତି ଥିବା ଆପ୍ସ ଏଇ ଡିଭାଇସରେ ସମସ୍ତ ଫାଇଲକୁ ଆକ୍ସେସ କରିପାରିବ"</string>
     <string name="work_policy_title" msgid="832967780713677409">"ଆପଣଙ୍କ ୱାର୍କ ନୀତି ସୂଚନା"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"ଆପଣଙ୍କ IT ଆଡମିନଙ୍କ ଦ୍ୱାରା ପରିଚାଳିତ ସେଟିଂସ"</string>
-    <!-- no translation found for safety_center_entry_group_expand_action (5358289574941779652) -->
-    <skip />
-    <!-- no translation found for safety_center_entry_group_collapse_action (1525710152244405656) -->
-    <skip />
-    <!-- no translation found for safety_center_entry_group_content_description (7048420958214443333) -->
-    <skip />
-    <!-- no translation found for safety_center_entry_group_with_actions_needed_content_description (2708884606775932657) -->
-    <skip />
-    <!-- no translation found for safety_center_entry_group_item_content_description (7348298582877249787) -->
-    <skip />
-    <!-- no translation found for safety_center_entry_content_description (3639565652938224321) -->
-    <skip />
+    <string name="safety_center_entry_group_expand_action" msgid="5358289574941779652">"ତାଲିକାକୁ ବିସ୍ତାର କରି ଦେଖାନ୍ତୁ"</string>
+    <string name="safety_center_entry_group_collapse_action" msgid="1525710152244405656">"ତାଲିକାକୁ ସଙ୍କୁଚିତ କରି ସେଟିଂସକୁ ଲୁଚାନ୍ତୁ"</string>
+    <string name="safety_center_entry_group_content_description" msgid="7048420958214443333">"ତାଲିକା। <xliff:g id="ENTRY_TITLE">%1$s</xliff:g>। <xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>"</string>
+    <string name="safety_center_entry_group_with_actions_needed_content_description" msgid="2708884606775932657">"ତାଲିକା। <xliff:g id="ENTRY_TITLE">%1$s</xliff:g>। ପଦକ୍ଷେପ ନେବା ଆବଶ୍ୟକ। <xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>"</string>
+    <string name="safety_center_entry_group_item_content_description" msgid="7348298582877249787">"ତାଲିକା ଆଇଟମ। <xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>। <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
+    <string name="safety_center_entry_content_description" msgid="3639565652938224321">"<xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>। <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_more_issues_card_title" msgid="8599419758014246517">"ସମସ୍ତ ଆଲର୍ଟ ଦେଖନ୍ତୁ"</string>
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{ବିସ୍ତାର କରି ଆଉ ଗୋଟିଏ ଆଲର୍ଟ ଦେଖନ୍ତୁ}other{ବିସ୍ତାର କରି ଆଉ #ଟି ଆଲର୍ଟ ଦେଖନ୍ତୁ}}"</string>
     <string name="safety_center_issue_card_content_description" msgid="1281390769721765363">"ଆଲର୍ଟ। <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>। <xliff:g id="ISSUE_CARD_SUMMARY">%2$s</xliff:g>"</string>

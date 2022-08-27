@@ -21,18 +21,12 @@
     <string name="permission_description_summary_storage" msgid="1917071243213043858">"Приложения с этим разрешением могут получать доступ ко всем файлам на устройстве."</string>
     <string name="work_policy_title" msgid="832967780713677409">"Сведения о правилах организации"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"Настройки, которыми управляет системный администратор"</string>
-    <!-- no translation found for safety_center_entry_group_expand_action (5358289574941779652) -->
-    <skip />
-    <!-- no translation found for safety_center_entry_group_collapse_action (1525710152244405656) -->
-    <skip />
-    <!-- no translation found for safety_center_entry_group_content_description (7048420958214443333) -->
-    <skip />
-    <!-- no translation found for safety_center_entry_group_with_actions_needed_content_description (2708884606775932657) -->
-    <skip />
-    <!-- no translation found for safety_center_entry_group_item_content_description (7348298582877249787) -->
-    <skip />
-    <!-- no translation found for safety_center_entry_content_description (3639565652938224321) -->
-    <skip />
+    <string name="safety_center_entry_group_expand_action" msgid="5358289574941779652">"Развернуть список"</string>
+    <string name="safety_center_entry_group_collapse_action" msgid="1525710152244405656">"Свернуть список и скрыть настройки"</string>
+    <string name="safety_center_entry_group_content_description" msgid="7048420958214443333">"Список. <xliff:g id="ENTRY_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>"</string>
+    <string name="safety_center_entry_group_with_actions_needed_content_description" msgid="2708884606775932657">"Список. <xliff:g id="ENTRY_TITLE">%1$s</xliff:g>. Требуется действие. <xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>"</string>
+    <string name="safety_center_entry_group_item_content_description" msgid="7348298582877249787">"Пункт списка. <xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
+    <string name="safety_center_entry_content_description" msgid="3639565652938224321">"<xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>, <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_more_issues_card_title" msgid="8599419758014246517">"Все оповещения"</string>
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{Разверните, чтобы увидеть ещё одно оповещение}one{Разверните, чтобы увидеть ещё # оповещение}few{Разверните, чтобы увидеть ещё # оповещения}many{Разверните, чтобы увидеть ещё # оповещений}other{Разверните, чтобы увидеть ещё # оповещения}}"</string>
     <string name="safety_center_issue_card_content_description" msgid="1281390769721765363">"Оповещение: <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%2$s</xliff:g>"</string>
