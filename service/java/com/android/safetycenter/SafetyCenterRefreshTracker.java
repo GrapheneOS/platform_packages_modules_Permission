@@ -20,7 +20,6 @@ import static android.os.Build.VERSION_CODES.TIRAMISU;
 import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK;
 
 import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__TIMEOUT;
-import static com.android.safetycenter.RefreshReasons.toRefreshRequestType;
 import static com.android.safetycenter.WestworldLogger.toSystemEventResult;
 
 import android.annotation.ElapsedRealtimeLong;
@@ -149,7 +148,7 @@ final class SafetyCenterRefreshTracker {
 
         SafetySourceKey sourceKey = SafetySourceKey.of(sourceId, userId);
         Duration duration = mRefreshInProgress.markSourceRefreshComplete(sourceKey, successful);
-        int requestType = toRefreshRequestType(mRefreshInProgress.getReason());
+        int requestType = RefreshReasons.toRefreshRequestType(mRefreshInProgress.getReason());
 
         if (duration != null) {
             int sourceResult = toSystemEventResult(successful);
@@ -235,7 +234,7 @@ final class SafetyCenterRefreshTracker {
         }
 
         ArraySet<SafetySourceKey> timedOutSources = clearedRefresh.getSourceRefreshesInFlight();
-        int requestType = toRefreshRequestType(clearedRefresh.getReason());
+        int requestType = RefreshReasons.toRefreshRequestType(clearedRefresh.getReason());
 
         for (int i = 0; i < timedOutSources.size(); i++) {
             SafetySourceKey sourceKey = timedOutSources.valueAt(i);
@@ -355,7 +354,7 @@ final class SafetyCenterRefreshTracker {
 
         /** Returns the {@link Duration} since this refresh started. */
         @NonNull
-        public Duration getDurationSinceStart() {
+        private Duration getDurationSinceStart() {
             return Duration.ofMillis(SystemClock.elapsedRealtime() - mStartElapsedMillis);
         }
 
