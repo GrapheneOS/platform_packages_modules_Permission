@@ -564,10 +564,10 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Android-ന്റെ ഏറ്റവും പുതിയ പതിപ്പിനെ ഈ ആപ്പ് പിന്തുണയ്ക്കുന്നില്ല. ഈ ആപ്പിന് സംഗീതവും ഓഡിയോ ഫയലുകളും ആക്‌സസ് ചെയ്യാൻ കഴിയുന്നില്ലെങ്കിൽ, ഫോട്ടോകളും വീഡിയോകളും ആക്‌സസ് ചെയ്യാനും ഇതിനെ അനുവദിക്കില്ല."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Android-ന്റെ ഏറ്റവും പുതിയ പതിപ്പിനെ ഈ ആപ്പ് പിന്തുണയ്ക്കുന്നില്ല. ഈ ആപ്പിന് ഫോട്ടോകളും വീഡിയോകളും ആക്‌സസ് ചെയ്യാൻ കഴിയുമെങ്കിൽ, സംഗീതവും ഓഡിയോ ഫയലുകളും ആക്‌സസ് ചെയ്യാനും ഇതിനെ അനുവദിക്കും."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Android-ന്റെ ഏറ്റവും പുതിയ പതിപ്പിനെ ഈ ആപ്പ് പിന്തുണയ്ക്കുന്നില്ല. ഈ ആപ്പിന് സംഗീതവും ഓഡിയോ ഫയലുകളും ആക്‌സസ് ചെയ്യാൻ കഴിയുന്നില്ലെങ്കിൽ, ഫോട്ടോകളും വീഡിയോകളും ആക്‌സസ് ചെയ്യാനും ഇതിനെ അനുവദിക്കില്ല."</string>
-    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"പശ്ചാത്തലത്തല ലൊക്കേഷൻ ആക്‌സസ് ഉള്ള ആപ്പ് അവലോകനം ചെയ്യുക"</string>
+    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"പശ്ചാത്തല ലൊക്കേഷൻ ആക്‌സസ് ഉള്ള ആപ്പ് അവലോകനം ചെയ്യുക"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"ആപ്പ് അടച്ചിരിക്കുമ്പോൾ പോലും, <xliff:g id="APP_NAME">%s</xliff:g>-ന് എപ്പോഴും നിങ്ങളുടെ ലൊക്കേഷൻ ആക്‌സസ് ചെയ്യാം"</string>
-    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"പശ്ചാത്തലത്തല ലൊക്കേഷൻ ആക്‌സസ് ഉള്ള ആപ്പ് അവലോകനം ചെയ്യുക"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"ആപ്പ് അടച്ചിരിക്കുമ്പോഴും, ഇതിന് എപ്പോഴും നിങ്ങളുടെ ലൊക്കേഷൻ ആക്‌സസ് ചെയ്യാം."</string>
+    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"പശ്ചാത്തല ലൊക്കേഷൻ ആക്‌സസ് ഉള്ള ആപ്പ് അവലോകനം ചെയ്യുക"</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"അടച്ചിരിക്കുമ്പോഴും, ഈ ആപ്പിന് എപ്പോഴും നിങ്ങളുടെ ലൊക്കേഷൻ ആക്‌സസ് ചെയ്യാം."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"ആക്‌സസ് മാറ്റി"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"സമീപകാല ലൊക്കേഷൻ ഉപയോഗം കാണുക"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"സ്വകാര്യതാ നിയന്ത്രണങ്ങൾ"</string>

@@ -537,7 +537,7 @@
     <string name="remove_camera_qs" msgid="3649996161066883350">"Odstrániť povolenie pre túto aplikáciu"</string>
     <string name="remove_microphone_qs" msgid="1276551965129953198">"Odstrániť povolenie pre túto aplikáciu"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Spravovať službu"</string>
-    <string name="manage_permissions_qs" msgid="3780541819763475434">"Správy povolení"</string>
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"Spravovať povolenia"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Využíva telefonický hovor"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Nedávno využil telefonický hovor"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Využíva aplikácia <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
