@@ -29,10 +29,7 @@ import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.pm.PackageManager.ResolveInfoFlags;
-import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
 import android.icu.text.ListFormatter;
 import android.icu.text.MessageFormat;
@@ -65,6 +62,7 @@ import android.util.StatsEvent;
 import androidx.annotation.RequiresApi;
 
 import com.android.permission.PermissionStatsLog;
+import com.android.permission.util.PackageUtils;
 import com.android.permission.util.UserUtils;
 import com.android.safetycenter.SafetyCenterConfigReader.ExternalSafetySource;
 import com.android.safetycenter.internaldata.SafetyCenterEntryGroupId;
@@ -1683,38 +1681,22 @@ final class SafetyCenterDataTracker {
         if (context == null) {
             return null;
         }
-        if (!isIntentActionValid(context, intentAction, userId, isQuietModeEnabled)) {
+        if (!isIntentActionValid(intentAction, userId, isQuietModeEnabled)) {
             return null;
         }
         return toPendingIntent(context, 0, new Intent(intentAction));
     }
 
-    private static boolean isIntentActionValid(
-            @NonNull Context context,
-            @NonNull String intentAction,
-            @UserIdInt int userId,
-            boolean isQuietModeEnabled) {
+    private boolean isIntentActionValid(
+            @NonNull String intentAction, @UserIdInt int userId, boolean isQuietModeEnabled) {
         // TODO(b/241743286): queryIntentActivities does not return any activity when work profile
         //  is in quiet mode.
         if (isQuietModeEnabled) {
             return true;
         }
         Intent intent = new Intent(intentAction);
-        return !queryIntentActivitiesAsUser(context, intent, UserHandle.of(userId)).isEmpty();
-    }
-
-    @NonNull
-    private static List<ResolveInfo> queryIntentActivitiesAsUser(
-            @NonNull Context context, @NonNull Intent intent, @NonNull UserHandle userHandle) {
-        PackageManager packageManager = context.getPackageManager();
-        // This call requires the INTERACT_ACROSS_USERS permission.
-        final long callingId = Binder.clearCallingIdentity();
-        try {
-            return packageManager.queryIntentActivitiesAsUser(
-                    intent, ResolveInfoFlags.of(0), userHandle);
-        } finally {
-            Binder.restoreCallingIdentity(callingId);
-        }
+        return !PackageUtils.queryUnfilteredIntentActivitiesAsUser(intent, 0, userId, mContext)
+                .isEmpty();
     }
 
     @NonNull
