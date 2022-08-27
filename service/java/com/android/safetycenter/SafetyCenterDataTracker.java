@@ -18,8 +18,6 @@ package com.android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
-import static com.android.safetycenter.WestworldLogger.toSystemEventResult;
-
 import static java.util.Collections.emptyList;
 
 import android.annotation.NonNull;
@@ -617,12 +615,11 @@ final class SafetyCenterDataTracker {
                 dismissedIssuesCount++;
             }
         }
-        StatsEvent overallSafetyStateEvent =
-                WestworldLogger.newSafetyStateEvent(
-                        safetyCenterData.getStatus().getSeverityLevel(),
-                        openIssuesCount,
-                        dismissedIssuesCount);
-        statsEvents.add(overallSafetyStateEvent);
+        mWestworldLogger.pullSafetyStateEvent(
+                safetyCenterData.getStatus().getSeverityLevel(),
+                openIssuesCount,
+                dismissedIssuesCount,
+                statsEvents);
     }
 
     private void writeSafetySourceStateCollectedAtoms(@NonNull UserProfileGroup userProfileGroup) {
@@ -944,7 +941,7 @@ final class SafetyCenterDataTracker {
                                 .setSafetySourceIssueActionId(safetySourceIssueActionId)
                                 .build();
                 boolean success = type == SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED;
-                int result = toSystemEventResult(success);
+                int result = WestworldLogger.toSystemEventResult(success);
                 return unmarkSafetyCenterIssueActionInFlight(safetyCenterIssueActionId, result);
             case SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED:
             case SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_LOCALE_CHANGED:

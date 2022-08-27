@@ -38,7 +38,7 @@ import kotlin.reflect.KProperty
 /** A class that facilitates working with Safety Center flags. */
 object SafetyCenterFlags {
 
-    /** Flag that determines whether SafetyCenter is enabled. */
+    /** Flag that determines whether Safety Center is enabled. */
     private val isEnabledFlag =
         Flag("safety_center_is_enabled", defaultValue = false, BooleanParser())
 
@@ -139,6 +139,16 @@ object SafetyCenterFlags {
             defaultValue = emptySet(),
             SetParser(StringParser()))
 
+    /**
+     * Flag that determines whether Westworld logging is allowed in tests.
+     *
+     * This is useful to allow testing Westworld logs in some specific tests, while keeping the
+     * other tests from polluting our Westworld logs.
+     */
+    private val allowWestworldLoggingInTestsFlag =
+        Flag(
+            "safety_center_allow_westworld_logging_in_tests", defaultValue = false, BooleanParser())
+
     /** Every Safety Center flag. */
     private val FLAGS: List<Flag<*>> =
         listOf(
@@ -152,7 +162,8 @@ object SafetyCenterFlags {
             resurfaceIssueMaxCountsFlag,
             resurfaceIssueDelaysFlag,
             issueCategoryAllowlistsFlag,
-            backgroundRefreshDeniedSourcesFlag)
+            backgroundRefreshDeniedSourcesFlag,
+            allowWestworldLoggingInTestsFlag)
 
     /** Returns whether the device supports Safety Center. */
     fun Context.deviceSupportsSafetyCenter() =
@@ -191,6 +202,9 @@ object SafetyCenterFlags {
 
     /** A property that allows getting and setting the [backgroundRefreshDeniedSourcesFlag]. */
     var backgroundRefreshDeniedSources: Set<String> by backgroundRefreshDeniedSourcesFlag
+
+    /** A property that allows getting and setting the [allowWestworldLoggingInTestsFlag]. */
+    var allowWestworldLoggingInTests: Boolean by allowWestworldLoggingInTestsFlag
 
     /**
      * Returns a snapshot of all the Safety Center flags.
