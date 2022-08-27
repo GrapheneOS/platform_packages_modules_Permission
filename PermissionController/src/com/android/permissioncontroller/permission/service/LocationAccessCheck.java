@@ -349,8 +349,11 @@ public class LocationAccessCheck {
             boolean dismissedInSafetyCenter) {
         synchronized (sLock) {
             ArraySet<UserPackage> alreadyNotifiedPackages = loadAlreadyNotifiedPackagesLocked();
-            alreadyNotifiedPackages.add(
-                    new UserPackage(mContext, pkg, user, dismissedInSafetyCenter));
+            UserPackage userPackage = new UserPackage(mContext, pkg, user, dismissedInSafetyCenter);
+            // Remove stale persisted info
+            alreadyNotifiedPackages.remove(userPackage);
+            // Persist new info about the package
+            alreadyNotifiedPackages.add(userPackage);
             persistAlreadyNotifiedPackagesLocked(alreadyNotifiedPackages);
         }
     }
@@ -827,9 +830,10 @@ public class LocationAccessCheck {
 
     /**
      * Cancel the background access warning notification for an app if the permission has been
-     * revoked for the app
+     * revoked for the app and forget persisted information about the app
      */
-    public void cancelBackgroundAccessWarningNotification(String packageName, UserHandle user) {
+    public void cancelBackgroundAccessWarningNotification(String packageName, UserHandle user,
+            Boolean forgetAboutPackage) {
         // Cancel the current notification if background
         // location access for the package is revoked
         StatusBarNotification notification = getCurrentlyShownNotificationLocked();
@@ -837,6 +841,8 @@ public class LocationAccessCheck {
                 && notification.getTag().equals(packageName)) {
             getSystemServiceSafe(mContext, NotificationManager.class, user).cancel(
                     packageName, LOCATION_ACCESS_CHECK_NOTIFICATION_ID);
+        }
+        if (forgetAboutPackage) {
             forgetAboutPackage(packageName, user);
         }
     }
@@ -973,7 +979,7 @@ public class LocationAccessCheck {
 
         Action revokeAction = new Action.Builder(createLocationRevokeActionId(userPackage.pkg),
                 mContext.getString(R.string.permission_access_only_foreground),
-                revokeIntent).setSuccessMessage(mContext.getString(
+                revokeIntent).setWillResolve(true).setSuccessMessage(mContext.getString(
                 R.string.safety_center_background_location_access_revoked)).build();
 
         Intent secondaryActionIntent = new Intent(Intent.ACTION_REVIEW_PERMISSION_HISTORY);
@@ -1014,7 +1020,9 @@ public class LocationAccessCheck {
         dismissIntent.putExtra(EXTRA_PACKAGE_NAME, pkgName);
         dismissIntent.putExtra(EXTRA_SESSION_ID, sessionId);
         dismissIntent.putExtra(EXTRA_UID, uid);
-        dismissIntent.putExtra(EXTRA_USER, getUserHandleForUid(uid));
+        UserHandle user = getUserHandleForUid(uid);
+        dismissIntent.putExtra(EXTRA_USER, user);
+        dismissIntent.setIdentifier(pkgName + user);
         dismissIntent.setFlags(FLAG_RECEIVER_FOREGROUND);
         return PendingIntent.getBroadcast(mContext, 0, dismissIntent,
                 FLAG_ONE_SHOT | FLAG_UPDATE_CURRENT | FLAG_IMMUTABLE);
@@ -1044,7 +1052,9 @@ public class LocationAccessCheck {
         dismissIntent.putExtra(EXTRA_PACKAGE_NAME, pkgName);
         dismissIntent.putExtra(EXTRA_SESSION_ID, sessionId);
         dismissIntent.putExtra(EXTRA_UID, uid);
-        dismissIntent.putExtra(EXTRA_USER, getUserHandleForUid(uid));
+        UserHandle user = getUserHandleForUid(uid);
+        dismissIntent.putExtra(EXTRA_USER, user);
+        dismissIntent.setIdentifier(pkgName + user);
         dismissIntent.setFlags(FLAG_RECEIVER_FOREGROUND);
         return PendingIntent.getBroadcast(mContext, 0, dismissIntent,
                 FLAG_ONE_SHOT | FLAG_UPDATE_CURRENT | FLAG_IMMUTABLE);
@@ -1304,7 +1314,7 @@ public class LocationAccessCheck {
 
             LocationAccessCheck locationAccessCheck = new LocationAccessCheck(context, null);
             locationAccessCheck.markAsNotified(pkg, user, true);
-            locationAccessCheck.cancelBackgroundAccessWarningNotification(pkg, user);
+            locationAccessCheck.cancelBackgroundAccessWarningNotification(pkg, user, false);
         }
     }
 
