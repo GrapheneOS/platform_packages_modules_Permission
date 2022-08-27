@@ -33,5 +33,5 @@
     <string name="refresh_timeout" msgid="251734999692581852">"सेटिङ रिफ्रेस गर्न सकिएन"</string>
     <string name="refresh_error" msgid="255412333381376201">"{count,plural, =1{सेटिङ}other{सेटिङ}} जाँच्न सकिएन"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"कार्य प्रोफाइल पज गरिएको छ"</string>
-    <string name="group_unknown_summary" msgid="6951386960814105641">"अहिलेसम्म कुनै पनि जानकारी छैन"</string>
+    <string name="group_unknown_summary" msgid="6951386960814105641">"कुनै जानकारी उपलब्ध छैन"</string>
 </resources>
