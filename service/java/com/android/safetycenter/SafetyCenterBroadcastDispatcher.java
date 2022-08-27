@@ -69,10 +69,6 @@ final class SafetyCenterBroadcastDispatcher {
     @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
     @NonNull private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker;
 
-    /**
-     * Creates a {@link SafetyCenterBroadcastDispatcher} using the given {@link Context}, {@link
-     * SafetyCenterConfigReader} and {@link SafetyCenterRefreshTracker}.
-     */
     SafetyCenterBroadcastDispatcher(
             @NonNull Context context,
             @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
