@@ -88,14 +88,6 @@ public class Constants {
             "packages_already_notified_location_access";
 
     /**
-     * Name of file to containing the packages we already showed a notification for.
-     *
-     * @see com.android.permissioncontroller.permission.service.NotificationListenerCheck
-     */
-    public static final String ACCESSIBILITY_SERVICES_ALREADY_NOTIFIED_FILE =
-            "packages_already_notified_accessibility_services";
-
-    /**
      * ID for notification shown by
      * {@link com.android.permissioncontroller.permission.service.LocationAccessCheck}.
      */
