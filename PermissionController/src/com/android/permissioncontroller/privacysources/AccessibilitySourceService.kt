@@ -783,9 +783,13 @@ class AccessibilityRemoveAccessHandler : BroadcastReceiver() {
                 Log.v(LOG_TAG, "disabling a11y service ${a11yService.flattenToShortString()}")
             }
             val accessibilityService = AccessibilitySourceService(context)
+            var a11yEnabledServices = accessibilityService.getEnabledAccessibilityServices()
             val builder = try {
                 accessibilityService.removeFromNotifiedServices(a11yService)
                 AccessibilitySettingsUtil.disableAccessibilityService(context, a11yService)
+                a11yEnabledServices = a11yEnabledServices.filter {
+                    it.id != a11yService.flattenToShortString()
+                }
                 SafetyEvent.Builder(
                     SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED)
             } catch (ex: Exception) {
@@ -798,8 +802,7 @@ class AccessibilityRemoveAccessHandler : BroadcastReceiver() {
             val safetyEvent = builder.setSafetySourceIssueId(safetySourceIssueId)
                 .setSafetySourceIssueActionId(SC_ACCESSIBILITY_REMOVE_ACCESS_ACTION_ID)
                 .build()
-
-            accessibilityService.sendIssuesToSafetyCenter(safetyEvent)
+            accessibilityService.sendIssuesToSafetyCenter(a11yEnabledServices, safetyEvent)
 
             if (DEBUG) {
                 Log.v(LOG_TAG, "ISSUE_CARD_INTERACTION CTA1 metric, uid $uid session $sessionId")
@@ -980,7 +983,6 @@ class SafetyCenterAccessibilityListener(val context: Context) :
             }
             val a11ySourceService = AccessibilitySourceService(context)
             val a11yEnabledServices = a11ySourceService.getEnabledAccessibilityServices()
-            a11ySourceService.sendIssuesToSafetyCenter(a11yEnabledServices)
             val enabledComponents = a11yEnabledServices.map { a11yService ->
                 ComponentName.unflattenFromString(a11yService.id)!!.flattenToShortString()
             }.toSet()
