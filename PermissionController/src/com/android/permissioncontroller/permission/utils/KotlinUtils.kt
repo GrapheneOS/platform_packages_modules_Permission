@@ -915,7 +915,8 @@ object KotlinUtils {
                 // cancel location access warning notification
                 LocationAccessCheck(app, null).cancelBackgroundAccessWarningNotification(
                     group.packageInfo.packageName,
-                    user
+                    user,
+                    true
                 )
             }
         }

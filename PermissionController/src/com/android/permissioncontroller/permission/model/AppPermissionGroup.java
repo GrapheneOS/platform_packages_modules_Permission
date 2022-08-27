@@ -1609,7 +1609,7 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
 
         if (mCancelLocationAccessWarningOnRevoke) {
             new LocationAccessCheck(mContext, null).cancelBackgroundAccessWarningNotification(
-                    mPackageInfo.packageName, mUserHandle);
+                    mPackageInfo.packageName, mUserHandle, true);
             mCancelLocationAccessWarningOnRevoke = false;
         }
 
