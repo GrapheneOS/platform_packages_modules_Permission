@@ -31,7 +31,7 @@ import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.os.RemoteException;
 import android.safetycenter.ISafetyCenterManager;
-import android.safetycenter.SafetyCenterManager;
+import android.safetycenter.SafetyCenterManager.RefreshReason;
 
 import androidx.annotation.RequiresApi;
 
@@ -109,7 +109,7 @@ final class SafetyCenterShellCommandHandler extends BasicShellCommandHandler {
         return 0;
     }
 
-    @SafetyCenterManager.RefreshReason
+    @RefreshReason
     private int parseReason() {
         String arg = getNextArgRequired();
         Integer reason = REASONS.get(arg);

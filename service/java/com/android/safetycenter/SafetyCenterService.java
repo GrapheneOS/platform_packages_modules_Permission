@@ -161,9 +161,9 @@ public final class SafetyCenterService extends SystemService {
 
     public SafetyCenterService(@NonNull Context context) {
         super(context);
-        WestworldLogger westworldLogger = new WestworldLogger(context);
         mSafetyCenterResourcesContext = new SafetyCenterResourcesContext(context);
         mSafetyCenterConfigReader = new SafetyCenterConfigReader(mSafetyCenterResourcesContext);
+        WestworldLogger westworldLogger = new WestworldLogger(context, mSafetyCenterConfigReader);
         mSafetyCenterRefreshTracker = new SafetyCenterRefreshTracker(westworldLogger);
         mSafetyCenterDataTracker =
                 new SafetyCenterDataTracker(
@@ -330,6 +330,7 @@ public final class SafetyCenterService extends SystemService {
         @Override
         public void refreshSafetySources(@RefreshReason int refreshReason, @UserIdInt int userId) {
             getContext().enforceCallingPermission(MANAGE_SAFETY_CENTER, "refreshSafetySources");
+            RefreshReasons.validate(refreshReason);
             if (!enforceCrossUserPermission("refreshSafetySources", userId)
                     || !checkApiEnabled("refreshSafetySources")) {
                 return;
@@ -559,11 +560,13 @@ public final class SafetyCenterService extends SystemService {
                 return;
             }
 
+            List<UserProfileGroup> userProfileGroups =
+                    UserProfileGroup.getAllUserProfileGroups(getContext());
             synchronized (mApiLock) {
                 // TODO(b/236693607): Should tests leave real data untouched?
                 clearDataLocked();
-                // TODO(b/223550097): Should we dispatch a new listener update here? This call can
-                //  modify the SafetyCenterData.
+                mSafetyCenterListeners.deliverUpdateForUserProfileGroups(
+                        userProfileGroups, true, null);
             }
         }
 
@@ -577,12 +580,14 @@ public final class SafetyCenterService extends SystemService {
                 return;
             }
 
+            List<UserProfileGroup> userProfileGroups =
+                    UserProfileGroup.getAllUserProfileGroups(getContext());
             synchronized (mApiLock) {
                 mSafetyCenterConfigReader.setConfigOverrideForTests(safetyCenterConfig);
                 // TODO(b/236693607): Should tests leave real data untouched?
                 clearDataLocked();
-                // TODO(b/223550097): Should we clear the listeners here? Or should we dispatch a
-                //  new listener update since the SafetyCenterData will have changed?
+                mSafetyCenterListeners.deliverUpdateForUserProfileGroups(
+                        userProfileGroups, true, null);
             }
         }
 
@@ -595,12 +600,14 @@ public final class SafetyCenterService extends SystemService {
                 return;
             }
 
+            List<UserProfileGroup> userProfileGroups =
+                    UserProfileGroup.getAllUserProfileGroups(getContext());
             synchronized (mApiLock) {
                 mSafetyCenterConfigReader.clearConfigOverrideForTests();
                 // TODO(b/236693607): Should tests leave real data untouched?
                 clearDataLocked();
-                // TODO(b/223550097): Should we clear the listeners here? Or should we dispatch a
-                //  new listener update since the SafetyCenterData will have changed?
+                mSafetyCenterListeners.deliverUpdateForUserProfileGroups(
+                        userProfileGroups, true, null);
             }
         }
 
@@ -824,14 +831,11 @@ public final class SafetyCenterService extends SystemService {
             List<UserProfileGroup> userProfileGroups =
                     UserProfileGroup.getAllUserProfileGroups(getContext());
             synchronized (mApiLock) {
-                if (mSafetyCenterConfigReader.isOverrideForTestsActive()) {
-                    Log.i(TAG, "Pulling and writing atoms with a test config override…");
-                    // We only log this and proceed with the call here, as we still want to be able
-                    // to assert the content of the logs in CTS tests. We may want to filter this
-                    // out in the future if this turns out to skew the collected events.
-                } else {
-                    Log.i(TAG, "Pulling and writing atoms…");
+                if (!mSafetyCenterConfigReader.allowsWestworldLogging()) {
+                    Log.w(TAG, "Skipping pulling and writing atoms due to a test config override");
+                    return StatsManager.PULL_SKIP;
                 }
+                Log.i(TAG, "Pulling and writing atoms…");
                 for (int i = 0; i < userProfileGroups.size(); i++) {
                     mSafetyCenterDataTracker.pullAndWriteAtoms(
                             userProfileGroups.get(i), statsEvents);
