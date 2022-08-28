@@ -21,13 +21,17 @@
     <string name="permission_description_summary_storage" msgid="1917071243213043858">"Las aplicaciones que tienen este permiso pueden acceder a todos los archivos de este dispositivo"</string>
     <string name="work_policy_title" msgid="832967780713677409">"Información de tu política de trabajo"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"Ajustes gestionados por tu administrador de TI"</string>
+    <string name="safety_center_entry_group_expand_action" msgid="5358289574941779652">"Desplegar y mostrar lista"</string>
+    <string name="safety_center_entry_group_collapse_action" msgid="1525710152244405656">"Contraer lista y ocultar ajustes"</string>
+    <string name="safety_center_entry_group_content_description" msgid="7048420958214443333">"Lista. <xliff:g id="ENTRY_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>."</string>
+    <string name="safety_center_entry_group_with_actions_needed_content_description" msgid="2708884606775932657">"Lista. <xliff:g id="ENTRY_TITLE">%1$s</xliff:g>. Acciones necesarias. <xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>."</string>
+    <string name="safety_center_entry_group_item_content_description" msgid="7348298582877249787">"Elemento de lista. <xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>."</string>
+    <string name="safety_center_entry_content_description" msgid="3639565652938224321">"<xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>."</string>
     <string name="safety_center_more_issues_card_title" msgid="8599419758014246517">"Ver todas las alertas"</string>
-    <string name="safety_center_more_issues_status_icon_content_description" msgid="8597351743567707802">"Ver todas las alertas"</string>
-    <string name="safety_center_more_issues_expand_button_content_description" msgid="8997241228390831958">"Ver todas las alertas"</string>
+    <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{Amplía para ver una alerta más}other{Amplía para ver # alertas más}}"</string>
     <string name="safety_center_issue_card_content_description" msgid="1281390769721765363">"Alerta. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%2$s</xliff:g>."</string>
     <string name="safety_center_issue_card_content_description_with_subtitle" msgid="5504040663935313539">"Alerta. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUBTITLE">%2$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%3$s</xliff:g>."</string>
-    <!-- no translation found for safety_center_issue_resolution_fallback (397036766466689354) -->
-    <skip />
+    <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"Acción completada"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"Comprueba los ajustes que pueden proteger más tu dispositivo"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"Ajustes rápidos de seguridad y privacidad"</string>
     <string name="safety_center_qs_close_button" msgid="1352313308176244599">"Cerrar"</string>
@@ -36,7 +40,7 @@
     <string name="safety_center_qs_privacy_control" msgid="1160682635058529673">"Interruptor. <xliff:g id="PRIVACY_CONTROL_TITLE">%1$s</xliff:g>. <xliff:g id="PRIVACY_CONTROL_STATUS">%2$s</xliff:g>"</string>
     <string name="safety_center_qs_toggle_action" msgid="5920465736488119255">"Alternar"</string>
     <string name="safety_center_qs_open_action" msgid="2760200829912423728">"Abrir"</string>
-    <string name="safety_center_review_settings_button" msgid="938981137942443930">"Revisar la configuración"</string>
+    <string name="safety_center_review_settings_button" msgid="938981137942443930">"Revisar ajustes"</string>
     <string name="safety_center_gear_label" msgid="5175877094379694098">"Configuración"</string>
     <string name="safety_center_info_label" msgid="8993181584061825412">"Información"</string>
 </resources>

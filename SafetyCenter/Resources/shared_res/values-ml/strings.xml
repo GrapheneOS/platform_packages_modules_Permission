@@ -23,10 +23,8 @@
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"പ്രശ്‌നങ്ങളൊന്നും കണ്ടെത്തിയില്ല"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"ക്രമീകരണം അവലോകനം ചെയ്യുക"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"ക്രമീകരണ ലിസ്റ്റ് പരിശോധിക്കുക"</string>
-    <!-- no translation found for overall_severity_level_device_recommendation_title (5250040236433061827) -->
-    <skip />
-    <!-- no translation found for overall_severity_level_critical_device_warning_title (5901771721834272596) -->
-    <skip />
+    <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"ഉപകരണം അപകടത്തിലാകാൻ സാധ്യതയുണ്ട്"</string>
+    <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"ഉപകരണം അപകടത്തിലാണ്"</string>
     <string name="overall_severity_level_safety_recommendation_title" msgid="6436208984463981167">"നിങ്ങൾ അപകടത്തിലായിരിക്കാം"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="1039142045555227172">"നിങ്ങൾ അപകടത്തിലാണ്"</string>
     <string name="overall_severity_n_alerts_summary" msgid="1105615451561197136">"{count,plural, =1{# മുന്നറിയിപ്പ്}other{# മുന്നറിയിപ്പുകൾ}}"</string>
