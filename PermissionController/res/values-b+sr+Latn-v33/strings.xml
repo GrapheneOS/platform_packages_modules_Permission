@@ -21,13 +21,17 @@
     <string name="permission_description_summary_storage" msgid="1917071243213043858">"Aplikacija sa ovom dozvolom može da pristupa svim fajlovima na ovom uređaju"</string>
     <string name="work_policy_title" msgid="832967780713677409">"Informacije o smernicama za posao"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"Podešavanjima upravlja IT administrator"</string>
+    <string name="safety_center_entry_group_expand_action" msgid="5358289574941779652">"Proširi i prikaži listu"</string>
+    <string name="safety_center_entry_group_collapse_action" msgid="1525710152244405656">"Skupi listu i sakrij podešavanja"</string>
+    <string name="safety_center_entry_group_content_description" msgid="7048420958214443333">"Lista: <xliff:g id="ENTRY_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>"</string>
+    <string name="safety_center_entry_group_with_actions_needed_content_description" msgid="2708884606775932657">"Lista: <xliff:g id="ENTRY_TITLE">%1$s</xliff:g>. Treba da reagujete. <xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>"</string>
+    <string name="safety_center_entry_group_item_content_description" msgid="7348298582877249787">"Stavka liste. <xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
+    <string name="safety_center_entry_content_description" msgid="3639565652938224321">"<xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_more_issues_card_title" msgid="8599419758014246517">"Prikaži sva obaveštenja"</string>
-    <string name="safety_center_more_issues_status_icon_content_description" msgid="8597351743567707802">"Prikaži sva obaveštenja"</string>
-    <string name="safety_center_more_issues_expand_button_content_description" msgid="8997241228390831958">"Pregledajte sva obaveštenja"</string>
+    <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{Proširite i vidite još jedno obaveštenje}one{Proširite i vidite još # obaveštenje}few{Proširite i vidite još # obaveštenja}other{Proširite i vidite još # obaveštenja}}"</string>
     <string name="safety_center_issue_card_content_description" msgid="1281390769721765363">"Obaveštenje. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_issue_card_content_description_with_subtitle" msgid="5504040663935313539">"Obaveštenje. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUBTITLE">%2$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%3$s</xliff:g>"</string>
-    <!-- no translation found for safety_center_issue_resolution_fallback (397036766466689354) -->
-    <skip />
+    <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"Radnja je dovršena"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"Proverite podešavanja koja mogu da dodaju zaštitu uređaju"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"Brza podešavanja bezbednosti i privatnosti"</string>
     <string name="safety_center_qs_close_button" msgid="1352313308176244599">"Zatvori"</string>

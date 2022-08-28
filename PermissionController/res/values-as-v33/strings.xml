@@ -21,13 +21,17 @@
     <string name="permission_description_summary_storage" msgid="1917071243213043858">"এই অনুমতিটো লাভ কৰা এপ্‌সমূহে এই ডিভাইচটোত থকা আটাইবোৰ ফাইল এক্সেছ কৰিব পাৰে"</string>
     <string name="work_policy_title" msgid="832967780713677409">"আপোনাৰ কৰ্মস্থান নীতিৰ তথ্য"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"আপোনাৰ আইটি প্ৰশাসকে পৰিচালনা কৰা ছেটিং"</string>
+    <string name="safety_center_entry_group_expand_action" msgid="5358289574941779652">"বিস্তাৰ কৰক আৰু সূচী দেখুৱাওক"</string>
+    <string name="safety_center_entry_group_collapse_action" msgid="1525710152244405656">"সূচী সংকোচন কৰক আৰু ছেটিং লুকুৱাওক"</string>
+    <string name="safety_center_entry_group_content_description" msgid="7048420958214443333">"সূচী। <xliff:g id="ENTRY_TITLE">%1$s</xliff:g>। <xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>"</string>
+    <string name="safety_center_entry_group_with_actions_needed_content_description" msgid="2708884606775932657">"সূচী। <xliff:g id="ENTRY_TITLE">%1$s</xliff:g>। কার্য কৰাৰ আৱশ্যক। <xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>"</string>
+    <string name="safety_center_entry_group_item_content_description" msgid="7348298582877249787">"সূচীৰ বস্তু। <xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>। <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
+    <string name="safety_center_entry_content_description" msgid="3639565652938224321">"<xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>। <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_more_issues_card_title" msgid="8599419758014246517">"আটাইবোৰ সতৰ্কবাৰ্তা চাওক"</string>
-    <string name="safety_center_more_issues_status_icon_content_description" msgid="8597351743567707802">"আটাইবোৰ সতৰ্কবাৰ্তা চাওক"</string>
-    <string name="safety_center_more_issues_expand_button_content_description" msgid="8997241228390831958">"আটাইবোৰ সতৰ্কবাৰ্তা চাওক"</string>
+    <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{বিস্তাৰ কৰক আৰু এটা সতৰ্কবাৰ্তা চাওক}one{বিস্তাৰ কৰক আৰু # টা সতৰ্কবাৰ্তা চাওক}other{বিস্তাৰ কৰক আৰু # টা সতৰ্কবাৰ্তা চাওক}}"</string>
     <string name="safety_center_issue_card_content_description" msgid="1281390769721765363">"সতৰ্কতা। <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>। <xliff:g id="ISSUE_CARD_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_issue_card_content_description_with_subtitle" msgid="5504040663935313539">"সতৰ্কতা। <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>। <xliff:g id="ISSUE_CARD_SUBTITLE">%2$s</xliff:g>। <xliff:g id="ISSUE_CARD_SUMMARY">%3$s</xliff:g>"</string>
-    <!-- no translation found for safety_center_issue_resolution_fallback (397036766466689354) -->
-    <skip />
+    <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"কার্য সম্পূর্ণ হ\'ল"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"আপোনাৰ ডিভাইচ অধিক সুৰক্ষিত কৰিব পৰা ছেটিংসমূহ পৰীক্ষা কৰক"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"সুৰক্ষা আৰু গোপনীয়তাৰ ক্ষিপ্ৰ ছেটিং"</string>
     <string name="safety_center_qs_close_button" msgid="1352313308176244599">"বন্ধ কৰক"</string>

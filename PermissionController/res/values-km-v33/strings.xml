@@ -21,13 +21,17 @@
     <string name="permission_description_summary_storage" msgid="1917071243213043858">"កម្មវិធីដែលមានការអនុញ្ញាតនេះអាចចូលប្រើប្រាស់ឯកសារទាំងអស់នៅលើឧបករណ៍នេះ"</string>
     <string name="work_policy_title" msgid="832967780713677409">"ព័ត៌មាន​អំពីគោលការណ៍ការងារ​របស់អ្នក"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"ការកំណត់​​ដែល​ស្ថិត​ក្រោម​ការ​គ្រប់គ្រងដោយ​​អ្នកគ្រប់គ្រង​ផ្នែកព័ត៌មានវិទ្យា​របស់អ្នក"</string>
+    <string name="safety_center_entry_group_expand_action" msgid="5358289574941779652">"ពង្រីក និងបង្ហាញបញ្ជី"</string>
+    <string name="safety_center_entry_group_collapse_action" msgid="1525710152244405656">"បង្រួមបញ្ជី និងលាក់ការកំណត់"</string>
+    <string name="safety_center_entry_group_content_description" msgid="7048420958214443333">"បញ្ជី។ <xliff:g id="ENTRY_TITLE">%1$s</xliff:g>។ <xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>"</string>
+    <string name="safety_center_entry_group_with_actions_needed_content_description" msgid="2708884606775932657">"បញ្ជី។ <xliff:g id="ENTRY_TITLE">%1$s</xliff:g>។ សកម្មភាព​ដែលត្រូវធ្វើ។ <xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>"</string>
+    <string name="safety_center_entry_group_item_content_description" msgid="7348298582877249787">"រាយ​បញ្ជី​ធាតុ។ <xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>។ <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
+    <string name="safety_center_entry_content_description" msgid="3639565652938224321">"<xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>។ <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_more_issues_card_title" msgid="8599419758014246517">"មើលការជូន​ដំណឹងទាំងអស់"</string>
-    <string name="safety_center_more_issues_status_icon_content_description" msgid="8597351743567707802">"មើលការជូន​ដំណឹងទាំងអស់"</string>
-    <string name="safety_center_more_issues_expand_button_content_description" msgid="8997241228390831958">"មើលការជូន​ដំណឹងទាំងអស់"</string>
+    <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{ពង្រីកដើម្បីមើលការជូនដំណឹងមួយទៀត}other{ពង្រីកដើម្បីមើលការជូនដំណឹង # ទៀត}}"</string>
     <string name="safety_center_issue_card_content_description" msgid="1281390769721765363">"ការជូន​ដំណឹង។ <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>។ <xliff:g id="ISSUE_CARD_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_issue_card_content_description_with_subtitle" msgid="5504040663935313539">"ការជូន​ដំណឹង។ <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>។ <xliff:g id="ISSUE_CARD_SUBTITLE">%2$s</xliff:g>។ <xliff:g id="ISSUE_CARD_SUMMARY">%3$s</xliff:g>"</string>
-    <!-- no translation found for safety_center_issue_resolution_fallback (397036766466689354) -->
-    <skip />
+    <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"សកម្មភាពបានបញ្ចប់"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"ពិនិត្យការកំណត់ដែលអាចបន្ថែមការការពារទៅដល់ឧបករណ៍របស់អ្នក"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"ការកំណត់រហ័សសម្រាប់សុវត្ថិភាព និងឯកជនភាព"</string>
     <string name="safety_center_qs_close_button" msgid="1352313308176244599">"បិទ"</string>

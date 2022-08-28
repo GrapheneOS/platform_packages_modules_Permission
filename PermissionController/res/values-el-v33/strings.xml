@@ -21,13 +21,17 @@
     <string name="permission_description_summary_storage" msgid="1917071243213043858">"Οι εφαρμογές με αυτήν την άδεια μπορούν να έχουν πρόσβαση σε όλα τα αρχεία αυτής της συσκευής"</string>
     <string name="work_policy_title" msgid="832967780713677409">"Οι πληροφορίες πολιτικής εργασίας σας"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"Η διαχείριση των ρυθμίσεων πραγματοποιείται από τον διαχειριστή IT"</string>
+    <string name="safety_center_entry_group_expand_action" msgid="5358289574941779652">"Ανάπτυξη και εμφάνιση λίστας"</string>
+    <string name="safety_center_entry_group_collapse_action" msgid="1525710152244405656">"Σύμπτυξη λίστας και απόκρυψη ρυθμίσεων"</string>
+    <string name="safety_center_entry_group_content_description" msgid="7048420958214443333">"Λίστα. <xliff:g id="ENTRY_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>"</string>
+    <string name="safety_center_entry_group_with_actions_needed_content_description" msgid="2708884606775932657">"Λίστα. <xliff:g id="ENTRY_TITLE">%1$s</xliff:g>. Απαιτούνται ενέργειες. <xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>"</string>
+    <string name="safety_center_entry_group_item_content_description" msgid="7348298582877249787">"Στοιχείο λίστας. <xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
+    <string name="safety_center_entry_content_description" msgid="3639565652938224321">"<xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_more_issues_card_title" msgid="8599419758014246517">"Εμφάνιση όλων των ειδοποιήσεων"</string>
-    <string name="safety_center_more_issues_status_icon_content_description" msgid="8597351743567707802">"Εμφάνιση όλων των ειδοποιήσεων"</string>
-    <string name="safety_center_more_issues_expand_button_content_description" msgid="8997241228390831958">"Εμφάνιση όλων των ειδοποιήσεων"</string>
+    <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{Αναπτύξτε και δείτε μία ακόμη ειδοποίηση}other{Αναπτύξτε και δείτε # ακόμη ειδοποιήσεις}}"</string>
     <string name="safety_center_issue_card_content_description" msgid="1281390769721765363">"Ειδοποίηση. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_issue_card_content_description_with_subtitle" msgid="5504040663935313539">"Ειδοποίηση. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUBTITLE">%2$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%3$s</xliff:g>"</string>
-    <!-- no translation found for safety_center_issue_resolution_fallback (397036766466689354) -->
-    <skip />
+    <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"Η ενέργεια ολοκληρώθηκε"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"Ελέγξτε ρυθμίσεις που μπορούν να προσθέσουν προστασία στη συσκευή σας"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"Γρήγορες ρυθμίσεις ασφάλειας και απορρήτου"</string>
     <string name="safety_center_qs_close_button" msgid="1352313308176244599">"Κλείσιμο"</string>
