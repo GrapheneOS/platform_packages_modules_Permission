@@ -511,11 +511,11 @@
     <string name="manage_permissions_qs" msgid="3780541819763475434">"Gestire le autorizzazioni"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Attualmente in uso per la telefonata"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Recentemente in uso nella telefonata"</string>
-    <string name="active_app_usage_qs" msgid="4063912870936464727">"Attualmente in uso per <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
+    <string name="active_app_usage_qs" msgid="4063912870936464727">"Attualmente in uso da <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
     <string name="recent_app_usage_qs" msgid="6650259601306212327">"Recentemente in uso per <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
-    <string name="active_app_usage_1_qs" msgid="4325136375823357052">"Attualmente in uso per <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
+    <string name="active_app_usage_1_qs" msgid="4325136375823357052">"Attualmente in uso da <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
     <string name="recent_app_usage_1_qs" msgid="261450184773310741">"Recentemente in uso per <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
-    <string name="active_app_usage_2_qs" msgid="6107866785243565283">"Attualmente in uso per <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
+    <string name="active_app_usage_2_qs" msgid="6107866785243565283">"Attualmente in uso da <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Recentemente in uso per <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Sicurezza e privacy"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Verifica lo stato"</string>

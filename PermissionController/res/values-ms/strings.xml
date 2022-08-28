@@ -101,7 +101,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"Benarkan sepanjang masa"</string>
-    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Benarkan semasa menggunakn apl"</string>
+    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Benarkan hanya semasa menggunakan apl"</string>
     <string name="permission_access_never" msgid="4647014230217936900">"Jangan benarkan"</string>
     <string name="loading" msgid="4789365003890741082">"Memuatkan…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"Semua kebenaran"</string>
