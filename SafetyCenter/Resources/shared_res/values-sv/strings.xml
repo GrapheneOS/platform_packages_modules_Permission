@@ -23,10 +23,8 @@
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"Inga problem hittades"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Granska inställningarna"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Kontrollera listan med inställningar"</string>
-    <!-- no translation found for overall_severity_level_device_recommendation_title (5250040236433061827) -->
-    <skip />
-    <!-- no translation found for overall_severity_level_critical_device_warning_title (5901771721834272596) -->
-    <skip />
+    <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"Enheten kan vara i fara"</string>
+    <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"Enheten är i fara"</string>
     <string name="overall_severity_level_safety_recommendation_title" msgid="6436208984463981167">"Du kan vara utsatt för fara"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="1039142045555227172">"Du är i fara"</string>
     <string name="overall_severity_n_alerts_summary" msgid="1105615451561197136">"{count,plural, =1{# varning}other{# varningar}}"</string>

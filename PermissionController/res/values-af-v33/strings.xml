@@ -21,12 +21,17 @@
     <string name="permission_description_summary_storage" msgid="1917071243213043858">"Programme met hierdie toestemming het toegang tot alle lêers op hierdie toestel"</string>
     <string name="work_policy_title" msgid="832967780713677409">"Jou werkbeleidinligting"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"Instellings wat deur jou IT-admin bestuur word"</string>
+    <string name="safety_center_entry_group_expand_action" msgid="5358289574941779652">"Vou uit en wys lys"</string>
+    <string name="safety_center_entry_group_collapse_action" msgid="1525710152244405656">"Vou lys in en verberg instellings"</string>
+    <string name="safety_center_entry_group_content_description" msgid="7048420958214443333">"Lys. <xliff:g id="ENTRY_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>"</string>
+    <string name="safety_center_entry_group_with_actions_needed_content_description" msgid="2708884606775932657">"Lys. <xliff:g id="ENTRY_TITLE">%1$s</xliff:g>. Handelinge word benodig. <xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>"</string>
+    <string name="safety_center_entry_group_item_content_description" msgid="7348298582877249787">"Lysitem. <xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
+    <string name="safety_center_entry_content_description" msgid="3639565652938224321">"<xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_more_issues_card_title" msgid="8599419758014246517">"Sien alle opletberigte"</string>
-    <string name="safety_center_more_issues_status_icon_content_description" msgid="8597351743567707802">"Sien alle opletberigte"</string>
-    <string name="safety_center_more_issues_expand_button_content_description" msgid="8997241228390831958">"Sien alle opletberigte"</string>
+    <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{Vou uit om nog een waarskuwing te sien}other{Vou uit om nog # waarskuwings te sien}}"</string>
     <string name="safety_center_issue_card_content_description" msgid="1281390769721765363">"Waarskuwing. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_issue_card_content_description_with_subtitle" msgid="5504040663935313539">"Waarskuwing. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUBTITLE">%2$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%3$s</xliff:g>"</string>
-    <string name="safety_center_issue_resolution_fallback" msgid="397036766466689354">"Voltooi"</string>
+    <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"Handeling is voltooi"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"Gaan instellings na wat jou toestel kan beskerm"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"Kitsinstellings vir sekuriteit en privaatheid"</string>
     <string name="safety_center_qs_close_button" msgid="1352313308176244599">"Maak toe"</string>

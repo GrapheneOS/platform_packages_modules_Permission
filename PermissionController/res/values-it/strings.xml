@@ -23,6 +23,8 @@
     <string name="back" msgid="6249950659061523680">"Indietro"</string>
     <string name="available" msgid="6007778121920339498">"Disponibile"</string>
     <string name="blocked" msgid="9195547604866033708">"Bloccato"</string>
+    <string name="on" msgid="280241003226755921">"On"</string>
+    <string name="off" msgid="1438489226422866263">"Off"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Disinstalla o disattiva"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"App non trovata"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"Non consentire"</string>
@@ -130,6 +132,7 @@
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Cronologia delle volte in cui le app hanno usato <xliff:g id="PERMGROUP">%1$s</xliff:g> negli ultimi 7 giorni"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Quando questa app ha usato l\'autorizzazione <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Scopri di più"</string>
+    <string name="learn_more_content_description" msgid="8673699744544502539">"Informazioni su <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="manage_permission_summary" msgid="4117555482684114317">"Controlla l\'accesso dell\'app al gruppo <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="auto_permission_usage_timeline_summary" msgid="2713135806453218703">"<xliff:g id="ACCESS_TIME">%1$s</xliff:g> • <xliff:g id="SUMMARY_TEXT">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
@@ -209,7 +212,6 @@
     <string name="auto_revocable_permissions_two" msgid="4874067408752041716">"Le autorizzazioni <xliff:g id="PERM_0">%1$s</xliff:g> e <xliff:g id="PERM_1">%2$s</xliff:g> verranno rimosse."</string>
     <string name="auto_revocable_permissions_many" msgid="1521807896206032992">"Autorizzazioni che verranno rimosse: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_manage_title" msgid="7693181026874842935">"Gestisci autorizzazioni automaticamente"</string>
-    <string name="off" msgid="1438489226422866263">"Off"</string>
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"Autorizzazione <xliff:g id="PERMISSION_NAME">%s</xliff:g> rimossa"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Autorizzazioni <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> e <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> rimosse"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> e altre <xliff:g id="NUMBER">%2$s</xliff:g> autorizzazioni rimosse"</string>
@@ -277,15 +279,13 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Autorizzazioni rimosse per proteggere la tua privacy"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> ha recuperato la tua posizione in background"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Questa app può accedere sempre alla tua posizione. Tocca per modificare."</string>
-    <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"Controlla app con accesso alle tue notifiche"</string>
-    <!-- no translation found for notification_listener_reminder_notification_content (831476101108863427) -->
-    <skip />
-    <!-- no translation found for notification_listener_warning_card_content (7840973324284115893) -->
-    <skip />
+    <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"Controlla l\'app con accesso alle tue notifiche"</string>
+    <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g> può ignorare i contenuti, intervenire su questi ultimi e accedervi all\'interno delle notifiche"</string>
+    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"Questa app può ignorare i contenuti, intervenire su questi ultimi e accedervi all\'interno delle notifiche. Alcune app richiedono questo accesso per poter funzionare come previsto."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Rimuovi accesso"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"Vedi altre opzioni"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Accesso rimosso"</string>
-    <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"Controlla app con accesso completo al dispositivo"</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"Controlla l\'app con accesso completo al dispositivo"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"L\'app <xliff:g id="APP_NAME">%s</xliff:g> può vedere il tuo schermo e compiere azioni sul tuo dispositivo. Le app di accessibilità hanno bisogno di questo tipo di accesso per poter funzionare come previsto."</string>
     <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"Questa app può vedere il tuo schermo e compiere azioni sul tuo dispositivo. Le app di accessibilità hanno bisogno di questo tipo di accesso per poter funzionare come previsto, ma controlla l\'app e assicurati che sia attendibile."</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Rimuovi accesso"</string>
@@ -516,7 +516,7 @@
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"Analizza il dispositivo"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Ignora"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Vuoi ignorare questo avviso?"</string>
-    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"Esamina in qualsiasi momento le impostazioni della sicurezza e della privacy per aumentare la protezione"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"Esamina in qualsiasi momento le Impostazioni di sicurezza e privacy per aumentare la protezione"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Ignora"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Annulla"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"Impostazioni"</string>
@@ -538,11 +538,11 @@
     <string name="manage_permissions_qs" msgid="3780541819763475434">"Gestire le autorizzazioni"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Attualmente in uso per la telefonata"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Recentemente in uso nella telefonata"</string>
-    <string name="active_app_usage_qs" msgid="4063912870936464727">"Attualmente in uso per <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
+    <string name="active_app_usage_qs" msgid="4063912870936464727">"Attualmente in uso da <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
     <string name="recent_app_usage_qs" msgid="6650259601306212327">"Recentemente in uso per <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
-    <string name="active_app_usage_1_qs" msgid="4325136375823357052">"Attualmente in uso per <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
+    <string name="active_app_usage_1_qs" msgid="4325136375823357052">"Attualmente in uso da <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
     <string name="recent_app_usage_1_qs" msgid="261450184773310741">"Recentemente in uso per <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
-    <string name="active_app_usage_2_qs" msgid="6107866785243565283">"Attualmente in uso per <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
+    <string name="active_app_usage_2_qs" msgid="6107866785243565283">"Attualmente in uso da <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Recentemente in uso per <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"Conferma"</string>
     <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"Indietro"</string>
@@ -562,9 +562,9 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Questa app non supporta l\'ultima versione di Android. Se questa app non può accedere a file audio e musicali, non potrà accedere neanche a foto e video."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Questa app non supporta l\'ultima versione di Android. Se questa app può accedere a foto e video, potrà accedere anche a file audio e musicali."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Questa app non supporta l\'ultima versione di Android. Se questa app non può accedere a file audio e musicali, non potrà accedere neanche a foto e video."</string>
-    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Controlla app con accesso alla posizione in background"</string>
+    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Controlla l\'app con accesso alla posizione in background"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"L\'app <xliff:g id="APP_NAME">%s</xliff:g> può accedere sempre alla tua posizione, anche quando è chiusa"</string>
-    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Controlla app con accesso alla posizione in background"</string>
+    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Controlla l\'app con accesso alla posizione in background"</string>
     <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Questa app può accedere sempre alla tua posizione, anche quando è chiusa."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Accesso modificato"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Visualizza uso recente della posizione"</string>

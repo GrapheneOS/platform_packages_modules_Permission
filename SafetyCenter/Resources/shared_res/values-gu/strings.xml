@@ -23,10 +23,8 @@
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"કોઈ સમસ્યા મળી નથી"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"સેટિંગનો રિવ્યૂ કરો"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"સેટિંગની સૂચિ ચેક કરો"</string>
-    <!-- no translation found for overall_severity_level_device_recommendation_title (5250040236433061827) -->
-    <skip />
-    <!-- no translation found for overall_severity_level_critical_device_warning_title (5901771721834272596) -->
-    <skip />
+    <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"ડિવાઇસ કદાચ જોખમમાં હોઈ શકે"</string>
+    <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"ડિવાઇસ જોખમમાં છે"</string>
     <string name="overall_severity_level_safety_recommendation_title" msgid="6436208984463981167">"તમારી સુરક્ષા જોખમમાં હોઈ શકે છે"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="1039142045555227172">"તમારી સુરક્ષા જોખમમાં છે"</string>
     <string name="overall_severity_n_alerts_summary" msgid="1105615451561197136">"{count,plural, =1{# અલર્ટ}one{# અલર્ટ}other{# અલર્ટ}}"</string>

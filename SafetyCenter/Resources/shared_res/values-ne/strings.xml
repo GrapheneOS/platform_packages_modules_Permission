@@ -23,10 +23,8 @@
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"कुनै पनि समस्या भेटिएन"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"सेटिङको समीक्षा गर्नुहोस्"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"सेटिङको सूची जाँच्नुहोस्"</string>
-    <!-- no translation found for overall_severity_level_device_recommendation_title (5250040236433061827) -->
-    <skip />
-    <!-- no translation found for overall_severity_level_critical_device_warning_title (5901771721834272596) -->
-    <skip />
+    <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"डिभाइस जोखिममा हुन सक्छ"</string>
+    <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"डिभाइस जोखिममा छ"</string>
     <string name="overall_severity_level_safety_recommendation_title" msgid="6436208984463981167">"सुरक्षा र गोपनीयता जोखिममा हुन सक्छ"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="1039142045555227172">"सुरक्षा र गोपनीयता जोखिममा छ"</string>
     <string name="overall_severity_n_alerts_summary" msgid="1105615451561197136">"{count,plural, =1{# अलर्ट}other{# वटा अलर्ट}}"</string>
@@ -35,5 +33,5 @@
     <string name="refresh_timeout" msgid="251734999692581852">"सेटिङ रिफ्रेस गर्न सकिएन"</string>
     <string name="refresh_error" msgid="255412333381376201">"{count,plural, =1{सेटिङ}other{सेटिङ}} जाँच्न सकिएन"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"कार्य प्रोफाइल पज गरिएको छ"</string>
-    <string name="group_unknown_summary" msgid="6951386960814105641">"अहिलेसम्म कुनै पनि जानकारी छैन"</string>
+    <string name="group_unknown_summary" msgid="6951386960814105641">"कुनै जानकारी उपलब्ध छैन"</string>
 </resources>

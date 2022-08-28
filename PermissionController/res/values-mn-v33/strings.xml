@@ -21,12 +21,17 @@
     <string name="permission_description_summary_storage" msgid="1917071243213043858">"Энэ зөвшөөрөлтэй аппууд энэ төхөөрөмж дээрх бүх файлд хандах боломжтой"</string>
     <string name="work_policy_title" msgid="832967780713677409">"Таны ажлын удирдамжийн мэдээлэл"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"Танай IT админы удирддаг тохиргоо"</string>
+    <string name="safety_center_entry_group_expand_action" msgid="5358289574941779652">"Жагсаалтыг дэлгээд, харуулах"</string>
+    <string name="safety_center_entry_group_collapse_action" msgid="1525710152244405656">"Жагсаалтыг хураагаад, тохиргоог нуух"</string>
+    <string name="safety_center_entry_group_content_description" msgid="7048420958214443333">"Жагсаалт. <xliff:g id="ENTRY_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>"</string>
+    <string name="safety_center_entry_group_with_actions_needed_content_description" msgid="2708884606775932657">"Жагсаалт. <xliff:g id="ENTRY_TITLE">%1$s</xliff:g>. Үйлдэл шаардлагатай. <xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>"</string>
+    <string name="safety_center_entry_group_item_content_description" msgid="7348298582877249787">"Жагсаалтын зүйл. <xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
+    <string name="safety_center_entry_content_description" msgid="3639565652938224321">"<xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_more_issues_card_title" msgid="8599419758014246517">"Бүх сэрэмжлүүлгийг харах"</string>
-    <string name="safety_center_more_issues_status_icon_content_description" msgid="8597351743567707802">"Бүх сэрэмжлүүлгийг харах"</string>
-    <string name="safety_center_more_issues_expand_button_content_description" msgid="8997241228390831958">"Бүх сэрэмжлүүлгийг харах"</string>
+    <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{Дэлгээд дахин нэг анхааруулга харах}other{Дэлгээд дахин # анхааруулга харах}}"</string>
     <string name="safety_center_issue_card_content_description" msgid="1281390769721765363">"Сэрэмжлүүлэг. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_issue_card_content_description_with_subtitle" msgid="5504040663935313539">"Сэрэмжлүүлэг. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUBTITLE">%2$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%3$s</xliff:g>"</string>
-    <string name="safety_center_issue_resolution_fallback" msgid="397036766466689354">"Дууссан"</string>
+    <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"Үйлдэл дууссан"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"Таны төхөөрөмжид хамгаалалт нэмэх боломжтой тохиргоог шалгана уу"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"Аюулгүй байдал болон нууцлалын шуурхай тохиргоо"</string>
     <string name="safety_center_qs_close_button" msgid="1352313308176244599">"Хаах"</string>
