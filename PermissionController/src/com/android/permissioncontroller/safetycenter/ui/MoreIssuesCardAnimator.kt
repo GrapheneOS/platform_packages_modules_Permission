@@ -20,21 +20,15 @@ import android.graphics.drawable.Animatable2
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.Drawable
 import android.safetycenter.SafetyCenterIssue
-import android.transition.AutoTransition
-import android.transition.Transition
-import android.transition.TransitionListenerAdapter
-import android.transition.TransitionManager
 import android.util.Log
-import android.view.View
-import android.view.ViewGroup
-import android.view.animation.LinearInterpolator
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.DrawableRes
 import com.android.permissioncontroller.R
-import java.time.Duration
 
 class MoreIssuesCardAnimator {
+    private val textFadeAnimator = TextFadeAnimator(R.id.widget_title)
+
     fun animateStatusIconsChange(
         statusIcon: ImageView,
         startSeverityLevel: Int,
@@ -68,34 +62,11 @@ class MoreIssuesCardAnimator {
     }
 
     fun animateChangeText(textView: TextView, text: String) {
-        val fadeOutTransition =
-            textChangeTransition
-                .clone()
-                .addListener(
-                    object : TransitionListenerAdapter() {
-                        override fun onTransitionEnd(transition: Transition?) {
-                            super.onTransitionEnd(transition)
-                            fadeTextIn(textView, text)
-                        }
-                    })
-        textView.post {
-            TransitionManager.beginDelayedTransition(
-                textView.parent as ViewGroup, fadeOutTransition)
-            textView.visibility = View.INVISIBLE
-        }
-    }
-
-    fun fadeTextIn(textView: TextView, text: String) {
-        val fadeInTransition = textChangeTransition.clone()
-        textView.post {
-            TransitionManager.beginDelayedTransition(textView.parent as ViewGroup, fadeInTransition)
-            textView.text = text
-            textView.visibility = View.VISIBLE
-        }
+        textFadeAnimator.animateChangeText(textView, text)
     }
 
     fun cancelTextChangeAnimation(textView: TextView) {
-        TransitionManager.endTransitions(textView.parent as ViewGroup)
+        textFadeAnimator.cancelTextChangeAnimation(textView)
     }
 
     @DrawableRes
@@ -139,17 +110,5 @@ class MoreIssuesCardAnimator {
                 R.drawable.ic_safety_null_state
             }
         }
-    }
-
-    companion object {
-        // Duration is for fade-out & fade-in individually, not combined
-        private val TEXT_CHANGE_DURATION = Duration.ofMillis(167)
-        private val linearInterpolator = LinearInterpolator()
-
-        private val textChangeTransition =
-            AutoTransition()
-                .setInterpolator(linearInterpolator)
-                .setDuration(TEXT_CHANGE_DURATION.toMillis())
-                .addTarget(R.id.widget_title)
     }
 }
