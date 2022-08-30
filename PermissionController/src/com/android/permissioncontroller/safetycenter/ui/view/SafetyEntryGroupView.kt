@@ -147,17 +147,17 @@ internal class SafetyEntryGroupView @JvmOverloads constructor(
         isExpanded = shouldBeExpanded
 
         val newPaddingTop = context.resources.getDimensionPixelSize(
-                when {
-                    shouldBeExpanded -> R.dimen.safety_center_group_header_expanded_padding_top
-                    else -> R.dimen.safety_center_group_header_collapsed_padding_top
-                }
-        )
+                if (shouldBeExpanded) {
+                    R.dimen.sc_entry_group_expanded_padding_top
+                } else {
+                    R.dimen.sc_entry_group_collapsed_padding_top
+                })
         val newPaddingBottom = context.resources.getDimensionPixelSize(
-                when {
-                    shouldBeExpanded -> R.dimen.safety_center_group_header_expanded_padding_bottom
-                    else -> R.dimen.safety_center_group_header_collapsed_padding_bottom
-                }
-        )
+                if (shouldBeExpanded) {
+                    R.dimen.sc_entry_group_expanded_padding_bottom
+                } else {
+                    R.dimen.sc_entry_group_collapsed_padding_bottom
+                })
         setPaddingRelative(paddingStart, newPaddingTop, paddingEnd, newPaddingBottom)
 
         // accessibility attributes depend on the expanded state

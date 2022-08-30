@@ -20,14 +20,18 @@
     <item>
         <shape android:shape="rectangle">
             <solid android:color="?attr/colorSurface" />
-            <corners android:topLeftRadius="28dp" android:topRightRadius="28dp" />
+            <corners
+                android:topLeftRadius="@dimen/sc_card_corner_radius_large"
+                android:topRightRadius="@dimen/sc_card_corner_radius_large" />
         </shape>
     </item>
 
     <item android:id="@android:id/mask">
         <shape android:shape="rectangle">
             <solid android:color="#FFFF" />
-            <corners android:topLeftRadius="28dp" android:topRightRadius="28dp" />
+            <corners
+                android:topLeftRadius="@dimen/sc_card_corner_radius_large"
+                android:topRightRadius="@dimen/sc_card_corner_radius_large" />
         </shape>
     </item>
 </ripple>

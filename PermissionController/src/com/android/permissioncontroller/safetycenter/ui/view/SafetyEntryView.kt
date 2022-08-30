@@ -153,7 +153,7 @@ internal class SafetyEntryView @JvmOverloads constructor(
                     paddingTop,
                     context
                             .resources
-                            .getDimensionPixelSize(R.dimen.safety_center_entry_padding_end),
+                            .getDimensionPixelSize(R.dimen.sc_entry_padding_end),
                     paddingBottom)
         }
     }

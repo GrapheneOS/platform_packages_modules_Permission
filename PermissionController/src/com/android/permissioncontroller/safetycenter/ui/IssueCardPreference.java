@@ -161,7 +161,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
                     holder.itemView.getPaddingEnd(),
                     /* bottom = */ getContext()
                             .getResources()
-                            .getDimensionPixelSize(R.dimen.safety_center_card_margin_bottom));
+                            .getDimensionPixelSize(R.dimen.sc_card_margin_bottom));
         } else {
             holder.itemView.setPaddingRelative(
                     holder.itemView.getPaddingStart(),
@@ -189,7 +189,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
             dismissButton.setVisibility(View.VISIBLE);
 
             SafetyCenterTouchTarget.configureSize(
-                    dismissButton, R.dimen.safety_center_icon_button_touch_target_size);
+                    dismissButton, R.dimen.sc_icon_button_touch_target_size);
         } else {
             dismissButton.setVisibility(View.GONE);
         }
@@ -320,8 +320,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
                         getSecondaryButtonStrokeColorFromSeverity(mIssue.getSeverityLevel())));
 
         int margin =
-                context.getResources()
-                        .getDimensionPixelSize(R.dimen.safety_center_action_button_list_margin);
+                context.getResources().getDimensionPixelSize(R.dimen.sc_action_button_list_margin);
         ViewGroup.MarginLayoutParams layoutParams =
                 new ViewGroup.MarginLayoutParams(MATCH_PARENT, WRAP_CONTENT);
         layoutParams.setMargins(0, margin, 0, 0);

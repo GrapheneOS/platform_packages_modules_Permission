@@ -52,9 +52,9 @@ internal enum class PositionInCardList(val backgroundDrawableResId: Int) {
     fun getTopMargin(context: Context): Int =
         when (this) {
             CARD_START, CARD_START_END, CARD_START_LIST_END ->
-                context.resources.getDimensionPixelSize(R.dimen.safety_center_card_margin)
+                context.resources.getDimensionPixelSize(R.dimen.sc_card_margin)
             LIST_START, LIST_START_CARD_END, LIST_START_END ->
-                context.resources.getDimensionPixelSize(R.dimen.safety_center_list_margin)
+                context.resources.getDimensionPixelSize(R.dimen.sc_list_margin)
             else -> 0
         }
 

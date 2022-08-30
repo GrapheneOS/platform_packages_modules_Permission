@@ -24,62 +24,56 @@
         android:layout_height="wrap_content"
         android:id="@+id/full_card"
         style="@style/SafetyCenterIndicatorForeground">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/indicator_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/SafetyCenterIndicatorForeground">
-        <ImageView
-            android:id="@+id/indicator_icon"
-            android:importantForAccessibility="no"
-            style="@style/SafetyCenterIndicatorImageView"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-        />
-        <TextView
-            android:id="@+id/indicator_title"
-            app:layout_constraintStart_toEndOf="@id/indicator_icon"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            style="@style/SafetyCenterIndicatorTitleText"
-        />
-        <TextView
-            android:id="@+id/indicator_label"
-            app:layout_constraintTop_toBottomOf="@id/indicator_title"
-            app:layout_constraintStart_toStartOf="@id/indicator_title"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/expand_view"
-            style="@style/SafetyCenterIndicatorLabelText"
-        />
-        <ImageView
-            android:id="@+id/expand_view"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            style="@style/SafetyCenterIndicatorExpandView"
-        />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/expanded_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        style="@style/SafetyCenterIndicatorForeground">
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/primary_button"
-            style="@style/SafetyCenterIndicatorActionButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-        />
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/secondary_button"
-            app:layout_constraintTop_toBottomOf="@id/primary_button"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            style="@style/SafetyCenterIndicatorSecondaryActionButton"
-        />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/indicator_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/SafetyCenterIndicatorForeground">
+            <ImageView
+                android:id="@+id/indicator_icon"
+                android:importantForAccessibility="no"
+                style="@style/SafetyCenterIndicatorImageView"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+            <TextView
+                android:id="@+id/indicator_title"
+                app:layout_constraintStart_toEndOf="@id/indicator_icon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                style="@style/SafetyCenterIndicatorTitleText" />
+            <TextView
+                android:id="@+id/indicator_label"
+                app:layout_constraintTop_toBottomOf="@id/indicator_title"
+                app:layout_constraintStart_toStartOf="@id/indicator_title"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/expand_view"
+                style="@style/SafetyCenterIndicatorLabelText" />
+            <ImageView
+                android:id="@+id/expand_view"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                style="@style/SafetyCenterIndicatorExpandView" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/expanded_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            style="@style/SafetyCenterIndicatorForeground">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/primary_button"
+                style="@style/SafetyCenterIndicatorActionButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/secondary_button"
+                app:layout_constraintTop_toBottomOf="@id/primary_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                style="@style/SafetyCenterIndicatorSecondaryActionButton" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
