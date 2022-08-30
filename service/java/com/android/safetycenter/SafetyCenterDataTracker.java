@@ -18,6 +18,9 @@ package com.android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
+import static com.android.safetycenter.WestworldLogger.toSystemEventResult;
+import static com.android.safetycenter.internaldata.SafetyCenterIds.toUserFriendlyString;
+
 import static java.util.Collections.emptyList;
 
 import android.annotation.NonNull;
@@ -63,6 +66,7 @@ import com.android.permission.PermissionStatsLog;
 import com.android.permission.util.PackageUtils;
 import com.android.permission.util.UserUtils;
 import com.android.safetycenter.SafetyCenterConfigReader.ExternalSafetySource;
+import com.android.safetycenter.WestworldLogger.SystemEventResult;
 import com.android.safetycenter.internaldata.SafetyCenterEntryGroupId;
 import com.android.safetycenter.internaldata.SafetyCenterEntryId;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
@@ -354,11 +358,14 @@ final class SafetyCenterDataTracker {
      */
     boolean unmarkSafetyCenterIssueActionInFlight(
             @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId,
-            @WestworldLogger.SystemEventResult int result) {
+            @SystemEventResult int result) {
         Long startElapsedMillis =
                 mSafetyCenterIssueActionsInFlight.remove(safetyCenterIssueActionId);
         if (startElapsedMillis == null) {
-            Log.w(TAG, "Attempted to unmark unknown action: " + safetyCenterIssueActionId);
+            Log.w(
+                    TAG,
+                    "Attempt to unmark unknown action: "
+                            + toUserFriendlyString(safetyCenterIssueActionId));
             return false;
         }
 
@@ -539,11 +546,7 @@ final class SafetyCenterDataTracker {
         }
     }
 
-    /**
-     * Dumps state for debugging purposes.
-     *
-     * @param fout {@link PrintWriter} to write to
-     */
+    /** Dumps state for debugging purposes. */
     void dump(@NonNull PrintWriter fout) {
         int dataCount = mSafetySourceDataForKey.size();
         fout.println("SOURCE DATA (" + dataCount + ")");
@@ -742,7 +745,7 @@ final class SafetyCenterDataTracker {
                     "Issue missing when reading from cache for "
                             + reason
                             + ": "
-                            + SafetyCenterIds.toUserFriendlyString(safetyCenterIssueKey));
+                            + toUserFriendlyString(safetyCenterIssueKey));
             return null;
         }
         return safetyCenterIssueData;
@@ -941,7 +944,7 @@ final class SafetyCenterDataTracker {
                                 .setSafetySourceIssueActionId(safetySourceIssueActionId)
                                 .build();
                 boolean success = type == SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED;
-                int result = WestworldLogger.toSystemEventResult(success);
+                int result = toSystemEventResult(success);
                 return unmarkSafetyCenterIssueActionInFlight(safetyCenterIssueActionId, result);
             case SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED:
             case SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_LOCALE_CHANGED:
@@ -1973,7 +1976,7 @@ final class SafetyCenterDataTracker {
                 return generalString;
         }
 
-        Log.w(TAG, "Unexpected issueCategory found: " + issueCategory);
+        Log.w(TAG, "Unexpected SafetySourceIssue.IssueCategory: " + issueCategory);
         return generalString;
     }
 
@@ -2077,16 +2080,16 @@ final class SafetyCenterDataTracker {
         }
 
         @NonNull
-        public SafetyCenterIssue getSafetyCenterIssue() {
+        private SafetyCenterIssue getSafetyCenterIssue() {
             return mSafetyCenterIssue;
         }
 
         @SafetySourceIssue.IssueCategory
-        public int getSafetyCenterIssueCategory() {
+        private int getSafetyCenterIssueCategory() {
             return mSafetyCenterIssueCategory;
         }
 
-        public static SafetyCenterIssueWithCategory create(
+        private static SafetyCenterIssueWithCategory create(
                 @NonNull SafetyCenterIssue safetyCenterIssue,
                 @SafetySourceIssue.IssueCategory int safetyCenterIssueCategory) {
             return new SafetyCenterIssueWithCategory(safetyCenterIssue, safetyCenterIssueCategory);
@@ -2097,7 +2100,7 @@ final class SafetyCenterDataTracker {
     private static final class SafetyCenterIssuesBySeverityDescending
             implements Comparator<SafetyCenterIssueWithCategory> {
 
-        SafetyCenterIssuesBySeverityDescending() {}
+        private SafetyCenterIssuesBySeverityDescending() {}
 
         @Override
         public int compare(

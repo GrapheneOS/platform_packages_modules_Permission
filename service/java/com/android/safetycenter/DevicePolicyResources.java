@@ -43,7 +43,7 @@ final class DevicePolicyResources {
      * DevicePolicyResourcesManager#getString}.
      */
     @NonNull
-    public static String getSafetySourceWorkString(
+    static String getSafetySourceWorkString(
             @NonNull SafetyCenterResourcesContext safetyCenterResourcesContext,
             @NonNull String safetySourceId,
             @StringRes int workResId) {
@@ -58,7 +58,7 @@ final class DevicePolicyResources {
      * DevicePolicyResourcesManager#getString}.
      */
     @NonNull
-    public static String getWorkProfilePausedString(
+    static String getWorkProfilePausedString(
             @NonNull SafetyCenterResourcesContext safetyCenterResourcesContext) {
         return getEnterpriseString(
                 safetyCenterResourcesContext,

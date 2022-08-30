@@ -239,11 +239,7 @@ final class SafetyCenterListeners {
         listenersForUserId.finishBroadcast();
     }
 
-    /**
-     * Dumps state for debugging purposes.
-     *
-     * @param fout {@link PrintWriter} to write to
-     */
+    /** Dumps state for debugging purposes. */
     void dump(@NonNull PrintWriter fout) {
         int userIdCount = mSafetyCenterDataChangedListeners.size();
         fout.println("DATA CHANGED LISTENERS (" + userIdCount + " user IDs)");
