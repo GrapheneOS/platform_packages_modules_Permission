@@ -29,21 +29,17 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.android.dx.mockito.inline.extended.ExtendedMockito
 import com.android.permissioncontroller.privacysources.AccessibilityJobService
 import com.android.permissioncontroller.privacysources.AccessibilitySourceService
-import com.android.permissioncontroller.privacysources.PROPERTY_SC_ACCESSIBILITY_SOURCE_ENABLED
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
 import org.junit.runner.RunWith
 import org.junit.Test
-import org.mockito.ArgumentMatchers.anyBoolean
-import org.mockito.ArgumentMatchers.eq
 import org.mockito.Mock
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
 import org.mockito.MockitoAnnotations
 import org.mockito.MockitoSession
-import org.mockito.Mockito.`when` as whenever
 import org.mockito.quality.Strictness
 
 /**
@@ -79,7 +75,6 @@ class AccessibilitySourceServiceTest {
         }
         sharedPref = accessibilitySourceService.getSharedPreference()
         sharedPref.edit().clear().apply()
-        setAccessibilityFeatureFlag(true)
     }
 
     @After
@@ -219,16 +214,6 @@ class AccessibilitySourceServiceTest {
 
         // Verify no components are present
         assertThat(updatedComponents).isEmpty()
-    }
-
-    private fun setAccessibilityFeatureFlag(enabled: Boolean) {
-        whenever(
-            DeviceConfig.getBoolean(
-                eq(DeviceConfig.NAMESPACE_PRIVACY),
-                eq(PROPERTY_SC_ACCESSIBILITY_SOURCE_ENABLED),
-                anyBoolean()
-            )
-        ).thenReturn(enabled)
     }
 
     private fun getNotifiedServices(): MutableSet<String> {
