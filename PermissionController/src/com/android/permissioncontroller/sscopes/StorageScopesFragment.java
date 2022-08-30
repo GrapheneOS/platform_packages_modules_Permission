@@ -134,13 +134,16 @@ public final class StorageScopesFragment extends SettingsWithLargeHeader {
 
             b.setButton1Text(R.string.sscopes_btn_add_folder);
             b.setButton1Icon(R.drawable.ic_sscopes_add_folder);
-            b.setButton1OnClickListener(v -> launchPicker(true));
+            b.setButton1OnClickListener(v -> launchPicker(REQUEST_CODE_DIR));
 
             b.setButton2Text(R.string.sscopes_btn_add_file);
             b.setButton2Icon(R.drawable.ic_sscopes_add_file);
-            b.setButton2OnClickListener(v -> launchPicker(false));
+            b.setButton2OnClickListener(v -> launchPicker(REQUEST_CODE_FILE));
 
-            // TODO add a button to use MediaStore#ACTION_PICK_IMAGES after AOSP T comes out
+            b.setButton3Text(R.string.sscopes_btn_add_image);
+            b.setButton3Icon(R.drawable.ic_sscopes_add_image);
+            b.setButton3OnClickListener(v -> launchPicker(REQUEST_CODE_IMAGE));
+
             actionButtons = b;
         }
         categoryFolders = newCategory(R.string.sscopes_folders);
@@ -363,24 +366,35 @@ public final class StorageScopesFragment extends SettingsWithLargeHeader {
         return c;
     }
 
-    void launchPicker(boolean dir) {
+    void launchPicker(int mode) {
         StorageScope[] scopes = getStorageScopes(pkgName);
         if (scopes == null) {
             pressBack(this);
             return;
         }
-        if (scopes.length >= StorageScope.maxArrayLength()) {
+        int availableSpace = StorageScope.maxArrayLength() - scopes.length;
+        if (availableSpace < 1) {
             showToast(R.string.sscopes_list_is_full);
             return;
         }
 
-        Intent i = new Intent(dir ? Intent.ACTION_OPEN_DOCUMENT_TREE : Intent.ACTION_OPEN_DOCUMENT);
+        if (mode == REQUEST_CODE_IMAGE) {
+            Intent i = new Intent(MediaStore.ACTION_PICK_IMAGES);
+            if (availableSpace > 1) {
+                int maxCnt = Math.min(availableSpace, MediaStore.getPickImagesMaxLimit());
+                i.putExtra(MediaStore.EXTRA_PICK_IMAGES_MAX, maxCnt);
+            }
+            startActivityForResult(i, REQUEST_CODE_IMAGE);
+            return;
+        }
+
+        Intent i = new Intent(mode == REQUEST_CODE_DIR ? Intent.ACTION_OPEN_DOCUMENT_TREE : Intent.ACTION_OPEN_DOCUMENT);
         i.putExtra(Intent.EXTRA_PACKAGE_NAME, pkgName);
 
         ArrayList<String> allowedAuthorities = new ArrayList<>();
         allowedAuthorities.add(DocumentsContract.EXTERNAL_STORAGE_PROVIDER_AUTHORITY);
 
-        if (!dir) {
+        if (mode == REQUEST_CODE_FILE) {
             i.setType("*/*");
             i.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
             i.addCategory(Intent.CATEGORY_OPENABLE);
@@ -394,18 +408,23 @@ public final class StorageScopesFragment extends SettingsWithLargeHeader {
         i.putStringArrayListExtra(Intent.EXTRA_RESTRICTIONS_LIST, allowedAuthorities);
 
         //noinspection deprecation
-        startActivityForResult(i, dir ? REQUEST_CODE_DIR : REQUEST_CODE_FILE);
+        startActivityForResult(i, mode);
     }
 
     private static final int REQUEST_CODE_DIR = 1;
     private static final int REQUEST_CODE_FILE = 2;
+    private static final int REQUEST_CODE_IMAGE = 3;
 
     /** @noinspection deprecation*/
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
-
-        if (requestCode != REQUEST_CODE_DIR && requestCode != REQUEST_CODE_FILE) {
-            return;
+        switch (requestCode) {
+            case REQUEST_CODE_DIR:
+            case REQUEST_CODE_FILE:
+            case REQUEST_CODE_IMAGE:
+                break;
+            default:
+                return;
         }
 
         if (resultCode != Activity.RESULT_OK || intent == null) {
