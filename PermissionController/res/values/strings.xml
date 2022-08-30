@@ -1599,6 +1599,7 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="sscopes_files">Files</string>
     <string name="sscopes_btn_add_folder">Add folder</string>
     <string name="sscopes_btn_add_file">Add file</string>
+    <string name="sscopes_btn_add_image">Add image</string>
     <string name="sscopes_menu_item_turn_off">Turn off</string>
     <string name="sscopes_main_storage">Main storage</string>
 
