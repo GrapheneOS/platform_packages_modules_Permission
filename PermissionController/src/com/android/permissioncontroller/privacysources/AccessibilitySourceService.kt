@@ -983,6 +983,7 @@ class SafetyCenterAccessibilityListener(val context: Context) :
             }
             val a11ySourceService = AccessibilitySourceService(context)
             val a11yEnabledServices = a11ySourceService.getEnabledAccessibilityServices()
+            a11ySourceService.sendIssuesToSafetyCenter(a11yEnabledServices)
             val enabledComponents = a11yEnabledServices.map { a11yService ->
                 ComponentName.unflattenFromString(a11yService.id)!!.flattenToShortString()
             }.toSet()
