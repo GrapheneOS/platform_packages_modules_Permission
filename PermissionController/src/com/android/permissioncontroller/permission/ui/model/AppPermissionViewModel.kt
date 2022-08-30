@@ -401,14 +401,18 @@ class AppPermissionViewModel(
             val coarseLocation = group.permissions[ACCESS_COARSE_LOCATION]!!
             val fineLocation = group.permissions[ACCESS_FINE_LOCATION]!!
             // Steps to decide location accuracy toggle state
-            // 1. If none of the FINE and COARSE isSelectedLocationAccuracy flags is set,
-            //    then use default precision from device config.
-            // 2. Otherwise return if FINE isSelectedLocationAccuracy is set to true.
-            return if ((!fineLocation.isSelectedLocationAccuracy &&
-                            !coarseLocation.isSelectedLocationAccuracy)) {
-                getDefaultPrecision()
-            } else {
+            // 1. If FINE or COARSE are granted, then return true if FINE is granted.
+            // 2. Else if FINE or COARSE have the isSelectedLocationAccuracy flag set, then return
+            //    true if FINE isSelectedLocationAccuracy is set.
+            // 3. Else, return default precision from device config.
+            return if (fineLocation.isGrantedIncludingAppOp ||
+                            coarseLocation.isGrantedIncludingAppOp) {
+                fineLocation.isGrantedIncludingAppOp
+            } else if (fineLocation.isSelectedLocationAccuracy ||
+                            coarseLocation.isSelectedLocationAccuracy) {
                 fineLocation.isSelectedLocationAccuracy
+            } else {
+                getDefaultPrecision()
             }
         }
         return false
