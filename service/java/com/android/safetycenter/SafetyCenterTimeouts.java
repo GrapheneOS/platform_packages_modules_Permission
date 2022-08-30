@@ -76,11 +76,7 @@ final class SafetyCenterTimeouts {
         }
     }
 
-    /**
-     * Dumps state for debugging purposes.
-     *
-     * @param fout {@link PrintWriter} to write to
-     */
+    /** Dumps state for debugging purposes. */
     void dump(@NonNull PrintWriter fout) {
         int count = mTimeouts.size();
         fout.println("TIMEOUTS (" + count + ")");

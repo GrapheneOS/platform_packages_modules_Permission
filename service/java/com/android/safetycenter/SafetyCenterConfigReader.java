@@ -203,11 +203,7 @@ final class SafetyCenterConfigReader {
         }
     }
 
-    /**
-     * Dumps state for debugging purposes.
-     *
-     * @param fout {@link PrintWriter} to write to
-     */
+    /** Dumps state for debugging purposes. */
     void dump(@NonNull PrintWriter fout) {
         fout.println("XML CONFIG");
         fout.println("\t" + mConfigInternalFromXml);
@@ -370,7 +366,7 @@ final class SafetyCenterConfigReader {
 
         /** Returns the external {@link SafetySource}. */
         @NonNull
-        public SafetySource getSafetySource() {
+        SafetySource getSafetySource() {
             return mSafetySource;
         }
 
@@ -378,7 +374,7 @@ final class SafetyCenterConfigReader {
          * Returns whether the external {@link SafetySource} has an entry in a rigid {@link
          * SafetySourcesGroup}.
          */
-        public boolean hasEntryInRigidGroup() {
+        boolean hasEntryInRigidGroup() {
             return mHasEntryInRigidGroup;
         }
 
@@ -423,7 +419,7 @@ final class SafetyCenterConfigReader {
 
         /** Returns the package name to dispatch the broadcast to. */
         @NonNull
-        public String getPackageName() {
+        String getPackageName() {
             return mPackageName;
         }
 
@@ -435,7 +431,7 @@ final class SafetyCenterConfigReader {
          * @param refreshReason the {@link RefreshReason} for the broadcast
          */
         @NonNull
-        public List<String> getSourceIdsForProfileParent(@RefreshReason int refreshReason) {
+        List<String> getSourceIdsForProfileParent(@RefreshReason int refreshReason) {
             if (refreshReason == SafetyCenterManager.REFRESH_REASON_PAGE_OPEN) {
                 return unmodifiableList(mSourceIdsForProfileParentOnPageOpen);
             }
@@ -450,7 +446,7 @@ final class SafetyCenterConfigReader {
          * @param refreshReason the {@link RefreshReason} for the broadcast
          */
         @NonNull
-        public List<String> getSourceIdsForManagedProfiles(@RefreshReason int refreshReason) {
+        List<String> getSourceIdsForManagedProfiles(@RefreshReason int refreshReason) {
             if (refreshReason == SafetyCenterManager.REFRESH_REASON_PAGE_OPEN) {
                 return unmodifiableList(mSourceIdsForManagedProfilesOnPageOpen);
             }

@@ -55,13 +55,13 @@ final class SafetySourceKey {
 
     /** Returns the source id of this {@link SafetySourceKey}. */
     @NonNull
-    public String getSourceId() {
+    String getSourceId() {
         return mSourceId;
     }
 
     /** Returns the user id of this {@link SafetySourceKey}. */
     @UserIdInt
-    public int getUserId() {
+    int getUserId() {
         return mUserId;
     }
 
