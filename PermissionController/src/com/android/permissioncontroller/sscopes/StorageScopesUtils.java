@@ -22,7 +22,6 @@ import android.app.Application;
 import android.app.StorageScope;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.GosPackageState;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -33,6 +32,7 @@ import android.os.UserHandle;
 import android.os.storage.StorageManager;
 import android.os.storage.StorageVolume;
 import android.provider.DocumentsContract;
+import android.provider.MediaStore;
 import android.system.Os;
 import android.util.Log;
 
@@ -182,24 +182,33 @@ public class StorageScopesUtils {
     static String fileUriToPath(Context ctx, Uri uri, List<StorageVolume> cachedVolumes) {
         String unverifiedPath = null;
 
-        try (ParcelFileDescriptor pfd = ctx.getContentResolver().openFile(uri, "r", null)) {
-            String fdPath = "/proc/self/fd/" + pfd.getFd();
-
-            String realpath = Os.readlink(fdPath);
-
-            if (realpath.startsWith("/mnt/user/")) {
-                // devices that launched with Android 11+ mount shared storage differently
-                realpath = realpath.replaceFirst("/mnt/user/" + UserHandle.myUserId() + "/", "/storage/");
+        if (isLocalPhotoPickerUri(uri)) {
+            ContentResolver cr = ctx.getContentResolver();
+            String id = uri.getLastPathSegment();
+            var res = cr.call(MediaStore.AUTHORITY, StorageScope.MEDIA_PROVIDER_METHOD_MEDIA_ID_TO_FILE_PATH, id, null);
+            if (res != null) {
+                unverifiedPath = res.getString(id);
             }
+        } else {
+            try (ParcelFileDescriptor pfd = ctx.getContentResolver().openFile(uri, "r", null)) {
+                String fdPath = "/proc/self/fd/" + pfd.getFd();
 
-            if (new File(realpath).isFile()) {
-                unverifiedPath = realpath;
-            } else {
-                Log.d(TAG, realpath + " is not a file, " + Os.stat(realpath));
+                String realpath = Os.readlink(fdPath);
+
+                if (realpath.startsWith("/mnt/user/")) {
+                    // devices that launched with Android 11+ mount shared storage differently
+                    realpath = realpath.replaceFirst("/mnt/user/" + UserHandle.myUserId() + "/", "/storage/");
+                }
+
+                if (new File(realpath).isFile()) {
+                    unverifiedPath = realpath;
+                } else {
+                    Log.d(TAG, realpath + " is not a file, " + Os.stat(realpath));
+                }
+            } catch (Exception e) {
+                Log.d(TAG, "unable to convert uri " + uri + " to path", e);
+                return null;
             }
-        } catch (Exception e) {
-            Log.d(TAG, "unable to convert uri " + uri + " to path", e);
-            return null;
         }
 
         if (validateScopePath(unverifiedPath, ctx, cachedVolumes)) {
@@ -209,6 +218,22 @@ public class StorageScopesUtils {
 
         Log.d(TAG, "invalid path " + unverifiedPath);
         return null;
+    }
+
+    private static boolean isLocalPhotoPickerUri(Uri uri) {
+        if (!MediaStore.AUTHORITY.equals(uri.getAuthority())) {
+            return false;
+        }
+
+        List<String> pathSegments = uri.getPathSegments();
+
+        if (pathSegments.size() != 5) {
+            return false;
+        }
+
+        return "picker".equals(pathSegments.get(0))
+                && "com.android.providers.media.photopicker".equals(pathSegments.get(2))
+                && "media".equals(pathSegments.get(3));
     }
 
     static <T> ArrayList<T> arrayListOf(T[] array) {
