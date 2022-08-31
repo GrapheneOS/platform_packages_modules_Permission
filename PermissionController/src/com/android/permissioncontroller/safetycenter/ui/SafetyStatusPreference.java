@@ -84,6 +84,7 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
 
     private boolean mIsScanAnimationRunning;
     private boolean mIsIconChangeAnimationRunning;
+    private boolean mIsTextChangeAnimationRunning;
     private int mQueuedScanAnimationSeverityLevel;
     private int mQueuedIconAnimationSeverityLevel;
     private int mSettledSeverityLevel = OVERALL_SEVERITY_LEVEL_UNKNOWN;
@@ -128,9 +129,11 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
                     viewModel.getInteractionLogger().record(Action.SCAN_INITIATED);
                 });
 
+        updateStatusIcon(statusImage, rescanButton);
+
         TextView titleTextView = (TextView) holder.findViewById(R.id.status_title);
         TextView summaryTextView = (TextView) holder.findViewById(R.id.status_summary);
-        updateStatusIconAndText(context, statusImage, rescanButton, titleTextView, summaryTextView);
+        updateStatusText(titleTextView, summaryTextView);
 
         configureSafetyProtectionView(holder, context);
         mFirstBind = false;
@@ -159,23 +162,15 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
         }
     }
 
-    private void updateStatusIconAndText(
-            Context context,
-            ImageView statusImage,
-            View rescanButton,
-            TextView title,
-            TextView summary) {
-        String summaryText;
-        if (mHasPendingActions) {
-            summaryText = context.getString(R.string.safety_center_qs_status_summary);
-        } else {
-            summaryText = mStatus.getSummary().toString();
-        }
+    private void updateStatusText(TextView title, TextView summary) {
         if (mFirstBind) {
             title.setText(mStatus.getTitle());
-            summary.setText(summaryText);
+            summary.setText(getSummaryText());
         }
+        runTextAnimationIfNeeded(title, summary);
+    }
 
+    private void updateStatusIcon(ImageView statusImage, View rescanButton) {
         int severityLevel = mStatus.getSeverityLevel();
 
         boolean isRefreshing = isRefreshInProgress();
@@ -193,30 +188,44 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
             continueScanningAnimation(statusImage);
         } else if (shouldEndScanAnimation) {
             endScanningAnimation(statusImage, rescanButton);
-            runTextAnimation(title, mStatus.getTitle().toString(), summary, summaryText);
         } else if (shouldChangeIcon && !mIsScanAnimationRunning) {
             startIconChangeAnimation(statusImage);
-            runTextAnimation(title, mStatus.getTitle().toString(), summary, summaryText);
         } else if (shouldChangeIcon) {
             mQueuedIconAnimationSeverityLevel = severityLevel;
         } else if (!mIsScanAnimationRunning && !mIsIconChangeAnimationRunning) {
             setSettledStatus(statusImage);
-            runTextAnimation(title, mStatus.getTitle().toString(), summary, summaryText);
         }
     }
 
-    private void runTextAnimation(
-            TextView titleView, String titleText, TextView summaryView, String summaryText) {
+    private void runTextAnimationIfNeeded(TextView titleView, TextView summaryView) {
+        if (mIsTextChangeAnimationRunning) {
+            return;
+        }
+        String titleText = mStatus.getTitle().toString();
+        String summaryText = getSummaryText().toString();
         boolean titleEquals = titleView.getText().toString().equals(titleText);
         boolean summaryEquals = summaryView.getText().toString().equals(summaryText);
+        Runnable onFinish = () -> {
+            mIsTextChangeAnimationRunning = false;
+            runTextAnimationIfNeeded(titleView, summaryView);
+        };
+        mIsTextChangeAnimationRunning = !titleEquals || !summaryEquals;
         if (!titleEquals && !summaryEquals) {
             Pair<TextView, String> titleChange = new Pair<>(titleView, titleText);
             Pair<TextView, String> summaryChange = new Pair<>(summaryView, summaryText);
-            mAllTextAnimator.animateChangeText(List.of(titleChange, summaryChange));
+            mAllTextAnimator.animateChangeText(List.of(titleChange, summaryChange), onFinish);
         } else if (!titleEquals) {
-            mTitleTextAnimator.animateChangeText(titleView, titleText);
+            mTitleTextAnimator.animateChangeText(titleView, titleText, onFinish);
         } else if (!summaryEquals) {
-            mSummaryTextAnimator.animateChangeText(summaryView, summaryText);
+            mSummaryTextAnimator.animateChangeText(summaryView, summaryText, onFinish);
+        }
+    }
+
+    private CharSequence getSummaryText() {
+        if (mHasPendingActions) {
+            return getContext().getString(R.string.safety_center_qs_status_summary);
+        } else {
+            return mStatus.getSummary().toString();
         }
     }
 
@@ -294,7 +303,8 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
                                     @Override
                                     public void onAnimationEnd(Drawable drawable) {
                                         super.onAnimationEnd(drawable);
-                                        finishScanAnimation(statusImage, rescanButton);
+                                        finishScanAnimation(
+                                                statusImage, rescanButton);
                                     }
                                 });
                         animatedDrawable.start();
