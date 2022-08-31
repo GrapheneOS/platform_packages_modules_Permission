@@ -28,6 +28,7 @@ import static android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTIO
 import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__TIMEOUT;
 import static com.android.permission.PermissionStatsLog.SAFETY_STATE;
 import static com.android.safetycenter.SafetyCenterFlags.PROPERTY_SAFETY_CENTER_ENABLED;
+import static com.android.safetycenter.internaldata.SafetyCenterIds.toUserFriendlyString;
 
 import static java.util.Objects.requireNonNull;
 
@@ -116,7 +117,7 @@ public final class SafetyCenterService extends SystemService {
     private static final String SAFETY_CENTER_ISSUES_CACHE_FILE_NAME = "safety_center_issues.xml";
 
     /** The START_TASKS_FROM_RECENTS permission. TODO b/242905922 remove once in API */
-    public static final String START_TASKS_FROM_RECENTS =
+    private static final String START_TASKS_FROM_RECENTS =
             "android.permission.START_TASKS_FROM_RECENTS";
 
     /** The time delay used to throttle and aggregate writes to disk. */
@@ -493,9 +494,9 @@ public final class SafetyCenterService extends SystemService {
                     SafetyCenterIds.issueActionIdFromString(issueActionId);
             if (!safetyCenterIssueActionId.getSafetyCenterIssueKey().equals(safetyCenterIssueKey)) {
                 throw new IllegalArgumentException(
-                        SafetyCenterIds.toUserFriendlyString(safetyCenterIssueId)
+                        toUserFriendlyString(safetyCenterIssueId)
                                 + " and "
-                                + SafetyCenterIds.toUserFriendlyString(safetyCenterIssueActionId)
+                                + toUserFriendlyString(safetyCenterIssueActionId)
                                 + " do not match");
             }
             UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
@@ -523,8 +524,7 @@ public final class SafetyCenterService extends SystemService {
                     Log.w(
                             TAG,
                             "Error dispatching action: "
-                                    + SafetyCenterIds.toUserFriendlyString(
-                                            safetyCenterIssueActionId));
+                                    + toUserFriendlyString(safetyCenterIssueActionId));
                     CharSequence errorMessage;
                     if (safetySourceIssueAction.willResolve()) {
                         errorMessage =
@@ -706,11 +706,7 @@ public final class SafetyCenterService extends SystemService {
                             args);
         }
 
-        /**
-         * Dumps state for debugging purposes.
-         *
-         * @param fout {@link PrintWriter} to write to
-         */
+        /** Dumps state for debugging purposes. */
         @Override
         protected void dump(
                 @NonNull FileDescriptor fd, @NonNull PrintWriter fout, @Nullable String[] args) {
@@ -937,7 +933,7 @@ public final class SafetyCenterService extends SystemService {
         public String toString() {
             return "ResolvingActionTimeout{"
                     + "mSafetyCenterIssueActionId="
-                    + SafetyCenterIds.toUserFriendlyString(mSafetyCenterIssueActionId)
+                    + toUserFriendlyString(mSafetyCenterIssueActionId)
                     + ", mUserProfileGroup="
                     + mUserProfileGroup
                     + '}';
@@ -1097,14 +1093,9 @@ public final class SafetyCenterService extends SystemService {
         scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked();
     }
 
-    /**
-     * Dumps state for debugging purposes.
-     *
-     * @param fd underlying {@link FileDescriptor} being written
-     * @param fout {@link PrintWriter} to write to
-     */
+    /** Dumps state for debugging purposes. */
     @GuardedBy("mApiLock")
-    void dumpLocked(@NonNull FileDescriptor fd, @NonNull PrintWriter fout) {
+    private void dumpLocked(@NonNull FileDescriptor fd, @NonNull PrintWriter fout) {
         fout.println("SERVICE");
         fout.println(
                 "\tSafetyCenterService{"
