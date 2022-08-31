@@ -201,6 +201,7 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
             mQueuedIconAnimationSeverityLevel = severityLevel;
         } else if (!mIsScanAnimationRunning && !mIsIconChangeAnimationRunning) {
             setSettledStatus(statusImage);
+            runTextAnimation(title, mStatus.getTitle().toString(), summary, summaryText);
         }
     }
 
@@ -333,6 +334,11 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
     }
 
     private void setSettledStatus(ImageView statusImage) {
+        Drawable statusDrawable = statusImage.getDrawable();
+        if (statusDrawable instanceof AnimatedVectorDrawable) {
+            ((AnimatedVectorDrawable) statusDrawable).clearAnimationCallbacks();
+        }
+
         mSettledSeverityLevel = mStatus.getSeverityLevel();
         statusImage.setImageResource(toStatusImageResId(mSettledSeverityLevel));
     }
