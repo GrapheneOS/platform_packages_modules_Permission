@@ -18,6 +18,8 @@ package com.android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
+import static java.util.Objects.requireNonNull;
+
 import android.annotation.NonNull;
 import android.annotation.StringRes;
 import android.app.admin.DevicePolicyManager;
@@ -77,7 +79,7 @@ final class DevicePolicyResources {
         // has to be cleared.
         final long callingId = Binder.clearCallingIdentity();
         try {
-            return context.getSystemService(DevicePolicyManager.class)
+            return requireNonNull(context.getSystemService(DevicePolicyManager.class))
                     .getResources()
                     .getString(SAFETY_CENTER_PREFIX + devicePolicyIdentifier, defaultValueLoader);
         } finally {

@@ -205,7 +205,7 @@ final class WestworldLogger {
     void writeInlineActionSystemEvent(
             @NonNull String sourceId,
             @UserIdInt int userId,
-            @NonNull String issueTypeId,
+            @Nullable String issueTypeId,
             @NonNull Duration duration,
             @SystemEventResult int result) {
         if (!mSafetyCenterConfigReader.allowsWestworldLogging()) {
@@ -216,7 +216,7 @@ final class WestworldLogger {
                 SAFETY_CENTER_SYSTEM_EVENT_REPORTED__EVENT_TYPE__INLINE_ACTION,
                 idStringToLong(sourceId),
                 toSystemEventProfileType(userId),
-                idStringToLong(issueTypeId),
+                issueTypeId == null ? UNSET_ISSUE_TYPE_ID : idStringToLong(issueTypeId),
                 duration.toMillis(),
                 result);
     }

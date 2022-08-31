@@ -364,25 +364,28 @@ final class SafetyCenterDataTracker {
         if (startElapsedMillis == null) {
             Log.w(
                     TAG,
-                    "Attempt to unmark unknown action: "
+                    "Attempt to unmark unknown in-flight action: "
                             + toUserFriendlyString(safetyCenterIssueActionId));
             return false;
         }
 
         SafetyCenterIssueKey issueKey = safetyCenterIssueActionId.getSafetyCenterIssueKey();
         SafetySourceIssue issue = getSafetySourceIssue(issueKey);
-        if (issue != null) {
-            Duration duration =
-                    Duration.ofMillis(SystemClock.elapsedRealtime() - startElapsedMillis);
-            mWestworldLogger.writeInlineActionSystemEvent(
-                    issueKey.getSafetySourceId(),
-                    issueKey.getUserId(),
-                    issue.getIssueTypeId(),
-                    duration,
-                    result);
+        String issueTypeId = issue == null ? null : issue.getIssueTypeId();
+        Duration duration = Duration.ofMillis(SystemClock.elapsedRealtime() - startElapsedMillis);
+
+        mWestworldLogger.writeInlineActionSystemEvent(
+                issueKey.getSafetySourceId(), issueKey.getUserId(), issueTypeId, duration, result);
+
+        if (issue == null || getSafetySourceIssueAction(safetyCenterIssueActionId) == null) {
+            Log.w(
+                    TAG,
+                    "Attempt to unmark in-flight action for a non-existent issue or action: "
+                            + toUserFriendlyString(safetyCenterIssueActionId));
+            return false;
         }
 
-        return getSafetySourceIssueAction(safetyCenterIssueActionId) != null;
+        return true;
     }
 
     /**
@@ -635,7 +638,7 @@ final class SafetyCenterDataTracker {
             for (int j = 0; j < safetySources.size(); j++) {
                 SafetySource safetySource = safetySources.get(j);
 
-                if (!SafetySources.isExternal(safetySource)) {
+                if (!SafetySources.isExternal(safetySource) || !safetySource.isLoggingAllowed()) {
                     continue;
                 }
 
@@ -2151,7 +2154,7 @@ final class SafetyCenterDataTracker {
 
         @Override
         public String toString() {
-            return "IssueData{"
+            return "SafetyCenterIssueData{"
                     + "mFirstSeenAt="
                     + mFirstSeenAt
                     + ", mDismissedAt="
