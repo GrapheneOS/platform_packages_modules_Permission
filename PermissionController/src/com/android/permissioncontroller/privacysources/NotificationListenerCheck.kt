@@ -196,8 +196,8 @@ internal class NotificationListenerCheckInternal(
     private val sharedPrefs: SharedPreferences =
         parentUserContext.getSharedPreferences(NLS_PREFERENCE_FILE, MODE_PRIVATE)
     private val exemptPackages: Set<String> =
-        getExemptedPackages(getSystemServiceSafe(parentUserContext, RoleManager::class.java),
-                parentUserContext)
+        getExemptedPackages(
+            getSystemServiceSafe(parentUserContext, RoleManager::class.java), parentUserContext)
 
     companion object {
         @VisibleForTesting const val NLS_PREFERENCE_FILE = "nls_preference"
@@ -265,17 +265,13 @@ internal class NotificationListenerCheckInternal(
     private suspend fun getEnabledNotificationListenersAndNotifyIfNeededLocked() {
         val enabledComponents: List<ComponentName> = getEnabledNotificationListeners()
 
-        // Load already notified components
-        // Filter to only those that still have enabled listeners
+        // Clear disabled but previously notified components from notified components data
+        removeDisabledComponentsFromNotifiedComponents(enabledComponents)
         val notifiedComponents =
             getNotifiedComponents().mapNotNull { ComponentName.unflattenFromString(it) }
-        val enabledNotifiedComponents = notifiedComponents.filter { enabledComponents.contains(it) }
-
-        // Clear disabled but previously notified components from notified components list
-        updateNotifiedComponents(enabledNotifiedComponents)
 
         // Filter to unnotified components
-        val unNotifiedComponents = enabledComponents.filter { it !in enabledNotifiedComponents }
+        val unNotifiedComponents = enabledComponents.filter { it !in notifiedComponents }
         var sessionId = Constants.INVALID_SESSION_ID
         while (sessionId == Constants.INVALID_SESSION_ID) {
             sessionId = random.nextLong()
@@ -338,12 +334,19 @@ internal class NotificationListenerCheckInternal(
         return sharedPrefs.getStringSet(KEY_ALREADY_NOTIFIED_COMPONENTS, mutableSetOf<String>())!!
     }
 
-    internal suspend fun updateNotifiedComponents(components: Collection<ComponentName>) {
+    internal suspend fun removeDisabledComponentsFromNotifiedComponents(
+        enabledComponents: Collection<ComponentName>
+    ) {
         sharedPrefsLock.withLock {
-            val notifiedComponents = components.map { it.flattenToShortString() }.toSet()
+            val enabledComponentsStringSet =
+                enabledComponents.map { it.flattenToShortString() }.toSet()
+            val notifiedComponents = getNotifiedComponents()
+            // Filter to only components that have enabled listeners
+            val enabledNotifiedComponents =
+                notifiedComponents.filter { enabledComponentsStringSet.contains(it) }.toSet()
             sharedPrefs
                 .edit()
-                .putStringSet(KEY_ALREADY_NOTIFIED_COMPONENTS, notifiedComponents)
+                .putStringSet(KEY_ALREADY_NOTIFIED_COMPONENTS, enabledNotifiedComponents)
                 .apply()
         }
     }
@@ -392,6 +395,19 @@ internal class NotificationListenerCheckInternal(
         }
     }
 
+    private fun getLastNotificationShownTimeMillis(): Long {
+        return sharedPrefs.getLong(KEY_LAST_NOTIFICATION_LISTENER_NOTIFICATION_SHOWN, 0)
+    }
+
+    private suspend fun updateLastShownNotificationTime() {
+        sharedPrefsLock.withLock {
+            sharedPrefs
+                .edit()
+                .putLong(KEY_LAST_NOTIFICATION_LISTENER_NOTIFICATION_SHOWN, currentTimeMillis())
+                .apply()
+        }
+    }
+
     @Throws(InterruptedException::class)
     private suspend fun postSystemNotificationIfNeeded(
         components: List<ComponentName>,
@@ -400,8 +416,7 @@ internal class NotificationListenerCheckInternal(
         val componentsInternal = components.toMutableList()
 
         // Don't show too many notification within certain timespan
-        if (currentTimeMillis() -
-            sharedPrefs.getLong(KEY_LAST_NOTIFICATION_LISTENER_NOTIFICATION_SHOWN, 0) <
+        if (currentTimeMillis() - getLastNotificationShownTimeMillis() <
             getInBetweenNotificationsMillis()) {
             if (DEBUG) {
                 Log.v(
@@ -478,7 +493,7 @@ internal class NotificationListenerCheckInternal(
      * @param componentName the [ComponentName] of the Notification Listener
      * @param pkg The [PackageInfo] for the [ComponentName] package
      */
-    private fun createNotificationForNotificationListener(
+    private suspend fun createNotificationForNotificationListener(
         componentName: ComponentName,
         pkg: PackageInfo,
         sessionId: Long
@@ -553,10 +568,7 @@ internal class NotificationListenerCheckInternal(
             uid,
             PRIVACY_SIGNAL_NOTIFICATION_INTERACTION__ACTION__NOTIFICATION_SHOWN,
             sessionId)
-        sharedPrefs
-            .edit()
-            .putLong(KEY_LAST_NOTIFICATION_LISTENER_NOTIFICATION_SHOWN, currentTimeMillis())
-            .apply()
+        updateLastShownNotificationTime()
     }
 
     /** @return [PendingIntent] to safety center */
