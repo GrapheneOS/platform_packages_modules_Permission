@@ -158,7 +158,7 @@ class AccessibilitySourceService(
                 val lastShownNotification =
                     sharedPrefs.getLong(KEY_LAST_ACCESSIBILITY_NOTIFICATION_SHOWN, 0)
                 val showNotification = ((System.currentTimeMillis() - lastShownNotification) >
-                    getNotificationsIntervalMillis()) || getCurrentNotification() == null
+                    getNotificationsIntervalMillis()) && getCurrentNotification() == null
 
                 if (showNotification) {
                     val alreadyNotifiedServices = getNotifiedServices()
@@ -256,7 +256,7 @@ class AccessibilitySourceService(
         sharedPrefs.edit().putLong(
             KEY_LAST_ACCESSIBILITY_NOTIFICATION_SHOWN,
             System.currentTimeMillis()
-        )
+        ).apply()
         markServiceAsNotified(ComponentName.unflattenFromString(serviceToBeNotified.id)!!)
 
         if (DEBUG) {
