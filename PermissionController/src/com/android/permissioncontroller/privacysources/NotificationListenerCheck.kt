@@ -378,6 +378,20 @@ internal class NotificationListenerCheckInternal(
         }
     }
 
+    internal suspend fun removeFromNotifiedComponents(component: ComponentName) {
+        val componentNameShortString = component.flattenToShortString()
+        sharedPrefsLock.withLock {
+            val notifiedComponents = getNotifiedComponents()
+            val componentRemoved = notifiedComponents.remove(componentNameShortString)
+            if (componentRemoved) {
+                sharedPrefs
+                    .edit()
+                    .putStringSet(KEY_ALREADY_NOTIFIED_COMPONENTS, notifiedComponents)
+                    .apply()
+            }
+        }
+    }
+
     @Throws(InterruptedException::class)
     private suspend fun postSystemNotificationIfNeeded(
         components: List<ComponentName>,
@@ -994,6 +1008,7 @@ class DisableNotificationListenerComponentHandler : BroadcastReceiver() {
 
             NotificationListenerCheckInternal(context, null).run {
                 removeNotificationsForComponent(componentName)
+                removeFromNotifiedComponents(componentName)
                 sendIssuesToSafetyCenter(safetyEvent)
             }
             PermissionControllerStatsLog.write(

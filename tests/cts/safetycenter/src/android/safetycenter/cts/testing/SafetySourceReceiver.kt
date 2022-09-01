@@ -226,7 +226,7 @@ class SafetySourceReceiver : BroadcastReceiver() {
 
         fun setSafetyCenterEnabledWithoutReceiverPermissionAndWait(
             value: Boolean,
-            timeout: Duration
+            timeout: Duration = TIMEOUT_LONG
         ): Boolean {
             SafetyCenterFlags.isEnabled = value
             if (timeout < TIMEOUT_LONG) {
@@ -331,7 +331,11 @@ class SafetySourceReceiver : BroadcastReceiver() {
         private fun receiveRefreshSafetySources(timeout: Duration = TIMEOUT_LONG): String =
             runBlockingWithTimeout(timeout) { refreshSafetySourcesChannel.receive() }
 
-        private fun receiveSafetyCenterEnabledChanged(timeout: Duration = TIMEOUT_LONG): Boolean =
+        /**
+         * Waits for an [ACTION_SAFETY_CENTER_ENABLED_CHANGED] to be received by this receiver
+         * within the given [timeout].
+         */
+        fun receiveSafetyCenterEnabledChanged(timeout: Duration = TIMEOUT_LONG): Boolean =
             runBlockingWithTimeout(timeout) { safetyCenterEnabledChangedChannel.receive() }
 
         private fun receiveInlineAction(timeout: Duration = TIMEOUT_LONG) {

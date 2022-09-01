@@ -17,6 +17,10 @@
 package com.android.permissioncontroller.safetycenter.ui;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
+import static android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING;
+import static android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK;
+import static android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_RECOMMENDATION;
+import static android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN;
 
 import android.content.Context;
 import android.graphics.drawable.Animatable2;
@@ -82,7 +86,7 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
     private boolean mIsIconChangeAnimationRunning;
     private int mQueuedScanAnimationSeverityLevel;
     private int mQueuedIconAnimationSeverityLevel;
-    private int mSettledSeverityLevel = SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN;
+    private int mSettledSeverityLevel = OVERALL_SEVERITY_LEVEL_UNKNOWN;
 
     @Override
     public void onBindViewHolder(PreferenceViewHolder holder) {
@@ -389,12 +393,15 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
     }
 
     private void setRescanButtonState(View rescanButton) {
-        rescanButton.setVisibility(
-                mStatus.getSeverityLevel() != SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK
-                                || mHasIssues
-                        ? View.GONE
-                        : View.VISIBLE);
+        rescanButton.setVisibility(shouldShowRescanButton() ? View.VISIBLE : View.GONE);
         rescanButton.setEnabled(!isRefreshInProgress());
+    }
+
+    private boolean shouldShowRescanButton() {
+        int severityLevel = mStatus.getSeverityLevel();
+        return !mHasIssues
+                && (severityLevel == OVERALL_SEVERITY_LEVEL_OK
+                        || severityLevel == OVERALL_SEVERITY_LEVEL_UNKNOWN);
     }
 
     // Calling notifyChanged while recyclerview is scrolling or computing layout will result in an
@@ -405,12 +412,12 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
 
     private static int toStatusImageResId(int overallSeverityLevel) {
         switch (overallSeverityLevel) {
-            case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN:
-            case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK:
+            case OVERALL_SEVERITY_LEVEL_UNKNOWN:
+            case OVERALL_SEVERITY_LEVEL_OK:
                 return R.drawable.safety_status_info;
-            case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_RECOMMENDATION:
+            case OVERALL_SEVERITY_LEVEL_RECOMMENDATION:
                 return R.drawable.safety_status_recommendation;
-            case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING:
+            case OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING:
                 return R.drawable.safety_status_warn;
             default:
                 Log.w(

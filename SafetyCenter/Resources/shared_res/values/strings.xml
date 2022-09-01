@@ -62,7 +62,10 @@
     <string name="refresh_timeout">Couldn\’t refresh settings</string>
 
     <!-- An error shown to the user when we failed to refresh the status of one or more Safety Center entries. The number of entries is used as a parameter to format the error [CHAR LIMIT=60] -->
-    <string name="refresh_error">Couldn\’t check {count, plural, =1{setting} other{settings}}</string>
+    <string name="refresh_error">{count, plural,
+        =1      {Couldn\’t check setting}
+        other   {Couldn\’t check settings}
+    }</string>
 
     <!-- The summary for sources supporting work profile shown to the user in quiet mode. [CHAR LIMIT=NONE] -->
     <string name="work_profile_paused">Work profile is paused</string>
