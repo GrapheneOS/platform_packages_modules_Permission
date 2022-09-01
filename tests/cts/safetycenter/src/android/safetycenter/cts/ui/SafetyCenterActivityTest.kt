@@ -396,8 +396,8 @@ class SafetyCenterActivityTest {
         SafetySourceReceiver.safetySourceData[
                 SafetySourceDataKey(RESOLVE_ACTION, SINGLE_SOURCE_ID)] = null
 
-        context.launchSafetyCenterActivity {
-            callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
+        callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
+            context.launchSafetyCenterActivity {
                 val action = safetySourceCtsData.criticalResolvingActionWithSuccessMessage
                 waitFindObject(By.text(action.label.toString())).click()
 
@@ -426,8 +426,8 @@ class SafetyCenterActivityTest {
         SafetySourceReceiver.safetySourceData[
                 SafetySourceDataKey(RESOLVE_ACTION, SINGLE_SOURCE_ID)] = null
 
-        context.launchSafetyCenterActivity {
-            callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
+        callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
+            context.launchSafetyCenterActivity {
                 val action = safetySourceCtsData.criticalResolvingAction
                 waitFindObject(By.text(action.label.toString())).click()
 
@@ -451,8 +451,8 @@ class SafetyCenterActivityTest {
                 SafetySourceDataKey(RESOLVE_ACTION, SINGLE_SOURCE_ID)] = null
         SafetySourceReceiver.shouldReportSafetySourceError = true
 
-        context.launchSafetyCenterActivity {
-            callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
+        callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
+            context.launchSafetyCenterActivity {
                 val action = safetySourceCtsData.criticalResolvingAction
                 waitFindObject(By.text(action.label.toString())).click()
 
@@ -475,8 +475,8 @@ class SafetyCenterActivityTest {
 
         // Set no data at all on the receiver, will ignore incoming call.
 
-        context.launchSafetyCenterActivity {
-            callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
+        callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
+            context.launchSafetyCenterActivity {
                 val action = safetySourceCtsData.criticalResolvingAction
                 waitFindObject(By.text(action.label.toString())).click()
 
