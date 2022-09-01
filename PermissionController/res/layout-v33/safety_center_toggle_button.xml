@@ -18,56 +18,25 @@
 
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_weight="0.5"
-    android:layout_height="88dp"
-    android:orientation="horizontal"
-    android:gravity="center_vertical"
-    style="@style/SafetyCenterSensorToggleButton"
+    style="@style/SafetyCenterQsToggleButton"
     android:id="@+id/safety_center_toggle_button">
     <ImageView
         android:id="@+id/toggle_sensor_icon"
-        style="@style/SafetyCenterToggleText"
-        android:maxWidth="20dp"
-        android:maxHeight="20dp"
-        android:scaleType="fitCenter"
-        android:adjustViewBounds="true"
-        android:layout_gravity="start|center_vertical"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        style="@style/SafetyCenterQsToggleIcon"/>
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="start|center_vertical"
-        android:layout_gravity="center_vertical" >
+        style="@style/SafetyCenterQsToggleTextContainer">
         <TextView
             android:id="@+id/toggle_sensor_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/SafetyCenterToggleText"
-            android:textColor="?android:textColorPrimaryInverse"/>
+            style="@style/SafetyCenterQsToggleText.Title"/>
         <TextView
             android:id="@+id/toggle_sensor_status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/SafetyCenterToggleText"
-            android:text="@string/available"
-            android:textColor="?android:textColorSecondary"/>
+            style="@style/SafetyCenterQsToggleText.Subtitle"
+            android:text="@string/available"/>
     </LinearLayout>
 
     <ImageView
         android:id="@+id/arrow_icon"
-        style="@style/SafetyCenterToggleText"
-        android:visibility="gone"
-        android:layout_gravity="end|center_vertical"
-        android:layout_marginEnd="23dp"
-        android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
+        style="@style/SafetyCenterQsToggleArrow"
+        android:visibility="gone"/>
 </LinearLayout>
