@@ -50,6 +50,7 @@ import android.annotation.NonNull;
 import android.annotation.UserIdInt;
 import android.content.Context;
 import android.safetycenter.SafetyCenterManager;
+import android.safetycenter.SafetyCenterManager.RefreshRequestType;
 import android.safetycenter.SafetyCenterStatus;
 import android.safetycenter.SafetySourceData;
 import android.util.Log;
@@ -93,7 +94,7 @@ final class WestworldLogger {
                 SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__TIMEOUT
             })
     @Retention(RetentionPolicy.SOURCE)
-    public @interface SystemEventResult {}
+    @interface SystemEventResult {}
 
     @NonNull private final Context mContext;
     @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
@@ -158,7 +159,7 @@ final class WestworldLogger {
      * SINGLE_SOURCE_RESCAN} or {@code SINGLE_SOURCE_GET_DATA}.
      */
     void writeSourceRefreshSystemEvent(
-            @SafetyCenterManager.RefreshRequestType int refreshType,
+            @RefreshRequestType int refreshType,
             @NonNull String sourceId,
             @UserIdInt int userId,
             @NonNull Duration duration,
@@ -181,7 +182,7 @@ final class WestworldLogger {
      * COMPLETE_RESCAN} or {@code COMPLETE_GET_DATA}.
      */
     void writeWholeRefreshSystemEvent(
-            @SafetyCenterManager.RefreshRequestType int refreshType,
+            @RefreshRequestType int refreshType,
             @NonNull Duration duration,
             @SystemEventResult int result) {
         if (!mSafetyCenterConfigReader.allowsWestworldLogging()) {
@@ -204,7 +205,7 @@ final class WestworldLogger {
     void writeInlineActionSystemEvent(
             @NonNull String sourceId,
             @UserIdInt int userId,
-            @NonNull String issueTypeId,
+            @Nullable String issueTypeId,
             @NonNull Duration duration,
             @SystemEventResult int result) {
         if (!mSafetyCenterConfigReader.allowsWestworldLogging()) {
@@ -215,7 +216,7 @@ final class WestworldLogger {
                 SAFETY_CENTER_SYSTEM_EVENT_REPORTED__EVENT_TYPE__INLINE_ACTION,
                 idStringToLong(sourceId),
                 toSystemEventProfileType(userId),
-                idStringToLong(issueTypeId),
+                issueTypeId == null ? UNSET_ISSUE_TYPE_ID : idStringToLong(issueTypeId),
                 duration.toMillis(),
                 result);
     }
@@ -231,8 +232,7 @@ final class WestworldLogger {
                 : SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__ERROR;
     }
 
-    private static int toSourceRefreshEventType(
-            @SafetyCenterManager.RefreshRequestType int refreshType) {
+    private static int toSourceRefreshEventType(@RefreshRequestType int refreshType) {
         switch (refreshType) {
             case SafetyCenterManager.EXTRA_REFRESH_REQUEST_TYPE_GET_DATA:
                 return SAFETY_CENTER_SYSTEM_EVENT_REPORTED__EVENT_TYPE__SINGLE_SOURCE_GET_NEW_DATA;
@@ -243,8 +243,7 @@ final class WestworldLogger {
         return SAFETY_CENTER_SYSTEM_EVENT_REPORTED__EVENT_TYPE__EVENT_TYPE_UNKNOWN;
     }
 
-    private static int toWholeRefreshEventType(
-            @SafetyCenterManager.RefreshRequestType int refreshType) {
+    private static int toWholeRefreshEventType(@RefreshRequestType int refreshType) {
         switch (refreshType) {
             case SafetyCenterManager.EXTRA_REFRESH_REQUEST_TYPE_GET_DATA:
                 return SAFETY_CENTER_SYSTEM_EVENT_REPORTED__EVENT_TYPE__COMPLETE_GET_NEW_DATA;
