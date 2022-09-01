@@ -26,7 +26,7 @@ import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.os.Bundle
 import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermissionIdentity
 import android.safetycenter.cts.testing.WaitForBroadcastIdle.waitForBroadcastIdle
-import com.android.compatibility.common.util.UiAutomatorUtils
+import com.android.compatibility.common.util.UiAutomatorUtils.getUiDevice
 
 /** A class that provides a way to launch the SafetyCenter activity in tests. */
 object SafetyCenterActivityLauncher {
@@ -40,7 +40,7 @@ object SafetyCenterActivityLauncher {
         // to some racyness when enabling the SafetyCenter QS tile while opening the
         // SafetyCenterActivity which causes the window to be removed.
         waitForBroadcastIdle()
-        UiAutomatorUtils.getUiDevice().waitForIdle()
+        getUiDevice().waitForIdle()
         startActivity(launchSafetyCenterIntent)
         executeBlockAndExit(block)
     }
@@ -48,7 +48,7 @@ object SafetyCenterActivityLauncher {
     /** Launches the SafetyCenter Quick Settings activity and exits it once [block] completes. */
     fun Context.launchSafetyCenterQsActivity(intentExtras: Bundle? = null, block: () -> Unit) {
         val launchSafetyCenterQsIntent = createIntent(ACTION_VIEW_SAFETY_CENTER_QS, intentExtras)
-        UiAutomatorUtils.getUiDevice().waitForIdle()
+        getUiDevice().waitForIdle()
         callWithShellPermissionIdentity(REVOKE_RUNTIME_PERMISSIONS) {
             startActivity(launchSafetyCenterQsIntent)
         }
@@ -63,7 +63,7 @@ object SafetyCenterActivityLauncher {
     }
 
     private fun executeBlockAndExit(block: () -> Unit) {
-        val uiDevice = UiAutomatorUtils.getUiDevice()
+        val uiDevice = getUiDevice()
         uiDevice.waitForIdle()
         block()
         uiDevice.pressBack()
