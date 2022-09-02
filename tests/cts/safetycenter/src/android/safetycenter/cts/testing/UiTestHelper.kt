@@ -25,11 +25,12 @@ import android.support.test.uiautomator.StaleObjectException
 import android.support.test.uiautomator.UiObject2
 import android.util.Log
 import com.android.compatibility.common.util.UiAutomatorUtils.getUiDevice
+import com.android.compatibility.common.util.UiAutomatorUtils.waitFindObject
 import com.android.compatibility.common.util.UiAutomatorUtils.waitFindObjectOrNull
+import java.lang.IllegalStateException
 import java.time.Duration
 import java.util.concurrent.TimeoutException
 import java.util.regex.Pattern
-import kotlin.math.min
 
 /** A class that helps with UI testing. */
 object UiTestHelper {
@@ -38,16 +39,15 @@ object UiTestHelper {
     const val RESCAN_BUTTON_LABEL = "Scan device"
 
     private val WAIT_TIMEOUT = Duration.ofSeconds(25)
-    private val DISPLAYED_TIMEOUT = Duration.ofSeconds(20)
     private val NOT_DISPLAYED_TIMEOUT = Duration.ofMillis(500)
 
     private val TAG = UiTestHelper::class.java.simpleName
 
     /** Waits for the given [selector] to be displayed. */
     fun waitDisplayed(selector: BySelector): UiObject2 =
-        waitFor("$selector to be displayed", selector, DISPLAYED_TIMEOUT) { objectFound ->
-            objectFound != null
-        }!!
+        waitFor("$selector to be displayed", WAIT_TIMEOUT) {
+            Result.success(waitFindObject(selector, it.toMillis()))
+        }
 
     /** Waits for all the given [textToFind] to be displayed. */
     fun waitAllTextDisplayed(vararg textToFind: CharSequence?) {
@@ -61,8 +61,13 @@ object UiTestHelper {
 
     /** Waits for the given [selector] not to be displayed. */
     fun waitNotDisplayed(selector: BySelector) {
-        waitFor("$selector not to be displayed", selector, NOT_DISPLAYED_TIMEOUT) { objectFound ->
-            objectFound == null
+        waitFor("$selector not to be displayed", NOT_DISPLAYED_TIMEOUT) {
+            if (waitFindObjectOrNull(selector, it.toMillis()) == null) {
+                Result.success(Unit)
+            } else {
+                Result.failure(
+                    IllegalStateException("Found $selector when expecting it not to be displayed"))
+            }
         }
     }
 
@@ -114,12 +119,11 @@ object UiTestHelper {
         return By.clickable(true).text(Pattern.compile("$label|${label.toString().uppercase()}"))
     }
 
-    private fun waitFor(
+    private fun <T> waitFor(
         message: String,
-        selector: BySelector,
         uiAutomatorConditionTimeout: Duration,
-        uiAutomatorCondition: (UiObject2?) -> Boolean
-    ): UiObject2? {
+        uiAutomatorCondition: (Duration) -> Result<T>
+    ): T {
         val elapsedStartMillis = SystemClock.elapsedRealtime()
         while (true) {
             getUiDevice().waitForIdle()
@@ -129,14 +133,16 @@ object UiTestHelper {
                 break
             }
             val remainingTime = WAIT_TIMEOUT - durationSinceStart
-            val waitFindObjectTimeoutMillis =
-                min(uiAutomatorConditionTimeout.toMillis(), remainingTime.toMillis())
+            val uiAutomatorTimeout = minOf(uiAutomatorConditionTimeout, remainingTime)
             try {
-                val objectFound = waitFindObjectOrNull(selector, waitFindObjectTimeoutMillis)
-                if (uiAutomatorCondition(objectFound)) {
-                    return objectFound
+                val result = uiAutomatorCondition(uiAutomatorTimeout)
+                if (result.isSuccess) {
+                    return result.getOrThrow()
                 } else {
-                    Log.d(TAG, "Failed condition for $message, will retry if within timeout")
+                    Log.d(
+                        TAG,
+                        "Failed condition for $message, will retry if within timeout",
+                        result.exceptionOrNull())
                 }
             } catch (e: StaleObjectException) {
                 Log.d(TAG, "StaleObjectException for $message, will retry if within timeout", e)
