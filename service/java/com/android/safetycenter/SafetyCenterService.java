@@ -92,6 +92,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -116,12 +117,13 @@ public final class SafetyCenterService extends SystemService {
     /** The name of the file used to persist the Safety Center issue cache. */
     private static final String SAFETY_CENTER_ISSUES_CACHE_FILE_NAME = "safety_center_issues.xml";
 
-    /** The START_TASKS_FROM_RECENTS permission. TODO b/242905922 remove once in API */
+    /** The START_TASKS_FROM_RECENTS permission. */
+    // TODO(b/242905922): Remove once in API.
     private static final String START_TASKS_FROM_RECENTS =
             "android.permission.START_TASKS_FROM_RECENTS";
 
     /** The time delay used to throttle and aggregate writes to disk. */
-    private static final long WRITE_DELAY_MILLIS = 500;
+    private static final Duration WRITE_DELAY = Duration.ofMillis(500);
 
     private final Handler mWriteHandler = BackgroundThread.getHandler();
 
@@ -1040,7 +1042,8 @@ public final class SafetyCenterService extends SystemService {
             return;
         }
         if (!mSafetyCenterIssueCacheWriteScheduled) {
-            mWriteHandler.postDelayed(this::writeSafetyCenterIssueCacheFile, WRITE_DELAY_MILLIS);
+            mWriteHandler.postDelayed(
+                    this::writeSafetyCenterIssueCacheFile, WRITE_DELAY.toMillis());
             mSafetyCenterIssueCacheWriteScheduled = true;
         }
     }
