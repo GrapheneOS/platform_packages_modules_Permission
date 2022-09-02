@@ -34,18 +34,15 @@ import android.safetycenter.cts.testing.UiTestHelper.waitDisplayed
 import android.support.test.uiautomator.By
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.filters.FlakyTest
 import com.android.safetycenter.resources.SafetyCenterResourcesContext
 import org.junit.After
 import org.junit.Assume.assumeTrue
 import org.junit.Before
-import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
 
 /** CTS tests for the Safety Center Status Card. */
 @RunWith(AndroidJUnit4::class)
-@FlakyTest // TODO(b/244429821): Remove once bug is fixed.
 // TODO(b/244582705): Add CTS tests for device & account titles, status when unspecified entries.
 class SafetyCenterStatusCardTest {
     private val context: Context = getApplicationContext()
@@ -210,7 +207,6 @@ class SafetyCenterStatusCardTest {
     }
 
     @Test
-    @Ignore // TODO(b/244429821): Enable once bug is fixed.
     fun withKnownStatus_displaysScanningOnRescan() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         SafetySourceReceiver.safetySourceData[
@@ -239,7 +235,6 @@ class SafetyCenterStatusCardTest {
     }
 
     @Test
-    @Ignore // TODO(b/244429821): Enable once bug is fixed.
     fun rescan_updatesDataAfterScanCompletes() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         SafetySourceReceiver.safetySourceData[
