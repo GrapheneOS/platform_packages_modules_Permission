@@ -15,6 +15,15 @@
             ]
         },
         {
+            "name": "CtsPermissionTestCases",
+            "options": [
+                {
+                    "include-filter": "android.permission.cts.LocationAccessCheckTest"
+                }
+            ],
+            "file_patterns": ["LocationAccessCheck\\.java"]
+        },
+        {
             "name": "CtsBackupTestCases",
             "options": [
                 {

@@ -193,6 +193,53 @@ class SafetyCenterActivityTest {
     }
 
     @Test
+    fun entryListWithEntryGroup_informationState_hasContentDescription() {
+        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
+        safetyCenterCtsHelper.setData(SOURCE_ID_1, safetySourceCtsData.information)
+        safetyCenterCtsHelper.setData(SOURCE_ID_2, safetySourceCtsData.information)
+        safetyCenterCtsHelper.setData(SOURCE_ID_3, safetySourceCtsData.information)
+
+        context.launchSafetyCenterActivity {
+            // Verify content description for the collapsed entry group, and click on it to expand
+            waitFindObject(By.desc("List. OK. OK")).click()
+
+            // Verify content descriptions for the expanded group header and entry list item
+            waitFindObject(By.text("OK"))
+            waitFindObject(By.desc("List item. Ok title. Ok summary"))
+        }
+    }
+
+    @Test
+    fun entryListWithEntryGroup_recommendationState_hasActionsNeededContentDescription() {
+        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
+        safetyCenterCtsHelper.setData(
+            SOURCE_ID_1, safetySourceCtsData.recommendationWithGeneralIssue)
+        safetyCenterCtsHelper.setData(SOURCE_ID_2, safetySourceCtsData.information)
+        safetyCenterCtsHelper.setData(SOURCE_ID_3, safetySourceCtsData.information)
+
+        context.launchSafetyCenterActivity {
+            // Verify content description for the collapsed entry group, and click on it to expand
+            waitFindObject(By.desc("List. OK. Actions needed. Recommendation summary")).click()
+
+            // Verify content descriptions for the expanded group header and entry list items
+            waitFindObject(By.text("OK"))
+            waitFindObject(By.desc("List item. Recommendation title. Recommendation summary"))
+            waitFindObject(By.desc("List item. Ok title. Ok summary"))
+        }
+    }
+
+    @Test
+    fun entryListWithSingleSource_informationState_hasContentDescription() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.information)
+
+        context.launchSafetyCenterActivity {
+            // Verify content description for the individual entry
+            waitFindObject(By.desc("Ok title. Ok summary"))
+        }
+    }
+
+    @Test
     fun statusCard_withoutIssues_hasContentDescriptions() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.information)
@@ -349,8 +396,8 @@ class SafetyCenterActivityTest {
         SafetySourceReceiver.safetySourceData[
                 SafetySourceDataKey(RESOLVE_ACTION, SINGLE_SOURCE_ID)] = null
 
-        context.launchSafetyCenterActivity {
-            callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
+        callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
+            context.launchSafetyCenterActivity {
                 val action = safetySourceCtsData.criticalResolvingActionWithSuccessMessage
                 waitFindObject(By.text(action.label.toString())).click()
 
@@ -379,8 +426,8 @@ class SafetyCenterActivityTest {
         SafetySourceReceiver.safetySourceData[
                 SafetySourceDataKey(RESOLVE_ACTION, SINGLE_SOURCE_ID)] = null
 
-        context.launchSafetyCenterActivity {
-            callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
+        callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
+            context.launchSafetyCenterActivity {
                 val action = safetySourceCtsData.criticalResolvingAction
                 waitFindObject(By.text(action.label.toString())).click()
 
@@ -404,8 +451,8 @@ class SafetyCenterActivityTest {
                 SafetySourceDataKey(RESOLVE_ACTION, SINGLE_SOURCE_ID)] = null
         SafetySourceReceiver.shouldReportSafetySourceError = true
 
-        context.launchSafetyCenterActivity {
-            callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
+        callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
+            context.launchSafetyCenterActivity {
                 val action = safetySourceCtsData.criticalResolvingAction
                 waitFindObject(By.text(action.label.toString())).click()
 
@@ -428,8 +475,8 @@ class SafetyCenterActivityTest {
 
         // Set no data at all on the receiver, will ignore incoming call.
 
-        context.launchSafetyCenterActivity {
-            callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
+        callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
+            context.launchSafetyCenterActivity {
                 val action = safetySourceCtsData.criticalResolvingAction
                 waitFindObject(By.text(action.label.toString())).click()
 

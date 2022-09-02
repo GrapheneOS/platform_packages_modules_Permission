@@ -102,21 +102,13 @@ class NotificationListenerCheckInternalTest {
             NotificationListenerCheckInternal(context) { shouldCancel }
         }
 
-        // ensure tests start with clean NLS_PREFERENCE_FILE
-        context.getSharedPreferences(NLS_PREFERENCE_FILE, Context.MODE_PRIVATE)
-            .edit()
-            .clear()
-            .apply()
+        // ensure tests start with clean sharedPrefs
+        clearSharedPrefState()
     }
 
     @After
     fun cleanup() {
-        // cleanup NLS_PREFERENCE_FILE
-        context.getSharedPreferences(NLS_PREFERENCE_FILE, Context.MODE_PRIVATE)
-            .edit()
-            .clear()
-            .apply()
-
+        clearSharedPrefState()
         shouldCancel = false
         mockitoSession.finishMocking()
     }
@@ -169,34 +161,39 @@ class NotificationListenerCheckInternalTest {
     }
 
     @Test
-    fun updateNotifiedComponents() {
+    fun removeDisabledComponentsFromNotifiedComponents() {
         val testComponent = ComponentName("com.test.package", "TestClass")
         val testComponent2 = ComponentName("com.test.package2", "TestClass2")
-        val testComponents = listOf(testComponent, testComponent2)
+        val initialEnabledComponents = listOf(testComponent, testComponent2)
+        val updatedEnabledComponents = listOf(testComponent2)
 
-        // Mark single component as notified, and get the resulting list of ComponentNames
+        // Mark all components as notified, and get the resulting list of ComponentNames
         val initialNlsComponents = runBlocking {
-            notificationListenerCheck.updateNotifiedComponents(listOf(testComponent))
+            initialEnabledComponents.forEach {
+                notificationListenerCheck.markComponentAsNotified(it)
+            }
             getNotifiedComponents()
         }
 
         // Verify expected components are present
         assertThat(initialNlsComponents).isNotNull()
-        assertThat(initialNlsComponents.size).isEqualTo(1)
-        assertThat(initialNlsComponents.contains(testComponent)).isTrue()
+        assertThat(initialNlsComponents.size).isEqualTo(initialEnabledComponents.size)
+        initialEnabledComponents.forEach { assertThat(initialNlsComponents.contains(it)).isTrue() }
 
-        // Mark all components as notified, and get the resulting list of ComponentNames
+        // Forget about test package, and get the resulting list of ComponentNames
+        // Filter to the component that match the test component
         val updatedNlsComponents = runWithShellPermissionIdentity {
             runBlocking {
-                notificationListenerCheck.updateNotifiedComponents(testComponents)
+                notificationListenerCheck.removeDisabledComponentsFromNotifiedComponents(
+                    updatedEnabledComponents)
                 getNotifiedComponents()
             }
         }
 
         // Verify expected components are present
         assertThat(updatedNlsComponents).isNotNull()
-        assertThat(updatedNlsComponents.size).isEqualTo(testComponents.size)
-        testComponents.forEach { assertThat(updatedNlsComponents.contains(it)).isTrue() }
+        assertThat(updatedNlsComponents.size).isEqualTo(updatedEnabledComponents.size)
+        updatedEnabledComponents.forEach { assertThat(updatedNlsComponents.contains(it)).isTrue() }
     }
 
     @Test
@@ -229,9 +226,7 @@ class NotificationListenerCheckInternalTest {
 
         // Filter to the component that match the test component
         // Ensure size is equal to one (not empty)
-        nlsComponents
-            .filter { it == testComponent }
-            .also { assertThat(it.size).isEqualTo(1) }
+        nlsComponents.filter { it == testComponent }.also { assertThat(it.size).isEqualTo(1) }
 
         // Mark second component as notified, and get the resulting list of ComponentNames
         nlsComponents = runBlocking {
@@ -243,9 +238,7 @@ class NotificationListenerCheckInternalTest {
 
         // Filter to the component that match the test component
         // Ensure size is equal to one (not empty)
-        nlsComponents
-            .filter { it == testComponent2 }
-            .also { assertThat(it.size).isEqualTo(1) }
+        nlsComponents.filter { it == testComponent2 }.also { assertThat(it.size).isEqualTo(1) }
     }
 
     @Test
@@ -543,6 +536,14 @@ class NotificationListenerCheckInternalTest {
                     componentName.flattenToString())
             }
         return PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+    }
+
+    private fun clearSharedPrefState() {
+        context
+            .getSharedPreferences(NLS_PREFERENCE_FILE, Context.MODE_PRIVATE)
+            .edit()
+            .clear()
+            .apply()
     }
 
     private fun <R> runWithShellPermissionIdentity(block: () -> R): R {

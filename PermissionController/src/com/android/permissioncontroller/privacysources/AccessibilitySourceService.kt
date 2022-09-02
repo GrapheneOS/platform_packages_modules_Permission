@@ -253,10 +253,12 @@ class AccessibilitySourceService(
             b.build()
         )
 
-        sharedPrefs.edit().putLong(
-            KEY_LAST_ACCESSIBILITY_NOTIFICATION_SHOWN,
-            System.currentTimeMillis()
-        ).apply()
+        sharedPrefsLock.withLock {
+            sharedPrefs.edit().putLong(
+                KEY_LAST_ACCESSIBILITY_NOTIFICATION_SHOWN,
+                System.currentTimeMillis()
+            ).apply()
+        }
         markServiceAsNotified(ComponentName.unflattenFromString(serviceToBeNotified.id)!!)
 
         if (DEBUG) {
@@ -831,6 +833,7 @@ class AccessibilityWarningCardDismissalReceiver : BroadcastReceiver() {
             }
             val accessibilityService = AccessibilitySourceService(context)
             accessibilityService.removeAccessibilityNotification(componentName)
+            accessibilityService.markServiceAsNotified(componentName)
         }
 
         if (DEBUG) {
