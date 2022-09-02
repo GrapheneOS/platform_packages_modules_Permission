@@ -29,6 +29,7 @@ import com.android.compatibility.common.util.UiAutomatorUtils.waitFindObjectOrNu
 import java.time.Duration
 import java.util.concurrent.TimeoutException
 import java.util.regex.Pattern
+import kotlin.math.min
 
 /** A class that helps with UI testing. */
 object UiTestHelper {
@@ -101,7 +102,7 @@ object UiTestHelper {
 
     /** Waits for most of the [SafetySourceIssue] information not to be displayed. */
     fun waitSourceIssueNotDisplayed(sourceIssue: SafetySourceIssue) {
-        waitAllTextNotDisplayed(sourceIssue.title.toString())
+        waitAllTextNotDisplayed(sourceIssue.title)
     }
 
     /** Expands the more issues card button. */
@@ -120,12 +121,18 @@ object UiTestHelper {
         uiAutomatorCondition: (UiObject2?) -> Boolean
     ): UiObject2? {
         val elapsedStartMillis = SystemClock.elapsedRealtime()
-        while (Duration.ofMillis(SystemClock.elapsedRealtime() - elapsedStartMillis) <
-            WAIT_TIMEOUT) {
+        while (true) {
             getUiDevice().waitForIdle()
+            val durationSinceStart =
+                Duration.ofMillis(SystemClock.elapsedRealtime() - elapsedStartMillis)
+            if (durationSinceStart >= WAIT_TIMEOUT) {
+                break
+            }
+            val remainingTime = WAIT_TIMEOUT - durationSinceStart
+            val waitFindObjectTimeoutMillis =
+                min(uiAutomatorConditionTimeout.toMillis(), remainingTime.toMillis())
             try {
-                val objectFound =
-                    waitFindObjectOrNull(selector, uiAutomatorConditionTimeout.toMillis())
+                val objectFound = waitFindObjectOrNull(selector, waitFindObjectTimeoutMillis)
                 if (uiAutomatorCondition(objectFound)) {
                     return objectFound
                 } else {
