@@ -18,7 +18,7 @@
                 </group>
                 <group android:name="_R_G_L_0_G" android:translateX="280" android:translateY="275"
                        android:scaleX="10" android:scaleY="10">
-                    <path android:name="_R_G_L_0_G_D_0_P_0" android:fillColor="#f6fbf8"
+                    <path android:name="_R_G_L_0_G_D_0_P_0" android:fillColor="?attr/colorScShieldAccent"
                           android:fillAlpha="1" android:fillType="nonZero"
                           android:pathData=" M-7.87 0.18 C-7.87,0.18 -7.86,0.19 -7.86,0.19 C-7.86,0.19 -5.41,-2.25 -5.41,-2.25 C-5.41,-2.25 -5.39,-2.23 -5.39,-2.23 C-5.39,-2.23 -5.42,-2.26 -5.42,-2.26 C-5.42,-2.26 -5.42,-2.27 -5.42,-2.27 C-5.42,-2.27 -7.87,0.18 -7.87,0.18c "/>
                 </group>
