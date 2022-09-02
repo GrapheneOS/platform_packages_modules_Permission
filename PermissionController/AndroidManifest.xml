@@ -93,11 +93,13 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name="com.android.permissioncontroller.hibernation.HibernationOnBootReceiver"
+        <receiver android:name="com.android.permissioncontroller.hibernation.HibernationBroadcastReceiver"
                   android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="com.android.permissioncontroller.action.SET_UP_HIBERNATION" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
             </intent-filter>
         </receiver>
 
