@@ -27,6 +27,7 @@ import android.safetycenter.cts.testing.SafetyCenterActivityLauncher.launchSafet
 import android.safetycenter.cts.testing.SafetyCenterCtsHelper
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermissionIdentity
+import android.safetycenter.cts.testing.UiTestHelper.waitAllTextDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.waitDisplayed
 import android.support.test.uiautomator.By
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
@@ -97,7 +98,7 @@ class SafetyCenterQsActivityTest {
         context.launchSafetyCenterQsActivity() {
             // Verify page landing descriptions
             waitDisplayed(By.desc("Security and privacy quick settings"))
-            waitDisplayed(By.text("Your privacy controls"))
+            waitAllTextDisplayed("Your privacy controls")
             waitDisplayed(By.desc("Close"))
 
             // Verify privacy controls descriptions
