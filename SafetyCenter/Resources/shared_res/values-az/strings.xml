@@ -31,7 +31,8 @@
     <string name="redirecting_error" msgid="8146983632878233202">"Səhifəni açmaq mümkün olmadı"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Siqnalı həll etmək mümkün olmadı"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"Ayarları yeniləmək mümkün olmadı"</string>
-    <string name="refresh_error" msgid="255412333381376201">"{count,plural, =1{ayarı}other{ayarı}} yoxlamaq alınmadı"</string>
+    <!-- no translation found for refresh_error (656062128422446177) -->
+    <skip />
     <string name="work_profile_paused" msgid="7037400224040869079">"İş profili durdurulub"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"Hələ ki, məlumat yoxdur"</string>
 </resources>

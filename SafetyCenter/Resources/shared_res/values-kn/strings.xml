@@ -31,7 +31,8 @@
     <string name="redirecting_error" msgid="8146983632878233202">"ಪುಟವನ್ನು ತೆರೆಯಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"ಅಲರ್ಟ್ ಅನ್ನು ಬಗೆಹರಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ರಿಫ್ರೆಶ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ"</string>
-    <string name="refresh_error" msgid="255412333381376201">"{count,plural, =1{ಸೆಟ್ಟಿಂಗ್}one{ಸೆಟ್ಟಿಂಗ್‌ಗಳು}other{ಸೆಟ್ಟಿಂಗ್‌ಗಳು}} ಪರಿಶೀಲಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ"</string>
+    <!-- no translation found for refresh_error (656062128422446177) -->
+    <skip />
     <string name="work_profile_paused" msgid="7037400224040869079">"ಉದ್ಯೋಗ ಪ್ರೊಫೈಲ್‌ ಅನ್ನು ವಿರಾಮಗೊಳಿಸಲಾಗಿದೆ"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"ಇನ್ನೂ ಯಾವುದೇ ಮಾಹಿತಿ ಲಭ್ಯವಿಲ್ಲ"</string>
 </resources>

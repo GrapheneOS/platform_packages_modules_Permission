@@ -31,7 +31,7 @@
     <string name="redirecting_error" msgid="8146983632878233202">"לא ניתן היה לפתוח את הדף"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"לא ניתן היה לפתור את הבעיה בהתראה"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"לא ניתן היה לרענן את ההגדרות"</string>
-    <string name="refresh_error" msgid="255412333381376201">"לא ניתן היה לבדוק את ההגדרה {count,plural, =1{}two{הגדרות}many{הגדרות}other{הגדרות}}"</string>
+    <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{לא ניתן היה לבדוק את ההגדרה}two{לא ניתן היה לבדוק את ההגדרות}many{לא ניתן היה לבדוק את ההגדרות}other{לא ניתן היה לבדוק את ההגדרות}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"פרופיל העבודה מושהה"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"אין עדיין פרטים"</string>
 </resources>
