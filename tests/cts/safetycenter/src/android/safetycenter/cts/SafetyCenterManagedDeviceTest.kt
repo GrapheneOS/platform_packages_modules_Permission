@@ -54,8 +54,8 @@ import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCe
 import android.safetycenter.cts.testing.SafetySourceCtsData
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.EVENT_SOURCE_STATE_CHANGED
 import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermissionIdentity
-import android.safetycenter.cts.testing.UiTestHelper.findAllText
-import android.safetycenter.cts.testing.UiTestHelper.waitTextNotDisplayed
+import android.safetycenter.cts.testing.UiTestHelper.waitAllTextDisplayed
+import android.safetycenter.cts.testing.UiTestHelper.waitAllTextNotDisplayed
 import androidx.test.core.app.ApplicationProvider
 import com.android.bedstead.harrier.BedsteadJUnit4
 import com.android.bedstead.harrier.DeviceState
@@ -196,7 +196,7 @@ class SafetyCenterManagedDeviceTest {
 
         findWorkPolicyInfo()
         setQuietMode(true)
-        context.launchSafetyCenterActivity { waitTextNotDisplayed("Your work policy info") }
+        context.launchSafetyCenterActivity { waitAllTextNotDisplayed("Your work policy info") }
     }
 
     @Test
@@ -510,7 +510,7 @@ class SafetyCenterManagedDeviceTest {
     private fun findWorkPolicyInfo() {
         context.launchSafetyCenterActivity {
             // TODO(b/233188021): This test will fail if these strings are overridden by OEMS.
-            findAllText("Your work policy info", "Settings managed by your IT admin")
+            waitAllTextDisplayed("Your work policy info", "Settings managed by your IT admin")
         }
     }
 

@@ -18,6 +18,7 @@ package com.android.permissioncontroller.safetycenter.ui
 
 import android.graphics.Rect
 import android.os.Build
+import android.util.Log
 import android.view.TouchDelegate
 import android.view.View
 import androidx.annotation.DimenRes
@@ -27,18 +28,38 @@ import androidx.annotation.RequiresApi
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 object SafetyCenterTouchTarget {
     /**
-     * Resizes the touch target of views by delegating to the parent component.
+     * Overload that resizes the touch target of views by delegating to the parent component.
      * @param view component that will be expanded
      * @param minTouchTargetSizeResource required minimum touch target size
      */
     @JvmStatic
     fun configureSize(view: View, @DimenRes minTouchTargetSizeResource: Int) {
-        val parent = view.parent as View
+        val parent = view.parent as? View
+        configureSize(view, minTouchTargetSizeResource, parent)
+    }
+
+    /**
+     * Resizes the touch target of views by delegating to the ancestor component.
+     * @param view component that will be expanded
+     * @param minTouchTargetSizeResource required minimum touch target size
+     * @param ancestor component that handles touches as the delegate
+     */
+    @JvmStatic
+    fun configureSize(
+        view: View,
+        @DimenRes minTouchTargetSizeResource: Int,
+        ancestor: View?
+    ) {
+        if (ancestor == null) {
+            Log.w("SafetyCenterTouchTarget", "ancestor is null")
+            return
+        }
+
         val res = view.context.resources
         val minTouchTargetSize = res.getDimensionPixelSize(minTouchTargetSizeResource)
 
-        // Defer getHitRect so that it's called after the parent's children are laid out.
-        parent.post {
+        // Defer getHitRect so that it's called after the ancestor's children are laid out.
+        ancestor.post {
             val hitRect = Rect()
             view.getHitRect(hitRect)
             val currentTouchTargetWidth = hitRect.width()
@@ -48,7 +69,7 @@ object SafetyCenterTouchTarget {
 
                 // Inset adjustment is applied to top, bottom, left, right
                 hitRect.inset(-adjustInsetBy, -adjustInsetBy)
-                parent.touchDelegate = TouchDelegate(hitRect, view)
+                ancestor.touchDelegate = TouchDelegate(hitRect, view)
             }
         }
     }
