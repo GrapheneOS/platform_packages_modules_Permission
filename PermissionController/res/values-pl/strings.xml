@@ -21,7 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"uprawnienia"</string>
     <string name="cancel" msgid="8943320028373963831">"Anuluj"</string>
     <string name="back" msgid="6249950659061523680">"Wstecz"</string>
-    <string name="available" msgid="6007778121920339498">"Dostępny"</string>
+    <string name="available" msgid="6007778121920339498">"Odblokowany"</string>
     <string name="blocked" msgid="9195547604866033708">"Zablokowany"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Odinstaluj lub wyłącz"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Nie znaleziono aplikacji"</string>
