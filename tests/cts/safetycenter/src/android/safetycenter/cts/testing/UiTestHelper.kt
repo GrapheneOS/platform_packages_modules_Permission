@@ -24,89 +24,131 @@ import android.support.test.uiautomator.BySelector
 import android.support.test.uiautomator.StaleObjectException
 import android.support.test.uiautomator.UiObject2
 import android.util.Log
+import com.android.compatibility.common.util.UiAutomatorUtils.getUiDevice
 import com.android.compatibility.common.util.UiAutomatorUtils.waitFindObject
 import com.android.compatibility.common.util.UiAutomatorUtils.waitFindObjectOrNull
+import java.lang.IllegalStateException
 import java.time.Duration
+import java.util.concurrent.TimeoutException
 import java.util.regex.Pattern
 
 /** A class that helps with UI testing. */
 object UiTestHelper {
 
-    const val STATUS_CARD_RESCAN_BUTTON_LABEL = "Scan device"
+    /** The label of the rescan button. */
+    const val RESCAN_BUTTON_LABEL = "Scan device"
 
-    private val NOT_DISPLAYED_TIMEOUT = Duration.ofSeconds(20)
-    private val NOT_DISPLAYED_CHECK_INTERVAL = Duration.ofMillis(100)
-    private val FIND_TEXT_TIMEOUT = Duration.ofSeconds(25)
+    private val WAIT_TIMEOUT = Duration.ofSeconds(25)
+    private val NOT_DISPLAYED_TIMEOUT = Duration.ofMillis(500)
+
     private val TAG = UiTestHelper::class.java.simpleName
 
-    fun findAllText(vararg textToFind: CharSequence?) {
+    /** Waits for the given [selector] to be displayed. */
+    fun waitDisplayed(selector: BySelector): UiObject2 =
+        waitFor("$selector to be displayed", WAIT_TIMEOUT) {
+            Result.success(waitFindObject(selector, it.toMillis()))
+        }
+
+    /** Waits for all the given [textToFind] to be displayed. */
+    fun waitAllTextDisplayed(vararg textToFind: CharSequence?) {
         for (text in textToFind) {
-            if (text != null) waitFindObject(By.text(text.toString()), FIND_TEXT_TIMEOUT.toMillis())
+            if (text != null) waitDisplayed(By.text(text.toString()))
         }
     }
 
-    fun findButton(label: CharSequence): UiObject2 {
-        return waitFindObject(buttonSelector(label))
+    /** Waits for a button with the given [label] to be displayed. */
+    fun waitButtonDisplayed(label: CharSequence): UiObject2 = waitDisplayed(buttonSelector(label))
+
+    /** Waits for the given [selector] not to be displayed. */
+    fun waitNotDisplayed(selector: BySelector) {
+        waitFor("$selector not to be displayed", NOT_DISPLAYED_TIMEOUT) {
+            if (waitFindObjectOrNull(selector, it.toMillis()) == null) {
+                Result.success(Unit)
+            } else {
+                Result.failure(
+                    IllegalStateException("Found $selector when expecting it not to be displayed"))
+            }
+        }
+    }
+
+    /** Waits for all the given [textToFind] not to be displayed. */
+    fun waitAllTextNotDisplayed(vararg textToFind: CharSequence?) {
+        for (text in textToFind) {
+            if (text != null) waitNotDisplayed(By.text(text.toString()))
+        }
+    }
+
+    /** Waits for a button with the given [label] not to be displayed. */
+    fun waitButtonNotDisplayed(label: CharSequence) {
+        waitNotDisplayed(buttonSelector(label))
+    }
+
+    /**
+     * Waits for most of the [SafetySourceData] information to be displayed.
+     *
+     * This includes its UI entry and its issues.
+     */
+    fun waitSourceDataDisplayed(sourceData: SafetySourceData) {
+        waitAllTextDisplayed(sourceData.status?.title, sourceData.status?.summary)
+
+        for (sourceIssue in sourceData.issues) {
+            waitSourceIssueDisplayed(sourceIssue)
+        }
+    }
+
+    /** Waits for most of the [SafetySourceIssue] information to be displayed. */
+    fun waitSourceIssueDisplayed(sourceIssue: SafetySourceIssue) {
+        waitAllTextDisplayed(sourceIssue.title, sourceIssue.subtitle, sourceIssue.summary)
+
+        for (action in sourceIssue.actions) {
+            waitButtonDisplayed(action.label)
+        }
+    }
+
+    /** Waits for most of the [SafetySourceIssue] information not to be displayed. */
+    fun waitSourceIssueNotDisplayed(sourceIssue: SafetySourceIssue) {
+        waitAllTextNotDisplayed(sourceIssue.title)
+    }
+
+    /** Expands the more issues card button. */
+    fun expandMoreIssuesCard() {
+        waitDisplayed(By.text("See all alerts")).click()
     }
 
     private fun buttonSelector(label: CharSequence): BySelector {
         return By.clickable(true).text(Pattern.compile("$label|${label.toString().uppercase()}"))
     }
 
-    fun waitNotDisplayed(selector: BySelector) {
-        val startMillis = SystemClock.elapsedRealtime()
+    private fun <T> waitFor(
+        message: String,
+        uiAutomatorConditionTimeout: Duration,
+        uiAutomatorCondition: (Duration) -> Result<T>
+    ): T {
+        val elapsedStartMillis = SystemClock.elapsedRealtime()
         while (true) {
-            try {
-                if (waitFindObjectOrNull(selector, NOT_DISPLAYED_CHECK_INTERVAL.toMillis()) ==
-                    null) {
-                    return
-                }
-            } catch (e: StaleObjectException) {
-                Log.d(
-                    TAG,
-                    "StaleObjectException while calling waitTextNotDisplayed, will retry " +
-                        "if within timeout.")
-            }
-            if (Duration.ofMillis(SystemClock.elapsedRealtime() - startMillis) >=
-                NOT_DISPLAYED_TIMEOUT) {
+            getUiDevice().waitForIdle()
+            val durationSinceStart =
+                Duration.ofMillis(SystemClock.elapsedRealtime() - elapsedStartMillis)
+            if (durationSinceStart >= WAIT_TIMEOUT) {
                 break
             }
-            Thread.sleep(NOT_DISPLAYED_CHECK_INTERVAL.toMillis())
+            val remainingTime = WAIT_TIMEOUT - durationSinceStart
+            val uiAutomatorTimeout = minOf(uiAutomatorConditionTimeout, remainingTime)
+            try {
+                val result = uiAutomatorCondition(uiAutomatorTimeout)
+                if (result.isSuccess) {
+                    return result.getOrThrow()
+                } else {
+                    Log.d(
+                        TAG,
+                        "Failed condition for $message, will retry if within timeout",
+                        result.exceptionOrNull())
+                }
+            } catch (e: StaleObjectException) {
+                Log.d(TAG, "StaleObjectException for $message, will retry if within timeout", e)
+            }
         }
-        throw AssertionError(
-            "View matching selector $selector is still displayed after waiting for at least" +
-                "$NOT_DISPLAYED_TIMEOUT")
-    }
 
-    fun waitButtonNotDisplayed(label: CharSequence) {
-        waitNotDisplayed(buttonSelector(label))
-    }
-
-    fun waitTextNotDisplayed(text: String) {
-        waitNotDisplayed(By.text(text))
-    }
-
-    fun assertSourceDataDisplayed(sourceData: SafetySourceData) {
-        findAllText(sourceData.status?.title, sourceData.status?.summary)
-
-        for (sourceIssue in sourceData.issues) {
-            assertSourceIssueDisplayed(sourceIssue)
-        }
-    }
-
-    fun assertSourceIssueDisplayed(sourceIssue: SafetySourceIssue) {
-        findAllText(sourceIssue.title, sourceIssue.subtitle, sourceIssue.summary)
-
-        for (action in sourceIssue.actions) {
-            findButton(action.label)
-        }
-    }
-
-    fun assertSourceIssueNotDisplayed(sourceIssue: SafetySourceIssue) {
-        waitTextNotDisplayed(sourceIssue.title.toString())
-    }
-
-    fun expandMoreIssuesCard() {
-        waitFindObject(By.text("See all alerts")).click()
+        throw TimeoutException("Timed out waiting for $message")
     }
 }

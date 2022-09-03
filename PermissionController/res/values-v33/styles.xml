@@ -348,6 +348,7 @@
         <item name="android:layout_width">56dp</item>
         <item name="android:layout_height">56dp</item>
         <item name="app:layout_constraintTop_toTopOf">parent</item>
+        <item name="app:layout_constraintBottom_toBottomOf">@id/status_title_and_summary</item>
         <item name="app:layout_constraintStart_toStartOf">parent</item>
         <item name="android:scaleType">centerInside</item>
         <item name="android:gravity">center</item>

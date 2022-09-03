@@ -27,10 +27,11 @@ import android.safetycenter.cts.testing.SafetyCenterActivityLauncher.launchSafet
 import android.safetycenter.cts.testing.SafetyCenterCtsHelper
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermissionIdentity
+import android.safetycenter.cts.testing.UiTestHelper.waitAllTextDisplayed
+import android.safetycenter.cts.testing.UiTestHelper.waitDisplayed
 import android.support.test.uiautomator.By
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.android.compatibility.common.util.UiAutomatorUtils.waitFindObject
 import org.junit.After
 import org.junit.Assume.assumeTrue
 import org.junit.Before
@@ -96,13 +97,13 @@ class SafetyCenterQsActivityTest {
     fun launchActivity_fromQuickSettings_hasContentDescriptions() {
         context.launchSafetyCenterQsActivity() {
             // Verify page landing descriptions
-            waitFindObject(By.desc("Security and privacy quick settings"))
-            waitFindObject(By.text("Your privacy controls"))
-            waitFindObject(By.desc("Close"))
+            waitDisplayed(By.desc("Security and privacy quick settings"))
+            waitAllTextDisplayed("Your privacy controls")
+            waitDisplayed(By.desc("Close"))
 
             // Verify privacy controls descriptions
-            waitFindObject(By.desc("Switch. Camera access. Available"))
-            waitFindObject(By.desc("Switch. Mic access. Available"))
+            waitDisplayed(By.desc("Switch. Camera access. Available"))
+            waitDisplayed(By.desc("Switch. Mic access. Available"))
         }
     }
 
@@ -110,12 +111,12 @@ class SafetyCenterQsActivityTest {
     fun launchActivity_togglePrivacyControls_hasUpdatedDescriptions() {
         context.launchSafetyCenterQsActivity() {
             // Toggle privacy controls
-            waitFindObject(By.desc("Switch. Camera access. Available")).click()
-            waitFindObject(By.desc("Switch. Mic access. Available")).click()
+            waitDisplayed(By.desc("Switch. Camera access. Available")).click()
+            waitDisplayed(By.desc("Switch. Mic access. Available")).click()
 
             // Verify updated state of privacy controls
-            waitFindObject(By.desc("Switch. Camera access. Blocked"))
-            waitFindObject(By.desc("Switch. Mic access. Blocked"))
+            waitDisplayed(By.desc("Switch. Camera access. Blocked"))
+            waitDisplayed(By.desc("Switch. Mic access. Blocked"))
         }
     }
 

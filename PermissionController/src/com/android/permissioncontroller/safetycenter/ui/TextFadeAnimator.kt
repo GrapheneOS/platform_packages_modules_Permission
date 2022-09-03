@@ -53,12 +53,14 @@ constructor(targetIds: List<Int>, changeDuration: Duration = DEFAULT_TEXT_CHANGE
         textChangeTransition = transition
     }
 
-    fun animateChangeText(textView: TextView, text: String) {
-        animateChangeText(listOf(textView to text))
+    @JvmOverloads
+    fun animateChangeText(textView: TextView, text: String, onFinish: Runnable? = null) {
+        animateChangeText(listOf(textView to text), onFinish)
     }
 
     /** Animate changes for a set of textViews under the same parent. */
-    fun animateChangeText(textChanges: List<Pair<TextView, String>>) {
+    @JvmOverloads
+    fun animateChangeText(textChanges: List<Pair<TextView, String>>, onFinish: Runnable? = null) {
         if (textChanges.isEmpty()) {
             return
         }
@@ -74,7 +76,7 @@ constructor(targetIds: List<Int>, changeDuration: Duration = DEFAULT_TEXT_CHANGE
                         }
                         override fun onTransitionEnd(transition: Transition?) {
                             super.onTransitionEnd(transition)
-                            fadeTextIn(textChanges, parentViewGroup)
+                            fadeTextIn(textChanges, parentViewGroup, onFinish)
                         }
                     })
         parentViewGroup.post {
@@ -85,8 +87,22 @@ constructor(targetIds: List<Int>, changeDuration: Duration = DEFAULT_TEXT_CHANGE
         }
     }
 
-    private fun fadeTextIn(textChanges: List<Pair<TextView, String>>, parent: ViewGroup) {
-        val fadeInTransition = textChangeTransition.clone()
+    private fun fadeTextIn(
+        textChanges: List<Pair<TextView, String>>,
+        parent: ViewGroup,
+        onFinish: Runnable?
+    ) {
+        val fadeInTransition =
+            textChangeTransition
+                .clone()
+                .addListener(
+                    object : TransitionListenerAdapter() {
+                        override fun onTransitionEnd(transition: Transition?) {
+                            super.onTransitionEnd(transition)
+                            onFinish?.run()
+                        }
+                    })
+
         parent.post {
             TransitionManager.beginDelayedTransition(parent, fadeInTransition)
             for ((textView, text) in textChanges) {
