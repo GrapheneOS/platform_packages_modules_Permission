@@ -264,7 +264,7 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Nekatere aplikacije niso bile uporabljene več mesecev. Dotaknite se za pregled."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# neuporabljena aplikacija}one{# neuporabljena aplikacija}two{# neuporabljeni aplikaciji}few{# neuporabljene aplikacije}other{# neuporabljenih aplikacij}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Dovoljenja in začasne datoteke so odstranjeni, obvestila so zaustavljena. Dotaknite se za pregled."</string>
-    <string name="unused_apps_safety_center_card_title" msgid="5638409355530099149">"Pregled aplikacij z odstranjenimi dovoljenji"</string>
+    <string name="unused_apps_safety_center_card_title" msgid="5638409355530099149">"Preglejte aplikacije z odstranjenimi dovoljenji"</string>
     <string name="unused_apps_safety_center_card_content" msgid="1088557243627427820">"Za aplikacije, ki jih nekaj časa niste uporabljali, so bili dovoljenja in začasne datoteke odstranjeni, obvestila pa so bila ustavljena."</string>
     <string name="unused_apps_safety_center_action_title" msgid="8865914432518993194">"Preglejte aplikacije"</string>
     <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Preverite nedavna dovoljenja"</string>
@@ -518,7 +518,7 @@
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"Preglej napravo"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Opusti"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Želite opustiti to opozorilo?"</string>
-    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"Za dodatno zaščito lahko kadar koli pregledate varnostne nastavitve in nastavitve zasebnosti"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"Za dodatno zaščito lahko kadar koli pregledate varnostne nastavitve in nastavitve zasebnosti."</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Opusti"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Prekliči"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"Nastavitve"</string>

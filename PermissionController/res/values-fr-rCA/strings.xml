@@ -265,7 +265,7 @@
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# application non utilisée}one{# application non utilisée}other{# applications non utilisées}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Les autorisations et les fichiers temporaires ont été retirés, et les notifications ont été arrêtées. Touchez pour examiner."</string>
     <string name="unused_apps_safety_center_card_title" msgid="5638409355530099149">"Voir les applications qui n\'ont plus leurs autorisations"</string>
-    <string name="unused_apps_safety_center_card_content" msgid="1088557243627427820">"Pour les applications que vous n\'avez pas utilisées depuis un moment, les autorisations et les fichiers temporaires ont été supprimés et les notifications ont été désactivées."</string>
+    <string name="unused_apps_safety_center_card_content" msgid="1088557243627427820">"Pour les applications que vous n\'avez pas utilisées depuis un moment, les autorisations et les fichiers temporaires ont été retirés, et les notifications ont été désactivées."</string>
     <string name="unused_apps_safety_center_action_title" msgid="8865914432518993194">"Voir les applications"</string>
     <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Vérifiez les autorisations récentes"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Pendant la conduite, vous avez donné à <xliff:g id="APP">%1$s</xliff:g> l\'accès à <xliff:g id="PERMISSION">%2$s</xliff:g>"</string>
@@ -283,7 +283,7 @@
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Cette application peut toujours accéder à votre position. Touchez l\'écran pour modifier cela."</string>
     <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"Voir l\'application ayant accès à vos notifications"</string>
     <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g> peut ignorer et gérer le contenu de vos notifications de même qu\'y accéder"</string>
-    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"Cette application peut ignorer et gérer le contenu de vos notifications de même qu\'y accéder. Certaines applications ont besoin de cet accès pour fonctionner correctement."</string>
+    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"Cette application peut ignorer le contenu de vos notifications, y accéder et le gérer. Certaines applications ont besoin de cet accès pour fonctionner correctement."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Retirer l\'accès"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"Afficher d\'autres options"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Accès retiré"</string>

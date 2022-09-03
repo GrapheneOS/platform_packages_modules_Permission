@@ -265,7 +265,7 @@
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{تطبيق واحد غير مستخدَم}zero{# تطبيق غير مستخدَم}two{تطبيقان غير مستخدَمين}few{# تطبيقات غير مستخدَمة}many{# تطبيقًا غير مستخدَم}other{# تطبيق غير مستخدَم}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"تمت إزالة الأذونات والملفات المؤقتة وتم إيقاف الإشعارات. انقر لمراجعة الإعدادات."</string>
     <string name="unused_apps_safety_center_card_title" msgid="5638409355530099149">"مراجعة التطبيقات التي تمت إزالة الأذونات منها"</string>
-    <string name="unused_apps_safety_center_card_content" msgid="1088557243627427820">"بالنسبة إلى التطبيقات غير المُستخدَمة لفترة محدّدة، تمت إزالة الأذونات والملفات المؤقّتة وإيقاف الإشعارات."</string>
+    <string name="unused_apps_safety_center_card_content" msgid="1088557243627427820">"بالنسبة إلى التطبيقات غير المُستخدَمة منذ فترة، تمت إزالة الأذونات والملفات المؤقّتة وإيقاف الإشعارات."</string>
     <string name="unused_apps_safety_center_action_title" msgid="8865914432518993194">"مراجعة التطبيقات"</string>
     <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"التحقّق من الأذونات الحديثة"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"أثناء القيادة، منحت <xliff:g id="APP">%1$s</xliff:g> الإذن بالوصول إلى <xliff:g id="PERMISSION">%2$s</xliff:g>."</string>

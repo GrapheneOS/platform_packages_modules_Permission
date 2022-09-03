@@ -283,7 +283,7 @@
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"У этого приложения есть постоянный доступ к сведениям о вашем местоположении. Нажмите, чтобы изменить настройки."</string>
     <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"Проверьте приложение с доступом к уведомлениям"</string>
     <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"Приложение \"<xliff:g id="APP_NAME">%s</xliff:g>\" может взаимодействовать с уведомлениями, в том числе скрывать их и получать к ним доступ."</string>
-    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"Приложение может взаимодействовать с уведомлениями, в том числе скрывать их и получать к ним доступ. Это необходимо для правильной работы приложения."</string>
+    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"Это приложение может закрывать уведомления, совершать с ними другие действия и получать доступ к их содержимому. Некоторым приложениям это разрешение требуется для правильной работы."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Запретить доступ"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"Показать дополнительные параметры"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Доступ закрыт"</string>
@@ -528,7 +528,7 @@
     <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"Защита и конфиденциальность"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Проверьте статус."</string>
     <string name="privacy_controls_qs" msgid="5780144882040591169">"Ваши настройки конфиденциальности"</string>
-    <string name="security_settings_button_label_qs" msgid="8280343822465962330">"Дополнительные настройки"</string>
+    <string name="security_settings_button_label_qs" msgid="8280343822465962330">"Другие настройки"</string>
     <string name="camera_toggle_label_qs" msgid="3880261453066157285">"Доступ к камере"</string>
     <string name="microphone_toggle_label_qs" msgid="8132912469813396552">"Доступ к микрофону"</string>
     <string name="permissions_removed_qs" msgid="8957319130625294572">"Разрешение отозвано"</string>

@@ -265,7 +265,7 @@
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{အသုံးမပြုသောအက်ပ် # ခု}other{အသုံးမပြုသောအက်ပ် # ခု}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"ခွင့်ပြုချက်နှင့် ယာယီဖိုင်များကို ဖယ်ရှားလိုက်ပြီး အကြောင်းကြားချက်များကို ရပ်ထားသည်။ ပြန်ကြည့်ရန် တို့ပါ။"</string>
     <string name="unused_apps_safety_center_card_title" msgid="5638409355530099149">"ခွင့်ပြုချက်များ ဖယ်ရှားထားသောအက်ပ်များကို စစ်ရန်"</string>
-    <string name="unused_apps_safety_center_card_content" msgid="1088557243627427820">"အက်ပ်များကို လတ်တလော သင်မသုံးပါက ခွင့်ပြုချက်နှင့် ယာယီဖိုင်များကို ဖယ်ရှားပြီး အကြောင်းကြားချက်များကို ရပ်ထားသည်။"</string>
+    <string name="unused_apps_safety_center_card_content" msgid="1088557243627427820">"အချိန်အတန်ကြာ အသုံးမပြုသော အက်ပ်များအတွက် ခွင့်ပြုချက်နှင့် ယာယီဖိုင်များကို ဖယ်ရှားပြီး အကြောင်းကြားချက်များကို ရပ်ထားသည်။"</string>
     <string name="unused_apps_safety_center_action_title" msgid="8865914432518993194">"အက်ပ်များကို စစ်ရန်"</string>
     <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"လတ်တလောခွင့်ပြုချက်များ စစ်ဆေးခြင်း"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"မောင်းနှင်နေစဉ် <xliff:g id="APP">%1$s</xliff:g> ကို <xliff:g id="PERMISSION">%2$s</xliff:g> သုံးခွင့်ပေးထားသည်"</string>
@@ -283,7 +283,7 @@
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"ဤအက်ပ်က သင်၏တည်နေရာကို အမြဲဝင်ကြည့်နိုင်ပါသည်။ ပြောင်းရန် တို့ပါ။"</string>
     <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"သင့်အကြောင်းကြားချက်များကို ကြည့်နိုင်သည့်အက်ပ်ကို စစ်ဆေးပါ"</string>
     <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g> က သင့်အကြောင်းကြားချက်များအတွင်းရှိ အကြောင်းအရာကို ပယ်နိုင်၊ ဆောင်ရွက်နိုင်၊ သုံးနိုင်သည်"</string>
-    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"ဤအက်ပ်က သင့်အကြောင်းကြားချက်များအတွင်းရှိ အကြောင်းအရာကို ပယ်နိုင်၊ ဆောင်ရွက်နိုင်၊ သုံးနိုင်သည် အချို့အက်ပ်များက ရည်ရွယ်ထားသလို လုပ်ဆောင်နိုင်ရန် ဤခွင့်ပြုချက်ကို လိုအပ်သည်။"</string>
+    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"ဤအက်ပ်က သင့်အကြောင်းကြားချက်များအတွင်းရှိ အကြောင်းအရာကို ပယ်နိုင်၊ ဆောင်ရွက်နိုင်၊ သုံးနိုင်သည်။ အချို့အက်ပ်များက ရည်ရွယ်ထားသလို လုပ်ဆောင်နိုင်ရန် ဤခွင့်ပြုချက်ကို လိုအပ်သည်။"</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"သုံးခွင့် ဖယ်ရှားရန်"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"နောက်ထပ်ရွေးချယ်စရာများ ကြည့်ရန်"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"သုံးခွင့် ဖယ်ရှားလိုက်ပြီ"</string>
@@ -514,7 +514,7 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"အက်ပ်နှင့် ဝန်ဆောင်မှုများအတွက်"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"အရေးပေါ် နံပါတ်ကို သင်ခေါ်ဆိုချိန်တွင် မိုက်ခရိုဖုန်းဒေတာကို မျှဝေနိုင်သေးသည်။"</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"ပြောင်းရန်"</string>
-    <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"လုံခြုံရေး/ကိုယ်ရေးလုံခြုံမှု"</string>
+    <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"လုံခြုံရေး/အချက်အလက်လုံခြုံမှု"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"စက်ကိုစစ်ဆေးရန်"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"ပယ်ရန်"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"ဤသတိပေးချက်ကို ပယ်မလား။"</string>
@@ -526,14 +526,14 @@
     <string name="security_settings" msgid="3808106921175271317">"လုံခြုံရေး ဆက်တင်များ"</string>
     <string name="sensor_permissions_qs" msgid="1022267900031317472">"ခွင့်ပြုချက်များ"</string>
     <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"လုံခြုံရေးနှင့် ကိုယ်ရေးအချက်အလက်လုံခြုံမှု"</string>
-    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"အခြေအနေ စစ်ဆေးခြင်း"</string>
-    <string name="privacy_controls_qs" msgid="5780144882040591169">"သင်၏ကန့်သတ်ရန်ဆက်တင်များ"</string>
+    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"အခြေအနေ စစ်ဆေးပါ"</string>
+    <string name="privacy_controls_qs" msgid="5780144882040591169">"အချက်အလက်လုံခြုံမှု ဆက်တင်များ"</string>
     <string name="security_settings_button_label_qs" msgid="8280343822465962330">"နောက်ထပ်ဆက်တင်များ"</string>
     <string name="camera_toggle_label_qs" msgid="3880261453066157285">"ကင်မရာသုံးခွင့်"</string>
     <string name="microphone_toggle_label_qs" msgid="8132912469813396552">"မိုက်သုံးခွင့်"</string>
     <string name="permissions_removed_qs" msgid="8957319130625294572">"ခွင့်ပြုချက် ဖယ်ရှားလိုက်သည်"</string>
-    <string name="camera_usage_qs" msgid="4394233566086665994">"လတ်တလော ကင်မရာအသုံးပြုမှုကြည့်ရန်"</string>
-    <string name="microphone_usage_qs" msgid="8527666682168170417">"လတ်တလော မိုက်အသုံးပြုမှုကြည့်ရန်"</string>
+    <string name="camera_usage_qs" msgid="4394233566086665994">"မကြာသေးမီက ကင်မရာအသုံးပြုမှုကြည့်ရန်"</string>
+    <string name="microphone_usage_qs" msgid="8527666682168170417">"မကြာသေးမီက မိုက်အသုံးပြုမှုကြည့်ရန်"</string>
     <string name="remove_camera_qs" msgid="3649996161066883350">"ဤအက်ပ်အတွက်ခွင့်ပြုချက် ဖယ်ရှားရန်"</string>
     <string name="remove_microphone_qs" msgid="1276551965129953198">"ဤအက်ပ်အတွက်ခွင့်ပြုချက် ဖယ်ရှားရန်"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"ဝန်ဆောင်မှု စီမံခန့်ခွဲရန်"</string>
@@ -567,9 +567,9 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"နောက်ခံတွင် တည်နေရာသုံးခွင့်ရှိသောအက်ပ်ကို စစ်ဆေးပါ"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> ကို ပိတ်ထားချိန်၌ပင် ၎င်းက သင့်တည်နေရာကို အမြဲဝင်ကြည့်နိုင်သည်"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"နောက်ခံတွင် တည်နေရာသုံးခွင့်ရှိသောအက်ပ်ကို စစ်ဆေးပါ"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"ဤအက်ပ်ကို ပိတ်ထားချိန်၌ပင် သင့်တည်နေရာကို အမြဲဝင်ကြည့်နိုင်သည်။"</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"ဤအက်ပ်ကို ပိတ်ထားချိန်၌ပင် ၎င်းသည် သင့်တည်နေရာကို အမြဲဝင်ကြည့်နိုင်သည်။"</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"အသုံးပြုခွင့် ပြောင်းသွားသည်"</string>
-    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"လတ်တလော တည်နေရာအသုံးပြုမှုကို ကြည့်ရန်"</string>
+    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"မကြာသေးမီက တည်နေရာအသုံးပြုမှုကို ကြည့်ရန်"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"ကန့်သတ်ရန်ဆက်တင်များ"</string>
     <string name="camera_toggle_title" msgid="1251201397431837666">"ကင်မရာသုံးခွင့်"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"မိုက်ခရိုဖုန်းသုံးခွင့်"</string>

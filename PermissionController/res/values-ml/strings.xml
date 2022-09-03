@@ -283,7 +283,7 @@
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"ഈ ആപ്പിന് എപ്പോഴും നിങ്ങളുടെ ലൊക്കേഷൻ ആക്‌സസ് ചെയ്യാനാവും. മാറ്റാൻ ടാപ്പ് ചെയ്യുക."</string>
     <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"നിങ്ങളുടെ അറിയിപ്പുകളിലേക്ക് ആക്‌സസുള്ള ആപ്പ് അവലോകനം ചെയ്യൂ"</string>
     <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g> എന്ന ആപ്പിന് നിങ്ങളുടെ അറിയിപ്പുകൾക്ക് ഉള്ളിലുള്ള ഉള്ളടക്കം ആക്സസ് ചെയ്യാം, ഡിസ്മിസ് ചെയ്യാം, അതിൽ നടപടിയെടുക്കുകയും ചെയ്യാം"</string>
-    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"ഈ ആപ്പിന് നിങ്ങളുടെ അറിയിപ്പുകൾക്ക് ഉള്ളിലുള്ള ഉള്ളടക്കം ആക്സസ് ചെയ്യാം, ഡിസ്മിസ് ചെയ്യാം, അതിൽ നടപടിയെടുക്കുകയും ചെയ്യാം. ഉദ്ദേശിച്ചത് പോലെ പ്രവർത്തിക്കാൻ ചില ആപ്പുകൾക്ക് ഈ ആക്‌സസ് ആവശ്യമാണ്."</string>
+    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"ഈ ആപ്പിന് നിങ്ങളുടെ അറിയിപ്പുകൾ ഡിസ്മിസ് ചെയ്യാനും അതിൽ നടപടിയെടുക്കാനും ഉള്ളിലുള്ള ഉള്ളടക്കം ആക്സസ് ചെയ്യാനുമാകും. ഉദ്ദേശിച്ചത് പോലെ പ്രവർത്തിക്കാൻ ചില ആപ്പുകൾക്ക് ഈ ആക്‌സസ് ആവശ്യമാണ്."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"ആക്‌സസ് നീക്കം ചെയ്യുക"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"കൂടുതൽ ഓപ്‌ഷനുകൾ കാണുക"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"ആക്‌സസ് നീക്കം ചെയ്‌തു"</string>

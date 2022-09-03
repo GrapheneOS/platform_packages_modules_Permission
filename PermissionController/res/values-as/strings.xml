@@ -564,9 +564,9 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"এই এপ্‌টোৱে Androidৰ শেহতীয়া সংস্কৰণ সমৰ্থন নকৰে। যদি এই এপ্‌টোৱে সংগীত আৰু অডিঅ’ ফাইল এক্সেছ কৰিব নোৱাৰে, ইয়াক ফট’ আৰু ভিডিঅ’ও এক্সেছ কৰিবলৈ দিয়া নহ’ব।"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"এই এপ্‌টোৱে Androidৰ শেহতীয়া সংস্কৰণ সমৰ্থন নকৰে। যদি এই এপ্‌টোৱে ফট’ আৰু ভিডিঅ’ এক্সেছ কৰিব পাৰে, ইয়াক সংগীত আৰু অডিঅ’ ফাইলো এক্সেছ কৰিবলৈ দিয়া হ’ব।"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"এই এপ্‌টোৱে Androidৰ শেহতীয়া সংস্কৰণ সমৰ্থন নকৰে। যদি এই এপ্‌টোৱে সংগীত আৰু অডিঅ’ ফাইল এক্সেছ কৰিব নোৱাৰে, ইয়াক ফট’ আৰু ভিডিঅ’ও এক্সেছ কৰিবলৈ দিয়া নহ’ব।"</string>
-    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"অৱস্থানৰ নেপথ্যৰ এক্সেছ থকা এপ্‌সমূহ পৰ্যালোচনা কৰক"</string>
+    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"নেপথ্যত অৱস্থানৰ এক্সেছ থকা এপ্‌সমূহ পৰ্যালোচনা কৰক"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g>এ যিকোনো সময়তে আপোনাৰ অৱস্থান এক্সেছ কৰিব পাৰে, আনকি এপ্‌টো বন্ধ থাকিলেও"</string>
-    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"অৱস্থানৰ নেপথ্যৰ এক্সেছ থকা এপ্‌সমূহ পৰ্যালোচনা কৰক"</string>
+    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"নেপথ্যত অৱস্থানৰ এক্সেছ থকা এপ্‌সমূহ পৰ্যালোচনা কৰক"</string>
     <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"এই এপ্‌টোৱে যিকোনো সময়তে আপোনাৰ অৱস্থান এক্সেছ কৰিব পাৰে, আনকি ই বন্ধ থাকিলেও।"</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"এক্সেছ সলনি কৰা হৈছে"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"শেহতীয়া অৱস্থানৰ ব্যৱহাৰ চাওক"</string>

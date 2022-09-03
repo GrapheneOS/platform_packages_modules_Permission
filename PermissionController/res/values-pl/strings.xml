@@ -21,7 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"uprawnienia"</string>
     <string name="cancel" msgid="8943320028373963831">"Anuluj"</string>
     <string name="back" msgid="6249950659061523680">"Wstecz"</string>
-    <string name="available" msgid="6007778121920339498">"Dostępny"</string>
+    <string name="available" msgid="6007778121920339498">"Odblokowany"</string>
     <string name="blocked" msgid="9195547604866033708">"Zablokowany"</string>
     <string name="on" msgid="280241003226755921">"Włączono"</string>
     <string name="off" msgid="1438489226422866263">"Wyłącz"</string>
@@ -283,7 +283,7 @@
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Ta aplikacja może zawsze uzyskać dostęp do Twojej lokalizacji. Kliknij, by to zmienić."</string>
     <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"Zweryfikuj aplikacje z dostępem do powiadomień"</string>
     <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"Aplikacja <xliff:g id="APP_NAME">%s</xliff:g> może odrzucać treści w powiadomieniach, korzystać z nich oraz wykonywać dotyczące ich działania"</string>
-    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"Ta aplikacja może odrzucać treści w powiadomieniach, korzystać z nich oraz wykonywać dotyczące ich działania. Niektóre aplikacje wymagają takiego dostępu, aby działać prawidłowo."</string>
+    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"Ta aplikacja może odrzucać treści w powiadomieniach, korzystać z nich oraz wykonywać zawarte w nich działania. Niektóre aplikacje wymagają takiego dostępu, aby działać prawidłowo."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Usuń dostęp"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"Pokaż więcej opcji"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Dostęp usunięty"</string>
@@ -534,8 +534,8 @@
     <string name="permissions_removed_qs" msgid="8957319130625294572">"Usunięto uprawnienia"</string>
     <string name="camera_usage_qs" msgid="4394233566086665994">"Zobacz ostatnie przypadki użycia aparatu"</string>
     <string name="microphone_usage_qs" msgid="8527666682168170417">"Zobacz ostatnie przypadki użycia mikrofonu"</string>
-    <string name="remove_camera_qs" msgid="3649996161066883350">"Wycofaj uprawnienia tej aplikacji"</string>
-    <string name="remove_microphone_qs" msgid="1276551965129953198">"Wycofaj uprawnienia tej aplikacji"</string>
+    <string name="remove_camera_qs" msgid="3649996161066883350">"Wycofaj uprawnienie tej aplikacji"</string>
+    <string name="remove_microphone_qs" msgid="1276551965129953198">"Wycofaj uprawnienie tej aplikacji"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Zarządzaj usługą"</string>
     <string name="manage_permissions_qs" msgid="3780541819763475434">"Zarządzanie uprawnieniami"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Używane przez rozmowę telefoniczną"</string>
@@ -567,7 +567,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Zweryfikuj aplikację z dostępem do lokalizacji w tle"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"Aplikacja <xliff:g id="APP_NAME">%s</xliff:g> ma dostęp do Twojej lokalizacji, nawet kiedy jest zamknięta"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Zweryfikuj aplikację z dostępem do lokalizacji w tle"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Aplikacja ma dostęp do Twojej lokalizacji, nawet kiedy jest zamknięta"</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Aplikacja ma dostęp do Twojej lokalizacji nawet wtedy, kiedy jest zamknięta."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Uprawnienia dostępu zostały zmienione"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Zobacz ostatnie użycie lokalizacji"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Ustawienia prywatności"</string>

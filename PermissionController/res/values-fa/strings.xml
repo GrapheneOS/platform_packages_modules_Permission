@@ -283,7 +283,7 @@
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"این برنامه همیشه می‌تواند به مکانتان دسترسی داشته باشد. برای تغییر دادن، ضربه بزنید."</string>
     <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"مرور برنامهٔ دارای دسترسی به اعلان‌ها"</string>
     <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g> می‌تواند اعلان‌ها را رد کند، روی آن‌ها کنش انجام دهد، و به محتوای داخل آن‌ها دسترسی داشته باشد"</string>
-    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"این برنامه می‌تواند اعلان‌ها را رد کند، روی آن‌ها کنش انجام دهد، و به محتوای داخل آن‌ها دسترسی داشته باشد. برخی برنامه‌ها به این نوع دسترسی نیاز دارند تا طبق انتظار کار کنند."</string>
+    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"این برنامه می‌تواند اعلان‌ها را رد کند، روی آن‌ها کنش انجام دهد، و به محتوای داخل آن‌ها دسترسی داشته باشد. برخی برنامه‌ها به این نوع دسترسی نیاز دارند تا طبق برنامه کار کنند."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"برداشتن دسترسی"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"مشاهده گزینه‌های بیشتر"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"دسترسی برداشته شد"</string>

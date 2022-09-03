@@ -265,7 +265,7 @@
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{इस्तेमाल न होने वाला # ऐप्लिकेशन}one{इस्तेमाल न होने वाला # ऐप्लिकेशन}other{इस्तेमाल न होने वाले # ऐप्लिकेशन}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"ऐप्लिकेशन को दी गई अनुमतियां और डिवाइस पर कुछ समय तक रहने वाली फ़ाइलें हटा दी गई हैं. साथ ही, सूचनाएं रोक दी गई हैं. देखने के लिए टैप करें."</string>
     <string name="unused_apps_safety_center_card_title" msgid="5638409355530099149">"जिन ऐप्लिकेशन के लिए अनुमतियां हट गई हैं उनकी समीक्षा करें"</string>
-    <string name="unused_apps_safety_center_card_content" msgid="1088557243627427820">"आपने जिन ऐप्लिकेशन का काफ़ी समय से इस्तेमाल नहीं किया है उनके लिए अनुमतियों और डिवाइस पर कुछ समय के लिए सेव की गई फ़ाइलों को हटा दिया गया है. साथ ही, उनसे जुड़ी सूचनाएं पाने की सुविधा को रोक दिया गया है."</string>
+    <string name="unused_apps_safety_center_card_content" msgid="1088557243627427820">"आपने जिन ऐप्लिकेशन का काफ़ी समय से इस्तेमाल नहीं किया है उनके लिए अनुमतियों और डिवाइस पर कुछ समय के लिए सेव की गई फ़ाइलों को हटा दिया गया है. साथ ही, इनकी सूचनाएं भी रोक दी गई हैं."</string>
     <string name="unused_apps_safety_center_action_title" msgid="8865914432518993194">"इस्तेमाल न किए जाने वाले ऐप्लिकेशन की समीक्षा करें"</string>
     <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"हाल ही में दी गई अनुमतियां देखें"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"आपने गाड़ी चलाते समय, <xliff:g id="APP">%1$s</xliff:g> को <xliff:g id="PERMISSION">%2$s</xliff:g> का ऐक्सेस दिया था"</string>

@@ -23,8 +23,7 @@
     <string name="back" msgid="6249950659061523680">"Zurück"</string>
     <string name="available" msgid="6007778121920339498">"Verfügbar"</string>
     <string name="blocked" msgid="9195547604866033708">"Gesperrt"</string>
-    <!-- no translation found for on (280241003226755921) -->
-    <skip />
+    <string name="on" msgid="280241003226755921">"An"</string>
     <string name="off" msgid="1438489226422866263">"Aus"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Deinstallieren oder deaktivieren"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"App nicht gefunden"</string>
@@ -133,8 +132,7 @@
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Zeitachse, wann Apps in den letzten 7 Tagen die Berechtigungsgruppe „<xliff:g id="PERMGROUP">%1$s</xliff:g>“ verwendet haben"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Als diese App deine <xliff:g id="PERMGROUP">%1$s</xliff:g>-Berechtigung verwendet hat"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Weitere Informationen"</string>
-    <!-- no translation found for learn_more_content_description (8673699744544502539) -->
-    <skip />
+    <string name="learn_more_content_description" msgid="8673699744544502539">"Weitere Informationen zur Berechtigungsgruppe „<xliff:g id="PERMGROUP">%1$s</xliff:g>“"</string>
     <string name="manage_permission_summary" msgid="4117555482684114317">"App-Zugriff auf „<xliff:g id="PERMGROUP">%1$s</xliff:g>“ steuern"</string>
     <string name="auto_permission_usage_timeline_summary" msgid="2713135806453218703">"<xliff:g id="ACCESS_TIME">%1$s</xliff:g> • <xliff:g id="SUMMARY_TEXT">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>

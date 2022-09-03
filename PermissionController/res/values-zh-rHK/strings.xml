@@ -283,7 +283,7 @@
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"此應用程式可隨時存取您的位置資訊。輕按即可變更權限。"</string>
     <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"查看擁有通知存取權的應用程式"</string>
     <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g> 可關閉通知內容、對內容採取動作以及存取內容"</string>
-    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"此應用程式可關閉通知內容、對內容採取動作以及存取內容。部分應用程式需要此存取權才能發揮功用。"</string>
+    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"此應用程式可讓您關閉/存取通知中的內容或執行操作。有些應用程式需要此權限才能正常運作。"</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"移除存取權"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"查看更多選項"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"已移除存取權"</string>

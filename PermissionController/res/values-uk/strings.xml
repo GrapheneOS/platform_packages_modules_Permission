@@ -281,13 +281,13 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Дозволи відкликано, щоб захистити вашу конфіденційність"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"Додаток <xliff:g id="APP_NAME">%s</xliff:g> визначив ваше місцезнаходження у фоновому режимі"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Цей додаток завжди має доступ до геоданих пристрою. Торкніться, щоб змінити це."</string>
-    <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"Перегляньте додаток із доступом до ваших сповіщень"</string>
+    <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"Перевірте додаток із доступом до ваших сповіщень"</string>
     <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"Додаток <xliff:g id="APP_NAME">%s</xliff:g> може закривати ваші сповіщення, реагувати на них і отримувати доступ до їх вмісту"</string>
     <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"Цей додаток може закривати ваші сповіщення, реагувати на них і отримувати доступ до їх вмісту. Деяким додаткам такий доступ потрібен для належної роботи."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Заборонити доступ"</string>
-    <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"Перегляньте інші варіанти"</string>
+    <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"Переглянути інші варіанти"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Доступ заборонено"</string>
-    <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"Перегляньте додаток із повним доступом до пристрою"</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"Перевірте додаток із повним доступом до пристрою"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"Додаток <xliff:g id="APP_NAME">%s</xliff:g> може бачити ваш екран і виконувати дії на пристрої. Додаткам зі спеціальними можливостями потрібен доступ цього типу для належної роботи."</string>
     <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"Цей додаток може бачити ваш екран і виконувати дії на пристрої. Додаткам зі спеціальними можливостями потрібен доступ цього типу для належної роботи. Однак спершу перевірте, чи додаток надійний."</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Заборонити доступ"</string>
@@ -532,8 +532,8 @@
     <string name="camera_toggle_label_qs" msgid="3880261453066157285">"Доступ до камери"</string>
     <string name="microphone_toggle_label_qs" msgid="8132912469813396552">"Доступ до мікрофона"</string>
     <string name="permissions_removed_qs" msgid="8957319130625294572">"Дозвіл вилучено"</string>
-    <string name="camera_usage_qs" msgid="4394233566086665994">"Переглянути дані про останнє використання камери"</string>
-    <string name="microphone_usage_qs" msgid="8527666682168170417">"Переглянути останнє використання мікрофона"</string>
+    <string name="camera_usage_qs" msgid="4394233566086665994">"Відомості про нещодавній доступ до камери"</string>
+    <string name="microphone_usage_qs" msgid="8527666682168170417">"Відомості про нещодавній доступ до мікрофона"</string>
     <string name="remove_camera_qs" msgid="3649996161066883350">"Вилучити дозвіл для цього додатка"</string>
     <string name="remove_microphone_qs" msgid="1276551965129953198">"Вилучити дозвіл для цього додатка"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Керувати сервісом"</string>
@@ -564,12 +564,12 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Цей додаток не підтримує найновішу версію Android. Якщо він не має доступу до музики й аудіофайлів, то не зможе також отримувати доступ до фотографій і відео."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Цей додаток не підтримує найновішу версію Android. Якщо він має доступ до фотографій і відео, то зможе також отримувати доступ до музики й аудіофайлів."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Цей додаток не підтримує найновішу версію Android. Якщо він не має доступу до музики й аудіофайлів, то не зможе також отримувати доступ до фотографій і відео."</string>
-    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Перегляньте додаток із доступом до геоданих у фоновому режимі"</string>
+    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Перевірте додаток із доступом до геоданих у фоновому режимі"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"Додаток <xliff:g id="APP_NAME">%s</xliff:g> може отримувати доступ до ваших геоданих, навіть коли не відкритий"</string>
-    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Перегляньте додаток із доступом до геоданих у фоновому режимі"</string>
+    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Перевірте додаток із доступом до геоданих у фоновому режимі"</string>
     <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Цей додаток завжди має доступ до геоданих пристрою, навіть коли не відкритий."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Дозвіл на доступ змінено"</string>
-    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Переглянути останнє використання геоданих"</string>
+    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Відомості про нещодавній доступ до геоданих"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Налаштування конфіденційності"</string>
     <string name="camera_toggle_title" msgid="1251201397431837666">"Доступ до камери"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"Доступ до мікрофона"</string>

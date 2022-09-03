@@ -103,7 +103,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"Permitir sempre"</string>
-    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Só mentres se use a app"</string>
+    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Permitir só mentres se use a aplicación"</string>
     <string name="permission_access_never" msgid="4647014230217936900">"Non permitir"</string>
     <string name="loading" msgid="4789365003890741082">"Cargando…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"Todos os permisos"</string>
@@ -527,7 +527,7 @@
     <string name="sensor_permissions_qs" msgid="1022267900031317472">"Permisos"</string>
     <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"Seguranza e privacidade"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Comproba o estado"</string>
-    <string name="privacy_controls_qs" msgid="5780144882040591169">"Controis de privacidade"</string>
+    <string name="privacy_controls_qs" msgid="5780144882040591169">"Os teus controis de privacidade"</string>
     <string name="security_settings_button_label_qs" msgid="8280343822465962330">"Máis opcións de configuración"</string>
     <string name="camera_toggle_label_qs" msgid="3880261453066157285">"Acceso á cámara"</string>
     <string name="microphone_toggle_label_qs" msgid="8132912469813396552">"Acceso ao micrófono"</string>

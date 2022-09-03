@@ -282,8 +282,8 @@
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> има вашу локацију у позадини"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Ова апликација може увек да приступа локацији. Додирните да бисте то променили."</string>
     <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"Прегледајте апликацију са приступом обавештењима"</string>
-    <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g> може да одбацује садржај у вашим обавештењима, реагује и приступа том садржају"</string>
-    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"Ова апликација може да одбацује садржај у вашим обавештењима, реагује и приступа том садржају. Неким апликацијама је потребан овакав тип приступа да би функционисале као што је предвиђено."</string>
+    <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g> може да реагује, одбацује и приступа садржају у обавештењима"</string>
+    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"Ова апликација може да реагује, одбацује и приступа садржају у обавештењима. Неким апликацијама је потребан овакав тип приступа да би функционисале као што је предвиђено."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Уклони приступ"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"Прикажи још опција"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Приступ је уклоњен"</string>
