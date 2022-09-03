@@ -518,7 +518,7 @@
     <string name="active_app_usage_2_qs" msgid="6107866785243565283">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) က အသုံးပြုနေသည်"</string>
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) က မကြာသေးမီက အသုံးပြုထားသည်"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"လုံခြုံရေးနှင့် အချက်အလက်လုံခြုံမှု"</string>
-    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"အခြေအနေ စစ်ဆေးခြင်း"</string>
+    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"အခြေအနေ စစ်ဆေးပါ"</string>
     <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"အတည်ပြုရန်"</string>
     <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"နောက်သို့"</string>
     <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"အခြားဖိုင်များ ဖွင့်ရန်လည်း ခွင့်ပြုမည်"</string>
