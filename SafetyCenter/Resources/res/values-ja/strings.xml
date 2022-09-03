@@ -18,7 +18,8 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"セーフティ センターのリソース"</string>
-    <string name="lock_screen_sources_title" msgid="3317906280484627707">"デバイスロック"</string>
+    <string name="lock_screen_sources_title" msgid="3317906280484627707">"デバイスのロック"</string>
+    <string name="lock_screen_sources_summary" msgid="7220439741282516496"></string>
     <string name="lock_screen_title" msgid="4069104894527169877">"画面ロック"</string>
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"まだ情報がありません"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"プライバシー"</string>
@@ -27,7 +28,11 @@
     <string name="permission_usage_summary" msgid="5323079206029964468">"権限を最近使用したアプリが表示されます"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"権限マネージャー"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"アプリのデータアクセスを管理します"</string>
+    <string name="privacy_controls_title" msgid="5322875777945432395">"プライバシー管理"</string>
+    <string name="privacy_controls_summary" msgid="2402066941190435424">"マイク、カメラなどへのデバイス アクセスを管理します"</string>
     <string name="advanced_title" msgid="8745436380690561172">"詳細設定"</string>
     <string name="advanced_security_title" msgid="1126833338772188155">"セキュリティの詳細設定"</string>
     <string name="advanced_security_summary" msgid="6172253327022425123">"暗号化、認証情報など"</string>
+    <string name="advanced_privacy_title" msgid="1117725225706176643">"プライバシーの詳細設定"</string>
+    <string name="advanced_privacy_summary" msgid="2281203390575069543">"自動入力、アクティビティ管理など"</string>
 </resources>
