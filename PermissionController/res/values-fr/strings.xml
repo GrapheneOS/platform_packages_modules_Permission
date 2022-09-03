@@ -43,7 +43,7 @@
     <string name="permission_revoked_none" msgid="9213345075484381180">"aucune désactivée"</string>
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Autoriser"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Toujours autoriser"</string>
-    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Lorsque vous utilisez l\'application"</string>
+    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Lorsque vous utilisez l\'appli"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Passer à la position exacte"</string>
     <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Garder la position approximative"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Uniquement cette fois-ci"</string>
@@ -439,7 +439,7 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Cette appli peut vouloir accéder à votre position en permanence, même lorsque vous ne l\'utilisez pas. "<annotation id="link">"Autorisez-la à le faire dans les paramètres."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Changer l\'autorisation d\'accès à la position pour &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Cette appli souhaite accéder à votre position en permanence, même lorsque vous ne l\'utilisez pas. "<annotation id="link">"Autorisez-la à le faire dans les paramètres."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Autoriser <xliff:g id="APP_NAME">%1$s</xliff:g> à détecter les appareils à proximité, s\'y connecter et déterminer leur position relative ?"</string>
+    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à détecter les appareils à proximité, s\'y connecter et déterminer leur position relative ?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Autoriser <xliff:g id="APP_NAME">%1$s</xliff:g> à détecter les appareils à proximité, s\'y connecter et déterminer leur position relative ? "<annotation id="link">"Autoriser dans les paramètres"</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Donner à <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> l\'accès à la position exacte et non plus approximative ?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder à la position approximative de cet appareil ?"</string>

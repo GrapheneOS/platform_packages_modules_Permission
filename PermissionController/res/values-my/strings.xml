@@ -136,7 +136,7 @@
     <string name="history_preference_subtext_3" msgid="758761785983094351">"<xliff:g id="ATTRIBUTION_NAME">%1$s</xliff:g> • <xliff:g id="APP_NAME">%2$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%3$s</xliff:g>"</string>
     <string name="duration_used_days" msgid="8293010131040301793">"{count,plural, =1{1 ရက်}other{# ရက်}}"</string>
     <string name="duration_used_hours" msgid="1128716208752263576">"{count,plural, =1{1 နာရီ}other{# နာရီ}}"</string>
-    <string name="duration_used_minutes" msgid="5335824115042576567">"{count,plural, =1{1 မိနစ်}other{# မိနစ်}}"</string>
+    <string name="duration_used_minutes" msgid="5335824115042576567">"{count,plural, =1{၁ မိနစ်}other{# မိနစ်}}"</string>
     <string name="duration_used_seconds" msgid="6543746449171675028">"{count,plural, =1{၁ စက္ကန့်}other{# စက္ကန့်}}"</string>
     <string name="permission_usage_any_permission" msgid="6358023078298106997">"မည်သည့် ခွင့်ပြုချက်မဆို"</string>
     <string name="permission_usage_any_time" msgid="3802087027301631827">"အချိန်မရွေး"</string>
@@ -252,8 +252,8 @@
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"ဖိုင်အားလုံးသုံးနိုင်သည့် နောက်ထပ်အက်ပ်များ ကြည့်ရန်"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 ရက်}other{# ရက်}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 နာရီ}other{# နာရီ}}"</string>
-    <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 မိနစ်}other{# မိနစ်}}"</string>
-    <string name="seconds" msgid="5397771912131132690">"{count,plural, =1{1 စက္ကန့်}other{# စက္ကန့်}}"</string>
+    <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{၁ မိနစ်}other{# မိနစ်}}"</string>
+    <string name="seconds" msgid="5397771912131132690">"{count,plural, =1{၁ စက္ကန့်}other{# စက္ကန့်}}"</string>
     <string name="permission_reminders" msgid="6528257957664832636">"ခွင့်ပြုချက် သတိပေးမှုများ"</string>
     <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"အသုံးမပြုသောအက်ပ် 1 ခု"</string>
     <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"အသုံးမပြုသောအက်ပ် <xliff:g id="NUMBER_OF_APPS">%s</xliff:g> ခု"</string>
@@ -518,7 +518,7 @@
     <string name="active_app_usage_2_qs" msgid="6107866785243565283">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) က အသုံးပြုနေသည်"</string>
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) က မကြာသေးမီက အသုံးပြုထားသည်"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"လုံခြုံရေးနှင့် အချက်အလက်လုံခြုံမှု"</string>
-    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"အခြေအနေ စစ်ဆေးခြင်း"</string>
+    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"အခြေအနေ စစ်ဆေးပါ"</string>
     <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"အတည်ပြုရန်"</string>
     <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"နောက်သို့"</string>
     <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"အခြားဖိုင်များ ဖွင့်ရန်လည်း ခွင့်ပြုမည်"</string>
