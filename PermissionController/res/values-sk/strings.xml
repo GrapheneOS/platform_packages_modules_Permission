@@ -439,7 +439,7 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Táto aplikácia môže požadovať nepretržitý prístup k vašej polohe, aj keď ju nepoužívate. "<annotation id="link">"Povolíte ho v nastaveniach."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Chcete zmeniť prístup k polohe pre aplikáciu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Táto aplikácia požaduje nepretržitý prístup k vašej polohe, aj keď ju nepoužívate. "<annotation id="link">"Povolíte ho v nastaveniach."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Chcete aplikácii <xliff:g id="APP_NAME">%1$s</xliff:g> povoliť vyhľadávať zariadenia v okolí, pripájať sa k nim a určovať ich vzájomnú polohu?"</string>
+    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Chcete aplikácii <xliff:g id="APP_NAME">%1$s</xliff:g> povoliť vyhľadávať zariadenia v okolí, pripájať sa k nim a určovať ich relatívnu polohu?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Chcete aplikácii <xliff:g id="APP_NAME">%1$s</xliff:g> povoliť vyhľadávať zariadenia v okolí, pripájať sa k nim a určovať ich vzájomnú polohu? "<annotation id="link">"Urobte to v nastaveniach."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Chcete zmeniť prístup k polohe aplikácie <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> z približnej polohy na presnú?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k približnej polohe tohto zariadenia?"</string>
@@ -508,7 +508,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Odstrániť povolenie pre kameru"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Odstrániť povolenie pre mikrofón"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Spravovať službu"</string>
-    <string name="manage_permissions_qs" msgid="3780541819763475434">"Správy povolení"</string>
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"Spravovať povolenia"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Využíva telefonický hovor"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Nedávno využil telefonický hovor"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Využíva aplikácia <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>

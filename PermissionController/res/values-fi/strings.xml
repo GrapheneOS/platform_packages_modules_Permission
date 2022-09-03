@@ -196,7 +196,7 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Näytä kaikki luvat, jotka <xliff:g id="APP">%1$s</xliff:g> on saanut"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Näytä kaikki sovellukset, joilla on tämä lupa"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Näytä Assistantin mikrofonin käyttö"</string>
-    <string name="unused_apps_category_title" msgid="2988455616845243901">"Käyttämättömät sovellusasetukset"</string>
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"Käyttämättömien sovellusten asetukset"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Poista luvat, jos sovellusta ei käytetä"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Poista lupia ja vapauta tilaa"</string>
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"Keskeytä sovellustoim. jos ei käytössä"</string>
@@ -501,7 +501,7 @@
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Ohita"</string>
     <string name="security_settings" msgid="3808106921175271317">"Turvallisuusasetukset"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Anturiluvat"</string>
-    <string name="privacy_controls_qs" msgid="471793881466080745">"Tietosuojahallinta"</string>
+    <string name="privacy_controls_qs" msgid="471793881466080745">"Yksityisyysasetukset"</string>
     <string name="permissions_removed_qs" msgid="8957319130625294572">"Lupa poistettu"</string>
     <string name="camera_usage_qs" msgid="7943349178368641820">"Katso lisää kameran käytöstä"</string>
     <string name="microphone_usage_qs" msgid="2393193350541830472">"Katso lisää mikrofonin käytöstä"</string>
