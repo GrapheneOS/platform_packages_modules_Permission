@@ -283,7 +283,7 @@
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"此应用随时可以使用您的位置信息。点按即可更改。"</string>
     <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"查看具有通知访问权限的应用"</string>
     <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g>可以不显示您通知中的内容，也可以处理和访问它们"</string>
-    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"此应用可以不显示您通知中的内容，也可以处理和访问它们部分应用需要此类权限才能正常运行。"</string>
+    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"此应用可以不显示您通知中的内容，也可以处理和访问它们。有些应用需要此类权限才能正常运行。"</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"撤消访问权限"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"查看更多选项"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"已撤消访问权限"</string>
@@ -514,7 +514,7 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"针对应用和服务"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"当您拨打紧急电话号码时，系统可能仍会分享麦克风数据。"</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"更改"</string>
-    <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"安全性和隐私权"</string>
+    <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"安全和隐私"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"扫描设备"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"关闭"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"要忽略此提醒吗？"</string>
@@ -525,7 +525,7 @@
     <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"安全和隐私状态。<xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>。<xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"安全设置"</string>
     <string name="sensor_permissions_qs" msgid="1022267900031317472">"权限"</string>
-    <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"安全性和隐私权"</string>
+    <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"安全和隐私"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"查看状态"</string>
     <string name="privacy_controls_qs" msgid="5780144882040591169">"您的隐私控制项"</string>
     <string name="security_settings_button_label_qs" msgid="8280343822465962330">"更多设置"</string>

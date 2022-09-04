@@ -518,7 +518,7 @@
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"Escanear dispositivo"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Descartar"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"¿Quieres descartar esta alerta?"</string>
-    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"Revisa la configuración de privacidad y seguridad en cualquier momento para tomar medidas adicionales de protección"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"Revisa la configuración de seguridad y privacidad en cualquier momento para tomar medidas adicionales de protección"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Descartar"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Cancelar"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"Configuración"</string>
@@ -527,7 +527,7 @@
     <string name="sensor_permissions_qs" msgid="1022267900031317472">"Permisos"</string>
     <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"Seguridad y privacidad"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Comprobar estado"</string>
-    <string name="privacy_controls_qs" msgid="5780144882040591169">"Sus controles de privacidad"</string>
+    <string name="privacy_controls_qs" msgid="5780144882040591169">"Tus controles de privacidad"</string>
     <string name="security_settings_button_label_qs" msgid="8280343822465962330">"Más parámetros"</string>
     <string name="camera_toggle_label_qs" msgid="3880261453066157285">"Acceso a la cámara"</string>
     <string name="microphone_toggle_label_qs" msgid="8132912469813396552">"Acceso al micrófono"</string>
@@ -569,7 +569,7 @@
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Revisa la app con acceso a la ubicación en segundo plano"</string>
     <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Esta app puede acceder a tu ubicación en todo momento, incluso cuando está cerrada."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Se cambió el acceso"</string>
-    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Ver uso de la ubicación reciente"</string>
+    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Ver uso reciente de la ubicación"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Controles de privacidad"</string>
     <string name="camera_toggle_title" msgid="1251201397431837666">"Acceso a la cámara"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"Acceso al micrófono"</string>

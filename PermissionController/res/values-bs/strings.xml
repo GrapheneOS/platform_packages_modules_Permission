@@ -265,7 +265,7 @@
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# nekorištena aplikacija}one{# nekorištena aplikacija}few{# nekorištene aplikacije}other{# nekorištenih aplikacija}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Odobrenja i privremeni fajlovi su uklonjeni, a obavještenja zaustavljena. Dodirnite da pregledate."</string>
     <string name="unused_apps_safety_center_card_title" msgid="5638409355530099149">"Pregledajte aplikacije čija odobrenja su uklonjena"</string>
-    <string name="unused_apps_safety_center_card_content" msgid="1088557243627427820">"Za aplikacije koje duže vrijeme niste koristili, odobrenja i privremeni fajlovi su uklonjeni, a obavještenja su zaustavljena."</string>
+    <string name="unused_apps_safety_center_card_content" msgid="1088557243627427820">"Za aplikacije koje duže vrijeme niste koristili odobrenja i privremeni fajlovi su uklonjeni, a obavještenja su zaustavljena."</string>
     <string name="unused_apps_safety_center_action_title" msgid="8865914432518993194">"Pregledajte aplikacije"</string>
     <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Provjerite nedavna odobrenja"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Prilikom vožnje dali ste aplikaciji <xliff:g id="APP">%1$s</xliff:g> pristup odobrenju <xliff:g id="PERMISSION">%2$s</xliff:g>"</string>

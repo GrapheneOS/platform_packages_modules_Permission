@@ -281,7 +281,7 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"ನಿಮ್ಮ ಗೌಪ್ಯತೆಯನ್ನು ರಕ್ಷಿಸಲು ಅನುಮತಿಗಳನ್ನು ತೆಗೆದುಹಾಕಲಾಗಿದೆ"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> ನಿಮ್ಮ ಸ್ಥಳವನ್ನು ಹಿನ್ನಲೆಯಲ್ಲಿ ಪಡೆದುಕೊಂಡಿದೆ"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"ಈ ಆ್ಯಪ್‌ ಯಾವಾಗಲೂ ನಿಮ್ಮ ಸ್ಥಳವನ್ನು ಪ್ರವೇಶಿಸಬಹುದು. ಬದಲಾಯಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ."</string>
-    <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"ನಿಮ್ಮ ಅಧಿಸೂಚನೆಗಳಿಗೆ ಪ್ರವೇಶ ನೀಡುವ ಮೂಲಕ ಆ್ಯಪ್ ಅನ್ನು ಪರಿಶೀಲಿಸಿ"</string>
+    <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"ನಿಮ್ಮ ಅಧಿಸೂಚನೆಗಳಿಗೆ ಪ್ರವೇಶ ಹೊಂದಿರುವ ಆ್ಯಪ್ ಅನ್ನು ಪರಿಶೀಲಿಸಿ"</string>
     <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g> ನಿಮ್ಮ ಅಧಿಸೂಚನೆಗಳನ್ನು ವಜಾಗೊಳಿಸಬಹುದು, ಕ್ರಮ ಕೈಗೊಳ್ಳಬಹುದು ಹಾಗೂ ಅದರಲ್ಲಿರುವ ವಿಷಯವನ್ನು ಆ್ಯಕ್ಸೆಸ್ ಮಾಡಬಹುದು"</string>
     <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"ಈ ಆ್ಯಪ್ ನಿಮ್ಮ ಅಧಿಸೂಚನೆಗಳನ್ನು ವಜಾಗೊಳಿಸಬಹುದು, ಕ್ರಮ ಕೈಗೊಳ್ಳಬಹುದು ಹಾಗೂ ಅದರಲ್ಲಿರುವ ವಿಷಯವನ್ನು ಆ್ಯಕ್ಸೆಸ್ ಮಾಡಬಹುದು. ಕೆಲವು ಆ್ಯಪ್‌ಗಳು ಉದ್ದೇಶಿಸಿದಂತೆ ಕಾರ್ಯನಿರ್ವಹಿಸಲು ಅವುಗಳಿಗೆ ಈ ಆ್ಯಕ್ಸೆಸ್‌ನ ಅಗತ್ಯವಿದೆ."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"ಪ್ರವೇಶವನ್ನು ತೆಗೆದುಹಾಕಿ"</string>

@@ -527,7 +527,7 @@
     <string name="sensor_permissions_qs" msgid="1022267900031317472">"પરવાનગીઓ"</string>
     <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"સુરક્ષા અને પ્રાઇવસી"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"સ્ટેટસ ચેક કરો"</string>
-    <string name="privacy_controls_qs" msgid="5780144882040591169">"પ્રાઇવસીને લગતા નિયંત્રણો"</string>
+    <string name="privacy_controls_qs" msgid="5780144882040591169">"તમારી પ્રાઇવસીને લગતા નિયંત્રણો"</string>
     <string name="security_settings_button_label_qs" msgid="8280343822465962330">"વધુ સેટિંગ"</string>
     <string name="camera_toggle_label_qs" msgid="3880261453066157285">"કૅમેરાનો ઍક્સેસ"</string>
     <string name="microphone_toggle_label_qs" msgid="8132912469813396552">"માઇકનો ઍક્સેસ"</string>

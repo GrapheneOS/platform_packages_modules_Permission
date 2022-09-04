@@ -283,7 +283,7 @@
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"ਇਹ ਐਪ ਹਮੇਸ਼ਾਂ ਤੁਹਾਡੀ ਟਿਕਾਣਾ ਜਾਣਕਾਰੀ \'ਤੇ ਪਹੁੰਚ ਕਰ ਸਕਦੀ ਹੈ। ਬਦਲਣ ਲਈ ਟੈਪ ਕਰੋ।"</string>
     <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"ਤੁਹਾਡੀਆਂ ਸੂਚਨਾਵਾਂ ਤੱਕ ਪਹੁੰਚ ਵਾਲੀ ਐਪ ਦੀ ਸਮੀਖਿਆ ਕਰੋ"</string>
     <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g> ਐਪ ਤੁਹਾਡੀਆਂ ਸੂਚਨਾਵਾਂ ਦੇ ਅੰਦਰਲੀ ਸਮੱਗਰੀ ਨੂੰ ਖਾਰਜ ਕਰ ਸਕਦੀ ਹੈ, ਇਸ \'ਤੇ ਕਾਰਵਾਈ ਕਰ ਸਕਦੀ ਹੈ ਅਤੇ ਇਸ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀ ਹੈ"</string>
-    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"ਇਹ ਐਪ ਤੁਹਾਡੀਆਂ ਸੂਚਨਾਵਾਂ ਦੇ ਅੰਦਰਲੀ ਸਮੱਗਰੀ ਨੂੰ ਖਾਰਜ ਕਰ ਸਕਦੀ ਹੈ, ਇਸ \'ਤੇ ਕਾਰਵਾਈ ਕਰ ਸਕਦੀ ਹੈ ਅਤੇ ਇਸ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀ ਹੈ। ਕੁਝ ਐਪਾਂ ਨੂੰ ਨਿਯਤ ਤਰੀਕੇ ਨਾਲ ਕੰਮ ਕਰਨ ਲਈ ਇਸ ਪਹੁੰਚ ਦੀ ਲੋੜ ਹੈ।"</string>
+    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"ਇਹ ਐਪ ਤੁਹਾਡੀਆਂ ਸੂਚਨਾਵਾਂ ਦੀ ਅੰਦਰੂਨੀ ਸਮੱਗਰੀ ਨੂੰ ਖਾਰਜ ਕਰ ਸਕਦੀ ਹੈ, ਉਸ \'ਤੇ ਕਾਰਵਾਈ ਕਰ ਸਕਦੀ ਹੈ ਅਤੇ ਉਸ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀ ਹੈ। ਕੁਝ ਐਪਾਂ ਨੂੰ ਨਿਯਤ ਤਰੀਕੇ ਨਾਲ ਕੰਮ ਕਰਨ ਲਈ ਇਸ ਪਹੁੰਚ ਦੀ ਲੋੜ ਹੈ।"</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"ਪਹੁੰਚ ਹਟਾਓ"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"ਹੋਰ ਵਿਕਲਪ ਦੇਖੋ"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"ਪਹੁੰਚ ਹਟਾਈ ਗਈ"</string>

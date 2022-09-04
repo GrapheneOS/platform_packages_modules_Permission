@@ -281,9 +281,9 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Les autorisations ont été supprimées pour protéger votre vie privée"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> a accès à votre position en arrière-plan"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Cette application peut accéder en permanence à votre position. Appuyez dessus pour modifier cette autorisation."</string>
-    <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"Examiner l\'appli avec accès à vos notifications"</string>
+    <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"Examiner l\'appli qui a accès à vos notifications"</string>
     <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g> peut ignorer le contenu de vos notifications, y accéder et agir dessus"</string>
-    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"Cette appli peut ignorer le contenu de vos notifications, y accéder et agir dessus. Certaines applis ont besoin de cet accès pour fonctionner correctement."</string>
+    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"Cette appli peut ignorer vos notifications, accéder à leurs contenus et agir en conséquence. Certaines applis ont besoin de cet accès pour fonctionner correctement."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Supprimer l\'accès"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"Afficher plus d\'options"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Accès supprimé"</string>
@@ -519,7 +519,7 @@
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Ignorer"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Ignorer cette alerte ?"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"Vérifiez vos paramètres de confidentialité et de sécurité à tout moment pour renforcer la protection"</string>
-    <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Fermer"</string>
+    <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Ignorer"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Annuler"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"Paramètres"</string>
     <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"État de la sécurité et de la confidentialité. <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>. <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
@@ -532,8 +532,8 @@
     <string name="camera_toggle_label_qs" msgid="3880261453066157285">"Accès à l\'appareil photo"</string>
     <string name="microphone_toggle_label_qs" msgid="8132912469813396552">"Accès au micro"</string>
     <string name="permissions_removed_qs" msgid="8957319130625294572">"Autorisation supprimée"</string>
-    <string name="camera_usage_qs" msgid="4394233566086665994">"Consulter l\'utilisation récente de la caméra"</string>
-    <string name="microphone_usage_qs" msgid="8527666682168170417">"Consulter l\'utilisation récente du micro"</string>
+    <string name="camera_usage_qs" msgid="4394233566086665994">"Voir l\'utilisation récente de l\'appareil photo"</string>
+    <string name="microphone_usage_qs" msgid="8527666682168170417">"Voir l\'utilisation récente du micro"</string>
     <string name="remove_camera_qs" msgid="3649996161066883350">"Supprimer l\'autorisation de cette appli"</string>
     <string name="remove_microphone_qs" msgid="1276551965129953198">"Supprimer l\'autorisation de cette appli"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Gérer le service"</string>
@@ -564,9 +564,9 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Cette appli n\'est pas compatible avec la dernière version d\'Android. Si cette appli ne peut pas accéder à la musique ni aux fichiers audio, elle ne sera pas non plus autorisée à accéder aux photos ni aux vidéos."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Cette appli n\'est pas compatible avec la dernière version d\'Android. Si cette appli peut accéder aux photos et aux vidéos, elle sera également autorisée à accéder à la musique et aux fichiers audio."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Cette appli n\'est pas compatible avec la dernière version d\'Android. Si cette appli ne peut pas accéder à la musique ni aux fichiers audio, elle ne sera pas non plus autorisée à accéder aux photos ni aux vidéos."</string>
-    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Examiner l\'appli avec accès à la localisation en arrière-plan"</string>
+    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Examiner l\'appli qui a accès à la localisation en arrière-plan"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> peut toujours accéder à votre localisation, même lorsque l\'appli est fermée"</string>
-    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Examiner l\'appli avec accès à la localisation en arrière-plan"</string>
+    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Examiner l\'appli qui a accès à la localisation en arrière-plan"</string>
     <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Même fermée, cette appli peut toujours accéder à votre localisation."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Accès modifié"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Voir l\'utilisation récente de la localisation"</string>

@@ -264,9 +264,9 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Alcune app non sono state usate per alcuni mesi. Tocca per controllare."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# app inutilizzata}other{# app inutilizzate}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Le autorizzazioni e i file temporanei sono stati rimossi; le notifiche sono state interrotte. Tocca per controllare."</string>
-    <string name="unused_apps_safety_center_card_title" msgid="5638409355530099149">"Controlla app di cui sono state rimosse le autorizzazioni"</string>
+    <string name="unused_apps_safety_center_card_title" msgid="5638409355530099149">"Controlla le app di cui sono state rimosse le autorizzazioni"</string>
     <string name="unused_apps_safety_center_card_content" msgid="1088557243627427820">"Per le app che non usi da un po\' di tempo sono stati rimossi i file temporanei e le autorizzazioni e sono state interrotte le notifiche."</string>
-    <string name="unused_apps_safety_center_action_title" msgid="8865914432518993194">"Controlla app"</string>
+    <string name="unused_apps_safety_center_action_title" msgid="8865914432518993194">"Controlla le app"</string>
     <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Controlla le autorizzazioni recenti"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Durante la guida, hai consentito all\'app <xliff:g id="APP">%1$s</xliff:g> di accedere a <xliff:g id="PERMISSION">%2$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Durante la guida, hai consentito all\'app <xliff:g id="APP">%1$s</xliff:g> di accedere a <xliff:g id="PERMISSION_1">%2$s</xliff:g> e <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>

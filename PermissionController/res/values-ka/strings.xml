@@ -281,7 +281,7 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"ნებართვები ამოიშალა თქვენი კონფიდენციალურობის დასაცავად"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g>-მა მიიღო თქვენი მდებარეობა ფონურ რეჟიმში"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"ამ აპს ყოველთვის შეუძლია თქვენს მდებარეობაზე წვდომა. შეეხეთ შესაცვლელად."</string>
-    <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"გადახედეთ თქვენს შეტყობინებებზე წვდომის მქონე აპებს"</string>
+    <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"გადახედეთ თქვენს შეტყობინებებზე წვდომის მქონე აპს"</string>
     <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g> აპს შეუძლია კონტენტს-შიდა შეტყობინებების დახურვა, მათზე მოქმედება და წვდომა"</string>
     <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"ამ აპს შეუძლია კონტენტს-შიდა შეტყობინებების დახურვა, მათზე მოქმედება და წვდომა ზოგიერთ აპს სჭირდება ამ ტიპის წვდომა გამართულად მუშაობისთვის."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"წვდომის გაუქმება"</string>
