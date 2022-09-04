@@ -19,6 +19,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"ਸੁਰੱਖਿਆ ਕੇਂਦਰ ਸੰਬੰਧੀ ਸਰੋਤ"</string>
     <string name="lock_screen_sources_title" msgid="3317906280484627707">"ਡੀਵਾਈਸ ਲਾਕ"</string>
+    <string name="lock_screen_sources_summary" msgid="7220439741282516496"></string>
     <string name="lock_screen_title" msgid="4069104894527169877">"ਸਕ੍ਰੀਨ ਲਾਕ"</string>
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"ਅਜੇ ਕੋਈ ਜਾਣਕਾਰੀ ਨਹੀਂ ਹੈ"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"ਪਰਦੇਦਾਰੀ"</string>
@@ -27,7 +28,11 @@
     <string name="permission_usage_summary" msgid="5323079206029964468">"ਦਿਖਾਓ ਕਿ ਕਿਹੜੀਆਂ ਐਪਾਂ ਨੇ ਹਾਲ ਹੀ ਵਿੱਚ ਇਜਾਜ਼ਤਾਂ ਵਰਤੀਆਂ ਹਨ"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"ਇਜਾਜ਼ਤ ਪ੍ਰਬੰਧਕ"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"ਐਪ ਦੀ ਤੁਹਾਡੇ ਡਾਟੇ ਤੱਕ ਪਹੁੰਚ ਕੰਟਰੋਲ ਕਰੋ"</string>
+    <string name="privacy_controls_title" msgid="5322875777945432395">"ਪਰਦੇਦਾਰੀ ਕੰਟਰੋਲ"</string>
+    <string name="privacy_controls_summary" msgid="2402066941190435424">"ਮਾਈਕ੍ਰੋਫ਼ੋਨ, ਕੈਮਰੇ ਤੱਕ ਡੀਵਾਈਸ ਪਹੁੰਚ ਨੂੰ ਕੰਟਰੋਲ ਕਰੋ ਅਤੇ ਹੋਰ ਬਹੁਤ ਕੁਝ"</string>
     <string name="advanced_title" msgid="8745436380690561172">"ਹੋਰ ਸੈਟਿੰਗਾਂ"</string>
     <string name="advanced_security_title" msgid="1126833338772188155">"ਹੋਰ ਸੁਰੱਖਿਆ ਸੈਟਿੰਗਾਂ"</string>
     <string name="advanced_security_summary" msgid="6172253327022425123">"ਇਨਕ੍ਰਿਪਸ਼ਨ, ਕ੍ਰੀਡੈਂਸ਼ੀਅਲ ਅਤੇ ਹੋਰ ਬਹੁਤ ਕੁਝ"</string>
+    <string name="advanced_privacy_title" msgid="1117725225706176643">"ਹੋਰ ਪਰਦੇਦਾਰੀ ਸੈਟਿੰਗਾਂ"</string>
+    <string name="advanced_privacy_summary" msgid="2281203390575069543">"ਆਟੋਫਿਲ, ਸਰਗਰਮੀ ਕੰਟਰੋਲ ਅਤੇ ਹੋਰ ਬਹੁਤ ਕੁਝ"</string>
 </resources>
