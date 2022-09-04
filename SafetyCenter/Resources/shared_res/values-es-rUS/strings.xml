@@ -23,7 +23,7 @@
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"No se encontraron problemas"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Revisar la configuración"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Verifica la lista de configuración"</string>
-    <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"Dispositivo podría estar en riesgo"</string>
+    <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"El dispositivo podría estar en riesgo"</string>
     <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"El dispositivo está en riesgo"</string>
     <string name="overall_severity_level_safety_recommendation_title" msgid="6436208984463981167">"Es posible que estés en peligro"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="1039142045555227172">"Estás en peligro"</string>
@@ -31,7 +31,7 @@
     <string name="redirecting_error" msgid="8146983632878233202">"No se pudo abrir la página"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"No se pudo resolver la alerta"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"No se pudo actualizar la configuración"</string>
-    <string name="refresh_error" msgid="255412333381376201">"Error al revisar {count,plural, =1{parámetro}other{parámetros}}"</string>
+    <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{No se pudo revisar el parámetro de configuración}other{No se pudieron revisar los parámetros de configuración}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"El perfil de trabajo está en pausa"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"Aún no hay información"</string>
 </resources>

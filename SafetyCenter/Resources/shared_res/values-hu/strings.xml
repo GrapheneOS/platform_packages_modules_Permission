@@ -31,7 +31,8 @@
     <string name="redirecting_error" msgid="8146983632878233202">"Nem sikerült megnyitni az oldalt"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Nem sikerült feloldani a figyelmeztetést"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"Nem sikerült a beállítások frissítése"</string>
-    <string name="refresh_error" msgid="255412333381376201">"Nem ellenőrizhető {count,plural, =1{beállítás}other{beállítás}}"</string>
+    <!-- no translation found for refresh_error (656062128422446177) -->
+    <skip />
     <string name="work_profile_paused" msgid="7037400224040869079">"A munkaprofil használata szünetel"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"Még nincsenek adatok"</string>
 </resources>

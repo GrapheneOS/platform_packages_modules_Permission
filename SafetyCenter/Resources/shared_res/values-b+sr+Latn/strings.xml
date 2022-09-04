@@ -23,7 +23,7 @@
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"Nije pronađen nijedan problem"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Pregledajte podešavanja"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Proverite listu podešavanja"</string>
-    <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"Uređaj može da bude ugrožen"</string>
+    <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"Uređaj je možda ugrožen"</string>
     <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"Uređaj je ugrožen"</string>
     <string name="overall_severity_level_safety_recommendation_title" msgid="6436208984463981167">"Možda ste ugroženi"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="1039142045555227172">"Ugroženi ste"</string>
@@ -31,7 +31,8 @@
     <string name="redirecting_error" msgid="8146983632878233202">"Otvaranje stranice nije uspelo"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Rešavanje obaveštenja nije uspelo"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"Osvežavanje podešavanja nije uspelo"</string>
-    <string name="refresh_error" msgid="255412333381376201">"Neuspešna provera {count,plural, =1{podeš.}one{podeš.}few{podeš.}other{podeš.}}"</string>
+    <!-- no translation found for refresh_error (656062128422446177) -->
+    <skip />
     <string name="work_profile_paused" msgid="7037400224040869079">"Poslovni profil je pauziran"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"Još nema informacija"</string>
 </resources>
