@@ -31,7 +31,8 @@
     <string name="redirecting_error" msgid="8146983632878233202">"പേജ് തുറക്കാനായില്ല"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"മുന്നറിയിപ്പ് പരിഹരിക്കാനായില്ല"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"ക്രമീകരണം റീഫ്രഷ് ചെയ്യാനായില്ല"</string>
-    <string name="refresh_error" msgid="255412333381376201">"{count,plural, =1{ക്രമീകരണം}other{ക്രമീകരണം}} പരിശോധിക്കാനായില്ല"</string>
+    <!-- no translation found for refresh_error (656062128422446177) -->
+    <skip />
     <string name="work_profile_paused" msgid="7037400224040869079">"ഔദ്യോഗിക പ്രൊഫൈൽ തൽക്കാലം നിർത്തിയിരിക്കുന്നു"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"ഇതുവരെ വിവരങ്ങളൊന്നുമില്ല"</string>
 </resources>

@@ -31,7 +31,8 @@
     <string name="redirecting_error" msgid="8146983632878233202">"មិនអាច​បើកទំព័រ​បានទេ"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"មិនអាច​ដោះស្រាយការជូនដំណឹងនេះ​បានទេ"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"មិនអាចផ្ទុកការកំណត់ឡើងវិញបានទេ"</string>
-    <string name="refresh_error" msgid="255412333381376201">"មិនអាចពិនិត្យ{count,plural, =1{ការកំណត់}other{ការកំណត់}}បានទេ"</string>
+    <!-- no translation found for refresh_error (656062128422446177) -->
+    <skip />
     <string name="work_profile_paused" msgid="7037400224040869079">"កម្រងព័ត៌មានការងារត្រូវបាន​ផ្អាក"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"មិន​ទាន់​មាន​ព័ត៌មាន​នៅ​ឡើយ​ទេ"</string>
 </resources>
