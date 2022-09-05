@@ -32,7 +32,7 @@
     <string name="safety_center_issue_card_content_description" msgid="1281390769721765363">"هشدار. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_issue_card_content_description_with_subtitle" msgid="5504040663935313539">"هشدار. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUBTITLE">%2$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%3$s</xliff:g>"</string>
     <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"کنش کامل شد"</string>
-    <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"بررسی تنظیماتی که می‌توانند امنیت بیشتری به دستگاهتان اضافه کنند"</string>
+    <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"بررسی کردن تنظیماتی که می‌تواند امنیت بیشتری به دستگاهتان اضافه کند"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"تنظیمات فوری امنیت و حریم خصوصی"</string>
     <string name="safety_center_qs_close_button" msgid="1352313308176244599">"بستن"</string>
     <string name="safety_center_qs_expand_action" msgid="2193190557696484169">"باز کردن و نمایش گزینه‌ها"</string>
