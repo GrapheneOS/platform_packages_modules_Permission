@@ -33,7 +33,7 @@
     <string name="permission_manager_title" msgid="5277347862821255015">"Lupien ylläpito"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"Päätä sovelluksen pääsystä dataasi"</string>
     <string name="permission_manager_search_terms" msgid="2895147613099694722">"Luvat, lupien hallinta"</string>
-    <string name="privacy_controls_title" msgid="5322875777945432395">"Tietosuojahallinta"</string>
+    <string name="privacy_controls_title" msgid="5322875777945432395">"Yksityisyysasetukset"</string>
     <string name="privacy_controls_summary" msgid="2402066941190435424">"Hallinnoi laitteiden pääsyä mikrofoniin, kameraan ja muihin"</string>
     <string name="privacy_controls_search_terms" msgid="3774472175934304165">"Yksityisyys, yksityisyysasetukset"</string>
     <string name="advanced_title" msgid="8745436380690561172">"Lisää asetuksia"</string>
