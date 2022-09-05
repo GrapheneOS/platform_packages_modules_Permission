@@ -21,7 +21,7 @@
     <string name="loading_summary" msgid="3740846439782713910">"Provjera postavki uređaja…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Izgleda dobro"</string>
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"Problemi nisu pronađeni"</string>
-    <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Pregledaj postavke"</string>
+    <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Pregledajte postavke"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Provjera popisa postavki"</string>
     <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"Uređaj je možda ugrožen"</string>
     <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"Uređaj je ugrožen"</string>
@@ -31,7 +31,8 @@
     <string name="redirecting_error" msgid="8146983632878233202">"Otvaranje stranice nije uspjelo"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Razrješavanje upozorenja nije uspjelo"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"Nije bilo moglo osvježiti postavke"</string>
-    <string name="refresh_error" msgid="255412333381376201">"Nije moguće provjeriti {count,plural, =1{postavku}one{postavku}few{postavke}other{postavki}}"</string>
+    <!-- no translation found for refresh_error (656062128422446177) -->
+    <skip />
     <string name="work_profile_paused" msgid="7037400224040869079">"Poslovni profil je pauziran"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"Još nema podataka"</string>
 </resources>

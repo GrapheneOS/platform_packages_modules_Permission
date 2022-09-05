@@ -31,7 +31,8 @@
     <string name="redirecting_error" msgid="8146983632878233202">"Не ўдалося адкрыць старонку"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Не ўдалося вырашыць праблему"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"Не ўдалося абнавіць налады"</string>
-    <string name="refresh_error" msgid="255412333381376201">"Збой праверкі {count,plural, =1{налады}one{налады}few{налад}many{налад}other{налады}}"</string>
+    <!-- no translation found for refresh_error (656062128422446177) -->
+    <skip />
     <string name="work_profile_paused" msgid="7037400224040869079">"Працоўны профіль прыпынены"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"Пакуль няма інфармацыі"</string>
 </resources>
