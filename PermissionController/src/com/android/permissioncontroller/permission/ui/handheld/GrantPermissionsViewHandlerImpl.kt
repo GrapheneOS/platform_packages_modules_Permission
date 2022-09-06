@@ -248,9 +248,17 @@ class GrantPermissionsViewHandlerImpl(
     }
 
     private fun getLottieDrawable(@RawRes rawResId: Int): LottieDrawable {
-        val drawable = LottieDrawable()
-        drawable.composition = LottieCompositionFactory.fromRawResSync(mActivity, rawResId).value
-        drawable.scale = LOCATION_ACCURACY_IMAGE_DIAMETER / drawable.composition.bounds.width()
+        val composition = LottieCompositionFactory.fromRawResSync(mActivity, rawResId).value!!
+        val scale = LOCATION_ACCURACY_IMAGE_DIAMETER / composition.bounds.width()
+        val drawable = object : LottieDrawable() {
+            override fun getIntrinsicHeight(): Int {
+                return (super.getIntrinsicHeight() * scale).toInt()
+            }
+            override fun getIntrinsicWidth(): Int {
+                return (super.getIntrinsicWidth() * scale).toInt()
+            }
+        }
+        drawable.composition = composition
         return drawable
     }
 
