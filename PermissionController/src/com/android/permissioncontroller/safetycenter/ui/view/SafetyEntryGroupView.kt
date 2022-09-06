@@ -37,7 +37,6 @@ import androidx.transition.AutoTransition
 import androidx.transition.TransitionManager
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.safetycenter.ui.PositionInCardList
-import com.android.permissioncontroller.safetycenter.ui.SafetyCenterTouchTarget
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
@@ -144,15 +143,8 @@ internal class SafetyEntryGroupView @JvmOverloads constructor(
                     R.drawable.ic_safety_group_expand
             )
         }
-        isExpanded = shouldBeExpanded
 
-        // Using the ancestor i.e. parent's parent as the touch delegate since the parent is not
-        // large enough to handle the expanded touch target size.
-        val ancestor = chevronIconView?.parent?.parent as? View
-        chevronIconView?.let {
-            SafetyCenterTouchTarget.configureSize(
-                it, R.dimen.safety_center_icon_button_touch_target_size, ancestor)
-        }
+        isExpanded = shouldBeExpanded
 
         val newPaddingTop = context.resources.getDimensionPixelSize(
                 when {
