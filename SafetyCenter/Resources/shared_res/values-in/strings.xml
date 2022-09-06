@@ -18,7 +18,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="scanning_title" msgid="5424849039854311398">"Memindai"</string>
-    <string name="loading_summary" msgid="3740846439782713910">"Memeriksa setelan perangkat …"</string>
+    <string name="loading_summary" msgid="3740846439782713910">"Memeriksa setelan perangkat…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Tidak ada masalah"</string>
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"Tidak ditemukan masalah"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Tinjau setelan"</string>
@@ -31,7 +31,8 @@
     <string name="redirecting_error" msgid="8146983632878233202">"Tidak dapat membuka halaman"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Tidak dapat menyelesaikan peringatan"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"Tidak dapat merefresh setelan"</string>
-    <string name="refresh_error" msgid="255412333381376201">"Tidak dapat memeriksa {count,plural, =1{setelan}other{setelan}}"</string>
+    <!-- no translation found for refresh_error (656062128422446177) -->
+    <skip />
     <string name="work_profile_paused" msgid="7037400224040869079">"Profil kerja dijeda"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"Belum ada info"</string>
 </resources>

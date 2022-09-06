@@ -31,7 +31,7 @@
     <string name="redirecting_error" msgid="8146983632878233202">"Pagina nu s-a putut deschide"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Nu s-a putut rezolva alerta"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"Nu s-au putut actualiza setările"</string>
-    <string name="refresh_error" msgid="255412333381376201">"Nu se poate face verificarea {count,plural, =1{setării}few{setărilor}other{setărilor}}"</string>
+    <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{Nu s-a putut verifica setarea}few{Nu s-au putut verifica setările}other{Nu s-au putut verifica setările}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"Profilul de serviciu este întrerupt"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"Nu există informații încă"</string>
 </resources>

@@ -31,7 +31,7 @@
     <string name="redirecting_error" msgid="8146983632878233202">"Det gick inte att öppna sidan"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Det gick inte att åtgärda varningen"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"Det gick inte att uppdatera inställningarna"</string>
-    <string name="refresh_error" msgid="255412333381376201">"Det gick inte att kontrollera {count,plural, =1{inställning}other{inställningar}}"</string>
+    <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{Det gick inte att kontrollera inställningen}other{Det gick inte att kontrollera inställningarna}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"Jobbprofilen är pausad"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"Ingen information än"</string>
 </resources>
