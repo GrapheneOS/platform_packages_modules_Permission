@@ -39,7 +39,6 @@
         </LinearLayout>
 
         <ImageView android:id="@+id/chevron_icon"
-            android:clickable="true"
             style="@style/SafetyCenterExpandedGroupIcon" />
 
     </LinearLayout>
