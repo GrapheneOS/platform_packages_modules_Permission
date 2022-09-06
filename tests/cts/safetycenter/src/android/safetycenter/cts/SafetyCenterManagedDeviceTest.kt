@@ -76,7 +76,6 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 /** CTS tests for our APIs and UI on a managed device (e.g. with managed profile(s)). */
-@Ignore
 @RunWith(BedsteadJUnit4::class)
 // TODO(b/234108780): Enable these back when we figure a way to make sure they don't fail due to
 // timeouts with Bedstead. Consider marking them as running only in post-submit in the meantime.
@@ -174,6 +173,9 @@ class SafetyCenterManagedDeviceTest {
     }
 
     @Test
+    @Ignore
+    // Tests that check the UI takes a lot of time and they might get timeout.
+    // TODO(b/242999951): Write this test using APIs instead of checking the UI.
     @EnsureHasWorkProfile
     fun launchActivity_withProfileOwner_displaysWorkPolicyInfo() {
         safetyCenterCtsHelper.setConfig(context.getWorkPolicyInfoConfig())
@@ -182,6 +184,9 @@ class SafetyCenterManagedDeviceTest {
     }
 
     @Test
+    @Ignore
+    // Tests that check the UI takes a lot of time and they might get timeout.
+    // TODO(b/242999951): Write this test using APIs instead of checking the UI.
     @EnsureHasDeviceOwner
     fun launchActivity_withDeviceOwner_displaysWorkPolicyInfo() {
         safetyCenterCtsHelper.setConfig(context.getWorkPolicyInfoConfig())
@@ -190,6 +195,9 @@ class SafetyCenterManagedDeviceTest {
     }
 
     @Test
+    @Ignore
+    // Tests that check the UI takes a lot of time and they might get timeout.
+    // TODO(b/242999951): Write this test using APIs instead of checking the UI.
     @EnsureHasWorkProfile
     fun launchActivity_withQuietModeEnabled_shouldNotDisplayWorkPolicyInfo() {
         safetyCenterCtsHelper.setConfig(context.getWorkPolicyInfoConfig())
@@ -231,6 +239,8 @@ class SafetyCenterManagedDeviceTest {
     }
 
     @Test
+    @Ignore
+    // Test involving toggling of quiet mode are flaky.
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun getSafetySourceData_withQuietModeEnabled_dataIsNotCleared() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_ALL_PROFILE_CONFIG)
@@ -293,6 +303,8 @@ class SafetyCenterManagedDeviceTest {
     }
 
     @Test
+    @Ignore
+    // Test involving toggling of quiet mode are flaky.
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun getSafetyCenterData_staticSourceWithQuietMode_shouldHaveWorkProfilePausedSummary() {
         safetyCenterCtsHelper.setConfig(STATIC_ALL_PROFILE_SOURCES_CONFIG)
@@ -312,6 +324,8 @@ class SafetyCenterManagedDeviceTest {
     }
 
     @Test
+    @Ignore
+    // Test involving toggling of quiet mode are flaky.
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun getSafetySourceCenter_quietModeEnabled_shouldHaveWorkProfilePausedSummary() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_ALL_PROFILE_CONFIG)

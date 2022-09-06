@@ -21,7 +21,7 @@
     <string name="loading_summary" msgid="3740846439782713910">"正在检查设备设置…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"没问题"</string>
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"未发现问题"</string>
-    <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"请检查设置"</string>
+    <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"检查设置"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"请检查设置列表"</string>
     <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"设备可能存在风险"</string>
     <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"设备存在风险"</string>
@@ -31,7 +31,8 @@
     <string name="redirecting_error" msgid="8146983632878233202">"无法打开页面"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"无法解决提醒事项"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"无法刷新设置"</string>
-    <string name="refresh_error" msgid="255412333381376201">"无法检查{count,plural, =1{设置}other{设置}}"</string>
+    <!-- no translation found for refresh_error (656062128422446177) -->
+    <skip />
     <string name="work_profile_paused" msgid="7037400224040869079">"工作资料已被暂停"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"尚无任何信息"</string>
 </resources>

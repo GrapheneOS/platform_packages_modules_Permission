@@ -19,19 +19,20 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="scanning_title" msgid="5424849039854311398">"Analyse"</string>
     <string name="loading_summary" msgid="3740846439782713910">"Vérification des paramètres de l\'appareil…"</string>
-    <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Tout va bien"</string>
+    <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Tout semble bon"</string>
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"Aucun problème détecté"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Vérifier les paramètres"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Vérifier la liste des paramètres"</string>
-    <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"Appareil potentiellement à risque"</string>
-    <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"Appareil à risque"</string>
-    <string name="overall_severity_level_safety_recommendation_title" msgid="6436208984463981167">"Votre sécurité est incertaine"</string>
-    <string name="overall_severity_level_critical_safety_warning_title" msgid="1039142045555227172">"Votre sécurité n\'est pas assurée"</string>
+    <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"Risque potentiel sur l\'appareil"</string>
+    <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"Risque sur l\'appareil"</string>
+    <string name="overall_severity_level_safety_recommendation_title" msgid="6436208984463981167">"Risque potentiel"</string>
+    <string name="overall_severity_level_critical_safety_warning_title" msgid="1039142045555227172">"Risque de sécurité"</string>
     <string name="overall_severity_n_alerts_summary" msgid="1105615451561197136">"{count,plural, =1{# alerte}one{# alerte}other{# alertes}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Impossible d\'accéder à la page"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Impossible de résoudre l\'alerte"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"Impossible d\'actualiser les paramètres"</string>
-    <string name="refresh_error" msgid="255412333381376201">"Impossible vérifier {count,plural, =1{paramètre}one{paramètre}other{paramètres}}"</string>
+    <!-- no translation found for refresh_error (656062128422446177) -->
+    <skip />
     <string name="work_profile_paused" msgid="7037400224040869079">"Profil professionnel en pause"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"Aucune info pour l\'instant"</string>
 </resources>
