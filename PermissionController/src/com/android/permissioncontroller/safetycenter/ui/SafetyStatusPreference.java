@@ -416,6 +416,7 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
     private boolean shouldShowRescanButton() {
         int severityLevel = mStatus.getSeverityLevel();
         return !mHasIssues
+                && !mHasPendingActions // hides the second button in QS to keep the UI clean
                 && (severityLevel == OVERALL_SEVERITY_LEVEL_OK
                         || severityLevel == OVERALL_SEVERITY_LEVEL_UNKNOWN);
     }
