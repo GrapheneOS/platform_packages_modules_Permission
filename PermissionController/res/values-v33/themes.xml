@@ -41,8 +41,9 @@
         <item name="colorScIconNull">@color/gm_grey_600</item>
 
         <!-- Buttons -->
-        <item name="scActionButtonStyle">@style/SafetyCenter.MaterialActionButton</item>
-        <item name="scSecondaryActionButtonStyle">@style/SafetyCenter.MaterialActionButton.Secondary</item>
+        <!-- TODO: make the action button theme a theme value -->
+        <item name="scActionButtonStyle">@style/SafetyCenterActionButton</item>
+        <item name="scSecondaryActionButtonStyle">@style/SafetyCenterActionButton.Secondary</item>
 
         <item name="colorScShieldAccent">@color/sc_shield_accent</item>
     </style>
@@ -69,8 +70,8 @@
         <item name="colorScIconNull">@color/gm_grey_600</item>
 
         <!-- Buttons -->
-        <item name="scActionButtonStyle">@style/SafetyCenter.MaterialActionButton</item>
-        <item name="scSecondaryActionButtonStyle">@style/SafetyCenter.MaterialActionButton.Secondary</item>
+        <item name="scActionButtonStyle">@style/SafetyCenterActionButton</item>
+        <item name="scSecondaryActionButtonStyle">@style/SafetyCenterActionButton.Secondary</item>
 
         <item name="colorScShieldAccent">@color/sc_shield_accent</item>
     </style>

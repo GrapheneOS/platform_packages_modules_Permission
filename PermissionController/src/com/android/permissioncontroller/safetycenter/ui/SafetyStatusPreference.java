@@ -152,7 +152,7 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
                     holder.itemView.getPaddingEnd(),
                     /* bottom = */ getContext()
                             .getResources()
-                            .getDimensionPixelSize(R.dimen.safety_center_card_margin_bottom));
+                            .getDimensionPixelSize(R.dimen.sc_card_margin_bottom));
         } else {
             holder.itemView.setPaddingRelative(
                     holder.itemView.getPaddingStart(),
