@@ -641,7 +641,7 @@ class AccessibilitySourceService(
             SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
 
         /** lock for processing a job */
-        private val lock = Mutex()
+        internal val lock = Mutex()
 
         /** lock for shared preferences writes */
         private val sharedPrefsLock = Mutex()
@@ -777,28 +777,32 @@ class AccessibilityRemoveAccessHandler : BroadcastReceiver() {
             if (DEBUG) {
                 Log.v(LOG_TAG, "disabling a11y service ${a11yService.flattenToShortString()}")
             }
-            val accessibilityService = AccessibilitySourceService(context)
-            var a11yEnabledServices = accessibilityService.getEnabledAccessibilityServices()
-            val builder = try {
-                AccessibilitySettingsUtil.disableAccessibilityService(context, a11yService)
-                accessibilityService.removeFromNotifiedServices(a11yService)
-                a11yEnabledServices = a11yEnabledServices.filter {
-                    it.id != a11yService.flattenToShortString()
+            AccessibilitySourceService.lock.withLock {
+                val accessibilityService = AccessibilitySourceService(context)
+                var a11yEnabledServices = accessibilityService.getEnabledAccessibilityServices()
+                val builder = try {
+                    AccessibilitySettingsUtil.disableAccessibilityService(context, a11yService)
+                    accessibilityService.removeFromNotifiedServices(a11yService)
+                    a11yEnabledServices = a11yEnabledServices.filter {
+                        it.id != a11yService.flattenToShortString()
+                    }
+                    SafetyEvent.Builder(
+                        SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED
+                    )
+                } catch (ex: Exception) {
+                    Log.w(LOG_TAG, "error occurred in disabling a11y service.", ex)
+                    SafetyEvent.Builder(
+                        SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED
+                    )
                 }
-                SafetyEvent.Builder(
-                    SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED)
-            } catch (ex: Exception) {
-                Log.w(LOG_TAG, "error occurred in disabling a11y service.", ex)
-                SafetyEvent.Builder(
-                    SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
+                val safetySourceIssueId = intent.getStringExtra(
+                    SafetyCenterManager.EXTRA_SAFETY_SOURCE_ISSUE_ID
+                )
+                val safetyEvent = builder.setSafetySourceIssueId(safetySourceIssueId)
+                    .setSafetySourceIssueActionId(SC_ACCESSIBILITY_REMOVE_ACCESS_ACTION_ID)
+                    .build()
+                accessibilityService.sendIssuesToSafetyCenter(a11yEnabledServices, safetyEvent)
             }
-            val safetySourceIssueId = intent.getStringExtra(
-                SafetyCenterManager.EXTRA_SAFETY_SOURCE_ISSUE_ID)
-            val safetyEvent = builder.setSafetySourceIssueId(safetySourceIssueId)
-                .setSafetySourceIssueActionId(SC_ACCESSIBILITY_REMOVE_ACCESS_ACTION_ID)
-                .build()
-            accessibilityService.sendIssuesToSafetyCenter(a11yEnabledServices, safetyEvent)
-
             if (DEBUG) {
                 Log.v(LOG_TAG, "ISSUE_CARD_INTERACTION CTA1 metric, uid $uid session $sessionId")
             }
@@ -976,14 +980,16 @@ class SafetyCenterAccessibilityListener(val context: Context) :
             if (DEBUG) {
                 Log.v(LOG_TAG, "processing accessibility event")
             }
-            val a11ySourceService = AccessibilitySourceService(context)
-            val a11yEnabledServices = a11ySourceService.getEnabledAccessibilityServices()
-            a11ySourceService.sendIssuesToSafetyCenter(a11yEnabledServices)
-            val enabledComponents = a11yEnabledServices.map { a11yService ->
-                ComponentName.unflattenFromString(a11yService.id)!!.flattenToShortString()
-            }.toSet()
-            a11ySourceService.removeAccessibilityNotification(enabledComponents)
-            a11ySourceService.updateServiceAsNotified(enabledComponents)
+            AccessibilitySourceService.lock.withLock {
+                val a11ySourceService = AccessibilitySourceService(context)
+                val a11yEnabledServices = a11ySourceService.getEnabledAccessibilityServices()
+                a11ySourceService.sendIssuesToSafetyCenter(a11yEnabledServices)
+                val enabledComponents = a11yEnabledServices.map { a11yService ->
+                    ComponentName.unflattenFromString(a11yService.id)!!.flattenToShortString()
+                }.toSet()
+                a11ySourceService.removeAccessibilityNotification(enabledComponents)
+                a11ySourceService.updateServiceAsNotified(enabledComponents)
+            }
         }
     }
 }
