@@ -21,16 +21,13 @@ import android.app.LoaderManager
 import android.app.role.RoleManager
 import android.content.Context
 import android.os.Build
-import android.util.ArrayMap
-import android.util.ArraySet
-import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.android.permissioncontroller.permission.model.AppPermissionGroup
+import com.android.permissioncontroller.permission.model.legacy.PermissionApps.PermissionApp
 import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
 import com.android.permissioncontroller.permission.model.v31.PermissionUsages
-import com.android.permissioncontroller.permission.model.legacy.PermissionApps.PermissionApp
 import com.android.permissioncontroller.permission.ui.handheld.v31.is7DayToggleEnabled
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPermGroupLabel
 import com.android.permissioncontroller.permission.utils.Utils
@@ -38,217 +35,196 @@ import java.time.Instant
 import java.util.concurrent.TimeUnit
 import kotlin.math.max
 
+/** [ViewModel] for Permission Usage fragments. */
 @RequiresApi(Build.VERSION_CODES.S)
 class PermissionUsageViewModel(val roleManager: RoleManager) : ViewModel() {
 
-    companion object {
-        private const val LOG_TAG = "PermissionUsageViewModel"
+    private val exemptedPackages: Set<String> = Utils.getExemptedPackages(roleManager)
 
+    /** Companion object for [PermissionUsageViewModel]. */
+    companion object {
         /** TODO(ewol): Use the config setting to determine amount of time to show. */
         private val TIME_FILTER_MILLIS = TimeUnit.DAYS.toMillis(7)
         private val TIME_7_DAYS_DURATION = TimeUnit.DAYS.toMillis(7)
         private val TIME_24_HOURS_DURATION = TimeUnit.DAYS.toMillis(1)
 
         @JvmStatic
-        val PERMISSION_GROUP_ORDER: Map<String, Int> = mapOf(
-            Manifest.permission_group.LOCATION to 0,
-            Manifest.permission_group.CAMERA to 1,
-            Manifest.permission_group.MICROPHONE to 2
-        )
+                /** Map to represent ordering for permission groups in the permissions usage UI. */
+        val PERMISSION_GROUP_ORDER: Map<String, Int> =
+            mapOf(
+                Manifest.permission_group.LOCATION to 0,
+                Manifest.permission_group.CAMERA to 1,
+                Manifest.permission_group.MICROPHONE to 2)
         private const val DEFAULT_ORDER = 3
     }
 
+    /** Loads data from [PermissionUsages] using the [LoaderManager] pattern. */
     fun loadPermissionUsages(
         loaderManager: LoaderManager,
         permissionUsages: PermissionUsages,
         callback: PermissionUsages.PermissionsUsagesChangeCallback
     ) {
-        val filterTimeBeginMillis = max(System.currentTimeMillis() - TIME_FILTER_MILLIS,
-            Instant.EPOCH.toEpochMilli())
-        permissionUsages.load(null /*filterPackageName*/, null /*filterPermissionGroups*/,
-            filterTimeBeginMillis, Long.MAX_VALUE, PermissionUsages.USAGE_FLAG_LAST
-                or PermissionUsages.USAGE_FLAG_HISTORICAL, loaderManager,
-            false /*getUiInfo*/, false /*getNonPlatformPermissions*/, callback /*callback*/,
+        val filterTimeBeginMillis =
+            max(System.currentTimeMillis() - TIME_FILTER_MILLIS, Instant.EPOCH.toEpochMilli())
+        permissionUsages.load(
+            null /*filterPackageName*/,
+            null /*filterPermissionGroups*/,
+            filterTimeBeginMillis,
+            Long.MAX_VALUE,
+            PermissionUsages.USAGE_FLAG_LAST or PermissionUsages.USAGE_FLAG_HISTORICAL,
+            loaderManager,
+            false /*getUiInfo*/,
+            false /*getNonPlatformPermissions*/,
+            callback /*callback*/,
             false /*sync*/)
     }
 
-    fun extractUsages(
-        permissionUsages: List<AppPermissionUsage>,
+    /**
+     * Parses the provided list of [AppPermissionUsage] instances to build data for the UI to
+     * display.
+     */
+    fun buildPermissionUsagesUiData(
+        appPermissionUsages: List<AppPermissionUsage>,
         show7Days: Boolean,
-        showSystem: Boolean
-    ): Triple<MutableMap<String, Int>, ArrayList<PermissionApp>, Boolean> {
+        showSystem: Boolean,
+        context: Context,
+    ): PermissionUsagesUiData {
         val curTime = System.currentTimeMillis()
-        val showPermissionUsagesDuration = if (is7DayToggleEnabled() && show7Days) {
-            TIME_7_DAYS_DURATION
-        } else {
-            TIME_24_HOURS_DURATION
-        }
+        val showPermissionUsagesDuration =
+            if (is7DayToggleEnabled() && show7Days) {
+                TIME_7_DAYS_DURATION
+            } else {
+                TIME_24_HOURS_DURATION
+            }
         val startTime = max(curTime - showPermissionUsagesDuration, Instant.EPOCH.toEpochMilli())
 
-        // Permission group to count mapping.
-        val usages: MutableMap<String, Int> = HashMap()
-        val permissionGroups: List<AppPermissionGroup> = getOSPermissionGroups(permissionUsages)
-        for (i in permissionGroups.indices) {
-            usages[permissionGroups[i].name] = 0
-        }
-        val permApps = ArrayList<PermissionApp>()
+        val filteredAppPermissionUsages =
+            appPermissionUsages.filter { !exemptedPackages.contains(it.packageName) }
+        val permissionGroupsToUsageCountMap =
+            filteredAppPermissionUsages.buildPermissionGroupsUsageCountMap(startTime, showSystem)
+        val displayShowSystemToggle: Boolean =
+            filteredAppPermissionUsages.displayShowSystemToggle(startTime)
+        val permissionApps = filteredAppPermissionUsages.getRecentPermissionApps(startTime)
+        val orderedPermissionGroupsWithUsage =
+            buildOrderedPermissionGroupsWithUsageCount(context, permissionGroupsToUsageCountMap)
 
-        val exemptedPackages = Utils.getExemptedPackages(roleManager)
-
-        val seenSystemApp: Boolean = extractPermissionUsage(exemptedPackages,
-            usages, permApps, startTime, permissionUsages, showSystem)
-
-        return Triple(usages, permApps, seenSystemApp)
+        return PermissionUsagesUiData(
+            permissionGroupsToUsageCountMap,
+            permissionApps,
+            displayShowSystemToggle,
+            orderedPermissionGroupsWithUsage)
     }
 
-    fun createGroupUsagesList(
-        context: Context,
-        usages: Map<String, Int>
-    ): List<Map.Entry<String, Int>> {
-        val groupUsageNameToLabel: MutableMap<String, CharSequence> = HashMap()
-        val groupUsagesList: MutableList<Map.Entry<String, Int>> = ArrayList(usages.entries)
-        val usagesEntryCount = groupUsagesList.size
-        for (usageEntryIndex in 0 until usagesEntryCount) {
-            val (key) = groupUsagesList[usageEntryIndex]
-            groupUsageNameToLabel[key] = getPermGroupLabel(context, key)
-        }
-
-        groupUsagesList.sortWith { e1: Map.Entry<String, Int>, e2: Map.Entry<String, Int> ->
-            comparePermissionGroupUsage(e1, e2, groupUsageNameToLabel)
-        }
-
-        return groupUsagesList
-    }
-
-    private fun comparePermissionGroupUsage(
-        first: Map.Entry<String, Int>,
-        second: Map.Entry<String, Int>,
-        groupUsageNameToLabelMapping: Map<String, CharSequence>
-    ): Int {
-        val firstPermissionOrder = PERMISSION_GROUP_ORDER
-            .getOrDefault(first.key, DEFAULT_ORDER)
-        val secondPermissionOrder = PERMISSION_GROUP_ORDER
-            .getOrDefault(second.key, DEFAULT_ORDER)
-        return if (firstPermissionOrder != secondPermissionOrder) {
-            firstPermissionOrder - secondPermissionOrder
-        } else groupUsageNameToLabelMapping[first.key].toString()
-            .compareTo(groupUsageNameToLabelMapping[second.key].toString())
-    }
-
-    /**
-     * Get the permission groups declared by the OS.
-     *
-     * @return a list of the permission groups declared by the OS.
-     */
-    private fun getOSPermissionGroups(
-        permissionUsages: List<AppPermissionUsage>
-    ): List<AppPermissionGroup> {
-        val groups: MutableList<AppPermissionGroup> = java.util.ArrayList()
-        val seenGroups: MutableSet<String> = ArraySet()
-        val numGroups: Int = permissionUsages.size
-        for (i in 0 until numGroups) {
-            val appUsage: AppPermissionUsage = permissionUsages.get(i)
-            val groupUsages = appUsage.groupUsages
-            val groupUsageCount = groupUsages.size
-            for (j in 0 until groupUsageCount) {
-                val groupUsage = groupUsages[j]
-                if (Utils.isModernPermissionGroup(groupUsage.group.name)) {
-                    if (seenGroups.add(groupUsage.group.name)) {
-                        groups.add(groupUsage.group)
-                    }
-                }
-            }
-        }
-        return groups
-    }
-
-    /**
-     * Extract the permission usages from mAppPermissionUsages and put the extracted usages
-     * into usages and permApps. Returns whether we have seen a system app during the process.
-     *
-     * TODO: theianchen
-     * It's doing two things at the same method which is violating the SOLID principle.
-     * We should fix this.
-     *
-     * @param exemptedPackages packages that are the role holders for exempted roles
-     * @param usages an empty List that will be filled with permission usages.
-     * @param permApps an empty List that will be filled with permission apps.
-     * @return whether we have seen a system app.
-     */
-    private fun extractPermissionUsage(
-        exemptedPackages: Set<String>,
-        usages: MutableMap<String, Int>,
-        permApps: java.util.ArrayList<PermissionApp>,
+    /** Build a map of permission groups to the number of apps that recently accessed them. */
+    private fun List<AppPermissionUsage>.buildPermissionGroupsUsageCountMap(
         startTime: Long,
-        permissionUsages: List<AppPermissionUsage>,
         showSystem: Boolean
+    ): Map<String, Int> {
+        val permissionGroupsUsageCountMap: MutableMap<String, Int> = HashMap()
+        extractAllPlatformAppPermissionGroups().forEach { permissionGroupsUsageCountMap[it] = 0 }
+
+        for (appUsage in this) {
+            appUsage.groupUsages
+                .filter { showSystem || !it.group.isSystem() }
+                .filter { it.lastAccessTime >= startTime }
+                .forEach {
+                    permissionGroupsUsageCountMap[it.group.name] =
+                        permissionGroupsUsageCountMap.getOrDefault(it.group.name, 0) + 1
+                }
+        }
+        return permissionGroupsUsageCountMap
+    }
+
+    /** Extracts [PermissionApp] where there has been recent permission usage. */
+    private fun List<AppPermissionUsage>.getRecentPermissionApps(
+        startTime: Long,
+    ): java.util.ArrayList<PermissionApp> {
+        return ArrayList(
+            filter {
+                    it.groupUsages.any { it.lastAccessTime >= startTime || it.lastAccessTime == 0L }
+                }
+                .map { it.app })
+    }
+
+    /**
+     * Returns whether there are any user-sensitive app permission groups with recent usage, and
+     * therefore if the "show/hide system" toggle needs to be displayed in the UI
+     */
+    private fun List<AppPermissionUsage>.displayShowSystemToggle(
+        startTime: Long,
     ): Boolean {
-
-        val mGroupAppCounts: ArrayMap<String?, Int> = ArrayMap()
-        var seenSystemApp = false
-        val numApps: Int = permissionUsages.size
-        for (appNum in 0 until numApps) {
-            val appUsage: AppPermissionUsage = permissionUsages.get(appNum)
-            if (exemptedPackages.contains(appUsage.packageName)) {
-                continue
-            }
-            var used = false
-            val appGroups = appUsage.groupUsages
-            val numGroups = appGroups.size
-            for (groupNum in 0 until numGroups) {
-                val groupUsage = appGroups[groupNum]
-                val groupName = groupUsage.group.name
-                val lastAccessTime = groupUsage.lastAccessTime
-                if (lastAccessTime == 0L) {
-                    Log.w(
-                        LOG_TAG,
-                        "Unexpected access time of 0 for ${appUsage.app.key} " +
-                            groupUsage.group.name)
-                    continue
-                }
-                if (lastAccessTime < startTime) {
-                    continue
-                }
-                val isSystemApp = !Utils.isGroupOrBgGroupUserSensitive(
-                    groupUsage.group)
-                seenSystemApp = seenSystemApp || isSystemApp
-
-                // If not showing system apps, skip.
-                if (!showSystem && isSystemApp) {
-                    continue
-                }
-                used = true
-                addGroupUser(mGroupAppCounts, groupName)
-                usages[groupName] = usages.getOrDefault(groupName, 0) + 1
-            }
-            if (used) {
-                permApps.add(appUsage.app)
-                addGroupUser(mGroupAppCounts, null)
-            }
-        }
-        return seenSystemApp
+        return flatMap { it.groupUsages }
+            .filter { it.lastAccessTime > startTime && it.lastAccessTime > 0L }
+            .any { it.group.isSystem() }
     }
 
-    private fun addGroupUser(groupAppCounts: ArrayMap<String?, Int>, app: String?) {
-        val count: Int? = groupAppCounts[app]
-        if (count == null) {
-            groupAppCounts[app] = 1
-        } else {
-            groupAppCounts[app] = count + 1
-        }
-    }
+    /**
+     * Creates an ordered list of [PermissionGroupWithUsageCount] instances to show in the UI.
+     *
+     * The list is ordered as follows:
+     *
+     * 1. Location
+     * 2. Camera
+     * 3. Microphone
+     * 4. Remaining permission groups, ordered alphabetically
+     */
+    private fun buildOrderedPermissionGroupsWithUsageCount(
+        context: Context,
+        permissionUsageAppCountMap: Map<String, Int>
+    ): List<PermissionGroupWithUsageCount> =
+        ArrayList(permissionUsageAppCountMap.entries)
+            .map { PermissionGroupWithUsageCount(it.key, it.value) }
+            .sortedWith(
+                compareBy(
+                    { PERMISSION_GROUP_ORDER.getOrDefault(it.permGroup, DEFAULT_ORDER) },
+                    { getPermGroupLabel(context, it.permGroup).toString() }))
+
+    /** Extracts to a set all the permission groups declared by the platform. */
+    private fun List<AppPermissionUsage>.extractAllPlatformAppPermissionGroups(): Set<String> =
+        this.flatMap { it.groupUsages }
+            .map { it.group.name }
+            .filter { Utils.isModernPermissionGroup(it) }
+            .toSet()
+
+    /**
+     * Returns whether the [AppPermissionGroup] is considered a system group.
+     *
+     * For the purpose of Permissions Hub UI, non user-sensitive [AppPermissionGroup]s are
+     * considered "system" and should be hidden from the main page unless requested by the user
+     * through the "show/hide system" toggle.
+     */
+    private fun AppPermissionGroup.isSystem() = !Utils.isGroupOrBgGroupUserSensitive(this)
+
+    /** Data class to hold all the information required to configure the UI. */
+    data class PermissionUsagesUiData(
+        // TODO(b/243970988): Remove permissionGroupUsageCounts from this data class as it
+        //  duplicates information in orderedPermissionGroupWithUsage.
+        /** Map from permission group to count of apps that recently used the permissions. */
+        val permissionGroupUsageCounts: Map<String, Int>,
+        /** List of [PermissionApp] instances */
+        // Note that these are used only to cache app data for the permission usage details
+        // fragment, and have no bearing on the UI on the main permission usage page.
+        val permissionApps: ArrayList<PermissionApp>,
+        /** Whether to show the "show/hide system" toggle. */
+        val displayShowSystemToggle: Boolean,
+        // TODO(b/243970988): Consider moving ordering logic to fragment.
+        /** [PermissionGroupWithUsageCount] instances ordered for display in UI */
+        val orderedPermissionGroupsWithUsageCount: List<PermissionGroupWithUsageCount>,
+    )
+
+    /**
+     * Data class to associate permission groups with the number of apps that recently accessed
+     * them.
+     */
+    data class PermissionGroupWithUsageCount(val permGroup: String, val appCount: Int)
 }
 
-/**
- * Factory for an PermissionUsageViewModel
- */
+/** Factory for [PermissionUsageViewModel]. */
 @RequiresApi(Build.VERSION_CODES.S)
-class PermissionUsageViewModelFactory(
-    private val roleManager: RoleManager
-) : ViewModelProvider.Factory {
+class PermissionUsageViewModelFactory(private val roleManager: RoleManager) :
+    ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        @Suppress("UNCHECKED_CAST")
-        return PermissionUsageViewModel(roleManager) as T
+        @Suppress("UNCHECKED_CAST") return PermissionUsageViewModel(roleManager) as T
     }
 }
