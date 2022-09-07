@@ -1,38 +1,35 @@
 <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
                  xmlns:aapt="http://schemas.android.com/aapt">
     <aapt:attr name="android:drawable">
-        <vector android:height="560dp" android:width="560dp" android:viewportHeight="560"
-                android:viewportWidth="560">
+        <vector android:height="224dp" android:width="224dp" android:viewportHeight="224"
+                android:viewportWidth="224">
             <group android:name="_R_G">
-                <group android:name="_R_G_L_3_G" android:translateX="280" android:translateY="280"
-                       android:scaleX="10" android:scaleY="10">
-                    <path android:name="_R_G_L_3_G_D_0_P_0" android:fillColor="?attr/colorScStatusBackgroundRecommend"
+                <group android:name="_R_G_L_3_G">
+                    <path android:name="_R_G_L_3_G_D_0_P_0"
+                          android:fillColor="?attr/colorScStatusBackgroundRecommend"
                           android:fillAlpha="1" android:fillType="nonZero"
-                          android:pathData=" M28 0 C28,15.46 15.46,28 0,28 C-15.46,28 -28,15.46 -28,0 C-28,-15.46 -15.46,-28 0,-28 C15.46,-28 28,-15.46 28,0c "/>
+                          android:pathData=" M112 0 C112,0 112,0 112,0 C173.86,0 224,50.14 224,112 C224,112 224,112 224,112 C224,173.86 173.86,224 112,224 C112,224 112,224 112,224 C50.14,224 0,173.86 0,112 C0,112 0,112 0,112 C0,50.14 50.14,0 112,0c "/>
                 </group>
-                <group android:name="_R_G_L_2_G" android:translateX="280" android:translateY="275"
-                       android:scaleX="10" android:scaleY="10">
-                    <path android:name="_R_G_L_2_G_D_0_P_0" android:fillColor="?attr/colorScStatusRecommend"
+                <group android:name="_R_G_L_2_G">
+                    <path android:name="_R_G_L_2_G_D_0_P_0"
+                          android:fillColor="?attr/colorScStatusRecommend" android:fillAlpha="1"
+                          android:fillType="nonZero"
+                          android:pathData=" M112 42 C112,42 56,62.53 56,62.53 C56,62.53 56,105.47 56,105.47 C56,123.2 61.6,139.07 71.87,154 C82.13,168.93 96.13,178.27 112,182 C127.87,178.27 141.87,168.93 152.13,154 C162.4,139.07 168,123.2 168,105.47 C168,105.47 168,62.53 168,62.53 C168,62.53 112,42 112,42c "/>
+                </group>
+                <group android:name="_R_G_L_1_G" android:pivotX="112" android:pivotY="112"
+                       android:scaleX="1" android:scaleY="1">
+                    <path android:name="_R_G_L_1_G_D_0_P_0" android:fillColor="?attr/colorSurface"
                           android:fillAlpha="1" android:fillType="nonZero"
-                          android:pathData=" M-14 -12.25 C-14,-12.25 0,-17.5 0,-17.5 C0,-17.5 14,-12.25 14,-12.25 C14,-12.25 14,-1.57 14,-1.57 C14,2.8 12.6,6.83 9.98,10.5 C7.35,14.18 4.03,16.45 0,17.5 C-4.03,16.45 -7.35,14.18 -9.97,10.5 C-12.6,6.83 -14,2.8 -14,-1.57 C-14,-1.57 -14,-12.25 -14,-12.25c "/>
+                          android:pathData=" M112 142.67 C117.15,142.67 121.33,138.49 121.33,133.33 C121.33,128.18 117.15,124 112,124 C106.84,124 102.66,128.18 102.66,133.33 C102.66,138.49 106.84,142.67 112,142.67c "/>
                 </group>
-                <group android:name="_R_G_L_1_G" android:translateX="279.998"
-                       android:translateY="327.289" android:pivotY="5.333" android:scaleX="9.86664"
-                       android:scaleY="9.86664">
-                    <group android:name="_R_G_L_1_G_D_0_P_0_G_0_T_0" android:pivotY="1.871"
-                           android:scaleX="1" android:scaleY="1">
-                        <path android:name="_R_G_L_1_G_D_0_P_0" android:fillColor="?attr/colorScShieldAccent"
-                              android:fillAlpha="1" android:fillType="nonZero"
-                              android:pathData=" M0 7.67 C1.29,7.67 2.33,6.62 2.33,5.33 C2.33,4.04 1.29,3 0,3 C-1.29,3 -2.33,4.04 -2.33,5.33 C-2.33,6.62 -1.29,7.67 0,7.67c "/>
-                    </group>
-                </group>
-                <group android:name="_R_G_L_0_G" android:translateX="280" android:translateY="280"
-                       android:scaleX="9.86664" android:scaleY="9.86664">
-                    <group android:name="_R_G_L_0_G_D_0_P_0_G_0_T_0" android:pivotY="-8.616"
-                           android:scaleX="1" android:scaleY="1">
-                        <path android:name="_R_G_L_0_G_D_0_P_0" android:fillColor="?attr/colorScShieldAccent"
-                              android:fillAlpha="1" android:fillType="nonZero"
-                              android:pathData=" M2.33 -8.67 C2.33,-8.67 -2.33,-8.67 -2.33,-8.67 C-2.33,-8.67 -2.33,0.67 -2.33,0.67 C-2.33,0.67 2.33,0.67 2.33,0.67 C2.33,0.67 2.33,-8.67 2.33,-8.67c "/>
+                <group android:name="_R_G_L_0_G">
+                    <group android:name="_R_G_L_0_G_D_0_P_0_G_0_T_0" android:translateX="111.997"
+                           android:translateY="96.002" android:pivotX="0.055"
+                           android:pivotY="-18.901" android:scaleX="1" android:scaleY="1">
+                        <path android:name="_R_G_L_0_G_D_0_P_0"
+                              android:fillColor="?attr/colorSurface" android:fillAlpha="1"
+                              android:fillType="nonZero"
+                              android:pathData=" M9.33 -18.67 C9.33,-18.67 -9.33,-18.67 -9.33,-18.67 C-9.33,-18.67 -9.33,18.67 -9.33,18.67 C-9.33,18.67 9.33,18.67 9.33,18.67 C9.33,18.67 9.33,-18.67 9.33,-18.67c "/>
                     </group>
                 </group>
             </group>
@@ -61,21 +58,21 @@
             </set>
         </aapt:attr>
     </target>
-    <target android:name="_R_G_L_1_G_D_0_P_0_G_0_T_0">
+    <target android:name="_R_G_L_1_G">
         <aapt:attr name="android:animation">
             <set android:ordering="together">
                 <objectAnimator android:propertyName="scaleX" android:duration="250"
                                 android:startOffset="0" android:valueFrom="1" android:valueTo="0"
                                 android:valueType="floatType">
                     <aapt:attr name="android:interpolator">
-                        <pathInterpolator android:pathData="M 0.0,0.0 c1,0 0.8,1 1.0,1.0"/>
+                        <pathInterpolator android:pathData="M 0.0,0.0 c1,0 0.801,1 1.0,1.0"/>
                     </aapt:attr>
                 </objectAnimator>
                 <objectAnimator android:propertyName="scaleY" android:duration="250"
                                 android:startOffset="0" android:valueFrom="1" android:valueTo="0"
                                 android:valueType="floatType">
                     <aapt:attr name="android:interpolator">
-                        <pathInterpolator android:pathData="M 0.0,0.0 c1,0 0.8,1 1.0,1.0"/>
+                        <pathInterpolator android:pathData="M 0.0,0.0 c1,0 0.801,1 1.0,1.0"/>
                     </aapt:attr>
                 </objectAnimator>
             </set>
