@@ -97,7 +97,21 @@ class SafetySourceCtsData(private val context: Context) {
         SafetySourceData.Builder()
             .setStatus(
                 SafetySourceStatus.Builder(
-                        "Unspecified title", "Unspecified summary", SEVERITY_LEVEL_UNSPECIFIED)
+                    "Unspecified title", "Unspecified summary", SEVERITY_LEVEL_UNSPECIFIED)
+                    .setPendingIntent(redirectPendingIntent)
+                    .build())
+            .addIssue(informationIssue)
+            .build()
+
+    /**
+     * A [SafetySourceData] with a [SEVERITY_LEVEL_INFORMATION] redirecting [SafetySourceIssue] and
+     * a [SEVERITY_LEVEL_UNSPECIFIED] [SafetySourceStatus], to be used for a managed profile entry.
+     */
+    val unspecifiedWithIssueForWork =
+        SafetySourceData.Builder()
+            .setStatus(
+                SafetySourceStatus.Builder(
+                    "Unspecified title for Work", "Unspecified summary", SEVERITY_LEVEL_UNSPECIFIED)
                     .setPendingIntent(redirectPendingIntent)
                     .build())
             .addIssue(informationIssue)
@@ -138,19 +152,6 @@ class SafetySourceCtsData(private val context: Context) {
             .build()
 
     /**
-     * A [SafetySourceData] with a [SEVERITY_LEVEL_INFORMATION] [SafetySourceStatus], to be used for
-     * a managed profile entry.
-     */
-    val informationForWork =
-        SafetySourceData.Builder()
-            .setStatus(
-                SafetySourceStatus.Builder(
-                        "Ok title for Work", "Ok summary", SEVERITY_LEVEL_INFORMATION)
-                    .setPendingIntent(redirectPendingIntent)
-                    .build())
-            .build()
-
-    /**
      * A [SafetySourceData] with a [SEVERITY_LEVEL_INFORMATION] redirecting [SafetySourceIssue] and
      * [SafetySourceStatus].
      */
@@ -158,6 +159,20 @@ class SafetySourceCtsData(private val context: Context) {
         SafetySourceData.Builder()
             .setStatus(
                 SafetySourceStatus.Builder("Ok title", "Ok summary", SEVERITY_LEVEL_INFORMATION)
+                    .setPendingIntent(redirectPendingIntent)
+                    .build())
+            .addIssue(informationIssue)
+            .build()
+
+    /**
+     * A [SafetySourceData] with a [SEVERITY_LEVEL_INFORMATION] redirecting [SafetySourceIssue] and
+     * [SafetySourceStatus], to be used for a managed profile entry.
+     */
+    val informationWithIssueForWork =
+        SafetySourceData.Builder()
+            .setStatus(
+                SafetySourceStatus.Builder(
+                    "Ok title for Work", "Ok summary", SEVERITY_LEVEL_INFORMATION)
                     .setPendingIntent(redirectPendingIntent)
                     .build())
             .addIssue(informationIssue)
