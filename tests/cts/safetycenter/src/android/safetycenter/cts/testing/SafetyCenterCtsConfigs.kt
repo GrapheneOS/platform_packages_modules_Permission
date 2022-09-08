@@ -125,19 +125,21 @@ object SafetyCenterCtsConfigs {
     /**
      * ID of a [SafetySourcesGroup] provided by [COMPLEX_CONFIG], containing sources:
      * [DYNAMIC_BAREBONE_ID], [DYNAMIC_ALL_OPTIONAL_ID], [DYNAMIC_DISABLED_ID], [DYNAMIC_HIDDEN_ID],
-     * [DYNAMIC_HIDDEN_WITH_SEARCH_ID], [DYNAMIC_OTHER_PACKAGE_ID].
+     * [DYNAMIC_HIDDEN_WITH_SEARCH_ID], [DYNAMIC_OTHER_PACKAGE_ID]. And provided by
+     * [COMPLEX_ALL_PROFILE_CONFIG], containing sources: [DYNAMIC_BAREBONE_ID],
+     * [DYNAMIC_DISABLED_ID], [DYNAMIC_HIDDEN_ID].
      */
     const val DYNAMIC_GROUP_ID = "dynamic"
 
     /**
-     * ID of a [SafetySourcesGroup] provided by [COMPLEX_CONFIG], containing sources:
-     * [STATIC_BAREBONE_ID], [STATIC_ALL_OPTIONAL_ID].
+     * ID of a [SafetySourcesGroup] provided by [COMPLEX_CONFIG] and [COMPLEX_ALL_PROFILE_CONFIG],
+     * containing sources: [STATIC_BAREBONE_ID], [STATIC_ALL_OPTIONAL_ID].
      */
     const val STATIC_GROUP_ID = "static"
 
     /**
-     * ID of a [SafetySourcesGroup] provided by [COMPLEX_CONFIG], containing sources:
-     * [ISSUE_ONLY_BAREBONE_ID], [ISSUE_ONLY_ALL_OPTIONAL_ID].
+     * ID of a [SafetySourcesGroup] provided by [COMPLEX_CONFIG] and [COMPLEX_ALL_PROFILE_CONFIG],
+     * containing sources: [ISSUE_ONLY_BAREBONE_ID], [ISSUE_ONLY_ALL_OPTIONAL_ID].
      */
     const val ISSUE_ONLY_GROUP_ID = "issue_only"
 
@@ -148,14 +150,15 @@ object SafetyCenterCtsConfigs {
     const val MIXED_COLLAPSIBLE_GROUP_ID = "mixed_collapsible"
 
     /**
-     * ID of a [SafetySourcesGroup] provided by [COMPLEX_CONFIG], containing sources:
-     * [DYNAMIC_IN_RIGID_ID], [STATIC_IN_RIGID_ID].
+     * ID of a [SafetySourcesGroup] provided by [COMPLEX_CONFIG] and [COMPLEX_ALL_PROFILE_CONFIG],
+     * containing sources: [DYNAMIC_IN_RIGID_ID], [STATIC_IN_RIGID_ID], [ISSUE_ONLY_IN_RIGID_ID].
      */
     const val MIXED_RIGID_GROUP_ID = "mixed_rigid"
 
     /**
-     * ID of a source provided by [COMPLEX_CONFIG] and [ANDROID_LOCK_SCREEN_SOURCES_CONFIG], this is
-     * a dynamic, primary profile only, visible source for which only the required fields are set.
+     * ID of a source provided by [COMPLEX_CONFIG], [COMPLEX_ALL_PROFILE_CONFIG], and
+     * [ANDROID_LOCK_SCREEN_SOURCES_CONFIG], this is a dynamic, primary profile only, visible source
+     * for which only the required fields are set.
      */
     const val DYNAMIC_BAREBONE_ID = "dynamic_barebone"
 
@@ -174,16 +177,16 @@ object SafetyCenterCtsConfigs {
     const val DYNAMIC_ALL_OPTIONAL_ID = "dynamic_all_optional"
 
     /**
-     * ID of a source provided by [COMPLEX_CONFIG] and [ANDROID_LOCK_SCREEN_SOURCES_CONFIG], this is
-     * a dynamic, primary profile only, disabled by default source for which only the required
-     * fields are set.
+     * ID of a source provided by [COMPLEX_CONFIG], [COMPLEX_ALL_PROFILE_CONFIG], and
+     * [ANDROID_LOCK_SCREEN_SOURCES_CONFIG], this is a dynamic, disabled by default source for which
+     * only the required fields are set.
      */
     const val DYNAMIC_DISABLED_ID = "dynamic_disabled"
 
     /**
-     * ID of a source provided by [COMPLEX_CONFIG] and [ANDROID_LOCK_SCREEN_SOURCES_CONFIG], this is
-     * a dynamic, primary profile only, hidden by default source for which only the required fields
-     * are set.
+     * ID of a source provided by [COMPLEX_CONFIG], [COMPLEX_ALL_PROFILE_CONFIG], and
+     * [ANDROID_LOCK_SCREEN_SOURCES_CONFIG], this ism a dynamic, hidden by default source for which
+     * only the required fields are set.
      */
     const val DYNAMIC_HIDDEN_ID = "dynamic_hidden"
 
@@ -194,27 +197,27 @@ object SafetyCenterCtsConfigs {
     const val DYNAMIC_HIDDEN_WITH_SEARCH_ID = "dynamic_hidden_with_search"
 
     /**
-     * ID of a source provided by [COMPLEX_CONFIG], this is a static, primary profile only source
-     * for which only the required fields are set.
+     * ID of a source provided by [COMPLEX_CONFIG] and [COMPLEX_ALL_PROFILE_CONFIG], this is a
+     * static, primary profile only source for which only the required fields are set.
      */
     const val STATIC_BAREBONE_ID = "static_barebone"
 
     /**
-     * ID of a source provided by [COMPLEX_CONFIG], this is a static, primary profile only source
-     * for which all the required and optional fields are set.
+     * ID of a source provided by [COMPLEX_CONFIG] and [COMPLEX_ALL_PROFILE_CONFIG], this is a
+     * static source for which all the required and optional fields are set.
      */
     const val STATIC_ALL_OPTIONAL_ID = "static_all_optional"
 
     /**
-     * ID of a source provided by [COMPLEX_CONFIG], this is an issue-only, primary profile only
-     * source for which only the required fields are set.
+     * ID of a source provided by [COMPLEX_CONFIG] and [COMPLEX_ALL_PROFILE_CONFIG], this is an
+     * issue-only, primary profile only source for which only the required fields are set.
      */
     const val ISSUE_ONLY_BAREBONE_ID = "issue_only_barebone"
 
     /**
-     * ID of a source provided by [COMPLEX_CONFIG], this is an issue-only, primary profile only
-     * source for which all the required and optional fields are set. Notably, this includes the
-     * refresh on page open flag and a max severity level of recommendation.
+     * ID of a source provided by [COMPLEX_CONFIG] and [COMPLEX_ALL_PROFILE_CONFIG], this is an
+     * issue-only source for which all the required and optional fields are set. Notably, this
+     * includes the refresh on page open flag and a max severity level of recommendation.
      */
     const val ISSUE_ONLY_ALL_OPTIONAL_ID = "issue_only_all_optional"
 
@@ -225,14 +228,14 @@ object SafetyCenterCtsConfigs {
     const val DYNAMIC_IN_COLLAPSIBLE_ID = "dynamic_in_collapsible"
 
     /**
-     * ID of a source provided by [COMPLEX_CONFIG], this is a generic, dynamic, primary profile
-     * only, visible source.
+     * ID of a source provided by [COMPLEX_CONFIG] and [COMPLEX_ALL_PROFILE_CONFIG], this is a
+     * generic, dynamic, visible source.
      */
     const val DYNAMIC_IN_RIGID_ID = "dynamic_in_rigid"
 
     /**
-     * ID of a source provided by [COMPLEX_CONFIG], this is an issue-only, primary profile only
-     * source.
+     * ID of a source provided by [COMPLEX_CONFIG] and [COMPLEX_ALL_PROFILE_CONFIG], this is an
+     * issue-only source.
      */
     const val ISSUE_ONLY_IN_RIGID_ID = "issue_only_in_rigid"
 
@@ -243,8 +246,8 @@ object SafetyCenterCtsConfigs {
     const val STATIC_IN_COLLAPSIBLE_ID = "static_in_collapsible"
 
     /**
-     * ID of a source provided by [COMPLEX_CONFIG], this is a generic, static, primary profile only
-     * source.
+     * ID of a source provided by [COMPLEX_CONFIG] and [COMPLEX_ALL_PROFILE_CONFIG], this is a
+     * generic, static source.
      */
     const val STATIC_IN_RIGID_ID = "static_in_rigid"
 
@@ -258,12 +261,7 @@ object SafetyCenterCtsConfigs {
     /** A Simple [SafetyCenterConfig] with an issue only source supporting all profiles. */
     val ISSUE_ONLY_SOURCE_ALL_PROFILE_CONFIG =
         singleSourceConfig(
-            SafetySource.Builder(SAFETY_SOURCE_TYPE_ISSUE_ONLY)
-                .setId(ISSUE_ONLY_ALL_PROFILE_SOURCE_ID)
-                .setPackageName(CTS_PACKAGE_NAME)
-                .setProfile(SafetySource.PROFILE_ALL)
-                .setRefreshOnPageOpenAllowed(true)
-                .build())
+            issueOnlyAllProfileSafetySourceBuilder(ISSUE_ONLY_ALL_PROFILE_SOURCE_ID).build())
 
     /** A dynamic source with [OTHER_PACKAGE_NAME] */
     val DYNAMIC_OTHER_PACKAGE_SAFETY_SOURCE =
@@ -275,20 +273,10 @@ object SafetyCenterCtsConfigs {
     /** A [SafetyCenterConfig] with a dynamic source in a different, missing package. */
     val SINGLE_SOURCE_OTHER_PACKAGE_CONFIG = singleSourceConfig(DYNAMIC_OTHER_PACKAGE_SAFETY_SOURCE)
 
-    private fun dynamicAllProfileSafetySourceBuilder() =
-        dynamicSafetySourceBuilder(SINGLE_SOURCE_ALL_PROFILE_ID)
-            .setProfile(SafetySource.PROFILE_ALL)
-            .setTitleForWorkResId(android.R.string.paste)
-
     /** A simple [SafetyCenterConfig] with a source supporting all profiles. */
     val SINGLE_SOURCE_ALL_PROFILE_CONFIG =
-        singleSourceConfig(dynamicAllProfileSafetySourceBuilder().build())
-
-    /**
-     * A simple [SafetyCenterConfig] with a source supporting all profiles with an invalid intent.
-     */
-    val SINGLE_SOURCE_ALL_PROFILE_INVALID_INTENT_CONFIG =
-        singleSourceConfig(dynamicAllProfileSafetySourceBuilder().setIntentAction("stub").build())
+        singleSourceConfig(
+            dynamicAllProfileSafetySourceBuilder(SINGLE_SOURCE_ALL_PROFILE_ID).build())
 
     /** A simple [SafetyCenterConfig] for CTS tests with multiple sources. */
     val MULTIPLE_SOURCES_CONFIG =
@@ -314,13 +302,6 @@ object SafetyCenterCtsConfigs {
             .setSummaryResId(android.R.string.autofill)
             .build()
 
-    /** Source provided by [STATIC_ALL_PROFILE_CONFIG]. */
-    val STATIC_ALL_PROFILE_SOURCE =
-        staticSafetySourceBuilder("cts_static_all_profile_source_id")
-            .setProfile(SafetySource.PROFILE_ALL)
-            .setTitleForWorkResId(android.R.string.dialog_alert_title)
-            .build()
-
     /** Source provided by [STATIC_SOURCES_CONFIG]. */
     val STATIC_SOURCE_2 =
         staticSafetySourceBuilder("cts_static_source_id_2")
@@ -340,16 +321,6 @@ object SafetyCenterCtsConfigs {
             .build()
 
     /**
-     * Source group provided by [STATIC_ALL_PROFILE_SOURCES_CONFIG] containing a single source of id
-     * [STATIC_GROUP_ID].
-     */
-    val STATIC_ALL_PROFILE_SOURCE_GROUP =
-        safetySourcesGroupBuilder(STATIC_GROUP_ID)
-            .setSummaryResId(Resources.ID_NULL)
-            .addSafetySource(STATIC_ALL_PROFILE_SOURCE)
-            .build()
-
-    /**
      * Source group provided by [STATIC_SOURCES_CONFIG] containing a single source of id
      * [STATIC_SOURCE_2].
      */
@@ -366,10 +337,6 @@ object SafetyCenterCtsConfigs {
             .addSafetySourcesGroup(STATIC_SOURCE_GROUP_1)
             .addSafetySourcesGroup(STATIC_SOURCE_GROUP_2)
             .build()
-
-    /** A simple [SafetyCenterConfig] for CTS tests with static all profile source. */
-    val STATIC_ALL_PROFILE_SOURCES_CONFIG =
-        SafetyCenterConfig.Builder().addSafetySourcesGroup(STATIC_ALL_PROFILE_SOURCE_GROUP).build()
 
     /** [SafetyCenterConfig] used in CTS tests for Your Work Policy Info source. */
     fun Context.getWorkPolicyInfoConfig() =
@@ -530,6 +497,69 @@ object SafetyCenterCtsConfigs {
                     .build())
             .build()
 
+    /**
+     * A complex [SafetyCenterConfig] exploring different combinations of valid sources and groups.
+     * Including sources that support all profiles.
+     */
+    val COMPLEX_ALL_PROFILE_CONFIG =
+        SafetyCenterConfig.Builder()
+            .addSafetySourcesGroup(
+                safetySourcesGroupBuilder(DYNAMIC_GROUP_ID)
+                    .addSafetySource(
+                        dynamicSafetySourceBuilder(DYNAMIC_BAREBONE_ID)
+                            .setRefreshOnPageOpenAllowed(false)
+                            .build())
+                    .addSafetySource(
+                        dynamicAllProfileSafetySourceBuilder(DYNAMIC_DISABLED_ID)
+                            .setIntentAction(null)
+                            .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_DISABLED)
+                            .build())
+                    .addSafetySource(
+                        dynamicAllProfileSafetySourceBuilder(DYNAMIC_HIDDEN_ID)
+                            .setTitleResId(Resources.ID_NULL)
+                            .setTitleForWorkResId(Resources.ID_NULL)
+                            .setSummaryResId(Resources.ID_NULL)
+                            .setIntentAction(null)
+                            .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_HIDDEN)
+                            .build())
+                    .build())
+            .addSafetySourcesGroup(
+                safetySourcesGroupBuilder(STATIC_GROUP_ID)
+                    .setStatelessIconType(SafetySourcesGroup.STATELESS_ICON_TYPE_PRIVACY)
+                    .addSafetySource(
+                        staticSafetySourceBuilder(STATIC_BAREBONE_ID)
+                            .setSummaryResId(Resources.ID_NULL)
+                            .build())
+                    .addSafetySource(
+                        staticAllProfileSafetySourceBuilder(STATIC_ALL_OPTIONAL_ID)
+                            .setSearchTermsResId(android.R.string.ok)
+                            .build())
+                    .build())
+            .addSafetySourcesGroup(
+                SafetySourcesGroup.Builder()
+                    .setId(ISSUE_ONLY_GROUP_ID)
+                    .addSafetySource(
+                        issueOnlySafetySourceBuilder(ISSUE_ONLY_BAREBONE_ID)
+                            .setRefreshOnPageOpenAllowed(false)
+                            .build())
+                    .addSafetySource(
+                        issueOnlyAllProfileSafetySourceBuilder(ISSUE_ONLY_ALL_OPTIONAL_ID)
+                            .setMaxSeverityLevel(SafetySourceData.SEVERITY_LEVEL_RECOMMENDATION)
+                            .setLoggingAllowed(false)
+                            .build())
+                    .build())
+            .addSafetySourcesGroup(
+                safetySourcesGroupBuilder(MIXED_RIGID_GROUP_ID)
+                    .setSummaryResId(Resources.ID_NULL)
+                    .addSafetySource(
+                        dynamicAllProfileSafetySourceBuilder(DYNAMIC_IN_RIGID_ID).build())
+                    .addSafetySource(
+                        staticAllProfileSafetySourceBuilder(STATIC_IN_RIGID_ID).build())
+                    .addSafetySource(
+                        issueOnlyAllProfileSafetySourceBuilder(ISSUE_ONLY_IN_RIGID_ID).build())
+                    .build())
+            .build()
+
     private fun dynamicSafetySource(id: String) = dynamicSafetySourceBuilder(id).build()
 
     private fun dynamicSafetySourceBuilder(id: String) =
@@ -542,6 +572,11 @@ object SafetyCenterCtsConfigs {
             .setProfile(SafetySource.PROFILE_PRIMARY)
             .setRefreshOnPageOpenAllowed(true)
 
+    private fun dynamicAllProfileSafetySourceBuilder(id: String) =
+        dynamicSafetySourceBuilder(id)
+            .setProfile(SafetySource.PROFILE_ALL)
+            .setTitleForWorkResId(android.R.string.paste)
+
     private fun staticSafetySource(id: String) = staticSafetySourceBuilder(id).build()
 
     private fun staticSafetySourceBuilder(id: String) =
@@ -552,6 +587,11 @@ object SafetyCenterCtsConfigs {
             .setIntentAction(ACTION_SAFETY_CENTER)
             .setProfile(SafetySource.PROFILE_PRIMARY)
 
+    private fun staticAllProfileSafetySourceBuilder(id: String) =
+        staticSafetySourceBuilder(id)
+            .setProfile(SafetySource.PROFILE_ALL)
+            .setTitleForWorkResId(android.R.string.paste)
+
     private fun issueOnlySafetySource(id: String) = issueOnlySafetySourceBuilder(id).build()
 
     private fun issueOnlySafetySourceBuilder(id: String) =
@@ -560,6 +600,9 @@ object SafetyCenterCtsConfigs {
             .setPackageName(CTS_PACKAGE_NAME)
             .setProfile(SafetySource.PROFILE_PRIMARY)
             .setRefreshOnPageOpenAllowed(true)
+
+    private fun issueOnlyAllProfileSafetySourceBuilder(id: String) =
+        issueOnlySafetySourceBuilder(id).setProfile(SafetySource.PROFILE_ALL)
 
     private fun safetySourcesGroupBuilder(id: String) =
         SafetySourcesGroup.Builder()

@@ -37,7 +37,6 @@ import androidx.transition.AutoTransition
 import androidx.transition.TransitionManager
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.safetycenter.ui.PositionInCardList
-import com.android.permissioncontroller.safetycenter.ui.SafetyCenterTouchTarget
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
@@ -144,28 +143,21 @@ internal class SafetyEntryGroupView @JvmOverloads constructor(
                     R.drawable.ic_safety_group_expand
             )
         }
+
         isExpanded = shouldBeExpanded
 
-        // Using the ancestor i.e. parent's parent as the touch delegate since the parent is not
-        // large enough to handle the expanded touch target size.
-        val ancestor = chevronIconView?.parent?.parent as? View
-        chevronIconView?.let {
-            SafetyCenterTouchTarget.configureSize(
-                it, R.dimen.safety_center_icon_button_touch_target_size, ancestor)
-        }
-
         val newPaddingTop = context.resources.getDimensionPixelSize(
-                when {
-                    shouldBeExpanded -> R.dimen.safety_center_group_header_expanded_padding_top
-                    else -> R.dimen.safety_center_group_header_collapsed_padding_top
-                }
-        )
+                if (shouldBeExpanded) {
+                    R.dimen.sc_entry_group_expanded_padding_top
+                } else {
+                    R.dimen.sc_entry_group_collapsed_padding_top
+                })
         val newPaddingBottom = context.resources.getDimensionPixelSize(
-                when {
-                    shouldBeExpanded -> R.dimen.safety_center_group_header_expanded_padding_bottom
-                    else -> R.dimen.safety_center_group_header_collapsed_padding_bottom
-                }
-        )
+                if (shouldBeExpanded) {
+                    R.dimen.sc_entry_group_expanded_padding_bottom
+                } else {
+                    R.dimen.sc_entry_group_collapsed_padding_bottom
+                })
         setPaddingRelative(paddingStart, newPaddingTop, paddingEnd, newPaddingBottom)
 
         // accessibility attributes depend on the expanded state
