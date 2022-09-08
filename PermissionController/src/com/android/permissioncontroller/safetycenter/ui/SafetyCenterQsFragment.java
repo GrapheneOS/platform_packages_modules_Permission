@@ -155,7 +155,6 @@ public class SafetyCenterQsFragment extends Fragment {
         mRootView = root;
         if (mPermGroupUsages.isEmpty()) {
             mRootView.setVisibility(View.VISIBLE);
-            setSensorToggleState(new ArrayMap<>(), mRootView);
         } else {
             mRootView.setVisibility(View.GONE);
         }
@@ -210,7 +209,6 @@ public class SafetyCenterQsFragment extends Fragment {
     private void onPermissionGroupsLoaded(boolean initialized) {
         if (initialized) {
             mRootView.setVisibility(View.VISIBLE);
-            setSensorToggleState(new ArrayMap<>(), mRootView);
             addPermissionUsageInformation(mRootView);
         }
     }
@@ -568,6 +566,10 @@ public class SafetyCenterQsFragment extends Fragment {
             if (rootView == null) {
                 return;
             }
+        }
+
+        if (sensorState == null) {
+            sensorState = new ArrayMap<>();
         }
 
         for (int i = 0; i < sToggleButtons.size(); i++) {
