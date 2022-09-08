@@ -32,7 +32,6 @@ import android.graphics.drawable.AnimatedImageDrawable
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.Icon
 import android.os.Bundle
-import android.os.UserHandle
 import android.text.method.LinkMovementMethod
 import android.transition.ChangeBounds
 import android.transition.TransitionManager
@@ -78,19 +77,17 @@ import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandle
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.GRANTED_ALWAYS
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.GRANTED_FOREGROUND_ONLY
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.GRANTED_ONE_TIME
+import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.ResultListener
 
 class GrantPermissionsViewHandlerImpl(
     private val mActivity: Activity,
-    private val mAppPackageName: String,
-    private val mUserHandle: UserHandle
+    private val resultListener: ResultListener
 ) : GrantPermissionsViewHandler, OnClickListener {
 
     private val LOCATION_ACCURACY_DIALOGS = listOf(DIALOG_WITH_BOTH_LOCATIONS,
             DIALOG_WITH_FINE_LOCATION_ONLY, DIALOG_WITH_COARSE_LOCATION_ONLY)
     private val LOCATION_ACCURACY_IMAGE_DIAMETER = mActivity.resources.getDimension(
             R.dimen.location_accuracy_image_size).toInt()
-
-    private var resultListener: GrantPermissionsViewHandler.ResultListener? = null
 
     // Configuration of the current dialog
     private var groupName: String? = null
@@ -117,13 +114,6 @@ class GrantPermissionsViewHandlerImpl(
     private var buttons: Array<Button?> = arrayOfNulls(NEXT_BUTTON)
     private var locationViews: Array<View?> = arrayOfNulls(NEXT_LOCATION_DIALOG)
     private var rootView: ViewGroup? = null
-
-    override fun setResultListener(
-        listener: GrantPermissionsViewHandler.ResultListener
-    ): GrantPermissionsViewHandlerImpl {
-        resultListener = listener
-        return this
-    }
 
     override fun saveInstanceState(arguments: Bundle) {
         arguments.putString(ARG_GROUP_NAME, groupName)
@@ -459,11 +449,7 @@ class GrantPermissionsViewHandlerImpl(
         }
 
         if (id == R.id.grant_singleton) {
-            if (resultListener != null) {
-                resultListener!!.onPermissionGrantResult(groupName, CANCELED)
-            } else {
-                mActivity.finishAfterTransition()
-            }
+            resultListener.onPermissionGrantResult(groupName, CANCELED)
             return
         }
 
@@ -483,52 +469,56 @@ class GrantPermissionsViewHandlerImpl(
         }
 
         when (BUTTON_RES_ID_TO_NUM.get(id, -1)) {
-            ALLOW_BUTTON -> if (resultListener != null) {
+            ALLOW_BUTTON -> {
                 view.performAccessibilityAction(
                     AccessibilityNodeInfo.ACTION_CLEAR_ACCESSIBILITY_FOCUS, null)
-                resultListener!!.onPermissionGrantResult(groupName, affectedForegroundPermissions,
+                resultListener.onPermissionGrantResult(groupName, affectedForegroundPermissions,
                     GRANTED_ALWAYS)
             }
-            ALLOW_FOREGROUND_BUTTON -> if (resultListener != null) {
+            ALLOW_FOREGROUND_BUTTON -> {
                 view.performAccessibilityAction(
                     AccessibilityNodeInfo.ACTION_CLEAR_ACCESSIBILITY_FOCUS, null)
-                resultListener!!.onPermissionGrantResult(groupName, affectedForegroundPermissions,
+                resultListener.onPermissionGrantResult(groupName, affectedForegroundPermissions,
                     GRANTED_FOREGROUND_ONLY)
             }
-            ALLOW_ALWAYS_BUTTON -> if (resultListener != null) {
+            ALLOW_ALWAYS_BUTTON -> {
                 view.performAccessibilityAction(
                     AccessibilityNodeInfo.ACTION_CLEAR_ACCESSIBILITY_FOCUS, null)
-                resultListener!!.onPermissionGrantResult(groupName, affectedForegroundPermissions,
+                resultListener.onPermissionGrantResult(groupName, affectedForegroundPermissions,
                     GRANTED_ALWAYS)
             }
-            ALLOW_ONE_TIME_BUTTON -> if (resultListener != null) {
+            ALLOW_ONE_TIME_BUTTON -> {
                 view.performAccessibilityAction(
                     AccessibilityNodeInfo.ACTION_CLEAR_ACCESSIBILITY_FOCUS, null)
-                resultListener!!.onPermissionGrantResult(groupName, affectedForegroundPermissions,
+                resultListener.onPermissionGrantResult(groupName, affectedForegroundPermissions,
                     GRANTED_ONE_TIME)
             }
-            DENY_BUTTON, NO_UPGRADE_BUTTON, NO_UPGRADE_OT_BUTTON -> if (resultListener != null) {
+            DENY_BUTTON, NO_UPGRADE_BUTTON, NO_UPGRADE_OT_BUTTON -> {
                 view.performAccessibilityAction(
                     AccessibilityNodeInfo.ACTION_CLEAR_ACCESSIBILITY_FOCUS, null)
-                resultListener!!.onPermissionGrantResult(groupName, affectedForegroundPermissions,
+                resultListener.onPermissionGrantResult(groupName, affectedForegroundPermissions,
                     DENIED)
             }
             DENY_AND_DONT_ASK_AGAIN_BUTTON, NO_UPGRADE_AND_DONT_ASK_AGAIN_BUTTON,
-            NO_UPGRADE_OT_AND_DONT_ASK_AGAIN_BUTTON -> if (resultListener != null) {
+            NO_UPGRADE_OT_AND_DONT_ASK_AGAIN_BUTTON -> {
                 view.performAccessibilityAction(
                     AccessibilityNodeInfo.ACTION_CLEAR_ACCESSIBILITY_FOCUS, null)
-                resultListener!!.onPermissionGrantResult(groupName, affectedForegroundPermissions,
+                resultListener.onPermissionGrantResult(groupName, affectedForegroundPermissions,
                     DENIED_DO_NOT_ASK_AGAIN)
             }
         }
     }
 
     override fun onBackPressed() {
-        if (resultListener == null) {
-            mActivity.finishAfterTransition()
-            return
-        }
-        resultListener?.onPermissionGrantResult(groupName, CANCELED)
+        onCancelled()
+    }
+
+    override fun onCancelled() {
+        resultListener.onPermissionGrantResult(groupName, CANCELED)
+    }
+
+    override fun setResultListener(listener: ResultListener): GrantPermissionsViewHandler {
+        throw UnsupportedOperationException()
     }
 
     companion object {

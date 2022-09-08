@@ -238,8 +238,7 @@ public class GrantPermissionsActivity extends SettingsActivity
                     .setResultListener(this);
         } else {
             mViewHandler = new com.android.permissioncontroller.permission.ui.handheld
-                    .GrantPermissionsViewHandlerImpl(this, mTargetPackage,
-                    Process.myUserHandle()).setResultListener(this);
+                    .GrantPermissionsViewHandlerImpl(this, this);
         }
 
         GrantPermissionsViewModelFactory factory = new GrantPermissionsViewModelFactory(
@@ -497,6 +496,9 @@ public class GrantPermissionsActivity extends SettingsActivity
         final int x = (int) ev.getX();
         final int y = (int) ev.getY();
         if ((x < 0) || (y < 0) || (x > (rootView.getWidth())) || (y > (rootView.getHeight()))) {
+            if (MotionEvent.ACTION_DOWN == ev.getAction()) {
+                mViewHandler.onCancelled();
+            }
             finishAfterTransition();
         }
         return super.dispatchTouchEvent(ev);
