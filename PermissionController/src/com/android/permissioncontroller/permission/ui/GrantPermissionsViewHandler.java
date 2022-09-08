@@ -114,6 +114,11 @@ public interface GrantPermissionsViewHandler {
     void onBackPressed();
 
     /**
+     * Handles cancel event for the permission dialog.
+     */
+    default void onCancelled() {}
+
+    /**
      * Called by {@link GrantPermissionsActivity} to allow the handler to update
      * the ui when blur is enabled/disabled.
      */
