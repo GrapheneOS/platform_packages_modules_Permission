@@ -22,6 +22,8 @@ import android.app.Application
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.os.UserHandle
 import android.util.Log
 import android.view.LayoutInflater
@@ -43,13 +45,8 @@ import com.android.permissioncontroller.permission.ui.model.UnusedAppsViewModel
 import com.android.permissioncontroller.permission.ui.model.UnusedAppsViewModel.Months
 import com.android.permissioncontroller.permission.ui.model.UnusedAppsViewModel.UnusedPackageInfo
 import com.android.permissioncontroller.permission.ui.model.UnusedAppsViewModelFactory
-import com.android.permissioncontroller.permission.utils.IPC
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import java.text.Collator
-import kotlinx.coroutines.Dispatchers.Main
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 /**
  * A fragment displaying all applications that are unused as well as the option to remove them
@@ -116,18 +113,13 @@ class UnusedAppsFragment<PF, UnusedAppPref> : Fragment()
         activity?.getActionBar()?.setDisplayHomeAsUpEnabled(true)
 
         if (!viewModel.unusedPackageCategoriesLiveData.isInitialized) {
-            GlobalScope.launch(IPC) {
-                delay(SHOW_LOAD_DELAY_MS)
+            val handler = Handler(Looper.getMainLooper())
+            handler.postDelayed({
                 if (!viewModel.unusedPackageCategoriesLiveData.isInitialized) {
-                    GlobalScope.launch(Main) {
-                        preferenceFragment.setLoadingState(loading = true, animate = true)
-                    }
+                    preferenceFragment.setLoadingState(loading = true, animate = true)
                 } else {
-                    GlobalScope.launch(Main) {
-                        updatePackages(viewModel.unusedPackageCategoriesLiveData.value!!)
-                    }
-                }
-            }
+                    updatePackages(viewModel.unusedPackageCategoriesLiveData.value!!)
+            }}, SHOW_LOAD_DELAY_MS)
         } else {
             updatePackages(viewModel.unusedPackageCategoriesLiveData.value!!)
         }
