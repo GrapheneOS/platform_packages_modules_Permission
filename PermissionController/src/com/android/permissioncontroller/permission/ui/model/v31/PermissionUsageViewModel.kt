@@ -27,6 +27,7 @@ import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.model.AppPermissionGroup
 import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
 import com.android.permissioncontroller.permission.model.v31.PermissionUsages
@@ -152,7 +153,7 @@ class PermissionUsageViewModel(val roleManager: RoleManager) : ViewModel() {
             val groupUsageCount = groupUsages.size
             for (j in 0 until groupUsageCount) {
                 val groupUsage = groupUsages[j]
-                if (Utils.isModernPermissionGroup(groupUsage.group.name)) {
+                if (PermissionMapping.isPlatformPermissionGroup(groupUsage.group.name)) {
                     if (seenGroups.add(groupUsage.group.name)) {
                         groups.add(groupUsage.group)
                     }

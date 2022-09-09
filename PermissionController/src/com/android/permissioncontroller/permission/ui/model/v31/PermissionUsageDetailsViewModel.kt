@@ -35,6 +35,7 @@ import androidx.preference.PreferenceCategory
 import androidx.preference.PreferenceScreen
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.model.AppPermissionGroup
 import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
 import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage.GroupUsage
@@ -445,7 +446,7 @@ class PermissionUsageDetailsViewModel(
         for (appUsage in appPermissionUsages) {
             val groupUsages = appUsage.groupUsages
             for (groupUsage in groupUsages) {
-                if (Utils.isModernPermissionGroup(groupUsage.group.name)) {
+                if (PermissionMapping.isPlatformPermissionGroup(groupUsage.group.name)) {
                     if (seenGroups.add(groupUsage.group.name)) {
                         groups.add(groupUsage.group)
                     }

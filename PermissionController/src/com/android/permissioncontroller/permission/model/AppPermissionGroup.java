@@ -55,6 +55,7 @@ import com.android.permissioncontroller.permission.service.LocationAccessCheck;
 import com.android.permissioncontroller.permission.utils.ArrayUtils;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.LocationUtils;
+import com.android.permissioncontroller.permission.utils.PermissionMapping;
 import com.android.permissioncontroller.permission.utils.SoftRestrictedPermissionPolicy;
 import com.android.permissioncontroller.permission.utils.Utils;
 
@@ -181,7 +182,7 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
             return null;
         }
 
-        String group = Utils.getGroupOfPermission(permissionInfo);
+        String group = PermissionMapping.getGroupOfPermission(permissionInfo);
         PackageItemInfo groupInfo = permissionInfo;
         if (group != null) {
             try {
@@ -1334,7 +1335,7 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
      * @return {@code true} iff this group supports one-time permissions
      */
     public boolean supportsOneTimeGrant() {
-        return Utils.supportsOneTimeGrant(getName());
+        return PermissionMapping.supportsOneTimeGrant(getName());
     }
 
     public int getFlags() {
