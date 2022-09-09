@@ -20,10 +20,10 @@
   <item>
     <shape android:shape="rectangle">
       <corners
-          android:bottomLeftRadius="4dp"
-          android:bottomRightRadius="4dp"
-          android:topLeftRadius="28dp"
-          android:topRightRadius="28dp" />
+          android:bottomLeftRadius="@dimen/sc_card_corner_radius_xsmall"
+          android:bottomRightRadius="@dimen/sc_card_corner_radius_xsmall"
+          android:topLeftRadius="@dimen/sc_card_corner_radius_large"
+          android:topRightRadius="@dimen/sc_card_corner_radius_large" />
       <solid android:color="?attr/colorSurface" />
     </shape>
   </item>
@@ -31,10 +31,10 @@
   <item android:id="@android:id/mask">
     <shape android:shape="rectangle">
       <corners
-          android:bottomLeftRadius="4dp"
-          android:bottomRightRadius="4dp"
-          android:topLeftRadius="28dp"
-          android:topRightRadius="28dp" />
+          android:bottomLeftRadius="@dimen/sc_card_corner_radius_xsmall"
+          android:bottomRightRadius="@dimen/sc_card_corner_radius_xsmall"
+          android:topLeftRadius="@dimen/sc_card_corner_radius_large"
+          android:topRightRadius="@dimen/sc_card_corner_radius_large" />
       <solid android:color="#FFFF" />
     </shape>
   </item>

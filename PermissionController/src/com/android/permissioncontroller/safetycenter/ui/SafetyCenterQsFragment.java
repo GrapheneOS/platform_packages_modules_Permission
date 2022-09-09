@@ -163,7 +163,7 @@ public class SafetyCenterQsFragment extends Fragment {
         View closeButton = root.findViewById(R.id.close_button);
         closeButton.setOnClickListener((v) -> requireActivity().finish());
         SafetyCenterTouchTarget.configureSize(
-                closeButton, R.dimen.safety_center_icon_button_touch_target_size);
+                closeButton, R.dimen.sc_icon_button_touch_target_size);
 
         mSafetyCenterViewModel =
                 new ViewModelProvider(
