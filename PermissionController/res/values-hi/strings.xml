@@ -223,7 +223,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"पिछली बार <xliff:g id="DATE">%s</xliff:g> को खोला गया था"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"अगर आप इस ऐप्लिकेशन को सभी फ़ाइलों को मैनेज करने की अनुमति देते हैं, तो यह ऐप्लिकेशन इस डिवाइस या इससे जुड़े दूसरे डिवाइस के स्टोरेज में मौजूद किसी भी फ़ाइल को ऐक्सेस कर सकता है, उनमें बदलाव कर सकता है, और उन्हें मिटा भी सकता है. यह ऐप्लिकेशन आपसे पूछे बिना फ़ाइलें ऐक्सेस कर सकता है."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"क्या आप इस ऐप्लिकेशन को इस डिवाइस या इससे जुड़े दूसरे डिवाइस के स्टोरेज में मौजूद फ़ाइलें ऐक्सेस करने, उनमें बदलाव करने, और उन्हें मिटाने की अनुमति देना चाहते हैं? यह ऐप्लिकेशन आपसे पूछे बिना फ़ाइलें ऐक्सेस कर सकता है."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"इस अनुमति वाली ऐप्लिकेशन <xliff:g id="DESCRIPTION">%1$s</xliff:g> कर सकते हैं"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"इस अनुमति वाले ऐप्लिकेशन <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"इसकी अनुमति वाले ऐप्लिकेशन, आपकी शारीरिक गतिविधियों की जानकारी ऐक्सेस कर सकते हैं. इसमें पैदल चलने, बाइक चलाने, गाड़ी चलाने, और कदमों की संख्या जैसी कई जानकारी शामिल है"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"इस अनुमति वाले ऐप्लिकेशन आपके कैलेंडर को ऐक्सेस कर सकते हैं"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"ऐसे ऐप्लिकेशन जिनके पास अनुमति है, वे फ़ोन में कॉल लॉग को पढ़ सकते हैं और लिख सकते हैं"</string>
@@ -248,7 +248,7 @@
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"ये सिर्फ़ मीडिया फ़ाइलें ऐक्सेस कर सकते हैं"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"ये ऐप्लिकेशन सभी फ़ाइलों को मैनेज कर सकते हैं"</string>
     <string name="ask_header" msgid="2633816846459944376">"हर बार पूछें"</string>
-    <string name="denied_header" msgid="903209608358177654">"अनुमति नहीं है"</string>
+    <string name="denied_header" msgid="903209608358177654">"इन ऐप्लिकेशन के पास अनुमति नहींं है"</string>
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"ऐसे और ऐप्लिकेशन देखें जो सभी फ़ाइलों को ऐक्सेस कर सकते हैं"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 दिन}one{# दिन}other{# दिन}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 घंटा}one{# घंटा}other{# घंटे}}"</string>
@@ -321,7 +321,7 @@
     <string name="no_apps_allowed" msgid="7718822655254468631">"किसी ऐप्लिकेशन को अनुमति नहीं है"</string>
     <string name="no_apps_allowed_full" msgid="8011716991498934104">"किसी भी ऐप्लिकेशन को, सभी फ़ाइलों के लिए अनुमति नहीं दी गई है"</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"किसी भी ऐप्लिकेशन को, सिर्फ़ मीडिया फ़ाइलों के लिए अनुमति नहीं दी गई है"</string>
-    <string name="no_apps_denied" msgid="7663435886986784743">"किसी ऐप्लिकेशन की अनुमति नहीं रोकी गई है"</string>
+    <string name="no_apps_denied" msgid="7663435886986784743">"किसी ऐप्लिकेशन को अनुमति नहीं दी गई"</string>
     <string name="car_permission_selected" msgid="180837028920791596">"चुनी गई अनुमति"</string>
     <string name="settings" msgid="5409109923158713323">"सेटिंग"</string>
     <string name="accessibility_service_dialog_title_single" msgid="7956432823014102366">"<xliff:g id="SERVICE_NAME">%s</xliff:g> को आपके डिवाइस पर पूरा ऐक्सेस मिला है"</string>
