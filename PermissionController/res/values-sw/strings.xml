@@ -287,7 +287,7 @@
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Ondoa idhini ya kufikia"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"Angalia chaguo zaidi"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Idhini ya kufikia imeondolewa"</string>
-    <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"Kagua programu yenye ufikaji kamili wa kifaa"</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"Kagua programu yenye idhini kamili ya kufikia kifaa"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> inaweza kuona skrini yako na kutekeleza vitendo kwenye kifaa chako. Programu za ufikivu zinahitaji aina hii ya ufikiaji ili zifanye kazi kadiri ilivyokusudiwa."</string>
     <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"Programu hii inaweza kuona skrini yako na kutekeleza vitendo kwenye kifaa chako. Programu za ufikivu zinahitaji aina hii ya ufikiaji ili zifanye kazi kama ilivyokusudiwa, lakini kagua programu na uhakikishe kuwa unaiamini."</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Ondoa idhini ya kufikia"</string>

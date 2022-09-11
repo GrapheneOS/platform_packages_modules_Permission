@@ -288,7 +288,7 @@
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"مشاهده گزینه‌های بیشتر"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"دسترسی برداشته شد"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"مرور برنامهٔ دارای دسترسی کامل به دستگاه"</string>
-    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> می‌تواند صفحه‌نمایش شما را ببیند و کنش‌هایی در دستگاهتان انجام دهد. برنامه‌های دسترس‌پذیری به این نوع دسترسی نیاز دارند تا طبق انتظار کار کنند."</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"‫<xliff:g id="APP_NAME">%s</xliff:g> می‌تواند صفحه‌نمایش شما را ببیند و کنش‌هایی در دستگاهتان انجام دهد. برنامه‌های دسترس‌پذیری به این نوع دسترسی نیاز دارند تا طبق انتظار کار کنند."</string>
     <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"این برنامه می‌تواند صفحه‌نمایش شما را ببیند و کنش‌هایی در دستگاهتان انجام دهد. برنامه‌های دسترس‌پذیری به این نوع دسترسی نیاز دارند تا طبق انتظار کار کنند اما برنامه را بررسی کنید و مطمئن شوید به آن اعتماد دارید."</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"برداشتن دسترسی"</string>
     <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"مشاهده برنامه‌های دارای دسترسی کامل"</string>

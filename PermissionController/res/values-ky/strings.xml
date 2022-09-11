@@ -287,13 +287,13 @@
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Кирүү мүмкүнчүлүгүн өчүрүү"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"Дагы башка параметрлерди көрүү"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Кирүү мүмкүнчүлүгү өчүрүлдү"</string>
-    <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"Түзмөктү толук колдонуу мүмкүнчүлүгү бар колдонмолорду карап чыгуу"</string>
-    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> экраныңызды көрүп, түзмөгүңүздө аракеттерди аткара алат. Атайын мүмкүнчүлүктөр колдонмолорунун ойдогудай иштеши үчүн мүмкүнчүлүктөрдүн ушундай түрлөрүн берүү керек."</string>
-    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"Бул колдонмо экраныңызды көрүп, түзмөгүңүздө аракеттерди аткара алат. Атайын мүмкүнчүлүктөр колдонмолорунун ойдогудай иштеши үчүн мүмкүнчүлүктөрдүн ушундай түрлөрүн берүү керек. Бирок колдонмону карап чыгып, ал ишенимдүү экенин текшериңиз."</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"Түзмөккө толук мүмкүнчүлүгү бар колдонмолорду карап чыгыңыз"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> экраныңыздагы нерселерди көрүп, түзмөгүңүздө ар кандай буйруктарды аткара алат. Бул нерсе атайын мүмкүнчүлүктөр ойдогудай иштеши үчүн талап кылынат."</string>
+    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"Атайын мүмкүнчүлүктөр туура иштеши үчүн бул колдонмо экрандагы нерселерди көрүп, түзмөгүңүздө ар кандай аракеттерди жасай алат. Эң негизгиси, колдонмо ишенимдүү болушу керек."</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Кирүү мүмкүнчүлүгүн өчүрүү"</string>
     <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"Толук мүмкүнчүлүгү бар колдонмолорду көрүү"</string>
     <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Кирүү мүмкүнчүлүгү өчүрүлдү"</string>
-    <string name="safety_center_notification_app_label" msgid="2457720616141926534">"Android Тутуму"</string>
+    <string name="safety_center_notification_app_label" msgid="2457720616141926534">"Android системасы"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Колдонмонун уруксаттары купуялыкты сактоо үчүн өчүрүлдү"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> бир нече айдан бери колдонулган жок. Көрүү үчүн таптап коюңуз."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> жана дагы 1 колдонмо бир нече айдан бери колдонулган жок. Көрүү үчүн таптап коюңуз."</string>

@@ -288,7 +288,7 @@
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"مزید اختیارات دیکھیں"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"رسائی ہٹا دی گئی"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"آلے کی مکمل رسائی کے ساتھ ایپ کا جائزہ لیں"</string>
-    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> آپ کی اسکرین دیکھ اور آپ کے آلے پر کارروائیاں کر سکتی ہے۔ ایکسیسبیلٹی ایپس کو حسب منشا کام کرنے کے لیے اس قسم کی رسائی کی ضرورت ہوتی ہے۔"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"‫<xliff:g id="APP_NAME">%s</xliff:g> آپ کی اسکرین دیکھ اور آپ کے آلے پر کارروائیاں کر سکتی ہے۔ ایکسیسبیلٹی ایپس کو حسب منشا کام کرنے کے لیے اس قسم کی رسائی کی ضرورت ہوتی ہے۔"</string>
     <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"یہ ایپ آپ کی اسکرین دیکھ اور آپ کے آلے پر کارروائیاں کر سکتی ہے۔ ایکسیسبیلٹی ایپس کو حسب منشا کام کرنے کے لیے اس قسم کی رسائی کی ضرورت ہوتی ہے لیکن ایپ کو چیک کریں اور یقینی بنائیں کہ آپ اس پر اعتماد کرتے ہیں۔"</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"رسائی ہٹائیں"</string>
     <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"مکمل رسائی والی ایپس دیکھیں"</string>

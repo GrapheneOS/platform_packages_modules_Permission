@@ -287,10 +287,10 @@
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"إزالة إمكانية الوصول"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"الاطّلاع على المزيد من الخيارات"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"تمت إزالة إمكانية الوصول."</string>
-    <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"مراجعة تطبيق لديه الإذن الوصول الكامل إلى الأجهزة"</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"مراجعة تطبيق لديه إذن وصول كامل إلى الجهاز"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"يمكن لتطبيق <xliff:g id="APP_NAME">%s</xliff:g> عرض شاشتك وتنفيذ إجراءات على جهازك. تتطلب التطبيقات المعنية بتسهيل الاستخدام هذا النوع من الوصول للعمل على النحو المطلوب."</string>
     <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"يمكن لهذا التطبيق عرض شاشتك وتنفيذ إجراءات على جهازك. تتطلب التطبيقات المعنية بتسهيل الاستخدام هذا النوع من الوصول للعمل على النحو المطلوب، ولكن عليك التحقّق من التطبيق والتأكَّد من أنه موضع ثقتك."</string>
-    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"إزالة إمكانية الوصول إلى أدوات تسهيل الاستخدام"</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"إزالة إمكانية الوصول"</string>
     <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"عرض التطبيقات التي لديها إذن الوصول الكامل"</string>
     <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"تمت إزالة إمكانية الوصول إلى أدوات تسهيل الاستخدام."</string>
     <string name="safety_center_notification_app_label" msgid="2457720616141926534">"‏نظام Android"</string>
