@@ -28,7 +28,7 @@
     <string name="safety_center_entry_group_item_content_description" msgid="7348298582877249787">"Élément de la liste. <xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_entry_content_description" msgid="3639565652938224321">"<xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_more_issues_card_title" msgid="8599419758014246517">"Afficher toutes les alertes"</string>
-    <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{Développez et affichez une autre alerte}one{Développez et affichez # autre alerte}other{Développez et affichez # autres alertes}}"</string>
+    <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{Développez et affichez une autre alerte}one{Développez et affichez # autre alerte}many{Développez et affichez # d\'autres alertes}other{Développez et affichez # autres alertes}}"</string>
     <string name="safety_center_issue_card_content_description" msgid="1281390769721765363">"Alerte. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_issue_card_content_description_with_subtitle" msgid="5504040663935313539">"Alerte. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUBTITLE">%2$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%3$s</xliff:g>"</string>
     <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"Action terminée"</string>
