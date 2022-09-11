@@ -22,7 +22,7 @@
     <string name="lock_screen_sources_summary" msgid="7220439741282516496"></string>
     <string name="lock_screen_title" msgid="4069104894527169877">"Näytön lukitus"</string>
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"Ei vielä tietoja"</string>
-    <string name="privacy_sources_title" msgid="4061110826457365957">"Tietosuoja"</string>
+    <string name="privacy_sources_title" msgid="4061110826457365957">"Yksityisyys"</string>
     <string name="privacy_sources_summary" msgid="4089719981155120864">"Hallintapaneeli, luvat ja asetukset"</string>
     <string name="permission_usage_title" msgid="3633779688945350407">"Yksityisyydenhallintapaneeli"</string>
     <string name="permission_usage_summary" msgid="5323079206029964468">"Näytä, mitkä sovellukset ovat käyttäneet lupia äskettäin"</string>
