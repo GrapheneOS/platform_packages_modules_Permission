@@ -33,8 +33,8 @@
     <dimen name="sc_entry_padding_end">@dimen/sc_spacing_xxxlarge</dimen>
     <dimen name="sc_entry_group_expanded_padding_top">@dimen/sc_spacing_xxxlarge</dimen>
     <dimen name="sc_entry_group_expanded_padding_bottom">@dimen/sc_spacing_xsmall</dimen>
-    <dimen name="sc_entry_group_collapsed_padding_top">@dimen/sc_spacing_xxlarge</dimen>
-    <dimen name="sc_entry_group_collapsed_padding_bottom">@dimen/sc_spacing_xxlarge</dimen>
+    <dimen name="sc_entry_group_collapsed_padding_top">@dimen/sc_spacing_large</dimen>
+    <dimen name="sc_entry_group_collapsed_padding_bottom">@dimen/sc_spacing_large</dimen>
     <dimen name="sc_card_margin_bottom">@dimen/sc_spacing_xxxlarge</dimen>
 
     <dimen name="sc_icon_button_touch_target_size">48dp</dimen>
