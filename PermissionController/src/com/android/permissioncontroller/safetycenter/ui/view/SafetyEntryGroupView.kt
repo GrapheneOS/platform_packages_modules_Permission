@@ -24,6 +24,7 @@ import android.os.Build
 import android.safetycenter.SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_RECOMMENDATION
 import android.safetycenter.SafetyCenterEntryGroup
 import android.util.AttributeSet
+import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -55,6 +56,8 @@ internal class SafetyEntryGroupView @JvmOverloads constructor(
     init {
         inflate(context, R.layout.safety_center_group, this)
     }
+
+    private val groupHeaderView: LinearLayout? by lazy { findViewById(R.id.group_header) }
 
     private val expandedHeaderView: ViewGroup? by lazy { findViewById(R.id.expanded_header) }
     private val expandedTitleView: TextView? by lazy {
@@ -124,6 +127,12 @@ internal class SafetyEntryGroupView @JvmOverloads constructor(
         collapsedHeaderView?.visibility = if (shouldBeExpanded) View.GONE else View.VISIBLE
         expandedHeaderView?.visibility = if (shouldBeExpanded) View.VISIBLE else View.GONE
         entriesContainerView?.visibility = if (shouldBeExpanded) View.VISIBLE else View.GONE
+
+        if (shouldBeExpanded) {
+            groupHeaderView?.gravity = Gravity.TOP
+        } else {
+            groupHeaderView?.gravity = Gravity.CENTER_VERTICAL
+        }
 
         if (isExpanded == null) {
             chevronIconView?.setImageResource(
