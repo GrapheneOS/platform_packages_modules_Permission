@@ -26,10 +26,10 @@
                 </group>
                 <group android:name="_R_G_L_0_G" android:pivotX="112" android:pivotY="112"
                        android:scaleX="1" android:scaleY="1">
-                    <path android:name="_R_G_L_0_G_D_0_P_0" android:fillColor="?attr/colorSurface"
+                    <path android:name="_R_G_L_0_G_D_0_P_0" android:fillColor="?attr/colorScShieldAccent"
                           android:fillAlpha="1" android:fillType="nonZero"
                           android:pathData=" M104.53 135.26 C104.53,135.26 80.27,110.06 80.27,110.06 C80.27,110.06 89.6,100.72 89.6,100.72 C89.6,100.72 104.53,114.72 104.53,114.72 C104.53,114.72 134.4,85.79 134.4,85.79 C134.4,85.79 143.73,95.12 143.73,95.12 C143.73,95.12 104.53,135.26 104.53,135.26c "/>
-                    <path android:name="_R_G_L_0_G_D_1_P_0" android:fillColor="?attr/colorSurface"
+                    <path android:name="_R_G_L_0_G_D_1_P_0" android:fillColor="?attr/colorScShieldAccent"
                           android:fillAlpha="1" android:fillType="nonZero"
                           android:pathData=" M104.53 135.26 C104.53,135.26 80.27,110.06 80.27,110.06 C80.27,110.06 89.6,100.72 89.6,100.72 C89.6,100.72 104.53,114.72 104.53,114.72 C104.53,114.72 134.4,85.79 134.4,85.79 C134.4,85.79 143.73,95.12 143.73,95.12 C143.73,95.12 104.53,135.26 104.53,135.26c "/>
                 </group>
