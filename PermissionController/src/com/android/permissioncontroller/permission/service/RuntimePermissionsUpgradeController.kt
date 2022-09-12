@@ -41,8 +41,8 @@ import com.android.permissioncontroller.permission.model.livedatatypes.LightPerm
 import com.android.permissioncontroller.permission.utils.IPC
 import com.android.permissioncontroller.permission.utils.KotlinUtils.grantBackgroundRuntimePermissions
 import com.android.permissioncontroller.permission.utils.KotlinUtils.grantForegroundRuntimePermissions
-import com.android.permissioncontroller.permission.utils.Utils.getPlatformPermissionNamesOfGroup
-import com.android.permissioncontroller.permission.utils.Utils.getRuntimePlatformPermissionNames
+import com.android.permissioncontroller.permission.utils.PermissionMapping.getPlatformPermissionNamesOfGroup
+import com.android.permissioncontroller.permission.utils.PermissionMapping.getRuntimePlatformPermissionNames
 import com.android.permissioncontroller.permission.utils.application
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

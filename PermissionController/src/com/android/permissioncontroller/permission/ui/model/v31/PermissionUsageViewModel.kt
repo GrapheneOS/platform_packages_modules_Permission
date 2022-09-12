@@ -24,6 +24,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.model.AppPermissionGroup
 import com.android.permissioncontroller.permission.model.legacy.PermissionApps.PermissionApp
 import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
@@ -183,7 +184,7 @@ class PermissionUsageViewModel(val roleManager: RoleManager) : ViewModel() {
     private fun List<AppPermissionUsage>.extractAllPlatformAppPermissionGroups(): Set<String> =
         this.flatMap { it.groupUsages }
             .map { it.group.name }
-            .filter { Utils.isModernPermissionGroup(it) }
+            .filter { PermissionMapping.isPlatformPermissionGroup(it) }
             .toSet()
 
     /**

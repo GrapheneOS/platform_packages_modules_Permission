@@ -37,6 +37,7 @@ import androidx.annotation.Nullable;
 
 import com.android.permissioncontroller.permission.utils.ArrayUtils;
 import com.android.permissioncontroller.permission.utils.CollectionUtils;
+import com.android.permissioncontroller.permission.utils.PermissionMapping;
 import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.permissioncontroller.role.utils.PackageUtils;
 
@@ -180,9 +181,9 @@ public class Permissions {
         Set<String> whitelistedRestrictedPermissions = new ArraySet<>(
                 packageManager.getWhitelistedRestrictedPermissions(packageName,
                         PackageManager.FLAG_PERMISSION_WHITELIST_SYSTEM));
-        List<String> smsPermissions = Utils.getPlatformPermissionNamesOfGroup(
+        List<String> smsPermissions = PermissionMapping.getPlatformPermissionNamesOfGroup(
                 Manifest.permission_group.SMS);
-        List<String> callLogPermissions = Utils.getPlatformPermissionNamesOfGroup(
+        List<String> callLogPermissions = PermissionMapping.getPlatformPermissionNamesOfGroup(
                 Manifest.permission_group.CALL_LOG);
 
         int sortedPermissionsToGrantLength = sortedPermissionsToGrant.length;
