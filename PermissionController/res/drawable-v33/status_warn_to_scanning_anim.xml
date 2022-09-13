@@ -18,7 +18,7 @@
                 </group>
                 <group android:name="_R_G_L_1_G" android:pivotX="112" android:pivotY="112"
                        android:scaleX="1" android:scaleY="1">
-                    <path android:name="_R_G_L_1_G_D_0_P_0" android:fillColor="?attr/colorSurface"
+                    <path android:name="_R_G_L_1_G_D_0_P_0" android:fillColor="?attr/colorScShieldAccent"
                           android:fillAlpha="1" android:fillType="nonZero"
                           android:pathData=" M112 142.67 C117.15,142.67 121.33,138.49 121.33,133.33 C121.33,128.18 117.15,124 112,124 C106.84,124 102.66,128.18 102.66,133.33 C102.66,138.49 106.84,142.67 112,142.67c "/>
                 </group>
@@ -27,7 +27,7 @@
                            android:translateY="96.002" android:pivotX="0.055"
                            android:pivotY="-18.901" android:scaleX="1" android:scaleY="1">
                         <path android:name="_R_G_L_0_G_D_0_P_0"
-                              android:fillColor="?attr/colorSurface" android:fillAlpha="1"
+                              android:fillColor="?attr/colorScShieldAccent" android:fillAlpha="1"
                               android:fillType="nonZero"
                               android:pathData=" M9.33 -18.67 C9.33,-18.67 -9.33,-18.67 -9.33,-18.67 C-9.33,-18.67 -9.33,18.67 -9.33,18.67 C-9.33,18.67 9.33,18.67 9.33,18.67 C9.33,18.67 9.33,-18.67 9.33,-18.67c "/>
                     </group>
