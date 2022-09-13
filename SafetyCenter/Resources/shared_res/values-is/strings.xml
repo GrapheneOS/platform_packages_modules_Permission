@@ -31,8 +31,7 @@
     <string name="redirecting_error" msgid="8146983632878233202">"Ekki tókst að opna síðuna"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Ekki tókst að leysa úr viðvöruninni"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"Ekki tókst að endurnýja stillingar"</string>
-    <!-- no translation found for refresh_error (656062128422446177) -->
-    <skip />
+    <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{Ekki tókst að athuga stillingu}one{Ekki tókst að athuga stillingar}other{Ekki tókst að athuga stillingar}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"Hlé gert á vinnusniði"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"Engar upplýsingar ennþá"</string>
 </resources>
