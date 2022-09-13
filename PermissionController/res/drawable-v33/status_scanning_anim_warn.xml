@@ -7,7 +7,7 @@
                 <group android:name="_R_G_L_2_G" android:translateX="-168" android:translateY="-168"
                        android:pivotX="280" android:pivotY="280" android:scaleX="0.4"
                        android:scaleY="0.4">
-                    <path android:name="_R_G_L_2_G_S" android:fillColor="?attr/colorScShieldAccent"
+                    <path android:name="_R_G_L_2_G_S" android:fillColor="@android:color/transparent"
                           android:pathData="M0,0 L560,0 L560,560 L0,560z"/>
                 </group>
                 <group android:name="_R_G_L_1_G" android:pivotX="112" android:pivotY="112"
