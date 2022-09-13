@@ -287,7 +287,7 @@
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"移除存取權"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"查看更多設定方式"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"存取權已移除"</string>
-    <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"檢查哪些應用程式可完整存取裝置"</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"檢查具有裝置完整存取權的應用程式"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"「<xliff:g id="APP_NAME">%s</xliff:g>」可以查看裝置畫面並在裝置上執行動作。無障礙應用程式必須取得這類型的存取權才能發揮功用。"</string>
     <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"這個應用程式可以查看裝置畫面並在裝置上執行動作。無障礙應用程式必須取得這類型的存取權才能發揮功用，但請務必確認你信任這個應用程式。"</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"移除存取權"</string>

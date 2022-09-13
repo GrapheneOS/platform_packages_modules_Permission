@@ -291,7 +291,7 @@
     <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> może wyświetlać Twój ekran i wykonywać działania na Twoim urządzeniu. Aplikacje z ułatwieniami dostępu potrzebują tego typu dostępu, aby funkcjonować prawidłowo."</string>
     <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"Ta aplikacja może wyświetlać Twój ekran i wykonywać działania na Twoim urządzeniu. Aplikacje z ułatwieniami dostępu potrzebują tego typu dostępu, aby działać prawidłowo, ale sprawdź aplikację i upewnij się, że jej ufasz."</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Anuluj dostęp"</string>
-    <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"Zweryfikuj aplikacje z pełnym dostępem do urządzenia"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"Wyświetl aplikacje z pełnym dostępem"</string>
     <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Dostęp usunięty"</string>
     <string name="safety_center_notification_app_label" msgid="2457720616141926534">"System Android"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Usunięto uprawnienia aplikacji, by chronić prywatność"</string>

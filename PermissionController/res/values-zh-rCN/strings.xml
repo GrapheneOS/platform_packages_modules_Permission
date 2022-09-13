@@ -287,7 +287,7 @@
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"撤消访问权限"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"查看更多选项"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"已撤消访问权限"</string>
-    <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"查看拥有设备完全访问权限的应用"</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"检查对设备具有完全访问权限的应用"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"“<xliff:g id="APP_NAME">%s</xliff:g>”可以查看您的屏幕，并在您的设备上执行操作。无障碍应用需要此类权限才能正常运行。"</string>
     <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"此应用可以查看您的屏幕，并在您的设备上执行操作。无障碍应用需要此类权限才能正常运行，不过请首先检查应用是否可信。"</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"移除访问权限"</string>

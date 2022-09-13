@@ -284,14 +284,14 @@
     <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"Examinați aplicația cu acces la notificări"</string>
     <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g> poate să închidă, să facă acțiuni în legătură cu conținutul notificărilor și să-l acceseze"</string>
     <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"Aplicația poate să închidă, să facă acțiuni în legătură cu conținutul notificărilor și să-l acceseze. Unele aplicații au nevoie de acest tip de acces pentru a funcționa corect."</string>
-    <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Eliminați accesul"</string>
+    <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Elimină accesul"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"Afișați mai multe opțiuni"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Acces eliminat"</string>
-    <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"Examinați aplicația cu acces complet la dispozitiv"</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"Verifică aplicația cu acces complet la dispozitiv"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> poate să vă vadă ecranul și să realizeze acțiuni pe dispozitiv. Aplicațiile de accesibilitate au nevoie de acest tip de acces pentru a funcționa corect."</string>
     <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"Aplicația poate să vă vadă ecranul și să realizeze acțiuni pe dispozitiv. Aplicațiile de accesibilitate au nevoie de acest tip de acces pentru a funcționa corect, dar verificați aplicația și asigurați-vă că este de încredere."</string>
-    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Eliminați accesul"</string>
-    <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"Vedeți aplicațiile cu acces complet"</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Elimină accesul"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"Vezi aplicațiile cu acces complet"</string>
     <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Acces eliminat"</string>
     <string name="safety_center_notification_app_label" msgid="2457720616141926534">"Sistemul Android"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Permisiunile pentru aplicație s-au eliminat pentru confidențialitate"</string>

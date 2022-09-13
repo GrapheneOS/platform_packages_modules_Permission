@@ -291,7 +291,7 @@
     <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g>, ekranınızı görüntüleyebilir ve cihazınızda işlem gerçekleştirebilir. Erişilebilirlik uygulamaları, istenen şekilde çalışmak için bu tür bir erişime ihtiyaç duyar."</string>
     <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"Bu uygulama, ekranınızı görüntüleyebilir ve cihazınızda işlem gerçekleştirebilir. Erişilebilirlik uygulamaları, istenen şekilde çalışmak için bu tür bir erişime ihtiyaç duyar. Yine de ilgili uygulamayı kontrol edip güvenilir olduğundan emin olun."</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Erişimi kaldırın"</string>
-    <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"Tam erişime sahip olan uygulamaları görüntüle"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"Tam erişime sahip olan uygulamaları görüntüleyin"</string>
     <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Erişim kaldırıldı"</string>
     <string name="safety_center_notification_app_label" msgid="2457720616141926534">"Android Sistemi"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Uygulama izinleri gizliliği korumak için kaldırıldı"</string>

@@ -289,7 +289,7 @@
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Zugriff entfernt"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"App mit vollständigem Gerätezugriff prüfen"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> kann deinen Bildschirm sehen und Aktionen auf deinem Gerät ausführen. Bedienungshilfen-Apps benötigen diesen Zugriff, um wie vorgesehen zu funktionieren."</string>
-    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"Diese App kann deinen Bildschirm sehen und Aktionen auf deinem Gerät ausführen. Bedienungshilfen-Apps benötigen diesen Zugriff, um wie vorgesehen zu funktionieren – prüfe jedoch, ob die App vertrauenswürdig ist."</string>
+    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"Diese App kann deinen Bildschirm sehen und Aktionen auf deinem Gerät ausführen. Apps für Bedienungshilfen benötigen diesen Zugriff, um wie vorgesehen zu funktionieren – prüfe jedoch, ob die App vertrauenswürdig ist."</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Zugriff entfernen"</string>
     <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"Apps mit vollständigem Zugriff ansehen"</string>
     <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Zugriff entfernt"</string>
@@ -450,7 +450,7 @@
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Auslösererkennung für Assistenten anzeigen"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Symbol in der Statusleiste anzeigen, wenn das Mikrofon verwendet wird, um den Sprachassistenten zu aktivieren"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf Fotos und Medien auf deinem Gerät zuzugreifen?"</string>
-    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf deine Kontakte zuzugreifen?"</string>
+    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"„<xliff:g id="APP_NAME">%1$s</xliff:g>“ erlauben, auf deine Kontakte zuzugreifen?"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, den Gerätestandort abzurufen?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"Die App hat nur Zugriff auf den Gerätestandort, solange du sie verwendest"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, den Gerätestandort abzurufen?"</string>

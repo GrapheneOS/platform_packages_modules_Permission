@@ -287,7 +287,7 @@
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"သုံးခွင့် ဖယ်ရှားရန်"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"နောက်ထပ်ရွေးချယ်စရာများ ကြည့်ရန်"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"သုံးခွင့် ဖယ်ရှားလိုက်ပြီ"</string>
-    <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"စက်သို့ ဝင်သုံးခွင့် အပြည့်အဝရှိသည့်အက်ပ်ကို စစ်ဆေးရန်"</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"စက်သို့ ဝင်သုံးခွင့် အပြည့်အဝရှိသည့်အက်ပ်ကို စစ်ဆေးပါ"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> က ဖန်သားပြင်ကို ကြည့်နိုင်ပြီး စက်ပေါ်တွင် လုပ်ဆောင်ချက်များ ဆောင်ရွက်နိုင်သည်။ အများသုံးနိုင်မှု အက်ပ်များက ရည်ရွယ်ထားသလို လုပ်ဆောင်နိုင်ရန် ဤသုံးခွင့်အမျိုးအစား လိုအပ်သည်။"</string>
     <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"ဤအက်ပ်က ဖန်သားပြင်ကို ကြည့်နိုင်ပြီး စက်ပေါ်တွင် လုပ်ဆောင်ချက်များ ဆောင်ရွက်နိုင်သည်။ အများသုံးနိုင်မှု အက်ပ်များက ရည်ရွယ်ထားသလို လုပ်ဆောင်နိုင်ရန် ဤသုံးခွင့်အမျိုးအစား လိုအပ်သော်လည်း အက်ပ်ကို စစ်ဆေးပြီး ၎င်းကို သင်ယုံကြည်ကြောင်း သေချာပါစေ။"</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"သုံးခွင့်ကို ဖယ်ရှားရန်"</string>
