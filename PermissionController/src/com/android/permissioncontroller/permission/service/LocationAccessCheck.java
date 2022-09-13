@@ -163,6 +163,7 @@ public class LocationAccessCheck {
     private static final boolean DEBUG = false;
     private static final long DEFAULT_RENOTIFY_DURATION_MILLIS = DAYS.toMillis(90);
     private static final String ISSUE_ID_PREFIX = "bg_location_";
+    private static final String ISSUE_TYPE_ID = "bg_location_privacy_issue";
     private static final String REVOKE_LOCATION_ACCESS_ID_PREFIX = "revoke_location_access_";
     private static final String VIEW_LOCATION_ACCESS_ID = "view_location_access";
     public static final String BG_LOCATION_SOURCE_ID = "AndroidBackgroundLocation";
@@ -1018,7 +1019,7 @@ public class LocationAccessCheck {
                 mContext.getString(
                         R.string.safety_center_background_location_access_reminder_summary),
                 SafetySourceData.SEVERITY_LEVEL_INFORMATION,
-                id)
+                ISSUE_TYPE_ID)
                 .setSubtitle(pkgLabel)
                 .addAction(revokeAction)
                 .addAction(viewLocationUsageAction)
