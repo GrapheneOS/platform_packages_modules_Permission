@@ -44,6 +44,7 @@ import com.android.permissioncontroller.PermissionControllerStatsLog
 import com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_FRAGMENT_ACTION_REPORTED
 import com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_FRAGMENT_VIEWED
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.data.FullStoragePermissionAppsLiveData
 import com.android.permissioncontroller.permission.data.FullStoragePermissionAppsLiveData.FullStoragePackageState
 import com.android.permissioncontroller.permission.data.LightAppPermGroupLiveData
@@ -211,7 +212,7 @@ class AppPermissionViewModel(
 
             addSource(appPermGroupLiveData) { appPermGroup ->
                 lightAppPermGroup = appPermGroup
-                if (permGroupName in Utils.STORAGE_SUPERGROUP_PERMISSIONS) {
+                if (permGroupName in PermissionMapping.STORAGE_SUPERGROUP_PERMISSIONS) {
                     onMediaPermGroupUpdate(permGroupName, appPermGroup)
                 }
                 if (appPermGroupLiveData.isInitialized && appPermGroup == null) {
@@ -233,8 +234,8 @@ class AppPermissionViewModel(
                 }
             }
 
-            if (permGroupName in Utils.STORAGE_SUPERGROUP_PERMISSIONS) {
-                for (permGroupName in Utils.STORAGE_SUPERGROUP_PERMISSIONS) {
+            if (permGroupName in PermissionMapping.STORAGE_SUPERGROUP_PERMISSIONS) {
+                for (permGroupName in PermissionMapping.STORAGE_SUPERGROUP_PERMISSIONS) {
                     val liveData = LightAppPermGroupLiveData[packageName, permGroupName, user]
                     mediaStorageSupergroupLiveData[permGroupName] = liveData
                 }
@@ -276,7 +277,7 @@ class AppPermissionViewModel(
             val deniedForegroundState = ButtonState()
 
             askOneTimeState.isShown = group.foreground.isGranted && group.isOneTime
-            askState.isShown = Utils.supportsOneTimeGrant(permGroupName) &&
+            askState.isShown = PermissionMapping.supportsOneTimeGrant(permGroupName) &&
                     !(group.foreground.isGranted && group.isOneTime)
             deniedState.isShown = true
 
@@ -697,11 +698,11 @@ class AppPermissionViewModel(
     @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.TIRAMISU)
     private fun expandsToStorageSupergroup(group: LightAppPermGroup): Boolean {
         return group.packageInfo.targetSdkVersion <= Build.VERSION_CODES.S_V2 &&
-            group.permGroupName in Utils.STORAGE_SUPERGROUP_PERMISSIONS
+            group.permGroupName in PermissionMapping.STORAGE_SUPERGROUP_PERMISSIONS
     }
 
     private fun expandToSupergroup(group: LightAppPermGroup): List<LightAppPermGroup> {
-        val mediaSupergroup = Utils.STORAGE_SUPERGROUP_PERMISSIONS
+        val mediaSupergroup = PermissionMapping.STORAGE_SUPERGROUP_PERMISSIONS
                 .mapNotNull { mediaStorageSupergroupPermGroups[it] }
         return if (expandsToStorageSupergroup(group)) {
             mediaSupergroup
