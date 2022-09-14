@@ -225,7 +225,7 @@ class SafetyCenterStatusCardTest {
                     safetyCenterResourcesContext.getStringByName(
                         "overall_severity_level_ok_summary"))
 
-                waitButtonDisplayed(RESCAN_BUTTON_LABEL).click()
+                waitButtonDisplayed(RESCAN_BUTTON_LABEL) { it.click() }
 
                 waitAllTextDisplayed(
                     safetyCenterResourcesContext.getStringByName("scanning_title"),
@@ -251,7 +251,7 @@ class SafetyCenterStatusCardTest {
                     safetyCenterResourcesContext.getStringByName(
                         "overall_severity_level_ok_summary"))
 
-                waitButtonDisplayed(RESCAN_BUTTON_LABEL).click()
+                waitButtonDisplayed(RESCAN_BUTTON_LABEL) { it.click() }
 
                 waitAllTextDisplayed(
                     safetyCenterResourcesContext.getStringByName(
