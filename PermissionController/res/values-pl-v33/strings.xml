@@ -28,12 +28,10 @@
     <string name="safety_center_entry_group_item_content_description" msgid="7348298582877249787">"Pozycja na liście. <xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_entry_content_description" msgid="3639565652938224321">"<xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_more_issues_card_title" msgid="8599419758014246517">"Zobacz wszystkie alerty"</string>
-    <!-- no translation found for safety_center_more_issues_card_expand_action (7109451851052272946) -->
-    <skip />
+    <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{Rozwiń i zobacz jeszcze 1 alert}few{Rozwiń i zobacz jeszcze # alerty}many{Rozwiń i zobacz jeszcze # alertów}other{Rozwiń i zobacz jeszcze # alertu}}"</string>
     <string name="safety_center_issue_card_content_description" msgid="1281390769721765363">"Alert. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_issue_card_content_description_with_subtitle" msgid="5504040663935313539">"Alert. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUBTITLE">%2$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%3$s</xliff:g>"</string>
-    <!-- no translation found for safety_center_resolved_issue_fallback (8548932070610766651) -->
-    <skip />
+    <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"Działanie ukończone"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"Sprawdź ustawienia, które mogą zwiększyć bezpieczeństwo Twojego urządzenia"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"Szybkie ustawienia bezpieczeństwa i prywatności"</string>
     <string name="safety_center_qs_close_button" msgid="1352313308176244599">"Zamknij"</string>
