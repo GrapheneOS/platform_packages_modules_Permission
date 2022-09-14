@@ -25,7 +25,7 @@
     <string name="lock_screen_search_terms" msgid="2678486357779794826">"Laitteen lukitus, näytön lukitus, lukitusnäyttö, salasana, PIN, kuvio"</string>
     <string name="biometrics_title" msgid="5859504610285212938">"Biometriikka"</string>
     <string name="biometrics_search_terms" msgid="6040319118762671981">"Sormenjälki, sormi, lisää sormenjälki, kasvojentunnistusavaus, kasvot"</string>
-    <string name="privacy_sources_title" msgid="4061110826457365957">"Tietosuoja"</string>
+    <string name="privacy_sources_title" msgid="4061110826457365957">"Yksityisyys"</string>
     <string name="privacy_sources_summary" msgid="4089719981155120864">"Hallintapaneeli, luvat ja asetukset"</string>
     <string name="permission_usage_title" msgid="3633779688945350407">"Yksityisyydenhallintapaneeli"</string>
     <string name="permission_usage_summary" msgid="5323079206029964468">"Näytä, mitkä sovellukset ovat käyttäneet lupia äskettäin"</string>

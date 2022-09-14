@@ -21,9 +21,11 @@ import android.util.ArraySet;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Utility methods for dealing with {@link java.util.Collection}s.
@@ -92,5 +94,44 @@ public final class CollectionUtils {
     @NonNull
     public static <T> List<T> singletonOrEmpty(@Nullable T element) {
         return element != null ? Collections.singletonList(element) : Collections.emptyList();
+    }
+
+    /**
+     * Returns whether a byte array is contained within a {@link Set} of byte arrays. Equality is
+     * not compared by reference, but by comparing the elements contained in the arrays.
+     *
+     * @param byteArrays a {@link Set} of byte arrays that will be searched
+     * @param otherByteArray byte array to be searched
+     * @return {@code true} if {@code byteArrays} contains a byte array with identical elements as
+     *         {@code otherByteArray}.
+     */
+    public static boolean contains(@NonNull Set<byte[]> byteArrays,
+            @NonNull byte[] otherByteArray) {
+        for (byte[] byteArray : byteArrays) {
+            if (Arrays.equals(byteArray, otherByteArray)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Returns whether a {@link Set} of byte arrays is contained within a {@link Set} of byte arrays
+     * as a subset. Equality for arrays is not compared by reference, but by comparing the elements
+     * contained in the arrays.
+     *
+     * @param byteArrays a {@link Set} of byte arrays which will be checked as a superset
+     * @param otherByteArrays a {@link Set} of byte arrays which be checked as a subset
+     * @return {@code true} if {@code byteArrays} contains all the arrays in {@code
+     *     otherByteArrays}.
+     */
+    public static boolean containsSubset(
+            @NonNull Set<byte[]> byteArrays, @NonNull Set<byte[]> otherByteArrays) {
+        for (byte[] byteArray : otherByteArrays) {
+            if (!contains(byteArrays, byteArray)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
