@@ -32,10 +32,14 @@
     <dimen name="sc_top_action_button_margin">@dimen/sc_spacing_xxxlarge</dimen>
     <dimen name="sc_entry_padding_end">@dimen/sc_spacing_xxxlarge</dimen>
     <dimen name="sc_entry_group_expanded_padding_top">@dimen/sc_spacing_xxxlarge</dimen>
-    <dimen name="sc_entry_group_expanded_padding_bottom">@dimen/sc_spacing_xsmall</dimen>
+    <dimen name="sc_entry_group_expanded_padding_bottom">0dp</dimen>
     <dimen name="sc_entry_group_collapsed_padding_top">@dimen/sc_spacing_large</dimen>
     <dimen name="sc_entry_group_collapsed_padding_bottom">@dimen/sc_spacing_large</dimen>
+    <dimen name="sc_entry_padding_bottom">@dimen/sc_spacing_large</dimen>
     <dimen name="sc_card_margin_bottom">@dimen/sc_spacing_xxxlarge</dimen>
+    <dimen name="sc_card_last_entry_in_expanded_group_extra_padding_bottom">
+        @dimen/sc_spacing_medium
+    </dimen>
 
     <dimen name="sc_icon_button_touch_target_size">48dp</dimen>
     <dimen name="sc_indicator_expand_button_background">24dp</dimen>

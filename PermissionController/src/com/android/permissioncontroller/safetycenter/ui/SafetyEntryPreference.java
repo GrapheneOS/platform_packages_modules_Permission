@@ -63,7 +63,8 @@ public final class SafetyEntryPreference extends Preference implements Comparabl
     public void onBindViewHolder(@NonNull PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
 
-        ((SafetyEntryView) holder.itemView).showEntry(mEntry, mPosition, mLaunchTaskId, mViewModel);
+        ((SafetyEntryView) holder.itemView)
+                .showEntry(mEntry, mPosition, mLaunchTaskId, mViewModel, false);
     }
 
     @Override
