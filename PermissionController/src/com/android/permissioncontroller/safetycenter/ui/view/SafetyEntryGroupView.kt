@@ -86,7 +86,7 @@ internal class SafetyEntryGroupView @JvmOverloads constructor(
     ) {
         applyPosition(isFirstCard, isLastCard)
         showGroupDetails(group)
-        showGroupEntries(group, getTaskIdForEntry, viewModel)
+        showGroupEntries(group, getTaskIdForEntry, viewModel, isLastCard)
         setupExpandedState(group, initiallyExpanded(group.id))
         setOnClickListener {
             toggleExpandedState(group, onGroupExpanded, onGroupCollapsed)
@@ -190,7 +190,8 @@ internal class SafetyEntryGroupView @JvmOverloads constructor(
     private fun showGroupEntries(
         group: SafetyCenterEntryGroup,
         getTaskIdForEntry: (String) -> Int,
-        viewModel: SafetyCenterViewModel
+        viewModel: SafetyCenterViewModel,
+        isLastGroup: Boolean
     ) {
         val entriesCount = group.entries.size
         val existingViewsCount = entriesContainerView?.childCount ?: 0
@@ -207,8 +208,16 @@ internal class SafetyEntryGroupView @JvmOverloads constructor(
         group.entries.forEachIndexed { index, entry ->
             val childAt = entriesContainerView?.getChildAt(index)
             val entryView = childAt as? SafetyEntryView
-            entryView?.showEntry(
-                    entry, PositionInCardList.INSIDE_GROUP, getTaskIdForEntry(entry.id), viewModel)
+            val isLastEntryInGroup = index == (group.entries.size - 1)
+            val position =
+                if (isLastGroup && isLastEntryInGroup) {
+                    PositionInCardList.LIST_END
+                } else if (isLastEntryInGroup) {
+                    PositionInCardList.CARD_END
+                } else {
+                    PositionInCardList.INSIDE_GROUP
+                }
+            entryView?.showEntry(entry, position, getTaskIdForEntry(entry.id), viewModel, true)
         }
     }
 
