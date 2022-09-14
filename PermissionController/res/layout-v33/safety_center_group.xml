@@ -20,7 +20,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:parentTag="LinearLayout">
 
-    <LinearLayout
+    <LinearLayout android:id="@+id/group_header"
         style="@style/SafetyCenterGroupHeader">
 
         <LinearLayout android:id="@+id/collapsed_header"
