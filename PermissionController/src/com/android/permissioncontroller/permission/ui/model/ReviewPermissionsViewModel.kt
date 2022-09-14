@@ -26,6 +26,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.data.LightAppPermGroupLiveData
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData.Companion.NON_RUNTIME_NORMAL_PERMS
@@ -99,7 +100,8 @@ class ReviewPermissionsViewModel(
         }
         val isPlatformPermission = group.packageName == Utils.OS_PKG
         // Show legacy permissions only if the user chose that.
-        return !(isPlatformPermission && !Utils.isModernPermissionGroup(group.permGroupName))
+        return !(isPlatformPermission &&
+            !PermissionMapping.isPlatformPermissionGroup(group.permGroupName))
     }
 
     fun isPackageUpdated(): Boolean {

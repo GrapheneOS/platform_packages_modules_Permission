@@ -32,13 +32,13 @@ import com.android.permissioncontroller.PermissionControllerStatsLog
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_GRANT_REQUEST_RESULT_REPORTED
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_GRANT_REQUEST_RESULT_REPORTED__RESULT__AUTO_UNUSED_APP_PERMISSION_REVOKED
 import com.android.permissioncontroller.hibernation.getUnusedThresholdMs
+import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.data.LightAppPermGroupLiveData
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData
 import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
 import com.android.permissioncontroller.permission.utils.KotlinUtils
-import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.application
 import com.android.permissioncontroller.permission.utils.forEachInParallel
 import com.android.permissioncontroller.permission.utils.updatePermissionFlags
@@ -106,7 +106,7 @@ suspend fun revokeAppPermissions(
                 if (groupName == PackagePermissionsLiveData.NON_RUNTIME_NORMAL_PERMS) {
                     continue
                 }
-                if (groupName !in Utils.getPlatformPermissionGroups()) {
+                if (groupName !in PermissionMapping.getPlatformPermissionGroups()) {
                     continue
                 }
                 val group: LightAppPermGroup =
