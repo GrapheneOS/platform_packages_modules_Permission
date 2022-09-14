@@ -19,6 +19,7 @@ package android.safetycenter.cts.testing
 import android.Manifest.permission.READ_DEVICE_CONFIG
 import android.Manifest.permission.WRITE_DEVICE_CONFIG
 import android.content.Context
+import android.content.pm.PackageManager
 import android.content.res.Resources
 import android.provider.DeviceConfig
 import android.provider.DeviceConfig.NAMESPACE_PRIVACY
@@ -149,6 +150,18 @@ object SafetyCenterFlags {
         Flag(
             "safety_center_allow_westworld_logging_in_tests", defaultValue = false, BooleanParser())
 
+    /**
+     * The Package Manager flag used while toggling the QS tile component.
+     *
+     * This is to make sure that the SafetyCenter is not killed while toggling the QS tile
+     * component during the CTS tests, which causes flakiness in them.
+     */
+    private val qsTileComponentSettingFlags =
+        Flag(
+            "safety_center_qs_tile_component_setting_flags",
+            PackageManager.DONT_KILL_APP,
+            IntParser())
+
     /** Every Safety Center flag. */
     private val FLAGS: List<Flag<*>> =
         listOf(
@@ -163,7 +176,8 @@ object SafetyCenterFlags {
             resurfaceIssueDelaysFlag,
             issueCategoryAllowlistsFlag,
             backgroundRefreshDeniedSourcesFlag,
-            allowWestworldLoggingInTestsFlag)
+            allowWestworldLoggingInTestsFlag,
+            qsTileComponentSettingFlags)
 
     /** Returns whether the device supports Safety Center. */
     fun Context.deviceSupportsSafetyCenter() =
