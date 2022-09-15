@@ -24,6 +24,7 @@ import android.os.Build
 import android.safetycenter.SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_RECOMMENDATION
 import android.safetycenter.SafetyCenterEntryGroup
 import android.util.AttributeSet
+import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -56,6 +57,8 @@ internal class SafetyEntryGroupView @JvmOverloads constructor(
         inflate(context, R.layout.safety_center_group, this)
     }
 
+    private val groupHeaderView: LinearLayout? by lazy { findViewById(R.id.group_header) }
+
     private val expandedHeaderView: ViewGroup? by lazy { findViewById(R.id.expanded_header) }
     private val expandedTitleView: TextView? by lazy {
         expandedHeaderView?.findViewById(R.id.title)
@@ -83,7 +86,7 @@ internal class SafetyEntryGroupView @JvmOverloads constructor(
     ) {
         applyPosition(isFirstCard, isLastCard)
         showGroupDetails(group)
-        showGroupEntries(group, getTaskIdForEntry, viewModel)
+        showGroupEntries(group, getTaskIdForEntry, viewModel, isLastCard)
         setupExpandedState(group, initiallyExpanded(group.id))
         setOnClickListener {
             toggleExpandedState(group, onGroupExpanded, onGroupCollapsed)
@@ -124,6 +127,12 @@ internal class SafetyEntryGroupView @JvmOverloads constructor(
         collapsedHeaderView?.visibility = if (shouldBeExpanded) View.GONE else View.VISIBLE
         expandedHeaderView?.visibility = if (shouldBeExpanded) View.VISIBLE else View.GONE
         entriesContainerView?.visibility = if (shouldBeExpanded) View.VISIBLE else View.GONE
+
+        if (shouldBeExpanded) {
+            groupHeaderView?.gravity = Gravity.TOP
+        } else {
+            groupHeaderView?.gravity = Gravity.CENTER_VERTICAL
+        }
 
         if (isExpanded == null) {
             chevronIconView?.setImageResource(
@@ -181,7 +190,8 @@ internal class SafetyEntryGroupView @JvmOverloads constructor(
     private fun showGroupEntries(
         group: SafetyCenterEntryGroup,
         getTaskIdForEntry: (String) -> Int,
-        viewModel: SafetyCenterViewModel
+        viewModel: SafetyCenterViewModel,
+        isLastGroup: Boolean
     ) {
         val entriesCount = group.entries.size
         val existingViewsCount = entriesContainerView?.childCount ?: 0
@@ -198,8 +208,16 @@ internal class SafetyEntryGroupView @JvmOverloads constructor(
         group.entries.forEachIndexed { index, entry ->
             val childAt = entriesContainerView?.getChildAt(index)
             val entryView = childAt as? SafetyEntryView
-            entryView?.showEntry(
-                    entry, PositionInCardList.INSIDE_GROUP, getTaskIdForEntry(entry.id), viewModel)
+            val isLastEntryInGroup = index == (group.entries.size - 1)
+            val position =
+                if (isLastGroup && isLastEntryInGroup) {
+                    PositionInCardList.LIST_END
+                } else if (isLastEntryInGroup) {
+                    PositionInCardList.CARD_END
+                } else {
+                    PositionInCardList.INSIDE_GROUP
+                }
+            entryView?.showEntry(entry, position, getTaskIdForEntry(entry.id), viewModel, true)
         }
     }
 
