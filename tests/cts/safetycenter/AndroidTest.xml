@@ -25,7 +25,7 @@
             value="not_instant_app"/>
     <option name="config-descriptor:metadata" key="parameter"
             value="not_multi_abi"/>
-    <!-- Multi-user code is tested separately using Bedstead. See SafetyCenterManagedDeviceTest. -->
+    <!-- Multi-user code is tested separately using Bedstead. See SafetyCenterMultiUsersTest. -->
     <option name="config-descriptor:metadata" key="parameter"
             value="not_secondary_user"/>
 
