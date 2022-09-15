@@ -15,8 +15,7 @@
   -->
 
 <resources
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- START SAFETY CENTER QUICK SETTINGS PAGE -->
 
     <style name="SafetyCenterQsContainer"
@@ -163,9 +162,9 @@
     <style name="SafetyCenterIndicatorCardView">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="app:cardCornerRadius">@dimen/sc_card_corner_radius_large</item>
-        <item name="app:cardElevation">0dp</item>
-        <item name="app:cardBackgroundColor">?attr/colorSurface</item>
+        <item name="cardCornerRadius">@dimen/sc_card_corner_radius_large</item>
+        <item name="cardElevation">0dp</item>
+        <item name="cardBackgroundColor">?attr/colorSurface</item>
         <item name="android:layout_marginTop">@dimen/sc_spacing_large</item>
         <item name="android:clickable">true</item>
         <item name="android:foreground">?android:attr/selectableItemBackground</item>
@@ -331,9 +330,9 @@
     <style name="SafetyCenterStatusImage" parent="android:Widget.DeviceDefault">
         <item name="android:layout_width">56dp</item>
         <item name="android:layout_height">56dp</item>
-        <item name="app:layout_constraintTop_toTopOf">parent</item>
-        <item name="app:layout_constraintBottom_toBottomOf">@id/status_title_and_summary</item>
-        <item name="app:layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">@id/status_title_and_summary</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
         <item name="android:scaleType">centerInside</item>
         <item name="android:gravity">center</item>
     </style>
@@ -345,9 +344,9 @@
         <item name="android:layout_marginTop">@dimen/sc_spacing_xxsmall</item>
         <item name="android:layout_marginStart">@dimen/sc_spacing_large</item>
         <item name="android:layout_marginEnd">@dimen/sc_spacing_xxxlarge</item>
-        <item name="app:layout_constraintStart_toEndOf">@id/status_image</item>
-        <item name="app:layout_constraintEnd_toEndOf">parent</item>
-        <item name="app:layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintStart_toEndOf">@id/status_image</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
     </style>
 
     <style name="SafetyCenterStatusTitle" parent="android:Widget.DeviceDefault">
@@ -359,7 +358,7 @@
     <style name="SafetyCenterStatusSummary" parent="android:Widget.DeviceDefault">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="app:layout_constraintTop_toBottomOf">@id/status_title</item>
+        <item name="layout_constraintTop_toBottomOf">@id/status_title</item>
         <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Body</item>
     </style>
 
@@ -368,39 +367,39 @@
     <style name="SafetyCenterStatusButton.ReviewSettings">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="app:layout_constraintTop_toBottomOf">@id/status_title_and_summary</item>
-        <item name="app:layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintTop_toBottomOf">@id/status_title_and_summary</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
         <item name="android:layout_marginTop">@dimen/sc_spacing_xxxlarge</item>
-        <item name="app:backgroundTint">@color/safety_center_button_info</item>
+        <item name="backgroundTint">@color/safety_center_button_info</item>
     </style>
 
     <style name="SafetyCenterStatusButton.Rescan">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="app:layout_constraintTop_toBottomOf">@id/review_settings_button</item>
-        <item name="app:layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintTop_toBottomOf">@id/review_settings_button</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
         <item name="android:layout_marginTop">@dimen/sc_spacing_xxxlarge</item>
-        <item name="app:backgroundTint">@color/safety_center_button_info</item>
+        <item name="backgroundTint">@color/safety_center_button_info</item>
     </style>
 
     <style name="SafetyCenterStatusButton.PendingActionsRescan">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="app:layout_constraintTop_toBottomOf">@id/review_settings_button</item>
-        <item name="app:layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintTop_toBottomOf">@id/review_settings_button</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
         <item name="android:layout_marginTop">@dimen/sc_action_button_list_margin</item>
-        <item name="app:backgroundTint">@color/sc_surface_dark</item>
-        <item name="app:strokeWidth">@dimen/mtrl_btn_stroke_size</item>
-        <item name="app:strokeColor">@color/safety_center_button_info</item>
+        <item name="backgroundTint">@color/sc_surface_dark</item>
+        <item name="strokeWidth">@dimen/mtrl_btn_stroke_size</item>
+        <item name="strokeColor">@color/safety_center_button_info</item>
         <item name="android:textColor">?android:attr/textColorPrimary</item>
     </style>
 
     <style name="SafetyCenterStatusSafetyProtectionView">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="app:layout_constraintTop_toBottomOf">@id/rescan_button</item>
-        <item name="app:layout_constraintStart_toStartOf">parent</item>
-        <item name="app:layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintTop_toBottomOf">@id/rescan_button</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:paddingTop">@dimen/sc_spacing_xxlarge</item>
         <item name="android:paddingBottom">@dimen/sc_spacing_xxlarge</item>
@@ -418,8 +417,8 @@
         <item name="android:background">@android:color/transparent</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="app:layout_constraintTop_toTopOf">parent</item>
-        <item name="app:layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
     </style>
 
     <style name="SafetyCenterIssueTitle">
@@ -427,11 +426,11 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginEnd">@dimen/sc_spacing_xxxlarge</item>
-        <item name="app:layout_constraintHorizontal_bias">0</item>
-        <item name="app:layout_goneMarginEnd">0dp</item>
-        <item name="app:layout_constraintTop_toTopOf">parent</item>
-        <item name="app:layout_constraintStart_toStartOf">parent</item>
-        <item name="app:layout_constraintEnd_toStartOf">@id/issue_card_dismiss_btn</item>
+        <item name="layout_constraintHorizontal_bias">0</item>
+        <item name="layout_goneMarginEnd">0dp</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintEnd_toStartOf">@id/issue_card_dismiss_btn</item>
     </style>
 
     <style name="SafetyCenterIssueSubtitle">
@@ -439,8 +438,8 @@
         <item name="android:layout_marginTop">@dimen/sc_spacing_xxsmall</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="app:layout_constraintStart_toStartOf">@id/issue_card_title</item>
-        <item name="app:layout_constraintTop_toBottomOf">@id/issue_card_title</item>
+        <item name="layout_constraintStart_toStartOf">@id/issue_card_title</item>
+        <item name="layout_constraintTop_toBottomOf">@id/issue_card_title</item>
     </style>
 
     <style name="SafetyCenterIssueSummary">
@@ -448,8 +447,8 @@
         <item name="android:layout_marginTop">@dimen/sc_spacing_large</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="app:layout_constraintStart_toStartOf">@id/issue_card_title</item>
-        <item name="app:layout_constraintTop_toBottomOf">@id/issue_card_subtitle</item>
+        <item name="layout_constraintStart_toStartOf">@id/issue_card_title</item>
+        <item name="layout_constraintTop_toBottomOf">@id/issue_card_subtitle</item>
     </style>
 
     <style name="SafetyCenterIssueActionButtonList"
@@ -458,18 +457,18 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:orientation">vertical</item>
-        <item name="app:layout_constraintTop_toBottomOf">@id/issue_card_summary</item>
-        <item name="app:layout_constraintStart_toStartOf">parent</item>
-        <item name="app:layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintTop_toBottomOf">@id/issue_card_summary</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
     </style>
 
     <style name="SafetyCenterIssueSafetyProtectionSection">
         <item name="android:gravity">center</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">0dp</item>
-        <item name="app:layout_constraintTop_toBottomOf">@id/issue_card_action_button_list</item>
-        <item name="app:layout_constraintStart_toStartOf">parent</item>
-        <item name="app:layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintTop_toBottomOf">@id/issue_card_action_button_list</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
         <item name="android:paddingTop">@dimen/sc_spacing_xxlarge</item>
         <item name="android:paddingBottom">@dimen/sc_spacing_xxlarge</item>
     </style>
@@ -478,17 +477,17 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">0dp</item>
         <item name="android:gravity">center</item>
-        <item name="app:layout_constraintWidth_default">wrap</item>
-        <item name="app:layout_constraintHeight_default">wrap</item>
-        <item name="app:layout_constraintWidth_max">112dp</item>
-        <item name="app:layout_constraintHeight_max">112dp</item>
-        <item name="app:layout_constraintWidth_min">84dp</item>
-        <item name="app:layout_constraintHeight_min">84dp</item>
-        <item name="app:layout_constraintTop_toTopOf">parent</item>
-        <item name="app:layout_constraintBottom_toTopOf">@id/resolved_issue_text</item>
-        <item name="app:layout_constraintStart_toStartOf">parent</item>
-        <item name="app:layout_constraintEnd_toEndOf">parent</item>
-        <item name="app:layout_constraintVertical_chainStyle">packed</item>
+        <item name="layout_constraintWidth_default">wrap</item>
+        <item name="layout_constraintHeight_default">wrap</item>
+        <item name="layout_constraintWidth_max">112dp</item>
+        <item name="layout_constraintHeight_max">112dp</item>
+        <item name="layout_constraintWidth_min">84dp</item>
+        <item name="layout_constraintHeight_min">84dp</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintBottom_toTopOf">@id/resolved_issue_text</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintVertical_chainStyle">packed</item>
     </style>
 
     <style name="SafetyCenterIssueCardResolvedTitle">
@@ -500,10 +499,10 @@
         <item name="android:gravity">center</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="app:layout_constraintTop_toBottomOf">@id/resolved_issue_image</item>
-        <item name="app:layout_constraintBottom_toBottomOf">parent</item>
-        <item name="app:layout_constraintStart_toStartOf">parent</item>
-        <item name="app:layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintTop_toBottomOf">@id/resolved_issue_image</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
     </style>
 
     <style name="SafetyCenterMoreIssues"
@@ -522,11 +521,11 @@
         <item name="android:layout_marginEnd">@dimen/sc_spacing_xxlarge</item>
         <item name="android:maxLines">2</item>
         <item name="android:ellipsize">end</item>
-        <item name="app:layout_constraintTop_toTopOf">parent</item>
-        <item name="app:layout_constraintBottom_toBottomOf">parent</item>
-        <item name="app:layout_constraintStart_toEndOf">@id/status_icon</item>
-        <item name="app:layout_constraintEnd_toStartOf">@android:id/widget_frame</item>
-        <item name="app:layout_constraintHorizontal_bias">0</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintStart_toEndOf">@id/status_icon</item>
+        <item name="layout_constraintEnd_toStartOf">@android:id/widget_frame</item>
+        <item name="layout_constraintHorizontal_bias">0</item>
     </style>
 
     <style name="SafetyCenterMoreIssuesIcon"
@@ -534,9 +533,9 @@
         <item name="android:layout_height">20dp</item>
         <item name="android:layout_width">20dp</item>
         <item name="android:gravity">center</item>
-        <item name="app:layout_constraintTop_toTopOf">parent</item>
-        <item name="app:layout_constraintBottom_toBottomOf">parent</item>
-        <item name="app:layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
     </style>
 
     <style name="SafetyCenterMoreIssuesWidgetFrame"
@@ -545,9 +544,9 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:orientation">vertical</item>
-        <item name="app:layout_constraintTop_toTopOf">parent</item>
-        <item name="app:layout_constraintEnd_toEndOf">parent</item>
-        <item name="app:layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
     </style>
 
     <style name="SafetyCenterMoreIssuesWidget"
@@ -567,10 +566,10 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_marginEnd">@dimen/sc_spacing_xxxsmall</item>
         <item name="android:maxLines">1</item>
-        <item name="app:layout_constraintTop_toTopOf">parent</item>
-        <item name="app:layout_constraintBottom_toBottomOf">parent</item>
-        <item name="app:layout_constraintEnd_toStartOf">@id/widget_icon</item>
-        <item name="app:layout_constraintHorizontal_bias">0</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintEnd_toStartOf">@id/widget_icon</item>
+        <item name="layout_constraintHorizontal_bias">0</item>
     </style>
 
     <style name="SafetyCenterMoreIssuesWidgetIcon"
@@ -578,9 +577,9 @@
         <item name="android:layout_height">16dp</item>
         <item name="android:layout_width">16dp</item>
         <item name="android:gravity">center</item>
-        <item name="app:layout_constraintTop_toTopOf">parent</item>
-        <item name="app:layout_constraintBottom_toBottomOf">parent</item>
-        <item name="app:layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
         <item name="android:scaleType">fitCenter</item>
         <item name="android:tint">?android:attr/textColorPrimary</item>
     </style>
