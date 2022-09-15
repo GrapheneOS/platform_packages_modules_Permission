@@ -58,7 +58,8 @@ internal class SafetyEntryView @JvmOverloads constructor(
         entry: SafetyCenterEntry,
         position: PositionInCardList,
         launchTaskId: Int?,
-        viewModel: SafetyCenterViewModel
+        viewModel: SafetyCenterViewModel,
+        isGroupEntry: Boolean
     ) {
         setBackgroundResource(position.backgroundDrawableResId)
         val topMargin: Int = position.getTopMargin(context)
@@ -68,12 +69,14 @@ internal class SafetyEntryView @JvmOverloads constructor(
             params.topMargin = topMargin
             layoutParams = params
         }
+        val newPaddingBottom: Int = position.getBottomPadding(context)
+        setPaddingRelative(paddingStart, paddingTop, paddingEnd, newPaddingBottom)
 
         showEntryDetails(entry)
         setupEntryClickListener(entry, launchTaskId, viewModel)
         enableOrDisableEntry(entry)
         setupIconActionButton(entry, launchTaskId, viewModel)
-        setContentDescription(entry, position == PositionInCardList.INSIDE_GROUP)
+        setContentDescription(entry, isGroupEntry)
     }
 
     private fun showEntryDetails(entry: SafetyCenterEntry) {
@@ -103,20 +106,17 @@ internal class SafetyEntryView @JvmOverloads constructor(
             setOnClickListener {
                 try {
                     PendingIntentSender.send(entry.pendingIntent, launchTaskId)
-                    viewModel
-                            .interactionLogger
-                            .recordForEntry(Action.ENTRY_CLICKED, entry)
+                    viewModel.interactionLogger.recordForEntry(Action.ENTRY_CLICKED, entry)
                 } catch (ex: java.lang.Exception) {
-                    Log.e(
-                            TAG,
-                            "Failed to execute pending intent for entry: $entry",
-                            ex)
+                    Log.e(TAG, "Failed to execute pending intent for entry: $entry", ex)
                 }
             }
         } else {
             // Ensure that views without listeners can still be focused by accessibility services
             // TODO b/243713158: Set the proper accessibility focus in style, rather than in code
             isFocusable = true
+            // Doing this to make sure that clicking disabled entry doesn't collapse the group.
+            setOnClickListener {}
         }
     }
 

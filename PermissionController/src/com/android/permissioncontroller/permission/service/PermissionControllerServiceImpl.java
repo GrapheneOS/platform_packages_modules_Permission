@@ -61,6 +61,7 @@ import com.android.permissioncontroller.permission.ui.AutoGrantPermissionsNotifi
 import com.android.permissioncontroller.permission.utils.AdminRestrictedPermissionsUtils;
 import com.android.permissioncontroller.permission.utils.ArrayUtils;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
+import com.android.permissioncontroller.permission.utils.PermissionMapping;
 import com.android.permissioncontroller.permission.utils.UserSensitiveFlagsUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.permissioncontroller.role.model.Role;
@@ -434,7 +435,8 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
             for (Pair<String, AppPermGroupUiInfo> groupNameAndUiInfo : groupUiInfos) {
                 String groupName = groupNameAndUiInfo.getFirst();
                 AppPermGroupUiInfo uiInfo = groupNameAndUiInfo.getSecond();
-                boolean isPlatform = Utils.getPlatformPermissionGroups().contains(groupName);
+                boolean isPlatform =
+                        PermissionMapping.getPlatformPermissionGroups().contains(groupName);
                 CharSequence label = KotlinUtils.INSTANCE.getPermGroupLabel(this, groupName);
 
                 RuntimePermissionPresentationInfo permission =
@@ -742,13 +744,13 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
     @Override
     public void onGetPlatformPermissionsForGroup(@NonNull String permissionGroupName,
             @NonNull Consumer<List<String>> callback) {
-        callback.accept(Utils.getPlatformPermissionNamesOfGroup(permissionGroupName));
+        callback.accept(PermissionMapping.getPlatformPermissionNamesOfGroup(permissionGroupName));
     }
 
     @Override
     public void onGetGroupOfPlatformPermission(@NonNull String permissionName,
             @NonNull Consumer<String> callback) {
-        callback.accept(Utils.getGroupOfPlatformPermission(permissionName));
+        callback.accept(PermissionMapping.getGroupOfPlatformPermission(permissionName));
     }
 
     @Override

@@ -18,9 +18,9 @@ package com.android.permissioncontroller.permission.model.livedatatypes
 
 import android.content.pm.PackageManager
 import android.content.pm.PermissionInfo
+import com.android.permissioncontroller.permission.utils.PermissionMapping.isRuntimePlatformPermission
 import com.android.permissioncontroller.permission.utils.SoftRestrictedPermissionPolicy
 import com.android.permissioncontroller.permission.utils.Utils
-import com.android.permissioncontroller.permission.utils.Utils.isRuntimePlatformPermission
 
 /**
  * Represents a single permission, and its state

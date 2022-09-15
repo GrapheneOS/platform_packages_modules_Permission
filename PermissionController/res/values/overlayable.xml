@@ -328,7 +328,9 @@
             <item type="dimen" name="sc_entry_group_expanded_padding_bottom" />
             <item type="dimen" name="sc_entry_group_collapsed_padding_top" />
             <item type="dimen" name="sc_entry_group_collapsed_padding_bottom" />
+            <item type="dimen" name="sc_entry_padding_bottom" />
             <item type="dimen" name="sc_card_margin_bottom" />
+            <item type="dimen" name="sc_card_last_entry_in_expanded_group_extra_padding_bottom" />
             <item type="dimen" name="sc_icon_button_touch_target_size" />
             <item type="dimen" name="sc_indicator_expand_button_background" />
 

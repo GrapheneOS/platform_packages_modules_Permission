@@ -75,6 +75,7 @@ import com.android.permissioncontroller.permission.ui.legacy.AppPermissionActivi
 import com.android.permissioncontroller.permission.ui.television.TvUnusedAppsFragment;
 import com.android.permissioncontroller.permission.ui.wear.AppPermissionsFragmentWear;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
+import com.android.permissioncontroller.permission.utils.PermissionMapping;
 import com.android.permissioncontroller.permission.utils.Utils;
 
 import java.util.Random;
@@ -339,7 +340,7 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                     try {
                         PermissionInfo permInfo = getPackageManager().getPermissionInfo(
                                 permissionName, 0);
-                        permissionGroupName = Utils.getGroupOfPermission(permInfo);
+                        permissionGroupName = PermissionMapping.getGroupOfPermission(permInfo);
                     } catch (PackageManager.NameNotFoundException e) {
                         Log.i(LOG_TAG, "Permission " + permissionName + " does not exist");
                     }
@@ -453,7 +454,7 @@ public final class ManagePermissionsActivity extends SettingsActivity {
         try {
             PermissionInfo permInfo = getPackageManager().getPermissionInfo(
                     permissionName, 0);
-            return Utils.getGroupOfPermission(permInfo);
+            return PermissionMapping.getGroupOfPermission(permInfo);
         } catch (PackageManager.NameNotFoundException e) {
             Log.i(LOG_TAG, "Permission " + permissionName + " does not exist");
         }

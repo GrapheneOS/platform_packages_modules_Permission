@@ -49,9 +49,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.permissioncontroller.PermissionControllerApplication;
 import com.android.permissioncontroller.R;
+import com.android.permissioncontroller.permission.model.legacy.PermissionApps;
 import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage;
 import com.android.permissioncontroller.permission.model.v31.PermissionUsages;
-import com.android.permissioncontroller.permission.model.legacy.PermissionApps;
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity;
 import com.android.permissioncontroller.permission.ui.handheld.SettingsWithLargeHeader;
 import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel;

@@ -58,6 +58,15 @@ internal enum class PositionInCardList(val backgroundDrawableResId: Int) {
             else -> 0
         }
 
+    fun getBottomPadding(context: Context): Int =
+        when (this) {
+            CARD_END, LIST_END ->
+                context.resources.getDimensionPixelSize(
+                    R.dimen.sc_card_last_entry_in_expanded_group_extra_padding_bottom
+                ) + context.resources.getDimensionPixelSize(R.dimen.sc_entry_padding_bottom)
+            else -> context.resources.getDimensionPixelSize(R.dimen.sc_entry_padding_bottom)
+        }
+
     companion object {
         @JvmStatic
         @JvmOverloads

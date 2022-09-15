@@ -278,7 +278,7 @@ object KotlinUtils {
             }
 
             if (icon == null) {
-                val groupName = Utils.getGroupOfPermission(permInfo) ?: permInfo.name
+                val groupName = PermissionMapping.getGroupOfPermission(permInfo) ?: permInfo.name
                 icon = getPermGroupIcon(context, groupName)
             }
 
