@@ -53,6 +53,7 @@ import android.safetycenter.cts.testing.UiTestHelper.waitNotDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.waitSourceDataDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.waitSourceIssueDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.waitSourceIssueNotDisplayed
+import android.safetycenter.cts.ui.SafetyCenterActivityTest.Companion.rotate
 import android.support.test.uiautomator.By
 import android.support.test.uiautomator.UiDevice
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
@@ -440,8 +441,6 @@ class SafetyCenterActivityTest {
                 val action = safetySourceCtsData.criticalResolvingAction
                 waitButtonDisplayed(action.label) { it.click() }
 
-                // Wait for success message to go away, verify issue no longer displayed
-                waitAllTextNotDisplayed(DEFAULT_SAFETY_CENTER_RESOLVED_ISSUE_SUCCESS_MESSAGE)
                 waitSourceIssueNotDisplayed(safetySourceCtsData.criticalResolvingGeneralIssue)
             }
         }
@@ -465,8 +464,6 @@ class SafetyCenterActivityTest {
                 val action = safetySourceCtsData.criticalResolvingAction
                 waitButtonDisplayed(action.label) { it.click() }
 
-                // criticalResolvingAction does not define a success message, check for default
-                waitAllTextNotDisplayed(DEFAULT_SAFETY_CENTER_RESOLVED_ISSUE_SUCCESS_MESSAGE)
                 waitSourceIssueDisplayed(safetySourceCtsData.criticalResolvingGeneralIssue)
             }
         }
@@ -489,8 +486,6 @@ class SafetyCenterActivityTest {
                 val action = safetySourceCtsData.criticalResolvingAction
                 waitButtonDisplayed(action.label) { it.click() }
 
-                // criticalResolvingAction does not define a success message, check for default
-                waitAllTextNotDisplayed(DEFAULT_SAFETY_CENTER_RESOLVED_ISSUE_SUCCESS_MESSAGE)
                 waitSourceIssueDisplayed(safetySourceCtsData.criticalResolvingGeneralIssue)
             }
         }
@@ -707,10 +702,10 @@ class SafetyCenterActivityTest {
     }
 
     companion object {
-        private const val DEFAULT_SAFETY_CENTER_RESOLVED_ISSUE_SUCCESS_MESSAGE = "Action complete"
         private const val EXPAND_ISSUE_GROUP_QS_FRAGMENT_KEY = "expand_issue_group_qs_fragment_key"
-        private val DIALOG_ROTATION_TIMEOUT = Duration.ofSeconds(1)
+
         private val DATA_UPDATE_TIMEOUT = Duration.ofSeconds(1)
+        private val DIALOG_ROTATION_TIMEOUT = Duration.ofSeconds(1)
 
         private fun UiDevice.rotate() {
             if (isNaturalOrientation) {
