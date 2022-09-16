@@ -1630,6 +1630,6 @@ Optionally, you can grant this app access to additional files and folders (ie to
 are effectively parts of one app. State of Storage Scopes is shared among them, same applies to permission grants, network usage stats etc."
     </string>
 
-    <string name="sscopes_config_link_disabled">To use Storage Scopes, deny all storage permissions for this app.</string>
+    <string name="sscopes_storage_permissions_revoked">All storage permissions are now denied</string>
 
 </resources>

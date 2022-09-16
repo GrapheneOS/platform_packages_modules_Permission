@@ -688,19 +688,11 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
 
         TextView link = layout.requireViewById(R.id.configure_storage_scopes);
 
-        boolean enabled = mDenyButton.isChecked();
-        link.setEnabled(enabled);
-
-        if (enabled) {
-            link.setText(R.string.configure_storage_scopes);
-            link.setOnClickListener(v -> {
-                Bundle args = StorageScopesFragment.createArgs(mPackageName);
-                NavHostFragment.findNavController(this).navigate(R.id.storage_scopes, args);
-            });
-        } else {
-            link.setText(R.string.sscopes_config_link_disabled);
-            link.setOnClickListener(null);
-        }
+        link.setText(R.string.configure_storage_scopes);
+        link.setOnClickListener(v -> {
+            Bundle args = StorageScopesFragment.createArgs(mPackageName);
+            NavHostFragment.findNavController(this).navigate(R.id.storage_scopes, args);
+        });
 
         layout.setVisibility(View.VISIBLE);
     }
