@@ -1337,8 +1337,8 @@ final class SafetyCenterDataTracker {
             groupSummary =
                     ListFormatter.getInstance(
                                     ULocale.getDefault(ULocale.Category.FORMAT),
-                                    ListFormatter.Type.UNITS,
-                                    ListFormatter.Width.WIDE)
+                                    ListFormatter.Type.AND,
+                                    ListFormatter.Width.NARROW)
                             .format(titles);
         }
 
