@@ -1617,7 +1617,7 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
 An app that doesn’t have any storage permissions is still allowed to create files and access files that it created, regardless of whether Storage Scopes is enabled."
     </string>
     <string name="sscopes_empty_footer">
-"This app assumes that it has all storage permissions that it asked for, despite not actually having any of them.
+"This app assumes that it has all storage permissions that it asked for, regardless of whether it actually has them.
 
 An app that doesn’t have any storage permissions is still allowed to create files and access files that it created, regardless of whether Storage Scopes is enabled.
 
