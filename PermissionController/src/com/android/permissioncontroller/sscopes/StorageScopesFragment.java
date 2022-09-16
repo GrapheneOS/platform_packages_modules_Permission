@@ -17,7 +17,6 @@
 package com.android.permissioncontroller.sscopes;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Application;
 import android.app.StorageScope;
 import android.app.compat.gms.GmsCompat;
@@ -63,12 +62,10 @@ import java.util.List;
 import java.util.Objects;
 
 import static com.android.permissioncontroller.permission.ui.handheld.UtilsKt.pressBack;
-import static com.android.permissioncontroller.sscopes.StorageScopesUtils.STORAGE_PERMISSION_TYPE_ALL_FILES_ACCESS;
-import static com.android.permissioncontroller.sscopes.StorageScopesUtils.STORAGE_PERMISSION_TYPE_MEDIA_MANAGEMENT;
 import static com.android.permissioncontroller.sscopes.StorageScopesUtils.arrayListOf;
 import static com.android.permissioncontroller.sscopes.StorageScopesUtils.getFullLabelForPackage;
 import static com.android.permissioncontroller.sscopes.StorageScopesUtils.getStorageScopes;
-import static com.android.permissioncontroller.sscopes.StorageScopesUtils.packageHasStoragePermission;
+import static com.android.permissioncontroller.sscopes.StorageScopesUtils.revokeStoragePermissions;
 import static com.android.permissioncontroller.sscopes.StorageScopesUtils.storageScopesEnabled;
 
 public final class StorageScopesFragment extends SettingsWithLargeHeader {
@@ -158,43 +155,7 @@ public final class StorageScopesFragment extends SettingsWithLargeHeader {
         setPreferenceScreen(preferenceScreen);
     }
 
-    private boolean skipUpdates;
-
     void update() {
-        if (skipUpdates) {
-            return;
-        }
-
-        final int storagePermissionType = packageHasStoragePermission(context, pkgName);
-
-        if (storagePermissionType != 0) {
-            AlertDialog.Builder b = new AlertDialog.Builder(context);
-            b.setMessage(R.string.sscopes_deny_storage_permissions);
-            b.setOnDismissListener(dialog -> getActivity().finish());
-            b.setPositiveButton(R.string.sscopes_open_settings, (dialog, which) -> {
-                Uri uri = Uri.fromParts("package", pkgName, null);
-                Intent i;
-                switch (storagePermissionType) {
-                    case STORAGE_PERMISSION_TYPE_ALL_FILES_ACCESS:
-                        i = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION, uri);
-                        break;
-                    case STORAGE_PERMISSION_TYPE_MEDIA_MANAGEMENT:
-                        i = new Intent(Settings.ACTION_REQUEST_MANAGE_MEDIA, uri);
-                        break;
-                    default:
-                        i = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, uri);
-                }
-                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(i);
-            });
-
-            b.show();
-
-            preferenceScreen.removeAll();
-            skipUpdates = true;
-            return;
-        }
-
         StorageScope[] scopes = getStorageScopes(pkgName);
         boolean enabled = scopes != null;
 
@@ -262,6 +223,10 @@ public final class StorageScopesFragment extends SettingsWithLargeHeader {
         if (enabled) {
             // GMS often needs a restart to properly handle permission grants
             killUid = GmsCompat.isGmsApp(pkgName, Process.myUserHandle().getIdentifier());
+
+            if (revokeStoragePermissions(context, pkgName)) {
+                Toast.makeText(context, R.string.sscopes_storage_permissions_revoked, Toast.LENGTH_SHORT).show();
+            }
         } else {
             killUid = true;
         }
