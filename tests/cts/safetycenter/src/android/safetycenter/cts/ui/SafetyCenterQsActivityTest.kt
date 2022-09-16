@@ -111,8 +111,8 @@ class SafetyCenterQsActivityTest {
     fun launchActivity_togglePrivacyControls_hasUpdatedDescriptions() {
         context.launchSafetyCenterQsActivity() {
             // Toggle privacy controls
-            waitDisplayed(By.desc("Switch. Camera access. Available")).click()
-            waitDisplayed(By.desc("Switch. Mic access. Available")).click()
+            waitDisplayed(By.desc("Switch. Camera access. Available")) { it.click() }
+            waitDisplayed(By.desc("Switch. Mic access. Available")) { it.click() }
 
             // Verify updated state of privacy controls
             waitDisplayed(By.desc("Switch. Camera access. Blocked"))
