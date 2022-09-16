@@ -28,6 +28,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
+import android.os.Process;
 import android.os.UserHandle;
 import android.os.storage.StorageManager;
 import android.os.storage.StorageVolume;
@@ -272,23 +273,24 @@ public class StorageScopesUtils {
         return res.toString();
     }
 
-    static final int STORAGE_PERMISSION_TYPE_FILES_AND_MEDIA = 1;
-    static final int STORAGE_PERMISSION_TYPE_ALL_FILES_ACCESS = 2;
-    static final int STORAGE_PERMISSION_TYPE_MEDIA_MANAGEMENT = 3;
-
-    static int packageHasStoragePermission(Context ctx, String pkgName) {
+    // returns whether at least one permission was revoked
+    static boolean revokeStoragePermissions(Context ctx, String pkgName) {
         PackageManager pm = ctx.getPackageManager();
 
         int uid;
+        int targetSdk;
         try {
             uid = pm.getPackageUid(pkgName, 0);
+            var flags = PackageManager.ApplicationInfoFlags.of(0);
+            targetSdk = pm.getApplicationInfo(pkgName, flags).targetSdkVersion;
         } catch (PackageManager.NameNotFoundException e) {
-            return 0;
+            return false;
         }
 
         String[] perms = {
                 Manifest.permission.READ_EXTERNAL_STORAGE,
-                // WRITE_EXTERNAL_STORAGE grants READ permission automatically
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.ACCESS_MEDIA_LOCATION,
                 Manifest.permission.READ_MEDIA_AUDIO,
                 Manifest.permission.READ_MEDIA_IMAGES,
                 Manifest.permission.READ_MEDIA_VIDEO,
@@ -297,22 +299,22 @@ public class StorageScopesUtils {
         AppOpsManager appOps = ctx.getSystemService(AppOpsManager.class);
         // unsafeCheckOpNoThrow is a better option than noteOpNoThrow for this particular use-case
 
+        UserHandle user = Process.myUserHandle();
+
+        int numOfRevokations = 0;
+
         for (String permission : perms) {
-            if (pm.checkPermission(permission, pkgName) == PackageManager.PERMISSION_GRANTED) {
-                try {
-                    if (pm.getApplicationInfo(pkgName, 0).targetSdkVersion >= 23) {
-                        return STORAGE_PERMISSION_TYPE_FILES_AND_MEDIA;
-                    }
-                } catch (PackageManager.NameNotFoundException e) {
-                    return 0;
+            if (targetSdk >= 23) { // runtime permissions are always granted for targetSdk < 23 apps
+                if (pm.checkPermission(permission, pkgName) == PackageManager.PERMISSION_GRANTED) {
+                    pm.revokeRuntimePermission(pkgName, permission, user, "StorageScopes");
+                    ++ numOfRevokations;
                 }
+            }
 
-                // for targetSdk < 23 apps runtime permissions are enforced via AppOps
-
-                String op = AppOpsManager.permissionToOp(permission);
-                if (appOps.unsafeCheckOpNoThrow(op, uid, pkgName) == AppOpsManager.MODE_ALLOWED) {
-                    return STORAGE_PERMISSION_TYPE_FILES_AND_MEDIA;
-                }
+            String op = AppOpsManager.permissionToOp(permission);
+            if (op != null && appOps.unsafeCheckOpNoThrow(op, uid, pkgName) == AppOpsManager.MODE_ALLOWED) {
+                appOps.setUidMode(op, uid, AppOpsManager.MODE_IGNORED);
+                ++ numOfRevokations;
             }
         }
 
@@ -325,29 +327,12 @@ public class StorageScopesUtils {
             String op = AppOpsManager.permissionToOp(opPerm);
 
             if (appOps.unsafeCheckOpNoThrow(op, uid, pkgName) == AppOpsManager.MODE_ALLOWED) {
-                if (Manifest.permission.MANAGE_MEDIA.equals(opPerm)) {
-                    return STORAGE_PERMISSION_TYPE_MEDIA_MANAGEMENT;
-                }
-
-                try {
-                    PackageInfo pi = pm.getPackageInfo(pkgName, PackageManager.GET_PERMISSIONS);
-                    List<String> permissions = Arrays.asList(pi.requestedPermissions);
-
-                    // "Files and media" section will not show up in the Permissions screen if
-                    // only "All files access" permission is requested
-                    if (permissions.contains(Manifest.permission.READ_EXTERNAL_STORAGE)
-                            || permissions.contains(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                        return STORAGE_PERMISSION_TYPE_FILES_AND_MEDIA;
-                    } else {
-                        return STORAGE_PERMISSION_TYPE_ALL_FILES_ACCESS;
-                    }
-                } catch (Exception e) {
-                    return STORAGE_PERMISSION_TYPE_FILES_AND_MEDIA;
-                }
+                appOps.setUidMode(op, uid, AppOpsManager.MODE_ERRORED);
+                ++ numOfRevokations;
             }
         }
 
-        return 0;
+        return numOfRevokations != 0;
     }
 
     static boolean isUtf16(String str) {
