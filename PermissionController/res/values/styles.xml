@@ -1104,18 +1104,16 @@
         <item name="android:paddingStart">?android:attr/listPreferredItemPaddingStart</item>
     </style>
 
-    <style name="WarningBannerCardView"
-           xmlns:card_view="http://schemas.android.com/apk/res-auto"
-           xmlns:app="http://schemas.android.com/apk/res-auto" >
+    <style name="WarningBannerCardView">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="app:cardCornerRadius">20dp</item>
-        <item name="app:cardBackgroundColor">@color/warning_surface</item>
-        <item name="app:cardElevation">0dp</item>
-        <item name="card_view:contentPaddingBottom">8dp</item>
-        <item name="card_view:contentPaddingTop">20dp</item>
-        <item name="card_view:contentPaddingLeft">20dp</item>
-        <item name="card_view:contentPaddingRight">20dp</item>
+        <item name="cardCornerRadius">20dp</item>
+        <item name="cardBackgroundColor">@color/warning_surface</item>
+        <item name="cardElevation">0dp</item>
+        <item name="contentPaddingBottom">8dp</item>
+        <item name="contentPaddingTop">20dp</item>
+        <item name="contentPaddingLeft">20dp</item>
+        <item name="contentPaddingRight">20dp</item>
     </style>
 
     <style name="WarningBannerIcon">

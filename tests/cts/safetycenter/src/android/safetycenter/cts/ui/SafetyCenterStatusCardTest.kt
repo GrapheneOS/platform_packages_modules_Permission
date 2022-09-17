@@ -20,6 +20,7 @@ import android.content.Context
 import android.safetycenter.cts.testing.SafetyCenterActivityLauncher.launchSafetyCenterActivity
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_ID
+import android.safetycenter.cts.testing.SafetyCenterCtsData
 import android.safetycenter.cts.testing.SafetyCenterCtsHelper
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import android.safetycenter.cts.testing.SafetySourceCtsData
@@ -52,6 +53,7 @@ class SafetyCenterStatusCardTest {
     private val safetyCenterResourcesContext = SafetyCenterResourcesContext.forTests(context)
     private val safetyCenterCtsHelper = SafetyCenterCtsHelper(context)
     private val safetySourceCtsData = SafetySourceCtsData(context)
+    private val safetyCenterCtsData = SafetyCenterCtsData(context)
 
     // JUnit's Assume is not supported in @BeforeClass by the CTS tests runner, so this is used to
     // manually skip the setup and teardown methods.
@@ -165,9 +167,8 @@ class SafetyCenterStatusCardTest {
         callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
             context.launchSafetyCenterActivity {
                 waitAllTextDisplayed(
-                    safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_title"))
-                // TODO(b/244577363): Add test for N alerts string once we have a shared helper for
-                // it.
+                    safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_title"),
+                    safetyCenterCtsData.getAlertString(1))
                 waitButtonNotDisplayed(RESCAN_BUTTON_LABEL)
             }
         }
@@ -184,9 +185,8 @@ class SafetyCenterStatusCardTest {
             context.launchSafetyCenterActivity {
                 waitAllTextDisplayed(
                     safetyCenterResourcesContext.getStringByName(
-                        "overall_severity_level_safety_recommendation_title"))
-                // TODO(b/244577363): Add test for N alerts string once we have a shared helper for
-                // it.
+                        "overall_severity_level_safety_recommendation_title"),
+                    safetyCenterCtsData.getAlertString(1))
                 waitButtonNotDisplayed(RESCAN_BUTTON_LABEL)
             }
         }
@@ -203,9 +203,8 @@ class SafetyCenterStatusCardTest {
             context.launchSafetyCenterActivity {
                 waitAllTextDisplayed(
                     safetyCenterResourcesContext.getStringByName(
-                        "overall_severity_level_critical_safety_warning_title"))
-                // TODO(b/244577363): Add test for N alerts string once we have a shared helper for
-                // it.
+                        "overall_severity_level_critical_safety_warning_title"),
+                    safetyCenterCtsData.getAlertString(1))
                 waitButtonNotDisplayed(RESCAN_BUTTON_LABEL)
             }
         }
@@ -225,7 +224,7 @@ class SafetyCenterStatusCardTest {
                     safetyCenterResourcesContext.getStringByName(
                         "overall_severity_level_ok_summary"))
 
-                waitButtonDisplayed(RESCAN_BUTTON_LABEL).click()
+                waitButtonDisplayed(RESCAN_BUTTON_LABEL) { it.click() }
 
                 waitAllTextDisplayed(
                     safetyCenterResourcesContext.getStringByName("scanning_title"),
@@ -251,13 +250,12 @@ class SafetyCenterStatusCardTest {
                     safetyCenterResourcesContext.getStringByName(
                         "overall_severity_level_ok_summary"))
 
-                waitButtonDisplayed(RESCAN_BUTTON_LABEL).click()
+                waitButtonDisplayed(RESCAN_BUTTON_LABEL) { it.click() }
 
                 waitAllTextDisplayed(
                     safetyCenterResourcesContext.getStringByName(
-                        "overall_severity_level_safety_recommendation_title"))
-                // TODO(b/244577363): Add test for N alerts string once we have a shared helper for
-                // it.
+                        "overall_severity_level_safety_recommendation_title"),
+                    safetyCenterCtsData.getAlertString(1))
             }
         }
     }

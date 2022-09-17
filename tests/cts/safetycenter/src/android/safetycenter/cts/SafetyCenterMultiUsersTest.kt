@@ -72,6 +72,7 @@ import com.android.bedstead.harrier.OptionalBoolean.TRUE
 import com.android.bedstead.harrier.annotations.EnsureHasNoWorkProfile
 import com.android.bedstead.harrier.annotations.EnsureHasSecondaryUser
 import com.android.bedstead.harrier.annotations.EnsureHasWorkProfile
+import com.android.bedstead.harrier.annotations.Postsubmit
 import com.android.bedstead.harrier.annotations.enterprise.EnsureHasDeviceOwner
 import com.android.safetycenter.resources.SafetyCenterResourcesContext
 import com.google.common.truth.Truth.assertThat
@@ -86,11 +87,10 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 /** CTS tests for our APIs and UI on a managed device (e.g. with managed profile(s)). */
-@Ignore
 @RunWith(BedsteadJUnit4::class)
-// TODO(b/234108780): Enable these back when we figure a way to make sure they don't fail due to
-//  timeouts with Bedstead. Consider marking them as running only in post-submit in the meantime.
-class SafetyCenterManagedDeviceTest {
+// TODO(b/234108780): Add these to presubmits when we figure a way to make sure they don't fail due
+// to timeouts with Bedstead.
+class SafetyCenterMultiUsersTest {
 
     companion object {
         @JvmField @ClassRule @Rule val deviceState: DeviceState = DeviceState()
@@ -258,6 +258,9 @@ class SafetyCenterManagedDeviceTest {
 
     @Test
     @EnsureHasWorkProfile
+    @Ignore
+    // Tests that check the UI takes a lot of time and they might get timeout in the postsubmits.
+    // TODO(b/242999951): Write this test using the APIs instead of checking the UI.
     fun launchActivity_withProfileOwner_displaysWorkPolicyInfo() {
         safetyCenterCtsHelper.setConfig(context.getWorkPolicyInfoConfig())
 
@@ -266,6 +269,9 @@ class SafetyCenterManagedDeviceTest {
 
     @Test
     @EnsureHasDeviceOwner
+    @Ignore
+    // Tests that check the UI takes a lot of time and they might get timeout in the postsubmits.
+    // TODO(b/242999951): Write this test using the APIs instead of checking the UI.
     fun launchActivity_withDeviceOwner_displaysWorkPolicyInfo() {
         safetyCenterCtsHelper.setConfig(context.getWorkPolicyInfoConfig())
 
@@ -274,6 +280,9 @@ class SafetyCenterManagedDeviceTest {
 
     @Test
     @EnsureHasWorkProfile
+    @Ignore
+    // Tests that check the UI takes a lot of time and they might get timeout in the postsubmits.
+    // TODO(b/242999951): Write this test using the APIs instead of checking the UI.
     fun launchActivity_withQuietModeEnabled_shouldNotDisplayWorkPolicyInfo() {
         safetyCenterCtsHelper.setConfig(context.getWorkPolicyInfoConfig())
 
@@ -283,6 +292,9 @@ class SafetyCenterManagedDeviceTest {
     }
 
     @Test
+    @Ignore
+    // Test involving toggling of quiet mode are flaky.
+    // TODO(b/237365018): Re-enable them back once we figure out a way to make them stable.
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun getSafetySourceData_withQuietModeEnabled_dataIsNotCleared() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_ALL_PROFILE_CONFIG)
@@ -301,6 +313,7 @@ class SafetyCenterManagedDeviceTest {
     }
 
     @Test
+    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun getSafetySourceData_withoutInteractAcrossUserPermission_shouldThrowError() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_ALL_PROFILE_CONFIG)
@@ -313,6 +326,7 @@ class SafetyCenterManagedDeviceTest {
     }
 
     @Test
+    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasNoWorkProfile
     fun getSafetyCenterData_withComplexConfigWithoutWorkProfile_returnsPrimaryDataFromConfig() {
         safetyCenterCtsHelper.setConfig(COMPLEX_ALL_PROFILE_CONFIG)
@@ -342,6 +356,7 @@ class SafetyCenterManagedDeviceTest {
     }
 
     @Test
+    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun getSafetyCenterData_withComplexConfigWithoutDataProvided_returnsDataFromConfig() {
         safetyCenterCtsHelper.setConfig(COMPLEX_ALL_PROFILE_CONFIG)
@@ -379,6 +394,7 @@ class SafetyCenterManagedDeviceTest {
     }
 
     @Test
+    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun getSafetyCenterData_withComplexConfigWithPrimaryDataProvided_returnsPrimaryDataProvided() {
         safetyCenterCtsHelper.setConfig(COMPLEX_ALL_PROFILE_CONFIG)
@@ -417,6 +433,7 @@ class SafetyCenterManagedDeviceTest {
     }
 
     @Test
+    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun getSafetyCenterData_withComplexConfigWithAllDataProvided_returnsAllDataProvided() {
         safetyCenterCtsHelper.setConfig(COMPLEX_ALL_PROFILE_CONFIG)
@@ -478,6 +495,9 @@ class SafetyCenterManagedDeviceTest {
 
     @Test
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
+    @Ignore
+    // Test involving toggling of quiet mode are flaky.
+    // TODO(b/237365018): Re-enable them back once we figure out a way to make them stable.
     fun getSafetyCenterData_withQuietMode_shouldHaveWorkProfilePausedSummaryAndNoWorkIssues() {
         safetyCenterCtsHelper.setConfig(COMPLEX_ALL_PROFILE_CONFIG)
         updatePrimaryProfileSources()
@@ -523,6 +543,7 @@ class SafetyCenterManagedDeviceTest {
     }
 
     @Test
+    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun setSafetySourceData_primaryProfileIssueOnlySource_shouldNotBeAbleToSetDataToWorkProfile() {
         safetyCenterCtsHelper.setConfig(ISSUE_ONLY_SOURCE_CONFIG)
@@ -538,6 +559,7 @@ class SafetyCenterManagedDeviceTest {
     }
 
     @Test
+    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun setSafetySourceData_withoutInteractAcrossUserPermission_shouldThrowError() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_ALL_PROFILE_CONFIG)
@@ -554,6 +576,7 @@ class SafetyCenterManagedDeviceTest {
     }
 
     @Test
+    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun setSafetySourceData_issuesOnlySourceWithWorkProfile_shouldBeAbleToSetData() {
         safetyCenterCtsHelper.setConfig(ISSUE_ONLY_SOURCE_ALL_PROFILE_CONFIG)
@@ -578,6 +601,7 @@ class SafetyCenterManagedDeviceTest {
     }
 
     @Test
+    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun setSafetySourceData_primaryProfileSource_shouldNotBeAbleToSetDataToWorkProfile() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
@@ -592,6 +616,7 @@ class SafetyCenterManagedDeviceTest {
     }
 
     @Test
+    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun setSafetySourceData_sourceWithWorkProfile_shouldBeAbleToSetData() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_ALL_PROFILE_CONFIG)
@@ -614,6 +639,7 @@ class SafetyCenterManagedDeviceTest {
     }
 
     @Test
+    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasSecondaryUser(installInstrumentedApp = TRUE)
     fun setSafetySourceData_forStoppedUser_shouldSetData() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
@@ -632,6 +658,7 @@ class SafetyCenterManagedDeviceTest {
     }
 
     @Test
+    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasSecondaryUser(installInstrumentedApp = TRUE)
     fun setSafetySourceData_forBothPrimarySecondaryUser_shouldSetData() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
@@ -654,6 +681,7 @@ class SafetyCenterManagedDeviceTest {
     }
 
     @Test
+    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasSecondaryUser(installInstrumentedApp = TRUE)
     fun setSafetySourceData_forSecondaryUser_shouldNotAffectDataForPrimaryUser() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
@@ -672,6 +700,7 @@ class SafetyCenterManagedDeviceTest {
     @Test
     @EnsureHasSecondaryUser(installInstrumentedApp = TRUE)
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
+    @Postsubmit(reason = "Test takes too much time to setup")
     fun getSafetyCenterData_withDataForDifferentUserProfileGroup_shouldBeUnaffected() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_ALL_PROFILE_CONFIG)
         val dataForPrimaryUser = safetySourceCtsData.information
