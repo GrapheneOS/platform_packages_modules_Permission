@@ -77,12 +77,20 @@ public final class ManageStandardPermissionsFragment extends ManagePermissionsFr
         mPermissionGroups = mViewModel.getUiDataLiveData().getValue();
 
         mViewModel.getUiDataLiveData().observe(this, permissionGroups -> {
+            // Once we have loaded data for the first time, further loads should be staggered,
+            // for performance reasons.
+            mViewModel.getUiDataLiveData().setLoadStaggered(true);
             if (permissionGroups != null) {
                 mPermissionGroups = permissionGroups;
                 updatePermissionsUi();
             } else {
                 Log.e(LOG_TAG, "ViewModel returned null data, exiting");
                 getActivity().finishAfterTransition();
+            }
+
+            // If we've loaded all LiveDatas, no need to prioritize loading any particular one
+            if (!mViewModel.getUiDataLiveData().isStale()) {
+                mViewModel.getUiDataLiveData().setFirstLoadGroup(null);
             }
         });
 
@@ -209,6 +217,9 @@ public final class ManageStandardPermissionsFragment extends ManagePermissionsFr
 
     @Override
     public void showPermissionApps(String permissionGroupName) {
+        // If we return to this page within a reasonable time, prioritize loading data from the
+        // permission group whose page we are going to, as that is group most likely to have changed
+        mViewModel.getUiDataLiveData().setFirstLoadGroup(permissionGroupName);
         mViewModel.showPermissionApps(this, PermissionAppsFragment.createArgs(
                 permissionGroupName, getArguments().getLong(EXTRA_SESSION_ID)));
     }
