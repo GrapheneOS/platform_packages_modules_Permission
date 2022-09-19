@@ -677,7 +677,15 @@ object KotlinUtils {
 
         if (GmsCompat.isGmsApp(pkgInfo.packageName, user.identifier)) {
             // in many cases, GMS needs a restart to properly handle permission grants
-            shouldKill = true
+            if (
+                // Google Search app handles permission grants properly.
+                // (GmsInfo.PACKAGE_GSA is inaccessible here)
+                pkgInfo.packageName != "com.google.android.googlequicksearchbox"
+                // Play Store asks for POST_NOTIFICATIONS on first launch
+                && perm.name != POST_NOTIFICATIONS
+            ) {
+                shouldKill = true
+            }
         }
 
         val newState = PermState(newFlags, isGranted)
