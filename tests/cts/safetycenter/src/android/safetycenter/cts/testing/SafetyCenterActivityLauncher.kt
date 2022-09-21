@@ -17,6 +17,7 @@
 package android.safetycenter.cts.testing
 
 import android.Manifest.permission.REVOKE_RUNTIME_PERMISSIONS
+import android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_SAFETY_CENTER
@@ -30,19 +31,32 @@ import com.android.compatibility.common.util.UiAutomatorUtils.getUiDevice
 /** A class that provides a way to launch the SafetyCenter activity in tests. */
 object SafetyCenterActivityLauncher {
 
-    /** Launches the SafetyCenter activity and exits it once [block] completes. */
-    fun Context.launchSafetyCenterActivity(intentExtras: Bundle? = null, block: () -> Unit) {
-        executeBlockAndExit(block) {
-            val launchSafetyCenterIntent = createIntent(ACTION_SAFETY_CENTER, intentExtras)
-            startActivity(launchSafetyCenterIntent)
+    /**
+     * Launches the SafetyCenter activity and exits it once [block] completes.
+     *
+     * @param withReceiverPermission whether we should hold the [SEND_SAFETY_CENTER_UPDATE]
+     * permission while the activity is on the screen (e.g. to ensure the CTS package can have its
+     * receiver called during refresh/rescan)
+     */
+    fun Context.launchSafetyCenterActivity(
+        intentExtras: Bundle? = null,
+        withReceiverPermission: Boolean = false,
+        block: () -> Unit
+    ) {
+        val launchSafetyCenterIntent = createIntent(ACTION_SAFETY_CENTER, intentExtras)
+        if (withReceiverPermission) {
+            callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
+                executeBlockAndExit(block) { startActivity(launchSafetyCenterIntent) }
+            }
+        } else {
+            executeBlockAndExit(block) { startActivity(launchSafetyCenterIntent) }
         }
     }
 
     /** Launches the SafetyCenter Quick Settings activity and exits it once [block] completes. */
     fun Context.launchSafetyCenterQsActivity(intentExtras: Bundle? = null, block: () -> Unit) {
+        val launchSafetyCenterQsIntent = createIntent(ACTION_VIEW_SAFETY_CENTER_QS, intentExtras)
         executeBlockAndExit(block) {
-            val launchSafetyCenterQsIntent =
-                createIntent(ACTION_VIEW_SAFETY_CENTER_QS, intentExtras)
             callWithShellPermissionIdentity(REVOKE_RUNTIME_PERMISSIONS) {
                 startActivity(launchSafetyCenterQsIntent)
             }
