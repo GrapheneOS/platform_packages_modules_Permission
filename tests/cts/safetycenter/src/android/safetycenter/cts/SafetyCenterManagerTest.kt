@@ -38,6 +38,7 @@ import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_INFORMATION
 import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED
 import android.safetycenter.SafetySourceErrorDetails
 import android.safetycenter.SafetySourceIssue
+import android.safetycenter.SafetySourceIssue.ISSUE_CATEGORY_DEVICE
 import android.safetycenter.SafetySourceStatus
 import android.safetycenter.config.SafetyCenterConfig
 import android.safetycenter.config.SafetySource
@@ -118,6 +119,7 @@ class SafetyCenterManagerTest {
                         SafetySourceIssue.Action.Builder(
                                 "critical_action_id", "Solve issue", somePendingIntent)
                             .build())
+                    .setIssueCategory(ISSUE_CATEGORY_DEVICE)
                     .build())
             .build()
     private val listener =
