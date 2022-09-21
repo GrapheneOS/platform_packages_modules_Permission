@@ -272,15 +272,9 @@ public class RoleService extends SystemService implements RoleUserState.Callback
             RoleControllerManager controller = mControllers.get(userId);
             if (controller == null) {
                 Context systemContext = getContext();
-                Context context;
-                try {
-                    context = systemContext.createPackageContextAsUser(
-                            systemContext.getPackageName(), 0, UserHandle.of(userId));
-                } catch (PackageManager.NameNotFoundException e) {
-                    throw new RuntimeException(e);
-                }
+                Context userContext = systemContext.createContextAsUser(UserHandle.of(userId), 0);
                 controller = RoleControllerManager.createWithInitializedRemoteServiceComponentName(
-                        ForegroundThread.getHandler(), context);
+                        ForegroundThread.getHandler(), userContext);
                 mControllers.put(userId, controller);
             }
             return controller;
