@@ -92,11 +92,7 @@ public class UserUtils {
         if (Process.myUserHandle().equals(user)) {
             return context;
         } else {
-            try {
-                return context.createPackageContextAsUser(context.getPackageName(), 0, user);
-            } catch (PackageManager.NameNotFoundException doesNotHappen) {
-                throw new IllegalStateException(doesNotHappen);
-            }
+            return context.createContextAsUser(user, 0);
         }
     }
 }
