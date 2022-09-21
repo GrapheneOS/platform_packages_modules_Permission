@@ -347,6 +347,20 @@ object SafetyCenterCtsConfigs {
             .addSafetySourcesGroup(DYNAMIC_SOURCE_GROUP_3)
             .build()
 
+    /**
+     * A simple [SafetyCenterConfig] for CTS tests with multiple sources with one source having an
+     * invalid default intent.
+     */
+    val MULTIPLE_SOURCES_CONFIG_WITH_SOURCE_WITH_INVALID_INTENT =
+        SafetyCenterConfig.Builder()
+            .addSafetySourcesGroup(
+                safetySourcesGroupBuilder(MULTIPLE_SOURCES_GROUP_ID_1)
+                    .addSafetySource(
+                        dynamicSafetySourceBuilder(SOURCE_ID_1).setIntentAction("stub").build())
+                    .addSafetySource(dynamicSafetySource(SOURCE_ID_2))
+                    .build())
+            .build()
+
     /** Source provided by [STATIC_SOURCES_CONFIG]. */
     val STATIC_SOURCE_1 =
         staticSafetySourceBuilder("cts_static_source_id_1")
