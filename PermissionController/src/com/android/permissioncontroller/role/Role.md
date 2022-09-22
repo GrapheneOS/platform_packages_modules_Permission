@@ -174,6 +174,7 @@ dumpsys role
 You can also manage the role holders with `cmd role`:
 
 ```bash
+cmd role get-role-holders [--user USER_ID] ROLE
 cmd role add-role-holder [--user USER_ID] ROLE PACKAGE [FLAGS]
 cmd role remove-role-holder [--user USER_ID] ROLE PACKAGE [FLAGS]
 cmd role clear-role-holders [--user USER_ID] ROLE [FLAGS]
