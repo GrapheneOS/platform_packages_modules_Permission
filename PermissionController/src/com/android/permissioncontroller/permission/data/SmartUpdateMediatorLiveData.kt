@@ -36,8 +36,8 @@ import kotlinx.coroutines.launch
  *
  * @param isStaticVal Whether or not this LiveData value is expected to change
  */
-abstract class SmartUpdateMediatorLiveData<T>(private val isStaticVal: Boolean = false)
-    : MediatorLiveData<T>(), DataRepository.InactiveTimekeeper {
+abstract class SmartUpdateMediatorLiveData<T>(private val isStaticVal: Boolean = false) :
+    MediatorLiveData<T>(), DataRepository.InactiveTimekeeper {
 
     companion object {
         const val DEBUG_UPDATES = false
@@ -146,8 +146,9 @@ abstract class SmartUpdateMediatorLiveData<T>(private val isStaticVal: Boolean =
             }
             try {
                 super.addSource(source, onChanged)
-            } catch (other: IllegalStateException) {
-                throw other.apply { initCause(exception) }
+            } catch (ex: IllegalStateException) {
+                val other = ex as java.lang.Throwable
+                throw other.initCause(exception)
             }
         }
     }
@@ -179,7 +180,7 @@ abstract class SmartUpdateMediatorLiveData<T>(private val isStaticVal: Boolean =
         have: MutableMap<K, V>,
         getLiveDataFun: (K) -> V,
         onUpdateFun: ((K) -> Unit)? = null
-    ) : Pair<Set<K>, Set<K>>{
+    ): Pair<Set<K>, Set<K>>{
         // Ensure the map is correct when method returns
         val (toAdd, toRemove) = KotlinUtils.getMapAndListDifferences(desired, have)
         for (key in toAdd) {
