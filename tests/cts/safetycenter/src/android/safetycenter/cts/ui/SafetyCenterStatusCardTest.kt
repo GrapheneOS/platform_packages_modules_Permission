@@ -15,7 +15,6 @@
  */
 package android.safetycenter.cts.ui
 
-import android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE
 import android.content.Context
 import android.safetycenter.cts.testing.SafetyCenterActivityLauncher.launchSafetyCenterActivity
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_CONFIG
@@ -27,7 +26,6 @@ import android.safetycenter.cts.testing.SafetySourceCtsData
 import android.safetycenter.cts.testing.SafetySourceReceiver
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.SafetySourceDataKey
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.SafetySourceDataKey.Reason
-import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermissionIdentity
 import android.safetycenter.cts.testing.UiTestHelper.RESCAN_BUTTON_LABEL
 import android.safetycenter.cts.testing.UiTestHelper.waitAllTextDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.waitButtonDisplayed
@@ -112,15 +110,13 @@ class SafetyCenterStatusCardTest {
                 SafetySourceDataKey(Reason.REFRESH_GET_DATA, SINGLE_SOURCE_ID)] = null
         SafetySourceReceiver.shouldReportSafetySourceError = true
 
-        callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
-            context.launchSafetyCenterActivity {
-                waitAllTextDisplayed(
-                    safetyCenterResourcesContext.getStringByName(
-                        "overall_severity_level_ok_review_title"),
-                    safetyCenterResourcesContext.getStringByName(
-                        "overall_severity_level_ok_review_summary"))
-                waitButtonDisplayed(RESCAN_BUTTON_LABEL)
-            }
+        context.launchSafetyCenterActivity(withReceiverPermission = true) {
+            waitAllTextDisplayed(
+                safetyCenterResourcesContext.getStringByName(
+                    "overall_severity_level_ok_review_title"),
+                safetyCenterResourcesContext.getStringByName(
+                    "overall_severity_level_ok_review_summary"))
+            waitButtonDisplayed(RESCAN_BUTTON_LABEL)
         }
     }
 
@@ -131,14 +127,11 @@ class SafetyCenterStatusCardTest {
                 SafetySourceDataKey(Reason.REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
             safetySourceCtsData.information
 
-        callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
-            context.launchSafetyCenterActivity {
-                waitAllTextDisplayed(
-                    safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_title"),
-                    safetyCenterResourcesContext.getStringByName(
-                        "overall_severity_level_ok_summary"))
-                waitButtonDisplayed(RESCAN_BUTTON_LABEL)
-            }
+        context.launchSafetyCenterActivity(withReceiverPermission = true) {
+            waitAllTextDisplayed(
+                safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_title"),
+                safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_summary"))
+            waitButtonDisplayed(RESCAN_BUTTON_LABEL)
         }
     }
 
@@ -149,11 +142,9 @@ class SafetyCenterStatusCardTest {
                 SafetySourceDataKey(Reason.REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
             safetySourceCtsData.information
 
-        callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
-            context.launchSafetyCenterActivity {
-                waitDisplayed(By.descContains("Security and privacy status"))
-                waitNotDisplayed(By.desc("Protected by Android"))
-            }
+        context.launchSafetyCenterActivity(withReceiverPermission = true) {
+            waitDisplayed(By.descContains("Security and privacy status"))
+            waitNotDisplayed(By.desc("Protected by Android"))
         }
     }
 
@@ -164,13 +155,11 @@ class SafetyCenterStatusCardTest {
                 SafetySourceDataKey(Reason.REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
             safetySourceCtsData.informationWithIssue
 
-        callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
-            context.launchSafetyCenterActivity {
-                waitAllTextDisplayed(
-                    safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_title"),
-                    safetyCenterCtsData.getAlertString(1))
-                waitButtonNotDisplayed(RESCAN_BUTTON_LABEL)
-            }
+        context.launchSafetyCenterActivity(withReceiverPermission = true) {
+            waitAllTextDisplayed(
+                safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_title"),
+                safetyCenterCtsData.getAlertString(1))
+            waitButtonNotDisplayed(RESCAN_BUTTON_LABEL)
         }
     }
 
@@ -181,14 +170,12 @@ class SafetyCenterStatusCardTest {
                 SafetySourceDataKey(Reason.REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
             safetySourceCtsData.recommendationWithGeneralIssue
 
-        callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
-            context.launchSafetyCenterActivity {
-                waitAllTextDisplayed(
-                    safetyCenterResourcesContext.getStringByName(
-                        "overall_severity_level_safety_recommendation_title"),
-                    safetyCenterCtsData.getAlertString(1))
-                waitButtonNotDisplayed(RESCAN_BUTTON_LABEL)
-            }
+        context.launchSafetyCenterActivity(withReceiverPermission = true) {
+            waitAllTextDisplayed(
+                safetyCenterResourcesContext.getStringByName(
+                    "overall_severity_level_safety_recommendation_title"),
+                safetyCenterCtsData.getAlertString(1))
+            waitButtonNotDisplayed(RESCAN_BUTTON_LABEL)
         }
     }
 
@@ -199,14 +186,12 @@ class SafetyCenterStatusCardTest {
                 SafetySourceDataKey(Reason.REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
             safetySourceCtsData.criticalWithResolvingGeneralIssue
 
-        callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
-            context.launchSafetyCenterActivity {
-                waitAllTextDisplayed(
-                    safetyCenterResourcesContext.getStringByName(
-                        "overall_severity_level_critical_safety_warning_title"),
-                    safetyCenterCtsData.getAlertString(1))
-                waitButtonNotDisplayed(RESCAN_BUTTON_LABEL)
-            }
+        context.launchSafetyCenterActivity(withReceiverPermission = true) {
+            waitAllTextDisplayed(
+                safetyCenterResourcesContext.getStringByName(
+                    "overall_severity_level_critical_safety_warning_title"),
+                safetyCenterCtsData.getAlertString(1))
+            waitButtonNotDisplayed(RESCAN_BUTTON_LABEL)
         }
     }
 
@@ -217,19 +202,16 @@ class SafetyCenterStatusCardTest {
                 SafetySourceDataKey(Reason.REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
             safetySourceCtsData.information
 
-        callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
-            context.launchSafetyCenterActivity {
-                waitAllTextDisplayed(
-                    safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_title"),
-                    safetyCenterResourcesContext.getStringByName(
-                        "overall_severity_level_ok_summary"))
+        context.launchSafetyCenterActivity(withReceiverPermission = true) {
+            waitAllTextDisplayed(
+                safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_title"),
+                safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_summary"))
 
-                waitButtonDisplayed(RESCAN_BUTTON_LABEL) { it.click() }
+            waitButtonDisplayed(RESCAN_BUTTON_LABEL) { it.click() }
 
-                waitAllTextDisplayed(
-                    safetyCenterResourcesContext.getStringByName("scanning_title"),
-                    safetyCenterResourcesContext.getStringByName("loading_summary"))
-            }
+            waitAllTextDisplayed(
+                safetyCenterResourcesContext.getStringByName("scanning_title"),
+                safetyCenterResourcesContext.getStringByName("loading_summary"))
         }
     }
 
@@ -243,20 +225,17 @@ class SafetyCenterStatusCardTest {
                 SafetySourceDataKey(Reason.REFRESH_FETCH_FRESH_DATA, SINGLE_SOURCE_ID)] =
             safetySourceCtsData.recommendationWithGeneralIssue
 
-        callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
-            context.launchSafetyCenterActivity {
-                waitAllTextDisplayed(
-                    safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_title"),
-                    safetyCenterResourcesContext.getStringByName(
-                        "overall_severity_level_ok_summary"))
+        context.launchSafetyCenterActivity(withReceiverPermission = true) {
+            waitAllTextDisplayed(
+                safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_title"),
+                safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_summary"))
 
-                waitButtonDisplayed(RESCAN_BUTTON_LABEL) { it.click() }
+            waitButtonDisplayed(RESCAN_BUTTON_LABEL) { it.click() }
 
-                waitAllTextDisplayed(
-                    safetyCenterResourcesContext.getStringByName(
-                        "overall_severity_level_safety_recommendation_title"),
-                    safetyCenterCtsData.getAlertString(1))
-            }
+            waitAllTextDisplayed(
+                safetyCenterResourcesContext.getStringByName(
+                    "overall_severity_level_safety_recommendation_title"),
+                safetyCenterCtsData.getAlertString(1))
         }
     }
 }
