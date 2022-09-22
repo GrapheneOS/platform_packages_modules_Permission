@@ -354,12 +354,12 @@ class SafetyCenterActivityTest {
         safetyCenterCtsHelper.setData(SOURCE_ID_3, safetySourceCtsData.information)
 
         context.launchSafetyCenterActivity {
-            // Verify content description for the collapsed entry group, and click on it to expand
+            // Verify content description for the collapsed entry group, and click on it to expand.
             waitDisplayed(By.desc("List. OK. Actions needed. Recommendation summary")) {
                 it.click()
             }
 
-            // Verify content descriptions for the expanded group header and entry list items
+            // Verify content descriptions for the expanded group header and entry list items.
             waitAllTextDisplayed("OK")
             waitDisplayed(By.desc("List item. Recommendation title. Recommendation summary"))
             waitDisplayed(By.desc("List item. Ok title. Ok summary"))
@@ -367,16 +367,57 @@ class SafetyCenterActivityTest {
     }
 
     @Test
-    fun entryListWithEntryGroup_clickingOnADisabledEntry_shouldNotCollapseTheGroup() {
+    fun entryListWithEntryGroup_clickingAnUnclickableDisabledEntry_doesNothing() {
         safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG_WITH_SOURCE_WITH_INVALID_INTENT)
         safetyCenterCtsHelper.setData(SOURCE_ID_1, safetySourceCtsData.unspecified)
 
         context.launchSafetyCenterActivity {
             waitDisplayed(By.text("OK")) { it.click() }
             waitDisplayed(By.text("Unspecified title")) { it.click() }
-            // Clicking the disabled entry should not collapse the group and the entry should
-            // still be visible.
+            // Confirm that clicking on the entry neither redirects to any other screen nor
+            // collapses the group.
             waitAllTextDisplayed("Unspecified title")
+        }
+    }
+
+    @Test
+    fun entryListWithEntryGroup_unclickableDisabledEntry_hasContentDescription() {
+        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG_WITH_SOURCE_WITH_INVALID_INTENT)
+        safetyCenterCtsHelper.setData(SOURCE_ID_1, safetySourceCtsData.unspecified)
+
+        context.launchSafetyCenterActivity {
+            waitDisplayed(By.desc("List. OK. No info yet")) { it.click() }
+            // Make sure that the content description is correctly set for the unclickable disabled
+            // entries so that the talkback to works properly.
+            waitDisplayed(By.desc("List item. Unspecified title. Unspecified summary"))
+        }
+    }
+
+    @Test
+    fun entryListWithEntryGroup_clickingAClickableDisabledEntry_redirectsToDifferentScreen() {
+        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
+        safetyCenterCtsHelper.setData(
+            SOURCE_ID_1, safetySourceCtsData.unspecifiedDisabledWithTestActivityRedirect)
+
+        context.launchSafetyCenterActivity {
+            waitDisplayed(By.text("OK")) { it.click() }
+            waitDisplayed(By.text("Clickable disabled title")) { it.click() }
+            waitButtonDisplayed("Exit test activity") { it.click() }
+        }
+    }
+
+    @Test
+    fun entryListWithEntryGroup_clickableDisabledEntry_hasContentDescription() {
+        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
+        safetyCenterCtsHelper.setData(
+            SOURCE_ID_1, safetySourceCtsData.unspecifiedDisabledWithTestActivityRedirect)
+
+        context.launchSafetyCenterActivity {
+            waitDisplayed(By.desc("List. OK. No info yet")) { it.click() }
+            // Make sure that the content description is correctly set for the clickable disabled
+            // entry so that the talkback to works properly.
+            waitDisplayed(
+                By.desc("List item. Clickable disabled title. Clickable disabled summary"))
         }
     }
 

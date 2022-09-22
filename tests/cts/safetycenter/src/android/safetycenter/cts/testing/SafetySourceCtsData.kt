@@ -64,6 +64,22 @@ class SafetySourceCtsData(private val context: Context) {
                     .build())
             .build()
 
+    /**
+     * A disabled [SafetySourceData] with a [SEVERITY_LEVEL_UNSPECIFIED] [SafetySourceStatus], and a
+     * [PendingIntent] that redirects to [TestActivity].
+     */
+    val unspecifiedDisabledWithTestActivityRedirect =
+        SafetySourceData.Builder()
+            .setStatus(
+                SafetySourceStatus.Builder(
+                        "Clickable disabled title",
+                        "Clickable disabled summary",
+                        SEVERITY_LEVEL_UNSPECIFIED)
+                    .setEnabled(false)
+                    .setPendingIntent(testActivityRedirectPendingIntent)
+                    .build())
+            .build()
+
     /** A [SafetySourceIssue] with a [SEVERITY_LEVEL_INFORMATION] and a redirecting [Action]. */
     val informationIssue =
         SafetySourceIssue.Builder(
