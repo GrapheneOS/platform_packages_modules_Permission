@@ -19,13 +19,12 @@ package android.safetycenter.cts
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_SAFETY_CENTER
-import android.content.pm.PackageManager.FEATURE_AUTOMOTIVE
-import android.content.pm.PackageManager.FEATURE_LEANBACK
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.isSafetyCenterEnabledWithPermission
 import android.safetycenter.cts.testing.SafetyCenterFlags
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
+import android.safetycenter.cts.testing.SettingsPackage.getSettingsPackageName
 import android.support.test.uiautomator.By
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -50,14 +49,10 @@ class SafetyCenterUnsupportedTest {
     }
 
     @Test
-    fun launchActivity_showsSecurityTitle() {
-        // TODO(b/232284056): Check if we can remove these test restrictions
-        assumeFalse(packageManager.hasSystemFeature(FEATURE_AUTOMOTIVE))
-        assumeFalse(packageManager.hasSystemFeature(FEATURE_LEANBACK))
-
+    fun launchActivity_opensSettings() {
         startSafetyCenterActivity()
 
-        waitFindObject(By.text("Settings"))
+        waitFindObject(By.pkg(context.getSettingsPackageName()))
     }
 
     @Test
