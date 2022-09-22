@@ -406,14 +406,12 @@ final class SafetyCenterRefreshTracker {
                 @NonNull SafetySourceKey safetySourceKey, boolean successful) {
             Long startElapsedMillis = mSourceRefreshesInFlight.remove(safetySourceKey);
 
-            if (startElapsedMillis == null) {
-                return null;
-            }
-
             boolean tracked = isTracked(safetySourceKey);
             mAnyTrackedSourceErrors |= (tracked && !successful);
             Duration duration =
-                    Duration.ofMillis(SystemClock.elapsedRealtime() - startElapsedMillis);
+                    (startElapsedMillis == null)
+                            ? null
+                            : Duration.ofMillis(SystemClock.elapsedRealtime() - startElapsedMillis);
             Log.v(
                     TAG,
                     "Refresh completed for sourceId:"
