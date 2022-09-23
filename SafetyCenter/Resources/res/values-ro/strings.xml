@@ -24,7 +24,7 @@
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"Nu există informații încă"</string>
     <string name="lock_screen_search_terms" msgid="2678486357779794826">"Blocarea dispozitivului, Ecran de blocare, Parolă, PIN, Model"</string>
     <string name="biometrics_title" msgid="5859504610285212938">"Sisteme biometrice"</string>
-    <string name="biometrics_search_terms" msgid="6040319118762671981">"Amprentă, Deget, Adăugați o amprentă, Deblocare facială, Față"</string>
+    <string name="biometrics_search_terms" msgid="6040319118762671981">"Amprentă, Deget, Adaugă o amprentă, Deblocare facială, Față"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"Confidențialitate"</string>
     <string name="privacy_sources_summary" msgid="4089719981155120864">"Tablou de bord, permisiuni, comenzi"</string>
     <string name="permission_usage_title" msgid="3633779688945350407">"Tablou de bord de confidențialitate"</string>
