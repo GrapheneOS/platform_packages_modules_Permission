@@ -102,6 +102,7 @@ final class SafetyCenterFlags {
                 getBackgroundRefreshDeniedSourceIds());
         printFlag(
                 fout, PROPERTY_REFRESH_SOURCES_TIMEOUTS_MILLIS, getRefreshSourcesTimeoutsMillis());
+        printFlag(fout, PROPERTY_ISSUE_CATEGORY_ALLOWLISTS, getIssueCategoryAllowlists());
         printFlag(
                 fout, PROPERTY_ALLOW_WESTWORLD_LOGGING_IN_TESTS, getAllowWestworldLoggingInTests());
         fout.println();

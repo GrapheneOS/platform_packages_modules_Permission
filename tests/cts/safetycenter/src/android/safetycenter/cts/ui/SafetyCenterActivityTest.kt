@@ -16,7 +16,6 @@
 
 package android.safetycenter.cts.ui
 
-import android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE
 import android.content.Context
 import android.os.Bundle
 import android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_ID
@@ -42,7 +41,6 @@ import android.safetycenter.cts.testing.SafetySourceReceiver
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.SafetySourceDataKey
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.SafetySourceDataKey.Reason.RESOLVE_ACTION
 import android.safetycenter.cts.testing.SettingsPackage.getSettingsPackageName
-import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermissionIdentity
 import android.safetycenter.cts.testing.UiTestHelper.RESCAN_BUTTON_LABEL
 import android.safetycenter.cts.testing.UiTestHelper.expandMoreIssuesCard
 import android.safetycenter.cts.testing.UiTestHelper.waitAllTextDisplayed
@@ -385,15 +383,13 @@ class SafetyCenterActivityTest {
         SafetySourceReceiver.safetySourceData[
                 SafetySourceDataKey(RESOLVE_ACTION, SINGLE_SOURCE_ID)] = null
 
-        callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
-            context.launchSafetyCenterActivity {
-                val action = safetySourceCtsData.criticalResolvingActionWithSuccessMessage
-                waitButtonDisplayed(action.label) { it.click() }
+        context.launchSafetyCenterActivity(withReceiverPermission = true) {
+            val action = safetySourceCtsData.criticalResolvingActionWithSuccessMessage
+            waitButtonDisplayed(action.label) { it.click() }
 
-                // Success message should show up if issue marked as resolved
-                val successMessage = action.successMessage
-                waitAllTextDisplayed(successMessage)
-            }
+            // Success message should show up if issue marked as resolved
+            val successMessage = action.successMessage
+            waitAllTextDisplayed(successMessage)
         }
     }
 
@@ -409,17 +405,15 @@ class SafetyCenterActivityTest {
         SafetySourceReceiver.safetySourceData[
                 SafetySourceDataKey(RESOLVE_ACTION, SINGLE_SOURCE_ID)] = null
 
-        callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
-            context.launchSafetyCenterActivity {
-                val action = safetySourceCtsData.criticalResolvingActionWithSuccessMessage
-                waitButtonDisplayed(action.label) { it.click() }
+        context.launchSafetyCenterActivity(withReceiverPermission = true) {
+            val action = safetySourceCtsData.criticalResolvingActionWithSuccessMessage
+            waitButtonDisplayed(action.label) { it.click() }
 
-                // Wait for success message to go away, verify issue no longer displayed
-                val successMessage = action.successMessage
-                waitAllTextNotDisplayed(successMessage)
-                waitSourceIssueNotDisplayed(
-                    safetySourceCtsData.criticalResolvingIssueWithSuccessMessage)
-            }
+            // Wait for success message to go away, verify issue no longer displayed
+            val successMessage = action.successMessage
+            waitAllTextNotDisplayed(successMessage)
+            waitSourceIssueNotDisplayed(
+                safetySourceCtsData.criticalResolvingIssueWithSuccessMessage)
         }
     }
 
@@ -436,13 +430,11 @@ class SafetyCenterActivityTest {
         SafetySourceReceiver.safetySourceData[
                 SafetySourceDataKey(RESOLVE_ACTION, SINGLE_SOURCE_ID)] = null
 
-        callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
-            context.launchSafetyCenterActivity {
-                val action = safetySourceCtsData.criticalResolvingAction
-                waitButtonDisplayed(action.label) { it.click() }
+        context.launchSafetyCenterActivity(withReceiverPermission = true) {
+            val action = safetySourceCtsData.criticalResolvingAction
+            waitButtonDisplayed(action.label) { it.click() }
 
-                waitSourceIssueNotDisplayed(safetySourceCtsData.criticalResolvingGeneralIssue)
-            }
+            waitSourceIssueNotDisplayed(safetySourceCtsData.criticalResolvingGeneralIssue)
         }
     }
 
@@ -459,13 +451,11 @@ class SafetyCenterActivityTest {
                 SafetySourceDataKey(RESOLVE_ACTION, SINGLE_SOURCE_ID)] = null
         SafetySourceReceiver.shouldReportSafetySourceError = true
 
-        callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
-            context.launchSafetyCenterActivity {
-                val action = safetySourceCtsData.criticalResolvingAction
-                waitButtonDisplayed(action.label) { it.click() }
+        context.launchSafetyCenterActivity(withReceiverPermission = true) {
+            val action = safetySourceCtsData.criticalResolvingAction
+            waitButtonDisplayed(action.label) { it.click() }
 
-                waitSourceIssueDisplayed(safetySourceCtsData.criticalResolvingGeneralIssue)
-            }
+            waitSourceIssueDisplayed(safetySourceCtsData.criticalResolvingGeneralIssue)
         }
     }
 
@@ -481,13 +471,11 @@ class SafetyCenterActivityTest {
 
         // Set no data at all on the receiver, will ignore incoming call.
 
-        callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
-            context.launchSafetyCenterActivity {
-                val action = safetySourceCtsData.criticalResolvingAction
-                waitButtonDisplayed(action.label) { it.click() }
+        context.launchSafetyCenterActivity(withReceiverPermission = true) {
+            val action = safetySourceCtsData.criticalResolvingAction
+            waitButtonDisplayed(action.label) { it.click() }
 
-                waitSourceIssueDisplayed(safetySourceCtsData.criticalResolvingGeneralIssue)
-            }
+            waitSourceIssueDisplayed(safetySourceCtsData.criticalResolvingGeneralIssue)
         }
     }
 
