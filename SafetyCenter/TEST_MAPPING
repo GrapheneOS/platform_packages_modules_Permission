@@ -1,6 +1,16 @@
 {
   "presubmit": [
     {
+      "name": "CtsSafetyCenterTestCases",
+      "options": [
+        {
+          "exclude-annotation": "com.android.bedstead.harrier.annotations.Postsubmit"
+        }
+      ]
+    }
+  ],
+  "postsubmit": [
+    {
       "name": "CtsSafetyCenterTestCases"
     }
   ]

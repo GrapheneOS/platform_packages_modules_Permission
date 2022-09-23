@@ -18,7 +18,12 @@
       ]
     },
     {
-      "name": "CtsSafetyCenterTestCases"
+      "name": "CtsSafetyCenterTestCases",
+      "options": [
+        {
+          "exclude-annotation": "com.android.bedstead.harrier.annotations.Postsubmit"
+        }
+      ]
     },
     {
       "name": "CtsPermissionTestCases",
@@ -49,6 +54,9 @@
           "exclude-annotation": "androidx.test.filters.FlakyTest"
         }
       ]
+    },
+    {
+      "name": "CtsSafetyCenterTestCases"
     }
   ]
 }
