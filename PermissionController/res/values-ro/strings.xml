@@ -25,12 +25,12 @@
     <string name="blocked" msgid="9195547604866033708">"Blocat"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Dezinstalați sau dezactivați"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Aplicația nu a fost găsită"</string>
-    <string name="grant_dialog_button_deny" msgid="88262611492697192">"Nu permiteți"</string>
+    <string name="grant_dialog_button_deny" msgid="88262611492697192">"Nu permite"</string>
     <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"Nu permiteți și nu se mai întreabă"</string>
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Păstrează opțiunea „Când aplicația este folosită”"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Păstrează „Doar de data aceasta”"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Mai multe info."</string>
-    <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Nu permiteți în nicio situație"</string>
+    <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Nu permite în nicio situație"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Închide"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> din <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
     <string name="permission_warning_template" msgid="2247087781222679458">"Permiți &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
@@ -102,7 +102,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"Permite întotdeauna"</string>
     <string name="permission_access_only_foreground" msgid="7801170728159326195">"Permiteți numai când folosiți aplicația"</string>
-    <string name="permission_access_never" msgid="4647014230217936900">"Nu permiteți"</string>
+    <string name="permission_access_never" msgid="4647014230217936900">"Nu permite"</string>
     <string name="loading" msgid="4789365003890741082">"Se încarcă…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"Toate permisiunile"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Alte funcții ale aplicației"</string>
@@ -186,7 +186,7 @@
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Permite întotdeauna"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Permiteți numai când folosiți aplicația"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Întreabă de fiecare dată"</string>
-    <string name="app_permission_button_deny" msgid="6016454069832050300">"Nu permiteți"</string>
+    <string name="app_permission_button_deny" msgid="6016454069832050300">"Nu permite"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Locația exactă"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Locația aproximativă"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Folosește locația exactă"</string>
