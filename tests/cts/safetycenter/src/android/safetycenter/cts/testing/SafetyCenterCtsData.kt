@@ -94,12 +94,13 @@ class SafetyCenterCtsData(context: Context) {
     fun safetyCenterEntryDefaultBuilder(
         sourceId: String,
         userId: Int = UserHandle.myUserId(),
-        title: CharSequence = "OK"
+        title: CharSequence = "OK",
+        pendingIntent: PendingIntent? = safetySourceCtsData.redirectPendingIntent
     ) =
         SafetyCenterEntry.Builder(entryId(sourceId, userId), title)
             .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNKNOWN)
             .setSummary("OK")
-            .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
+            .setPendingIntent(pendingIntent)
             .setSeverityUnspecifiedIconType(SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION)
 
     /**
@@ -110,8 +111,9 @@ class SafetyCenterCtsData(context: Context) {
     fun safetyCenterEntryDefault(
         sourceId: String,
         userId: Int = UserHandle.myUserId(),
-        title: CharSequence = "OK"
-    ) = safetyCenterEntryDefaultBuilder(sourceId, userId, title).build()
+        title: CharSequence = "OK",
+        pendingIntent: PendingIntent? = safetySourceCtsData.redirectPendingIntent
+    ) = safetyCenterEntryDefaultBuilder(sourceId, userId, title, pendingIntent).build()
 
     /**
      * Returns a [SafetyCenterEntry] builder with no icon, the summary generally used for sources of
