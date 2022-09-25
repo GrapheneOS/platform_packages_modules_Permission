@@ -27,12 +27,11 @@
     <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"El dispositivo está en riesgo"</string>
     <string name="overall_severity_level_safety_recommendation_title" msgid="6436208984463981167">"Puedes estar en riesgo"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="1039142045555227172">"Estás en riesgo"</string>
-    <string name="overall_severity_n_alerts_summary" msgid="1105615451561197136">"{count,plural, =1{# alerta}other{# alertas}}"</string>
+    <string name="overall_severity_n_alerts_summary" msgid="1105615451561197136">"{count,plural, =1{# alerta}many{# alertas}other{# alertas}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"No se ha podido abrir la página"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"No se ha podido resolver la alerta"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"No se han podido actualizar los ajustes"</string>
-    <!-- no translation found for refresh_error (656062128422446177) -->
-    <skip />
+    <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{No se ha podido comprobar el ajuste}many{No se han podido comprobar los ajustes}other{No se han podido comprobar los ajustes}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"El perfil de trabajo está en pausa"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"Aún no hay información"</string>
 </resources>
