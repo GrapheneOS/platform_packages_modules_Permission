@@ -27,12 +27,12 @@
     <string name="off" msgid="1438489226422866263">"Dezactivat"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Dezinstalați sau dezactivați"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Aplicația nu a fost găsită"</string>
-    <string name="grant_dialog_button_deny" msgid="88262611492697192">"Nu permiteți"</string>
+    <string name="grant_dialog_button_deny" msgid="88262611492697192">"Nu permite"</string>
     <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"Nu permiteți și nu se mai întreabă"</string>
-    <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Păstrați opțiunea „Când aplicația este folosită”"</string>
-    <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Păstrați „Doar de data aceasta”"</string>
+    <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Păstrează opțiunea „Când aplicația este folosită”"</string>
+    <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Păstrează „Doar de data aceasta”"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Mai multe info."</string>
-    <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Nu permiteți în nicio situație"</string>
+    <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Nu permite în nicio situație"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Închide"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> din <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
     <string name="permission_warning_template" msgid="2247087781222679458">"Permiți &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
@@ -46,7 +46,7 @@
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Permite"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Permite întotdeauna"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"În timpul folosirii aplicației"</string>
-    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Schimbați la locația exactă"</string>
+    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Schimbă la locația exactă"</string>
     <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Păstrează locația aproximativă"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Doar de data aceasta"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Permite întotdeauna"</string>
@@ -60,11 +60,11 @@
     <string name="review_permission_decisions" msgid="309559429150613632">"Decizii recente privind permisiunile"</string>
     <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Vezi toate deciziile recente privind permisiunile"</string>
     <string name="review_permission_decisions_empty" msgid="8120775336417279806">"Nicio decizie recentă privind permisiunile"</string>
-    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Gestionați accesul la datele din calendar, jurnalele de apeluri și altele"</string>
+    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Gestionează accesul la datele din calendar, jurnalele de apeluri și altele"</string>
     <string name="granted_permission_decision" msgid="7824827491551861365">"Ați permis accesul <xliff:g id="APP_NAME">%1$s</xliff:g> la <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="denied_permission_decision" msgid="5308961501779563781">"Ați refuzat accesul <xliff:g id="APP_NAME">%1$s</xliff:g> la <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Azi}=1{Acum o zi}few{Acum # zile}other{Acum # de zile}}"</string>
-    <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Dezactivați aplicația"</string>
+    <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Dezactivează aplicația"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Dacă dezactivați această aplicație, este posibil ca Android și alte aplicații să nu mai funcționeze corespunzător. Rețineți că nu puteți șterge aplicația, deoarece a fost preinstalată pe dispozitiv. Dezactivând-o, opriți această aplicație și o ascundeți pe dispozitiv."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Manager de permisiuni"</string>
     <string name="never_ask_again" msgid="4728762438198560329">"Nu mai întrebați"</string>
@@ -82,7 +82,7 @@
     <string name="menu_hide_system" msgid="3855390843744028465">"Ascunde aplicațiile de sistem"</string>
     <string name="menu_show_7_days_data" msgid="8979611198508523706">"Afișează șapte zile"</string>
     <string name="menu_show_24_hours_data" msgid="8228054833323380780">"Afișează 24 de ore"</string>
-    <string name="manage_permission" msgid="2895385393037061964">"Gestionați permisiunea"</string>
+    <string name="manage_permission" msgid="2895385393037061964">"Gestionează permisiunea"</string>
     <string name="no_apps" msgid="2412612731628386816">"Nicio aplicație"</string>
     <string name="location_settings" msgid="3624412509133422562">"Setări privind locația"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> este un furnizor de servicii de localizare pentru acest dispozitiv. Accesul la locație poate fi modificat din setările privind locația."</string>
@@ -104,7 +104,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"Permite întotdeauna"</string>
     <string name="permission_access_only_foreground" msgid="7801170728159326195">"Permiteți numai când folosiți aplicația"</string>
-    <string name="permission_access_never" msgid="4647014230217936900">"Nu permiteți"</string>
+    <string name="permission_access_never" msgid="4647014230217936900">"Nu permite"</string>
     <string name="loading" msgid="4789365003890741082">"Se încarcă…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"Toate permisiunile"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Alte funcții ale aplicației"</string>
@@ -117,7 +117,7 @@
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"Alege ce va putea accesa &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;"</string>
     <string name="permission_review_title_template_update" msgid="3232333580548588657">"Aplicația &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; a fost actualizată. Alege ce va putea accesa această aplicație."</string>
     <string name="review_button_cancel" msgid="2191147944056548886">"Anulează"</string>
-    <string name="review_button_continue" msgid="2527918375047602199">"Continuați"</string>
+    <string name="review_button_continue" msgid="2527918375047602199">"Continuă"</string>
     <string name="new_permissions_category" msgid="552995090178417611">"Permisiuni noi"</string>
     <string name="current_permissions_category" msgid="4292990083585728880">"Permisiuni actuale"</string>
     <string name="message_staging" msgid="9110563899955511866">"Se pregătește aplicația…"</string>
@@ -166,15 +166,15 @@
     <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Folosită de o aplicație}few{Folosită de # aplicații}other{Folosită de # de aplicații}}"</string>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Vezi totul în Tabloul de bord"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtrat după: <xliff:g id="PERM">%1$s</xliff:g>"</string>
-    <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Eliminați filtrul"</string>
-    <string name="filter_by_title" msgid="7300368602759958031">"Filtrați după"</string>
-    <string name="filter_by_permissions" msgid="7613462963111282568">"Filtrați după permisiuni"</string>
-    <string name="filter_by_time" msgid="6667864816999691642">"Filtrați după oră"</string>
+    <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Elimină filtrul"</string>
+    <string name="filter_by_title" msgid="7300368602759958031">"Filtrează după"</string>
+    <string name="filter_by_permissions" msgid="7613462963111282568">"Filtrează după permisiuni"</string>
+    <string name="filter_by_time" msgid="6667864816999691642">"Filtrează după oră"</string>
     <string name="sort_spinner_most_permissions" msgid="1704349738096822836">"Cele mai multe permisiuni"</string>
     <string name="sort_spinner_most_accesses" msgid="5283913004357220161">"Cele mai multe accesuri"</string>
     <string name="sort_spinner_recent" msgid="7513845273076525203">"Recente"</string>
-    <string name="sort_by_app" msgid="4055799843051138087">"Sortați după utilizarea aplicației"</string>
-    <string name="sort_by_time" msgid="5435045320002150456">"Sortați după oră"</string>
+    <string name="sort_by_app" msgid="4055799843051138087">"Sortează după utilizarea aplicației"</string>
+    <string name="sort_by_time" msgid="5435045320002150456">"Sortează după oră"</string>
     <string name="item_separator" msgid="4030255389809224513">", "</string>
     <string name="permission_usage_refresh" msgid="2264056346561305420">"Actualizează"</string>
     <string name="permission_history_title" msgid="8340081285133025225">"Istoric de permisiuni"</string>
@@ -189,10 +189,10 @@
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Permite întotdeauna"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Permiteți numai când folosiți aplicația"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Întreabă de fiecare dată"</string>
-    <string name="app_permission_button_deny" msgid="6016454069832050300">"Nu permiteți"</string>
+    <string name="app_permission_button_deny" msgid="6016454069832050300">"Nu permite"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Locația exactă"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Locația aproximativă"</string>
-    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Folosiți locația exactă"</string>
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Folosește locația exactă"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Când locația exactă este dezactivată, aplicațiile vă pot accesa locația aproximativă"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Permisiune <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Accesul la <xliff:g id="PERM">%1$s</xliff:g> pentru această aplicație"</string>
@@ -200,9 +200,9 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Vezi toate aplicațiile cu această permisiune"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Afișează datele de utilizare a microfonului cu Asistentul"</string>
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Setările aplicațiilor nefolosite"</string>
-    <string name="auto_revoke_label" msgid="5068393642936571656">"Eliminați permisiunile dacă aplicația nu este folosită"</string>
+    <string name="auto_revoke_label" msgid="5068393642936571656">"Elimină permisiunile dacă aplicația nu este folosită"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Revocă permisiunile și eliberează spațiu"</string>
-    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Întrerupeți activitatea în aplicațiile nefolosite"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Întrerupe activitatea în aplicațiile nefolosite"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"Revocați permisiunile, ștergeți fișierele temporare și opriți notificările"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Pentru a vă proteja datele, se vor elimina permisiunile pentru această aplicație dacă nu este folosită câteva luni."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Pentru a vă proteja datele, dacă aplicația nu este folosită câteva luni, se vor elimina următoarele permisiuni: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
@@ -213,7 +213,7 @@
     <string name="auto_revocable_permissions_one" msgid="5299112369449458176">"Permisiunea <xliff:g id="PERM">%1$s</xliff:g> va fi eliminată."</string>
     <string name="auto_revocable_permissions_two" msgid="4874067408752041716">"Permisiunile <xliff:g id="PERM_0">%1$s</xliff:g> și <xliff:g id="PERM_1">%2$s</xliff:g> vor fi eliminate."</string>
     <string name="auto_revocable_permissions_many" msgid="1521807896206032992">"Permisiunile care vor fi eliminate: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
-    <string name="auto_manage_title" msgid="7693181026874842935">"Gestionați automat permisiunile"</string>
+    <string name="auto_manage_title" msgid="7693181026874842935">"Gestionează automat permisiunile"</string>
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"Permisiunea <xliff:g id="PERMISSION_NAME">%s</xliff:g> a fost eliminată"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Permisiunile <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> și <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> au fost eliminate"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Permisiunea <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> și încă <xliff:g id="NUMBER">%2$s</xliff:g> permisiuni au fost eliminate"</string>
@@ -272,7 +272,7 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"În timpul condusului ați permis accesul <xliff:g id="APP">%1$s</xliff:g> la <xliff:g id="PERMISSION_1">%2$s</xliff:g> și la <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"În timpul condusului ați acordat <xliff:g id="COUNT">%1$d</xliff:g> permisiuni pentru <xliff:g id="APP">%2$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{În timpul condusului ați permis accesul pentru <xliff:g id="APP_0">%1$s</xliff:g> și # altă aplicație}few{În timpul condusului ați permis accesul pentru <xliff:g id="APP_1">%1$s</xliff:g> și # alte aplicații}other{În timpul condusului ați permis accesul pentru <xliff:g id="APP_1">%1$s</xliff:g> și # de alte aplicații}}"</string>
-    <string name="go_to_settings" msgid="1053735612211228335">"Accesați Setări"</string>
+    <string name="go_to_settings" msgid="1053735612211228335">"Accesează Setări"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Unele aplicații nu au fost folosite de câteva luni"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Permisiuni eliminate"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Permisiuni eliminate"</string>
@@ -352,53 +352,53 @@
     <string name="role_browser_label" msgid="2877796144554070207">"Aplicația browser prestabilită"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Aplicația browser"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Aplicații care vă oferă acces la internet și afișează linkurile pe care le atingeți"</string>
-    <string name="role_browser_request_title" msgid="2895200507835937192">"Setați <xliff:g id="APP_NAME">%1$s</xliff:g> ca aplicație browser prestabilită?"</string>
+    <string name="role_browser_request_title" msgid="2895200507835937192">"Setezi <xliff:g id="APP_NAME">%1$s</xliff:g> ca aplicație browser prestabilită?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"Nu este nevoie de permisiuni"</string>
     <string name="role_dialer_label" msgid="1100224146343237968">"Aplicația pentru telefon"</string>
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Aplicația Telefon"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Aplicațiile cu ajutorul cărora inițiați și primiți apeluri telefonice pe dispozitiv"</string>
-    <string name="role_dialer_request_title" msgid="5959618560705912058">"Setați <xliff:g id="APP_NAME">%1$s</xliff:g> ca aplicație prestabilită pentru telefon?"</string>
+    <string name="role_dialer_request_title" msgid="5959618560705912058">"Setezi <xliff:g id="APP_NAME">%1$s</xliff:g> ca aplicație prestabilită pentru telefon?"</string>
     <string name="role_dialer_request_description" msgid="6288839625724909320">"Aplicația va avea acces la Camera foto, Agendă, Microfon, Telefon și SMS"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"tastatură telefon"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Aplicație SMS prestabilită"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"Aplicația SMS"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Aplicații cu ajutorul cărora puteți folosi numărul de telefon ca să trimiteți și să primiți mesaje text scurte, fotografii, videoclipuri și altele"</string>
-    <string name="role_sms_request_title" msgid="7953552109601185602">"Setați <xliff:g id="APP_NAME">%1$s</xliff:g> ca aplicație prestabilită pentru SMS?"</string>
+    <string name="role_sms_request_title" msgid="7953552109601185602">"Setezi <xliff:g id="APP_NAME">%1$s</xliff:g> ca aplicație prestabilită pentru SMS?"</string>
     <string name="role_sms_request_description" msgid="2691004766132144886">"Aplicația va avea acces la Camera foto, Agendă, Fișiere și media, Microfon, Telefon și SMS"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"mesaj text, trimitere mesaje text, mesaje, trimitere mesaje"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"Aplicație de urgență prestabilită"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"Aplicația de urgență"</string>
     <string name="role_emergency_description" msgid="5051840234887686630">"Aplicații în care îți înregistrezi informațiile medicale și le pui la dispoziția echipelor de prim ajutor; primești alerte despre fenomene meteorologice grave și dezastre; îi anunți pe ceilalți când ai nevoie de ajutor"</string>
-    <string name="role_emergency_request_title" msgid="8469579020654348567">"Setați <xliff:g id="APP_NAME">%1$s</xliff:g> ca aplicație prestabilită de urgență?"</string>
+    <string name="role_emergency_request_title" msgid="8469579020654348567">"Setezi <xliff:g id="APP_NAME">%1$s</xliff:g> ca aplicație prestabilită de urgență?"</string>
     <string name="role_emergency_request_description" msgid="131645948770262850">"Nu este nevoie de permisiuni"</string>
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"în caz de urgență"</string>
     <string name="role_home_label" msgid="3871847846649769412">"Aplicația prestabilită din ecranul de pornire"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"Aplicația din ecranul de pornire"</string>
     <string name="role_home_description" msgid="7997371519626556675">"Aplicațiile, denumite adesea lansatoare, înlocuiesc Ecranele de pornire pe dispozitivul Android și vă oferă acces la conținutul și funcțiile dispozitivului"</string>
-    <string name="role_home_request_title" msgid="738136983453341081">"Setați <xliff:g id="APP_NAME">%1$s</xliff:g> ca aplicație prestabilită din ecranul de pornire?"</string>
+    <string name="role_home_request_title" msgid="738136983453341081">"Setezi <xliff:g id="APP_NAME">%1$s</xliff:g> ca aplicație prestabilită din ecranul de pornire?"</string>
     <string name="role_home_request_description" msgid="2658833966716057673">"Nu este nevoie de permisiuni"</string>
     <string name="role_home_search_keywords" msgid="3830755001192666285">"lansator"</string>
     <string name="role_call_redirection_label" msgid="5785304207206147590">"Aplicație prestabilită pentru redirecționarea apelurilor"</string>
     <string name="role_call_redirection_short_label" msgid="7568143419571217757">"Aplicația de redirecționare a apelurilor"</string>
     <string name="role_call_redirection_description" msgid="6091669882014664420">"Aplicații care vă permit să redirecționați apelurile efectuate către un alt număr de telefon"</string>
-    <string name="role_call_redirection_request_title" msgid="2816244455003562925">"Setați <xliff:g id="APP_NAME">%1$s</xliff:g> ca aplicație prestabilită pentru redirecționarea apelurilor?"</string>
+    <string name="role_call_redirection_request_title" msgid="2816244455003562925">"Setezi <xliff:g id="APP_NAME">%1$s</xliff:g> ca aplicație prestabilită pentru redirecționarea apelurilor?"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Nu este nevoie de permisiuni"</string>
     <string name="role_call_screening_label" msgid="883935222060878724">"Aplicația prestabilită pentru ID-ul apelantului și spam"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"Aplicația pentru ID-ul apelantului și spam"</string>
     <string name="role_call_screening_description" msgid="2349431420497468981">"Aplicații care vă ajută să identificați apeluri și să blocați spamul, apelurile automate sau numerele nedorite"</string>
-    <string name="role_call_screening_request_title" msgid="7358309224566977290">"Setați <xliff:g id="APP_NAME">%1$s</xliff:g> ca aplicație prestabilită pentru ID-ul apelantului și spam?"</string>
+    <string name="role_call_screening_request_title" msgid="7358309224566977290">"Setezi <xliff:g id="APP_NAME">%1$s</xliff:g> ca aplicație prestabilită pentru ID-ul apelantului și spam?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Nu este nevoie de permisiuni"</string>
     <string name="role_automotive_navigation_label" msgid="2701890757955474751">"Aplicația de navigare prestabilită"</string>
     <string name="role_automotive_navigation_short_label" msgid="5165823092506922457">"Aplicație de navigare"</string>
     <string name="role_automotive_navigation_description" msgid="7834601873792870134">"Aplicații care pot oferi căutarea punctelor de interes și navigare pas cu pas"</string>
-    <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Setați <xliff:g id="APP_NAME">%1$s</xliff:g> ca aplicație de navigare prestabilită?"</string>
+    <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Setezi <xliff:g id="APP_NAME">%1$s</xliff:g> ca aplicație de navigare prestabilită?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Nu este nevoie de permisiuni"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> va putea să interacționeze cu notificările dvs. și să vă acceseze permisiunile pentru Telefon, SMS-uri, Agendă și Calendar."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> va putea să interacționeze cu notificările dvs. și să redea în stream conținutul din aplicații pe dispozitivul conectat."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Acest serviciu vă trimite fotografiile, conținutul media și notificările de pe telefon pe alte dispozitive."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Aplicația prestabilită actuală"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Nu mai întreba"</string>
-    <string name="request_role_set_as_default" msgid="4253949643984172880">"Setați ca standard"</string>
+    <string name="request_role_set_as_default" msgid="4253949643984172880">"Setează ca prestabilită"</string>
     <string name="phone_call_uses_microphone" msgid="233569591461187177">"Microfonul este folosit într-un &lt;b&gt;apel telefonic&lt;/b&gt;"</string>
     <string name="phone_call_uses_microphone_and_camera" msgid="6291898755681748189">"Camera foto și microfonul sunt folosite într-un &lt;b&gt;apel video&lt;/b&gt;"</string>
     <string name="phone_call_uses_camera" msgid="2048417022147857418">"Camera foto este folosită într-un &lt;b&gt;apel video&lt;/b&gt;"</string>
@@ -513,7 +513,7 @@
     <string name="blocked_location_title" msgid="2005608279812892383">"Locația dispozitivului este dezactivată"</string>
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Pentru aplicații și servicii"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Datele de la microfon pot fi trimise când apelați un număr de urgență."</string>
-    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Modificați"</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Modifică"</string>
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Securitate și confidențialitate"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"Scanați dispozitivul"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Închide"</string>
@@ -534,10 +534,10 @@
     <string name="permissions_removed_qs" msgid="8957319130625294572">"Permisiunea a fost eliminată"</string>
     <string name="camera_usage_qs" msgid="4394233566086665994">"Vezi date despre folosirea recentă a camerei"</string>
     <string name="microphone_usage_qs" msgid="8527666682168170417">"Vezi date despre folosirea recentă a microfonului"</string>
-    <string name="remove_camera_qs" msgid="3649996161066883350">"Eliminați permisiunea pentru această aplicație"</string>
-    <string name="remove_microphone_qs" msgid="1276551965129953198">"Eliminați permisiunea pentru această aplicație"</string>
-    <string name="manage_service_qs" msgid="7862555549364153805">"Gestionați serviciul"</string>
-    <string name="manage_permissions_qs" msgid="3780541819763475434">"Gestionați permisiunile"</string>
+    <string name="remove_camera_qs" msgid="3649996161066883350">"Elimină permisiunea pentru această aplicație"</string>
+    <string name="remove_microphone_qs" msgid="1276551965129953198">"Elimină permisiunea pentru această aplicație"</string>
+    <string name="manage_service_qs" msgid="7862555549364153805">"Gestionează serviciul"</string>
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"Gestionează permisiunile"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Este folosit de un apel telefonic"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Folosit recent într-un apel telefonic"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Este folosit de <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
