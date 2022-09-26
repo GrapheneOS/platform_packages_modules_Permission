@@ -376,7 +376,7 @@ class SafetyCenterActivityTest {
             waitDisplayed(By.text("Unspecified title")) { it.click() }
             // Clicking the disabled entry should not collapse the group and the entry should
             // still be visible.
-            waitDisplayed(By.text("Unspecified title"))
+            waitAllTextDisplayed("Unspecified title")
         }
     }
 
@@ -628,6 +628,20 @@ class SafetyCenterActivityTest {
             waitButtonDisplayed(action.label) { it.click() }
 
             waitSourceIssueDisplayed(safetySourceCtsData.criticalResolvingGeneralIssue)
+        }
+    }
+
+    @Test
+    fun issueCard_clickingNonResolvingActionButton_redirectsToDifferentScreen() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+
+        val data = safetySourceCtsData.criticalWithRedirectingTestActivityIssue
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
+
+        context.launchSafetyCenterActivity {
+            val action = safetySourceCtsData.testActivityRedirectAction
+            waitButtonDisplayed(action.label) { it.click() }
+            waitButtonDisplayed("Exit test activity") { it.click() }
         }
     }
 

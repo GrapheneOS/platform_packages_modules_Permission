@@ -28,7 +28,12 @@
             </intent-filter>
         </receiver>
 
+        <activity android:name=".testing.TestActivity"
+                  android:exported="false">
+        </activity>
+
         <uses-library android:name="android.test.runner"/>
+
     </application>
     <instrumentation android:name="androidx.test.runner.AndroidJUnitRunner"
                      android:label="CTS tests for SafetyCenter"
