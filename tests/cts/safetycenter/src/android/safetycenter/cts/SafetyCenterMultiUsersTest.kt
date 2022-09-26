@@ -202,13 +202,13 @@ class SafetyCenterMultiUsersTest {
     private val rigidEntry =
         SafetyCenterStaticEntry.Builder("OK")
             .setSummary("OK")
-            .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
+            .setPendingIntent(safetySourceCtsData.safetyCenterRedirectPendingIntent)
             .build()
 
     private val rigidEntryUpdated =
         SafetyCenterStaticEntry.Builder("Unspecified title")
             .setSummary("Unspecified summary")
-            .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
+            .setPendingIntent(safetySourceCtsData.safetyCenterRedirectPendingIntent)
             .build()
 
     private val rigidEntryForWorkBuilder
@@ -232,7 +232,7 @@ class SafetyCenterMultiUsersTest {
     private val rigidEntryForWorkUpdated =
         SafetyCenterStaticEntry.Builder("Unspecified title for Work")
             .setSummary("Unspecified summary")
-            .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
+            .setPendingIntent(safetySourceCtsData.safetyCenterRedirectPendingIntent)
             .build()
 
     private val safetyCenterDataForSecondaryUser
