@@ -95,7 +95,7 @@ class SafetyCenterCtsData(context: Context) {
         sourceId: String,
         userId: Int = UserHandle.myUserId(),
         title: CharSequence = "OK",
-        pendingIntent: PendingIntent? = safetySourceCtsData.redirectPendingIntent
+        pendingIntent: PendingIntent? = safetySourceCtsData.safetyCenterRedirectPendingIntent
     ) =
         SafetyCenterEntry.Builder(entryId(sourceId, userId), title)
             .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNKNOWN)
@@ -112,7 +112,7 @@ class SafetyCenterCtsData(context: Context) {
         sourceId: String,
         userId: Int = UserHandle.myUserId(),
         title: CharSequence = "OK",
-        pendingIntent: PendingIntent? = safetySourceCtsData.redirectPendingIntent
+        pendingIntent: PendingIntent? = safetySourceCtsData.safetyCenterRedirectPendingIntent
     ) = safetyCenterEntryDefaultBuilder(sourceId, userId, title, pendingIntent).build()
 
     /**
@@ -128,7 +128,7 @@ class SafetyCenterCtsData(context: Context) {
         SafetyCenterEntry.Builder(entryId(sourceId, userId), title)
             .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNSPECIFIED)
             .setSummary("OK")
-            .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
+            .setPendingIntent(safetySourceCtsData.safetyCenterRedirectPendingIntent)
             .setSeverityUnspecifiedIconType(SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON)
 
     /**
@@ -145,7 +145,7 @@ class SafetyCenterCtsData(context: Context) {
      */
     fun safetyCenterEntryUnspecified(
         sourceId: String,
-        pendingIntent: PendingIntent? = safetySourceCtsData.redirectPendingIntent
+        pendingIntent: PendingIntent? = safetySourceCtsData.safetyCenterRedirectPendingIntent
     ) =
         SafetyCenterEntry.Builder(entryId(sourceId), "Unspecified title")
             .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNSPECIFIED)
@@ -168,7 +168,7 @@ class SafetyCenterCtsData(context: Context) {
         SafetyCenterEntry.Builder(entryId(sourceId, userId), title)
             .setSeverityLevel(ENTRY_SEVERITY_LEVEL_OK)
             .setSummary("Ok summary")
-            .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
+            .setPendingIntent(safetySourceCtsData.safetyCenterRedirectPendingIntent)
             .setSeverityUnspecifiedIconType(SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION)
 
     /**
@@ -192,7 +192,7 @@ class SafetyCenterCtsData(context: Context) {
         SafetyCenterEntry.Builder(entryId(sourceId), "Recommendation title")
             .setSeverityLevel(ENTRY_SEVERITY_LEVEL_RECOMMENDATION)
             .setSummary(summary)
-            .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
+            .setPendingIntent(safetySourceCtsData.safetyCenterRedirectPendingIntent)
             .setSeverityUnspecifiedIconType(SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION)
             .build()
 
@@ -204,7 +204,7 @@ class SafetyCenterCtsData(context: Context) {
         SafetyCenterEntry.Builder(entryId(sourceId), "Critical title")
             .setSeverityLevel(ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING)
             .setSummary("Critical summary")
-            .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
+            .setPendingIntent(safetySourceCtsData.safetyCenterRedirectPendingIntent)
             .setSeverityUnspecifiedIconType(SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION)
             .build()
 
@@ -228,7 +228,7 @@ class SafetyCenterCtsData(context: Context) {
                                 INFORMATION_ISSUE_ACTION_ID,
                                 userId),
                             "Review",
-                            safetySourceCtsData.redirectPendingIntent)
+                            safetySourceCtsData.safetyCenterRedirectPendingIntent)
                         .build()))
             .build()
 
@@ -251,7 +251,7 @@ class SafetyCenterCtsData(context: Context) {
                                 RECOMMENDATION_ISSUE_ACTION_ID,
                                 userId),
                             "See issue",
-                            safetySourceCtsData.redirectPendingIntent)
+                            safetySourceCtsData.safetyCenterRedirectPendingIntent)
                         .build()))
             .build()
 
