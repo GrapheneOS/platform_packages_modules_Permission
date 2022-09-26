@@ -26,23 +26,17 @@ filegroup {
     visibility: ["//visibility:private"],
 }
 
-filegroup {
-    name: "service-permission-streaming-proto-sources",
-    srcs: [
-        "proto/role_service.proto",
-    ],
-    visibility: ["//frameworks/base"],
-}
-
 java_library {
-    name: "service-permission-streaming-proto-java-gen",
+    name: "service-permission-proto-stream",
     proto: {
         type: "stream",
         include_dirs: [
             "external/protobuf/src",
         ],
     },
-    srcs: [":service-permission-streaming-proto-sources"],
+    srcs: [
+        "proto/role_service.proto",
+    ],
     installable: false,
     min_sdk_version: "30",
     sdk_version: "system_server_current",
@@ -107,7 +101,7 @@ java_sdk_library {
         "safety-center-resources-lib",
         "service-permission-shared",
         "service-permission-statsd",
-        "service-permission-streaming-proto-java-gen",
+        "service-permission-proto-stream",
     ],
     errorprone: {
         javacflags: ["-Xep:GuardedBy:ERROR"],
