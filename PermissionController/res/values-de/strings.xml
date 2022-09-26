@@ -432,7 +432,7 @@
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Auslösererkennung für Assistenten anzeigen"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Symbol in der Statusleiste anzeigen, wenn das Mikrofon verwendet wird, um den Sprachassistenten zu aktivieren"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf Fotos und Medien auf deinem Gerät zuzugreifen?"</string>
-    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf deine Kontakte zuzugreifen?"</string>
+    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"„<xliff:g id="APP_NAME">%1$s</xliff:g>“ erlauben, auf deine Kontakte zuzugreifen?"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, den Gerätestandort abzurufen?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"Die App hat nur Zugriff auf den Gerätestandort, solange du sie verwendest"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, den Gerätestandort abzurufen?"</string>
