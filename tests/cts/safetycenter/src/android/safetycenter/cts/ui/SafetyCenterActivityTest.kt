@@ -34,6 +34,7 @@ import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_SOURCE_GR
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_SOURCE_GROUP_2
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_SOURCE_GROUP_3
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MULTIPLE_SOURCES_CONFIG
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MULTIPLE_SOURCES_CONFIG_WITH_SOURCE_WITH_INVALID_INTENT
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MULTIPLE_SOURCE_GROUPS_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_ID
@@ -362,6 +363,20 @@ class SafetyCenterActivityTest {
             waitAllTextDisplayed("OK")
             waitDisplayed(By.desc("List item. Recommendation title. Recommendation summary"))
             waitDisplayed(By.desc("List item. Ok title. Ok summary"))
+        }
+    }
+
+    @Test
+    fun entryListWithEntryGroup_clickingOnADisabledEntry_shouldNotCollapseTheGroup() {
+        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG_WITH_SOURCE_WITH_INVALID_INTENT)
+        safetyCenterCtsHelper.setData(SOURCE_ID_1, safetySourceCtsData.unspecified)
+
+        context.launchSafetyCenterActivity {
+            waitDisplayed(By.text("OK")) { it.click() }
+            waitDisplayed(By.text("Unspecified title")) { it.click() }
+            // Clicking the disabled entry should not collapse the group and the entry should
+            // still be visible.
+            waitDisplayed(By.text("Unspecified title"))
         }
     }
 
@@ -832,40 +847,40 @@ class SafetyCenterActivityTest {
         with(safetyCenterCtsHelper) {
             setConfig(MULTIPLE_SOURCE_GROUPS_CONFIG)
             setData(
-                    SOURCE_ID_1,
-                    safetySourceCtsData.buildSafetySourceDataWithSummary(
-                            severityLevel = SEVERITY_LEVEL_INFORMATION,
-                            entryTitle = SAFETY_SOURCE_1_TITLE,
-                            entrySummary = SAFETY_SOURCE_1_SUMMARY,
-                            withIssue = false))
+                SOURCE_ID_1,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_1_TITLE,
+                    entrySummary = SAFETY_SOURCE_1_SUMMARY,
+                    withIssue = false))
             setData(
-                    SOURCE_ID_2,
-                    safetySourceCtsData.buildSafetySourceDataWithSummary(
-                            severityLevel = SEVERITY_LEVEL_INFORMATION,
-                            entryTitle = SAFETY_SOURCE_2_TITLE,
-                            entrySummary = SAFETY_SOURCE_2_SUMMARY,
-                            withIssue = false))
+                SOURCE_ID_2,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_2_TITLE,
+                    entrySummary = SAFETY_SOURCE_2_SUMMARY,
+                    withIssue = false))
             setData(
-                    SOURCE_ID_3,
-                    safetySourceCtsData.buildSafetySourceDataWithSummary(
-                            severityLevel = SEVERITY_LEVEL_INFORMATION,
-                            entryTitle = SAFETY_SOURCE_3_TITLE,
-                            entrySummary = SAFETY_SOURCE_3_SUMMARY,
-                            withIssue = false))
+                SOURCE_ID_3,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_3_TITLE,
+                    entrySummary = SAFETY_SOURCE_3_SUMMARY,
+                    withIssue = false))
             setData(
-                    SOURCE_ID_4,
-                    safetySourceCtsData.buildSafetySourceDataWithSummary(
-                            severityLevel = SEVERITY_LEVEL_INFORMATION,
-                            entryTitle = SAFETY_SOURCE_4_TITLE,
-                            entrySummary = SAFETY_SOURCE_4_SUMMARY,
-                            withIssue = false))
+                SOURCE_ID_4,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_4_TITLE,
+                    entrySummary = SAFETY_SOURCE_4_SUMMARY,
+                    withIssue = false))
             setData(
-                    SOURCE_ID_5,
-                    safetySourceCtsData.buildSafetySourceDataWithSummary(
-                            severityLevel = SEVERITY_LEVEL_INFORMATION,
-                            entryTitle = SAFETY_SOURCE_5_TITLE,
-                            entrySummary = SAFETY_SOURCE_5_SUMMARY,
-                            withIssue = false))
+                SOURCE_ID_5,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_5_TITLE,
+                    entrySummary = SAFETY_SOURCE_5_SUMMARY,
+                    withIssue = false))
         }
 
         context.launchSafetyCenterActivity {
@@ -961,40 +976,40 @@ class SafetyCenterActivityTest {
         with(safetyCenterCtsHelper) {
             setConfig(MULTIPLE_SOURCE_GROUPS_CONFIG)
             setData(
-                    SOURCE_ID_1,
-                    safetySourceCtsData.buildSafetySourceDataWithSummary(
-                            severityLevel = SEVERITY_LEVEL_INFORMATION,
-                            entryTitle = SAFETY_SOURCE_1_TITLE,
-                            entrySummary = SAFETY_SOURCE_1_SUMMARY,
-                            withIssue = false))
+                SOURCE_ID_1,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_1_TITLE,
+                    entrySummary = SAFETY_SOURCE_1_SUMMARY,
+                    withIssue = false))
             setData(
-                    SOURCE_ID_2,
-                    safetySourceCtsData.buildSafetySourceDataWithSummary(
-                            severityLevel = SEVERITY_LEVEL_INFORMATION,
-                            entryTitle = SAFETY_SOURCE_2_TITLE,
-                            entrySummary = SAFETY_SOURCE_2_SUMMARY,
-                            withIssue = false))
+                SOURCE_ID_2,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_2_TITLE,
+                    entrySummary = SAFETY_SOURCE_2_SUMMARY,
+                    withIssue = false))
             setData(
-                    SOURCE_ID_3,
-                    safetySourceCtsData.buildSafetySourceDataWithSummary(
-                            severityLevel = SEVERITY_LEVEL_INFORMATION,
-                            entryTitle = SAFETY_SOURCE_3_TITLE,
-                            entrySummary = SAFETY_SOURCE_3_SUMMARY,
-                            withIssue = false))
+                SOURCE_ID_3,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_3_TITLE,
+                    entrySummary = SAFETY_SOURCE_3_SUMMARY,
+                    withIssue = false))
             setData(
-                    SOURCE_ID_4,
-                    safetySourceCtsData.buildSafetySourceDataWithSummary(
-                            severityLevel = SEVERITY_LEVEL_INFORMATION,
-                            entryTitle = SAFETY_SOURCE_4_TITLE,
-                            entrySummary = SAFETY_SOURCE_4_SUMMARY,
-                            withIssue = false))
+                SOURCE_ID_4,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_4_TITLE,
+                    entrySummary = SAFETY_SOURCE_4_SUMMARY,
+                    withIssue = false))
             setData(
-                    SOURCE_ID_5,
-                    safetySourceCtsData.buildSafetySourceDataWithSummary(
-                            severityLevel = SEVERITY_LEVEL_INFORMATION,
-                            entryTitle = SAFETY_SOURCE_5_TITLE,
-                            entrySummary = SAFETY_SOURCE_5_SUMMARY,
-                            withIssue = false))
+                SOURCE_ID_5,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_5_TITLE,
+                    entrySummary = SAFETY_SOURCE_5_SUMMARY,
+                    withIssue = false))
         }
 
         context.launchSafetyCenterActivity {
