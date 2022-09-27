@@ -27,9 +27,9 @@
     <string name="permission_usage_title" msgid="3633779688945350407">"Tablou de bord de confidențialitate"</string>
     <string name="permission_usage_summary" msgid="5323079206029964468">"Arată aplicațiile care au folosit recent permisiuni"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"Manager de permisiuni"</string>
-    <string name="permission_manager_summary" msgid="8099852107340970790">"Controlați accesul aplicațiilor la date"</string>
+    <string name="permission_manager_summary" msgid="8099852107340970790">"Controlează accesul aplicațiilor la date"</string>
     <string name="privacy_controls_title" msgid="5322875777945432395">"Opțiuni de confidențialitate"</string>
-    <string name="privacy_controls_summary" msgid="2402066941190435424">"Controlați accesul dispozitivului la microfon, camera foto și altele"</string>
+    <string name="privacy_controls_summary" msgid="2402066941190435424">"Controlează accesul dispozitivului la microfon, camera foto și altele"</string>
     <string name="advanced_title" msgid="8745436380690561172">"Mai multe setări"</string>
     <string name="advanced_security_title" msgid="1126833338772188155">"Mai multe setări de securitate"</string>
     <string name="advanced_security_summary" msgid="6172253327022425123">"Criptarea, datele de conectare și altele"</string>
