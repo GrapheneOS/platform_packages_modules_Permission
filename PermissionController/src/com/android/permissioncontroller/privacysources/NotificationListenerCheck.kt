@@ -544,7 +544,7 @@ internal class NotificationListenerCheckInternal(
                 .setDeleteIntent(deletePendingIntent)
                 .setContentIntent(clickPendingIntent)
 
-        if (appLabel.isNotEmpty()) {
+        if (appLabel != null && appLabel.isNotEmpty()) {
             val appNameExtras = Bundle()
             appNameExtras.putString(Notification.EXTRA_SUBSTITUTE_APP_NAME, appLabel.toString())
             b.addExtras(appNameExtras)

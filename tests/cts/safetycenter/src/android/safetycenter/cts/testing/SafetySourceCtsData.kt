@@ -97,7 +97,7 @@ class SafetySourceCtsData(private val context: Context) {
         SafetySourceData.Builder()
             .setStatus(
                 SafetySourceStatus.Builder(
-                    "Unspecified title", "Unspecified summary", SEVERITY_LEVEL_UNSPECIFIED)
+                        "Unspecified title", "Unspecified summary", SEVERITY_LEVEL_UNSPECIFIED)
                     .setPendingIntent(redirectPendingIntent)
                     .build())
             .addIssue(informationIssue)
@@ -111,7 +111,9 @@ class SafetySourceCtsData(private val context: Context) {
         SafetySourceData.Builder()
             .setStatus(
                 SafetySourceStatus.Builder(
-                    "Unspecified title for Work", "Unspecified summary", SEVERITY_LEVEL_UNSPECIFIED)
+                        "Unspecified title for Work",
+                        "Unspecified summary",
+                        SEVERITY_LEVEL_UNSPECIFIED)
                     .setPendingIntent(redirectPendingIntent)
                     .build())
             .addIssue(informationIssue)
@@ -172,7 +174,7 @@ class SafetySourceCtsData(private val context: Context) {
         SafetySourceData.Builder()
             .setStatus(
                 SafetySourceStatus.Builder(
-                    "Ok title for Work", "Ok summary", SEVERITY_LEVEL_INFORMATION)
+                        "Ok title for Work", "Ok summary", SEVERITY_LEVEL_INFORMATION)
                     .setPendingIntent(redirectPendingIntent)
                     .build())
             .addIssue(informationIssue)
@@ -450,11 +452,12 @@ class SafetySourceCtsData(private val context: Context) {
     fun buildSafetySourceDataWithSummary(
         severityLevel: Int,
         entrySummary: String,
-        withIssue: Boolean = false
+        withIssue: Boolean = false,
+        entryTitle: String = "Entry title"
     ) =
         SafetySourceData.Builder()
             .setStatus(
-                SafetySourceStatus.Builder("Entry title", entrySummary, severityLevel)
+                SafetySourceStatus.Builder(entryTitle, entrySummary, severityLevel)
                     .setPendingIntent(redirectPendingIntent)
                     .build())
             .apply {

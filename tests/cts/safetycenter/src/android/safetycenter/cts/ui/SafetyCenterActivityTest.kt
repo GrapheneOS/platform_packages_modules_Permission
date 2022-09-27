@@ -20,16 +20,29 @@ import android.content.Context
 import android.os.Bundle
 import android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_ID
 import android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_ISSUE_ID
+import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING
+import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_INFORMATION
+import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_RECOMMENDATION
 import android.safetycenter.cts.testing.Coroutines.TIMEOUT_LONG
 import android.safetycenter.cts.testing.Coroutines.TIMEOUT_SHORT
 import android.safetycenter.cts.testing.SafetyCenterActivityLauncher.launchSafetyCenterActivity
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_SOURCE_1
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_SOURCE_2
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_SOURCE_3
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_SOURCE_GROUP_1
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_SOURCE_GROUP_2
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_SOURCE_GROUP_3
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MULTIPLE_SOURCES_CONFIG
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MULTIPLE_SOURCES_CONFIG_WITH_SOURCE_WITH_INVALID_INTENT
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MULTIPLE_SOURCE_GROUPS_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_1
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_2
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_3
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_4
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_5
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.STATIC_SOURCES_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsHelper
 import android.safetycenter.cts.testing.SafetyCenterFlags
@@ -51,7 +64,6 @@ import android.safetycenter.cts.testing.UiTestHelper.waitNotDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.waitSourceDataDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.waitSourceIssueDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.waitSourceIssueNotDisplayed
-import android.safetycenter.cts.ui.SafetyCenterActivityTest.Companion.rotate
 import android.support.test.uiautomator.By
 import android.support.test.uiautomator.UiDevice
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
@@ -136,6 +148,132 @@ class SafetyCenterActivityTest {
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, dataToDisplay)
 
         context.launchSafetyCenterActivity { waitSourceDataDisplayed(dataToDisplay) }
+    }
+
+    @Test
+    fun launchActivity_displaysCollapsedGroupsOfMultipleSource() {
+        with(safetyCenterCtsHelper) {
+            setConfig(MULTIPLE_SOURCE_GROUPS_CONFIG)
+            setData(
+                SOURCE_ID_1,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_1_TITLE,
+                    entrySummary = SAFETY_SOURCE_1_SUMMARY,
+                    withIssue = false))
+            setData(
+                SOURCE_ID_2,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_2_TITLE,
+                    entrySummary = SAFETY_SOURCE_2_SUMMARY,
+                    withIssue = false))
+            setData(
+                SOURCE_ID_3,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_3_TITLE,
+                    entrySummary = SAFETY_SOURCE_3_SUMMARY,
+                    withIssue = false))
+            setData(
+                SOURCE_ID_4,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_4_TITLE,
+                    entrySummary = SAFETY_SOURCE_4_SUMMARY,
+                    withIssue = false))
+            setData(
+                SOURCE_ID_5,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_5_TITLE,
+                    entrySummary = SAFETY_SOURCE_5_SUMMARY,
+                    withIssue = false))
+        }
+
+        context.launchSafetyCenterActivity {
+            waitAllTextDisplayed(
+                context.getString(DYNAMIC_SOURCE_GROUP_1.titleResId),
+                context.getString(DYNAMIC_SOURCE_GROUP_1.summaryResId),
+                context.getString(DYNAMIC_SOURCE_GROUP_3.titleResId),
+                context.getString(DYNAMIC_SOURCE_GROUP_3.summaryResId))
+            waitAllTextNotDisplayed(
+                SAFETY_SOURCE_1_TITLE,
+                SAFETY_SOURCE_1_SUMMARY,
+                SAFETY_SOURCE_2_TITLE,
+                SAFETY_SOURCE_2_SUMMARY,
+                SAFETY_SOURCE_4_TITLE,
+                SAFETY_SOURCE_4_SUMMARY,
+                SAFETY_SOURCE_5_TITLE,
+                SAFETY_SOURCE_5_SUMMARY)
+        }
+    }
+
+    @Test
+    fun launchActivity_displaysPrioritizedGroupSummary() {
+        with(safetyCenterCtsHelper) {
+            setConfig(MULTIPLE_SOURCE_GROUPS_CONFIG)
+            setData(
+                SOURCE_ID_1,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_1_TITLE,
+                    entrySummary = SAFETY_SOURCE_1_SUMMARY,
+                    withIssue = false))
+            setData(
+                SOURCE_ID_2,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_RECOMMENDATION,
+                    entryTitle = SAFETY_SOURCE_2_TITLE,
+                    entrySummary = SAFETY_SOURCE_2_SUMMARY,
+                    withIssue = true))
+            setData(
+                SOURCE_ID_3,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_3_TITLE,
+                    entrySummary = SAFETY_SOURCE_3_SUMMARY,
+                    withIssue = false))
+            setData(
+                SOURCE_ID_4,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_RECOMMENDATION,
+                    entryTitle = SAFETY_SOURCE_4_TITLE,
+                    entrySummary = SAFETY_SOURCE_4_SUMMARY,
+                    withIssue = true))
+            setData(
+                SOURCE_ID_5,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_CRITICAL_WARNING,
+                    entryTitle = SAFETY_SOURCE_5_TITLE,
+                    entrySummary = SAFETY_SOURCE_5_SUMMARY,
+                    withIssue = true))
+        }
+
+        context.launchSafetyCenterActivity {
+            waitAllTextDisplayed(
+                context.getString(DYNAMIC_SOURCE_GROUP_1.titleResId),
+                SAFETY_SOURCE_2_SUMMARY,
+                context.getString(DYNAMIC_SOURCE_GROUP_3.titleResId),
+                SAFETY_SOURCE_5_SUMMARY)
+            waitAllTextNotDisplayed(
+                SAFETY_SOURCE_1_TITLE,
+                SAFETY_SOURCE_2_TITLE,
+                SAFETY_SOURCE_1_SUMMARY,
+                SAFETY_SOURCE_4_TITLE,
+                SAFETY_SOURCE_5_TITLE,
+                SAFETY_SOURCE_4_SUMMARY)
+        }
+    }
+
+    @Test
+    fun launchActivity_displaysGroupsOfSingleSourceAsEntity() {
+        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCE_GROUPS_CONFIG)
+
+        context.launchSafetyCenterActivity {
+            waitAllTextDisplayed(context.getString(DYNAMIC_SOURCE_3.titleResId))
+            waitAllTextNotDisplayed(context.getString(DYNAMIC_SOURCE_GROUP_2.titleResId))
+        }
     }
 
     @Test
@@ -225,6 +363,20 @@ class SafetyCenterActivityTest {
             waitAllTextDisplayed("OK")
             waitDisplayed(By.desc("List item. Recommendation title. Recommendation summary"))
             waitDisplayed(By.desc("List item. Ok title. Ok summary"))
+        }
+    }
+
+    @Test
+    fun entryListWithEntryGroup_clickingOnADisabledEntry_shouldNotCollapseTheGroup() {
+        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG_WITH_SOURCE_WITH_INVALID_INTENT)
+        safetyCenterCtsHelper.setData(SOURCE_ID_1, safetySourceCtsData.unspecified)
+
+        context.launchSafetyCenterActivity {
+            waitDisplayed(By.text("OK")) { it.click() }
+            waitDisplayed(By.text("Unspecified title")) { it.click() }
+            // Clicking the disabled entry should not collapse the group and the entry should
+            // still be visible.
+            waitDisplayed(By.text("Unspecified title"))
         }
     }
 
@@ -689,11 +841,203 @@ class SafetyCenterActivityTest {
         }
     }
 
+    @Test
+    fun collapsedEntryGroup_expandsWhenClicked() {
+        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCE_GROUPS_CONFIG)
+        with(safetyCenterCtsHelper) {
+            setConfig(MULTIPLE_SOURCE_GROUPS_CONFIG)
+            setData(
+                SOURCE_ID_1,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_1_TITLE,
+                    entrySummary = SAFETY_SOURCE_1_SUMMARY,
+                    withIssue = false))
+            setData(
+                SOURCE_ID_2,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_2_TITLE,
+                    entrySummary = SAFETY_SOURCE_2_SUMMARY,
+                    withIssue = false))
+            setData(
+                SOURCE_ID_3,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_3_TITLE,
+                    entrySummary = SAFETY_SOURCE_3_SUMMARY,
+                    withIssue = false))
+            setData(
+                SOURCE_ID_4,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_4_TITLE,
+                    entrySummary = SAFETY_SOURCE_4_SUMMARY,
+                    withIssue = false))
+            setData(
+                SOURCE_ID_5,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_5_TITLE,
+                    entrySummary = SAFETY_SOURCE_5_SUMMARY,
+                    withIssue = false))
+        }
+
+        context.launchSafetyCenterActivity {
+            waitDisplayed(By.text(context.getString(DYNAMIC_SOURCE_GROUP_1.titleResId))) {
+                it.click()
+            }
+
+            waitAllTextNotDisplayed(context.getString(DYNAMIC_SOURCE_GROUP_1.summaryResId))
+            waitAllTextDisplayed(
+                SAFETY_SOURCE_1_TITLE,
+                SAFETY_SOURCE_1_SUMMARY,
+                SAFETY_SOURCE_2_TITLE,
+                SAFETY_SOURCE_2_SUMMARY)
+        }
+    }
+
+    @Test
+    fun expandedEntryGroup_collapsesWhenClicked() {
+        with(safetyCenterCtsHelper) {
+            setConfig(MULTIPLE_SOURCE_GROUPS_CONFIG)
+            setData(
+                SOURCE_ID_1,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_1_TITLE,
+                    entrySummary = SAFETY_SOURCE_1_SUMMARY,
+                    withIssue = false))
+            setData(
+                SOURCE_ID_2,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_2_TITLE,
+                    entrySummary = SAFETY_SOURCE_2_SUMMARY,
+                    withIssue = false))
+            setData(
+                SOURCE_ID_3,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_3_TITLE,
+                    entrySummary = SAFETY_SOURCE_3_SUMMARY,
+                    withIssue = false))
+            setData(
+                SOURCE_ID_4,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_4_TITLE,
+                    entrySummary = SAFETY_SOURCE_4_SUMMARY,
+                    withIssue = false))
+            setData(
+                SOURCE_ID_5,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_5_TITLE,
+                    entrySummary = SAFETY_SOURCE_5_SUMMARY,
+                    withIssue = false))
+        }
+
+        context.launchSafetyCenterActivity {
+            waitDisplayed(By.text(context.getString(DYNAMIC_SOURCE_GROUP_1.titleResId))) {
+                it.click()
+            }
+
+            waitDisplayed(By.text(context.getString(DYNAMIC_SOURCE_GROUP_1.titleResId))) {
+                it.click()
+            }
+
+            waitAllTextDisplayed(context.getString(DYNAMIC_SOURCE_GROUP_1.titleResId))
+            waitAllTextNotDisplayed(SAFETY_SOURCE_1_TITLE, SAFETY_SOURCE_2_TITLE)
+        }
+    }
+
+    @Test
+    fun expandedEntryGroup_rotation_remainsExpanded() {
+        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCE_GROUPS_CONFIG)
+
+        context.launchSafetyCenterActivity {
+            waitDisplayed(By.text(context.getString(DYNAMIC_SOURCE_GROUP_1.titleResId))) {
+                it.click()
+            }
+
+            getUiDevice().rotate()
+
+            waitAllTextNotDisplayed(context.getString(DYNAMIC_SOURCE_GROUP_1.summaryResId))
+            waitAllTextDisplayed(
+                context.getString(DYNAMIC_SOURCE_1.titleResId),
+                context.getString(DYNAMIC_SOURCE_2.titleResId))
+        }
+    }
+
+    @Test
+    fun expandedEntryGroup_otherGroupRemainsCollapsed() {
+        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCE_GROUPS_CONFIG)
+        with(safetyCenterCtsHelper) {
+            setConfig(MULTIPLE_SOURCE_GROUPS_CONFIG)
+            setData(
+                SOURCE_ID_1,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_1_TITLE,
+                    entrySummary = SAFETY_SOURCE_1_SUMMARY,
+                    withIssue = false))
+            setData(
+                SOURCE_ID_2,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_2_TITLE,
+                    entrySummary = SAFETY_SOURCE_2_SUMMARY,
+                    withIssue = false))
+            setData(
+                SOURCE_ID_3,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_3_TITLE,
+                    entrySummary = SAFETY_SOURCE_3_SUMMARY,
+                    withIssue = false))
+            setData(
+                SOURCE_ID_4,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_4_TITLE,
+                    entrySummary = SAFETY_SOURCE_4_SUMMARY,
+                    withIssue = false))
+            setData(
+                SOURCE_ID_5,
+                safetySourceCtsData.buildSafetySourceDataWithSummary(
+                    severityLevel = SEVERITY_LEVEL_INFORMATION,
+                    entryTitle = SAFETY_SOURCE_5_TITLE,
+                    entrySummary = SAFETY_SOURCE_5_SUMMARY,
+                    withIssue = false))
+        }
+
+        context.launchSafetyCenterActivity {
+            waitDisplayed(By.text(context.getString(DYNAMIC_SOURCE_GROUP_1.titleResId))) {
+                it.click()
+            }
+
+            waitAllTextNotDisplayed(context.getString(DYNAMIC_SOURCE_GROUP_1.summaryResId))
+            waitAllTextDisplayed(context.getString(DYNAMIC_SOURCE_GROUP_3.summaryResId))
+        }
+    }
+
     companion object {
         private const val EXPAND_ISSUE_GROUP_QS_FRAGMENT_KEY = "expand_issue_group_qs_fragment_key"
 
         private val DATA_UPDATE_TIMEOUT = Duration.ofSeconds(1)
         private val DIALOG_ROTATION_TIMEOUT = Duration.ofSeconds(1)
+
+        private const val SAFETY_SOURCE_1_TITLE = "Safety Source 1 Title"
+        private const val SAFETY_SOURCE_1_SUMMARY = "Safety Source 1 Summary"
+        private const val SAFETY_SOURCE_2_TITLE = "Safety Source 2 Title"
+        private const val SAFETY_SOURCE_2_SUMMARY = "Safety Source 2 Summary"
+        private const val SAFETY_SOURCE_3_TITLE = "Safety Source 3 Title"
+        private const val SAFETY_SOURCE_3_SUMMARY = "Safety Source 3 Summary"
+        private const val SAFETY_SOURCE_4_TITLE = "Safety Source 4 Title"
+        private const val SAFETY_SOURCE_4_SUMMARY = "Safety Source 4 Summary"
+        private const val SAFETY_SOURCE_5_TITLE = "Safety Source 5 Title"
+        private const val SAFETY_SOURCE_5_SUMMARY = "Safety Source 5 Summary"
 
         private fun UiDevice.rotate() {
             if (isNaturalOrientation) {
