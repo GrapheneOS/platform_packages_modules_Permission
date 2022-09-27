@@ -35,6 +35,10 @@ java_library_host {
     ],
     java_resources: [":safetycenter-config-schema"],
     jarjar_rules: "jarjar-rules.txt",
+    visibility: [
+        "//packages/modules/Permission:__subpackages__",
+        "//vendor:__subpackages__",
+    ],
 }
 
 java_test_host {
