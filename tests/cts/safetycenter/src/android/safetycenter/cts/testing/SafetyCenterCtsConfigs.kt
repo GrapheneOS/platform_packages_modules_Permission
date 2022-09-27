@@ -116,6 +116,12 @@ object SafetyCenterCtsConfigs {
     const val MULTIPLE_SOURCES_GROUP_ID_2 = "cts_multiple_sources_group_id_2"
 
     /**
+     * ID of a [SafetySourcesGroup] provided by [MULTIPLE_SOURCES_CONFIG], containing two sources of
+     * ids [SOURCE_ID_4] and [SOURCE_ID_5].
+     */
+    const val MULTIPLE_SOURCES_GROUP_ID_3 = "cts_multiple_sources_group_id_3"
+
+    /**
      * ID of a [SafetySourcesGroup] provided by [SUMMARY_TEST_GROUP_CONFIG], containing sources:
      * [SOURCE_ID_1], [SOURCE_ID_2], [SOURCE_ID_3], [SOURCE_ID_4], [SOURCE_ID_5], [SOURCE_ID_6],
      * [SOURCE_ID_7], [STATIC_IN_COLLAPSIBLE_ID].
@@ -292,6 +298,66 @@ object SafetyCenterCtsConfigs {
                         dynamicSafetySourceBuilder(SOURCE_ID_3)
                             .setRefreshOnPageOpenAllowed(false)
                             .build())
+                    .build())
+            .build()
+
+    /** Source included in [DYNAMIC_SOURCE_GROUP_1]. */
+    val DYNAMIC_SOURCE_1 = dynamicSafetySource(SOURCE_ID_1)
+
+    /** Source included in [DYNAMIC_SOURCE_GROUP_1]. */
+    val DYNAMIC_SOURCE_2 = dynamicSafetySource(SOURCE_ID_2)
+
+    /** Source included in [DYNAMIC_SOURCE_GROUP_2]. */
+    val DYNAMIC_SOURCE_3 = dynamicSafetySource(SOURCE_ID_3)
+
+    private val DYNAMIC_SOURCE_4 = dynamicSafetySource(SOURCE_ID_4)
+    private val DYNAMIC_SOURCE_5 = dynamicSafetySource(SOURCE_ID_5)
+
+    /** Source group provided by [MULTIPLE_SOURCE_GROUPS_CONFIG]. */
+    val DYNAMIC_SOURCE_GROUP_1 =
+        safetySourcesGroupBuilder(MULTIPLE_SOURCES_GROUP_ID_1)
+            .addSafetySource(DYNAMIC_SOURCE_1)
+            .addSafetySource(DYNAMIC_SOURCE_2)
+            .setTitleResId(android.R.string.copy)
+            .setSummaryResId(android.R.string.cut)
+            .build()
+
+    /** Source group provided by [MULTIPLE_SOURCE_GROUPS_CONFIG]. */
+    val DYNAMIC_SOURCE_GROUP_2 =
+        safetySourcesGroupBuilder(MULTIPLE_SOURCES_GROUP_ID_2)
+            .addSafetySource(DYNAMIC_SOURCE_3)
+            .setTitleResId(android.R.string.paste)
+            .setSummaryResId(android.R.string.cancel)
+            .build()
+
+    /** Source group provided by [MULTIPLE_SOURCE_GROUPS_CONFIG]. */
+    val DYNAMIC_SOURCE_GROUP_3 =
+        safetySourcesGroupBuilder(MULTIPLE_SOURCES_GROUP_ID_3)
+            .addSafetySource(DYNAMIC_SOURCE_4)
+            .addSafetySource(DYNAMIC_SOURCE_5)
+            .setTitleResId(android.R.string.dialog_alert_title)
+            .setSummaryResId(android.R.string.selectAll)
+            .build()
+
+    /** A simple [SafetyCenterConfig] for CTS tests with multiple groups of multiple sources. */
+    val MULTIPLE_SOURCE_GROUPS_CONFIG =
+        SafetyCenterConfig.Builder()
+            .addSafetySourcesGroup(DYNAMIC_SOURCE_GROUP_1)
+            .addSafetySourcesGroup(DYNAMIC_SOURCE_GROUP_2)
+            .addSafetySourcesGroup(DYNAMIC_SOURCE_GROUP_3)
+            .build()
+
+    /**
+     * A simple [SafetyCenterConfig] for CTS tests with multiple sources with one source having an
+     * invalid default intent.
+     */
+    val MULTIPLE_SOURCES_CONFIG_WITH_SOURCE_WITH_INVALID_INTENT =
+        SafetyCenterConfig.Builder()
+            .addSafetySourcesGroup(
+                safetySourcesGroupBuilder(MULTIPLE_SOURCES_GROUP_ID_1)
+                    .addSafetySource(
+                        dynamicSafetySourceBuilder(SOURCE_ID_1).setIntentAction("stub").build())
+                    .addSafetySource(dynamicSafetySource(SOURCE_ID_2))
                     .build())
             .build()
 
