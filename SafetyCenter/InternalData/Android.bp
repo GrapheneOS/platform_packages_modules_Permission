@@ -41,4 +41,8 @@ java_library {
     installable: false,
     min_sdk_version: "30",
     sdk_version: "system_current",
+    visibility: [
+        "//packages/modules/Permission:__subpackages__",
+        "//cts:__subpackages__",
+    ],
 }
