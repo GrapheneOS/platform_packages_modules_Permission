@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="role_dialer_request_description" msgid="6188305064871543419">"Aplicația va putea să vă trimită notificări și va avea acces la Camera foto, Agendă, Microfon, Telefon și SMS"</string>
-    <string name="role_sms_request_description" msgid="1506966389698625395">"Aplicația va putea să vă trimită notificări și va avea acces la Camera foto, Agendă, Fișiere, Microfon, Telefon și SMS"</string>
+    <string name="role_dialer_request_description" msgid="6188305064871543419">"Aplicația va putea să-ți trimită notificări și va avea acces la Camera foto, Agendă, Microfon, Telefon și SMS"</string>
+    <string name="role_sms_request_description" msgid="1506966389698625395">"Aplicația va putea să-ți trimită notificări și va avea acces la Camera foto, Agendă, Fișiere, Microfon, Telefon și SMS"</string>
     <string name="permission_description_summary_storage" msgid="1917071243213043858">"Aplicațiile cu această permisiune pot accesa toate fișierele de pe dispozitiv"</string>
 </resources>
