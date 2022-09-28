@@ -68,12 +68,12 @@ import android.safetycenter.cts.testing.UiTestHelper.waitAllTextNotDisplayed
 import androidx.test.core.app.ApplicationProvider
 import com.android.bedstead.harrier.BedsteadJUnit4
 import com.android.bedstead.harrier.DeviceState
-import com.android.bedstead.harrier.OptionalBoolean.TRUE
 import com.android.bedstead.harrier.annotations.EnsureHasNoWorkProfile
 import com.android.bedstead.harrier.annotations.EnsureHasSecondaryUser
 import com.android.bedstead.harrier.annotations.EnsureHasWorkProfile
 import com.android.bedstead.harrier.annotations.Postsubmit
 import com.android.bedstead.harrier.annotations.enterprise.EnsureHasDeviceOwner
+import com.android.bedstead.nene.types.OptionalBoolean.TRUE
 import com.android.safetycenter.resources.SafetyCenterResourcesContext
 import com.google.common.base.Preconditions.checkState
 import com.google.common.truth.Truth.assertThat
@@ -202,13 +202,13 @@ class SafetyCenterMultiUsersTest {
     private val rigidEntry =
         SafetyCenterStaticEntry.Builder("OK")
             .setSummary("OK")
-            .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
+            .setPendingIntent(safetySourceCtsData.safetyCenterRedirectPendingIntent)
             .build()
 
     private val rigidEntryUpdated =
         SafetyCenterStaticEntry.Builder("Unspecified title")
             .setSummary("Unspecified summary")
-            .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
+            .setPendingIntent(safetySourceCtsData.safetyCenterRedirectPendingIntent)
             .build()
 
     private val rigidEntryForWorkBuilder
@@ -232,7 +232,7 @@ class SafetyCenterMultiUsersTest {
     private val rigidEntryForWorkUpdated =
         SafetyCenterStaticEntry.Builder("Unspecified title for Work")
             .setSummary("Unspecified summary")
-            .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
+            .setPendingIntent(safetySourceCtsData.safetyCenterRedirectPendingIntent)
             .build()
 
     private val safetyCenterDataForSecondaryUser
