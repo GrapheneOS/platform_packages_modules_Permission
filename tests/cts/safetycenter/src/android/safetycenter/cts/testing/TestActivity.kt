@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 The Android Open Source Project
+ * Copyright (C) 2022 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,14 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-syntax = "proto2";
-package com.android.permissioncontroller;
-option java_outer_classname = "PermissionControllerProto";
+package android.safetycenter.cts.testing
 
-import "permission/service/AutoRevokePermissions.proto";
+import android.app.Activity
+import android.os.Bundle
+import android.safetycenter.cts.R
+import android.view.View
 
-message PermissionControllerDumpProto {
-  optional permission.service.AutoRevokePermissionsDumpProto autoRevoke = 1;
-
-  repeated string logs = 3;
+/** An activity used in CTS test to assert the redirects. */
+class TestActivity : Activity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.test_activity)
+        val exitButton: View? = findViewById(R.id.button)
+        exitButton?.setOnClickListener { finish() }
+    }
 }

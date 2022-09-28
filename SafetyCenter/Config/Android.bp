@@ -42,4 +42,8 @@ java_library {
         "test_com.android.permission",
     ],
     installable: false,
+    visibility: [
+        "//packages/modules/Permission:__subpackages__",
+        "//vendor:__subpackages__",
+    ],
 }

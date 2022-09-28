@@ -289,7 +289,7 @@ class SafetyCenterManagerTest {
                                 SafetyCenterCtsData.entryId(STATIC_IN_COLLAPSIBLE_ID), "OK")
                             .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNSPECIFIED)
                             .setSummary("OK")
-                            .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
+                            .setPendingIntent(safetySourceCtsData.safetyCenterRedirectPendingIntent)
                             .setSeverityUnspecifiedIconType(SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON)
                             .build()))
                 .build())
@@ -299,11 +299,11 @@ class SafetyCenterManagerTest {
             "OK",
             listOf(
                 SafetyCenterStaticEntry.Builder("OK")
-                    .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
+                    .setPendingIntent(safetySourceCtsData.safetyCenterRedirectPendingIntent)
                     .build(),
                 SafetyCenterStaticEntry.Builder("OK")
                     .setSummary("OK")
-                    .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
+                    .setPendingIntent(safetySourceCtsData.safetyCenterRedirectPendingIntent)
                     .build()))
 
     private val safetyCenterStaticEntryGroupMixedFromComplexConfig =
@@ -312,11 +312,11 @@ class SafetyCenterManagerTest {
             listOf(
                 SafetyCenterStaticEntry.Builder("OK")
                     .setSummary("OK")
-                    .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
+                    .setPendingIntent(safetySourceCtsData.safetyCenterRedirectPendingIntent)
                     .build(),
                 SafetyCenterStaticEntry.Builder("OK")
                     .setSummary("OK")
-                    .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
+                    .setPendingIntent(safetySourceCtsData.safetyCenterRedirectPendingIntent)
                     .build()))
 
     private val safetyCenterStaticEntryGroupMixedUpdatedFromComplexConfig =
@@ -325,11 +325,11 @@ class SafetyCenterManagerTest {
             listOf(
                 SafetyCenterStaticEntry.Builder("Unspecified title")
                     .setSummary("Unspecified summary")
-                    .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
+                    .setPendingIntent(safetySourceCtsData.safetyCenterRedirectPendingIntent)
                     .build(),
                 SafetyCenterStaticEntry.Builder("OK")
                     .setSummary("OK")
-                    .setPendingIntent(safetySourceCtsData.redirectPendingIntent)
+                    .setPendingIntent(safetySourceCtsData.safetyCenterRedirectPendingIntent)
                     .build()))
 
     private val safetyCenterDataFromConfigScanning =
@@ -377,7 +377,8 @@ class SafetyCenterManagerTest {
                     safetyCenterCtsData
                         .safetyCenterEntryOkBuilder(SINGLE_SOURCE_ID)
                         .setIconAction(
-                            ICON_ACTION_TYPE_GEAR, safetySourceCtsData.redirectPendingIntent)
+                            ICON_ACTION_TYPE_GEAR,
+                            safetySourceCtsData.safetyCenterRedirectPendingIntent)
                         .build())),
             emptyList())
 
