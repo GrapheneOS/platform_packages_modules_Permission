@@ -50,9 +50,9 @@ import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCe
 import android.safetycenter.cts.testing.SafetySourceCtsData
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.CRITICAL_ISSUE_ID
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.RECOMMENDATION_ISSUE_ID
+import android.safetycenter.cts.testing.SafetySourceIntentHandler.Request
+import android.safetycenter.cts.testing.SafetySourceIntentHandler.Response
 import android.safetycenter.cts.testing.SafetySourceReceiver
-import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.SafetySourceDataKey
-import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.SafetySourceDataKey.Reason.RESOLVE_ACTION
 import android.safetycenter.cts.testing.SettingsPackage.getSettingsPackageName
 import android.safetycenter.cts.testing.UiTestHelper.RESCAN_BUTTON_LABEL
 import android.safetycenter.cts.testing.UiTestHelper.expandMoreIssuesCard
@@ -573,8 +573,8 @@ class SafetyCenterActivityTest {
             SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithResolvingIssueWithSuccessMessage)
 
         // Clear the data when action is triggered to simulate resolution.
-        SafetySourceReceiver.safetySourceData[
-                SafetySourceDataKey(RESOLVE_ACTION, SINGLE_SOURCE_ID)] = null
+        SafetySourceReceiver.setResponse(
+            Request.ResolveAction(SINGLE_SOURCE_ID), Response.ClearData)
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
             val action = safetySourceCtsData.criticalResolvingActionWithSuccessMessage
@@ -595,8 +595,8 @@ class SafetyCenterActivityTest {
             SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithResolvingIssueWithSuccessMessage)
 
         // Clear the data when action is triggered to simulate resolution.
-        SafetySourceReceiver.safetySourceData[
-                SafetySourceDataKey(RESOLVE_ACTION, SINGLE_SOURCE_ID)] = null
+        SafetySourceReceiver.setResponse(
+            Request.ResolveAction(SINGLE_SOURCE_ID), Response.ClearData)
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
             val action = safetySourceCtsData.criticalResolvingActionWithSuccessMessage
@@ -620,8 +620,8 @@ class SafetyCenterActivityTest {
             SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithResolvingGeneralIssue)
 
         // Clear the data when action is triggered to simulate resolution.
-        SafetySourceReceiver.safetySourceData[
-                SafetySourceDataKey(RESOLVE_ACTION, SINGLE_SOURCE_ID)] = null
+        SafetySourceReceiver.setResponse(
+            Request.ResolveAction(SINGLE_SOURCE_ID), Response.ClearData)
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
             val action = safetySourceCtsData.criticalResolvingAction
@@ -640,9 +640,7 @@ class SafetyCenterActivityTest {
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
 
         // Respond with an error when the action is triggered
-        SafetySourceReceiver.safetySourceData[
-                SafetySourceDataKey(RESOLVE_ACTION, SINGLE_SOURCE_ID)] = null
-        SafetySourceReceiver.shouldReportSafetySourceError = true
+        SafetySourceReceiver.setResponse(Request.ResolveAction(SINGLE_SOURCE_ID), Response.Error)
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
             val action = safetySourceCtsData.criticalResolvingAction
@@ -676,7 +674,7 @@ class SafetyCenterActivityTest {
     fun issueCard_clickingNonResolvingActionButton_redirectsToDifferentScreen() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
 
-        val data = safetySourceCtsData.criticalWithRedirectingTestActivityIssue
+        val data = safetySourceCtsData.criticalWithTestActivityRedirectIssue
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
 
         context.launchSafetyCenterActivity {

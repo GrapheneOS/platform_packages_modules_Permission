@@ -23,9 +23,9 @@ import android.safetycenter.cts.testing.SafetyCenterCtsData
 import android.safetycenter.cts.testing.SafetyCenterCtsHelper
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import android.safetycenter.cts.testing.SafetySourceCtsData
+import android.safetycenter.cts.testing.SafetySourceIntentHandler.Request
+import android.safetycenter.cts.testing.SafetySourceIntentHandler.Response
 import android.safetycenter.cts.testing.SafetySourceReceiver
-import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.SafetySourceDataKey
-import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.SafetySourceDataKey.Reason
 import android.safetycenter.cts.testing.UiTestHelper.RESCAN_BUTTON_LABEL
 import android.safetycenter.cts.testing.UiTestHelper.waitAllTextDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.waitButtonDisplayed
@@ -105,10 +105,7 @@ class SafetyCenterStatusCardTest {
     @Test
     fun withUnknownStatusAndNoIssues_hasRescanButton() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
-
-        SafetySourceReceiver.safetySourceData[
-                SafetySourceDataKey(Reason.REFRESH_GET_DATA, SINGLE_SOURCE_ID)] = null
-        SafetySourceReceiver.shouldReportSafetySourceError = true
+        SafetySourceReceiver.setResponse(Request.Refresh(SINGLE_SOURCE_ID), Response.Error)
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
             waitAllTextDisplayed(
@@ -123,9 +120,8 @@ class SafetyCenterStatusCardTest {
     @Test
     fun withInformationAndNoIssues_hasRescanButton() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
-        SafetySourceReceiver.safetySourceData[
-                SafetySourceDataKey(Reason.REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
-            safetySourceCtsData.information
+        SafetySourceReceiver.setResponse(
+            Request.Refresh(SINGLE_SOURCE_ID), Response.SetData(safetySourceCtsData.information))
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
             waitAllTextDisplayed(
@@ -138,9 +134,8 @@ class SafetyCenterStatusCardTest {
     @Test
     fun withInformationAndNoIssues_hasContentDescriptions() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
-        SafetySourceReceiver.safetySourceData[
-                SafetySourceDataKey(Reason.REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
-            safetySourceCtsData.information
+        SafetySourceReceiver.setResponse(
+            Request.Refresh(SINGLE_SOURCE_ID), Response.SetData(safetySourceCtsData.information))
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
             waitDisplayed(By.descContains("Security and privacy status"))
@@ -151,9 +146,9 @@ class SafetyCenterStatusCardTest {
     @Test
     fun withInformationIssue_doesNotHaveRescanButton() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
-        SafetySourceReceiver.safetySourceData[
-                SafetySourceDataKey(Reason.REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
-            safetySourceCtsData.informationWithIssue
+        SafetySourceReceiver.setResponse(
+            Request.Refresh(SINGLE_SOURCE_ID),
+            Response.SetData(safetySourceCtsData.informationWithIssue))
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
             waitAllTextDisplayed(
@@ -166,9 +161,9 @@ class SafetyCenterStatusCardTest {
     @Test
     fun withRecommendationIssue_doesNotHaveRescanButton() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
-        SafetySourceReceiver.safetySourceData[
-                SafetySourceDataKey(Reason.REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
-            safetySourceCtsData.recommendationWithGeneralIssue
+        SafetySourceReceiver.setResponse(
+            Request.Refresh(SINGLE_SOURCE_ID),
+            Response.SetData(safetySourceCtsData.recommendationWithGeneralIssue))
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
             waitAllTextDisplayed(
@@ -182,9 +177,9 @@ class SafetyCenterStatusCardTest {
     @Test
     fun withCriticalWarningIssue_doesNotHaveRescanButton() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
-        SafetySourceReceiver.safetySourceData[
-                SafetySourceDataKey(Reason.REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
-            safetySourceCtsData.criticalWithResolvingGeneralIssue
+        SafetySourceReceiver.setResponse(
+            Request.Refresh(SINGLE_SOURCE_ID),
+            Response.SetData(safetySourceCtsData.criticalWithResolvingGeneralIssue))
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
             waitAllTextDisplayed(
@@ -198,9 +193,8 @@ class SafetyCenterStatusCardTest {
     @Test
     fun withKnownStatus_displaysScanningOnRescan() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
-        SafetySourceReceiver.safetySourceData[
-                SafetySourceDataKey(Reason.REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
-            safetySourceCtsData.information
+        SafetySourceReceiver.setResponse(
+            Request.Refresh(SINGLE_SOURCE_ID), Response.SetData(safetySourceCtsData.information))
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
             waitAllTextDisplayed(
@@ -218,12 +212,11 @@ class SafetyCenterStatusCardTest {
     @Test
     fun rescan_updatesDataAfterScanCompletes() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
-        SafetySourceReceiver.safetySourceData[
-                SafetySourceDataKey(Reason.REFRESH_GET_DATA, SINGLE_SOURCE_ID)] =
-            safetySourceCtsData.information
-        SafetySourceReceiver.safetySourceData[
-                SafetySourceDataKey(Reason.REFRESH_FETCH_FRESH_DATA, SINGLE_SOURCE_ID)] =
-            safetySourceCtsData.recommendationWithGeneralIssue
+        SafetySourceReceiver.setResponse(
+            Request.Refresh(SINGLE_SOURCE_ID), Response.SetData(safetySourceCtsData.information))
+        SafetySourceReceiver.setResponse(
+            Request.Rescan(SINGLE_SOURCE_ID),
+            Response.SetData(safetySourceCtsData.recommendationWithGeneralIssue))
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
             waitAllTextDisplayed(
