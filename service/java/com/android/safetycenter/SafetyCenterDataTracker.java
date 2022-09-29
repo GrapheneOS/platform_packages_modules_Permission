@@ -600,21 +600,28 @@ final class SafetyCenterDataTracker {
         writeSafetySourceStateCollectedAtoms(userProfileGroup);
     }
 
+    /**
+     * Counts the number of issues in the issue cache from currently-active sources in the given
+     * {@link UserProfileGroup}.
+     */
+    private int countActiveSourcesIssues(@NonNull UserProfileGroup userProfileGroup) {
+        int issueCount = 0;
+        for (int i = 0; i < mSafetyCenterIssueCache.size(); i++) {
+            SafetyCenterIssueKey issueKey = mSafetyCenterIssueCache.keyAt(i);
+            if (mSafetyCenterConfigReader.isExternalSafetySourceActive(issueKey.getSafetySourceId())
+                    && userProfileGroup.contains(issueKey.getUserId())) {
+                issueCount++;
+            }
+        }
+        return issueCount;
+    }
+
     private void pullOverallSafetyStateAtom(
             @NonNull UserProfileGroup userProfileGroup, @NonNull List<StatsEvent> statsEvents) {
         SafetyCenterData safetyCenterData = getSafetyCenterData("android", userProfileGroup);
         long openIssuesCount = safetyCenterData.getIssues().size();
-        long dismissedIssuesCount = 0;
-        for (int i = 0; i < mSafetyCenterIssueCache.size(); i++) {
-            SafetyCenterIssueKey issueKey = mSafetyCenterIssueCache.keyAt(i);
-            SafetyCenterIssueData safetyCenterIssueData = mSafetyCenterIssueCache.valueAt(i);
+        long dismissedIssuesCount = countActiveSourcesIssues(userProfileGroup) - openIssuesCount;
 
-            if (mSafetyCenterConfigReader.isExternalSafetySourceActive(issueKey.getSafetySourceId())
-                    && userProfileGroup.contains(issueKey.getUserId())
-                    && safetyCenterIssueData.getDismissedAt() != null) {
-                dismissedIssuesCount++;
-            }
-        }
         mWestworldLogger.pullSafetyStateEvent(
                 safetyCenterData.getStatus().getSeverityLevel(),
                 openIssuesCount,
@@ -672,9 +679,7 @@ final class SafetyCenterDataTracker {
                             .setUserId(userId)
                             .build();
 
-            SafetyCenterIssueData safetyCenterIssueData =
-                    getSafetyCenterIssueData(safetyCenterIssueKey, "logging");
-            if (safetyCenterIssueData == null || safetyCenterIssueData.getDismissedAt() == null) {
+            if (!isDismissed(safetyCenterIssueKey, safetySourceIssue.getSeverityLevel())) {
                 openIssuesCount++;
                 maxSeverityLevel = Math.max(maxSeverityLevel, safetySourceIssue.getSeverityLevel());
             } else {
