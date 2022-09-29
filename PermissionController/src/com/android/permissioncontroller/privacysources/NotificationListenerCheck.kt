@@ -109,8 +109,9 @@ private const val PROPERTY_NOTIFICATION_LISTENER_CHECK_INTERVAL_MILLIS =
 private val DEFAULT_NOTIFICATION_LISTENER_CHECK_INTERVAL_MILLIS = DAYS.toMillis(1)
 
 private fun isNotificationListenerCheckFlagEnabled(): Boolean {
+    // TODO: b/249789657 Set default to true after policy exemption + impact analysis
     return DeviceConfig.getBoolean(
-        DeviceConfig.NAMESPACE_PRIVACY, PROPERTY_NOTIFICATION_LISTENER_CHECK_ENABLED, true)
+        DeviceConfig.NAMESPACE_PRIVACY, PROPERTY_NOTIFICATION_LISTENER_CHECK_ENABLED, false)
 }
 
 /**
