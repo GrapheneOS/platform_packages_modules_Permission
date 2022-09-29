@@ -21,12 +21,12 @@
     <string name="loading_summary" msgid="3740846439782713910">"Se verifică setările dispozitivului…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Pare în regulă"</string>
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"Nu s-au găsit probleme"</string>
-    <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Examinați setările"</string>
-    <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Verificați lista de setări"</string>
+    <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Verifică setările"</string>
+    <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Verifică lista de setări"</string>
     <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"Dispozitivul poate fi expus la risc"</string>
     <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"Dispozitivul este expus riscului"</string>
-    <string name="overall_severity_level_safety_recommendation_title" msgid="6436208984463981167">"E posibil să fiți expus(ă) la risc"</string>
-    <string name="overall_severity_level_critical_safety_warning_title" msgid="1039142045555227172">"Sunteți expus(ă) la risc"</string>
+    <string name="overall_severity_level_safety_recommendation_title" msgid="6436208984463981167">"E posibil să fii expus(ă) la risc"</string>
+    <string name="overall_severity_level_critical_safety_warning_title" msgid="1039142045555227172">"Ești expus(ă) la risc"</string>
     <string name="overall_severity_n_alerts_summary" msgid="1105615451561197136">"{count,plural, =1{# alertă}few{# alerte}other{# de alerte}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Pagina nu s-a putut deschide"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Nu s-a putut rezolva alerta"</string>
