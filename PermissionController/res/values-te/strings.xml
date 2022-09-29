@@ -288,7 +288,7 @@
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"మరిన్ని ఆప్షన్‌లను చూడండి"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"యాక్సెస్ తీసివేయబడింది"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"పూర్తి పరికర యాక్సెస్ ఉన్న యాప్‌ను రివ్యూ చేయండి"</string>
-    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> can view your screen and perform actions on your device. Accessibility apps need this type of access to function as intended."</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> మీ స్క్రీన్‌ను చూడగలదు, అలాగే మీ పరికరంలో చర్యలను అమలు చేయగలదు. ఉద్దేశించిన విధంగా పనిచేయడానికి యాక్సెసిబిలిటీ యాప్‌లకు ఈ తరహా యాక్సెస్ అవసరం."</string>
     <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"This app can view your screen and perform actions on your device. Accessibility apps need this type of access to function as intended, but check the app and make sure you trust it."</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"యాక్సెస్‌ను తీసివేయండి"</string>
     <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"పూర్తి యాక్సెస్ గల యాప్‌లను చూడండి"</string>
