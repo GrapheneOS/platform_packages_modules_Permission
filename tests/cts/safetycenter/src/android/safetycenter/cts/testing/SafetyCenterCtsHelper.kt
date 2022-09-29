@@ -57,7 +57,7 @@ class SafetyCenterCtsHelper(private val context: Context) {
         setEnabled(true)
         listeners.forEach {
             safetyCenterManager.removeOnSafetyCenterDataChangedListenerWithPermission(it)
-            it.reset()
+            it.cancel()
         }
         listeners.clear()
         safetyCenterManager.clearAllSafetySourceDataForTestsWithPermission()

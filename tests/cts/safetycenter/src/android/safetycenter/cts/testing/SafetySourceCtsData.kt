@@ -33,11 +33,11 @@ import android.safetycenter.SafetySourceStatus
 import android.safetycenter.SafetySourceStatus.IconAction
 import android.safetycenter.SafetySourceStatus.IconAction.ICON_TYPE_GEAR
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_ID
-import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.ACTION_HANDLE_DISMISSED_ISSUE
-import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.ACTION_HANDLE_INLINE_ACTION
-import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.EXTRA_SOURCE_ID
-import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.EXTRA_SOURCE_ISSUE_ACTION_ID
-import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.EXTRA_SOURCE_ISSUE_ID
+import android.safetycenter.cts.testing.SafetySourceIntentHandler.Companion.ACTION_DISMISS_ISSUE
+import android.safetycenter.cts.testing.SafetySourceIntentHandler.Companion.ACTION_RESOLVE_ACTION
+import android.safetycenter.cts.testing.SafetySourceIntentHandler.Companion.EXTRA_SOURCE_ID
+import android.safetycenter.cts.testing.SafetySourceIntentHandler.Companion.EXTRA_SOURCE_ISSUE_ACTION_ID
+import android.safetycenter.cts.testing.SafetySourceIntentHandler.Companion.EXTRA_SOURCE_ISSUE_ID
 import kotlin.math.max
 
 /**
@@ -47,12 +47,12 @@ import kotlin.math.max
 class SafetySourceCtsData(private val context: Context) {
 
     /** A [PendingIntent] that redirects to the SafetyCenter page. */
-    val safetyCenterRedirectPendingIntent = createRedirectPendingIntent(context)
+    val safetyCenterRedirectPendingIntent =
+        createRedirectPendingIntent(context, Intent(ACTION_SAFETY_CENTER))
 
     /** A [PendingIntent] that redirects to the [TestActivity] page. */
     private val testActivityRedirectPendingIntent =
-        PendingIntent.getActivity(
-            context, 0, Intent(context, TestActivity::class.java), PendingIntent.FLAG_IMMUTABLE)
+        createRedirectPendingIntent(context, Intent(context, TestActivity::class.java))
 
     /** A [SafetySourceData] with a [SEVERITY_LEVEL_UNSPECIFIED] [SafetySourceStatus]. */
     val unspecified =
@@ -260,7 +260,7 @@ class SafetySourceCtsData(private val context: Context) {
 
     private val dismissIssuePendingIntent =
         broadcastPendingIntent(
-            Intent(ACTION_HANDLE_DISMISSED_ISSUE).putExtra(EXTRA_SOURCE_ID, SINGLE_SOURCE_ID))
+            Intent(ACTION_DISMISS_ISSUE).putExtra(EXTRA_SOURCE_ID, SINGLE_SOURCE_ID))
 
     /**
      * A [SafetySourceIssue] with a [SEVERITY_LEVEL_RECOMMENDATION] and a dismiss [PendingIntent].
@@ -314,7 +314,7 @@ class SafetySourceCtsData(private val context: Context) {
     /** A [PendingIntent] used by the resolving [Action] in [criticalResolvingGeneralIssue]. */
     val criticalIssueActionPendingIntent =
         broadcastPendingIntent(
-            Intent(ACTION_HANDLE_INLINE_ACTION)
+            Intent(ACTION_RESOLVE_ACTION)
                 .putExtra(EXTRA_SOURCE_ID, SINGLE_SOURCE_ID)
                 .putExtra(EXTRA_SOURCE_ISSUE_ID, CRITICAL_ISSUE_ID)
                 .putExtra(EXTRA_SOURCE_ISSUE_ACTION_ID, CRITICAL_ISSUE_ACTION_ID))
@@ -371,7 +371,7 @@ class SafetySourceCtsData(private val context: Context) {
      * Another [SafetySourceIssue] with a [SEVERITY_LEVEL_CRITICAL_WARNING] an [Action] that
      * redirects to [TestActivity].
      */
-    private val criticalIssueWithTestActivityRedirectingAction =
+    private val criticalIssueWithTestActivityRedirectAction =
         defaultCriticalResolvingIssueBuilder()
             .clearActions()
             .addAction(testActivityRedirectAction)
@@ -434,10 +434,8 @@ class SafetySourceCtsData(private val context: Context) {
      * A [SafetySourceData] with a [SEVERITY_LEVEL_CRITICAL_WARNING] with a [SafetySourceIssue] that
      * redirects to the [TestActivity].
      */
-    val criticalWithRedirectingTestActivityIssue =
-        defaultCriticalDataBuilder()
-            .addIssue(criticalIssueWithTestActivityRedirectingAction)
-            .build()
+    val criticalWithTestActivityRedirectIssue =
+        defaultCriticalDataBuilder().addIssue(criticalIssueWithTestActivityRedirectAction).build()
 
     /**
      * A [SafetySourceData] with a [SEVERITY_LEVEL_CRITICAL_WARNING] resolving account related
@@ -571,12 +569,9 @@ class SafetySourceCtsData(private val context: Context) {
             return builder.build()
         }
 
-        /** Returns a [PendingIntent] that redirects to the given [intentAction]'s page. */
-        fun createRedirectPendingIntent(
-            context: Context,
-            intentAction: String = ACTION_SAFETY_CENTER
-        ): PendingIntent =
+        /** Returns a [PendingIntent] that redirects to [intent]. */
+        fun createRedirectPendingIntent(context: Context, intent: Intent): PendingIntent =
             PendingIntent.getActivity(
-                context, 0 /* requestCode */, Intent(intentAction), PendingIntent.FLAG_IMMUTABLE)
+                context, 0 /* requestCode */, intent, PendingIntent.FLAG_IMMUTABLE)
     }
 }
