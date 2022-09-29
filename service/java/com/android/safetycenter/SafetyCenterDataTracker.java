@@ -27,17 +27,11 @@ import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.app.PendingIntent;
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.res.Resources;
 import android.icu.text.ListFormatter;
 import android.icu.text.MessageFormat;
 import android.icu.util.ULocale;
-import android.os.Binder;
 import android.os.SystemClock;
-import android.os.UserHandle;
 import android.safetycenter.SafetyCenterData;
 import android.safetycenter.SafetyCenterEntry;
 import android.safetycenter.SafetyCenterEntryGroup;
@@ -63,7 +57,6 @@ import android.util.StatsEvent;
 import androidx.annotation.RequiresApi;
 
 import com.android.permission.PermissionStatsLog;
-import com.android.permission.util.PackageUtils;
 import com.android.permission.util.UserUtils;
 import com.android.safetycenter.SafetyCenterConfigReader.ExternalSafetySource;
 import com.android.safetycenter.WestworldLogger.SystemEventResult;
@@ -100,8 +93,6 @@ final class SafetyCenterDataTracker {
     private static final String TAG = "SafetyCenterDataTracker";
 
     private static final String ANDROID_LOCK_SCREEN_SOURCES_GROUP_ID = "AndroidLockScreenSources";
-    private static final String ANDROID_LOCK_SCREEN_SOURCE_ID = "AndroidLockScreen";
-    private static final int ANDROID_LOCK_SCREEN_ICON_ACTION_REQ_CODE = 86;
 
     private static final SafetyCenterIssuesBySeverityDescending
             SAFETY_CENTER_ISSUES_BY_SEVERITY_DESCENDING =
@@ -123,6 +114,7 @@ final class SafetyCenterDataTracker {
     @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
     @NonNull private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker;
     @NonNull private final WestworldLogger mWestworldLogger;
+    @NonNull private final PendingIntentFactory mPendingIntentFactory;
 
     private boolean mSafetyCenterIssueCacheDirty = false;
 
@@ -131,12 +123,14 @@ final class SafetyCenterDataTracker {
             @NonNull SafetyCenterResourcesContext safetyCenterResourcesContext,
             @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
             @NonNull SafetyCenterRefreshTracker safetyCenterRefreshTracker,
-            @NonNull WestworldLogger westworldLogger) {
+            @NonNull WestworldLogger westworldLogger,
+            @NonNull PendingIntentFactory pendingIntentFactory) {
         mContext = context;
         mSafetyCenterResourcesContext = safetyCenterResourcesContext;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
         mSafetyCenterRefreshTracker = safetyCenterRefreshTracker;
         mWestworldLogger = westworldLogger;
+        mPendingIntentFactory = pendingIntentFactory;
     }
 
     /**
@@ -1393,7 +1387,7 @@ final class SafetyCenterDataTracker {
                     boolean enabled = safetySourceStatus.isEnabled();
                     if (pendingIntent == null) {
                         pendingIntent =
-                                toPendingIntent(
+                                mPendingIntentFactory.getPendingIntent(
                                         safetySource.getIntentAction(),
                                         safetySource.getPackageName(),
                                         userId,
@@ -1426,7 +1420,7 @@ final class SafetyCenterDataTracker {
                         return builder.build();
                     }
                     PendingIntent iconActionPendingIntent =
-                            toIconActionPendingIntent(
+                            mPendingIntentFactory.getIconActionPendingIntent(
                                     safetySource.getId(), iconAction.getPendingIntent());
                     builder.setIconAction(
                             new SafetyCenterEntry.IconAction(
@@ -1478,7 +1472,7 @@ final class SafetyCenterDataTracker {
                         .build();
         boolean isQuietModeEnabled = isUserManaged && !isManagedUserRunning;
         PendingIntent pendingIntent =
-                toPendingIntent(
+                mPendingIntentFactory.getPendingIntent(
                         safetySource.getIntentAction(), packageName, userId, isQuietModeEnabled);
         boolean enabled =
                 pendingIntent != null && !SafetySources.isDefaultEntryDisabled(safetySource);
@@ -1641,7 +1635,7 @@ final class SafetyCenterDataTracker {
         }
         boolean isQuietModeEnabled = isUserManaged && !isManagedUserRunning;
         PendingIntent pendingIntent =
-                toPendingIntent(
+                mPendingIntentFactory.getPendingIntent(
                         safetySource.getIntentAction(), packageName, userId, isQuietModeEnabled);
 
         if (pendingIntent == null) {
@@ -1669,127 +1663,6 @@ final class SafetyCenterDataTracker {
                 .setSummary(summary)
                 .setPendingIntent(pendingIntent)
                 .build();
-    }
-
-    @Nullable
-    private PendingIntent toPendingIntent(
-            @Nullable String intentAction,
-            @NonNull String packageName,
-            @UserIdInt int userId,
-            boolean isQuietModeEnabled) {
-        if (intentAction == null) {
-            return null;
-        }
-        Context context = toPackageContextAsUser(packageName, userId);
-        if (context == null) {
-            return null;
-        }
-        if (!isIntentActionValid(intentAction, userId, isQuietModeEnabled)) {
-            return null;
-        }
-        return toPendingIntent(context, 0, new Intent(intentAction));
-    }
-
-    private boolean isIntentActionValid(
-            @NonNull String intentAction, @UserIdInt int userId, boolean isQuietModeEnabled) {
-        // TODO(b/241743286): queryIntentActivities does not return any activity when work profile
-        //  is in quiet mode.
-        if (isQuietModeEnabled) {
-            return true;
-        }
-        Intent intent = new Intent(intentAction);
-        return !PackageUtils.queryUnfilteredIntentActivitiesAsUser(intent, 0, userId, mContext)
-                .isEmpty();
-    }
-
-    @NonNull
-    private static PendingIntent toPendingIntent(
-            @NonNull Context packageContext, int requestCode, @NonNull Intent intent) {
-        // This call requires Binder identity to be cleared for getIntentSender() to be allowed to
-        // send as another package.
-        final long callingId = Binder.clearCallingIdentity();
-        try {
-            return PendingIntent.getActivity(
-                    packageContext, requestCode, intent, PendingIntent.FLAG_IMMUTABLE);
-        } finally {
-            Binder.restoreCallingIdentity(callingId);
-        }
-    }
-
-    /**
-     * Potentially overrides the Settings IconAction PendingIntent for the AndroidLockScreen source.
-     *
-     * <p>This is done because of a bug in the Settings app where the PendingIntent created ends up
-     * referencing the one from the main entry. The reason for this is that PendingIntent instances
-     * are cached and keyed by an object which does not take into account the underlying intent
-     * extras; and these two intents only differ by the extras that they set. We fix this issue by
-     * recreating the desired Intent and PendingIntent here, using a specific request code for the
-     * PendingIntent to ensure a new instance is created (the key does take into account the request
-     * code).
-     */
-    @NonNull
-    private PendingIntent toIconActionPendingIntent(
-            @NonNull String sourceId, @NonNull PendingIntent pendingIntent) {
-        if (!ANDROID_LOCK_SCREEN_SOURCE_ID.equals(sourceId)) {
-            return pendingIntent;
-        }
-        if (!SafetyCenterFlags.getReplaceLockScreenIconAction()) {
-            return pendingIntent;
-        }
-        String settingsPackageName = pendingIntent.getCreatorPackage();
-        int userId = pendingIntent.getCreatorUserHandle().getIdentifier();
-        Context packageContext = toPackageContextAsUser(settingsPackageName, userId);
-        if (packageContext == null) {
-            return pendingIntent;
-        }
-        Resources settingsResources = packageContext.getResources();
-        int hasSettingsFixedIssueResourceId =
-                settingsResources.getIdentifier(
-                        "config_isSafetyCenterLockScreenPendingIntentFixed",
-                        "bool",
-                        settingsPackageName);
-        if (hasSettingsFixedIssueResourceId != Resources.ID_NULL) {
-            boolean hasSettingsFixedIssue =
-                    settingsResources.getBoolean(hasSettingsFixedIssueResourceId);
-            if (hasSettingsFixedIssue) {
-                return pendingIntent;
-            }
-        }
-        Intent intent =
-                new Intent(Intent.ACTION_MAIN)
-                        .setComponent(
-                                new ComponentName(
-                                        settingsPackageName, settingsPackageName + ".SubSettings"))
-                        .putExtra(
-                                ":settings:show_fragment",
-                                settingsPackageName + ".security.screenlock.ScreenLockSettings")
-                        .putExtra(":settings:source_metrics", 1917)
-                        .putExtra("page_transition_type", 0);
-        PendingIntent offendingPendingIntent = toPendingIntent(packageContext, 0, intent);
-        if (!offendingPendingIntent.equals(pendingIntent)) {
-            return pendingIntent;
-        }
-        // If creating that PendingIntent with request code 0 returns the same value as the
-        // PendingIntent that was sent to Safety Center, then we’re most likely hitting the caching
-        // issue described in this method’s documentation.
-        // i.e. the intent action and component of the cached PendingIntent are the same, but the
-        // extras are actually different so we should ensure we create a brand new PendingIntent by
-        // changing the request code.
-        return toPendingIntent(packageContext, ANDROID_LOCK_SCREEN_ICON_ACTION_REQ_CODE, intent);
-    }
-
-    @Nullable
-    private Context toPackageContextAsUser(@NonNull String packageName, @UserIdInt int userId) {
-        // This call requires the INTERACT_ACROSS_USERS permission.
-        final long callingId = Binder.clearCallingIdentity();
-        try {
-            return mContext.createPackageContextAsUser(packageName, 0, UserHandle.of(userId));
-        } catch (NameNotFoundException e) {
-            Log.w(TAG, "Package name " + packageName + " not found", e);
-            return null;
-        } finally {
-            Binder.restoreCallingIdentity(callingId);
-        }
     }
 
     @Nullable
