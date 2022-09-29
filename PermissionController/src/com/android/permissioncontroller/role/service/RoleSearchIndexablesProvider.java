@@ -29,6 +29,7 @@ import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.service.BaseSearchIndexablesProvider;
 import com.android.permissioncontroller.role.model.Role;
 import com.android.permissioncontroller.role.model.Roles;
+import com.android.permissioncontroller.role.utils.RoleUiBehaviorUtils;
 
 /**
  * {@link android.provider.SearchIndexablesProvider} for roles.
@@ -53,7 +54,8 @@ public class RoleSearchIndexablesProvider extends BaseSearchIndexablesProvider {
 
             long token = Binder.clearCallingIdentity();
             try {
-                if (!role.isAvailable(context) || !role.isVisible(context)) {
+                if (!role.isAvailable(context) || !RoleUiBehaviorUtils.isVisible(role,
+                        context)) {
                     continue;
                 }
             } finally {

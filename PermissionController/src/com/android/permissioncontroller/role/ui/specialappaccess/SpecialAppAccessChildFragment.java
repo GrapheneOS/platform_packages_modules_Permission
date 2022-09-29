@@ -39,6 +39,7 @@ import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.permissioncontroller.role.model.Role;
 import com.android.permissioncontroller.role.model.Roles;
 import com.android.permissioncontroller.role.ui.ManageRoleHolderStateLiveData;
+import com.android.permissioncontroller.role.utils.RoleUiBehaviorUtils;
 
 import java.util.List;
 
@@ -157,9 +158,8 @@ public class SpecialAppAccessChildFragment<PF extends PreferenceFragmentCompat
 
             preference.setChecked(isHolderPackage);
             UserHandle user = UserHandle.getUserHandleForUid(qualifyingApplicationInfo.uid);
-            mRole.prepareApplicationPreferenceAsUser(preference, qualifyingApplicationInfo, user,
-                    context);
-
+            RoleUiBehaviorUtils.prepareApplicationPreferenceAsUser(mRole, preference,
+                    qualifyingApplicationInfo, user, context);
             preferenceScreen.addPreference(preference);
         }
 
