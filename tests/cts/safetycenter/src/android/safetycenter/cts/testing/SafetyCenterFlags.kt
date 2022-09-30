@@ -153,13 +153,13 @@ object SafetyCenterFlags {
     /**
      * The Package Manager flag used while toggling the QS tile component.
      *
-     * This is to make sure that the SafetyCenter is not killed while toggling the QS tile
-     * component during the CTS tests, which causes flakiness in them.
+     * This is to make sure that the SafetyCenter is not killed while toggling the QS tile component
+     * during the CTS tests, which causes flakiness in them.
      */
-    private val qsTileComponentSettingFlags =
+    private val qsTileComponentSettingFlag =
         Flag(
             "safety_center_qs_tile_component_setting_flags",
-            PackageManager.DONT_KILL_APP,
+            defaultValue = PackageManager.DONT_KILL_APP,
             IntParser())
 
     /** Every Safety Center flag. */
@@ -177,7 +177,7 @@ object SafetyCenterFlags {
             issueCategoryAllowlistsFlag,
             backgroundRefreshDeniedSourcesFlag,
             allowWestworldLoggingInTestsFlag,
-            qsTileComponentSettingFlags)
+            qsTileComponentSettingFlag)
 
     /** Returns whether the device supports Safety Center. */
     fun Context.deviceSupportsSafetyCenter() =
