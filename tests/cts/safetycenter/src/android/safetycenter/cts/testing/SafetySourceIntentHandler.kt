@@ -128,7 +128,7 @@ class SafetySourceIntentHandler {
         for (sourceId in sourceIds) {
             processRequest(toRefreshSafetySourcesRequest(requestType, sourceId, userId)) {
                 createRefreshEvent(
-                    if (it is Response.SetDataWithBroadcastId) {
+                    if (it is Response.SetData && it.overrideBroadcastId != null) {
                         it.overrideBroadcastId
                     } else {
                         broadcastId
@@ -217,10 +217,9 @@ class SafetySourceIntentHandler {
         when (response) {
             is Response.Error ->
                 reportSafetySourceError(request.sourceId, SafetySourceErrorDetails(safetyEvent))
-            is Response.ClearData,
-            is Response.SetData,
-            is Response.SetDataWithBroadcastId ->
-                setSafetySourceData(request.sourceId, response.dataToSet, safetyEvent)
+            is Response.ClearData -> setSafetySourceData(request.sourceId, null, safetyEvent)
+            is Response.SetData ->
+                setSafetySourceData(request.sourceId, response.safetySourceData, safetyEvent)
         }
     }
 
@@ -261,27 +260,25 @@ class SafetySourceIntentHandler {
      * A class that specifies the appropriate action to take on the [SafetyCenterManager] as a
      * response to an incoming [Request].
      */
-    sealed class Response(val dataToSet: SafetySourceData?) {
+    sealed class Response {
 
         /** Creates an error [Response]. */
-        object Error : Response(dataToSet = null)
+        object Error : Response()
 
         /** Creates a [Response] to clear the data. */
-        object ClearData : Response(dataToSet = null)
-
-        /** Creates a [Response] to set the given [SafetySourceData]. */
-        data class SetData(val safetySourceData: SafetySourceData) :
-            Response(dataToSet = safetySourceData)
+        object ClearData : Response()
 
         /**
-         * Creates a [Response] to set the given [SafetySourceData] with an [overrideBroadcastId] in
-         * case of [Request.Refresh] or [Request.Rescan] to simulate a misuse of the
-         * [SafetyCenterManager] APIs.
+         * Creates a [Response] to set the given [SafetySourceData].
+         *
+         * @param overrideBroadcastId an optional override of the broadcast id to use in the
+         * [SafetyEvent] sent to the [SafetyCenterManager], in case of [Request.Refresh] or
+         * [Request.Rescan]. This is used to simulate a misuse of the [SafetyCenterManager] APIs
          */
-        data class SetDataWithBroadcastId(
+        data class SetData(
             val safetySourceData: SafetySourceData,
-            val overrideBroadcastId: String
-        ) : Response(dataToSet = safetySourceData)
+            val overrideBroadcastId: String? = null
+        ) : Response()
     }
 
     companion object {

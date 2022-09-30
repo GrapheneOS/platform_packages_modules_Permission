@@ -17,9 +17,15 @@
 package android.safetycenter.cts.testing
 
 import android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE
+import android.app.Notification
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.NotificationManager.IMPORTANCE_DEFAULT
+import android.app.Service
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.os.IBinder
 import android.os.UserManager
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyCenterManager.ACTION_SAFETY_CENTER_ENABLED_CHANGED
@@ -34,6 +40,10 @@ import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermission
 import android.safetycenter.cts.testing.WaitForBroadcastIdle.waitForBroadcastIdle
 import androidx.test.core.app.ApplicationProvider
 import java.time.Duration
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 /** Broadcast receiver used for testing broadcasts sent to safety sources. */
 class SafetySourceReceiver : BroadcastReceiver() {
@@ -48,16 +58,75 @@ class SafetySourceReceiver : BroadcastReceiver() {
             throw IllegalArgumentException("Received null intent")
         }
 
-        runBlockingWithTimeout { safetySourceIntentHandler.handle(context, intent) }
+        if (runInForegroundService) {
+            context.startForegroundService(intent.setClass(context, ForegroundService::class.java))
+        } else {
+            runBlockingWithTimeout { safetySourceIntentHandler.handle(context, intent) }
+        }
+    }
+
+    /**
+     * A foreground [Service] that handles incoming intents in the same way as
+     * [SafetySourceReceiver].
+     *
+     * This is used to verify that [SafetySourceReceiver] can start foreground services. Broadcast
+     * receivers are typically not allowed to do that, but Safety Center uses special broadcast
+     * options that allow safety source receivers to process lengthy operations in foreground
+     * services instead.
+     */
+    class ForegroundService : Service() {
+        private val serviceJob = Job()
+        private val serviceScope = CoroutineScope(Dispatchers.Default + serviceJob)
+
+        override fun onBind(intent: Intent?): IBinder? = null
+
+        override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+            val notificationManager = getSystemService(NotificationManager::class.java)!!
+            notificationManager.createNotificationChannel(
+                NotificationChannel(
+                    NOTIFICATION_CHANNEL_ID, NOTIFICATION_CHANNEL_ID, IMPORTANCE_DEFAULT))
+            startForeground(
+                NOTIFICATION_ID,
+                Notification.Builder(this, NOTIFICATION_CHANNEL_ID)
+                    .setContentTitle("SafetySourceReceiver")
+                    .setContentText(
+                        "SafetySourceReceiver is processing an incoming intent in its " +
+                            "ForegroundService")
+                    .setSmallIcon(android.R.drawable.ic_info)
+                    .build())
+            serviceScope.launch {
+                try {
+                    safetySourceIntentHandler.handle(this@ForegroundService, intent!!)
+                } finally {
+                    stopForeground(STOP_FOREGROUND_REMOVE)
+                }
+            }
+            super.onStartCommand(intent, flags, startId)
+            return START_NOT_STICKY
+        }
+
+        override fun onDestroy() {
+            serviceJob.cancel()
+            super.onDestroy()
+        }
+
+        companion object {
+            private const val NOTIFICATION_ID: Int = 1204
+            private const val NOTIFICATION_CHANNEL_ID: String = "NOTIFICATION_CHANNEL_ID"
+        }
     }
 
     companion object {
         @Volatile private var safetySourceIntentHandler = SafetySourceIntentHandler()
 
+        /** Whether this receiver should handle incoming intents in a foreground service instead. */
+        @Volatile var runInForegroundService = false
+
         /** Resets the state of the [SafetySourceReceiver] between tests. */
         fun reset() {
             safetySourceIntentHandler.cancel()
             safetySourceIntentHandler = SafetySourceIntentHandler()
+            runInForegroundService = false
         }
 
         /**
