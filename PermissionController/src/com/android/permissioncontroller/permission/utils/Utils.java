@@ -87,6 +87,7 @@ import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import androidx.annotation.ChecksSdkIntAtLeast;
 import androidx.annotation.ColorRes;
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
@@ -167,6 +168,11 @@ public final class Utils {
     /** Whether to show location access check notifications. */
     private static final String PROPERTY_LOCATION_ACCESS_CHECK_ENABLED =
             "location_access_check_enabled";
+
+    /** Whether to show health permission in various permission controller UIs. */
+    private static final String PROPERTY_HEALTH_PERMISSION_UI_ENABLED =
+            "health_permission_ui_enabled";
+
 
     /** How frequently to check permission event store to scrub old data */
     public static final String PROPERTY_PERMISSION_EVENTS_CHECK_OLD_FREQUENCY_MILLIS =
@@ -920,6 +926,16 @@ public final class Utils {
     public static boolean isLocationAccessCheckEnabled() {
         return DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
                 PROPERTY_LOCATION_ACCESS_CHECK_ENABLED, true);
+    }
+
+    /**
+     * Whether we should show health permissions as platform permissions in the various
+     * permission controller UI.
+     */
+    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codename = "UpsideDownCake")
+    public static boolean isHealthPermissionUiEnabled() {
+        return SdkLevel.isAtLeastU() && DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
+                PROPERTY_HEALTH_PERMISSION_UI_ENABLED, false);
     }
 
     /**

@@ -364,6 +364,14 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                     return;
                 }
 
+                if (Utils.isHealthPermissionUiEnabled() && permissionGroupName
+                                .equals(PermissionMapping.getHealthPermissionGroupString())) {
+                    // TODO(b/248358404): Redirect to the health connect UI, health permissions list
+                    //  for all apps.
+                    finishAfterTransition();
+                    return;
+                }
+
                 if (DeviceUtils.isAuto(this)) {
                     androidXFragment =
                             AutoPermissionAppsFragment.newInstance(permissionGroupName, sessionId);

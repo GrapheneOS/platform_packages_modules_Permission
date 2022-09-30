@@ -44,6 +44,7 @@ import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.ui.LocationProviderInterceptDialog;
 import com.android.permissioncontroller.permission.utils.LocationUtils;
+import com.android.permissioncontroller.permission.utils.PermissionMapping;
 import com.android.permissioncontroller.permission.utils.Utils;
 
 import java.util.List;
@@ -219,6 +220,12 @@ public class PermissionControlPreference extends Preference {
             } else if (mHasNavGraph) {
                 if (mPermGroupName.equals(Manifest.permission_group.NOTIFICATIONS)) {
                     Utils.navigateToAppNotificationSettings(mContext, mPackageName, mUser);
+                    return true;
+                }
+                if (Utils.isHealthPermissionUiEnabled()
+                        && mPermGroupName.equals(
+                                PermissionMapping.getHealthPermissionGroupString())) {
+                    // TODO(b/248358404): Redirect to the health connect UI.
                     return true;
                 }
                 Bundle args = new Bundle();
