@@ -1253,6 +1253,21 @@ class SafetyCenterManagerTest {
     }
 
     @Test
+    fun refreshSafetySources_allowsRefreshingInAForegroundService() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        SafetySourceReceiver.runInForegroundService = true
+        SafetySourceReceiver.setResponse(
+            Request.Refresh(SINGLE_SOURCE_ID), Response.SetData(safetySourceCtsData.information))
+
+        safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+            REFRESH_REASON_PAGE_OPEN)
+
+        val apiSafetySourceData =
+            safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
+        assertThat(apiSafetySourceData).isEqualTo(safetySourceCtsData.information)
+    }
+
+    @Test
     fun refreshSafetySources_withRefreshReasonPageOpen_notCalledIfSourceDoesntSupportPageOpen() {
         safetyCenterCtsHelper.setConfig(NO_PAGE_OPEN_CONFIG)
         SafetySourceReceiver.setResponse(
@@ -1395,7 +1410,7 @@ class SafetyCenterManagerTest {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         SafetySourceReceiver.setResponse(
             Request.Rescan(SINGLE_SOURCE_ID),
-            Response.SetDataWithBroadcastId(safetySourceCtsData.information, "invalid"))
+            Response.SetData(safetySourceCtsData.information, overrideBroadcastId = "invalid"))
         val listener = safetyCenterCtsHelper.addListener()
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(

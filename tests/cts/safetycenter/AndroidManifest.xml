@@ -16,7 +16,6 @@
   -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="android.safetycenter.cts">
-
     <application>
         <receiver android:name=".testing.SafetySourceReceiver"
                   android:exported="false">
@@ -28,13 +27,17 @@
             </intent-filter>
         </receiver>
 
+        <service android:name=".testing.SafetySourceReceiver$ForegroundService"
+                 android:foregroundServiceType="dataSync"
+                 android:exported="false"/>
+
         <activity android:name=".testing.TestActivity"
                   android:exported="false">
         </activity>
 
         <uses-library android:name="android.test.runner"/>
-
     </application>
+
     <instrumentation android:name="androidx.test.runner.AndroidJUnitRunner"
                      android:label="CTS tests for SafetyCenter"
                      android:targetPackage="android.safetycenter.cts">
@@ -43,6 +46,6 @@
     </instrumentation>
 
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
-
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
 </manifest>
