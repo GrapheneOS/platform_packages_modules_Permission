@@ -42,8 +42,11 @@ data class LightAppPermGroup(
     val hasInstallToRuntimeSplit: Boolean,
     val specialLocationGrant: Boolean?
 ) {
-    constructor(pI: LightPackageInfo, pGI: LightPermGroupInfo, perms: Map<String, LightPermission>):
-        this(pI, pGI, perms, false, null)
+    constructor(
+        pI: LightPackageInfo,
+        pGI: LightPermGroupInfo,
+        perms: Map<String, LightPermission>
+    ) : this(pI, pGI, perms, false, null)
 
     /**
      * All unrestricted permissions. Usually restricted permissions are ignored
@@ -162,6 +165,16 @@ data class LightAppPermGroup(
      * Whether any permissions in this group are revoke-when-requested
      */
     val isRevokeWhenRequested = permissions.any { it.value.isRevokeWhenRequested }
+
+    /**
+     * Whether any of this App Permission Groups permissions are fixed by the user
+     */
+    val isUserFixed = foreground.isUserFixed || background.isUserFixed
+
+    /**
+     * Whether any of this App Permission Group's permissions are set by the user
+     */
+    val isUserSet = foreground.isUserSet || background.isUserSet
 
     /**
      * A subset of the AppPermissionGroup, representing either the background or foreground permissions
