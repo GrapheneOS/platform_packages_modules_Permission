@@ -1,0 +1,13 @@
+.gradle/*
+gradlew.bat
+local.properties
+
+.build-cache*
+
+**/*.iml
+**/.DS_Store
+
+!.idea
+.idea/*
+!.idea/runConfigurations
+!.idea/vcs.xml
