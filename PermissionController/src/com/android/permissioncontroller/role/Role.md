@@ -88,7 +88,7 @@ defaults to `false`.
 - `static`: Whether this role is static, i.e. the role will always be assigned to its default
 holders. This attribute is optional and defaults to `false`.
 - `systemOnly`: Whether this role only allows system apps to hold it. This attribute is optional and
-defaults to `false.
+defaults to `false`.
 - `visible`: Whether this role is visible to users. If a role is invisible (a.k.a. hidden) to users,
 users won't be able to find it in Settings, and apps won't be able to request it. The role can still
 be managed by system APIs and shell command.

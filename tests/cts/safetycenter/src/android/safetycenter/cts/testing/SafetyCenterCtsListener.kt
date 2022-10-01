@@ -50,8 +50,8 @@ class SafetyCenterCtsListener : OnSafetyCenterDataChangedListener {
     fun receiveSafetyCenterErrorDetails(timeout: Duration = TIMEOUT_LONG) =
         runBlockingWithTimeout(timeout) { errorChannel.receive() }
 
-    /** Resets the state of this [SafetyCenterCtsListener]. */
-    fun reset() {
+    /** Cancels any pending update on this [SafetyCenterCtsListener]. */
+    fun cancel() {
         dataChannel.cancel()
         errorChannel.cancel()
     }

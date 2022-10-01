@@ -17,37 +17,33 @@
 package android.safetycenter.cts.testing
 
 import android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE
+import android.app.Notification
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.NotificationManager.IMPORTANCE_DEFAULT
+import android.app.Service
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.os.IBinder
 import android.os.UserManager
 import android.safetycenter.SafetyCenterManager
-import android.safetycenter.SafetyCenterManager.ACTION_REFRESH_SAFETY_SOURCES
 import android.safetycenter.SafetyCenterManager.ACTION_SAFETY_CENTER_ENABLED_CHANGED
-import android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_REQUEST_TYPE_FETCH_FRESH_DATA
-import android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_REQUEST_TYPE_GET_DATA
-import android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID
-import android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE
-import android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCE_IDS
-import android.safetycenter.SafetyEvent
-import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED
-import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED
-import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED
-import android.safetycenter.SafetySourceData
-import android.safetycenter.SafetySourceErrorDetails
 import android.safetycenter.cts.testing.Coroutines.TIMEOUT_LONG
 import android.safetycenter.cts.testing.Coroutines.runBlockingWithTimeout
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.dismissSafetyCenterIssueWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.executeSafetyCenterIssueActionWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.refreshSafetySourcesWithPermission
-import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.EVENT_SOURCE_STATE_CHANGED
-import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.SafetySourceDataKey.Reason
+import android.safetycenter.cts.testing.SafetySourceIntentHandler.Request
+import android.safetycenter.cts.testing.SafetySourceIntentHandler.Response
 import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermissionIdentity
 import android.safetycenter.cts.testing.WaitForBroadcastIdle.waitForBroadcastIdle
 import androidx.test.core.app.ApplicationProvider
 import java.time.Duration
-import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.channels.Channel.Factory.UNLIMITED
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 /** Broadcast receiver used for testing broadcasts sent to safety sources. */
 class SafetySourceReceiver : BroadcastReceiver() {
@@ -62,139 +58,83 @@ class SafetySourceReceiver : BroadcastReceiver() {
             throw IllegalArgumentException("Received null intent")
         }
 
-        val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)!!
+        if (runInForegroundService) {
+            context.startForegroundService(intent.setClass(context, ForegroundService::class.java))
+        } else {
+            runBlockingWithTimeout { safetySourceIntentHandler.handle(context, intent) }
+        }
+    }
 
-        when (val action = intent.action) {
-            ACTION_REFRESH_SAFETY_SOURCES -> {
-                // Get the broadcast ID from the override or the intent
-                val broadcastId =
-                    overrideBroadcastId
-                        ?: intent.getStringExtra(EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID)
-                if (broadcastId.isNullOrEmpty()) {
-                    throw IllegalArgumentException(
-                        "Received refresh intent with no broadcast id specified")
-                }
+    /**
+     * A foreground [Service] that handles incoming intents in the same way as
+     * [SafetySourceReceiver].
+     *
+     * This is used to verify that [SafetySourceReceiver] can start foreground services. Broadcast
+     * receivers are typically not allowed to do that, but Safety Center uses special broadcast
+     * options that allow safety source receivers to process lengthy operations in foreground
+     * services instead.
+     */
+    class ForegroundService : Service() {
+        private val serviceJob = Job()
+        private val serviceScope = CoroutineScope(Dispatchers.Default + serviceJob)
 
-                val sourceIds = intent.getStringArrayExtra(EXTRA_REFRESH_SAFETY_SOURCE_IDS)
-                if (sourceIds.isNullOrEmpty()) {
-                    throw IllegalArgumentException(
-                        "Received refresh intent with no source ids specified")
+        override fun onBind(intent: Intent?): IBinder? = null
+
+        override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+            val notificationManager = getSystemService(NotificationManager::class.java)!!
+            notificationManager.createNotificationChannel(
+                NotificationChannel(
+                    NOTIFICATION_CHANNEL_ID, NOTIFICATION_CHANNEL_ID, IMPORTANCE_DEFAULT))
+            startForeground(
+                NOTIFICATION_ID,
+                Notification.Builder(this, NOTIFICATION_CHANNEL_ID)
+                    .setContentTitle("SafetySourceReceiver")
+                    .setContentText(
+                        "SafetySourceReceiver is processing an incoming intent in its " +
+                            "ForegroundService")
+                    .setSmallIcon(android.R.drawable.ic_info)
+                    .build())
+            serviceScope.launch {
+                try {
+                    safetySourceIntentHandler.handle(this@ForegroundService, intent!!)
+                } finally {
+                    stopForeground(STOP_FOREGROUND_REMOVE)
                 }
-                val requestType = intent.getIntExtra(EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE, -1)
-                if (requestType != EXTRA_REFRESH_REQUEST_TYPE_GET_DATA &&
-                    requestType != EXTRA_REFRESH_REQUEST_TYPE_FETCH_FRESH_DATA) {
-                    throw IllegalArgumentException(
-                        "Received refresh intent with invalid request type: $requestType")
-                }
-                for (id: String in sourceIds) {
-                    safetyCenterManager.setRefreshDataForSource(id, requestType, broadcastId)
-                }
-                runBlockingWithTimeout { refreshSafetySourcesChannel.send(broadcastId) }
             }
-            ACTION_SAFETY_CENTER_ENABLED_CHANGED ->
-                runBlockingWithTimeout {
-                    safetyCenterEnabledChangedChannel.send(
-                        safetyCenterManager.isSafetyCenterEnabled)
-                }
-            ACTION_HANDLE_INLINE_ACTION -> {
-                val sourceId = intent.getStringExtra(EXTRA_SOURCE_ID)
-                if (sourceId.isNullOrEmpty()) {
-                    throw IllegalArgumentException(
-                        "Received inline action intent with no source id specified")
-                }
-                val sourceIssueId = intent.getStringExtra(EXTRA_SOURCE_ISSUE_ID)
-                if (sourceIssueId.isNullOrEmpty()) {
-                    throw IllegalArgumentException(
-                        "Received inline action intent with no source issue id specified")
-                }
-                val sourceIssueActionId = intent.getStringExtra(EXTRA_SOURCE_ISSUE_ACTION_ID)
-                if (sourceIssueActionId.isNullOrEmpty()) {
-                    throw IllegalArgumentException(
-                        "Received inline action intent with no source issue action id specified")
-                }
-                safetyCenterManager.setInlineActionDataForSource(
-                    sourceId, sourceIssueId, sourceIssueActionId)
-                runBlockingWithTimeout { inlineActionChannel.send(Unit) }
-            }
-            ACTION_HANDLE_DISMISSED_ISSUE -> {
-                val sourceId = intent.getStringExtra(EXTRA_SOURCE_ID)
-                if (sourceId.isNullOrEmpty()) {
-                    throw IllegalArgumentException(
-                        "Received dismissed issue intent with no source id specified")
-                }
-                safetyCenterManager.setDismissedIssueDataForSource(sourceId)
-                runBlockingWithTimeout { dismissedIssueChannel.send(Unit) }
-            }
-            else -> throw IllegalArgumentException("Received intent with action: $action")
+            super.onStartCommand(intent, flags, startId)
+            return START_NOT_STICKY
+        }
+
+        override fun onDestroy() {
+            serviceJob.cancel()
+            super.onDestroy()
+        }
+
+        companion object {
+            private const val NOTIFICATION_ID: Int = 1204
+            private const val NOTIFICATION_CHANNEL_ID: String = "NOTIFICATION_CHANNEL_ID"
         }
     }
 
     companion object {
-        @Volatile private var refreshSafetySourcesChannel = Channel<String>(UNLIMITED)
+        @Volatile private var safetySourceIntentHandler = SafetySourceIntentHandler()
 
-        @Volatile private var safetyCenterEnabledChangedChannel = Channel<Boolean>(UNLIMITED)
+        /** Whether this receiver should handle incoming intents in a foreground service instead. */
+        @Volatile var runInForegroundService = false
 
-        @Volatile private var inlineActionChannel = Channel<Unit>(UNLIMITED)
-
-        @Volatile private var dismissedIssueChannel = Channel<Unit>(UNLIMITED)
-
-        /**
-         * Whether we should call [SafetyCenterManager.reportSafetySourceError] instead of
-         * [SafetyCenterManager.setSafetySourceData].
-         */
-        @Volatile var shouldReportSafetySourceError = false
-
-        /** An intent action to handle an inline action in this receiver. */
-        const val ACTION_HANDLE_INLINE_ACTION =
-            "android.safetycenter.cts.testing.action.HANDLE_INLINE_ACTION"
-
-        /** An intent action to handle an issue dismissed by Safety Center in this receiver. */
-        const val ACTION_HANDLE_DISMISSED_ISSUE =
-            "android.safetycenter.cts.testing.action.HANDLE_DISMISSED_ISSUE"
-
-        /**
-         * An extra to be used with [ACTION_HANDLE_INLINE_ACTION] or [ACTION_HANDLE_DISMISSED_ISSUE]
-         * to specify the target safety source id.
-         */
-        const val EXTRA_SOURCE_ID = "android.safetycenter.cts.testing.extra.SOURCE_ID"
-
-        /**
-         * An extra to be used with [ACTION_HANDLE_INLINE_ACTION] to specify the target safety
-         * source issue id of the inline action.
-         */
-        const val EXTRA_SOURCE_ISSUE_ID = "android.safetycenter.cts.testing.extra.SOURCE_ISSUE_ID"
-
-        /**
-         * An extra to be used with [ACTION_HANDLE_INLINE_ACTION] to specify the target safety
-         * source issue action id of the inline action.
-         */
-        const val EXTRA_SOURCE_ISSUE_ACTION_ID =
-            "android.safetycenter.cts.testing.extra.SOURCE_ISSUE_ACTION_ID"
-
-        /**
-         * The [SafetySourceData] to return with [SafetyCenterManager.setSafetySourceData] in case
-         * of refreshes or inline actions.
-         */
-        val safetySourceData = mutableMapOf<SafetySourceDataKey, SafetySourceData?>()
-
-        /**
-         * The broadcast ID to use when responding to broadcasts. If set to null, the receiver will
-         * respond with the broadcast ID read directly from the received broadcast.
-         */
-        @Volatile var overrideBroadcastId: String? = null
-
+        /** Resets the state of the [SafetySourceReceiver] between tests. */
         fun reset() {
-            shouldReportSafetySourceError = false
-            overrideBroadcastId = null
-            safetySourceData.clear()
-            refreshSafetySourcesChannel.cancel()
-            refreshSafetySourcesChannel = Channel(UNLIMITED)
-            safetyCenterEnabledChangedChannel.cancel()
-            safetyCenterEnabledChangedChannel = Channel(UNLIMITED)
-            inlineActionChannel.cancel()
-            inlineActionChannel = Channel(UNLIMITED)
-            dismissedIssueChannel.cancel()
-            dismissedIssueChannel = Channel(UNLIMITED)
+            safetySourceIntentHandler.cancel()
+            safetySourceIntentHandler = SafetySourceIntentHandler()
+            runInForegroundService = false
+        }
+
+        /**
+         * Sets the given [SafetySourceIntentHandler] [response] for the given [request] on this
+         * receiver.
+         */
+        fun setResponse(request: Request, response: Response) {
+            runBlockingWithTimeout { safetySourceIntentHandler.setResponse(request, response) }
         }
 
         fun SafetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
@@ -242,7 +182,7 @@ class SafetySourceReceiver : BroadcastReceiver() {
         ) {
             callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
                 executeSafetyCenterIssueActionWithPermission(issueId, issueActionId)
-                receiveInlineAction(timeout)
+                receiveResolveAction(timeout)
             }
         }
 
@@ -256,110 +196,28 @@ class SafetySourceReceiver : BroadcastReceiver() {
             }
         }
 
-        private fun createRefreshEvent(broadcastId: String) =
-            SafetyEvent.Builder(SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
-                .setRefreshBroadcastId(broadcastId)
-                .build()
-
-        private fun createInlineActionSuccessEvent(
-            sourceIssueId: String,
-            sourceIssueActionId: String
-        ) =
-            SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED)
-                .setSafetySourceIssueId(sourceIssueId)
-                .setSafetySourceIssueActionId(sourceIssueActionId)
-                .build()
-
-        private fun createInlineActionErrorEvent(
-            sourceIssueId: String,
-            sourceIssueActionId: String
-        ) =
-            SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
-                .setSafetySourceIssueId(sourceIssueId)
-                .setSafetySourceIssueActionId(sourceIssueActionId)
-                .build()
-
-        private fun SafetyCenterManager.setRefreshDataForSource(
-            sourceId: String,
-            requestType: Int,
-            broadcastId: String
-        ) {
-            val reason = requestTypeToReason(requestType)
-            setReceiverDataForSource(reason, sourceId, createRefreshEvent(broadcastId))
-        }
-
-        private fun requestTypeToReason(requestType: Int) =
-            when (requestType) {
-                EXTRA_REFRESH_REQUEST_TYPE_GET_DATA -> Reason.REFRESH_GET_DATA
-                EXTRA_REFRESH_REQUEST_TYPE_FETCH_FRESH_DATA -> Reason.REFRESH_FETCH_FRESH_DATA
-                else -> throw IllegalStateException("Unexpected request type: $requestType")
-            }
-
-        private fun SafetyCenterManager.setInlineActionDataForSource(
-            sourceId: String,
-            sourceIssueId: String,
-            sourceIssueActionId: String
-        ) {
-            setReceiverDataForSource(
-                Reason.RESOLVE_ACTION,
-                sourceId,
-                createInlineActionSuccessEvent(sourceIssueId, sourceIssueActionId),
-                createInlineActionErrorEvent(sourceIssueId, sourceIssueActionId))
-        }
-
-        private fun SafetyCenterManager.setDismissedIssueDataForSource(sourceId: String) {
-            setReceiverDataForSource(Reason.DISMISS_ISSUE, sourceId, EVENT_SOURCE_STATE_CHANGED)
-        }
-
-        private fun SafetyCenterManager.setReceiverDataForSource(
-            reason: Reason,
-            sourceId: String,
-            successSafetyEvent: SafetyEvent,
-            errorSafetyEvent: SafetyEvent = successSafetyEvent
-        ) {
-            val key = SafetySourceDataKey(reason, sourceId)
-            if (!safetySourceData.containsKey(key)) {
-                return
-            }
-            if (shouldReportSafetySourceError) {
-                reportSafetySourceError(sourceId, SafetySourceErrorDetails(errorSafetyEvent))
-            } else {
-                setSafetySourceData(sourceId, safetySourceData[key], successSafetyEvent)
-            }
-        }
-
         private fun receiveRefreshSafetySources(timeout: Duration = TIMEOUT_LONG): String =
-            runBlockingWithTimeout(timeout) { refreshSafetySourcesChannel.receive() }
+            runBlockingWithTimeout(timeout) {
+                safetySourceIntentHandler.receiveRefreshSafetySources()
+            }
 
         /**
          * Waits for an [ACTION_SAFETY_CENTER_ENABLED_CHANGED] to be received by this receiver
          * within the given [timeout].
          */
         fun receiveSafetyCenterEnabledChanged(timeout: Duration = TIMEOUT_LONG): Boolean =
-            runBlockingWithTimeout(timeout) { safetyCenterEnabledChangedChannel.receive() }
+            runBlockingWithTimeout(timeout) {
+                safetySourceIntentHandler.receiveSafetyCenterEnabledChanged()
+            }
 
-        private fun receiveInlineAction(timeout: Duration = TIMEOUT_LONG) {
-            runBlockingWithTimeout(timeout) { inlineActionChannel.receive() }
+        private fun receiveResolveAction(timeout: Duration = TIMEOUT_LONG) {
+            runBlockingWithTimeout(timeout) { safetySourceIntentHandler.receiveResolveAction() }
         }
 
         private fun receiveDismissIssue(timeout: Duration = TIMEOUT_LONG) {
-            runBlockingWithTimeout(timeout) { dismissedIssueChannel.receive() }
+            runBlockingWithTimeout(timeout) { safetySourceIntentHandler.receiveDimissIssue() }
         }
 
         private fun getApplicationContext(): Context = ApplicationProvider.getApplicationContext()
-
-        /**
-         * A key to provide different [SafetySourceData] to this receiver depending on what [Intent]
-         * it receives.
-         */
-        data class SafetySourceDataKey(val reason: Reason, val sourceId: String) {
-            /** The reasons why this receiver could provide [SafetySourceData]. */
-            enum class Reason {
-                REFRESH_GET_DATA,
-                REFRESH_FETCH_FRESH_DATA,
-                RESOLVE_ACTION,
-                DISMISS_ISSUE
-            }
-        }
     }
 }

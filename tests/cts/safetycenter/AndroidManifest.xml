@@ -16,25 +16,28 @@
   -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="android.safetycenter.cts">
-
     <application>
         <receiver android:name=".testing.SafetySourceReceiver"
                   android:exported="false">
             <intent-filter>
                 <action android:name="android.safetycenter.action.SAFETY_CENTER_ENABLED_CHANGED"/>
                 <action android:name="android.safetycenter.action.REFRESH_SAFETY_SOURCES"/>
-                <action android:name="android.safetycenter.cts.testing.action.HANDLE_INLINE_ACTION"/>
-                <action android:name="android.safetycenter.cts.testing.action.HANDLE_DISMISSED_ISSUE"/>
+                <action android:name="android.safetycenter.cts.testing.action.RESOLVE_ACTION"/>
+                <action android:name="android.safetycenter.cts.testing.action.DISMISS_ISSUE"/>
             </intent-filter>
         </receiver>
+
+        <service android:name=".testing.SafetySourceReceiver$ForegroundService"
+                 android:foregroundServiceType="dataSync"
+                 android:exported="false"/>
 
         <activity android:name=".testing.TestActivity"
                   android:exported="false">
         </activity>
 
         <uses-library android:name="android.test.runner"/>
-
     </application>
+
     <instrumentation android:name="androidx.test.runner.AndroidJUnitRunner"
                      android:label="CTS tests for SafetyCenter"
                      android:targetPackage="android.safetycenter.cts">
@@ -43,6 +46,6 @@
     </instrumentation>
 
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
-
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
 </manifest>
