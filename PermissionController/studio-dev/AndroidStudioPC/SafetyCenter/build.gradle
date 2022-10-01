@@ -1,0 +1,53 @@
+plugins {
+    id 'sysuigradleproject.android-library-conventions'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.google.protobuf'
+}
+
+android {
+    sourceSets {
+        main {
+            java.srcDirs = [
+                    "${SAFETY_CENTER_DIR}/ResourcesLib/java",
+                    "${SAFETY_CENTER_DIR}/InternalData/proto",
+                    "${SAFETY_CENTER_DIR}/InternalData/java",
+            ]
+            proto.srcDirs = [
+                    "${SAFETY_CENTER_DIR}/InternalData/proto",
+            ]
+            res.srcDirs = [
+                    "${SAFETY_CENTER_DIR}/ResourcesLib/res",
+            ]
+            manifest.srcFile "AndroidManifest.xml"
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+    tasks.lint.enabled = false
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+    }
+}
+
+dependencies {
+    api project(':ProtobufJavaLite')
+    implementation PROTOBUF_DEPENDENCY
+    implementation "androidx.annotation:annotation"
+}
+
+protobuf {
+    // Configure the protoc executable
+    protoc {
+        protoc {
+            artifact = "com.google.protobuf:protoc:3.10.0${PROTO_ARCH_SUFFIX}"
+        }
+        generateProtoTasks {
+            all().each { task ->
+                task.builtins {
+                    java {option 'lite'}
+                }
+            }
+        }
+    }
+}
