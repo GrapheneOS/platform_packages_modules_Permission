@@ -61,7 +61,7 @@
     <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Voir toutes les décisions récentes liées aux autorisations"</string>
     <string name="review_permission_decisions_empty" msgid="8120775336417279806">"Aucune décision récente liée aux autorisations"</string>
     <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Gérer l\'accès aux données pour l\'agenda, les journaux d\'appels, etc."</string>
-    <string name="granted_permission_decision" msgid="7824827491551861365">"Vous avez autorisé <xliff:g id="APP_NAME">%1$s</xliff:g> à accéder à : <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
+    <string name="granted_permission_decision" msgid="7824827491551861365">"Vous avez donné à <xliff:g id="APP_NAME">%1$s</xliff:g> l\'accès à : <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="denied_permission_decision" msgid="5308961501779563781">"Vous avez refusé à <xliff:g id="APP_NAME">%1$s</xliff:g> l\'accès à : <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Aujourd\'hui}=1{Il y a 1 jour}one{Il y a # jour}many{Il y a # jours}other{Il y a # jours}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Désactiver l\'application"</string>
@@ -79,7 +79,7 @@
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g> application(s) autorisée(s) sur <xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> applications autorisées"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Voir applis système"</string>
-    <string name="menu_hide_system" msgid="3855390843744028465">"Masquer les applications système"</string>
+    <string name="menu_hide_system" msgid="3855390843744028465">"Masquer applis système"</string>
     <string name="menu_show_7_days_data" msgid="8979611198508523706">"Afficher 7 jours"</string>
     <string name="menu_show_24_hours_data" msgid="8228054833323380780">"Afficher 24 heures"</string>
     <string name="manage_permission" msgid="2895385393037061964">"Gérer l\'autorisation"</string>
