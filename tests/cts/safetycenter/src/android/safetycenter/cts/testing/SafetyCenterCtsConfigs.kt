@@ -17,7 +17,6 @@
 package android.safetycenter.cts.testing
 
 import android.content.Context
-import android.content.Intent.ACTION_SAFETY_CENTER
 import android.content.res.Resources
 import android.safetycenter.SafetySourceData
 import android.safetycenter.config.SafetyCenterConfig
@@ -37,6 +36,9 @@ object SafetyCenterCtsConfigs {
 
     /** ID of a source not used in any config. */
     const val SAMPLE_SOURCE_ID = "cts_sample_source_id"
+
+    /** Activity action: Launch the [TestActivity] used to check redirects in CTS tests. */
+    const val ACTION_TEST_ACTIVITY = "android.safetycenter.cts.testing.action.TEST_ACTIVITY"
 
     /**
      * ID of the only source provided in [SINGLE_SOURCE_CONFIG], [SEVERITY_ZERO_CONFIG] and
@@ -634,7 +636,7 @@ object SafetyCenterCtsConfigs {
             .setPackageName(CTS_PACKAGE_NAME)
             .setTitleResId(android.R.string.ok)
             .setSummaryResId(android.R.string.ok)
-            .setIntentAction(ACTION_SAFETY_CENTER)
+            .setIntentAction(ACTION_TEST_ACTIVITY)
             .setProfile(SafetySource.PROFILE_PRIMARY)
             .setRefreshOnPageOpenAllowed(true)
 
@@ -650,7 +652,7 @@ object SafetyCenterCtsConfigs {
             .setId(id)
             .setTitleResId(android.R.string.ok)
             .setSummaryResId(android.R.string.ok)
-            .setIntentAction(ACTION_SAFETY_CENTER)
+            .setIntentAction(ACTION_TEST_ACTIVITY)
             .setProfile(SafetySource.PROFILE_PRIMARY)
 
     private fun staticAllProfileSafetySourceBuilder(id: String) =
