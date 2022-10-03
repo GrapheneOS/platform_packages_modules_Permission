@@ -66,7 +66,6 @@ import com.android.safetycenter.internaldata.SafetyCenterIds;
 import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
-import com.android.safetycenter.persistence.PersistedSafetyCenterIssue;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 
 import java.io.PrintWriter;
@@ -131,40 +130,6 @@ final class SafetyCenterDataTracker {
     }
 
     /**
-     * Returns whether the Safety Center issue cache has been modified since the last time a
-     * snapshot was taken.
-     */
-    // TODO(b/249950069): Consider removing issue cache APIs from SafetyCenterDataTracker
-    boolean isSafetyCenterIssueCacheDirty() {
-        return mSafetyCenterIssueCache.isDirty();
-    }
-
-    /**
-     * Takes a snapshot of the Safety Center issue cache that should be written to persistent
-     * storage.
-     *
-     * <p>This method will reset the value reported by {@link #isSafetyCenterIssueCacheDirty} to
-     * {@code false}.
-     */
-    // TODO(b/249950069): Consider removing issue cache APIs from SafetyCenterDataTracker
-    @NonNull
-    List<PersistedSafetyCenterIssue> snapshotSafetyCenterIssueCache() {
-        return mSafetyCenterIssueCache.snapshot();
-    }
-
-    /**
-     * Replaces the Safety Center issue cache with the given list of issues.
-     *
-     * <p>This method may modify the Safety Center issue cache and change the value reported by
-     * {@link #isSafetyCenterIssueCacheDirty} to {@code true}.
-     */
-    // TODO(b/249950069): Consider removing issue cache APIs from SafetyCenterDataTracker
-    void loadSafetyCenterIssueCache(
-            @NonNull List<PersistedSafetyCenterIssue> persistedSafetyCenterIssues) {
-        mSafetyCenterIssueCache.load(persistedSafetyCenterIssues);
-    }
-
-    /**
      * Sets the latest {@link SafetySourceData} for the given {@code safetySourceId}, {@link
      * SafetyEvent}, {@code packageName} and {@code userId}, and returns whether there was a change
      * to the underlying {@link SafetyCenterData}.
@@ -176,8 +141,7 @@ final class SafetyCenterDataTracker {
      * <p>Setting a {@code null} {@link SafetySourceData} evicts the current {@link
      * SafetySourceData} entry and clears the Safety Center issue cache for the source.
      *
-     * <p>This method may modify the Safety Center issue cache and change the value reported by
-     * {@link #isSafetyCenterIssueCacheDirty} to {@code true}.
+     * <p>This method may modify the {@link SafetyCenterIssueCache}.
      */
     boolean setSafetySourceData(
             @Nullable SafetySourceData safetySourceData,
@@ -349,10 +313,8 @@ final class SafetyCenterDataTracker {
     /**
      * Dismisses the given {@link SafetyCenterIssueKey}.
      *
-     * <p>This method may modify the Safety Center issue cache and change the value reported by
-     * {@link #isSafetyCenterIssueCacheDirty} to {@code true}.
+     * <p>This method may modify the {@link SafetyCenterIssueCache}.
      */
-    // TODO(b/249950069): Consider removing issue cache APIs from SafetyCenterDataTracker
     void dismissSafetyCenterIssue(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
         mSafetyCenterIssueCache.dismissIssue(safetyCenterIssueKey);
     }
@@ -446,31 +408,17 @@ final class SafetyCenterDataTracker {
                 emptyList());
     }
 
-    /**
-     * Clears all the {@link SafetySourceData} and errors, metadata associated with {@link
-     * SafetyCenterIssueKey}s, in flight {@link SafetyCenterIssueActionId} and any refresh in
-     * progress so far, for all users.
-     *
-     * <p>This method will modify the Safety Center issue cache and change the value reported by
-     * {@link #isSafetyCenterIssueCacheDirty} to {@code true}.
-     */
+    /** Clears all {@link SafetySourceData}, errors, issues and in flight actions for all users. */
     void clear() {
         mSafetySourceDataForKey.clear();
         mSafetySourceErrors.clear();
-
-        // TODO(b/249950069): Consider removing issue cache APIs from SafetyCenterDataTracker
         mSafetyCenterIssueCache.clear();
-
         mSafetyCenterIssueActionsInFlight.clear();
     }
 
     /**
-     * Clears all the {@link SafetySourceData}, metadata associated with {@link
-     * SafetyCenterIssueKey}s, in flight {@link SafetyCenterIssueActionId} and any refresh in
-     * progress so far, for the given user.
-     *
-     * <p>This method may modify the Safety Center issue cache and change the value reported by
-     * {@link #isSafetyCenterIssueCacheDirty} to {@code true}.
+     * Clears all {@link SafetySourceData}, errors, issues and in flight actions, for the given
+     * user.
      */
     void clearForUser(@UserIdInt int userId) {
         // Loop in reverse index order to be able to remove entries while iterating.
@@ -487,10 +435,8 @@ final class SafetyCenterDataTracker {
                 mSafetySourceErrors.removeAt(i);
             }
         }
-
-        // TODO(b/249950069): Consider removing issue cache APIs from SafetyCenterDataTracker
+        // Issue cache implements this itself.
         mSafetyCenterIssueCache.clearForUser(userId);
-
         // Loop in reverse index order to be able to remove entries while iterating.
         for (int i = mSafetyCenterIssueActionsInFlight.size() - 1; i >= 0; i--) {
             SafetyCenterIssueActionId issueActionId = mSafetyCenterIssueActionsInFlight.keyAt(i);
@@ -518,9 +464,6 @@ final class SafetyCenterDataTracker {
             fout.println("\t[" + i + "] " + key);
         }
         fout.println();
-
-        // TODO(b/249950069): Consider removing issue cache APIs from SafetyCenterDataTracker
-        mSafetyCenterIssueCache.dump(fout);
 
         int actionInFlightCount = mSafetyCenterIssueActionsInFlight.size();
         fout.println("ACTIONS IN FLIGHT (" + actionInFlightCount + ")");
