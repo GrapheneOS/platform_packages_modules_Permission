@@ -21,7 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"uprawnienia"</string>
     <string name="cancel" msgid="8943320028373963831">"Anuluj"</string>
     <string name="back" msgid="6249950659061523680">"Wstecz"</string>
-    <string name="available" msgid="6007778121920339498">"Dostępny"</string>
+    <string name="available" msgid="6007778121920339498">"Odblokowany"</string>
     <string name="blocked" msgid="9195547604866033708">"Zablokowany"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Odinstaluj lub wyłącz"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Nie znaleziono aplikacji"</string>
@@ -196,7 +196,7 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Zobacz wszystkie uprawnienia aplikacji <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Wyświetl wszystkie aplikacje z tym uprawnieniem"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Pokaż użycie mikrofonu w Asystencie"</string>
-    <string name="unused_apps_category_title" msgid="2988455616845243901">"Nieużywane ustawienia aplikacji"</string>
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"Ustawienia nieużywanych aplikacji"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Usuń uprawnienia, jeśli aplikacja jest nieużywana"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Usuń uprawnienia i zwolnij miejsce"</string>
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"Wstrzymaj aktywność w aplikacji, jeśli jest nieużywana"</string>

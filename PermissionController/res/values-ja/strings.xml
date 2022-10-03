@@ -196,7 +196,7 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"「<xliff:g id="APP">%1$s</xliff:g>」アプリの権限をすべて表示"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"この権限があるアプリをすべて表示"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"アシスタントのマイクの使用を表示"</string>
-    <string name="unused_apps_category_title" msgid="2988455616845243901">"使用されていないアプリの設定"</string>
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"使用していないアプリの設定"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"アプリが使用されていない場合に権限を削除"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"権限を削除して空き容量を増やす"</string>
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"使用していないアプリを一時停止する"</string>

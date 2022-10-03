@@ -337,7 +337,7 @@
     <string name="role_browser_request_title" msgid="2895200507835937192">"<xliff:g id="APP_NAME">%1$s</xliff:g> എന്നത് നിങ്ങളുടെ ഡിഫോൾട്ട് ബ്രൗസർ ആപ്പായി സജ്ജീകരിക്കണോ?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"അനുമതികൾ ആവശ്യമില്ല"</string>
     <string name="role_dialer_label" msgid="1100224146343237968">"ഡിഫോൾട്ട് ഫോൺ ആപ്പ്"</string>
-    <string name="role_dialer_short_label" msgid="7186888549465352489">"ഫോൺ ആപ്പ്"</string>
+    <string name="role_dialer_short_label" msgid="7186888549465352489">"Phone ആപ്പ്"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"നിങ്ങളുടെ ഉപകരണത്തിൽ ടെലിഫോൺ കോളുകൾ ചെയ്യാനും സ്വീകരിക്കാനും അനുവദിക്കുന്ന ആപ്പുകൾ"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g> എന്നതിനെ നിങ്ങളുടെ ഡിഫോൾട്ട് ഫോൺ ആപ്പായി സജ്ജീകരിക്കണോ?"</string>
     <string name="role_dialer_request_description" msgid="6288839625724909320">"ഈ ആപ്പിന് നിങ്ങളുടെ ക്യാമറ, കോൺടാക്റ്റുകൾ, മൈക്രോഫോൺ, ഫോൺ, SMS എന്നിവയിലേക്ക് ആക്‌സസ് നൽകും"</string>
@@ -439,7 +439,7 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"ആപ്പ് ഉപയോഗിക്കാത്തപ്പോൾ പോലും, എല്ലാ സമയത്തും ഈ ആപ്പിന് നിങ്ങളുടെ ലൊക്കേഷൻ ആക്‌സസ് ചെയ്യേണ്ടതുണ്ട്. "<annotation id="link">"ക്രമീകരണത്തിൽ"</annotation>" അനുവദിക്കുക."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിന്റെ ലൊക്കേഷൻ ആക്സസ് മാറ്റണോ?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"ആപ്പ് നിങ്ങൾ ഉപയോഗിക്കാത്തപ്പോഴടക്കം, എല്ലാ സമയത്തും ഈ ആപ്പ് നിങ്ങളുടെ ലൊക്കേഷൻ ആക്‌സസ് ചെയ്യാൻ ആഗ്രഹിക്കുന്നു. "<annotation id="link">"ക്രമീകരണത്തിൽ അനുവദിക്കുക."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"സമീപത്തെ ഉപകരണങ്ങൾ കണ്ടെത്തി കണക്റ്റ് ചെയ്ത് ആപേക്ഷിക സ്ഥാനം നിർണ്ണയിക്കാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കണോ?"</string>
+    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"സമീപത്തെ ഉപകരണങ്ങൾ കണ്ടെത്താനും കണക്റ്റ് ചെയ്യാനും ആപേക്ഷിക സ്ഥാനം നിർണ്ണയിക്കാനും &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കണോ?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"സമീപത്തെ ഉപകരണങ്ങൾ കണ്ടെത്തി കണക്റ്റ് ചെയ്ത് ആപേക്ഷിക സ്ഥാനം നിർണ്ണയിക്കാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കണോ? "<annotation id="link">"ക്രമീകരണത്തിൽ അനുവദിക്കുക."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> എന്നതിന്റെ ലൊക്കേഷൻ ആക്‌സസ് \'ഏകദേശം\' എന്നതിൽ നിന്ന് \'കൃത്യമായത്\' എന്നതിലേക്ക് മാറ്റണോ?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"ഈ ഉപകരണത്തിന്റെ ഏകദേശ ലൊക്കേഷൻ ആക്‌സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കണോ?"</string>

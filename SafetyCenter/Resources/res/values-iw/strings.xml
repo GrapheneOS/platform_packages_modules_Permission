@@ -24,10 +24,10 @@
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"אין עדיין פרטים"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"פרטיות"</string>
     <string name="privacy_sources_summary" msgid="4089719981155120864">"מרכז הבקרה, הרשאות, אמצעי בקרה"</string>
-    <string name="permission_usage_title" msgid="3633779688945350407">"מרכז הבקרה להגדרת הפרטיות"</string>
+    <string name="permission_usage_title" msgid="3633779688945350407">"מרכז הבקרה להגדרות הפרטיות"</string>
     <string name="permission_usage_summary" msgid="5323079206029964468">"אלו אפליקציות השתמשו בהרשאות לאחרונה"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"מנהל ההרשאות"</string>
-    <string name="permission_manager_summary" msgid="8099852107340970790">"שליטה בגישה של האפליקציה לנתונים שלך"</string>
+    <string name="permission_manager_summary" msgid="8099852107340970790">"שליטה בגישה של האפליקציות לנתונים שלך"</string>
     <string name="privacy_controls_title" msgid="5322875777945432395">"אמצעי בקרה על פרטיות"</string>
     <string name="privacy_controls_summary" msgid="2402066941190435424">"שליטה בגישה של המכשיר למיקרופון, למצלמה ועוד"</string>
     <string name="advanced_title" msgid="8745436380690561172">"הגדרות נוספות"</string>

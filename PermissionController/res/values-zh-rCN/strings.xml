@@ -509,13 +509,13 @@
     <string name="remove_microphone_qs" msgid="2893536836641560183">"移除麦克风权限"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"管理服务"</string>
     <string name="manage_permissions_qs" msgid="3780541819763475434">"管理权限"</string>
-    <string name="active_call_usage_qs" msgid="8559974395932523391">"通话正在使用"</string>
+    <string name="active_call_usage_qs" msgid="8559974395932523391">"目前正由手机通话使用"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"最近在通话中使用过"</string>
-    <string name="active_app_usage_qs" msgid="4063912870936464727">"“<xliff:g id="APP_NAME">%1$s</xliff:g>”正在使用"</string>
+    <string name="active_app_usage_qs" msgid="4063912870936464727">"目前正由“<xliff:g id="APP_NAME">%1$s</xliff:g>”使用"</string>
     <string name="recent_app_usage_qs" msgid="6650259601306212327">"“<xliff:g id="APP_NAME">%1$s</xliff:g>”最近使用过"</string>
-    <string name="active_app_usage_1_qs" msgid="4325136375823357052">"“<xliff:g id="APP_NAME">%1$s</xliff:g>”正在使用（<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>）"</string>
+    <string name="active_app_usage_1_qs" msgid="4325136375823357052">"目前正由“<xliff:g id="APP_NAME">%1$s</xliff:g>”使用（<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>）"</string>
     <string name="recent_app_usage_1_qs" msgid="261450184773310741">"“<xliff:g id="APP_NAME">%1$s</xliff:g>”最近使用过（<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>）"</string>
-    <string name="active_app_usage_2_qs" msgid="6107866785243565283">"“<xliff:g id="APP_NAME">%1$s</xliff:g>”正在使用（<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>）"</string>
+    <string name="active_app_usage_2_qs" msgid="6107866785243565283">"目前正由“<xliff:g id="APP_NAME">%1$s</xliff:g>”使用（<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>）"</string>
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"“<xliff:g id="APP_NAME">%1$s</xliff:g>”最近使用过（<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>）"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"安全和隐私"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"查看状态"</string>

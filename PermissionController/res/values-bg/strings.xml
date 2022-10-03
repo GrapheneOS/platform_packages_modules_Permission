@@ -223,7 +223,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Последно отваряне на <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Ако разрешите управлението на всички файлове, това приложение може да осъществява достъп до, да променя и изтрива всички файлове в стандартното хранилище на устройството или в свързаните хранилища. Приложението може да осъществява достъп до файловете, без да ви пита."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Да се разреши ли на това приложение да осъществява достъп до, да променя и изтрива файлове на устройството или в свързаните хранилища? Приложението може да осъществява достъп до файловете, без да ви пита."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Приложенията с това разрешение могат да <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Приложенията с това разрешение могат да осъществяват <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Приложенията с това разрешение имат достъп до физическата ви активност, като например ходене, колоездене, шофиране, брой крачки и др."</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Приложенията с това разрешение имат достъп до календара ви"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Приложенията с това разрешение могат да четат списъка с телефонните обаждания и да записват в него"</string>

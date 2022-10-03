@@ -223,7 +223,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"অন্তিমবাৰ <xliff:g id="DATE">%s</xliff:g>ত খোলা হৈছিল"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"আপুনি যদি আটাইবোৰ ফাইল পৰিচালনাৰ অনুমতি দিয়ে, এই এপ্‌টোৱে এই ডিভাইচটোৰ যৌথ ষ্ট\'ৰেজত থকা যিকোনো ফাইল অথবা সংযুক্ত ষ্ট\'ৰেজ ডিভাইচসমূহ এক্সেছ কৰিব, সংশোধন কৰিব আৰু মচিব পাৰে। এপ্‌টোৱে আপোনাক নোসোধাকৈয়ে ফাইলসমূহ এক্সেছ কৰিব পাৰে।"</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"এই এপ্‌টোক ডিভাইচটোত থকা অথবা যিকোনো সংযুক্ত ষ্ট\'ৰেজ ডিভাইচসমূহৰ ফাইলসমূহ এক্সেছ কৰিবলৈ, সংশোধন কৰিবলৈ আৰু মচিবলৈ অনুমতি দিবনে? এই এপ্‌টোৱে আপোনাক নোসোধাকৈয়ে ফাইলসমূহ এক্সেছ কৰিব পাৰে।"</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"অনুমতি থকা এপ্‌সমূহে <xliff:g id="DESCRIPTION">%1$s</xliff:g> কৰিব পাৰে"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"অনুমতি থকা এপ্‌সমূহে <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"এই অনুমতিটো লাভ কৰা এপে আপোনাৰ শাৰীৰিক কাৰ্যকলাপ, যেনে খোজকঢ়া, বাইক চলোৱা, গাড়ী চলোৱা, পদক্ষেপৰ পৰিমাণ আৰু বহুতো তথ্য এক্সেছ কৰিব পাৰে"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"এই অনুমতি থকা এপ্‌সমূহে আপোনাৰ কেলেণ্ডাৰ এক্সেছ কৰিব পাৰে"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"এই অনুমতি থকা এপ্‌সমূহে ফ’ন কল লগ পঢ়িব আৰু লিখিব পাৰে"</string>

@@ -196,10 +196,10 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g>-н бүх зөвшөөрлийг харах"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Энэ зөвшөөрөлтэй бүх аппыг харах"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Туслах микрофон ашиглалтыг харуулах"</string>
-    <string name="unused_apps_category_title" msgid="2988455616845243901">"Хэрэглээгүй аппын тохиргоо"</string>
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"Ашиглаагүй аппын тохиргоо"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Аппыг ашигладаггүй бол зөвшөөрлийг нь хасах"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Зөвшөөрлийг хасаж, сул зай гаргах"</string>
-    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Ашигладаггүй бол аппын үйл ажиллагааг түр зогсоох"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Ашиглаагүй бол аппын үйл ажиллагааг түр зогсоох"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"Зөвшөөрлийг хасаж, түр зуурын файлыг устгаж мөн мэдэгдлийг зогсооно"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Таны өгөгдлийг хамгаалах үүднээс энэ аппыг хэдэн сарын турш ашиглахгүй бол зөвшөөрлийг нь хасах болно."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Таны өгөгдлийг хамгаалах үүднээс аппыг хэдэн сарын турш ашиглахгүй бол  дараах зөвшөөрлүүдийг хасах болно: <xliff:g id="PERMS">%1$s</xliff:g>"</string>

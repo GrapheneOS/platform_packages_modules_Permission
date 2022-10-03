@@ -27,7 +27,7 @@
     <string name="permission_usage_title" msgid="3633779688945350407">"Privaatheidkontroleskerm"</string>
     <string name="permission_usage_summary" msgid="5323079206029964468">"Wys watter programme onlangs toestemmings gebruik het"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"Toestemmingbestuurder"</string>
-    <string name="permission_manager_summary" msgid="8099852107340970790">"Beheer programtoegang tot jou data"</string>
+    <string name="permission_manager_summary" msgid="8099852107340970790">"Beheer apptoegang tot jou data"</string>
     <string name="privacy_controls_title" msgid="5322875777945432395">"Privaatheidkontroles"</string>
     <string name="privacy_controls_summary" msgid="2402066941190435424">"Beheer toesteltoegang tot mikrofoon, kamera en meer"</string>
     <string name="advanced_title" msgid="8745436380690561172">"Meer instellings"</string>

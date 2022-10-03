@@ -347,7 +347,7 @@
     <string name="role_sms_description" msgid="3424020199148153513">"አጫጭር የጽሑፍ መልዕክቶችን፣ ፎቶዎችን፣ ቪዲዮዎችን እና ተጨማሪ ነገሮችን ለመላክ እና ለመቀበል የእርስዎን ስልክ ለመጠቀም እንዲችሉ የሚፈቅድልዎት መተግበሪያዎች"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g> እንደ የእርስዎ ነባሪ የኤስኤምኤስ መተግበሪያ ይዋቀር?"</string>
     <string name="role_sms_request_description" msgid="2691004766132144886">"ይህ መተግበሪያ የእርስዎን ካሜራ፣ ዕውቂያዎች፣ ፋይሎች እና ሚዲያ፣ ማይክሮፎን፣ ስልክ እና ኤስኤምኤስ መዳረሻ ይሰጠዋል"</string>
-    <string name="role_sms_search_keywords" msgid="8022048144395047352">"የጽሑፍ መልዕክት፣ ጽሑፍ መላክ፣ መልዕክቶች፣ መልዕክት መላላኪያ"</string>
+    <string name="role_sms_search_keywords" msgid="8022048144395047352">"የጽሁፍ መልዕክት፣ ጽሁፍ መላክ፣ መልዕክቶች፣ መልዕክት መላላኪያ"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"ነባሪ የድንገተኛ አደጋ መተግበሪያ"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"የድንገተኛ አደጋ መተግበሪያ"</string>
     <string name="role_emergency_description" msgid="5051840234887686630">"የእርስዎን የሕክምና መረጃ እንዲቀርጽ እና ለድንገተኛ አደጋ ሕክምና ምላሽ ሰጪዎች ተዳራሽ እንዲሆን እንዲያደርጉ የሚያስችልዎት፣ ስለ በጣም መጥፎ የአየር ሁኔታ ክስተቶችን እና አደጋዎችን በተመለከተ ማንቂያዎችን ለማግኘት፣ እርስዎ እገዛ በሚያስፈልግዎት ጊዜ ለሌሎች ሊያሳውቁ የሚችሉ መተግበሪያዎች"</string>
