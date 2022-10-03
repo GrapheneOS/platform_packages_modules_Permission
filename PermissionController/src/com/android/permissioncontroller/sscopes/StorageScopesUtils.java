@@ -312,7 +312,9 @@ public class StorageScopesUtils {
             }
 
             String op = AppOpsManager.permissionToOp(permission);
-            if (op != null && appOps.unsafeCheckOpNoThrow(op, uid, pkgName) == AppOpsManager.MODE_ALLOWED) {
+            if (op != null
+                    && AppOpsManager.opToDefaultMode(op) != AppOpsManager.MODE_ALLOWED
+                    && appOps.unsafeCheckOpNoThrow(op, uid, pkgName) == AppOpsManager.MODE_ALLOWED) {
                 appOps.setUidMode(op, uid, AppOpsManager.MODE_IGNORED);
                 ++ numOfRevokations;
             }
