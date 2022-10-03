@@ -89,7 +89,7 @@ class SafetyCenterCtsData(context: Context) {
     /**
      * Returns a [SafetyCenterEntry] builder with a grey icon (for unknown severity), the summary
      * generally used for sources of the [SafetyCenterCtsConfigs], and a pending intent that
-     * redirects to Safety Center for the given source, user id, and title.
+     * redirects to [TestActivity] for the given source, user id, and title.
      */
     fun safetyCenterEntryDefaultBuilder(
         sourceId: String,
@@ -117,7 +117,7 @@ class SafetyCenterCtsData(context: Context) {
 
     /**
      * Returns a [SafetyCenterEntry] builder with no icon, the summary generally used for sources of
-     * the [SafetyCenterCtsConfigs], and a pending intent that redirects to Safety Center for the
+     * the [SafetyCenterCtsConfigs], and a pending intent that redirects to [TestActivity] for the
      * given source, user id, and title.
      */
     fun safetyCenterEntryDefaultStaticBuilder(
@@ -133,7 +133,7 @@ class SafetyCenterCtsData(context: Context) {
 
     /**
      * Returns a [SafetyCenterEntry] with a grey icon (for unknown severity), a refresh error
-     * summary, and a pending intent that redirects to Safety Center for the given source, user id,
+     * summary, and a pending intent that redirects to [TestActivity] for the given source, user id,
      * and title.
      */
     fun safetyCenterEntryError(sourceId: String) =
@@ -157,7 +157,7 @@ class SafetyCenterCtsData(context: Context) {
 
     /**
      * Returns a [SafetyCenterEntry] builder with a green icon (for ok severity), a standard
-     * summary, and a pending intent that redirects to Safety Center for the given source, user id,
+     * summary, and a pending intent that redirects to [TestActivity] for the given source, user id,
      * and title.
      */
     fun safetyCenterEntryOkBuilder(
@@ -173,7 +173,7 @@ class SafetyCenterCtsData(context: Context) {
 
     /**
      * Returns a [SafetyCenterEntry] with a green icon (for ok severity), a standard summary, and a
-     * pending intent that redirects to Safety Center for the given source, user id, and title.
+     * pending intent that redirects to [TestActivity] for the given source, user id, and title.
      */
     fun safetyCenterEntryOk(
         sourceId: String,
@@ -183,7 +183,8 @@ class SafetyCenterCtsData(context: Context) {
 
     /**
      * Returns a [SafetyCenterEntry] with a yellow icon (for recommendation severity), a standard
-     * title, and a pending intent that redirects to Safety Center for the given source and summary.
+     * title, and a pending intent that redirects to [TestActivity] for the given source and
+     * summary.
      */
     fun safetyCenterEntryRecommendation(
         sourceId: String,
@@ -198,7 +199,7 @@ class SafetyCenterCtsData(context: Context) {
 
     /**
      * Returns a [SafetyCenterEntry] with a red icon (for critical severity), a standard title, a
-     * standard summary, and a pending intent that redirects to Safety Center for the given source.
+     * standard summary, and a pending intent that redirects to [TestActivity] for the given source.
      */
     fun safetyCenterEntryCritical(sourceId: String) =
         SafetyCenterEntry.Builder(entryId(sourceId), "Critical title")
