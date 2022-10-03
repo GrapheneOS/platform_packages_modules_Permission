@@ -33,6 +33,10 @@
 
         <activity android:name=".testing.TestActivity"
                   android:exported="false">
+            <intent-filter>
+                <action android:name="android.safetycenter.cts.testing.action.TEST_ACTIVITY"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
         </activity>
 
         <uses-library android:name="android.test.runner"/>
