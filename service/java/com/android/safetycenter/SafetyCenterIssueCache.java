@@ -23,7 +23,6 @@ import static com.android.safetycenter.internaldata.SafetyCenterIds.toUserFriend
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
-import android.safetycenter.SafetyCenterIssue;
 import android.safetycenter.SafetySourceData;
 import android.util.ArrayMap;
 import android.util.ArraySet;
@@ -49,10 +48,8 @@ import javax.annotation.concurrent.NotThreadSafe;
  * issue should currently be considered dismissed.
  *
  * <p>The contents of this cache can be populated from and persisted to disk using the {@link
- * #loadSafetyCenterIssueCache(List)} and {@link #snapshotSafetyCenterIssueCache()} methods,
- * respectively. When {@link #isSafetyCenterIssueCacheDirty()} returns {@code true} that indicates
- * that the in-memory contents of the cache may have changed since the last load or snapshot
- * occurred.
+ * #load(List)} and {@link #snapshot()} methods. When {@link #isDirty()} returns {@code true} that
+ * means that the contents of the cache may have changed since the last load or snapshot occurred.
  *
  * <p>This class isn't thread safe. Thread safety must be handled by the caller.
  */
@@ -64,24 +61,21 @@ final class SafetyCenterIssueCache {
 
     @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
 
-    // TODO(b/249979479): Here and elsewhere check/edit variable and method names in this class
-    private final ArrayMap<SafetyCenterIssueKey, SafetyCenterIssueData> mSafetyCenterIssueCache =
-            new ArrayMap<>();
-
-    private boolean mSafetyCenterIssueCacheDirty = false;
+    private final ArrayMap<SafetyCenterIssueKey, IssueData> mIssues = new ArrayMap<>();
+    private boolean mIsDirty = false;
 
     SafetyCenterIssueCache(@NonNull SafetyCenterConfigReader safetyCenterConfigReader) {
         mSafetyCenterConfigReader = safetyCenterConfigReader;
     }
 
     /**
-     * Counts the number of issues in the issue cache from currently-active sources in the given
-     * {@link UserProfileGroup}.
+     * Counts the total number of issues in the issue cache, from currently-active sources, in the
+     * given {@link UserProfileGroup}.
      */
-    int countActiveSourcesIssues(@NonNull UserProfileGroup userProfileGroup) {
+    int countActiveIssues(@NonNull UserProfileGroup userProfileGroup) {
         int issueCount = 0;
-        for (int i = 0; i < mSafetyCenterIssueCache.size(); i++) {
-            SafetyCenterIssueKey issueKey = mSafetyCenterIssueCache.keyAt(i);
+        for (int i = 0; i < mIssues.size(); i++) {
+            SafetyCenterIssueKey issueKey = mIssues.keyAt(i);
             if (mSafetyCenterConfigReader.isExternalSafetySourceActive(issueKey.getSafetySourceId())
                     && userProfileGroup.contains(issueKey.getUserId())) {
                 issueCount++;
@@ -99,16 +93,15 @@ final class SafetyCenterIssueCache {
      *
      * <p>If the given issue key is not found in the cache this method returns {@code false}.
      */
-    boolean isDismissed(
+    boolean isIssueDismissed(
             @NonNull SafetyCenterIssueKey safetyCenterIssueKey,
             @SafetySourceData.SeverityLevel int safetySourceIssueSeverityLevel) {
-        SafetyCenterIssueData safetyCenterIssueData =
-                getSafetyCenterIssueData(safetyCenterIssueKey, "checking if dismissed");
-        if (safetyCenterIssueData == null) {
+        IssueData issueData = getOrWarn(safetyCenterIssueKey, "checking if dismissed");
+        if (issueData == null) {
             return false;
         }
 
-        Instant dismissedAt = safetyCenterIssueData.getDismissedAt();
+        Instant dismissedAt = issueData.getDismissedAt();
         boolean isNotCurrentlyDismissed = dismissedAt == null;
         if (isNotCurrentlyDismissed) {
             return false;
@@ -118,7 +111,7 @@ final class SafetyCenterIssueCache {
         Duration delay = SafetyCenterFlags.getResurfaceIssueDelay(safetySourceIssueSeverityLevel);
 
         boolean hasAlreadyResurfacedTheMaxAllowedNumberOfTimes =
-                safetyCenterIssueData.getDismissCount() > maxCount;
+                issueData.getDismissCount() > maxCount;
         if (hasAlreadyResurfacedTheMaxAllowedNumberOfTimes) {
             return true;
         }
@@ -133,34 +126,32 @@ final class SafetyCenterIssueCache {
     }
 
     /**
-     * Dismisses the given {@link SafetyCenterIssueKey}.
+     * Dismisses the issue with the given key.
      *
-     * <p>This method may change the value reported by {@link #isSafetyCenterIssueCacheDirty} to
-     * {@code true}.
+     * <p>This method may change the value reported by {@link #isDirty} to {@code true}.
      */
-    void dismissSafetyCenterIssue(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
-        SafetyCenterIssueData safetyCenterIssueData =
-                getSafetyCenterIssueData(safetyCenterIssueKey, "dismissing");
-        if (safetyCenterIssueData == null) {
+    void dismissIssue(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
+        IssueData issueData = getOrWarn(safetyCenterIssueKey, "dismissing");
+        if (issueData == null) {
             return;
         }
-        safetyCenterIssueData.setDismissedAt(Instant.now());
-        safetyCenterIssueData.setDismissCount(safetyCenterIssueData.getDismissCount() + 1);
-        mSafetyCenterIssueCacheDirty = true;
+        issueData.setDismissedAt(Instant.now());
+        issueData.setDismissCount(issueData.getDismissCount() + 1);
+        mIsDirty = true;
     }
 
     /**
      * Updates the issue cache to contain exactly the given {@code safetySourceIssueIds} for the
      * supplied source and user.
      */
-    void updateSafetyCenterIssueCache(
+    void updateIssuesForSource(
             @NonNull ArraySet<String> safetySourceIssueIds,
             @NonNull String safetySourceId,
             @UserIdInt int userId) {
         // Remove issues no longer reported by the source.
         // Loop in reverse index order to be able to remove entries while iterating.
-        for (int i = mSafetyCenterIssueCache.size() - 1; i >= 0; i--) {
-            SafetyCenterIssueKey issueKey = mSafetyCenterIssueCache.keyAt(i);
+        for (int i = mIssues.size() - 1; i >= 0; i--) {
+            SafetyCenterIssueKey issueKey = mIssues.keyAt(i);
             boolean doesNotBelongToUserOrSource =
                     issueKey.getUserId() != userId
                             || !Objects.equals(issueKey.getSafetySourceId(), safetySourceId);
@@ -170,8 +161,8 @@ final class SafetyCenterIssueCache {
             boolean isIssueNoLongerReported =
                     !safetySourceIssueIds.contains(issueKey.getSafetySourceIssueId());
             if (isIssueNoLongerReported) {
-                mSafetyCenterIssueCache.removeAt(i);
-                mSafetyCenterIssueCacheDirty = true;
+                mIssues.removeAt(i);
+                mIsDirty = true;
             }
         }
         // Add newly reported issues.
@@ -182,155 +173,137 @@ final class SafetyCenterIssueCache {
                             .setSafetySourceId(safetySourceId)
                             .setSafetySourceIssueId(safetySourceIssueIds.valueAt(i))
                             .build();
-            boolean isIssueNewlyReported = !mSafetyCenterIssueCache.containsKey(issueKey);
+            boolean isIssueNewlyReported = !mIssues.containsKey(issueKey);
             if (isIssueNewlyReported) {
-                mSafetyCenterIssueCache.put(issueKey, new SafetyCenterIssueData(Instant.now()));
-                mSafetyCenterIssueCacheDirty = true;
+                mIssues.put(issueKey, new IssueData(Instant.now()));
+                mIsDirty = true;
             }
         }
     }
 
     /**
-     * Returns whether the Safety Center issue cache has been modified since the last time a
-     * snapshot was taken.
+     * Returns {@code true} if the contents of the cache may have changed since the last {@link
+     * #load(List)} or {@link #snapshot()} occurred.
      */
-    boolean isSafetyCenterIssueCacheDirty() {
-        return mSafetyCenterIssueCacheDirty;
+    boolean isDirty() {
+        return mIsDirty;
     }
 
     /**
-     * Takes a snapshot of the Safety Center issue cache that should be written to persistent
-     * storage.
+     * Takes a snapshot of the contents of the cache to be written to persistent storage.
      *
-     * <p>This method will reset the value reported by {@link #isSafetyCenterIssueCacheDirty} to
-     * {@code false}.
+     * <p>This method will reset the value reported by {@link #isDirty} to {@code false}.
      */
     @NonNull
-    List<PersistedSafetyCenterIssue> snapshotSafetyCenterIssueCache() {
-        mSafetyCenterIssueCacheDirty = false;
-
-        List<PersistedSafetyCenterIssue> persistedSafetyCenterIssues = new ArrayList<>();
-
-        for (int i = 0; i < mSafetyCenterIssueCache.size(); i++) {
-            String encodedKey = SafetyCenterIds.encodeToString(mSafetyCenterIssueCache.keyAt(i));
-            SafetyCenterIssueData safetyCenterIssueData = mSafetyCenterIssueCache.valueAt(i);
-            persistedSafetyCenterIssues.add(
-                    new PersistedSafetyCenterIssue.Builder()
-                            .setKey(encodedKey)
-                            .setFirstSeenAt(safetyCenterIssueData.getFirstSeenAt())
-                            .setDismissedAt(safetyCenterIssueData.getDismissedAt())
-                            .setDismissCount(safetyCenterIssueData.getDismissCount())
-                            .build());
+    List<PersistedSafetyCenterIssue> snapshot() {
+        mIsDirty = false;
+        List<PersistedSafetyCenterIssue> persistedIssues = new ArrayList<>();
+        for (int i = 0; i < mIssues.size(); i++) {
+            String encodedKey = SafetyCenterIds.encodeToString(mIssues.keyAt(i));
+            IssueData issueData = mIssues.valueAt(i);
+            persistedIssues.add(issueData.toPersistedIssueBuilder().setKey(encodedKey).build());
         }
-
-        return persistedSafetyCenterIssues;
+        return persistedIssues;
     }
 
     /**
-     * Replaces the Safety Center issue cache with the given list of issues.
+     * Replaces the contents of the cache with the given issues read from persistent storage.
      *
-     * <p>This method may modify the Safety Center issue cache and change the value reported by
-     * {@link #isSafetyCenterIssueCacheDirty} to {@code true}.
+     * <p>This method may change the value reported by {@link #isDirty} to {@code true}.
      */
-    void loadSafetyCenterIssueCache(
-            @NonNull List<PersistedSafetyCenterIssue> persistedSafetyCenterIssues) {
-        mSafetyCenterIssueCache.clear();
+    void load(@NonNull List<PersistedSafetyCenterIssue> persistedSafetyCenterIssues) {
+        mIssues.clear();
         for (int i = 0; i < persistedSafetyCenterIssues.size(); i++) {
-            PersistedSafetyCenterIssue persistedSafetyCenterIssue =
-                    persistedSafetyCenterIssues.get(i);
+            PersistedSafetyCenterIssue persistedIssue = persistedSafetyCenterIssues.get(i);
+            SafetyCenterIssueKey key = SafetyCenterIds.issueKeyFromString(persistedIssue.getKey());
 
-            SafetyCenterIssueKey key =
-                    SafetyCenterIds.issueKeyFromString(persistedSafetyCenterIssue.getKey());
             // Check the source associated with this issue still exists, it might have been removed
             // from the Safety Center config or the device might have rebooted with data persisted
             // from a temporary Safety Center config.
             if (!mSafetyCenterConfigReader.isExternalSafetySourceActive(key.getSafetySourceId())) {
-                mSafetyCenterIssueCacheDirty = true;
+                mIsDirty = true;
                 continue;
             }
 
-            SafetyCenterIssueData safetyCenterIssueData =
-                    new SafetyCenterIssueData(persistedSafetyCenterIssue.getFirstSeenAt());
-            safetyCenterIssueData.setDismissedAt(persistedSafetyCenterIssue.getDismissedAt());
-            safetyCenterIssueData.setDismissCount(persistedSafetyCenterIssue.getDismissCount());
-            mSafetyCenterIssueCache.put(key, safetyCenterIssueData);
+            IssueData issueData = IssueData.fromPersistedIssue(persistedIssue);
+            mIssues.put(key, issueData);
         }
     }
 
     /**
-     * Clears all the data in this cache.
+     * Clears all the data in the cache.
      *
-     * <p>This method will change the value reported by {@link #isSafetyCenterIssueCacheDirty} to
-     * {@code true}.
+     * <p>This method will change the value reported by {@link #isDirty} to {@code true}.
      */
     void clear() {
-        mSafetyCenterIssueCache.clear();
-        mSafetyCenterIssueCacheDirty = true;
+        mIssues.clear();
+        mIsDirty = true;
     }
 
     /**
-     * Clears all the data in this cache for the given user.
+     * Clears all the data in the cache for the given user.
      *
-     * <p>This method may change the value reported by {@link #isSafetyCenterIssueCacheDirty} to
-     * {@code true}.
+     * <p>This method may change the value reported by {@link #isDirty} to {@code true}.
      */
     void clearForUser(@UserIdInt int userId) {
         // Loop in reverse index order to be able to remove entries while iterating.
-        for (int i = mSafetyCenterIssueCache.size() - 1; i >= 0; i--) {
-            SafetyCenterIssueKey issueKey = mSafetyCenterIssueCache.keyAt(i);
+        for (int i = mIssues.size() - 1; i >= 0; i--) {
+            SafetyCenterIssueKey issueKey = mIssues.keyAt(i);
             if (issueKey.getUserId() == userId) {
-                mSafetyCenterIssueCache.removeAt(i);
-                mSafetyCenterIssueCacheDirty = true;
+                mIssues.removeAt(i);
+                mIsDirty = true;
             }
         }
     }
 
     /** Dumps state for debugging purposes. */
     void dump(@NonNull PrintWriter fout) {
-        int issueCacheCount = mSafetyCenterIssueCache.size();
-        fout.println(
-                "ISSUE CACHE ("
-                        + issueCacheCount
-                        + ", dirty="
-                        + mSafetyCenterIssueCacheDirty
-                        + ")");
+        int issueCacheCount = mIssues.size();
+        fout.println("ISSUE CACHE (" + issueCacheCount + ", dirty=" + mIsDirty + ")");
         for (int i = 0; i < issueCacheCount; i++) {
-            SafetyCenterIssueKey key = mSafetyCenterIssueCache.keyAt(i);
-            SafetyCenterIssueData data = mSafetyCenterIssueCache.valueAt(i);
-            fout.println("\t[" + i + "] " + key + " -> " + data);
+            SafetyCenterIssueKey key = mIssues.keyAt(i);
+            IssueData data = mIssues.valueAt(i);
+            fout.println("\t[" + i + "] " + toUserFriendlyString(key) + " -> " + data);
         }
         fout.println();
     }
 
     @Nullable
-    private SafetyCenterIssueData getSafetyCenterIssueData(
-            @NonNull SafetyCenterIssueKey safetyCenterIssueKey, @NonNull String reason) {
-        SafetyCenterIssueData safetyCenterIssueData =
-                mSafetyCenterIssueCache.get(safetyCenterIssueKey);
-        if (safetyCenterIssueData == null) {
+    private IssueData getOrWarn(@NonNull SafetyCenterIssueKey issueKey, @NonNull String reason) {
+        IssueData issueData = mIssues.get(issueKey);
+        if (issueData == null) {
             Log.w(
                     TAG,
                     "Issue missing when reading from cache for "
                             + reason
                             + ": "
-                            + toUserFriendlyString(safetyCenterIssueKey));
+                            + toUserFriendlyString(issueKey));
             return null;
         }
-        return safetyCenterIssueData;
+        return issueData;
     }
 
     /**
-     * An internal mutable data structure to track extra metadata associated with a {@link
-     * SafetyCenterIssue}.
+     * An internal mutable data structure containing issue metadata which is used to determine
+     * whether an issue should be dismissed/hidden from the user.
      */
-    private static final class SafetyCenterIssueData {
+    private static final class IssueData {
+
+        @NonNull
+        private static IssueData fromPersistedIssue(
+                @NonNull PersistedSafetyCenterIssue persistedIssue) {
+            IssueData issueData = new IssueData(persistedIssue.getFirstSeenAt());
+            issueData.setDismissedAt(persistedIssue.getDismissedAt());
+            issueData.setDismissCount(persistedIssue.getDismissCount());
+            return issueData;
+        }
 
         @NonNull private final Instant mFirstSeenAt;
 
         @Nullable private Instant mDismissedAt;
         private int mDismissCount;
 
-        private SafetyCenterIssueData(@NonNull Instant firstSeenAt) {
+        private IssueData(@NonNull Instant firstSeenAt) {
             mFirstSeenAt = firstSeenAt;
         }
 
@@ -356,9 +329,17 @@ final class SafetyCenterIssueCache {
             mDismissCount = dismissCount;
         }
 
+        @NonNull
+        private PersistedSafetyCenterIssue.Builder toPersistedIssueBuilder() {
+            return new PersistedSafetyCenterIssue.Builder()
+                    .setFirstSeenAt(mFirstSeenAt)
+                    .setDismissedAt(mDismissedAt)
+                    .setDismissCount(mDismissCount);
+        }
+
         @Override
         public String toString() {
-            return "SafetyCenterIssueData{"
+            return "IssueData{"
                     + "mFirstSeenAt="
                     + mFirstSeenAt
                     + ", mDismissedAt="

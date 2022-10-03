@@ -136,7 +136,7 @@ final class SafetyCenterDataTracker {
      */
     // TODO(b/249950069): Consider removing issue cache APIs from SafetyCenterDataTracker
     boolean isSafetyCenterIssueCacheDirty() {
-        return mSafetyCenterIssueCache.isSafetyCenterIssueCacheDirty();
+        return mSafetyCenterIssueCache.isDirty();
     }
 
     /**
@@ -149,7 +149,7 @@ final class SafetyCenterDataTracker {
     // TODO(b/249950069): Consider removing issue cache APIs from SafetyCenterDataTracker
     @NonNull
     List<PersistedSafetyCenterIssue> snapshotSafetyCenterIssueCache() {
-        return mSafetyCenterIssueCache.snapshotSafetyCenterIssueCache();
+        return mSafetyCenterIssueCache.snapshot();
     }
 
     /**
@@ -161,7 +161,7 @@ final class SafetyCenterDataTracker {
     // TODO(b/249950069): Consider removing issue cache APIs from SafetyCenterDataTracker
     void loadSafetyCenterIssueCache(
             @NonNull List<PersistedSafetyCenterIssue> persistedSafetyCenterIssues) {
-        mSafetyCenterIssueCache.loadSafetyCenterIssueCache(persistedSafetyCenterIssues);
+        mSafetyCenterIssueCache.load(persistedSafetyCenterIssues);
     }
 
     /**
@@ -208,7 +208,7 @@ final class SafetyCenterDataTracker {
                 issueIds.add(safetySourceData.getIssues().get(i).getId());
             }
         }
-        mSafetyCenterIssueCache.updateSafetyCenterIssueCache(issueIds, safetySourceId, userId);
+        mSafetyCenterIssueCache.updateIssuesForSource(issueIds, safetySourceId, userId);
 
         return true;
     }
@@ -354,7 +354,7 @@ final class SafetyCenterDataTracker {
      */
     // TODO(b/249950069): Consider removing issue cache APIs from SafetyCenterDataTracker
     void dismissSafetyCenterIssue(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
-        mSafetyCenterIssueCache.dismissSafetyCenterIssue(safetyCenterIssueKey);
+        mSafetyCenterIssueCache.dismissIssue(safetyCenterIssueKey);
     }
 
     /**
@@ -387,7 +387,7 @@ final class SafetyCenterDataTracker {
             return null;
         }
 
-        if (mSafetyCenterIssueCache.isDismissed(
+        if (mSafetyCenterIssueCache.isIssueDismissed(
                 safetyCenterIssueKey, targetIssue.getSeverityLevel())) {
             return null;
         }
@@ -551,8 +551,7 @@ final class SafetyCenterDataTracker {
         SafetyCenterData safetyCenterData = getSafetyCenterData("android", userProfileGroup);
         long openIssuesCount = safetyCenterData.getIssues().size();
         long dismissedIssuesCount =
-                mSafetyCenterIssueCache.countActiveSourcesIssues(userProfileGroup)
-                        - openIssuesCount;
+                mSafetyCenterIssueCache.countActiveIssues(userProfileGroup) - openIssuesCount;
 
         mWestworldLogger.pullSafetyStateEvent(
                 safetyCenterData.getStatus().getSeverityLevel(),
@@ -611,7 +610,7 @@ final class SafetyCenterDataTracker {
                             .setUserId(userId)
                             .build();
 
-            if (mSafetyCenterIssueCache.isDismissed(
+            if (mSafetyCenterIssueCache.isIssueDismissed(
                     safetyCenterIssueKey, safetySourceIssue.getSeverityLevel())) {
                 dismissedIssuesCount++;
             } else {
@@ -959,7 +958,7 @@ final class SafetyCenterDataTracker {
                         .setIssueTypeId(safetySourceIssue.getIssueTypeId())
                         .build();
 
-        if (mSafetyCenterIssueCache.isDismissed(
+        if (mSafetyCenterIssueCache.isIssueDismissed(
                 safetyCenterIssueId.getSafetyCenterIssueKey(),
                 safetySourceIssue.getSeverityLevel())) {
             return null;
