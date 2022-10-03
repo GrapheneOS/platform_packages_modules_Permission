@@ -698,7 +698,7 @@ public class GrantPermissionsActivity extends SettingsActivity
                     grantResults[i] = pm.checkPermission(resultPermissions[i], mTargetPackage);
 
                     if (ps != null && grantResults[i] != PackageManager.PERMISSION_GRANTED) {
-                        if (ps.shouldSpoofPermissionCheck(resultPermissions[i])) {
+                        if (ps.shouldSpoofRuntimePermissionCheck(resultPermissions[i])) {
                             grantResults[i] = PackageManager.PERMISSION_GRANTED;
                         }
                     }
@@ -825,7 +825,7 @@ public class GrantPermissionsActivity extends SettingsActivity
         }
 
         return Arrays.stream(requestedPermissions)
-                .filter(perm -> !ps.shouldSpoofPermissionCheck(perm))
+                .filter(perm -> !ps.shouldSkipRuntimePermissionRequest(perm))
                 .toArray(String[]::new);
     }
 }
