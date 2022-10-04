@@ -47,6 +47,7 @@ import static com.android.permission.PermissionStatsLog.SAFETY_STATE__OVERALL_SE
 
 import android.annotation.IntDef;
 import android.annotation.NonNull;
+import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.content.Context;
 import android.safetycenter.SafetyCenterManager;
@@ -56,7 +57,6 @@ import android.safetycenter.SafetySourceData;
 import android.util.Log;
 import android.util.StatsEvent;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.android.permission.PermissionStatsLog;
@@ -68,7 +68,6 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.Duration;
-import java.util.List;
 
 import javax.annotation.concurrent.NotThreadSafe;
 
@@ -106,24 +105,19 @@ final class WestworldLogger {
     }
 
     /**
-     * Pulls a {@link PermissionStatsLog#SAFETY_STATE} {@link StatsEvent} with the given parameters
-     * into {@code statsEvents}.
+     * Creates a {@link PermissionStatsLog#SAFETY_STATE} {@link StatsEvent} with the given
+     * parameters.
      */
-    void pullSafetyStateEvent(
+    @NonNull
+    StatsEvent createSafetyStateEvent(
             @SafetyCenterStatus.OverallSeverityLevel int severityLevel,
             long openIssueCount,
-            long dismissedIssueCount,
-            @NonNull List<StatsEvent> statsEvents) {
-        if (!mSafetyCenterConfigReader.allowsWestworldLogging()) {
-            return;
-        }
-        StatsEvent safetyStateEvent =
-                PermissionStatsLog.buildStatsEvent(
-                        SAFETY_STATE,
-                        toSafetyStateOverallSeverityLevel(severityLevel),
-                        openIssueCount,
-                        dismissedIssueCount);
-        statsEvents.add(safetyStateEvent);
+            long dismissedIssueCount) {
+        return PermissionStatsLog.buildStatsEvent(
+                SAFETY_STATE,
+                toSafetyStateOverallSeverityLevel(severityLevel),
+                openIssueCount,
+                dismissedIssueCount);
     }
 
     /**

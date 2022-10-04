@@ -413,10 +413,10 @@ final class SafetyCenterRepository {
         int actionInFlightCount = mSafetyCenterIssueActionsInFlight.size();
         fout.println("ACTIONS IN FLIGHT (" + actionInFlightCount + ")");
         for (int i = 0; i < actionInFlightCount; i++) {
-            SafetyCenterIssueActionId id = mSafetyCenterIssueActionsInFlight.keyAt(i);
+            String printableId = toUserFriendlyString(mSafetyCenterIssueActionsInFlight.keyAt(i));
             long startElapsedMillis = mSafetyCenterIssueActionsInFlight.valueAt(i);
             long durationMillis = SystemClock.elapsedRealtime() - startElapsedMillis;
-            fout.println("\t[" + i + "] " + id + "(duration=" + durationMillis + "ms)");
+            fout.println("\t[" + i + "] " + printableId + "(duration=" + durationMillis + "ms)");
         }
         fout.println();
     }
