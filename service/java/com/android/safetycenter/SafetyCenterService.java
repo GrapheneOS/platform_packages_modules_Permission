@@ -175,7 +175,8 @@ public final class SafetyCenterService extends SystemService {
                         mSafetyCenterConfigReader,
                         mSafetyCenterRefreshTracker,
                         westworldLogger,
-                        new PendingIntentFactory(context));
+                        new PendingIntentFactory(context),
+                        new SafetyCenterIssueCache(mSafetyCenterConfigReader));
         mSafetyCenterListeners = new SafetyCenterListeners(mSafetyCenterDataTracker);
         mSafetyCenterBroadcastDispatcher =
                 new SafetyCenterBroadcastDispatcher(

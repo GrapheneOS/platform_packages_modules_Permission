@@ -21,7 +21,6 @@ import android.Manifest.permission.INTERACT_ACROSS_USERS_FULL
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.content.Intent.ACTION_SAFETY_CENTER
 import android.os.UserHandle
 import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING
@@ -38,6 +37,7 @@ import android.safetycenter.cts.testing.SafetyCenterActivityLauncher.launchSafet
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.getSafetyCenterDataWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.getSafetySourceDataWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.setSafetySourceDataWithPermission
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.ACTION_TEST_ACTIVITY
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.COMPLEX_ALL_PROFILE_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_BAREBONE_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_DISABLED_ID
@@ -187,7 +187,7 @@ class SafetyCenterMultiUsersTest {
                     userId = deviceState.workProfile().id(),
                     title = "Paste")
                 .setPendingIntent(
-                    createSafetyCenterRedirectPendingIntentForUser(
+                    createTestActivityRedirectPendingIntentForUser(
                         deviceState.workProfile().userHandle()))
 
     private val staticAllOptionalForWork
@@ -205,13 +205,13 @@ class SafetyCenterMultiUsersTest {
     private val rigidEntry =
         SafetyCenterStaticEntry.Builder("OK")
             .setSummary("OK")
-            .setPendingIntent(safetySourceCtsData.safetyCenterRedirectPendingIntent)
+            .setPendingIntent(safetySourceCtsData.testActivityRedirectPendingIntent)
             .build()
 
     private val rigidEntryUpdated =
         SafetyCenterStaticEntry.Builder("Unspecified title")
             .setSummary("Unspecified summary")
-            .setPendingIntent(safetySourceCtsData.safetyCenterRedirectPendingIntent)
+            .setPendingIntent(safetySourceCtsData.testActivityRedirectPendingIntent)
             .build()
 
     private val rigidEntryForWorkBuilder
@@ -219,7 +219,7 @@ class SafetyCenterMultiUsersTest {
             SafetyCenterStaticEntry.Builder("Paste")
                 .setSummary("OK")
                 .setPendingIntent(
-                    createSafetyCenterRedirectPendingIntentForUser(
+                    createTestActivityRedirectPendingIntentForUser(
                         deviceState.workProfile().userHandle()))
 
     private val rigidEntryForWork
@@ -236,7 +236,7 @@ class SafetyCenterMultiUsersTest {
     private val rigidEntryForWorkUpdated =
         SafetyCenterStaticEntry.Builder("Unspecified title for Work")
             .setSummary("Unspecified summary")
-            .setPendingIntent(safetySourceCtsData.safetyCenterRedirectPendingIntent)
+            .setPendingIntent(safetySourceCtsData.testActivityRedirectPendingIntent)
             .build()
 
     private val safetyCenterDataForSecondaryUser
@@ -250,7 +250,7 @@ class SafetyCenterMultiUsersTest {
                             SINGLE_SOURCE_ALL_PROFILE_ID,
                             deviceState.secondaryUser().id(),
                             pendingIntent =
-                                createSafetyCenterRedirectPendingIntentForUser(
+                                createTestActivityRedirectPendingIntentForUser(
                                     deviceState.secondaryUser().userHandle())))),
                 emptyList())
 
@@ -635,7 +635,7 @@ class SafetyCenterMultiUsersTest {
                                         deviceState.workProfile().id(),
                                         title = "Paste",
                                         pendingIntent =
-                                            createSafetyCenterRedirectPendingIntentForUser(
+                                            createTestActivityRedirectPendingIntentForUser(
                                                 deviceState.workProfile().userHandle()))))
                             .build())),
                 emptyList())
@@ -858,10 +858,10 @@ class SafetyCenterMultiUsersTest {
         }
     }
 
-    private fun createSafetyCenterRedirectPendingIntentForUser(user: UserHandle): PendingIntent {
+    private fun createTestActivityRedirectPendingIntentForUser(user: UserHandle): PendingIntent {
         return callWithShellPermissionIdentity(INTERACT_ACROSS_USERS) {
             SafetySourceCtsData.createRedirectPendingIntent(
-                getContextForUser(user), Intent(ACTION_SAFETY_CENTER))
+                getContextForUser(user), Intent(ACTION_TEST_ACTIVITY))
         }
     }
 
