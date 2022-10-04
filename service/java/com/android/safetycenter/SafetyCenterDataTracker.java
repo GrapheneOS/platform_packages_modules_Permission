@@ -193,7 +193,19 @@ final class SafetyCenterDataTracker {
         if (!validateRequest(null, safetySourceId, packageName, userId)) {
             return null;
         }
-        return mSafetySourceDataForKey.get(SafetySourceKey.of(safetySourceId, userId));
+        return getSafetySourceData(SafetySourceKey.of(safetySourceId, userId));
+    }
+
+    /**
+     * Returns the latest {@link SafetySourceData} that was set by {@link #setSafetySourceData} for
+     * the given {@link SafetySourceKey}.
+     *
+     * <p>This method does not perform any validation, {@link #getSafetySourceData(String, String,
+     * int)} should be called wherever validation is required.
+     */
+    @Nullable
+    private SafetySourceData getSafetySourceData(@NonNull SafetySourceKey safetySourceKey) {
+        return mSafetySourceDataForKey.get(safetySourceKey);
     }
 
     /**
@@ -376,7 +388,7 @@ final class SafetyCenterDataTracker {
             return null;
         }
 
-        if (isInFlight(safetyCenterIssueActionId)) {
+        if (actionIsInFlight(safetyCenterIssueActionId)) {
             return null;
         }
 
@@ -537,7 +549,7 @@ final class SafetyCenterDataTracker {
     private void writeSafetySourceStateCollectedAtom(
             @NonNull String safetySourceId, @UserIdInt int userId, boolean isUserManaged) {
         SafetySourceKey key = SafetySourceKey.of(safetySourceId, userId);
-        SafetySourceData safetySourceData = mSafetySourceDataForKey.get(key);
+        SafetySourceData safetySourceData = getSafetySourceData(key);
         SafetySourceStatus safetySourceStatus = getSafetySourceStatus(safetySourceData);
         List<SafetySourceIssue> safetySourceIssues =
                 safetySourceData == null ? emptyList() : safetySourceData.getIssues();
@@ -574,8 +586,14 @@ final class SafetyCenterDataTracker {
                 dismissedIssuesCount);
     }
 
-    private boolean isInFlight(@NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
+    /** Returns {@code true} if the given issue action is in flight. */
+    private boolean actionIsInFlight(@NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
         return mSafetyCenterIssueActionsInFlight.containsKey(safetyCenterIssueActionId);
+    }
+
+    /** Returns {@code true} if the given source has an error. */
+    private boolean sourceHasError(@NonNull SafetySourceKey safetySourceKey) {
+        return mSafetySourceErrors.contains(safetySourceKey);
     }
 
     /**
@@ -861,7 +879,7 @@ final class SafetyCenterDataTracker {
             @NonNull SafetySource safetySource,
             @UserIdInt int userId) {
         SafetySourceKey key = SafetySourceKey.of(safetySource.getId(), userId);
-        SafetySourceData safetySourceData = mSafetySourceDataForKey.get(key);
+        SafetySourceData safetySourceData = getSafetySourceData(key);
 
         if (safetySourceData == null) {
             return;
@@ -947,7 +965,7 @@ final class SafetyCenterDataTracker {
                         safetySourceIssueAction.getLabel(),
                         safetySourceIssueAction.getPendingIntent())
                 .setSuccessMessage(safetySourceIssueAction.getSuccessMessage())
-                .setIsInFlight(isInFlight(safetyCenterIssueActionId))
+                .setIsInFlight(actionIsInFlight(safetyCenterIssueActionId))
                 .setWillResolve(safetySourceIssueAction.willResolve())
                 .build();
     }
@@ -1070,7 +1088,7 @@ final class SafetyCenterDataTracker {
                     }
 
                     SafetySourceKey key = toSafetySourceKey(entry.getId());
-                    SafetySourceData safetySourceData = mSafetySourceDataForKey.get(key);
+                    SafetySourceData safetySourceData = getSafetySourceData(key);
                     boolean hasIssues =
                             safetySourceData != null && !safetySourceData.getIssues().isEmpty();
 
@@ -1088,7 +1106,7 @@ final class SafetyCenterDataTracker {
                     SafetyCenterEntry entry = entries.get(i);
 
                     SafetySourceKey key = toSafetySourceKey(entry.getId());
-                    if (mSafetySourceErrors.contains(key)) {
+                    if (sourceHasError(key)) {
                         errorEntries++;
                     }
                 }
@@ -1173,7 +1191,7 @@ final class SafetyCenterDataTracker {
             case SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC:
                 SafetySourceKey key = SafetySourceKey.of(safetySource.getId(), userId);
                 SafetySourceStatus safetySourceStatus =
-                        getSafetySourceStatus(mSafetySourceDataForKey.get(key));
+                        getSafetySourceStatus(getSafetySourceData(key));
                 boolean defaultEntryDueToQuietMode = isUserManaged && !isManagedUserRunning;
                 if (safetySourceStatus != null && !defaultEntryDueToQuietMode) {
                     PendingIntent pendingIntent = safetySourceStatus.getPendingIntent();
@@ -1277,7 +1295,7 @@ final class SafetyCenterDataTracker {
                                 safetySource.getTitleForWorkResId())
                         : mSafetyCenterResourcesContext.getString(safetySource.getTitleResId());
         CharSequence summary =
-                mSafetySourceErrors.contains(SafetySourceKey.of(safetySource.getId(), userId))
+                sourceHasError(SafetySourceKey.of(safetySource.getId(), userId))
                         ? getRefreshErrorString(1)
                         : mSafetyCenterResourcesContext.getOptionalString(
                                 safetySource.getSummaryResId());
@@ -1362,8 +1380,7 @@ final class SafetyCenterDataTracker {
             return;
         }
         boolean isQuietModeEnabled = isUserManaged && !isManagedUserRunning;
-        boolean hasError =
-                mSafetySourceErrors.contains(SafetySourceKey.of(safetySource.getId(), userId));
+        boolean hasError = sourceHasError(SafetySourceKey.of(safetySource.getId(), userId));
         if (isQuietModeEnabled || hasError) {
             safetyCenterOverallState.addEntryOverallSeverityLevel(
                     SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN);
@@ -1384,7 +1401,7 @@ final class SafetyCenterDataTracker {
             case SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC:
                 SafetySourceKey key = SafetySourceKey.of(safetySource.getId(), userId);
                 SafetySourceStatus safetySourceStatus =
-                        getSafetySourceStatus(mSafetySourceDataForKey.get(key));
+                        getSafetySourceStatus(getSafetySourceData(key));
                 boolean defaultEntryDueToQuietMode = isUserManaged && !isManagedUserRunning;
                 if (safetySourceStatus != null && !defaultEntryDueToQuietMode) {
                     PendingIntent pendingIntent = safetySourceStatus.getPendingIntent();
@@ -1444,7 +1461,7 @@ final class SafetyCenterDataTracker {
                                 safetySource.getTitleForWorkResId())
                         : mSafetyCenterResourcesContext.getString(safetySource.getTitleResId());
         CharSequence summary =
-                mSafetySourceErrors.contains(SafetySourceKey.of(safetySource.getId(), userId))
+                sourceHasError(SafetySourceKey.of(safetySource.getId(), userId))
                         ? getRefreshErrorString(1)
                         : mSafetyCenterResourcesContext.getOptionalString(
                                 safetySource.getSummaryResId());
