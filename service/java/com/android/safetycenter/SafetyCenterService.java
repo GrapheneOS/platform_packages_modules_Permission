@@ -174,15 +174,22 @@ public final class SafetyCenterService extends SystemService {
         WestworldLogger westworldLogger = new WestworldLogger(context, mSafetyCenterConfigReader);
         mSafetyCenterRefreshTracker = new SafetyCenterRefreshTracker(westworldLogger);
         mSafetyCenterIssueCache = new SafetyCenterIssueCache(mSafetyCenterConfigReader);
+        SafetyCenterRepository safetyCenterRepository =
+                new SafetyCenterRepository(
+                        context,
+                        mSafetyCenterConfigReader,
+                        mSafetyCenterRefreshTracker,
+                        westworldLogger,
+                        mSafetyCenterIssueCache);
         mSafetyCenterDataTracker =
                 new SafetyCenterDataTracker(
-                        context,
                         mSafetyCenterResourcesContext,
                         mSafetyCenterConfigReader,
                         mSafetyCenterRefreshTracker,
                         westworldLogger,
                         new PendingIntentFactory(context),
-                        mSafetyCenterIssueCache);
+                        mSafetyCenterIssueCache,
+                        safetyCenterRepository);
         mSafetyCenterListeners = new SafetyCenterListeners(mSafetyCenterDataTracker);
         mSafetyCenterBroadcastDispatcher =
                 new SafetyCenterBroadcastDispatcher(
