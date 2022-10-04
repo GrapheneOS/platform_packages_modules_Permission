@@ -147,10 +147,15 @@ public final class SafetyCenterService extends SystemService {
     private final SafetyCenterDataTracker mSafetyCenterDataTracker;
 
     @GuardedBy("mApiLock")
+    @NonNull
     private final SafetyCenterListeners mSafetyCenterListeners;
 
     @GuardedBy("mApiLock")
     private boolean mSafetyCenterIssueCacheWriteScheduled;
+
+    @GuardedBy("mApiLock")
+    @NonNull
+    private final SafetyCenterIssueCache mSafetyCenterIssueCache;
 
     @GuardedBy("mApiLock")
     @NonNull
@@ -168,6 +173,7 @@ public final class SafetyCenterService extends SystemService {
         mSafetyCenterConfigReader = new SafetyCenterConfigReader(mSafetyCenterResourcesContext);
         WestworldLogger westworldLogger = new WestworldLogger(context, mSafetyCenterConfigReader);
         mSafetyCenterRefreshTracker = new SafetyCenterRefreshTracker(westworldLogger);
+        mSafetyCenterIssueCache = new SafetyCenterIssueCache(mSafetyCenterConfigReader);
         mSafetyCenterDataTracker =
                 new SafetyCenterDataTracker(
                         context,
@@ -176,7 +182,7 @@ public final class SafetyCenterService extends SystemService {
                         mSafetyCenterRefreshTracker,
                         westworldLogger,
                         new PendingIntentFactory(context),
-                        new SafetyCenterIssueCache(mSafetyCenterConfigReader));
+                        mSafetyCenterIssueCache);
         mSafetyCenterListeners = new SafetyCenterListeners(mSafetyCenterDataTracker);
         mSafetyCenterBroadcastDispatcher =
                 new SafetyCenterBroadcastDispatcher(
@@ -722,6 +728,7 @@ public final class SafetyCenterService extends SystemService {
                 SafetyCenterFlags.dump(fout);
                 mSafetyCenterConfigReader.dump(fout);
                 mSafetyCenterDataTracker.dump(fout);
+                mSafetyCenterIssueCache.dump(fout);
                 mSafetyCenterRefreshTracker.dump(fout);
                 mSafetyCenterTimeouts.dump(fout);
                 mSafetyCenterListeners.dump(fout);
@@ -1040,7 +1047,7 @@ public final class SafetyCenterService extends SystemService {
     /** Schedule writing the cache to file. */
     @GuardedBy("mApiLock")
     private void scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked() {
-        if (!mSafetyCenterDataTracker.isSafetyCenterIssueCacheDirty()) {
+        if (!mSafetyCenterIssueCache.isDirty()) {
             return;
         }
         if (!mSafetyCenterIssueCacheWriteScheduled) {
@@ -1056,7 +1063,7 @@ public final class SafetyCenterService extends SystemService {
 
         synchronized (mApiLock) {
             mSafetyCenterIssueCacheWriteScheduled = false;
-            persistedSafetyCenterIssues = mSafetyCenterDataTracker.snapshotSafetyCenterIssueCache();
+            persistedSafetyCenterIssues = mSafetyCenterIssueCache.snapshot();
             // Since all write operations are scheduled in the same background thread, we can safely
             // release the lock after creating a snapshot and know that all snapshots will be
             // written in the correct order even if we are not holding the lock.
@@ -1078,7 +1085,7 @@ public final class SafetyCenterService extends SystemService {
             Log.e(TAG, "Cannot read Safety Center persisted issues", e);
         }
 
-        mSafetyCenterDataTracker.loadSafetyCenterIssueCache(persistedSafetyCenterIssues);
+        mSafetyCenterIssueCache.load(persistedSafetyCenterIssues);
         scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked();
     }
 
