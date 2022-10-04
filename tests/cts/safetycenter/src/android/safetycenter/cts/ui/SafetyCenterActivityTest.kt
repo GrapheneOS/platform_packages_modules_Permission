@@ -433,6 +433,33 @@ class SafetyCenterActivityTest {
     }
 
     @Test
+    fun entryListWithSingleSource_clickingTheEntry_redirectsToDifferentScreen() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.information)
+
+        context.launchSafetyCenterActivity {
+            waitDisplayed(By.text("Ok title")) { it.click() }
+            waitButtonDisplayed("Exit test activity") { it.click() }
+            waitDisplayed(By.text("Ok title"))
+        }
+    }
+
+    @Test
+    fun staticSource_clickingTheEntry_redirectsToDifferentScreen() {
+        safetyCenterCtsHelper.setConfig(STATIC_SOURCES_CONFIG)
+
+        context.launchSafetyCenterActivity {
+            waitDisplayed(
+                By.text(context.getString(SafetyCenterCtsConfigs.STATIC_SOURCE_1.titleResId))) {
+                    it.click()
+                }
+            waitButtonDisplayed("Exit test activity") { it.click() }
+            waitAllTextDisplayed(
+                context.getString(SafetyCenterCtsConfigs.STATIC_SOURCE_1.titleResId))
+        }
+    }
+
+    @Test
     fun issueCard_criticalIssue_hasContentDescriptions() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         safetyCenterCtsHelper.setData(
