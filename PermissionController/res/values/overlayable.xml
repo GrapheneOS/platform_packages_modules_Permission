@@ -321,6 +321,7 @@
             <item type="dimen" name="sc_spacing_xxxlarge" />
             <item type="dimen" name="sc_card_margin" />
             <item type="dimen" name="sc_list_margin" />
+            <item type="dimen" name="sc_list_margin_top" />
             <item type="dimen" name="sc_action_button_list_margin" />
             <item type="dimen" name="sc_top_action_button_margin" />
             <item type="dimen" name="sc_entry_padding_end" />
@@ -329,8 +330,10 @@
             <item type="dimen" name="sc_entry_group_collapsed_padding_top" />
             <item type="dimen" name="sc_entry_group_collapsed_padding_bottom" />
             <item type="dimen" name="sc_card_margin_bottom" />
-            <item type="dimen" name="sc_icon_button_touch_target_size" />
-            <item type="dimen" name="sc_indicator_expand_button_background" />
+            <item type="dimen" name="sc_button_corner_radius" />
+            <item type="dimen" name="sc_card_corner_radius_large" />
+            <item type="dimen" name="sc_card_corner_radius_medium" />
+            <item type="dimen" name="sc_card_corner_radius_xsmall" />
 
             <item type="color" name="safety_center_button_info" />
             <item type="color" name="safety_center_button_recommend" />
@@ -423,86 +426,6 @@
             <item type="style" name="TextAppearance.SafetyCenter.Medium" />
             <item type="style" name="TextAppearance.SafetyCenter.ActionButton" />
             <item type="style" name="TextAppearance.SafetyCenter.ActionButton.Secondary" />
-
-            <item type="style" name="SafetyCenterCard" />
-            <item type="style" name="SafetyCenterActionButton" />
-            <item type="style" name="SafetyCenterActionButton.Secondary" />
-            <item type="style" name="SafetyCenterCard.Status" />
-            <item type="style" name="SafetyCenterStatusImage" />
-            <item type="style" name="SafetyCenterStatusTitleAndSummaryContainer" />
-            <item type="style" name="SafetyCenterStatusTitle" />
-            <item type="style" name="SafetyCenterStatusSummary" />
-            <item type="style" name="SafetyCenterStatusButton" />
-            <item type="style" name="SafetyCenterStatusButton.ReviewSettings" />
-            <item type="style" name="SafetyCenterStatusButton.Rescan" />
-            <item type="style" name="SafetyCenterStatusButton.PendingActionsRescan" />
-            <item type="style" name="SafetyCenterStatusSafetyProtectionView" />
-            <item type="style" name="SafetyCenterCard.Issue" />
-            <item type="style" name="SafetyCenterIssueDismiss" />
-            <item type="style" name="SafetyCenterIssueTitle" />
-            <item type="style" name="SafetyCenterIssueSubtitle" />
-            <item type="style" name="SafetyCenterIssueSummary" />
-            <item type="style" name="SafetyCenterIssueActionButtonList" />
-            <item type="style" name="SafetyCenterIssueSafetyProtectionSection" />
-            <item type="style" name="SafetyCenterIssueCardResolvedImage" />
-            <item type="style" name="SafetyCenterIssueCardResolvedTitle" />
-            <item type="style" name="SafetyCenterMoreIssues" />
-            <item type="style" name="SafetyCenterMoreIssuesTitle" />
-            <item type="style" name="SafetyCenterMoreIssuesIcon" />
-            <item type="style" name="SafetyCenterMoreIssuesWidgetFrame" />
-            <item type="style" name="SafetyCenterMoreIssuesWidget" />
-            <item type="style" name="SafetyCenterMoreIssuesWidgetTitle" />
-            <item type="style" name="SafetyCenterMoreIssuesWidgetIcon" />
-            <item type="style" name="SafetyCenterEntry" />
-            <item type="style" name="SafetyCenterEntryDivider" />
-            <item type="style" name="SafetyCenterEntryWidgetFrame" />
-            <item type="style" name="SafetyCenterEntryIconFrame" />
-            <item type="style" name="SafetyCenterEntryIcon" />
-            <item type="style" name="SafetyCenterEntryEmptySpace" />
-            <item type="style" name="SafetyCenterEntryTextContainer" />
-            <item type="style" name="SafetyCenterEntryTitle" />
-            <item type="style" name="SafetyCenterEntrySummary" />
-            <item type="style" name="SafetyCenterEntryIconAction" />
-            <item type="style" name="SafetyCenterGroup" />
-            <item type="style" name="SafetyCenterGroupHeader" />
-            <item type="style" name="SafetyCenterCollapsedGroupHeader" />
-            <item type="style" name="SafetyCenterExpandedGroupHeader" />
-            <item type="style" name="SafetyCenterExpandedGroupTitle" />
-            <item type="style" name="SafetyCenterGroupEntries" />
-            <item type="style" name="SafetyCenterGroupWidgetFrame" />
-            <item type="style" name="SafetyCenterExpandedGroupIcon" />
-            <item type="style" name="SafetyCenterNoLabelPreferenceCategory" />
-            <item type="style" name="SafetyCenterGroupEntry" />
-            <item type="style" name="SafetyCenterStaticEntry" />
-            <item type="style" name="SafetyCenterStaticEntryTitle" />
-            <item type="style" name="SafetyCenterStaticEntrySummary" />
-
-            <item type="style" name="SafetyCenterQsContainer" />
-            <item type="style" name="SafetyCenterLinkText" />
-            <item type="style" name="SafetyCenterQsCloseButton" />
-            <item type="style" name="SafetyCenterQsSectionTitle" />
-            <item type="style" name="SafetyCenterQsPermissionUsage" />
-            <item type="style" name="SafetyCenterQsPreferences" />
-            <item type="style" name="SafetyCenterQsToggleContainer" />
-            <item type="style" name="SafetyCenterQsToggleContainer.Top" />
-            <item type="style" name="SafetyCenterQsToggleContainer.Bottom" />
-            <item type="style" name="SafetyCenterQsToggleButton" />
-            <item type="style" name="SafetyCenterQsToggleButton.Start" />
-            <item type="style" name="SafetyCenterQsToggleButton.End" />
-            <item type="style" name="SafetyCenterQsToggleTextContainer" />
-            <item type="style" name="SafetyCenterQsToggleText" />
-            <item type="style" name="SafetyCenterQsToggleText.Title" />
-            <item type="style" name="SafetyCenterQsToggleText.Subtitle" />
-            <item type="style" name="SafetyCenterQsToggleArrow" />
-            <item type="style" name="SafetyCenterQsToggleIcon" />
-            <item type="style" name="SafetyCenterIndicatorCardView" />
-            <item type="style" name="SafetyCenterIndicatorImageView" />
-            <item type="style" name="SafetyCenterIndicatorTitleText" />
-            <item type="style" name="SafetyCenterIndicatorLabelText" />
-            <item type="style" name="SafetyCenterIndicatorExpandView" />
-            <item type="style" name="SafetyCenterIndicatorActionButton" />
-            <item type="style" name="SafetyCenterIndicatorSecondaryActionButton" />
-            <item type="style" name="SafetyCenterIndicatorForeground" />
         </policy>
     </overlayable>
 

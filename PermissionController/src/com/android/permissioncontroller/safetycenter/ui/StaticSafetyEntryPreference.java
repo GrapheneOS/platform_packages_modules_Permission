@@ -28,7 +28,6 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.preference.Preference;
 
-import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel;
 
 /** A preference which displays a visual representation of a {@link SafetyCenterStaticEntry}. */
@@ -48,7 +47,6 @@ public class StaticSafetyEntryPreference extends Preference implements Comparabl
         super(context);
         mEntry = entry;
         mViewModel = viewModel;
-        setLayoutResource(R.layout.preference_static_entry);
         setTitle(entry.getTitle());
         setSummary(entry.getSummary());
         if (entry.getPendingIntent() != null) {
