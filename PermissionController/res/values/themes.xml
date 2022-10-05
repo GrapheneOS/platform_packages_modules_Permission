@@ -57,8 +57,12 @@
         <item name="android:windowIsTranslucent">true</item>
     </style>
 
-    <style name="GrantPermissions.Car">
-        <item name="carUiActivity">true</item>
+    <style name="GrantPermissions.Car" parent="Theme.CarUi.NoToolbar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- The following attributes change the behavior of the dialog, hence they should not be
+             themed -->
+        <item name="android:windowIsTranslucent">true</item>
     </style>
 
     <!-- Unused since R but exposed as overlayable. -->
