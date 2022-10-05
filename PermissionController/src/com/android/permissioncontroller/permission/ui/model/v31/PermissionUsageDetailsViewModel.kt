@@ -22,6 +22,7 @@ import android.app.Application
 import android.app.LoaderManager
 import android.app.role.RoleManager
 import android.content.Context
+import android.content.pm.ApplicationInfo
 import android.content.res.Resources
 import android.graphics.drawable.Drawable
 import android.os.Build
@@ -35,18 +36,16 @@ import androidx.preference.PreferenceCategory
 import androidx.preference.PreferenceScreen
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.R
-import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.model.AppPermissionGroup
 import com.android.permissioncontroller.permission.model.legacy.PermissionApps.PermissionApp
 import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
-import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage.GroupUsage
-import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage.GroupUsage.AttributionLabelledGroupUsage
 import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage.TimelineUsage
 import com.android.permissioncontroller.permission.model.v31.PermissionUsages
 import com.android.permissioncontroller.permission.ui.handheld.v31.getDurationUsedStr
 import com.android.permissioncontroller.permission.ui.handheld.v31.is7DayToggleEnabled
 import com.android.permissioncontroller.permission.ui.handheld.v31.shouldShowSubattributionInPermissionsDashboard
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPackageLabel
+import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.StringUtils
 import com.android.permissioncontroller.permission.utils.SubattributionUtils
 import com.android.permissioncontroller.permission.utils.Utils
@@ -54,61 +53,48 @@ import java.time.Clock
 import java.time.Instant
 import java.time.ZonedDateTime
 import java.time.temporal.ChronoUnit
-import java.util.Objects
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.TimeUnit.DAYS
-import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicReference
-import java.util.stream.Collectors
 import kotlin.math.max
 
-/**
- * View model for the permission details fragment.
- */
+/** View model for the permission details fragment. */
 @RequiresApi(Build.VERSION_CODES.S)
 class PermissionUsageDetailsViewModel(
     val application: Application,
     val roleManager: RoleManager,
-    private val filterGroup: String,
+    private val permissionGroup: String,
     val sessionId: Long
 ) : ViewModel() {
 
     companion object {
         private const val ONE_HOUR_MS = 3_600_000
         private const val ONE_MINUTE_MS = 60_000
-        private const val CLUSTER_MINUTES_APART = 1
+        private const val CLUSTER_SPACING_MINUTES: Long = 1L
         private val TIME_7_DAYS_DURATION: Long = DAYS.toMillis(7)
         private val TIME_24_HOURS_DURATION: Long = DAYS.toMillis(1)
-        private val ALLOW_CLUSTERING_PERMISSION_GROUPS = listOf(
-            Manifest.permission_group.LOCATION,
-            Manifest.permission_group.CAMERA,
-            Manifest.permission_group.MICROPHONE
-        )
     }
 
-    private val filterTimes = mutableListOf<TimeFilterItem>()
+    private val mTimeFilterItemMs = mutableListOf<TimeFilterItemMs>()
 
-    // Truncate to midnight in current timezone.
-    private val midnightToday = ZonedDateTime.now().truncatedTo(ChronoUnit.DAYS)
-        .toEpochSecond() * 1000L
-    private val midnightYesterday = ZonedDateTime.now().minusDays(1).truncatedTo(ChronoUnit.DAYS)
-        .toEpochSecond() * 1000L
+    private val midnightToday =
+        ZonedDateTime.now().truncatedTo(ChronoUnit.DAYS).toEpochSecond() * 1000L
+    private val midnightYesterday =
+        ZonedDateTime.now().minusDays(1).truncatedTo(ChronoUnit.DAYS).toEpochSecond() * 1000L
 
     init {
-        initializeTimeFilter(application)
+        initializeTimeFilterItems(application)
     }
 
-    /**
-     * Loads permission usages using [PermissionUsages]. Response is returned to the [callback].
-     */
+    /** Loads permission usages using [PermissionUsages]. Response is returned to the [callback]. */
     fun loadPermissionUsages(
         loaderManager: LoaderManager,
         permissionUsages: PermissionUsages,
         callback: PermissionUsages.PermissionsUsagesChangeCallback,
         filterTimesIndex: Int
     ) {
-        val timeFilterItem: TimeFilterItem = filterTimes[filterTimesIndex]
-        val filterTimeBeginMillis = max(System.currentTimeMillis() - timeFilterItem.time, 0)
+        val timeFilterItemMs: TimeFilterItemMs = mTimeFilterItemMs[filterTimesIndex]
+        val filterTimeBeginMillis = max(System.currentTimeMillis() - timeFilterItemMs.timeMs, 0)
         permissionUsages.load(
             /* filterPackageName= */ null,
             /* filterPermissionGroups= */ null,
@@ -123,384 +109,425 @@ class PermissionUsageDetailsViewModel(
     }
 
     /**
-     * Returns whether app subattribution should be shown.
-     */
-    private fun shouldShowSubattributionForApp(appPermissionUsage: AppPermissionUsage): Boolean {
-        return shouldShowSubattributionInPermissionsDashboard() &&
-            SubattributionUtils.isSubattributionSupported(application,
-                appPermissionUsage.app.appInfo)
-    }
-
-    /**
-     * Create a list of [AppPermissionUsageEntry]s based on the provided data.
+     * Create a [PermissionUsageDetailsUiData] based on the provided data.
      *
      * @param appPermissionUsages data about app permission usages
-     * @param exemptedPackages packages whose usage should not be included in the out
-     * @param permApps mutable list of [PermissionApp] for keeping track of information about apps.
-     *                 This field is updated as a side effect of running this method.
-     * @param seenSystemApp mutable field to track whether a system app has recent usage. Updated
-     *                           as a side effect of running this method.
-     * @param showSystemApp whether System apps should be shown
+     * @param showSystem whether system apps should be shown
      * @param show7Days whether the last 7 days of history should be shown
      */
-    fun parseUsages(
+    fun buildPermissionUsageDetailsUiData(
         appPermissionUsages: List<AppPermissionUsage>,
-        exemptedPackages: Set<String>,
-        permApps: MutableList<PermissionApp>,
-        seenSystemApp: AtomicBoolean,
-        showSystemApp: Boolean,
+        showSystem: Boolean,
         show7Days: Boolean
-    ): List<AppPermissionUsageEntry> {
-        val curTime = System.currentTimeMillis()
-        val showPermissionUsagesDuration = if (is7DayToggleEnabled() && show7Days) {
-            TIME_7_DAYS_DURATION
-        } else {
-            TIME_24_HOURS_DURATION
-        }
-        val startTime = (curTime - showPermissionUsagesDuration)
-            .coerceAtLeast(Instant.EPOCH.toEpochMilli())
-
-        return appPermissionUsages
-            .asSequence()
-            .filter { appUsage: AppPermissionUsage ->
-                !exemptedPackages.contains(appUsage.packageName)
+    ): PermissionUsageDetailsUiData {
+        val showPermissionUsagesDuration =
+            if (is7DayToggleEnabled() && show7Days) {
+                TIME_7_DAYS_DURATION
+            } else {
+                TIME_24_HOURS_DURATION
             }
-            .map { appUsage: AppPermissionUsage ->
-                filterAndConvert(appUsage, filterGroup)
-            }
-            .flatten()
-            .map { usageData: UsageData ->
-                // Fetch the access time list of the app accesses mFilterGroup permission group
-                // The DiscreteAccessTime is a Triple of (access time, access duration,
-                // proxy) of that app
-                val discreteAccessTimeList:
-                    MutableList<Triple<Long, Long, AppOpsManager.OpEventProxyInfo>> =
-                    mutableListOf()
-                val timelineUsages = usageData.timelineUsages
-                val numGroups = timelineUsages.size
-                for (groupIndex in 0 until numGroups) {
-                    val timelineUsage = timelineUsages[groupIndex]
-                    if (!timelineUsage.hasDiscreteData()) {
-                        continue
-                    }
-                    val isSystemApp = !Utils.isGroupOrBgGroupUserSensitive(timelineUsage.group)
-                    seenSystemApp.set(seenSystemApp.get() || isSystemApp)
-                    if (isSystemApp && !showSystemApp) {
-                        continue
-                    }
-                    for (discreteAccessTime in timelineUsage.allDiscreteAccessTime) {
-                        if (discreteAccessTime.first == 0L ||
-                            discreteAccessTime.first < startTime) {
-                            continue
-                        }
-                        discreteAccessTimeList.add(discreteAccessTime)
-                    }
-                }
-                discreteAccessTimeList.sortWith { x, y -> y.first.compareTo(x.first) }
-                if (discreteAccessTimeList.size > 0) {
-                    permApps.add(usageData.app)
-                }
-
-                // If the current permission group is not LOCATION or there's only one access
-                // for the app, return individual entry early.
-                if (!ALLOW_CLUSTERING_PERMISSION_GROUPS.contains(filterGroup) ||
-                    discreteAccessTimeList.size <= 1) {
-                    return@map discreteAccessTimeList.map { time ->
-                        AppPermissionUsageEntry(usageData, time.first, mutableListOf(time))
-                    }
-                }
-
-                // Group access time list
-                val usageEntries = mutableListOf<AppPermissionUsageEntry>()
-                var ongoingEntry: AppPermissionUsageEntry? = null
-                for (time in discreteAccessTimeList) {
-                    if (ongoingEntry == null) {
-                        ongoingEntry = AppPermissionUsageEntry(usageData, time.first,
-                            mutableListOf(time))
-                    } else {
-                        val ongoingAccessTimeList:
-                            MutableList<Triple<Long, Long, AppOpsManager.OpEventProxyInfo>> =
-                            ongoingEntry.clusteredAccessTimeList
-                        if (time.first / ONE_HOUR_MS !=
-                            ongoingAccessTimeList[0].first / ONE_HOUR_MS ||
-                            ongoingAccessTimeList[ongoingAccessTimeList.size - 1].first /
-                            ONE_MINUTE_MS - time.first / ONE_MINUTE_MS > CLUSTER_MINUTES_APART
-                        ) {
-                            // If the current access time is not in the same hour nor within
-                            // CLUSTER_MINUTES_APART, add the ongoing entry to the usage list
-                            // and start a new ongoing entry.
-                            usageEntries.add(ongoingEntry)
-                            ongoingEntry = AppPermissionUsageEntry(usageData, time.first,
-                                mutableListOf(time))
-                        } else {
-                            ongoingAccessTimeList.add(time)
-                        }
-                    }
-                }
-                ongoingEntry?.let { usageEntries.add(it) }
-                usageEntries
-            }
-            .flatten()
-            .sortedWith { x, y ->
-                // Sort all usage entries by startTime desc, and then by app name.
-                val timeCompare = java.lang.Long.compare(y.endTime, x.endTime)
-                if (timeCompare != 0) {
-                    return@sortedWith timeCompare
-                }
-                x.usageData.app.label.compareTo(y.usageData.app.label)
-            }
-            .toList()
+        val startTime =
+            (System.currentTimeMillis() - showPermissionUsagesDuration).coerceAtLeast(
+                Instant.EPOCH.toEpochMilli())
+        val appPermissionTimelineUsages: List<AppPermissionTimelineUsages> =
+            extractAppPermissionTimelineUsagesForGroup(appPermissionUsages, permissionGroup)
+        val shouldDisplayShowSystemToggle =
+                shouldDisplayShowSystemToggle(appPermissionTimelineUsages)
+        val permissionApps: List<PermissionApp> =
+            getPermissionAppsWithRecentDiscreteUsage(
+                appPermissionTimelineUsages, showSystem, startTime)
+        val appPermissionUsageEntries =
+            buildDiscreteAccessClusterData(appPermissionTimelineUsages, showSystem, startTime)
+        return PermissionUsageDetailsUiData(
+            permissionApps, shouldDisplayShowSystemToggle, appPermissionUsageEntries)
     }
 
-    /**
-     * Render [usages] into the [preferenceScreen] UI.
-     */
-    fun renderTimelinePreferences(
-        usages: List<AppPermissionUsageEntry>,
+    // TODO(b/243970988): Move UI-specific code to the fragment (e.g. PreferenceCategory and
+    // PreferenceScreen).
+    /** Render the provided [discreteAccessClusterDataList] into the [preferenceScreen] UI. */
+    fun renderHistoryPreferences(
+        discreteAccessClusterDataList: List<DiscreteAccessClusterData>,
         category: AtomicReference<PreferenceCategory>,
         preferenceScreen: PreferenceScreen,
         historyPreferenceFactory: HistoryPreferenceFactory
     ) {
         val context = application
-        var hasADateLabel = false
-        var lastDateLabel = 0L
-        usages.forEachIndexed { usageNum, usage ->
+        var previousDateLabel = 0L
+        discreteAccessClusterDataList.forEachIndexed { usageNum, usage ->
             val usageTimestamp = usage.endTime
-            val usageDateLabel = ZonedDateTime.ofInstant(Instant.ofEpochMilli(usageTimestamp),
-                Clock.systemDefaultZone().zone)
-                .truncatedTo(ChronoUnit.DAYS).toEpochSecond() * 1000L
-            if (!hasADateLabel || usageDateLabel != lastDateLabel) {
-                if (hasADateLabel) {
+            val currentDateLabel =
+                ZonedDateTime.ofInstant(
+                        Instant.ofEpochMilli(usageTimestamp), Clock.systemDefaultZone().zone)
+                    .truncatedTo(ChronoUnit.DAYS)
+                    .toEpochSecond() * 1000L
+            if (currentDateLabel != previousDateLabel) {
+                if (previousDateLabel != 0L) {
                     category.set(historyPreferenceFactory.createDayCategoryPreference())
                     preferenceScreen.addPreference(category.get())
                 }
-                val formattedDateTitle = DateFormat.getDateFormat(context)
-                    .format(usageDateLabel)
                 if (usageTimestamp > midnightToday) {
                     category.get().setTitle(R.string.permission_history_category_today)
                 } else if (usageTimestamp > midnightYesterday) {
                     category.get().setTitle(R.string.permission_history_category_yesterday)
                 } else {
-                    category.get().setTitle(formattedDateTitle)
+                    category
+                        .get()
+                        .setTitle(DateFormat.getDateFormat(context).format(currentDateLabel))
                 }
-                hasADateLabel = true
+                previousDateLabel = currentDateLabel
             }
 
-            lastDateLabel = usageDateLabel
-
+            val accessTimeList = usage.discreteAccessDataList.map { p -> p.accessTimeMs }
+            val durationSummaryLabel = getDurationSummary(usage, accessTimeList, context)
+            val proxyLabel = getProxyPackageLabel(usage)
+            val subattributionLabel = getSubattributionLabel(usage)
+            val showingSubattribution =
+                subattributionLabel != null && subattributionLabel!!.isNotEmpty()
+            val summary =
+                buildUsageSummary(durationSummaryLabel, proxyLabel, subattributionLabel, context)
             val accessTime = DateFormat.getTimeFormat(context).format(usage.endTime)
-            var durationLong: Long = usage.clusteredAccessTimeList
-                .map { p -> p.second }
-                .filter { dur -> dur > 0 }
-                .sum()
 
-            val accessTimeList: List<Long> = usage.clusteredAccessTimeList.map { p -> p.first }
-
-            // Determine the preference summary. Start with the duration string
-            var summaryLabel: String? = null
-            // Since Location accesses are atomic, we manually calculate the access duration
-            // by comparing the first and last access within the cluster
-            if (filterGroup == Manifest.permission_group.LOCATION) {
-                if (accessTimeList.size > 1) {
-                    durationLong = (accessTimeList[0] - accessTimeList[accessTimeList.size - 1])
-
-                    // Similar to other history items, only show the duration if it's longer
-                    // than the clustering granularity.
-                    if (durationLong
-                        >= TimeUnit.MINUTES.toMillis(CLUSTER_MINUTES_APART.toLong()) + 1) {
-                        summaryLabel = getDurationUsedStr(context, durationLong)
-                    }
-                }
-            } else {
-                // Only show the duration if it is at least (cluster + 1) minutes. Displaying
-                // times that are the same as the cluster granularity does not convey useful
-                // information.
-                if (durationLong != null &&
-                    durationLong >=
-                    TimeUnit.MINUTES.toMillis((CLUSTER_MINUTES_APART + 1).toLong())) {
-                    summaryLabel = getDurationUsedStr(context, durationLong)
-                }
-            }
-
-            var proxyPackageLabel: String? = null
-            for (clusteredAccessTime in usage.clusteredAccessTimeList) {
-                val proxy = clusteredAccessTime.third
-                if (proxy != null && proxy.packageName != null) {
-                    proxyPackageLabel = getPackageLabel(
-                        PermissionControllerApplication.get(), proxy.packageName!!,
-                        UserHandle.getUserHandleForUid(proxy.uid))
-                    break
-                }
-            }
-
-            // fetch the subattribution label for this usage.
-            var subattributionLabel: String? = null
-            if (usage.usageData.label != Resources.ID_NULL) {
-                val attributionLabels: Map<Int, String>? = usage.usageData.app.attributionLabels
-                if (attributionLabels != null) {
-                    subattributionLabel = attributionLabels[usage.usageData.label]
-                }
-            }
-
-            // create subtext string.
-            val subTextStrings: MutableList<String?> = mutableListOf()
-            val showingAttribution = subattributionLabel != null && subattributionLabel.isNotEmpty()
-            if (showingAttribution) {
-                subTextStrings.add(subattributionLabel)
-            }
-            if (proxyPackageLabel != null) {
-                subTextStrings.add(proxyPackageLabel)
-            }
-            if (summaryLabel != null) {
-                subTextStrings.add(summaryLabel)
-            }
-            var subText: String? = null
-            when (subTextStrings.size) {
-                3 -> {
-                    subText = context.getString(
-                        R.string.history_preference_subtext_3,
-                        subTextStrings[0],
-                        subTextStrings[1],
-                        subTextStrings[2])
-                }
-                2 -> {
-                    subText = context.getString(R.string.history_preference_subtext_2,
-                        subTextStrings[0],
-                        subTextStrings[1])
-                }
-                1 -> {
-                    subText = subTextStrings[0]
-                }
-            }
-
-            val permissionUsagePreference = historyPreferenceFactory
-                .createPermissionHistoryPreference(
+            val permissionUsagePreference =
+                historyPreferenceFactory.createPermissionHistoryPreference(
                     HistoryPreferenceData(
-                        UserHandle.getUserHandleForUid(usage.usageData.app.getUid()),
-                        usage.usageData.app.packageName,
-                        usage.usageData.app.icon,
-                        usage.usageData.app.label,
-                        filterGroup, accessTime, subText,
-                        showingAttribution, accessTimeList,
-                        usage.usageData.attributionTags,
-                        usageNum == usages.size - 1,
-                        sessionId)
-                )
+                        UserHandle.getUserHandleForUid(
+                            usage.appPermissionTimelineUsages.permissionApp.uid),
+                        usage.appPermissionTimelineUsages.permissionApp.packageName,
+                        usage.appPermissionTimelineUsages.permissionApp.icon,
+                        usage.appPermissionTimelineUsages.permissionApp.label,
+                        permissionGroup,
+                        accessTime,
+                        summary,
+                        showingSubattribution,
+                        accessTimeList,
+                        usage.appPermissionTimelineUsages.attributionTags,
+                        usageNum == discreteAccessClusterDataList.size - 1,
+                        sessionId))
             category.get().addPreference(permissionUsagePreference)
         }
     }
 
     /**
-     * Filter the usage data from [appPermissionUsage] into a list of [UsageData].
+     * Returns whether the provided [AppPermissionUsage] instances contains the provided platform
+     * permission group.
      */
-    private fun filterAndConvert(
-        appPermissionUsage: AppPermissionUsage,
-        filterGroup: String
-    ): List<UsageData> {
-        if (shouldShowSubattributionForApp(appPermissionUsage)) {
-            return appPermissionUsage.groupUsages
-                .filter { groupUsage: GroupUsage -> groupUsage.group.name == filterGroup }
-                .map(GroupUsage::getAttributionLabelledGroupUsages)
-                .flatten()
-                .map { labelledGroupUsage: AttributionLabelledGroupUsage ->
-                    UsageData(filterGroup, appPermissionUsage.app,
-                        listOf<TimelineUsage>(labelledGroupUsage),
-                        labelledGroupUsage.label)
-                }
-        }
-        val groupUsages = appPermissionUsage.groupUsages
-            .filter { groupUsage: GroupUsage -> groupUsage.group.name == filterGroup }
-        return listOf(
-            UsageData(filterGroup, appPermissionUsage.app, groupUsages,
-                Resources.ID_NULL)
-        )
-    }
-
-    /**
-     * Get an AppPermissionGroup that represents the given permission group (and an arbitrary app).
-     *
-     * @param groupName The name of the permission group.
-     *
-     * @return an AppPermissionGroup representing the given permission group or null if no such
-     * AppPermissionGroup is found.
-     */
-    fun getGroup(
+    fun containsPlatformAppPermissionGroup(
+        appPermissionUsages: List<AppPermissionUsage>,
         groupName: String,
-        appPermissionUsages: List<AppPermissionUsage>
-    ): AppPermissionGroup? {
-        val groups = getOSPermissionGroups(appPermissionUsages)
-        return groups.firstOrNull { it.name == groupName }
-    }
+    ) = appPermissionUsages.extractAllPlatformAppPermissionGroups().any { it.name == groupName }
+
+    /** Extracts a list of [AppPermissionTimelineUsages] for a particular permission group. */
+    private fun extractAppPermissionTimelineUsagesForGroup(
+        appPermissionUsages: List<AppPermissionUsage>,
+        group: String
+    ): List<AppPermissionTimelineUsages> =
+        appPermissionUsages
+            .filter { !Utils.getExemptedPackages(roleManager).contains(it.packageName) }
+            .map { appPermissionUsage ->
+                getAppPermissionTimelineUsages(
+                    appPermissionUsage.app,
+                    appPermissionUsage.groupUsages.firstOrNull { it.group.name == group })
+            }
+            .flatten()
+
+    /** Returns whether the show/hide system toggle should be displayed in the UI. */
+    private fun shouldDisplayShowSystemToggle(
+        appPermissionTimelineUsages: List<AppPermissionTimelineUsages>,
+    ): Boolean =
+        appPermissionTimelineUsages
+            .map { it.timelineUsages }
+            .flatten()
+            .filter { it.hasDiscreteData() }
+            .any { it.group.isSystem() }
 
     /**
-     * Get the permission groups declared by the OS.
-     *
-     * TODO: theianchen change the method name to make that clear,
-     * and return a list of string group names, not AppPermissionGroups.
-     * @return a list of the permission groups declared by the OS.
+     * Returns a list of [PermissionApp] instances which had recent discrete permission usage
+     * (recent here refers to usages occurring after the provided start time).
      */
-    private fun getOSPermissionGroups(
-        appPermissionUsages: List<AppPermissionUsage>
-    ): List<AppPermissionGroup> {
-        val groups: MutableList<AppPermissionGroup> = mutableListOf()
-        val seenGroups: MutableSet<String> = mutableSetOf()
-        for (appUsage in appPermissionUsages) {
-            val groupUsages = appUsage.groupUsages
-            for (groupUsage in groupUsages) {
-                if (PermissionMapping.isPlatformPermissionGroup(groupUsage.group.name)) {
-                    if (seenGroups.add(groupUsage.group.name)) {
-                        groups.add(groupUsage.group)
+    private fun getPermissionAppsWithRecentDiscreteUsage(
+        appPermissionTimelineUsagesList: List<AppPermissionTimelineUsages>,
+        showSystem: Boolean,
+        startTime: Long,
+    ): List<PermissionApp> =
+        appPermissionTimelineUsagesList.mapNotNull { appPermissionTimelineUsages ->
+            if (appPermissionTimelineUsages.timelineUsages
+                .filter { it.hasDiscreteData() }
+                .filter { showSystem || !it.group.isSystem() }
+                .any { timelineUsage ->
+                    timelineUsage.allDiscreteAccessTime.any { it.first >= startTime }
+                })
+                appPermissionTimelineUsages.permissionApp
+            else null
+        }
+
+    /**
+     * Builds a list of [DiscreteAccessClusterData] from the provided list of
+     * [AppPermissionTimelineUsages].
+     */
+    private fun buildDiscreteAccessClusterData(
+        appPermissionTimelineUsagesList: List<AppPermissionTimelineUsages>,
+        showSystem: Boolean,
+        startTime: Long,
+    ): List<DiscreteAccessClusterData> =
+        appPermissionTimelineUsagesList
+            .map { appPermissionTimelineUsages ->
+                val accessDataList =
+                    extractRecentDiscreteAccessData(
+                        appPermissionTimelineUsages.timelineUsages, showSystem, startTime)
+
+                if (accessDataList.size <= 1) {
+                    return@map accessDataList.map {
+                        DiscreteAccessClusterData(
+                            appPermissionTimelineUsages, it.accessTimeMs, listOf(it))
                     }
                 }
+
+                clusterDiscreteAccessData(appPermissionTimelineUsages, accessDataList)
+            }
+            .flatten()
+            .sortedWith(
+                compareBy({ -it.endTime }, { it.appPermissionTimelineUsages.permissionApp.label }))
+            .toList()
+
+    /**
+     * Clusters a list of [DiscreteAccessData] into a list of [DiscreteAccessClusterData] instances.
+     *
+     * [DiscreteAccessData] which have accesses sufficiently close together in time will be places
+     * in the same cluster.
+     */
+    private fun clusterDiscreteAccessData(
+        appPermissionTimelineUsages: AppPermissionTimelineUsages,
+        discreteAccessDataList: List<DiscreteAccessData>
+    ): List<DiscreteAccessClusterData> {
+        val clusterDataList = mutableListOf<DiscreteAccessClusterData>()
+        var currentAccessTimeMs: Long = 0
+        val currentDiscreteAccessDataList: MutableList<DiscreteAccessData> = mutableListOf()
+        for (discreteAccessData in discreteAccessDataList) {
+            if (currentDiscreteAccessDataList.isEmpty()) {
+                currentDiscreteAccessDataList.add(discreteAccessData)
+                currentAccessTimeMs = discreteAccessData.accessTimeMs
+            } else if (!canAccessBeAddedToCluster(
+                    discreteAccessData,
+                    currentDiscreteAccessDataList
+                )
+            ) {
+                clusterDataList.add(
+                    DiscreteAccessClusterData(
+                        appPermissionTimelineUsages,
+                        currentAccessTimeMs,
+                        currentDiscreteAccessDataList.toMutableList()
+                    )
+                )
+                currentDiscreteAccessDataList.clear()
+                currentDiscreteAccessDataList.add(discreteAccessData)
+                currentAccessTimeMs = discreteAccessData.accessTimeMs
+            } else {
+                currentDiscreteAccessDataList.add(discreteAccessData)
             }
         }
-        return groups
+        if (currentDiscreteAccessDataList.isNotEmpty()) {
+            clusterDataList.add(DiscreteAccessClusterData(
+                appPermissionTimelineUsages,
+                currentAccessTimeMs,
+                currentDiscreteAccessDataList))
+        }
+        return clusterDataList
     }
 
     /**
-     * Initialize the time filter to show the smallest entry greater than the time passed in as an
-     * argument.  If nothing is passed, this simply initializes the possible values.
+     * Extract recent [DiscreteAccessData] from a list of [TimelineUsage] instances, and return them
+     * ordered descending by access time (recent here refers to accesses occurring after the
+     * provided start time).
      */
-    private fun initializeTimeFilter(context: Context) {
-        filterTimes.add(
-            TimeFilterItem(Long.MAX_VALUE, context.getString(R.string.permission_usage_any_time))
-        )
-        filterTimes.add(
-            TimeFilterItem(DAYS.toMillis(7),
-                StringUtils.getIcuPluralsString(context,
-                    R.string.permission_usage_last_n_days, 7))
-        )
-        filterTimes.add(
-            TimeFilterItem(DAYS.toMillis(1),
-                StringUtils.getIcuPluralsString(context,
-                    R.string.permission_usage_last_n_days, 1))
-        )
-        filterTimes.add(
-            TimeFilterItem(TimeUnit.HOURS.toMillis(1),
-                StringUtils.getIcuPluralsString(context,
-                    R.string.permission_usage_last_n_hours, 1))
-        )
-        filterTimes.add(
-            TimeFilterItem(TimeUnit.MINUTES.toMillis(15),
-                StringUtils.getIcuPluralsString(context,
-                    R.string.permission_usage_last_n_minutes, 15))
-        )
-        filterTimes.add(
-            TimeFilterItem(TimeUnit.MINUTES.toMillis(1),
-                StringUtils.getIcuPluralsString(context,
-                    R.string.permission_usage_last_n_minutes, 1))
-        )
+    private fun extractRecentDiscreteAccessData(
+        timelineUsages: List<TimelineUsage>,
+        showSystem: Boolean,
+        startTime: Long
+    ): List<DiscreteAccessData> =
+        timelineUsages
+            .asSequence()
+            .filter { it.hasDiscreteData() }
+            .filter { showSystem || !it.group.isSystem() }
+            .map { getRecentDiscreteAccessData(it, startTime) }
+            .flatten()
+            .sortedWith(compareBy { -it.accessTimeMs })
+            .toList()
+
+    /**
+     * Extract recent [DiscreteAccessData] from a [TimelineUsage]. (recent here refers to accesses
+     * occurring after the provided start time).
+     */
+    private fun getRecentDiscreteAccessData(
+        timelineUsage: TimelineUsage,
+        startTime: Long
+    ): List<DiscreteAccessData> {
+        return timelineUsage.allDiscreteAccessTime
+            .filter { it.first >= startTime }
+            .map {
+                DiscreteAccessData(
+                    it.first,
+                    it.second,
+                    it.third,
+                )
+            }
+    }
+
+    /**
+     * Returns whether the provided [DiscreteAccessData] occurred close enough to those in the
+     * clustered list that it can be added to the cluster
+     */
+    private fun canAccessBeAddedToCluster(
+        accessData: DiscreteAccessData,
+        clusteredAccessDataList: List<DiscreteAccessData>
+    ): Boolean =
+        accessData.accessTimeMs / ONE_HOUR_MS ==
+            clusteredAccessDataList.first().accessTimeMs / ONE_HOUR_MS &&
+            clusteredAccessDataList.last().accessTimeMs / ONE_MINUTE_MS -
+                accessData.accessTimeMs / ONE_MINUTE_MS > CLUSTER_SPACING_MINUTES
+
+    /**
+     * Returns whether the provided [AppPermissionGroup] is considered a system group.
+     *
+     * For the purpose of Permissions Hub UI, non user-sensitive [AppPermissionGroup]s are
+     * considered "system" and should be hidden from the main page unless requested by the user
+     * through the "show/hide system" toggle.
+     */
+    private fun AppPermissionGroup.isSystem() = !Utils.isGroupOrBgGroupUserSensitive(this)
+
+    /** Returns whether app subattribution should be shown. */
+    private fun shouldShowSubattributionForApp(appInfo: ApplicationInfo): Boolean {
+        return shouldShowSubattributionInPermissionsDashboard() &&
+            SubattributionUtils.isSubattributionSupported(application, appInfo)
+    }
+
+    /** Returns a summary of the duration the permission was accessed for. */
+    private fun getDurationSummary(
+        usage: DiscreteAccessClusterData,
+        accessTimeList: List<Long>,
+        context: Context
+    ): String? {
+        if (accessTimeList.isEmpty()) {
+            return null
+        }
+
+        var durationMs: Long
+
+        // Since Location accesses are atomic, we manually calculate the access duration
+        // by comparing the first and last access within the cluster.
+        if (permissionGroup == Manifest.permission_group.LOCATION) {
+            durationMs = accessTimeList[0] - accessTimeList[accessTimeList.size - 1]
+        } else {
+            durationMs =
+                usage.discreteAccessDataList.map { it.accessDurationMs }.filter { it > 0 }.sum()
+        }
+        // Only show the duration summary if it is at least (CLUSTER_SPACING_MINUTES + 1) minutes.
+        // Displaying a time that is shorter than the cluster granularity
+        // (CLUSTER_SPACING_MINUTES) will not convey useful information.
+        if (durationMs >= TimeUnit.MINUTES.toMillis(CLUSTER_SPACING_MINUTES + 1)) {
+            return getDurationUsedStr(context, durationMs)
+        }
+
+        return null
+    }
+
+    /** Returns the proxied package label if the permission access was proxied. */
+    private fun getProxyPackageLabel(usage: DiscreteAccessClusterData): String? =
+        usage.discreteAccessDataList
+            .firstOrNull { it.proxy?.packageName != null }
+            ?.let {
+                getPackageLabel(
+                    PermissionControllerApplication.get(),
+                    it.proxy!!.packageName!!,
+                    UserHandle.getUserHandleForUid(it.proxy!!.uid))
+            }
+
+    /** Returns the attribution label for the permission access, if any. */
+    private fun getSubattributionLabel(usage: DiscreteAccessClusterData): String? =
+        if (usage.appPermissionTimelineUsages.label == Resources.ID_NULL) null
+        else
+            usage.appPermissionTimelineUsages.permissionApp.attributionLabels?.let {
+                it[usage.appPermissionTimelineUsages.label]
+            }
+
+    /** Builds a summary of the permission access. */
+    private fun buildUsageSummary(
+        subattributionLabel: String?,
+        proxyPackageLabel: String?,
+        durationSummary: String?,
+        context: Context
+    ): String? {
+        val subTextStrings: MutableList<String?> = mutableListOf()
+
+        subattributionLabel?.let { subTextStrings.add(subattributionLabel) }
+        proxyPackageLabel?.let { subTextStrings.add(it) }
+        durationSummary?.let { subTextStrings.add(it) }
+        return when (subTextStrings.size) {
+            3 ->
+                context.getString(
+                    R.string.history_preference_subtext_3,
+                    subTextStrings[0],
+                    subTextStrings[1],
+                    subTextStrings[2])
+            2 ->
+                context.getString(
+                    R.string.history_preference_subtext_2, subTextStrings[0], subTextStrings[1])
+            1 -> subTextStrings[0]
+            else -> null
+        }
+    }
+
+    /**
+     * Builds a list of [AppPermissionTimelineUsages] from the provided
+     * [AppPermissionUsage.GroupUsage].
+     */
+    private fun getAppPermissionTimelineUsages(
+        app: PermissionApp,
+        groupUsage: AppPermissionUsage.GroupUsage?
+    ): List<AppPermissionTimelineUsages> {
+        if (groupUsage == null) {
+            return listOf()
+        }
+
+        if (shouldShowSubattributionForApp(app.appInfo)) {
+            return groupUsage.attributionLabelledGroupUsages.map {
+                AppPermissionTimelineUsages(
+                    permissionGroup, app, listOf<TimelineUsage>(it), it.label)
+            }
+        }
+
+        return listOf(
+            AppPermissionTimelineUsages(
+                permissionGroup, app, listOf<TimelineUsage>(groupUsage), Resources.ID_NULL))
+    }
+
+    /** Extracts to a set all the permission groups declared by the platform. */
+    private fun List<AppPermissionUsage>.extractAllPlatformAppPermissionGroups():
+        Set<AppPermissionGroup> =
+        this.flatMap { it.groupUsages }
+            .map { it.group }
+            .filter { PermissionMapping.isPlatformPermissionGroup(it.name) }
+            .toSet()
+
+    /** Initialize all relevant [TimeFilterItemMs] values. */
+    private fun initializeTimeFilterItems(context: Context) {
+        mTimeFilterItemMs.add(
+            TimeFilterItemMs(Long.MAX_VALUE, context.getString(R.string.permission_usage_any_time)))
+        mTimeFilterItemMs.add(
+            TimeFilterItemMs(
+                DAYS.toMillis(7),
+                StringUtils.getIcuPluralsString(context, R.string.permission_usage_last_n_days, 7)))
+        mTimeFilterItemMs.add(
+            TimeFilterItemMs(
+                DAYS.toMillis(1),
+                StringUtils.getIcuPluralsString(context, R.string.permission_usage_last_n_days, 1)))
 
         // TODO: theianchen add code for filtering by time here.
     }
 
-    /**
-     * Factory for creating preferences to be added to the screen.
-     */
+    // TODO(b/243970988): Remove this Factory and move preference creating logic to the fragment.
+    /** Factory for creating preferences to be added to the screen. */
     interface HistoryPreferenceFactory {
-        /**
-         * Returns a new [PreferenceCategory] representing a day of permission usage.
-         */
+        /** Returns a new [PreferenceCategory] representing a day of permission usage. */
         fun createDayCategoryPreference(): PreferenceCategory
 
         /**
@@ -512,9 +539,7 @@ class PermissionUsageDetailsViewModel(
         ): Preference
     }
 
-    /**
-     * Data used to create a preference for an app's permission usage.
-     */
+    /** Data used to create a preference for an app's permission usage. */
     data class HistoryPreferenceData(
         val userHandle: UserHandle,
         val pkgName: String,
@@ -533,44 +558,60 @@ class PermissionUsageDetailsViewModel(
     /**
      * A class representing a given time, e.g., "in the last hour".
      *
-     * @param time the time represented by this object in milliseconds.
+     * @param timeMs the time represented by this object in milliseconds.
      * @param label the label to describe the timeframe
      */
-    data class TimeFilterItem(
-        val time: Long,
-        val label: String
+    data class TimeFilterItemMs(val timeMs: Long, val label: String)
+
+    /**
+     * Data class representing all the information needed by the permission usage details fragments
+     * to render UI.
+     */
+    data class PermissionUsageDetailsUiData(
+        /** List of [PermissionApp] instances */
+        // Note that these are used only to cache app data for the permission usage details
+        // fragment, and have no bearing on the UI on the main permission usage page.
+        val permissionApps: List<PermissionApp>,
+        /** Whether to show the "show/hide system" toggle. */
+        val shouldDisplayShowSystemToggle: Boolean,
+        /** [DiscreteAccessClusterData] instances ordered for display in UI */
+        val discreteAccessClusterDataList: List<DiscreteAccessClusterData>,
     )
 
-    /** A class representing an app's usage for a group.  */
-    data class UsageData(
-        val group: String,
+    /**
+     * Data class representing a cluster of accesses, to be represented as a single entry in the UI.
+     */
+    data class DiscreteAccessClusterData(
+        val appPermissionTimelineUsages: AppPermissionTimelineUsages,
+        val endTime: Long,
+        val discreteAccessDataList: List<DiscreteAccessData>
+    )
+
+    /** Data class representing a discrete permission access. */
+    data class DiscreteAccessData(
+        val accessTimeMs: Long,
+        val accessDurationMs: Long,
+        val proxy: AppOpsManager.OpEventProxyInfo?
+    )
+
+    /** Data class representing an app's permissions usages for a particular permission group. */
+    data class AppPermissionTimelineUsages(
+        /** Permission group whose usage is being tracked. */
+        val permissionGroup: String,
         // we need a PermissionApp because the loader takes the PermissionApp
         // object and loads the icon and label information asynchronously
-        val app: PermissionApp,
+        /** App whose permissions are being tracked. */
+        val permissionApp: PermissionApp,
+        /** Timeline usages for the given app and permission. */
         val timelineUsages: List<TimelineUsage>,
         val label: Int
     ) {
         val attributionTags: java.util.ArrayList<String>
-            get() = timelineUsages.stream()
-                .map { obj: TimelineUsage -> obj.attributionTags }
-                .filter { obj: List<String>? -> Objects.nonNull(obj) }
-                .flatMap { obj: List<String> -> obj.stream() }
-                .collect(Collectors.toCollection { ArrayList() })
+            get() = ArrayList(timelineUsages.mapNotNull { it.attributionTags }.flatten())
     }
-
-    /**
-     * A class representing an app usage entry in Permission Usage.
-     */
-    data class AppPermissionUsageEntry(
-        val usageData: UsageData,
-        val endTime: Long,
-        val clusteredAccessTimeList: MutableList<Triple<Long, Long, AppOpsManager.OpEventProxyInfo>>
-    )
 }
 
-/**
- * Factory for an [PermissionUsageDetailsViewModel]
- */
+/** Factory for an [PermissionUsageDetailsViewModel] */
 @RequiresApi(Build.VERSION_CODES.S)
 class PermissionUsageDetailsViewModelFactory(
     private val application: Application,
@@ -581,7 +622,7 @@ class PermissionUsageDetailsViewModelFactory(
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         @Suppress("UNCHECKED_CAST")
-        return PermissionUsageDetailsViewModel(application, roleManager, filterGroup,
-            sessionId) as T
+        return PermissionUsageDetailsViewModel(application, roleManager, filterGroup, sessionId)
+            as T
     }
 }
