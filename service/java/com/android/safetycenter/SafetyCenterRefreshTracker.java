@@ -20,7 +20,7 @@ import static android.os.Build.VERSION_CODES.TIRAMISU;
 import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK;
 
 import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__TIMEOUT;
-import static com.android.safetycenter.WestworldLogger.toSystemEventResult;
+import static com.android.safetycenter.StatsdLogger.toSystemEventResult;
 
 import android.annotation.ElapsedRealtimeLong;
 import android.annotation.NonNull;
@@ -60,10 +60,10 @@ final class SafetyCenterRefreshTracker {
 
     private int mRefreshCounter = 0;
 
-    @NonNull private final WestworldLogger mWestworldLogger;
+    @NonNull private final StatsdLogger mStatsdLogger;
 
-    SafetyCenterRefreshTracker(@NonNull WestworldLogger westworldLogger) {
-        mWestworldLogger = westworldLogger;
+    SafetyCenterRefreshTracker(@NonNull StatsdLogger statsdLogger) {
+        mStatsdLogger = statsdLogger;
     }
 
     /**
@@ -135,7 +135,7 @@ final class SafetyCenterRefreshTracker {
      * the refresh as completed. The {@code successful} parameter indicates whether the refresh
      * completed successfully or not.
      *
-     * <p>Completed refreshes are tracked in Westworld.
+     * <p>Completed refreshes are logged to statsd.
      */
     boolean reportSourceRefreshCompleted(
             @NonNull String refreshBroadcastId,
@@ -152,7 +152,7 @@ final class SafetyCenterRefreshTracker {
 
         if (duration != null) {
             int sourceResult = toSystemEventResult(successful);
-            mWestworldLogger.writeSourceRefreshSystemEvent(
+            mStatsdLogger.writeSourceRefreshSystemEvent(
                     requestType, sourceId, userId, duration, sourceResult);
         }
 
@@ -162,7 +162,7 @@ final class SafetyCenterRefreshTracker {
 
         Log.v(TAG, "Refresh with id: " + mRefreshInProgress.getId() + " completed");
         int wholeResult = toSystemEventResult(mRefreshInProgress.hasAnyTrackedSourceErrors());
-        mWestworldLogger.writeWholeRefreshSystemEvent(
+        mStatsdLogger.writeWholeRefreshSystemEvent(
                 requestType, mRefreshInProgress.getDurationSinceStart(), wholeResult);
         mRefreshInProgress = null;
         return true;
@@ -240,7 +240,7 @@ final class SafetyCenterRefreshTracker {
             SafetySourceKey sourceKey = timedOutSources.valueAt(i);
             Duration duration = clearedRefresh.getDurationSinceSourceStart(sourceKey);
             if (duration != null) {
-                mWestworldLogger.writeSourceRefreshSystemEvent(
+                mStatsdLogger.writeSourceRefreshSystemEvent(
                         requestType,
                         sourceKey.getSourceId(),
                         sourceKey.getUserId(),
@@ -249,7 +249,7 @@ final class SafetyCenterRefreshTracker {
             }
         }
 
-        mWestworldLogger.writeWholeRefreshSystemEvent(
+        mStatsdLogger.writeWholeRefreshSystemEvent(
                 requestType,
                 clearedRefresh.getDurationSinceStart(),
                 SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__TIMEOUT);

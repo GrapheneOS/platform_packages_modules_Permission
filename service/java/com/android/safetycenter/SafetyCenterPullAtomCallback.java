@@ -62,7 +62,7 @@ final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback {
 
     @GuardedBy("mApiLock")
     @NonNull
-    private final WestworldLogger mWestworldLogger;
+    private final StatsdLogger mStatsdLogger;
 
     @GuardedBy("mApiLock")
     @NonNull
@@ -83,14 +83,14 @@ final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback {
     SafetyCenterPullAtomCallback(
             @NonNull Context context,
             @NonNull Object apiLock,
-            @NonNull WestworldLogger westworldLogger,
+            @NonNull StatsdLogger statsdLogger,
             @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
             @NonNull SafetyCenterRepository safetyCenterRepository,
             @NonNull SafetyCenterDataTracker safetyCenterDataTracker,
             @NonNull SafetyCenterIssueCache safetyCenterIssueCache) {
         mContext = context;
         mApiLock = apiLock;
-        mWestworldLogger = westworldLogger;
+        mStatsdLogger = statsdLogger;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
         mSafetyCenterRepository = safetyCenterRepository;
         mSafetyCenterDataTracker = safetyCenterDataTracker;
@@ -110,7 +110,7 @@ final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback {
         List<UserProfileGroup> userProfileGroups =
                 UserProfileGroup.getAllUserProfileGroups(mContext);
         synchronized (mApiLock) {
-            if (!mSafetyCenterConfigReader.allowsWestworldLogging()) {
+            if (!mSafetyCenterConfigReader.allowsStatsdLogging()) {
                 Log.w(TAG, "Skipping pulling and writing atoms due to a test config override");
                 return StatsManager.PULL_SKIP;
             }
@@ -139,7 +139,7 @@ final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback {
         long dismissedIssuesCount =
                 mSafetyCenterIssueCache.countActiveIssues(userProfileGroup) - openIssuesCount;
 
-        return mWestworldLogger.createSafetyStateEvent(
+        return mStatsdLogger.createSafetyStateEvent(
                 safetyCenterData.getStatus().getSeverityLevel(),
                 openIssuesCount,
                 dismissedIssuesCount);
@@ -212,7 +212,7 @@ final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback {
         }
         Integer maxSeverityOrNull = maxSeverityLevel > Integer.MIN_VALUE ? maxSeverityLevel : null;
 
-        mWestworldLogger.writeSafetySourceStateCollected(
+        mStatsdLogger.writeSafetySourceStateCollected(
                 safetySourceId,
                 isUserManaged,
                 maxSeverityOrNull,

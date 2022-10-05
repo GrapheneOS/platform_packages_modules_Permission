@@ -173,15 +173,15 @@ public final class SafetyCenterService extends SystemService {
         super(context);
         mSafetyCenterResourcesContext = new SafetyCenterResourcesContext(context);
         mSafetyCenterConfigReader = new SafetyCenterConfigReader(mSafetyCenterResourcesContext);
-        WestworldLogger westworldLogger = new WestworldLogger(context, mSafetyCenterConfigReader);
-        mSafetyCenterRefreshTracker = new SafetyCenterRefreshTracker(westworldLogger);
+        StatsdLogger statsdLogger = new StatsdLogger(context, mSafetyCenterConfigReader);
+        mSafetyCenterRefreshTracker = new SafetyCenterRefreshTracker(statsdLogger);
         mSafetyCenterIssueCache = new SafetyCenterIssueCache(mSafetyCenterConfigReader);
         mSafetyCenterRepository =
                 new SafetyCenterRepository(
                         context,
                         mSafetyCenterConfigReader,
                         mSafetyCenterRefreshTracker,
-                        westworldLogger,
+                        statsdLogger,
                         mSafetyCenterIssueCache);
         mSafetyCenterDataTracker =
                 new SafetyCenterDataTracker(
@@ -199,7 +199,7 @@ public final class SafetyCenterService extends SystemService {
                 new SafetyCenterPullAtomCallback(
                         context,
                         mApiLock,
-                        westworldLogger,
+                        statsdLogger,
                         mSafetyCenterConfigReader,
                         mSafetyCenterRepository,
                         mSafetyCenterDataTracker,
