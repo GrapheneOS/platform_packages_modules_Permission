@@ -144,6 +144,10 @@ public final class SafetyCenterService extends SystemService {
 
     @GuardedBy("mApiLock")
     @NonNull
+    private final SafetyCenterRepository mSafetyCenterRepository;
+
+    @GuardedBy("mApiLock")
+    @NonNull
     private final SafetyCenterDataTracker mSafetyCenterDataTracker;
 
     @GuardedBy("mApiLock")
@@ -174,7 +178,7 @@ public final class SafetyCenterService extends SystemService {
         WestworldLogger westworldLogger = new WestworldLogger(context, mSafetyCenterConfigReader);
         mSafetyCenterRefreshTracker = new SafetyCenterRefreshTracker(westworldLogger);
         mSafetyCenterIssueCache = new SafetyCenterIssueCache(mSafetyCenterConfigReader);
-        SafetyCenterRepository safetyCenterRepository =
+        mSafetyCenterRepository =
                 new SafetyCenterRepository(
                         context,
                         mSafetyCenterConfigReader,
@@ -189,7 +193,7 @@ public final class SafetyCenterService extends SystemService {
                         westworldLogger,
                         new PendingIntentFactory(context),
                         mSafetyCenterIssueCache,
-                        safetyCenterRepository);
+                        mSafetyCenterRepository);
         mSafetyCenterListeners = new SafetyCenterListeners(mSafetyCenterDataTracker);
         mSafetyCenterBroadcastDispatcher =
                 new SafetyCenterBroadcastDispatcher(
@@ -277,7 +281,7 @@ public final class SafetyCenterService extends SystemService {
             UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
             synchronized (mApiLock) {
                 boolean hasUpdate =
-                        mSafetyCenterDataTracker.setSafetySourceData(
+                        mSafetyCenterRepository.setSafetySourceData(
                                 safetySourceData, safetySourceId, safetyEvent, packageName, userId);
                 mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
                         userProfileGroup, hasUpdate, null);
@@ -303,7 +307,7 @@ public final class SafetyCenterService extends SystemService {
             }
 
             synchronized (mApiLock) {
-                return mSafetyCenterDataTracker.getSafetySourceData(
+                return mSafetyCenterRepository.getSafetySourceData(
                         safetySourceId, packageName, userId);
             }
         }
@@ -329,7 +333,7 @@ public final class SafetyCenterService extends SystemService {
             UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
             synchronized (mApiLock) {
                 boolean hasUpdate =
-                        mSafetyCenterDataTracker.reportSafetySourceError(
+                        mSafetyCenterRepository.reportSafetySourceError(
                                 errorDetails, safetySourceId, packageName, userId);
                 SafetyCenterErrorDetails safetyCenterErrorDetails = null;
                 if (hasUpdate
@@ -460,7 +464,7 @@ public final class SafetyCenterService extends SystemService {
                     "dismissSafetyCenterIssue", userProfileGroup, safetyCenterIssueKey.getUserId());
             synchronized (mApiLock) {
                 SafetySourceIssue safetySourceIssue =
-                        mSafetyCenterDataTracker.getSafetySourceIssue(safetyCenterIssueKey);
+                        mSafetyCenterRepository.getSafetySourceIssue(safetyCenterIssueKey);
                 if (safetySourceIssue == null) {
                     Log.w(
                             TAG,
@@ -470,7 +474,7 @@ public final class SafetyCenterService extends SystemService {
                     // button multiple times in a row.
                     return;
                 }
-                mSafetyCenterDataTracker.dismissSafetyCenterIssue(safetyCenterIssueKey);
+                mSafetyCenterRepository.dismissSafetyCenterIssue(safetyCenterIssueKey);
                 scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked();
                 PendingIntent onDismissPendingIntent =
                         safetySourceIssue.getOnDismissPendingIntent();
@@ -523,7 +527,7 @@ public final class SafetyCenterService extends SystemService {
                     safetyCenterIssueKey.getUserId());
             synchronized (mApiLock) {
                 SafetySourceIssue.Action safetySourceIssueAction =
-                        mSafetyCenterDataTracker.getSafetySourceIssueAction(
+                        mSafetyCenterRepository.getSafetySourceIssueAction(
                                 safetyCenterIssueActionId);
                 if (safetySourceIssueAction == null) {
                     Log.w(
@@ -556,7 +560,7 @@ public final class SafetyCenterService extends SystemService {
                     return;
                 }
                 if (safetySourceIssueAction.willResolve()) {
-                    mSafetyCenterDataTracker.markSafetyCenterIssueActionInFlight(
+                    mSafetyCenterRepository.markSafetyCenterIssueActionInFlight(
                             safetyCenterIssueActionId);
                     ResolvingActionTimeout resolvingActionTimeout =
                             new ResolvingActionTimeout(safetyCenterIssueActionId, userProfileGroup);
@@ -734,7 +738,7 @@ public final class SafetyCenterService extends SystemService {
                 SafetyCenterService.this.dumpLocked(fd, fout);
                 SafetyCenterFlags.dump(fout);
                 mSafetyCenterConfigReader.dump(fout);
-                mSafetyCenterDataTracker.dump(fout);
+                mSafetyCenterRepository.dump(fout);
                 mSafetyCenterIssueCache.dump(fout);
                 mSafetyCenterRefreshTracker.dump(fout);
                 mSafetyCenterTimeouts.dump(fout);
@@ -884,7 +888,7 @@ public final class SafetyCenterService extends SystemService {
                         SafetyCenterFlags.getShowErrorEntriesOnTimeout();
                 if (showErrorEntriesOnTimeout) {
                     for (int i = 0; i < stillInFlight.size(); i++) {
-                        mSafetyCenterDataTracker.setSafetySourceError(stillInFlight.valueAt(i));
+                        mSafetyCenterRepository.setSafetySourceError(stillInFlight.valueAt(i));
                     }
                 }
                 mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
@@ -932,7 +936,7 @@ public final class SafetyCenterService extends SystemService {
             synchronized (mApiLock) {
                 mSafetyCenterTimeouts.remove(this);
                 boolean safetyCenterDataHasChanged =
-                        mSafetyCenterDataTracker.unmarkSafetyCenterIssueActionInFlight(
+                        mSafetyCenterRepository.unmarkSafetyCenterIssueActionInFlight(
                                 mSafetyCenterIssueActionId,
                                 SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__TIMEOUT);
                 if (!safetyCenterDataHasChanged) {
@@ -1020,7 +1024,7 @@ public final class SafetyCenterService extends SystemService {
         UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
         synchronized (mApiLock) {
             if (clearDataPermanently) {
-                mSafetyCenterDataTracker.clearForUser(userId);
+                mSafetyCenterRepository.clearForUser(userId);
             }
             mSafetyCenterListeners.clearForUser(userId);
             mSafetyCenterRefreshTracker.clearRefreshForUser(userId);
@@ -1033,7 +1037,7 @@ public final class SafetyCenterService extends SystemService {
             @RefreshReason int refreshReason, @UserIdInt int userId) {
         UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
         synchronized (mApiLock) {
-            mSafetyCenterDataTracker.clearSafetySourceErrors(userProfileGroup);
+            mSafetyCenterRepository.clearSafetySourceErrors(userProfileGroup);
 
             String refreshBroadcastId =
                     mSafetyCenterBroadcastDispatcher.sendRefreshSafetySources(
@@ -1106,7 +1110,7 @@ public final class SafetyCenterService extends SystemService {
 
     @GuardedBy("mApiLock")
     private void clearDataLocked() {
-        mSafetyCenterDataTracker.clear();
+        mSafetyCenterRepository.clear();
         mSafetyCenterTimeouts.clear();
         mSafetyCenterRefreshTracker.clearRefresh();
         scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked();

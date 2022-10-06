@@ -35,9 +35,7 @@ import android.safetycenter.SafetyCenterIssue;
 import android.safetycenter.SafetyCenterStaticEntry;
 import android.safetycenter.SafetyCenterStaticEntryGroup;
 import android.safetycenter.SafetyCenterStatus;
-import android.safetycenter.SafetyEvent;
 import android.safetycenter.SafetySourceData;
-import android.safetycenter.SafetySourceErrorDetails;
 import android.safetycenter.SafetySourceIssue;
 import android.safetycenter.SafetySourceStatus;
 import android.safetycenter.config.SafetyCenterConfig;
@@ -51,7 +49,6 @@ import android.util.StatsEvent;
 import androidx.annotation.RequiresApi;
 
 import com.android.permission.PermissionStatsLog;
-import com.android.safetycenter.WestworldLogger.SystemEventResult;
 import com.android.safetycenter.internaldata.SafetyCenterEntryGroupId;
 import com.android.safetycenter.internaldata.SafetyCenterEntryId;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
@@ -60,7 +57,6 @@ import com.android.safetycenter.internaldata.SafetyCenterIssueId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -69,13 +65,13 @@ import java.util.Locale;
 import javax.annotation.concurrent.NotThreadSafe;
 
 /**
- * A class that keeps track of all the {@link SafetySourceData} set by safety sources, and
- * aggregates them into a {@link SafetyCenterData} object to be used by PermissionController.
+ * Aggregates {@link SafetySourceData} into a {@link SafetyCenterData} object to be used by Safety
+ * Center listeners including PermissionController.
  *
  * <p>This class isn't thread safe. Thread safety must be handled by the caller.
  */
 // TODO(b/250812300): Change the name of this class to reflect the "aggregating them into
-//   SafetyCenterData object" responsibility only not the keeping track of SafetySourceData.
+//   SafetyCenterData object" responsibility only.
 @RequiresApi(TIRAMISU)
 @NotThreadSafe
 final class SafetyCenterDataTracker {
@@ -114,68 +110,6 @@ final class SafetyCenterDataTracker {
     }
 
     /**
-     * @see SafetyCenterRepository#setSafetySourceData
-     */
-    // TODO(b/250813415): Stop passing SafetyDataRepository calls through SafetyCenterDataTracker
-    boolean setSafetySourceData(
-            @Nullable SafetySourceData safetySourceData,
-            @NonNull String safetySourceId,
-            @NonNull SafetyEvent safetyEvent,
-            @NonNull String packageName,
-            @UserIdInt int userId) {
-        return mSafetyCenterRepository.setSafetySourceData(
-                safetySourceData, safetySourceId, safetyEvent, packageName, userId);
-    }
-
-    /**
-     * @see SafetyCenterRepository#getSafetySourceData(String, String, int)
-     */
-    // TODO(b/250813415): Stop passing SafetyDataRepository calls through SafetyCenterDataTracker
-    @Nullable
-    SafetySourceData getSafetySourceData(
-            @NonNull String safetySourceId, @NonNull String packageName, @UserIdInt int userId) {
-        return mSafetyCenterRepository.getSafetySourceData(safetySourceId, packageName, userId);
-    }
-
-    /**
-     * @see SafetyCenterRepository#getSafetySourceData(SafetySourceKey)
-     */
-    // TODO(b/250813415): Stop passing SafetyDataRepository calls through SafetyCenterDataTracker
-    @Nullable
-    private SafetySourceData getSafetySourceData(@NonNull SafetySourceKey safetySourceKey) {
-        return mSafetyCenterRepository.getSafetySourceData(safetySourceKey);
-    }
-
-    /**
-     * @see SafetyCenterRepository#reportSafetySourceError
-     */
-    // TODO(b/250813415): Stop passing SafetyDataRepository calls through SafetyCenterDataTracker
-    boolean reportSafetySourceError(
-            @NonNull SafetySourceErrorDetails safetySourceErrorDetails,
-            @NonNull String safetySourceId,
-            @NonNull String packageName,
-            @UserIdInt int userId) {
-        return mSafetyCenterRepository.reportSafetySourceError(
-                safetySourceErrorDetails, safetySourceId, packageName, userId);
-    }
-
-    /**
-     * @see SafetyCenterRepository#setSafetySourceError
-     */
-    // TODO(b/250813415): Stop passing SafetyDataRepository calls through SafetyCenterDataTracker
-    boolean setSafetySourceError(@NonNull SafetySourceKey safetySourceKey) {
-        return mSafetyCenterRepository.setSafetySourceError(safetySourceKey);
-    }
-
-    /**
-     * @see SafetyCenterRepository#clearSafetySourceErrors
-     */
-    // TODO(b/250813415): Stop passing SafetyDataRepository calls through SafetyCenterDataTracker
-    void clearSafetySourceErrors(@NonNull UserProfileGroup userProfileGroup) {
-        mSafetyCenterRepository.clearSafetySourceErrors(userProfileGroup);
-    }
-
-    /**
      * Returns the current {@link SafetyCenterData} for the given {@code packageName} and {@link
      * UserProfileGroup}, aggregated from all the {@link SafetySourceData} set so far.
      *
@@ -190,53 +124,6 @@ final class SafetyCenterDataTracker {
     }
 
     /**
-     * @see SafetyCenterRepository#markSafetyCenterIssueActionInFlight
-     */
-    // TODO(b/250813415): Stop passing SafetyDataRepository calls through SafetyCenterDataTracker
-    void markSafetyCenterIssueActionInFlight(
-            @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
-        mSafetyCenterRepository.markSafetyCenterIssueActionInFlight(safetyCenterIssueActionId);
-    }
-
-    /**
-     * @see SafetyCenterRepository#unmarkSafetyCenterIssueActionInFlight
-     */
-    // TODO(b/250813415): Stop passing SafetyDataRepository calls through SafetyCenterDataTracker
-    boolean unmarkSafetyCenterIssueActionInFlight(
-            @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId,
-            @SystemEventResult int result) {
-        return mSafetyCenterRepository.unmarkSafetyCenterIssueActionInFlight(
-                safetyCenterIssueActionId, result);
-    }
-
-    /**
-     * @see SafetyCenterRepository#dismissSafetyCenterIssue
-     */
-    // TODO(b/250813415): Stop passing SafetyDataRepository calls through SafetyCenterDataTracker
-    void dismissSafetyCenterIssue(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
-        mSafetyCenterRepository.dismissSafetyCenterIssue(safetyCenterIssueKey);
-    }
-
-    /**
-     * @see SafetyCenterRepository#getSafetySourceIssue
-     */
-    // TODO(b/250813415): Stop passing SafetyDataRepository calls through SafetyCenterDataTracker
-    @Nullable
-    SafetySourceIssue getSafetySourceIssue(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
-        return mSafetyCenterRepository.getSafetySourceIssue(safetyCenterIssueKey);
-    }
-
-    /**
-     * @see SafetyCenterRepository#getSafetySourceIssueAction
-     */
-    // TODO(b/250813415): Stop passing SafetyDataRepository calls through SafetyCenterDataTracker
-    @Nullable
-    SafetySourceIssue.Action getSafetySourceIssueAction(
-            @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
-        return mSafetyCenterRepository.getSafetySourceIssueAction(safetyCenterIssueActionId);
-    }
-
-    /**
      * Returns a default {@link SafetyCenterData} object to be returned when the API is disabled.
      */
     @NonNull
@@ -248,30 +135,6 @@ final class SafetyCenterDataTracker {
                 emptyList(),
                 emptyList(),
                 emptyList());
-    }
-
-    /**
-     * @see SafetyCenterRepository#clear()
-     */
-    // TODO(b/250813415): Stop passing SafetyDataRepository calls through SafetyCenterDataTracker
-    void clear() {
-        mSafetyCenterRepository.clear();
-    }
-
-    /**
-     * @see SafetyCenterRepository#clearForUser
-     */
-    // TODO(b/250813415): Stop passing SafetyDataRepository calls through SafetyCenterDataTracker
-    void clearForUser(@UserIdInt int userId) {
-        mSafetyCenterRepository.clearForUser(userId);
-    }
-
-    /**
-     * @see SafetyCenterRepository#dump
-     */
-    // TODO(b/250813415): Stop passing SafetyDataRepository calls through SafetyCenterDataTracker
-    void dump(@NonNull PrintWriter fout) {
-        mSafetyCenterRepository.dump(fout);
     }
 
     /**
@@ -335,7 +198,7 @@ final class SafetyCenterDataTracker {
     private void writeSafetySourceStateCollectedAtom(
             @NonNull String safetySourceId, @UserIdInt int userId, boolean isUserManaged) {
         SafetySourceKey key = SafetySourceKey.of(safetySourceId, userId);
-        SafetySourceData safetySourceData = getSafetySourceData(key);
+        SafetySourceData safetySourceData = mSafetyCenterRepository.getSafetySourceData(key);
         SafetySourceStatus safetySourceStatus = getSafetySourceStatus(safetySourceData);
         List<SafetySourceIssue> safetySourceIssues =
                 safetySourceData == null ? emptyList() : safetySourceData.getIssues();
@@ -370,16 +233,6 @@ final class SafetyCenterDataTracker {
                 maxSeverityOrNull,
                 openIssuesCount,
                 dismissedIssuesCount);
-    }
-
-    // TODO(b/250813415): Stop passing SafetyDataRepository calls through SafetyCenterDataTracker
-    private boolean actionIsInFlight(@NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
-        return mSafetyCenterRepository.actionIsInFlight(safetyCenterIssueActionId);
-    }
-
-    // TODO(b/250813415): Stop passing SafetyDataRepository calls through SafetyCenterDataTracker
-    private boolean sourceHasError(@NonNull SafetySourceKey safetySourceKey) {
-        return mSafetyCenterRepository.sourceHasError(safetySourceKey);
     }
 
     @NonNull
@@ -498,7 +351,7 @@ final class SafetyCenterDataTracker {
             @NonNull SafetySource safetySource,
             @UserIdInt int userId) {
         SafetySourceKey key = SafetySourceKey.of(safetySource.getId(), userId);
-        SafetySourceData safetySourceData = getSafetySourceData(key);
+        SafetySourceData safetySourceData = mSafetyCenterRepository.getSafetySourceData(key);
 
         if (safetySourceData == null) {
             return;
@@ -584,7 +437,7 @@ final class SafetyCenterDataTracker {
                         safetySourceIssueAction.getLabel(),
                         safetySourceIssueAction.getPendingIntent())
                 .setSuccessMessage(safetySourceIssueAction.getSuccessMessage())
-                .setIsInFlight(actionIsInFlight(safetyCenterIssueActionId))
+                .setIsInFlight(mSafetyCenterRepository.actionIsInFlight(safetyCenterIssueActionId))
                 .setWillResolve(safetySourceIssueAction.willResolve())
                 .build();
     }
@@ -707,7 +560,8 @@ final class SafetyCenterDataTracker {
                     }
 
                     SafetySourceKey key = toSafetySourceKey(entry.getId());
-                    SafetySourceData safetySourceData = getSafetySourceData(key);
+                    SafetySourceData safetySourceData =
+                            mSafetyCenterRepository.getSafetySourceData(key);
                     boolean hasIssues =
                             safetySourceData != null && !safetySourceData.getIssues().isEmpty();
 
@@ -725,7 +579,7 @@ final class SafetyCenterDataTracker {
                     SafetyCenterEntry entry = entries.get(i);
 
                     SafetySourceKey key = toSafetySourceKey(entry.getId());
-                    if (sourceHasError(key)) {
+                    if (mSafetyCenterRepository.sourceHasError(key)) {
                         errorEntries++;
                     }
                 }
@@ -810,7 +664,7 @@ final class SafetyCenterDataTracker {
             case SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC:
                 SafetySourceKey key = SafetySourceKey.of(safetySource.getId(), userId);
                 SafetySourceStatus safetySourceStatus =
-                        getSafetySourceStatus(getSafetySourceData(key));
+                        getSafetySourceStatus(mSafetyCenterRepository.getSafetySourceData(key));
                 boolean defaultEntryDueToQuietMode = isUserManaged && !isManagedUserRunning;
                 if (safetySourceStatus != null && !defaultEntryDueToQuietMode) {
                     PendingIntent pendingIntent = safetySourceStatus.getPendingIntent();
@@ -914,7 +768,8 @@ final class SafetyCenterDataTracker {
                                 safetySource.getTitleForWorkResId())
                         : mSafetyCenterResourcesContext.getString(safetySource.getTitleResId());
         CharSequence summary =
-                sourceHasError(SafetySourceKey.of(safetySource.getId(), userId))
+                mSafetyCenterRepository.sourceHasError(
+                                SafetySourceKey.of(safetySource.getId(), userId))
                         ? getRefreshErrorString(1)
                         : mSafetyCenterResourcesContext.getOptionalString(
                                 safetySource.getSummaryResId());
@@ -999,7 +854,9 @@ final class SafetyCenterDataTracker {
             return;
         }
         boolean isQuietModeEnabled = isUserManaged && !isManagedUserRunning;
-        boolean hasError = sourceHasError(SafetySourceKey.of(safetySource.getId(), userId));
+        boolean hasError =
+                mSafetyCenterRepository.sourceHasError(
+                        SafetySourceKey.of(safetySource.getId(), userId));
         if (isQuietModeEnabled || hasError) {
             safetyCenterOverallState.addEntryOverallSeverityLevel(
                     SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN);
@@ -1020,7 +877,7 @@ final class SafetyCenterDataTracker {
             case SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC:
                 SafetySourceKey key = SafetySourceKey.of(safetySource.getId(), userId);
                 SafetySourceStatus safetySourceStatus =
-                        getSafetySourceStatus(getSafetySourceData(key));
+                        getSafetySourceStatus(mSafetyCenterRepository.getSafetySourceData(key));
                 boolean defaultEntryDueToQuietMode = isUserManaged && !isManagedUserRunning;
                 if (safetySourceStatus != null && !defaultEntryDueToQuietMode) {
                     PendingIntent pendingIntent = safetySourceStatus.getPendingIntent();
@@ -1080,7 +937,8 @@ final class SafetyCenterDataTracker {
                                 safetySource.getTitleForWorkResId())
                         : mSafetyCenterResourcesContext.getString(safetySource.getTitleResId());
         CharSequence summary =
-                sourceHasError(SafetySourceKey.of(safetySource.getId(), userId))
+                mSafetyCenterRepository.sourceHasError(
+                                SafetySourceKey.of(safetySource.getId(), userId))
                         ? getRefreshErrorString(1)
                         : mSafetyCenterResourcesContext.getOptionalString(
                                 safetySource.getSummaryResId());
