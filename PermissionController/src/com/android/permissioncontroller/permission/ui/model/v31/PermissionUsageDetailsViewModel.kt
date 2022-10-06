@@ -27,13 +27,9 @@ import android.content.res.Resources
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.UserHandle
-import android.text.format.DateFormat
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.preference.Preference
-import androidx.preference.PreferenceCategory
-import androidx.preference.PreferenceScreen
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.model.AppPermissionGroup
@@ -49,13 +45,9 @@ import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.StringUtils
 import com.android.permissioncontroller.permission.utils.SubattributionUtils
 import com.android.permissioncontroller.permission.utils.Utils
-import java.time.Clock
 import java.time.Instant
-import java.time.ZonedDateTime
-import java.time.temporal.ChronoUnit
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.TimeUnit.DAYS
-import java.util.concurrent.atomic.AtomicReference
 import kotlin.math.max
 
 /** View model for the permission details fragment. */
@@ -76,11 +68,6 @@ class PermissionUsageDetailsViewModel(
     }
 
     private val mTimeFilterItemMs = mutableListOf<TimeFilterItemMs>()
-
-    private val midnightToday =
-        ZonedDateTime.now().truncatedTo(ChronoUnit.DAYS).toEpochSecond() * 1000L
-    private val midnightYesterday =
-        ZonedDateTime.now().minusDays(1).truncatedTo(ChronoUnit.DAYS).toEpochSecond() * 1000L
 
     init {
         initializeTimeFilterItems(application)
@@ -132,79 +119,45 @@ class PermissionUsageDetailsViewModel(
         val appPermissionTimelineUsages: List<AppPermissionTimelineUsages> =
             extractAppPermissionTimelineUsagesForGroup(appPermissionUsages, permissionGroup)
         val shouldDisplayShowSystemToggle =
-                shouldDisplayShowSystemToggle(appPermissionTimelineUsages)
+            shouldDisplayShowSystemToggle(appPermissionTimelineUsages)
         val permissionApps: List<PermissionApp> =
             getPermissionAppsWithRecentDiscreteUsage(
                 appPermissionTimelineUsages, showSystem, startTime)
         val appPermissionUsageEntries =
             buildDiscreteAccessClusterData(appPermissionTimelineUsages, showSystem, startTime)
+
         return PermissionUsageDetailsUiData(
             permissionApps, shouldDisplayShowSystemToggle, appPermissionUsageEntries)
     }
 
-    // TODO(b/243970988): Move UI-specific code to the fragment (e.g. PreferenceCategory and
-    // PreferenceScreen).
-    /** Render the provided [discreteAccessClusterDataList] into the [preferenceScreen] UI. */
-    fun renderHistoryPreferences(
-        discreteAccessClusterDataList: List<DiscreteAccessClusterData>,
-        category: AtomicReference<PreferenceCategory>,
-        preferenceScreen: PreferenceScreen,
-        historyPreferenceFactory: HistoryPreferenceFactory
-    ) {
+    private fun getHistoryPreferenceData(
+        discreteAccessClusterData: DiscreteAccessClusterData,
+    ): HistoryPreferenceData {
         val context = application
-        var previousDateLabel = 0L
-        discreteAccessClusterDataList.forEachIndexed { usageNum, usage ->
-            val usageTimestamp = usage.endTime
-            val currentDateLabel =
-                ZonedDateTime.ofInstant(
-                        Instant.ofEpochMilli(usageTimestamp), Clock.systemDefaultZone().zone)
-                    .truncatedTo(ChronoUnit.DAYS)
-                    .toEpochSecond() * 1000L
-            if (currentDateLabel != previousDateLabel) {
-                if (previousDateLabel != 0L) {
-                    category.set(historyPreferenceFactory.createDayCategoryPreference())
-                    preferenceScreen.addPreference(category.get())
-                }
-                if (usageTimestamp > midnightToday) {
-                    category.get().setTitle(R.string.permission_history_category_today)
-                } else if (usageTimestamp > midnightYesterday) {
-                    category.get().setTitle(R.string.permission_history_category_yesterday)
-                } else {
-                    category
-                        .get()
-                        .setTitle(DateFormat.getDateFormat(context).format(currentDateLabel))
-                }
-                previousDateLabel = currentDateLabel
-            }
+        val accessTimeList =
+            discreteAccessClusterData.discreteAccessDataList.map { p -> p.accessTimeMs }
+        val durationSummaryLabel =
+            getDurationSummary(discreteAccessClusterData, accessTimeList, context)
+        val proxyLabel = getProxyPackageLabel(discreteAccessClusterData)
+        val subattributionLabel = getSubattributionLabel(discreteAccessClusterData)
+        val showingSubattribution =
+            subattributionLabel != null && subattributionLabel!!.isNotEmpty()
+        val summary =
+            buildUsageSummary(durationSummaryLabel, proxyLabel, subattributionLabel, context)
 
-            val accessTimeList = usage.discreteAccessDataList.map { p -> p.accessTimeMs }
-            val durationSummaryLabel = getDurationSummary(usage, accessTimeList, context)
-            val proxyLabel = getProxyPackageLabel(usage)
-            val subattributionLabel = getSubattributionLabel(usage)
-            val showingSubattribution =
-                subattributionLabel != null && subattributionLabel!!.isNotEmpty()
-            val summary =
-                buildUsageSummary(durationSummaryLabel, proxyLabel, subattributionLabel, context)
-            val accessTime = DateFormat.getTimeFormat(context).format(usage.endTime)
-
-            val permissionUsagePreference =
-                historyPreferenceFactory.createPermissionHistoryPreference(
-                    HistoryPreferenceData(
-                        UserHandle.getUserHandleForUid(
-                            usage.appPermissionTimelineUsages.permissionApp.uid),
-                        usage.appPermissionTimelineUsages.permissionApp.packageName,
-                        usage.appPermissionTimelineUsages.permissionApp.icon,
-                        usage.appPermissionTimelineUsages.permissionApp.label,
-                        permissionGroup,
-                        accessTime,
-                        summary,
-                        showingSubattribution,
-                        accessTimeList,
-                        usage.appPermissionTimelineUsages.attributionTags,
-                        usageNum == discreteAccessClusterDataList.size - 1,
-                        sessionId))
-            category.get().addPreference(permissionUsagePreference)
-        }
+        return HistoryPreferenceData(
+            UserHandle.getUserHandleForUid(
+                discreteAccessClusterData.appPermissionTimelineUsages.permissionApp.uid),
+            discreteAccessClusterData.appPermissionTimelineUsages.permissionApp.packageName,
+            discreteAccessClusterData.appPermissionTimelineUsages.permissionApp.icon,
+            discreteAccessClusterData.appPermissionTimelineUsages.permissionApp.label,
+            permissionGroup,
+            discreteAccessClusterData.endTime,
+            summary,
+            showingSubattribution,
+            accessTimeList,
+            discreteAccessClusterData.appPermissionTimelineUsages.attributionTags,
+            sessionId)
     }
 
     /**
@@ -307,17 +260,12 @@ class PermissionUsageDetailsViewModel(
                 currentDiscreteAccessDataList.add(discreteAccessData)
                 currentAccessTimeMs = discreteAccessData.accessTimeMs
             } else if (!canAccessBeAddedToCluster(
-                    discreteAccessData,
-                    currentDiscreteAccessDataList
-                )
-            ) {
+                discreteAccessData, currentDiscreteAccessDataList)) {
                 clusterDataList.add(
                     DiscreteAccessClusterData(
                         appPermissionTimelineUsages,
                         currentAccessTimeMs,
-                        currentDiscreteAccessDataList.toMutableList()
-                    )
-                )
+                        currentDiscreteAccessDataList.toMutableList()))
                 currentDiscreteAccessDataList.clear()
                 currentDiscreteAccessDataList.add(discreteAccessData)
                 currentAccessTimeMs = discreteAccessData.accessTimeMs
@@ -326,10 +274,11 @@ class PermissionUsageDetailsViewModel(
             }
         }
         if (currentDiscreteAccessDataList.isNotEmpty()) {
-            clusterDataList.add(DiscreteAccessClusterData(
-                appPermissionTimelineUsages,
-                currentAccessTimeMs,
-                currentDiscreteAccessDataList))
+            clusterDataList.add(
+                DiscreteAccessClusterData(
+                    appPermissionTimelineUsages,
+                    currentAccessTimeMs,
+                    currentDiscreteAccessDataList))
         }
         return clusterDataList
     }
@@ -524,21 +473,6 @@ class PermissionUsageDetailsViewModel(
         // TODO: theianchen add code for filtering by time here.
     }
 
-    // TODO(b/243970988): Remove this Factory and move preference creating logic to the fragment.
-    /** Factory for creating preferences to be added to the screen. */
-    interface HistoryPreferenceFactory {
-        /** Returns a new [PreferenceCategory] representing a day of permission usage. */
-        fun createDayCategoryPreference(): PreferenceCategory
-
-        /**
-         * Returns a preference representing an app's permission usage, including its timestamp and
-         * usage details.
-         */
-        fun createPermissionHistoryPreference(
-            historyPreferenceData: HistoryPreferenceData
-        ): Preference
-    }
-
     /** Data used to create a preference for an app's permission usage. */
     data class HistoryPreferenceData(
         val userHandle: UserHandle,
@@ -546,12 +480,11 @@ class PermissionUsageDetailsViewModel(
         val appIcon: Drawable?,
         val preferenceTitle: String,
         val permissionGroup: String,
-        val accessTime: String,
+        val accessEndTime: Long,
         val summaryText: CharSequence?,
         val showingAttribution: Boolean,
         val accessTimeList: List<Long>,
         val attributionTags: ArrayList<String>,
-        val isLastUsage: Boolean,
         val sessionId: Long
     )
 
@@ -564,10 +497,10 @@ class PermissionUsageDetailsViewModel(
     data class TimeFilterItemMs(val timeMs: Long, val label: String)
 
     /**
-     * Data class representing all the information needed by the permission usage details fragments
-     * to render UI.
+     * Class containing all the information needed by the permission usage details fragments to
+     * render UI.
      */
-    data class PermissionUsageDetailsUiData(
+    inner class PermissionUsageDetailsUiData(
         /** List of [PermissionApp] instances */
         // Note that these are used only to cache app data for the permission usage details
         // fragment, and have no bearing on the UI on the main permission usage page.
@@ -575,8 +508,19 @@ class PermissionUsageDetailsViewModel(
         /** Whether to show the "show/hide system" toggle. */
         val shouldDisplayShowSystemToggle: Boolean,
         /** [DiscreteAccessClusterData] instances ordered for display in UI */
-        val discreteAccessClusterDataList: List<DiscreteAccessClusterData>,
-    )
+        private val discreteAccessClusterDataList: List<DiscreteAccessClusterData>,
+    ) {
+        // Note that the HistoryPreferenceData are not initialized within the
+        // PermissionUsageDetailsUiData instance as the need to be constructed only after the
+        // calling fragment loads the necessary PermissionApp instances. We will attempt to remove
+        // this dependency in b/240978905.
+        /** Builds a list of [HistoryPreferenceData] to be displayed in the UI. */
+        fun getHistoryPreferenceDataList(): List<HistoryPreferenceData> {
+            return discreteAccessClusterDataList.map {
+                this@PermissionUsageDetailsViewModel.getHistoryPreferenceData(it)
+            }
+        }
+    }
 
     /**
      * Data class representing a cluster of accesses, to be represented as a single entry in the UI.

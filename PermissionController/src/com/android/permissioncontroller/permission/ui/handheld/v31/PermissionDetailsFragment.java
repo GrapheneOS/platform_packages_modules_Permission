@@ -30,6 +30,7 @@ import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -61,6 +62,11 @@ import com.android.permissioncontroller.permission.utils.Utils;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
+import java.time.Clock;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
@@ -81,7 +87,15 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader
 
     private static final int MENU_SHOW_7_DAYS_DATA = Menu.FIRST + 4;
     private static final int MENU_SHOW_24_HOURS_DATA = Menu.FIRST + 5;
-
+    private static final long MIDNIGHT_TODAY =
+            ZonedDateTime.now(ZoneId.systemDefault()).truncatedTo(ChronoUnit.DAYS).toEpochSecond()
+                    * 1000L;
+    private static final long MIDNIGHT_YESTERDAY =
+            ZonedDateTime.now(ZoneId.systemDefault())
+                            .minusDays(1)
+                            .truncatedTo(ChronoUnit.DAYS)
+                            .toEpochSecond()
+                    * 1000L;
     private @Nullable String mFilterGroup;
     private int mFilterTimeIndex;
     private @Nullable List<AppPermissionUsage> mAppPermissionUsages = new ArrayList<>();
@@ -352,9 +366,8 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader
 
         // Make these variables effectively final so that
         // we can use these captured variables in the below lambda expression
-        PreferenceFactory preferenceFactory = new PreferenceFactory(requireActivity());
         AtomicReference<PreferenceCategory> category =
-                new AtomicReference<>(preferenceFactory.createDayCategoryPreference());
+                new AtomicReference<>(createDayCategoryPreference());
         screen.addPreference(category.get());
         PreferenceScreen finalScreen = screen;
 
@@ -365,11 +378,8 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader
                         // Fragment has no Activity, return.
                         return;
                     }
-                    mViewModel.renderHistoryPreferences(
-                            uiData.getDiscreteAccessClusterDataList(),
-                            category,
-                            finalScreen,
-                            preferenceFactory);
+                    renderHistoryPreferences(
+                            uiData.getHistoryPreferenceDataList(), category, finalScreen);
 
                     setLoading(false, true);
                     mFinishedInitialLoad = true;
@@ -381,41 +391,66 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader
                         new PermissionApps.PermissionApp[permissionApps.size()]));
     }
 
-    private static class PreferenceFactory
-            implements PermissionUsageDetailsViewModel.HistoryPreferenceFactory {
+    /** Render the provided [historyPreferenceDataList] into the [preferenceScreen] UI. */
+    private void renderHistoryPreferences(
+            List<PermissionUsageDetailsViewModel.HistoryPreferenceData> historyPreferenceDataList,
+            AtomicReference<PreferenceCategory> category,
+            PreferenceScreen preferenceScreen) {
+        Context context = getContext();
+        long previousDateMs = 0L;
+        for (int i = 0; i < historyPreferenceDataList.size(); i++) {
+            PermissionUsageDetailsViewModel.HistoryPreferenceData historyPreferenceData =
+                    historyPreferenceDataList.get(i);
+            long accessEndTime = historyPreferenceData.getAccessEndTime();
+            long currentDateMs =
+                    ZonedDateTime.ofInstant(
+                                            Instant.ofEpochMilli(accessEndTime),
+                                            Clock.system(ZoneId.systemDefault()).getZone())
+                                    .truncatedTo(ChronoUnit.DAYS)
+                                    .toEpochSecond()
+                            * 1000L;
+            if (currentDateMs != previousDateMs) {
+                if (previousDateMs != 0L) {
+                    category.set(createDayCategoryPreference());
+                    preferenceScreen.addPreference(category.get());
+                }
+                if (accessEndTime > MIDNIGHT_TODAY) {
+                    category.get().setTitle(R.string.permission_history_category_today);
+                } else if (accessEndTime > MIDNIGHT_YESTERDAY) {
+                    category.get().setTitle(R.string.permission_history_category_yesterday);
+                } else {
+                    category.get()
+                            .setTitle(DateFormat.getDateFormat(context).format(currentDateMs));
+                }
+                previousDateMs = currentDateMs;
+            }
 
-        private Context mContext;
+            Preference permissionUsagePreference =
+                    new PermissionHistoryPreference(
+                            getContext(),
+                            historyPreferenceData.getUserHandle(),
+                            historyPreferenceData.getPkgName(),
+                            historyPreferenceData.getAppIcon(),
+                            historyPreferenceData.getPreferenceTitle(),
+                            historyPreferenceData.getPermissionGroup(),
+                            DateFormat.getTimeFormat(getContext())
+                                    .format(historyPreferenceData.getAccessEndTime()),
+                            historyPreferenceData.getSummaryText(),
+                            historyPreferenceData.getShowingAttribution(),
+                            historyPreferenceData.getAccessTimeList(),
+                            historyPreferenceData.getAttributionTags(),
+                            i == historyPreferenceDataList.size() - 1,
+                            historyPreferenceData.getSessionId());
 
-        PreferenceFactory(Context context) {
-            mContext = context;
+            category.get().addPreference(permissionUsagePreference);
         }
+    }
 
-        @Override
-        public PreferenceCategory createDayCategoryPreference() {
-            PreferenceCategory category = new PreferenceCategory(mContext);
-            // Do not reserve icon space, so that the text moves all the way left.
-            category.setIconSpaceReserved(false);
-            return category;
-        }
-
-        @Override
-        public Preference createPermissionHistoryPreference(
-                PermissionUsageDetailsViewModel.HistoryPreferenceData historyPreferenceData) {
-            return new PermissionHistoryPreference(
-                    mContext,
-                    historyPreferenceData.getUserHandle(),
-                    historyPreferenceData.getPkgName(),
-                    historyPreferenceData.getAppIcon(),
-                    historyPreferenceData.getPreferenceTitle(),
-                    historyPreferenceData.getPermissionGroup(),
-                    historyPreferenceData.getAccessTime(),
-                    historyPreferenceData.getSummaryText(),
-                    historyPreferenceData.getShowingAttribution(),
-                    historyPreferenceData.getAccessTimeList(),
-                    historyPreferenceData.getAttributionTags(),
-                    historyPreferenceData.isLastUsage(),
-                    historyPreferenceData.getSessionId());
-        }
+    private PreferenceCategory createDayCategoryPreference() {
+        PreferenceCategory category = new PreferenceCategory(getContext());
+        // Do not reserve icon space, so that the text moves all the way left.
+        category.setIconSpaceReserved(false);
+        return category;
     }
 
     private void reloadData() {
