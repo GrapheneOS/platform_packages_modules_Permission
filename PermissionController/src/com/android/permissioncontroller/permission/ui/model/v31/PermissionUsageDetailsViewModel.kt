@@ -42,8 +42,8 @@ import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
 import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage.TimelineUsage
 import com.android.permissioncontroller.permission.model.v31.PermissionUsages
 import com.android.permissioncontroller.permission.ui.handheld.v31.getDurationUsedStr
-import com.android.permissioncontroller.permission.ui.handheld.v31.is7DayToggleEnabled
 import com.android.permissioncontroller.permission.ui.handheld.v31.shouldShowSubattributionInPermissionsDashboard
+import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPackageLabel
 import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.StringUtils
@@ -121,7 +121,7 @@ class PermissionUsageDetailsViewModel(
         show7Days: Boolean
     ): PermissionUsageDetailsUiData {
         val showPermissionUsagesDuration =
-            if (is7DayToggleEnabled() && show7Days) {
+            if (KotlinUtils.is7DayToggleEnabled() && show7Days) {
                 TIME_7_DAYS_DURATION
             } else {
                 TIME_24_HOURS_DURATION

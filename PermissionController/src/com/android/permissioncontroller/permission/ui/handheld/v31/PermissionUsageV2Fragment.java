@@ -22,7 +22,6 @@ import static com.android.permissioncontroller.PermissionControllerStatsLog.PERM
 import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__SEE_OTHER_PERMISSIONS_CLICKED;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__SHOW_SYSTEM_CLICKED;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.write;
-import static com.android.permissioncontroller.permission.ui.handheld.v31.DashboardUtilsKt.is7DayToggleEnabled;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -219,7 +218,7 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader
                     menu.add(Menu.NONE, MENU_HIDE_SYSTEM, Menu.NONE, R.string.menu_hide_system);
         }
 
-        if (is7DayToggleEnabled()) {
+        if (KotlinUtils.INSTANCE.is7DayToggleEnabled()) {
             mShow7DaysDataMenu =
                     menu.add(
                             Menu.NONE,
@@ -264,7 +263,8 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader
                 break;
             case MENU_SHOW_7_DAYS_DATA:
             case MENU_SHOW_24_HOURS_DATA:
-                mShow7Days = is7DayToggleEnabled() && itemId == MENU_SHOW_7_DAYS_DATA;
+                mShow7Days = KotlinUtils.INSTANCE.is7DayToggleEnabled()
+                        && itemId == MENU_SHOW_7_DAYS_DATA;
                 updateUI();
                 updateMenu();
                 break;

@@ -20,7 +20,6 @@ import static androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory;
 import static com.android.permissioncontroller.Constants.EXTRA_SESSION_ID;
 import static com.android.permissioncontroller.Constants.INVALID_SESSION_ID;
 import static com.android.permissioncontroller.permission.ui.handheld.UtilsKt.pressBack;
-import static com.android.permissioncontroller.permission.ui.handheld.v31.DashboardUtilsKt.shouldShowPermissionsDashboard;
 
 import android.app.Application;
 import android.content.Intent;
@@ -39,6 +38,7 @@ import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity;
 import com.android.permissioncontroller.permission.ui.UnusedAppsFragment;
 import com.android.permissioncontroller.permission.ui.model.ManageStandardPermissionsViewModel;
+import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.StringUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.settingslib.widget.FooterPreference;
@@ -123,7 +123,7 @@ public final class ManageStandardPermissionsFragment extends ManagePermissionsFr
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
 
-        if (shouldShowPermissionsDashboard()) {
+        if (KotlinUtils.INSTANCE.shouldShowPermissionsDashboard()) {
             menu.add(Menu.NONE, MENU_PERMISSION_USAGE, Menu.NONE, R.string.permission_usage_title);
         }
     }
