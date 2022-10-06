@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 The Android Open Source Project
+ * Copyright (C) 2022 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,8 +14,14 @@
  * limitations under the License.
  */
 
-package com.android.permission.access
+package com.android.permission.access.appop
 
-object AccessDecisions {
-    const val DENIED = 0
+import android.app.AppOpsManager
+
+object AppOpModes {
+    const val MODE_ALLOWED = AppOpsManager.MODE_ALLOWED
+    const val MODE_IGNORED = AppOpsManager.MODE_IGNORED
+    const val MODE_ERRORED = AppOpsManager.MODE_ERRORED
+    const val MODE_DEFAULT = AppOpsManager.MODE_DEFAULT
+    const val MODE_FOREGROUND = AppOpsManager.MODE_FOREGROUND
 }
