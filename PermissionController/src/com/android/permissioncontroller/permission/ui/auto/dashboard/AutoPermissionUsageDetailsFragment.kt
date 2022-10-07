@@ -34,24 +34,21 @@ import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__SHOW_SYSTEM_CLICKED
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.auto.AutoSettingsFrameFragment
+import com.android.permissioncontroller.permission.model.legacy.PermissionApps.AppDataLoader
 import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
 import com.android.permissioncontroller.permission.model.v31.PermissionUsages
 import com.android.permissioncontroller.permission.model.v31.PermissionUsages.PermissionsUsagesChangeCallback
-import com.android.permissioncontroller.permission.model.legacy.PermissionApps.AppDataLoader
-import com.android.permissioncontroller.permission.model.legacy.PermissionApps.PermissionApp
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity
 import com.android.permissioncontroller.permission.ui.auto.AutoDividerPreference
 import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel
-import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel.AppPermissionUsageEntry
 import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModelFactory
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPermGroupLabel
 import com.android.permissioncontroller.permission.utils.Utils
-import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicReference
 
 @RequiresApi(Build.VERSION_CODES.S)
-class AutoPermissionUsageDetailsFragment : AutoSettingsFrameFragment(),
-    PermissionsUsagesChangeCallback {
+class AutoPermissionUsageDetailsFragment :
+    AutoSettingsFrameFragment(), PermissionsUsagesChangeCallback {
 
     companion object {
         private const val LOG_TAG = "AutoPermissionUsageDetailsFragment"
@@ -61,20 +58,19 @@ class AutoPermissionUsageDetailsFragment : AutoSettingsFrameFragment(),
         // Only show the last 24 hours on Auto right now
         private const val SHOW_7_DAYS = false
 
-        /**
-         * Creates a new instance of [AutoPermissionUsageDetailsFragment].
-         */
+        /** Creates a new instance of [AutoPermissionUsageDetailsFragment]. */
         fun newInstance(
             groupName: String?,
             showSystem: Boolean,
             sessionId: Long
         ): AutoPermissionUsageDetailsFragment {
             return AutoPermissionUsageDetailsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(Intent.EXTRA_PERMISSION_GROUP_NAME, groupName)
-                    putLong(Constants.EXTRA_SESSION_ID, sessionId)
-                    putBoolean(ManagePermissionsActivity.EXTRA_SHOW_SYSTEM, showSystem)
-                }
+                arguments =
+                    Bundle().apply {
+                        putString(Intent.EXTRA_PERMISSION_GROUP_NAME, groupName)
+                        putLong(Constants.EXTRA_SESSION_ID, sessionId)
+                        putBoolean(ManagePermissionsActivity.EXTRA_SHOW_SYSTEM, showSystem)
+                    }
             }
         }
     }
@@ -91,7 +87,7 @@ class AutoPermissionUsageDetailsFragment : AutoSettingsFrameFragment(),
     private var finishedInitialLoad = false
     private var hasSystemApps = false
 
-    /** Unique Id of a request  */
+    /** Unique Id of a request */
     private var sessionId: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -108,25 +104,26 @@ class AutoPermissionUsageDetailsFragment : AutoSettingsFrameFragment(),
             return
         }
         filterGroup = requireArguments().getString(Intent.EXTRA_PERMISSION_GROUP_NAME)!!
-        showSystem = requireArguments().getBoolean(ManagePermissionsActivity.EXTRA_SHOW_SYSTEM,
-            false)
-        sessionId = savedInstanceState?.getLong(SESSION_ID_KEY)
-            ?: (arguments?.getLong(Constants.EXTRA_SESSION_ID, Constants.INVALID_SESSION_ID)
-                ?: Constants.INVALID_SESSION_ID)
-        headerLabel = resources.getString(R.string.permission_group_usage_title,
-            getPermGroupLabel(requireContext(), filterGroup))
+        showSystem =
+            requireArguments().getBoolean(ManagePermissionsActivity.EXTRA_SHOW_SYSTEM, false)
+        sessionId =
+            savedInstanceState?.getLong(SESSION_ID_KEY)
+                ?: (arguments?.getLong(Constants.EXTRA_SESSION_ID, Constants.INVALID_SESSION_ID)
+                    ?: Constants.INVALID_SESSION_ID)
+        headerLabel =
+            resources.getString(
+                R.string.permission_group_usage_title,
+                getPermGroupLabel(requireContext(), filterGroup))
 
         val context = preferenceManager.getContext()
-        permissionUsages =
-            PermissionUsages(
-                context
-            )
+        permissionUsages = PermissionUsages(context)
         roleManager = Utils.getSystemServiceSafe(context, RoleManager::class.java)
-        val usageViewModelFactory = PermissionUsageDetailsViewModelFactory(
-            PermissionControllerApplication.get(), roleManager,
-            filterGroup, sessionId)
-        usageViewModel = ViewModelProvider(this,
-            usageViewModelFactory)[PermissionUsageDetailsViewModel::class.java]
+        val usageViewModelFactory =
+            PermissionUsageDetailsViewModelFactory(
+                PermissionControllerApplication.get(), roleManager, filterGroup, sessionId)
+        usageViewModel =
+            ViewModelProvider(this, usageViewModelFactory)[
+                PermissionUsageDetailsViewModel::class.java]
 
         reloadData()
     }
@@ -142,9 +139,7 @@ class AutoPermissionUsageDetailsFragment : AutoSettingsFrameFragment(),
         preferenceScreen.addPreference(AutoDividerPreference(context))
     }
 
-    /**
-     * Reloads the data to show.
-     */
+    /** Reloads the data to show. */
     private fun reloadData() {
         usageViewModel.loadPermissionUsages(
             requireActivity().getLoaderManager(), permissionUsages, this, FILTER_24_HOURS)
@@ -164,7 +159,8 @@ class AutoPermissionUsageDetailsFragment : AutoSettingsFrameFragment(),
     private fun updateSystemToggle() {
         if (!showSystem) {
             PermissionControllerStatsLog.write(
-                PERMISSION_USAGE_FRAGMENT_INTERACTION, sessionId,
+                PERMISSION_USAGE_FRAGMENT_INTERACTION,
+                sessionId,
                 PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__SHOW_SYSTEM_CLICKED)
         }
         showSystem = !showSystem
@@ -177,11 +173,12 @@ class AutoPermissionUsageDetailsFragment : AutoSettingsFrameFragment(),
             setAction(null, null)
             return
         }
-        val label = if (showSystem) {
-            getString(R.string.menu_hide_system)
-        } else {
-            getString(R.string.menu_show_system)
-        }
+        val label =
+            if (showSystem) {
+                getString(R.string.menu_hide_system)
+            } else {
+                getString(R.string.menu_show_system)
+            }
         setAction(label) { updateSystemToggle() }
     }
 
@@ -192,15 +189,14 @@ class AutoPermissionUsageDetailsFragment : AutoSettingsFrameFragment(),
         preferenceScreen.removeAll()
         setupHeaderPreferences()
 
-        val permApps = arrayListOf<PermissionApp>()
         val exemptedPackages = Utils.getExemptedPackages(roleManager)
-        val seenSystemApp = AtomicBoolean(false)
-        val usages: List<AppPermissionUsageEntry> = usageViewModel.parseUsages(
-            appPermissionUsages, exemptedPackages, permApps, seenSystemApp, showSystem,
-            SHOW_7_DAYS)
 
-        if (hasSystemApps != seenSystemApp.get()) {
-            hasSystemApps = seenSystemApp.get()
+        val (permissionApps, seenSystemApp, appPermissionUsageEntries) =
+            usageViewModel.buildPermissionUsageDetailsUiData(
+                appPermissionUsages, showSystem, SHOW_7_DAYS)
+
+        if (hasSystemApps != seenSystemApp) {
+            hasSystemApps = seenSystemApp
             updateAction()
         }
 
@@ -209,13 +205,14 @@ class AutoPermissionUsageDetailsFragment : AutoSettingsFrameFragment(),
         preferenceScreen.addPreference(category.get())
 
         AppDataLoader(context) {
-            usageViewModel.renderTimelinePreferences(usages, category, preferenceScreen,
-                preferenceFactory)
+                usageViewModel.renderHistoryPreferences(
+                    appPermissionUsageEntries, category, preferenceScreen, preferenceFactory)
 
-            setLoading(false)
-            finishedInitialLoad = true
-            permissionUsages.stopLoader(requireActivity().getLoaderManager())
-        }.execute(*permApps.toTypedArray())
+                setLoading(false)
+                finishedInitialLoad = true
+                permissionUsages.stopLoader(requireActivity().getLoaderManager())
+            }
+            .execute(*permissionApps.toTypedArray())
     }
 
     private class PreferenceFactory(val context: Context) :
@@ -233,27 +230,35 @@ class AutoPermissionUsageDetailsFragment : AutoSettingsFrameFragment(),
     }
 
     private fun addTimelineDescriptionPreference() {
-        val preference = CarUiPreference(context).apply {
-            summary = getString(R.string.permission_group_usage_subtitle_24h,
-                getPermGroupLabel(requireContext(), filterGroup))
-            isSelectable = false
-        }
+        val preference =
+            CarUiPreference(context).apply {
+                summary =
+                    getString(
+                        R.string.permission_group_usage_subtitle_24h,
+                        getPermGroupLabel(requireContext(), filterGroup))
+                isSelectable = false
+            }
         preferenceScreen.addPreference(preference)
     }
 
     private fun addManagePermissionPreference() {
-        val preference = CarUiPreference(context).apply {
-            title = getString(R.string.manage_permission)
-            summary = getString(R.string.manage_permission_summary,
-                getPermGroupLabel(requireContext(), filterGroup))
-            onPreferenceClickListener = Preference.OnPreferenceClickListener {
-                val intent = Intent(Intent.ACTION_MANAGE_PERMISSION_APPS).apply {
-                    putExtra(Intent.EXTRA_PERMISSION_NAME, filterGroup)
-                }
-                startActivity(intent)
-                true
+        val preference =
+            CarUiPreference(context).apply {
+                title = getString(R.string.manage_permission)
+                summary =
+                    getString(
+                        R.string.manage_permission_summary,
+                        getPermGroupLabel(requireContext(), filterGroup))
+                onPreferenceClickListener =
+                    Preference.OnPreferenceClickListener {
+                        val intent =
+                            Intent(Intent.ACTION_MANAGE_PERMISSION_APPS).apply {
+                                putExtra(Intent.EXTRA_PERMISSION_NAME, filterGroup)
+                            }
+                        startActivity(intent)
+                        true
+                    }
             }
-        }
         preferenceScreen.addPreference(preference)
     }
 }
