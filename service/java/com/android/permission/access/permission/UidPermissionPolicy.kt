@@ -108,7 +108,7 @@ class UidPermissionPolicy : SchemePolicy() {
             }
             newState.systemState.permissions.let { permissions ->
                 permissions.forEachIndexed { i, permissionName, oldPermission ->
-                    if (oldPermission.packageName != packageName) {
+                    if (oldPermission.packageName != originalPackageName) {
                         return@forEachIndexed
                     }
                     @Suppress("DEPRECATION")
