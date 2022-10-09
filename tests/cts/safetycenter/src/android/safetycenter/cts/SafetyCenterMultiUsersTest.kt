@@ -608,8 +608,8 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
+    @Ignore // Removing a managed profile causes a refresh, which makes some tests flaky.
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
-    @Postsubmit(reason = "Test takes too much time to setup")
     fun getSafetyCenterData_afterManagedProfileRemoved_returnsDefaultData() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_ALL_PROFILE_CONFIG)
         val managedSafetyCenterManager =
