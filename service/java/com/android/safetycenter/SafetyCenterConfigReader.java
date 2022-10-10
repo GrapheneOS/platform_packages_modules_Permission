@@ -143,12 +143,12 @@ final class SafetyCenterConfigReader {
         return getCurrentConfigInternal().getExternalSafetySources().containsKey(safetySourceId);
     }
 
-    /** Returns whether the {@link SafetyCenterConfig} allows Westworld logging. */
-    boolean allowsWestworldLogging() {
+    /** Returns whether the {@link SafetyCenterConfig} allows logging to statsd. */
+    boolean allowsStatsdLogging() {
         if (!isOverrideForTestsActive()) {
             return true;
         }
-        return SafetyCenterFlags.getAllowWestworldLoggingInTests();
+        return SafetyCenterFlags.getAllowStatsdLoggingInTests();
     }
 
     /**

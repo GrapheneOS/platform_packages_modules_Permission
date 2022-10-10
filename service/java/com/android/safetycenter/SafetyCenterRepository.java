@@ -18,7 +18,7 @@ package com.android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
-import static com.android.safetycenter.WestworldLogger.toSystemEventResult;
+import static com.android.safetycenter.StatsdLogger.toSystemEventResult;
 import static com.android.safetycenter.internaldata.SafetyCenterIds.toUserFriendlyString;
 
 import android.annotation.NonNull;
@@ -74,19 +74,19 @@ final class SafetyCenterRepository {
     @NonNull private final Context mContext;
     @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
     @NonNull private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker;
-    @NonNull private final WestworldLogger mWestworldLogger;
+    @NonNull private final StatsdLogger mStatsdLogger;
     @NonNull private final SafetyCenterIssueCache mSafetyCenterIssueCache;
 
     SafetyCenterRepository(
             @NonNull Context context,
             @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
             @NonNull SafetyCenterRefreshTracker safetyCenterRefreshTracker,
-            @NonNull WestworldLogger westworldLogger,
+            @NonNull StatsdLogger statsdLogger,
             @NonNull SafetyCenterIssueCache safetyCenterIssueCache) {
         mContext = context;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
         mSafetyCenterRefreshTracker = safetyCenterRefreshTracker;
-        mWestworldLogger = westworldLogger;
+        mStatsdLogger = statsdLogger;
         mSafetyCenterIssueCache = safetyCenterIssueCache;
     }
 
@@ -233,13 +233,13 @@ final class SafetyCenterRepository {
     }
 
     /**
-     * Unmarks the given {@link SafetyCenterIssueActionId} as in-flight, logs that event to
-     * Westworld with the given {@code result} value, and returns {@code true} if the underlying
-     * {@link SafetyCenterData} changed.
+     * Unmarks the given {@link SafetyCenterIssueActionId} as in-flight, logs that event to statsd
+     * with the given {@code result} value, and returns {@code true} if the underlying {@link
+     * SafetyCenterData} changed.
      */
     boolean unmarkSafetyCenterIssueActionInFlight(
             @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId,
-            @WestworldLogger.SystemEventResult int result) {
+            @StatsdLogger.SystemEventResult int result) {
         Long startElapsedMillis =
                 mSafetyCenterIssueActionsInFlight.remove(safetyCenterIssueActionId);
         if (startElapsedMillis == null) {
@@ -255,7 +255,7 @@ final class SafetyCenterRepository {
         String issueTypeId = issue == null ? null : issue.getIssueTypeId();
         Duration duration = Duration.ofMillis(SystemClock.elapsedRealtime() - startElapsedMillis);
 
-        mWestworldLogger.writeInlineActionSystemEvent(
+        mStatsdLogger.writeInlineActionSystemEvent(
                 issueKey.getSafetySourceId(), issueKey.getUserId(), issueTypeId, duration, result);
 
         if (issue == null || getSafetySourceIssueAction(safetyCenterIssueActionId) == null) {
