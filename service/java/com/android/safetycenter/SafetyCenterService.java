@@ -40,7 +40,6 @@ import android.app.ActivityOptions;
 import android.app.AppOpsManager;
 import android.app.PendingIntent;
 import android.app.StatsManager;
-import android.app.StatsManager.PullAtomMetadata;
 import android.app.StatsManager.StatsPullAtomCallback;
 import android.content.ApexEnvironment;
 import android.content.BroadcastReceiver;
@@ -66,14 +65,12 @@ import android.safetycenter.SafetySourceIssue;
 import android.safetycenter.config.SafetyCenterConfig;
 import android.util.ArraySet;
 import android.util.Log;
-import android.util.StatsEvent;
 
 import androidx.annotation.Keep;
 import androidx.annotation.RequiresApi;
 
 import com.android.internal.annotations.GuardedBy;
 import com.android.modules.utils.BackgroundThread;
-import com.android.permission.PermissionStatsLog;
 import com.android.permission.util.ForegroundThread;
 import com.android.permission.util.UserUtils;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
@@ -165,6 +162,7 @@ public final class SafetyCenterService extends SystemService {
     @NonNull
     private final SafetyCenterBroadcastDispatcher mSafetyCenterBroadcastDispatcher;
 
+    @NonNull private final StatsPullAtomCallback mPullAtomCallback;
     @NonNull private final AppOpsManager mAppOpsManager;
     private final boolean mDeviceSupportsSafetyCenter;
 
@@ -190,7 +188,6 @@ public final class SafetyCenterService extends SystemService {
                         mSafetyCenterResourcesContext,
                         mSafetyCenterConfigReader,
                         mSafetyCenterRefreshTracker,
-                        westworldLogger,
                         new PendingIntentFactory(context),
                         mSafetyCenterIssueCache,
                         mSafetyCenterRepository);
@@ -198,6 +195,15 @@ public final class SafetyCenterService extends SystemService {
         mSafetyCenterBroadcastDispatcher =
                 new SafetyCenterBroadcastDispatcher(
                         context, mSafetyCenterConfigReader, mSafetyCenterRefreshTracker);
+        mPullAtomCallback =
+                new SafetyCenterPullAtomCallback(
+                        context,
+                        mApiLock,
+                        westworldLogger,
+                        mSafetyCenterConfigReader,
+                        mSafetyCenterRepository,
+                        mSafetyCenterDataTracker,
+                        mSafetyCenterIssueCache);
         mAppOpsManager = requireNonNull(context.getSystemService(AppOpsManager.class));
         mDeviceSupportsSafetyCenter =
                 context.getResources()
@@ -241,12 +247,8 @@ public final class SafetyCenterService extends SystemService {
     private void registerSafetyCenterPullAtomCallback() {
         StatsManager statsManager =
                 requireNonNull(getContext().getSystemService(StatsManager.class));
-        PullAtomMetadata defaultMetadata = null;
         statsManager.setPullAtomCallback(
-                SAFETY_STATE,
-                defaultMetadata,
-                BackgroundThread.getExecutor(),
-                new SafetyCenterPullAtomCallback());
+                SAFETY_STATE, null, BackgroundThread.getExecutor(), mPullAtomCallback);
     }
 
     /** Service implementation of {@link ISafetyCenterManager.Stub}. */
@@ -821,45 +823,6 @@ public final class SafetyCenterService extends SystemService {
                 mSafetyCenterListeners.clear();
                 mSafetyCenterBroadcastDispatcher.sendEnabledChanged();
             }
-        }
-    }
-
-    /**
-     * A {@link StatsPullAtomCallback} that provides data for {@link
-     * PermissionStatsLog#SAFETY_STATE} when called by the {@link StatsManager}.
-     */
-    private final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback {
-
-        private SafetyCenterPullAtomCallback() {}
-
-        @Override
-        public int onPullAtom(int atomTag, @NonNull List<StatsEvent> statsEvents) {
-            if (atomTag != SAFETY_STATE) {
-                Log.w(
-                        TAG,
-                        "Attempt to pull atom: "
-                                + atomTag
-                                + ", but only SAFETY_STATE is supported");
-                return StatsManager.PULL_SKIP;
-            }
-            if (!SafetyCenterFlags.getSafetyCenterEnabled()) {
-                Log.w(TAG, "Attempt to pull SAFETY_STATE, but Safety Center is disabled");
-                return StatsManager.PULL_SKIP;
-            }
-            List<UserProfileGroup> userProfileGroups =
-                    UserProfileGroup.getAllUserProfileGroups(getContext());
-            synchronized (mApiLock) {
-                if (!mSafetyCenterConfigReader.allowsWestworldLogging()) {
-                    Log.w(TAG, "Skipping pulling and writing atoms due to a test config override");
-                    return StatsManager.PULL_SKIP;
-                }
-                Log.i(TAG, "Pulling and writing atoms…");
-                for (int i = 0; i < userProfileGroups.size(); i++) {
-                    mSafetyCenterDataTracker.pullAndWriteAtoms(
-                            userProfileGroups.get(i), statsEvents);
-                }
-            }
-            return StatsManager.PULL_SUCCESS;
         }
     }
 
