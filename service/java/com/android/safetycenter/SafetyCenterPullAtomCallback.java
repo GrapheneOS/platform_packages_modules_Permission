@@ -74,7 +74,7 @@ final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback {
 
     @GuardedBy("mApiLock")
     @NonNull
-    private final SafetyCenterDataTracker mSafetyCenterDataTracker;
+    private final SafetyCenterDataFactory mSafetyCenterDataFactory;
 
     @GuardedBy("mApiLock")
     @NonNull
@@ -86,14 +86,14 @@ final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback {
             @NonNull StatsdLogger statsdLogger,
             @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
             @NonNull SafetyCenterRepository safetyCenterRepository,
-            @NonNull SafetyCenterDataTracker safetyCenterDataTracker,
+            @NonNull SafetyCenterDataFactory safetyCenterDataFactory,
             @NonNull SafetyCenterIssueCache safetyCenterIssueCache) {
         mContext = context;
         mApiLock = apiLock;
         mStatsdLogger = statsdLogger;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
         mSafetyCenterRepository = safetyCenterRepository;
-        mSafetyCenterDataTracker = safetyCenterDataTracker;
+        mSafetyCenterDataFactory = safetyCenterDataFactory;
         mSafetyCenterIssueCache = safetyCenterIssueCache;
     }
 
@@ -134,7 +134,7 @@ final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback {
         // TODO: We could make SafetyCenterPullAtomCallback a SafetyCenterListener and hold a
         //  reference to the last SafetyCenterData so we don't need to recalculate that here.
         SafetyCenterData safetyCenterData =
-                mSafetyCenterDataTracker.getSafetyCenterData("android", userProfileGroup);
+                mSafetyCenterDataFactory.getSafetyCenterData("android", userProfileGroup);
         long openIssuesCount = safetyCenterData.getIssues().size();
         long dismissedIssuesCount =
                 mSafetyCenterIssueCache.countActiveIssues(userProfileGroup) - openIssuesCount;
