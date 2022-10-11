@@ -40,6 +40,8 @@ final class DevicePolicyResources {
     private static final String SAFETY_CENTER_PREFIX = "SafetyCenter.";
     private static final String WORK_PROFILE_PAUSED_TITLE = "WORK_PROFILE_PAUSED";
 
+    private DevicePolicyResources() {}
+
     /**
      * Returns the updated string for the given {@code safetySourceId} by calling {@link
      * DevicePolicyResourcesManager#getString}.
