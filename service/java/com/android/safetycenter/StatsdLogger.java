@@ -47,6 +47,7 @@ import static com.android.permission.PermissionStatsLog.SAFETY_STATE__OVERALL_SE
 
 import android.annotation.IntDef;
 import android.annotation.NonNull;
+import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.content.Context;
 import android.safetycenter.SafetyCenterManager;
@@ -56,7 +57,6 @@ import android.safetycenter.SafetySourceData;
 import android.util.Log;
 import android.util.StatsEvent;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.android.permission.PermissionStatsLog;
@@ -68,21 +68,20 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.Duration;
-import java.util.List;
 
 import javax.annotation.concurrent.NotThreadSafe;
 
 /**
- * Marshalls and writes atoms to Westworld. Contains implementation details of how atom parameters
- * are encoded and provides a better-typed interface for other classes to call.
+ * Marshalls and writes statsd atoms. Contains implementation details of how atom parameters are
+ * encoded and provides a better-typed interface for other classes to call.
  *
  * <p>This class isn't thread safe. Thread safety must be handled by the caller.
  */
 @RequiresApi(TIRAMISU)
 @NotThreadSafe
-final class WestworldLogger {
+final class StatsdLogger {
 
-    private static final String TAG = "WestworldLogger";
+    private static final String TAG = "StatsdLogger";
     private static final long UNSET_SOURCE_ID = 0;
     private static final long UNSET_ISSUE_TYPE_ID = 0;
 
@@ -99,31 +98,26 @@ final class WestworldLogger {
     @NonNull private final Context mContext;
     @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
 
-    WestworldLogger(
+    StatsdLogger(
             @NonNull Context context, @NonNull SafetyCenterConfigReader safetyCenterConfigReader) {
         mContext = context;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
     }
 
     /**
-     * Pulls a {@link PermissionStatsLog#SAFETY_STATE} {@link StatsEvent} with the given parameters
-     * into {@code statsEvents}.
+     * Creates a {@link PermissionStatsLog#SAFETY_STATE} {@link StatsEvent} with the given
+     * parameters.
      */
-    void pullSafetyStateEvent(
+    @NonNull
+    StatsEvent createSafetyStateEvent(
             @SafetyCenterStatus.OverallSeverityLevel int severityLevel,
             long openIssueCount,
-            long dismissedIssueCount,
-            @NonNull List<StatsEvent> statsEvents) {
-        if (!mSafetyCenterConfigReader.allowsWestworldLogging()) {
-            return;
-        }
-        StatsEvent safetyStateEvent =
-                PermissionStatsLog.buildStatsEvent(
-                        SAFETY_STATE,
-                        toSafetyStateOverallSeverityLevel(severityLevel),
-                        openIssueCount,
-                        dismissedIssueCount);
-        statsEvents.add(safetyStateEvent);
+            long dismissedIssueCount) {
+        return PermissionStatsLog.buildStatsEvent(
+                SAFETY_STATE,
+                toSafetyStateOverallSeverityLevel(severityLevel),
+                openIssueCount,
+                dismissedIssueCount);
     }
 
     /**
@@ -138,7 +132,7 @@ final class WestworldLogger {
             @Nullable @SafetySourceData.SeverityLevel Integer sourceSeverityLevel,
             long openIssuesCount,
             long dismissedIssuesCount) {
-        if (!mSafetyCenterConfigReader.allowsWestworldLogging()) {
+        if (!mSafetyCenterConfigReader.allowsStatsdLogging()) {
             return;
         }
         int profileType =
@@ -164,7 +158,7 @@ final class WestworldLogger {
             @UserIdInt int userId,
             @NonNull Duration duration,
             @SystemEventResult int result) {
-        if (!mSafetyCenterConfigReader.allowsWestworldLogging()) {
+        if (!mSafetyCenterConfigReader.allowsStatsdLogging()) {
             return;
         }
         PermissionStatsLog.write(
@@ -185,7 +179,7 @@ final class WestworldLogger {
             @RefreshRequestType int refreshType,
             @NonNull Duration duration,
             @SystemEventResult int result) {
-        if (!mSafetyCenterConfigReader.allowsWestworldLogging()) {
+        if (!mSafetyCenterConfigReader.allowsStatsdLogging()) {
             return;
         }
         PermissionStatsLog.write(
@@ -208,7 +202,7 @@ final class WestworldLogger {
             @Nullable String issueTypeId,
             @NonNull Duration duration,
             @SystemEventResult int result) {
-        if (!mSafetyCenterConfigReader.allowsWestworldLogging()) {
+        if (!mSafetyCenterConfigReader.allowsStatsdLogging()) {
             return;
         }
         PermissionStatsLog.write(
@@ -262,7 +256,7 @@ final class WestworldLogger {
 
     /**
      * Converts a {@link String} ID (e.g. a Safety Source ID) to a {@code long} suitable for logging
-     * to Westworld.
+     * to statsd.
      */
     private static long idStringToLong(@NonNull String id) {
         MessageDigest messageDigest;

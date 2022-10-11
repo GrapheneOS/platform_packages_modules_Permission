@@ -141,14 +141,13 @@ object SafetyCenterFlags {
             SetParser(StringParser()))
 
     /**
-     * Flag that determines whether Westworld logging is allowed in tests.
+     * Flag that determines whether statsd logging is allowed in tests.
      *
-     * This is useful to allow testing Westworld logs in some specific tests, while keeping the
-     * other tests from polluting our Westworld logs.
+     * This is useful to allow testing statsd logs in some specific tests, while keeping the other
+     * tests from polluting our statsd logs.
      */
-    private val allowWestworldLoggingInTestsFlag =
-        Flag(
-            "safety_center_allow_westworld_logging_in_tests", defaultValue = false, BooleanParser())
+    private val allowStatsdLoggingInTestsFlag =
+        Flag("safety_center_allow_statsd_logging_in_tests", defaultValue = false, BooleanParser())
 
     /**
      * The Package Manager flag used while toggling the QS tile component.
@@ -176,7 +175,7 @@ object SafetyCenterFlags {
             resurfaceIssueDelaysFlag,
             issueCategoryAllowlistsFlag,
             backgroundRefreshDeniedSourcesFlag,
-            allowWestworldLoggingInTestsFlag,
+            allowStatsdLoggingInTestsFlag,
             qsTileComponentSettingFlag)
 
     /** Returns whether the device supports Safety Center. */
@@ -217,8 +216,8 @@ object SafetyCenterFlags {
     /** A property that allows getting and setting the [backgroundRefreshDeniedSourcesFlag]. */
     var backgroundRefreshDeniedSources: Set<String> by backgroundRefreshDeniedSourcesFlag
 
-    /** A property that allows getting and setting the [allowWestworldLoggingInTestsFlag]. */
-    var allowWestworldLoggingInTests: Boolean by allowWestworldLoggingInTestsFlag
+    /** A property that allows getting and setting the [allowStatsdLoggingInTestsFlag]. */
+    var allowStatsdLoggingInTests: Boolean by allowStatsdLoggingInTestsFlag
 
     /**
      * Returns a snapshot of all the Safety Center flags.

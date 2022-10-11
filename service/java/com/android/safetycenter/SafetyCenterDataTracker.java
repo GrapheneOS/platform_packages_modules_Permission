@@ -44,11 +44,9 @@ import android.safetycenter.config.SafetySourcesGroup;
 import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.util.Log;
-import android.util.StatsEvent;
 
 import androidx.annotation.RequiresApi;
 
-import com.android.permission.PermissionStatsLog;
 import com.android.safetycenter.internaldata.SafetyCenterEntryGroupId;
 import com.android.safetycenter.internaldata.SafetyCenterEntryId;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
@@ -87,7 +85,6 @@ final class SafetyCenterDataTracker {
     @NonNull private final SafetyCenterResourcesContext mSafetyCenterResourcesContext;
     @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
     @NonNull private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker;
-    @NonNull private final WestworldLogger mWestworldLogger;
     @NonNull private final PendingIntentFactory mPendingIntentFactory;
     @NonNull private final SafetyCenterIssueCache mSafetyCenterIssueCache;
     @NonNull private final SafetyCenterRepository mSafetyCenterRepository;
@@ -96,14 +93,12 @@ final class SafetyCenterDataTracker {
             @NonNull SafetyCenterResourcesContext safetyCenterResourcesContext,
             @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
             @NonNull SafetyCenterRefreshTracker safetyCenterRefreshTracker,
-            @NonNull WestworldLogger westworldLogger,
             @NonNull PendingIntentFactory pendingIntentFactory,
             @NonNull SafetyCenterIssueCache safetyCenterIssueCache,
             @NonNull SafetyCenterRepository safetyCenterRepository) {
         mSafetyCenterResourcesContext = safetyCenterResourcesContext;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
         mSafetyCenterRefreshTracker = safetyCenterRefreshTracker;
-        mWestworldLogger = westworldLogger;
         mPendingIntentFactory = pendingIntentFactory;
         mSafetyCenterIssueCache = safetyCenterIssueCache;
         mSafetyCenterRepository = safetyCenterRepository;
@@ -135,104 +130,6 @@ final class SafetyCenterDataTracker {
                 emptyList(),
                 emptyList(),
                 emptyList());
-    }
-
-    /**
-     * Pulls the {@link PermissionStatsLog#SAFETY_STATE} atom and writes all relevant {@link
-     * PermissionStatsLog#SAFETY_SOURCE_STATE_COLLECTED} atoms for the given {@link
-     * UserProfileGroup}.
-     */
-    void pullAndWriteAtoms(
-            @NonNull UserProfileGroup userProfileGroup, @NonNull List<StatsEvent> statsEvents) {
-        pullOverallSafetyStateAtom(userProfileGroup, statsEvents);
-        // The SAFETY_SOURCE_STATE_COLLECTED atoms are written instead of being pulled, as they do
-        // not support pull.
-        writeSafetySourceStateCollectedAtoms(userProfileGroup);
-    }
-
-    private void pullOverallSafetyStateAtom(
-            @NonNull UserProfileGroup userProfileGroup, @NonNull List<StatsEvent> statsEvents) {
-        SafetyCenterData safetyCenterData = getSafetyCenterData("android", userProfileGroup);
-        long openIssuesCount = safetyCenterData.getIssues().size();
-        long dismissedIssuesCount =
-                mSafetyCenterIssueCache.countActiveIssues(userProfileGroup) - openIssuesCount;
-
-        mWestworldLogger.pullSafetyStateEvent(
-                safetyCenterData.getStatus().getSeverityLevel(),
-                openIssuesCount,
-                dismissedIssuesCount,
-                statsEvents);
-    }
-
-    private void writeSafetySourceStateCollectedAtoms(@NonNull UserProfileGroup userProfileGroup) {
-        List<SafetySourcesGroup> safetySourcesGroups =
-                mSafetyCenterConfigReader.getSafetySourcesGroups();
-        for (int i = 0; i < safetySourcesGroups.size(); i++) {
-            SafetySourcesGroup safetySourcesGroup = safetySourcesGroups.get(i);
-            List<SafetySource> safetySources = safetySourcesGroup.getSafetySources();
-
-            for (int j = 0; j < safetySources.size(); j++) {
-                SafetySource safetySource = safetySources.get(j);
-
-                if (!SafetySources.isExternal(safetySource) || !safetySource.isLoggingAllowed()) {
-                    continue;
-                }
-
-                writeSafetySourceStateCollectedAtom(
-                        safetySource.getId(), userProfileGroup.getProfileParentUserId(), false);
-
-                if (!SafetySources.supportsManagedProfiles(safetySource)) {
-                    continue;
-                }
-
-                int[] managedRunningProfilesUserIds =
-                        userProfileGroup.getManagedRunningProfilesUserIds();
-                for (int k = 0; k < managedRunningProfilesUserIds.length; k++) {
-                    writeSafetySourceStateCollectedAtom(
-                            safetySource.getId(), managedRunningProfilesUserIds[k], true);
-                }
-            }
-        }
-    }
-
-    private void writeSafetySourceStateCollectedAtom(
-            @NonNull String safetySourceId, @UserIdInt int userId, boolean isUserManaged) {
-        SafetySourceKey key = SafetySourceKey.of(safetySourceId, userId);
-        SafetySourceData safetySourceData = mSafetyCenterRepository.getSafetySourceData(key);
-        SafetySourceStatus safetySourceStatus = getSafetySourceStatus(safetySourceData);
-        List<SafetySourceIssue> safetySourceIssues =
-                safetySourceData == null ? emptyList() : safetySourceData.getIssues();
-        int maxSeverityLevel = Integer.MIN_VALUE;
-        long openIssuesCount = 0;
-        long dismissedIssuesCount = 0;
-        for (int i = 0; i < safetySourceIssues.size(); i++) {
-            SafetySourceIssue safetySourceIssue = safetySourceIssues.get(i);
-            SafetyCenterIssueKey safetyCenterIssueKey =
-                    SafetyCenterIssueKey.newBuilder()
-                            .setSafetySourceId(safetySourceId)
-                            .setSafetySourceIssueId(safetySourceIssue.getId())
-                            .setUserId(userId)
-                            .build();
-
-            if (mSafetyCenterIssueCache.isIssueDismissed(
-                    safetyCenterIssueKey, safetySourceIssue.getSeverityLevel())) {
-                dismissedIssuesCount++;
-            } else {
-                openIssuesCount++;
-                maxSeverityLevel = Math.max(maxSeverityLevel, safetySourceIssue.getSeverityLevel());
-            }
-        }
-        if (safetySourceStatus != null) {
-            maxSeverityLevel = Math.max(maxSeverityLevel, safetySourceStatus.getSeverityLevel());
-        }
-        Integer maxSeverityOrNull = maxSeverityLevel > Integer.MIN_VALUE ? maxSeverityLevel : null;
-
-        mWestworldLogger.writeSafetySourceStateCollected(
-                safetySourceId,
-                isUserManaged,
-                maxSeverityOrNull,
-                openIssuesCount,
-                dismissedIssuesCount);
     }
 
     @NonNull
