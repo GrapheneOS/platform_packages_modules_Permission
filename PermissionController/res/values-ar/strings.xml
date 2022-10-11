@@ -463,7 +463,7 @@
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بالوصول إلى الموقع الجغرافي التقريبي لهذا الجهاز؟"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"دقيق"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"تقريبي"</string>
-    <string name="permgrouprequest_calendar" msgid="1493150855673603806">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بالدخول إلى التقويم؟"</string>
+    <string name="permgrouprequest_calendar" msgid="1493150855673603806">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بالوصول إلى التقويم؟"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بإرسال رسائل SMS وعرضها؟"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بالوصول إلى الصور والوسائط والملفات على جهازك؟"</string>
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"‏هل تسمح بوصول &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; إلى &lt;b&gt;الصور والفيديوهات والموسيقى والملفات الصوتية&lt;/b&gt; على هذا الجهاز؟"</string>
