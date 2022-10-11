@@ -131,8 +131,6 @@ final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback {
     @NonNull
     private StatsEvent createOverallSafetyStateAtomLocked(
             @NonNull UserProfileGroup userProfileGroup) {
-        // TODO: We could make SafetyCenterPullAtomCallback a SafetyCenterListener and hold a
-        //  reference to the last SafetyCenterData so we don't need to recalculate that here.
         SafetyCenterData safetyCenterData =
                 mSafetyCenterDataTracker.getSafetyCenterData("android", userProfileGroup);
         long openIssuesCount = safetyCenterData.getIssues().size();

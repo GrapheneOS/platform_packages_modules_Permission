@@ -988,6 +988,7 @@ public final class SafetyCenterService extends SystemService {
         synchronized (mApiLock) {
             if (clearDataPermanently) {
                 mSafetyCenterRepository.clearForUser(userId);
+                mSafetyCenterIssueCache.clearForUser(userId);
             }
             mSafetyCenterListeners.clearForUser(userId);
             mSafetyCenterRefreshTracker.clearRefreshForUser(userId);
@@ -1074,6 +1075,7 @@ public final class SafetyCenterService extends SystemService {
     @GuardedBy("mApiLock")
     private void clearDataLocked() {
         mSafetyCenterRepository.clear();
+        mSafetyCenterIssueCache.clear();
         mSafetyCenterTimeouts.clear();
         mSafetyCenterRefreshTracker.clearRefresh();
         scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked();
