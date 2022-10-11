@@ -74,7 +74,7 @@ final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback {
 
     @GuardedBy("mApiLock")
     @NonNull
-    private final SafetyCenterDataTracker mSafetyCenterDataTracker;
+    private final SafetyCenterDataFactory mSafetyCenterDataFactory;
 
     @GuardedBy("mApiLock")
     @NonNull
@@ -86,14 +86,14 @@ final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback {
             @NonNull StatsdLogger statsdLogger,
             @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
             @NonNull SafetyCenterRepository safetyCenterRepository,
-            @NonNull SafetyCenterDataTracker safetyCenterDataTracker,
+            @NonNull SafetyCenterDataFactory safetyCenterDataFactory,
             @NonNull SafetyCenterIssueCache safetyCenterIssueCache) {
         mContext = context;
         mApiLock = apiLock;
         mStatsdLogger = statsdLogger;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
         mSafetyCenterRepository = safetyCenterRepository;
-        mSafetyCenterDataTracker = safetyCenterDataTracker;
+        mSafetyCenterDataFactory = safetyCenterDataFactory;
         mSafetyCenterIssueCache = safetyCenterIssueCache;
     }
 
@@ -132,7 +132,7 @@ final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback {
     private StatsEvent createOverallSafetyStateAtomLocked(
             @NonNull UserProfileGroup userProfileGroup) {
         SafetyCenterData safetyCenterData =
-                mSafetyCenterDataTracker.getSafetyCenterData("android", userProfileGroup);
+                mSafetyCenterDataFactory.getSafetyCenterData("android", userProfileGroup);
         long openIssuesCount = safetyCenterData.getIssues().size();
         long dismissedIssuesCount =
                 mSafetyCenterIssueCache.countActiveIssues(userProfileGroup) - openIssuesCount;
