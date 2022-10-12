@@ -51,13 +51,13 @@ final class SafetyCenterListeners {
 
     private static final String TAG = "SafetyCenterListeners";
 
-    @NonNull private final SafetyCenterDataTracker mSafetyCenterDataTracker;
+    @NonNull private final SafetyCenterDataFactory mSafetyCenterDataFactory;
 
     private final SparseArray<RemoteCallbackList<IOnSafetyCenterDataChangedListener>>
             mSafetyCenterDataChangedListeners = new SparseArray<>();
 
-    SafetyCenterListeners(@NonNull SafetyCenterDataTracker safetyCenterDataTracker) {
-        mSafetyCenterDataTracker = safetyCenterDataTracker;
+    SafetyCenterListeners(@NonNull SafetyCenterDataFactory safetyCenterDataFactory) {
+        mSafetyCenterDataFactory = safetyCenterDataFactory;
     }
 
     /**
@@ -229,7 +229,7 @@ final class SafetyCenterListeners {
                     safetyCenterData = cachedSafetyCenterData;
                 } else {
                     safetyCenterData =
-                            mSafetyCenterDataTracker.getSafetyCenterData(
+                            mSafetyCenterDataFactory.getSafetyCenterData(
                                     packageName, userProfileGroup);
                     safetyCenterDataCache.put(packageName, safetyCenterData);
                 }

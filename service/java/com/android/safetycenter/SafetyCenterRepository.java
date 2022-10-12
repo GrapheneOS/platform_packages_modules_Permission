@@ -357,7 +357,6 @@ final class SafetyCenterRepository {
     void clear() {
         mSafetySourceDataForKey.clear();
         mSafetySourceErrors.clear();
-        mSafetyCenterIssueCache.clear();
         mSafetyCenterIssueActionsInFlight.clear();
     }
 
@@ -380,8 +379,6 @@ final class SafetyCenterRepository {
                 mSafetySourceErrors.removeAt(i);
             }
         }
-        // Issue cache implements this itself.
-        mSafetyCenterIssueCache.clearForUser(userId);
         // Loop in reverse index order to be able to remove entries while iterating.
         for (int i = mSafetyCenterIssueActionsInFlight.size() - 1; i >= 0; i--) {
             SafetyCenterIssueActionId issueActionId = mSafetyCenterIssueActionsInFlight.keyAt(i);

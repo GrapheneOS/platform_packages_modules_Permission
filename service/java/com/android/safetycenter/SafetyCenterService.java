@@ -145,7 +145,7 @@ public final class SafetyCenterService extends SystemService {
 
     @GuardedBy("mApiLock")
     @NonNull
-    private final SafetyCenterDataTracker mSafetyCenterDataTracker;
+    private final SafetyCenterDataFactory mSafetyCenterDataFactory;
 
     @GuardedBy("mApiLock")
     @NonNull
@@ -183,15 +183,15 @@ public final class SafetyCenterService extends SystemService {
                         mSafetyCenterRefreshTracker,
                         statsdLogger,
                         mSafetyCenterIssueCache);
-        mSafetyCenterDataTracker =
-                new SafetyCenterDataTracker(
+        mSafetyCenterDataFactory =
+                new SafetyCenterDataFactory(
                         mSafetyCenterResourcesContext,
                         mSafetyCenterConfigReader,
                         mSafetyCenterRefreshTracker,
                         new PendingIntentFactory(context),
                         mSafetyCenterIssueCache,
                         mSafetyCenterRepository);
-        mSafetyCenterListeners = new SafetyCenterListeners(mSafetyCenterDataTracker);
+        mSafetyCenterListeners = new SafetyCenterListeners(mSafetyCenterDataFactory);
         mSafetyCenterBroadcastDispatcher =
                 new SafetyCenterBroadcastDispatcher(
                         context, mSafetyCenterConfigReader, mSafetyCenterRefreshTracker);
@@ -202,7 +202,7 @@ public final class SafetyCenterService extends SystemService {
                         statsdLogger,
                         mSafetyCenterConfigReader,
                         mSafetyCenterRepository,
-                        mSafetyCenterDataTracker,
+                        mSafetyCenterDataFactory,
                         mSafetyCenterIssueCache);
         mAppOpsManager = requireNonNull(context.getSystemService(AppOpsManager.class));
         mDeviceSupportsSafetyCenter =
@@ -390,13 +390,13 @@ public final class SafetyCenterService extends SystemService {
             mAppOpsManager.checkPackage(Binder.getCallingUid(), packageName);
             if (!enforceCrossUserPermission("getSafetyCenterData", userId)
                     || !checkApiEnabled("getSafetyCenterData")) {
-                return SafetyCenterDataTracker.getDefaultSafetyCenterData();
+                return SafetyCenterDataFactory.getDefaultSafetyCenterData();
             }
 
             UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
 
             synchronized (mApiLock) {
-                return mSafetyCenterDataTracker.getSafetyCenterData(packageName, userProfileGroup);
+                return mSafetyCenterDataFactory.getSafetyCenterData(packageName, userProfileGroup);
             }
         }
 
@@ -425,7 +425,7 @@ public final class SafetyCenterService extends SystemService {
                 }
                 SafetyCenterListeners.deliverUpdateForListener(
                         listener,
-                        mSafetyCenterDataTracker.getSafetyCenterData(packageName, userProfileGroup),
+                        mSafetyCenterDataFactory.getSafetyCenterData(packageName, userProfileGroup),
                         null);
             }
         }
@@ -988,6 +988,7 @@ public final class SafetyCenterService extends SystemService {
         synchronized (mApiLock) {
             if (clearDataPermanently) {
                 mSafetyCenterRepository.clearForUser(userId);
+                mSafetyCenterIssueCache.clearForUser(userId);
             }
             mSafetyCenterListeners.clearForUser(userId);
             mSafetyCenterRefreshTracker.clearRefreshForUser(userId);
@@ -1074,6 +1075,7 @@ public final class SafetyCenterService extends SystemService {
     @GuardedBy("mApiLock")
     private void clearDataLocked() {
         mSafetyCenterRepository.clear();
+        mSafetyCenterIssueCache.clear();
         mSafetyCenterTimeouts.clear();
         mSafetyCenterRefreshTracker.clearRefresh();
         scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked();

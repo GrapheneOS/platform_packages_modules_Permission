@@ -63,18 +63,16 @@ import java.util.Locale;
 import javax.annotation.concurrent.NotThreadSafe;
 
 /**
- * Aggregates {@link SafetySourceData} into a {@link SafetyCenterData} object to be used by Safety
- * Center listeners including PermissionController.
+ * Aggregates {@link SafetySourceData} to build {@link SafetyCenterData} instances which are shared
+ * with Safety Center listeners, including PermissionController.
  *
  * <p>This class isn't thread safe. Thread safety must be handled by the caller.
  */
-// TODO(b/250812300): Change the name of this class to reflect the "aggregating them into
-//   SafetyCenterData object" responsibility only.
 @RequiresApi(TIRAMISU)
 @NotThreadSafe
-final class SafetyCenterDataTracker {
+final class SafetyCenterDataFactory {
 
-    private static final String TAG = "SafetyCenterDataTracker";
+    private static final String TAG = "SafetyCenterDataFactory";
 
     private static final String ANDROID_LOCK_SCREEN_SOURCES_GROUP_ID = "AndroidLockScreenSources";
 
@@ -89,7 +87,7 @@ final class SafetyCenterDataTracker {
     @NonNull private final SafetyCenterIssueCache mSafetyCenterIssueCache;
     @NonNull private final SafetyCenterRepository mSafetyCenterRepository;
 
-    SafetyCenterDataTracker(
+    SafetyCenterDataFactory(
             @NonNull SafetyCenterResourcesContext safetyCenterResourcesContext,
             @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
             @NonNull SafetyCenterRefreshTracker safetyCenterRefreshTracker,
