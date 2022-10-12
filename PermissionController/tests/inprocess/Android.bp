@@ -49,6 +49,11 @@ android_test {
         "permission-test-util-lib",
     ],
 
+    data: [
+        ":AppThatUsesCameraPermission",
+    ],
+    per_testcase_directory: true,
+
     certificate: "platform",
 
     instrumentation_for: "PermissionController",
