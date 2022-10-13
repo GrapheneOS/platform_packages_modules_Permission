@@ -461,6 +461,9 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment
         AlertDialog.Builder b = new AlertDialog.Builder(getContext())
                 .setIcon(args.getIconId())
                 .setMessage(args.getMessageId())
+                .setOnCancelListener((DialogInterface dialog) -> {
+                    setRadioButtonsState(mViewModel.getButtonStateLiveData().getValue());
+                })
                 .setNegativeButton(args.getNegativeButtonTextId(),
                         (DialogInterface dialog, int which) -> {
                             setRadioButtonsState(mViewModel.getButtonStateLiveData().getValue());
