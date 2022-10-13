@@ -19,7 +19,6 @@ package com.android.permission.access
 import com.android.permission.access.appop.PackageAppOpPolicy
 import com.android.permission.access.appop.UidAppOpPolicy
 import com.android.permission.access.external.PackageState
-import com.android.permission.access.permission.PermissionFlags
 import com.android.permission.access.permission.UidPermissionPolicy
 import com.android.permission.access.util.* // ktlint-disable no-wildcard-imports
 
@@ -38,9 +37,8 @@ class AccessPolicy private constructor(
     )
 
     fun getDecision(subject: AccessUri, `object`: AccessUri, state: AccessState): Int {
-        // TODO: Warn when not found?
-        val schemePolicy = getSchemePolicy(subject, `object`)
-            ?: return PermissionFlags.DENIED
+        val schemePolicy = checkNotNull(getSchemePolicy(subject, `object`)) { "Scheme policy for " +
+            "subject=$subject object=$`object` does not exist."}
         return schemePolicy.getDecision(subject, `object`, state)
     }
 
@@ -51,8 +49,8 @@ class AccessPolicy private constructor(
         oldState: AccessState,
         newState: AccessState
     ) {
-        // TODO: Warn when not found?
-        val schemePolicy = getSchemePolicy(subject, `object`) ?: return
+        val schemePolicy = checkNotNull(getSchemePolicy(subject, `object`)) { "Scheme policy for " +
+            "subject=$subject object=$`object` does not exist."}
         return schemePolicy.setDecision(subject, `object`, decision, oldState, newState)
     }
 
