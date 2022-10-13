@@ -49,7 +49,7 @@ android_test {
     ],
 
     static_libs: [
-        "iconloader",
+        "iconloader_sc_mainline_prod",
         "com.google.android.material_material",
         "androidx.transition_transition",
         "androidx-constraintlayout_constraintlayout",
