@@ -223,50 +223,50 @@ class SafetySourceIntentHandler {
         }
     }
 
-    /** A class that matches an [Intent] request (or a subset of it). */
-    sealed class Request {
+    /** An interface that matches an [Intent] request (or a subset of it). */
+    sealed interface Request {
         /** The safety source id this request applies to. */
-        abstract val sourceId: String
+        val sourceId: String
 
         /** The user id this request applies to. */
-        abstract val userId: Int
+        val userId: Int
 
         /** Creates a refresh [Request] based on the given [sourceId] and [userId]. */
         data class Refresh(
             override val sourceId: String,
             override val userId: Int = UserHandle.myUserId()
-        ) : Request()
+        ) : Request
 
         /** Creates a rescan [Request] based on the given [sourceId] and [userId]. */
         data class Rescan(
             override val sourceId: String,
             override val userId: Int = UserHandle.myUserId()
-        ) : Request()
+        ) : Request
 
         /** Creates a resolve action [Request] based on the given [sourceId] and [userId]. */
         data class ResolveAction(
             override val sourceId: String,
             override val userId: Int = UserHandle.myUserId()
-        ) : Request()
+        ) : Request
 
-        /** Creates a dismiss issue [Request] based on the given [sourceId] and [userId]. */
+        /** Creates an issue dismissal [Request] based on the given [sourceId] and [userId]. */
         data class DismissIssue(
             override val sourceId: String,
             override val userId: Int = UserHandle.myUserId()
-        ) : Request()
+        ) : Request
     }
 
     /**
-     * A class that specifies the appropriate action to take on the [SafetyCenterManager] as a
+     * An interface that specifies the appropriate action to take on the [SafetyCenterManager] as a
      * response to an incoming [Request].
      */
-    sealed class Response {
+    sealed interface Response {
 
         /** Creates an error [Response]. */
-        object Error : Response()
+        object Error : Response
 
         /** Creates a [Response] to clear the data. */
-        object ClearData : Response()
+        object ClearData : Response
 
         /**
          * Creates a [Response] to set the given [SafetySourceData].
@@ -278,7 +278,7 @@ class SafetySourceIntentHandler {
         data class SetData(
             val safetySourceData: SafetySourceData,
             val overrideBroadcastId: String? = null
-        ) : Response()
+        ) : Response
     }
 
     companion object {

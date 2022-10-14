@@ -17,14 +17,15 @@
 package com.android.permissioncontroller.permission.ui.auto.dashboard
 
 import android.app.role.RoleManager
-import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.text.format.DateFormat
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
+import androidx.preference.PreferenceScreen
 import com.android.car.ui.preference.CarUiPreference
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.DumpableLog
@@ -44,6 +45,11 @@ import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageD
 import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModelFactory
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPermGroupLabel
 import com.android.permissioncontroller.permission.utils.Utils
+import java.time.Clock
+import java.time.Instant
+import java.time.ZoneId
+import java.time.ZonedDateTime
+import java.time.temporal.ChronoUnit
 import java.util.concurrent.atomic.AtomicReference
 
 @RequiresApi(Build.VERSION_CODES.S)
@@ -54,6 +60,14 @@ class AutoPermissionUsageDetailsFragment :
         private const val LOG_TAG = "AutoPermissionUsageDetailsFragment"
         private const val KEY_SESSION_ID = "_session_id"
         private const val FILTER_24_HOURS = 2
+        private val MIDNIGHT_TODAY =
+            ZonedDateTime.now(ZoneId.systemDefault()).truncatedTo(ChronoUnit.DAYS).toEpochSecond() *
+                1000L
+        private val MIDNIGHT_YESTERDAY =
+            ZonedDateTime.now(ZoneId.systemDefault())
+                .minusDays(1)
+                .truncatedTo(ChronoUnit.DAYS)
+                .toEpochSecond() * 1000L
 
         // Only show the last 24 hours on Auto right now
         private const val SHOW_7_DAYS = false
@@ -191,42 +205,33 @@ class AutoPermissionUsageDetailsFragment :
 
         val exemptedPackages = Utils.getExemptedPackages(roleManager)
 
-        val (permissionApps, seenSystemApp, appPermissionUsageEntries) =
+        val uiData =
             usageViewModel.buildPermissionUsageDetailsUiData(
                 appPermissionUsages, showSystem, SHOW_7_DAYS)
 
-        if (hasSystemApps != seenSystemApp) {
-            hasSystemApps = seenSystemApp
+        if (hasSystemApps != uiData.shouldDisplayShowSystemToggle) {
+            hasSystemApps = uiData.shouldDisplayShowSystemToggle
             updateAction()
         }
 
-        val preferenceFactory = PreferenceFactory(requireActivity())
-        val category = AtomicReference(preferenceFactory.createDayCategoryPreference())
+        val category = AtomicReference(PreferenceCategory(context))
         preferenceScreen.addPreference(category.get())
 
         AppDataLoader(context) {
-                usageViewModel.renderHistoryPreferences(
-                    appPermissionUsageEntries, category, preferenceScreen, preferenceFactory)
+                renderHistoryPreferences(
+                    uiData.getHistoryPreferenceDataList(), category, preferenceScreen)
 
                 setLoading(false)
                 finishedInitialLoad = true
                 permissionUsages.stopLoader(requireActivity().getLoaderManager())
             }
-            .execute(*permissionApps.toTypedArray())
+            .execute(*uiData.permissionApps.toTypedArray())
     }
 
-    private class PreferenceFactory(val context: Context) :
-        PermissionUsageDetailsViewModel.HistoryPreferenceFactory {
-
-        override fun createDayCategoryPreference(): PreferenceCategory {
-            return PreferenceCategory(context)
-        }
-
-        override fun createPermissionHistoryPreference(
-            historyPreferenceData: PermissionUsageDetailsViewModel.HistoryPreferenceData
-        ): Preference {
-            return AutoPermissionHistoryPreference(context, historyPreferenceData)
-        }
+    fun createPermissionHistoryPreference(
+        historyPreferenceData: PermissionUsageDetailsViewModel.HistoryPreferenceData
+    ): Preference {
+        return AutoPermissionHistoryPreference(requireContext(), historyPreferenceData)
     }
 
     private fun addTimelineDescriptionPreference() {
@@ -260,5 +265,40 @@ class AutoPermissionUsageDetailsFragment :
                     }
             }
         preferenceScreen.addPreference(preference)
+    }
+
+    /** Render the provided [historyPreferenceDataList] into the [preferenceScreen] UI. */
+    fun renderHistoryPreferences(
+        historyPreferenceDataList: List<PermissionUsageDetailsViewModel.HistoryPreferenceData>,
+        category: AtomicReference<PreferenceCategory>,
+        preferenceScreen: PreferenceScreen,
+    ) {
+        var previousDateMs = 0L
+        historyPreferenceDataList.forEach {
+            val usageTimestamp = it.accessEndTime
+            val currentDateMs =
+                ZonedDateTime.ofInstant(
+                        Instant.ofEpochMilli(usageTimestamp),
+                        Clock.system(ZoneId.systemDefault()).zone)
+                    .truncatedTo(ChronoUnit.DAYS)
+                    .toEpochSecond() * 1000L
+            if (currentDateMs != previousDateMs) {
+                if (previousDateMs != 0L) {
+                    category.set(PreferenceCategory(context))
+                    preferenceScreen.addPreference(category.get())
+                }
+                if (usageTimestamp > MIDNIGHT_TODAY) {
+                    category.get().setTitle(R.string.permission_history_category_today)
+                } else if (usageTimestamp > MIDNIGHT_YESTERDAY) {
+                    category.get().setTitle(R.string.permission_history_category_yesterday)
+                } else {
+                    category
+                        .get()
+                        .setTitle(DateFormat.getDateFormat(context).format(currentDateMs))
+                }
+                previousDateMs = currentDateMs
+            }
+            category.get().addPreference(createPermissionHistoryPreference(it))
+        }
     }
 }
