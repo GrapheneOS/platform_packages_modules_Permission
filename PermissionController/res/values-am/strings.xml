@@ -414,7 +414,7 @@
     <string name="ongoing_usage_dialog_separator" msgid="1715181526581520068">"፣ "</string>
     <string name="ongoing_usage_dialog_last_separator" msgid="4170995004748832163">" እና "</string>
     <string name="default_app_search_keyword" msgid="8330125736889689743">"ነባሪ መተግበሪያዎች"</string>
-    <string name="permgroup_list_microphone_and_camera" msgid="962768198001487969">"ድምጽ ማጉያ እና ካሜራ"</string>
+    <string name="permgroup_list_microphone_and_camera" msgid="962768198001487969">"ድምፅ ማጉያ እና ካሜራ"</string>
     <string name="settings_button" msgid="4414988414732479636">"ቅንብሮች"</string>
     <string name="default_apps" msgid="5119201969348748639">"ነባሪ መተግበሪያዎች"</string>
     <string name="no_default_apps" msgid="2593466527182950231">"ምንም ነባሪ መተግበሪያዎች የሉም"</string>
