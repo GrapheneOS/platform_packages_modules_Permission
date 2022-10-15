@@ -51,7 +51,7 @@
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"બધી ફાઇલો મેનેજ કરવાની મંજૂરી આપો"</string>
     <string name="grant_dialog_button_allow_media_only" msgid="4832877658422573832">"મીડિયા ફાઇલો ઍક્સેસ કરવાની મંજૂરી આપો"</string>
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"ઍપ"</string>
-    <string name="app_permissions" msgid="3369917736607944781">"ઍપ પરવાનગીઓ"</string>
+    <string name="app_permissions" msgid="3369917736607944781">"ઍપની પરવાનગીઓ"</string>
     <string name="unused_apps" msgid="2058057455175955094">"ન વપરાયેલી ઍપ"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"કોઈ બિનવપરાયેલી ઍપ નથી"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"બિનવપરાયેલી 0 ઍપ"</string>
