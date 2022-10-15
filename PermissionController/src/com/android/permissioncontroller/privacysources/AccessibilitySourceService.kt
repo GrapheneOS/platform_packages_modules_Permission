@@ -903,13 +903,12 @@ class AccessibilityJobService : JobService() {
 
     override fun onCreate() {
         super.onCreate()
-        if (DEBUG) {
-            Log.v(LOG_TAG, "accessibility privacy source job created.")
-        }
+        Log.v(LOG_TAG, "accessibility privacy source job created.")
         mSourceService = AccessibilitySourceService(this)
     }
 
     override fun onStartJob(params: JobParameters?): Boolean {
+        Log.v(LOG_TAG, "accessibility privacy source job started.")
         synchronized(mLock) {
             if (mCurrentJob != null) {
                 Log.v(LOG_TAG, "Accessibility privacy source job already running")
