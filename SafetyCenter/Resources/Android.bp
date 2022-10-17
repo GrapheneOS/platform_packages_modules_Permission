@@ -40,7 +40,6 @@ android_app {
     privileged: true,
     sdk_version: "system_current",
     min_sdk_version: "30",
-    target_sdk_version: "33",
     apex_available: ["com.android.permission"],
     certificate: ":com.android.safetycenter.resources.certificate",
     lint: {
