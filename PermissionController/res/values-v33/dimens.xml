@@ -15,7 +15,6 @@
   -->
 
 <resources>
-
     <dimen name="sc_spacing_xxxsmall">2dp</dimen>
     <dimen name="sc_spacing_xxsmall">4dp</dimen>
     <dimen name="sc_spacing_xsmall">8dp</dimen>
@@ -43,4 +42,6 @@
     <dimen name="sc_card_corner_radius_large">28dp</dimen>
     <dimen name="sc_card_corner_radius_medium">20dp</dimen>
     <dimen name="sc_card_corner_radius_xsmall">4dp</dimen>
+
+    <dimen name="sc_qs_max_width">492dp</dimen>
 </resources>
