@@ -27,6 +27,7 @@ import android.provider.Settings;
 import android.safetycenter.SafetyCenterManager;
 import android.util.Log;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
@@ -42,6 +43,12 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
 
     private static final String TAG = SafetyCenterActivity.class.getSimpleName();
     private static final String PRIVACY_CONTROLS_ACTION = "android.settings.PRIVACY_CONTROLS";
+    private static final String MENU_KEY_SAFETY_CENTER = "top_level_safety_center";
+    private static final String EXTRA_SETTINGS_EMBEDDED_DEEP_LINK_INTENT_URI =
+            "android.provider.extra.SETTINGS_EMBEDDED_DEEP_LINK_INTENT_URI";
+    private static final String EXTRA_SETTINGS_EMBEDDED_DEEP_LINK_HIGHLIGHT_MENU_KEY =
+            "android.provider.extra.SETTINGS_EMBEDDED_DEEP_LINK_HIGHLIGHT_MENU_KEY";
+
     private SafetyCenterManager mSafetyCenterManager;
 
     @Override
@@ -49,7 +56,13 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
         super.onCreate(savedInstanceState);
         mSafetyCenterManager = getSystemService(SafetyCenterManager.class);
 
-        if (maybeRedirectIfDisabled()) return;
+        if (maybeRedirectIfDisabled()) {
+            return;
+        }
+
+        if (maybeRedirectIntoTwoPaneSettings()) {
+            return;
+        }
 
         Fragment frag;
         if (getIntent().getAction().equals(PRIVACY_CONTROLS_ACTION)) {
@@ -92,6 +105,46 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
         return false;
     }
 
+    private boolean maybeRedirectIntoTwoPaneSettings() {
+        return shouldUseTwoPaneSettings() && tryRedirectTwoPaneSettings();
+    }
+
+    private boolean shouldUseTwoPaneSettings() {
+        if (!ActivityEmbeddingUtils.isEmbeddingActivityEnabled(this)) {
+            return false;
+        }
+        return isTaskRoot() && !ActivityEmbeddingUtils.isActivityEmbedded(this);
+    }
+
+    /** Return {@code true} if the redirection was attempted. */
+    private boolean tryRedirectTwoPaneSettings() {
+        Intent twoPaneIntent = getTwoPaneIntent();
+        if (twoPaneIntent == null) {
+            return false;
+        }
+
+        Log.i(TAG, "Safety Center restarting in Settings two-pane layout");
+        startActivity(twoPaneIntent);
+        finishAndRemoveTask();
+        return true;
+    }
+
+    @Nullable
+    private Intent getTwoPaneIntent() {
+        Intent twoPaneIntent = ActivityEmbeddingUtils.buildEmbeddingActivityBaseIntent(this);
+        if (twoPaneIntent == null) {
+            return null;
+        }
+
+        twoPaneIntent.putExtras(getIntent());
+        twoPaneIntent.putExtra(
+                EXTRA_SETTINGS_EMBEDDED_DEEP_LINK_INTENT_URI,
+                getIntent().toUri(Intent.URI_INTENT_SCHEME));
+        twoPaneIntent.putExtra(
+                EXTRA_SETTINGS_EMBEDDED_DEEP_LINK_HIGHLIGHT_MENU_KEY, MENU_KEY_SAFETY_CENTER);
+        return twoPaneIntent;
+    }
+
     private void logPrivacySourceMetric() {
         Intent intent = getIntent();
         if (intent != null && intent.hasExtra(Constants.EXTRA_PRIVACY_SOURCE)) {
@@ -99,8 +152,14 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
             int uid = intent.getIntExtra(Intent.EXTRA_UID, -1);
             long sessionId =
                     intent.getLongExtra(Constants.EXTRA_SESSION_ID, Constants.INVALID_SESSION_ID);
-            Log.v(TAG, "privacy source notification metric, source " + privacySource + " uid "
-                    + uid + " sessionId " + sessionId);
+            Log.v(
+                    TAG,
+                    "privacy source notification metric, source "
+                            + privacySource
+                            + " uid "
+                            + uid
+                            + " sessionId "
+                            + sessionId);
             PermissionControllerStatsLog.write(
                     PRIVACY_SIGNAL_NOTIFICATION_INTERACTION,
                     privacySource,
