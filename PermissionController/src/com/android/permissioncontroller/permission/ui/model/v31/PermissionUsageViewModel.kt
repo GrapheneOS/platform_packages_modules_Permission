@@ -27,13 +27,13 @@ import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.model.AppPermissionGroup
+import com.android.permissioncontroller.permission.model.legacy.PermissionApps.PermissionApp
 import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
 import com.android.permissioncontroller.permission.model.v31.PermissionUsages
-import com.android.permissioncontroller.permission.model.legacy.PermissionApps.PermissionApp
 import com.android.permissioncontroller.permission.ui.handheld.v31.is7DayToggleEnabled
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPermGroupLabel
+import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.Utils
 import java.time.Instant
 import java.util.concurrent.TimeUnit
@@ -49,13 +49,15 @@ class PermissionUsageViewModel(val roleManager: RoleManager) : ViewModel() {
         private val TIME_FILTER_MILLIS = TimeUnit.DAYS.toMillis(7)
         private val TIME_7_DAYS_DURATION = TimeUnit.DAYS.toMillis(7)
         private val TIME_24_HOURS_DURATION = TimeUnit.DAYS.toMillis(1)
+        /** Permission groups that should be hidden from the permissions usage UI. */
+        private val EXEMPTED_PERMISSION_GROUPS = setOf(Manifest.permission_group.NOTIFICATIONS)
 
         @JvmStatic
-        val PERMISSION_GROUP_ORDER: Map<String, Int> = mapOf(
-            Manifest.permission_group.LOCATION to 0,
-            Manifest.permission_group.CAMERA to 1,
-            Manifest.permission_group.MICROPHONE to 2
-        )
+        val PERMISSION_GROUP_ORDER: Map<String, Int> =
+            mapOf(
+                Manifest.permission_group.LOCATION to 0,
+                Manifest.permission_group.CAMERA to 1,
+                Manifest.permission_group.MICROPHONE to 2)
         private const val DEFAULT_ORDER = 3
     }
 
@@ -64,12 +66,18 @@ class PermissionUsageViewModel(val roleManager: RoleManager) : ViewModel() {
         permissionUsages: PermissionUsages,
         callback: PermissionUsages.PermissionsUsagesChangeCallback
     ) {
-        val filterTimeBeginMillis = max(System.currentTimeMillis() - TIME_FILTER_MILLIS,
-            Instant.EPOCH.toEpochMilli())
-        permissionUsages.load(null /*filterPackageName*/, null /*filterPermissionGroups*/,
-            filterTimeBeginMillis, Long.MAX_VALUE, PermissionUsages.USAGE_FLAG_LAST
-                or PermissionUsages.USAGE_FLAG_HISTORICAL, loaderManager,
-            false /*getUiInfo*/, false /*getNonPlatformPermissions*/, callback /*callback*/,
+        val filterTimeBeginMillis =
+            max(System.currentTimeMillis() - TIME_FILTER_MILLIS, Instant.EPOCH.toEpochMilli())
+        permissionUsages.load(
+            null /*filterPackageName*/,
+            null /*filterPermissionGroups*/,
+            filterTimeBeginMillis,
+            Long.MAX_VALUE,
+            PermissionUsages.USAGE_FLAG_LAST or PermissionUsages.USAGE_FLAG_HISTORICAL,
+            loaderManager,
+            false /*getUiInfo*/,
+            false /*getNonPlatformPermissions*/,
+            callback /*callback*/,
             false /*sync*/)
     }
 
@@ -79,16 +87,18 @@ class PermissionUsageViewModel(val roleManager: RoleManager) : ViewModel() {
         showSystem: Boolean
     ): Triple<MutableMap<String, Int>, ArrayList<PermissionApp>, Boolean> {
         val curTime = System.currentTimeMillis()
-        val showPermissionUsagesDuration = if (is7DayToggleEnabled() && show7Days) {
-            TIME_7_DAYS_DURATION
-        } else {
-            TIME_24_HOURS_DURATION
-        }
+        val showPermissionUsagesDuration =
+            if (is7DayToggleEnabled() && show7Days) {
+                TIME_7_DAYS_DURATION
+            } else {
+                TIME_24_HOURS_DURATION
+            }
         val startTime = max(curTime - showPermissionUsagesDuration, Instant.EPOCH.toEpochMilli())
 
         // Permission group to count mapping.
         val usages: MutableMap<String, Int> = HashMap()
-        val permissionGroups: List<AppPermissionGroup> = getOSPermissionGroups(permissionUsages)
+        val permissionGroups: List<AppPermissionGroup> =
+            getOSPermissionGroupsToDisplay(permissionUsages)
         for (i in permissionGroups.indices) {
             usages[permissionGroups[i].name] = 0
         }
@@ -96,8 +106,9 @@ class PermissionUsageViewModel(val roleManager: RoleManager) : ViewModel() {
 
         val exemptedPackages = Utils.getExemptedPackages(roleManager)
 
-        val seenSystemApp: Boolean = extractPermissionUsage(exemptedPackages,
-            usages, permApps, startTime, permissionUsages, showSystem)
+        val seenSystemApp: Boolean =
+            extractPermissionUsage(
+                exemptedPackages, usages, permApps, startTime, permissionUsages, showSystem)
 
         return Triple(usages, permApps, seenSystemApp)
     }
@@ -126,22 +137,18 @@ class PermissionUsageViewModel(val roleManager: RoleManager) : ViewModel() {
         second: Map.Entry<String, Int>,
         groupUsageNameToLabelMapping: Map<String, CharSequence>
     ): Int {
-        val firstPermissionOrder = PERMISSION_GROUP_ORDER
-            .getOrDefault(first.key, DEFAULT_ORDER)
-        val secondPermissionOrder = PERMISSION_GROUP_ORDER
-            .getOrDefault(second.key, DEFAULT_ORDER)
+        val firstPermissionOrder = PERMISSION_GROUP_ORDER.getOrDefault(first.key, DEFAULT_ORDER)
+        val secondPermissionOrder = PERMISSION_GROUP_ORDER.getOrDefault(second.key, DEFAULT_ORDER)
         return if (firstPermissionOrder != secondPermissionOrder) {
             firstPermissionOrder - secondPermissionOrder
-        } else groupUsageNameToLabelMapping[first.key].toString()
-            .compareTo(groupUsageNameToLabelMapping[second.key].toString())
+        } else
+            groupUsageNameToLabelMapping[first.key]
+                .toString()
+                .compareTo(groupUsageNameToLabelMapping[second.key].toString())
     }
 
-    /**
-     * Get the permission groups declared by the OS.
-     *
-     * @return a list of the permission groups declared by the OS.
-     */
-    private fun getOSPermissionGroups(
+    /** Returns the permission groups declared by the OS that should be displayed in the UI. */
+    private fun getOSPermissionGroupsToDisplay(
         permissionUsages: List<AppPermissionUsage>
     ): List<AppPermissionGroup> {
         val groups: MutableList<AppPermissionGroup> = java.util.ArrayList()
@@ -153,6 +160,9 @@ class PermissionUsageViewModel(val roleManager: RoleManager) : ViewModel() {
             val groupUsageCount = groupUsages.size
             for (j in 0 until groupUsageCount) {
                 val groupUsage = groupUsages[j]
+                if (EXEMPTED_PERMISSION_GROUPS.contains(groupUsage.group.name)) {
+                    continue
+                }
                 if (PermissionMapping.isPlatformPermissionGroup(groupUsage.group.name)) {
                     if (seenGroups.add(groupUsage.group.name)) {
                         groups.add(groupUsage.group)
@@ -164,12 +174,11 @@ class PermissionUsageViewModel(val roleManager: RoleManager) : ViewModel() {
     }
 
     /**
-     * Extract the permission usages from mAppPermissionUsages and put the extracted usages
-     * into usages and permApps. Returns whether we have seen a system app during the process.
+     * Extract the permission usages from mAppPermissionUsages and put the extracted usages into
+     * usages and permApps. Returns whether we have seen a system app during the process.
      *
-     * TODO: theianchen
-     * It's doing two things at the same method which is violating the SOLID principle.
-     * We should fix this.
+     * TODO: theianchen It's doing two things at the same method which is violating the SOLID
+     * principle. We should fix this.
      *
      * @param exemptedPackages packages that are the role holders for exempted roles
      * @param usages an empty List that will be filled with permission usages.
@@ -199,6 +208,9 @@ class PermissionUsageViewModel(val roleManager: RoleManager) : ViewModel() {
             for (groupNum in 0 until numGroups) {
                 val groupUsage = appGroups[groupNum]
                 val groupName = groupUsage.group.name
+                if (EXEMPTED_PERMISSION_GROUPS.contains(groupName)) {
+                    continue
+                }
                 val lastAccessTime = groupUsage.lastAccessTime
                 if (lastAccessTime == 0L) {
                     Log.w(
@@ -210,8 +222,7 @@ class PermissionUsageViewModel(val roleManager: RoleManager) : ViewModel() {
                 if (lastAccessTime < startTime) {
                     continue
                 }
-                val isSystemApp = !Utils.isGroupOrBgGroupUserSensitive(
-                    groupUsage.group)
+                val isSystemApp = !Utils.isGroupOrBgGroupUserSensitive(groupUsage.group)
                 seenSystemApp = seenSystemApp || isSystemApp
 
                 // If not showing system apps, skip.
@@ -240,16 +251,12 @@ class PermissionUsageViewModel(val roleManager: RoleManager) : ViewModel() {
     }
 }
 
-/**
- * Factory for an PermissionUsageViewModel
- */
+/** Factory for a PermissionUsageViewModel */
 @RequiresApi(Build.VERSION_CODES.S)
-class PermissionUsageViewModelFactory(
-    private val roleManager: RoleManager
-) : ViewModelProvider.Factory {
+class PermissionUsageViewModelFactory(private val roleManager: RoleManager) :
+    ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        @Suppress("UNCHECKED_CAST")
-        return PermissionUsageViewModel(roleManager) as T
+        @Suppress("UNCHECKED_CAST") return PermissionUsageViewModel(roleManager) as T
     }
 }
