@@ -75,7 +75,6 @@ android_app {
     // artifact. See also b/209458854.
     sdk_version: "system_current",
     min_sdk_version: "30",
-    target_sdk_version: "33",
     updatable: true,
     privileged: true,
     certificate: "platform",
