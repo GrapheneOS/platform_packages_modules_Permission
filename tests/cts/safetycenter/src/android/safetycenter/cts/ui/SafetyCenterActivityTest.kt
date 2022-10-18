@@ -445,6 +445,19 @@ class SafetyCenterActivityTest {
     }
 
     @Test
+    fun entryListWithSingleSource_clickingTheIconActionButton_redirectsToDifferentScreen() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(
+            SINGLE_SOURCE_ID, safetySourceCtsData.informationWithIconAction)
+
+        context.launchSafetyCenterActivity {
+            waitDisplayed(By.desc("Settings")) { it.click() }
+            waitButtonDisplayed("Exit test activity") { it.click() }
+            waitDisplayed(By.text("Ok title"))
+        }
+    }
+
+    @Test
     fun staticSource_clickingTheEntry_redirectsToDifferentScreen() {
         safetyCenterCtsHelper.setConfig(STATIC_SOURCES_CONFIG)
 
