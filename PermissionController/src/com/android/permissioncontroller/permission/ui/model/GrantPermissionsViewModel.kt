@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.ui.model.v31
+package com.android.permissioncontroller.permission.ui.model
 
 import android.Manifest
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
@@ -59,7 +59,6 @@ import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_GRANT_REQUEST_RESULT_REPORTED__RESULT__USER_GRANTED_ONE_TIME
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_GRANT_REQUEST_RESULT_REPORTED__RESULT__USER_IGNORED
 import com.android.permissioncontroller.auto.DrivingDecisionReminderService
-import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.data.LightAppPermGroupLiveData
 import com.android.permissioncontroller.permission.data.LightPackageInfoLiveData
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData
@@ -99,10 +98,11 @@ import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandle
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_RESULT_PERMISSION_INTERACTED
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_RESULT_PERMISSION_RESULT
-import com.android.permissioncontroller.permission.ui.handheld.v31.getDefaultPrecision
-import com.android.permissioncontroller.permission.ui.handheld.v31.isLocationAccuracyEnabled
 import com.android.permissioncontroller.permission.utils.AdminRestrictedPermissionsUtils
 import com.android.permissioncontroller.permission.utils.KotlinUtils
+import com.android.permissioncontroller.permission.utils.KotlinUtils.getDefaultPrecision
+import com.android.permissioncontroller.permission.utils.KotlinUtils.isLocationAccuracyEnabled
+import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.SafetyNetLogger
 import com.android.permissioncontroller.permission.utils.Utils
 
@@ -442,7 +442,7 @@ class GrantPermissionsViewModel(
                 // Show location permission dialogs based on location permissions
                 val locationVisibilities = MutableList(NEXT_LOCATION_DIALOG) { false }
                 if (groupState.group.permGroupName == LOCATION && isLocationAccuracyEnabled() &&
-                        packageInfo.targetSdkVersion >= Build.VERSION_CODES.S) {
+                    packageInfo.targetSdkVersion >= Build.VERSION_CODES.S) {
                     if (needFgPermissions) {
                         locationVisibilities[LOCATION_ACCURACY_LAYOUT] = true
                         if (fgState != null &&

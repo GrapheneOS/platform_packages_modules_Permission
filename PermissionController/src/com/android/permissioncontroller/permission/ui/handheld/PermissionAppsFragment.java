@@ -22,7 +22,6 @@ import static com.android.permissioncontroller.permission.ui.Category.ALLOWED_FO
 import static com.android.permissioncontroller.permission.ui.Category.ASK;
 import static com.android.permissioncontroller.permission.ui.Category.DENIED;
 import static com.android.permissioncontroller.permission.ui.handheld.UtilsKt.pressBack;
-import static com.android.permissioncontroller.permission.ui.handheld.v31.DashboardUtilsKt.shouldShowPermissionsDashboard;
 
 import android.Manifest;
 import android.app.ActionBar;
@@ -197,7 +196,7 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
             updateMenu(mViewModel.getShouldShowSystemLiveData().getValue());
         }
 
-        if (shouldShowPermissionsDashboard()) {
+        if (KotlinUtils.INSTANCE.shouldShowPermissionsDashboard()) {
             menu.add(Menu.NONE, MENU_PERMISSION_USAGE, Menu.NONE, R.string.permission_usage_title);
         }
 

@@ -38,7 +38,6 @@ import com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISS
 import com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_GROUPS_FRAGMENT_AUTO_REVOKE_ACTION__ACTION__SWITCH_ENABLED
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.hibernation.isHibernationEnabled
-import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.data.AppPermGroupUiInfoLiveData
 import com.android.permissioncontroller.permission.data.FullStoragePermissionAppsLiveData
 import com.android.permissioncontroller.permission.data.HibernationSettingStateLiveData
@@ -47,19 +46,20 @@ import com.android.permissioncontroller.permission.data.PackagePermissionsLiveDa
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData.Companion.NON_RUNTIME_NORMAL_PERMS
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.data.get
-import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
 import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo.PermGrantState
+import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
 import com.android.permissioncontroller.permission.ui.Category
-import com.android.permissioncontroller.permission.ui.handheld.v31.is7DayToggleEnabled
 import com.android.permissioncontroller.permission.utils.IPC
+import com.android.permissioncontroller.permission.utils.KotlinUtils
+import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.Utils.AppPermsLastAccessType
 import com.android.permissioncontroller.permission.utils.navigateSafe
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import java.time.Instant
 import java.util.concurrent.TimeUnit
 import kotlin.math.max
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 /**
  * ViewModel for the AppPermissionGroupsFragment. Has a liveData with the UI information for all
@@ -281,7 +281,7 @@ class AppPermissionGroupsViewModel(
             return
         }
 
-        val aggregateDataFilterBeginDays = if (is7DayToggleEnabled())
+        val aggregateDataFilterBeginDays = if (KotlinUtils.is7DayToggleEnabled())
             AGGREGATE_DATA_FILTER_BEGIN_DAYS_7 else AGGREGATE_DATA_FILTER_BEGIN_DAYS_1
 
         accessTime.clear()

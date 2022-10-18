@@ -24,13 +24,13 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.model.AppPermissionGroup
 import com.android.permissioncontroller.permission.model.legacy.PermissionApps.PermissionApp
 import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
 import com.android.permissioncontroller.permission.model.v31.PermissionUsages
-import com.android.permissioncontroller.permission.ui.handheld.v31.is7DayToggleEnabled
+import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPermGroupLabel
+import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.Utils
 import java.time.Instant
 import java.util.concurrent.TimeUnit
@@ -92,7 +92,7 @@ class PermissionUsageViewModel(val roleManager: RoleManager) : ViewModel() {
     ): PermissionUsagesUiData {
         val curTime = System.currentTimeMillis()
         val showPermissionUsagesDuration =
-            if (is7DayToggleEnabled() && show7Days) {
+            if (KotlinUtils.is7DayToggleEnabled() && show7Days) {
                 TIME_7_DAYS_DURATION
             } else {
                 TIME_24_HOURS_DURATION

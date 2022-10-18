@@ -19,7 +19,6 @@ package com.android.permissioncontroller.permission.ui.model
 import android.Manifest
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
-import android.Manifest.permission_group.LOCATION
 import android.annotation.SuppressLint
 import android.app.AppOpsManager
 import android.app.AppOpsManager.MODE_ALLOWED
@@ -44,7 +43,6 @@ import com.android.permissioncontroller.PermissionControllerStatsLog
 import com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_FRAGMENT_ACTION_REPORTED
 import com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_FRAGMENT_VIEWED
 import com.android.permissioncontroller.R
-import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.data.FullStoragePermissionAppsLiveData
 import com.android.permissioncontroller.permission.data.FullStoragePermissionAppsLiveData.FullStoragePackageState
 import com.android.permissioncontroller.permission.data.LightAppPermGroupLiveData
@@ -55,9 +53,6 @@ import com.android.permissioncontroller.permission.model.livedatatypes.LightPerm
 import com.android.permissioncontroller.permission.service.PermissionChangeStorageImpl
 import com.android.permissioncontroller.permission.service.v33.PermissionDecisionStorageImpl
 import com.android.permissioncontroller.permission.ui.AdvancedConfirmDialogArgs
-
-import com.android.permissioncontroller.permission.ui.handheld.v31.getDefaultPrecision
-import com.android.permissioncontroller.permission.ui.handheld.v31.isLocationAccuracyEnabled
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.ALLOW
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.ALLOW_ALWAYS
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.ALLOW_FOREGROUND
@@ -67,7 +62,10 @@ import com.android.permissioncontroller.permission.ui.model.AppPermissionViewMod
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.DENY_FOREGROUND
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.LOCATION_ACCURACY
 import com.android.permissioncontroller.permission.utils.KotlinUtils
+import com.android.permissioncontroller.permission.utils.KotlinUtils.getDefaultPrecision
+import com.android.permissioncontroller.permission.utils.KotlinUtils.isLocationAccuracyEnabled
 import com.android.permissioncontroller.permission.utils.LocationUtils
+import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.SafetyNetLogger
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.navigateSafe
@@ -200,8 +198,8 @@ class AppPermissionViewModel(
     /**
      * A livedata which computes the state of the radio buttons
      */
-    val buttonStateLiveData = object
-        : SmartUpdateMediatorLiveData<@JvmSuppressWildcards Map<ButtonType, ButtonState>>() {
+    val buttonStateLiveData = object :
+        SmartUpdateMediatorLiveData<@JvmSuppressWildcards Map<ButtonType, ButtonState>>() {
 
         private val appPermGroupLiveData = LightAppPermGroupLiveData[packageName, permGroupName,
             user]
@@ -376,9 +374,8 @@ class AppPermissionViewModel(
             }
 
             if (shouldShowLocationAccuracy == null) {
-                shouldShowLocationAccuracy = group.permGroupName == LOCATION &&
-                        group.permissions.containsKey(ACCESS_FINE_LOCATION) &&
-                        isLocationAccuracyEnabled()
+                shouldShowLocationAccuracy = isLocationAccuracyEnabled() &&
+                        group.permissions.containsKey(ACCESS_FINE_LOCATION)
             }
             val locationAccuracyState = ButtonState(isFineLocationChecked(group),
                     true, false, null)
@@ -669,11 +666,12 @@ class AppPermissionViewModel(
             }
 
             if (shouldGrantForeground) {
-                if (shouldShowLocationAccuracy == true && !isFineLocationChecked(newGroup)) {
-                    newGroup = KotlinUtils.grantForegroundRuntimePermissions(app, newGroup,
-                            filterPermissions = listOf(ACCESS_COARSE_LOCATION))
+                newGroup = if (shouldShowLocationAccuracy == true &&
+                    !isFineLocationChecked(newGroup)) {
+                    KotlinUtils.grantForegroundRuntimePermissions(app, newGroup,
+                        filterPermissions = listOf(ACCESS_COARSE_LOCATION))
                 } else {
-                    newGroup = KotlinUtils.grantForegroundRuntimePermissions(app, newGroup)
+                    KotlinUtils.grantForegroundRuntimePermissions(app, newGroup)
                 }
 
                 if (!wasForegroundGranted) {
