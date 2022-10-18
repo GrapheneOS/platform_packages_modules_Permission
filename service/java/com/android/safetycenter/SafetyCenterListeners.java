@@ -142,10 +142,11 @@ final class SafetyCenterListeners {
      * Adds a {@link IOnSafetyCenterDataChangedListener} for the given {@code packageName} and
      * {@code userId}.
      *
-     * <p>Returns whether the callback was successfully registered. Returns {@code true} if the
-     * callback was already registered.
+     * <p>Returns the registered {@link IOnSafetyCenterDataChangedListener} if this operation was
+     * successful. Otherwise, returns {@code null}.
      */
-    boolean addListener(
+    @Nullable
+    IOnSafetyCenterDataChangedListener addListener(
             @NonNull IOnSafetyCenterDataChangedListener listener,
             @NonNull String packageName,
             @UserIdInt int userId) {
@@ -153,11 +154,15 @@ final class SafetyCenterListeners {
                 mSafetyCenterDataChangedListeners.get(userId);
         if (listeners == null) {
             listeners = new RemoteCallbackList<>();
-            mSafetyCenterDataChangedListeners.put(userId, listeners);
         }
         OnSafetyCenterDataChangedListenerWrapper listenerWrapper =
                 new OnSafetyCenterDataChangedListenerWrapper(listener, packageName);
-        return listeners.register(listenerWrapper);
+        boolean registered = listeners.register(listenerWrapper);
+        if (!registered) {
+            return null;
+        }
+        mSafetyCenterDataChangedListeners.put(userId, listeners);
+        return listenerWrapper;
     }
 
     /**
