@@ -127,6 +127,7 @@ android_app {
         "SettingsLibActionBarShadow",
         "SettingsLibProgressBar",
         "SettingsLibCollapsingToolbarBaseActivity",
+        "SettingsLibActivityEmbedding",
         "SettingsLibSettingsTheme",
         "SettingsLibFooterPreference",
         "SettingsLibSelectorWithWidgetPreference",

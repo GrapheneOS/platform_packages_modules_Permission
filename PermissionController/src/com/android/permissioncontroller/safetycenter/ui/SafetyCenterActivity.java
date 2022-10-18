@@ -33,6 +33,7 @@ import androidx.fragment.app.Fragment;
 import com.android.permissioncontroller.Constants;
 import com.android.permissioncontroller.PermissionControllerStatsLog;
 import com.android.permissioncontroller.R;
+import com.android.settingslib.activityembedding.ActivityEmbeddingUtils;
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
 
 /** Entry-point activity for SafetyCenter. */
@@ -59,11 +60,18 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
             setTitle(getString(R.string.safety_center_dashboard_page_title));
             frag = new SafetyCenterScrollWrapperFragment();
         }
+
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .add(R.id.content_frame, frag)
                     .commitNow();
+        }
+
+        if (getActionBar() != null
+                && ActivityEmbeddingUtils.shouldHideNavigateUpButton(this, true)) {
+            getActionBar().setDisplayHomeAsUpEnabled(false);
+            getActionBar().setHomeButtonEnabled(false);
         }
     }
 
