@@ -19,7 +19,6 @@ package com.android.permission.access.permission
 import android.content.pm.PackageManager
 import android.content.pm.PermissionInfo
 import android.util.Log
-import com.android.permission.access.AccessDecisions
 import com.android.permission.access.AccessState
 import com.android.permission.access.AccessUri
 import com.android.permission.access.PermissionUri
@@ -44,10 +43,10 @@ class UidPermissionPolicy : SchemePolicy() {
         subject as UidUri
         `object` as PermissionUri
         val flags = state.userStates[subject.userId]?.permissionFlags?.get(subject.appId)
-            ?.get(`object`.permissionName) ?: return AccessDecisions.DENIED
+            ?.get(`object`.permissionName) ?: return PermissionFlags.DENIED
         return when (flags) {
             // TODO
-            0 -> AccessDecisions.DENIED
+            0 -> PermissionFlags.DENIED
             else -> error(flags)
         }
     }
@@ -65,7 +64,7 @@ class UidPermissionPolicy : SchemePolicy() {
             .permissionFlags.getOrPut(subject.appId) { IndexedMap() }
         val flags = when (decision) {
             // TODO
-            AccessDecisions.DENIED -> 0
+            PermissionFlags.DENIED -> 0
             else -> error(decision)
         }
         uidFlags[`object`.permissionName] = flags
