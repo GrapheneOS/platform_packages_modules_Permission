@@ -38,25 +38,25 @@ import androidx.savedstate.SavedStateRegistryOwner
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.PermissionControllerStatsLog
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_APPS_FRAGMENT_VIEWED__CATEGORY__ALLOWED
-import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_APPS_FRAGMENT_VIEWED__CATEGORY__UNDEFINED
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_APPS_FRAGMENT_VIEWED__CATEGORY__ALLOWED_FOREGROUND
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_APPS_FRAGMENT_VIEWED__CATEGORY__DENIED
+import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_APPS_FRAGMENT_VIEWED__CATEGORY__UNDEFINED
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.data.AllPackageInfosLiveData
 import com.android.permissioncontroller.permission.data.FullStoragePermissionAppsLiveData
 import com.android.permissioncontroller.permission.data.FullStoragePermissionAppsLiveData.FullStoragePackageState
 import com.android.permissioncontroller.permission.data.SinglePermGroupPackagesUiInfoLiveData
-import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo.PermGrantState
+import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
 import com.android.permissioncontroller.permission.ui.Category
 import com.android.permissioncontroller.permission.ui.LocationProviderInterceptDialog
-import com.android.permissioncontroller.permission.ui.handheld.v31.is7DayToggleEnabled
 import com.android.permissioncontroller.permission.ui.model.PermissionAppsViewModel.Companion.CREATION_LOGGED_KEY
 import com.android.permissioncontroller.permission.ui.model.PermissionAppsViewModel.Companion.HAS_SYSTEM_APPS_KEY
 import com.android.permissioncontroller.permission.ui.model.PermissionAppsViewModel.Companion.SHOULD_SHOW_SYSTEM_KEY
 import com.android.permissioncontroller.permission.ui.model.PermissionAppsViewModel.Companion.SHOW_ALWAYS_ALLOWED
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPackageUid
+import com.android.permissioncontroller.permission.utils.KotlinUtils.is7DayToggleEnabled
 import com.android.permissioncontroller.permission.utils.LocationUtils
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.navigateSafe
@@ -169,8 +169,8 @@ class PermissionAppsViewModel(
         }
     }
 
-    inner class CategorizedAppsLiveData(groupName: String)
-        : MediatorLiveData<@kotlin.jvm.JvmSuppressWildcards
+    inner class CategorizedAppsLiveData(groupName: String) :
+        MediatorLiveData<@kotlin.jvm.JvmSuppressWildcards
     Map<Category, List<Pair<String, UserHandle>>>>() {
         private val packagesUiInfoLiveData = SinglePermGroupPackagesUiInfoLiveData[groupName]
 

@@ -233,7 +233,7 @@ final class UserProfileGroup {
 
     @Override
     public String toString() {
-        return "UserProfiles{"
+        return "UserProfileGroup{"
                 + "mProfileParentUserId="
                 + mProfileParentUserId
                 + ", mManagedProfilesUserIds="

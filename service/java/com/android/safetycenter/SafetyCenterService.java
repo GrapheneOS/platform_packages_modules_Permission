@@ -418,13 +418,13 @@ public final class SafetyCenterService extends SystemService {
 
             UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
             synchronized (mApiLock) {
-                boolean registered =
+                IOnSafetyCenterDataChangedListener registeredListener =
                         mSafetyCenterListeners.addListener(listener, packageName, userId);
-                if (!registered) {
+                if (registeredListener == null) {
                     return;
                 }
                 SafetyCenterListeners.deliverUpdateForListener(
-                        listener,
+                        registeredListener,
                         mSafetyCenterDataFactory.getSafetyCenterData(packageName, userProfileGroup),
                         null);
             }
