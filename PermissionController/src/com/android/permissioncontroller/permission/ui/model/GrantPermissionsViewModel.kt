@@ -90,7 +90,6 @@ import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.N
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.NO_UPGRADE_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.NO_UPGRADE_OT_AND_DONT_ASK_AGAIN_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.NO_UPGRADE_OT_BUTTON
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.PERMISSION_TO_BIT_SHIFT
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.DENIED
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.DENIED_DO_NOT_ASK_AGAIN
@@ -131,7 +130,6 @@ class GrantPermissionsViewModel(
     private val permissionPolicy = dpm.getPermissionPolicy(null)
     private val permGroupsToSkip = mutableListOf<String>()
     private var groupStates = mutableMapOf<Pair<String, Boolean>, GroupState>()
-    private var isFirstTimeRequestingFineAndCoarse: Boolean = false
 
     private var autoGrantNotifier: AutoGrantPermissionsNotifier? = null
     private fun getAutoGrantNotifier(): AutoGrantPermissionsNotifier {
@@ -463,11 +461,6 @@ class GrantPermissionsViewModel(
                                             "with ACCESS_COARSE_LOCATION.")
                                     value = null
                                     return
-                                }
-                                if (coarseLocationPerm?.isOneTime == false &&
-                                        !coarseLocationPerm.isUserSet &&
-                                        !coarseLocationPerm.isUserFixed) {
-                                    isFirstTimeRequestingFineAndCoarse = true
                                 }
                                 // Normal flow with both Coarse and Fine locations
                                 locationVisibilities[DIALOG_WITH_BOTH_LOCATIONS] = true
@@ -1237,18 +1230,12 @@ class GrantPermissionsViewModel(
                     "initialized", IllegalStateException())
             return
         }
-        var selectedLocations = 0
-        // log permissions if it's 1) first time requesting both locations OR 2) upgrade flow
-        if (isFirstTimeRequestingFineAndCoarse ||
-                selectedPrecision ==
-                    1 shl PERMISSION_TO_BIT_SHIFT[ACCESS_FINE_LOCATION]!!) {
-            selectedLocations = selectedPrecision
-        }
+
         PermissionControllerStatsLog.write(GRANT_PERMISSIONS_ACTIVITY_BUTTON_ACTIONS,
                 groupName, packageInfo.uid, packageName, presentedButtons, clickedButton, sessionId,
-                packageInfo.targetSdkVersion, selectedLocations)
+                packageInfo.targetSdkVersion, selectedPrecision)
         Log.v(LOG_TAG, "Logged buttons presented and clicked permissionGroupName=" +
-                "$groupName uid=${packageInfo.uid} selectedLocations=$selectedLocations " +
+                "$groupName uid=${packageInfo.uid} selectedPrecision=$selectedPrecision " +
                 "package=$packageName presentedButtons=$presentedButtons " +
                 "clickedButton=$clickedButton sessionId=$sessionId " +
                 "targetSdk=${packageInfo.targetSdkVersion}")
