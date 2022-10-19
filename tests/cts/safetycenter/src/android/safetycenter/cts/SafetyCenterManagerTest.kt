@@ -113,6 +113,7 @@ import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SUMMARY_TEST_CONF
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SUMMARY_TEST_GROUP_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.getLockScreenSourceConfig
 import android.safetycenter.cts.testing.SafetyCenterCtsData
+import android.safetycenter.cts.testing.SafetyCenterCtsData.Companion.withDismissedIssuesIfAtLeastU
 import android.safetycenter.cts.testing.SafetyCenterCtsHelper
 import android.safetycenter.cts.testing.SafetyCenterCtsListener
 import android.safetycenter.cts.testing.SafetyCenterEnabledChangedReceiver
@@ -2681,7 +2682,10 @@ class SafetyCenterManagerTest {
             SafetyCenterCtsData.issueId(SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID))
 
         val safetyCenterDataFromListener = listener.receiveSafetyCenterData()
-        assertThat(safetyCenterDataFromListener).isEqualTo(safetyCenterDataOkReviewCriticalEntry)
+        val expectedSafetyCenterData =
+            safetyCenterDataOkReviewCriticalEntry.withDismissedIssuesIfAtLeastU(
+                listOf(safetyCenterCtsData.safetyCenterIssueCritical(SINGLE_SOURCE_ID)))
+        assertThat(safetyCenterDataFromListener).isEqualTo(expectedSafetyCenterData)
     }
 
     @Test
@@ -2715,13 +2719,15 @@ class SafetyCenterManagerTest {
         safetyCenterCtsHelper.setData(
             SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithResolvingGeneralIssue)
         val listener = safetyCenterCtsHelper.addListener()
-
         safetyCenterManager.dismissSafetyCenterIssueWithPermission(
             SafetyCenterCtsData.issueId(
                 SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID, issueTypeId = "some_other_issue_type_id"))
 
         val safetyCenterDataFromListener = listener.receiveSafetyCenterData()
-        assertThat(safetyCenterDataFromListener).isEqualTo(safetyCenterDataOkReviewCriticalEntry)
+        val expectedSafetyCenterData =
+            safetyCenterDataOkReviewCriticalEntry.withDismissedIssuesIfAtLeastU(
+                listOf(safetyCenterCtsData.safetyCenterIssueCritical(SINGLE_SOURCE_ID)))
+        assertThat(safetyCenterDataFromListener).isEqualTo(expectedSafetyCenterData)
     }
 
     @Test
@@ -2738,8 +2744,10 @@ class SafetyCenterManagerTest {
             SafetyCenterCtsData.issueId(SINGLE_SOURCE_ID, RECOMMENDATION_ISSUE_ID))
 
         val safetyCenterDataAfterDismissal = listener.receiveSafetyCenterData()
-        assertThat(safetyCenterDataAfterDismissal)
-            .isEqualTo(safetyCenterDataOkReviewRecommendationEntry)
+        val expectedSafetyCenterData =
+            safetyCenterDataOkReviewRecommendationEntry.withDismissedIssuesIfAtLeastU(
+                listOf(safetyCenterCtsData.safetyCenterIssueRecommendation(SINGLE_SOURCE_ID)))
+        assertThat(safetyCenterDataAfterDismissal).isEqualTo(expectedSafetyCenterData)
         val safetyCenterDataAfterSourceHandledDismissal = listener.receiveSafetyCenterData()
         assertThat(safetyCenterDataAfterSourceHandledDismissal).isEqualTo(safetyCenterDataOk)
     }
@@ -2752,13 +2760,14 @@ class SafetyCenterManagerTest {
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, recommendationDismissPendingIntentIssue)
         recommendationDismissPendingIntentIssue.issues.first().onDismissPendingIntent!!.cancel()
         val listener = safetyCenterCtsHelper.addListener()
-
         safetyCenterManager.dismissSafetyCenterIssueWithPermission(
             SafetyCenterCtsData.issueId(SINGLE_SOURCE_ID, RECOMMENDATION_ISSUE_ID))
 
         val safetyCenterDataFromListener = listener.receiveSafetyCenterData()
-        assertThat(safetyCenterDataFromListener)
-            .isEqualTo(safetyCenterDataOkReviewRecommendationEntry)
+        val exectedSafetyCenterData =
+            safetyCenterDataOkReviewRecommendationEntry.withDismissedIssuesIfAtLeastU(
+                listOf(safetyCenterCtsData.safetyCenterIssueRecommendation(SINGLE_SOURCE_ID)))
+        assertThat(safetyCenterDataFromListener).isEqualTo(exectedSafetyCenterData)
         assertFailsWith(TimeoutCancellationException::class) {
             listener.receiveSafetyCenterErrorDetails(TIMEOUT_SHORT)
         }
@@ -2826,10 +2835,14 @@ class SafetyCenterManagerTest {
         safetyCenterManager.dismissSafetyCenterIssueWithPermission(
             SafetyCenterCtsData.issueId(SINGLE_SOURCE_ID, INFORMATION_ISSUE_ID))
 
+        val expectedSafetyCenterData =
+            safetyCenterDataOk.withDismissedIssuesIfAtLeastU(
+                listOf(safetyCenterCtsData.safetyCenterIssueInformation(SINGLE_SOURCE_ID)))
         assertFailsWith(TimeoutCancellationException::class) {
             waitForWithTimeout(timeout = TIMEOUT_SHORT) {
                 val hasResurfaced =
-                    safetyCenterManager.getSafetyCenterDataWithPermission() != safetyCenterDataOk
+                    safetyCenterManager.getSafetyCenterDataWithPermission() !=
+                        expectedSafetyCenterData
                 hasResurfaced
             }
         }
@@ -2855,10 +2868,14 @@ class SafetyCenterManagerTest {
         safetyCenterManager.dismissSafetyCenterIssueWithPermission(
             SafetyCenterCtsData.issueId(SINGLE_SOURCE_ID, INFORMATION_ISSUE_ID))
 
+        val expectedSafetyCenterData =
+            safetyCenterDataOk.withDismissedIssuesIfAtLeastU(
+                listOf(safetyCenterCtsData.safetyCenterIssueInformation(SINGLE_SOURCE_ID)))
         assertFailsWith(TimeoutCancellationException::class) {
             waitForWithTimeout(timeout = TIMEOUT_SHORT) {
                 val hasResurfaced =
-                    safetyCenterManager.getSafetyCenterDataWithPermission() != safetyCenterDataOk
+                    safetyCenterManager.getSafetyCenterDataWithPermission() !=
+                        expectedSafetyCenterData
                 hasResurfaced
             }
         }
@@ -2894,11 +2911,15 @@ class SafetyCenterManagerTest {
         safetyCenterManager.dismissSafetyCenterIssueWithPermission(
             SafetyCenterCtsData.issueId(SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID))
 
+        val expectedSafetyCenterData =
+            safetyCenterDataOkReviewCriticalEntry.withDismissedIssuesIfAtLeastU(
+                listOf(safetyCenterCtsData.safetyCenterIssueCritical(SINGLE_SOURCE_ID)))
         assertFailsWith(TimeoutCancellationException::class) {
             waitForWithTimeout(timeout = TIMEOUT_SHORT) {
                 val hasResurfaced =
                     safetyCenterManager.getSafetyCenterDataWithPermission() !=
-                        safetyCenterDataOkReviewCriticalEntry
+                        expectedSafetyCenterData
+
                 hasResurfaced
             }
         }
@@ -2926,13 +2947,14 @@ class SafetyCenterManagerTest {
         val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
         checkState(apiSafetyCenterData == safetyCenterDataDeviceRecommendationOneAlert)
         val listener = safetyCenterCtsHelper.addListener()
-
         safetyCenterManager.dismissSafetyCenterIssueWithPermission(
             SafetyCenterCtsData.issueId(SINGLE_SOURCE_ID, RECOMMENDATION_ISSUE_ID))
 
         val safetyCenterDataAfterDismissal = listener.receiveSafetyCenterData()
-        assertThat(safetyCenterDataAfterDismissal)
-            .isEqualTo(safetyCenterDataOkReviewRecommendationEntry)
+        val expectedSafetyCenterData =
+            safetyCenterDataOkReviewRecommendationEntry.withDismissedIssuesIfAtLeastU(
+                listOf(safetyCenterCtsData.safetyCenterIssueRecommendation(SINGLE_SOURCE_ID)))
+        assertThat(safetyCenterDataAfterDismissal).isEqualTo(expectedSafetyCenterData)
         waitForWithTimeout(timeout = RESURFACE_TIMEOUT, checkPeriod = RESURFACE_CHECK) {
             val hasResurfacedExactly =
                 safetyCenterManager.getSafetyCenterDataWithPermission() ==
