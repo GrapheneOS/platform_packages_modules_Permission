@@ -24,13 +24,13 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.model.AppPermissionGroup
 import com.android.permissioncontroller.permission.model.legacy.PermissionApps.PermissionApp
 import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
 import com.android.permissioncontroller.permission.model.v31.PermissionUsages
-import com.android.permissioncontroller.permission.ui.handheld.v31.is7DayToggleEnabled
+import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPermGroupLabel
+import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.Utils
 import java.time.Instant
 import java.util.concurrent.TimeUnit
@@ -48,7 +48,8 @@ class PermissionUsageViewModel(val roleManager: RoleManager) : ViewModel() {
         private val TIME_FILTER_MILLIS = TimeUnit.DAYS.toMillis(7)
         private val TIME_7_DAYS_DURATION = TimeUnit.DAYS.toMillis(7)
         private val TIME_24_HOURS_DURATION = TimeUnit.DAYS.toMillis(1)
-
+        /** Permission groups that should be hidden from the permissions usage UI. */
+        private val EXEMPTED_PERMISSION_GROUPS = setOf(Manifest.permission_group.NOTIFICATIONS)
         @JvmStatic
                 /** Map to represent ordering for permission groups in the permissions usage UI. */
         val PERMISSION_GROUP_ORDER: Map<String, Int> =
@@ -92,7 +93,7 @@ class PermissionUsageViewModel(val roleManager: RoleManager) : ViewModel() {
     ): PermissionUsagesUiData {
         val curTime = System.currentTimeMillis()
         val showPermissionUsagesDuration =
-            if (is7DayToggleEnabled() && show7Days) {
+            if (KotlinUtils.is7DayToggleEnabled() && show7Days) {
                 TIME_7_DAYS_DURATION
             } else {
                 TIME_24_HOURS_DURATION
@@ -122,11 +123,14 @@ class PermissionUsageViewModel(val roleManager: RoleManager) : ViewModel() {
         showSystem: Boolean
     ): Map<String, Int> {
         val permissionGroupsUsageCountMap: MutableMap<String, Int> = HashMap()
-        extractAllPlatformAppPermissionGroups().forEach { permissionGroupsUsageCountMap[it] = 0 }
+        extractPlatformAppPermissionGroupsToDisplay().forEach {
+            permissionGroupsUsageCountMap[it] = 0
+        }
 
         for (appUsage in this) {
             appUsage.groupUsages
                 .filter { showSystem || !it.group.isSystem() }
+                .filter { !EXEMPTED_PERMISSION_GROUPS.contains(it.group.name) }
                 .filter { it.lastAccessTime >= startTime }
                 .forEach {
                     permissionGroupsUsageCountMap[it.group.name] =
@@ -141,9 +145,11 @@ class PermissionUsageViewModel(val roleManager: RoleManager) : ViewModel() {
         startTime: Long,
     ): java.util.ArrayList<PermissionApp> {
         return ArrayList(
-            filter {
-                    it.groupUsages.any { it.lastAccessTime >= startTime || it.lastAccessTime == 0L }
-                }
+            filter { appPermissionUsage ->
+                appPermissionUsage.groupUsages
+                    .filter { !EXEMPTED_PERMISSION_GROUPS.contains(it.group.name) }
+                    .any { it.lastAccessTime >= startTime || it.lastAccessTime == 0L }
+            }
                 .map { it.app })
     }
 
@@ -155,6 +161,7 @@ class PermissionUsageViewModel(val roleManager: RoleManager) : ViewModel() {
         startTime: Long,
     ): Boolean {
         return flatMap { it.groupUsages }
+            .filter { !EXEMPTED_PERMISSION_GROUPS.contains(it.group.name) }
             .filter { it.lastAccessTime > startTime && it.lastAccessTime > 0L }
             .any { it.group.isSystem() }
     }
@@ -180,11 +187,16 @@ class PermissionUsageViewModel(val roleManager: RoleManager) : ViewModel() {
                     { PERMISSION_GROUP_ORDER.getOrDefault(it.permGroup, DEFAULT_ORDER) },
                     { getPermGroupLabel(context, it.permGroup).toString() }))
 
-    /** Extracts to a set all the permission groups declared by the platform. */
-    private fun List<AppPermissionUsage>.extractAllPlatformAppPermissionGroups(): Set<String> =
+    /**
+     * Extracts to a set all the permission groups declared by the platform that should be displayed
+     * in the UI.
+     */
+    private fun List<AppPermissionUsage>.extractPlatformAppPermissionGroupsToDisplay():
+            Set<String> =
         this.flatMap { it.groupUsages }
             .map { it.group.name }
             .filter { PermissionMapping.isPlatformPermissionGroup(it) }
+            .filter { !EXEMPTED_PERMISSION_GROUPS.contains(it) }
             .toSet()
 
     /**
