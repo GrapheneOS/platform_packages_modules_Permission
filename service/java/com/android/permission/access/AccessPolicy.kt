@@ -16,6 +16,8 @@
 
 package com.android.permission.access
 
+import com.android.permission.access.appop.PackageAppOpPolicy
+import com.android.permission.access.appop.UidAppOpPolicy
 import com.android.permission.access.external.PackageState
 import com.android.permission.access.permission.UidPermissionPolicy
 import com.android.permission.access.util.* // ktlint-disable no-wildcard-imports
@@ -25,15 +27,18 @@ class AccessPolicy private constructor(
 ) {
     constructor() : this(
         IndexedMap<String, IndexedMap<String, SchemePolicy>>().apply {
-            val uidPermissionPolicy = UidPermissionPolicy()
-            getOrPut(uidPermissionPolicy.subjectScheme) { IndexedMap() }
-                .put(uidPermissionPolicy.objectScheme, uidPermissionPolicy)
+            fun addPolicy(policy: SchemePolicy) =
+                getOrPut(policy.subjectScheme) { IndexedMap() }.put(policy.objectScheme, policy)
+
+            addPolicy(UidPermissionPolicy())
+            addPolicy(UidAppOpPolicy())
+            addPolicy(PackageAppOpPolicy())
         }
     )
 
     fun getDecision(subject: AccessUri, `object`: AccessUri, state: AccessState): Int {
-        // TODO: Warn when not found?
-        val schemePolicy = getSchemePolicy(subject, `object`) ?: return AccessDecisions.DENIED
+        val schemePolicy = checkNotNull(getSchemePolicy(subject, `object`)) { "Scheme policy for " +
+            "subject=$subject object=$`object` does not exist."}
         return schemePolicy.getDecision(subject, `object`, state)
     }
 
@@ -44,8 +49,8 @@ class AccessPolicy private constructor(
         oldState: AccessState,
         newState: AccessState
     ) {
-        // TODO: Warn when not found?
-        val schemePolicy = getSchemePolicy(subject, `object`) ?: return
+        val schemePolicy = checkNotNull(getSchemePolicy(subject, `object`)) { "Scheme policy for " +
+            "subject=$subject object=$`object` does not exist."}
         return schemePolicy.setDecision(subject, `object`, decision, oldState, newState)
     }
 
@@ -123,23 +128,23 @@ abstract class SchemePolicy {
         newState: AccessState
     )
 
-    abstract fun onUserAdded(userId: Int, oldState: AccessState, newState: AccessState)
+    open fun onUserAdded(userId: Int, oldState: AccessState, newState: AccessState) {}
 
-    abstract fun onUserRemoved(userId: Int, oldState: AccessState, newState: AccessState)
+    open fun onUserRemoved(userId: Int, oldState: AccessState, newState: AccessState) {}
 
-    abstract fun onAppIdAdded(appId: Int, oldState: AccessState, newState: AccessState)
+    open fun onAppIdAdded(appId: Int, oldState: AccessState, newState: AccessState) {}
 
-    abstract fun onAppIdRemoved(appId: Int, oldState: AccessState, newState: AccessState)
+    open fun onAppIdRemoved(appId: Int, oldState: AccessState, newState: AccessState) {}
 
-    abstract fun onPackageAdded(
+    open fun onPackageAdded(
         packageState: PackageState,
         oldState: AccessState,
         newState: AccessState
-    )
+    ) {}
 
-    abstract fun onPackageRemoved(
+    open fun onPackageRemoved(
         packageState: PackageState,
         oldState: AccessState,
         newState: AccessState
-    )
+    ) {}
 }

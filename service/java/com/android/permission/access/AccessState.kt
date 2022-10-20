@@ -48,11 +48,14 @@ class SystemState private constructor(
 }
 
 class UserState private constructor(
-    val permissionFlags: IntMap<IndexedMap<String, Int>>
+    val permissionFlags: IntMap<IndexedMap<String, Int>>,
+    val uidAppOpModes: IntMap<IndexedMap<String, Int>>,
+    val packageAppOpModes: IndexedMap<String, IndexedMap<String, Int>>,
 ) : WritableState() {
-    constructor() : this(IntMap())
+    constructor() : this(IntMap(), IntMap(), IndexedMap())
 
-    fun copy(): UserState = UserState(permissionFlags.copy { it.copy { it } })
+    fun copy(): UserState = UserState(permissionFlags.copy { it.copy { it } },
+        uidAppOpModes.copy { it.copy { it } }, packageAppOpModes.copy { it.copy { it } })
 }
 
 object WriteMode {
