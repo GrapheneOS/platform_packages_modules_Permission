@@ -163,6 +163,15 @@ public final class RoleManager {
             "android.app.role.DEVICE_POLICY_MANAGEMENT";
 
     /**
+     * The name of the financed device kiosk role.
+     *
+     * @hide
+     */
+    @SystemApi
+    public static final String ROLE_FINANCED_DEVICE_KIOSK =
+            "android.app.role.FINANCED_DEVICE_KIOSK";
+
+    /**
      * @hide
      */
     @IntDef(flag = true, value = { MANAGE_HOLDERS_FLAG_DONT_KILL_APP })
