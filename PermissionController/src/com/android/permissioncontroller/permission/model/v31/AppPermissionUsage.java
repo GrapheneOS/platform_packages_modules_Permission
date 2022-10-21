@@ -508,11 +508,12 @@ public final class AppPermissionUsage {
                 }
 
                 AttributionLabelledGroupUsage build() {
+                    ArrayList<String> attributionTagsList = new ArrayList<>();
+                    attributionTagsList.addAll(mAttributionTags);
                     return new AttributionLabelledGroupUsage(mLabel,
                             mAppPermissionGroup,
-                            new ArrayList<String>() {{
-                                addAll(mAttributionTags);
-                            }}, mDiscreteAccessTime);
+                            attributionTagsList,
+                            mDiscreteAccessTime);
                 }
             }
         }
