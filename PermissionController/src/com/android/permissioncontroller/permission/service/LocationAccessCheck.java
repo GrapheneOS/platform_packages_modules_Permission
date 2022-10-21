@@ -160,7 +160,7 @@ import java.util.stream.Collectors;
  */
 public class LocationAccessCheck {
     private static final String LOG_TAG = LocationAccessCheck.class.getSimpleName();
-    private static final boolean DEBUG = false;
+    private static final boolean DEBUG = true;
     private static final long DEFAULT_RENOTIFY_DURATION_MILLIS = DAYS.toMillis(90);
     private static final String ISSUE_ID_PREFIX = "bg_location_";
     private static final String ISSUE_TYPE_ID = "bg_location_privacy_issue";
@@ -410,6 +410,7 @@ public class LocationAccessCheck {
     private void addLocationNotificationIfNeeded(@NonNull JobParameters params,
             @NonNull LocationAccessCheckJobService service) {
         if (!checkLocationAccessCheckEnabledAndUpdateEnabledTime()) {
+            Log.v(LOG_TAG, "LocationAccessCheck feature is not enabled.");
             service.jobFinished(params, false);
             return;
         }
@@ -419,11 +420,13 @@ public class LocationAccessCheck {
                 if (currentTimeMillis() - mSharedPrefs.getLong(
                         KEY_LAST_LOCATION_ACCESS_NOTIFICATION_SHOWN, 0)
                         < getInBetweenNotificationsMillis()) {
+                    Log.v(LOG_TAG, "location notification interval is not enough.");
                     service.jobFinished(params, false);
                     return;
                 }
 
                 if (getCurrentlyShownNotificationLocked() != null) {
+                    Log.v(LOG_TAG, "already location notification exist.");
                     service.jobFinished(params, false);
                     return;
                 }
@@ -1152,6 +1155,7 @@ public class LocationAccessCheck {
 
         @Override
         public void onCreate() {
+            Log.v(LOG_TAG, "LocationAccessCheck privacy job is created");
             super.onCreate();
             mLocationAccessCheck = new LocationAccessCheck(this, () -> {
                 synchronized (sLock) {
@@ -1170,6 +1174,7 @@ public class LocationAccessCheck {
          */
         @Override
         public boolean onStartJob(JobParameters params) {
+            Log.v(LOG_TAG, "LocationAccessCheck privacy job is started");
             synchronized (LocationAccessCheck.sLock) {
                 if (mAddLocationNotificationIfNeededTask != null) {
                     return false;
