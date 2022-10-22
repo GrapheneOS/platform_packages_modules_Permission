@@ -104,11 +104,9 @@ public class GrantPermissionsActivity extends SettingsActivity
     public static final int DIALOG_WITH_FINE_LOCATION_ONLY = 4;
     public static final int DIALOG_WITH_COARSE_LOCATION_ONLY = 5;
 
-    public static final Map<String, Integer> PERMISSION_TO_BIT_SHIFT =
-            new HashMap<String, Integer>() {{
-                put(ACCESS_COARSE_LOCATION, 0);
-                put(ACCESS_FINE_LOCATION, 1);
-            }};
+    public static final Map<String, Integer> PERMISSION_TO_BIT_SHIFT = Map.of(
+            ACCESS_COARSE_LOCATION, 0,
+            ACCESS_FINE_LOCATION, 1);
 
     private static final int APP_PERMISSION_REQUEST_CODE = 1;
 
