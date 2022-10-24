@@ -567,6 +567,7 @@ final class SafetyCenterDataFactory {
                     if (pendingIntent == null) {
                         pendingIntent =
                                 mPendingIntentFactory.getPendingIntent(
+                                        safetySource.getId(),
                                         safetySource.getIntentAction(),
                                         safetySource.getPackageName(),
                                         userId,
@@ -652,7 +653,11 @@ final class SafetyCenterDataFactory {
         boolean isQuietModeEnabled = isUserManaged && !isManagedUserRunning;
         PendingIntent pendingIntent =
                 mPendingIntentFactory.getPendingIntent(
-                        safetySource.getIntentAction(), packageName, userId, isQuietModeEnabled);
+                        safetySource.getId(),
+                        safetySource.getIntentAction(),
+                        packageName,
+                        userId,
+                        isQuietModeEnabled);
         boolean enabled =
                 pendingIntent != null && !SafetySources.isDefaultEntryDisabled(safetySource);
         CharSequence title =
@@ -817,7 +822,11 @@ final class SafetyCenterDataFactory {
         boolean isQuietModeEnabled = isUserManaged && !isManagedUserRunning;
         PendingIntent pendingIntent =
                 mPendingIntentFactory.getPendingIntent(
-                        safetySource.getIntentAction(), packageName, userId, isQuietModeEnabled);
+                        safetySource.getId(),
+                        safetySource.getIntentAction(),
+                        packageName,
+                        userId,
+                        isQuietModeEnabled);
 
         if (pendingIntent == null) {
             // TODO(b/222838784): Decide strategy for static entries when the intent is null.
