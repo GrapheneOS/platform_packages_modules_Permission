@@ -188,7 +188,7 @@ public final class SafetyCenterService extends SystemService {
                         mSafetyCenterResourcesContext,
                         mSafetyCenterConfigReader,
                         mSafetyCenterRefreshTracker,
-                        new PendingIntentFactory(context),
+                        new PendingIntentFactory(context, mSafetyCenterResourcesContext),
                         mSafetyCenterIssueCache,
                         mSafetyCenterRepository);
         mSafetyCenterListeners = new SafetyCenterListeners(mSafetyCenterDataFactory);

@@ -34,6 +34,9 @@ import android.util.Log;
 import androidx.annotation.RequiresApi;
 
 import com.android.permission.util.PackageUtils;
+import com.android.safetycenter.resources.SafetyCenterResourcesContext;
+
+import java.util.Arrays;
 
 /** Helps build or retrieve {@link PendingIntent} instances. */
 @RequiresApi(TIRAMISU)
@@ -43,11 +46,16 @@ final class PendingIntentFactory {
     private static final String ANDROID_LOCK_SCREEN_SOURCE_ID = "AndroidLockScreen";
     private static final int DEFAULT_REQUEST_CODE = 0;
     private static final int ANDROID_LOCK_SCREEN_ICON_ACTION_REQ_CODE = 86;
+    private static final String IS_SETTINGS_HOMEPAGE = "is_from_settings_homepage";
 
     @NonNull private final Context mContext;
+    @NonNull private final SafetyCenterResourcesContext mSafetyCenterResourcesContext;
 
-    PendingIntentFactory(@NonNull Context context) {
+    PendingIntentFactory(
+            @NonNull Context context,
+            @NonNull SafetyCenterResourcesContext safetyCenterResourcesContext) {
         mContext = context;
+        mSafetyCenterResourcesContext = safetyCenterResourcesContext;
     }
 
     /**
@@ -57,11 +65,14 @@ final class PendingIntentFactory {
      * <p>If the given {@code intentAction} doesn't resolve implicitly, it will be matched
      * explicitly using the given {@code packageName}.
      *
+     * <p>The {@code PendingIntent} is associated with a specific source given by {@code sourceId}.
+     *
      * <p>Returns {@code null} if the required {@link PendingIntent} cannot be created or if there
      * is no valid target for the given {@code intentAction}.
      */
     @Nullable
     PendingIntent getPendingIntent(
+            @NonNull String sourceId,
             @Nullable String intentAction,
             @NonNull String packageName,
             @UserIdInt int userId,
@@ -73,7 +84,8 @@ final class PendingIntentFactory {
         if (packageContext == null) {
             return null;
         }
-        Intent intent = createIntent(intentAction, packageName, userId, isQuietModeEnabled);
+        Intent intent =
+                createIntent(sourceId, intentAction, packageName, userId, isQuietModeEnabled);
         if (intent == null) {
             return null;
         }
@@ -146,11 +158,23 @@ final class PendingIntentFactory {
 
     @Nullable
     private Intent createIntent(
+            @NonNull String sourceId,
             @NonNull String intentAction,
             @NonNull String packageName,
             @UserIdInt int userId,
             boolean isQuietModeEnabled) {
         Intent intent = new Intent(intentAction);
+
+        if (shouldAddSettingsHomepageExtra(sourceId)) {
+            // Identify this intent as coming from Settings. Because this intent is actually coming
+            // from Safety Center, which is served by PermissionController, this is useful to
+            // indicate that it is presented as part of the Settings app.
+            //
+            // In particular, the AOSP Settings app uses this to ensure that two-pane mode works
+            // correctly.
+            intent.putExtra(IS_SETTINGS_HOMEPAGE, true);
+        }
+
         // queryIntentActivities does not return any activity when the work profile is in quiet
         // mode, even though it opens the quiet mode dialog. So, we assume that the intent will
         // resolve to this dialog.
@@ -167,6 +191,14 @@ final class PendingIntentFactory {
         return null;
     }
 
+    private boolean shouldAddSettingsHomepageExtra(@NonNull String sourceId) {
+        return Arrays.asList(
+                        mSafetyCenterResourcesContext
+                                .getStringByName("config_useSettingsHomepageIntentExtra")
+                                .split(","))
+                .contains(sourceId);
+    }
+
     private boolean intentResolves(@NonNull Intent intent, @UserIdInt int userId) {
         return !PackageUtils.queryUnfilteredIntentActivitiesAsUser(intent, 0, userId, mContext)
                 .isEmpty();
@@ -178,6 +210,7 @@ final class PendingIntentFactory {
         // This call requires Binder identity to be cleared for getIntentSender() to be allowed to
         // send as another package.
         final long callingId = Binder.clearCallingIdentity();
+
         try {
             return PendingIntent.getActivity(
                     packageContext, requestCode, intent, PendingIntent.FLAG_IMMUTABLE);
