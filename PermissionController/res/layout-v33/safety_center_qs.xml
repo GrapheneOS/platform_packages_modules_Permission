@@ -31,53 +31,58 @@
             android:contentDescription="@string/safety_center_qs_close_button"
             style="@style/SafetyCenterQsCloseButton"/>
 
-        <FrameLayout
-            android:id="@+id/safety_center_prefs"
-            style="@style/SafetyCenterQsPreferences">
-        </FrameLayout>
-
-        <TextView
-            android:id="@+id/permission_section_title"
-            android:text="@string/sensor_permissions_qs"
-            android:visibility="gone"
-            android:focusable="true"
-            android:importantForAccessibility="yes"
-            style="@style/SafetyCenterQsSectionTitle"/>
-
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/main_page_contents"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/permission_usage"
-            style="@style/SafetyCenterQsPermissionUsage"/>
+            style="@style/SafetyCenterQsBody">
 
-        <TextView
-            android:id="@+id/sensor_privacy_title"
-            android:text="@string/privacy_controls_qs"
-            android:focusable="true"
-            android:importantForAccessibility="yes"
-            style="@style/SafetyCenterQsSectionTitle"/>
+            <FrameLayout
+                android:id="@+id/safety_center_prefs"
+                style="@style/SafetyCenterQsPreferences">
+            </FrameLayout>
 
-        <LinearLayout
-            android:background="@drawable/safety_entity_top_large_bottom_flat_background"
-            style="@style/SafetyCenterQsToggleContainer.Top">
-            <include android:id="@+id/camera_toggle"
-                     layout="@layout/safety_center_toggle_button"
-                     style="@style/SafetyCenterQsToggleButton.Start"/>
-            <include android:id="@+id/mic_toggle"
-                     layout="@layout/safety_center_toggle_button"
-                     style="@style/SafetyCenterQsToggleButton.End"/>
+            <TextView
+                android:id="@+id/permission_section_title"
+                android:text="@string/sensor_permissions_qs"
+                android:visibility="gone"
+                android:focusable="true"
+                android:importantForAccessibility="yes"
+                style="@style/SafetyCenterQsSectionTitle"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/permission_usage"
+                style="@style/SafetyCenterQsPermissionUsage"/>
+
+            <TextView
+                android:id="@+id/sensor_privacy_title"
+                android:text="@string/privacy_controls_qs"
+                android:focusable="true"
+                android:importantForAccessibility="yes"
+                style="@style/SafetyCenterQsSectionTitle"/>
+
+            <LinearLayout
+                android:background="@drawable/safety_entity_top_large_bottom_flat_background"
+                style="@style/SafetyCenterQsToggleContainer.Top">
+                <include android:id="@+id/camera_toggle"
+                         layout="@layout/safety_center_toggle_button"
+                         style="@style/SafetyCenterQsToggleButton.Start"/>
+                <include android:id="@+id/mic_toggle"
+                         layout="@layout/safety_center_toggle_button"
+                         style="@style/SafetyCenterQsToggleButton.End"/>
+            </LinearLayout>
+            <LinearLayout
+                android:background="@drawable/safety_entity_top_flat_bottom_large_background"
+                style="@style/SafetyCenterQsToggleContainer.Bottom">
+                <include android:id="@+id/location_toggle"
+                         layout="@layout/safety_center_toggle_button"
+                         style="@style/SafetyCenterQsToggleButton.Start"/>
+                <include android:id="@+id/security_settings_button"
+                         layout="@layout/safety_center_toggle_button"
+                         style="@style/SafetyCenterQsToggleButton.End"/>
+            </LinearLayout>
         </LinearLayout>
-        <LinearLayout
-            android:background="@drawable/safety_entity_top_flat_bottom_large_background"
-            style="@style/SafetyCenterQsToggleContainer.Bottom">
-            <include android:id="@+id/location_toggle"
-                     layout="@layout/safety_center_toggle_button"
-                     style="@style/SafetyCenterQsToggleButton.Start"/>
-            <include android:id="@+id/security_settings_button"
-                     layout="@layout/safety_center_toggle_button"
-                     style="@style/SafetyCenterQsToggleButton.End"/>
-        </LinearLayout>
-
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
