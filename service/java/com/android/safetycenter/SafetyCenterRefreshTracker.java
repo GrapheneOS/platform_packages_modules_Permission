@@ -161,7 +161,9 @@ final class SafetyCenterRefreshTracker {
         }
 
         Log.v(TAG, "Refresh with id: " + mRefreshInProgress.getId() + " completed");
-        int wholeResult = toSystemEventResult(mRefreshInProgress.hasAnyTrackedSourceErrors());
+        int wholeResult =
+                toSystemEventResult(
+                        /* success = */ !mRefreshInProgress.hasAnyTrackedSourceErrors());
         mStatsdLogger.writeWholeRefreshSystemEvent(
                 requestType, mRefreshInProgress.getDurationSinceStart(), wholeResult);
         mRefreshInProgress = null;
