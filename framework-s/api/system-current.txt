@@ -470,6 +470,7 @@ package android.safetycenter.config {
   }
 
   public final class SafetySource implements android.os.Parcelable {
+    method public boolean areNotificationsAllowed();
     method public int describeContents();
     method @NonNull public String getId();
     method public int getInitialDisplayState();
@@ -505,6 +506,7 @@ package android.safetycenter.config {
     method @NonNull public android.safetycenter.config.SafetySource.Builder setIntentAction(@Nullable String);
     method @NonNull public android.safetycenter.config.SafetySource.Builder setLoggingAllowed(boolean);
     method @NonNull public android.safetycenter.config.SafetySource.Builder setMaxSeverityLevel(int);
+    method @NonNull public android.safetycenter.config.SafetySource.Builder setNotificationsAllowed(boolean);
     method @NonNull public android.safetycenter.config.SafetySource.Builder setPackageName(@Nullable String);
     method @NonNull public android.safetycenter.config.SafetySource.Builder setProfile(int);
     method @NonNull public android.safetycenter.config.SafetySource.Builder setRefreshOnPageOpenAllowed(boolean);

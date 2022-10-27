@@ -17,6 +17,7 @@
 package android.safetycenter.config;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
+import static android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
 
 import android.annotation.IntDef;
 import android.annotation.NonNull;
@@ -28,6 +29,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.annotation.RequiresApi;
+
+import com.android.modules.utils.build.SdkLevel;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -152,20 +155,24 @@ public final class SafetySource implements Parcelable {
                 @Override
                 public SafetySource createFromParcel(Parcel in) {
                     int type = in.readInt();
-                    return new Builder(type)
-                            .setId(in.readString())
-                            .setPackageName(in.readString())
-                            .setTitleResId(in.readInt())
-                            .setTitleForWorkResId(in.readInt())
-                            .setSummaryResId(in.readInt())
-                            .setIntentAction(in.readString())
-                            .setProfile(in.readInt())
-                            .setInitialDisplayState(in.readInt())
-                            .setMaxSeverityLevel(in.readInt())
-                            .setSearchTermsResId(in.readInt())
-                            .setLoggingAllowed(in.readBoolean())
-                            .setRefreshOnPageOpenAllowed(in.readBoolean())
-                            .build();
+                    Builder builder =
+                            new Builder(type)
+                                    .setId(in.readString())
+                                    .setPackageName(in.readString())
+                                    .setTitleResId(in.readInt())
+                                    .setTitleForWorkResId(in.readInt())
+                                    .setSummaryResId(in.readInt())
+                                    .setIntentAction(in.readString())
+                                    .setProfile(in.readInt())
+                                    .setInitialDisplayState(in.readInt())
+                                    .setMaxSeverityLevel(in.readInt())
+                                    .setSearchTermsResId(in.readInt())
+                                    .setLoggingAllowed(in.readBoolean())
+                                    .setRefreshOnPageOpenAllowed(in.readBoolean());
+                    if (SdkLevel.isAtLeastU()) {
+                        builder.setNotificationsAllowed(in.readBoolean());
+                    }
+                    return builder.build();
                 }
 
                 @Override
@@ -187,6 +194,7 @@ public final class SafetySource implements Parcelable {
     @StringRes private final int mSearchTermsResId;
     private final boolean mLoggingAllowed;
     private final boolean mRefreshOnPageOpenAllowed;
+    private final boolean mNotificationsAllowed;
 
     private SafetySource(
             @SafetySourceType int type,
@@ -201,7 +209,8 @@ public final class SafetySource implements Parcelable {
             int maxSeverityLevel,
             @StringRes int searchTermsResId,
             boolean loggingAllowed,
-            boolean refreshOnPageOpenAllowed) {
+            boolean refreshOnPageOpenAllowed,
+            boolean notificationsAllowed) {
         mType = type;
         mId = id;
         mPackageName = packageName;
@@ -215,6 +224,7 @@ public final class SafetySource implements Parcelable {
         mSearchTermsResId = searchTermsResId;
         mLoggingAllowed = loggingAllowed;
         mRefreshOnPageOpenAllowed = refreshOnPageOpenAllowed;
+        mNotificationsAllowed = notificationsAllowed;
     }
 
     /** Returns the type of this safety source. */
@@ -418,6 +428,20 @@ public final class SafetySource implements Parcelable {
         return mRefreshOnPageOpenAllowed;
     }
 
+    /**
+     * Returns whether Safety Center may post Notifications about issues reported by this {@link
+     * SafetySource}.
+     *
+     * @see Builder#setNotificationsAllowed(boolean)
+     */
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    public boolean areNotificationsAllowed() {
+        if (!SdkLevel.isAtLeastU()) {
+            throw new UnsupportedOperationException();
+        }
+        return mNotificationsAllowed;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -435,7 +459,8 @@ public final class SafetySource implements Parcelable {
                 && mMaxSeverityLevel == that.mMaxSeverityLevel
                 && mSearchTermsResId == that.mSearchTermsResId
                 && mLoggingAllowed == that.mLoggingAllowed
-                && mRefreshOnPageOpenAllowed == that.mRefreshOnPageOpenAllowed;
+                && mRefreshOnPageOpenAllowed == that.mRefreshOnPageOpenAllowed
+                && mNotificationsAllowed == that.mNotificationsAllowed;
     }
 
     @Override
@@ -453,7 +478,8 @@ public final class SafetySource implements Parcelable {
                 mMaxSeverityLevel,
                 mSearchTermsResId,
                 mLoggingAllowed,
-                mRefreshOnPageOpenAllowed);
+                mRefreshOnPageOpenAllowed,
+                mNotificationsAllowed);
     }
 
     @Override
@@ -485,6 +511,8 @@ public final class SafetySource implements Parcelable {
                 + mLoggingAllowed
                 + ", mRefreshOnPageOpenAllowed="
                 + mRefreshOnPageOpenAllowed
+                + ", mNotificationsAllowed"
+                + mNotificationsAllowed
                 + '}';
     }
 
@@ -508,6 +536,9 @@ public final class SafetySource implements Parcelable {
         dest.writeInt(mSearchTermsResId);
         dest.writeBoolean(mLoggingAllowed);
         dest.writeBoolean(mRefreshOnPageOpenAllowed);
+        if (SdkLevel.isAtLeastU()) {
+            dest.writeBoolean(mNotificationsAllowed);
+        }
     }
 
     /** Builder class for {@link SafetySource}. */
@@ -526,6 +557,7 @@ public final class SafetySource implements Parcelable {
         @Nullable @StringRes private Integer mSearchTermsResId;
         @Nullable private Boolean mLoggingAllowed;
         @Nullable private Boolean mRefreshOnPageOpenAllowed;
+        @Nullable private Boolean mNotificationsAllowed;
 
         /** Creates a {@link Builder} for a {@link SafetySource}. */
         public Builder(@SafetySourceType int type) {
@@ -714,6 +746,26 @@ public final class SafetySource implements Parcelable {
         }
 
         /**
+         * Sets the {@link #areNotificationsAllowed()} property of this {@link SafetySource}.
+         *
+         * <p>If set to {@code true} Safety Center may post Notifications about issues reported by
+         * this source.
+         *
+         * <p>The default value is {@code false}.
+         *
+         * @see #areNotificationsAllowed()
+         */
+        @NonNull
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        public Builder setNotificationsAllowed(boolean notificationsAllowed) {
+            if (!SdkLevel.isAtLeastU()) {
+                throw new UnsupportedOperationException();
+            }
+            mNotificationsAllowed = notificationsAllowed;
+            return this;
+        }
+
+        /**
          * Creates the {@link SafetySource} defined by this {@link Builder}.
          *
          * <p>Throws an {@link IllegalStateException} if any constraint on the safety source is
@@ -807,6 +859,17 @@ public final class SafetySource implements Parcelable {
                             isStatic,
                             false);
 
+            boolean notificationsAllowed = false;
+            if (SdkLevel.isAtLeastU()) {
+                notificationsAllowed =
+                        BuilderUtils.validateBoolean(
+                                mNotificationsAllowed,
+                                "notificationsAllowed",
+                                false,
+                                isStatic,
+                                false);
+            }
+
             return new SafetySource(
                     mType,
                     mId,
@@ -820,7 +883,8 @@ public final class SafetySource implements Parcelable {
                     maxSeverityLevel,
                     searchTermsResId,
                     loggingAllowed,
-                    refreshOnPageOpenAllowed);
+                    refreshOnPageOpenAllowed,
+                    notificationsAllowed);
         }
     }
 }

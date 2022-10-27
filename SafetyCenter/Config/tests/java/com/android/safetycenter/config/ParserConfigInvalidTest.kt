@@ -17,7 +17,10 @@
 package com.android.safetycenter.config
 
 import android.content.Context
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
+import com.android.modules.utils.build.SdkLevel
 import com.android.safetycenter.config.tests.R
 import com.google.common.truth.Truth.assertThat
 import org.junit.Assert.assertThrows
@@ -59,6 +62,23 @@ class ParserConfigInvalidTest {
         @JvmStatic
         @Parameterized.Parameters(name = "{0}")
         fun parameters() =
+            if (SdkLevel.isAtLeastU()) {
+                parametersUpsideDownCake()
+            } else {
+                parametersTiramisu()
+            }
+
+        @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+        fun parametersUpsideDownCake(): Array<Params> =
+            parametersTiramisu() +
+                arrayOf(
+                    Params(
+                        "ConfigStaticSafetySourceWithNotifications",
+                        R.raw.config_static_safety_source_with_notifications,
+                        "Element static-safety-source invalid",
+                        "Prohibited attribute notificationsAllowed present"))
+
+        fun parametersTiramisu(): Array<Params> =
             arrayOf(
                 Params(
                     "ConfigDynamicSafetySourceAllDisabledNoWork",
