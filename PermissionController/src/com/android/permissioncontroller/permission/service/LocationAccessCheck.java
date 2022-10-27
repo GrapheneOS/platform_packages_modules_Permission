@@ -451,6 +451,10 @@ public class LocationAccessCheck {
         synchronized (sLock) {
             List<UserPackage> packages = getLocationUsersLocked(ops);
             ArraySet<UserPackage> alreadyNotifiedPackages = loadAlreadyNotifiedPackagesLocked();
+            if (DEBUG) {
+                Log.v(LOG_TAG, "location packages: " + packages);
+                Log.v(LOG_TAG, "already notified packages: " + alreadyNotifiedPackages);
+            }
             throwInterruptedExceptionIfTaskIsCanceled();
             // Send these issues to safety center
             if (isSafetyCenterBgLocationReminderEnabled()) {
@@ -466,6 +470,9 @@ public class LocationAccessCheck {
                 throwInterruptedExceptionIfTaskIsCanceled();
 
                 if (packages.isEmpty()) {
+                    if (DEBUG) {
+                        Log.v(LOG_TAG, "No package found to send a notification");
+                    }
                     return;
                 }
 
