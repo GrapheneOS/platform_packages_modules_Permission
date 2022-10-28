@@ -490,7 +490,7 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को अपने शरीर के बारे में जानकारी देने वाले लक्षणों के सेंसर डेटा को ऐक्सेस करने की अनुमति दें?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"इस ऐप्लिकेशन का इस्तेमाल न किए जाने पर भी, इसे बॉडी सेंसर के डेटा को हमेशा ऐक्सेस करने की अनुमति देने के लिए, "<annotation id="link">"सेटिंग पर जाएं."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"क्या इस्तेमाल के दौरान, &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को बॉडी सेंसर के डेटा का ऐक्सेस देते रहना है?"</string>
-    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को, आपको सूचनाएं भेजने की अनुमति देनी है?"</string>
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को सूचनाएं भेजने की अनुमति दें?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"कंट्रोल की गई अनुमतियां"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"जगह की जानकारी देखी जा सकती है"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"आपका आईटी एडमिन <xliff:g id="APP_NAME">%s</xliff:g> को आपकी जगह की जानकारी देखने की अनुमति दे रहा है"</string>
