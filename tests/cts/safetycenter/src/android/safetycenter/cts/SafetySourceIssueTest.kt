@@ -444,6 +444,39 @@ class SafetySourceIssueTest {
     }
 
     @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getAttributionTitle_withNullAttributionTitle_returnsNull() {
+        val safetySourceIssue =
+            SafetySourceIssue.Builder(
+                    "Issue id",
+                    "Issue title",
+                    "Issue summary",
+                    SEVERITY_LEVEL_INFORMATION,
+                    "issue_type_id")
+                .addAction(action1)
+                .build()
+
+        assertThat(safetySourceIssue.attributionTitle).isNull()
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getAttributionTitle_returnsAttributionTitle() {
+        val safetySourceIssue =
+            SafetySourceIssue.Builder(
+                    "Issue id",
+                    "Issue title",
+                    "Issue summary",
+                    SEVERITY_LEVEL_INFORMATION,
+                    "issue_type_id")
+                .addAction(action1)
+                .setAttributionTitle("attribution title")
+                .build()
+
+        assertThat(safetySourceIssue.attributionTitle).isEqualTo("attribution title")
+    }
+
+    @Test
     fun getSeverityLevel_returnsSeverityLevel() {
         val safetySourceIssue =
             SafetySourceIssue.Builder(
@@ -924,6 +957,7 @@ class SafetySourceIssueTest {
                         .addAction(action2)
                         .build())
                 .setNotificationBehavior(SafetySourceIssue.NOTIFICATION_BEHAVIOR_DELAYED)
+                .setAttributionTitle("attribution title")
                 .build()
 
         assertThat(safetySourceIssue).recreatesEqual(SafetySourceIssue.CREATOR)
@@ -931,22 +965,22 @@ class SafetySourceIssueTest {
 
     @Test
     fun equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
-        newTiramisuEqualsTester().test()
+        newTiramisuEqualsHashCodeToStringTester().test()
     }
 
     @Test
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun equalsHashCodeToString_usingEqualsHashCodeToStringTester_atLeastUpsideDownCake() {
-        newUpsideDownCakeEqualsTester().test()
+        newUpsideDownCakeEqualsHashCodeToStringTester().test()
     }
 
     /**
      * Creates a new [EqualsHashCodeToStringTester] instance with all the equality groups in the
-     * [newTiramisuEqualsTester] plus new equality groups covering all of the new fields added in U.
+     * [newTiramisuEqualsHashCodeToStringTester] plus new equality groups covering all of the new fields added in U.
      */
     @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
-    private fun newUpsideDownCakeEqualsTester() =
-        newTiramisuEqualsTester()
+    private fun newUpsideDownCakeEqualsHashCodeToStringTester() =
+        newTiramisuEqualsHashCodeToStringTester()
             .addEqualityGroup(
                 SafetySourceIssue.Builder(
                         "Issue id",
@@ -983,12 +1017,49 @@ class SafetySourceIssueTest {
                             .addAction(action2)
                             .build())
                     .build())
+            .addEqualityGroup(
+                SafetySourceIssue.Builder(
+                        "Issue id",
+                        "Issue title",
+                        "Issue summary",
+                        SEVERITY_LEVEL_INFORMATION,
+                        "issue_type_id")
+                    .setSubtitle("Issue subtitle")
+                    .setIssueCategory(ISSUE_CATEGORY_ACCOUNT)
+                    .addAction(action1)
+                    .addAction(action2)
+                    .setOnDismissPendingIntent(pendingIntentService)
+                    .setAttributionTitle("attribution title")
+                    .build(),
+                SafetySourceIssue.Builder(
+                        "Issue id",
+                        "Issue title",
+                        "Issue summary",
+                        SEVERITY_LEVEL_INFORMATION,
+                        "issue_type_id")
+                    .setSubtitle("Issue subtitle")
+                    .setIssueCategory(ISSUE_CATEGORY_ACCOUNT)
+                    .addAction(action1)
+                    .addAction(action2)
+                    .setOnDismissPendingIntent(pendingIntentService)
+                    .setAttributionTitle("attribution title")
+                    .build())
+            .addEqualityGroup(
+                SafetySourceIssue.Builder(
+                        "Issue id",
+                        "Issue title",
+                        "Issue summary",
+                        SEVERITY_LEVEL_CRITICAL_WARNING,
+                        "issue_type_id")
+                    .setAttributionTitle("Other issue attribution title")
+                    .addAction(action1)
+                    .build())
 
     /**
      * Creates a new [EqualsHashCodeToStringTester] instance which covers all the fields in the T
      * API and is safe to use on any T+ API level.
      */
-    private fun newTiramisuEqualsTester() =
+    private fun newTiramisuEqualsHashCodeToStringTester() =
         EqualsHashCodeToStringTester()
             .addEqualityGroup(
                 SafetySourceIssue.Builder(

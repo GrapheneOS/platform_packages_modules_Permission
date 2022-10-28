@@ -31,6 +31,7 @@ import android.annotation.SuppressLint;
 import android.annotation.SystemApi;
 import android.annotation.TargetApi;
 import android.app.PendingIntent;
+import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.TextUtils;
@@ -158,6 +159,8 @@ public final class SafetySourceIssue implements Parcelable {
                     if (SdkLevel.isAtLeastU()) {
                         builder.setCustomNotification(in.readTypedObject(Notification.CREATOR));
                         builder.setNotificationBehavior(in.readInt());
+                        builder.setAttributionTitle(
+                                TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in));
                     }
                     return builder.build();
                 }
@@ -179,6 +182,7 @@ public final class SafetySourceIssue implements Parcelable {
     @NonNull private final String mIssueTypeId;
     @Nullable private final Notification mCustomNotification;
     @NotificationBehavior private final int mNotificationBehavior;
+    @Nullable private final CharSequence mAttributionTitle;
 
     private SafetySourceIssue(
             @NonNull String id,
@@ -191,7 +195,8 @@ public final class SafetySourceIssue implements Parcelable {
             @Nullable PendingIntent onDismissPendingIntent,
             @NonNull String issueTypeId,
             @Nullable Notification customNotification,
-            @NotificationBehavior int notificationBehavior) {
+            @NotificationBehavior int notificationBehavior,
+            @Nullable CharSequence attributionTitle) {
         this.mId = id;
         this.mTitle = title;
         this.mSubtitle = subtitle;
@@ -203,6 +208,7 @@ public final class SafetySourceIssue implements Parcelable {
         this.mIssueTypeId = issueTypeId;
         this.mCustomNotification = customNotification;
         this.mNotificationBehavior = notificationBehavior;
+        this.mAttributionTitle = attributionTitle;
     }
 
     /**
@@ -235,6 +241,22 @@ public final class SafetySourceIssue implements Parcelable {
     @NonNull
     public CharSequence getSummary() {
         return mSummary;
+    }
+
+    /**
+     * Returns the localized attribution title of the issue to be displayed in the UI.
+     *
+     * <p>This is displayed in the UI and helps to attribute issue cards to a particular source. If
+     * this value is {@code null}, the title of the group that contains the Safety Source will be
+     * used.
+     */
+    @Nullable
+    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+    public CharSequence getAttributionTitle() {
+        if (!SdkLevel.isAtLeastU()) {
+            throw new UnsupportedOperationException();
+        }
+        return mAttributionTitle;
     }
 
     /** Returns the {@link SafetySourceData.SeverityLevel} of the issue. */
@@ -368,6 +390,7 @@ public final class SafetySourceIssue implements Parcelable {
         if (SdkLevel.isAtLeastU()) {
             dest.writeTypedObject(mCustomNotification, flags);
             dest.writeInt(mNotificationBehavior);
+            TextUtils.writeToParcel(mAttributionTitle, dest, flags);
         }
     }
 
@@ -386,7 +409,8 @@ public final class SafetySourceIssue implements Parcelable {
                 && Objects.equals(mOnDismissPendingIntent, that.mOnDismissPendingIntent)
                 && TextUtils.equals(mIssueTypeId, that.mIssueTypeId)
                 && Objects.equals(mCustomNotification, that.mCustomNotification)
-                && mNotificationBehavior == that.mNotificationBehavior;
+                && mNotificationBehavior == that.mNotificationBehavior
+                && TextUtils.equals(mAttributionTitle, that.mAttributionTitle);
     }
 
     @Override
@@ -402,7 +426,8 @@ public final class SafetySourceIssue implements Parcelable {
                 mOnDismissPendingIntent,
                 mIssueTypeId,
                 mCustomNotification,
-                mNotificationBehavior);
+                mNotificationBehavior,
+                mAttributionTitle);
     }
 
     @Override
@@ -430,6 +455,8 @@ public final class SafetySourceIssue implements Parcelable {
                 + mCustomNotification
                 + ", mNotificationBehavior="
                 + mNotificationBehavior
+                + ", mAttributionTitle="
+                + mAttributionTitle
                 + '}';
     }
 
@@ -824,6 +851,7 @@ public final class SafetySourceIssue implements Parcelable {
         @Nullable private CharSequence mSubtitle;
         @IssueCategory private int mIssueCategory = ISSUE_CATEGORY_GENERAL;
         @Nullable private PendingIntent mOnDismissPendingIntent;
+        @Nullable private CharSequence mAttributionTitle;
 
         @Nullable private Notification mCustomNotification = null;
 
@@ -849,6 +877,23 @@ public final class SafetySourceIssue implements Parcelable {
         @NonNull
         public Builder setSubtitle(@Nullable CharSequence subtitle) {
             mSubtitle = subtitle;
+            return this;
+        }
+
+        /**
+         * Sets or clears the optional attribution title for this issue.
+         *
+         * <p>This is displayed in the UI and helps to attribute an issue to a particular source. If
+         * this value is {@code null}, the title of the group that contains the Safety Source will
+         * be used.
+         */
+        @NonNull
+        @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+        public Builder setAttributionTitle(@Nullable CharSequence attributionTitle) {
+            if (!SdkLevel.isAtLeastU()) {
+                throw new UnsupportedOperationException();
+            }
+            mAttributionTitle = attributionTitle;
             return this;
         }
 
@@ -962,7 +1007,8 @@ public final class SafetySourceIssue implements Parcelable {
                     mOnDismissPendingIntent,
                     mIssueTypeId,
                     mCustomNotification,
-                    mNotificationBehavior);
+                    mNotificationBehavior,
+                    mAttributionTitle);
         }
     }
 
