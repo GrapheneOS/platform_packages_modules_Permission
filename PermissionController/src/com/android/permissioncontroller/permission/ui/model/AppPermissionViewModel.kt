@@ -711,6 +711,23 @@ class AppPermissionViewModel(
         }
     }
 
+    private fun getPermGroupIcon(permGroup: String) =
+            Utils.getGroupInfo(permGroup, app.applicationContext)?.icon ?: R.drawable.ic_empty_icon
+
+    private val storagePermGroupIcon = getPermGroupIcon(Manifest.permission_group.STORAGE)
+
+    private val auralPermGroupIcon = if (SdkLevel.isAtLeastT()) {
+        getPermGroupIcon(Manifest.permission_group.READ_MEDIA_AURAL)
+    } else {
+        R.drawable.ic_empty_icon
+    }
+
+    private val visualPermGroupIcon = if (SdkLevel.isAtLeastT()) {
+        getPermGroupIcon(Manifest.permission_group.READ_MEDIA_VISUAL)
+    } else {
+        R.drawable.ic_empty_icon
+    }
+
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     private fun showMediaConfirmDialog(
         setOneTime: Boolean,
@@ -729,42 +746,42 @@ class AppPermissionViewModel(
         val (iconId, titleId, messageId) = when {
             targetSdk < Build.VERSION_CODES.Q && aural && allow ->
                 Triple(
-                    R.drawable.perm_group_storage,
+                    storagePermGroupIcon,
                     R.string.media_confirm_dialog_title_a_to_p_aural_allow,
                     R.string.media_confirm_dialog_message_a_to_p_aural_allow)
             targetSdk < Build.VERSION_CODES.Q && aural && deny ->
                 Triple(
-                    R.drawable.perm_group_storage,
+                    storagePermGroupIcon,
                     R.string.media_confirm_dialog_title_a_to_p_aural_deny,
                     R.string.media_confirm_dialog_message_a_to_p_aural_deny)
             targetSdk < Build.VERSION_CODES.Q && visual && allow ->
                 Triple(
-                    R.drawable.perm_group_storage,
+                    storagePermGroupIcon,
                     R.string.media_confirm_dialog_title_a_to_p_visual_allow,
                     R.string.media_confirm_dialog_message_a_to_p_visual_allow)
             targetSdk < Build.VERSION_CODES.Q && visual && deny ->
                 Triple(
-                    R.drawable.perm_group_storage,
+                    storagePermGroupIcon,
                     R.string.media_confirm_dialog_title_a_to_p_visual_deny,
                     R.string.media_confirm_dialog_message_a_to_p_visual_deny)
             targetSdk <= Build.VERSION_CODES.S_V2 && aural && allow ->
                 Triple(
-                    R.drawable.perm_group_visual,
+                    visualPermGroupIcon,
                     R.string.media_confirm_dialog_title_q_to_s_aural_allow,
                     R.string.media_confirm_dialog_message_q_to_s_aural_allow)
             targetSdk <= Build.VERSION_CODES.S_V2 && aural && deny ->
                 Triple(
-                    R.drawable.perm_group_visual,
+                    visualPermGroupIcon,
                     R.string.media_confirm_dialog_title_q_to_s_aural_deny,
                     R.string.media_confirm_dialog_message_q_to_s_aural_deny)
             targetSdk <= Build.VERSION_CODES.S_V2 && visual && allow ->
                 Triple(
-                    R.drawable.perm_group_aural,
+                    auralPermGroupIcon,
                     R.string.media_confirm_dialog_title_q_to_s_visual_allow,
                     R.string.media_confirm_dialog_message_q_to_s_visual_allow)
             targetSdk <= Build.VERSION_CODES.S_V2 && visual && deny ->
                 Triple(
-                    R.drawable.perm_group_aural,
+                    auralPermGroupIcon,
                     R.string.media_confirm_dialog_title_q_to_s_visual_deny,
                     R.string.media_confirm_dialog_message_q_to_s_visual_deny)
             else ->
