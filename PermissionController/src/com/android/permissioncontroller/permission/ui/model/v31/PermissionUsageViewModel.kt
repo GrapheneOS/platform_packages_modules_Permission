@@ -102,26 +102,40 @@ class PermissionUsageViewModel(val roleManager: RoleManager) : ViewModel() {
 
         val filteredAppPermissionUsages =
             appPermissionUsages.filter { !exemptedPackages.contains(it.packageName) }
-        val permissionGroupsToUsageCountMap =
-            filteredAppPermissionUsages.buildPermissionGroupsUsageCountMap(startTime, showSystem)
         val displayShowSystemToggle: Boolean =
             filteredAppPermissionUsages.displayShowSystemToggle(startTime)
         val permissionApps = filteredAppPermissionUsages.getRecentPermissionApps(startTime)
         val orderedPermissionGroupsWithUsage =
-            buildOrderedPermissionGroupsWithUsageCount(context, permissionGroupsToUsageCountMap)
+            filteredAppPermissionUsages.buildOrderedPermissionGroupsWithUsageCount(
+                context,
+                startTime,
+                showSystem
+            )
 
         return PermissionUsagesUiData(
-            permissionGroupsToUsageCountMap,
             permissionApps,
             displayShowSystemToggle,
-            orderedPermissionGroupsWithUsage)
+            orderedPermissionGroupsWithUsage
+        )
     }
 
-    /** Build a map of permission groups to the number of apps that recently accessed them. */
-    private fun List<AppPermissionUsage>.buildPermissionGroupsUsageCountMap(
+    /**
+     * Creates an ordered list of [PermissionGroupWithUsageCount] instances to show in the UI,
+     * representing a mapping of permission groups to the number of apps that recently accessed
+     * them.
+     *
+     * The list is ordered as follows:
+     *
+     * 1. Location
+     * 2. Camera
+     * 3. Microphone
+     * 4. Remaining permission groups, ordered alphabetically
+     */
+    private fun List<AppPermissionUsage>.buildOrderedPermissionGroupsWithUsageCount(
+        context: Context,
         startTime: Long,
         showSystem: Boolean
-    ): Map<String, Int> {
+    ): List<PermissionGroupWithUsageCount> {
         val permissionGroupsUsageCountMap: MutableMap<String, Int> = HashMap()
         extractPlatformAppPermissionGroupsToDisplay().forEach {
             permissionGroupsUsageCountMap[it] = 0
@@ -137,7 +151,17 @@ class PermissionUsageViewModel(val roleManager: RoleManager) : ViewModel() {
                         permissionGroupsUsageCountMap.getOrDefault(it.group.name, 0) + 1
                 }
         }
-        return permissionGroupsUsageCountMap
+        return permissionGroupsUsageCountMap.entries.map {
+            PermissionGroupWithUsageCount(
+                it.key,
+                it.value
+            )
+        }
+            .sortedWith(
+                compareBy(
+                    { PERMISSION_GROUP_ORDER.getOrDefault(it.permGroup, DEFAULT_ORDER) },
+                    { getPermGroupLabel(context, it.permGroup).toString() })
+            )
     }
 
     /** Extracts [PermissionApp] where there has been recent permission usage. */
@@ -167,27 +191,6 @@ class PermissionUsageViewModel(val roleManager: RoleManager) : ViewModel() {
     }
 
     /**
-     * Creates an ordered list of [PermissionGroupWithUsageCount] instances to show in the UI.
-     *
-     * The list is ordered as follows:
-     *
-     * 1. Location
-     * 2. Camera
-     * 3. Microphone
-     * 4. Remaining permission groups, ordered alphabetically
-     */
-    private fun buildOrderedPermissionGroupsWithUsageCount(
-        context: Context,
-        permissionUsageAppCountMap: Map<String, Int>
-    ): List<PermissionGroupWithUsageCount> =
-        ArrayList(permissionUsageAppCountMap.entries)
-            .map { PermissionGroupWithUsageCount(it.key, it.value) }
-            .sortedWith(
-                compareBy(
-                    { PERMISSION_GROUP_ORDER.getOrDefault(it.permGroup, DEFAULT_ORDER) },
-                    { getPermGroupLabel(context, it.permGroup).toString() }))
-
-    /**
      * Extracts to a set all the permission groups declared by the platform that should be displayed
      * in the UI.
      */
@@ -210,10 +213,6 @@ class PermissionUsageViewModel(val roleManager: RoleManager) : ViewModel() {
 
     /** Data class to hold all the information required to configure the UI. */
     data class PermissionUsagesUiData(
-        // TODO(b/243970988): Remove permissionGroupUsageCounts from this data class as it
-        //  duplicates information in orderedPermissionGroupWithUsage.
-        /** Map from permission group to count of apps that recently used the permissions. */
-        val permissionGroupUsageCounts: Map<String, Int>,
         /** List of [PermissionApp] instances */
         // Note that these are used only to cache app data for the permission usage details
         // fragment, and have no bearing on the UI on the main permission usage page.

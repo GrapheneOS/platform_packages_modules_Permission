@@ -56,6 +56,7 @@ import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.settingslib.HelpUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -339,8 +340,6 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader
         PermissionUsageViewModel.PermissionUsagesUiData permissionUsageUiData =
                 mViewModel.buildPermissionUsagesUiData(
                         mAppPermissionUsages, mShow7Days, mShowSystem, getContext());
-        Map<String, Integer> permissionGroupUsageCounts =
-                permissionUsageUiData.getPermissionGroupUsageCounts();
         ArrayList<PermissionApps.PermissionApp> permissionApps =
                 permissionUsageUiData.getPermissionApps();
         boolean displayShowSystemToggle = permissionUsageUiData.getDisplayShowSystemToggle();
@@ -355,6 +354,13 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader
 
         mGraphic = new PermissionUsageGraphicPreference(context, mShow7Days);
         screen.addPreference(mGraphic);
+
+
+        Map<String, Integer> permissionGroupUsageCounts = new HashMap<>();
+        for (PermissionGroupWithUsageCount groupWithUsage: orderedPermissionGroupsWithUsageCount) {
+            permissionGroupUsageCounts.put(groupWithUsage.getPermGroup(),
+                    groupWithUsage.getAppCount());
+        }
         mGraphic.setUsages(permissionGroupUsageCounts);
 
         // Add the preference header.
