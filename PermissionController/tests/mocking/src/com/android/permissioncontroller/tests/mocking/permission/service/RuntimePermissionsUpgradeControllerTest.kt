@@ -21,7 +21,11 @@ import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.Manifest.permission.ACCESS_MEDIA_LOCATION
 import android.Manifest.permission.READ_CALL_LOG
 import android.Manifest.permission.READ_EXTERNAL_STORAGE
+import android.Manifest.permission.READ_MEDIA_AUDIO
+import android.Manifest.permission.READ_MEDIA_IMAGES
+import android.Manifest.permission.READ_MEDIA_VIDEO
 import android.Manifest.permission.SEND_SMS
+import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
 import android.app.ActivityManager
 import android.app.AppOpsManager
 import android.app.job.JobScheduler
@@ -32,21 +36,27 @@ import android.content.pm.PackageInfo.REQUESTED_PERMISSION_GRANTED
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.FLAG_PERMISSION_RESTRICTION_INSTALLER_EXEMPT
 import android.content.pm.PackageManager.FLAG_PERMISSION_RESTRICTION_SYSTEM_EXEMPT
+import android.content.pm.PackageManager.FLAG_PERMISSION_USER_SET
 import android.content.pm.PackageManager.FLAG_PERMISSION_WHITELIST_UPGRADE
 import android.content.pm.PackageManager.MATCH_FACTORY_ONLY
 import android.content.pm.PermissionInfo
 import android.location.LocationManager
+import android.os.Build
 import android.os.Build.VERSION_CODES.R
 import android.os.UserManager
 import android.permission.PermissionManager
 import android.provider.Settings
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry
 import com.android.dx.mockito.inline.extended.ExtendedMockito.mockitoSession
+import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.service.RuntimePermissionsUpgradeController
 import com.android.permissioncontroller.tests.mocking.permission.data.dataRepositories
+import java.util.concurrent.CompletableFuture
 import org.junit.After
+import org.junit.Assume
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -59,11 +69,10 @@ import org.mockito.Mockito.mock
 import org.mockito.Mockito.never
 import org.mockito.Mockito.timeout
 import org.mockito.Mockito.verify
+import org.mockito.Mockito.`when` as whenever
 import org.mockito.MockitoAnnotations.initMocks
 import org.mockito.MockitoSession
 import org.mockito.quality.Strictness.LENIENT
-import java.util.concurrent.CompletableFuture
-import org.mockito.Mockito.`when` as whenever
 
 @RunWith(AndroidJUnit4::class)
 class RuntimePermissionsUpgradeControllerTest {
@@ -85,7 +94,11 @@ class RuntimePermissionsUpgradeControllerTest {
     }
 
     /** Latest permission database version known in this test */
-    private val LATEST_VERSION = 9
+    private val LATEST_VERSION = if (SdkLevel.isAtLeastT()) {
+        10
+    } else {
+        9
+    }
 
     /** Use a unique test package name for each test */
     private val TEST_PKG_NAME: String
@@ -133,7 +146,7 @@ class RuntimePermissionsUpgradeControllerTest {
                         }
                     }.toIntArray()
                     applicationInfo = ApplicationInfo().apply {
-                        targetSdkVersion = R
+                        targetSdkVersion = pkg.targetSdkVersion
                     }
                 }
             }
@@ -485,6 +498,38 @@ class RuntimePermissionsUpgradeControllerTest {
         verifyNotGranted(TEST_PKG_NAME, ACCESS_MEDIA_LOCATION)
     }
 
+    @SdkSuppress(
+        minSdkVersion = Build.VERSION_CODES.TIRAMISU,
+        maxSdkVersion = Build.VERSION_CODES.TIRAMISU,
+        codeName = "Tiramisu"
+    )
+    @Test
+    fun storagePermissionsMigrateToMediaPermissionsWhenVersionIs9() {
+        Assume.assumeTrue(SdkLevel.isAtLeastT() && !SdkLevel.isAtLeastU())
+        whenever(packageManager.isDeviceUpgrading).thenReturn(true)
+        setInitialDatabaseVersion(9)
+        setPackages(
+            Package(TEST_PKG_NAME,
+                Permission(READ_EXTERNAL_STORAGE, isGranted = true,
+                    flags = FLAG_PERMISSION_USER_SET),
+                Permission(WRITE_EXTERNAL_STORAGE, isGranted = true,
+                    flags = FLAG_PERMISSION_USER_SET),
+                Permission(ACCESS_MEDIA_LOCATION, isGranted = true,
+                    flags = FLAG_PERMISSION_USER_SET),
+                Permission(READ_MEDIA_AUDIO, isGranted = false),
+                Permission(READ_MEDIA_VIDEO, isGranted = false),
+                Permission(READ_MEDIA_IMAGES, isGranted = false),
+                targetSdkVersion = 33
+            )
+        )
+
+        upgradeIfNeeded()
+
+        verifyGranted(TEST_PKG_NAME, READ_MEDIA_AUDIO)
+        verifyGranted(TEST_PKG_NAME, READ_MEDIA_VIDEO)
+        verifyGranted(TEST_PKG_NAME, READ_MEDIA_IMAGES)
+    }
+
     @After
     fun resetSystem() {
         // Send low memory notifications for all data repositories which will clear cached data
@@ -502,10 +547,15 @@ class RuntimePermissionsUpgradeControllerTest {
     private open class Package(
         val name: String,
         val permissions: List<Permission> = emptyList(),
-        val isPreinstalled: Boolean = false
+        val isPreinstalled: Boolean = false,
+        val targetSdkVersion: Int = R
     ) {
-        constructor(name: String, vararg permission: Permission, isPreinstalled: Boolean = false) :
-                this(name, permission.toList(), isPreinstalled)
+        constructor(
+            name: String,
+            vararg permission: Permission,
+            isPreinstalled: Boolean = false,
+            targetSdkVersion: Int = R
+        ) : this(name, permission.toList(), isPreinstalled, targetSdkVersion)
     }
 
     private class PreinstalledPackage(
