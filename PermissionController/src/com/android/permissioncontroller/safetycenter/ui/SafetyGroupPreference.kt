@@ -27,9 +27,7 @@ import com.android.permissioncontroller.R
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel
 import com.android.permissioncontroller.safetycenter.ui.view.SafetyEntryGroupView
 
-/**
- * A preference that displays a visual representation of a {@link SafetyCenterEntryGroup}.
- */
+/** A preference that displays a visual representation of a {@link SafetyCenterEntryGroup}. */
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class SafetyGroupPreference(
     context: Context,
@@ -43,8 +41,6 @@ class SafetyGroupPreference(
     private val onCollapsedListener: (String) -> Unit
 ) : Preference(context), ComparablePreference {
 
-    val groupId = group.id
-
     init {
         layoutResource = R.layout.preference_group
     }
@@ -53,24 +49,22 @@ class SafetyGroupPreference(
         super.onBindViewHolder(holder)
 
         (holder?.itemView as? SafetyEntryGroupView)?.showGroup(
-                group,
-                isExpanded,
-                isFirstCard,
-                isLastCard,
-                getTaskIdForEntry,
-                viewModel,
-                onExpandedListener,
-                onCollapsedListener
-        )
+            group,
+            isExpanded,
+            isFirstCard,
+            isLastCard,
+            getTaskIdForEntry,
+            viewModel,
+            onExpandedListener,
+            onCollapsedListener)
     }
 
     override fun isSameItem(other: Preference): Boolean =
-            other is SafetyGroupPreference &&
-                    TextUtils.equals(group.id, other.group.id)
+        other is SafetyGroupPreference && TextUtils.equals(group.id, other.group.id)
 
     override fun hasSameContents(other: Preference): Boolean =
-            other is SafetyGroupPreference &&
-                    group == other.group &&
-                    isFirstCard == other.isFirstCard &&
-                    isLastCard == other.isLastCard
+        other is SafetyGroupPreference &&
+            group == other.group &&
+            isFirstCard == other.isFirstCard &&
+            isLastCard == other.isLastCard
 }
