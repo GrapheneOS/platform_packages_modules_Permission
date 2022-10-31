@@ -89,7 +89,11 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
-/** CTS tests for our APIs and UI on a managed device (e.g. with managed profile(s)). */
+/**
+ * CTS tests for our APIs and UI on a device with multiple users. e.g. with a managed or secondary
+ * user(s).
+ */
+@Ignore // Tests are causing flakiness in other tests.
 @RunWith(BedsteadJUnit4::class)
 // TODO(b/234108780): Add these to presubmits when we figure a way to make sure they don't fail due
 // to timeouts with Bedstead.
