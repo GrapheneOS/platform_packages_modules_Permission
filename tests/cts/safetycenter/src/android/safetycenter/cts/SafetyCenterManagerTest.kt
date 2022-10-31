@@ -25,7 +25,7 @@ import android.safetycenter.SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK
 import android.safetycenter.SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_RECOMMENDATION
 import android.safetycenter.SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN
 import android.safetycenter.SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED
-import android.safetycenter.SafetyCenterEntry.IconAction.ICON_ACTION_TYPE_GEAR
+import android.safetycenter.SafetyCenterEntry.IconAction.ICON_ACTION_TYPE_INFO
 import android.safetycenter.SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON
 import android.safetycenter.SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_PRIVACY
 import android.safetycenter.SafetyCenterEntryGroup
@@ -374,7 +374,7 @@ class SafetyCenterManagerTest {
                     safetyCenterCtsData
                         .safetyCenterEntryOkBuilder(SINGLE_SOURCE_ID)
                         .setIconAction(
-                            ICON_ACTION_TYPE_GEAR,
+                            ICON_ACTION_TYPE_INFO,
                             safetySourceCtsData.testActivityRedirectPendingIntent)
                         .build())),
             emptyList())
