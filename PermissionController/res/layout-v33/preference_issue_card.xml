@@ -28,6 +28,12 @@
         style="@style/SafetyCenterIssueDismiss" />
 
     <TextView
+        android:id="@+id/issue_card_attribution_title"
+        android:text="@string/summary_placeholder"
+        android:importantForAccessibility="no"
+        style="@style/SafetyCenterIssueAttributionTitle" />
+
+    <TextView
         android:id="@+id/issue_card_title"
         android:text="@string/summary_placeholder"
         android:importantForAccessibility="no"
