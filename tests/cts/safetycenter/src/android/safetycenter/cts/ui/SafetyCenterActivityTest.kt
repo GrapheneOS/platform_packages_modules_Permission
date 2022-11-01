@@ -451,7 +451,7 @@ class SafetyCenterActivityTest {
             SINGLE_SOURCE_ID, safetySourceCtsData.informationWithIconAction)
 
         context.launchSafetyCenterActivity {
-            waitDisplayed(By.desc("Settings")) { it.click() }
+            waitDisplayed(By.desc("Information")) { it.click() }
             waitButtonDisplayed("Exit test activity") { it.click() }
             waitDisplayed(By.text("Ok title"))
         }
