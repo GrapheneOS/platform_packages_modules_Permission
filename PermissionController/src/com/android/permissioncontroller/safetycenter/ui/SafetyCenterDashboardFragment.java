@@ -38,7 +38,6 @@ import android.safetycenter.SafetyCenterErrorDetails;
 import android.safetycenter.SafetyCenterIssue;
 import android.safetycenter.SafetyCenterStaticEntry;
 import android.safetycenter.SafetyCenterStaticEntryGroup;
-import android.safetycenter.SafetyCenterStatus;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -58,6 +57,7 @@ import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.safetycenter.ui.model.LiveSafetyCenterViewModelFactory;
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterUiData;
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel;
+import com.android.permissioncontroller.safetycenter.ui.model.StatusUiData;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 
@@ -174,11 +174,6 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
 
         mSafetyStatusPreference =
                 requireNonNull(getPreferenceScreen().findPreference(SAFETY_STATUS_KEY));
-        // TODO: Use real strings here, or set more sensible defaults in the layout
-        mSafetyStatusPreference.setSafetyStatus(
-                new SafetyCenterStatus.Builder("Looks good", "")
-                        .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN)
-                        .build());
         mSafetyStatusPreference.setViewModel(mViewModel);
 
         mIssuesGroup = getPreferenceScreen().findPreference(ISSUES_GROUP_KEY);
@@ -191,6 +186,7 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
             mStaticEntriesGroup = null;
         }
 
+        mViewModel.getStatusUiLiveData().observe(this, this::updateStatus);
         mViewModel.getSafetyCenterUiLiveData().observe(this, this::renderSafetyCenterData);
         mViewModel.getErrorLiveData().observe(this, this::displayErrorDetails);
 
@@ -256,6 +252,21 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
         return mViewModel;
     }
 
+    private void updateStatus(StatusUiData statusUiData) {
+        if (mIsQuickSettingsFragment) {
+            SafetyCenterResourcesContext safetyCenterResourcesContext =
+                    new SafetyCenterResourcesContext(requireContext());
+            boolean hasPendingActions =
+                    safetyCenterResourcesContext
+                            .getStringByName("overall_severity_level_ok_review_summary")
+                            .equals(statusUiData.getOriginalSummary().toString());
+
+            statusUiData = statusUiData.copyForPendingActions(hasPendingActions);
+        }
+
+        mSafetyStatusPreference.setData(statusUiData);
+    }
+
     private void renderSafetyCenterData(@Nullable SafetyCenterUiData uiData) {
         if (uiData == null) return;
         SafetyCenterData data = uiData.getSafetyCenterData();
@@ -267,37 +278,13 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
             return;
         }
 
-        mSafetyStatusPreference.setSafetyData(data);
-
         // TODO(b/208212820): Only update entries that have changed since last
         // update, rather than deleting and re-adding all.
         updateIssues(context, data.getIssues(), uiData.getResolvedIssues());
+
         if (!mIsQuickSettingsFragment) {
             updateSafetyEntries(context, data.getEntriesOrGroups());
             updateStaticSafetyEntries(context, data.getStaticEntryGroups());
-        } else {
-            SafetyCenterResourcesContext safetyCenterResourcesContext =
-                    new SafetyCenterResourcesContext(context);
-            boolean hasSettingsToReview =
-                    safetyCenterResourcesContext
-                            .getStringByName("overall_severity_level_ok_review_summary")
-                            .equals(data.getStatus().getSummary().toString());
-            setPendingActionState(hasSettingsToReview);
-        }
-    }
-
-    /** Determine if there are pending actions and set pending actions state */
-    private void setPendingActionState(boolean hasSettingsToReview) {
-        if (hasSettingsToReview) {
-            mSafetyStatusPreference.setHasPendingActions(
-                    true,
-                    l -> {
-                        mViewModel.navigateToSafetyCenter(
-                                this, NavigationSource.QUICK_SETTINGS_TILE);
-                        mViewModel.getInteractionLogger().record(Action.REVIEW_SETTINGS_CLICKED);
-                    });
-        } else {
-            mSafetyStatusPreference.setHasPendingActions(false, null);
         }
     }
 

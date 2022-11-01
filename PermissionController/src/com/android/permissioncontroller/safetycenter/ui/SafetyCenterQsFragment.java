@@ -174,22 +174,24 @@ public class SafetyCenterQsFragment extends Fragment {
         securitySettings.setOnClickListener(
                 (v) ->
                         mSafetyCenterViewModel.navigateToSafetyCenter(
-                                this, NavigationSource.QUICK_SETTINGS_TILE));
-        TextView securitySettingsText =
-                securitySettings.findViewById(R.id.toggle_sensor_name);
+                                mContext, NavigationSource.QUICK_SETTINGS_TILE));
+        TextView securitySettingsText = securitySettings.findViewById(R.id.toggle_sensor_name);
         securitySettingsText.setText(R.string.settings);
         securitySettingsText.setSelected(true);
         securitySettings.findViewById(R.id.toggle_sensor_status).setVisibility(View.GONE);
-        ImageView securitySettingsIcon =
-                securitySettings.findViewById(R.id.toggle_sensor_icon);
-        securitySettingsIcon.setImageDrawable(Utils.applyTint(mContext,
-                mContext.getDrawable(R.drawable.ic_safety_center_shield),
-                android.R.attr.textColorPrimaryInverse));
+        ImageView securitySettingsIcon = securitySettings.findViewById(R.id.toggle_sensor_icon);
+        securitySettingsIcon.setImageDrawable(
+                Utils.applyTint(
+                        mContext,
+                        mContext.getDrawable(R.drawable.ic_safety_center_shield),
+                        android.R.attr.textColorPrimaryInverse));
         securitySettings.findViewById(R.id.arrow_icon).setVisibility(View.VISIBLE);
         ((ImageView) securitySettings.findViewById(R.id.arrow_icon))
-                .setImageDrawable(Utils.applyTint(mContext,
-                        mContext.getDrawable(R.drawable.ic_chevron_right),
-                        android.R.attr.textColorSecondaryInverse));
+                .setImageDrawable(
+                        Utils.applyTint(
+                                mContext,
+                                mContext.getDrawable(R.drawable.ic_chevron_right),
+                                android.R.attr.textColorSecondaryInverse));
         ViewCompat.replaceAccessibilityAction(
                 securitySettings,
                 AccessibilityNodeInfoCompat.AccessibilityActionCompat.ACTION_CLICK,

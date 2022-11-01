@@ -17,6 +17,7 @@
 package com.android.permissioncontroller.safetycenter.ui.model
 
 import android.app.Application
+import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_SAFETY_CENTER
 import android.os.Build
@@ -30,9 +31,9 @@ import android.util.Log
 import androidx.annotation.MainThread
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat.getMainExecutor
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.android.permissioncontroller.safetycenter.ui.InteractionLogger
@@ -44,6 +45,8 @@ import com.android.safetycenter.internaldata.SafetyCenterIds
 class LiveSafetyCenterViewModel(app: Application) : SafetyCenterViewModel(app) {
 
     private val TAG: String = LiveSafetyCenterViewModel::class.java.simpleName
+    override val statusUiLiveData: LiveData<StatusUiData>
+        get() = Transformations.map(safetyCenterUiLiveData) { StatusUiData(it.safetyCenterData) }
     override val safetyCenterUiLiveData: LiveData<SafetyCenterUiData> by this::_safetyCenterLiveData
     override val errorLiveData: LiveData<SafetyCenterErrorDetails> by this::_errorLiveData
 
@@ -117,14 +120,14 @@ class LiveSafetyCenterViewModel(app: Application) : SafetyCenterViewModel(app) {
         _errorLiveData.value = null
     }
 
-    override fun navigateToSafetyCenter(fragment: Fragment, navigationSource: NavigationSource?) {
+    override fun navigateToSafetyCenter(context: Context, navigationSource: NavigationSource?) {
         val intent = Intent(ACTION_SAFETY_CENTER)
 
         if (navigationSource != null) {
             navigationSource.addToIntent(intent)
         }
 
-        fragment.startActivity(intent)
+        context.startActivity(intent)
     }
 
     override fun pageOpen() {
@@ -219,9 +222,7 @@ class LiveSafetyCenterViewModel(app: Application) : SafetyCenterViewModel(app) {
         private fun determineResolvedIssues(nextIssueIds: Set<IssueId>): Map<IssueId, ActionId> {
             // Any previously in-flight issue that does not appear in the incoming SafetyCenterData
             // is considered resolved.
-            return issuesPendingResolution.filterNot { issue ->
-                nextIssueIds.contains(issue.key)
-            }
+            return issuesPendingResolution.filterNot { issue -> nextIssueIds.contains(issue.key) }
         }
 
         private fun shouldEndScan(nextData: SafetyCenterData): Boolean =
@@ -260,9 +261,7 @@ class LiveSafetyCenterViewModel(app: Application) : SafetyCenterViewModel(app) {
     }
 }
 
-/**
- * Returns inflight issues pending resolution
- */
+/** Returns inflight issues pending resolution */
 private fun SafetyCenterData.getInFlightIssues(): Map<IssueId, ActionId> =
     issues
         .map { issue ->
