@@ -218,11 +218,14 @@ public class SafetyCenterQsFragment extends Fragment {
             return;
         }
         View permissionSectionTitleView = rootView.findViewById(R.id.permission_section_title);
+        View statusSectionTitleView = rootView.findViewById(R.id.status_section_title);
         if (mPermGroupUsages == null || mPermGroupUsages.isEmpty()) {
             permissionSectionTitleView.setVisibility(View.GONE);
+            statusSectionTitleView.setVisibility(View.GONE);
             return;
         }
         permissionSectionTitleView.setVisibility(View.VISIBLE);
+        statusSectionTitleView.setVisibility(View.VISIBLE);
         LinearLayout usageLayout = rootView.findViewById(R.id.permission_usage);
         Collections.sort(
                 mPermGroupUsages,

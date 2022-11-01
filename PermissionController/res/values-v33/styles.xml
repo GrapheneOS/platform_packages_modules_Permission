@@ -70,11 +70,13 @@
         <item name="android:orientation">vertical</item>
         <item name="android:paddingStart">@dimen/sc_list_margin</item>
         <item name="android:paddingEnd">@dimen/sc_list_margin</item>
+        <item name="android:layout_marginBottom">@dimen/sc_spacing_xsmall</item>
     </style>
 
     <style name="SafetyCenterQsPreferences">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginTop">@dimen/sc_spacing_xsmall</item>
     </style>
 
     <style name="SafetyCenterQsToggleContainer">

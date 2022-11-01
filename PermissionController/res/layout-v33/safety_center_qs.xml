@@ -36,11 +36,6 @@
             android:layout_height="wrap_content"
             style="@style/SafetyCenterQsBody">
 
-            <FrameLayout
-                android:id="@+id/safety_center_prefs"
-                style="@style/SafetyCenterQsPreferences">
-            </FrameLayout>
-
             <TextView
                 android:id="@+id/permission_section_title"
                 android:text="@string/sensor_permissions_qs"
@@ -55,6 +50,19 @@
                 android:orientation="vertical"
                 android:id="@+id/permission_usage"
                 style="@style/SafetyCenterQsPermissionUsage"/>
+
+            <TextView
+                android:id="@+id/status_section_title"
+                android:text="@string/safety_privacy_qs_tile_title"
+                android:visibility="gone"
+                android:focusable="true"
+                android:importantForAccessibility="yes"
+                style="@style/SafetyCenterQsSectionTitle"/>
+
+            <FrameLayout
+                android:id="@+id/safety_center_prefs"
+                style="@style/SafetyCenterQsPreferences">
+            </FrameLayout>
 
             <TextView
                 android:id="@+id/sensor_privacy_title"
