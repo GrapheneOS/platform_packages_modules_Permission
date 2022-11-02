@@ -94,6 +94,7 @@
     <xsd:complexType name="static-safety-source">
         <!-- id must be unique among safety sources -->
         <xsd:attribute name="id" type="stringOrStringResourceName" use="required"/>
+        <xsd:attribute name="packageName" type="stringOrStringResourceName"/>
         <xsd:attribute name="title" type="runtimeStringResourceName" use="required"/>
         <!-- titleForWork is required if profile is set to all_profiles -->
         <!-- titleForWork is prohibited if profile is set to primary_profile_only -->

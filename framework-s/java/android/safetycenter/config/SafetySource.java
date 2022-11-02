@@ -250,16 +250,40 @@ public final class SafetySource implements Parcelable {
     /**
      * Returns the package name of this safety source.
      *
-     * <p>This is the package that owns the source. The package will receive refresh requests and it
-     * can send set requests for the source.
+     * <p>This is the package that owns the source. The package will receive refresh requests, and
+     * it can send set requests for the source. The package is also used to create an explicit
+     * pending intent from the intent action in the package context.
      *
-     * <p>Throws an {@link UnsupportedOperationException} if the source is of type static.
+     * <p>Throws an {@link UnsupportedOperationException} if the source is of type static even if
+     * the optional package name field for the source of type static is set.
      */
     @NonNull
     public String getPackageName() {
         if (mType == SAFETY_SOURCE_TYPE_STATIC) {
             throw new UnsupportedOperationException(
                     "getPackageName unsupported for static safety source");
+        }
+        return mPackageName;
+    }
+
+    /**
+     * Returns the package name of this safety source or null if undefined.
+     *
+     * <p>This is the package that owns the source.
+     *
+     * <p>The package is always defined for sources of type dynamic and issue-only. The package will
+     * receive refresh requests, and it can send set requests for sources of type dynamic and
+     * issue-only. The package is also used to create an explicit pending intent in the package
+     * context from the intent action if defined.
+     *
+     * <p>The package is optional for sources of type static. If present, the package is used to
+     * create an explicit pending intent in the package context from the intent action.
+     */
+    @Nullable
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    public String getOptionalPackageName() {
+        if (!SdkLevel.isAtLeastU()) {
+            throw new UnsupportedOperationException();
         }
         return mPackageName;
     }
@@ -832,7 +856,10 @@ public final class SafetySource implements Parcelable {
 
             String packageName = mPackageName;
             BuilderUtils.validateAttribute(
-                    packageName, "packageName", isDynamic || isIssueOnly, isStatic);
+                    packageName,
+                    "packageName",
+                    isDynamic || isIssueOnly,
+                    isStatic && !SdkLevel.isAtLeastU());
 
             int initialDisplayState =
                     BuilderUtils.validateIntDef(
