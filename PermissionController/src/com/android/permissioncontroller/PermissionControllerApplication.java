@@ -31,6 +31,7 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.permissioncontroller.privacysources.SafetyCenterAccessibilityListener;
 import com.android.permissioncontroller.role.model.Role;
+import com.android.permissioncontroller.role.model.RoleParserInitializer;
 import com.android.permissioncontroller.role.model.Roles;
 import com.android.permissioncontroller.role.ui.SpecialAppAccessListActivity;
 import com.android.permissioncontroller.role.utils.RoleUiBehaviorUtils;
@@ -46,6 +47,7 @@ public final class PermissionControllerApplication extends Application {
         sInstance = this;
 
         PackageItemInfo.forceSafeLabels();
+        RoleParserInitializer.initialize();
         updateSpecialAppAccessListActivityEnabledState();
         if (SdkLevel.isAtLeastT()) {
             addAccessibilityListener();

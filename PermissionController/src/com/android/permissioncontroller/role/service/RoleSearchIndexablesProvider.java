@@ -28,6 +28,7 @@ import androidx.annotation.Nullable;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.service.BaseSearchIndexablesProvider;
 import com.android.permissioncontroller.role.model.Role;
+import com.android.permissioncontroller.role.model.RoleParserInitializer;
 import com.android.permissioncontroller.role.model.Roles;
 import com.android.permissioncontroller.role.utils.RoleUiBehaviorUtils;
 
@@ -41,6 +42,12 @@ public class RoleSearchIndexablesProvider extends BaseSearchIndexablesProvider {
 
     public static final String ACTION_MANAGE_SPECIAL_APP_ACCESS =
             "com.android.permissioncontroller.settingssearch.action.MANAGE_SPECIAL_APP_ACCESS";
+
+    @Override
+    public boolean onCreate() {
+        RoleParserInitializer.initialize();
+        return true;
+    }
 
     @Nullable
     @Override
