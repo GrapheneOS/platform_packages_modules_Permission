@@ -27,6 +27,7 @@ import android.view.accessibility.AccessibilityManager;
 import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.build.SdkLevel;
+import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.permissioncontroller.privacysources.SafetyCenterAccessibilityListener;
 import com.android.permissioncontroller.role.model.Role;
@@ -47,6 +48,9 @@ public final class PermissionControllerApplication extends Application {
         updateSpecialAppAccessListActivityEnabledState();
         if (SdkLevel.isAtLeastT()) {
             addAccessibilityListener();
+        }
+        if (Utils.isHealthPermissionUiEnabled()) {
+            KotlinUtils.INSTANCE.addHealthPermissions(this);
         }
     }
 
