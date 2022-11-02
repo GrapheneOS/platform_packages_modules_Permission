@@ -90,6 +90,14 @@
            parent="@style/PermissionGrantButtonTop"></style>
     <style name="PermissionGrantButtonAllowOneTimeMaterial3"
            parent="@style/PermissionGrantButtonMiddle"></style>
+    <style name="PermissionGrantButtonAllowAllPhotosMaterial3"
+        parent="@style/PermissionGrantButtonTop"></style>
+    <style name="PermissionGrantButtonAllowSelectedPhotosMaterial3"
+        parent="@style/PermissionGrantButtonMiddle"></style>
+    <style name="PermissionGrantButtonAllowMorePhotosMaterial3"
+        parent="@style/PermissionGrantButtonTop"></style>
+    <style name="PermissionGrantButtonDontAllowMorePhotosMaterial3"
+        parent="@style/PermissionGrantButtonBottom"></style>
     <style name="PermissionGrantButtonDenyMaterial3"
            parent="@style/PermissionGrantButtonBottom"></style>
     <style name="PermissionGrantButtonNoUpgradeMaterial3"

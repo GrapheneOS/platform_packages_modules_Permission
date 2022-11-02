@@ -67,6 +67,18 @@
     <!-- Title for the dialog button to get more info about a permission. [CHAR LIMIT=15] -->
     <string name="grant_dialog_button_more_info">More info</string>
 
+    <!-- Title for the dialog button to allow access to all photos. [CHAR LIMIT=60] -->
+    <string name="grant_dialog_button_allow_all_photos">Allow access to all photos</string>
+
+    <!-- Title for the dialog button to allow access to select photos to be shared. [CHAR LIMIT=60] -->
+    <string name="grant_dialog_button_allow_selected_photos">Select photos</string>
+
+    <!-- Title for the dialog button to allow access to select more photos to be shared. [CHAR LIMIT=60] -->
+    <string name="grant_dialog_button_allow_more_selected_photos">Select more photos</string>
+
+    <!-- Title for the dialog button to not allow access to select more photos to be shared. [CHAR LIMIT=60] -->
+    <string name="grant_dialog_button_dont_allow_more_selected_photos">Don\u2019t select more photos</string>
+
     <!-- Title for the dialog button to deny a permission grant despite a warning of implications. [CHAR LIMIT=30] -->
     <string name="grant_dialog_button_deny_anyway">Don\u2019t allow anyway</string>
 
@@ -592,6 +604,12 @@
 
     <!-- Title for the dialog button to allow a permission grant only when the app is in the foreground. [CHAR LIMIT=60] -->
     <string name="app_permission_button_allow_foreground">Allow only while using the app</string>
+
+    <!-- Title for the dialog button to allow the user to allow all photos. [CHAR LIMIT=60] -->
+    <string name="app_permission_button_allow_all_photos">Allow all photos</string>
+
+    <!-- Title for the dialog button to allow the user to select photos. [CHAR LIMIT=60] -->
+    <string name="app_permission_button_select_photos">Allow selected photos</string>
 
     <!-- Title for the dialog button to require an app to ask for a permission next time they need it. [CHAR LIMIT=60] -->
     <string name="app_permission_button_ask">Ask every time</string>
@@ -1432,6 +1450,10 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
 
     <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
     <string name="permgrouprequest_read_media_visual">Allow &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access photos and videos on this device?</string>
+
+    <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
+    <string name="permgrouprequest_more_photos">Grant
+        &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> access to more photos?</string>
 
     <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
     <string name="permgrouprequest_microphone">Allow

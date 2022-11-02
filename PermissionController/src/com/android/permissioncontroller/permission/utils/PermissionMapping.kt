@@ -101,6 +101,11 @@ object PermissionMapping {
                 Manifest.permission_group.READ_MEDIA_VISUAL
         }
 
+        if (SdkLevel.isAtLeastU()) {
+            PLATFORM_PERMISSIONS[Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED] =
+                Manifest.permission_group.READ_MEDIA_VISUAL
+        }
+
         PLATFORM_PERMISSIONS[Manifest.permission.ACCESS_FINE_LOCATION] =
             Manifest.permission_group.LOCATION
         PLATFORM_PERMISSIONS[Manifest.permission.ACCESS_COARSE_LOCATION] =
