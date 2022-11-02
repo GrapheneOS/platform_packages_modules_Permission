@@ -161,6 +161,7 @@ public final class SafetySourceIssue implements Parcelable {
                         builder.setNotificationBehavior(in.readInt());
                         builder.setAttributionTitle(
                                 TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in));
+                        builder.setDeduplicationId(in.readString());
                     }
                     return builder.build();
                 }
@@ -183,6 +184,7 @@ public final class SafetySourceIssue implements Parcelable {
     @Nullable private final Notification mCustomNotification;
     @NotificationBehavior private final int mNotificationBehavior;
     @Nullable private final CharSequence mAttributionTitle;
+    @Nullable private final String mDeduplicationId;
 
     private SafetySourceIssue(
             @NonNull String id,
@@ -196,7 +198,8 @@ public final class SafetySourceIssue implements Parcelable {
             @NonNull String issueTypeId,
             @Nullable Notification customNotification,
             @NotificationBehavior int notificationBehavior,
-            @Nullable CharSequence attributionTitle) {
+            @Nullable CharSequence attributionTitle,
+            @Nullable String deduplicationId) {
         this.mId = id;
         this.mTitle = title;
         this.mSubtitle = subtitle;
@@ -209,6 +212,7 @@ public final class SafetySourceIssue implements Parcelable {
         this.mCustomNotification = customNotification;
         this.mNotificationBehavior = notificationBehavior;
         this.mAttributionTitle = attributionTitle;
+        this.mDeduplicationId = deduplicationId;
     }
 
     /**
@@ -371,6 +375,36 @@ public final class SafetySourceIssue implements Parcelable {
         return mNotificationBehavior;
     }
 
+    /**
+     * Returns the identifier used to deduplicate this issue against other issues with the same
+     * deduplication identifiers.
+     *
+     * <p>Deduplication identifier will be used to identify duplicate issues. This identifier
+     * applies globally across all safety sources sending data to SafetyCenter.
+     *
+     * <p>Out of all issues that are found to be duplicates, only one will be shown in the UI (the
+     * one with the highest severity, or in case of same severities, the one placed highest in the
+     * config).
+     *
+     * <p>Expected usage implies different sources will coordinate to set the same deduplication
+     * identifiers on issues that they want to deduplicate.
+     *
+     * <p>This shouldn't be a default mechanism for deduplication of issues. Most of the time
+     * sources should coordinate or communicate to only send the issue from one of them. That would
+     * also allow sources to choose which one will be displaying the issue, instead of depending on
+     * severity and config order. This API should only be needed if for some reason this isn't
+     * possible, for example, when sources can't communicate with each other and/or send issues at
+     * different times and/or issues can be of different severities.
+     */
+    @Nullable
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    public String getDeduplicationId() {
+        if (!SdkLevel.isAtLeastU()) {
+            throw new UnsupportedOperationException();
+        }
+        return mDeduplicationId;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -391,6 +425,7 @@ public final class SafetySourceIssue implements Parcelable {
             dest.writeTypedObject(mCustomNotification, flags);
             dest.writeInt(mNotificationBehavior);
             TextUtils.writeToParcel(mAttributionTitle, dest, flags);
+            dest.writeString(mDeduplicationId);
         }
     }
 
@@ -410,7 +445,8 @@ public final class SafetySourceIssue implements Parcelable {
                 && TextUtils.equals(mIssueTypeId, that.mIssueTypeId)
                 && Objects.equals(mCustomNotification, that.mCustomNotification)
                 && mNotificationBehavior == that.mNotificationBehavior
-                && TextUtils.equals(mAttributionTitle, that.mAttributionTitle);
+                && TextUtils.equals(mAttributionTitle, that.mAttributionTitle)
+                && TextUtils.equals(mDeduplicationId, that.mDeduplicationId);
     }
 
     @Override
@@ -427,7 +463,8 @@ public final class SafetySourceIssue implements Parcelable {
                 mIssueTypeId,
                 mCustomNotification,
                 mNotificationBehavior,
-                mAttributionTitle);
+                mAttributionTitle,
+                mDeduplicationId);
     }
 
     @Override
@@ -457,6 +494,8 @@ public final class SafetySourceIssue implements Parcelable {
                 + mNotificationBehavior
                 + ", mAttributionTitle="
                 + mAttributionTitle
+                + ", mDeduplicationId="
+                + mDeduplicationId
                 + '}';
     }
 
@@ -852,6 +891,7 @@ public final class SafetySourceIssue implements Parcelable {
         @IssueCategory private int mIssueCategory = ISSUE_CATEGORY_GENERAL;
         @Nullable private PendingIntent mOnDismissPendingIntent;
         @Nullable private CharSequence mAttributionTitle;
+        @Nullable private String mDeduplicationId;
 
         @Nullable private Notification mCustomNotification = null;
 
@@ -986,6 +1026,21 @@ public final class SafetySourceIssue implements Parcelable {
             return this;
         }
 
+        /**
+         * Sets the deduplication identifier for the issue.
+         *
+         * @see #getDeduplicationId()
+         */
+        @NonNull
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        public Builder setDeduplicationId(@Nullable String deduplicationId) {
+            if (!SdkLevel.isAtLeastU()) {
+                throw new UnsupportedOperationException();
+            }
+            mDeduplicationId = deduplicationId;
+            return this;
+        }
+
         /** Creates the {@link SafetySourceIssue} defined by this {@link Builder}. */
         @NonNull
         public SafetySourceIssue build() {
@@ -1008,7 +1063,8 @@ public final class SafetySourceIssue implements Parcelable {
                     mIssueTypeId,
                     mCustomNotification,
                     mNotificationBehavior,
-                    mAttributionTitle);
+                    mAttributionTitle,
+                    mDeduplicationId);
         }
     }
 
