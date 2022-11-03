@@ -55,9 +55,9 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/sc_spacing_xxlarge</item>
         <item name="android:textColor">?attr/colorAccentPrimary</item>
-        <item name="android:paddingStart">@dimen/sc_list_margin</item>
+        <item name="android:paddingStart">@dimen/sc_spacing_xxxlarge</item>
         <item name="android:paddingEnd">@dimen/sc_list_margin</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:lineHeight">24sp</item>
         <item name="android:textAlignment">viewStart</item>
         <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Medium</item>
@@ -69,11 +69,13 @@
         <item name="android:orientation">vertical</item>
         <item name="android:paddingStart">@dimen/sc_list_margin</item>
         <item name="android:paddingEnd">@dimen/sc_list_margin</item>
+        <item name="android:layout_marginBottom">@dimen/sc_spacing_xsmall</item>
     </style>
 
     <style name="SafetyCenterQsPreferences">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginTop">@dimen/sc_spacing_xsmall</item>
     </style>
 
     <style name="SafetyCenterQsToggleContainer">
