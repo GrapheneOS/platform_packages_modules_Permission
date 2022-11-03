@@ -16,6 +16,7 @@
 
 package com.android.permissioncontroller.permission.ui;
 
+import static android.healthconnect.HealthPermissions.HEALTH_PERMISSION_GROUP;
 import static android.view.WindowManager.LayoutParams.SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS;
 
 import static com.android.permissioncontroller.Constants.ACTION_MANAGE_AUTO_REVOKE;
@@ -365,7 +366,7 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                 }
 
                 if (Utils.isHealthPermissionUiEnabled() && permissionGroupName
-                                .equals(PermissionMapping.getHealthPermissionGroupString())) {
+                                .equals(HEALTH_PERMISSION_GROUP)) {
                     // TODO(b/248358404): Redirect to the health connect UI, health permissions list
                     //  for all apps.
                     finishAfterTransition();
