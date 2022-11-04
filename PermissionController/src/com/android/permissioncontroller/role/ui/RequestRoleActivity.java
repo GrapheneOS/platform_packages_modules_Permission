@@ -38,6 +38,7 @@ import com.android.permissioncontroller.role.model.Role;
 import com.android.permissioncontroller.role.model.Roles;
 import com.android.permissioncontroller.role.model.UserDeniedManager;
 import com.android.permissioncontroller.role.utils.PackageUtils;
+import com.android.permissioncontroller.role.utils.RoleUiBehaviorUtils;
 
 import java.util.List;
 import java.util.Objects;
@@ -109,7 +110,7 @@ public class RequestRoleActivity extends FragmentActivity {
             return;
         }
 
-        if (!role.isVisible(this)) {
+        if (!RoleUiBehaviorUtils.isVisible(role, this)) {
             Log.e(LOG_TAG, "Role is invisible: " + mRoleName);
             reportRequestResult(
                     PermissionControllerStatsLog.ROLE_REQUEST_RESULT_REPORTED__RESULT__IGNORED);

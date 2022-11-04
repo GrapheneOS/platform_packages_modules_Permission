@@ -31,6 +31,7 @@ import androidx.lifecycle.LiveData;
 import com.android.permissioncontroller.AsyncTaskLiveData;
 import com.android.permissioncontroller.role.model.Role;
 import com.android.permissioncontroller.role.utils.PackageUtils;
+import com.android.permissioncontroller.role.utils.RoleUiBehaviorUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -94,7 +95,8 @@ public class RoleLiveData extends AsyncTaskLiveData<List<Pair<ApplicationInfo, B
                         + qualifyingPackageName);
                 continue;
             }
-            if (!mRole.isApplicationVisibleAsUser(qualifyingApplicationInfo, mUser, mContext)) {
+            if (!RoleUiBehaviorUtils.isApplicationVisibleAsUser(mRole, qualifyingApplicationInfo,
+                    mUser, mContext)) {
                 continue;
             }
             boolean isHolderApplication = holderPackageNames.contains(qualifyingPackageName);
