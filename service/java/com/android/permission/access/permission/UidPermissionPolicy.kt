@@ -133,14 +133,14 @@ class UidPermissionPolicy : SchemePolicy() {
         if (!originalPackageState.isSystem) {
             Log.w(
                 LOG_TAG, "Unable to adopt permissions from $originalPackageName to $packageName:" +
-                " original package not in system partition"
+                    " original package not in system partition"
             )
             return false
         }
         if (originalPackageState.androidPackage != null) {
             Log.w(
                 LOG_TAG, "Unable to adopt permissions from $originalPackageName to $packageName:" +
-                " original package still exists"
+                    " original package still exists"
             )
             return false
         }
@@ -155,7 +155,7 @@ class UidPermissionPolicy : SchemePolicy() {
         if (isInstantApp) {
             Log.w(
                 LOG_TAG, "Ignoring permission groups declared in package" +
-                " ${packageState.packageName}: instant apps cannot declare permission groups"
+                    " ${packageState.packageName}: instant apps cannot declare permission groups"
             )
             return
         }
@@ -170,8 +170,8 @@ class UidPermissionPolicy : SchemePolicy() {
                 newPermissionGroup.packageName != oldPermissionGroup.packageName) {
                 Log.w(
                     LOG_TAG, "Ignoring permission group $permissionGroupName declared in package" +
-                    " ${newPermissionGroup.packageName}: already declared in another package" +
-                    " ${oldPermissionGroup.packageName}"
+                        " ${newPermissionGroup.packageName}: already declared in another package" +
+                        " ${oldPermissionGroup.packageName}"
                 )
                 return@forEachIndexed
             }
@@ -207,8 +207,8 @@ class UidPermissionPolicy : SchemePolicy() {
             if (permissionTree != null && newPackageName != permissionTree.packageName) {
                 Log.w(
                     LOG_TAG, "Ignoring permission $permissionName declared in package" +
-                    " $newPackageName: base permission tree ${permissionTree.name} is declared in" +
-                    " another package ${permissionTree.packageName}"
+                        " $newPackageName: base permission tree ${permissionTree.name} is" +
+                        " declared in another package ${permissionTree.packageName}"
                 )
                 return@forEachIndexed
             }
@@ -219,8 +219,8 @@ class UidPermissionPolicy : SchemePolicy() {
                 if (!packageState.isSystem) {
                     Log.w(
                         LOG_TAG, "Ignoring permission $permissionName declared in package" +
-                        " $newPackageName: already declared in another package" +
-                        " $oldPackageName"
+                            " $newPackageName: already declared in another package" +
+                            " $oldPackageName"
                     )
                     return@forEachIndexed
                 }
@@ -231,8 +231,8 @@ class UidPermissionPolicy : SchemePolicy() {
                 } else if (newState.systemState.packageStates[oldPackageName]?.isSystem != true) {
                     Log.w(
                         LOG_TAG, "Overriding permission $permissionName with new declaration in" +
-                        " system package $newPackageName: originally declared in another" +
-                        " package $oldPackageName"
+                            " system package $newPackageName: originally declared in another" +
+                            " package $oldPackageName"
                     )
                     // Remove permission state on owner change.
                     newState.userStates.forEachValueIndexed { _, userState ->
@@ -245,8 +245,8 @@ class UidPermissionPolicy : SchemePolicy() {
                 } else {
                     Log.w(
                         LOG_TAG, "Ignoring permission $permissionName declared in system package" +
-                        " $newPackageName: already declared in another system package" +
-                        " $oldPackageName")
+                            " $newPackageName: already declared in another system package" +
+                            " $oldPackageName")
                     return@forEachIndexed
                 }
             } else {
@@ -257,7 +257,11 @@ class UidPermissionPolicy : SchemePolicy() {
                 Permission(newPermissionInfo, Permission.TYPE_MANIFEST, true)
             }
 
-            newState.systemState.permissions[permissionName] = newPermission
+            if (parsedPermission.isTree) {
+                newState.systemState.permissionTrees[permissionName] = newPermission
+            } else {
+                newState.systemState.permissions[permissionName] = newPermission
+            }
         }
     }
 
