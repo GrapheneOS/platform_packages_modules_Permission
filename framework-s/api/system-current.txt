@@ -150,6 +150,7 @@ package android.safetycenter {
   public final class SafetyCenterIssue implements android.os.Parcelable {
     method public int describeContents();
     method @NonNull public java.util.List<android.safetycenter.SafetyCenterIssue.Action> getActions();
+    method @Nullable public CharSequence getAttributionTitle();
     method @NonNull public String getId();
     method public int getSeverityLevel();
     method @Nullable public CharSequence getSubtitle();
@@ -192,6 +193,7 @@ package android.safetycenter {
     ctor public SafetyCenterIssue.Builder(@NonNull android.safetycenter.SafetyCenterIssue);
     method @NonNull public android.safetycenter.SafetyCenterIssue build();
     method @NonNull public android.safetycenter.SafetyCenterIssue.Builder setActions(@NonNull java.util.List<android.safetycenter.SafetyCenterIssue.Action>);
+    method @NonNull public android.safetycenter.SafetyCenterIssue.Builder setAttributionTitle(@Nullable CharSequence);
     method @NonNull public android.safetycenter.SafetyCenterIssue.Builder setDismissible(boolean);
     method @NonNull public android.safetycenter.SafetyCenterIssue.Builder setId(@NonNull String);
     method @NonNull public android.safetycenter.SafetyCenterIssue.Builder setSeverityLevel(int);
@@ -349,6 +351,7 @@ package android.safetycenter {
   public final class SafetySourceIssue implements android.os.Parcelable {
     method public int describeContents();
     method @NonNull public java.util.List<android.safetycenter.SafetySourceIssue.Action> getActions();
+    method @Nullable public CharSequence getAttributionTitle();
     method @Nullable public android.safetycenter.SafetySourceIssue.Notification getCustomNotification();
     method @NonNull public String getId();
     method public int getIssueCategory();
@@ -393,6 +396,7 @@ package android.safetycenter {
     method @NonNull public android.safetycenter.SafetySourceIssue.Builder addAction(@NonNull android.safetycenter.SafetySourceIssue.Action);
     method @NonNull public android.safetycenter.SafetySourceIssue build();
     method @NonNull public android.safetycenter.SafetySourceIssue.Builder clearActions();
+    method @NonNull public android.safetycenter.SafetySourceIssue.Builder setAttributionTitle(@Nullable CharSequence);
     method @NonNull public android.safetycenter.SafetySourceIssue.Builder setCustomNotification(@Nullable android.safetycenter.SafetySourceIssue.Notification);
     method @NonNull public android.safetycenter.SafetySourceIssue.Builder setIssueCategory(int);
     method @NonNull public android.safetycenter.SafetySourceIssue.Builder setNotificationBehavior(int);
