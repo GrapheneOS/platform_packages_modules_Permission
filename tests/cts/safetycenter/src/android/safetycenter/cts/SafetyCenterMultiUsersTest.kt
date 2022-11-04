@@ -76,6 +76,8 @@ import com.android.bedstead.harrier.annotations.EnsureHasSecondaryUser
 import com.android.bedstead.harrier.annotations.EnsureHasWorkProfile
 import com.android.bedstead.harrier.annotations.Postsubmit
 import com.android.bedstead.harrier.annotations.enterprise.EnsureHasDeviceOwner
+import com.android.compatibility.common.util.DisableAnimationRule
+import com.android.compatibility.common.util.FreezeRotationRule
 import com.android.safetycenter.resources.SafetyCenterResourcesContext
 import com.google.common.base.Preconditions.checkState
 import com.google.common.truth.Truth.assertThat
@@ -102,6 +104,10 @@ class SafetyCenterMultiUsersTest {
     companion object {
         @JvmField @ClassRule @Rule val deviceState: DeviceState = DeviceState()
     }
+
+    @get:Rule val disableAnimationRule = DisableAnimationRule()
+
+    @get:Rule val freezeRotationRule = FreezeRotationRule()
 
     private val context: Context = ApplicationProvider.getApplicationContext()
     private val safetyCenterResourcesContext = SafetyCenterResourcesContext.forTests(context)

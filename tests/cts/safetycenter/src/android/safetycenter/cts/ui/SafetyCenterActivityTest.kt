@@ -56,6 +56,7 @@ import android.safetycenter.cts.testing.SafetySourceReceiver
 import android.safetycenter.cts.testing.SettingsPackage.getSettingsPackageName
 import android.safetycenter.cts.testing.UiTestHelper.RESCAN_BUTTON_LABEL
 import android.safetycenter.cts.testing.UiTestHelper.expandMoreIssuesCard
+import android.safetycenter.cts.testing.UiTestHelper.setAnimationsEnabled
 import android.safetycenter.cts.testing.UiTestHelper.waitAllTextDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.waitAllTextNotDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.waitButtonDisplayed
@@ -68,17 +69,25 @@ import android.support.test.uiautomator.By
 import android.support.test.uiautomator.UiDevice
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.android.compatibility.common.util.DisableAnimationRule
+import com.android.compatibility.common.util.FreezeRotationRule
 import com.android.compatibility.common.util.UiAutomatorUtils.getUiDevice
 import java.time.Duration
 import org.junit.After
 import org.junit.Assume.assumeTrue
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 /** CTS tests for the Safety Center Activity. */
 @RunWith(AndroidJUnit4::class)
 class SafetyCenterActivityTest {
+
+    @get:Rule val disableAnimationRule = DisableAnimationRule()
+
+    @get:Rule val freezeRotationRule = FreezeRotationRule()
+
     private val context: Context = getApplicationContext()
 
     private val safetyCenterCtsHelper = SafetyCenterCtsHelper(context)
@@ -618,7 +627,11 @@ class SafetyCenterActivityTest {
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
             val action = safetySourceCtsData.criticalResolvingActionWithSuccessMessage
-            waitButtonDisplayed(action.label) { it.click() }
+            waitButtonDisplayed(action.label) {
+                // Re-enable animations for this test as this is needed to show the success message.
+                setAnimationsEnabled(true)
+                it.click()
+            }
 
             // Success message should show up if issue marked as resolved
             val successMessage = action.successMessage
@@ -665,7 +678,11 @@ class SafetyCenterActivityTest {
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
             val action = safetySourceCtsData.criticalResolvingAction
-            waitButtonDisplayed(action.label) { it.click() }
+            waitButtonDisplayed(action.label) {
+                // Re-enable animations for this test as this is needed to show the success message.
+                setAnimationsEnabled(true)
+                it.click()
+            }
 
             waitSourceIssueNotDisplayed(safetySourceCtsData.criticalResolvingGeneralIssue)
         }
@@ -1133,20 +1150,23 @@ class SafetyCenterActivityTest {
         private const val SAFETY_SOURCE_5_SUMMARY = "Safety Source 5 Summary"
 
         private fun UiDevice.rotate() {
+            unfreezeRotation()
             if (isNaturalOrientation) {
                 setOrientationLeft()
             } else {
                 setOrientationNatural()
             }
+            freezeRotation()
             waitForIdle()
         }
 
         private fun UiDevice.resetRotation() {
             if (!isNaturalOrientation) {
+                unfreezeRotation()
                 setOrientationNatural()
+                freezeRotation()
+                waitForIdle()
             }
-            unfreezeRotation()
-            waitForIdle()
         }
     }
 }
