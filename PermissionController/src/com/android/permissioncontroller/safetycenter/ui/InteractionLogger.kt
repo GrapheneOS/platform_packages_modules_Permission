@@ -44,8 +44,35 @@ class InteractionLogger(
     var navigationSource: NavigationSource = NavigationSource.UNKNOWN,
     var navigationSensor: Sensor = Sensor.UNKNOWN
 ) {
-    @JvmOverloads
-    fun record(
+    fun record(action: Action) {
+        writeAtom(action)
+    }
+
+    fun recordForIssue(action: Action, issue: SafetyCenterIssue) {
+        val decodedId = SafetyCenterIds.issueIdFromString(issue.id)
+        writeAtom(
+            action,
+            LogSeverityLevel.fromIssueSeverityLevel(issue.severityLevel),
+            sourceId = decodedId.safetyCenterIssueKey.safetySourceId,
+            sourceProfileType =
+                SafetySourceProfileType.fromUserId(decodedId.safetyCenterIssueKey.userId),
+            issueTypeId = decodedId.issueTypeId)
+    }
+
+    fun recordForEntry(action: Action, entry: SafetyCenterEntry) {
+        val decodedId = SafetyCenterIds.entryIdFromString(entry.id)
+        writeAtom(
+            action,
+            LogSeverityLevel.fromEntrySeverityLevel(entry.severityLevel),
+            sourceId = decodedId.safetySourceId,
+            sourceProfileType = SafetySourceProfileType.fromUserId(decodedId.userId))
+    }
+
+    fun recordForSensor(action: Action, sensor: Sensor) {
+        writeAtom(action = action, sensor = sensor)
+    }
+
+    private fun writeAtom(
         action: Action,
         severityLevel: LogSeverityLevel = LogSeverityLevel.UNKNOWN,
         sourceId: String? = null,
@@ -56,6 +83,11 @@ class InteractionLogger(
         if (noLogSourceIds.contains(sourceId)) {
             return
         }
+
+        // WARNING: Be careful when logging severity levels. If the severity level being recorded
+        // is at all influenced by a logging-disallowed source, we should not record it. At the
+        // moment, we do not record overall severity levels in this atom, but leaving this note for
+        // future implementors.
 
         PermissionControllerStatsLog.write(
             PermissionControllerStatsLog.SAFETY_CENTER_INTERACTION_REPORTED,
@@ -68,30 +100,6 @@ class InteractionLogger(
             sourceProfileType.statsLogValue,
             encodeStringId(issueTypeId),
             (if (sensor != Sensor.UNKNOWN) sensor else navigationSensor).statsLogValue)
-    }
-
-    fun recordForIssue(action: Action, issue: SafetyCenterIssue) {
-        val decodedId = SafetyCenterIds.issueIdFromString(issue.id)
-        record(
-            action,
-            LogSeverityLevel.fromIssueSeverityLevel(issue.severityLevel),
-            sourceId = decodedId.safetyCenterIssueKey.safetySourceId,
-            sourceProfileType =
-                SafetySourceProfileType.fromUserId(decodedId.safetyCenterIssueKey.userId),
-            issueTypeId = decodedId.issueTypeId)
-    }
-
-    fun recordForEntry(action: Action, entry: SafetyCenterEntry) {
-        val decodedId = SafetyCenterIds.entryIdFromString(entry.id)
-        record(
-            action,
-            LogSeverityLevel.fromEntrySeverityLevel(entry.severityLevel),
-            sourceId = decodedId.safetySourceId,
-            sourceProfileType = SafetySourceProfileType.fromUserId(decodedId.userId))
-    }
-
-    fun recordForSensor(action: Action, sensor: Sensor) {
-        record(action = action, sensor = sensor)
     }
 
     private companion object {

@@ -234,7 +234,7 @@ final class SafetyCenterListeners {
                     safetyCenterData = cachedSafetyCenterData;
                 } else {
                     safetyCenterData =
-                            mSafetyCenterDataFactory.getSafetyCenterData(
+                            mSafetyCenterDataFactory.assembleSafetyCenterData(
                                     packageName, userProfileGroup);
                     safetyCenterDataCache.put(packageName, safetyCenterData);
                 }

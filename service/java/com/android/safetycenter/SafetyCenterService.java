@@ -396,7 +396,8 @@ public final class SafetyCenterService extends SystemService {
             UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
 
             synchronized (mApiLock) {
-                return mSafetyCenterDataFactory.getSafetyCenterData(packageName, userProfileGroup);
+                return mSafetyCenterDataFactory.assembleSafetyCenterData(
+                        packageName, userProfileGroup);
             }
         }
 
@@ -425,7 +426,8 @@ public final class SafetyCenterService extends SystemService {
                 }
                 SafetyCenterListeners.deliverUpdateForListener(
                         registeredListener,
-                        mSafetyCenterDataFactory.getSafetyCenterData(packageName, userProfileGroup),
+                        mSafetyCenterDataFactory.assembleSafetyCenterData(
+                                packageName, userProfileGroup),
                         null);
             }
         }

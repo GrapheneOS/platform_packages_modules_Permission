@@ -110,10 +110,22 @@ final class SafetyCenterDataFactory {
      * SafetyCenterConfig} is used.
      */
     @NonNull
-    SafetyCenterData getSafetyCenterData(
+    SafetyCenterData assembleSafetyCenterData(
             @NonNull String packageName, @NonNull UserProfileGroup userProfileGroup) {
-        return getSafetyCenterData(
-                mSafetyCenterConfigReader.getSafetySourcesGroups(), packageName, userProfileGroup);
+        return assembleSafetyCenterDataInternal(
+                packageName, userProfileGroup, /* includeLoggableSourcesOnly= */ false);
+    }
+
+    /**
+     * Returns the current {@link SafetyCenterData} in the same manner as {@link
+     * #assembleSafetyCenterData(String, UserProfileGroup)}, but only including data from sources
+     * where {@link SafetySources#isLoggable(SafetySource)} is {@code true}.
+     */
+    @NonNull
+    SafetyCenterData assembleLoggableSafetyCenterData(
+            @NonNull String packageName, @NonNull UserProfileGroup userProfileGroup) {
+        return assembleSafetyCenterDataInternal(
+                packageName, userProfileGroup, /* includeLoggableSourcesOnly= */ true);
     }
 
     /**
@@ -131,10 +143,15 @@ final class SafetyCenterDataFactory {
     }
 
     @NonNull
-    private SafetyCenterData getSafetyCenterData(
-            @NonNull List<SafetySourcesGroup> safetySourcesGroups,
+    private SafetyCenterData assembleSafetyCenterDataInternal(
             @NonNull String packageName,
-            @NonNull UserProfileGroup userProfileGroup) {
+            @NonNull UserProfileGroup userProfileGroup,
+            boolean includeLoggableSourcesOnly) {
+        List<SafetySourcesGroup> safetySourcesGroups =
+                includeLoggableSourcesOnly
+                        ? mSafetyCenterConfigReader.getLoggableSafetySourcesGroups()
+                        : mSafetyCenterConfigReader.getSafetySourcesGroups();
+
         List<SafetyCenterIssueWithCategory> safetyCenterIssuesWithCategories = new ArrayList<>();
         List<SafetyCenterEntryOrGroup> safetyCenterEntryOrGroups = new ArrayList<>();
         List<SafetyCenterStaticEntryGroup> safetyCenterStaticEntryGroups = new ArrayList<>();

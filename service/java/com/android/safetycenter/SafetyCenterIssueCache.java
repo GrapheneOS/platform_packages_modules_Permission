@@ -69,14 +69,19 @@ final class SafetyCenterIssueCache {
     }
 
     /**
-     * Counts the total number of issues in the issue cache, from currently-active sources, in the
-     * given {@link UserProfileGroup}.
+     * Counts the total number of issues in the issue cache, from currently-active, loggable
+     * sources, in the given {@link UserProfileGroup}.
      */
-    int countActiveIssues(@NonNull UserProfileGroup userProfileGroup) {
+    int countActiveLoggableIssues(@NonNull UserProfileGroup userProfileGroup) {
         int issueCount = 0;
         for (int i = 0; i < mIssues.size(); i++) {
             SafetyCenterIssueKey issueKey = mIssues.keyAt(i);
-            if (mSafetyCenterConfigReader.isExternalSafetySourceActive(issueKey.getSafetySourceId())
+            String safetySourceId = issueKey.getSafetySourceId();
+            SafetyCenterConfigReader.ExternalSafetySource externalSafetySource =
+                    mSafetyCenterConfigReader.getExternalSafetySource(safetySourceId);
+            if (mSafetyCenterConfigReader.isExternalSafetySourceActive(safetySourceId)
+                    && externalSafetySource != null
+                    && SafetySources.isLoggable(externalSafetySource.getSafetySource())
                     && userProfileGroup.contains(issueKey.getUserId())) {
                 issueCount++;
             }
