@@ -1,0 +1,83 @@
+<!--
+  ~ Copyright (C) 2021 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!-- START SAFETY STATUS CARD -->
+    <!-- Overrides to width, constraints and padding to move button location on large screens. -->
+    <style name="SafetyCenterStatusTitleAndSummaryContainer" parent="android:Widget.DeviceDefault">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_marginTop">@dimen/sc_spacing_xxsmall</item>
+        <item name="android:layout_marginStart">@dimen/sc_spacing_large</item>
+        <item name="android:layout_marginEnd">@dimen/sc_spacing_xxxlarge</item>
+        <item name="app:layout_constraintStart_toEndOf">@id/status_image</item>
+        <item name="app:layout_constraintEnd_toStartOf">@id/review_settings_button</item>
+        <item name="app:layout_constraintTop_toTopOf">parent</item>
+    </style>
+
+    <style name="SafetyCenterStatusButton.ReviewSettings">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="app:layout_constraintTop_toTopOf">parent</item>
+        <item name="app:layout_constraintStart_toEndOf">@id/status_title_and_summary</item>
+        <item name="app:layout_constraintEnd_toStartOf">@id/rescan_button</item>
+        <item name="android:layout_marginTop">@dimen/sc_spacing_xxsmall</item>
+        <item name="android:paddingStart">@dimen/sc_large_screen_button_padding</item>
+        <item name="android:paddingEnd">@dimen/sc_large_screen_button_padding</item>
+        <item name="app:backgroundTint">@color/safety_center_button_info</item>
+    </style>
+
+    <style name="SafetyCenterStatusButton.Rescan">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="app:layout_constraintTop_toTopOf">parent</item>
+        <item name="app:layout_constraintStart_toEndOf">@id/review_settings_button</item>
+        <item name="app:layout_constraintEnd_toStartOf">@id/pending_actions_rescan_button</item>
+        <item name="android:layout_marginTop">@dimen/sc_spacing_xxsmall</item>
+        <item name="android:paddingStart">@dimen/sc_large_screen_button_padding</item>
+        <item name="android:paddingEnd">@dimen/sc_large_screen_button_padding</item>
+        <item name="app:backgroundTint">@color/safety_center_button_info</item>
+    </style>
+
+    <style name="SafetyCenterStatusButton.PendingActionsRescan">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="app:layout_constraintTop_toTopOf">parent</item>
+        <item name="app:layout_constraintStart_toEndOf">@id/rescan_button</item>
+        <item name="app:layout_constraintEnd_toEndOf">parent</item>
+        <item name="android:layout_marginTop">@dimen/sc_spacing_xxsmall</item>
+        <item name="android:paddingStart">@dimen/sc_large_screen_button_padding</item>
+        <item name="android:paddingEnd">@dimen/sc_large_screen_button_padding</item>
+        <item name="app:backgroundTint">@color/sc_surface_dark</item>
+        <item name="app:strokeWidth">@dimen/mtrl_btn_stroke_size</item>
+        <item name="app:strokeColor">@color/safety_center_button_info</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="SafetyCenterStatusSafetyProtectionView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="app:layout_constraintTop_toBottomOf">@id/status_title_and_summary</item>
+        <item name="app:layout_constraintStart_toStartOf">parent</item>
+        <item name="app:layout_constraintEnd_toEndOf">parent</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:paddingTop">@dimen/sc_spacing_xxlarge</item>
+        <item name="android:paddingBottom">@dimen/sc_spacing_xxlarge</item>
+    </style>
+</resources>
