@@ -17,15 +17,10 @@
 package com.android.permissioncontroller.role.model;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ApplicationInfo;
 import android.os.UserHandle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.preference.Preference;
-
-import com.android.permissioncontroller.role.ui.TwoTargetPreference;
 
 import java.util.Collections;
 import java.util.List;
@@ -61,56 +56,6 @@ public interface RoleBehavior {
      */
     @Nullable
     default String getFallbackHolder(@NonNull Role role, @NonNull Context context) {
-        return null;
-    }
-
-    /**
-     * @see Role#isVisibleAsUser(UserHandle, Context)
-     */
-    default boolean isVisibleAsUser(@NonNull Role role, @NonNull UserHandle user,
-            @NonNull Context context) {
-        return true;
-    }
-
-    /**
-     * @see Role#getManageIntentAsUser(UserHandle, Context)
-     */
-    @Nullable
-    default Intent getManageIntentAsUser(@NonNull Role role, @NonNull UserHandle user,
-            @NonNull Context context) {
-        return null;
-    }
-
-    /**
-     * @see Role#preparePreferenceAsUser(TwoTargetPreference, UserHandle, Context)
-     */
-    default void preparePreferenceAsUser(@NonNull Role role,
-            @NonNull TwoTargetPreference preference, @NonNull UserHandle user,
-            @NonNull Context context) {}
-
-    /**
-     * @see Role#isApplicationVisibleAsUser(ApplicationInfo, UserHandle, Context)
-     */
-    default boolean isApplicationVisibleAsUser(@NonNull Role role,
-            @NonNull ApplicationInfo applicationInfo, @NonNull UserHandle user,
-            @NonNull Context context) {
-        return true;
-    }
-
-    /**
-     * @see Role#prepareApplicationPreferenceAsUser(Preference, ApplicationInfo, UserHandle,
-     *      Context)
-     */
-    default void prepareApplicationPreferenceAsUser(@NonNull Role role,
-            @NonNull Preference preference, @NonNull ApplicationInfo applicationInfo,
-            @NonNull UserHandle user, @NonNull Context context) {}
-
-    /**
-     * @see Role#getConfirmationMessage(String, Context)
-     */
-    @Nullable
-    default CharSequence getConfirmationMessage(@NonNull Role role, @NonNull String packageName,
-            @NonNull Context context) {
         return null;
     }
 

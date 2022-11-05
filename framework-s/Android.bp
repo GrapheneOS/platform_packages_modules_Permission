@@ -47,6 +47,9 @@ java_library {
         "framework-annotations-lib",
         "unsupportedappusage",
     ],
+    static_libs: [
+        "modules-utils-build",
+    ],
     apex_available: [
         "com.android.permission",
         "test_com.android.permission",

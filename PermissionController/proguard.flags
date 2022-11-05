@@ -12,6 +12,11 @@
     *;
 }
 
+# Keep classes that implements RoleUiBehavior, which are used by reflection.
+-keep class * implements com.android.permissioncontroller.role.ui.behavior.RoleUiBehavior {
+    *;
+}
+
 -keep class com.android.car.ui.** {*;}
 
 # Keep as this is only used by instrumentation tests for now. This can be removed once the class is

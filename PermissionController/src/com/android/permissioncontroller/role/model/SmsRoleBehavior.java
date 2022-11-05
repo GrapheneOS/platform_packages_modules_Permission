@@ -26,7 +26,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.android.modules.utils.build.SdkLevel;
-import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.utils.CollectionUtils;
 import com.android.permissioncontroller.role.utils.PackageUtils;
 import com.android.permissioncontroller.role.utils.UserUtils;
@@ -54,9 +53,16 @@ public class SmsRoleBehavior implements RoleBehavior {
     @Override
     public boolean isAvailableAsUser(@NonNull Role role, @NonNull UserHandle user,
             @NonNull Context context) {
-        if (UserUtils.isProfile(user, context)) {
-            return false;
+        if (SdkLevel.isAtLeastU()) {
+            if (UserUtils.isCloneProfile(user, context)) {
+                return false;
+            }
+        } else {
+            if (UserUtils.isProfile(user, context)) {
+                return false;
+            }
         }
+
         UserManager userManager = context.getSystemService(UserManager.class);
         if (userManager.isRestrictedProfile(user)) {
             return false;
@@ -84,20 +90,6 @@ public class SmsRoleBehavior implements RoleBehavior {
         List<String> qualifyingPackageNames = role.getQualifyingPackagesAsUser(
                 Process.myUserHandle(), context);
         return CollectionUtils.firstOrNull(qualifyingPackageNames);
-    }
-
-    @Nullable
-    @Override
-    public CharSequence getConfirmationMessage(@NonNull Role role, @NonNull String packageName,
-            @NonNull Context context) {
-        return EncryptionUnawareConfirmationMixin.getConfirmationMessage(role, packageName,
-                context);
-    }
-
-    @Override
-    public boolean isVisibleAsUser(@NonNull Role role, @NonNull UserHandle user,
-            @NonNull Context context) {
-        return context.getResources().getBoolean(R.bool.config_showSmsRole);
     }
 
     @Override
