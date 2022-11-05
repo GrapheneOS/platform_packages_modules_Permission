@@ -71,6 +71,9 @@ object PermissionMapping {
         PLATFORM_PERMISSIONS[Manifest.permission.WRITE_CALENDAR] =
             Manifest.permission_group.CALENDAR
 
+        // Any updates to the permissions for the SMS permission group must also be made in
+        // Permissions {@link com.android.permissioncontroller.role.model.Permissions} in the role
+        // library
         PLATFORM_PERMISSIONS[Manifest.permission.SEND_SMS] = Manifest.permission_group.SMS
         PLATFORM_PERMISSIONS[Manifest.permission.RECEIVE_SMS] = Manifest.permission_group.SMS
         PLATFORM_PERMISSIONS[Manifest.permission.READ_SMS] = Manifest.permission_group.SMS
@@ -123,6 +126,9 @@ object PermissionMapping {
                 Manifest.permission_group.NEARBY_DEVICES
         }
 
+        // Any updates to the permissions for the CALL_LOG permission group must also be made in
+        // Permissions {@link com.android.permissioncontroller.role.model.Permissions} in the role
+        // library
         PLATFORM_PERMISSIONS[Manifest.permission.READ_CALL_LOG] = Manifest.permission_group.CALL_LOG
         PLATFORM_PERMISSIONS[Manifest.permission.WRITE_CALL_LOG] =
             Manifest.permission_group.CALL_LOG
