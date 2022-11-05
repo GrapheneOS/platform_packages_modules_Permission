@@ -22,6 +22,7 @@ import android.os.UserHandle
 import android.util.Log
 import androidx.annotation.MainThread
 import androidx.lifecycle.Observer
+import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
 import com.android.permissioncontroller.permission.utils.Utils
@@ -94,8 +95,11 @@ class LightPackageInfoLiveData private constructor(
             return
         }
         postValue(try {
-            LightPackageInfo(context.packageManager.getPackageInfo(packageName,
-                PackageManager.GET_PERMISSIONS))
+            var flags = PackageManager.GET_PERMISSIONS
+            if (SdkLevel.isAtLeastS()) {
+                flags = flags or PackageManager.GET_ATTRIBUTIONS
+            }
+            LightPackageInfo(context.packageManager.getPackageInfo(packageName, flags))
         } catch (e: PackageManager.NameNotFoundException) {
             Log.w(LOG_TAG, "Package \"$packageName\" not found")
             invalidateSingle(packageName to user)
