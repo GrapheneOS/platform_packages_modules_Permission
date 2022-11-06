@@ -92,6 +92,7 @@ public class RoleParser {
     private static final String ATTRIBUTE_SHOW_NONE = "showNone";
     private static final String ATTRIBUTE_STATIC = "static";
     private static final String ATTRIBUTE_SYSTEM_ONLY = "systemOnly";
+    private static final String ATTRIBUTE_UI_BEHAVIOR = "uiBehavior";
     private static final String ATTRIBUTE_VISIBLE = "visible";
     private static final String ATTRIBUTE_MIN_TARGET_SDK_VERSION = "minTargetSdkVersion";
     private static final String ATTRIBUTE_PERMISSION = "permission";
@@ -408,6 +409,8 @@ public class RoleParser {
 
         boolean systemOnly = getAttributeBooleanValue(parser, ATTRIBUTE_SYSTEM_ONLY, false);
 
+        String uiBehaviorName = getAttributeValue(parser, ATTRIBUTE_UI_BEHAVIOR);
+
         List<RequiredComponent> requiredComponents = null;
         List<Permission> permissions = null;
         List<String> appOpPermissions = null;
@@ -491,7 +494,7 @@ public class RoleParser {
                 maxSdkVersion, minSdkVersion, overrideUserWhenGranting, requestDescriptionResource,
                 requestTitleResource, requestable, searchKeywordsResource, shortLabelResource,
                 showNone, statik, systemOnly, visible, requiredComponents, permissions,
-                appOpPermissions, appOps, preferredActivities);
+                appOpPermissions, appOps, preferredActivities, uiBehaviorName);
     }
 
     @NonNull

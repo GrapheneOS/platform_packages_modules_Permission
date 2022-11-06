@@ -33,6 +33,7 @@ import com.android.permissioncontroller.privacysources.SafetyCenterAccessibility
 import com.android.permissioncontroller.role.model.Role;
 import com.android.permissioncontroller.role.model.Roles;
 import com.android.permissioncontroller.role.ui.SpecialAppAccessListActivity;
+import com.android.permissioncontroller.role.utils.RoleUiBehaviorUtils;
 
 public final class PermissionControllerApplication extends Application {
 
@@ -68,7 +69,7 @@ public final class PermissionControllerApplication extends Application {
         for (int i = 0; i < rolesSize; i++) {
             Role role = roles.valueAt(i);
 
-            if (!role.isAvailable(this) || !role.isVisible(this)) {
+            if (!role.isAvailable(this) || !RoleUiBehaviorUtils.isVisible(role, this)) {
                 continue;
             }
             if (!role.isExclusive()) {

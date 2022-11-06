@@ -20,7 +20,6 @@ import android.app.ActivityManager;
 import android.app.role.RoleManager;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.SharedLibraryInfo;
@@ -37,13 +36,11 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
-import androidx.preference.Preference;
 
 import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.Constants;
 import com.android.permissioncontroller.permission.utils.CollectionUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
-import com.android.permissioncontroller.role.ui.TwoTargetPreference;
 import com.android.permissioncontroller.role.utils.PackageUtils;
 import com.android.permissioncontroller.role.utils.RoleManagerCompat;
 import com.android.permissioncontroller.role.utils.UserUtils;
@@ -223,6 +220,9 @@ public class Role {
     @NonNull
     private final List<PreferredActivity> mPreferredActivities;
 
+    @Nullable
+    private final String mUiBehaviorName;
+
     public Role(@NonNull String name, boolean allowBypassingQualification,
             @Nullable RoleBehavior behavior, @Nullable String defaultHoldersResourceName,
             @StringRes int descriptionResource, boolean exclusive, boolean fallBackToDefaultHolder,
@@ -233,7 +233,8 @@ public class Role {
             boolean showNone, boolean statik, boolean systemOnly, boolean visible,
             @NonNull List<RequiredComponent> requiredComponents,
             @NonNull List<Permission> permissions, @NonNull List<String> appOpPermissions,
-            @NonNull List<AppOp> appOps, @NonNull List<PreferredActivity> preferredActivities) {
+            @NonNull List<AppOp> appOps, @NonNull List<PreferredActivity> preferredActivities,
+            @Nullable String uiBehaviorName) {
         mName = name;
         mAllowBypassingQualification = allowBypassingQualification;
         mBehavior = behavior;
@@ -259,6 +260,7 @@ public class Role {
         mAppOpPermissions = appOpPermissions;
         mAppOps = appOps;
         mPreferredActivities = preferredActivities;
+        mUiBehaviorName = uiBehaviorName;
     }
 
     @NonNull
@@ -350,6 +352,11 @@ public class Role {
     @NonNull
     public List<PreferredActivity> getPreferredActivities() {
         return mPreferredActivities;
+    }
+
+    @Nullable
+    public String getUiBehaviorName() {
+        return mUiBehaviorName;
     }
 
     /**
@@ -529,110 +536,6 @@ public class Role {
         }
         if (mBehavior != null) {
             return mBehavior.getFallbackHolder(this, context);
-        }
-        return null;
-    }
-
-    /**
-     * Check whether this role should be visible to user.
-     *
-     * @param user the user to check for
-     * @param context the {@code Context} to retrieve system services
-     *
-     * @return whether this role should be visible to user
-     */
-    public boolean isVisibleAsUser(@NonNull UserHandle user, @NonNull Context context) {
-        return mVisible && (mBehavior == null || mBehavior.isVisibleAsUser(this, user, context));
-    }
-
-    /**
-     * Check whether this role should be visible to user, for current user.
-     *
-     * @param context the {@code Context} to retrieve system services
-     *
-     * @return whether this role should be visible to user.
-     */
-    public boolean isVisible(@NonNull Context context) {
-        return isVisibleAsUser(Process.myUserHandle(), context);
-    }
-
-    /**
-     * Get the {@link Intent} to manage this role, or {@code null} to use the default UI.
-     *
-     * @param user the user to manage this role for
-     * @param context the {@code Context} to retrieve system services
-     *
-     * @return the {@link Intent} to manage this role, or {@code null} to use the default UI.
-     */
-    @Nullable
-    public Intent getManageIntentAsUser(@NonNull UserHandle user, @NonNull Context context) {
-        if (mBehavior != null) {
-            return mBehavior.getManageIntentAsUser(this, user, context);
-        }
-        return null;
-    }
-
-    /**
-     * Prepare a {@link Preference} for this role.
-     *
-     * @param preference the {@link Preference} for this role
-     * @param user the user for this role
-     * @param context the {@code Context} to retrieve system services
-     */
-    public void preparePreferenceAsUser(@NonNull TwoTargetPreference preference,
-            @NonNull UserHandle user, @NonNull Context context) {
-        if (mBehavior != null) {
-            mBehavior.preparePreferenceAsUser(this, preference, user, context);
-        }
-    }
-
-    /**
-     * Check whether a qualifying application should be visible to user.
-     *
-     * @param applicationInfo the {@link ApplicationInfo} for the application
-     * @param user the user for the application
-     * @param context the {@code Context} to retrieve system services
-     *
-     * @return whether the qualifying application should be visible to user
-     */
-    public boolean isApplicationVisibleAsUser(@NonNull ApplicationInfo applicationInfo,
-            @NonNull UserHandle user, @NonNull Context context) {
-        if (mBehavior != null) {
-            return mBehavior.isApplicationVisibleAsUser(this, applicationInfo, user, context);
-        }
-        return true;
-    }
-
-    /**
-     * Prepare a {@link Preference} for an application.
-     *
-     * @param preference the {@link Preference} for the application
-     * @param applicationInfo the {@link ApplicationInfo} for the application
-     * @param user the user for the application
-     * @param context the {@code Context} to retrieve system services
-     */
-    public void prepareApplicationPreferenceAsUser(@NonNull Preference preference,
-            @NonNull ApplicationInfo applicationInfo, @NonNull UserHandle user,
-            @NonNull Context context) {
-        if (mBehavior != null) {
-            mBehavior.prepareApplicationPreferenceAsUser(this, preference, applicationInfo, user,
-                    context);
-        }
-    }
-
-    /**
-     * Get the confirmation message for adding an application as a holder of this role.
-     *
-     * @param packageName the package name of the application to get confirmation message for
-     * @param context the {@code Context} to retrieve system services
-     *
-     * @return the confirmation message, or {@code null} if no confirmation is needed
-     */
-    @Nullable
-    public CharSequence getConfirmationMessage(@NonNull String packageName,
-            @NonNull Context context) {
-        if (mBehavior != null) {
-            return mBehavior.getConfirmationMessage(this, packageName, context);
         }
         return null;
     }
@@ -1085,6 +988,7 @@ public class Role {
                 + ", mAppOpPermissions=" + mAppOpPermissions
                 + ", mAppOps=" + mAppOps
                 + ", mPreferredActivities=" + mPreferredActivities
+                + ", mUiBehaviorName=" + mUiBehaviorName
                 + '}';
     }
 }

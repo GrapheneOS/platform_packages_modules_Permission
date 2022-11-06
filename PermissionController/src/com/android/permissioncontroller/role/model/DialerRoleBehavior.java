@@ -17,22 +17,16 @@
 package com.android.permissioncontroller.role.model;
 
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
 import android.os.UserHandle;
-import android.telecom.TelecomManager;
 import android.telephony.TelephonyManager;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.preference.Preference;
 
 import com.android.modules.utils.build.SdkLevel;
-import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.role.utils.PackageUtils;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Class for behavior of the dialer role.
@@ -55,33 +49,6 @@ public class DialerRoleBehavior implements RoleBehavior {
             @NonNull Context context) {
         TelephonyManager telephonyManager = context.getSystemService(TelephonyManager.class);
         return telephonyManager.isVoiceCapable();
-    }
-
-    @Override
-    public void prepareApplicationPreferenceAsUser(@NonNull Role role,
-            @NonNull Preference preference, @NonNull ApplicationInfo applicationInfo,
-            @NonNull UserHandle user, @NonNull Context context) {
-        TelecomManager telecomManager = context.getSystemService(TelecomManager.class);
-        String systemPackageName = telecomManager.getSystemDialerPackage();
-        if (Objects.equals(applicationInfo.packageName, systemPackageName)) {
-            preference.setSummary(R.string.default_app_system_default);
-        } else {
-            preference.setSummary(null);
-        }
-    }
-
-    @Nullable
-    @Override
-    public CharSequence getConfirmationMessage(@NonNull Role role, @NonNull String packageName,
-            @NonNull Context context) {
-        return EncryptionUnawareConfirmationMixin.getConfirmationMessage(role, packageName,
-                context);
-    }
-
-    @Override
-    public boolean isVisibleAsUser(@NonNull Role role, @NonNull UserHandle user,
-            @NonNull Context context) {
-        return context.getResources().getBoolean(R.bool.config_showDialerRole);
     }
 
     @Override

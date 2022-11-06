@@ -16,11 +16,13 @@
 
 package com.android.permission.access
 
+import com.android.internal.annotations.GuardedBy
 import com.android.permission.access.appop.PackageAppOpPolicy
 import com.android.permission.access.appop.UidAppOpPolicy
 import com.android.permission.access.external.PackageState
 import com.android.permission.access.permission.UidPermissionPolicy
 import com.android.permission.access.util.* // ktlint-disable no-wildcard-imports
+import com.android.permission.util.ForegroundThread
 
 class AccessPolicy private constructor(
     private val schemePolicies: IndexedMap<String, IndexedMap<String, SchemePolicy>>
@@ -36,11 +38,8 @@ class AccessPolicy private constructor(
         }
     )
 
-    fun getDecision(subject: AccessUri, `object`: AccessUri, state: AccessState): Int {
-        val schemePolicy = checkNotNull(getSchemePolicy(subject, `object`)) { "Scheme policy for " +
-            "subject=$subject object=$`object` does not exist."}
-        return schemePolicy.getDecision(subject, `object`, state)
-    }
+    fun getDecision(subject: AccessUri, `object`: AccessUri, state: AccessState): Int =
+        getSchemePolicy(subject, `object`).getDecision(subject, `object`, state)
 
     fun setDecision(
         subject: AccessUri,
@@ -49,13 +48,14 @@ class AccessPolicy private constructor(
         oldState: AccessState,
         newState: AccessState
     ) {
-        val schemePolicy = checkNotNull(getSchemePolicy(subject, `object`)) { "Scheme policy for " +
-            "subject=$subject object=$`object` does not exist."}
-        return schemePolicy.setDecision(subject, `object`, decision, oldState, newState)
+        getSchemePolicy(subject, `object`)
+            .setDecision(subject, `object`, decision, oldState, newState)
     }
 
-    private fun getSchemePolicy(subject: AccessUri, `object`: AccessUri): SchemePolicy? =
-        schemePolicies[subject.scheme]?.get(`object`.scheme)
+    private fun getSchemePolicy(subject: AccessUri, `object`: AccessUri): SchemePolicy =
+        checkNotNull(schemePolicies[subject.scheme]?.get(`object`.scheme)) {
+            "Scheme policy for subject=$subject object=$`object` does not exist"
+        }
 
     fun onUserAdded(userId: Int, oldState: AccessState, newState: AccessState) {
         newState.systemState.userIds += userId
@@ -114,6 +114,9 @@ class AccessPolicy private constructor(
 }
 
 abstract class SchemePolicy {
+    @GuardedBy("onDecisionChangedListeners")
+    private val onDecisionChangedListeners = IndexedListSet<OnDecisionChangedListener>()
+
     abstract val subjectScheme: String
 
     abstract val objectScheme: String
@@ -127,6 +130,34 @@ abstract class SchemePolicy {
         oldState: AccessState,
         newState: AccessState
     )
+
+    fun addOnDecisionChangedListener(listener: OnDecisionChangedListener) {
+        synchronized(onDecisionChangedListeners) {
+            onDecisionChangedListeners += listener
+        }
+    }
+
+    fun removeOnDecisionChangedListener(listener: OnDecisionChangedListener) {
+        synchronized(onDecisionChangedListeners) {
+            onDecisionChangedListeners -= listener
+        }
+    }
+
+    protected fun notifyOnDecisionChangedListeners(
+        subject: AccessUri,
+        `object`: AccessUri,
+        oldDecision: Int,
+        newDecision: Int
+    ) {
+        val listeners = synchronized(onDecisionChangedListeners) {
+            onDecisionChangedListeners.copy()
+        }
+        ForegroundThread.getExecutor().execute {
+            listeners.forEachIndexed { _, it ->
+                it.onDecisionChanged(subject, `object`, oldDecision, newDecision)
+            }
+        }
+    }
 
     open fun onUserAdded(userId: Int, oldState: AccessState, newState: AccessState) {}
 
@@ -147,4 +178,13 @@ abstract class SchemePolicy {
         oldState: AccessState,
         newState: AccessState
     ) {}
+
+    fun interface OnDecisionChangedListener {
+        fun onDecisionChanged(
+            subject: AccessUri,
+            `object`: AccessUri,
+            oldDecision: Int,
+            newDecision: Int
+        )
+    }
 }

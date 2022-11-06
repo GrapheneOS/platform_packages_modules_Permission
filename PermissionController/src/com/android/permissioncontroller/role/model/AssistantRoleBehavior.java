@@ -27,7 +27,6 @@ import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.os.Process;
 import android.os.UserHandle;
-import android.provider.Settings;
 import android.service.voice.VoiceInteractionService;
 import android.util.ArraySet;
 import android.util.AttributeSet;
@@ -37,7 +36,6 @@ import android.util.Xml;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.role.utils.UserUtils;
 
 import org.xmlpull.v1.XmlPullParserException;
@@ -76,33 +74,6 @@ public class AssistantRoleBehavior implements RoleBehavior {
     public boolean isAvailableAsUser(@NonNull Role role, @NonNull UserHandle user,
             @NonNull Context context) {
         return !UserUtils.isProfile(user, context);
-    }
-
-    @Override
-    public boolean isVisibleAsUser(@NonNull Role role, @NonNull UserHandle user,
-            @NonNull Context context) {
-        return VisibilityMixin.isVisible("config_showDefaultAssistant", context);
-    }
-
-    @Nullable
-    @Override
-    public Intent getManageIntentAsUser(@NonNull Role role, @NonNull UserHandle user,
-            @NonNull Context context) {
-        boolean isAutomotive =
-                context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE);
-
-        if (isAutomotive) {
-            return null;
-        }
-
-        return new Intent(Settings.ACTION_VOICE_INPUT_SETTINGS);
-    }
-
-    @Nullable
-    @Override
-    public CharSequence getConfirmationMessage(@NonNull Role role, @NonNull String packageName,
-            @NonNull Context context) {
-        return context.getString(R.string.assistant_confirmation_message);
     }
 
     @Nullable

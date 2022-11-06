@@ -16,28 +16,18 @@
 
 package com.android.permissioncontroller.role.model;
 
-import android.app.admin.DevicePolicyResources.Strings.DefaultAppSettings;
-import android.app.role.RoleManager;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PermissionInfo;
 import android.content.pm.ResolveInfo;
-import android.os.Build;
 import android.os.UserHandle;
 import android.provider.Settings;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.preference.Preference;
 
-import com.android.permissioncontroller.R;
-import com.android.permissioncontroller.permission.utils.CollectionUtils;
-import com.android.permissioncontroller.permission.utils.Utils;
-import com.android.permissioncontroller.role.ui.TwoTargetPreference;
 import com.android.permissioncontroller.role.utils.UserUtils;
 
 import java.util.Arrays;
@@ -52,8 +42,6 @@ import java.util.Objects;
  * @see com.android.settings.applications.defaultapps.DefaultHomePicker
  */
 public class HomeRoleBehavior implements RoleBehavior {
-
-    private static final String LOG_TAG = HomeRoleBehavior.class.getSimpleName();
 
     private static final List<String> AUTOMOTIVE_PERMISSIONS = Arrays.asList(
             android.Manifest.permission.READ_CALL_LOG,
@@ -100,71 +88,10 @@ public class HomeRoleBehavior implements RoleBehavior {
         return packageName;
     }
 
-    @Override
-    public boolean isVisibleAsUser(@NonNull Role role, @NonNull UserHandle user,
-            @NonNull Context context) {
-        return VisibilityMixin.isVisible("config_showDefaultHome", context);
-    }
-
-    @Override
-    public void preparePreferenceAsUser(@NonNull Role role, @NonNull TwoTargetPreference preference,
-            @NonNull UserHandle user, @NonNull Context context) {
-        TwoTargetPreference.OnSecondTargetClickListener listener = null;
-        RoleManager roleManager = context.getSystemService(RoleManager.class);
-        String packageName = CollectionUtils.firstOrNull(roleManager.getRoleHoldersAsUser(
-                role.getName(), user));
-        if (packageName != null) {
-            Intent intent = new Intent(Intent.ACTION_APPLICATION_PREFERENCES)
-                    .setPackage(packageName)
-                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            PackageManager userPackageManager = UserUtils.getUserContext(context, user)
-                    .getPackageManager();
-            ResolveInfo resolveInfo = userPackageManager.resolveActivity(intent, 0);
-            if (resolveInfo != null && resolveInfo.activityInfo != null
-                    && resolveInfo.activityInfo.exported) {
-                listener = preference2 -> {
-                    try {
-                        context.startActivity(intent);
-                    } catch (ActivityNotFoundException e) {
-                        Log.e(LOG_TAG, "Cannot start activity for home app preferences", e);
-                    }
-                };
-            }
-        }
-        preference.setOnSecondTargetClickListener(listener);
-    }
-
-    @Override
-    public boolean isApplicationVisibleAsUser(@NonNull Role role,
-            @NonNull ApplicationInfo applicationInfo, @NonNull UserHandle user,
-            @NonNull Context context) {
-        // Home is not available for work profile, so we can just use the current user.
-        return !isSettingsApplication(applicationInfo, context);
-    }
-
-    @Override
-    public void prepareApplicationPreferenceAsUser(@NonNull Role role,
-            @NonNull Preference preference, @NonNull ApplicationInfo applicationInfo,
-            @NonNull UserHandle user, @NonNull Context context) {
-        boolean missingWorkProfileSupport = isMissingWorkProfileSupport(applicationInfo, context);
-        preference.setEnabled(!missingWorkProfileSupport);
-        preference.setSummary(missingWorkProfileSupport ? Utils.getEnterpriseString(context,
-                DefaultAppSettings.HOME_MISSING_WORK_PROFILE_SUPPORT_MESSAGE,
-                R.string.home_missing_work_profile_support) : null);
-    }
-
-    private boolean isMissingWorkProfileSupport(@NonNull ApplicationInfo applicationInfo,
-            @NonNull Context context) {
-        boolean hasWorkProfile = UserUtils.getWorkProfile(context) != null;
-        if (!hasWorkProfile) {
-            return false;
-        }
-        boolean isWorkProfileSupported = applicationInfo.targetSdkVersion
-                >= Build.VERSION_CODES.LOLLIPOP;
-        return !isWorkProfileSupported;
-    }
-
-    private boolean isSettingsApplication(@NonNull ApplicationInfo applicationInfo,
+    /**
+     * Check if the application is a settings application
+     */
+    public static boolean isSettingsApplication(@NonNull ApplicationInfo applicationInfo,
             @NonNull Context context) {
         PackageManager packageManager = context.getPackageManager();
         ResolveInfo resolveInfo = packageManager.resolveActivity(new Intent(

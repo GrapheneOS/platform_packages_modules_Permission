@@ -27,11 +27,14 @@ import android.annotation.Nullable;
 import android.annotation.SuppressLint;
 import android.annotation.SystemApi;
 import android.app.PendingIntent;
+import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.TextUtils;
 
 import androidx.annotation.RequiresApi;
+
+import com.android.modules.utils.build.SdkLevel;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -91,13 +94,18 @@ public final class SafetyCenterIssue implements Parcelable {
                     CharSequence title = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
                     CharSequence subtitle = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
                     CharSequence summary = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
-                    return new Builder(id, title, summary)
-                            .setSubtitle(subtitle)
-                            .setSeverityLevel(in.readInt())
-                            .setDismissible(in.readBoolean())
-                            .setShouldConfirmDismissal(in.readBoolean())
-                            .setActions(in.createTypedArrayList(Action.CREATOR))
-                            .build();
+                    SafetyCenterIssue.Builder builder =
+                            new Builder(id, title, summary)
+                                    .setSubtitle(subtitle)
+                                    .setSeverityLevel(in.readInt())
+                                    .setDismissible(in.readBoolean())
+                                    .setShouldConfirmDismissal(in.readBoolean())
+                                    .setActions(in.createTypedArrayList(Action.CREATOR));
+                    if (SdkLevel.isAtLeastU()) {
+                        builder.setAttributionTitle(
+                                TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in));
+                    }
+                    return builder.build();
                 }
 
                 @Override
@@ -114,6 +122,7 @@ public final class SafetyCenterIssue implements Parcelable {
     private final boolean mDismissible;
     private final boolean mShouldConfirmDismissal;
     @NonNull private final List<Action> mActions;
+    @Nullable private final CharSequence mAttributionTitle;
 
     private SafetyCenterIssue(
             @NonNull String id,
@@ -123,7 +132,8 @@ public final class SafetyCenterIssue implements Parcelable {
             @IssueSeverityLevel int severityLevel,
             boolean isDismissible,
             boolean shouldConfirmDismissal,
-            @NonNull List<Action> actions) {
+            @NonNull List<Action> actions,
+            @Nullable CharSequence attributionTitle) {
         mId = id;
         mTitle = title;
         mSubtitle = subtitle;
@@ -132,6 +142,7 @@ public final class SafetyCenterIssue implements Parcelable {
         mDismissible = isDismissible;
         mShouldConfirmDismissal = shouldConfirmDismissal;
         mActions = actions;
+        mAttributionTitle = attributionTitle;
     }
 
     /**
@@ -159,6 +170,20 @@ public final class SafetyCenterIssue implements Parcelable {
     @NonNull
     public CharSequence getSummary() {
         return mSummary;
+    }
+
+    /**
+     * Returns the attribution title of this issue, or {@code null} if it has none.
+     *
+     * <p>This is displayed in the UI and helps to attribute issue cards to a particular source.
+     */
+    @Nullable
+    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+    public CharSequence getAttributionTitle() {
+        if (!SdkLevel.isAtLeastU()) {
+            throw new UnsupportedOperationException();
+        }
+        return mAttributionTitle;
     }
 
     /** Returns the {@link IssueSeverityLevel} of this issue. */
@@ -200,7 +225,8 @@ public final class SafetyCenterIssue implements Parcelable {
                 && TextUtils.equals(mTitle, that.mTitle)
                 && TextUtils.equals(mSubtitle, that.mSubtitle)
                 && TextUtils.equals(mSummary, that.mSummary)
-                && Objects.equals(mActions, that.mActions);
+                && Objects.equals(mActions, that.mActions)
+                && TextUtils.equals(mAttributionTitle, that.mAttributionTitle);
     }
 
     @Override
@@ -213,7 +239,8 @@ public final class SafetyCenterIssue implements Parcelable {
                 mSeverityLevel,
                 mDismissible,
                 mShouldConfirmDismissal,
-                mActions);
+                mActions,
+                mAttributionTitle);
     }
 
     @Override
@@ -235,6 +262,8 @@ public final class SafetyCenterIssue implements Parcelable {
                 + mShouldConfirmDismissal
                 + ", mActions="
                 + mActions
+                + ", mAttributionTitle="
+                + mAttributionTitle
                 + '}';
     }
 
@@ -253,6 +282,9 @@ public final class SafetyCenterIssue implements Parcelable {
         dest.writeBoolean(mDismissible);
         dest.writeBoolean(mShouldConfirmDismissal);
         dest.writeTypedList(mActions);
+        if (SdkLevel.isAtLeastU()) {
+            TextUtils.writeToParcel(mAttributionTitle, dest, flags);
+        }
     }
 
     /** Builder class for {@link SafetyCenterIssue}. */
@@ -266,6 +298,7 @@ public final class SafetyCenterIssue implements Parcelable {
         private boolean mDismissible = true;
         private boolean mShouldConfirmDismissal = true;
         private List<Action> mActions = new ArrayList<>();
+        @Nullable private CharSequence mAttributionTitle;
 
         /**
          * Creates a {@link Builder} for a {@link SafetyCenterIssue}.
@@ -291,6 +324,7 @@ public final class SafetyCenterIssue implements Parcelable {
             mDismissible = issue.mDismissible;
             mShouldConfirmDismissal = issue.mShouldConfirmDismissal;
             mActions = new ArrayList<>(issue.mActions);
+            mAttributionTitle = issue.mAttributionTitle;
         }
 
         /** Sets the ID for this issue. */
@@ -318,6 +352,21 @@ public final class SafetyCenterIssue implements Parcelable {
         @NonNull
         public Builder setSummary(@NonNull CharSequence summary) {
             mSummary = requireNonNull(summary);
+            return this;
+        }
+
+        /**
+         * Sets or clears the optional attribution title for this issue.
+         *
+         * <p>This is displayed in the UI and helps to attribute issue cards to a particular source.
+         */
+        @NonNull
+        @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+        public Builder setAttributionTitle(@Nullable CharSequence attributionTitle) {
+            if (!SdkLevel.isAtLeastU()) {
+                throw new UnsupportedOperationException();
+            }
+            mAttributionTitle = attributionTitle;
             return this;
         }
 
@@ -368,7 +417,8 @@ public final class SafetyCenterIssue implements Parcelable {
                     mSeverityLevel,
                     mDismissible,
                     mShouldConfirmDismissal,
-                    unmodifiableList(new ArrayList<>(mActions)));
+                    unmodifiableList(new ArrayList<>(mActions)),
+                    mAttributionTitle);
         }
     }
 

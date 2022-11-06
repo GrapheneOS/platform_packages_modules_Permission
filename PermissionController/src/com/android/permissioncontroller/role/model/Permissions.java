@@ -37,11 +37,11 @@ import androidx.annotation.Nullable;
 
 import com.android.permissioncontroller.permission.utils.ArrayUtils;
 import com.android.permissioncontroller.permission.utils.CollectionUtils;
-import com.android.permissioncontroller.permission.utils.PermissionMapping;
 import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.permissioncontroller.role.utils.PackageUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -57,6 +57,19 @@ public class Permissions {
     private static ArrayMap<String, String> sForegroundToBackgroundPermission;
     private static ArrayMap<String, List<String>> sBackgroundToForegroundPermissions;
     private static final Object sForegroundBackgroundPermissionMappingsLock = new Object();
+    private static final List<String> SMS_PERMISSIONS = Arrays.asList(
+            Manifest.permission.SEND_SMS,
+            Manifest.permission.RECEIVE_SMS,
+            Manifest.permission.READ_SMS,
+            Manifest.permission.RECEIVE_MMS,
+            Manifest.permission.RECEIVE_WAP_PUSH,
+            Manifest.permission.READ_CELL_BROADCASTS
+    );
+    private static final List<String> CALL_LOG_PERMISSIONS = Arrays.asList(
+            Manifest.permission.READ_CALL_LOG,
+            Manifest.permission.WRITE_CALL_LOG,
+            Manifest.permission.PROCESS_OUTGOING_CALLS
+    );
 
     /**
      * Filter a list of permissions based on their SDK versions.
@@ -181,16 +194,12 @@ public class Permissions {
         Set<String> whitelistedRestrictedPermissions = new ArraySet<>(
                 packageManager.getWhitelistedRestrictedPermissions(packageName,
                         PackageManager.FLAG_PERMISSION_WHITELIST_SYSTEM));
-        List<String> smsPermissions = PermissionMapping.getPlatformPermissionNamesOfGroup(
-                Manifest.permission_group.SMS);
-        List<String> callLogPermissions = PermissionMapping.getPlatformPermissionNamesOfGroup(
-                Manifest.permission_group.CALL_LOG);
 
         int sortedPermissionsToGrantLength = sortedPermissionsToGrant.length;
         for (int i = 0; i < sortedPermissionsToGrantLength; i++) {
             String permission = sortedPermissionsToGrant[i];
 
-            if ((smsPermissions.contains(permission) || callLogPermissions.contains(permission))
+            if ((SMS_PERMISSIONS.contains(permission) || CALL_LOG_PERMISSIONS.contains(permission))
                     && whitelistedRestrictedPermissions.add(permission)) {
                 packageManager.addWhitelistedRestrictedPermission(packageName, permission,
                         PackageManager.FLAG_PERMISSION_WHITELIST_SYSTEM);
