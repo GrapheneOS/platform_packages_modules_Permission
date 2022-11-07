@@ -21,6 +21,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.safetycenter.SafetyCenterIssue
+import androidx.annotation.RequiresApi
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.ext.truth.os.ParcelableSubject.assertThat
@@ -251,9 +252,10 @@ class SafetyCenterIssueTest {
 
     /**
      * Creates a new [EqualsHashCodeToStringTester] instance with all the equality groups in the
-     * [newTiramisuEqualsHashCodeToStringTester] plus new equality groups covering all the new fields added in U.
+     * [newTiramisuEqualsHashCodeToStringTester] plus new equality groups covering all the new
+     * fields added in U.
      */
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     private fun newUpsideDownCakeEqualsHashCodeToStringTester(): EqualsHashCodeToStringTester {
         val issueWithAttributionTitle =
             SafetyCenterIssue.Builder("issue_id", "Everything's good", "Please acknowledge this")
