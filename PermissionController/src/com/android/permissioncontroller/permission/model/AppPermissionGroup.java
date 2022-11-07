@@ -24,6 +24,9 @@ import static android.app.AppOpsManager.MODE_FOREGROUND;
 import static android.app.AppOpsManager.MODE_IGNORED;
 import static android.app.AppOpsManager.OPSTR_LEGACY_STORAGE;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+import static android.healthconnect.HealthPermissions.HEALTH_PERMISSION_GROUP;
+
+import static com.android.permissioncontroller.permission.utils.Utils.isHealthPermissionUiEnabled;
 
 import android.Manifest;
 import android.app.ActivityManager;
@@ -337,6 +340,8 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
                     & PackageInfo.REQUESTED_PERMISSION_GRANTED) != 0;
 
             final String appOp = PLATFORM_PACKAGE_NAME.equals(requestedPermissionInfo.packageName)
+                    || (isHealthPermissionUiEnabled() && HEALTH_PERMISSION_GROUP.equals(
+                    requestedPermissionInfo.group))
                     ? AppOpsManager.permissionToOp(requestedPermissionInfo.name) : null;
 
             final boolean appOpAllowed;
