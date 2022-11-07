@@ -497,7 +497,7 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"I dati del microfono potrebbero comunque essere condivisi quando chiami un numero di emergenza."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Cambia"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Sicurezza e privacy"</string>
-    <string name="safety_center_rescan_button" msgid="8047036829052958144">"Cerca"</string>
+    <string name="safety_center_rescan_button" msgid="8047036829052958144">"Analizza"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Ignora"</string>
     <string name="security_settings" msgid="3808106921175271317">"Impostazioni di sicurezza"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Autorizzaz. accesso ai sensori"</string>

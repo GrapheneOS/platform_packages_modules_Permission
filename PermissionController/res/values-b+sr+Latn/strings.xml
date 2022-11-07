@@ -332,7 +332,7 @@
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Aplikacija digitalnog pomoćnika"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Aplikacije za pomoć mogu da vam pomognu na osnovu informacija sa ekrana koji gledate. Neke aplikacije podržavaju usluge pokretača i glasovnog unosa da bi vam pružile integrisanu pomoć."</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Podrazumevana apl. pregledača"</string>
-    <string name="role_browser_short_label" msgid="6745009127123292296">"Aplikacija za pregledač"</string>
+    <string name="role_browser_short_label" msgid="6745009127123292296">"Aplikacija pregledača"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Aplikacije koje vam daju pristup internetu i prikazuju linkove koje možete da dodirnete"</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"Želite li da podesite <xliff:g id="APP_NAME">%1$s</xliff:g> kao podrazumevanu aplikaciju za pregledanje?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"Nije potrebna nijedna dozvola"</string>
