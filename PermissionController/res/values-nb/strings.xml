@@ -281,7 +281,7 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Tillatelser er fjernet for å ivareta personvernet ditt"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> fikk posisjonen din i bakgrunnen"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Denne appen har alltid tilgang til posisjonen din. Trykk for å endre."</string>
-    <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"Gjennomgå apper med tilgang til varslene"</string>
+    <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"Gjennomgangsapp med tilgang til varslene dine"</string>
     <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g> kan avvise, utføre handlinger basert på og bruke innhold i varslene dine"</string>
     <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"Denne appen kan avvise, utføre handlinger basert på og bruke innhold i varslene dine. Noen apper krever denne tilgangen for å fungere som de skal."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Fjern tilgang"</string>
