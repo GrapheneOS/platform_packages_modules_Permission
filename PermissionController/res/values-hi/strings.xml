@@ -281,9 +281,9 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"आपकी निजता की सुरक्षा के लिए अनुमतियां हटाई गई हैं"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> अब बैकग्राउंड में आपकी जगह की जानकारी ऐक्सेस कर सकता है"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"यह ऐप्लिकेशन हमेशा आपकी जगह की जानकारी ऐक्सेस कर सकता है. बदलने के लिए टैप करें."</string>
-    <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"ऐसे ऐप्लिकेशन देखें जिनके पास सूचनाओं का ऐक्सेस है"</string>
-    <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g> आपकी सूचनाओं में मौजूद कॉन्टेंट को खारिज कर सकता है. साथ ही, उस पर कार्रवाई कर सकता है और उसे ऐक्सेस भी कर सकता है"</string>
-    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"यह ऐप्लिकेशन आपकी सूचनाओं में मौजूद कॉन्टेंट को खारिज कर सकता है. साथ ही, उस पर कार्रवाई कर सकता है और उसे ऐक्सेस भी कर सकता है. कुछ ऐप्लिकेशन को सही तरीके से काम करने के लिए, इस तरह के ऐक्सेस की ज़रूरत होती है."</string>
+    <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"ऐसे ऐप्लिकेशन देखें जिनके पास आपकी सूचनाओं का ऐक्सेस है"</string>
+    <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g> आपकी सूचनाओं में मौजूद कॉन्टेंट को ऐक्सेस कर सकता है. साथ ही, उस पर कार्रवाई कर सकता है और उसे खारिज कर सकता है."</string>
+    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"यह ऐप्लिकेशन आपकी सूचनाओं में मौजूद कॉन्टेंट को ऐक्सेस कर सकता है, उस पर कार्रवाई कर सकता है, और उसे खारिज कर सकता है. कुछ ऐप्लिकेशन को सही तरीके से काम करने के लिए, इस तरह के ऐक्सेस की ज़रूरत होती है."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"ऐक्सेस हटाएं"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"ज़्यादा विकल्प देखें"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"ऐक्सेस हटाया गया"</string>

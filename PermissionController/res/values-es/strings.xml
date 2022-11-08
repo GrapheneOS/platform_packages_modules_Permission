@@ -283,7 +283,7 @@
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Esta aplicación puede acceder siempre a tu ubicación. Toca para cambiarlo."</string>
     <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"Revisa la aplicación con acceso a tus notificaciones"</string>
     <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g> puede descartar, acceder o interactuar con el contenido de tus notificaciones"</string>
-    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"Esta aplicación puede descartar, actuar o acceder al contenido de tus notificaciones. Algunas aplicaciones requieren este acceso para funcionar según lo previsto."</string>
+    <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"Esta aplicación puede descartar, actuar de acuerdo a o acceder al contenido de tus notificaciones. Algunas aplicaciones requieren este acceso para funcionar según lo previsto."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Quitar acceso"</string>
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"Ver más opciones"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Acceso retirado"</string>
