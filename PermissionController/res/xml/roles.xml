@@ -101,8 +101,7 @@
         label="@string/role_assistant_label"
         overrideUserWhenGranting="true"
         requestable="false"
-        shortLabel="@string/role_assistant_short_label"
-        uiBehavior="AssistantRoleUiBehavior">
+        shortLabel="@string/role_assistant_short_label">
         <required-components>
             <!-- Qualified components are determined int AssistantRoleBehavior. This comment here is
                  ignored and represents just a rough description
@@ -160,8 +159,7 @@
         overrideUserWhenGranting="true"
         requestDescription="@string/role_browser_request_description"
         requestTitle="@string/role_browser_request_title"
-        shortLabel="@string/role_browser_short_label"
-        uiBehavior="BrowserRoleUiBehavior">
+        shortLabel="@string/role_browser_short_label">
         <!--
           ~ Required components matching is handled in BrowserRoleBehavior because it needs the
           ~ PackageManager.MATCH_ALL flag and other manual filtering, which cannot fit in our
@@ -203,8 +201,7 @@
         requestDescription="@string/role_dialer_request_description"
         requestTitle="@string/role_dialer_request_title"
         searchKeywords="@string/role_dialer_search_keywords"
-        shortLabel="@string/role_dialer_short_label"
-        uiBehavior="DialerRoleUiBehavior">
+        shortLabel="@string/role_dialer_short_label">
         <required-components>
             <activity>
                 <intent-filter>
@@ -290,8 +287,7 @@
         requestDescription="@string/role_sms_request_description"
         requestTitle="@string/role_sms_request_title"
         searchKeywords="@string/role_sms_search_keywords"
-        shortLabel="@string/role_sms_short_label"
-        uiBehavior="SmsRoleUiBehavior">
+        shortLabel="@string/role_sms_short_label">
         <required-components>
             <receiver permission="android.permission.BROADCAST_SMS">
                 <intent-filter>
@@ -381,8 +377,7 @@
         requestTitle="@string/role_emergency_request_title"
         searchKeywords="@string/role_emergency_search_keywords"
         shortLabel="@string/role_emergency_short_label"
-        systemOnly="true"
-        uiBehavior="EmergencyRoleUiBehavior">
+        systemOnly="true">
         <required-components>
             <activity>
                 <intent-filter>
@@ -412,8 +407,7 @@
         requestDescription="@string/role_home_request_description"
         requestTitle="@string/role_home_request_title"
         searchKeywords="@string/role_home_search_keywords"
-        shortLabel="@string/role_home_short_label"
-        uiBehavior="HomeRoleUiBehavior">
+        shortLabel="@string/role_home_short_label">
         <!-- Also used by HomeRoleBehavior.getFallbackHolder(). -->
         <required-components>
             <activity>
