@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permission.access.util
+package com.android.permission.access.collection
 
 import android.util.ArraySet
 
@@ -50,12 +50,40 @@ inline fun <T> IndexedSet<T>.forEachIndexed(action: (Int, T) -> Unit) {
     }
 }
 
+inline val <T> IndexedSet<T>.lastIndex: Int
+    get() = size - 1
+
 @Suppress("NOTHING_TO_INLINE")
 inline operator fun <T> IndexedSet<T>.minusAssign(element: T) {
     remove(element)
 }
 
+inline fun <T> IndexedSet<T>.noneIndexed(predicate: (Int, T) -> Boolean): Boolean {
+    for (index in 0 until size) {
+        if (predicate(index, elementAt(index))) {
+            return false
+        }
+    }
+    return true
+}
+
 @Suppress("NOTHING_TO_INLINE")
 inline operator fun <T> IndexedSet<T>.plusAssign(element: T) {
     add(element)
+}
+
+inline fun <T> IndexedSet<T>.removeAllIndexed(predicate: (Int, T) -> Boolean) {
+    for (index in lastIndex downTo 0) {
+        if (predicate(index, elementAt(index))) {
+            removeAt(index)
+        }
+    }
+}
+
+inline fun <T> IndexedSet<T>.retainAllIndexed(predicate: (Int, T) -> Boolean) {
+    for (index in lastIndex downTo 0) {
+        if (!predicate(index, elementAt(index))) {
+            removeAt(index)
+        }
+    }
 }

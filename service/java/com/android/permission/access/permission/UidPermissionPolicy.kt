@@ -25,10 +25,10 @@ import com.android.permission.access.PermissionUri
 import com.android.permission.access.SchemePolicy
 import com.android.permission.access.UidUri
 import com.android.permission.access.UserState
+import com.android.permission.access.collection.* // ktlint-disable no-wildcard-imports
 import com.android.permission.access.data.Permission
 import com.android.permission.access.external.PackageInfoUtils
 import com.android.permission.access.external.PackageState
-import com.android.permission.access.util.* // ktlint-disable no-wildcard-imports
 
 private val LOG_TAG = UidPermissionPolicy::class.java.simpleName
 
@@ -64,10 +64,6 @@ class UidPermissionPolicy : SchemePolicy() {
         newState.systemState.packageStates.forEachValueIndexed {
             _, packageState -> // TODO: evaluatePermissionState()
         }
-    }
-
-    override fun onUserRemoved(userId: Int, oldState: AccessState, newState: AccessState) {
-        newState.userStates -= userId
     }
 
     override fun onAppIdAdded(appId: Int, oldState: AccessState, newState: AccessState) {
@@ -272,7 +268,7 @@ class UidPermissionPolicy : SchemePolicy() {
         newState.systemState.permissionTrees.removeAllIndexed {
             _, permissionTreeName, permissionTree ->
             permissionTree.packageName == packageName && (
-                packageState == null || androidPackage!!.permissions.none {
+                packageState == null || androidPackage!!.permissions.noneIndexed { _, it ->
                     it.isTree && it.name == permissionTreeName
                 }
             )
@@ -282,7 +278,7 @@ class UidPermissionPolicy : SchemePolicy() {
             val updatedPermission = updatePermissionIfDynamic(permission, newState)
             newState.systemState.permissions.setValueAt(i, updatedPermission)
             if (updatedPermission.packageName == packageName && (
-                packageState == null || androidPackage!!.permissions.none {
+                packageState == null || androidPackage!!.permissions.noneIndexed { _, it ->
                     !it.isTree && it.name == permissionName
                 }
             )) {
@@ -310,7 +306,7 @@ class UidPermissionPolicy : SchemePolicy() {
     ): Boolean {
         val disabledSystemPackage = newState.systemState
             .disabledSystemPackageStates[permission.packageName]?.androidPackage ?: return false
-        return disabledSystemPackage.permissions.any {
+        return disabledSystemPackage.permissions.anyIndexed { _, it ->
             it.name == permission.name && it.protectionLevel == permission.protectionLevel
         }
     }

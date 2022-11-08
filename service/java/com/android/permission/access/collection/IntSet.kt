@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permission.access.util
+package com.android.permission.access.collection
 
 import android.util.SparseBooleanArray
 
@@ -75,12 +75,40 @@ inline fun IntSet.forEachIndexed(action: (Int, Int) -> Unit) {
     }
 }
 
+inline val IntSet.lastIndex: Int
+    get() = size - 1
+
 @Suppress("NOTHING_TO_INLINE")
 inline operator fun IntSet.minusAssign(element: Int) {
     remove(element)
 }
 
+inline fun IntSet.noneIndexed(predicate: (Int, Int) -> Boolean): Boolean {
+    for (index in 0 until size) {
+        if (predicate(index, elementAt(index))) {
+            return false
+        }
+    }
+    return true
+}
+
 @Suppress("NOTHING_TO_INLINE")
 inline operator fun IntSet.plusAssign(element: Int) {
     add(element)
+}
+
+inline fun IntSet.removeAllIndexed(predicate: (Int, Int) -> Boolean) {
+    for (index in lastIndex downTo 0) {
+        if (predicate(index, elementAt(index))) {
+            removeAt(index)
+        }
+    }
+}
+
+inline fun IntSet.retainAllIndexed(predicate: (Int, Int) -> Boolean) {
+    for (index in lastIndex downTo 0) {
+        if (!predicate(index, elementAt(index))) {
+            removeAt(index)
+        }
+    }
 }

@@ -19,9 +19,9 @@ package com.android.permission.access
 import com.android.internal.annotations.GuardedBy
 import com.android.permission.access.appop.PackageAppOpPolicy
 import com.android.permission.access.appop.UidAppOpPolicy
+import com.android.permission.access.collection.* // ktlint-disable no-wildcard-imports
 import com.android.permission.access.external.PackageState
 import com.android.permission.access.permission.UidPermissionPolicy
-import com.android.permission.access.util.* // ktlint-disable no-wildcard-imports
 import com.android.permission.util.ForegroundThread
 
 class AccessPolicy private constructor(
