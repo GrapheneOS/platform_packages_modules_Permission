@@ -45,6 +45,13 @@ inline fun <T> IntMap<T>.copy(copyValue: (T) -> T): IntMap<T> =
         }
     }
 
+inline fun <T, R> IntMap<T>.firstNotNullOfOrNullIndexed(transform: (Int, Int, T) -> R): R? {
+    for (index in 0 until size) {
+        transform(index, keyAt(index), valueAt(index))?.let { return it }
+    }
+    return null
+}
+
 inline fun <T> IntMap<T>.forEachIndexed(action: (Int, Int, T) -> Unit) {
     for (index in 0 until size) {
         action(index, keyAt(index), valueAt(index))
@@ -63,9 +70,31 @@ inline fun <T> IntMap<T>.forEachValueIndexed(action: (Int, T) -> Unit) {
     }
 }
 
+inline fun <T> IntMap<T>.removeAllIndexed(predicate: (Int, Int, T) -> Boolean) {
+    for (index in size - 1 downTo 0) {
+        if (predicate(index, keyAt(index), valueAt(index))) {
+            removeAt(index)
+        }
+    }
+}
+
 inline fun <T> IntMap<T>.getOrPut(key: Int, defaultValue: () -> T): T {
     get(key)?.let { return it }
     return defaultValue().also { put(key, it) }
+}
+
+@Suppress("NOTHING_TO_INLINE")
+inline fun <T> IntMap<T>.getWithDefault(key: Int, defaultValue: T): T {
+    return get(key) ?: defaultValue
+}
+
+@Suppress("NOTHING_TO_INLINE")
+inline fun <T> IntMap<T>.putWithDefault(key: Int, value: T, defaultValue: T) {
+    if (value == defaultValue) {
+        remove(key)
+    } else {
+        put(key, value)
+    }
 }
 
 @Suppress("NOTHING_TO_INLINE")
