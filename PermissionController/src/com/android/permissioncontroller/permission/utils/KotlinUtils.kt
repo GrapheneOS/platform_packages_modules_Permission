@@ -51,6 +51,8 @@ import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
+import android.healthconnect.HealthPermissions.HEALTH_PERMISSION_GROUP
+import android.healthconnect.HealthPermissions.MANAGE_HEALTH_PERMISSIONS
 import android.os.Build
 import android.os.Bundle
 import android.os.UserHandle
@@ -1319,10 +1321,10 @@ object KotlinUtils {
         if (permissionInfos.isEmpty()) {
             return emptySet()
         }
-        val healthPermissionGroup = PermissionMapping.getHealthPermissionGroupString()
+
         val definedHealthPerms: MutableSet<String> = hashSetOf()
         for (permInfo in permissionInfos) {
-            if (healthPermissionGroup.equals(permInfo!!.group)) {
+            if (HEALTH_PERMISSION_GROUP.equals(permInfo.group)) {
                 definedHealthPerms.add(permInfo.name)
             }
         }
@@ -1363,10 +1365,9 @@ object KotlinUtils {
     private fun getPermissionInfoForStandardHealthPermission(packageManager: PackageManager):
             PermissionInfo? {
         return try {
-            packageManager.getPermissionInfo(PermissionMapping.getManageHealthPermissionsName(), 0)
+            packageManager.getPermissionInfo(MANAGE_HEALTH_PERMISSIONS, 0)
         } catch (e: PackageManager.NameNotFoundException) {
-            Log.e(LOG_TAG, "HealthConnect permission " +
-                    "${PermissionMapping.getManageHealthPermissionsName()}) not found")
+            Log.e(LOG_TAG, "HealthConnect permission $MANAGE_HEALTH_PERMISSIONS) not found")
             null
         }
     }

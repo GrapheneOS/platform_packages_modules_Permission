@@ -19,6 +19,8 @@ package com.android.permissioncontroller.permission.utils
 import android.Manifest
 import android.content.pm.PackageManager
 import android.content.pm.PermissionInfo
+import android.healthconnect.HealthPermissions.HEALTH_PERMISSION_GROUP
+import android.util.Log
 import com.android.modules.utils.build.SdkLevel
 
 /**
@@ -26,6 +28,8 @@ import com.android.modules.utils.build.SdkLevel
  * Permission settings screens and grant dialog. It also includes methods related to that mapping.
  */
 object PermissionMapping {
+
+    private val LOG_TAG = "PermissionMapping"
 
     @JvmField
     val SENSOR_DATA_PERMISSIONS: List<String> =
@@ -53,13 +57,6 @@ object PermissionMapping {
     private val ONE_TIME_PERMISSION_GROUPS: MutableSet<String> = mutableSetOf()
 
     private val HEALTH_PERMISSIONS_SET: MutableSet<String> = mutableSetOf()
-
-    // TODO(b/248124555): Set this programmatically when we get an API for this.
-    private const val HEALTH_PERMISSION_GROUP_STRING: String = "android.permission-group.HEALTH"
-
-    // TODO(b/248124555): Set this programmatically when we get an API for this.
-    private const val MANAGE_HEALTH_PERMISSIONS_NAME: String =
-            "android.permission.MANAGE_HEALTH_PERMISSIONS"
 
     init {
         PLATFORM_PERMISSIONS[Manifest.permission.READ_CONTACTS] = Manifest.permission_group.CONTACTS
@@ -291,37 +288,20 @@ object PermissionMapping {
     }
 
     /**
-     * Returns the string representing the health permission group is defined.
-     */
-    @JvmStatic
-    fun getHealthPermissionGroupString(): String {
-        return HEALTH_PERMISSION_GROUP_STRING
-    }
-
-    /**
-     * Gets the name of the health permission, that is guaranteed to be defined in
-     * the health connect module. Will be used to infer the package name of the health connect
-     * module.
-     */
-    @JvmStatic
-    fun getManageHealthPermissionsName(): String {
-        return MANAGE_HEALTH_PERMISSIONS_NAME
-    }
-
-    /**
      * Adds health permissions as platform permissions.
      */
     @JvmStatic
     fun addHealthPermissionsToPlatform(permissions: Set<String>) {
         if (permissions.isEmpty()) {
+            Log.w(LOG_TAG, "No health connect permissions found.")
             return
         }
 
-        PLATFORM_PERMISSION_GROUPS[HEALTH_PERMISSION_GROUP_STRING] = mutableListOf()
+        PLATFORM_PERMISSION_GROUPS[HEALTH_PERMISSION_GROUP] = mutableListOf()
 
         for (permission in permissions) {
-            PLATFORM_PERMISSIONS[permission] = HEALTH_PERMISSION_GROUP_STRING
-            PLATFORM_PERMISSION_GROUPS[HEALTH_PERMISSION_GROUP_STRING]?.add(permission)
+            PLATFORM_PERMISSIONS[permission] = HEALTH_PERMISSION_GROUP
+            PLATFORM_PERMISSION_GROUPS[HEALTH_PERMISSION_GROUP]?.add(permission)
             HEALTH_PERMISSIONS_SET.add(permission)
         }
     }
