@@ -35,19 +35,58 @@ class SystemState private constructor(
     val packageStates: IndexedMap<String, PackageState>,
     val disabledSystemPackageStates: IndexedMap<String, PackageState>,
     val appIds: IntMap<IndexedListSet<String>>,
+    // A map of KnownPackagesInt to a set of known package names
+    val knownPackages: IntMap<IndexedListSet<String>>,
+    // A map of userId to packageName
+    val deviceAndProfileOwners: IntMap<String>,
+    // A map of packageName to (A map of oem permission name to whether it's granted)
+    val oemPermissions: IndexedMap<String, IndexedMap<String, Boolean>>,
+    val privilegedPermissionAllowlistSourcePackageNames: IndexedListSet<String>,
+    // A map of packageName to a set of vendor priv app permission names
+    val vendorPrivAppPermissions: Map<String, Set<String>>,
+    val productPrivAppPermissions: Map<String, Set<String>>,
+    val systemExtPrivAppPermissions: Map<String, Set<String>>,
+    val privAppPermissions: Map<String, Set<String>>,
+    val apexPrivAppPermissions: Map<String, Map<String, Set<String>>>,
+    val vendorPrivAppDenyPermissions: Map<String, Set<String>>,
+    val productPrivAppDenyPermissions: Map<String, Set<String>>,
+    val systemExtPrivAppDenyPermissions: Map<String, Set<String>>,
+    val apexPrivAppDenyPermissions: Map<String, Map<String, Set<String>>>,
+    val privAppDenyPermissions: Map<String, Set<String>>,
     val permissionGroups: IndexedMap<String, PermissionGroupInfo>,
     val permissionTrees: IndexedMap<String, Permission>,
     val permissions: IndexedMap<String, Permission>
 ) : WritableState() {
     constructor() : this(
-        IntSet(), IndexedMap(), IndexedMap(), IntMap(), IndexedMap(), IndexedMap(), IndexedMap()
+        IntSet(), IndexedMap(), IndexedMap(), IntMap(), IntMap(), IntMap(), IndexedMap(),
+        IndexedListSet(), IndexedMap(), IndexedMap(), IndexedMap(), IndexedMap(), IndexedMap(),
+        IndexedMap(), IndexedMap(), IndexedMap(), IndexedMap(), IndexedMap(), IndexedMap(),
+        IndexedMap(), IndexedMap()
     )
 
     fun copy(): SystemState =
         SystemState(
-            userIds.copy(), packageStates.copy { it }, disabledSystemPackageStates.copy { it },
-            appIds.copy { it.copy() }, permissionGroups.copy { it },
-            permissionTrees.copy { it }, permissions.copy { it }
+            userIds.copy(),
+            packageStates.copy { it },
+            disabledSystemPackageStates.copy { it },
+            appIds.copy { it.copy() },
+            knownPackages.copy { it.copy() },
+            deviceAndProfileOwners.copy { it },
+            oemPermissions.copy { it.copy { it } },
+            privilegedPermissionAllowlistSourcePackageNames.copy(),
+            vendorPrivAppPermissions,
+            productPrivAppPermissions,
+            systemExtPrivAppPermissions,
+            privAppPermissions,
+            apexPrivAppPermissions,
+            vendorPrivAppDenyPermissions,
+            productPrivAppDenyPermissions,
+            systemExtPrivAppDenyPermissions,
+            apexPrivAppDenyPermissions,
+            privAppDenyPermissions,
+            permissionGroups.copy { it },
+            permissionTrees.copy { it },
+            permissions.copy { it }
         )
 }
 

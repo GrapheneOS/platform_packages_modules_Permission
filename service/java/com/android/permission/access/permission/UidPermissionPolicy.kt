@@ -18,6 +18,7 @@ package com.android.permission.access.permission
 
 import android.content.pm.PackageManager
 import android.content.pm.PermissionInfo
+import android.os.Build
 import android.util.Log
 import com.android.permission.access.AccessState
 import com.android.permission.access.AccessUri
@@ -27,8 +28,17 @@ import com.android.permission.access.UidUri
 import com.android.permission.access.UserState
 import com.android.permission.access.collection.* // ktlint-disable no-wildcard-imports
 import com.android.permission.access.data.Permission
+import com.android.permission.access.external.AndroidPackage
+import com.android.permission.access.external.CompatibilityPermissionInfo
+import com.android.permission.access.external.KnownPackages
 import com.android.permission.access.external.PackageInfoUtils
 import com.android.permission.access.external.PackageState
+import com.android.permission.access.external.RoSystemProperties
+import com.android.permission.access.external.SigningDetails
+import com.android.permission.access.util.hasBits
+import com.android.permission.compat.UserHandleCompat
+
+private const val PLATFORM_PACKAGE_NAME = "android"
 
 private val LOG_TAG = UidPermissionPolicy::class.java.simpleName
 
@@ -61,8 +71,10 @@ class UidPermissionPolicy : SchemePolicy() {
     }
 
     override fun onUserAdded(userId: Int, oldState: AccessState, newState: AccessState) {
-        newState.systemState.packageStates.forEachValueIndexed {
-            _, packageState -> // TODO: evaluatePermissionState()
+        newState.systemState.packageStates.forEachValueIndexed { _, packageState ->
+            evaluateAllPermissionStatesForPackageAndUser(
+                packageState, null, userId, oldState, newState
+            )
         }
     }
 
@@ -81,15 +93,24 @@ class UidPermissionPolicy : SchemePolicy() {
         oldState: AccessState,
         newState: AccessState
     ) {
-        adoptPermissions(packageState, newState)
+        val changedPermissionNames = IndexedSet<String>()
+        adoptPermissions(packageState, changedPermissionNames, newState)
         addPermissionGroups(packageState, newState)
-        addPermissions(packageState, newState)
+        addPermissions(packageState, changedPermissionNames, newState)
         // TODO: revokeStoragePermissionsIfScopeExpandedInternal()
         trimPermissions(packageState.packageName, newState)
-        // TODO: evaluatePermissionState(packageState, oldState, newState, null)
+        changedPermissionNames.forEachIndexed { _, it ->
+            evaluatePermissionStateForAllPackages(it, packageState, oldState, newState)
+        }
+
+        evaluateAllPermissionStatesForPackage(packageState, packageState, oldState, newState)
     }
 
-    private fun adoptPermissions(packageState: PackageState, newState: AccessState) {
+    private fun adoptPermissions(
+        packageState: PackageState,
+        changedPermissionNames: IndexedSet<String>,
+        newState: AccessState
+    ) {
         val `package` = packageState.androidPackage!!
         `package`.adoptPermissions.forEachIndexed { _, originalPackageName ->
             val packageName = `package`.packageName
@@ -108,6 +129,7 @@ class UidPermissionPolicy : SchemePolicy() {
                         protectionLevel = oldPermission.permissionInfo.protectionLevel
                     }
                     val newPermission = Permission(newPermissionInfo, false, oldPermission.type, 0)
+                    changedPermissionNames += permissionName
                     permissions.setValueAt(i, newPermission)
                 }
             }
@@ -170,7 +192,11 @@ class UidPermissionPolicy : SchemePolicy() {
         }
     }
 
-    private fun addPermissions(packageState: PackageState, newState: AccessState) {
+    private fun addPermissions(
+        packageState: PackageState,
+        changedPermissionNames: IndexedSet<String>,
+        newState: AccessState
+    ) {
         packageState.androidPackage!!.permissions.forEachIndexed { _, parsedPermission ->
             // TODO:
             // parsedPermission.flags = parsedPermission.flags andInv PermissionInfo.FLAG_INSTALLED
@@ -215,8 +241,7 @@ class UidPermissionPolicy : SchemePolicy() {
                     )
                     return@forEachIndexed
                 }
-                if (oldPermission.type == Permission.TYPE_CONFIG &&
-                    !oldPermission.isReconciled) {
+                if (oldPermission.type == Permission.TYPE_CONFIG && !oldPermission.isReconciled) {
                     // It's a config permission and has no owner, take ownership now.
                     Permission(newPermissionInfo, true, Permission.TYPE_CONFIG, packageState.appId)
                 } else if (newState.systemState.packageStates[oldPackageName]?.isSystem != true) {
@@ -250,6 +275,7 @@ class UidPermissionPolicy : SchemePolicy() {
                 Permission(newPermissionInfo, true, Permission.TYPE_MANIFEST, packageState.appId)
             }
 
+            changedPermissionNames += permissionName
             if (parsedPermission.isTree) {
                 newState.systemState.permissionTrees[permissionName] = newPermission
             } else {
@@ -258,7 +284,10 @@ class UidPermissionPolicy : SchemePolicy() {
         }
     }
 
-    private fun trimPermissions(packageName: String, newState: AccessState) {
+    private fun trimPermissions(
+        packageName: String,
+        newState: AccessState,
+    ) {
         val packageState = newState.systemState.packageStates[packageName]
         val androidPackage = packageState?.androidPackage
         if (packageState != null && androidPackage == null) {
@@ -283,12 +312,12 @@ class UidPermissionPolicy : SchemePolicy() {
                 }
             )) {
                 if (!isPermissionDeclaredByDisabledSystemPackage(permission, newState)) {
-                    newState.userStates.forEachValueIndexed { _, userState ->
-                        userState.permissionFlags.forEachValueIndexed { _, permissionFlags ->
-                            permissionFlags.putWithDefault(
-                                permissionName, permissionFlags.getWithDefault(
-                                    permissionName, 0
-                                ) and PermissionFlags.INSTALL_REVOKED, 0
+                    newState.userStates.forEachIndexed { _, userId, userState ->
+                        userState.permissionFlags.forEachKeyIndexed { _, appId ->
+                            setPermissionFlags(
+                                appId, permissionName, getPermissionFlags(
+                                    appId, permissionName, userId, newState
+                                ) and PermissionFlags.INSTALL_REVOKED, userId, newState
                             )
                         }
                     }
@@ -338,6 +367,452 @@ class UidPermissionPolicy : SchemePolicy() {
                 null
             }
         }
+
+    private fun evaluatePermissionStateForAllPackages(
+        permissionName: String,
+        installedPackageState: PackageState?,
+        oldState: AccessState,
+        newState: AccessState
+    ) {
+        newState.systemState.userIds.forEachIndexed { _, userId ->
+            oldState.userStates[userId]?.permissionFlags?.forEachIndexed {
+                _, appId, permissionFlags ->
+                if (permissionName in permissionFlags) {
+                    evaluatePermissionState(
+                        appId, permissionName, installedPackageState, userId, oldState, newState
+                    )
+                }
+            }
+        }
+    }
+
+    private fun evaluateAllPermissionStatesForPackage(
+        packageState: PackageState,
+        installedPackageState: PackageState?,
+        oldState: AccessState,
+        newState: AccessState
+    ) {
+        newState.systemState.userIds.forEachIndexed { _, userId ->
+            evaluateAllPermissionStatesForPackageAndUser(
+                packageState, installedPackageState, userId, oldState, newState
+            )
+        }
+    }
+
+    private fun evaluateAllPermissionStatesForPackageAndUser(
+        packageState: PackageState,
+        installedPackageState: PackageState?,
+        userId: Int,
+        oldState: AccessState,
+        newState: AccessState
+    ) {
+        packageState.androidPackage?.requestedPermissions?.forEachIndexed { _, it ->
+            evaluatePermissionState(
+                packageState.appId, it, installedPackageState, userId, oldState, newState
+            )
+        }
+    }
+
+    private fun evaluatePermissionState(
+        appId: Int,
+        permissionName: String,
+        installedPackageState: PackageState?,
+        userId: Int,
+        oldState: AccessState,
+        newState: AccessState
+    ) {
+        val packageNames = newState.systemState.appIds[appId]
+        val hasMissingPackage = packageNames.anyIndexed { _, packageName ->
+            newState.systemState.packageStates[packageName]!!.androidPackage == null
+        }
+        if (packageNames.size == 1 && hasMissingPackage) {
+            // For non-shared-user packages with missing androidPackage, skip evaluation.
+            return
+        }
+        val permission = newState.systemState.permissions[permissionName] ?: return
+        val oldFlags = getPermissionFlags(appId, permissionName, userId, newState)
+        if (permission.isNormal) {
+            val wasGranted = oldFlags.hasBits(PermissionFlags.INSTALL_GRANTED)
+            if (!wasGranted) {
+                val wasRevoked = oldFlags.hasBits(PermissionFlags.INSTALL_REVOKED)
+                val isRequestedByInstalledPackage = installedPackageState != null &&
+                    permissionName in installedPackageState.androidPackage!!.requestedPermissions
+                val isRequestedBySystemPackage = anyPackageInAppId(appId, newState) {
+                    it.isSystem && permissionName in it.androidPackage!!.requestedPermissions
+                }
+                val isCompatibilityPermission = anyPackageInAppId(appId, newState) {
+                    isCompatibilityPermissionForPackage(it.androidPackage!!, permissionName)
+                }
+                // If this is an existing, non-system package,
+                // then we can't add any new permissions to it.
+                // Except if this is a permission that was added to the platform
+                val newFlags = if (!wasRevoked || isRequestedByInstalledPackage ||
+                    isRequestedBySystemPackage || isCompatibilityPermission) {
+                    PermissionFlags.INSTALL_GRANTED
+                } else {
+                    PermissionFlags.INSTALL_REVOKED
+                }
+                setPermissionFlags(appId, permissionName, newFlags, userId, newState)
+            }
+        } else if (permission.isSignature || permission.isInternal) {
+            val wasProtectionGranted = oldFlags.hasBits(PermissionFlags.PROTECTION_GRANTED)
+            var newFlags = if (hasMissingPackage && wasProtectionGranted) {
+                // Keep the non-runtime permission grants for shared UID with missing androidPackage
+                PermissionFlags.PROTECTION_GRANTED
+            } else {
+                val mayGrantByPrivileged = !permission.isPrivileged || (
+                    anyPackageInAppId(appId, newState) {
+                        checkPrivilegedPermissionAllowlist(it, permission, newState)
+                    }
+                )
+                val shouldGrantBySignature = permission.isSignature && (
+                    anyPackageInAppId(appId, newState) {
+                        shouldGrantPermissionBySignature(it, permission, newState)
+                    }
+                )
+                val shouldGrantByProtectionFlags = anyPackageInAppId(appId, newState) {
+                    shouldGrantPermissionByProtectionFlags(it, permission, newState)
+                }
+                if (mayGrantByPrivileged &&
+                    (shouldGrantBySignature || shouldGrantByProtectionFlags)) {
+                    PermissionFlags.PROTECTION_GRANTED
+                } else {
+                    0
+                }
+            }
+            // Different from the old implementation, which seemingly allows granting an
+            // unallowlisted privileged permission via development or role but revokes it upon next
+            // reconciliation, we now properly allows that because the privileged protection flag
+            // should only affect the other static flags, but not dynamic flags like development or
+            // role. This may be useful in the case of an updated system app.
+            if (permission.isDevelopment) {
+                newFlags = newFlags or (oldFlags and PermissionFlags.API_GRANTED)
+            }
+            if (permission.isRole) {
+                newFlags = newFlags or (oldFlags and PermissionFlags.ROLE_GRANTED)
+            }
+            setPermissionFlags(appId, permissionName, newFlags, userId, newState)
+        } else if (permission.isRuntime) {
+            // TODO: add runtime permission
+        } else {
+            Log.e(LOG_TAG, "Unknown protection level ${permission.protectionLevel}" +
+                "for permission ${permission.name} while evaluating permission state" +
+                "for appId $appId and userId $userId")
+        }
+    }
+
+    private fun getPermissionFlags(
+        appId: Int,
+        permissionName: String,
+        userId: Int,
+        state: AccessState
+    ): Int = state.userStates[userId].permissionFlags[appId].getWithDefault(permissionName, 0)
+
+    private fun setPermissionFlags(
+        appId: Int,
+        permissionName: String,
+        flags: Int,
+        userId: Int,
+        newState: AccessState
+    ) {
+        newState.userStates[userId].permissionFlags[appId]!!
+            .putWithDefault(permissionName, flags, 0)
+    }
+
+    private fun isCompatibilityPermissionForPackage(
+        androidPackage: AndroidPackage,
+        permissionName: String
+    ): Boolean {
+        for (info: CompatibilityPermissionInfo in CompatibilityPermissionInfo.COMPAT_PERMS) {
+            if (info.name == permissionName && androidPackage.targetSdkVersion < info.sdkVersion) {
+                Log.i(
+                    LOG_TAG, "Auto-granting $permissionName to old package" +
+                    " ${androidPackage.packageName}"
+                )
+                return true
+            }
+        }
+        return false
+    }
+
+    private fun shouldGrantPermissionBySignature(
+        packageState: PackageState,
+        permission: Permission,
+        newState: AccessState
+    ): Boolean {
+        // check if the package is allow to use this signature permission.  A package is allowed to
+        // use a signature permission if:
+        //     - it has the same set of signing certificates as the source package
+        //     - or its signing certificate was rotated from the source package's certificate
+        //     - or its signing certificate is a previous signing certificate of the defining
+        //       package, and the defining package still trusts the old certificate for permissions
+        //     - or it shares a common signing certificate in its lineage with the defining package,
+        //       and the defining package still trusts the old certificate for permissions
+        //     - or it shares the above relationships with the system package
+        val sourceSigningDetails = newState.systemState
+            .packageStates[permission.packageName]?.signingDetails
+        val platformSigningDetails = newState.systemState
+            .packageStates[PLATFORM_PACKAGE_NAME]!!.signingDetails
+        return sourceSigningDetails?.hasCommonSignerWithCapability(packageState.signingDetails,
+            SigningDetails.CertCapabilities.PERMISSION) == true ||
+            packageState.signingDetails.hasAncestorOrSelf(platformSigningDetails) ||
+            platformSigningDetails.checkCapability(packageState.signingDetails,
+                    SigningDetails.CertCapabilities.PERMISSION)
+    }
+
+    private fun checkPrivilegedPermissionAllowlist(
+        packageState: PackageState,
+        permission: Permission,
+        newState: AccessState
+    ): Boolean {
+        if (RoSystemProperties.CONTROL_PRIVAPP_PERMISSIONS_DISABLE) {
+            return true
+        }
+        if (packageState.packageName == PLATFORM_PACKAGE_NAME) {
+            return true
+        }
+        val androidPackage = packageState.androidPackage!!
+        if (!androidPackage.isPrivileged) {
+            return true
+        }
+        if (permission.packageName !in
+            newState.systemState.privilegedPermissionAllowlistSourcePackageNames) {
+            return true
+        }
+        if (isInSystemConfigPrivAppPermissions(androidPackage, permission.name, newState)) {
+            return true
+        }
+        if (isInSystemConfigPrivAppDenyPermissions(androidPackage, permission.name, newState)) {
+            return false
+        }
+        // Updated system apps do not need to be allowlisted
+        if (packageState.isUpdatedSystemApp) {
+            return true
+        }
+        // TODO: Enforce the allowlist on boot
+        return !RoSystemProperties.CONTROL_PRIVAPP_PERMISSIONS_ENFORCE
+    }
+
+    private fun isInSystemConfigPrivAppPermissions(
+        androidPackage: AndroidPackage,
+        permissionName: String,
+        newState: AccessState
+    ): Boolean {
+        val apexModuleName = androidPackage.apexModuleName
+        val systemState = newState.systemState
+        val packageName = androidPackage.packageName
+        val permissionNames = when {
+            androidPackage.isVendor -> systemState.vendorPrivAppPermissions[packageName]
+            androidPackage.isProduct -> systemState.productPrivAppPermissions[packageName]
+            androidPackage.isSystemExt -> systemState.systemExtPrivAppPermissions[packageName]
+            apexModuleName != null -> {
+                val apexPrivAppPermissions = systemState.apexPrivAppPermissions[apexModuleName]
+                    ?.get(packageName)
+                val privAppPermissions = systemState.privAppPermissions[packageName]
+                when {
+                    apexPrivAppPermissions == null -> privAppPermissions
+                    privAppPermissions == null -> apexPrivAppPermissions
+                    else -> apexPrivAppPermissions + privAppPermissions
+                }
+            }
+            else -> systemState.privAppPermissions[packageName]
+        }
+        return permissionNames?.contains(permissionName) == true
+    }
+
+    private fun isInSystemConfigPrivAppDenyPermissions(
+        androidPackage: AndroidPackage,
+        permissionName: String,
+        newState: AccessState
+    ): Boolean {
+        // Different from the previous implementation, which may incorrectly use the APEX package
+        // name, we now use the APEX module name to be consistent with the allowlist.
+        val apexModuleName = androidPackage.apexModuleName
+        val systemState = newState.systemState
+        val packageName = androidPackage.packageName
+        val permissionNames = when {
+            androidPackage.isVendor -> systemState.vendorPrivAppDenyPermissions[packageName]
+            androidPackage.isProduct -> systemState.productPrivAppDenyPermissions[packageName]
+            androidPackage.isSystemExt -> systemState.systemExtPrivAppDenyPermissions[packageName]
+            // Different from the previous implementation, which ignores the regular priv app
+            // denylist in this case, we now respect it as well to be consistent with the allowlist.
+            apexModuleName != null -> {
+                val apexPrivAppDenyPermissions = systemState
+                    .apexPrivAppDenyPermissions[apexModuleName]?.get(packageName)
+                val privAppDenyPermissions = systemState.privAppDenyPermissions[packageName]
+                when {
+                    apexPrivAppDenyPermissions == null -> privAppDenyPermissions
+                    privAppDenyPermissions == null -> apexPrivAppDenyPermissions
+                    else -> apexPrivAppDenyPermissions + privAppDenyPermissions
+                }
+            }
+            else -> systemState.privAppDenyPermissions[packageName]
+        }
+        return permissionNames?.contains(permissionName) == true
+    }
+
+    private fun anyPackageInAppId(
+        appId: Int,
+        newState: AccessState,
+        predicate: (PackageState) -> Boolean
+    ): Boolean {
+        val packageNames = newState.systemState.appIds[appId]
+        return packageNames.anyIndexed { _, packageName ->
+            val packageState = newState.systemState.packageStates[packageName]!!
+            packageState.androidPackage != null && predicate(packageState)
+        }
+    }
+
+    private fun shouldGrantPermissionByProtectionFlags(
+        packageState: PackageState,
+        permission: Permission,
+        newState: AccessState
+    ): Boolean {
+        val androidPackage = packageState.androidPackage!!
+        val knownPackages = newState.systemState.knownPackages
+        val packageName = packageState.packageName
+        if ((permission.isPrivileged || permission.isOem) && packageState.isSystem) {
+            val shouldGrant = if (packageState.isUpdatedSystemApp) {
+                // For updated system applications, a privileged/oem permission
+                // is granted only if it had been defined by the original application.
+                val disabledSystemPackage = newState.systemState
+                    .disabledSystemPackageStates[packageState.packageName]?.androidPackage
+                disabledSystemPackage != null &&
+                    permission.name in disabledSystemPackage.requestedPermissions &&
+                    shouldGrantPrivilegedOrOemPermission(
+                        disabledSystemPackage, permission, newState
+                    )
+            } else {
+                shouldGrantPrivilegedOrOemPermission(androidPackage, permission, newState)
+            }
+            if (shouldGrant) {
+                return true
+            }
+        }
+        if (permission.isPre23 && androidPackage.targetSdkVersion < Build.VERSION_CODES.M) {
+            // If this was a previously normal/dangerous permission that got moved
+            // to a system permission as part of the runtime permission redesign, then
+            // we still want to blindly grant it to old apps.
+            return true
+        }
+        if (permission.isInstaller && (
+            packageName in knownPackages[KnownPackages.PACKAGE_INSTALLER] ||
+                packageName in knownPackages[KnownPackages.PACKAGE_PERMISSION_CONTROLLER]
+        )) {
+            // If this permission is to be granted to the system installer and
+            // this app is an installer or permission controller, then it gets the permission.
+            return true
+        }
+        if (permission.isVerifier &&
+            packageName in knownPackages[KnownPackages.PACKAGE_VERIFIER]) {
+            // If this permission is to be granted to the system verifier and
+            // this app is a verifier, then it gets the permission.
+            return true
+        }
+        if (permission.isPreInstalled && packageState.isSystem) {
+            // Any pre-installed system app is allowed to get this permission.
+            return true
+        }
+        if (permission.isKnownSigner &&
+            packageState.signingDetails.hasAncestorOrSelfWithDigest(permission.knownCerts)) {
+            // If the permission is to be granted to a known signer then check if any of this
+            // app's signing certificates are in the trusted certificate digest Set.
+            return true
+        }
+        if (permission.isSetup &&
+            packageName in knownPackages[KnownPackages.PACKAGE_SETUP_WIZARD]) {
+            // If this permission is to be granted to the system setup wizard and
+            // this app is a setup wizard, then it gets the permission.
+            return true
+        }
+        if (permission.isSystemTextClassifier &&
+            packageName in knownPackages[KnownPackages.PACKAGE_SYSTEM_TEXT_CLASSIFIER]) {
+            // Special permissions for the system default text classifier.
+            return true
+        }
+        if (permission.isConfigurator &&
+            packageName in knownPackages[KnownPackages.PACKAGE_CONFIGURATOR]) {
+            // Special permissions for the device configurator.
+            return true
+        }
+        if (permission.isIncidentReportApprover &&
+            packageName in knownPackages[KnownPackages.PACKAGE_INCIDENT_REPORT_APPROVER]) {
+            // If this permission is to be granted to the incident report approver and
+            // this app is the incident report approver, then it gets the permission.
+            return true
+        }
+        if (permission.isAppPredictor &&
+            packageName in knownPackages[KnownPackages.PACKAGE_APP_PREDICTOR]) {
+            // Special permissions for the system app predictor.
+            return true
+        }
+        if (permission.isCompanion &&
+            packageName in knownPackages[KnownPackages.PACKAGE_COMPANION]) {
+            // Special permissions for the system companion device manager.
+            return true
+        }
+        if (permission.isRetailDemo &&
+            packageName in knownPackages[KnownPackages.PACKAGE_RETAIL_DEMO] &&
+            isDeviceOrProfileOwnerUid(packageState.appId, newState)) {
+            // Special permission granted only to the OEM specified retail demo app.
+            // Note that the original code was passing app ID as UID, so this behavior is kept
+            // unchanged.
+            return true
+        }
+        if (permission.isRecents &&
+            packageName in knownPackages[KnownPackages.PACKAGE_RECENTS]) {
+            // Special permission for the recents app.
+            return true
+        }
+        return false
+    }
+
+    private fun shouldGrantPrivilegedOrOemPermission(
+        androidPackage: AndroidPackage,
+        permission: Permission,
+        state: AccessState
+    ): Boolean {
+        val permissionName = permission.name
+        val packageName = androidPackage.packageName
+        when {
+            permission.isPrivileged -> {
+                if (androidPackage.isPrivileged) {
+                    // In any case, don't grant a privileged permission to privileged vendor apps,
+                    // if the permission's protectionLevel does not have the extra vendorPrivileged
+                    // flag.
+                    if (androidPackage.isVendor && !permission.isVendorPrivileged) {
+                        Log.w(
+                            LOG_TAG, "Permission $permissionName cannot be granted to privileged" +
+                            " vendor app $packageName because it isn't a vendorPrivileged" +
+                            " permission"
+                        )
+                        return false
+                    }
+                    return true
+                }
+            }
+            permission.isOem -> {
+                if (androidPackage.isOem) {
+                    val isOemAllowlisted = state.systemState
+                        .oemPermissions[packageName]?.get(permissionName)
+                    checkNotNull(isOemAllowlisted) {
+                        "OEM permission $permissionName requested by package" +
+                            " $packageName must be explicitly declared granted or not"
+                    }
+                    return isOemAllowlisted
+                }
+            }
+        }
+        return false
+    }
+
+    private fun isDeviceOrProfileOwnerUid(uid: Int, state: AccessState): Boolean {
+        val userId = UserHandleCompat.getUserId(uid)
+        val ownerPackageName = state.systemState.deviceAndProfileOwners[userId] ?: return false
+        val ownerPackageState = state.systemState.packageStates[ownerPackageName] ?: return false
+        val ownerUid = UserHandleCompat.getUid(userId, ownerPackageState.appId)
+        return uid == ownerUid
+    }
 
     override fun onPackageRemoved(
         packageState: PackageState,
