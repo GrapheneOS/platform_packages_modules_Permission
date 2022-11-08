@@ -739,7 +739,8 @@ class GrantPermissionsViewModel(
                 if (isBackground) {
                     KotlinUtils.grantBackgroundRuntimePermissions(app, group, listOf(perm))
                 } else {
-                    KotlinUtils.grantForegroundRuntimePermissions(app, group, listOf(perm))
+                    KotlinUtils.grantForegroundRuntimePermissions(app, group, listOf(perm),
+                        group.isOneTime)
                 }
                 KotlinUtils.setGroupFlags(app, group, FLAG_PERMISSION_USER_SET to false,
                     FLAG_PERMISSION_USER_FIXED to false, filterPermissions = listOf(perm))

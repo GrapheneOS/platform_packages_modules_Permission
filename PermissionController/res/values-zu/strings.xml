@@ -397,7 +397,7 @@
     <string name="ongoing_usage_dialog_last_separator" msgid="4170995004748832163">" kanye "</string>
     <string name="default_app_search_keyword" msgid="8330125736889689743">"izinhlelo zokusebenza ezizenzakalelayo"</string>
     <string name="permgroup_list_microphone_and_camera" msgid="962768198001487969">"Imakrofoni Nekhamera"</string>
-    <string name="settings_button" msgid="4414988414732479636">"Izilungiselelo"</string>
+    <string name="settings_button" msgid="4414988414732479636">"Amasethingi"</string>
     <string name="default_apps" msgid="5119201969348748639">"Izinhlelo zokusebenza ezizenzakalelayo"</string>
     <string name="no_default_apps" msgid="2593466527182950231">"Azikho izinhlelo zokusebenza ezizenzakalelayo"</string>
     <string name="default_apps_more" msgid="4078194675848858093">"Okuzenzakalelayo okuningi"</string>
