@@ -304,6 +304,7 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
+                    .apply { if (SdkLevel.isAtLeastU()) setNotificationsAllowed(true) }
                     .build())
             .addEqualityGroup(DYNAMIC_HIDDEN)
             .addEqualityGroup(DYNAMIC_HIDDEN_WITH_SEARCH)
@@ -326,6 +327,7 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
+                    .apply { if (SdkLevel.isAtLeastU()) setNotificationsAllowed(true) }
                     .build())
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
@@ -408,6 +410,7 @@ class SafetySourceTest {
                     .setPackageName(PACKAGE_NAME)
                     .setProfile(SafetySource.PROFILE_PRIMARY)
                     .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_HIDDEN)
+                    .apply { if (SdkLevel.isAtLeastU()) setNotificationsAllowed(true) }
                     .build())
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
