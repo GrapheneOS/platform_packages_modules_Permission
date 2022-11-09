@@ -31,8 +31,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 
-import com.android.permissioncontroller.R;
-
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
@@ -41,12 +39,18 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Function;
 
 /**
  * Parser for {@link Role} definitions.
  */
 @VisibleForTesting
 public class RoleParser {
+
+    /**
+     * Function to retrieve the roles.xml resource from a context
+     */
+    public static volatile Function<Context, XmlResourceParser> sGetRolesXml;
 
     private static final String LOG_TAG = RoleParser.class.getSimpleName();
 
@@ -139,7 +143,7 @@ public class RoleParser {
      */
     @NonNull
     public ArrayMap<String, Role> parse() {
-        try (XmlResourceParser parser = mContext.getResources().getXml(R.xml.roles)) {
+        try (XmlResourceParser parser = sGetRolesXml.apply(mContext)) {
             Pair<ArrayMap<String, PermissionSet>, ArrayMap<String, Role>> xml = parseXml(parser);
             if (xml == null) {
                 return new ArrayMap<>();
