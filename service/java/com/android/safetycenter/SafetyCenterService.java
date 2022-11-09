@@ -19,6 +19,7 @@ package com.android.safetycenter;
 import static android.Manifest.permission.MANAGE_SAFETY_CENTER;
 import static android.Manifest.permission.READ_SAFETY_CENTER_STATUS;
 import static android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE;
+import static android.Manifest.permission.START_TASKS_FROM_RECENTS;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_OTHER;
@@ -113,11 +114,6 @@ public final class SafetyCenterService extends SystemService {
 
     /** The name of the file used to persist the Safety Center issue cache. */
     private static final String SAFETY_CENTER_ISSUES_CACHE_FILE_NAME = "safety_center_issues.xml";
-
-    /** The START_TASKS_FROM_RECENTS permission. */
-    // TODO(b/242905922): Remove once in API.
-    private static final String START_TASKS_FROM_RECENTS =
-            "android.permission.START_TASKS_FROM_RECENTS";
 
     /** The time delay used to throttle and aggregate writes to disk. */
     private static final Duration WRITE_DELAY = Duration.ofMillis(500);

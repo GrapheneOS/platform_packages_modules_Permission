@@ -24,11 +24,19 @@ interface PackageState {
     val isSystem: Boolean
     val packageName: String
     val userStates: SparseArray<PackageUserState>
+    val hasSharedUser: Boolean
+    val sharedUserAppId: Int
 }
 
 interface AndroidPackage {
     val packageName: String
     val appId: Int
+    val isPrivileged: Boolean
+    val isOem: Boolean
+    val isVendor: Boolean
+    val isProduct: Boolean
+    val isSystemExt: Boolean
+    val targetSdkVersion: Int
     val adoptPermissions: List<String>
     val permissions: List<ParsedPermission>
     val permissionGroups: List<ParsedPermissionGroup>
@@ -39,6 +47,8 @@ interface ParsedPermission {
     val name: String
     val isTree: Boolean
     val packageName: String
+    val isSignature: Boolean
+    val protectionLevel: Int
 }
 
 interface ParsedPermissionGroup {

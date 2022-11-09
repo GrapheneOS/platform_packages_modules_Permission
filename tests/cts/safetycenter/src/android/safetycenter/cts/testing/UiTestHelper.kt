@@ -24,6 +24,7 @@ import android.support.test.uiautomator.BySelector
 import android.support.test.uiautomator.StaleObjectException
 import android.support.test.uiautomator.UiObject2
 import android.util.Log
+import com.android.compatibility.common.util.SystemUtil.runShellCommand
 import com.android.compatibility.common.util.UiAutomatorUtils.getUiDevice
 import com.android.compatibility.common.util.UiAutomatorUtils.waitFindObject
 import com.android.compatibility.common.util.UiAutomatorUtils.waitFindObjectOrNull
@@ -115,6 +116,19 @@ object UiTestHelper {
     /** Expands the more issues card button. */
     fun expandMoreIssuesCard() {
         waitDisplayed(By.text("See all alerts")) { it.click() }
+    }
+
+    /** Enables or disables animations based on [enabled]. */
+    fun setAnimationsEnabled(enabled: Boolean) {
+        val scale =
+            if (enabled) {
+                "1"
+            } else {
+                "0"
+            }
+        runShellCommand("settings put global window_animation_scale $scale")
+        runShellCommand("settings put global transition_animation_scale $scale")
+        runShellCommand("settings put global animator_duration_scale $scale")
     }
 
     private fun buttonSelector(label: CharSequence): BySelector {
