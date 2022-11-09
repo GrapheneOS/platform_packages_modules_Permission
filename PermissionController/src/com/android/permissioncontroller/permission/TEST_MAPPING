@@ -27,14 +27,8 @@
             ]
         },
         {
-            "name": "CtsOsTestCases",
+            "name": "CtsHibernationTestCases",
             "options": [
-                {
-                    "include-filter": "android.os.cts.AutoRevokeTest"
-                },
-                {
-                    "include-filter": "android.os.cts.AppHibernationIntegrationTest"
-                },
                 {
                     "exclude-annotation": "android.platform.test.annotations.FlakyTest"
                 }
@@ -69,17 +63,11 @@
             ]
         },
         {
-            "name": "CtsOsTestCases[com.google.android.permission.apex]",
+            "name": "CtsHibernationTestCases[com.google.android.permission.apex]",
             "options": [
-                {
-                    "include-filter": "android.os.cts.AutoRevokeTest"
-                },
-                {
-                    "include-filter": "android.os.cts.AppHibernationIntegrationTest"
-                },
                 // TODO(b/238677038): This test currently fails on R base image
                 {
-                    "exclude-filter": "android.os.cts.AutoRevokeTest#testUnusedApp_uninstallApp"
+                    "exclude-filter": "android.hibernation.cts.AutoRevokeTest#testUnusedApp_uninstallApp"
                 },
                 {
                     "exclude-annotation": "android.platform.test.annotations.FlakyTest"

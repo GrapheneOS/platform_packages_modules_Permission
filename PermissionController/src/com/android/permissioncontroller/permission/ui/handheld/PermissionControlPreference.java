@@ -16,6 +16,8 @@
 
 package com.android.permissioncontroller.permission.ui.handheld;
 
+import static android.healthconnect.HealthPermissions.HEALTH_PERMISSION_GROUP;
+
 import static com.android.permissioncontroller.Constants.EXTRA_SESSION_ID;
 import static com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_CALLER_NAME;
 import static com.android.permissioncontroller.permission.ui.handheld.AppPermissionFragment.GRANT_CATEGORY;
@@ -44,7 +46,6 @@ import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.ui.LocationProviderInterceptDialog;
 import com.android.permissioncontroller.permission.utils.LocationUtils;
-import com.android.permissioncontroller.permission.utils.PermissionMapping;
 import com.android.permissioncontroller.permission.utils.Utils;
 
 import java.util.List;
@@ -223,8 +224,7 @@ public class PermissionControlPreference extends Preference {
                     return true;
                 }
                 if (Utils.isHealthPermissionUiEnabled()
-                        && mPermGroupName.equals(
-                                PermissionMapping.getHealthPermissionGroupString())) {
+                        && mPermGroupName.equals(HEALTH_PERMISSION_GROUP)) {
                     // TODO(b/248358404): Redirect to the health connect UI.
                     return true;
                 }

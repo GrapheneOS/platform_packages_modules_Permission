@@ -92,6 +92,9 @@ defaults to `false`.
 - `visible`: Whether this role is visible to users. If a role is invisible (a.k.a. hidden) to users,
 users won't be able to find it in Settings, and apps won't be able to request it. The role can still
 be managed by system APIs and shell command.
+- `uiBehavior`: Optional name of a [`RoleUiBehavior`](ui/behavior/RoleUiBehavior.java) class to
+control certain role UI behavior in Java code, e.g. `DialerRoleUiBehavior`. This can be useful
+when the XML syntax cannot express certain UI behavior specific to the role.
 
 The following tags can be specified inside a `<role>` tag:
 

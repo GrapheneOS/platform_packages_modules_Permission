@@ -20,6 +20,7 @@ import android.app.PendingIntent
 import android.app.PendingIntent.FLAG_IMMUTABLE
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING
 import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_INFORMATION
 import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED
@@ -28,10 +29,13 @@ import android.safetycenter.SafetySourceIssue.Action
 import android.safetycenter.SafetySourceIssue.ISSUE_CATEGORY_ACCOUNT
 import android.safetycenter.SafetySourceIssue.ISSUE_CATEGORY_DEVICE
 import android.safetycenter.SafetySourceIssue.ISSUE_CATEGORY_GENERAL
+import android.safetycenter.SafetySourceIssue.Notification
 import android.safetycenter.cts.testing.Generic
+import androidx.annotation.RequiresApi
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.ext.truth.os.ParcelableSubject.assertThat
+import androidx.test.filters.SdkSuppress
 import com.android.permission.testing.EqualsHashCodeToStringTester
 import com.google.common.truth.Truth.assertThat
 import kotlin.test.assertFailsWith
@@ -180,6 +184,190 @@ class SafetySourceIssueTest {
     }
 
     @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun notification_getTitle_returnsTitle() {
+        val notification = Notification.Builder("Notification title", "Notification text").build()
+
+        assertThat(notification.title).isEqualTo("Notification title")
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun notification_getText_returnsText() {
+        val notification = Notification.Builder("Notification title", "Notification text").build()
+
+        assertThat(notification.text).isEqualTo("Notification text")
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun notification_getActions_withDefaultBuilder_returnsEmptyList() {
+        val notification = Notification.Builder("", "").build()
+
+        assertThat(notification.actions).isEmpty()
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun notification_getActions_returnsActions() {
+        val notification =
+            Notification.Builder("", "").addAction(action1).addAction(action2).build()
+
+        assertThat(notification.actions).containsExactly(action1, action2).inOrder()
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun notification_getActions_mutationsAreNotAllowed() {
+        val notification =
+            Notification.Builder("", "").addAction(action1).addAction(action2).build()
+
+        assertFailsWith(UnsupportedOperationException::class) { notification.actions.add(action3) }
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun notification_describeContents_returns0() {
+        val notification =
+            Notification.Builder("Notification title", "Notification text")
+                .addAction(action1)
+                .addAction(action2)
+                .build()
+
+        assertThat(notification.describeContents()).isEqualTo(0)
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun notification_parcelRoundTrip_recreatesEqual() {
+        val notification =
+            Notification.Builder("Notification title", "Notification text")
+                .addAction(action1)
+                .addAction(action2)
+                .build()
+
+        assertThat(notification).recreatesEqual(Notification.CREATOR)
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun notification_builder_withNullTitle_throwsNullPointerException() {
+        assertFailsWith(NullPointerException::class) {
+            Notification.Builder(Generic.asNull(), "Notification text")
+        }
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun notification_builder_withNullText_throwsNullPointerException() {
+        assertFailsWith(NullPointerException::class) {
+            Notification.Builder("Notification title", Generic.asNull())
+        }
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun notification_builder_addAction_doesNotMutatePreviouslyBuiltInstance() {
+        val notificationBuilder = Notification.Builder("", "").addAction(action1)
+        val actions = notificationBuilder.build().actions
+
+        notificationBuilder.addAction(action2)
+
+        assertThat(actions).containsExactly(action1)
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun notification_builder_addAction_withNull_throwsIllegalArgumentException() {
+        assertFailsWith(NullPointerException::class) {
+            Notification.Builder("", "").addAction(Generic.asNull())
+        }
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun notification_builder_setActions_withNull_throwsIllegalArgumentException() {
+        assertFailsWith(NullPointerException::class) {
+            Notification.Builder("", "").setActions(Generic.asNull())
+        }
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun notification_builder_setActions_removesAllPreviouslyAddedActions() {
+        val notification =
+            Notification.Builder("", "")
+                .addAction(action1)
+                .addAction(action2)
+                .setActions(listOf(action3))
+                .build()
+
+        assertThat(notification.actions).containsExactly(action3)
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun notification_builder_clearActions_removesAllActions() {
+        val notification =
+            Notification.Builder("", "")
+                .addAction(action1)
+                .addAction(action2)
+                .clearActions()
+                .addAction(action3)
+                .build()
+
+        assertThat(notification.actions).containsExactly(action3)
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun notification_build_withDuplicateActionIds_throwsIllegalArgumentException() {
+        val notificationBuilder =
+            Notification.Builder("Notification title", "Notification text")
+                .addAction(action1)
+                .addAction(action1)
+
+        val exception =
+            assertFailsWith(IllegalArgumentException::class) { notificationBuilder.build() }
+        assertThat(exception)
+            .hasMessageThat()
+            .isEqualTo("Custom notification cannot have duplicate action ids")
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun notification_build_withMoreThanTwoActions_throwsIllegalArgumentException() {
+        val notificationBuilder =
+            Notification.Builder("Notification title", "Notification text")
+                .addAction(action1)
+                .addAction(action2)
+                .addAction(action3)
+
+        val exception =
+            assertFailsWith(IllegalArgumentException::class) { notificationBuilder.build() }
+        assertThat(exception)
+            .hasMessageThat()
+            .isEqualTo("Custom notification must not contain more than 2 actions")
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun notification_equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
+        EqualsHashCodeToStringTester()
+            .addEqualityGroup(
+                Notification.Builder("Title", "Text").build(),
+                Notification.Builder("Title", "Text").build(),
+            )
+            .addEqualityGroup(Notification.Builder("Other title", "Text").build())
+            .addEqualityGroup(Notification.Builder("Title", "Other text").build())
+            .addEqualityGroup(Notification.Builder("Title", "Text").addAction(action1).build())
+            .addEqualityGroup(Notification.Builder("Title", "Text").addAction(action2).build())
+            .addEqualityGroup(
+                Notification.Builder("Title", "Text").addAction(action1).addAction(action2).build())
+            .test()
+    }
+
+    @Test
     fun getId_returnsId() {
         val safetySourceIssue =
             SafetySourceIssue.Builder(
@@ -253,6 +441,39 @@ class SafetySourceIssueTest {
                 .build()
 
         assertThat(safetySourceIssue.summary).isEqualTo("Issue summary")
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getAttributionTitle_withNullAttributionTitle_returnsNull() {
+        val safetySourceIssue =
+            SafetySourceIssue.Builder(
+                    "Issue id",
+                    "Issue title",
+                    "Issue summary",
+                    SEVERITY_LEVEL_INFORMATION,
+                    "issue_type_id")
+                .addAction(action1)
+                .build()
+
+        assertThat(safetySourceIssue.attributionTitle).isNull()
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getAttributionTitle_returnsAttributionTitle() {
+        val safetySourceIssue =
+            SafetySourceIssue.Builder(
+                    "Issue id",
+                    "Issue title",
+                    "Issue summary",
+                    SEVERITY_LEVEL_INFORMATION,
+                    "issue_type_id")
+                .addAction(action1)
+                .setAttributionTitle("attribution title")
+                .build()
+
+        assertThat(safetySourceIssue.attributionTitle).isEqualTo("attribution title")
     }
 
     @Test
@@ -413,6 +634,98 @@ class SafetySourceIssueTest {
                 .build()
 
         assertThat(safetySourceIssue.issueTypeId).isEqualTo("issue_type_id")
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getCustomNotification_withDefaultBuilder_returnsNull() {
+        val safetySourceIssue =
+            SafetySourceIssue.Builder(
+                    "Issue id",
+                    "Issue title",
+                    "Issue summary",
+                    SEVERITY_LEVEL_INFORMATION,
+                    "issue_type_id")
+                .addAction(action1)
+                .build()
+
+        assertThat(safetySourceIssue.customNotification).isNull()
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getCustomNotification_whenSetExplicitly_returnsCustomNotification() {
+        val safetySourceIssue =
+            SafetySourceIssue.Builder(
+                    "Issue id",
+                    "Issue title",
+                    "Issue summary",
+                    SEVERITY_LEVEL_INFORMATION,
+                    "issue_type_id")
+                .addAction(action1)
+                .setCustomNotification(
+                    Notification.Builder("Notification title", "Notification text")
+                        .addAction(action2)
+                        .build())
+                .build()
+
+        assertThat(safetySourceIssue.customNotification)
+            .isEqualTo(
+                Notification.Builder("Notification title", "Notification text")
+                    .addAction(action2)
+                    .build())
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getNotificationBehavior_withDefaultBuilder_returnsUnspecified() {
+        val safetySourceIssue =
+            SafetySourceIssue.Builder(
+                    "Issue id",
+                    "Issue title",
+                    "Issue summary",
+                    SEVERITY_LEVEL_INFORMATION,
+                    "issue_type_id")
+                .addAction(action1)
+                .build()
+
+        assertThat(safetySourceIssue.notificationBehavior)
+            .isEqualTo(SafetySourceIssue.NOTIFICATION_BEHAVIOR_UNSPECIFIED)
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getNotificationBehavior_whenSetExplicitly_returnsSpecifiedBehavior() {
+        val safetySourceIssue =
+            SafetySourceIssue.Builder(
+                    "Issue id",
+                    "Issue title",
+                    "Issue summary",
+                    SEVERITY_LEVEL_INFORMATION,
+                    "issue_type_id")
+                .addAction(action1)
+                .setNotificationBehavior(SafetySourceIssue.NOTIFICATION_BEHAVIOR_NEVER)
+                .build()
+
+        assertThat(safetySourceIssue.notificationBehavior)
+            .isEqualTo(SafetySourceIssue.NOTIFICATION_BEHAVIOR_NEVER)
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun setNotificationBehavior_withInvalidNotificationBehavior_throwsIllegalArgumentException() {
+        val builder =
+            SafetySourceIssue.Builder(
+                "Issue id",
+                "Issue title",
+                "Issue summary",
+                SEVERITY_LEVEL_INFORMATION,
+                "issue_type_id")
+        val exception =
+            assertFailsWith(IllegalArgumentException::class) { builder.setNotificationBehavior(-1) }
+        assertThat(exception)
+            .hasMessageThat()
+            .isEqualTo("Unexpected NotificationBehavior for SafetySourceIssue: -1")
     }
 
     @Test
@@ -625,7 +938,128 @@ class SafetySourceIssueTest {
     }
 
     @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun parcelRoundTrip_recreatesEqual_atLeastUpsideDownCake() {
+        val safetySourceIssue =
+            SafetySourceIssue.Builder(
+                    "Issue id",
+                    "Issue title",
+                    "Issue summary",
+                    SEVERITY_LEVEL_INFORMATION,
+                    "issue_type_id")
+                .setSubtitle("Issue subtitle")
+                .setIssueCategory(ISSUE_CATEGORY_ACCOUNT)
+                .addAction(action1)
+                .addAction(action2)
+                .setOnDismissPendingIntent(pendingIntentService)
+                .setCustomNotification(
+                    Notification.Builder("Notification title", "Notification text")
+                        .addAction(action2)
+                        .build())
+                .setNotificationBehavior(SafetySourceIssue.NOTIFICATION_BEHAVIOR_DELAYED)
+                .setAttributionTitle("attribution title")
+                .build()
+
+        assertThat(safetySourceIssue).recreatesEqual(SafetySourceIssue.CREATOR)
+    }
+
+    @Test
     fun equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
+        newTiramisuEqualsHashCodeToStringTester().test()
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun equalsHashCodeToString_usingEqualsHashCodeToStringTester_atLeastUpsideDownCake() {
+        newUpsideDownCakeEqualsHashCodeToStringTester().test()
+    }
+
+    /**
+     * Creates a new [EqualsHashCodeToStringTester] instance with all the equality groups in the
+     * [newTiramisuEqualsHashCodeToStringTester] plus new equality groups covering all of the new fields added in U.
+     */
+    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+    private fun newUpsideDownCakeEqualsHashCodeToStringTester() =
+        newTiramisuEqualsHashCodeToStringTester()
+            .addEqualityGroup(
+                SafetySourceIssue.Builder(
+                        "Issue id",
+                        "Issue title",
+                        "Issue summary",
+                        SEVERITY_LEVEL_INFORMATION,
+                        "issue_type_id")
+                    .setSubtitle("Issue subtitle")
+                    .setIssueCategory(ISSUE_CATEGORY_ACCOUNT)
+                    .addAction(action1)
+                    .addAction(action2)
+                    .setOnDismissPendingIntent(pendingIntentService)
+                    .setNotificationBehavior(SafetySourceIssue.NOTIFICATION_BEHAVIOR_DELAYED)
+                    .setCustomNotification(
+                        Notification.Builder("Notification title", "Notification text")
+                            .addAction(action2)
+                            .build())
+                    .build())
+            .addEqualityGroup(
+                SafetySourceIssue.Builder(
+                        "Issue id",
+                        "Issue title",
+                        "Issue summary",
+                        SEVERITY_LEVEL_INFORMATION,
+                        "issue_type_id")
+                    .setSubtitle("Issue subtitle")
+                    .setIssueCategory(ISSUE_CATEGORY_ACCOUNT)
+                    .addAction(action1)
+                    .addAction(action2)
+                    .setOnDismissPendingIntent(pendingIntentService)
+                    .setNotificationBehavior(SafetySourceIssue.NOTIFICATION_BEHAVIOR_IMMEDIATELY)
+                    .setCustomNotification(
+                        Notification.Builder("Other title", "Other text")
+                            .addAction(action2)
+                            .build())
+                    .build())
+            .addEqualityGroup(
+                SafetySourceIssue.Builder(
+                        "Issue id",
+                        "Issue title",
+                        "Issue summary",
+                        SEVERITY_LEVEL_INFORMATION,
+                        "issue_type_id")
+                    .setSubtitle("Issue subtitle")
+                    .setIssueCategory(ISSUE_CATEGORY_ACCOUNT)
+                    .addAction(action1)
+                    .addAction(action2)
+                    .setOnDismissPendingIntent(pendingIntentService)
+                    .setAttributionTitle("attribution title")
+                    .build(),
+                SafetySourceIssue.Builder(
+                        "Issue id",
+                        "Issue title",
+                        "Issue summary",
+                        SEVERITY_LEVEL_INFORMATION,
+                        "issue_type_id")
+                    .setSubtitle("Issue subtitle")
+                    .setIssueCategory(ISSUE_CATEGORY_ACCOUNT)
+                    .addAction(action1)
+                    .addAction(action2)
+                    .setOnDismissPendingIntent(pendingIntentService)
+                    .setAttributionTitle("attribution title")
+                    .build())
+            .addEqualityGroup(
+                SafetySourceIssue.Builder(
+                        "Issue id",
+                        "Issue title",
+                        "Issue summary",
+                        SEVERITY_LEVEL_CRITICAL_WARNING,
+                        "issue_type_id")
+                    .setAttributionTitle("Other issue attribution title")
+                    .addAction(action1)
+                    .build())
+
+    /**
+     * Creates a new [EqualsHashCodeToStringTester] instance which covers all the fields in the T
+     * API and is safe to use on any T+ API level.
+     */
+    private fun newTiramisuEqualsHashCodeToStringTester() =
         EqualsHashCodeToStringTester()
             .addEqualityGroup(
                 SafetySourceIssue.Builder(
@@ -769,6 +1203,4 @@ class SafetySourceIssueTest {
                         PendingIntent.getService(
                             context, 0, Intent("Other PendingIntent service"), FLAG_IMMUTABLE))
                     .build())
-            .test()
-    }
 }

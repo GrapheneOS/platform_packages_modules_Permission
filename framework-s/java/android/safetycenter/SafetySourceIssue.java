@@ -17,6 +17,7 @@
 package android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
+import static android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
 
 import static com.android.internal.util.Preconditions.checkArgument;
 
@@ -28,12 +29,16 @@ import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.SuppressLint;
 import android.annotation.SystemApi;
+import android.annotation.TargetApi;
 import android.app.PendingIntent;
+import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.TextUtils;
 
 import androidx.annotation.RequiresApi;
+
+import com.android.modules.utils.build.SdkLevel;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -88,6 +93,46 @@ public final class SafetySourceIssue implements Parcelable {
     @Retention(RetentionPolicy.SOURCE)
     public @interface IssueCategory {}
 
+    /** Value signifying that the source has not specified a particular notification behavior. */
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    public static final int NOTIFICATION_BEHAVIOR_UNSPECIFIED = 0;
+
+    /** An issue which Safety Center should never notify the user about. */
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    public static final int NOTIFICATION_BEHAVIOR_NEVER = 100;
+
+    /**
+     * An issue which Safety Center may notify the user about after a delay if it has not been
+     * resolved. Safety Center does not provide any guarantee about the duration of the delay.
+     */
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    public static final int NOTIFICATION_BEHAVIOR_DELAYED = 200;
+
+    /** An issue which Safety Center may notify the user about immediately. */
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    public static final int NOTIFICATION_BEHAVIOR_IMMEDIATELY = 300;
+
+    /**
+     * All possible notification behaviors.
+     *
+     * <p>The notification behavior of a {@link SafetySourceIssue} determines if and when Safety
+     * Center should notify the user about it.
+     *
+     * @hide
+     * @see Builder#setNotificationBehavior(int)
+     */
+    @IntDef(
+            prefix = {"NOTIFICATION_BEHAVIOR_"},
+            value = {
+                NOTIFICATION_BEHAVIOR_UNSPECIFIED,
+                NOTIFICATION_BEHAVIOR_NEVER,
+                NOTIFICATION_BEHAVIOR_DELAYED,
+                NOTIFICATION_BEHAVIOR_IMMEDIATELY
+            })
+    @Retention(RetentionPolicy.SOURCE)
+    @TargetApi(UPSIDE_DOWN_CAKE)
+    public @interface NotificationBehavior {}
+
     @NonNull
     public static final Creator<SafetySourceIssue> CREATOR =
             new Creator<SafetySourceIssue>() {
@@ -111,6 +156,12 @@ public final class SafetySourceIssue implements Parcelable {
                     for (int i = 0; i < actions.size(); i++) {
                         builder.addAction(actions.get(i));
                     }
+                    if (SdkLevel.isAtLeastU()) {
+                        builder.setCustomNotification(in.readTypedObject(Notification.CREATOR));
+                        builder.setNotificationBehavior(in.readInt());
+                        builder.setAttributionTitle(
+                                TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in));
+                    }
                     return builder.build();
                 }
 
@@ -129,6 +180,9 @@ public final class SafetySourceIssue implements Parcelable {
     @Nullable private final PendingIntent mOnDismissPendingIntent;
     @IssueCategory private final int mIssueCategory;
     @NonNull private final String mIssueTypeId;
+    @Nullable private final Notification mCustomNotification;
+    @NotificationBehavior private final int mNotificationBehavior;
+    @Nullable private final CharSequence mAttributionTitle;
 
     private SafetySourceIssue(
             @NonNull String id,
@@ -139,7 +193,10 @@ public final class SafetySourceIssue implements Parcelable {
             @IssueCategory int issueCategory,
             @NonNull List<Action> actions,
             @Nullable PendingIntent onDismissPendingIntent,
-            @NonNull String issueTypeId) {
+            @NonNull String issueTypeId,
+            @Nullable Notification customNotification,
+            @NotificationBehavior int notificationBehavior,
+            @Nullable CharSequence attributionTitle) {
         this.mId = id;
         this.mTitle = title;
         this.mSubtitle = subtitle;
@@ -149,6 +206,9 @@ public final class SafetySourceIssue implements Parcelable {
         this.mActions = actions;
         this.mOnDismissPendingIntent = onDismissPendingIntent;
         this.mIssueTypeId = issueTypeId;
+        this.mCustomNotification = customNotification;
+        this.mNotificationBehavior = notificationBehavior;
+        this.mAttributionTitle = attributionTitle;
     }
 
     /**
@@ -181,6 +241,22 @@ public final class SafetySourceIssue implements Parcelable {
     @NonNull
     public CharSequence getSummary() {
         return mSummary;
+    }
+
+    /**
+     * Returns the localized attribution title of the issue to be displayed in the UI.
+     *
+     * <p>This is displayed in the UI and helps to attribute issue cards to a particular source. If
+     * this value is {@code null}, the title of the group that contains the Safety Source will be
+     * used.
+     */
+    @Nullable
+    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+    public CharSequence getAttributionTitle() {
+        if (!SdkLevel.isAtLeastU()) {
+            throw new UnsupportedOperationException();
+        }
+        return mAttributionTitle;
     }
 
     /** Returns the {@link SafetySourceData.SeverityLevel} of the issue. */
@@ -243,6 +319,58 @@ public final class SafetySourceIssue implements Parcelable {
         return mIssueTypeId;
     }
 
+    /**
+     * Returns the optional custom {@link Notification} for this issue which overrides the title,
+     * text and actions for any {@link android.app.Notification} generated for this {@link
+     * SafetySourceIssue}.
+     *
+     * <p>Safety Center may still generate a default notification from the other details of this
+     * issue when no custom notification has been set. See {@link #getNotificationBehavior()} for
+     * details
+     *
+     * @see Builder#setCustomNotification(android.safetycenter.SafetySourceIssue.Notification
+     * @see #getNotificationBehavior()
+     */
+    @Nullable
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    public Notification getCustomNotification() {
+        if (!SdkLevel.isAtLeastU()) {
+            throw new UnsupportedOperationException();
+        }
+        return mCustomNotification;
+    }
+
+    /**
+     * Returns the {@link NotificationBehavior} for this issue which determines if and when Safety
+     * Center will post a notification for this issue.
+     *
+     * <p>Any notification will be based on the {@link #getCustomNotification()} if set, or the
+     * other properties of this issue otherwise.
+     *
+     * <ul>
+     *   <li>If {@link #NOTIFICATION_BEHAVIOR_IMMEDIATELY} then Safety Center will immediately
+     *       create and post a notification
+     *   <li>If {@link #NOTIFICATION_BEHAVIOR_DELAYED} then a notification will only be posted after
+     *       a delay, if this issue has not been resolved.
+     *   <li>If {@link #NOTIFICATION_BEHAVIOR_UNSPECIFIED} then a notification may or may not be
+     *       posted, the exact behavior is defined by Safety Center.
+     *   <li>If {@link #NOTIFICATION_BEHAVIOR_NEVER} Safety Center will never post a notification
+     *       about this issue. Sources should specify this behavior when they wish to handle their
+     *       own notifications. When this behavior is set sources should not set a custom
+     *       notification.
+     * </ul>
+     *
+     * @see Builder#setNotificationBehavior(int)
+     */
+    @NotificationBehavior
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    public int getNotificationBehavior() {
+        if (!SdkLevel.isAtLeastU()) {
+            throw new UnsupportedOperationException();
+        }
+        return mNotificationBehavior;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -259,6 +387,11 @@ public final class SafetySourceIssue implements Parcelable {
         dest.writeTypedList(mActions);
         dest.writeTypedObject(mOnDismissPendingIntent, flags);
         dest.writeString(mIssueTypeId);
+        if (SdkLevel.isAtLeastU()) {
+            dest.writeTypedObject(mCustomNotification, flags);
+            dest.writeInt(mNotificationBehavior);
+            TextUtils.writeToParcel(mAttributionTitle, dest, flags);
+        }
     }
 
     @Override
@@ -274,7 +407,10 @@ public final class SafetySourceIssue implements Parcelable {
                 && mIssueCategory == that.mIssueCategory
                 && mActions.equals(that.mActions)
                 && Objects.equals(mOnDismissPendingIntent, that.mOnDismissPendingIntent)
-                && TextUtils.equals(mIssueTypeId, that.mIssueTypeId);
+                && TextUtils.equals(mIssueTypeId, that.mIssueTypeId)
+                && Objects.equals(mCustomNotification, that.mCustomNotification)
+                && mNotificationBehavior == that.mNotificationBehavior
+                && TextUtils.equals(mAttributionTitle, that.mAttributionTitle);
     }
 
     @Override
@@ -288,7 +424,10 @@ public final class SafetySourceIssue implements Parcelable {
                 mIssueCategory,
                 mActions,
                 mOnDismissPendingIntent,
-                mIssueTypeId);
+                mIssueTypeId,
+                mCustomNotification,
+                mNotificationBehavior,
+                mAttributionTitle);
     }
 
     @Override
@@ -312,6 +451,12 @@ public final class SafetySourceIssue implements Parcelable {
                 + mOnDismissPendingIntent
                 + ", mIssueTypeId="
                 + mIssueTypeId
+                + ", mCustomNotification="
+                + mCustomNotification
+                + ", mNotificationBehavior="
+                + mNotificationBehavior
+                + ", mAttributionTitle="
+                + mAttributionTitle
                 + '}';
     }
 
@@ -348,6 +493,18 @@ public final class SafetySourceIssue implements Parcelable {
                         return new Action[size];
                     }
                 };
+
+        private static void enforceUniqueActionIds(
+                @NonNull List<SafetySourceIssue.Action> actions, @NonNull String message) {
+            Set<String> actionIds = new HashSet<>();
+            for (int i = 0; i < actions.size(); i++) {
+                SafetySourceIssue.Action action = actions.get(i);
+
+                String actionId = action.getId();
+                checkArgument(!actionIds.contains(actionId), message);
+                actionIds.add(actionId);
+            }
+        }
 
         @NonNull private final String mId;
         @NonNull private final CharSequence mLabel;
@@ -511,6 +668,176 @@ public final class SafetySourceIssue implements Parcelable {
         }
     }
 
+    /**
+     * Data for Safety Center to use when constructing a system {@link android.app.Notification}
+     * about a related {@link SafetySourceIssue}.
+     *
+     * <p>Safety Center can construct a default notification for any issue, but sources may use
+     * {@link Builder#setCustomNotification(android.safetycenter.SafetySourceIssue.Notification)} if
+     * they want to override the title, text or actions.
+     *
+     * @see #getCustomNotification()
+     * @see Builder#setCustomNotification(android.safetycenter.SafetySourceIssue.Notification)
+     * @see #getNotificationBehavior()
+     */
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    public static final class Notification implements Parcelable {
+
+        @NonNull
+        public static final Creator<Notification> CREATOR =
+                new Creator<Notification>() {
+                    @Override
+                    public Notification createFromParcel(Parcel in) {
+                        return new Builder(
+                                        TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in),
+                                        TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in))
+                                .setActions(in.createTypedArrayList(Action.CREATOR))
+                                .build();
+                    }
+
+                    @Override
+                    public Notification[] newArray(int size) {
+                        return new Notification[size];
+                    }
+                };
+
+        @NonNull private final CharSequence mTitle;
+        @NonNull private final CharSequence mText;
+        @NonNull private final List<Action> mActions;
+
+        private Notification(
+                @NonNull CharSequence title,
+                @NonNull CharSequence text,
+                @NonNull List<Action> actions) {
+            mTitle = title;
+            mText = text;
+            mActions = actions;
+        }
+
+        /**
+         * Custom title which will be used instead of {@link SafetySourceIssue#getTitle()} when
+         * building a {@link android.app.Notification} for this issue.
+         */
+        @NonNull
+        public CharSequence getTitle() {
+            return mTitle;
+        }
+
+        /**
+         * Custom text which will be used instead of {@link SafetySourceIssue#getSummary()} when
+         * building a {@link android.app.Notification} for this issue.
+         */
+        @NonNull
+        public CharSequence getText() {
+            return mText;
+        }
+
+        /**
+         * Custom list of {@link Action} instances which will be used instead of {@link
+         * SafetySourceIssue#getActions()} when building a {@link android.app.Notification} for this
+         * issue.
+         *
+         * <p>If this list is empty then the resulting {@link android.app.Notification} will have
+         * zero action buttons.
+         */
+        @NonNull
+        public List<Action> getActions() {
+            return mActions;
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(@NonNull Parcel dest, int flags) {
+            TextUtils.writeToParcel(mTitle, dest, flags);
+            TextUtils.writeToParcel(mText, dest, flags);
+            dest.writeTypedList(mActions);
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof Notification)) return false;
+            Notification that = (Notification) o;
+            return TextUtils.equals(mTitle, that.mTitle)
+                    && TextUtils.equals(mText, that.mText)
+                    && mActions.equals(that.mActions);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(mTitle, mText, mActions);
+        }
+
+        @Override
+        public String toString() {
+            return "Notification{"
+                    + "mTitle="
+                    + mTitle
+                    + ", mText="
+                    + mText
+                    + ", mActions="
+                    + mActions
+                    + '}';
+        }
+
+        /** Builder for {@link SafetySourceIssue.Notification}. */
+        public static final class Builder {
+
+            @NonNull private final CharSequence mTitle;
+            @NonNull private final CharSequence mText;
+            @NonNull private final List<Action> mActions = new ArrayList<>();
+
+            public Builder(@NonNull CharSequence title, @NonNull CharSequence text) {
+                mTitle = requireNonNull(title);
+                mText = requireNonNull(text);
+            }
+
+            /** Adds an {@link Action} to be show on the custom {@link Notification}. */
+            @NonNull
+            public Builder addAction(@NonNull Action action) {
+                mActions.add(requireNonNull(action));
+                return this;
+            }
+
+            /**
+             * Sets the list of {@link Action}s to be show on the custom {@link Notification},
+             * removing any which were previously added.
+             */
+            @NonNull
+            public Builder setActions(@NonNull List<Action> actions) {
+                mActions.clear();
+                mActions.addAll(requireNonNull(actions));
+                return this;
+            }
+
+            /**
+             * Clears all the {@link Action}s that were added to this custom {@link
+             * Notification.Builder}.
+             */
+            @NonNull
+            public Builder clearActions() {
+                mActions.clear();
+                return this;
+            }
+
+            /** Builds a {@link Notification} instance. */
+            @NonNull
+            public Notification build() {
+                List<Action> actions = unmodifiableList(new ArrayList<>(mActions));
+                Action.enforceUniqueActionIds(
+                        actions, "Custom notification cannot have duplicate action ids");
+                checkArgument(
+                        actions.size() <= 2,
+                        "Custom notification must not contain more than 2 actions");
+                return new Notification(mTitle, mText, actions);
+            }
+        }
+    }
+
     /** Builder class for {@link SafetySourceIssue}. */
     public static final class Builder {
 
@@ -524,6 +851,13 @@ public final class SafetySourceIssue implements Parcelable {
         @Nullable private CharSequence mSubtitle;
         @IssueCategory private int mIssueCategory = ISSUE_CATEGORY_GENERAL;
         @Nullable private PendingIntent mOnDismissPendingIntent;
+        @Nullable private CharSequence mAttributionTitle;
+
+        @Nullable private Notification mCustomNotification = null;
+
+        @SuppressLint("NewApi")
+        @NotificationBehavior
+        private int mNotificationBehavior = NOTIFICATION_BEHAVIOR_UNSPECIFIED;
 
         /** Creates a {@link Builder} for a {@link SafetySourceIssue}. */
         public Builder(
@@ -543,6 +877,23 @@ public final class SafetySourceIssue implements Parcelable {
         @NonNull
         public Builder setSubtitle(@Nullable CharSequence subtitle) {
             mSubtitle = subtitle;
+            return this;
+        }
+
+        /**
+         * Sets or clears the optional attribution title for this issue.
+         *
+         * <p>This is displayed in the UI and helps to attribute an issue to a particular source. If
+         * this value is {@code null}, the title of the group that contains the Safety Source will
+         * be used.
+         */
+        @NonNull
+        @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+        public Builder setAttributionTitle(@Nullable CharSequence attributionTitle) {
+            if (!SdkLevel.isAtLeastU()) {
+                throw new UnsupportedOperationException();
+            }
+            mAttributionTitle = attributionTitle;
             return this;
         }
 
@@ -590,11 +941,57 @@ public final class SafetySourceIssue implements Parcelable {
             return this;
         }
 
+        /**
+         * Sets a custom {@link Notification} for this issue.
+         *
+         * <p>Using a custom {@link Notification} a source may specify a different {@link
+         * Notification#getTitle()}, {@link Notification#getText()} and {@link
+         * Notification#getActions()} for Safety Center to use when constructing a notification for
+         * this issue.
+         *
+         * <p>Safety Center may still generate a default notification from the other details of this
+         * issue when no custom notification has been set, depending on the issue's {@link
+         * #getNotificationBehavior()}.
+         *
+         * @see #getCustomNotification()
+         * @see #setNotificationBehavior(int)
+         */
+        @NonNull
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        public Builder setCustomNotification(@Nullable Notification customNotification) {
+            if (!SdkLevel.isAtLeastU()) {
+                throw new UnsupportedOperationException();
+            }
+            mCustomNotification = customNotification;
+            return this;
+        }
+
+        /**
+         * Sets the notification behavior of the issue.
+         *
+         * <p>Must be one of {@link #NOTIFICATION_BEHAVIOR_UNSPECIFIED}, {@link
+         * #NOTIFICATION_BEHAVIOR_NEVER}, {@link #NOTIFICATION_BEHAVIOR_DELAYED} or {@link
+         * #NOTIFICATION_BEHAVIOR_IMMEDIATELY}. See {@link #getNotificationBehavior()} for details
+         * of how Safety Center will interpret each of these.
+         *
+         * @see #getNotificationBehavior()
+         */
+        @NonNull
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        public Builder setNotificationBehavior(@NotificationBehavior int notificationBehavior) {
+            if (!SdkLevel.isAtLeastU()) {
+                throw new UnsupportedOperationException();
+            }
+            mNotificationBehavior = validateNotificationBehavior(notificationBehavior);
+            return this;
+        }
+
         /** Creates the {@link SafetySourceIssue} defined by this {@link Builder}. */
         @NonNull
         public SafetySourceIssue build() {
             List<SafetySourceIssue.Action> actions = unmodifiableList(new ArrayList<>(mActions));
-            enforceUniqueActionIds(actions);
+            Action.enforceUniqueActionIds(
+                    actions, "Safety source issue cannot have duplicate action ids");
             checkArgument(!actions.isEmpty(), "Safety source issue must contain at least 1 action");
             checkArgument(
                     actions.size() <= 2,
@@ -608,21 +1005,10 @@ public final class SafetySourceIssue implements Parcelable {
                     mIssueCategory,
                     actions,
                     mOnDismissPendingIntent,
-                    mIssueTypeId);
-        }
-
-        private static void enforceUniqueActionIds(
-                @NonNull List<SafetySourceIssue.Action> actions) {
-            Set<String> actionIds = new HashSet<>();
-            for (int i = 0; i < actions.size(); i++) {
-                SafetySourceIssue.Action action = actions.get(i);
-
-                String actionId = action.getId();
-                checkArgument(
-                        !actionIds.contains(actionId),
-                        "Safety source issue cannot have duplicate action ids");
-                actionIds.add(actionId);
-            }
+                    mIssueTypeId,
+                    mCustomNotification,
+                    mNotificationBehavior,
+                    mAttributionTitle);
         }
     }
 
@@ -654,5 +1040,19 @@ public final class SafetySourceIssue implements Parcelable {
         }
         throw new IllegalArgumentException(
                 "Unexpected IssueCategory for SafetySourceIssue: " + value);
+    }
+
+    @NotificationBehavior
+    private static int validateNotificationBehavior(int value) {
+        switch (value) {
+            case NOTIFICATION_BEHAVIOR_UNSPECIFIED:
+            case NOTIFICATION_BEHAVIOR_NEVER:
+            case NOTIFICATION_BEHAVIOR_DELAYED:
+            case NOTIFICATION_BEHAVIOR_IMMEDIATELY:
+                return value;
+            default:
+        }
+        throw new IllegalArgumentException(
+                "Unexpected NotificationBehavior for SafetySourceIssue: " + value);
     }
 }

@@ -21,6 +21,7 @@ import static android.Manifest.permission.READ_SAFETY_CENTER_STATUS;
 import static android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE;
 import static android.annotation.SdkConstant.SdkConstantType.BROADCAST_INTENT_ACTION;
 import static android.os.Build.VERSION_CODES.TIRAMISU;
+import static android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
 
 import static java.util.Objects.requireNonNull;
 
@@ -195,10 +196,19 @@ public final class SafetyCenterManager {
      * disambiguate personal profile vs. managed profiles issues).
      *
      * <p>This extra can be used in conjunction with {@link #EXTRA_SAFETY_SOURCE_ISSUE_ID} and
-     * {@link #EXTRA_SAFETY_SOURCE_ID}. Otherwise, no redirection will occur.
+     * {@link #EXTRA_SAFETY_SOURCE_ID}. Otherwise, the device's primary user will be used.
      */
     public static final String EXTRA_SAFETY_SOURCE_USER_HANDLE =
             "android.safetycenter.extra.SAFETY_SOURCE_USER_HANDLE";
+
+    /**
+     * Used as a {@code String} extra field in {@link Intent#ACTION_SAFETY_CENTER} intents to
+     * specify the ID for a group of safety sources. If applicable, this will redirect to the
+     * group's corresponding subpage in the UI.
+     */
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    public static final String EXTRA_SAFETY_SOURCES_GROUP_ID =
+            "android.safetycenter.extra.SAFETY_SOURCES_GROUP_ID";
 
     /**
      * Used as an int value for {@link #EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE} to indicate that

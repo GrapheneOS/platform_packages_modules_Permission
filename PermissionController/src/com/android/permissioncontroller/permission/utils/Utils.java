@@ -935,7 +935,7 @@ public final class Utils {
     @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codename = "UpsideDownCake")
     public static boolean isHealthPermissionUiEnabled() {
         return SdkLevel.isAtLeastU() && DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
-                PROPERTY_HEALTH_PERMISSION_UI_ENABLED, false);
+                PROPERTY_HEALTH_PERMISSION_UI_ENABLED, true);
     }
 
     /**

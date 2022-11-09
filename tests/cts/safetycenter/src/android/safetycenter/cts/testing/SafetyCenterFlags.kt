@@ -161,6 +161,13 @@ object SafetyCenterFlags {
             defaultValue = PackageManager.DONT_KILL_APP,
             IntParser())
 
+    /**
+     * Flag that determines whether to show subpages in the Safety Center UI instead of the
+     * expand-and-collapse list.
+     */
+    private val showSubpagesFlag =
+        Flag("safety_center_show_subpages", defaultValue = false, BooleanParser())
+
     /** Every Safety Center flag. */
     private val FLAGS: List<Flag<*>> =
         listOf(
@@ -176,7 +183,8 @@ object SafetyCenterFlags {
             issueCategoryAllowlistsFlag,
             backgroundRefreshDeniedSourcesFlag,
             allowStatsdLoggingInTestsFlag,
-            qsTileComponentSettingFlag)
+            qsTileComponentSettingFlag,
+            showSubpagesFlag)
 
     /** Returns whether the device supports Safety Center. */
     fun Context.deviceSupportsSafetyCenter() =
@@ -218,6 +226,9 @@ object SafetyCenterFlags {
 
     /** A property that allows getting and setting the [allowStatsdLoggingInTestsFlag]. */
     var allowStatsdLoggingInTests: Boolean by allowStatsdLoggingInTestsFlag
+
+    /** A property that allows getting and setting the [showSubpagesFlag]. */
+    var showSubpages: Boolean by showSubpagesFlag
 
     /**
      * Returns a snapshot of all the Safety Center flags.
