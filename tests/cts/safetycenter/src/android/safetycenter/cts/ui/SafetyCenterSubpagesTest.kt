@@ -32,9 +32,12 @@ import android.support.test.uiautomator.By
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
+import com.android.compatibility.common.util.DisableAnimationRule
+import com.android.compatibility.common.util.FreezeRotationRule
 import org.junit.After
 import org.junit.Assume.assumeTrue
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -42,6 +45,11 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
 class SafetyCenterSubpagesTest {
+
+    @get:Rule val disableAnimationRule = DisableAnimationRule()
+
+    @get:Rule val freezeRotationRule = FreezeRotationRule()
+
     private val context: Context = getApplicationContext()
     private val safetyCenterCtsHelper = SafetyCenterCtsHelper(context)
 

@@ -42,13 +42,8 @@ class UidPermissionPolicy : SchemePolicy() {
     override fun getDecision(subject: AccessUri, `object`: AccessUri, state: AccessState): Int {
         subject as UidUri
         `object` as PermissionUri
-        val flags = state.userStates[subject.userId]?.permissionFlags?.get(subject.appId)
-            ?.get(`object`.permissionName) ?: return PermissionFlags.DENIED
-        return when (flags) {
-            // TODO
-            0 -> PermissionFlags.DENIED
-            else -> error(flags)
-        }
+        return state.userStates[subject.userId]?.permissionFlags?.get(subject.appId)
+            ?.get(`object`.permissionName) ?: 0
     }
 
     override fun setDecision(
@@ -62,27 +57,27 @@ class UidPermissionPolicy : SchemePolicy() {
         `object` as PermissionUri
         val uidFlags = newState.userStates.getOrPut(subject.userId) { UserState() }
             .permissionFlags.getOrPut(subject.appId) { IndexedMap() }
-        val flags = when (decision) {
-            // TODO
-            PermissionFlags.DENIED -> 0
-            else -> error(decision)
-        }
-        uidFlags[`object`.permissionName] = flags
+        uidFlags[`object`.permissionName] = decision
     }
 
     override fun onUserAdded(userId: Int, oldState: AccessState, newState: AccessState) {
-        // NOTE: This adds UPDATE_PERMISSIONS_REPLACE_PKG
-        // updateAllPermissions(StorageManager.UUID_PRIVATE_INTERNAL, true)
+        newState.systemState.packageStates.forEachValueIndexed {
+            _, packageState -> // TODO: evaluatePermissionState()
+        }
     }
 
-    override fun onUserRemoved(userId: Int, oldState: AccessState, newState: AccessState) {}
+    override fun onUserRemoved(userId: Int, oldState: AccessState, newState: AccessState) {
+        newState.userStates -= userId
+    }
 
     override fun onAppIdAdded(appId: Int, oldState: AccessState, newState: AccessState) {
-        // TODO
+        newState.userStates.forEachIndexed { _, _, userState ->
+            userState.permissionFlags.getOrPut(appId) { IndexedMap() }
+        }
     }
 
     override fun onAppIdRemoved(appId: Int, oldState: AccessState, newState: AccessState) {
-        // TODO
+        newState.userStates.forEachIndexed { _, _, userState -> userState.permissionFlags -= appId }
     }
 
     override fun onPackageAdded(
@@ -94,8 +89,8 @@ class UidPermissionPolicy : SchemePolicy() {
         addPermissionGroups(packageState, newState)
         addPermissions(packageState, newState)
         // TODO: revokeStoragePermissionsIfScopeExpandedInternal()
-        // TODO: Changed: updatePermissions() equivalent here to create permission state
-        //  immediately.
+        trimPermissions(packageState.packageName, newState)
+        // TODO: evaluatePermissionState(packageState, oldState, newState, null)
     }
 
     private fun adoptPermissions(packageState: PackageState, newState: AccessState) {
@@ -116,7 +111,7 @@ class UidPermissionPolicy : SchemePolicy() {
                         this.packageName = packageName
                         protectionLevel = oldPermission.permissionInfo.protectionLevel
                     }
-                    val newPermission = Permission(newPermissionInfo, oldPermission.type, false)
+                    val newPermission = Permission(newPermissionInfo, false, oldPermission.type, 0)
                     permissions.setValueAt(i, newPermission)
                 }
             }
@@ -227,7 +222,7 @@ class UidPermissionPolicy : SchemePolicy() {
                 if (oldPermission.type == Permission.TYPE_CONFIG &&
                     !oldPermission.isReconciled) {
                     // It's a config permission and has no owner, take ownership now.
-                    Permission(newPermissionInfo, Permission.TYPE_CONFIG, true)
+                    Permission(newPermissionInfo, true, Permission.TYPE_CONFIG, packageState.appId)
                 } else if (newState.systemState.packageStates[oldPackageName]?.isSystem != true) {
                     Log.w(
                         LOG_TAG, "Overriding permission $permissionName with new declaration in" +
@@ -241,7 +236,9 @@ class UidPermissionPolicy : SchemePolicy() {
                         }
                     }
                     // TODO: Notify re-evaluation of this permission.
-                    Permission(newPermissionInfo, Permission.TYPE_MANIFEST, true)
+                    Permission(
+                        newPermissionInfo, true, Permission.TYPE_MANIFEST, packageState.appId
+                    )
                 } else {
                     Log.w(
                         LOG_TAG, "Ignoring permission $permissionName declared in system package" +
@@ -254,7 +251,7 @@ class UidPermissionPolicy : SchemePolicy() {
                 // Different from the old implementation, which doesn't update the permission
                 // definition upon app update, but does update it on the next boot, we now
                 // consistently update the permission definition upon app update.
-                Permission(newPermissionInfo, Permission.TYPE_MANIFEST, true)
+                Permission(newPermissionInfo, true, Permission.TYPE_MANIFEST, packageState.appId)
             }
 
             if (parsedPermission.isTree) {
@@ -263,6 +260,75 @@ class UidPermissionPolicy : SchemePolicy() {
                 newState.systemState.permissions[permissionName] = newPermission
             }
         }
+    }
+
+    private fun trimPermissions(packageName: String, newState: AccessState) {
+        val packageState = newState.systemState.packageStates[packageName]
+        val androidPackage = packageState?.androidPackage
+        if (packageState != null && androidPackage == null) {
+            return
+        }
+
+        newState.systemState.permissionTrees.removeAllIndexed {
+            _, permissionTreeName, permissionTree ->
+            permissionTree.packageName == packageName && (
+                packageState == null || androidPackage!!.permissions.none {
+                    it.isTree && it.name == permissionTreeName
+                }
+            )
+        }
+
+        newState.systemState.permissions.removeAllIndexed { i, permissionName, permission ->
+            val updatedPermission = updatePermissionIfDynamic(permission, newState)
+            newState.systemState.permissions.setValueAt(i, updatedPermission)
+            if (updatedPermission.packageName == packageName && (
+                packageState == null || androidPackage!!.permissions.none {
+                    !it.isTree && it.name == permissionName
+                }
+            )) {
+                if (!isPermissionDeclaredByDisabledSystemPackage(permission, newState)) {
+                    newState.userStates.forEachValueIndexed { _, userState ->
+                        userState.permissionFlags.forEachValueIndexed { _, permissionFlags ->
+                            permissionFlags.putWithDefault(
+                                permissionName, permissionFlags.getWithDefault(
+                                    permissionName, 0
+                                ) and PermissionFlags.INSTALL_REVOKED, 0
+                            )
+                        }
+                    }
+                }
+                true
+            } else {
+                false
+            }
+        }
+    }
+
+    private fun isPermissionDeclaredByDisabledSystemPackage(
+        permission: Permission,
+        newState: AccessState
+    ): Boolean {
+        val disabledSystemPackage = newState.systemState
+            .disabledSystemPackageStates[permission.packageName]?.androidPackage ?: return false
+        return disabledSystemPackage.permissions.any {
+            it.name == permission.name && it.protectionLevel == permission.protectionLevel
+        }
+    }
+
+    private fun updatePermissionIfDynamic(
+        permission: Permission,
+        newState: AccessState
+    ): Permission {
+        if (!permission.isDynamic) {
+            return permission
+        }
+        val permissionTree = getPermissionTree(permission.name, newState) ?: return permission
+        @Suppress("DEPRECATION")
+        return permission.copy(
+            permissionInfo = PermissionInfo(permission.permissionInfo).apply {
+                packageName = permissionTree.packageName
+            }, appId = permissionTree.appId, isReconciled = true
+        )
     }
 
     private fun getPermissionTree(permissionName: String, newState: AccessState): Permission? =

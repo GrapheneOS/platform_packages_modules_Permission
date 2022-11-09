@@ -976,7 +976,8 @@ class SafetySourceIssueTest {
 
     /**
      * Creates a new [EqualsHashCodeToStringTester] instance with all the equality groups in the
-     * [newTiramisuEqualsHashCodeToStringTester] plus new equality groups covering all of the new fields added in U.
+     * [newTiramisuEqualsHashCodeToStringTester] plus new equality groups covering all the new
+     * fields added in U.
      */
     @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     private fun newUpsideDownCakeEqualsHashCodeToStringTester() =
