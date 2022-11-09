@@ -33,12 +33,20 @@ class EqualsHashCodeToStringTester(private val hashCodeCanCollide: Boolean = fal
     private val hashCodeTester = EquivalenceTester.of(HASH_CODE_EQUIVALENCE)
 
     fun addEqualityGroup(vararg groups: Any): EqualsHashCodeToStringTester {
-        equalsTester.addEqualityGroup(groups)
-        toStringTester.addEquivalenceGroup(groups)
+        equalsTester.addEqualityGroup(*groups)
+        toStringTester.addEquivalenceGroupAsArray(groups)
         if (!hashCodeCanCollide) {
-            hashCodeTester.addEquivalenceGroup(groups)
+            hashCodeTester.addEquivalenceGroupAsArray(groups)
         }
         return this
+    }
+
+    private fun EquivalenceTester<Any>.addEquivalenceGroupAsArray(input: Array<out Any>) {
+        when (val size = input.size) {
+            0 -> return
+            1 -> addEquivalenceGroup(input[0])
+            else -> addEquivalenceGroup(input[0], *input.copyOfRange(1, size))
+        }
     }
 
     fun test() {
