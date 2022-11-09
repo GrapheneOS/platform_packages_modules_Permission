@@ -19,7 +19,8 @@ package com.android.permissioncontroller.safetycenter.service;
 import static android.app.job.JobScheduler.RESULT_SUCCESS;
 import static android.content.Intent.ACTION_BOOT_COMPLETED;
 import static android.safetycenter.SafetyCenterManager.ACTION_SAFETY_CENTER_ENABLED_CHANGED;
-import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_DEVICE_REBOOT;
+import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_OTHER;
+import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_PERIODIC;
 
 import static com.android.permissioncontroller.Constants.SAFETY_CENTER_BACKGROUND_REFRESH_JOB_ID;
 
@@ -39,6 +40,10 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.android.modules.utils.build.SdkLevel;
+
+import java.time.Duration;
+
 /**
  * Uses {@link android.app.job.JobScheduler} to schedule one-off calls to {@link
  * SafetyCenterManager#refreshSafetySources} after boot completed and after safety center is
@@ -51,12 +56,12 @@ import androidx.annotation.Nullable;
 // TODO(b/243537828): Consider disabling this during other tests in case it makes them flakey
 public final class SafetyCenterBackgroundRefreshJobService extends JobService {
     private static final String TAG = "SafetyCenterBackgroundR";
-
+    private static final Duration DEFAULT_PERIODIC_BACKGROUND_REFRESH_INTERVAL = Duration.ofDays(1);
     /**
      * Schedules a one-off call to {@link SafetyCenterManager#refreshSafetySources} to be run when
      * the device is idle.
      */
-    public static void scheduleOneOffBackgroundRefresh(
+    public static void schedulePeriodicBackgroundRefresh(
             @NonNull Context context, @Nullable String actionString) {
 
         if (!(ACTION_BOOT_COMPLETED.equals(actionString)
@@ -70,18 +75,29 @@ public final class SafetyCenterBackgroundRefreshJobService extends JobService {
             return;
         }
 
-        Log.v(TAG, "Scheduling a one-off background refresh.");
+        Log.v(TAG, "Scheduling a periodic background refresh.");
         JobScheduler jobScheduler = requireNonNull(context.getSystemService(JobScheduler.class));
+        // TODO(b/256610767): Consider adding setPriority(JobInfo.PRIORITY_LOW) and
+        // setRequiresCharging(true)
         JobInfo.Builder builder =
                 (new JobInfo.Builder(
                                 SAFETY_CENTER_BACKGROUND_REFRESH_JOB_ID,
                                 new ComponentName(
                                         context, SafetyCenterBackgroundRefreshJobService.class)))
-                        .setRequiresDeviceIdle(true);
+                        .setRequiresDeviceIdle(true)
+                        .setPeriodic(getPeriodicBackgroundRefreshInterval().toMillis());
         int scheduleResult = jobScheduler.schedule(builder.build());
         if (scheduleResult != RESULT_SUCCESS) {
-            Log.e(TAG, "Could not schedule background refresh, scheduleResult=" + scheduleResult);
+            Log.e(
+                    TAG,
+                    "Could not schedule the periodic background refresh, scheduleResult="
+                            + scheduleResult);
         }
+    }
+
+    private static Duration getPeriodicBackgroundRefreshInterval() {
+        // TODO(b/256610767): Add DeviceConfig/phenotype flag
+        return DEFAULT_PERIODIC_BACKGROUND_REFRESH_INTERVAL;
     }
 
     @Override
@@ -91,11 +107,16 @@ public final class SafetyCenterBackgroundRefreshJobService extends JobService {
         SafetyCenterManager safetyCenterManager =
                 requireNonNull(this.getSystemService(SafetyCenterManager.class));
         if (safetyCenterManager.isSafetyCenterEnabled()) {
-            // TODO(b/243523521): Use the correct refresh reason depending on which intent the
-            // receiver receives
-            safetyCenterManager.refreshSafetySources(REFRESH_REASON_DEVICE_REBOOT);
+            safetyCenterManager.refreshSafetySources(getRefreshReason());
         }
         return false; // job is no longer running
+    }
+
+    private static int getRefreshReason() {
+        if (SdkLevel.isAtLeastU()) {
+            return REFRESH_REASON_PERIODIC;
+        }
+        return REFRESH_REASON_OTHER;
     }
 
     @Override
@@ -103,13 +124,11 @@ public final class SafetyCenterBackgroundRefreshJobService extends JobService {
         return false; // never want job to be rescheduled
     }
 
-    /**
-     * Schedules a background refresh on boot completed and when safety center is enabled.
-     */
+    /** Schedules a periodic background refresh. */
     public static final class SetupSafetyCenterBackgroundRefreshReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(@NonNull Context context, @NonNull Intent intent) {
-            scheduleOneOffBackgroundRefresh(context, intent.getAction());
+            schedulePeriodicBackgroundRefresh(context, intent.getAction());
         }
     }
 }

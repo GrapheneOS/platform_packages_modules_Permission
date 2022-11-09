@@ -18,9 +18,11 @@ package android.safetycenter.cts.testing
 
 import android.Manifest.permission.READ_DEVICE_CONFIG
 import android.Manifest.permission.WRITE_DEVICE_CONFIG
+import android.annotation.TargetApi
 import android.content.Context
 import android.content.pm.PackageManager
 import android.content.res.Resources
+import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.provider.DeviceConfig
 import android.provider.DeviceConfig.NAMESPACE_PRIVACY
 import android.provider.DeviceConfig.Properties
@@ -28,6 +30,7 @@ import android.safetycenter.SafetyCenterManager.REFRESH_REASON_DEVICE_LOCALE_CHA
 import android.safetycenter.SafetyCenterManager.REFRESH_REASON_DEVICE_REBOOT
 import android.safetycenter.SafetyCenterManager.REFRESH_REASON_OTHER
 import android.safetycenter.SafetyCenterManager.REFRESH_REASON_PAGE_OPEN
+import android.safetycenter.SafetyCenterManager.REFRESH_REASON_PERIODIC
 import android.safetycenter.SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK
 import android.safetycenter.SafetyCenterManager.REFRESH_REASON_SAFETY_CENTER_ENABLED
 import android.safetycenter.SafetySourceData
@@ -285,14 +288,16 @@ object SafetyCenterFlags {
     fun Properties.isSafetyCenterEnabled() =
         getBoolean(isEnabledFlag.name, /* defaultValue */ false)
 
-    private fun getAllRefreshTimeoutsMap(refreshTimeout: Duration) =
+    @TargetApi(UPSIDE_DOWN_CAKE)
+    private fun getAllRefreshTimeoutsMap(refreshTimeout: Duration): Map<Int, Duration> =
         mapOf(
             REFRESH_REASON_PAGE_OPEN to refreshTimeout,
             REFRESH_REASON_RESCAN_BUTTON_CLICK to refreshTimeout,
             REFRESH_REASON_DEVICE_REBOOT to refreshTimeout,
             REFRESH_REASON_DEVICE_LOCALE_CHANGE to refreshTimeout,
             REFRESH_REASON_SAFETY_CENTER_ENABLED to refreshTimeout,
-            REFRESH_REASON_OTHER to refreshTimeout)
+            REFRESH_REASON_OTHER to refreshTimeout,
+            REFRESH_REASON_PERIODIC to refreshTimeout)
 
     private interface Parser<T> {
         fun parseFromString(stringValue: String): T
