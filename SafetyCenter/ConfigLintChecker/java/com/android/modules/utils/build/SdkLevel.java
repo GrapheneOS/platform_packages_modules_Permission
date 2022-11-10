@@ -14,17 +14,14 @@
  * limitations under the License.
  */
 
-package android.os;
+package com.android.modules.utils.build;
 
 /** Stub class to compile the linter for host execution. */
-public final class Build {
-    private Build() {}
+public final class SdkLevel {
+    private SdkLevel() {}
 
-    /** Stub class to used in the Safety Center config files. */
-    public static final class VERSION_CODES {
-        /** Constant used in the Safety Center config files. */
-        public static final int TIRAMISU = 10000;
-        /** Constant used in the Safety Center config files. */
-        public static final int UPSIDE_DOWN_CAKE = 10001;
+    /** Method used in Safety Center code. */
+    public static boolean isAtLeastU() {
+        return true;
     }
 }
