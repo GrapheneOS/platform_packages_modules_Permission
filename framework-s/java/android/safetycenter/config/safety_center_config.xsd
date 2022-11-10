@@ -70,6 +70,8 @@
         <xsd:attribute name="loggingAllowed" type="booleanOrStringResourceName" default="true"/>
         <xsd:attribute name="refreshOnPageOpenAllowed" type="booleanOrStringResourceName"
                        default="false"/>
+        <xsd:attribute name="notificationsAllowed" type="booleanOrStringResourceName"
+                       default="false"/>
     </xsd:complexType>
 
     <xsd:complexType name="issue-only-safety-source">
@@ -80,6 +82,8 @@
         <xsd:attribute name="maxSeverityLevel" type="intOrStringResourceName" default="2147483647"/>
         <xsd:attribute name="loggingAllowed" type="booleanOrStringResourceName" default="true"/>
         <xsd:attribute name="refreshOnPageOpenAllowed" type="booleanOrStringResourceName"
+                       default="false"/>
+        <xsd:attribute name="notificationsAllowed" type="booleanOrStringResourceName"
                        default="false"/>
     </xsd:complexType>
 

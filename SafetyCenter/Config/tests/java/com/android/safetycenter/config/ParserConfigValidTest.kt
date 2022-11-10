@@ -22,6 +22,7 @@ import android.safetycenter.config.SafetySource
 import android.safetycenter.config.SafetySourcesGroup
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.android.modules.utils.build.SdkLevel
 import com.android.safetycenter.config.tests.R
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
@@ -68,6 +69,7 @@ class ParserConfigValidTest {
                                 .setSearchTermsResId(R.string.reference)
                                 .setLoggingAllowed(false)
                                 .setRefreshOnPageOpenAllowed(true)
+                                .apply { if (SdkLevel.isAtLeastU()) setNotificationsAllowed(true) }
                                 .build())
                         .addSafetySource(
                             SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
@@ -152,6 +154,7 @@ class ParserConfigValidTest {
                                 .setMaxSeverityLevel(300)
                                 .setLoggingAllowed(false)
                                 .setRefreshOnPageOpenAllowed(true)
+                                .apply { if (SdkLevel.isAtLeastU()) setNotificationsAllowed(true) }
                                 .build())
                         .build())
                 .addSafetySourcesGroup(

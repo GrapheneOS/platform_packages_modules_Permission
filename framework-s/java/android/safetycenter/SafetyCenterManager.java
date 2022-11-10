@@ -33,6 +33,7 @@ import android.annotation.RequiresPermission;
 import android.annotation.SdkConstant;
 import android.annotation.SystemApi;
 import android.annotation.SystemService;
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Binder;
@@ -224,7 +225,7 @@ public final class SafetyCenterManager {
 
     /**
      * Used as an int value for {@link #EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE} to indicate that
-     * upon receiving a broadcasts with intent action {@link #ACTION_REFRESH_SAFETY_SOURCES}, the
+     * upon receiving a broadcast with intent action {@link #ACTION_REFRESH_SAFETY_SOURCES}, the
      * safety source should provide data relating to their safety state to Safety Center.
      *
      * <p>If the source already has its safety data cached, it may provide it without triggering a
@@ -265,6 +266,10 @@ public final class SafetyCenterManager {
     /** Indicates a generic reason for Safety Center refresh. */
     public static final int REFRESH_REASON_OTHER = 600;
 
+    /** Indicates a periodic background refresh. */
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    public static final int REFRESH_REASON_PERIODIC = 700;
+
     /**
      * The reason for requesting a refresh of {@link SafetySourceData} from safety sources.
      *
@@ -278,9 +283,11 @@ public final class SafetyCenterManager {
                 REFRESH_REASON_DEVICE_REBOOT,
                 REFRESH_REASON_DEVICE_LOCALE_CHANGE,
                 REFRESH_REASON_SAFETY_CENTER_ENABLED,
-                REFRESH_REASON_OTHER
+                REFRESH_REASON_OTHER,
+                REFRESH_REASON_PERIODIC
             })
     @Retention(RetentionPolicy.SOURCE)
+    @TargetApi(UPSIDE_DOWN_CAKE)
     public @interface RefreshReason {}
 
     /** Listener for changes to {@link SafetyCenterData}. */

@@ -17,9 +17,12 @@
 package android.safetycenter.cts.config
 
 import android.content.res.Resources
+import android.os.Build
 import android.safetycenter.config.SafetySource
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.ext.truth.os.ParcelableSubject.assertThat
+import androidx.test.filters.SdkSuppress
+import com.android.modules.utils.build.SdkLevel
 import com.android.permission.testing.EqualsHashCodeToStringTester
 import com.google.common.truth.Truth.assertThat
 import org.junit.Assert.assertThrows
@@ -33,7 +36,7 @@ class SafetySourceTest {
     @Test
     fun getType_returnsType() {
         assertThat(DYNAMIC_BAREBONE.type).isEqualTo(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
-        assertThat(DYNAMIC_ALL_OPTIONAL.type).isEqualTo(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
+        assertThat(dynamicAllOptional().type).isEqualTo(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
         assertThat(DYNAMIC_HIDDEN.type).isEqualTo(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
         assertThat(DYNAMIC_HIDDEN_WITH_SEARCH.type)
             .isEqualTo(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
@@ -41,40 +44,40 @@ class SafetySourceTest {
         assertThat(STATIC_BAREBONE.type).isEqualTo(SafetySource.SAFETY_SOURCE_TYPE_STATIC)
         assertThat(STATIC_ALL_OPTIONAL.type).isEqualTo(SafetySource.SAFETY_SOURCE_TYPE_STATIC)
         assertThat(ISSUE_ONLY_BAREBONE.type).isEqualTo(SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY)
-        assertThat(ISSUE_ONLY_ALL_OPTIONAL.type)
+        assertThat(issueOnlyAllOptional().type)
             .isEqualTo(SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY)
     }
 
     @Test
     fun getId_returnsId() {
         assertThat(DYNAMIC_BAREBONE.id).isEqualTo(DYNAMIC_BAREBONE_ID)
-        assertThat(DYNAMIC_ALL_OPTIONAL.id).isEqualTo(DYNAMIC_ALL_OPTIONAL_ID)
+        assertThat(dynamicAllOptional().id).isEqualTo(DYNAMIC_ALL_OPTIONAL_ID)
         assertThat(DYNAMIC_HIDDEN.id).isEqualTo(DYNAMIC_HIDDEN_ID)
         assertThat(DYNAMIC_HIDDEN_WITH_SEARCH.id).isEqualTo(DYNAMIC_HIDDEN_WITH_SEARCH_ID)
         assertThat(DYNAMIC_DISABLED.id).isEqualTo(DYNAMIC_DISABLED_ID)
         assertThat(STATIC_BAREBONE.id).isEqualTo(STATIC_BAREBONE_ID)
         assertThat(STATIC_ALL_OPTIONAL.id).isEqualTo(STATIC_ALL_OPTIONAL_ID)
         assertThat(ISSUE_ONLY_BAREBONE.id).isEqualTo(ISSUE_ONLY_BAREBONE_ID)
-        assertThat(ISSUE_ONLY_ALL_OPTIONAL.id).isEqualTo(ISSUE_ONLY_ALL_OPTIONAL_ID)
+        assertThat(issueOnlyAllOptional().id).isEqualTo(ISSUE_ONLY_ALL_OPTIONAL_ID)
     }
 
     @Test
     fun getPackageName_returnsPackageNameOrThrows() {
         assertThat(DYNAMIC_BAREBONE.packageName).isEqualTo(PACKAGE_NAME)
-        assertThat(DYNAMIC_ALL_OPTIONAL.packageName).isEqualTo(PACKAGE_NAME)
+        assertThat(dynamicAllOptional().packageName).isEqualTo(PACKAGE_NAME)
         assertThat(DYNAMIC_HIDDEN.packageName).isEqualTo(PACKAGE_NAME)
         assertThat(DYNAMIC_HIDDEN_WITH_SEARCH.packageName).isEqualTo(PACKAGE_NAME)
         assertThat(DYNAMIC_DISABLED.packageName).isEqualTo(PACKAGE_NAME)
         assertThrows(UnsupportedOperationException::class.java) { STATIC_BAREBONE.packageName }
         assertThrows(UnsupportedOperationException::class.java) { STATIC_ALL_OPTIONAL.packageName }
         assertThat(ISSUE_ONLY_BAREBONE.packageName).isEqualTo(PACKAGE_NAME)
-        assertThat(ISSUE_ONLY_ALL_OPTIONAL.packageName).isEqualTo(PACKAGE_NAME)
+        assertThat(issueOnlyAllOptional().packageName).isEqualTo(PACKAGE_NAME)
     }
 
     @Test
     fun getTitleResId_returnsTitleResIdOrThrows() {
         assertThat(DYNAMIC_BAREBONE.titleResId).isEqualTo(REFERENCE_RES_ID)
-        assertThat(DYNAMIC_ALL_OPTIONAL.titleResId).isEqualTo(REFERENCE_RES_ID)
+        assertThat(dynamicAllOptional().titleResId).isEqualTo(REFERENCE_RES_ID)
         assertThat(DYNAMIC_DISABLED.titleResId).isEqualTo(REFERENCE_RES_ID)
         assertThat(DYNAMIC_HIDDEN.titleResId).isEqualTo(Resources.ID_NULL)
         assertThat(DYNAMIC_HIDDEN_WITH_SEARCH.titleResId).isEqualTo(REFERENCE_RES_ID)
@@ -82,7 +85,7 @@ class SafetySourceTest {
         assertThat(STATIC_ALL_OPTIONAL.titleResId).isEqualTo(REFERENCE_RES_ID)
         assertThrows(UnsupportedOperationException::class.java) { ISSUE_ONLY_BAREBONE.titleResId }
         assertThrows(UnsupportedOperationException::class.java) {
-            ISSUE_ONLY_ALL_OPTIONAL.titleResId
+            issueOnlyAllOptional().titleResId
         }
     }
 
@@ -91,7 +94,7 @@ class SafetySourceTest {
         assertThrows(UnsupportedOperationException::class.java) {
             DYNAMIC_BAREBONE.titleForWorkResId
         }
-        assertThat(DYNAMIC_ALL_OPTIONAL.titleForWorkResId).isEqualTo(REFERENCE_RES_ID)
+        assertThat(dynamicAllOptional().titleForWorkResId).isEqualTo(REFERENCE_RES_ID)
         assertThrows(UnsupportedOperationException::class.java) {
             DYNAMIC_DISABLED.titleForWorkResId
         }
@@ -105,14 +108,14 @@ class SafetySourceTest {
             ISSUE_ONLY_BAREBONE.titleForWorkResId
         }
         assertThrows(UnsupportedOperationException::class.java) {
-            ISSUE_ONLY_ALL_OPTIONAL.titleForWorkResId
+            issueOnlyAllOptional().titleForWorkResId
         }
     }
 
     @Test
     fun getSummaryResId_returnsSummaryResIdOrThrows() {
         assertThat(DYNAMIC_BAREBONE.summaryResId).isEqualTo(REFERENCE_RES_ID)
-        assertThat(DYNAMIC_ALL_OPTIONAL.summaryResId).isEqualTo(REFERENCE_RES_ID)
+        assertThat(dynamicAllOptional().summaryResId).isEqualTo(REFERENCE_RES_ID)
         assertThat(DYNAMIC_DISABLED.summaryResId).isEqualTo(REFERENCE_RES_ID)
         assertThat(DYNAMIC_HIDDEN.summaryResId).isEqualTo(Resources.ID_NULL)
         assertThat(DYNAMIC_HIDDEN_WITH_SEARCH.summaryResId).isEqualTo(REFERENCE_RES_ID)
@@ -120,14 +123,14 @@ class SafetySourceTest {
         assertThat(STATIC_ALL_OPTIONAL.summaryResId).isEqualTo(REFERENCE_RES_ID)
         assertThrows(UnsupportedOperationException::class.java) { ISSUE_ONLY_BAREBONE.summaryResId }
         assertThrows(UnsupportedOperationException::class.java) {
-            ISSUE_ONLY_ALL_OPTIONAL.summaryResId
+            issueOnlyAllOptional().summaryResId
         }
     }
 
     @Test
     fun getIntentAction_returnsIntentActionOrThrows() {
         assertThat(DYNAMIC_BAREBONE.intentAction).isEqualTo(INTENT_ACTION)
-        assertThat(DYNAMIC_ALL_OPTIONAL.intentAction).isEqualTo(INTENT_ACTION)
+        assertThat(dynamicAllOptional().intentAction).isEqualTo(INTENT_ACTION)
         assertThat(DYNAMIC_DISABLED.intentAction).isNull()
         assertThat(DYNAMIC_HIDDEN.intentAction).isNull()
         assertThat(DYNAMIC_HIDDEN_WITH_SEARCH.intentAction).isEqualTo(INTENT_ACTION)
@@ -135,28 +138,28 @@ class SafetySourceTest {
         assertThat(STATIC_ALL_OPTIONAL.intentAction).isEqualTo(INTENT_ACTION)
         assertThrows(UnsupportedOperationException::class.java) { ISSUE_ONLY_BAREBONE.intentAction }
         assertThrows(UnsupportedOperationException::class.java) {
-            ISSUE_ONLY_ALL_OPTIONAL.intentAction
+            issueOnlyAllOptional().intentAction
         }
     }
 
     @Test
     fun getProfile_returnsProfile() {
         assertThat(DYNAMIC_BAREBONE.profile).isEqualTo(SafetySource.PROFILE_PRIMARY)
-        assertThat(DYNAMIC_ALL_OPTIONAL.profile).isEqualTo(SafetySource.PROFILE_ALL)
+        assertThat(dynamicAllOptional().profile).isEqualTo(SafetySource.PROFILE_ALL)
         assertThat(DYNAMIC_DISABLED.profile).isEqualTo(SafetySource.PROFILE_PRIMARY)
         assertThat(DYNAMIC_HIDDEN.profile).isEqualTo(SafetySource.PROFILE_ALL)
         assertThat(DYNAMIC_HIDDEN_WITH_SEARCH.profile).isEqualTo(SafetySource.PROFILE_ALL)
         assertThat(STATIC_BAREBONE.profile).isEqualTo(SafetySource.PROFILE_PRIMARY)
         assertThat(STATIC_ALL_OPTIONAL.profile).isEqualTo(SafetySource.PROFILE_ALL)
         assertThat(ISSUE_ONLY_BAREBONE.profile).isEqualTo(SafetySource.PROFILE_PRIMARY)
-        assertThat(ISSUE_ONLY_ALL_OPTIONAL.profile).isEqualTo(SafetySource.PROFILE_ALL)
+        assertThat(issueOnlyAllOptional().profile).isEqualTo(SafetySource.PROFILE_ALL)
     }
 
     @Test
     fun getInitialDisplayState_returnsInitialDisplayStateOrThrows() {
         assertThat(DYNAMIC_BAREBONE.initialDisplayState)
             .isEqualTo(SafetySource.INITIAL_DISPLAY_STATE_ENABLED)
-        assertThat(DYNAMIC_ALL_OPTIONAL.initialDisplayState)
+        assertThat(dynamicAllOptional().initialDisplayState)
             .isEqualTo(SafetySource.INITIAL_DISPLAY_STATE_DISABLED)
         assertThat(DYNAMIC_DISABLED.initialDisplayState)
             .isEqualTo(SafetySource.INITIAL_DISPLAY_STATE_DISABLED)
@@ -174,14 +177,14 @@ class SafetySourceTest {
             ISSUE_ONLY_BAREBONE.initialDisplayState
         }
         assertThrows(UnsupportedOperationException::class.java) {
-            ISSUE_ONLY_ALL_OPTIONAL.initialDisplayState
+            issueOnlyAllOptional().initialDisplayState
         }
     }
 
     @Test
     fun getMaxSeverityLevel_returnsMaxSeverityLevelOrThrows() {
         assertThat(DYNAMIC_BAREBONE.maxSeverityLevel).isEqualTo(Integer.MAX_VALUE)
-        assertThat(DYNAMIC_ALL_OPTIONAL.maxSeverityLevel).isEqualTo(MAX_SEVERITY_LEVEL)
+        assertThat(dynamicAllOptional().maxSeverityLevel).isEqualTo(MAX_SEVERITY_LEVEL)
         assertThat(DYNAMIC_DISABLED.maxSeverityLevel).isEqualTo(Integer.MAX_VALUE)
         assertThat(DYNAMIC_HIDDEN.maxSeverityLevel).isEqualTo(Integer.MAX_VALUE)
         assertThat(DYNAMIC_HIDDEN_WITH_SEARCH.maxSeverityLevel).isEqualTo(Integer.MAX_VALUE)
@@ -190,13 +193,13 @@ class SafetySourceTest {
             STATIC_ALL_OPTIONAL.maxSeverityLevel
         }
         assertThat(ISSUE_ONLY_BAREBONE.maxSeverityLevel).isEqualTo(Integer.MAX_VALUE)
-        assertThat(ISSUE_ONLY_ALL_OPTIONAL.maxSeverityLevel).isEqualTo(MAX_SEVERITY_LEVEL)
+        assertThat(issueOnlyAllOptional().maxSeverityLevel).isEqualTo(MAX_SEVERITY_LEVEL)
     }
 
     @Test
     fun getSearchTermsResId_returnsSearchTermsResIdOrThrows() {
         assertThat(DYNAMIC_BAREBONE.searchTermsResId).isEqualTo(Resources.ID_NULL)
-        assertThat(DYNAMIC_ALL_OPTIONAL.searchTermsResId).isEqualTo(REFERENCE_RES_ID)
+        assertThat(dynamicAllOptional().searchTermsResId).isEqualTo(REFERENCE_RES_ID)
         assertThat(DYNAMIC_DISABLED.searchTermsResId).isEqualTo(Resources.ID_NULL)
         assertThat(DYNAMIC_HIDDEN.searchTermsResId).isEqualTo(Resources.ID_NULL)
         assertThat(DYNAMIC_HIDDEN_WITH_SEARCH.searchTermsResId).isEqualTo(REFERENCE_RES_ID)
@@ -206,14 +209,14 @@ class SafetySourceTest {
             ISSUE_ONLY_BAREBONE.searchTermsResId
         }
         assertThrows(UnsupportedOperationException::class.java) {
-            ISSUE_ONLY_ALL_OPTIONAL.searchTermsResId
+            issueOnlyAllOptional().searchTermsResId
         }
     }
 
     @Test
     fun isLoggingAllowed_returnsLoggingAllowedOrThrows() {
         assertThat(DYNAMIC_BAREBONE.isLoggingAllowed).isEqualTo(true)
-        assertThat(DYNAMIC_ALL_OPTIONAL.isLoggingAllowed).isEqualTo(false)
+        assertThat(dynamicAllOptional().isLoggingAllowed).isEqualTo(false)
         assertThat(DYNAMIC_DISABLED.isLoggingAllowed).isEqualTo(true)
         assertThat(DYNAMIC_HIDDEN.isLoggingAllowed).isEqualTo(true)
         assertThat(DYNAMIC_HIDDEN_WITH_SEARCH.isLoggingAllowed).isEqualTo(true)
@@ -222,13 +225,13 @@ class SafetySourceTest {
             STATIC_ALL_OPTIONAL.isLoggingAllowed
         }
         assertThat(ISSUE_ONLY_BAREBONE.isLoggingAllowed).isEqualTo(true)
-        assertThat(ISSUE_ONLY_ALL_OPTIONAL.isLoggingAllowed).isEqualTo(false)
+        assertThat(issueOnlyAllOptional().isLoggingAllowed).isEqualTo(false)
     }
 
     @Test
     fun isRefreshOnPageOpenAllowed_returnsRefreshOnPageOpenAllowedOrThrows() {
         assertThat(DYNAMIC_BAREBONE.isRefreshOnPageOpenAllowed).isEqualTo(false)
-        assertThat(DYNAMIC_ALL_OPTIONAL.isRefreshOnPageOpenAllowed).isEqualTo(true)
+        assertThat(dynamicAllOptional().isRefreshOnPageOpenAllowed).isEqualTo(true)
         assertThat(DYNAMIC_DISABLED.isRefreshOnPageOpenAllowed).isEqualTo(false)
         assertThat(DYNAMIC_HIDDEN.isRefreshOnPageOpenAllowed).isEqualTo(false)
         assertThat(DYNAMIC_HIDDEN_WITH_SEARCH.isRefreshOnPageOpenAllowed).isEqualTo(false)
@@ -239,33 +242,47 @@ class SafetySourceTest {
             STATIC_ALL_OPTIONAL.isRefreshOnPageOpenAllowed
         }
         assertThat(ISSUE_ONLY_BAREBONE.isRefreshOnPageOpenAllowed).isEqualTo(false)
-        assertThat(ISSUE_ONLY_ALL_OPTIONAL.isRefreshOnPageOpenAllowed).isEqualTo(true)
+        assertThat(issueOnlyAllOptional().isRefreshOnPageOpenAllowed).isEqualTo(true)
+    }
+
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @Test
+    fun areNotificationsAllowed_returnsNotificationsAllowed() {
+        assertThat(DYNAMIC_BAREBONE.areNotificationsAllowed()).isFalse()
+        assertThat(dynamicAllOptional().areNotificationsAllowed()).isTrue()
+        assertThat(DYNAMIC_DISABLED.areNotificationsAllowed()).isFalse()
+        assertThat(DYNAMIC_HIDDEN.areNotificationsAllowed()).isFalse()
+        assertThat(DYNAMIC_HIDDEN_WITH_SEARCH.areNotificationsAllowed()).isFalse()
+        assertThat(STATIC_BAREBONE.areNotificationsAllowed()).isFalse()
+        assertThat(STATIC_ALL_OPTIONAL.areNotificationsAllowed()).isFalse()
+        assertThat(ISSUE_ONLY_BAREBONE.areNotificationsAllowed()).isFalse()
+        assertThat(issueOnlyAllOptional().areNotificationsAllowed()).isTrue()
     }
 
     @Test
     fun describeContents_returns0() {
         assertThat(DYNAMIC_BAREBONE.describeContents()).isEqualTo(0)
-        assertThat(DYNAMIC_ALL_OPTIONAL.describeContents()).isEqualTo(0)
+        assertThat(dynamicAllOptional().describeContents()).isEqualTo(0)
         assertThat(DYNAMIC_DISABLED.describeContents()).isEqualTo(0)
         assertThat(DYNAMIC_HIDDEN.describeContents()).isEqualTo(0)
         assertThat(DYNAMIC_HIDDEN_WITH_SEARCH.describeContents()).isEqualTo(0)
         assertThat(STATIC_BAREBONE.describeContents()).isEqualTo(0)
         assertThat(STATIC_ALL_OPTIONAL.describeContents()).isEqualTo(0)
         assertThat(ISSUE_ONLY_BAREBONE.describeContents()).isEqualTo(0)
-        assertThat(ISSUE_ONLY_ALL_OPTIONAL.describeContents()).isEqualTo(0)
+        assertThat(issueOnlyAllOptional().describeContents()).isEqualTo(0)
     }
 
     @Test
     fun parcelRoundTrip_recreatesEqual() {
         assertThat(DYNAMIC_BAREBONE).recreatesEqual(SafetySource.CREATOR)
-        assertThat(DYNAMIC_ALL_OPTIONAL).recreatesEqual(SafetySource.CREATOR)
+        assertThat(dynamicAllOptional()).recreatesEqual(SafetySource.CREATOR)
         assertThat(DYNAMIC_DISABLED).recreatesEqual(SafetySource.CREATOR)
         assertThat(DYNAMIC_HIDDEN).recreatesEqual(SafetySource.CREATOR)
         assertThat(DYNAMIC_HIDDEN_WITH_SEARCH).recreatesEqual(SafetySource.CREATOR)
         assertThat(STATIC_BAREBONE).recreatesEqual(SafetySource.CREATOR)
         assertThat(STATIC_ALL_OPTIONAL).recreatesEqual(SafetySource.CREATOR)
         assertThat(ISSUE_ONLY_BAREBONE).recreatesEqual(SafetySource.CREATOR)
-        assertThat(ISSUE_ONLY_ALL_OPTIONAL).recreatesEqual(SafetySource.CREATOR)
+        assertThat(issueOnlyAllOptional()).recreatesEqual(SafetySource.CREATOR)
     }
 
     @Test
@@ -273,7 +290,7 @@ class SafetySourceTest {
         EqualsHashCodeToStringTester()
             .addEqualityGroup(DYNAMIC_BAREBONE)
             .addEqualityGroup(
-                DYNAMIC_ALL_OPTIONAL,
+                dynamicAllOptional(),
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_ALL_OPTIONAL_ID)
                     .setPackageName(PACKAGE_NAME)
@@ -294,7 +311,7 @@ class SafetySourceTest {
             .addEqualityGroup(STATIC_BAREBONE)
             .addEqualityGroup(STATIC_ALL_OPTIONAL)
             .addEqualityGroup(ISSUE_ONLY_BAREBONE)
-            .addEqualityGroup(ISSUE_ONLY_ALL_OPTIONAL)
+            .addEqualityGroup(issueOnlyAllOptional())
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId("other")
@@ -496,7 +513,7 @@ class SafetySourceTest {
                 .setProfile(SafetySource.PROFILE_PRIMARY)
                 .build()
 
-        private val DYNAMIC_ALL_OPTIONAL =
+        private fun dynamicAllOptional(): SafetySource =
             SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                 .setId(DYNAMIC_ALL_OPTIONAL_ID)
                 .setPackageName(PACKAGE_NAME)
@@ -510,6 +527,7 @@ class SafetySourceTest {
                 .setSearchTermsResId(REFERENCE_RES_ID)
                 .setLoggingAllowed(false)
                 .setRefreshOnPageOpenAllowed(true)
+                .apply { if (SdkLevel.isAtLeastU()) setNotificationsAllowed(true) }
                 .build()
 
         private val DYNAMIC_DISABLED =
@@ -569,7 +587,7 @@ class SafetySourceTest {
                 .setProfile(SafetySource.PROFILE_PRIMARY)
                 .build()
 
-        private val ISSUE_ONLY_ALL_OPTIONAL =
+        private fun issueOnlyAllOptional(): SafetySource =
             SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY)
                 .setId(ISSUE_ONLY_ALL_OPTIONAL_ID)
                 .setPackageName(PACKAGE_NAME)
@@ -577,6 +595,7 @@ class SafetySourceTest {
                 .setMaxSeverityLevel(MAX_SEVERITY_LEVEL)
                 .setLoggingAllowed(false)
                 .setRefreshOnPageOpenAllowed(true)
+                .apply { if (SdkLevel.isAtLeastU()) setNotificationsAllowed(true) }
                 .build()
     }
 }
