@@ -380,7 +380,10 @@ public final class SafetySourceIssue implements Parcelable {
      * deduplication identifiers.
      *
      * <p>Deduplication identifier will be used to identify duplicate issues. This identifier
-     * applies globally across all safety sources sending data to SafetyCenter.
+     * applies across all safety sources which are part of the same deduplication group.
+     * Deduplication groups can be set, for each source, in the SafetyCenter config. Therefore, two
+     * issues are considered duplicate if their sources are part of the same deduplication group and
+     * they have the same deduplication identifier.
      *
      * <p>Out of all issues that are found to be duplicates, only one will be shown in the UI (the
      * one with the highest severity, or in case of same severities, the one placed highest in the

@@ -25,7 +25,8 @@
                 searchTerms="@com.android.safetycenter.config.tests:string/reference"
                 loggingAllowed="false"
                 refreshOnPageOpenAllowed="true"
-                notificationsAllowed="true"/>
+                notificationsAllowed="true"
+                deduplicationGroup="group"/>
             <dynamic-safety-source
                 id="@com.android.safetycenter.config.tests:string/dynamic_all_references_id"
                 packageName="@com.android.safetycenter.config.tests:string/dynamic_all_references_package_name"
@@ -38,7 +39,9 @@
                 maxSeverityLevel="@com.android.safetycenter.config.tests:string/dynamic_all_references_max_severity_level"
                 searchTerms="@com.android.safetycenter.config.tests:string/reference"
                 loggingAllowed="@com.android.safetycenter.config.tests:string/dynamic_all_references_logging_allowed"
-                refreshOnPageOpenAllowed="@com.android.safetycenter.config.tests:string/dynamic_all_references_refresh_on_page_open_allowed"/>
+                refreshOnPageOpenAllowed="@com.android.safetycenter.config.tests:string/dynamic_all_references_refresh_on_page_open_allowed"
+                notificationsAllowed="@com.android.safetycenter.config.tests:string/dynamic_all_references_notifications_allowed"
+                deduplicationGroup="@com.android.safetycenter.config.tests:string/dynamic_all_references_deduplication_group"/>
             <dynamic-safety-source
                 id="dynamic_disabled"
                 packageName="package"
@@ -92,7 +95,8 @@
                 maxSeverityLevel="300"
                 loggingAllowed="false"
                 refreshOnPageOpenAllowed="true"
-                notificationsAllowed="true"/>
+                notificationsAllowed="true"
+                deduplicationGroup="group"/>
         </safety-sources-group>
         <safety-sources-group
             id="mixed"
