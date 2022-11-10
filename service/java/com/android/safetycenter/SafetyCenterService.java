@@ -22,6 +22,7 @@ import static android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE;
 import static android.Manifest.permission.START_TASKS_FROM_RECENTS;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.os.Build.VERSION_CODES.TIRAMISU;
+import static android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
 import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_OTHER;
 import static android.safetycenter.SafetyCenterManager.RefreshReason;
 import static android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED;
@@ -356,6 +357,23 @@ public final class SafetyCenterService extends SystemService {
                 return;
             }
             startRefreshingSafetySources(refreshReason, userId);
+        }
+
+        @Override
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        public void refreshSpecificSafetySources(
+                @RefreshReason int refreshReason,
+                @UserIdInt int userId,
+                @NonNull List<String> safetySourceIds) {
+            getContext()
+                    .enforceCallingPermission(MANAGE_SAFETY_CENTER, "refreshSpecificSafetySources");
+            requireNonNull(safetySourceIds, "safetySourceIds cannot be null");
+            RefreshReasons.validate(refreshReason);
+            if (!enforceCrossUserPermission("refreshSpecificSafetySources", userId)
+                    || !checkApiEnabled("refreshSpecificSafetySources")) {
+                return;
+            }
+            startRefreshingSafetySources(refreshReason, userId, safetySourceIds);
         }
 
         @Override
@@ -997,13 +1015,20 @@ public final class SafetyCenterService extends SystemService {
 
     private void startRefreshingSafetySources(
             @RefreshReason int refreshReason, @UserIdInt int userId) {
+        startRefreshingSafetySources(refreshReason, userId, null);
+    }
+
+    private void startRefreshingSafetySources(
+            @RefreshReason int refreshReason,
+            @UserIdInt int userId,
+            @Nullable List<String> safetySourceIds) {
         UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
         synchronized (mApiLock) {
             mSafetyCenterRepository.clearSafetySourceErrors(userProfileGroup);
 
             String refreshBroadcastId =
                     mSafetyCenterBroadcastDispatcher.sendRefreshSafetySources(
-                            refreshReason, userProfileGroup);
+                            refreshReason, userProfileGroup, safetySourceIds);
             if (refreshBroadcastId == null) {
                 return;
             }

@@ -34,6 +34,7 @@ import android.safetycenter.cts.testing.Coroutines.runBlockingWithTimeout
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.dismissSafetyCenterIssueWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.executeSafetyCenterIssueActionWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.refreshSafetySourcesWithPermission
+import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.refreshSpecificSafetySourcesWithPermission
 import android.safetycenter.cts.testing.SafetySourceIntentHandler.Request
 import android.safetycenter.cts.testing.SafetySourceIntentHandler.Response
 import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermissionIdentity
@@ -136,6 +137,20 @@ class SafetySourceReceiver : BroadcastReceiver() {
         fun setResponse(request: Request, response: Response) {
             runBlockingWithTimeout { safetySourceIntentHandler.setResponse(request, response) }
         }
+
+        fun SafetyCenterManager.refreshSpecificSafetySourcesWithReceiverPermissionAndWait(
+            refreshReason: Int,
+            safetySourceIds: List<String>,
+            timeout: Duration = TIMEOUT_LONG
+        ) =
+            callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
+                refreshSpecificSafetySourcesWithPermission(refreshReason, safetySourceIds)
+
+                if (timeout < TIMEOUT_LONG) {
+                    getApplicationContext().waitForBroadcastIdle()
+                }
+                receiveRefreshSafetySources(timeout)
+            }
 
         fun SafetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
             refreshReason: Int,

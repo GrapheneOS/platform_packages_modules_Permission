@@ -17,6 +17,7 @@
 package android.safetycenter.cts
 
 import android.content.Context
+import android.os.Build
 import android.os.Build.VERSION.CODENAME
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
@@ -137,6 +138,7 @@ import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.dismissSa
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.executeSafetyCenterIssueActionWithPermissionAndWait
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.refreshSafetySourcesWithReceiverPermissionAndWait
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.refreshSafetySourcesWithoutReceiverPermissionAndWait
+import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.refreshSpecificSafetySourcesWithReceiverPermissionAndWait
 import androidx.annotation.RequiresApi
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -1845,6 +1847,76 @@ class SafetyCenterManagerTest {
 
         val sourceData = safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
         assertThat(sourceData).isEqualTo(safetySourceCtsData.criticalWithResolvingGeneralIssue)
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun refreshSpecificSafetySources_withSafetySourceIds_onlySpecifiedSourcesSendData() {
+        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
+        SafetySourceReceiver.apply {
+            setResponse(
+                Request.Refresh(SOURCE_ID_1), Response.SetData(safetySourceCtsData.information))
+            setResponse(
+                Request.Refresh(SOURCE_ID_2), Response.SetData(safetySourceCtsData.information))
+            setResponse(
+                Request.Refresh(SOURCE_ID_3), Response.SetData(safetySourceCtsData.information))
+        }
+
+        safetyCenterManager.refreshSpecificSafetySourcesWithReceiverPermissionAndWait(
+            REFRESH_REASON_PAGE_OPEN, listOf(SOURCE_ID_1, SOURCE_ID_2))
+
+        val apiSafetySourceData1 =
+            safetyCenterManager.getSafetySourceDataWithPermission(SOURCE_ID_1)
+        assertThat(apiSafetySourceData1).isEqualTo(safetySourceCtsData.information)
+        val apiSafetySourceData2 =
+            safetyCenterManager.getSafetySourceDataWithPermission(SOURCE_ID_2)
+        assertThat(apiSafetySourceData2).isEqualTo(safetySourceCtsData.information)
+        val apiSafetySourceData3 =
+            safetyCenterManager.getSafetySourceDataWithPermission(SOURCE_ID_3)
+        assertThat(apiSafetySourceData3).isNull()
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun refreshSpecificSafetySources_withEmptySafetySourceIds_NoSourcesSendData() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        SafetySourceReceiver.setResponse(
+            Request.Refresh(SINGLE_SOURCE_ID),
+            Response.SetData(safetySourceCtsData.criticalWithResolvingGeneralIssue))
+
+        assertFailsWith(TimeoutCancellationException::class) {
+            safetyCenterManager.refreshSpecificSafetySourcesWithReceiverPermissionAndWait(
+                REFRESH_REASON_PAGE_OPEN, emptyList(), TIMEOUT_SHORT)
+        }
+
+        val sourceData = safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
+        assertThat(sourceData).isNull()
+    }
+
+    @Test
+    @SdkSuppress(maxSdkVersion = TIRAMISU)
+    fun refreshSpecificSafetySources_versionLessThanU_throwsUnsupportedOperationException() {
+        // TODO(b/258228790): Remove after U is no longer in pre-release
+        assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
+        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
+
+        val exception =
+            assertFailsWith(UnsupportedOperationException::class) {
+                safetyCenterManager.refreshSpecificSafetySourcesWithReceiverPermissionAndWait(
+                    REFRESH_REASON_PAGE_OPEN, listOf(SOURCE_ID_1, SOURCE_ID_3))
+            }
+
+        assertThat(exception)
+            .hasMessageThat()
+            .isEqualTo("Method not supported for versions lower than UPSIDE_DOWN_CAKE")
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun refreshSpecificSafetySources_withoutPermission_throwsSecurityException() {
+        assertFailsWith(SecurityException::class) {
+            safetyCenterManager.refreshSpecificSafetySources(REFRESH_REASON_PAGE_OPEN, listOf())
+        }
     }
 
     @Test

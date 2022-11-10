@@ -87,6 +87,19 @@ object SafetyCenterApisWithShellPermissions {
     }
 
     /**
+     * Calls [SafetyCenterManager.refreshSpecificSafetySources] adopting Shell's
+     * [MANAGE_SAFETY_CENTER] permission.
+     */
+    fun SafetyCenterManager.refreshSpecificSafetySourcesWithPermission(
+        refreshReason: Int,
+        safetySourceIds: List<String>
+    ) {
+        callWithShellPermissionIdentity(MANAGE_SAFETY_CENTER) {
+            refreshSpecificSafetySources(refreshReason, safetySourceIds)
+        }
+    }
+
+    /**
      * Calls [SafetyCenterManager.getSafetyCenterConfig] adopting Shell's [MANAGE_SAFETY_CENTER]
      * permission.
      */
