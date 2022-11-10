@@ -25,7 +25,7 @@ import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
-/** A helper class to facilitate working with {@link SafetySource}. */
+/** A helper class to facilitate working with {@link SafetySource} objects. */
 @RequiresApi(TIRAMISU)
 final class SafetySources {
 
@@ -90,6 +90,21 @@ final class SafetySources {
         }
         Log.w(TAG, "Unexpected safety source type: " + safetySourceType);
         return false;
+    }
+
+    /**
+     * Returns whether a {@link SafetySource} can be logged, without requiring a check of source
+     * type first.
+     */
+    static boolean isLoggable(@NonNull SafetySource safetySource) {
+        // Only external sources can have logging allowed values. Non-external sources cannot have
+        // their loggability configured. Unfortunately isLoggingAllowed throws if called on a
+        // non-external source.
+        if (isExternal(safetySource)) {
+            return safetySource.isLoggingAllowed();
+        } else {
+            return true;
+        }
     }
 
     private SafetySources() {}
