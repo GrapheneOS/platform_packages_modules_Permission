@@ -633,7 +633,7 @@ class SafetySourceIssueTest {
                 SafetySourceIssue.Builder(
                         "Issue id",
                         "Issue title",
-                        "Other issue summary",
+                        "Different issue summary",
                         SEVERITY_LEVEL_INFORMATION,
                         "issue_type_id")
                     .addAction(action1)
