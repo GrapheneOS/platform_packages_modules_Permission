@@ -511,7 +511,7 @@ public final class SafetySource implements Parcelable {
                 + mLoggingAllowed
                 + ", mRefreshOnPageOpenAllowed="
                 + mRefreshOnPageOpenAllowed
-                + ", mNotificationsAllowed"
+                + ", mNotificationsAllowed="
                 + mNotificationsAllowed
                 + '}';
     }
