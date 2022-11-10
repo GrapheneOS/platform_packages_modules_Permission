@@ -100,24 +100,23 @@ inline fun <T> IntMap<T>.noneIndexed(predicate: (Int, Int, T) -> Boolean): Boole
 }
 
 @Suppress("NOTHING_TO_INLINE")
-inline fun <T> IntMap<T>.putWithDefault(key: Int, value: T, defaultValue: T): Boolean {
+inline fun <T> IntMap<T>.putWithDefault(key: Int, value: T, defaultValue: T): T {
     val index = indexOfKey(key)
     if (index >= 0) {
-        if (value == valueAt(index)) {
-            return false
+        val oldValue = valueAt(index)
+        if (value != oldValue) {
+            if (value == defaultValue) {
+                removeAt(index)
+            } else {
+                setValueAt(index, value)
+            }
         }
-        if (value == defaultValue) {
-            removeAt(index)
-        } else {
-            setValueAt(index, value)
-        }
-        return true
+        return oldValue
     } else {
-        if (value == defaultValue) {
-            return false
+        if (value != defaultValue) {
+            put(key, value)
         }
-        put(key, value)
-        return true
+        return defaultValue
     }
 }
 

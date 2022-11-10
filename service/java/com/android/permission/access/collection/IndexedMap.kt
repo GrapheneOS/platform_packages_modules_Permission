@@ -91,24 +91,23 @@ inline operator fun <K, V> IndexedMap<K, V>.minusAssign(key: K) {
 }
 
 @Suppress("NOTHING_TO_INLINE")
-inline fun <K, V> IndexedMap<K, V>.putWithDefault(key: K, value: V, defaultValue: V): Boolean {
+inline fun <K, V> IndexedMap<K, V>.putWithDefault(key: K, value: V, defaultValue: V): V {
     val index = indexOfKey(key)
     if (index >= 0) {
-        if (value == valueAt(index)) {
-            return false
+        val oldValue = valueAt(index)
+        if (value != oldValue) {
+            if (value == defaultValue) {
+                removeAt(index)
+            } else {
+                setValueAt(index, value)
+            }
         }
-        if (value == defaultValue) {
-            removeAt(index)
-        } else {
-            setValueAt(index, value)
-        }
-        return true
+        return oldValue
     } else {
-        if (value == defaultValue) {
-            return false
+        if (value != defaultValue) {
+            put(key, value)
         }
-        put(key, value)
-        return true
+        return defaultValue
     }
 }
 
