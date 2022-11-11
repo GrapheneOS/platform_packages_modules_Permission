@@ -17,6 +17,7 @@
 package android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
+import static android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
 
 import static java.util.Collections.unmodifiableList;
 import static java.util.Objects.requireNonNull;
@@ -27,9 +28,9 @@ import android.annotation.Nullable;
 import android.annotation.SuppressLint;
 import android.annotation.SystemApi;
 import android.app.PendingIntent;
-import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.safetycenter.config.SafetySourcesGroup;
 import android.text.TextUtils;
 
 import androidx.annotation.RequiresApi;
@@ -104,6 +105,7 @@ public final class SafetyCenterIssue implements Parcelable {
                     if (SdkLevel.isAtLeastU()) {
                         builder.setAttributionTitle(
                                 TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in));
+                        builder.setGroupId(in.readString());
                     }
                     return builder.build();
                 }
@@ -123,6 +125,7 @@ public final class SafetyCenterIssue implements Parcelable {
     private final boolean mShouldConfirmDismissal;
     @NonNull private final List<Action> mActions;
     @Nullable private final CharSequence mAttributionTitle;
+    @Nullable private final String mGroupId;
 
     private SafetyCenterIssue(
             @NonNull String id,
@@ -133,7 +136,8 @@ public final class SafetyCenterIssue implements Parcelable {
             boolean isDismissible,
             boolean shouldConfirmDismissal,
             @NonNull List<Action> actions,
-            @Nullable CharSequence attributionTitle) {
+            @Nullable CharSequence attributionTitle,
+            @Nullable String groupId) {
         mId = id;
         mTitle = title;
         mSubtitle = subtitle;
@@ -143,6 +147,7 @@ public final class SafetyCenterIssue implements Parcelable {
         mShouldConfirmDismissal = shouldConfirmDismissal;
         mActions = actions;
         mAttributionTitle = attributionTitle;
+        mGroupId = groupId;
     }
 
     /**
@@ -176,12 +181,16 @@ public final class SafetyCenterIssue implements Parcelable {
      * Returns the attribution title of this issue, or {@code null} if it has none.
      *
      * <p>This is displayed in the UI and helps to attribute issue cards to a particular source.
+     *
+     * @throws UnsupportedOperationException if accessed from a version lower than {@link
+     *     UPSIDE_DOWN_CAKE}
      */
     @Nullable
-    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+    @RequiresApi(UPSIDE_DOWN_CAKE)
     public CharSequence getAttributionTitle() {
         if (!SdkLevel.isAtLeastU()) {
-            throw new UnsupportedOperationException();
+            throw new UnsupportedOperationException(
+                    "Method not supported for versions lower than UPSIDE_DOWN_CAKE");
         }
         return mAttributionTitle;
     }
@@ -213,6 +222,26 @@ public final class SafetyCenterIssue implements Parcelable {
         return mActions;
     }
 
+    /**
+     * Returns the ID of the {@link SafetySourcesGroup} that this issue belongs to, or {@code null}
+     * if it has none.
+     *
+     * <p>This ID is used for displaying the issue on its corresponding subpage in the Safety Center
+     * UI.
+     *
+     * @throws UnsupportedOperationException if accessed from a version lower than {@link
+     *     UPSIDE_DOWN_CAKE}
+     */
+    @Nullable
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    public String getGroupId() {
+        if (!SdkLevel.isAtLeastU()) {
+            throw new UnsupportedOperationException(
+                    "Method not supported for versions lower than UPSIDE_DOWN_CAKE");
+        }
+        return mGroupId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -226,7 +255,8 @@ public final class SafetyCenterIssue implements Parcelable {
                 && TextUtils.equals(mSubtitle, that.mSubtitle)
                 && TextUtils.equals(mSummary, that.mSummary)
                 && Objects.equals(mActions, that.mActions)
-                && TextUtils.equals(mAttributionTitle, that.mAttributionTitle);
+                && TextUtils.equals(mAttributionTitle, that.mAttributionTitle)
+                && Objects.equals(mGroupId, that.mGroupId);
     }
 
     @Override
@@ -240,7 +270,8 @@ public final class SafetyCenterIssue implements Parcelable {
                 mDismissible,
                 mShouldConfirmDismissal,
                 mActions,
-                mAttributionTitle);
+                mAttributionTitle,
+                mGroupId);
     }
 
     @Override
@@ -264,6 +295,8 @@ public final class SafetyCenterIssue implements Parcelable {
                 + mActions
                 + ", mAttributionTitle="
                 + mAttributionTitle
+                + ", mGroupId="
+                + mGroupId
                 + '}';
     }
 
@@ -284,6 +317,7 @@ public final class SafetyCenterIssue implements Parcelable {
         dest.writeTypedList(mActions);
         if (SdkLevel.isAtLeastU()) {
             TextUtils.writeToParcel(mAttributionTitle, dest, flags);
+            dest.writeString(mGroupId);
         }
     }
 
@@ -299,6 +333,7 @@ public final class SafetyCenterIssue implements Parcelable {
         private boolean mShouldConfirmDismissal = true;
         private List<Action> mActions = new ArrayList<>();
         @Nullable private CharSequence mAttributionTitle;
+        @Nullable private String mGroupId;
 
         /**
          * Creates a {@link Builder} for a {@link SafetyCenterIssue}.
@@ -325,6 +360,7 @@ public final class SafetyCenterIssue implements Parcelable {
             mShouldConfirmDismissal = issue.mShouldConfirmDismissal;
             mActions = new ArrayList<>(issue.mActions);
             mAttributionTitle = issue.mAttributionTitle;
+            mGroupId = issue.mGroupId;
         }
 
         /** Sets the ID for this issue. */
@@ -359,12 +395,16 @@ public final class SafetyCenterIssue implements Parcelable {
          * Sets or clears the optional attribution title for this issue.
          *
          * <p>This is displayed in the UI and helps to attribute issue cards to a particular source.
+         *
+         * @throws UnsupportedOperationException if accessed from a version lower than {@link
+         *     UPSIDE_DOWN_CAKE}
          */
         @NonNull
-        @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+        @RequiresApi(UPSIDE_DOWN_CAKE)
         public Builder setAttributionTitle(@Nullable CharSequence attributionTitle) {
             if (!SdkLevel.isAtLeastU()) {
-                throw new UnsupportedOperationException();
+                throw new UnsupportedOperationException(
+                        "Method not supported for versions lower than UPSIDE_DOWN_CAKE");
             }
             mAttributionTitle = attributionTitle;
             return this;
@@ -406,6 +446,27 @@ public final class SafetyCenterIssue implements Parcelable {
             return this;
         }
 
+        /**
+         * Sets the ID of {@link SafetySourcesGroup} that this issue belongs to. Defaults to a
+         * {@code null} value.
+         *
+         * <p>This ID is used for displaying the issue on its corresponding subpage in the Safety
+         * Center UI.
+         *
+         * @throws UnsupportedOperationException if accessed from a version lower than {@link
+         *     UPSIDE_DOWN_CAKE}
+         */
+        @NonNull
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        public Builder setGroupId(@Nullable String groupId) {
+            if (!SdkLevel.isAtLeastU()) {
+                throw new UnsupportedOperationException(
+                        "Method not supported for versions lower than UPSIDE_DOWN_CAKE");
+            }
+            mGroupId = groupId;
+            return this;
+        }
+
         /** Creates the {@link SafetyCenterIssue} defined by this {@link Builder}. */
         @NonNull
         public SafetyCenterIssue build() {
@@ -418,7 +479,8 @@ public final class SafetyCenterIssue implements Parcelable {
                     mDismissible,
                     mShouldConfirmDismissal,
                     unmodifiableList(new ArrayList<>(mActions)),
-                    mAttributionTitle);
+                    mAttributionTitle,
+                    mGroupId);
         }
     }
 
