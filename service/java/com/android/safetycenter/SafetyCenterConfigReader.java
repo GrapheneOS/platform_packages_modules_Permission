@@ -116,6 +116,15 @@ final class SafetyCenterConfigReader {
     }
 
     /**
+     * Returns the groups of {@link SafetySource}, filtering out any sources where {@link
+     * SafetySources#isLoggable(SafetySource)} is false (and any resultingly empty groups).
+     */
+    @NonNull
+    List<SafetySourcesGroup> getLoggableSafetySourcesGroups() {
+        return getCurrentConfigInternal().getLoggableSourcesGroups();
+    }
+
+    /**
      * Returns the external {@link SafetySource} associated with the {@code safetySourceId}, if any.
      *
      * <p>The returned {@link SafetySource} can either be associated with the XML or overridden
@@ -218,14 +227,17 @@ final class SafetyCenterConfigReader {
 
         @NonNull private final SafetyCenterConfig mConfig;
         @NonNull private final ArrayMap<String, ExternalSafetySource> mExternalSafetySources;
+        @NonNull private final List<SafetySourcesGroup> mLoggableSourcesGroups;
         @NonNull private final List<Broadcast> mBroadcasts;
 
         private SafetyCenterConfigInternal(
                 @NonNull SafetyCenterConfig safetyCenterConfig,
                 @NonNull ArrayMap<String, ExternalSafetySource> externalSafetySources,
+                @NonNull List<SafetySourcesGroup> loggableSourcesGroups,
                 @NonNull List<Broadcast> broadcasts) {
             mConfig = safetyCenterConfig;
             mExternalSafetySources = externalSafetySources;
+            mLoggableSourcesGroups = loggableSourcesGroups;
             mBroadcasts = broadcasts;
         }
 
@@ -237,6 +249,11 @@ final class SafetyCenterConfigReader {
         @NonNull
         private ArrayMap<String, ExternalSafetySource> getExternalSafetySources() {
             return mExternalSafetySources;
+        }
+
+        @NonNull
+        private List<SafetySourcesGroup> getLoggableSourcesGroups() {
+            return mLoggableSourcesGroups;
         }
 
         @NonNull
@@ -264,6 +281,8 @@ final class SafetyCenterConfigReader {
                     + mConfig
                     + ", mExternalSafetySources="
                     + mExternalSafetySources
+                    + ", mLoggableSourcesGroups="
+                    + mLoggableSourcesGroups
                     + ", mBroadcasts="
                     + mBroadcasts
                     + '}';
@@ -275,6 +294,7 @@ final class SafetyCenterConfigReader {
             return new SafetyCenterConfigInternal(
                     safetyCenterConfig,
                     extractExternalSafetySources(safetyCenterConfig),
+                    extractLoggableSafetySourcesGroups(safetyCenterConfig),
                     unmodifiableList(extractBroadcasts(safetyCenterConfig)));
         }
 
@@ -307,6 +327,35 @@ final class SafetyCenterConfigReader {
             }
 
             return externalSafetySources;
+        }
+
+        @NonNull
+        private static List<SafetySourcesGroup> extractLoggableSafetySourcesGroups(
+                @NonNull SafetyCenterConfig safetyCenterConfig) {
+            List<SafetySourcesGroup> originalGroups = safetyCenterConfig.getSafetySourcesGroups();
+            List<SafetySourcesGroup> filteredGroups = new ArrayList<>(originalGroups.size());
+
+            for (int i = 0; i < originalGroups.size(); i++) {
+                SafetySourcesGroup originalGroup = originalGroups.get(i);
+
+                SafetySourcesGroup.Builder filteredGroupBuilder =
+                        SafetySourcesGroups.copyToBuilderWithoutSources(originalGroup);
+                List<SafetySource> originalSources = originalGroup.getSafetySources();
+                for (int j = 0; j < originalSources.size(); j++) {
+                    SafetySource source = originalSources.get(j);
+
+                    if (SafetySources.isLoggable(source)) {
+                        filteredGroupBuilder.addSafetySource(source);
+                    }
+                }
+
+                SafetySourcesGroup filteredGroup = filteredGroupBuilder.build();
+                if (!filteredGroup.getSafetySources().isEmpty()) {
+                    filteredGroups.add(filteredGroup);
+                }
+            }
+
+            return filteredGroups;
         }
 
         @NonNull

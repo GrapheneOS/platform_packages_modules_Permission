@@ -17,9 +17,9 @@
 package com.android.permission.access
 
 import android.content.pm.PermissionGroupInfo
+import com.android.permission.access.collection.* // ktlint-disable no-wildcard-imports
 import com.android.permission.access.data.Permission
 import com.android.permission.access.external.PackageState
-import com.android.permission.access.util.* // ktlint-disable no-wildcard-imports
 
 class AccessState private constructor(
     val systemState: SystemState,
