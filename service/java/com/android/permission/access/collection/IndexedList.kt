@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permission.access.util
+package com.android.permission.access.collection
 
 typealias IndexedList<T> = ArrayList<T>
 
@@ -50,7 +50,32 @@ inline operator fun <T> IndexedList<T>.minusAssign(element: T) {
     remove(element)
 }
 
+inline fun <T> IndexedList<T>.noneIndexed(predicate: (Int, T) -> Boolean): Boolean {
+    for (index in 0 until size) {
+        if (predicate(index, this[index])) {
+            return false
+        }
+    }
+    return true
+}
+
 @Suppress("NOTHING_TO_INLINE")
 inline operator fun <T> IndexedList<T>.plusAssign(element: T) {
     add(element)
+}
+
+inline fun <T> IndexedList<T>.removeAllIndexed(predicate: (Int, T) -> Boolean) {
+    for (index in lastIndex downTo 0) {
+        if (predicate(index, this[index])) {
+            removeAt(index)
+        }
+    }
+}
+
+inline fun <T> IndexedList<T>.retainAllIndexed(predicate: (Int, T) -> Boolean) {
+    for (index in lastIndex downTo 0) {
+        if (!predicate(index, this[index])) {
+            removeAt(index)
+        }
+    }
 }

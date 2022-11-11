@@ -16,7 +16,7 @@
 
 package com.android.permission.access
 
-import com.android.permission.access.util.* // ktlint-disable no-wildcard-imports
+import com.android.permission.access.collection.* // ktlint-disable no-wildcard-imports
 
 class AccessPersistence {
     fun read(state: AccessState) {

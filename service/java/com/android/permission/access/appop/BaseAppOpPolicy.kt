@@ -18,7 +18,7 @@ package com.android.permission.access.appop
 
 import android.app.AppOpsManager
 import com.android.permission.access.SchemePolicy
-import com.android.permission.access.util.* // ktlint-disable no-wildcard-imports
+import com.android.permission.access.collection.* // ktlint-disable no-wildcard-imports
 
 abstract class BaseAppOpPolicy : SchemePolicy() {
     protected fun getAppOpMode(modes: IndexedMap<String, Int>?, appOpName: String): Int =
