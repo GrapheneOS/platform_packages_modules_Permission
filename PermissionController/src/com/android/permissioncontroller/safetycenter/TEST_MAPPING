@@ -7,11 +7,22 @@
           "exclude-annotation": "com.android.bedstead.harrier.annotations.Postsubmit"
         }
       ]
+    },
+    {
+      "name": "SafetyCenterFunctionalTestCases",
+      "options": [
+        {
+          "exclude-annotation": "com.android.bedstead.harrier.annotations.Postsubmit"
+        }
+      ]
     }
   ],
   "postsubmit": [
     {
       "name": "CtsSafetyCenterTestCases"
+    },
+    {
+      "name": "SafetyCenterFunctionalTestCases"
     }
   ]
 }
