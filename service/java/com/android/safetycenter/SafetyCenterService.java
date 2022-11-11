@@ -685,7 +685,8 @@ public final class SafetyCenterService extends SystemService {
                 @NonNull ParcelFileDescriptor out,
                 @NonNull ParcelFileDescriptor err,
                 @NonNull String[] args) {
-            return new SafetyCenterShellCommandHandler(this)
+            return new SafetyCenterShellCommandHandler(
+                            getContext(), this, mDeviceSupportsSafetyCenter)
                     .exec(
                             this,
                             in.getFileDescriptor(),
