@@ -16,13 +16,11 @@
 
 package com.android.permission.access
 
-import com.android.internal.annotations.GuardedBy
 import com.android.permission.access.appop.PackageAppOpPolicy
 import com.android.permission.access.appop.UidAppOpPolicy
 import com.android.permission.access.collection.* // ktlint-disable no-wildcard-imports
 import com.android.permission.access.external.PackageState
 import com.android.permission.access.permission.UidPermissionPolicy
-import com.android.permission.util.ForegroundThread
 
 class AccessPolicy private constructor(
     private val schemePolicies: IndexedMap<String, IndexedMap<String, SchemePolicy>>
@@ -114,8 +112,9 @@ class AccessPolicy private constructor(
 }
 
 abstract class SchemePolicy {
-    @GuardedBy("onDecisionChangedListeners")
-    private val onDecisionChangedListeners = IndexedListSet<OnDecisionChangedListener>()
+    @Volatile
+    private var onDecisionChangedListeners = IndexedListSet<OnDecisionChangedListener>()
+    private val onDecisionChangedListenersLock = Any()
 
     abstract val subjectScheme: String
 
@@ -132,14 +131,14 @@ abstract class SchemePolicy {
     )
 
     fun addOnDecisionChangedListener(listener: OnDecisionChangedListener) {
-        synchronized(onDecisionChangedListeners) {
-            onDecisionChangedListeners += listener
+        synchronized(onDecisionChangedListenersLock) {
+            onDecisionChangedListeners = onDecisionChangedListeners + listener
         }
     }
 
     fun removeOnDecisionChangedListener(listener: OnDecisionChangedListener) {
-        synchronized(onDecisionChangedListeners) {
-            onDecisionChangedListeners -= listener
+        synchronized(onDecisionChangedListenersLock) {
+            onDecisionChangedListeners = onDecisionChangedListeners - listener
         }
     }
 
@@ -149,13 +148,9 @@ abstract class SchemePolicy {
         oldDecision: Int,
         newDecision: Int
     ) {
-        val listeners = synchronized(onDecisionChangedListeners) {
-            onDecisionChangedListeners.copy()
-        }
-        ForegroundThread.getExecutor().execute {
-            listeners.forEachIndexed { _, it ->
-                it.onDecisionChanged(subject, `object`, oldDecision, newDecision)
-            }
+        val listeners = onDecisionChangedListeners
+        listeners.forEachIndexed { _, it ->
+            it.onDecisionChanged(subject, `object`, oldDecision, newDecision)
         }
     }
 
