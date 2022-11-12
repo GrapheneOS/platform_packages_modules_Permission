@@ -17,24 +17,44 @@
 package com.android.permission.access.appop
 
 import android.app.AppOpsManager
+import com.android.permission.access.AccessState
+import com.android.permission.access.AccessUri
+import com.android.permission.access.AppOpUri
 import com.android.permission.access.SchemePolicy
 import com.android.permission.access.collection.* // ktlint-disable no-wildcard-imports
 
 abstract class BaseAppOpPolicy : SchemePolicy() {
-    protected fun getAppOpMode(modes: IndexedMap<String, Int>?, appOpName: String): Int =
-        modes?.get(appOpName) ?: opToDefaultMode(appOpName)
 
-    protected fun setAppOpMode(
-        modes: IndexedMap<String, Int>,
-        appOpName: String,
-        decision: Int
+    override fun getDecision(subject: AccessUri, `object`: AccessUri, state: AccessState): Int {
+        `object` as AppOpUri
+        return getModes(subject, state)
+            .getWithDefault(`object`.appOpName, opToDefaultMode(`object`.appOpName))
+    }
+
+    override fun setDecision(
+        subject: AccessUri,
+        `object`: AccessUri,
+        decision: Int,
+        oldState: AccessState,
+        newState: AccessState
     ) {
-        if (decision == opToDefaultMode(appOpName)) {
-            modes -= appOpName
-        } else {
-            modes[appOpName] = decision
+        `object` as AppOpUri
+        val modes = getOrCreateModes(subject, newState)
+        val oldMode = modes.putWithDefault(`object`.appOpName, decision,
+            opToDefaultMode(`object`.appOpName))
+        if (modes.isEmpty()) {
+            removeModes(subject, newState)
+        }
+        if (oldMode != decision) {
+            notifyOnDecisionChangedListeners(subject, `object`, oldMode, decision)
         }
     }
+
+    abstract fun getModes(subject: AccessUri, state: AccessState): IndexedMap<String, Int>?
+
+    abstract fun getOrCreateModes(subject: AccessUri, state: AccessState): IndexedMap<String, Int>
+
+    abstract fun removeModes(subject: AccessUri, state: AccessState)
 
     // TODO need to check that [AppOpsManager.getSystemAlertWindowDefault] works; likely no issue
     //  since running in system process.

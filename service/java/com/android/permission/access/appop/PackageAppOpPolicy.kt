@@ -31,25 +31,20 @@ class PackageAppOpPolicy : BaseAppOpPolicy() {
     override val objectScheme: String
         get() = AppOpUri.SCHEME
 
-    override fun getDecision(subject: AccessUri, `object`: AccessUri, state: AccessState): Int {
+    override fun getModes(subject: AccessUri, state: AccessState): IndexedMap<String, Int>? {
         subject as PackageUri
-        `object` as AppOpUri
-        return getAppOpMode(state.userStates[subject.userId]
-            ?.packageAppOpModes?.get(subject.packageName), `object`.appOpName)
+        return state.userStates[subject.userId]?.packageAppOpModes?.get(subject.packageName)
     }
 
-    override fun setDecision(
-        subject: AccessUri,
-        `object`: AccessUri,
-        decision: Int,
-        oldState: AccessState,
-        newState: AccessState
-    ) {
+    override fun getOrCreateModes(subject: AccessUri, state: AccessState): IndexedMap<String, Int> {
         subject as PackageUri
-        `object` as AppOpUri
-        val modes = newState.userStates.getOrPut(subject.userId) { UserState() }
+        return state.userStates.getOrPut(subject.userId) { UserState() }
             .packageAppOpModes.getOrPut(subject.packageName) { IndexedMap() }
-        setAppOpMode(modes, `object`.appOpName, decision)
+    }
+
+    override fun removeModes(subject: AccessUri, state: AccessState) {
+        subject as PackageUri
+        state.userStates[subject.userId]?.packageAppOpModes?.remove(subject.packageName)
     }
 
     override fun onPackageRemoved(
