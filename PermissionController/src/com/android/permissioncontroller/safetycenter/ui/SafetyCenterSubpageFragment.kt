@@ -54,9 +54,10 @@ class SafetyCenterSubpageFragment(private val sourceGroupId: String) : Preferenc
         val entryGroup = getMatchingGroup(uiData, sourceGroupId)
         if (entryGroup == null) {
             Log.w(TAG, "$sourceGroupId doesn't match any of the existing SafetySourcesGroup IDs")
-            requireActivity().getFragmentManager().popBackStack()
+            requireActivity().getSupportFragmentManager().popBackStack()
+            return
         }
-        requireActivity().setTitle(entryGroup!!.title)
+        requireActivity().setTitle(entryGroup.title)
     }
 
     private fun getMatchingGroup(

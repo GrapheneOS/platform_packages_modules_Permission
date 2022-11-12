@@ -20,6 +20,8 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import android.os.Build.VERSION_CODES.TIRAMISU
+import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.safetycenter.SafetyCenterIssue
 import androidx.annotation.RequiresApi
 import androidx.test.core.app.ApplicationProvider
@@ -29,6 +31,7 @@ import androidx.test.filters.SdkSuppress
 import com.android.permission.testing.EqualsHashCodeToStringTester
 import com.google.common.truth.Truth.assertThat
 import kotlin.test.assertFailsWith
+import org.junit.Assume.assumeFalse
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -102,7 +105,7 @@ class SafetyCenterIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun getAttributionTitle_returnsAttributionTitle() {
         assertThat(
                 SafetyCenterIssue.Builder(issue1)
@@ -119,7 +122,7 @@ class SafetyCenterIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun getAttributionTitle_withNullAttributionTitle_returnsNull() {
         val safetyCenterIssue =
             SafetyCenterIssue.Builder("issue_id", "Everything's good", "Please acknowledge this")
@@ -212,6 +215,64 @@ class SafetyCenterIssueTest {
     }
 
     @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getGroupId_withNonNullValue_returnsGroupId() {
+        val issue = SafetyCenterIssue.Builder(issue1).setGroupId("group_id").build()
+
+        assertThat(issue.groupId).isEqualTo("group_id")
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getGroupId_withNullValue_returnsNull() {
+        val issue =
+            SafetyCenterIssue.Builder("issue_id", "Everything's good", "Please acknowledge this")
+                .build()
+
+        assertThat(issue.groupId).isNull()
+    }
+
+    @Test
+    @SdkSuppress(maxSdkVersion = TIRAMISU)
+    fun getGroupId_withVersionLessThanU_throwsUnsupportedOperationException() {
+        // TODO(b/258228790): Remove after U is no longer in pre-release
+        assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
+        val issue =
+            SafetyCenterIssue.Builder("issue_id", "Everything's good", "Please acknowledge this")
+                .build()
+
+        val exception = assertFailsWith(UnsupportedOperationException::class) { issue.groupId }
+
+        assertThat(exception)
+            .hasMessageThat()
+            .isEqualTo("Method not supported for versions lower than UPSIDE_DOWN_CAKE")
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun setGroupId_withNullValue_returnsNull() {
+        val issue = SafetyCenterIssue.Builder(issue1).setGroupId(null).build()
+
+        assertThat(issue.groupId).isNull()
+    }
+
+    @Test
+    @SdkSuppress(maxSdkVersion = TIRAMISU)
+    fun setGroupId_withVersionLessThanU_throwsUnsupportedOperationException() {
+        // TODO(b/258228790): Remove after U is no longer in pre-release
+        assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
+
+        val exception =
+            assertFailsWith(UnsupportedOperationException::class) {
+                SafetyCenterIssue.Builder(issue1).setGroupId("group_id").build()
+            }
+
+        assertThat(exception)
+            .hasMessageThat()
+            .isEqualTo("Method not supported for versions lower than UPSIDE_DOWN_CAKE")
+    }
+
+    @Test
     fun describeContents_returns0() {
         assertThat(issue1.describeContents()).isEqualTo(0)
         assertThat(issueWithRequiredFieldsOnly.describeContents()).isEqualTo(0)
@@ -224,9 +285,9 @@ class SafetyCenterIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun parcelRoundTrip_recreatesEqual_atLeastAndroidU() {
-        val issueWithAttributionTitle =
+        val safetyCenterIssue =
             SafetyCenterIssue.Builder("issue_id", "Everything's good", "Please acknowledge this")
                 .setSubtitle("In the neighborhood")
                 .setSeverityLevel(SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_OK)
@@ -234,9 +295,10 @@ class SafetyCenterIssueTest {
                 .setShouldConfirmDismissal(true)
                 .setActions(listOf(action1))
                 .setAttributionTitle("Attribution title")
+                .setGroupId("group_id")
                 .build()
 
-        assertThat(issueWithAttributionTitle).recreatesEqual(SafetyCenterIssue.CREATOR)
+        assertThat(safetyCenterIssue).recreatesEqual(SafetyCenterIssue.CREATOR)
     }
 
     @Test
@@ -245,71 +307,10 @@ class SafetyCenterIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun equalsHashCodeToString_usingEqualsHashCodeToStringTester_atLeastAndroidU() {
         newUpsideDownCakeEqualsHashCodeToStringTester().test()
     }
-
-    /**
-     * Creates a new [EqualsHashCodeToStringTester] instance with all the equality groups in the
-     * [newTiramisuEqualsHashCodeToStringTester] plus new equality groups covering all the new
-     * fields added in U.
-     */
-    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
-    private fun newUpsideDownCakeEqualsHashCodeToStringTester(): EqualsHashCodeToStringTester {
-        val issueWithAttributionTitle =
-            SafetyCenterIssue.Builder("issue_id", "Everything's good", "Please acknowledge this")
-                .setSubtitle("In the neighborhood")
-                .setSeverityLevel(SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_OK)
-                .setDismissible(true)
-                .setShouldConfirmDismissal(true)
-                .setActions(listOf(action1))
-                .setAttributionTitle("Attribution title")
-                .build()
-        return newTiramisuEqualsHashCodeToStringTester()
-            .addEqualityGroup(
-                issueWithAttributionTitle,
-                SafetyCenterIssue.Builder(issueWithAttributionTitle).build())
-            .addEqualityGroup(
-                SafetyCenterIssue.Builder(issueWithAttributionTitle)
-                    .setAttributionTitle("a different attribution title")
-                    .build())
-    }
-
-    /**
-     * Creates a new [EqualsHashCodeToStringTester] instance which covers all the fields in the T
-     * API and is safe to use on any T+ API level.
-     */
-    private fun newTiramisuEqualsHashCodeToStringTester() =
-        EqualsHashCodeToStringTester()
-            .addEqualityGroup(issue1, SafetyCenterIssue.Builder(issue1).build())
-            .addEqualityGroup(issueWithRequiredFieldsOnly)
-            .addEqualityGroup(
-                SafetyCenterIssue.Builder("an id", "a title", "Please acknowledge this")
-                    .setSubtitle("In the neighborhood")
-                    .setSeverityLevel(SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_OK)
-                    .setActions(listOf(action1))
-                    .build(),
-                SafetyCenterIssue.Builder("an id", "a title", "Please acknowledge this")
-                    .setSubtitle("In the neighborhood")
-                    .setSeverityLevel(SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_OK)
-                    .setActions(listOf(action1))
-                    .build())
-            .addEqualityGroup(SafetyCenterIssue.Builder(issue1).setId("a different id").build())
-            .addEqualityGroup(
-                SafetyCenterIssue.Builder(issue1).setTitle("a different title").build())
-            .addEqualityGroup(
-                SafetyCenterIssue.Builder(issue1).setSubtitle("a different subtitle").build())
-            .addEqualityGroup(
-                SafetyCenterIssue.Builder(issue1).setSummary("a different summary").build())
-            .addEqualityGroup(
-                SafetyCenterIssue.Builder(issue1)
-                    .setSeverityLevel(SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_CRITICAL_WARNING)
-                    .build())
-            .addEqualityGroup(SafetyCenterIssue.Builder(issue1).setDismissible(false).build())
-            .addEqualityGroup(
-                SafetyCenterIssue.Builder(issue1).setShouldConfirmDismissal(false).build())
-            .addEqualityGroup(SafetyCenterIssue.Builder(issue1).setActions(listOf(action2)).build())
 
     @Test
     fun action_getId_returnsId() {
@@ -413,4 +414,80 @@ class SafetyCenterIssueTest {
                     .build())
             .test()
     }
+
+    /**
+     * Creates a new [EqualsHashCodeToStringTester] instance with all the equality groups in the
+     * [newTiramisuEqualsHashCodeToStringTester] plus new equality groups covering all the new
+     * fields added in U.
+     */
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    private fun newUpsideDownCakeEqualsHashCodeToStringTester(): EqualsHashCodeToStringTester {
+        val issueWithTiramisuFields =
+            SafetyCenterIssue.Builder("issue_id", "Everything's good", "Please acknowledge this")
+                .setSubtitle("In the neighborhood")
+                .setSeverityLevel(SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_OK)
+                .setDismissible(true)
+                .setShouldConfirmDismissal(true)
+                .setActions(listOf(action1))
+                .build()
+        return newTiramisuEqualsHashCodeToStringTester()
+            .addEqualityGroup(
+                SafetyCenterIssue.Builder(issueWithTiramisuFields)
+                    .setAttributionTitle("Attribution title")
+                    .build(),
+                SafetyCenterIssue.Builder(issueWithTiramisuFields)
+                    .setAttributionTitle("Attribution title")
+                    .build())
+            .addEqualityGroup(
+                SafetyCenterIssue.Builder(issueWithTiramisuFields)
+                    .setAttributionTitle("a different attribution title")
+                    .build())
+            .addEqualityGroup(
+                SafetyCenterIssue.Builder(issueWithTiramisuFields)
+                    .setAttributionTitle("Attribution title")
+                    .setGroupId("group_id")
+                    .build())
+            .addEqualityGroup(
+                SafetyCenterIssue.Builder(issueWithTiramisuFields).setGroupId("group_id").build(),
+                SafetyCenterIssue.Builder(issueWithTiramisuFields).setGroupId("group_id").build())
+            .addEqualityGroup(
+                SafetyCenterIssue.Builder(issueWithTiramisuFields)
+                    .setGroupId("a different group_id")
+                    .build())
+    }
+
+    /**
+     * Creates a new [EqualsHashCodeToStringTester] instance which covers all the fields in the T
+     * API and is safe to use on any T+ API level.
+     */
+    private fun newTiramisuEqualsHashCodeToStringTester() =
+        EqualsHashCodeToStringTester()
+            .addEqualityGroup(issue1, SafetyCenterIssue.Builder(issue1).build())
+            .addEqualityGroup(issueWithRequiredFieldsOnly)
+            .addEqualityGroup(
+                SafetyCenterIssue.Builder("an id", "a title", "Please acknowledge this")
+                    .setSubtitle("In the neighborhood")
+                    .setSeverityLevel(SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_OK)
+                    .setActions(listOf(action1))
+                    .build(),
+                SafetyCenterIssue.Builder("an id", "a title", "Please acknowledge this")
+                    .setSubtitle("In the neighborhood")
+                    .setSeverityLevel(SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_OK)
+                    .setActions(listOf(action1))
+                    .build())
+            .addEqualityGroup(SafetyCenterIssue.Builder(issue1).setId("a different id").build())
+            .addEqualityGroup(
+                SafetyCenterIssue.Builder(issue1).setTitle("a different title").build())
+            .addEqualityGroup(
+                SafetyCenterIssue.Builder(issue1).setSubtitle("a different subtitle").build())
+            .addEqualityGroup(
+                SafetyCenterIssue.Builder(issue1).setSummary("a different summary").build())
+            .addEqualityGroup(
+                SafetyCenterIssue.Builder(issue1)
+                    .setSeverityLevel(SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_CRITICAL_WARNING)
+                    .build())
+            .addEqualityGroup(SafetyCenterIssue.Builder(issue1).setDismissible(false).build())
+            .addEqualityGroup(
+                SafetyCenterIssue.Builder(issue1).setShouldConfirmDismissal(false).build())
+            .addEqualityGroup(SafetyCenterIssue.Builder(issue1).setActions(listOf(action2)).build())
 }

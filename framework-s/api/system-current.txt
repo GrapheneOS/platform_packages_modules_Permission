@@ -151,6 +151,7 @@ package android.safetycenter {
     method public int describeContents();
     method @NonNull public java.util.List<android.safetycenter.SafetyCenterIssue.Action> getActions();
     method @Nullable public CharSequence getAttributionTitle();
+    method @Nullable public String getGroupId();
     method @NonNull public String getId();
     method public int getSeverityLevel();
     method @Nullable public CharSequence getSubtitle();
@@ -195,6 +196,7 @@ package android.safetycenter {
     method @NonNull public android.safetycenter.SafetyCenterIssue.Builder setActions(@NonNull java.util.List<android.safetycenter.SafetyCenterIssue.Action>);
     method @NonNull public android.safetycenter.SafetyCenterIssue.Builder setAttributionTitle(@Nullable CharSequence);
     method @NonNull public android.safetycenter.SafetyCenterIssue.Builder setDismissible(boolean);
+    method @NonNull public android.safetycenter.SafetyCenterIssue.Builder setGroupId(@Nullable String);
     method @NonNull public android.safetycenter.SafetyCenterIssue.Builder setId(@NonNull String);
     method @NonNull public android.safetycenter.SafetyCenterIssue.Builder setSeverityLevel(int);
     method @NonNull public android.safetycenter.SafetyCenterIssue.Builder setShouldConfirmDismissal(boolean);
