@@ -32,7 +32,7 @@ interface PackageState {
 
 interface AndroidPackage {
     val packageName: String
-    val apexModuleName: String
+    val apexModuleName: String?
     val appId: Int
     val isPrivileged: Boolean
     val isOem: Boolean

@@ -16,11 +16,17 @@
 
 package com.android.permission.access
 
+import android.util.Log
+import com.android.modules.utils.BinaryXmlPullParser
+import com.android.modules.utils.BinaryXmlSerializer
 import com.android.permission.access.appop.PackageAppOpPolicy
 import com.android.permission.access.appop.UidAppOpPolicy
 import com.android.permission.access.collection.* // ktlint-disable no-wildcard-imports
 import com.android.permission.access.external.PackageState
 import com.android.permission.access.permission.UidPermissionPolicy
+import com.android.permission.access.util.forEachTag
+import com.android.permission.access.util.tag
+import com.android.permission.access.util.tagName
 
 class AccessPolicy private constructor(
     private val schemePolicies: IndexedMap<String, IndexedMap<String, SchemePolicy>>
@@ -29,7 +35,6 @@ class AccessPolicy private constructor(
         IndexedMap<String, IndexedMap<String, SchemePolicy>>().apply {
             fun addPolicy(policy: SchemePolicy) =
                 getOrPut(policy.subjectScheme) { IndexedMap() }.put(policy.objectScheme, policy)
-
             addPolicy(UidPermissionPolicy())
             addPolicy(UidAppOpPolicy())
             addPolicy(PackageAppOpPolicy())
@@ -102,12 +107,69 @@ class AccessPolicy private constructor(
         }
     }
 
-    private inline fun forEachSchemePolicy(action: (SchemePolicy) -> Unit) {
-        schemePolicies.forEachValueIndexed { _, it ->
-            it.forEachValueIndexed { _, it ->
-                action(it)
+    fun BinaryXmlPullParser.parseSystemState(systemState: SystemState) {
+        forEachTag {
+            when (tagName) {
+                TAG_ACCESS -> {
+                    forEachTag {
+                        forEachSchemePolicy {
+                            with(it) { this@parseSystemState.parseSystemState(systemState) }
+                        }
+                    }
+                }
+                else -> Log.w(LOG_TAG, "Ignoring unknown tag $tagName when parsing system state")
             }
         }
+    }
+
+    fun BinaryXmlSerializer.serializeSystemState(systemState: SystemState) {
+        tag(TAG_ACCESS) {
+            forEachSchemePolicy {
+                with(it) { this@serializeSystemState.serializeSystemState(systemState) }
+            }
+        }
+    }
+
+    fun BinaryXmlPullParser.parseUserState(userId: Int, userState: UserState) {
+        forEachTag {
+            when (tagName) {
+                TAG_ACCESS -> {
+                    forEachTag {
+                        forEachSchemePolicy {
+                            with(it) { this@parseUserState.parseUserState(userId, userState) }
+                        }
+                    }
+                }
+                else -> {
+                    Log.w(
+                        LOG_TAG,
+                        "Ignoring unknown tag $tagName when parsing user state for user $userId"
+                    )
+                }
+            }
+        }
+    }
+
+    fun BinaryXmlSerializer.serializeUserState(userId: Int, userState: UserState) {
+        tag(TAG_ACCESS) {
+            forEachSchemePolicy {
+                with(it) { this@serializeUserState.serializeUserState(userId, userState) }
+            }
+        }
+    }
+
+    private inline fun forEachSchemePolicy(action: (SchemePolicy) -> Unit) {
+        schemePolicies.forEachValueIndexed { _, objectSchemePolicies ->
+            objectSchemePolicies.forEachValueIndexed { _, schemePolicy ->
+                action(schemePolicy)
+            }
+        }
+    }
+
+    companion object {
+        private val LOG_TAG = AccessPolicy::class.java.simpleName
+
+        private const val TAG_ACCESS = "access"
     }
 }
 
@@ -173,6 +235,14 @@ abstract class SchemePolicy {
         oldState: AccessState,
         newState: AccessState
     ) {}
+
+    open fun BinaryXmlPullParser.parseSystemState(systemState: SystemState) {}
+
+    open fun BinaryXmlSerializer.serializeSystemState(systemState: SystemState) {}
+
+    open fun BinaryXmlPullParser.parseUserState(userId: Int, userState: UserState) {}
+
+    open fun BinaryXmlSerializer.serializeUserState(userId: Int, userState: UserState) {}
 
     fun interface OnDecisionChangedListener {
         fun onDecisionChanged(

@@ -27,7 +27,7 @@ class AccessCheckingService {
 
     private val policy = AccessPolicy()
 
-    private val persistence = AccessPersistence()
+    private val persistence = AccessPersistence(policy)
 
     fun init() {
         val state = AccessState()

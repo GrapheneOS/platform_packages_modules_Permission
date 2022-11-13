@@ -20,10 +20,13 @@ import android.content.pm.PackageManager
 import android.content.pm.PermissionInfo
 import android.os.Build
 import android.util.Log
+import com.android.modules.utils.BinaryXmlPullParser
+import com.android.modules.utils.BinaryXmlSerializer
 import com.android.permission.access.AccessState
 import com.android.permission.access.AccessUri
 import com.android.permission.access.PermissionUri
 import com.android.permission.access.SchemePolicy
+import com.android.permission.access.SystemState
 import com.android.permission.access.UidUri
 import com.android.permission.access.UserState
 import com.android.permission.access.collection.* // ktlint-disable no-wildcard-imports
@@ -38,11 +41,9 @@ import com.android.permission.access.external.SigningDetails
 import com.android.permission.access.util.hasBits
 import com.android.permission.compat.UserHandleCompat
 
-private const val PLATFORM_PACKAGE_NAME = "android"
-
-private val LOG_TAG = UidPermissionPolicy::class.java.simpleName
-
 class UidPermissionPolicy : SchemePolicy() {
+    private val persistence = UidPermissionPersistence()
+
     override val subjectScheme: String
         get() = UidUri.SCHEME
 
@@ -820,5 +821,19 @@ class UidPermissionPolicy : SchemePolicy() {
         newState: AccessState
     ) {
         // TODO
+    }
+
+    override fun BinaryXmlPullParser.parseSystemState(systemState: SystemState) {
+        with(persistence) { this@parseSystemState.parseSystemState(systemState) }
+    }
+
+    override fun BinaryXmlSerializer.serializeSystemState(systemState: SystemState) {
+        with(persistence) { this@serializeSystemState.serializeSystemState(systemState) }
+    }
+
+    companion object {
+        private val LOG_TAG = UidPermissionPolicy::class.java.simpleName
+
+        private const val PLATFORM_PACKAGE_NAME = "android"
     }
 }
