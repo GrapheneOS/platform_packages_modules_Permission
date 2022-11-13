@@ -32,10 +32,10 @@ import kotlinx.coroutines.Job
  * App ops data is retrieved from [AppOpsManager] and is updated whenever app ops data changes are
  * heard.
  */
-// TODO(b/258257361): Implement OnOpNotedListener once it is exposed as API.
 class AllLightPackageOpsLiveData(app: Application) :
     SmartAsyncMediatorLiveData<Map<Pair<String, UserHandle>, LightPackageOps>>(),
     AppOpsManager.OnOpActiveChangedListener,
+    AppOpsManager.OnOpNotedListener,
     AppOpsManager.OnOpChangedListener {
 
     private val appOpsManager = app.getSystemService(AppOpsManager::class.java)!!
@@ -93,6 +93,17 @@ class AllLightPackageOpsLiveData(app: Application) :
     }
 
     override fun onOpActiveChanged(op: String, uid: Int, packageName: String, active: Boolean) {
+        update()
+    }
+
+    override fun onOpNoted(
+        code: String,
+        uid: Int,
+        packageName: String,
+        attributionTag: String?,
+        flags: Int,
+        result: Int
+    ) {
         update()
     }
 
