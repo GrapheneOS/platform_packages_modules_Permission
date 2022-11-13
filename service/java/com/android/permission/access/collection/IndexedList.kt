@@ -46,6 +46,10 @@ inline fun <T> IndexedList<T>.forEachIndexed(action: (Int, T) -> Unit) {
 }
 
 @Suppress("NOTHING_TO_INLINE")
+inline operator fun <T> IndexedList<T>.minus(element: T): IndexedList<T> =
+    copy().apply { this -= element }
+
+@Suppress("NOTHING_TO_INLINE")
 inline operator fun <T> IndexedList<T>.minusAssign(element: T) {
     remove(element)
 }
@@ -58,6 +62,10 @@ inline fun <T> IndexedList<T>.noneIndexed(predicate: (Int, T) -> Boolean): Boole
     }
     return true
 }
+
+@Suppress("NOTHING_TO_INLINE")
+inline operator fun <T> IndexedList<T>.plus(element: T): IndexedList<T> =
+    copy().apply { this += element }
 
 @Suppress("NOTHING_TO_INLINE")
 inline operator fun <T> IndexedList<T>.plusAssign(element: T) {

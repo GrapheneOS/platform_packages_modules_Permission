@@ -54,6 +54,10 @@ inline val <T> IndexedSet<T>.lastIndex: Int
     get() = size - 1
 
 @Suppress("NOTHING_TO_INLINE")
+inline operator fun <T> IndexedSet<T>.minus(element: T): IndexedSet<T> =
+    copy().apply { this -= element }
+
+@Suppress("NOTHING_TO_INLINE")
 inline operator fun <T> IndexedSet<T>.minusAssign(element: T) {
     remove(element)
 }
@@ -66,6 +70,10 @@ inline fun <T> IndexedSet<T>.noneIndexed(predicate: (Int, T) -> Boolean): Boolea
     }
     return true
 }
+
+@Suppress("NOTHING_TO_INLINE")
+inline operator fun <T> IndexedSet<T>.plus(element: T): IndexedSet<T> =
+    copy().apply { this += element }
 
 @Suppress("NOTHING_TO_INLINE")
 inline operator fun <T> IndexedSet<T>.plusAssign(element: T) {

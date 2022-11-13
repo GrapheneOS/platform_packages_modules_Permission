@@ -79,6 +79,9 @@ inline val IntSet.lastIndex: Int
     get() = size - 1
 
 @Suppress("NOTHING_TO_INLINE")
+inline operator fun IntSet.minus(element: Int): IntSet = copy().apply { this -= element }
+
+@Suppress("NOTHING_TO_INLINE")
 inline operator fun IntSet.minusAssign(element: Int) {
     remove(element)
 }
@@ -91,6 +94,9 @@ inline fun IntSet.noneIndexed(predicate: (Int, Int) -> Boolean): Boolean {
     }
     return true
 }
+
+@Suppress("NOTHING_TO_INLINE")
+inline operator fun IntSet.plus(element: Int): IntSet = copy().apply { this += element }
 
 @Suppress("NOTHING_TO_INLINE")
 inline operator fun IntSet.plusAssign(element: Int) {
