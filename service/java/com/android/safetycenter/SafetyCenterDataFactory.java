@@ -104,32 +104,6 @@ final class SafetyCenterDataFactory {
     }
 
     /**
-     * Returns the current {@link SafetyCenterData} for the given {@code packageName} and {@link
-     * UserProfileGroup}, aggregated from all the {@link SafetySourceData} set so far.
-     *
-     * <p>If a {@link SafetySourceData} was not set, the default value from the {@link
-     * SafetyCenterConfig} is used.
-     */
-    @NonNull
-    SafetyCenterData assembleSafetyCenterData(
-            @NonNull String packageName, @NonNull UserProfileGroup userProfileGroup) {
-        return assembleSafetyCenterDataInternal(
-                packageName, userProfileGroup, /* includeLoggableSourcesOnly= */ false);
-    }
-
-    /**
-     * Returns the current {@link SafetyCenterData} in the same manner as {@link
-     * #assembleSafetyCenterData(String, UserProfileGroup)}, but only including data from sources
-     * where {@link SafetySources#isLoggable(SafetySource)} is {@code true}.
-     */
-    @NonNull
-    SafetyCenterData assembleLoggableSafetyCenterData(
-            @NonNull String packageName, @NonNull UserProfileGroup userProfileGroup) {
-        return assembleSafetyCenterDataInternal(
-                packageName, userProfileGroup, /* includeLoggableSourcesOnly= */ true);
-    }
-
-    /**
      * Returns a default {@link SafetyCenterData} object to be returned when the API is disabled.
      */
     @NonNull
@@ -147,16 +121,32 @@ final class SafetyCenterDataFactory {
         }
     }
 
+    /**
+     * Returns the current {@link SafetyCenterData} for the given {@code packageName} and {@link
+     * UserProfileGroup}, aggregated from all the {@link SafetySourceData} set so far.
+     *
+     * <p>If a {@link SafetySourceData} was not set, the default value from the {@link
+     * SafetyCenterConfig} is used.
+     */
     @NonNull
-    private SafetyCenterData assembleSafetyCenterDataInternal(
+    SafetyCenterData assembleSafetyCenterData(
+            @NonNull String packageName, @NonNull UserProfileGroup userProfileGroup) {
+        return assembleSafetyCenterData(packageName, userProfileGroup, getAllGroups());
+    }
+
+    /**
+     * Returns the current {@link SafetyCenterData} for the given {@code packageName} and {@link
+     * UserProfileGroup}, aggregated from {@link SafetySourceData} set by the specified {@link
+     * SafetySourcesGroup}s.
+     *
+     * <p>If a {@link SafetySourceData} was not set, the default value from the {@link
+     * SafetyCenterConfig} is used.
+     */
+    @NonNull
+    SafetyCenterData assembleSafetyCenterData(
             @NonNull String packageName,
             @NonNull UserProfileGroup userProfileGroup,
-            boolean includeLoggableSourcesOnly) {
-        List<SafetySourcesGroup> safetySourcesGroups =
-                includeLoggableSourcesOnly
-                        ? mSafetyCenterConfigReader.getLoggableSafetySourcesGroups()
-                        : mSafetyCenterConfigReader.getSafetySourcesGroups();
-
+            @NonNull List<SafetySourcesGroup> safetySourcesGroups) {
         List<SafetyCenterIssueWithCategory> safetyCenterIssuesWithCategories = new ArrayList<>();
         List<SafetyCenterIssueWithCategory> safetyCenterDismissedIssuesWithCategories =
                 new ArrayList<>();
@@ -247,6 +237,11 @@ final class SafetyCenterDataFactory {
                     safetyCenterEntryOrGroups,
                     safetyCenterStaticEntryGroups);
         }
+    }
+
+    @NonNull
+    private List<SafetySourcesGroup> getAllGroups() {
+        return mSafetyCenterConfigReader.getSafetySourcesGroups();
     }
 
     private void addSafetyCenterIssues(
