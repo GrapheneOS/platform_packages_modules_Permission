@@ -35,8 +35,6 @@
     <target_preparer class="com.android.tradefed.targetprep.DeviceSetup">
         <!-- Avoid restarting device. -->
         <option name="force-skip-system-props" value="true"/>
-        <!-- Disable syncing to prevent overwriting flags during testing. -->
-        <option name="disable-device-config-sync" value="true" />
     </target_preparer>
 
     <target_preparer
@@ -50,6 +48,9 @@
              aren't polluted by `BOOT_COMPLETED` or similar broadcasts still being delivered, which
              causes our `ActivityManager#waitForBroadcastIdle()` calls to timeout. -->
         <option name="run-command" value="am wait-for-broadcast-idle" />
+        <!-- Disable syncing to prevent overwriting flags during testing. -->
+        <option name="run-command" value="device_config set_sync_disabled_for_tests persistent" />
+        <option name="teardown-command" value="device_config set_sync_disabled_for_tests none" />
     </target_preparer>
 
     <test class="com.android.tradefed.testtype.AndroidJUnitTest">
