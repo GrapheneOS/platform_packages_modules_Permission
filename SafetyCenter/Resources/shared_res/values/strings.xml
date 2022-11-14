@@ -40,6 +40,12 @@
     <!-- Title for the overall Safety Center status when the user security and privacy signals are putting them at risk [CHAR LIMIT=35] -->
     <string name="overall_severity_level_critical_device_warning_title">Device is at risk</string>
 
+    <!-- Title for the overall Safety Center status when the user's data could potentially be at risk [CHAR LIMIT=35] -->
+    <string name="overall_severity_level_data_recommendation_title">Your data may be at risk</string>
+
+    <!-- Title for the overall Safety Center status when the user's data is at risk [CHAR LIMIT=35] -->
+    <string name="overall_severity_level_critical_data_warning_title">Your data is at risk</string>
+
     <!-- Title for the overall Safety Center status when the user security and privacy signals could potentially put their general safety at risk [CHAR LIMIT=35] -->
     <string name="overall_severity_level_safety_recommendation_title">You may be at risk</string>
 

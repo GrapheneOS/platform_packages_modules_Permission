@@ -17,11 +17,13 @@
 package com.android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
+import static android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
 
 import static java.util.Collections.emptyList;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
+import android.annotation.TargetApi;
 import android.annotation.UserIdInt;
 import android.app.PendingIntent;
 import android.icu.text.ListFormatter;
@@ -1064,12 +1066,14 @@ final class SafetyCenterDataFactory {
                         safetyCenterIssuesWithCategories,
                         "overall_severity_level_device_recommendation_title",
                         "overall_severity_level_account_recommendation_title",
+                        "overall_severity_level_data_recommendation_title",
                         "overall_severity_level_safety_recommendation_title");
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING:
                 return getStatusTitleFromIssueCategories(
                         safetyCenterIssuesWithCategories,
                         "overall_severity_level_critical_device_warning_title",
                         "overall_severity_level_critical_account_warning_title",
+                        "overall_severity_level_critical_data_warning_title",
                         "overall_severity_level_critical_safety_warning_title");
         }
 
@@ -1078,10 +1082,12 @@ final class SafetyCenterDataFactory {
     }
 
     @NonNull
+    @TargetApi(UPSIDE_DOWN_CAKE)
     private String getStatusTitleFromIssueCategories(
             @NonNull List<SafetyCenterIssueWithCategory> safetyCenterIssuesWithCategories,
             @NonNull String deviceResourceName,
             @NonNull String accountResourceName,
+            @NonNull String dataResourceName,
             @NonNull String generalResourceName) {
         String generalString = mSafetyCenterResourcesContext.getStringByName(generalResourceName);
         if (safetyCenterIssuesWithCategories.isEmpty()) {
@@ -1094,6 +1100,8 @@ final class SafetyCenterDataFactory {
                 return mSafetyCenterResourcesContext.getStringByName(deviceResourceName);
             case SafetySourceIssue.ISSUE_CATEGORY_ACCOUNT:
                 return mSafetyCenterResourcesContext.getStringByName(accountResourceName);
+            case SafetySourceIssue.ISSUE_CATEGORY_DATA:
+                return mSafetyCenterResourcesContext.getStringByName(dataResourceName);
             case SafetySourceIssue.ISSUE_CATEGORY_GENERAL:
                 return generalString;
         }
