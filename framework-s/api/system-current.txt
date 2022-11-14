@@ -48,7 +48,9 @@ package android.safetycenter {
 
   public final class SafetyCenterData implements android.os.Parcelable {
     ctor public SafetyCenterData(@NonNull android.safetycenter.SafetyCenterStatus, @NonNull java.util.List<android.safetycenter.SafetyCenterIssue>, @NonNull java.util.List<android.safetycenter.SafetyCenterEntryOrGroup>, @NonNull java.util.List<android.safetycenter.SafetyCenterStaticEntryGroup>);
+    ctor public SafetyCenterData(@NonNull android.safetycenter.SafetyCenterStatus, @NonNull java.util.List<android.safetycenter.SafetyCenterIssue>, @NonNull java.util.List<android.safetycenter.SafetyCenterEntryOrGroup>, @NonNull java.util.List<android.safetycenter.SafetyCenterStaticEntryGroup>, @NonNull java.util.List<android.safetycenter.SafetyCenterIssue>);
     method public int describeContents();
+    method @NonNull public java.util.List<android.safetycenter.SafetyCenterIssue> getDismissedIssues();
     method @NonNull public java.util.List<android.safetycenter.SafetyCenterEntryOrGroup> getEntriesOrGroups();
     method @NonNull public java.util.List<android.safetycenter.SafetyCenterIssue> getIssues();
     method @NonNull public java.util.List<android.safetycenter.SafetyCenterStaticEntryGroup> getStaticEntryGroups();

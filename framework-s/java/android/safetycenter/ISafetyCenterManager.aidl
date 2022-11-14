@@ -90,8 +90,7 @@ interface ISafetyCenterManager {
             int userId);
 
     /**
-     * Dismiss a Safety Center issue and prevent it from appearing in the Safety Center or affecting
-     * the overall safety status.
+     * Dismiss a Safety Center issue and prevent it affecting the overall safety status.
      */
     void dismissSafetyCenterIssue(String issueId, int userId);
 

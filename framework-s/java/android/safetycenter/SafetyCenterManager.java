@@ -524,8 +524,7 @@ public final class SafetyCenterManager {
     }
 
     /**
-     * Dismiss a Safety Center issue and prevent it from appearing in the Safety Center or affecting
-     * the overall safety status.
+     * Dismiss a Safety Center issue and prevent it from affecting the overall safety status.
      *
      * @param safetyCenterIssueId the target issue ID returned by {@link SafetyCenterIssue#getId()}
      */
