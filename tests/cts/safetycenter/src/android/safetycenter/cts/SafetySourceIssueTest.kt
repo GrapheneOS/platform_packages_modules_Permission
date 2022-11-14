@@ -622,6 +622,39 @@ class SafetySourceIssueTest {
     }
 
     @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getDeduplicationId_withDefaultBuilder_returnsNull() {
+        val safetySourceIssue =
+            SafetySourceIssue.Builder(
+                    "Issue id",
+                    "Issue title",
+                    "Issue summary",
+                    SEVERITY_LEVEL_INFORMATION,
+                    "issue_type_id")
+                .addAction(action1)
+                .build()
+
+        assertThat(safetySourceIssue.deduplicationId).isNull()
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getDeduplicationId_whenSetExplicitly_returnsDeduplicationId() {
+        val safetySourceIssue =
+            SafetySourceIssue.Builder(
+                    "Issue id",
+                    "Issue title",
+                    "Issue summary",
+                    SEVERITY_LEVEL_INFORMATION,
+                    "issue_type_id")
+                .addAction(action1)
+                .setDeduplicationId("deduplication_id")
+                .build()
+
+        assertThat(safetySourceIssue.deduplicationId).isEqualTo("deduplication_id")
+    }
+
+    @Test
     fun getIssueTypeId_returnsIssueTypeId() {
         val safetySourceIssue =
             SafetySourceIssue.Builder(
@@ -958,6 +991,7 @@ class SafetySourceIssueTest {
                         .build())
                 .setNotificationBehavior(SafetySourceIssue.NOTIFICATION_BEHAVIOR_DELAYED)
                 .setAttributionTitle("attribution title")
+                .setDeduplicationId("deduplication_id")
                 .build()
 
         assertThat(safetySourceIssue).recreatesEqual(SafetySourceIssue.CREATOR)
@@ -1054,6 +1088,50 @@ class SafetySourceIssueTest {
                         "issue_type_id")
                     .setAttributionTitle("Other issue attribution title")
                     .addAction(action1)
+                    .build())
+            .addEqualityGroup(
+                SafetySourceIssue.Builder(
+                        "Issue id",
+                        "Issue title",
+                        "Issue summary",
+                        SEVERITY_LEVEL_INFORMATION,
+                        "issue_type_id")
+                    .setSubtitle("Issue subtitle")
+                    .setIssueCategory(ISSUE_CATEGORY_ACCOUNT)
+                    .addAction(action1)
+                    .addAction(action2)
+                    .setOnDismissPendingIntent(pendingIntentService)
+                    .setAttributionTitle("attribution title")
+                    .setDeduplicationId("deduplication_id")
+                    .build(),
+                SafetySourceIssue.Builder(
+                        "Issue id",
+                        "Issue title",
+                        "Issue summary",
+                        SEVERITY_LEVEL_INFORMATION,
+                        "issue_type_id")
+                    .setSubtitle("Issue subtitle")
+                    .setIssueCategory(ISSUE_CATEGORY_ACCOUNT)
+                    .addAction(action1)
+                    .addAction(action2)
+                    .setOnDismissPendingIntent(pendingIntentService)
+                    .setAttributionTitle("attribution title")
+                    .setDeduplicationId("deduplication_id")
+                    .build())
+            .addEqualityGroup(
+                SafetySourceIssue.Builder(
+                        "Issue id",
+                        "Issue title",
+                        "Issue summary",
+                        SEVERITY_LEVEL_INFORMATION,
+                        "issue_type_id")
+                    .setSubtitle("Issue subtitle")
+                    .setIssueCategory(ISSUE_CATEGORY_ACCOUNT)
+                    .addAction(action1)
+                    .addAction(action2)
+                    .setOnDismissPendingIntent(pendingIntentService)
+                    .setAttributionTitle("attribution title")
+                    .setDeduplicationId("other_deduplication_id")
                     .build())
 
     /**
