@@ -55,6 +55,8 @@
         <!-- id must be unique among safety sources -->
         <xsd:attribute name="id" type="stringOrStringResourceName" use="required"/>
         <xsd:attribute name="packageName" type="stringOrStringResourceName" use="required"/>
+        <!-- optional comma-separated set of certficate hashes, if provided will be used for validation. -->
+        <xsd:attribute name="packageCertificateHashes" type="stringOrStringResourceName"/>
         <!-- title is required if initialDisplayState is not set to hidden or if searchTerms are provided -->
         <xsd:attribute name="title" type="runtimeStringResourceName"/>
         <!-- titleForWork is required if profile is set to all_profiles, and initialDisplayState is not set to hidden or if searchTerms are provided -->
@@ -81,6 +83,8 @@
         <!-- id must be unique among safety sources -->
         <xsd:attribute name="id" type="stringOrStringResourceName" use="required"/>
         <xsd:attribute name="packageName" type="stringOrStringResourceName" use="required"/>
+        <!-- optional comma-separated set of certficate hashes, if provided will be used for validation. -->
+        <xsd:attribute name="packageCertificateHashes" type="stringOrStringResourceName"/>
         <xsd:attribute name="profile" type="profileOrStringResourceName" use="required"/>
         <xsd:attribute name="maxSeverityLevel" type="intOrStringResourceName" default="2147483647"/>
         <xsd:attribute name="loggingAllowed" type="booleanOrStringResourceName" default="true"/>

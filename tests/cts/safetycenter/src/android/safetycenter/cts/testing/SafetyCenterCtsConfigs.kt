@@ -264,6 +264,12 @@ object SafetyCenterCtsConfigs {
     /** Package name for the [DYNAMIC_OTHER_PACKAGE_ID] source. */
     const val OTHER_PACKAGE_NAME = "other_package_name"
 
+    /** Hash of a package certificate for all "ALL_OPTIONAL" sources. */
+    private const val PACKAGE_CERT_HASH_1 = "feed1"
+
+    /** Second hash of a package certificate for all "ALL_OPTIONAL" sources. */
+    private const val PACKAGE_CERT_HASH_2 = "feed2"
+
     /** A Simple [SafetyCenterConfig] with an issue only source. */
     val ISSUE_ONLY_SOURCE_CONFIG =
         singleSourceConfig(issueOnlySafetySourceBuilder(ISSUE_ONLY_ALL_OPTIONAL_ID).build())
@@ -528,6 +534,8 @@ object SafetyCenterCtsConfigs {
                                 if (SdkLevel.isAtLeastU()) {
                                     setNotificationsAllowed(true)
                                     setDeduplicationGroup("group")
+                                    addPackageCertificateHash(PACKAGE_CERT_HASH_1)
+                                    addPackageCertificateHash(PACKAGE_CERT_HASH_2)
                                 }
                             }
                             .build())
@@ -595,6 +603,8 @@ object SafetyCenterCtsConfigs {
                                 if (SdkLevel.isAtLeastU()) {
                                     setNotificationsAllowed(true)
                                     setDeduplicationGroup("group")
+                                    addPackageCertificateHash(PACKAGE_CERT_HASH_1)
+                                    addPackageCertificateHash(PACKAGE_CERT_HASH_2)
                                 }
                             }
                             .build())
@@ -667,6 +677,8 @@ object SafetyCenterCtsConfigs {
                                 if (SdkLevel.isAtLeastU()) {
                                     setNotificationsAllowed(true)
                                     setDeduplicationGroup("group")
+                                    addPackageCertificateHash(PACKAGE_CERT_HASH_1)
+                                    addPackageCertificateHash(PACKAGE_CERT_HASH_2)
                                 }
                             }
                             .build())

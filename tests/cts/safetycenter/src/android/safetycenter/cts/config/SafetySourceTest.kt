@@ -287,6 +287,20 @@ class SafetySourceTest {
         assertThat(issueOnlyAllOptional().deduplicationGroup).isEqualTo(DEDUPLICATION_GROUP)
     }
 
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @Test
+    fun getPackageCertificateHashes_returnsPackageCerts() {
+        assertThat(DYNAMIC_BAREBONE.packageCertificateHashes).isEmpty()
+        assertThat(dynamicAllOptional().packageCertificateHashes).containsExactly(HASH1)
+        assertThat(DYNAMIC_DISABLED.packageCertificateHashes).isEmpty()
+        assertThat(DYNAMIC_HIDDEN.packageCertificateHashes).isEmpty()
+        assertThat(DYNAMIC_HIDDEN_WITH_SEARCH.packageCertificateHashes).isEmpty()
+        assertThat(STATIC_BAREBONE.packageCertificateHashes).isEmpty()
+        assertThat(STATIC_ALL_OPTIONAL.packageCertificateHashes).isEmpty()
+        assertThat(ISSUE_ONLY_BAREBONE.packageCertificateHashes).isEmpty()
+        assertThat(issueOnlyAllOptional().packageCertificateHashes).containsExactly(HASH1, HASH2)
+    }
+
     @Test
     fun describeContents_returns0() {
         assertThat(DYNAMIC_BAREBONE.describeContents()).isEqualTo(0)
@@ -336,6 +350,7 @@ class SafetySourceTest {
                         if (SdkLevel.isAtLeastU()) {
                             setNotificationsAllowed(true)
                             setDeduplicationGroup(DEDUPLICATION_GROUP)
+                            addPackageCertificateHash(HASH1)
                         }
                     }
                     .build())
@@ -364,6 +379,7 @@ class SafetySourceTest {
                         if (SdkLevel.isAtLeastU()) {
                             setNotificationsAllowed(true)
                             setDeduplicationGroup(DEDUPLICATION_GROUP)
+                            addPackageCertificateHash(HASH1)
                         }
                     }
                     .build())
@@ -385,6 +401,7 @@ class SafetySourceTest {
                         if (SdkLevel.isAtLeastU()) {
                             setNotificationsAllowed(true)
                             setDeduplicationGroup(DEDUPLICATION_GROUP)
+                            addPackageCertificateHash(HASH1)
                         }
                     }
                     .build())
@@ -406,6 +423,7 @@ class SafetySourceTest {
                         if (SdkLevel.isAtLeastU()) {
                             setNotificationsAllowed(true)
                             setDeduplicationGroup(DEDUPLICATION_GROUP)
+                            addPackageCertificateHash(HASH1)
                         }
                     }
                     .build())
@@ -427,6 +445,7 @@ class SafetySourceTest {
                         if (SdkLevel.isAtLeastU()) {
                             setNotificationsAllowed(true)
                             setDeduplicationGroup(DEDUPLICATION_GROUP)
+                            addPackageCertificateHash(HASH1)
                         }
                     }
                     .build())
@@ -448,6 +467,7 @@ class SafetySourceTest {
                         if (SdkLevel.isAtLeastU()) {
                             setNotificationsAllowed(true)
                             setDeduplicationGroup(DEDUPLICATION_GROUP)
+                            addPackageCertificateHash(HASH1)
                         }
                     }
                     .build())
@@ -469,6 +489,7 @@ class SafetySourceTest {
                         if (SdkLevel.isAtLeastU()) {
                             setNotificationsAllowed(true)
                             setDeduplicationGroup(DEDUPLICATION_GROUP)
+                            addPackageCertificateHash(HASH1)
                         }
                     }
                     .build())
@@ -497,6 +518,7 @@ class SafetySourceTest {
                         if (SdkLevel.isAtLeastU()) {
                             setNotificationsAllowed(true)
                             setDeduplicationGroup(DEDUPLICATION_GROUP)
+                            addPackageCertificateHash(HASH1)
                         }
                     }
                     .build())
@@ -518,6 +540,7 @@ class SafetySourceTest {
                         if (SdkLevel.isAtLeastU()) {
                             setNotificationsAllowed(true)
                             setDeduplicationGroup(DEDUPLICATION_GROUP)
+                            addPackageCertificateHash(HASH1)
                         }
                     }
                     .build())
@@ -539,6 +562,7 @@ class SafetySourceTest {
                         if (SdkLevel.isAtLeastU()) {
                             setNotificationsAllowed(true)
                             setDeduplicationGroup(DEDUPLICATION_GROUP)
+                            addPackageCertificateHash(HASH1)
                         }
                     }
                     .build())
@@ -560,6 +584,7 @@ class SafetySourceTest {
                         if (SdkLevel.isAtLeastU()) {
                             setNotificationsAllowed(true)
                             setDeduplicationGroup(DEDUPLICATION_GROUP)
+                            addPackageCertificateHash(HASH1)
                         }
                     }
                     .build())
@@ -581,6 +606,7 @@ class SafetySourceTest {
                         if (SdkLevel.isAtLeastU()) {
                             setNotificationsAllowed(true)
                             setDeduplicationGroup(DEDUPLICATION_GROUP)
+                            addPackageCertificateHash(HASH1)
                         }
                     }
                     .build())
@@ -602,6 +628,7 @@ class SafetySourceTest {
                             .setRefreshOnPageOpenAllowed(true)
                             .setNotificationsAllowed(false)
                             .setDeduplicationGroup(DEDUPLICATION_GROUP)
+                            .addPackageCertificateHash(HASH1)
                             .build())
                     addEqualityGroup(
                         SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
@@ -619,6 +646,64 @@ class SafetySourceTest {
                             .setRefreshOnPageOpenAllowed(true)
                             .setNotificationsAllowed(true)
                             .setDeduplicationGroup("other_deduplication_group")
+                            .addPackageCertificateHash(HASH1)
+                            .build())
+                    // With no package cert hashes provided
+                    addEqualityGroup(
+                        SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
+                            .setId(DYNAMIC_ALL_OPTIONAL_ID)
+                            .setPackageName(PACKAGE_NAME)
+                            .setTitleResId(REFERENCE_RES_ID)
+                            .setTitleForWorkResId(REFERENCE_RES_ID)
+                            .setSummaryResId(REFERENCE_RES_ID)
+                            .setIntentAction(INTENT_ACTION)
+                            .setProfile(SafetySource.PROFILE_ALL)
+                            .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_DISABLED)
+                            .setMaxSeverityLevel(MAX_SEVERITY_LEVEL)
+                            .setSearchTermsResId(REFERENCE_RES_ID)
+                            .setLoggingAllowed(false)
+                            .setRefreshOnPageOpenAllowed(true)
+                            .setNotificationsAllowed(true)
+                            .setDeduplicationGroup(DEDUPLICATION_GROUP)
+                            .build())
+                    // With longer package cert hash list
+                    addEqualityGroup(
+                        SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
+                            .setId(DYNAMIC_ALL_OPTIONAL_ID)
+                            .setPackageName(PACKAGE_NAME)
+                            .setTitleResId(REFERENCE_RES_ID)
+                            .setTitleForWorkResId(REFERENCE_RES_ID)
+                            .setSummaryResId(REFERENCE_RES_ID)
+                            .setIntentAction(INTENT_ACTION)
+                            .setProfile(SafetySource.PROFILE_ALL)
+                            .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_DISABLED)
+                            .setMaxSeverityLevel(MAX_SEVERITY_LEVEL)
+                            .setSearchTermsResId(REFERENCE_RES_ID)
+                            .setLoggingAllowed(false)
+                            .setRefreshOnPageOpenAllowed(true)
+                            .setNotificationsAllowed(true)
+                            .setDeduplicationGroup(DEDUPLICATION_GROUP)
+                            .addPackageCertificateHash(HASH1)
+                            .addPackageCertificateHash(HASH2)
+                            .build())
+                    // With package cert hash list with different value
+                    addEqualityGroup(
+                        SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
+                            .setId(DYNAMIC_ALL_OPTIONAL_ID)
+                            .setPackageName(PACKAGE_NAME)
+                            .setTitleResId(REFERENCE_RES_ID)
+                            .setTitleForWorkResId(REFERENCE_RES_ID)
+                            .setSummaryResId(REFERENCE_RES_ID)
+                            .setIntentAction(INTENT_ACTION)
+                            .setProfile(SafetySource.PROFILE_ALL)
+                            .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_DISABLED)
+                            .setMaxSeverityLevel(MAX_SEVERITY_LEVEL)
+                            .setSearchTermsResId(REFERENCE_RES_ID)
+                            .setLoggingAllowed(false)
+                            .setRefreshOnPageOpenAllowed(true)
+                            .setNotificationsAllowed(true)
+                            .setDeduplicationGroup(DEDUPLICATION_GROUP)
+                            .addPackageCertificateHash(HASH2)
                             .build())
                 }
             }
@@ -641,6 +726,8 @@ class SafetySourceTest {
         private const val ISSUE_ONLY_BAREBONE_ID = "issue_only_barebone"
         private const val ISSUE_ONLY_ALL_OPTIONAL_ID = "issue_only_all_optional"
         private const val DEDUPLICATION_GROUP = "deduplication_group"
+        private const val HASH1 = "feed1"
+        private const val HASH2 = "feed2"
 
         internal val DYNAMIC_BAREBONE =
             SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
@@ -670,6 +757,7 @@ class SafetySourceTest {
                     if (SdkLevel.isAtLeastU()) {
                         setNotificationsAllowed(true)
                         setDeduplicationGroup(DEDUPLICATION_GROUP)
+                        addPackageCertificateHash(HASH1)
                     }
                 }
                 .build()
@@ -744,6 +832,8 @@ class SafetySourceTest {
                     if (SdkLevel.isAtLeastU()) {
                         setNotificationsAllowed(true)
                         setDeduplicationGroup(DEDUPLICATION_GROUP)
+                        addPackageCertificateHash(HASH1)
+                        addPackageCertificateHash(HASH2)
                     }
                 }
                 .build()

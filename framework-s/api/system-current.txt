@@ -494,6 +494,7 @@ package android.safetycenter.config {
     method @Nullable public String getIntentAction();
     method public int getMaxSeverityLevel();
     method @Nullable public String getOptionalPackageName();
+    method @NonNull public java.util.Set<java.lang.String> getPackageCertificateHashes();
     method @NonNull public String getPackageName();
     method public int getProfile();
     method @StringRes public int getSearchTermsResId();
@@ -518,6 +519,7 @@ package android.safetycenter.config {
 
   public static final class SafetySource.Builder {
     ctor public SafetySource.Builder(int);
+    method @NonNull public android.safetycenter.config.SafetySource.Builder addPackageCertificateHash(@NonNull String);
     method @NonNull public android.safetycenter.config.SafetySource build();
     method @NonNull public android.safetycenter.config.SafetySource.Builder setDeduplicationGroup(@Nullable String);
     method @NonNull public android.safetycenter.config.SafetySource.Builder setId(@Nullable String);
