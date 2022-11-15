@@ -104,6 +104,14 @@
         <item name="android:orientation">horizontal</item>
     </style>
 
+    <style name="PermissionLocationAccuracyRadioGroupMaterial3">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">24dp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
     <style name="PermissionLocationAccuracyRadioFine">
         <item name="android:button">@null</item>
         <item name="android:background">@null</item>
@@ -127,10 +135,22 @@
         <item name="android:layout_marginBottom">24dp</item>
     </style>
 
+    <style name="PermissionLocationAccuracyFineImageViewMaterial3">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">24dp</item>
+    </style>
+
     <style name="PermissionLocationAccuracyCoarseImageView">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">24dp</item>
+        <item name="android:layout_marginBottom">24dp</item>
+    </style>
+
+    <style name="PermissionLocationAccuracyCoarseImageViewMaterial3">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginBottom">24dp</item>
     </style>
 

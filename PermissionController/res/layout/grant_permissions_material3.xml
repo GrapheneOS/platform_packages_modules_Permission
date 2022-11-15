@@ -71,7 +71,7 @@
 
                 <RadioGroup
                     android:id="@+id/permission_location_accuracy_radio_group"
-                    style="@style/PermissionLocationAccuracyRadioGroup">
+                    style="@style/PermissionLocationAccuracyRadioGroupMaterial3">
 
                     <RadioButton
                         android:id="@+id/permission_location_accuracy_radio_fine"
@@ -87,12 +87,12 @@
                 <ImageView
                     android:id="@+id/permission_location_accuracy_fine_only"
                     android:contentDescription="@string/precise_image_description"
-                    style="@style/PermissionLocationAccuracyFineImageView" />
+                    style="@style/PermissionLocationAccuracyFineImageViewMaterial3" />
 
                 <ImageView
                     android:id="@+id/permission_location_accuracy_coarse_only"
                     android:contentDescription="@string/approximate_image_description"
-                    style="@style/PermissionLocationAccuracyCoarseImageView" />
+                    style="@style/PermissionLocationAccuracyCoarseImageViewMaterial3" />
 
             </LinearLayout>
 
