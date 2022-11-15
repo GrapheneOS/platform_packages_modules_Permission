@@ -31,11 +31,6 @@
 
     <option name="test-suite-tag" value="cts"/>
 
-    <target_preparer class="com.android.tradefed.targetprep.DeviceSetup">
-        <!-- Avoid restarting device. -->
-        <option name="force-skip-system-props" value="true"/>
-    </target_preparer>
-
     <target_preparer
         class="com.android.tradefed.targetprep.suite.SuiteApkInstaller">
         <option name="cleanup-apks" value="true"/>
