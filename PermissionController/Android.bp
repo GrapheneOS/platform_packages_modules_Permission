@@ -140,6 +140,7 @@ android_app {
         "modules-utils-build_system",
         "safety-center-resources-lib",
         "lottie",
+        "safety-label"
     ],
 
     proto: {

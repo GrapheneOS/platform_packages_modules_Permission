@@ -24,7 +24,7 @@ import androidx.annotation.VisibleForTesting;
 
 /** Safety Label representation containing zero or more {@link DataCategory} for data shared */
 public class SafetyLabel {
-    @VisibleForTesting public static final String KEY_SAFETY_LABEL = "safety_label";
+    @VisibleForTesting static final String KEY_SAFETY_LABEL = "safety_labels";
     private final DataLabel mDataLabel;
 
     private SafetyLabel(@NonNull DataLabel dataLabel) {

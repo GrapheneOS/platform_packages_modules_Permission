@@ -183,6 +183,44 @@
         <item name="android:background">?android:attr/selectableItemBackground</item>
     </style>
 
+    <style name="PermissionGrantPermissionRationaleContent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:layout_marginEnd">24dp</item>
+        <item name="android:layout_marginBottom">24dp</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:background">@drawable/grant_dialog_permission_rationale_background</item>
+    </style>
+
+    <style name="PermissionGrantPermissionRationaleIcon">
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_gravity">start|center_vertical</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:tint">?android:attr/textColorSecondary</item>
+    </style>
+
+    <style name="PermissionGrantPermissionRationaleMessage"
+           parent="@android:style/TextAppearance.DeviceDefault">
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginStart">12dp</item>
+        <item name="android:layout_marginEnd">12dp</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="PermissionGrantPermissionRationaleMoreInfoIcon">
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_gravity">end|center_vertical</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:tint">?android:attr/textColorSecondary</item>
+    </style>
+
     <!-- for use in overlays -->
     <style name="PermissionGrantButtonAllow"
            parent="@style/PermissionGrantButton"></style>

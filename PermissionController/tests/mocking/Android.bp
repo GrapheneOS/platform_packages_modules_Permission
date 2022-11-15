@@ -108,6 +108,7 @@ android_test {
         "modules-utils-build_system",
         "safety-center-resources-lib",
         "safety-center-internal-data",
+        "safety-label",
         "lottie",
 
         "androidx.test.rules",

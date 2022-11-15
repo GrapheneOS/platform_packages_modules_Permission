@@ -61,6 +61,12 @@
             <item type="style" name="PermissionGrantButtonAllowOneTime" />
             <item type="style" name="PermissionGrantButtonDeny" />
             <item type="style" name="PermissionGrantButtonNoUpgrade" />
+
+            <item type="style" name="PermissionGrantPermissionRationaleContent" />
+            <item type="style" name="PermissionGrantPermissionRationaleIcon" />
+            <item type="style" name="PermissionGrantPermissionRationaleMessage" />
+            <item type="style" name="PermissionGrantPermissionRationaleMoreInfoIcon" />
+
             <!-- END PERMISSION GRANT DIALOG -->
 
 

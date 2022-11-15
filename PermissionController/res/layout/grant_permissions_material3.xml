@@ -63,6 +63,29 @@
 
             </LinearLayout>
 
+            <!-- permission rationale  -->
+            <LinearLayout
+                android:id="@+id/permission_rationale_container"
+                style="@style/PermissionGrantPermissionRationaleContent">
+
+                <ImageView
+                    android:id="@+id/permission_rationale_icon"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_shield_exclamation_outline"
+                    style="@style/PermissionGrantPermissionRationaleIcon" />
+
+                <TextView
+                    android:id="@+id/permission_rationale_message"
+                    style="@style/PermissionGrantPermissionRationaleMessage" />
+
+                <ImageView
+                    android:id="@+id/permission_rationale_more_info_icon"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_more_info_arrow"
+                    style="@style/PermissionGrantPermissionRationaleMoreInfoIcon" />
+
+            </LinearLayout>
+
             <!-- location (precise/approximate) animations -->
             <LinearLayout
                 android:layout_width="match_parent"
