@@ -225,7 +225,7 @@ public class PermissionControlPreference extends Preference {
                 }
                 if (Utils.isHealthPermissionUiEnabled()
                         && mPermGroupName.equals(HEALTH_PERMISSION_GROUP)) {
-                    // TODO(b/248358404): Redirect to the health connect UI.
+                    Utils.navigateToAppHealthConnectSettings(mContext, mPackageName);
                     return true;
                 }
                 Bundle args = new Bundle();
