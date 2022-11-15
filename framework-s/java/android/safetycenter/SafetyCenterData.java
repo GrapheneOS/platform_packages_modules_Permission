@@ -17,6 +17,7 @@
 package android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
+import static android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
 
 import static java.util.Collections.unmodifiableList;
 import static java.util.Objects.requireNonNull;
@@ -27,6 +28,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.annotation.RequiresApi;
+
+import com.android.modules.utils.build.SdkLevel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +56,16 @@ public final class SafetyCenterData implements Parcelable {
                             in.createTypedArrayList(SafetyCenterEntryOrGroup.CREATOR);
                     List<SafetyCenterStaticEntryGroup> staticEntryGroups =
                             in.createTypedArrayList(SafetyCenterStaticEntryGroup.CREATOR);
-                    return new SafetyCenterData(status, issues, entryOrGroups, staticEntryGroups);
+
+                    if (SdkLevel.isAtLeastU()) {
+                        List<SafetyCenterIssue> dismissedIssues =
+                                in.createTypedArrayList(SafetyCenterIssue.CREATOR);
+                        return new SafetyCenterData(
+                                status, issues, entryOrGroups, staticEntryGroups, dismissedIssues);
+                    } else {
+                        return new SafetyCenterData(
+                                status, issues, entryOrGroups, staticEntryGroups);
+                    }
                 }
 
                 @Override
@@ -66,6 +78,7 @@ public final class SafetyCenterData implements Parcelable {
     @NonNull private final List<SafetyCenterIssue> mIssues;
     @NonNull private final List<SafetyCenterEntryOrGroup> mEntriesOrGroups;
     @NonNull private final List<SafetyCenterStaticEntryGroup> mStaticEntryGroups;
+    @NonNull private final List<SafetyCenterIssue> mDismissedIssues;
 
     /** Creates a {@link SafetyCenterData}. */
     public SafetyCenterData(
@@ -77,6 +90,25 @@ public final class SafetyCenterData implements Parcelable {
         mIssues = unmodifiableList(new ArrayList<>(requireNonNull(issues)));
         mEntriesOrGroups = unmodifiableList(new ArrayList<>(requireNonNull(entriesOrGroups)));
         mStaticEntryGroups = unmodifiableList(new ArrayList<>(requireNonNull(staticEntryGroups)));
+        mDismissedIssues = unmodifiableList(new ArrayList<>());
+    }
+
+    /** Creates a {@link SafetyCenterData}. */
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    public SafetyCenterData(
+            @NonNull SafetyCenterStatus status,
+            @NonNull List<SafetyCenterIssue> issues,
+            @NonNull List<SafetyCenterEntryOrGroup> entriesOrGroups,
+            @NonNull List<SafetyCenterStaticEntryGroup> staticEntryGroups,
+            @NonNull List<SafetyCenterIssue> dismissedIssues) {
+        if (!SdkLevel.isAtLeastU()) {
+            throw new UnsupportedOperationException();
+        }
+        mStatus = requireNonNull(status);
+        mIssues = unmodifiableList(new ArrayList<>(requireNonNull(issues)));
+        mEntriesOrGroups = unmodifiableList(new ArrayList<>(requireNonNull(entriesOrGroups)));
+        mStaticEntryGroups = unmodifiableList(new ArrayList<>(requireNonNull(staticEntryGroups)));
+        mDismissedIssues = unmodifiableList(new ArrayList<>(requireNonNull(dismissedIssues)));
     }
 
     /** Returns the overall {@link SafetyCenterStatus} of the Safety Center. */
@@ -106,6 +138,16 @@ public final class SafetyCenterData implements Parcelable {
         return mStaticEntryGroups;
     }
 
+    /** Returns the list of dismissed {@link SafetyCenterIssue} objects in the Safety Center. */
+    @NonNull
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    public List<SafetyCenterIssue> getDismissedIssues() {
+        if (!SdkLevel.isAtLeastU()) {
+            throw new UnsupportedOperationException();
+        }
+        return mDismissedIssues;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -114,12 +156,14 @@ public final class SafetyCenterData implements Parcelable {
         return Objects.equals(mStatus, that.mStatus)
                 && Objects.equals(mIssues, that.mIssues)
                 && Objects.equals(mEntriesOrGroups, that.mEntriesOrGroups)
-                && Objects.equals(mStaticEntryGroups, that.mStaticEntryGroups);
+                && Objects.equals(mStaticEntryGroups, that.mStaticEntryGroups)
+                && Objects.equals(mDismissedIssues, that.mDismissedIssues);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mStatus, mIssues, mEntriesOrGroups, mStaticEntryGroups);
+        return Objects.hash(
+                mStatus, mIssues, mEntriesOrGroups, mStaticEntryGroups, mDismissedIssues);
     }
 
     @Override
@@ -133,6 +177,8 @@ public final class SafetyCenterData implements Parcelable {
                 + mEntriesOrGroups
                 + ", mStaticEntryGroups="
                 + mStaticEntryGroups
+                + ", mDismissedIssues="
+                + mDismissedIssues
                 + '}';
     }
 
@@ -147,5 +193,8 @@ public final class SafetyCenterData implements Parcelable {
         dest.writeTypedList(mIssues);
         dest.writeTypedList(mEntriesOrGroups);
         dest.writeTypedList(mStaticEntryGroups);
+        if (SdkLevel.isAtLeastU()) {
+            dest.writeTypedList(mDismissedIssues);
+        }
     }
 }

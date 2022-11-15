@@ -19,6 +19,7 @@ package android.safetycenter.cts
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterEntry
 import android.safetycenter.SafetyCenterEntryGroup
@@ -27,9 +28,11 @@ import android.safetycenter.SafetyCenterIssue
 import android.safetycenter.SafetyCenterStaticEntry
 import android.safetycenter.SafetyCenterStaticEntryGroup
 import android.safetycenter.SafetyCenterStatus
+import android.safetycenter.cts.testing.SafetyCenterCtsData.Companion.withDismissedIssuesIfAtLeastU
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.ext.truth.os.ParcelableSubject.assertThat
+import androidx.test.filters.SdkSuppress
 import com.android.permission.testing.EqualsHashCodeToStringTester
 import com.google.common.truth.Truth.assertThat
 import kotlin.test.assertFailsWith
@@ -116,6 +119,23 @@ class SafetyCenterDataTest {
     }
 
     @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getDismissedIssues_returnsDismissedIssues() {
+        val data3 = data1.withDismissedIssuesIfAtLeastU(listOf(issue2))
+
+        assertThat(data1.dismissedIssues).isEmpty()
+        assertThat(data3.dismissedIssues).containsExactly(issue2)
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getDismissedIssues_mutationsAreNotAllowed() {
+        val mutatedDismissedIssues = data1.dismissedIssues
+
+        assertFailsWith(UnsupportedOperationException::class) { mutatedDismissedIssues.add(issue2) }
+    }
+
+    @Test
     fun getIssues_mutationsAreNotAllowed() {
         val mutatedIssues = data1.issues
 
@@ -165,31 +185,95 @@ class SafetyCenterDataTest {
     }
 
     @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun parcelRoundTrip_withDismissedIssues_recreatesEqual() {
+        val data3 = data1.withDismissedIssuesIfAtLeastU(listOf(issue2))
+        val data4 = data2.withDismissedIssuesIfAtLeastU(listOf(issue1))
+
+        assertThat(data3).recreatesEqual(SafetyCenterData.CREATOR)
+        assertThat(data4).recreatesEqual(SafetyCenterData.CREATOR)
+    }
+
+    @Test
     fun equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
+        val equalsHashCodeToStringTester =
+            EqualsHashCodeToStringTester()
+                .addEqualityGroup(
+                    data1,
+                    SafetyCenterData(
+                        status1, listOf(issue1), listOf(entryOrGroup1), listOf(staticEntryGroup1)))
+                .addEqualityGroup(
+                    data2,
+                    SafetyCenterData(
+                        status2, listOf(issue2), listOf(entryOrGroup2), listOf(staticEntryGroup2)))
+                .addEqualityGroup(
+                    SafetyCenterData(status1, listOf(), listOf(), listOf()),
+                    SafetyCenterData(status1, listOf(), listOf(), listOf()))
+                .addEqualityGroup(
+                    SafetyCenterData(
+                        status2, listOf(issue1), listOf(entryOrGroup1), listOf(staticEntryGroup1)))
+                .addEqualityGroup(
+                    SafetyCenterData(
+                        status1, listOf(issue2), listOf(entryOrGroup1), listOf(staticEntryGroup1)))
+                .addEqualityGroup(
+                    SafetyCenterData(
+                        status1, listOf(issue1), listOf(entryOrGroup2), listOf(staticEntryGroup1)))
+                .addEqualityGroup(
+                    SafetyCenterData(
+                        status1, listOf(issue1), listOf(entryOrGroup1), listOf(staticEntryGroup2)))
+
+        equalsHashCodeToStringTester.test()
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun equalsHashCodeToString_withDismissedIssues_usingEqualsHashCodeToStringTester() {
         EqualsHashCodeToStringTester()
             .addEqualityGroup(
                 data1,
                 SafetyCenterData(
-                    status1, listOf(issue1), listOf(entryOrGroup1), listOf(staticEntryGroup1)))
-            .addEqualityGroup(
-                data2,
+                    status1, listOf(issue1), listOf(entryOrGroup1), listOf(staticEntryGroup1)),
                 SafetyCenterData(
-                    status2, listOf(issue2), listOf(entryOrGroup2), listOf(staticEntryGroup2)))
-            .addEqualityGroup(
-                SafetyCenterData(status1, listOf(), listOf(), listOf()),
-                SafetyCenterData(status1, listOf(), listOf(), listOf()))
-            .addEqualityGroup(
-                SafetyCenterData(
-                    status2, listOf(issue1), listOf(entryOrGroup1), listOf(staticEntryGroup1)))
+                    status1,
+                    listOf(issue1),
+                    listOf(entryOrGroup1),
+                    listOf(staticEntryGroup1),
+                    listOf()))
             .addEqualityGroup(
                 SafetyCenterData(
-                    status1, listOf(issue2), listOf(entryOrGroup1), listOf(staticEntryGroup1)))
+                    status1,
+                    listOf(),
+                    listOf(entryOrGroup1),
+                    listOf(staticEntryGroup1),
+                    listOf(issue1)))
             .addEqualityGroup(
                 SafetyCenterData(
-                    status1, listOf(issue1), listOf(entryOrGroup2), listOf(staticEntryGroup1)))
+                    status1,
+                    listOf(),
+                    listOf(entryOrGroup1),
+                    listOf(staticEntryGroup1),
+                    listOf(issue2)))
             .addEqualityGroup(
                 SafetyCenterData(
-                    status1, listOf(issue1), listOf(entryOrGroup1), listOf(staticEntryGroup2)))
+                    status1,
+                    listOf(issue2),
+                    listOf(entryOrGroup1),
+                    listOf(staticEntryGroup1),
+                    listOf(issue1)))
+            .addEqualityGroup(
+                SafetyCenterData(
+                    status1,
+                    listOf(issue1),
+                    listOf(entryOrGroup1),
+                    listOf(staticEntryGroup1),
+                    listOf(issue2)))
+            .addEqualityGroup(
+                SafetyCenterData(
+                    status1,
+                    listOf(),
+                    listOf(entryOrGroup1),
+                    listOf(staticEntryGroup1),
+                    listOf(issue1, issue2)))
             .test()
     }
 }
