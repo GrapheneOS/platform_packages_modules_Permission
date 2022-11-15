@@ -46,6 +46,12 @@
     <!-- Title for the overall Safety Center status when the user security and privacy signals are putting their general safety at risk [CHAR LIMIT=35] -->
     <string name="overall_severity_level_critical_safety_warning_title">You are at risk</string>
 
+    <!-- Title for the overall Safety Center status when the user security and privacy signals could potentially put their account at risk [CHAR LIMIT=35] -->
+    <string name="overall_severity_level_account_recommendation_title">Account may be at risk</string>
+
+    <!-- Title for the overall Safety Center status when the user security and privacy signals are putting their account at risk [CHAR LIMIT=35] -->
+    <string name="overall_severity_level_critical_account_warning_title">Account is at risk</string>
+
     <!-- Summary for the overall Safety Center status when the user security and privacy signals contain alerts that could range from minor suggestions to warnings or critical issues. The number of alerts is given as a parameter [CHAR LIMIT=60] -->
     <string name="overall_severity_n_alerts_summary">{count, plural,
         =1      {# alert}
