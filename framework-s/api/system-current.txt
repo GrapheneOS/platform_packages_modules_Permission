@@ -371,6 +371,7 @@ package android.safetycenter {
     method public void writeToParcel(@NonNull android.os.Parcel, int);
     field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.SafetySourceIssue> CREATOR;
     field public static final int ISSUE_CATEGORY_ACCOUNT = 200; // 0xc8
+    field public static final int ISSUE_CATEGORY_DATA = 400; // 0x190
     field public static final int ISSUE_CATEGORY_DEVICE = 100; // 0x64
     field public static final int ISSUE_CATEGORY_GENERAL = 300; // 0x12c
     field public static final int NOTIFICATION_BEHAVIOR_DELAYED = 200; // 0xc8
