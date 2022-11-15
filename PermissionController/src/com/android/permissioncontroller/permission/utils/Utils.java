@@ -34,12 +34,15 @@ import static android.Manifest.permission_group.STORAGE;
 import static android.app.AppOpsManager.MODE_ALLOWED;
 import static android.app.AppOpsManager.OPSTR_LEGACY_STORAGE;
 import static android.content.Context.MODE_PRIVATE;
+import static android.content.Intent.EXTRA_PACKAGE_NAME;
 import static android.content.pm.PackageManager.FLAG_PERMISSION_RESTRICTION_INSTALLER_EXEMPT;
 import static android.content.pm.PackageManager.FLAG_PERMISSION_RESTRICTION_SYSTEM_EXEMPT;
 import static android.content.pm.PackageManager.FLAG_PERMISSION_RESTRICTION_UPGRADE_EXEMPT;
 import static android.content.pm.PackageManager.FLAG_PERMISSION_USER_SENSITIVE_WHEN_DENIED;
 import static android.content.pm.PackageManager.FLAG_PERMISSION_USER_SENSITIVE_WHEN_GRANTED;
 import static android.content.pm.PackageManager.MATCH_SYSTEM_ONLY;
+import static android.healthconnect.HealthConnectManager.ACTION_MANAGE_HEALTH_PERMISSIONS;
+import static android.healthconnect.HealthConnectManager.ACTION_MANAGE_HEALTH_PERMISSIONS_AND_DATA;
 import static android.os.UserHandle.myUserId;
 
 import static com.android.permissioncontroller.Constants.EXTRA_SESSION_ID;
@@ -1249,6 +1252,27 @@ public final class Utils {
         Intent notificationIntent = new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
         notificationIntent.putExtra(Settings.EXTRA_APP_PACKAGE, packageName);
         context.startActivityAsUser(notificationIntent, user);
+    }
+
+    /**
+     * Navigate to health connect settings for all apps
+     * @param context The current Context
+     */
+    public static void navigateToHealthConnectSettings(@NonNull Context context) {
+        Intent healthConnectIntent = new Intent(ACTION_MANAGE_HEALTH_PERMISSIONS);
+        context.startActivity(healthConnectIntent);
+    }
+
+    /**
+     * Navigate to health connect settings for an app
+     * @param context The current Context
+     * @param packageName The package's health connect settings to navigate to
+     */
+    public static void navigateToAppHealthConnectSettings(@NonNull Context context,
+            @NonNull String packageName) {
+        Intent appHealthConnectIntent = new Intent(ACTION_MANAGE_HEALTH_PERMISSIONS_AND_DATA);
+        appHealthConnectIntent.putExtra(EXTRA_PACKAGE_NAME, packageName);
+        context.startActivity(appHealthConnectIntent);
     }
 
     /**
