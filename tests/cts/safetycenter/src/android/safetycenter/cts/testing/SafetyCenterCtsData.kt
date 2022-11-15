@@ -44,6 +44,7 @@ import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.ISSUE_TYPE
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.RECOMMENDATION_ISSUE_ACTION_ID
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.RECOMMENDATION_ISSUE_ID
 import android.util.ArrayMap
+import com.android.modules.utils.build.SdkLevel
 import com.android.safetycenter.internaldata.SafetyCenterEntryGroupId
 import com.android.safetycenter.internaldata.SafetyCenterEntryId
 import com.android.safetycenter.internaldata.SafetyCenterIds
@@ -363,5 +364,18 @@ class SafetyCenterCtsData(context: Context) {
                             .build())
                     .setSafetySourceIssueActionId(sourceIssueActionId)
                     .build())
+
+        /**
+         * On U+, returns a new [SafetyCenterData] with the dismissed issues set. Prior to U,
+         * returns the passed in [SafetyCenterData].
+         */
+        fun SafetyCenterData.withDismissedIssuesIfAtLeastU(
+            dismissedIssues: List<SafetyCenterIssue>
+        ): SafetyCenterData {
+            return if (SdkLevel.isAtLeastU())
+                SafetyCenterData(
+                    status, issues, entriesOrGroups, staticEntryGroups, dismissedIssues)
+            else this
+        }
     }
 }

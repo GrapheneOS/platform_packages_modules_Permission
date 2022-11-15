@@ -296,8 +296,12 @@ object SafetyCenterCtsConfigs {
                     .build())
             .addSafetySourcesGroup(
                 safetySourcesGroupBuilder(MULTIPLE_SOURCES_GROUP_ID_2)
+                    .setTitleResId(android.R.string.copy)
+                    .setSummaryResId(android.R.string.cancel)
                     .addSafetySource(
                         dynamicSafetySourceBuilder(SOURCE_ID_3)
+                            .setTitleResId(android.R.string.copy)
+                            .setSummaryResId(android.R.string.cancel)
                             .setRefreshOnPageOpenAllowed(false)
                             .build())
                     .build())

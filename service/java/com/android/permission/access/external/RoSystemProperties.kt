@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 The Android Open Source Project
+ * Copyright (C) 2022 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,14 +14,11 @@
  * limitations under the License.
  */
 
-package com.android.permission.access.permission
+package com.android.permission.access.external
 
-object PermissionFlags {
-    const val INSTALL_GRANTED = 1 shl 0
-    const val INSTALL_REVOKED = 1 shl 1
-    const val PROTECTION_GRANTED = 1 shl 2
-    const val API_GRANTED = 1 shl 3
-    const val ROLE_GRANTED = 1 shl 4
-
-    const val MASK_ALL = 0.inv()
+class RoSystemProperties {
+    companion object {
+        const val CONTROL_PRIVAPP_PERMISSIONS_DISABLE = false
+        const val CONTROL_PRIVAPP_PERMISSIONS_ENFORCE = false
+    }
 }

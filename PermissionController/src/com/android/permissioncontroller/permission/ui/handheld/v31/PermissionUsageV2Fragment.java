@@ -23,8 +23,9 @@ import static com.android.permissioncontroller.PermissionControllerStatsLog.PERM
 import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__SHOW_SYSTEM_CLICKED;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.write;
 
-import android.Manifest;
 import android.app.ActionBar;
+import android.app.Activity;
+import android.app.role.RoleManager;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
@@ -32,6 +33,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.Preference;
@@ -41,38 +44,34 @@ import androidx.preference.PreferenceScreen;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.permissioncontroller.R;
+import com.android.permissioncontroller.permission.model.legacy.PermissionApps;
+import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage;
+import com.android.permissioncontroller.permission.model.v31.PermissionUsages;
 import com.android.permissioncontroller.permission.ui.handheld.SettingsWithLargeHeader;
-import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageViewModelNew;
-import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageViewModelNew.PermissionGroupWithUsageCount;
+import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageViewModel;
+import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageViewModel.PermissionGroupWithUsageCount;
+import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageViewModelFactory;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
+import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.settingslib.HelpUtils;
 
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 /** The main page for the privacy dashboard. */
-// TODO(b/257317510): Remove "V2" suffix.
 @RequiresApi(Build.VERSION_CODES.S)
-public class PermissionUsageV2Fragment extends SettingsWithLargeHeader {
-
-    private static final Map<String, Integer> PERMISSION_GROUP_ORDER =
-            Map.of(
-                    Manifest.permission_group.LOCATION, 0,
-                    Manifest.permission_group.CAMERA, 1,
-                    Manifest.permission_group.MICROPHONE, 2);
-    private static final int DEFAULT_ORDER = 3;
+public class PermissionUsageV2Fragment extends SettingsWithLargeHeader
+        implements PermissionUsages.PermissionsUsagesChangeCallback {
 
     // Pie chart in this screen will be the first child.
     // Hence we use PERMISSION_GROUP_ORDER + 1 here.
     private static final int PERMISSION_USAGE_INITIAL_EXPANDED_CHILDREN_COUNT =
-            PERMISSION_GROUP_ORDER.size() + 1;
+            PermissionUsageViewModel.Companion.getPERMISSION_GROUP_ORDER().size() + 1;
     private static final int EXPAND_BUTTON_ORDER = 999;
-    /** Map to represent ordering for permission groups in the permissions usage UI. */
-    private static final String KEY_SESSION_ID = "_session_id";
 
+    private static final String KEY_SESSION_ID = "_session_id";
     private static final String SESSION_ID_KEY =
             PermissionUsageV2Fragment.class.getName() + KEY_SESSION_ID;
 
@@ -80,14 +79,23 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader {
     private static final int MENU_SHOW_24_HOURS_DATA = Menu.FIRST + 5;
     private static final int MENU_REFRESH = Menu.FIRST + 6;
 
-    private PermissionUsageViewModelNew mViewModel;
+    @NonNull private PermissionUsages mPermissionUsages;
+    @Nullable private List<AppPermissionUsage> mAppPermissionUsages = new ArrayList<>();
 
+    private PermissionUsageViewModel mViewModel;
+
+    private boolean mShowSystem;
     private boolean mHasSystemApps;
     private MenuItem mShowSystemMenu;
     private MenuItem mHideSystemMenu;
+    private boolean mShow7Days;
     private MenuItem mShow7DaysDataMenu;
     private MenuItem mShow24HoursDataMenu;
     private boolean mOtherExpanded;
+
+    private boolean mFinishedInitialLoad;
+
+    @NonNull private RoleManager mRoleManager;
 
     private PermissionUsageGraphicPreference mGraphic;
 
@@ -104,16 +112,13 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader {
             mSessionId = getArguments().getLong(EXTRA_SESSION_ID, INVALID_SESSION_ID);
         }
 
-        PermissionUsageViewModelNew.PermissionUsageViewModelFactory factory =
-                new PermissionUsageViewModelNew.PermissionUsageViewModelFactory(
-                        getActivity().getApplication(), this, new Bundle());
-        mViewModel = new ViewModelProvider(this, factory).get(PermissionUsageViewModelNew.class);
+        mFinishedInitialLoad = false;
 
         // By default, do not show system app usages.
-        mViewModel.updateShowSystem(false);
+        mShowSystem = false;
 
         // By default, show permission usages for the past 24 hours.
-        mViewModel.updateShow7Days(false);
+        mShow7Days = false;
 
         // Start out with 'other' permissions not expanded.
         mOtherExpanded = false;
@@ -125,9 +130,14 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader {
             ab.setDisplayHomeAsUpEnabled(true);
         }
 
-        mViewModel.getPermissionUsagesUiLiveData().observe(this, this::updateUI);
-        mViewModel.getShowSystemLiveData().observe(this, this::updateShowSystem);
-        mViewModel.getShow7DaysLiveData().observe(this, this::updateShow7Days);
+        Context context = getPreferenceManager().getContext();
+        mPermissionUsages = new PermissionUsages(context);
+        mRoleManager = Utils.getSystemServiceSafe(context, RoleManager.class);
+
+        PermissionUsageViewModelFactory factory = new PermissionUsageViewModelFactory(mRoleManager);
+        mViewModel = new ViewModelProvider(this, factory).get(PermissionUsageViewModel.class);
+
+        reloadData();
     }
 
     @Override
@@ -230,6 +240,7 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader {
                 menu.add(Menu.NONE, MENU_REFRESH, Menu.NONE, R.string.permission_usage_refresh);
         refresh.setIcon(R.drawable.ic_refresh);
         refresh.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+        updateMenu();
     }
 
     @Override
@@ -244,22 +255,49 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader {
                         PERMISSION_USAGE_FRAGMENT_INTERACTION,
                         mSessionId,
                         PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__SHOW_SYSTEM_CLICKED);
-                mViewModel.updateShowSystem(true);
-                break;
+                // fall through
             case MENU_HIDE_SYSTEM:
-                mViewModel.updateShowSystem(false);
+                mShowSystem = itemId == MENU_SHOW_SYSTEM;
+                // We already loaded all data, so don't reload
+                updateUI();
+                updateMenu();
                 break;
             case MENU_SHOW_7_DAYS_DATA:
-                mViewModel.updateShow7Days(KotlinUtils.INSTANCE.is7DayToggleEnabled());
-                break;
             case MENU_SHOW_24_HOURS_DATA:
-                mViewModel.updateShow7Days(false);
+                mShow7Days = KotlinUtils.INSTANCE.is7DayToggleEnabled()
+                        && itemId == MENU_SHOW_7_DAYS_DATA;
+                updateUI();
+                updateMenu();
                 break;
             case MENU_REFRESH:
-                // TODO(b/257314894): What should happen on refresh?
+                reloadData();
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void updateMenu() {
+        if (mHasSystemApps) {
+            mShowSystemMenu.setVisible(!mShowSystem);
+            mHideSystemMenu.setVisible(mShowSystem);
+        }
+
+        if (mShow7DaysDataMenu != null) {
+            mShow7DaysDataMenu.setVisible(!mShow7Days);
+        }
+
+        if (mShow24HoursDataMenu != null) {
+            mShow24HoursDataMenu.setVisible(mShow7Days);
+        }
+    }
+
+    @Override
+    public void onPermissionUsagesChanged() {
+        if (mPermissionUsages.getUsages().isEmpty()) {
+            return;
+        }
+        mAppPermissionUsages = new ArrayList<>(mPermissionUsages.getUsages());
+        updateUI();
     }
 
     @Override
@@ -275,26 +313,8 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader {
         }
     }
 
-    private void updateShowSystem(boolean showSystem) {
-        if (mHasSystemApps) {
-            mShowSystemMenu.setVisible(!showSystem);
-            mHideSystemMenu.setVisible(showSystem);
-        }
-    }
-
-    private void updateShow7Days(boolean show7Days) {
-        if (mShow7DaysDataMenu != null) {
-            mShow7DaysDataMenu.setVisible(!show7Days);
-        }
-
-        if (mShow24HoursDataMenu != null) {
-            mShow24HoursDataMenu.setVisible(show7Days);
-        }
-    }
-
-    private void updateUI(
-            PermissionUsageViewModelNew.PermissionUsagesUiData permissionUsagesUiData) {
-        if (getActivity() == null) {
+    private void updateUI() {
+        if (mAppPermissionUsages.isEmpty() || getActivity() == null) {
             return;
         }
         Context context = getActivity();
@@ -313,46 +333,33 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader {
                     PERMISSION_USAGE_INITIAL_EXPANDED_CHILDREN_COUNT);
         }
         screen.setOnExpandButtonClickListener(() -> {
-            write(
-                    PERMISSION_USAGE_FRAGMENT_INTERACTION,
-                    mSessionId,
+            write(PERMISSION_USAGE_FRAGMENT_INTERACTION, mSessionId,
                     PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__SEE_OTHER_PERMISSIONS_CLICKED);
         });
-        boolean displayShowSystemToggle = permissionUsagesUiData.getDisplayShowSystemToggle();
-        List<PermissionUsageViewModelNew.PermissionGroupWithUsageCount>
-                permissionGroupWithUsageCounts =
-                        permissionUsagesUiData.getPermissionGroupsWithUsageCount();
-        Collections.sort(
-                permissionGroupWithUsageCounts,
-                Comparator.comparing(
-                    (PermissionGroupWithUsageCount permissionGroupWithUsageCount) ->
-                                PERMISSION_GROUP_ORDER.getOrDefault(
-                                        permissionGroupWithUsageCount.getPermGroup(),
-                                        DEFAULT_ORDER))
-                .thenComparing(
-                    (PermissionGroupWithUsageCount permissionGroupWithUsageCount) ->
-                                KotlinUtils.INSTANCE
-                                        .getPermGroupLabel(
-                                                context,
-                                                permissionGroupWithUsageCount
-                                                        .getPermGroup())
-                                        .toString()));
+
+        PermissionUsageViewModel.PermissionUsagesUiData permissionUsageUiData =
+                mViewModel.buildPermissionUsagesUiData(
+                        mAppPermissionUsages, mShow7Days, mShowSystem, getContext());
+        ArrayList<PermissionApps.PermissionApp> permissionApps =
+                permissionUsageUiData.getPermissionApps();
+        boolean displayShowSystemToggle = permissionUsageUiData.getDisplayShowSystemToggle();
+        List<PermissionUsageViewModel.PermissionGroupWithUsageCount>
+                orderedPermissionGroupsWithUsageCount =
+                        permissionUsageUiData.getOrderedPermissionGroupsWithUsageCount();
 
         if (mHasSystemApps != displayShowSystemToggle) {
             mHasSystemApps = displayShowSystemToggle;
             getActivity().invalidateOptionsMenu();
         }
 
-        mGraphic =
-                new PermissionUsageGraphicPreference(
-                        context, permissionUsagesUiData.getShow7DaysUsage());
+        mGraphic = new PermissionUsageGraphicPreference(context, mShow7Days);
         screen.addPreference(mGraphic);
 
+
         Map<String, Integer> permissionGroupUsageCounts = new HashMap<>();
-        for (PermissionUsageViewModelNew.PermissionGroupWithUsageCount groupWithUsage :
-                permissionGroupWithUsageCounts) {
-            permissionGroupUsageCounts.put(
-                    groupWithUsage.getPermGroup(), groupWithUsage.getAppCount());
+        for (PermissionGroupWithUsageCount groupWithUsage: orderedPermissionGroupsWithUsageCount) {
+            permissionGroupUsageCounts.put(groupWithUsage.getPermGroup(),
+                    groupWithUsage.getAppCount());
         }
         mGraphic.setUsages(permissionGroupUsageCounts);
 
@@ -360,20 +367,15 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader {
         PreferenceCategory category = new PreferenceCategory(context);
         screen.addPreference(category);
         CharSequence advancedInfoSummary =
-                getAdvancedInfoSummaryString(context, permissionGroupWithUsageCounts);
+                getAdvancedInfoSummaryString(context, orderedPermissionGroupsWithUsageCount);
         screen.setSummary(advancedInfoSummary);
 
-        addUIContent(
-                context,
-                permissionGroupWithUsageCounts,
-                category,
-                permissionUsagesUiData.getShowSystemAppPermissions(),
-                permissionUsagesUiData.getShow7DaysUsage());
+        addUIContent(context, orderedPermissionGroupsWithUsageCount, permissionApps, category);
     }
 
     private CharSequence getAdvancedInfoSummaryString(
             Context context,
-            List<PermissionUsageViewModelNew.PermissionGroupWithUsageCount>
+            List<PermissionUsageViewModel.PermissionGroupWithUsageCount>
                     permissionGroupWithUsageCounts) {
         int size = permissionGroupWithUsageCounts.size();
         if (size <= PERMISSION_USAGE_INITIAL_EXPANDED_CHILDREN_COUNT - 1) {
@@ -424,24 +426,44 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader {
     /** Use the usages and permApps that are previously constructed to add UI content to the page */
     private void addUIContent(
             Context context,
-            List<PermissionGroupWithUsageCount> permissionGroupWithUsageCounts,
-            PreferenceCategory category,
-            boolean showSystem,
-            boolean show7Days) {
-        for (int i = 0; i < permissionGroupWithUsageCounts.size(); i++) {
-            PermissionGroupWithUsageCount permissionGroupWithUsageCount =
-                    permissionGroupWithUsageCounts.get(i);
-            PermissionUsageV2ControlPreference permissionUsagePreference =
-                    new PermissionUsageV2ControlPreference(
-                            context,
-                            permissionGroupWithUsageCount.getPermGroup(),
-                            permissionGroupWithUsageCount.getAppCount(),
-                            showSystem,
-                            mSessionId,
-                            show7Days);
-            category.addPreference(permissionUsagePreference);
-        }
+            List<PermissionGroupWithUsageCount>
+                    permissionGroupWithUsageCounts,
+            ArrayList<PermissionApps.PermissionApp> permApps,
+            PreferenceCategory category) {
+        new PermissionApps.AppDataLoader(
+                context,
+                () -> {
+                    for (int i = 0; i < permissionGroupWithUsageCounts.size(); i++) {
+                        PermissionGroupWithUsageCount
+                                permissionGroupWithUsageCount =
+                                        permissionGroupWithUsageCounts.get(i);
+                        PermissionUsageV2ControlPreference permissionUsagePreference =
+                                new PermissionUsageV2ControlPreference(
+                                context,
+                                permissionGroupWithUsageCount.getPermGroup(),
+                                permissionGroupWithUsageCount.getAppCount(),
+                                        mShowSystem,
+                                        mSessionId,
+                                        mShow7Days);
+                        category.addPreference(permissionUsagePreference);
+                    }
 
-        setLoading(false, true);
+            setLoading(false, true);
+            mFinishedInitialLoad = true;
+            setProgressBarVisible(false);
+
+            Activity activity = getActivity();
+            if (activity != null) {
+                mPermissionUsages.stopLoader(activity.getLoaderManager());
+            }
+        }).execute(permApps.toArray(new PermissionApps.PermissionApp[0]));
+    }
+
+    /** Reloads the data to show. */
+    private void reloadData() {
+        mViewModel.loadPermissionUsages(getActivity().getLoaderManager(), mPermissionUsages, this);
+        if (mFinishedInitialLoad) {
+            setProgressBarVisible(true);
+        }
     }
 }
