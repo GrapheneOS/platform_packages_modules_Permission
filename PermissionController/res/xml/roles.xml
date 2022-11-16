@@ -84,6 +84,7 @@
         <permission name="android.permission.BLUETOOTH_ADVERTISE" minSdkVersion="31" />
         <permission name="android.permission.BLUETOOTH_CONNECT" minSdkVersion="31" />
         <permission name="android.permission.BLUETOOTH_SCAN" minSdkVersion="31" />
+        <permission name="android.permission.NEARBY_WIFI_DEVICES" minSdkVersion="33" />
     </permission-set>
 
     <permission-set name="notifications">
