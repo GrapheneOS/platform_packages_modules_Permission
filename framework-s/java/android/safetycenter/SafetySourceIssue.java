@@ -72,6 +72,10 @@ public final class SafetySourceIssue implements Parcelable {
     /** Indicates that the risk associated with the issue is related to a user's general safety. */
     public static final int ISSUE_CATEGORY_GENERAL = 300;
 
+    /** Indicates that the risk associated with the issue is related to a user's data. */
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    public static final int ISSUE_CATEGORY_DATA = 400;
+
     /**
      * All possible issue categories.
      *
@@ -89,8 +93,10 @@ public final class SafetySourceIssue implements Parcelable {
                 ISSUE_CATEGORY_DEVICE,
                 ISSUE_CATEGORY_ACCOUNT,
                 ISSUE_CATEGORY_GENERAL,
+                ISSUE_CATEGORY_DATA
             })
     @Retention(RetentionPolicy.SOURCE)
+    @TargetApi(UPSIDE_DOWN_CAKE)
     public @interface IssueCategory {}
 
     /** Value signifying that the source has not specified a particular notification behavior. */
@@ -1093,6 +1099,9 @@ public final class SafetySourceIssue implements Parcelable {
             case ISSUE_CATEGORY_GENERAL:
                 return value;
             default:
+        }
+        if (SdkLevel.isAtLeastU() && value == ISSUE_CATEGORY_DATA) {
+            return value;
         }
         throw new IllegalArgumentException(
                 "Unexpected IssueCategory for SafetySourceIssue: " + value);

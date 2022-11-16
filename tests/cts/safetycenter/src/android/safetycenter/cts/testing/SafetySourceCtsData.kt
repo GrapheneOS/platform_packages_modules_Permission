@@ -20,6 +20,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.FLAG_RECEIVER_FOREGROUND
+import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetySourceData
 import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING
@@ -38,6 +39,7 @@ import android.safetycenter.cts.testing.SafetySourceIntentHandler.Companion.ACTI
 import android.safetycenter.cts.testing.SafetySourceIntentHandler.Companion.EXTRA_SOURCE_ID
 import android.safetycenter.cts.testing.SafetySourceIntentHandler.Companion.EXTRA_SOURCE_ISSUE_ACTION_ID
 import android.safetycenter.cts.testing.SafetySourceIntentHandler.Companion.EXTRA_SOURCE_ISSUE_ID
+import androidx.annotation.RequiresApi
 import kotlin.math.max
 
 /**
@@ -254,6 +256,17 @@ class SafetySourceCtsData(private val context: Context) {
             .setIssueCategory(SafetySourceIssue.ISSUE_CATEGORY_DEVICE)
             .build()
 
+    /**
+     * Data related [SafetySourceIssue] with a [SEVERITY_LEVEL_RECOMMENDATION] and a redirecting
+     * [Action].
+     */
+    val recommendationDataIssue: SafetySourceIssue
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        get() =
+            defaultRecommendationIssueBuilder()
+                .setIssueCategory(SafetySourceIssue.ISSUE_CATEGORY_DATA)
+                .build()
+
     private val dismissIssuePendingIntent =
         broadcastPendingIntent(
             Intent(ACTION_DISMISS_ISSUE).putExtra(EXTRA_SOURCE_ID, SINGLE_SOURCE_ID))
@@ -409,6 +422,17 @@ class SafetySourceCtsData(private val context: Context) {
         defaultCriticalResolvingIssueBuilder()
             .setIssueCategory(SafetySourceIssue.ISSUE_CATEGORY_DEVICE)
             .build()
+
+    /**
+     * Data related [SafetySourceIssue] with a [SEVERITY_LEVEL_CRITICAL_WARNING] and a resolving
+     * [Action].
+     */
+    val criticalResolvingDataIssue: SafetySourceIssue
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        get() =
+            defaultCriticalResolvingIssueBuilder()
+                .setIssueCategory(SafetySourceIssue.ISSUE_CATEGORY_DATA)
+                .build()
 
     /** A [SafetySourceData.Builder] with a [SEVERITY_LEVEL_CRITICAL_WARNING] status. */
     fun defaultCriticalDataBuilder() =

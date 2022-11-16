@@ -367,8 +367,7 @@ public final class ManagePermissionsActivity extends SettingsActivity {
 
                 if (Utils.isHealthPermissionUiEnabled() && permissionGroupName
                                 .equals(HEALTH_PERMISSION_GROUP)) {
-                    // TODO(b/248358404): Redirect to the health connect UI, health permissions list
-                    //  for all apps.
+                    Utils.navigateToHealthConnectSettings(this);
                     finishAfterTransition();
                     return;
                 }
