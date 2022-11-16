@@ -43,7 +43,11 @@ import java.io.PrintWriter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/** A {@link BasicShellCommandHandler} implementation to handle Safety Center commands. */
+/**
+ * A {@link BasicShellCommandHandler} implementation to handle Safety Center commands.
+ *
+ * <p>Example usage: $ adb shell cmd safety_center refresh --reason PAGE_OPEN --user 10
+ */
 @RequiresApi(TIRAMISU)
 final class SafetyCenterShellCommandHandler extends BasicShellCommandHandler {
 

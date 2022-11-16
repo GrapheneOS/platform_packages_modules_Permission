@@ -19,6 +19,7 @@ package android.safetycenter.cts.testing
 import android.Manifest.permission.READ_DEVICE_CONFIG
 import android.Manifest.permission.WRITE_DEVICE_CONFIG
 import android.annotation.TargetApi
+import android.app.job.JobInfo
 import android.content.Context
 import android.content.pm.PackageManager
 import android.content.res.Resources
@@ -191,6 +192,38 @@ object SafetyCenterFlags {
             defaultValue = setOf(),
             SetParser(StringParser()))
 
+    /**
+     * Flag that enables both one-off and periodic background refreshes in
+     * [SafetyCenterBackgroundRefreshJobService].
+     */
+    private val backgroundRefreshIsEnabledFlag =
+        Flag(
+            "safety_center_background_refresh_is_enabled",
+            // do not set defaultValue to true, do not want background refreshes running
+            // during other tests
+            defaultValue = false,
+            BooleanParser())
+
+    /**
+     * Flag that determines how often periodic background refreshes are run in
+     * [SafetyCenterBackgroundRefreshJobService]. See [JobInfo.setPeriodic] for details.
+     *
+     * Note that jobs may take longer than this to be scheduled, or may possibly never run,
+     * depending on whether the other constraints on the job get satisfied.
+     */
+    private val periodicBackgroundRefreshIntervalFlag =
+        Flag(
+            "safety_center_periodic_background_interval_millis",
+            defaultValue = Duration.ofDays(1),
+            DurationParser())
+
+    /**
+     * Flag that determines whether background refreshes require charging in
+     * [SafetyCenterBackgroundRefreshJobService]. See [JobInfo.setRequiresCharging] for details.
+     */
+    private val backgroundRefreshRequiresChargingFlag =
+        Flag("safety_center_background_requires_charging", defaultValue = false, BooleanParser())
+
     /** Every Safety Center flag. */
     private val FLAGS: List<Flag<*>> =
         listOf(
@@ -210,7 +243,10 @@ object SafetyCenterFlags {
             allowStatsdLoggingInTestsFlag,
             qsTileComponentSettingFlag,
             showSubpagesFlag,
-            overrideRefreshOnPageOpenSourcesFlag)
+            overrideRefreshOnPageOpenSourcesFlag,
+            backgroundRefreshIsEnabledFlag,
+            periodicBackgroundRefreshIntervalFlag,
+            backgroundRefreshRequiresChargingFlag)
 
     /** Returns whether the device supports Safety Center. */
     fun Context.deviceSupportsSafetyCenter() =
@@ -264,6 +300,15 @@ object SafetyCenterFlags {
 
     /** A property that allows getting and setting the [overrideRefreshOnPageOpenSourcesFlag]. */
     var overrideRefreshOnPageOpenSources: Set<String> by overrideRefreshOnPageOpenSourcesFlag
+
+    /** A property that allows getting and settings the [backgroundRefreshIsEnabledFlag]. */
+    var backgroundRefreshIsEnabled: Boolean by backgroundRefreshIsEnabledFlag
+
+    /** A property that allows getting and settings the [periodicBackgroundRefreshIntervalFlag]. */
+    var periodicBackgroundRefreshInterval: Duration by periodicBackgroundRefreshIntervalFlag
+
+    /** A property that allows getting and settings the [backgroundRefreshRequiresChargingFlag]. */
+    var backgroundRefreshRequiresCharging: Boolean by backgroundRefreshRequiresChargingFlag
 
     /**
      * Returns a snapshot of all the Safety Center flags.

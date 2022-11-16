@@ -191,13 +191,13 @@ final class SafetyCenterConfigReader {
     private SafetyCenterConfig readSafetyCenterConfig() {
         InputStream in = mSafetyCenterResourcesContext.getSafetyCenterConfig();
         if (in == null) {
-            Log.e(TAG, "Cannot get safety center config file");
+            Log.e(TAG, "Cannot get safety center config file, safety center will be disabled.");
             return null;
         }
 
         Resources resources = mSafetyCenterResourcesContext.getResources();
         if (resources == null) {
-            Log.e(TAG, "Cannot get safety center resources");
+            Log.e(TAG, "Cannot get safety center resources, safety center will be disabled.");
             return null;
         }
 
@@ -207,7 +207,7 @@ final class SafetyCenterConfigReader {
             Log.i(TAG, "SafetyCenterConfig read successfully");
             return safetyCenterConfig;
         } catch (ParseException e) {
-            Log.e(TAG, "Cannot read SafetyCenterConfig", e);
+            Log.e(TAG, "Cannot read SafetyCenterConfig, safety center will be disabled.", e);
             return null;
         }
     }

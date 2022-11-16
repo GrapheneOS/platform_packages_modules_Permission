@@ -70,11 +70,11 @@ public class Constants {
      */
     public static final int PERIODIC_ACCESSIBILITY_CHECK_JOB_ID = 6;
 
-    /**
-     * ID for Safety Centers delayed job scheduled after boot and after Safety Center is enabled
-     *
-     * @see
+     /**
+     * ID for Safety Centers periodic background refresh job, scheduled after boot and after Safety
+     * Center is enabled, in {@link
      * com.android.permissioncontroller.safetycenter.service.SafetyCenterBackgroundRefreshJobService
+     * }.
      */
     public static final int SAFETY_CENTER_BACKGROUND_REFRESH_JOB_ID = 7;
 
