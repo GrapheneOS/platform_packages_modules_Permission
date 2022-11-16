@@ -22,7 +22,7 @@ import android.content.Intent;
 
 import androidx.annotation.NonNull;
 
-import com.android.permissioncontroller.role.model.UserDeniedManager;
+import com.android.role.controller.model.UserDeniedManager;
 
 import java.util.Objects;
 
