@@ -33,7 +33,7 @@ java_library_host {
         "layoutlib_api-prebuilt", // For com.android.resources.ResourceFolderType
         "lint_api",
     ],
-    java_resources: [":safetycenter-config-schema"],
+    java_resources: [":safetycenter-config-schemas"],
     jarjar_rules: "jarjar-rules.txt",
     kotlincflags: ["-Xjvm-default=all"],
     visibility: [
@@ -44,12 +44,6 @@ java_library_host {
 
 java_test_host {
     name: "ConfigLintCheckerTest",
-    // TODO(b/239881504): Since this test was written, Android
-    // Lint was updated, and now includes classes that were
-    // compiled for java 15. The soong build doesn't support
-    // java 15 yet, so we can't compile against "lint". Disable
-    // the test until java 15 is supported.
-    enabled: false,
     srcs: [
         "tests/java/**/*.kt",
     ],
