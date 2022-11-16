@@ -20,6 +20,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.FLAG_RECEIVER_FOREGROUND
+import android.os.Build
 import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetySourceData
@@ -79,7 +80,12 @@ class SafetySourceCtsData(private val context: Context) {
             .build()
 
     /** A [SafetySourceIssue] with a [SEVERITY_LEVEL_INFORMATION] and a redirecting [Action]. */
-    val informationIssue =
+    val informationIssue = defaultInformationIssueBuilder().build()
+
+    /**
+     * A [SafetySourceIssue.Builder] with a [SEVERITY_LEVEL_INFORMATION] and a redirecting [Action].
+     */
+    private fun defaultInformationIssueBuilder() =
         SafetySourceIssue.Builder(
                 INFORMATION_ISSUE_ID,
                 "Information issue title",
@@ -90,7 +96,6 @@ class SafetySourceCtsData(private val context: Context) {
                 Action.Builder(
                         INFORMATION_ISSUE_ACTION_ID, "Review", testActivityRedirectPendingIntent)
                     .build())
-            .build()
 
     /**
      * A [SafetySourceIssue] with a [SEVERITY_LEVEL_INFORMATION] and a redirecting [Action]. With
@@ -186,6 +191,24 @@ class SafetySourceCtsData(private val context: Context) {
                     .build())
             .addIssue(informationIssue)
             .build()
+
+    /**
+     * A [SafetySourceData] with a [SEVERITY_LEVEL_INFORMATION] redirecting a [SafetySourceIssue]
+     * having a [SafetySourceIssue.mAttributionTitle] and [SafetySourceStatus].
+     */
+    val informationWithIssueWithAttributionTitle: SafetySourceData
+        @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+        get() =
+            SafetySourceData.Builder()
+                .setStatus(
+                    SafetySourceStatus.Builder("Ok title", "Ok summary", SEVERITY_LEVEL_INFORMATION)
+                        .setPendingIntent(testActivityRedirectPendingIntent)
+                        .build())
+                .addIssue(
+                    defaultInformationIssueBuilder()
+                        .setAttributionTitle("Attribution Title")
+                        .build())
+                .build()
 
     /**
      * A [SafetySourceData] with a [SEVERITY_LEVEL_INFORMATION] redirecting [SafetySourceIssue] and

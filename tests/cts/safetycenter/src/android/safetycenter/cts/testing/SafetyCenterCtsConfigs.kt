@@ -271,6 +271,20 @@ object SafetyCenterCtsConfigs {
         singleSourceConfig(
             issueOnlyAllProfileSafetySourceBuilder(ISSUE_ONLY_ALL_PROFILE_SOURCE_ID).build())
 
+    /**
+     * A Simple [SafetyCenterConfig] with an issue only source inside a [SafetySourcesGroup] with
+     * null title.
+     */
+    val ISSUE_ONLY_SOURCE_NO_GROUP_TITLE_CONFIG =
+        SafetyCenterConfig.Builder()
+            .addSafetySourcesGroup(
+                safetySourcesGroupBuilder(SINGLE_SOURCE_GROUP_ID)
+                    .setTitleResId(Resources.ID_NULL)
+                    .addSafetySource(
+                        issueOnlySafetySourceBuilder(ISSUE_ONLY_ALL_OPTIONAL_ID).build())
+                    .build())
+            .build()
+
     /** A dynamic source with [OTHER_PACKAGE_NAME] */
     val DYNAMIC_OTHER_PACKAGE_SAFETY_SOURCE =
         dynamicSafetySourceBuilder(DYNAMIC_OTHER_PACKAGE_ID)
