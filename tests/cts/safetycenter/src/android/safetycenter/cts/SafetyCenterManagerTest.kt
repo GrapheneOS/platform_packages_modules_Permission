@@ -91,6 +91,7 @@ import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_OTHER_PAC
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.ISSUE_ONLY_ALL_OPTIONAL_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.ISSUE_ONLY_BAREBONE_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.ISSUE_ONLY_IN_RIGID_ID
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.ISSUE_ONLY_SOURCE_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MIXED_COLLAPSIBLE_GROUP_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MULTIPLE_SOURCES_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.NO_PAGE_OPEN_CONFIG
@@ -132,6 +133,7 @@ import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.dismissSa
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.executeSafetyCenterIssueActionWithPermissionAndWait
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.refreshSafetySourcesWithReceiverPermissionAndWait
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.refreshSafetySourcesWithoutReceiverPermissionAndWait
+import androidx.annotation.RequiresApi
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
@@ -206,6 +208,16 @@ class SafetyCenterManagerTest {
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_RECOMMENDATION)
             .build()
 
+    private val safetyCenterStatusDataRecommendationOneAlert: SafetyCenterStatus
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        get() =
+            SafetyCenterStatus.Builder(
+                    safetyCenterResourcesContext.getStringByName(
+                        "overall_severity_level_data_recommendation_title"),
+                    safetyCenterCtsData.getAlertString(1))
+                .setSeverityLevel(OVERALL_SEVERITY_LEVEL_RECOMMENDATION)
+                .build()
+
     private val safetyCenterStatusAccountRecommendationOneAlert =
         SafetyCenterStatus.Builder(
                 safetyCenterResourcesContext.getStringByName(
@@ -269,6 +281,16 @@ class SafetyCenterManagerTest {
                 safetyCenterCtsData.getAlertString(2))
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING)
             .build()
+
+    private val safetyCenterStatusDataCriticalOneAlert: SafetyCenterStatus
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        get() =
+            SafetyCenterStatus.Builder(
+                    safetyCenterResourcesContext.getStringByName(
+                        "overall_severity_level_critical_data_warning_title"),
+                    safetyCenterCtsData.getAlertString(1))
+                .setSeverityLevel(OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING)
+                .build()
 
     private val safetyCenterEntryOrGroupRecommendation =
         SafetyCenterEntryOrGroup(
@@ -1985,6 +2007,32 @@ class SafetyCenterManagerTest {
         val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
 
         assertThat(apiSafetyCenterData).isEqualTo(safetyCenterDataDeviceCriticalOneAlert)
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getSafetyCenterData_withRecommendationDataIssue_returnsDataRecommendationStatus() {
+        safetyCenterCtsHelper.setConfig(ISSUE_ONLY_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(
+            ISSUE_ONLY_ALL_OPTIONAL_ID,
+            SafetySourceCtsData.issuesOnly(safetySourceCtsData.recommendationDataIssue))
+
+        val apiSafetyCenterStatus = safetyCenterManager.getSafetyCenterDataWithPermission().status
+
+        assertThat(apiSafetyCenterStatus).isEqualTo(safetyCenterStatusDataRecommendationOneAlert)
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getSafetyCenterData_withCriticalDataIssue_returnsDataCriticalStatus() {
+        safetyCenterCtsHelper.setConfig(ISSUE_ONLY_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(
+            ISSUE_ONLY_ALL_OPTIONAL_ID,
+            SafetySourceCtsData.issuesOnly(safetySourceCtsData.criticalResolvingDataIssue))
+
+        val apiSafetyCenterStatus = safetyCenterManager.getSafetyCenterDataWithPermission().status
+
+        assertThat(apiSafetyCenterStatus).isEqualTo(safetyCenterStatusDataCriticalOneAlert)
     }
 
     @Test

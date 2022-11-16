@@ -28,6 +28,7 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.utils.StringUtils
+import java.text.NumberFormat
 
 /** A preference that displays a card linking to a list of more {@link SafetyCenterIssue}. */
 class MoreIssuesCardPreference(
@@ -69,8 +70,9 @@ class MoreIssuesCardPreference(
     private fun updateHiddenIssueCount(textView: TextView) {
         moreIssuesCardAnimator.cancelTextChangeAnimation(textView)
 
-        val previousText = previousMoreIssuesCardData?.hiddenIssueCount.toString()
-        val newText = newMoreIssuesCardData.hiddenIssueCount.toString()
+        val numberFormat = NumberFormat.getInstance()
+        val previousText = previousMoreIssuesCardData?.hiddenIssueCount?.let(numberFormat::format)
+        val newText = numberFormat.format(newMoreIssuesCardData.hiddenIssueCount)
         val animateTextChange = !previousText.isNullOrEmpty() && previousText != newText
 
         if (animateTextChange) {

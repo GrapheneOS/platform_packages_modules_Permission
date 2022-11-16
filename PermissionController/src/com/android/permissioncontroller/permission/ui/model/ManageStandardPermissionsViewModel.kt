@@ -76,8 +76,7 @@ class ManageStandardPermissionsViewModel(
         }
         if (Utils.isHealthPermissionUiEnabled() &&
                 groupName == HEALTH_PERMISSION_GROUP) {
-            // TODO(b/248358404): Redirect to the health connect UI, health permissions list for
-            //  all apps.
+            Utils.navigateToHealthConnectSettings(fragment.context!!)
             return
         }
         fragment.findNavController().navigateSafe(R.id.manage_to_perm_apps, args)
