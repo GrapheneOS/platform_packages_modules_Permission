@@ -24,7 +24,7 @@
     <string name="available" msgid="6007778121920339498">"Odblokowany"</string>
     <string name="blocked" msgid="9195547604866033708">"Zablokowany"</string>
     <string name="on" msgid="280241003226755921">"Włączono"</string>
-    <string name="off" msgid="1438489226422866263">"Wyłącz"</string>
+    <string name="off" msgid="1438489226422866263">"Wyłączono"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Odinstaluj lub wyłącz"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Nie znaleziono aplikacji"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"Nie zezwalaj"</string>
