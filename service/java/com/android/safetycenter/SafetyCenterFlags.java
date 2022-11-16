@@ -42,6 +42,9 @@ final class SafetyCenterFlags {
     /** {@link DeviceConfig} property name for {@link #getSafetyCenterEnabled()}. */
     static final String PROPERTY_SAFETY_CENTER_ENABLED = "safety_center_is_enabled";
 
+    private static final String PROPERTY_NOTIFICATIONS_ENABLED =
+            "safety_center_notifications_enabled";
+
     private static final String PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT =
             "safety_center_show_error_entries_on_timeout";
 
@@ -89,6 +92,7 @@ final class SafetyCenterFlags {
     static void dump(@NonNull PrintWriter fout) {
         fout.println("FLAGS");
         printFlag(fout, PROPERTY_SAFETY_CENTER_ENABLED, getSafetyCenterEnabled());
+        printFlag(fout, PROPERTY_NOTIFICATIONS_ENABLED, getNotificationsEnabled());
         printFlag(fout, PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT, getShowErrorEntriesOnTimeout());
         printFlag(fout, PROPERTY_REPLACE_LOCK_SCREEN_ICON_ACTION, getReplaceLockScreenIconAction());
         printFlag(fout, PROPERTY_RESOLVING_ACTION_TIMEOUT_MILLIS, getResolvingActionTimeout());
@@ -118,6 +122,11 @@ final class SafetyCenterFlags {
     /** Returns whether Safety Center is enabled. */
     static boolean getSafetyCenterEnabled() {
         return getBoolean(PROPERTY_SAFETY_CENTER_ENABLED, false);
+    }
+
+    /** Returns whether Safety Center notifications are enabled. */
+    static boolean getNotificationsEnabled() {
+        return getBoolean(PROPERTY_NOTIFICATIONS_ENABLED, false);
     }
 
     /**
