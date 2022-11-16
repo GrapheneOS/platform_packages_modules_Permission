@@ -145,6 +145,10 @@ public final class SafetyCenterService extends SystemService {
 
     @GuardedBy("mApiLock")
     @NonNull
+    private final PendingIntentFactory mPendingIntentFactory;
+
+    @GuardedBy("mApiLock")
+    @NonNull
     private final SafetyCenterDataFactory mSafetyCenterDataFactory;
 
     @GuardedBy("mApiLock")
@@ -176,6 +180,7 @@ public final class SafetyCenterService extends SystemService {
         StatsdLogger statsdLogger = new StatsdLogger(context, mSafetyCenterConfigReader);
         mSafetyCenterRefreshTracker = new SafetyCenterRefreshTracker(statsdLogger);
         mSafetyCenterIssueCache = new SafetyCenterIssueCache(mSafetyCenterConfigReader);
+        mPendingIntentFactory = new PendingIntentFactory(context, mSafetyCenterResourcesContext);
         mSafetyCenterRepository =
                 new SafetyCenterRepository(
                         context,
@@ -188,7 +193,7 @@ public final class SafetyCenterService extends SystemService {
                         mSafetyCenterResourcesContext,
                         mSafetyCenterConfigReader,
                         mSafetyCenterRefreshTracker,
-                        new PendingIntentFactory(context, mSafetyCenterResourcesContext),
+                        mPendingIntentFactory,
                         mSafetyCenterIssueCache,
                         mSafetyCenterRepository);
         mSafetyCenterListeners = new SafetyCenterListeners(mSafetyCenterDataFactory);
@@ -545,7 +550,12 @@ public final class SafetyCenterService extends SystemService {
 
                 Integer taskId =
                         safetyCenterIssueId.hasTaskId() ? safetyCenterIssueId.getTaskId() : null;
-                if (!dispatchPendingIntent(safetySourceIssueAction.getPendingIntent(), taskId)) {
+                PendingIntent issueActionPendingIntent =
+                        mPendingIntentFactory.maybeOverridePendingIntent(
+                                safetyCenterIssueKey.getSafetySourceId(),
+                                safetySourceIssueAction.getPendingIntent(),
+                                false);
+                if (!dispatchPendingIntent(issueActionPendingIntent, taskId)) {
                     Log.w(
                             TAG,
                             "Error dispatching action: "
