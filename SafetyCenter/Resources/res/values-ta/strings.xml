@@ -43,6 +43,4 @@
     <string name="advanced_privacy_title" msgid="1117725225706176643">"கூடுதல் தனியுரிமை அமைப்புகள்"</string>
     <string name="advanced_privacy_summary" msgid="2281203390575069543">"தன்னிரப்பி, செயல்பாட்டுக் கட்டுப்பாடுகள் மற்றும் பல"</string>
     <string name="advanced_privacy_search_terms" msgid="5044404599789175222"></string>
-    <string name="overall_severity_level_account_recommendation_title" msgid="6524855037045765671">"கணக்கு ஆபத்தில் இருக்கலாம்"</string>
-    <string name="overall_severity_level_critical_account_warning_title" msgid="3294187096461368277">"கணக்கு ஆபத்தில் உள்ளது"</string>
 </resources>
