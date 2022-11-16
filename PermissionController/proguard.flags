@@ -8,7 +8,7 @@
 -dontwarn androidx.core.**
 
 # Keep classes that implements RoleBehavior, which are used by reflection.
--keep class * implements com.android.permissioncontroller.role.model.RoleBehavior {
+-keep class * implements com.android.role.controller.model.RoleBehavior {
     *;
 }
 
