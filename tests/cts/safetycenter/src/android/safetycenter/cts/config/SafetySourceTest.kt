@@ -259,6 +259,20 @@ class SafetySourceTest {
         assertThat(issueOnlyAllOptional().areNotificationsAllowed()).isTrue()
     }
 
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @Test
+    fun getDeduplicationGroupsList_returnsDeduplicationGroups() {
+        assertThat(DYNAMIC_BAREBONE.deduplicationGroup).isNull()
+        assertThat(dynamicAllOptional().deduplicationGroup).isEqualTo(DEDUPLICATION_GROUP)
+        assertThat(DYNAMIC_DISABLED.deduplicationGroup).isNull()
+        assertThat(DYNAMIC_HIDDEN.deduplicationGroup).isNull()
+        assertThat(DYNAMIC_HIDDEN_WITH_SEARCH.deduplicationGroup).isNull()
+        assertThat(STATIC_BAREBONE.deduplicationGroup).isNull()
+        assertThat(STATIC_ALL_OPTIONAL.deduplicationGroup).isNull()
+        assertThat(ISSUE_ONLY_BAREBONE.deduplicationGroup).isNull()
+        assertThat(issueOnlyAllOptional().deduplicationGroup).isEqualTo(DEDUPLICATION_GROUP)
+    }
+
     @Test
     fun describeContents_returns0() {
         assertThat(DYNAMIC_BAREBONE.describeContents()).isEqualTo(0)
@@ -304,7 +318,12 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
-                    .apply { if (SdkLevel.isAtLeastU()) setNotificationsAllowed(true) }
+                    .apply {
+                        if (SdkLevel.isAtLeastU()) {
+                            setNotificationsAllowed(true)
+                            setDeduplicationGroup(DEDUPLICATION_GROUP)
+                        }
+                    }
                     .build())
             .addEqualityGroup(DYNAMIC_HIDDEN)
             .addEqualityGroup(DYNAMIC_HIDDEN_WITH_SEARCH)
@@ -327,7 +346,12 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
-                    .apply { if (SdkLevel.isAtLeastU()) setNotificationsAllowed(true) }
+                    .apply {
+                        if (SdkLevel.isAtLeastU()) {
+                            setNotificationsAllowed(true)
+                            setDeduplicationGroup(DEDUPLICATION_GROUP)
+                        }
+                    }
                     .build())
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
@@ -343,6 +367,12 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
+                    .apply {
+                        if (SdkLevel.isAtLeastU()) {
+                            setNotificationsAllowed(true)
+                            setDeduplicationGroup(DEDUPLICATION_GROUP)
+                        }
+                    }
                     .build())
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
@@ -358,6 +388,12 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
+                    .apply {
+                        if (SdkLevel.isAtLeastU()) {
+                            setNotificationsAllowed(true)
+                            setDeduplicationGroup(DEDUPLICATION_GROUP)
+                        }
+                    }
                     .build())
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
@@ -373,6 +409,12 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
+                    .apply {
+                        if (SdkLevel.isAtLeastU()) {
+                            setNotificationsAllowed(true)
+                            setDeduplicationGroup(DEDUPLICATION_GROUP)
+                        }
+                    }
                     .build())
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
@@ -388,6 +430,12 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
+                    .apply {
+                        if (SdkLevel.isAtLeastU()) {
+                            setNotificationsAllowed(true)
+                            setDeduplicationGroup(DEDUPLICATION_GROUP)
+                        }
+                    }
                     .build())
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
@@ -403,6 +451,12 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
+                    .apply {
+                        if (SdkLevel.isAtLeastU()) {
+                            setNotificationsAllowed(true)
+                            setDeduplicationGroup(DEDUPLICATION_GROUP)
+                        }
+                    }
                     .build())
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
@@ -410,7 +464,6 @@ class SafetySourceTest {
                     .setPackageName(PACKAGE_NAME)
                     .setProfile(SafetySource.PROFILE_PRIMARY)
                     .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_HIDDEN)
-                    .apply { if (SdkLevel.isAtLeastU()) setNotificationsAllowed(true) }
                     .build())
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
@@ -426,6 +479,12 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
+                    .apply {
+                        if (SdkLevel.isAtLeastU()) {
+                            setNotificationsAllowed(true)
+                            setDeduplicationGroup(DEDUPLICATION_GROUP)
+                        }
+                    }
                     .build())
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
@@ -441,6 +500,12 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
+                    .apply {
+                        if (SdkLevel.isAtLeastU()) {
+                            setNotificationsAllowed(true)
+                            setDeduplicationGroup(DEDUPLICATION_GROUP)
+                        }
+                    }
                     .build())
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
@@ -456,6 +521,12 @@ class SafetySourceTest {
                     .setSearchTermsResId(-1)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
+                    .apply {
+                        if (SdkLevel.isAtLeastU()) {
+                            setNotificationsAllowed(true)
+                            setDeduplicationGroup(DEDUPLICATION_GROUP)
+                        }
+                    }
                     .build())
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
@@ -471,6 +542,12 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(true)
                     .setRefreshOnPageOpenAllowed(true)
+                    .apply {
+                        if (SdkLevel.isAtLeastU()) {
+                            setNotificationsAllowed(true)
+                            setDeduplicationGroup(DEDUPLICATION_GROUP)
+                        }
+                    }
                     .build())
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
@@ -486,7 +563,51 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(false)
+                    .apply {
+                        if (SdkLevel.isAtLeastU()) {
+                            setNotificationsAllowed(true)
+                            setDeduplicationGroup(DEDUPLICATION_GROUP)
+                        }
+                    }
                     .build())
+            .apply {
+                if (SdkLevel.isAtLeastU()) {
+                    addEqualityGroup(
+                        SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
+                            .setId(DYNAMIC_ALL_OPTIONAL_ID)
+                            .setPackageName(PACKAGE_NAME)
+                            .setTitleResId(REFERENCE_RES_ID)
+                            .setTitleForWorkResId(REFERENCE_RES_ID)
+                            .setSummaryResId(REFERENCE_RES_ID)
+                            .setIntentAction(INTENT_ACTION)
+                            .setProfile(SafetySource.PROFILE_ALL)
+                            .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_DISABLED)
+                            .setMaxSeverityLevel(MAX_SEVERITY_LEVEL)
+                            .setSearchTermsResId(REFERENCE_RES_ID)
+                            .setLoggingAllowed(false)
+                            .setRefreshOnPageOpenAllowed(true)
+                            .setNotificationsAllowed(false)
+                            .setDeduplicationGroup(DEDUPLICATION_GROUP)
+                            .build())
+                    addEqualityGroup(
+                        SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
+                            .setId(DYNAMIC_ALL_OPTIONAL_ID)
+                            .setPackageName(PACKAGE_NAME)
+                            .setTitleResId(REFERENCE_RES_ID)
+                            .setTitleForWorkResId(REFERENCE_RES_ID)
+                            .setSummaryResId(REFERENCE_RES_ID)
+                            .setIntentAction(INTENT_ACTION)
+                            .setProfile(SafetySource.PROFILE_ALL)
+                            .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_DISABLED)
+                            .setMaxSeverityLevel(MAX_SEVERITY_LEVEL)
+                            .setSearchTermsResId(REFERENCE_RES_ID)
+                            .setLoggingAllowed(false)
+                            .setRefreshOnPageOpenAllowed(true)
+                            .setNotificationsAllowed(true)
+                            .setDeduplicationGroup("other_deduplication_group")
+                            .build())
+                }
+            }
             .test()
     }
 
@@ -505,6 +626,7 @@ class SafetySourceTest {
         private const val STATIC_ALL_OPTIONAL_ID = "static_all_optional"
         private const val ISSUE_ONLY_BAREBONE_ID = "issue_only_barebone"
         private const val ISSUE_ONLY_ALL_OPTIONAL_ID = "issue_only_all_optional"
+        private const val DEDUPLICATION_GROUP = "deduplication_group"
 
         internal val DYNAMIC_BAREBONE =
             SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
@@ -530,7 +652,12 @@ class SafetySourceTest {
                 .setSearchTermsResId(REFERENCE_RES_ID)
                 .setLoggingAllowed(false)
                 .setRefreshOnPageOpenAllowed(true)
-                .apply { if (SdkLevel.isAtLeastU()) setNotificationsAllowed(true) }
+                .apply {
+                    if (SdkLevel.isAtLeastU()) {
+                        setNotificationsAllowed(true)
+                        setDeduplicationGroup(DEDUPLICATION_GROUP)
+                    }
+                }
                 .build()
 
         private val DYNAMIC_DISABLED =
@@ -598,7 +725,12 @@ class SafetySourceTest {
                 .setMaxSeverityLevel(MAX_SEVERITY_LEVEL)
                 .setLoggingAllowed(false)
                 .setRefreshOnPageOpenAllowed(true)
-                .apply { if (SdkLevel.isAtLeastU()) setNotificationsAllowed(true) }
+                .apply {
+                    if (SdkLevel.isAtLeastU()) {
+                        setNotificationsAllowed(true)
+                        setDeduplicationGroup(DEDUPLICATION_GROUP)
+                    }
+                }
                 .build()
     }
 }
