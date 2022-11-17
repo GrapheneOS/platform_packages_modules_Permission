@@ -432,6 +432,17 @@
         <item name="layout_constraintEnd_toEndOf">parent</item>
     </style>
 
+    <style name="SafetyCenterIssueAttributionTitle">
+        <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Body</item>
+        <item name="android:layout_marginTop">@dimen/sc_spacing_xxsmall</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">@dimen/sc_spacing_xxxlarge</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintEnd_toStartOf">@id/issue_card_dismiss_btn</item>
+    </style>
+
     <style name="SafetyCenterIssueTitle">
         <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Headline.Issue</item>
         <item name="android:layout_width">0dp</item>
@@ -439,7 +450,7 @@
         <item name="android:layout_marginEnd">@dimen/sc_spacing_xxxlarge</item>
         <item name="layout_constraintHorizontal_bias">0</item>
         <item name="layout_goneMarginEnd">0dp</item>
-        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintTop_toBottomOf">@id/issue_card_attribution_title</item>
         <item name="layout_constraintStart_toStartOf">parent</item>
         <item name="layout_constraintEnd_toStartOf">@id/issue_card_dismiss_btn</item>
     </style>
