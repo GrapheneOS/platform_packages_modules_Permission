@@ -27,7 +27,7 @@ import androidx.preference.Preference;
 
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.role.model.EncryptionUnawareConfirmationMixin;
-import com.android.permissioncontroller.role.model.Role;
+import com.android.role.controller.model.Role;
 
 import java.util.Objects;
 

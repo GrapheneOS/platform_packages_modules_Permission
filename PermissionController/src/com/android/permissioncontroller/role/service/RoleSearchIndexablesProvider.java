@@ -27,10 +27,10 @@ import androidx.annotation.Nullable;
 
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.service.BaseSearchIndexablesProvider;
-import com.android.permissioncontroller.role.model.Role;
-import com.android.permissioncontroller.role.model.RoleParserInitializer;
-import com.android.permissioncontroller.role.model.Roles;
 import com.android.permissioncontroller.role.utils.RoleUiBehaviorUtils;
+import com.android.role.controller.model.Role;
+import com.android.role.controller.model.RoleParserInitializer;
+import com.android.role.controller.model.Roles;
 
 /**
  * {@link android.provider.SearchIndexablesProvider} for roles.

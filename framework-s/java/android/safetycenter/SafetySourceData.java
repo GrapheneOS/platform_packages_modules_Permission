@@ -218,7 +218,7 @@ public final class SafetySourceData implements Parcelable {
 
     @Override
     public String toString() {
-        return "SafetySourceData{" + ", mStatus=" + mStatus + ", mIssues=" + mIssues + '}';
+        return "SafetySourceData{mStatus=" + mStatus + ", mIssues=" + mIssues + '}';
     }
 
     /** Builder class for {@link SafetySourceData}. */

@@ -17,6 +17,8 @@
 package android.safetycenter.cts
 
 import android.content.Context
+import android.os.Build.VERSION.CODENAME
+import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.os.UserHandle.USER_NULL
 import android.safetycenter.SafetyCenterData
@@ -92,6 +94,7 @@ import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.ISSUE_ONLY_ALL_OP
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.ISSUE_ONLY_BAREBONE_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.ISSUE_ONLY_IN_RIGID_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.ISSUE_ONLY_SOURCE_CONFIG
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.ISSUE_ONLY_SOURCE_NO_GROUP_TITLE_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MIXED_COLLAPSIBLE_GROUP_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MULTIPLE_SOURCES_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.NO_PAGE_OPEN_CONFIG
@@ -114,6 +117,7 @@ import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SUMMARY_TEST_CONF
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SUMMARY_TEST_GROUP_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.getLockScreenSourceConfig
 import android.safetycenter.cts.testing.SafetyCenterCtsData
+import android.safetycenter.cts.testing.SafetyCenterCtsData.Companion.withAttributionTitleInIssuesIfAtLeastU
 import android.safetycenter.cts.testing.SafetyCenterCtsData.Companion.withDismissedIssuesIfAtLeastU
 import android.safetycenter.cts.testing.SafetyCenterCtsHelper
 import android.safetycenter.cts.testing.SafetyCenterCtsListener
@@ -146,6 +150,7 @@ import java.time.Duration
 import kotlin.test.assertFailsWith
 import kotlinx.coroutines.TimeoutCancellationException
 import org.junit.After
+import org.junit.Assume.assumeFalse
 import org.junit.Assume.assumeTrue
 import org.junit.Before
 import org.junit.Test
@@ -541,9 +546,11 @@ class SafetyCenterManagerTest {
             safetyCenterCtsData.safetyCenterStatusCritical(6),
             listOf(
                 safetyCenterCtsData.safetyCenterIssueCritical(DYNAMIC_BAREBONE_ID),
-                safetyCenterCtsData.safetyCenterIssueCritical(ISSUE_ONLY_BAREBONE_ID),
+                safetyCenterCtsData.safetyCenterIssueCritical(
+                    ISSUE_ONLY_BAREBONE_ID, attributionTitle = null),
                 safetyCenterCtsData.safetyCenterIssueRecommendation(DYNAMIC_DISABLED_ID),
-                safetyCenterCtsData.safetyCenterIssueRecommendation(ISSUE_ONLY_ALL_OPTIONAL_ID),
+                safetyCenterCtsData.safetyCenterIssueRecommendation(
+                    ISSUE_ONLY_ALL_OPTIONAL_ID, attributionTitle = null),
                 safetyCenterCtsData.safetyCenterIssueInformation(DYNAMIC_IN_RIGID_ID),
                 safetyCenterCtsData.safetyCenterIssueInformation(ISSUE_ONLY_IN_RIGID_ID)),
             listOf(
@@ -1908,11 +1915,71 @@ class SafetyCenterManagerTest {
     }
 
     @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getSafetyCenterData_attributionTitleProvidedBySource_returnsIssueWithAttributionTitle() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(
+            SINGLE_SOURCE_ID, safetySourceCtsData.informationWithIssueWithAttributionTitle)
+
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+
+        val expectedSafetyCenterData =
+            safetyCenterDataOkOneAlert.withAttributionTitleInIssuesIfAtLeastU("Attribution Title")
+        assertThat(apiSafetyCenterData).isEqualTo(expectedSafetyCenterData)
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getSafetyCenterData_attributionTitleNotProvided_returnsGroupTitleAsAttributionTitle() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.informationWithIssue)
+
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+
+        val expectedSafetyCenterData =
+            safetyCenterDataOkOneAlert.withAttributionTitleInIssuesIfAtLeastU("OK")
+        assertThat(apiSafetyCenterData).isEqualTo(expectedSafetyCenterData)
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getSafetyCenterData_attributionNotSetAndGroupTitleNull_returnsNullAttributionTitle() {
+        safetyCenterCtsHelper.setConfig(ISSUE_ONLY_SOURCE_NO_GROUP_TITLE_CONFIG)
+        safetyCenterCtsHelper.setData(
+            ISSUE_ONLY_ALL_OPTIONAL_ID,
+            SafetySourceCtsData.issuesOnly(safetySourceCtsData.recommendationGeneralIssue))
+
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+
+        val expectedSafetyCenterData =
+            SafetyCenterData(
+                safetyCenterStatusGeneralRecommendationOneAlert,
+                listOf(
+                    safetyCenterCtsData.safetyCenterIssueRecommendation(
+                        ISSUE_ONLY_ALL_OPTIONAL_ID, attributionTitle = null)),
+                emptyList(),
+                emptyList())
+        assertThat(apiSafetyCenterData).isEqualTo(expectedSafetyCenterData)
+    }
+
+    @Test
+    @SdkSuppress(maxSdkVersion = TIRAMISU)
+    fun getSafetyCenterData_attributionNotSetBySourceOnTiramisu_returnsNullAttributionTitle() {
+        // TODO(b/258228790): Remove after U is no longer in pre-release
+        assumeFalse(CODENAME == "UpsideDownCake")
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.informationWithIssue)
+
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+
+        assertThat(apiSafetyCenterData).isEqualTo(safetyCenterDataOkOneAlert)
+    }
+
+    @Test
     fun getSafetyCenterData_withUpdatedData_returnsUpdatedData() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.information)
-        val previousApiSafetyCenterData =
-            safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
+        val previousApiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
         safetyCenterCtsHelper.setData(
             SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithResolvingGeneralIssue)
 

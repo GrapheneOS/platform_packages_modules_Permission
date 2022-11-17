@@ -214,7 +214,11 @@ class SafetyCenterCtsData(context: Context) {
      * Returns an information [SafetyCenterIssue] for the given source and user id that is
      * consistent with information [SafetySourceIssue]s used in [SafetySourceCtsData].
      */
-    fun safetyCenterIssueInformation(sourceId: String, userId: Int = UserHandle.myUserId()) =
+    fun safetyCenterIssueInformation(
+        sourceId: String,
+        userId: Int = UserHandle.myUserId(),
+        attributionTitle: String? = "OK"
+    ) =
         SafetyCenterIssue.Builder(
                 issueId(sourceId, INFORMATION_ISSUE_ID, userId = userId),
                 "Information issue title",
@@ -232,13 +236,18 @@ class SafetyCenterCtsData(context: Context) {
                             "Review",
                             safetySourceCtsData.testActivityRedirectPendingIntent)
                         .build()))
+            .apply { if (SdkLevel.isAtLeastU()) setAttributionTitle(attributionTitle) }
             .build()
 
     /**
      * Returns a recommendation [SafetyCenterIssue] for the given source and user id that is
      * consistent with recommendation [SafetySourceIssue]s used in [SafetySourceCtsData].
      */
-    fun safetyCenterIssueRecommendation(sourceId: String, userId: Int = UserHandle.myUserId()) =
+    fun safetyCenterIssueRecommendation(
+        sourceId: String,
+        userId: Int = UserHandle.myUserId(),
+        attributionTitle: String? = "OK"
+    ) =
         SafetyCenterIssue.Builder(
                 issueId(sourceId, RECOMMENDATION_ISSUE_ID, userId = userId),
                 "Recommendation issue title",
@@ -255,6 +264,7 @@ class SafetyCenterCtsData(context: Context) {
                             "See issue",
                             safetySourceCtsData.testActivityRedirectPendingIntent)
                         .build()))
+            .apply { if (SdkLevel.isAtLeastU()) setAttributionTitle(attributionTitle) }
             .build()
 
     /**
@@ -264,7 +274,8 @@ class SafetyCenterCtsData(context: Context) {
     fun safetyCenterIssueCritical(
         sourceId: String,
         isActionInFlight: Boolean = false,
-        userId: Int = UserHandle.myUserId()
+        userId: Int = UserHandle.myUserId(),
+        attributionTitle: String? = "OK"
     ) =
         SafetyCenterIssue.Builder(
                 issueId(sourceId, CRITICAL_ISSUE_ID, userId = userId),
@@ -281,6 +292,7 @@ class SafetyCenterCtsData(context: Context) {
                         .setWillResolve(true)
                         .setIsInFlight(isActionInFlight)
                         .build()))
+            .apply { if (SdkLevel.isAtLeastU()) setAttributionTitle(attributionTitle) }
             .build()
 
     /**
@@ -376,6 +388,27 @@ class SafetyCenterCtsData(context: Context) {
                 SafetyCenterData(
                     status, issues, entriesOrGroups, staticEntryGroups, dismissedIssues)
             else this
+        }
+
+        /**
+         * On U+, returns a new [SafetyCenterData] with [SafetyCenterIssue]s having the
+         * [attributionTitle]. Prior to U, returns the passed in [SafetyCenterData].
+         */
+        fun SafetyCenterData.withAttributionTitleInIssuesIfAtLeastU(
+            attributionTitle: String?
+        ): SafetyCenterData {
+            return if (SdkLevel.isAtLeastU()) {
+                val issuesWithAttributionTitle =
+                    this.issues.map {
+                        SafetyCenterIssue.Builder(it).setAttributionTitle(attributionTitle).build()
+                    }
+                SafetyCenterData(
+                    this.status,
+                    issuesWithAttributionTitle,
+                    this.entriesOrGroups,
+                    this.staticEntryGroups,
+                    this.dismissedIssues)
+            } else this
         }
     }
 }

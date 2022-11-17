@@ -25,8 +25,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.preference.Preference;
 
-import com.android.permissioncontroller.role.model.Role;
 import com.android.permissioncontroller.role.ui.TwoTargetPreference;
+import com.android.role.controller.model.Role;
 
 /***
  * Interface for UI behavior for roles

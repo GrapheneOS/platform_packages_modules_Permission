@@ -24,7 +24,7 @@ import androidx.annotation.Nullable;
 
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.role.model.EncryptionUnawareConfirmationMixin;
-import com.android.permissioncontroller.role.model.Role;
+import com.android.role.controller.model.Role;
 
 /***
  * Class for UI behavior of SMS role
