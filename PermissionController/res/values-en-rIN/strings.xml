@@ -26,7 +26,7 @@
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Uninstall or disable"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"App not found"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"Don\'t allow"</string>
-    <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"Don’t allow &amp; don’t ask again"</string>
+    <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"Don’t allow and don’t ask again"</string>
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Keep \'While the app is in use\'"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Keep \'Only this time\'"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"More info"</string>
