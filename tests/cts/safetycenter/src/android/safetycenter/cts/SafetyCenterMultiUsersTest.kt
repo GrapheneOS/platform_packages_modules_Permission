@@ -124,9 +124,11 @@ class SafetyCenterMultiUsersTest {
     private val primaryProfileOnlyIssues =
         listOf(
             safetyCenterCtsData.safetyCenterIssueCritical(DYNAMIC_BAREBONE_ID),
-            safetyCenterCtsData.safetyCenterIssueCritical(ISSUE_ONLY_BAREBONE_ID),
+            safetyCenterCtsData.safetyCenterIssueCritical(
+                ISSUE_ONLY_BAREBONE_ID, attributionTitle = null),
             safetyCenterCtsData.safetyCenterIssueRecommendation(DYNAMIC_DISABLED_ID),
-            safetyCenterCtsData.safetyCenterIssueRecommendation(ISSUE_ONLY_ALL_OPTIONAL_ID),
+            safetyCenterCtsData.safetyCenterIssueRecommendation(
+                ISSUE_ONLY_ALL_OPTIONAL_ID, attributionTitle = null),
             safetyCenterCtsData.safetyCenterIssueInformation(DYNAMIC_IN_RIGID_ID),
             safetyCenterCtsData.safetyCenterIssueInformation(ISSUE_ONLY_IN_RIGID_ID))
 
@@ -501,15 +503,17 @@ class SafetyCenterMultiUsersTest {
                 safetyCenterCtsData.safetyCenterStatusCritical(11),
                 listOf(
                     safetyCenterCtsData.safetyCenterIssueCritical(DYNAMIC_BAREBONE_ID),
-                    safetyCenterCtsData.safetyCenterIssueCritical(ISSUE_ONLY_BAREBONE_ID),
+                    safetyCenterCtsData.safetyCenterIssueCritical(
+                        ISSUE_ONLY_BAREBONE_ID, attributionTitle = null),
                     safetyCenterCtsData.safetyCenterIssueRecommendation(DYNAMIC_DISABLED_ID),
-                    safetyCenterCtsData.safetyCenterIssueRecommendation(ISSUE_ONLY_ALL_OPTIONAL_ID),
+                    safetyCenterCtsData.safetyCenterIssueRecommendation(
+                        ISSUE_ONLY_ALL_OPTIONAL_ID, attributionTitle = null),
                     safetyCenterCtsData.safetyCenterIssueInformation(
                         DYNAMIC_DISABLED_ID, managedUserId),
                     safetyCenterCtsData.safetyCenterIssueInformation(
                         DYNAMIC_HIDDEN_ID, managedUserId),
                     safetyCenterCtsData.safetyCenterIssueInformation(
-                        ISSUE_ONLY_ALL_OPTIONAL_ID, managedUserId),
+                        ISSUE_ONLY_ALL_OPTIONAL_ID, managedUserId, attributionTitle = null),
                     safetyCenterCtsData.safetyCenterIssueInformation(DYNAMIC_IN_RIGID_ID),
                     safetyCenterCtsData.safetyCenterIssueInformation(
                         DYNAMIC_IN_RIGID_ID, managedUserId),

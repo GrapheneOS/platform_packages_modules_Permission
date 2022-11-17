@@ -265,6 +265,7 @@ final class SafetyCenterDataFactory {
                     safetyCenterIssuesWithCategories,
                     safetyCenterDismissedIssuesWithCategories,
                     safetySource,
+                    safetySourcesGroup,
                     userProfileGroup.getProfileParentUserId());
 
             if (!SafetySources.supportsManagedProfiles(safetySource)) {
@@ -281,6 +282,7 @@ final class SafetyCenterDataFactory {
                         safetyCenterIssuesWithCategories,
                         safetyCenterDismissedIssuesWithCategories,
                         safetySource,
+                        safetySourcesGroup,
                         managedRunningProfileUserId);
             }
         }
@@ -291,6 +293,7 @@ final class SafetyCenterDataFactory {
             @NonNull List<SafetyCenterIssueWithCategory> safetyCenterIssuesWithCategories,
             @NonNull List<SafetyCenterIssueWithCategory> safetyCenterDismissedIssuesWithCategories,
             @NonNull SafetySource safetySource,
+            @NonNull SafetySourcesGroup safetySourcesGroup,
             @UserIdInt int userId) {
         SafetySourceKey key = SafetySourceKey.of(safetySource.getId(), userId);
         SafetySourceData safetySourceData = mSafetyCenterRepository.getSafetySourceData(key);
@@ -303,7 +306,8 @@ final class SafetyCenterDataFactory {
         for (int i = 0; i < safetySourceIssues.size(); i++) {
             SafetySourceIssue safetySourceIssue = safetySourceIssues.get(i);
             SafetyCenterIssue safetyCenterIssue =
-                    toSafetyCenterIssue(safetySourceIssue, safetySource, userId);
+                    toSafetyCenterIssue(
+                            safetySourceIssue, safetySource, safetySourcesGroup, userId);
 
             SafetyCenterIssueKey issueKey =
                     SafetyCenterIssueKey.newBuilder()
@@ -332,6 +336,7 @@ final class SafetyCenterDataFactory {
     private SafetyCenterIssue toSafetyCenterIssue(
             @NonNull SafetySourceIssue safetySourceIssue,
             @NonNull SafetySource safetySource,
+            @NonNull SafetySourcesGroup safetySourcesGroup,
             @UserIdInt int userId) {
         SafetyCenterIssueId safetyCenterIssueId =
                 SafetyCenterIssueId.newBuilder()
@@ -358,16 +363,26 @@ final class SafetyCenterDataFactory {
 
         int safetyCenterIssueSeverityLevel =
                 toSafetyCenterIssueSeverityLevel(safetySourceIssue.getSeverityLevel());
-        return new SafetyCenterIssue.Builder(
-                        SafetyCenterIds.encodeToString(safetyCenterIssueId),
-                        safetySourceIssue.getTitle(),
-                        safetySourceIssue.getSummary())
-                .setSeverityLevel(safetyCenterIssueSeverityLevel)
-                .setShouldConfirmDismissal(
-                        safetyCenterIssueSeverityLevel > SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_OK)
-                .setSubtitle(safetySourceIssue.getSubtitle())
-                .setActions(safetyCenterIssueActions)
-                .build();
+        SafetyCenterIssue.Builder safetyCenterIssueBuilder =
+                new SafetyCenterIssue.Builder(
+                                SafetyCenterIds.encodeToString(safetyCenterIssueId),
+                                safetySourceIssue.getTitle(),
+                                safetySourceIssue.getSummary())
+                        .setSeverityLevel(safetyCenterIssueSeverityLevel)
+                        .setShouldConfirmDismissal(
+                                safetyCenterIssueSeverityLevel
+                                        > SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_OK)
+                        .setSubtitle(safetySourceIssue.getSubtitle())
+                        .setActions(safetyCenterIssueActions);
+        if (SdkLevel.isAtLeastU()) {
+            CharSequence issueAttributionTitle =
+                    TextUtils.isEmpty(safetySourceIssue.getAttributionTitle())
+                            ? mSafetyCenterResourcesContext.getOptionalString(
+                                    safetySourcesGroup.getTitleResId())
+                            : safetySourceIssue.getAttributionTitle();
+            safetyCenterIssueBuilder.setAttributionTitle(issueAttributionTitle);
+        }
+        return safetyCenterIssueBuilder.build();
     }
 
     @NonNull

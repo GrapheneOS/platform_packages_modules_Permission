@@ -22,7 +22,7 @@ import android.os.UserHandle;
 import androidx.annotation.NonNull;
 
 import com.android.permissioncontroller.R;
-import com.android.permissioncontroller.role.model.Role;
+import com.android.role.controller.model.Role;
 
 /***
  * Class for UI behavior of Browser role

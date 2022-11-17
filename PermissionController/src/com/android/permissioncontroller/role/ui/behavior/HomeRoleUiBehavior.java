@@ -34,11 +34,11 @@ import androidx.preference.Preference;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.utils.CollectionUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
-import com.android.permissioncontroller.role.model.HomeRoleBehavior;
-import com.android.permissioncontroller.role.model.Role;
 import com.android.permissioncontroller.role.model.VisibilityMixin;
 import com.android.permissioncontroller.role.ui.TwoTargetPreference;
 import com.android.permissioncontroller.role.utils.UserUtils;
+import com.android.role.controller.model.HomeRoleBehavior;
+import com.android.role.controller.model.Role;
 
 /***
  * Class for UI behavior of Home role

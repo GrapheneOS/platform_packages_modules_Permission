@@ -29,9 +29,9 @@ import androidx.annotation.WorkerThread;
 import androidx.lifecycle.LiveData;
 
 import com.android.permissioncontroller.AsyncTaskLiveData;
-import com.android.permissioncontroller.role.model.Role;
 import com.android.permissioncontroller.role.utils.PackageUtils;
 import com.android.permissioncontroller.role.utils.RoleUiBehaviorUtils;
+import com.android.role.controller.model.Role;
 
 import java.util.ArrayList;
 import java.util.List;
