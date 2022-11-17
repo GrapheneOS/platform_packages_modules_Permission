@@ -78,6 +78,7 @@ import com.android.permissioncontroller.permission.ui.handheld.v31.PermissionUsa
 import com.android.permissioncontroller.permission.ui.handheld.v34.AppDataSharingUpdatesFragment;
 import com.android.permissioncontroller.permission.ui.legacy.AppPermissionActivity;
 import com.android.permissioncontroller.permission.ui.television.TvUnusedAppsFragment;
+import com.android.permissioncontroller.permission.ui.wear.WearAppPermissionFragment;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.PermissionMapping;
 import com.android.permissioncontroller.permission.utils.Utils;
@@ -258,8 +259,7 @@ public final class ManagePermissionsActivity extends SettingsActivity {
             }
 
             case Intent.ACTION_MANAGE_APP_PERMISSION: {
-                if (DeviceUtils.isAuto(this) || DeviceUtils.isTelevision(this)
-                        || DeviceUtils.isWear(this)) {
+                if (DeviceUtils.isAuto(this) || DeviceUtils.isTelevision(this)) {
                     Intent compatIntent = new Intent(this, AppPermissionActivity.class);
                     compatIntent.putExtras(getIntent().getExtras());
                     startActivityForResult(compatIntent, PROXY_ACTIVITY_REQUEST_CODE);
@@ -297,8 +297,14 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                     return;
                 }
 
-                Bundle args = AppPermissionFragment.createArgs(packageName, permissionName,
-                        groupName, userHandle, caller, sessionId, null);
+                Bundle args;
+                if (DeviceUtils.isWear(this)) {
+                    args = WearAppPermissionFragment.createArgs(packageName, permissionName,
+                            groupName, userHandle, caller, sessionId, null);
+                } else {
+                    args = AppPermissionFragment.createArgs(packageName, permissionName,
+                            groupName, userHandle, caller, sessionId, null);
+                }
                 setNavGraph(args, R.id.app_permission);
                 return;
             }

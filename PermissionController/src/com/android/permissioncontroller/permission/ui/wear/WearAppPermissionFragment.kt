@@ -70,40 +70,45 @@ class WearAppPermissionFragment : Fragment(), ConfirmDialogShowingFragment {
 
     private lateinit var confirmDialogViewModel: AppPermissionConfirmDialogViewModel
 
-    /**
-     * Create a bundle with the arguments needed by this fragment
-     *
-     * @param packageName   The name of the package
-     * @param permName      The name of the permission whose group this fragment is for (optional)
-     * @param groupName     The name of the permission group (required if permName not specified)
-     * @param userHandle    The user of the app permission group
-     * @param caller        The name of the fragment we called from
-     * @param sessionId     The current session ID
-     * @param grantCategory The grant status of this app permission group. Used to initially set the
-     * button state
-     * @return A bundle with all of the args placed
-     */
-    fun createArgs(
-        packageName: String?,
-        permName: String?,
-        groupName: String?,
-        userHandle: UserHandle?,
-        caller: String?,
-        sessionId: Long,
-        grantCategory: String?
-    ): Bundle {
-        val arguments = Bundle()
-        arguments.putString(Intent.EXTRA_PACKAGE_NAME, packageName)
-        if (groupName == null) {
-            arguments.putString(Intent.EXTRA_PERMISSION_NAME, permName)
-        } else {
-            arguments.putString(Intent.EXTRA_PERMISSION_GROUP_NAME, groupName)
+    companion object {
+        private const val GRANT_CATEGORY = "grant_category"
+
+        /**
+         * Create a bundle with the arguments needed by this fragment
+         *
+         * @param packageName   The name of the package
+         * @param permName      The name of the permission whose group this fragment is for (optional)
+         * @param groupName     The name of the permission group (required if permName not specified)
+         * @param userHandle    The user of the app permission group
+         * @param caller        The name of the fragment we called from
+         * @param sessionId     The current session ID
+         * @param grantCategory The grant status of this app permission group. Used to initially set the
+         * button state
+         * @return A bundle with all of the args placed
+         */
+        @JvmStatic
+        fun createArgs(
+            packageName: String?,
+            permName: String?,
+            groupName: String?,
+            userHandle: UserHandle?,
+            caller: String?,
+            sessionId: Long,
+            grantCategory: String?
+        ): Bundle {
+            val arguments = Bundle()
+            arguments.putString(Intent.EXTRA_PACKAGE_NAME, packageName)
+            if (groupName == null) {
+                arguments.putString(Intent.EXTRA_PERMISSION_NAME, permName)
+            } else {
+                arguments.putString(Intent.EXTRA_PERMISSION_GROUP_NAME, groupName)
+            }
+            arguments.putParcelable(Intent.EXTRA_USER, userHandle)
+            arguments.putString(EXTRA_CALLER_NAME, caller)
+            arguments.putLong(EXTRA_SESSION_ID, sessionId)
+            arguments.putString(GRANT_CATEGORY, grantCategory)
+            return arguments
         }
-        arguments.putParcelable(Intent.EXTRA_USER, userHandle)
-        arguments.putString(EXTRA_CALLER_NAME, caller)
-        arguments.putLong(EXTRA_SESSION_ID, sessionId)
-        arguments.putString(GRANT_CATEGORY, grantCategory)
-        return arguments
     }
 
     override fun onCreateView(
@@ -323,10 +328,6 @@ class WearAppPermissionFragment : Fragment(), ConfirmDialogShowingFragment {
         )
 
         else -> throw RuntimeException("Wrong button type: $buttonType")
-    }
-
-    companion object {
-        private const val GRANT_CATEGORY = "grant_category"
     }
 }
 
