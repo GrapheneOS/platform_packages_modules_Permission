@@ -1269,9 +1269,10 @@ public final class Utils {
      * @param packageName The package's health connect settings to navigate to
      */
     public static void navigateToAppHealthConnectSettings(@NonNull Context context,
-            @NonNull String packageName) {
+            @NonNull String packageName, @NonNull UserHandle user) {
         Intent appHealthConnectIntent = new Intent(ACTION_MANAGE_HEALTH_PERMISSIONS_AND_DATA);
         appHealthConnectIntent.putExtra(EXTRA_PACKAGE_NAME, packageName);
+        appHealthConnectIntent.putExtra(Intent.EXTRA_USER, user);
         context.startActivity(appHealthConnectIntent);
     }
 
