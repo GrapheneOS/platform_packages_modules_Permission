@@ -18,6 +18,7 @@ package com.android.permissioncontroller.permission.ui;
 
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
+import static android.healthconnect.HealthPermissions.HEALTH_PERMISSION_GROUP;
 import static android.view.WindowManager.LayoutParams.SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS;
 
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.CANCELED;
@@ -27,6 +28,7 @@ import static com.android.permissioncontroller.permission.ui.GrantPermissionsVie
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.GRANTED_FOREGROUND_ONLY;
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.GRANTED_ONE_TIME;
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.LINKED_TO_SETTINGS;
+import static com.android.permissioncontroller.permission.ui.model.GrantPermissionsViewModel.APP_PERMISSION_REQUEST_CODE;
 import static com.android.permissioncontroller.permission.utils.Utils.getRequestMessage;
 
 import android.Manifest;
@@ -109,8 +111,6 @@ public class GrantPermissionsActivity extends SettingsActivity
     public static final Map<String, Integer> PERMISSION_TO_BIT_SHIFT = Map.of(
             ACCESS_COARSE_LOCATION, 0,
             ACCESS_FINE_LOCATION, 1);
-
-    private static final int APP_PERMISSION_REQUEST_CODE = 1;
 
     /**
      * A map of the currently shown GrantPermissionsActivity for this user, per package and task ID
@@ -377,6 +377,12 @@ public class GrantPermissionsActivity extends SettingsActivity
 
         if (info.getSendToSettingsImmediately()) {
             mViewModel.sendDirectlyToSettings(this, info.getGroupName());
+            return;
+        }
+
+        if (Utils.isHealthPermissionUiEnabled() && HEALTH_PERMISSION_GROUP.equals(
+                info.getGroupName())) {
+            mViewModel.handleHealthConnectPermissions(this);
             return;
         }
 
