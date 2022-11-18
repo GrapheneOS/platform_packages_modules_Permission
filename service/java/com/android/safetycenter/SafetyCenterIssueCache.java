@@ -95,9 +95,8 @@ final class SafetyCenterIssueCache {
      * <p>Only issues from "active" sources are included. Active sources are those for which {@link
      * SafetyCenterConfigReader#isExternalSafetySourceActive(String)} returns {@code true}.
      */
-    // TODO(b/255946874): Make this visible when it's needed
     @NonNull
-    private List<SafetyCenterIssueKey> getIssuesForUser(@UserIdInt int userId) {
+    List<SafetyCenterIssueKey> getIssuesForUser(@UserIdInt int userId) {
         ArrayList<SafetyCenterIssueKey> result = new ArrayList<>();
         for (int i = 0; i < mIssues.size(); i++) {
             SafetyCenterIssueKey issueKey = mIssues.keyAt(i);
