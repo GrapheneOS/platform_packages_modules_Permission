@@ -48,7 +48,6 @@ import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
-import com.android.safetycenter.internaldata.SafetyCenterEntryGroupId;
 import com.android.safetycenter.internaldata.SafetyCenterEntryId;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
 import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
@@ -413,17 +412,13 @@ final class SafetyCenterDataFactory {
             return;
         }
 
-        SafetyCenterEntryGroupId safetyCenterEntryGroupId =
-                SafetyCenterEntryGroupId.newBuilder()
-                        .setSafetySourcesGroupId(safetySourcesGroup.getId())
-                        .build();
         CharSequence groupSummary =
                 getSafetyCenterEntryGroupSummary(
                         safetySourcesGroup, groupSafetyCenterEntryLevel, entries);
         safetyCenterEntryOrGroups.add(
                 new SafetyCenterEntryOrGroup(
                         new SafetyCenterEntryGroup.Builder(
-                                        SafetyCenterIds.encodeToString(safetyCenterEntryGroupId),
+                                        safetySourcesGroup.getId(),
                                         mSafetyCenterResourcesContext.getString(
                                                 safetySourcesGroup.getTitleResId()))
                                 .setSeverityLevel(groupSafetyCenterEntryLevel)
