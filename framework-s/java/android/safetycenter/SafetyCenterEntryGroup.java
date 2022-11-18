@@ -26,6 +26,7 @@ import android.annotation.Nullable;
 import android.annotation.SystemApi;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.safetycenter.config.SafetySourcesGroup;
 import android.text.TextUtils;
 
 import androidx.annotation.RequiresApi;
@@ -86,10 +87,7 @@ public final class SafetyCenterEntryGroup implements Parcelable {
         mEntries = entries;
     }
 
-    /**
-     * Returns the encoded string ID which uniquely identifies this entry group within the Safety
-     * Center on the device for the current user across all profiles and accounts.
-     */
+    /** Returns the ID of the {@link SafetySourcesGroup} that this group corresponds to. */
     @NonNull
     public String getId() {
         return mId;

@@ -36,17 +36,6 @@ public final class SafetyCenterIds {
     private SafetyCenterIds() {}
 
     /**
-     * Converts a String to a {@link SafetyCenterEntryGroupId}.
-     *
-     * <p>Throws an {@link IllegalArgumentException} if the String couldn't be converted to a {@link
-     * SafetyCenterEntryGroupId}.
-     */
-    @NonNull
-    public static SafetyCenterEntryGroupId entryGroupIdFromString(@NonNull String encoded) {
-        return decodeToProto(SafetyCenterEntryGroupId.parser(), encoded);
-    }
-
-    /**
      * Converts a String to a {@link SafetyCenterEntryId}.
      *
      * <p>Throws an {@link IllegalArgumentException} if the String couldn't be converted to a {@link

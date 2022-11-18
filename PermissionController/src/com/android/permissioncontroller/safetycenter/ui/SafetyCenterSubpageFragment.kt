@@ -29,7 +29,6 @@ import com.android.permissioncontroller.R
 import com.android.permissioncontroller.safetycenter.ui.model.LiveSafetyCenterViewModelFactory
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterUiData
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel
-import com.android.safetycenter.internaldata.SafetyCenterIds
 
 /** A fragment that represents a generic subpage in Safety Center. */
 @RequiresApi(UPSIDE_DOWN_CAKE)
@@ -67,9 +66,7 @@ class SafetyCenterSubpageFragment(private val sourceGroupId: String) : Preferenc
         val entryOrGroups: List<SafetyCenterEntryOrGroup>? =
             uiData?.safetyCenterData?.entriesOrGroups
         val entryGroups = entryOrGroups?.mapNotNull { it.entryGroup }
-        return entryGroups?.find {
-            SafetyCenterIds.entryGroupIdFromString(it.id).getSafetySourcesGroupId() == sourceGroupId
-        }
+        return entryGroups?.find { it.id == sourceGroupId }
     }
 
     companion object {
