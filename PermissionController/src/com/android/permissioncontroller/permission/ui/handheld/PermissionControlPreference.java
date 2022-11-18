@@ -225,7 +225,7 @@ public class PermissionControlPreference extends Preference {
                 }
                 if (Utils.isHealthPermissionUiEnabled()
                         && mPermGroupName.equals(HEALTH_PERMISSION_GROUP)) {
-                    Utils.navigateToAppHealthConnectSettings(mContext, mPackageName);
+                    Utils.navigateToAppHealthConnectSettings(mContext, mPackageName, mUser);
                     return true;
                 }
                 Bundle args = new Bundle();

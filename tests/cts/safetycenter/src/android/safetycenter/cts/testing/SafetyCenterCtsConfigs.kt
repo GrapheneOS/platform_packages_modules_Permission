@@ -26,6 +26,7 @@ import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY
 import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_STATIC
 import android.safetycenter.config.SafetySourcesGroup
 import android.safetycenter.cts.testing.SettingsPackage.getSettingsPackageName
+import com.android.modules.utils.build.SdkLevel
 
 /**
  * A class that provides [SafetyCenterConfig] objects and associated constants to facilitate setting
@@ -522,6 +523,12 @@ object SafetyCenterCtsConfigs {
                             .setMaxSeverityLevel(SafetySourceData.SEVERITY_LEVEL_RECOMMENDATION)
                             .setSearchTermsResId(android.R.string.ok)
                             .setLoggingAllowed(false)
+                            .apply {
+                                if (SdkLevel.isAtLeastU()) {
+                                    setNotificationsAllowed(true)
+                                    setDeduplicationGroup("group")
+                                }
+                            }
                             .build())
                     .addSafetySource(
                         dynamicSafetySourceBuilder(DYNAMIC_DISABLED_ID)
@@ -567,6 +574,12 @@ object SafetyCenterCtsConfigs {
                         issueOnlySafetySourceBuilder(ISSUE_ONLY_ALL_OPTIONAL_ID)
                             .setMaxSeverityLevel(SafetySourceData.SEVERITY_LEVEL_RECOMMENDATION)
                             .setLoggingAllowed(false)
+                            .apply {
+                                if (SdkLevel.isAtLeastU()) {
+                                    setNotificationsAllowed(true)
+                                    setDeduplicationGroup("group")
+                                }
+                            }
                             .build())
                     .build())
             .addSafetySourcesGroup(
@@ -632,6 +645,12 @@ object SafetyCenterCtsConfigs {
                         issueOnlyAllProfileSafetySourceBuilder(ISSUE_ONLY_ALL_OPTIONAL_ID)
                             .setMaxSeverityLevel(SafetySourceData.SEVERITY_LEVEL_RECOMMENDATION)
                             .setLoggingAllowed(false)
+                            .apply {
+                                if (SdkLevel.isAtLeastU()) {
+                                    setNotificationsAllowed(true)
+                                    setDeduplicationGroup("group")
+                                }
+                            }
                             .build())
                     .build())
             .addSafetySourcesGroup(

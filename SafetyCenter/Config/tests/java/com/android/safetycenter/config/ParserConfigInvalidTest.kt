@@ -76,7 +76,12 @@ class ParserConfigInvalidTest {
                         "ConfigStaticSafetySourceWithNotifications",
                         R.raw.config_static_safety_source_with_notifications,
                         "Element static-safety-source invalid",
-                        "Prohibited attribute notificationsAllowed present"))
+                        "Prohibited attribute notificationsAllowed present"),
+                    Params(
+                        "ConfigStaticSafetySourceWithDeduplicationGroups",
+                        R.raw.config_static_safety_source_with_deduplication_groups,
+                        "Element static-safety-source invalid",
+                        "Prohibited attribute deduplicationGroup present"))
 
         fun parametersTiramisu(): Array<Params> =
             arrayOf(

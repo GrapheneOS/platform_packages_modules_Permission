@@ -69,7 +69,12 @@ class ParserConfigValidTest {
                                 .setSearchTermsResId(R.string.reference)
                                 .setLoggingAllowed(false)
                                 .setRefreshOnPageOpenAllowed(true)
-                                .apply { if (SdkLevel.isAtLeastU()) setNotificationsAllowed(true) }
+                                .apply {
+                                    if (SdkLevel.isAtLeastU()) {
+                                        setNotificationsAllowed(true)
+                                        setDeduplicationGroup("group")
+                                    }
+                                }
                                 .build())
                         .addSafetySource(
                             SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
@@ -85,6 +90,12 @@ class ParserConfigValidTest {
                                 .setSearchTermsResId(R.string.reference)
                                 .setLoggingAllowed(false)
                                 .setRefreshOnPageOpenAllowed(true)
+                                .apply {
+                                    if (SdkLevel.isAtLeastU()) {
+                                        setNotificationsAllowed(true)
+                                        setDeduplicationGroup("group")
+                                    }
+                                }
                                 .build())
                         .addSafetySource(
                             SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
@@ -154,7 +165,12 @@ class ParserConfigValidTest {
                                 .setMaxSeverityLevel(300)
                                 .setLoggingAllowed(false)
                                 .setRefreshOnPageOpenAllowed(true)
-                                .apply { if (SdkLevel.isAtLeastU()) setNotificationsAllowed(true) }
+                                .apply {
+                                    if (SdkLevel.isAtLeastU()) {
+                                        setNotificationsAllowed(true)
+                                        setDeduplicationGroup("group")
+                                    }
+                                }
                                 .build())
                         .build())
                 .addSafetySourcesGroup(

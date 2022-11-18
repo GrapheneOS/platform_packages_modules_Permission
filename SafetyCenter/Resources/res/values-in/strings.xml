@@ -24,7 +24,7 @@
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"Belum ada info"</string>
     <string name="lock_screen_search_terms" msgid="2678486357779794826">"Penguncian perangkat, Kunci layar, Layar kunci, Layar saat dikunci, Sandi, PIN, Pola"</string>
     <string name="biometrics_title" msgid="5859504610285212938">"Biometrik"</string>
-    <string name="biometrics_search_terms" msgid="6040319118762671981">"Sidik jari, Jari, Tambahkan sidik jari, Face unlock, Wajah"</string>
+    <string name="biometrics_search_terms" msgid="6040319118762671981">"Sidik jari, Jari, Tambahkan sidik jari, Buka dengan wajah, Wajah"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"Privasi"</string>
     <string name="privacy_sources_summary" msgid="4089719981155120864">"Dasbor, izin, kontrol"</string>
     <string name="permission_usage_title" msgid="3633779688945350407">"Dasbor privasi"</string>
@@ -43,6 +43,4 @@
     <string name="advanced_privacy_title" msgid="1117725225706176643">"Setelan privasi lainnya"</string>
     <string name="advanced_privacy_summary" msgid="2281203390575069543">"Isi otomatis, kontrol aktivitas, dan lainnya"</string>
     <string name="advanced_privacy_search_terms" msgid="5044404599789175222"></string>
-    <string name="overall_severity_level_account_recommendation_title" msgid="6524855037045765671">"Akun mungkin berisiko"</string>
-    <string name="overall_severity_level_critical_account_warning_title" msgid="3294187096461368277">"Akun berisiko"</string>
 </resources>
