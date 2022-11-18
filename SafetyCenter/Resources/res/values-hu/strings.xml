@@ -43,6 +43,4 @@
     <string name="advanced_privacy_title" msgid="1117725225706176643">"További adatvédelmi beállítások"</string>
     <string name="advanced_privacy_summary" msgid="2281203390575069543">"Automatikus kitöltés, tevékenységvezérlők és egyebek"</string>
     <string name="advanced_privacy_search_terms" msgid="5044404599789175222"></string>
-    <string name="overall_severity_level_account_recommendation_title" msgid="6524855037045765671">"Fiókja veszélyben lehet"</string>
-    <string name="overall_severity_level_critical_account_warning_title" msgid="3294187096461368277">"Fiókja veszélyben van"</string>
 </resources>
