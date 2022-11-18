@@ -43,6 +43,4 @@
     <string name="advanced_privacy_title" msgid="1117725225706176643">"আরও গোপনীয়তা সেটিংস"</string>
     <string name="advanced_privacy_summary" msgid="2281203390575069543">"অটোফিল, অ্যাক্টিভিটি নিয়ন্ত্রণ এবং আরও অনেক কিছু"</string>
     <string name="advanced_privacy_search_terms" msgid="5044404599789175222"></string>
-    <string name="overall_severity_level_account_recommendation_title" msgid="6524855037045765671">"আপনার অ্যাকাউন্ট হয়ত সুরক্ষিত নয়"</string>
-    <string name="overall_severity_level_critical_account_warning_title" msgid="3294187096461368277">"অ্যাকাউন্টের ক্ষতি হতে পারে"</string>
 </resources>

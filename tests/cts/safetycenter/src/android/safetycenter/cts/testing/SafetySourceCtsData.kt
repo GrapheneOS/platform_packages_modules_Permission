@@ -20,7 +20,6 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.FLAG_RECEIVER_FOREGROUND
-import android.os.Build
 import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetySourceData
@@ -197,7 +196,7 @@ class SafetySourceCtsData(private val context: Context) {
      * having a [SafetySourceIssue.mAttributionTitle] and [SafetySourceStatus].
      */
     val informationWithIssueWithAttributionTitle: SafetySourceData
-        @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+        @RequiresApi(UPSIDE_DOWN_CAKE)
         get() =
             SafetySourceData.Builder()
                 .setStatus(

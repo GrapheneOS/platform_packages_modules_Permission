@@ -171,6 +171,7 @@ public final class SafetySource implements Parcelable {
                                     .setRefreshOnPageOpenAllowed(in.readBoolean());
                     if (SdkLevel.isAtLeastU()) {
                         builder.setNotificationsAllowed(in.readBoolean());
+                        builder.setDeduplicationGroup(in.readString());
                     }
                     return builder.build();
                 }
@@ -195,6 +196,7 @@ public final class SafetySource implements Parcelable {
     private final boolean mLoggingAllowed;
     private final boolean mRefreshOnPageOpenAllowed;
     private final boolean mNotificationsAllowed;
+    @Nullable final String mDeduplicationGroup;
 
     private SafetySource(
             @SafetySourceType int type,
@@ -210,7 +212,8 @@ public final class SafetySource implements Parcelable {
             @StringRes int searchTermsResId,
             boolean loggingAllowed,
             boolean refreshOnPageOpenAllowed,
-            boolean notificationsAllowed) {
+            boolean notificationsAllowed,
+            @Nullable String deduplicationGroup) {
         mType = type;
         mId = id;
         mPackageName = packageName;
@@ -225,6 +228,7 @@ public final class SafetySource implements Parcelable {
         mLoggingAllowed = loggingAllowed;
         mRefreshOnPageOpenAllowed = refreshOnPageOpenAllowed;
         mNotificationsAllowed = notificationsAllowed;
+        mDeduplicationGroup = deduplicationGroup;
     }
 
     /** Returns the type of this safety source. */
@@ -442,6 +446,21 @@ public final class SafetySource implements Parcelable {
         return mNotificationsAllowed;
     }
 
+    /**
+     * Returns the deduplication group this source belongs to.
+     *
+     * <p>Sources which are part of the same deduplication group can coordinate to deduplicate their
+     * issues.
+     */
+    @Nullable
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    public String getDeduplicationGroup() {
+        if (!SdkLevel.isAtLeastU()) {
+            throw new UnsupportedOperationException();
+        }
+        return mDeduplicationGroup;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -460,7 +479,8 @@ public final class SafetySource implements Parcelable {
                 && mSearchTermsResId == that.mSearchTermsResId
                 && mLoggingAllowed == that.mLoggingAllowed
                 && mRefreshOnPageOpenAllowed == that.mRefreshOnPageOpenAllowed
-                && mNotificationsAllowed == that.mNotificationsAllowed;
+                && mNotificationsAllowed == that.mNotificationsAllowed
+                && Objects.equals(mDeduplicationGroup, that.mDeduplicationGroup);
     }
 
     @Override
@@ -479,7 +499,8 @@ public final class SafetySource implements Parcelable {
                 mSearchTermsResId,
                 mLoggingAllowed,
                 mRefreshOnPageOpenAllowed,
-                mNotificationsAllowed);
+                mNotificationsAllowed,
+                mDeduplicationGroup);
     }
 
     @Override
@@ -513,6 +534,8 @@ public final class SafetySource implements Parcelable {
                 + mRefreshOnPageOpenAllowed
                 + ", mNotificationsAllowed="
                 + mNotificationsAllowed
+                + ", mDeduplicationGroup="
+                + mDeduplicationGroup
                 + '}';
     }
 
@@ -538,6 +561,7 @@ public final class SafetySource implements Parcelable {
         dest.writeBoolean(mRefreshOnPageOpenAllowed);
         if (SdkLevel.isAtLeastU()) {
             dest.writeBoolean(mNotificationsAllowed);
+            dest.writeString(mDeduplicationGroup);
         }
     }
 
@@ -558,6 +582,7 @@ public final class SafetySource implements Parcelable {
         @Nullable private Boolean mLoggingAllowed;
         @Nullable private Boolean mRefreshOnPageOpenAllowed;
         @Nullable private Boolean mNotificationsAllowed;
+        @Nullable private String mDeduplicationGroup;
 
         /** Creates a {@link Builder} for a {@link SafetySource}. */
         public Builder(@SafetySourceType int type) {
@@ -766,6 +791,25 @@ public final class SafetySource implements Parcelable {
         }
 
         /**
+         * Sets the deduplication group for this source.
+         *
+         * <p>Sources which are part of the same deduplication group can coordinate to deduplicate
+         * issues that they're sending to SafetyCenter by providing the same deduplication
+         * identifier with those issues.
+         *
+         * <p>The deduplication group property is prohibited for sources of type static.
+         */
+        @NonNull
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        public Builder setDeduplicationGroup(@Nullable String deduplicationGroup) {
+            if (!SdkLevel.isAtLeastU()) {
+                throw new UnsupportedOperationException();
+            }
+            mDeduplicationGroup = deduplicationGroup;
+            return this;
+        }
+
+        /**
          * Creates the {@link SafetySource} defined by this {@link Builder}.
          *
          * <p>Throws an {@link IllegalStateException} if any constraint on the safety source is
@@ -868,6 +912,9 @@ public final class SafetySource implements Parcelable {
                                 false,
                                 isStatic,
                                 false);
+
+                BuilderUtils.validateAttribute(
+                        mDeduplicationGroup, "deduplicationGroup", false, isStatic);
             }
 
             return new SafetySource(
@@ -884,7 +931,8 @@ public final class SafetySource implements Parcelable {
                     searchTermsResId,
                     loggingAllowed,
                     refreshOnPageOpenAllowed,
-                    notificationsAllowed);
+                    notificationsAllowed,
+                    mDeduplicationGroup);
         }
     }
 }

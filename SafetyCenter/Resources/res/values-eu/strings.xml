@@ -43,6 +43,4 @@
     <string name="advanced_privacy_title" msgid="1117725225706176643">"Pribatutasun-ezarpen gehiago"</string>
     <string name="advanced_privacy_summary" msgid="2281203390575069543">"Betetze automatikoa, jarduerak kontrolatzeko aukerak eta abar"</string>
     <string name="advanced_privacy_search_terms" msgid="5044404599789175222"></string>
-    <string name="overall_severity_level_account_recommendation_title" msgid="6524855037045765671">"Baliteke kontua arriskuan egotea"</string>
-    <string name="overall_severity_level_critical_account_warning_title" msgid="3294187096461368277">"Kontua arriskuan dago"</string>
 </resources>

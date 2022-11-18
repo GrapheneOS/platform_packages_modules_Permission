@@ -30,11 +30,15 @@ import android.content.pm.PackageManager
 import android.content.pm.PackageManager.FLAG_PERMISSION_POLICY_FIXED
 import android.content.pm.PackageManager.FLAG_PERMISSION_USER_FIXED
 import android.content.pm.PackageManager.FLAG_PERMISSION_USER_SET
+import android.healthconnect.HealthConnectManager.ACTION_MANAGE_HEALTH_PERMISSIONS
+import android.healthconnect.HealthConnectManager.isHealthPermission
+import android.healthconnect.HealthPermissions.HEALTH_PERMISSION_GROUP
 import android.os.Build
 import android.os.Bundle
 import android.os.Process
 import android.permission.PermissionManager
 import android.util.Log
+import androidx.annotation.ChecksSdkIntAtLeast
 import androidx.core.util.Consumer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -207,7 +211,7 @@ class GrantPermissionsViewModel(
             }
             unfilteredAffectedPermissions = allAffectedPermissions.toList()
 
-            getAppPermGroups(groups.toMutableMap().apply {
+            setAppPermGroupsLiveDatas(groups.toMutableMap().apply {
                 remove(PackagePermissionsLiveData.NON_RUNTIME_NORMAL_PERMS)
             })
 
@@ -217,7 +221,7 @@ class GrantPermissionsViewModel(
             }
         }
 
-        private fun getAppPermGroups(groups: Map<String, List<String>>) {
+        private fun setAppPermGroupsLiveDatas(groups: Map<String, List<String>>) {
 
             val requestedGroups = groups.filter { (_, perms) ->
                 perms.any { it in unfilteredAffectedPermissions }
@@ -274,10 +278,10 @@ class GrantPermissionsViewModel(
                 groupStates = getRequiredGroupStates(
                     appPermGroupLiveDatas.mapNotNull { it.value.value })
             }
-            getRequestInfosFromGroupStates()
+            setRequestInfosFromGroupStates()
         }
 
-        private fun getRequestInfosFromGroupStates() {
+        private fun setRequestInfosFromGroupStates() {
             val requestInfos = mutableListOf<RequestInfo>()
             for ((key, groupState) in groupStates) {
                 val groupInfo = groupState.group.permGroupInfo
@@ -516,17 +520,8 @@ class GrantPermissionsViewModel(
                     message,
                     detailMessage))
             }
-            requestInfos.sortWith(Comparator { rhs, lhs ->
-                val rhsHasOneTime = rhs.buttonVisibilities[ALLOW_ONE_TIME_BUTTON]
-                val lhsHasOneTime = lhs.buttonVisibilities[ALLOW_ONE_TIME_BUTTON]
-                if (rhsHasOneTime && !lhsHasOneTime) {
-                    -1
-                } else if (!rhsHasOneTime && lhsHasOneTime) {
-                    1
-                } else {
-                    rhs.groupName.compareTo(lhs.groupName)
-                }
-            })
+
+            sortPermissionGroups(requestInfos)
 
             value = if (requestInfos.any { it.sendToSettingsImmediately } &&
                 requestInfos.size > 1) {
@@ -535,6 +530,22 @@ class GrantPermissionsViewModel(
                 null
             } else {
                 requestInfos
+            }
+        }
+    }
+
+    fun sortPermissionGroups(requestInfos: MutableList<RequestInfo>) {
+        requestInfos.sortWith { rhs, lhs ->
+            val rhsHasOneTime = rhs.buttonVisibilities[ALLOW_ONE_TIME_BUTTON]
+            val lhsHasOneTime = lhs.buttonVisibilities[ALLOW_ONE_TIME_BUTTON]
+            if (rhsHasOneTime && !lhsHasOneTime) {
+                -1
+            } else if ((!rhsHasOneTime && lhsHasOneTime) ||
+                isHealthPermissionGroup(rhs.groupName)
+            ) {
+                1
+            } else {
+                rhs.groupName.compareTo(lhs.groupName)
             }
         }
     }
@@ -729,7 +740,8 @@ class GrantPermissionsViewModel(
                 if (isBackground) {
                     KotlinUtils.grantBackgroundRuntimePermissions(app, group, listOf(perm))
                 } else {
-                    KotlinUtils.grantForegroundRuntimePermissions(app, group, listOf(perm), group.isOneTime)
+                    KotlinUtils.grantForegroundRuntimePermissions(app,
+                        group, listOf(perm), group.isOneTime)
                 }
                 KotlinUtils.setGroupFlags(app, group, FLAG_PERMISSION_USER_SET to false,
                     FLAG_PERMISSION_USER_FIXED to false, filterPermissions = listOf(perm))
@@ -1080,6 +1092,29 @@ class GrantPermissionsViewModel(
         }
     }
 
+    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+    private fun isHealthPermissionGroup(permGroupName: String): Boolean {
+        return SdkLevel.isAtLeastU() && HEALTH_PERMISSION_GROUP.equals(permGroupName)
+    }
+
+    fun handleHealthConnectPermissions(activity: Activity) {
+        if (activityResultCallback == null) {
+            activityResultCallback = Consumer {
+                permGroupsToSkip.add(HEALTH_PERMISSION_GROUP)
+                requestInfosLiveData.update()
+            }
+            val healthPermissions = unfilteredAffectedPermissions.filter { permission ->
+                isHealthPermission(activity, permission)
+            }.toTypedArray()
+            val intent: Intent = Intent(ACTION_MANAGE_HEALTH_PERMISSIONS)
+                .putExtra(Intent.EXTRA_PACKAGE_NAME, packageName)
+                .putExtra(PackageManager.EXTRA_REQUEST_PERMISSIONS_NAMES, healthPermissions)
+                .putExtra(Intent.EXTRA_USER, Process.myUserHandle())
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            activity.startActivityForResult(intent, APP_PERMISSION_REQUEST_CODE)
+        }
+    }
+
     /**
      * Send the user directly to the AppPermissionFragment. Used for R+ apps.
      *
@@ -1088,7 +1123,6 @@ class GrantPermissionsViewModel(
      */
     fun sendDirectlyToSettings(activity: Activity, groupName: String) {
         if (activityResultCallback == null) {
-            startAppPermissionFragment(activity, groupName)
             activityResultCallback = Consumer { data ->
                 if (data?.getStringExtra(EXTRA_RESULT_PERMISSION_INTERACTED) == null) {
                     // User didn't interact, count against rate limit
@@ -1107,6 +1141,7 @@ class GrantPermissionsViewModel(
                 // Update our liveData now that there is a new skipped group
                 requestInfosLiveData.update()
             }
+            startAppPermissionFragment(activity, groupName)
         }
     }
 
@@ -1249,7 +1284,7 @@ class GrantPermissionsViewModel(
     }
 
     companion object {
-        private const val APP_PERMISSION_REQUEST_CODE = 1
+        const val APP_PERMISSION_REQUEST_CODE = 1
         private const val STATE_UNKNOWN = 0
         private const val STATE_ALLOWED = 1
         private const val STATE_DENIED = 2

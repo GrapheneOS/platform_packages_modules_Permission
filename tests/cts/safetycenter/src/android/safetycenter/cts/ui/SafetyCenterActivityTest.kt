@@ -17,6 +17,9 @@
 package android.safetycenter.cts.ui
 
 import android.content.Context
+import android.os.Build.VERSION.CODENAME
+import android.os.Build.VERSION_CODES.TIRAMISU
+import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.os.Bundle
 import android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_ID
 import android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_ISSUE_ID
@@ -33,6 +36,8 @@ import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_SOURCE_3
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_SOURCE_GROUP_1
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_SOURCE_GROUP_2
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_SOURCE_GROUP_3
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.ISSUE_ONLY_ALL_OPTIONAL_ID
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.ISSUE_ONLY_SOURCE_NO_GROUP_TITLE_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MULTIPLE_SOURCES_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MULTIPLE_SOURCES_CONFIG_WITH_SOURCE_WITH_INVALID_INTENT
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MULTIPLE_SOURCE_GROUPS_CONFIG
@@ -69,11 +74,13 @@ import android.support.test.uiautomator.By
 import android.support.test.uiautomator.UiDevice
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.filters.SdkSuppress
 import com.android.compatibility.common.util.DisableAnimationRule
 import com.android.compatibility.common.util.FreezeRotationRule
 import com.android.compatibility.common.util.UiAutomatorUtils.getUiDevice
 import java.time.Duration
 import org.junit.After
+import org.junit.Assume.assumeFalse
 import org.junit.Assume.assumeTrue
 import org.junit.Before
 import org.junit.Rule
@@ -739,6 +746,52 @@ class SafetyCenterActivityTest {
             waitButtonDisplayed(action.label) { it.click() }
             waitButtonDisplayed("Exit test activity") { it.click() }
         }
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun issueCard_withAttributionTitleSetBySource_displaysAttributionTitle() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+
+        val data = safetySourceCtsData.informationWithIssueWithAttributionTitle
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
+
+        context.launchSafetyCenterActivity { waitAllTextDisplayed("Attribution Title") }
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun issueCard_attributionNotSetBySource_displaysGroupTitleAsAttribution() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+
+        val data = safetySourceCtsData.recommendationWithGeneralIssue
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
+
+        context.launchSafetyCenterActivity { waitAllTextDisplayed("OK") }
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun issueCard_attributionNotSetBySourceAndGroupTitleNull_doesNotDisplayAttributionTitle() {
+        safetyCenterCtsHelper.setConfig(ISSUE_ONLY_SOURCE_NO_GROUP_TITLE_CONFIG)
+
+        val data = SafetySourceCtsData.issuesOnly(safetySourceCtsData.recommendationGeneralIssue)
+        safetyCenterCtsHelper.setData(ISSUE_ONLY_ALL_OPTIONAL_ID, data)
+
+        context.launchSafetyCenterActivity { waitAllTextNotDisplayed("Attribution Title", "OK") }
+    }
+
+    @Test
+    @SdkSuppress(maxSdkVersion = TIRAMISU)
+    fun issueCard_attributionNotSetBySourceOnTiramisu_doesNotDisplayAttributionTitle() {
+        // TODO(b/258228790): Remove after U is no longer in pre-release
+        assumeFalse(CODENAME == "UpsideDownCake")
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+
+        val data = safetySourceCtsData.recommendationWithGeneralIssue
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
+
+        context.launchSafetyCenterActivity { waitAllTextNotDisplayed("Attribution title", "OK") }
     }
 
     @Test
