@@ -249,6 +249,17 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="com.android.permissioncontroller.permission.ui.v34.PermissionRationaleActivity"
+                  android:configChanges="keyboardHidden|screenSize"
+                  android:excludeFromRecents="true"
+                  android:exported="false"
+                  android:theme="@style/GrantPermissions.FilterTouches"
+                  android:visibleToInstantApps="true"
+                  android:inheritShowWhenLocked="true"
+                  android:hardwareAccelerated="false"
+                  android:canDisplayOnRemoteDevices="false">
+        </activity>
+
         <activity android:name="com.android.permissioncontroller.permission.ui.ManagePermissionsActivity"
                   android:configChanges="orientation|keyboardHidden|screenSize"
                   android:label="@string/app_permissions"

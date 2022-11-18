@@ -69,6 +69,26 @@
 
             <!-- END PERMISSION GRANT DIALOG -->
 
+            <!-- START PERMISSION RATIONALE DIALOG -->
+
+            <item type="style" name="PermissionRationaleScrollView" />
+            <item type="style" name="PermissionRationaleSingleton" />
+            <item type="style" name="PermissionRationaleDialog" />
+            <item type="style" name="PermissionRationaleContent" />
+
+            <item type="style" name="PermissionRationaleTitleContainer" />
+            <item type="style" name="PermissionRationaleTitleIcon" />
+            <item type="style" name="PermissionRationaleTitleMessage" />
+
+            <item type="style" name="PermissionRationaleSectionOuterContainer" />
+            <item type="style" name="PermissionRationaleSectionIcon" />
+            <item type="style" name="PermissionRationaleSectionInnerContainer" />
+            <item type="style" name="PermissionRationaleSectionTitle" />
+            <item type="style" name="PermissionRationaleSectionMessage" />
+
+            <item type="style" name="PermissionRationaleButtonContainer" />
+
+            <!-- END PERMISSION RATIONALE DIALOG -->
 
             <!-- START PERMISSION REVIEW SCREEN -->
             <item type="style" name="PermissionReview" />
