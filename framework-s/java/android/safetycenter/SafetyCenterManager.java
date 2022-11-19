@@ -44,9 +44,11 @@ import android.util.ArrayMap;
 import androidx.annotation.RequiresApi;
 
 import com.android.internal.annotations.GuardedBy;
+import com.android.modules.utils.build.SdkLevel;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Executor;
 
@@ -441,6 +443,42 @@ public final class SafetyCenterManager {
     public void refreshSafetySources(@RefreshReason int refreshReason) {
         try {
             mService.refreshSafetySources(refreshReason, mContext.getUser().getIdentifier());
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
+    /**
+     * Requests a specific subset of safety sources to set their latest {@link SafetySourceData} for
+     * Safety Center.
+     *
+     * <p>This API sends a broadcast to safety sources with action {@link
+     * #ACTION_REFRESH_SAFETY_SOURCES} and {@link #EXTRA_REFRESH_SAFETY_SOURCE_IDS} to specify the
+     * IDs of safety sources being requested for data by Safety Center.
+     *
+     * <p>This API is similar to {@link #refreshSafetySources(int)} and is used to request data from
+     * safety sources that are part of a subpage in the Safety Center UI.
+     *
+     * @see #refreshSafetySources(int)
+     * @param refreshReason the reason for the refresh
+     * @param safetySourceIds list of IDs for the safety sources being refreshed
+     * @throws UnsupportedOperationException if accessed from a version lower than {@link
+     *     UPSIDE_DOWN_CAKE}
+     */
+    @RequiresPermission(MANAGE_SAFETY_CENTER)
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    public void refreshSpecificSafetySources(
+            @RefreshReason int refreshReason, @NonNull List<String> safetySourceIds) {
+        if (!SdkLevel.isAtLeastU()) {
+            throw new UnsupportedOperationException(
+                    "Method not supported for versions lower than UPSIDE_DOWN_CAKE");
+        }
+
+        requireNonNull(safetySourceIds, "safetySourceIds cannot be null");
+
+        try {
+            mService.refreshSpecificSafetySources(
+                    refreshReason, mContext.getUser().getIdentifier(), safetySourceIds);
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }
