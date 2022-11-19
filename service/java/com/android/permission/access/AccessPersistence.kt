@@ -16,23 +16,52 @@
 
 package com.android.permission.access
 
+import android.util.AtomicFile
+import android.util.Log
+import com.android.modules.utils.BinaryXmlPullParser
+import com.android.modules.utils.BinaryXmlSerializer
 import com.android.permission.access.collection.* // ktlint-disable no-wildcard-imports
+import com.android.permission.access.util.PermissionApex
+import com.android.permission.access.util.parseBinaryXml
+import com.android.permission.access.util.read
+import com.android.permission.access.util.serializeBinaryXml
+import com.android.permission.access.util.writeInlined
+import java.io.File
+import java.io.FileNotFoundException
 
-class AccessPersistence {
+class AccessPersistence(
+    private val policy: AccessPolicy
+) {
     fun read(state: AccessState) {
         readSystemState(state.systemState)
         val userStates = state.userStates
         state.systemState.userIds.forEachIndexed { _, userId ->
-            readUserState(userId, userStates.getOrPut(userId) { UserState() })
+            readUserState(userId, userStates[userId])
         }
     }
 
     private fun readSystemState(systemState: SystemState) {
-        TODO()
+        systemFile.parse {
+            // This is the canonical way to call an extension function in a different class.
+            // TODO(b/259469752): Use context receiver for this when it becomes stable.
+            with(policy) { this@parse.parseSystemState(systemState) }
+        }
     }
 
     private fun readUserState(userId: Int, userState: UserState) {
-        TODO()
+        getUserFile(userId).parse {
+            with(policy) { this@parse.parseUserState(userId, userState) }
+        }
+    }
+
+    private inline fun File.parse(block: BinaryXmlPullParser.() -> Unit) {
+        try {
+            AtomicFile(this).read { it.parseBinaryXml(block) }
+        } catch (e: FileNotFoundException) {
+            Log.i(LOG_TAG, "$this not found")
+        } catch (e: Exception) {
+            throw IllegalStateException("Failed to read $this", e)
+        }
     }
 
     fun write(state: AccessState) {
@@ -52,10 +81,34 @@ class AccessPersistence {
     }
 
     private fun writeSystemState(systemState: SystemState) {
-        TODO()
+        systemFile.serialize {
+            with(policy) { this@serialize.serializeSystemState(systemState) }
+        }
     }
 
     private fun writeUserState(userId: Int, userState: UserState) {
-        TODO()
+        getUserFile(userId).serialize {
+            with(policy) { this@serialize.serializeUserState(userId, userState) }
+        }
+    }
+
+    private inline fun File.serialize(block: BinaryXmlSerializer.() -> Unit) {
+        try {
+            AtomicFile(this).writeInlined { it.serializeBinaryXml(block) }
+        } catch (e: Exception) {
+            Log.e(LOG_TAG, "Failed to serialize $this", e)
+        }
+    }
+
+    private val systemFile: File
+        get() = File(PermissionApex.systemDataDirectory, FILE_NAME)
+
+    private fun getUserFile(userId: Int): File =
+        File(PermissionApex.getUserDataDirectory(userId), FILE_NAME)
+
+    companion object {
+        private val LOG_TAG = AccessPersistence::class.java.simpleName
+
+        private const val FILE_NAME = "access.abx"
     }
 }

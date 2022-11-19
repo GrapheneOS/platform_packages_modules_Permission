@@ -94,6 +94,7 @@ java_sdk_library {
     static_libs: [
         "kotlin-stdlib",
         "modules-utils-backgroundthread",
+        "modules-utils-binary-xml",
         "modules-utils-os",
         "safety-center-config",
         "safety-center-internal-data",
