@@ -29,6 +29,7 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Binder;
 import android.os.UserHandle;
+import android.safetycenter.SafetyCenterEntry;
 import android.util.Log;
 
 import androidx.annotation.RequiresApi;
@@ -43,10 +44,17 @@ import java.util.Arrays;
 final class PendingIntentFactory {
 
     private static final String TAG = "PendingIntentFactory";
-    private static final String ANDROID_LOCK_SCREEN_SOURCE_ID = "AndroidLockScreen";
+
     private static final int DEFAULT_REQUEST_CODE = 0;
-    private static final int ANDROID_LOCK_SCREEN_ICON_ACTION_REQ_CODE = 86;
+
     private static final String IS_SETTINGS_HOMEPAGE = "is_from_settings_homepage";
+
+    private static final String ANDROID_LOCK_SCREEN_SOURCE_ID = "AndroidLockScreen";
+    // Arbitrary values to construct PendingIntents that are guaranteed not to be equal due to
+    // these request codes not being equal. The values match the ones in Settings QPR, in case we
+    // ever end up using these request codes in QPR.
+    private static final int ANDROID_LOCK_SCREEN_ENTRY_REQ_CODE = 1;
+    private static final int ANDROID_LOCK_SCREEN_ICON_ACTION_REQ_CODE = 2;
 
     @NonNull private final Context mContext;
     @NonNull private final SafetyCenterResourcesContext mSafetyCenterResourcesContext;
@@ -93,20 +101,23 @@ final class PendingIntentFactory {
     }
 
     /**
-     * Potentially overrides the Settings IconAction PendingIntent for the AndroidLockScreen source.
+     * Potentially overrides the Settings {@link PendingIntent}s for the AndroidLockScreen source.
      *
-     * <p>This is done because of a bug in the Settings app where the PendingIntent created ends up
-     * referencing the one from the main entry. The reason for this is that PendingIntent instances
-     * are cached and keyed by an object which does not take into account the underlying intent
-     * extras; and these two intents only differ by the extras that they set. We fix this issue by
-     * recreating the desired Intent and PendingIntent here, using a specific request code for the
-     * PendingIntent to ensure a new instance is created (the key does take into account the request
-     * code).
+     * <p>This is done because of a bug in the Settings app where the {@link PendingIntent}s created
+     * end up referencing either the {@link SafetyCenterEntry#getPendingIntent()} or the {@link
+     * SafetyCenterEntry.IconAction#getPendingIntent()}. The reason for this is that {@link
+     * PendingIntent} instances are cached and keyed by an object which does not take into account
+     * the underlying {@link Intent} extras; and these two {@link Intent}s only differ by the extras
+     * that they set.
+     *
+     * <p>We fix this issue by recreating the desired {@link PendingIntent} manually here, using
+     * different request codes for the different {@link PendingIntent}s to ensure new instances are
+     * created (the key does take into account the request code).
      */
-    @NonNull
-    PendingIntent getIconActionPendingIntent(
-            @NonNull String sourceId, @NonNull PendingIntent pendingIntent) {
-        if (!ANDROID_LOCK_SCREEN_SOURCE_ID.equals(sourceId)) {
+    @Nullable
+    PendingIntent maybeOverridePendingIntent(
+            @NonNull String sourceId, @Nullable PendingIntent pendingIntent, boolean isIconAction) {
+        if (!ANDROID_LOCK_SCREEN_SOURCE_ID.equals(sourceId) || pendingIntent == null) {
             return pendingIntent;
         }
         if (!SafetyCenterFlags.getReplaceLockScreenIconAction()) {
@@ -114,46 +125,85 @@ final class PendingIntentFactory {
         }
         String settingsPackageName = pendingIntent.getCreatorPackage();
         int userId = pendingIntent.getCreatorUserHandle().getIdentifier();
-        Context packageContext = createPackageContextAsUser(settingsPackageName, userId);
-        if (packageContext == null) {
+        Context settingsPackageContext = createPackageContextAsUser(settingsPackageName, userId);
+        if (settingsPackageContext == null) {
             return pendingIntent;
         }
-        Resources settingsResources = packageContext.getResources();
+        if (hasFixedSettingsIssue(settingsPackageContext)) {
+            return pendingIntent;
+        }
+        PendingIntent suspectPendingIntent =
+                getActivityPendingIntent(
+                        settingsPackageContext,
+                        DEFAULT_REQUEST_CODE,
+                        newBaseLockScreenIntent(settingsPackageName),
+                        PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_NO_CREATE);
+        if (suspectPendingIntent == null) {
+            // Nothing was cached.
+            return pendingIntent;
+        }
+        if (!suspectPendingIntent.equals(pendingIntent)) {
+            // The pending intent is not hitting this caching issue, so we should skip the override.
+            return pendingIntent;
+        }
+        // We’re most likely hitting the caching issue described in this method’s documentation, so
+        // we should ensure we create brand new pending intents where applicable by using different
+        // request codes. We only perform this override for the applicable pending intents.
+        // This is important because there are scenarios where the Settings app provides different
+        // pending intents (e.g. in the work profile), and in this case we shouldn't override them.
+        if (isIconAction) {
+            Log.w(
+                    TAG,
+                    "Replacing " + ANDROID_LOCK_SCREEN_SOURCE_ID + " icon action pending intent");
+            return getActivityPendingIntent(
+                    settingsPackageContext,
+                    ANDROID_LOCK_SCREEN_ICON_ACTION_REQ_CODE,
+                    newLockScreenIconActionIntent(settingsPackageName));
+        }
+        Log.w(TAG, "Replacing " + ANDROID_LOCK_SCREEN_SOURCE_ID + " entry or issue pending intent");
+        return getActivityPendingIntent(
+                settingsPackageContext,
+                ANDROID_LOCK_SCREEN_ENTRY_REQ_CODE,
+                newLockScreenIntent(settingsPackageName));
+    }
+
+    private static boolean hasFixedSettingsIssue(@NonNull Context settingsPackageContext) {
+        Resources settingsResources = settingsPackageContext.getResources();
         int hasSettingsFixedIssueResourceId =
                 settingsResources.getIdentifier(
                         "config_isSafetyCenterLockScreenPendingIntentFixed",
                         "bool",
-                        settingsPackageName);
+                        settingsPackageContext.getPackageName());
         if (hasSettingsFixedIssueResourceId != Resources.ID_NULL) {
-            boolean hasSettingsFixedIssue =
-                    settingsResources.getBoolean(hasSettingsFixedIssueResourceId);
-            if (hasSettingsFixedIssue) {
-                return pendingIntent;
-            }
+            return settingsResources.getBoolean(hasSettingsFixedIssueResourceId);
         }
-        Intent intent =
-                new Intent(Intent.ACTION_MAIN)
-                        .setComponent(
-                                new ComponentName(
-                                        settingsPackageName, settingsPackageName + ".SubSettings"))
-                        .putExtra(
-                                ":settings:show_fragment",
-                                settingsPackageName + ".security.screenlock.ScreenLockSettings")
-                        .putExtra(":settings:source_metrics", 1917)
-                        .putExtra("page_transition_type", 0);
-        PendingIntent offendingPendingIntent =
-                getActivityPendingIntent(packageContext, DEFAULT_REQUEST_CODE, intent);
-        if (!offendingPendingIntent.equals(pendingIntent)) {
-            return pendingIntent;
-        }
-        // If creating that PendingIntent with request code 0 returns the same value as the
-        // PendingIntent that was sent to Safety Center, then we’re most likely hitting the caching
-        // issue described in this method’s documentation.
-        // i.e. the intent action and component of the cached PendingIntent are the same, but the
-        // extras are actually different so we should ensure we create a brand new PendingIntent by
-        // changing the request code.
-        return getActivityPendingIntent(
-                packageContext, ANDROID_LOCK_SCREEN_ICON_ACTION_REQ_CODE, intent);
+        return false;
+    }
+
+    @NonNull
+    private static Intent newBaseLockScreenIntent(@NonNull String settingsPackageName) {
+        return new Intent(Intent.ACTION_MAIN)
+                .setComponent(
+                        new ComponentName(
+                                settingsPackageName, settingsPackageName + ".SubSettings"))
+                .putExtra(":settings:source_metrics", 1917);
+    }
+
+    @NonNull
+    private static Intent newLockScreenIntent(@NonNull String settingsPackageName) {
+        String targetFragment =
+                settingsPackageName + ".password.ChooseLockGeneric$ChooseLockGenericFragment";
+        return newBaseLockScreenIntent(settingsPackageName)
+                .putExtra(":settings:show_fragment", targetFragment)
+                .putExtra("page_transition_type", 1);
+    }
+
+    @NonNull
+    private static Intent newLockScreenIconActionIntent(@NonNull String settingsPackageName) {
+        String targetFragment = settingsPackageName + ".security.screenlock.ScreenLockSettings";
+        return newBaseLockScreenIntent(settingsPackageName)
+                .putExtra(":settings:show_fragment", targetFragment)
+                .putExtra("page_transition_type", 0);
     }
 
     @Nullable
@@ -207,13 +257,18 @@ final class PendingIntentFactory {
     @NonNull
     private static PendingIntent getActivityPendingIntent(
             @NonNull Context packageContext, int requestCode, @NonNull Intent intent) {
+        return getActivityPendingIntent(
+                packageContext, requestCode, intent, PendingIntent.FLAG_IMMUTABLE);
+    }
+
+    @NonNull
+    private static PendingIntent getActivityPendingIntent(
+            @NonNull Context packageContext, int requestCode, @NonNull Intent intent, int flags) {
         // This call requires Binder identity to be cleared for getIntentSender() to be allowed to
         // send as another package.
         final long callingId = Binder.clearCallingIdentity();
-
         try {
-            return PendingIntent.getActivity(
-                    packageContext, requestCode, intent, PendingIntent.FLAG_IMMUTABLE);
+            return PendingIntent.getActivity(packageContext, requestCode, intent, flags);
         } finally {
             Binder.restoreCallingIdentity(callingId);
         }
