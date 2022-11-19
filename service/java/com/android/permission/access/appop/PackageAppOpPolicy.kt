@@ -24,7 +24,7 @@ import com.android.permission.access.UserState
 import com.android.permission.access.collection.* // ktlint-disable no-wildcard-imports
 import com.android.permission.access.external.PackageState
 
-class PackageAppOpPolicy : BaseAppOpPolicy() {
+class PackageAppOpPolicy : BaseAppOpPolicy(PackageAppOpPersistence()) {
     override val subjectScheme: String
         get() = PackageUri.SCHEME
 

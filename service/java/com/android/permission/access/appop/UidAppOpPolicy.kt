@@ -23,7 +23,7 @@ import com.android.permission.access.UidUri
 import com.android.permission.access.UserState
 import com.android.permission.access.collection.* // ktlint-disable no-wildcard-imports
 
-class UidAppOpPolicy : BaseAppOpPolicy() {
+class UidAppOpPolicy : BaseAppOpPolicy(UidAppOpPersistence()) {
     override val subjectScheme: String
         get() = UidUri.SCHEME
 
