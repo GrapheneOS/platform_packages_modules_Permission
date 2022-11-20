@@ -22,6 +22,7 @@ import android.safetycenter.SafetyEvent;
 import android.safetycenter.SafetySourceData;
 import android.safetycenter.SafetySourceErrorDetails;
 import android.safetycenter.config.SafetyCenterConfig;
+import java.util.List;
 
 /**
  * AIDL Interface for communicating with the Safety Center, which consolidates UI for security and
@@ -71,6 +72,12 @@ interface ISafetyCenterManager {
 
     /** Requests safety sources to set their latest SafetySourceData for Safety Center. */
     void refreshSafetySources(int refreshReason, int userId);
+
+    /**
+    * Requests a specific subset of safety sources to set their latest SafetySourceData for
+    * Safety Center.
+    */
+    void refreshSpecificSafetySources(int refreshReason, int userId, in List<String> safetySourceIds);
 
     /** Returns the current SafetyCenterConfig, if available. */
     SafetyCenterConfig getSafetyCenterConfig();

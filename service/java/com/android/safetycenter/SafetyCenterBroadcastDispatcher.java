@@ -83,10 +83,15 @@ final class SafetyCenterBroadcastDispatcher {
      * SafetyCenterManager#ACTION_REFRESH_SAFETY_SOURCES}, and returns the associated broadcast id.
      *
      * <p>Returns {@code null} if no broadcast was sent.
+     *
+     * @param safetySourceIds list of IDs to specify the safety sources to be refreshed or a {@code
+     *     null} value to refresh all safety sources.
      */
     @Nullable
     String sendRefreshSafetySources(
-            @RefreshReason int refreshReason, @NonNull UserProfileGroup userProfileGroup) {
+            @RefreshReason int refreshReason,
+            @NonNull UserProfileGroup userProfileGroup,
+            @Nullable List<String> safetySourceIds) {
         List<Broadcast> broadcasts = mSafetyCenterConfigReader.getBroadcasts();
         BroadcastOptions broadcastOptions = createBroadcastOptions();
 
@@ -104,7 +109,8 @@ final class SafetyCenterBroadcastDispatcher {
                             broadcastOptions,
                             refreshReason,
                             userProfileGroup,
-                            broadcastId);
+                            broadcastId,
+                            safetySourceIds);
         }
 
         if (!hasSentAtLeastOneBroadcast) {
@@ -120,7 +126,8 @@ final class SafetyCenterBroadcastDispatcher {
             @NonNull BroadcastOptions broadcastOptions,
             @RefreshReason int refreshReason,
             @NonNull UserProfileGroup userProfileGroup,
-            @NonNull String broadcastId) {
+            @NonNull String broadcastId,
+            @Nullable List<String> requiredSourceIds) {
         boolean hasSentAtLeastOneBroadcast = false;
         int requestType = RefreshReasons.toRefreshRequestType(refreshReason);
         String packageName = broadcast.getPackageName();
@@ -135,6 +142,11 @@ final class SafetyCenterBroadcastDispatcher {
             if (!deniedSourceIds.isEmpty()) {
                 sourceIds = new ArrayList<>(sourceIds);
                 sourceIds.removeAll(deniedSourceIds);
+            }
+
+            if (requiredSourceIds != null) {
+                sourceIds = new ArrayList<>(sourceIds);
+                sourceIds.retainAll(requiredSourceIds);
             }
 
             if (sourceIds.isEmpty()) {
