@@ -138,6 +138,13 @@ object KotlinUtils {
     /** Whether to show 7-day toggle in privacy hub.  */
     private const val PRIVACY_DASHBOARD_7_DAY_TOGGLE = "privacy_dashboard_7_day_toggle"
 
+    /** Whether to show permission rationale in permission settings and grant dialog.  */
+    private const val PRIVACY_PERMISSION_RATIONALE_ENABLED = "privacy_permission_rationale_enabled"
+
+    /** Whether to placeholder safety label data in permission settings and grant dialog.  */
+    private const val PRIVACY_PLACEHOLDER_SAFETY_LABEL_DATA_ENABLED =
+        "privacy_placeholder_safety_label_data_enabled"
+
     /** Default location precision */
     private const val PROPERTY_LOCATION_PRECISION = "location_precision"
 
@@ -245,6 +252,27 @@ object KotlinUtils {
     fun isPhotoPickerPromptEnabled(): Boolean {
         return SdkLevel.isAtLeastU() && DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
             PROPERTY_PHOTO_PICKER_PROMPT_ENABLED, false)
+    }
+
+    /*
+     * Whether we should enable the permission rationale in permission settings and grant dialog
+     *
+     * @return whether the flag is enabled
+     */
+    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codename = "UpsideDownCake")
+    fun isPermissionRationaleEnabled(): Boolean {
+        return SdkLevel.isAtLeastU() && DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
+            PRIVACY_PERMISSION_RATIONALE_ENABLED, false)
+    }
+
+    /**
+     * Whether we should use placeholder safety label data
+     *
+     * @return whether the flag is enabled
+     */
+    fun isPlaceholderSafetyLabelDataEnabled(): Boolean {
+        return DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
+            PRIVACY_PLACEHOLDER_SAFETY_LABEL_DATA_ENABLED, false)
     }
 
     /**

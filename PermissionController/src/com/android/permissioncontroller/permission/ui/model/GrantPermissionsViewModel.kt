@@ -46,6 +46,10 @@ import androidx.core.util.Consumer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.android.modules.utils.build.SdkLevel
+import com.android.permission.safetylabel.DataCategory
+import com.android.permission.safetylabel.DataType
+import com.android.permission.safetylabel.DataTypeConstants
+import com.android.permission.safetylabel.SafetyLabel
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.DeviceUtils
 import com.android.permissioncontroller.PermissionControllerApplication
@@ -70,6 +74,7 @@ import com.android.permissioncontroller.auto.DrivingDecisionReminderService
 import com.android.permissioncontroller.permission.data.LightAppPermGroupLiveData
 import com.android.permissioncontroller.permission.data.LightPackageInfoLiveData
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData
+import com.android.permissioncontroller.permission.data.SafetyLabelLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
@@ -116,8 +121,12 @@ import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.
 import com.android.permissioncontroller.permission.utils.AdminRestrictedPermissionsUtils
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getDefaultPrecision
+import com.android.permissioncontroller.permission.utils.KotlinUtils.grantBackgroundRuntimePermissions
+import com.android.permissioncontroller.permission.utils.KotlinUtils.grantForegroundRuntimePermissions
 import com.android.permissioncontroller.permission.utils.KotlinUtils.isLocationAccuracyEnabled
+import com.android.permissioncontroller.permission.utils.KotlinUtils.isPermissionRationaleEnabled
 import com.android.permissioncontroller.permission.utils.PermissionMapping
+import com.android.permissioncontroller.permission.utils.SafetyLabelPermissionMapping
 import com.android.permissioncontroller.permission.utils.SafetyNetLogger
 import com.android.permissioncontroller.permission.utils.Utils
 
@@ -142,6 +151,7 @@ class GrantPermissionsViewModel(
     private val LOG_TAG = GrantPermissionsViewModel::class.java.simpleName
     private val user = Process.myUserHandle()
     private val packageInfoLiveData = LightPackageInfoLiveData[packageName, user]
+    private val safetyLabelLiveData = SafetyLabelLiveData[packageName]
     private val dpm = app.getSystemService(DevicePolicyManager::class.java)!!
     private val permissionPolicy = dpm.getPermissionPolicy(null)
     private val permGroupsToSkip = mutableListOf<String>()
@@ -154,6 +164,7 @@ class GrantPermissionsViewModel(
     }
 
     private lateinit var packageInfo: LightPackageInfo
+    private var safetyLabel: SafetyLabel? = null
 
     // All permissions that could possibly be affected by the provided requested permissions, before
     // filtering system fixed, auto grant, etc.
@@ -174,7 +185,8 @@ class GrantPermissionsViewModel(
         val message: RequestMessage = RequestMessage.FG_MESSAGE,
         val detailMessage: RequestMessage = RequestMessage.NO_MESSAGE,
         val sendToSettingsImmediately: Boolean = false,
-        val openPhotoPicker: Boolean = false
+        val openPhotoPicker: Boolean = false,
+        val showPermissionRationale: Boolean = false
     ) {
         val groupName = groupInfo.name
     }
@@ -192,12 +204,16 @@ class GrantPermissionsViewModel(
         init {
             addSource(packagePermissionsLiveData) { onPackageLoaded() }
             addSource(packageInfoLiveData) { onPackageLoaded() }
+            addSource(safetyLabelLiveData) { onPackageLoaded() }
+
             // Load package state, if available
             onPackageLoaded()
         }
 
         private fun onPackageLoaded() {
-            if (packageInfoLiveData.isStale || packagePermissionsLiveData.isStale) {
+            if (packageInfoLiveData.isStale ||
+                packagePermissionsLiveData.isStale ||
+                safetyLabelLiveData.isStale) {
                 return
             }
 
@@ -217,6 +233,8 @@ class GrantPermissionsViewModel(
                 value = null
                 return
             }
+
+            safetyLabel = safetyLabelLiveData.value
 
             val allAffectedPermissions = requestedPermissions.toMutableSet()
             for (requestedPerm in requestedPermissions) {
@@ -553,7 +571,9 @@ class GrantPermissionsViewModel(
                     buttonVisibilities,
                     locationVisibilities,
                     message,
-                    detailMessage))
+                    detailMessage,
+                    showPermissionRationale = shouldShowPermissionRationale(
+                        safetyLabel, groupState)))
             }
 
             sortPermissionGroups(requestInfos)
@@ -583,6 +603,41 @@ class GrantPermissionsViewModel(
                 rhs.groupName.compareTo(lhs.groupName)
             }
         }
+    }
+
+    private fun shouldShowPermissionRationale(
+        safetyLabel: SafetyLabel?,
+        groupState: GroupState
+    ): Boolean {
+        if (!isPermissionRationaleEnabled() ||
+            safetyLabel == null ||
+            safetyLabel.dataLabel.dataShared.isEmpty()) {
+            return false
+        }
+
+        val groupName = groupState.group.permGroupName
+        val categoriesForPermission: List<String> =
+            SafetyLabelPermissionMapping.getCategoriesForPermissionGroup(groupName)
+        categoriesForPermission.forEach categoryLoop@ { category ->
+            val dataCategory: DataCategory? = safetyLabel.dataLabel.dataShared[category]
+            if (dataCategory == null) {
+                // Continue to next
+                return@categoryLoop
+            }
+            val typesForCategory = DataTypeConstants.getValidDataTypesForCategory(category)
+            typesForCategory.forEach typeLoop@ { type ->
+                val dataType: DataType? = dataCategory.dataTypes[type]
+                if (dataType == null) {
+                    // Continue to next
+                    return@typeLoop
+                }
+                if (dataType.purposeSet.isNotEmpty()) {
+                    return true
+                }
+            }
+        }
+
+        return false
     }
 
     /**
@@ -769,10 +824,9 @@ class GrantPermissionsViewModel(
             !isSplitGroupLowerGrant(group)) {
             if (group.permissions[perm]?.isGrantedIncludingAppOp == false) {
                 if (isBackground) {
-                    KotlinUtils.grantBackgroundRuntimePermissions(app, group, listOf(perm))
+                    grantBackgroundRuntimePermissions(app, group, listOf(perm))
                 } else {
-                    KotlinUtils.grantForegroundRuntimePermissions(app, group, listOf(perm),
-                        group.isOneTime)
+                    grantForegroundRuntimePermissions(app, group, listOf(perm), group.isOneTime)
                 }
                 KotlinUtils.setGroupFlags(app, group, FLAG_PERMISSION_USER_SET to false,
                     FLAG_PERMISSION_USER_FIXED to false, filterPermissions = listOf(perm))
@@ -830,9 +884,9 @@ class GrantPermissionsViewModel(
                 if (AdminRestrictedPermissionsUtils.mayAdminGrantPermission(
                                 app, perm, user.identifier)) {
                     if (isBackground) {
-                        KotlinUtils.grantBackgroundRuntimePermissions(app, group, listOf(perm))
+                        grantBackgroundRuntimePermissions(app, group, listOf(perm))
                     } else {
-                        KotlinUtils.grantForegroundRuntimePermissions(app, group, listOf(perm))
+                        grantForegroundRuntimePermissions(app, group, listOf(perm))
                     }
                     KotlinUtils.setGroupFlags(app, group, FLAG_PERMISSION_POLICY_FIXED to true,
                             FLAG_PERMISSION_USER_SET to false, FLAG_PERMISSION_USER_FIXED to false,
@@ -1033,11 +1087,11 @@ class GrantPermissionsViewModel(
                 PERMISSION_GRANT_REQUEST_RESULT_REPORTED__RESULT__USER_GRANTED
             }
             if (groupState.isBackground) {
-                KotlinUtils.grantBackgroundRuntimePermissions(app, groupState.group,
+                grantBackgroundRuntimePermissions(app, groupState.group,
                     groupState.affectedPermissions)
             } else {
                 if (affectedForegroundPermissions == null) {
-                    KotlinUtils.grantForegroundRuntimePermissions(app, groupState.group,
+                    grantForegroundRuntimePermissions(app, groupState.group,
                         groupState.affectedPermissions, isOneTime)
                     // This prevents weird flag state when app targetSDK switches from S+ to R-
                     if (groupState.affectedPermissions.contains(ACCESS_FINE_LOCATION)) {
@@ -1045,7 +1099,7 @@ class GrantPermissionsViewModel(
                                 app, groupState.group, true)
                     }
                 } else {
-                    val newGroup = KotlinUtils.grantForegroundRuntimePermissions(app,
+                    val newGroup = grantForegroundRuntimePermissions(app,
                             groupState.group, affectedForegroundPermissions, isOneTime)
                     if (!isOneTime || newGroup.isOneTime) {
                         KotlinUtils.setFlagsWhenLocationAccuracyChanged(app, newGroup,
