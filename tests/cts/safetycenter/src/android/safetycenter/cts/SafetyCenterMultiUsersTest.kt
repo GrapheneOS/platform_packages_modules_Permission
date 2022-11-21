@@ -177,7 +177,7 @@ class SafetyCenterMultiUsersTest {
         get() = safetyCenterEntryOkForWork(DYNAMIC_HIDDEN_ID, deviceState.workProfile().id())
 
     private val staticGroupBuilder =
-        SafetyCenterEntryGroup.Builder(SafetyCenterCtsData.entryGroupId(STATIC_GROUP_ID), "OK")
+        SafetyCenterEntryGroup.Builder(STATIC_GROUP_ID, "OK")
             .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNSPECIFIED)
             .setSeverityUnspecifiedIconType(SEVERITY_UNSPECIFIED_ICON_TYPE_PRIVACY)
             .setSummary("OK")
@@ -394,8 +394,7 @@ class SafetyCenterMultiUsersTest {
                 emptyList(),
                 listOf(
                     SafetyCenterEntryOrGroup(
-                        SafetyCenterEntryGroup.Builder(
-                                SafetyCenterCtsData.entryGroupId(DYNAMIC_GROUP_ID), "OK")
+                        SafetyCenterEntryGroup.Builder(DYNAMIC_GROUP_ID, "OK")
                             .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNKNOWN)
                             .setSummary(
                                 safetyCenterResourcesContext.getStringByName(
@@ -424,8 +423,7 @@ class SafetyCenterMultiUsersTest {
                 emptyList(),
                 listOf(
                     SafetyCenterEntryOrGroup(
-                        SafetyCenterEntryGroup.Builder(
-                                SafetyCenterCtsData.entryGroupId(DYNAMIC_GROUP_ID), "OK")
+                        SafetyCenterEntryGroup.Builder(DYNAMIC_GROUP_ID, "OK")
                             .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNKNOWN)
                             .setSummary(
                                 safetyCenterResourcesContext.getStringByName(
@@ -463,8 +461,7 @@ class SafetyCenterMultiUsersTest {
                 primaryProfileOnlyIssues,
                 listOf(
                     SafetyCenterEntryOrGroup(
-                        SafetyCenterEntryGroup.Builder(
-                                SafetyCenterCtsData.entryGroupId(DYNAMIC_GROUP_ID), "OK")
+                        SafetyCenterEntryGroup.Builder(DYNAMIC_GROUP_ID, "OK")
                             .setSeverityLevel(ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING)
                             .setSummary("Critical summary")
                             .setEntries(
@@ -522,8 +519,7 @@ class SafetyCenterMultiUsersTest {
                         ISSUE_ONLY_IN_RIGID_ID, managedUserId)),
                 listOf(
                     SafetyCenterEntryOrGroup(
-                        SafetyCenterEntryGroup.Builder(
-                                SafetyCenterCtsData.entryGroupId(DYNAMIC_GROUP_ID), "OK")
+                        SafetyCenterEntryGroup.Builder(DYNAMIC_GROUP_ID, "OK")
                             .setSeverityLevel(ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING)
                             .setSummary("Critical summary")
                             .setEntries(
@@ -569,8 +565,7 @@ class SafetyCenterMultiUsersTest {
                 primaryProfileOnlyIssues,
                 listOf(
                     SafetyCenterEntryOrGroup(
-                        SafetyCenterEntryGroup.Builder(
-                                SafetyCenterCtsData.entryGroupId(DYNAMIC_GROUP_ID), "OK")
+                        SafetyCenterEntryGroup.Builder(DYNAMIC_GROUP_ID, "OK")
                             .setSeverityLevel(ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING)
                             .setSummary("Critical summary")
                             .setEntries(
@@ -634,8 +629,7 @@ class SafetyCenterMultiUsersTest {
                 emptyList(),
                 listOf(
                     SafetyCenterEntryOrGroup(
-                        SafetyCenterEntryGroup.Builder(
-                                SafetyCenterCtsData.entryGroupId(SINGLE_SOURCE_GROUP_ID), "OK")
+                        SafetyCenterEntryGroup.Builder(SINGLE_SOURCE_GROUP_ID, "OK")
                             .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNKNOWN)
                             .setSummary(
                                 safetyCenterResourcesContext.getStringByName(
