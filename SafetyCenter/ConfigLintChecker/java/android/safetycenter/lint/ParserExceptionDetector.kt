@@ -19,6 +19,7 @@ package android.safetycenter.lint
 import android.content.res.Resources
 import com.android.SdkConstants.ATTR_NAME
 import com.android.SdkConstants.TAG_STRING
+import com.android.modules.utils.build.SdkLevel
 import com.android.resources.ResourceFolderType
 import com.android.safetycenter.config.ParseException
 import com.android.safetycenter.config.SafetyCenterConfigParser
@@ -103,21 +104,34 @@ class ParserExceptionDetector : Detector(), OtherFileScanner, XmlScanner {
             context.file.name != "safety_center_config.xml") {
             return
         }
-        try {
-            SafetyCenterConfigParser.parseXmlResource(
-                context.file.inputStream(),
-                // Note: using a map of the string resources present in the APK under analysis is
-                // necessary in order to get the value of string resources that are resolved and
-                // validated at parse time. The drawback of this is that the linter cannot be used
-                // on overlay packages that refer to resources in the target package or on packages
-                // that refer to Android global resources. However, we cannot use custom a linter
-                // with the default soong overlay build rule regardless.
-                Resources(context.project.`package`, mNameToIndex, mIndexToValue))
-        } catch (e: ParseException) {
-            context.report(
-                ISSUE,
-                Location.create(context.file),
-                "Parser exception: \"${e.message}\", cause: \"${e.cause?.message}\"")
+        val minSdk = FileSdk.getSdkQualifier(context.file)
+        val maxSdk = maxOf(minSdk, FileSdk.getMaxSdkVersion())
+        // Test the parser at the SDK level for which the config was designed.
+        // Then test parsers at higher SDK levels for backward compatibility.
+        // This is slightly inefficient if a parser at a higher SDK level has no behavioral changes
+        // compared to one at a lower SDK level, but doing an exhaustive search is safer.
+        for (sdk in minSdk..maxSdk) {
+            synchronized(SdkLevel::class.java) {
+                SdkLevel.setSdkInt(sdk)
+                try {
+                    SafetyCenterConfigParser.parseXmlResource(
+                        context.file.inputStream(),
+                        // Note: using a map of the string resources present in the APK under
+                        // analysis is necessary in order to get the value of string resources that
+                        // are resolved and validated at parse time. The drawback of this is that
+                        // the linter cannot be used on overlay packages that refer to resources in
+                        // the target package or on packages that refer to Android global resources.
+                        // However, we cannot use a custom linter with the default soong overlay
+                        // build rule regardless.
+                        Resources(context.project.`package`, mNameToIndex, mIndexToValue))
+                } catch (e: ParseException) {
+                    context.report(
+                        ISSUE,
+                        Location.create(context.file),
+                        "Parser exception at sdk=$sdk: \"${e.message}\", cause: " +
+                            "\"${e.cause?.message}\"")
+                }
+            }
         }
     }
 }
