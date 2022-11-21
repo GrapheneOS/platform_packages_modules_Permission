@@ -17,14 +17,16 @@
 package com.android.permission.access.appop
 
 import android.app.AppOpsManager
+import com.android.modules.utils.BinaryXmlPullParser
+import com.android.modules.utils.BinaryXmlSerializer
 import com.android.permission.access.AccessState
 import com.android.permission.access.AccessUri
 import com.android.permission.access.AppOpUri
 import com.android.permission.access.SchemePolicy
+import com.android.permission.access.UserState
 import com.android.permission.access.collection.* // ktlint-disable no-wildcard-imports
 
-abstract class BaseAppOpPolicy : SchemePolicy() {
-
+abstract class BaseAppOpPolicy(private val persistence: BaseAppOpPersistence) : SchemePolicy() {
     override fun getDecision(subject: AccessUri, `object`: AccessUri, state: AccessState): Int {
         `object` as AppOpUri
         return getModes(subject, state)
@@ -59,4 +61,12 @@ abstract class BaseAppOpPolicy : SchemePolicy() {
     // TODO need to check that [AppOpsManager.getSystemAlertWindowDefault] works; likely no issue
     //  since running in system process.
     private fun opToDefaultMode(appOpName: String) = AppOpsManager.opToDefaultMode(appOpName)
+
+    override fun BinaryXmlPullParser.parseUserState(userId: Int, userState: UserState) {
+        with(persistence) { this@parseUserState.parseUserState(userId, userState) }
+    }
+
+    override fun BinaryXmlSerializer.serializeUserState(userId: Int, userState: UserState) {
+        with(persistence) { this@serializeUserState.serializeUserState(userId, userState) }
+    }
 }
