@@ -45,7 +45,17 @@ object SafetyCenterFlags {
 
     /** Flag that determines whether Safety Center can send notifications. */
     private val notificationsFlag =
-            Flag("safety_center_notifications_enabled", defaultValue = false, BooleanParser())
+        Flag("safety_center_notifications_enabled", defaultValue = false, BooleanParser())
+
+    /**
+     * Flag containing a comma delimited list of IDs of sources that Safety Center can send
+     * notifications about, in addition to those permitted by the current XML config.
+     */
+    private val notificationsAllowedSourcesFlag =
+        Flag(
+            "safety_center_notifications_allowed_sources",
+            defaultValue = emptySet(),
+            SetParser(StringParser()))
 
     /**
      * Flag that determines whether we should show error entries for sources that timeout when
@@ -170,6 +180,7 @@ object SafetyCenterFlags {
         listOf(
             isEnabledFlag,
             notificationsFlag,
+            notificationsAllowedSourcesFlag,
             showErrorEntriesOnTimeoutFlag,
             replaceLockScreenIconActionFlag,
             refreshSourceTimeoutsFlag,
@@ -193,6 +204,9 @@ object SafetyCenterFlags {
 
     /** A property that allows getting and setting the [notificationsFlag]. */
     var notificationsEnabled: Boolean by notificationsFlag
+
+    /** A property that allowed getting and setting the [notificationsAllowedSourcesFlag]. */
+    var notificationsAllowedSources: Set<String> by notificationsAllowedSourcesFlag
 
     /** A property that allows getting and setting the [showErrorEntriesOnTimeoutFlag]. */
     var showErrorEntriesOnTimeout: Boolean by showErrorEntriesOnTimeoutFlag
