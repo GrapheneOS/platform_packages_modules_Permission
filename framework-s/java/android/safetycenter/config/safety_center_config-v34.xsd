@@ -47,6 +47,8 @@
         <xsd:attribute name="summary" type="runtimeStringResourceName"/>
         <xsd:attribute name="statelessIconType" type="statelessIconTypeOrStringResourceName"
                        default="none"/>
+        <!-- type is inferred from other attributes and the group content if omitted -->
+        <xsd:attribute name="type" type="groupTypeOrStringResourceName"/>
     </xsd:complexType>
 
     <xsd:complexType name="dynamic-safety-source">
@@ -162,6 +164,21 @@
         <xsd:restriction base="xsd:string">
             <xsd:enumeration value="enabled"/>
             <xsd:enumeration value="disabled"/>
+            <xsd:enumeration value="hidden"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="groupTypeOrStringResourceName">
+        <!-- String resource names will be resolved only once at parse time. -->
+        <!-- Locale changes and device config changes will be ignored. -->
+        <!-- The value of the string resource must be of type groupType. -->
+        <xsd:union memberTypes="stringResourceName groupType"/>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="groupType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="collapsible"/>
+            <xsd:enumeration value="rigid"/>
             <xsd:enumeration value="hidden"/>
         </xsd:restriction>
     </xsd:simpleType>

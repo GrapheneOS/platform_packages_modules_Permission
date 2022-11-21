@@ -17,6 +17,7 @@
 package android.safetycenter.config;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
+import static android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
 
 import static java.util.Collections.unmodifiableList;
 import static java.util.Objects.requireNonNull;
@@ -31,6 +32,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.annotation.RequiresApi;
+
+import com.android.modules.utils.build.SdkLevel;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -116,6 +119,9 @@ public final class SafetySourcesGroup implements Parcelable {
                     for (int i = 0; i < safetySources.size(); i++) {
                         builder.addSafetySource(safetySources.get(i));
                     }
+                    if (SdkLevel.isAtLeastU()) {
+                        builder.setType(in.readInt());
+                    }
                     return builder.build();
                 }
 
@@ -125,6 +131,7 @@ public final class SafetySourcesGroup implements Parcelable {
                 }
             };
 
+    @SafetySourceGroupType private final int mType;
     @NonNull private final String mId;
     @StringRes private final int mTitleResId;
     @StringRes private final int mSummaryResId;
@@ -132,11 +139,13 @@ public final class SafetySourcesGroup implements Parcelable {
     @NonNull private final List<SafetySource> mSafetySources;
 
     private SafetySourcesGroup(
+            @SafetySourceGroupType int type,
             @NonNull String id,
             @StringRes int titleResId,
             @StringRes int summaryResId,
             @StatelessIconType int statelessIconType,
             @NonNull List<SafetySource> safetySources) {
+        mType = type;
         mId = id;
         mTitleResId = titleResId;
         mSummaryResId = summaryResId;
@@ -144,23 +153,10 @@ public final class SafetySourcesGroup implements Parcelable {
         mSafetySources = safetySources;
     }
 
-    /**
-     * Returns the type of this safety sources group.
-     *
-     * <p>The type is inferred according to the state of certain fields. If no title is provided
-     * when building the group, the group is of type hidden. If a title is provided but no summary
-     * or stateless icon are provided when building the group, the group is of type rigid.
-     * Otherwise, the group is of type collapsible.
-     */
+    /** Returns the type of this safety sources group. */
     @SafetySourceGroupType
     public int getType() {
-        if (mTitleResId == Resources.ID_NULL) {
-            return SAFETY_SOURCES_GROUP_TYPE_HIDDEN;
-        }
-        if (mSummaryResId != Resources.ID_NULL || mStatelessIconType != STATELESS_ICON_TYPE_NONE) {
-            return SAFETY_SOURCES_GROUP_TYPE_COLLAPSIBLE;
-        }
-        return SAFETY_SOURCES_GROUP_TYPE_RIGID;
+        return mType;
     }
 
     /**
@@ -224,7 +220,8 @@ public final class SafetySourcesGroup implements Parcelable {
         if (this == o) return true;
         if (!(o instanceof SafetySourcesGroup)) return false;
         SafetySourcesGroup that = (SafetySourcesGroup) o;
-        return Objects.equals(mId, that.mId)
+        return mType == that.mType
+                && Objects.equals(mId, that.mId)
                 && mTitleResId == that.mTitleResId
                 && mSummaryResId == that.mSummaryResId
                 && mStatelessIconType == that.mStatelessIconType
@@ -233,13 +230,16 @@ public final class SafetySourcesGroup implements Parcelable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(mId, mTitleResId, mSummaryResId, mStatelessIconType, mSafetySources);
+        return Objects.hash(
+                mType, mId, mTitleResId, mSummaryResId, mStatelessIconType, mSafetySources);
     }
 
     @Override
     public String toString() {
         return "SafetySourcesGroup{"
-                + "mId="
+                + "mType="
+                + mType
+                + ", mId="
                 + mId
                 + ", mTitleResId="
                 + mTitleResId
@@ -264,6 +264,9 @@ public final class SafetySourcesGroup implements Parcelable {
         dest.writeInt(mSummaryResId);
         dest.writeInt(mStatelessIconType);
         dest.writeTypedList(mSafetySources);
+        if (SdkLevel.isAtLeastU()) {
+            dest.writeInt(mType);
+        }
     }
 
     /** Builder class for {@link SafetySourcesGroup}. */
@@ -271,6 +274,7 @@ public final class SafetySourcesGroup implements Parcelable {
 
         private final List<SafetySource> mSafetySources = new ArrayList<>();
 
+        @Nullable @SafetySourceGroupType private Integer mType;
         @Nullable private String mId;
         @Nullable @StringRes private Integer mTitleResId;
         @Nullable @StringRes private Integer mSummaryResId;
@@ -278,6 +282,22 @@ public final class SafetySourcesGroup implements Parcelable {
 
         /** Creates a {@link Builder} for a {@link SafetySourcesGroup}. */
         public Builder() {}
+
+        /**
+         * Sets the type of this safety sources group.
+         *
+         * <p>If the type is not explicitly set, the type is inferred according to the state of
+         * certain fields. If no title is provided when building the group, the group is of type
+         * hidden. If a title is provided but no summary or stateless icon are provided when
+         * building the group, the group is of type stateless. Otherwise, the group is of type
+         * stateful.
+         */
+        @NonNull
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        public Builder setType(@StatelessIconType int type) {
+            mType = type;
+            return this;
+        }
 
         /**
          * Sets the id of this safety sources group.
@@ -351,22 +371,16 @@ public final class SafetySourcesGroup implements Parcelable {
          */
         @NonNull
         public SafetySourcesGroup build() {
-            BuilderUtils.validateAttribute(mId, "id", true, false);
+            String id = mId;
+            BuilderUtils.validateAttribute(id, "id", true, false);
+
             List<SafetySource> safetySources = unmodifiableList(new ArrayList<>(mSafetySources));
             if (safetySources.isEmpty()) {
                 throw new IllegalStateException("Safety sources group empty");
             }
-            boolean titleRequired = false;
-            int safetySourcesSize = safetySources.size();
-            for (int i = 0; i < safetySourcesSize; i++) {
-                int type = safetySources.get(i).getType();
-                if (type != SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY) {
-                    titleRequired = true;
-                    break;
-                }
-            }
-            int titleResId = BuilderUtils.validateResId(mTitleResId, "title", titleRequired, false);
+
             int summaryResId = BuilderUtils.validateResId(mSummaryResId, "summary", false, false);
+
             int statelessIconType =
                     BuilderUtils.validateIntDef(
                             mStatelessIconType,
@@ -376,8 +390,53 @@ public final class SafetySourcesGroup implements Parcelable {
                             STATELESS_ICON_TYPE_NONE,
                             STATELESS_ICON_TYPE_NONE,
                             STATELESS_ICON_TYPE_PRIVACY);
+
+            boolean hasOnlyIssueOnlySources = true;
+            int safetySourcesSize = safetySources.size();
+            for (int i = 0; i < safetySourcesSize; i++) {
+                int type = safetySources.get(i).getType();
+                if (type != SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY) {
+                    hasOnlyIssueOnlySources = false;
+                    break;
+                }
+            }
+
+            int inferredGroupType = SAFETY_SOURCES_GROUP_TYPE_RIGID;
+            if (hasOnlyIssueOnlySources) {
+                inferredGroupType = SAFETY_SOURCES_GROUP_TYPE_HIDDEN;
+            } else if (summaryResId != Resources.ID_NULL
+                    || statelessIconType != Resources.ID_NULL) {
+                inferredGroupType = SAFETY_SOURCES_GROUP_TYPE_COLLAPSIBLE;
+            }
+            int type =
+                    BuilderUtils.validateIntDef(
+                            mType,
+                            "type",
+                            false,
+                            false,
+                            inferredGroupType,
+                            SAFETY_SOURCES_GROUP_TYPE_COLLAPSIBLE,
+                            SAFETY_SOURCES_GROUP_TYPE_RIGID,
+                            SAFETY_SOURCES_GROUP_TYPE_HIDDEN);
+            if (type == SAFETY_SOURCES_GROUP_TYPE_HIDDEN && !hasOnlyIssueOnlySources) {
+                throw new IllegalStateException(
+                        "Safety sources groups of type hidden can only contain sources of type "
+                                + "issue-only");
+            }
+            if (type != SAFETY_SOURCES_GROUP_TYPE_HIDDEN && hasOnlyIssueOnlySources) {
+                throw new IllegalStateException(
+                        "Safety sources groups containing only sources of type issue-only must be "
+                                + "of type hidden");
+            }
+
+            boolean isCollapsible = type == SAFETY_SOURCES_GROUP_TYPE_COLLAPSIBLE;
+            boolean isRigid = type == SAFETY_SOURCES_GROUP_TYPE_RIGID;
+            int titleResId =
+                    BuilderUtils.validateResId(
+                            mTitleResId, "title", isCollapsible || isCollapsible, false);
+
             return new SafetySourcesGroup(
-                    mId, titleResId, summaryResId, statelessIconType, safetySources);
+                    type, id, titleResId, summaryResId, statelessIconType, safetySources);
         }
     }
 }

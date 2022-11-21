@@ -17,8 +17,6 @@
 package com.android.safetycenter.config
 
 import android.content.Context
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import com.android.modules.utils.build.SdkLevel
 import com.android.safetycenter.config.tests.R
@@ -36,7 +34,8 @@ class ParserConfigInvalidTest {
         private val testName: String,
         val configResourceId: Int,
         val errorMessage: String,
-        val causeErrorMessage: String?
+        val causeErrorMessage: String?,
+        val includeCondition: Boolean = true
     ) {
         override fun toString() = testName
     }
@@ -62,28 +61,6 @@ class ParserConfigInvalidTest {
         @JvmStatic
         @Parameterized.Parameters(name = "{0}")
         fun parameters() =
-            if (SdkLevel.isAtLeastU()) {
-                parametersUpsideDownCake()
-            } else {
-                parametersTiramisu()
-            }
-
-        @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
-        fun parametersUpsideDownCake(): Array<Params> =
-            parametersTiramisu() +
-                arrayOf(
-                    Params(
-                        "ConfigStaticSafetySourceWithNotifications",
-                        R.raw.config_static_safety_source_with_notifications,
-                        "Element static-safety-source invalid",
-                        "Prohibited attribute notificationsAllowed present"),
-                    Params(
-                        "ConfigStaticSafetySourceWithDeduplicationGroups",
-                        R.raw.config_static_safety_source_with_deduplication_groups,
-                        "Element static-safety-source invalid",
-                        "Prohibited attribute deduplicationGroup present"))
-
-        fun parametersTiramisu(): Array<Params> =
             arrayOf(
                 Params(
                     "ConfigDynamicSafetySourceAllDisabledNoWork",
@@ -252,6 +229,13 @@ class ParserConfigInvalidTest {
                     "Element safety-sources-config missing",
                     null),
                 Params(
+                    "ConfigSafetySourcesGroupCollapsibleWithOnlyIssueOnly",
+                    R.raw.config_safety_sources_group_collapsible_with_only_issue_only,
+                    "Element safety-sources-group invalid",
+                    "Safety sources groups containing only sources of type issue-only must be of " +
+                            "type hidden",
+                    SdkLevel.isAtLeastU()),
+                Params(
                     "ConfigSafetySourcesGroupDuplicateId",
                     R.raw.config_safety_sources_group_duplicate_id,
                     "Element safety-sources-config invalid",
@@ -261,6 +245,20 @@ class ParserConfigInvalidTest {
                     R.raw.config_safety_sources_group_empty,
                     "Element safety-sources-group invalid",
                     "Safety sources group empty"),
+                Params(
+                    "ConfigSafetySourcesGroupHiddenWithOnlyDynamic",
+                    R.raw.config_safety_sources_group_hidden_with_only_dynamic,
+                    "Element safety-sources-group invalid",
+                    "Safety sources groups of type hidden can only contain sources of type " +
+                        "issue-only",
+                    SdkLevel.isAtLeastU()),
+                Params(
+                    "ConfigSafetySourcesGroupHiddenWithOnlyStatic",
+                    R.raw.config_safety_sources_group_hidden_with_only_static,
+                    "Element safety-sources-group invalid",
+                    "Safety sources groups of type hidden can only contain sources of type " +
+                        "issue-only",
+                    SdkLevel.isAtLeastU()),
                 Params(
                     "ConfigSafetySourcesGroupInvalidIcon",
                     R.raw.config_safety_sources_group_invalid_icon,
@@ -276,6 +274,13 @@ class ParserConfigInvalidTest {
                     R.raw.config_safety_sources_group_no_title,
                     "Element safety-sources-group invalid",
                     "Required attribute title missing"),
+                Params(
+                    "ConfigSafetySourcesGroupRigidWithOnlyIssueOnly",
+                    R.raw.config_safety_sources_group_rigid_with_only_issue_only,
+                    "Element safety-sources-group invalid",
+                    "Safety sources groups containing only sources of type issue-only must be of " +
+                        "type hidden",
+                    SdkLevel.isAtLeastU()),
                 Params(
                     "ConfigStaticSafetySourceDuplicateKey",
                     R.raw.config_static_safety_source_duplicate_key,
@@ -307,6 +312,12 @@ class ParserConfigInvalidTest {
                     "Element static-safety-source invalid",
                     "Required attribute title missing"),
                 Params(
+                    "ConfigStaticSafetySourceWithDeduplicationGroups",
+                    R.raw.config_static_safety_source_with_deduplication_groups,
+                    "Element static-safety-source invalid",
+                    "Prohibited attribute deduplicationGroup present",
+                    SdkLevel.isAtLeastU()),
+                Params(
                     "ConfigStaticSafetySourceWithDisplay",
                     R.raw.config_static_safety_source_with_display,
                     "Element static-safety-source invalid",
@@ -316,6 +327,12 @@ class ParserConfigInvalidTest {
                     R.raw.config_static_safety_source_with_logging,
                     "Element static-safety-source invalid",
                     "Prohibited attribute loggingAllowed present"),
+                Params(
+                    "ConfigStaticSafetySourceWithNotifications",
+                    R.raw.config_static_safety_source_with_notifications,
+                    "Element static-safety-source invalid",
+                    "Prohibited attribute notificationsAllowed present",
+                    SdkLevel.isAtLeastU()),
                 Params(
                     "ConfigStaticSafetySourceWithPackage",
                     R.raw.config_static_safety_source_with_package,
@@ -372,5 +389,6 @@ class ParserConfigInvalidTest {
                     "Resource name \"@com.android.safetycenter.config.tests:string/missing\" in " +
                         "safety-sources-group.title missing or invalid",
                     null))
+                .filter { it.includeCondition }
     }
 }

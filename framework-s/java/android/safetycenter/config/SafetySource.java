@@ -817,19 +817,22 @@ public final class SafetySource implements Parcelable {
          */
         @NonNull
         public SafetySource build() {
-            if (mType != SAFETY_SOURCE_TYPE_STATIC
-                    && mType != SAFETY_SOURCE_TYPE_DYNAMIC
-                    && mType != SAFETY_SOURCE_TYPE_ISSUE_ONLY) {
+            int type = mType;
+            if (type != SAFETY_SOURCE_TYPE_STATIC
+                    && type != SAFETY_SOURCE_TYPE_DYNAMIC
+                    && type != SAFETY_SOURCE_TYPE_ISSUE_ONLY) {
                 throw new IllegalStateException("Unexpected type");
             }
-            boolean isStatic = mType == SAFETY_SOURCE_TYPE_STATIC;
-            boolean isDynamic = mType == SAFETY_SOURCE_TYPE_DYNAMIC;
-            boolean isIssueOnly = mType == SAFETY_SOURCE_TYPE_ISSUE_ONLY;
+            boolean isStatic = type == SAFETY_SOURCE_TYPE_STATIC;
+            boolean isDynamic = type == SAFETY_SOURCE_TYPE_DYNAMIC;
+            boolean isIssueOnly = type == SAFETY_SOURCE_TYPE_ISSUE_ONLY;
 
-            BuilderUtils.validateAttribute(mId, "id", true, false);
+            String id = mId;
+            BuilderUtils.validateAttribute(id, "id", true, false);
 
+            String packageName = mPackageName;
             BuilderUtils.validateAttribute(
-                    mPackageName, "packageName", isDynamic || isIssueOnly, isStatic);
+                    packageName, "packageName", isDynamic || isIssueOnly, isStatic);
 
             int initialDisplayState =
                     BuilderUtils.validateIntDef(
@@ -877,8 +880,9 @@ public final class SafetySource implements Parcelable {
                     BuilderUtils.validateResId(
                             mSummaryResId, "summary", isDynamicNotHidden, isIssueOnly);
 
+            String intentAction = mIntentAction;
             BuilderUtils.validateAttribute(
-                    mIntentAction,
+                    intentAction,
                     "intentAction",
                     (isDynamic && isEnabled) || isStatic,
                     isIssueOnly);
@@ -903,6 +907,7 @@ public final class SafetySource implements Parcelable {
                             isStatic,
                             false);
 
+            String deduplicationGroup = mDeduplicationGroup;
             boolean notificationsAllowed = false;
             if (SdkLevel.isAtLeastU()) {
                 notificationsAllowed =
@@ -914,17 +919,17 @@ public final class SafetySource implements Parcelable {
                                 false);
 
                 BuilderUtils.validateAttribute(
-                        mDeduplicationGroup, "deduplicationGroup", false, isStatic);
+                        deduplicationGroup, "deduplicationGroup", false, isStatic);
             }
 
             return new SafetySource(
-                    mType,
-                    mId,
-                    mPackageName,
+                    type,
+                    id,
+                    packageName,
                     titleResId,
                     titleForWorkResId,
                     summaryResId,
-                    mIntentAction,
+                    intentAction,
                     profile,
                     initialDisplayState,
                     maxSeverityLevel,
@@ -932,7 +937,7 @@ public final class SafetySource implements Parcelable {
                     loggingAllowed,
                     refreshOnPageOpenAllowed,
                     notificationsAllowed,
-                    mDeduplicationGroup);
+                    deduplicationGroup);
         }
     }
 }
