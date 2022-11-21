@@ -167,7 +167,7 @@ final class SafetyCenterDataFactory {
                     userProfileGroup);
             int safetySourcesGroupType = safetySourcesGroup.getType();
             switch (safetySourcesGroupType) {
-                case SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_COLLAPSIBLE:
+                case SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_STATEFUL:
                     addSafetyCenterEntryGroup(
                             safetyCenterOverallState,
                             safetyCenterEntryOrGroups,
@@ -175,7 +175,7 @@ final class SafetyCenterDataFactory {
                             packageName,
                             userProfileGroup);
                     break;
-                case SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_RIGID:
+                case SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_STATELESS:
                     addSafetyCenterStaticEntryGroup(
                             safetyCenterOverallState,
                             safetyCenterStaticEntryGroups,

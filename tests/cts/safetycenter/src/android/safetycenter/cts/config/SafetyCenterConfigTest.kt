@@ -33,7 +33,7 @@ class SafetyCenterConfigTest {
     fun getSafetySourcesGroups_returnsSafetySourcesGroups() {
         assertThat(BASE.safetySourcesGroups)
             .containsExactly(
-                SafetySourcesGroupTest.RIGID_INFERRED, SafetySourcesGroupTest.HIDDEN_INFERRED)
+                SafetySourcesGroupTest.STATELESS_INFERRED, SafetySourcesGroupTest.HIDDEN_INFERRED)
             .inOrder()
     }
 
@@ -42,7 +42,7 @@ class SafetyCenterConfigTest {
         val sourcesGroups = BASE.safetySourcesGroups
 
         assertFailsWith(UnsupportedOperationException::class) {
-            sourcesGroups.add(SafetySourcesGroupTest.COLLAPSIBLE_INFERRED_WITH_SUMMARY)
+            sourcesGroups.add(SafetySourcesGroupTest.STATEFUL_INFERRED_WITH_SUMMARY)
         }
     }
 
@@ -50,16 +50,16 @@ class SafetyCenterConfigTest {
     fun builder_addSafetySourcesGroup_doesNotMutatePreviouslyBuiltInstance() {
         val safetyCenterConfigBuilder =
             SafetyCenterConfig.Builder()
-                .addSafetySourcesGroup(SafetySourcesGroupTest.RIGID_INFERRED)
+                .addSafetySourcesGroup(SafetySourcesGroupTest.STATELESS_INFERRED)
                 .addSafetySourcesGroup(SafetySourcesGroupTest.HIDDEN_INFERRED)
         val sourceGroups = safetyCenterConfigBuilder.build().safetySourcesGroups
 
         safetyCenterConfigBuilder.addSafetySourcesGroup(
-            SafetySourcesGroupTest.COLLAPSIBLE_INFERRED_WITH_SUMMARY)
+            SafetySourcesGroupTest.STATEFUL_INFERRED_WITH_SUMMARY)
 
         assertThat(sourceGroups)
             .containsExactly(
-                SafetySourcesGroupTest.RIGID_INFERRED, SafetySourcesGroupTest.HIDDEN_INFERRED)
+                SafetySourcesGroupTest.STATELESS_INFERRED, SafetySourcesGroupTest.HIDDEN_INFERRED)
             .inOrder()
     }
 
@@ -79,13 +79,13 @@ class SafetyCenterConfigTest {
             .addEqualityGroup(
                 BASE,
                 SafetyCenterConfig.Builder()
-                    .addSafetySourcesGroup(SafetySourcesGroupTest.RIGID_INFERRED)
+                    .addSafetySourcesGroup(SafetySourcesGroupTest.STATELESS_INFERRED)
                     .addSafetySourcesGroup(SafetySourcesGroupTest.HIDDEN_INFERRED)
                     .build())
             .addEqualityGroup(
                 SafetyCenterConfig.Builder()
                     .addSafetySourcesGroup(SafetySourcesGroupTest.HIDDEN_INFERRED)
-                    .addSafetySourcesGroup(SafetySourcesGroupTest.RIGID_INFERRED)
+                    .addSafetySourcesGroup(SafetySourcesGroupTest.STATELESS_INFERRED)
                     .build())
             .test()
     }
@@ -93,7 +93,7 @@ class SafetyCenterConfigTest {
     companion object {
         private val BASE =
             SafetyCenterConfig.Builder()
-                .addSafetySourcesGroup(SafetySourcesGroupTest.RIGID_INFERRED)
+                .addSafetySourcesGroup(SafetySourcesGroupTest.STATELESS_INFERRED)
                 .addSafetySourcesGroup(SafetySourcesGroupTest.HIDDEN_INFERRED)
                 .build()
     }

@@ -177,8 +177,8 @@
 
     <xsd:simpleType name="groupType">
         <xsd:restriction base="xsd:string">
-            <xsd:enumeration value="collapsible"/>
-            <xsd:enumeration value="rigid"/>
+            <xsd:enumeration value="stateless"/>
+            <xsd:enumeration value="stateful"/>
             <xsd:enumeration value="hidden"/>
         </xsd:restriction>
     </xsd:simpleType>

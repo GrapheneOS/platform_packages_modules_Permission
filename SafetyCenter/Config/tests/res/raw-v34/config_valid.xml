@@ -119,45 +119,45 @@
                 profile="primary_profile_only"/>
         </safety-sources-group>
         <safety-sources-group
-            type="collapsible"
-            id="collapsible_barebone"
+            type="stateful"
+            id="stateful_barebone"
             title="@com.android.safetycenter.config.tests:string/reference">
             <static-safety-source
-                id="collapsible_barebone_source"
+                id="stateful_barebone_source"
                 title="@com.android.safetycenter.config.tests:string/reference"
                 intentAction="intent"
                 profile="primary_profile_only"/>
         </safety-sources-group>
         <safety-sources-group
-            type="collapsible"
-            id="collapsible_all_optional"
+            type="stateful"
+            id="stateful_all_optional"
             title="@com.android.safetycenter.config.tests:string/reference"
             summary="@com.android.safetycenter.config.tests:string/reference"
             statelessIconType="privacy">
             <static-safety-source
-                id="collapsible_all_optional_source"
+                id="stateful_all_optional_source"
                 title="@com.android.safetycenter.config.tests:string/reference"
                 intentAction="intent"
                 profile="primary_profile_only"/>
         </safety-sources-group>
         <safety-sources-group
-            type="rigid"
-            id="rigid_barebone"
+            type="stateless"
+            id="stateless_barebone"
             title="@com.android.safetycenter.config.tests:string/reference">
             <static-safety-source
-                id="rigid_barebone_source"
+                id="stateless_barebone_source"
                 title="@com.android.safetycenter.config.tests:string/reference"
                 intentAction="intent"
                 profile="primary_profile_only"/>
         </safety-sources-group>
         <safety-sources-group
-            type="rigid"
-            id="rigid_all_optional"
+            type="stateless"
+            id="stateless_all_optional"
             title="@com.android.safetycenter.config.tests:string/reference"
             summary="@com.android.safetycenter.config.tests:string/reference"
             statelessIconType="privacy">
             <static-safety-source
-                id="rigid_all_optional_source"
+                id="stateless_all_optional_source"
                 title="@com.android.safetycenter.config.tests:string/reference"
                 intentAction="intent"
                 profile="primary_profile_only"/>

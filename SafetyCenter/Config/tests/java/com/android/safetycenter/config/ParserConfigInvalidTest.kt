@@ -229,13 +229,6 @@ class ParserConfigInvalidTest {
                     "Element safety-sources-config missing",
                     null),
                 Params(
-                    "ConfigSafetySourcesGroupCollapsibleWithOnlyIssueOnly",
-                    R.raw.config_safety_sources_group_collapsible_with_only_issue_only,
-                    "Element safety-sources-group invalid",
-                    "Safety sources groups containing only sources of type issue-only must be of " +
-                            "type hidden",
-                    SdkLevel.isAtLeastU()),
-                Params(
                     "ConfigSafetySourcesGroupDuplicateId",
                     R.raw.config_safety_sources_group_duplicate_id,
                     "Element safety-sources-config invalid",
@@ -275,8 +268,15 @@ class ParserConfigInvalidTest {
                     "Element safety-sources-group invalid",
                     "Required attribute title missing"),
                 Params(
-                    "ConfigSafetySourcesGroupRigidWithOnlyIssueOnly",
-                    R.raw.config_safety_sources_group_rigid_with_only_issue_only,
+                    "ConfigSafetySourcesGroupStatefulWithOnlyIssueOnly",
+                    R.raw.config_safety_sources_group_stateful_with_only_issue_only,
+                    "Element safety-sources-group invalid",
+                    "Safety sources groups containing only sources of type issue-only must be of " +
+                        "type hidden",
+                    SdkLevel.isAtLeastU()),
+                Params(
+                    "ConfigSafetySourcesGroupStatelessWithOnlyIssueOnly",
+                    R.raw.config_safety_sources_group_stateless_with_only_issue_only,
                     "Element safety-sources-group invalid",
                     "Safety sources groups containing only sources of type issue-only must be of " +
                         "type hidden",

@@ -1,7 +1,7 @@
 <safety-center-config>
     <safety-sources-config>
         <safety-sources-group
-            type="rigid"
+            type="stateless"
             id="id"
             title="@com.android.safetycenter.config.tests:string/reference">
             <issue-only-safety-source

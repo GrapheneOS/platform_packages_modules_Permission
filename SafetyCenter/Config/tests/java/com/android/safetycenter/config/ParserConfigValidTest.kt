@@ -204,12 +204,12 @@ class ParserConfigValidTest {
                     if (SdkLevel.isAtLeastU()) {
                         addSafetySourcesGroup(
                             SafetySourcesGroup.Builder()
-                                .setType(SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_COLLAPSIBLE)
-                                .setId("collapsible_barebone")
+                                .setType(SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_STATEFUL)
+                                .setId("stateful_barebone")
                                 .setTitleResId(R.string.reference)
                                 .addSafetySource(
                                     SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_STATIC)
-                                        .setId("collapsible_barebone_source")
+                                        .setId("stateful_barebone_source")
                                         .setTitleResId(R.string.reference)
                                         .setIntentAction("intent")
                                         .setProfile(SafetySource.PROFILE_PRIMARY)
@@ -217,15 +217,15 @@ class ParserConfigValidTest {
                                 .build())
                         addSafetySourcesGroup(
                             SafetySourcesGroup.Builder()
-                                .setType(SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_COLLAPSIBLE)
-                                .setId("collapsible_all_optional")
+                                .setType(SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_STATEFUL)
+                                .setId("stateful_all_optional")
                                 .setTitleResId(R.string.reference)
                                 .setSummaryResId(R.string.reference)
                                 .setStatelessIconType(
                                     SafetySourcesGroup.STATELESS_ICON_TYPE_PRIVACY)
                                 .addSafetySource(
                                     SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_STATIC)
-                                        .setId("collapsible_all_optional_source")
+                                        .setId("stateful_all_optional_source")
                                         .setTitleResId(R.string.reference)
                                         .setIntentAction("intent")
                                         .setProfile(SafetySource.PROFILE_PRIMARY)
@@ -233,12 +233,12 @@ class ParserConfigValidTest {
                                 .build())
                         addSafetySourcesGroup(
                             SafetySourcesGroup.Builder()
-                                .setType(SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_RIGID)
-                                .setId("rigid_barebone")
+                                .setType(SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_STATELESS)
+                                .setId("stateless_barebone")
                                 .setTitleResId(R.string.reference)
                                 .addSafetySource(
                                     SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_STATIC)
-                                        .setId("rigid_barebone_source")
+                                        .setId("stateless_barebone_source")
                                         .setTitleResId(R.string.reference)
                                         .setIntentAction("intent")
                                         .setProfile(SafetySource.PROFILE_PRIMARY)
@@ -246,15 +246,15 @@ class ParserConfigValidTest {
                                 .build())
                         addSafetySourcesGroup(
                             SafetySourcesGroup.Builder()
-                                .setType(SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_RIGID)
-                                .setId("rigid_all_optional")
+                                .setType(SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_STATELESS)
+                                .setId("stateless_all_optional")
                                 .setTitleResId(R.string.reference)
                                 .setSummaryResId(R.string.reference)
                                 .setStatelessIconType(
                                     SafetySourcesGroup.STATELESS_ICON_TYPE_PRIVACY)
                                 .addSafetySource(
                                     SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_STATIC)
-                                        .setId("rigid_all_optional_source")
+                                        .setId("stateless_all_optional_source")
                                         .setTitleResId(R.string.reference)
                                         .setIntentAction("intent")
                                         .setProfile(SafetySource.PROFILE_PRIMARY)

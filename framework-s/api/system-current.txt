@@ -537,9 +537,11 @@ package android.safetycenter.config {
     method public int getType();
     method public void writeToParcel(@NonNull android.os.Parcel, int);
     field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.config.SafetySourcesGroup> CREATOR;
-    field public static final int SAFETY_SOURCES_GROUP_TYPE_COLLAPSIBLE = 0; // 0x0
+    field @Deprecated public static final int SAFETY_SOURCES_GROUP_TYPE_COLLAPSIBLE = 0; // 0x0
     field public static final int SAFETY_SOURCES_GROUP_TYPE_HIDDEN = 2; // 0x2
-    field public static final int SAFETY_SOURCES_GROUP_TYPE_RIGID = 1; // 0x1
+    field @Deprecated public static final int SAFETY_SOURCES_GROUP_TYPE_RIGID = 1; // 0x1
+    field public static final int SAFETY_SOURCES_GROUP_TYPE_STATEFUL = 0; // 0x0
+    field public static final int SAFETY_SOURCES_GROUP_TYPE_STATELESS = 1; // 0x1
     field public static final int STATELESS_ICON_TYPE_NONE = 0; // 0x0
     field public static final int STATELESS_ICON_TYPE_PRIVACY = 1; // 0x1
   }
