@@ -44,7 +44,6 @@ import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.ISSUE_TYPE
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.RECOMMENDATION_ISSUE_ACTION_ID
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.RECOMMENDATION_ISSUE_ID
 import android.util.ArrayMap
-import com.android.safetycenter.internaldata.SafetyCenterEntryGroupId
 import com.android.safetycenter.internaldata.SafetyCenterEntryId
 import com.android.safetycenter.internaldata.SafetyCenterIds
 import com.android.safetycenter.internaldata.SafetyCenterIssueActionId
@@ -312,13 +311,6 @@ class SafetyCenterCtsData(context: Context) {
                 emptyList(),
                 emptyList(),
                 emptyList())
-
-        /** Creates an ID for a Safety Center entry group. */
-        fun entryGroupId(sourcesGroupId: String) =
-            SafetyCenterIds.encodeToString(
-                SafetyCenterEntryGroupId.newBuilder()
-                    .setSafetySourcesGroupId(sourcesGroupId)
-                    .build())
 
         /** Creates an ID for a Safety Center entry. */
         fun entryId(sourceId: String, userId: Int = UserHandle.myUserId()) =

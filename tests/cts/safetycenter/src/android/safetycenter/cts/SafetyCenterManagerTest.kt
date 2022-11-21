@@ -275,8 +275,7 @@ class SafetyCenterManagerTest {
 
     private val safetyCenterEntryGroupMixedFromComplexConfig =
         SafetyCenterEntryOrGroup(
-            SafetyCenterEntryGroup.Builder(
-                    SafetyCenterCtsData.entryGroupId(MIXED_COLLAPSIBLE_GROUP_ID), "OK")
+            SafetyCenterEntryGroup.Builder(MIXED_COLLAPSIBLE_GROUP_ID, "OK")
                 .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNKNOWN)
                 .setSummary(safetyCenterResourcesContext.getStringByName("group_unknown_summary"))
                 .setEntries(
@@ -481,8 +480,7 @@ class SafetyCenterManagerTest {
             emptyList(),
             listOf(
                 SafetyCenterEntryOrGroup(
-                    SafetyCenterEntryGroup.Builder(
-                            SafetyCenterCtsData.entryGroupId(DYNAMIC_GROUP_ID), "OK")
+                    SafetyCenterEntryGroup.Builder(DYNAMIC_GROUP_ID, "OK")
                         .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNKNOWN)
                         .setSummary(
                             safetyCenterResourcesContext.getStringByName("group_unknown_summary"))
@@ -522,8 +520,7 @@ class SafetyCenterManagerTest {
                 safetyCenterCtsData.safetyCenterIssueInformation(ISSUE_ONLY_IN_RIGID_ID)),
             listOf(
                 SafetyCenterEntryOrGroup(
-                    SafetyCenterEntryGroup.Builder(
-                            SafetyCenterCtsData.entryGroupId(DYNAMIC_GROUP_ID), "OK")
+                    SafetyCenterEntryGroup.Builder(DYNAMIC_GROUP_ID, "OK")
                         .setSeverityLevel(ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING)
                         .setSeverityUnspecifiedIconType(SEVERITY_UNSPECIFIED_ICON_TYPE_PRIVACY)
                         .setSummary("Critical summary")
@@ -3424,9 +3421,7 @@ class SafetyCenterManagerTest {
     }
 
     private fun SafetyCenterData.getGroup(groupId: String): SafetyCenterEntryGroup =
-        entriesOrGroups
-            .first { it.entryGroup?.id == SafetyCenterCtsData.entryGroupId(groupId) }
-            .entryGroup!!
+        entriesOrGroups.first { it.entryGroup?.id == groupId }.entryGroup!!
 
     companion object {
         private val RESURFACE_DELAY = Duration.ofMillis(500)

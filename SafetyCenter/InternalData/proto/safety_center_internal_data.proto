@@ -20,12 +20,6 @@ package com.android.safetycenter.internaldata;
 
 option java_multiple_files = true;
 
-// An id for entry groups provided by the Safety Center.
-message SafetyCenterEntryGroupId {
-  // The ID of the safety sources group that the entry group originated from.
-  optional string safety_sources_group_id = 1;
-}
-
 // An id for entries provided by the Safety Center.
 message SafetyCenterEntryId {
   // The ID of the safety source that the entry originated from.
