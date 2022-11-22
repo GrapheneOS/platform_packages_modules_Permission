@@ -70,6 +70,9 @@
         <xsd:attribute name="loggingAllowed" type="booleanOrStringResourceName" default="true"/>
         <xsd:attribute name="refreshOnPageOpenAllowed" type="booleanOrStringResourceName"
                        default="false"/>
+        <xsd:attribute name="notificationsAllowed" type="booleanOrStringResourceName"
+                       default="false"/>
+        <xsd:attribute name="deduplicationGroup" type="stringOrStringResourceName"/>
     </xsd:complexType>
 
     <xsd:complexType name="issue-only-safety-source">
@@ -81,6 +84,9 @@
         <xsd:attribute name="loggingAllowed" type="booleanOrStringResourceName" default="true"/>
         <xsd:attribute name="refreshOnPageOpenAllowed" type="booleanOrStringResourceName"
                        default="false"/>
+        <xsd:attribute name="notificationsAllowed" type="booleanOrStringResourceName"
+                       default="false"/>
+        <xsd:attribute name="deduplicationGroup" type="stringOrStringResourceName"/>
     </xsd:complexType>
 
     <xsd:complexType name="static-safety-source">

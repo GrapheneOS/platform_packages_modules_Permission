@@ -146,8 +146,11 @@ public final class GrantPermissionsViewHandlerImpl implements GrantPermissionsVi
 
     @Override
     public void updateUi(String groupName, int groupCount, int groupIndex, Icon icon,
-            CharSequence message, CharSequence detailMessage, boolean[] buttonVisibilities,
+            CharSequence message, CharSequence detailMessage,
+            CharSequence permissionRationaleMessage, boolean[] buttonVisibilities,
             boolean[] locationVisibilities) {
+        // permissionRationaleMessage ignored by television
+
         // TODO: Handle detailMessage
 
         mGroupName = groupName;
