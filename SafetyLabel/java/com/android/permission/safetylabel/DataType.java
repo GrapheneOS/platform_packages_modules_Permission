@@ -35,9 +35,9 @@ import java.util.Set;
  * metadata related to the data usage purpose.
  */
 public class DataType {
+    @VisibleForTesting static final String KEY_PURPOSES = "purposes";
     @VisibleForTesting static final String KEY_USER_CONTROL = "user_control";
     @VisibleForTesting static final String KEY_EPHEMERAL = "ephemeral";
-    @VisibleForTesting static final String KEY_PURPOSES = "purposes";
 
     @Purpose private final Set<Integer> mPurposeSet;
     private final Boolean mUserControl;

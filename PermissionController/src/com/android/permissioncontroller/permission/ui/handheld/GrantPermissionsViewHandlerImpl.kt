@@ -95,6 +95,7 @@ class GrantPermissionsViewHandlerImpl(
     private var groupIcon: Icon? = null
     private var groupMessage: CharSequence? = null
     private var detailMessage: CharSequence? = null
+    private var permissionRationaleMessage: CharSequence? = null
     private val buttonVisibilities = BooleanArray(NEXT_BUTTON) { false }
     private val locationVisibilities = BooleanArray(NEXT_LOCATION_DIALOG) { false }
     private var selectedPrecision: Int = 0
@@ -110,6 +111,8 @@ class GrantPermissionsViewHandlerImpl(
     private var iconView: ImageView? = null
     private var messageView: TextView? = null
     private var detailMessageView: TextView? = null
+    private var permissionRationaleView: View? = null
+    private var permissionRationaleMessageView: TextView? = null
     private var buttons: Array<Button?> = arrayOfNulls(NEXT_BUTTON)
     private var locationViews: Array<View?> = arrayOfNulls(NEXT_LOCATION_DIALOG)
     private var rootView: ViewGroup? = null
@@ -121,6 +124,8 @@ class GrantPermissionsViewHandlerImpl(
         arguments.putParcelable(ARG_GROUP_ICON, groupIcon)
         arguments.putCharSequence(ARG_GROUP_MESSAGE, groupMessage)
         arguments.putCharSequence(ARG_GROUP_DETAIL_MESSAGE, detailMessage)
+        arguments.putCharSequence(ARG_GROUP_PERMISSION_RATIONALE_MESSAGE,
+            permissionRationaleMessage)
         arguments.putBooleanArray(ARG_DIALOG_BUTTON_VISIBILITIES, buttonVisibilities)
         arguments.putBooleanArray(ARG_DIALOG_LOCATION_VISIBILITIES, locationVisibilities)
         arguments.putInt(ARG_DIALOG_SELECTED_PRECISION, selectedPrecision)
@@ -133,6 +138,8 @@ class GrantPermissionsViewHandlerImpl(
         groupCount = savedInstanceState.getInt(ARG_GROUP_COUNT)
         groupIndex = savedInstanceState.getInt(ARG_GROUP_INDEX)
         detailMessage = savedInstanceState.getCharSequence(ARG_GROUP_DETAIL_MESSAGE)
+        permissionRationaleMessage =
+            savedInstanceState.getCharSequence(ARG_GROUP_PERMISSION_RATIONALE_MESSAGE)
         setButtonVisibilities(savedInstanceState.getBooleanArray(ARG_DIALOG_BUTTON_VISIBILITIES))
         setLocationVisibilities(savedInstanceState.getBooleanArray(
             ARG_DIALOG_LOCATION_VISIBILITIES))
@@ -142,14 +149,15 @@ class GrantPermissionsViewHandlerImpl(
     }
 
     override fun updateUi(
-        groupName: String,
+        groupName: String?,
         groupCount: Int,
         groupIndex: Int,
         icon: Icon?,
         message: CharSequence?,
         detailMessage: CharSequence?,
-        buttonVisibilities: BooleanArray,
-        locationVisibilities: BooleanArray
+        permissionRationaleMessage: CharSequence?,
+        buttonVisibilities: BooleanArray?,
+        locationVisibilities: BooleanArray?
     ) {
 
         this.groupName = groupName
@@ -158,6 +166,7 @@ class GrantPermissionsViewHandlerImpl(
         groupIcon = icon
         groupMessage = message
         this.detailMessage = detailMessage
+        this.permissionRationaleMessage = permissionRationaleMessage
         setButtonVisibilities(buttonVisibilities)
         setLocationVisibilities(locationVisibilities)
 
@@ -170,6 +179,7 @@ class GrantPermissionsViewHandlerImpl(
     private fun updateAll() {
         updateDescription()
         updateDetailDescription()
+        updatePermissionRationale()
         updateButtons()
         updateLocationVisibilities()
 
@@ -211,6 +221,10 @@ class GrantPermissionsViewHandlerImpl(
         detailMessageView = rootView.findViewById(R.id.detail_message)
         detailMessageView!!.movementMethod = LinkMovementMethod.getInstance()
         iconView = rootView.findViewById(R.id.permission_icon)
+
+        permissionRationaleView = rootView.findViewById(R.id.permission_rationale_container)
+        permissionRationaleMessageView = rootView.findViewById(R.id.permission_rationale_message)
+        permissionRationaleView!!.setOnClickListener(this)
 
         val buttons = arrayOfNulls<Button>(NEXT_BUTTON)
         val numButtons = BUTTON_RES_ID_TO_NUM.size()
@@ -302,6 +316,16 @@ class GrantPermissionsViewHandlerImpl(
         } else {
             detailMessageView!!.text = detailMessage
             detailMessageView!!.visibility = View.VISIBLE
+        }
+    }
+
+    private fun updatePermissionRationale() {
+        val message = permissionRationaleMessage
+        if (message == null || message.isEmpty()) {
+            permissionRationaleView!!.visibility = View.GONE
+        } else {
+            permissionRationaleMessageView!!.text = message
+            permissionRationaleView!!.visibility = View.VISIBLE
         }
     }
 
@@ -412,6 +436,11 @@ class GrantPermissionsViewHandlerImpl(
     override fun onClick(view: View) {
         val id = view.id
 
+        if (id == R.id.permission_rationale_container) {
+            // TODO(b/256913489): Implement Permission rationale details activity
+            return
+        }
+
         if (id == R.id.permission_location_accuracy_radio_fine) {
             (locationViews[FINE_RADIO_BUTTON] as RadioButton).isChecked = true
             selectedPrecision = FINE_RADIO_BUTTON
@@ -515,6 +544,7 @@ class GrantPermissionsViewHandlerImpl(
     }
 
     companion object {
+        private val TAG = GrantPermissionsViewHandlerImpl::class.java.simpleName
 
         const val ARG_GROUP_NAME = "ARG_GROUP_NAME"
         const val ARG_GROUP_COUNT = "ARG_GROUP_COUNT"
@@ -522,6 +552,8 @@ class GrantPermissionsViewHandlerImpl(
         const val ARG_GROUP_ICON = "ARG_GROUP_ICON"
         const val ARG_GROUP_MESSAGE = "ARG_GROUP_MESSAGE"
         private const val ARG_GROUP_DETAIL_MESSAGE = "ARG_GROUP_DETAIL_MESSAGE"
+        private const val ARG_GROUP_PERMISSION_RATIONALE_MESSAGE =
+            "ARG_GROUP_PERMISSION_RATIONALE_MESSAGE"
         private const val ARG_DIALOG_BUTTON_VISIBILITIES = "ARG_DIALOG_BUTTON_VISIBILITIES"
         private const val ARG_DIALOG_LOCATION_VISIBILITIES = "ARG_DIALOG_LOCATION_VISIBILITIES"
         private const val ARG_DIALOG_SELECTED_PRECISION = "ARG_DIALOG_SELECTED_PRECISION"

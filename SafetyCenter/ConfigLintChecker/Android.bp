@@ -33,7 +33,7 @@ java_library_host {
         "layoutlib_api-prebuilt", // For com.android.resources.ResourceFolderType
         "lint_api",
     ],
-    java_resources: [":safetycenter-config-schema"],
+    java_resources: [":safetycenter-config-schemas"],
     jarjar_rules: "jarjar-rules.txt",
     kotlincflags: ["-Xjvm-default=all"],
     visibility: [

@@ -41,6 +41,7 @@ import android.content.pm.PackageItemInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.drawable.Icon;
+import android.icu.lang.UCharacter;
 import android.os.Bundle;
 import android.os.Process;
 import android.text.Annotation;
@@ -487,6 +488,16 @@ public class GrantPermissionsActivity extends SettingsActivity
             setTitle(message);
         }
 
+        CharSequence permissionRationaleMessage = null;
+        if (info.getShowPermissionRationale()) {
+            String permissionGroupLabel =
+                    KotlinUtils.INSTANCE.getPermGroupLabel(this, info.getGroupName())
+                            .toString();
+
+            permissionRationaleMessage = getString(R.string.permission_rationale_message_template,
+                    UCharacter.toLowerCase(permissionGroupLabel));
+        }
+
         ArrayList<Integer> idxs = new ArrayList<>();
         mButtonVisibilities = new boolean[info.getButtonVisibilities().size()];
         for (int i = 0; i < info.getButtonVisibilities().size(); i++) {
@@ -502,7 +513,8 @@ public class GrantPermissionsActivity extends SettingsActivity
         }
 
         mViewHandler.updateUi(info.getGroupName(), mTotalRequests, mCurrentRequestIdx, icon,
-                message, detailMessage, mButtonVisibilities, mLocationVisibilities);
+                message, detailMessage, permissionRationaleMessage, mButtonVisibilities,
+                mLocationVisibilities);
         if (showingNewGroup) {
             mCurrentRequestIdx++;
         }

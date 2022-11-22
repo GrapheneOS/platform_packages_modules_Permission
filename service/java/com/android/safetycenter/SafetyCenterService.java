@@ -153,6 +153,10 @@ public final class SafetyCenterService extends SystemService {
     private final SafetyCenterListeners mSafetyCenterListeners;
 
     @GuardedBy("mApiLock")
+    @NonNull
+    private final SafetyCenterNotificationSender mNotificationSender;
+
+    @GuardedBy("mApiLock")
     private boolean mSafetyCenterIssueCacheWriteScheduled;
 
     @GuardedBy("mApiLock")
@@ -194,6 +198,12 @@ public final class SafetyCenterService extends SystemService {
                         mSafetyCenterIssueCache,
                         mSafetyCenterRepository);
         mSafetyCenterListeners = new SafetyCenterListeners(mSafetyCenterDataFactory);
+        mNotificationSender =
+                new SafetyCenterNotificationSender(
+                        context,
+                        new SafetyCenterNotificationFactory(context),
+                        mSafetyCenterIssueCache,
+                        mSafetyCenterRepository);
         mSafetyCenterBroadcastDispatcher =
                 new SafetyCenterBroadcastDispatcher(
                         context, mSafetyCenterConfigReader, mSafetyCenterRefreshTracker);
@@ -289,6 +299,9 @@ public final class SafetyCenterService extends SystemService {
                                 safetySourceData, safetySourceId, safetyEvent, packageName, userId);
                 mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
                         userProfileGroup, hasUpdate, null);
+                if (hasUpdate) {
+                    mNotificationSender.updateNotifications(userId);
+                }
                 scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked();
             }
         }
@@ -350,6 +363,9 @@ public final class SafetyCenterService extends SystemService {
                 }
                 mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
                         userProfileGroup, hasUpdate, safetyCenterErrorDetails);
+                if (hasUpdate) {
+                    mNotificationSender.updateNotifications(userId);
+                }
             }
         }
 
@@ -515,6 +531,7 @@ public final class SafetyCenterService extends SystemService {
                 }
                 mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
                         userProfileGroup, true, null);
+                mNotificationSender.updateNotifications(userId);
             }
         }
 
@@ -1019,6 +1036,7 @@ public final class SafetyCenterService extends SystemService {
             mSafetyCenterListeners.clearForUser(userId);
             mSafetyCenterRefreshTracker.clearRefreshForUser(userId);
             mSafetyCenterListeners.deliverUpdateForUserProfileGroup(userProfileGroup, true, null);
+            mNotificationSender.updateNotifications(userId);
             scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked();
         }
     }

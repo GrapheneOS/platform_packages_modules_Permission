@@ -85,11 +85,15 @@ public interface GrantPermissionsViewHandler {
      * @param message the message to display the user
      * @param detailMessage another message to display to the user. This clarifies "message" in more
      *                      detail
+     * @param permissionRationaleMessage another message to display to the user. This message lets
+     *                                   users know developer stated data usages for the requested
+     *                                   permission
      * @param buttonVisibilities visibilities for each button
      * @param locationVisibilities visibilities for location options
      */
     void updateUi(String groupName, int groupCount, int groupIndex, Icon icon,
-            CharSequence message, CharSequence detailMessage, boolean[] buttonVisibilities,
+            CharSequence message, CharSequence detailMessage,
+            CharSequence permissionRationaleMessage, boolean[] buttonVisibilities,
             boolean[] locationVisibilities);
 
     /**

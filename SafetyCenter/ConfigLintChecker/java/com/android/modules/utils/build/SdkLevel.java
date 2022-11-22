@@ -16,12 +16,30 @@
 
 package com.android.modules.utils.build;
 
+import static android.os.Build.VERSION_CODES.TIRAMISU;
+import static android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
+
 /** Stub class to compile the linter for host execution. */
 public final class SdkLevel {
     private SdkLevel() {}
 
-    /** Method used in Safety Center code. */
+    private static volatile int sSdkInt = TIRAMISU;
+
+    /**
+     * Linter only method to set the mocked SDK level for the Safety Center config code.
+     *
+     * <p>You must hold the class lock before calling this method. You should hold the class lock
+     * for the whole duration of the lint check.
+     */
+    public static void setSdkInt(int sdkInt) {
+        if (!Thread.holdsLock(SdkLevel.class)) {
+            throw new IllegalStateException("Lock not held.");
+        }
+        sSdkInt = sdkInt;
+    }
+
+    /** Method used in the Safety Center config code. */
     public static boolean isAtLeastU() {
-        return true;
+        return sSdkInt >= UPSIDE_DOWN_CAKE;
     }
 }

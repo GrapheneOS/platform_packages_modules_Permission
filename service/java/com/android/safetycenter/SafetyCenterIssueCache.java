@@ -90,6 +90,29 @@ final class SafetyCenterIssueCache {
     }
 
     /**
+     * Gets all the issues in the issue cache for the given {@code userId}.
+     *
+     * <p>Only issues from "active" sources are included. Active sources are those for which {@link
+     * SafetyCenterConfigReader#isExternalSafetySourceActive(String)} returns {@code true}.
+     */
+    // TODO(b/255946874): Make this visible when it's needed
+    @NonNull
+    private List<SafetyCenterIssueKey> getIssuesForUser(@UserIdInt int userId) {
+        ArrayList<SafetyCenterIssueKey> result = new ArrayList<>();
+        for (int i = 0; i < mIssues.size(); i++) {
+            SafetyCenterIssueKey issueKey = mIssues.keyAt(i);
+            if (issueKey.getUserId() != userId) {
+                continue;
+            }
+            String safetySourceId = issueKey.getSafetySourceId();
+            if (mSafetyCenterConfigReader.isExternalSafetySourceActive(safetySourceId)) {
+                result.add(issueKey);
+            }
+        }
+        return result;
+    }
+
+    /**
      * Returns {@code true} if the issue with the given key and severity level is currently
      * dismissed.
      *
