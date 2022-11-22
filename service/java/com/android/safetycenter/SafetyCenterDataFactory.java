@@ -17,14 +17,12 @@
 package com.android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
-import static android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
 
 import static java.util.Collections.emptyList;
 import static java.util.Objects.requireNonNull;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
-import android.annotation.TargetApi;
 import android.annotation.UserIdInt;
 import android.app.PendingIntent;
 import android.icu.text.ListFormatter;
@@ -1079,15 +1077,19 @@ final class SafetyCenterDataFactory {
                         safetyCenterIssuesWithCategories,
                         "overall_severity_level_device_recommendation_title",
                         "overall_severity_level_account_recommendation_title",
+                        "overall_severity_level_safety_recommendation_title",
                         "overall_severity_level_data_recommendation_title",
-                        "overall_severity_level_safety_recommendation_title");
+                        "overall_severity_level_passwords_recommendation_title",
+                        "overall_severity_level_personal_recommendation_title");
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING:
                 return getStatusTitleFromIssueCategories(
                         safetyCenterIssuesWithCategories,
                         "overall_severity_level_critical_device_warning_title",
                         "overall_severity_level_critical_account_warning_title",
+                        "overall_severity_level_critical_safety_warning_title",
                         "overall_severity_level_critical_data_warning_title",
-                        "overall_severity_level_critical_safety_warning_title");
+                        "overall_severity_level_critical_passwords_warning_title",
+                        "overall_severity_level_critical_personal_warning_title");
         }
 
         Log.w(TAG, "Unexpected SafetyCenterStatus.OverallSeverityLevel: " + overallSeverityLevel);
@@ -1095,13 +1097,14 @@ final class SafetyCenterDataFactory {
     }
 
     @NonNull
-    @TargetApi(UPSIDE_DOWN_CAKE)
     private String getStatusTitleFromIssueCategories(
             @NonNull List<SafetyCenterIssueWithCategory> safetyCenterIssuesWithCategories,
             @NonNull String deviceResourceName,
             @NonNull String accountResourceName,
+            @NonNull String generalResourceName,
             @NonNull String dataResourceName,
-            @NonNull String generalResourceName) {
+            @NonNull String passwordsResourceName,
+            @NonNull String personalSafetyResourceName) {
         String generalString = mSafetyCenterResourcesContext.getStringByName(generalResourceName);
         if (safetyCenterIssuesWithCategories.isEmpty()) {
             Log.w(TAG, "No safety center issues found in a non-green status");
@@ -1113,10 +1116,19 @@ final class SafetyCenterDataFactory {
                 return mSafetyCenterResourcesContext.getStringByName(deviceResourceName);
             case SafetySourceIssue.ISSUE_CATEGORY_ACCOUNT:
                 return mSafetyCenterResourcesContext.getStringByName(accountResourceName);
-            case SafetySourceIssue.ISSUE_CATEGORY_DATA:
-                return mSafetyCenterResourcesContext.getStringByName(dataResourceName);
             case SafetySourceIssue.ISSUE_CATEGORY_GENERAL:
                 return generalString;
+        }
+        if (SdkLevel.isAtLeastU()) {
+            switch (issueCategory) {
+                case SafetySourceIssue.ISSUE_CATEGORY_DATA:
+                    return mSafetyCenterResourcesContext.getStringByName(dataResourceName);
+                case SafetySourceIssue.ISSUE_CATEGORY_PASSWORDS:
+                    return mSafetyCenterResourcesContext.getStringByName(passwordsResourceName);
+                case SafetySourceIssue.ISSUE_CATEGORY_PERSONAL_SAFETY:
+                    return mSafetyCenterResourcesContext.getStringByName(
+                            personalSafetyResourceName);
+            }
         }
 
         Log.w(TAG, "Unexpected SafetySourceIssue.IssueCategory: " + issueCategory);

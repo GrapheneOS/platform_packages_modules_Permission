@@ -69,12 +69,25 @@ public final class SafetySourceIssue implements Parcelable {
     /** Indicates that the risk associated with the issue is related to a user's account safety. */
     public static final int ISSUE_CATEGORY_ACCOUNT = 200;
 
-    /** Indicates that the risk associated with the issue is related to a user's general safety. */
+    /**
+     * Indicates that the risk associated with the issue is related to a user's general safety.
+     *
+     * <p>This is the default. It is a generic value used when the category is not known or is not
+     * relevant.
+     */
     public static final int ISSUE_CATEGORY_GENERAL = 300;
 
     /** Indicates that the risk associated with the issue is related to a user's data. */
     @RequiresApi(UPSIDE_DOWN_CAKE)
     public static final int ISSUE_CATEGORY_DATA = 400;
+
+    /** Indicates that the risk associated with the issue is related to a user's passwords. */
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    public static final int ISSUE_CATEGORY_PASSWORDS = 500;
+
+    /** Indicates that the risk associated with the issue is related to a user's personal safety. */
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    public static final int ISSUE_CATEGORY_PERSONAL_SAFETY = 600;
 
     /**
      * All possible issue categories.
@@ -93,7 +106,9 @@ public final class SafetySourceIssue implements Parcelable {
                 ISSUE_CATEGORY_DEVICE,
                 ISSUE_CATEGORY_ACCOUNT,
                 ISSUE_CATEGORY_GENERAL,
-                ISSUE_CATEGORY_DATA
+                ISSUE_CATEGORY_DATA,
+                ISSUE_CATEGORY_PASSWORDS,
+                ISSUE_CATEGORY_PERSONAL_SAFETY
             })
     @Retention(RetentionPolicy.SOURCE)
     @TargetApi(UPSIDE_DOWN_CAKE)
@@ -1103,8 +1118,14 @@ public final class SafetySourceIssue implements Parcelable {
                 return value;
             default:
         }
-        if (SdkLevel.isAtLeastU() && value == ISSUE_CATEGORY_DATA) {
-            return value;
+        if (SdkLevel.isAtLeastU()) {
+            switch (value) {
+                case ISSUE_CATEGORY_DATA:
+                case ISSUE_CATEGORY_PASSWORDS:
+                case ISSUE_CATEGORY_PERSONAL_SAFETY:
+                    return value;
+                default:
+            }
         }
         throw new IllegalArgumentException(
                 "Unexpected IssueCategory for SafetySourceIssue: " + value);

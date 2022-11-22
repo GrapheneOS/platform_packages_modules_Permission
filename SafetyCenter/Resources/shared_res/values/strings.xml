@@ -46,11 +46,23 @@
     <!-- Title for the overall Safety Center status when the user's data is at risk [CHAR LIMIT=35] -->
     <string name="overall_severity_level_critical_data_warning_title">Your data is at risk</string>
 
+    <!-- Title for the overall Safety Center status when the user's passwords could potentially be at risk (old or unused passwords) [CHAR LIMIT=35] -->
+    <string name="overall_severity_level_passwords_recommendation_title">Passwords compromised (old)</string>
+
+    <!-- Title for the overall Safety Center status when the user's passwords are at risk (new passwords) [CHAR LIMIT=35] -->
+    <string name="overall_severity_level_critical_passwords_warning_title">Passwords compromised (new)</string>
+
+    <!-- Title for the overall Safety Center status when the user's personal safety could potentially be at risk [CHAR LIMIT=35] -->
+    <string name="overall_severity_level_personal_recommendation_title">You may be at risk</string>
+
+    <!-- Title for the overall Safety Center status when the user's personal safety is at risk [CHAR LIMIT=35] -->
+    <string name="overall_severity_level_critical_personal_warning_title">You are at risk</string>
+
     <!-- Title for the overall Safety Center status when the user security and privacy signals could potentially put their general safety at risk [CHAR LIMIT=35] -->
-    <string name="overall_severity_level_safety_recommendation_title">You may be at risk</string>
+    <string name="overall_severity_level_safety_recommendation_title">Potential risks found</string>
 
     <!-- Title for the overall Safety Center status when the user security and privacy signals are putting their general safety at risk [CHAR LIMIT=35] -->
-    <string name="overall_severity_level_critical_safety_warning_title">You are at risk</string>
+    <string name="overall_severity_level_critical_safety_warning_title">Risks found</string>
 
     <!-- Title for the overall Safety Center status when the user security and privacy signals could potentially put their account at risk [CHAR LIMIT=35] -->
     <string name="overall_severity_level_account_recommendation_title">Account may be at risk</string>
