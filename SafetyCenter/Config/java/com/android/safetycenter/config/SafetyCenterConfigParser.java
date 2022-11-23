@@ -78,9 +78,9 @@ public final class SafetyCenterConfigParser {
     private static final String ATTR_SAFETY_SOURCE_DEDUPLICATION_GROUP = "deduplicationGroup";
     private static final String ENUM_STATELESS_ICON_TYPE_NONE = "none";
     private static final String ENUM_STATELESS_ICON_TYPE_PRIVACY = "privacy";
-    private static final String ENUM_GROUP_TYPE_COLLAPSIBLE = "collapsible";
+    private static final String ENUM_GROUP_TYPE_STATEFUL = "stateful";
+    private static final String ENUM_GROUP_TYPE_STATELESS = "stateless";
     private static final String ENUM_GROUP_TYPE_HIDDEN = "hidden";
-    private static final String ENUM_GROUP_TYPE_RIGID = "rigid";
     private static final String ENUM_PROFILE_PRIMARY = "primary_profile_only";
     private static final String ENUM_PROFILE_ALL = "all_profiles";
     private static final String ENUM_INITIAL_DISPLAY_STATE_ENABLED = "enabled";
@@ -553,10 +553,10 @@ public final class SafetyCenterConfigParser {
             throws ParseException {
         String valueToParse = getValueToParse(valueString, parent, name, resources);
         switch (valueToParse) {
-            case ENUM_GROUP_TYPE_COLLAPSIBLE:
-                return SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_COLLAPSIBLE;
-            case ENUM_GROUP_TYPE_RIGID:
-                return SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_RIGID;
+            case ENUM_GROUP_TYPE_STATEFUL:
+                return SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_STATEFUL;
+            case ENUM_GROUP_TYPE_STATELESS:
+                return SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_STATELESS;
             case ENUM_GROUP_TYPE_HIDDEN:
                 return SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_HIDDEN;
             default:

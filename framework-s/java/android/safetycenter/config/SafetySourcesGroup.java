@@ -26,6 +26,7 @@ import android.annotation.IntDef;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.StringRes;
+import android.annotation.SuppressLint;
 import android.annotation.SystemApi;
 import android.content.res.Resources;
 import android.os.Parcel;
@@ -53,16 +54,39 @@ public final class SafetySourcesGroup implements Parcelable {
     /**
      * Indicates that the safety sources group should be displayed as a collapsible group with an
      * icon (stateless or stateful) and an optional default summary.
+     *
+     * @deprecated use {@link #SAFETY_SOURCES_GROUP_TYPE_STATEFUL} instead.
      */
     public static final int SAFETY_SOURCES_GROUP_TYPE_COLLAPSIBLE = 0;
 
     /**
+     * Indicates that the safety sources group should be displayed as a group that may contribute to
+     * the overall Safety Center status. This is indicated by a group stateful icon. If all sources
+     * in the group have an unspecified status then a stateless group icon might be applied.
+     */
+    public static final int SAFETY_SOURCES_GROUP_TYPE_STATEFUL =
+            SAFETY_SOURCES_GROUP_TYPE_COLLAPSIBLE;
+
+    /**
      * Indicates that the safety sources group should be displayed as a rigid group with no icon and
      * no summary.
+     *
+     * @deprecated use {@link #SAFETY_SOURCES_GROUP_TYPE_STATELESS} instead.
      */
     public static final int SAFETY_SOURCES_GROUP_TYPE_RIGID = 1;
 
-    /** Indicates that the safety sources group should not be displayed. */
+    /**
+     * Indicates that the safety sources group should be displayed as a group that does not
+     * contribute to the overall Safety Center status. All sources of type dynamic in the group can
+     * only report an unspecified status. The stateless icon and summary may be ignored and not be
+     * displayed.
+     */
+    public static final int SAFETY_SOURCES_GROUP_TYPE_STATELESS = SAFETY_SOURCES_GROUP_TYPE_RIGID;
+
+    /**
+     * Indicates that the safety sources group should not be displayed. All sources in the group
+     * must be of type issue-only.
+     */
     public static final int SAFETY_SOURCES_GROUP_TYPE_HIDDEN = 2;
 
     /**
@@ -70,24 +94,27 @@ public final class SafetySourcesGroup implements Parcelable {
      *
      * @hide
      */
+    @SuppressLint("UniqueConstants") // Intentionally renaming the COLLAPSIBLE and RIGID constants.
     @Retention(RetentionPolicy.SOURCE)
     @IntDef(
             prefix = "SAFETY_SOURCES_GROUP_TYPE_",
             value = {
                 SAFETY_SOURCES_GROUP_TYPE_COLLAPSIBLE,
+                SAFETY_SOURCES_GROUP_TYPE_STATEFUL,
                 SAFETY_SOURCES_GROUP_TYPE_RIGID,
+                SAFETY_SOURCES_GROUP_TYPE_STATELESS,
                 SAFETY_SOURCES_GROUP_TYPE_HIDDEN
             })
     public @interface SafetySourceGroupType {}
 
     /**
-     * Indicates that the safety sources group will not be displayed with any special icon when all
-     * the sources contained in it are stateless.
+     * Indicates that no special icon will be displayed by a safety sources group when all the
+     * sources contained in it are stateless.
      */
     public static final int STATELESS_ICON_TYPE_NONE = 0;
 
     /**
-     * Indicates that the safety sources group will be displayed with the privacy icon when all the
+     * Indicates that the privacy icon will be displayed by a safety sources group when all the
      * sources contained in it are stateless.
      */
     public static final int STATELESS_ICON_TYPE_PRIVACY = 1;
@@ -401,12 +428,12 @@ public final class SafetySourcesGroup implements Parcelable {
                 }
             }
 
-            int inferredGroupType = SAFETY_SOURCES_GROUP_TYPE_RIGID;
+            int inferredGroupType = SAFETY_SOURCES_GROUP_TYPE_STATELESS;
             if (hasOnlyIssueOnlySources) {
                 inferredGroupType = SAFETY_SOURCES_GROUP_TYPE_HIDDEN;
             } else if (summaryResId != Resources.ID_NULL
                     || statelessIconType != Resources.ID_NULL) {
-                inferredGroupType = SAFETY_SOURCES_GROUP_TYPE_COLLAPSIBLE;
+                inferredGroupType = SAFETY_SOURCES_GROUP_TYPE_STATEFUL;
             }
             int type =
                     BuilderUtils.validateIntDef(
@@ -415,8 +442,8 @@ public final class SafetySourcesGroup implements Parcelable {
                             false,
                             false,
                             inferredGroupType,
-                            SAFETY_SOURCES_GROUP_TYPE_COLLAPSIBLE,
-                            SAFETY_SOURCES_GROUP_TYPE_RIGID,
+                            SAFETY_SOURCES_GROUP_TYPE_STATEFUL,
+                            SAFETY_SOURCES_GROUP_TYPE_STATELESS,
                             SAFETY_SOURCES_GROUP_TYPE_HIDDEN);
             if (type == SAFETY_SOURCES_GROUP_TYPE_HIDDEN && !hasOnlyIssueOnlySources) {
                 throw new IllegalStateException(
@@ -429,11 +456,11 @@ public final class SafetySourcesGroup implements Parcelable {
                                 + "of type hidden");
             }
 
-            boolean isCollapsible = type == SAFETY_SOURCES_GROUP_TYPE_COLLAPSIBLE;
-            boolean isRigid = type == SAFETY_SOURCES_GROUP_TYPE_RIGID;
+            boolean isStateful = type == SAFETY_SOURCES_GROUP_TYPE_STATEFUL;
+            boolean isStateless = type == SAFETY_SOURCES_GROUP_TYPE_STATELESS;
             int titleResId =
                     BuilderUtils.validateResId(
-                            mTitleResId, "title", isCollapsible || isCollapsible, false);
+                            mTitleResId, "title", isStateful || isStateless, false);
 
             return new SafetySourcesGroup(
                     type, id, titleResId, summaryResId, statelessIconType, safetySources);

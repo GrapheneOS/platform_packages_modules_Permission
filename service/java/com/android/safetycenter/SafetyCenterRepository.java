@@ -484,12 +484,12 @@ final class SafetyCenterRepository {
         if (safetySourceStatus != null) {
             int sourceSeverityLevel = safetySourceStatus.getSeverityLevel();
 
-            if (externalSafetySource.hasEntryInRigidGroup()
+            if (externalSafetySource.hasEntryInStatelessGroup()
                     && sourceSeverityLevel != SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED) {
                 throw new IllegalArgumentException(
                         "Safety source: "
                                 + safetySourceId
-                                + " is in a rigid group but specified a severity level: "
+                                + " is in a stateless group but specified a severity level: "
                                 + sourceSeverityLevel);
             }
 
