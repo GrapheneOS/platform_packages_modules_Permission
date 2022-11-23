@@ -375,6 +375,8 @@ package android.safetycenter {
     field public static final int ISSUE_CATEGORY_DATA = 400; // 0x190
     field public static final int ISSUE_CATEGORY_DEVICE = 100; // 0x64
     field public static final int ISSUE_CATEGORY_GENERAL = 300; // 0x12c
+    field public static final int ISSUE_CATEGORY_PASSWORDS = 500; // 0x1f4
+    field public static final int ISSUE_CATEGORY_PERSONAL_SAFETY = 600; // 0x258
     field public static final int NOTIFICATION_BEHAVIOR_DELAYED = 200; // 0xc8
     field public static final int NOTIFICATION_BEHAVIOR_IMMEDIATELY = 300; // 0x12c
     field public static final int NOTIFICATION_BEHAVIOR_NEVER = 100; // 0x64

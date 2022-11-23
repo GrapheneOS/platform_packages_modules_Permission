@@ -139,7 +139,6 @@ import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.executeSa
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.refreshSafetySourcesWithReceiverPermissionAndWait
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.refreshSafetySourcesWithoutReceiverPermissionAndWait
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.refreshSpecificSafetySourcesWithReceiverPermissionAndWait
-import androidx.annotation.RequiresApi
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
@@ -215,16 +214,6 @@ class SafetyCenterManagerTest {
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_RECOMMENDATION)
             .build()
 
-    private val safetyCenterStatusDataRecommendationOneAlert: SafetyCenterStatus
-        @RequiresApi(UPSIDE_DOWN_CAKE)
-        get() =
-            SafetyCenterStatus.Builder(
-                    safetyCenterResourcesContext.getStringByName(
-                        "overall_severity_level_data_recommendation_title"),
-                    safetyCenterCtsData.getAlertString(1))
-                .setSeverityLevel(OVERALL_SEVERITY_LEVEL_RECOMMENDATION)
-                .build()
-
     private val safetyCenterStatusAccountRecommendationOneAlert =
         SafetyCenterStatus.Builder(
                 safetyCenterResourcesContext.getStringByName(
@@ -288,16 +277,6 @@ class SafetyCenterManagerTest {
                 safetyCenterCtsData.getAlertString(2))
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING)
             .build()
-
-    private val safetyCenterStatusDataCriticalOneAlert: SafetyCenterStatus
-        @RequiresApi(UPSIDE_DOWN_CAKE)
-        get() =
-            SafetyCenterStatus.Builder(
-                    safetyCenterResourcesContext.getStringByName(
-                        "overall_severity_level_critical_data_warning_title"),
-                    safetyCenterCtsData.getAlertString(1))
-                .setSeverityLevel(OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING)
-                .build()
 
     private val safetyCenterEntryOrGroupRecommendation =
         SafetyCenterEntryOrGroup(
@@ -2149,11 +2128,19 @@ class SafetyCenterManagerTest {
         safetyCenterCtsHelper.setConfig(ISSUE_ONLY_SOURCE_CONFIG)
         safetyCenterCtsHelper.setData(
             ISSUE_ONLY_ALL_OPTIONAL_ID,
-            SafetySourceCtsData.issuesOnly(safetySourceCtsData.recommendationDataIssue))
+            SafetySourceCtsData.issuesOnly(
+                safetySourceCtsData
+                    .defaultRecommendationIssueBuilder()
+                    .setIssueCategory(SafetySourceIssue.ISSUE_CATEGORY_DATA)
+                    .build()))
 
         val apiSafetyCenterStatus = safetyCenterManager.getSafetyCenterDataWithPermission().status
 
-        assertThat(apiSafetyCenterStatus).isEqualTo(safetyCenterStatusDataRecommendationOneAlert)
+        assertThat(apiSafetyCenterStatus)
+            .isEqualTo(
+                safetyCenterCtsData.safetyCenterStatusOneAlert(
+                    "overall_severity_level_data_recommendation_title",
+                    OVERALL_SEVERITY_LEVEL_RECOMMENDATION))
     }
 
     @Test
@@ -2162,11 +2149,103 @@ class SafetyCenterManagerTest {
         safetyCenterCtsHelper.setConfig(ISSUE_ONLY_SOURCE_CONFIG)
         safetyCenterCtsHelper.setData(
             ISSUE_ONLY_ALL_OPTIONAL_ID,
-            SafetySourceCtsData.issuesOnly(safetySourceCtsData.criticalResolvingDataIssue))
+            SafetySourceCtsData.issuesOnly(
+                safetySourceCtsData
+                    .defaultCriticalResolvingIssueBuilder()
+                    .setIssueCategory(SafetySourceIssue.ISSUE_CATEGORY_DATA)
+                    .build()))
 
         val apiSafetyCenterStatus = safetyCenterManager.getSafetyCenterDataWithPermission().status
 
-        assertThat(apiSafetyCenterStatus).isEqualTo(safetyCenterStatusDataCriticalOneAlert)
+        assertThat(apiSafetyCenterStatus)
+            .isEqualTo(
+                safetyCenterCtsData.safetyCenterStatusOneAlert(
+                    "overall_severity_level_critical_data_warning_title",
+                    OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING))
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getSafetyCenterData_withRecommendationPasswordsIssue_returnsDataRecommendationStatus() {
+        safetyCenterCtsHelper.setConfig(ISSUE_ONLY_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(
+            ISSUE_ONLY_ALL_OPTIONAL_ID,
+            SafetySourceCtsData.issuesOnly(
+                safetySourceCtsData
+                    .defaultRecommendationIssueBuilder()
+                    .setIssueCategory(SafetySourceIssue.ISSUE_CATEGORY_PASSWORDS)
+                    .build()))
+
+        val apiSafetyCenterStatus = safetyCenterManager.getSafetyCenterDataWithPermission().status
+
+        assertThat(apiSafetyCenterStatus)
+            .isEqualTo(
+                safetyCenterCtsData.safetyCenterStatusOneAlert(
+                    "overall_severity_level_passwords_recommendation_title",
+                    OVERALL_SEVERITY_LEVEL_RECOMMENDATION))
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getSafetyCenterData_withCriticalPasswordsIssue_returnsDataCriticalStatus() {
+        safetyCenterCtsHelper.setConfig(ISSUE_ONLY_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(
+            ISSUE_ONLY_ALL_OPTIONAL_ID,
+            SafetySourceCtsData.issuesOnly(
+                safetySourceCtsData
+                    .defaultCriticalResolvingIssueBuilder()
+                    .setIssueCategory(SafetySourceIssue.ISSUE_CATEGORY_PASSWORDS)
+                    .build()))
+
+        val apiSafetyCenterStatus = safetyCenterManager.getSafetyCenterDataWithPermission().status
+
+        assertThat(apiSafetyCenterStatus)
+            .isEqualTo(
+                safetyCenterCtsData.safetyCenterStatusOneAlert(
+                    "overall_severity_level_critical_passwords_warning_title",
+                    OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING))
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getSafetyCenterData_withRecommendationPersonalIssue_returnsDataRecommendationStatus() {
+        safetyCenterCtsHelper.setConfig(ISSUE_ONLY_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(
+            ISSUE_ONLY_ALL_OPTIONAL_ID,
+            SafetySourceCtsData.issuesOnly(
+                safetySourceCtsData
+                    .defaultRecommendationIssueBuilder()
+                    .setIssueCategory(SafetySourceIssue.ISSUE_CATEGORY_PERSONAL_SAFETY)
+                    .build()))
+
+        val apiSafetyCenterStatus = safetyCenterManager.getSafetyCenterDataWithPermission().status
+
+        assertThat(apiSafetyCenterStatus)
+            .isEqualTo(
+                safetyCenterCtsData.safetyCenterStatusOneAlert(
+                    "overall_severity_level_personal_recommendation_title",
+                    OVERALL_SEVERITY_LEVEL_RECOMMENDATION))
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getSafetyCenterData_withCriticalPersonalIssue_returnsDataCriticalStatus() {
+        safetyCenterCtsHelper.setConfig(ISSUE_ONLY_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(
+            ISSUE_ONLY_ALL_OPTIONAL_ID,
+            SafetySourceCtsData.issuesOnly(
+                safetySourceCtsData
+                    .defaultCriticalResolvingIssueBuilder()
+                    .setIssueCategory(SafetySourceIssue.ISSUE_CATEGORY_PERSONAL_SAFETY)
+                    .build()))
+
+        val apiSafetyCenterStatus = safetyCenterManager.getSafetyCenterDataWithPermission().status
+
+        assertThat(apiSafetyCenterStatus)
+            .isEqualTo(
+                safetyCenterCtsData.safetyCenterStatusOneAlert(
+                    "overall_severity_level_critical_personal_warning_title",
+                    OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING))
     }
 
     @Test
