@@ -361,6 +361,7 @@ package android.safetycenter {
     method @Nullable public android.safetycenter.SafetySourceIssue.Notification getCustomNotification();
     method @Nullable public String getDeduplicationId();
     method @NonNull public String getId();
+    method public int getIssueActionability();
     method public int getIssueCategory();
     method @NonNull public String getIssueTypeId();
     method public int getNotificationBehavior();
@@ -371,6 +372,9 @@ package android.safetycenter {
     method @NonNull public CharSequence getTitle();
     method public void writeToParcel(@NonNull android.os.Parcel, int);
     field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.SafetySourceIssue> CREATOR;
+    field public static final int ISSUE_ACTIONABILITY_AUTOMATIC = 200; // 0xc8
+    field public static final int ISSUE_ACTIONABILITY_MANUAL = 0; // 0x0
+    field public static final int ISSUE_ACTIONABILITY_TIP = 100; // 0x64
     field public static final int ISSUE_CATEGORY_ACCOUNT = 200; // 0xc8
     field public static final int ISSUE_CATEGORY_DATA = 400; // 0x190
     field public static final int ISSUE_CATEGORY_DEVICE = 100; // 0x64
@@ -409,6 +413,7 @@ package android.safetycenter {
     method @NonNull public android.safetycenter.SafetySourceIssue.Builder setAttributionTitle(@Nullable CharSequence);
     method @NonNull public android.safetycenter.SafetySourceIssue.Builder setCustomNotification(@Nullable android.safetycenter.SafetySourceIssue.Notification);
     method @NonNull public android.safetycenter.SafetySourceIssue.Builder setDeduplicationId(@Nullable String);
+    method @NonNull public android.safetycenter.SafetySourceIssue.Builder setIssueActionability(int);
     method @NonNull public android.safetycenter.SafetySourceIssue.Builder setIssueCategory(int);
     method @NonNull public android.safetycenter.SafetySourceIssue.Builder setNotificationBehavior(int);
     method @NonNull public android.safetycenter.SafetySourceIssue.Builder setOnDismissPendingIntent(@Nullable android.app.PendingIntent);
