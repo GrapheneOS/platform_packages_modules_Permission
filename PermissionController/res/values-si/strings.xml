@@ -32,6 +32,14 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“යෙදුම භාවිතයේ තිබෙන අතරතුර” තබා ගන්න"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"“මේ වතාවේ පමණක්” තබා ගන්න"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"තවත් තතු"</string>
+    <!-- no translation found for grant_dialog_button_allow_all_photos (3688746146785304900) -->
+    <skip />
+    <!-- no translation found for grant_dialog_button_allow_selected_photos (4098620850512492892) -->
+    <skip />
+    <!-- no translation found for grant_dialog_button_allow_more_selected_photos (2003524111894640605) -->
+    <skip />
+    <!-- no translation found for grant_dialog_button_dont_allow_more_selected_photos (6811842813929146242) -->
+    <skip />
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"කෙසේ වෙතත් ඉඩ නොදෙන්න"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"ඉවත ලන්න"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>කින් <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -186,6 +194,10 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"මාධ්‍ය වෙත ප්‍රවේශය පමණක් ඉඩ දෙන්න"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"සැම විටම ඉඩ දෙන්න"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"යෙදුම භාවිතයේදී පමණක් ඉඩ දෙන්න"</string>
+    <!-- no translation found for app_permission_button_allow_all_photos (914762549054270764) -->
+    <skip />
+    <!-- no translation found for app_permission_button_select_photos (1022930616634145364) -->
+    <skip />
     <string name="app_permission_button_ask" msgid="3342950658789427">"සෑම විටම ඉල්ලන්න"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"ඉඩ නොදෙන්න"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"ඉතා නිවැරදි ස්ථානය"</string>
@@ -468,6 +480,8 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&gt; හට මෙම උපාංගයේ &lt;b&gt;ඡායාරූප, වීඩියෝ, සංගීතය, ශ්‍රව්‍ය සහ වෙනත් ගොනු&lt;b&gt; වෙත ප්‍රවේශ වීමට ඉඩ දෙන්නද?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&gt; හට මෙම උපාංගයේ සංගීතය සහ ශ්‍රව්‍ය වෙත ප්‍රවේශ වීමට ඉඩ දෙන්නද?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&gt; හට මෙම උපාංගයේ ඇති ඡායාරූප සහ වීඩියෝ වෙත ප්‍රවේශ වීමට ඉඩ දෙන්නද?"</string>
+    <!-- no translation found for permgrouprequest_more_photos (4697813231897226261) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&gt; වෙත ශබ්දය පටි ගත කිරීමට ඉඩ දෙන්නද?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"යෙදුමට ඔබ යෙදුම භාවිත කරන අතරතුර ඕඩියෝ පටිගත කිරීමට පමණක් හැකි වනු ඇත"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; හට ඕඩියෝ පටිගත කිරීමට ඉඩ දෙන්නද?"</string>
@@ -578,4 +592,6 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"යෙදුම් ඔබ පිටපත් කර ඇති පාඨ, රූප හෝ වෙනත් අන්තර්ගතය වෙත ප්‍රවේශ වන විට පණිවුඩයක් පෙන්වන්න"</string>
     <string name="show_password_title" msgid="2877269286984684659">"මුරපද පෙන්වන්න"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"ඔබ ටයිප් කරන විට අනුලකුණු කෙටියෙන් පෙන්වන්න"</string>
+    <!-- no translation found for permission_rationale_message_template (4497650516269082051) -->
+    <skip />
 </resources>
