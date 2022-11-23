@@ -372,7 +372,7 @@
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Der kræves ingen tilladelser"</string>
     <string name="role_automotive_navigation_label" msgid="2701890757955474751">"Standardapp til navigation"</string>
     <string name="role_automotive_navigation_short_label" msgid="5165823092506922457">"App til navigation"</string>
-    <string name="role_automotive_navigation_description" msgid="7834601873792870134">"Apps, som kan give vejledning til søgninger efter interessante steder og detaljeret rutevejledning"</string>
+    <string name="role_automotive_navigation_description" msgid="7834601873792870134">"Apps, som kan give vejledning til søgninger efter interessante lokationer og detaljeret rutevejledning"</string>
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Vil du angive <xliff:g id="APP_NAME">%1$s</xliff:g> som din standardapp til navigation?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Der kræves ingen tilladelser"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> får tilladelse til at interagere med dine notifikationer og får adgang til dine tilladelser for Opkald, Sms, Kontakter og Kalender."</string>
