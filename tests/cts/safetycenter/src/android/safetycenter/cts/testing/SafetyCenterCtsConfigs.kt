@@ -553,7 +553,14 @@ object SafetyCenterCtsConfigs {
                     .build())
             .addSafetySourcesGroup(
                 safetySourcesGroupBuilder(STATIC_GROUP_ID)
-                    .setSummaryResId(Resources.ID_NULL)
+                    .apply {
+                        if (SdkLevel.isAtLeastU()) {
+                            setType(SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_RIGID)
+                            setStatelessIconType(SafetySourcesGroup.STATELESS_ICON_TYPE_PRIVACY)
+                        } else {
+                            setSummaryResId(Resources.ID_NULL)
+                        }
+                    }
                     .addSafetySource(
                         staticSafetySourceBuilder(STATIC_BAREBONE_ID)
                             .setSummaryResId(Resources.ID_NULL)
@@ -566,6 +573,14 @@ object SafetyCenterCtsConfigs {
             .addSafetySourcesGroup(
                 SafetySourcesGroup.Builder()
                     .setId(ISSUE_ONLY_GROUP_ID)
+                    .apply {
+                        if (SdkLevel.isAtLeastU()) {
+                            setType(SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_HIDDEN)
+                            setTitleResId(android.R.string.ok)
+                            setSummaryResId(android.R.string.ok)
+                            setStatelessIconType(SafetySourcesGroup.STATELESS_ICON_TYPE_PRIVACY)
+                        }
+                    }
                     .addSafetySource(
                         issueOnlySafetySourceBuilder(ISSUE_ONLY_BAREBONE_ID)
                             .setRefreshOnPageOpenAllowed(false)

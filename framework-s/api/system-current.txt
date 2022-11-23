@@ -552,6 +552,7 @@ package android.safetycenter.config {
     method @NonNull public android.safetycenter.config.SafetySourcesGroup.Builder setStatelessIconType(int);
     method @NonNull public android.safetycenter.config.SafetySourcesGroup.Builder setSummaryResId(@StringRes int);
     method @NonNull public android.safetycenter.config.SafetySourcesGroup.Builder setTitleResId(@StringRes int);
+    method @NonNull public android.safetycenter.config.SafetySourcesGroup.Builder setType(int);
   }
 
 }
