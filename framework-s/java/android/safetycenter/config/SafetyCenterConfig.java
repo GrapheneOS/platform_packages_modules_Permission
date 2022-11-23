@@ -129,8 +129,8 @@ public final class SafetyCenterConfig implements Parcelable {
         /**
          * Creates the {@link SafetyCenterConfig} defined by this {@link Builder}.
          *
-         * <p>Throws an {@link IllegalStateException} if any constraint on the Safety Center
-         * configuration is violated.
+         * @throws IllegalStateException if any constraint on the Safety Center configuration is
+         *     violated
          */
         @NonNull
         public SafetyCenterConfig build() {

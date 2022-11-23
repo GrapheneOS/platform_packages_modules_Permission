@@ -393,8 +393,7 @@ public final class SafetySourcesGroup implements Parcelable {
         /**
          * Creates the {@link SafetySourcesGroup} defined by this {@link Builder}.
          *
-         * <p>Throws an {@link IllegalStateException} if any constraint on the safety sources group
-         * is violated.
+         * @throws IllegalStateException if any constraint on the safety sources group is violated
          */
         @NonNull
         public SafetySourcesGroup build() {
