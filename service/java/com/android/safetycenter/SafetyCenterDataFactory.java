@@ -687,7 +687,7 @@ final class SafetyCenterDataFactory {
             case SafetySource.SAFETY_SOURCE_TYPE_STATIC:
                 return toDefaultSafetyCenterEntry(
                         safetySource,
-                        defaultPackageName,
+                        getStaticSourcePackageNameOrDefault(safetySource, defaultPackageName),
                         SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED,
                         SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON,
                         userId,
@@ -868,7 +868,7 @@ final class SafetyCenterDataFactory {
             case SafetySource.SAFETY_SOURCE_TYPE_STATIC:
                 return toDefaultSafetyCenterStaticEntry(
                         safetySource,
-                        defaultPackageName,
+                        getStaticSourcePackageNameOrDefault(safetySource, defaultPackageName),
                         userId,
                         isUserManaged,
                         isManagedUserRunning);
@@ -932,6 +932,19 @@ final class SafetyCenterDataFactory {
         }
 
         return safetySourceData.getStatus();
+    }
+
+    @NonNull
+    private static String getStaticSourcePackageNameOrDefault(
+            @NonNull SafetySource safetySource, @NonNull String defaultPackageName) {
+        if (!SdkLevel.isAtLeastU()) {
+            return defaultPackageName;
+        }
+        String sourcePackageName = safetySource.getOptionalPackageName();
+        if (sourcePackageName == null) {
+            return defaultPackageName;
+        }
+        return sourcePackageName;
     }
 
     @SafetyCenterStatus.OverallSeverityLevel
