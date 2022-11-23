@@ -16,6 +16,7 @@
 
 package com.android.permission.access.permission
 
+import android.Manifest
 import android.content.pm.PackageManager
 import android.content.pm.PermissionInfo
 import android.os.Build
@@ -38,6 +39,7 @@ import com.android.permission.access.external.PackageInfoUtils
 import com.android.permission.access.external.PackageState
 import com.android.permission.access.external.RoSystemProperties
 import com.android.permission.access.external.SigningDetails
+import com.android.permission.access.util.hasAnyBit
 import com.android.permission.access.util.hasBits
 import com.android.permission.compat.UserHandleCompat
 
@@ -76,6 +78,7 @@ class UidPermissionPolicy : SchemePolicy() {
             evaluateAllPermissionStatesForPackageAndUser(
                 packageState, null, userId, oldState, newState
             )
+            grantImplicitPermissions(packageState, userId, oldState, newState)
         }
     }
 
@@ -105,6 +108,12 @@ class UidPermissionPolicy : SchemePolicy() {
         }
 
         evaluateAllPermissionStatesForPackage(packageState, packageState, oldState, newState)
+        newState.systemState.userIds.forEachIndexed { _, it ->
+            grantImplicitPermissions(packageState, it, oldState, newState)
+        }
+
+        // TODO: add trimPermissionStates() here for removing the permission states that are
+        // no longer requested. (equivalent to revokeUnusedSharedUserPermissionsLocked())
     }
 
     private fun adoptPermissions(
@@ -487,18 +496,70 @@ class UidPermissionPolicy : SchemePolicy() {
             // should only affect the other static flags, but not dynamic flags like development or
             // role. This may be useful in the case of an updated system app.
             if (permission.isDevelopment) {
-                newFlags = newFlags or (oldFlags and PermissionFlags.API_GRANTED)
+                newFlags = newFlags or (oldFlags and PermissionFlags.OTHER_GRANTED)
             }
             if (permission.isRole) {
                 newFlags = newFlags or (oldFlags and PermissionFlags.ROLE_GRANTED)
             }
             setPermissionFlags(appId, permissionName, newFlags, userId, newState)
         } else if (permission.isRuntime) {
-            // TODO: add runtime permission
+            // TODO: add runtime permissions
         } else {
             Log.e(LOG_TAG, "Unknown protection level ${permission.protectionLevel}" +
                 "for permission ${permission.name} while evaluating permission state" +
                 "for appId $appId and userId $userId")
+        }
+
+        // TODO: revokePermissionsNoLongerImplicitLocked() for runtime permissions
+    }
+
+    private fun grantImplicitPermissions(
+        packageState: PackageState,
+        userId: Int,
+        oldState: AccessState,
+        newState: AccessState
+    ) {
+        val appId = packageState.appId
+        val androidPackage = packageState.androidPackage ?: return
+        androidPackage.implicitPermissions.forEachIndexed implicitPermissions@ {
+            _, implicitPermissionName ->
+            val implicitPermission = newState.systemState.permissions[implicitPermissionName]
+            checkNotNull(implicitPermission) {
+                "Unknown implicit permission $implicitPermissionName in split permissions"
+            }
+            if (!implicitPermission.isRuntime) {
+                return@implicitPermissions
+            }
+            val isNewPermission = getPermissionFlags(
+                appId, implicitPermissionName, userId, oldState
+            ) == 0
+            if (!isNewPermission) {
+                return@implicitPermissions
+            }
+            val sourcePermissions = newState.systemState
+                .implicitToSourcePermissions[implicitPermissionName] ?: return@implicitPermissions
+            var newFlags = 0
+            sourcePermissions.forEachIndexed sourcePermissions@ { _, sourcePermissionName ->
+                val sourcePermission = newState.systemState.permissions[sourcePermissionName]
+                checkNotNull(sourcePermission) {
+                    "Unknown source permission $sourcePermissionName in split permissions"
+                }
+                val sourceFlags = getPermissionFlags(appId, sourcePermissionName, userId, newState)
+                val isSourceGranted = sourceFlags.hasAnyBit(PermissionFlags.MASK_GRANTED)
+                val isNewGranted = newFlags.hasAnyBit(PermissionFlags.MASK_GRANTED)
+                val isGrantingNewFromRevoke = isSourceGranted && !isNewGranted
+                if (isSourceGranted == isNewGranted || isGrantingNewFromRevoke) {
+                    if (isGrantingNewFromRevoke) {
+                        newFlags = 0
+                    }
+                    newFlags = newFlags or (sourceFlags and PermissionFlags.MASK_RUNTIME)
+                    if (!sourcePermission.isRuntime && isSourceGranted) {
+                        newFlags = newFlags or PermissionFlags.OTHER_GRANTED
+                    }
+                }
+            }
+            newFlags = newFlags or PermissionFlags.IMPLICIT
+            setPermissionFlags(appId, implicitPermissionName, newFlags, userId, newState)
         }
     }
 
@@ -835,5 +896,14 @@ class UidPermissionPolicy : SchemePolicy() {
         private val LOG_TAG = UidPermissionPolicy::class.java.simpleName
 
         private const val PLATFORM_PACKAGE_NAME = "android"
+
+        // A set of permissions that we don't want to revoke when they are no longer implicit.
+        private val RETAIN_IMPLICIT_GRANT_PERMISSIONS = indexedSetOf(
+            Manifest.permission.ACCESS_MEDIA_LOCATION,
+            Manifest.permission.ACTIVITY_RECOGNITION,
+            Manifest.permission.READ_MEDIA_AUDIO,
+            Manifest.permission.READ_MEDIA_IMAGES,
+            Manifest.permission.READ_MEDIA_VIDEO,
+        )
     }
 }

@@ -44,6 +44,7 @@ interface AndroidPackage {
     val permissions: List<ParsedPermission>
     val permissionGroups: List<ParsedPermissionGroup>
     val requestedPermissions: List<String>
+    val implicitPermissions: List<String>
 }
 
 interface ParsedPermission {

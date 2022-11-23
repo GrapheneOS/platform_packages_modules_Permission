@@ -53,6 +53,7 @@ class SystemState private constructor(
     val systemExtPrivAppDenyPermissions: Map<String, Set<String>>,
     val apexPrivAppDenyPermissions: Map<String, Map<String, Set<String>>>,
     val privAppDenyPermissions: Map<String, Set<String>>,
+    val implicitToSourcePermissions: Map<String, Set<String>>,
     val permissionGroups: IndexedMap<String, PermissionGroupInfo>,
     val permissionTrees: IndexedMap<String, Permission>,
     val permissions: IndexedMap<String, Permission>
@@ -61,7 +62,7 @@ class SystemState private constructor(
         IntSet(), IndexedMap(), IndexedMap(), IntMap(), IntMap(), IntMap(), IndexedMap(),
         IndexedListSet(), IndexedMap(), IndexedMap(), IndexedMap(), IndexedMap(), IndexedMap(),
         IndexedMap(), IndexedMap(), IndexedMap(), IndexedMap(), IndexedMap(), IndexedMap(),
-        IndexedMap(), IndexedMap()
+        IndexedMap(), IndexedMap(), IndexedMap()
     )
 
     fun copy(): SystemState =
@@ -84,6 +85,7 @@ class SystemState private constructor(
             systemExtPrivAppDenyPermissions,
             apexPrivAppDenyPermissions,
             privAppDenyPermissions,
+            implicitToSourcePermissions,
             permissionGroups.copy { it },
             permissionTrees.copy { it },
             permissions.copy { it }

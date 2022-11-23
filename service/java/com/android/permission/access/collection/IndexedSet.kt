@@ -95,3 +95,6 @@ inline fun <T> IndexedSet<T>.retainAllIndexed(predicate: (Int, T) -> Boolean) {
         }
     }
 }
+
+@Suppress("NOTHING_TO_INLINE")
+inline fun <T> indexedSetOf(vararg elements: T): IndexedSet<T> = IndexedSet(elements.asList())
