@@ -45,6 +45,9 @@ final class SafetyCenterFlags {
     private static final String PROPERTY_NOTIFICATIONS_ENABLED =
             "safety_center_notifications_enabled";
 
+    private static final String PROPERTY_NOTIFICATIONS_ALLOWED_SOURCES =
+            "safety_center_notifications_allowed_sources";
+
     private static final String PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT =
             "safety_center_show_error_entries_on_timeout";
 
@@ -93,6 +96,7 @@ final class SafetyCenterFlags {
         fout.println("FLAGS");
         printFlag(fout, PROPERTY_SAFETY_CENTER_ENABLED, getSafetyCenterEnabled());
         printFlag(fout, PROPERTY_NOTIFICATIONS_ENABLED, getNotificationsEnabled());
+        printFlag(fout, PROPERTY_NOTIFICATIONS_ALLOWED_SOURCES, getNotificationsAllowedSourceIds());
         printFlag(fout, PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT, getShowErrorEntriesOnTimeout());
         printFlag(fout, PROPERTY_REPLACE_LOCK_SCREEN_ICON_ACTION, getReplaceLockScreenIconAction());
         printFlag(fout, PROPERTY_RESOLVING_ACTION_TIMEOUT_MILLIS, getResolvingActionTimeout());
@@ -127,6 +131,23 @@ final class SafetyCenterFlags {
     /** Returns whether Safety Center notifications are enabled. */
     static boolean getNotificationsEnabled() {
         return getBoolean(PROPERTY_NOTIFICATIONS_ENABLED, false);
+    }
+
+    /**
+     * Returns the IDs of sources that Safety Center can send notifications about, in addition to
+     * those permitted by the current XML config.
+     *
+     * <p>If the ID of a source appears on this list then Safety Center may send notifications about
+     * issues from that source, regardless of (overriding) the XML config. If the ID of a source is
+     * absent from this list, then Safety Center may send such notifications only if the XML config
+     * allows it.
+     *
+     * <p>Note that the {@code areNotificationsAllowed} config attribute is only available on API U+
+     * and therefore this is the only way to enable notifications for sources on Android T.
+     */
+    @NonNull
+    static ArraySet<String> getNotificationsAllowedSourceIds() {
+        return getCommaSeparatedStrings(PROPERTY_NOTIFICATIONS_ALLOWED_SOURCES);
     }
 
     /**
