@@ -569,6 +569,7 @@ object SafetyCenterCtsConfigs {
                     .addSafetySource(
                         staticSafetySourceBuilder(STATIC_ALL_OPTIONAL_ID)
                             .setSearchTermsResId(android.R.string.ok)
+                            .apply { if (SdkLevel.isAtLeastU()) setPackageName(CTS_PACKAGE_NAME) }
                             .build())
                     .build())
             .addSafetySourcesGroup(
@@ -648,6 +649,7 @@ object SafetyCenterCtsConfigs {
                     .addSafetySource(
                         staticAllProfileSafetySourceBuilder(STATIC_ALL_OPTIONAL_ID)
                             .setSearchTermsResId(android.R.string.ok)
+                            .apply { if (SdkLevel.isAtLeastU()) setPackageName(CTS_PACKAGE_NAME) }
                             .build())
                     .build())
             .addSafetySourcesGroup(

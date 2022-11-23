@@ -488,6 +488,7 @@ package android.safetycenter.config {
     method public int getInitialDisplayState();
     method @Nullable public String getIntentAction();
     method public int getMaxSeverityLevel();
+    method @Nullable public String getOptionalPackageName();
     method @NonNull public String getPackageName();
     method public int getProfile();
     method @StringRes public int getSearchTermsResId();

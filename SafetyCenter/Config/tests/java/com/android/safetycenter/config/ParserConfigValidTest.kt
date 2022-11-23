@@ -140,6 +140,7 @@ class ParserConfigValidTest {
                         .addSafetySource(
                             SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_STATIC)
                                 .setId("static_all_optional")
+                                .apply { if (SdkLevel.isAtLeastU()) setPackageName("package") }
                                 .setTitleResId(R.string.reference)
                                 .setTitleForWorkResId(R.string.reference)
                                 .setSummaryResId(R.string.reference)

@@ -75,6 +75,7 @@
                 profile="primary_profile_only"/>
             <static-safety-source
                 id="static_all_optional"
+                packageName="package"
                 title="@com.android.safetycenter.config.tests:string/reference"
                 titleForWork="@com.android.safetycenter.config.tests:string/reference"
                 summary="@com.android.safetycenter.config.tests:string/reference"

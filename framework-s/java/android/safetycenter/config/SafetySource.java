@@ -250,10 +250,14 @@ public final class SafetySource implements Parcelable {
     /**
      * Returns the package name of this safety source.
      *
-     * <p>This is the package that owns the source. The package will receive refresh requests and it
-     * can send set requests for the source.
+     * <p>This is the package that owns the source. The package will receive refresh requests, and
+     * it can send set requests for the source. The package is also used to create an explicit
+     * pending intent from the intent action in the package context.
      *
-     * <p>Throws an {@link UnsupportedOperationException} if the source is of type static.
+     * @throws UnsupportedOperationException if the source is of type {@link
+     *     SafetySource#SAFETY_SOURCE_TYPE_STATIC} even if the optional package name field for the
+     *     source is set, for sources of type {@link SafetySource#SAFETY_SOURCE_TYPE_STATIC} use
+     *     {@link SafetySource#getOptionalPackageName()}
      */
     @NonNull
     public String getPackageName() {
@@ -265,13 +269,36 @@ public final class SafetySource implements Parcelable {
     }
 
     /**
+     * Returns the package name of this safety source or null if undefined.
+     *
+     * <p>This is the package that owns the source.
+     *
+     * <p>The package is always defined for sources of type dynamic and issue-only. The package will
+     * receive refresh requests, and it can send set requests for sources of type dynamic and
+     * issue-only. The package is also used to create an explicit pending intent in the package
+     * context from the intent action if defined.
+     *
+     * <p>The package is optional for sources of type static. If present, the package is used to
+     * create an explicit pending intent in the package context from the intent action.
+     */
+    @Nullable
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    public String getOptionalPackageName() {
+        if (!SdkLevel.isAtLeastU()) {
+            throw new UnsupportedOperationException();
+        }
+        return mPackageName;
+    }
+
+    /**
      * Returns the resource id of the title of this safety source.
      *
      * <p>The id refers to a string resource that is either accessible from any resource context or
      * that is accessible from the same resource context that was used to load the Safety Center
      * configuration. The id is {@link Resources#ID_NULL} when a title is not provided.
      *
-     * <p>Throws an {@link UnsupportedOperationException} if the source is of type issue-only.
+     * @throws UnsupportedOperationException if the source is of type {@link
+     *     SafetySource#SAFETY_SOURCE_TYPE_ISSUE_ONLY}
      */
     @StringRes
     public int getTitleResId() {
@@ -289,8 +316,9 @@ public final class SafetySource implements Parcelable {
      * that is accessible from the same resource context that was used to load the Safety Center
      * configuration. The id is {@link Resources#ID_NULL} when a title for work is not provided.
      *
-     * <p>Throws an {@link UnsupportedOperationException} if the source is of type issue-only or if
-     * the profile property of the source is set to {@link SafetySource#PROFILE_PRIMARY}.
+     * @throws UnsupportedOperationException if the source is of type {@link
+     *     SafetySource#SAFETY_SOURCE_TYPE_ISSUE_ONLY} or if the profile property of the source is
+     *     set to {@link SafetySource#PROFILE_PRIMARY}
      */
     @StringRes
     public int getTitleForWorkResId() {
@@ -312,7 +340,8 @@ public final class SafetySource implements Parcelable {
      * that is accessible from the same resource context that was used to load the Safety Center
      * configuration. The id is {@link Resources#ID_NULL} when a summary is not provided.
      *
-     * <p>Throws an {@link UnsupportedOperationException} if the source is of type issue-only.
+     * @throws UnsupportedOperationException if the source is of type {@link
+     *     SafetySource#SAFETY_SOURCE_TYPE_ISSUE_ONLY}
      */
     @StringRes
     public int getSummaryResId() {
@@ -330,7 +359,8 @@ public final class SafetySource implements Parcelable {
      * source is displayed as an entry in the Safety Center page, and if the action is set to {@code
      * null} or if it does not resolve to an activity the source will be marked as disabled.
      *
-     * <p>Throws an {@link UnsupportedOperationException} if the source is of type issue-only.
+     * @throws UnsupportedOperationException if the source is of type {@link
+     *     SafetySource#SAFETY_SOURCE_TYPE_ISSUE_ONLY}
      */
     @Nullable
     public String getIntentAction() {
@@ -350,8 +380,9 @@ public final class SafetySource implements Parcelable {
     /**
      * Returns the initial display state of this safety source.
      *
-     * <p>Throws an {@link UnsupportedOperationException} if the source is of type static or
-     * issue-only.
+     * @throws UnsupportedOperationException if the source is of type {@link
+     *     SafetySource#SAFETY_SOURCE_TYPE_STATIC} or {@link
+     *     SafetySource#SAFETY_SOURCE_TYPE_ISSUE_ONLY}
      */
     @InitialDisplayState
     public int getInitialDisplayState() {
@@ -375,7 +406,8 @@ public final class SafetySource implements Parcelable {
      * android.safetycenter.SafetySourceData#SEVERITY_LEVEL_INFORMATION} even if the maximum
      * severity level is set to a lower value.
      *
-     * <p>Throws an {@link UnsupportedOperationException} if the source is of type static.
+     * @throws UnsupportedOperationException if the source is of type {@link
+     *     SafetySource#SAFETY_SOURCE_TYPE_STATIC}
      */
     public int getMaxSeverityLevel() {
         if (mType == SAFETY_SOURCE_TYPE_STATIC) {
@@ -392,7 +424,8 @@ public final class SafetySource implements Parcelable {
      * that is accessible from the same resource context that was used to load the Safety Center
      * configuration. The id is {@link Resources#ID_NULL} when search terms are not provided.
      *
-     * <p>Throws an {@link UnsupportedOperationException} if the source is of type issue-only.
+     * @throws UnsupportedOperationException if the source is of type {@link
+     *     SafetySource#SAFETY_SOURCE_TYPE_ISSUE_ONLY}
      */
     @StringRes
     public int getSearchTermsResId() {
@@ -406,7 +439,8 @@ public final class SafetySource implements Parcelable {
     /**
      * Returns the logging allowed property of this safety source.
      *
-     * <p>Throws an {@link UnsupportedOperationException} if the source is of type static.
+     * @throws UnsupportedOperationException if the source is of type {@link
+     *     SafetySource#SAFETY_SOURCE_TYPE_STATIC}
      */
     public boolean isLoggingAllowed() {
         if (mType == SAFETY_SOURCE_TYPE_STATIC) {
@@ -422,7 +456,8 @@ public final class SafetySource implements Parcelable {
      * <p>If set to {@code true}, a refresh request will be sent to the source when the Safety
      * Center page is opened.
      *
-     * <p>Throws an {@link UnsupportedOperationException} if the source is of type static.
+     * @throws UnsupportedOperationException if the source is of type {@link
+     *     SafetySource#SAFETY_SOURCE_TYPE_STATIC}
      */
     public boolean isRefreshOnPageOpenAllowed() {
         if (mType == SAFETY_SOURCE_TYPE_STATIC) {
@@ -832,7 +867,10 @@ public final class SafetySource implements Parcelable {
 
             String packageName = mPackageName;
             BuilderUtils.validateAttribute(
-                    packageName, "packageName", isDynamic || isIssueOnly, isStatic);
+                    packageName,
+                    "packageName",
+                    isDynamic || isIssueOnly,
+                    isStatic && !SdkLevel.isAtLeastU());
 
             int initialDisplayState =
                     BuilderUtils.validateIntDef(

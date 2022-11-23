@@ -337,7 +337,8 @@ class ParserConfigInvalidTest {
                     "ConfigStaticSafetySourceWithPackage",
                     R.raw.config_static_safety_source_with_package,
                     "Element static-safety-source invalid",
-                    "Prohibited attribute packageName present"),
+                    "Prohibited attribute packageName present",
+                    !SdkLevel.isAtLeastU()),
                 Params(
                     "ConfigStaticSafetySourceWithPrimaryAndWork",
                     R.raw.config_static_safety_source_with_primary_and_work,
