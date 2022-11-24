@@ -32,6 +32,14 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Behold \"Mens appen er i brug\""</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Behold \"Kun denne ene gang\""</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Mere info"</string>
+    <!-- no translation found for grant_dialog_button_allow_all_photos (3688746146785304900) -->
+    <skip />
+    <!-- no translation found for grant_dialog_button_allow_selected_photos (4098620850512492892) -->
+    <skip />
+    <!-- no translation found for grant_dialog_button_allow_more_selected_photos (2003524111894640605) -->
+    <skip />
+    <!-- no translation found for grant_dialog_button_dont_allow_more_selected_photos (6811842813929146242) -->
+    <skip />
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Tillad ikke alligevel"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Luk"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> ud af <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -186,6 +194,10 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Tillad kun adgang til mediefiler"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Tillad altid"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Tillad kun, mens appen er i brug"</string>
+    <!-- no translation found for app_permission_button_allow_all_photos (914762549054270764) -->
+    <skip />
+    <!-- no translation found for app_permission_button_select_photos (1022930616634145364) -->
+    <skip />
     <string name="app_permission_button_ask" msgid="3342950658789427">"Spørg hver gang"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Tillad ikke"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Præcis lokation"</string>
@@ -388,7 +400,7 @@
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Der kræves ingen tilladelser"</string>
     <string name="role_automotive_navigation_label" msgid="2701890757955474751">"Standardapp til navigation"</string>
     <string name="role_automotive_navigation_short_label" msgid="5165823092506922457">"App til navigation"</string>
-    <string name="role_automotive_navigation_description" msgid="7834601873792870134">"Apps, som kan give vejledning til søgninger efter interessante steder og detaljeret rutevejledning"</string>
+    <string name="role_automotive_navigation_description" msgid="7834601873792870134">"Apps, som kan give vejledning til søgninger efter interessante lokationer og detaljeret rutevejledning"</string>
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Vil du angive <xliff:g id="APP_NAME">%1$s</xliff:g> som din standardapp til navigation?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Der kræves ingen tilladelser"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> får tilladelse til at interagere med dine notifikationer og får adgang til dine tilladelser for Opkald, Sms, Kontakter og Kalender."</string>
@@ -468,6 +480,8 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Vil du give &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; adgang til &lt;b&gt;billeder, videoer, musik, lyd og andre filer&lt;/b&gt; på denne enhed?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Vil du give &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; adgang til musik og lyd på denne enhed?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Vil du give &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; adgang til billeder og videoer på denne enhed?"</string>
+    <!-- no translation found for permgrouprequest_more_photos (4697813231897226261) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Vil du give &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tilladelse til at optage lyd?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Appen kan kun optage lyd, mens du bruger appen"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Vil du give &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tilladelse til at optage lyd?"</string>
@@ -578,4 +592,6 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Vis en meddelelse, når apps får adgang til tekst, billeder eller andet indhold, du har kopieret"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Vis adgangskoder"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Vis kort tegnene, mens du skriver"</string>
+    <!-- no translation found for permission_rationale_message_template (4497650516269082051) -->
+    <skip />
 </resources>
