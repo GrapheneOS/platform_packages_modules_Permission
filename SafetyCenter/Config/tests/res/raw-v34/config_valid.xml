@@ -75,6 +75,7 @@
                 profile="primary_profile_only"/>
             <static-safety-source
                 id="static_all_optional"
+                packageName="package"
                 title="@com.android.safetycenter.config.tests:string/reference"
                 titleForWork="@com.android.safetycenter.config.tests:string/reference"
                 summary="@com.android.safetycenter.config.tests:string/reference"
@@ -116,6 +117,69 @@
                 id="mixed_static_barebone"
                 title="@com.android.safetycenter.config.tests:string/reference"
                 intentAction="intent"
+                profile="primary_profile_only"/>
+        </safety-sources-group>
+        <safety-sources-group
+            type="stateful"
+            id="stateful_barebone"
+            title="@com.android.safetycenter.config.tests:string/reference">
+            <static-safety-source
+                id="stateful_barebone_source"
+                title="@com.android.safetycenter.config.tests:string/reference"
+                intentAction="intent"
+                profile="primary_profile_only"/>
+        </safety-sources-group>
+        <safety-sources-group
+            type="stateful"
+            id="stateful_all_optional"
+            title="@com.android.safetycenter.config.tests:string/reference"
+            summary="@com.android.safetycenter.config.tests:string/reference"
+            statelessIconType="privacy">
+            <static-safety-source
+                id="stateful_all_optional_source"
+                title="@com.android.safetycenter.config.tests:string/reference"
+                intentAction="intent"
+                profile="primary_profile_only"/>
+        </safety-sources-group>
+        <safety-sources-group
+            type="stateless"
+            id="stateless_barebone"
+            title="@com.android.safetycenter.config.tests:string/reference">
+            <static-safety-source
+                id="stateless_barebone_source"
+                title="@com.android.safetycenter.config.tests:string/reference"
+                intentAction="intent"
+                profile="primary_profile_only"/>
+        </safety-sources-group>
+        <safety-sources-group
+            type="stateless"
+            id="stateless_all_optional"
+            title="@com.android.safetycenter.config.tests:string/reference"
+            summary="@com.android.safetycenter.config.tests:string/reference"
+            statelessIconType="privacy">
+            <static-safety-source
+                id="stateless_all_optional_source"
+                title="@com.android.safetycenter.config.tests:string/reference"
+                intentAction="intent"
+                profile="primary_profile_only"/>
+        </safety-sources-group>
+        <safety-sources-group
+            type="hidden"
+            id="hidden_barebone">
+            <issue-only-safety-source
+                id="hidden_barebone_source"
+                packageName="package"
+                profile="primary_profile_only"/>
+        </safety-sources-group>
+        <safety-sources-group
+            type="hidden"
+            id="hidden_all_optional"
+            title="@com.android.safetycenter.config.tests:string/reference"
+            summary="@com.android.safetycenter.config.tests:string/reference"
+            statelessIconType="privacy">
+            <issue-only-safety-source
+                id="hidden_all_optional_source"
+                packageName="package"
                 profile="primary_profile_only"/>
         </safety-sources-group>
     </safety-sources-config>

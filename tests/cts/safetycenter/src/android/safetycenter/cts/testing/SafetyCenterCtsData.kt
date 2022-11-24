@@ -75,6 +75,19 @@ class SafetyCenterCtsData(context: Context) {
             .build()
 
     /**
+     * Returns a [SafetyCenterStatus] with one alert and the given [statusResource] and
+     * [overallSeverityLevel].
+     */
+    fun safetyCenterStatusOneAlert(
+        statusResource: String,
+        overallSeverityLevel: Int
+    ): SafetyCenterStatus =
+        SafetyCenterStatus.Builder(
+                safetyCenterResourcesContext.getStringByName(statusResource), getAlertString(1))
+            .setSeverityLevel(overallSeverityLevel)
+            .build()
+
+    /**
      * Returns the [SafetyCenterStatus] used when the overall status is critical and no scan is in
      * progress for the given number of alerts.
      */

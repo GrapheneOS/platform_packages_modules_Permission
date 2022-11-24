@@ -240,7 +240,7 @@ class SafetySourceCtsData(private val context: Context) {
      * A [SafetySourceIssue.Builder] with a [SEVERITY_LEVEL_RECOMMENDATION] and a redirecting
      * [Action].
      */
-    private fun defaultRecommendationIssueBuilder() =
+    fun defaultRecommendationIssueBuilder() =
         SafetySourceIssue.Builder(
                 RECOMMENDATION_ISSUE_ID,
                 "Recommendation issue title",
@@ -277,17 +277,6 @@ class SafetySourceCtsData(private val context: Context) {
         defaultRecommendationIssueBuilder()
             .setIssueCategory(SafetySourceIssue.ISSUE_CATEGORY_DEVICE)
             .build()
-
-    /**
-     * Data related [SafetySourceIssue] with a [SEVERITY_LEVEL_RECOMMENDATION] and a redirecting
-     * [Action].
-     */
-    val recommendationDataIssue: SafetySourceIssue
-        @RequiresApi(UPSIDE_DOWN_CAKE)
-        get() =
-            defaultRecommendationIssueBuilder()
-                .setIssueCategory(SafetySourceIssue.ISSUE_CATEGORY_DATA)
-                .build()
 
     private val dismissIssuePendingIntent =
         broadcastPendingIntent(
@@ -444,17 +433,6 @@ class SafetySourceCtsData(private val context: Context) {
         defaultCriticalResolvingIssueBuilder()
             .setIssueCategory(SafetySourceIssue.ISSUE_CATEGORY_DEVICE)
             .build()
-
-    /**
-     * Data related [SafetySourceIssue] with a [SEVERITY_LEVEL_CRITICAL_WARNING] and a resolving
-     * [Action].
-     */
-    val criticalResolvingDataIssue: SafetySourceIssue
-        @RequiresApi(UPSIDE_DOWN_CAKE)
-        get() =
-            defaultCriticalResolvingIssueBuilder()
-                .setIssueCategory(SafetySourceIssue.ISSUE_CATEGORY_DATA)
-                .build()
 
     /** A [SafetySourceData.Builder] with a [SEVERITY_LEVEL_CRITICAL_WARNING] status. */
     fun defaultCriticalDataBuilder() =

@@ -75,6 +75,20 @@ class SafetySourceTest {
     }
 
     @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getOptionalPackageName_returnsPackageNameOrNull() {
+        assertThat(DYNAMIC_BAREBONE.optionalPackageName).isEqualTo(PACKAGE_NAME)
+        assertThat(dynamicAllOptional().optionalPackageName).isEqualTo(PACKAGE_NAME)
+        assertThat(DYNAMIC_HIDDEN.optionalPackageName).isEqualTo(PACKAGE_NAME)
+        assertThat(DYNAMIC_HIDDEN_WITH_SEARCH.optionalPackageName).isEqualTo(PACKAGE_NAME)
+        assertThat(DYNAMIC_DISABLED.optionalPackageName).isEqualTo(PACKAGE_NAME)
+        assertThat(STATIC_BAREBONE.optionalPackageName).isNull()
+        assertThat(STATIC_ALL_OPTIONAL.optionalPackageName).isEqualTo(PACKAGE_NAME)
+        assertThat(ISSUE_ONLY_BAREBONE.optionalPackageName).isEqualTo(PACKAGE_NAME)
+        assertThat(issueOnlyAllOptional().optionalPackageName).isEqualTo(PACKAGE_NAME)
+    }
+
+    @Test
     fun getTitleResId_returnsTitleResIdOrThrows() {
         assertThat(DYNAMIC_BAREBONE.titleResId).isEqualTo(REFERENCE_RES_ID)
         assertThat(dynamicAllOptional().titleResId).isEqualTo(REFERENCE_RES_ID)
@@ -702,6 +716,7 @@ class SafetySourceTest {
         private val STATIC_ALL_OPTIONAL =
             SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_STATIC)
                 .setId(STATIC_ALL_OPTIONAL_ID)
+                .apply { if (SdkLevel.isAtLeastU()) setPackageName(PACKAGE_NAME) }
                 .setTitleResId(REFERENCE_RES_ID)
                 .setTitleForWorkResId(REFERENCE_RES_ID)
                 .setSummaryResId(REFERENCE_RES_ID)

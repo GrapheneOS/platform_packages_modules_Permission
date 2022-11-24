@@ -60,6 +60,7 @@ public final class SafetyCenterConfigParser {
     private static final String ATTR_SAFETY_SOURCES_GROUP_TITLE = "title";
     private static final String ATTR_SAFETY_SOURCES_GROUP_SUMMARY = "summary";
     private static final String ATTR_SAFETY_SOURCES_GROUP_STATELESS_ICON_TYPE = "statelessIconType";
+    private static final String ATTR_SAFETY_SOURCES_GROUP_TYPE = "type";
     private static final String ATTR_SAFETY_SOURCE_ID = "id";
     private static final String ATTR_SAFETY_SOURCE_PACKAGE_NAME = "packageName";
     private static final String ATTR_SAFETY_SOURCE_TITLE = "title";
@@ -77,6 +78,9 @@ public final class SafetyCenterConfigParser {
     private static final String ATTR_SAFETY_SOURCE_DEDUPLICATION_GROUP = "deduplicationGroup";
     private static final String ENUM_STATELESS_ICON_TYPE_NONE = "none";
     private static final String ENUM_STATELESS_ICON_TYPE_PRIVACY = "privacy";
+    private static final String ENUM_GROUP_TYPE_STATEFUL = "stateful";
+    private static final String ENUM_GROUP_TYPE_STATELESS = "stateless";
+    private static final String ENUM_GROUP_TYPE_HIDDEN = "hidden";
     private static final String ENUM_PROFILE_PRIMARY = "primary_profile_only";
     private static final String ENUM_PROFILE_ALL = "all_profiles";
     private static final String ENUM_INITIAL_DISPLAY_STATE_ENABLED = "enabled";
@@ -186,6 +190,18 @@ public final class SafetyCenterConfigParser {
                                     name,
                                     parser.getAttributeName(i),
                                     resources));
+                    break;
+                case ATTR_SAFETY_SOURCES_GROUP_TYPE:
+                    if (SdkLevel.isAtLeastU()) {
+                        builder.setType(
+                                parseGroupType(
+                                        parser.getAttributeValue(i),
+                                        name,
+                                        parser.getAttributeName(i),
+                                        resources));
+                    } else {
+                        throw attributeUnexpected(name, parser.getAttributeName(i));
+                    }
                     break;
                 default:
                     throw attributeUnexpected(name, parser.getAttributeName(i));
@@ -524,6 +540,25 @@ public final class SafetyCenterConfigParser {
                 return SafetySourcesGroup.STATELESS_ICON_TYPE_NONE;
             case ENUM_STATELESS_ICON_TYPE_PRIVACY:
                 return SafetySourcesGroup.STATELESS_ICON_TYPE_PRIVACY;
+            default:
+                throw attributeInvalid(valueToParse, parent, name);
+        }
+    }
+
+    private static int parseGroupType(
+            @NonNull String valueString,
+            @NonNull String parent,
+            @NonNull String name,
+            @NonNull Resources resources)
+            throws ParseException {
+        String valueToParse = getValueToParse(valueString, parent, name, resources);
+        switch (valueToParse) {
+            case ENUM_GROUP_TYPE_STATEFUL:
+                return SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_STATEFUL;
+            case ENUM_GROUP_TYPE_STATELESS:
+                return SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_STATELESS;
+            case ENUM_GROUP_TYPE_HIDDEN:
+                return SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_HIDDEN;
             default:
                 throw attributeInvalid(valueToParse, parent, name);
         }

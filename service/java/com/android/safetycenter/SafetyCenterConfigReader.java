@@ -315,14 +315,15 @@ final class SafetyCenterConfigReader {
                         continue;
                     }
 
-                    boolean hasEntryInRigidGroup =
+                    boolean hasEntryInStatelessGroup =
                             safetySource.getType() == SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC
                                     && safetySourcesGroup.getType()
-                                            == SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_RIGID;
+                                            == SafetySourcesGroup
+                                                    .SAFETY_SOURCES_GROUP_TYPE_STATELESS;
 
                     externalSafetySources.put(
                             safetySource.getId(),
-                            new ExternalSafetySource(safetySource, hasEntryInRigidGroup));
+                            new ExternalSafetySource(safetySource, hasEntryInStatelessGroup));
                 }
             }
 
@@ -405,12 +406,12 @@ final class SafetyCenterConfigReader {
     /** A wrapper class around a {@link SafetySource} that is providing data externally. */
     static final class ExternalSafetySource {
         @NonNull private final SafetySource mSafetySource;
-        @NonNull private final boolean mHasEntryInRigidGroup;
+        @NonNull private final boolean mHasEntryInStatelessGroup;
 
         private ExternalSafetySource(
-                @NonNull SafetySource safetySource, boolean hasEntryInRigidGroup) {
+                @NonNull SafetySource safetySource, boolean hasEntryInStatelessGroup) {
             mSafetySource = safetySource;
-            mHasEntryInRigidGroup = hasEntryInRigidGroup;
+            mHasEntryInStatelessGroup = hasEntryInStatelessGroup;
         }
 
         /** Returns the external {@link SafetySource}. */
@@ -420,11 +421,11 @@ final class SafetyCenterConfigReader {
         }
 
         /**
-         * Returns whether the external {@link SafetySource} has an entry in a rigid {@link
+         * Returns whether the external {@link SafetySource} has an entry in a stateless {@link
          * SafetySourcesGroup}.
          */
-        boolean hasEntryInRigidGroup() {
-            return mHasEntryInRigidGroup;
+        boolean hasEntryInStatelessGroup() {
+            return mHasEntryInStatelessGroup;
         }
 
         @Override
@@ -432,13 +433,13 @@ final class SafetyCenterConfigReader {
             if (this == o) return true;
             if (!(o instanceof ExternalSafetySource)) return false;
             ExternalSafetySource that = (ExternalSafetySource) o;
-            return mHasEntryInRigidGroup == that.mHasEntryInRigidGroup
+            return mHasEntryInStatelessGroup == that.mHasEntryInStatelessGroup
                     && mSafetySource.equals(that.mSafetySource);
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(mSafetySource, mHasEntryInRigidGroup);
+            return Objects.hash(mSafetySource, mHasEntryInStatelessGroup);
         }
 
         @Override
@@ -446,8 +447,8 @@ final class SafetyCenterConfigReader {
             return "ExternalSafetySource{"
                     + "mSafetySource="
                     + mSafetySource
-                    + ", mHasEntryInRigidGroup="
-                    + mHasEntryInRigidGroup
+                    + ", mHasEntryInStatelessGroup="
+                    + mHasEntryInStatelessGroup
                     + '}';
         }
     }
