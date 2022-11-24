@@ -140,6 +140,7 @@ class ParserConfigValidTest {
                         .addSafetySource(
                             SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_STATIC)
                                 .setId("static_all_optional")
+                                .apply { if (SdkLevel.isAtLeastU()) setPackageName("package") }
                                 .setTitleResId(R.string.reference)
                                 .setTitleForWorkResId(R.string.reference)
                                 .setSummaryResId(R.string.reference)
@@ -200,6 +201,94 @@ class ParserConfigValidTest {
                                 .setProfile(SafetySource.PROFILE_PRIMARY)
                                 .build())
                         .build())
+                .apply {
+                    if (SdkLevel.isAtLeastU()) {
+                        addSafetySourcesGroup(
+                            SafetySourcesGroup.Builder()
+                                .setType(SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_STATEFUL)
+                                .setId("stateful_barebone")
+                                .setTitleResId(R.string.reference)
+                                .addSafetySource(
+                                    SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_STATIC)
+                                        .setId("stateful_barebone_source")
+                                        .setTitleResId(R.string.reference)
+                                        .setIntentAction("intent")
+                                        .setProfile(SafetySource.PROFILE_PRIMARY)
+                                        .build())
+                                .build())
+                        addSafetySourcesGroup(
+                            SafetySourcesGroup.Builder()
+                                .setType(SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_STATEFUL)
+                                .setId("stateful_all_optional")
+                                .setTitleResId(R.string.reference)
+                                .setSummaryResId(R.string.reference)
+                                .setStatelessIconType(
+                                    SafetySourcesGroup.STATELESS_ICON_TYPE_PRIVACY)
+                                .addSafetySource(
+                                    SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_STATIC)
+                                        .setId("stateful_all_optional_source")
+                                        .setTitleResId(R.string.reference)
+                                        .setIntentAction("intent")
+                                        .setProfile(SafetySource.PROFILE_PRIMARY)
+                                        .build())
+                                .build())
+                        addSafetySourcesGroup(
+                            SafetySourcesGroup.Builder()
+                                .setType(SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_STATELESS)
+                                .setId("stateless_barebone")
+                                .setTitleResId(R.string.reference)
+                                .addSafetySource(
+                                    SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_STATIC)
+                                        .setId("stateless_barebone_source")
+                                        .setTitleResId(R.string.reference)
+                                        .setIntentAction("intent")
+                                        .setProfile(SafetySource.PROFILE_PRIMARY)
+                                        .build())
+                                .build())
+                        addSafetySourcesGroup(
+                            SafetySourcesGroup.Builder()
+                                .setType(SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_STATELESS)
+                                .setId("stateless_all_optional")
+                                .setTitleResId(R.string.reference)
+                                .setSummaryResId(R.string.reference)
+                                .setStatelessIconType(
+                                    SafetySourcesGroup.STATELESS_ICON_TYPE_PRIVACY)
+                                .addSafetySource(
+                                    SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_STATIC)
+                                        .setId("stateless_all_optional_source")
+                                        .setTitleResId(R.string.reference)
+                                        .setIntentAction("intent")
+                                        .setProfile(SafetySource.PROFILE_PRIMARY)
+                                        .build())
+                                .build())
+                        addSafetySourcesGroup(
+                            SafetySourcesGroup.Builder()
+                                .setType(SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_HIDDEN)
+                                .setId("hidden_barebone")
+                                .addSafetySource(
+                                    SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY)
+                                        .setId("hidden_barebone_source")
+                                        .setPackageName("package")
+                                        .setProfile(SafetySource.PROFILE_PRIMARY)
+                                        .build())
+                                .build())
+                        addSafetySourcesGroup(
+                            SafetySourcesGroup.Builder()
+                                .setType(SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_HIDDEN)
+                                .setId("hidden_all_optional")
+                                .setTitleResId(R.string.reference)
+                                .setSummaryResId(R.string.reference)
+                                .setStatelessIconType(
+                                    SafetySourcesGroup.STATELESS_ICON_TYPE_PRIVACY)
+                                .addSafetySource(
+                                    SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY)
+                                        .setId("hidden_all_optional_source")
+                                        .setPackageName("package")
+                                        .setProfile(SafetySource.PROFILE_PRIMARY)
+                                        .build())
+                                .build())
+                    }
+                }
                 .build()
         assertThat(actual).isEqualTo(expected)
     }
