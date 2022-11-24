@@ -261,8 +261,14 @@ final class PendingIntentFactory {
                 packageContext, requestCode, intent, PendingIntent.FLAG_IMMUTABLE);
     }
 
-    @NonNull
-    private static PendingIntent getActivityPendingIntent(
+    /**
+     * Creates a {@link PendingIntent} to start an Activity from the given {@code packageContext}.
+     *
+     * <p>This function can only return {@code null} if the {@link PendingIntent#FLAG_NO_CREATE}
+     * flag is passed in.
+     */
+    @Nullable
+    static PendingIntent getActivityPendingIntent(
             @NonNull Context packageContext, int requestCode, @NonNull Intent intent, int flags) {
         // This call requires Binder identity to be cleared for getIntentSender() to be allowed to
         // send as another package.
