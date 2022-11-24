@@ -154,6 +154,60 @@ public final class SafetySourceIssue implements Parcelable {
     @TargetApi(UPSIDE_DOWN_CAKE)
     public @interface NotificationBehavior {}
 
+    /**
+     * An issue which requires manual user input to be resolved.
+     *
+     * <p>This is the default.
+     */
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    public static final int ISSUE_ACTIONABILITY_MANUAL = 0;
+
+    /**
+     * An issue which is just a "tip" and may not require any user input.
+     *
+     * <p>It is still possible to provide {@link Action}s to e.g. "learn more" about it or
+     * acknowledge it.
+     */
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    public static final int ISSUE_ACTIONABILITY_TIP = 100;
+
+    /**
+     * An issue which has already been actioned and may not require any user input.
+     *
+     * <p>It is still possible to provide {@link Action}s to e.g. "learn more" about it or
+     * acknowledge it.
+     */
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    public static final int ISSUE_ACTIONABILITY_AUTOMATIC = 200;
+
+    /**
+     * All possible issue actionability.
+     *
+     * <p>An issue's actionability represent what action is expected from the user as a result of
+     * showing them this issue.
+     *
+     * <p>If the user needs to manually resolve it; this is typically achieved using an {@link
+     * Action} (e.g. by resolving the issue directly through the Safety Center screen, or by
+     * navigating to another page).
+     *
+     * <p>If the issue does not need to be resolved manually by the user, it is possible not to
+     * provide any {@link Action}. However, this may still be desirable to e.g. to "learn more"
+     * about it or acknowledge it.
+     *
+     * @hide
+     * @see Builder#setIssueActionability(int)
+     */
+    @IntDef(
+            prefix = {"ISSUE_ACTIONABILITY_"},
+            value = {
+                ISSUE_ACTIONABILITY_MANUAL,
+                ISSUE_ACTIONABILITY_TIP,
+                ISSUE_ACTIONABILITY_AUTOMATIC
+            })
+    @Retention(RetentionPolicy.SOURCE)
+    @TargetApi(UPSIDE_DOWN_CAKE)
+    public @interface IssueActionability {}
+
     @NonNull
     public static final Creator<SafetySourceIssue> CREATOR =
             new Creator<SafetySourceIssue>() {
@@ -183,6 +237,7 @@ public final class SafetySourceIssue implements Parcelable {
                         builder.setAttributionTitle(
                                 TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in));
                         builder.setDeduplicationId(in.readString());
+                        builder.setIssueActionability(in.readInt());
                     }
                     return builder.build();
                 }
@@ -206,6 +261,7 @@ public final class SafetySourceIssue implements Parcelable {
     @NotificationBehavior private final int mNotificationBehavior;
     @Nullable private final CharSequence mAttributionTitle;
     @Nullable private final String mDeduplicationId;
+    @IssueActionability private final int mIssueActionability;
 
     private SafetySourceIssue(
             @NonNull String id,
@@ -220,7 +276,8 @@ public final class SafetySourceIssue implements Parcelable {
             @Nullable Notification customNotification,
             @NotificationBehavior int notificationBehavior,
             @Nullable CharSequence attributionTitle,
-            @Nullable String deduplicationId) {
+            @Nullable String deduplicationId,
+            @IssueActionability int issueActionability) {
         this.mId = id;
         this.mTitle = title;
         this.mSubtitle = subtitle;
@@ -234,6 +291,7 @@ public final class SafetySourceIssue implements Parcelable {
         this.mNotificationBehavior = notificationBehavior;
         this.mAttributionTitle = attributionTitle;
         this.mDeduplicationId = deduplicationId;
+        this.mIssueActionability = issueActionability;
     }
 
     /**
@@ -429,6 +487,29 @@ public final class SafetySourceIssue implements Parcelable {
         return mDeduplicationId;
     }
 
+    /**
+     * Returns the {@link IssueActionability} for this issue which determines what type of action is
+     * required from the user:
+     *
+     * <ul>
+     *   <li>If {@link #ISSUE_ACTIONABILITY_MANUAL} then user input is required to resolve the issue
+     *   <li>If {@link #ISSUE_ACTIONABILITY_TIP} then the user needs to review this issue as a tip
+     *       to improve their overall safety, and possibly acknowledge it
+     *   <li>If {@link #ISSUE_ACTIONABILITY_AUTOMATIC} then the user needs to review this issue as
+     *       something that has been resolved on their behalf, and possibly acknowledge it
+     * </ul>
+     *
+     * @see Builder#setIssueActionability(int)
+     */
+    @IssueActionability
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    public int getIssueActionability() {
+        if (!SdkLevel.isAtLeastU()) {
+            throw new UnsupportedOperationException();
+        }
+        return mIssueActionability;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -450,6 +531,7 @@ public final class SafetySourceIssue implements Parcelable {
             dest.writeInt(mNotificationBehavior);
             TextUtils.writeToParcel(mAttributionTitle, dest, flags);
             dest.writeString(mDeduplicationId);
+            dest.writeInt(mIssueActionability);
         }
     }
 
@@ -470,7 +552,8 @@ public final class SafetySourceIssue implements Parcelable {
                 && Objects.equals(mCustomNotification, that.mCustomNotification)
                 && mNotificationBehavior == that.mNotificationBehavior
                 && TextUtils.equals(mAttributionTitle, that.mAttributionTitle)
-                && TextUtils.equals(mDeduplicationId, that.mDeduplicationId);
+                && TextUtils.equals(mDeduplicationId, that.mDeduplicationId)
+                && mIssueActionability == that.mIssueActionability;
     }
 
     @Override
@@ -488,7 +571,8 @@ public final class SafetySourceIssue implements Parcelable {
                 mCustomNotification,
                 mNotificationBehavior,
                 mAttributionTitle,
-                mDeduplicationId);
+                mDeduplicationId,
+                mIssueActionability);
     }
 
     @Override
@@ -520,6 +604,8 @@ public final class SafetySourceIssue implements Parcelable {
                 + mAttributionTitle
                 + ", mDeduplicationId="
                 + mDeduplicationId
+                + ", mIssueActionability="
+                + mIssueActionability
                 + '}';
     }
 
@@ -923,6 +1009,10 @@ public final class SafetySourceIssue implements Parcelable {
         @NotificationBehavior
         private int mNotificationBehavior = NOTIFICATION_BEHAVIOR_UNSPECIFIED;
 
+        @SuppressLint("NewApi")
+        @IssueActionability
+        private int mIssueActionability = ISSUE_ACTIONABILITY_MANUAL;
+
         /** Creates a {@link Builder} for a {@link SafetySourceIssue}. */
         public Builder(
                 @NonNull String id,
@@ -1065,13 +1155,38 @@ public final class SafetySourceIssue implements Parcelable {
             return this;
         }
 
+        /**
+         * Sets the issue actionability of the issue.
+         *
+         * <p>Must be one of {@link #ISSUE_ACTIONABILITY_MANUAL} (default), {@link
+         * #ISSUE_ACTIONABILITY_TIP}, {@link #ISSUE_ACTIONABILITY_AUTOMATIC}.
+         *
+         * @see #getIssueActionability()
+         */
+        @NonNull
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        public Builder setIssueActionability(@IssueActionability int issueActionability) {
+            if (!SdkLevel.isAtLeastU()) {
+                throw new UnsupportedOperationException();
+            }
+            mIssueActionability = validateIssueActionability(issueActionability);
+            return this;
+        }
+
         /** Creates the {@link SafetySourceIssue} defined by this {@link Builder}. */
         @NonNull
         public SafetySourceIssue build() {
             List<SafetySourceIssue.Action> actions = unmodifiableList(new ArrayList<>(mActions));
             Action.enforceUniqueActionIds(
                     actions, "Safety source issue cannot have duplicate action ids");
-            checkArgument(!actions.isEmpty(), "Safety source issue must contain at least 1 action");
+            if (SdkLevel.isAtLeastU()) {
+                checkArgument(
+                        mIssueActionability != ISSUE_ACTIONABILITY_MANUAL || !actions.isEmpty(),
+                        "Actionable safety source issue must contain at least 1 action");
+            } else {
+                checkArgument(
+                        !actions.isEmpty(), "Safety source issue must contain at least 1 action");
+            }
             checkArgument(
                     actions.size() <= 2,
                     "Safety source issue must not contain more than 2 actions");
@@ -1088,7 +1203,8 @@ public final class SafetySourceIssue implements Parcelable {
                     mCustomNotification,
                     mNotificationBehavior,
                     mAttributionTitle,
-                    mDeduplicationId);
+                    mDeduplicationId,
+                    mIssueActionability);
         }
     }
 
@@ -1143,5 +1259,18 @@ public final class SafetySourceIssue implements Parcelable {
         }
         throw new IllegalArgumentException(
                 "Unexpected NotificationBehavior for SafetySourceIssue: " + value);
+    }
+
+    @IssueActionability
+    private static int validateIssueActionability(int value) {
+        switch (value) {
+            case ISSUE_ACTIONABILITY_MANUAL:
+            case ISSUE_ACTIONABILITY_TIP:
+            case ISSUE_ACTIONABILITY_AUTOMATIC:
+                return value;
+            default:
+        }
+        throw new IllegalArgumentException(
+                "Unexpected IssueActionability for SafetySourceIssue: " + value);
     }
 }
