@@ -26,6 +26,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.ResolveInfoFlags;
 import android.content.res.Resources;
 import android.os.Binder;
 import android.os.UserHandle;
@@ -34,7 +35,6 @@ import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
-import com.android.permission.util.PackageUtils;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 
 import java.util.Arrays;
@@ -92,8 +92,7 @@ final class PendingIntentFactory {
         if (packageContext == null) {
             return null;
         }
-        Intent intent =
-                createIntent(sourceId, intentAction, packageName, userId, isQuietModeEnabled);
+        Intent intent = createIntent(packageContext, sourceId, intentAction, isQuietModeEnabled);
         if (intent == null) {
             return null;
         }
@@ -208,10 +207,9 @@ final class PendingIntentFactory {
 
     @Nullable
     private Intent createIntent(
+            @NonNull Context packageContext,
             @NonNull String sourceId,
             @NonNull String intentAction,
-            @NonNull String packageName,
-            @UserIdInt int userId,
             boolean isQuietModeEnabled) {
         Intent intent = new Intent(intentAction);
 
@@ -231,11 +229,11 @@ final class PendingIntentFactory {
         if (isQuietModeEnabled) {
             return intent;
         }
-        if (intentResolves(intent, userId)) {
+        if (intentResolves(packageContext, intent)) {
             return intent;
         }
-        intent.setPackage(packageName);
-        if (intentResolves(intent, userId)) {
+        intent.setPackage(packageContext.getPackageName());
+        if (intentResolves(packageContext, intent)) {
             return intent;
         }
         return null;
@@ -249,8 +247,10 @@ final class PendingIntentFactory {
                 .contains(sourceId);
     }
 
-    private boolean intentResolves(@NonNull Intent intent, @UserIdInt int userId) {
-        return !PackageUtils.queryUnfilteredIntentActivitiesAsUser(intent, 0, userId, mContext)
+    private static boolean intentResolves(@NonNull Context packageContext, @NonNull Intent intent) {
+        return !packageContext
+                .getPackageManager()
+                .queryIntentActivities(intent, ResolveInfoFlags.of(0))
                 .isEmpty();
     }
 
@@ -261,8 +261,14 @@ final class PendingIntentFactory {
                 packageContext, requestCode, intent, PendingIntent.FLAG_IMMUTABLE);
     }
 
-    @NonNull
-    private static PendingIntent getActivityPendingIntent(
+    /**
+     * Creates a {@link PendingIntent} to start an Activity from the given {@code packageContext}.
+     *
+     * <p>This function can only return {@code null} if the {@link PendingIntent#FLAG_NO_CREATE}
+     * flag is passed in.
+     */
+    @Nullable
+    static PendingIntent getActivityPendingIntent(
             @NonNull Context packageContext, int requestCode, @NonNull Intent intent, int flags) {
         // This call requires Binder identity to be cleared for getIntentSender() to be allowed to
         // send as another package.

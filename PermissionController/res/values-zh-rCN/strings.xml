@@ -32,6 +32,14 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"保留“在使用该应用期间”"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"继续使用“仅限这一次”设置"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"更多信息"</string>
+    <!-- no translation found for grant_dialog_button_allow_all_photos (3688746146785304900) -->
+    <skip />
+    <!-- no translation found for grant_dialog_button_allow_selected_photos (4098620850512492892) -->
+    <skip />
+    <!-- no translation found for grant_dialog_button_allow_more_selected_photos (2003524111894640605) -->
+    <skip />
+    <!-- no translation found for grant_dialog_button_dont_allow_more_selected_photos (6811842813929146242) -->
+    <skip />
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"仍然不允许"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"关闭"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"第 <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> 项权限（共 <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g> 项）"</string>
@@ -186,6 +194,10 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"仅允许访问媒体文件"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"始终允许"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"仅在使用该应用时允许"</string>
+    <!-- no translation found for app_permission_button_allow_all_photos (914762549054270764) -->
+    <skip />
+    <!-- no translation found for app_permission_button_select_photos (1022930616634145364) -->
+    <skip />
     <string name="app_permission_button_ask" msgid="3342950658789427">"每次都询问"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"不允许"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"确切位置"</string>
@@ -468,6 +480,8 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"要允许“&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;”访问此设备上的&lt;b&gt;照片、视频、音乐、音频和其他文件&lt;/b&gt;吗？"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问此设备上的音乐和音频吗？"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问此设备上的照片和视频吗？"</string>
+    <!-- no translation found for permgrouprequest_more_photos (4697813231897226261) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;录音吗？"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"此应用将只能在您使用它时录音"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;录音吗？"</string>
@@ -578,4 +592,6 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"系统会在应用访问您复制的文字、图片或其他内容时显示一条消息"</string>
     <string name="show_password_title" msgid="2877269286984684659">"显示密码"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"输入时短暂显示字符"</string>
+    <!-- no translation found for permission_rationale_message_template (4497650516269082051) -->
+    <skip />
 </resources>
