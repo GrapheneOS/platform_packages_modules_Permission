@@ -20,6 +20,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.FLAG_RECEIVER_FOREGROUND
+import android.content.pm.PackageManager.ResolveInfoFlags
 import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetySourceData
@@ -40,6 +41,7 @@ import android.safetycenter.cts.testing.SafetySourceIntentHandler.Companion.EXTR
 import android.safetycenter.cts.testing.SafetySourceIntentHandler.Companion.EXTRA_SOURCE_ISSUE_ACTION_ID
 import android.safetycenter.cts.testing.SafetySourceIntentHandler.Companion.EXTRA_SOURCE_ISSUE_ID
 import androidx.annotation.RequiresApi
+import java.lang.IllegalStateException
 import kotlin.math.max
 
 /**
@@ -590,8 +592,23 @@ class SafetySourceCtsData(private val context: Context) {
         }
 
         /** Returns a [PendingIntent] that redirects to [intent]. */
-        fun createRedirectPendingIntent(context: Context, intent: Intent): PendingIntent =
-            PendingIntent.getActivity(
-                context, 0 /* requestCode */, intent, PendingIntent.FLAG_IMMUTABLE)
+        fun createRedirectPendingIntent(context: Context, intent: Intent): PendingIntent {
+            val explicitIntent = Intent(intent).setPackage(context.packageName)
+            val redirectIntent =
+                if (intentResolves(context, intent)) {
+                    intent
+                } else if (intentResolves(context, explicitIntent)) {
+                    explicitIntent
+                } else {
+                    throw IllegalStateException("Intent doesn't resolve")
+                }
+            return PendingIntent.getActivity(
+                context, 0 /* requestCode */, redirectIntent, PendingIntent.FLAG_IMMUTABLE)
+        }
+
+        private fun intentResolves(context: Context, intent: Intent): Boolean =
+            context.packageManager
+                .queryIntentActivities(intent, ResolveInfoFlags.of(0))
+                .isNotEmpty()
     }
 }

@@ -32,6 +32,14 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“ಆ್ಯಪ್ ಬಳಕೆಯಲ್ಲಿರುವಾಗ” ಹಾಗೆಯೇ ಇರಿಸಿ"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"“ಈ ಬಾರಿ ಮಾತ್ರ” ಇರಿಸಿ"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"ಹೆಚ್ಚಿನ ಮಾಹಿತಿ"</string>
+    <!-- no translation found for grant_dialog_button_allow_all_photos (3688746146785304900) -->
+    <skip />
+    <!-- no translation found for grant_dialog_button_allow_selected_photos (4098620850512492892) -->
+    <skip />
+    <!-- no translation found for grant_dialog_button_allow_more_selected_photos (2003524111894640605) -->
+    <skip />
+    <!-- no translation found for grant_dialog_button_dont_allow_more_selected_photos (6811842813929146242) -->
+    <skip />
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"ಯಾವುದೇ ರೀತಿಯಲ್ಲೂ ಅನುಮತಿಸಬೇಡಿ"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"ವಜಾಗೊಳಿಸಿ"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g> ರಲ್ಲಿ <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>"</string>
@@ -186,6 +194,10 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"ಮಾಧ್ಯಮಕ್ಕೆ ಮಾತ್ರ ಪ್ರವೇಶಿಸಲು ಅನುಮತಿಸಿ"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"ಎಲ್ಲಾ ಸಮಯದಲ್ಲೂ ಅನುಮತಿಸಿ"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"ಆ್ಯಪ್ ಬಳಸುವಾಗ ಮಾತ್ರ ಅನುಮತಿಸಿ"</string>
+    <!-- no translation found for app_permission_button_allow_all_photos (914762549054270764) -->
+    <skip />
+    <!-- no translation found for app_permission_button_select_photos (1022930616634145364) -->
+    <skip />
     <string name="app_permission_button_ask" msgid="3342950658789427">"ಪ್ರತಿ ಬಾರಿ ಕೇಳಿ"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"ಅನುಮತಿಸಬೇಡಿ"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"ನಿಖರವಾದ ಸ್ಥಾನ"</string>
@@ -468,6 +480,8 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"ಈ ಸಾಧನದಲ್ಲಿರುವ &lt;b&gt;ಫೋಟೋಗಳು, ವೀಡಿಯೊಗಳು, ಸಂಗೀತ, ಆಡಿಯೋ, ಇತರ ಫೈಲ್‌ಗಳನ್ನು&lt;/b&gt; ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೆ?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"ಈ ಸಾಧನದಲ್ಲಿರುವ ಸಂಗೀತ ಮತ್ತು ಆಡಿಯೊವನ್ನು ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೆ?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"ಈ ಸಾಧನದಲ್ಲಿರುವ ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳನ್ನು ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೆ?"</string>
+    <!-- no translation found for permgrouprequest_more_photos (4697813231897226261) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"ಆಡಿಯೋ ರೆಕಾರ್ಡ್‌ ಮಾಡಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"ನೀವು ಆ್ಯಪ್ ಬಳಸುತ್ತಿರುವಾಗ ಮಾತ್ರ ಆ್ಯಪ್‌ಗೆ ಆಡಿಯೋ ರೆಕಾರ್ಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗುತ್ತದೆ"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"ಆಡಿಯೋ ರೆಕಾರ್ಡ್‌ ಮಾಡಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಆ್ಯಪ್‌ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
@@ -578,4 +592,6 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"ನೀವು ನಕಲಿಸಿರುವ ಪಠ್ಯ, ಚಿತ್ರಗಳು ಅಥವಾ ಇತರ ವಿಷಯವನ್ನು ಆ್ಯಪ್‌ಗಳು ಪ್ರವೇಶಿಸಿದಾಗ ಸಂದೇಶವೊಂದನ್ನು ತೋರಿಸಿ"</string>
     <string name="show_password_title" msgid="2877269286984684659">"ಪಾಸ್‌ವರ್ಡ್‌ಗಳನ್ನು ತೋರಿಸಿ"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"ನೀವು ಟೈಪ್ ಮಾಡಿದಂತೆ ಅಕ್ಷರಗಳನ್ನು ಸಂಕ್ಷಿಪ್ತವಾಗಿ ಪ್ರದರ್ಶಿಸಿ"</string>
+    <!-- no translation found for permission_rationale_message_template (4497650516269082051) -->
+    <skip />
 </resources>
