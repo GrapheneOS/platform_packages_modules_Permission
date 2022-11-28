@@ -151,8 +151,6 @@ android_app {
         proguard_flags_files: ["proguard.flags"],
     },
 
-    plugins: ["java_api_finder"],
-
     kotlincflags: ["-Xjvm-default=enable"],
 
     apex_available: [
