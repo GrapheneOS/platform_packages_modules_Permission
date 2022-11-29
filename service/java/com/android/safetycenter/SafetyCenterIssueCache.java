@@ -176,6 +176,25 @@ final class SafetyCenterIssueCache {
     }
 
     /**
+     * Copy dismissal data from one issue to the other.
+     *
+     * <p>This will align dismissal state of these issues, unless issues are of different
+     * severities, in which case they can potentially differ in resurface times.
+     */
+    void copyDismissalData(
+            @NonNull SafetyCenterIssueKey keyFrom, @NonNull SafetyCenterIssueKey keyTo) {
+        IssueData dataFrom = getOrWarn(keyFrom, "copying dismissed data");
+        IssueData dataTo = getOrWarn(keyTo, "copying dismissed data");
+        if (dataFrom == null || dataTo == null) {
+            return;
+        }
+
+        dataTo.setDismissedAt(dataFrom.getDismissedAt());
+        dataTo.setDismissCount(dataFrom.getDismissCount());
+        mIsDirty = true;
+    }
+
+    /**
      * Updates the issue cache to contain exactly the given {@code safetySourceIssueIds} for the
      * supplied source and user.
      */
