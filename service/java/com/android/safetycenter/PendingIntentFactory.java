@@ -280,6 +280,29 @@ final class PendingIntentFactory {
         }
     }
 
+    /**
+     * Creates a non-protected broadcast {@link PendingIntent} which can only be received by the
+     * system. Use this method to create PendingIntents to be received by Context-registered
+     * receivers, for example for notification-related callbacks.
+     *
+     * <p>{@code flags} must include {@link PendingIntent#FLAG_IMMUTABLE}
+     */
+    @Nullable
+    static PendingIntent getNonProtectedSystemOnlyBroadcastPendingIntent(
+            @NonNull Context context, int requestCode, @NonNull Intent intent, int flags) {
+        if ((flags & PendingIntent.FLAG_IMMUTABLE) == 0) {
+            throw new IllegalArgumentException("flags must include FLAG_IMMUTABLE");
+        }
+        intent.setPackage("android");
+        // This call is needed to be allowed to send the broadcast as the "android" package.
+        final long callingId = Binder.clearCallingIdentity();
+        try {
+            return PendingIntent.getBroadcast(context, requestCode, intent, flags);
+        } finally {
+            Binder.restoreCallingIdentity(callingId);
+        }
+    }
+
     @Nullable
     private Context createPackageContextAsUser(@NonNull String packageName, @UserIdInt int userId) {
         // This call requires the INTERACT_ACROSS_USERS permission.
