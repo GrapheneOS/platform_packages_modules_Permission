@@ -37,7 +37,6 @@ import android.content.Intent
 import android.content.Intent.ACTION_MAIN
 import android.content.Intent.CATEGORY_INFO
 import android.content.Intent.CATEGORY_LAUNCHER
-import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.FLAG_PERMISSION_AUTO_REVOKED
 import android.content.pm.PackageManager.FLAG_PERMISSION_ONE_TIME
@@ -53,8 +52,7 @@ import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
-import android.healthconnect.HealthPermissions.HEALTH_PERMISSION_GROUP
-import android.healthconnect.HealthPermissions.MANAGE_HEALTH_PERMISSIONS
+import android.healthconnect.HealthConnectManager
 import android.os.Build
 import android.os.Bundle
 import android.os.UserHandle
@@ -1389,66 +1387,9 @@ object KotlinUtils {
             !context.getString(android.R.string.safety_protection_display_text).isNullOrEmpty()
     }
 
-    // TODO(b/248124555): Make these filter only dangerous permissions.
     fun addHealthPermissions(context: Context) {
-        val permissions = getDefinedHealthPerms(context.packageManager)
+        val permissions = HealthConnectManager.getHealthPermissions(context)
         PermissionMapping.addHealthPermissionsToPlatform(permissions)
-    }
-
-    private fun getDefinedHealthPerms(packageManager: PackageManager): Set<String> {
-        val permissionInfos = getHealthPermissionControllerPermissionInfos(packageManager)
-        if (permissionInfos.isEmpty()) {
-            return emptySet()
-        }
-
-        val definedHealthPerms: MutableSet<String> = hashSetOf()
-        for (permInfo in permissionInfos) {
-            if (HEALTH_PERMISSION_GROUP.equals(permInfo.group)) {
-                definedHealthPerms.add(permInfo.name)
-            }
-        }
-        return definedHealthPerms
-    }
-
-    /**
-     * Gets permission infos for all permissions defined by the health connect mainline module and
-     * part of the health connect modules' permission group.
-     */
-    private fun getHealthPermissionControllerPermissionInfos(packageManager: PackageManager):
-            List<PermissionInfo> {
-        val standardHealthPermissionInfo =
-                getPermissionInfoForStandardHealthPermission(packageManager)
-        if (standardHealthPermissionInfo?.packageName == null) {
-            return emptyList()
-        }
-
-        val standardHealthPermissionPackage = standardHealthPermissionInfo?.packageName!!
-        val healthPackageInfo: PackageInfo
-        try {
-            healthPackageInfo = packageManager.getPackageInfo(standardHealthPermissionPackage,
-                    PackageManager.PackageInfoFlags.of(PackageManager.GET_PERMISSIONS.toLong()))
-        } catch (e: PackageManager.NameNotFoundException) {
-            Log.e(LOG_TAG, "HealthConnect permissions APK ($standardHealthPermissionPackage)" +
-                    " not found")
-            return emptyList()
-        }
-
-        if (healthPackageInfo.permissions == null) {
-            Log.e(LOG_TAG, "No HealthConnect permissions defined in APK " +
-                    "($standardHealthPermissionPackage)")
-            return emptyList()
-        }
-        return healthPackageInfo.permissions.toList()
-    }
-
-    private fun getPermissionInfoForStandardHealthPermission(packageManager: PackageManager):
-            PermissionInfo? {
-        return try {
-            packageManager.getPermissionInfo(MANAGE_HEALTH_PERMISSIONS, 0)
-        } catch (e: PackageManager.NameNotFoundException) {
-            Log.e(LOG_TAG, "HealthConnect permission $MANAGE_HEALTH_PERMISSIONS) not found")
-            null
-        }
     }
 }
 
