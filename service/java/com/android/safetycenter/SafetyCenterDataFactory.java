@@ -88,19 +88,24 @@ final class SafetyCenterDataFactory {
     @NonNull private final SafetyCenterIssueCache mSafetyCenterIssueCache;
     @NonNull private final SafetyCenterRepository mSafetyCenterRepository;
 
+    /** Only available on Android U+. */
+    @Nullable private final SafetyCenterIssueDeduplicator mSafetyCenterIssueDeduplicator;
+
     SafetyCenterDataFactory(
             @NonNull SafetyCenterResourcesContext safetyCenterResourcesContext,
             @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
             @NonNull SafetyCenterRefreshTracker safetyCenterRefreshTracker,
             @NonNull PendingIntentFactory pendingIntentFactory,
             @NonNull SafetyCenterIssueCache safetyCenterIssueCache,
-            @NonNull SafetyCenterRepository safetyCenterRepository) {
+            @NonNull SafetyCenterRepository safetyCenterRepository,
+            @Nullable SafetyCenterIssueDeduplicator safetyCenterIssueDeduplicator) {
         mSafetyCenterResourcesContext = safetyCenterResourcesContext;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
         mSafetyCenterRefreshTracker = safetyCenterRefreshTracker;
         mPendingIntentFactory = pendingIntentFactory;
         mSafetyCenterIssueCache = safetyCenterIssueCache;
         mSafetyCenterRepository = safetyCenterRepository;
+        mSafetyCenterIssueDeduplicator = safetyCenterIssueDeduplicator;
     }
 
     /**
@@ -183,6 +188,10 @@ final class SafetyCenterDataFactory {
         }
 
         safetyCenterIssuesExtended.sort(SAFETY_CENTER_ISSUES_BY_SEVERITY_DESCENDING);
+
+        if (SdkLevel.isAtLeastU() && mSafetyCenterIssueDeduplicator != null) {
+            mSafetyCenterIssueDeduplicator.deduplicateIssues(safetyCenterIssuesExtended);
+        }
 
         List<SafetyCenterIssue> safetyCenterIssues = new ArrayList<>();
         List<SafetyCenterIssue> safetyCenterDismissedIssues = new ArrayList<>();
@@ -296,12 +305,16 @@ final class SafetyCenterDataFactory {
                     toSafetyCenterIssue(
                             safetySourceIssue, safetySource, safetySourcesGroup, userId);
 
-            SafetyCenterIssueExtended issueExtended =
-                    new SafetyCenterIssueExtended(
+            SafetyCenterIssueExtended.Builder issueExtendedBuilder =
+                    new SafetyCenterIssueExtended.Builder(
                             safetyCenterIssue,
                             safetySourceIssue.getIssueCategory(),
                             safetySourceIssue.getSeverityLevel());
-            safetyCenterIssues.add(issueExtended);
+            if (SdkLevel.isAtLeastU()) {
+                issueExtendedBuilder.setDeduplicationGroup(safetySource.getDeduplicationGroup());
+                issueExtendedBuilder.setDeduplicationId(safetySourceIssue.getDeduplicationId());
+            }
+            safetyCenterIssues.add(issueExtendedBuilder.build());
         }
     }
 

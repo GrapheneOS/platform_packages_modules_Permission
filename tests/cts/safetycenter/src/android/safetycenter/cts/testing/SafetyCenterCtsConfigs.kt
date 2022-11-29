@@ -18,6 +18,7 @@ package android.safetycenter.cts.testing
 
 import android.content.Context
 import android.content.res.Resources
+import android.os.Build
 import android.safetycenter.SafetySourceData
 import android.safetycenter.config.SafetyCenterConfig
 import android.safetycenter.config.SafetySource
@@ -26,6 +27,7 @@ import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY
 import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_STATIC
 import android.safetycenter.config.SafetySourcesGroup
 import android.safetycenter.cts.testing.SettingsPackage.getSettingsPackageName
+import androidx.annotation.RequiresApi
 import com.android.modules.utils.build.SdkLevel
 
 /**
@@ -270,6 +272,10 @@ object SafetyCenterCtsConfigs {
     /** Second hash of a package certificate for all "ALL_OPTIONAL" sources. */
     private const val PACKAGE_CERT_HASH_2 = "feed2"
 
+    private const val DEDUPLICATION_GROUP_1 = "deduplication_group_1"
+    private const val DEDUPLICATION_GROUP_2 = "deduplication_group_2"
+    private const val DEDUPLICATION_GROUP_3 = "deduplication_group_3"
+
     /** A Simple [SafetyCenterConfig] with an issue only source. */
     val ISSUE_ONLY_SOURCE_CONFIG =
         singleSourceConfig(issueOnlySafetySourceBuilder(ISSUE_ONLY_ALL_OPTIONAL_ID).build())
@@ -328,6 +334,45 @@ object SafetyCenterCtsConfigs {
                             .build())
                     .build())
             .build()
+
+    /**
+     * A simple [SafetyCenterConfig] for CTS tests with multiple sources with deduplication info.
+     */
+    val multipleSourcesWithDeduplicationInfoConfig: SafetyCenterConfig
+        @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+        get() =
+            SafetyCenterConfig.Builder()
+                .addSafetySourcesGroup(
+                    safetySourcesGroupBuilder(MULTIPLE_SOURCES_GROUP_ID_1)
+                        .addSafetySource(
+                            issueOnlySafetySourceWithDuplicationInfo(
+                                SOURCE_ID_1, DEDUPLICATION_GROUP_1))
+                        .addSafetySource(
+                            issueOnlySafetySourceWithDuplicationInfo(
+                                SOURCE_ID_2, DEDUPLICATION_GROUP_1))
+                        .addSafetySource(
+                            issueOnlySafetySourceWithDuplicationInfo(
+                                SOURCE_ID_3, DEDUPLICATION_GROUP_2))
+                        .addSafetySource(
+                            issueOnlySafetySourceWithDuplicationInfo(
+                                SOURCE_ID_4, DEDUPLICATION_GROUP_3))
+                        .build())
+                .addSafetySourcesGroup(
+                    safetySourcesGroupBuilder(MULTIPLE_SOURCES_GROUP_ID_2)
+                        .addSafetySource(
+                            issueOnlySafetySourceWithDuplicationInfo(
+                                SOURCE_ID_5, DEDUPLICATION_GROUP_1))
+                        .addSafetySource(
+                            issueOnlySafetySourceWithDuplicationInfo(
+                                SOURCE_ID_6, DEDUPLICATION_GROUP_3))
+                        .build())
+                .addSafetySourcesGroup(
+                    safetySourcesGroupBuilder(MULTIPLE_SOURCES_GROUP_ID_3)
+                        .addSafetySource(
+                            issueOnlySafetySourceWithDuplicationInfo(
+                                SOURCE_ID_7, DEDUPLICATION_GROUP_3))
+                        .build())
+                .build()
 
     /** Source included in [DYNAMIC_SOURCE_GROUP_1]. */
     val DYNAMIC_SOURCE_1 = dynamicSafetySource(SOURCE_ID_1)
@@ -726,6 +771,10 @@ object SafetyCenterCtsConfigs {
         staticSafetySourceBuilder(id)
             .setProfile(SafetySource.PROFILE_ALL)
             .setTitleForWorkResId(android.R.string.paste)
+
+    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+    private fun issueOnlySafetySourceWithDuplicationInfo(id: String, deduplicationGroup: String) =
+        issueOnlySafetySourceBuilder(id).setDeduplicationGroup(deduplicationGroup).build()
 
     private fun issueOnlySafetySource(id: String) = issueOnlySafetySourceBuilder(id).build()
 

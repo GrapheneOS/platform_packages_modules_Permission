@@ -73,6 +73,7 @@ import androidx.annotation.RequiresApi;
 
 import com.android.internal.annotations.GuardedBy;
 import com.android.modules.utils.BackgroundThread;
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permission.util.ForegroundThread;
 import com.android.permission.util.UserUtils;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
@@ -196,7 +197,8 @@ public final class SafetyCenterService extends SystemService {
                         mSafetyCenterRefreshTracker,
                         mPendingIntentFactory,
                         mSafetyCenterIssueCache,
-                        mSafetyCenterRepository);
+                        mSafetyCenterRepository,
+                        SdkLevel.isAtLeastU() ? new SafetyCenterIssueDeduplicator() : null);
         mSafetyCenterListeners = new SafetyCenterListeners(mSafetyCenterDataFactory);
         mNotificationSender =
                 new SafetyCenterNotificationSender(

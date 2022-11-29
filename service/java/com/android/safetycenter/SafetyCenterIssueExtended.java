@@ -17,8 +17,10 @@
 package com.android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
+import static android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
 
 import android.annotation.NonNull;
+import android.annotation.Nullable;
 import android.safetycenter.SafetyCenterIssue;
 import android.safetycenter.SafetySourceData;
 import android.safetycenter.SafetySourceIssue;
@@ -36,17 +38,23 @@ final class SafetyCenterIssueExtended {
     @SafetySourceIssue.IssueCategory private final int mSafetySourceIssueCategory;
     @SafetySourceData.SeverityLevel private final int mSafetySourceIssueSeverityLevel;
 
-    /** Constructs a new {@link SafetyCenterIssueExtended}. */
-    SafetyCenterIssueExtended(
+    // Deduplication info, only available on Android U+.
+    @Nullable private final String mDeduplicationGroup;
+    @Nullable private final String mDeduplicationId;
+
+    private SafetyCenterIssueExtended(
             @NonNull SafetyCenterIssue safetyCenterIssue,
+            @NonNull SafetyCenterIssueKey safetyCenterIssueKey,
             @SafetySourceIssue.IssueCategory int safetySourceIssueCategory,
-            int safetySourceIssueSeverityLevel) {
+            int safetySourceIssueSeverityLevel,
+            @Nullable String deduplicationGroup,
+            @Nullable String deduplicationId) {
         this.mSafetyCenterIssue = safetyCenterIssue;
-        this.mSafetyCenterIssueKey =
-                SafetyCenterIds.issueIdFromString(mSafetyCenterIssue.getId())
-                        .getSafetyCenterIssueKey();
+        this.mSafetyCenterIssueKey = safetyCenterIssueKey;
         this.mSafetySourceIssueCategory = safetySourceIssueCategory;
         this.mSafetySourceIssueSeverityLevel = safetySourceIssueSeverityLevel;
+        this.mDeduplicationGroup = deduplicationGroup;
+        this.mDeduplicationId = deduplicationId;
     }
 
     /** Returns the {@link SafetyCenterIssue} it contains. */
@@ -71,5 +79,63 @@ final class SafetyCenterIssueExtended {
     @SafetySourceData.SeverityLevel
     int getSafetySourceIssueSeverityLevel() {
         return mSafetySourceIssueSeverityLevel;
+    }
+
+    /** Returns the deduplication group related to this issue. */
+    @Nullable
+    String getDeduplicationGroup() {
+        return mDeduplicationGroup;
+    }
+
+    /** Returns the deduplication id related to this issue. */
+    @Nullable
+    String getDeduplicationId() {
+        return mDeduplicationId;
+    }
+
+    /** Builder for the {@link SafetyCenterIssueExtended}. */
+    static final class Builder {
+        @NonNull private final SafetyCenterIssue mSafetyCenterIssue;
+        @SafetySourceIssue.IssueCategory private final int mSafetySourceIssueCategory;
+        @SafetySourceData.SeverityLevel private final int mSafetySourceIssueSeverityLevel;
+
+        @Nullable private String mDeduplicationGroup;
+        @Nullable private String mDeduplicationId;
+
+        /** Constructs a new instance of the builder. */
+        Builder(
+                @NonNull SafetyCenterIssue safetyCenterIssue,
+                @SafetySourceIssue.IssueCategory int safetySourceIssueCategory,
+                @SafetySourceData.SeverityLevel int safetySourceIssueSeverityLevel) {
+            this.mSafetyCenterIssue = safetyCenterIssue;
+            this.mSafetySourceIssueCategory = safetySourceIssueCategory;
+            this.mSafetySourceIssueSeverityLevel = safetySourceIssueSeverityLevel;
+        }
+
+        /** Sets the deduplication group for this issue. */
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        Builder setDeduplicationGroup(@Nullable String deduplicationGroup) {
+            this.mDeduplicationGroup = deduplicationGroup;
+            return this;
+        }
+
+        /** Sets the deduplication id for this issue. */
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        Builder setDeduplicationId(@Nullable String deduplicationId) {
+            this.mDeduplicationId = deduplicationId;
+            return this;
+        }
+
+        /** Returns a new {@link SafetyCenterIssueExtended} based on previously given data. */
+        SafetyCenterIssueExtended build() {
+            return new SafetyCenterIssueExtended(
+                    mSafetyCenterIssue,
+                    SafetyCenterIds.issueIdFromString(mSafetyCenterIssue.getId())
+                            .getSafetyCenterIssueKey(),
+                    mSafetySourceIssueCategory,
+                    mSafetySourceIssueSeverityLevel,
+                    mDeduplicationGroup,
+                    mDeduplicationId);
+        }
     }
 }
