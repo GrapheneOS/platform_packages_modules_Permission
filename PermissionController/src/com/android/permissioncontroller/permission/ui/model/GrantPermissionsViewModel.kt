@@ -747,6 +747,10 @@ class GrantPermissionsViewModel(
             return false
         }
 
+        if (HEALTH_PERMISSION_GROUP == group.permGroupName) {
+            return !(group.permissions[perm]?.isUserFixed ?: true)
+        }
+
         val subGroup = if (perm in group.backgroundPermNames) {
             group.background
         } else {
@@ -822,7 +826,7 @@ class GrantPermissionsViewModel(
 
         if ((isBackground && group.background.isGrantedExcludingRWROrAllRWR ||
             !isBackground && group.foreground.isGrantedExcludingRWROrAllRWR) &&
-            !isSplitGroupLowerGrant(group)) {
+            canAutoGrantWholeGroup(group)) {
             if (group.permissions[perm]?.isGrantedIncludingAppOp == false) {
                 if (isBackground) {
                     grantBackgroundRuntimePermissions(app, group, listOf(perm))
@@ -845,28 +849,23 @@ class GrantPermissionsViewModel(
     }
 
     /**
-     * Whether or not this group is a permission where not all permissions are automatically
-     * granted: There are a set of permissions considered "lower" grants than others.
-     *
-     * This method assumes that the
+     * Determines if remaining permissions in the group can be auto granted based on
+     * granted permissions in the group.
      */
-    private fun isSplitGroupLowerGrant(group: LightAppPermGroup): Boolean {
-        if (!group.isGranted) {
-            return false
-        }
+    private fun canAutoGrantWholeGroup(group: LightAppPermGroup): Boolean {
         // If FINE location is not granted, do not grant it automatically when COARSE
         // location is already granted.
         if (group.permGroupName == LOCATION &&
             group.allPermissions[ACCESS_FINE_LOCATION]?.isGrantedIncludingAppOp == false) {
-            return true
+            return false
         }
         // If READ_MEDIA_VISUAL_USER_SELECTED is the only permission in the group that is granted,
         // do not grant.
-        if (isVisualUserSelectedOnlyGranted(group)) {
-            return true
+        if (isVisualUserSelectedOnlyGranted(group) ||
+            HEALTH_PERMISSION_GROUP == group.permGroupName) {
+            return false
         }
-
-        return false
+        return true
     }
 
     private fun isVisualUserSelectedOnlyGranted(group: LightAppPermGroup): Boolean {
