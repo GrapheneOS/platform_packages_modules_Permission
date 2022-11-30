@@ -32,14 +32,10 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“ਐਪ ਵਰਤੋਂ ਵਿੱਚ ਹੋਣ ਵੇਲੇ” ਨੂੰ ਰੱਖੋ"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"“ਸਿਰਫ਼ ਇਸ ਸਮੇਂ ਲਈ ਇਜਾਜ਼ਤ ਦਿਓ” ਰੱਖੋ"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"ਹੋਰ ਜਾਣਕਾਰੀ"</string>
-    <!-- no translation found for grant_dialog_button_allow_all_photos (3688746146785304900) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_allow_selected_photos (4098620850512492892) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_allow_more_selected_photos (2003524111894640605) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_dont_allow_more_selected_photos (6811842813929146242) -->
-    <skip />
+    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"ਸਾਰੀਆਂ ਫ਼ੋਟੋਆਂ ਤੱਕ ਪਹੁੰਚ ਦੀ ਆਗਿਆ ਦਿਓ"</string>
+    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"ਫ਼ੋਟੋਆਂ ਚੁਣੋ"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"ਹੋਰ ਫ਼ੋਟੋਆਂ ਚੁਣੋ"</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"ਹੋਰ ਫ਼ੋਟੋਆਂ ਨਾ ਚੁਣੋ"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"ਫਿਰ ਵੀ ਆਗਿਆ ਨਾ ਦਿਓ"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"ਖਾਰਜ ਕਰੋ"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g> ਵਿੱਚੋਂ <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>"</string>
@@ -194,10 +190,8 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"ਸਿਰਫ਼ ਮੀਡੀਆ ਲਈ ਪਹੁੰਚ ਕਰਨ ਦਿਓ"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"ਹਰ ਵੇਲੇ ਕਰਨ ਦਿਓ"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"ਸਿਰਫ਼ ਐਪ ਵਰਤੇ ਜਾਣ ਵੇਲੇ ਕਰਨ ਦਿਓ"</string>
-    <!-- no translation found for app_permission_button_allow_all_photos (914762549054270764) -->
-    <skip />
-    <!-- no translation found for app_permission_button_select_photos (1022930616634145364) -->
-    <skip />
+    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"ਸਾਰੀਆਂ ਫ਼ੋਟੋਆਂ ਦੀ ਆਗਿਆ ਦਿਓ"</string>
+    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"ਚੋਣਵੀਆਂ ਫ਼ੋਟੋਆਂ ਦੀ ਆਗਿਆ ਦਿਓ"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"ਹਰ ਵਾਰ ਪੁੱਛੋ"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"ਨਾ ਕਰਨ ਦਿਓ"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"ਸਹੀ ਟਿਕਾਣਾ"</string>
@@ -480,8 +474,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਇਸ ਡੀਵਾਈਸ \'ਤੇ &lt;b&gt;ਫ਼ੋਟੋਆਂ, ਵੀਡੀਓ, ਸੰਗੀਤ, ਆਡੀਓ ਅਤੇ ਹੋਰ ਫ਼ਾਈਲਾਂ&lt;/b&gt; ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਇਸ ਡੀਵਾਈਸ \'ਤੇ ਸੰਗੀਤ ਅਤੇ ਆਡੀਓ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਇਸ ਡੀਵਾਈਸ \'ਤੇ ਫ਼ੋਟੋਆਂ ਅਤੇ ਵੀਡੀਓ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
-    <!-- no translation found for permgrouprequest_more_photos (4697813231897226261) -->
-    <skip />
+    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਹੋਰ ਫ਼ੋਟੋਆਂ ਤੱਕ ਪਹੁੰਚ ਦੇਣੀ ਹੈ?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਆਡੀਓ ਰਿਕਾਰਡ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"ਤੁਹਾਡੇ ਵੱਲੋਂ ਐਪ ਦੀ ਵਰਤੋਂ ਕਰਨ ਵੇਲੇ ਹੀ ਐਪ ਆਡੀਓ ਰਿਕਾਰਡ ਕਰ ਸਕੇਗੀ"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਆਡੀਓ ਰਿਕਾਰਡ ਕਰਨ ਦੀ ਇਜਾਜ਼ਤ ਦੇਣੀ ਹੈ?"</string>
@@ -592,6 +585,5 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"ਜਦੋਂ ਐਪਾਂ ਲਿਖਤ, ਚਿੱਤਰ ਜਾਂ ਤੁਹਾਡੇ ਵੱਲੋਂ ਕਾਪੀ ਕੀਤੀ ਹੋਰ ਸਮੱਗਰੀ ਤੱਕ ਪਹੁੰਚ ਕਰਦੀਆਂ ਹਨ, ਤਾਂ ਕੋਈ ਸੁਨੇਹਾ ਦਿਖਾਓ"</string>
     <string name="show_password_title" msgid="2877269286984684659">"ਪਾਸਵਰਡ ਦਿਖਾਓ"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"ਟਾਈਪ ਕਰਨ ਵੇਲੇ ਅੱਖਰ-ਚਿੰਨ੍ਹਾਂ ਨੂੰ ਥੋੜ੍ਹੇ ਸਮੇਂ ਲਈ ਦਿਖਾਓ"</string>
-    <!-- no translation found for permission_rationale_message_template (4497650516269082051) -->
-    <skip />
+    <string name="permission_rationale_message_template" msgid="4497650516269082051">"ਇਸ ਐਪ ਨੇ ਸਪਸ਼ਟ ਕੀਤਾ ਕਿ ਇਹ ਤੀਜੀਆਂ ਧਿਰਾਂ ਨਾਲ <xliff:g id="PERMISSION_NAME">%s</xliff:g> ਡਾਟੇ ਨੂੰ ਸਾਂਝਾ ਕਰ ਸਕਦੀ ਹੈ"</string>
 </resources>
