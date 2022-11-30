@@ -788,6 +788,7 @@ public final class SafetyCenterService extends SystemService {
                 mSafetyCenterRefreshTracker.dump(fout);
                 mSafetyCenterTimeouts.dump(fout);
                 mSafetyCenterListeners.dump(fout);
+                mNotificationSender.dump(fout);
             }
         }
 
@@ -1129,6 +1130,7 @@ public final class SafetyCenterService extends SystemService {
         mSafetyCenterIssueCache.clear();
         mSafetyCenterTimeouts.clear();
         mSafetyCenterRefreshTracker.clearRefresh();
+        mNotificationSender.cancelAllNotifications();
         scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked();
     }
 
