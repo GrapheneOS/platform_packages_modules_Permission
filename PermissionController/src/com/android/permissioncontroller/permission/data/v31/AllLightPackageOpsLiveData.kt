@@ -39,7 +39,7 @@ class AllLightPackageOpsLiveData(app: Application) :
     AppOpsManager.OnOpChangedListener {
 
     private val appOpsManager = app.getSystemService(AppOpsManager::class.java)!!
-    private var opNames: List<String> = getOpNames(StandardPermGroupNamesLiveData.value)
+    private var opNames: Set<String> = getOpNames(StandardPermGroupNamesLiveData.value)
 
     init {
         addSource(StandardPermGroupNamesLiveData) {
@@ -85,7 +85,7 @@ class AllLightPackageOpsLiveData(app: Application) :
         postValue(
             packageOpsList.associateBy(
                 { Pair(it.packageName, UserHandle.getUserHandleForUid(it.uid)) },
-                { LightPackageOps(it) }))
+                { LightPackageOps(opNames, it) }))
     }
 
     override fun onOpChanged(op: String?, packageName: String?) {
@@ -101,5 +101,6 @@ class AllLightPackageOpsLiveData(app: Application) :
         permissionGroupNames
             ?.flatMap { group -> PermissionMapping.getPlatformPermissionNamesOfGroup(group) }
             ?.mapNotNull { permName -> AppOpsManager.permissionToOp(permName) }
-            ?: listOf()
+            ?.toSet()
+            ?: setOf()
 }
