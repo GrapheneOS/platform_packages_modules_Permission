@@ -17,12 +17,14 @@
 package com.android.permissioncontroller.privacysources
 
 import android.content.Context
+import androidx.annotation.VisibleForTesting
 import com.android.safetycenter.resources.SafetyCenterResourcesContext
 
 // (TODO:b/242573074) Remove for Android U.
-object NotificationListenerPregrants {
-    private var initialized = false
-    private val pregrantSet: MutableSet<String> = hashSetOf (
+class NotificationListenerPregrants(private val context: Context) {
+    @VisibleForTesting
+    val pregrantedPackagesDelegate = lazy {
+        hashSetOf(
             "android",
             "com.android.cellbroadcastreceiver",
             "com.android.server.telecom",
@@ -36,14 +38,12 @@ object NotificationListenerPregrants {
             "com.android.localtransport",
             "com.android.wallpaperbackup",
             "com.android.location.fused"
-    )
-
-    fun getPregrantedPackages(context: Context): Set<String> {
-        if (!initialized) {
-            pregrantSet.addAll(SafetyCenterResourcesContext(context)
-                    .getStringByName("config_NotificationListenerServicePregrants").split(","))
-            initialized = true
+        ).also {
+            it.addAll(
+                SafetyCenterResourcesContext(context)
+                    .getStringByName("config_NotificationListenerServicePregrants")
+                    .split(","))
         }
-        return pregrantSet
     }
+    val pregrantedPackages: Set<String> by pregrantedPackagesDelegate
 }

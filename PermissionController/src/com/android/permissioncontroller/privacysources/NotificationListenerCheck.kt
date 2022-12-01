@@ -196,9 +196,15 @@ internal class NotificationListenerCheckInternal(
     private val random = Random()
     private val sharedPrefs: SharedPreferences =
         parentUserContext.getSharedPreferences(NLS_PREFERENCE_FILE, MODE_PRIVATE)
-    private val exemptPackages: Set<String> =
+
+    // Don't initialize until used. Delegate used for testing
+    @VisibleForTesting
+    val exemptPackagesDelegate = lazy {
         getExemptedPackages(
             getSystemServiceSafe(parentUserContext, RoleManager::class.java), parentUserContext)
+    }
+    @VisibleForTesting
+    val exemptPackages: Set<String> by exemptPackagesDelegate
 
     companion object {
         @VisibleForTesting const val NLS_PREFERENCE_FILE = "nls_preference"
@@ -322,11 +328,11 @@ internal class NotificationListenerCheckInternal(
     }
 
     /** Get all the exempted packages. */
-    fun getExemptedPackages(roleManager: RoleManager, context: Context): Set<String> {
+    private fun getExemptedPackages(roleManager: RoleManager, context: Context): Set<String> {
         val exemptedPackages: MutableSet<String> = HashSet()
         exemptedPackages.add(SYSTEM_PKG)
         EXEMPTED_ROLES.forEach { role -> exemptedPackages.addAll(roleManager.getRoleHolders(role)) }
-        exemptedPackages.addAll(NotificationListenerPregrants.getPregrantedPackages(context))
+        exemptedPackages.addAll(NotificationListenerPregrants(context).pregrantedPackages)
         return exemptedPackages
     }
 
