@@ -34,6 +34,7 @@ import android.util.Log;
 import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.build.SdkLevel;
+import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 
 /**
@@ -94,7 +95,12 @@ final class SafetyCenterNotificationFactory {
                         .setDeleteIntent(
                                 SafetyCenterNotificationReceiver.newNotificationDismissedIntent(
                                         mContext, issueKey));
-        // TODO(b/260084296): Include issue actions on notifications;
+
+        for (int i = 0; i < issue.getActions().size(); i++) {
+            Notification.Action notificationAction =
+                    toNotificationAction(issueKey, issue.getActions().get(i));
+            builder.addAction(notificationAction);
+        }
 
         return builder.build();
     }
@@ -126,6 +132,26 @@ final class SafetyCenterNotificationFactory {
         // TODO(b/259399024): Use suitable string resource here
         extras.putString(Notification.EXTRA_SUBSTITUTE_APP_NAME, "Safety Center");
         return extras;
+    }
+
+    @NonNull
+    private Notification.Action toNotificationAction(
+            @NonNull SafetyCenterIssueKey issueKey, @NonNull SafetySourceIssue.Action issueAction) {
+        // We do not use the action's PendingIntent directly here instead we build a new PI which
+        // will be handled by our SafetyCenterNotificationReceiver which will in turn dispatch
+        // the source-provided action PI. This ensures that action execution is consistent across
+        // between Safety Center UI and notifications, for example executing an action from a
+        // notification will send an "action in-flight" update to any current listeners.
+        SafetyCenterIssueActionId issueActionId =
+                SafetyCenterIssueActionId.newBuilder()
+                        .setSafetyCenterIssueKey(issueKey)
+                        .setSafetySourceIssueActionId(issueAction.getId())
+                        .build();
+        PendingIntent receiverPendingIntent =
+                SafetyCenterNotificationReceiver.newNotificationActionClickedIntent(
+                        mContext, issueActionId);
+        return new Notification.Action.Builder(null, issueAction.getLabel(), receiverPendingIntent)
+                .build();
     }
 
     /**

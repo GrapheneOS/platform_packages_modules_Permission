@@ -20,16 +20,28 @@ import android.app.Notification
 import android.service.notification.StatusBarNotification
 
 /** The characteristic properties of a notification. */
-data class NotificationCharacteristics(val title: String, val text: String) {
+data class NotificationCharacteristics(
+    val title: String?,
+    val text: String?,
+    val actions: List<CharSequence> = emptyList()
+) {
     companion object {
+        /** Gets the [NotificationCharacteristics] from an actual [StatusBarNotification]. */
+        private fun StatusBarNotification.toCharacteristics(): NotificationCharacteristics? {
+            return this.notification?.run {
+                NotificationCharacteristics(
+                    title = extras.getString(Notification.EXTRA_TITLE),
+                    text = extras.getString(Notification.EXTRA_TEXT),
+                    actions = actions.orEmpty().map { it.title }
+                )
+            }
+        }
+
         private fun isMatch(
             statusBarNotification: StatusBarNotification,
-            characteristic: NotificationCharacteristics
+            characteristics: NotificationCharacteristics
         ): Boolean {
-            val notif = statusBarNotification.notification
-            return notif != null &&
-                notif.extras.getString(Notification.EXTRA_TITLE) == characteristic.title &&
-                notif.extras.getString(Notification.EXTRA_TEXT) == characteristic.text
+            return statusBarNotification.toCharacteristics() == characteristics
         }
 
         fun areMatching(

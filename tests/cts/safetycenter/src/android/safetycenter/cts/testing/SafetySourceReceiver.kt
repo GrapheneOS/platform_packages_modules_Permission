@@ -222,7 +222,8 @@ class SafetySourceReceiver : BroadcastReceiver() {
                 safetySourceIntentHandler.receiveSafetyCenterEnabledChanged()
             }
 
-        private fun receiveResolveAction(timeout: Duration = TIMEOUT_LONG) {
+        /** Waits for this receiver to resolve an action within the given [timeout]. */
+        fun receiveResolveAction(timeout: Duration = TIMEOUT_LONG) {
             runBlockingWithTimeout(timeout) { safetySourceIntentHandler.receiveResolveAction() }
         }
 
