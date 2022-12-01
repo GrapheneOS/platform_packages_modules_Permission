@@ -88,10 +88,10 @@ object SafetyCenterCtsConfigs {
     const val PACKAGE_CERT_HASH_FAKE = "feed12"
 
     /** SHA256 hashes of the certificate(s) known to sign the CTS tests. */
-    private val PACKAGE_CERT_HASHES_CTS = listOf(
-        "6cecc50e34ae31bfb5678986d6d6d3736c571ded2f2459527793e1f054eb0c9b",
-        "a40da80a59d170caa950cf15c18c454d47a39b26989d8b640ecd745ba71bf5dc"
-    )
+    private val PACKAGE_CERT_HASHES_CTS =
+        listOf(
+            "6cecc50e34ae31bfb5678986d6d6d3736c571ded2f2459527793e1f054eb0c9b",
+            "a40da80a59d170caa950cf15c18c454d47a39b26989d8b640ecd745ba71bf5dc")
 
     /** An invalid SHA256 hash (not a byte string, not even number of chars). */
     const val PACKAGE_CERT_HASH_INVALID = "0124ppl"
@@ -780,7 +780,7 @@ object SafetyCenterCtsConfigs {
 
     private fun dynamicSafetySource(id: String) = dynamicSafetySourceBuilder(id).build()
 
-    private fun dynamicSafetySourceBuilder(id: String) =
+    fun dynamicSafetySourceBuilder(id: String) =
         SafetySource.Builder(SAFETY_SOURCE_TYPE_DYNAMIC)
             .setId(id)
             .setPackageName(CTS_PACKAGE_NAME)
@@ -832,7 +832,7 @@ object SafetyCenterCtsConfigs {
             .setTitleResId(android.R.string.ok)
             .setSummaryResId(android.R.string.ok)
 
-    private fun singleSourceConfig(safetySource: SafetySource) =
+    fun singleSourceConfig(safetySource: SafetySource) =
         SafetyCenterConfig.Builder()
             .addSafetySourcesGroup(
                 safetySourcesGroupBuilder(SINGLE_SOURCE_GROUP_ID)
