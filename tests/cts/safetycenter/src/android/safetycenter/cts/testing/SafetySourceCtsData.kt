@@ -242,11 +242,14 @@ class SafetySourceCtsData(private val context: Context) {
      * A [SafetySourceIssue.Builder] with a [SEVERITY_LEVEL_RECOMMENDATION] and a redirecting
      * [Action].
      */
-    fun defaultRecommendationIssueBuilder() =
+    fun defaultRecommendationIssueBuilder(
+        title: String = "Recommendation issue title",
+        summary: String = "Recommendation issue summary"
+    ) =
         SafetySourceIssue.Builder(
                 RECOMMENDATION_ISSUE_ID,
-                "Recommendation issue title",
-                "Recommendation issue summary",
+                title,
+                summary,
                 SEVERITY_LEVEL_RECOMMENDATION,
                 ISSUE_TYPE_ID)
             .addAction(
