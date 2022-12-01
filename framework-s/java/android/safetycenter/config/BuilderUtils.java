@@ -25,6 +25,7 @@ import android.content.res.Resources;
 
 import androidx.annotation.RequiresApi;
 
+import java.util.Collection;
 import java.util.Objects;
 
 @RequiresApi(TIRAMISU)
@@ -39,12 +40,12 @@ final class BuilderUtils {
             boolean prohibited,
             @Nullable Object defaultValue) {
         if (attribute == null && required) {
-            throw new IllegalStateException("Required attribute " + name + " missing");
+            throwRequiredAttributeMissing(name);
         }
         boolean nonDefaultValueProvided = !Objects.equals(attribute, defaultValue);
         boolean checkProhibited = prohibited && nonDefaultValueProvided;
         if (attribute != null && checkProhibited) {
-            throw new IllegalStateException("Prohibited attribute " + name + " present");
+            throwProhibitedAttributePresent(name);
         }
     }
 
@@ -67,7 +68,7 @@ final class BuilderUtils {
             return Resources.ID_NULL;
         }
         if (required && value == Resources.ID_NULL) {
-            throw new IllegalStateException("Required attribute " + name + " invalid");
+            throwRequiredAttributeInvalid(name);
         }
         return value;
     }
@@ -118,5 +119,38 @@ final class BuilderUtils {
             return defaultValue;
         }
         return value;
+    }
+
+    /**
+     * Validates a collection argument from a builder.
+     *
+     * <ul>
+     *   <li>If {@code required}, a non-empty collection must be supplied.
+     *   <li>If {@code prohibited}, an empty collection must be supplied.
+     * </ul>
+     */
+    static <T> void validateCollection(
+            @NonNull Collection<T> value,
+            @NonNull String name,
+            boolean required,
+            boolean prohibited) {
+        if (value.isEmpty() && required) {
+            throwRequiredAttributeMissing(name);
+        }
+        if (!value.isEmpty() && prohibited) {
+            throwProhibitedAttributePresent(name);
+        }
+    }
+
+    static void throwRequiredAttributeMissing(@NonNull String attribute) {
+        throw new IllegalStateException("Required attribute " + attribute + " missing");
+    }
+
+    static void throwProhibitedAttributePresent(@NonNull String attribute) {
+        throw new IllegalStateException("Prohibited attribute " + attribute + " present");
+    }
+
+    static void throwRequiredAttributeInvalid(@NonNull String attribute) {
+        throw new IllegalStateException("Required attribute " + attribute + " invalid");
     }
 }

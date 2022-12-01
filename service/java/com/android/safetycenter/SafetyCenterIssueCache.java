@@ -112,6 +112,13 @@ final class SafetyCenterIssueCache {
         return result;
     }
 
+    /** Same as {@link SafetyCenterIssueCache#isIssueDismissed(SafetyCenterIssueKey, int)}. */
+    boolean isIssueDismissed(@NonNull SafetyCenterIssueExtended safetyCenterIssue) {
+        return isIssueDismissed(
+                safetyCenterIssue.getSafetyCenterIssueKey(),
+                safetyCenterIssue.getSafetySourceIssueSeverityLevel());
+    }
+
     /**
      * Returns {@code true} if the issue with the given key and severity level is currently
      * dismissed.

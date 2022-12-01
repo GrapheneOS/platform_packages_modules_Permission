@@ -73,6 +73,8 @@ class ParserConfigValidTest {
                                     if (SdkLevel.isAtLeastU()) {
                                         setNotificationsAllowed(true)
                                         setDeduplicationGroup("group")
+                                        addPackageCertificateHash("feed1")
+                                        addPackageCertificateHash("feed2")
                                     }
                                 }
                                 .build())
@@ -94,6 +96,8 @@ class ParserConfigValidTest {
                                     if (SdkLevel.isAtLeastU()) {
                                         setNotificationsAllowed(true)
                                         setDeduplicationGroup("group")
+                                        addPackageCertificateHash("feed1")
+                                        addPackageCertificateHash("feed2")
                                     }
                                 }
                                 .build())
@@ -170,6 +174,8 @@ class ParserConfigValidTest {
                                     if (SdkLevel.isAtLeastU()) {
                                         setNotificationsAllowed(true)
                                         setDeduplicationGroup("group")
+                                        addPackageCertificateHash("feed1")
+                                        addPackageCertificateHash("feed2")
                                     }
                                 }
                                 .build())

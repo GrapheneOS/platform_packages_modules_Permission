@@ -26,7 +26,8 @@
                 loggingAllowed="false"
                 refreshOnPageOpenAllowed="true"
                 notificationsAllowed="true"
-                deduplicationGroup="group"/>
+                deduplicationGroup="group"
+                packageCertificateHashes="feed1,feed2"/>
             <dynamic-safety-source
                 id="@com.android.safetycenter.config.tests:string/dynamic_all_references_id"
                 packageName="@com.android.safetycenter.config.tests:string/dynamic_all_references_package_name"
@@ -41,7 +42,8 @@
                 loggingAllowed="@com.android.safetycenter.config.tests:string/dynamic_all_references_logging_allowed"
                 refreshOnPageOpenAllowed="@com.android.safetycenter.config.tests:string/dynamic_all_references_refresh_on_page_open_allowed"
                 notificationsAllowed="@com.android.safetycenter.config.tests:string/dynamic_all_references_notifications_allowed"
-                deduplicationGroup="@com.android.safetycenter.config.tests:string/dynamic_all_references_deduplication_group"/>
+                deduplicationGroup="@com.android.safetycenter.config.tests:string/dynamic_all_references_deduplication_group"
+                packageCertificateHashes="@com.android.safetycenter.config.tests:string/dynamic_all_references_package_cert_hashes"/>
             <dynamic-safety-source
                 id="dynamic_disabled"
                 packageName="package"
@@ -97,7 +99,8 @@
                 loggingAllowed="false"
                 refreshOnPageOpenAllowed="true"
                 notificationsAllowed="true"
-                deduplicationGroup="group"/>
+                deduplicationGroup="group"
+                packageCertificateHashes="feed1,feed2"/>
         </safety-sources-group>
         <safety-sources-group
             id="mixed"

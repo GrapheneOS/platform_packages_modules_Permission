@@ -27,6 +27,7 @@ import android.annotation.SystemApi;
 import android.content.res.Resources;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.ArraySet;
 
 import androidx.annotation.RequiresApi;
 
@@ -34,7 +35,9 @@ import com.android.modules.utils.build.SdkLevel;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * Data class used to represent the initial configuration of a safety source.
@@ -172,6 +175,10 @@ public final class SafetySource implements Parcelable {
                     if (SdkLevel.isAtLeastU()) {
                         builder.setNotificationsAllowed(in.readBoolean());
                         builder.setDeduplicationGroup(in.readString());
+                        List<String> certs = in.createStringArrayList();
+                        for (int i = 0; i < certs.size(); i++) {
+                            builder.addPackageCertificateHash(certs.get(i));
+                        }
                     }
                     return builder.build();
                 }
@@ -197,6 +204,7 @@ public final class SafetySource implements Parcelable {
     private final boolean mRefreshOnPageOpenAllowed;
     private final boolean mNotificationsAllowed;
     @Nullable final String mDeduplicationGroup;
+    @NonNull private final Set<String> mPackageCertificateHashes;
 
     private SafetySource(
             @SafetySourceType int type,
@@ -213,7 +221,8 @@ public final class SafetySource implements Parcelable {
             boolean loggingAllowed,
             boolean refreshOnPageOpenAllowed,
             boolean notificationsAllowed,
-            @Nullable String deduplicationGroup) {
+            @Nullable String deduplicationGroup,
+            @NonNull Set<String> packageCertificateHashes) {
         mType = type;
         mId = id;
         mPackageName = packageName;
@@ -229,6 +238,7 @@ public final class SafetySource implements Parcelable {
         mRefreshOnPageOpenAllowed = refreshOnPageOpenAllowed;
         mNotificationsAllowed = notificationsAllowed;
         mDeduplicationGroup = deduplicationGroup;
+        mPackageCertificateHashes = Set.copyOf(packageCertificateHashes);
     }
 
     /** Returns the type of this safety source. */
@@ -496,6 +506,28 @@ public final class SafetySource implements Parcelable {
         return mDeduplicationGroup;
     }
 
+    /**
+     * Returns a set of package certificate hashes representing valid signed packages that represent
+     * this {@link SafetySource}.
+     *
+     * <p>If one or more certificate hashes are set, Safety Center will validate that a package
+     * calling {@link android.safetycenter.SafetyCenterManager#setSafetySourceData} is signed with
+     * one of the certificates provided.
+     *
+     * <p>The default value is an empty {@code Set}, in which case only the package name is
+     * validated.
+     *
+     * @see Builder#addPackageCertificateHash(String)
+     */
+    @NonNull
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    public Set<String> getPackageCertificateHashes() {
+        if (!SdkLevel.isAtLeastU()) {
+            throw new UnsupportedOperationException();
+        }
+        return mPackageCertificateHashes;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -515,7 +547,8 @@ public final class SafetySource implements Parcelable {
                 && mLoggingAllowed == that.mLoggingAllowed
                 && mRefreshOnPageOpenAllowed == that.mRefreshOnPageOpenAllowed
                 && mNotificationsAllowed == that.mNotificationsAllowed
-                && Objects.equals(mDeduplicationGroup, that.mDeduplicationGroup);
+                && Objects.equals(mDeduplicationGroup, that.mDeduplicationGroup)
+                && Objects.equals(mPackageCertificateHashes, that.mPackageCertificateHashes);
     }
 
     @Override
@@ -535,7 +568,8 @@ public final class SafetySource implements Parcelable {
                 mLoggingAllowed,
                 mRefreshOnPageOpenAllowed,
                 mNotificationsAllowed,
-                mDeduplicationGroup);
+                mDeduplicationGroup,
+                mPackageCertificateHashes);
     }
 
     @Override
@@ -571,6 +605,8 @@ public final class SafetySource implements Parcelable {
                 + mNotificationsAllowed
                 + ", mDeduplicationGroup="
                 + mDeduplicationGroup
+                + ", mPackageCertificateHashes="
+                + mPackageCertificateHashes
                 + '}';
     }
 
@@ -597,6 +633,7 @@ public final class SafetySource implements Parcelable {
         if (SdkLevel.isAtLeastU()) {
             dest.writeBoolean(mNotificationsAllowed);
             dest.writeString(mDeduplicationGroup);
+            dest.writeStringList(List.copyOf(mPackageCertificateHashes));
         }
     }
 
@@ -618,6 +655,7 @@ public final class SafetySource implements Parcelable {
         @Nullable private Boolean mRefreshOnPageOpenAllowed;
         @Nullable private Boolean mNotificationsAllowed;
         @Nullable private String mDeduplicationGroup;
+        @NonNull private final ArraySet<String> mPackageCertificateHashes = new ArraySet<>();
 
         /** Creates a {@link Builder} for a {@link SafetySource}. */
         public Builder(@SafetySourceType int type) {
@@ -845,6 +883,22 @@ public final class SafetySource implements Parcelable {
         }
 
         /**
+         * Adds a package certificate hash to the {@link #getPackageCertificateHashes()} property of
+         * this {@link SafetySource}.
+         *
+         * @see #getPackageCertificateHashes()
+         */
+        @NonNull
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        public Builder addPackageCertificateHash(@NonNull String packageCertificateHash) {
+            if (!SdkLevel.isAtLeastU()) {
+                throw new UnsupportedOperationException();
+            }
+            mPackageCertificateHashes.add(packageCertificateHash);
+            return this;
+        }
+
+        /**
          * Creates the {@link SafetySource} defined by this {@link Builder}.
          *
          * <p>Throws an {@link IllegalStateException} if any constraint on the safety source is
@@ -947,6 +1001,7 @@ public final class SafetySource implements Parcelable {
 
             String deduplicationGroup = mDeduplicationGroup;
             boolean notificationsAllowed = false;
+            Set<String> packageCertificateHashes = Set.copyOf(mPackageCertificateHashes);
             if (SdkLevel.isAtLeastU()) {
                 notificationsAllowed =
                         BuilderUtils.validateBoolean(
@@ -958,6 +1013,8 @@ public final class SafetySource implements Parcelable {
 
                 BuilderUtils.validateAttribute(
                         deduplicationGroup, "deduplicationGroup", false, isStatic);
+                BuilderUtils.validateCollection(
+                        packageCertificateHashes, "packageCertificateHashes", false, isStatic);
             }
 
             return new SafetySource(
@@ -975,7 +1032,8 @@ public final class SafetySource implements Parcelable {
                     loggingAllowed,
                     refreshOnPageOpenAllowed,
                     notificationsAllowed,
-                    deduplicationGroup);
+                    deduplicationGroup,
+                    packageCertificateHashes);
         }
     }
 }
