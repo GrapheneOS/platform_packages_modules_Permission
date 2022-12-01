@@ -32,9 +32,18 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
+import javax.annotation.concurrent.NotThreadSafe;
+
 /** Deduplicates issues based on deduplication info provided by the source and the issue. */
 @RequiresApi(UPSIDE_DOWN_CAKE)
+@NotThreadSafe
 final class SafetyCenterIssueDeduplicator {
+
+    @NonNull private final SafetyCenterIssueCache mSafetyCenterIssueCache;
+
+    SafetyCenterIssueDeduplicator(@NonNull SafetyCenterIssueCache safetyCenterIssueCache) {
+        this.mSafetyCenterIssueCache = safetyCenterIssueCache;
+    }
 
     /**
      * Accepts a list of issues sorted by priority and filters out duplicates.
@@ -43,12 +52,17 @@ final class SafetyCenterIssueDeduplicator {
      * sources which are part of the same deduplication group. All but the highest priority
      * duplicate issue will be filtered out.
      *
+     * <p>In case any issue, in the bucket of duplicate issues, was dismissed, all issues of the
+     * same or lower severity will be dismissed as well.
+     *
      * <p>This method modifies the given argument.
      */
     void deduplicateIssues(@NonNull List<SafetyCenterIssueExtended> sortedIssues) {
         // (dedup key) -> list(issues)
         ArrayMap<DeduplicationKey, List<SafetyCenterIssueExtended>> dedupBuckets =
                 createDedupBuckets(sortedIssues);
+
+        dismissDuplicateIssuesOfDismissedIssue(dedupBuckets);
 
         ArraySet<SafetyCenterIssueKey> duplicatesToFilterOut =
                 getDuplicatesToFilterOut(dedupBuckets);
@@ -59,6 +73,57 @@ final class SafetyCenterIssueDeduplicator {
                 it.remove();
             }
         }
+    }
+
+    /**
+     * Handles dismissals logic: in each bucket, dismissal details of the top (highest priority)
+     * dismissed issue will be copied to all other duplicate issues in that bucket, that are of
+     * equal or lower severity (not priority).
+     */
+    private void dismissDuplicateIssuesOfDismissedIssue(
+            @NonNull ArrayMap<DeduplicationKey, List<SafetyCenterIssueExtended>> dedupBuckets) {
+        for (int i = 0; i < dedupBuckets.size(); i++) {
+            List<SafetyCenterIssueExtended> duplicates = dedupBuckets.valueAt(i);
+            SafetyCenterIssueExtended topDismissed = getHighestPriorityDismissedIssue(duplicates);
+            alignDismissalsDataWithinBucket(topDismissed, duplicates);
+        }
+    }
+
+    /**
+     * Dismisses all issues of lower or equal severity relative to the given top dismissed issue in
+     * the bucket.
+     */
+    private void alignDismissalsDataWithinBucket(
+            @Nullable SafetyCenterIssueExtended topDismissed,
+            @NonNull List<SafetyCenterIssueExtended> duplicates) {
+        if (topDismissed == null) {
+            return;
+        }
+        SafetyCenterIssueKey topDismissedIssueKey = topDismissed.getSafetyCenterIssueKey();
+        int topDismissedSeverityLevel = topDismissed.getSafetyCenterIssue().getSeverityLevel();
+        for (int i = 0; i < duplicates.size(); i++) {
+            SafetyCenterIssueExtended issue = duplicates.get(i);
+            SafetyCenterIssueKey issueKey = issue.getSafetyCenterIssueKey();
+            if (!issueKey.equals(topDismissedIssueKey)
+                    && issue.getSafetyCenterIssue().getSeverityLevel()
+                            <= topDismissedSeverityLevel) {
+                // all duplicate issues should have same dismissals data as top dismissed issue
+                mSafetyCenterIssueCache.copyDismissalData(topDismissedIssueKey, issueKey);
+            }
+        }
+    }
+
+    @Nullable
+    private SafetyCenterIssueExtended getHighestPriorityDismissedIssue(
+            @NonNull List<SafetyCenterIssueExtended> duplicates) {
+        for (int i = 0; i < duplicates.size(); i++) {
+            SafetyCenterIssueExtended issue = duplicates.get(i);
+            if (mSafetyCenterIssueCache.isIssueDismissed(issue)) {
+                return issue;
+            }
+        }
+
+        return null;
     }
 
     /** Returns a set of duplicate issues that need to be filtered out. */

@@ -198,7 +198,9 @@ public final class SafetyCenterService extends SystemService {
                         mPendingIntentFactory,
                         mSafetyCenterIssueCache,
                         mSafetyCenterRepository,
-                        SdkLevel.isAtLeastU() ? new SafetyCenterIssueDeduplicator() : null);
+                        SdkLevel.isAtLeastU()
+                                ? new SafetyCenterIssueDeduplicator(mSafetyCenterIssueCache)
+                                : null);
         mSafetyCenterListeners = new SafetyCenterListeners(mSafetyCenterDataFactory);
         mNotificationSender =
                 new SafetyCenterNotificationSender(
