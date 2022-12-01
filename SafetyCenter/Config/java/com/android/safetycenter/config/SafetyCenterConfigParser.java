@@ -76,6 +76,7 @@ public final class SafetyCenterConfigParser {
             "refreshOnPageOpenAllowed";
     private static final String ATTR_SAFETY_SOURCE_NOTIFICATIONS_ALLOWED = "notificationsAllowed";
     private static final String ATTR_SAFETY_SOURCE_DEDUPLICATION_GROUP = "deduplicationGroup";
+    private static final String ATTR_SAFETY_SOURCE_PACKAGE_CERT_HASHES = "packageCertificateHashes";
     private static final String ENUM_STATELESS_ICON_TYPE_NONE = "none";
     private static final String ENUM_STATELESS_ICON_TYPE_PRIVACY = "privacy";
     private static final String ENUM_GROUP_TYPE_STATEFUL = "stateful";
@@ -361,6 +362,22 @@ public final class SafetyCenterConfigParser {
                                         name,
                                         parser.getAttributeName(i),
                                         resources));
+                    } else {
+                        throw attributeUnexpected(name, parser.getAttributeName(i));
+                    }
+                    break;
+                case ATTR_SAFETY_SOURCE_PACKAGE_CERT_HASHES:
+                    if (SdkLevel.isAtLeastU()) {
+                        String commaSeparatedHashes =
+                                parseStringResourceValue(
+                                        parser.getAttributeValue(i),
+                                        name,
+                                        parser.getAttributeName(i),
+                                        resources);
+                        String[] splits = commaSeparatedHashes.split(",");
+                        for (int j = 0; j < splits.length; j++) {
+                            builder.addPackageCertificateHash(splits[j]);
+                        }
                     } else {
                         throw attributeUnexpected(name, parser.getAttributeName(i));
                     }
