@@ -36,6 +36,7 @@ import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 
 import java.io.PrintWriter;
@@ -210,6 +211,16 @@ final class SafetyCenterNotificationSender {
     @NotificationBehaviorInternal
     private int getBehavior(
             @NonNull SafetySourceIssue issue, @NonNull SafetyCenterIssueKey issueKey) {
+        if (SdkLevel.isAtLeastU()) {
+            switch (issue.getNotificationBehavior()) {
+                case SafetySourceIssue.NOTIFICATION_BEHAVIOR_NEVER:
+                    return NOTIFICATION_BEHAVIOR_INTERNAL_NEVER;
+                case SafetySourceIssue.NOTIFICATION_BEHAVIOR_DELAYED:
+                    return NOTIFICATION_BEHAVIOR_INTERNAL_DELAYED;
+                case SafetySourceIssue.NOTIFICATION_BEHAVIOR_IMMEDIATELY:
+                    return NOTIFICATION_BEHAVIOR_INTERNAL_IMMEDIATELY;
+            }
+        }
         // On Android T all issues are assumed to have "unspecified" behavior
         return getBehaviorForIssueWithUnspecifiedBehavior(issueKey);
     }
