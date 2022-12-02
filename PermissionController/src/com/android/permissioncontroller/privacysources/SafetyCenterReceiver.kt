@@ -76,11 +76,6 @@ class SafetyCenterReceiver(
                 PermissionControllerApplication.get().applicationContext,
                 SafetyCenterManager::class.java)
 
-        if (!safetyCenterManager.isSafetyCenterEnabled &&
-            intent.action != ACTION_SAFETY_CENTER_ENABLED_CHANGED) {
-            return
-        }
-
         val mapOfSourceIdsToSources = getMapOfSourceIdsToSources(context)
 
         when (intent.action) {
@@ -91,23 +86,29 @@ class SafetyCenterReceiver(
                     mapOfSourceIdsToSources.values)
             }
             ACTION_REFRESH_SAFETY_SOURCES -> {
-                val sourceIdsExtra = intent.getStringArrayExtra(EXTRA_REFRESH_SAFETY_SOURCE_IDS)
-                if (sourceIdsExtra != null && sourceIdsExtra.isNotEmpty()) {
+                if (safetyCenterManager.isSafetyCenterEnabled) {
+                    val sourceIdsExtra = intent.getStringArrayExtra(EXTRA_REFRESH_SAFETY_SOURCE_IDS)
+                    if (sourceIdsExtra != null && sourceIdsExtra.isNotEmpty()) {
+                        refreshSafetySources(
+                            context,
+                            intent,
+                            RefreshEvent.EVENT_REFRESH_REQUESTED,
+                            mapOfSourceIdsToSources,
+                            sourceIdsExtra.toList())
+                    }
+                }
+            }
+
+            ACTION_BOOT_COMPLETED -> {
+                updateTileVisibility(context, safetyCenterManager.isSafetyCenterEnabled)
+                if (safetyCenterManager.isSafetyCenterEnabled) {
                     refreshSafetySources(
                         context,
                         intent,
-                        RefreshEvent.EVENT_REFRESH_REQUESTED,
+                        RefreshEvent.EVENT_DEVICE_REBOOTED,
                         mapOfSourceIdsToSources,
-                        sourceIdsExtra.toList())
+                        mapOfSourceIdsToSources.keys.toList())
                 }
-            }
-            ACTION_BOOT_COMPLETED -> {
-                refreshSafetySources(
-                    context,
-                    intent,
-                    RefreshEvent.EVENT_DEVICE_REBOOTED,
-                    mapOfSourceIdsToSources,
-                    mapOfSourceIdsToSources.keys.toList())
             }
         }
     }

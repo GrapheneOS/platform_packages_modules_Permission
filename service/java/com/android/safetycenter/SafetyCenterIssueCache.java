@@ -95,9 +95,8 @@ final class SafetyCenterIssueCache {
      * <p>Only issues from "active" sources are included. Active sources are those for which {@link
      * SafetyCenterConfigReader#isExternalSafetySourceActive(String)} returns {@code true}.
      */
-    // TODO(b/255946874): Make this visible when it's needed
     @NonNull
-    private List<SafetyCenterIssueKey> getIssuesForUser(@UserIdInt int userId) {
+    List<SafetyCenterIssueKey> getIssuesForUser(@UserIdInt int userId) {
         ArrayList<SafetyCenterIssueKey> result = new ArrayList<>();
         for (int i = 0; i < mIssues.size(); i++) {
             SafetyCenterIssueKey issueKey = mIssues.keyAt(i);
@@ -172,6 +171,25 @@ final class SafetyCenterIssueCache {
         }
         issueData.setDismissedAt(Instant.now());
         issueData.setDismissCount(issueData.getDismissCount() + 1);
+        mIsDirty = true;
+    }
+
+    /**
+     * Copy dismissal data from one issue to the other.
+     *
+     * <p>This will align dismissal state of these issues, unless issues are of different
+     * severities, in which case they can potentially differ in resurface times.
+     */
+    void copyDismissalData(
+            @NonNull SafetyCenterIssueKey keyFrom, @NonNull SafetyCenterIssueKey keyTo) {
+        IssueData dataFrom = getOrWarn(keyFrom, "copying dismissed data");
+        IssueData dataTo = getOrWarn(keyTo, "copying dismissed data");
+        if (dataFrom == null || dataTo == null) {
+            return;
+        }
+
+        dataTo.setDismissedAt(dataFrom.getDismissedAt());
+        dataTo.setDismissCount(dataFrom.getDismissCount());
         mIsDirty = true;
     }
 

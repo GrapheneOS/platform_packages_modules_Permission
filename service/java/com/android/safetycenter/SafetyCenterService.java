@@ -198,7 +198,9 @@ public final class SafetyCenterService extends SystemService {
                         mPendingIntentFactory,
                         mSafetyCenterIssueCache,
                         mSafetyCenterRepository,
-                        SdkLevel.isAtLeastU() ? new SafetyCenterIssueDeduplicator() : null);
+                        SdkLevel.isAtLeastU()
+                                ? new SafetyCenterIssueDeduplicator(mSafetyCenterIssueCache)
+                                : null);
         mSafetyCenterListeners = new SafetyCenterListeners(mSafetyCenterDataFactory);
         mNotificationSender =
                 new SafetyCenterNotificationSender(
@@ -790,6 +792,7 @@ public final class SafetyCenterService extends SystemService {
                 mSafetyCenterRefreshTracker.dump(fout);
                 mSafetyCenterTimeouts.dump(fout);
                 mSafetyCenterListeners.dump(fout);
+                mNotificationSender.dump(fout);
             }
         }
 
@@ -1131,6 +1134,7 @@ public final class SafetyCenterService extends SystemService {
         mSafetyCenterIssueCache.clear();
         mSafetyCenterTimeouts.clear();
         mSafetyCenterRefreshTracker.clearRefresh();
+        mNotificationSender.cancelAllNotifications();
         scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked();
     }
 
