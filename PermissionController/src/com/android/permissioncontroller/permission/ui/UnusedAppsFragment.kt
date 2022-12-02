@@ -272,7 +272,7 @@ class UnusedAppsFragment<PF, UnusedAppPref> : Fragment()
                         "${categorizedPackages[period]}")
                 for (revokedPackageInfo in categorizedPackages[period]!!) {
                     for (groupName in revokedPackageInfo.revokedGroups) {
-                        val isNewlyRevoked = period == UnusedPeriod.THREE_MONTHS
+                        val isNewlyRevoked = period.isNewlyUnused()
                         viewModel.logAppView(revokedPackageInfo.packageName,
                             revokedPackageInfo.user, groupName, isNewlyRevoked)
                     }
