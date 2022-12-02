@@ -30,6 +30,8 @@ import androidx.annotation.RequiresApi;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 
+import javax.annotation.concurrent.NotThreadSafe;
+
 /** Wrapper that contains a {@link SafetyCenterIssue} and some extra information about it. */
 @RequiresApi(TIRAMISU)
 final class SafetyCenterIssueExtended {
@@ -94,6 +96,7 @@ final class SafetyCenterIssueExtended {
     }
 
     /** Builder for the {@link SafetyCenterIssueExtended}. */
+    @NotThreadSafe
     static final class Builder {
         @NonNull private final SafetyCenterIssue mSafetyCenterIssue;
         @SafetySourceIssue.IssueCategory private final int mSafetySourceIssueCategory;
