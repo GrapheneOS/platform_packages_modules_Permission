@@ -448,7 +448,7 @@ final class SafetyCenterDataFactory {
             return;
         }
 
-        if (entries.size() == 1) {
+        if (!SafetyCenterFlags.getShowSubpages() && entries.size() == 1) {
             safetyCenterEntryOrGroups.add(new SafetyCenterEntryOrGroup(entries.get(0)));
             return;
         }

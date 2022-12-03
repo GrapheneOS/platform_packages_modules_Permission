@@ -39,6 +39,7 @@ import android.util.StatsEvent;
 import androidx.annotation.RequiresApi;
 
 import com.android.internal.annotations.GuardedBy;
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permission.PermissionStatsLog;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 
@@ -139,12 +140,21 @@ final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback {
                 mSafetyCenterDataFactory.assembleSafetyCenterData(
                         "android", userProfileGroup, loggableGroups);
         long openIssuesCount = loggableData.getIssues().size();
-        long dismissedIssuesCount =
-                mSafetyCenterIssueCache.countActiveLoggableIssues(userProfileGroup)
-                        - openIssuesCount;
+        long dismissedIssuesCount = getDismissedIssuesCountLocked(loggableData, userProfileGroup);
 
         return mStatsdLogger.createSafetyStateEvent(
                 loggableData.getStatus().getSeverityLevel(), openIssuesCount, dismissedIssuesCount);
+    }
+
+    @GuardedBy("mApiLock")
+    private long getDismissedIssuesCountLocked(
+            @NonNull SafetyCenterData loggableData, @NonNull UserProfileGroup userProfileGroup) {
+        if (SdkLevel.isAtLeastU()) {
+            return loggableData.getDismissedIssues().size();
+        }
+        long openIssuesCount = loggableData.getIssues().size();
+        return mSafetyCenterIssueCache.countActiveLoggableIssues(userProfileGroup)
+                - openIssuesCount;
     }
 
     @GuardedBy("mApiLock")
