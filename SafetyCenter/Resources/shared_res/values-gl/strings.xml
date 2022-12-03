@@ -27,8 +27,12 @@
     <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"O dispositivo está en risco"</string>
     <string name="overall_severity_level_data_recommendation_title" msgid="1424269714861655302">"Os teus datos poden estar en risco"</string>
     <string name="overall_severity_level_critical_data_warning_title" msgid="1012704126634698604">"Os teus datos están en risco"</string>
-    <string name="overall_severity_level_safety_recommendation_title" msgid="6436208984463981167">"Pode que esteas en risco"</string>
-    <string name="overall_severity_level_critical_safety_warning_title" msgid="1039142045555227172">"Estás en risco"</string>
+    <string name="overall_severity_level_passwords_recommendation_title" msgid="8625105570296877719">"Contrasinais vulnerados (antigos)"</string>
+    <string name="overall_severity_level_critical_passwords_warning_title" msgid="7859047988648851217">"Contrasinais vulnerados (novos)"</string>
+    <string name="overall_severity_level_personal_recommendation_title" msgid="5493814377982623779">"Pode que a túa conta estea en risco"</string>
+    <string name="overall_severity_level_critical_personal_warning_title" msgid="5070434468955164734">"A túa conta está en risco"</string>
+    <string name="overall_severity_level_safety_recommendation_title" msgid="4291797434760242793">"Atopáronse posibles riscos"</string>
+    <string name="overall_severity_level_critical_safety_warning_title" msgid="6666640109779586868">"Atopáronse riscos"</string>
     <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"A conta pode estar en risco"</string>
     <string name="overall_severity_level_critical_account_warning_title" msgid="4402278408972158353">"A conta está en risco"</string>
     <string name="overall_severity_n_alerts_summary" msgid="1105615451561197136">"{count,plural, =1{# alerta}other{# alertas}}"</string>

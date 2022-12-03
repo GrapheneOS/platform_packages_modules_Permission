@@ -27,8 +27,12 @@
     <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"စက်တွင် အန္တရာယ်ရှိနေသည်"</string>
     <string name="overall_severity_level_data_recommendation_title" msgid="1424269714861655302">"သင့်ဒေတာတွင် အန္တရာယ်ရှိနိုင်သည်"</string>
     <string name="overall_severity_level_critical_data_warning_title" msgid="1012704126634698604">"သင့်ဒေတာတွင် အန္တရာယ်ရှိသည်"</string>
-    <string name="overall_severity_level_safety_recommendation_title" msgid="6436208984463981167">"သင့်တွင် အန္တရာယ်ရှိနိုင်သည်"</string>
-    <string name="overall_severity_level_critical_safety_warning_title" msgid="1039142045555227172">"သင့်တွင် အန္တရာယ်ရှိနေသည်"</string>
+    <string name="overall_severity_level_passwords_recommendation_title" msgid="8625105570296877719">"စကားဝှက် ကျိုးပေါက်နေသည် (အဟောင်း)"</string>
+    <string name="overall_severity_level_critical_passwords_warning_title" msgid="7859047988648851217">"စကားဝှက် ကျိုးပေါက်နေသည် (အသစ်)"</string>
+    <string name="overall_severity_level_personal_recommendation_title" msgid="5493814377982623779">"သင့်တွင် အန္တရာယ်ရှိနိုင်သည်"</string>
+    <string name="overall_severity_level_critical_personal_warning_title" msgid="5070434468955164734">"သင့်တွင် အန္တရာယ်ရှိနေသည်"</string>
+    <string name="overall_severity_level_safety_recommendation_title" msgid="4291797434760242793">"အန္တရာယ်ဖြစ်နိုင်ခြေ တွေ့သည်"</string>
+    <string name="overall_severity_level_critical_safety_warning_title" msgid="6666640109779586868">"အန္တရာယ် တွေ့ထားသည်"</string>
     <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"အကောင့်တွင် အန္တရာယ်ရှိနိုင်သည်"</string>
     <string name="overall_severity_level_critical_account_warning_title" msgid="4402278408972158353">"အကောင့်တွင် အန္တရာယ်ရှိသည်"</string>
     <string name="overall_severity_n_alerts_summary" msgid="1105615451561197136">"{count,plural, =1{သတိပေးချက် # ခု}other{သတိပေးချက် # ခု}}"</string>
