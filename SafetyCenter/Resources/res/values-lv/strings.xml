@@ -19,6 +19,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"Drošības centra resursi"</string>
     <string name="lock_screen_sources_title" msgid="3317906280484627707">"Ierīces bloķēšana"</string>
+    <string name="lock_screen_sources_summary" msgid="7220439741282516496"></string>
     <string name="lock_screen_title" msgid="4069104894527169877">"Ekrāna bloķēšana"</string>
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"Vēl nav informācijas"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"Konfidencialitāte"</string>
@@ -27,7 +28,11 @@
     <string name="permission_usage_summary" msgid="5323079206029964468">"Skatiet, kuras lietotnes nesen izmantoja atļaujas"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"Atļauju pārvaldnieks"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"Pārvaldiet lietotņu piekļuvi jūsu datiem"</string>
+    <string name="privacy_controls_title" msgid="5322875777945432395">"Konfidencialitātes vadīklas"</string>
+    <string name="privacy_controls_summary" msgid="2402066941190435424">"Kontrolējiet ierīces piekļuvi mikrofonam, kamerai un citām funkcijām"</string>
     <string name="advanced_title" msgid="8745436380690561172">"Citi iestatījumi"</string>
     <string name="advanced_security_title" msgid="1126833338772188155">"Citi drošības iestatījumi"</string>
     <string name="advanced_security_summary" msgid="6172253327022425123">"Šifrēšana, akreditācijas dati un citi iestatījumi"</string>
+    <string name="advanced_privacy_title" msgid="1117725225706176643">"Citi konfidencialitātes iestatījumi"</string>
+    <string name="advanced_privacy_summary" msgid="2281203390575069543">"Automātiskā aizpilde, aktivitātes vadīklas un citas iestatījumi"</string>
 </resources>
