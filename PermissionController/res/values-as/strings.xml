@@ -70,7 +70,7 @@
     <string name="additional_permissions" msgid="5801285469338873430">"অতিৰিক্ত অনুমতি"</string>
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"এপৰ তথ্য খোলক"</string>
     <string name="additional_permissions_more" msgid="5681220714755304407">"{count,plural, =1{আৰু # টা}one{আৰু # টা}other{আৰু # টা}}"</string>
-    <string name="old_sdk_deny_warning" msgid="2382236998845153919">"এই এপটো Androidৰ এটা পুৰণা সংস্কৰণৰ বাবে প্ৰস্তুত কৰা হৈছিল। অনুমতি নিদিলে ই বিচৰা ধৰণে কাম নকৰিবও পাৰে।"</string>
+    <string name="old_sdk_deny_warning" msgid="2382236998845153919">"এই এপ্‌টো Androidৰ এটা পুৰণা সংস্কৰণৰ বাবে প্ৰস্তুত কৰা হৈছিল। অনুমতি নিদিলে ই বিচৰা ধৰণে কাম নকৰিবও পাৰে।"</string>
     <string name="storage_supergroup_warning_allow" msgid="103093462784523190">"এই এপ্‌টো Androidৰ এটা পুৰণা সংস্কৰণৰ বাবে ডিজাইন কৰা হৈছিল। যদি আপুনি এই অনুমতিটো দিয়ে, তেন্তে আটাইবোৰ ষ্ট’ৰেজলৈ (ফট’, ভিডিঅ’, সংগীত, অডিঅ’ আৰু অন্য ফাইলসমূহকে ধৰি) এক্সেছৰ অনুমতি দিয়া হ’ব।"</string>
     <string name="storage_supergroup_warning_deny" msgid="6420765672683284347">"এই এপ্‌টো Androidৰ এটা পুৰণা সংস্কৰণৰ বাবে ডিজাইন কৰা হৈছিল। যদি আপুনি এই অনুমতিটো অস্বীকাৰ কৰে, তেন্তে আটাইবোৰ ষ্ট’ৰেজলৈ (ফট’, ভিডিঅ’, সংগীত, অডিঅ’ আৰু অন্য ফাইলসমূহকে ধৰি) এক্সেছ অস্বীকাৰ কৰা হ’ব।"</string>
     <string name="default_permission_description" msgid="4624464917726285203">"অজ্ঞাত কাৰ্য কৰিব পাৰে"</string>
@@ -108,7 +108,7 @@
     <string name="other_permissions" msgid="2901186127193849594">"অন্য এপৰ কার্যক্ষমতা"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"অনুমতি বিচাৰি কৰা অনুৰোধ"</string>
     <string name="screen_overlay_title" msgid="6977038513913222078">"স্ক্ৰীন অভাৰলে\' চিনাক্ত কৰা হৈছে"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"এই অনুমতিৰ ছেটিং সলনি কৰিবলৈ আপুনি প্ৰথমে ছেটিংসমূহ &gt; এপসমূহলৈ গৈ স্ক্ৰীণ অভাৰলে\' অফ কৰিব লাগিব"</string>
+    <string name="screen_overlay_message" msgid="5622563069757142102">"এই অনুমতিৰ ছেটিং সলনি কৰিবলৈ আপুনি প্ৰথমে ছেটিংসমূহ &gt; এপসমূহলৈ গৈ স্ক্ৰীন অভাৰলে\' অফ কৰিব লাগিব"</string>
     <string name="screen_overlay_button" msgid="4655005928054025250">"ছেটিং খোলক"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"ইনষ্টল/আনইনষ্টল কাৰ্য Wearত কৰিব নোৱাৰি।"</string>
@@ -292,7 +292,7 @@
     <string name="unused_app_permissions_removed_summary_some" msgid="5080490037831563441">"আপোনাৰ ডেটা সুৰক্ষিত কৰিবলৈ আপুনি কেইমাহমান ব্যৱহাৰ নকৰা কিছুমান এপৰ পৰা অনুমতিসমূহ আঁতৰোৱা হৈছে"</string>
     <string name="one_unused_app_summary" msgid="7831913934488881991">"১ টা এপ্ কেইমাহমান ব্যৱহাৰ কৰা হোৱা নাই"</string>
     <string name="num_unused_apps_summary" msgid="1870719749940571227">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> টা এপ্ কেইমাহমান ব্যৱহাৰ কৰা হোৱা নাই"</string>
-    <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"কেৱল এপটো ব্যৱহাৰ হৈ থকা সময়ত"</string>
+    <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"কেৱল এপ্‌টো ব্যৱহাৰ হৈ থকা সময়ত"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"মিডিয়া"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"আটাইবোৰ ফাইল"</string>
     <string name="permission_subtitle_background" msgid="8916750995309083180">"সকলো সময়ৰ বাবে অনুমতি দিয়া হৈছে"</string>
@@ -356,7 +356,7 @@
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"বৰফ"</string>
     <string name="role_home_label" msgid="3871847846649769412">"ডিফ’ল্ট হ’ম এপ্"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"হ’ম এপ্"</string>
-    <string name="role_home_description" msgid="7997371519626556675">"যিবোৰ এপক সাধাৰণতে লঞ্চাৰ বুলি কোৱা হয় সেই এপ্‌বোৰে আপোনাৰ Android ডিভাইচত গৃহ স্ক্ৰীণৰ ঠাই লয় আৰু আপোনাক নিজৰ ডিভাইচৰ সমল আৰু সুবিধাবোৰৰ এক্সেছ দিয়ে"</string>
+    <string name="role_home_description" msgid="7997371519626556675">"যিবোৰ এপক সাধাৰণতে লঞ্চাৰ বুলি কোৱা হয় সেই এপ্‌বোৰে আপোনাৰ Android ডিভাইচত গৃহ স্ক্ৰীনৰ ঠাই লয় আৰু আপোনাক নিজৰ ডিভাইচৰ সমল আৰু সুবিধাবোৰৰ এক্সেছ দিয়ে"</string>
     <string name="role_home_request_title" msgid="738136983453341081">"<xliff:g id="APP_NAME">%1$s</xliff:g>ক আপোনাৰ ডিফ’ল্ট হ’ম এপ্ হিচাপে ছেট কৰিবনে?"</string>
     <string name="role_home_request_description" msgid="2658833966716057673">"কোনো অনুমতিৰ প্ৰয়োজন নাই"</string>
     <string name="role_home_search_keywords" msgid="3830755001192666285">"লঞ্চাৰ"</string>

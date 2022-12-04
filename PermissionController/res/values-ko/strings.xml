@@ -433,9 +433,9 @@
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"음성 어시스턴트 활성화를 위해 마이크가 사용되면 상태 표시줄에 아이콘 표시"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 기기의 사진 및 미디어에 액세스하도록 허용하시겠습니까?"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 내 연락처에 액세스하도록 허용하시겠습니까?"</string>
-    <string name="permgrouprequest_location" msgid="6990232580121067883">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 내 기기 위치에 액세스하도록 허용하시겠습니까?"</string>
+    <string name="permgrouprequest_location" msgid="6990232580121067883">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 내 기기의 위치 정보에 액세스하도록 허용하시겠습니까?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"앱을 사용할 때만 앱에서 위치에 액세스합니다."</string>
-    <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 내 기기 위치에 액세스하도록 허용하시겠습니까?"</string>
+    <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 내 기기의 위치 정보에 액세스하도록 허용하시겠습니까?"</string>
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"앱을 사용하고 있지 않을 때도 앱에서 내 위치에 항상 액세스하려고 할 수 있습니다. "<annotation id="link">"설정에서 액세스를 허용"</annotation>"하세요."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;의 위치 액세스 권한을 변경하시겠습니까?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"앱을 사용하고 있지 않을 때도 앱에서 내 위치에 항상 액세스하려고 합니다. "<annotation id="link">"설정에서 액세스를 허용"</annotation>"하세요."</string>
