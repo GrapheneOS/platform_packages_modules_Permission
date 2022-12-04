@@ -17,7 +17,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"Safety Centre resources"</string>
+    <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"Safety Center Resources"</string>
     <string name="lock_screen_sources_title" msgid="3317906280484627707">"Device lock"</string>
     <string name="lock_screen_sources_summary" msgid="7220439741282516496"></string>
     <string name="lock_screen_title" msgid="4069104894527169877">"Screen lock"</string>
@@ -29,10 +29,10 @@
     <string name="permission_manager_title" msgid="5277347862821255015">"Permission manager"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"Control app access to your data"</string>
     <string name="privacy_controls_title" msgid="5322875777945432395">"Privacy controls"</string>
-    <string name="privacy_controls_summary" msgid="2402066941190435424">"Control device access to microphone, camera and more"</string>
+    <string name="privacy_controls_summary" msgid="2402066941190435424">"Control device access to microphone, camera, and more"</string>
     <string name="advanced_title" msgid="8745436380690561172">"More settings"</string>
     <string name="advanced_security_title" msgid="1126833338772188155">"More security settings"</string>
-    <string name="advanced_security_summary" msgid="6172253327022425123">"Encryption, credentials and more"</string>
+    <string name="advanced_security_summary" msgid="6172253327022425123">"Encryption, credentials, and more"</string>
     <string name="advanced_privacy_title" msgid="1117725225706176643">"More privacy settings"</string>
-    <string name="advanced_privacy_summary" msgid="2281203390575069543">"Auto-fill, Activity controls and more"</string>
+    <string name="advanced_privacy_summary" msgid="2281203390575069543">"Autofill, activity controls, and more"</string>
 </resources>
