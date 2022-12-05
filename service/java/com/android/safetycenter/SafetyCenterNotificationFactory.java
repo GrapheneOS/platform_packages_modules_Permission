@@ -33,6 +33,8 @@ import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
+import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
+
 /**
  * Factory that builds {@link Notification} objects from {@link SafetySourceIssue} instances with
  * appropriate {@link PendingIntent}s for click and dismiss callbacks.
@@ -40,7 +42,7 @@ import androidx.annotation.RequiresApi;
 @RequiresApi(TIRAMISU)
 final class SafetyCenterNotificationFactory {
 
-    private static final String TAG = "SafetyCenterNotificationFactory";
+    private static final String TAG = "SafetyCenterNF";
 
     private static final int OPEN_SAFETY_CENTER_REQUEST_CODE = 1221;
 
@@ -59,8 +61,11 @@ final class SafetyCenterNotificationFactory {
      */
     @Nullable
     Notification newNotificationForIssue(
-            @NonNull NotificationManager notificationManager, @NonNull SafetySourceIssue issue) {
+            @NonNull NotificationManager notificationManager,
+            @NonNull SafetySourceIssue issue,
+            @NonNull SafetyCenterIssueKey issueKey) {
         String channelId = createAndGetChannelId(notificationManager, issue);
+
         if (channelId == null) {
             return null;
         }
@@ -72,9 +77,11 @@ final class SafetyCenterNotificationFactory {
                         .setExtras(getNotificationExtras())
                         .setContentTitle(issue.getTitle())
                         .setContentText(issue.getSummary())
-                        .setContentIntent(newSafetyCenterPendingIntent(issue));
-        // TODO(b/259398664): Handle notification dismissals
-        // TODO(b/260084296): Include issue actions on notifications
+                        .setContentIntent(newSafetyCenterPendingIntent(issue))
+                        .setDeleteIntent(
+                                SafetyCenterNotificationReceiver.newNotificationDismissedIntent(
+                                        mContext, issueKey));
+        // TODO(b/260084296): Include issue actions on notifications;
 
         return builder.build();
     }
