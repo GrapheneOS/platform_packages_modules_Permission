@@ -45,9 +45,9 @@
         android:importantForAccessibility="no"
         style="@style/SafetyCenterIssueSummary" />
 
-    <LinearLayout
-        android:id="@+id/issue_card_action_button_list"
-        style="@style/SafetyCenterIssueActionButtonList" />
+    <include
+      android:id="@+id/issue_card_action_button_list"
+      layout="@layout/action_button_list"/>
 
     <com.android.permissioncontroller.permission.ui.widget.SafetyProtectionSectionView
         android:id="@+id/issue_card_protected_by_android"
