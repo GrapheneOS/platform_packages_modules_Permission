@@ -80,6 +80,44 @@ object SafetyCenterCtsConfigs {
             dynamicSafetySourceBuilder(SINGLE_SOURCE_ID).setMaxSeverityLevel(0).build())
 
     /**
+     * SHA256 hash of a package certificate.
+     *
+     * <p>This is a fake certificate, and can be used to test failure cases, or to test a list of
+     * certificates when only one match is required.
+     */
+    const val PACKAGE_CERT_HASH_FAKE = "feed12"
+
+    /** SHA256 hashes of the certificate(s) known to sign the CTS tests. */
+    private val PACKAGE_CERT_HASHES_CTS = listOf(
+        "6cecc50e34ae31bfb5678986d6d6d3736c571ded2f2459527793e1f054eb0c9b",
+        "a40da80a59d170caa950cf15c18c454d47a39b26989d8b640ecd745ba71bf5dc"
+    )
+
+    /** An invalid SHA256 hash (not a byte string, not even number of chars). */
+    const val PACKAGE_CERT_HASH_INVALID = "0124ppl"
+
+    /** A simple [SafetyCenterConfig] for CTS tests with a fake/incorrect package cert hash. */
+    val SINGLE_SOURCE_WITH_FAKE_CERT: SafetyCenterConfig
+        @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+        get() =
+            singleSourceConfig(
+                dynamicSafetySourceBuilder(SINGLE_SOURCE_ID)
+                    .addPackageCertificateHash(PACKAGE_CERT_HASH_FAKE)
+                    .build())
+
+    /**
+     * A simple [SafetyCenterConfig] for CTS tests with a invalid package cert hash (not a
+     * hex-formatted byte string).
+     */
+    val SINGLE_SOURCE_WITH_INVALID_CERT: SafetyCenterConfig
+        @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+        get() =
+            singleSourceConfig(
+                dynamicSafetySourceBuilder(SINGLE_SOURCE_ID)
+                    .addPackageCertificateHash(PACKAGE_CERT_HASH_INVALID)
+                    .build())
+
+    /**
      * A simple [SafetyCenterConfig] for CTS tests with a source that does not support refresh on
      * page open.
      */
@@ -265,12 +303,6 @@ object SafetyCenterCtsConfigs {
 
     /** Package name for the [DYNAMIC_OTHER_PACKAGE_ID] source. */
     const val OTHER_PACKAGE_NAME = "other_package_name"
-
-    /** Hash of a package certificate for all "ALL_OPTIONAL" sources. */
-    private const val PACKAGE_CERT_HASH_1 = "feed1"
-
-    /** Second hash of a package certificate for all "ALL_OPTIONAL" sources. */
-    private const val PACKAGE_CERT_HASH_2 = "feed2"
 
     private const val DEDUPLICATION_GROUP_1 = "deduplication_group_1"
     private const val DEDUPLICATION_GROUP_2 = "deduplication_group_2"
@@ -579,8 +611,10 @@ object SafetyCenterCtsConfigs {
                                 if (SdkLevel.isAtLeastU()) {
                                     setNotificationsAllowed(true)
                                     setDeduplicationGroup("group")
-                                    addPackageCertificateHash(PACKAGE_CERT_HASH_1)
-                                    addPackageCertificateHash(PACKAGE_CERT_HASH_2)
+                                    addPackageCertificateHash(PACKAGE_CERT_HASH_FAKE)
+                                    PACKAGE_CERT_HASHES_CTS.forEach {
+                                        addPackageCertificateHash(it)
+                                    }
                                 }
                             }
                             .build())
@@ -648,8 +682,10 @@ object SafetyCenterCtsConfigs {
                                 if (SdkLevel.isAtLeastU()) {
                                     setNotificationsAllowed(true)
                                     setDeduplicationGroup("group")
-                                    addPackageCertificateHash(PACKAGE_CERT_HASH_1)
-                                    addPackageCertificateHash(PACKAGE_CERT_HASH_2)
+                                    addPackageCertificateHash(PACKAGE_CERT_HASH_FAKE)
+                                    PACKAGE_CERT_HASHES_CTS.forEach {
+                                        addPackageCertificateHash(it)
+                                    }
                                 }
                             }
                             .build())
@@ -722,8 +758,10 @@ object SafetyCenterCtsConfigs {
                                 if (SdkLevel.isAtLeastU()) {
                                     setNotificationsAllowed(true)
                                     setDeduplicationGroup("group")
-                                    addPackageCertificateHash(PACKAGE_CERT_HASH_1)
-                                    addPackageCertificateHash(PACKAGE_CERT_HASH_2)
+                                    addPackageCertificateHash(PACKAGE_CERT_HASH_FAKE)
+                                    PACKAGE_CERT_HASHES_CTS.forEach {
+                                        addPackageCertificateHash(it)
+                                    }
                                 }
                             }
                             .build())
