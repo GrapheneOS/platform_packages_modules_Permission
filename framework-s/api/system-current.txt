@@ -48,15 +48,29 @@ package android.safetycenter {
 
   public final class SafetyCenterData implements android.os.Parcelable {
     ctor public SafetyCenterData(@NonNull android.safetycenter.SafetyCenterStatus, @NonNull java.util.List<android.safetycenter.SafetyCenterIssue>, @NonNull java.util.List<android.safetycenter.SafetyCenterEntryOrGroup>, @NonNull java.util.List<android.safetycenter.SafetyCenterStaticEntryGroup>);
-    ctor public SafetyCenterData(@NonNull android.safetycenter.SafetyCenterStatus, @NonNull java.util.List<android.safetycenter.SafetyCenterIssue>, @NonNull java.util.List<android.safetycenter.SafetyCenterEntryOrGroup>, @NonNull java.util.List<android.safetycenter.SafetyCenterStaticEntryGroup>, @NonNull java.util.List<android.safetycenter.SafetyCenterIssue>);
     method public int describeContents();
     method @NonNull public java.util.List<android.safetycenter.SafetyCenterIssue> getDismissedIssues();
     method @NonNull public java.util.List<android.safetycenter.SafetyCenterEntryOrGroup> getEntriesOrGroups();
+    method @NonNull public android.os.Bundle getExtras();
     method @NonNull public java.util.List<android.safetycenter.SafetyCenterIssue> getIssues();
     method @NonNull public java.util.List<android.safetycenter.SafetyCenterStaticEntryGroup> getStaticEntryGroups();
     method @NonNull public android.safetycenter.SafetyCenterStatus getStatus();
     method public void writeToParcel(@NonNull android.os.Parcel, int);
     field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.SafetyCenterData> CREATOR;
+  }
+
+  public static final class SafetyCenterData.Builder {
+    ctor public SafetyCenterData.Builder(@NonNull android.safetycenter.SafetyCenterStatus);
+    method @NonNull public android.safetycenter.SafetyCenterData.Builder addDismissedIssue(@NonNull android.safetycenter.SafetyCenterIssue);
+    method @NonNull public android.safetycenter.SafetyCenterData.Builder addEntryOrGroup(@NonNull android.safetycenter.SafetyCenterEntryOrGroup);
+    method @NonNull public android.safetycenter.SafetyCenterData.Builder addIssue(@NonNull android.safetycenter.SafetyCenterIssue);
+    method @NonNull public android.safetycenter.SafetyCenterData.Builder addStaticEntryGroup(@NonNull android.safetycenter.SafetyCenterStaticEntryGroup);
+    method @NonNull public android.safetycenter.SafetyCenterData build();
+    method @NonNull public android.safetycenter.SafetyCenterData.Builder clearDismissedIssues();
+    method @NonNull public android.safetycenter.SafetyCenterData.Builder clearEntriesOrGroups();
+    method @NonNull public android.safetycenter.SafetyCenterData.Builder clearIssues();
+    method @NonNull public android.safetycenter.SafetyCenterData.Builder clearStaticEntryGroups();
+    method @NonNull public android.safetycenter.SafetyCenterData.Builder setExtras(@NonNull android.os.Bundle);
   }
 
   public final class SafetyCenterEntry implements android.os.Parcelable {
@@ -328,6 +342,7 @@ package android.safetycenter {
 
   public final class SafetySourceData implements android.os.Parcelable {
     method public int describeContents();
+    method @NonNull public android.os.Bundle getExtras();
     method @NonNull public java.util.List<android.safetycenter.SafetySourceIssue> getIssues();
     method @Nullable public android.safetycenter.SafetySourceStatus getStatus();
     method public void writeToParcel(@NonNull android.os.Parcel, int);
@@ -343,6 +358,7 @@ package android.safetycenter {
     method @NonNull public android.safetycenter.SafetySourceData.Builder addIssue(@NonNull android.safetycenter.SafetySourceIssue);
     method @NonNull public android.safetycenter.SafetySourceData build();
     method @NonNull public android.safetycenter.SafetySourceData.Builder clearIssues();
+    method @NonNull public android.safetycenter.SafetySourceData.Builder setExtras(@NonNull android.os.Bundle);
     method @NonNull public android.safetycenter.SafetySourceData.Builder setStatus(@Nullable android.safetycenter.SafetySourceStatus);
   }
 
