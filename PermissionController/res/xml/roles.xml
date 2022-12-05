@@ -84,6 +84,7 @@
         <permission name="android.permission.BLUETOOTH_ADVERTISE" minSdkVersion="31" />
         <permission name="android.permission.BLUETOOTH_CONNECT" minSdkVersion="31" />
         <permission name="android.permission.BLUETOOTH_SCAN" minSdkVersion="31" />
+        <permission name="android.permission.NEARBY_WIFI_DEVICES" minSdkVersion="33" />
     </permission-set>
 
     <permission-set name="notifications">
@@ -1113,6 +1114,38 @@
             <permission-set name="notifications" />
             <permission-set name="storage" />
        </permissions>
+    </role>
+
+    <role
+        name="android.app.role.COMPANION_DEVICE_GLASSES"
+        description="@string/role_companion_device_glasses_description"
+        exclusive="false"
+        minSdkVersion="34"
+        systemOnly="false"
+        visible="false">
+        <permissions>
+            <permission-set name="contacts" />
+            <permission-set name="microphone" />
+            <permission-set name="nearby_devices" />
+            <permission-set name="phone" />
+            <permission-set name="sms" />
+       </permissions>
+    </role>
+
+    <role
+        name="android.app.role.COMPANION_DEVICE_NEARBY_DEVICE_STREAMING"
+        allowBypassingQualification="true"
+        description="@string/role_companion_device_nearby_device_streaming_description"
+        exclusive="false"
+        minSdkVersion="34"
+        systemOnly="true"
+        visible="false">
+        <permissions>
+            <permission-set name="nearby_devices" />
+            <permission name="android.permission.CREATE_VIRTUAL_DEVICE" />
+            <permission name="android.permission.ADD_TRUSTED_DISPLAY" />
+            <permission name="android.permission.ADD_ALWAYS_UNLOCKED_DISPLAY" />
+        </permissions>
     </role>
 
      <role
