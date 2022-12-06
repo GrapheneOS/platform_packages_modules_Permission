@@ -41,6 +41,7 @@ import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 import java.io.PrintWriter;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.time.Instant;
 import java.util.List;
 
 import javax.annotation.concurrent.NotThreadSafe;
@@ -55,7 +56,7 @@ import javax.annotation.concurrent.NotThreadSafe;
 @NotThreadSafe
 final class SafetyCenterNotificationSender {
 
-    private static final String TAG = "SCNotificationSender";
+    private static final String TAG = "SafetyCenterNS";
 
     // We use a fixed notification ID because notifications are keyed by (tag, id) and it easier
     // to differentiate our notifications using the tag
@@ -188,6 +189,13 @@ final class SafetyCenterNotificationSender {
                 continue;
             }
 
+            // TODO(b/259084807): Consider extracting this policy to a separate class
+            Instant dismissedAt = mIssueCache.getNotificationDismissedAt(issueKey);
+            if (dismissedAt != null) {
+                // Issue was previously dismissed and is skipped
+                continue;
+            }
+
             // Now retrieve the issue itself and use it to determine the behavior:
             SafetySourceIssue issue = mSafetyCenterRepository.getSafetySourceIssue(issueKey);
             int behavior = getBehavior(issue, issueKey);
@@ -222,7 +230,7 @@ final class SafetyCenterNotificationSender {
             @NonNull SafetyCenterIssueKey key) {
         Notification notification =
                 mNotificationFactory.newNotificationForIssue(
-                        notificationManager, safetySourceIssue);
+                        notificationManager, safetySourceIssue, key);
         if (notification == null) {
             // Could not make a Notification for this issue!
             return false;
