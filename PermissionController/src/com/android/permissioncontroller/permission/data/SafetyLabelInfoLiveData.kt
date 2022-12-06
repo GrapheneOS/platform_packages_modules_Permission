@@ -19,55 +19,93 @@ package com.android.permissioncontroller.permission.data
 import android.app.Application
 import android.content.pm.PackageManager
 import android.os.PersistableBundle
+import android.os.UserHandle
 import android.util.Log
 import com.android.permission.safetylabel.DataCategoryConstants
 import com.android.permission.safetylabel.DataLabelConstants
 import com.android.permission.safetylabel.DataTypeConstants
 import com.android.permission.safetylabel.SafetyLabel
 import com.android.permissioncontroller.PermissionControllerApplication
-import com.android.permissioncontroller.permission.utils.KotlinUtils.isPermissionRationaleEnabled
+import com.android.permissioncontroller.permission.model.livedatatypes.SafetyLabelInfo
 import com.android.permissioncontroller.permission.utils.KotlinUtils.isPlaceholderSafetyLabelDataEnabled
 import kotlinx.coroutines.Job
 
 /**
- * SafetyLabel LiveData for the specified package
+ * [SafetyLabelInfo] [LiveData] for the specified package
  *
  * @param app current Application
  * @param packageName name of the package to get SafetyLabel information for
+ * @param user The user of the package
  */
-class SafetyLabelLiveData
-private constructor(private val app: Application, private val packageName: String) :
-    SmartAsyncMediatorLiveData<SafetyLabel>() {
+class SafetyLabelInfoLiveData
+private constructor(
+    private val app: Application,
+    private val packageName: String,
+    private val user: UserHandle
+) :
+    SmartAsyncMediatorLiveData<SafetyLabelInfo>(),
+    PackageBroadcastReceiver.PackageBroadcastListener {
+
+    private val lightInstallSourceInfoLiveData = LightInstallSourceInfoLiveData[packageName, user]
+
+    init {
+        addSource(lightInstallSourceInfoLiveData) { update() }
+
+        update()
+    }
+
+    override fun onActive() {
+        super.onActive()
+        PackageBroadcastReceiver.addChangeCallback(packageName, this)
+    }
+
+    override fun onInactive() {
+        super.onInactive()
+        PackageBroadcastReceiver.removeChangeCallback(packageName, this)
+    }
+
+    /**
+     * Callback from the PackageBroadcastReceiver
+     *
+     * @param packageName the name of the package which was updated.
+     */
+    override fun onPackageUpdate(packageName: String) {
+        update()
+    }
 
     override suspend fun loadDataAndPostValue(job: Job) {
         if (job.isCancelled) {
             return
         }
 
-        if (!isPermissionRationaleEnabled()) {
-            postValue(null)
+        if (lightInstallSourceInfoLiveData.isStale) {
             return
         }
 
-        if (packageName.isEmpty()) {
-            postValue(null)
+        // TODO(b/261607291): Add support preinstall apps that provide SafetyLabel. Installing
+        //  package is null until updated from an app store
+        val installSourcePackageName = lightInstallSourceInfoLiveData.value?.installingPackageName
+        if (installSourcePackageName == null) {
+            postValue(SafetyLabelInfo.UNAVAILABLE)
             return
         }
 
-        val safetyLabel: SafetyLabel? =
+        val safetyLabelInfo: SafetyLabelInfo =
             try {
-                val metadataBundle: PersistableBundle? = getInstallMetadataBundle()
-                SafetyLabel.getSafetyLabelFromMetadata(metadataBundle)
+                val metadataBundle: PersistableBundle? = getAppMetadata()
+                SafetyLabelInfo(
+                    SafetyLabel.getSafetyLabelFromMetadata(metadataBundle),
+                    installSourcePackageName)
             } catch (e: PackageManager.NameNotFoundException) {
                 Log.w(LOG_TAG, "SafetyLabel for $packageName not found")
-                invalidateSingle(packageName)
-                null
+                invalidateSingle(packageName to user)
+                SafetyLabelInfo.UNAVAILABLE
             }
-        postValue(safetyLabel)
+        postValue(safetyLabelInfo)
     }
 
     // TODO(b/257293222): Update when hooking up PackageManager APIs
-    private fun getInstallMetadataBundle(): PersistableBundle? {
+    private fun getAppMetadata(): PersistableBundle? {
         return if (isPlaceholderSafetyLabelDataEnabled()) {
             placeholderMetadataBundle()
         } else {
@@ -106,11 +144,13 @@ private constructor(private val app: Application, private val packageName: Strin
         }
     }
 
-    companion object : DataRepositoryForPackage<String, SafetyLabelLiveData>() {
-        private val LOG_TAG = SafetyLabelLiveData::class.java.simpleName
+    companion object : DataRepositoryForPackage<Pair<String, UserHandle>, SafetyLabelInfoLiveData>(
+    ) {
+        private val LOG_TAG = SafetyLabelInfoLiveData::class.java.simpleName
 
-        override fun newValue(key: String): SafetyLabelLiveData {
-            return SafetyLabelLiveData(PermissionControllerApplication.get(), key)
+        override fun newValue(key: Pair<String, UserHandle>): SafetyLabelInfoLiveData {
+            return SafetyLabelInfoLiveData(PermissionControllerApplication.get(), key.first,
+                key.second)
         }
     }
 }
