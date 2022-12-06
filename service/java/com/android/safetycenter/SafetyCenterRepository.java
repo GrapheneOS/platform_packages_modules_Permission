@@ -25,6 +25,8 @@ import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.SystemClock;
 import android.safetycenter.SafetyCenterData;
 import android.safetycenter.SafetyEvent;
@@ -40,6 +42,7 @@ import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permission.util.UserUtils;
 import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
@@ -48,6 +51,7 @@ import java.io.PrintWriter;
 import java.time.Duration;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.annotation.concurrent.NotThreadSafe;
 
@@ -76,6 +80,7 @@ final class SafetyCenterRepository {
     @NonNull private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker;
     @NonNull private final StatsdLogger mStatsdLogger;
     @NonNull private final SafetyCenterIssueCache mSafetyCenterIssueCache;
+    @NonNull private final PackageManager mPackageManager;
 
     SafetyCenterRepository(
             @NonNull Context context,
@@ -88,6 +93,7 @@ final class SafetyCenterRepository {
         mSafetyCenterRefreshTracker = safetyCenterRefreshTracker;
         mStatsdLogger = statsdLogger;
         mSafetyCenterIssueCache = safetyCenterIssueCache;
+        mPackageManager = mContext.getPackageManager();
     }
 
     /**
@@ -444,17 +450,7 @@ final class SafetyCenterRepository {
         }
 
         SafetySource safetySource = externalSafetySource.getSafetySource();
-
-        // TODO(b/222330089): Security: check certs?
-        if (!packageName.equals(safetySource.getPackageName())) {
-            throw new IllegalArgumentException(
-                    "Unexpected package name: "
-                            + packageName
-                            + ", for safety source: "
-                            + safetySourceId);
-        }
-
-        // TODO(b/222327845): Security: check package is installed for user?
+        validateCallingPackage(safetySource, packageName, safetySourceId);
 
         if (UserUtils.isManagedProfile(userId, mContext)
                 && !SafetySources.supportsManagedProfiles(safetySource)) {
@@ -531,6 +527,59 @@ final class SafetyCenterRepository {
         }
 
         return mSafetyCenterConfigReader.isExternalSafetySourceActive(safetySourceId);
+    }
+
+    private void validateCallingPackage(
+            @NonNull SafetySource safetySource,
+            @NonNull String packageName,
+            @NonNull String safetySourceId) {
+        if (!packageName.equals(safetySource.getPackageName())) {
+            throw new IllegalArgumentException(
+                    "Unexpected package name: "
+                            + packageName
+                            + ", for safety source: "
+                            + safetySourceId);
+        }
+
+        // TODO(b/222327845): Security: check package is installed for user?
+
+        if (!SdkLevel.isAtLeastU()) {
+            // No more validation checks possible on T devices
+            return;
+        }
+
+        Set<String> certificateHashes = safetySource.getPackageCertificateHashes();
+        if (certificateHashes.isEmpty()) {
+            Log.d(TAG, "No cert check requested for package " + packageName);
+            return;
+        }
+
+        boolean hasMatchingCert = false;
+        for (String certHash : certificateHashes) {
+            try {
+                byte[] certificate = new Signature(certHash).toByteArray();
+                if (mPackageManager.hasSigningCertificate(
+                        packageName, certificate, PackageManager.CERT_INPUT_SHA256)) {
+                    Log.d(TAG, "Package " + packageName + " has expected signature");
+                    hasMatchingCert = true;
+                }
+            } catch (IllegalArgumentException e) {
+                Log.w(TAG, "Failed to parse signing certificate: " + certHash, e);
+                throw new IllegalStateException(
+                        "Failed to parse signing certificate: " + certHash, e);
+            }
+        }
+
+        if (!hasMatchingCert) {
+            Log.e(
+                    TAG,
+                    "Package "
+                            + packageName
+                            + " for source "
+                            + safetySourceId
+                            + " signed with invalid signature");
+            throw new IllegalArgumentException("Invalid signature for package " + packageName);
+        }
     }
 
     private boolean processSafetyEvent(
