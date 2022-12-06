@@ -84,6 +84,9 @@ final class SafetyCenterFlags {
 
     private static final String PROPERTY_SHOW_SUBPAGES = "safety_center_show_subpages";
 
+    private static final String PROPERTY_OVERRIDE_REFRESH_ON_PAGE_OPEN_SOURCES =
+            "safety_center_override_refresh_on_page_open_sources";
+
     private static final Duration REFRESH_SOURCES_TIMEOUT_DEFAULT_DURATION = Duration.ofSeconds(15);
 
     private static final Duration RESOLVING_ACTION_TIMEOUT_DEFAULT_DURATION =
@@ -117,6 +120,10 @@ final class SafetyCenterFlags {
         printFlag(fout, PROPERTY_ISSUE_CATEGORY_ALLOWLISTS, getIssueCategoryAllowlists());
         printFlag(fout, PROPERTY_ALLOW_STATSD_LOGGING_IN_TESTS, getAllowStatsdLoggingInTests());
         printFlag(fout, PROPERTY_SHOW_SUBPAGES, getShowSubpages());
+        printFlag(
+                fout,
+                PROPERTY_OVERRIDE_REFRESH_ON_PAGE_OPEN_SOURCES,
+                getOverrideRefreshOnPageOpenSourceIds());
         fout.println();
     }
 
@@ -326,6 +333,14 @@ final class SafetyCenterFlags {
     static boolean getShowSubpages() {
         // TODO(b/260822348): Add CTS test to verify that the flag is disabled when turned on for T
         return SdkLevel.isAtLeastU() && getBoolean(PROPERTY_SHOW_SUBPAGES, true);
+    }
+
+    /**
+     * Returns an array of safety source Ids that will be refreshed on page open, even if
+     * refreshOnPageOpenAllowed is false (the default) in the XML config.
+     */
+    static ArraySet<String> getOverrideRefreshOnPageOpenSourceIds() {
+        return getCommaSeparatedStrings(PROPERTY_OVERRIDE_REFRESH_ON_PAGE_OPEN_SOURCES);
     }
 
     @NonNull
