@@ -17,7 +17,9 @@
 package android.safetycenter.cts
 
 import android.content.Context
+import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.safetycenter.SafetyCenterManager
+import android.safetycenter.SafetySourceIssue
 import android.safetycenter.cts.testing.Coroutines
 import android.safetycenter.cts.testing.CtsNotificationListener
 import android.safetycenter.cts.testing.NotificationCharacteristics
@@ -34,6 +36,7 @@ import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCe
 import android.safetycenter.cts.testing.SafetySourceCtsData
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.filters.SdkSuppress
 import com.android.compatibility.common.util.SystemUtil
 import com.google.common.truth.Truth.assertThat
 import kotlin.test.assertFailsWith
@@ -110,6 +113,48 @@ class SafetyCenterNotificationTest {
             safetyCenterCtsHelper.setData(
                 SINGLE_SOURCE_ID, safetySourceCtsData.recommendationWithAccountIssue)
         }
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun setSafetySourceData_withNotificationBehaviorNever_noNotification() {
+        val data =
+            safetySourceCtsData
+                .defaultRecommendationDataBuilder()
+                .addIssue(
+                    safetySourceCtsData
+                        .defaultRecommendationIssueBuilder()
+                        .setNotificationBehavior(SafetySourceIssue.NOTIFICATION_BEHAVIOR_NEVER)
+                        .build())
+                .build()
+        CtsNotificationListener.assertNoNotificationsPosted {
+            safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
+        }
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun setSafetySourceData_withNotificationBehaviorImmediately_sendsNotification() {
+        val data =
+            safetySourceCtsData
+                .defaultRecommendationDataBuilder()
+                .addIssue(
+                    safetySourceCtsData
+                        .defaultRecommendationIssueBuilder("Notify immediately", "This is urgent!")
+                        .setNotificationBehavior(
+                            SafetySourceIssue.NOTIFICATION_BEHAVIOR_IMMEDIATELY)
+                        .build())
+                .build()
+
+        val notification =
+            CtsNotificationListener.getNextNotificationPostedOrNull {
+                safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
+            }
+
+        assertThat(notification).isNotNull()
+        assertNotificationMatches(
+            notification!!,
+            NotificationCharacteristics(title = "Notify immediately", text = "This is urgent!"))
     }
 
     @Test
