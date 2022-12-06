@@ -238,6 +238,8 @@ public final class SafetyCenterService extends SystemService {
                 if (mConfigAvailable) {
                     readSafetyCenterIssueCacheFileLocked();
                     new UserBroadcastReceiver().register(getContext());
+                    new SafetyCenterNotificationReceiver(mSafetyCenterIssueCache, mApiLock)
+                            .register(getContext());
                 }
             }
         }
