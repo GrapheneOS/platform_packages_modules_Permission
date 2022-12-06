@@ -321,9 +321,7 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
             boolean isFirstElement = i == 0;
             boolean isLastElement = i == size - 1;
 
-            if (SafetyCenterUiFlags.getShowSubpages() && group != null) {
-                mEntriesGroup.addPreference(new SafetyHomepageEntryPreference(context, group));
-            } else if (entry != null) {
+            if (entry != null) {
                 addTopLevelEntry(context, entry, isFirstElement, isLastElement);
             } else if (group != null) {
                 addGroupEntries(context, group, isFirstElement, isLastElement);
