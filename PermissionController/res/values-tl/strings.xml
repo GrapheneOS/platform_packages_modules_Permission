@@ -32,14 +32,10 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Panatilihin ang “Habang ginagamit ang app”"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Panatilihing “Sa pagkakataong ito lang”"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Higit pang info"</string>
-    <!-- no translation found for grant_dialog_button_allow_all_photos (3688746146785304900) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_allow_selected_photos (4098620850512492892) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_allow_more_selected_photos (2003524111894640605) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_dont_allow_more_selected_photos (6811842813929146242) -->
-    <skip />
+    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"Magbigay ng access sa lahat ng larawan"</string>
+    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"Pumili ng mga larawan"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"Pumili ng higit pang larawan"</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"Huwag pumili ng higit pang larawan"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Huwag pa ring payagan"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"I-dismiss"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> sa <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -194,10 +190,8 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Payagan lang ang pag-access ng media"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Payagan sa lahat ng oras"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Payagan lang habang ginagamit ang app"</string>
-    <!-- no translation found for app_permission_button_allow_all_photos (914762549054270764) -->
-    <skip />
-    <!-- no translation found for app_permission_button_select_photos (1022930616634145364) -->
-    <skip />
+    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"Payagan ang lahat ng larawan"</string>
+    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"Payagan ang mga piniling larawan"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Magtanong palagi"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Huwag payagan"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Eksaktong lokasyon"</string>
@@ -480,8 +474,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang &lt;b&gt;mga larawan, video, musika, audio, at iba pang file&lt;/b&gt; sa device?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang musika at audio sa device na ito?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang mga larawan at video sa device na ito?"</string>
-    <!-- no translation found for permgrouprequest_more_photos (4697813231897226261) -->
-    <skip />
+    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"Payagan ang access ng &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; sa higit pang larawan?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na mag-record ng audio?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Makakapag-record lang ng audio ang app habang ginagamit mo ang app"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na mag-record ng audio?"</string>
@@ -592,6 +585,5 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Magpakita ng mensahe kapag ina-access ng mga app ang text, mga larawan, o iba pang content na nakopya mo"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Ipakita ang mga password"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Ipakita sandali ang mga character habang nagta-type ka"</string>
-    <!-- no translation found for permission_rationale_message_template (4497650516269082051) -->
-    <skip />
+    <string name="permission_rationale_message_template" msgid="4497650516269082051">"Isinaad ng app na ito na puwedeng ibahagi nito ang data ng <xliff:g id="PERMISSION_NAME">%s</xliff:g> sa mga third party"</string>
 </resources>

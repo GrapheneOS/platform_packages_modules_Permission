@@ -32,14 +32,10 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Kekalkan “Semasa apl sedang digunakan”"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Simpan “Kali ini sahaja”"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Lagi maklumat"</string>
-    <!-- no translation found for grant_dialog_button_allow_all_photos (3688746146785304900) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_allow_selected_photos (4098620850512492892) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_allow_more_selected_photos (2003524111894640605) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_dont_allow_more_selected_photos (6811842813929146242) -->
-    <skip />
+    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"Benarkan akses kepada semua foto"</string>
+    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"Pilih foto"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"Pilih lagi foto"</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"Jangan pilih lebih banyak foto"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Jangan benarkan juga"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Tolak"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> daripada <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -194,10 +190,8 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Benarkan akses kepada media sahaja"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Benarkan sepanjang masa"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Benarkan hanya semasa menggunakan apl"</string>
-    <!-- no translation found for app_permission_button_allow_all_photos (914762549054270764) -->
-    <skip />
-    <!-- no translation found for app_permission_button_select_photos (1022930616634145364) -->
-    <skip />
+    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"Benarkan semua foto"</string>
+    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"Benarkan foto dipilih"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Tanya setiap kali"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Jangan benarkan"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Lokasi tepat"</string>
@@ -480,8 +474,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses &lt;b&gt;foto, video, muzik, audio dan fail lain&lt;/b&gt; pada peranti ini?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses muzik dan audio pada peranti ini?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses foto dan video pada peranti ini?"</string>
-    <!-- no translation found for permgrouprequest_more_photos (4697813231897226261) -->
-    <skip />
+    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"Beri &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; akses kepada lebih banyak foto?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; merakam audio?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Apl hanya boleh merakam audio semasa anda menggunakan apl tersebut"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; merakam audio?"</string>
@@ -592,6 +585,5 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Tunjukkan mesej apabila apl mengakses teks, imej atau kandungan lain yang telah anda salin"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Tunjukkan kata laluan"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Paparkan aksara seketika sambil anda menaip"</string>
-    <!-- no translation found for permission_rationale_message_template (4497650516269082051) -->
-    <skip />
+    <string name="permission_rationale_message_template" msgid="4497650516269082051">"Apl ini menyatakan bahawa data <xliff:g id="PERMISSION_NAME">%s</xliff:g> mungkin dikongsikan dengan pihak ketiga"</string>
 </resources>

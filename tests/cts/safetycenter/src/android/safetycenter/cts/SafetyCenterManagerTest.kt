@@ -99,12 +99,15 @@ import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.ISSUE_ONLY_SOURCE
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MIXED_STATEFUL_GROUP_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MULTIPLE_SOURCES_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.NO_PAGE_OPEN_CONFIG
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.PACKAGE_CERT_HASH_INVALID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SAMPLE_SOURCE_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SEVERITY_ZERO_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_INVALID_INTENT_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_OTHER_PACKAGE_CONFIG
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_WITH_FAKE_CERT
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_WITH_INVALID_CERT
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_1
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_2
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_3
@@ -695,6 +698,36 @@ class SafetyCenterManagerTest {
             .isEqualTo(
                 "Unexpected package name: ${context.packageName}, for safety source: " +
                     DYNAMIC_OTHER_PACKAGE_ID)
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun setSafetySourceData_wronglySignedPackage_throwsIllegalArgumentException() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_WITH_FAKE_CERT)
+
+        val thrown =
+            assertFailsWith(IllegalArgumentException::class) {
+                safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.unspecified)
+            }
+
+        assertThat(thrown)
+            .hasMessageThat()
+            .isEqualTo("Invalid signature for package " + context.packageName)
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun setSafetySourceData_invalidPackageCertificate_throwsIllegalArgumentException() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_WITH_INVALID_CERT)
+
+        val thrown =
+            assertFailsWith(IllegalStateException::class) {
+                safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.unspecified)
+            }
+
+        assertThat(thrown)
+            .hasMessageThat()
+            .isEqualTo("Failed to parse signing certificate: " + PACKAGE_CERT_HASH_INVALID)
     }
 
     @Test
