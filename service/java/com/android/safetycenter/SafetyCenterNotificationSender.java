@@ -95,6 +95,8 @@ final class SafetyCenterNotificationSender {
 
     @NonNull private final SafetyCenterRepository mSafetyCenterRepository;
 
+    @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
+
     private final ArrayMap<SafetyCenterIssueKey, SafetySourceIssue> mNotifiedIssues =
             new ArrayMap<>();
 
@@ -102,11 +104,13 @@ final class SafetyCenterNotificationSender {
             @NonNull Context context,
             @NonNull SafetyCenterNotificationFactory notificationFactory,
             @NonNull SafetyCenterIssueCache issueCache,
-            @NonNull SafetyCenterRepository safetyCenterRepository) {
+            @NonNull SafetyCenterRepository safetyCenterRepository,
+            @NonNull SafetyCenterConfigReader safetyCenterConfigReader) {
         mContext = context;
         mNotificationFactory = notificationFactory;
         mIssueCache = issueCache;
         mSafetyCenterRepository = safetyCenterRepository;
+        mSafetyCenterConfigReader = safetyCenterConfigReader;
     }
 
     /**
@@ -232,6 +236,14 @@ final class SafetyCenterNotificationSender {
     }
 
     private boolean areNotificationsAllowed(@NonNull String sourceId) {
+        if (SdkLevel.isAtLeastU()) {
+            SafetyCenterConfigReader.ExternalSafetySource externalSafetySource =
+                    mSafetyCenterConfigReader.getExternalSafetySource(sourceId);
+            if (externalSafetySource != null
+                    && externalSafetySource.getSafetySource().areNotificationsAllowed()) {
+                return true;
+            }
+        }
         return SafetyCenterFlags.getNotificationsAllowedSourceIds().contains(sourceId);
     }
 

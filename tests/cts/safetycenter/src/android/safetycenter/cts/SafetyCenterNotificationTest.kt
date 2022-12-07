@@ -29,6 +29,8 @@ import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.cle
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.dismissSafetyCenterIssueWithPermission
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_ID
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.dynamicSafetySourceBuilder
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.singleSourceConfig
 import android.safetycenter.cts.testing.SafetyCenterCtsData
 import android.safetycenter.cts.testing.SafetyCenterCtsHelper
 import android.safetycenter.cts.testing.SafetyCenterFlags
@@ -157,13 +159,35 @@ class SafetyCenterNotificationTest {
             NotificationCharacteristics(title = "Notify immediately", text = "This is urgent!"))
     }
 
-    @Test
-    fun setSafetySourceData_withNotificationAllowedSource_sendsNotification() {
+    fun setSafetySourceData_withNotificationsAllowedForSourceByFlag_sendsNotification() {
+        SafetyCenterFlags.notificationsAllowedSources = setOf(SINGLE_SOURCE_ID)
         val data = safetySourceCtsData.recommendationWithAccountIssue
 
         val notification =
             CtsNotificationListener.getNextNotificationPostedOrNull {
                 safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
+            }
+
+        assertThat(notification).isNotNull()
+        assertNotificationMatches(
+            notification!!,
+            NotificationCharacteristics(
+                title = "Recommendation issue title", text = "Recommendation issue summary"))
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun setSafetySourceData_withNotificationsAllowedForSourceByConfig_sendsNotification() {
+        safetyCenterCtsHelper.setConfig(
+            singleSourceConfig(
+                dynamicSafetySourceBuilder("MyNotifiableSource")
+                    .setNotificationsAllowed(true)
+                    .build()))
+        val data = safetySourceCtsData.recommendationWithAccountIssue
+
+        val notification =
+            CtsNotificationListener.getNextNotificationPostedOrNull {
+                safetyCenterCtsHelper.setData("MyNotifiableSource", data)
             }
 
         assertThat(notification).isNotNull()
