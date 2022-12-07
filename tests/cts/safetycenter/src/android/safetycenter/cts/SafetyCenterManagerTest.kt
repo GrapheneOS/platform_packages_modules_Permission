@@ -142,7 +142,6 @@ import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.dismissSa
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.executeSafetyCenterIssueActionWithPermissionAndWait
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.refreshSafetySourcesWithReceiverPermissionAndWait
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.refreshSafetySourcesWithoutReceiverPermissionAndWait
-import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.refreshSpecificSafetySourcesWithReceiverPermissionAndWait
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
@@ -1875,7 +1874,7 @@ class SafetyCenterManagerTest {
 
     @Test
     @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
-    fun refreshSpecificSafetySources_withSafetySourceIds_onlySpecifiedSourcesSendData() {
+    fun refreshSafetySources_withSafetySourceIds_onlySpecifiedSourcesSendData() {
         safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
         SafetySourceReceiver.apply {
             setResponse(
@@ -1886,8 +1885,8 @@ class SafetyCenterManagerTest {
                 Request.Refresh(SOURCE_ID_3), Response.SetData(safetySourceCtsData.information))
         }
 
-        safetyCenterManager.refreshSpecificSafetySourcesWithReceiverPermissionAndWait(
-            REFRESH_REASON_PAGE_OPEN, listOf(SOURCE_ID_1, SOURCE_ID_2))
+        safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+            REFRESH_REASON_PAGE_OPEN, safetySourceIds = listOf(SOURCE_ID_1, SOURCE_ID_2))
 
         val apiSafetySourceData1 =
             safetyCenterManager.getSafetySourceDataWithPermission(SOURCE_ID_1)
@@ -1902,15 +1901,15 @@ class SafetyCenterManagerTest {
 
     @Test
     @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
-    fun refreshSpecificSafetySources_withEmptySafetySourceIds_NoSourcesSendData() {
+    fun refreshSafetySources_withEmptySafetySourceIds_NoSourcesSendData() {
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
         SafetySourceReceiver.setResponse(
             Request.Refresh(SINGLE_SOURCE_ID),
             Response.SetData(safetySourceCtsData.criticalWithResolvingGeneralIssue))
 
         assertFailsWith(TimeoutCancellationException::class) {
-            safetyCenterManager.refreshSpecificSafetySourcesWithReceiverPermissionAndWait(
-                REFRESH_REASON_PAGE_OPEN, emptyList(), TIMEOUT_SHORT)
+            safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+                REFRESH_REASON_PAGE_OPEN, TIMEOUT_SHORT, emptyList())
         }
 
         val sourceData = safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
@@ -1919,15 +1918,15 @@ class SafetyCenterManagerTest {
 
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
-    fun refreshSpecificSafetySources_versionLessThanU_throwsUnsupportedOperationException() {
+    fun refreshSafetySources_versionLessThanU_throwsUnsupportedOperationException() {
         // TODO(b/258228790): Remove after U is no longer in pre-release
         assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
         safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
 
         val exception =
             assertFailsWith(UnsupportedOperationException::class) {
-                safetyCenterManager.refreshSpecificSafetySourcesWithReceiverPermissionAndWait(
-                    REFRESH_REASON_PAGE_OPEN, listOf(SOURCE_ID_1, SOURCE_ID_3))
+                safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+                    REFRESH_REASON_PAGE_OPEN, safetySourceIds = listOf(SOURCE_ID_1, SOURCE_ID_3))
             }
 
         assertThat(exception)
@@ -1937,9 +1936,9 @@ class SafetyCenterManagerTest {
 
     @Test
     @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
-    fun refreshSpecificSafetySources_withoutPermission_throwsSecurityException() {
+    fun refreshSafetySources_withSafetySourceIds_withoutPermission_throwsSecurityException() {
         assertFailsWith(SecurityException::class) {
-            safetyCenterManager.refreshSpecificSafetySources(REFRESH_REASON_PAGE_OPEN, listOf())
+            safetyCenterManager.refreshSafetySources(REFRESH_REASON_PAGE_OPEN, listOf())
         }
     }
 

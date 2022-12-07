@@ -34,7 +34,6 @@ import android.safetycenter.cts.testing.Coroutines.runBlockingWithTimeout
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.dismissSafetyCenterIssueWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.executeSafetyCenterIssueActionWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.refreshSafetySourcesWithPermission
-import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.refreshSpecificSafetySourcesWithPermission
 import android.safetycenter.cts.testing.SafetySourceIntentHandler.Request
 import android.safetycenter.cts.testing.SafetySourceIntentHandler.Response
 import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermissionIdentity
@@ -138,33 +137,22 @@ class SafetySourceReceiver : BroadcastReceiver() {
             runBlockingWithTimeout { safetySourceIntentHandler.setResponse(request, response) }
         }
 
-        fun SafetyCenterManager.refreshSpecificSafetySourcesWithReceiverPermissionAndWait(
-            refreshReason: Int,
-            safetySourceIds: List<String>,
-            timeout: Duration = TIMEOUT_LONG
-        ) =
-            callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
-                refreshSpecificSafetySourcesWithPermission(refreshReason, safetySourceIds)
-
-                if (timeout < TIMEOUT_LONG) {
-                    getApplicationContext().waitForBroadcastIdle()
-                }
-                receiveRefreshSafetySources(timeout)
-            }
-
         fun SafetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
             refreshReason: Int,
-            timeout: Duration = TIMEOUT_LONG
+            timeout: Duration = TIMEOUT_LONG,
+            safetySourceIds: List<String>? = null
         ) =
             callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
-                refreshSafetySourcesWithoutReceiverPermissionAndWait(refreshReason, timeout)
+                refreshSafetySourcesWithoutReceiverPermissionAndWait(
+                    refreshReason, timeout, safetySourceIds)
             }
 
         fun SafetyCenterManager.refreshSafetySourcesWithoutReceiverPermissionAndWait(
             refreshReason: Int,
-            timeout: Duration
+            timeout: Duration,
+            safetySourceIds: List<String>? = null
         ): String {
-            refreshSafetySourcesWithPermission(refreshReason)
+            refreshSafetySourcesWithPermission(refreshReason, safetySourceIds)
             if (timeout < TIMEOUT_LONG) {
                 getApplicationContext().waitForBroadcastIdle()
             }

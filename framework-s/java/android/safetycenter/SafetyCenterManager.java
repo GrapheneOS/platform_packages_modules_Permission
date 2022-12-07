@@ -456,8 +456,8 @@ public final class SafetyCenterManager {
      * #ACTION_REFRESH_SAFETY_SOURCES} and {@link #EXTRA_REFRESH_SAFETY_SOURCE_IDS} to specify the
      * IDs of safety sources being requested for data by Safety Center.
      *
-     * <p>This API is similar to {@link #refreshSafetySources(int)} and is used to request data from
-     * safety sources that are part of a subpage in the Safety Center UI.
+     * <p>This API is an overload of {@link #refreshSafetySources(int)} and is used to request data
+     * from safety sources that are part of a subpage in the Safety Center UI.
      *
      * @see #refreshSafetySources(int)
      * @param refreshReason the reason for the refresh
@@ -467,7 +467,7 @@ public final class SafetyCenterManager {
      */
     @RequiresPermission(MANAGE_SAFETY_CENTER)
     @RequiresApi(UPSIDE_DOWN_CAKE)
-    public void refreshSpecificSafetySources(
+    public void refreshSafetySources(
             @RefreshReason int refreshReason, @NonNull List<String> safetySourceIds) {
         if (!SdkLevel.isAtLeastU()) {
             throw new UnsupportedOperationException(
