@@ -185,6 +185,12 @@ object SafetyCenterFlags {
     private val showSubpagesFlag =
         Flag("safety_center_show_subpages", defaultValue = false, BooleanParser())
 
+    private val overrideRefreshOnPageOpenSourcesFlag =
+        Flag(
+            "safety_center_override_refresh_on_page_open_sources",
+            defaultValue = setOf(),
+            SetParser(StringParser()))
+
     /** Every Safety Center flag. */
     private val FLAGS: List<Flag<*>> =
         listOf(
@@ -203,7 +209,8 @@ object SafetyCenterFlags {
             backgroundRefreshDeniedSourcesFlag,
             allowStatsdLoggingInTestsFlag,
             qsTileComponentSettingFlag,
-            showSubpagesFlag)
+            showSubpagesFlag,
+            overrideRefreshOnPageOpenSourcesFlag)
 
     /** Returns whether the device supports Safety Center. */
     fun Context.deviceSupportsSafetyCenter() =
@@ -254,6 +261,9 @@ object SafetyCenterFlags {
 
     /** A property that allows getting and setting the [showSubpagesFlag]. */
     var showSubpages: Boolean by showSubpagesFlag
+
+    /** A property that allows getting and setting the [overrideRefreshOnPageOpenSourcesFlag]. */
+    var overrideRefreshOnPageOpenSources: Set<String> by overrideRefreshOnPageOpenSourcesFlag
 
     /**
      * Returns a snapshot of all the Safety Center flags.

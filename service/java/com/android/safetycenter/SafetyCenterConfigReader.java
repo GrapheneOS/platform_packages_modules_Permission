@@ -384,14 +384,14 @@ final class SafetyCenterConfigReader {
                         broadcasts.add(broadcast);
                     }
                     broadcast.mSourceIdsForProfileParent.add(safetySource.getId());
-                    if (safetySource.isRefreshOnPageOpenAllowed()) {
+                    if (isRefreshOnPageOpenAllowedAfterApplyingOverrides(safetySource)) {
                         broadcast.mSourceIdsForProfileParentOnPageOpen.add(safetySource.getId());
                     }
                     boolean needsManagedProfilesBroadcast =
                             SafetySources.supportsManagedProfiles(safetySource);
                     if (needsManagedProfilesBroadcast) {
                         broadcast.mSourceIdsForManagedProfiles.add(safetySource.getId());
-                        if (safetySource.isRefreshOnPageOpenAllowed()) {
+                        if (isRefreshOnPageOpenAllowedAfterApplyingOverrides(safetySource)) {
                             broadcast.mSourceIdsForManagedProfilesOnPageOpen.add(
                                     safetySource.getId());
                         }
@@ -401,6 +401,13 @@ final class SafetyCenterConfigReader {
 
             return broadcasts;
         }
+    }
+
+    private static boolean isRefreshOnPageOpenAllowedAfterApplyingOverrides(
+            SafetySource safetySource) {
+        return safetySource.isRefreshOnPageOpenAllowed()
+                || SafetyCenterFlags.getOverrideRefreshOnPageOpenSourceIds()
+                        .contains(safetySource.getId());
     }
 
     /** A wrapper class around a {@link SafetySource} that is providing data externally. */
