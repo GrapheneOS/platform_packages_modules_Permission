@@ -34,8 +34,6 @@ import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.compatibility.common.util.DisableAnimationRule
 import com.android.compatibility.common.util.FreezeRotationRule
-import com.android.compatibility.common.util.UiAutomatorUtils.getUiDevice
-import java.time.Duration
 import org.junit.After
 import org.junit.Assume.assumeTrue
 import org.junit.Before
@@ -125,8 +123,6 @@ class SafetyCenterQsActivityTest {
             waitDisplayed(By.desc("Switch. Mic access. Available")) { it.click() }
 
             // Verify updated state of privacy controls
-            getUiDevice()
-                .waitForWindowUpdate(/* from any window*/ null, DATA_UPDATE_TIMEOUT.toMillis())
             waitDisplayed(By.desc("Switch. Camera access. Blocked"))
             waitDisplayed(By.desc("Switch. Mic access. Blocked"))
         }
@@ -151,9 +147,5 @@ class SafetyCenterQsActivityTest {
         callWithShellPermissionIdentity(MANAGE_SENSOR_PRIVACY, OBSERVE_SENSOR_PRIVACY) {
             sensorPrivacyManager.setSensorPrivacy(sensor, disableSensor)
         }
-    }
-
-    companion object {
-        private val DATA_UPDATE_TIMEOUT = Duration.ofSeconds(25)
     }
 }

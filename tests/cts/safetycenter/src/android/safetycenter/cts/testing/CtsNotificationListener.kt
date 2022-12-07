@@ -20,7 +20,6 @@ import android.content.ComponentName
 import android.os.ConditionVariable
 import android.safetycenter.cts.testing.Coroutines.TIMEOUT_LONG
 import android.safetycenter.cts.testing.Coroutines.TIMEOUT_SHORT
-import android.safetycenter.cts.testing.Coroutines.waitForWithTimeout
 import android.service.notification.NotificationListenerService
 import android.service.notification.StatusBarNotification
 import android.util.Log
@@ -205,21 +204,14 @@ class CtsNotificationListener : NotificationListenerService() {
         }
 
         /**
-         * Cancels all notifications and then waits for them all to be removed by the notification
-         * manager. Call this method before taking actions which will cause the notifications under
-         * test to be posted.
+         * Cancels a specific notification and then waits for it to be removed by the notification
+         * manager, or throws if it has not been removed within [timeout].
          */
-        fun cancelAllAndWait(timeout: Duration = TIMEOUT_LONG) {
-            if (connected.block(TIMEOUT_LONG.toMillis())) {
-                instance!!.apply {
-                    cancelAllNotifications()
-                    waitForWithTimeout(timeout) {
-                        activeNotifications.none(::isSafetyCenterNotification)
-                    }
-                }
-            } else {
-                throw TimeoutException("Notification listener not connected")
-            }
+        fun cancelAndWait(key: String, timeout: Duration = TIMEOUT_LONG) {
+            val cancelled =
+                getNextNotificationRemovedOrNull(timeout) { instance?.cancelNotification(key) }
+            assertThat(cancelled).isNotNull()
+            assertThat(cancelled!!.key).isEqualTo(key)
         }
 
         /** Runs a shell command to allow or disallow the listener. Use before and after test. */
