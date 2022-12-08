@@ -245,7 +245,7 @@ public final class SafetyCenterService extends SystemService {
                 if (mConfigAvailable) {
                     readSafetyCenterIssueCacheFileLocked();
                     new UserBroadcastReceiver().register(getContext());
-                    new SafetyCenterNotificationReceiver(mSafetyCenterIssueCache, mApiLock)
+                    new SafetyCenterNotificationReceiver(this, mSafetyCenterIssueCache, mApiLock)
                             .register(getContext());
                 }
             }
@@ -1022,6 +1022,21 @@ public final class SafetyCenterService extends SystemService {
         }
     }
 
+    /**
+     * Executes the {@link SafetySourceIssue.Action} specified by the given {@link
+     * SafetyCenterIssueActionId}.
+     *
+     * <p>No validation is performed on the contents of the given ID.
+     */
+    void executeIssueActionInternal(@NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
+        SafetyCenterIssueKey safetyCenterIssueKey =
+                safetyCenterIssueActionId.getSafetyCenterIssueKey();
+        UserProfileGroup userProfileGroup =
+                UserProfileGroup.from(getContext(), safetyCenterIssueKey.getUserId());
+        executeIssueActionInternal(
+                safetyCenterIssueKey, safetyCenterIssueActionId, userProfileGroup, null);
+    }
+
     private void executeIssueActionInternal(
             @NonNull SafetyCenterIssueKey safetyCenterIssueKey,
             @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId,
@@ -1030,6 +1045,7 @@ public final class SafetyCenterService extends SystemService {
         synchronized (mApiLock) {
             SafetySourceIssue.Action safetySourceIssueAction =
                     mSafetyCenterRepository.getSafetySourceIssueAction(safetyCenterIssueActionId);
+
             if (safetySourceIssueAction == null) {
                 Log.w(
                         TAG,
