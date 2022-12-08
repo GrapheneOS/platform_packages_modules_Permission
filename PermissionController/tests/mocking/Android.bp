@@ -109,6 +109,7 @@ android_test {
         "safety-center-resources-lib",
         "safety-center-internal-data",
         "safety-label",
+        "role-controller",
         "lottie",
 
         "androidx.test.rules",
