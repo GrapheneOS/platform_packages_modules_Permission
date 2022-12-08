@@ -87,8 +87,8 @@
     <string name="location_settings" msgid="3624412509133422562">"የአካባቢ ቅንብሮች"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> የዚህ መሣሪያ አካባቢ አገልግሎቶች አቅራቢ ነው። የአካባቢ መዳረሻ ከአካባቢ ቅንብሮች ሊሻሻል ይችላል።"</string>
     <string name="system_warning" msgid="1173400963234358816">"ይህን ፍቃድ ከከለከሉ የመሣሪያዎ መሠረታዊ ባህሪያት ከዚህ በኋላ እንደተፈለገው ላይሠሩ ይችላሉ።"</string>
-    <string name="deny_read_media_visual_warning" msgid="3982586279917232827">"ይህ መተግበሪያ የተነደፈው ለቆየ የAndroid ስሪት ነበር። ይህን መሳሪያ ወደ ፎቶዎች እና ቪዲዮዎች መዳረሻ ከከለከሉ፣ ወደ ሙዚቃ እና ሌላ ኦዲዮ መዳረሻም ጭምር ይከለከላል።"</string>
-    <string name="deny_read_media_aural_warning" msgid="8928699919508646732">"ይህ መተግበሪያ የተነደፈው ለቆየ የAndroid ስሪት ነበር። ይህን መሳሪያ ወደ ሙዚቃ እና ሌላ ኦዲዮ መዳረሻ ከከለከሉ፣ ወደ ፎቶዎች እና ቪዲዮዎች መዳረሻም ጭምር ይከለከላል።"</string>
+    <string name="deny_read_media_visual_warning" msgid="3982586279917232827">"ይህ መተግበሪያ የተነደፈው ለቆየ የAndroid ስሪት ነበር። ይህን መሣሪያ ወደ ፎቶዎች እና ቪዲዮዎች መዳረሻ ከከለከሉ፣ ወደ ሙዚቃ እና ሌላ ኦዲዮ መዳረሻም ጭምር ይከለከላል።"</string>
+    <string name="deny_read_media_aural_warning" msgid="8928699919508646732">"ይህ መተግበሪያ የተነደፈው ለቆየ የAndroid ስሪት ነበር። ይህን መሣሪያ ወደ ሙዚቃ እና ሌላ ኦዲዮ መዳረሻ ከከለከሉ፣ ወደ ፎቶዎች እና ቪዲዮዎች መዳረሻም ጭምር ይከለከላል።"</string>
     <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"ይህንን ፈቃድ ከከለከሉ፣ በዚህ መተግበሪያ የሚተዳደሩ አንዳንድ የመሣሪያዎ ገጽታዎች ከአሁን በኋላ እንደታሰበው ላይሠሩ ይችላሉ።"</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"በመመሪያ ተፈጻሚ የሆነ"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"የጀርባ መዳረሻ በመመሪያ ተሰናክሏል"</string>
