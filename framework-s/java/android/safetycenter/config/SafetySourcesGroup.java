@@ -310,6 +310,21 @@ public final class SafetySourcesGroup implements Parcelable {
         /** Creates a {@link Builder} for a {@link SafetySourcesGroup}. */
         public Builder() {}
 
+        /** Creates a {@link Builder} with the values from the given {@link SafetySourcesGroup}. */
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        public Builder(@NonNull SafetySourcesGroup original) {
+            if (!SdkLevel.isAtLeastU()) {
+                throw new UnsupportedOperationException();
+            }
+            requireNonNull(original);
+            mSafetySources.addAll(original.mSafetySources);
+            mType = original.mType;
+            mId = original.mId;
+            mTitleResId = original.mTitleResId;
+            mSummaryResId = original.mSummaryResId;
+            mStatelessIconType = original.mStatelessIconType;
+        }
+
         /**
          * Sets the type of this safety sources group.
          *

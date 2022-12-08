@@ -329,7 +329,7 @@ class SafetySourceTest {
 
     @Test
     fun equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
-        EqualsHashCodeToStringTester()
+        EqualsHashCodeToStringTester<SafetySource>()
             .addEqualityGroup(DYNAMIC_BAREBONE)
             .addEqualityGroup(
                 dynamicAllOptional(),
@@ -612,6 +612,7 @@ class SafetySourceTest {
                     .build())
             .apply {
                 if (SdkLevel.isAtLeastU()) {
+                    setCreateCopy { SafetySource.Builder(it).build() }
                     addEqualityGroup(
                         SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                             .setId(DYNAMIC_ALL_OPTIONAL_ID)

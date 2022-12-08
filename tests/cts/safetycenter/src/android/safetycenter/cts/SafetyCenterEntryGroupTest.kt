@@ -169,10 +169,10 @@ class SafetyCenterEntryGroupTest {
 
     @Test
     fun equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
-        EqualsHashCodeToStringTester()
+        EqualsHashCodeToStringTester<SafetyCenterEntryGroup>(
+                createCopy = { SafetyCenterEntryGroup.Builder(it).build() })
             .addEqualityGroup(
                 entryGroup1,
-                SafetyCenterEntryGroup.Builder(entryGroup1).build(),
                 SafetyCenterEntryGroup.Builder(groupId1, "A group title")
                     .setSummary("A group summary")
                     .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK)

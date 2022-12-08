@@ -16,9 +16,11 @@
 
 package android.safetycenter.cts.config
 
+import android.os.Build
 import android.safetycenter.config.SafetyCenterConfig
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.ext.truth.os.ParcelableSubject.assertThat
+import androidx.test.filters.SdkSuppress
 import com.android.permission.testing.EqualsHashCodeToStringTester
 import com.google.common.truth.Truth.assertThat
 import kotlin.test.assertFailsWith
@@ -75,7 +77,19 @@ class SafetyCenterConfigTest {
 
     @Test
     fun equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
-        EqualsHashCodeToStringTester()
+        newTiramisuEqualsHashCodeToStringTester().test()
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun equalsHashCodeToString_usingEqualsHashCodeToStringTester_atLeastAndroidU() {
+        newTiramisuEqualsHashCodeToStringTester()
+            .setCreateCopy { SafetyCenterConfig.Builder(it).build() }
+            .test()
+    }
+
+    private fun newTiramisuEqualsHashCodeToStringTester() =
+        EqualsHashCodeToStringTester<SafetyCenterConfig>()
             .addEqualityGroup(
                 BASE,
                 SafetyCenterConfig.Builder()
@@ -87,8 +101,6 @@ class SafetyCenterConfigTest {
                     .addSafetySourcesGroup(SafetySourcesGroupTest.HIDDEN_INFERRED)
                     .addSafetySourcesGroup(SafetySourcesGroupTest.STATELESS_INFERRED)
                     .build())
-            .test()
-    }
 
     companion object {
         private val BASE =

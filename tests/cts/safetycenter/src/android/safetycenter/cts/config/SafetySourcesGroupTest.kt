@@ -311,7 +311,7 @@ class SafetySourcesGroupTest {
 
     @Test
     fun equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
-        EqualsHashCodeToStringTester()
+        EqualsHashCodeToStringTester<SafetySourcesGroup>()
             .addEqualityGroup(STATEFUL_INFERRED_WITH_SUMMARY)
             .addEqualityGroup(STATEFUL_INFERRED_WITH_ICON)
             .addEqualityGroup(
@@ -378,6 +378,7 @@ class SafetySourcesGroupTest {
                     .build())
             .apply {
                 if (SdkLevel.isAtLeastU()) {
+                    setCreateCopy { SafetySourcesGroup.Builder(it).build() }
                     addEqualityGroup(STATEFUL_BAREBONE)
                     addEqualityGroup(STATELESS_ALL_OPTIONAL)
                     addEqualityGroup(HIDDEN_ALL_OPTIONAL)

@@ -44,7 +44,7 @@ class SafetySourceErrorDetailsTest {
 
     @Test
     fun equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
-        EqualsHashCodeToStringTester()
+        EqualsHashCodeToStringTester<SafetySourceErrorDetails>()
             .addEqualityGroup(
                 SafetySourceErrorDetails(SAFETY_EVENT),
                 SafetySourceErrorDetails(

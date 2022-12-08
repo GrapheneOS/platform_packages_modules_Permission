@@ -659,6 +659,21 @@ public final class SafetyCenterIssue implements Parcelable {
                 mPendingIntent = requireNonNull(pendingIntent);
             }
 
+            /** Creates a {@link Builder} with the values from the given {@link Action}. */
+            @RequiresApi(UPSIDE_DOWN_CAKE)
+            public Builder(@NonNull Action action) {
+                if (!SdkLevel.isAtLeastU()) {
+                    throw new UnsupportedOperationException();
+                }
+                requireNonNull(action);
+                mId = action.mId;
+                mLabel = action.mLabel;
+                mPendingIntent = action.mPendingIntent;
+                mWillResolve = action.mWillResolve;
+                mInFlight = action.mInFlight;
+                mSuccessMessage = action.mSuccessMessage;
+            }
+
             /** Sets the ID of this {@link Action} */
             @NonNull
             public Builder setId(@NonNull String id) {

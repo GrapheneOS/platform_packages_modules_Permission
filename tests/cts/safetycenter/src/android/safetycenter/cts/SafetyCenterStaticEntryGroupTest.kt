@@ -98,7 +98,7 @@ class SafetyCenterStaticEntryGroupTest {
 
     @Test
     fun equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
-        EqualsHashCodeToStringTester()
+        EqualsHashCodeToStringTester<SafetyCenterStaticEntryGroup>()
             .addEqualityGroup(
                 staticEntryGroup,
                 SafetyCenterStaticEntryGroup("a title", listOf(staticEntry1, staticEntry2)))
