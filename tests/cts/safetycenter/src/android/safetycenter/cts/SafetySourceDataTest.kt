@@ -20,6 +20,8 @@ import android.app.PendingIntent
 import android.app.PendingIntent.FLAG_IMMUTABLE
 import android.content.Context
 import android.content.Intent
+import android.os.Build
+import android.os.Bundle
 import android.safetycenter.SafetySourceData
 import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING
 import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_INFORMATION
@@ -27,9 +29,12 @@ import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_RECOMMENDATION
 import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED
 import android.safetycenter.SafetySourceIssue
 import android.safetycenter.SafetySourceStatus
+import androidx.core.os.bundleOf
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
+import androidx.test.core.os.Parcelables.forceParcel
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.ext.truth.os.ParcelableSubject.assertThat
+import androidx.test.filters.SdkSuppress
 import com.android.permission.testing.EqualsHashCodeToStringTester
 import com.google.common.truth.Truth.assertThat
 import kotlin.test.assertFailsWith
@@ -88,6 +93,28 @@ class SafetySourceDataTest {
         assertFailsWith(UnsupportedOperationException::class) {
             mutatedIssues.add(createIssue(SEVERITY_LEVEL_INFORMATION, 2))
         }
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getExtras_withDefaultBuilder_returnsEmptyBundle() {
+        val safetySourceData =
+            SafetySourceData.Builder().setStatus(createStatus(SEVERITY_LEVEL_INFORMATION)).build()
+
+        assertThat(safetySourceData.extras.keySet()).isEmpty()
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getExtras_whenSetExplicitly_returnsExtras() {
+        val safetySourceData =
+            SafetySourceData.Builder()
+                .setStatus(createStatus(SEVERITY_LEVEL_INFORMATION))
+                .setExtras(bundleOf(EXTRA_KEY to EXTRA_VALUE))
+                .build()
+
+        assertThat(safetySourceData.extras.keySet()).containsExactly(EXTRA_KEY)
+        assertThat(safetySourceData.extras.getString(EXTRA_KEY, "")).isEqualTo(EXTRA_VALUE)
     }
 
     @Test
@@ -285,6 +312,23 @@ class SafetySourceDataTest {
     }
 
     @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun parcelRoundTrip_withExtras_recreatesEqual() {
+        val safetySourceData =
+            SafetySourceData.Builder()
+                .setStatus(createStatus(SEVERITY_LEVEL_RECOMMENDATION))
+                .addIssue(createIssue(SEVERITY_LEVEL_RECOMMENDATION, 1))
+                .addIssue(createIssue(SEVERITY_LEVEL_INFORMATION, 2))
+                .setExtras(bundleOf(EXTRA_KEY to EXTRA_VALUE))
+                .build()
+        val recreatedSafetySourceData = forceParcel(safetySourceData, SafetySourceData.CREATOR)
+
+        assertThat(recreatedSafetySourceData).isEqualTo(safetySourceData)
+        assertThat(recreatedSafetySourceData.extras.keySet()).containsExactly(EXTRA_KEY)
+        assertThat(recreatedSafetySourceData.extras.getString(EXTRA_KEY, "")).isEqualTo(EXTRA_VALUE)
+    }
+
+    @Test
     fun equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
         val firstStatus = createStatus(SEVERITY_LEVEL_INFORMATION, 1)
         val secondStatus = createStatus(SEVERITY_LEVEL_INFORMATION, 2)
@@ -321,6 +365,90 @@ class SafetySourceDataTest {
             .test()
     }
 
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun equalsHashCode_atLeastU_usingEqualsHashCodeToStringTester() {
+        val firstStatus = createStatus(SEVERITY_LEVEL_INFORMATION, 1)
+        val secondStatus = createStatus(SEVERITY_LEVEL_INFORMATION, 2)
+        val firstIssue = createIssue(SEVERITY_LEVEL_INFORMATION, 1)
+        val secondIssue = createIssue(SEVERITY_LEVEL_INFORMATION, 2)
+        val filledExtras = bundleOf(EXTRA_KEY to EXTRA_VALUE)
+        EqualsHashCodeToStringTester(ignoreToString = true)
+            .addEqualityGroup(
+                SafetySourceData.Builder().setStatus(firstStatus).build(),
+                SafetySourceData.Builder().setStatus(firstStatus).setExtras(filledExtras).build())
+            .addEqualityGroup(
+                SafetySourceData.Builder().addIssue(firstIssue).addIssue(secondIssue).build(),
+                SafetySourceData.Builder()
+                    .addIssue(firstIssue)
+                    .addIssue(secondIssue)
+                    .setExtras(filledExtras)
+                    .build())
+            .addEqualityGroup(
+                SafetySourceData.Builder()
+                    .setStatus(firstStatus)
+                    .addIssue(firstIssue)
+                    .addIssue(secondIssue)
+                    .build(),
+                SafetySourceData.Builder()
+                    .setStatus(firstStatus)
+                    .addIssue(firstIssue)
+                    .addIssue(secondIssue)
+                    .setExtras(filledExtras)
+                    .build())
+            .addEqualityGroup(
+                SafetySourceData.Builder().setStatus(secondStatus).build(),
+                SafetySourceData.Builder().setStatus(secondStatus).setExtras(filledExtras).build())
+            .addEqualityGroup(
+                SafetySourceData.Builder().addIssue(secondIssue).addIssue(firstIssue).build(),
+                SafetySourceData.Builder()
+                    .addIssue(secondIssue)
+                    .addIssue(firstIssue)
+                    .setExtras(filledExtras)
+                    .build())
+            .addEqualityGroup(
+                SafetySourceData.Builder().addIssue(firstIssue).build(),
+                SafetySourceData.Builder().addIssue(firstIssue).setExtras(filledExtras).build())
+            .addEqualityGroup(
+                SafetySourceData.Builder()
+                    .setStatus(secondStatus)
+                    .addIssue(firstIssue)
+                    .addIssue(secondIssue)
+                    .build(),
+                SafetySourceData.Builder()
+                    .setStatus(secondStatus)
+                    .addIssue(firstIssue)
+                    .addIssue(secondIssue)
+                    .setExtras(filledExtras)
+                    .build())
+            .test()
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun toString_withExtras_containsHasExtras() {
+        val safetySourceDataWithExtras =
+            SafetySourceData.Builder()
+                .setStatus(createStatus(SEVERITY_LEVEL_INFORMATION))
+                .setExtras(bundleOf(EXTRA_KEY to EXTRA_VALUE))
+                .build()
+
+        val stringRepresentation = safetySourceDataWithExtras.toString()
+
+        assertThat(stringRepresentation).contains("(has extras)")
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun toString_withoutExtras_doesNotContainHasExtras() {
+        val safetySourceDataWithoutExtras =
+            SafetySourceData.Builder().setStatus(createStatus(SEVERITY_LEVEL_INFORMATION)).build()
+
+        val stringRepresentation = safetySourceDataWithoutExtras.toString()
+
+        assertThat(stringRepresentation).doesNotContain("(has extras)")
+    }
+
     private fun createStatus(severityLevel: Int, id: Int = 0) =
         SafetySourceStatus.Builder("Status title $id", "Status summary $id", severityLevel)
             .setPendingIntent(
@@ -349,4 +477,12 @@ class SafetySourceDataTest {
                             FLAG_IMMUTABLE))
                     .build())
             .build()
+
+    private companion object {
+        /** Key of extra data in [Bundle]. */
+        const val EXTRA_KEY = "extra_key"
+
+        /** Value of extra data in [Bundle]. */
+        const val EXTRA_VALUE = "extra_value"
+    }
 }

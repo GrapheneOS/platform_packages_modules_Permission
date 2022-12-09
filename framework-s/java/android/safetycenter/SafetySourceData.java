@@ -17,6 +17,7 @@
 package android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
+import static android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
 
 import static com.android.internal.util.Preconditions.checkArgument;
 
@@ -27,10 +28,13 @@ import android.annotation.IntDef;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.SystemApi;
+import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.annotation.RequiresApi;
+
+import com.android.modules.utils.build.SdkLevel;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -162,6 +166,12 @@ public final class SafetySourceData implements Parcelable {
                     for (int i = 0; i < issues.size(); i++) {
                         builder.addIssue(issues.get(i));
                     }
+                    if (SdkLevel.isAtLeastU()) {
+                        Bundle extras = in.readBundle(getClass().getClassLoader());
+                        if (extras != null) {
+                            builder.setExtras(extras);
+                        }
+                    }
                     return builder.build();
                 }
 
@@ -173,11 +183,15 @@ public final class SafetySourceData implements Parcelable {
 
     @Nullable private final SafetySourceStatus mStatus;
     @NonNull private final List<SafetySourceIssue> mIssues;
+    @NonNull private final Bundle mExtras;
 
     private SafetySourceData(
-            @Nullable SafetySourceStatus status, @NonNull List<SafetySourceIssue> issues) {
+            @Nullable SafetySourceStatus status,
+            @NonNull List<SafetySourceIssue> issues,
+            @NonNull Bundle extras) {
         this.mStatus = status;
         this.mIssues = issues;
+        this.mExtras = extras;
     }
 
     /** Returns the data for the {@link SafetySourceStatus} to be shown in UI. */
@@ -192,6 +206,21 @@ public final class SafetySourceData implements Parcelable {
         return mIssues;
     }
 
+    /**
+     * Returns a {@link Bundle} containing additional information.
+     *
+     * <p>Note: internal state of this {@link Bundle} is not used for {@link Object#equals} and
+     * {@link Object#hashCode} implementation of {@link SafetySourceData}.
+     */
+    @NonNull
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    public Bundle getExtras() {
+        if (!SdkLevel.isAtLeastU()) {
+            throw new UnsupportedOperationException();
+        }
+        return mExtras;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -201,6 +230,9 @@ public final class SafetySourceData implements Parcelable {
     public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeTypedObject(mStatus, flags);
         dest.writeTypedList(mIssues);
+        if (SdkLevel.isAtLeastU()) {
+            dest.writeBundle(mExtras);
+        }
     }
 
     @Override
@@ -218,7 +250,13 @@ public final class SafetySourceData implements Parcelable {
 
     @Override
     public String toString() {
-        return "SafetySourceData{mStatus=" + mStatus + ", mIssues=" + mIssues + '}';
+        return "SafetySourceData{"
+                + "mStatus="
+                + mStatus
+                + ", mIssues="
+                + mIssues
+                + (!mExtras.isEmpty() ? ", (has extras)" : "")
+                + '}';
     }
 
     /** Builder class for {@link SafetySourceData}. */
@@ -227,6 +265,7 @@ public final class SafetySourceData implements Parcelable {
         @NonNull private final List<SafetySourceIssue> mIssues = new ArrayList<>();
 
         @Nullable private SafetySourceStatus mStatus;
+        @NonNull private Bundle mExtras = Bundle.EMPTY;
 
         /** Sets data for the {@link SafetySourceStatus} to be shown in UI. */
         @NonNull
@@ -239,6 +278,17 @@ public final class SafetySourceData implements Parcelable {
         @NonNull
         public Builder addIssue(@NonNull SafetySourceIssue safetySourceIssue) {
             mIssues.add(requireNonNull(safetySourceIssue));
+            return this;
+        }
+
+        /** Sets additional information for the {@link SafetySourceData}. */
+        @NonNull
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        public Builder setExtras(@NonNull Bundle extras) {
+            if (!SdkLevel.isAtLeastU()) {
+                throw new UnsupportedOperationException();
+            }
+            mExtras = requireNonNull(extras);
             return this;
         }
 
@@ -258,7 +308,7 @@ public final class SafetySourceData implements Parcelable {
             List<SafetySourceIssue> issues = unmodifiableList(new ArrayList<>(mIssues));
             int issuesMaxSeverityLevel = getIssuesMaxSeverityLevelEnforcingUniqueIds(issues);
             if (mStatus == null) {
-                return new SafetySourceData(null, issues);
+                return new SafetySourceData(null, issues, mExtras);
             }
             int statusSeverityLevel = mStatus.getSeverityLevel();
             boolean requiresAttention = issuesMaxSeverityLevel > SEVERITY_LEVEL_INFORMATION;
@@ -268,7 +318,8 @@ public final class SafetySourceData implements Parcelable {
                         "Safety source data cannot have issues that are more severe than its"
                                 + " status");
             }
-            return new SafetySourceData(mStatus, issues);
+
+            return new SafetySourceData(mStatus, issues, mExtras);
         }
 
         private static int getIssuesMaxSeverityLevelEnforcingUniqueIds(
