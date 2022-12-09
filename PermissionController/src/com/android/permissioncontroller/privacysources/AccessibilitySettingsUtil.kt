@@ -62,7 +62,7 @@ object AccessibilitySettingsUtil {
     /**
      * @return the mutable set of enabled accessibility services.
      */
-    private fun getEnabledServicesFromSettings(context: Context): MutableSet<ComponentName> {
+    fun getEnabledServicesFromSettings(context: Context): MutableSet<ComponentName> {
         val enabledServicesSetting = Settings.Secure.getString(
             context.contentResolver, Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES
         )
@@ -82,6 +82,8 @@ object AccessibilitySettingsUtil {
             )
             if (enabledService != null) {
                 enabledServices.add(enabledService)
+            } else {
+                Log.e(LOG_TAG, "unable to parse accessibility service $componentNameString")
             }
         }
 

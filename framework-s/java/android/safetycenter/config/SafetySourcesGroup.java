@@ -321,7 +321,7 @@ public final class SafetySourcesGroup implements Parcelable {
          */
         @NonNull
         @RequiresApi(UPSIDE_DOWN_CAKE)
-        public Builder setType(@StatelessIconType int type) {
+        public Builder setType(@SafetySourceGroupType int type) {
             mType = type;
             return this;
         }
