@@ -86,6 +86,7 @@ import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_HIDDEN_WI
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_IN_COLLAPSIBLE_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_IN_RIGID_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_OTHER_PACKAGE_ID
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.HIDDEN_ONLY_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.ISSUE_ONLY_ALL_OPTIONAL_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.ISSUE_ONLY_BAREBONE_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.ISSUE_ONLY_IN_RIGID_ID
@@ -1822,6 +1823,17 @@ class SafetyCenterManagerTest {
         val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
 
         assertThat(apiSafetyCenterData).isEqualTo(safetyCenterDataFromComplexConfig)
+    }
+
+    @Test
+    fun getSafetyCenterData_withOnlyHiddenSourcesWithoutDataProvided_returnsNoGroups() {
+        safetyCenterCtsHelper.setConfig(HIDDEN_ONLY_CONFIG)
+
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+
+        assertThat(apiSafetyCenterData)
+            .isEqualTo(
+                SafetyCenterData(safetyCenterStatusOk, emptyList(), emptyList(), emptyList()))
     }
 
     @Test

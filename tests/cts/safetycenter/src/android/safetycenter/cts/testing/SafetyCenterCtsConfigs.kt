@@ -632,6 +632,28 @@ object SafetyCenterCtsConfigs {
                     .build())
             .build()
 
+    /**
+     * A [SafetyCenterConfig] containing only hidden sources.
+     */
+    val HIDDEN_ONLY_CONFIG =
+        SafetyCenterConfig.Builder()
+            .addSafetySourcesGroup(
+                safetySourcesGroupBuilder("some_collapsible_group")
+                    .addSafetySource(
+                        dynamicSafetySourceBuilder("some_hidden_source")
+                            .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_HIDDEN)
+                            .build())
+                    .build())
+            .addSafetySourcesGroup(
+                safetySourcesGroupBuilder("some_rigid_group")
+                    .setSummaryResId(Resources.ID_NULL)
+                    .addSafetySource(
+                        dynamicSafetySourceBuilder("another_hidden_source")
+                            .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_HIDDEN)
+                            .build())
+                    .build())
+            .build()
+
     private fun dynamicSafetySource(id: String) = dynamicSafetySourceBuilder(id).build()
 
     private fun dynamicSafetySourceBuilder(id: String) =
