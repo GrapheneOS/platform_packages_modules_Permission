@@ -527,6 +527,7 @@ public class GrantPermissionsActivity extends SettingsActivity
         }
     }
 
+    // LINT.IfChange(dispatchTouchEvent)
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         View rootView = getWindow().getDecorView();
@@ -544,6 +545,7 @@ public class GrantPermissionsActivity extends SettingsActivity
         }
         return super.dispatchTouchEvent(ev);
     }
+    // LINT.ThenChange(PermissionRationaleActivity.java:dispatchTouchEvent)
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
@@ -615,6 +617,11 @@ public class GrantPermissionsActivity extends SettingsActivity
         if (result == CANCELED) {
             setResultAndFinish();
         }
+    }
+
+    @Override
+    public void onPermissionRationaleClicked(String groupName) {
+        mViewModel.showPermissionRationaleActivity(this, groupName);
     }
 
     @Override

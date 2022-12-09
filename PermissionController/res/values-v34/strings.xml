@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2022 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Permission Rationale - Start -->
+
+    <!-- TODO(b/259279178): update with finalized permission rationale strings -->
+    <!-- Title message shown for Permission Rationale dialog [CHAR LIMIT=50] -->
+    <string name="permission_rationale_title">More about allowing this access</string>
+
+    <!-- TODO(b/259279178): update with finalized permission rationale strings -->
+    <!-- Title shown for Permission Rationale data sharing purposes section [CHAR LIMIT=50] -->
+    <string name="permission_rationale_purpose_title">Why the app may share data?</string>
+
+    <!-- TODO(b/259279178): update with finalized permission rationale strings -->
+    <!-- Message shown to the user letting them know that data will be shared and for which
+    purposes. It will also display where the information was provided from via the install_source
+    placeholder, this will map to app store labels/names. Purposes will be comma delimited and are
+    one or many of the following: "app functionality", "analytics", "developer communications",
+    "advertising or marketing", "fraud prevention, security, and compliance", "personalization",
+    "account management". Example usage as follows: "This app developer stated to App Store that it
+    may share for app functionality, analytics, developer communications, advertising or marketing,
+    fraud prevention, security, and compliance, personalization, account management. This may be
+    updated in the future." [CHAR LIMIT=300] -->
+    <string name="permission_rationale_purpose_message">This app developer stated to <annotation id="link"><xliff:g id="install_source" example="App Store">%1$s</xliff:g></annotation> that it may share for <xliff:g id="purpose_list" example="purpose 1, purpose 2, purpose 3">%2$s</xliff:g>\nThis may be updated in the future.</string>
+
+    <!-- TODO(b/259279178): update with finalized permission rationale strings -->
+    <!-- Message shown to the user letting them know that data will be shared and for which
+    purposes. It will also display that the information was provided via the device manufacturer
+    (company responsible for making and released the device). Purposes will be comma delimited and
+    are one or many of the following: "app functionality", "analytics", "developer communications",
+    "advertising or marketing", "fraud prevention, security, and compliance", "personalization",
+    "account management". Example usage as follows: "This app developer stated to the device
+    manufacturer that it may share for app functionality, analytics, developer communications,
+    advertising or marketing, fraud prevention, security, and compliance, personalization, account
+    management. This may be updated in the future." [CHAR LIMIT=300] -->
+    <string name="permission_rationale_purpose_default_source_message">This app developer stated to the device manufacturer that it may share for <xliff:g id="purpose_list" example="purpose 1, purpose 2, purpose 3">%1$s</xliff:g>\nThis may be updated in the future.</string>
+
+    <!-- TODO(b/259279178): update with finalized permission rationale strings -->
+    <!-- Title shown for Permission Rationale third party description section [CHAR LIMIT=50] -->
+    <string name="permission_rationale_thirdparty_title">What are third parties?</string>
+
+    <!-- TODO(b/259279178): update with finalized permission rationale strings -->
+    <!-- Message shown to the user that explains what a "third party" is [CHAR LIMIT=100] -->
+    <string name="permission_rationale_thirdparty_message">Third parties are other companies or organizations</string>
+
+    <!-- TODO(b/259279178): update with finalized permission rationale strings -->
+    <!-- Title shown for Permission Rationale permission settings section [CHAR LIMIT=50] -->
+    <string name="permission_rationale_permission_settings_title">Change or revoke access any time</string>
+
+    <!-- TODO(b/259279178): update with finalized permission rationale strings -->
+    <!-- Message shown to the user letting them where to change permission settings in the future [CHAR LIMIT=100] -->
+    <string name="permission_rationale_permission_settings_message">Go to your <annotation id="link">privacy settings</annotation>, under <xliff:g id="permission_name" example="location">%1$s</xliff:g></string>
+
+    <!-- TODO(b/259279178): update with finalized permission rationale strings -->
+    <!-- Title shown for Permission Rationale "learn more about data sharing" section [CHAR LIMIT=50] -->
+    <string name="permission_rationale_permission_learn_more_title"><annotation id="link">Learn more</annotation> about data sharing</string>
+
+    <!-- TODO(b/259279178): update with finalized permission rationale strings -->
+    <!-- Permission usage purpose shown for Permission Rationale. This will be used with the
+    permission_rationale_purpose_message and permission_rationale_purpose_default_source_message
+    strings. Example usage with this string as follows: "This app developer stated to the device
+    manufacturer that it may share for app functionality. This may be updated in the future."
+    [CHAR LIMIT=30] -->
+    <string name="permission_rational_purpose_app_functionality">app functionality</string>
+
+    <!-- TODO(b/259279178): update with finalized permission rationale strings -->
+    <!-- Permission usage purpose shown for Permission Rationale. This will be used with the
+    permission_rationale_purpose_message and permission_rationale_purpose_default_source_message
+    strings. Example usage with this string as follows: "This app developer stated to the device
+    manufacturer that it may share for analytics. This may be updated in the future."
+    [CHAR LIMIT=30] -->
+    <string name="permission_rational_purpose_analytics">analytics</string>
+
+    <!-- TODO(b/259279178): update with finalized permission rationale strings -->
+    <!-- Permission usage purpose shown for Permission Rationale. This will be used with the
+    permission_rationale_purpose_message and permission_rationale_purpose_default_source_message
+    strings. Example usage with this string as follows: "This app developer stated to the device
+    manufacturer that it may share for developer communications. This may be updated in the future."
+    [CHAR LIMIT=50] -->
+    <string name="permission_rational_purpose_developer_communications">developer communications</string>
+
+    <!-- TODO(b/259279178): update with finalized permission rationale strings -->
+    <!-- Permission usage purpose shown for Permission Rationale. This will be used with the
+    permission_rationale_purpose_message and permission_rationale_purpose_default_source_message
+    strings. Example usage with this string as follows: "This app developer stated to the device
+    manufacturer that it may share for advertising or marketing. This may be updated in the future."
+    [CHAR LIMIT=50] -->
+    <string name="permission_rational_purpose_advertising">advertising or marketing</string>
+
+    <!-- TODO(b/259279178): update with finalized permission rationale strings -->
+    <!-- Permission usage purpose shown for Permission Rationale. This will be used with the
+    permission_rationale_purpose_message and permission_rationale_purpose_default_source_message
+    strings. Example usage with this string as follows: "This app developer stated to the device
+    manufacturer that it may share for fraud prevention, security, and compliance. This may be
+    updated in the future." [CHAR LIMIT=75] -->
+    <string name="permission_rational_purpose_fraud_prevention_security">fraud prevention, security, and compliance</string>
+
+    <!-- TODO(b/259279178): update with finalized permission rationale strings -->
+    <!-- Permission usage purpose shown for Permission Rationale. This will be used with the
+    permission_rationale_purpose_message and permission_rationale_purpose_default_source_message
+    strings. Example usage with this string as follows: "This app developer stated to the device
+    manufacturer that it may share for personalization. This may be updated in the future."
+    [CHAR LIMIT=50] -->
+    <string name="permission_rational_purpose_personalization">personalization</string>
+
+    <!-- TODO(b/259279178): update with finalized permission rationale strings -->
+    <!-- Permission usage purpose shown for Permission Rationale. This will be used with the
+    permission_rationale_purpose_message and permission_rationale_purpose_default_source_message
+    strings. Example usage with this string as follows: "This app developer stated to the device
+    manufacturer that it may share for account management. This may be updated in the future."
+    [CHAR LIMIT=50] -->
+    <string name="permission_rational_purpose_account_management">account management</string>
+
+    <!-- Permission Rationale - End -->
+
+</resources>

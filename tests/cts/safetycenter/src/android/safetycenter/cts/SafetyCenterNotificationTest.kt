@@ -159,6 +159,7 @@ class SafetyCenterNotificationTest {
             NotificationCharacteristics(title = "Notify immediately", text = "This is urgent!"))
     }
 
+    @Test
     fun setSafetySourceData_withNotificationsAllowedForSourceByFlag_sendsNotification() {
         SafetyCenterFlags.notificationsAllowedSources = setOf(SINGLE_SOURCE_ID)
         val data = safetySourceCtsData.recommendationWithAccountIssue

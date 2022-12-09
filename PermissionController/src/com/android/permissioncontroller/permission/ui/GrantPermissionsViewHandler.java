@@ -57,6 +57,8 @@ public interface GrantPermissionsViewHandler {
 
         void onPermissionGrantResult(String groupName, List<String> affectedForegroundPermissions,
                 @Result int result);
+
+        void onPermissionRationaleClicked(String groupName);
     }
 
     /**

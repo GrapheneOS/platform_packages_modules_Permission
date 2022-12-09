@@ -198,7 +198,7 @@
         <item name="android:layout_width">20dp</item>
         <item name="android:layout_height">20dp</item>
         <item name="android:layout_gravity">start|center_vertical</item>
-        <item name="android:scaleType">fitCenter</item>
+        <item name="android:scaleType">centerInside</item>
         <item name="android:tint">?android:attr/textColorSecondary</item>
     </style>
 
@@ -217,7 +217,7 @@
         <item name="android:layout_width">20dp</item>
         <item name="android:layout_height">20dp</item>
         <item name="android:layout_gravity">end|center_vertical</item>
-        <item name="android:scaleType">fitCenter</item>
+        <item name="android:scaleType">centerInside</item>
         <item name="android:tint">?android:attr/textColorSecondary</item>
     </style>
 
@@ -261,6 +261,113 @@
            parent="@style/PermissionGrantButton"></style>
 
     <!-- END PERMISSION GRANT DIALOG -->
+
+    <!-- START PERMISSION RATIONALE DIALOG -->
+
+    <style name="PermissionRationaleScrollView">
+        <item name="android:scrollbars">none</item>
+        <item name="android:fillViewport">true</item>
+        <item name="android:clipChildren">false</item>
+    </style>
+
+    <style name="PermissionRationaleSingleton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="PermissionRationaleDialog">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">?android:attr/windowBackground</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:showDividers">middle</item>
+    </style>
+
+    <style name="PermissionRationaleContent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingTop">24dp</item>
+        <item name="android:paddingBottom">18dp</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingEnd">24dp</item>
+    </style>
+
+    <style name="PermissionRationaleTitleContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="PermissionRationaleTitleIcon">
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:tint">?android:attr/textColorSecondary</item>
+        <item name="android:scaleType">centerInside</item>
+    </style>
+
+    <style name="PermissionRationaleTitleMessage"
+           parent="@android:style/TextAppearance.DeviceDefault.WindowTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="PermissionRationaleSectionOuterContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_marginTop">16dp</item>
+    </style>
+
+    <style name="PermissionRationaleSectionIcon">
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:tint">?android:attr/textColorSecondary</item>
+        <item name="android:scaleType">centerInside</item>
+    </style>
+
+    <style name="PermissionRationaleSectionInnerContainer">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_marginStart">16dp</item>
+    </style>
+
+    <style name="PermissionRationaleSectionTitle"
+           parent="@android:style/TextAppearance.DeviceDefault.Medium">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineHeight">20sp</item>
+        <item name="android:lineSpacingMultiplier">1.25</item>
+    </style>
+
+    <style name="PermissionRationaleSectionMessage"
+           parent="@android:style/TextAppearance.DeviceDefault">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineHeight">20sp</item>
+        <item name="android:lineSpacingMultiplier">1.25</item>
+    </style>
+
+    <style name="PermissionRationaleButtonContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">32dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">end</item>
+    </style>
+
+    <!-- END PERMISSION RATIONALE DIALOG -->
 
     <!-- START PERMISSION REVIEW SCREEN -->
 
