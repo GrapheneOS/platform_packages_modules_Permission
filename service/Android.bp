@@ -86,6 +86,7 @@ java_sdk_library {
     impl_library_visibility: [
         "//frameworks/base/apex/permission/tests",
         "//frameworks/base/services/tests/mockingservicestests",
+        "//frameworks/base/services/tests/PackageManagerServiceTests/server",
         "//frameworks/base/services/tests/servicestests",
         "//packages/modules/Permission/tests/apex",
     ],
