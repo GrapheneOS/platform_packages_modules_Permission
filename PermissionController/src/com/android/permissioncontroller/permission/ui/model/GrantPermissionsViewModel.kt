@@ -118,6 +118,7 @@ import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandle
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_RESULT_PERMISSION_INTERACTED
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_RESULT_PERMISSION_RESULT
+import com.android.permissioncontroller.permission.ui.v34.PermissionRationaleActivity
 import com.android.permissioncontroller.permission.utils.AdminRestrictedPermissionsUtils
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getDefaultPrecision
@@ -1343,6 +1344,26 @@ class GrantPermissionsViewModel(
                 requestInfosLiveData.update()
             }
         }
+    }
+
+    /**
+    * Shows the Permission Rationale Dialog. For use with U+ only, otherwise no-op.
+    *
+    * @param activity The current activity
+    * @param groupName The name of the permission group whose fragment should be opened
+    */
+    fun showPermissionRationaleActivity(activity: Activity, groupName: String) {
+        if (!SdkLevel.isAtLeastU()) {
+            return
+        }
+
+        val intent = Intent(activity, PermissionRationaleActivity::class.java).apply {
+            putExtra(Intent.EXTRA_PACKAGE_NAME, packageName)
+            putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, groupName)
+            putExtra(Constants.EXTRA_SESSION_ID, sessionId)
+        }
+        // TODO(b/260789748): setup similar result callback as the sendToSettingsFromLink method
+        activity.startActivity(intent)
     }
 
     private fun startAppPermissionFragment(activity: Activity, groupName: String) {

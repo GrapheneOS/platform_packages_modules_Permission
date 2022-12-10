@@ -437,7 +437,7 @@ class GrantPermissionsViewHandlerImpl(
         val id = view.id
 
         if (id == R.id.permission_rationale_container) {
-            // TODO(b/256913489): Implement Permission rationale details activity
+            resultListener.onPermissionRationaleClicked(groupName)
             return
         }
 
