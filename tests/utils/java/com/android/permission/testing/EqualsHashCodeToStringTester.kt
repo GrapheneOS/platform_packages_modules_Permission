@@ -16,6 +16,7 @@
 
 package com.android.permission.testing
 
+import android.os.Bundle
 import com.google.common.base.Equivalence
 import com.google.common.testing.EqualsTester
 import com.google.common.testing.EquivalenceTester
@@ -25,17 +26,26 @@ import com.google.common.testing.EquivalenceTester
  * [Object.toString] implementations are consistent with equality groups.
  *
  * Note: this class assumes that [Object.hashCode] does not create a collision for equality groups,
- * however this can be disabled by setting [hashCodeCanCollide] to `true`.
+ * however this can be disabled by setting [ignoreHashCode] to `true`.
+ *
+ * Note: this class assumes that [Object.toString] only represents the state that is used in
+ * [Object.equals] and [Object.hashCode] implementation. Objects with [Bundle] fields may break it.
+ * This can be disabled by setting [ignoreToString] to `true`.
  */
-class EqualsHashCodeToStringTester(private val hashCodeCanCollide: Boolean = false) {
+class EqualsHashCodeToStringTester(
+    private val ignoreHashCode: Boolean = false,
+    private val ignoreToString: Boolean = false
+) {
     private val equalsTester = EqualsTester()
     private val toStringTester = EquivalenceTester.of(TO_STRING_EQUIVALENCE)
     private val hashCodeTester = EquivalenceTester.of(HASH_CODE_EQUIVALENCE)
 
     fun addEqualityGroup(vararg groups: Any): EqualsHashCodeToStringTester {
         equalsTester.addEqualityGroup(*groups)
-        toStringTester.addEquivalenceGroupAsArray(groups)
-        if (!hashCodeCanCollide) {
+        if (!ignoreToString) {
+            toStringTester.addEquivalenceGroupAsArray(groups)
+        }
+        if (!ignoreHashCode) {
             hashCodeTester.addEquivalenceGroupAsArray(groups)
         }
         return this
@@ -51,8 +61,10 @@ class EqualsHashCodeToStringTester(private val hashCodeCanCollide: Boolean = fal
 
     fun test() {
         equalsTester.testEquals()
-        toStringTester.test()
-        if (!hashCodeCanCollide) {
+        if (!ignoreToString) {
+            toStringTester.test()
+        }
+        if (!ignoreHashCode) {
             hashCodeTester.test()
         }
     }

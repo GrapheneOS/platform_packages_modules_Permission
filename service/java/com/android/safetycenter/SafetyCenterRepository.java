@@ -169,6 +169,9 @@ final class SafetyCenterRepository {
      *
      * <p>This method does not perform any validation, {@link #getSafetySourceData(String, String,
      * int)} should be called wherever validation is required.
+     *
+     * <p>Returns {@code null} if it was never set since boot, or if the entry was evicted using
+     * {@link #setSafetySourceData} with a {@code null} value.
      */
     @Nullable
     SafetySourceData getSafetySourceData(@NonNull SafetySourceKey safetySourceKey) {

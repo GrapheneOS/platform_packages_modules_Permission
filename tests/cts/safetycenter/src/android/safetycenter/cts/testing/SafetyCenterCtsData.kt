@@ -19,6 +19,8 @@ package android.safetycenter.cts.testing
 import android.app.PendingIntent
 import android.content.Context
 import android.icu.text.MessageFormat
+import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
+import android.os.Bundle
 import android.os.UserHandle
 import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterEntry
@@ -44,6 +46,7 @@ import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.ISSUE_TYPE
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.RECOMMENDATION_ISSUE_ACTION_ID
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.RECOMMENDATION_ISSUE_ID
 import android.util.ArrayMap
+import androidx.annotation.RequiresApi
 import com.android.modules.utils.build.SdkLevel
 import com.android.safetycenter.internaldata.SafetyCenterEntryId
 import com.android.safetycenter.internaldata.SafetyCenterIds
@@ -388,12 +391,10 @@ class SafetyCenterCtsData(context: Context) {
          */
         fun SafetyCenterData.withDismissedIssuesIfAtLeastU(
             dismissedIssues: List<SafetyCenterIssue>
-        ): SafetyCenterData {
-            return if (SdkLevel.isAtLeastU())
-                SafetyCenterData(
-                    status, issues, entriesOrGroups, staticEntryGroups, dismissedIssues)
-            else this
-        }
+        ): SafetyCenterData =
+            if (SdkLevel.isAtLeastU()) {
+                copy(dismissedIssues = dismissedIssues)
+            } else this
 
         /**
          * On U+, returns a new [SafetyCenterData] with [SafetyCenterIssue]s having the
@@ -407,13 +408,33 @@ class SafetyCenterCtsData(context: Context) {
                     this.issues.map {
                         SafetyCenterIssue.Builder(it).setAttributionTitle(attributionTitle).build()
                     }
-                SafetyCenterData(
-                    this.status,
-                    issuesWithAttributionTitle,
-                    this.entriesOrGroups,
-                    this.staticEntryGroups,
-                    this.dismissedIssues)
+                copy(issues = issuesWithAttributionTitle)
             } else this
         }
+
+        /**
+         * On U+, returns a new [SafetyCenterData] with the extras set. Prior to U, returns the
+         * passed in [SafetyCenterData].
+         */
+        fun SafetyCenterData.withExtrasIfAtLeastU(extras: Bundle): SafetyCenterData =
+            if (SdkLevel.isAtLeastU()) {
+                copy(extras = extras)
+            } else this
+
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        private fun SafetyCenterData.copy(
+            issues: List<SafetyCenterIssue> = this.issues,
+            dismissedIssues: List<SafetyCenterIssue> = this.dismissedIssues,
+            extras: Bundle = this.extras
+        ): SafetyCenterData =
+            SafetyCenterData.Builder(status)
+                .apply {
+                    issues.forEach(::addIssue)
+                    entriesOrGroups.forEach(::addEntryOrGroup)
+                    staticEntryGroups.forEach(::addStaticEntryGroup)
+                    dismissedIssues.forEach(::addDismissedIssue)
+                }
+                .setExtras(extras)
+                .build()
     }
 }

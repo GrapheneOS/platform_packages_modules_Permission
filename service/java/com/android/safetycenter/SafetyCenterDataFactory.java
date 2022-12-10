@@ -118,8 +118,7 @@ final class SafetyCenterDataFactory {
                         .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN)
                         .build();
         if (SdkLevel.isAtLeastU()) {
-            return new SafetyCenterData(
-                    defaultSafetyCenterStatus, emptyList(), emptyList(), emptyList(), emptyList());
+            return new SafetyCenterData.Builder(defaultSafetyCenterStatus).build();
         } else {
             return new SafetyCenterData(
                     defaultSafetyCenterStatus, emptyList(), emptyList(), emptyList());
@@ -230,12 +229,20 @@ final class SafetyCenterDataFactory {
                         .build();
 
         if (SdkLevel.isAtLeastU()) {
-            return new SafetyCenterData(
-                    safetyCenterStatus,
-                    safetyCenterIssues,
-                    safetyCenterEntryOrGroups,
-                    safetyCenterStaticEntryGroups,
-                    safetyCenterDismissedIssues);
+            SafetyCenterData.Builder builder = new SafetyCenterData.Builder(safetyCenterStatus);
+            for (int i = 0; i < safetyCenterIssues.size(); i++) {
+                builder.addIssue(safetyCenterIssues.get(i));
+            }
+            for (int i = 0; i < safetyCenterEntryOrGroups.size(); i++) {
+                builder.addEntryOrGroup(safetyCenterEntryOrGroups.get(i));
+            }
+            for (int i = 0; i < safetyCenterStaticEntryGroups.size(); i++) {
+                builder.addStaticEntryGroup(safetyCenterStaticEntryGroups.get(i));
+            }
+            for (int i = 0; i < safetyCenterDismissedIssues.size(); i++) {
+                builder.addDismissedIssue(safetyCenterDismissedIssues.get(i));
+            }
+            return builder.build();
         } else {
             return new SafetyCenterData(
                     safetyCenterStatus,
