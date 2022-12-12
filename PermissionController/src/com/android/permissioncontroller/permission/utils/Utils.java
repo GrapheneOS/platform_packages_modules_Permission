@@ -42,7 +42,6 @@ import static android.content.pm.PackageManager.FLAG_PERMISSION_USER_SENSITIVE_W
 import static android.content.pm.PackageManager.FLAG_PERMISSION_USER_SENSITIVE_WHEN_GRANTED;
 import static android.content.pm.PackageManager.MATCH_SYSTEM_ONLY;
 import static android.healthconnect.HealthConnectManager.ACTION_MANAGE_HEALTH_PERMISSIONS;
-import static android.healthconnect.HealthConnectManager.ACTION_MANAGE_HEALTH_PERMISSIONS_AND_DATA;
 import static android.os.UserHandle.myUserId;
 
 import static com.android.permissioncontroller.Constants.EXTRA_SESSION_ID;
@@ -1270,7 +1269,7 @@ public final class Utils {
      */
     public static void navigateToAppHealthConnectSettings(@NonNull Context context,
             @NonNull String packageName, @NonNull UserHandle user) {
-        Intent appHealthConnectIntent = new Intent(ACTION_MANAGE_HEALTH_PERMISSIONS_AND_DATA);
+        Intent appHealthConnectIntent = new Intent(ACTION_MANAGE_HEALTH_PERMISSIONS);
         appHealthConnectIntent.putExtra(EXTRA_PACKAGE_NAME, packageName);
         appHealthConnectIntent.putExtra(Intent.EXTRA_USER, user);
         context.startActivity(appHealthConnectIntent);
