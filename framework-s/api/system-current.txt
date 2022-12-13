@@ -61,6 +61,7 @@ package android.safetycenter {
 
   public static final class SafetyCenterData.Builder {
     ctor public SafetyCenterData.Builder(@NonNull android.safetycenter.SafetyCenterStatus);
+    ctor public SafetyCenterData.Builder(@NonNull android.safetycenter.SafetyCenterData);
     method @NonNull public android.safetycenter.SafetyCenterData.Builder addDismissedIssue(@NonNull android.safetycenter.SafetyCenterIssue);
     method @NonNull public android.safetycenter.SafetyCenterData.Builder addEntryOrGroup(@NonNull android.safetycenter.SafetyCenterEntryOrGroup);
     method @NonNull public android.safetycenter.SafetyCenterData.Builder addIssue(@NonNull android.safetycenter.SafetyCenterIssue);
@@ -196,6 +197,7 @@ package android.safetycenter {
 
   public static final class SafetyCenterIssue.Action.Builder {
     ctor public SafetyCenterIssue.Action.Builder(@NonNull String, @NonNull CharSequence, @NonNull android.app.PendingIntent);
+    ctor public SafetyCenterIssue.Action.Builder(@NonNull android.safetycenter.SafetyCenterIssue.Action);
     method @NonNull public android.safetycenter.SafetyCenterIssue.Action build();
     method @NonNull public android.safetycenter.SafetyCenterIssue.Action.Builder setId(@NonNull String);
     method @NonNull public android.safetycenter.SafetyCenterIssue.Action.Builder setIsInFlight(boolean);
@@ -334,6 +336,7 @@ package android.safetycenter {
 
   public static final class SafetyEvent.Builder {
     ctor public SafetyEvent.Builder(int);
+    ctor public SafetyEvent.Builder(@NonNull android.safetycenter.SafetyEvent);
     method @NonNull public android.safetycenter.SafetyEvent build();
     method @NonNull public android.safetycenter.SafetyEvent.Builder setRefreshBroadcastId(@Nullable String);
     method @NonNull public android.safetycenter.SafetyEvent.Builder setSafetySourceIssueActionId(@Nullable String);
@@ -355,6 +358,7 @@ package android.safetycenter {
 
   public static final class SafetySourceData.Builder {
     ctor public SafetySourceData.Builder();
+    ctor public SafetySourceData.Builder(@NonNull android.safetycenter.SafetySourceData);
     method @NonNull public android.safetycenter.SafetySourceData.Builder addIssue(@NonNull android.safetycenter.SafetySourceIssue);
     method @NonNull public android.safetycenter.SafetySourceData build();
     method @NonNull public android.safetycenter.SafetySourceData.Builder clearIssues();
@@ -416,6 +420,7 @@ package android.safetycenter {
 
   public static final class SafetySourceIssue.Action.Builder {
     ctor public SafetySourceIssue.Action.Builder(@NonNull String, @NonNull CharSequence, @NonNull android.app.PendingIntent);
+    ctor public SafetySourceIssue.Action.Builder(@NonNull android.safetycenter.SafetySourceIssue.Action);
     method @NonNull public android.safetycenter.SafetySourceIssue.Action build();
     method @NonNull public android.safetycenter.SafetySourceIssue.Action.Builder setSuccessMessage(@Nullable CharSequence);
     method @NonNull public android.safetycenter.SafetySourceIssue.Action.Builder setWillResolve(boolean);
@@ -423,6 +428,7 @@ package android.safetycenter {
 
   public static final class SafetySourceIssue.Builder {
     ctor public SafetySourceIssue.Builder(@NonNull String, @NonNull CharSequence, @NonNull CharSequence, int, @NonNull String);
+    ctor public SafetySourceIssue.Builder(@NonNull android.safetycenter.SafetySourceIssue);
     method @NonNull public android.safetycenter.SafetySourceIssue.Builder addAction(@NonNull android.safetycenter.SafetySourceIssue.Action);
     method @NonNull public android.safetycenter.SafetySourceIssue build();
     method @NonNull public android.safetycenter.SafetySourceIssue.Builder clearActions();
@@ -447,6 +453,7 @@ package android.safetycenter {
 
   public static final class SafetySourceIssue.Notification.Builder {
     ctor public SafetySourceIssue.Notification.Builder(@NonNull CharSequence, @NonNull CharSequence);
+    ctor public SafetySourceIssue.Notification.Builder(@NonNull android.safetycenter.SafetySourceIssue.Notification);
     method @NonNull public android.safetycenter.SafetySourceIssue.Notification.Builder addAction(@NonNull android.safetycenter.SafetySourceIssue.Action);
     method @NonNull public android.safetycenter.SafetySourceIssue.Notification build();
     method @NonNull public android.safetycenter.SafetySourceIssue.Notification.Builder clearActions();
@@ -467,6 +474,7 @@ package android.safetycenter {
 
   public static final class SafetySourceStatus.Builder {
     ctor public SafetySourceStatus.Builder(@NonNull CharSequence, @NonNull CharSequence, int);
+    ctor public SafetySourceStatus.Builder(@NonNull android.safetycenter.SafetySourceStatus);
     method @NonNull public android.safetycenter.SafetySourceStatus build();
     method @NonNull public android.safetycenter.SafetySourceStatus.Builder setEnabled(boolean);
     method @NonNull public android.safetycenter.SafetySourceStatus.Builder setIconAction(@Nullable android.safetycenter.SafetySourceStatus.IconAction);
@@ -497,6 +505,7 @@ package android.safetycenter.config {
 
   public static final class SafetyCenterConfig.Builder {
     ctor public SafetyCenterConfig.Builder();
+    ctor public SafetyCenterConfig.Builder(@NonNull android.safetycenter.config.SafetyCenterConfig);
     method @NonNull public android.safetycenter.config.SafetyCenterConfig.Builder addSafetySourcesGroup(@NonNull android.safetycenter.config.SafetySourcesGroup);
     method @NonNull public android.safetycenter.config.SafetyCenterConfig build();
   }
@@ -535,6 +544,7 @@ package android.safetycenter.config {
 
   public static final class SafetySource.Builder {
     ctor public SafetySource.Builder(int);
+    ctor public SafetySource.Builder(@NonNull android.safetycenter.config.SafetySource);
     method @NonNull public android.safetycenter.config.SafetySource.Builder addPackageCertificateHash(@NonNull String);
     method @NonNull public android.safetycenter.config.SafetySource build();
     method @NonNull public android.safetycenter.config.SafetySource.Builder setDeduplicationGroup(@Nullable String);
@@ -574,6 +584,7 @@ package android.safetycenter.config {
 
   public static final class SafetySourcesGroup.Builder {
     ctor public SafetySourcesGroup.Builder();
+    ctor public SafetySourcesGroup.Builder(@NonNull android.safetycenter.config.SafetySourcesGroup);
     method @NonNull public android.safetycenter.config.SafetySourcesGroup.Builder addSafetySource(@NonNull android.safetycenter.config.SafetySource);
     method @NonNull public android.safetycenter.config.SafetySourcesGroup build();
     method @NonNull public android.safetycenter.config.SafetySourcesGroup.Builder setId(@Nullable String);

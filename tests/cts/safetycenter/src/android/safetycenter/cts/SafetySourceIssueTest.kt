@@ -154,36 +154,14 @@ class SafetySourceIssueTest {
 
     @Test
     fun action_equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
-        EqualsHashCodeToStringTester()
-            .addEqualityGroup(
-                Action.Builder("action_id", "Action label", pendingIntent1).build(),
-                Action.Builder("action_id", "Action label", pendingIntent1).build(),
-                Action.Builder("action_id", "Action label", pendingIntent1)
-                    .setWillResolve(false)
-                    .build())
-            .addEqualityGroup(
-                Action.Builder("action_id", "Action label", pendingIntent1)
-                    .setSuccessMessage("Action successfully completed")
-                    .build())
-            .addEqualityGroup(
-                Action.Builder("action_id", "Other action label", pendingIntent1).build())
-            .addEqualityGroup(
-                Action.Builder("other_action_id", "Action label", pendingIntent1).build())
-            .addEqualityGroup(
-                Action.Builder("action_id", "Action label", pendingIntent1)
-                    .setWillResolve(true)
-                    .build())
-            .addEqualityGroup(
-                Action.Builder(
-                        "action_id",
-                        "Action label",
-                        PendingIntent.getActivity(
-                            context, 0, Intent("Other action PendingIntent"), FLAG_IMMUTABLE))
-                    .build())
-            .addEqualityGroup(
-                Action.Builder("action_id", "Action label", pendingIntent1)
-                    .setSuccessMessage("Other action successfully completed")
-                    .build())
+        actionNewTiramisuEqualsHashCodeToStringTester().test()
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun action_equalsHashCodeToString_usingEqualsHashCodeToStringTester_atLeastAndroidU() {
+        actionNewTiramisuEqualsHashCodeToStringTester()
+            .setCreateCopy { Action.Builder(it).build() }
             .test()
     }
 
@@ -357,7 +335,8 @@ class SafetySourceIssueTest {
     @Test
     @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun notification_equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
-        EqualsHashCodeToStringTester()
+        EqualsHashCodeToStringTester<Notification>(
+                createCopy = { Notification.Builder(it).build() })
             .addEqualityGroup(
                 Notification.Builder("Title", "Text").build(),
                 Notification.Builder("Title", "Text").build(),
@@ -1362,6 +1341,7 @@ class SafetySourceIssueTest {
     @RequiresApi(UPSIDE_DOWN_CAKE)
     private fun newUpsideDownCakeEqualsHashCodeToStringTester() =
         newTiramisuEqualsHashCodeToStringTester()
+            .setCreateCopy { SafetySourceIssue.Builder(it).build() }
             .addEqualityGroup(
                 SafetySourceIssue.Builder(
                         "Issue id",
@@ -1579,7 +1559,7 @@ class SafetySourceIssueTest {
      * API and is safe to use on any T+ API level.
      */
     private fun newTiramisuEqualsHashCodeToStringTester() =
-        EqualsHashCodeToStringTester()
+        EqualsHashCodeToStringTester<SafetySourceIssue>()
             .addEqualityGroup(
                 SafetySourceIssue.Builder(
                         "Issue id",
@@ -1721,5 +1701,37 @@ class SafetySourceIssueTest {
                     .setOnDismissPendingIntent(
                         PendingIntent.getService(
                             context, 0, Intent("Other PendingIntent service"), FLAG_IMMUTABLE))
+                    .build())
+
+    private fun actionNewTiramisuEqualsHashCodeToStringTester() =
+        EqualsHashCodeToStringTester<Action>()
+            .addEqualityGroup(
+                Action.Builder("action_id", "Action label", pendingIntent1).build(),
+                Action.Builder("action_id", "Action label", pendingIntent1).build(),
+                Action.Builder("action_id", "Action label", pendingIntent1)
+                    .setWillResolve(false)
+                    .build())
+            .addEqualityGroup(
+                Action.Builder("action_id", "Action label", pendingIntent1)
+                    .setSuccessMessage("Action successfully completed")
+                    .build())
+            .addEqualityGroup(
+                Action.Builder("action_id", "Other action label", pendingIntent1).build())
+            .addEqualityGroup(
+                Action.Builder("other_action_id", "Action label", pendingIntent1).build())
+            .addEqualityGroup(
+                Action.Builder("action_id", "Action label", pendingIntent1)
+                    .setWillResolve(true)
+                    .build())
+            .addEqualityGroup(
+                Action.Builder(
+                        "action_id",
+                        "Action label",
+                        PendingIntent.getActivity(
+                            context, 0, Intent("Other action PendingIntent"), FLAG_IMMUTABLE))
+                    .build())
+            .addEqualityGroup(
+                Action.Builder("action_id", "Action label", pendingIntent1)
+                    .setSuccessMessage("Other action successfully completed")
                     .build())
 }

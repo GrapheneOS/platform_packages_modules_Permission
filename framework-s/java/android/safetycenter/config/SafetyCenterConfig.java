@@ -17,6 +17,7 @@
 package android.safetycenter.config;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
+import static android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
 
 import static java.util.Collections.unmodifiableList;
 import static java.util.Objects.requireNonNull;
@@ -27,6 +28,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.annotation.RequiresApi;
+
+import com.android.modules.utils.build.SdkLevel;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -114,6 +117,16 @@ public final class SafetyCenterConfig implements Parcelable {
 
         /** Creates a {@link Builder} for a {@link SafetyCenterConfig}. */
         public Builder() {}
+
+        /** Creates a {@link Builder} with the values from the given {@link SafetyCenterConfig}. */
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        public Builder(@NonNull SafetyCenterConfig safetyCenterConfig) {
+            if (!SdkLevel.isAtLeastU()) {
+                throw new UnsupportedOperationException();
+            }
+            requireNonNull(safetyCenterConfig);
+            mSafetySourcesGroups.addAll(safetyCenterConfig.mSafetySourcesGroups);
+        }
 
         /**
          * Adds a {@link SafetySourcesGroup} to the Safety Center configuration.

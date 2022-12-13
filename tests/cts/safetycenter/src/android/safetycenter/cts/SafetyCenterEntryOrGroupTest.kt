@@ -99,7 +99,7 @@ class SafetyCenterEntryOrGroupTest {
 
     @Test
     fun equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
-        EqualsHashCodeToStringTester()
+        EqualsHashCodeToStringTester<SafetyCenterEntryOrGroup>()
             .addEqualityGroup(entryOrGroupWithEntry, SafetyCenterEntryOrGroup(entry1))
             .addEqualityGroup(entryOrGroupWithGroup, SafetyCenterEntryOrGroup(entryGroup1))
             .addEqualityGroup(SafetyCenterEntryOrGroup(entry2))

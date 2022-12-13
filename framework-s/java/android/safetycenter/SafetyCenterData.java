@@ -253,6 +253,20 @@ public final class SafetyCenterData implements Parcelable {
             mStatus = requireNonNull(status);
         }
 
+        /** Creates a {@link Builder} with the values from the given {@link SafetyCenterData}. */
+        public Builder(@NonNull SafetyCenterData safetyCenterData) {
+            if (!SdkLevel.isAtLeastU()) {
+                throw new UnsupportedOperationException();
+            }
+            requireNonNull(safetyCenterData);
+            mStatus = safetyCenterData.mStatus;
+            mIssues.addAll(safetyCenterData.mIssues);
+            mEntriesOrGroups.addAll(safetyCenterData.mEntriesOrGroups);
+            mStaticEntryGroups.addAll(safetyCenterData.mStaticEntryGroups);
+            mDismissedIssues.addAll(safetyCenterData.mDismissedIssues);
+            mExtras = safetyCenterData.mExtras.deepCopy();
+        }
+
         /** Adds data for a {@link SafetyCenterIssue} to be shown in UI. */
         @NonNull
         public SafetyCenterData.Builder addIssue(@NonNull SafetyCenterIssue safetyCenterIssue) {
