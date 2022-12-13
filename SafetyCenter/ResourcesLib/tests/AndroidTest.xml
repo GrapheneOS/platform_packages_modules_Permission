@@ -23,7 +23,7 @@
     <object type="module_controller" class="com.android.tradefed.testtype.suite.module.Sdk33ModuleController" />
 
     <!-- Install test and resources -->
-    <target_preparer class="com.android.tradefed.targetprep.TestAppInstallSetup">
+    <target_preparer class="com.android.tradefed.targetprep.suite.SuiteApkInstaller">
         <option name="test-file-name" value="SafetyCenterResourcesLibTests.apk" />
         <option name="test-file-name" value="SafetyCenterResourcesLibTestResources.apk" />
         <option name="cleanup-apks" value="true" />
