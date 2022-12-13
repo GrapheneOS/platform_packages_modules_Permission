@@ -92,6 +92,7 @@ java_sdk_library {
         "android.permission",
         "android.app.role",
         "android.safetycenter",
+        "android.safetylabel",
         // For com.android.permission.jarjar.
         "com.android.permission",
     ],
