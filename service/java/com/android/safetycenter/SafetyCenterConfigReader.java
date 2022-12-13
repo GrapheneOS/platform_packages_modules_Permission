@@ -24,8 +24,6 @@ import static java.util.Objects.requireNonNull;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.content.res.Resources;
-import android.safetycenter.SafetyCenterManager;
-import android.safetycenter.SafetyCenterManager.RefreshReason;
 import android.safetycenter.config.SafetyCenterConfig;
 import android.safetycenter.config.SafetySource;
 import android.safetycenter.config.SafetySourcesGroup;
@@ -384,14 +382,14 @@ final class SafetyCenterConfigReader {
                         broadcasts.add(broadcast);
                     }
                     broadcast.mSourceIdsForProfileParent.add(safetySource.getId());
-                    if (isRefreshOnPageOpenAllowedAfterApplyingOverrides(safetySource)) {
+                    if (safetySource.isRefreshOnPageOpenAllowed()) {
                         broadcast.mSourceIdsForProfileParentOnPageOpen.add(safetySource.getId());
                     }
                     boolean needsManagedProfilesBroadcast =
                             SafetySources.supportsManagedProfiles(safetySource);
                     if (needsManagedProfilesBroadcast) {
                         broadcast.mSourceIdsForManagedProfiles.add(safetySource.getId());
-                        if (isRefreshOnPageOpenAllowedAfterApplyingOverrides(safetySource)) {
+                        if (safetySource.isRefreshOnPageOpenAllowed()) {
                             broadcast.mSourceIdsForManagedProfilesOnPageOpen.add(
                                     safetySource.getId());
                         }
@@ -401,13 +399,6 @@ final class SafetyCenterConfigReader {
 
             return broadcasts;
         }
-    }
-
-    private static boolean isRefreshOnPageOpenAllowedAfterApplyingOverrides(
-            SafetySource safetySource) {
-        return safetySource.isRefreshOnPageOpenAllowed()
-                || SafetyCenterFlags.getOverrideRefreshOnPageOpenSourceIds()
-                        .contains(safetySource.getId());
     }
 
     /** A wrapper class around a {@link SafetySource} that is providing data externally. */
@@ -484,30 +475,42 @@ final class SafetyCenterConfigReader {
          * Returns the safety source ids associated with this broadcast in the profile owner.
          *
          * <p>If this list is empty, there are no sources to dispatch to in the profile owner.
-         *
-         * @param refreshReason the {@link RefreshReason} for the broadcast
          */
         @NonNull
-        List<String> getSourceIdsForProfileParent(@RefreshReason int refreshReason) {
-            if (refreshReason == SafetyCenterManager.REFRESH_REASON_PAGE_OPEN) {
-                return unmodifiableList(mSourceIdsForProfileParentOnPageOpen);
-            }
+        List<String> getSourceIdsForProfileParent() {
             return unmodifiableList(mSourceIdsForProfileParent);
+        }
+
+        /**
+         * Returns the safety source ids associated with this broadcast in the profile owner that
+         * have refreshOnPageOpenAllowed set to true in the XML config.
+         *
+         * <p>If this list is empty, there are no sources to dispatch to in the profile owner.
+         */
+        @NonNull
+        List<String> getSourceIdsForProfileParentOnPageOpen() {
+            return unmodifiableList(mSourceIdsForProfileParentOnPageOpen);
         }
 
         /**
          * Returns the safety source ids associated with this broadcast in the managed profile(s).
          *
          * <p>If this list is empty, there are no sources to dispatch to in the managed profile(s).
-         *
-         * @param refreshReason the {@link RefreshReason} for the broadcast
          */
         @NonNull
-        List<String> getSourceIdsForManagedProfiles(@RefreshReason int refreshReason) {
-            if (refreshReason == SafetyCenterManager.REFRESH_REASON_PAGE_OPEN) {
-                return unmodifiableList(mSourceIdsForManagedProfilesOnPageOpen);
-            }
+        List<String> getSourceIdsForManagedProfiles() {
             return unmodifiableList(mSourceIdsForManagedProfiles);
+        }
+
+        /**
+         * Returns the safety source ids associated with this broadcast in the managed profile(s)
+         * that have refreshOnPageOpenAllowed set to true in the XML config.
+         *
+         * <p>If this list is empty, there are no sources to dispatch to in the managed profile(s).
+         */
+        @NonNull
+        List<String> getSourceIdsForManagedProfilesOnPageOpen() {
+            return unmodifiableList(mSourceIdsForProfileParentOnPageOpen);
         }
 
         @Override

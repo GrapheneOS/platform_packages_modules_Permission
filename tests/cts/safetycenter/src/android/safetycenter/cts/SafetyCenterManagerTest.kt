@@ -1312,10 +1312,12 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    fun refreshSafetySources_withRefreshReasonPageOpen_notCalledIfSourceDoesntSupportPageOpen() {
+    fun refreshSafetySources_reasonPageOpen_noConditionsMet_noBroadcastSent() {
         safetyCenterCtsHelper.setConfig(NO_PAGE_OPEN_CONFIG)
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.information)
         SafetySourceReceiver.setResponse(
-            Request.Refresh(SINGLE_SOURCE_ID), Response.SetData(safetySourceCtsData.information))
+            Request.Refresh(SINGLE_SOURCE_ID),
+            Response.SetData(safetySourceCtsData.informationWithIssue))
 
         assertFailsWith(TimeoutCancellationException::class) {
             safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
@@ -1324,12 +1326,69 @@ class SafetyCenterManagerTest {
 
         val apiSafetySourceData =
             safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
-        assertThat(apiSafetySourceData).isNull()
+        assertThat(apiSafetySourceData).isEqualTo(safetySourceCtsData.information)
     }
 
     @Test
-    fun refreshSafetySources_withRefreshReasonPageOpen_calledIfSourceHasADeviceConfigOverride() {
+    fun refreshSafetySources_reasonPageOpen_allowedByConfig_broadcastSent() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.information)
+        SafetySourceReceiver.setResponse(
+            Request.Refresh(SINGLE_SOURCE_ID),
+            Response.SetData(safetySourceCtsData.informationWithIssue))
+
+        safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+            REFRESH_REASON_PAGE_OPEN)
+
+        val apiSafetySourceData =
+            safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
+        assertThat(apiSafetySourceData).isEqualTo(safetySourceCtsData.informationWithIssue)
+    }
+
+    @Test
+    fun refreshSafetySources_reasonPageOpen_allowedByFlag_broadcastSent() {
+        safetyCenterCtsHelper.setConfig(NO_PAGE_OPEN_CONFIG)
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.information)
         SafetyCenterFlags.overrideRefreshOnPageOpenSources = setOf(SINGLE_SOURCE_ID)
+        SafetySourceReceiver.setResponse(
+            Request.Refresh(SINGLE_SOURCE_ID),
+            Response.SetData(safetySourceCtsData.informationWithIssue))
+
+        safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+            REFRESH_REASON_PAGE_OPEN)
+
+        val apiSafetySourceData =
+            safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
+        assertThat(apiSafetySourceData).isEqualTo(safetySourceCtsData.informationWithIssue)
+    }
+
+    @Test
+    fun refreshSafetySources_reasonPageOpen_allowedByFlagLater_broadcastSentLater() {
+        safetyCenterCtsHelper.setConfig(NO_PAGE_OPEN_CONFIG)
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.information)
+        SafetySourceReceiver.setResponse(
+            Request.Refresh(SINGLE_SOURCE_ID),
+            Response.SetData(safetySourceCtsData.informationWithIssue))
+
+        assertFailsWith(TimeoutCancellationException::class) {
+            safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+                REFRESH_REASON_PAGE_OPEN, TIMEOUT_SHORT)
+        }
+        val apiSafetySourceDataBeforeSettingFlag =
+            safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
+        SafetyCenterFlags.overrideRefreshOnPageOpenSources = setOf(SINGLE_SOURCE_ID)
+        safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+            REFRESH_REASON_PAGE_OPEN)
+        val apiSafetySourceDataAfterSettingFlag =
+            safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
+
+        assertThat(apiSafetySourceDataBeforeSettingFlag).isEqualTo(safetySourceCtsData.information)
+        assertThat(apiSafetySourceDataAfterSettingFlag)
+            .isEqualTo(safetySourceCtsData.informationWithIssue)
+    }
+
+    @Test
+    fun refreshSafetySources_reasonPageOpen_noDataForSource_broadcastSent() {
         safetyCenterCtsHelper.setConfig(NO_PAGE_OPEN_CONFIG)
         SafetySourceReceiver.setResponse(
             Request.Refresh(SINGLE_SOURCE_ID), Response.SetData(safetySourceCtsData.information))
@@ -1385,12 +1444,14 @@ class SafetyCenterManagerTest {
     @Test
     fun refreshSafetySources_withMultipleSourcesOnPageOpen_onlyUpdatesAllowedSources() {
         safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
+        safetyCenterCtsHelper.setData(SOURCE_ID_3, safetySourceCtsData.information)
         SafetySourceReceiver.apply {
             setResponse(
                 Request.Refresh(SOURCE_ID_1),
                 Response.SetData(safetySourceCtsData.criticalWithResolvingGeneralIssue))
             setResponse(
-                Request.Refresh(SOURCE_ID_3), Response.SetData(safetySourceCtsData.information))
+                Request.Refresh(SOURCE_ID_3),
+                Response.SetData(safetySourceCtsData.informationWithIssue))
         }
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
@@ -1406,7 +1467,7 @@ class SafetyCenterManagerTest {
         // SOURCE_ID_3 doesn't support refresh on page open.
         val apiSafetySourceData3 =
             safetyCenterManager.getSafetySourceDataWithPermission(SOURCE_ID_3)
-        assertThat(apiSafetySourceData3).isNull()
+        assertThat(apiSafetySourceData3).isEqualTo(safetySourceCtsData.information)
     }
 
     @Test
