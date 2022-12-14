@@ -17,6 +17,9 @@
 package android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
+import static android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
+
+import static java.util.Objects.requireNonNull;
 
 import android.annotation.IntDef;
 import android.annotation.NonNull;
@@ -26,6 +29,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.annotation.RequiresApi;
+
+import com.android.modules.utils.build.SdkLevel;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -229,6 +234,19 @@ public final class SafetyEvent implements Parcelable {
         /** Creates a {@link Builder} for {@link SafetyEvent}. */
         public Builder(@Type int type) {
             mType = validateType(type);
+        }
+
+        /** Creates a {@link Builder} with the values from the given {@link SafetyEvent}. */
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        public Builder(@NonNull SafetyEvent safetyEvent) {
+            if (!SdkLevel.isAtLeastU()) {
+                throw new UnsupportedOperationException();
+            }
+            requireNonNull(safetyEvent);
+            mType = safetyEvent.mType;
+            mRefreshBroadcastId = safetyEvent.mRefreshBroadcastId;
+            mSafetySourceIssueId = safetyEvent.mSafetySourceIssueId;
+            mSafetySourceIssueActionId = safetyEvent.mSafetySourceIssueActionId;
         }
 
         /**

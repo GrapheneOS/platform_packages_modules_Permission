@@ -95,14 +95,14 @@ class SafetyCenterStaticEntryTest {
 
     @Test
     fun equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
-        EqualsHashCodeToStringTester()
+        EqualsHashCodeToStringTester<SafetyCenterStaticEntry>(
+                createCopy = { SafetyCenterStaticEntry.Builder(it).build() })
             .addEqualityGroup(
                 staticEntry1,
                 SafetyCenterStaticEntry.Builder("a title")
                     .setSummary("a summary")
                     .setPendingIntent(pendingIntent1)
-                    .build(),
-                SafetyCenterStaticEntry.Builder(staticEntry1).build())
+                    .build())
             .addEqualityGroup(staticEntry2)
             .addEqualityGroup(staticEntryMinimal, SafetyCenterStaticEntry.Builder("").build())
             .addEqualityGroup(

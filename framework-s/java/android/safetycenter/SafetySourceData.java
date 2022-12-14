@@ -267,6 +267,21 @@ public final class SafetySourceData implements Parcelable {
         @Nullable private SafetySourceStatus mStatus;
         @NonNull private Bundle mExtras = Bundle.EMPTY;
 
+        /** Creates a {@link Builder} for a {@link SafetySourceData}. */
+        public Builder() {}
+
+        /** Creates a {@link Builder} with the values from the given {@link SafetySourceData}. */
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        public Builder(@NonNull SafetySourceData safetySourceData) {
+            if (!SdkLevel.isAtLeastU()) {
+                throw new UnsupportedOperationException();
+            }
+            requireNonNull(safetySourceData);
+            mIssues.addAll(safetySourceData.mIssues);
+            mStatus = safetySourceData.mStatus;
+            mExtras = safetySourceData.mExtras.deepCopy();
+        }
+
         /** Sets data for the {@link SafetySourceStatus} to be shown in UI. */
         @NonNull
         public Builder setStatus(@Nullable SafetySourceStatus status) {

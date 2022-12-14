@@ -72,6 +72,7 @@ import com.android.permissioncontroller.permission.ui.handheld.HandheldUnusedApp
 import com.android.permissioncontroller.permission.ui.handheld.PermissionAppsFragment;
 import com.android.permissioncontroller.permission.ui.handheld.v31.PermissionDetailsWrapperFragment;
 import com.android.permissioncontroller.permission.ui.handheld.v31.PermissionUsageV2WrapperFragment;
+import com.android.permissioncontroller.permission.ui.handheld.v34.AppDataSharingUpdatesFragment;
 import com.android.permissioncontroller.permission.ui.legacy.AppPermissionActivity;
 import com.android.permissioncontroller.permission.ui.television.TvUnusedAppsFragment;
 import com.android.permissioncontroller.permission.ui.wear.AppPermissionsFragmentWear;
@@ -439,6 +440,21 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                             + "supported on this device type");
                     finishAfterTransition();
                     return;
+                }
+            } break;
+
+            case Intent.ACTION_REVIEW_APP_DATA_SHARING_UPDATES: {
+                // TODO(b/261652173): Add flagging and fold Sdk check into flag.
+                if (SdkLevel.isAtLeastU()) {
+                    if (DeviceUtils.isAuto(this) || DeviceUtils.isWear(this)
+                            || DeviceUtils.isTelevision(this)) {
+                        Log.e(LOG_TAG, "ACTION_REVIEW_APP_DATA_SHARING_UPDATES is not "
+                                + "supported on this device type");
+                        finishAfterTransition();
+                        return;
+                    }
+                    setNavGraph(AppDataSharingUpdatesFragment.Companion.createArgs(sessionId),
+                            R.id.app_data_sharing_updates);
                 }
             } break;
 

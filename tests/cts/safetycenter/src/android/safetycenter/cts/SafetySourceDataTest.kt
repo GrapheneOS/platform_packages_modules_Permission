@@ -334,7 +334,7 @@ class SafetySourceDataTest {
         val secondStatus = createStatus(SEVERITY_LEVEL_INFORMATION, 2)
         val firstIssue = createIssue(SEVERITY_LEVEL_INFORMATION, 1)
         val secondIssue = createIssue(SEVERITY_LEVEL_INFORMATION, 2)
-        EqualsHashCodeToStringTester()
+        EqualsHashCodeToStringTester<SafetySourceData>()
             .addEqualityGroup(
                 SafetySourceData.Builder().setStatus(firstStatus).build(),
                 SafetySourceData.Builder().setStatus(firstStatus).build())
@@ -373,7 +373,8 @@ class SafetySourceDataTest {
         val firstIssue = createIssue(SEVERITY_LEVEL_INFORMATION, 1)
         val secondIssue = createIssue(SEVERITY_LEVEL_INFORMATION, 2)
         val filledExtras = bundleOf(EXTRA_KEY to EXTRA_VALUE)
-        EqualsHashCodeToStringTester(ignoreToString = true)
+        EqualsHashCodeToStringTester<SafetySourceData>(
+                ignoreToString = true, createCopy = { SafetySourceData.Builder(it).build() })
             .addEqualityGroup(
                 SafetySourceData.Builder().setStatus(firstStatus).build(),
                 SafetySourceData.Builder().setStatus(firstStatus).setExtras(filledExtras).build())

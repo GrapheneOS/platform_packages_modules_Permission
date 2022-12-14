@@ -31,43 +31,51 @@ import com.google.common.testing.EquivalenceTester
  * Note: this class assumes that [Object.toString] only represents the state that is used in
  * [Object.equals] and [Object.hashCode] implementation. Objects with [Bundle] fields may break it.
  * This can be disabled by setting [ignoreToString] to `true`.
+ *
+ * @param createCopy optionally provides a custom method to create the equal copy that will be
+ *     applied to all the items in provided equality groups.
  */
-class EqualsHashCodeToStringTester(
+class EqualsHashCodeToStringTester<T>(
     private val ignoreHashCode: Boolean = false,
-    private val ignoreToString: Boolean = false
+    private val ignoreToString: Boolean = false,
+    private var createCopy: ((T) -> T)? = null
 ) {
-    private val equalsTester = EqualsTester()
-    private val toStringTester = EquivalenceTester.of(TO_STRING_EQUIVALENCE)
-    private val hashCodeTester = EquivalenceTester.of(HASH_CODE_EQUIVALENCE)
 
-    fun addEqualityGroup(vararg groups: Any): EqualsHashCodeToStringTester {
-        equalsTester.addEqualityGroup(*groups)
-        if (!ignoreToString) {
-            toStringTester.addEquivalenceGroupAsArray(groups)
-        }
-        if (!ignoreHashCode) {
-            hashCodeTester.addEquivalenceGroupAsArray(groups)
-        }
+    private val equalityGroups = mutableListOf<List<T>>()
+
+    fun addEqualityGroup(vararg equalItems: T): EqualsHashCodeToStringTester<T> {
+        equalityGroups.add(equalItems.toList())
         return this
     }
 
-    private fun EquivalenceTester<Any>.addEquivalenceGroupAsArray(input: Array<out Any>) {
-        when (val size = input.size) {
-            0 -> return
-            1 -> addEquivalenceGroup(input[0])
-            else -> addEquivalenceGroup(input[0], *input.copyOfRange(1, size))
-        }
+    fun setCreateCopy(createCopy: (T) -> T): EqualsHashCodeToStringTester<T> {
+        this.createCopy = createCopy
+        return this
     }
 
     fun test() {
+        val equalsTester = EqualsTester()
+        val toStringTester =
+                EquivalenceTester.of<T>(toStringEquivalence()).takeIf { !ignoreToString }
+        val hashCodeTester =
+                EquivalenceTester.of<T>(hashCodeEquivalence()).takeIf { !ignoreHashCode }
+
+        for (equalityGroup in equalityGroups) {
+            val equalItemsWithCopiesIfNeeded = equalityGroup.withCopiesIfNeeded()
+            equalsTester.addEqualityGroup(*equalItemsWithCopiesIfNeeded.toArray())
+            toStringTester?.addEquivalenceGroup(equalItemsWithCopiesIfNeeded)
+            hashCodeTester?.addEquivalenceGroup(equalItemsWithCopiesIfNeeded)
+        }
+
         equalsTester.testEquals()
-        if (!ignoreToString) {
-            toStringTester.test()
-        }
-        if (!ignoreHashCode) {
-            hashCodeTester.test()
-        }
+        toStringTester?.test()
+        hashCodeTester?.test()
     }
+
+    private fun List<T>.toArray(): Array<*> = Array(size) { this[it] as Any }
+
+    private fun List<T>.withCopiesIfNeeded(): List<T> =
+        createCopy?.let { builder -> this + this.map(builder) } ?: this
 
     companion object {
 
@@ -75,14 +83,14 @@ class EqualsHashCodeToStringTester(
          * An [Equivalence] that considers two instances of a class equivalent iff [Object.toString]
          * return the same value.
          */
-        private val TO_STRING_EQUIVALENCE =
-            object : Equivalence<Any>() {
+        private fun <T> toStringEquivalence() =
+            object : Equivalence<T>() {
 
-                override fun doEquivalent(a: Any, b: Any): Boolean {
+                override fun doEquivalent(a: T, b: T): Boolean {
                     return a.toString() == b.toString()
                 }
 
-                override fun doHash(o: Any): Int {
+                override fun doHash(o: T): Int {
                     return o.toString().hashCode()
                 }
             }
@@ -91,14 +99,14 @@ class EqualsHashCodeToStringTester(
          * An [Equivalence] that considers two instances of a class equivalent iff [Object.hashCode]
          * return the same value.
          */
-        private val HASH_CODE_EQUIVALENCE =
-            object : Equivalence<Any>() {
+        private fun <T> hashCodeEquivalence() =
+            object : Equivalence<T>() {
 
-                override fun doEquivalent(a: Any, b: Any): Boolean {
+                override fun doEquivalent(a: T, b: T): Boolean {
                     return a.hashCode() == b.hashCode()
                 }
 
-                override fun doHash(o: Any): Int {
+                override fun doHash(o: T): Int {
                     return o.hashCode()
                 }
             }

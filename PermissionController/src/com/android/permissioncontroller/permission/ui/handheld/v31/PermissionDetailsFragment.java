@@ -433,11 +433,10 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader
                             historyPreferenceData.getAppIcon(),
                             historyPreferenceData.getPreferenceTitle(),
                             historyPreferenceData.getPermissionGroup(),
-                            DateFormat.getTimeFormat(getContext())
-                                    .format(historyPreferenceData.getAccessEndTime()),
+                            historyPreferenceData.getAccessStartTime(),
+                            historyPreferenceData.getAccessEndTime(),
                             historyPreferenceData.getSummaryText(),
                             historyPreferenceData.getShowingAttribution(),
-                            historyPreferenceData.getAccessTimeList(),
                             historyPreferenceData.getAttributionTags(),
                             i == historyPreferenceDataList.size() - 1,
                             historyPreferenceData.getSessionId());

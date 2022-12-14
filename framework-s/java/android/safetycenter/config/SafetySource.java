@@ -19,6 +19,8 @@ package android.safetycenter.config;
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 import static android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
 
+import static java.util.Objects.requireNonNull;
+
 import android.annotation.IntDef;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
@@ -660,6 +662,31 @@ public final class SafetySource implements Parcelable {
         /** Creates a {@link Builder} for a {@link SafetySource}. */
         public Builder(@SafetySourceType int type) {
             mType = type;
+        }
+
+        /** Creates a {@link Builder} with the values from the given {@link SafetySource}. */
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        public Builder(@NonNull SafetySource safetySource) {
+            if (!SdkLevel.isAtLeastU()) {
+                throw new UnsupportedOperationException();
+            }
+            requireNonNull(safetySource);
+            mType = safetySource.mType;
+            mId = safetySource.mId;
+            mPackageName = safetySource.mPackageName;
+            mTitleResId = safetySource.mTitleResId;
+            mTitleForWorkResId = safetySource.mTitleForWorkResId;
+            mSummaryResId = safetySource.mSummaryResId;
+            mIntentAction = safetySource.mIntentAction;
+            mProfile = safetySource.mProfile;
+            mInitialDisplayState = safetySource.mInitialDisplayState;
+            mMaxSeverityLevel = safetySource.mMaxSeverityLevel;
+            mSearchTermsResId = safetySource.mSearchTermsResId;
+            mLoggingAllowed = safetySource.mLoggingAllowed;
+            mRefreshOnPageOpenAllowed = safetySource.mRefreshOnPageOpenAllowed;
+            mNotificationsAllowed = safetySource.mNotificationsAllowed;
+            mDeduplicationGroup = safetySource.mDeduplicationGroup;
+            mPackageCertificateHashes.addAll(safetySource.mPackageCertificateHashes);
         }
 
         /**
