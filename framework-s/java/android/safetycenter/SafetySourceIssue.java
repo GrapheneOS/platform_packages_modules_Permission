@@ -787,6 +787,20 @@ public final class SafetySourceIssue implements Parcelable {
                 mPendingIntent = requireNonNull(pendingIntent);
             }
 
+            /** Creates a {@link Builder} with the values from the given {@link Action}. */
+            @RequiresApi(UPSIDE_DOWN_CAKE)
+            public Builder(@NonNull Action action) {
+                if (!SdkLevel.isAtLeastU()) {
+                    throw new UnsupportedOperationException();
+                }
+                requireNonNull(action);
+                mId = action.mId;
+                mLabel = action.mLabel;
+                mPendingIntent = action.mPendingIntent;
+                mWillResolve = action.mWillResolve;
+                mSuccessMessage = action.mSuccessMessage;
+            }
+
             /**
              * Sets whether the action will resolve the safety issue. Defaults to {@code false}.
              *
@@ -945,6 +959,14 @@ public final class SafetySourceIssue implements Parcelable {
                 mText = requireNonNull(text);
             }
 
+            /** Creates a {@link Builder} with the values from the given {@link Notification}. */
+            public Builder(@NonNull Notification notification) {
+                requireNonNull(notification);
+                mTitle = notification.mTitle;
+                mText = notification.mText;
+                mActions.addAll(notification.mActions);
+            }
+
             /** Adds an {@link Action} to be show on the custom {@link Notification}. */
             @NonNull
             public Builder addAction(@NonNull Action action) {
@@ -1025,6 +1047,29 @@ public final class SafetySourceIssue implements Parcelable {
             this.mSummary = requireNonNull(summary);
             this.mSeverityLevel = validateSeverityLevel(severityLevel);
             this.mIssueTypeId = requireNonNull(issueTypeId);
+        }
+
+        /** Creates a {@link Builder} with the values from the given {@link SafetySourceIssue}. */
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        public Builder(@NonNull SafetySourceIssue safetySourceIssue) {
+            if (!SdkLevel.isAtLeastU()) {
+                throw new UnsupportedOperationException();
+            }
+            requireNonNull(safetySourceIssue);
+            mId = safetySourceIssue.mId;
+            mTitle = safetySourceIssue.mTitle;
+            mSummary = safetySourceIssue.mSummary;
+            mSeverityLevel = safetySourceIssue.mSeverityLevel;
+            mIssueTypeId = safetySourceIssue.mIssueTypeId;
+            mActions.addAll(safetySourceIssue.mActions);
+            mSubtitle = safetySourceIssue.mSubtitle;
+            mIssueCategory = safetySourceIssue.mIssueCategory;
+            mOnDismissPendingIntent = safetySourceIssue.mOnDismissPendingIntent;
+            mAttributionTitle = safetySourceIssue.mAttributionTitle;
+            mDeduplicationId = safetySourceIssue.mDeduplicationId;
+            mCustomNotification = safetySourceIssue.mCustomNotification;
+            mNotificationBehavior = safetySourceIssue.mNotificationBehavior;
+            mIssueActionability = safetySourceIssue.mIssueActionability;
         }
 
         /** Sets the localized subtitle. */

@@ -111,6 +111,7 @@ bootclasspath_fragment {
         package_prefixes: [
             "android.app.role",
             "android.safetycenter",
+            "android.safetylabel",
             "com.android.permission",
         ],
     },

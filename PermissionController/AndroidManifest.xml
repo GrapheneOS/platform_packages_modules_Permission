@@ -274,6 +274,7 @@
                 <action android:name="android.intent.action.REVIEW_PERMISSION_USAGE" />
                 <action android:name="android.intent.action.REVIEW_PERMISSION_HISTORY" />
                 <action android:name="android.intent.action.MANAGE_UNUSED_APPS" />
+                <action android:name="android.intent.action.REVIEW_APP_DATA_SHARING_UPDATES" />
                 <action android:name="android.permission.action.REVIEW_PERMISSION_DECISIONS"/>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>

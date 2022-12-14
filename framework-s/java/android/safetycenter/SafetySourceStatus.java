@@ -17,6 +17,7 @@
 package android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
+import static android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
 
 import static com.android.internal.util.Preconditions.checkArgument;
 
@@ -32,6 +33,8 @@ import android.os.Parcelable;
 import android.text.TextUtils;
 
 import androidx.annotation.RequiresApi;
+
+import com.android.modules.utils.build.SdkLevel;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -339,6 +342,21 @@ public final class SafetySourceStatus implements Parcelable {
             this.mTitle = requireNonNull(title);
             this.mSummary = requireNonNull(summary);
             this.mSeverityLevel = validateSeverityLevel(severityLevel);
+        }
+
+        /** Creates a {@link Builder} with the values of the given {@link SafetySourceStatus}. */
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        public Builder(@NonNull SafetySourceStatus safetySourceStatus) {
+            if (!SdkLevel.isAtLeastU()) {
+                throw new UnsupportedOperationException();
+            }
+            requireNonNull(safetySourceStatus);
+            mTitle = safetySourceStatus.mTitle;
+            mSummary = safetySourceStatus.mSummary;
+            mSeverityLevel = safetySourceStatus.mSeverityLevel;
+            mPendingIntent = safetySourceStatus.mPendingIntent;
+            mIconAction = safetySourceStatus.mIconAction;
+            mEnabled = safetySourceStatus.mEnabled;
         }
 
         /**

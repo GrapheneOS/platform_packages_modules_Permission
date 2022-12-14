@@ -16,6 +16,7 @@
 
 package android.safetycenter.cts
 
+import android.os.Build
 import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_LOCALE_CHANGED
 import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_REBOOTED
@@ -25,6 +26,7 @@ import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCE
 import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.ext.truth.os.ParcelableSubject.assertThat
+import androidx.test.filters.SdkSuppress
 import com.android.permission.testing.EqualsHashCodeToStringTester
 import com.google.common.truth.Truth.assertThat
 import kotlin.test.assertFailsWith
@@ -180,7 +182,19 @@ class SafetyEventTest {
 
     @Test
     fun equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
-        EqualsHashCodeToStringTester()
+        newTiramisuEqualsHashCodeToStringTester().test()
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun equalsHashCodeToString_usingEqualsHashCodeToStringTester_atLeastAndroidU() {
+        newTiramisuEqualsHashCodeToStringTester()
+            .setCreateCopy { SafetyEvent.Builder(it).build() }
+            .test()
+    }
+
+    private fun newTiramisuEqualsHashCodeToStringTester() =
+        EqualsHashCodeToStringTester<SafetyEvent>()
             .addEqualityGroup(SafetyEvent.Builder(SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build())
             .addEqualityGroup(
                 SafetyEvent.Builder(SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
@@ -233,8 +247,6 @@ class SafetyEventTest {
                     .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
                     .setSafetySourceIssueActionId(OTHER_SAFETY_SOURCE_ISSUE_ACTION_ID)
                     .build())
-            .test()
-    }
 
     companion object {
         private const val REFRESH_BROADCAST_ID = "refresh_broadcast_id"

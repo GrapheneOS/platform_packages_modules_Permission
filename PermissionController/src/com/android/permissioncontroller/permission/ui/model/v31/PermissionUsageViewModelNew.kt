@@ -162,8 +162,24 @@ class PermissionUsageViewModelNew(
         return allPermissionGroups.filterOutExemptedPermissionGroups().toSet()
     }
 
-    private fun isAppPermissionSystem(appPermissionId: AppPermissionId) =
-        appPermGroupUiInfoLiveDataList[appPermissionId]?.value?.isSystem ?: false
+    private fun isAppPermissionSystem(appPermissionId: AppPermissionId): Boolean {
+        val appPermGroupUiInfo = appPermGroupUiInfoLiveDataList[appPermissionId]?.value
+
+        if (appPermGroupUiInfo != null) {
+            return appPermGroupUiInfo.isSystem
+        } else
+        // The AppPermGroupUiInfo may be null if it has either not loaded yet or if the app has not
+        // requested any permissions from the permission group in question.
+        // The Telecom doesn't request microphone or camera permissions. However, telecom app may
+        // use these permissions and they are considered system app permissions, so we return true
+        // even if the AppPermGroupUiInfo is unavailable.
+        if (appPermissionId.packageName == TELECOM_PACKAGE &&
+            (appPermissionId.permissionGroup == Manifest.permission_group.CAMERA ||
+                appPermissionId.permissionGroup == Manifest.permission_group.MICROPHONE)) {
+            return true
+        }
+        return false
+    }
 
     private fun AllLightPackageOpsLiveData.getAllLightPackageOps() = value?.values
 
@@ -245,11 +261,11 @@ class PermissionUsageViewModelNew(
             private var appPermGroupListPopulated: Boolean = false
             private val getAppPermGroupUiInfoLiveData = { appPermissionId: AppPermissionId ->
                 AppPermGroupUiInfoLiveData[
-                        Triple(
-                                appPermissionId.packageName,
-                                appPermissionId.permissionGroup,
-                                appPermissionId.userHandle,
-                        )]
+                    Triple(
+                        appPermissionId.packageName,
+                        appPermissionId.permissionGroup,
+                        appPermissionId.userHandle,
+                    )]
             }
 
             init {
@@ -274,11 +290,12 @@ class PermissionUsageViewModelNew(
                                 ?: mapOf()
 
                         for (permissionGroupToAccess in lastPermissionGroupAccessTimesMs) {
-                            appPermissionIds.add(AppPermissionId(
+                            appPermissionIds.add(
+                                AppPermissionId(
                                     packageWithUserHandle.first,
                                     packageWithUserHandle.second,
                                     permissionGroupToAccess.key,
-                            ))
+                                ))
                         }
                     }
 
@@ -286,8 +303,8 @@ class PermissionUsageViewModelNew(
                         appPermissionIds,
                         appPermGroupUiInfoLiveDataList,
                         getAppPermGroupUiInfoLiveData) {
-                        update()
-                    }
+                            update()
+                        }
                     appPermGroupListPopulated = true
 
                     return
@@ -317,6 +334,7 @@ class PermissionUsageViewModelNew(
         private val TIME_24_HOURS_DURATION = TimeUnit.DAYS.toMillis(1)
         internal const val SHOULD_SHOW_SYSTEM_KEY = "showSystem"
         internal const val SHOULD_SHOW_7_DAYS_KEY = "show7Days"
+        private const val TELECOM_PACKAGE = "com.android.server.telecom"
 
         /** Permission groups that should be hidden from the permissions usage UI. */
         private val EXEMPTED_PERMISSION_GROUPS = setOf(Manifest.permission_group.NOTIFICATIONS)
