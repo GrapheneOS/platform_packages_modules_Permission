@@ -500,12 +500,18 @@ public final class SafetyCenterIssue implements Parcelable {
                         String id = in.readString();
                         CharSequence label = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
                         PendingIntent pendingIntent = in.readTypedObject(PendingIntent.CREATOR);
-                        return new Builder(id, label, pendingIntent)
-                                .setWillResolve(in.readBoolean())
-                                .setIsInFlight(in.readBoolean())
-                                .setSuccessMessage(
-                                        TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in))
-                                .build();
+                        Builder builder =
+                                new Builder(id, label, pendingIntent)
+                                        .setWillResolve(in.readBoolean())
+                                        .setIsInFlight(in.readBoolean())
+                                        .setSuccessMessage(
+                                                TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(
+                                                        in));
+                        if (SdkLevel.isAtLeastU()) {
+                            Confirmation confirmation = in.readTypedObject(Confirmation.CREATOR);
+                            builder.setConfirmation(confirmation);
+                        }
+                        return builder.build();
                     }
 
                     @Override
@@ -520,6 +526,7 @@ public final class SafetyCenterIssue implements Parcelable {
         private final boolean mWillResolve;
         private final boolean mInFlight;
         @Nullable private final CharSequence mSuccessMessage;
+        @Nullable private final Confirmation mConfirmation;
 
         private Action(
                 @NonNull String id,
@@ -527,13 +534,15 @@ public final class SafetyCenterIssue implements Parcelable {
                 @NonNull PendingIntent pendingIntent,
                 boolean willResolve,
                 boolean inFlight,
-                @Nullable CharSequence successMessage) {
+                @Nullable CharSequence successMessage,
+                @Nullable Confirmation confirmation) {
             mId = id;
             mLabel = label;
             mPendingIntent = pendingIntent;
             mWillResolve = willResolve;
             mInFlight = inFlight;
             mSuccessMessage = successMessage;
+            mConfirmation = confirmation;
         }
 
         /** Returns the ID of this action. */
@@ -581,6 +590,19 @@ public final class SafetyCenterIssue implements Parcelable {
             return mSuccessMessage;
         }
 
+        /**
+         * Returns the optional data to be displayed in the confirmation dialog prior to launching
+         * the {@link PendingIntent} when the action is clicked on.
+         */
+        @Nullable
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        public Confirmation getConfirmation() {
+            if (!SdkLevel.isAtLeastU()) {
+                throw new UnsupportedOperationException();
+            }
+            return mConfirmation;
+        }
+
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;
@@ -591,13 +613,20 @@ public final class SafetyCenterIssue implements Parcelable {
                     && Objects.equals(mPendingIntent, action.mPendingIntent)
                     && mWillResolve == action.mWillResolve
                     && mInFlight == action.mInFlight
-                    && TextUtils.equals(mSuccessMessage, action.mSuccessMessage);
+                    && TextUtils.equals(mSuccessMessage, action.mSuccessMessage)
+                    && Objects.equals(mConfirmation, action.mConfirmation);
         }
 
         @Override
         public int hashCode() {
             return Objects.hash(
-                    mId, mLabel, mSuccessMessage, mWillResolve, mInFlight, mPendingIntent);
+                    mId,
+                    mLabel,
+                    mSuccessMessage,
+                    mWillResolve,
+                    mInFlight,
+                    mPendingIntent,
+                    mConfirmation);
         }
 
         @Override
@@ -615,6 +644,8 @@ public final class SafetyCenterIssue implements Parcelable {
                     + mInFlight
                     + ", mSuccessMessage="
                     + mSuccessMessage
+                    + ", mConfirmation="
+                    + mConfirmation
                     + '}';
         }
 
@@ -631,6 +662,119 @@ public final class SafetyCenterIssue implements Parcelable {
             dest.writeBoolean(mWillResolve);
             dest.writeBoolean(mInFlight);
             TextUtils.writeToParcel(mSuccessMessage, dest, flags);
+            if (SdkLevel.isAtLeastU()) {
+                dest.writeTypedObject(mConfirmation, flags);
+            }
+        }
+
+        /** Data for an action confirmation dialog to be shown before action is executed. */
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        public static final class Confirmation implements Parcelable {
+
+            @NonNull
+            public static final Creator<Confirmation> CREATOR =
+                    new Creator<Confirmation>() {
+                        @Override
+                        public Confirmation createFromParcel(Parcel in) {
+                            CharSequence title =
+                                    TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
+                            CharSequence text =
+                                    TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
+                            CharSequence accept =
+                                    TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
+                            CharSequence deny =
+                                    TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
+                            return new Confirmation(title, text, accept, deny);
+                        }
+
+                        @Override
+                        public Confirmation[] newArray(int size) {
+                            return new Confirmation[size];
+                        }
+                    };
+
+            @NonNull private final CharSequence mTitle;
+            @NonNull private final CharSequence mText;
+            @NonNull private final CharSequence mAccept;
+            @NonNull private final CharSequence mDeny;
+
+            public Confirmation(
+                    @NonNull CharSequence title,
+                    @NonNull CharSequence text,
+                    @NonNull CharSequence accept,
+                    @NonNull CharSequence deny) {
+                mTitle = requireNonNull(title);
+                mText = requireNonNull(text);
+                mAccept = requireNonNull(accept);
+                mDeny = requireNonNull(deny);
+            }
+
+            /** Returns the title of action confirmation dialog. */
+            @NonNull
+            public CharSequence getTitle() {
+                return mTitle;
+            }
+
+            /** Returns the text of action confirmation dialog. */
+            @NonNull
+            public CharSequence getText() {
+                return mText;
+            }
+
+            /** Returns the text of the button to accept action execution. */
+            @NonNull
+            public CharSequence getAccept() {
+                return mAccept;
+            }
+
+            /** Returns the text of the button to deny action execution. */
+            @NonNull
+            public CharSequence getDeny() {
+                return mDeny;
+            }
+
+            @Override
+            public int describeContents() {
+                return 0;
+            }
+
+            @Override
+            public void writeToParcel(@NonNull Parcel dest, int flags) {
+                TextUtils.writeToParcel(mTitle, dest, flags);
+                TextUtils.writeToParcel(mText, dest, flags);
+                TextUtils.writeToParcel(mAccept, dest, flags);
+                TextUtils.writeToParcel(mDeny, dest, flags);
+            }
+
+            @Override
+            public boolean equals(Object o) {
+                if (this == o) return true;
+                if (!(o instanceof Confirmation)) return false;
+                Confirmation that = (Confirmation) o;
+                return TextUtils.equals(mTitle, that.mTitle)
+                        && TextUtils.equals(mText, that.mText)
+                        && TextUtils.equals(mAccept, that.mAccept)
+                        && TextUtils.equals(mDeny, that.mDeny);
+            }
+
+            @Override
+            public int hashCode() {
+                return Objects.hash(mTitle, mText, mAccept, mDeny);
+            }
+
+            @Override
+            public String toString() {
+                return "Confirmation{"
+                        + "mTitle="
+                        + mTitle
+                        + ", mText="
+                        + mText
+                        + ", mAccept="
+                        + mAccept
+                        + ", mDeny="
+                        + mDeny
+                        + '}';
+            }
         }
 
         /** Builder class for {@link Action}. */
@@ -642,6 +786,7 @@ public final class SafetyCenterIssue implements Parcelable {
             private boolean mWillResolve;
             private boolean mInFlight;
             @Nullable private CharSequence mSuccessMessage;
+            @Nullable private Confirmation mConfirmation;
 
             /**
              * Creates a new {@link Builder} for an {@link Action}.
@@ -672,6 +817,7 @@ public final class SafetyCenterIssue implements Parcelable {
                 mWillResolve = action.mWillResolve;
                 mInFlight = action.mInFlight;
                 mSuccessMessage = action.mSuccessMessage;
+                mConfirmation = action.mConfirmation;
             }
 
             /** Sets the ID of this {@link Action} */
@@ -732,11 +878,31 @@ public final class SafetyCenterIssue implements Parcelable {
                 return this;
             }
 
+            /**
+             * Sets the optional data to be displayed in the confirmation dialog prior to launching
+             * the {@link PendingIntent} when the action is clicked on.
+             */
+            @NonNull
+            @RequiresApi(UPSIDE_DOWN_CAKE)
+            public Builder setConfirmation(@Nullable Confirmation confirmation) {
+                if (!SdkLevel.isAtLeastU()) {
+                    throw new UnsupportedOperationException();
+                }
+                mConfirmation = confirmation;
+                return this;
+            }
+
             /** Creates the {@link Action} defined by this {@link Builder}. */
             @NonNull
             public Action build() {
                 return new Action(
-                        mId, mLabel, mPendingIntent, mWillResolve, mInFlight, mSuccessMessage);
+                        mId,
+                        mLabel,
+                        mPendingIntent,
+                        mWillResolve,
+                        mInFlight,
+                        mSuccessMessage,
+                        mConfirmation);
             }
         }
     }
