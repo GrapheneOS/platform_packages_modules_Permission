@@ -792,6 +792,10 @@ final class SafetyCenterDataFactory {
             }
         }
 
+        if (staticEntries.isEmpty()) {
+            return;
+        }
+
         safetyCenterStaticEntryGroups.add(
                 new SafetyCenterStaticEntryGroup(
                         mSafetyCenterResourcesContext.getString(safetySourcesGroup.getTitleResId()),
