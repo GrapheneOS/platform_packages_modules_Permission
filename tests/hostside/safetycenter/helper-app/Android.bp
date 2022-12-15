@@ -18,11 +18,11 @@ package {
     default_applicable_licenses: ["Android-Apache-2.0"],
 }
 
-android_test {
-    name: "SafetyCenterFunctionalTestCases",
+android_test_helper_app {
+    name: "SafetyCenterHostSideTestsHelper",
     defaults: ["mts-target-sdk-version-current"],
     sdk_version: "test_current",
-    min_sdk_version: "30",
+    min_sdk_version: "33",
     srcs: [
         "src/**/*.java",
         "src/**/*.kt",
@@ -30,9 +30,6 @@ android_test {
     static_libs: [
         "androidx.test.rules",
         "androidx.test.ext.junit",
-    ],
-    test_suites: [
-        "general-tests",
-        "mts-permission",
+        "compatibility-device-util-axt",
     ],
 }
