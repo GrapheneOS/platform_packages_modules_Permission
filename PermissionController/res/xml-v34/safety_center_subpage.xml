@@ -19,4 +19,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <com.android.permissioncontroller.safetycenter.ui.ComparablePreferenceCategory
+        android:key="subpage_entry_group"
+        app:selectable="false" />
 </PreferenceScreen>
