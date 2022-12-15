@@ -351,7 +351,8 @@ public final class SafetySourcesGroup implements Parcelable {
          */
         @NonNull
         public SafetySourcesGroup build() {
-            BuilderUtils.validateAttribute(mId, "id", true, false);
+            String id = mId;
+            BuilderUtils.validateId(id, "id", true, false);
             List<SafetySource> safetySources = unmodifiableList(new ArrayList<>(mSafetySources));
             if (safetySources.isEmpty()) {
                 throw new IllegalStateException("Safety sources group empty");
@@ -377,7 +378,7 @@ public final class SafetySourcesGroup implements Parcelable {
                             STATELESS_ICON_TYPE_NONE,
                             STATELESS_ICON_TYPE_PRIVACY);
             return new SafetySourcesGroup(
-                    mId, titleResId, summaryResId, statelessIconType, safetySources);
+                    id, titleResId, summaryResId, statelessIconType, safetySources);
         }
     }
 }
