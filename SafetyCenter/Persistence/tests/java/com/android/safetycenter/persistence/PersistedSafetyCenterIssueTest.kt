@@ -53,7 +53,7 @@ class PersistedSafetyCenterIssueTest {
 
     @Test
     fun equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
-        EqualsHashCodeToStringTester<PersistedSafetyCenterIssue>()
+        EqualsHashCodeToStringTester.of<PersistedSafetyCenterIssue>()
             .addEqualityGroup(
                 ACTIVE_ISSUE,
                 PersistedSafetyCenterIssue.Builder()

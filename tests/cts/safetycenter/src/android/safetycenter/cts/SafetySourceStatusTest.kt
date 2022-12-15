@@ -95,7 +95,7 @@ class SafetySourceStatusTest {
 
     @Test
     fun iconAction_equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
-        EqualsHashCodeToStringTester<IconAction>()
+        EqualsHashCodeToStringTester.ofParcelable(parcelableCreator = IconAction.CREATOR)
             .addEqualityGroup(
                 IconAction(ICON_TYPE_GEAR, pendingIntent1),
                 IconAction(ICON_TYPE_GEAR, pendingIntent1))
@@ -280,13 +280,16 @@ class SafetySourceStatusTest {
     @Test
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun equalsHashCodeToString_usingEqualsHashCodeToStringTester_atLeastAndroidU() {
-        newTiramisuEqualsHashCodeToStringTester()
-            .setCreateCopy { SafetySourceStatus.Builder(it).build() }
+        newTiramisuEqualsHashCodeToStringTester(
+                createCopyFromBuilder = { SafetySourceStatus.Builder(it).build() })
             .test()
     }
 
-    private fun newTiramisuEqualsHashCodeToStringTester() =
-        EqualsHashCodeToStringTester<SafetySourceStatus>()
+    private fun newTiramisuEqualsHashCodeToStringTester(
+        createCopyFromBuilder: ((SafetySourceStatus) -> SafetySourceStatus)? = null
+    ) =
+        EqualsHashCodeToStringTester.ofParcelable(
+                parcelableCreator = SafetySourceStatus.CREATOR, createCopy = createCopyFromBuilder)
             .addEqualityGroup(
                 SafetySourceStatus.Builder(
                         "Status title", "Status summary", SEVERITY_LEVEL_INFORMATION)
