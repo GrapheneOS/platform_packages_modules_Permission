@@ -165,8 +165,7 @@ public final class SafetyCenterData implements Parcelable {
     }
 
     /**
-     * Returns a {@link Bundle} containing additional information combined from all {@link
-     * SafetySourceData#getExtras()} associated by {@link SafetyCenterEntry#getId()}.
+     * Returns a {@link Bundle} containing additional information.
      *
      * <p>Note: internal state of this {@link Bundle} is not used for {@link Object#equals} and
      * {@link Object#hashCode} implementation of {@link SafetyCenterData}.
