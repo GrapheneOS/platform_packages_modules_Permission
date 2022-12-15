@@ -32,7 +32,7 @@ import android.content.pm.PackageManager
 import android.content.pm.PackageManager.FLAG_PERMISSION_POLICY_FIXED
 import android.content.pm.PackageManager.FLAG_PERMISSION_USER_FIXED
 import android.content.pm.PackageManager.FLAG_PERMISSION_USER_SET
-import android.healthconnect.HealthConnectManager.ACTION_MANAGE_HEALTH_PERMISSIONS
+import android.healthconnect.HealthConnectManager.ACTION_REQUEST_HEALTH_PERMISSIONS
 import android.healthconnect.HealthConnectManager.isHealthPermission
 import android.healthconnect.HealthPermissions.HEALTH_PERMISSION_GROUP
 import android.os.Build
@@ -1269,7 +1269,7 @@ class GrantPermissionsViewModel(
             val healthPermissions = unfilteredAffectedPermissions.filter { permission ->
                 isHealthPermission(activity, permission)
             }.toTypedArray()
-            val intent: Intent = Intent(ACTION_MANAGE_HEALTH_PERMISSIONS)
+            val intent: Intent = Intent(ACTION_REQUEST_HEALTH_PERMISSIONS)
                 .putExtra(Intent.EXTRA_PACKAGE_NAME, packageName)
                 .putExtra(PackageManager.EXTRA_REQUEST_PERMISSIONS_NAMES, healthPermissions)
                 .putExtra(Intent.EXTRA_USER, Process.myUserHandle())
