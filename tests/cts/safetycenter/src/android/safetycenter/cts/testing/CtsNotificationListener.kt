@@ -20,21 +20,18 @@ import android.content.ComponentName
 import android.os.ConditionVariable
 import android.safetycenter.cts.testing.Coroutines.TIMEOUT_LONG
 import android.safetycenter.cts.testing.Coroutines.TIMEOUT_SHORT
+import android.safetycenter.cts.testing.Coroutines.waitForWithTimeout
 import android.service.notification.NotificationListenerService
 import android.service.notification.StatusBarNotification
 import android.util.Log
 import com.android.compatibility.common.util.SystemUtil
 import com.google.common.truth.Truth.assertThat
 import java.time.Duration
+import java.util.concurrent.CopyOnWriteArrayList
 import java.util.concurrent.TimeoutException
-import kotlinx.coroutines.channels.BufferOverflow
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.filterIsInstance
-import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.flow.take
-import kotlinx.coroutines.flow.toList
+import kotlinx.coroutines.TimeoutCancellationException
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withTimeoutOrNull
 
 /** Used in CTS tests to check whether expected notifications are present in the status bar. */
 class CtsNotificationListener : NotificationListenerService() {
@@ -54,13 +51,13 @@ class CtsNotificationListener : NotificationListenerService() {
     override fun onNotificationPosted(statusBarNotification: StatusBarNotification) {
         super.onNotificationPosted(statusBarNotification)
         if (isSafetyCenterNotification(statusBarNotification)) {
-            eventFlow.tryEmit(NotificationPosted(statusBarNotification))
+            events.add(NotificationPosted(statusBarNotification))
         }
     }
 
     override fun onNotificationRemoved(statusBarNotification: StatusBarNotification) {
         super.onNotificationRemoved(statusBarNotification)
-        eventFlow.tryEmit(NotificationRemoved(statusBarNotification))
+        events.add(NotificationRemoved(statusBarNotification))
     }
 
     override fun onListenerConnected() {
@@ -88,9 +85,52 @@ class CtsNotificationListener : NotificationListenerService() {
         private val connected = ConditionVariable(false)
         private var instance: CtsNotificationListener? = null
 
-        private val eventFlow =
-            MutableSharedFlow<NotificationEvent>(
-                replay = 0, extraBufferCapacity = 99, onBufferOverflow = BufferOverflow.DROP_OLDEST)
+        private val events = CopyOnWriteArrayList<NotificationEvent>()
+
+        /**
+         * Invokes the given [block] while observing all [NotificationEvent] of type [T] and returns
+         * those events.
+         *
+         * This method blocks until [duration] has elapsed and then returns a possibly-empty list
+         * containing those events.
+         */
+        private inline fun <reified T : NotificationEvent> getNotificationEvents(
+            duration: Duration,
+            block: () -> Any?
+        ): List<T> {
+            events.clear()
+            block.invoke()
+            return runBlocking {
+                // TODO(b/262691874): Refactor notification tests (reduce use of delays)
+                delay(duration.toMillis())
+                events.filterIsInstance<T>()
+            }
+        }
+
+        /**
+         * Invokes the given [block] while observing all [NotificationEvent] of type [T] and returns
+         * those events.
+         *
+         * This method blocks until either [limit] events of type [T] have occurred, or [duration]
+         * has elapsed and then returns a possibly-empty list containing those events.
+         */
+        private inline fun <reified T : NotificationEvent> getNotificationEvents(
+            limit: Int,
+            duration: Duration,
+            block: () -> Any?
+        ): List<T> {
+            require(limit > 0) { "limit must be greater than zero" }
+            events.clear()
+            block.invoke()
+            return runBlocking {
+                try {
+                    waitForWithTimeout(duration) { events.count { it is T } >= limit }
+                } catch (e: TimeoutCancellationException) {
+                    // OK, this means there weren't limit events within duration, continue
+                }
+                events.filterIsInstance<T>().take(limit)
+            }
+        }
 
         /**
          * Invokes the given [block] and asserts that no notifications are posted within [duration].
@@ -114,7 +154,9 @@ class CtsNotificationListener : NotificationListenerService() {
             timeout: Duration = TIMEOUT_LONG,
             block: () -> Any?
         ): StatusBarNotification? {
-            return getNotificationsPosted(limit = 1, duration = timeout, block).firstOrNull()
+            return getNotificationEvents<NotificationPosted>(limit = 1, duration = timeout, block)
+                .firstOrNull()
+                ?.statusBarNotification
         }
 
         /**
@@ -125,62 +167,9 @@ class CtsNotificationListener : NotificationListenerService() {
             duration: Duration = TIMEOUT_SHORT,
             block: () -> Any?
         ): List<StatusBarNotification> {
-            return getNotificationsPosted(limit = 0, duration, block)
-        }
-
-        /**
-         * Invokes the given [block] and then waits until either [limit] notifications have been
-         * posted, or [duration] has elapsed and then returns a possibly-empty list containing those
-         * [StatusBarNotification] instances.
-         *
-         * [limit] only applies if it's a positive integer, otherwise all notifications posted
-         * within the given [duration] are returned.
-         */
-        private fun getNotificationsPosted(
-            limit: Int,
-            duration: Duration,
-            block: () -> Any?
-        ): List<StatusBarNotification> {
-            return getNotificationEvents<NotificationPosted>(limit, duration, block).map {
+            return getNotificationEvents<NotificationPosted>(duration, block).map {
                 it.statusBarNotification
             }
-        }
-
-        /**
-         * Invokes the given [block] while observing all [NotificationEvent] of type [T] and returns
-         * those events.
-         *
-         * This method blocks until either [limit] events of type [T] have occurred, or [duration]
-         * has elapsed and then returns a possibly-empty list containing those events.
-         *
-         * [limit] only applies if it's a positive integer, otherwise all events that occur within
-         * the given [duration] are returned.
-         */
-        private inline fun <reified T : NotificationEvent> getNotificationEvents(
-            limit: Int,
-            duration: Duration,
-            block: () -> Any?
-        ): List<T> {
-            // We keep this list of events so far because when `toList` gets timed out it returns
-            // nothing and not just everything it collected so far i.e. `take(3).toList()` returns
-            // either a list of exactly 3 elements or nothing.
-            val eventsSoFar = mutableListOf<T>()
-            val filteredEventFlow =
-                eventFlow.filterIsInstance<T>().onEach {
-                    Log.d(TAG, "Event: $it")
-                    eventsSoFar.add(it)
-                }
-            block()
-            return runBlocking {
-                withTimeoutOrNull(duration.toMillis()) {
-                    if (limit > 0) {
-                        filteredEventFlow.take(limit).toList()
-                    } else {
-                        filteredEventFlow.toList()
-                    }
-                }
-            }
-                ?: eventsSoFar
         }
 
         /**
@@ -199,8 +188,8 @@ class CtsNotificationListener : NotificationListenerService() {
             block: () -> Any?
         ): StatusBarNotification? {
             return getNotificationEvents<NotificationRemoved>(limit = 1, duration = timeout, block)
-                .map { it.statusBarNotification }
                 .firstOrNull()
+                ?.statusBarNotification
         }
 
         /**
