@@ -93,6 +93,16 @@ public class RoleService extends SystemService implements RoleUserState.Callback
 
     private static final long GRANT_DEFAULT_ROLES_INTERVAL_MILLIS = 1000;
 
+    private static final String[] DEFAULT_APPLICATION_ROLES = {
+        RoleManager.ROLE_ASSISTANT,
+        RoleManager.ROLE_BROWSER,
+        RoleManager.ROLE_CALL_REDIRECTION,
+        RoleManager.ROLE_CALL_SCREENING,
+        RoleManager.ROLE_DIALER,
+        RoleManager.ROLE_HOME,
+        RoleManager.ROLE_SMS,
+    };
+
     @NonNull
     private final AppOpsManager mAppOpsManager;
 
@@ -468,6 +478,56 @@ public class RoleService extends SystemService implements RoleUserState.Callback
             Objects.requireNonNull(callback, "callback cannot be null");
 
             getOrCreateController(userId).onClearRoleHolders(roleName, flags, callback);
+        }
+
+        @Override
+        @Nullable
+        public String getDefaultApplicationAsUser(@NonNull String roleName, @UserIdInt int userId) {
+            UserUtils.enforceCrossUserPermission(userId, false, "getDefaultApplicationAsUser",
+                    getContext());
+            if (!UserUtils.isUserExistent(userId, getContext())) {
+                Log.e(LOG_TAG, "user " + userId + " does not exist");
+                return null;
+            }
+
+            getContext().enforceCallingOrSelfPermission(
+                    Manifest.permission.MANAGE_DEFAULT_APPLICATIONS, "getDefaultApplicationAsUser");
+
+            Preconditions.checkStringNotEmpty(roleName, "roleName cannot be null or empty");
+            Preconditions.checkArgumentIsSupported(DEFAULT_APPLICATION_ROLES, roleName);
+
+            ArraySet<String> roleHolders = getOrCreateUserState(
+                    userId).getRoleHolders(roleName);
+            if (CollectionUtils.isEmpty(roleHolders)) {
+                return null;
+            }
+            return roleHolders.valueAt(0);
+        }
+
+        @Override
+        public void setDefaultApplicationAsUser(@NonNull String roleName,
+                @Nullable String packageName, @RoleManager.ManageHoldersFlags int flags,
+                @UserIdInt int userId, @NonNull RemoteCallback callback) {
+            UserUtils.enforceCrossUserPermission(userId, false, "setDefaultApplicationAsUser",
+                    getContext());
+            if (!UserUtils.isUserExistent(userId, getContext())) {
+                Log.e(LOG_TAG, "user " + userId + " does not exist");
+                return;
+            }
+
+            getContext().enforceCallingOrSelfPermission(
+                    Manifest.permission.MANAGE_DEFAULT_APPLICATIONS, "setDefaultApplicationAsUser");
+
+            Preconditions.checkStringNotEmpty(roleName, "roleName cannot be null or empty");
+            Preconditions.checkArgumentIsSupported(DEFAULT_APPLICATION_ROLES, roleName);
+            Objects.requireNonNull(callback, "callback cannot be null");
+
+            RoleControllerManager roleControllerManager = getOrCreateController(userId);
+            if (packageName != null) {
+                roleControllerManager.onAddRoleHolder(roleName, packageName, flags, callback);
+            } else {
+                roleControllerManager.onClearRoleHolders(roleName, flags, callback);
+            }
         }
 
         @Override
