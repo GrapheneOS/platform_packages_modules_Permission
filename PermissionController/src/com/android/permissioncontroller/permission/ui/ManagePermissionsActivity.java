@@ -444,8 +444,7 @@ public final class ManagePermissionsActivity extends SettingsActivity {
             } break;
 
             case Intent.ACTION_REVIEW_APP_DATA_SHARING_UPDATES: {
-                // TODO(b/261652173): Add flagging and fold Sdk check into flag.
-                if (SdkLevel.isAtLeastU()) {
+                if (KotlinUtils.INSTANCE.isSafetyLabelChangeNotificationsEnabled()) {
                     if (DeviceUtils.isAuto(this) || DeviceUtils.isWear(this)
                             || DeviceUtils.isTelevision(this)) {
                         Log.e(LOG_TAG, "ACTION_REVIEW_APP_DATA_SHARING_UPDATES is not "
@@ -455,6 +454,9 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                     }
                     setNavGraph(AppDataSharingUpdatesFragment.Companion.createArgs(sessionId),
                             R.id.app_data_sharing_updates);
+                } else {
+                    finishAfterTransition();
+                    return;
                 }
             } break;
 
