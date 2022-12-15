@@ -160,8 +160,8 @@ class SafetySourceIssueTest {
     @Test
     @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun action_equalsHashCodeToString_usingEqualsHashCodeToStringTester_atLeastAndroidU() {
-        actionNewTiramisuEqualsHashCodeToStringTester()
-            .setCreateCopy { Action.Builder(it).build() }
+        actionNewTiramisuEqualsHashCodeToStringTester(
+                createCopyFromBuilder = { Action.Builder(it).build() })
             .test()
     }
 
@@ -335,7 +335,8 @@ class SafetySourceIssueTest {
     @Test
     @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun notification_equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
-        EqualsHashCodeToStringTester<Notification>(
+        EqualsHashCodeToStringTester.ofParcelable(
+                parcelableCreator = Notification.CREATOR,
                 createCopy = { Notification.Builder(it).build() })
             .addEqualityGroup(
                 Notification.Builder("Title", "Text").build(),
@@ -1340,8 +1341,8 @@ class SafetySourceIssueTest {
      */
     @RequiresApi(UPSIDE_DOWN_CAKE)
     private fun newUpsideDownCakeEqualsHashCodeToStringTester() =
-        newTiramisuEqualsHashCodeToStringTester()
-            .setCreateCopy { SafetySourceIssue.Builder(it).build() }
+        newTiramisuEqualsHashCodeToStringTester(
+                createCopyFromBuilder = { SafetySourceIssue.Builder(it).build() })
             .addEqualityGroup(
                 SafetySourceIssue.Builder(
                         "Issue id",
@@ -1558,8 +1559,11 @@ class SafetySourceIssueTest {
      * Creates a new [EqualsHashCodeToStringTester] instance which covers all the fields in the T
      * API and is safe to use on any T+ API level.
      */
-    private fun newTiramisuEqualsHashCodeToStringTester() =
-        EqualsHashCodeToStringTester<SafetySourceIssue>()
+    private fun newTiramisuEqualsHashCodeToStringTester(
+        createCopyFromBuilder: ((SafetySourceIssue) -> SafetySourceIssue)? = null
+    ) =
+        EqualsHashCodeToStringTester.ofParcelable(
+                parcelableCreator = SafetySourceIssue.CREATOR, createCopy = createCopyFromBuilder)
             .addEqualityGroup(
                 SafetySourceIssue.Builder(
                         "Issue id",
@@ -1703,8 +1707,11 @@ class SafetySourceIssueTest {
                             context, 0, Intent("Other PendingIntent service"), FLAG_IMMUTABLE))
                     .build())
 
-    private fun actionNewTiramisuEqualsHashCodeToStringTester() =
-        EqualsHashCodeToStringTester<Action>()
+    private fun actionNewTiramisuEqualsHashCodeToStringTester(
+        createCopyFromBuilder: ((Action) -> Action)? = null
+    ) =
+        EqualsHashCodeToStringTester.ofParcelable(
+                parcelableCreator = Action.CREATOR, createCopy = createCopyFromBuilder)
             .addEqualityGroup(
                 Action.Builder("action_id", "Action label", pendingIntent1).build(),
                 Action.Builder("action_id", "Action label", pendingIntent1).build(),

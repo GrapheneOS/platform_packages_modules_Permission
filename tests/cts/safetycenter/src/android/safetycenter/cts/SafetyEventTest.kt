@@ -188,13 +188,16 @@ class SafetyEventTest {
     @Test
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun equalsHashCodeToString_usingEqualsHashCodeToStringTester_atLeastAndroidU() {
-        newTiramisuEqualsHashCodeToStringTester()
-            .setCreateCopy { SafetyEvent.Builder(it).build() }
+        newTiramisuEqualsHashCodeToStringTester(
+                createCopyFromBuilder = { SafetyEvent.Builder(it).build() })
             .test()
     }
 
-    private fun newTiramisuEqualsHashCodeToStringTester() =
-        EqualsHashCodeToStringTester<SafetyEvent>()
+    private fun newTiramisuEqualsHashCodeToStringTester(
+        createCopyFromBuilder: ((SafetyEvent) -> SafetyEvent)? = null
+    ) =
+        EqualsHashCodeToStringTester.ofParcelable(
+                parcelableCreator = SafetyEvent.CREATOR, createCopy = createCopyFromBuilder)
             .addEqualityGroup(SafetyEvent.Builder(SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build())
             .addEqualityGroup(
                 SafetyEvent.Builder(SAFETY_EVENT_TYPE_REFRESH_REQUESTED)

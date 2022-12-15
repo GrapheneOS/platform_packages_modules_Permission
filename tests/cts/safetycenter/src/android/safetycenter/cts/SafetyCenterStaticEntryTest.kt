@@ -95,7 +95,8 @@ class SafetyCenterStaticEntryTest {
 
     @Test
     fun equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
-        EqualsHashCodeToStringTester<SafetyCenterStaticEntry>(
+        EqualsHashCodeToStringTester.ofParcelable(
+                parcelableCreator = SafetyCenterStaticEntry.CREATOR,
                 createCopy = { SafetyCenterStaticEntry.Builder(it).build() })
             .addEqualityGroup(
                 staticEntry1,

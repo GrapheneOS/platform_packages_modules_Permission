@@ -51,7 +51,8 @@ class SafetyCenterErrorDetailsTest {
 
     @Test
     fun equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
-        EqualsHashCodeToStringTester<SafetyCenterErrorDetails>()
+        EqualsHashCodeToStringTester.ofParcelable(
+                parcelableCreator = SafetyCenterErrorDetails.CREATOR)
             .addEqualityGroup(errorDetails1, SafetyCenterErrorDetails("an error message"))
             .addEqualityGroup(errorDetails2, SafetyCenterErrorDetails("another error message"))
             .addEqualityGroup(
