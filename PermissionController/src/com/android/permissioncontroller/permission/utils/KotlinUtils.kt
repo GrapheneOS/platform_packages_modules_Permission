@@ -48,6 +48,7 @@ import android.content.pm.PackageManager.MATCH_DIRECT_BOOT_AWARE
 import android.content.pm.PackageManager.MATCH_DIRECT_BOOT_UNAWARE
 import android.content.pm.PermissionGroupInfo
 import android.content.pm.PermissionInfo
+import android.content.pm.ResolveInfo
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -1390,6 +1391,39 @@ object KotlinUtils {
     fun addHealthPermissions(context: Context) {
         val permissions = HealthConnectManager.getHealthPermissions(context)
         PermissionMapping.addHealthPermissionsToPlatform(permissions)
+    }
+
+    /**
+     * Returns an [Intent] to the installer app store for a given package name, or {@code null} if
+     * none found
+     */
+    fun getAppStoreIntent(
+        context: Context,
+        installerPackageName: String?,
+        packageName: String?
+    ): Intent? {
+        val intent: Intent = Intent(Intent.ACTION_SHOW_APP_INFO)
+            .setPackage(installerPackageName)
+        val result: Intent? = resolveActivityForIntent(context, intent)
+        if (result != null) {
+            result.putExtra(Intent.EXTRA_PACKAGE_NAME, packageName)
+            return result
+        }
+        return null
+    }
+
+    /**
+     * Verify that a component that supports the intent with action and return a new intent with
+     * same action and resolved class name set. Returns null if no activity resolution.
+     */
+    private fun resolveActivityForIntent(context: Context, intent: Intent): Intent? {
+        val result: ResolveInfo? = context.packageManager.resolveActivity(intent, 0)
+        return if (result != null) {
+            Intent(intent.action)
+                .setClassName(result.activityInfo.packageName, result.activityInfo.name)
+        } else {
+            null
+        }
     }
 }
 

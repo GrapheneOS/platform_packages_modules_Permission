@@ -17,8 +17,10 @@
 package com.android.permissioncontroller.permission.ui.model.v34
 
 import android.app.Application
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Process
 import android.util.Log
 import androidx.core.util.Consumer
 import androidx.lifecycle.ViewModel
@@ -27,8 +29,12 @@ import com.android.permission.safetylabel.DataCategory
 import com.android.permission.safetylabel.DataType
 import com.android.permission.safetylabel.DataTypeConstants
 import com.android.permission.safetylabel.SafetyLabel
-import com.android.permissioncontroller.permission.data.SafetyLabelLiveData
+import com.android.permissioncontroller.permission.data.SafetyLabelInfoLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
+import com.android.permissioncontroller.permission.data.get
+import com.android.permissioncontroller.permission.model.livedatatypes.SafetyLabelInfo.Companion.UNAVAILABLE
+import com.android.permissioncontroller.permission.utils.KotlinUtils
+import com.android.permissioncontroller.permission.utils.KotlinUtils.getAppStoreIntent
 import com.android.permissioncontroller.permission.utils.SafetyLabelPermissionMapping
 
 /**
@@ -49,7 +55,8 @@ class PermissionRationaleViewModel(
     private val sessionId: Long,
     private val storedState: Bundle?
 ) : ViewModel() {
-    private val safetyLabelLiveData = SafetyLabelLiveData[packageName]
+    private val user = Process.myUserHandle()
+    private val safetyLabelInfoLiveData = SafetyLabelInfoLiveData[packageName, user]
 
     var activityResultCallback: Consumer<Intent>? = null
 
@@ -59,7 +66,8 @@ class PermissionRationaleViewModel(
      */
     data class PermissionRationaleInfo(
         val groupName: String,
-        val installSourceName: String?,
+        val installSourcePackageName: String?,
+        val installSourceLabel: CharSequence?,
         val purposeSet: Set<Int>
     )
 
@@ -68,29 +76,39 @@ class PermissionRationaleViewModel(
         object : SmartUpdateMediatorLiveData<PermissionRationaleInfo>() {
 
             init {
-                addSource(safetyLabelLiveData) { onUpdate() }
+                addSource(safetyLabelInfoLiveData) { onUpdate() }
 
                 // Load package state, if available
                 onUpdate()
             }
 
             override fun onUpdate() {
-                if (safetyLabelLiveData.isStale) {
+                if (safetyLabelInfoLiveData.isStale) {
                     return
                 }
 
-                val safetyLabel = safetyLabelLiveData.value
-                if (safetyLabel == null) {
+                val safetyLabelInfo = safetyLabelInfoLiveData.value
+                val safetyLabel = safetyLabelInfo?.safetyLabel
+
+                if (safetyLabelInfo == null ||
+                    safetyLabelInfo == UNAVAILABLE ||
+                    safetyLabel == null) {
                     Log.e(LOG_TAG, "Safety label for $packageName not found")
                     value = null
                     return
                 }
 
-                // TODO(b/260144598): link to app store
+                val installSourcePackageName = safetyLabelInfo.installSourcePackageName
+                val installSourceLabel: CharSequence? =
+                    installSourcePackageName?.let {
+                        KotlinUtils.getPackageLabel(app, it, Process.myUserHandle())
+                    }
+
                 value =
                     PermissionRationaleInfo(
                         permissionGroupName,
-                        null,
+                        installSourcePackageName,
+                        installSourceLabel,
                         getSafetyLabelSharingPurposesForGroup(safetyLabel, permissionGroupName))
             }
 
@@ -123,6 +141,15 @@ class PermissionRationaleViewModel(
                 return purposeSet
             }
         }
+
+    fun canLinkToAppStore(context: Context, installSourcePackageName: String): Boolean {
+        return getAppStoreIntent(context, installSourcePackageName, packageName) != null
+    }
+
+    fun sendToAppStore(context: Context, installSourcePackageName: String) {
+        val storeIntent = getAppStoreIntent(context, installSourcePackageName, packageName)
+        context.startActivity(storeIntent)
+    }
 
     companion object {
         private val LOG_TAG = PermissionRationaleViewModel::class.java.simpleName

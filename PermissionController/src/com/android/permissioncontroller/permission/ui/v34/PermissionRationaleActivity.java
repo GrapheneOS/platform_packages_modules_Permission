@@ -33,6 +33,9 @@ import android.icu.lang.UCharacter;
 import android.icu.text.ListFormatter;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Annotation;
+import android.text.SpannableStringBuilder;
+import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -57,6 +60,7 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -73,13 +77,34 @@ public class PermissionRationaleActivity extends SettingsActivity implements
     private static final String KEY_SESSION_ID = PermissionRationaleActivity.class.getName()
             + "_SESSION_ID";
 
+    /**
+     * [Annotation] key for span annotations replacement within the permission rationale purposes
+     * string resource
+     */
+    public static final String ANNOTATION_ID_KEY = "id";
+    /**
+     * [Annotation] id value for span annotations replacement of link annotations within the
+     * permission rationale purposes string resource
+     */
+    public static final String LINK_ANNOTATION_ID = "link";
+    /**
+     * [Annotation] id value for span annotations replacement of install source annotations within
+     * the permission rationale purposes string resource
+     */
+    public static final String INSTALL_SOURCE_ANNOTATION_ID = "install_source";
+    /**
+     * [Annotation] id value for span annotations replacement of purpose list annotations within
+     * the permission rationale purposes string resource
+     */
+    public static final String PURPOSE_LIST_ANNOTATION_ID = "purpose_list";
+
     /** Unique Id of a request. Inherited from GrantPermissionDialog if provide via intent extra */
     private long mSessionId;
     /** Package that shall have permissions granted */
     private String mTargetPackage;
     /** The permission group that initiated the permission rationale details activity */
     private String mPermissionGroupName;
-    /** The permission rationale info resulting from the specified permisison and group */
+    /** The permission rationale info resulting from the specified permission and group */
     private PermissionRationaleInfo mPermissionRationaleInfo;
 
     private PermissionRationaleViewHandler mViewHandler;
@@ -92,6 +117,14 @@ public class PermissionRationaleActivity extends SettingsActivity implements
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+
+        if (!KotlinUtils.INSTANCE.isPermissionRationaleEnabled()) {
+            Log.e(
+                    LOG_TAG,
+                    "Permission rationale feature disabled");
+            finishAfterTransition();
+            return;
+        }
 
         if (icicle == null) {
             mSessionId =
@@ -235,9 +268,6 @@ public class PermissionRationaleActivity extends SettingsActivity implements
     }
 
     private void showPermissionRationale() {
-        String groupName = mPermissionRationaleInfo.getGroupName();
-        String installSourceName = mPermissionRationaleInfo.getInstallSourceName();
-
         List<String> purposesList =
                 new ArrayList<>(mPermissionRationaleInfo.getPurposeSet().size());
         for (@Purpose int purpose : mPermissionRationaleInfo.getPurposeSet()) {
@@ -247,20 +277,25 @@ public class PermissionRationaleActivity extends SettingsActivity implements
         // TODO(b/260144215): update purposes join based on l18n feedback
         String purposesString = ListFormatter.getInstance().format(purposesList);
 
-        // TODO(b/260144598): link to app store
+        String installSourcePackageName = mPermissionRationaleInfo.getInstallSourcePackageName();
+        CharSequence installSourceLabel = mPermissionRationaleInfo.getInstallSourceLabel();
         CharSequence purposeMessage;
-        if (installSourceName == null || installSourceName.isEmpty()) {
-            purposeMessage =
-                    getString(R.string.permission_rationale_purpose_default_source_message,
-                            purposesString);
+        if (installSourcePackageName == null || installSourcePackageName.length() == 0
+                || installSourceLabel == null || installSourceLabel.length() == 0) {
+            purposeMessage = getString(
+                    R.string.permission_rationale_purpose_default_source_message,
+                    purposesString);
         } else {
             purposeMessage =
-                    getString(R.string.permission_rationale_purpose_message,
-                            installSourceName,
-                            purposesString);
+                    createPurposeMessageWithLink(
+                            getText(R.string.permission_rationale_purpose_message),
+                            installSourceLabel,
+                            purposesString,
+                            getLinkToAppStore(installSourcePackageName));
         }
 
         // TODO(b/260144330): link to permission settings
+        String groupName = mPermissionRationaleInfo.getGroupName();
         String permissionGroupLabel =
                 KotlinUtils.INSTANCE.getPermGroupLabel(this, groupName).toString();
         CharSequence settingsMessage =
@@ -305,5 +340,57 @@ public class PermissionRationaleActivity extends SettingsActivity implements
             default:
                 throw new IllegalArgumentException("Invalid purpose: " + purpose);
         }
+    }
+
+    private CharSequence createPurposeMessageWithLink(
+            CharSequence purposeText,
+            CharSequence installSourceLabel,
+            CharSequence purposes,
+            ClickableSpan link) {
+        SpannableStringBuilder text = SpannableStringBuilder.valueOf(purposeText);
+        Annotation[] annotations = text.getSpans(0, text.length(), Annotation.class);
+        // Sort the annotations in reverse order.
+        Arrays.sort(annotations, (a, b) -> text.getSpanStart(b) - text.getSpanStart(a));
+        SpannableStringBuilder messageWithSpan = new SpannableStringBuilder(text);
+        for (android.text.Annotation annotation : annotations) {
+            if (!annotation.getKey().equals(ANNOTATION_ID_KEY)) {
+                continue;
+            }
+
+            int spanStart = text.getSpanStart(annotation);
+            int spanEnd = text.getSpanEnd(annotation);
+            messageWithSpan.removeSpan(annotation);
+
+            switch (annotation.getValue()) {
+                case INSTALL_SOURCE_ANNOTATION_ID:
+                    messageWithSpan.replace(spanStart, spanEnd, installSourceLabel);
+                    break;
+                case LINK_ANNOTATION_ID:
+                    messageWithSpan.setSpan(link, spanStart, spanEnd, 0);
+                    break;
+                case PURPOSE_LIST_ANNOTATION_ID:
+                    messageWithSpan.replace(spanStart, spanEnd, purposes);
+                    break;
+                default:
+                    continue;
+            }
+        }
+        return messageWithSpan;
+    }
+
+    private ClickableSpan getLinkToAppStore(String installSourcePackageName) {
+        boolean canLinkToAppStore = mViewModel
+                .canLinkToAppStore(PermissionRationaleActivity.this, installSourcePackageName);
+        if (!canLinkToAppStore) {
+            return null;
+        }
+        return new ClickableSpan() {
+            @Override
+            public void onClick(@NonNull View widget) {
+                // TODO(b/259961958): metrics for click events
+                mViewModel.sendToAppStore(PermissionRationaleActivity.this,
+                        installSourcePackageName);
+            }
+        };
     }
 }
