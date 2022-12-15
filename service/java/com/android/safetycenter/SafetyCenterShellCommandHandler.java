@@ -29,6 +29,7 @@ import static java.util.Collections.unmodifiableMap;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
+import android.content.Context;
 import android.os.RemoteException;
 import android.safetycenter.ISafetyCenterManager;
 import android.safetycenter.SafetyCenterManager.RefreshReason;
@@ -47,10 +48,17 @@ final class SafetyCenterShellCommandHandler extends BasicShellCommandHandler {
 
     @NonNull private static final Map<String, Integer> REASONS = createReasonMap();
 
+    @NonNull private final Context mContext;
     @NonNull private final ISafetyCenterManager mSafetyCenterManager;
+    private final boolean mDeviceSupportsSafetyCenter;
 
-    SafetyCenterShellCommandHandler(@NonNull ISafetyCenterManager safetyCenterManager) {
+    SafetyCenterShellCommandHandler(
+            @NonNull Context context,
+            @NonNull ISafetyCenterManager safetyCenterManager,
+            boolean deviceSupportsSafetyCenter) {
+        mContext = context;
         mSafetyCenterManager = safetyCenterManager;
+        mDeviceSupportsSafetyCenter = deviceSupportsSafetyCenter;
     }
 
     @Override
@@ -64,10 +72,14 @@ final class SafetyCenterShellCommandHandler extends BasicShellCommandHandler {
             switch (cmd) {
                 case "enabled":
                     return onEnabled();
+                case "supported":
+                    return onSupported();
                 case "refresh":
                     return onRefresh();
                 case "clear-data":
                     return onClearData();
+                case "package-name":
+                    return onPackageName();
                 default:
                     return handleDefaultCommands(cmd);
             }
@@ -78,13 +90,13 @@ final class SafetyCenterShellCommandHandler extends BasicShellCommandHandler {
     }
 
     private int onEnabled() throws RemoteException {
-        if (mSafetyCenterManager.isSafetyCenterEnabled()) {
-            getOutPrintWriter().println("Safety Center is enabled");
-            return 0;
-        } else {
-            getOutPrintWriter().println("Safety Center is not enabled");
-            return 1;
-        }
+        getOutPrintWriter().println(mSafetyCenterManager.isSafetyCenterEnabled());
+        return 0;
+    }
+
+    private int onSupported() {
+        getOutPrintWriter().println(mDeviceSupportsSafetyCenter);
+        return 0;
     }
 
     private int onRefresh() throws RemoteException {
@@ -136,6 +148,12 @@ final class SafetyCenterShellCommandHandler extends BasicShellCommandHandler {
         return 0;
     }
 
+    private int onPackageName() {
+        getOutPrintWriter()
+                .println(mContext.getPackageManager().getPermissionControllerPackageName());
+        return 0;
+    }
+
     @Override
     public void onHelp() {
         getOutPrintWriter().println("Safety Center (safety_center) commands:");
@@ -143,7 +161,11 @@ final class SafetyCenterShellCommandHandler extends BasicShellCommandHandler {
         printCmd(
                 "enabled",
                 "Check if Safety Center is enabled",
-                "Exits with status code 0 if enabled or 1 if not enabled");
+                "Prints \"true\" if enabled, \"false\" otherwise");
+        printCmd(
+                "supported",
+                "Check if this device supports Safety Center (i.e. Safety Center could be enabled)",
+                "Prints \"true\" if supported, \"false\" otherwise");
         printCmd(
                 "refresh [--reason REASON] [--user USERID]",
                 "Start a refresh of all sources",
@@ -155,6 +177,7 @@ final class SafetyCenterShellCommandHandler extends BasicShellCommandHandler {
                 "clear-data",
                 "Clear all data held by Safety Center",
                 "Includes data held in memory and persistent storage but not the listeners.");
+        printCmd("package-name", "Prints the name of the package that contains Safety Center");
     }
 
     /** Helper function to standardise pretty-printing of the help text. */
