@@ -165,7 +165,7 @@ public final class SafetyCenterData implements Parcelable {
     }
 
     /**
-     * Returns a {@link Bundle} containing additional information.
+     * Returns a {@link Bundle} containing additional information, {@link Bundle#EMPTY} by default.
      *
      * <p>Note: internal state of this {@link Bundle} is not used for {@link Object#equals} and
      * {@link Object#hashCode} implementation of {@link SafetyCenterData}.
@@ -298,10 +298,24 @@ public final class SafetyCenterData implements Parcelable {
             return this;
         }
 
-        /** Sets additional information for the {@link SafetyCenterData}. */
+        /**
+         * Sets additional information for the {@link SafetyCenterData}.
+         *
+         * If not set, the default value is {@link Bundle#EMPTY}.
+         */
         @NonNull
         public SafetyCenterData.Builder setExtras(@NonNull Bundle extras) {
             mExtras = requireNonNull(extras);
+            return this;
+        }
+
+        /**
+         * Resets additional information for the {@link SafetyCenterData} to the default value of
+         * {@link Bundle#EMPTY}.
+         */
+        @NonNull
+        public SafetyCenterData.Builder clearExtras() {
+            mExtras = Bundle.EMPTY;
             return this;
         }
 

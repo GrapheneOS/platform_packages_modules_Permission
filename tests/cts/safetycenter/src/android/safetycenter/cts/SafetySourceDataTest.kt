@@ -118,6 +118,19 @@ class SafetySourceDataTest {
     }
 
     @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getExtras_whenCleared_returnsEmptyBundle() {
+        val safetySourceData =
+            SafetySourceData.Builder()
+                .setStatus(createStatus(SEVERITY_LEVEL_INFORMATION))
+                .setExtras(bundleOf(EXTRA_KEY to EXTRA_VALUE))
+                .clearExtras()
+                .build()
+
+        assertThat(safetySourceData.extras.keySet()).isEmpty()
+    }
+
+    @Test
     fun builder_addIssue_doesNotMutatePreviouslyBuiltInstance() {
         val firstIssue = createIssue(SEVERITY_LEVEL_INFORMATION, 1)
         val secondIssue = createIssue(SEVERITY_LEVEL_INFORMATION, 2)
