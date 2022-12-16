@@ -507,7 +507,7 @@ class SafetySourceIssueTest {
     @Test
     @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun actionConfirmation_equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
-        EqualsHashCodeToStringTester.of<Confirmation>()
+        EqualsHashCodeToStringTester.ofParcelable(parcelableCreator = Confirmation.CREATOR)
             .addEqualityGroup(
                 Confirmation("Title", "Text", "Accept", "Deny"),
                 Confirmation("Title", "Text", "Accept", "Deny"))
