@@ -101,6 +101,10 @@
                 notificationsAllowed="true"
                 deduplicationGroup="group"
                 packageCertificateHashes="feed1,feed2"/>
+            <issue-only-safety-source
+                id="id_test_abcxyz_ABCXYZ_012789"
+                packageName="package"
+                profile="primary_profile_only"/>
         </safety-sources-group>
         <safety-sources-group
             id="mixed"

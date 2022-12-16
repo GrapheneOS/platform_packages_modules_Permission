@@ -99,7 +99,8 @@ class SafetyCenterEntryOrGroupTest {
 
     @Test
     fun equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
-        EqualsHashCodeToStringTester<SafetyCenterEntryOrGroup>()
+        EqualsHashCodeToStringTester.ofParcelable(
+                parcelableCreator = SafetyCenterEntryOrGroup.CREATOR)
             .addEqualityGroup(entryOrGroupWithEntry, SafetyCenterEntryOrGroup(entry1))
             .addEqualityGroup(entryOrGroupWithGroup, SafetyCenterEntryOrGroup(entryGroup1))
             .addEqualityGroup(SafetyCenterEntryOrGroup(entry2))

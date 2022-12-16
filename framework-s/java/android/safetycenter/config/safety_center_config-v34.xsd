@@ -41,7 +41,7 @@
             <xsd:element name="issue-only-safety-source" type="issue-only-safety-source"/>
         </xsd:choice>
         <!-- id must be unique among safety sources groups -->
-        <xsd:attribute name="id" type="stringOrStringResourceName" use="required"/>
+        <xsd:attribute name="id" type="idOrStringResourceName" use="required"/>
         <!-- title is required unless the group contains issue only and/or internal sources -->
         <xsd:attribute name="title" type="runtimeStringResourceName"/>
         <xsd:attribute name="summary" type="runtimeStringResourceName"/>
@@ -53,7 +53,7 @@
 
     <xsd:complexType name="dynamic-safety-source">
         <!-- id must be unique among safety sources -->
-        <xsd:attribute name="id" type="stringOrStringResourceName" use="required"/>
+        <xsd:attribute name="id" type="idOrStringResourceName" use="required"/>
         <xsd:attribute name="packageName" type="stringOrStringResourceName" use="required"/>
         <!-- optional comma-separated set of certficate hashes, if provided will be used for validation. -->
         <xsd:attribute name="packageCertificateHashes" type="stringOrStringResourceName"/>
@@ -81,7 +81,7 @@
 
     <xsd:complexType name="issue-only-safety-source">
         <!-- id must be unique among safety sources -->
-        <xsd:attribute name="id" type="stringOrStringResourceName" use="required"/>
+        <xsd:attribute name="id" type="idOrStringResourceName" use="required"/>
         <xsd:attribute name="packageName" type="stringOrStringResourceName" use="required"/>
         <!-- optional comma-separated set of certficate hashes, if provided will be used for validation. -->
         <xsd:attribute name="packageCertificateHashes" type="stringOrStringResourceName"/>
@@ -97,7 +97,7 @@
 
     <xsd:complexType name="static-safety-source">
         <!-- id must be unique among safety sources -->
-        <xsd:attribute name="id" type="stringOrStringResourceName" use="required"/>
+        <xsd:attribute name="id" type="idOrStringResourceName" use="required"/>
         <xsd:attribute name="packageName" type="stringOrStringResourceName"/>
         <xsd:attribute name="title" type="runtimeStringResourceName" use="required"/>
         <!-- titleForWork is required if profile is set to all_profiles -->
@@ -128,6 +128,19 @@
         <!-- Locale changes and device config changes will be ignored. -->
         <!-- The value of the string resource must be of type xsd:string. -->
         <xsd:union memberTypes="stringResourceName xsd:string"/>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="idOrStringResourceName">
+        <!-- String resource names will be resolved only once at parse time. -->
+        <!-- Locale changes and device config changes will be ignored. -->
+        <!-- The value of the string resource must be of type xsd:string. -->
+        <xsd:union memberTypes="stringResourceName id"/>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="id">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[0-9a-zA-Z_-]+"/>
+        </xsd:restriction>
     </xsd:simpleType>
 
     <xsd:simpleType name="statelessIconTypeOrStringResourceName">

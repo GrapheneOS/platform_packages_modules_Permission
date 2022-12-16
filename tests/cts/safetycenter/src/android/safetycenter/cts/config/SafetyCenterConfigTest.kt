@@ -83,13 +83,16 @@ class SafetyCenterConfigTest {
     @Test
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun equalsHashCodeToString_usingEqualsHashCodeToStringTester_atLeastAndroidU() {
-        newTiramisuEqualsHashCodeToStringTester()
-            .setCreateCopy { SafetyCenterConfig.Builder(it).build() }
+        newTiramisuEqualsHashCodeToStringTester(
+                createCopyFromBuilder = { SafetyCenterConfig.Builder(it).build() })
             .test()
     }
 
-    private fun newTiramisuEqualsHashCodeToStringTester() =
-        EqualsHashCodeToStringTester<SafetyCenterConfig>()
+    private fun newTiramisuEqualsHashCodeToStringTester(
+        createCopyFromBuilder: ((SafetyCenterConfig) -> SafetyCenterConfig)? = null
+    ) =
+        EqualsHashCodeToStringTester.ofParcelable(
+                parcelableCreator = SafetyCenterConfig.CREATOR, createCopy = createCopyFromBuilder)
             .addEqualityGroup(
                 BASE,
                 SafetyCenterConfig.Builder()

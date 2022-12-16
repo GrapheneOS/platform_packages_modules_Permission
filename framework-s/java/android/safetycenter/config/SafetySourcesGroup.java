@@ -413,7 +413,7 @@ public final class SafetySourcesGroup implements Parcelable {
         @NonNull
         public SafetySourcesGroup build() {
             String id = mId;
-            BuilderUtils.validateAttribute(id, "id", true, false);
+            BuilderUtils.validateId(id, "id", true, false);
 
             List<SafetySource> safetySources = unmodifiableList(new ArrayList<>(mSafetySources));
             if (safetySources.isEmpty()) {

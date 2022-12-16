@@ -104,6 +104,11 @@ class ParserConfigInvalidTest {
                         "invalid",
                     null),
                 Params(
+                    "ConfigDynamicSafetySourceInvalidId",
+                    R.raw.config_dynamic_safety_source_invalid_id,
+                    "Element dynamic-safety-source invalid",
+                    "Attribute id invalid"),
+                Params(
                     "ConfigDynamicSafetySourceInvalidProfile",
                     R.raw.config_dynamic_safety_source_invalid_profile,
                     "Attribute value \"invalid\" in dynamic-safety-source.profile invalid",
@@ -158,6 +163,11 @@ class ParserConfigInvalidTest {
                     R.raw.config_issue_only_safety_source_duplicate_key,
                     "Element safety-sources-config invalid",
                     "Duplicate id id among safety sources"),
+                Params(
+                    "ConfigIssueOnlySafetySourceInvalidId",
+                    R.raw.config_issue_only_safety_source_invalid_id,
+                    "Element issue-only-safety-source invalid",
+                    "Attribute id invalid"),
                 Params(
                     "ConfigIssueOnlySafetySourceInvalidProfile",
                     R.raw.config_issue_only_safety_source_invalid_profile,
@@ -258,6 +268,11 @@ class ParserConfigInvalidTest {
                     "Attribute value \"invalid\" in safety-sources-group.statelessIconType invalid",
                     null),
                 Params(
+                    "ConfigSafetySourcesGroupInvalidId",
+                    R.raw.config_safety_sources_group_invalid_id,
+                    "Element safety-sources-group invalid",
+                    "Attribute id invalid"),
+                Params(
                     "ConfigSafetySourcesGroupNoId",
                     R.raw.config_safety_sources_group_no_id,
                     "Element safety-sources-group invalid",
@@ -286,6 +301,11 @@ class ParserConfigInvalidTest {
                     R.raw.config_static_safety_source_duplicate_key,
                     "Element safety-sources-config invalid",
                     "Duplicate id id among safety sources"),
+                Params(
+                    "ConfigStaticSafetySourceInvalidId",
+                    R.raw.config_static_safety_source_invalid_id,
+                    "Element static-safety-source invalid",
+                    "Attribute id invalid"),
                 Params(
                     "ConfigStaticSafetySourceInvalidProfile",
                     R.raw.config_static_safety_source_invalid_profile,

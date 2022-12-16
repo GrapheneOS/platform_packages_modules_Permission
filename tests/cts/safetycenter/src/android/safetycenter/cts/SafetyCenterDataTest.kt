@@ -421,7 +421,7 @@ class SafetyCenterDataTest {
     @Test
     fun equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
         val equalsHashCodeToStringTester =
-            EqualsHashCodeToStringTester<SafetyCenterData>()
+            EqualsHashCodeToStringTester.ofParcelable(parcelableCreator = SafetyCenterData.CREATOR)
                 .addEqualityGroup(
                     data1,
                     SafetyCenterData(
@@ -452,8 +452,10 @@ class SafetyCenterDataTest {
     @Test
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun equalsHashCode_atLeastU_usingEqualsHashCodeToStringTester() {
-        EqualsHashCodeToStringTester<SafetyCenterData>(
-                ignoreToString = true, createCopy = { SafetyCenterData.Builder(it).build() })
+        EqualsHashCodeToStringTester.ofParcelable(
+                parcelableCreator = SafetyCenterData.CREATOR,
+                ignoreToString = true,
+                createCopy = { SafetyCenterData.Builder(it).build() })
             .addEqualityGroup(
                 data1,
                 SafetyCenterData(

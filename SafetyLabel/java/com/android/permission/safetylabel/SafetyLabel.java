@@ -34,6 +34,7 @@ public class SafetyLabel {
     /** Returns {@link SafetyLabel} created by parsing a metadata {@link PersistableBundle} */
     @Nullable
     public static SafetyLabel getSafetyLabelFromMetadata(@Nullable PersistableBundle bundle) {
+        // TODO(b/261069412): add versioning and nonnull empty/invalid cases
         if (bundle == null) {
             return null;
         }
