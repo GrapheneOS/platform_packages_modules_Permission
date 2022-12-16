@@ -69,6 +69,7 @@ package android.safetycenter {
     method @NonNull public android.safetycenter.SafetyCenterData build();
     method @NonNull public android.safetycenter.SafetyCenterData.Builder clearDismissedIssues();
     method @NonNull public android.safetycenter.SafetyCenterData.Builder clearEntriesOrGroups();
+    method @NonNull public android.safetycenter.SafetyCenterData.Builder clearExtras();
     method @NonNull public android.safetycenter.SafetyCenterData.Builder clearIssues();
     method @NonNull public android.safetycenter.SafetyCenterData.Builder clearStaticEntryGroups();
     method @NonNull public android.safetycenter.SafetyCenterData.Builder setExtras(@NonNull android.os.Bundle);
@@ -361,6 +362,7 @@ package android.safetycenter {
     ctor public SafetySourceData.Builder(@NonNull android.safetycenter.SafetySourceData);
     method @NonNull public android.safetycenter.SafetySourceData.Builder addIssue(@NonNull android.safetycenter.SafetySourceIssue);
     method @NonNull public android.safetycenter.SafetySourceData build();
+    method @NonNull public android.safetycenter.SafetySourceData.Builder clearExtras();
     method @NonNull public android.safetycenter.SafetySourceData.Builder clearIssues();
     method @NonNull public android.safetycenter.SafetySourceData.Builder setExtras(@NonNull android.os.Bundle);
     method @NonNull public android.safetycenter.SafetySourceData.Builder setStatus(@Nullable android.safetycenter.SafetySourceStatus);
