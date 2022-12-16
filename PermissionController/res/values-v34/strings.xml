@@ -37,7 +37,7 @@
     may share for app functionality, analytics, developer communications, advertising or marketing,
     fraud prevention, security, and compliance, personalization, account management. This may be
     updated in the future." [CHAR LIMIT=300] -->
-    <string name="permission_rationale_purpose_message">This app developer stated to <annotation id="link"><xliff:g id="install_source" example="App Store">%1$s</xliff:g></annotation> that it may share for <xliff:g id="purpose_list" example="purpose 1, purpose 2, purpose 3">%2$s</xliff:g>\nThis may be updated in the future.</string>
+    <string name="permission_rationale_purpose_message">This app developer stated to <annotation id="link"><annotation id="install_source" example="App Store">%1$s</annotation></annotation> that it may share for <annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">%2$s</annotation>\nThis may be updated in the future.</string>
 
     <!-- TODO(b/259279178): update with finalized permission rationale strings -->
     <!-- Message shown to the user letting them know that data will be shared and for which

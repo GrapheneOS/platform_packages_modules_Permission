@@ -179,6 +179,12 @@ class ParserConfigValidTest {
                                     }
                                 }
                                 .build())
+                        .addSafetySource(
+                            SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY)
+                                .setId("id_test_abcxyz_ABCXYZ_012789")
+                                .setPackageName("package")
+                                .setProfile(SafetySource.PROFILE_PRIMARY)
+                                .build())
                         .build())
                 .addSafetySourcesGroup(
                     SafetySourcesGroup.Builder()

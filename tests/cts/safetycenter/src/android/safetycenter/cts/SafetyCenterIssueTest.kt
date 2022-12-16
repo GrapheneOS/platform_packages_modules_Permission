@@ -368,8 +368,8 @@ class SafetyCenterIssueTest {
     @Test
     @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun action_equalsHashCodeToString_usingEqualsHashCodeToStringTester_atLeastAndroidU() {
-        issueActionNewTiramisuEqualsHashCodeToStringTester()
-            .setCreateCopy { SafetyCenterIssue.Action.Builder(it).build() }
+        issueActionNewTiramisuEqualsHashCodeToStringTester(
+                createCopyFromBuilder = { SafetyCenterIssue.Action.Builder(it).build() })
             .test()
     }
 
@@ -389,8 +389,8 @@ class SafetyCenterIssueTest {
                 .setShouldConfirmDismissal(true)
                 .setActions(listOf(action1))
                 .build()
-        return newTiramisuEqualsHashCodeToStringTester()
-            .setCreateCopy { SafetyCenterIssue.Builder(it).build() }
+        return newTiramisuEqualsHashCodeToStringTester(
+                createCopyFromBuilder = { SafetyCenterIssue.Builder(it).build() })
             .addEqualityGroup(
                 SafetyCenterIssue.Builder(issueWithTiramisuFields)
                     .setAttributionTitle("Attribution title")
@@ -420,8 +420,11 @@ class SafetyCenterIssueTest {
      * Creates a new [EqualsHashCodeToStringTester] instance which covers all the fields in the T
      * API and is safe to use on any T+ API level.
      */
-    private fun newTiramisuEqualsHashCodeToStringTester() =
-        EqualsHashCodeToStringTester<SafetyCenterIssue>()
+    private fun newTiramisuEqualsHashCodeToStringTester(
+        createCopyFromBuilder: ((SafetyCenterIssue) -> SafetyCenterIssue)? = null
+    ) =
+        EqualsHashCodeToStringTester.ofParcelable(
+                parcelableCreator = SafetyCenterIssue.CREATOR, createCopy = createCopyFromBuilder)
             .addEqualityGroup(issue1, SafetyCenterIssue.Builder(issue1).build())
             .addEqualityGroup(issueWithRequiredFieldsOnly)
             .addEqualityGroup(
@@ -451,8 +454,12 @@ class SafetyCenterIssueTest {
                 SafetyCenterIssue.Builder(issue1).setShouldConfirmDismissal(false).build())
             .addEqualityGroup(SafetyCenterIssue.Builder(issue1).setActions(listOf(action2)).build())
 
-    private fun issueActionNewTiramisuEqualsHashCodeToStringTester() =
-        EqualsHashCodeToStringTester<SafetyCenterIssue.Action>()
+    private fun issueActionNewTiramisuEqualsHashCodeToStringTester(
+        createCopyFromBuilder: ((SafetyCenterIssue.Action) -> SafetyCenterIssue.Action)? = null
+    ) =
+        EqualsHashCodeToStringTester.ofParcelable(
+                parcelableCreator = SafetyCenterIssue.Action.CREATOR,
+                createCopy = createCopyFromBuilder)
             .addEqualityGroup(action1)
             .addEqualityGroup(action2)
             .addEqualityGroup(

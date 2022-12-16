@@ -32,7 +32,7 @@ import android.content.pm.PackageManager
 import android.content.pm.PackageManager.FLAG_PERMISSION_POLICY_FIXED
 import android.content.pm.PackageManager.FLAG_PERMISSION_USER_FIXED
 import android.content.pm.PackageManager.FLAG_PERMISSION_USER_SET
-import android.healthconnect.HealthConnectManager.ACTION_MANAGE_HEALTH_PERMISSIONS
+import android.healthconnect.HealthConnectManager.ACTION_REQUEST_HEALTH_PERMISSIONS
 import android.healthconnect.HealthConnectManager.isHealthPermission
 import android.healthconnect.HealthPermissions.HEALTH_PERMISSION_GROUP
 import android.os.Build
@@ -74,7 +74,7 @@ import com.android.permissioncontroller.auto.DrivingDecisionReminderService
 import com.android.permissioncontroller.permission.data.LightAppPermGroupLiveData
 import com.android.permissioncontroller.permission.data.LightPackageInfoLiveData
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData
-import com.android.permissioncontroller.permission.data.SafetyLabelLiveData
+import com.android.permissioncontroller.permission.data.SafetyLabelInfoLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
@@ -152,11 +152,12 @@ class GrantPermissionsViewModel(
     private val LOG_TAG = GrantPermissionsViewModel::class.java.simpleName
     private val user = Process.myUserHandle()
     private val packageInfoLiveData = LightPackageInfoLiveData[packageName, user]
-    private val safetyLabelLiveData = SafetyLabelLiveData[packageName]
+    private val safetyLabelInfoLiveData = SafetyLabelInfoLiveData[packageName, user]
     private val dpm = app.getSystemService(DevicePolicyManager::class.java)!!
     private val permissionPolicy = dpm.getPermissionPolicy(null)
     private val permGroupsToSkip = mutableListOf<String>()
     private var groupStates = mutableMapOf<Pair<String, Boolean>, GroupState>()
+    private val permissionRationaleEnabled: Boolean by lazy { isPermissionRationaleEnabled() }
 
     private var autoGrantNotifier: AutoGrantPermissionsNotifier? = null
     private fun getAutoGrantNotifier(): AutoGrantPermissionsNotifier {
@@ -202,10 +203,14 @@ class GrantPermissionsViewModel(
         private val LOG_TAG = GrantPermissionsViewModel::class.java.simpleName
         private val packagePermissionsLiveData = PackagePermissionsLiveData[packageName, user]
 
+        // TODO(b/260873483): only query safety label for supported permission groups. should only
+        //  query location, but currently queries for all groups
         init {
             addSource(packagePermissionsLiveData) { onPackageLoaded() }
             addSource(packageInfoLiveData) { onPackageLoaded() }
-            addSource(safetyLabelLiveData) { onPackageLoaded() }
+            if (permissionRationaleEnabled) {
+                addSource(safetyLabelInfoLiveData) { onPackageLoaded() }
+            }
 
             // Load package state, if available
             onPackageLoaded()
@@ -214,9 +219,16 @@ class GrantPermissionsViewModel(
         private fun onPackageLoaded() {
             if (packageInfoLiveData.isStale ||
                 packagePermissionsLiveData.isStale ||
-                safetyLabelLiveData.isStale) {
+                (permissionRationaleEnabled && safetyLabelInfoLiveData.isStale)) {
                 return
             }
+
+            safetyLabel =
+                if (permissionRationaleEnabled) {
+                    safetyLabelInfoLiveData.value?.safetyLabel
+                } else {
+                    null
+                }
 
             val groups = packagePermissionsLiveData.value
             val pI = packageInfoLiveData.value
@@ -234,8 +246,6 @@ class GrantPermissionsViewModel(
                 value = null
                 return
             }
-
-            safetyLabel = safetyLabelLiveData.value
 
             val allAffectedPermissions = requestedPermissions.toMutableSet()
             for (requestedPerm in requestedPermissions) {
@@ -610,9 +620,7 @@ class GrantPermissionsViewModel(
         safetyLabel: SafetyLabel?,
         groupState: GroupState
     ): Boolean {
-        if (!isPermissionRationaleEnabled() ||
-            safetyLabel == null ||
-            safetyLabel.dataLabel.dataShared.isEmpty()) {
+        if (safetyLabel == null || safetyLabel.dataLabel.dataShared.isEmpty()) {
             return false
         }
 
@@ -1261,7 +1269,7 @@ class GrantPermissionsViewModel(
             val healthPermissions = unfilteredAffectedPermissions.filter { permission ->
                 isHealthPermission(activity, permission)
             }.toTypedArray()
-            val intent: Intent = Intent(ACTION_MANAGE_HEALTH_PERMISSIONS)
+            val intent: Intent = Intent(ACTION_REQUEST_HEALTH_PERMISSIONS)
                 .putExtra(Intent.EXTRA_PACKAGE_NAME, packageName)
                 .putExtra(PackageManager.EXTRA_REQUEST_PERMISSIONS_NAMES, healthPermissions)
                 .putExtra(Intent.EXTRA_USER, Process.myUserHandle())

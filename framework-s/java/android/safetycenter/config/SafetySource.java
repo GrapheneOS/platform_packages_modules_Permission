@@ -944,7 +944,7 @@ public final class SafetySource implements Parcelable {
             boolean isIssueOnly = type == SAFETY_SOURCE_TYPE_ISSUE_ONLY;
 
             String id = mId;
-            BuilderUtils.validateAttribute(id, "id", true, false);
+            BuilderUtils.validateId(id, "id", true, false);
 
             String packageName = mPackageName;
             BuilderUtils.validateAttribute(

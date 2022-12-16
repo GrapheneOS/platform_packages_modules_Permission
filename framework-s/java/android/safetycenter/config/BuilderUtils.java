@@ -27,6 +27,7 @@ import androidx.annotation.RequiresApi;
 
 import java.util.Collection;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 @RequiresApi(TIRAMISU)
 final class BuilderUtils {
@@ -55,6 +56,17 @@ final class BuilderUtils {
             boolean required,
             boolean prohibited) {
         validateAttribute(attribute, name, required, prohibited, null);
+    }
+
+    static void validateId(
+            @Nullable String id,
+            @NonNull String name,
+            boolean required,
+            boolean prohibited) {
+        validateAttribute(id, name, required, prohibited, null);
+        if (!Pattern.compile("[0-9a-zA-Z_]+").matcher(id).matches()) {
+            throw new IllegalStateException("Attribute " + name + " invalid");
+        }
     }
 
     @AnyRes
