@@ -1211,7 +1211,7 @@
 
     <!-- TODO(b/261147998): STOPSHIP update with finalized description string -->
     <!-- Description for the glasses profile role. [CHAR LIMIT=NONE] -->
-    <string name="role_companion_device_glasses_description"><xliff:g id="app_name" example="GlassesApp">%1$s</xliff:g> will be allowed to access your Phone, SMS, Contacts, Microphone and Nearby devices permissions.</string>
+    <string name="role_companion_device_glasses_description"><xliff:g id="app_name" example="GlassesApp">%1$s</xliff:g> will be allowed to interact with your notifications and access your Phone, SMS, Contacts, Microphone and Nearby devices permissions.</string>
 
     <!-- Description for the app streaming profile role. [CHAR LIMIT=NONE] -->
     <string name="role_app_streaming_description"><xliff:g id="app_name" example="Cross-Device Communciation">%1$s</xliff:g> will be allowed to interact with your notifications and stream your apps to the connected device.</string>
