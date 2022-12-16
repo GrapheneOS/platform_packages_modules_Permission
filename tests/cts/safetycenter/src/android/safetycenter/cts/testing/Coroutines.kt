@@ -20,16 +20,23 @@ import java.time.Duration
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withTimeout
+import kotlinx.coroutines.withTimeoutOrNull
 
 /** A class that facilitates interacting with coroutines. */
 // TODO(b/228823159) Consolidate with other Coroutines helper functions
 object Coroutines {
 
-    /** Behaves in the same way as [runBlocking], but with a timeout. */
-    fun <T> runBlockingWithTimeout(timeout: Duration = TIMEOUT_LONG, block: suspend () -> T) =
+    /** Shorthand for [runBlocking] combined with [withTimeout]. */
+    fun <T> runBlockingWithTimeout(timeout: Duration = TIMEOUT_LONG, block: suspend () -> T): T =
         runBlocking {
             withTimeout(timeout.toMillis()) { block() }
         }
+
+    /** Shorthand for [runBlocking] combined with [withTimeoutOrNull] */
+    fun <T> runBlockingWithTimeoutOrNull(
+        timeout: Duration = TIMEOUT_LONG,
+        block: suspend () -> T
+    ): T? = runBlocking { withTimeoutOrNull(timeout.toMillis()) { block() } }
 
     /** Check a condition using coroutines with a timeout. */
     fun waitForWithTimeout(

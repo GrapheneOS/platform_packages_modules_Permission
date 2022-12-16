@@ -18,29 +18,28 @@ package android.safetycenter.cts.testing
 
 import android.app.Notification
 import android.service.notification.StatusBarNotification
-import com.google.common.truth.Truth.assertThat
 
 /** The characteristic properties of a notification. */
 data class NotificationCharacteristics(val title: String, val text: String) {
     companion object {
-        fun assertNotificationMatches(
+        private fun isMatch(
             statusBarNotification: StatusBarNotification,
-            expected: NotificationCharacteristics
-        ) {
-            statusBarNotification.notification?.apply {
-                assertThat(extras.getString(Notification.EXTRA_TITLE)).isEqualTo(expected.title)
-                assertThat(extras.getString(Notification.EXTRA_TEXT)).isEqualTo(expected.text)
-            }
+            characteristic: NotificationCharacteristics
+        ): Boolean {
+            val notif = statusBarNotification.notification
+            return notif != null &&
+                notif.extras.getString(Notification.EXTRA_TITLE) == characteristic.title &&
+                notif.extras.getString(Notification.EXTRA_TEXT) == characteristic.text
         }
 
-        fun assertNotificationsMatch(
+        fun areMatching(
             statusBarNotifications: List<StatusBarNotification>,
-            vararg expected: NotificationCharacteristics
-        ) {
-            assertThat(statusBarNotifications).hasSize(expected.size)
-            statusBarNotifications.zip(expected).forEach { (sbn, characteristics) ->
-                assertNotificationMatches(sbn, characteristics)
+            characteristics: List<NotificationCharacteristics>
+        ): Boolean {
+            if (statusBarNotifications.size != characteristics.size) {
+                return false
             }
+            return statusBarNotifications.zip(characteristics).all { isMatch(it.first, it.second) }
         }
     }
 }
