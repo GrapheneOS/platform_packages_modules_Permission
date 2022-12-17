@@ -173,7 +173,7 @@
     <string name="sort_by_app" msgid="4055799843051138087">"యాప్ వాడకం బట్టి వర్గీకరణ"</string>
     <string name="sort_by_time" msgid="5435045320002150456">"టైమ్‌ను బట్టి వర్గీకరణ"</string>
     <string name="item_separator" msgid="4030255389809224513">", "</string>
-    <string name="permission_usage_refresh" msgid="2264056346561305420">"రిఫ్రెష్ చేయి"</string>
+    <string name="permission_usage_refresh" msgid="2264056346561305420">"రిఫ్రెష్ చేయండి"</string>
     <string name="permission_history_title" msgid="8340081285133025225">"అనుమతి హిస్టరీ"</string>
     <string name="permission_history_category_today" msgid="7496389369158806620">"ఈరోజు"</string>
     <string name="permission_history_category_yesterday" msgid="7242517121222012521">"నిన్న"</string>
