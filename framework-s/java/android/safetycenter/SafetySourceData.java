@@ -207,7 +207,7 @@ public final class SafetySourceData implements Parcelable {
     }
 
     /**
-     * Returns a {@link Bundle} containing additional information.
+     * Returns a {@link Bundle} containing additional information, {@link Bundle#EMPTY} by default.
      *
      * <p>Note: internal state of this {@link Bundle} is not used for {@link Object#equals} and
      * {@link Object#hashCode} implementation of {@link SafetySourceData}.
@@ -296,7 +296,11 @@ public final class SafetySourceData implements Parcelable {
             return this;
         }
 
-        /** Sets additional information for the {@link SafetySourceData}. */
+        /**
+         * Sets additional information for the {@link SafetySourceData}.
+         *
+         * If not set, the default value is {@link Bundle#EMPTY}.
+         */
         @NonNull
         @RequiresApi(UPSIDE_DOWN_CAKE)
         public Builder setExtras(@NonNull Bundle extras) {
@@ -304,6 +308,20 @@ public final class SafetySourceData implements Parcelable {
                 throw new UnsupportedOperationException();
             }
             mExtras = requireNonNull(extras);
+            return this;
+        }
+
+        /**
+         * Resets additional information for the {@link SafetySourceData} to the default value of
+         * {@link Bundle#EMPTY}.
+         */
+        @NonNull
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        public Builder clearExtras() {
+            if (!SdkLevel.isAtLeastU()) {
+                throw new UnsupportedOperationException();
+            }
+            mExtras = Bundle.EMPTY;
             return this;
         }
 

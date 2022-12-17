@@ -23,6 +23,7 @@ import android.os.Build
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.safetycenter.SafetyCenterIssue
+import android.safetycenter.SafetyCenterIssue.Action.Confirmation
 import androidx.annotation.RequiresApi
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -293,7 +294,11 @@ class SafetyCenterIssueTest {
                 .setSeverityLevel(SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_OK)
                 .setDismissible(true)
                 .setShouldConfirmDismissal(true)
-                .setActions(listOf(action1))
+                .setActions(
+                    listOf(
+                        SafetyCenterIssue.Action.Builder(action1)
+                            .setConfirmation(Confirmation("Title", "Text", "Accept", "Deny"))
+                            .build()))
                 .setAttributionTitle("Attribution title")
                 .setGroupId("group_id")
                 .build()
@@ -349,6 +354,46 @@ class SafetyCenterIssueTest {
     }
 
     @Test
+    @SdkSuppress(maxSdkVersion = TIRAMISU)
+    fun action_getConfirmation_withVersionLessThanU_throwsUnsupportedOperationException() {
+        // TODO(b/258228790): Remove after U is no longer in pre-release
+        assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
+
+        assertFailsWith(UnsupportedOperationException::class) { action1.confirmation }
+    }
+
+    @Test
+    @SdkSuppress(maxSdkVersion = TIRAMISU)
+    fun action_setConfirmation_withVersionLessThanU_throwsUnsupportedOperationException() {
+        // TODO(b/258228790): Remove after U is no longer in pre-release
+        assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
+        assertFailsWith(UnsupportedOperationException::class) {
+            SafetyCenterIssue.Action.Builder("action_id", "Action label", pendingIntent1)
+                .setConfirmation(Confirmation("Title", "Text", "Accept", "Deny"))
+        }
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun action_getConfirmation_withDefaultBuilder_returnsNull() {
+        val action =
+            SafetyCenterIssue.Action.Builder("action_id", "Action label", pendingIntent1).build()
+
+        assertThat(action.confirmation).isNull()
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun action_getConfirmation_whenSetExplicitly_returnsConfirmation() {
+        val action =
+            SafetyCenterIssue.Action.Builder("action_id", "Action label", pendingIntent1)
+                .setConfirmation(Confirmation("Title", "Text", "Accept", "Deny"))
+                .build()
+
+        assertThat(action.confirmation).isEqualTo(Confirmation("Title", "Text", "Accept", "Deny"))
+    }
+
+    @Test
     fun action_describeContents_returns0() {
         assertThat(action1.describeContents()).isEqualTo(0)
         assertThat(action2.describeContents()).isEqualTo(0)
@@ -361,6 +406,17 @@ class SafetyCenterIssueTest {
     }
 
     @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun action_parcelRoundTrip_recreatesEqual_atLeastAndroidU() {
+        val action =
+            SafetyCenterIssue.Action.Builder(action1)
+                .setConfirmation(Confirmation("Title", "Text", "Accept", "Deny"))
+                .build()
+
+        assertThat(action).recreatesEqual(SafetyCenterIssue.Action.CREATOR)
+    }
+
+    @Test
     fun action_equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
         issueActionNewTiramisuEqualsHashCodeToStringTester().test()
     }
@@ -368,8 +424,70 @@ class SafetyCenterIssueTest {
     @Test
     @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun action_equalsHashCodeToString_usingEqualsHashCodeToStringTester_atLeastAndroidU() {
+        val confirmation = Confirmation("Title", "Text", "Accept", "Deny")
         issueActionNewTiramisuEqualsHashCodeToStringTester(
                 createCopyFromBuilder = { SafetyCenterIssue.Action.Builder(it).build() })
+            .addEqualityGroup(
+                SafetyCenterIssue.Action.Builder(action1).setConfirmation(confirmation).build())
+            .addEqualityGroup(
+                SafetyCenterIssue.Action.Builder(action2).setConfirmation(confirmation).build())
+            .addEqualityGroup(
+                SafetyCenterIssue.Action.Builder("an_id", "a label", pendingIntent1)
+                    .setWillResolve(true)
+                    .setIsInFlight(true)
+                    .setSuccessMessage("a success message")
+                    .setConfirmation(confirmation)
+                    .build(),
+                SafetyCenterIssue.Action.Builder("an_id", "a label", pendingIntent1)
+                    .setWillResolve(true)
+                    .setIsInFlight(true)
+                    .setSuccessMessage("a success message")
+                    .setConfirmation(confirmation)
+                    .build())
+            .addEqualityGroup(
+                SafetyCenterIssue.Action.Builder("an_id", "a label", pendingIntent1)
+                    .setSuccessMessage("a success message")
+                    .setConfirmation(confirmation)
+                    .build())
+            .addEqualityGroup(
+                SafetyCenterIssue.Action.Builder("a_different_id", "a label", pendingIntent1)
+                    .setSuccessMessage("a success message")
+                    .setConfirmation(confirmation)
+                    .build())
+            .addEqualityGroup(
+                SafetyCenterIssue.Action.Builder("an_id", "a different label", pendingIntent1)
+                    .setSuccessMessage("a success message")
+                    .setConfirmation(confirmation)
+                    .build())
+            .addEqualityGroup(
+                SafetyCenterIssue.Action.Builder("an_id", "a label", pendingIntent2)
+                    .setSuccessMessage("a success message")
+                    .setConfirmation(confirmation)
+                    .build())
+            .addEqualityGroup(
+                SafetyCenterIssue.Action.Builder("an_id", "a label", pendingIntent1)
+                    .setWillResolve(true)
+                    .setSuccessMessage("a success message")
+                    .setConfirmation(confirmation)
+                    .build())
+            .addEqualityGroup(
+                SafetyCenterIssue.Action.Builder("an_id", "a label", pendingIntent1)
+                    .setIsInFlight(true)
+                    .setSuccessMessage("a success message")
+                    .setConfirmation(confirmation)
+                    .build())
+            .addEqualityGroup(
+                SafetyCenterIssue.Action.Builder("an_id", "a label", pendingIntent1)
+                    .setSuccessMessage("a different success message")
+                    .setConfirmation(confirmation)
+                    .build())
+            .addEqualityGroup(
+                SafetyCenterIssue.Action.Builder("an_id", "a label", pendingIntent1)
+                    .setId("another_id")
+                    .setLabel("another_label")
+                    .setPendingIntent(pendingIntent2)
+                    .setConfirmation(confirmation)
+                    .build())
             .test()
     }
 
@@ -389,6 +507,7 @@ class SafetyCenterIssueTest {
                 .setShouldConfirmDismissal(true)
                 .setActions(listOf(action1))
                 .build()
+        val confirmation = Confirmation("Title", "Text", "Accept", "Deny")
         return newTiramisuEqualsHashCodeToStringTester(
                 createCopyFromBuilder = { SafetyCenterIssue.Builder(it).build() })
             .addEqualityGroup(
@@ -414,6 +533,76 @@ class SafetyCenterIssueTest {
                 SafetyCenterIssue.Builder(issueWithTiramisuFields)
                     .setGroupId("a different group_id")
                     .build())
+            .addEqualityGroup(
+                SafetyCenterIssue.Builder(issueWithTiramisuFields)
+                    .setActions(
+                        listOf(
+                            SafetyCenterIssue.Action.Builder(action1)
+                                .setConfirmation(confirmation)
+                                .build()))
+                    .build())
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun actionConfirmation_getTitle_returnsTitle() {
+        val confirmation = Confirmation("Title", "Text", "Accept", "Deny")
+
+        assertThat(confirmation.title).isEqualTo("Title")
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun actionConfirmation_getText_returnsText() {
+        val confirmation = Confirmation("Title", "Text", "Accept", "Deny")
+
+        assertThat(confirmation.text).isEqualTo("Text")
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun actionConfirmation_getAccept_returnsAccept() {
+        val confirmation = Confirmation("Title", "Text", "Accept", "Deny")
+
+        assertThat(confirmation.accept).isEqualTo("Accept")
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun actionConfirmation_getDeny_returnsDeny() {
+        val confirmation = Confirmation("Title", "Text", "Accept", "Deny")
+
+        assertThat(confirmation.deny).isEqualTo("Deny")
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun actionConfirmation_describeContents_returns0() {
+        val confirmation = Confirmation("Title", "Text", "Accept", "Deny")
+
+        assertThat(confirmation.describeContents()).isEqualTo(0)
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun actionConfirmation_parcelRoundTrip_recreatesEqual() {
+        val confirmation = Confirmation("Title", "Text", "Accept", "Deny")
+
+        assertThat(confirmation).recreatesEqual(Confirmation.CREATOR)
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun actionConfirmation_equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
+        EqualsHashCodeToStringTester.ofParcelable(parcelableCreator = Confirmation.CREATOR)
+            .addEqualityGroup(
+                Confirmation("Title", "Text", "Accept", "Deny"),
+                Confirmation("Title", "Text", "Accept", "Deny"))
+            .addEqualityGroup(Confirmation("Other title", "Text", "Accept", "Deny"))
+            .addEqualityGroup(Confirmation("Title", "Other text", "Accept", "Deny"))
+            .addEqualityGroup(Confirmation("Title", "Text", "Other accept", "Deny"))
+            .addEqualityGroup(Confirmation("Title", "Text", "Accept", "Other deny"))
+            .test()
     }
 
     /**
