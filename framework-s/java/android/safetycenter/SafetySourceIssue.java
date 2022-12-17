@@ -630,11 +630,17 @@ public final class SafetySourceIssue implements Parcelable {
                         String id = in.readString();
                         CharSequence label = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
                         PendingIntent pendingIntent = in.readTypedObject(PendingIntent.CREATOR);
-                        return new Builder(id, label, pendingIntent)
-                                .setWillResolve(in.readBoolean())
-                                .setSuccessMessage(
-                                        TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in))
-                                .build();
+                        Builder builder =
+                                new Builder(id, label, pendingIntent)
+                                        .setWillResolve(in.readBoolean())
+                                        .setSuccessMessage(
+                                                TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(
+                                                        in));
+                        if (SdkLevel.isAtLeastU()) {
+                            Confirmation confirmation = in.readTypedObject(Confirmation.CREATOR);
+                            builder.setConfirmation(confirmation);
+                        }
+                        return builder.build();
                     }
 
                     @Override
@@ -660,18 +666,21 @@ public final class SafetySourceIssue implements Parcelable {
         @NonNull private final PendingIntent mPendingIntent;
         private final boolean mWillResolve;
         @Nullable private final CharSequence mSuccessMessage;
+        @Nullable private final Confirmation mConfirmation;
 
         private Action(
                 @NonNull String id,
                 @NonNull CharSequence label,
                 @NonNull PendingIntent pendingIntent,
                 boolean willResolve,
-                @Nullable CharSequence successMessage) {
+                @Nullable CharSequence successMessage,
+                @Nullable Confirmation confirmation) {
             mId = id;
             mLabel = label;
             mPendingIntent = pendingIntent;
             mWillResolve = willResolve;
             mSuccessMessage = successMessage;
+            mConfirmation = confirmation;
         }
 
         /**
@@ -721,6 +730,19 @@ public final class SafetySourceIssue implements Parcelable {
             return mSuccessMessage;
         }
 
+        /**
+         * Returns the optional data to be displayed in the confirmation dialog prior to launching
+         * the {@link PendingIntent} when the action is clicked on.
+         */
+        @Nullable
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        public Confirmation getConfirmation() {
+            if (!SdkLevel.isAtLeastU()) {
+                throw new UnsupportedOperationException();
+            }
+            return mConfirmation;
+        }
+
         @Override
         public int describeContents() {
             return 0;
@@ -733,6 +755,9 @@ public final class SafetySourceIssue implements Parcelable {
             dest.writeTypedObject(mPendingIntent, flags);
             dest.writeBoolean(mWillResolve);
             TextUtils.writeToParcel(mSuccessMessage, dest, flags);
+            if (SdkLevel.isAtLeastU()) {
+                dest.writeTypedObject(mConfirmation, flags);
+            }
         }
 
         @Override
@@ -744,12 +769,14 @@ public final class SafetySourceIssue implements Parcelable {
                     && TextUtils.equals(mLabel, that.mLabel)
                     && mPendingIntent.equals(that.mPendingIntent)
                     && mWillResolve == that.mWillResolve
-                    && TextUtils.equals(mSuccessMessage, that.mSuccessMessage);
+                    && TextUtils.equals(mSuccessMessage, that.mSuccessMessage)
+                    && Objects.equals(mConfirmation, that.mConfirmation);
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(mId, mLabel, mPendingIntent, mWillResolve, mSuccessMessage);
+            return Objects.hash(
+                    mId, mLabel, mPendingIntent, mWillResolve, mSuccessMessage, mConfirmation);
         }
 
         @Override
@@ -765,7 +792,119 @@ public final class SafetySourceIssue implements Parcelable {
                     + mWillResolve
                     + ", mSuccessMessage="
                     + mSuccessMessage
+                    + ", mConfirmation="
+                    + mConfirmation
                     + '}';
+        }
+
+        /** Data for an action confirmation dialog to be shown before action is executed. */
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        public static final class Confirmation implements Parcelable {
+
+            @NonNull
+            public static final Creator<Confirmation> CREATOR =
+                    new Creator<Confirmation>() {
+                        @Override
+                        public Confirmation createFromParcel(Parcel in) {
+                            CharSequence title =
+                                    TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
+                            CharSequence text =
+                                    TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
+                            CharSequence accept =
+                                    TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
+                            CharSequence deny =
+                                    TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
+                            return new Confirmation(title, text, accept, deny);
+                        }
+
+                        @Override
+                        public Confirmation[] newArray(int size) {
+                            return new Confirmation[size];
+                        }
+                    };
+
+            @NonNull private final CharSequence mTitle;
+            @NonNull private final CharSequence mText;
+            @NonNull private final CharSequence mAccept;
+            @NonNull private final CharSequence mDeny;
+
+            public Confirmation(
+                    @NonNull CharSequence title,
+                    @NonNull CharSequence text,
+                    @NonNull CharSequence accept,
+                    @NonNull CharSequence deny) {
+                mTitle = requireNonNull(title);
+                mText = requireNonNull(text);
+                mAccept = requireNonNull(accept);
+                mDeny = requireNonNull(deny);
+            }
+
+            /** Returns the title of action confirmation dialog. */
+            @NonNull
+            public CharSequence getTitle() {
+                return mTitle;
+            }
+
+            /** Returns the text of action confirmation dialog. */
+            @NonNull
+            public CharSequence getText() {
+                return mText;
+            }
+
+            /** Returns the text of the button to accept action execution. */
+            @NonNull
+            public CharSequence getAccept() {
+                return mAccept;
+            }
+
+            /** Returns the text of the button to deny action execution. */
+            @NonNull
+            public CharSequence getDeny() {
+                return mDeny;
+            }
+
+            @Override
+            public int describeContents() {
+                return 0;
+            }
+
+            @Override
+            public void writeToParcel(@NonNull Parcel dest, int flags) {
+                TextUtils.writeToParcel(mTitle, dest, flags);
+                TextUtils.writeToParcel(mText, dest, flags);
+                TextUtils.writeToParcel(mAccept, dest, flags);
+                TextUtils.writeToParcel(mDeny, dest, flags);
+            }
+
+            @Override
+            public boolean equals(Object o) {
+                if (this == o) return true;
+                if (!(o instanceof Confirmation)) return false;
+                Confirmation that = (Confirmation) o;
+                return TextUtils.equals(mTitle, that.mTitle)
+                        && TextUtils.equals(mText, that.mText)
+                        && TextUtils.equals(mAccept, that.mAccept)
+                        && TextUtils.equals(mDeny, that.mDeny);
+            }
+
+            @Override
+            public int hashCode() {
+                return Objects.hash(mTitle, mText, mAccept, mDeny);
+            }
+
+            @Override
+            public String toString() {
+                return "Confirmation{"
+                        + "mTitle="
+                        + mTitle
+                        + ", mText="
+                        + mText
+                        + ", mAccept="
+                        + mAccept
+                        + ", mDeny="
+                        + mDeny
+                        + '}';
+            }
         }
 
         /** Builder class for {@link Action}. */
@@ -776,6 +915,7 @@ public final class SafetySourceIssue implements Parcelable {
             @NonNull private final PendingIntent mPendingIntent;
             private boolean mWillResolve = false;
             @Nullable private CharSequence mSuccessMessage;
+            @Nullable private Confirmation mConfirmation;
 
             /** Creates a {@link Builder} for an {@link Action}. */
             public Builder(
@@ -799,10 +939,15 @@ public final class SafetySourceIssue implements Parcelable {
                 mPendingIntent = action.mPendingIntent;
                 mWillResolve = action.mWillResolve;
                 mSuccessMessage = action.mSuccessMessage;
+                mConfirmation = action.mConfirmation;
             }
 
             /**
              * Sets whether the action will resolve the safety issue. Defaults to {@code false}.
+             *
+             * <p>Note: It is not allowed for resolvable actions to have a {@link PendingIntent}
+             * that launches activity. When extra confirmation is needed consider using {@link
+             * Builder#setConfirmation}.
              *
              * @see #willResolve()
              */
@@ -823,10 +968,35 @@ public final class SafetySourceIssue implements Parcelable {
                 return this;
             }
 
+            /**
+             * Sets the optional data to be displayed in the confirmation dialog prior to launching
+             * the {@link PendingIntent} when the action is clicked on.
+             */
+            @NonNull
+            @RequiresApi(UPSIDE_DOWN_CAKE)
+            public Builder setConfirmation(@Nullable Confirmation confirmation) {
+                if (!SdkLevel.isAtLeastU()) {
+                    throw new UnsupportedOperationException();
+                }
+                mConfirmation = confirmation;
+                return this;
+            }
+
             /** Creates the {@link Action} defined by this {@link Builder}. */
             @NonNull
             public Action build() {
-                return new Action(mId, mLabel, mPendingIntent, mWillResolve, mSuccessMessage);
+                if (SdkLevel.isAtLeastU()) {
+                    boolean willResolveWithActivity = mWillResolve && mPendingIntent.isActivity();
+                    checkArgument(
+                            !willResolveWithActivity,
+                            "Launching activity from Action that should resolve the"
+                                    + " SafetySourceIssue is not allowed. Consider using setting a"
+                                    + " Confirmation if needed, and either set the willResolve to"
+                                    + " false or make PendingIntent to start a service/send a"
+                                    + " broadcast.");
+                }
+                return new Action(
+                        mId, mLabel, mPendingIntent, mWillResolve, mSuccessMessage, mConfirmation);
             }
         }
     }

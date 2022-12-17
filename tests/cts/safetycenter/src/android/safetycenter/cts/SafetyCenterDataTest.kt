@@ -222,6 +222,18 @@ class SafetyCenterDataTest {
     }
 
     @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getExtras_whenCleared_returnsEmptyBundle() {
+        val safetyCenterData =
+                SafetyCenterData.Builder(status1)
+                        .setExtras(filledExtras)
+                        .clearExtras()
+                        .build()
+
+        assertThat(safetyCenterData.extras.keySet()).isEmpty()
+    }
+
+    @Test
     fun getStatus_returnsStatus() {
         assertThat(data1.status).isEqualTo(status1)
         assertThat(data2.status).isEqualTo(status2)
