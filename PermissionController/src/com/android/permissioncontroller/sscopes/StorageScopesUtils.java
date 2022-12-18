@@ -307,6 +307,8 @@ public class StorageScopesUtils {
             if (targetSdk >= 23) { // runtime permissions are always granted for targetSdk < 23 apps
                 if (pm.checkPermission(permission, pkgName) == PackageManager.PERMISSION_GRANTED) {
                     pm.revokeRuntimePermission(pkgName, permission, user, "StorageScopes");
+                    int permFlag = PackageManager.FLAG_PERMISSION_USER_SET;
+                    pm.updatePermissionFlags(permission, pkgName, permFlag, permFlag, user);
                     ++ numOfRevokations;
                 }
             }
