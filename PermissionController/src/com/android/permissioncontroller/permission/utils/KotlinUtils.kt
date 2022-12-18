@@ -81,6 +81,7 @@ import com.android.permissioncontroller.permission.model.livedatatypes.LightPerm
 import com.android.permissioncontroller.permission.model.livedatatypes.PermState
 import com.android.permissioncontroller.permission.service.LocationAccessCheck
 import com.android.permissioncontroller.permission.ui.handheld.SettingsWithLargeHeader
+import java.time.Duration
 import java.util.concurrent.atomic.AtomicReference
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.CoroutineContext
@@ -148,6 +149,17 @@ object KotlinUtils {
 
     /** Whether to show the photo picker option in permission prompts.  */
     private const val PROPERTY_PHOTO_PICKER_PROMPT_ENABLED = "photo_picker_prompt_enabled"
+
+    /**
+     * The minimum amount of time to wait, after scheduling the safety label changes job, before
+     * the job actually runs for the first time.
+     */
+    private const val PROPERTY_SAFETY_LABEL_CHANGES_JOB_DELAY_MILLIS =
+        "safety_label_changes_job_delay_millis"
+
+    /** How often the safety label changes job service will run its job. */
+    private const val PROPERTY_SAFETY_LABEL_CHANGES_JOB_INTERVAL_MILLIS =
+        "safety_label_changes_job_interval_millis"
 
     /**
      * Whether the Permissions Hub 2 flag is enabled
@@ -284,6 +296,27 @@ object KotlinUtils {
         return SdkLevel.isAtLeastU() && DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
                 SAFETY_LABEL_CHANGE_NOTIFICATIONS_ENABLED, false) &&
                 isPermissionRationaleEnabled()
+    }
+
+    /**
+     * The minimum amount of time to wait, after scheduling the safety label changes job, before
+     * the job actually runs for the first time.
+     */
+    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codename = "UpsideDownCake")
+    fun getSafetyLabelChangesJobDelayMillis(): Long {
+        return DeviceConfig.getLong(
+            DeviceConfig.NAMESPACE_PRIVACY,
+            PROPERTY_SAFETY_LABEL_CHANGES_JOB_DELAY_MILLIS,
+            Duration.ofMinutes(30).toMillis())
+    }
+
+    /** How often the safety label changes job will run. */
+    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codename = "UpsideDownCake")
+    fun getSafetyLabelChangesJobIntervalMillis(): Long {
+        return DeviceConfig.getLong(
+            DeviceConfig.NAMESPACE_PRIVACY,
+            PROPERTY_SAFETY_LABEL_CHANGES_JOB_INTERVAL_MILLIS,
+            Duration.ofDays(30).toMillis())
     }
 
     /**

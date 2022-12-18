@@ -167,6 +167,11 @@
     <!-- Message indicating that no apps have provided recent updates. [CHAR LIMIT=80] -->
     <string name="no_recent_updates">No apps have provided recent updates.</string>
 
+    <!-- Notification channel title for safety label changes notification [CHAR LIMIT=65] -->
+    <string name="safety_label_changes_notification_title">Safety label notification title</string>
+    <!-- Notification channel description for safety label changes notification [CHAR LIMIT=240] -->
+    <string name="safety_label_changes_notification_desc">Safety label notification description</string>
+
     <!-- Safety Label Change Notifications End -->
 
 </resources>
