@@ -71,7 +71,7 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
                 && getIntent().getAction().equals(ACTION_SAFETY_CENTER)
                 && getIntent().hasExtra(EXTRA_SAFETY_SOURCES_GROUP_ID)) {
             frag =
-                    new SafetyCenterSubpageFragment(
+                    SafetyCenterSubpageFragment.newInstance(
                             getIntent().getStringExtra(EXTRA_SAFETY_SOURCES_GROUP_ID));
         } else if (getIntent().getAction().equals(PRIVACY_CONTROLS_ACTION)) {
             setTitle(R.string.privacy_controls_title);

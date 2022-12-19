@@ -22,6 +22,7 @@ import android.safetycenter.SafetySourceIssue
 import android.support.test.uiautomator.By
 import android.support.test.uiautomator.BySelector
 import android.support.test.uiautomator.StaleObjectException
+import android.support.test.uiautomator.UiDevice
 import android.support.test.uiautomator.UiObject2
 import android.util.Log
 import com.android.compatibility.common.util.SystemUtil.runShellCommand
@@ -129,6 +130,26 @@ object UiTestHelper {
         runShellCommand("settings put global window_animation_scale $scale")
         runShellCommand("settings put global transition_animation_scale $scale")
         runShellCommand("settings put global animator_duration_scale $scale")
+    }
+
+    internal fun UiDevice.rotate() {
+        unfreezeRotation()
+        if (isNaturalOrientation) {
+            setOrientationLeft()
+        } else {
+            setOrientationNatural()
+        }
+        freezeRotation()
+        waitForIdle()
+    }
+
+    internal fun UiDevice.resetRotation() {
+        if (!isNaturalOrientation) {
+            unfreezeRotation()
+            setOrientationNatural()
+            freezeRotation()
+            waitForIdle()
+        }
     }
 
     private fun buttonSelector(label: CharSequence): BySelector {

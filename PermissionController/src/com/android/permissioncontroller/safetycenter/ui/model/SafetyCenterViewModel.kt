@@ -19,6 +19,7 @@ package com.android.permissioncontroller.safetycenter.ui.model
 import android.app.Application
 import android.content.Context
 import android.os.Build
+import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterErrorDetails
 import android.safetycenter.SafetyCenterIssue
@@ -62,6 +63,16 @@ abstract class SafetyCenterViewModel(protected val app: Application) : AndroidVi
     )
 
     abstract fun pageOpen()
+
+    /**
+     * Refreshes a specific subset of safety sources on page-open.
+     *
+     * This is an overload of the [pageOpen] method and is used to request data from safety sources
+     * that are part of a subpage in the Safety Center UI.
+     *
+     * @param sourceGroupId represents ID of the corresponding safety sources group
+     */
+    @RequiresApi(UPSIDE_DOWN_CAKE) abstract fun pageOpen(sourceGroupId: String)
 
     abstract fun changingConfigurations()
 }
