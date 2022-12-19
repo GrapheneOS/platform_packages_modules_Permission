@@ -98,7 +98,9 @@ class SafetyCenterCtsHelper(private val context: Context) {
         require(isEnabled())
         val listener = SafetyCenterCtsListener()
         safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
-            directExecutor(), listener)
+            directExecutor(),
+            listener
+        )
         if (skipInitialData) {
             listener.receiveSafetyCenterData()
         }
@@ -114,7 +116,10 @@ class SafetyCenterCtsHelper(private val context: Context) {
     ) {
         require(isEnabled())
         safetyCenterManager.setSafetySourceDataWithPermission(
-            safetySourceId, safetySourceData, safetyEvent)
+            safetySourceId,
+            safetySourceData,
+            safetyEvent
+        )
     }
 
     private fun resetFlags() {

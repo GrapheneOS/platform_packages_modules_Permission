@@ -35,7 +35,9 @@ class SafetyCenterConfigTest {
     fun getSafetySourcesGroups_returnsSafetySourcesGroups() {
         assertThat(BASE.safetySourcesGroups)
             .containsExactly(
-                SafetySourcesGroupTest.STATELESS_INFERRED, SafetySourcesGroupTest.HIDDEN_INFERRED)
+                SafetySourcesGroupTest.STATELESS_INFERRED,
+                SafetySourcesGroupTest.HIDDEN_INFERRED
+            )
             .inOrder()
     }
 
@@ -57,11 +59,14 @@ class SafetyCenterConfigTest {
         val sourceGroups = safetyCenterConfigBuilder.build().safetySourcesGroups
 
         safetyCenterConfigBuilder.addSafetySourcesGroup(
-            SafetySourcesGroupTest.STATEFUL_INFERRED_WITH_SUMMARY)
+            SafetySourcesGroupTest.STATEFUL_INFERRED_WITH_SUMMARY
+        )
 
         assertThat(sourceGroups)
             .containsExactly(
-                SafetySourcesGroupTest.STATELESS_INFERRED, SafetySourcesGroupTest.HIDDEN_INFERRED)
+                SafetySourcesGroupTest.STATELESS_INFERRED,
+                SafetySourcesGroupTest.HIDDEN_INFERRED
+            )
             .inOrder()
     }
 
@@ -84,7 +89,8 @@ class SafetyCenterConfigTest {
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun equalsHashCodeToString_usingEqualsHashCodeToStringTester_atLeastAndroidU() {
         newTiramisuEqualsHashCodeToStringTester(
-                createCopyFromBuilder = { SafetyCenterConfig.Builder(it).build() })
+                createCopyFromBuilder = { SafetyCenterConfig.Builder(it).build() }
+            )
             .test()
     }
 
@@ -92,18 +98,22 @@ class SafetyCenterConfigTest {
         createCopyFromBuilder: ((SafetyCenterConfig) -> SafetyCenterConfig)? = null
     ) =
         EqualsHashCodeToStringTester.ofParcelable(
-                parcelableCreator = SafetyCenterConfig.CREATOR, createCopy = createCopyFromBuilder)
+                parcelableCreator = SafetyCenterConfig.CREATOR,
+                createCopy = createCopyFromBuilder
+            )
             .addEqualityGroup(
                 BASE,
                 SafetyCenterConfig.Builder()
                     .addSafetySourcesGroup(SafetySourcesGroupTest.STATELESS_INFERRED)
                     .addSafetySourcesGroup(SafetySourcesGroupTest.HIDDEN_INFERRED)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyCenterConfig.Builder()
                     .addSafetySourcesGroup(SafetySourcesGroupTest.HIDDEN_INFERRED)
                     .addSafetySourcesGroup(SafetySourcesGroupTest.STATELESS_INFERRED)
-                    .build())
+                    .build()
+            )
 
     companion object {
         private val BASE =

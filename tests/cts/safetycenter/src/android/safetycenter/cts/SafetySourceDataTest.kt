@@ -350,10 +350,12 @@ class SafetySourceDataTest {
         EqualsHashCodeToStringTester.ofParcelable(parcelableCreator = SafetySourceData.CREATOR)
             .addEqualityGroup(
                 SafetySourceData.Builder().setStatus(firstStatus).build(),
-                SafetySourceData.Builder().setStatus(firstStatus).build())
+                SafetySourceData.Builder().setStatus(firstStatus).build()
+            )
             .addEqualityGroup(
                 SafetySourceData.Builder().addIssue(firstIssue).addIssue(secondIssue).build(),
-                SafetySourceData.Builder().addIssue(firstIssue).addIssue(secondIssue).build())
+                SafetySourceData.Builder().addIssue(firstIssue).addIssue(secondIssue).build()
+            )
             .addEqualityGroup(
                 SafetySourceData.Builder()
                     .setStatus(firstStatus)
@@ -364,17 +366,20 @@ class SafetySourceDataTest {
                     .setStatus(firstStatus)
                     .addIssue(firstIssue)
                     .addIssue(secondIssue)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(SafetySourceData.Builder().setStatus(secondStatus).build())
             .addEqualityGroup(
-                SafetySourceData.Builder().addIssue(secondIssue).addIssue(firstIssue).build())
+                SafetySourceData.Builder().addIssue(secondIssue).addIssue(firstIssue).build()
+            )
             .addEqualityGroup(SafetySourceData.Builder().addIssue(firstIssue).build())
             .addEqualityGroup(
                 SafetySourceData.Builder()
                     .setStatus(secondStatus)
                     .addIssue(firstIssue)
                     .addIssue(secondIssue)
-                    .build())
+                    .build()
+            )
             .test()
     }
 
@@ -389,17 +394,20 @@ class SafetySourceDataTest {
         EqualsHashCodeToStringTester.ofParcelable(
                 parcelableCreator = SafetySourceData.CREATOR,
                 ignoreToString = true,
-                createCopy = { SafetySourceData.Builder(it).build() })
+                createCopy = { SafetySourceData.Builder(it).build() }
+            )
             .addEqualityGroup(
                 SafetySourceData.Builder().setStatus(firstStatus).build(),
-                SafetySourceData.Builder().setStatus(firstStatus).setExtras(filledExtras).build())
+                SafetySourceData.Builder().setStatus(firstStatus).setExtras(filledExtras).build()
+            )
             .addEqualityGroup(
                 SafetySourceData.Builder().addIssue(firstIssue).addIssue(secondIssue).build(),
                 SafetySourceData.Builder()
                     .addIssue(firstIssue)
                     .addIssue(secondIssue)
                     .setExtras(filledExtras)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySourceData.Builder()
                     .setStatus(firstStatus)
@@ -411,20 +419,24 @@ class SafetySourceDataTest {
                     .addIssue(firstIssue)
                     .addIssue(secondIssue)
                     .setExtras(filledExtras)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySourceData.Builder().setStatus(secondStatus).build(),
-                SafetySourceData.Builder().setStatus(secondStatus).setExtras(filledExtras).build())
+                SafetySourceData.Builder().setStatus(secondStatus).setExtras(filledExtras).build()
+            )
             .addEqualityGroup(
                 SafetySourceData.Builder().addIssue(secondIssue).addIssue(firstIssue).build(),
                 SafetySourceData.Builder()
                     .addIssue(secondIssue)
                     .addIssue(firstIssue)
                     .setExtras(filledExtras)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySourceData.Builder().addIssue(firstIssue).build(),
-                SafetySourceData.Builder().addIssue(firstIssue).setExtras(filledExtras).build())
+                SafetySourceData.Builder().addIssue(firstIssue).setExtras(filledExtras).build()
+            )
             .addEqualityGroup(
                 SafetySourceData.Builder()
                     .setStatus(secondStatus)
@@ -436,7 +448,8 @@ class SafetySourceDataTest {
                     .addIssue(firstIssue)
                     .addIssue(secondIssue)
                     .setExtras(filledExtras)
-                    .build())
+                    .build()
+            )
             .test()
     }
 
@@ -472,7 +485,9 @@ class SafetySourceDataTest {
                     context,
                     /* requestCode = */ 0,
                     Intent("Status PendingIntent $id"),
-                    FLAG_IMMUTABLE))
+                    FLAG_IMMUTABLE
+                )
+            )
             .build()
 
     private fun createIssue(severityLevel: Int, id: Int = 0) =
@@ -481,7 +496,8 @@ class SafetySourceDataTest {
                 "Issue summary $id",
                 "Issue summary $id",
                 severityLevel,
-                "Issue type id $id")
+                "Issue type id $id"
+            )
             .addAction(
                 SafetySourceIssue.Action.Builder(
                         "Action id $id",
@@ -490,8 +506,11 @@ class SafetySourceDataTest {
                             context,
                             /* requestCode = */ 0,
                             Intent("Issue PendingIntent $id"),
-                            FLAG_IMMUTABLE))
-                    .build())
+                            FLAG_IMMUTABLE
+                        )
+                    )
+                    .build()
+            )
             .build()
 
     private companion object {

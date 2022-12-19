@@ -100,7 +100,9 @@ class SafetyCenterNotificationTest {
         SafetyCenterFlags.notificationsAllowedSources = emptySet()
 
         safetyCenterCtsHelper.setData(
-            SINGLE_SOURCE_ID, safetySourceCtsData.recommendationWithAccountIssue)
+            SINGLE_SOURCE_ID,
+            safetySourceCtsData.recommendationWithAccountIssue
+        )
 
         CtsNotificationListener.waitForZeroNotifications()
     }
@@ -110,7 +112,9 @@ class SafetyCenterNotificationTest {
         SafetyCenterFlags.notificationsEnabled = false
 
         safetyCenterCtsHelper.setData(
-            SINGLE_SOURCE_ID, safetySourceCtsData.recommendationWithAccountIssue)
+            SINGLE_SOURCE_ID,
+            safetySourceCtsData.recommendationWithAccountIssue
+        )
 
         CtsNotificationListener.waitForZeroNotifications()
     }
@@ -125,7 +129,8 @@ class SafetyCenterNotificationTest {
                     safetySourceCtsData
                         .defaultRecommendationIssueBuilder()
                         .setNotificationBehavior(SafetySourceIssue.NOTIFICATION_BEHAVIOR_NEVER)
-                        .build())
+                        .build()
+                )
                 .build()
 
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
@@ -143,14 +148,17 @@ class SafetyCenterNotificationTest {
                     safetySourceCtsData
                         .defaultRecommendationIssueBuilder("Notify immediately", "This is urgent!")
                         .setNotificationBehavior(
-                            SafetySourceIssue.NOTIFICATION_BEHAVIOR_IMMEDIATELY)
-                        .build())
+                            SafetySourceIssue.NOTIFICATION_BEHAVIOR_IMMEDIATELY
+                        )
+                        .build()
+                )
                 .build()
 
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
 
         CtsNotificationListener.waitForSingleNotificationMatching(
-            NotificationCharacteristics(title = "Notify immediately", text = "This is urgent!"))
+            NotificationCharacteristics(title = "Notify immediately", text = "This is urgent!")
+        )
     }
 
     @Test
@@ -162,7 +170,10 @@ class SafetyCenterNotificationTest {
 
         CtsNotificationListener.waitForSingleNotificationMatching(
             NotificationCharacteristics(
-                title = "Recommendation issue title", text = "Recommendation issue summary"))
+                title = "Recommendation issue title",
+                text = "Recommendation issue summary"
+            )
+        )
     }
 
     @Test
@@ -172,14 +183,19 @@ class SafetyCenterNotificationTest {
             singleSourceConfig(
                 dynamicSafetySourceBuilder("MyNotifiableSource")
                     .setNotificationsAllowed(true)
-                    .build()))
+                    .build()
+            )
+        )
         val data = safetySourceCtsData.recommendationWithAccountIssue
 
         safetyCenterCtsHelper.setData("MyNotifiableSource", data)
 
         CtsNotificationListener.waitForSingleNotificationMatching(
             NotificationCharacteristics(
-                title = "Recommendation issue title", text = "Recommendation issue summary"))
+                title = "Recommendation issue title",
+                text = "Recommendation issue summary"
+            )
+        )
     }
 
     @Test
@@ -188,15 +204,15 @@ class SafetyCenterNotificationTest {
             safetySourceCtsData
                 .defaultRecommendationDataBuilder()
                 .addIssue(
-                    safetySourceCtsData
-                        .defaultRecommendationIssueBuilder("Initial", "Blah")
-                        .build())
+                    safetySourceCtsData.defaultRecommendationIssueBuilder("Initial", "Blah").build()
+                )
                 .build()
 
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data1)
 
         CtsNotificationListener.waitForSingleNotificationMatching(
-            NotificationCharacteristics(title = "Initial", text = "Blah"))
+            NotificationCharacteristics(title = "Initial", text = "Blah")
+        )
 
         val data2 =
             safetySourceCtsData
@@ -204,13 +220,15 @@ class SafetyCenterNotificationTest {
                 .addIssue(
                     safetySourceCtsData
                         .defaultRecommendationIssueBuilder("Revised", "Different")
-                        .build())
+                        .build()
+                )
                 .build()
 
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data2)
 
         CtsNotificationListener.waitForSingleNotificationMatching(
-            NotificationCharacteristics(title = "Revised", text = "Different"))
+            NotificationCharacteristics(title = "Revised", text = "Different")
+        )
     }
 
     @Test
@@ -246,9 +264,8 @@ class SafetyCenterNotificationTest {
             safetySourceCtsData
                 .defaultRecommendationDataBuilder()
                 .addIssue(
-                    safetySourceCtsData
-                        .defaultRecommendationIssueBuilder("Initial", "Blah")
-                        .build())
+                    safetySourceCtsData.defaultRecommendationIssueBuilder("Initial", "Blah").build()
+                )
                 .build()
         val data2 =
             safetySourceCtsData
@@ -256,14 +273,16 @@ class SafetyCenterNotificationTest {
                 .addIssue(
                     safetySourceCtsData
                         .defaultRecommendationIssueBuilder("Revised", "Different")
-                        .build())
+                        .build()
+                )
                 .build()
 
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data1)
 
         val notification =
             CtsNotificationListener.waitForSingleNotificationMatching(
-                NotificationCharacteristics(title = "Initial", text = "Blah"))
+                NotificationCharacteristics(title = "Initial", text = "Blah")
+            )
 
         CtsNotificationListener.cancelAndWait(notification.key)
 
@@ -275,13 +294,18 @@ class SafetyCenterNotificationTest {
     @Test
     fun dismissSafetyCenterIssue_dismissesNotification() {
         safetyCenterCtsHelper.setData(
-            SINGLE_SOURCE_ID, safetySourceCtsData.recommendationWithAccountIssue)
+            SINGLE_SOURCE_ID,
+            safetySourceCtsData.recommendationWithAccountIssue
+        )
 
         CtsNotificationListener.waitForSingleNotification()
 
         safetyCenterManager.dismissSafetyCenterIssueWithPermission(
             SafetyCenterCtsData.issueId(
-                SINGLE_SOURCE_ID, SafetySourceCtsData.RECOMMENDATION_ISSUE_ID))
+                SINGLE_SOURCE_ID,
+                SafetySourceCtsData.RECOMMENDATION_ISSUE_ID
+            )
+        )
 
         CtsNotificationListener.waitForZeroNotifications()
     }
@@ -289,7 +313,9 @@ class SafetyCenterNotificationTest {
     @Test
     fun dismissingNotification_doesNotUpdateSafetyCenterData() {
         safetyCenterCtsHelper.setData(
-            SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithResolvingGeneralIssue)
+            SINGLE_SOURCE_ID,
+            safetySourceCtsData.criticalWithResolvingGeneralIssue
+        )
 
         val notification = CtsNotificationListener.waitForSingleNotification()
 

@@ -336,7 +336,8 @@ class SafetySourceTest {
                         { SafetySource.Builder(it).build() }
                     } else {
                         null
-                    })
+                    }
+            )
             .addEqualityGroup(DYNAMIC_BAREBONE)
             .addEqualityGroup(
                 dynamicAllOptional(),
@@ -360,7 +361,8 @@ class SafetySourceTest {
                             addPackageCertificateHash(HASH1)
                         }
                     }
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(DYNAMIC_HIDDEN)
             .addEqualityGroup(DYNAMIC_HIDDEN_WITH_SEARCH)
             .addEqualityGroup(DYNAMIC_DISABLED)
@@ -389,7 +391,8 @@ class SafetySourceTest {
                             addPackageCertificateHash(HASH1)
                         }
                     }
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_ALL_OPTIONAL_ID)
@@ -411,7 +414,8 @@ class SafetySourceTest {
                             addPackageCertificateHash(HASH1)
                         }
                     }
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_ALL_OPTIONAL_ID)
@@ -433,7 +437,8 @@ class SafetySourceTest {
                             addPackageCertificateHash(HASH1)
                         }
                     }
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_ALL_OPTIONAL_ID)
@@ -455,7 +460,8 @@ class SafetySourceTest {
                             addPackageCertificateHash(HASH1)
                         }
                     }
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_ALL_OPTIONAL_ID)
@@ -477,7 +483,8 @@ class SafetySourceTest {
                             addPackageCertificateHash(HASH1)
                         }
                     }
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_ALL_OPTIONAL_ID)
@@ -499,14 +506,16 @@ class SafetySourceTest {
                             addPackageCertificateHash(HASH1)
                         }
                     }
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_HIDDEN_ID)
                     .setPackageName(PACKAGE_NAME)
                     .setProfile(SafetySource.PROFILE_PRIMARY)
                     .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_HIDDEN)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_ALL_OPTIONAL_ID)
@@ -528,7 +537,8 @@ class SafetySourceTest {
                             addPackageCertificateHash(HASH1)
                         }
                     }
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_ALL_OPTIONAL_ID)
@@ -550,7 +560,8 @@ class SafetySourceTest {
                             addPackageCertificateHash(HASH1)
                         }
                     }
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_ALL_OPTIONAL_ID)
@@ -572,7 +583,8 @@ class SafetySourceTest {
                             addPackageCertificateHash(HASH1)
                         }
                     }
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_ALL_OPTIONAL_ID)
@@ -594,7 +606,8 @@ class SafetySourceTest {
                             addPackageCertificateHash(HASH1)
                         }
                     }
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_ALL_OPTIONAL_ID)
@@ -616,7 +629,8 @@ class SafetySourceTest {
                             addPackageCertificateHash(HASH1)
                         }
                     }
-                    .build())
+                    .build()
+            )
             .apply {
                 if (SdkLevel.isAtLeastU()) {
                     addEqualityGroup(
@@ -636,7 +650,8 @@ class SafetySourceTest {
                             .setNotificationsAllowed(false)
                             .setDeduplicationGroup(DEDUPLICATION_GROUP)
                             .addPackageCertificateHash(HASH1)
-                            .build())
+                            .build()
+                    )
                     addEqualityGroup(
                         SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                             .setId(DYNAMIC_ALL_OPTIONAL_ID)
@@ -654,7 +669,8 @@ class SafetySourceTest {
                             .setNotificationsAllowed(true)
                             .setDeduplicationGroup("other_deduplication_group")
                             .addPackageCertificateHash(HASH1)
-                            .build())
+                            .build()
+                    )
                     // With no package cert hashes provided
                     addEqualityGroup(
                         SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
@@ -672,7 +688,8 @@ class SafetySourceTest {
                             .setRefreshOnPageOpenAllowed(true)
                             .setNotificationsAllowed(true)
                             .setDeduplicationGroup(DEDUPLICATION_GROUP)
-                            .build())
+                            .build()
+                    )
                     // With longer package cert hash list
                     addEqualityGroup(
                         SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
@@ -692,7 +709,8 @@ class SafetySourceTest {
                             .setDeduplicationGroup(DEDUPLICATION_GROUP)
                             .addPackageCertificateHash(HASH1)
                             .addPackageCertificateHash(HASH2)
-                            .build())
+                            .build()
+                    )
                     // With package cert hash list with different value
                     addEqualityGroup(
                         SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
@@ -711,7 +729,8 @@ class SafetySourceTest {
                             .setNotificationsAllowed(true)
                             .setDeduplicationGroup(DEDUPLICATION_GROUP)
                             .addPackageCertificateHash(HASH2)
-                            .build())
+                            .build()
+                    )
                 }
             }
             .test()

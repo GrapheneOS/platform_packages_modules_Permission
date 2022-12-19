@@ -225,10 +225,7 @@ class SafetyCenterDataTest {
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun getExtras_whenCleared_returnsEmptyBundle() {
         val safetyCenterData =
-                SafetyCenterData.Builder(status1)
-                        .setExtras(filledExtras)
-                        .clearExtras()
-                        .build()
+            SafetyCenterData.Builder(status1).setExtras(filledExtras).clearExtras().build()
 
         assertThat(safetyCenterData.extras.keySet()).isEmpty()
     }
@@ -437,26 +434,57 @@ class SafetyCenterDataTest {
                 .addEqualityGroup(
                     data1,
                     SafetyCenterData(
-                        status1, listOf(issue1), listOf(entryOrGroup1), listOf(staticEntryGroup1)))
+                        status1,
+                        listOf(issue1),
+                        listOf(entryOrGroup1),
+                        listOf(staticEntryGroup1)
+                    )
+                )
                 .addEqualityGroup(
                     data2,
                     SafetyCenterData(
-                        status2, listOf(issue2), listOf(entryOrGroup2), listOf(staticEntryGroup2)))
+                        status2,
+                        listOf(issue2),
+                        listOf(entryOrGroup2),
+                        listOf(staticEntryGroup2)
+                    )
+                )
                 .addEqualityGroup(
                     SafetyCenterData(status1, listOf(), listOf(), listOf()),
-                    SafetyCenterData(status1, listOf(), listOf(), listOf()))
+                    SafetyCenterData(status1, listOf(), listOf(), listOf())
+                )
                 .addEqualityGroup(
                     SafetyCenterData(
-                        status2, listOf(issue1), listOf(entryOrGroup1), listOf(staticEntryGroup1)))
+                        status2,
+                        listOf(issue1),
+                        listOf(entryOrGroup1),
+                        listOf(staticEntryGroup1)
+                    )
+                )
                 .addEqualityGroup(
                     SafetyCenterData(
-                        status1, listOf(issue2), listOf(entryOrGroup1), listOf(staticEntryGroup1)))
+                        status1,
+                        listOf(issue2),
+                        listOf(entryOrGroup1),
+                        listOf(staticEntryGroup1)
+                    )
+                )
                 .addEqualityGroup(
                     SafetyCenterData(
-                        status1, listOf(issue1), listOf(entryOrGroup2), listOf(staticEntryGroup1)))
+                        status1,
+                        listOf(issue1),
+                        listOf(entryOrGroup2),
+                        listOf(staticEntryGroup1)
+                    )
+                )
                 .addEqualityGroup(
                     SafetyCenterData(
-                        status1, listOf(issue1), listOf(entryOrGroup1), listOf(staticEntryGroup2)))
+                        status1,
+                        listOf(issue1),
+                        listOf(entryOrGroup1),
+                        listOf(staticEntryGroup2)
+                    )
+                )
 
         equalsHashCodeToStringTester.test()
     }
@@ -467,11 +495,16 @@ class SafetyCenterDataTest {
         EqualsHashCodeToStringTester.ofParcelable(
                 parcelableCreator = SafetyCenterData.CREATOR,
                 ignoreToString = true,
-                createCopy = { SafetyCenterData.Builder(it).build() })
+                createCopy = { SafetyCenterData.Builder(it).build() }
+            )
             .addEqualityGroup(
                 data1,
                 SafetyCenterData(
-                    status1, listOf(issue1), listOf(entryOrGroup1), listOf(staticEntryGroup1)),
+                    status1,
+                    listOf(issue1),
+                    listOf(entryOrGroup1),
+                    listOf(staticEntryGroup1)
+                ),
                 SafetyCenterData.Builder(status1)
                     .addIssue(issue1)
                     .addEntryOrGroup(entryOrGroup1)
@@ -482,7 +515,8 @@ class SafetyCenterDataTest {
                     .addEntryOrGroup(entryOrGroup1)
                     .addStaticEntryGroup(staticEntryGroup1)
                     .setExtras(filledExtras)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyCenterData.Builder(status1)
                     .addEntryOrGroup(entryOrGroup1)
@@ -494,7 +528,8 @@ class SafetyCenterDataTest {
                     .addStaticEntryGroup(staticEntryGroup1)
                     .addDismissedIssue(issue1)
                     .setExtras(filledExtras)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyCenterData.Builder(status1)
                     .addEntryOrGroup(entryOrGroup1)
@@ -506,7 +541,8 @@ class SafetyCenterDataTest {
                     .addStaticEntryGroup(staticEntryGroup1)
                     .addDismissedIssue(issue2)
                     .setExtras(filledExtras)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyCenterData.Builder(status1)
                     .addIssue(issue2)
@@ -521,7 +557,8 @@ class SafetyCenterDataTest {
                     .addStaticEntryGroup(staticEntryGroup1)
                     .addIssue(issue1)
                     .setExtras(filledExtras)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyCenterData.Builder(status1)
                     .addIssue(issue1)
@@ -535,7 +572,8 @@ class SafetyCenterDataTest {
                     .addStaticEntryGroup(staticEntryGroup1)
                     .addDismissedIssue(issue2)
                     .setExtras(filledExtras)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyCenterData.Builder(status1)
                     .addEntryOrGroup(entryOrGroup1)
@@ -549,7 +587,8 @@ class SafetyCenterDataTest {
                     .addDismissedIssue(issue1)
                     .addDismissedIssue(issue2)
                     .setExtras(filledExtras)
-                    .build())
+                    .build()
+            )
             .test()
     }
 
