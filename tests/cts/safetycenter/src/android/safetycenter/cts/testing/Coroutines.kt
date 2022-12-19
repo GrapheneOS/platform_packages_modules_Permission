@@ -17,6 +17,9 @@
 package android.safetycenter.cts.testing
 
 import java.time.Duration
+import kotlinx.coroutines.DEBUG_PROPERTY_NAME
+import kotlinx.coroutines.DEBUG_PROPERTY_VALUE_AUTO
+import kotlinx.coroutines.DEBUG_PROPERTY_VALUE_ON
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withTimeout
@@ -55,4 +58,19 @@ object Coroutines {
 
     /** A short timeout, to be used for actions that are expected not to complete. */
     val TIMEOUT_SHORT: Duration = Duration.ofMillis(750)
+
+    private val debugMode = System.getProperty(DEBUG_PROPERTY_NAME, DEBUG_PROPERTY_VALUE_AUTO)
+
+    /**
+     * Enables debug mode for coroutines, in particular this enables stack traces in case of
+     * failures.
+     */
+    fun enableDebugging() {
+        System.setProperty(DEBUG_PROPERTY_NAME, DEBUG_PROPERTY_VALUE_ON)
+    }
+
+    /** Resets the debug mode to its original state. */
+    fun resetDebugging() {
+        System.setProperty(DEBUG_PROPERTY_NAME, debugMode)
+    }
 }
