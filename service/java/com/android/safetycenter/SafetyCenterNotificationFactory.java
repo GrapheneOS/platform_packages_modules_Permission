@@ -72,8 +72,8 @@ final class SafetyCenterNotificationFactory {
 
         Notification.Builder builder =
                 new Notification.Builder(mContext, channelId)
-                        // TODO(b/259399024): Use suitable icon here
-                        .setSmallIcon(android.R.drawable.ic_safety_protection)
+                        // TODO(b/259399024): Use correct icon here
+                        .setSmallIcon(android.R.drawable.ic_dialog_alert)
                         .setExtras(getNotificationExtras())
                         .setContentTitle(issue.getTitle())
                         .setContentText(issue.getSummary())
