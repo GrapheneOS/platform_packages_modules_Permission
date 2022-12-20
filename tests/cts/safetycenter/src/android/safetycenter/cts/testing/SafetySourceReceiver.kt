@@ -84,16 +84,22 @@ class SafetySourceReceiver : BroadcastReceiver() {
             val notificationManager = getSystemService(NotificationManager::class.java)!!
             notificationManager.createNotificationChannel(
                 NotificationChannel(
-                    NOTIFICATION_CHANNEL_ID, NOTIFICATION_CHANNEL_ID, IMPORTANCE_DEFAULT))
+                    NOTIFICATION_CHANNEL_ID,
+                    NOTIFICATION_CHANNEL_ID,
+                    IMPORTANCE_DEFAULT
+                )
+            )
             startForeground(
                 NOTIFICATION_ID,
                 Notification.Builder(this, NOTIFICATION_CHANNEL_ID)
                     .setContentTitle("SafetySourceReceiver")
                     .setContentText(
                         "SafetySourceReceiver is processing an incoming intent in its " +
-                            "ForegroundService")
+                            "ForegroundService"
+                    )
                     .setSmallIcon(android.R.drawable.ic_info)
-                    .build())
+                    .build()
+            )
             serviceScope.launch {
                 try {
                     safetySourceIntentHandler.handle(this@ForegroundService, intent!!)

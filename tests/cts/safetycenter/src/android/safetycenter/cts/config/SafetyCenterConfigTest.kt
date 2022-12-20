@@ -54,7 +54,8 @@ class SafetyCenterConfigTest {
         val sourceGroups = safetyCenterConfigBuilder.build().safetySourcesGroups
 
         safetyCenterConfigBuilder.addSafetySourcesGroup(
-            SafetySourcesGroupTest.COLLAPSIBLE_WITH_SUMMARY)
+            SafetySourcesGroupTest.COLLAPSIBLE_WITH_SUMMARY
+        )
 
         assertThat(sourceGroups)
             .containsExactly(SafetySourcesGroupTest.RIGID, SafetySourcesGroupTest.HIDDEN)
@@ -79,12 +80,14 @@ class SafetyCenterConfigTest {
                 SafetyCenterConfig.Builder()
                     .addSafetySourcesGroup(SafetySourcesGroupTest.RIGID)
                     .addSafetySourcesGroup(SafetySourcesGroupTest.HIDDEN)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyCenterConfig.Builder()
                     .addSafetySourcesGroup(SafetySourcesGroupTest.HIDDEN)
                     .addSafetySourcesGroup(SafetySourcesGroupTest.RIGID)
-                    .build())
+                    .build()
+            )
             .test()
     }
 

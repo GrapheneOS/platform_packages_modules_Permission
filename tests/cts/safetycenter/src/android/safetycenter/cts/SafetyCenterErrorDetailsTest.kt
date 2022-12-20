@@ -56,7 +56,8 @@ class SafetyCenterErrorDetailsTest {
             .addEqualityGroup(errorDetails2, SafetyCenterErrorDetails("another error message"))
             .addEqualityGroup(
                 SafetyCenterErrorDetails("a different error message"),
-                SafetyCenterErrorDetails("a different error message"))
+                SafetyCenterErrorDetails("a different error message")
+            )
             .test()
     }
 }

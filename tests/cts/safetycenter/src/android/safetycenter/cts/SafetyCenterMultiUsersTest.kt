@@ -128,7 +128,8 @@ class SafetyCenterMultiUsersTest {
             safetyCenterCtsData.safetyCenterIssueRecommendation(DYNAMIC_DISABLED_ID),
             safetyCenterCtsData.safetyCenterIssueRecommendation(ISSUE_ONLY_ALL_OPTIONAL_ID),
             safetyCenterCtsData.safetyCenterIssueInformation(DYNAMIC_IN_RIGID_ID),
-            safetyCenterCtsData.safetyCenterIssueInformation(ISSUE_ONLY_IN_RIGID_ID))
+            safetyCenterCtsData.safetyCenterIssueInformation(ISSUE_ONLY_IN_RIGID_ID)
+        )
 
     private val dynamicBareboneDefault =
         safetyCenterCtsData.safetyCenterEntryDefault(DYNAMIC_BAREBONE_ID)
@@ -150,7 +151,10 @@ class SafetyCenterMultiUsersTest {
         get() =
             safetyCenterCtsData
                 .safetyCenterEntryDefaultBuilder(
-                    DYNAMIC_DISABLED_ID, userId = deviceState.workProfile().id(), title = "Paste")
+                    DYNAMIC_DISABLED_ID,
+                    userId = deviceState.workProfile().id(),
+                    title = "Paste"
+                )
                 .setPendingIntent(null)
                 .setEnabled(false)
 
@@ -195,10 +199,13 @@ class SafetyCenterMultiUsersTest {
                 .safetyCenterEntryDefaultStaticBuilder(
                     STATIC_ALL_OPTIONAL_ID,
                     userId = deviceState.workProfile().id(),
-                    title = "Paste")
+                    title = "Paste"
+                )
                 .setPendingIntent(
                     createTestActivityRedirectPendingIntentForUser(
-                        deviceState.workProfile().userHandle()))
+                        deviceState.workProfile().userHandle()
+                    )
+                )
 
     private val staticAllOptionalForWork
         get() = staticAllOptionalForWorkBuilder.build()
@@ -230,7 +237,9 @@ class SafetyCenterMultiUsersTest {
                 .setSummary("OK")
                 .setPendingIntent(
                     createTestActivityRedirectPendingIntentForUser(
-                        deviceState.workProfile().userHandle()))
+                        deviceState.workProfile().userHandle()
+                    )
+                )
 
     private val rigidEntryForWork
         get() = rigidEntryForWorkBuilder.build()
@@ -261,8 +270,13 @@ class SafetyCenterMultiUsersTest {
                             deviceState.secondaryUser().id(),
                             pendingIntent =
                                 createTestActivityRedirectPendingIntentForUser(
-                                    deviceState.secondaryUser().userHandle())))),
-                emptyList())
+                                    deviceState.secondaryUser().userHandle()
+                                )
+                        )
+                    )
+                ),
+                emptyList()
+            )
 
     @Before
     fun assumeDeviceSupportsSafetyCenterToRunTests() {
@@ -332,12 +346,15 @@ class SafetyCenterMultiUsersTest {
         val managedSafetyCenterManager =
             getSafetyCenterManagerForUser(deviceState.workProfile().userHandle())
         managedSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
-            SINGLE_SOURCE_ALL_PROFILE_ID, dataForWork)
+            SINGLE_SOURCE_ALL_PROFILE_ID,
+            dataForWork
+        )
 
         setQuietMode(true)
         val apiSafetySourceDataForWork =
             managedSafetyCenterManager.getSafetySourceDataWithInteractAcrossUsersPermission(
-                SINGLE_SOURCE_ALL_PROFILE_ID)
+                SINGLE_SOURCE_ALL_PROFILE_ID
+            )
 
         assertThat(apiSafetySourceDataForWork).isEqualTo(dataForWork)
     }
@@ -351,17 +368,23 @@ class SafetyCenterMultiUsersTest {
             getSafetyCenterManagerForUser(deviceState.secondaryUser().userHandle())
         val dataForSecondaryUser = safetySourceCtsData.information
         secondaryUserSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
-            SINGLE_SOURCE_ALL_PROFILE_ID, dataForSecondaryUser)
+            SINGLE_SOURCE_ALL_PROFILE_ID,
+            dataForSecondaryUser
+        )
         checkState(
             secondaryUserSafetyCenterManager.getSafetySourceDataWithInteractAcrossUsersPermission(
-                SINGLE_SOURCE_ALL_PROFILE_ID) == dataForSecondaryUser)
+                SINGLE_SOURCE_ALL_PROFILE_ID
+            ) == dataForSecondaryUser
+        )
 
         deviceState.secondaryUser().remove()
 
         assertThat(
                 secondaryUserSafetyCenterManager
                     .getSafetySourceDataWithInteractAcrossUsersPermission(
-                        SINGLE_SOURCE_ALL_PROFILE_ID))
+                        SINGLE_SOURCE_ALL_PROFILE_ID
+                    )
+            )
             .isNull()
     }
 
@@ -396,14 +419,20 @@ class SafetyCenterMultiUsersTest {
                             .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNKNOWN)
                             .setSummary(
                                 safetyCenterResourcesContext.getStringByName(
-                                    "group_unknown_summary"))
+                                    "group_unknown_summary"
+                                )
+                            )
                             .setEntries(listOf(dynamicBareboneDefault, dynamicDisabledDefault))
-                            .build()),
+                            .build()
+                    ),
                     SafetyCenterEntryOrGroup(
                         staticGroupBuilder
                             .setEntries(listOf(staticBarebone, staticAllOptional))
-                            .build())),
-                listOf(SafetyCenterStaticEntryGroup("OK", listOf(rigidEntry, rigidEntry))))
+                            .build()
+                    )
+                ),
+                listOf(SafetyCenterStaticEntryGroup("OK", listOf(rigidEntry, rigidEntry)))
+            )
         assertThat(apiSafetyCenterData).isEqualTo(safetyCenterDataFromComplexConfig)
     }
 
@@ -425,22 +454,33 @@ class SafetyCenterMultiUsersTest {
                             .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNKNOWN)
                             .setSummary(
                                 safetyCenterResourcesContext.getStringByName(
-                                    "group_unknown_summary"))
+                                    "group_unknown_summary"
+                                )
+                            )
                             .setEntries(
                                 listOf(
                                     dynamicBareboneDefault,
                                     dynamicDisabledDefault,
-                                    dynamicDisabledForWorkDefault))
-                            .build()),
+                                    dynamicDisabledForWorkDefault
+                                )
+                            )
+                            .build()
+                    ),
                     SafetyCenterEntryOrGroup(
                         staticGroupBuilder
                             .setEntries(
-                                listOf(staticBarebone, staticAllOptional, staticAllOptionalForWork))
-                            .build())),
+                                listOf(staticBarebone, staticAllOptional, staticAllOptionalForWork)
+                            )
+                            .build()
+                    )
+                ),
                 listOf(
                     SafetyCenterStaticEntryGroup(
                         "OK",
-                        listOf(rigidEntry, rigidEntryForWork, rigidEntry, rigidEntryForWork))))
+                        listOf(rigidEntry, rigidEntryForWork, rigidEntry, rigidEntryForWork)
+                    )
+                )
+            )
         assertThat(apiSafetyCenterData).isEqualTo(safetyCenterDataFromComplexConfig)
     }
 
@@ -467,18 +507,26 @@ class SafetyCenterMultiUsersTest {
                                     dynamicBareboneUpdated,
                                     dynamicDisabledUpdated,
                                     dynamicDisabledForWorkDefault,
-                                    dynamicHiddenUpdated))
-                            .build()),
+                                    dynamicHiddenUpdated
+                                )
+                            )
+                            .build()
+                    ),
                     SafetyCenterEntryOrGroup(
                         staticGroupBuilder
                             .setEntries(
-                                listOf(staticBarebone, staticAllOptional, staticAllOptionalForWork))
-                            .build())),
+                                listOf(staticBarebone, staticAllOptional, staticAllOptionalForWork)
+                            )
+                            .build()
+                    )
+                ),
                 listOf(
                     SafetyCenterStaticEntryGroup(
                         "OK",
-                        listOf(
-                            rigidEntryUpdated, rigidEntryForWork, rigidEntry, rigidEntryForWork))))
+                        listOf(rigidEntryUpdated, rigidEntryForWork, rigidEntry, rigidEntryForWork)
+                    )
+                )
+            )
         assertThat(apiSafetyCenterData).isEqualTo(safetyCenterDataFromComplexConfig)
     }
 
@@ -502,17 +550,28 @@ class SafetyCenterMultiUsersTest {
                     safetyCenterCtsData.safetyCenterIssueRecommendation(DYNAMIC_DISABLED_ID),
                     safetyCenterCtsData.safetyCenterIssueRecommendation(ISSUE_ONLY_ALL_OPTIONAL_ID),
                     safetyCenterCtsData.safetyCenterIssueInformation(
-                        DYNAMIC_DISABLED_ID, managedUserId),
+                        DYNAMIC_DISABLED_ID,
+                        managedUserId
+                    ),
                     safetyCenterCtsData.safetyCenterIssueInformation(
-                        DYNAMIC_HIDDEN_ID, managedUserId),
+                        DYNAMIC_HIDDEN_ID,
+                        managedUserId
+                    ),
                     safetyCenterCtsData.safetyCenterIssueInformation(
-                        ISSUE_ONLY_ALL_OPTIONAL_ID, managedUserId),
+                        ISSUE_ONLY_ALL_OPTIONAL_ID,
+                        managedUserId
+                    ),
                     safetyCenterCtsData.safetyCenterIssueInformation(DYNAMIC_IN_RIGID_ID),
                     safetyCenterCtsData.safetyCenterIssueInformation(
-                        DYNAMIC_IN_RIGID_ID, managedUserId),
+                        DYNAMIC_IN_RIGID_ID,
+                        managedUserId
+                    ),
                     safetyCenterCtsData.safetyCenterIssueInformation(ISSUE_ONLY_IN_RIGID_ID),
                     safetyCenterCtsData.safetyCenterIssueInformation(
-                        ISSUE_ONLY_IN_RIGID_ID, managedUserId)),
+                        ISSUE_ONLY_IN_RIGID_ID,
+                        managedUserId
+                    )
+                ),
                 listOf(
                     SafetyCenterEntryOrGroup(
                         SafetyCenterEntryGroup.Builder(DYNAMIC_GROUP_ID, "OK")
@@ -524,13 +583,19 @@ class SafetyCenterMultiUsersTest {
                                     dynamicDisabledUpdated,
                                     dynamicDisabledForWorkUpdated,
                                     dynamicHiddenUpdated,
-                                    dynamicHiddenForWorkUpdated))
-                            .build()),
+                                    dynamicHiddenForWorkUpdated
+                                )
+                            )
+                            .build()
+                    ),
                     SafetyCenterEntryOrGroup(
                         staticGroupBuilder
                             .setEntries(
-                                listOf(staticBarebone, staticAllOptional, staticAllOptionalForWork))
-                            .build())),
+                                listOf(staticBarebone, staticAllOptional, staticAllOptionalForWork)
+                            )
+                            .build()
+                    )
+                ),
                 listOf(
                     SafetyCenterStaticEntryGroup(
                         "OK",
@@ -538,7 +603,11 @@ class SafetyCenterMultiUsersTest {
                             rigidEntryUpdated,
                             rigidEntryForWorkUpdated,
                             rigidEntry,
-                            rigidEntryForWork))))
+                            rigidEntryForWork
+                        )
+                    )
+                )
+            )
         assertThat(apiSafetyCenterData).isEqualTo(safetyCenterDataFromComplexConfig)
     }
 
@@ -569,16 +638,23 @@ class SafetyCenterMultiUsersTest {
                                     dynamicBareboneUpdated,
                                     dynamicDisabledUpdated,
                                     dynamicDisabledForWorkPaused,
-                                    dynamicHiddenUpdated))
-                            .build()),
+                                    dynamicHiddenUpdated
+                                )
+                            )
+                            .build()
+                    ),
                     SafetyCenterEntryOrGroup(
                         staticGroupBuilder
                             .setEntries(
                                 listOf(
                                     staticBarebone,
                                     staticAllOptional,
-                                    staticAllOptionalForWorkPaused))
-                            .build())),
+                                    staticAllOptionalForWorkPaused
+                                )
+                            )
+                            .build()
+                    )
+                ),
                 listOf(
                     SafetyCenterStaticEntryGroup(
                         "OK",
@@ -586,7 +662,11 @@ class SafetyCenterMultiUsersTest {
                             rigidEntryUpdated,
                             rigidEntryForWorkPaused,
                             rigidEntry,
-                            rigidEntryForWorkPaused))))
+                            rigidEntryForWorkPaused
+                        )
+                    )
+                )
+            )
         assertThat(apiSafetyCenterData).isEqualTo(safetyCenterDataFromComplexConfig)
     }
 
@@ -602,7 +682,9 @@ class SafetyCenterMultiUsersTest {
         val managedSafetyCenterManager =
             getSafetyCenterManagerForUser(deviceState.workProfile().userHandle())
         managedSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
-            SINGLE_SOURCE_ALL_PROFILE_ID, dataForPrimaryUserWorkProfile)
+            SINGLE_SOURCE_ALL_PROFILE_ID,
+            dataForPrimaryUserWorkProfile
+        )
 
         val secondaryUserSafetyCenterManager =
             getSafetyCenterManagerForUser(deviceState.secondaryUser().userHandle())
@@ -629,26 +711,38 @@ class SafetyCenterMultiUsersTest {
                             .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNKNOWN)
                             .setSummary(
                                 safetyCenterResourcesContext.getStringByName(
-                                    "group_unknown_summary"))
+                                    "group_unknown_summary"
+                                )
+                            )
                             .setEntries(
                                 listOf(
                                     safetyCenterCtsData.safetyCenterEntryDefault(
-                                        SINGLE_SOURCE_ALL_PROFILE_ID),
+                                        SINGLE_SOURCE_ALL_PROFILE_ID
+                                    ),
                                     safetyCenterCtsData.safetyCenterEntryDefault(
                                         SINGLE_SOURCE_ALL_PROFILE_ID,
                                         deviceState.workProfile().id(),
                                         title = "Paste",
                                         pendingIntent =
                                             createTestActivityRedirectPendingIntentForUser(
-                                                deviceState.workProfile().userHandle()))))
-                            .build())),
-                emptyList())
+                                                deviceState.workProfile().userHandle()
+                                            )
+                                    )
+                                )
+                            )
+                            .build()
+                    )
+                ),
+                emptyList()
+            )
         checkState(
             safetyCenterManager.getSafetyCenterDataWithPermission() ==
-                safetyCenterDataWithWorkProfile)
+                safetyCenterDataWithWorkProfile
+        )
         checkState(
             managedSafetyCenterManager.getSafetyCenterDataWithInteractAcrossUsersPermission() ==
-                safetyCenterDataWithWorkProfile)
+                safetyCenterDataWithWorkProfile
+        )
 
         deviceState.workProfile().remove()
 
@@ -658,13 +752,16 @@ class SafetyCenterMultiUsersTest {
                 emptyList(),
                 listOf(
                     SafetyCenterEntryOrGroup(
-                        safetyCenterCtsData.safetyCenterEntryDefault(
-                            SINGLE_SOURCE_ALL_PROFILE_ID))),
-                emptyList())
+                        safetyCenterCtsData.safetyCenterEntryDefault(SINGLE_SOURCE_ALL_PROFILE_ID)
+                    )
+                ),
+                emptyList()
+            )
         assertThat(safetyCenterManager.getSafetyCenterDataWithPermission())
             .isEqualTo(safetyCenterDataForPrimaryUser)
         assertThat(
-                managedSafetyCenterManager.getSafetyCenterDataWithInteractAcrossUsersPermission())
+                managedSafetyCenterManager.getSafetyCenterDataWithInteractAcrossUsersPermission()
+            )
             .isEqualTo(SafetyCenterCtsData.DEFAULT)
     }
 
@@ -678,13 +775,15 @@ class SafetyCenterMultiUsersTest {
         checkState(
             secondaryUserSafetyCenterManager
                 .getSafetyCenterDataWithInteractAcrossUsersPermission() ==
-                safetyCenterDataForSecondaryUser)
+                safetyCenterDataForSecondaryUser
+        )
 
         deviceState.secondaryUser().remove()
 
         assertThat(
                 secondaryUserSafetyCenterManager
-                    .getSafetyCenterDataWithInteractAcrossUsersPermission())
+                    .getSafetyCenterDataWithInteractAcrossUsersPermission()
+            )
             .isEqualTo(SafetyCenterCtsData.DEFAULT)
     }
 
@@ -700,7 +799,9 @@ class SafetyCenterMultiUsersTest {
             SafetySourceCtsData.issuesOnly(safetySourceCtsData.criticalResolvingGeneralIssue)
         assertFailsWith(IllegalArgumentException::class) {
             managedSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
-                ISSUE_ONLY_ALL_OPTIONAL_ID, dataForWork)
+                ISSUE_ONLY_ALL_OPTIONAL_ID,
+                dataForWork
+            )
         }
     }
 
@@ -713,11 +814,16 @@ class SafetyCenterMultiUsersTest {
         val managedSafetyCenterManager =
             getSafetyCenterManagerForUser(deviceState.workProfile().userHandle())
         managedSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
-            SINGLE_SOURCE_ALL_PROFILE_ID, dataForWork)
+            SINGLE_SOURCE_ALL_PROFILE_ID,
+            dataForWork
+        )
 
         assertFailsWith(SecurityException::class) {
             managedSafetyCenterManager.setSafetySourceData(
-                SINGLE_SOURCE_ALL_PROFILE_ID, dataForWork, EVENT_SOURCE_STATE_CHANGED)
+                SINGLE_SOURCE_ALL_PROFILE_ID,
+                dataForWork,
+                EVENT_SOURCE_STATE_CHANGED
+            )
         }
     }
 
@@ -735,13 +841,16 @@ class SafetyCenterMultiUsersTest {
         val dataForWorkProfile =
             SafetySourceCtsData.issuesOnly(safetySourceCtsData.criticalResolvingGeneralIssue)
         managedSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
-            ISSUE_ONLY_ALL_PROFILE_SOURCE_ID, dataForWorkProfile)
+            ISSUE_ONLY_ALL_PROFILE_SOURCE_ID,
+            dataForWorkProfile
+        )
 
         val apiSafetySourceData =
             safetyCenterManager.getSafetySourceDataWithPermission(ISSUE_ONLY_ALL_PROFILE_SOURCE_ID)
         val apiSafetySourceDataForWork =
             managedSafetyCenterManager.getSafetySourceDataWithInteractAcrossUsersPermission(
-                ISSUE_ONLY_ALL_PROFILE_SOURCE_ID)
+                ISSUE_ONLY_ALL_PROFILE_SOURCE_ID
+            )
         assertThat(apiSafetySourceData).isEqualTo(dataForPrimaryUser)
         assertThat(apiSafetySourceDataForWork).isEqualTo(dataForWorkProfile)
     }
@@ -757,7 +866,9 @@ class SafetyCenterMultiUsersTest {
         val dataForWork = safetySourceCtsData.informationWithIssueForWork
         assertFailsWith(IllegalArgumentException::class) {
             managedSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
-                SINGLE_SOURCE_ID, dataForWork)
+                SINGLE_SOURCE_ID,
+                dataForWork
+            )
         }
     }
 
@@ -773,13 +884,16 @@ class SafetyCenterMultiUsersTest {
         val managedSafetyCenterManager =
             getSafetyCenterManagerForUser(deviceState.workProfile().userHandle())
         managedSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
-            SINGLE_SOURCE_ALL_PROFILE_ID, dataForWork)
+            SINGLE_SOURCE_ALL_PROFILE_ID,
+            dataForWork
+        )
 
         val apiSafetySourceData =
             safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ALL_PROFILE_ID)
         val apiSafetySourceDataForWork =
             managedSafetyCenterManager.getSafetySourceDataWithInteractAcrossUsersPermission(
-                SINGLE_SOURCE_ALL_PROFILE_ID)
+                SINGLE_SOURCE_ALL_PROFILE_ID
+            )
         assertThat(apiSafetySourceData).isEqualTo(dataForPrimaryUser)
         assertThat(apiSafetySourceDataForWork).isEqualTo(dataForWork)
     }
@@ -795,11 +909,14 @@ class SafetyCenterMultiUsersTest {
         val secondaryUserSafetyCenterManager =
             getSafetyCenterManagerForUser(deviceState.secondaryUser().userHandle())
         secondaryUserSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
-            SINGLE_SOURCE_ID, dataForPrimaryUser)
+            SINGLE_SOURCE_ID,
+            dataForPrimaryUser
+        )
 
         val apiSafetySourceData =
             secondaryUserSafetyCenterManager.getSafetySourceDataWithInteractAcrossUsersPermission(
-                SINGLE_SOURCE_ID)
+                SINGLE_SOURCE_ID
+            )
         assertThat(apiSafetySourceData).isEqualTo(dataForPrimaryUser)
     }
 
@@ -815,13 +932,16 @@ class SafetyCenterMultiUsersTest {
         val secondaryUserSafetyCenterManager =
             getSafetyCenterManagerForUser(deviceState.secondaryUser().userHandle())
         secondaryUserSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
-            SINGLE_SOURCE_ID, dataForSecondaryUser)
+            SINGLE_SOURCE_ID,
+            dataForSecondaryUser
+        )
 
         val apiSafetySourceDataForPrimaryUser =
             safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
         val apiSafetySourceDataForSecondaryUser =
             secondaryUserSafetyCenterManager.getSafetySourceDataWithInteractAcrossUsersPermission(
-                SINGLE_SOURCE_ID)
+                SINGLE_SOURCE_ID
+            )
         assertThat(apiSafetySourceDataForPrimaryUser).isEqualTo(dataForPrimaryUser)
         assertThat(apiSafetySourceDataForSecondaryUser).isEqualTo(dataForSecondaryUser)
     }
@@ -836,7 +956,9 @@ class SafetyCenterMultiUsersTest {
         val secondaryUserSafetyCenterManager =
             getSafetyCenterManagerForUser(deviceState.secondaryUser().userHandle())
         secondaryUserSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
-            SINGLE_SOURCE_ID, dataForSecondaryUser)
+            SINGLE_SOURCE_ID,
+            dataForSecondaryUser
+        )
 
         val apiSafetySourceDataForPrimaryUser =
             safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
@@ -865,7 +987,9 @@ class SafetyCenterMultiUsersTest {
     private fun createTestActivityRedirectPendingIntentForUser(user: UserHandle): PendingIntent {
         return callWithShellPermissionIdentity(INTERACT_ACROSS_USERS) {
             SafetySourceCtsData.createRedirectPendingIntent(
-                getContextForUser(user), Intent(ACTION_TEST_ACTIVITY))
+                getContextForUser(user),
+                Intent(ACTION_TEST_ACTIVITY)
+            )
         }
     }
 
@@ -909,36 +1033,51 @@ class SafetyCenterMultiUsersTest {
 
     private fun updatePrimaryProfileSources() {
         safetyCenterCtsHelper.setData(
-            DYNAMIC_BAREBONE_ID, safetySourceCtsData.criticalWithResolvingGeneralIssue)
+            DYNAMIC_BAREBONE_ID,
+            safetySourceCtsData.criticalWithResolvingGeneralIssue
+        )
         safetyCenterCtsHelper.setData(
-            DYNAMIC_DISABLED_ID, safetySourceCtsData.recommendationWithGeneralIssue)
+            DYNAMIC_DISABLED_ID,
+            safetySourceCtsData.recommendationWithGeneralIssue
+        )
         safetyCenterCtsHelper.setData(DYNAMIC_HIDDEN_ID, safetySourceCtsData.unspecified)
         safetyCenterCtsHelper.setData(
             ISSUE_ONLY_BAREBONE_ID,
-            SafetySourceCtsData.issuesOnly(safetySourceCtsData.criticalResolvingGeneralIssue))
+            SafetySourceCtsData.issuesOnly(safetySourceCtsData.criticalResolvingGeneralIssue)
+        )
         safetyCenterCtsHelper.setData(
             ISSUE_ONLY_ALL_OPTIONAL_ID,
-            SafetySourceCtsData.issuesOnly(safetySourceCtsData.recommendationGeneralIssue))
+            SafetySourceCtsData.issuesOnly(safetySourceCtsData.recommendationGeneralIssue)
+        )
         safetyCenterCtsHelper.setData(DYNAMIC_IN_RIGID_ID, safetySourceCtsData.unspecifiedWithIssue)
         safetyCenterCtsHelper.setData(
             ISSUE_ONLY_IN_RIGID_ID,
-            SafetySourceCtsData.issuesOnly(safetySourceCtsData.informationIssue))
+            SafetySourceCtsData.issuesOnly(safetySourceCtsData.informationIssue)
+        )
     }
 
     private fun updateWorkProfileSources() {
         val managedSafetyCenterManager =
             getSafetyCenterManagerForUser(deviceState.workProfile().userHandle())
         managedSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
-            DYNAMIC_DISABLED_ID, safetySourceCtsData.informationWithIssueForWork)
+            DYNAMIC_DISABLED_ID,
+            safetySourceCtsData.informationWithIssueForWork
+        )
         managedSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
-            DYNAMIC_HIDDEN_ID, safetySourceCtsData.informationWithIssueForWork)
+            DYNAMIC_HIDDEN_ID,
+            safetySourceCtsData.informationWithIssueForWork
+        )
         managedSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
             ISSUE_ONLY_ALL_OPTIONAL_ID,
-            SafetySourceCtsData.issuesOnly(safetySourceCtsData.informationIssue))
+            SafetySourceCtsData.issuesOnly(safetySourceCtsData.informationIssue)
+        )
         managedSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
-            DYNAMIC_IN_RIGID_ID, safetySourceCtsData.unspecifiedWithIssueForWork)
+            DYNAMIC_IN_RIGID_ID,
+            safetySourceCtsData.unspecifiedWithIssueForWork
+        )
         managedSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
             ISSUE_ONLY_IN_RIGID_ID,
-            SafetySourceCtsData.issuesOnly(safetySourceCtsData.informationIssue))
+            SafetySourceCtsData.issuesOnly(safetySourceCtsData.informationIssue)
+        )
     }
 }

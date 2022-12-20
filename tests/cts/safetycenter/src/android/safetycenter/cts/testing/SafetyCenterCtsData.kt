@@ -67,9 +67,12 @@ class SafetyCenterCtsData(context: Context) {
     val safetyCenterStatusUnknown =
         SafetyCenterStatus.Builder(
                 safetyCenterResourcesContext.getStringByName(
-                    "overall_severity_level_ok_review_title"),
+                    "overall_severity_level_ok_review_title"
+                ),
                 safetyCenterResourcesContext.getStringByName(
-                    "overall_severity_level_ok_review_summary"))
+                    "overall_severity_level_ok_review_summary"
+                )
+            )
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_UNKNOWN)
             .build()
 
@@ -80,8 +83,10 @@ class SafetyCenterCtsData(context: Context) {
     fun safetyCenterStatusCritical(numAlerts: Int) =
         SafetyCenterStatus.Builder(
                 safetyCenterResourcesContext.getStringByName(
-                    "overall_severity_level_critical_safety_warning_title"),
-                getAlertString(numAlerts))
+                    "overall_severity_level_critical_safety_warning_title"
+                ),
+                getAlertString(numAlerts)
+            )
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING)
             .build()
 
@@ -216,7 +221,8 @@ class SafetyCenterCtsData(context: Context) {
         SafetyCenterIssue.Builder(
                 issueId(sourceId, INFORMATION_ISSUE_ID, userId = userId),
                 "Information issue title",
-                "Information issue summary")
+                "Information issue summary"
+            )
             .setSeverityLevel(ISSUE_SEVERITY_LEVEL_OK)
             .setShouldConfirmDismissal(false)
             .setActions(
@@ -226,10 +232,14 @@ class SafetyCenterCtsData(context: Context) {
                                 sourceId,
                                 INFORMATION_ISSUE_ID,
                                 INFORMATION_ISSUE_ACTION_ID,
-                                userId),
+                                userId
+                            ),
                             "Review",
-                            safetySourceCtsData.testActivityRedirectPendingIntent)
-                        .build()))
+                            safetySourceCtsData.testActivityRedirectPendingIntent
+                        )
+                        .build()
+                )
+            )
             .build()
 
     /**
@@ -240,7 +250,8 @@ class SafetyCenterCtsData(context: Context) {
         SafetyCenterIssue.Builder(
                 issueId(sourceId, RECOMMENDATION_ISSUE_ID, userId = userId),
                 "Recommendation issue title",
-                "Recommendation issue summary")
+                "Recommendation issue summary"
+            )
             .setSeverityLevel(ISSUE_SEVERITY_LEVEL_RECOMMENDATION)
             .setActions(
                 listOf(
@@ -249,10 +260,14 @@ class SafetyCenterCtsData(context: Context) {
                                 sourceId,
                                 RECOMMENDATION_ISSUE_ID,
                                 RECOMMENDATION_ISSUE_ACTION_ID,
-                                userId),
+                                userId
+                            ),
                             "See issue",
-                            safetySourceCtsData.testActivityRedirectPendingIntent)
-                        .build()))
+                            safetySourceCtsData.testActivityRedirectPendingIntent
+                        )
+                        .build()
+                )
+            )
             .build()
 
     /**
@@ -267,18 +282,26 @@ class SafetyCenterCtsData(context: Context) {
         SafetyCenterIssue.Builder(
                 issueId(sourceId, CRITICAL_ISSUE_ID, userId = userId),
                 "Critical issue title",
-                "Critical issue summary")
+                "Critical issue summary"
+            )
             .setSeverityLevel(ISSUE_SEVERITY_LEVEL_CRITICAL_WARNING)
             .setActions(
                 listOf(
                     SafetyCenterIssue.Action.Builder(
                             issueActionId(
-                                sourceId, CRITICAL_ISSUE_ID, CRITICAL_ISSUE_ACTION_ID, userId),
+                                sourceId,
+                                CRITICAL_ISSUE_ID,
+                                CRITICAL_ISSUE_ACTION_ID,
+                                userId
+                            ),
                             "Solve issue",
-                            safetySourceCtsData.criticalIssueActionPendingIntent)
+                            safetySourceCtsData.criticalIssueActionPendingIntent
+                        )
                         .setWillResolve(true)
                         .setIsInFlight(isActionInFlight)
-                        .build()))
+                        .build()
+                )
+            )
             .build()
 
     /**
@@ -295,7 +318,9 @@ class SafetyCenterCtsData(context: Context) {
     private fun getIcuPluralsString(name: String, count: Int, vararg formatArgs: Any): String {
         val messageFormat =
             MessageFormat(
-                safetyCenterResourcesContext.getStringByName(name, formatArgs), Locale.getDefault())
+                safetyCenterResourcesContext.getStringByName(name, formatArgs),
+                Locale.getDefault()
+            )
         val arguments = ArrayMap<String, Any>()
         arguments["count"] = count
         return messageFormat.format(arguments)
@@ -310,7 +335,8 @@ class SafetyCenterCtsData(context: Context) {
                     .build(),
                 emptyList(),
                 emptyList(),
-                emptyList())
+                emptyList()
+            )
 
         /** Creates an ID for a Safety Center entry. */
         fun entryId(sourceId: String, userId: Int = UserHandle.myUserId()) =
@@ -318,7 +344,8 @@ class SafetyCenterCtsData(context: Context) {
                 SafetyCenterEntryId.newBuilder()
                     .setSafetySourceId(sourceId)
                     .setUserId(userId)
-                    .build())
+                    .build()
+            )
 
         /** Creates an ID for a Safety Center issue. */
         fun issueId(
@@ -334,9 +361,11 @@ class SafetyCenterCtsData(context: Context) {
                             .setSafetySourceId(sourceId)
                             .setSafetySourceIssueId(sourceIssueId)
                             .setUserId(userId)
-                            .build())
+                            .build()
+                    )
                     .setIssueTypeId(issueTypeId)
-                    .build())
+                    .build()
+            )
 
         /** Creates an ID for a Safety Center issue action. */
         fun issueActionId(
@@ -352,8 +381,10 @@ class SafetyCenterCtsData(context: Context) {
                             .setSafetySourceId(sourceId)
                             .setSafetySourceIssueId(sourceIssueId)
                             .setUserId(userId)
-                            .build())
+                            .build()
+                    )
                     .setSafetySourceIssueActionId(sourceIssueActionId)
-                    .build())
+                    .build()
+            )
     }
 }

@@ -37,7 +37,11 @@ class SafetyCenterStaticEntryTest {
         PendingIntent.getActivity(context, 0, Intent("Fake Data"), PendingIntent.FLAG_IMMUTABLE)
     private val pendingIntent2 =
         PendingIntent.getActivity(
-            context, 0, Intent("Fake Different Data"), PendingIntent.FLAG_IMMUTABLE)
+            context,
+            0,
+            Intent("Fake Different Data"),
+            PendingIntent.FLAG_IMMUTABLE
+        )
 
     private val title1 = "a title"
     private val title2 = "another title"
@@ -102,7 +106,8 @@ class SafetyCenterStaticEntryTest {
                     .setSummary("a summary")
                     .setPendingIntent(pendingIntent1)
                     .build(),
-                SafetyCenterStaticEntry.Builder(staticEntry1).build())
+                SafetyCenterStaticEntry.Builder(staticEntry1).build()
+            )
             .addEqualityGroup(staticEntry2)
             .addEqualityGroup(staticEntryMinimal, SafetyCenterStaticEntry.Builder("").build())
             .addEqualityGroup(
@@ -113,17 +118,21 @@ class SafetyCenterStaticEntryTest {
                 SafetyCenterStaticEntry.Builder("titlee")
                     .setSummary("sumaree")
                     .setPendingIntent(pendingIntent1)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
-                SafetyCenterStaticEntry.Builder(staticEntry1).setTitle("a different title").build())
+                SafetyCenterStaticEntry.Builder(staticEntry1).setTitle("a different title").build()
+            )
             .addEqualityGroup(
                 SafetyCenterStaticEntry.Builder(staticEntry1)
                     .setSummary("a different summary")
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyCenterStaticEntry.Builder(staticEntry1)
                     .setPendingIntent(pendingIntent2)
-                    .build())
+                    .build()
+            )
             .test()
     }
 }

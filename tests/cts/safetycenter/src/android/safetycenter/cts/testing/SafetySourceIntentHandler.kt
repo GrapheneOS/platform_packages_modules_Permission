@@ -132,7 +132,8 @@ class SafetySourceIntentHandler {
                         it.overrideBroadcastId
                     } else {
                         broadcastId
-                    })
+                    }
+                )
             }
         }
 
@@ -155,19 +156,22 @@ class SafetySourceIntentHandler {
         val sourceId = intent.getStringExtra(EXTRA_SOURCE_ID)
         if (sourceId.isNullOrEmpty()) {
             throw IllegalArgumentException(
-                "Received resolve action intent with no source id specified")
+                "Received resolve action intent with no source id specified"
+            )
         }
 
         val sourceIssueId = intent.getStringExtra(EXTRA_SOURCE_ISSUE_ID)
         if (sourceIssueId.isNullOrEmpty()) {
             throw IllegalArgumentException(
-                "Received resolve action intent with no source issue id specified")
+                "Received resolve action intent with no source issue id specified"
+            )
         }
 
         val sourceIssueActionId = intent.getStringExtra(EXTRA_SOURCE_ISSUE_ACTION_ID)
         if (sourceIssueActionId.isNullOrEmpty()) {
             throw IllegalArgumentException(
-                "Received resolve action intent with no source issue action id specified")
+                "Received resolve action intent with no source issue action id specified"
+            )
         }
 
         processRequest(Request.ResolveAction(sourceId, userId)) {
@@ -200,7 +204,8 @@ class SafetySourceIntentHandler {
         val sourceId = intent.getStringExtra(EXTRA_SOURCE_ID)
         if (sourceId.isNullOrEmpty()) {
             throw IllegalArgumentException(
-                "Received dismiss issue intent with no source id specified")
+                "Received dismiss issue intent with no source id specified"
+            )
         }
 
         processRequest(Request.DismissIssue(sourceId, userId)) { EVENT_SOURCE_STATE_CHANGED }

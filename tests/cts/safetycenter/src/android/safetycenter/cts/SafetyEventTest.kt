@@ -86,7 +86,8 @@ class SafetyEventTest {
             .hasMessageThat()
             .isEqualTo(
                 "Missing issue action id for resolving action safety event: " +
-                    SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
+                    SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED
+            )
     }
 
     @Test
@@ -102,7 +103,8 @@ class SafetyEventTest {
             .hasMessageThat()
             .isEqualTo(
                 "Missing issue id for resolving action safety event: " +
-                    SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
+                    SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED
+            )
     }
 
     @Test
@@ -118,7 +120,8 @@ class SafetyEventTest {
             .hasMessageThat()
             .isEqualTo(
                 "Missing issue action id for resolving action safety event: " +
-                    SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED)
+                    SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED
+            )
     }
 
     @Test
@@ -134,7 +137,8 @@ class SafetyEventTest {
             .hasMessageThat()
             .isEqualTo(
                 "Missing issue id for resolving action safety event: " +
-                    SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED)
+                    SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED
+            )
     }
 
     @Test
@@ -188,7 +192,8 @@ class SafetyEventTest {
                     .build(),
                 SafetyEvent.Builder(SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
                     .setRefreshBroadcastId(REFRESH_BROADCAST_ID)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED)
                     .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
@@ -197,7 +202,8 @@ class SafetyEventTest {
                 SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED)
                     .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
                     .setSafetySourceIssueActionId(SAFETY_SOURCE_ISSUE_ACTION_ID)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
                     .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
@@ -206,33 +212,39 @@ class SafetyEventTest {
                 SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
                     .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
                     .setSafetySourceIssueActionId(SAFETY_SOURCE_ISSUE_ACTION_ID)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(SafetyEvent.Builder(SAFETY_EVENT_TYPE_DEVICE_REBOOTED).build())
             .addEqualityGroup(SafetyEvent.Builder(SAFETY_EVENT_TYPE_DEVICE_LOCALE_CHANGED).build())
             .addEqualityGroup(
                 SafetyEvent.Builder(SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
                     .setRefreshBroadcastId(OTHER_REFRESH_BROADCAST_ID)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED)
                     .setSafetySourceIssueId(OTHER_SAFETY_SOURCE_ISSUE_ID)
                     .setSafetySourceIssueActionId(SAFETY_SOURCE_ISSUE_ACTION_ID)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED)
                     .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
                     .setSafetySourceIssueActionId(OTHER_SAFETY_SOURCE_ISSUE_ACTION_ID)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
                     .setSafetySourceIssueId(OTHER_SAFETY_SOURCE_ISSUE_ID)
                     .setSafetySourceIssueActionId(SAFETY_SOURCE_ISSUE_ACTION_ID)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
                     .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
                     .setSafetySourceIssueActionId(OTHER_SAFETY_SOURCE_ISSUE_ACTION_ID)
-                    .build())
+                    .build()
+            )
             .test()
     }
 

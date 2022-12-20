@@ -140,9 +140,9 @@ class CtsNotificationListener : NotificationListenerService() {
         ): List<StatusBarNotification> {
             val charsList = characteristics.toList()
             return waitForNotificationsToSatisfy(
-                timeout, description = "notification(s) matching characteristics $charsList") {
-                    NotificationCharacteristics.areMatching(it, charsList)
-                }
+                timeout,
+                description = "notification(s) matching characteristics $charsList"
+            ) { NotificationCharacteristics.areMatching(it, charsList) }
         }
 
         /**
@@ -213,9 +213,9 @@ class CtsNotificationListener : NotificationListenerService() {
         fun cancelAndWait(key: String, timeout: Duration = TIMEOUT_LONG) {
             instance!!.cancelNotification(key)
             waitForNotificationsToSatisfy(
-                timeout, description = "no notification with the key $key") { notifications ->
-                    notifications.none { it.key == key }
-                }
+                timeout,
+                description = "no notification with the key $key"
+            ) { notifications -> notifications.none { it.key == key } }
             // Here we wait for the issue (there is only one) to be recorded as dismissed according
             // to the dumpsys output. The cancelAndWait helper above "waits" for the notification to
             // be dismissed, but it does not wait for the notification's delete PendingIntent to be
@@ -253,9 +253,8 @@ class CtsNotificationListener : NotificationListenerService() {
         fun reset() {
             waitForNotificationsToSatisfy(
                 forAtLeast = Duration.ZERO,
-                description = "all Safety Center notifications removed in tear down") {
-                    it.isEmpty()
-                }
+                description = "all Safety Center notifications removed in tear down"
+            ) { it.isEmpty() }
             toggleListenerAccess(false)
             notificationEventsChannel.cancel()
         }

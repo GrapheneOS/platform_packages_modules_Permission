@@ -73,7 +73,8 @@ class SafetyCenterStaticEntryGroupTest {
         assertThat(SafetyCenterStaticEntryGroup("", listOf(staticEntry1)).staticEntries)
             .containsExactly(staticEntry1)
         assertThat(
-                SafetyCenterStaticEntryGroup("", listOf(staticEntry1, staticEntry2)).staticEntries)
+                SafetyCenterStaticEntryGroup("", listOf(staticEntry1, staticEntry2)).staticEntries
+            )
             .containsExactly(staticEntry1, staticEntry2)
             .inOrder()
         assertThat(SafetyCenterStaticEntryGroup("", listOf()).staticEntries).isEmpty()
@@ -101,12 +102,15 @@ class SafetyCenterStaticEntryGroupTest {
         EqualsHashCodeToStringTester()
             .addEqualityGroup(
                 staticEntryGroup,
-                SafetyCenterStaticEntryGroup("a title", listOf(staticEntry1, staticEntry2)))
+                SafetyCenterStaticEntryGroup("a title", listOf(staticEntry1, staticEntry2))
+            )
             .addEqualityGroup(
                 SafetyCenterStaticEntryGroup("a title", listOf(staticEntry1)),
-                SafetyCenterStaticEntryGroup("a title", listOf(staticEntry1)))
+                SafetyCenterStaticEntryGroup("a title", listOf(staticEntry1))
+            )
             .addEqualityGroup(
-                SafetyCenterStaticEntryGroup("a different title", listOf(staticEntry1)))
+                SafetyCenterStaticEntryGroup("a different title", listOf(staticEntry1))
+            )
             .addEqualityGroup(SafetyCenterStaticEntryGroup("a title", listOf(staticEntry2)))
             .test()
     }

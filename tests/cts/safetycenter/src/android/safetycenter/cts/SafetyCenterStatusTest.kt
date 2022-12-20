@@ -53,7 +53,8 @@ class SafetyCenterStatusTest {
                 SafetyCenterStatus.Builder(baseStatus)
                     .setSummary("different summary")
                     .build()
-                    .summary)
+                    .summary
+            )
             .isEqualTo("different summary")
     }
 
@@ -63,14 +64,16 @@ class SafetyCenterStatusTest {
                 SafetyCenterStatus.Builder(baseStatus)
                     .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK)
                     .build()
-                    .severityLevel)
+                    .severityLevel
+            )
             .isEqualTo(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK)
 
         assertThat(
                 SafetyCenterStatus.Builder(baseStatus)
                     .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING)
                     .build()
-                    .severityLevel)
+                    .severityLevel
+            )
             .isEqualTo(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING)
     }
 
@@ -80,7 +83,8 @@ class SafetyCenterStatusTest {
                 SafetyCenterStatus.Builder("This is my title", "This is my summary")
                     .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN)
                     .build()
-                    .severityLevel)
+                    .severityLevel
+            )
             .isEqualTo(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN)
     }
 
@@ -90,14 +94,16 @@ class SafetyCenterStatusTest {
                 SafetyCenterStatus.Builder(baseStatus)
                     .setRefreshStatus(SafetyCenterStatus.REFRESH_STATUS_NONE)
                     .build()
-                    .refreshStatus)
+                    .refreshStatus
+            )
             .isEqualTo(SafetyCenterStatus.REFRESH_STATUS_NONE)
 
         assertThat(
                 SafetyCenterStatus.Builder(baseStatus)
                     .setRefreshStatus(SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS)
                     .build()
-                    .refreshStatus)
+                    .refreshStatus
+            )
             .isEqualTo(SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS)
     }
 
@@ -107,7 +113,8 @@ class SafetyCenterStatusTest {
                 SafetyCenterStatus.Builder("This is my title", "This is my summary")
                     .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN)
                     .build()
-                    .refreshStatus)
+                    .refreshStatus
+            )
             .isEqualTo(SafetyCenterStatus.REFRESH_STATUS_NONE)
     }
 
@@ -154,26 +161,32 @@ class SafetyCenterStatusTest {
                     .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_RECOMMENDATION)
                     .setRefreshStatus(SafetyCenterStatus.REFRESH_STATUS_DATA_FETCH_IN_PROGRESS)
                     .build(),
-                SafetyCenterStatus.Builder(baseStatus).build())
+                SafetyCenterStatus.Builder(baseStatus).build()
+            )
             .addEqualityGroup(
                 SafetyCenterStatus.Builder("same title", "same summary")
                     .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK)
                     .build(),
                 SafetyCenterStatus.Builder("same title", "same summary")
                     .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
-                SafetyCenterStatus.Builder(baseStatus).setTitle("that's not it").build())
+                SafetyCenterStatus.Builder(baseStatus).setTitle("that's not it").build()
+            )
             .addEqualityGroup(
-                SafetyCenterStatus.Builder(baseStatus).setSummary("that's not it").build())
+                SafetyCenterStatus.Builder(baseStatus).setSummary("that's not it").build()
+            )
             .addEqualityGroup(
                 SafetyCenterStatus.Builder(baseStatus)
                     .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyCenterStatus.Builder(baseStatus)
                     .setRefreshStatus(SafetyCenterStatus.REFRESH_STATUS_NONE)
-                    .build())
+                    .build()
+            )
             .test()
     }
 }

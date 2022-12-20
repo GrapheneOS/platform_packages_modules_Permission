@@ -287,7 +287,8 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(DYNAMIC_HIDDEN)
             .addEqualityGroup(DYNAMIC_HIDDEN_WITH_SEARCH)
             .addEqualityGroup(DYNAMIC_DISABLED)
@@ -309,7 +310,8 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_ALL_OPTIONAL_ID)
@@ -324,7 +326,8 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_ALL_OPTIONAL_ID)
@@ -339,7 +342,8 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_ALL_OPTIONAL_ID)
@@ -354,7 +358,8 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_ALL_OPTIONAL_ID)
@@ -369,7 +374,8 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_ALL_OPTIONAL_ID)
@@ -384,14 +390,16 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_HIDDEN_ID)
                     .setPackageName(PACKAGE_NAME)
                     .setProfile(SafetySource.PROFILE_PRIMARY)
                     .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_HIDDEN)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_ALL_OPTIONAL_ID)
@@ -406,7 +414,8 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_ALL_OPTIONAL_ID)
@@ -421,7 +430,8 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_ALL_OPTIONAL_ID)
@@ -436,7 +446,8 @@ class SafetySourceTest {
                     .setSearchTermsResId(-1)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_ALL_OPTIONAL_ID)
@@ -451,7 +462,8 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(true)
                     .setRefreshOnPageOpenAllowed(true)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_ALL_OPTIONAL_ID)
@@ -466,7 +478,8 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(false)
-                    .build())
+                    .build()
+            )
             .test()
     }
 

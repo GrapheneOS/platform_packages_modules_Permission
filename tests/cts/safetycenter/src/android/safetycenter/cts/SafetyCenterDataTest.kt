@@ -170,26 +170,57 @@ class SafetyCenterDataTest {
             .addEqualityGroup(
                 data1,
                 SafetyCenterData(
-                    status1, listOf(issue1), listOf(entryOrGroup1), listOf(staticEntryGroup1)))
+                    status1,
+                    listOf(issue1),
+                    listOf(entryOrGroup1),
+                    listOf(staticEntryGroup1)
+                )
+            )
             .addEqualityGroup(
                 data2,
                 SafetyCenterData(
-                    status2, listOf(issue2), listOf(entryOrGroup2), listOf(staticEntryGroup2)))
+                    status2,
+                    listOf(issue2),
+                    listOf(entryOrGroup2),
+                    listOf(staticEntryGroup2)
+                )
+            )
             .addEqualityGroup(
                 SafetyCenterData(status1, listOf(), listOf(), listOf()),
-                SafetyCenterData(status1, listOf(), listOf(), listOf()))
+                SafetyCenterData(status1, listOf(), listOf(), listOf())
+            )
             .addEqualityGroup(
                 SafetyCenterData(
-                    status2, listOf(issue1), listOf(entryOrGroup1), listOf(staticEntryGroup1)))
+                    status2,
+                    listOf(issue1),
+                    listOf(entryOrGroup1),
+                    listOf(staticEntryGroup1)
+                )
+            )
             .addEqualityGroup(
                 SafetyCenterData(
-                    status1, listOf(issue2), listOf(entryOrGroup1), listOf(staticEntryGroup1)))
+                    status1,
+                    listOf(issue2),
+                    listOf(entryOrGroup1),
+                    listOf(staticEntryGroup1)
+                )
+            )
             .addEqualityGroup(
                 SafetyCenterData(
-                    status1, listOf(issue1), listOf(entryOrGroup2), listOf(staticEntryGroup1)))
+                    status1,
+                    listOf(issue1),
+                    listOf(entryOrGroup2),
+                    listOf(staticEntryGroup1)
+                )
+            )
             .addEqualityGroup(
                 SafetyCenterData(
-                    status1, listOf(issue1), listOf(entryOrGroup1), listOf(staticEntryGroup2)))
+                    status1,
+                    listOf(issue1),
+                    listOf(entryOrGroup1),
+                    listOf(staticEntryGroup2)
+                )
+            )
             .test()
     }
 }

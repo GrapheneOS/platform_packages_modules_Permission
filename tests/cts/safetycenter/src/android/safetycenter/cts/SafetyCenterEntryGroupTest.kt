@@ -95,13 +95,15 @@ class SafetyCenterEntryGroupTest {
                 SafetyCenterEntryGroup.Builder(entryGroup1)
                     .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_RECOMMENDATION)
                     .build()
-                    .severityLevel)
+                    .severityLevel
+            )
             .isEqualTo(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_RECOMMENDATION)
         assertThat(
                 SafetyCenterEntryGroup.Builder(entryGroup1)
                     .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED)
                     .build()
-                    .severityLevel)
+                    .severityLevel
+            )
             .isEqualTo(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED)
     }
 
@@ -112,9 +114,11 @@ class SafetyCenterEntryGroupTest {
         assertThat(
                 SafetyCenterEntryGroup.Builder(entryGroup1)
                     .setSeverityUnspecifiedIconType(
-                        SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_PRIVACY)
+                        SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_PRIVACY
+                    )
                     .build()
-                    .severityUnspecifiedIconType)
+                    .severityUnspecifiedIconType
+            )
             .isEqualTo(SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_PRIVACY)
     }
 
@@ -177,27 +181,36 @@ class SafetyCenterEntryGroupTest {
                     .setSummary("A group summary")
                     .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK)
                     .setEntries(listOf(entry1))
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(entryGroup2)
             .addEqualityGroup(
-                SafetyCenterEntryGroup.Builder(entryGroup1).setId("different!").build())
+                SafetyCenterEntryGroup.Builder(entryGroup1).setId("different!").build()
+            )
             .addEqualityGroup(
-                SafetyCenterEntryGroup.Builder(entryGroup1).setTitle("different!").build())
+                SafetyCenterEntryGroup.Builder(entryGroup1).setTitle("different!").build()
+            )
             .addEqualityGroup(
-                SafetyCenterEntryGroup.Builder(entryGroup1).setSummary("different!").build())
+                SafetyCenterEntryGroup.Builder(entryGroup1).setSummary("different!").build()
+            )
             .addEqualityGroup(
                 SafetyCenterEntryGroup.Builder(entryGroup1)
                     .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyCenterEntryGroup.Builder(entryGroup1)
                     .setSeverityUnspecifiedIconType(
-                        SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_PRIVACY)
-                    .build())
+                        SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_PRIVACY
+                    )
+                    .build()
+            )
             .addEqualityGroup(
-                SafetyCenterEntryGroup.Builder(entryGroup1).setEntries(listOf(entry2)).build())
+                SafetyCenterEntryGroup.Builder(entryGroup1).setEntries(listOf(entry2)).build()
+            )
             .addEqualityGroup(
-                SafetyCenterEntryGroup.Builder(entryGroup1).setEntries(emptyList()).build())
+                SafetyCenterEntryGroup.Builder(entryGroup1).setEntries(emptyList()).build()
+            )
             .test()
     }
 }

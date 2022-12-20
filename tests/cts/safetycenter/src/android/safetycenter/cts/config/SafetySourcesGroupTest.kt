@@ -95,7 +95,8 @@ class SafetySourcesGroupTest {
             .containsExactly(
                 SafetySourceTest.DYNAMIC_BAREBONE,
                 SafetySourceTest.STATIC_BAREBONE,
-                SafetySourceTest.ISSUE_ONLY_BAREBONE)
+                SafetySourceTest.ISSUE_ONLY_BAREBONE
+            )
             .inOrder()
         assertThat(RIGID.safetySources).containsExactly(SafetySourceTest.STATIC_BAREBONE)
         assertThat(HIDDEN.safetySources).containsExactly(SafetySourceTest.ISSUE_ONLY_BAREBONE)
@@ -158,7 +159,8 @@ class SafetySourcesGroupTest {
                     .addSafetySource(SafetySourceTest.DYNAMIC_BAREBONE)
                     .addSafetySource(SafetySourceTest.STATIC_BAREBONE)
                     .addSafetySource(SafetySourceTest.ISSUE_ONLY_BAREBONE)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(RIGID)
             .addEqualityGroup(HIDDEN)
             .addEqualityGroup(
@@ -168,7 +170,8 @@ class SafetySourcesGroupTest {
                     .setSummaryResId(REFERENCE_RES_ID)
                     .setStatelessIconType(SafetySourcesGroup.STATELESS_ICON_TYPE_PRIVACY)
                     .addSafetySource(SafetySourceTest.DYNAMIC_BAREBONE)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySourcesGroup.Builder()
                     .setId(COLLAPSIBLE_WITH_BOTH_ID)
@@ -176,7 +179,8 @@ class SafetySourcesGroupTest {
                     .setSummaryResId(REFERENCE_RES_ID)
                     .setStatelessIconType(SafetySourcesGroup.STATELESS_ICON_TYPE_PRIVACY)
                     .addSafetySource(SafetySourceTest.DYNAMIC_BAREBONE)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySourcesGroup.Builder()
                     .setId(COLLAPSIBLE_WITH_BOTH_ID)
@@ -184,7 +188,8 @@ class SafetySourcesGroupTest {
                     .setSummaryResId(-1)
                     .setStatelessIconType(SafetySourcesGroup.STATELESS_ICON_TYPE_PRIVACY)
                     .addSafetySource(SafetySourceTest.DYNAMIC_BAREBONE)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySourcesGroup.Builder()
                     .setId(COLLAPSIBLE_WITH_BOTH_ID)
@@ -192,7 +197,8 @@ class SafetySourcesGroupTest {
                     .setSummaryResId(REFERENCE_RES_ID)
                     .setStatelessIconType(SafetySourcesGroup.STATELESS_ICON_TYPE_NONE)
                     .addSafetySource(SafetySourceTest.DYNAMIC_BAREBONE)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySourcesGroup.Builder()
                     .setId(COLLAPSIBLE_WITH_BOTH_ID)
@@ -200,7 +206,8 @@ class SafetySourcesGroupTest {
                     .setSummaryResId(REFERENCE_RES_ID)
                     .setStatelessIconType(SafetySourcesGroup.STATELESS_ICON_TYPE_PRIVACY)
                     .addSafetySource(SafetySourceTest.STATIC_BAREBONE)
-                    .build())
+                    .build()
+            )
             .test()
     }
 
