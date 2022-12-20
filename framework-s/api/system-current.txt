@@ -627,7 +627,7 @@ package android.safetycenter.config {
 package android.safetylabel {
 
   public final class SafetyLabelConstants {
-    field public static final String SAFETY_LABEL_CHANGE_NOTIFICATION_ENABLED = "safety_label_change_notifications_enabled";
+    field public static final String SAFETY_LABEL_CHANGE_NOTIFICATIONS_ENABLED = "safety_label_change_notifications_enabled";
   }
 
 }

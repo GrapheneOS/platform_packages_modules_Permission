@@ -34,14 +34,15 @@ public final class SafetyLabelConstants {
      * Constant to be used as Device Config flag determining whether the Safety Label Change
      * Notifications feature is enabled.
      *
-     * When this flag is enabled, a system notification will be sent to users if any apps they have
-     * installed have made recent updates to their data sharing policy in their app safety labels.
+     * <p>When this flag is enabled, a system notification will be sent to users if any apps they
+     * have installed have made recent updates to their data sharing policy in their app safety
+     * labels.
      *
      * @hide
      */
     @SystemApi
     @RequiresApi(UPSIDE_DOWN_CAKE)
-    public static final String SAFETY_LABEL_CHANGE_NOTIFICATION_ENABLED =
+    public static final String SAFETY_LABEL_CHANGE_NOTIFICATIONS_ENABLED =
             "safety_label_change_notifications_enabled";
 
     private SafetyLabelConstants() {}
