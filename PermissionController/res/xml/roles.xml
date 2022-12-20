@@ -1118,6 +1118,7 @@
 
     <role
         name="android.app.role.COMPANION_DEVICE_GLASSES"
+        behavior="CompanionDeviceGlassesRoleBehavior"
         description="@string/role_companion_device_glasses_description"
         exclusive="false"
         minSdkVersion="34"
@@ -1127,9 +1128,13 @@
             <permission-set name="contacts" />
             <permission-set name="microphone" />
             <permission-set name="nearby_devices" />
+            <permission-set name="notifications" />
             <permission-set name="phone" />
             <permission-set name="sms" />
        </permissions>
+       <app-op-permissions>
+           <app-op-permission name="android.permission.MANAGE_ONGOING_CALLS" />
+       </app-op-permissions>
     </role>
 
     <role
