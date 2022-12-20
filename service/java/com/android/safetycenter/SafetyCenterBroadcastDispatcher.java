@@ -27,7 +27,10 @@ import static android.safetycenter.SafetyCenterManager.ACTION_SAFETY_CENTER_ENAB
 import static android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID;
 import static android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE;
 import static android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCE_IDS;
+import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_PAGE_OPEN;
 import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_SAFETY_CENTER_ENABLED;
+
+import static java.util.Collections.unmodifiableList;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
@@ -68,14 +71,17 @@ final class SafetyCenterBroadcastDispatcher {
     @NonNull private final Context mContext;
     @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
     @NonNull private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker;
+    @NonNull private final SafetyCenterRepository mSafetyCenterRepository;
 
     SafetyCenterBroadcastDispatcher(
             @NonNull Context context,
             @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
-            @NonNull SafetyCenterRefreshTracker safetyCenterRefreshTracker) {
+            @NonNull SafetyCenterRefreshTracker safetyCenterRefreshTracker,
+            @NonNull SafetyCenterRepository safetyCenterRepository) {
         mContext = context;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
         mSafetyCenterRefreshTracker = safetyCenterRefreshTracker;
+        mSafetyCenterRepository = safetyCenterRepository;
     }
 
     /**
@@ -329,26 +335,79 @@ final class SafetyCenterBroadcastDispatcher {
      *
      * <p>Every value present is a non-empty list, but the overall result may be empty.
      */
-    private static SparseArray<List<String>> getUserIdsToSourceIds(
+    private SparseArray<List<String>> getUserIdsToSourceIds(
             @NonNull Broadcast broadcast,
             @NonNull UserProfileGroup userProfileGroup,
             @RefreshReason int refreshReason) {
         int[] managedProfileIds = userProfileGroup.getManagedRunningProfilesUserIds();
         SparseArray<List<String>> result = new SparseArray<>(managedProfileIds.length + 1);
+        List<String> profileParentSources = broadcast.getSourceIdsForProfileParent();
 
-        List<String> profileParentSources = broadcast.getSourceIdsForProfileParent(refreshReason);
+        if (refreshReason == REFRESH_REASON_PAGE_OPEN) {
+            profileParentSources =
+                    onlyPageOpenAllowedSources(
+                            profileParentSources,
+                            broadcast.getSourceIdsForProfileParentOnPageOpen(),
+                            broadcast.getPackageName(),
+                            userProfileGroup.getProfileParentUserId());
+        }
+
         if (!profileParentSources.isEmpty()) {
             result.put(userProfileGroup.getProfileParentUserId(), profileParentSources);
         }
 
-        List<String> managedProfileSources =
-                broadcast.getSourceIdsForManagedProfiles(refreshReason);
-        if (!managedProfileSources.isEmpty()) {
+        List<String> allManagedProfileSources = broadcast.getSourceIdsForManagedProfiles();
+
+        if (refreshReason == REFRESH_REASON_PAGE_OPEN) {
             for (int i = 0; i < managedProfileIds.length; i++) {
-                result.put(managedProfileIds[i], managedProfileSources);
+                List<String> managedProfileSources =
+                        onlyPageOpenAllowedSources(
+                                allManagedProfileSources,
+                                broadcast.getSourceIdsForManagedProfilesOnPageOpen(),
+                                broadcast.getPackageName(),
+                                managedProfileIds[i]);
+
+                if (!managedProfileSources.isEmpty()) {
+                    result.put(managedProfileIds[i], managedProfileSources);
+                }
+            }
+        } else {
+            if (!allManagedProfileSources.isEmpty()) {
+                for (int i = 0; i < managedProfileIds.length; i++) {
+                    result.put(managedProfileIds[i], allManagedProfileSources);
+                }
+            }
+        }
+        return result;
+    }
+
+    /*
+     * Returns a copy of allSources filtered to contain only sources that have
+     * refreshOnPageOpenAllowed in the XML config, or are in the
+     * safety_center_override_refresh_on_page_open_sources flag, or where don't have any
+     * SafetySourceData.
+     */
+    private List<String> onlyPageOpenAllowedSources(
+            List<String> allSources,
+            List<String> configAllowListedSourceIds,
+            String packageName,
+            int userId) {
+
+        List<String> sources = new ArrayList<>();
+
+        Set<String> flagAllowListedSourceIds =
+                SafetyCenterFlags.getOverrideRefreshOnPageOpenSourceIds();
+
+        for (int i = 0; i < allSources.size(); i++) {
+            String sourceId = allSources.get(i);
+            if (configAllowListedSourceIds.contains(sourceId)
+                    || flagAllowListedSourceIds.contains(sourceId)
+                    || mSafetyCenterRepository.getSafetySourceData(sourceId, packageName, userId)
+                            == null) {
+                sources.add(sourceId);
             }
         }
 
-        return result;
+        return unmodifiableList(sources);
     }
 }
