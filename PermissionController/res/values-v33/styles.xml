@@ -305,8 +305,8 @@
            parent="@style/Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="android:theme">@style/Theme.MaterialComponents</item>
         <item name="android:minHeight">56dp</item>
-        <item name="android:paddingStart">@dimen/sc_spacing_xxxlarge</item>
-        <item name="android:paddingEnd">@dimen/sc_spacing_xxxlarge</item>
+        <item name="android:paddingStart">@dimen/sc_button_horizontal_padding</item>
+        <item name="android:paddingEnd">@dimen/sc_button_horizontal_padding</item>
         <item name="android:paddingTop">@dimen/sc_spacing_xlarge</item>
         <item name="android:paddingBottom">@dimen/sc_spacing_xlarge</item>
         <item name="android:insetTop">0dp</item>

@@ -33,6 +33,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Space;
 import android.widget.TextView;
 
 import androidx.annotation.ColorRes;
@@ -134,9 +135,14 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
         buttonList.removeAllViews(); // This view may be recycled from another issue
         boolean isFirstButton = true;
         for (SafetyCenterIssue.Action action : mIssue.getActions()) {
-            buttonList.addView(
-                    buildActionButton(action, holder.itemView.getContext(), isFirstButton));
-            isFirstButton = false;
+            ActionButtonBuilder builder =
+                    new ActionButtonBuilder(action, holder.itemView.getContext());
+            builder.isLargeScreen(buttonList instanceof EqualWidthContainer);
+            if (isFirstButton) {
+                builder.setAsPrimaryButton();
+                isFirstButton = false;
+            }
+            builder.buildAndAddToView(buttonList);
 
             if (mResolvedIssueActionId != null && mResolvedIssueActionId.equals(action.getId())) {
                 mIssueCardAnimator.transitionToIssueResolvedThenMarkComplete(
@@ -159,7 +165,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
                     holder.itemView.getPaddingStart(),
                     holder.itemView.getPaddingTop(),
                     holder.itemView.getPaddingEnd(),
-                    /* bottom = */ getContext()
+                    /* bottom= */ getContext()
                             .getResources()
                             .getDimensionPixelSize(R.dimen.sc_card_margin_bottom));
         } else {
@@ -167,7 +173,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
                     holder.itemView.getPaddingStart(),
                     holder.itemView.getPaddingTop(),
                     holder.itemView.getPaddingEnd(),
-                    /* bottom = */ 0);
+                    /* bottom= */ 0);
         }
     }
 
@@ -268,107 +274,154 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
         }
     }
 
-    private Button buildActionButton(
-            SafetyCenterIssue.Action action, Context context, boolean isFirstButton) {
-        Button button =
-                isFirstButton ? createFirstButton(context) : createSubsequentButton(context);
-        button.setText(action.getLabel());
-        button.setEnabled(!action.isInFlight());
-        button.setOnClickListener(
-                (view) -> {
-                    if (action.willResolve()) {
-                        // Disable the button to prevent double-taps.
-                        // We ideally want to do this on any button press, however out of an
-                        // abundance of caution we only do it with actions that indicate they will
-                        // resolve (and therefore we can rely on a model update to redraw state).
-                        // We expect the model to update with either isInFlight() or simply
-                        // removing/updating the issue.
-                        button.setEnabled(false);
-                    }
-                    mSafetyCenterViewModel.executeIssueAction(mIssue, action, mTaskId);
-                    mSafetyCenterViewModel
-                            .getInteractionLogger()
-                            .recordForIssue(
-                                    isFirstButton
-                                            ? Action.ISSUE_PRIMARY_ACTION_CLICKED
-                                            : Action.ISSUE_SECONDARY_ACTION_CLICKED,
-                                    mIssue);
-                });
-        return button;
-    }
-
-    private Button createFirstButton(Context context) {
-        ContextThemeWrapper themedContext =
-                new ContextThemeWrapper(context, R.style.Theme_MaterialComponents_DayNight);
-        Button button = new MaterialButton(themedContext, null, R.attr.scActionButtonStyle);
-        button.setBackgroundTintList(
-                ContextCompat.getColorStateList(
-                        context, getPrimaryButtonColorFromSeverity(mIssue.getSeverityLevel())));
-
-        button.setLayoutParams(new ViewGroup.MarginLayoutParams(MATCH_PARENT, WRAP_CONTENT));
-        return button;
-    }
-
-    private Button createSubsequentButton(Context context) {
-        ContextThemeWrapper themedContext =
-                new ContextThemeWrapper(context, R.style.Theme_MaterialComponents_DayNight);
-        MaterialButton button =
-                new MaterialButton(themedContext, null, R.attr.scSecondaryActionButtonStyle);
-        button.setStrokeColor(
-                ContextCompat.getColorStateList(
-                        context,
-                        getSecondaryButtonStrokeColorFromSeverity(mIssue.getSeverityLevel())));
-
-        int margin =
-                context.getResources().getDimensionPixelSize(R.dimen.sc_action_button_list_margin);
-        ViewGroup.MarginLayoutParams layoutParams =
-                new ViewGroup.MarginLayoutParams(MATCH_PARENT, WRAP_CONTENT);
-        layoutParams.setMargins(0, margin, 0, 0);
-        button.setLayoutParams(layoutParams);
-        return button;
-    }
-
-    @ColorRes
-    private static int getPrimaryButtonColorFromSeverity(int issueSeverityLevel) {
-        return pickColorForSeverityLevel(
-                issueSeverityLevel,
-                R.color.safety_center_button_info,
-                R.color.safety_center_button_recommend,
-                R.color.safety_center_button_warn);
-    }
-
-    @ColorRes
-    private static int getSecondaryButtonStrokeColorFromSeverity(int issueSeverityLevel) {
-        return pickColorForSeverityLevel(
-                issueSeverityLevel,
-                R.color.safety_center_outline_button_info,
-                R.color.safety_center_outline_button_recommend,
-                R.color.safety_center_outline_button_warn);
-    }
-
-    @ColorRes
-    private static int pickColorForSeverityLevel(
-            int issueSeverityLevel,
-            @ColorRes int infoColor,
-            @ColorRes int recommendColor,
-            @ColorRes int warnColor) {
-        switch (issueSeverityLevel) {
-            case SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_OK:
-                return infoColor;
-            case SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_RECOMMENDATION:
-                return recommendColor;
-            case SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_CRITICAL_WARNING:
-                return warnColor;
-            default:
-                Log.w(TAG, String.format("Unexpected issueSeverityLevel: %s", issueSeverityLevel));
-                return infoColor;
-        }
-    }
-
     private void markIssueResolvedUiCompleted() {
         if (mResolvedIssueActionId != null) {
             mResolvedIssueActionId = null;
             mSafetyCenterViewModel.markIssueResolvedUiCompleted(mIssue.getId());
+        }
+    }
+
+    private class ActionButtonBuilder {
+        private final SafetyCenterIssue.Action mAction;
+        private final Context mContext;
+        private final ContextThemeWrapper mContextThemeWrapper;
+        private boolean mIsFirstButton = false;
+        private boolean mIsLargeScreen = false;
+
+        ActionButtonBuilder(SafetyCenterIssue.Action action, Context context) {
+            mAction = action;
+            mContext = context;
+            mContextThemeWrapper =
+                    new ContextThemeWrapper(context, R.style.Theme_MaterialComponents_DayNight);
+        }
+
+        public ActionButtonBuilder setAsPrimaryButton() {
+            mIsFirstButton = true;
+            return this;
+        }
+
+        public ActionButtonBuilder isLargeScreen(boolean isLargeScreen) {
+            mIsLargeScreen = isLargeScreen;
+            return this;
+        }
+
+        public void buildAndAddToView(LinearLayout buttonList) {
+            MaterialButton button = new MaterialButton(mContextThemeWrapper, null, getStyle());
+            setButtonColors(button);
+            setButtonLayout(button);
+            button.setText(mAction.getLabel());
+            button.setEnabled(!mAction.isInFlight());
+            button.setOnClickListener(
+                    (view) -> {
+                        if (mAction.willResolve()) {
+                            // Disable the button to prevent double-taps.
+                            // We ideally want to do this on any button press, however out of an
+                            // abundance of caution we only do it with actions that indicate they
+                            // will resolve (and therefore we can rely on a model update to
+                            // redraw state).
+                            // We expect the model to update with either isInFlight() or simply
+                            // removing/updating the issue.
+                            button.setEnabled(false);
+                        }
+                        mSafetyCenterViewModel.executeIssueAction(mIssue, mAction, mTaskId);
+                        mSafetyCenterViewModel
+                                .getInteractionLogger()
+                                .recordForIssue(
+                                        mIsFirstButton
+                                                ? Action.ISSUE_PRIMARY_ACTION_CLICKED
+                                                : Action.ISSUE_SECONDARY_ACTION_CLICKED,
+                                        mIssue);
+                    });
+
+            maybeAddSpaceToView(buttonList);
+            buttonList.addView(button);
+        }
+
+        private void maybeAddSpaceToView(LinearLayout buttonList) {
+            if (mIsFirstButton) {
+                return;
+            }
+
+            int margin =
+                    mContext.getResources()
+                            .getDimensionPixelSize(R.dimen.sc_action_button_list_margin);
+            Space space = new Space(mContext);
+            space.setLayoutParams(new ViewGroup.LayoutParams(margin, margin));
+            buttonList.addView(space);
+        }
+
+        private int getStyle() {
+            return mIsFirstButton
+                    ? R.attr.scActionButtonStyle
+                    : R.attr.scSecondaryActionButtonStyle;
+        }
+
+        private void setButtonColors(MaterialButton button) {
+            if (mIsFirstButton) {
+                button.setBackgroundTintList(
+                        ContextCompat.getColorStateList(
+                                mContext,
+                                getPrimaryButtonColorFromSeverity(mIssue.getSeverityLevel())));
+            } else {
+                button.setStrokeColor(
+                        ContextCompat.getColorStateList(
+                                mContext,
+                                getSecondaryButtonStrokeColorFromSeverity(
+                                        mIssue.getSeverityLevel())));
+            }
+        }
+
+        private void setButtonLayout(Button button) {
+            ViewGroup.MarginLayoutParams layoutParams =
+                    new ViewGroup.MarginLayoutParams(layoutWidth(), WRAP_CONTENT);
+            button.setLayoutParams(layoutParams);
+        }
+
+        private int layoutWidth() {
+            if (mIsLargeScreen) {
+                return WRAP_CONTENT;
+            } else {
+                return MATCH_PARENT;
+            }
+        }
+
+        @ColorRes
+        private int getPrimaryButtonColorFromSeverity(int issueSeverityLevel) {
+            return pickColorForSeverityLevel(
+                    issueSeverityLevel,
+                    R.color.safety_center_button_info,
+                    R.color.safety_center_button_recommend,
+                    R.color.safety_center_button_warn);
+        }
+
+        @ColorRes
+        private int getSecondaryButtonStrokeColorFromSeverity(int issueSeverityLevel) {
+            return pickColorForSeverityLevel(
+                    issueSeverityLevel,
+                    R.color.safety_center_outline_button_info,
+                    R.color.safety_center_outline_button_recommend,
+                    R.color.safety_center_outline_button_warn);
+        }
+
+        @ColorRes
+        private int pickColorForSeverityLevel(
+                int issueSeverityLevel,
+                @ColorRes int infoColor,
+                @ColorRes int recommendColor,
+                @ColorRes int warnColor) {
+            switch (issueSeverityLevel) {
+                case SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_OK:
+                    return infoColor;
+                case SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_RECOMMENDATION:
+                    return recommendColor;
+                case SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_CRITICAL_WARNING:
+                    return warnColor;
+                default:
+                    Log.w(
+                            TAG,
+                            String.format("Unexpected issueSeverityLevel: %s", issueSeverityLevel));
+                    return infoColor;
+            }
         }
     }
 }
