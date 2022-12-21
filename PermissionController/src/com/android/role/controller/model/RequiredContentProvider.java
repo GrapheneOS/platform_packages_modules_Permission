@@ -37,9 +37,9 @@ import java.util.List;
 public class RequiredContentProvider extends RequiredComponent {
 
     public RequiredContentProvider(@NonNull IntentFilterData intentFilterData,
-            int minTargetSdkVersion, @Nullable String permission, int queryFlags,
+            int minTargetSdkVersion, int flags, @Nullable String permission, int queryFlags,
             @NonNull List<RequiredMetaData> metaData) {
-        super(intentFilterData, minTargetSdkVersion, permission, queryFlags, metaData);
+        super(intentFilterData, minTargetSdkVersion, flags, permission, queryFlags, metaData);
     }
 
     @NonNull
@@ -56,6 +56,11 @@ public class RequiredContentProvider extends RequiredComponent {
     protected ComponentName getComponentComponentName(@NonNull ResolveInfo resolveInfo) {
         return new ComponentName(resolveInfo.providerInfo.packageName,
                 resolveInfo.providerInfo.name);
+    }
+
+    @Override
+    protected int getComponentFlags(@NonNull ResolveInfo resolveInfo) {
+        return resolveInfo.providerInfo.flags;
     }
 
     @Nullable
