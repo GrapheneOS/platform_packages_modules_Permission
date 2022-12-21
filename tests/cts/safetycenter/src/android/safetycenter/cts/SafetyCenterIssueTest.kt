@@ -45,7 +45,11 @@ class SafetyCenterIssueTest {
         PendingIntent.getActivity(context, 0, Intent("Fake Data"), PendingIntent.FLAG_IMMUTABLE)
     private val pendingIntent2 =
         PendingIntent.getActivity(
-            context, 0, Intent("Fake Different Data"), PendingIntent.FLAG_IMMUTABLE)
+            context,
+            0,
+            Intent("Fake Different Data"),
+            PendingIntent.FLAG_IMMUTABLE
+        )
 
     private val action1 =
         SafetyCenterIssue.Action.Builder("action_id_1", "an action", pendingIntent1)
@@ -93,7 +97,8 @@ class SafetyCenterIssueTest {
         assertThat(SafetyCenterIssue.Builder(issue1).setSubtitle("a subtitle").build().subtitle)
             .isEqualTo("a subtitle")
         assertThat(
-                SafetyCenterIssue.Builder(issue1).setSubtitle("another subtitle").build().subtitle)
+                SafetyCenterIssue.Builder(issue1).setSubtitle("another subtitle").build().subtitle
+            )
             .isEqualTo("another subtitle")
     }
 
@@ -112,13 +117,15 @@ class SafetyCenterIssueTest {
                 SafetyCenterIssue.Builder(issue1)
                     .setAttributionTitle("an attributionTitle")
                     .build()
-                    .attributionTitle)
+                    .attributionTitle
+            )
             .isEqualTo("an attributionTitle")
         assertThat(
                 SafetyCenterIssue.Builder(issue1)
                     .setAttributionTitle("another attributionTitle")
                     .build()
-                    .attributionTitle)
+                    .attributionTitle
+            )
             .isEqualTo("another attributionTitle")
     }
 
@@ -138,13 +145,15 @@ class SafetyCenterIssueTest {
                 SafetyCenterIssue.Builder(issue1)
                     .setSeverityLevel(SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_RECOMMENDATION)
                     .build()
-                    .severityLevel)
+                    .severityLevel
+            )
             .isEqualTo(SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_RECOMMENDATION)
         assertThat(
                 SafetyCenterIssue.Builder(issue1)
                     .setSeverityLevel(SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_CRITICAL_WARNING)
                     .build()
-                    .severityLevel)
+                    .severityLevel
+            )
             .isEqualTo(SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_CRITICAL_WARNING)
     }
 
@@ -167,13 +176,15 @@ class SafetyCenterIssueTest {
                 SafetyCenterIssue.Builder(issue1)
                     .setShouldConfirmDismissal(true)
                     .build()
-                    .shouldConfirmDismissal())
+                    .shouldConfirmDismissal()
+            )
             .isTrue()
         assertThat(
                 SafetyCenterIssue.Builder(issue1)
                     .setShouldConfirmDismissal(false)
                     .build()
-                    .shouldConfirmDismissal())
+                    .shouldConfirmDismissal()
+            )
             .isFalse()
     }
 
@@ -188,7 +199,8 @@ class SafetyCenterIssueTest {
                 SafetyCenterIssue.Builder(issue1)
                     .setActions(listOf(action1, action2))
                     .build()
-                    .actions)
+                    .actions
+            )
             .containsExactly(action1, action2)
             .inOrder()
         assertThat(SafetyCenterIssue.Builder(issue1).setActions(listOf(action2)).build().actions)
@@ -298,7 +310,9 @@ class SafetyCenterIssueTest {
                     listOf(
                         SafetyCenterIssue.Action.Builder(action1)
                             .setConfirmation(Confirmation("Title", "Text", "Accept", "Deny"))
-                            .build()))
+                            .build()
+                    )
+                )
                 .setAttributionTitle("Attribution title")
                 .setGroupId("group_id")
                 .build()
@@ -426,11 +440,14 @@ class SafetyCenterIssueTest {
     fun action_equalsHashCodeToString_usingEqualsHashCodeToStringTester_atLeastAndroidU() {
         val confirmation = Confirmation("Title", "Text", "Accept", "Deny")
         issueActionNewTiramisuEqualsHashCodeToStringTester(
-                createCopyFromBuilder = { SafetyCenterIssue.Action.Builder(it).build() })
+                createCopyFromBuilder = { SafetyCenterIssue.Action.Builder(it).build() }
+            )
             .addEqualityGroup(
-                SafetyCenterIssue.Action.Builder(action1).setConfirmation(confirmation).build())
+                SafetyCenterIssue.Action.Builder(action1).setConfirmation(confirmation).build()
+            )
             .addEqualityGroup(
-                SafetyCenterIssue.Action.Builder(action2).setConfirmation(confirmation).build())
+                SafetyCenterIssue.Action.Builder(action2).setConfirmation(confirmation).build()
+            )
             .addEqualityGroup(
                 SafetyCenterIssue.Action.Builder("an_id", "a label", pendingIntent1)
                     .setWillResolve(true)
@@ -443,51 +460,60 @@ class SafetyCenterIssueTest {
                     .setIsInFlight(true)
                     .setSuccessMessage("a success message")
                     .setConfirmation(confirmation)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyCenterIssue.Action.Builder("an_id", "a label", pendingIntent1)
                     .setSuccessMessage("a success message")
                     .setConfirmation(confirmation)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyCenterIssue.Action.Builder("a_different_id", "a label", pendingIntent1)
                     .setSuccessMessage("a success message")
                     .setConfirmation(confirmation)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyCenterIssue.Action.Builder("an_id", "a different label", pendingIntent1)
                     .setSuccessMessage("a success message")
                     .setConfirmation(confirmation)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyCenterIssue.Action.Builder("an_id", "a label", pendingIntent2)
                     .setSuccessMessage("a success message")
                     .setConfirmation(confirmation)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyCenterIssue.Action.Builder("an_id", "a label", pendingIntent1)
                     .setWillResolve(true)
                     .setSuccessMessage("a success message")
                     .setConfirmation(confirmation)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyCenterIssue.Action.Builder("an_id", "a label", pendingIntent1)
                     .setIsInFlight(true)
                     .setSuccessMessage("a success message")
                     .setConfirmation(confirmation)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyCenterIssue.Action.Builder("an_id", "a label", pendingIntent1)
                     .setSuccessMessage("a different success message")
                     .setConfirmation(confirmation)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyCenterIssue.Action.Builder("an_id", "a label", pendingIntent1)
                     .setId("another_id")
                     .setLabel("another_label")
                     .setPendingIntent(pendingIntent2)
                     .setConfirmation(confirmation)
-                    .build())
+                    .build()
+            )
             .test()
     }
 
@@ -509,38 +535,47 @@ class SafetyCenterIssueTest {
                 .build()
         val confirmation = Confirmation("Title", "Text", "Accept", "Deny")
         return newTiramisuEqualsHashCodeToStringTester(
-                createCopyFromBuilder = { SafetyCenterIssue.Builder(it).build() })
+                createCopyFromBuilder = { SafetyCenterIssue.Builder(it).build() }
+            )
             .addEqualityGroup(
                 SafetyCenterIssue.Builder(issueWithTiramisuFields)
                     .setAttributionTitle("Attribution title")
                     .build(),
                 SafetyCenterIssue.Builder(issueWithTiramisuFields)
                     .setAttributionTitle("Attribution title")
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyCenterIssue.Builder(issueWithTiramisuFields)
                     .setAttributionTitle("a different attribution title")
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyCenterIssue.Builder(issueWithTiramisuFields)
                     .setAttributionTitle("Attribution title")
                     .setGroupId("group_id")
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyCenterIssue.Builder(issueWithTiramisuFields).setGroupId("group_id").build(),
-                SafetyCenterIssue.Builder(issueWithTiramisuFields).setGroupId("group_id").build())
+                SafetyCenterIssue.Builder(issueWithTiramisuFields).setGroupId("group_id").build()
+            )
             .addEqualityGroup(
                 SafetyCenterIssue.Builder(issueWithTiramisuFields)
                     .setGroupId("a different group_id")
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyCenterIssue.Builder(issueWithTiramisuFields)
                     .setActions(
                         listOf(
                             SafetyCenterIssue.Action.Builder(action1)
                                 .setConfirmation(confirmation)
-                                .build()))
-                    .build())
+                                .build()
+                        )
+                    )
+                    .build()
+            )
     }
 
     @Test
@@ -597,7 +632,8 @@ class SafetyCenterIssueTest {
         EqualsHashCodeToStringTester.ofParcelable(parcelableCreator = Confirmation.CREATOR)
             .addEqualityGroup(
                 Confirmation("Title", "Text", "Accept", "Deny"),
-                Confirmation("Title", "Text", "Accept", "Deny"))
+                Confirmation("Title", "Text", "Accept", "Deny")
+            )
             .addEqualityGroup(Confirmation("Other title", "Text", "Accept", "Deny"))
             .addEqualityGroup(Confirmation("Title", "Other text", "Accept", "Deny"))
             .addEqualityGroup(Confirmation("Title", "Text", "Other accept", "Deny"))
@@ -613,7 +649,9 @@ class SafetyCenterIssueTest {
         createCopyFromBuilder: ((SafetyCenterIssue) -> SafetyCenterIssue)? = null
     ) =
         EqualsHashCodeToStringTester.ofParcelable(
-                parcelableCreator = SafetyCenterIssue.CREATOR, createCopy = createCopyFromBuilder)
+                parcelableCreator = SafetyCenterIssue.CREATOR,
+                createCopy = createCopyFromBuilder
+            )
             .addEqualityGroup(issue1, SafetyCenterIssue.Builder(issue1).build())
             .addEqualityGroup(issueWithRequiredFieldsOnly)
             .addEqualityGroup(
@@ -626,21 +664,27 @@ class SafetyCenterIssueTest {
                     .setSubtitle("In the neighborhood")
                     .setSeverityLevel(SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_OK)
                     .setActions(listOf(action1))
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(SafetyCenterIssue.Builder(issue1).setId("a different id").build())
             .addEqualityGroup(
-                SafetyCenterIssue.Builder(issue1).setTitle("a different title").build())
+                SafetyCenterIssue.Builder(issue1).setTitle("a different title").build()
+            )
             .addEqualityGroup(
-                SafetyCenterIssue.Builder(issue1).setSubtitle("a different subtitle").build())
+                SafetyCenterIssue.Builder(issue1).setSubtitle("a different subtitle").build()
+            )
             .addEqualityGroup(
-                SafetyCenterIssue.Builder(issue1).setSummary("a different summary").build())
+                SafetyCenterIssue.Builder(issue1).setSummary("a different summary").build()
+            )
             .addEqualityGroup(
                 SafetyCenterIssue.Builder(issue1)
                     .setSeverityLevel(SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_CRITICAL_WARNING)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(SafetyCenterIssue.Builder(issue1).setDismissible(false).build())
             .addEqualityGroup(
-                SafetyCenterIssue.Builder(issue1).setShouldConfirmDismissal(false).build())
+                SafetyCenterIssue.Builder(issue1).setShouldConfirmDismissal(false).build()
+            )
             .addEqualityGroup(SafetyCenterIssue.Builder(issue1).setActions(listOf(action2)).build())
 
     private fun issueActionNewTiramisuEqualsHashCodeToStringTester(
@@ -648,7 +692,8 @@ class SafetyCenterIssueTest {
     ) =
         EqualsHashCodeToStringTester.ofParcelable(
                 parcelableCreator = SafetyCenterIssue.Action.CREATOR,
-                createCopy = createCopyFromBuilder)
+                createCopy = createCopyFromBuilder
+            )
             .addEqualityGroup(action1)
             .addEqualityGroup(action2)
             .addEqualityGroup(
@@ -661,41 +706,50 @@ class SafetyCenterIssueTest {
                     .setWillResolve(true)
                     .setIsInFlight(true)
                     .setSuccessMessage("a success message")
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyCenterIssue.Action.Builder("an_id", "a label", pendingIntent1)
                     .setSuccessMessage("a success message")
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyCenterIssue.Action.Builder("a_different_id", "a label", pendingIntent1)
                     .setSuccessMessage("a success message")
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyCenterIssue.Action.Builder("an_id", "a different label", pendingIntent1)
                     .setSuccessMessage("a success message")
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyCenterIssue.Action.Builder("an_id", "a label", pendingIntent2)
                     .setSuccessMessage("a success message")
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyCenterIssue.Action.Builder("an_id", "a label", pendingIntent1)
                     .setWillResolve(true)
                     .setSuccessMessage("a success message")
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyCenterIssue.Action.Builder("an_id", "a label", pendingIntent1)
                     .setIsInFlight(true)
                     .setSuccessMessage("a success message")
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyCenterIssue.Action.Builder("an_id", "a label", pendingIntent1)
                     .setSuccessMessage("a different success message")
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetyCenterIssue.Action.Builder("an_id", "a label", pendingIntent1)
                     .setId("another_id")
                     .setLabel("another_label")
                     .setPendingIntent(pendingIntent2)
-                    .build())
+                    .build()
+            )
 }

@@ -1400,4 +1400,24 @@
             <permission name="android.permission.MANAGE_DEVICE_LOCK_STATE" />
         </permissions>
     </role>
+
+    <!---
+      ~ A role for the wear health service that handles health/fitness tracking features.
+    -->
+    <role
+        name="android.app.role.SYSTEM_WEAR_HEALTH_SERVICE"
+        behavior="SystemWearHealthServiceRoleBehavior"
+        defaultHolders="config_systemWearHealthService"
+        exclusive="true"
+        minSdkVersion="33"
+        static="true"
+        systemOnly="true"
+        visible="false">
+        <permissions>
+            <permission-set name="sensors" />
+            <permission-set name="location" />
+            <permission name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+            <permission name="android.permission.ACTIVITY_RECOGNITION" />
+        </permissions>
+    </role>
 </roles>

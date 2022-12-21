@@ -108,7 +108,10 @@ class SafetyCenterSubpagesTest {
             waitDisplayed(
                 By.desc(
                     context.getString(
-                        MULTIPLE_SOURCE_GROUPS_CONFIG.safetySourcesGroups.first()!!.titleResId)))
+                        MULTIPLE_SOURCE_GROUPS_CONFIG.safetySourcesGroups.first()!!.titleResId
+                    )
+                )
+            )
         }
     }
 
@@ -135,7 +138,10 @@ class SafetyCenterSubpagesTest {
             waitNotDisplayed(
                 By.desc(
                     context.getString(
-                        MULTIPLE_SOURCE_GROUPS_CONFIG.safetySourcesGroups.first()!!.titleResId)))
+                        MULTIPLE_SOURCE_GROUPS_CONFIG.safetySourcesGroups.first()!!.titleResId
+                    )
+                )
+            )
         }
     }
 
@@ -159,7 +165,8 @@ class SafetyCenterSubpagesTest {
                 context.getString(firstGroup.titleResId),
                 context.getString(firstGroup.summaryResId),
                 context.getString(lastGroup.titleResId),
-                context.getString(lastGroup.summaryResId))
+                context.getString(lastGroup.summaryResId)
+            )
 
             openSubpageAndExit(lastGroup) {
                 // Verifying that the subpage is opened with collapsing toolbar title
@@ -189,7 +196,8 @@ class SafetyCenterSubpagesTest {
             waitAllTextDisplayed(
                 context.getString(firstGroup.titleResId),
                 context.getString(firstGroup.summaryResId),
-                context.getString(lastGroup.titleResId))
+                context.getString(lastGroup.titleResId)
+            )
             waitDisplayed(By.text(context.getString(lastGroup.summaryResId))) { it.click() }
 
             // Verifying that the group is expanded and sources are displayed
@@ -212,7 +220,8 @@ class SafetyCenterSubpagesTest {
             // Verifying that both entry title and summary are displayed on homepage
             waitAllTextDisplayed(
                 context.getString(firstGroup.titleResId),
-                context.getString(firstGroup.summaryResId))
+                context.getString(firstGroup.summaryResId)
+            )
 
             openSubpageAndExit(firstGroup) {
                 // Verifying that only collapsing toolbar title is displayed for subpage
@@ -223,7 +232,8 @@ class SafetyCenterSubpagesTest {
             // Verifying that the homepage is opened again
             waitAllTextDisplayed(
                 context.getString(firstGroup.titleResId),
-                context.getString(firstGroup.summaryResId))
+                context.getString(firstGroup.summaryResId)
+            )
         }
     }
 
@@ -236,19 +246,25 @@ class SafetyCenterSubpagesTest {
                 safetySourceCtsData.buildSafetySourceDataWithSummary(
                     severityLevel = SafetySourceData.SEVERITY_LEVEL_INFORMATION,
                     entryTitle = SAFETY_SOURCE_1_TITLE,
-                    entrySummary = SAFETY_SOURCE_1_SUMMARY))
+                    entrySummary = SAFETY_SOURCE_1_SUMMARY
+                )
+            )
             setData(
                 SOURCE_ID_2,
                 safetySourceCtsData.buildSafetySourceDataWithSummary(
                     severityLevel = SafetySourceData.SEVERITY_LEVEL_INFORMATION,
                     entryTitle = SAFETY_SOURCE_2_TITLE,
-                    entrySummary = SAFETY_SOURCE_2_SUMMARY))
+                    entrySummary = SAFETY_SOURCE_2_SUMMARY
+                )
+            )
             setData(
                 SOURCE_ID_3,
                 safetySourceCtsData.buildSafetySourceDataWithSummary(
                     severityLevel = SafetySourceData.SEVERITY_LEVEL_INFORMATION,
                     entryTitle = SAFETY_SOURCE_3_TITLE,
-                    entrySummary = SAFETY_SOURCE_3_SUMMARY))
+                    entrySummary = SAFETY_SOURCE_3_SUMMARY
+                )
+            )
         }
         val firstGroup: SafetySourcesGroup = MULTIPLE_SOURCES_CONFIG.safetySourcesGroups[0]
         val secondGroup: SafetySourcesGroup = MULTIPLE_SOURCES_CONFIG.safetySourcesGroups[1]
@@ -261,7 +277,8 @@ class SafetyCenterSubpagesTest {
                     SAFETY_SOURCE_1_TITLE,
                     SAFETY_SOURCE_1_SUMMARY,
                     SAFETY_SOURCE_2_TITLE,
-                    SAFETY_SOURCE_2_SUMMARY)
+                    SAFETY_SOURCE_2_SUMMARY
+                )
             }
 
             // Verifying that subpage entries of the second group are displayed
@@ -283,7 +300,9 @@ class SafetyCenterSubpagesTest {
                 waitDisplayed(By.text(context.getString(source.titleResId))) { it.click() }
                 waitButtonDisplayed("Exit test activity") { it.click() }
                 waitAllTextDisplayed(
-                    context.getString(source.titleResId), context.getString(source.summaryResId))
+                    context.getString(source.titleResId),
+                    context.getString(source.summaryResId)
+                )
             }
         }
     }

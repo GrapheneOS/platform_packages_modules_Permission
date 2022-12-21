@@ -72,12 +72,14 @@ object SafetyCenterCtsConfigs {
      */
     val SINGLE_SOURCE_INVALID_INTENT_CONFIG =
         singleSourceConfig(
-            dynamicSafetySourceBuilder(SINGLE_SOURCE_ID).setIntentAction("stub").build())
+            dynamicSafetySourceBuilder(SINGLE_SOURCE_ID).setIntentAction("stub").build()
+        )
 
     /** A simple [SafetyCenterConfig] for CTS tests with a source max severity level of 0. */
     val SEVERITY_ZERO_CONFIG =
         singleSourceConfig(
-            dynamicSafetySourceBuilder(SINGLE_SOURCE_ID).setMaxSeverityLevel(0).build())
+            dynamicSafetySourceBuilder(SINGLE_SOURCE_ID).setMaxSeverityLevel(0).build()
+        )
 
     /**
      * SHA256 hash of a package certificate.
@@ -91,7 +93,8 @@ object SafetyCenterCtsConfigs {
     private val PACKAGE_CERT_HASHES_CTS =
         listOf(
             "6cecc50e34ae31bfb5678986d6d6d3736c571ded2f2459527793e1f054eb0c9b",
-            "a40da80a59d170caa950cf15c18c454d47a39b26989d8b640ecd745ba71bf5dc")
+            "a40da80a59d170caa950cf15c18c454d47a39b26989d8b640ecd745ba71bf5dc"
+        )
 
     /** An invalid SHA256 hash (not a byte string, not even number of chars). */
     const val PACKAGE_CERT_HASH_INVALID = "0124ppl"
@@ -103,7 +106,8 @@ object SafetyCenterCtsConfigs {
             singleSourceConfig(
                 dynamicSafetySourceBuilder(SINGLE_SOURCE_ID)
                     .addPackageCertificateHash(PACKAGE_CERT_HASH_FAKE)
-                    .build())
+                    .build()
+            )
 
     /**
      * A simple [SafetyCenterConfig] for CTS tests with a invalid package cert hash (not a
@@ -115,7 +119,8 @@ object SafetyCenterCtsConfigs {
             singleSourceConfig(
                 dynamicSafetySourceBuilder(SINGLE_SOURCE_ID)
                     .addPackageCertificateHash(PACKAGE_CERT_HASH_INVALID)
-                    .build())
+                    .build()
+            )
 
     /**
      * A simple [SafetyCenterConfig] for CTS tests with a source that does not support refresh on
@@ -123,7 +128,8 @@ object SafetyCenterCtsConfigs {
      */
     val NO_PAGE_OPEN_CONFIG =
         singleSourceConfig(
-            dynamicSafetySourceBuilder(SINGLE_SOURCE_ID).setRefreshOnPageOpenAllowed(false).build())
+            dynamicSafetySourceBuilder(SINGLE_SOURCE_ID).setRefreshOnPageOpenAllowed(false).build()
+        )
 
     /** ID of a source provided by [MULTIPLE_SOURCES_CONFIG] and [SUMMARY_TEST_CONFIG]. */
     const val SOURCE_ID_1 = "cts_source_id_1"
@@ -315,7 +321,8 @@ object SafetyCenterCtsConfigs {
     /** A Simple [SafetyCenterConfig] with an issue only source supporting all profiles. */
     val ISSUE_ONLY_SOURCE_ALL_PROFILE_CONFIG =
         singleSourceConfig(
-            issueOnlyAllProfileSafetySourceBuilder(ISSUE_ONLY_ALL_PROFILE_SOURCE_ID).build())
+            issueOnlyAllProfileSafetySourceBuilder(ISSUE_ONLY_ALL_PROFILE_SOURCE_ID).build()
+        )
 
     /**
      * A Simple [SafetyCenterConfig] with an issue only source inside a [SafetySourcesGroup] with
@@ -327,8 +334,10 @@ object SafetyCenterCtsConfigs {
                 safetySourcesGroupBuilder(SINGLE_SOURCE_GROUP_ID)
                     .setTitleResId(Resources.ID_NULL)
                     .addSafetySource(
-                        issueOnlySafetySourceBuilder(ISSUE_ONLY_ALL_OPTIONAL_ID).build())
-                    .build())
+                        issueOnlySafetySourceBuilder(ISSUE_ONLY_ALL_OPTIONAL_ID).build()
+                    )
+                    .build()
+            )
             .build()
 
     /** A dynamic source with [OTHER_PACKAGE_NAME] */
@@ -344,7 +353,8 @@ object SafetyCenterCtsConfigs {
     /** A simple [SafetyCenterConfig] with a source supporting all profiles. */
     val SINGLE_SOURCE_ALL_PROFILE_CONFIG =
         singleSourceConfig(
-            dynamicAllProfileSafetySourceBuilder(SINGLE_SOURCE_ALL_PROFILE_ID).build())
+            dynamicAllProfileSafetySourceBuilder(SINGLE_SOURCE_ALL_PROFILE_ID).build()
+        )
 
     /** A simple [SafetyCenterConfig] for CTS tests with multiple sources. */
     val MULTIPLE_SOURCES_CONFIG =
@@ -353,7 +363,8 @@ object SafetyCenterCtsConfigs {
                 safetySourcesGroupBuilder(MULTIPLE_SOURCES_GROUP_ID_1)
                     .addSafetySource(dynamicSafetySource(SOURCE_ID_1))
                     .addSafetySource(dynamicSafetySource(SOURCE_ID_2))
-                    .build())
+                    .build()
+            )
             .addSafetySourcesGroup(
                 safetySourcesGroupBuilder(MULTIPLE_SOURCES_GROUP_ID_2)
                     .setTitleResId(android.R.string.copy)
@@ -363,8 +374,10 @@ object SafetyCenterCtsConfigs {
                             .setTitleResId(android.R.string.copy)
                             .setSummaryResId(android.R.string.cancel)
                             .setRefreshOnPageOpenAllowed(false)
-                            .build())
-                    .build())
+                            .build()
+                    )
+                    .build()
+            )
             .build()
 
     /**
@@ -378,32 +391,56 @@ object SafetyCenterCtsConfigs {
                     safetySourcesGroupBuilder(MULTIPLE_SOURCES_GROUP_ID_1)
                         .addSafetySource(
                             issueOnlySafetySourceWithDuplicationInfo(
-                                SOURCE_ID_1, DEDUPLICATION_GROUP_1))
+                                SOURCE_ID_1,
+                                DEDUPLICATION_GROUP_1
+                            )
+                        )
                         .addSafetySource(
                             issueOnlySafetySourceWithDuplicationInfo(
-                                SOURCE_ID_2, DEDUPLICATION_GROUP_1))
+                                SOURCE_ID_2,
+                                DEDUPLICATION_GROUP_1
+                            )
+                        )
                         .addSafetySource(
                             issueOnlySafetySourceWithDuplicationInfo(
-                                SOURCE_ID_3, DEDUPLICATION_GROUP_2))
+                                SOURCE_ID_3,
+                                DEDUPLICATION_GROUP_2
+                            )
+                        )
                         .addSafetySource(
                             issueOnlySafetySourceWithDuplicationInfo(
-                                SOURCE_ID_4, DEDUPLICATION_GROUP_3))
-                        .build())
+                                SOURCE_ID_4,
+                                DEDUPLICATION_GROUP_3
+                            )
+                        )
+                        .build()
+                )
                 .addSafetySourcesGroup(
                     safetySourcesGroupBuilder(MULTIPLE_SOURCES_GROUP_ID_2)
                         .addSafetySource(
                             issueOnlySafetySourceWithDuplicationInfo(
-                                SOURCE_ID_5, DEDUPLICATION_GROUP_1))
+                                SOURCE_ID_5,
+                                DEDUPLICATION_GROUP_1
+                            )
+                        )
                         .addSafetySource(
                             issueOnlySafetySourceWithDuplicationInfo(
-                                SOURCE_ID_6, DEDUPLICATION_GROUP_3))
-                        .build())
+                                SOURCE_ID_6,
+                                DEDUPLICATION_GROUP_3
+                            )
+                        )
+                        .build()
+                )
                 .addSafetySourcesGroup(
                     safetySourcesGroupBuilder(MULTIPLE_SOURCES_GROUP_ID_3)
                         .addSafetySource(
                             issueOnlySafetySourceWithDuplicationInfo(
-                                SOURCE_ID_7, DEDUPLICATION_GROUP_3))
-                        .build())
+                                SOURCE_ID_7,
+                                DEDUPLICATION_GROUP_3
+                            )
+                        )
+                        .build()
+                )
                 .build()
 
     /** Source included in [DYNAMIC_SOURCE_GROUP_1]. */
@@ -461,9 +498,11 @@ object SafetyCenterCtsConfigs {
             .addSafetySourcesGroup(
                 safetySourcesGroupBuilder(MULTIPLE_SOURCES_GROUP_ID_1)
                     .addSafetySource(
-                        dynamicSafetySourceBuilder(SOURCE_ID_1).setIntentAction("stub").build())
+                        dynamicSafetySourceBuilder(SOURCE_ID_1).setIntentAction("stub").build()
+                    )
                     .addSafetySource(dynamicSafetySource(SOURCE_ID_2))
-                    .build())
+                    .build()
+            )
             .build()
 
     /** Source provided by [STATIC_SOURCES_CONFIG]. */
@@ -523,8 +562,10 @@ object SafetyCenterCtsConfigs {
                             .setProfile(SafetySource.PROFILE_PRIMARY)
                             .setRefreshOnPageOpenAllowed(true)
                             .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_HIDDEN)
-                            .build())
-                    .build())
+                            .build()
+                    )
+                    .build()
+            )
             .build()
 
     /**
@@ -542,8 +583,10 @@ object SafetyCenterCtsConfigs {
                         dynamicSafetySourceBuilder("AndroidLockScreen")
                             .setPackageName(getSettingsPackageName())
                             .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_DISABLED)
-                            .build())
-                    .build())
+                            .build()
+                    )
+                    .build()
+            )
             .build()
 
     /** [SafetyCenterConfig] used in CTS tests to replicate the lock screen sources group. */
@@ -557,20 +600,24 @@ object SafetyCenterCtsConfigs {
                     .addSafetySource(
                         dynamicSafetySourceBuilder(DYNAMIC_BAREBONE_ID)
                             .setRefreshOnPageOpenAllowed(false)
-                            .build())
+                            .build()
+                    )
                     .addSafetySource(
                         dynamicSafetySourceBuilder(DYNAMIC_HIDDEN_ID)
                             .setTitleResId(Resources.ID_NULL)
                             .setSummaryResId(Resources.ID_NULL)
                             .setIntentAction(null)
                             .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_HIDDEN)
-                            .build())
+                            .build()
+                    )
                     .addSafetySource(
                         dynamicSafetySourceBuilder(DYNAMIC_DISABLED_ID)
                             .setIntentAction(null)
                             .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_DISABLED)
-                            .build())
-                    .build())
+                            .build()
+                    )
+                    .build()
+            )
             .build()
 
     /** A simple [SafetyCenterConfig] used in CTS tests that stress the group summary logic. */
@@ -586,7 +633,8 @@ object SafetyCenterCtsConfigs {
                     .addSafetySource(dynamicSafetySource(SOURCE_ID_6))
                     .addSafetySource(dynamicSafetySource(SOURCE_ID_7))
                     .addSafetySource(staticSafetySource(STATIC_IN_STATEFUL_ID))
-                    .build())
+                    .build()
+            )
             .build()
 
     /**
@@ -600,7 +648,8 @@ object SafetyCenterCtsConfigs {
                     .addSafetySource(
                         dynamicSafetySourceBuilder(DYNAMIC_BAREBONE_ID)
                             .setRefreshOnPageOpenAllowed(false)
-                            .build())
+                            .build()
+                    )
                     .addSafetySource(
                         dynamicSafetySourceBuilder(DYNAMIC_ALL_OPTIONAL_ID)
                             .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_DISABLED)
@@ -617,28 +666,33 @@ object SafetyCenterCtsConfigs {
                                     }
                                 }
                             }
-                            .build())
+                            .build()
+                    )
                     .addSafetySource(
                         dynamicSafetySourceBuilder(DYNAMIC_DISABLED_ID)
                             .setIntentAction(null)
                             .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_DISABLED)
-                            .build())
+                            .build()
+                    )
                     .addSafetySource(
                         dynamicSafetySourceBuilder(DYNAMIC_HIDDEN_ID)
                             .setTitleResId(Resources.ID_NULL)
                             .setSummaryResId(Resources.ID_NULL)
                             .setIntentAction(null)
                             .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_HIDDEN)
-                            .build())
+                            .build()
+                    )
                     .addSafetySource(
                         dynamicSafetySourceBuilder(DYNAMIC_HIDDEN_WITH_SEARCH_ID)
                             .setSummaryResId(Resources.ID_NULL)
                             .setIntentAction(null)
                             .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_HIDDEN)
                             .setSearchTermsResId(android.R.string.ok)
-                            .build())
+                            .build()
+                    )
                     .addSafetySource(DYNAMIC_OTHER_PACKAGE_SAFETY_SOURCE)
-                    .build())
+                    .build()
+            )
             .addSafetySourcesGroup(
                 safetySourcesGroupBuilder(STATIC_GROUP_ID)
                     .apply {
@@ -652,13 +706,16 @@ object SafetyCenterCtsConfigs {
                     .addSafetySource(
                         staticSafetySourceBuilder(STATIC_BAREBONE_ID)
                             .setSummaryResId(Resources.ID_NULL)
-                            .build())
+                            .build()
+                    )
                     .addSafetySource(
                         staticSafetySourceBuilder(STATIC_ALL_OPTIONAL_ID)
                             .setSearchTermsResId(android.R.string.ok)
                             .apply { if (SdkLevel.isAtLeastU()) setPackageName(CTS_PACKAGE_NAME) }
-                            .build())
-                    .build())
+                            .build()
+                    )
+                    .build()
+            )
             .addSafetySourcesGroup(
                 SafetySourcesGroup.Builder()
                     .setId(ISSUE_ONLY_GROUP_ID)
@@ -673,7 +730,8 @@ object SafetyCenterCtsConfigs {
                     .addSafetySource(
                         issueOnlySafetySourceBuilder(ISSUE_ONLY_BAREBONE_ID)
                             .setRefreshOnPageOpenAllowed(false)
-                            .build())
+                            .build()
+                    )
                     .addSafetySource(
                         issueOnlySafetySourceBuilder(ISSUE_ONLY_ALL_OPTIONAL_ID)
                             .setMaxSeverityLevel(SafetySourceData.SEVERITY_LEVEL_RECOMMENDATION)
@@ -688,20 +746,24 @@ object SafetyCenterCtsConfigs {
                                     }
                                 }
                             }
-                            .build())
-                    .build())
+                            .build()
+                    )
+                    .build()
+            )
             .addSafetySourcesGroup(
                 safetySourcesGroupBuilder(MIXED_STATEFUL_GROUP_ID)
                     .addSafetySource(dynamicSafetySource(DYNAMIC_IN_STATEFUL_ID))
                     .addSafetySource(staticSafetySource(STATIC_IN_STATEFUL_ID))
-                    .build())
+                    .build()
+            )
             .addSafetySourcesGroup(
                 safetySourcesGroupBuilder(MIXED_STATELESS_GROUP_ID)
                     .setSummaryResId(Resources.ID_NULL)
                     .addSafetySource(dynamicSafetySource(DYNAMIC_IN_STATELESS_ID))
                     .addSafetySource(staticSafetySource(STATIC_IN_STATELESS_ID))
                     .addSafetySource(issueOnlySafetySource(ISSUE_ONLY_IN_STATELESS_ID))
-                    .build())
+                    .build()
+            )
             .build()
 
     /**
@@ -715,12 +777,14 @@ object SafetyCenterCtsConfigs {
                     .addSafetySource(
                         dynamicSafetySourceBuilder(DYNAMIC_BAREBONE_ID)
                             .setRefreshOnPageOpenAllowed(false)
-                            .build())
+                            .build()
+                    )
                     .addSafetySource(
                         dynamicAllProfileSafetySourceBuilder(DYNAMIC_DISABLED_ID)
                             .setIntentAction(null)
                             .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_DISABLED)
-                            .build())
+                            .build()
+                    )
                     .addSafetySource(
                         dynamicAllProfileSafetySourceBuilder(DYNAMIC_HIDDEN_ID)
                             .setTitleResId(Resources.ID_NULL)
@@ -728,28 +792,34 @@ object SafetyCenterCtsConfigs {
                             .setSummaryResId(Resources.ID_NULL)
                             .setIntentAction(null)
                             .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_HIDDEN)
-                            .build())
-                    .build())
+                            .build()
+                    )
+                    .build()
+            )
             .addSafetySourcesGroup(
                 safetySourcesGroupBuilder(STATIC_GROUP_ID)
                     .setStatelessIconType(SafetySourcesGroup.STATELESS_ICON_TYPE_PRIVACY)
                     .addSafetySource(
                         staticSafetySourceBuilder(STATIC_BAREBONE_ID)
                             .setSummaryResId(Resources.ID_NULL)
-                            .build())
+                            .build()
+                    )
                     .addSafetySource(
                         staticAllProfileSafetySourceBuilder(STATIC_ALL_OPTIONAL_ID)
                             .setSearchTermsResId(android.R.string.ok)
                             .apply { if (SdkLevel.isAtLeastU()) setPackageName(CTS_PACKAGE_NAME) }
-                            .build())
-                    .build())
+                            .build()
+                    )
+                    .build()
+            )
             .addSafetySourcesGroup(
                 SafetySourcesGroup.Builder()
                     .setId(ISSUE_ONLY_GROUP_ID)
                     .addSafetySource(
                         issueOnlySafetySourceBuilder(ISSUE_ONLY_BAREBONE_ID)
                             .setRefreshOnPageOpenAllowed(false)
-                            .build())
+                            .build()
+                    )
                     .addSafetySource(
                         issueOnlyAllProfileSafetySourceBuilder(ISSUE_ONLY_ALL_OPTIONAL_ID)
                             .setMaxSeverityLevel(SafetySourceData.SEVERITY_LEVEL_RECOMMENDATION)
@@ -764,23 +834,27 @@ object SafetyCenterCtsConfigs {
                                     }
                                 }
                             }
-                            .build())
-                    .build())
+                            .build()
+                    )
+                    .build()
+            )
             .addSafetySourcesGroup(
                 safetySourcesGroupBuilder(MIXED_STATELESS_GROUP_ID)
                     .setSummaryResId(Resources.ID_NULL)
                     .addSafetySource(
-                        dynamicAllProfileSafetySourceBuilder(DYNAMIC_IN_STATELESS_ID).build())
+                        dynamicAllProfileSafetySourceBuilder(DYNAMIC_IN_STATELESS_ID).build()
+                    )
                     .addSafetySource(
-                        staticAllProfileSafetySourceBuilder(STATIC_IN_STATELESS_ID).build())
+                        staticAllProfileSafetySourceBuilder(STATIC_IN_STATELESS_ID).build()
+                    )
                     .addSafetySource(
-                        issueOnlyAllProfileSafetySourceBuilder(ISSUE_ONLY_IN_STATELESS_ID).build())
-                    .build())
+                        issueOnlyAllProfileSafetySourceBuilder(ISSUE_ONLY_IN_STATELESS_ID).build()
+                    )
+                    .build()
+            )
             .build()
 
-    /**
-     * A [SafetyCenterConfig] containing only hidden sources.
-     */
+    /** A [SafetyCenterConfig] containing only hidden sources. */
     val HIDDEN_ONLY_CONFIG =
         SafetyCenterConfig.Builder()
             .addSafetySourcesGroup(
@@ -788,16 +862,20 @@ object SafetyCenterCtsConfigs {
                     .addSafetySource(
                         dynamicSafetySourceBuilder("some_hidden_source")
                             .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_HIDDEN)
-                            .build())
-                    .build())
+                            .build()
+                    )
+                    .build()
+            )
             .addSafetySourcesGroup(
                 safetySourcesGroupBuilder("some_rigid_group")
                     .setSummaryResId(Resources.ID_NULL)
                     .addSafetySource(
                         dynamicSafetySourceBuilder("another_hidden_source")
                             .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_HIDDEN)
-                            .build())
-                    .build())
+                            .build()
+                    )
+                    .build()
+            )
             .build()
 
     private fun dynamicSafetySource(id: String) = dynamicSafetySourceBuilder(id).build()
@@ -859,6 +937,7 @@ object SafetyCenterCtsConfigs {
             .addSafetySourcesGroup(
                 safetySourcesGroupBuilder(SINGLE_SOURCE_GROUP_ID)
                     .addSafetySource(safetySource)
-                    .build())
+                    .build()
+            )
             .build()
 }

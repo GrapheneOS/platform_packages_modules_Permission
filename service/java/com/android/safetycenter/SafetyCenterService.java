@@ -211,7 +211,10 @@ public final class SafetyCenterService extends SystemService {
                         mSafetyCenterConfigReader);
         mSafetyCenterBroadcastDispatcher =
                 new SafetyCenterBroadcastDispatcher(
-                        context, mSafetyCenterConfigReader, mSafetyCenterRefreshTracker);
+                        context,
+                        mSafetyCenterConfigReader,
+                        mSafetyCenterRefreshTracker,
+                        mSafetyCenterRepository);
         mPullAtomCallback =
                 new SafetyCenterPullAtomCallback(
                         context,
@@ -998,14 +1001,14 @@ public final class SafetyCenterService extends SystemService {
     private void startRefreshingSafetySources(
             @RefreshReason int refreshReason,
             @UserIdInt int userId,
-            @Nullable List<String> safetySourceIds) {
+            @Nullable List<String> selectedSafetySourceIds) {
         UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
         synchronized (mApiLock) {
             mSafetyCenterRepository.clearSafetySourceErrors(userProfileGroup);
 
             String refreshBroadcastId =
                     mSafetyCenterBroadcastDispatcher.sendRefreshSafetySources(
-                            refreshReason, userProfileGroup, safetySourceIds);
+                            refreshReason, userProfileGroup, selectedSafetySourceIds);
             if (refreshBroadcastId == null) {
                 return;
             }

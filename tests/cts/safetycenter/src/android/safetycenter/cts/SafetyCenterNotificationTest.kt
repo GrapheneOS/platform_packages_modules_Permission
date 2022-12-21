@@ -20,11 +20,9 @@ import android.content.Context
 import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetySourceIssue
-import android.safetycenter.cts.testing.Coroutines
+import android.safetycenter.cts.testing.Coroutines.TIMEOUT_SHORT
 import android.safetycenter.cts.testing.CtsNotificationListener
 import android.safetycenter.cts.testing.NotificationCharacteristics
-import android.safetycenter.cts.testing.NotificationCharacteristics.Companion.assertNotificationMatches
-import android.safetycenter.cts.testing.NotificationCharacteristics.Companion.assertNotificationsMatch
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.clearAllSafetySourceDataForTestsWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.dismissSafetyCenterIssueWithPermission
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_CONFIG
@@ -39,8 +37,6 @@ import android.safetycenter.cts.testing.SafetySourceCtsData
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
-import com.android.compatibility.common.util.SystemUtil
-import com.google.common.truth.Truth.assertThat
 import kotlin.test.assertFailsWith
 import kotlinx.coroutines.TimeoutCancellationException
 import org.junit.After
@@ -75,7 +71,7 @@ class SafetyCenterNotificationTest {
             return
         }
         safetyCenterCtsHelper.setup()
-        CtsNotificationListener.toggleListenerAccess(true)
+        CtsNotificationListener.setup()
         SafetyCenterFlags.notificationsEnabled = true
         SafetyCenterFlags.notificationsAllowedSources = setOf(SINGLE_SOURCE_ID)
         safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
@@ -86,35 +82,41 @@ class SafetyCenterNotificationTest {
         if (!shouldRunTests) {
             return
         }
-        CtsNotificationListener.toggleListenerAccess(false)
+        // It is important to reset the notification listener last because it waits/ensures that
+        // all notifications have been removed before returning.
         safetyCenterCtsHelper.reset()
+        CtsNotificationListener.reset()
     }
 
     @Test
     fun setSafetySourceData_withNoIssue_noNotification() {
-        CtsNotificationListener.assertNoNotificationsPosted {
-            safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.information)
-        }
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.information)
+
+        CtsNotificationListener.waitForZeroNotifications()
     }
 
     @Test
     fun setSafetySourceData_withoutNotificationsAllowedSource_noNotification() {
         SafetyCenterFlags.notificationsAllowedSources = emptySet()
 
-        CtsNotificationListener.assertNoNotificationsPosted {
-            safetyCenterCtsHelper.setData(
-                SINGLE_SOURCE_ID, safetySourceCtsData.recommendationWithAccountIssue)
-        }
+        safetyCenterCtsHelper.setData(
+            SINGLE_SOURCE_ID,
+            safetySourceCtsData.recommendationWithAccountIssue
+        )
+
+        CtsNotificationListener.waitForZeroNotifications()
     }
 
     @Test
     fun setSafetySourceData_withFlagDisabled_noNotification() {
         SafetyCenterFlags.notificationsEnabled = false
 
-        CtsNotificationListener.assertNoNotificationsPosted {
-            safetyCenterCtsHelper.setData(
-                SINGLE_SOURCE_ID, safetySourceCtsData.recommendationWithAccountIssue)
-        }
+        safetyCenterCtsHelper.setData(
+            SINGLE_SOURCE_ID,
+            safetySourceCtsData.recommendationWithAccountIssue
+        )
+
+        CtsNotificationListener.waitForZeroNotifications()
     }
 
     @Test
@@ -127,11 +129,13 @@ class SafetyCenterNotificationTest {
                     safetySourceCtsData
                         .defaultRecommendationIssueBuilder()
                         .setNotificationBehavior(SafetySourceIssue.NOTIFICATION_BEHAVIOR_NEVER)
-                        .build())
+                        .build()
+                )
                 .build()
-        CtsNotificationListener.assertNoNotificationsPosted {
-            safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
-        }
+
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
+
+        CtsNotificationListener.waitForZeroNotifications()
     }
 
     @Test
@@ -144,19 +148,17 @@ class SafetyCenterNotificationTest {
                     safetySourceCtsData
                         .defaultRecommendationIssueBuilder("Notify immediately", "This is urgent!")
                         .setNotificationBehavior(
-                            SafetySourceIssue.NOTIFICATION_BEHAVIOR_IMMEDIATELY)
-                        .build())
+                            SafetySourceIssue.NOTIFICATION_BEHAVIOR_IMMEDIATELY
+                        )
+                        .build()
+                )
                 .build()
 
-        val notification =
-            CtsNotificationListener.getNextNotificationPostedOrNull {
-                safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
-            }
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
 
-        assertThat(notification).isNotNull()
-        assertNotificationMatches(
-            notification!!,
-            NotificationCharacteristics(title = "Notify immediately", text = "This is urgent!"))
+        CtsNotificationListener.waitForSingleNotificationMatching(
+            NotificationCharacteristics(title = "Notify immediately", text = "This is urgent!")
+        )
     }
 
     @Test
@@ -164,16 +166,14 @@ class SafetyCenterNotificationTest {
         SafetyCenterFlags.notificationsAllowedSources = setOf(SINGLE_SOURCE_ID)
         val data = safetySourceCtsData.recommendationWithAccountIssue
 
-        val notification =
-            CtsNotificationListener.getNextNotificationPostedOrNull {
-                safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
-            }
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
 
-        assertThat(notification).isNotNull()
-        assertNotificationMatches(
-            notification!!,
+        CtsNotificationListener.waitForSingleNotificationMatching(
             NotificationCharacteristics(
-                title = "Recommendation issue title", text = "Recommendation issue summary"))
+                title = "Recommendation issue title",
+                text = "Recommendation issue summary"
+            )
+        )
     }
 
     @Test
@@ -183,19 +183,19 @@ class SafetyCenterNotificationTest {
             singleSourceConfig(
                 dynamicSafetySourceBuilder("MyNotifiableSource")
                     .setNotificationsAllowed(true)
-                    .build()))
+                    .build()
+            )
+        )
         val data = safetySourceCtsData.recommendationWithAccountIssue
 
-        val notification =
-            CtsNotificationListener.getNextNotificationPostedOrNull {
-                safetyCenterCtsHelper.setData("MyNotifiableSource", data)
-            }
+        safetyCenterCtsHelper.setData("MyNotifiableSource", data)
 
-        assertThat(notification).isNotNull()
-        assertNotificationMatches(
-            notification!!,
+        CtsNotificationListener.waitForSingleNotificationMatching(
             NotificationCharacteristics(
-                title = "Recommendation issue title", text = "Recommendation issue summary"))
+                title = "Recommendation issue title",
+                text = "Recommendation issue summary"
+            )
+        )
     }
 
     @Test
@@ -204,46 +204,44 @@ class SafetyCenterNotificationTest {
             safetySourceCtsData
                 .defaultRecommendationDataBuilder()
                 .addIssue(
-                    safetySourceCtsData
-                        .defaultRecommendationIssueBuilder("Initial", "Blah")
-                        .build())
+                    safetySourceCtsData.defaultRecommendationIssueBuilder("Initial", "Blah").build()
+                )
                 .build()
+
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data1)
+
+        CtsNotificationListener.waitForSingleNotificationMatching(
+            NotificationCharacteristics(title = "Initial", text = "Blah")
+        )
+
         val data2 =
             safetySourceCtsData
                 .defaultRecommendationDataBuilder()
                 .addIssue(
                     safetySourceCtsData
                         .defaultRecommendationIssueBuilder("Revised", "Different")
-                        .build())
+                        .build()
+                )
                 .build()
 
-        val notifications =
-            CtsNotificationListener.getAllNotificationsPosted {
-                safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data1)
-                safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data2)
-            }
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data2)
 
-        assertNotificationsMatch(
-            notifications,
-            NotificationCharacteristics(title = "Initial", text = "Blah"),
-            NotificationCharacteristics(title = "Revised", text = "Different"))
-        assertThat(notifications[0].key).isEqualTo(notifications[1].key)
+        CtsNotificationListener.waitForSingleNotificationMatching(
+            NotificationCharacteristics(title = "Revised", text = "Different")
+        )
     }
 
     @Test
     fun setSafetySourceData_twiceWithExactSameIssue_doNotNotifyTwice() {
         val data = safetySourceCtsData.recommendationWithAccountIssue
 
-        val notifications =
-            CtsNotificationListener.getAllNotificationsPosted {
-                safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
-                safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
-            }
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
 
-        assertNotificationsMatch(
-            notifications,
-            NotificationCharacteristics(
-                title = "Recommendation issue title", text = "Recommendation issue summary"))
+        CtsNotificationListener.waitForSingleNotification()
+
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
+
+        CtsNotificationListener.waitForZeroNotificationEvents()
     }
 
     @Test
@@ -251,18 +249,13 @@ class SafetyCenterNotificationTest {
         val data1 = safetySourceCtsData.recommendationWithAccountIssue
         val data2 = safetySourceCtsData.information
 
-        val posted =
-            CtsNotificationListener.getNextNotificationPostedOrNull {
-                safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data1)
-            }
-        val removed =
-            CtsNotificationListener.getNextNotificationRemovedOrNull {
-                safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data2)
-            }
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data1)
 
-        assertThat(posted).isNotNull()
-        assertThat(removed).isNotNull()
-        assertThat(removed!!.key).isEqualTo(posted!!.key)
+        CtsNotificationListener.waitForSingleNotification()
+
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data2)
+
+        CtsNotificationListener.waitForZeroNotifications()
     }
 
     @Test
@@ -271,9 +264,8 @@ class SafetyCenterNotificationTest {
             safetySourceCtsData
                 .defaultRecommendationDataBuilder()
                 .addIssue(
-                    safetySourceCtsData
-                        .defaultRecommendationIssueBuilder("Initial", "Blah")
-                        .build())
+                    safetySourceCtsData.defaultRecommendationIssueBuilder("Initial", "Blah").build()
+                )
                 .build()
         val data2 =
             safetySourceCtsData
@@ -281,71 +273,58 @@ class SafetyCenterNotificationTest {
                 .addIssue(
                     safetySourceCtsData
                         .defaultRecommendationIssueBuilder("Revised", "Different")
-                        .build())
+                        .build()
+                )
                 .build()
 
-        val posted =
-            CtsNotificationListener.getNextNotificationPostedOrNull {
-                safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data1)
-            }
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data1)
 
-        assertThat(posted).isNotNull()
-        assertNotificationMatches(
-            posted!!, NotificationCharacteristics(title = "Initial", text = "Blah"))
+        val notification =
+            CtsNotificationListener.waitForSingleNotificationMatching(
+                NotificationCharacteristics(title = "Initial", text = "Blah")
+            )
 
-        CtsNotificationListener.cancelAndWait(posted.key)
+        CtsNotificationListener.cancelAndWait(notification.key)
 
-        // Here we wait for the issue (there is only one) to be recorded as dismissed according to
-        // the dumpsys output. The cancelAndWait helper above "waits" for the notification to be
-        // dismissed, but it does not wait for the notification's delete PendingIntent to be
-        // handled. Without this additional wait there is a race condition between
-        // SafetyCenterNotificationReceiver#onReceive and the setData below. That race makes the
-        // test is flaky because the notification may not be recorded as dismissed before setData
-        // is called again and the notification is able to be posted again, contradicting the
-        // assertion.
-        Coroutines.waitForWithTimeout {
-            val dump = SystemUtil.runShellCommand("dumpsys safety_center")
-            dump.contains(Regex("""mNotificationDismissedAt=\d+"""))
-        }
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data2)
 
-        CtsNotificationListener.assertNoNotificationsPosted {
-            safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data2)
-        }
+        CtsNotificationListener.waitForZeroNotifications()
     }
 
     @Test
     fun dismissSafetyCenterIssue_dismissesNotification() {
-        val posted =
-            CtsNotificationListener.getNextNotificationPostedOrNull {
-                safetyCenterCtsHelper.setData(
-                    SINGLE_SOURCE_ID, safetySourceCtsData.recommendationWithAccountIssue)
-            }
-        val removed =
-            CtsNotificationListener.getNextNotificationRemovedOrNull {
-                safetyCenterManager.dismissSafetyCenterIssueWithPermission(
-                    SafetyCenterCtsData.issueId(
-                        SINGLE_SOURCE_ID, SafetySourceCtsData.RECOMMENDATION_ISSUE_ID))
-            }
+        safetyCenterCtsHelper.setData(
+            SINGLE_SOURCE_ID,
+            safetySourceCtsData.recommendationWithAccountIssue
+        )
 
-        assertThat(posted).isNotNull()
-        assertThat(removed).isNotNull()
-        assertThat(removed!!.key).isEqualTo(posted!!.key)
+        CtsNotificationListener.waitForSingleNotification()
+
+        safetyCenterManager.dismissSafetyCenterIssueWithPermission(
+            SafetyCenterCtsData.issueId(
+                SINGLE_SOURCE_ID,
+                SafetySourceCtsData.RECOMMENDATION_ISSUE_ID
+            )
+        )
+
+        CtsNotificationListener.waitForZeroNotifications()
     }
 
     @Test
-    fun dismissingNotification_doesntUpdateSafetyCenterData() {
-        val posted =
-            CtsNotificationListener.getNextNotificationPostedOrNull {
-                safetyCenterCtsHelper.setData(
-                    SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithResolvingGeneralIssue)
-            }
-        assertThat(posted).isNotNull()
+    fun dismissingNotification_doesNotUpdateSafetyCenterData() {
+        safetyCenterCtsHelper.setData(
+            SINGLE_SOURCE_ID,
+            safetySourceCtsData.criticalWithResolvingGeneralIssue
+        )
+
+        val notification = CtsNotificationListener.waitForSingleNotification()
+
         val listener = safetyCenterCtsHelper.addListener()
 
-        CtsNotificationListener.cancelAndWait(posted!!.key)
+        CtsNotificationListener.cancelAndWait(notification.key)
 
         assertFailsWith(TimeoutCancellationException::class) {
-            listener.receiveSafetyCenterData(Coroutines.TIMEOUT_SHORT)
+            listener.receiveSafetyCenterData(TIMEOUT_SHORT)
         }
     }
 
@@ -353,21 +332,12 @@ class SafetyCenterNotificationTest {
     fun clearSafetySourceData_cancelsAllNotifications() {
         val data = safetySourceCtsData.recommendationWithAccountIssue
 
-        CtsNotificationListener.assertAnyNotificationPosted {
-            safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
-        }
-        CtsNotificationListener.assertAnyNotificationRemoved {
-            safetyCenterManager.clearAllSafetySourceDataForTestsWithPermission()
-        }
-        val postedAfter =
-            CtsNotificationListener.getNextNotificationPostedOrNull {
-                safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
-            }
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
 
-        assertThat(postedAfter).isNotNull()
-        assertNotificationMatches(
-            postedAfter!!,
-            NotificationCharacteristics(
-                title = "Recommendation issue title", text = "Recommendation issue summary"))
+        CtsNotificationListener.waitForSingleNotification()
+
+        safetyCenterManager.clearAllSafetySourceDataForTestsWithPermission()
+
+        CtsNotificationListener.waitForZeroNotifications()
     }
 }

@@ -31,7 +31,8 @@ object SettingsPackage {
                 Intent(Settings.ACTION_SETTINGS),
                 PackageManager.MATCH_DEFAULT_ONLY or
                     PackageManager.MATCH_DIRECT_BOOT_AWARE or
-                    PackageManager.MATCH_DIRECT_BOOT_UNAWARE)!!
+                    PackageManager.MATCH_DIRECT_BOOT_UNAWARE
+            )!!
             .activityInfo
             .packageName
 }
