@@ -21,7 +21,6 @@ import static com.android.permissioncontroller.Constants.INVALID_SESSION_ID;
 
 import android.app.ActionBar;
 import android.app.Activity;
-import android.app.role.RoleManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -30,6 +29,7 @@ import android.content.res.TypedArray;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -37,7 +37,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
@@ -49,15 +48,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.permissioncontroller.PermissionControllerApplication;
 import com.android.permissioncontroller.R;
-import com.android.permissioncontroller.permission.model.legacy.PermissionApps;
-import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage;
-import com.android.permissioncontroller.permission.model.v31.PermissionUsages;
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity;
 import com.android.permissioncontroller.permission.ui.handheld.SettingsWithLargeHeader;
-import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel;
-import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModelFactory;
+import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModelNew;
+import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModelNew.AppPermissionAccessUiInfo;
+import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModelNew.PermissionUsageDetailsUiInfo;
+import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModelNew.PermissionUsageDetailsViewModelNewFactory;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
-import com.android.permissioncontroller.permission.utils.Utils;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
@@ -66,23 +63,16 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
 /** The permission details page showing the history/timeline of a permission */
 @RequiresApi(Build.VERSION_CODES.S)
-public class PermissionDetailsFragment extends SettingsWithLargeHeader
-        implements PermissionUsages.PermissionsUsagesChangeCallback {
-
-    public static final int FILTER_7_DAYS = 1;
-    private static final String KEY_SHOW_SYSTEM_PREFS = "_show_system";
-    private static final String SHOW_SYSTEM_KEY =
-            PermissionDetailsFragment.class.getName() + KEY_SHOW_SYSTEM_PREFS;
-
+public class PermissionDetailsFragment extends SettingsWithLargeHeader {
     private static final String KEY_SESSION_ID = "_session_id";
     private static final String SESSION_ID_KEY =
             PermissionDetailsFragment.class.getName() + KEY_SESSION_ID;
+    private static final String TAG = PermissionDetailsFragment.class.getName();
 
     private static final int MENU_SHOW_7_DAYS_DATA = Menu.FIRST + 4;
     private static final int MENU_SHOW_24_HOURS_DATA = Menu.FIRST + 5;
@@ -95,49 +85,49 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader
                             .truncatedTo(ChronoUnit.DAYS)
                             .toEpochSecond()
                     * 1000L;
-    private @Nullable String mFilterGroup;
-    private int mFilterTimeIndex;
-    private @Nullable List<AppPermissionUsage> mAppPermissionUsages = new ArrayList<>();
-    private @NonNull PermissionUsages mPermissionUsages;
-    private boolean mFinishedInitialLoad;
-
-    private boolean mShowSystem;
+    private @Nullable String mPermissionGroup;
+    private int mUsageSubtitle;
     private boolean mHasSystemApps;
-    private boolean mShow7Days;
 
     private MenuItem mShowSystemMenu;
     private MenuItem mHideSystemMenu;
     private MenuItem mShow7DaysDataMenu;
     private MenuItem mShow24HoursDataMenu;
-    private @NonNull RoleManager mRoleManager;
 
-    private PermissionUsageDetailsViewModel mViewModel;
+    private PermissionUsageDetailsViewModelNew mViewModel;
 
     private long mSessionId;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mPermissionGroup = getArguments().getString(Intent.EXTRA_PERMISSION_GROUP_NAME);
 
-        mFinishedInitialLoad = false;
-        mFilterTimeIndex = FILTER_7_DAYS;
+        if (mPermissionGroup == null) {
+            Log.e(TAG, "No permission group was provided for PermissionDetailsFragment");
+            return;
+        }
+
+        PermissionUsageDetailsViewModelNewFactory factory =
+                new PermissionUsageDetailsViewModelNewFactory(
+                        PermissionControllerApplication.get(),
+                        this,
+                        mPermissionGroup);
+        mViewModel =
+                new ViewModelProvider(this, factory).get(PermissionUsageDetailsViewModelNew.class);
 
         if (savedInstanceState != null) {
-            mShowSystem = savedInstanceState.getBoolean(SHOW_SYSTEM_KEY);
             mSessionId = savedInstanceState.getLong(SESSION_ID_KEY);
         } else {
-            mShowSystem =
-                    getArguments().getBoolean(ManagePermissionsActivity.EXTRA_SHOW_SYSTEM, false);
-            mShow7Days =
-                    KotlinUtils.INSTANCE.is7DayToggleEnabled()
-                            && getArguments()
-                                    .getBoolean(ManagePermissionsActivity.EXTRA_SHOW_7_DAYS, false);
             mSessionId = getArguments().getLong(EXTRA_SESSION_ID, INVALID_SESSION_ID);
         }
 
-        if (mFilterGroup == null) {
-            mFilterGroup = getArguments().getString(Intent.EXTRA_PERMISSION_GROUP_NAME);
-        }
+        mViewModel.updateShowSystem(
+                getArguments().getBoolean(ManagePermissionsActivity.EXTRA_SHOW_SYSTEM, false));
+        mViewModel.updateShow7Days(
+                KotlinUtils.INSTANCE.is7DayToggleEnabled()
+                        && getArguments()
+                                .getBoolean(ManagePermissionsActivity.EXTRA_SHOW_7_DAYS, false));
 
         setHasOptionsMenu(true);
         ActionBar ab = getActivity().getActionBar();
@@ -145,21 +135,9 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader
             ab.setDisplayHomeAsUpEnabled(true);
         }
 
-        Context context = getPreferenceManager().getContext();
-
-        mPermissionUsages = new PermissionUsages(context);
-        mRoleManager = Utils.getSystemServiceSafe(context, RoleManager.class);
-
-        PermissionUsageDetailsViewModelFactory factory =
-                new PermissionUsageDetailsViewModelFactory(
-                        PermissionControllerApplication.get(),
-                        mRoleManager,
-                        mFilterGroup,
-                        mSessionId);
-        mViewModel =
-                new ViewModelProvider(this, factory).get(PermissionUsageDetailsViewModel.class);
-
-        reloadData();
+        mViewModel.getPermissionUsagesDetailsInfoUiLiveData().observe(this, this::updateUI);
+        mViewModel.getShowSystemLiveData().observe(this, this::updateShowSystem);
+        mViewModel.getShow7DaysLiveData().observe(this, this::updateShow7Days);
     }
 
     @Override
@@ -199,7 +177,7 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader
                 view -> {
                     Intent intent =
                             new Intent(Intent.ACTION_MANAGE_PERMISSION_APPS)
-                                    .putExtra(Intent.EXTRA_PERMISSION_NAME, mFilterGroup);
+                                    .putExtra(Intent.EXTRA_PERMISSION_NAME, mPermissionGroup);
                     startActivity(intent);
                 });
         RecyclerView recyclerView = getListView();
@@ -218,36 +196,20 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader
     public void onStart() {
         super.onStart();
         CharSequence title = getString(R.string.permission_history_title);
-        if (mFilterGroup != null) {
+        if (mPermissionGroup != null) {
             title =
                     getResources()
                             .getString(
                                     R.string.permission_group_usage_title,
                                     KotlinUtils.INSTANCE.getPermGroupLabel(
-                                            getActivity(), mFilterGroup));
+                                            getActivity(), mPermissionGroup));
         }
         getActivity().setTitle(title);
     }
 
     @Override
-    public void onPermissionUsagesChanged() {
-        if (mPermissionUsages.getUsages().isEmpty()) {
-            return;
-        }
-        mAppPermissionUsages = new ArrayList<>(mPermissionUsages.getUsages());
-
-        // Ensure the group name is valid.
-        if (!mViewModel.containsPlatformAppPermissionGroup(mAppPermissionUsages, mFilterGroup)) {
-            mFilterGroup = null;
-        }
-
-        updateUI();
-    }
-
-    @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putBoolean(SHOW_SYSTEM_KEY, mShowSystem);
         outState.putLong(SESSION_ID_KEY, mSessionId);
     }
 
@@ -257,6 +219,7 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader
                 menu.add(Menu.NONE, MENU_SHOW_SYSTEM, Menu.NONE, R.string.menu_show_system);
         mHideSystemMenu =
                 menu.add(Menu.NONE, MENU_HIDE_SYSTEM, Menu.NONE, R.string.menu_hide_system);
+
         if (KotlinUtils.INSTANCE.is7DayToggleEnabled()) {
             mShow7DaysDataMenu =
                     menu.add(
@@ -271,32 +234,6 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader
                             Menu.NONE,
                             R.string.menu_show_24_hours_data);
         }
-
-        updateMenu();
-    }
-
-    private void updateMenu() {
-        if (mHasSystemApps) {
-            mShowSystemMenu.setVisible(!mShowSystem);
-            mShowSystemMenu.setEnabled(true);
-
-            mHideSystemMenu.setVisible(mShowSystem);
-            mHideSystemMenu.setEnabled(true);
-        } else {
-            mShowSystemMenu.setVisible(true);
-            mShowSystemMenu.setEnabled(false);
-
-            mHideSystemMenu.setVisible(false);
-            mHideSystemMenu.setEnabled(false);
-        }
-
-        if (mShow7DaysDataMenu != null) {
-            mShow7DaysDataMenu.setVisible(!mShow7Days);
-        }
-
-        if (mShow24HoursDataMenu != null) {
-            mShow24HoursDataMenu.setVisible(mShow7Days);
-        }
     }
 
     @Override
@@ -307,26 +244,24 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader
                 getActivity().finishAfterTransition();
                 return true;
             case MENU_SHOW_SYSTEM:
+                mViewModel.updateShowSystem(true);
+                break;
             case MENU_HIDE_SYSTEM:
-                mShowSystem = itemId == MENU_SHOW_SYSTEM;
-                // We already loaded all data, so don't reload
-                updateUI();
-                updateMenu();
+                mViewModel.updateShowSystem(false);
                 break;
             case MENU_SHOW_7_DAYS_DATA:
+                mViewModel.updateShow7Days(KotlinUtils.INSTANCE.is7DayToggleEnabled());
+                break;
             case MENU_SHOW_24_HOURS_DATA:
-                mShow7Days = KotlinUtils.INSTANCE.is7DayToggleEnabled()
-                        && itemId == MENU_SHOW_7_DAYS_DATA;
-                updateUI();
-                updateMenu();
+                mViewModel.updateShow7Days(false);
                 break;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    private void updateUI() {
-        if (mAppPermissionUsages.isEmpty() || getActivity() == null) {
+    private void updateUI(PermissionUsageDetailsUiInfo uiData) {
+        if (getActivity() == null) {
             return;
         }
         Context context = getActivity();
@@ -338,26 +273,21 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader
         screen.removeAll();
 
         Preference subtitlePreference = new Preference(context);
-
-        int usageSubtitle =
-                mShow7Days
+        mUsageSubtitle =
+                uiData.getShow7Days()
                         ? R.string.permission_group_usage_subtitle_7d
                         : R.string.permission_group_usage_subtitle_24h;
+
         subtitlePreference.setSummary(
                 getResources()
                         .getString(
-                                usageSubtitle,
+                                mUsageSubtitle,
                                 KotlinUtils.INSTANCE.getPermGroupLabel(
-                                        getActivity(), mFilterGroup)));
+                                        getActivity(), mPermissionGroup)));
         subtitlePreference.setSelectable(false);
         screen.addPreference(subtitlePreference);
 
-        PermissionUsageDetailsViewModel.PermissionUsageDetailsUiData uiData =
-                mViewModel.buildPermissionUsageDetailsUiData(
-                        mAppPermissionUsages, mShowSystem, mShow7Days);
-
         boolean seenSystemApp = uiData.getShouldDisplayShowSystemToggle();
-        List<PermissionApps.PermissionApp> permissionApps = uiData.getPermissionApps();
 
         if (mHasSystemApps != seenSystemApp) {
             mHasSystemApps = seenSystemApp;
@@ -371,37 +301,27 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader
         screen.addPreference(category.get());
         PreferenceScreen finalScreen = screen;
 
-        new PermissionApps.AppDataLoader(
-                context,
-                () -> {
-                    if (getActivity() == null) {
-                        // Fragment has no Activity, return.
-                        return;
-                    }
-                    renderHistoryPreferences(
-                            uiData.getHistoryPreferenceDataList(), category, finalScreen);
+        if (getActivity() == null) {
+            // Fragment has no Activity, return.
+            return;
+        }
+        renderHistoryPreferences(uiData.getAppPermissionAccessUiInfoList(), category, finalScreen);
 
-                    setLoading(false, true);
-                    mFinishedInitialLoad = true;
-                    setProgressBarVisible(false);
-                    mPermissionUsages.stopLoader(getActivity().getLoaderManager());
-                })
-                .execute(
-                    permissionApps.toArray(
-                        new PermissionApps.PermissionApp[permissionApps.size()]));
+        setLoading(false, true);
+        setProgressBarVisible(false);
     }
 
-    /** Render the provided [historyPreferenceDataList] into the [preferenceScreen] UI. */
+    /** Render the provided appPermissionAccessUiInfoList into the [preferenceScreen] UI. */
     private void renderHistoryPreferences(
-            List<PermissionUsageDetailsViewModel.HistoryPreferenceData> historyPreferenceDataList,
+            List<AppPermissionAccessUiInfo> appPermissionAccessUiInfoList,
             AtomicReference<PreferenceCategory> category,
             PreferenceScreen preferenceScreen) {
         Context context = getContext();
         long previousDateMs = 0L;
-        for (int i = 0; i < historyPreferenceDataList.size(); i++) {
-            PermissionUsageDetailsViewModel.HistoryPreferenceData historyPreferenceData =
-                    historyPreferenceDataList.get(i);
-            long accessEndTime = historyPreferenceData.getAccessEndTime();
+        for (int i = 0; i < appPermissionAccessUiInfoList.size(); i++) {
+            AppPermissionAccessUiInfo appPermissionAccessUiInfo =
+                    appPermissionAccessUiInfoList.get(i);
+            long accessEndTime = appPermissionAccessUiInfo.getAccessEndTime();
             long currentDateMs =
                     ZonedDateTime.ofInstant(
                                             Instant.ofEpochMilli(accessEndTime),
@@ -428,20 +348,60 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader
             Preference permissionUsagePreference =
                     new PermissionHistoryPreference(
                             getContext(),
-                            historyPreferenceData.getUserHandle(),
-                            historyPreferenceData.getPkgName(),
-                            historyPreferenceData.getAppIcon(),
-                            historyPreferenceData.getPreferenceTitle(),
-                            historyPreferenceData.getPermissionGroup(),
-                            historyPreferenceData.getAccessStartTime(),
-                            historyPreferenceData.getAccessEndTime(),
-                            historyPreferenceData.getSummaryText(),
-                            historyPreferenceData.getShowingAttribution(),
-                            historyPreferenceData.getAttributionTags(),
-                            i == historyPreferenceDataList.size() - 1,
-                            historyPreferenceData.getSessionId());
+                            appPermissionAccessUiInfo.getUserHandle(),
+                            appPermissionAccessUiInfo.getPkgName(),
+                            KotlinUtils.INSTANCE.getBadgedPackageIcon(
+                                    mViewModel.getApplication(),
+                                    appPermissionAccessUiInfo.getPkgName(),
+                                    appPermissionAccessUiInfo.getUserHandle()),
+                            KotlinUtils.INSTANCE.getPackageLabel(
+                                    mViewModel.getApplication(),
+                                    appPermissionAccessUiInfo.getPkgName(),
+                                    appPermissionAccessUiInfo.getUserHandle()),
+                            appPermissionAccessUiInfo.getPermissionGroup(),
+                            appPermissionAccessUiInfo.getAccessStartTime(),
+                            appPermissionAccessUiInfo.getAccessEndTime(),
+                            appPermissionAccessUiInfo.getSummaryText(),
+                            appPermissionAccessUiInfo.getShowingAttribution(),
+                            appPermissionAccessUiInfo.getAttributionTags(),
+                            i == appPermissionAccessUiInfoList.size() - 1,
+                            mSessionId);
 
             category.get().addPreference(permissionUsagePreference);
+        }
+    }
+
+    private void updateShowSystem(boolean showSystem) {
+        if (mHasSystemApps) {
+            if (mShowSystemMenu != null) {
+                mShowSystemMenu.setVisible(!showSystem);
+                mShowSystemMenu.setEnabled(true);
+            }
+
+            if (mHideSystemMenu != null) {
+                mHideSystemMenu.setVisible(showSystem);
+                mHideSystemMenu.setEnabled(true);
+            }
+        } else {
+            if (mShowSystemMenu != null) {
+                mShowSystemMenu.setVisible(true);
+                mShowSystemMenu.setEnabled(false);
+            }
+
+            if (mHideSystemMenu != null) {
+                mHideSystemMenu.setVisible(false);
+                mHideSystemMenu.setEnabled(false);
+            }
+        }
+    }
+
+    private void updateShow7Days(boolean show7Days) {
+        if (mShow7DaysDataMenu != null) {
+            mShow7DaysDataMenu.setVisible(!show7Days);
+        }
+
+        if (mShow24HoursDataMenu != null) {
+            mShow24HoursDataMenu.setVisible(show7Days);
         }
     }
 
@@ -450,13 +410,5 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader
         // Do not reserve icon space, so that the text moves all the way left.
         category.setIconSpaceReserved(false);
         return category;
-    }
-
-    private void reloadData() {
-        mViewModel.loadPermissionUsages(
-                getActivity().getLoaderManager(), mPermissionUsages, this, mFilterTimeIndex);
-        if (mFinishedInitialLoad) {
-            setProgressBarVisible(true);
-        }
     }
 }

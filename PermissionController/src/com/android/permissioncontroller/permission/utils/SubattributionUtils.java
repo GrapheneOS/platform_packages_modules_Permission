@@ -29,6 +29,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.build.SdkLevel;
+import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -48,14 +49,18 @@ public class SubattributionUtils {
         return appInfo.areAttributionsUserVisible();
     }
 
+    /** Returns whether the provided package supports subattribution. */
+    public static boolean isSubattributionSupported(LightPackageInfo lightPackageInfo) {
+        return SdkLevel.isAtLeastS() && lightPackageInfo.getAreAttributionsUserVisible();
+    }
+
     /**
-     * Returns the attribution label map for the package if the app supports subattribtion; Returns
+     * Returns the attribution label map for the package if the app supports subattribution; Returns
      * {@code null} otherwise.
      */
     @Nullable
     @SuppressLint("NewApi") // isSubattributionSupported checks api level
-    public static Map<Integer, String> getAttributionLabels(Context context,
-            PackageInfo pkgInfo) {
+    public static Map<Integer, String> getAttributionLabels(Context context, PackageInfo pkgInfo) {
         if (!isSubattributionSupported(context, pkgInfo.applicationInfo)) {
             return null;
         }
@@ -63,7 +68,7 @@ public class SubattributionUtils {
     }
 
     /**
-     * Returns the attribution label map for the package if the app supports subattribtion; Returns
+     * Returns the attribution label map for the package if the app supports subattribtuion; Returns
      * {@code null} otherwise.
      */
     @Nullable
@@ -99,6 +104,36 @@ public class SubattributionUtils {
             int label = attribution.getLabel();
             try {
                 String resourceForLabel = pkgContext.getString(attribution.getLabel());
+                attributionLabels.put(label, resourceForLabel);
+            } catch (Resources.NotFoundException e) {
+                // should never happen
+            }
+        }
+        return attributionLabels;
+    }
+
+    /** Returns the attribution label map for the package if the app supports subattribution. */
+    @Nullable
+    @SuppressLint("NewApi") // isSubattributionSupported checks api level
+    public static Map<Integer, String> getAttributionLabels(Context context,
+            LightPackageInfo lightPackageInfo) {
+        if (!isSubattributionSupported(lightPackageInfo)) {
+            return null;
+        }
+
+        Context pkgContext;
+        try {
+            pkgContext = context.createPackageContext(lightPackageInfo.getPackageName(), 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            return null;
+        }
+
+        Map<Integer, String> attributionLabels = new HashMap<>();
+        for (Map.Entry<String, Integer> attribution :
+                lightPackageInfo.getAttributionTagsToLabels().entrySet()) {
+            int label = attribution.getValue();
+            try {
+                String resourceForLabel = pkgContext.getString(attribution.getValue());
                 attributionLabels.put(label, resourceForLabel);
             } catch (Resources.NotFoundException e) {
                 // should never happen

@@ -109,7 +109,9 @@ class XmlConfigTest {
 
     private fun parseXmlConfig() =
         SafetyCenterConfigParser.parseXmlResource(
-            safetyCenterContext.safetyCenterConfig!!, safetyCenterContext.resources!!)
+            safetyCenterContext.safetyCenterConfig!!,
+            safetyCenterContext.resources!!
+        )
 
     companion object {
         private const val ADVANCED_PRIVACY_INTENT_STRING =

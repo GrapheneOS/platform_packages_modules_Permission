@@ -48,6 +48,7 @@ class SafetyCenterCtsHelper(private val context: Context) {
      * values. To be called before each test.
      */
     fun setup() {
+        Coroutines.enableDebugging()
         SafetyCenterFlags.setup()
         setEnabled(true)
     }
@@ -64,6 +65,7 @@ class SafetyCenterCtsHelper(private val context: Context) {
         safetyCenterManager.clearSafetyCenterConfigForTestsWithPermission()
         resetFlags()
         SafetySourceReceiver.reset()
+        Coroutines.resetDebugging()
     }
 
     /** Enables or disables SafetyCenter based on [value]. */
@@ -92,13 +94,15 @@ class SafetyCenterCtsHelper(private val context: Context) {
      * Adds and returns a [SafetyCenterCtsListener] to SafetyCenter.
      *
      * @param skipInitialData whether the returned [SafetyCenterCtsListener] should receive the
-     * initial SafetyCenter update
+     *   initial SafetyCenter update
      */
     fun addListener(skipInitialData: Boolean = true): SafetyCenterCtsListener {
         require(isEnabled())
         val listener = SafetyCenterCtsListener()
         safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
-            directExecutor(), listener)
+            directExecutor(),
+            listener
+        )
         if (skipInitialData) {
             listener.receiveSafetyCenterData()
         }
@@ -114,7 +118,10 @@ class SafetyCenterCtsHelper(private val context: Context) {
     ) {
         require(isEnabled())
         safetyCenterManager.setSafetySourceDataWithPermission(
-            safetySourceId, safetySourceData, safetyEvent)
+            safetySourceId,
+            safetySourceData,
+            safetyEvent
+        )
     }
 
     private fun resetFlags() {

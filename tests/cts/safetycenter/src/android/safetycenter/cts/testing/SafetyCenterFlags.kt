@@ -59,7 +59,8 @@ object SafetyCenterFlags {
         Flag(
             "safety_center_notifications_allowed_sources",
             defaultValue = emptySet(),
-            SetParser(StringParser()))
+            SetParser(StringParser())
+        )
 
     /**
      * Flag that determines whether we should show error entries for sources that timeout when
@@ -81,7 +82,8 @@ object SafetyCenterFlags {
         Flag(
             "safety_center_refresh_sources_timeouts_millis",
             defaultValue = getAllRefreshTimeoutsMap(TIMEOUT_LONG),
-            MapParser(IntParser(), DurationParser()))
+            MapParser(IntParser(), DurationParser())
+        )
 
     /**
      * Flag that determines the time for which Safety Center will wait for a source to respond to a
@@ -91,7 +93,8 @@ object SafetyCenterFlags {
         Flag(
             "safety_center_resolve_action_timeout_millis",
             defaultValue = TIMEOUT_LONG,
-            DurationParser())
+            DurationParser()
+        )
 
     /**
      * Flag that determines the time for which Safety Center will wait before starting dismissal of
@@ -101,7 +104,8 @@ object SafetyCenterFlags {
         Flag(
             "safety_center_hide_resolved_ui_transition_delay_millis",
             defaultValue = Duration.ofMillis(400),
-            DurationParser())
+            DurationParser()
+        )
 
     /**
      * Flag containing a comma delimited lists of source IDs that we won't track when deciding if a
@@ -110,7 +114,10 @@ object SafetyCenterFlags {
      */
     private val untrackedSourcesFlag =
         Flag(
-            "safety_center_untracked_sources", defaultValue = emptySet(), SetParser(StringParser()))
+            "safety_center_untracked_sources",
+            defaultValue = emptySet(),
+            SetParser(StringParser())
+        )
 
     /**
      * Flag containing a map (a comma separated list of colon separated pairs) where the key is an
@@ -121,7 +128,8 @@ object SafetyCenterFlags {
         Flag(
             "safety_center_resurface_issue_max_counts",
             defaultValue = emptyMap(),
-            MapParser(IntParser(), LongParser()))
+            MapParser(IntParser(), LongParser())
+        )
 
     /**
      * Flag containing a map (a comma separated list of colon separated pairs) where the key is an
@@ -134,7 +142,8 @@ object SafetyCenterFlags {
         Flag(
             "safety_center_resurface_issue_delays_millis",
             defaultValue = emptyMap(),
-            MapParser(IntParser(), DurationParser()))
+            MapParser(IntParser(), DurationParser())
+        )
 
     /**
      * Flag containing a map (a comma separated list of colon separated pairs) where the key is an
@@ -145,7 +154,8 @@ object SafetyCenterFlags {
         Flag(
             "safety_center_issue_category_allowlists",
             defaultValue = emptyMap(),
-            MapParser(IntParser(), SetParser(StringParser(), delimiter = "|")))
+            MapParser(IntParser(), SetParser(StringParser(), delimiter = "|"))
+        )
 
     /**
      * Flag that represents a comma delimited list of IDs of sources that should only be refreshed
@@ -156,7 +166,8 @@ object SafetyCenterFlags {
         Flag(
             "safety_center_background_refresh_denied_sources",
             defaultValue = emptySet(),
-            SetParser(StringParser()))
+            SetParser(StringParser())
+        )
 
     /**
      * Flag that determines whether statsd logging is allowed in tests.
@@ -177,7 +188,8 @@ object SafetyCenterFlags {
         Flag(
             "safety_center_qs_tile_component_setting_flags",
             defaultValue = PackageManager.DONT_KILL_APP,
-            IntParser())
+            IntParser()
+        )
 
     /**
      * Flag that determines whether to show subpages in the Safety Center UI instead of the
@@ -190,7 +202,8 @@ object SafetyCenterFlags {
         Flag(
             "safety_center_override_refresh_on_page_open_sources",
             defaultValue = setOf(),
-            SetParser(StringParser()))
+            SetParser(StringParser())
+        )
 
     /**
      * Flag that enables both one-off and periodic background refreshes in
@@ -202,7 +215,8 @@ object SafetyCenterFlags {
             // do not set defaultValue to true, do not want background refreshes running
             // during other tests
             defaultValue = false,
-            BooleanParser())
+            BooleanParser()
+        )
 
     /**
      * Flag that determines how often periodic background refreshes are run in
@@ -215,7 +229,8 @@ object SafetyCenterFlags {
         Flag(
             "safety_center_periodic_background_interval_millis",
             defaultValue = Duration.ofDays(1),
-            DurationParser())
+            DurationParser()
+        )
 
     /**
      * Flag that determines whether background refreshes require charging in
@@ -246,12 +261,14 @@ object SafetyCenterFlags {
             overrideRefreshOnPageOpenSourcesFlag,
             backgroundRefreshIsEnabledFlag,
             periodicBackgroundRefreshIntervalFlag,
-            backgroundRefreshRequiresChargingFlag)
+            backgroundRefreshRequiresChargingFlag
+        )
 
     /** Returns whether the device supports Safety Center. */
     fun Context.deviceSupportsSafetyCenter() =
         resources.getBoolean(
-            Resources.getSystem().getIdentifier("config_enableSafetyCenter", "bool", "android"))
+            Resources.getSystem().getIdentifier("config_enableSafetyCenter", "bool", "android")
+        )
 
     /** A property that allows getting and setting the [isEnabledFlag]. */
     var isEnabled: Boolean by isEnabledFlag
@@ -374,7 +391,8 @@ object SafetyCenterFlags {
             REFRESH_REASON_DEVICE_LOCALE_CHANGE to refreshTimeout,
             REFRESH_REASON_SAFETY_CENTER_ENABLED to refreshTimeout,
             REFRESH_REASON_OTHER to refreshTimeout,
-            REFRESH_REASON_PERIODIC to refreshTimeout)
+            REFRESH_REASON_PERIODIC to refreshTimeout
+        )
 
     private interface Parser<T> {
         fun parseFromString(stringValue: String): T
@@ -459,7 +477,11 @@ object SafetyCenterFlags {
         callWithShellPermissionIdentity(WRITE_DEVICE_CONFIG) {
             val valueWasSet =
                 DeviceConfig.setProperty(
-                    NAMESPACE_PRIVACY, name, stringValue, /* makeDefault */ false)
+                    NAMESPACE_PRIVACY,
+                    name,
+                    stringValue, /* makeDefault */
+                    false
+                )
             require(valueWasSet) { "Could not set $name to: $stringValue" }
         }
     }

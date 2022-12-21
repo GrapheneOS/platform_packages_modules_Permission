@@ -155,7 +155,8 @@ class SafetySourcesGroupTest {
             .containsExactly(
                 SafetySourceTest.DYNAMIC_BAREBONE,
                 SafetySourceTest.STATIC_BAREBONE,
-                SafetySourceTest.ISSUE_ONLY_BAREBONE)
+                SafetySourceTest.ISSUE_ONLY_BAREBONE
+            )
             .inOrder()
         assertThat(STATELESS_INFERRED.safetySources)
             .containsExactly(SafetySourceTest.STATIC_BAREBONE)
@@ -168,14 +169,16 @@ class SafetySourcesGroupTest {
                 .containsExactly(
                     SafetySourceTest.DYNAMIC_BAREBONE,
                     SafetySourceTest.STATIC_BAREBONE,
-                    SafetySourceTest.ISSUE_ONLY_BAREBONE)
+                    SafetySourceTest.ISSUE_ONLY_BAREBONE
+                )
             assertThat(STATELESS_BAREBONE.safetySources)
                 .containsExactly(SafetySourceTest.STATIC_BAREBONE)
             assertThat(STATELESS_ALL_OPTIONAL.safetySources)
                 .containsExactly(
                     SafetySourceTest.DYNAMIC_BAREBONE,
                     SafetySourceTest.STATIC_BAREBONE,
-                    SafetySourceTest.ISSUE_ONLY_BAREBONE)
+                    SafetySourceTest.ISSUE_ONLY_BAREBONE
+                )
             assertThat(HIDDEN_BAREBONE.safetySources)
                 .containsExactly(SafetySourceTest.ISSUE_ONLY_BAREBONE)
             assertThat(HIDDEN_ALL_OPTIONAL.safetySources)
@@ -220,7 +223,8 @@ class SafetySourcesGroupTest {
         assertThat(exception)
             .hasMessageThat()
             .isEqualTo(
-                "Safety sources groups of type hidden can only contain sources of type issue-only")
+                "Safety sources groups of type hidden can only contain sources of type issue-only"
+            )
     }
 
     @Test
@@ -236,7 +240,8 @@ class SafetySourcesGroupTest {
         assertThat(exception)
             .hasMessageThat()
             .isEqualTo(
-                "Safety sources groups of type hidden can only contain sources of type issue-only")
+                "Safety sources groups of type hidden can only contain sources of type issue-only"
+            )
     }
 
     @Test
@@ -254,7 +259,8 @@ class SafetySourcesGroupTest {
             .hasMessageThat()
             .isEqualTo(
                 "Safety sources groups containing only sources of type issue-only must be of " +
-                    "type hidden")
+                    "type hidden"
+            )
     }
 
     @Test
@@ -272,7 +278,8 @@ class SafetySourcesGroupTest {
             .hasMessageThat()
             .isEqualTo(
                 "Safety sources groups containing only sources of type issue-only must be of " +
-                    "type hidden")
+                    "type hidden"
+            )
     }
 
     @Test
@@ -318,7 +325,8 @@ class SafetySourcesGroupTest {
                         { SafetySourcesGroup.Builder(it).build() }
                     } else {
                         null
-                    })
+                    }
+            )
             .addEqualityGroup(STATEFUL_INFERRED_WITH_SUMMARY)
             .addEqualityGroup(STATEFUL_INFERRED_WITH_ICON)
             .addEqualityGroup(
@@ -332,17 +340,21 @@ class SafetySourcesGroupTest {
                             .addSafetySource(SafetySourceTest.DYNAMIC_BAREBONE)
                             .addSafetySource(SafetySourceTest.STATIC_BAREBONE)
                             .addSafetySource(SafetySourceTest.ISSUE_ONLY_BAREBONE)
-                            .build())
+                            .build()
+                    )
                     .apply { if (SdkLevel.isAtLeastU()) add(STATEFUL_ALL_OPTIONAL) }
-                    .toTypedArray())
+                    .toTypedArray()
+            )
             .addEqualityGroup(
                 *mutableListOf(STATELESS_INFERRED)
                     .apply { if (SdkLevel.isAtLeastU()) add(STATELESS_BAREBONE) }
-                    .toTypedArray())
+                    .toTypedArray()
+            )
             .addEqualityGroup(
                 *mutableListOf(HIDDEN_INFERRED)
                     .apply { if (SdkLevel.isAtLeastU()) add(HIDDEN_BAREBONE) }
-                    .toTypedArray())
+                    .toTypedArray()
+            )
             .addEqualityGroup(
                 SafetySourcesGroup.Builder()
                     .setId("other")
@@ -350,7 +362,8 @@ class SafetySourcesGroupTest {
                     .setSummaryResId(REFERENCE_RES_ID)
                     .setStatelessIconType(SafetySourcesGroup.STATELESS_ICON_TYPE_PRIVACY)
                     .addSafetySource(SafetySourceTest.DYNAMIC_BAREBONE)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySourcesGroup.Builder()
                     .setId(STATEFUL_INFERRED_WITH_BOTH_ID)
@@ -358,7 +371,8 @@ class SafetySourcesGroupTest {
                     .setSummaryResId(REFERENCE_RES_ID)
                     .setStatelessIconType(SafetySourcesGroup.STATELESS_ICON_TYPE_PRIVACY)
                     .addSafetySource(SafetySourceTest.DYNAMIC_BAREBONE)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySourcesGroup.Builder()
                     .setId(STATEFUL_INFERRED_WITH_BOTH_ID)
@@ -366,7 +380,8 @@ class SafetySourcesGroupTest {
                     .setSummaryResId(-1)
                     .setStatelessIconType(SafetySourcesGroup.STATELESS_ICON_TYPE_PRIVACY)
                     .addSafetySource(SafetySourceTest.DYNAMIC_BAREBONE)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySourcesGroup.Builder()
                     .setId(STATEFUL_INFERRED_WITH_BOTH_ID)
@@ -374,7 +389,8 @@ class SafetySourcesGroupTest {
                     .setSummaryResId(REFERENCE_RES_ID)
                     .setStatelessIconType(SafetySourcesGroup.STATELESS_ICON_TYPE_NONE)
                     .addSafetySource(SafetySourceTest.DYNAMIC_BAREBONE)
-                    .build())
+                    .build()
+            )
             .addEqualityGroup(
                 SafetySourcesGroup.Builder()
                     .setId(STATEFUL_INFERRED_WITH_BOTH_ID)
@@ -382,7 +398,8 @@ class SafetySourcesGroupTest {
                     .setSummaryResId(REFERENCE_RES_ID)
                     .setStatelessIconType(SafetySourcesGroup.STATELESS_ICON_TYPE_PRIVACY)
                     .addSafetySource(SafetySourceTest.STATIC_BAREBONE)
-                    .build())
+                    .build()
+            )
             .apply {
                 if (SdkLevel.isAtLeastU()) {
                     addEqualityGroup(STATEFUL_BAREBONE)

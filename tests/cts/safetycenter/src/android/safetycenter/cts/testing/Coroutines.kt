@@ -17,19 +17,29 @@
 package android.safetycenter.cts.testing
 
 import java.time.Duration
+import kotlinx.coroutines.DEBUG_PROPERTY_NAME
+import kotlinx.coroutines.DEBUG_PROPERTY_VALUE_AUTO
+import kotlinx.coroutines.DEBUG_PROPERTY_VALUE_ON
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withTimeout
+import kotlinx.coroutines.withTimeoutOrNull
 
 /** A class that facilitates interacting with coroutines. */
 // TODO(b/228823159) Consolidate with other Coroutines helper functions
 object Coroutines {
 
-    /** Behaves in the same way as [runBlocking], but with a timeout. */
-    fun <T> runBlockingWithTimeout(timeout: Duration = TIMEOUT_LONG, block: suspend () -> T) =
+    /** Shorthand for [runBlocking] combined with [withTimeout]. */
+    fun <T> runBlockingWithTimeout(timeout: Duration = TIMEOUT_LONG, block: suspend () -> T): T =
         runBlocking {
             withTimeout(timeout.toMillis()) { block() }
         }
+
+    /** Shorthand for [runBlocking] combined with [withTimeoutOrNull] */
+    fun <T> runBlockingWithTimeoutOrNull(
+        timeout: Duration = TIMEOUT_LONG,
+        block: suspend () -> T
+    ): T? = runBlocking { withTimeoutOrNull(timeout.toMillis()) { block() } }
 
     /** Check a condition using coroutines with a timeout. */
     fun waitForWithTimeout(
@@ -55,4 +65,19 @@ object Coroutines {
 
     /** A short timeout, to be used for actions that are expected not to complete. */
     val TIMEOUT_SHORT: Duration = Duration.ofMillis(750)
+
+    private val debugMode = System.getProperty(DEBUG_PROPERTY_NAME, DEBUG_PROPERTY_VALUE_AUTO)
+
+    /**
+     * Enables debug mode for coroutines, in particular this enables stack traces in case of
+     * failures.
+     */
+    fun enableDebugging() {
+        System.setProperty(DEBUG_PROPERTY_NAME, DEBUG_PROPERTY_VALUE_ON)
+    }
+
+    /** Resets the debug mode to its original state. */
+    fun resetDebugging() {
+        System.setProperty(DEBUG_PROPERTY_NAME, debugMode)
+    }
 }

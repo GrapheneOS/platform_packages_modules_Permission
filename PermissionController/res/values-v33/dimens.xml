@@ -24,6 +24,7 @@
     <dimen name="sc_spacing_xlarge">18dp</dimen>
     <dimen name="sc_spacing_xxlarge">20dp</dimen>
     <dimen name="sc_spacing_xxxlarge">24dp</dimen>
+    <dimen name="sc_large_screen_button_padding">56dp</dimen>
 
     <dimen name="sc_card_margin">@dimen/sc_spacing_xxxsmall</dimen>
     <dimen name="sc_list_margin">@dimen/sc_spacing_large</dimen>
@@ -36,8 +37,8 @@
     <dimen name="sc_entry_group_collapsed_padding_top">@dimen/sc_spacing_large</dimen>
     <dimen name="sc_entry_group_collapsed_padding_bottom">@dimen/sc_spacing_large</dimen>
     <dimen name="sc_card_margin_bottom">@dimen/sc_spacing_xxxlarge</dimen>
+    <dimen name="sc_button_horizontal_padding">@dimen/sc_spacing_xxxlarge</dimen>
 
-    <dimen name="sc_large_screen_button_padding">56dp</dimen>
     <dimen name="sc_icon_button_touch_target_size">48dp</dimen>
     <dimen name="sc_button_corner_radius">12dp</dimen>
     <dimen name="sc_card_corner_radius_large">28dp</dimen>
