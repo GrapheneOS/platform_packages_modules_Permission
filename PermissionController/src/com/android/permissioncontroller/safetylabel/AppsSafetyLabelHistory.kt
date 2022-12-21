@@ -19,12 +19,12 @@ package com.android.permissioncontroller.safetylabel
 import java.time.Instant
 
 /** Data class representing safety label history of installed apps. */
-data class AppsSafetyLabelHistory(val appSafetyLabelHistory: List<AppSafetyLabelHistory>) {
+data class AppsSafetyLabelHistory(val appSafetyLabelHistories: List<AppSafetyLabelHistory>) {
 
     /** Data class representing the safety label history of an app. */
     data class AppSafetyLabelHistory(
         /** Information about the app. */
-        val packageInfo: PackageInfo,
+        val appInfo: AppInfo,
         /**
          * A list of [SafetyLabel]s that this app has had in the past, ordered by
          * [SafetyLabel.receivedAt].
@@ -33,17 +33,34 @@ data class AppsSafetyLabelHistory(val appSafetyLabelHistory: List<AppSafetyLabel
          * app.
          */
         val safetyLabelHistory: List<SafetyLabel>
-    )
+    ) {
+        init {
+            require(safetyLabelHistory.sortedBy { it.receivedAt } == safetyLabelHistory)
+            require(safetyLabelHistory.all { it.appInfo == appInfo })
+        }
 
-    /** Data class representing the information about a package. */
-    data class PackageInfo(
+        /**
+         * Returns an [AppSafetyLabelHistory] with the original history as well the provided safety
+         * label.
+         */
+        fun withSafetyLabel(safetyLabel: SafetyLabel) =
+            AppSafetyLabelHistory(
+                appInfo,
+                safetyLabelHistory
+                    .toMutableList()
+                    .apply { add(safetyLabel) }
+                    .sortedBy { it.receivedAt })
+    }
+
+    /** Data class representing the information about an app. */
+    data class AppInfo(
         val packageName: String,
     )
 
     /** Data class representing an app's safety label. */
     data class SafetyLabel(
         /** Information about the app. */
-        val packageInfo: PackageInfo,
+        val appInfo: AppInfo,
         /** Earliest time at which the safety label was known to be accurate. */
         val receivedAt: Instant,
         /** Information about data use policies for an app. */
@@ -62,4 +79,14 @@ data class AppsSafetyLabelHistory(val appSafetyLabelHistory: List<AppSafetyLabel
         /** Whether any data in this category has been used for Advertising. */
         val containsAdvertisingPurpose: Boolean
     )
+
+    /** Data class representing a change of an app's safety label over time. */
+    data class AppSafetyLabelDiff(
+        val safetyLabelBefore: SafetyLabel,
+        val safetyLabelAfter: SafetyLabel
+    ) {
+        init {
+            require(safetyLabelBefore.appInfo == safetyLabelAfter.appInfo)
+        }
+    }
 }
