@@ -398,7 +398,10 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Définir <xliff:g id="APP_NAME">%1$s</xliff:g> comme appli de navigation par défaut ?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Aucune autorisation nécessaire"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> aura l\'autorisation d\'interagir avec vos notifications et d\'accéder au téléphone, aux SMS, aux contacts et à l\'agenda."</string>
+    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
+    <skip />
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> aura l\'autorisation d\'interagir avec vos notifications et de lire vos applis en streaming sur l\'appareil connecté."</string>
+    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> aura l\'autorisation de diffuser des contenus en streaming sur les appareils à proximité."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Ce service partage vos photos, contenus multimédias et notifications avec d\'autres appareils depuis votre téléphone."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Appli par défaut actuelle"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Ne plus me demander"</string>

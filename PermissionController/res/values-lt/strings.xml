@@ -398,7 +398,10 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Nustatyti „<xliff:g id="APP_NAME">%1$s</xliff:g>“ kaip numatytąją navigacijos programą?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Nereikia jokių leidimų"</string>
     <string name="role_watch_description" msgid="267003778693177779">"„<xliff:g id="APP_NAME">%1$s</xliff:g>“ galės sąveikauti su pranešimų funkcija ir pasiekti telefoną, SMS, kontaktus ir kalendorių."</string>
+    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
+    <skip />
     <string name="role_app_streaming_description" msgid="7341638576226183992">"„<xliff:g id="APP_NAME">%1$s</xliff:g>“ galės sąveikauti su pranešimų funkcija ir srautu perduoti programas į prijungtą įrenginį."</string>
+    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"Programai „<xliff:g id="APP_NAME">%1$s</xliff:g>“ bus leidžiama srautu perduoti turinį netoliese esantiems įrenginiams."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Ši paslauga bendrina jūsų nuotraukas, mediją ir pranešimus iš telefono ir kitų įrenginių."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Dabartinė numatytoji"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Daugiau neklausti"</string>

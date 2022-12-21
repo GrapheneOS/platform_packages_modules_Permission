@@ -398,7 +398,10 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Stel <xliff:g id="APP_NAME">%1$s</xliff:g> as jou navigasieprogram?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Geen toestemmings is nodig nie"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> sal interaksie met jou kennisgewings mag hê en toegang kry tot jou Foon-, SMS-, Kontakte- en Kalender-toestemmings."</string>
+    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
+    <skip />
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> sal toegelaat word om interaksie met jou kennisgewings te hê en jou programme na die gekoppelde toestel te stroom."</string>
+    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> sal toegelaat word om inhoud na toestelle in die omtrek te stroom."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Hierdie diens deel jou foto\'s, media en kennisgewings van jou foon af na ander toestelle toe."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Huidige verstek"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Moenie weer vra nie"</string>

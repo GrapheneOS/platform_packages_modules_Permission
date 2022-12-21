@@ -398,7 +398,10 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Kas määrata <xliff:g id="APP_NAME">%1$s</xliff:g> navigeerimise vaikerakenduseks?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Lube ei ole vaja"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> saab kasutada teie märguandeid ning hankida teie telefoni, SMS-ide, kontaktide ja kalendri load."</string>
+    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
+    <skip />
     <string name="role_app_streaming_description" msgid="7341638576226183992">"Rakendusel <xliff:g id="APP_NAME">%1$s</xliff:g> lubatakse kasutada teie märguandeid ja voogesitada teie rakenduste kuva ühendatud seadmesse."</string>
+    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> lubatakse läheduses olevatesse seadmetesse sisu voogesitada."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"See teenus jagab teie fotosid, meediat ja märguandeid teie telefonist muudesse seadmetesse."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Praegune vaikeseade"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Ära enam küsi"</string>

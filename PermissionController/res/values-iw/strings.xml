@@ -67,7 +67,7 @@
     <string name="auto_permission_manager_summary" msgid="9157438376234301354">"ניהול של נתוני הגישה ליומן, ליומני השיחות ועוד"</string>
     <string name="granted_permission_decision" msgid="7824827491551861365">"הסכמת להעניק לאפליקציה <xliff:g id="APP_NAME">%1$s</xliff:g> גישה אל <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="denied_permission_decision" msgid="5308961501779563781">"סירבת להעניק לאפליקציה <xliff:g id="APP_NAME">%1$s</xliff:g> גישה אל <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
-    <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{היום}=1{אתמול}two{שלשום}many{לפני # ימים}other{לפני # ימים}}"</string>
+    <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{היום}=1{אתמול}one{לפני # ימים}two{שלשום}other{לפני # ימים}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"השבתת האפליקציה"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"‏אם האפליקציה הזו תושבת, ייתכן ש-Android ואפליקציות אחרות לא יפעלו כצפוי. חשוב לזכור שלא ניתן למחוק את האפליקציה, כי היא הותקנה מראש במכשיר. ההשבתה מכבה את האפליקציה ומסתירה אותה במכשיר."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"מנהל ההרשאות"</string>
@@ -75,7 +75,7 @@
     <string name="no_permissions" msgid="3881676756371148563">"אין הרשאות"</string>
     <string name="additional_permissions" msgid="5801285469338873430">"הרשאות נוספות"</string>
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"פתיחה של פרטי האפליקציה"</string>
-    <string name="additional_permissions_more" msgid="5681220714755304407">"{count,plural, =1{עוד אחת}two{עוד #}many{עוד #}other{עוד #}}"</string>
+    <string name="additional_permissions_more" msgid="5681220714755304407">"{count,plural, =1{עוד אחת}one{עוד #}two{עוד #}other{עוד #}}"</string>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"‏האפליקציה הזו תוכננה לגרסה ישנה יותר של Android. דחיית ההרשאה עשויה לגרום לה לתפקד בצורה לקויה."</string>
     <string name="storage_supergroup_warning_allow" msgid="103093462784523190">"‏האפליקציה הזו מיועדת לגרסה ישנה יותר של Android. בחירה לתת לה את ההרשאה הזו תפתח לה גישה לכל הקבצים ששמורים באחסון (כולל תמונות, סרטונים, מוזיקה, אודיו וקבצים אחרים)."</string>
     <string name="storage_supergroup_warning_deny" msgid="6420765672683284347">"‏האפליקציה הזו מיועדת לגרסה ישנה יותר של Android. אם לא תינתן לה ההרשאה הזו, לא תהיה לה גישה לכל הקבצים ששמורים באחסון (כולל תמונות, סרטונים, מוזיקה, אודיו וקבצים אחרים)."</string>
@@ -141,15 +141,15 @@
     <string name="auto_permission_usage_timeline_summary" msgid="2713135806453218703">"<xliff:g id="ACCESS_TIME">%1$s</xliff:g> • <xliff:g id="SUMMARY_TEXT">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_3" msgid="758761785983094351">"<xliff:g id="ATTRIBUTION_NAME">%1$s</xliff:g> • <xliff:g id="APP_NAME">%2$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%3$s</xliff:g>"</string>
-    <string name="duration_used_days" msgid="8238355545812998877">"{count,plural, =1{יום אחד}two{יומיים}many{# ימים}other{# ימים}}"</string>
-    <string name="duration_used_hours" msgid="4983814806123370332">"{count,plural, =1{שעה}two{שעתיים}many{# שעות}other{# שעות}}"</string>
-    <string name="duration_used_minutes" msgid="1701379522897227819">"{count,plural, =1{דקה אחת}two{# דקות}many{# דקות}other{# דקות}}"</string>
-    <string name="duration_used_seconds" msgid="4067390990568727715">"{count,plural, =1{שנייה אחת}two{# שניות}many{# שניות}other{# שניות}}"</string>
+    <string name="duration_used_days" msgid="8238355545812998877">"{count,plural, =1{יום אחד}one{# ימים}two{יומיים}other{# ימים}}"</string>
+    <string name="duration_used_hours" msgid="4983814806123370332">"{count,plural, =1{שעה}one{# שעות}two{שעתיים}other{# שעות}}"</string>
+    <string name="duration_used_minutes" msgid="1701379522897227819">"{count,plural, =1{דקה אחת}one{# דקות}two{# דקות}other{# דקות}}"</string>
+    <string name="duration_used_seconds" msgid="4067390990568727715">"{count,plural, =1{שנייה אחת}one{# שניות}two{# שניות}other{# שניות}}"</string>
     <string name="permission_usage_any_permission" msgid="6358023078298106997">"כל הרשאה שהיא"</string>
     <string name="permission_usage_any_time" msgid="3802087027301631827">"בכל עת"</string>
-    <string name="permission_usage_last_n_days" msgid="7882626467375714145">"{count,plural, =1{ביום האחרון}two{ביומיים האחרונים}many{ב-# הימים האחרונים}other{ב-# הימים האחרונים}}"</string>
-    <string name="permission_usage_last_n_hours" msgid="8490466053680267858">"{count,plural, =1{בשעה האחרונה}two{בשעתיים האחרונות}many{ב-# השעות האחרונות}other{ב-# השעות האחרונות}}"</string>
-    <string name="permission_usage_last_n_minutes" msgid="7817864229878281983">"{count,plural, =1{בדקה האחרונה}two{ב-# הדקות האחרונות}many{ב-# הדקות האחרונות}other{ב-# הדקות האחרונות}}"</string>
+    <string name="permission_usage_last_n_days" msgid="7882626467375714145">"{count,plural, =1{ביום האחרון}one{ב-# הימים האחרונים}two{ביומיים האחרונים}other{ב-# הימים האחרונים}}"</string>
+    <string name="permission_usage_last_n_hours" msgid="8490466053680267858">"{count,plural, =1{בשעה האחרונה}one{ב-# השעות האחרונות}two{בשעתיים האחרונות}other{ב-# השעות האחרונות}}"</string>
+    <string name="permission_usage_last_n_minutes" msgid="7817864229878281983">"{count,plural, =1{בדקה האחרונה}one{ב-# הדקות האחרונות}two{ב-# הדקות האחרונות}other{ב-# הדקות האחרונות}}"</string>
     <string name="no_permission_usages" msgid="9119517454177289331">"אין שימוש בהרשאות"</string>
     <string name="permission_usage_list_title_any_time" msgid="8718257027381592407">"הגישה האחרונה בכל מסגרת זמן"</string>
     <string name="permission_usage_list_title_last_7_days" msgid="9048542342670890615">"הגישה האחרונה ב-7 הימים האחרונים"</string>
@@ -163,9 +163,9 @@
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"שימוש בהרשאות בשעה האחרונה"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"שימוש בהרשאות ב-15 הדקות האחרונות"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"שימוש בהרשאות בדקה האחרונה"</string>
-    <string name="permission_usage_preference_summary_not_used_in_past_n_days" msgid="4771868094611359651">"{count,plural, =1{לא נעשה שימוש ביום האחרון}two{לא נעשה שימוש ביומיים האחרונים}many{לא נעשה שימוש ב-# הימים האחרונים}other{לא נעשה שימוש ב-# הימים האחרונים}}"</string>
-    <string name="permission_usage_preference_summary_not_used_in_past_n_hours" msgid="3828973177433435742">"{count,plural, =1{לא נעשה שימוש בשעה האחרונה}two{לא נעשה שימוש בשעתיים האחרונות}many{לא נעשה שימוש ב-# השעות האחרונות}other{לא נעשה שימוש ב-# השעות האחרונות}}"</string>
-    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{בשימוש על ידי אפליקציה אחת}two{בשימוש על ידי # אפליקציות}many{בשימוש על ידי # אפליקציות}other{בשימוש על ידי # אפליקציות}}"</string>
+    <string name="permission_usage_preference_summary_not_used_in_past_n_days" msgid="4771868094611359651">"{count,plural, =1{לא נעשה שימוש ביום האחרון}one{לא נעשה שימוש ב-# הימים האחרונים}two{לא נעשה שימוש ביומיים האחרונים}other{לא נעשה שימוש ב-# הימים האחרונים}}"</string>
+    <string name="permission_usage_preference_summary_not_used_in_past_n_hours" msgid="3828973177433435742">"{count,plural, =1{לא נעשה שימוש בשעה האחרונה}one{לא נעשה שימוש ב-# השעות האחרונות}two{לא נעשה שימוש בשעתיים האחרונות}other{לא נעשה שימוש ב-# השעות האחרונות}}"</string>
+    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{בשימוש על ידי אפליקציה אחת}one{בשימוש על ידי # אפליקציות}two{בשימוש על ידי # אפליקציות}other{בשימוש על ידי # אפליקציות}}"</string>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"הצגת כל הפרטים במרכז השליטה"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"סינון לפי: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"הסרת המסנן"</string>
@@ -256,17 +256,17 @@
     <string name="ask_header" msgid="2633816846459944376">"יש לשאול בכל פעם"</string>
     <string name="denied_header" msgid="903209608358177654">"אין הרשאה"</string>
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"לצפייה באפליקציות נוספות שיכולות לגשת לכל הקבצים"</string>
-    <string name="days" msgid="609563020985571393">"{count,plural, =1{יום אחד}two{יומיים}many{# ימים}other{# ימים}}"</string>
-    <string name="hours" msgid="7302866489666950038">"{count,plural, =1{שעה}two{שעתיים}many{# שעות}other{# שעות}}"</string>
-    <string name="minutes" msgid="4868414855445375753">"{count,plural, =1{דקה אחת}two{# דקות}many{# דקות}other{# דקות}}"</string>
-    <string name="seconds" msgid="5893958182059842734">"{count,plural, =1{שנייה אחת}two{# שניות}many{# שניות}other{# שניות}}"</string>
+    <string name="days" msgid="609563020985571393">"{count,plural, =1{יום אחד}one{# ימים}two{יומיים}other{# ימים}}"</string>
+    <string name="hours" msgid="7302866489666950038">"{count,plural, =1{שעה}one{# שעות}two{שעתיים}other{# שעות}}"</string>
+    <string name="minutes" msgid="4868414855445375753">"{count,plural, =1{דקה אחת}one{# דקות}two{# דקות}other{# דקות}}"</string>
+    <string name="seconds" msgid="5893958182059842734">"{count,plural, =1{שנייה אחת}one{# שניות}two{# שניות}other{# שניות}}"</string>
     <string name="permission_reminders" msgid="6528257957664832636">"תזכורות להרשאות"</string>
     <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"אפליקציה אחת שמזמן לא השתמשת בה"</string>
     <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> אפליקציות שמזמן לא השתמשת בהן"</string>
     <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"הוסרו הרשאות כדי להגן על הפרטיות שלך. יש להקיש כדי לבדוק"</string>
     <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"הוסרו הרשאות לאפליקציות שמזמן לא השתמשת בהן"</string>
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"יש אפליקציות שלא נעשה בהן שימוש כבר כמה חודשים. אפשר להקיש כדי לבדוק."</string>
-    <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{אפליקציה אחת שמזמן לא השתמשת בה}two{# אפליקציות שמזמן לא השתמשת בהן}many{# אפליקציות שמזמן לא השתמשת בהן}other{# אפליקציות שמזמן לא השתמשת בהן}}"</string>
+    <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{אפליקציה אחת שמזמן לא השתמשת בה}one{# אפליקציות שמזמן לא השתמשת בהן}two{# אפליקציות שמזמן לא השתמשת בהן}other{# אפליקציות שמזמן לא השתמשת בהן}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"ההרשאות בוטלו, הקבצים הזמניים הוסרו וההתראות הופסקו. יש להקיש כדי לבדוק."</string>
     <string name="unused_apps_safety_center_card_title" msgid="5638409355530099149">"בדיקת אפליקציות שההרשאות שלהן הוסרו"</string>
     <string name="unused_apps_safety_center_card_content" msgid="1088557243627427820">"ההרשאות והקבצים הזמניים של אפליקציות שלא השתמשת בהן זמן מה הוסרו, וההתראות מהן הופסקו."</string>
@@ -275,7 +275,7 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"במהלך הנהיגה, נתת לאפליקציה <xliff:g id="APP">%1$s</xliff:g> גישה ל<xliff:g id="PERMISSION">%2$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"במהלך הנהיגה, נתת לאפליקציה <xliff:g id="APP">%1$s</xliff:g> גישה ל<xliff:g id="PERMISSION_1">%2$s</xliff:g> ול<xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"במהלך הנהיגה, הענקת <xliff:g id="COUNT">%1$d</xliff:g> הרשאות לאפליקציה <xliff:g id="APP">%2$s</xliff:g>"</string>
-    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{במהלך הנהיגה, נתת גישה לאפליקציה <xliff:g id="APP_0">%1$s</xliff:g> ולאפליקציה אחת נוספת}two{במהלך הנהיגה, נתת גישה לאפליקציה <xliff:g id="APP_1">%1$s</xliff:g> ול-# אפליקציות נוספות}many{במהלך הנהיגה, נתת גישה לאפליקציה <xliff:g id="APP_1">%1$s</xliff:g> ול-# אפליקציות נוספות}other{במהלך הנהיגה, נתת גישה לאפליקציה <xliff:g id="APP_1">%1$s</xliff:g> ול-# אפליקציות נוספות}}"</string>
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{במהלך הנהיגה, נתת גישה לאפליקציה <xliff:g id="APP_0">%1$s</xliff:g> ולאפליקציה אחת נוספת}one{במהלך הנהיגה, נתת גישה לאפליקציה <xliff:g id="APP_1">%1$s</xliff:g> ול-# אפליקציות נוספות}two{במהלך הנהיגה, נתת גישה לאפליקציה <xliff:g id="APP_1">%1$s</xliff:g> ול-# אפליקציות נוספות}other{במהלך הנהיגה, נתת גישה לאפליקציה <xliff:g id="APP_1">%1$s</xliff:g> ול-# אפליקציות נוספות}}"</string>
     <string name="go_to_settings" msgid="1053735612211228335">"להגדרות"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"יש אפליקציות שלא נעשה בהן שימוש כבר כמה חודשים"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"ההרשאות שהוסרו"</string>
@@ -398,7 +398,10 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"להגדיר את <xliff:g id="APP_NAME">%1$s</xliff:g> כאפליקציית ברירת המחדל לניווט?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"אין צורך בהרשאות"</string>
     <string name="role_watch_description" msgid="267003778693177779">"‏האפליקציה <xliff:g id="APP_NAME">%1$s</xliff:g> תוכל לבצע פעולות בהתראות ותקבל הרשאות גישה לטלפון, ל-SMS לאנשי הקשר וליומן."</string>
+    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
+    <skip />
     <string name="role_app_streaming_description" msgid="7341638576226183992">"לאפליקציה <xliff:g id="APP_NAME">%1$s</xliff:g> יהיו הרשאות לביצוע פעולות בהתראות שלך ולביצוע סטרימינג של האפליקציות למכשיר המחובר."</string>
+    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"האפליקציה <xliff:g id="APP_NAME">%1$s</xliff:g> תוכל להעביר תוכן בסטרימינג למכשירים בקרבת מקום."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"התמונות, המדיה וההתראות מהטלפון שלך ישותפו למכשירים אחרים על ידי השירות הזה."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"ברירת המחדל הנוכחית"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"לא לשאול שוב"</string>
