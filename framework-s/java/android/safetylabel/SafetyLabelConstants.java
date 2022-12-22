@@ -30,6 +30,20 @@ import androidx.annotation.RequiresApi;
 @SystemApi
 @RequiresApi(UPSIDE_DOWN_CAKE)
 public final class SafetyLabelConstants {
+
+    /**
+     * Constant to be used as Device Config flag determining whether the Permission Rationale
+     * feature is enabled.
+     *
+     * <p>When this flag is enabled, permission rationale messaging will be displayed in permission
+     * settings and the runtime permissions grant dialog.
+     *
+     * @hide
+     */
+    @SystemApi
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    public static final String PERMISSION_RATIONALE_ENABLED = "permission_rationale_enabled";
+
     /**
      * Constant to be used as Device Config flag determining whether the Safety Label Change
      * Notifications feature is enabled.
