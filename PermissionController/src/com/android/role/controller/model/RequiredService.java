@@ -37,8 +37,9 @@ import java.util.List;
 public class RequiredService extends RequiredComponent {
 
     public RequiredService(@NonNull IntentFilterData intentFilterData, int minTargetSdkVersion,
-            @Nullable String permission, int queryFlags, @NonNull List<RequiredMetaData> metaData) {
-        super(intentFilterData, minTargetSdkVersion, permission, queryFlags, metaData);
+            int flags, @Nullable String permission, int queryFlags,
+            @NonNull List<RequiredMetaData> metaData) {
+        super(intentFilterData, minTargetSdkVersion, flags, permission, queryFlags, metaData);
     }
 
     @NonNull
@@ -54,6 +55,11 @@ public class RequiredService extends RequiredComponent {
     @Override
     protected ComponentName getComponentComponentName(@NonNull ResolveInfo resolveInfo) {
         return new ComponentName(resolveInfo.serviceInfo.packageName, resolveInfo.serviceInfo.name);
+    }
+
+    @Override
+    protected int getComponentFlags(@NonNull ResolveInfo resolveInfo) {
+        return resolveInfo.serviceInfo.flags;
     }
 
     @Nullable
