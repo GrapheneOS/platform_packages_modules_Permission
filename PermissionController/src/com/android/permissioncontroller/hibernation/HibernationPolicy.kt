@@ -544,6 +544,15 @@ suspend fun isPackageHibernationExemptBySystem(
         return true
     }
 
+    val emergencyRoleHolders = context.getSystemService(android.app.role.RoleManager::class.java)!!
+            .getRoleHolders(RoleManager.ROLE_EMERGENCY)
+    if (emergencyRoleHolders.contains(pkg.packageName)) {
+        if (DEBUG_HIBERNATION_POLICY) {
+            DumpableLog.i(LOG_TAG, "Exempted ${pkg.packageName} - emergency app")
+        }
+        return true
+    }
+
     if (SdkLevel.isAtLeastS()) {
         val hasInstallOrUpdatePermissions =
                 context.checkPermission(
