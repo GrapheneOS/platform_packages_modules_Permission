@@ -30,6 +30,6 @@ android_test_helper_app {
     static_libs: [
         "androidx.test.rules",
         "androidx.test.ext.junit",
-        "compatibility-device-util-axt",
+        "safety-center-test-util-lib",
     ],
 }

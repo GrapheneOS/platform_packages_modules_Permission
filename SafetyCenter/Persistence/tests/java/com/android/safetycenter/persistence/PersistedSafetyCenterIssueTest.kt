@@ -17,7 +17,7 @@
 package com.android.safetycenter.persistence
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.android.permission.testing.EqualsHashCodeToStringTester
+import com.android.safetycenter.testing.EqualsHashCodeToStringTester
 import com.google.common.truth.Truth.assertThat
 import java.time.Instant
 import org.junit.Test

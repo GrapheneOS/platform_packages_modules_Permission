@@ -33,7 +33,6 @@ import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyCenterStaticEntry
 import android.safetycenter.SafetyCenterStaticEntryGroup
 import android.safetycenter.SafetySourceData
-import android.safetycenter.cts.testing.SafetyCenterActivityLauncher.launchSafetyCenterActivity
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.getSafetyCenterDataWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.getSafetySourceDataWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.setSafetySourceDataWithPermission
@@ -64,7 +63,6 @@ import android.safetycenter.cts.testing.SafetyCenterCtsHelper
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import android.safetycenter.cts.testing.SafetySourceCtsData
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.EVENT_SOURCE_STATE_CHANGED
-import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermissionIdentity
 import android.safetycenter.cts.testing.UiTestHelper.waitAllTextDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.waitAllTextNotDisplayed
 import androidx.test.core.app.ApplicationProvider
@@ -79,6 +77,8 @@ import com.android.bedstead.harrier.annotations.enterprise.EnsureHasDeviceOwner
 import com.android.compatibility.common.util.DisableAnimationRule
 import com.android.compatibility.common.util.FreezeRotationRule
 import com.android.safetycenter.resources.SafetyCenterResourcesContext
+import com.android.safetycenter.testing.SafetyCenterActivityLauncher.launchSafetyCenterActivity
+import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
 import com.google.common.base.Preconditions.checkState
 import com.google.common.truth.Truth.assertThat
 import kotlin.test.assertFailsWith

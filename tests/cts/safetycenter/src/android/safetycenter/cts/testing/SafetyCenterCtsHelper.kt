@@ -34,7 +34,7 @@ import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.set
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.setSafetySourceDataWithPermission
 import android.safetycenter.cts.testing.SafetyCenterFlags.isSafetyCenterEnabled
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.EVENT_SOURCE_STATE_CHANGED
-import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermissionIdentity
+import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
 import com.google.common.util.concurrent.MoreExecutors.directExecutor
 
 /** A class that facilitates settings up Safety Center in tests. */

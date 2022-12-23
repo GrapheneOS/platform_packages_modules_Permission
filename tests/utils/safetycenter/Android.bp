@@ -17,8 +17,8 @@ package {
     default_applicable_licenses: ["Android-Apache-2.0"],
 }
 
-java_library {
-    name: "permission-apex-test-util-lib",
+android_library {
+    name: "safety-center-test-util-lib",
     sdk_version: "test_current",
     min_sdk_version: "30",
     target_sdk_version: "32",
@@ -26,6 +26,8 @@ java_library {
         "java/**/*.kt",
     ],
     static_libs: [
+        "androidx.test.core",
+        "compatibility-device-util-axt",
         // NOTE: when importing this library in a test you may have to add the following option to
         // the test element of your AndroidTest.xml file in order to ignore guava tests:
         // <option name="exclude-annotation" value="org.junit.Ignore"/>
