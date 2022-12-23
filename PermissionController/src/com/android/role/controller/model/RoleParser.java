@@ -98,7 +98,6 @@ public class RoleParser {
     private static final String ATTRIBUTE_SYSTEM_ONLY = "systemOnly";
     private static final String ATTRIBUTE_UI_BEHAVIOR = "uiBehavior";
     private static final String ATTRIBUTE_VISIBLE = "visible";
-    private static final String ATTRIBUTE_FLAGS = "flags";
     private static final String ATTRIBUTE_MIN_TARGET_SDK_VERSION = "minTargetSdkVersion";
     private static final String ATTRIBUTE_PERMISSION = "permission";
     private static final String ATTRIBUTE_PROHIBITED = "prohibited";
@@ -546,7 +545,6 @@ public class RoleParser {
             @NonNull String name) throws IOException, XmlPullParserException {
         int minTargetSdkVersion = getAttributeIntValue(parser, ATTRIBUTE_MIN_TARGET_SDK_VERSION,
                 Build.VERSION_CODES.BASE);
-        int flags = getAttributeIntValue(parser, ATTRIBUTE_FLAGS, 0);
         String permission = getAttributeValue(parser, ATTRIBUTE_PERMISSION);
         int queryFlags = getAttributeIntValue(parser, ATTRIBUTE_QUERY_FLAGS, 0);
         IntentFilterData intentFilterData = null;
@@ -611,16 +609,16 @@ public class RoleParser {
         }
         switch (name) {
             case TAG_ACTIVITY:
-                return new RequiredActivity(intentFilterData, minTargetSdkVersion, flags,
-                        permission, queryFlags, metaData);
+                return new RequiredActivity(intentFilterData, minTargetSdkVersion, permission,
+                        queryFlags, metaData);
             case TAG_PROVIDER:
-                return new RequiredContentProvider(intentFilterData, minTargetSdkVersion, flags,
+                return new RequiredContentProvider(intentFilterData, minTargetSdkVersion,
                         permission, queryFlags, metaData);
             case TAG_RECEIVER:
-                return new RequiredBroadcastReceiver(intentFilterData, minTargetSdkVersion, flags,
+                return new RequiredBroadcastReceiver(intentFilterData, minTargetSdkVersion,
                         permission, queryFlags, metaData);
             case TAG_SERVICE:
-                return new RequiredService(intentFilterData, minTargetSdkVersion, flags, permission,
+                return new RequiredService(intentFilterData, minTargetSdkVersion, permission,
                         queryFlags, metaData);
             default:
                 throwOrLogMessage("Unknown tag <" + name + ">");

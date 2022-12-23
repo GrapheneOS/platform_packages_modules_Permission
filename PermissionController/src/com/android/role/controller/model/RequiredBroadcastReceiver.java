@@ -37,9 +37,9 @@ import java.util.List;
 public class RequiredBroadcastReceiver extends RequiredComponent {
 
     public RequiredBroadcastReceiver(@NonNull IntentFilterData intentFilterData,
-            int minTargetSdkVersion, int flags, @Nullable String permission, int queryFlags,
+            int minTargetSdkVersion, @Nullable String permission, int queryFlags,
             @NonNull List<RequiredMetaData> metaData) {
-        super(intentFilterData, minTargetSdkVersion, flags, permission, queryFlags, metaData);
+        super(intentFilterData, minTargetSdkVersion, permission, queryFlags, metaData);
     }
 
     @NonNull
@@ -56,11 +56,6 @@ public class RequiredBroadcastReceiver extends RequiredComponent {
     protected ComponentName getComponentComponentName(@NonNull ResolveInfo resolveInfo) {
         return new ComponentName(resolveInfo.activityInfo.packageName,
                 resolveInfo.activityInfo.name);
-    }
-
-    @Override
-    protected int getComponentFlags(@NonNull ResolveInfo resolveInfo) {
-        return resolveInfo.activityInfo.flags;
     }
 
     @Nullable

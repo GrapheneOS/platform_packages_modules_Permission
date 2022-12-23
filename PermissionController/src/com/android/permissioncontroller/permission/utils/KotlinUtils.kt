@@ -60,7 +60,6 @@ import android.os.UserHandle
 import android.permission.PermissionManager
 import android.provider.DeviceConfig
 import android.provider.Settings
-import android.safetylabel.SafetyLabelConstants.PERMISSION_RATIONALE_ENABLED
 import android.safetylabel.SafetyLabelConstants.SAFETY_LABEL_CHANGE_NOTIFICATIONS_ENABLED
 import android.text.TextUtils
 import android.util.Log
@@ -138,6 +137,9 @@ object KotlinUtils {
 
     /** Whether to show 7-day toggle in privacy hub.  */
     private const val PRIVACY_DASHBOARD_7_DAY_TOGGLE = "privacy_dashboard_7_day_toggle"
+
+    /** Whether to show permission rationale in permission settings and grant dialog.  */
+    private const val PRIVACY_PERMISSION_RATIONALE_ENABLED = "privacy_permission_rationale_enabled"
 
     /** Whether to placeholder safety label data in permission settings and grant dialog.  */
     private const val PRIVACY_PLACEHOLDER_SAFETY_LABEL_DATA_ENABLED =
@@ -260,7 +262,7 @@ object KotlinUtils {
     @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codename = "UpsideDownCake")
     fun isPermissionRationaleEnabled(): Boolean {
         return SdkLevel.isAtLeastU() && DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
-            PERMISSION_RATIONALE_ENABLED, false)
+            PRIVACY_PERMISSION_RATIONALE_ENABLED, false)
     }
 
     /**

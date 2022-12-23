@@ -351,7 +351,7 @@ class PermissionUsageDetailsViewModelNew(
         val durationSummaryLabel = getDurationSummary(context, this, accessTimeList)
         val proxyLabel = getProxyPackageLabel(this)
         val subAttributionLabel = getSubAttributionLabel(this)
-        val showingSubAttribution = subAttributionLabel != null && subAttributionLabel.isNotEmpty()
+        val showingSubAttribution = subAttributionLabel?.isNotEmpty() == false
         val summary =
             buildUsageSummary(context, durationSummaryLabel, proxyLabel, subAttributionLabel)
 
