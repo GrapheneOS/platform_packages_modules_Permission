@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package android.safetycenter.cts.testing
+package com.android.safetycenter.testing
 
 import android.Manifest.permission.REVOKE_RUNTIME_PERMISSIONS
 import android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE
@@ -25,8 +25,8 @@ import android.content.Intent.ACTION_VIEW_SAFETY_CENTER_QS
 import android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.os.Bundle
-import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermissionIdentity
-import com.android.compatibility.common.util.UiAutomatorUtils2.getUiDevice
+import com.android.compatibility.common.util.UiAutomatorUtils.getUiDevice
+import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
 
 /** A class that provides a way to launch the SafetyCenter activity in tests. */
 object SafetyCenterActivityLauncher {
@@ -35,8 +35,8 @@ object SafetyCenterActivityLauncher {
      * Launches the SafetyCenter activity and exits it once [block] completes.
      *
      * @param withReceiverPermission whether we should hold the [SEND_SAFETY_CENTER_UPDATE]
-     * permission while the activity is on the screen (e.g. to ensure the CTS package can have its
-     * receiver called during refresh/rescan)
+     *   permission while the activity is on the screen (e.g. to ensure the CTS package can have its
+     *   receiver called during refresh/rescan)
      */
     fun Context.launchSafetyCenterActivity(
         intentExtras: Bundle? = null,

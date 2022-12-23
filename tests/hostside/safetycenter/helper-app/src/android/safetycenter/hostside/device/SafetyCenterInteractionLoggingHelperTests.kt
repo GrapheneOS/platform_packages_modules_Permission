@@ -17,10 +17,9 @@
 package android.safetycenter.hostside.device
 
 import android.content.Context
-import android.content.Intent
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.android.compatibility.common.util.UiAutomatorUtils2
+import com.android.safetycenter.testing.SafetyCenterActivityLauncher.launchSafetyCenterActivity
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -40,15 +39,6 @@ class SafetyCenterInteractionLoggingHelperTests {
 
     @Test
     fun openSafetyCenter() {
-        context.startActivity(
-            Intent(Intent.ACTION_SAFETY_CENTER)
-                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK))
-
-        // TODO(b/239682646): Use the extracted CTS support library to launch and close activity
-        // (after extracting it)
-        val uiDevice = UiAutomatorUtils2.getUiDevice()
-        uiDevice.waitForIdle()
-        uiDevice.pressBack()
+        context.launchSafetyCenterActivity {}
     }
 }
