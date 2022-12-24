@@ -56,6 +56,11 @@ public abstract class RequiredComponent {
     private final int mMinTargetSdkVersion;
 
     /**
+     * Optional flags required to be set on a component for match to succeed.
+     */
+    private final int mFlags;
+
+    /**
      * Optional permission required on a component for match to succeed.
      *
      * @see android.content.pm.ActivityInfo#permission
@@ -78,9 +83,11 @@ public abstract class RequiredComponent {
     private final List<RequiredMetaData> mMetaData;
 
     public RequiredComponent(@NonNull IntentFilterData intentFilterData, int minTargetSdkVersion,
-            @Nullable String permission, int queryFlags, @NonNull List<RequiredMetaData> metaData) {
+            int flags, @Nullable String permission, int queryFlags,
+            @NonNull List<RequiredMetaData> metaData) {
         mIntentFilterData = intentFilterData;
         mMinTargetSdkVersion = minTargetSdkVersion;
+        mFlags = flags;
         mPermission = permission;
         mQueryFlags = queryFlags;
         mMetaData = metaData;
@@ -117,6 +124,10 @@ public abstract class RequiredComponent {
      */
     public boolean isRequired(@NonNull ApplicationInfo applicationInfo) {
         return isAvailable() && applicationInfo.targetSdkVersion >= mMinTargetSdkVersion;
+    }
+
+    public int getFlags() {
+        return mFlags;
     }
 
     @Nullable
@@ -169,19 +180,27 @@ public abstract class RequiredComponent {
         if (packageName != null) {
             intent.setPackage(packageName);
         }
-        int flags = mQueryFlags | PackageManager.MATCH_DIRECT_BOOT_AWARE
+        int queryFlags = mQueryFlags | PackageManager.MATCH_DIRECT_BOOT_AWARE
                 | PackageManager.MATCH_DIRECT_BOOT_UNAWARE;
         boolean hasMetaData = !mMetaData.isEmpty();
         if (hasMetaData) {
-            flags |= PackageManager.GET_META_DATA;
+            queryFlags |= PackageManager.GET_META_DATA;
         }
-        List<ResolveInfo> resolveInfos = queryIntentComponentsAsUser(intent, flags, user, context);
+        List<ResolveInfo> resolveInfos = queryIntentComponentsAsUser(intent, queryFlags, user,
+                context);
 
         ArraySet<String> componentPackageNames = new ArraySet<>();
         List<ComponentName> componentNames = new ArrayList<>();
         int resolveInfosSize = resolveInfos.size();
         for (int resolveInfosIndex = 0; resolveInfosIndex < resolveInfosSize; resolveInfosIndex++) {
             ResolveInfo resolveInfo = resolveInfos.get(resolveInfosIndex);
+
+            if (mFlags != 0) {
+                int componentFlags = getComponentFlags(resolveInfo);
+                if ((componentFlags & mFlags) != mFlags) {
+                    continue;
+                }
+            }
 
             if (mPermission != null) {
                 String componentPermission = getComponentPermission(resolveInfo);
@@ -248,6 +267,15 @@ public abstract class RequiredComponent {
     protected abstract ComponentName getComponentComponentName(@NonNull ResolveInfo resolveInfo);
 
     /**
+     * Get the flags that have been set on a component.
+     *
+     * @param resolveInfo the {@code ResolveInfo} of the component
+     *
+     * @return the flags that have been set on a component
+     */
+    protected abstract int getComponentFlags(@NonNull ResolveInfo resolveInfo);
+
+    /**
      * Get the permission required to access a component.
      *
      * @param resolveInfo the {@code ResolveInfo} of the component
@@ -272,6 +300,7 @@ public abstract class RequiredComponent {
         return "RequiredComponent{"
                 + "mIntentFilterData=" + mIntentFilterData
                 + ", mMinTargetSdkVersion=" + mMinTargetSdkVersion
+                + ", mFlags='" + mFlags + '\''
                 + ", mPermission='" + mPermission + '\''
                 + ", mQueryFlags=" + mQueryFlags
                 + ", mMetaData=" + mMetaData
@@ -289,6 +318,7 @@ public abstract class RequiredComponent {
         RequiredComponent that = (RequiredComponent) object;
         return Objects.equals(mIntentFilterData, that.mIntentFilterData)
                 && Objects.equals(mMinTargetSdkVersion, that.mMinTargetSdkVersion)
+                && mFlags == that.mFlags
                 && Objects.equals(mPermission, that.mPermission)
                 && mQueryFlags == that.mQueryFlags
                 && Objects.equals(mMetaData, that.mMetaData);
@@ -296,7 +326,7 @@ public abstract class RequiredComponent {
 
     @Override
     public int hashCode() {
-        return Objects.hash(mIntentFilterData, mMinTargetSdkVersion, mPermission, mQueryFlags,
-                mMetaData);
+        return Objects.hash(mIntentFilterData, mMinTargetSdkVersion, mFlags, mPermission,
+                mQueryFlags, mMetaData);
     }
 }
