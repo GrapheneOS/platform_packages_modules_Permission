@@ -80,19 +80,22 @@ class RuntimePermissionsPersistenceTest {
     }
 
     @Test
-    fun testReadWrite() {
+    fun testWriteRead() {
         persistence.writeForUser(state, user)
         val persistedState = persistence.readForUser(user)
 
-        assertThat(persistedState).isEqualTo(state)
-        assertThat(persistedState!!.version).isEqualTo(state.version)
-        assertThat(persistedState.fingerprint).isEqualTo(state.fingerprint)
-        assertThat(persistedState.packagePermissions).isEqualTo(state.packagePermissions)
-        val persistedPermissionState = persistedState.packagePermissions.values.first().first()
-        assertThat(persistedPermissionState.name).isEqualTo(permissionState.name)
-        assertThat(persistedPermissionState.isGranted).isEqualTo(permissionState.isGranted)
-        assertThat(persistedPermissionState.flags).isEqualTo(permissionState.flags)
-        assertThat(persistedState.sharedUserPermissions).isEqualTo(state.sharedUserPermissions)
+        checkPersistedState(persistedState!!)
+    }
+
+    @Test
+    fun testWriteCorruptReadFromReserveCopy() {
+        persistence.writeForUser(state, user)
+        // Corrupt the primary file.
+        RuntimePermissionsPersistenceImpl.getFile(user).writeText(
+                "<runtime-permissions version=\"10\"><package name=\"com.foo.bar\"><permission")
+        val persistedState = persistence.readForUser(user)
+
+        checkPersistedState(persistedState!!)
     }
 
     @Test
@@ -102,6 +105,18 @@ class RuntimePermissionsPersistenceTest {
         val persistedState = persistence.readForUser(user)
 
         assertThat(persistedState).isNull()
+    }
+
+    private fun checkPersistedState(persistedState: RuntimePermissionsState) {
+        assertThat(persistedState).isEqualTo(state)
+        assertThat(persistedState.version).isEqualTo(state.version)
+        assertThat(persistedState.fingerprint).isEqualTo(state.fingerprint)
+        assertThat(persistedState.packagePermissions).isEqualTo(state.packagePermissions)
+        val persistedPermissionState = persistedState.packagePermissions.values.first().first()
+        assertThat(persistedPermissionState.name).isEqualTo(permissionState.name)
+        assertThat(persistedPermissionState.isGranted).isEqualTo(permissionState.isGranted)
+        assertThat(persistedPermissionState.flags).isEqualTo(permissionState.flags)
+        assertThat(persistedState.sharedUserPermissions).isEqualTo(state.sharedUserPermissions)
     }
 
     companion object {

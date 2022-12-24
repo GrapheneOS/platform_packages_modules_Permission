@@ -76,14 +76,22 @@ class RolesPersistenceTest {
     }
 
     @Test
-    fun testReadWrite() {
+    fun testWriteRead() {
         persistence.writeForUser(state, user)
         val persistedState = persistence.readForUser(user)
 
-        assertThat(persistedState).isEqualTo(state)
-        assertThat(persistedState!!.version).isEqualTo(state.version)
-        assertThat(persistedState.packagesHash).isEqualTo(state.packagesHash)
-        assertThat(persistedState.roles).isEqualTo(state.roles)
+        checkPersistedState(persistedState)
+    }
+
+    @Test
+    fun testWriteCorruptReadFromReserveCopy() {
+        persistence.writeForUser(state, user)
+        // Corrupt the primary file.
+        RolesPersistenceImpl.getFile(user).writeText(
+                "<roles version=\"-1\"><role name=\"com.foo.bar\"><holder")
+        val persistedState = persistence.readForUser(user)
+
+        checkPersistedState(persistedState!!)
     }
 
     @Test
@@ -93,6 +101,13 @@ class RolesPersistenceTest {
         val persistedState = persistence.readForUser(user)
 
         assertThat(persistedState).isNull()
+    }
+
+    private fun checkPersistedState(persistedState: RolesState) {
+        assertThat(persistedState).isEqualTo(state)
+        assertThat(persistedState.version).isEqualTo(state.version)
+        assertThat(persistedState.packagesHash).isEqualTo(state.packagesHash)
+        assertThat(persistedState.roles).isEqualTo(state.roles)
     }
 
     companion object {
