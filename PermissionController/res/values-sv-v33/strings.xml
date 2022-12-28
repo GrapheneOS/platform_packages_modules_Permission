@@ -22,7 +22,7 @@
     <string name="work_policy_title" msgid="832967780713677409">"Information om jobbpolicy"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"Inställningar som hanteras av IT-administratören"</string>
     <string name="safety_center_entry_group_expand_action" msgid="5358289574941779652">"Utöka och visa listan"</string>
-    <string name="safety_center_entry_group_collapse_action" msgid="1525710152244405656">"Komprimera lista och dölj inställningar"</string>
+    <string name="safety_center_entry_group_collapse_action" msgid="1525710152244405656">"Komprimera lista och dölja inställningar"</string>
     <string name="safety_center_entry_group_content_description" msgid="7048420958214443333">"Lista. <xliff:g id="ENTRY_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_entry_group_with_actions_needed_content_description" msgid="2708884606775932657">"Lista. <xliff:g id="ENTRY_TITLE">%1$s</xliff:g>. Åtgärder krävs. <xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_entry_group_item_content_description" msgid="7348298582877249787">"Post i listan. <xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
