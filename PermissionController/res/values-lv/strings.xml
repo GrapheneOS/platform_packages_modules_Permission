@@ -398,7 +398,10 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Vai vēlaties iestatīt lietotni <xliff:g id="APP_NAME">%1$s</xliff:g> kā noklusējuma navigācijas lietotni?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Atļaujas nav nepieciešamas"</string>
     <string name="role_watch_description" msgid="267003778693177779">"Lietotnei <xliff:g id="APP_NAME">%1$s</xliff:g> tiks atļauts mijiedarboties ar jūsu paziņojumiem un piekļūt šādām atļaujām: Tālrunis, Īsziņas, Kontaktpersonas un Kalendārs."</string>
+    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
+    <skip />
     <string name="role_app_streaming_description" msgid="7341638576226183992">"Lietotnei <xliff:g id="APP_NAME">%1$s</xliff:g> tiks atļauts mijiedarboties ar jūsu paziņojumiem un straumēt jūsu lietotņu saturu uz pievienoto ierīci."</string>
+    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"Lietotnei <xliff:g id="APP_NAME">%1$s</xliff:g> tika atļauta satura straumēšana uz tuvumā esošām ierīcēm."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Izmantojot šo pakalpojumu, jūsu tālruņa fotoattēli, multivides saturs un paziņojumi tiek kopīgoti ar citām ierīcēm."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Pašreizējais noklusējums"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Nejautāt atkārtoti"</string>

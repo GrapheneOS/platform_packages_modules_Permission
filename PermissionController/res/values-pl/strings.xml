@@ -398,7 +398,10 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Czy aplikacja <xliff:g id="APP_NAME">%1$s</xliff:g> ma być domyślną aplikacją do nawigacji?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Nie potrzebuje uprawnień"</string>
     <string name="role_watch_description" msgid="267003778693177779">"Aplikacja <xliff:g id="APP_NAME">%1$s</xliff:g> będzie mogła korzystać z powiadomień oraz uprawnień dotyczących Telefonu, SMS-ów, Kontaktów i Kalendarza."</string>
+    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
+    <skip />
     <string name="role_app_streaming_description" msgid="7341638576226183992">"Aplikacja <xliff:g id="APP_NAME">%1$s</xliff:g> będzie mogła korzystać z powiadomień oraz odtwarzać strumieniowo dane z aplikacji na połączonych urządzeniach."</string>
+    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"Aplikacja <xliff:g id="APP_NAME">%1$s</xliff:g> będzie mogła odtwarzać strumieniowo treści na urządzeniach w pobliżu."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Ta usługa udostępnia Twoje zdjęcia, multimedia i powiadomienia z telefonu innym urządzeniom."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Bieżąca aplikacja domyślna"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Nie pytaj ponownie"</string>

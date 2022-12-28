@@ -32,14 +32,10 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“एप प्रयोगमा भएको बेलामा” शीर्षक कायम राख्नुहोस्"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"“यस बेला मात्र” राख्नुहोस्"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"थप जानकारी"</string>
-    <!-- no translation found for grant_dialog_button_allow_all_photos (3688746146785304900) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_allow_selected_photos (4098620850512492892) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_allow_more_selected_photos (2003524111894640605) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_dont_allow_more_selected_photos (6811842813929146242) -->
-    <skip />
+    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"सबै फोटो हेर्ने तथा प्रयोग गर्ने अनुमति दिनुहोस्"</string>
+    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"फोटोहरू चयन गर्नुहोस्"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"थप फोटोहरू चयन गर्नुहोस्"</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"थप फोटोहरू चयन नगर्नुहोस्"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"जे भए पनि फेरि नसोध्नुहोस्"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"खारेज गर्नुहोस्"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g> मध्ये <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>"</string>
@@ -194,10 +190,8 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"केवल मिडिया प्रयोग गर्ने अनुमति दिइयोस्"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"सधैँ अनुमति दिइयोस्"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"यो एप प्रयोग गरिरहेका बेला मात्र अनुमति दिइयोस्"</string>
-    <!-- no translation found for app_permission_button_allow_all_photos (914762549054270764) -->
-    <skip />
-    <!-- no translation found for app_permission_button_select_photos (1022930616634145364) -->
-    <skip />
+    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"सबै फोटो हेर्ने तथा प्रयोग गर्ने अनुमति दिनुहोस्"</string>
+    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"चयन गरिएका फोटोहरू हेर्ने तथा प्रयोग गर्ने अनुमति दिनुहोस्"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"प्रत्येक पटक सोधियोस्"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"अनुमति नदिइयोस्"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"सटीक स्थान"</string>
@@ -404,7 +398,10 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g> लाई आफ्नो डिफल्ट नेभिगेसन एप बनाउने हो?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"कुनै पनि अनुमति चाहिन्न"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> लाई तपाईंका सूचना जाँच गर्ने र फोन, SMS, सम्पर्क ठेगाना तथा पात्रोका अनुमति हेर्ने तथा प्रयोग गर्ने अनुमति दिइने छ।"</string>
+    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
+    <skip />
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> लाई तपाईंका सूचना हेर्ने र कनेक्ट भएको डिभाइसमा तपाईंका एपहरू स्ट्रिम गर्ने अनुमति दिइने छ।"</string>
+    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> लाई नजिकैका डिभाइसहरूमा सामग्री स्ट्रिम गर्ने अनुमति दिइने छ।"</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"तपाईं यो सेवाका सहायताले अन्य डिभाइससँग आफ्नो फोनमा भएका फोटो, मिडिया र सूचनाहरू सेयर गर्न सक्नुहुन्छ।"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"हालको डिफल्ट एप"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"फेरि नसोध्नुहोस्"</string>
@@ -480,8 +477,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई यो डिभाइसमा रहेका &lt;b&gt;फोटो, भिडियो, सङ्गीत, अडियो तथा अन्य फाइलहरू&lt;/b&gt; प्रयोग गर्न दिने हो?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई यस डिभाइसमा रहेका सङ्गीत तथा अन्य अडियो फाइलहरू प्रयोग गर्न दिने हो?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई यस डिभाइसमा रहेका फोटो र भिडियोहरू प्रयोग गर्न दिने हो?"</string>
-    <!-- no translation found for permgrouprequest_more_photos (4697813231897226261) -->
-    <skip />
+    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई थप फोटोहरू हेर्ने तथा प्रयोग गर्ने अनुमति दिने हो?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई अडियो रेकर्ड गर्न दिने हो?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"तपाईंले यो एप प्रयोग गरिरहेका बेलामा मात्र यसले अडियो रेकर्ड गर्न सक्ने छ"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई अडियो रेकर्ड गर्न दिने हो?"</string>
@@ -592,6 +588,5 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"मैले कपी गरेका टेक्स्ट, फोटो वा अन्य सामग्री एपहरूले प्रयोग गर्दा म्यासेज देखाइयोस्"</string>
     <string name="show_password_title" msgid="2877269286984684659">"पासवर्डहरू देखाइयोस्"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"टाइप गर्दै गर्दा वर्णहरू झलक्क देखाइयोस्"</string>
-    <!-- no translation found for permission_rationale_message_template (4497650516269082051) -->
-    <skip />
+    <string name="permission_rationale_message_template" msgid="4497650516269082051">"यो एपले यसले <xliff:g id="PERMISSION_NAME">%s</xliff:g> को डेटा तेस्रो पक्षसँग सेयर गर्न सक्छ भन्ने जानकारी दिएको छ"</string>
 </resources>

@@ -195,7 +195,7 @@
     <string name="app_permission_button_ask" msgid="3342950658789427">"Luôn hỏi"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Không cho phép"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Vị trí chính xác"</string>
-    <string name="approximate_image_description" msgid="938803699637069884">"Vị trí gần đúng"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"Vị trí ước chừng"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Sử dụng vị trí chính xác"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Khi chế độ vị trí chính xác đang tắt, các ứng dụng có thể truy cập vào thông tin vị trí gần đúng của bạn"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Quyền <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -398,7 +398,10 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Đặt <xliff:g id="APP_NAME">%1$s</xliff:g> làm ứng dụng đi theo chỉ dẫn mặc định?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Không cần quyền"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> sẽ được phép tương tác với thông báo cũng như truy cập vào Điện thoại, SMS, Danh bạ và Lịch."</string>
+    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
+    <skip />
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> sẽ được phép tương tác với thông báo cũng như truyền trực tuyến các ứng dụng đến thiết bị đã kết nối."</string>
+    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> sẽ được phép phát trực tuyến nội dung cho thiết bị ở gần."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Dịch vụ này sẽ chia sẻ ảnh, nội dung nghe nhìn và thông báo trên điện thoại của bạn với các thiết bị khác."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Ứng dụng mặc định hiện tại"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Không hỏi lại"</string>

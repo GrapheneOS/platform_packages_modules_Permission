@@ -398,7 +398,10 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Сделать приложение \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" навигатором по умолчанию?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Разрешения не требуются."</string>
     <string name="role_watch_description" msgid="267003778693177779">"Приложению \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" будет предоставлен доступ к уведомлениям, а также следующие разрешения: телефон, SMS, контакты и календарь."</string>
+    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
+    <skip />
     <string name="role_app_streaming_description" msgid="7341638576226183992">"Приложение \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" сможет взаимодействовать с уведомлениями и транслировать приложения на подключенное устройство."</string>
+    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"Приложение \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" сможет транслировать контент на устройства поблизости."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Этот сервис открывает другим устройствам доступ к фотографиям, медиафайлам и уведомлениям на вашем телефоне."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Используется по умолчанию"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Больше не спрашивать"</string>

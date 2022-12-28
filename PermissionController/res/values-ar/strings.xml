@@ -32,14 +32,10 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"عدم تغيير الإذن \"السماح فقط أثناء استخدام التطبيق\""</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"مواصلة استخدام الإذن \"هذه المرة فقط\""</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"معلومات أكثر"</string>
-    <!-- no translation found for grant_dialog_button_allow_all_photos (3688746146785304900) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_allow_selected_photos (4098620850512492892) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_allow_more_selected_photos (2003524111894640605) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_dont_allow_more_selected_photos (6811842813929146242) -->
-    <skip />
+    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"السماح بالوصول إلى كل الصور"</string>
+    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"اختيار صور"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"اختيار المزيد من الصور"</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"عدم اختيار المزيد من الصور"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"عدم السماح على أي حال"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"رفض"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> من <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -194,10 +190,8 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"السماح بالوصول إلى الوسائط فقط"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"السماح طوال الوقت"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"السماح عند استخدام التطبيق فقط"</string>
-    <!-- no translation found for app_permission_button_allow_all_photos (914762549054270764) -->
-    <skip />
-    <!-- no translation found for app_permission_button_select_photos (1022930616634145364) -->
-    <skip />
+    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"السماح بكل الصور"</string>
+    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"السماح بصور محددة"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"الطلب في كل مرة"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"عدم السماح"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"الموقع الجغرافي الدقيق"</string>
@@ -404,7 +398,10 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"هل تريد ضبط <xliff:g id="APP_NAME">%1$s</xliff:g> باعتباره التطبيق التلقائي للتنقّل؟"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"ما مِن أذونات مطلوبة."</string>
     <string name="role_watch_description" msgid="267003778693177779">"سيتم السماح لتطبيق <xliff:g id="APP_NAME">%1$s</xliff:g> بالتفاعل مع الإشعارات والوصول إلى أذونات الهاتف والرسائل القصيرة وجهات الاتصال والتقويم."</string>
+    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
+    <skip />
     <string name="role_app_streaming_description" msgid="7341638576226183992">"سيتم السماح لتطبيق <xliff:g id="APP_NAME">%1$s</xliff:g> بالتفاعل مع الإشعارات وبث التطبيقات إلى الجهاز المتصل."</string>
+    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"سيتم السماح للتطبيق \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" ببث المحتوى إلى الأجهزة المجاورة."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"هذه الخدمة تشارك الصور والوسائط والإشعارات من هاتفك مع أجهزة أخرى."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"التطبيق التلقائي الحالي"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"لا تسألني مرة أخرى."</string>
@@ -480,8 +477,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"‏هل تسمح بوصول &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; إلى &lt;b&gt;الصور والفيديوهات والموسيقى والملفات الصوتية وملفات أخرى&lt;/b&gt; على هذا الجهاز؟"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"‏هل تريد السماح بوصول &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; إلى المقاطع الموسيقية والملفات الصوتية على هذا الجهاز؟"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"‏هل تريد السماح بوصول &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; إلى الصور والفيديوهات على هذا الجهاز؟"</string>
-    <!-- no translation found for permgrouprequest_more_photos (4697813231897226261) -->
-    <skip />
+    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"‏هل تريد منح &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; الإذن بالوصول إلى الصور؟"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بتسجيل الصوت؟"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"لن يتمكن هذا التطبيق من تسجيل الصوت إلا عندما يكون قيد الاستخدام"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بتسجيل الصوت؟"</string>
@@ -592,6 +588,5 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"عرض رسالة عندما يصل التطبيق إلى نص أو صور أو محتوى آخر تم نسخه."</string>
     <string name="show_password_title" msgid="2877269286984684659">"عرض كلمات المرور"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"عرض الأحرف لفترة وجيزة أثناء الكتابة"</string>
-    <!-- no translation found for permission_rationale_message_template (4497650516269082051) -->
-    <skip />
+    <string name="permission_rationale_message_template" msgid="4497650516269082051">"وضَّح هذا التطبيق أنه يمكنه مشاركة بيانات <xliff:g id="PERMISSION_NAME">%s</xliff:g> مع جهات خارجية."</string>
 </resources>
