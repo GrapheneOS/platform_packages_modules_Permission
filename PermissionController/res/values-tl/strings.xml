@@ -398,7 +398,10 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Itakda ang <xliff:g id="APP_NAME">%1$s</xliff:g> bilang iyong default na app sa pag-navigate?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Walang kailangang pahintulot"</string>
     <string name="role_watch_description" msgid="267003778693177779">"Papayagan ang <xliff:g id="APP_NAME">%1$s</xliff:g> na makipag-ugnayan sa iyong mga notification at ma-access ang iyong mga pahintulot sa Telepono, SMS, Mga Contact, at Kalendaryo."</string>
+    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
+    <skip />
     <string name="role_app_streaming_description" msgid="7341638576226183992">"Papayagan ang <xliff:g id="APP_NAME">%1$s</xliff:g> na makipag-ugnayan sa iyong mga notification at i-stream ang iyong mga app sa nakakonektang device."</string>
+    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"Papayagan ang <xliff:g id="APP_NAME">%1$s</xliff:g> na mag-stream ng content sa mga kalapit na device."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Ibinabahagi ng serbisyong ito ang iyong mga larawan, media, at notification sa ibang device mula sa iyong telepono."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Kasalukuyang default"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Huwag nang itanong muli"</string>

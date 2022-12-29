@@ -398,7 +398,10 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Želite nastaviti aplikacijo <xliff:g id="APP_NAME">%1$s</xliff:g> kot privzeto aplikacijo za navigacijo?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Nobeno dovoljenje ni potrebno"</string>
     <string name="role_watch_description" msgid="267003778693177779">"Aplikaciji <xliff:g id="APP_NAME">%1$s</xliff:g> bosta omogočena interakcija z obvestili in dostop do dovoljenj za telefon, sporočila SMS, stike in koledar."</string>
+    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
+    <skip />
     <string name="role_app_streaming_description" msgid="7341638576226183992">"Aplikaciji <xliff:g id="APP_NAME">%1$s</xliff:g> bosta omogočena interakcija z obvestili in pretočno izvajanje aplikacij v povezano napravo."</string>
+    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"Aplikaciji <xliff:g id="APP_NAME">%1$s</xliff:g> bo omogočeno pretočno predvajanje vsebine v napravah v bližini."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Ta storitev deli vaše fotografije, predstavnost in obvestila iz vašega telefona z drugimi napravami."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Trenutna privzeta nastavitev"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Ne vprašaj me več"</string>

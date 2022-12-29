@@ -398,7 +398,10 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Да се зададе ли <xliff:g id="APP_NAME">%1$s</xliff:g> като основно приложение за навигация?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Не са необходими разрешения"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> ще получи разрешение да взаимодейства с известията ви и ще получи достъп до разрешенията за телефона, SMS съобщенията, контактите и календара."</string>
+    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
+    <skip />
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> ще получи разрешение да взаимодейства с известията ви и да предава поточно приложенията ви към свързаните устройства."</string>
+    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> ще получи разрешение за поточно предаване на съдържание към устройства в близост."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Тази услуга споделя вашите снимки, мултимедия и известия от телефона ви на други устройства."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Текущо стандартно приложение"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Без повторно питане"</string>

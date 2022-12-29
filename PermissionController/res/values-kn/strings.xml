@@ -398,7 +398,10 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g> ಅನ್ನು ಡೀಫಾಲ್ಟ್ ನ್ಯಾವಿಗೇಷನ್ ಆ್ಯಪ್ ಆಗಿ ಸೆಟ್ ಮಾಡಬೇಕೇ?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"ಯಾವುದೇ ಅನುಮತಿಗಳ ಅಗತ್ಯವಿಲ್ಲ"</string>
     <string name="role_watch_description" msgid="267003778693177779">"ನಿಮ್ಮ ಅಧಿಸೂಚನೆಗಳೊಂದಿಗೆ ಸಂವಹನ ನಡೆಸಲು ಮತ್ತು ನಿಮ್ಮ ಫೋನ್, ಎಸ್ಎಂಎಸ್, ಸಂಪರ್ಕಗಳು ಮತ್ತು Calendar ಅನುಮತಿಗಳನ್ನು ಪ್ರವೇಶಿಸಲು <xliff:g id="APP_NAME">%1$s</xliff:g> ಗೆ ಅನುಮತಿಸಲಾಗುತ್ತದೆ."</string>
+    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
+    <skip />
     <string name="role_app_streaming_description" msgid="7341638576226183992">"ನಿಮ್ಮ ಅಧಿಸೂಚನೆಗಳೊಂದಿಗೆ ಸಂವಹನ ನಡೆಸಲು ಮತ್ತು ನಿಮ್ಮ ಆ್ಯಪ್‌ಗಳನ್ನು ಸಂಪರ್ಕಿತ ಸಾಧನಕ್ಕೆ ಸ್ಟ್ರೀಮ್ ಮಾಡಲು <xliff:g id="APP_NAME">%1$s</xliff:g> ಗೆ ಅನುಮತಿಸಲಾಗುತ್ತದೆ."</string>
+    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"ಸಮೀಪದಲ್ಲಿರುವ ಸಾಧನಗಳಲ್ಲಿ ವಿಷಯವನ್ನು ಸ್ಟ್ರೀಮ್ ಮಾಡಲು <xliff:g id="APP_NAME">%1$s</xliff:g> ಗೆ ಅನುಮತಿಸಲಾಗುತ್ತದೆ."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"ಈ ಸೇವೆಯು ನಿಮ್ಮ ಫೋಟೋಗಳು, ಮಾಧ್ಯಮ ಹಾಗೂ ಅಧಿಸೂಚನೆಗಳನ್ನು ನಿಮ್ಮ ಫೋನ್‌ನಿಂದ ಇತರ ಸಾಧನಗಳ ಜೊತೆ ಹಂಚಿಕೊಳ್ಳುತ್ತದೆ."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"ಪ್ರಸ್ತುತ ಡೀಫಾಲ್ಟ್"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"ಮತ್ತೆ ಕೇಳಬೇಡ"</string>

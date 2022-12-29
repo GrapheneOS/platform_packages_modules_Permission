@@ -32,14 +32,10 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“ആപ്പ് ഉപയോഗത്തിലിരിക്കുമ്പോൾ” തുടരുക"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"“ഇപ്പോഴത്തേക്ക് മാത്രം” നിലനിർത്തുക"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"കൂടുതൽ വിവരങ്ങൾ"</string>
-    <!-- no translation found for grant_dialog_button_allow_all_photos (3688746146785304900) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_allow_selected_photos (4098620850512492892) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_allow_more_selected_photos (2003524111894640605) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_dont_allow_more_selected_photos (6811842813929146242) -->
-    <skip />
+    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"എല്ലാ ഫോട്ടോകളിലേക്കും ആക്‌സസ് അനുവദിക്കുക"</string>
+    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"ഫോട്ടോകൾ തിരഞ്ഞെടുക്കുക"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"കൂടുതൽ ഫോട്ടോകൾ തിരഞ്ഞെടുക്കുക"</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"കൂടുതൽ ഫോട്ടോകൾ തിരഞ്ഞെടുക്കരുത്"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"എന്തായാലും അനുവദിക്കരുത്"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"ഡിസ്‌മിസ് ചെയ്യുക"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>-ൽ <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> എണ്ണം"</string>
@@ -194,10 +190,8 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"മീഡിയ ഫയലുകളിലേക്ക് മാത്രം ആക്‌സസ് അനുവദിക്കുക"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"ഏതുസമയത്തും അനുവദിക്കുക"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"ആപ്പ് ഉപയോഗിക്കുമ്പോൾ മാത്രം"</string>
-    <!-- no translation found for app_permission_button_allow_all_photos (914762549054270764) -->
-    <skip />
-    <!-- no translation found for app_permission_button_select_photos (1022930616634145364) -->
-    <skip />
+    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"എല്ലാ ഫോട്ടോകളും ആക്‌സസ് ചെയ്യാൻ അനുവദിക്കുക"</string>
+    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"തിരഞ്ഞെടുത്ത ഫോട്ടോകൾ ആക്‌സസ് ചെയ്യാൻ അനുവദിക്കുക"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"എപ്പോഴും ചോദിക്കുക"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"അനുവദിക്കരുത്"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"കൃത്യമായ ലൊക്കേഷൻ"</string>
@@ -404,7 +398,10 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g> എന്നതിനെ നിങ്ങളുടെ ഡിഫോൾട്ട് നാവിഗേഷൻ ആപ്പ് ആയി സജ്ജീകരിക്കണോ?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"അനുമതികളൊന്നും ആവശ്യമില്ല"</string>
     <string name="role_watch_description" msgid="267003778693177779">"നിങ്ങളുടെ അറിയിപ്പുകളുമായി സംവദിക്കാനും നിങ്ങളുടെ ഫോൺ, SMS, കോൺടാക്റ്റുകൾ, കലണ്ടർ അനുമതികൾ എന്നിവ ആക്‌സസ് ചെയ്യാനും <xliff:g id="APP_NAME">%1$s</xliff:g> എന്നതിനെ അനുവദിക്കും."</string>
+    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
+    <skip />
     <string name="role_app_streaming_description" msgid="7341638576226183992">"നിങ്ങളുടെ അറിയിപ്പുകളുമായി സംവദിക്കാനും കണക്‌റ്റ് ചെയ്‌ത ഉപകരണത്തിലേക്ക് നിങ്ങളുടെ ആപ്പുകൾ സ്ട്രീം ചെയ്യാനും <xliff:g id="APP_NAME">%1$s</xliff:g> ആപ്പിനെ അനുവദിക്കും."</string>
+    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"സമീപമുള്ള ഉപകരണങ്ങളിലേക്ക് ഉള്ളടക്കം സ്ട്രീം ചെയ്യാൻ <xliff:g id="APP_NAME">%1$s</xliff:g> എന്നതിനെ അനുവദിക്കും."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"ഈ സേവനം, നിങ്ങളുടെ ഫോണിൽ നിന്നുള്ള ഫോട്ടോകളും മീഡിയയും അറിയിപ്പുകളും മറ്റ് ഉപകരണങ്ങളിലേക്ക് പങ്കിടുന്നു."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"നിലവിലെ ഡിഫോൾട്ട്"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"വീണ്ടും ആവശ്യപ്പെടരുത്"</string>
@@ -480,8 +477,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"&lt;b&gt;ഫോട്ടോ, വീഡിയോ, സംഗീതം, ഓഡിയോ, മറ്റ് ഫയലുകൾ&lt;/b&gt; എന്നിവയിലേക്ക് &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിന് ആക്സസ് നൽകണോ?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"ഈ ഉപകരണത്തിലെ സംഗീതവും ഓഡിയോയും ആക്സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കണോ?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"ഈ ഉപകരണത്തിലെ ഫോട്ടോകളും വീഡിയോകളും ആക്‌സസ് ചെയ്യാൻ &lt;b&gt; <xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കണോ?"</string>
-    <!-- no translation found for permgrouprequest_more_photos (4697813231897226261) -->
-    <skip />
+    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"കൂടുതൽ ഫോട്ടോകളിലേക്ക് &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിന് ആക്‌സസ് നൽകണോ?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"ഓഡിയോ റെക്കോർഡ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"നിങ്ങൾ ആപ്പ് ഉപയോഗിക്കുമ്പോൾ മാത്രമേ അതിന് ഓഡിയോ റെക്കോർഡ് ചെയ്യാൻ കഴിയൂ"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"ഓഡിയോ റെക്കോർഡ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>
@@ -592,6 +588,5 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"നിങ്ങൾ പകർത്തിയ ടെക്‌സ്‌റ്റോ ചിത്രങ്ങളോ മറ്റ് ഉള്ളടക്കമോ ആപ്പുകൾ ആക്‌സസ് ചെയ്യുമ്പോൾ ഒരു സന്ദേശം കാണിക്കുക"</string>
     <string name="show_password_title" msgid="2877269286984684659">"പാസ്‌വേ‌ഡുകൾ കാണിക്കുക"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"ടൈപ്പ് ചെയ്യുന്ന അക്ഷരങ്ങൾ പ്രദർശിപ്പിക്കുക"</string>
-    <!-- no translation found for permission_rationale_message_template (4497650516269082051) -->
-    <skip />
+    <string name="permission_rationale_message_template" msgid="4497650516269082051">"<xliff:g id="PERMISSION_NAME">%s</xliff:g> ഡാറ്റ മൂന്നാം കക്ഷികളുമായി പങ്കിട്ടേക്കാമെന്ന് ഈ ആപ്പ് പ്രസ്താവിക്കുന്നു"</string>
 </resources>

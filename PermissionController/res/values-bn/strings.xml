@@ -398,7 +398,10 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"আপনার ডিফল্ট নেভিগেশন অ্যাপ হিসেবে <xliff:g id="APP_NAME">%1$s</xliff:g> সেট করতে চান?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"কোনও অনুমতির প্রয়োজন নেই"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> আপনার বিজ্ঞপ্তির সাথে ইন্টার‌্যাক্ট করতে পারবে, তার সাথে আপনার ফোন, এমএসএস, পরিচিতি এবং ক্যালেন্ডারের অনুমতিও অ্যাক্সেস করতে পারবে।"</string>
+    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
+    <skip />
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g>-কে আপনার বিজ্ঞপ্তির সাথে কথোপকথন এবং কানেক্ট করা ডিভাইসের অ্যাপ স্ট্রিম করতে অনুমতি দেওয়া হবে।"</string>
+    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"আশেপাশের ডিভাইসে কন্টেন্ট স্ট্রিম করার জন্য <xliff:g id="APP_NAME">%1$s</xliff:g>-কে অনুমোদন দেওয়া হবে।"</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"এই পরিষেবাটি আপনার ফোনের ফটো, মিডিয়া ও বিজ্ঞপ্তি অন্যান্য ডিভাইসে শেয়ার করে।"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"বর্তমান ডিফল্ট"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"আর দেখতে চাই না"</string>

@@ -398,7 +398,10 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"要将“<xliff:g id="APP_NAME">%1$s</xliff:g>”设为默认导航应用吗？"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"无需任何权限"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g>将能与通知互动，并可访问电话、短信、通讯录和日历。"</string>
+    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
+    <skip />
     <string name="role_app_streaming_description" msgid="7341638576226183992">"“<xliff:g id="APP_NAME">%1$s</xliff:g>”将能够与通知互动，并可将应用流式传输到已连接的设备。"</string>
+    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g>将能够把内容流式传输到附近的设备。"</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"此服务会将您手机中的照片、媒体内容和通知分享给其他设备。"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"当前默认应用"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"不再询问"</string>

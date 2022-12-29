@@ -398,7 +398,10 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Setezi <xliff:g id="APP_NAME">%1$s</xliff:g> ca aplicație de navigare prestabilită?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Nu este nevoie de permisiuni"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> va putea să interacționeze cu notificările și să-ți acceseze permisiunile pentru Telefon, SMS-uri, Agendă și Calendar."</string>
+    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
+    <skip />
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> va putea să interacționeze cu notificările și să redea în stream conținutul din aplicații pe dispozitivul conectat."</string>
+    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> va putea reda conținut pe dispozitivele din apropiere."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Acest serviciu trimite fotografiile, conținutul media și notificările de pe telefon pe alte dispozitive."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Aplicația prestabilită actuală"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Nu mai întreba"</string>

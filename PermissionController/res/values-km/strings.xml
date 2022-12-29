@@ -398,7 +398,10 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"កំណត់ <xliff:g id="APP_NAME">%1$s</xliff:g> ជាកម្មវិធីរុករក​លំនាំដើមរបស់អ្នក​ឬ?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"មិនត្រូវការ​ការអនុញ្ញាត​ទេ"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> នឹងត្រូវបានអនុញ្ញាតឱ្យ​ធ្វើអន្តរកម្មជាមួយ​ការជូនដំណឹងរបស់អ្នក និងចូលប្រើទូរសព្ទ, SMS, ទំនាក់ទំនង និងការអនុញ្ញាត​ប្រតិទិនរបស់អ្នក។"</string>
+    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
+    <skip />
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> នឹងត្រូវបាន​អនុញ្ញាតឱ្យ​ធ្វើអន្តរកម្មជាមួយ​ការជូនដំណឹងរបស់អ្នក និងចាក់កម្មវិធី​របស់អ្នកទៅឧបករណ៍​ដែលបានភ្ជាប់។"</string>
+    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> នឹងត្រូវបានអនុញ្ញាតឱ្យផ្សាយខ្លឹមសារទៅកាន់ឧបករណ៍នៅជិត។"</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"សេវាកម្មនេះចែករំលែករូបថត មេឌៀ និងការជូនដំណឹងរបស់អ្នក ពីទូរសព្ទរបស់អ្នកទៅឧបករណ៍ផ្សេងទៀត។"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"លំនាំដើម​បច្ចុប្បន្ន"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"កុំសួរទៀត"</string>
