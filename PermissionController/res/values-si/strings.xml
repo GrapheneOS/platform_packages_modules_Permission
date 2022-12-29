@@ -398,7 +398,10 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g> ඔබගේ පෙරනිමි සංචාලන යෙදුම ලෙස සකසන්නද?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"අවසර අවශ්‍ය නැත"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> ඔබගේ දැනුම්දීම් සමඟ අන්තර්ක්‍රියා කිරීමට සහ ඔබගේ දුරකථනය, කෙටි පණිවුඩ, සම්බන්ධතා සහ දින දර්ශන අවසර වෙත ප්‍රවේශ වීමට ඉඩ දෙනු ඇත."</string>
+    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
+    <skip />
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> හට ඔබගේ දැනුම්දීම් සමඟ අන්තර්ක්‍රියා කිරීමට සහ ඔබගේ යෙදුම් සම්බන්ධිත උපාංගයට ප්‍රවාහ කිරීමට ඉඩ දෙනු ඇත."</string>
+    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> හට අවට උපාංග වෙත අන්තර්ගතය ප්‍රවාහ කිරීමට ඉඩ දෙනු ඇත."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"මෙම සේවාව ඔබගේ ඡායාරූප, මාධ්‍ය සහ දැනුම්දීම් ඔබගේ දුරකථනයෙන් වෙනත් උපාංග වෙත බෙදා ගනී."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"වත්මන් පෙරනිමිය"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"නැවත නොඅසන්න"</string>

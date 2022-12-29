@@ -398,7 +398,10 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g> 앱을 기본 내비게이션 앱으로 설정하시겠습니까?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"권한 필요 없음"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g>에서 알림과 상호작용하고 전화, SMS, 연락처, 캘린더에 대한 권한을 갖게 됩니다."</string>
+    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
+    <skip />
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g>에서 알림과 상호작용하고 앱의 콘텐츠를 연결된 기기로 스트리밍할 수 있게 됩니다."</string>
+    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g>에서 콘텐츠를 근처 기기에 스트리밍할 수 있게 됩니다."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"서비스는 휴대전화의 사진, 미디어, 알림을 다른 기기로 공유합니다."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"현재 기본 앱"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"다시 묻지 않음"</string>

@@ -398,7 +398,10 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Beállítja a(z) <xliff:g id="APP_NAME">%1$s</xliff:g> alkalmazást alapértelmezett navigációs alkalmazásként?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Nincs szükség engedélyre"</string>
     <string name="role_watch_description" msgid="267003778693177779">"A(z) <xliff:g id="APP_NAME">%1$s</xliff:g> műveleteket végezhet majd az értesítésekkel, és hozzáférhet a telefonra, az SMS-ekre, a névjegyekre és a naptárra vonatkozó engedélyekhez."</string>
+    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
+    <skip />
     <string name="role_app_streaming_description" msgid="7341638576226183992">"A(z) <xliff:g id="APP_NAME">%1$s</xliff:g> műveleteket végezhet majd az értesítésekkel, és streamelheti az alkalmazásait a csatlakoztatott eszközre."</string>
+    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"A(z) <xliff:g id="APP_NAME">%1$s</xliff:g> tartalmat streamelhet majd a közeli eszközökre."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Ez a szolgáltatás megosztja a telefonján található fotóit, médiatartalmait és értesítéseit egyéb eszközökkel."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Aktuális alapérték"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Ne jelenjen meg többé"</string>

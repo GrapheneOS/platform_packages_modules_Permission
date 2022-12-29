@@ -398,7 +398,10 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Queres definir <xliff:g id="APP_NAME">%1$s</xliff:g> como a túa aplicación predeterminada de navegación?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Non se necesita ningún permiso"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> poderá interactuar coas túas notificacións e acceder aos permisos do teu teléfono, das mensaxes, dos contactos e do calendario."</string>
+    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
+    <skip />
     <string name="role_app_streaming_description" msgid="7341638576226183992">"Permitirase que <xliff:g id="APP_NAME">%1$s</xliff:g> interactúe coas túas notificacións e emita as túas aplicacións ao dispositivo conectado."</string>
+    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> poderá transmitir contido a dispositivos próximos."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Este servizo comparte con outros dispositivos as fotos, o contido multimedia e as notificacións desde o teu teléfono."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"App predeterminada actual"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Non preguntar de novo"</string>

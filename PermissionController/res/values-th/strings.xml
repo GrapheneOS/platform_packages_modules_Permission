@@ -398,7 +398,10 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"ตั้งค่า <xliff:g id="APP_NAME">%1$s</xliff:g> เป็นแอปเริ่มต้นสำหรับการนำทางไหม"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"ไม่ต้องใช้สิทธิ์"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> จะได้รับอนุญาตให้โต้ตอบกับการแจ้งเตือนและได้รับสิทธิ์เข้าถึงโทรศัพท์, SMS, รายชื่อติดต่อ และปฏิทิน"</string>
+    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
+    <skip />
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> จะได้รับอนุญาตให้โต้ตอบกับการแจ้งเตือนและสตรีมแอปไปยังอุปกรณ์ที่เชื่อมต่อ"</string>
+    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> จะได้รับอนุญาตให้สตรีมเนื้อหาไปยังอุปกรณ์ที่อยู่ใกล้เคียง"</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"บริการนี้แชร์รูปภาพ สื่อ และการแจ้งเตือนจากโทรศัพท์ของคุณไปยังอุปกรณ์อื่น"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"แอปเริ่มต้นปัจจุบัน"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"ไม่ต้องถามอีก"</string>

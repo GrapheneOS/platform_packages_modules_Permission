@@ -178,7 +178,7 @@
     <string name="sort_by_app" msgid="4055799843051138087">"యాప్ వాడకం బట్టి వర్గీకరణ"</string>
     <string name="sort_by_time" msgid="5435045320002150456">"టైమ్‌ను బట్టి వర్గీకరణ"</string>
     <string name="item_separator" msgid="4030255389809224513">", "</string>
-    <string name="permission_usage_refresh" msgid="2264056346561305420">"రిఫ్రెష్ చేయి"</string>
+    <string name="permission_usage_refresh" msgid="2264056346561305420">"రిఫ్రెష్ చేయండి"</string>
     <string name="permission_history_title" msgid="8340081285133025225">"అనుమతి హిస్టరీ"</string>
     <string name="permission_history_category_today" msgid="7496389369158806620">"ఈరోజు"</string>
     <string name="permission_history_category_yesterday" msgid="7242517121222012521">"నిన్న"</string>
@@ -398,7 +398,10 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g> యాప్‌ను మీ ఆటోమేటిక్ సెట్టింగ్ నావిగేషన్ యాప్‌గా సెటప్ చేయాలా?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"అనుమతులు అవసరం లేదు"</string>
     <string name="role_watch_description" msgid="267003778693177779">"మీ నోటిఫికేషన్‌లతో ఇంటరాక్ట్ అవ్వడానికి అలాగే మీ ఫోన్, SMS, కాంటాక్ట్‌లు అలాగే Calendar అనుమతులను యాక్సెస్ చేయడానికి <xliff:g id="APP_NAME">%1$s</xliff:g> అనుమతించబడుతుంది."</string>
+    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
+    <skip />
     <string name="role_app_streaming_description" msgid="7341638576226183992">"మీ నోటిఫికేషన్‌లతో ఇంటరాక్ట్ అవ్వడానికి, కనెక్ట్ అయిన పరికరానికి మీ యాప్‌లను స్ట్రీమ్ చేయడానికి <xliff:g id="APP_NAME">%1$s</xliff:g> అనుమతించబడుతుంది."</string>
+    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"సమీపంలోని పరికరాలకు కంటెంట్‌ను స్ట్రీమ్ చేయడానికి <xliff:g id="APP_NAME">%1$s</xliff:g> అనుమతించబడుతుంది."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"ఈ సర్వీస్ మీ ఫోటోలు, మీడియా, ఇంకా నోటిఫికేషన్‌లను మీ ఫోన్ నుండి ఇతర పరికరాలకు షేర్ చేస్తుంది."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"ప్రస్తుతం ఆటోమేటిక్‌గా ఉంది"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"మళ్లీ అడగవద్దు"</string>

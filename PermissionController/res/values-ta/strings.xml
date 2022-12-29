@@ -32,14 +32,10 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“ஆப்ஸ் உபயோகத்தில் இருக்கும்போது” என்று வைக்கவும்"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"”இப்போது மட்டும்” வைத்திரு"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"மேலும் தகவல்"</string>
-    <!-- no translation found for grant_dialog_button_allow_all_photos (3688746146785304900) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_allow_selected_photos (4098620850512492892) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_allow_more_selected_photos (2003524111894640605) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_dont_allow_more_selected_photos (6811842813929146242) -->
-    <skip />
+    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"அனைத்துப் படங்களையும் அணுக அனுமதி"</string>
+    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"படங்களைத் தேர்ந்தெடு"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"மேலும் படங்களைத் தேர்ந்தெடு"</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"மேலும் படங்களைத் தேர்ந்தெடுக்க வேண்டாம்"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"பரவாயில்லை, அனுமதிக்க வேண்டாம்"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"நிராகரி"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> / <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -194,10 +190,8 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"மீடியா ஃபைல்களை மட்டும் அணுக அனுமதி"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"எப்போதும் அனுமதி"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"ஆப்ஸை உபயோகிக்கும்போது மட்டும் அனுமதி"</string>
-    <!-- no translation found for app_permission_button_allow_all_photos (914762549054270764) -->
-    <skip />
-    <!-- no translation found for app_permission_button_select_photos (1022930616634145364) -->
-    <skip />
+    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"அனைத்துப் படங்களையும் அனுமதி"</string>
+    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"தேர்ந்தெடுக்கப்பட்ட படங்களை அனுமதி"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"ஒவ்வொரு முறையும் கேள்"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"அனுமதிக்க வேண்டாம்"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"துல்லியமான இருப்பிடம்"</string>
@@ -404,7 +398,10 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g> ஆப்ஸை உங்கள் வழிகாட்டும் இயல்புநிலை ஆப்ஸாக அமைக்கவா?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"அனுமதிகள் தேவையில்லை"</string>
     <string name="role_watch_description" msgid="267003778693177779">"உங்கள் அறிவிப்புகளைப் பயன்படுத்துவதற்கான அனுமதியையும் மொபைல், மெசேஜ், தொடர்புகள், கேலெண்டர் ஆகியவற்றின் அனுமதிகளுக்கான அணுகலையும் <xliff:g id="APP_NAME">%1$s</xliff:g> ஆப்ஸ் பெறும்."</string>
+    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
+    <skip />
     <string name="role_app_streaming_description" msgid="7341638576226183992">"உங்கள் அறிவிப்புகளைப் பயன்படுத்துவதற்கான அனுமதியையும் இணைக்கப்பட்டுள்ள சாதனத்தில் உங்கள் ஆப்ஸை ஸ்ட்ரீம் செய்யவும் <xliff:g id="APP_NAME">%1$s</xliff:g> ஆப்ஸ் அனுமதிக்கப்படும்."</string>
+    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"அருகிலுள்ள சாதனங்களில் உள்ளடக்கத்தை ஸ்ட்ரீம் செய்ய <xliff:g id="APP_NAME">%1$s</xliff:g> ஆப்ஸ் அனுமதிக்கப்படும்."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"இந்தச் சேவை உங்கள் படங்கள், மீடியா, அறிவிப்புகள் ஆகியவற்றை மொபைலிலிருந்து பிற சாதனங்களுக்குப் பகிரும்."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"தற்போதைய இயல்பான ஆப்ஸ்"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"மீண்டும் கேட்காதே"</string>
@@ -480,8 +477,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"சாதனத்திலுள்ள &lt;b&gt;படம், வீடியோ, இசை, ஆடியோ &amp; பிற ஃபைல்களின்&lt;/b&gt; அணுகலை &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸுக்கு வழங்கவா?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"இந்தச் சாதனத்திலுள்ள இசை மற்றும் ஆடியோவுக்கான அணுகலை &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸுக்கு வழங்கவா?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"இந்தச் சாதனத்திலுள்ள படங்கள் மற்றும் வீடியோக்களுக்கான அணுகலை &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸுக்கு வழங்கவா?"</string>
-    <!-- no translation found for permgrouprequest_more_photos (4697813231897226261) -->
-    <skip />
+    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"மேலும் படங்களை அணுக &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"ஆடியோ ரெக்கார்டு செய்ய &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"இந்த ஆப்ஸை நீங்கள் உபயோகிக்கும்போது மட்டுமே ஆடியோ ரெக்கார்டு செய்யும்"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"ஆடியோ ரெக்கார்டு செய்ய &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
@@ -592,6 +588,5 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"நீங்கள் நகலெடுத்த வார்த்தைகளையோ படங்களையோ பிறவற்றையோ ஆப்ஸ் அணுகும்போது ஓர் அறிவிப்பைக் காட்டும்"</string>
     <string name="show_password_title" msgid="2877269286984684659">"கடவுச்சொற்களைக் காட்டுதல்"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"டைப் செய்யும்போதே எழுத்துகளைச் சற்று நேரம் காட்டும்"</string>
-    <!-- no translation found for permission_rationale_message_template (4497650516269082051) -->
-    <skip />
+    <string name="permission_rationale_message_template" msgid="4497650516269082051">"இந்த ஆப்ஸில் குறிப்பிட்டுள்ளபடி மூன்றாம் தரப்பினருடன் <xliff:g id="PERMISSION_NAME">%s</xliff:g> தரவை இது பகிரலாம்"</string>
 </resources>
