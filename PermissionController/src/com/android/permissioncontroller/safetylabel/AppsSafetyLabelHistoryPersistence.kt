@@ -22,10 +22,11 @@ import android.util.AtomicFile
 import android.util.Log
 import android.util.Xml
 import androidx.annotation.RequiresApi
+import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.AppInfo
+import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.AppSafetyLabelDiff
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.AppSafetyLabelHistory
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.DataCategory
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.DataLabel
-import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.PackageInfo
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.SafetyLabel
 import java.io.File
 import java.io.FileNotFoundException
@@ -42,7 +43,7 @@ import org.xmlpull.v1.XmlSerializer
 object AppsSafetyLabelHistoryPersistence {
     private const val TAG_DATA_SHARED_MAP = "shared"
     private const val TAG_DATA_SHARED_ENTRY = "entry"
-    private const val TAG_PACKAGE_INFO = "pkg-info"
+    private const val TAG_APP_INFO = "app-info"
     private const val TAG_DATA_LABEL = "data-lbl"
     private const val TAG_SAFETY_LABEL = "sfty-lbl"
     private const val TAG_APP_SAFETY_LABEL_HISTORY = "app-hstry"
@@ -55,6 +56,7 @@ object AppsSafetyLabelHistoryPersistence {
     private const val APPS_SAFETY_LABEL_HISTORY_PERSISTENCE_FILE_NAME =
         "apps_safety_label_history_persistence.xml"
     private val LOG_TAG = "AppsSafetyLabelHistoryPersistence".take(23)
+    private val readWriteLock = Any()
 
     /**
      * Reads the provided file storing safety label history and returns the parsed
@@ -78,6 +80,34 @@ object AppsSafetyLabelHistoryPersistence {
         }
 
         return null
+    }
+
+    /**
+     * Writes a new safety label to the provided file, if the provided safety label has changed from
+     * the last recorded.
+     */
+    fun recordSafetyLabel(safetyLabel: SafetyLabel, file: File) {
+        synchronized(readWriteLock) {
+            val currentAppsSafetyLabelHistory = read(file) ?: AppsSafetyLabelHistory(listOf())
+            val appInfo = safetyLabel.appInfo
+            val currentHistories = currentAppsSafetyLabelHistory.appSafetyLabelHistories
+
+            val updatedAppsSafetyLabelHistory: AppsSafetyLabelHistory =
+                if (currentHistories.all { it.appInfo != appInfo }) {
+                    AppsSafetyLabelHistory(
+                        currentHistories.toMutableList().apply {
+                            add(AppSafetyLabelHistory(appInfo, listOf(safetyLabel)))
+                        })
+                } else {
+                    AppsSafetyLabelHistory(
+                        currentHistories.map {
+                            if (it.appInfo != appInfo) it
+                            else it.addSafetyLabelIfChanged(safetyLabel)
+                        })
+                }
+
+            write(file, updatedAppsSafetyLabelHistory)
+        }
     }
 
     /** Serializes and writes the provided [AppsSafetyLabelHistory] to the provided file. */
@@ -104,6 +134,22 @@ object AppsSafetyLabelHistoryPersistence {
             } catch (e: Exception) {
                 Log.e(LOG_TAG, "Failed to close $file.", e)
             }
+        }
+    }
+
+    /** Reads the provided history file and returns all safety label changes since [startTime]. */
+    fun getAppSafetyLabelDiffs(startTime: Instant, file: File): List<AppSafetyLabelDiff> {
+        val currentAppsSafetyLabelHistory = read(file) ?: AppsSafetyLabelHistory(listOf())
+
+        return currentAppsSafetyLabelHistory.appSafetyLabelHistories.mapNotNull {
+            val before = it.getSafetyLabelAt(startTime)
+            val after = it.getLatestSafetyLabel()
+            if (before == null ||
+                after == null ||
+                before == after ||
+                before.receivedAt.isAfter(after.receivedAt))
+                null
+            else AppSafetyLabelDiff(before, after)
         }
     }
 
@@ -154,20 +200,20 @@ object AppsSafetyLabelHistoryPersistence {
         checkTagStart(TAG_APP_SAFETY_LABEL_HISTORY)
         nextTag()
 
-        val packageInfo = parsePackageInfo()
+        val appInfo = parseAppInfo()
 
         val safetyLabels = mutableListOf<SafetyLabel>()
         while (eventType == XmlPullParser.START_TAG && name == TAG_SAFETY_LABEL) {
-            safetyLabels.add(parseSafetyLabel(packageInfo))
+            safetyLabels.add(parseSafetyLabel(appInfo))
         }
 
         checkTagEnd(TAG_APP_SAFETY_LABEL_HISTORY)
         nextTag()
 
-        return AppSafetyLabelHistory(packageInfo, safetyLabels)
+        return AppSafetyLabelHistory(appInfo, safetyLabels)
     }
 
-    private fun XmlPullParser.parseSafetyLabel(packageInfo: PackageInfo): SafetyLabel {
+    private fun XmlPullParser.parseSafetyLabel(appInfo: AppInfo): SafetyLabel {
         checkTagStart(TAG_SAFETY_LABEL)
 
         var receivedAt: Instant? = null
@@ -189,7 +235,7 @@ object AppsSafetyLabelHistoryPersistence {
         checkTagEnd(TAG_SAFETY_LABEL)
         nextTag()
 
-        return SafetyLabel(packageInfo, receivedAt, dataLabel)
+        return SafetyLabel(appInfo, receivedAt, dataLabel)
     }
 
     private fun XmlPullParser.parseDataLabel(): DataLabel {
@@ -247,25 +293,25 @@ object AppsSafetyLabelHistoryPersistence {
         return category to DataCategory(hasAds)
     }
 
-    private fun XmlPullParser.parsePackageInfo(): PackageInfo {
-        checkTagStart(TAG_PACKAGE_INFO)
+    private fun XmlPullParser.parseAppInfo(): AppInfo {
+        checkTagStart(TAG_APP_INFO)
         var packageName: String? = null
         for (i in 0 until attributeCount) {
             when (getAttributeName(i)) {
                 ATTRIBUTE_PACKAGE_NAME -> packageName = getAttributeValue(i)
                 else ->
                     throw IllegalArgumentException(
-                        "Unexpected attribute ${getAttributeName(i)} in tag $TAG_PACKAGE_INFO")
+                        "Unexpected attribute ${getAttributeName(i)} in tag $TAG_APP_INFO")
             }
         }
         if (packageName == null) {
-            throw IllegalArgumentException("Missing $ATTRIBUTE_PACKAGE_NAME in $TAG_PACKAGE_INFO")
+            throw IllegalArgumentException("Missing $ATTRIBUTE_PACKAGE_NAME in $TAG_APP_INFO")
         }
 
         nextTag()
-        checkTagEnd(TAG_PACKAGE_INFO)
+        checkTagEnd(TAG_APP_INFO)
         nextTag()
-        return PackageInfo(packageName)
+        return AppInfo(packageName)
     }
 
     private fun XmlPullParser.checkTagStart(tag: String) {
@@ -288,7 +334,9 @@ object AppsSafetyLabelHistoryPersistence {
         appsSafetyLabelHistory: AppsSafetyLabelHistory
     ) {
         startTag(null, TAG_APPS_SAFETY_LABEL_HISTORY)
-        appsSafetyLabelHistory.appSafetyLabelHistory.forEach { serializeAppSafetyLabelHistory(it) }
+        appsSafetyLabelHistory.appSafetyLabelHistories.forEach {
+            serializeAppSafetyLabelHistory(it)
+        }
         endTag(null, TAG_APPS_SAFETY_LABEL_HISTORY)
     }
 
@@ -296,15 +344,15 @@ object AppsSafetyLabelHistoryPersistence {
         appSafetyLabelHistory: AppSafetyLabelHistory
     ) {
         startTag(null, TAG_APP_SAFETY_LABEL_HISTORY)
-        serializePackageInfo(appSafetyLabelHistory.packageInfo)
+        serializeAppInfo(appSafetyLabelHistory.appInfo)
         appSafetyLabelHistory.safetyLabelHistory.forEach { serializeSafetyLabel(it) }
         endTag(null, TAG_APP_SAFETY_LABEL_HISTORY)
     }
 
-    private fun XmlSerializer.serializePackageInfo(packageInfo: PackageInfo) {
-        startTag(null, TAG_PACKAGE_INFO)
-        attribute(null, ATTRIBUTE_PACKAGE_NAME, packageInfo.packageName)
-        endTag(null, TAG_PACKAGE_INFO)
+    private fun XmlSerializer.serializeAppInfo(appInfo: AppInfo) {
+        startTag(null, TAG_APP_INFO)
+        attribute(null, ATTRIBUTE_PACKAGE_NAME, appInfo.packageName)
+        endTag(null, TAG_APP_INFO)
     }
 
     private fun XmlSerializer.serializeSafetyLabel(safetyLabel: SafetyLabel) {
@@ -337,4 +385,26 @@ object AppsSafetyLabelHistoryPersistence {
             dataSharedEntry.value.containsAdvertisingPurpose.toString())
         endTag(null, TAG_DATA_SHARED_ENTRY)
     }
+
+    private fun AppSafetyLabelHistory.addSafetyLabelIfChanged(
+        safetyLabel: SafetyLabel
+    ): AppSafetyLabelHistory {
+        val latestSafetyLabel = safetyLabelHistory.lastOrNull()
+        return if (latestSafetyLabel?.dataLabel == safetyLabel.dataLabel) this
+        else this.withSafetyLabel(safetyLabel)
+    }
+
+    private fun AppSafetyLabelHistory.getLatestSafetyLabel() = safetyLabelHistory.lastOrNull()
+
+    /**
+     * Return the safety label known to be the current safety label for the app at the provided
+     * time, if available in the history.
+     */
+    private fun AppSafetyLabelHistory.getSafetyLabelAt(startTime: Instant) =
+        safetyLabelHistory.lastOrNull {
+            // the last received safety label before or at startTime
+            it.receivedAt.isBefore(startTime) || it.receivedAt == startTime
+        }
+            ?: // the first safety label received after startTime, as a fallback
+        safetyLabelHistory.firstOrNull { it.receivedAt.isAfter(startTime) }
 }
