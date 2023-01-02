@@ -23,14 +23,16 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.filters.SdkSuppress
 import com.android.dx.mockito.inline.extended.ExtendedMockito
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory
+import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.AppInfo
+import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.AppSafetyLabelDiff
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.AppSafetyLabelHistory
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.DataCategory
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.DataLabel
-import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.PackageInfo
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.SafetyLabel
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistoryPersistence
 import com.google.common.truth.Truth.assertThat
 import java.io.File
+import java.time.ZonedDateTime
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -92,9 +94,7 @@ class AppsSafetyLabelHistoryPersistenceTest {
         val appsSafetyLabelHistory =
             AppsSafetyLabelHistory(
                 listOf(
-                    AppSafetyLabelHistory(PackageInfo("package_name_1"), listOf()),
-                ),
-            )
+                    AppSafetyLabelHistory(AppInfo(PACKAGE_NAME_2), listOf(SAFETY_LABEL_PKG_2_V2))))
         AppsSafetyLabelHistoryPersistence.write(dataFile, appsSafetyLabelHistory)
 
         assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile))
@@ -106,31 +106,156 @@ class AppsSafetyLabelHistoryPersistenceTest {
         val appsSafetyLabelHistory =
             AppsSafetyLabelHistory(
                 listOf(
+                    AppSafetyLabelHistory(AppInfo(PACKAGE_NAME_1), listOf(SAFETY_LABEL_PKG_1_V1)),
                     AppSafetyLabelHistory(
-                        PackageInfo(PACKAGE_NAME_1),
-                        listOf(
-                            SafetyLabel(
-                                PackageInfo(PACKAGE_NAME_1),
-                                java.time.Instant.ofEpochMilli(500),
-                                DataLabel(mapOf(LOCATION_CATEGORY to DataCategory(true)))))),
-                    AppSafetyLabelHistory(
-                        PackageInfo(PACKAGE_NAME_2),
-                        listOf(
-                            SafetyLabel(
-                                PackageInfo(PACKAGE_NAME_2),
-                                java.time.Instant.ofEpochMilli(6000),
-                                DataLabel(mapOf(LOCATION_CATEGORY to DataCategory(true)))),
-                            SafetyLabel(
-                                PackageInfo(PACKAGE_NAME_2),
-                                java.time.Instant.ofEpochMilli(800000),
-                                DataLabel(
-                                    mapOf(
-                                        LOCATION_CATEGORY to DataCategory(true),
-                                        FINANCIAL_CATEGORY to DataCategory(false))))))))
+                        AppInfo(PACKAGE_NAME_2),
+                        listOf(SAFETY_LABEL_PKG_2_V1, SAFETY_LABEL_PKG_2_V2))))
         AppsSafetyLabelHistoryPersistence.write(dataFile, appsSafetyLabelHistory)
 
         assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile))
             .isEqualTo(appsSafetyLabelHistory)
+    }
+
+    @Test
+    fun recordSafetyLabel_noAppsHistory_addsAppsHistory() {
+        AppsSafetyLabelHistoryPersistence.clear(dataFile)
+
+        AppsSafetyLabelHistoryPersistence.recordSafetyLabel(SAFETY_LABEL_PKG_1_V1, dataFile)
+
+        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile))
+            .isEqualTo(
+                AppsSafetyLabelHistory(
+                    listOf(
+                        AppSafetyLabelHistory(
+                            AppInfo(PACKAGE_NAME_1), listOf(SAFETY_LABEL_PKG_1_V1)))))
+    }
+
+    @Test
+    fun recordSafetyLabel_noAppHistory_addsAppHistory() {
+        val appsSafetyLabelHistory =
+            AppsSafetyLabelHistory(
+                listOf(
+                    AppSafetyLabelHistory(AppInfo(PACKAGE_NAME_1), listOf(SAFETY_LABEL_PKG_1_V1))))
+        AppsSafetyLabelHistoryPersistence.write(dataFile, appsSafetyLabelHistory)
+
+        AppsSafetyLabelHistoryPersistence.recordSafetyLabel(SAFETY_LABEL_PKG_2_V1, dataFile)
+
+        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile))
+            .isEqualTo(
+                AppsSafetyLabelHistory(
+                    listOf(
+                        AppSafetyLabelHistory(
+                            AppInfo(PACKAGE_NAME_1), listOf(SAFETY_LABEL_PKG_1_V1)),
+                        AppSafetyLabelHistory(
+                            AppInfo(PACKAGE_NAME_2), listOf(SAFETY_LABEL_PKG_2_V1)))))
+    }
+
+    @Test
+    fun recordSafetyLabel_existingAppHistory_addsToHistory() {
+        val appsSafetyLabelHistory =
+            AppsSafetyLabelHistory(
+                listOf(
+                    AppSafetyLabelHistory(AppInfo(PACKAGE_NAME_1), listOf(SAFETY_LABEL_PKG_1_V1)),
+                    AppSafetyLabelHistory(
+                        AppInfo(PACKAGE_NAME_2),
+                        listOf(SAFETY_LABEL_PKG_2_V1, SAFETY_LABEL_PKG_2_V2))))
+        AppsSafetyLabelHistoryPersistence.write(dataFile, appsSafetyLabelHistory)
+
+        AppsSafetyLabelHistoryPersistence.recordSafetyLabel(SAFETY_LABEL_PKG_2_V3, dataFile)
+
+        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile))
+            .isEqualTo(
+                AppsSafetyLabelHistory(
+                    listOf(
+                        AppSafetyLabelHistory(
+                            AppInfo(PACKAGE_NAME_1), listOf(SAFETY_LABEL_PKG_1_V1)),
+                        AppSafetyLabelHistory(
+                            AppInfo(PACKAGE_NAME_2),
+                            listOf(
+                                SAFETY_LABEL_PKG_2_V1,
+                                SAFETY_LABEL_PKG_2_V2,
+                                SAFETY_LABEL_PKG_2_V3)))))
+    }
+
+    @Test
+    fun recordSafetyLabel_noChangeToLastLabel_doesNothing() {
+        val appsSafetyLabelHistory =
+            AppsSafetyLabelHistory(
+                listOf(
+                    AppSafetyLabelHistory(AppInfo(PACKAGE_NAME_1), listOf(SAFETY_LABEL_PKG_1_V2)),
+                    AppSafetyLabelHistory(
+                        AppInfo(PACKAGE_NAME_2),
+                        listOf(SAFETY_LABEL_PKG_2_V1, SAFETY_LABEL_PKG_2_V2))))
+        AppsSafetyLabelHistoryPersistence.write(dataFile, appsSafetyLabelHistory)
+
+        AppsSafetyLabelHistoryPersistence.recordSafetyLabel(SAFETY_LABEL_PKG_1_V3, dataFile)
+
+        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile))
+            .isEqualTo(appsSafetyLabelHistory)
+    }
+
+    @Test
+    fun getAppSafetyLabelDiffs_whenNoHistory_returnsEmpty() {
+        AppsSafetyLabelHistoryPersistence.clear(dataFile)
+
+        val safetyLabelDiffs: List<AppSafetyLabelDiff> =
+            AppsSafetyLabelHistoryPersistence.getAppSafetyLabelDiffs(DATE_2022_12_10, dataFile)
+
+        assertThat(safetyLabelDiffs).isEqualTo(listOf<AppSafetyLabelDiff>())
+    }
+
+    @Test
+    fun getAppSafetyLabelDiffs_whenNoSafetyLabelChangesSinceStartTime_returnsEmpty() {
+        val appsSafetyLabelHistory =
+            AppsSafetyLabelHistory(
+                listOf(
+                    AppSafetyLabelHistory(AppInfo(PACKAGE_NAME_1), listOf(SAFETY_LABEL_PKG_1_V1))))
+        AppsSafetyLabelHistoryPersistence.write(dataFile, appsSafetyLabelHistory)
+
+        val safetyLabelDiffs: List<AppSafetyLabelDiff> =
+            AppsSafetyLabelHistoryPersistence.getAppSafetyLabelDiffs(DATE_2022_10_14, dataFile)
+
+        assertThat(safetyLabelDiffs).isEqualTo(listOf<AppSafetyLabelDiff>())
+    }
+
+    @Test
+    fun getAppSafetyLabelDiffs_whenNoSafetyLabelsSinceStartTime_returnsEmpty() {
+        val appsSafetyLabelHistory =
+            AppsSafetyLabelHistory(
+                listOf(
+                    AppSafetyLabelHistory(
+                        AppInfo(PACKAGE_NAME_1),
+                        listOf(SAFETY_LABEL_PKG_1_V1, SAFETY_LABEL_PKG_1_V2))))
+        AppsSafetyLabelHistoryPersistence.write(dataFile, appsSafetyLabelHistory)
+
+        val safetyLabelDiffs: List<AppSafetyLabelDiff> =
+            AppsSafetyLabelHistoryPersistence.getAppSafetyLabelDiffs(DATE_2022_12_10, dataFile)
+
+        assertThat(safetyLabelDiffs).isEqualTo(listOf<AppSafetyLabelDiff>())
+    }
+
+    @Test
+    fun getAppSafetyLabelDiffs_returnsAvailableDiffs() {
+        val appsSafetyLabelHistory =
+            AppsSafetyLabelHistory(
+                listOf(
+                    AppSafetyLabelHistory(
+                        AppInfo(PACKAGE_NAME_1),
+                        listOf(SAFETY_LABEL_PKG_1_V1, SAFETY_LABEL_PKG_1_V2)),
+                    AppSafetyLabelHistory(
+                        AppInfo(PACKAGE_NAME_2),
+                        listOf(
+                            SAFETY_LABEL_PKG_2_V1, SAFETY_LABEL_PKG_2_V2, SAFETY_LABEL_PKG_2_V3))))
+        AppsSafetyLabelHistoryPersistence.write(dataFile, appsSafetyLabelHistory)
+
+        val safetyLabelDiffs =
+            AppsSafetyLabelHistoryPersistence.getAppSafetyLabelDiffs(DATE_2022_10_12, dataFile)
+
+        assertThat(safetyLabelDiffs)
+            .isEqualTo(
+                listOf(
+                    AppSafetyLabelDiff(SAFETY_LABEL_PKG_1_V1, SAFETY_LABEL_PKG_1_V2),
+                    AppSafetyLabelDiff(SAFETY_LABEL_PKG_2_V1, SAFETY_LABEL_PKG_2_V3)))
     }
 
     companion object {
@@ -139,5 +264,47 @@ class AppsSafetyLabelHistoryPersistenceTest {
         private const val PACKAGE_NAME_2 = "package_name_2"
         private const val LOCATION_CATEGORY = "location"
         private const val FINANCIAL_CATEGORY = "financial"
+        private val DATE_2022_09_01 = ZonedDateTime.parse("2022-09-01T00:00:00.000Z").toInstant()
+        private val DATE_2022_10_10 = ZonedDateTime.parse("2022-10-10T00:00:00.000Z").toInstant()
+        private val DATE_2022_10_12 = ZonedDateTime.parse("2022-10-12T00:00:00.000Z").toInstant()
+        private val DATE_2022_10_14 = ZonedDateTime.parse("2022-10-14T00:00:00.000Z").toInstant()
+        private val DATE_2022_12_10 = ZonedDateTime.parse("2022-12-10T00:00:00.000Z").toInstant()
+        private val DATE_2022_12_30 = ZonedDateTime.parse("2022-12-30T00:00:00.000Z").toInstant()
+
+        private val SAFETY_LABEL_PKG_1_V1 =
+            SafetyLabel(
+                AppInfo(PACKAGE_NAME_1),
+                DATE_2022_09_01,
+                DataLabel(mapOf(LOCATION_CATEGORY to DataCategory(true))))
+
+        private val SAFETY_LABEL_PKG_1_V2 =
+            SafetyLabel(
+                AppInfo(PACKAGE_NAME_1),
+                DATE_2022_10_14,
+                DataLabel(mapOf(LOCATION_CATEGORY to DataCategory(false))))
+
+        private val SAFETY_LABEL_PKG_1_V3 =
+            SafetyLabel(
+                AppInfo(PACKAGE_NAME_1),
+                DATE_2022_12_10,
+                DataLabel(mapOf(LOCATION_CATEGORY to DataCategory(false))))
+
+        private val SAFETY_LABEL_PKG_2_V1 =
+            SafetyLabel(
+                AppInfo(PACKAGE_NAME_2),
+                DATE_2022_10_10,
+                DataLabel(
+                    mapOf(
+                        LOCATION_CATEGORY to DataCategory(true),
+                        FINANCIAL_CATEGORY to DataCategory(false))))
+
+        private val SAFETY_LABEL_PKG_2_V2 =
+            SafetyLabel(AppInfo(PACKAGE_NAME_2), DATE_2022_12_10, DataLabel(mapOf()))
+
+        private val SAFETY_LABEL_PKG_2_V3 =
+            SafetyLabel(
+                AppInfo(PACKAGE_NAME_2),
+                DATE_2022_12_30,
+                DataLabel(mapOf(FINANCIAL_CATEGORY to DataCategory(true))))
     }
 }
