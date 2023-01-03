@@ -1369,8 +1369,16 @@ class GrantPermissionsViewModel(
             putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, groupName)
             putExtra(Constants.EXTRA_SESSION_ID, sessionId)
         }
-        // TODO(b/260789748): setup similar result callback as the sendToSettingsFromLink method
-        activity.startActivity(intent)
+        activityResultCallback = Consumer { data ->
+            val returnGroupName = data?.getStringExtra(EXTRA_RESULT_PERMISSION_INTERACTED)
+            if (returnGroupName != null) {
+                permGroupsToSkip.add(returnGroupName)
+                val result = data.getIntExtra(EXTRA_RESULT_PERMISSION_RESULT, CANCELED)
+                logSettingsInteraction(returnGroupName, result)
+                requestInfosLiveData.update()
+            }
+        }
+        activity.startActivityForResult(intent, APP_PERMISSION_REQUEST_CODE)
     }
 
     private fun startAppPermissionFragment(activity: Activity, groupName: String) {

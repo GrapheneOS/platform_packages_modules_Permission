@@ -26,6 +26,7 @@ import static com.android.permission.safetylabel.DataPurposeConstants.PURPOSE_AP
 import static com.android.permission.safetylabel.DataPurposeConstants.PURPOSE_DEVELOPER_COMMUNICATIONS;
 import static com.android.permission.safetylabel.DataPurposeConstants.PURPOSE_FRAUD_PREVENTION_SECURITY;
 import static com.android.permission.safetylabel.DataPurposeConstants.PURPOSE_PERSONALIZATION;
+import static com.android.permissioncontroller.permission.ui.model.v34.PermissionRationaleViewModel.APP_PERMISSION_REQUEST_CODE;
 import static com.android.permissioncontroller.permission.ui.v34.PermissionRationaleViewHandler.Result.CANCELLED;
 
 import android.content.Intent;
@@ -53,6 +54,7 @@ import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.ui.SettingsActivity;
 import com.android.permissioncontroller.permission.ui.handheld.v34.PermissionRationaleViewHandlerImpl;
 import com.android.permissioncontroller.permission.ui.model.v34.PermissionRationaleViewModel;
+import com.android.permissioncontroller.permission.ui.model.v34.PermissionRationaleViewModel.ActivityResultCallback;
 import com.android.permissioncontroller.permission.ui.model.v34.PermissionRationaleViewModel.PermissionRationaleInfo;
 import com.android.permissioncontroller.permission.ui.model.v34.PermissionRationaleViewModelFactory;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
@@ -60,7 +62,6 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -97,6 +98,11 @@ public class PermissionRationaleActivity extends SettingsActivity implements
      * the permission rationale purposes string resource
      */
     public static final String PURPOSE_LIST_ANNOTATION_ID = "purpose_list";
+    /**
+     * [Annotation] id value for span annotations replacement of permission name annotations within
+     * the permission rationale purposes string resource
+     */
+    public static final String PERMISSION_NAME_ANNOTATION_ID = "permission_name";
 
     /** Unique Id of a request. Inherited from GrantPermissionDialog if provide via intent extra */
     private long mSessionId;
@@ -219,6 +225,26 @@ public class PermissionRationaleActivity extends SettingsActivity implements
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        ActivityResultCallback callback = mViewModel.getActivityResultCallback();
+        if (callback == null || (requestCode != APP_PERMISSION_REQUEST_CODE)) {
+            return;
+        }
+        boolean shouldFinishActivity = callback.shouldFinishActivityForResult(data);
+        mViewModel.setActivityResultCallback(null);
+
+        if (shouldFinishActivity) {
+            setResultAndFinish(data);
+        }
+    }
+
+    private void setResultAndFinish(Intent result) {
+        setResult(RESULT_OK, result);
+        finishAfterTransition();
+    }
+
+    @Override
     public void onBackPressed() {
         if (mViewHandler == null) {
             return;
@@ -258,6 +284,10 @@ public class PermissionRationaleActivity extends SettingsActivity implements
     }
 
     private void onPermissionRationaleInfoLoad(PermissionRationaleInfo permissionRationaleInfo) {
+        if (!mViewModel.getPermissionRationaleInfoLiveData().isInitialized()) {
+            return;
+        }
+
         if (permissionRationaleInfo == null) {
             finishAfterTransition();
             return;
@@ -274,7 +304,8 @@ public class PermissionRationaleActivity extends SettingsActivity implements
             purposesList.add(getStringForPurpose(purpose));
         }
 
-        // TODO(b/260144215): update purposes join based on l18n feedback
+        // TODO(b/260144215): update purposes join based on l18n feedback, also update ordering
+        //  (enum ordering doesn't match expected ux ordering)
         String purposesString = ListFormatter.getInstance().format(purposesList);
 
         String installSourcePackageName = mPermissionRationaleInfo.getInstallSourcePackageName();
@@ -287,24 +318,28 @@ public class PermissionRationaleActivity extends SettingsActivity implements
                     purposesString);
         } else {
             purposeMessage =
-                    createPurposeMessageWithLink(
+                    createPurposeMessageWithSpans(
                             getText(R.string.permission_rationale_purpose_message),
                             installSourceLabel,
                             purposesString,
                             getLinkToAppStore(installSourcePackageName));
         }
 
-        // TODO(b/260144330): link to permission settings
         String groupName = mPermissionRationaleInfo.getGroupName();
         String permissionGroupLabel =
                 KotlinUtils.INSTANCE.getPermGroupLabel(this, groupName).toString();
         CharSequence settingsMessage =
-                getString(R.string.permission_rationale_permission_settings_message,
-                        UCharacter.toLowerCase(permissionGroupLabel));
+                createSettingsMessageWithSpans(
+                        getText(R.string.permission_rationale_permission_settings_message),
+                        UCharacter.toLowerCase(permissionGroupLabel),
+                        getLinkToSettings()
+                );
 
-        // TODO(b/259963582): link to safety label help center article
         CharSequence learnMoreMessage =
-                getString(R.string.permission_rationale_permission_learn_more_title);
+                setLink(
+                        getText(R.string.permission_rationale_permission_learn_more_title),
+                        getLearnMoreLink()
+                );
 
         mViewHandler.updateUi(
                 groupName,
@@ -342,40 +377,69 @@ public class PermissionRationaleActivity extends SettingsActivity implements
         }
     }
 
-    private CharSequence createPurposeMessageWithLink(
-            CharSequence purposeText,
+    private CharSequence createPurposeMessageWithSpans(
+            CharSequence baseText,
             CharSequence installSourceLabel,
             CharSequence purposes,
             ClickableSpan link) {
-        SpannableStringBuilder text = SpannableStringBuilder.valueOf(purposeText);
+        CharSequence updatedText =
+                replaceSpan(baseText, INSTALL_SOURCE_ANNOTATION_ID, installSourceLabel);
+        updatedText = replaceSpan(updatedText, PURPOSE_LIST_ANNOTATION_ID, purposes);
+        updatedText = setLink(updatedText, link);
+        return updatedText;
+    }
+
+    private CharSequence createSettingsMessageWithSpans(
+            CharSequence baseText,
+            CharSequence permissionName,
+            ClickableSpan link) {
+        CharSequence updatedText =
+                replaceSpan(baseText, PERMISSION_NAME_ANNOTATION_ID, permissionName);
+        updatedText = setLink(updatedText, link);
+        return updatedText;
+    }
+
+    private CharSequence replaceSpan(
+            CharSequence baseText,
+            String annotationId,
+            CharSequence replacementText) {
+        SpannableStringBuilder text = SpannableStringBuilder.valueOf(baseText);
         Annotation[] annotations = text.getSpans(0, text.length(), Annotation.class);
-        // Sort the annotations in reverse order.
-        Arrays.sort(annotations, (a, b) -> text.getSpanStart(b) - text.getSpanStart(a));
-        SpannableStringBuilder messageWithSpan = new SpannableStringBuilder(text);
+
         for (android.text.Annotation annotation : annotations) {
-            if (!annotation.getKey().equals(ANNOTATION_ID_KEY)) {
+            if (!annotation.getKey().equals(ANNOTATION_ID_KEY)
+                    || !annotation.getValue().equals(annotationId)) {
                 continue;
             }
 
             int spanStart = text.getSpanStart(annotation);
             int spanEnd = text.getSpanEnd(annotation);
-            messageWithSpan.removeSpan(annotation);
-
-            switch (annotation.getValue()) {
-                case INSTALL_SOURCE_ANNOTATION_ID:
-                    messageWithSpan.replace(spanStart, spanEnd, installSourceLabel);
-                    break;
-                case LINK_ANNOTATION_ID:
-                    messageWithSpan.setSpan(link, spanStart, spanEnd, 0);
-                    break;
-                case PURPOSE_LIST_ANNOTATION_ID:
-                    messageWithSpan.replace(spanStart, spanEnd, purposes);
-                    break;
-                default:
-                    continue;
-            }
+            text.removeSpan(annotation);
+            text.replace(spanStart, spanEnd, replacementText);
+            break;
         }
-        return messageWithSpan;
+
+        return text;
+    }
+
+    private CharSequence setLink(CharSequence baseText, ClickableSpan link) {
+        SpannableStringBuilder text = SpannableStringBuilder.valueOf(baseText);
+        Annotation[] annotations = text.getSpans(0, text.length(), Annotation.class);
+
+        for (android.text.Annotation annotation : annotations) {
+            if (!annotation.getKey().equals(ANNOTATION_ID_KEY)
+                    || !annotation.getValue().equals(LINK_ANNOTATION_ID)) {
+                continue;
+            }
+
+            int spanStart = text.getSpanStart(annotation);
+            int spanEnd = text.getSpanEnd(annotation);
+            text.removeSpan(annotation);
+            text.setSpan(link, spanStart, spanEnd, 0);
+            break;
+        }
+
+        return text;
     }
 
     private ClickableSpan getLinkToAppStore(String installSourcePackageName) {
@@ -390,6 +454,27 @@ public class PermissionRationaleActivity extends SettingsActivity implements
                 // TODO(b/259961958): metrics for click events
                 mViewModel.sendToAppStore(PermissionRationaleActivity.this,
                         installSourcePackageName);
+            }
+        };
+    }
+
+    private ClickableSpan getLinkToSettings() {
+        return new ClickableSpan() {
+            @Override
+            public void onClick(@NonNull View widget) {
+                // TODO(b/259961958): metrics for click events
+                mViewModel.sendToSettingsForPermissionGroup(PermissionRationaleActivity.this,
+                        mPermissionGroupName);
+            }
+        };
+    }
+
+    private ClickableSpan getLearnMoreLink() {
+        return new ClickableSpan() {
+            @Override
+            public void onClick(@NonNull View widget) {
+                // TODO(b/259961958): metrics for click events
+                mViewModel.sendToLearnMore(PermissionRationaleActivity.this);
             }
         };
     }
