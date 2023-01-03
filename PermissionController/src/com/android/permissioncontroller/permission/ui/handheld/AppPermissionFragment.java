@@ -668,6 +668,10 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
                 return;
         }
 
+        if (!mDenyButton.isEnabled()) {
+            return;
+        }
+
         if (StorageScopesUtils.storageScopesEnabled(mPackageName)) {
             if (mOrigDenyButtonText == null) {
                 mOrigDenyButtonText = mDenyButton.getText();
