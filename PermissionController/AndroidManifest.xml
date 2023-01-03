@@ -239,6 +239,17 @@
             </intent-filter>
         </receiver>
 
+        <receiver
+            android:name="com.android.permissioncontroller.safetylabel.SafetyLabelChangedBroadcastReceiver"
+            android:enabled="@bool/is_at_least_u"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
         <service
             android:name="com.android.permissioncontroller.privacysources.AccessibilityJobService"
             android:enabled="@bool/is_at_least_t"
