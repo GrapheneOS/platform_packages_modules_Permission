@@ -1420,4 +1420,43 @@
             <permission name="android.permission.ACTIVITY_RECOGNITION" />
         </permissions>
     </role>
+
+    <!---
+      ~ A role for the package that responds to system notes actions.
+    -->
+    <role
+        name="android.app.role.NOTES"
+        behavior="NotesRoleBehavior"
+        defaultHolders="config_defaultNotes"
+        description="@string/role_notes_description"
+        exclusive="true"
+        label="@string/role_notes_label"
+        minSdkVersion="34"
+        overrideUserWhenGranting="true"
+        requestable="false"
+        searchKeywords="@string/role_notes_search_keywords"
+        shortLabel="@string/role_notes_short_label"
+        showNone="true">
+        <required-components>
+            <!-- Flag value is FLAG_SHOW_WHEN_LOCKED | FLAG_TURN_SCREEN_ON -->
+            <activity flags="0x1800000">
+                <intent-filter>
+                    <action name="android.intent.action.CREATE_NOTE" />
+                </intent-filter>
+            </activity>
+        </required-components>
+        <preferred-activities>
+            <preferred-activity>
+                <!-- Flag value is FLAG_SHOW_WHEN_LOCKED | FLAG_TURN_SCREEN_ON -->
+                <activity flags="0x1800000">
+                    <intent-filter>
+                        <action name="android.intent.action.CREATE_NOTE" />
+                    </intent-filter>
+                </activity>
+                <intent-filter>
+                    <action name="android.intent.action.CREATE_NOTE" />
+                </intent-filter>
+            </preferred-activity>
+        </preferred-activities>
+    </role>
 </roles>
