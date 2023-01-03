@@ -34,6 +34,7 @@ import static java.util.Collections.unmodifiableList;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
+import android.annotation.UserIdInt;
 import android.app.BroadcastOptions;
 import android.content.Context;
 import android.content.Intent;
@@ -42,6 +43,8 @@ import android.os.UserHandle;
 import android.safetycenter.SafetyCenterManager;
 import android.safetycenter.SafetyCenterManager.RefreshReason;
 import android.safetycenter.SafetyCenterManager.RefreshRequestType;
+import android.safetycenter.SafetySourceData;
+import android.util.ArraySet;
 import android.util.Log;
 import android.util.SparseArray;
 
@@ -335,79 +338,74 @@ final class SafetyCenterBroadcastDispatcher {
      *
      * <p>Every value present is a non-empty list, but the overall result may be empty.
      */
+    @NonNull
     private SparseArray<List<String>> getUserIdsToSourceIds(
             @NonNull Broadcast broadcast,
             @NonNull UserProfileGroup userProfileGroup,
             @RefreshReason int refreshReason) {
         int[] managedProfileIds = userProfileGroup.getManagedRunningProfilesUserIds();
         SparseArray<List<String>> result = new SparseArray<>(managedProfileIds.length + 1);
-        List<String> profileParentSources = broadcast.getSourceIdsForProfileParent();
-
-        if (refreshReason == REFRESH_REASON_PAGE_OPEN) {
-            profileParentSources =
-                    onlyPageOpenAllowedSources(
-                            profileParentSources,
-                            broadcast.getSourceIdsForProfileParentOnPageOpen(),
-                            broadcast.getPackageName(),
-                            userProfileGroup.getProfileParentUserId());
-        }
+        List<String> profileParentSources =
+                getSourceIdsForRefreshReason(
+                        refreshReason,
+                        broadcast.getSourceIdsForProfileParent(),
+                        broadcast.getSourceIdsForProfileParentOnPageOpen(),
+                        userProfileGroup.getProfileParentUserId());
 
         if (!profileParentSources.isEmpty()) {
             result.put(userProfileGroup.getProfileParentUserId(), profileParentSources);
         }
 
-        List<String> allManagedProfileSources = broadcast.getSourceIdsForManagedProfiles();
+        for (int i = 0; i < managedProfileIds.length; i++) {
+            List<String> managedProfileSources =
+                    getSourceIdsForRefreshReason(
+                            refreshReason,
+                            broadcast.getSourceIdsForManagedProfiles(),
+                            broadcast.getSourceIdsForManagedProfilesOnPageOpen(),
+                            managedProfileIds[i]);
 
-        if (refreshReason == REFRESH_REASON_PAGE_OPEN) {
-            for (int i = 0; i < managedProfileIds.length; i++) {
-                List<String> managedProfileSources =
-                        onlyPageOpenAllowedSources(
-                                allManagedProfileSources,
-                                broadcast.getSourceIdsForManagedProfilesOnPageOpen(),
-                                broadcast.getPackageName(),
-                                managedProfileIds[i]);
-
-                if (!managedProfileSources.isEmpty()) {
-                    result.put(managedProfileIds[i], managedProfileSources);
-                }
-            }
-        } else {
-            if (!allManagedProfileSources.isEmpty()) {
-                for (int i = 0; i < managedProfileIds.length; i++) {
-                    result.put(managedProfileIds[i], allManagedProfileSources);
-                }
+            if (!managedProfileSources.isEmpty()) {
+                result.put(managedProfileIds[i], managedProfileSources);
             }
         }
+
         return result;
     }
 
-    /*
-     * Returns a copy of allSources filtered to contain only sources that have
-     * refreshOnPageOpenAllowed in the XML config, or are in the
-     * safety_center_override_refresh_on_page_open_sources flag, or where don't have any
-     * SafetySourceData.
+    /**
+     * Returns the sources to refresh for the given {@code refreshReason}.
+     *
+     * <p>For {@link SafetyCenterManager#REFRESH_REASON_PAGE_OPEN}, returns a copy of {@code
+     * allSourceIds} filtered to contain only sources that have refreshOnPageOpenAllowed in the XML
+     * config, or are in the safety_center_override_refresh_on_page_open_sources flag, or don't have
+     * any {@link SafetySourceData} provided.
      */
-    private List<String> onlyPageOpenAllowedSources(
-            List<String> allSources,
-            List<String> configAllowListedSourceIds,
-            String packageName,
-            int userId) {
+    @NonNull
+    private List<String> getSourceIdsForRefreshReason(
+            @RefreshReason int refreshReason,
+            @NonNull List<String> allSourceIds,
+            @NonNull List<String> pageOpenSourceIds,
+            @UserIdInt int userId) {
+        if (refreshReason != REFRESH_REASON_PAGE_OPEN) {
+            return allSourceIds;
+        }
 
-        List<String> sources = new ArrayList<>();
+        List<String> sourceIds = new ArrayList<>();
 
-        Set<String> flagAllowListedSourceIds =
+        ArraySet<String> flagAllowListedSourceIds =
                 SafetyCenterFlags.getOverrideRefreshOnPageOpenSourceIds();
 
-        for (int i = 0; i < allSources.size(); i++) {
-            String sourceId = allSources.get(i);
-            if (configAllowListedSourceIds.contains(sourceId)
+        for (int i = 0; i < allSourceIds.size(); i++) {
+            String sourceId = allSourceIds.get(i);
+            if (pageOpenSourceIds.contains(sourceId)
                     || flagAllowListedSourceIds.contains(sourceId)
-                    || mSafetyCenterRepository.getSafetySourceData(sourceId, packageName, userId)
+                    || mSafetyCenterRepository.getSafetySourceData(
+                                    SafetySourceKey.of(sourceId, userId))
                             == null) {
-                sources.add(sourceId);
+                sourceIds.add(sourceId);
             }
         }
 
-        return unmodifiableList(sources);
+        return unmodifiableList(sourceIds);
     }
 }
