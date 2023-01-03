@@ -374,6 +374,7 @@ final class SafetyCenterDataFactory {
                                     safetySourcesGroup.getTitleResId())
                             : safetySourceIssue.getAttributionTitle();
             safetyCenterIssueBuilder.setAttributionTitle(issueAttributionTitle);
+            safetyCenterIssueBuilder.setGroupId(safetySourcesGroup.getId());
         }
         return safetyCenterIssueBuilder.build();
     }
