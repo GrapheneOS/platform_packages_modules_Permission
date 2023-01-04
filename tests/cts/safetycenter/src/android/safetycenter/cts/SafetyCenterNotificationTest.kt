@@ -199,6 +199,29 @@ class SafetyCenterNotificationTest {
     }
 
     @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun setSafetySourceData_withCustomNotification_usesCustomValues() {
+        val notification =
+            SafetySourceIssue.Notification.Builder("Custom title", "Custom text").build()
+        val data =
+            safetySourceCtsData
+                .defaultRecommendationDataBuilder()
+                .addIssue(
+                    safetySourceCtsData
+                        .defaultRecommendationIssueBuilder("Default title", "Default text")
+                        .setCustomNotification(notification)
+                        .build()
+                )
+                .build()
+
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
+
+        CtsNotificationListener.waitForSingleNotificationMatching(
+            NotificationCharacteristics(title = "Custom title", text = "Custom text")
+        )
+    }
+
+    @Test
     fun setSafetySourceData_twiceWithSameIssueId_updatesNotification() {
         val data1 =
             safetySourceCtsData
