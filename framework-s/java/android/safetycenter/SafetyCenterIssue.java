@@ -508,8 +508,9 @@ public final class SafetyCenterIssue implements Parcelable {
                                                 TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(
                                                         in));
                         if (SdkLevel.isAtLeastU()) {
-                            Confirmation confirmation = in.readTypedObject(Confirmation.CREATOR);
-                            builder.setConfirmation(confirmation);
+                            ConfirmationDialogDetails confirmationDialogDetails =
+                                    in.readTypedObject(ConfirmationDialogDetails.CREATOR);
+                            builder.setConfirmationDialogDetails(confirmationDialogDetails);
                         }
                         return builder.build();
                     }
@@ -526,7 +527,7 @@ public final class SafetyCenterIssue implements Parcelable {
         private final boolean mWillResolve;
         private final boolean mInFlight;
         @Nullable private final CharSequence mSuccessMessage;
-        @Nullable private final Confirmation mConfirmation;
+        @Nullable private final ConfirmationDialogDetails mConfirmationDialogDetails;
 
         private Action(
                 @NonNull String id,
@@ -535,14 +536,14 @@ public final class SafetyCenterIssue implements Parcelable {
                 boolean willResolve,
                 boolean inFlight,
                 @Nullable CharSequence successMessage,
-                @Nullable Confirmation confirmation) {
+                @Nullable ConfirmationDialogDetails confirmationDialogDetails) {
             mId = id;
             mLabel = label;
             mPendingIntent = pendingIntent;
             mWillResolve = willResolve;
             mInFlight = inFlight;
             mSuccessMessage = successMessage;
-            mConfirmation = confirmation;
+            mConfirmationDialogDetails = confirmationDialogDetails;
         }
 
         /** Returns the ID of this action. */
@@ -596,11 +597,11 @@ public final class SafetyCenterIssue implements Parcelable {
          */
         @Nullable
         @RequiresApi(UPSIDE_DOWN_CAKE)
-        public Confirmation getConfirmation() {
+        public ConfirmationDialogDetails getConfirmationDialogDetails() {
             if (!SdkLevel.isAtLeastU()) {
                 throw new UnsupportedOperationException();
             }
-            return mConfirmation;
+            return mConfirmationDialogDetails;
         }
 
         @Override
@@ -614,7 +615,8 @@ public final class SafetyCenterIssue implements Parcelable {
                     && mWillResolve == action.mWillResolve
                     && mInFlight == action.mInFlight
                     && TextUtils.equals(mSuccessMessage, action.mSuccessMessage)
-                    && Objects.equals(mConfirmation, action.mConfirmation);
+                    && Objects.equals(
+                            mConfirmationDialogDetails, action.mConfirmationDialogDetails);
         }
 
         @Override
@@ -626,7 +628,7 @@ public final class SafetyCenterIssue implements Parcelable {
                     mWillResolve,
                     mInFlight,
                     mPendingIntent,
-                    mConfirmation);
+                    mConfirmationDialogDetails);
         }
 
         @Override
@@ -644,8 +646,8 @@ public final class SafetyCenterIssue implements Parcelable {
                     + mInFlight
                     + ", mSuccessMessage="
                     + mSuccessMessage
-                    + ", mConfirmation="
-                    + mConfirmation
+                    + ", mConfirmationDialogDetails="
+                    + mConfirmationDialogDetails
                     + '}';
         }
 
@@ -663,50 +665,51 @@ public final class SafetyCenterIssue implements Parcelable {
             dest.writeBoolean(mInFlight);
             TextUtils.writeToParcel(mSuccessMessage, dest, flags);
             if (SdkLevel.isAtLeastU()) {
-                dest.writeTypedObject(mConfirmation, flags);
+                dest.writeTypedObject(mConfirmationDialogDetails, flags);
             }
         }
 
         /** Data for an action confirmation dialog to be shown before action is executed. */
         @RequiresApi(UPSIDE_DOWN_CAKE)
-        public static final class Confirmation implements Parcelable {
+        public static final class ConfirmationDialogDetails implements Parcelable {
 
             @NonNull
-            public static final Creator<Confirmation> CREATOR =
-                    new Creator<Confirmation>() {
+            public static final Creator<ConfirmationDialogDetails> CREATOR =
+                    new Creator<ConfirmationDialogDetails>() {
                         @Override
-                        public Confirmation createFromParcel(Parcel in) {
+                        public ConfirmationDialogDetails createFromParcel(Parcel in) {
                             CharSequence title =
                                     TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
                             CharSequence text =
                                     TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
-                            CharSequence accept =
+                            CharSequence acceptButtonText =
                                     TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
-                            CharSequence deny =
+                            CharSequence denyButtonText =
                                     TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
-                            return new Confirmation(title, text, accept, deny);
+                            return new ConfirmationDialogDetails(
+                                    title, text, acceptButtonText, denyButtonText);
                         }
 
                         @Override
-                        public Confirmation[] newArray(int size) {
-                            return new Confirmation[size];
+                        public ConfirmationDialogDetails[] newArray(int size) {
+                            return new ConfirmationDialogDetails[size];
                         }
                     };
 
             @NonNull private final CharSequence mTitle;
             @NonNull private final CharSequence mText;
-            @NonNull private final CharSequence mAccept;
-            @NonNull private final CharSequence mDeny;
+            @NonNull private final CharSequence mAcceptButtonText;
+            @NonNull private final CharSequence mDenyButtonText;
 
-            public Confirmation(
+            public ConfirmationDialogDetails(
                     @NonNull CharSequence title,
                     @NonNull CharSequence text,
-                    @NonNull CharSequence accept,
-                    @NonNull CharSequence deny) {
+                    @NonNull CharSequence acceptButtonText,
+                    @NonNull CharSequence denyButtonText) {
                 mTitle = requireNonNull(title);
                 mText = requireNonNull(text);
-                mAccept = requireNonNull(accept);
-                mDeny = requireNonNull(deny);
+                mAcceptButtonText = requireNonNull(acceptButtonText);
+                mDenyButtonText = requireNonNull(denyButtonText);
             }
 
             /** Returns the title of action confirmation dialog. */
@@ -723,14 +726,14 @@ public final class SafetyCenterIssue implements Parcelable {
 
             /** Returns the text of the button to accept action execution. */
             @NonNull
-            public CharSequence getAccept() {
-                return mAccept;
+            public CharSequence getAcceptButtonText() {
+                return mAcceptButtonText;
             }
 
             /** Returns the text of the button to deny action execution. */
             @NonNull
-            public CharSequence getDeny() {
-                return mDeny;
+            public CharSequence getDenyButtonText() {
+                return mDenyButtonText;
             }
 
             @Override
@@ -742,37 +745,37 @@ public final class SafetyCenterIssue implements Parcelable {
             public void writeToParcel(@NonNull Parcel dest, int flags) {
                 TextUtils.writeToParcel(mTitle, dest, flags);
                 TextUtils.writeToParcel(mText, dest, flags);
-                TextUtils.writeToParcel(mAccept, dest, flags);
-                TextUtils.writeToParcel(mDeny, dest, flags);
+                TextUtils.writeToParcel(mAcceptButtonText, dest, flags);
+                TextUtils.writeToParcel(mDenyButtonText, dest, flags);
             }
 
             @Override
             public boolean equals(Object o) {
                 if (this == o) return true;
-                if (!(o instanceof Confirmation)) return false;
-                Confirmation that = (Confirmation) o;
+                if (!(o instanceof ConfirmationDialogDetails)) return false;
+                ConfirmationDialogDetails that = (ConfirmationDialogDetails) o;
                 return TextUtils.equals(mTitle, that.mTitle)
                         && TextUtils.equals(mText, that.mText)
-                        && TextUtils.equals(mAccept, that.mAccept)
-                        && TextUtils.equals(mDeny, that.mDeny);
+                        && TextUtils.equals(mAcceptButtonText, that.mAcceptButtonText)
+                        && TextUtils.equals(mDenyButtonText, that.mDenyButtonText);
             }
 
             @Override
             public int hashCode() {
-                return Objects.hash(mTitle, mText, mAccept, mDeny);
+                return Objects.hash(mTitle, mText, mAcceptButtonText, mDenyButtonText);
             }
 
             @Override
             public String toString() {
-                return "Confirmation{"
+                return "ConfirmationDialogDetails{"
                         + "mTitle="
                         + mTitle
                         + ", mText="
                         + mText
-                        + ", mAccept="
-                        + mAccept
-                        + ", mDeny="
-                        + mDeny
+                        + ", mAcceptButtonText="
+                        + mAcceptButtonText
+                        + ", mDenyButtonText="
+                        + mDenyButtonText
                         + '}';
             }
         }
@@ -786,7 +789,7 @@ public final class SafetyCenterIssue implements Parcelable {
             private boolean mWillResolve;
             private boolean mInFlight;
             @Nullable private CharSequence mSuccessMessage;
-            @Nullable private Confirmation mConfirmation;
+            @Nullable private ConfirmationDialogDetails mConfirmationDialogDetails;
 
             /**
              * Creates a new {@link Builder} for an {@link Action}.
@@ -817,7 +820,7 @@ public final class SafetyCenterIssue implements Parcelable {
                 mWillResolve = action.mWillResolve;
                 mInFlight = action.mInFlight;
                 mSuccessMessage = action.mSuccessMessage;
-                mConfirmation = action.mConfirmation;
+                mConfirmationDialogDetails = action.mConfirmationDialogDetails;
             }
 
             /** Sets the ID of this {@link Action} */
@@ -884,11 +887,12 @@ public final class SafetyCenterIssue implements Parcelable {
              */
             @NonNull
             @RequiresApi(UPSIDE_DOWN_CAKE)
-            public Builder setConfirmation(@Nullable Confirmation confirmation) {
+            public Builder setConfirmationDialogDetails(
+                    @Nullable ConfirmationDialogDetails confirmationDialogDetails) {
                 if (!SdkLevel.isAtLeastU()) {
                     throw new UnsupportedOperationException();
                 }
-                mConfirmation = confirmation;
+                mConfirmationDialogDetails = confirmationDialogDetails;
                 return this;
             }
 
@@ -902,7 +906,7 @@ public final class SafetyCenterIssue implements Parcelable {
                         mWillResolve,
                         mInFlight,
                         mSuccessMessage,
-                        mConfirmation);
+                        mConfirmationDialogDetails);
             }
         }
     }
