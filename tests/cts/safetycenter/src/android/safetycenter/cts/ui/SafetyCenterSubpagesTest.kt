@@ -39,6 +39,11 @@ import android.safetycenter.cts.testing.SafetyCenterCtsHelper
 import android.safetycenter.cts.testing.SafetyCenterFlags
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import android.safetycenter.cts.testing.SafetySourceCtsData
+import android.safetycenter.cts.testing.SafetySourceIntentHandler.Request
+import android.safetycenter.cts.testing.SafetySourceIntentHandler.Response
+import android.safetycenter.cts.testing.SafetySourceReceiver
+import android.safetycenter.cts.testing.UiTestHelper.resetRotation
+import android.safetycenter.cts.testing.UiTestHelper.rotate
 import android.safetycenter.cts.testing.UiTestHelper.waitAllTextDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.waitAllTextNotDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.waitButtonDisplayed
@@ -95,6 +100,7 @@ class SafetyCenterSubpagesTest {
             return
         }
         safetyCenterCtsHelper.reset()
+        UiAutomatorUtils.getUiDevice().resetRotation()
     }
 
     @Test
@@ -353,6 +359,75 @@ class SafetyCenterSubpagesTest {
 
                 // Verifying that clicking on the entry doesn't redirect to any other screen
                 waitAllTextDisplayed(sourceCtsData.status!!.title, sourceCtsData.status!!.summary)
+            }
+        }
+    }
+
+    @Test
+    fun entryListWithSingleSource_updateSafetySourceData_displayedDataIsUpdated() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        val sourcesGroup: SafetySourcesGroup = SINGLE_SOURCE_CONFIG.safetySourcesGroups.first()
+        val source: SafetySource = sourcesGroup.safetySources.first()
+
+        context.launchSafetyCenterActivity(withReceiverPermission = true) {
+            openSubpageAndExit(sourcesGroup) {
+                waitAllTextDisplayed(
+                    context.getString(source.titleResId),
+                    context.getString(source.summaryResId)
+                )
+            }
+
+            SafetySourceReceiver.setResponse(
+                Request.Refresh(SINGLE_SOURCE_ID),
+                Response.SetData(
+                    safetySourceCtsData.buildSafetySourceDataWithSummary(
+                        severityLevel = SafetySourceData.SEVERITY_LEVEL_RECOMMENDATION,
+                        entryTitle = "Updated title",
+                        entrySummary = "Updated summary"
+                    )
+                )
+            )
+
+            openSubpageAndExit(sourcesGroup) {
+                waitAllTextNotDisplayed(
+                    context.getString(source.titleResId),
+                    context.getString(source.summaryResId)
+                )
+                waitAllTextDisplayed("Updated title", "Updated summary")
+            }
+        }
+    }
+
+    @Test
+    fun entryListWithSingleSource_updateSafetySourceDataAndRotate_displayedDataIsNotUpdated() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        val sourcesGroup: SafetySourcesGroup = SINGLE_SOURCE_CONFIG.safetySourcesGroups.first()
+        val source: SafetySource = sourcesGroup.safetySources.first()
+
+        context.launchSafetyCenterActivity(withReceiverPermission = true) {
+            openSubpageAndExit(sourcesGroup) {
+                waitAllTextDisplayed(
+                    context.getString(source.titleResId),
+                    context.getString(source.summaryResId)
+                )
+
+                SafetySourceReceiver.setResponse(
+                    Request.Refresh(SINGLE_SOURCE_ID),
+                    Response.SetData(
+                        safetySourceCtsData.buildSafetySourceDataWithSummary(
+                            severityLevel = SafetySourceData.SEVERITY_LEVEL_RECOMMENDATION,
+                            entryTitle = "Updated title",
+                            entrySummary = "Updated summary"
+                        )
+                    )
+                )
+                UiAutomatorUtils.getUiDevice().rotate()
+
+                waitAllTextDisplayed(
+                    context.getString(source.titleResId),
+                    context.getString(source.summaryResId)
+                )
+                waitAllTextNotDisplayed("Updated title", "Updated summary")
             }
         }
     }
