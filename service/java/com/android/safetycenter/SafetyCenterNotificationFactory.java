@@ -33,6 +33,7 @@ import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 
 /**
@@ -70,13 +71,25 @@ final class SafetyCenterNotificationFactory {
             return null;
         }
 
+        CharSequence title = issue.getTitle();
+        CharSequence text = issue.getSummary();
+
+        if (SdkLevel.isAtLeastU()) {
+            SafetySourceIssue.Notification customNotification = issue.getCustomNotification();
+            if (customNotification != null) {
+                title = customNotification.getTitle();
+                text = customNotification.getText();
+                // TODO(b/263477747): Handle custom actions too
+            }
+        }
+
         Notification.Builder builder =
                 new Notification.Builder(mContext, channelId)
                         // TODO(b/259399024): Use correct icon here
                         .setSmallIcon(android.R.drawable.ic_dialog_alert)
                         .setExtras(getNotificationExtras())
-                        .setContentTitle(issue.getTitle())
-                        .setContentText(issue.getSummary())
+                        .setContentTitle(title)
+                        .setContentText(text)
                         .setContentIntent(newSafetyCenterPendingIntent(issue))
                         .setDeleteIntent(
                                 SafetyCenterNotificationReceiver.newNotificationDismissedIntent(

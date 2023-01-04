@@ -65,7 +65,7 @@
 
     <!-- TODO(b/259279178): update with finalized permission rationale strings -->
     <!-- Message shown to the user letting them where to change permission settings in the future [CHAR LIMIT=100] -->
-    <string name="permission_rationale_permission_settings_message">Go to your <annotation id="link">privacy settings</annotation>, under <xliff:g id="permission_name" example="location">%1$s</xliff:g></string>
+    <string name="permission_rationale_permission_settings_message">Go to your <annotation id="link">privacy settings</annotation>, under <annotation id="permission_name" example="location">%1$s</annotation></string>
 
     <!-- TODO(b/259279178): update with finalized permission rationale strings -->
     <!-- Title shown for Permission Rationale "learn more about data sharing" section [CHAR LIMIT=50] -->

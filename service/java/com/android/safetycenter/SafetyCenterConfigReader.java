@@ -510,7 +510,7 @@ final class SafetyCenterConfigReader {
          */
         @NonNull
         List<String> getSourceIdsForManagedProfilesOnPageOpen() {
-            return unmodifiableList(mSourceIdsForProfileParentOnPageOpen);
+            return unmodifiableList(mSourceIdsForManagedProfilesOnPageOpen);
         }
 
         @Override
