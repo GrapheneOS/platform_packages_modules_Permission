@@ -144,7 +144,7 @@ class CtsNotificationListener : NotificationListenerService() {
          * and then return them, or throw an [AssertionError] if that doesn't happen within
          * [timeout].
          */
-        private fun waitForNotificationsMatching(
+        fun waitForNotificationsMatching(
             vararg characteristics: NotificationCharacteristics,
             timeout: Duration = TIMEOUT_LONG
         ): List<StatusBarNotificationWithChannel> {
@@ -296,8 +296,7 @@ class CtsNotificationListener : NotificationListenerService() {
             safetyCenterNotificationEvents = Channel(capacity = Channel.UNLIMITED)
         }
 
-        // TODO(b/264369469): Tests should account for multiple SC notification channels
         private fun StatusBarNotification.isSafetyCenterNotification(): Boolean =
-            packageName == "android" && notification.channelId == "safety_center"
+            packageName == "android" && notification.channelId.startsWith("safety_center")
     }
 }

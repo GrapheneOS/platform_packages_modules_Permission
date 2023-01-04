@@ -18,6 +18,7 @@ package android.safetycenter.cts
 
 import android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE
 import android.app.Notification
+import android.app.NotificationManager
 import android.content.Context
 import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.safetycenter.SafetyCenterData
@@ -446,6 +447,57 @@ class SafetyCenterNotificationTest {
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data2)
 
         CtsNotificationListener.waitForZeroNotifications()
+    }
+
+    @Test
+    fun setSafetySourceData_withInformationIssue_lowImportanceBlockableNotification() {
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.informationWithIssue)
+
+        CtsNotificationListener.waitForNotificationsMatching(
+            NotificationCharacteristics(
+                "Information issue title",
+                "Information issue summary",
+                actions = listOf("Review"),
+                importance = NotificationManager.IMPORTANCE_LOW,
+                blockable = true
+            )
+        )
+    }
+
+    @Test
+    fun setSafetySourceData_withRecommendationIssue_defaultImportanceUnblockableNotification() {
+        safetyCenterCtsHelper.setData(
+            SINGLE_SOURCE_ID,
+            safetySourceCtsData.recommendationWithAccountIssue
+        )
+
+        CtsNotificationListener.waitForNotificationsMatching(
+            NotificationCharacteristics(
+                "Recommendation issue title",
+                "Recommendation issue summary",
+                importance = NotificationManager.IMPORTANCE_DEFAULT,
+                actions = listOf("See issue"),
+                blockable = false
+            )
+        )
+    }
+
+    @Test
+    fun setSafetySourceData_withCriticalIssue_highImportanceUnblockableNotification() {
+        safetyCenterCtsHelper.setData(
+            SINGLE_SOURCE_ID,
+            safetySourceCtsData.criticalWithResolvingDeviceIssue
+        )
+
+        CtsNotificationListener.waitForNotificationsMatching(
+            NotificationCharacteristics(
+                "Critical issue title",
+                "Critical issue summary",
+                actions = listOf("Solve issue"),
+                importance = NotificationManager.IMPORTANCE_HIGH,
+                blockable = false
+            )
+        )
     }
 
     @Test

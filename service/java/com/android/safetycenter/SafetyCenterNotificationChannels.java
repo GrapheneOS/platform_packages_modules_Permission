@@ -21,8 +21,10 @@ import static android.os.Build.VERSION_CODES.TIRAMISU;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.app.NotificationChannel;
+import android.app.NotificationChannelGroup;
 import android.app.NotificationManager;
 import android.os.Binder;
+import android.safetycenter.SafetySourceData;
 import android.safetycenter.SafetySourceIssue;
 import android.util.Log;
 
@@ -35,6 +37,11 @@ import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 final class SafetyCenterNotificationChannels {
 
     private static final String TAG = "SafetyCenterNC";
+
+    private static final String CHANNEL_GROUP_ID = "safety_center_channels";
+    private static final String CHANNEL_ID_INFORMATION = "safety_center_information";
+    private static final String CHANNEL_ID_RECOMMENDATION = "safety_center_recommendation";
+    private static final String CHANNEL_ID_CRITICAL_WARNING = "safety_center_critical_warning";
 
     @NonNull private final SafetyCenterResourcesContext mResourcesContext;
 
@@ -50,35 +57,96 @@ final class SafetyCenterNotificationChannels {
     @Nullable
     String createAndGetChannelId(
             @NonNull NotificationManager notificationManager, @NonNull SafetySourceIssue issue) {
-        // TODO(b/259398016): Different channels for different issues/severities
-        NotificationChannel channel =
-                new NotificationChannel(
-                        "safety_center",
-                        // TODO(b/259399024): Use suitable string here
-                        mResourcesContext.getStringByName("notification_channel_name"),
-                        NotificationManager.IMPORTANCE_DEFAULT);
-        return createNotificationChannelWithoutCallingIdentity(notificationManager, channel);
+        try {
+            createAllChannelsWithoutCallingIdentity(notificationManager);
+        } catch (RuntimeException e) {
+            Log.w(TAG, "Unable to create notification channels", e);
+            return null;
+        }
+        return getChannelIdForIssue(issue);
+    }
+
+    @Nullable
+    private String getChannelIdForIssue(@NonNull SafetySourceIssue issue) {
+        switch (issue.getSeverityLevel()) {
+            case SafetySourceData.SEVERITY_LEVEL_INFORMATION:
+                return CHANNEL_ID_INFORMATION;
+            case SafetySourceData.SEVERITY_LEVEL_RECOMMENDATION:
+                return CHANNEL_ID_RECOMMENDATION;
+            case SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING:
+                return CHANNEL_ID_CRITICAL_WARNING;
+            default:
+                Log.w(TAG, "No applicable notification channel for issue " + issue);
+                return null;
+        }
     }
 
     /**
-     * Creates a {@link NotificationChannel} using the given {@link NotificationManager}, dropping
-     * any calling identity so that it can be unblockable. Returns the new channel's ID if it was
-     * created successfully or {@code null} otherwise.
+     * Creates all Safety Center {@link NotificationChannel}s instances and their group using the
+     * given {@link NotificationManager}, dropping any calling identity so those channels can be
+     * unblockable. Throws a {@link RuntimeException} if any channel is malformed and could not be
+     * created.
      */
+    // TODO(b/265277413): Recreate/update these channels on locale changes by calling this method
     @Nullable
-    private static String createNotificationChannelWithoutCallingIdentity(
-            @NonNull NotificationManager notificationManager,
-            @NonNull NotificationChannel channel) {
-        // Clearing calling identity to be able to make an unblockable system notification channel
+    private void createAllChannelsWithoutCallingIdentity(
+            @NonNull NotificationManager notificationManager) {
+        // Clearing calling identity to be able to make unblockable system notification channels
         final long callingId = Binder.clearCallingIdentity();
         try {
-            notificationManager.createNotificationChannel(channel);
-            return channel.getId();
-        } catch (RuntimeException e) {
-            Log.w(TAG, "Unable to create notification channel", e);
-            return null;
+            notificationManager.createNotificationChannelGroup(getChannelGroupDefinition());
+            notificationManager.createNotificationChannel(getGreenChannelDefinition());
+            notificationManager.createNotificationChannel(getYellowChannelDefinition());
+            notificationManager.createNotificationChannel(getRedChannelDefinition());
         } finally {
             Binder.restoreCallingIdentity(callingId);
         }
+    }
+
+    @NonNull
+    private NotificationChannelGroup getChannelGroupDefinition() {
+        return new NotificationChannelGroup(
+                CHANNEL_GROUP_ID, getString("notification_channel_group_name"));
+    }
+
+    @NonNull
+    private NotificationChannel getGreenChannelDefinition() {
+        NotificationChannel channel =
+                new NotificationChannel(
+                        CHANNEL_ID_INFORMATION,
+                        getString("notification_channel_name_information"),
+                        NotificationManager.IMPORTANCE_LOW);
+        channel.setGroup(CHANNEL_GROUP_ID);
+        channel.setBlockable(true);
+        return channel;
+    }
+
+    @NonNull
+    private NotificationChannel getYellowChannelDefinition() {
+        NotificationChannel channel =
+                new NotificationChannel(
+                        CHANNEL_ID_RECOMMENDATION,
+                        getString("notification_channel_name_recommendation"),
+                        NotificationManager.IMPORTANCE_DEFAULT);
+        channel.setGroup(CHANNEL_GROUP_ID);
+        channel.setBlockable(false);
+        return channel;
+    }
+
+    @NonNull
+    private NotificationChannel getRedChannelDefinition() {
+        NotificationChannel channel =
+                new NotificationChannel(
+                        CHANNEL_ID_CRITICAL_WARNING,
+                        getString("notification_channel_name_critical_warning"),
+                        NotificationManager.IMPORTANCE_HIGH);
+        channel.setGroup(CHANNEL_GROUP_ID);
+        channel.setBlockable(false);
+        return channel;
+    }
+
+    @NonNull
+    private String getString(@NonNull String name) {
+        return mResourcesContext.getStringByName(name);
     }
 }
