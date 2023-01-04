@@ -65,13 +65,13 @@ import android.safetycenter.cts.testing.UiTestHelper.waitNotDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.waitSourceDataDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.waitSourceIssueDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.waitSourceIssueNotDisplayed
-import android.support.test.uiautomator.By
-import android.support.test.uiautomator.UiDevice
+import androidx.test.uiautomator.By
+import androidx.test.uiautomator.UiDevice
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.compatibility.common.util.DisableAnimationRule
 import com.android.compatibility.common.util.FreezeRotationRule
-import com.android.compatibility.common.util.UiAutomatorUtils.getUiDevice
+import com.android.compatibility.common.util.UiAutomatorUtils2.getUiDevice
 import java.time.Duration
 import org.junit.After
 import org.junit.Assume.assumeTrue

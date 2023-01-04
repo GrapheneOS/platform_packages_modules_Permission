@@ -51,7 +51,7 @@ import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.executeSa
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.refreshSafetySourcesWithReceiverPermissionAndWait
 import android.safetycenter.cts.testing.SettingsPackage.getSettingsPackageName
 import android.safetycenter.cts.testing.UiTestHelper.waitDisplayed
-import android.support.test.uiautomator.By
+import androidx.test.uiautomator.By
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.compatibility.common.util.DisableAnimationRule

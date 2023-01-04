@@ -26,7 +26,7 @@ import android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.os.Bundle
 import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermissionIdentity
-import com.android.compatibility.common.util.UiAutomatorUtils.getUiDevice
+import com.android.compatibility.common.util.UiAutomatorUtils2.getUiDevice
 
 /** A class that provides a way to launch the SafetyCenter activity in tests. */
 object SafetyCenterActivityLauncher {

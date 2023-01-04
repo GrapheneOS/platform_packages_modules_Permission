@@ -20,7 +20,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.android.compatibility.common.util.UiAutomatorUtils
+import com.android.compatibility.common.util.UiAutomatorUtils2
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -47,7 +47,7 @@ class SafetyCenterInteractionLoggingHelperTests {
 
         // TODO(b/239682646): Use the extracted CTS support library to launch and close activity
         // (after extracting it)
-        val uiDevice = UiAutomatorUtils.getUiDevice()
+        val uiDevice = UiAutomatorUtils2.getUiDevice()
         uiDevice.waitForIdle()
         uiDevice.pressBack()
     }
