@@ -483,9 +483,9 @@ package android.safetycenter {
     ctor public SafetySourceIssue.Notification.Builder(@NonNull CharSequence, @NonNull CharSequence);
     ctor public SafetySourceIssue.Notification.Builder(@NonNull android.safetycenter.SafetySourceIssue.Notification);
     method @NonNull public android.safetycenter.SafetySourceIssue.Notification.Builder addAction(@NonNull android.safetycenter.SafetySourceIssue.Action);
+    method @NonNull public android.safetycenter.SafetySourceIssue.Notification.Builder addActions(@NonNull java.util.List<android.safetycenter.SafetySourceIssue.Action>);
     method @NonNull public android.safetycenter.SafetySourceIssue.Notification build();
     method @NonNull public android.safetycenter.SafetySourceIssue.Notification.Builder clearActions();
-    method @NonNull public android.safetycenter.SafetySourceIssue.Notification.Builder setActions(@NonNull java.util.List<android.safetycenter.SafetySourceIssue.Action>);
   }
 
   public final class SafetySourceStatus implements android.os.Parcelable {
