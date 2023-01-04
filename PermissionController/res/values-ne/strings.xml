@@ -398,11 +398,18 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g> लाई आफ्नो डिफल्ट नेभिगेसन एप बनाउने हो?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"कुनै पनि अनुमति चाहिन्न"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> लाई तपाईंका सूचना जाँच गर्ने र फोन, SMS, सम्पर्क ठेगाना तथा पात्रोका अनुमति हेर्ने तथा प्रयोग गर्ने अनुमति दिइने छ।"</string>
-    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
-    <skip />
+    <string name="role_companion_device_glasses_description" msgid="1775655849566169630">"<xliff:g id="APP_NAME">%1$s</xliff:g> लाई तपाईंका सूचना हेर्ने र फोन, SMS, कन्ट्याक्ट, माइक्रोफोन तथा नजिकैका डिभाइससम्बन्धी अनुमतिहरू हेर्ने तथा प्रयोग गर्ने अनुमति दिइने छ।"</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> लाई तपाईंका सूचना हेर्ने र कनेक्ट भएको डिभाइसमा तपाईंका एपहरू स्ट्रिम गर्ने अनुमति दिइने छ।"</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> लाई नजिकैका डिभाइसहरूमा सामग्री स्ट्रिम गर्ने अनुमति दिइने छ।"</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"तपाईं यो सेवाका सहायताले अन्य डिभाइससँग आफ्नो फोनमा भएका फोटो, मिडिया र सूचनाहरू सेयर गर्न सक्नुहुन्छ।"</string>
+    <!-- no translation found for role_notes_label (7694668779088299905) -->
+    <skip />
+    <!-- no translation found for role_notes_short_label (6617887820096092689) -->
+    <skip />
+    <!-- no translation found for role_notes_description (8486216423668803751) -->
+    <skip />
+    <!-- no translation found for role_notes_search_keywords (7710756695666744631) -->
+    <skip />
     <string name="request_role_current_default" msgid="738722892438247184">"हालको डिफल्ट एप"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"फेरि नसोध्नुहोस्"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"डिफल्ट सेट गर्नुहोस्"</string>

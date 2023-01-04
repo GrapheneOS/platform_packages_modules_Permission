@@ -398,11 +398,18 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Definir <xliff:g id="APP_NAME">%1$s</xliff:g> como o app de navegação padrão?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Nenhuma permissão necessária"</string>
     <string name="role_watch_description" msgid="267003778693177779">"O app <xliff:g id="APP_NAME">%1$s</xliff:g> poderá interagir com suas notificações e acessar as permissões do Telefone, de SMS, de Contatos e da Agenda."</string>
-    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
-    <skip />
+    <string name="role_companion_device_glasses_description" msgid="1775655849566169630">"O <xliff:g id="APP_NAME">%1$s</xliff:g> vai poder interagir com suas notificações e acessar os apps Telefone, SMS, Contatos, microfone e as permissões de dispositivos por perto."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"O app <xliff:g id="APP_NAME">%1$s</xliff:g> poderá interagir com suas notificações e fazer streaming de outros apps para os dispositivos conectados."</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"O app <xliff:g id="APP_NAME">%1$s</xliff:g> poderá transmitir conteúdo para dispositivos por perto."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Este serviço compartilha fotos, mídia e notificações do smartphone com outros dispositivos."</string>
+    <!-- no translation found for role_notes_label (7694668779088299905) -->
+    <skip />
+    <!-- no translation found for role_notes_short_label (6617887820096092689) -->
+    <skip />
+    <!-- no translation found for role_notes_description (8486216423668803751) -->
+    <skip />
+    <!-- no translation found for role_notes_search_keywords (7710756695666744631) -->
+    <skip />
     <string name="request_role_current_default" msgid="738722892438247184">"Padrão atual"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Não perguntar novamente"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Definir como padrão"</string>
