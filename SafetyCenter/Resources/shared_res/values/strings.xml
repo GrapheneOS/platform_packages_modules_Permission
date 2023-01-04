@@ -96,5 +96,8 @@
 
     <!-- The summary shown to the user when a group of related sources in Safety Center all have an unknown status. We expect the status of the sources to eventually update and the summary will change [CHAR LIMIT=NONE] -->
     <string name="group_unknown_summary">No info yet</string>
+
+    <!-- The name of the channel through which Security and privacy notifications are sent. A notification channel groups together similar notifications. [CHAR LIMIT=35] -->
+    <string name="notification_channel_name">Security &amp; privacy</string>
 </resources>
 
