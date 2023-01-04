@@ -129,4 +129,44 @@
 
     <!-- Permission Rationale - End -->
 
+    <!-- Safety Label Change Notifications Start -->
+
+    <!-- TODO(b/261914980): Update with final safety label change notifications strings. -->
+
+    <!-- Title for Data Sharing updates page, which displays updates from apps on their data sharing
+     practices. [CHAR LIMIT=50] -->
+    <string name="data_sharing_updates_title">Data sharing updates</string>
+    <!-- Subtitle for Data Sharing updates page, which displays updates from apps on their data
+     sharing practices. [CHAR LIMIT=200] -->
+    <string name="data_sharing_updates_subtitle">These apps have provided updates on data sharing practices. Review these updates and modify app permissions if necessary.</string>
+    <!-- Footer message for Data Sharing updates page, which displays updates from apps on their
+     data sharing practices. [CHAR LIMIT=400] -->
+    <string name="data_sharing_updates_footer_message">The developers of the apps listed here provided this information about their sharing practices and may update it over time.\nData privacy and security practices may vary based on your use, region, and age.</string>
+    <!-- Link for Data Sharing Help Center page, which will open a web page detailing what app data
+     sharing policies mean. [CHAR LIMIT=60] -->
+    <string name="learn_more_about_data_sharing">Learn more about data sharing</string>
+    <!-- Message indicating that an app now shares location data with third parties for the purpose
+     of advertising, when it earlier did not share location data for the purpose of advertising, but
+      did for other purposes. Third parties are other companies or organizations.
+       [CHAR LIMIT=60] -->
+    <string name="shares_location_for_advertising">Now shares location for advertising</string>
+    <!-- Message indicating that an app now shares location data with third parties for the purpose
+     of advertising, when it earlier did not share location data. Third parties are other companies
+      or organizations. [CHAR LIMIT=80] -->
+    <string name="shares_location_with_third_parties_for_advertising">Now shares location with third parties for advertising</string>
+    <!-- Message indicating that an app now shares location data with third parties, when it earlier
+     did not share location data. Third parties are other companies or organizations.
+      [CHAR LIMIT=60] -->
+    <string name="shares_location_with_third_parties">Now shares location with third parties</string>
+    <!-- Header for the number of updates in the last days. [CHAR LIMIT=40] -->
+    <string name="updated_in_last_days">{count, plural,
+        =0    {Updated in the last day}
+        =1    {Updated in the last day}
+        other {Updated in the last # days}
+        }</string>
+    <!-- Message indicating that no apps have provided recent updates. [CHAR LIMIT=80] -->
+    <string name="no_recent_updates">No apps have provided recent updates.</string>
+
+    <!-- Safety Label Change Notifications End -->
+
 </resources>
