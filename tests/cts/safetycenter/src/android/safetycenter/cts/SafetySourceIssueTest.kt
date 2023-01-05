@@ -386,23 +386,31 @@ class SafetySourceIssueTest {
 
     @Test
     @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
-    fun notification_builder_setActions_withNull_throwsIllegalArgumentException() {
-        assertFailsWith(NullPointerException::class) {
-            Notification.Builder("", "").setActions(Generic.asNull())
-        }
+    fun notification_builder_addActions_keepsPreviouslyAddedActions() {
+        val notificationBuilder = Notification.Builder("", "").addAction(action1)
+
+        notificationBuilder.addActions(listOf(action2))
+
+        assertThat(notificationBuilder.build().actions).containsExactly(action1, action2).inOrder()
     }
 
     @Test
     @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
-    fun notification_builder_setActions_removesAllPreviouslyAddedActions() {
-        val notification =
-            Notification.Builder("", "")
-                .addAction(action1)
-                .addAction(action2)
-                .setActions(listOf(action3))
-                .build()
+    fun notification_builder_addActions_doesNotMutatePreviouslyBuiltInstance() {
+        val notificationBuilder = Notification.Builder("", "").addActions(listOf(action1))
+        val actions = notificationBuilder.build().actions
 
-        assertThat(notification.actions).containsExactly(action3)
+        notificationBuilder.addActions(listOf(action2, action3))
+
+        assertThat(actions).containsExactly(action1)
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun notification_builder_addActions_withNull_throwsIllegalArgumentException() {
+        assertFailsWith(NullPointerException::class) {
+            Notification.Builder("", "").addActions(Generic.asNull())
+        }
     }
 
     @Test
@@ -466,7 +474,8 @@ class SafetySourceIssueTest {
             .addEqualityGroup(Notification.Builder("Title", "Text").addAction(action1).build())
             .addEqualityGroup(Notification.Builder("Title", "Text").addAction(action2).build())
             .addEqualityGroup(
-                Notification.Builder("Title", "Text").addAction(action1).addAction(action2).build()
+                Notification.Builder("Title", "Text").addAction(action1).addAction(action2).build(),
+                Notification.Builder("Title", "Text").addActions(listOf(action1, action2)).build()
             )
             .test()
     }

@@ -94,11 +94,15 @@ import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_OTHER_PAC
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.HIDDEN_ONLY_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.ISSUE_ONLY_ALL_OPTIONAL_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.ISSUE_ONLY_BAREBONE_ID
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.ISSUE_ONLY_GROUP_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.ISSUE_ONLY_IN_STATELESS_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.ISSUE_ONLY_SOURCE_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.ISSUE_ONLY_SOURCE_NO_GROUP_TITLE_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MIXED_STATEFUL_GROUP_ID
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MIXED_STATELESS_GROUP_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MULTIPLE_SOURCES_CONFIG
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MULTIPLE_SOURCES_GROUP_ID_1
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MULTIPLE_SOURCES_GROUP_ID_2
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.NO_PAGE_OPEN_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.PACKAGE_CERT_HASH_INVALID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SAMPLE_SOURCE_ID
@@ -610,12 +614,30 @@ class SafetyCenterManagerTest {
         SafetyCenterData(
             safetyCenterCtsData.safetyCenterStatusCritical(6),
             listOf(
-                safetyCenterCtsData.safetyCenterIssueCritical(DYNAMIC_BAREBONE_ID),
-                safetyCenterCtsData.safetyCenterIssueCritical(ISSUE_ONLY_BAREBONE_ID),
-                safetyCenterCtsData.safetyCenterIssueRecommendation(DYNAMIC_DISABLED_ID),
-                safetyCenterCtsData.safetyCenterIssueRecommendation(ISSUE_ONLY_ALL_OPTIONAL_ID),
-                safetyCenterCtsData.safetyCenterIssueInformation(DYNAMIC_IN_STATELESS_ID),
-                safetyCenterCtsData.safetyCenterIssueInformation(ISSUE_ONLY_IN_STATELESS_ID)
+                safetyCenterCtsData.safetyCenterIssueCritical(
+                    DYNAMIC_BAREBONE_ID,
+                    groupId = DYNAMIC_GROUP_ID
+                ),
+                safetyCenterCtsData.safetyCenterIssueCritical(
+                    ISSUE_ONLY_BAREBONE_ID,
+                    groupId = ISSUE_ONLY_GROUP_ID
+                ),
+                safetyCenterCtsData.safetyCenterIssueRecommendation(
+                    DYNAMIC_DISABLED_ID,
+                    groupId = DYNAMIC_GROUP_ID
+                ),
+                safetyCenterCtsData.safetyCenterIssueRecommendation(
+                    ISSUE_ONLY_ALL_OPTIONAL_ID,
+                    groupId = ISSUE_ONLY_GROUP_ID
+                ),
+                safetyCenterCtsData.safetyCenterIssueInformation(
+                    DYNAMIC_IN_STATELESS_ID,
+                    groupId = MIXED_STATELESS_GROUP_ID
+                ),
+                safetyCenterCtsData.safetyCenterIssueInformation(
+                    ISSUE_ONLY_IN_STATELESS_ID,
+                    groupId = MIXED_STATELESS_GROUP_ID
+                )
             ),
             listOf(
                 SafetyCenterEntryOrGroup(
@@ -961,8 +983,8 @@ class SafetyCenterManagerTest {
             .hasMessageThat()
             .isEqualTo(
                 "Unexpected severity level: ${
-                    SafetySourceData.SEVERITY_LEVEL_INFORMATION
-                }, for issue in safety source: $SINGLE_SOURCE_ID"
+                            SafetySourceData.SEVERITY_LEVEL_INFORMATION
+                        }, for issue in safety source: $SINGLE_SOURCE_ID"
             )
     }
 
@@ -982,8 +1004,8 @@ class SafetyCenterManagerTest {
             .hasMessageThat()
             .isEqualTo(
                 "Unexpected severity level: ${
-                    SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING
-                }, for safety source: $SINGLE_SOURCE_ID"
+                            SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING
+                        }, for safety source: $SINGLE_SOURCE_ID"
             )
     }
 
@@ -1015,8 +1037,8 @@ class SafetyCenterManagerTest {
             .hasMessageThat()
             .isEqualTo(
                 "Unexpected severity level: ${
-                    SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING
-                }, for safety source: $DYNAMIC_ALL_OPTIONAL_ID"
+                            SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING
+                        }, for safety source: $DYNAMIC_ALL_OPTIONAL_ID"
             )
     }
 
@@ -1051,8 +1073,8 @@ class SafetyCenterManagerTest {
             .hasMessageThat()
             .isEqualTo(
                 "Unexpected severity level: ${
-                    SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING
-                }, for issue in safety source: $ISSUE_ONLY_ALL_OPTIONAL_ID"
+                            SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING
+                        }, for issue in safety source: $ISSUE_ONLY_ALL_OPTIONAL_ID"
             )
     }
 
@@ -2764,7 +2786,12 @@ class SafetyCenterManagerTest {
         val apiSafetyCenterIssues = safetyCenterManager.getSafetyCenterDataWithPermission().issues
 
         assertThat(apiSafetyCenterIssues)
-            .containsExactly(safetyCenterCtsData.safetyCenterIssueCritical(SOURCE_ID_1))
+            .containsExactly(
+                safetyCenterCtsData.safetyCenterIssueCritical(
+                    SOURCE_ID_1,
+                    groupId = MULTIPLE_SOURCES_GROUP_ID_1
+                )
+            )
     }
 
     @Test
@@ -2790,8 +2817,14 @@ class SafetyCenterManagerTest {
 
         assertThat(apiSafetyCenterIssues)
             .containsExactly(
-                safetyCenterCtsData.safetyCenterIssueCritical(SOURCE_ID_1),
-                safetyCenterCtsData.safetyCenterIssueCritical(SOURCE_ID_5)
+                safetyCenterCtsData.safetyCenterIssueCritical(
+                    SOURCE_ID_1,
+                    groupId = MULTIPLE_SOURCES_GROUP_ID_1
+                ),
+                safetyCenterCtsData.safetyCenterIssueCritical(
+                    SOURCE_ID_5,
+                    groupId = MULTIPLE_SOURCES_GROUP_ID_2
+                )
             )
             .inOrder()
     }
@@ -2819,8 +2852,14 @@ class SafetyCenterManagerTest {
 
         assertThat(apiSafetyCenterIssues)
             .containsExactly(
-                safetyCenterCtsData.safetyCenterIssueCritical(SOURCE_ID_1),
-                safetyCenterCtsData.safetyCenterIssueCritical(SOURCE_ID_6)
+                safetyCenterCtsData.safetyCenterIssueCritical(
+                    SOURCE_ID_1,
+                    groupId = MULTIPLE_SOURCES_GROUP_ID_1
+                ),
+                safetyCenterCtsData.safetyCenterIssueCritical(
+                    SOURCE_ID_6,
+                    groupId = MULTIPLE_SOURCES_GROUP_ID_2
+                )
             )
             .inOrder()
     }
@@ -2854,7 +2893,12 @@ class SafetyCenterManagerTest {
         val apiSafetyCenterIssues = safetyCenterManager.getSafetyCenterDataWithPermission().issues
 
         assertThat(apiSafetyCenterIssues)
-            .containsExactly(safetyCenterCtsData.safetyCenterIssueCritical(SOURCE_ID_4))
+            .containsExactly(
+                safetyCenterCtsData.safetyCenterIssueCritical(
+                    SOURCE_ID_4,
+                    groupId = MULTIPLE_SOURCES_GROUP_ID_1
+                )
+            )
     }
 
     @Test
@@ -2879,7 +2923,12 @@ class SafetyCenterManagerTest {
         val apiSafetyCenterIssues = safetyCenterManager.getSafetyCenterDataWithPermission().issues
 
         assertThat(apiSafetyCenterIssues)
-            .containsExactly(safetyCenterCtsData.safetyCenterIssueCritical(SOURCE_ID_5))
+            .containsExactly(
+                safetyCenterCtsData.safetyCenterIssueCritical(
+                    SOURCE_ID_5,
+                    groupId = MULTIPLE_SOURCES_GROUP_ID_2
+                )
+            )
     }
 
     @Test
@@ -2940,9 +2989,18 @@ class SafetyCenterManagerTest {
 
         assertThat(apiSafetyCenterIssues)
             .containsExactly(
-                safetyCenterCtsData.safetyCenterIssueCritical(SOURCE_ID_5),
-                safetyCenterCtsData.safetyCenterIssueRecommendation(SOURCE_ID_3),
-                safetyCenterCtsData.safetyCenterIssueRecommendation(SOURCE_ID_4)
+                safetyCenterCtsData.safetyCenterIssueCritical(
+                    SOURCE_ID_5,
+                    groupId = MULTIPLE_SOURCES_GROUP_ID_2
+                ),
+                safetyCenterCtsData.safetyCenterIssueRecommendation(
+                    SOURCE_ID_3,
+                    groupId = MULTIPLE_SOURCES_GROUP_ID_1
+                ),
+                safetyCenterCtsData.safetyCenterIssueRecommendation(
+                    SOURCE_ID_4,
+                    groupId = MULTIPLE_SOURCES_GROUP_ID_1
+                )
             )
             .inOrder()
     }
@@ -2978,7 +3036,12 @@ class SafetyCenterManagerTest {
 
         assertThat(apiSafetyCenterIssues).isEmpty()
         assertThat(apiSafetyCenterDismissedIssues)
-            .containsExactly(safetyCenterCtsData.safetyCenterIssueCritical(SOURCE_ID_1))
+            .containsExactly(
+                safetyCenterCtsData.safetyCenterIssueCritical(
+                    SOURCE_ID_1,
+                    groupId = MULTIPLE_SOURCES_GROUP_ID_1
+                )
+            )
     }
 
     @Test
@@ -3008,7 +3071,12 @@ class SafetyCenterManagerTest {
         val apiSafetyCenterDismissedIssues = apiSafetyCenterData.dismissedIssues
 
         assertThat(apiSafetyCenterIssues)
-            .containsExactly(safetyCenterCtsData.safetyCenterIssueCritical(SOURCE_ID_1))
+            .containsExactly(
+                safetyCenterCtsData.safetyCenterIssueCritical(
+                    SOURCE_ID_1,
+                    groupId = MULTIPLE_SOURCES_GROUP_ID_1
+                )
+            )
         assertThat(apiSafetyCenterDismissedIssues).isEmpty()
     }
 
@@ -3040,7 +3108,12 @@ class SafetyCenterManagerTest {
 
         assertThat(apiSafetyCenterIssues).isEmpty()
         assertThat(apiSafetyCenterDismissedIssues)
-            .containsExactly(safetyCenterCtsData.safetyCenterIssueCritical(SOURCE_ID_1))
+            .containsExactly(
+                safetyCenterCtsData.safetyCenterIssueCritical(
+                    SOURCE_ID_1,
+                    groupId = MULTIPLE_SOURCES_GROUP_ID_1
+                )
+            )
     }
 
     @Test
@@ -3071,7 +3144,12 @@ class SafetyCenterManagerTest {
 
         assertThat(apiSafetyCenterIssues).isEmpty()
         assertThat(apiSafetyCenterDismissedIssues)
-            .containsExactly(safetyCenterCtsData.safetyCenterIssueCritical(SOURCE_ID_1))
+            .containsExactly(
+                safetyCenterCtsData.safetyCenterIssueCritical(
+                    SOURCE_ID_1,
+                    groupId = MULTIPLE_SOURCES_GROUP_ID_1
+                )
+            )
     }
 
     @Test
@@ -3105,13 +3183,23 @@ class SafetyCenterManagerTest {
         val apiSafetyCenterDismissedIssues = apiSafetyCenterData.dismissedIssues
 
         assertThat(apiSafetyCenterDismissedIssues)
-            .containsExactly(safetyCenterCtsData.safetyCenterIssueCritical(SOURCE_ID_5))
+            .containsExactly(
+                safetyCenterCtsData.safetyCenterIssueCritical(
+                    SOURCE_ID_5,
+                    groupId = MULTIPLE_SOURCES_GROUP_ID_2
+                )
+            )
         waitForWithTimeout(timeout = RESURFACE_TIMEOUT, checkPeriod = RESURFACE_CHECK) {
             val hasResurfaced =
                 safetyCenterManager
                     .getSafetyCenterDataWithPermission()
                     .issues
-                    .contains(safetyCenterCtsData.safetyCenterIssueCritical(SOURCE_ID_5))
+                    .contains(
+                        safetyCenterCtsData.safetyCenterIssueCritical(
+                            SOURCE_ID_5,
+                            groupId = MULTIPLE_SOURCES_GROUP_ID_2
+                        )
+                    )
             hasResurfaced
         }
     }
@@ -3156,13 +3244,23 @@ class SafetyCenterManagerTest {
         val apiSafetyCenterDismissedIssues = apiSafetyCenterData.dismissedIssues
 
         assertThat(apiSafetyCenterDismissedIssues)
-            .containsExactly(safetyCenterCtsData.safetyCenterIssueRecommendation(SOURCE_ID_5))
+            .containsExactly(
+                safetyCenterCtsData.safetyCenterIssueRecommendation(
+                    SOURCE_ID_5,
+                    groupId = MULTIPLE_SOURCES_GROUP_ID_2
+                )
+            )
         waitForWithTimeout(timeout = RESURFACE_TIMEOUT, checkPeriod = RESURFACE_CHECK) {
             val hasResurfaced =
                 safetyCenterManager
                     .getSafetyCenterDataWithPermission()
                     .issues
-                    .contains(safetyCenterCtsData.safetyCenterIssueRecommendation(SOURCE_ID_5))
+                    .contains(
+                        safetyCenterCtsData.safetyCenterIssueRecommendation(
+                            SOURCE_ID_5,
+                            groupId = MULTIPLE_SOURCES_GROUP_ID_2
+                        )
+                    )
             hasResurfaced
         }
     }
@@ -3206,14 +3304,24 @@ class SafetyCenterManagerTest {
         val apiSafetyCenterDismissedIssues = apiSafetyCenterData.dismissedIssues
 
         assertThat(apiSafetyCenterDismissedIssues)
-            .containsExactly(safetyCenterCtsData.safetyCenterIssueCritical(SOURCE_ID_1))
+            .containsExactly(
+                safetyCenterCtsData.safetyCenterIssueCritical(
+                    SOURCE_ID_1,
+                    groupId = MULTIPLE_SOURCES_GROUP_ID_1
+                )
+            )
         assertFailsWith(TimeoutCancellationException::class) {
             waitForWithTimeout(timeout = RESURFACE_TIMEOUT, checkPeriod = RESURFACE_CHECK) {
                 val hasResurfaced =
                     safetyCenterManager
                         .getSafetyCenterDataWithPermission()
                         .issues
-                        .contains(safetyCenterCtsData.safetyCenterIssueRecommendation(SOURCE_ID_5))
+                        .contains(
+                            safetyCenterCtsData.safetyCenterIssueRecommendation(
+                                SOURCE_ID_5,
+                                groupId = MULTIPLE_SOURCES_GROUP_ID_2
+                            )
+                        )
                 hasResurfaced
             }
         }
@@ -3258,13 +3366,23 @@ class SafetyCenterManagerTest {
         val apiSafetyCenterDismissedIssues = apiSafetyCenterData.dismissedIssues
 
         assertThat(apiSafetyCenterDismissedIssues)
-            .containsExactly(safetyCenterCtsData.safetyCenterIssueCritical(SOURCE_ID_1))
+            .containsExactly(
+                safetyCenterCtsData.safetyCenterIssueCritical(
+                    SOURCE_ID_1,
+                    groupId = MULTIPLE_SOURCES_GROUP_ID_1
+                )
+            )
         waitForWithTimeout(timeout = RESURFACE_TIMEOUT, checkPeriod = RESURFACE_CHECK) {
             val hasResurfaced =
                 safetyCenterManager
                     .getSafetyCenterDataWithPermission()
                     .issues
-                    .contains(safetyCenterCtsData.safetyCenterIssueCritical(SOURCE_ID_1))
+                    .contains(
+                        safetyCenterCtsData.safetyCenterIssueCritical(
+                            SOURCE_ID_1,
+                            groupId = MULTIPLE_SOURCES_GROUP_ID_1
+                        )
+                    )
             hasResurfaced
         }
     }

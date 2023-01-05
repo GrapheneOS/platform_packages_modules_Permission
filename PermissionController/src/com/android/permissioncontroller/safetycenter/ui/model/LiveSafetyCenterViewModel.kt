@@ -21,6 +21,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_SAFETY_CENTER
 import android.os.Build
+import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterErrorDetails
 import android.safetycenter.SafetyCenterIssue
@@ -78,7 +79,8 @@ class LiveSafetyCenterViewModel(app: Application) : SafetyCenterViewModel(app) {
                     .toSet()
             } else {
                 setOf()
-            })
+            }
+        )
     }
 
     private var changingConfigurations = false
@@ -100,7 +102,8 @@ class LiveSafetyCenterViewModel(app: Application) : SafetyCenterViewModel(app) {
                     SafetyCenterIds.issueIdFromString(issue.id)
                         .toBuilder()
                         .setTaskId(launchTaskId)
-                        .build())
+                        .build()
+                )
             } else {
                 issue.id
             }
@@ -113,7 +116,8 @@ class LiveSafetyCenterViewModel(app: Application) : SafetyCenterViewModel(app) {
 
     override fun rescan() {
         safetyCenterManager.refreshSafetySources(
-            SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK)
+            SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK
+        )
     }
 
     override fun clearError() {
@@ -131,16 +135,49 @@ class LiveSafetyCenterViewModel(app: Application) : SafetyCenterViewModel(app) {
     }
 
     override fun pageOpen() {
-        if (changingConfigurations) {
-            // Don't refresh when changing configurations, but reset for the next pageOpen call
-            changingConfigurations = false
-        } else {
+        executeIfNotChangingConfigurations {
             safetyCenterManager.refreshSafetySources(SafetyCenterManager.REFRESH_REASON_PAGE_OPEN)
+        }
+    }
+
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    override fun pageOpen(sourceGroupId: String) {
+        executeIfNotChangingConfigurations {
+            val safetySourceIds = getSafetySourceIdsToRefresh(sourceGroupId)
+            if (safetySourceIds == null) {
+                Log.w(TAG, "$sourceGroupId has no matching source IDs, so refreshing all sources")
+                safetyCenterManager.refreshSafetySources(
+                    SafetyCenterManager.REFRESH_REASON_PAGE_OPEN
+                )
+            } else {
+                safetyCenterManager.refreshSafetySources(
+                    SafetyCenterManager.REFRESH_REASON_PAGE_OPEN,
+                    safetySourceIds
+                )
+            }
         }
     }
 
     override fun changingConfigurations() {
         changingConfigurations = true
+    }
+
+    private fun executeIfNotChangingConfigurations(block: () -> Unit) {
+        if (changingConfigurations) {
+            // Don't refresh when changing configurations, but reset for the next pageOpen call
+            changingConfigurations = false
+            return
+        }
+
+        block()
+    }
+
+    private fun getSafetySourceIdsToRefresh(sourceGroupId: String): List<String>? {
+        val safetySourcesGroup =
+            safetyCenterManager.safetyCenterConfig?.safetySourcesGroups?.find {
+                it.id == sourceGroupId
+            }
+        return safetySourcesGroup?.safetySources?.map { it.id }
     }
 
     private inner class SafetyCenterLiveData :
@@ -156,7 +193,9 @@ class LiveSafetyCenterViewModel(app: Application) : SafetyCenterViewModel(app) {
 
         override fun onActive() {
             safetyCenterManager.addOnSafetyCenterDataChangedListener(
-                getMainExecutor(app.applicationContext), this)
+                getMainExecutor(app.applicationContext),
+                this
+            )
             super.onActive()
         }
 
@@ -190,7 +229,8 @@ class LiveSafetyCenterViewModel(app: Application) : SafetyCenterViewModel(app) {
                 Log.d(
                     TAG,
                     "Received SafetyCenterData while issue resolution animations" +
-                        " occurring. Will update UI with new data soon.")
+                        " occurring. Will update UI with new data soon."
+                )
                 return
             }
 

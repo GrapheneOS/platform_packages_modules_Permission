@@ -38,6 +38,7 @@ import android.safetycenter.SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_RECOMMENDATIO
 import android.safetycenter.SafetyCenterStatus
 import android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING
 import android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_GROUP_ID
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.CRITICAL_ISSUE_ACTION_ID
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.CRITICAL_ISSUE_ID
 import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.INFORMATION_ISSUE_ACTION_ID
@@ -239,7 +240,8 @@ class SafetyCenterCtsData(context: Context) {
     fun safetyCenterIssueInformation(
         sourceId: String,
         userId: Int = UserHandle.myUserId(),
-        attributionTitle: String? = "OK"
+        attributionTitle: String? = "OK",
+        groupId: String? = SINGLE_SOURCE_GROUP_ID
     ) =
         SafetyCenterIssue.Builder(
                 issueId(sourceId, INFORMATION_ISSUE_ID, userId = userId),
@@ -263,7 +265,12 @@ class SafetyCenterCtsData(context: Context) {
                         .build()
                 )
             )
-            .apply { if (SdkLevel.isAtLeastU()) setAttributionTitle(attributionTitle) }
+            .apply {
+                if (SdkLevel.isAtLeastU()) {
+                    setAttributionTitle(attributionTitle)
+                    setGroupId(groupId)
+                }
+            }
             .build()
 
     /**
@@ -273,7 +280,8 @@ class SafetyCenterCtsData(context: Context) {
     fun safetyCenterIssueRecommendation(
         sourceId: String,
         userId: Int = UserHandle.myUserId(),
-        attributionTitle: String? = "OK"
+        attributionTitle: String? = "OK",
+        groupId: String? = SINGLE_SOURCE_GROUP_ID
     ) =
         SafetyCenterIssue.Builder(
                 issueId(sourceId, RECOMMENDATION_ISSUE_ID, userId = userId),
@@ -296,7 +304,12 @@ class SafetyCenterCtsData(context: Context) {
                         .build()
                 )
             )
-            .apply { if (SdkLevel.isAtLeastU()) setAttributionTitle(attributionTitle) }
+            .apply {
+                if (SdkLevel.isAtLeastU()) {
+                    setAttributionTitle(attributionTitle)
+                    setGroupId(groupId)
+                }
+            }
             .build()
 
     /**
@@ -307,7 +320,8 @@ class SafetyCenterCtsData(context: Context) {
         sourceId: String,
         isActionInFlight: Boolean = false,
         userId: Int = UserHandle.myUserId(),
-        attributionTitle: String? = "OK"
+        attributionTitle: String? = "OK",
+        groupId: String? = SINGLE_SOURCE_GROUP_ID
     ) =
         SafetyCenterIssue.Builder(
                 issueId(sourceId, CRITICAL_ISSUE_ID, userId = userId),
@@ -332,7 +346,12 @@ class SafetyCenterCtsData(context: Context) {
                         .build()
                 )
             )
-            .apply { if (SdkLevel.isAtLeastU()) setAttributionTitle(attributionTitle) }
+            .apply {
+                if (SdkLevel.isAtLeastU()) {
+                    setAttributionTitle(attributionTitle)
+                    setGroupId(groupId)
+                }
+            }
             .build()
 
     /**
