@@ -61,6 +61,8 @@ import android.safetycenter.cts.testing.SafetySourceReceiver
 import android.safetycenter.cts.testing.SettingsPackage.getSettingsPackageName
 import android.safetycenter.cts.testing.UiTestHelper.RESCAN_BUTTON_LABEL
 import android.safetycenter.cts.testing.UiTestHelper.expandMoreIssuesCard
+import android.safetycenter.cts.testing.UiTestHelper.resetRotation
+import android.safetycenter.cts.testing.UiTestHelper.rotate
 import android.safetycenter.cts.testing.UiTestHelper.setAnimationsEnabled
 import android.safetycenter.cts.testing.UiTestHelper.waitAllTextDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.waitAllTextNotDisplayed
@@ -71,7 +73,6 @@ import android.safetycenter.cts.testing.UiTestHelper.waitSourceDataDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.waitSourceIssueDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.waitSourceIssueNotDisplayed
 import android.support.test.uiautomator.By
-import android.support.test.uiautomator.UiDevice
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
@@ -1328,25 +1329,5 @@ class SafetyCenterActivityTest {
         private const val SAFETY_SOURCE_4_SUMMARY = "Safety Source 4 Summary"
         private const val SAFETY_SOURCE_5_TITLE = "Safety Source 5 Title"
         private const val SAFETY_SOURCE_5_SUMMARY = "Safety Source 5 Summary"
-
-        private fun UiDevice.rotate() {
-            unfreezeRotation()
-            if (isNaturalOrientation) {
-                setOrientationLeft()
-            } else {
-                setOrientationNatural()
-            }
-            freezeRotation()
-            waitForIdle()
-        }
-
-        private fun UiDevice.resetRotation() {
-            if (!isNaturalOrientation) {
-                unfreezeRotation()
-                setOrientationNatural()
-                freezeRotation()
-                waitForIdle()
-            }
-        }
     }
 }

@@ -1024,7 +1024,7 @@ public final class SafetySourceIssue implements Parcelable {
                         return new Builder(
                                         TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in),
                                         TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in))
-                                .setActions(in.createTypedArrayList(Action.CREATOR))
+                                .addActions(in.createTypedArrayList(Action.CREATOR))
                                 .build();
                     }
 
@@ -1137,28 +1137,21 @@ public final class SafetySourceIssue implements Parcelable {
                 mActions.addAll(notification.mActions);
             }
 
-            /** Adds an {@link Action} to be show on the custom {@link Notification}. */
+            /** Adds an {@link Action} to the custom {@link Notification}. */
             @NonNull
             public Builder addAction(@NonNull Action action) {
                 mActions.add(requireNonNull(action));
                 return this;
             }
 
-            /**
-             * Sets the list of {@link Action}s to be show on the custom {@link Notification},
-             * removing any which were previously added.
-             */
+            /** Adds several {@link Action}s to the custom {@link Notification}. */
             @NonNull
-            public Builder setActions(@NonNull List<Action> actions) {
-                mActions.clear();
+            public Builder addActions(@NonNull List<Action> actions) {
                 mActions.addAll(requireNonNull(actions));
                 return this;
             }
 
-            /**
-             * Clears all the {@link Action}s that were added to this custom {@link
-             * Notification.Builder}.
-             */
+            /** Clears all the {@link Action}s that were added so far. */
             @NonNull
             public Builder clearActions() {
                 mActions.clear();

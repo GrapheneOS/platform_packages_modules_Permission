@@ -38,8 +38,9 @@ import com.android.safetycenter.resources.SafetyCenterResourcesContext
 
 /** A fragment that represents a generic subpage in Safety Center. */
 @RequiresApi(UPSIDE_DOWN_CAKE)
-class SafetyCenterSubpageFragment(private val sourceGroupId: String) : PreferenceFragmentCompat() {
+class SafetyCenterSubpageFragment : PreferenceFragmentCompat() {
 
+    private lateinit var sourceGroupId: String
     private lateinit var viewModel: SafetyCenterViewModel
     private lateinit var sameTaskSourceIds: List<String>
     private var subpageEntryGroup: PreferenceGroup? = null
@@ -59,6 +60,8 @@ class SafetyCenterSubpageFragment(private val sourceGroupId: String) : Preferenc
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.safety_center_subpage, rootKey)
+        sourceGroupId = requireArguments().getString(SOURCE_GROUP_ID_KEY)!!
+
         sameTaskSourceIds =
             SafetyCenterResourcesContext(requireContext())
                 .getStringByName("config_same_task_safety_source_ids")
@@ -68,7 +71,8 @@ class SafetyCenterSubpageFragment(private val sourceGroupId: String) : Preferenc
         viewModel =
             ViewModelProvider(
                     requireActivity(),
-                    LiveSafetyCenterViewModelFactory(requireActivity().getApplication()))
+                    LiveSafetyCenterViewModelFactory(requireActivity().getApplication())
+                )
                 .get(SafetyCenterViewModel::class.java)
 
         viewModel.safetyCenterUiLiveData.observe(this) { uiData: SafetyCenterUiData? ->
@@ -83,8 +87,7 @@ class SafetyCenterSubpageFragment(private val sourceGroupId: String) : Preferenc
 
     override fun onResume() {
         super.onResume()
-        // TODO(b/253168600): Replace with subpage specific refresh
-        viewModel.pageOpen()
+        viewModel.pageOpen(sourceGroupId)
     }
 
     override fun onDestroy() {
@@ -102,7 +105,7 @@ class SafetyCenterSubpageFragment(private val sourceGroupId: String) : Preferenc
 
     private fun renderSafetyCenterEntryGroup(uiData: SafetyCenterUiData?) {
         Log.d(TAG, "renderSafetyCenterEntryGroup called with $uiData")
-        val entryGroup = getMatchingGroup(uiData, sourceGroupId)
+        val entryGroup = getMatchingGroup(uiData)
         if (entryGroup == null) {
             Log.w(TAG, "$sourceGroupId doesn't match any of the existing SafetySourcesGroup IDs")
             requireActivity().getSupportFragmentManager().popBackStack()
@@ -113,10 +116,7 @@ class SafetyCenterSubpageFragment(private val sourceGroupId: String) : Preferenc
         updateSafetyCenterEntries(entryGroup)
     }
 
-    private fun getMatchingGroup(
-        uiData: SafetyCenterUiData?,
-        sourceGroupId: String
-    ): SafetyCenterEntryGroup? {
+    private fun getMatchingGroup(uiData: SafetyCenterUiData?): SafetyCenterEntryGroup? {
         val entryOrGroups: List<SafetyCenterEntryOrGroup>? =
             uiData?.safetyCenterData?.entriesOrGroups
         val entryGroups = entryOrGroups?.mapNotNull { it.entryGroup }
@@ -128,7 +128,8 @@ class SafetyCenterSubpageFragment(private val sourceGroupId: String) : Preferenc
         subpageEntryGroup?.removeAll()
         for (entry in entryGroup.entries) {
             subpageEntryGroup?.addPreference(
-                SafetySubpageEntryPreference(requireContext(), getTaskIdForEntry(entry.id), entry))
+                SafetySubpageEntryPreference(requireContext(), getTaskIdForEntry(entry.id), entry)
+            )
         }
     }
 
@@ -140,5 +141,17 @@ class SafetyCenterSubpageFragment(private val sourceGroupId: String) : Preferenc
     companion object {
         private val TAG: String = SafetyCenterSubpageFragment::class.java.simpleName
         private const val ENTRY_GROUP_KEY: String = "subpage_entry_group"
+        private const val SOURCE_GROUP_ID_KEY: String = "source_group_id"
+
+        /** Creates an instance of SafetyCenterSubpageFragment with the arguments set */
+        @JvmStatic
+        fun newInstance(groupId: String): SafetyCenterSubpageFragment {
+            val args = Bundle()
+            args.putString(SOURCE_GROUP_ID_KEY, groupId)
+
+            val subpageFragment = SafetyCenterSubpageFragment()
+            subpageFragment.setArguments(args)
+            return subpageFragment
+        }
     }
 }
