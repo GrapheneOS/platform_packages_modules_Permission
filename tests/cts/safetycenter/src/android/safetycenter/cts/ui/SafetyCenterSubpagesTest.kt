@@ -49,13 +49,13 @@ import android.safetycenter.cts.testing.UiTestHelper.waitAllTextNotDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.waitButtonDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.waitDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.waitNotDisplayed
-import android.support.test.uiautomator.By
+import androidx.test.uiautomator.By
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import com.android.compatibility.common.util.DisableAnimationRule
 import com.android.compatibility.common.util.FreezeRotationRule
-import com.android.compatibility.common.util.UiAutomatorUtils
+import com.android.compatibility.common.util.UiAutomatorUtils2
 import org.junit.After
 import org.junit.Assume.assumeTrue
 import org.junit.Before
@@ -100,7 +100,7 @@ class SafetyCenterSubpagesTest {
             return
         }
         safetyCenterCtsHelper.reset()
-        UiAutomatorUtils.getUiDevice().resetRotation()
+        UiAutomatorUtils2.getUiDevice().resetRotation()
     }
 
     @Test
@@ -421,7 +421,7 @@ class SafetyCenterSubpagesTest {
                         )
                     )
                 )
-                UiAutomatorUtils.getUiDevice().rotate()
+                UiAutomatorUtils2.getUiDevice().rotate()
 
                 waitAllTextDisplayed(
                     context.getString(source.titleResId),
@@ -433,7 +433,7 @@ class SafetyCenterSubpagesTest {
     }
 
     private fun openSubpageAndExit(group: SafetySourcesGroup, block: () -> Unit) {
-        val uiDevice = UiAutomatorUtils.getUiDevice()
+        val uiDevice = UiAutomatorUtils2.getUiDevice()
         uiDevice.waitForIdle()
 
         // Opens subpage by clicking on the group title

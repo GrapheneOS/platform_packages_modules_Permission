@@ -16,7 +16,7 @@
 
 package com.android.permissioncontroller.permissionui
 
-import android.support.test.uiautomator.UiDevice
+import androidx.test.uiautomator.UiDevice
 import androidx.test.platform.app.InstrumentationRegistry
 
 /**
