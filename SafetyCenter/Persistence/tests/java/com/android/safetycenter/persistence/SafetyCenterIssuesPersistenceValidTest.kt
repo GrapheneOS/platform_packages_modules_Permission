@@ -52,7 +52,11 @@ class SafetyCenterIssuesPersistenceValidTest {
             arrayOf(
                 Params("FileNotFound", "file_not_found.xml", emptyList()),
                 Params("ValidV0", "valid_file_v0.xml", listOf(ISSUE_1, ISSUE_2)),
-                Params("ValidV1", "valid_file_v1.xml", listOf(ISSUE_0, ISSUE_1, ISSUE_2, ISSUE_3)))
+                Params("ValidV1", "valid_file_v1.xml", listOf(ISSUE_0, ISSUE_1, ISSUE_2, ISSUE_3)),
+                Params(
+                    "ValidV2",
+                    "valid_file_v2.xml",
+                    listOf(ISSUE_0, ISSUE_1, ISSUE_2, ISSUE_3, ISSUE_4, ISSUE_5)))
 
         private val ISSUE_0 =
             PersistedSafetyCenterIssue.Builder()
@@ -80,6 +84,22 @@ class SafetyCenterIssuesPersistenceValidTest {
                 .setFirstSeenAt(Instant.ofEpochMilli(1654128000000))
                 .setDismissedAt(Instant.ofEpochMilli(1654214400000))
                 .setDismissCount(10)
+                .build()
+
+        private val ISSUE_4 =
+            PersistedSafetyCenterIssue.Builder()
+                .setKey("key4")
+                .setFirstSeenAt(Instant.ofEpochMilli(1654128000000))
+                .setDismissedAt(Instant.ofEpochMilli(1654214400000))
+                .setNotificationDismissedAt(Instant.ofEpochMilli(1654214400000))
+                .setDismissCount(1)
+                .build()
+
+        private val ISSUE_5 =
+            PersistedSafetyCenterIssue.Builder()
+                .setKey("key5")
+                .setFirstSeenAt(Instant.ofEpochMilli(1654128000000))
+                .setNotificationDismissedAt(Instant.ofEpochMilli(1654214400000))
                 .build()
     }
 }

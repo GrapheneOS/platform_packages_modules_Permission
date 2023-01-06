@@ -52,6 +52,12 @@ class PersistedSafetyCenterIssueTest {
     }
 
     @Test
+    fun getNotificationDismissedAt_returnsNotificationDismissedAt() {
+        assertThat(ACTIVE_ISSUE.notificationDismissedAt).isEqualTo(null)
+        assertThat(DISMISSED_ISSUE.notificationDismissedAt).isEqualTo(INSTANT)
+    }
+
+    @Test
     fun equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
         EqualsHashCodeToStringTester.of<PersistedSafetyCenterIssue>()
             .addEqualityGroup(
@@ -109,6 +115,7 @@ class PersistedSafetyCenterIssueTest {
                 .setFirstSeenAt(INSTANT)
                 .setDismissedAt(INSTANT)
                 .setDismissCount(1)
+                .setNotificationDismissedAt(INSTANT)
                 .build()
     }
 }

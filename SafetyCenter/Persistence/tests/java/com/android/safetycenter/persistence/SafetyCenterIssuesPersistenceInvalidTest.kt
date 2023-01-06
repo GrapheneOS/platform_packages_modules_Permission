@@ -104,6 +104,11 @@ class SafetyCenterIssuesPersistenceInvalidTest {
                     "Attribute value \"NaN\" for first_seen_at_epoch_millis invalid",
                     null),
                 Params(
+                    "InvalidNotificationDismissedAt",
+                    "invalid_file_invalid_notification_dismissed_at.xml",
+                    "Attribute value \"NaN\" for notification_dismissed_at_epoch_millis invalid",
+                    null),
+                Params(
                     "InvalidVersion",
                     "invalid_file_invalid_version.xml",
                     "Attribute value \"NaN\" for version invalid",

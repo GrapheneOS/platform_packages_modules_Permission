@@ -396,7 +396,7 @@ final class SafetyCenterIssueCache {
             IssueData issueData = new IssueData(persistedIssue.getFirstSeenAt());
             issueData.setDismissedAt(persistedIssue.getDismissedAt());
             issueData.setDismissCount(persistedIssue.getDismissCount());
-            // TODO(b/259083534): Persist notification dismissal state across reboots
+            issueData.setNotificationDismissedAt(persistedIssue.getNotificationDismissedAt());
             return issueData;
         }
 
@@ -447,8 +447,8 @@ final class SafetyCenterIssueCache {
             return new PersistedSafetyCenterIssue.Builder()
                     .setFirstSeenAt(mFirstSeenAt)
                     .setDismissedAt(mDismissedAt)
-                    .setDismissCount(mDismissCount);
-            // TODO(b/259083534): Persist notification dismissal state across reboots
+                    .setDismissCount(mDismissCount)
+                    .setNotificationDismissedAt(mNotificationDismissedAt);
         }
 
         @Override
