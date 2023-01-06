@@ -398,11 +398,18 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g> ကို မူရင်းလမ်းညွှန်အက်ပ်အဖြစ် သတ်မှတ်မလား။"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"ခွင့်ပြုချက် မလိုပါ"</string>
     <string name="role_watch_description" msgid="267003778693177779">"သင်၏ ‘ဖုန်း’၊ ‘SMS စာတိုစနစ်’၊ ‘အဆက်အသွယ်များ’ နှင့် ‘ပြက္ခဒိန်’ ခွင့်ပြုချက်များကို သုံးရန်နှင့် အကြောင်းကြားချက်များကို ပြန်လှန်တုံ့ပြန်ရန် <xliff:g id="APP_NAME">%1$s</xliff:g> ကို ခွင့်ပြုပါမည်။"</string>
-    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
-    <skip />
+    <string name="role_companion_device_glasses_description" msgid="1775655849566169630">"သင့်အကြောင်းကြားချက်များနှင့် ပြန်လှန်တုံ့ပြန်ရန်နှင့် သင့်ဖုန်း၊ SMS စာတိုစနစ်၊ အဆက်အသွယ်၊ မိုက်ခရိုဖုန်းနှင့် အနီးတစ်ဝိုက်ရှိ စက်များ၏ ခွင့်ပြုချက်များအား <xliff:g id="APP_NAME">%1$s</xliff:g> ကို သုံးခွင့်ပြုပါမည်။"</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"သင့်အကြောင်းကြားချက်များကို ပြန်လှန်တုံ့ပြန်ရန်နှင့် သင့်အက်ပ်များကို ချိတ်ဆက်ထားသောစက်သို့ တိုက်ရိုက်လွှင့်ရန် <xliff:g id="APP_NAME">%1$s</xliff:g> ကို ခွင့်ပြုပါမည်။"</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> ကို အနီးတစ်ဝိုက်ရှိ စက်များထံသို့ အကြောင်းအရာ တိုက်ရိုက်ထုတ်လွှင့်ခွင့်ပြုမည်။"</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"ဤဝန်ဆောင်မှုသည် သင်၏ဖုန်းမှ ဓာတ်ပုံ၊ မီဒီယာနှင့် အကြောင်းကြားချက်များကို အခြားစက်ပစ္စည်းများသို့ မျှဝေသည်။"</string>
+    <!-- no translation found for role_notes_label (7694668779088299905) -->
+    <skip />
+    <!-- no translation found for role_notes_short_label (6617887820096092689) -->
+    <skip />
+    <!-- no translation found for role_notes_description (8486216423668803751) -->
+    <skip />
+    <!-- no translation found for role_notes_search_keywords (7710756695666744631) -->
+    <skip />
     <string name="request_role_current_default" msgid="738722892438247184">"လက်ရှိ မူရင်း"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"ထပ်မမေးပါနှင့်"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"မူရင်း သတ်မှတ်ရန်"</string>
