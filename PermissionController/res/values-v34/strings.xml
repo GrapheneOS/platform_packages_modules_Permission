@@ -134,8 +134,13 @@
     <!-- TODO(b/261914980): Update with final safety label change notifications strings. -->
 
     <!-- Title for Data Sharing updates page, which displays updates from apps on their data sharing
-     practices. [CHAR LIMIT=50] -->
+     practices. Also used as the title for Data Sharing updates page entry point from Safety Center.
+      [CHAR LIMIT=50] -->
     <string name="data_sharing_updates_title">Data sharing updates</string>
+    <!-- Summary for Data Sharing updates page entry point in Safety Center. Clicking on the entry
+    will navigate to Data Sharing updates page, which displays updates from apps on their data
+    sharing practices. [CHAR LIMIT=100] -->
+    <string name="data_sharing_updates_summary">Review apps that changed the way they share location data.</string>
     <!-- Subtitle for Data Sharing updates page, which displays updates from apps on their data
      sharing practices. [CHAR LIMIT=200] -->
     <string name="data_sharing_updates_subtitle">These apps have provided updates on data sharing practices. Review these updates and modify app permissions if necessary.</string>

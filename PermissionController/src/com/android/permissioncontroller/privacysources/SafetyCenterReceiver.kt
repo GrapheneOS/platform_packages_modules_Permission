@@ -32,26 +32,34 @@ import androidx.annotation.RequiresApi
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.Constants.UNUSED_APPS_SAFETY_CENTER_SOURCE_ID
 import com.android.permissioncontroller.PermissionControllerApplication
-import com.android.permissioncontroller.permission.service.LocationAccessCheck
+import com.android.permissioncontroller.permission.service.LocationAccessCheck.BG_LOCATION_SOURCE_ID
 import com.android.permissioncontroller.permission.service.v33.SafetyCenterQsTileService
 import com.android.permissioncontroller.permission.service.v33.SafetyCenterQsTileService.Companion.QS_TILE_COMPONENT_SETTING_FLAGS
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.privacysources.WorkPolicyInfo.Companion.WORK_POLICY_INFO_SOURCE_ID
+import com.android.permissioncontroller.privacysources.v34.AppDataSharingUpdatesPrivacySource
+import com.android.permissioncontroller.privacysources.v34.AppDataSharingUpdatesPrivacySource.Companion.APP_DATA_SHARING_UPDATES_SOURCE_ID
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Default
 import kotlinx.coroutines.launch
 
 private fun createMapOfSourceIdsToSources(context: Context): Map<String, PrivacySource> {
-    if (!SdkLevel.isAtLeastT()) {
-        return emptyMap()
+    val sourceMap: MutableMap<String, PrivacySource> = mutableMapOf()
+
+    if (SdkLevel.isAtLeastT()) {
+        sourceMap[SC_NLS_SOURCE_ID] = NotificationListenerPrivacySource()
+        sourceMap[WORK_POLICY_INFO_SOURCE_ID] = WorkPolicyInfo.create(context)
+        sourceMap[SC_ACCESSIBILITY_SOURCE_ID] = AccessibilitySourceService(context)
+        sourceMap[BG_LOCATION_SOURCE_ID] = LocationAccessPrivacySource()
+        sourceMap[UNUSED_APPS_SAFETY_CENTER_SOURCE_ID] = AutoRevokePrivacySource()
     }
-    return mapOf(
-        SC_NLS_SOURCE_ID to NotificationListenerPrivacySource(),
-        WORK_POLICY_INFO_SOURCE_ID to WorkPolicyInfo.create(context),
-        SC_ACCESSIBILITY_SOURCE_ID to AccessibilitySourceService(context),
-        LocationAccessCheck.BG_LOCATION_SOURCE_ID to LocationAccessPrivacySource(),
-        UNUSED_APPS_SAFETY_CENTER_SOURCE_ID to AutoRevokePrivacySource())
+
+    if (SdkLevel.isAtLeastU()) {
+        sourceMap[APP_DATA_SHARING_UPDATES_SOURCE_ID] = AppDataSharingUpdatesPrivacySource()
+    }
+
+    return sourceMap
 }
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
