@@ -432,7 +432,7 @@
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"सहायक ट्रिगर भएको पत्ता लागेमा देखाउनुहोस्"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"आवाज सहायक सक्रिय गर्न माइक्रोफोनको प्रयोग गरिँदा स्टाटस बारमा आइकन देखाउनुहोस्"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई आफ्नो डिभाइसका फोटो र मिडियामाथि पहुँच राख्न दिने हो?"</string>
-    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई सम्पर्क ठेगानाको सूची प्रयोग गर्न दिने हो?"</string>
+    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई कन्ट्याक्ट प्रयोग गर्न दिने हो?"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;लाई यो डिभाइसको लोकेसन प्रयोग दिने हो?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"तपाईंले एप प्रयोग गरिरहेका बेला मात्र उक्त एपले स्थानमाथि पहुँच राख्न सक्ने छ"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;लाई यो डिभाइसको लोकेसन प्रयोग दिने हो?"</string>
