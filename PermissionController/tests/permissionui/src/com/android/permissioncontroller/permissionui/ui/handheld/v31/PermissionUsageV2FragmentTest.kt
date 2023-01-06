@@ -31,8 +31,8 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.Before
 
-import android.support.test.uiautomator.By
-import com.android.compatibility.common.util.UiAutomatorUtils.waitFindObject
+import androidx.test.uiautomator.By
+import com.android.compatibility.common.util.UiAutomatorUtils2.waitFindObject
 import com.android.permissioncontroller.permissionui.PermissionHub2Test
 import com.android.permissioncontroller.permissionui.wakeUpScreen
 
