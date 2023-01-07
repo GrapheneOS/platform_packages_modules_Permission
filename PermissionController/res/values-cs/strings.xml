@@ -233,7 +233,7 @@
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Aplikace s tímto oprávněním mohou najít zařízení v okolí, připojit se k nim a zjistit jejich relativní polohu"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Aplikace s tímto oprávněním mohou nahrávat zvuk"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Aplikace s tímto oprávněním mohou realizovat a spravovat telefonické hovory"</string>
-    <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Aplikace s tímto oprávněním mají přístup k datům ze snímačů vašich životních funkcí"</string>
+    <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Aplikace s tímto oprávněním mají přístup k datům ze senzorů vašich životních funkcí"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Aplikace s tímto oprávněním mohou odesílat a zobrazovat SMS"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Aplikace s tímto oprávněním mají přístup k  fotkám, médiím a souborům v zařízení"</string>
     <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"Aplikace s tímto oprávněním mají přístup k hudbě a dalším zvukovým souborům v zařízení"</string>
@@ -467,7 +467,7 @@
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Tato aplikace chce pořizovat snímky a nahrávat videa kdykoli, dokonce i když ji nepoužíváte. "<annotation id="link">"Povolit v nastavení"</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; přístup k seznamu telefonních hovorů?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uskutečňovat a spravovat telefonní hovory?"</string>
-    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; přístup k údajům ze snímačů vašich životních funkcí?"</string>
+    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; přístup k údajům ze senzorů vašich životních funkcí?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Aplikace požaduje přístup k datům ze senzorů vašich životních funkcí vždy, i když ji nebudete používat. Pokud tuto změnu chcete provést, "<annotation id="link">"přejděte do nastavení."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; přístup k datům ze senzorů vašich životních funkcí?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Pokud chcete této aplikaci povolit trvalý přístup k datům z tělesných senzorů, i když aplikaci nepoužíváte, "<annotation id="link">"přejděte do nastavení"</annotation>"."</string>
