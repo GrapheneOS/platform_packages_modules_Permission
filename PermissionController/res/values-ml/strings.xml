@@ -398,11 +398,18 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g> എന്നതിനെ നിങ്ങളുടെ ഡിഫോൾട്ട് നാവിഗേഷൻ ആപ്പ് ആയി സജ്ജീകരിക്കണോ?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"അനുമതികളൊന്നും ആവശ്യമില്ല"</string>
     <string name="role_watch_description" msgid="267003778693177779">"നിങ്ങളുടെ അറിയിപ്പുകളുമായി സംവദിക്കാനും നിങ്ങളുടെ ഫോൺ, SMS, കോൺടാക്റ്റുകൾ, കലണ്ടർ അനുമതികൾ എന്നിവ ആക്‌സസ് ചെയ്യാനും <xliff:g id="APP_NAME">%1$s</xliff:g> എന്നതിനെ അനുവദിക്കും."</string>
-    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
-    <skip />
+    <string name="role_companion_device_glasses_description" msgid="1775655849566169630">"നിങ്ങളുടെ അറിയിപ്പുകളുമായി സംവദിക്കാനും ഫോൺ, SMS, കോൺടാക്റ്റുകൾ, മൈക്രോഫോൺ, സമീപമുള്ള ഉപകരണങ്ങളുടെ അനുമതികൾ എന്നിവ ആക്‌സസ് ചെയ്യാനും <xliff:g id="APP_NAME">%1$s</xliff:g> എന്നതിനെ അനുവദിക്കും."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"നിങ്ങളുടെ അറിയിപ്പുകളുമായി സംവദിക്കാനും കണക്‌റ്റ് ചെയ്‌ത ഉപകരണത്തിലേക്ക് നിങ്ങളുടെ ആപ്പുകൾ സ്ട്രീം ചെയ്യാനും <xliff:g id="APP_NAME">%1$s</xliff:g> ആപ്പിനെ അനുവദിക്കും."</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"സമീപമുള്ള ഉപകരണങ്ങളിലേക്ക് ഉള്ളടക്കം സ്ട്രീം ചെയ്യാൻ <xliff:g id="APP_NAME">%1$s</xliff:g> എന്നതിനെ അനുവദിക്കും."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"ഈ സേവനം, നിങ്ങളുടെ ഫോണിൽ നിന്നുള്ള ഫോട്ടോകളും മീഡിയയും അറിയിപ്പുകളും മറ്റ് ഉപകരണങ്ങളിലേക്ക് പങ്കിടുന്നു."</string>
+    <!-- no translation found for role_notes_label (7694668779088299905) -->
+    <skip />
+    <!-- no translation found for role_notes_short_label (6617887820096092689) -->
+    <skip />
+    <!-- no translation found for role_notes_description (8486216423668803751) -->
+    <skip />
+    <!-- no translation found for role_notes_search_keywords (7710756695666744631) -->
+    <skip />
     <string name="request_role_current_default" msgid="738722892438247184">"നിലവിലെ ഡിഫോൾട്ട്"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"വീണ്ടും ആവശ്യപ്പെടരുത്"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"ഡിഫോൾട്ടായി സജ്ജമാക്കൂ"</string>

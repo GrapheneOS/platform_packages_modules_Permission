@@ -33,7 +33,7 @@
     <string name="safety_center_issue_card_content_description_with_subtitle" msgid="5504040663935313539">"Хабарландыру. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUBTITLE">%2$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%3$s</xliff:g>"</string>
     <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"Әрекет аяқталды."</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"Құрығыңыздың қауіпсіздігін арттыруы ықтимал параметрлерді тексеріңіз."</string>
-    <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"Қауіпсіздік және құпиялылық жылдам параметрлері"</string>
+    <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"Қауіпсіздік және құпиялық жылдам параметрлері"</string>
     <string name="safety_center_qs_close_button" msgid="1352313308176244599">"Жабу"</string>
     <string name="safety_center_qs_expand_action" msgid="2193190557696484169">"Опцияларды жаю және көрсету"</string>
     <string name="safety_center_qs_collapse_action" msgid="5809657430125309183">"Жию"</string>

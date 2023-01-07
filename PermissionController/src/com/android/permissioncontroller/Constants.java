@@ -22,6 +22,7 @@ import androidx.annotation.RequiresApi;
 
 import com.android.permissioncontroller.hibernation.HibernationJobService;
 import com.android.permissioncontroller.permission.service.PermissionEventCleanupJobService;
+import com.android.permissioncontroller.permission.service.v34.SafetyLabelChangesJobService;
 
 /**
  * App-global constants
@@ -78,6 +79,17 @@ public class Constants {
      */
     public static final int SAFETY_CENTER_BACKGROUND_REFRESH_JOB_ID = 7;
 
+    /**
+     * ID for the periodic job in
+     * {@link SafetyLabelChangesJobService}.
+     */
+    public static final int PERIODIC_SAFETY_LABEL_CHANGES_JOB_ID = 8;
+
+    /**
+     * ID for the on-demand, but delayed job in
+     * {@link SafetyLabelChangesJobService}.
+     */
+    public static final int SAFETY_LABEL_CHANGES_JOB_ID = 9;
 
     /**
      * Name of file to containing the packages we already showed a notification for.
@@ -118,6 +130,12 @@ public class Constants {
     public static final int ACCESSIBILITY_CHECK_NOTIFICATION_ID = 4;
 
     /**
+     * ID for notification shown by
+     * {@link SafetyLabelChangesJobService}.
+     */
+    public static final int SAFETY_LABEL_CHANGES_NOTIFICATION_ID = 5;
+
+    /**
      * String action for navigating to the auto revoke screen.
      */
     public static final String ACTION_MANAGE_AUTO_REVOKE = "manageAutoRevoke";
@@ -141,8 +159,9 @@ public class Constants {
      * Channel of the notifications shown by
      * {@link com.android.permissioncontroller.permission.service.LocationAccessCheck},
      * {@link com.android.permissioncontroller.privacysources.NotificationListenerCheck},
-     * {@link com.android.permissioncontroller.hibernation.HibernationPolicyKt}, and
-     * {@link com.android.permissioncontroller.auto.DrivingDecisionReminderService}
+     * {@link com.android.permissioncontroller.hibernation.HibernationPolicyKt},
+     * {@link com.android.permissioncontroller.auto.DrivingDecisionReminderService}, and
+     * {@link SafetyLabelChangesJobService}
      */
     public static final String PERMISSION_REMINDER_CHANNEL_ID = "permission reminders";
 

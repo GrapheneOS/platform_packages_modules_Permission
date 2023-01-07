@@ -191,6 +191,20 @@
             </intent-filter>
         </receiver>
 
+        <service
+            android:name="com.android.permissioncontroller.permission.service.v34.SafetyLabelChangesJobService"
+            android:enabled="@bool/is_at_least_u"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="false" />
+
+        <receiver
+            android:name="com.android.permissioncontroller.permission.service.v34.SafetyLabelChangesJobService$Receiver"
+            android:enabled="@bool/is_at_least_u"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
 
         <receiver
             android:name="com.android.permissioncontroller.privacysources.AccessibilityOnBootReceiver"
@@ -221,6 +235,17 @@
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_FULLY_REMOVED" />
                 <action android:name="android.intent.action.PACKAGE_DATA_CLEARED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="com.android.permissioncontroller.safetylabel.SafetyLabelChangedBroadcastReceiver"
+            android:enabled="@bool/is_at_least_u"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
