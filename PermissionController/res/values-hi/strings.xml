@@ -398,11 +398,18 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g> को डिफ़ॉल्ट नेविगेशन ऐप्लिकेशन के तौर पर सेट करें?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"अनुमति की ज़रूरत नहीं है"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> आपकी सूचनाओं को पढ़ सकेगा और उन पर कार्रवाई कर पाएगा. साथ ही, यह आपके फ़ोन, एसएमएस, संपर्कों, और कैलेंडर की अनुमतियों को भी ऐक्सेस कर पाएगा."</string>
-    <!-- no translation found for role_companion_device_glasses_description (1775655849566169630) -->
-    <skip />
+    <string name="role_companion_device_glasses_description" msgid="1775655849566169630">"<xliff:g id="APP_NAME">%1$s</xliff:g> को अनुमति होगी कि यह आपकी सूचनाओं पर कार्रवाई कर सके. साथ ही, आपके फ़ोन, मैसेज, संपर्कों, माइक्रोफ़ोन, और आस-पास मौजूद डिवाइसों को ऐक्सेस कर सके."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> आपकी सूचनाओं पर कार्रवाई कर पाएगा. साथ ही, यह आपके कनेक्ट किए गए डिवाइस पर, आपके ऐप्लिकेशन का कॉन्टेंट चला पाएगा."</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> को आस-पास मौजूद डिवाइसों पर कॉन्टेंट स्ट्रीम करने की अनुमति मिल जाएगी."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"यह सेवा आपके फ़ोन की फ़ोटो, मीडिया, और सूचनाओं को दूसरे डिवाइसों पर शेयर करती है."</string>
+    <!-- no translation found for role_notes_label (7694668779088299905) -->
+    <skip />
+    <!-- no translation found for role_notes_short_label (6617887820096092689) -->
+    <skip />
+    <!-- no translation found for role_notes_description (8486216423668803751) -->
+    <skip />
+    <!-- no translation found for role_notes_search_keywords (7710756695666744631) -->
+    <skip />
     <string name="request_role_current_default" msgid="738722892438247184">"मौजूदा डिफ़ॉल्ट"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"फिर से न पूछें"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"डिफ़ॉल्ट के रूप में सेट करें"</string>

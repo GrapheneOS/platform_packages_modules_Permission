@@ -62,6 +62,19 @@
                 title="@com.android.safetycenter.resources:string/privacy_controls_title"
                 summary="@com.android.safetycenter.resources:string/privacy_controls_summary"
                 searchTerms="@com.android.safetycenter.resources:string/privacy_controls_search_terms"/>
+            <dynamic-safety-source
+                id="AndroidPrivacyAppDataSharingUpdates"
+                packageName="com.android.permissioncontroller"
+                profile="primary_profile_only"
+                initialDisplayState="hidden"
+                refreshOnPageOpenAllowed="true"/>
+            <static-safety-source
+                id="AndroidHealthConnect"
+                profile="primary_profile_only"
+                intentAction="android.healthconnect.action.HEALTH_HOME_SETTINGS"
+                title="@com.android.safetycenter.resources:string/health_connect_title"
+                summary="@com.android.safetycenter.resources:string/health_connect_summary"
+                searchTerms="@com.android.safetycenter.resources:string/health_connect_search_terms"/>
             <issue-only-safety-source
                 id="AndroidAccessibility"
                 packageName="com.android.permissioncontroller"
