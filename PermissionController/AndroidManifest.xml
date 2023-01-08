@@ -245,8 +245,8 @@
             android:enabled="@bool/is_at_least_u"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_REMOVED" />
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="com.android.permissioncontroller.action.PACKAGE_ADDED_PERMISSIONCONTROLLER_FORWARDED" />
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
