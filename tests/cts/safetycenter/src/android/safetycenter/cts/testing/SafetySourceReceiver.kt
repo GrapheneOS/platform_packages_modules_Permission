@@ -37,8 +37,8 @@ import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.ref
 import android.safetycenter.cts.testing.SafetySourceIntentHandler.Request
 import android.safetycenter.cts.testing.SafetySourceIntentHandler.Response
 import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermissionIdentity
-import android.safetycenter.cts.testing.WaitForBroadcastIdle.waitForBroadcastIdle
 import androidx.test.core.app.ApplicationProvider
+import com.android.compatibility.common.util.SystemUtil
 import java.time.Duration
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -163,7 +163,7 @@ class SafetySourceReceiver : BroadcastReceiver() {
         ): String {
             refreshSafetySourcesWithPermission(refreshReason, safetySourceIds)
             if (timeout < TIMEOUT_LONG) {
-                getApplicationContext().waitForBroadcastIdle()
+                SystemUtil.waitForBroadcasts()
             }
             return receiveRefreshSafetySources(timeout)
         }
@@ -182,7 +182,7 @@ class SafetySourceReceiver : BroadcastReceiver() {
         ): Boolean {
             SafetyCenterFlags.isEnabled = value
             if (timeout < TIMEOUT_LONG) {
-                getApplicationContext().waitForBroadcastIdle()
+                SystemUtil.waitForBroadcasts()
             }
             return receiveSafetyCenterEnabledChanged(timeout)
         }
