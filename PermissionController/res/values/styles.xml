@@ -563,6 +563,55 @@
         <item name="android:textDirection">locale</item>
     </style>
 
+    <!-- APP PERMISSION RATIONALE CONTAINER  -->
+    <style name="AppPermissionRationaleContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginBottom">24dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="AppPermissionRationaleContent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginBottom">24dp</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="AppPermissionRationaleTextContent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="AppPermissionRationaleTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textDirection">locale</item>
+    </style>
+
+    <style name="AppPermissionRationaleSubtitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+        <item name="android:textDirection">locale</item>
+    </style>
+
+    <style name="AppPermissionRationaleIcon">
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_gravity">start|center_vertical</item>
+        <item name="android:scaleType">centerInside</item>
+        <item name="android:tint">?android:attr/textColorSecondary</item>
+    </style>
+    <!-- END APP PERMISSION RATIONALE CONTAINER -->
+
     <style name="AppPermissionRadioButton"
            parent="@android:style/Widget.DeviceDefault.CompoundButton.RadioButton">
         <item name="android:layout_width">match_parent</item>

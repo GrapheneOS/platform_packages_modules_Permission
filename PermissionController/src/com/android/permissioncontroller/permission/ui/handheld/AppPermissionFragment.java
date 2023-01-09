@@ -73,6 +73,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.data.FullStoragePermissionAppsLiveData.FullStoragePackageState;
+import com.android.permissioncontroller.permission.model.livedatatypes.SafetyLabelInfo;
 import com.android.permissioncontroller.permission.ui.AdvancedConfirmDialogArgs;
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel;
@@ -105,6 +106,8 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
     static final String GRANT_CATEGORY = "grant_category";
 
     private @NonNull AppPermissionViewModel mViewModel;
+    private @NonNull ViewGroup mAppPermissionRationaleContainer;
+    private @NonNull ViewGroup mAppPermissionRationaleContent;
     private @NonNull RadioButton mAllowButton;
     private @NonNull RadioButton mAllowAlwaysButton;
     private @NonNull RadioButton mAllowForegroundButton;
@@ -192,6 +195,10 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
                 getActivity().getApplication(), mPackageName, mPermGroupName, mUser, mSessionId);
         mViewModel = new ViewModelProvider(this, factory).get(AppPermissionViewModel.class);
         Handler delayHandler = new Handler(Looper.getMainLooper());
+        if (KotlinUtils.INSTANCE.isPermissionRationaleEnabled()) {
+            mViewModel.getSafetyLabelInfoLiveData().observe(this,
+                    this::showPermissionRationaleDialog);
+        }
         mViewModel.getButtonStateLiveData().observe(this, buttonState -> {
             if (mIsInitialLoad) {
                 setRadioButtonsState(buttonState);
@@ -284,12 +291,45 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
             TextView storageFooter = root.requireViewById(R.id.footer_storage_special_app_access);
             storageFooter.setVisibility(View.GONE);
         }
+        mAppPermissionRationaleContainer =
+                root.requireViewById(R.id.app_permission_rationale_container);
+        mAppPermissionRationaleContent =
+                root.requireViewById(R.id.app_permission_rationale_content);
+        if (!KotlinUtils.INSTANCE.isPermissionRationaleEnabled()) {
+            hidePermissionRationaleContainer();
+        } else {
+            setPermissionRationaleContainer(root, context);
+        }
 
         getActivity().setTitle(
                 getPreferenceManager().getContext().getString(R.string.app_permission_title,
                         mPermGroupLabel));
-
         return root;
+    }
+
+    private void setPermissionRationaleContainer(View root, Context context) {
+        ((TextView) root.requireViewById(R.id.app_permission_rationale_message)).setText(
+                context.getString(R.string.app_permission_rationale_message));
+        ((TextView) root.requireViewById(R.id.app_permission_rationale_title)).setText(
+                context.getString(R.string.app_location_permission_rationale_title));
+        ((TextView) root.requireViewById(R.id.app_permission_rationale_subtitle)).setText(
+                context.getString(R.string.app_location_permission_rationale_subtitle));
+    }
+
+    private void showPermissionRationaleDialog(@Nullable SafetyLabelInfo safetyLabelInfo) {
+        if (safetyLabelInfo == null
+                || !mViewModel.shouldShowPermissionRationale(safetyLabelInfo, mPermGroupName)) {
+            hidePermissionRationaleContainer();
+        } else {
+            mAppPermissionRationaleContainer.setVisibility(View.VISIBLE);
+            mAppPermissionRationaleContent.setOnClickListener((v) -> {
+                mViewModel.showPermissionRationaleActivity(getActivity(), mPermGroupName);
+            });
+        }
+    }
+
+    private void hidePermissionRationaleContainer() {
+        mAppPermissionRationaleContainer.setVisibility(View.GONE);
     }
 
     private void setBottomLinkState(TextView view, String caller, String action) {

@@ -127,6 +127,15 @@
     [CHAR LIMIT=50] -->
     <string name="permission_rational_purpose_account_management">account management</string>
 
+    <!-- Text for an app's permission rationale header [CHAR LIMIT=60]-->
+    <string name="app_permission_rationale_message">Data privacy</string>
+
+    <!-- Text for linking to an app's location permission rationale dialog. [CHAR LIMIT=60] -->
+    <string name="app_location_permission_rationale_title">Your location may be shared</string>
+
+    <!-- Description for the app's location permission rationale dialog content. [CHAR LIMIT=60] -->
+    <string name="app_location_permission_rationale_subtitle">This app declared it may share your location with third parties</string>
+
     <!-- Permission Rationale - End -->
 
     <!-- Safety Label Change Notifications Start -->
