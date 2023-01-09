@@ -127,6 +127,13 @@
             <item type="style" name="LargeHeaderLink" />
             <item type="style" name="LargeHeaderDivider" />
 
+            <item type="style" name="AppPermissionRationaleContainer"/>
+            <item type="style" name="AppPermissionRationaleContent"/>
+            <item type="style" name="AppPermissionRationaleTextContent"/>
+            <item type="style" name="AppPermissionRationaleTitle"/>
+            <item type="style" name="AppPermissionRationaleSubtitle"/>
+            <item type="style" name="AppPermissionRationaleIcon"/>
+
             <item type="style" name="AppPermissionSelection" />
             <item type="style" name="AppPermissionMessage" />
             <item type="style" name="AppPermissionRadioButton" />
