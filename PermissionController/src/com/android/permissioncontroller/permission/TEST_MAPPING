@@ -9,10 +9,10 @@
             ]
         },
         {
-            "name": "CtsOsTestCases",
+            "name": "CtsHibernationTestCases",
             "options": [
                 {
-                    "include-filter": "android.os.cts.AutoRevokeTest"
+                    "include-filter": "android.hibernation.cts.AutoRevokeTest"
                 }
             ]
         }
