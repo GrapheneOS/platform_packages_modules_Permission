@@ -56,6 +56,8 @@ public class HomeRoleUiBehavior implements RoleUiBehavior {
     @Override
     public void preparePreferenceAsUser(@NonNull Role role, @NonNull TwoTargetPreference preference,
             @NonNull UserHandle user, @NonNull Context context) {
+        RoleUiBehavior.super.preparePreferenceAsUser(role, preference, user, context);
+
         TwoTargetPreference.OnSecondTargetClickListener listener = null;
         RoleManager roleManager = context.getSystemService(RoleManager.class);
         String packageName = CollectionUtils.firstOrNull(roleManager.getRoleHoldersAsUser(
@@ -93,8 +95,13 @@ public class HomeRoleUiBehavior implements RoleUiBehavior {
     public void prepareApplicationPreferenceAsUser(@NonNull Role role,
             @NonNull Preference preference, @NonNull ApplicationInfo applicationInfo,
             @NonNull UserHandle user, @NonNull Context context) {
+        RoleUiBehavior.super.prepareApplicationPreferenceAsUser(
+                    role, preference, applicationInfo, user, context);
+
         boolean missingWorkProfileSupport = isMissingWorkProfileSupport(applicationInfo, context);
-        preference.setEnabled(!missingWorkProfileSupport);
+        if (preference.isEnabled()) {
+            preference.setEnabled(!missingWorkProfileSupport);
+        }
         preference.setSummary(missingWorkProfileSupport ? Utils.getEnterpriseString(context,
                 DevicePolicyResources.Strings.DefaultAppSettings
                         .HOME_MISSING_WORK_PROFILE_SUPPORT_MESSAGE,
