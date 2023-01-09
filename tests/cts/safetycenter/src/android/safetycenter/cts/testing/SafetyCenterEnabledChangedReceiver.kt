@@ -25,7 +25,7 @@ import android.safetycenter.SafetyCenterManager.ACTION_SAFETY_CENTER_ENABLED_CHA
 import android.safetycenter.cts.testing.Coroutines.TIMEOUT_LONG
 import android.safetycenter.cts.testing.Coroutines.runBlockingWithTimeout
 import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermissionIdentity
-import android.safetycenter.cts.testing.WaitForBroadcastIdle.waitForBroadcastIdle
+import com.android.compatibility.common.util.SystemUtil
 import java.time.Duration
 
 /** Broadcast receiver used for testing broadcasts sent when the SafetyCenter flag changes. */
@@ -63,7 +63,7 @@ class SafetyCenterEnabledChangedReceiver(private val context: Context) : Broadca
     ): Boolean {
         SafetyCenterFlags.isEnabled = value
         if (timeout < TIMEOUT_LONG) {
-            context.waitForBroadcastIdle()
+            SystemUtil.waitForBroadcasts()
         }
         return receiveSafetyCenterEnabledChanged(timeout)
     }
