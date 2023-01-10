@@ -25,7 +25,7 @@ import android.safetycenter.SafetyCenterEntryOrGroup
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.ext.truth.os.ParcelableSubject.assertThat
-import com.android.permission.testing.EqualsHashCodeToStringTester
+import com.android.safetycenter.testing.EqualsHashCodeToStringTester
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
