@@ -162,7 +162,7 @@ final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback {
                 }
 
                 writeSafetySourceStateCollectedAtomLocked(
-                        loggableSource.getId(),
+                        loggableSource,
                         userProfileGroup.getProfileParentUserId(),
                         /* isUserManaged= */ false);
 
@@ -174,7 +174,7 @@ final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback {
                         userProfileGroup.getManagedRunningProfilesUserIds();
                 for (int k = 0; k < managedRunningProfilesUserIds.length; k++) {
                     writeSafetySourceStateCollectedAtomLocked(
-                            loggableSource.getId(),
+                            loggableSource,
                             managedRunningProfilesUserIds[k],
                             /* isUserManaged= */ true);
                 }
@@ -184,21 +184,26 @@ final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback {
 
     @GuardedBy("mApiLock")
     private void writeSafetySourceStateCollectedAtomLocked(
-            @NonNull String safetySourceId, @UserIdInt int userId, boolean isUserManaged) {
-        SafetySourceKey key = SafetySourceKey.of(safetySourceId, userId);
+            @NonNull SafetySource safetySource, @UserIdInt int userId, boolean isUserManaged) {
+        SafetySourceKey key = SafetySourceKey.of(safetySource.getId(), userId);
         SafetySourceData safetySourceData = mSafetyCenterRepository.getSafetySourceData(key);
         SafetySourceStatus safetySourceStatus =
                 safetySourceData == null ? null : safetySourceData.getStatus();
         List<SafetySourceIssue> safetySourceIssues =
                 safetySourceData == null ? emptyList() : safetySourceData.getIssues();
-        int maxSeverityLevel = Integer.MIN_VALUE;
+        boolean isIssueOnlyAndHasData =
+                SafetySources.isIssueOnly(safetySource) && safetySourceData != null;
+        int maxSeverityLevel =
+                isIssueOnlyAndHasData
+                        ? SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED
+                        : Integer.MIN_VALUE;
         long openIssuesCount = 0;
         long dismissedIssuesCount = 0;
         for (int i = 0; i < safetySourceIssues.size(); i++) {
             SafetySourceIssue safetySourceIssue = safetySourceIssues.get(i);
             SafetyCenterIssueKey safetyCenterIssueKey =
                     SafetyCenterIssueKey.newBuilder()
-                            .setSafetySourceId(safetySourceId)
+                            .setSafetySourceId(safetySource.getId())
                             .setSafetySourceIssueId(safetySourceIssue.getId())
                             .setUserId(userId)
                             .build();
@@ -217,7 +222,7 @@ final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback {
         Integer maxSeverityOrNull = maxSeverityLevel > Integer.MIN_VALUE ? maxSeverityLevel : null;
 
         mStatsdLogger.writeSafetySourceStateCollected(
-                safetySourceId,
+                safetySource.getId(),
                 isUserManaged,
                 maxSeverityOrNull,
                 openIssuesCount,
