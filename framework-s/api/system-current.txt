@@ -186,7 +186,7 @@ package android.safetycenter {
 
   public static final class SafetyCenterIssue.Action implements android.os.Parcelable {
     method public int describeContents();
-    method @Nullable public android.safetycenter.SafetyCenterIssue.Action.Confirmation getConfirmation();
+    method @Nullable public android.safetycenter.SafetyCenterIssue.Action.ConfirmationDialogDetails getConfirmationDialogDetails();
     method @NonNull public String getId();
     method @NonNull public CharSequence getLabel();
     method @NonNull public android.app.PendingIntent getPendingIntent();
@@ -201,7 +201,7 @@ package android.safetycenter {
     ctor public SafetyCenterIssue.Action.Builder(@NonNull String, @NonNull CharSequence, @NonNull android.app.PendingIntent);
     ctor public SafetyCenterIssue.Action.Builder(@NonNull android.safetycenter.SafetyCenterIssue.Action);
     method @NonNull public android.safetycenter.SafetyCenterIssue.Action build();
-    method @NonNull public android.safetycenter.SafetyCenterIssue.Action.Builder setConfirmation(@Nullable android.safetycenter.SafetyCenterIssue.Action.Confirmation);
+    method @NonNull public android.safetycenter.SafetyCenterIssue.Action.Builder setConfirmationDialogDetails(@Nullable android.safetycenter.SafetyCenterIssue.Action.ConfirmationDialogDetails);
     method @NonNull public android.safetycenter.SafetyCenterIssue.Action.Builder setId(@NonNull String);
     method @NonNull public android.safetycenter.SafetyCenterIssue.Action.Builder setIsInFlight(boolean);
     method @NonNull public android.safetycenter.SafetyCenterIssue.Action.Builder setLabel(@NonNull CharSequence);
@@ -210,15 +210,15 @@ package android.safetycenter {
     method @NonNull public android.safetycenter.SafetyCenterIssue.Action.Builder setWillResolve(boolean);
   }
 
-  public static final class SafetyCenterIssue.Action.Confirmation implements android.os.Parcelable {
-    ctor public SafetyCenterIssue.Action.Confirmation(@NonNull CharSequence, @NonNull CharSequence, @NonNull CharSequence, @NonNull CharSequence);
+  public static final class SafetyCenterIssue.Action.ConfirmationDialogDetails implements android.os.Parcelable {
+    ctor public SafetyCenterIssue.Action.ConfirmationDialogDetails(@NonNull CharSequence, @NonNull CharSequence, @NonNull CharSequence, @NonNull CharSequence);
     method public int describeContents();
-    method @NonNull public CharSequence getAccept();
-    method @NonNull public CharSequence getDeny();
+    method @NonNull public CharSequence getAcceptButtonText();
+    method @NonNull public CharSequence getDenyButtonText();
     method @NonNull public CharSequence getText();
     method @NonNull public CharSequence getTitle();
     method public void writeToParcel(@NonNull android.os.Parcel, int);
-    field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.SafetyCenterIssue.Action.Confirmation> CREATOR;
+    field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.SafetyCenterIssue.Action.ConfirmationDialogDetails> CREATOR;
   }
 
   public static final class SafetyCenterIssue.Builder {
@@ -424,7 +424,7 @@ package android.safetycenter {
 
   public static final class SafetySourceIssue.Action implements android.os.Parcelable {
     method public int describeContents();
-    method @Nullable public android.safetycenter.SafetySourceIssue.Action.Confirmation getConfirmation();
+    method @Nullable public android.safetycenter.SafetySourceIssue.Action.ConfirmationDialogDetails getConfirmationDialogDetails();
     method @NonNull public String getId();
     method @NonNull public CharSequence getLabel();
     method @NonNull public android.app.PendingIntent getPendingIntent();
@@ -438,20 +438,20 @@ package android.safetycenter {
     ctor public SafetySourceIssue.Action.Builder(@NonNull String, @NonNull CharSequence, @NonNull android.app.PendingIntent);
     ctor public SafetySourceIssue.Action.Builder(@NonNull android.safetycenter.SafetySourceIssue.Action);
     method @NonNull public android.safetycenter.SafetySourceIssue.Action build();
-    method @NonNull public android.safetycenter.SafetySourceIssue.Action.Builder setConfirmation(@Nullable android.safetycenter.SafetySourceIssue.Action.Confirmation);
+    method @NonNull public android.safetycenter.SafetySourceIssue.Action.Builder setConfirmationDialogDetails(@Nullable android.safetycenter.SafetySourceIssue.Action.ConfirmationDialogDetails);
     method @NonNull public android.safetycenter.SafetySourceIssue.Action.Builder setSuccessMessage(@Nullable CharSequence);
     method @NonNull public android.safetycenter.SafetySourceIssue.Action.Builder setWillResolve(boolean);
   }
 
-  public static final class SafetySourceIssue.Action.Confirmation implements android.os.Parcelable {
-    ctor public SafetySourceIssue.Action.Confirmation(@NonNull CharSequence, @NonNull CharSequence, @NonNull CharSequence, @NonNull CharSequence);
+  public static final class SafetySourceIssue.Action.ConfirmationDialogDetails implements android.os.Parcelable {
+    ctor public SafetySourceIssue.Action.ConfirmationDialogDetails(@NonNull CharSequence, @NonNull CharSequence, @NonNull CharSequence, @NonNull CharSequence);
     method public int describeContents();
-    method @NonNull public CharSequence getAccept();
-    method @NonNull public CharSequence getDeny();
+    method @NonNull public CharSequence getAcceptButtonText();
+    method @NonNull public CharSequence getDenyButtonText();
     method @NonNull public CharSequence getText();
     method @NonNull public CharSequence getTitle();
     method public void writeToParcel(@NonNull android.os.Parcel, int);
-    field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.SafetySourceIssue.Action.Confirmation> CREATOR;
+    field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.SafetySourceIssue.Action.ConfirmationDialogDetails> CREATOR;
   }
 
   public static final class SafetySourceIssue.Builder {

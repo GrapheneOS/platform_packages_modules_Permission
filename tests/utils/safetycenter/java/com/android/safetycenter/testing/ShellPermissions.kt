@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package android.safetycenter.cts.testing
+package com.android.safetycenter.testing
 
 import android.app.UiAutomation
 import android.app.UiAutomation.ALL_PERMISSIONS
