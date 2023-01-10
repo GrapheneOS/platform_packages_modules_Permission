@@ -249,7 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Tüm dosyaları yönetme izni verilenler"</string>
     <string name="ask_header" msgid="2633816846459944376">"Her zaman sorulacaklar"</string>
     <string name="denied_header" msgid="903209608358177654">"İzin verilmeyenler"</string>
-    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Tüm dosyalara erişebilen daha fazla uygulama görün"</string>
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Tüm dosyalara erişebilen diğer uygulamaları görün"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 gün}other{# gün}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 saat}other{# saat}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 dakika}other{# dakika}}"</string>

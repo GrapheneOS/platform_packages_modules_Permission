@@ -22,13 +22,13 @@
     <string name="lock_screen_sources_summary" msgid="7220439741282516496"></string>
     <string name="lock_screen_title" msgid="4069104894527169877">"Näytön lukitus"</string>
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"Ei vielä tietoja"</string>
-    <string name="privacy_sources_title" msgid="4061110826457365957">"Tietosuoja"</string>
+    <string name="privacy_sources_title" msgid="4061110826457365957">"Yksityisyys"</string>
     <string name="privacy_sources_summary" msgid="4089719981155120864">"Hallintapaneeli, luvat ja asetukset"</string>
     <string name="permission_usage_title" msgid="3633779688945350407">"Yksityisyydenhallintapaneeli"</string>
     <string name="permission_usage_summary" msgid="5323079206029964468">"Näytä, mitkä sovellukset ovat käyttäneet lupia äskettäin"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"Lupien ylläpito"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"Päätä sovelluksen pääsystä dataasi"</string>
-    <string name="privacy_controls_title" msgid="5322875777945432395">"Tietosuojahallinta"</string>
+    <string name="privacy_controls_title" msgid="5322875777945432395">"Yksityisyysasetukset"</string>
     <string name="privacy_controls_summary" msgid="2402066941190435424">"Hallinnoi laitteiden pääsyä mikrofoniin, kameraan ja muihin"</string>
     <string name="advanced_title" msgid="8745436380690561172">"Lisää asetuksia"</string>
     <string name="advanced_security_title" msgid="1126833338772188155">"Lisää tietoturva-asetuksia"</string>

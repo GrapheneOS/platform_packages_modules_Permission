@@ -188,7 +188,7 @@
     <string name="app_permission_button_ask" msgid="3342950658789427">"Luôn hỏi"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Không cho phép"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Vị trí chính xác"</string>
-    <string name="approximate_image_description" msgid="938803699637069884">"Vị trí gần đúng"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"Vị trí ước chừng"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Sử dụng vị trí chính xác"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Khi chế độ vị trí chính xác đang tắt, các ứng dụng có thể truy cập vào thông tin vị trí gần đúng của bạn"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Quyền <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -319,7 +319,7 @@
     <string name="no_permissions_allowed" msgid="6081976856354669209">"Chưa cấp quyền nào"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"Chưa từ chối quyền nào"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"Chưa cho phép ứng dụng nào"</string>
-    <string name="no_apps_allowed_full" msgid="8011716991498934104">"Không cho phép ứng dụng nào đối với tất cả các tệp"</string>
+    <string name="no_apps_allowed_full" msgid="8011716991498934104">"Không ứng dụng nào được phép truy cập tất cả các tệp"</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"Chỉ không cho phép ứng dụng nào đối với nội dung nghe nhìn"</string>
     <string name="no_apps_denied" msgid="7663435886986784743">"Chưa từ chối ứng dụng nào"</string>
     <string name="car_permission_selected" msgid="180837028920791596">"Đã chọn"</string>

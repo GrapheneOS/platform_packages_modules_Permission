@@ -25,11 +25,11 @@
     <string name="privacy_sources_title" msgid="4061110826457365957">"Privacy"</string>
     <string name="privacy_sources_summary" msgid="4089719981155120864">"Dashboard, rechten, bedieningselementen"</string>
     <string name="permission_usage_title" msgid="3633779688945350407">"Privacydashboard"</string>
-    <string name="permission_usage_summary" msgid="5323079206029964468">"Tonen welke apps onlangs rechten hebben gebruikt"</string>
+    <string name="permission_usage_summary" msgid="5323079206029964468">"Toon welke apps onlangs rechten hebben gebruikt"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"Rechtenbeheer"</string>
-    <string name="permission_manager_summary" msgid="8099852107340970790">"App-toegang tot je gegevens beheren"</string>
+    <string name="permission_manager_summary" msgid="8099852107340970790">"Beheer de toegang van apps tot je gegevens"</string>
     <string name="privacy_controls_title" msgid="5322875777945432395">"Privacyopties"</string>
-    <string name="privacy_controls_summary" msgid="2402066941190435424">"Apparaattoegang tot de microfoon, camera en meer beheren"</string>
+    <string name="privacy_controls_summary" msgid="2402066941190435424">"Beheer apparaattoegang tot de microfoon, camera en meer"</string>
     <string name="advanced_title" msgid="8745436380690561172">"Meer instellingen"</string>
     <string name="advanced_security_title" msgid="1126833338772188155">"Meer beveiligingsinstellingen"</string>
     <string name="advanced_security_summary" msgid="6172253327022425123">"Versleuteling, inloggegevens en meer"</string>

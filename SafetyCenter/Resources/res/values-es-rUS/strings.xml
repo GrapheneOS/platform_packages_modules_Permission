@@ -18,7 +18,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"Recursos del Centro de seguridad"</string>
-    <string name="lock_screen_sources_title" msgid="3317906280484627707">"Bloqueo de dispositivos"</string>
+    <string name="lock_screen_sources_title" msgid="3317906280484627707">"Bloqueo de dispositivo"</string>
     <string name="lock_screen_sources_summary" msgid="7220439741282516496"></string>
     <string name="lock_screen_title" msgid="4069104894527169877">"Bloqueo de pantalla"</string>
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"Aún no hay información"</string>

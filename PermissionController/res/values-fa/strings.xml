@@ -67,7 +67,7 @@
     <string name="app_permission_manager" msgid="3903811137630909550">"مدیر اجازه‌ها"</string>
     <string name="never_ask_again" msgid="4728762438198560329">"دوباره سؤال نشود"</string>
     <string name="no_permissions" msgid="3881676756371148563">"مجوزی موجود نیست"</string>
-    <string name="additional_permissions" msgid="5801285469338873430">"اجازه‌های تکمیلی"</string>
+    <string name="additional_permissions" msgid="5801285469338873430">"اجازه‌های جانبی"</string>
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"باز کردن اطلاعات برنامه"</string>
     <string name="additional_permissions_more" msgid="5681220714755304407">"{count,plural, =1{# اجازه دیگر}one{# اجازه دیگر}other{# اجازه دیگر}}"</string>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"‏این برنامه برای نسخه قدیمی‌تری از Android طراحی شده بود. رد کردن مجوز ممکن است باعث شود که برنامه دیگر عملکرد موردانتظار را نداشته باشند."</string>
@@ -173,7 +173,7 @@
     <string name="sort_by_app" msgid="4055799843051138087">"به‌ترتیب استفاده برنامه"</string>
     <string name="sort_by_time" msgid="5435045320002150456">"به‌ترتیب زمان"</string>
     <string name="item_separator" msgid="4030255389809224513">"، "</string>
-    <string name="permission_usage_refresh" msgid="2264056346561305420">"بازآوری کردن"</string>
+    <string name="permission_usage_refresh" msgid="2264056346561305420">"بازآوردن"</string>
     <string name="permission_history_title" msgid="8340081285133025225">"سابقه اجازه"</string>
     <string name="permission_history_category_today" msgid="7496389369158806620">"امروز"</string>
     <string name="permission_history_category_yesterday" msgid="7242517121222012521">"دیروز"</string>
@@ -224,11 +224,11 @@
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"اگر مدیریت همه فایل‌ها را مجاز کنید، این برنامه می‌تواند به همه فایل‌های موجود در فضای ذخیره‌سازی استاندارد این دستگاه یا دستگاه‌های ذخیره‌سازی متصل دسترسی داشته باشد، آن‌ها را تغییر دهد، و حذف کند. این برنامه ممکن است بدون سؤال کردن از شما به فایل‌ها دسترسی پیدا کند."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"به این برنامه اجازه داده شود به فایل‌های موجود در این دستگاه یا دستگاه‌های ذخیره‌سازی متصل دسترسی داشته باشد، آن‌ها را تغییر دهد، و حذف کند؟ این برنامه ممکن است بدون سؤال کردن از شما به فایل‌ها دسترسی پیدا کند."</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"برنامه‌هایی که این مجوز را داشته باشند می‌توانند <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
-    <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"برنامه‌هایی که این مجوز را داشته باشند می‌توانند به فعالیت فیزیکی شما، مانند پیاده‌روی، دوچرخه‌سواری، رانندگی، قدم‌شماری، و غیره دسترسی داشته باشند"</string>
-    <string name="permission_description_summary_calendar" msgid="103329982944411010">"برنامه‌هایی که این مجوز را داشته باشند می‌توانند به تقویمتان دسترسی داشته باشند"</string>
+    <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"برنامه‌های دارای این اجازه می‌توانند به فعالیت فیزیکی‌تان مانند پیاده‌روی، دوچرخه‌سواری، رانندگی، قدم‌شماری، و غیره دسترسی داشته باشند"</string>
+    <string name="permission_description_summary_calendar" msgid="103329982944411010">"برنامه‌های دارای این اجازه می‌توانند به تقویمتان دسترسی داشته باشند"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"برنامه‌هایی که این مجوز را داشته باشند می‌توانند گزارش تماس تلقنی را بخوانند و بنویسند"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"برنامه‌هایی که این مجوز را داشته باشند می‌توانند عکس بگیرند و ویدیو ضبط کنند"</string>
-    <string name="permission_description_summary_contacts" msgid="2337798886460408996">"برنامه‌هایی که این مجوز را داشته باشند می‌توانند به مخاطبین دسترسی داشته باشند"</string>
+    <string name="permission_description_summary_contacts" msgid="2337798886460408996">"برنامه‌های دارای این اجازه می‌توانند به مخاطبین دسترسی داشته باشند"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"برنامه‌هایی که این مجوز را داشته باشند می‌توانند به مکان این دستگاه دسترسی داشته باشند"</string>
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"برنامه‌هایی که این اجازه را دارند می‌توانند دستگاه‌های اطراف را پیدا کنند، به آن‌ها متصل شوند، و موقعیت نسبی آن‌ها را مشخص کنند"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"برنامه‌هایی که این مجوز را داشته باشند می‌توانند صدا ضبط کنند"</string>
@@ -479,7 +479,7 @@
     <string name="other_permissions_label" msgid="8986184335503271992">"اجازه‌های دیگر"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"اجازه‌هایی که سیستم استفاده می‌کند"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"اجازه‌هایی که فقط برنامه‌های سیستم استفاده می‌کنند."</string>
-    <string name="additional_permissions_label" msgid="7693557637462569046">"اجازه‌های تکمیلی"</string>
+    <string name="additional_permissions_label" msgid="7693557637462569046">"اجازه‌های جانبی"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"اجازه‌هایی که برنامه‌ها تعریف کرده‌اند."</string>
     <string name="privdash_label_camera" msgid="1426440033626198096">"دوربین"</string>
     <string name="privdash_label_microphone" msgid="8415035835803511693">"میکروفون"</string>
