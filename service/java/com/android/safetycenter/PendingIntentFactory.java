@@ -248,10 +248,15 @@ final class PendingIntentFactory {
     }
 
     private static boolean intentResolves(@NonNull Context packageContext, @NonNull Intent intent) {
-        return !packageContext
-                .getPackageManager()
-                .queryIntentActivities(intent, ResolveInfoFlags.of(0))
-                .isEmpty();
+        PackageManager packageManager = packageContext.getPackageManager();
+        // This call requires the INTERACT_ACROSS_USERS permission as the `packageContext` could
+        // belong to another user.
+        final long callingId = Binder.clearCallingIdentity();
+        try {
+            return !packageManager.queryIntentActivities(intent, ResolveInfoFlags.of(0)).isEmpty();
+        } finally {
+            Binder.restoreCallingIdentity(callingId);
+        }
     }
 
     @NonNull
