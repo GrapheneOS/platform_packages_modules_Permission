@@ -51,6 +51,19 @@ object SafetyCenterFlags {
     private val notificationsFlag =
         Flag("safety_center_notifications_enabled", defaultValue = false, BooleanParser())
 
+    /*
+     * Flag that determines the minimum delay before Safety Center sends a notification with
+     * {@link android.safetycenter.SafetySourceIssue.NotificationBehavior.NOTIFICATION_BEHAVIOR_DELAYED}.
+     *
+     * The actual delay used may be longer.
+     */
+    private val notificationsMinDelayFlag =
+        Flag(
+            "safety_center_notifications_min_delay",
+            defaultValue = Duration.ofHours(2),
+            DurationParser()
+        )
+
     /**
      * Flag containing a comma delimited list of IDs of sources that Safety Center can send
      * notifications about, in addition to those permitted by the current XML config.
@@ -245,6 +258,7 @@ object SafetyCenterFlags {
             isEnabledFlag,
             notificationsFlag,
             notificationsAllowedSourcesFlag,
+            notificationsMinDelayFlag,
             showErrorEntriesOnTimeoutFlag,
             replaceLockScreenIconActionFlag,
             refreshSourceTimeoutsFlag,
@@ -278,6 +292,9 @@ object SafetyCenterFlags {
 
     /** A property that allowed getting and setting the [notificationsAllowedSourcesFlag]. */
     var notificationsAllowedSources: Set<String> by notificationsAllowedSourcesFlag
+
+    /** A property that allows getting and setting the [notificationsMinDelayFlag]. */
+    var notificationsMinDelay: Duration by notificationsMinDelayFlag
 
     /** A property that allows getting and setting the [showErrorEntriesOnTimeoutFlag]. */
     var showErrorEntriesOnTimeout: Boolean by showErrorEntriesOnTimeoutFlag
