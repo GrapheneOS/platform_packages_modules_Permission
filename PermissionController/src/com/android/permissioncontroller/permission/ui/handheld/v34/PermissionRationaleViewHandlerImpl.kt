@@ -17,6 +17,8 @@
 package com.android.permissioncontroller.permission.ui.handheld.v34
 
 import android.app.Activity
+import android.content.Context
+import android.content.res.ColorStateList
 import android.os.Build
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
@@ -129,8 +131,13 @@ class PermissionRationaleViewHandlerImpl(
         learnMoreMessageView = rootView.findViewById(R.id.learn_more_message)
         learnMoreMessageView!!.movementMethod = LinkMovementMethod.getInstance()
 
-        backButton = rootView.findViewById<Button>(R.id.back_button)
-        backButton!!.setOnClickListener(this)
+        backButton = rootView.findViewById<Button>(R.id.back_button)!!.apply {
+            setOnClickListener(this@PermissionRationaleViewHandlerImpl)
+
+            // Load the text color from the activity theme rather than the Material Design theme
+            val textColor = getColorStateListForAttr(mActivity, android.R.attr.textColorPrimary)!!
+            setTextColor(textColor)
+        }
 
         this.rootView = rootView
 
@@ -200,5 +207,12 @@ class PermissionRationaleViewHandlerImpl(
 
         // Animation parameters.
         private const val ANIMATION_DURATION_MILLIS: Long = 200
+
+        fun getColorStateListForAttr(context: Context, attr: Int): ColorStateList? {
+            val typedArray = context.obtainStyledAttributes(intArrayOf(attr))
+            val colorStateList = typedArray.getColorStateList(0)
+            typedArray.recycle()
+            return colorStateList
+        }
     }
 }
