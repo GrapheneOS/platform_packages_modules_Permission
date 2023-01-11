@@ -18,9 +18,14 @@ package com.android.permissioncontroller.permission.model.v34
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import com.android.permissioncontroller.permission.model.v34.DataSharingUpdateType.ADDS_ADVERTISING_PURPOSE
+import com.android.permissioncontroller.permission.model.v34.DataSharingUpdateType.ADDS_SHARING_WITHOUT_ADVERTISING_PURPOSE
+import com.android.permissioncontroller.permission.model.v34.DataSharingUpdateType.ADDS_SHARING_WITH_ADVERTISING_PURPOSE
+import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.AppSafetyLabelDiff
+import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.SafetyLabel
 
 /**
- * Class representing an update in an app's data sharing policy from its safety label.
+ * Class representing a significant update in an app's data sharing policy from its safety label.
  *
  * Note that safety labels are part of package information, and therefore the safety label
  * information applies to apps for all users that have the app installed.
@@ -35,14 +40,68 @@ data class AppDataSharingUpdate(
 
     /** Companion object for [AppDataSharingUpdate]. */
     companion object {
+        /**
+         * Builds and returns an [AppDataSharingUpdate] from an [AppSafetyLabelDiff], if the change
+         * in safety labels is significant, else returns null.
+         */
+        fun AppSafetyLabelDiff.buildUpdateIfSignificantChange(): AppDataSharingUpdate? {
+            // In Android U, only updates for the location data category will be displayed in
+            // the UI.
+            val updates = getUpdatesForCategories(listOf(LOCATION_CATEGORY))
+
+            return if (updates.isEmpty()) null
+            else AppDataSharingUpdate(safetyLabelBefore.appInfo.packageName, updates)
+        }
+
+        private fun AppSafetyLabelDiff.getUpdatesForCategories(
+            categories: List<String>
+        ): Map<String, DataSharingUpdateType> {
+            val categoryUpdateMap = mutableMapOf<String, DataSharingUpdateType>()
+
+            for (category in categories) {
+                var categoryUpdateType: DataSharingUpdateType? = null
+
+                val beforeSharesData = safetyLabelBefore.sharesData(category)
+                val beforeSharesDataForAds = safetyLabelBefore.sharesDataForAdsPurpose(category)
+                val afterSharesData = safetyLabelAfter.sharesData(category)
+                val afterSharesDataForAds = safetyLabelAfter.sharesDataForAdsPurpose(category)
+
+                categoryUpdateType =
+                    when {
+                        !beforeSharesData && afterSharesDataForAds ->
+                            ADDS_SHARING_WITH_ADVERTISING_PURPOSE
+                        !beforeSharesData && afterSharesData && !afterSharesDataForAds ->
+                            ADDS_SHARING_WITHOUT_ADVERTISING_PURPOSE
+                        beforeSharesData && !beforeSharesDataForAds && afterSharesDataForAds ->
+                            ADDS_ADVERTISING_PURPOSE
+                        else -> null
+                    }
+
+                if (categoryUpdateType == null) {
+                    continue
+                }
+
+                categoryUpdateMap[category] = categoryUpdateType
+            }
+
+            return categoryUpdateMap
+        }
+
         // TODO(b/263153040): Use categories from safety label library.
         const val LOCATION_CATEGORY = "location"
+
+        private fun SafetyLabel.sharesData(category: String) =
+            dataLabel.dataShared.containsKey(category)
+
+        private fun SafetyLabel.sharesDataForAdsPurpose(category: String) =
+            dataLabel.dataShared[category]?.containsAdvertisingPurpose ?: false
     }
 }
 
-/** Different ways in which data sharing can be updated for a particular data category. */
+/**
+ * Different ways in which data sharing can be significantly updated for a particular data category.
+ */
 enum class DataSharingUpdateType {
-    NOT_SIGNIFICANT,
     ADDS_ADVERTISING_PURPOSE,
     ADDS_SHARING_WITHOUT_ADVERTISING_PURPOSE,
     ADDS_SHARING_WITH_ADVERTISING_PURPOSE
