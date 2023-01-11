@@ -376,7 +376,8 @@ class SafetyCenterNotificationTest {
                     actions = listOf("See issue", "New action")
                 )
             )
-        assertThat(initialNotification.key).isEqualTo(revisedNotification.key)
+        assertThat(initialNotification.statusBarNotification.key)
+            .isEqualTo(revisedNotification.statusBarNotification.key)
     }
 
     @Test
@@ -431,7 +432,7 @@ class SafetyCenterNotificationTest {
 
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data1)
 
-        val notification =
+        val notificationWithChannel =
             CtsNotificationListener.waitForSingleNotificationMatching(
                 NotificationCharacteristics(
                     title = "Initial",
@@ -440,7 +441,7 @@ class SafetyCenterNotificationTest {
                 )
             )
 
-        CtsNotificationListener.cancelAndWait(notification.key)
+        CtsNotificationListener.cancelAndWait(notificationWithChannel.statusBarNotification.key)
 
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data2)
 
@@ -476,9 +477,9 @@ class SafetyCenterNotificationTest {
         // an update for that
         val listener = safetyCenterCtsHelper.addListener()
 
-        val notification = CtsNotificationListener.waitForSingleNotification()
+        val notificationWithChannel = CtsNotificationListener.waitForSingleNotification()
 
-        CtsNotificationListener.cancelAndWait(notification.key)
+        CtsNotificationListener.cancelAndWait(notificationWithChannel.statusBarNotification.key)
 
         assertFailsWith(TimeoutCancellationException::class) {
             listener.receiveSafetyCenterData(TIMEOUT_SHORT)
@@ -506,8 +507,9 @@ class SafetyCenterNotificationTest {
             SINGLE_SOURCE_ID,
             safetySourceCtsData.criticalWithResolvingGeneralIssue
         )
-        val notification = CtsNotificationListener.waitForSingleNotification()
-        val action = notification.notification.actions.firstOrNull()
+        val notificationWithChannel = CtsNotificationListener.waitForSingleNotification()
+        val action =
+            notificationWithChannel.statusBarNotification.notification.actions.firstOrNull()
         checkNotNull(action) { "Notification action unexpectedly null" }
         SafetySourceReceiver.setResponse(
             Request.ResolveAction(SINGLE_SOURCE_ID),
@@ -534,8 +536,9 @@ class SafetyCenterNotificationTest {
             SINGLE_SOURCE_ID,
             safetySourceCtsData.criticalWithResolvingGeneralIssue
         )
-        val notification = CtsNotificationListener.waitForSingleNotification()
-        val action = notification.notification.actions.firstOrNull()
+        val notificationWithChannel = CtsNotificationListener.waitForSingleNotification()
+        val action =
+            notificationWithChannel.statusBarNotification.notification.actions.firstOrNull()
         checkNotNull(action) { "Notification action unexpectedly null" }
         SafetySourceReceiver.setResponse(Request.ResolveAction(SINGLE_SOURCE_ID), Response.Error)
         val listener = safetyCenterCtsHelper.addListener()
