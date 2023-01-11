@@ -90,7 +90,7 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
 private val TAG = "NotificationListenerCheck"
-private const val DEBUG = true
+private const val DEBUG = false
 const val SC_NLS_SOURCE_ID = "AndroidNotificationListener"
 @VisibleForTesting const val SC_NLS_DISABLE_ACTION_ID = "disable_nls_component"
 
