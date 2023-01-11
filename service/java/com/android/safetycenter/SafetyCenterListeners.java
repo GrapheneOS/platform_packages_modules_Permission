@@ -221,27 +221,52 @@ final class SafetyCenterListeners {
             return;
         }
         int i = listenersForUserId.beginBroadcast();
-        while (i > 0) {
-            i--;
-            OnSafetyCenterDataChangedListenerWrapper listenerWrapper =
-                    (OnSafetyCenterDataChangedListenerWrapper)
-                            listenersForUserId.getBroadcastItem(i);
-            SafetyCenterData safetyCenterData = null;
-            if (updateSafetyCenterData) {
-                String packageName = listenerWrapper.getPackageName();
-                SafetyCenterData cachedSafetyCenterData = safetyCenterDataCache.get(packageName);
-                if (cachedSafetyCenterData != null) {
-                    safetyCenterData = cachedSafetyCenterData;
-                } else {
-                    safetyCenterData =
-                            mSafetyCenterDataFactory.assembleSafetyCenterData(
-                                    packageName, userProfileGroup);
-                    safetyCenterDataCache.put(packageName, safetyCenterData);
-                }
+        try {
+            while (i > 0) {
+                i--;
+                deliverUpdateForListenerWrapper(
+                        (OnSafetyCenterDataChangedListenerWrapper)
+                                listenersForUserId.getBroadcastItem(i),
+                        userProfileGroup,
+                        safetyCenterDataCache,
+                        updateSafetyCenterData,
+                        safetyCenterErrorDetails);
             }
-            deliverUpdateForListener(listenerWrapper, safetyCenterData, safetyCenterErrorDetails);
+        } finally {
+            listenersForUserId.finishBroadcast();
         }
-        listenersForUserId.finishBroadcast();
+    }
+
+    private void deliverUpdateForListenerWrapper(
+            OnSafetyCenterDataChangedListenerWrapper listenerWrapper,
+            @NonNull UserProfileGroup userProfileGroup,
+            @NonNull ArrayMap<String, SafetyCenterData> safetyCenterDataCache,
+            boolean updateSafetyCenterData,
+            @Nullable SafetyCenterErrorDetails safetyCenterErrorDetails) {
+        SafetyCenterData safetyCenterData = null;
+        if (updateSafetyCenterData) {
+            safetyCenterData =
+                    assembleSafetyCenterDataIfAbsent(
+                            safetyCenterDataCache,
+                            listenerWrapper.getPackageName(),
+                            userProfileGroup);
+        }
+        deliverUpdateForListener(listenerWrapper, safetyCenterData, safetyCenterErrorDetails);
+    }
+
+    @NonNull
+    private SafetyCenterData assembleSafetyCenterDataIfAbsent(
+            @NonNull ArrayMap<String, SafetyCenterData> safetyCenterDataCache,
+            @NonNull String packageName,
+            @NonNull UserProfileGroup userProfileGroup) {
+        SafetyCenterData cachedSafetyCenterData = safetyCenterDataCache.get(packageName);
+        if (cachedSafetyCenterData != null) {
+            return cachedSafetyCenterData;
+        }
+        SafetyCenterData safetyCenterData =
+                mSafetyCenterDataFactory.assembleSafetyCenterData(packageName, userProfileGroup);
+        safetyCenterDataCache.put(packageName, safetyCenterData);
+        return safetyCenterData;
     }
 
     /** Dumps state for debugging purposes. */
