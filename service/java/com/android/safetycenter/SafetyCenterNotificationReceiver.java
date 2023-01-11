@@ -29,7 +29,9 @@ import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
+import com.android.internal.annotations.GuardedBy;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
+import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 
 /**
@@ -37,8 +39,9 @@ import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
  * notifications e.g. when a notification is dismissed.
  *
  * <p>Use {@link #register(Context)} to register this receiver with the correct {@link IntentFilter}
- * and use the {@link #newNotificationDismissedIntent(Context, SafetyCenterIssueKey)} factory method
- * to create new intents for this receiver.
+ * and use the {@link #newNotificationDismissedIntent(Context, SafetyCenterIssueKey)} and {@link
+ * #newNotificationActionClickedIntent(Context, SafetyCenterIssueActionId)} factory methods to
+ * create new {@link PendingIntent} instances for this receiver.
  */
 @RequiresApi(TIRAMISU)
 final class SafetyCenterNotificationReceiver extends BroadcastReceiver {
@@ -47,13 +50,17 @@ final class SafetyCenterNotificationReceiver extends BroadcastReceiver {
 
     private static final String ACTION_NOTIFICATION_DISMISSED =
             "com.android.safetycenter.action.NOTIFICATION_DISMISSED";
+    private static final String ACTION_NOTIFICATION_ACTION_CLICKED =
+            "com.android.safetycenter.action.NOTIFICATION_ACTION_CLICKED";
     private static final String EXTRA_ISSUE_KEY = "com.android.safetycenter.extra.ISSUE_KEY";
+    private static final String EXTRA_ISSUE_ACTION_ID =
+            "com.android.safetycenter.extra.ISSUE_ACTION_ID";
 
     private static final int REQUEST_CODE_UNUSED = 0;
 
     /**
-     * Creates a {@code PendingIntent} for a broadcast {@code Intent} which will start this receiver
-     * and cause it to handle a notification dismissal event.
+     * Creates a broadcast {@code PendingIntent} for this receiver which will handle a Safety Center
+     * notification being dismissed.
      */
     @NonNull
     static PendingIntent newNotificationDismissedIntent(
@@ -62,6 +69,24 @@ final class SafetyCenterNotificationReceiver extends BroadcastReceiver {
         Intent intent = new Intent(ACTION_NOTIFICATION_DISMISSED);
         intent.putExtra(EXTRA_ISSUE_KEY, issueKeyString);
         intent.setIdentifier(issueKeyString);
+        int flags = PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT;
+        return PendingIntentFactory.getNonProtectedSystemOnlyBroadcastPendingIntent(
+                context, REQUEST_CODE_UNUSED, intent, flags);
+    }
+
+    /**
+     * Creates a broadcast {@code PendingIntent} for this receiver which will handle a Safety Center
+     * notification action being clicked.
+     *
+     * <p>Safety Center notification actions correspond to Safety Center issue actions.
+     */
+    @NonNull
+    static PendingIntent newNotificationActionClickedIntent(
+            @NonNull Context context, @NonNull SafetyCenterIssueActionId issueActionId) {
+        String issueActionIdString = SafetyCenterIds.encodeToString(issueActionId);
+        Intent intent = new Intent(ACTION_NOTIFICATION_ACTION_CLICKED);
+        intent.putExtra(EXTRA_ISSUE_ACTION_ID, issueActionIdString);
+        intent.setIdentifier(issueActionIdString);
         int flags = PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT;
         return PendingIntentFactory.getNonProtectedSystemOnlyBroadcastPendingIntent(
                 context, REQUEST_CODE_UNUSED, intent, flags);
@@ -82,11 +107,34 @@ final class SafetyCenterNotificationReceiver extends BroadcastReceiver {
         }
     }
 
-    @NonNull private final SafetyCenterIssueCache mIssueCache;
+    @Nullable
+    private static SafetyCenterIssueActionId getIssueActionIdExtra(@NonNull Intent intent) {
+        String issueActionIdString = intent.getStringExtra(EXTRA_ISSUE_ACTION_ID);
+        if (issueActionIdString == null) {
+            Log.w(TAG, "Received notification action broadcast with null issue action ID");
+            return null;
+        }
+        try {
+            return SafetyCenterIds.issueActionIdFromString(issueActionIdString);
+        } catch (IllegalArgumentException e) {
+            Log.w(TAG, "Could not decode the issue action ID", e);
+            return null;
+        }
+    }
+
+    @NonNull private final SafetyCenterService mService;
+
+    @GuardedBy("mApiLock")
+    @NonNull
+    private final SafetyCenterIssueCache mIssueCache;
+
     @NonNull private final Object mApiLock;
 
     SafetyCenterNotificationReceiver(
-            @NonNull SafetyCenterIssueCache issueCache, @NonNull Object apiLock) {
+            @NonNull SafetyCenterService service,
+            @NonNull SafetyCenterIssueCache issueCache,
+            @NonNull Object apiLock) {
+        mService = service;
         mIssueCache = issueCache;
         mApiLock = apiLock;
     }
@@ -100,6 +148,7 @@ final class SafetyCenterNotificationReceiver extends BroadcastReceiver {
     void register(@NonNull Context context) {
         IntentFilter filter = new IntentFilter();
         filter.addAction(ACTION_NOTIFICATION_DISMISSED);
+        filter.addAction(ACTION_NOTIFICATION_ACTION_CLICKED);
         context.registerReceiver(this, filter, Context.RECEIVER_NOT_EXPORTED);
     }
 
@@ -117,10 +166,16 @@ final class SafetyCenterNotificationReceiver extends BroadcastReceiver {
             return;
         }
 
-        if (ACTION_NOTIFICATION_DISMISSED.equals(action)) {
-            onNotificationDismissed(intent);
-        } else {
-            Log.w(TAG, "Received broadcast with unrecognized action: " + action);
+        switch (action) {
+            case ACTION_NOTIFICATION_DISMISSED:
+                onNotificationDismissed(intent);
+                break;
+            case ACTION_NOTIFICATION_ACTION_CLICKED:
+                onNotificationActionClicked(intent);
+                break;
+            default:
+                Log.w(TAG, "Received broadcast with unrecognized action: " + action);
+                break;
         }
     }
 
@@ -132,5 +187,13 @@ final class SafetyCenterNotificationReceiver extends BroadcastReceiver {
         synchronized (mApiLock) {
             mIssueCache.dismissNotification(issueKey);
         }
+    }
+
+    private void onNotificationActionClicked(@NonNull Intent intent) {
+        SafetyCenterIssueActionId issueActionId = getIssueActionIdExtra(intent);
+        if (issueActionId == null) {
+            return;
+        }
+        mService.executeIssueActionInternal(issueActionId);
     }
 }

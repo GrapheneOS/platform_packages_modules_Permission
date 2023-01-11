@@ -55,6 +55,13 @@ class SafetySourceCtsData(private val context: Context) {
     val testActivityRedirectPendingIntent =
         createRedirectPendingIntent(context, Intent(ACTION_TEST_ACTIVITY))
 
+    /**
+     * A [PendingIntent] that redirects to the [TestActivity] page, the [Intent] is constructed with
+     * the given [identifier].
+     */
+    fun testActivityRedirectPendingIntent(identifier: String? = null) =
+        createRedirectPendingIntent(context, Intent(ACTION_TEST_ACTIVITY).setIdentifier(identifier))
+
     /** A [SafetySourceData] with a [SEVERITY_LEVEL_UNSPECIFIED] [SafetySourceStatus]. */
     val unspecified =
         SafetySourceData.Builder()
