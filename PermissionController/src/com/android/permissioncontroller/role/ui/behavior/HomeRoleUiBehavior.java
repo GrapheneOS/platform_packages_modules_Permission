@@ -37,7 +37,7 @@ import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.permissioncontroller.role.model.VisibilityMixin;
 import com.android.permissioncontroller.role.ui.TwoTargetPreference;
 import com.android.permissioncontroller.role.utils.UserUtils;
-import com.android.role.controller.model.HomeRoleBehavior;
+import com.android.role.controller.behavior.HomeRoleBehavior;
 import com.android.role.controller.model.Role;
 
 /***
