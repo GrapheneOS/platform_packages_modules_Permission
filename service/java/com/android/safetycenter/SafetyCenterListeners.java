@@ -221,27 +221,32 @@ final class SafetyCenterListeners {
             return;
         }
         int i = listenersForUserId.beginBroadcast();
-        while (i > 0) {
-            i--;
-            OnSafetyCenterDataChangedListenerWrapper listenerWrapper =
-                    (OnSafetyCenterDataChangedListenerWrapper)
-                            listenersForUserId.getBroadcastItem(i);
-            SafetyCenterData safetyCenterData = null;
-            if (updateSafetyCenterData) {
-                String packageName = listenerWrapper.getPackageName();
-                SafetyCenterData cachedSafetyCenterData = safetyCenterDataCache.get(packageName);
-                if (cachedSafetyCenterData != null) {
-                    safetyCenterData = cachedSafetyCenterData;
-                } else {
-                    safetyCenterData =
-                            mSafetyCenterDataFactory.assembleSafetyCenterData(
-                                    packageName, userProfileGroup);
-                    safetyCenterDataCache.put(packageName, safetyCenterData);
+        try {
+            while (i > 0) {
+                i--;
+                OnSafetyCenterDataChangedListenerWrapper listenerWrapper =
+                        (OnSafetyCenterDataChangedListenerWrapper)
+                                listenersForUserId.getBroadcastItem(i);
+                SafetyCenterData safetyCenterData = null;
+                if (updateSafetyCenterData) {
+                    String packageName = listenerWrapper.getPackageName();
+                    SafetyCenterData cachedSafetyCenterData =
+                            safetyCenterDataCache.get(packageName);
+                    if (cachedSafetyCenterData != null) {
+                        safetyCenterData = cachedSafetyCenterData;
+                    } else {
+                        safetyCenterData =
+                                mSafetyCenterDataFactory.assembleSafetyCenterData(
+                                        packageName, userProfileGroup);
+                        safetyCenterDataCache.put(packageName, safetyCenterData);
+                    }
                 }
+                deliverUpdateForListener(
+                        listenerWrapper, safetyCenterData, safetyCenterErrorDetails);
             }
-            deliverUpdateForListener(listenerWrapper, safetyCenterData, safetyCenterErrorDetails);
+        } finally {
+            listenersForUserId.finishBroadcast();
         }
-        listenersForUserId.finishBroadcast();
     }
 
     /** Dumps state for debugging purposes. */
