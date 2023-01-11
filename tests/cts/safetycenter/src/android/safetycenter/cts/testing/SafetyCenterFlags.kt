@@ -32,7 +32,7 @@ import android.safetycenter.SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLI
 import android.safetycenter.SafetyCenterManager.REFRESH_REASON_SAFETY_CENTER_ENABLED
 import android.safetycenter.SafetySourceData
 import android.safetycenter.cts.testing.Coroutines.TIMEOUT_LONG
-import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermissionIdentity
+import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
 import java.time.Duration
 import kotlin.reflect.KProperty
 

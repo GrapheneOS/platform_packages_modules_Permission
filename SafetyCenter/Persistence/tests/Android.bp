@@ -27,7 +27,7 @@ android_test {
     static_libs: [
         "compatibility-device-util-axt",
         "kotlinx-coroutines-android",
-        "permission-apex-test-util-lib",
+        "safety-center-test-util-lib",
         "safety-center-persistence",
     ],
     test_suites: [

@@ -19,7 +19,7 @@ package android.safetycenter.cts.testing
 import android.Manifest.permission.DUMP
 import android.app.ActivityManager
 import android.content.Context
-import android.safetycenter.cts.testing.ShellPermissions.callWithShellPermissionIdentity
+import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
 
 /** A class that allows waiting for the broadcast queue to be idle. */
 object WaitForBroadcastIdle {
