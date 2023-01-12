@@ -88,10 +88,8 @@ public class AssistantRoleBehavior implements RoleBehavior {
     @Override
     public Intent getManageIntentAsUser(@NonNull Role role, @NonNull UserHandle user,
             @NonNull Context context) {
-        boolean isAutomotive =
-                context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE);
 
-        if (isAutomotive) {
+        if (isAutomotive(context)){
             return null;
         }
 
@@ -102,6 +100,19 @@ public class AssistantRoleBehavior implements RoleBehavior {
     @Override
     public CharSequence getConfirmationMessage(@NonNull Role role, @NonNull String packageName,
             @NonNull Context context) {
+
+        // see (b/216746393) for details
+        if(isAutomotive(context)){
+            boolean contextEnabled = Settings.Secure.getInt(context.getContentResolver(),
+                "assist_structure_enabled", 1) != 0;
+            boolean screenshotEnabled = Settings.Secure.getInt(context.getContentResolver(),
+                "assist_screenshot_enabled", 1) != 0;
+
+            if(!contextEnabled && !screenshotEnabled){
+                return null;
+            }
+        }
+
         return context.getString(R.string.assistant_confirmation_message);
     }
 
@@ -185,6 +196,14 @@ public class AssistantRoleBehavior implements RoleBehavior {
     @Override
     public void revoke(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
     }
+
+    /**
+     * Returns true if the device is an Automotive device
+     */
+    private boolean isAutomotive(@NonNull Context context) {
+        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE);
+    }
+
 
     private boolean isAssistantVoiceInteractionService(@NonNull PackageManager pm,
             @NonNull ServiceInfo si) {
