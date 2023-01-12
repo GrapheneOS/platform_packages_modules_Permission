@@ -37,6 +37,8 @@ import com.android.modules.utils.build.SdkLevel;
 import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 
+import java.util.List;
+
 /**
  * Factory that builds {@link Notification} objects from {@link SafetySourceIssue} instances with
  * appropriate {@link PendingIntent}s for click and dismiss callbacks.
@@ -74,13 +76,14 @@ final class SafetyCenterNotificationFactory {
 
         CharSequence title = issue.getTitle();
         CharSequence text = issue.getSummary();
+        List<SafetySourceIssue.Action> issueActions = issue.getActions();
 
         if (SdkLevel.isAtLeastU()) {
             SafetySourceIssue.Notification customNotification = issue.getCustomNotification();
             if (customNotification != null) {
                 title = customNotification.getTitle();
                 text = customNotification.getText();
-                // TODO(b/263477747): Handle custom actions too
+                issueActions = customNotification.getActions();
             }
         }
 
@@ -96,9 +99,9 @@ final class SafetyCenterNotificationFactory {
                                 SafetyCenterNotificationReceiver.newNotificationDismissedIntent(
                                         mContext, issueKey));
 
-        for (int i = 0; i < issue.getActions().size(); i++) {
+        for (int i = 0; i < issueActions.size(); i++) {
             Notification.Action notificationAction =
-                    toNotificationAction(issueKey, issue.getActions().get(i));
+                    toNotificationAction(issueKey, issueActions.get(i));
             builder.addAction(notificationAction);
         }
 
