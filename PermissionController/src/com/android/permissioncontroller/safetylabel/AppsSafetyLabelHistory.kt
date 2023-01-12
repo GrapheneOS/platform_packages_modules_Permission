@@ -16,6 +16,10 @@
 
 package com.android.permissioncontroller.safetylabel
 
+import com.android.permission.safetylabel.DataCategory as AppMetadataDataCategory
+import com.android.permission.safetylabel.DataLabel as AppMetadataDataLabel
+import com.android.permission.safetylabel.DataPurposeConstants.PURPOSE_ADVERTISING
+import com.android.permission.safetylabel.SafetyLabel as AppMetadataSafetyLabel
 import java.time.Instant
 
 /** Data class representing safety label history of installed apps. */
@@ -65,20 +69,67 @@ data class AppsSafetyLabelHistory(val appSafetyLabelHistories: List<AppSafetyLab
         val receivedAt: Instant,
         /** Information about data use policies for an app. */
         val dataLabel: DataLabel
-    )
+    ) {
+        /** Companion object for [SafetyLabel]. */
+        companion object {
+            // TODO(b/265176343): Currently names are identical to safety label parser library names
+            //  for brevity. Consider renaming to distinguish them better.
+            /**
+             * Creates a safety label for persistence from the safety label parsed from
+             * PackageManager app metadata.
+             */
+            fun fromAppMetadataSafetyLabel(
+                packageName: String,
+                receivedAt: Instant,
+                appMetadataSafetyLabel: AppMetadataSafetyLabel
+            ): SafetyLabel =
+                SafetyLabel(
+                    AppInfo(packageName),
+                    receivedAt,
+                    DataLabel.fromAppMetadataDataLabel(appMetadataSafetyLabel.dataLabel))
+        }
+    }
 
     /** Data class representing an app's data use policies. */
     data class DataLabel(
         /** Map of category to [DataCategory] */
         // TODO(b/263153040): Use Category constants from Safety Label library.
         val dataShared: Map<String, DataCategory>
-    )
+    ) {
+        /** Companion object for [DataCategory]. */
+        companion object {
+            /**
+             * Creates a data label for persistence from a data label parsed from PackageManager app
+             * metadata.
+             */
+            fun fromAppMetadataDataLabel(appMetadataDataLabel: AppMetadataDataLabel): DataLabel =
+                DataLabel(
+                    appMetadataDataLabel.dataShared.mapValues { categoryEntry ->
+                        DataCategory.fromAppMetadataDataCategory(categoryEntry.value)
+                    })
+        }
+    }
 
     /** Data class representing an app's data use for a particular category of data. */
     data class DataCategory(
         /** Whether any data in this category has been used for Advertising. */
         val containsAdvertisingPurpose: Boolean
-    )
+    ) {
+        /** Companion object for [DataCategory]. */
+        companion object {
+            /**
+             * Creates a data category for persistence from a data category parsed from
+             * PackageManager app metadata.
+             */
+            fun fromAppMetadataDataCategory(
+                appMetadataDataCategory: AppMetadataDataCategory
+            ): DataCategory =
+                DataCategory(
+                    appMetadataDataCategory.dataTypes.values.any {
+                        it.purposeSet.contains(PURPOSE_ADVERTISING)
+                    })
+        }
+    }
 
     /** Data class representing a change of an app's safety label over time. */
     data class AppSafetyLabelDiff(
