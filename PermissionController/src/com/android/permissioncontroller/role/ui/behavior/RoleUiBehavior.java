@@ -20,11 +20,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.os.UserHandle;
+import android.os.UserManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.preference.Preference;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.role.ui.TwoTargetPreference;
 import com.android.role.controller.model.Role;
 
@@ -74,6 +76,11 @@ public interface RoleUiBehavior {
             @NonNull TwoTargetPreference preference,
             @NonNull UserHandle user,
             @NonNull Context context) {
+        if (SdkLevel.isAtLeastU() && role.isExclusive()) {
+            final UserManager userManager = context.getSystemService(UserManager.class);
+            preference.setEnabled(!userManager.hasUserRestrictionForUser(
+                    UserManager.DISALLOW_CONFIG_DEFAULT_APPS, user));
+        }
     }
 
     /**
@@ -102,6 +109,11 @@ public interface RoleUiBehavior {
     default void prepareApplicationPreferenceAsUser(@NonNull Role role,
             @NonNull Preference preference, @NonNull ApplicationInfo applicationInfo,
             @NonNull UserHandle user, @NonNull Context context) {
+        if (SdkLevel.isAtLeastU() && role.isExclusive()) {
+            final UserManager userManager = context.getSystemService(UserManager.class);
+            preference.setEnabled(!userManager.hasUserRestrictionForUser(
+                    UserManager.DISALLOW_CONFIG_DEFAULT_APPS, user));
+        }
     }
 
     /**

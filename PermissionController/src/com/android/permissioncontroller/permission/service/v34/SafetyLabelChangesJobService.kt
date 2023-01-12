@@ -165,11 +165,13 @@ class SafetyLabelChangesJobService : JobService() {
                 Log.i(LOG_TAG, "Scheduling periodic job")
                 val job =
                     JobInfo.Builder(
-                        PERIODIC_SAFETY_LABEL_CHANGES_JOB_ID,
-                        ComponentName(context, SafetyLabelChangesJobService::class.java))
-                    .setPersisted(true)
-                    .setPeriodic(KotlinUtils.getSafetyLabelChangesJobIntervalMillis())
-                    .build()
+                            PERIODIC_SAFETY_LABEL_CHANGES_JOB_ID,
+                            ComponentName(context, SafetyLabelChangesJobService::class.java))
+                        .setPersisted(true)
+                        .setRequiresDeviceIdle(
+                            KotlinUtils.runSafetyLabelChangesJobOnlyWhenDeviceIdle())
+                        .setPeriodic(KotlinUtils.getSafetyLabelChangesJobIntervalMillis())
+                        .build()
                 jobScheduler.schedule(job)
                 Log.i(LOG_TAG, "Periodic job scheduled successfully")
             } catch (e: Throwable) {
@@ -191,11 +193,13 @@ class SafetyLabelChangesJobService : JobService() {
                 Log.i(LOG_TAG, "Scheduling job")
                 val job =
                     JobInfo.Builder(
-                        SAFETY_LABEL_CHANGES_JOB_ID,
-                        ComponentName(context, SafetyLabelChangesJobService::class.java))
-                    .setPersisted(true)
-                    .setMinimumLatency(KotlinUtils.getSafetyLabelChangesJobDelayMillis())
-                    .build()
+                            SAFETY_LABEL_CHANGES_JOB_ID,
+                            ComponentName(context, SafetyLabelChangesJobService::class.java))
+                        .setPersisted(true)
+                        .setRequiresDeviceIdle(
+                            KotlinUtils.runSafetyLabelChangesJobOnlyWhenDeviceIdle())
+                        .setMinimumLatency(KotlinUtils.getSafetyLabelChangesJobDelayMillis())
+                        .build()
                 jobScheduler.schedule(job)
                 Log.i(LOG_TAG, "Job scheduled successfully")
             } catch (e: Throwable) {

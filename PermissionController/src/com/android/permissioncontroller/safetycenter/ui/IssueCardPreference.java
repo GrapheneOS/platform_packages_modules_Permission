@@ -263,8 +263,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
         @Override
         public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
             SafetyCenterViewModel safetyCenterViewModel =
-                    ((SafetyCenterDashboardFragment) requireParentFragment())
-                            .getSafetyCenterViewModel();
+                    ((SafetyCenterFragment) requireParentFragment()).getSafetyCenterViewModel();
             SafetyCenterIssue issue =
                     requireNonNull(
                             requireArguments().getParcelable(ISSUE_KEY, SafetyCenterIssue.class));
