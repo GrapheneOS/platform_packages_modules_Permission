@@ -292,6 +292,10 @@ public final class SafetyCenterIssuesPersistence {
                 serializer.attribute(
                         null, ATTRIBUTE_DISMISSED_AT, Long.toString(dismissedAt.toEpochMilli()));
             }
+            int dismissCount = persistedSafetyCenterIssue.getDismissCount();
+            if (dismissCount > 0) {
+                serializer.attribute(null, ATTRIBUTE_DISMISS_COUNT, Integer.toString(dismissCount));
+            }
             serializer.endTag(null, TAG_ISSUE);
         }
 
