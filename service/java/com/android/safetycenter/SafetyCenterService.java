@@ -245,7 +245,7 @@ public final class SafetyCenterService extends SystemService {
                 if (mConfigAvailable) {
                     readSafetyCenterIssueCacheFileLocked();
                     new UserBroadcastReceiver().register(getContext());
-                    new SafetyCenterNotificationReceiver(mSafetyCenterIssueCache, mApiLock)
+                    new SafetyCenterNotificationReceiver(this, mSafetyCenterIssueCache, mApiLock)
                             .register(getContext());
                 }
             }
@@ -727,16 +727,19 @@ public final class SafetyCenterService extends SystemService {
             if (!checkDumpPermission(fout)) {
                 return;
             }
+            List<String> subjects = Arrays.asList(args);
+            boolean all = subjects.isEmpty();
             synchronized (mApiLock) {
-                SafetyCenterService.this.dumpLocked(fd, fout);
-                SafetyCenterFlags.dump(fout);
-                mSafetyCenterConfigReader.dump(fout);
-                mSafetyCenterRepository.dump(fout);
-                mSafetyCenterIssueCache.dump(fout);
-                mSafetyCenterRefreshTracker.dump(fout);
-                mSafetyCenterTimeouts.dump(fout);
-                mSafetyCenterListeners.dump(fout);
-                mNotificationSender.dump(fout);
+                if (all || subjects.contains("service"))
+                    SafetyCenterService.this.dumpLocked(fd, fout);
+                if (all || subjects.contains("flags")) SafetyCenterFlags.dump(fout);
+                if (all || subjects.contains("config")) mSafetyCenterConfigReader.dump(fout);
+                if (all || subjects.contains("repository")) mSafetyCenterRepository.dump(fout);
+                if (all || subjects.contains("issues")) mSafetyCenterIssueCache.dump(fout);
+                if (all || subjects.contains("refresh")) mSafetyCenterRefreshTracker.dump(fout);
+                if (all || subjects.contains("timeouts")) mSafetyCenterTimeouts.dump(fout);
+                if (all || subjects.contains("listeners")) mSafetyCenterListeners.dump(fout);
+                if (all || subjects.contains("notifications")) mNotificationSender.dump(fout);
             }
         }
 
@@ -1022,6 +1025,21 @@ public final class SafetyCenterService extends SystemService {
         }
     }
 
+    /**
+     * Executes the {@link SafetySourceIssue.Action} specified by the given {@link
+     * SafetyCenterIssueActionId}.
+     *
+     * <p>No validation is performed on the contents of the given ID.
+     */
+    void executeIssueActionInternal(@NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
+        SafetyCenterIssueKey safetyCenterIssueKey =
+                safetyCenterIssueActionId.getSafetyCenterIssueKey();
+        UserProfileGroup userProfileGroup =
+                UserProfileGroup.from(getContext(), safetyCenterIssueKey.getUserId());
+        executeIssueActionInternal(
+                safetyCenterIssueKey, safetyCenterIssueActionId, userProfileGroup, null);
+    }
+
     private void executeIssueActionInternal(
             @NonNull SafetyCenterIssueKey safetyCenterIssueKey,
             @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId,
@@ -1030,6 +1048,7 @@ public final class SafetyCenterService extends SystemService {
         synchronized (mApiLock) {
             SafetySourceIssue.Action safetySourceIssueAction =
                     mSafetyCenterRepository.getSafetySourceIssueAction(safetyCenterIssueActionId);
+
             if (safetySourceIssueAction == null) {
                 Log.w(
                         TAG,

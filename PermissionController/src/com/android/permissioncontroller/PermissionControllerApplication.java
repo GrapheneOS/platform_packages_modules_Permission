@@ -30,10 +30,10 @@ import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.permissioncontroller.privacysources.SafetyCenterAccessibilityListener;
+import com.android.permissioncontroller.role.model.RoleParserInitializer;
 import com.android.permissioncontroller.role.ui.SpecialAppAccessListActivity;
 import com.android.permissioncontroller.role.utils.RoleUiBehaviorUtils;
 import com.android.role.controller.model.Role;
-import com.android.role.controller.model.RoleParserInitializer;
 import com.android.role.controller.model.Roles;
 
 public final class PermissionControllerApplication extends Application {

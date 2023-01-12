@@ -22,6 +22,7 @@ import android.safetycenter.cts.testing.Coroutines.TIMEOUT_LONG
 import android.safetycenter.cts.testing.Coroutines.TIMEOUT_SHORT
 import android.safetycenter.cts.testing.Coroutines.runBlockingWithTimeout
 import android.safetycenter.cts.testing.Coroutines.runBlockingWithTimeoutOrNull
+import android.safetycenter.cts.testing.Coroutines.waitForWithTimeout
 import android.service.notification.NotificationListenerService
 import android.service.notification.StatusBarNotification
 import android.util.Log
@@ -49,15 +50,19 @@ class CtsNotificationListener : NotificationListenerService() {
 
     override fun onNotificationPosted(statusBarNotification: StatusBarNotification) {
         super.onNotificationPosted(statusBarNotification)
-        runBlockingWithTimeout {
-            notificationEventsChannel.send(NotificationPosted(statusBarNotification))
+        if (statusBarNotification.isSafetyCenterNotification()) {
+            runBlockingWithTimeout {
+                safetyCenterNotificationEvents.send(NotificationPosted(statusBarNotification))
+            }
         }
     }
 
     override fun onNotificationRemoved(statusBarNotification: StatusBarNotification) {
         super.onNotificationRemoved(statusBarNotification)
-        runBlockingWithTimeout {
-            notificationEventsChannel.send(NotificationRemoved(statusBarNotification))
+        if (statusBarNotification.isSafetyCenterNotification()) {
+            runBlockingWithTimeout {
+                safetyCenterNotificationEvents.send(NotificationRemoved(statusBarNotification))
+            }
         }
     }
 
@@ -86,7 +91,9 @@ class CtsNotificationListener : NotificationListenerService() {
         private val connected = ConditionVariable(false)
         private var instance: CtsNotificationListener? = null
 
-        @Volatile private lateinit var notificationEventsChannel: Channel<NotificationEvent>
+        @Volatile
+        private var safetyCenterNotificationEvents =
+            Channel<NotificationEvent>(capacity = Channel.UNLIMITED)
 
         /**
          * Blocks until there are zero Safety Center notifications, or throw an [AssertionError] if
@@ -151,7 +158,9 @@ class CtsNotificationListener : NotificationListenerService() {
          */
         fun waitForZeroNotificationEvents(forAtLeast: Duration = TIMEOUT_SHORT) {
             val event =
-                runBlockingWithTimeoutOrNull(forAtLeast) { notificationEventsChannel.receive() }
+                runBlockingWithTimeoutOrNull(forAtLeast) {
+                    safetyCenterNotificationEvents.receive()
+                }
             assertThat(event).isNull()
         }
 
@@ -195,7 +204,7 @@ class CtsNotificationListener : NotificationListenerService() {
         ): List<StatusBarNotification> {
             var currentNotifications = getSafetyCenterNotifications()
             while (!predicate(currentNotifications)) {
-                val event = notificationEventsChannel.receive()
+                val event = safetyCenterNotificationEvents.receive()
                 Log.d(TAG, "Received notification event: $event")
                 currentNotifications = getSafetyCenterNotifications()
             }
@@ -203,7 +212,7 @@ class CtsNotificationListener : NotificationListenerService() {
         }
 
         private fun getSafetyCenterNotifications(): List<StatusBarNotification> =
-            instance!!.activeNotifications.filter(::isSafetyCenterNotification)
+            instance!!.activeNotifications.filter { it.isSafetyCenterNotification() }
 
         /**
          * Cancels a specific notification and then waits for it to be removed by the notification
@@ -216,17 +225,30 @@ class CtsNotificationListener : NotificationListenerService() {
                 timeout,
                 description = "no notification with the key $key"
             ) { notifications -> notifications.none { it.key == key } }
-            // Here we wait for the issue (there is only one) to be recorded as dismissed according
-            // to the dumpsys output. The cancelAndWait helper above "waits" for the notification to
-            // be dismissed, but it does not wait for the notification's delete PendingIntent to be
-            // handled. Without this additional wait there is a race condition between
-            // SafetyCenterNotificationReceiver#onReceive and the setData below. That race makes the
-            // test is flaky because the notification may not be recorded as dismissed before
-            // setData is called again and the notification is able to be posted again,
-            // contradicting the assertion.
-            Coroutines.waitForWithTimeout {
-                val dump = SystemUtil.runShellCommand("dumpsys safety_center")
-                dump.contains(Regex("""mNotificationDismissedAt=\d+"""))
+
+            waitForIssueCacheToContainAnyDismissedNotification()
+        }
+
+        private fun waitForIssueCacheToContainAnyDismissedNotification() {
+            // Here we wait for an issue to be recorded as dismissed according to the dumpsys
+            // output. The cancelAndWait helper above first "waits" for the notification to
+            // be dismissed, but this additional wait is needed to ensure the notification's delete
+            // PendingIntent is handled. Without this wait there is a race condition between
+            // SafetyCenterNotificationReceiver#onReceive and subsequent calls that set source data
+            // and that race makes tests flaky because the dismissal status of the previous
+            // notification is not well defined.
+            fun dumpIssueCacheState(): String =
+                SystemUtil.runShellCommand("dumpsys safety_center issues")
+            try {
+                waitForWithTimeout {
+                    dumpIssueCacheState().contains(Regex("""mNotificationDismissedAt=\d+"""))
+                }
+            } catch (e: TimeoutCancellationException) {
+                throw IllegalStateException(
+                    "Notification dismissal was not recorded in the issue cache: " +
+                        dumpIssueCacheState(),
+                    e
+                )
             }
         }
 
@@ -246,7 +268,6 @@ class CtsNotificationListener : NotificationListenerService() {
         /** Prepare the [CtsNotificationListener] for a notification test */
         fun setup() {
             toggleListenerAccess(true)
-            notificationEventsChannel = Channel(capacity = Channel.UNLIMITED)
         }
 
         /** Clean up the [CtsNotificationListener] after executing a notification test. */
@@ -256,13 +277,12 @@ class CtsNotificationListener : NotificationListenerService() {
                 description = "all Safety Center notifications removed in tear down"
             ) { it.isEmpty() }
             toggleListenerAccess(false)
-            notificationEventsChannel.cancel()
+            safetyCenterNotificationEvents.cancel()
+            safetyCenterNotificationEvents = Channel(capacity = Channel.UNLIMITED)
         }
 
-        private fun isSafetyCenterNotification(
-            statusBarNotification: StatusBarNotification
-        ): Boolean =
-            statusBarNotification.packageName == "android" &&
-                statusBarNotification.notification.channelId == "safety_center"
+        // TODO(b/264369469): Tests should account for multiple SC notification channels
+        private fun StatusBarNotification.isSafetyCenterNotification(): Boolean =
+            packageName == "android" && notification.channelId == "safety_center"
     }
 }

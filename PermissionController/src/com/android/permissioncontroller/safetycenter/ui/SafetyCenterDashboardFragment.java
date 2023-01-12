@@ -23,7 +23,6 @@ import static com.android.permissioncontroller.safetycenter.SafetyCenterConstant
 
 import static java.util.Objects.requireNonNull;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -34,42 +33,31 @@ import android.safetycenter.SafetyCenterData;
 import android.safetycenter.SafetyCenterEntry;
 import android.safetycenter.SafetyCenterEntryGroup;
 import android.safetycenter.SafetyCenterEntryOrGroup;
-import android.safetycenter.SafetyCenterErrorDetails;
 import android.safetycenter.SafetyCenterIssue;
 import android.safetycenter.SafetyCenterStaticEntry;
 import android.safetycenter.SafetyCenterStaticEntryGroup;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.annotation.VisibleForTesting;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.PreferenceCategory;
-import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceGroup;
-import androidx.preference.PreferenceScreen;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.permissioncontroller.Constants;
 import com.android.permissioncontroller.R;
-import com.android.permissioncontroller.safetycenter.ui.model.LiveSafetyCenterViewModelFactory;
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterUiData;
-import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel;
 import com.android.permissioncontroller.safetycenter.ui.model.StatusUiData;
-import com.android.safetycenter.internaldata.SafetyCenterIds;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 
 import kotlin.Unit;
 
+import java.util.List;
+import java.util.Map;
+
 /** Dashboard fragment for the Safety Center. */
 @RequiresApi(TIRAMISU)
-public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompat {
+public final class SafetyCenterDashboardFragment extends SafetyCenterFragment {
 
     private static final String TAG = SafetyCenterDashboardFragment.class.getSimpleName();
 
@@ -78,38 +66,15 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
     private static final String ENTRIES_GROUP_KEY = "entries_group";
     private static final String STATIC_ENTRIES_GROUP_KEY = "static_entries_group";
 
-    @Nullable private final ViewModelProvider.Factory mSafetyCenterViewModelFactoryOverride;
-
     private SafetyStatusPreference mSafetyStatusPreference;
-    private CollapsableIssuesCardHelper mCollapsableIssuesCardHelper;
     private final CollapsableGroupCardHelper mCollapsableGroupCardHelper =
             new CollapsableGroupCardHelper();
     private PreferenceGroup mIssuesGroup;
     private PreferenceGroup mEntriesGroup;
     private PreferenceGroup mStaticEntriesGroup;
-    private SafetyCenterViewModel mViewModel;
-    private List<String> mSameTaskIssueIds;
     private boolean mIsQuickSettingsFragment;
 
-    public SafetyCenterDashboardFragment() {
-        this(null);
-    }
-
-    /**
-     * Allows providing an override view model factory for testing this fragment. The view model
-     * factory will not be retained between recreations of the fragment.
-     */
-    @VisibleForTesting
-    public SafetyCenterDashboardFragment(
-            @Nullable ViewModelProvider.Factory safetyCenterViewModelFactoryOverride) {
-        mSafetyCenterViewModelFactoryOverride = safetyCenterViewModelFactoryOverride;
-    }
-
-    private ViewModelProvider.Factory getSafetyCenterViewModelFactory() {
-        return mSafetyCenterViewModelFactoryOverride != null
-                ? mSafetyCenterViewModelFactoryOverride
-                : new LiveSafetyCenterViewModelFactory(requireActivity().getApplication());
-    }
+    public SafetyCenterDashboardFragment() {}
 
     /**
      * Create instance of SafetyCenterDashboardFragment with the arguments set
@@ -129,52 +94,19 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
     }
 
     @Override
-    protected RecyclerView.Adapter onCreateAdapter(PreferenceScreen preferenceScreen) {
-        /* By default, the PreferenceGroupAdapter does setHasStableIds(true).
-         * Since each Preference is internally allocated with an auto-incremented ID,
-         * it does not allow us to gracefully update only changed preferences based on
-         * SafetyPreferenceComparisonCallback.
-         * In order to allow the list to track the changes we need to ignore the Preference IDs. */
-        RecyclerView.Adapter adapter = super.onCreateAdapter(preferenceScreen);
-        adapter.setHasStableIds(false);
-        return adapter;
-    }
-
-    @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+        super.onCreatePreferences(savedInstanceState, rootKey);
         setPreferencesFromResource(R.xml.safety_center_dashboard, rootKey);
-        mSameTaskIssueIds =
-                Arrays.asList(
-                        new SafetyCenterResourcesContext(getContext())
-                                .getStringByName("config_same_task_safety_source_ids")
-                                .split(","));
 
         if (getArguments() != null) {
             mIsQuickSettingsFragment =
                     getArguments().getBoolean(QUICK_SETTINGS_SAFETY_CENTER_FRAGMENT, false);
         }
-
-        mViewModel =
-                new ViewModelProvider(requireActivity(), getSafetyCenterViewModelFactory())
-                        .get(SafetyCenterViewModel.class);
-
-        mCollapsableIssuesCardHelper =
-                new CollapsableIssuesCardHelper(mViewModel, mSameTaskIssueIds);
-        ParsedSafetyCenterIntent parsedSafetyCenterIntent =
-                ParsedSafetyCenterIntent.toSafetyCenterIntent(requireActivity().getIntent());
-        mCollapsableIssuesCardHelper.setFocusedIssueKey(
-                parsedSafetyCenterIntent.getSafetyCenterIssueKey());
-
-        // Set quick settings state first and allow restored state to override if necessary
-        mCollapsableIssuesCardHelper.setQuickSettingsState(
-                mIsQuickSettingsFragment, parsedSafetyCenterIntent.getShouldExpandIssuesGroup());
-        mCollapsableIssuesCardHelper.restoreState(savedInstanceState);
-
         mCollapsableGroupCardHelper.restoreState(savedInstanceState);
 
         mSafetyStatusPreference =
                 requireNonNull(getPreferenceScreen().findPreference(SAFETY_STATUS_KEY));
-        mSafetyStatusPreference.setViewModel(mViewModel);
+        mSafetyStatusPreference.setViewModel(getSafetyCenterViewModel());
 
         mIssuesGroup = getPreferenceScreen().findPreference(ISSUES_GROUP_KEY);
         mEntriesGroup = getPreferenceScreen().findPreference(ENTRIES_GROUP_KEY);
@@ -186,12 +118,7 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
             mStaticEntriesGroup = null;
         }
 
-        mViewModel.getStatusUiLiveData().observe(this, this::updateStatus);
-        mViewModel.getSafetyCenterUiLiveData().observe(this, this::renderSafetyCenterData);
-        mViewModel.getErrorLiveData().observe(this, this::displayErrorDetails);
-
-        getPreferenceManager()
-                .setPreferenceComparisonCallback(new SafetyPreferenceComparisonCallback());
+        getSafetyCenterViewModel().getStatusUiLiveData().observe(this, this::updateStatus);
     }
 
     // Set the default divider line between preferences to be transparent
@@ -210,17 +137,17 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
         super.onStart();
 
         configureInteractionLogger();
-        mViewModel.getInteractionLogger().record(Action.SAFETY_CENTER_VIEWED);
+        getSafetyCenterViewModel().getInteractionLogger().record(Action.SAFETY_CENTER_VIEWED);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        mViewModel.pageOpen();
+        getSafetyCenterViewModel().pageOpen();
     }
 
     private void configureInteractionLogger() {
-        InteractionLogger logger = mViewModel.getInteractionLogger();
+        InteractionLogger logger = getSafetyCenterViewModel().getInteractionLogger();
 
         logger.setSessionId(
                 requireArguments()
@@ -235,21 +162,7 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        mCollapsableIssuesCardHelper.saveState(outState);
         mCollapsableGroupCardHelper.saveState(outState);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Activity activity = getActivity();
-        if (activity != null && activity.isChangingConfigurations()) {
-            mViewModel.changingConfigurations();
-        }
-    }
-
-    SafetyCenterViewModel getSafetyCenterViewModel() {
-        return mViewModel;
     }
 
     private void updateStatus(StatusUiData statusUiData) {
@@ -267,7 +180,8 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
         mSafetyStatusPreference.setData(statusUiData);
     }
 
-    private void renderSafetyCenterData(@Nullable SafetyCenterUiData uiData) {
+    @Override
+    public void renderSafetyCenterData(@Nullable SafetyCenterUiData uiData) {
         if (uiData == null) return;
         SafetyCenterData data = uiData.getSafetyCenterData();
 
@@ -288,24 +202,18 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
         }
     }
 
-    private void displayErrorDetails(@Nullable SafetyCenterErrorDetails errorDetails) {
-        Context context = getContext();
-        if (errorDetails == null || context == null) return;
-        Toast.makeText(context, errorDetails.getErrorMessage(), Toast.LENGTH_LONG).show();
-        mViewModel.clearError();
-    }
-
     private void updateIssues(
             Context context, List<SafetyCenterIssue> issues, Map<String, String> resolvedIssues) {
         mIssuesGroup.removeAll();
-        mCollapsableIssuesCardHelper.addIssues(
-                context,
-                mViewModel,
-                getChildFragmentManager(),
-                mIssuesGroup,
-                issues,
-                resolvedIssues,
-                getActivity().getTaskId());
+        getCollapsableIssuesCardHelper()
+                .addIssues(
+                        context,
+                        getSafetyCenterViewModel(),
+                        getChildFragmentManager(),
+                        mIssuesGroup,
+                        issues,
+                        resolvedIssues,
+                        getActivity().getTaskId());
     }
 
     // TODO(b/208212820): Add groups and move to separate controller
@@ -339,10 +247,11 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
         mEntriesGroup.addPreference(
                 new SafetyEntryPreference(
                         context,
-                        getTaskIdForEntry(entry.getId()),
+                        PendingIntentSender.getTaskIdForEntry(
+                                entry.getId(), getSameTaskSourceIds(), requireActivity()),
                         entry,
                         PositionInCardList.calculate(isFirstElement, isLastElement),
-                        mViewModel));
+                        getSafetyCenterViewModel()));
     }
 
     private void addGroupEntries(
@@ -357,8 +266,10 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
                         mCollapsableGroupCardHelper::isGroupExpanded,
                         isFirstCard,
                         isLastCard,
-                        this::getTaskIdForEntry,
-                        mViewModel,
+                        (entryId) ->
+                                PendingIntentSender.getTaskIdForEntry(
+                                        entryId, getSameTaskSourceIds(), requireActivity()),
+                        getSafetyCenterViewModel(),
                         (groupId) -> {
                             mCollapsableGroupCardHelper.onGroupExpanded(groupId);
                             return Unit.INSTANCE;
@@ -381,13 +292,11 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
             for (SafetyCenterStaticEntry entry : group.getStaticEntries()) {
                 category.addPreference(
                         new StaticSafetyEntryPreference(
-                                context, requireActivity().getTaskId(), entry, mViewModel));
+                                context,
+                                requireActivity().getTaskId(),
+                                entry,
+                                getSafetyCenterViewModel()));
             }
         }
-    }
-
-    private @Nullable Integer getTaskIdForEntry(String entryId) {
-        String issueId = SafetyCenterIds.entryIdFromString(entryId).getSafetySourceId();
-        return mSameTaskIssueIds.contains(issueId) ? requireActivity().getTaskId() : null;
     }
 }

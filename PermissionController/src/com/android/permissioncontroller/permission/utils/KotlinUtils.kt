@@ -161,6 +161,10 @@ object KotlinUtils {
     private const val PROPERTY_SAFETY_LABEL_CHANGES_JOB_INTERVAL_MILLIS =
         "safety_label_changes_job_interval_millis"
 
+    /** Whether the safety label changes job should only be run when the device is idle. */
+    private const val PROPERTY_SAFETY_LABEL_CHANGES_JOB_RUN_WHEN_IDLE =
+        "safety_label_changes_job_run_when_idle"
+
     /**
      * Whether the Permissions Hub 2 flag is enabled
      *
@@ -317,6 +321,15 @@ object KotlinUtils {
             DeviceConfig.NAMESPACE_PRIVACY,
             PROPERTY_SAFETY_LABEL_CHANGES_JOB_INTERVAL_MILLIS,
             Duration.ofDays(30).toMillis())
+    }
+
+    /** Whether the safety label changes job should only be run when the device is idle. */
+    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codename = "UpsideDownCake")
+    fun runSafetyLabelChangesJobOnlyWhenDeviceIdle(): Boolean {
+        return DeviceConfig.getBoolean(
+            DeviceConfig.NAMESPACE_PRIVACY,
+            PROPERTY_SAFETY_LABEL_CHANGES_JOB_RUN_WHEN_IDLE,
+            true)
     }
 
     /**

@@ -55,6 +55,13 @@ class SafetySourceCtsData(private val context: Context) {
     val testActivityRedirectPendingIntent =
         createRedirectPendingIntent(context, Intent(ACTION_TEST_ACTIVITY))
 
+    /**
+     * A [PendingIntent] that redirects to the [TestActivity] page, the [Intent] is constructed with
+     * the given [identifier].
+     */
+    fun testActivityRedirectPendingIntent(identifier: String? = null) =
+        createRedirectPendingIntent(context, Intent(ACTION_TEST_ACTIVITY).setIdentifier(identifier))
+
     /** A [SafetySourceData] with a [SEVERITY_LEVEL_UNSPECIFIED] [SafetySourceStatus]. */
     val unspecified =
         SafetySourceData.Builder()
@@ -236,7 +243,7 @@ class SafetySourceCtsData(private val context: Context) {
 
     /**
      * A [SafetySourceData] with a [SEVERITY_LEVEL_INFORMATION] redirecting a [SafetySourceIssue]
-     * having a [SafetySourceIssue.mAttributionTitle] and [SafetySourceStatus].
+     * having a [SafetySourceIssue.attributionTitle] and [SafetySourceStatus].
      */
     val informationWithIssueWithAttributionTitle: SafetySourceData
         @RequiresApi(UPSIDE_DOWN_CAKE)
@@ -527,6 +534,23 @@ class SafetySourceCtsData(private val context: Context) {
                     .setPendingIntent(testActivityRedirectPendingIntent)
                     .build()
             )
+
+    /**
+     * A [SafetySourceData] with a [SEVERITY_LEVEL_CRITICAL_WARNING] having a resolving
+     * [SafetySourceIssue] with a [SafetySourceIssue.attributionTitle] and success message.
+     */
+    val criticalWithIssueWithAttributionTitle: SafetySourceData
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        get() =
+            defaultCriticalDataBuilder()
+                .addIssue(
+                    defaultCriticalResolvingIssueBuilder()
+                        .setAttributionTitle("Attribution Title")
+                        .clearActions()
+                        .addAction(criticalResolvingActionWithSuccessMessage)
+                        .build()
+                )
+                .build()
 
     /**
      * A [SafetySourceData] with a [SEVERITY_LEVEL_CRITICAL_WARNING] resolving general
