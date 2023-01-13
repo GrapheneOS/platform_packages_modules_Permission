@@ -48,12 +48,13 @@ import java.util.Objects;
 import javax.annotation.concurrent.NotThreadSafe;
 
 /**
- * Cache to manage data about all the issues sent to Safety Center, in particular whether a given
- * issue should currently be considered dismissed.
+ * Repository to manage data about all the issues sent to Safety Center, in particular whether a
+ * given issue should currently be considered dismissed.
  *
- * <p>The contents of this cache can be populated from and persisted to disk using the {@link
+ * <p>The contents of this repository can be populated from and persisted to disk using the {@link
  * #load(List)} and {@link #snapshot()} methods. When {@link #isDirty()} returns {@code true} that
- * means that the contents of the cache may have changed since the last load or snapshot occurred.
+ * means that the contents of the repository may have changed since the last load or snapshot
+ * occurred.
  *
  * <p>This class isn't thread safe. Thread safety must be handled by the caller.
  *
@@ -61,21 +62,21 @@ import javax.annotation.concurrent.NotThreadSafe;
  */
 @RequiresApi(TIRAMISU)
 @NotThreadSafe
-public final class SafetyCenterIssueCache {
+public final class SafetyCenterIssueRepository {
 
-    private static final String TAG = "SafetyCenterIssueCache";
+    private static final String TAG = "SafetyCenterIssueRepo";
 
     @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
 
     private final ArrayMap<SafetyCenterIssueKey, IssueData> mIssues = new ArrayMap<>();
     private boolean mIsDirty = false;
 
-    public SafetyCenterIssueCache(@NonNull SafetyCenterConfigReader safetyCenterConfigReader) {
+    public SafetyCenterIssueRepository(@NonNull SafetyCenterConfigReader safetyCenterConfigReader) {
         mSafetyCenterConfigReader = safetyCenterConfigReader;
     }
 
     /**
-     * Counts the total number of issues in the issue cache, from currently-active, loggable
+     * Counts the total number of issues in the issue repository, from currently-active, loggable
      * sources, in the given {@link UserProfileGroup}.
      */
     public int countActiveLoggableIssues(@NonNull UserProfileGroup userProfileGroup) {
@@ -96,7 +97,7 @@ public final class SafetyCenterIssueCache {
     }
 
     /**
-     * Gets all the issues in the issue cache for the given {@code userId}.
+     * Gets all the issues in the issue repository for the given {@code userId}.
      *
      * <p>Only issues from "active" sources are included. Active sources are those for which {@link
      * SafetyCenterConfigReader#isExternalSafetySourceActive(String)} returns {@code true}.
@@ -124,7 +125,7 @@ public final class SafetyCenterIssueCache {
      * <p>An issue which is dismissed at one time may become "un-dismissed" later, after the
      * resurface delay (which depends on severity level) has elapsed.
      *
-     * <p>If the given issue key is not found in the cache this method returns {@code false}.
+     * <p>If the given issue key is not found in the repository this method returns {@code false}.
      */
     public boolean isIssueDismissed(
             @NonNull SafetyCenterIssueKey safetyCenterIssueKey,
@@ -241,8 +242,8 @@ public final class SafetyCenterIssueCache {
     }
 
     /**
-     * Updates the issue cache to contain exactly the given {@code safetySourceIssueIds} for the
-     * supplied source and user.
+     * Updates the issue repository to contain exactly the given {@code safetySourceIssueIds} for
+     * the supplied source and user.
      */
     void updateIssuesForSource(
             @NonNull ArraySet<String> safetySourceIssueIds,
@@ -282,7 +283,7 @@ public final class SafetyCenterIssueCache {
     }
 
     /**
-     * Returns {@code true} if the contents of the cache may have changed since the last {@link
+     * Returns {@code true} if the contents of the repository may have changed since the last {@link
      * #load(List)} or {@link #snapshot()} occurred.
      */
     public boolean isDirty() {
@@ -290,7 +291,7 @@ public final class SafetyCenterIssueCache {
     }
 
     /**
-     * Takes a snapshot of the contents of the cache to be written to persistent storage.
+     * Takes a snapshot of the contents of the repository to be written to persistent storage.
      *
      * <p>This method will reset the value reported by {@link #isDirty} to {@code false}.
      */
@@ -307,7 +308,7 @@ public final class SafetyCenterIssueCache {
     }
 
     /**
-     * Replaces the contents of the cache with the given issues read from persistent storage.
+     * Replaces the contents of the repository with the given issues read from persistent storage.
      *
      * <p>This method may change the value reported by {@link #isDirty} to {@code true}.
      */
@@ -331,7 +332,7 @@ public final class SafetyCenterIssueCache {
     }
 
     /**
-     * Clears all the data in the cache.
+     * Clears all the data in the repository.
      *
      * <p>This method will change the value reported by {@link #isDirty} to {@code true}.
      */
@@ -341,7 +342,7 @@ public final class SafetyCenterIssueCache {
     }
 
     /**
-     * Clears all the data in the cache for the given user.
+     * Clears all the data in the repository for the given user.
      *
      * <p>This method may change the value reported by {@link #isDirty} to {@code true}.
      */
@@ -358,9 +359,9 @@ public final class SafetyCenterIssueCache {
 
     /** Dumps state for debugging purposes. */
     public void dump(@NonNull PrintWriter fout) {
-        int issueCacheCount = mIssues.size();
-        fout.println("ISSUE CACHE (" + issueCacheCount + ", dirty=" + mIsDirty + ")");
-        for (int i = 0; i < issueCacheCount; i++) {
+        int issueRepositoryCount = mIssues.size();
+        fout.println("ISSUE REPOSITORY (" + issueRepositoryCount + ", dirty=" + mIsDirty + ")");
+        for (int i = 0; i < issueRepositoryCount; i++) {
             SafetyCenterIssueKey key = mIssues.keyAt(i);
             IssueData data = mIssues.valueAt(i);
             fout.println("\t[" + i + "] " + toUserFriendlyString(key) + " -> " + data);
@@ -374,7 +375,7 @@ public final class SafetyCenterIssueCache {
         if (issueData == null) {
             Log.w(
                     TAG,
-                    "Issue missing when reading from cache for "
+                    "Issue missing when reading from repository for "
                             + reason
                             + ": "
                             + toUserFriendlyString(issueKey));

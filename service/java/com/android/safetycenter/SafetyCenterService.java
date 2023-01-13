@@ -76,7 +76,7 @@ import com.android.modules.utils.BackgroundThread;
 import com.android.modules.utils.build.SdkLevel;
 import com.android.permission.util.ForegroundThread;
 import com.android.permission.util.UserUtils;
-import com.android.safetycenter.data.SafetyCenterIssueCache;
+import com.android.safetycenter.data.SafetyCenterIssueRepository;
 import com.android.safetycenter.data.SafetyCenterRepository;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
 import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
@@ -116,8 +116,9 @@ public final class SafetyCenterService extends SystemService {
     /** The APEX name used to retrieve the APEX owned data directories. */
     private static final String APEX_MODULE_NAME = "com.android.permission";
 
-    /** The name of the file used to persist the Safety Center issue cache. */
-    private static final String SAFETY_CENTER_ISSUES_CACHE_FILE_NAME = "safety_center_issues.xml";
+    /** The name of the file used to persist the {@link SafetyCenterIssueRepository}. */
+    private static final String SAFETY_CENTER_ISSUE_REPOSITORY_FILE_NAME =
+            "safety_center_issues.xml";
 
     /** The time delay used to throttle and aggregate writes to disk. */
     private static final Duration WRITE_DELAY = Duration.ofMillis(500);
@@ -160,11 +161,11 @@ public final class SafetyCenterService extends SystemService {
     private final SafetyCenterNotificationSender mNotificationSender;
 
     @GuardedBy("mApiLock")
-    private boolean mSafetyCenterIssueCacheWriteScheduled;
+    private boolean mSafetyCenterIssueRepositoryWriteScheduled;
 
     @GuardedBy("mApiLock")
     @NonNull
-    private final SafetyCenterIssueCache mSafetyCenterIssueCache;
+    private final SafetyCenterIssueRepository mSafetyCenterIssueRepository;
 
     @GuardedBy("mApiLock")
     @NonNull
@@ -183,7 +184,7 @@ public final class SafetyCenterService extends SystemService {
         mSafetyCenterConfigReader = new SafetyCenterConfigReader(mSafetyCenterResourcesContext);
         StatsdLogger statsdLogger = new StatsdLogger(context, mSafetyCenterConfigReader);
         mSafetyCenterRefreshTracker = new SafetyCenterRefreshTracker(statsdLogger);
-        mSafetyCenterIssueCache = new SafetyCenterIssueCache(mSafetyCenterConfigReader);
+        mSafetyCenterIssueRepository = new SafetyCenterIssueRepository(mSafetyCenterConfigReader);
         mPendingIntentFactory = new PendingIntentFactory(context, mSafetyCenterResourcesContext);
         mSafetyCenterRepository =
                 new SafetyCenterRepository(
@@ -191,17 +192,17 @@ public final class SafetyCenterService extends SystemService {
                         mSafetyCenterConfigReader,
                         mSafetyCenterRefreshTracker,
                         statsdLogger,
-                        mSafetyCenterIssueCache);
+                        mSafetyCenterIssueRepository);
         mSafetyCenterDataFactory =
                 new SafetyCenterDataFactory(
                         mSafetyCenterResourcesContext,
                         mSafetyCenterConfigReader,
                         mSafetyCenterRefreshTracker,
                         mPendingIntentFactory,
-                        mSafetyCenterIssueCache,
+                        mSafetyCenterIssueRepository,
                         mSafetyCenterRepository,
                         SdkLevel.isAtLeastU()
-                                ? new SafetyCenterIssueDeduplicator(mSafetyCenterIssueCache)
+                                ? new SafetyCenterIssueDeduplicator(mSafetyCenterIssueRepository)
                                 : null);
         mSafetyCenterListeners = new SafetyCenterListeners(mSafetyCenterDataFactory);
         mNotificationSender =
@@ -211,7 +212,7 @@ public final class SafetyCenterService extends SystemService {
                                 context,
                                 new SafetyCenterNotificationChannels(
                                         mSafetyCenterResourcesContext)),
-                        mSafetyCenterIssueCache,
+                        mSafetyCenterIssueRepository,
                         mSafetyCenterRepository,
                         mSafetyCenterConfigReader);
         mSafetyCenterBroadcastDispatcher =
@@ -228,7 +229,7 @@ public final class SafetyCenterService extends SystemService {
                         mSafetyCenterConfigReader,
                         mSafetyCenterRepository,
                         mSafetyCenterDataFactory,
-                        mSafetyCenterIssueCache);
+                        mSafetyCenterIssueRepository);
         mAppOpsManager = requireNonNull(context.getSystemService(AppOpsManager.class));
         mDeviceSupportsSafetyCenter =
                 context.getResources()
@@ -248,9 +249,10 @@ public final class SafetyCenterService extends SystemService {
             synchronized (mApiLock) {
                 mConfigAvailable = mSafetyCenterConfigReader.loadConfig();
                 if (mConfigAvailable) {
-                    readSafetyCenterIssueCacheFileLocked();
+                    readSafetyCenterIssueRepositoryFileLocked();
                     new UserBroadcastReceiver().register(getContext());
-                    new SafetyCenterNotificationReceiver(this, mSafetyCenterIssueCache, mApiLock)
+                    new SafetyCenterNotificationReceiver(
+                                    this, mSafetyCenterIssueRepository, mApiLock)
                             .register(getContext());
                 }
             }
@@ -320,7 +322,7 @@ public final class SafetyCenterService extends SystemService {
                 if (hasUpdate) {
                     mNotificationSender.updateNotifications(userId);
                 }
-                scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked();
+                scheduleWriteSafetyCenterIssueRepositoryFileIfNeededLocked();
             }
         }
 
@@ -532,7 +534,7 @@ public final class SafetyCenterService extends SystemService {
                     return;
                 }
                 mSafetyCenterRepository.dismissSafetyCenterIssue(safetyCenterIssueKey);
-                scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked();
+                scheduleWriteSafetyCenterIssueRepositoryFileIfNeededLocked();
                 PendingIntent onDismissPendingIntent =
                         safetySourceIssue.getOnDismissPendingIntent();
                 if (onDismissPendingIntent != null
@@ -748,7 +750,7 @@ public final class SafetyCenterService extends SystemService {
                     mSafetyCenterRepository.dump(fout);
                 }
                 if (all || subjects.contains("issues")) {
-                    mSafetyCenterIssueCache.dump(fout);
+                    mSafetyCenterIssueRepository.dump(fout);
                 }
                 if (all || subjects.contains("refresh")) {
                     mSafetyCenterRefreshTracker.dump(fout);
@@ -1008,13 +1010,13 @@ public final class SafetyCenterService extends SystemService {
         synchronized (mApiLock) {
             if (clearDataPermanently) {
                 mSafetyCenterRepository.clearForUser(userId);
-                mSafetyCenterIssueCache.clearForUser(userId);
+                mSafetyCenterIssueRepository.clearForUser(userId);
             }
             mSafetyCenterListeners.clearForUser(userId);
             mSafetyCenterRefreshTracker.clearRefreshForUser(userId);
             mSafetyCenterListeners.deliverUpdateForUserProfileGroup(userProfileGroup, true, null);
             mNotificationSender.updateNotifications(userId);
-            scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked();
+            scheduleWriteSafetyCenterIssueRepositoryFileIfNeededLocked();
         }
     }
 
@@ -1135,67 +1137,67 @@ public final class SafetyCenterService extends SystemService {
         }
     }
 
-    /** Schedule writing the cache to file. */
+    /** Schedule writing the {@link SafetyCenterIssueRepository} to file. */
     @GuardedBy("mApiLock")
-    private void scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked() {
-        if (!mSafetyCenterIssueCache.isDirty()) {
+    private void scheduleWriteSafetyCenterIssueRepositoryFileIfNeededLocked() {
+        if (!mSafetyCenterIssueRepository.isDirty()) {
             return;
         }
-        if (!mSafetyCenterIssueCacheWriteScheduled) {
+        if (!mSafetyCenterIssueRepositoryWriteScheduled) {
             mWriteHandler.postDelayed(
-                    this::writeSafetyCenterIssueCacheFile, WRITE_DELAY.toMillis());
-            mSafetyCenterIssueCacheWriteScheduled = true;
+                    this::writeSafetyCenterIssueRepositoryFile, WRITE_DELAY.toMillis());
+            mSafetyCenterIssueRepositoryWriteScheduled = true;
         }
     }
 
     @WorkerThread
-    private void writeSafetyCenterIssueCacheFile() {
+    private void writeSafetyCenterIssueRepositoryFile() {
         List<PersistedSafetyCenterIssue> persistedSafetyCenterIssues;
 
         synchronized (mApiLock) {
-            mSafetyCenterIssueCacheWriteScheduled = false;
-            persistedSafetyCenterIssues = mSafetyCenterIssueCache.snapshot();
+            mSafetyCenterIssueRepositoryWriteScheduled = false;
+            persistedSafetyCenterIssues = mSafetyCenterIssueRepository.snapshot();
             // Since all write operations are scheduled in the same background thread, we can safely
             // release the lock after creating a snapshot and know that all snapshots will be
             // written in the correct order even if we are not holding the lock.
         }
 
         SafetyCenterIssuesPersistence.write(
-                persistedSafetyCenterIssues, getSafetyCenterIssueCacheFile());
+                persistedSafetyCenterIssues, getSafetyCenterIssueRepositoryFile());
     }
 
     @GuardedBy("mApiLock")
-    private void readSafetyCenterIssueCacheFileLocked() {
+    private void readSafetyCenterIssueRepositoryFileLocked() {
         List<PersistedSafetyCenterIssue> persistedSafetyCenterIssues = new ArrayList<>();
 
         try {
             persistedSafetyCenterIssues =
-                    SafetyCenterIssuesPersistence.read(getSafetyCenterIssueCacheFile());
+                    SafetyCenterIssuesPersistence.read(getSafetyCenterIssueRepositoryFile());
             Log.i(TAG, "Safety Center persisted issues read successfully");
         } catch (PersistenceException e) {
             Log.e(TAG, "Cannot read Safety Center persisted issues", e);
         }
 
-        mSafetyCenterIssueCache.load(persistedSafetyCenterIssues);
-        scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked();
+        mSafetyCenterIssueRepository.load(persistedSafetyCenterIssues);
+        scheduleWriteSafetyCenterIssueRepositoryFileIfNeededLocked();
     }
 
     @NonNull
-    private static File getSafetyCenterIssueCacheFile() {
+    private static File getSafetyCenterIssueRepositoryFile() {
         ApexEnvironment apexEnvironment = ApexEnvironment.getApexEnvironment(APEX_MODULE_NAME);
         File dataDirectory = apexEnvironment.getDeviceProtectedDataDir();
         // It should resolve to /data/misc/apexdata/com.android.permission/safety_center_issues.xml
-        return new File(dataDirectory, SAFETY_CENTER_ISSUES_CACHE_FILE_NAME);
+        return new File(dataDirectory, SAFETY_CENTER_ISSUE_REPOSITORY_FILE_NAME);
     }
 
     @GuardedBy("mApiLock")
     private void clearDataLocked() {
         mSafetyCenterRepository.clear();
-        mSafetyCenterIssueCache.clear();
+        mSafetyCenterIssueRepository.clear();
         mSafetyCenterTimeouts.clear();
         mSafetyCenterRefreshTracker.clearRefresh();
         mNotificationSender.cancelAllNotifications();
-        scheduleWriteSafetyCenterIssueCacheFileIfNeededLocked();
+        scheduleWriteSafetyCenterIssueRepositoryFileIfNeededLocked();
     }
 
     /** Dumps state for debugging purposes. */
@@ -1204,8 +1206,8 @@ public final class SafetyCenterService extends SystemService {
         fout.println("SERVICE");
         fout.println(
                 "\tSafetyCenterService{"
-                        + "mSafetyCenterIssueCacheWriteScheduled="
-                        + mSafetyCenterIssueCacheWriteScheduled
+                        + "mSafetyCenterIssueRepositoryWriteScheduled="
+                        + mSafetyCenterIssueRepositoryWriteScheduled
                         + ", mDeviceSupportsSafetyCenter="
                         + mDeviceSupportsSafetyCenter
                         + ", mConfigAvailable="
@@ -1213,11 +1215,11 @@ public final class SafetyCenterService extends SystemService {
                         + '}');
         fout.println();
 
-        File issueCacheFile = getSafetyCenterIssueCacheFile();
-        fout.println("ISSUE CACHE FILE (" + issueCacheFile.getAbsolutePath() + ")");
+        File issueRepositoryFile = getSafetyCenterIssueRepositoryFile();
+        fout.println("ISSUE REPOSITORY FILE (" + issueRepositoryFile.getAbsolutePath() + ")");
         fout.flush();
         try {
-            Files.copy(issueCacheFile.toPath(), new FileOutputStream(fd));
+            Files.copy(issueRepositoryFile.toPath(), new FileOutputStream(fd));
         } catch (IOException e) {
             e.printStackTrace(fout);
         }
