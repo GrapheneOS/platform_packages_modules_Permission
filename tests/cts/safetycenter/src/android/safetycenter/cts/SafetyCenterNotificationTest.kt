@@ -18,6 +18,7 @@ package android.safetycenter.cts
 
 import android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE
 import android.app.Notification
+import android.app.NotificationManager
 import android.content.Context
 import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.safetycenter.SafetyCenterData
@@ -376,7 +377,8 @@ class SafetyCenterNotificationTest {
                     actions = listOf("See issue", "New action")
                 )
             )
-        assertThat(initialNotification.key).isEqualTo(revisedNotification.key)
+        assertThat(initialNotification.statusBarNotification.key)
+            .isEqualTo(revisedNotification.statusBarNotification.key)
     }
 
     @Test
@@ -431,7 +433,7 @@ class SafetyCenterNotificationTest {
 
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data1)
 
-        val notification =
+        val notificationWithChannel =
             CtsNotificationListener.waitForSingleNotificationMatching(
                 NotificationCharacteristics(
                     title = "Initial",
@@ -440,11 +442,62 @@ class SafetyCenterNotificationTest {
                 )
             )
 
-        CtsNotificationListener.cancelAndWait(notification.key)
+        CtsNotificationListener.cancelAndWait(notificationWithChannel.statusBarNotification.key)
 
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data2)
 
         CtsNotificationListener.waitForZeroNotifications()
+    }
+
+    @Test
+    fun setSafetySourceData_withInformationIssue_lowImportanceBlockableNotification() {
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.informationWithIssue)
+
+        CtsNotificationListener.waitForNotificationsMatching(
+            NotificationCharacteristics(
+                "Information issue title",
+                "Information issue summary",
+                actions = listOf("Review"),
+                importance = NotificationManager.IMPORTANCE_LOW,
+                blockable = true
+            )
+        )
+    }
+
+    @Test
+    fun setSafetySourceData_withRecommendationIssue_defaultImportanceUnblockableNotification() {
+        safetyCenterCtsHelper.setData(
+            SINGLE_SOURCE_ID,
+            safetySourceCtsData.recommendationWithAccountIssue
+        )
+
+        CtsNotificationListener.waitForNotificationsMatching(
+            NotificationCharacteristics(
+                "Recommendation issue title",
+                "Recommendation issue summary",
+                importance = NotificationManager.IMPORTANCE_DEFAULT,
+                actions = listOf("See issue"),
+                blockable = false
+            )
+        )
+    }
+
+    @Test
+    fun setSafetySourceData_withCriticalIssue_highImportanceUnblockableNotification() {
+        safetyCenterCtsHelper.setData(
+            SINGLE_SOURCE_ID,
+            safetySourceCtsData.criticalWithResolvingDeviceIssue
+        )
+
+        CtsNotificationListener.waitForNotificationsMatching(
+            NotificationCharacteristics(
+                "Critical issue title",
+                "Critical issue summary",
+                actions = listOf("Solve issue"),
+                importance = NotificationManager.IMPORTANCE_HIGH,
+                blockable = false
+            )
+        )
     }
 
     @Test
@@ -476,9 +529,9 @@ class SafetyCenterNotificationTest {
         // an update for that
         val listener = safetyCenterCtsHelper.addListener()
 
-        val notification = CtsNotificationListener.waitForSingleNotification()
+        val notificationWithChannel = CtsNotificationListener.waitForSingleNotification()
 
-        CtsNotificationListener.cancelAndWait(notification.key)
+        CtsNotificationListener.cancelAndWait(notificationWithChannel.statusBarNotification.key)
 
         assertFailsWith(TimeoutCancellationException::class) {
             listener.receiveSafetyCenterData(TIMEOUT_SHORT)
@@ -506,8 +559,9 @@ class SafetyCenterNotificationTest {
             SINGLE_SOURCE_ID,
             safetySourceCtsData.criticalWithResolvingGeneralIssue
         )
-        val notification = CtsNotificationListener.waitForSingleNotification()
-        val action = notification.notification.actions.firstOrNull()
+        val notificationWithChannel = CtsNotificationListener.waitForSingleNotification()
+        val action =
+            notificationWithChannel.statusBarNotification.notification.actions.firstOrNull()
         checkNotNull(action) { "Notification action unexpectedly null" }
         SafetySourceReceiver.setResponse(
             Request.ResolveAction(SINGLE_SOURCE_ID),
@@ -534,8 +588,9 @@ class SafetyCenterNotificationTest {
             SINGLE_SOURCE_ID,
             safetySourceCtsData.criticalWithResolvingGeneralIssue
         )
-        val notification = CtsNotificationListener.waitForSingleNotification()
-        val action = notification.notification.actions.firstOrNull()
+        val notificationWithChannel = CtsNotificationListener.waitForSingleNotification()
+        val action =
+            notificationWithChannel.statusBarNotification.notification.actions.firstOrNull()
         checkNotNull(action) { "Notification action unexpectedly null" }
         SafetySourceReceiver.setResponse(Request.ResolveAction(SINGLE_SOURCE_ID), Response.Error)
         val listener = safetyCenterCtsHelper.addListener()

@@ -96,5 +96,17 @@
 
     <!-- The summary shown to the user when a group of related sources in Safety Center all have an unknown status. We expect the status of the sources to eventually update and the summary will change [CHAR LIMIT=NONE] -->
     <string name="group_unknown_summary">No info yet</string>
+
+    <!-- The name of the group of notification channels where Security and Privacy notifications are posted. [CHAR LIMIT=35] -->
+    <string name="notification_channel_group_name">Security &amp; privacy</string>
+
+    <!-- The name of the notification channel where lower-severity Security and Privacy notifications are posted. These are typically informational notifications and not warnings. [CHAR LIMIT=35] -->
+    <string name="notification_channel_name_information">Recommendations</string>
+
+    <!-- The name of the notification channel where medium-severity Security and Privacy notifications are posted. These notifications are typically warnings. [CHAR LIMIT=35] -->
+    <string name="notification_channel_name_recommendation">Warnings</string>
+
+    <!-- The name of the notification channel where high-severity Security and Privacy notifications are posted. These notifications are typically critical warnings of the highest severity. [CHAR LIMIT=35] -->
+    <string name="notification_channel_name_critical_warning">Critical warnings</string>
 </resources>
 

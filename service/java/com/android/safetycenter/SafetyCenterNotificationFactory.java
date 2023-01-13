@@ -26,10 +26,8 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Binder;
 import android.os.Bundle;
 import android.safetycenter.SafetySourceIssue;
-import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
@@ -51,9 +49,13 @@ final class SafetyCenterNotificationFactory {
     private static final int OPEN_SAFETY_CENTER_REQUEST_CODE = 1221;
 
     @NonNull private final Context mContext;
+    @NonNull private final SafetyCenterNotificationChannels mNotificationChannels;
 
-    SafetyCenterNotificationFactory(@NonNull Context context) {
+    SafetyCenterNotificationFactory(
+            @NonNull Context context,
+            @NonNull SafetyCenterNotificationChannels notificationChannels) {
         mContext = context;
+        mNotificationChannels = notificationChannels;
     }
 
     /**
@@ -68,7 +70,7 @@ final class SafetyCenterNotificationFactory {
             @NonNull NotificationManager notificationManager,
             @NonNull SafetySourceIssue issue,
             @NonNull SafetyCenterIssueKey issueKey) {
-        String channelId = createAndGetChannelId(notificationManager, issue);
+        String channelId = mNotificationChannels.createAndGetChannelId(notificationManager, issue);
 
         if (channelId == null) {
             return null;
@@ -108,19 +110,6 @@ final class SafetyCenterNotificationFactory {
         return builder.build();
     }
 
-    @Nullable
-    private String createAndGetChannelId(
-            @NonNull NotificationManager notificationManager, @NonNull SafetySourceIssue issue) {
-        // TODO(b/259398016): Different channels for different issues/severities
-        NotificationChannel channel =
-                new NotificationChannel(
-                        "safety_center",
-                        // TODO(b/259399024): Use suitable string here
-                        "Safety Center notifications",
-                        NotificationManager.IMPORTANCE_DEFAULT);
-        return createNotificationChannelWithoutCallingIdentity(notificationManager, channel);
-    }
-
     @NonNull
     private PendingIntent newSafetyCenterPendingIntent(@NonNull SafetySourceIssue targetIssue) {
         // TODO(b/259398419): Add target issue to intent so it's highlighted when SC opens
@@ -155,27 +144,5 @@ final class SafetyCenterNotificationFactory {
                         mContext, issueActionId);
         return new Notification.Action.Builder(null, issueAction.getLabel(), receiverPendingIntent)
                 .build();
-    }
-
-    /**
-     * Creates a {@link NotificationChannel} using the given {@link NotificationManager}, dropping
-     * any calling identity so that it can be unblockable. Returns the new channel's ID if it was
-     * created successfully or {@code null} otherwise.
-     */
-    @Nullable
-    private static String createNotificationChannelWithoutCallingIdentity(
-            @NonNull NotificationManager notificationManager,
-            @NonNull NotificationChannel channel) {
-        // Clearing calling identity to be able to make an unblockable system notification channel
-        final long callingId = Binder.clearCallingIdentity();
-        try {
-            notificationManager.createNotificationChannel(channel);
-            return channel.getId();
-        } catch (RuntimeException e) {
-            Log.w(TAG, "Unable to create notification channel", e);
-            return null;
-        } finally {
-            Binder.restoreCallingIdentity(callingId);
-        }
     }
 }
