@@ -142,7 +142,8 @@ class SafetyCenterReceiver(
             context.packageManager?.getComponentEnabledSetting(tileComponent) !=
                 PackageManager.COMPONENT_ENABLED_STATE_DISABLED
         val qsTileComponentSettingFlags =
-            DeviceConfig.getInt(DeviceConfig.NAMESPACE_PRIVACY, QS_TILE_COMPONENT_SETTING_FLAGS, 0)
+            DeviceConfig.getInt(DeviceConfig.NAMESPACE_PRIVACY, QS_TILE_COMPONENT_SETTING_FLAGS,
+            PackageManager.DONT_KILL_APP)
         if (enabled && !wasEnabled) {
             context.packageManager.setComponentEnabledSetting(
                 tileComponent,
