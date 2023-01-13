@@ -87,6 +87,7 @@
             <item type="style" name="PermissionRationaleSectionMessage" />
 
             <item type="style" name="PermissionRationaleButtonContainer" />
+            <item type="style" name="PermissionRationaleBackButton" />
 
             <!-- END PERMISSION RATIONALE DIALOG -->
 
