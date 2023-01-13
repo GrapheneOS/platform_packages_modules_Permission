@@ -29,8 +29,8 @@ import android.safetycenter.SafetyCenterIssue
 import android.safetycenter.SafetyCenterStaticEntry
 import android.safetycenter.SafetyCenterStaticEntryGroup
 import android.safetycenter.SafetyCenterStatus
-import android.safetycenter.cts.testing.SafetyCenterCtsData.Companion.withDismissedIssuesIfAtLeastU
-import android.safetycenter.cts.testing.SafetyCenterCtsData.Companion.withExtrasIfAtLeastU
+import android.safetycenter.cts.testing.SafetyCenterTestData.Companion.withDismissedIssuesIfAtLeastU
+import android.safetycenter.cts.testing.SafetyCenterTestData.Companion.withExtrasIfAtLeastU
 import androidx.core.os.bundleOf
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.core.os.Parcelables.forceParcel

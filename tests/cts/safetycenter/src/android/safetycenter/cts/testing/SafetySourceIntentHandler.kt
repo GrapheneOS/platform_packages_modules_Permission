@@ -33,7 +33,7 @@ import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILE
 import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED
 import android.safetycenter.SafetySourceData
 import android.safetycenter.SafetySourceErrorDetails
-import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.EVENT_SOURCE_STATE_CHANGED
+import android.safetycenter.cts.testing.SafetySourceTestData.Companion.EVENT_SOURCE_STATE_CHANGED
 import javax.annotation.concurrent.GuardedBy
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.Channel.Factory.UNLIMITED

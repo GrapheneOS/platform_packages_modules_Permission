@@ -37,7 +37,7 @@ import java.security.MessageDigest
  * A class that provides [SafetyCenterConfig] objects and associated constants to facilitate setting
  * up safety sources for testing.
  */
-class SafetyCenterCtsConfigs(private val context: Context) {
+class SafetyCenterTestConfigs(private val context: Context) {
     private val packageCertHash =
         MessageDigest.getInstance("SHA256")!!.digest(
                 context.packageManager
@@ -51,27 +51,25 @@ class SafetyCenterCtsConfigs(private val context: Context) {
             )
             .joinToString("") { "%02x".format(it) }
 
-    /**
-     * A simple [SafetyCenterConfig] for CTS tests with a single source of id [SINGLE_SOURCE_ID].
-     */
+    /** A simple [SafetyCenterConfig] for tests with a single source of id [SINGLE_SOURCE_ID]. */
     val singleSourceConfig = singleSourceConfig(dynamicSafetySource(SINGLE_SOURCE_ID))
 
     /**
-     * A simple [SafetyCenterConfig] with an invalid intent action for CTS tests with a single
-     * source of id [SINGLE_SOURCE_ID].
+     * A simple [SafetyCenterConfig] with an invalid intent action for tests with a single source of
+     * id [SINGLE_SOURCE_ID].
      */
     val singleSourceInvalidIntentConfig =
         singleSourceConfig(
             dynamicSafetySourceBuilder(SINGLE_SOURCE_ID).setIntentAction("stub").build()
         )
 
-    /** A simple [SafetyCenterConfig] for CTS tests with a source max severity level of 0. */
+    /** A simple [SafetyCenterConfig] for tests with a source max severity level of 0. */
     val severityZeroConfig =
         singleSourceConfig(
             dynamicSafetySourceBuilder(SINGLE_SOURCE_ID).setMaxSeverityLevel(0).build()
         )
 
-    /** A simple [SafetyCenterConfig] for CTS tests with a fake/incorrect package cert hash. */
+    /** A simple [SafetyCenterConfig] for tests with a fake/incorrect package cert hash. */
     val singleSourceWithFakeCert: SafetyCenterConfig
         @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
         get() =
@@ -82,8 +80,8 @@ class SafetyCenterCtsConfigs(private val context: Context) {
             )
 
     /**
-     * A simple [SafetyCenterConfig] for CTS tests with a invalid package cert hash (not a
-     * hex-formatted byte string).
+     * A simple [SafetyCenterConfig] for tests with a invalid package cert hash (not a hex-formatted
+     * byte string).
      */
     val singleSourceWithInvalidCert: SafetyCenterConfig
         @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
@@ -95,8 +93,8 @@ class SafetyCenterCtsConfigs(private val context: Context) {
             )
 
     /**
-     * A simple [SafetyCenterConfig] for CTS tests with a source that does not support refresh on
-     * page open.
+     * A simple [SafetyCenterConfig] for tests with a source that does not support refresh on page
+     * open.
      */
     val noPageOpenConfig =
         singleSourceConfig(
@@ -145,7 +143,7 @@ class SafetyCenterCtsConfigs(private val context: Context) {
             dynamicAllProfileSafetySourceBuilder(SINGLE_SOURCE_ALL_PROFILE_ID).build()
         )
 
-    /** A simple [SafetyCenterConfig] for CTS tests with multiple sources. */
+    /** A simple [SafetyCenterConfig] for tests with multiple sources. */
     val multipleSourcesConfig =
         SafetyCenterConfig.Builder()
             .addSafetySourcesGroup(
@@ -169,9 +167,7 @@ class SafetyCenterCtsConfigs(private val context: Context) {
             )
             .build()
 
-    /**
-     * A simple [SafetyCenterConfig] for CTS tests with multiple sources with deduplication info.
-     */
+    /** A simple [SafetyCenterConfig] for tests with multiple sources with deduplication info. */
     val multipleSourcesWithDeduplicationInfoConfig: SafetyCenterConfig
         @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
         get() =
@@ -270,7 +266,7 @@ class SafetyCenterCtsConfigs(private val context: Context) {
             .setSummaryResId(android.R.string.selectAll)
             .build()
 
-    /** A simple [SafetyCenterConfig] for CTS tests with multiple groups of multiple sources. */
+    /** A simple [SafetyCenterConfig] for tests with multiple groups of multiple sources. */
     val multipleSourceGroupsConfig =
         SafetyCenterConfig.Builder()
             .addSafetySourcesGroup(dynamicSourceGroup1)
@@ -279,7 +275,7 @@ class SafetyCenterCtsConfigs(private val context: Context) {
             .build()
 
     /**
-     * A simple [SafetyCenterConfig] for CTS tests with multiple sources with one source having an
+     * A simple [SafetyCenterConfig] for tests with multiple sources with one source having an
      * invalid default intent.
      */
     val multipleSourcesConfigWithSourceWithInvalidIntent =
@@ -296,14 +292,14 @@ class SafetyCenterCtsConfigs(private val context: Context) {
 
     /** Source provided by [staticSourcesConfig]. */
     val staticSource1 =
-        staticSafetySourceBuilder("cts_static_source_id_1")
+        staticSafetySourceBuilder("test_static_source_id_1")
             .setTitleResId(android.R.string.dialog_alert_title)
             .setSummaryResId(android.R.string.autofill)
             .build()
 
     /** Source provided by [staticSourcesConfig]. */
     val staticSource2 =
-        staticSafetySourceBuilder("cts_static_source_id_2")
+        staticSafetySourceBuilder("test_static_source_id_2")
             .setTitleResId(android.R.string.copyUrl)
             .setSummaryResId(android.R.string.cut)
             .build()
@@ -313,7 +309,7 @@ class SafetyCenterCtsConfigs(private val context: Context) {
      */
     val staticSourceGroup1 =
         SafetySourcesGroup.Builder()
-            .setId("cts_static_sources_group_id_1")
+            .setId("test_static_sources_group_id_1")
             .setTitleResId(android.R.string.paste)
             .addSafetySource(staticSource1)
             .build()
@@ -323,12 +319,12 @@ class SafetyCenterCtsConfigs(private val context: Context) {
      */
     val staticSourceGroup2 =
         SafetySourcesGroup.Builder()
-            .setId("cts_static_sources_group_id_2")
+            .setId("test_static_sources_group_id_2")
             .setTitleResId(android.R.string.copy)
             .addSafetySource(staticSource2)
             .build()
 
-    /** A simple [SafetyCenterConfig] for CTS tests with static sources. */
+    /** A simple [SafetyCenterConfig] for tests with static sources. */
     val staticSourcesConfig =
         SafetyCenterConfig.Builder()
             .addSafetySourcesGroup(staticSourceGroup1)
@@ -722,7 +718,7 @@ class SafetyCenterCtsConfigs(private val context: Context) {
 
     companion object {
         /** ID of a source not used in any config. */
-        const val SAMPLE_SOURCE_ID = "cts_sample_source_id"
+        const val SAMPLE_SOURCE_ID = "test_sample_source_id"
 
         /** Activity action: Launch the [TestActivity] used to check redirects in tests. */
         const val ACTION_TEST_ACTIVITY = "android.safetycenter.cts.testing.action.TEST_ACTIVITY"
@@ -731,19 +727,19 @@ class SafetyCenterCtsConfigs(private val context: Context) {
          * ID of the only source provided in [singleSourceConfig], [severityZeroConfig] and
          * [noPageOpenConfig].
          */
-        const val SINGLE_SOURCE_ID = "cts_single_source_id"
+        const val SINGLE_SOURCE_ID = "test_single_source_id"
 
         /** ID of the only source provided in [singleSourceAllProfileConfig]. */
-        const val SINGLE_SOURCE_ALL_PROFILE_ID = "cts_single_source_all_profile_id"
+        const val SINGLE_SOURCE_ALL_PROFILE_ID = "test_single_source_all_profile_id"
 
         /** ID of the only source provided in [issueOnlySourceAllProfileConfig]. */
-        const val ISSUE_ONLY_ALL_PROFILE_SOURCE_ID = "cts_issue_only_all_profile_id"
+        const val ISSUE_ONLY_ALL_PROFILE_SOURCE_ID = "test_issue_only_all_profile_id"
 
         /**
          * ID of the only [SafetySourcesGroup] provided by [singleSourceConfig],
          * [severityZeroConfig] and [noPageOpenConfig].
          */
-        const val SINGLE_SOURCE_GROUP_ID = "cts_single_source_group_id"
+        const val SINGLE_SOURCE_GROUP_ID = "test_single_source_group_id"
 
         /**
          * SHA256 hash of a package certificate.
@@ -757,43 +753,43 @@ class SafetyCenterCtsConfigs(private val context: Context) {
         const val PACKAGE_CERT_HASH_INVALID = "0124ppl"
 
         /** ID of a source provided by [multipleSourcesConfig] and [summaryTestConfig]. */
-        const val SOURCE_ID_1 = "cts_source_id_1"
+        const val SOURCE_ID_1 = "test_source_id_1"
 
         /** ID of a source provided by [multipleSourcesConfig] and [summaryTestConfig]. */
-        const val SOURCE_ID_2 = "cts_source_id_2"
+        const val SOURCE_ID_2 = "test_source_id_2"
 
         /** ID of a source provided by [multipleSourcesConfig] and [summaryTestConfig]. */
-        const val SOURCE_ID_3 = "cts_source_id_3"
+        const val SOURCE_ID_3 = "test_source_id_3"
 
         /** ID of a source provided by [summaryTestConfig]. */
-        const val SOURCE_ID_4 = "cts_source_id_4"
+        const val SOURCE_ID_4 = "test_source_id_4"
 
         /** ID of a source provided by [summaryTestConfig]. */
-        const val SOURCE_ID_5 = "cts_source_id_5"
+        const val SOURCE_ID_5 = "test_source_id_5"
 
         /** ID of a source provided by [summaryTestConfig]. */
-        const val SOURCE_ID_6 = "cts_source_id_6"
+        const val SOURCE_ID_6 = "test_source_id_6"
 
         /** ID of a source provided by [summaryTestConfig]. */
-        const val SOURCE_ID_7 = "cts_source_id_7"
+        const val SOURCE_ID_7 = "test_source_id_7"
 
         /**
          * ID of a [SafetySourcesGroup] provided by [multipleSourcesConfig], containing two sources
          * of ids [SOURCE_ID_1] and [SOURCE_ID_2].
          */
-        const val MULTIPLE_SOURCES_GROUP_ID_1 = "cts_multiple_sources_group_id_1"
+        const val MULTIPLE_SOURCES_GROUP_ID_1 = "test_multiple_sources_group_id_1"
 
         /**
          * ID of a [SafetySourcesGroup] provided by [multipleSourcesConfig], containing a single
          * source of id [SOURCE_ID_3].
          */
-        const val MULTIPLE_SOURCES_GROUP_ID_2 = "cts_multiple_sources_group_id_2"
+        const val MULTIPLE_SOURCES_GROUP_ID_2 = "test_multiple_sources_group_id_2"
 
         /**
          * ID of a [SafetySourcesGroup] provided by [multipleSourcesConfig], containing two sources
          * of ids [SOURCE_ID_4] and [SOURCE_ID_5].
          */
-        const val MULTIPLE_SOURCES_GROUP_ID_3 = "cts_multiple_sources_group_id_3"
+        const val MULTIPLE_SOURCES_GROUP_ID_3 = "test_multiple_sources_group_id_3"
 
         /**
          * ID of a [SafetySourcesGroup] provided by [summaryTestGroupConfig], containing sources:

@@ -16,15 +16,15 @@
 package android.safetycenter.cts.ui
 
 import android.content.Context
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.Companion.SINGLE_SOURCE_ID
-import android.safetycenter.cts.testing.SafetyCenterCtsData
-import android.safetycenter.cts.testing.SafetyCenterCtsHelper
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
-import android.safetycenter.cts.testing.SafetySourceCtsData
+import android.safetycenter.cts.testing.SafetyCenterTestConfigs
+import android.safetycenter.cts.testing.SafetyCenterTestConfigs.Companion.SINGLE_SOURCE_ID
+import android.safetycenter.cts.testing.SafetyCenterTestData
+import android.safetycenter.cts.testing.SafetyCenterTestHelper
 import android.safetycenter.cts.testing.SafetySourceIntentHandler.Request
 import android.safetycenter.cts.testing.SafetySourceIntentHandler.Response
 import android.safetycenter.cts.testing.SafetySourceReceiver
+import android.safetycenter.cts.testing.SafetySourceTestData
 import android.safetycenter.cts.testing.UiTestHelper.RESCAN_BUTTON_LABEL
 import android.safetycenter.cts.testing.UiTestHelper.waitAllTextDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.waitButtonDisplayed
@@ -57,10 +57,10 @@ class SafetyCenterStatusCardTest {
     private val context: Context = getApplicationContext()
 
     private val safetyCenterResourcesContext = SafetyCenterResourcesContext.forTests(context)
-    private val safetyCenterCtsHelper = SafetyCenterCtsHelper(context)
-    private val safetySourceCtsData = SafetySourceCtsData(context)
-    private val safetyCenterCtsData = SafetyCenterCtsData(context)
-    private val safetyCenterCtsConfigs = SafetyCenterCtsConfigs(context)
+    private val safetyCenterTestHelper = SafetyCenterTestHelper(context)
+    private val safetySourceTestData = SafetySourceTestData(context)
+    private val safetyCenterTestData = SafetyCenterTestData(context)
+    private val safetyCenterTestConfigs = SafetyCenterTestConfigs(context)
 
     // JUnit's Assume is not supported in @BeforeClass by the CTS tests runner, so this is used to
     // manually skip the setup and teardown methods.
@@ -76,7 +76,7 @@ class SafetyCenterStatusCardTest {
         if (!shouldRunTests) {
             return
         }
-        safetyCenterCtsHelper.setup()
+        safetyCenterTestHelper.setup()
     }
 
     @After
@@ -84,12 +84,12 @@ class SafetyCenterStatusCardTest {
         if (!shouldRunTests) {
             return
         }
-        safetyCenterCtsHelper.reset()
+        safetyCenterTestHelper.reset()
     }
 
     @Test
     fun withUnknownStatus_displaysScanningOnLoad() {
-        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
 
         context.launchSafetyCenterActivity {
             waitAllTextDisplayed(
@@ -101,10 +101,10 @@ class SafetyCenterStatusCardTest {
 
     @Test
     fun withKnownStatus_displaysStatusOnLoad() {
-        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
-        safetyCenterCtsHelper.setData(
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
+        safetyCenterTestHelper.setData(
             SINGLE_SOURCE_ID,
-            safetySourceCtsData.informationWithIconAction
+            safetySourceTestData.informationWithIconAction
         )
 
         context.launchSafetyCenterActivity {
@@ -117,7 +117,7 @@ class SafetyCenterStatusCardTest {
 
     @Test
     fun withUnknownStatusAndNoIssues_hasRescanButton() {
-        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
         SafetySourceReceiver.setResponse(Request.Refresh(SINGLE_SOURCE_ID), Response.Error)
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
@@ -135,10 +135,10 @@ class SafetyCenterStatusCardTest {
 
     @Test
     fun withInformationAndNoIssues_hasRescanButton() {
-        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
         SafetySourceReceiver.setResponse(
             Request.Refresh(SINGLE_SOURCE_ID),
-            Response.SetData(safetySourceCtsData.information)
+            Response.SetData(safetySourceTestData.information)
         )
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
@@ -152,10 +152,10 @@ class SafetyCenterStatusCardTest {
 
     @Test
     fun withInformationAndNoIssues_hasContentDescriptions() {
-        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
         SafetySourceReceiver.setResponse(
             Request.Refresh(SINGLE_SOURCE_ID),
-            Response.SetData(safetySourceCtsData.information)
+            Response.SetData(safetySourceTestData.information)
         )
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
@@ -166,16 +166,16 @@ class SafetyCenterStatusCardTest {
 
     @Test
     fun withInformationIssue_doesNotHaveRescanButton() {
-        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
         SafetySourceReceiver.setResponse(
             Request.Refresh(SINGLE_SOURCE_ID),
-            Response.SetData(safetySourceCtsData.informationWithIssue)
+            Response.SetData(safetySourceTestData.informationWithIssue)
         )
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
             waitAllTextDisplayed(
                 safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_title"),
-                safetyCenterCtsData.getAlertString(1)
+                safetyCenterTestData.getAlertString(1)
             )
             waitButtonNotDisplayed(RESCAN_BUTTON_LABEL)
         }
@@ -183,10 +183,10 @@ class SafetyCenterStatusCardTest {
 
     @Test
     fun withRecommendationIssue_doesNotHaveRescanButton() {
-        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
         SafetySourceReceiver.setResponse(
             Request.Refresh(SINGLE_SOURCE_ID),
-            Response.SetData(safetySourceCtsData.recommendationWithGeneralIssue)
+            Response.SetData(safetySourceTestData.recommendationWithGeneralIssue)
         )
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
@@ -194,7 +194,7 @@ class SafetyCenterStatusCardTest {
                 safetyCenterResourcesContext.getStringByName(
                     "overall_severity_level_safety_recommendation_title"
                 ),
-                safetyCenterCtsData.getAlertString(1)
+                safetyCenterTestData.getAlertString(1)
             )
             waitButtonNotDisplayed(RESCAN_BUTTON_LABEL)
         }
@@ -202,10 +202,10 @@ class SafetyCenterStatusCardTest {
 
     @Test
     fun withCriticalWarningIssue_doesNotHaveRescanButton() {
-        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
         SafetySourceReceiver.setResponse(
             Request.Refresh(SINGLE_SOURCE_ID),
-            Response.SetData(safetySourceCtsData.criticalWithResolvingGeneralIssue)
+            Response.SetData(safetySourceTestData.criticalWithResolvingGeneralIssue)
         )
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
@@ -213,7 +213,7 @@ class SafetyCenterStatusCardTest {
                 safetyCenterResourcesContext.getStringByName(
                     "overall_severity_level_critical_safety_warning_title"
                 ),
-                safetyCenterCtsData.getAlertString(1)
+                safetyCenterTestData.getAlertString(1)
             )
             waitButtonNotDisplayed(RESCAN_BUTTON_LABEL)
         }
@@ -221,10 +221,10 @@ class SafetyCenterStatusCardTest {
 
     @Test
     fun withKnownStatus_displaysScanningOnRescan() {
-        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
         SafetySourceReceiver.setResponse(
             Request.Refresh(SINGLE_SOURCE_ID),
-            Response.SetData(safetySourceCtsData.information)
+            Response.SetData(safetySourceTestData.information)
         )
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
@@ -244,14 +244,14 @@ class SafetyCenterStatusCardTest {
 
     @Test
     fun rescan_updatesDataAfterScanCompletes() {
-        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
         SafetySourceReceiver.setResponse(
             Request.Refresh(SINGLE_SOURCE_ID),
-            Response.SetData(safetySourceCtsData.information)
+            Response.SetData(safetySourceTestData.information)
         )
         SafetySourceReceiver.setResponse(
             Request.Rescan(SINGLE_SOURCE_ID),
-            Response.SetData(safetySourceCtsData.recommendationWithGeneralIssue)
+            Response.SetData(safetySourceTestData.recommendationWithGeneralIssue)
         )
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
@@ -266,7 +266,7 @@ class SafetyCenterStatusCardTest {
                 safetyCenterResourcesContext.getStringByName(
                     "overall_severity_level_safety_recommendation_title"
                 ),
-                safetyCenterCtsData.getAlertString(1)
+                safetyCenterTestData.getAlertString(1)
             )
         }
     }

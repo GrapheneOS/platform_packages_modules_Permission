@@ -182,7 +182,7 @@ object SafetyCenterFlags {
      * The Package Manager flag used while toggling the QS tile component.
      *
      * This is to make sure that the SafetyCenter is not killed while toggling the QS tile component
-     * during the CTS tests, which causes flakiness in them.
+     * during the tests, which causes flakiness in them.
      */
     private val qsTileComponentSettingFlag =
         Flag(
@@ -344,7 +344,7 @@ object SafetyCenterFlags {
     /**
      * Takes a snapshot of all Safety Center flags and sets them up to their default values.
      *
-     * This doesn't apply to [isEnabled] as it is handled separately by [SafetyCenterCtsHelper]:
+     * This doesn't apply to [isEnabled] as it is handled separately by [SafetyCenterTestHelper]:
      * there is a listener that listens to changes to this flag in system server, and we need to
      * ensure we wait for it to complete when modifying this flag.
      */
@@ -357,7 +357,7 @@ object SafetyCenterFlags {
     /**
      * Resets the Safety Center flags based on the existing [snapshot] captured during [setup].
      *
-     * This doesn't apply to [isEnabled] as it is handled separately by [SafetyCenterCtsHelper]:
+     * This doesn't apply to [isEnabled] as it is handled separately by [SafetyCenterTestHelper]:
      * there is a listener that listens to changes to this flag in system server, and we need to
      * ensure we wait for it to complete when modifying this flag.
      */

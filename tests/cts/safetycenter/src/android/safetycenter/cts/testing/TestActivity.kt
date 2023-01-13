@@ -20,7 +20,7 @@ import android.os.Bundle
 import android.safetycenter.cts.R
 import android.view.View
 
-/** An activity used in CTS test to assert the redirects. */
+/** An activity used in tests to assert the redirects. */
 class TestActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
