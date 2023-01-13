@@ -88,7 +88,7 @@ public final class SafetyCenterRepository {
     @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
     @NonNull private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker;
     @NonNull private final StatsdLogger mStatsdLogger;
-    @NonNull private final SafetyCenterIssueCache mSafetyCenterIssueCache;
+    @NonNull private final SafetyCenterIssueRepository mSafetyCenterIssueRepository;
     @NonNull private final PackageManager mPackageManager;
 
     public SafetyCenterRepository(
@@ -96,12 +96,12 @@ public final class SafetyCenterRepository {
             @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
             @NonNull SafetyCenterRefreshTracker safetyCenterRefreshTracker,
             @NonNull StatsdLogger statsdLogger,
-            @NonNull SafetyCenterIssueCache safetyCenterIssueCache) {
+            @NonNull SafetyCenterIssueRepository safetyCenterIssueRepository) {
         mContext = context;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
         mSafetyCenterRefreshTracker = safetyCenterRefreshTracker;
         mStatsdLogger = statsdLogger;
-        mSafetyCenterIssueCache = safetyCenterIssueCache;
+        mSafetyCenterIssueRepository = safetyCenterIssueRepository;
         mPackageManager = mContext.getPackageManager();
     }
 
@@ -115,9 +115,9 @@ public final class SafetyCenterRepository {
      * SafetySourceData} does not respect all constraints defined in the config.
      *
      * <p>Setting a {@code null} {@link SafetySourceData} evicts the current {@link
-     * SafetySourceData} entry and clears the Safety Center issue cache for the source.
+     * SafetySourceData} entry and clears the {@link SafetyCenterIssueRepository} for the source.
      *
-     * <p>This method may modify the {@link SafetyCenterIssueCache}.
+     * <p>This method may modify the {@link SafetyCenterIssueRepository}.
      */
     public boolean setSafetySourceData(
             @Nullable SafetySourceData safetySourceData,
@@ -148,7 +148,7 @@ public final class SafetyCenterRepository {
                 issueIds.add(safetySourceData.getIssues().get(i).getId());
             }
         }
-        mSafetyCenterIssueCache.updateIssuesForSource(issueIds, safetySourceId, userId);
+        mSafetyCenterIssueRepository.updateIssuesForSource(issueIds, safetySourceId, userId);
 
         return true;
     }
@@ -290,10 +290,10 @@ public final class SafetyCenterRepository {
     /**
      * Dismisses the given {@link SafetyCenterIssueKey}.
      *
-     * <p>This method may modify the {@link SafetyCenterIssueCache}.
+     * <p>This method may modify the {@link SafetyCenterIssueRepository}.
      */
     public void dismissSafetyCenterIssue(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
-        mSafetyCenterIssueCache.dismissIssue(safetyCenterIssueKey);
+        mSafetyCenterIssueRepository.dismissIssue(safetyCenterIssueKey);
     }
 
     /**
@@ -327,7 +327,7 @@ public final class SafetyCenterRepository {
             return null;
         }
 
-        if (mSafetyCenterIssueCache.isIssueDismissed(
+        if (mSafetyCenterIssueRepository.isIssueDismissed(
                 safetyCenterIssueKey, targetIssue.getSeverityLevel())) {
             return null;
         }

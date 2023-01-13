@@ -25,7 +25,7 @@ import android.util.ArraySet;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
-import com.android.safetycenter.data.SafetyCenterIssueCache;
+import com.android.safetycenter.data.SafetyCenterIssueRepository;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 
 import java.util.ArrayList;
@@ -40,10 +40,11 @@ import javax.annotation.concurrent.NotThreadSafe;
 @NotThreadSafe
 final class SafetyCenterIssueDeduplicator {
 
-    @NonNull private final SafetyCenterIssueCache mSafetyCenterIssueCache;
+    @NonNull private final SafetyCenterIssueRepository mSafetyCenterIssueRepository;
 
-    SafetyCenterIssueDeduplicator(@NonNull SafetyCenterIssueCache safetyCenterIssueCache) {
-        this.mSafetyCenterIssueCache = safetyCenterIssueCache;
+    SafetyCenterIssueDeduplicator(
+            @NonNull SafetyCenterIssueRepository safetyCenterIssueRepository) {
+        this.mSafetyCenterIssueRepository = safetyCenterIssueRepository;
     }
 
     /**
@@ -109,7 +110,7 @@ final class SafetyCenterIssueDeduplicator {
                     && issue.getSafetyCenterIssue().getSeverityLevel()
                             <= topDismissedSeverityLevel) {
                 // all duplicate issues should have same dismissals data as top dismissed issue
-                mSafetyCenterIssueCache.copyDismissalData(topDismissedIssueKey, issueKey);
+                mSafetyCenterIssueRepository.copyDismissalData(topDismissedIssueKey, issueKey);
             }
         }
     }
@@ -119,7 +120,7 @@ final class SafetyCenterIssueDeduplicator {
             @NonNull List<SafetyCenterIssueExtended> duplicates) {
         for (int i = 0; i < duplicates.size(); i++) {
             SafetyCenterIssueExtended issue = duplicates.get(i);
-            if (mSafetyCenterIssueCache.isIssueDismissed(
+            if (mSafetyCenterIssueRepository.isIssueDismissed(
                     issue.getSafetyCenterIssueKey(), issue.getSafetySourceIssueSeverityLevel())) {
                 return issue;
             }

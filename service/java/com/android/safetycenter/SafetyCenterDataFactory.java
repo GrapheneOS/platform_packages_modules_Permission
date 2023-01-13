@@ -49,7 +49,7 @@ import android.util.Log;
 import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.build.SdkLevel;
-import com.android.safetycenter.data.SafetyCenterIssueCache;
+import com.android.safetycenter.data.SafetyCenterIssueRepository;
 import com.android.safetycenter.data.SafetyCenterRepository;
 import com.android.safetycenter.internaldata.SafetyCenterEntryId;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
@@ -87,7 +87,7 @@ final class SafetyCenterDataFactory {
     @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
     @NonNull private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker;
     @NonNull private final PendingIntentFactory mPendingIntentFactory;
-    @NonNull private final SafetyCenterIssueCache mSafetyCenterIssueCache;
+    @NonNull private final SafetyCenterIssueRepository mSafetyCenterIssueRepository;
     @NonNull private final SafetyCenterRepository mSafetyCenterRepository;
 
     /** Only available on Android U+. */
@@ -98,14 +98,14 @@ final class SafetyCenterDataFactory {
             @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
             @NonNull SafetyCenterRefreshTracker safetyCenterRefreshTracker,
             @NonNull PendingIntentFactory pendingIntentFactory,
-            @NonNull SafetyCenterIssueCache safetyCenterIssueCache,
+            @NonNull SafetyCenterIssueRepository safetyCenterIssueRepository,
             @NonNull SafetyCenterRepository safetyCenterRepository,
             @Nullable SafetyCenterIssueDeduplicator safetyCenterIssueDeduplicator) {
         mSafetyCenterResourcesContext = safetyCenterResourcesContext;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
         mSafetyCenterRefreshTracker = safetyCenterRefreshTracker;
         mPendingIntentFactory = pendingIntentFactory;
-        mSafetyCenterIssueCache = safetyCenterIssueCache;
+        mSafetyCenterIssueRepository = safetyCenterIssueRepository;
         mSafetyCenterRepository = safetyCenterRepository;
         mSafetyCenterIssueDeduplicator = safetyCenterIssueDeduplicator;
     }
@@ -200,7 +200,7 @@ final class SafetyCenterDataFactory {
 
         for (int i = 0; i < safetyCenterIssuesExtended.size(); i++) {
             SafetyCenterIssueExtended issueExtended = safetyCenterIssuesExtended.get(i);
-            if (mSafetyCenterIssueCache.isIssueDismissed(
+            if (mSafetyCenterIssueRepository.isIssueDismissed(
                     issueExtended.getSafetyCenterIssueKey(),
                     issueExtended.getSafetySourceIssueSeverityLevel())) {
                 safetyCenterDismissedIssues.add(issueExtended.getSafetyCenterIssue());
