@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package android.safetycenter.cts.testing
+package com.android.safetycenter.testing
 
 import android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE
 import android.app.Notification
@@ -29,15 +29,15 @@ import android.os.IBinder
 import android.os.UserManager
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyCenterManager.ACTION_SAFETY_CENTER_ENABLED_CHANGED
-import android.safetycenter.cts.testing.Coroutines.TIMEOUT_LONG
-import android.safetycenter.cts.testing.Coroutines.runBlockingWithTimeout
-import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.dismissSafetyCenterIssueWithPermission
-import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.executeSafetyCenterIssueActionWithPermission
-import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.refreshSafetySourcesWithPermission
-import android.safetycenter.cts.testing.SafetySourceIntentHandler.Request
-import android.safetycenter.cts.testing.SafetySourceIntentHandler.Response
 import androidx.test.core.app.ApplicationProvider
 import com.android.compatibility.common.util.SystemUtil
+import com.android.safetycenter.testing.Coroutines.TIMEOUT_LONG
+import com.android.safetycenter.testing.Coroutines.runBlockingWithTimeout
+import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.dismissSafetyCenterIssueWithPermission
+import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.executeSafetyCenterIssueActionWithPermission
+import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.refreshSafetySourcesWithPermission
+import com.android.safetycenter.testing.SafetySourceIntentHandler.Request
+import com.android.safetycenter.testing.SafetySourceIntentHandler.Response
 import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
 import java.time.Duration
 import kotlinx.coroutines.CoroutineScope

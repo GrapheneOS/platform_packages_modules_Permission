@@ -23,8 +23,6 @@ import android.hardware.SensorPrivacyManager
 import android.hardware.SensorPrivacyManager.Sensors.CAMERA
 import android.hardware.SensorPrivacyManager.Sensors.MICROPHONE
 import android.hardware.SensorPrivacyManager.TOGGLE_TYPE_SOFTWARE
-import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
-import android.safetycenter.cts.testing.SafetyCenterTestHelper
 import android.safetycenter.cts.testing.UiTestHelper.waitAllTextDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.waitDisplayed
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
@@ -33,6 +31,8 @@ import androidx.test.uiautomator.By
 import com.android.compatibility.common.util.DisableAnimationRule
 import com.android.compatibility.common.util.FreezeRotationRule
 import com.android.safetycenter.testing.SafetyCenterActivityLauncher.launchSafetyCenterQsActivity
+import com.android.safetycenter.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
+import com.android.safetycenter.testing.SafetyCenterTestHelper
 import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
 import org.junit.After
 import org.junit.Assume.assumeTrue

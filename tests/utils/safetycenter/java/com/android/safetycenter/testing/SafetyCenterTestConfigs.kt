@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package android.safetycenter.cts.testing
+package com.android.safetycenter.testing
 
 import android.content.Context
 import android.content.pm.PackageManager.GET_SIGNING_CERTIFICATES
@@ -28,9 +28,9 @@ import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC
 import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY
 import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_STATIC
 import android.safetycenter.config.SafetySourcesGroup
-import android.safetycenter.cts.testing.SettingsPackage.getSettingsPackageName
 import androidx.annotation.RequiresApi
 import com.android.modules.utils.build.SdkLevel
+import com.android.safetycenter.testing.SettingsPackage.getSettingsPackageName
 import java.security.MessageDigest
 
 /**
@@ -721,7 +721,7 @@ class SafetyCenterTestConfigs(private val context: Context) {
         const val SAMPLE_SOURCE_ID = "test_sample_source_id"
 
         /** Activity action: Launch the [TestActivity] used to check redirects in tests. */
-        const val ACTION_TEST_ACTIVITY = "android.safetycenter.cts.testing.action.TEST_ACTIVITY"
+        const val ACTION_TEST_ACTIVITY = "com.android.safetycenter.testing.action.TEST_ACTIVITY"
 
         /**
          * ID of the only source provided in [singleSourceConfig], [severityZeroConfig] and

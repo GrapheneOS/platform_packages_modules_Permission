@@ -16,15 +16,6 @@
 package android.safetycenter.cts.ui
 
 import android.content.Context
-import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
-import android.safetycenter.cts.testing.SafetyCenterTestConfigs
-import android.safetycenter.cts.testing.SafetyCenterTestConfigs.Companion.SINGLE_SOURCE_ID
-import android.safetycenter.cts.testing.SafetyCenterTestData
-import android.safetycenter.cts.testing.SafetyCenterTestHelper
-import android.safetycenter.cts.testing.SafetySourceIntentHandler.Request
-import android.safetycenter.cts.testing.SafetySourceIntentHandler.Response
-import android.safetycenter.cts.testing.SafetySourceReceiver
-import android.safetycenter.cts.testing.SafetySourceTestData
 import android.safetycenter.cts.testing.UiTestHelper.RESCAN_BUTTON_LABEL
 import android.safetycenter.cts.testing.UiTestHelper.waitAllTextDisplayed
 import android.safetycenter.cts.testing.UiTestHelper.waitButtonDisplayed
@@ -38,6 +29,15 @@ import com.android.compatibility.common.util.DisableAnimationRule
 import com.android.compatibility.common.util.FreezeRotationRule
 import com.android.safetycenter.resources.SafetyCenterResourcesContext
 import com.android.safetycenter.testing.SafetyCenterActivityLauncher.launchSafetyCenterActivity
+import com.android.safetycenter.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
+import com.android.safetycenter.testing.SafetyCenterTestConfigs
+import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SINGLE_SOURCE_ID
+import com.android.safetycenter.testing.SafetyCenterTestData
+import com.android.safetycenter.testing.SafetyCenterTestHelper
+import com.android.safetycenter.testing.SafetySourceIntentHandler.Request
+import com.android.safetycenter.testing.SafetySourceIntentHandler.Response
+import com.android.safetycenter.testing.SafetySourceReceiver
+import com.android.safetycenter.testing.SafetySourceTestData
 import org.junit.After
 import org.junit.Assume.assumeTrue
 import org.junit.Before

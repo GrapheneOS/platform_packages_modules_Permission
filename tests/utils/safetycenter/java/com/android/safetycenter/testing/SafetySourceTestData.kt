@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package android.safetycenter.cts.testing
+package com.android.safetycenter.testing
 
 import android.app.PendingIntent
 import android.content.Context
@@ -34,14 +34,14 @@ import android.safetycenter.SafetySourceStatus
 import android.safetycenter.SafetySourceStatus.IconAction
 import android.safetycenter.SafetySourceStatus.IconAction.ICON_TYPE_GEAR
 import android.safetycenter.SafetySourceStatus.IconAction.ICON_TYPE_INFO
-import android.safetycenter.cts.testing.SafetyCenterTestConfigs.Companion.ACTION_TEST_ACTIVITY
-import android.safetycenter.cts.testing.SafetyCenterTestConfigs.Companion.SINGLE_SOURCE_ID
-import android.safetycenter.cts.testing.SafetySourceIntentHandler.Companion.ACTION_DISMISS_ISSUE
-import android.safetycenter.cts.testing.SafetySourceIntentHandler.Companion.ACTION_RESOLVE_ACTION
-import android.safetycenter.cts.testing.SafetySourceIntentHandler.Companion.EXTRA_SOURCE_ID
-import android.safetycenter.cts.testing.SafetySourceIntentHandler.Companion.EXTRA_SOURCE_ISSUE_ACTION_ID
-import android.safetycenter.cts.testing.SafetySourceIntentHandler.Companion.EXTRA_SOURCE_ISSUE_ID
 import androidx.annotation.RequiresApi
+import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.ACTION_TEST_ACTIVITY
+import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SINGLE_SOURCE_ID
+import com.android.safetycenter.testing.SafetySourceIntentHandler.Companion.ACTION_DISMISS_ISSUE
+import com.android.safetycenter.testing.SafetySourceIntentHandler.Companion.ACTION_RESOLVE_ACTION
+import com.android.safetycenter.testing.SafetySourceIntentHandler.Companion.EXTRA_SOURCE_ID
+import com.android.safetycenter.testing.SafetySourceIntentHandler.Companion.EXTRA_SOURCE_ISSUE_ACTION_ID
+import com.android.safetycenter.testing.SafetySourceIntentHandler.Companion.EXTRA_SOURCE_ISSUE_ID
 import java.lang.IllegalStateException
 import kotlin.math.max
 

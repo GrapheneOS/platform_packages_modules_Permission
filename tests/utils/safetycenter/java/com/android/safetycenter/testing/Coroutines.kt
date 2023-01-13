@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package android.safetycenter.cts.testing
+package com.android.safetycenter.testing
 
 import java.time.Duration
 import kotlinx.coroutines.DEBUG_PROPERTY_NAME
