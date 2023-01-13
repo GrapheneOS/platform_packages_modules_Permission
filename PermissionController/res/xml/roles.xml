@@ -1530,4 +1530,28 @@
             <permission name="android.permission.LAUNCH_CAPTURE_CONTENT_ACTIVITY_FOR_NOTE" minSdkVersion="34"/>
         </permissions>
     </role>
+
+    <!---
+      ~ A role for the package that streams calls to other devices.
+    -->
+    <role
+        name="android.app.role.SYSTEM_CALL_STREAMING"
+        defaultHolders="config_systemCallStreaming"
+        exclusive="true"
+        minSdkVersion="34"
+        static="true"
+        systemOnly="true"
+        visible="false">
+        <permissions>
+            <permission name="android.permission.CALL_AUDIO_INTERCEPTION" />
+            <permission name="android.permission.RECORD_AUDIO" />
+        </permissions>
+        <required-components>
+            <service permission="android.permission.BIND_CALL_STREAMING_SERVICE">
+                <intent-filter>
+                    <action name="android.telecom.CallStreamingService" />
+                </intent-filter>
+            </service>
+        </required-components>
+    </role>
 </roles>
