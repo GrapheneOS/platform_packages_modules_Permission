@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 The Android Open Source Project
+ * Copyright (C) 2023 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.safetycenter;
+package com.android.safetycenter.data;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
@@ -44,6 +44,13 @@ import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.build.SdkLevel;
 import com.android.permission.util.UserUtils;
+import com.android.safetycenter.SafetyCenterConfigReader;
+import com.android.safetycenter.SafetyCenterFlags;
+import com.android.safetycenter.SafetyCenterRefreshTracker;
+import com.android.safetycenter.SafetySourceKey;
+import com.android.safetycenter.SafetySources;
+import com.android.safetycenter.StatsdLogger;
+import com.android.safetycenter.UserProfileGroup;
 import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 
@@ -60,10 +67,12 @@ import javax.annotation.concurrent.NotThreadSafe;
  * SafetySourceErrorDetails} and metadata about which issue actions are in-flight.
  *
  * <p>This class isn't thread safe. Thread safety must be handled by the caller.
+ *
+ * @hide
  */
 @RequiresApi(TIRAMISU)
 @NotThreadSafe
-final class SafetyCenterRepository {
+public final class SafetyCenterRepository {
 
     private static final String TAG = "SafetyCenterRepository";
 
@@ -82,7 +91,7 @@ final class SafetyCenterRepository {
     @NonNull private final SafetyCenterIssueCache mSafetyCenterIssueCache;
     @NonNull private final PackageManager mPackageManager;
 
-    SafetyCenterRepository(
+    public SafetyCenterRepository(
             @NonNull Context context,
             @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
             @NonNull SafetyCenterRefreshTracker safetyCenterRefreshTracker,
@@ -110,7 +119,7 @@ final class SafetyCenterRepository {
      *
      * <p>This method may modify the {@link SafetyCenterIssueCache}.
      */
-    boolean setSafetySourceData(
+    public boolean setSafetySourceData(
             @Nullable SafetySourceData safetySourceData,
             @NonNull String safetySourceId,
             @NonNull SafetyEvent safetyEvent,
@@ -155,12 +164,12 @@ final class SafetyCenterRepository {
      * {@link #setSafetySourceData} with a {@code null} value.
      */
     @Nullable
-    SafetySourceData getSafetySourceData(
+    public SafetySourceData getSafetySourceData(
             @NonNull String safetySourceId, @NonNull String packageName, @UserIdInt int userId) {
         if (!validateRequest(null, safetySourceId, packageName, userId)) {
             return null;
         }
-        return getSafetySourceData(SafetySourceKey.of(safetySourceId, userId));
+        return getSafetySourceDataInternal(SafetySourceKey.of(safetySourceId, userId));
     }
 
     /**
@@ -174,7 +183,7 @@ final class SafetyCenterRepository {
      * {@link #setSafetySourceData} with a {@code null} value.
      */
     @Nullable
-    SafetySourceData getSafetySourceData(@NonNull SafetySourceKey safetySourceKey) {
+    public SafetySourceData getSafetySourceDataInternal(@NonNull SafetySourceKey safetySourceKey) {
         return mSafetySourceDataForKey.get(safetySourceKey);
     }
 
@@ -186,7 +195,7 @@ final class SafetyCenterRepository {
      * <p>Throws if the request is invalid based on the {@link SafetyCenterConfig}: the given {@code
      * safetySourceId}, {@code packageName} and/or {@code userId} are unexpected.
      */
-    boolean reportSafetySourceError(
+    public boolean reportSafetySourceError(
             @NonNull SafetySourceErrorDetails safetySourceErrorDetails,
             @NonNull String safetySourceId,
             @NonNull String packageName,
@@ -211,7 +220,7 @@ final class SafetyCenterRepository {
     }
 
     /** Marks the given {@link SafetySourceKey} as having errored-out. */
-    boolean setSafetySourceError(@NonNull SafetySourceKey safetySourceKey) {
+    public boolean setSafetySourceError(@NonNull SafetySourceKey safetySourceKey) {
         boolean removingSafetySourceDataChangedSafetyCenterData =
                 mSafetySourceDataForKey.remove(safetySourceKey) != null;
         boolean addingSafetySourceErrorChangedSafetyCenterData =
@@ -224,7 +233,7 @@ final class SafetyCenterRepository {
      * Clears all safety source errors received so far for the given {@link UserProfileGroup}, this
      * is useful e.g. when starting a new broadcast.
      */
-    void clearSafetySourceErrors(@NonNull UserProfileGroup userProfileGroup) {
+    public void clearSafetySourceErrors(@NonNull UserProfileGroup userProfileGroup) {
         // Loop in reverse index order to be able to remove entries while iterating.
         for (int i = mSafetySourceErrors.size() - 1; i >= 0; i--) {
             SafetySourceKey sourceKey = mSafetySourceErrors.valueAt(i);
@@ -235,7 +244,7 @@ final class SafetyCenterRepository {
     }
 
     /** Marks the given {@link SafetyCenterIssueActionId} as in-flight. */
-    void markSafetyCenterIssueActionInFlight(
+    public void markSafetyCenterIssueActionInFlight(
             @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
         mSafetyCenterIssueActionsInFlight.put(
                 safetyCenterIssueActionId, SystemClock.elapsedRealtime());
@@ -246,7 +255,7 @@ final class SafetyCenterRepository {
      * with the given {@code result} value, and returns {@code true} if the underlying {@link
      * SafetyCenterData} changed.
      */
-    boolean unmarkSafetyCenterIssueActionInFlight(
+    public boolean unmarkSafetyCenterIssueActionInFlight(
             @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId,
             @StatsdLogger.SystemEventResult int result) {
         Long startElapsedMillis =
@@ -283,7 +292,7 @@ final class SafetyCenterRepository {
      *
      * <p>This method may modify the {@link SafetyCenterIssueCache}.
      */
-    void dismissSafetyCenterIssue(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
+    public void dismissSafetyCenterIssue(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
         mSafetyCenterIssueCache.dismissIssue(safetyCenterIssueKey);
     }
 
@@ -294,7 +303,8 @@ final class SafetyCenterRepository {
      * dismissed.
      */
     @Nullable
-    SafetySourceIssue getSafetySourceIssue(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
+    public SafetySourceIssue getSafetySourceIssue(
+            @NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
         SafetySourceKey key =
                 SafetySourceKey.of(
                         safetyCenterIssueKey.getSafetySourceId(), safetyCenterIssueKey.getUserId());
@@ -335,7 +345,7 @@ final class SafetyCenterRepository {
      * <p>Returns {@code null} if the {@link SafetySourceIssue.Action} is currently in flight.
      */
     @Nullable
-    SafetySourceIssue.Action getSafetySourceIssueAction(
+    public SafetySourceIssue.Action getSafetySourceIssueAction(
             @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
         SafetySourceIssue safetySourceIssue =
                 getSafetySourceIssue(safetyCenterIssueActionId.getSafetyCenterIssueKey());
@@ -363,7 +373,7 @@ final class SafetyCenterRepository {
     }
 
     /** Clears all {@link SafetySourceData}, errors, issues and in flight actions for all users. */
-    void clear() {
+    public void clear() {
         mSafetySourceDataForKey.clear();
         mSafetySourceErrors.clear();
         mSafetyCenterIssueActionsInFlight.clear();
@@ -373,7 +383,7 @@ final class SafetyCenterRepository {
      * Clears all {@link SafetySourceData}, errors, issues and in flight actions, for the given
      * user.
      */
-    void clearForUser(@UserIdInt int userId) {
+    public void clearForUser(@UserIdInt int userId) {
         // Loop in reverse index order to be able to remove entries while iterating.
         for (int i = mSafetySourceDataForKey.size() - 1; i >= 0; i--) {
             SafetySourceKey sourceKey = mSafetySourceDataForKey.keyAt(i);
@@ -398,7 +408,7 @@ final class SafetyCenterRepository {
     }
 
     /** Dumps state for debugging purposes. */
-    void dump(@NonNull PrintWriter fout) {
+    public void dump(@NonNull PrintWriter fout) {
         int dataCount = mSafetySourceDataForKey.size();
         fout.println("SOURCE DATA (" + dataCount + ")");
         for (int i = 0; i < dataCount; i++) {
@@ -428,12 +438,12 @@ final class SafetyCenterRepository {
     }
 
     /** Returns {@code true} if the given issue action is in flight. */
-    boolean actionIsInFlight(@NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
+    public boolean actionIsInFlight(@NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
         return mSafetyCenterIssueActionsInFlight.containsKey(safetyCenterIssueActionId);
     }
 
     /** Returns {@code true} if the given source has an error. */
-    boolean sourceHasError(@NonNull SafetySourceKey safetySourceKey) {
+    public boolean sourceHasError(@NonNull SafetySourceKey safetySourceKey) {
         return mSafetySourceErrors.contains(safetySourceKey);
     }
 

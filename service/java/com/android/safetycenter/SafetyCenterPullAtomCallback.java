@@ -41,6 +41,8 @@ import androidx.annotation.RequiresApi;
 import com.android.internal.annotations.GuardedBy;
 import com.android.modules.utils.build.SdkLevel;
 import com.android.permission.PermissionStatsLog;
+import com.android.safetycenter.data.SafetyCenterIssueCache;
+import com.android.safetycenter.data.SafetyCenterRepository;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 
 import java.util.List;
@@ -196,7 +198,8 @@ final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback {
     private void writeSafetySourceStateCollectedAtomLocked(
             @NonNull SafetySource safetySource, @UserIdInt int userId, boolean isUserManaged) {
         SafetySourceKey key = SafetySourceKey.of(safetySource.getId(), userId);
-        SafetySourceData safetySourceData = mSafetyCenterRepository.getSafetySourceData(key);
+        SafetySourceData safetySourceData =
+                mSafetyCenterRepository.getSafetySourceDataInternal(key);
         SafetySourceStatus safetySourceStatus =
                 safetySourceData == null ? null : safetySourceData.getStatus();
         List<SafetySourceIssue> safetySourceIssues =

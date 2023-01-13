@@ -76,6 +76,8 @@ import com.android.modules.utils.BackgroundThread;
 import com.android.modules.utils.build.SdkLevel;
 import com.android.permission.util.ForegroundThread;
 import com.android.permission.util.UserUtils;
+import com.android.safetycenter.data.SafetyCenterIssueCache;
+import com.android.safetycenter.data.SafetyCenterRepository;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
 import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueId;
@@ -730,16 +732,33 @@ public final class SafetyCenterService extends SystemService {
             List<String> subjects = Arrays.asList(args);
             boolean all = subjects.isEmpty();
             synchronized (mApiLock) {
-                if (all || subjects.contains("service"))
+                if (all || subjects.contains("service")) {
                     SafetyCenterService.this.dumpLocked(fd, fout);
-                if (all || subjects.contains("flags")) SafetyCenterFlags.dump(fout);
-                if (all || subjects.contains("config")) mSafetyCenterConfigReader.dump(fout);
-                if (all || subjects.contains("repository")) mSafetyCenterRepository.dump(fout);
-                if (all || subjects.contains("issues")) mSafetyCenterIssueCache.dump(fout);
-                if (all || subjects.contains("refresh")) mSafetyCenterRefreshTracker.dump(fout);
-                if (all || subjects.contains("timeouts")) mSafetyCenterTimeouts.dump(fout);
-                if (all || subjects.contains("listeners")) mSafetyCenterListeners.dump(fout);
-                if (all || subjects.contains("notifications")) mNotificationSender.dump(fout);
+                }
+                if (all || subjects.contains("flags")) {
+                    SafetyCenterFlags.dump(fout);
+                }
+                if (all || subjects.contains("config")) {
+                    mSafetyCenterConfigReader.dump(fout);
+                }
+                if (all || subjects.contains("repository")) {
+                    mSafetyCenterRepository.dump(fout);
+                }
+                if (all || subjects.contains("issues")) {
+                    mSafetyCenterIssueCache.dump(fout);
+                }
+                if (all || subjects.contains("refresh")) {
+                    mSafetyCenterRefreshTracker.dump(fout);
+                }
+                if (all || subjects.contains("timeouts")) {
+                    mSafetyCenterTimeouts.dump(fout);
+                }
+                if (all || subjects.contains("listeners")) {
+                    mSafetyCenterListeners.dump(fout);
+                }
+                if (all || subjects.contains("notifications")) {
+                    mNotificationSender.dump(fout);
+                }
             }
         }
 

@@ -49,6 +49,8 @@ import android.util.Log;
 import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.build.SdkLevel;
+import com.android.safetycenter.data.SafetyCenterIssueCache;
+import com.android.safetycenter.data.SafetyCenterRepository;
 import com.android.safetycenter.internaldata.SafetyCenterEntryId;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
 import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
@@ -198,7 +200,9 @@ final class SafetyCenterDataFactory {
 
         for (int i = 0; i < safetyCenterIssuesExtended.size(); i++) {
             SafetyCenterIssueExtended issueExtended = safetyCenterIssuesExtended.get(i);
-            if (mSafetyCenterIssueCache.isIssueDismissed(issueExtended)) {
+            if (mSafetyCenterIssueCache.isIssueDismissed(
+                    issueExtended.getSafetyCenterIssueKey(),
+                    issueExtended.getSafetySourceIssueSeverityLevel())) {
                 safetyCenterDismissedIssues.add(issueExtended.getSafetyCenterIssue());
             } else {
                 safetyCenterIssues.add(issueExtended.getSafetyCenterIssue());
@@ -299,7 +303,8 @@ final class SafetyCenterDataFactory {
             @NonNull SafetySourcesGroup safetySourcesGroup,
             @UserIdInt int userId) {
         SafetySourceKey key = SafetySourceKey.of(safetySource.getId(), userId);
-        SafetySourceData safetySourceData = mSafetyCenterRepository.getSafetySourceData(key);
+        SafetySourceData safetySourceData =
+                mSafetyCenterRepository.getSafetySourceDataInternal(key);
 
         if (safetySourceData == null) {
             return;
@@ -518,7 +523,7 @@ final class SafetyCenterDataFactory {
 
                     SafetySourceKey key = toSafetySourceKey(entry.getId());
                     SafetySourceData safetySourceData =
-                            mSafetyCenterRepository.getSafetySourceData(key);
+                            mSafetyCenterRepository.getSafetySourceDataInternal(key);
                     boolean hasIssues =
                             safetySourceData != null && !safetySourceData.getIssues().isEmpty();
 
@@ -621,7 +626,8 @@ final class SafetyCenterDataFactory {
             case SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC:
                 SafetySourceKey key = SafetySourceKey.of(safetySource.getId(), userId);
                 SafetySourceStatus safetySourceStatus =
-                        getSafetySourceStatus(mSafetyCenterRepository.getSafetySourceData(key));
+                        getSafetySourceStatus(
+                                mSafetyCenterRepository.getSafetySourceDataInternal(key));
                 boolean defaultEntryDueToQuietMode = isUserManaged && !isManagedUserRunning;
                 if (safetySourceStatus == null || defaultEntryDueToQuietMode) {
                     return toDefaultSafetyCenterEntry(
@@ -845,7 +851,8 @@ final class SafetyCenterDataFactory {
             case SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC:
                 SafetySourceKey key = SafetySourceKey.of(safetySource.getId(), userId);
                 SafetySourceStatus safetySourceStatus =
-                        getSafetySourceStatus(mSafetyCenterRepository.getSafetySourceData(key));
+                        getSafetySourceStatus(
+                                mSafetyCenterRepository.getSafetySourceDataInternal(key));
                 boolean defaultEntryDueToQuietMode = isUserManaged && !isManagedUserRunning;
                 if (safetySourceStatus != null && !defaultEntryDueToQuietMode) {
                     PendingIntent pendingIntent = safetySourceStatus.getPendingIntent();
