@@ -21,6 +21,7 @@ import android.app.AlertDialog
 import android.app.Application
 import android.app.Dialog
 import android.content.Intent
+import android.icu.text.MessageFormat
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -195,9 +196,9 @@ class UnusedAppsFragment<PF, UnusedAppPref> : Fragment()
         for ((month, packages) in categorizedPackages) {
             val category = preferenceScreen.findPreference<PreferenceCategory>(month.value)!!
             category.title = if (month == Months.THREE) {
-                getString(R.string.last_opened_category_title, "3")
+                MessageFormat.format(getString(R.string.last_opened_category_title), mapOf("count" to 3))
             } else {
-                getString(R.string.last_opened_category_title, "6")
+                MessageFormat.format(getString(R.string.last_opened_category_title), mapOf("count" to 6))
             }
             category.isVisible = packages.isNotEmpty()
             if (packages.isNotEmpty()) {

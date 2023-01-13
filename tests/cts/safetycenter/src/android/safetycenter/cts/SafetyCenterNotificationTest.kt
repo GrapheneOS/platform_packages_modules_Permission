@@ -244,14 +244,33 @@ class SafetyCenterNotificationTest {
     @Test
     @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun setSafetySourceData_withCustomNotification_usesCustomValues() {
+        val intent1 = safetySourceCtsData.testActivityRedirectPendingIntent(identifier = "1")
+        val intent2 = safetySourceCtsData.testActivityRedirectPendingIntent(identifier = "2")
+
         val notification =
-            SafetySourceIssue.Notification.Builder("Custom title", "Custom text").build()
+            SafetySourceIssue.Notification.Builder("Custom title", "Custom text")
+                .addAction(
+                    SafetySourceIssue.Action.Builder("action1", "Custom action 1", intent1).build()
+                )
+                .addAction(
+                    SafetySourceIssue.Action.Builder("action2", "Custom action 2", intent1).build()
+                )
+                .build()
+
         val data =
             safetySourceCtsData
                 .defaultRecommendationDataBuilder()
                 .addIssue(
                     safetySourceCtsData
                         .defaultRecommendationIssueBuilder("Default title", "Default text")
+                        .addAction(
+                            SafetySourceIssue.Action.Builder(
+                                    "default_action",
+                                    "Default action",
+                                    safetySourceCtsData.testActivityRedirectPendingIntent
+                                )
+                                .build()
+                        )
                         .setCustomNotification(notification)
                         .build()
                 )
@@ -259,12 +278,49 @@ class SafetyCenterNotificationTest {
 
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
 
-        // TODO(b/263477747): Use custom actions too
         CtsNotificationListener.waitForSingleNotificationMatching(
             NotificationCharacteristics(
                 title = "Custom title",
                 text = "Custom text",
-                actions = listOf("See issue")
+                actions = listOf("Custom action 1", "Custom action 2")
+            )
+        )
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun setSafetySourceData_withEmptyCustomActions_notificationHasNoActions() {
+        val notification =
+            SafetySourceIssue.Notification.Builder("Custom title", "Custom text")
+                .clearActions()
+                .build()
+
+        val data =
+            safetySourceCtsData
+                .defaultRecommendationDataBuilder()
+                .addIssue(
+                    safetySourceCtsData
+                        .defaultRecommendationIssueBuilder("Default title", "Default text")
+                        .addAction(
+                            SafetySourceIssue.Action.Builder(
+                                    "default_action",
+                                    "Default action",
+                                    safetySourceCtsData.testActivityRedirectPendingIntent
+                                )
+                                .build()
+                        )
+                        .setCustomNotification(notification)
+                        .build()
+                )
+                .build()
+
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
+
+        CtsNotificationListener.waitForSingleNotificationMatching(
+            NotificationCharacteristics(
+                title = "Custom title",
+                text = "Custom text",
+                actions = emptyList()
             )
         )
     }
