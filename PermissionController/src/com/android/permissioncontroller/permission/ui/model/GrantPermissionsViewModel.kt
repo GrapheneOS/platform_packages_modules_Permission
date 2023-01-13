@@ -77,6 +77,7 @@ import com.android.permissioncontroller.permission.data.PackagePermissionsLiveDa
 import com.android.permissioncontroller.permission.data.SafetyLabelInfoLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.data.get
+import com.android.permissioncontroller.permission.model.AppPermissionGroup
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPermGroupInfo
@@ -1066,6 +1067,10 @@ class GrantPermissionsViewModel(
                 listOf(READ_MEDIA_VISUAL_USER_SELECTED))
             onPermissionGrantResultSingleState(groupState, listOf(READ_MEDIA_VISUAL_USER_SELECTED),
                 granted = true, isOneTime = false, doNotAskAgain = false)
+            val appPermGroup = AppPermissionGroup.create(app, packageName,
+            groupState.group.permGroupName, groupState.group.userHandle, false)
+            appPermGroup.setSelfRevoked()
+            appPermGroup.persistChanges(false, null, nonSelectedPerms.toSet())
         } else {
             val setUserFixed = userSelectedPerm.isUserFixed || userSelectedPerm.isUserSet
             KotlinUtils.grantForegroundRuntimePermissions(app, groupState.group,
