@@ -498,6 +498,15 @@ class NotificationListenerCheckInternalTest {
         assertThat(safetySourceIssue.actions).containsExactly(expectedAction2, expectedAction1)
     }
 
+    @Test
+    fun exemptPackagesNotInitializedUntilUsed() {
+        assertThat(notificationListenerCheck.exemptPackagesDelegate.isInitialized()).isFalse()
+        runWithShellPermissionIdentity {
+            notificationListenerCheck.exemptPackages
+        }
+        assertThat(notificationListenerCheck.exemptPackagesDelegate.isInitialized()).isTrue()
+    }
+
     private fun getNotifiedComponents(): Set<ComponentName> = runBlocking {
         notificationListenerCheck
             .getNotifiedComponents()
