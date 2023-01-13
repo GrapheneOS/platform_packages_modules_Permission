@@ -36,7 +36,8 @@ class SafetyCenterQsTileService : TileService() {
     override fun onBind(intent: Intent?): IBinder? {
         val scManager = getSystemService(SafetyCenterManager::class.java)!!
         val qsTileComponentSettingFlags =
-            DeviceConfig.getInt(DeviceConfig.NAMESPACE_PRIVACY, QS_TILE_COMPONENT_SETTING_FLAGS, 0)
+            DeviceConfig.getInt(DeviceConfig.NAMESPACE_PRIVACY, QS_TILE_COMPONENT_SETTING_FLAGS,
+            PackageManager.DONT_KILL_APP)
         if (!scManager.isSafetyCenterEnabled) {
             packageManager.setComponentEnabledSetting(
                 ComponentName(this, this::class.java),
