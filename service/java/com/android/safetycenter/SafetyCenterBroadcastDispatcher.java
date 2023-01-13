@@ -52,6 +52,7 @@ import androidx.annotation.RequiresApi;
 
 import com.android.permission.util.PackageUtils;
 import com.android.safetycenter.SafetyCenterConfigReader.Broadcast;
+import com.android.safetycenter.data.SafetyCenterRepository;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -399,7 +400,7 @@ final class SafetyCenterBroadcastDispatcher {
             String sourceId = allSourceIds.get(i);
             if (pageOpenSourceIds.contains(sourceId)
                     || flagAllowListedSourceIds.contains(sourceId)
-                    || mSafetyCenterRepository.getSafetySourceData(
+                    || mSafetyCenterRepository.getSafetySourceDataInternal(
                                     SafetySourceKey.of(sourceId, userId))
                             == null) {
                 sourceIds.add(sourceId);

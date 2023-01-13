@@ -35,9 +35,13 @@ import com.android.modules.utils.build.SdkLevel;
 import java.io.PrintWriter;
 import java.time.Duration;
 
-/** A class to access the Safety Center {@link DeviceConfig} flags. */
+/**
+ * A class to access the Safety Center {@link DeviceConfig} flags.
+ *
+ * @hide
+ */
 @RequiresApi(TIRAMISU)
-final class SafetyCenterFlags {
+public final class SafetyCenterFlags {
 
     private static final String TAG = "SafetyCenterFlags";
 
@@ -242,7 +246,8 @@ final class SafetyCenterFlags {
      * Returns the number of times an issue of the given {@link SafetySourceData.SeverityLevel}
      * should be resurfaced.
      */
-    static long getResurfaceIssueMaxCount(@SafetySourceData.SeverityLevel int severityLevel) {
+    public static long getResurfaceIssueMaxCount(
+            @SafetySourceData.SeverityLevel int severityLevel) {
         String maxCountsConfigString = getResurfaceIssueMaxCounts();
         Long maxCount = getLongValueFromStringMapping(maxCountsConfigString, severityLevel);
         if (maxCount != null) {
@@ -268,7 +273,8 @@ final class SafetyCenterFlags {
      * resurfaced.
      */
     @NonNull
-    static Duration getResurfaceIssueDelay(@SafetySourceData.SeverityLevel int severityLevel) {
+    public static Duration getResurfaceIssueDelay(
+            @SafetySourceData.SeverityLevel int severityLevel) {
         String delaysConfigString = getResurfaceIssueDelaysMillis();
         Long delayMillis = getLongValueFromStringMapping(delaysConfigString, severityLevel);
         if (delayMillis != null) {
@@ -294,7 +300,7 @@ final class SafetyCenterFlags {
      * SafetySourceIssue.IssueCategory}.
      */
     @NonNull
-    static boolean isIssueCategoryAllowedForSource(
+    public static boolean isIssueCategoryAllowedForSource(
             @SafetySourceIssue.IssueCategory int issueCategory, @NonNull String safetySourceId) {
         String issueCategoryAllowlists = getIssueCategoryAllowlists();
         String allowlistString =

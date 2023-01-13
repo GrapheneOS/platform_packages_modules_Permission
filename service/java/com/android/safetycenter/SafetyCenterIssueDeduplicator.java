@@ -25,6 +25,7 @@ import android.util.ArraySet;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
+import com.android.safetycenter.data.SafetyCenterIssueCache;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 
 import java.util.ArrayList;
@@ -118,7 +119,8 @@ final class SafetyCenterIssueDeduplicator {
             @NonNull List<SafetyCenterIssueExtended> duplicates) {
         for (int i = 0; i < duplicates.size(); i++) {
             SafetyCenterIssueExtended issue = duplicates.get(i);
-            if (mSafetyCenterIssueCache.isIssueDismissed(issue)) {
+            if (mSafetyCenterIssueCache.isIssueDismissed(
+                    issue.getSafetyCenterIssueKey(), issue.getSafetySourceIssueSeverityLevel())) {
                 return issue;
             }
         }

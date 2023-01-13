@@ -47,10 +47,12 @@ import javax.annotation.concurrent.NotThreadSafe;
  * A class to store the state of a refresh of safety sources, if any is ongoing.
  *
  * <p>This class isn't thread safe. Thread safety must be handled by the caller.
+ *
+ * @hide
  */
 @RequiresApi(TIRAMISU)
 @NotThreadSafe
-final class SafetyCenterRefreshTracker {
+public final class SafetyCenterRefreshTracker {
     private static final String TAG = "SafetyCenterRefreshTrac";
 
     @Nullable
@@ -137,7 +139,7 @@ final class SafetyCenterRefreshTracker {
      *
      * <p>Completed refreshes are logged to statsd.
      */
-    boolean reportSourceRefreshCompleted(
+    public boolean reportSourceRefreshCompleted(
             @NonNull String refreshBroadcastId,
             @NonNull String sourceId,
             @UserIdInt int userId,
@@ -162,8 +164,7 @@ final class SafetyCenterRefreshTracker {
 
         Log.v(TAG, "Refresh with id: " + mRefreshInProgress.getId() + " completed");
         int wholeResult =
-                toSystemEventResult(
-                        /* success = */ !mRefreshInProgress.hasAnyTrackedSourceErrors());
+                toSystemEventResult(/* success= */ !mRefreshInProgress.hasAnyTrackedSourceErrors());
         mStatsdLogger.writeWholeRefreshSystemEvent(
                 requestType, mRefreshInProgress.getDurationSinceStart(), wholeResult);
         mRefreshInProgress = null;
