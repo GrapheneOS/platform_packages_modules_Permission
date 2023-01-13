@@ -34,8 +34,8 @@ import android.safetycenter.SafetySourceStatus
 import android.safetycenter.SafetySourceStatus.IconAction
 import android.safetycenter.SafetySourceStatus.IconAction.ICON_TYPE_GEAR
 import android.safetycenter.SafetySourceStatus.IconAction.ICON_TYPE_INFO
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.ACTION_TEST_ACTIVITY
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_ID
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.Companion.ACTION_TEST_ACTIVITY
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.Companion.SINGLE_SOURCE_ID
 import android.safetycenter.cts.testing.SafetySourceIntentHandler.Companion.ACTION_DISMISS_ISSUE
 import android.safetycenter.cts.testing.SafetySourceIntentHandler.Companion.ACTION_RESOLVE_ACTION
 import android.safetycenter.cts.testing.SafetySourceIntentHandler.Companion.EXTRA_SOURCE_ID

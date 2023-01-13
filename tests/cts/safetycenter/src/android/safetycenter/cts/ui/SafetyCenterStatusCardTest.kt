@@ -16,8 +16,8 @@
 package android.safetycenter.cts.ui
 
 import android.content.Context
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_CONFIG
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_ID
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.Companion.SINGLE_SOURCE_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsData
 import android.safetycenter.cts.testing.SafetyCenterCtsHelper
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
@@ -60,6 +60,7 @@ class SafetyCenterStatusCardTest {
     private val safetyCenterCtsHelper = SafetyCenterCtsHelper(context)
     private val safetySourceCtsData = SafetySourceCtsData(context)
     private val safetyCenterCtsData = SafetyCenterCtsData(context)
+    private val safetyCenterCtsConfigs = SafetyCenterCtsConfigs(context)
 
     // JUnit's Assume is not supported in @BeforeClass by the CTS tests runner, so this is used to
     // manually skip the setup and teardown methods.
@@ -88,7 +89,7 @@ class SafetyCenterStatusCardTest {
 
     @Test
     fun withUnknownStatus_displaysScanningOnLoad() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
 
         context.launchSafetyCenterActivity {
             waitAllTextDisplayed(
@@ -100,7 +101,7 @@ class SafetyCenterStatusCardTest {
 
     @Test
     fun withKnownStatus_displaysStatusOnLoad() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
         safetyCenterCtsHelper.setData(
             SINGLE_SOURCE_ID,
             safetySourceCtsData.informationWithIconAction
@@ -116,7 +117,7 @@ class SafetyCenterStatusCardTest {
 
     @Test
     fun withUnknownStatusAndNoIssues_hasRescanButton() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
         SafetySourceReceiver.setResponse(Request.Refresh(SINGLE_SOURCE_ID), Response.Error)
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
@@ -134,7 +135,7 @@ class SafetyCenterStatusCardTest {
 
     @Test
     fun withInformationAndNoIssues_hasRescanButton() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
         SafetySourceReceiver.setResponse(
             Request.Refresh(SINGLE_SOURCE_ID),
             Response.SetData(safetySourceCtsData.information)
@@ -151,7 +152,7 @@ class SafetyCenterStatusCardTest {
 
     @Test
     fun withInformationAndNoIssues_hasContentDescriptions() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
         SafetySourceReceiver.setResponse(
             Request.Refresh(SINGLE_SOURCE_ID),
             Response.SetData(safetySourceCtsData.information)
@@ -165,7 +166,7 @@ class SafetyCenterStatusCardTest {
 
     @Test
     fun withInformationIssue_doesNotHaveRescanButton() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
         SafetySourceReceiver.setResponse(
             Request.Refresh(SINGLE_SOURCE_ID),
             Response.SetData(safetySourceCtsData.informationWithIssue)
@@ -182,7 +183,7 @@ class SafetyCenterStatusCardTest {
 
     @Test
     fun withRecommendationIssue_doesNotHaveRescanButton() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
         SafetySourceReceiver.setResponse(
             Request.Refresh(SINGLE_SOURCE_ID),
             Response.SetData(safetySourceCtsData.recommendationWithGeneralIssue)
@@ -201,7 +202,7 @@ class SafetyCenterStatusCardTest {
 
     @Test
     fun withCriticalWarningIssue_doesNotHaveRescanButton() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
         SafetySourceReceiver.setResponse(
             Request.Refresh(SINGLE_SOURCE_ID),
             Response.SetData(safetySourceCtsData.criticalWithResolvingGeneralIssue)
@@ -220,7 +221,7 @@ class SafetyCenterStatusCardTest {
 
     @Test
     fun withKnownStatus_displaysScanningOnRescan() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
         SafetySourceReceiver.setResponse(
             Request.Refresh(SINGLE_SOURCE_ID),
             Response.SetData(safetySourceCtsData.information)
@@ -243,7 +244,7 @@ class SafetyCenterStatusCardTest {
 
     @Test
     fun rescan_updatesDataAfterScanCompletes() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
         SafetySourceReceiver.setResponse(
             Request.Refresh(SINGLE_SOURCE_ID),
             Response.SetData(safetySourceCtsData.information)

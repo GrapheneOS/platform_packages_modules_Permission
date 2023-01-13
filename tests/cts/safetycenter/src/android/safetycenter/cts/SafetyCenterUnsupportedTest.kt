@@ -34,8 +34,8 @@ import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.rem
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.reportSafetySourceErrorWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.setSafetyCenterConfigForTestsWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.setSafetySourceDataWithPermission
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_CONFIG
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_ID
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.Companion.SINGLE_SOURCE_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsData
 import android.safetycenter.cts.testing.SafetyCenterCtsHelper
 import android.safetycenter.cts.testing.SafetyCenterCtsListener
@@ -78,6 +78,7 @@ class SafetyCenterUnsupportedTest {
     private val context: Context = getApplicationContext()
     private val safetyCenterCtsHelper = SafetyCenterCtsHelper(context)
     private val safetySourceCtsData = SafetySourceCtsData(context)
+    private val safetyCenterCtsConfigs = SafetyCenterCtsConfigs(context)
     private val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)!!
     // JUnit's Assume is not supported in @BeforeClass by the CTS tests runner, so this is used to
     // manually skip the setup and teardown methods.
@@ -134,7 +135,9 @@ class SafetyCenterUnsupportedTest {
 
     @Test
     fun setAndGetSafetySourceData_doesntSetData() {
-        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(SINGLE_SOURCE_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(
+            safetyCenterCtsConfigs.singleSourceConfig
+        )
         safetyCenterManager.setSafetySourceDataWithPermission(
             SINGLE_SOURCE_ID,
             safetySourceCtsData.criticalWithResolvingGeneralIssue,
@@ -167,7 +170,9 @@ class SafetyCenterUnsupportedTest {
 
     @Test
     fun reportSafetySourceError_doesntCallListener() {
-        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(SINGLE_SOURCE_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(
+            safetyCenterCtsConfigs.singleSourceConfig
+        )
         val listener = SafetyCenterCtsListener()
         safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
             directExecutor(),
@@ -209,7 +214,9 @@ class SafetyCenterUnsupportedTest {
 
     @Test
     fun safetyCenterEnabledChanged_withSourceReceiver_doesntCallReceiver() {
-        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(SINGLE_SOURCE_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(
+            safetyCenterCtsConfigs.singleSourceConfig
+        )
 
         assertFailsWith(TimeoutCancellationException::class) {
             SafetySourceReceiver.setSafetyCenterEnabledWithReceiverPermissionAndWait(
@@ -221,7 +228,9 @@ class SafetyCenterUnsupportedTest {
 
     @Test
     fun refreshSafetySources_doesntRefreshSources() {
-        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(SINGLE_SOURCE_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(
+            safetyCenterCtsConfigs.singleSourceConfig
+        )
 
         assertFailsWith(TimeoutCancellationException::class) {
             safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
@@ -264,7 +273,9 @@ class SafetyCenterUnsupportedTest {
 
     @Test
     fun addOnSafetyCenterDataChangedListener_listenerNotCalled() {
-        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(SINGLE_SOURCE_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(
+            safetyCenterCtsConfigs.singleSourceConfig
+        )
         val listener = SafetyCenterCtsListener()
 
         safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
@@ -288,7 +299,9 @@ class SafetyCenterUnsupportedTest {
 
     @Test
     fun removeOnSafetyCenterDataChangedListener_listenerNotCalled() {
-        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(SINGLE_SOURCE_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(
+            safetyCenterCtsConfigs.singleSourceConfig
+        )
         val listener = SafetyCenterCtsListener()
         safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
             directExecutor(),
@@ -317,7 +330,9 @@ class SafetyCenterUnsupportedTest {
 
     @Test
     fun dismissSafetyCenterIssue_doesntCallListenerOrDismiss() {
-        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(SINGLE_SOURCE_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(
+            safetyCenterCtsConfigs.singleSourceConfig
+        )
         safetyCenterManager.setSafetySourceDataWithPermission(
             SINGLE_SOURCE_ID,
             safetySourceCtsData.criticalWithResolvingGeneralIssue,
@@ -347,7 +362,9 @@ class SafetyCenterUnsupportedTest {
 
     @Test
     fun executeSafetyCenterIssueAction_doesntCallListenerOrExecute() {
-        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(SINGLE_SOURCE_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(
+            safetyCenterCtsConfigs.singleSourceConfig
+        )
         safetyCenterManager.setSafetySourceDataWithPermission(
             SINGLE_SOURCE_ID,
             safetySourceCtsData.criticalWithResolvingGeneralIssue,
@@ -384,7 +401,9 @@ class SafetyCenterUnsupportedTest {
 
     @Test
     fun clearAllSafetySourceDataForTests_doesntClearData() {
-        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(SINGLE_SOURCE_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(
+            safetyCenterCtsConfigs.singleSourceConfig
+        )
         safetyCenterManager.setSafetySourceDataWithPermission(
             SINGLE_SOURCE_ID,
             safetySourceCtsData.criticalWithResolvingGeneralIssue,
@@ -409,7 +428,9 @@ class SafetyCenterUnsupportedTest {
 
     @Test
     fun setSafetyCenterConfigForTests_doesntSetConfig() {
-        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(SINGLE_SOURCE_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(
+            safetyCenterCtsConfigs.singleSourceConfig
+        )
 
         val config = safetyCenterManager.getSafetyCenterConfigWithPermission()
         assertThat(config).isNull()
@@ -418,13 +439,17 @@ class SafetyCenterUnsupportedTest {
     @Test
     fun setSafetyCenterConfigForTests_withoutPermission_throwsSecurityException() {
         assertFailsWith(SecurityException::class) {
-            safetyCenterManager.setSafetyCenterConfigForTests(SINGLE_SOURCE_CONFIG)
+            safetyCenterManager.setSafetyCenterConfigForTests(
+                safetyCenterCtsConfigs.singleSourceConfig
+            )
         }
     }
 
     @Test
     fun clearSafetyCenterConfigForTests_doesntClearConfig() {
-        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(SINGLE_SOURCE_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(
+            safetyCenterCtsConfigs.singleSourceConfig
+        )
         val configBeforeClearing = safetyCenterManager.getSafetyCenterConfigWithPermission()
 
         safetyCenterManager.clearSafetyCenterConfigForTestsWithPermission()

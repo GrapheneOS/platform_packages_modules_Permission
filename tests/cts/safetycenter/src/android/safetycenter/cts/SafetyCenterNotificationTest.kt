@@ -31,10 +31,8 @@ import android.safetycenter.cts.testing.CtsNotificationListener
 import android.safetycenter.cts.testing.NotificationCharacteristics
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.clearAllSafetySourceDataForTestsWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.dismissSafetyCenterIssueWithPermission
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_CONFIG
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_ID
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.dynamicSafetySourceBuilder
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.singleSourceConfig
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.Companion.SINGLE_SOURCE_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsData
 import android.safetycenter.cts.testing.SafetyCenterCtsHelper
 import android.safetycenter.cts.testing.SafetyCenterFlags
@@ -62,6 +60,7 @@ class SafetyCenterNotificationTest {
     private val context: Context = getApplicationContext()
     private val safetyCenterCtsHelper = SafetyCenterCtsHelper(context)
     private val safetySourceCtsData = SafetySourceCtsData(context)
+    private val safetyCenterCtsConfigs = SafetyCenterCtsConfigs(context)
     private val safetyCenterManager =
         requireNotNull(context.getSystemService(SafetyCenterManager::class.java)) {
             "Could not get system service"
@@ -85,7 +84,7 @@ class SafetyCenterNotificationTest {
         CtsNotificationListener.setup()
         SafetyCenterFlags.notificationsEnabled = true
         SafetyCenterFlags.notificationsAllowedSources = setOf(SINGLE_SOURCE_ID)
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
     }
 
     @After
@@ -229,8 +228,9 @@ class SafetyCenterNotificationTest {
     @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun setSafetySourceData_withNotificationsAllowedForSourceByConfig_sendsNotification() {
         safetyCenterCtsHelper.setConfig(
-            singleSourceConfig(
-                dynamicSafetySourceBuilder("MyNotifiableSource")
+            safetyCenterCtsConfigs.singleSourceConfig(
+                safetyCenterCtsConfigs
+                    .dynamicSafetySourceBuilder("MyNotifiableSource")
                     .setNotificationsAllowed(true)
                     .build()
             )

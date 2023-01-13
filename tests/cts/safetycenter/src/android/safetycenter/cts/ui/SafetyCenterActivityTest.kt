@@ -29,25 +29,13 @@ import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_RECOMMENDATION
 import android.safetycenter.cts.testing.Coroutines.TIMEOUT_LONG
 import android.safetycenter.cts.testing.Coroutines.TIMEOUT_SHORT
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_SOURCE_1
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_SOURCE_2
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_SOURCE_3
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_SOURCE_GROUP_1
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_SOURCE_GROUP_2
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.DYNAMIC_SOURCE_GROUP_3
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.ISSUE_ONLY_ALL_OPTIONAL_ID
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.ISSUE_ONLY_SOURCE_NO_GROUP_TITLE_CONFIG
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MULTIPLE_SOURCES_CONFIG
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MULTIPLE_SOURCES_CONFIG_WITH_SOURCE_WITH_INVALID_INTENT
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MULTIPLE_SOURCE_GROUPS_CONFIG
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_CONFIG
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_ID
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_1
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_2
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_3
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_4
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_5
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.STATIC_SOURCES_CONFIG
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.Companion.ISSUE_ONLY_ALL_OPTIONAL_ID
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.Companion.SINGLE_SOURCE_ID
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.Companion.SOURCE_ID_1
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.Companion.SOURCE_ID_2
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.Companion.SOURCE_ID_3
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.Companion.SOURCE_ID_4
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.Companion.SOURCE_ID_5
 import android.safetycenter.cts.testing.SafetyCenterCtsHelper
 import android.safetycenter.cts.testing.SafetyCenterFlags
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
@@ -100,6 +88,7 @@ class SafetyCenterActivityTest {
 
     private val safetyCenterCtsHelper = SafetyCenterCtsHelper(context)
     private val safetySourceCtsData = SafetySourceCtsData(context)
+    private val safetyCenterCtsConfigs = SafetyCenterCtsConfigs(context)
     // JUnit's Assume is not supported in @BeforeClass by the CTS tests runner, so this is used to
     // manually skip the setup and teardown methods.
     private val shouldRunTests = context.deviceSupportsSafetyCenter()
@@ -145,23 +134,23 @@ class SafetyCenterActivityTest {
 
     @Test
     fun launchActivity_displaysStaticSources() {
-        safetyCenterCtsHelper.setConfig(STATIC_SOURCES_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.staticSourcesConfig)
 
         context.launchSafetyCenterActivity {
             waitAllTextDisplayed(
-                context.getString(SafetyCenterCtsConfigs.STATIC_SOURCE_GROUP_1.titleResId),
-                context.getString(SafetyCenterCtsConfigs.STATIC_SOURCE_1.titleResId),
-                context.getString(SafetyCenterCtsConfigs.STATIC_SOURCE_1.summaryResId),
-                context.getString(SafetyCenterCtsConfigs.STATIC_SOURCE_GROUP_2.titleResId),
-                context.getString(SafetyCenterCtsConfigs.STATIC_SOURCE_2.titleResId),
-                context.getString(SafetyCenterCtsConfigs.STATIC_SOURCE_2.summaryResId)
+                context.getString(safetyCenterCtsConfigs.staticSourceGroup1.titleResId),
+                context.getString(safetyCenterCtsConfigs.staticSource1.titleResId),
+                context.getString(safetyCenterCtsConfigs.staticSource1.summaryResId),
+                context.getString(safetyCenterCtsConfigs.staticSourceGroup2.titleResId),
+                context.getString(safetyCenterCtsConfigs.staticSource2.titleResId),
+                context.getString(safetyCenterCtsConfigs.staticSource2.summaryResId)
             )
         }
     }
 
     @Test
     fun launchActivity_displaysSafetyData() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
         val dataToDisplay = safetySourceCtsData.criticalWithResolvingGeneralIssue
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, dataToDisplay)
 
@@ -171,7 +160,7 @@ class SafetyCenterActivityTest {
     @Test
     fun launchActivity_displaysCollapsedGroupsOfMultipleSource() {
         with(safetyCenterCtsHelper) {
-            setConfig(MULTIPLE_SOURCE_GROUPS_CONFIG)
+            setConfig(safetyCenterCtsConfigs.multipleSourceGroupsConfig)
             setData(
                 SOURCE_ID_1,
                 safetySourceCtsData.buildSafetySourceDataWithSummary(
@@ -221,10 +210,10 @@ class SafetyCenterActivityTest {
 
         context.launchSafetyCenterActivity {
             waitAllTextDisplayed(
-                context.getString(DYNAMIC_SOURCE_GROUP_1.titleResId),
-                context.getString(DYNAMIC_SOURCE_GROUP_1.summaryResId),
-                context.getString(DYNAMIC_SOURCE_GROUP_3.titleResId),
-                context.getString(DYNAMIC_SOURCE_GROUP_3.summaryResId)
+                context.getString(safetyCenterCtsConfigs.dynamicSourceGroup1.titleResId),
+                context.getString(safetyCenterCtsConfigs.dynamicSourceGroup1.summaryResId),
+                context.getString(safetyCenterCtsConfigs.dynamicSourceGroup3.titleResId),
+                context.getString(safetyCenterCtsConfigs.dynamicSourceGroup3.summaryResId)
             )
             waitAllTextNotDisplayed(
                 SAFETY_SOURCE_1_TITLE,
@@ -242,7 +231,7 @@ class SafetyCenterActivityTest {
     @Test
     fun launchActivity_displaysPrioritizedGroupSummary() {
         with(safetyCenterCtsHelper) {
-            setConfig(MULTIPLE_SOURCE_GROUPS_CONFIG)
+            setConfig(safetyCenterCtsConfigs.multipleSourceGroupsConfig)
             setData(
                 SOURCE_ID_1,
                 safetySourceCtsData.buildSafetySourceDataWithSummary(
@@ -292,9 +281,9 @@ class SafetyCenterActivityTest {
 
         context.launchSafetyCenterActivity {
             waitAllTextDisplayed(
-                context.getString(DYNAMIC_SOURCE_GROUP_1.titleResId),
+                context.getString(safetyCenterCtsConfigs.dynamicSourceGroup1.titleResId),
                 SAFETY_SOURCE_2_SUMMARY,
-                context.getString(DYNAMIC_SOURCE_GROUP_3.titleResId),
+                context.getString(safetyCenterCtsConfigs.dynamicSourceGroup3.titleResId),
                 SAFETY_SOURCE_5_SUMMARY
             )
             waitAllTextNotDisplayed(
@@ -310,17 +299,21 @@ class SafetyCenterActivityTest {
 
     @Test
     fun launchActivity_displaysGroupsOfSingleSourceAsEntity() {
-        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCE_GROUPS_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.multipleSourceGroupsConfig)
 
         context.launchSafetyCenterActivity {
-            waitAllTextDisplayed(context.getString(DYNAMIC_SOURCE_3.titleResId))
-            waitAllTextNotDisplayed(context.getString(DYNAMIC_SOURCE_GROUP_2.titleResId))
+            waitAllTextDisplayed(
+                context.getString(safetyCenterCtsConfigs.dynamicSource3.titleResId)
+            )
+            waitAllTextNotDisplayed(
+                context.getString(safetyCenterCtsConfigs.dynamicSourceGroup2.titleResId)
+            )
         }
     }
 
     @Test
     fun updatingSafetySourceData_updatesDisplayedSafetyData() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.information)
 
         context.launchSafetyCenterActivity {
@@ -336,7 +329,7 @@ class SafetyCenterActivityTest {
         val initialDataToDisplay = safetySourceCtsData.informationWithIssue
         val updatedDataToDisplay = safetySourceCtsData.informationWithSubtitleIssue
 
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, initialDataToDisplay)
 
         context.launchSafetyCenterActivity {
@@ -355,7 +348,7 @@ class SafetyCenterActivityTest {
         val initialDataToDisplay = safetySourceCtsData.informationWithSubtitleIssue
         val updatedDataToDisplay = safetySourceCtsData.informationWithIssue
 
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, initialDataToDisplay)
 
         context.launchSafetyCenterActivity {
@@ -372,7 +365,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun entryListWithEntryGroup_informationState_hasContentDescription() {
-        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.multipleSourcesConfig)
         safetyCenterCtsHelper.setData(SOURCE_ID_1, safetySourceCtsData.information)
         safetyCenterCtsHelper.setData(SOURCE_ID_2, safetySourceCtsData.information)
         safetyCenterCtsHelper.setData(SOURCE_ID_3, safetySourceCtsData.information)
@@ -389,7 +382,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun entryListWithEntryGroup_recommendationState_hasActionsNeededContentDescription() {
-        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.multipleSourcesConfig)
         safetyCenterCtsHelper.setData(
             SOURCE_ID_1,
             safetySourceCtsData.recommendationWithGeneralIssue
@@ -412,7 +405,9 @@ class SafetyCenterActivityTest {
 
     @Test
     fun entryListWithEntryGroup_clickingAnUnclickableDisabledEntry_doesNothing() {
-        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG_WITH_SOURCE_WITH_INVALID_INTENT)
+        safetyCenterCtsHelper.setConfig(
+            safetyCenterCtsConfigs.multipleSourcesConfigWithSourceWithInvalidIntent
+        )
         safetyCenterCtsHelper.setData(SOURCE_ID_1, safetySourceCtsData.unspecified)
 
         context.launchSafetyCenterActivity {
@@ -426,7 +421,9 @@ class SafetyCenterActivityTest {
 
     @Test
     fun entryListWithEntryGroup_unclickableDisabledEntry_hasContentDescription() {
-        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG_WITH_SOURCE_WITH_INVALID_INTENT)
+        safetyCenterCtsHelper.setConfig(
+            safetyCenterCtsConfigs.multipleSourcesConfigWithSourceWithInvalidIntent
+        )
         safetyCenterCtsHelper.setData(SOURCE_ID_1, safetySourceCtsData.unspecified)
 
         context.launchSafetyCenterActivity {
@@ -439,7 +436,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun entryListWithEntryGroup_clickingAClickableDisabledEntry_redirectsToDifferentScreen() {
-        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.multipleSourcesConfig)
         safetyCenterCtsHelper.setData(
             SOURCE_ID_1,
             safetySourceCtsData.unspecifiedDisabledWithTestActivityRedirect
@@ -454,7 +451,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun entryListWithEntryGroup_clickableDisabledEntry_hasContentDescription() {
-        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.multipleSourcesConfig)
         safetyCenterCtsHelper.setData(
             SOURCE_ID_1,
             safetySourceCtsData.unspecifiedDisabledWithTestActivityRedirect
@@ -472,7 +469,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun entryListWithSingleSource_informationState_hasContentDescription() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.information)
 
         context.launchSafetyCenterActivity {
@@ -483,7 +480,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun entryListWithSingleSource_clickingTheEntry_redirectsToDifferentScreen() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.information)
 
         context.launchSafetyCenterActivity {
@@ -495,7 +492,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun entryListWithSingleSource_clickingTheIconActionButton_redirectsToDifferentScreen() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
         safetyCenterCtsHelper.setData(
             SINGLE_SOURCE_ID,
             safetySourceCtsData.informationWithIconAction
@@ -510,22 +507,20 @@ class SafetyCenterActivityTest {
 
     @Test
     fun staticSource_clickingTheEntry_redirectsToDifferentScreen() {
-        safetyCenterCtsHelper.setConfig(STATIC_SOURCES_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.staticSourcesConfig)
 
         context.launchSafetyCenterActivity {
             waitDisplayed(
-                By.text(context.getString(SafetyCenterCtsConfigs.STATIC_SOURCE_1.titleResId))
+                By.text(context.getString(safetyCenterCtsConfigs.staticSource1.titleResId))
             ) { it.click() }
             waitButtonDisplayed("Exit test activity") { it.click() }
-            waitAllTextDisplayed(
-                context.getString(SafetyCenterCtsConfigs.STATIC_SOURCE_1.titleResId)
-            )
+            waitAllTextDisplayed(context.getString(safetyCenterCtsConfigs.staticSource1.titleResId))
         }
     }
 
     @Test
     fun issueCard_criticalIssue_hasContentDescriptions() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
         safetyCenterCtsHelper.setData(
             SINGLE_SOURCE_ID,
             safetySourceCtsData.criticalWithResolvingGeneralIssue
@@ -546,7 +541,7 @@ class SafetyCenterActivityTest {
     @Test
     fun issueCard_informationIssueWithSubtitle_hasContentDescriptions() {
         val sourceIssue = safetySourceCtsData.informationWithSubtitleIssue
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, sourceIssue)
         val expectedString =
             "Alert. Information issue title. Information issue subtitle. Information issue summary"
@@ -566,7 +561,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun issueCard_greenIssue_noDismissalConfirmationAndDismisses() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.informationWithIssue)
 
         context.launchSafetyCenterActivity {
@@ -580,7 +575,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun issueCard_confirmsDismissal_dismisses() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
         safetyCenterCtsHelper.setData(
             SINGLE_SOURCE_ID,
             safetySourceCtsData.criticalWithResolvingGeneralIssue
@@ -598,7 +593,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun issueCard_confirmsDismissal_afterRotation_dismisses() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
         safetyCenterCtsHelper.setData(
             SINGLE_SOURCE_ID,
             safetySourceCtsData.criticalWithResolvingGeneralIssue
@@ -628,7 +623,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun issueCard_confirmsDismissal_cancels() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
         safetyCenterCtsHelper.setData(
             SINGLE_SOURCE_ID,
             safetySourceCtsData.criticalWithResolvingGeneralIssue
@@ -645,7 +640,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun issueCard_confirmsDismissal_afterRotation_cancels() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
         safetyCenterCtsHelper.setData(
             SINGLE_SOURCE_ID,
             safetySourceCtsData.criticalWithResolvingGeneralIssue
@@ -669,7 +664,7 @@ class SafetyCenterActivityTest {
     @Test
     fun issueCard_resolveIssue_successConfirmationShown() {
         SafetyCenterFlags.hideResolvedIssueUiTransitionDelay = TIMEOUT_LONG
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
 
         // Set the initial data for the source
         safetyCenterCtsHelper.setData(
@@ -699,7 +694,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun issueCard_resolveIssue_issueDismisses() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
 
         // Set the initial data for the source
         safetyCenterCtsHelper.setData(
@@ -729,7 +724,7 @@ class SafetyCenterActivityTest {
     @Test
     fun issueCard_resolveIssue_noSuccessMessage_noResolutionUiShown_issueDismisses() {
         SafetyCenterFlags.hideResolvedIssueUiTransitionDelay = TIMEOUT_LONG
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
 
         // Set the initial data for the source
         safetyCenterCtsHelper.setData(
@@ -757,7 +752,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun issueCard_resolvingInflightIssueFailed_issueRemains() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
 
         // Set the initial data for the source
         val data = safetySourceCtsData.criticalWithResolvingGeneralIssue
@@ -776,7 +771,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun issueCard_resolvingInFlightIssueTimesOut_issueRemains() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
 
         // Set the initial data for the source
         val data = safetySourceCtsData.criticalWithResolvingGeneralIssue
@@ -796,7 +791,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun issueCard_clickingNonResolvingActionButton_redirectsToDifferentScreen() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
 
         val data = safetySourceCtsData.criticalWithTestActivityRedirectIssue
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
@@ -811,7 +806,7 @@ class SafetyCenterActivityTest {
     @Test
     @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun issueCard_withAttributionTitleSetBySource_displaysAttributionTitle() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
 
         val data = safetySourceCtsData.informationWithIssueWithAttributionTitle
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
@@ -822,7 +817,7 @@ class SafetyCenterActivityTest {
     @Test
     @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun issueCard_attributionNotSetBySource_displaysGroupTitleAsAttribution() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
 
         val data = safetySourceCtsData.recommendationWithGeneralIssue
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
@@ -833,7 +828,7 @@ class SafetyCenterActivityTest {
     @Test
     @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun issueCard_attributionNotSetBySourceAndGroupTitleNull_doesNotDisplayAttributionTitle() {
-        safetyCenterCtsHelper.setConfig(ISSUE_ONLY_SOURCE_NO_GROUP_TITLE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.issueOnlySourceNoGroupTitleConfig)
 
         val data = SafetySourceCtsData.issuesOnly(safetySourceCtsData.recommendationGeneralIssue)
         safetyCenterCtsHelper.setData(ISSUE_ONLY_ALL_OPTIONAL_ID, data)
@@ -846,7 +841,7 @@ class SafetyCenterActivityTest {
     fun issueCard_attributionNotSetBySourceOnTiramisu_doesNotDisplayAttributionTitle() {
         // TODO(b/258228790): Remove after U is no longer in pre-release
         assumeFalse(CODENAME == "UpsideDownCake")
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
 
         val data = safetySourceCtsData.recommendationWithGeneralIssue
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, data)
@@ -856,7 +851,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun launchActivity_fromQuickSettings_issuesExpanded() {
-        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.multipleSourcesConfig)
         safetyCenterCtsHelper.setData(
             SOURCE_ID_1,
             safetySourceCtsData.criticalWithResolvingGeneralIssue
@@ -880,7 +875,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun launchActivity_fromNotification_targetIssueAlreadyFirstIssue() {
-        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.multipleSourcesConfig)
         safetyCenterCtsHelper.setData(
             SOURCE_ID_1,
             safetySourceCtsData.criticalWithResolvingGeneralIssue
@@ -904,7 +899,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun launchActivity_fromNotification_targetIssueSamePriorityAsFirstIssue_reorderedFirstIssue() {
-        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.multipleSourcesConfig)
         safetyCenterCtsHelper.setData(
             SOURCE_ID_1,
             safetySourceCtsData.criticalWithResolvingGeneralIssue
@@ -925,7 +920,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun launchActivity_fromNotification_targetLowerPriorityAsFirstIssue_reorderedSecondIssue() {
-        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.multipleSourcesConfig)
         safetyCenterCtsHelper.setData(
             SOURCE_ID_1,
             safetySourceCtsData.criticalWithResolvingGeneralIssue
@@ -949,7 +944,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun launchActivity_fromNotification_targetIssueNotFound() {
-        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.multipleSourcesConfig)
         safetyCenterCtsHelper.setData(
             SOURCE_ID_1,
             safetySourceCtsData.criticalWithResolvingGeneralIssue
@@ -973,7 +968,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun moreIssuesCard_underMaxShownIssues_noMoreIssuesCard() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
         safetyCenterCtsHelper.setData(
             SINGLE_SOURCE_ID,
             safetySourceCtsData.criticalWithResolvingGeneralIssue
@@ -987,7 +982,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun moreIssuesCard_moreIssuesCardShown_additionalIssueCardsCollapsed() {
-        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.multipleSourcesConfig)
         safetyCenterCtsHelper.setData(
             SOURCE_ID_1,
             safetySourceCtsData.criticalWithResolvingGeneralIssue
@@ -1008,7 +1003,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun moreIssuesCard_expandAdditionalIssueCards() {
-        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.multipleSourcesConfig)
         safetyCenterCtsHelper.setData(
             SOURCE_ID_1,
             safetySourceCtsData.criticalWithResolvingGeneralIssue
@@ -1034,7 +1029,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun moreIssuesCard_rotation_cardsStillExpanded() {
-        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.multipleSourcesConfig)
         safetyCenterCtsHelper.setData(
             SOURCE_ID_1,
             safetySourceCtsData.criticalWithResolvingGeneralIssue
@@ -1070,7 +1065,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun moreIssuesCard_twoIssuesAlreadyShown_expandAdditionalIssueCards() {
-        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.multipleSourcesConfig)
         safetyCenterCtsHelper.setData(
             SOURCE_ID_1,
             safetySourceCtsData.criticalWithResolvingGeneralIssue
@@ -1102,9 +1097,9 @@ class SafetyCenterActivityTest {
 
     @Test
     fun collapsedEntryGroup_expandsWhenClicked() {
-        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCE_GROUPS_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.multipleSourceGroupsConfig)
         with(safetyCenterCtsHelper) {
-            setConfig(MULTIPLE_SOURCE_GROUPS_CONFIG)
+            setConfig(safetyCenterCtsConfigs.multipleSourceGroupsConfig)
             setData(
                 SOURCE_ID_1,
                 safetySourceCtsData.buildSafetySourceDataWithSummary(
@@ -1153,11 +1148,13 @@ class SafetyCenterActivityTest {
         }
 
         context.launchSafetyCenterActivity {
-            waitDisplayed(By.text(context.getString(DYNAMIC_SOURCE_GROUP_1.titleResId))) {
-                it.click()
-            }
+            waitDisplayed(
+                By.text(context.getString(safetyCenterCtsConfigs.dynamicSourceGroup1.titleResId))
+            ) { it.click() }
 
-            waitAllTextNotDisplayed(context.getString(DYNAMIC_SOURCE_GROUP_1.summaryResId))
+            waitAllTextNotDisplayed(
+                context.getString(safetyCenterCtsConfigs.dynamicSourceGroup1.summaryResId)
+            )
             waitAllTextDisplayed(
                 SAFETY_SOURCE_1_TITLE,
                 SAFETY_SOURCE_1_SUMMARY,
@@ -1170,7 +1167,7 @@ class SafetyCenterActivityTest {
     @Test
     fun expandedEntryGroup_collapsesWhenClicked() {
         with(safetyCenterCtsHelper) {
-            setConfig(MULTIPLE_SOURCE_GROUPS_CONFIG)
+            setConfig(safetyCenterCtsConfigs.multipleSourceGroupsConfig)
             setData(
                 SOURCE_ID_1,
                 safetySourceCtsData.buildSafetySourceDataWithSummary(
@@ -1219,43 +1216,47 @@ class SafetyCenterActivityTest {
         }
 
         context.launchSafetyCenterActivity {
-            waitDisplayed(By.text(context.getString(DYNAMIC_SOURCE_GROUP_1.titleResId))) {
-                it.click()
-            }
+            waitDisplayed(
+                By.text(context.getString(safetyCenterCtsConfigs.dynamicSourceGroup1.titleResId))
+            ) { it.click() }
 
-            waitDisplayed(By.text(context.getString(DYNAMIC_SOURCE_GROUP_1.titleResId))) {
-                it.click()
-            }
+            waitDisplayed(
+                By.text(context.getString(safetyCenterCtsConfigs.dynamicSourceGroup1.titleResId))
+            ) { it.click() }
 
-            waitAllTextDisplayed(context.getString(DYNAMIC_SOURCE_GROUP_1.titleResId))
+            waitAllTextDisplayed(
+                context.getString(safetyCenterCtsConfigs.dynamicSourceGroup1.titleResId)
+            )
             waitAllTextNotDisplayed(SAFETY_SOURCE_1_TITLE, SAFETY_SOURCE_2_TITLE)
         }
     }
 
     @Test
     fun expandedEntryGroup_rotation_remainsExpanded() {
-        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCE_GROUPS_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.multipleSourceGroupsConfig)
 
         context.launchSafetyCenterActivity {
-            waitDisplayed(By.text(context.getString(DYNAMIC_SOURCE_GROUP_1.titleResId))) {
-                it.click()
-            }
+            waitDisplayed(
+                By.text(context.getString(safetyCenterCtsConfigs.dynamicSourceGroup1.titleResId))
+            ) { it.click() }
 
             getUiDevice().rotate()
 
-            waitAllTextNotDisplayed(context.getString(DYNAMIC_SOURCE_GROUP_1.summaryResId))
+            waitAllTextNotDisplayed(
+                context.getString(safetyCenterCtsConfigs.dynamicSourceGroup1.summaryResId)
+            )
             waitAllTextDisplayed(
-                context.getString(DYNAMIC_SOURCE_1.titleResId),
-                context.getString(DYNAMIC_SOURCE_2.titleResId)
+                context.getString(safetyCenterCtsConfigs.dynamicSource1.titleResId),
+                context.getString(safetyCenterCtsConfigs.dynamicSource2.titleResId)
             )
         }
     }
 
     @Test
     fun expandedEntryGroup_otherGroupRemainsCollapsed() {
-        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCE_GROUPS_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.multipleSourceGroupsConfig)
         with(safetyCenterCtsHelper) {
-            setConfig(MULTIPLE_SOURCE_GROUPS_CONFIG)
+            setConfig(safetyCenterCtsConfigs.multipleSourceGroupsConfig)
             setData(
                 SOURCE_ID_1,
                 safetySourceCtsData.buildSafetySourceDataWithSummary(
@@ -1304,12 +1305,16 @@ class SafetyCenterActivityTest {
         }
 
         context.launchSafetyCenterActivity {
-            waitDisplayed(By.text(context.getString(DYNAMIC_SOURCE_GROUP_1.titleResId))) {
-                it.click()
-            }
+            waitDisplayed(
+                By.text(context.getString(safetyCenterCtsConfigs.dynamicSourceGroup1.titleResId))
+            ) { it.click() }
 
-            waitAllTextNotDisplayed(context.getString(DYNAMIC_SOURCE_GROUP_1.summaryResId))
-            waitAllTextDisplayed(context.getString(DYNAMIC_SOURCE_GROUP_3.summaryResId))
+            waitAllTextNotDisplayed(
+                context.getString(safetyCenterCtsConfigs.dynamicSourceGroup1.summaryResId)
+            )
+            waitAllTextDisplayed(
+                context.getString(safetyCenterCtsConfigs.dynamicSourceGroup3.summaryResId)
+            )
         }
     }
 

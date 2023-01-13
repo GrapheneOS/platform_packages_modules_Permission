@@ -23,17 +23,14 @@ import android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCES_GROUP_ID
 import android.safetycenter.SafetySourceData
 import android.safetycenter.config.SafetySource
 import android.safetycenter.config.SafetySourcesGroup
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MULTIPLE_SOURCES_CONFIG
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MULTIPLE_SOURCES_GROUP_ID_1
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MULTIPLE_SOURCE_GROUPS_CONFIG
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_CONFIG
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_ID
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_INVALID_INTENT_CONFIG
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_1
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_2
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_3
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_4
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_5
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.Companion.MULTIPLE_SOURCES_GROUP_ID_1
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.Companion.SINGLE_SOURCE_ID
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.Companion.SOURCE_ID_1
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.Companion.SOURCE_ID_2
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.Companion.SOURCE_ID_3
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.Companion.SOURCE_ID_4
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.Companion.SOURCE_ID_5
 import android.safetycenter.cts.testing.SafetyCenterCtsHelper
 import android.safetycenter.cts.testing.SafetyCenterFlags
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
@@ -78,6 +75,7 @@ class SafetyCenterSubpagesTest {
     private val context: Context = getApplicationContext()
     private val safetyCenterCtsHelper = SafetyCenterCtsHelper(context)
     private val safetySourceCtsData = SafetySourceCtsData(context)
+    private val safetyCenterCtsConfigs = SafetyCenterCtsConfigs(context)
 
     // JUnit's Assume is not supported in @BeforeClass by the CTS tests runner, so this is used to
     // manually skip the setup and teardown methods.
@@ -108,7 +106,7 @@ class SafetyCenterSubpagesTest {
 
     @Test
     fun launchSafetyCenter_withSubpagesIntentExtra_showsSubpageTitle() {
-        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCE_GROUPS_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.multipleSourceGroupsConfig)
         val extras = Bundle()
         extras.putString(EXTRA_SAFETY_SOURCES_GROUP_ID, MULTIPLE_SOURCES_GROUP_ID_1)
 
@@ -117,7 +115,9 @@ class SafetyCenterSubpagesTest {
             waitDisplayed(
                 By.desc(
                     context.getString(
-                        MULTIPLE_SOURCE_GROUPS_CONFIG.safetySourcesGroups.first()!!.titleResId
+                        safetyCenterCtsConfigs.multipleSourceGroupsConfig.safetySourcesGroups
+                            .first()!!
+                            .titleResId
                     )
                 )
             )
@@ -127,7 +127,7 @@ class SafetyCenterSubpagesTest {
     @Test
     fun launchSafetyCenter_withSubpagesIntentExtraButFlagDisabled_showsHomepageTitle() {
         SafetyCenterFlags.showSubpages = false
-        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCE_GROUPS_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.multipleSourceGroupsConfig)
         val extras = Bundle()
         extras.putString(EXTRA_SAFETY_SOURCES_GROUP_ID, MULTIPLE_SOURCES_GROUP_ID_1)
 
@@ -139,7 +139,7 @@ class SafetyCenterSubpagesTest {
 
     @Test
     fun launchSafetyCenter_withNonExistingGroupID_displaysNothing() {
-        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCE_GROUPS_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.multipleSourceGroupsConfig)
         val extras = Bundle()
         extras.putString(EXTRA_SAFETY_SOURCES_GROUP_ID, "non_existing_group_id")
 
@@ -147,7 +147,9 @@ class SafetyCenterSubpagesTest {
             waitNotDisplayed(
                 By.desc(
                     context.getString(
-                        MULTIPLE_SOURCE_GROUPS_CONFIG.safetySourcesGroups.first()!!.titleResId
+                        safetyCenterCtsConfigs.multipleSourceGroupsConfig.safetySourcesGroups
+                            .first()!!
+                            .titleResId
                     )
                 )
             )
@@ -158,16 +160,16 @@ class SafetyCenterSubpagesTest {
     fun launchSafetyCenter_withMultipleGroups_showsHomepageEntries() {
         val sourceCtsData = safetySourceCtsData.information
         with(safetyCenterCtsHelper) {
-            setConfig(MULTIPLE_SOURCE_GROUPS_CONFIG)
+            setConfig(safetyCenterCtsConfigs.multipleSourceGroupsConfig)
             setData(SOURCE_ID_1, sourceCtsData)
             setData(SOURCE_ID_2, sourceCtsData)
             setData(SOURCE_ID_3, sourceCtsData)
             setData(SOURCE_ID_4, sourceCtsData)
             setData(SOURCE_ID_5, sourceCtsData)
         }
-        val firstGroup: SafetySourcesGroup =
-            MULTIPLE_SOURCE_GROUPS_CONFIG.safetySourcesGroups.first()
-        val lastGroup: SafetySourcesGroup = MULTIPLE_SOURCE_GROUPS_CONFIG.safetySourcesGroups.last()
+        val firstGroup =
+            safetyCenterCtsConfigs.multipleSourceGroupsConfig.safetySourcesGroups.first()
+        val lastGroup = safetyCenterCtsConfigs.multipleSourceGroupsConfig.safetySourcesGroups.last()
 
         context.launchSafetyCenterActivity {
             waitAllTextDisplayed(
@@ -190,16 +192,16 @@ class SafetyCenterSubpagesTest {
         SafetyCenterFlags.showSubpages = false
         val sourceCtsData = safetySourceCtsData.information
         with(safetyCenterCtsHelper) {
-            setConfig(MULTIPLE_SOURCE_GROUPS_CONFIG)
+            setConfig(safetyCenterCtsConfigs.multipleSourceGroupsConfig)
             setData(SOURCE_ID_1, sourceCtsData)
             setData(SOURCE_ID_2, sourceCtsData)
             setData(SOURCE_ID_3, sourceCtsData)
             setData(SOURCE_ID_4, sourceCtsData)
             setData(SOURCE_ID_5, sourceCtsData)
         }
-        val firstGroup: SafetySourcesGroup =
-            MULTIPLE_SOURCE_GROUPS_CONFIG.safetySourcesGroups.first()
-        val lastGroup: SafetySourcesGroup = MULTIPLE_SOURCE_GROUPS_CONFIG.safetySourcesGroups.last()
+        val firstGroup =
+            safetyCenterCtsConfigs.multipleSourceGroupsConfig.safetySourcesGroups.first()
+        val lastGroup = safetyCenterCtsConfigs.multipleSourceGroupsConfig.safetySourcesGroups.last()
 
         context.launchSafetyCenterActivity {
             waitAllTextDisplayed(
@@ -218,12 +220,12 @@ class SafetyCenterSubpagesTest {
     @Test
     fun launchSafetyCenter_redirectBackFromSubpage_showsHomepageEntries() {
         with(safetyCenterCtsHelper) {
-            setConfig(MULTIPLE_SOURCE_GROUPS_CONFIG)
+            setConfig(safetyCenterCtsConfigs.multipleSourceGroupsConfig)
             setData(SOURCE_ID_1, safetySourceCtsData.information)
             setData(SOURCE_ID_2, safetySourceCtsData.information)
         }
-        val firstGroup: SafetySourcesGroup =
-            MULTIPLE_SOURCE_GROUPS_CONFIG.safetySourcesGroups.first()
+        val firstGroup =
+            safetyCenterCtsConfigs.multipleSourceGroupsConfig.safetySourcesGroups.first()
 
         context.launchSafetyCenterActivity {
             // Verifying that both entry title and summary are displayed on homepage
@@ -249,7 +251,7 @@ class SafetyCenterSubpagesTest {
     @Test
     fun entryListWithMultipleSources_clickingOnHomepageEntry_showsSubpageEntries() {
         with(safetyCenterCtsHelper) {
-            setConfig(MULTIPLE_SOURCES_CONFIG)
+            setConfig(safetyCenterCtsConfigs.multipleSourcesConfig)
             setData(
                 SOURCE_ID_1,
                 safetySourceCtsData.buildSafetySourceDataWithSummary(
@@ -275,8 +277,8 @@ class SafetyCenterSubpagesTest {
                 )
             )
         }
-        val firstGroup: SafetySourcesGroup = MULTIPLE_SOURCES_CONFIG.safetySourcesGroups[0]
-        val secondGroup: SafetySourcesGroup = MULTIPLE_SOURCES_CONFIG.safetySourcesGroups[1]
+        val firstGroup = safetyCenterCtsConfigs.multipleSourcesConfig.safetySourcesGroups[0]
+        val secondGroup = safetyCenterCtsConfigs.multipleSourcesConfig.safetySourcesGroups[1]
 
         context.launchSafetyCenterActivity {
             // Verifying that subpage entries of the first group are displayed
@@ -300,8 +302,8 @@ class SafetyCenterSubpagesTest {
 
     @Test
     fun entryListWithSingleSource_clickingOnSubpageEntry_redirectsToDifferentScreen() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
-        val sourcesGroup: SafetySourcesGroup = SINGLE_SOURCE_CONFIG.safetySourcesGroups.first()
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
+        val sourcesGroup = safetyCenterCtsConfigs.singleSourceConfig.safetySourcesGroups.first()
         val source: SafetySource = sourcesGroup.safetySources.first()
 
         context.launchSafetyCenterActivity {
@@ -318,10 +320,10 @@ class SafetyCenterSubpagesTest {
 
     @Test
     fun entryListWithSingleSource_clickingTheInfoIcon_redirectsToDifferentScreen() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
         val sourceCtsData = safetySourceCtsData.informationWithIconAction
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, sourceCtsData)
-        val sourcesGroup: SafetySourcesGroup = SINGLE_SOURCE_CONFIG.safetySourcesGroups.first()
+        val sourcesGroup = safetyCenterCtsConfigs.singleSourceConfig.safetySourcesGroups.first()
 
         context.launchSafetyCenterActivity {
             openSubpageAndExit(sourcesGroup) {
@@ -334,10 +336,10 @@ class SafetyCenterSubpagesTest {
 
     @Test
     fun entryListWithSingleSource_clickingTheGearIcon_redirectsToDifferentScreen() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
         val sourceCtsData = safetySourceCtsData.informationWithGearIconAction
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, sourceCtsData)
-        val sourcesGroup: SafetySourcesGroup = SINGLE_SOURCE_CONFIG.safetySourcesGroups.first()
+        val sourcesGroup = safetyCenterCtsConfigs.singleSourceConfig.safetySourcesGroups.first()
 
         context.launchSafetyCenterActivity {
             openSubpageAndExit(sourcesGroup) {
@@ -350,11 +352,11 @@ class SafetyCenterSubpagesTest {
 
     @Test
     fun entryListWithSingleSource_clickingSourceWithNullPendingIntent_doesNothing() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_INVALID_INTENT_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceInvalidIntentConfig)
         val sourceCtsData = safetySourceCtsData.informationWithNullIntent
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, sourceCtsData)
-        val sourcesGroup: SafetySourcesGroup =
-            SINGLE_SOURCE_INVALID_INTENT_CONFIG.safetySourcesGroups.first()
+        val sourcesGroup =
+            safetyCenterCtsConfigs.singleSourceInvalidIntentConfig.safetySourcesGroups.first()
 
         context.launchSafetyCenterActivity {
             openSubpageAndExit(sourcesGroup) {
@@ -368,8 +370,8 @@ class SafetyCenterSubpagesTest {
 
     @Test
     fun entryListWithSingleSource_updateSafetySourceData_displayedDataIsUpdated() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
-        val sourcesGroup: SafetySourcesGroup = SINGLE_SOURCE_CONFIG.safetySourcesGroups.first()
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
+        val sourcesGroup = safetyCenterCtsConfigs.singleSourceConfig.safetySourcesGroups.first()
         val source: SafetySource = sourcesGroup.safetySources.first()
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
@@ -403,8 +405,8 @@ class SafetyCenterSubpagesTest {
 
     @Test
     fun entryListWithSingleSource_updateSafetySourceDataAndRotate_displayedDataIsNotUpdated() {
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
-        val sourcesGroup: SafetySourcesGroup = SINGLE_SOURCE_CONFIG.safetySourcesGroups.first()
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
+        val sourcesGroup = safetyCenterCtsConfigs.singleSourceConfig.safetySourcesGroups.first()
         val source: SafetySource = sourcesGroup.safetySources.first()
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
@@ -443,9 +445,9 @@ class SafetyCenterSubpagesTest {
         val sourceData = safetySourceCtsData.informationWithIssueWithAttributionTitle
         val issue = sourceData.issues[0]
 
-        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
-        val firstGroup: SafetySourcesGroup = MULTIPLE_SOURCES_CONFIG.safetySourcesGroups[0]
-        val secondGroup: SafetySourcesGroup = MULTIPLE_SOURCES_CONFIG.safetySourcesGroups[1]
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.multipleSourcesConfig)
+        val firstGroup = safetyCenterCtsConfigs.multipleSourcesConfig.safetySourcesGroups[0]
+        val secondGroup = safetyCenterCtsConfigs.multipleSourcesConfig.safetySourcesGroups[1]
         safetyCenterCtsHelper.setData(SOURCE_ID_3, sourceData)
 
         context.launchSafetyCenterActivity {
@@ -464,8 +466,8 @@ class SafetyCenterSubpagesTest {
         val initialDataToDisplay = safetySourceCtsData.informationWithIssueWithAttributionTitle
         val updatedDataToDisplay = safetySourceCtsData.criticalWithIssueWithAttributionTitle
 
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
-        val sourcesGroup: SafetySourcesGroup = SINGLE_SOURCE_CONFIG.safetySourcesGroups.first()
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
+        val sourcesGroup = safetyCenterCtsConfigs.singleSourceConfig.safetySourcesGroups.first()
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, initialDataToDisplay)
 
         context.launchSafetyCenterActivity {
@@ -482,9 +484,9 @@ class SafetyCenterSubpagesTest {
     @Test
     fun issueCard_resolveIssueOnSubpage_issueDismisses() {
         val sourceData = safetySourceCtsData.criticalWithIssueWithAttributionTitle
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, sourceData)
-        val sourcesGroup: SafetySourcesGroup = SINGLE_SOURCE_CONFIG.safetySourcesGroups.first()
+        val sourcesGroup = safetyCenterCtsConfigs.singleSourceConfig.safetySourcesGroups.first()
         val issue = sourceData.issues[0]
         val action = issue.actions[0]
 
@@ -509,9 +511,9 @@ class SafetyCenterSubpagesTest {
     @Test
     fun issueCard_confirmDismissalOnSubpage_dismissesIssue() {
         val sourceData = safetySourceCtsData.criticalWithIssueWithAttributionTitle
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, sourceData)
-        val sourcesGroup: SafetySourcesGroup = SINGLE_SOURCE_CONFIG.safetySourcesGroups.first()
+        val sourcesGroup = safetyCenterCtsConfigs.singleSourceConfig.safetySourcesGroups.first()
         val issue = sourceData.issues[0]
 
         context.launchSafetyCenterActivity {
@@ -530,9 +532,9 @@ class SafetyCenterSubpagesTest {
     @Test
     fun issueCard_dismissOnSubpageWithRotation_cancellationPersistsIssue() {
         val sourceData = safetySourceCtsData.criticalWithIssueWithAttributionTitle
-        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.singleSourceConfig)
         safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, sourceData)
-        val sourcesGroup: SafetySourcesGroup = SINGLE_SOURCE_CONFIG.safetySourcesGroups.first()
+        val sourcesGroup = safetyCenterCtsConfigs.singleSourceConfig.safetySourcesGroups.first()
         val issue = sourceData.issues[0]
 
         context.launchSafetyCenterActivity {
@@ -552,8 +554,8 @@ class SafetyCenterSubpagesTest {
 
     @Test
     fun moreIssuesCard_expandOnSubpage_showsAdditionalCard() {
-        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
-        val sourcesGroup: SafetySourcesGroup = MULTIPLE_SOURCES_CONFIG.safetySourcesGroups.first()
+        safetyCenterCtsHelper.setConfig(safetyCenterCtsConfigs.multipleSourcesConfig)
+        val sourcesGroup = safetyCenterCtsConfigs.multipleSourcesConfig.safetySourcesGroups.first()
         val firstSourceData = safetySourceCtsData.criticalWithIssueWithAttributionTitle
         val secondSourceData = safetySourceCtsData.informationWithIssueWithAttributionTitle
         safetyCenterCtsHelper.setData(SOURCE_ID_1, firstSourceData)

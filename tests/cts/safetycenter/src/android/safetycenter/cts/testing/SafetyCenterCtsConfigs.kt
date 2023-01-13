@@ -17,6 +17,8 @@
 package android.safetycenter.cts.testing
 
 import android.content.Context
+import android.content.pm.PackageManager.GET_SIGNING_CERTIFICATES
+import android.content.pm.PackageManager.PackageInfoFlags
 import android.content.res.Resources
 import android.os.Build
 import android.safetycenter.SafetySourceData
@@ -29,78 +31,48 @@ import android.safetycenter.config.SafetySourcesGroup
 import android.safetycenter.cts.testing.SettingsPackage.getSettingsPackageName
 import androidx.annotation.RequiresApi
 import com.android.modules.utils.build.SdkLevel
+import java.security.MessageDigest
 
 /**
  * A class that provides [SafetyCenterConfig] objects and associated constants to facilitate setting
  * up safety sources for testing.
  */
-object SafetyCenterCtsConfigs {
-    private const val CTS_PACKAGE_NAME = "android.safetycenter.cts"
-
-    /** ID of a source not used in any config. */
-    const val SAMPLE_SOURCE_ID = "cts_sample_source_id"
-
-    /** Activity action: Launch the [TestActivity] used to check redirects in CTS tests. */
-    const val ACTION_TEST_ACTIVITY = "android.safetycenter.cts.testing.action.TEST_ACTIVITY"
-
-    /**
-     * ID of the only source provided in [SINGLE_SOURCE_CONFIG], [SEVERITY_ZERO_CONFIG] and
-     * [NO_PAGE_OPEN_CONFIG].
-     */
-    const val SINGLE_SOURCE_ID = "cts_single_source_id"
-
-    /** ID of the only source provided in [SINGLE_SOURCE_ALL_PROFILE_CONFIG]. */
-    const val SINGLE_SOURCE_ALL_PROFILE_ID = "cts_single_source_all_profile_id"
-
-    /** ID of the only source provided in [ISSUE_ONLY_SOURCE_ALL_PROFILE_CONFIG]. */
-    const val ISSUE_ONLY_ALL_PROFILE_SOURCE_ID = "cts_issue_only_all_profile_id"
-
-    /**
-     * ID of the only [SafetySourcesGroup] provided by [SINGLE_SOURCE_CONFIG],
-     * [SEVERITY_ZERO_CONFIG] and [NO_PAGE_OPEN_CONFIG].
-     */
-    const val SINGLE_SOURCE_GROUP_ID = "cts_single_source_group_id"
+class SafetyCenterCtsConfigs(private val context: Context) {
+    private val packageCertHash =
+        MessageDigest.getInstance("SHA256")!!.digest(
+                context.packageManager
+                    .getPackageInfo(
+                        context.packageName,
+                        PackageInfoFlags.of(GET_SIGNING_CERTIFICATES.toLong())
+                    )
+                    .signingInfo
+                    .apkContentsSigners[0]
+                    .toByteArray()
+            )
+            .joinToString("") { "%02x".format(it) }
 
     /**
      * A simple [SafetyCenterConfig] for CTS tests with a single source of id [SINGLE_SOURCE_ID].
      */
-    val SINGLE_SOURCE_CONFIG = singleSourceConfig(dynamicSafetySource(SINGLE_SOURCE_ID))
+    val singleSourceConfig = singleSourceConfig(dynamicSafetySource(SINGLE_SOURCE_ID))
 
     /**
      * A simple [SafetyCenterConfig] with an invalid intent action for CTS tests with a single
      * source of id [SINGLE_SOURCE_ID].
      */
-    val SINGLE_SOURCE_INVALID_INTENT_CONFIG =
+    val singleSourceInvalidIntentConfig =
         singleSourceConfig(
             dynamicSafetySourceBuilder(SINGLE_SOURCE_ID).setIntentAction("stub").build()
         )
 
     /** A simple [SafetyCenterConfig] for CTS tests with a source max severity level of 0. */
-    val SEVERITY_ZERO_CONFIG =
+    val severityZeroConfig =
         singleSourceConfig(
             dynamicSafetySourceBuilder(SINGLE_SOURCE_ID).setMaxSeverityLevel(0).build()
         )
 
-    /**
-     * SHA256 hash of a package certificate.
-     *
-     * <p>This is a fake certificate, and can be used to test failure cases, or to test a list of
-     * certificates when only one match is required.
-     */
-    const val PACKAGE_CERT_HASH_FAKE = "feed12"
-
-    /** SHA256 hashes of the certificate(s) known to sign the CTS tests. */
-    private val PACKAGE_CERT_HASHES_CTS =
-        listOf(
-            "6cecc50e34ae31bfb5678986d6d6d3736c571ded2f2459527793e1f054eb0c9b",
-            "a40da80a59d170caa950cf15c18c454d47a39b26989d8b640ecd745ba71bf5dc"
-        )
-
-    /** An invalid SHA256 hash (not a byte string, not even number of chars). */
-    const val PACKAGE_CERT_HASH_INVALID = "0124ppl"
-
     /** A simple [SafetyCenterConfig] for CTS tests with a fake/incorrect package cert hash. */
-    val SINGLE_SOURCE_WITH_FAKE_CERT: SafetyCenterConfig
+    val singleSourceWithFakeCert: SafetyCenterConfig
         @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
         get() =
             singleSourceConfig(
@@ -113,7 +85,7 @@ object SafetyCenterCtsConfigs {
      * A simple [SafetyCenterConfig] for CTS tests with a invalid package cert hash (not a
      * hex-formatted byte string).
      */
-    val SINGLE_SOURCE_WITH_INVALID_CERT: SafetyCenterConfig
+    val singleSourceWithInvalidCert: SafetyCenterConfig
         @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
         get() =
             singleSourceConfig(
@@ -126,200 +98,17 @@ object SafetyCenterCtsConfigs {
      * A simple [SafetyCenterConfig] for CTS tests with a source that does not support refresh on
      * page open.
      */
-    val NO_PAGE_OPEN_CONFIG =
+    val noPageOpenConfig =
         singleSourceConfig(
             dynamicSafetySourceBuilder(SINGLE_SOURCE_ID).setRefreshOnPageOpenAllowed(false).build()
         )
 
-    /** ID of a source provided by [MULTIPLE_SOURCES_CONFIG] and [SUMMARY_TEST_CONFIG]. */
-    const val SOURCE_ID_1 = "cts_source_id_1"
-
-    /** ID of a source provided by [MULTIPLE_SOURCES_CONFIG] and [SUMMARY_TEST_CONFIG]. */
-    const val SOURCE_ID_2 = "cts_source_id_2"
-
-    /** ID of a source provided by [MULTIPLE_SOURCES_CONFIG] and [SUMMARY_TEST_CONFIG]. */
-    const val SOURCE_ID_3 = "cts_source_id_3"
-
-    /** ID of a source provided by [SUMMARY_TEST_CONFIG]. */
-    const val SOURCE_ID_4 = "cts_source_id_4"
-
-    /** ID of a source provided by [SUMMARY_TEST_CONFIG]. */
-    const val SOURCE_ID_5 = "cts_source_id_5"
-
-    /** ID of a source provided by [SUMMARY_TEST_CONFIG]. */
-    const val SOURCE_ID_6 = "cts_source_id_6"
-
-    /** ID of a source provided by [SUMMARY_TEST_CONFIG]. */
-    const val SOURCE_ID_7 = "cts_source_id_7"
-
-    /**
-     * ID of a [SafetySourcesGroup] provided by [MULTIPLE_SOURCES_CONFIG], containing two sources of
-     * ids [SOURCE_ID_1] and [SOURCE_ID_2].
-     */
-    const val MULTIPLE_SOURCES_GROUP_ID_1 = "cts_multiple_sources_group_id_1"
-
-    /**
-     * ID of a [SafetySourcesGroup] provided by [MULTIPLE_SOURCES_CONFIG], containing a single
-     * source of id [SOURCE_ID_3].
-     */
-    const val MULTIPLE_SOURCES_GROUP_ID_2 = "cts_multiple_sources_group_id_2"
-
-    /**
-     * ID of a [SafetySourcesGroup] provided by [MULTIPLE_SOURCES_CONFIG], containing two sources of
-     * ids [SOURCE_ID_4] and [SOURCE_ID_5].
-     */
-    const val MULTIPLE_SOURCES_GROUP_ID_3 = "cts_multiple_sources_group_id_3"
-
-    /**
-     * ID of a [SafetySourcesGroup] provided by [SUMMARY_TEST_GROUP_CONFIG], containing sources:
-     * [SOURCE_ID_1], [SOURCE_ID_2], [SOURCE_ID_3], [SOURCE_ID_4], [SOURCE_ID_5], [SOURCE_ID_6],
-     * [SOURCE_ID_7], [STATIC_IN_STATEFUL_ID].
-     */
-    const val SUMMARY_TEST_GROUP_ID = "summary_test_group_id"
-
-    /**
-     * ID of a [SafetySourcesGroup] provided by [COMPLEX_CONFIG], containing sources:
-     * [DYNAMIC_BAREBONE_ID], [DYNAMIC_ALL_OPTIONAL_ID], [DYNAMIC_DISABLED_ID], [DYNAMIC_HIDDEN_ID],
-     * [DYNAMIC_HIDDEN_WITH_SEARCH_ID], [DYNAMIC_OTHER_PACKAGE_ID]. And provided by
-     * [COMPLEX_ALL_PROFILE_CONFIG], containing sources: [DYNAMIC_BAREBONE_ID],
-     * [DYNAMIC_DISABLED_ID], [DYNAMIC_HIDDEN_ID].
-     */
-    const val DYNAMIC_GROUP_ID = "dynamic"
-
-    /**
-     * ID of a [SafetySourcesGroup] provided by [COMPLEX_CONFIG] and [COMPLEX_ALL_PROFILE_CONFIG],
-     * containing sources: [STATIC_BAREBONE_ID], [STATIC_ALL_OPTIONAL_ID].
-     */
-    const val STATIC_GROUP_ID = "static"
-
-    /**
-     * ID of a [SafetySourcesGroup] provided by [COMPLEX_CONFIG] and [COMPLEX_ALL_PROFILE_CONFIG],
-     * containing sources: [ISSUE_ONLY_BAREBONE_ID], [ISSUE_ONLY_ALL_OPTIONAL_ID].
-     */
-    const val ISSUE_ONLY_GROUP_ID = "issue_only"
-
-    /**
-     * ID of a [SafetySourcesGroup] provided by [COMPLEX_CONFIG], containing sources:
-     * [DYNAMIC_IN_STATEFUL_ID], [STATIC_IN_STATEFUL_ID].
-     */
-    const val MIXED_STATEFUL_GROUP_ID = "mixed_stateful"
-
-    /**
-     * ID of a [SafetySourcesGroup] provided by [COMPLEX_CONFIG] and [COMPLEX_ALL_PROFILE_CONFIG],
-     * containing sources: [DYNAMIC_IN_STATELESS_ID], [STATIC_IN_STATELESS_ID],
-     * [ISSUE_ONLY_IN_STATELESS_ID].
-     */
-    const val MIXED_STATELESS_GROUP_ID = "mixed_stateless"
-
-    /**
-     * ID of a source provided by [COMPLEX_CONFIG], [COMPLEX_ALL_PROFILE_CONFIG], and
-     * [ANDROID_LOCK_SCREEN_SOURCES_CONFIG], this is a dynamic, primary profile only, visible source
-     * for which only the required fields are set.
-     */
-    const val DYNAMIC_BAREBONE_ID = "dynamic_barebone"
-
-    /**
-     * ID of a source provided by [COMPLEX_CONFIG] and [SINGLE_SOURCE_OTHER_PACKAGE_CONFIG], this is
-     * a dynamic, primary profile only, visible source belonging to the [OTHER_PACKAGE_NAME] package
-     * for which only the required fields are set.
-     */
-    const val DYNAMIC_OTHER_PACKAGE_ID = "dynamic_other_package"
-
-    /**
-     * ID of a source provided by [COMPLEX_CONFIG], this is a dynamic, primary profile only,
-     * disabled by default source for which all the required and optional fields are set. Notably,
-     * this includes the refresh on page open flag and a max severity level of recommendation.
-     */
-    const val DYNAMIC_ALL_OPTIONAL_ID = "dynamic_all_optional"
-
-    /**
-     * ID of a source provided by [COMPLEX_CONFIG], [COMPLEX_ALL_PROFILE_CONFIG], and
-     * [ANDROID_LOCK_SCREEN_SOURCES_CONFIG], this is a dynamic, disabled by default source for which
-     * only the required fields are set.
-     */
-    const val DYNAMIC_DISABLED_ID = "dynamic_disabled"
-
-    /**
-     * ID of a source provided by [COMPLEX_CONFIG], [COMPLEX_ALL_PROFILE_CONFIG], and
-     * [ANDROID_LOCK_SCREEN_SOURCES_CONFIG], this ism a dynamic, hidden by default source for which
-     * only the required fields are set.
-     */
-    const val DYNAMIC_HIDDEN_ID = "dynamic_hidden"
-
-    /**
-     * ID of a source provided by [COMPLEX_CONFIG], this is a dynamic, primary profile only, hidden
-     * by default source for which all the required and optional fields are set.
-     */
-    const val DYNAMIC_HIDDEN_WITH_SEARCH_ID = "dynamic_hidden_with_search"
-
-    /**
-     * ID of a source provided by [COMPLEX_CONFIG] and [COMPLEX_ALL_PROFILE_CONFIG], this is a
-     * static, primary profile only source for which only the required fields are set.
-     */
-    const val STATIC_BAREBONE_ID = "static_barebone"
-
-    /**
-     * ID of a source provided by [COMPLEX_CONFIG] and [COMPLEX_ALL_PROFILE_CONFIG], this is a
-     * static source for which all the required and optional fields are set.
-     */
-    const val STATIC_ALL_OPTIONAL_ID = "static_all_optional"
-
-    /**
-     * ID of a source provided by [COMPLEX_CONFIG] and [COMPLEX_ALL_PROFILE_CONFIG], this is an
-     * issue-only, primary profile only source for which only the required fields are set.
-     */
-    const val ISSUE_ONLY_BAREBONE_ID = "issue_only_barebone"
-
-    /**
-     * ID of a source provided by [COMPLEX_CONFIG] and [COMPLEX_ALL_PROFILE_CONFIG], this is an
-     * issue-only source for which all the required and optional fields are set. Notably, this
-     * includes the refresh on page open flag and a max severity level of recommendation.
-     */
-    const val ISSUE_ONLY_ALL_OPTIONAL_ID = "issue_only_all_optional"
-
-    /**
-     * ID of a source provided by [COMPLEX_CONFIG], this is a generic, dynamic, primary profile
-     * only, visible source.
-     */
-    const val DYNAMIC_IN_STATEFUL_ID = "dynamic_in_stateful"
-
-    /**
-     * ID of a source provided by [COMPLEX_CONFIG] and [COMPLEX_ALL_PROFILE_CONFIG], this is a
-     * generic, dynamic, visible source.
-     */
-    const val DYNAMIC_IN_STATELESS_ID = "dynamic_in_stateless"
-
-    /**
-     * ID of a source provided by [COMPLEX_CONFIG] and [COMPLEX_ALL_PROFILE_CONFIG], this is an
-     * issue-only source.
-     */
-    const val ISSUE_ONLY_IN_STATELESS_ID = "issue_only_in_stateless"
-
-    /**
-     * ID of a source provided by [COMPLEX_CONFIG] and [SUMMARY_TEST_CONFIG], this is a generic,
-     * static, primary profile only source.
-     */
-    const val STATIC_IN_STATEFUL_ID = "static_in_stateful"
-
-    /**
-     * ID of a source provided by [COMPLEX_CONFIG] and [COMPLEX_ALL_PROFILE_CONFIG], this is a
-     * generic, static source.
-     */
-    const val STATIC_IN_STATELESS_ID = "static_in_stateless"
-
-    /** Package name for the [DYNAMIC_OTHER_PACKAGE_ID] source. */
-    const val OTHER_PACKAGE_NAME = "other_package_name"
-
-    private const val DEDUPLICATION_GROUP_1 = "deduplication_group_1"
-    private const val DEDUPLICATION_GROUP_2 = "deduplication_group_2"
-    private const val DEDUPLICATION_GROUP_3 = "deduplication_group_3"
-
     /** A Simple [SafetyCenterConfig] with an issue only source. */
-    val ISSUE_ONLY_SOURCE_CONFIG =
+    val issueOnlySourceConfig =
         singleSourceConfig(issueOnlySafetySourceBuilder(ISSUE_ONLY_ALL_OPTIONAL_ID).build())
 
     /** A Simple [SafetyCenterConfig] with an issue only source supporting all profiles. */
-    val ISSUE_ONLY_SOURCE_ALL_PROFILE_CONFIG =
+    val issueOnlySourceAllProfileConfig =
         singleSourceConfig(
             issueOnlyAllProfileSafetySourceBuilder(ISSUE_ONLY_ALL_PROFILE_SOURCE_ID).build()
         )
@@ -328,7 +117,7 @@ object SafetyCenterCtsConfigs {
      * A Simple [SafetyCenterConfig] with an issue only source inside a [SafetySourcesGroup] with
      * null title.
      */
-    val ISSUE_ONLY_SOURCE_NO_GROUP_TITLE_CONFIG =
+    val issueOnlySourceNoGroupTitleConfig =
         SafetyCenterConfig.Builder()
             .addSafetySourcesGroup(
                 safetySourcesGroupBuilder(SINGLE_SOURCE_GROUP_ID)
@@ -341,23 +130,23 @@ object SafetyCenterCtsConfigs {
             .build()
 
     /** A dynamic source with [OTHER_PACKAGE_NAME] */
-    val DYNAMIC_OTHER_PACKAGE_SAFETY_SOURCE =
+    val dynamicOtherPackageSafetySource =
         dynamicSafetySourceBuilder(DYNAMIC_OTHER_PACKAGE_ID)
             .setRefreshOnPageOpenAllowed(false)
             .setPackageName(OTHER_PACKAGE_NAME)
             .build()
 
     /** A [SafetyCenterConfig] with a dynamic source in a different, missing package. */
-    val SINGLE_SOURCE_OTHER_PACKAGE_CONFIG = singleSourceConfig(DYNAMIC_OTHER_PACKAGE_SAFETY_SOURCE)
+    val singleSourceOtherPackageConfig = singleSourceConfig(dynamicOtherPackageSafetySource)
 
     /** A simple [SafetyCenterConfig] with a source supporting all profiles. */
-    val SINGLE_SOURCE_ALL_PROFILE_CONFIG =
+    val singleSourceAllProfileConfig =
         singleSourceConfig(
             dynamicAllProfileSafetySourceBuilder(SINGLE_SOURCE_ALL_PROFILE_ID).build()
         )
 
     /** A simple [SafetyCenterConfig] for CTS tests with multiple sources. */
-    val MULTIPLE_SOURCES_CONFIG =
+    val multipleSourcesConfig =
         SafetyCenterConfig.Builder()
             .addSafetySourcesGroup(
                 safetySourcesGroupBuilder(MULTIPLE_SOURCES_GROUP_ID_1)
@@ -443,57 +232,57 @@ object SafetyCenterCtsConfigs {
                 )
                 .build()
 
-    /** Source included in [DYNAMIC_SOURCE_GROUP_1]. */
-    val DYNAMIC_SOURCE_1 = dynamicSafetySource(SOURCE_ID_1)
+    /** Source included in [dynamicSourceGroup1]. */
+    val dynamicSource1 = dynamicSafetySource(SOURCE_ID_1)
 
-    /** Source included in [DYNAMIC_SOURCE_GROUP_1]. */
-    val DYNAMIC_SOURCE_2 = dynamicSafetySource(SOURCE_ID_2)
+    /** Source included in [dynamicSourceGroup1]. */
+    val dynamicSource2 = dynamicSafetySource(SOURCE_ID_2)
 
-    /** Source included in [DYNAMIC_SOURCE_GROUP_2]. */
-    val DYNAMIC_SOURCE_3 = dynamicSafetySource(SOURCE_ID_3)
+    /** Source included in [dynamicSourceGroup2]. */
+    val dynamicSource3 = dynamicSafetySource(SOURCE_ID_3)
 
-    private val DYNAMIC_SOURCE_4 = dynamicSafetySource(SOURCE_ID_4)
-    private val DYNAMIC_SOURCE_5 = dynamicSafetySource(SOURCE_ID_5)
+    private val dynamicSource4 = dynamicSafetySource(SOURCE_ID_4)
+    private val dynamicSource5 = dynamicSafetySource(SOURCE_ID_5)
 
-    /** Source group provided by [MULTIPLE_SOURCE_GROUPS_CONFIG]. */
-    val DYNAMIC_SOURCE_GROUP_1 =
+    /** Source group provided by [multipleSourceGroupsConfig]. */
+    val dynamicSourceGroup1 =
         safetySourcesGroupBuilder(MULTIPLE_SOURCES_GROUP_ID_1)
-            .addSafetySource(DYNAMIC_SOURCE_1)
-            .addSafetySource(DYNAMIC_SOURCE_2)
+            .addSafetySource(dynamicSource1)
+            .addSafetySource(dynamicSource2)
             .setTitleResId(android.R.string.copy)
             .setSummaryResId(android.R.string.cut)
             .build()
 
-    /** Source group provided by [MULTIPLE_SOURCE_GROUPS_CONFIG]. */
-    val DYNAMIC_SOURCE_GROUP_2 =
+    /** Source group provided by [multipleSourceGroupsConfig]. */
+    val dynamicSourceGroup2 =
         safetySourcesGroupBuilder(MULTIPLE_SOURCES_GROUP_ID_2)
-            .addSafetySource(DYNAMIC_SOURCE_3)
+            .addSafetySource(dynamicSource3)
             .setTitleResId(android.R.string.paste)
             .setSummaryResId(android.R.string.cancel)
             .build()
 
-    /** Source group provided by [MULTIPLE_SOURCE_GROUPS_CONFIG]. */
-    val DYNAMIC_SOURCE_GROUP_3 =
+    /** Source group provided by [multipleSourceGroupsConfig]. */
+    val dynamicSourceGroup3 =
         safetySourcesGroupBuilder(MULTIPLE_SOURCES_GROUP_ID_3)
-            .addSafetySource(DYNAMIC_SOURCE_4)
-            .addSafetySource(DYNAMIC_SOURCE_5)
+            .addSafetySource(dynamicSource4)
+            .addSafetySource(dynamicSource5)
             .setTitleResId(android.R.string.dialog_alert_title)
             .setSummaryResId(android.R.string.selectAll)
             .build()
 
     /** A simple [SafetyCenterConfig] for CTS tests with multiple groups of multiple sources. */
-    val MULTIPLE_SOURCE_GROUPS_CONFIG =
+    val multipleSourceGroupsConfig =
         SafetyCenterConfig.Builder()
-            .addSafetySourcesGroup(DYNAMIC_SOURCE_GROUP_1)
-            .addSafetySourcesGroup(DYNAMIC_SOURCE_GROUP_2)
-            .addSafetySourcesGroup(DYNAMIC_SOURCE_GROUP_3)
+            .addSafetySourcesGroup(dynamicSourceGroup1)
+            .addSafetySourcesGroup(dynamicSourceGroup2)
+            .addSafetySourcesGroup(dynamicSourceGroup3)
             .build()
 
     /**
      * A simple [SafetyCenterConfig] for CTS tests with multiple sources with one source having an
      * invalid default intent.
      */
-    val MULTIPLE_SOURCES_CONFIG_WITH_SOURCE_WITH_INVALID_INTENT =
+    val multipleSourcesConfigWithSourceWithInvalidIntent =
         SafetyCenterConfig.Builder()
             .addSafetySourcesGroup(
                 safetySourcesGroupBuilder(MULTIPLE_SOURCES_GROUP_ID_1)
@@ -505,51 +294,49 @@ object SafetyCenterCtsConfigs {
             )
             .build()
 
-    /** Source provided by [STATIC_SOURCES_CONFIG]. */
-    val STATIC_SOURCE_1 =
+    /** Source provided by [staticSourcesConfig]. */
+    val staticSource1 =
         staticSafetySourceBuilder("cts_static_source_id_1")
             .setTitleResId(android.R.string.dialog_alert_title)
             .setSummaryResId(android.R.string.autofill)
             .build()
 
-    /** Source provided by [STATIC_SOURCES_CONFIG]. */
-    val STATIC_SOURCE_2 =
+    /** Source provided by [staticSourcesConfig]. */
+    val staticSource2 =
         staticSafetySourceBuilder("cts_static_source_id_2")
             .setTitleResId(android.R.string.copyUrl)
             .setSummaryResId(android.R.string.cut)
             .build()
 
     /**
-     * Source group provided by [STATIC_SOURCES_CONFIG] containing a single source of id
-     * [STATIC_SOURCE_1].
+     * Source group provided by [staticSourcesConfig] containing a single source [staticSource1].
      */
-    val STATIC_SOURCE_GROUP_1 =
+    val staticSourceGroup1 =
         SafetySourcesGroup.Builder()
             .setId("cts_static_sources_group_id_1")
             .setTitleResId(android.R.string.paste)
-            .addSafetySource(STATIC_SOURCE_1)
+            .addSafetySource(staticSource1)
             .build()
 
     /**
-     * Source group provided by [STATIC_SOURCES_CONFIG] containing a single source of id
-     * [STATIC_SOURCE_2].
+     * Source group provided by [staticSourcesConfig] containing a single source [staticSource2].
      */
-    val STATIC_SOURCE_GROUP_2 =
+    val staticSourceGroup2 =
         SafetySourcesGroup.Builder()
             .setId("cts_static_sources_group_id_2")
             .setTitleResId(android.R.string.copy)
-            .addSafetySource(STATIC_SOURCE_2)
+            .addSafetySource(staticSource2)
             .build()
 
     /** A simple [SafetyCenterConfig] for CTS tests with static sources. */
-    val STATIC_SOURCES_CONFIG =
+    val staticSourcesConfig =
         SafetyCenterConfig.Builder()
-            .addSafetySourcesGroup(STATIC_SOURCE_GROUP_1)
-            .addSafetySourcesGroup(STATIC_SOURCE_GROUP_2)
+            .addSafetySourcesGroup(staticSourceGroup1)
+            .addSafetySourcesGroup(staticSourceGroup2)
             .build()
 
-    /** [SafetyCenterConfig] used in CTS tests for Your Work Policy Info source. */
-    fun Context.getWorkPolicyInfoConfig() =
+    /** [SafetyCenterConfig] used in tests for Your Work Policy Info source. */
+    val workPolicyInfoConfig =
         SafetyCenterConfig.Builder()
             .addSafetySourcesGroup(
                 SafetySourcesGroup.Builder()
@@ -558,7 +345,7 @@ object SafetyCenterCtsConfigs {
                     .addSafetySource(
                         SafetySource.Builder(SAFETY_SOURCE_TYPE_DYNAMIC)
                             .setId("AndroidWorkPolicyInfo")
-                            .setPackageName(packageManager.permissionControllerPackageName)
+                            .setPackageName(context.packageManager.permissionControllerPackageName)
                             .setProfile(SafetySource.PROFILE_PRIMARY)
                             .setRefreshOnPageOpenAllowed(true)
                             .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_HIDDEN)
@@ -568,20 +355,14 @@ object SafetyCenterCtsConfigs {
             )
             .build()
 
-    /**
-     * ID of a [SafetySourcesGroup] provided by [Context.getLockScreenSourceConfig] and
-     * [ANDROID_LOCK_SCREEN_SOURCES_CONFIG], to replicate the lock screen sources group.
-     */
-    const val ANDROID_LOCK_SCREEN_SOURCES_GROUP_ID = "AndroidLockScreenSources"
-
-    /** [SafetyCenterConfig] used in CTS tests to replicate the lock screen source. */
-    fun Context.getLockScreenSourceConfig() =
+    /** [SafetyCenterConfig] used in tests to replicate the lock screen source. */
+    val settingsLockScreenSourceConfig =
         SafetyCenterConfig.Builder()
             .addSafetySourcesGroup(
                 safetySourcesGroupBuilder(ANDROID_LOCK_SCREEN_SOURCES_GROUP_ID)
                     .addSafetySource(
                         dynamicSafetySourceBuilder("AndroidLockScreen")
-                            .setPackageName(getSettingsPackageName())
+                            .setPackageName(context.getSettingsPackageName())
                             .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_DISABLED)
                             .build()
                     )
@@ -589,8 +370,8 @@ object SafetyCenterCtsConfigs {
             )
             .build()
 
-    /** [SafetyCenterConfig] used in CTS tests to replicate the lock screen sources group. */
-    val ANDROID_LOCK_SCREEN_SOURCES_CONFIG =
+    /** [SafetyCenterConfig] used in tests to replicate the lock screen sources group. */
+    val androidLockScreenSourcesConfig =
         SafetyCenterConfig.Builder()
             .addSafetySourcesGroup(
                 safetySourcesGroupBuilder(ANDROID_LOCK_SCREEN_SOURCES_GROUP_ID)
@@ -620,8 +401,8 @@ object SafetyCenterCtsConfigs {
             )
             .build()
 
-    /** A simple [SafetyCenterConfig] used in CTS tests that stress the group summary logic. */
-    val SUMMARY_TEST_CONFIG =
+    /** A simple [SafetyCenterConfig] used in tests that stress the group summary logic. */
+    val summaryTestConfig =
         SafetyCenterConfig.Builder()
             .addSafetySourcesGroup(
                 safetySourcesGroupBuilder(SUMMARY_TEST_GROUP_ID)
@@ -640,7 +421,7 @@ object SafetyCenterCtsConfigs {
     /**
      * A complex [SafetyCenterConfig] exploring different combinations of valid sources and groups.
      */
-    val COMPLEX_CONFIG =
+    val complexConfig =
         SafetyCenterConfig.Builder()
             .addSafetySourcesGroup(
                 safetySourcesGroupBuilder(DYNAMIC_GROUP_ID)
@@ -661,9 +442,7 @@ object SafetyCenterCtsConfigs {
                                     setNotificationsAllowed(true)
                                     setDeduplicationGroup("group")
                                     addPackageCertificateHash(PACKAGE_CERT_HASH_FAKE)
-                                    PACKAGE_CERT_HASHES_CTS.forEach {
-                                        addPackageCertificateHash(it)
-                                    }
+                                    addPackageCertificateHash(packageCertHash)
                                 }
                             }
                             .build()
@@ -690,7 +469,7 @@ object SafetyCenterCtsConfigs {
                             .setSearchTermsResId(android.R.string.ok)
                             .build()
                     )
-                    .addSafetySource(DYNAMIC_OTHER_PACKAGE_SAFETY_SOURCE)
+                    .addSafetySource(dynamicOtherPackageSafetySource)
                     .build()
             )
             .addSafetySourcesGroup(
@@ -711,7 +490,9 @@ object SafetyCenterCtsConfigs {
                     .addSafetySource(
                         staticSafetySourceBuilder(STATIC_ALL_OPTIONAL_ID)
                             .setSearchTermsResId(android.R.string.ok)
-                            .apply { if (SdkLevel.isAtLeastU()) setPackageName(CTS_PACKAGE_NAME) }
+                            .apply {
+                                if (SdkLevel.isAtLeastU()) setPackageName(context.packageName)
+                            }
                             .build()
                     )
                     .build()
@@ -741,9 +522,7 @@ object SafetyCenterCtsConfigs {
                                     setNotificationsAllowed(true)
                                     setDeduplicationGroup("group")
                                     addPackageCertificateHash(PACKAGE_CERT_HASH_FAKE)
-                                    PACKAGE_CERT_HASHES_CTS.forEach {
-                                        addPackageCertificateHash(it)
-                                    }
+                                    addPackageCertificateHash(packageCertHash)
                                 }
                             }
                             .build()
@@ -770,7 +549,7 @@ object SafetyCenterCtsConfigs {
      * A complex [SafetyCenterConfig] exploring different combinations of valid sources and groups.
      * Including sources that support all profiles.
      */
-    val COMPLEX_ALL_PROFILE_CONFIG =
+    val complexAllProfileConfig =
         SafetyCenterConfig.Builder()
             .addSafetySourcesGroup(
                 safetySourcesGroupBuilder(DYNAMIC_GROUP_ID)
@@ -807,7 +586,9 @@ object SafetyCenterCtsConfigs {
                     .addSafetySource(
                         staticAllProfileSafetySourceBuilder(STATIC_ALL_OPTIONAL_ID)
                             .setSearchTermsResId(android.R.string.ok)
-                            .apply { if (SdkLevel.isAtLeastU()) setPackageName(CTS_PACKAGE_NAME) }
+                            .apply {
+                                if (SdkLevel.isAtLeastU()) setPackageName(context.packageName)
+                            }
                             .build()
                     )
                     .build()
@@ -829,9 +610,7 @@ object SafetyCenterCtsConfigs {
                                     setNotificationsAllowed(true)
                                     setDeduplicationGroup("group")
                                     addPackageCertificateHash(PACKAGE_CERT_HASH_FAKE)
-                                    PACKAGE_CERT_HASHES_CTS.forEach {
-                                        addPackageCertificateHash(it)
-                                    }
+                                    addPackageCertificateHash(packageCertHash)
                                 }
                             }
                             .build()
@@ -855,7 +634,7 @@ object SafetyCenterCtsConfigs {
             .build()
 
     /** A [SafetyCenterConfig] containing only hidden sources. */
-    val HIDDEN_ONLY_CONFIG =
+    val hiddenOnlyConfig =
         SafetyCenterConfig.Builder()
             .addSafetySourcesGroup(
                 safetySourcesGroupBuilder("some_collapsible_group")
@@ -883,7 +662,7 @@ object SafetyCenterCtsConfigs {
     fun dynamicSafetySourceBuilder(id: String) =
         SafetySource.Builder(SAFETY_SOURCE_TYPE_DYNAMIC)
             .setId(id)
-            .setPackageName(CTS_PACKAGE_NAME)
+            .setPackageName(context.packageName)
             .setTitleResId(android.R.string.ok)
             .setSummaryResId(android.R.string.ok)
             .setIntentAction(ACTION_TEST_ACTIVITY)
@@ -919,7 +698,7 @@ object SafetyCenterCtsConfigs {
     private fun issueOnlySafetySourceBuilder(id: String) =
         SafetySource.Builder(SAFETY_SOURCE_TYPE_ISSUE_ONLY)
             .setId(id)
-            .setPackageName(CTS_PACKAGE_NAME)
+            .setPackageName(context.packageName)
             .setProfile(SafetySource.PROFILE_PRIMARY)
             .setRefreshOnPageOpenAllowed(true)
 
@@ -940,4 +719,231 @@ object SafetyCenterCtsConfigs {
                     .build()
             )
             .build()
+
+    companion object {
+        /** ID of a source not used in any config. */
+        const val SAMPLE_SOURCE_ID = "cts_sample_source_id"
+
+        /** Activity action: Launch the [TestActivity] used to check redirects in tests. */
+        const val ACTION_TEST_ACTIVITY = "android.safetycenter.cts.testing.action.TEST_ACTIVITY"
+
+        /**
+         * ID of the only source provided in [singleSourceConfig], [severityZeroConfig] and
+         * [noPageOpenConfig].
+         */
+        const val SINGLE_SOURCE_ID = "cts_single_source_id"
+
+        /** ID of the only source provided in [singleSourceAllProfileConfig]. */
+        const val SINGLE_SOURCE_ALL_PROFILE_ID = "cts_single_source_all_profile_id"
+
+        /** ID of the only source provided in [issueOnlySourceAllProfileConfig]. */
+        const val ISSUE_ONLY_ALL_PROFILE_SOURCE_ID = "cts_issue_only_all_profile_id"
+
+        /**
+         * ID of the only [SafetySourcesGroup] provided by [singleSourceConfig],
+         * [severityZeroConfig] and [noPageOpenConfig].
+         */
+        const val SINGLE_SOURCE_GROUP_ID = "cts_single_source_group_id"
+
+        /**
+         * SHA256 hash of a package certificate.
+         *
+         * <p>This is a fake certificate, and can be used to test failure cases, or to test a list
+         * of certificates when only one match is required.
+         */
+        const val PACKAGE_CERT_HASH_FAKE = "feed12"
+
+        /** An invalid SHA256 hash (not a byte string, not even number of chars). */
+        const val PACKAGE_CERT_HASH_INVALID = "0124ppl"
+
+        /** ID of a source provided by [multipleSourcesConfig] and [summaryTestConfig]. */
+        const val SOURCE_ID_1 = "cts_source_id_1"
+
+        /** ID of a source provided by [multipleSourcesConfig] and [summaryTestConfig]. */
+        const val SOURCE_ID_2 = "cts_source_id_2"
+
+        /** ID of a source provided by [multipleSourcesConfig] and [summaryTestConfig]. */
+        const val SOURCE_ID_3 = "cts_source_id_3"
+
+        /** ID of a source provided by [summaryTestConfig]. */
+        const val SOURCE_ID_4 = "cts_source_id_4"
+
+        /** ID of a source provided by [summaryTestConfig]. */
+        const val SOURCE_ID_5 = "cts_source_id_5"
+
+        /** ID of a source provided by [summaryTestConfig]. */
+        const val SOURCE_ID_6 = "cts_source_id_6"
+
+        /** ID of a source provided by [summaryTestConfig]. */
+        const val SOURCE_ID_7 = "cts_source_id_7"
+
+        /**
+         * ID of a [SafetySourcesGroup] provided by [multipleSourcesConfig], containing two sources
+         * of ids [SOURCE_ID_1] and [SOURCE_ID_2].
+         */
+        const val MULTIPLE_SOURCES_GROUP_ID_1 = "cts_multiple_sources_group_id_1"
+
+        /**
+         * ID of a [SafetySourcesGroup] provided by [multipleSourcesConfig], containing a single
+         * source of id [SOURCE_ID_3].
+         */
+        const val MULTIPLE_SOURCES_GROUP_ID_2 = "cts_multiple_sources_group_id_2"
+
+        /**
+         * ID of a [SafetySourcesGroup] provided by [multipleSourcesConfig], containing two sources
+         * of ids [SOURCE_ID_4] and [SOURCE_ID_5].
+         */
+        const val MULTIPLE_SOURCES_GROUP_ID_3 = "cts_multiple_sources_group_id_3"
+
+        /**
+         * ID of a [SafetySourcesGroup] provided by [summaryTestGroupConfig], containing sources:
+         * [SOURCE_ID_1], [SOURCE_ID_2], [SOURCE_ID_3], [SOURCE_ID_4], [SOURCE_ID_5], [SOURCE_ID_6],
+         * [SOURCE_ID_7], [STATIC_IN_STATEFUL_ID].
+         */
+        const val SUMMARY_TEST_GROUP_ID = "summary_test_group_id"
+
+        /**
+         * ID of a [SafetySourcesGroup] provided by [complexConfig], containing sources:
+         * [DYNAMIC_BAREBONE_ID], [DYNAMIC_ALL_OPTIONAL_ID], [DYNAMIC_DISABLED_ID],
+         * [DYNAMIC_HIDDEN_ID], [DYNAMIC_HIDDEN_WITH_SEARCH_ID], [DYNAMIC_OTHER_PACKAGE_ID]. And
+         * provided by [complexAllProfileConfig], containing sources: [DYNAMIC_BAREBONE_ID],
+         * [DYNAMIC_DISABLED_ID], [DYNAMIC_HIDDEN_ID].
+         */
+        const val DYNAMIC_GROUP_ID = "dynamic"
+
+        /**
+         * ID of a [SafetySourcesGroup] provided by [complexConfig] and [complexAllProfileConfig],
+         * containing sources: [STATIC_BAREBONE_ID], [STATIC_ALL_OPTIONAL_ID].
+         */
+        const val STATIC_GROUP_ID = "static"
+
+        /**
+         * ID of a [SafetySourcesGroup] provided by [complexConfig] and [complexAllProfileConfig],
+         * containing sources: [ISSUE_ONLY_BAREBONE_ID], [ISSUE_ONLY_ALL_OPTIONAL_ID].
+         */
+        const val ISSUE_ONLY_GROUP_ID = "issue_only"
+
+        /**
+         * ID of a [SafetySourcesGroup] provided by [complexConfig], containing sources:
+         * [DYNAMIC_IN_STATEFUL_ID], [STATIC_IN_STATEFUL_ID].
+         */
+        const val MIXED_STATEFUL_GROUP_ID = "mixed_stateful"
+
+        /**
+         * ID of a [SafetySourcesGroup] provided by [complexConfig] and [complexAllProfileConfig],
+         * containing sources: [DYNAMIC_IN_STATELESS_ID], [STATIC_IN_STATELESS_ID],
+         * [ISSUE_ONLY_IN_STATELESS_ID].
+         */
+        const val MIXED_STATELESS_GROUP_ID = "mixed_stateless"
+
+        /**
+         * ID of a source provided by [complexConfig], [complexAllProfileConfig], and
+         * [androidLockScreenSourcesConfig], this is a dynamic, primary profile only, visible source
+         * for which only the required fields are set.
+         */
+        const val DYNAMIC_BAREBONE_ID = "dynamic_barebone"
+
+        /**
+         * ID of a source provided by [complexConfig] and [singleSourceOtherPackageConfig], this is
+         * a dynamic, primary profile only, visible source belonging to the [OTHER_PACKAGE_NAME]
+         * package for which only the required fields are set.
+         */
+        const val DYNAMIC_OTHER_PACKAGE_ID = "dynamic_other_package"
+
+        /**
+         * ID of a source provided by [complexConfig], this is a dynamic, primary profile only,
+         * disabled by default source for which all the required and optional fields are set.
+         * Notably, this includes the refresh on page open flag and a max severity level of
+         * recommendation.
+         */
+        const val DYNAMIC_ALL_OPTIONAL_ID = "dynamic_all_optional"
+
+        /**
+         * ID of a source provided by [complexConfig], [complexAllProfileConfig], and
+         * [androidLockScreenSourcesConfig], this is a dynamic, disabled by default source for which
+         * only the required fields are set.
+         */
+        const val DYNAMIC_DISABLED_ID = "dynamic_disabled"
+
+        /**
+         * ID of a source provided by [complexConfig], [complexAllProfileConfig], and
+         * [androidLockScreenSourcesConfig], this ism a dynamic, hidden by default source for which
+         * only the required fields are set.
+         */
+        const val DYNAMIC_HIDDEN_ID = "dynamic_hidden"
+
+        /**
+         * ID of a source provided by [complexConfig], this is a dynamic, primary profile only,
+         * hidden by default source for which all the required and optional fields are set.
+         */
+        const val DYNAMIC_HIDDEN_WITH_SEARCH_ID = "dynamic_hidden_with_search"
+
+        /**
+         * ID of a source provided by [complexConfig] and [complexAllProfileConfig], this is a
+         * static, primary profile only source for which only the required fields are set.
+         */
+        const val STATIC_BAREBONE_ID = "static_barebone"
+
+        /**
+         * ID of a source provided by [complexConfig] and [complexAllProfileConfig], this is a
+         * static source for which all the required and optional fields are set.
+         */
+        const val STATIC_ALL_OPTIONAL_ID = "static_all_optional"
+
+        /**
+         * ID of a source provided by [complexConfig] and [complexAllProfileConfig], this is an
+         * issue-only, primary profile only source for which only the required fields are set.
+         */
+        const val ISSUE_ONLY_BAREBONE_ID = "issue_only_barebone"
+
+        /**
+         * ID of a source provided by [complexConfig] and [complexAllProfileConfig], this is an
+         * issue-only source for which all the required and optional fields are set. Notably, this
+         * includes the refresh on page open flag and a max severity level of recommendation.
+         */
+        const val ISSUE_ONLY_ALL_OPTIONAL_ID = "issue_only_all_optional"
+
+        /**
+         * ID of a source provided by [complexConfig], this is a generic, dynamic, primary profile
+         * only, visible source.
+         */
+        const val DYNAMIC_IN_STATEFUL_ID = "dynamic_in_stateful"
+
+        /**
+         * ID of a source provided by [complexConfig] and [complexAllProfileConfig], this is a
+         * generic, dynamic, visible source.
+         */
+        const val DYNAMIC_IN_STATELESS_ID = "dynamic_in_stateless"
+
+        /**
+         * ID of a source provided by [complexConfig] and [complexAllProfileConfig], this is an
+         * issue-only source.
+         */
+        const val ISSUE_ONLY_IN_STATELESS_ID = "issue_only_in_stateless"
+
+        /**
+         * ID of a source provided by [complexConfig] and [summaryTestConfig], this is a generic,
+         * static, primary profile only source.
+         */
+        const val STATIC_IN_STATEFUL_ID = "static_in_stateful"
+
+        /**
+         * ID of a source provided by [complexConfig] and [complexAllProfileConfig], this is a
+         * generic, static source.
+         */
+        const val STATIC_IN_STATELESS_ID = "static_in_stateless"
+
+        /** Package name for the [DYNAMIC_OTHER_PACKAGE_ID] source. */
+        const val OTHER_PACKAGE_NAME = "other_package_name"
+
+        private const val DEDUPLICATION_GROUP_1 = "deduplication_group_1"
+        private const val DEDUPLICATION_GROUP_2 = "deduplication_group_2"
+        private const val DEDUPLICATION_GROUP_3 = "deduplication_group_3"
+
+        /**
+         * ID of a [SafetySourcesGroup] provided by [settingsLockScreenSourceConfig] and
+         * [androidLockScreenSourcesConfig], to replicate the lock screen sources group.
+         */
+        const val ANDROID_LOCK_SCREEN_SOURCES_GROUP_ID = "AndroidLockScreenSources"
+    }
 }
