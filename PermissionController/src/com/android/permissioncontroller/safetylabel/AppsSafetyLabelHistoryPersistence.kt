@@ -83,6 +83,14 @@ object AppsSafetyLabelHistoryPersistence {
     }
 
     /**
+     * Returns the set of names of packages that have safety label data persisted in history [file].
+     */
+    fun getPackagesWithSafetyLabels(file: File): Set<String> {
+        val appHistories = read(file)?.appSafetyLabelHistories
+        return appHistories?.map { it.appInfo.packageName }?.toSet() ?: setOf()
+    }
+
+    /**
      * Writes a new safety label to the provided file, if the provided safety label has changed from
      * the last recorded.
      */

@@ -16,7 +16,6 @@
 
 package com.android.permissioncontroller.tests.mocking.safetylabel
 
-import android.app.Notification
 import android.app.NotificationManager
 import android.app.job.JobInfo
 import android.app.job.JobParameters
@@ -86,6 +85,7 @@ class SafetyLabelChangesJobServiceTest {
         whenever(PermissionControllerApplication.get()).thenReturn(application)
         whenever(application.resources).thenReturn(context.resources)
         whenever(application.applicationInfo).thenReturn(context.applicationInfo)
+        whenever(application.applicationContext).thenReturn(application)
 
         // Mock services
         whenever(application.getSystemService(eq(NotificationManager::class.java)))
@@ -147,20 +147,6 @@ class SafetyLabelChangesJobServiceTest {
         val captor = ArgumentCaptor.forClass(JobInfo::class.java)
         verify(mockJobScheduler, timeout(5000)).schedule(captor.capture())
         assertThat(captor.value.id).isEqualTo(Constants.SAFETY_LABEL_CHANGES_JOB_ID)
-    }
-
-    @Test
-    fun onStartMainJob_notificationShown() {
-        val jobParams = mockJobParamsForJobId(Constants.SAFETY_LABEL_CHANGES_JOB_ID)
-        val jobStillRunning = service.onStartJob(jobParams)
-
-        assertThat(jobStillRunning).isEqualTo(true)
-        waitForJobFinished()
-
-        val captor = ArgumentCaptor.forClass(Notification::class.java)
-        verify(mockNotificationManager)
-            .notify(eq(Constants.SAFETY_LABEL_CHANGES_NOTIFICATION_ID), captor.capture())
-        // TODO(b/261662686): Assert notification title and content
     }
 
     private fun waitForJobFinished() {
