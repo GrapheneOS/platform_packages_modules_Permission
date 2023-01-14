@@ -16,6 +16,7 @@
 
 package android.safetycenter.cts.testing
 
+import android.app.NotificationChannel
 import android.content.ComponentName
 import android.os.ConditionVariable
 import android.safetycenter.cts.testing.Coroutines.TIMEOUT_LONG
@@ -107,7 +108,9 @@ class CtsNotificationListener : NotificationListenerService() {
          * Blocks until there is exactly one Safety Center notification and then return it, or throw
          * an [AssertionError] if that doesn't happen within [timeout].
          */
-        fun waitForSingleNotification(timeout: Duration = TIMEOUT_LONG): StatusBarNotification {
+        fun waitForSingleNotification(
+            timeout: Duration = TIMEOUT_LONG
+        ): StatusBarNotificationWithChannel {
             return waitForNotificationCount(1, timeout).first()
         }
 
@@ -118,7 +121,7 @@ class CtsNotificationListener : NotificationListenerService() {
         private fun waitForNotificationCount(
             count: Int,
             timeout: Duration = TIMEOUT_LONG
-        ): List<StatusBarNotification> {
+        ): List<StatusBarNotificationWithChannel> {
             return waitForNotificationsToSatisfy(timeout, description = "$count notifications") {
                 it.size == count
             }
@@ -132,7 +135,7 @@ class CtsNotificationListener : NotificationListenerService() {
         fun waitForSingleNotificationMatching(
             characteristics: NotificationCharacteristics,
             timeout: Duration = TIMEOUT_LONG
-        ): StatusBarNotification {
+        ): StatusBarNotificationWithChannel {
             return waitForNotificationsMatching(characteristics, timeout = timeout).first()
         }
 
@@ -141,10 +144,10 @@ class CtsNotificationListener : NotificationListenerService() {
          * and then return them, or throw an [AssertionError] if that doesn't happen within
          * [timeout].
          */
-        private fun waitForNotificationsMatching(
+        fun waitForNotificationsMatching(
             vararg characteristics: NotificationCharacteristics,
             timeout: Duration = TIMEOUT_LONG
-        ): List<StatusBarNotification> {
+        ): List<StatusBarNotificationWithChannel> {
             val charsList = characteristics.toList()
             return waitForNotificationsToSatisfy(
                 timeout,
@@ -168,9 +171,9 @@ class CtsNotificationListener : NotificationListenerService() {
             timeout: Duration = TIMEOUT_LONG,
             forAtLeast: Duration = TIMEOUT_SHORT,
             description: String,
-            predicate: (List<StatusBarNotification>) -> Boolean
-        ): List<StatusBarNotification> {
-            fun formatError(notifs: List<StatusBarNotification>): String {
+            predicate: (List<StatusBarNotificationWithChannel>) -> Boolean
+        ): List<StatusBarNotificationWithChannel> {
+            fun formatError(notifs: List<StatusBarNotificationWithChannel>): String {
                 return "Expected: $description, but the actual notifications were: $notifs"
             }
 
@@ -200,8 +203,8 @@ class CtsNotificationListener : NotificationListenerService() {
         }
 
         private suspend fun waitForNotificationsToSatisfyAsync(
-            predicate: (List<StatusBarNotification>) -> Boolean
-        ): List<StatusBarNotification> {
+            predicate: (List<StatusBarNotificationWithChannel>) -> Boolean
+        ): List<StatusBarNotificationWithChannel> {
             var currentNotifications = getSafetyCenterNotifications()
             while (!predicate(currentNotifications)) {
                 val event = safetyCenterNotificationEvents.receive()
@@ -211,8 +214,20 @@ class CtsNotificationListener : NotificationListenerService() {
             return currentNotifications
         }
 
-        private fun getSafetyCenterNotifications(): List<StatusBarNotification> =
-            instance!!.activeNotifications.filter { it.isSafetyCenterNotification() }
+        private fun getSafetyCenterNotifications(): List<StatusBarNotificationWithChannel> {
+            return with(instance!!) {
+                fun getChannel(key: String): NotificationChannel {
+                    return Ranking().let { result ->
+                        // This API uses a result parameter:
+                        currentRanking.getRanking(key, result)
+                        result.channel
+                    }
+                }
+                activeNotifications
+                    .filter { it.isSafetyCenterNotification() }
+                    .map { StatusBarNotificationWithChannel(it, getChannel(it.key)) }
+            }
+        }
 
         /**
          * Cancels a specific notification and then waits for it to be removed by the notification
@@ -224,7 +239,7 @@ class CtsNotificationListener : NotificationListenerService() {
             waitForNotificationsToSatisfy(
                 timeout,
                 description = "no notification with the key $key"
-            ) { notifications -> notifications.none { it.key == key } }
+            ) { notifications -> notifications.none { it.statusBarNotification.key == key } }
 
             waitForIssueCacheToContainAnyDismissedNotification()
         }
@@ -281,8 +296,7 @@ class CtsNotificationListener : NotificationListenerService() {
             safetyCenterNotificationEvents = Channel(capacity = Channel.UNLIMITED)
         }
 
-        // TODO(b/264369469): Tests should account for multiple SC notification channels
         private fun StatusBarNotification.isSafetyCenterNotification(): Boolean =
-            packageName == "android" && notification.channelId == "safety_center"
+            packageName == "android" && notification.channelId.startsWith("safety_center")
     }
 }

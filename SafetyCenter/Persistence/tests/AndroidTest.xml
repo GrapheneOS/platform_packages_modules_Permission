@@ -52,6 +52,8 @@
                 value="/data/local/tmp/com/safetycenter/persistence/tests/invalid_file_invalid_dismissed_at.xml" />
         <option name="push-file" key="invalid_file_invalid_first_seen_at.xml"
                 value="/data/local/tmp/com/safetycenter/persistence/tests/invalid_file_invalid_first_seen_at.xml" />
+        <option name="push-file" key="invalid_file_invalid_notification_dismissed_at.xml"
+            value="/data/local/tmp/com/safetycenter/persistence/tests/invalid_file_invalid_notification_dismissed_at.xml" />
         <option name="push-file" key="invalid_file_invalid_version.xml"
                 value="/data/local/tmp/com/safetycenter/persistence/tests/invalid_file_invalid_version.xml" />
         <option name="push-file" key="invalid_file_missing_first_seen_at.xml"
@@ -70,6 +72,8 @@
                 value="/data/local/tmp/com/safetycenter/persistence/tests/valid_file_v0.xml" />
         <option name="push-file" key="valid_file_v1.xml"
                 value="/data/local/tmp/com/safetycenter/persistence/tests/valid_file_v1.xml" />
+        <option name="push-file" key="valid_file_v2.xml"
+            value="/data/local/tmp/com/safetycenter/persistence/tests/valid_file_v2.xml" />
     </target_preparer>
 
     <test class="com.android.tradefed.testtype.AndroidJUnitTest" >

@@ -25,9 +25,13 @@ import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
-/** A helper class to facilitate working with {@link SafetySource} objects. */
+/**
+ * A helper class to facilitate working with {@link SafetySource} objects.
+ *
+ * @hide
+ */
 @RequiresApi(TIRAMISU)
-final class SafetySources {
+public final class SafetySources {
 
     private static final String TAG = "SafetySources";
 
@@ -55,7 +59,7 @@ final class SafetySources {
     }
 
     /** Returns whether a {@link SafetySource} supports managed profiles. */
-    static boolean supportsManagedProfiles(@NonNull SafetySource safetySource) {
+    public static boolean supportsManagedProfiles(@NonNull SafetySource safetySource) {
         int safetySourceProfile = safetySource.getProfile();
         switch (safetySourceProfile) {
             case SafetySource.PROFILE_PRIMARY:
@@ -102,7 +106,7 @@ final class SafetySources {
      * Returns whether a {@link SafetySource} can be logged, without requiring a check of source
      * type first.
      */
-    static boolean isLoggable(@NonNull SafetySource safetySource) {
+    public static boolean isLoggable(@NonNull SafetySource safetySource) {
         // Only external sources can have logging allowed values. Non-external sources cannot have
         // their loggability configured. Unfortunately isLoggingAllowed throws if called on a
         // non-external source.

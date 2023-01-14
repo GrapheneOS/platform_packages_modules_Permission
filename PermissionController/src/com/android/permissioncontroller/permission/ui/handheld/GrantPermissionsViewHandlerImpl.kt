@@ -442,16 +442,20 @@ class GrantPermissionsViewHandlerImpl(
         }
 
         if (id == R.id.permission_location_accuracy_radio_fine) {
-            (locationViews[FINE_RADIO_BUTTON] as RadioButton).isChecked = true
-            selectedPrecision = FINE_RADIO_BUTTON
-            runLocationAccuracyAnimation(true)
+            if (selectedPrecision != FINE_RADIO_BUTTON) {
+                (locationViews[FINE_RADIO_BUTTON] as RadioButton).isChecked = true
+                selectedPrecision = FINE_RADIO_BUTTON
+                runLocationAccuracyAnimation(true)
+            }
             return
         }
 
         if (id == R.id.permission_location_accuracy_radio_coarse) {
-            (locationViews[COARSE_RADIO_BUTTON] as RadioButton).isChecked = true
-            selectedPrecision = COARSE_RADIO_BUTTON
-            runLocationAccuracyAnimation(false)
+            if (selectedPrecision != COARSE_RADIO_BUTTON) {
+                (locationViews[COARSE_RADIO_BUTTON] as RadioButton).isChecked = true
+                selectedPrecision = COARSE_RADIO_BUTTON
+                runLocationAccuracyAnimation(false)
+            }
             return
         }
 

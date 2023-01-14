@@ -35,16 +35,19 @@ public final class PersistedSafetyCenterIssue {
     @NonNull private final Instant mFirstSeenAt;
     @Nullable private final Instant mDismissedAt;
     private final int mDismissCount;
+    @Nullable private final Instant mNotificationDismissedAt;
 
     private PersistedSafetyCenterIssue(
             @NonNull String key,
             @NonNull Instant firstSeenAt,
             @Nullable Instant dismissedAt,
-            int dismissCount) {
+            int dismissCount,
+            @Nullable Instant notificationDismissedAt) {
         mKey = key;
         mFirstSeenAt = firstSeenAt;
         mDismissedAt = dismissedAt;
         mDismissCount = dismissCount;
+        mNotificationDismissedAt = notificationDismissedAt;
     }
 
     /** The unique key for a safety source issue. */
@@ -70,6 +73,15 @@ public final class PersistedSafetyCenterIssue {
         return mDismissCount;
     }
 
+    /**
+     * The instant when the notification for this issue was dismissed, {@code null} if the issue's
+     * notification is not dismissed.
+     */
+    @Nullable
+    public Instant getNotificationDismissedAt() {
+        return mNotificationDismissedAt;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -78,12 +90,14 @@ public final class PersistedSafetyCenterIssue {
         return Objects.equals(mKey, that.mKey)
                 && Objects.equals(mFirstSeenAt, that.mFirstSeenAt)
                 && Objects.equals(mDismissedAt, that.mDismissedAt)
-                && mDismissCount == that.mDismissCount;
+                && mDismissCount == that.mDismissCount
+                && Objects.equals(mNotificationDismissedAt, that.mNotificationDismissedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mKey, mFirstSeenAt, mDismissedAt, mDismissCount);
+        return Objects.hash(
+                mKey, mFirstSeenAt, mDismissedAt, mDismissCount, mNotificationDismissedAt);
     }
 
     @Override
@@ -97,6 +111,8 @@ public final class PersistedSafetyCenterIssue {
                 + mDismissedAt
                 + ", mDismissCount="
                 + mDismissCount
+                + ", mNotificationDismissedAt="
+                + mNotificationDismissedAt
                 + '}';
     }
 
@@ -106,6 +122,7 @@ public final class PersistedSafetyCenterIssue {
         @Nullable private Instant mFirstSeenAt;
         @Nullable private Instant mDismissedAt;
         private int mDismissCount = 0;
+        @Nullable private Instant mNotificationDismissedAt;
 
         /** Creates a {@link Builder} for a {@link PersistedSafetyCenterIssue}. */
         public Builder() {}
@@ -141,6 +158,13 @@ public final class PersistedSafetyCenterIssue {
             return this;
         }
 
+        /** The instant when this issue's notification was dismissed. */
+        @NonNull
+        public Builder setNotificationDismissedAt(@Nullable Instant notificationDismissedAt) {
+            mNotificationDismissedAt = notificationDismissedAt;
+            return this;
+        }
+
         /**
          * Creates the {@link PersistedSafetyCenterIssue} defined by this {@link Builder}.
          *
@@ -160,7 +184,8 @@ public final class PersistedSafetyCenterIssue {
                         "dismissedAt must be present if dismissCount is greater than 0");
             }
 
-            return new PersistedSafetyCenterIssue(mKey, mFirstSeenAt, mDismissedAt, mDismissCount);
+            return new PersistedSafetyCenterIssue(
+                    mKey, mFirstSeenAt, mDismissedAt, mDismissCount, mNotificationDismissedAt);
         }
     }
 

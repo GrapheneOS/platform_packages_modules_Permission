@@ -3,6 +3,7 @@ package com.android.permissioncontroller.permission.ui.handheld.v34
 import android.os.Build
 import android.os.Bundle
 import android.os.UserHandle
+import android.view.MenuItem
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.preference.Preference
@@ -11,6 +12,7 @@ import com.android.permissioncontroller.Constants.EXTRA_SESSION_ID
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.model.v34.DataSharingUpdateType
 import com.android.permissioncontroller.permission.ui.handheld.PermissionsFrameFragment
+import com.android.permissioncontroller.permission.ui.handheld.pressBack
 import com.android.permissioncontroller.permission.ui.model.v34.AppDataSharingUpdatesViewModel
 import com.android.permissioncontroller.permission.ui.model.v34.AppDataSharingUpdatesViewModel.AppLocationDataSharingUpdateUiInfo
 import com.android.permissioncontroller.permission.utils.KotlinUtils
@@ -25,6 +27,7 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requireActivity().title = getString(R.string.data_sharing_updates_title)
+        setHasOptionsMenu(true)
 
         val ab = activity?.actionBar
         ab?.setDisplayHomeAsUpEnabled(true)
@@ -37,6 +40,15 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
         }
 
         viewModel.appLocationDataSharingUpdateUiInfoLiveData.observe(this, this::updatePreferences)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            this.pressBack()
+            return true
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     private fun updatePreferences(updateUiInfos: List<AppLocationDataSharingUpdateUiInfo>) {

@@ -42,9 +42,11 @@ import java.util.Objects;
 /**
  * A class that represent all the enabled profiles (profile parent and managed profile(s))
  * associated with a user id.
+ *
+ * @hide
  */
 @RequiresApi(TIRAMISU)
-final class UserProfileGroup {
+public final class UserProfileGroup {
 
     @UserIdInt private final int mProfileParentUserId;
     @NonNull private final int[] mManagedProfilesUserIds;
@@ -188,7 +190,7 @@ final class UserProfileGroup {
     }
 
     /** Returns whether the {@link UserProfileGroup} contains the given {@code userId}. */
-    boolean contains(@UserIdInt int userId) {
+    public boolean contains(@UserIdInt int userId) {
         if (userId == mProfileParentUserId) {
             return true;
         }

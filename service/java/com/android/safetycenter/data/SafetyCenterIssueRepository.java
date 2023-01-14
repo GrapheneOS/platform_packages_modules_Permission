@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 The Android Open Source Project
+ * Copyright (C) 2023 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.safetycenter;
+package com.android.safetycenter.data;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
@@ -30,6 +30,10 @@ import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
+import com.android.safetycenter.SafetyCenterConfigReader;
+import com.android.safetycenter.SafetyCenterFlags;
+import com.android.safetycenter.SafetySources;
+import com.android.safetycenter.UserProfileGroup;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 import com.android.safetycenter.persistence.PersistedSafetyCenterIssue;
@@ -44,35 +48,38 @@ import java.util.Objects;
 import javax.annotation.concurrent.NotThreadSafe;
 
 /**
- * Cache to manage data about all the issues sent to Safety Center, in particular whether a given
- * issue should currently be considered dismissed.
+ * Repository to manage data about all the issues sent to Safety Center, in particular whether a
+ * given issue should currently be considered dismissed.
  *
- * <p>The contents of this cache can be populated from and persisted to disk using the {@link
+ * <p>The contents of this repository can be populated from and persisted to disk using the {@link
  * #load(List)} and {@link #snapshot()} methods. When {@link #isDirty()} returns {@code true} that
- * means that the contents of the cache may have changed since the last load or snapshot occurred.
+ * means that the contents of the repository may have changed since the last load or snapshot
+ * occurred.
  *
  * <p>This class isn't thread safe. Thread safety must be handled by the caller.
+ *
+ * @hide
  */
 @RequiresApi(TIRAMISU)
 @NotThreadSafe
-final class SafetyCenterIssueCache {
+public final class SafetyCenterIssueRepository {
 
-    private static final String TAG = "SafetyCenterIssueCache";
+    private static final String TAG = "SafetyCenterIssueRepo";
 
     @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
 
     private final ArrayMap<SafetyCenterIssueKey, IssueData> mIssues = new ArrayMap<>();
     private boolean mIsDirty = false;
 
-    SafetyCenterIssueCache(@NonNull SafetyCenterConfigReader safetyCenterConfigReader) {
+    public SafetyCenterIssueRepository(@NonNull SafetyCenterConfigReader safetyCenterConfigReader) {
         mSafetyCenterConfigReader = safetyCenterConfigReader;
     }
 
     /**
-     * Counts the total number of issues in the issue cache, from currently-active, loggable
+     * Counts the total number of issues in the issue repository, from currently-active, loggable
      * sources, in the given {@link UserProfileGroup}.
      */
-    int countActiveLoggableIssues(@NonNull UserProfileGroup userProfileGroup) {
+    public int countActiveLoggableIssues(@NonNull UserProfileGroup userProfileGroup) {
         int issueCount = 0;
         for (int i = 0; i < mIssues.size(); i++) {
             SafetyCenterIssueKey issueKey = mIssues.keyAt(i);
@@ -90,13 +97,13 @@ final class SafetyCenterIssueCache {
     }
 
     /**
-     * Gets all the issues in the issue cache for the given {@code userId}.
+     * Gets all the issues in the issue repository for the given {@code userId}.
      *
      * <p>Only issues from "active" sources are included. Active sources are those for which {@link
      * SafetyCenterConfigReader#isExternalSafetySourceActive(String)} returns {@code true}.
      */
     @NonNull
-    List<SafetyCenterIssueKey> getIssuesForUser(@UserIdInt int userId) {
+    public List<SafetyCenterIssueKey> getIssuesForUser(@UserIdInt int userId) {
         ArrayList<SafetyCenterIssueKey> result = new ArrayList<>();
         for (int i = 0; i < mIssues.size(); i++) {
             SafetyCenterIssueKey issueKey = mIssues.keyAt(i);
@@ -111,13 +118,6 @@ final class SafetyCenterIssueCache {
         return result;
     }
 
-    /** Same as {@link SafetyCenterIssueCache#isIssueDismissed(SafetyCenterIssueKey, int)}. */
-    boolean isIssueDismissed(@NonNull SafetyCenterIssueExtended safetyCenterIssue) {
-        return isIssueDismissed(
-                safetyCenterIssue.getSafetyCenterIssueKey(),
-                safetyCenterIssue.getSafetySourceIssueSeverityLevel());
-    }
-
     /**
      * Returns {@code true} if the issue with the given key and severity level is currently
      * dismissed.
@@ -125,9 +125,9 @@ final class SafetyCenterIssueCache {
      * <p>An issue which is dismissed at one time may become "un-dismissed" later, after the
      * resurface delay (which depends on severity level) has elapsed.
      *
-     * <p>If the given issue key is not found in the cache this method returns {@code false}.
+     * <p>If the given issue key is not found in the repository this method returns {@code false}.
      */
-    boolean isIssueDismissed(
+    public boolean isIssueDismissed(
             @NonNull SafetyCenterIssueKey safetyCenterIssueKey,
             @SafetySourceData.SeverityLevel int safetySourceIssueSeverityLevel) {
         IssueData issueData = getOrWarn(safetyCenterIssueKey, "checking if dismissed");
@@ -184,7 +184,7 @@ final class SafetyCenterIssueCache {
      * <p>This will align dismissal state of these issues, unless issues are of different
      * severities, in which case they can potentially differ in resurface times.
      */
-    void copyDismissalData(
+    public void copyDismissalData(
             @NonNull SafetyCenterIssueKey keyFrom, @NonNull SafetyCenterIssueKey keyTo) {
         IssueData dataFrom = getOrWarn(keyFrom, "copying dismissed data");
         IssueData dataTo = getOrWarn(keyTo, "copying dismissed data");
@@ -205,7 +205,7 @@ final class SafetyCenterIssueCache {
      *
      * <p>This method may change the value reported by {@link #isDirty} to {@code true}.
      */
-    void dismissNotification(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
+    public void dismissNotification(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
         IssueData issueData = getOrWarn(safetyCenterIssueKey, "dismissing notification");
         if (issueData == null) {
             return;
@@ -233,7 +233,7 @@ final class SafetyCenterIssueCache {
      */
     // TODO(b/261429824): Handle mNotificationDismissedAt w.r.t. issue deduplication
     @Nullable
-    Instant getNotificationDismissedAt(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
+    public Instant getNotificationDismissedAt(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
         IssueData issueData = getOrWarn(safetyCenterIssueKey, "getting notification dismissed");
         if (issueData == null) {
             return null;
@@ -242,8 +242,8 @@ final class SafetyCenterIssueCache {
     }
 
     /**
-     * Updates the issue cache to contain exactly the given {@code safetySourceIssueIds} for the
-     * supplied source and user.
+     * Updates the issue repository to contain exactly the given {@code safetySourceIssueIds} for
+     * the supplied source and user.
      */
     void updateIssuesForSource(
             @NonNull ArraySet<String> safetySourceIssueIds,
@@ -283,20 +283,20 @@ final class SafetyCenterIssueCache {
     }
 
     /**
-     * Returns {@code true} if the contents of the cache may have changed since the last {@link
+     * Returns {@code true} if the contents of the repository may have changed since the last {@link
      * #load(List)} or {@link #snapshot()} occurred.
      */
-    boolean isDirty() {
+    public boolean isDirty() {
         return mIsDirty;
     }
 
     /**
-     * Takes a snapshot of the contents of the cache to be written to persistent storage.
+     * Takes a snapshot of the contents of the repository to be written to persistent storage.
      *
      * <p>This method will reset the value reported by {@link #isDirty} to {@code false}.
      */
     @NonNull
-    List<PersistedSafetyCenterIssue> snapshot() {
+    public List<PersistedSafetyCenterIssue> snapshot() {
         mIsDirty = false;
         List<PersistedSafetyCenterIssue> persistedIssues = new ArrayList<>();
         for (int i = 0; i < mIssues.size(); i++) {
@@ -308,11 +308,11 @@ final class SafetyCenterIssueCache {
     }
 
     /**
-     * Replaces the contents of the cache with the given issues read from persistent storage.
+     * Replaces the contents of the repository with the given issues read from persistent storage.
      *
      * <p>This method may change the value reported by {@link #isDirty} to {@code true}.
      */
-    void load(@NonNull List<PersistedSafetyCenterIssue> persistedSafetyCenterIssues) {
+    public void load(@NonNull List<PersistedSafetyCenterIssue> persistedSafetyCenterIssues) {
         mIssues.clear();
         for (int i = 0; i < persistedSafetyCenterIssues.size(); i++) {
             PersistedSafetyCenterIssue persistedIssue = persistedSafetyCenterIssues.get(i);
@@ -332,21 +332,21 @@ final class SafetyCenterIssueCache {
     }
 
     /**
-     * Clears all the data in the cache.
+     * Clears all the data in the repository.
      *
      * <p>This method will change the value reported by {@link #isDirty} to {@code true}.
      */
-    void clear() {
+    public void clear() {
         mIssues.clear();
         mIsDirty = true;
     }
 
     /**
-     * Clears all the data in the cache for the given user.
+     * Clears all the data in the repository for the given user.
      *
      * <p>This method may change the value reported by {@link #isDirty} to {@code true}.
      */
-    void clearForUser(@UserIdInt int userId) {
+    public void clearForUser(@UserIdInt int userId) {
         // Loop in reverse index order to be able to remove entries while iterating.
         for (int i = mIssues.size() - 1; i >= 0; i--) {
             SafetyCenterIssueKey issueKey = mIssues.keyAt(i);
@@ -358,10 +358,10 @@ final class SafetyCenterIssueCache {
     }
 
     /** Dumps state for debugging purposes. */
-    void dump(@NonNull PrintWriter fout) {
-        int issueCacheCount = mIssues.size();
-        fout.println("ISSUE CACHE (" + issueCacheCount + ", dirty=" + mIsDirty + ")");
-        for (int i = 0; i < issueCacheCount; i++) {
+    public void dump(@NonNull PrintWriter fout) {
+        int issueRepositoryCount = mIssues.size();
+        fout.println("ISSUE REPOSITORY (" + issueRepositoryCount + ", dirty=" + mIsDirty + ")");
+        for (int i = 0; i < issueRepositoryCount; i++) {
             SafetyCenterIssueKey key = mIssues.keyAt(i);
             IssueData data = mIssues.valueAt(i);
             fout.println("\t[" + i + "] " + toUserFriendlyString(key) + " -> " + data);
@@ -375,7 +375,7 @@ final class SafetyCenterIssueCache {
         if (issueData == null) {
             Log.w(
                     TAG,
-                    "Issue missing when reading from cache for "
+                    "Issue missing when reading from repository for "
                             + reason
                             + ": "
                             + toUserFriendlyString(issueKey));
@@ -396,7 +396,7 @@ final class SafetyCenterIssueCache {
             IssueData issueData = new IssueData(persistedIssue.getFirstSeenAt());
             issueData.setDismissedAt(persistedIssue.getDismissedAt());
             issueData.setDismissCount(persistedIssue.getDismissCount());
-            // TODO(b/259083534): Persist notification dismissal state across reboots
+            issueData.setNotificationDismissedAt(persistedIssue.getNotificationDismissedAt());
             return issueData;
         }
 
@@ -447,8 +447,8 @@ final class SafetyCenterIssueCache {
             return new PersistedSafetyCenterIssue.Builder()
                     .setFirstSeenAt(mFirstSeenAt)
                     .setDismissedAt(mDismissedAt)
-                    .setDismissCount(mDismissCount);
-            // TODO(b/259083534): Persist notification dismissal state across reboots
+                    .setDismissCount(mDismissCount)
+                    .setNotificationDismissedAt(mNotificationDismissedAt);
         }
 
         @Override

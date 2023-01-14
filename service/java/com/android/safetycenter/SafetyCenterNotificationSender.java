@@ -37,6 +37,8 @@ import android.util.Log;
 import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.build.SdkLevel;
+import com.android.safetycenter.data.SafetyCenterIssueRepository;
+import com.android.safetycenter.data.SafetyCenterRepository;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 
 import java.io.PrintWriter;
@@ -91,7 +93,7 @@ final class SafetyCenterNotificationSender {
 
     @NonNull private final SafetyCenterNotificationFactory mNotificationFactory;
 
-    @NonNull private final SafetyCenterIssueCache mIssueCache;
+    @NonNull private final SafetyCenterIssueRepository mSafetyCenterIssueRepository;
 
     @NonNull private final SafetyCenterRepository mSafetyCenterRepository;
 
@@ -103,12 +105,12 @@ final class SafetyCenterNotificationSender {
     SafetyCenterNotificationSender(
             @NonNull Context context,
             @NonNull SafetyCenterNotificationFactory notificationFactory,
-            @NonNull SafetyCenterIssueCache issueCache,
+            @NonNull SafetyCenterIssueRepository safetyCenterIssueRepository,
             @NonNull SafetyCenterRepository safetyCenterRepository,
             @NonNull SafetyCenterConfigReader safetyCenterConfigReader) {
         mContext = context;
         mNotificationFactory = notificationFactory;
-        mIssueCache = issueCache;
+        mSafetyCenterIssueRepository = safetyCenterIssueRepository;
         mSafetyCenterRepository = safetyCenterRepository;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
     }
@@ -184,7 +186,8 @@ final class SafetyCenterNotificationSender {
     private ArrayMap<SafetyCenterIssueKey, SafetySourceIssue> getIssuesToNotify(
             @UserIdInt int userId) {
         ArrayMap<SafetyCenterIssueKey, SafetySourceIssue> result = new ArrayMap<>();
-        List<SafetyCenterIssueKey> allIssueKeys = mIssueCache.getIssuesForUser(userId);
+        List<SafetyCenterIssueKey> allIssueKeys =
+                mSafetyCenterIssueRepository.getIssuesForUser(userId);
 
         for (int i = 0; i < allIssueKeys.size(); i++) {
             SafetyCenterIssueKey issueKey = allIssueKeys.get(i);
@@ -195,7 +198,7 @@ final class SafetyCenterNotificationSender {
             }
 
             // TODO(b/259084807): Consider extracting this policy to a separate class
-            Instant dismissedAt = mIssueCache.getNotificationDismissedAt(issueKey);
+            Instant dismissedAt = mSafetyCenterIssueRepository.getNotificationDismissedAt(issueKey);
             if (dismissedAt != null) {
                 // Issue was previously dismissed and is skipped
                 continue;
