@@ -4,7 +4,7 @@
       "name": "PermissionControllerMockingTests",
       "options": [
         {
-          "include-filter": "com.android.permissioncontroller.tests.mocking.safetylabel.AppsSafetyLabelHistoryPersistenceTest"
+          "include-filter": "com.android.permissioncontroller.tests.mocking.safetylabel"
         }
       ]
     }

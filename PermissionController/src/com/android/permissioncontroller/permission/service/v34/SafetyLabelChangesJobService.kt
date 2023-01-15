@@ -16,8 +16,10 @@
 
 package com.android.permissioncontroller.permission.service.v34
 
+import android.Manifest
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.app.job.JobInfo
 import android.app.job.JobParameters
 import android.app.job.JobScheduler
@@ -28,20 +30,32 @@ import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_BOOT_COMPLETED
 import android.os.Build
+import android.os.UserHandle
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
+import com.android.permission.safetylabel.SafetyLabel
 import com.android.permissioncontroller.Constants.PERIODIC_SAFETY_LABEL_CHANGES_JOB_ID
 import com.android.permissioncontroller.Constants.PERMISSION_REMINDER_CHANNEL_ID
 import com.android.permissioncontroller.Constants.SAFETY_LABEL_CHANGES_JOB_ID
 import com.android.permissioncontroller.Constants.SAFETY_LABEL_CHANGES_NOTIFICATION_ID
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.permission.data.LightInstallSourceInfoLiveData
+import com.android.permissioncontroller.permission.data.SinglePermGroupPackagesUiInfoLiveData
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.Utils.getSystemServiceSafe
+import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory
+import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistoryPersistence
+import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistoryPersistence.getPackagesWithSafetyLabels
+import java.time.Instant
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.yield
 
 /**
  * Runs a monthly job that performs Safety Labels-related tasks, e.g., data policy changes
@@ -49,6 +63,8 @@ import kotlinx.coroutines.launch
  */
 @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
 class SafetyLabelChangesJobService : JobService() {
+    private var mainJobTask: Job? = null
+
     class Receiver : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             if (!KotlinUtils.isSafetyLabelChangeNotificationsEnabled()) {
@@ -82,7 +98,7 @@ class SafetyLabelChangesJobService : JobService() {
     }
 
     private fun dispatchMainJobTask(params: JobParameters) {
-        GlobalScope.launch(Dispatchers.Default) {
+        mainJobTask = GlobalScope.launch(Dispatchers.Default) {
             try {
                 Log.i(LOG_TAG, "Job started")
                 runMainJob()
@@ -96,9 +112,52 @@ class SafetyLabelChangesJobService : JobService() {
         }
     }
 
-    private fun runMainJob() {
+    private suspend fun runMainJob() {
+        initializeSafetyLabels()
         postSafetyLabelChangedNotification()
     }
+
+    private suspend fun initializeSafetyLabels() {
+        val context = PermissionControllerApplication.get() as Context
+        val historyFile = AppsSafetyLabelHistoryPersistence.getSafetyLabelHistoryFile(context)
+
+        val packageNamesWithoutPersistedSafetyLabels: Set<String> =
+            getAllNonPreinstalledPackageNamesRequestingLocation() -
+                getPackagesWithSafetyLabels(historyFile)
+
+        for (packageName in packageNamesWithoutPersistedSafetyLabels) {
+            yield() // cancellation point
+
+            val appMetadataBundle = context.packageManager.getAppMetadata(packageName)
+            val safetyLabel: SafetyLabel =
+                SafetyLabel.getSafetyLabelFromMetadata(appMetadataBundle) ?: continue
+            // TODO(b/264884404): Use install time or last update time for an app for the time a
+            //  safety label is received instead of current time.
+            val safetyLabelForPersistence =
+                AppsSafetyLabelHistory.SafetyLabel.fromAppMetadataSafetyLabel(
+                    packageName, receivedAt = Instant.now(), safetyLabel)
+            // TODO(b/265380622): Add a method to record safety labels in bulk rather than calling
+            //  recordSafetyLabel once per package
+            AppsSafetyLabelHistoryPersistence
+                .recordSafetyLabel(safetyLabelForPersistence, historyFile)
+        }
+    }
+
+    private suspend fun getAllNonPreinstalledPackageNamesRequestingLocation(): Set<String> =
+        getAllPackagesRequestingLocation()
+            .filter { !isPreinstalledPackage(it) }
+            .map { (packageName, _) -> packageName }
+            .toSet()
+
+    private suspend fun getAllPackagesRequestingLocation(): Set<Pair<String, UserHandle>> =
+        SinglePermGroupPackagesUiInfoLiveData[Manifest.permission_group.LOCATION]
+            .getInitializedValue()
+            .keys
+
+    private suspend fun isPreinstalledPackage(pkg: Pair<String, UserHandle>): Boolean =
+        LightInstallSourceInfoLiveData[pkg]
+            .getInitializedValue()
+            .installingPackageName == null
 
     private fun postSafetyLabelChangedNotification() {
         if (hasDataSharingChanged()) {
@@ -109,7 +168,13 @@ class SafetyLabelChangesJobService : JobService() {
         }
     }
 
-    override fun onStopJob(params: JobParameters?): Boolean = true
+    override fun onStopJob(params: JobParameters?): Boolean {
+        runBlocking {
+            mainJobTask?.cancelAndJoin()
+            mainJobTask = null
+        }
+        return true
+    }
 
     private fun hasDataSharingChanged(): Boolean {
         // TODO(b/261663886): Check whether data sharing has changed
@@ -132,9 +197,17 @@ class SafetyLabelChangesJobService : JobService() {
                 .setLocalOnly(true)
                 .setAutoCancel(true)
                 .setSilent(true)
+                .setContentIntent(createIntentToOpenAppDataSharingUpdates(context))
                 .build()
 
         notificationManager.notify(SAFETY_LABEL_CHANGES_NOTIFICATION_ID, notification)
+    }
+
+    private fun createIntentToOpenAppDataSharingUpdates(context: Context): PendingIntent? {
+        return PendingIntent.getActivity(
+            context, 0, Intent(Intent.ACTION_REVIEW_APP_DATA_SHARING_UPDATES),
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
     }
 
     private fun createNotificationChannel(

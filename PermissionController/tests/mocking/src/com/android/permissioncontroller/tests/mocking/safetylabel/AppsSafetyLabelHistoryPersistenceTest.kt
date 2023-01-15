@@ -258,6 +258,32 @@ class AppsSafetyLabelHistoryPersistenceTest {
                     AppSafetyLabelDiff(SAFETY_LABEL_PKG_2_V1, SAFETY_LABEL_PKG_2_V3)))
     }
 
+    @Test
+    fun givenNoPackagesPersisted_getPackagesWithSafetyLabels_returnsNoPackages() {
+        val packageNames = AppsSafetyLabelHistoryPersistence.getPackagesWithSafetyLabels(dataFile)
+
+        assertThat(packageNames).isEmpty()
+    }
+
+    @Test
+    fun givenSomePackagesPersisted_getPackagesWithSafetyLabels_returnsPersistedPackages() {
+        val appsSafetyLabelHistory =
+            AppsSafetyLabelHistory(
+                listOf(
+                    AppSafetyLabelHistory(
+                        AppInfo(PACKAGE_NAME_1),
+                        listOf(SAFETY_LABEL_PKG_1_V1, SAFETY_LABEL_PKG_1_V2)),
+                    AppSafetyLabelHistory(
+                        AppInfo(PACKAGE_NAME_2),
+                        listOf(
+                            SAFETY_LABEL_PKG_2_V1, SAFETY_LABEL_PKG_2_V2, SAFETY_LABEL_PKG_2_V3))))
+        AppsSafetyLabelHistoryPersistence.write(dataFile, appsSafetyLabelHistory)
+
+        val packageNames = AppsSafetyLabelHistoryPersistence.getPackagesWithSafetyLabels(dataFile)
+
+        assertThat(packageNames).isEqualTo(setOf(PACKAGE_NAME_1, PACKAGE_NAME_2))
+    }
+
     companion object {
         private const val TEST_FILE_NAME = "test_safety_label_history_file"
         private const val PACKAGE_NAME_1 = "package_name_1"
