@@ -41,6 +41,8 @@ import androidx.annotation.RequiresApi;
 import com.android.internal.annotations.GuardedBy;
 import com.android.modules.utils.build.SdkLevel;
 import com.android.permission.PermissionStatsLog;
+import com.android.safetycenter.data.SafetyCenterIssueRepository;
+import com.android.safetycenter.data.SafetyCenterRepository;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 
 import java.util.List;
@@ -79,7 +81,7 @@ final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback {
 
     @GuardedBy("mApiLock")
     @NonNull
-    private final SafetyCenterIssueCache mSafetyCenterIssueCache;
+    private final SafetyCenterIssueRepository mSafetyCenterIssueRepository;
 
     SafetyCenterPullAtomCallback(
             @NonNull Context context,
@@ -88,14 +90,14 @@ final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback {
             @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
             @NonNull SafetyCenterRepository safetyCenterRepository,
             @NonNull SafetyCenterDataFactory safetyCenterDataFactory,
-            @NonNull SafetyCenterIssueCache safetyCenterIssueCache) {
+            @NonNull SafetyCenterIssueRepository safetyCenterIssueRepository) {
         mContext = context;
         mApiLock = apiLock;
         mStatsdLogger = statsdLogger;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
         mSafetyCenterRepository = safetyCenterRepository;
         mSafetyCenterDataFactory = safetyCenterDataFactory;
-        mSafetyCenterIssueCache = safetyCenterIssueCache;
+        mSafetyCenterIssueRepository = safetyCenterIssueRepository;
     }
 
     @Override
@@ -153,7 +155,7 @@ final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback {
             return loggableData.getDismissedIssues().size();
         }
         long openIssuesCount = loggableData.getIssues().size();
-        return mSafetyCenterIssueCache.countActiveLoggableIssues(userProfileGroup)
+        return mSafetyCenterIssueRepository.countActiveLoggableIssues(userProfileGroup)
                 - openIssuesCount;
     }
 
@@ -196,7 +198,8 @@ final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback {
     private void writeSafetySourceStateCollectedAtomLocked(
             @NonNull SafetySource safetySource, @UserIdInt int userId, boolean isUserManaged) {
         SafetySourceKey key = SafetySourceKey.of(safetySource.getId(), userId);
-        SafetySourceData safetySourceData = mSafetyCenterRepository.getSafetySourceData(key);
+        SafetySourceData safetySourceData =
+                mSafetyCenterRepository.getSafetySourceDataInternal(key);
         SafetySourceStatus safetySourceStatus =
                 safetySourceData == null ? null : safetySourceData.getStatus();
         List<SafetySourceIssue> safetySourceIssues =
@@ -218,7 +221,7 @@ final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback {
                             .setUserId(userId)
                             .build();
 
-            if (mSafetyCenterIssueCache.isIssueDismissed(
+            if (mSafetyCenterIssueRepository.isIssueDismissed(
                     safetyCenterIssueKey, safetySourceIssue.getSeverityLevel())) {
                 dismissedIssuesCount++;
             } else {

@@ -48,10 +48,12 @@ import javax.annotation.concurrent.NotThreadSafe;
  * A class that reads the {@link SafetyCenterConfig} and allows overriding it for tests.
  *
  * <p>This class isn't thread safe. Thread safety must be handled by the caller.
+ *
+ * @hide
  */
 @RequiresApi(TIRAMISU)
 @NotThreadSafe
-final class SafetyCenterConfigReader {
+public final class SafetyCenterConfigReader {
 
     private static final String TAG = "SafetyCenterConfigReade";
 
@@ -132,7 +134,7 @@ final class SafetyCenterConfigReader {
      * calls will be no-oped).
      */
     @Nullable
-    ExternalSafetySource getExternalSafetySource(@NonNull String safetySourceId) {
+    public ExternalSafetySource getExternalSafetySource(@NonNull String safetySourceId) {
         ExternalSafetySource externalSafetySourceInCurrentConfig =
                 getCurrentConfigInternal().getExternalSafetySources().get(safetySourceId);
         if (externalSafetySourceInCurrentConfig != null) {
@@ -146,7 +148,7 @@ final class SafetyCenterConfigReader {
      * Returns whether the {@code safetySourceId} is associated with an external {@link
      * SafetySource} that is currently active.
      */
-    boolean isExternalSafetySourceActive(@NonNull String safetySourceId) {
+    public boolean isExternalSafetySourceActive(@NonNull String safetySourceId) {
         return getCurrentConfigInternal().getExternalSafetySources().containsKey(safetySourceId);
     }
 
@@ -401,8 +403,12 @@ final class SafetyCenterConfigReader {
         }
     }
 
-    /** A wrapper class around a {@link SafetySource} that is providing data externally. */
-    static final class ExternalSafetySource {
+    /**
+     * A wrapper class around a {@link SafetySource} that is providing data externally.
+     *
+     * @hide
+     */
+    public static final class ExternalSafetySource {
         @NonNull private final SafetySource mSafetySource;
         @NonNull private final boolean mHasEntryInStatelessGroup;
 
@@ -414,7 +420,7 @@ final class SafetyCenterConfigReader {
 
         /** Returns the external {@link SafetySource}. */
         @NonNull
-        SafetySource getSafetySource() {
+        public SafetySource getSafetySource() {
             return mSafetySource;
         }
 
@@ -422,7 +428,7 @@ final class SafetyCenterConfigReader {
          * Returns whether the external {@link SafetySource} has an entry in a stateless {@link
          * SafetySourcesGroup}.
          */
-        boolean hasEntryInStatelessGroup() {
+        public boolean hasEntryInStatelessGroup() {
             return mHasEntryInStatelessGroup;
         }
 

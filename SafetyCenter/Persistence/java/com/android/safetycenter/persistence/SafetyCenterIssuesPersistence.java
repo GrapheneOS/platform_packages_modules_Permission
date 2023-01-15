@@ -63,10 +63,12 @@ public final class SafetyCenterIssuesPersistence {
     private static final String ATTRIBUTE_FIRST_SEEN_AT = "first_seen_at_epoch_millis";
     private static final String ATTRIBUTE_DISMISSED_AT = "dismissed_at_epoch_millis";
     private static final String ATTRIBUTE_DISMISS_COUNT = "dismiss_count";
+    private static final String ATTRIBUTE_NOTIFICATION_DISMISSED_AT =
+            "notification_dismissed_at_epoch_millis";
 
     private static final int NO_VERSION = -1;
-    private static final int CURRENT_VERSION = 1;
-    private static final int COMPATIBLE_VERSION = 0;
+    private static final int CURRENT_VERSION = 2;
+    private static final int MIN_COMPATIBLE_VERSION = 0;
 
     private SafetyCenterIssuesPersistence() {}
 
@@ -129,7 +131,7 @@ public final class SafetyCenterIssuesPersistence {
         if (version == NO_VERSION) {
             throw new PersistenceException("Missing version");
         }
-        if (version != CURRENT_VERSION && version != COMPATIBLE_VERSION) {
+        if (version > CURRENT_VERSION || version < MIN_COMPATIBLE_VERSION) {
             throw new PersistenceException("Unsupported version: " + version);
         }
 
@@ -173,6 +175,10 @@ public final class SafetyCenterIssuesPersistence {
                         throw attributeInvalid(
                                 parser.getAttributeValue(i), parser.getAttributeName(i), e);
                     }
+                    break;
+                case ATTRIBUTE_NOTIFICATION_DISMISSED_AT:
+                    builder.setNotificationDismissedAt(
+                            parseInstant(parser.getAttributeValue(i), parser.getAttributeName(i)));
                     break;
                 default:
                     throw attributeUnexpected(parser.getAttributeName(i));
@@ -295,6 +301,14 @@ public final class SafetyCenterIssuesPersistence {
             int dismissCount = persistedSafetyCenterIssue.getDismissCount();
             if (dismissCount > 0) {
                 serializer.attribute(null, ATTRIBUTE_DISMISS_COUNT, Integer.toString(dismissCount));
+            }
+            Instant notificationDismissedAt =
+                    persistedSafetyCenterIssue.getNotificationDismissedAt();
+            if (notificationDismissedAt != null) {
+                serializer.attribute(
+                        null,
+                        ATTRIBUTE_NOTIFICATION_DISMISSED_AT,
+                        Long.toString(notificationDismissedAt.toEpochMilli()));
             }
             serializer.endTag(null, TAG_ISSUE);
         }

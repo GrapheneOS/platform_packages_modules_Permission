@@ -71,6 +71,18 @@ class SafetyCenterIssuesPersistenceWriteTest {
                             .setFirstSeenAt(Instant.ofEpochMilli(1654128000000))
                             .setDismissedAt(Instant.ofEpochMilli(1654214400000))
                             .setDismissCount(10)
+                            .build(),
+                        PersistedSafetyCenterIssue.Builder()
+                            .setKey("key4")
+                            .setFirstSeenAt(Instant.ofEpochMilli(1654128000000))
+                            .setDismissedAt(Instant.ofEpochMilli(1654214400000))
+                            .setNotificationDismissedAt(Instant.ofEpochMilli(1654214400000))
+                            .setDismissCount(1)
+                            .build(),
+                        PersistedSafetyCenterIssue.Builder()
+                            .setKey("key5")
+                            .setFirstSeenAt(Instant.ofEpochMilli(1654128000000))
+                            .setNotificationDismissedAt(Instant.ofEpochMilli(1654214400000))
                             .build())))
     }
 }

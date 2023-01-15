@@ -138,6 +138,8 @@
                 minSdkVersion="33"/>
             <permission name="android.permission.SUBSCRIBE_TO_KEYGUARD_LOCKED_STATE"
                 minSdkVersion="33" />
+            <permission name="android.permission.EXECUTE_APP_ACTION"
+                minSdkVersion="34" />
         </permissions>
         <app-op-permissions>
             <app-op-permission name="android.permission.SYSTEM_ALERT_WINDOW" />

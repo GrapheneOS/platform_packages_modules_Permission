@@ -76,15 +76,22 @@ import javax.annotation.concurrent.NotThreadSafe;
  * encoded and provides a better-typed interface for other classes to call.
  *
  * <p>This class isn't thread safe. Thread safety must be handled by the caller.
+ *
+ * @hide
  */
 @RequiresApi(TIRAMISU)
 @NotThreadSafe
-final class StatsdLogger {
+public final class StatsdLogger {
 
     private static final String TAG = "StatsdLogger";
     private static final long UNSET_SOURCE_ID = 0;
     private static final long UNSET_ISSUE_TYPE_ID = 0;
 
+    /**
+     * The different results for a system event reported by Safety Center.
+     *
+     * @hide
+     */
     @IntDef(
             prefix = {"SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__"},
             value = {
@@ -93,7 +100,7 @@ final class StatsdLogger {
                 SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__TIMEOUT
             })
     @Retention(RetentionPolicy.SOURCE)
-    @interface SystemEventResult {}
+    public @interface SystemEventResult {}
 
     @NonNull private final Context mContext;
     @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
@@ -196,7 +203,7 @@ final class StatsdLogger {
      * Writes a {@link PermissionStatsLog#SAFETY_CENTER_SYSTEM_EVENT_REPORTED} atom of type {@code
      * INLINE_ACTION}.
      */
-    void writeInlineActionSystemEvent(
+    public void writeInlineActionSystemEvent(
             @NonNull String sourceId,
             @UserIdInt int userId,
             @Nullable String issueTypeId,
@@ -220,7 +227,7 @@ final class StatsdLogger {
      * successful}.
      */
     @SystemEventResult
-    static int toSystemEventResult(boolean success) {
+    public static int toSystemEventResult(boolean success) {
         return success
                 ? SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__SUCCESS
                 : SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__ERROR;
