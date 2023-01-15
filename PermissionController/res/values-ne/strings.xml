@@ -223,8 +223,10 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> र अन्य <xliff:g id="NUMBER">%2$s</xliff:g> अनुमतिहरू हटाइए"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"प्रयोग नगरिएका एपहरू"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"कुनै एप केही महिनादेखि चलाइएको छैन भने:\n\n• तपाईंको डेटा सुरक्षित राख्न उक्त एपलाई दिइएका अनुमतिहरू रद्द गरिन्छन्\n• ब्याट्री बचत गर्न सूचनाहरू बन्द गरिन्छन्\n• ठाउँ खाली गर्न अस्थायी फाइलहरू हटाइन्छन्\n\nसो एपलाई फेरि ती अनुमतिहरू दिन र सो एपबाट सूचनाहरू प्राप्त गर्न सो एप खोल्नुहोस्।"</string>
-    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"कुनै एप केही महिनादेखि चलाइएको छैन भने:\n\n• तपाईंको डेटा सुरक्षित राख्न उक्त एपलाई दिइएका अनुमति रद्द गरिन्छन्\n• ठाउँ खाली गर्न अस्थायी फाइलहरू हटाइन्छन्\n\nउक्त एपलाई फेरि ती अनुमति दिन र सो एपबाट सूचनाहरू प्राप्त गर्न सो एप खोल्नुहोस्।"</string>
-    <string name="last_opened_category_title" msgid="7871347400611202595">"पछिल्लो पटक <xliff:g id="NUMBER">%s</xliff:g> महिनाभन्दा पहिले प्रयोग गरिएको"</string>
+    <!-- no translation found for unused_apps_page_tv_summary (2624911608663778308) -->
+    <skip />
+    <!-- no translation found for last_opened_category_title (8796557894614236128) -->
+    <skip />
     <string name="last_opened_summary" msgid="5248984030024968808">"यो एप पछिल्लो पटक <xliff:g id="DATE">%s</xliff:g> मा खोलिएको थियो"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"पछिल्लो पटक <xliff:g id="DATE">%s</xliff:g> मा खोलिएको थियो"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"तपाईंले सबै फाइलहरू व्यवस्थापन गर्ने अनुमति दिनुभयो भने यो एपले यस डिभाइस वा यस डिभाइससँग कनेक्ट गरिएका अन्य डिभाइसको साझा भण्डारणमा भएका सबै फाइलहरू प्रयोग गर्न, परिमार्जन गर्न र मेटाउन सक्छ। यो एपले तपाईंलाई जानकारी नदिइकन ‌फाइलहरू प्रयोग गर्न सक्छ।"</string>
@@ -402,14 +404,10 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> लाई तपाईंका सूचना हेर्ने र कनेक्ट भएको डिभाइसमा तपाईंका एपहरू स्ट्रिम गर्ने अनुमति दिइने छ।"</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> लाई नजिकैका डिभाइसहरूमा सामग्री स्ट्रिम गर्ने अनुमति दिइने छ।"</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"तपाईं यो सेवाका सहायताले अन्य डिभाइससँग आफ्नो फोनमा भएका फोटो, मिडिया र सूचनाहरू सेयर गर्न सक्नुहुन्छ।"</string>
-    <!-- no translation found for role_notes_label (7694668779088299905) -->
-    <skip />
-    <!-- no translation found for role_notes_short_label (6617887820096092689) -->
-    <skip />
-    <!-- no translation found for role_notes_description (8486216423668803751) -->
-    <skip />
-    <!-- no translation found for role_notes_search_keywords (7710756695666744631) -->
-    <skip />
+    <string name="role_notes_label" msgid="7694668779088299905">"नोट बनाउने डिफल्ट एप"</string>
+    <string name="role_notes_short_label" msgid="6617887820096092689">"नोट बनाउने एप"</string>
+    <string name="role_notes_description" msgid="8486216423668803751">"तपाईंलाई नोट बनाउन दिने एपहरू"</string>
+    <string name="role_notes_search_keywords" msgid="7710756695666744631">"नोटहरू"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"हालको डिफल्ट एप"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"फेरि नसोध्नुहोस्"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"डिफल्ट सेट गर्नुहोस्"</string>
@@ -464,7 +462,7 @@
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"सहायक ट्रिगर भएको पत्ता लागेमा देखाउनुहोस्"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"आवाज सहायक सक्रिय गर्न माइक्रोफोनको प्रयोग गरिँदा स्टाटस बारमा आइकन देखाउनुहोस्"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई आफ्नो डिभाइसका फोटो र मिडियामाथि पहुँच राख्न दिने हो?"</string>
-    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई सम्पर्क ठेगानाको सूची प्रयोग गर्न दिने हो?"</string>
+    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई कन्ट्याक्ट प्रयोग गर्न दिने हो?"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;लाई यो डिभाइसको लोकेसन प्रयोग दिने हो?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"तपाईंले एप प्रयोग गरिरहेका बेला मात्र उक्त एपले स्थानमाथि पहुँच राख्न सक्ने छ"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;लाई यो डिभाइसको लोकेसन प्रयोग दिने हो?"</string>

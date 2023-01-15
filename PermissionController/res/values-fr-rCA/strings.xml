@@ -223,8 +223,10 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"L\'autorisation <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> et <xliff:g id="NUMBER">%2$s</xliff:g> autres ont été supprimées"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Applications non utilisées"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Si une application n\'est pas utilisée pendant quelques mois :\n\n• Les autorisations sont retirées pour protéger vos données.\n• Les notifications sont arrêtées pour économiser la pile.\n• Les fichiers temporaires sont retirés pour libérer de l\'espace de stockage.\n\nPour permettre d\'accéder de nouveau aux autorisations et aux notifications, ouvrez l\'application."</string>
-    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Si une application n\'est pas utilisée pendant quelques mois :\n\n• Les autorisations sont retirées pour protéger vos données.\n• Les fichiers temporaires sont retirés pour libérer de l\'espace de stockage.\n\nPour réactiver les autorisations, ouvrez l\'application."</string>
-    <string name="last_opened_category_title" msgid="7871347400611202595">"Dernière ouverture : il y a plus de <xliff:g id="NUMBER">%s</xliff:g> mois"</string>
+    <!-- no translation found for unused_apps_page_tv_summary (2624911608663778308) -->
+    <skip />
+    <!-- no translation found for last_opened_category_title (8796557894614236128) -->
+    <skip />
     <string name="last_opened_summary" msgid="5248984030024968808">"Dernière ouverture de l\'application le <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Dernière ouverture : <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Si vous autorisez la gestion de tous les fichiers, cette application pourra accéder à tous les fichiers enregistrés dans l\'espace de stockage partagé sur cet appareil ou sur des appareils de stockage connectés, les modifier et les supprimer. L\'application pourra accéder à des fichiers sans vous demander la permission."</string>
@@ -402,14 +404,10 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> aura l\'autorisation d\'interagir avec vos notifications et de diffuser vos applications à l\'appareil connecté."</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> pourra diffuser du contenu en continu sur les appareils à proximité."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Ce service partage vos photos, vos contenus multimédias et vos notifications de votre téléphone vers d\'autres appareils."</string>
-    <!-- no translation found for role_notes_label (7694668779088299905) -->
-    <skip />
-    <!-- no translation found for role_notes_short_label (6617887820096092689) -->
-    <skip />
-    <!-- no translation found for role_notes_description (8486216423668803751) -->
-    <skip />
-    <!-- no translation found for role_notes_search_keywords (7710756695666744631) -->
-    <skip />
+    <string name="role_notes_label" msgid="7694668779088299905">"Appli prise de notes par défaut"</string>
+    <string name="role_notes_short_label" msgid="6617887820096092689">"Application de prise de notes"</string>
+    <string name="role_notes_description" msgid="8486216423668803751">"Applications permettant de prendre des notes"</string>
+    <string name="role_notes_search_keywords" msgid="7710756695666744631">"remarques"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Application par défaut actuelle"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Ne plus me demander"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Définir par défaut"</string>

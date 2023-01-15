@@ -223,8 +223,10 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Разрешението за <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> и още <xliff:g id="NUMBER">%2$s</xliff:g> са премахнати"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Неизползвани приложения"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Ако дадено приложение не бъде използвано няколко месеца:\n\n• разрешенията ще бъдат премахнати с цел защита на данните ви;\n• известията ще бъдат спрени с цел икономия на батерията;\n• временните файлове ще бъдат премахнати, за да се освободи място.\n\nЗа да предоставите отново разрешенията и да позволите известията, отворете приложението."</string>
-    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Ако дадено приложение не бъде използвано няколко месеца:\n\n• разрешенията ще бъдат премахнати с цел защита на данните ви;\n• временните файлове ще бъдат премахнати, за да се освободи място.\n\nЗа да предоставите отново разрешенията, отворете приложението."</string>
-    <string name="last_opened_category_title" msgid="7871347400611202595">"Последно отваряне преди повече от <xliff:g id="NUMBER">%s</xliff:g> месеца"</string>
+    <!-- no translation found for unused_apps_page_tv_summary (2624911608663778308) -->
+    <skip />
+    <!-- no translation found for last_opened_category_title (8796557894614236128) -->
+    <skip />
     <string name="last_opened_summary" msgid="5248984030024968808">"Приложението е отворено за последно на <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Последно отваряне на <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Ако разрешите управлението на всички файлове, това приложение може да осъществява достъп до, да променя и изтрива всички файлове в стандартното хранилище на устройството или в свързаните хранилища. Приложението може да осъществява достъп до файловете, без да ви пита."</string>
@@ -402,14 +404,10 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> ще получи разрешение да взаимодейства с известията ви и да предава поточно приложенията ви към свързаните устройства."</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> ще получи разрешение за поточно предаване на съдържание към устройства в близост."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Тази услуга споделя вашите снимки, мултимедия и известия от телефона ви на други устройства."</string>
-    <!-- no translation found for role_notes_label (7694668779088299905) -->
-    <skip />
-    <!-- no translation found for role_notes_short_label (6617887820096092689) -->
-    <skip />
-    <!-- no translation found for role_notes_description (8486216423668803751) -->
-    <skip />
-    <!-- no translation found for role_notes_search_keywords (7710756695666744631) -->
-    <skip />
+    <string name="role_notes_label" msgid="7694668779088299905">"Основно приложение за бележки"</string>
+    <string name="role_notes_short_label" msgid="6617887820096092689">"Приложение за бележки"</string>
+    <string name="role_notes_description" msgid="8486216423668803751">"Приложения за водене на бележки"</string>
+    <string name="role_notes_search_keywords" msgid="7710756695666744631">"бележки"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Текущо стандартно приложение"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Без повторно питане"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Задаване"</string>

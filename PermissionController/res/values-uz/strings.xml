@@ -223,8 +223,8 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> va yana <xliff:g id="NUMBER">%2$s</xliff:g> ta ruxsat olib tashlandi"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Ishlatilmagan ilovalar"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Ilova bir necha oy ishlatilmasa:\n\n• Maxfiyligingizni himoyalash uchun ruxsatlar bekor qilinadi\n• Batareyani tejash uchun bildirishnomalar toʻxtatiladi\n• Boʻsh joy ochish uchun vaqtinchalik fayllar tozalab tashlanadi\n\nRuxsat va bildirishnomalarga yana ruxsat berish uchun ilovani oching."</string>
-    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Ilova bir necha oy ishlatilmasa:\n\n• Maxfiyligingizni himoyalash uchun ruxsatlar bekor qilinadi\n• Boʻsh joy ochish uchun vaqtinchalik fayllar tozalab tashlanadi\n\nRuxsatlarni qayta berish uchun ilovani oching."</string>
-    <string name="last_opened_category_title" msgid="7871347400611202595">"Oxirgi marta <xliff:g id="NUMBER">%s</xliff:g> oy oldin ochilgan"</string>
+    <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"Ilova bir oy ishlatilmasa:\n\n• Maxfiyligingizni himoyalash uchun ruxsatlar bekor qilinadi\n• Boʻsh joy ochish uchun vaqtinchalik fayllar tozalab tashlanadi\n\nRuxsatlarni qayta berish uchun ilovani oching."</string>
+    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Oxirgi marta # oy oldinroq ochilgan}other{Oxirgi marta # oy oldinroq ochilgan}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Ilova oxirgi marta ochilgan: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Oxirgi marta ochilgan: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Barcha fayllarni boshqarishga ruxsat berilsa, ilova bu qurilmadagi yoki ulangan xotira omborlaridagi barcha fayllarni ochishi, tahrirlashi yoki oʻchirib tashlashi mumkin. Ilova fayllar bilan sizga xabar qilmay ishlay oladi."</string>
@@ -402,14 +402,10 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> ilovasiga bildirishnomalar bilan ishlash va ulangan qurilmalarga ilovalarni translatsiya qilishga ruxsat beriladi"</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> ilovasiga yaqin-atrofdagi qurilmalarga kontent uzatish ruxsati beriladi."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Bu xizmat telefoningizdagi suratlar, media va bildirishnomalarni boshqa qurilmalarga ulashadi."</string>
-    <!-- no translation found for role_notes_label (7694668779088299905) -->
-    <skip />
-    <!-- no translation found for role_notes_short_label (6617887820096092689) -->
-    <skip />
-    <!-- no translation found for role_notes_description (8486216423668803751) -->
-    <skip />
-    <!-- no translation found for role_notes_search_keywords (7710756695666744631) -->
-    <skip />
+    <string name="role_notes_label" msgid="7694668779088299905">"Birlamchi qayd yozish ilovasi"</string>
+    <string name="role_notes_short_label" msgid="6617887820096092689">"Qayd yozish ilovasi"</string>
+    <string name="role_notes_description" msgid="8486216423668803751">"Qaydlar yozish imkonini beruvchi ilovalar"</string>
+    <string name="role_notes_search_keywords" msgid="7710756695666744631">"qaydlar"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Hozirda asosiy ilova"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Boshqa soʻralmasin"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Birlamchi deb belgilash"</string>

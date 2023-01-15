@@ -223,8 +223,10 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> och <xliff:g id="NUMBER">%2$s</xliff:g> andra behörigheter har tagits bort"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Appar som inte används"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Följande händer om en app inte används på några månader:\n\n• Behörigheter tas bort för att skydda din data\n• Aviseringar stoppas för att spara batteri\n• Tillfälliga filer tas bort för att frigöra lagringsutrymme\n\nÖppna appen om du vill ge behörigheter och tillåta aviseringar på nytt."</string>
-    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Följande händer om en app inte används på några månader:\n\n• Behörigheter tas bort för att skydda din data\n• Tillfälliga filer tas bort för att frigöra lagringsutrymme\n\nÖppna appen om du vill ge behörigheter på nytt."</string>
-    <string name="last_opened_category_title" msgid="7871347400611202595">"Öppnades senast för över <xliff:g id="NUMBER">%s</xliff:g> månader sedan"</string>
+    <!-- no translation found for unused_apps_page_tv_summary (2624911608663778308) -->
+    <skip />
+    <!-- no translation found for last_opened_category_title (8796557894614236128) -->
+    <skip />
     <string name="last_opened_summary" msgid="5248984030024968808">"Appen öppnades senast den <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Öppnades senast <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Om du tillåter hantering av alla filer kan appen komma åt, redigera och radera alla filer i det vanliga lagringsutrymmet på denna enhet eller anslutna lagringsenheter. Appen kan komma åt filer utan att du tillfrågas."</string>
@@ -352,7 +354,7 @@
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"De här apparna får visa din skärm, dina åtgärder och inmatningar, utföra åtgärder och styra skärmen."</string>
     <string name="role_assistant_label" msgid="4727586018198208128">"Digital assistentapp, standard"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Digital assistentapp"</string>
-    <string name="role_assistant_description" msgid="6622458130459922952">"Med assistentappar kan du få hjälp av som baseras på den information som visas på den aktuella skärmen. Vissa appar har stöd för både översikts- och röstinmatningstjänster för att hjälpa dig."</string>
+    <string name="role_assistant_description" msgid="6622458130459922952">"Med assistentappar kan du få hjälp som baseras på den information som visas på den aktuella skärmen. Vissa appar har stöd för både översikts- och röstinmatningstjänster för att hjälpa dig."</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Standard webbläsarapp"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Webbläsarapp"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Appar som visar länkar du trycker på och du använder för att ansluta till internet"</string>
@@ -402,14 +404,10 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> får behörighet att interagera med dina aviseringar och streama dina appar till den anslutna enheten."</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> får tillåtelse att streama innehåll till enheter i närheten."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Den här tjänsten delar dina foton, videor och aviseringar på telefonen med andra enheter."</string>
-    <!-- no translation found for role_notes_label (7694668779088299905) -->
-    <skip />
-    <!-- no translation found for role_notes_short_label (6617887820096092689) -->
-    <skip />
-    <!-- no translation found for role_notes_description (8486216423668803751) -->
-    <skip />
-    <!-- no translation found for role_notes_search_keywords (7710756695666744631) -->
-    <skip />
+    <string name="role_notes_label" msgid="7694668779088299905">"Standardapp för anteckningar"</string>
+    <string name="role_notes_short_label" msgid="6617887820096092689">"App för anteckningar"</string>
+    <string name="role_notes_description" msgid="8486216423668803751">"Appar som du kan ta anteckningar med"</string>
+    <string name="role_notes_search_keywords" msgid="7710756695666744631">"anteckningar"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Nuvarande standardapp"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Fråga inte igen"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Ange som standard"</string>

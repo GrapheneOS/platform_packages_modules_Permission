@@ -223,8 +223,10 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"اجازه <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> و <xliff:g id="NUMBER">%2$s</xliff:g> اجازه دیگر برداشته شده است"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"برنامه‌های استفاده‌نشده"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"اگر چند ماه از برنامه‌ای استفاده نشود:\n\n• اجازه‌ها برای محافظت از داده‌های شما حذف می‌شوند\n• اعلان‌ها برای صرفه‌جویی در مصرف باتری متوقف می‌شوند\n• فایل‌های موقت برای آزادسازی فضا حذف می‌شوند\n\nبرای اینکه اجازه‌ها و اعلان‌ها دوباره مجاز شود، برنامه را باز کنید."</string>
-    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"اگر چند ماه از برنامه‌ای استفاده نشود:\n\n• اجازه‌ها برای محافظت از داده‌های شما برداشته می‌شوند\n• فایل‌های موقت برای آزادسازی فضا برداشته می‌شوند\n\nبرای موافقت کردن دوباره با اجازه‌ها، برنامه را باز کنید."</string>
-    <string name="last_opened_category_title" msgid="7871347400611202595">"آخرین باری که باز شده: بیش‌از <xliff:g id="NUMBER">%s</xliff:g> ماه قبل"</string>
+    <!-- no translation found for unused_apps_page_tv_summary (2624911608663778308) -->
+    <skip />
+    <!-- no translation found for last_opened_category_title (8796557894614236128) -->
+    <skip />
     <string name="last_opened_summary" msgid="5248984030024968808">"آخرین باری که برنامه باز شده: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"آخرین باری که باز شده: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"اگر مدیریت همه فایل‌ها را مجاز کنید، این برنامه می‌تواند به همه فایل‌های موجود در فضای ذخیره‌سازی استاندارد این دستگاه یا دستگاه‌های ذخیره‌سازی متصل دسترسی داشته باشد، آن‌ها را تغییر دهد، و حذف کند. این برنامه ممکن است بدون سؤال کردن از شما به فایل‌ها دسترسی پیدا کند."</string>
@@ -402,14 +404,10 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> می‌تواند با اعلان‌های شما تعامل داشته باشد و برنامه‌هایتان را در دستگاه متصل جاری‌سازی کند."</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> می‌تواند محتوا را در دستگاه‌های اطراف جاری‌سازی کند."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"این سرویس عکس‌ها، رسانه‌ها، و اعلان‌های تلفنتان را با دستگاه‌های دیگر هم‌رسانی می‌کند."</string>
-    <!-- no translation found for role_notes_label (7694668779088299905) -->
-    <skip />
-    <!-- no translation found for role_notes_short_label (6617887820096092689) -->
-    <skip />
-    <!-- no translation found for role_notes_description (8486216423668803751) -->
-    <skip />
-    <!-- no translation found for role_notes_search_keywords (7710756695666744631) -->
-    <skip />
+    <string name="role_notes_label" msgid="7694668779088299905">"برنامه یادداشت‌برداری پیش‌فرض"</string>
+    <string name="role_notes_short_label" msgid="6617887820096092689">"برنامه یادداشت‌برداری"</string>
+    <string name="role_notes_description" msgid="8486216423668803751">"برنامه‌هایی که به شما اجازه می‌دهند یادداشت‌برداری کنید"</string>
+    <string name="role_notes_search_keywords" msgid="7710756695666744631">"یادداشت"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"برنامه پیش‌فرض کنونی"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"دوباره سؤال نشود"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"تنظیم برای پیش‌فرض"</string>

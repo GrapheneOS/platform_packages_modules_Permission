@@ -223,8 +223,10 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"ລຶບສິດອະນຸຍາດ <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ແລະ ອີກ <xliff:g id="NUMBER">%2$s</xliff:g> ແອັບອອກແລ້ວ"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"ແອັບທີ່ບໍ່ໄດ້ໃຊ້"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"ຫາກບໍ່ໄດ້ໃຊ້ແອັບໃດໜຶ່ງເປັນເວລາສອງສາມເດືອນ:\n\n• ການອະນຸຍາດຈະຖືກລຶບອອກເພື່ອປົກປ້ອງຂໍ້ມູນຂອງທ່ານ\n• ການແຈ້ງເຕືອນຈະຢຸດເຮັດວຽກເພື່ອປະຢັດແບັດເຕີຣີ\n• ໄຟລ໌ຊົ່ວຄາວຈະຖືກລຶບອອກເພື່ອສ້າງພື້ນທີ່ຫວ່າງ\n\nໃຫ້ເປີດແອັບຂຶ້ນມາເພື່ອໃຫ້ການອະນຸຍາດ ແລະ ການແຈ້ງເຕືອນຄືນໃໝ່."</string>
-    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"ຫາກບໍ່ໄດ້ໃຊ້ແອັບໃດໜຶ່ງເປັນເວລາສອງສາມເດືອນ:\n\n• ການອະນຸຍາດຈະຖືກລຶບອອກເພື່ອປົກປ້ອງຂໍ້ມູນຂອງທ່ານ\n• ໄຟລ໌ຊົ່ວຄາວຈະຖືກລຶບອອກເພື່ອສ້າງພື້ນທີ່ຫວ່າງ\n\nເພື່ອໃຫ້ການອະນຸຍາດອີກເທື່ອໜຶ່ງ, ໃຫ້ເປີດແອັບຂຶ້ນມາ."</string>
-    <string name="last_opened_category_title" msgid="7871347400611202595">"ເປີດຫຼ້າສຸດຫຼາຍກວ່າ <xliff:g id="NUMBER">%s</xliff:g> ເດືອນກ່ອນ"</string>
+    <!-- no translation found for unused_apps_page_tv_summary (2624911608663778308) -->
+    <skip />
+    <!-- no translation found for last_opened_category_title (8796557894614236128) -->
+    <skip />
     <string name="last_opened_summary" msgid="5248984030024968808">"ເປີດແອັບຫຼ້າສຸດເມື່ອ <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"ເປີດຫຼ້າສຸດ <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"ຫາກທ່ານອະນຸຍາດໃຫ້ມີການຈັດການທຸກໄຟລ໌ໄດ້, ແອັບນີ້ຈະສາມາດເຂົ້າເຖິງ, ແກ້ໄຂ ແລະ ລຶບໄຟລ໌ໃດກໍຕາມໃນບ່ອນຈັດເກັບຂໍ້ມູນທົ່ວໄປຢູ່ອຸປະກອນນີ້ ຫຼື ອຸປະກອນບ່ອນຈັດເກັບຂໍ້ມູນທີ່ເຊື່ອມຕໍ່ໄວ້. ແອັບອາດເຂົ້າເຖິງໄຟລ໌ໂດຍບໍ່ຕ້ອງຖາມທ່ານ."</string>
@@ -402,14 +404,10 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> ຈະໄດ້ຮັບອະນຸຍາດໃຫ້ໂຕ້ຕອບກັບການແຈ້ງເຕືອນຂອງທ່ານ ແລະ ສະຕຣີມແອັບຂອງທ່ານຫາອຸປະກອນທີ່ເຊື່ອມແລ້ວໄດ້."</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> ຈະໄດ້ຮັບອະນຸຍາດໃຫ້ສະຕຣີມເນື້ອຫາໄປຫາອຸປະກອນທີ່ຢູ່ໃກ້ຄຽງ."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"ບໍລິການນີ້ຈະແບ່ງປັນຮູບພາບ, ມີເດຍ ແລະ ການແຈ້ງເຕືອນຂອງທ່ານຈາກໂທລະສັບທ່ານໄປຫາອຸປະກອນອື່ນ."</string>
-    <!-- no translation found for role_notes_label (7694668779088299905) -->
-    <skip />
-    <!-- no translation found for role_notes_short_label (6617887820096092689) -->
-    <skip />
-    <!-- no translation found for role_notes_description (8486216423668803751) -->
-    <skip />
-    <!-- no translation found for role_notes_search_keywords (7710756695666744631) -->
-    <skip />
+    <string name="role_notes_label" msgid="7694668779088299905">"ແອັບຈົດບັນທຶກເລີ່ມຕົ້ນ"</string>
+    <string name="role_notes_short_label" msgid="6617887820096092689">"ແອັບຈົດບັນທຶກ"</string>
+    <string name="role_notes_description" msgid="8486216423668803751">"ແອັບທີ່ເຮັດໃຫ້ທ່ານສາມາດຈົດບັນທຶກໄດ້"</string>
+    <string name="role_notes_search_keywords" msgid="7710756695666744631">"ບັນທຶກ"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"ຄ່າເລີ່ມຕົ້ນປັດຈຸບັນ"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"ບໍ່ຕ້ອງຖາມອີກ"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"ຕັ້ງເປັນຄ່າເລີ່ມຕົ້ນ"</string>
