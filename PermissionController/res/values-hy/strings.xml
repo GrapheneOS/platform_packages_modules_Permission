@@ -43,7 +43,7 @@
     <string name="permission_revoked_none" msgid="9213345075484381180">"ոչինչ չի չեղարկվել"</string>
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Թույլատրել"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Միշտ թույլատրել"</string>
-    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Հավելվածի օգտագործման ժամանակ"</string>
+    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Հավելվածն օգտագործելիս"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Միացնել ճշգրիտ տեղադրությունը"</string>
     <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Չանջատել մոտավոր տեղորոշումը"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Միայն այս անգամ"</string>

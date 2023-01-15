@@ -43,7 +43,7 @@
     <string name="permission_revoked_none" msgid="9213345075484381180">"нічого не скасовано"</string>
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Дозволити"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Завжди дозволяти"</string>
-    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Під час використання додатка"</string>
+    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Коли додаток використовується"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Змінити на точне місцезнаходження"</string>
     <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Залишити приблизне місцезнаходження"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Лише цього разу"</string>
