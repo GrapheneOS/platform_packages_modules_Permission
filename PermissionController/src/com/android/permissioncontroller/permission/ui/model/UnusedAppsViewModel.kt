@@ -57,7 +57,7 @@ class UnusedAppsViewModel(private val app: Application, private val sessionId: L
 
     companion object {
         private val MAX_UNUSED_PERIOD_MILLIS =
-            UnusedPeriod.allPeriods.maxOrNull()!!.duration.inWholeMilliseconds
+            UnusedPeriod.allPeriods.maxByOrNull(UnusedPeriod::duration)!!.duration.inWholeMilliseconds
         private val LOG_TAG = AppPermissionViewModel::class.java.simpleName
     }
 
