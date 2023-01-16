@@ -124,6 +124,8 @@ final class SafetyCenterNotificationFactory {
         intent.putExtra(EXTRA_SAFETY_SOURCE_ID, issueKey.getSafetySourceId());
         intent.putExtra(EXTRA_SAFETY_SOURCE_ISSUE_ID, issueKey.getSafetySourceIssueId());
         intent.putExtra(EXTRA_SAFETY_SOURCE_USER_HANDLE, UserHandle.of(issueKey.getUserId()));
+        // This extra is defined in the PermissionController APK, cannot be referenced directly:
+        intent.putExtra("navigation_source_intent_extra", "NOTIFICATION");
         return PendingIntentFactory.getActivityPendingIntent(
                 mContext, OPEN_SAFETY_CENTER_REQUEST_CODE, intent, PendingIntent.FLAG_IMMUTABLE);
     }
