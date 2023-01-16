@@ -22,6 +22,7 @@ import android.content.Intent.ACTION_SAFETY_CENTER
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.safetycenter.cts.testing.SafetyCenterFlags
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
+import android.safetycenter.cts.testing.SettingsPackage.getSettingsPackageName
 import android.support.test.uiautomator.By
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -56,12 +57,12 @@ class SafetyCenterActivityTest {
     }
 
     @Test
-    fun launchActivity_withFlagDisabled_showsSettingsTitle() {
+    fun launchActivity_withFlagDisabled_opensSettings() {
         SafetyCenterFlags.setSafetyCenterEnabled(false)
 
         startSafetyCenterActivity()
 
-        waitFindObject(By.text("Settings"))
+        waitFindObject(By.pkg(context.getSettingsPackageName()))
     }
 
     private fun startSafetyCenterActivity() {
