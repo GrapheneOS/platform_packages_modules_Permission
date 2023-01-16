@@ -62,7 +62,9 @@ import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.DYNAMI
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.ISSUE_ONLY_ALL_OPTIONAL_ID
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.ISSUE_ONLY_ALL_PROFILE_SOURCE_ID
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.ISSUE_ONLY_BAREBONE_ID
+import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.ISSUE_ONLY_GROUP_ID
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.ISSUE_ONLY_IN_STATELESS_ID
+import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.MIXED_STATELESS_GROUP_ID
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SINGLE_SOURCE_ALL_PROFILE_ID
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SINGLE_SOURCE_GROUP_ID
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SINGLE_SOURCE_ID
@@ -119,18 +121,32 @@ class SafetyCenterMultiUsersTest {
 
     private val primaryProfileOnlyIssues =
         listOf(
-            safetyCenterTestData.safetyCenterIssueCritical(DYNAMIC_BAREBONE_ID),
+            safetyCenterTestData.safetyCenterIssueCritical(
+                DYNAMIC_BAREBONE_ID,
+                groupId = DYNAMIC_GROUP_ID
+            ),
             safetyCenterTestData.safetyCenterIssueCritical(
                 ISSUE_ONLY_BAREBONE_ID,
-                attributionTitle = null
+                attributionTitle = null,
+                groupId = ISSUE_ONLY_GROUP_ID
             ),
-            safetyCenterTestData.safetyCenterIssueRecommendation(DYNAMIC_DISABLED_ID),
+            safetyCenterTestData.safetyCenterIssueRecommendation(
+                DYNAMIC_DISABLED_ID,
+                groupId = DYNAMIC_GROUP_ID
+            ),
             safetyCenterTestData.safetyCenterIssueRecommendation(
                 ISSUE_ONLY_ALL_OPTIONAL_ID,
-                attributionTitle = null
+                attributionTitle = null,
+                groupId = ISSUE_ONLY_GROUP_ID
             ),
-            safetyCenterTestData.safetyCenterIssueInformation(DYNAMIC_IN_STATELESS_ID),
-            safetyCenterTestData.safetyCenterIssueInformation(ISSUE_ONLY_IN_STATELESS_ID)
+            safetyCenterTestData.safetyCenterIssueInformation(
+                DYNAMIC_IN_STATELESS_ID,
+                groupId = MIXED_STATELESS_GROUP_ID
+            ),
+            safetyCenterTestData.safetyCenterIssueInformation(
+                ISSUE_ONLY_IN_STATELESS_ID,
+                groupId = MIXED_STATELESS_GROUP_ID
+            )
         )
 
     private val dynamicBareboneDefault =
@@ -552,38 +568,57 @@ class SafetyCenterMultiUsersTest {
             SafetyCenterData(
                 safetyCenterTestData.safetyCenterStatusCritical(11),
                 listOf(
-                    safetyCenterTestData.safetyCenterIssueCritical(DYNAMIC_BAREBONE_ID),
+                    safetyCenterTestData.safetyCenterIssueCritical(
+                        DYNAMIC_BAREBONE_ID,
+                        groupId = DYNAMIC_GROUP_ID
+                    ),
                     safetyCenterTestData.safetyCenterIssueCritical(
                         ISSUE_ONLY_BAREBONE_ID,
-                        attributionTitle = null
+                        attributionTitle = null,
+                        groupId = ISSUE_ONLY_GROUP_ID
                     ),
-                    safetyCenterTestData.safetyCenterIssueRecommendation(DYNAMIC_DISABLED_ID),
+                    safetyCenterTestData.safetyCenterIssueRecommendation(
+                        DYNAMIC_DISABLED_ID,
+                        groupId = DYNAMIC_GROUP_ID
+                    ),
                     safetyCenterTestData.safetyCenterIssueRecommendation(
                         ISSUE_ONLY_ALL_OPTIONAL_ID,
-                        attributionTitle = null
+                        attributionTitle = null,
+                        groupId = ISSUE_ONLY_GROUP_ID
                     ),
                     safetyCenterTestData.safetyCenterIssueInformation(
                         DYNAMIC_DISABLED_ID,
-                        managedUserId
+                        managedUserId,
+                        groupId = DYNAMIC_GROUP_ID
                     ),
                     safetyCenterTestData.safetyCenterIssueInformation(
                         DYNAMIC_HIDDEN_ID,
-                        managedUserId
+                        managedUserId,
+                        groupId = DYNAMIC_GROUP_ID
                     ),
                     safetyCenterTestData.safetyCenterIssueInformation(
                         ISSUE_ONLY_ALL_OPTIONAL_ID,
                         managedUserId,
-                        attributionTitle = null
+                        attributionTitle = null,
+                        groupId = ISSUE_ONLY_GROUP_ID
                     ),
-                    safetyCenterTestData.safetyCenterIssueInformation(DYNAMIC_IN_STATELESS_ID),
                     safetyCenterTestData.safetyCenterIssueInformation(
                         DYNAMIC_IN_STATELESS_ID,
-                        managedUserId
+                        groupId = MIXED_STATELESS_GROUP_ID
                     ),
-                    safetyCenterTestData.safetyCenterIssueInformation(ISSUE_ONLY_IN_STATELESS_ID),
+                    safetyCenterTestData.safetyCenterIssueInformation(
+                        DYNAMIC_IN_STATELESS_ID,
+                        managedUserId,
+                        groupId = MIXED_STATELESS_GROUP_ID
+                    ),
                     safetyCenterTestData.safetyCenterIssueInformation(
                         ISSUE_ONLY_IN_STATELESS_ID,
-                        managedUserId
+                        groupId = MIXED_STATELESS_GROUP_ID
+                    ),
+                    safetyCenterTestData.safetyCenterIssueInformation(
+                        ISSUE_ONLY_IN_STATELESS_ID,
+                        managedUserId,
+                        groupId = MIXED_STATELESS_GROUP_ID
                     )
                 ),
                 listOf(
