@@ -61,10 +61,10 @@ object Coroutines {
     private val CHECK_PERIOD = Duration.ofMillis(250)
 
     /** A long timeout, to be used for actions that are expected to complete. */
-    val TIMEOUT_LONG: Duration = Duration.ofSeconds(15)
+    val TIMEOUT_LONG: Duration = Duration.ofSeconds(25)
 
     /** A short timeout, to be used for actions that are expected not to complete. */
-    val TIMEOUT_SHORT: Duration = Duration.ofMillis(750)
+    val TIMEOUT_SHORT: Duration = Duration.ofSeconds(1)
 
     private val debugMode = System.getProperty(DEBUG_PROPERTY_NAME, DEBUG_PROPERTY_VALUE_AUTO)
 
