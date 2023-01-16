@@ -126,19 +126,11 @@
                 </LinearLayout>
 
                 <LinearLayout style="@style/PermissionRationaleButtonContainer">
-                    <!-- TODO(b/260269197): update back button style -->
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/back_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:minHeight="36dp"
-                        android:layout_marginTop="6dp"
-                        android:layout_marginBottom="6dp"
-                        android:paddingTop="8dp"
-                        android:paddingBottom="8dp"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp"
-                        android:text="@string/back" />
+                        android:text="@string/back"
+                        android:theme="@style/Theme.Material3.DayNight"
+                        style="@style/PermissionRationaleBackButton" />
                 </LinearLayout>
 
             </LinearLayout>
