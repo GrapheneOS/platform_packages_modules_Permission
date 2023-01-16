@@ -20,7 +20,7 @@ import static android.os.Build.VERSION_CODES.TIRAMISU;
 import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK;
 
 import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__TIMEOUT;
-import static com.android.safetycenter.StatsdLogger.toSystemEventResult;
+import static com.android.safetycenter.logging.SafetyCenterStatsdLogger.toSystemEventResult;
 
 import android.annotation.ElapsedRealtimeLong;
 import android.annotation.NonNull;
@@ -35,6 +35,8 @@ import android.util.ArraySet;
 import android.util.Log;
 
 import androidx.annotation.RequiresApi;
+
+import com.android.safetycenter.logging.SafetyCenterStatsdLogger;
 
 import java.io.PrintWriter;
 import java.time.Duration;
@@ -62,10 +64,10 @@ public final class SafetyCenterRefreshTracker {
 
     private int mRefreshCounter = 0;
 
-    @NonNull private final StatsdLogger mStatsdLogger;
+    @NonNull private final SafetyCenterStatsdLogger mSafetyCenterStatsdLogger;
 
-    SafetyCenterRefreshTracker(@NonNull StatsdLogger statsdLogger) {
-        mStatsdLogger = statsdLogger;
+    SafetyCenterRefreshTracker(@NonNull SafetyCenterStatsdLogger safetyCenterStatsdLogger) {
+        mSafetyCenterStatsdLogger = safetyCenterStatsdLogger;
     }
 
     /**
@@ -154,7 +156,7 @@ public final class SafetyCenterRefreshTracker {
 
         if (duration != null) {
             int sourceResult = toSystemEventResult(successful);
-            mStatsdLogger.writeSourceRefreshSystemEvent(
+            mSafetyCenterStatsdLogger.writeSourceRefreshSystemEvent(
                     requestType, sourceId, userId, duration, sourceResult);
         }
 
@@ -165,7 +167,7 @@ public final class SafetyCenterRefreshTracker {
         Log.v(TAG, "Refresh with id: " + mRefreshInProgress.getId() + " completed");
         int wholeResult =
                 toSystemEventResult(/* success= */ !mRefreshInProgress.hasAnyTrackedSourceErrors());
-        mStatsdLogger.writeWholeRefreshSystemEvent(
+        mSafetyCenterStatsdLogger.writeWholeRefreshSystemEvent(
                 requestType, mRefreshInProgress.getDurationSinceStart(), wholeResult);
         mRefreshInProgress = null;
         return true;
@@ -243,7 +245,7 @@ public final class SafetyCenterRefreshTracker {
             SafetySourceKey sourceKey = timedOutSources.valueAt(i);
             Duration duration = clearedRefresh.getDurationSinceSourceStart(sourceKey);
             if (duration != null) {
-                mStatsdLogger.writeSourceRefreshSystemEvent(
+                mSafetyCenterStatsdLogger.writeSourceRefreshSystemEvent(
                         requestType,
                         sourceKey.getSourceId(),
                         sourceKey.getUserId(),
@@ -252,7 +254,7 @@ public final class SafetyCenterRefreshTracker {
             }
         }
 
-        mStatsdLogger.writeWholeRefreshSystemEvent(
+        mSafetyCenterStatsdLogger.writeWholeRefreshSystemEvent(
                 requestType,
                 clearedRefresh.getDurationSinceStart(),
                 SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__TIMEOUT);
