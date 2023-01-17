@@ -189,7 +189,10 @@
         <item name="android:layout_marginStart">24dp</item>
         <item name="android:layout_marginEnd">24dp</item>
         <item name="android:layout_marginBottom">24dp</item>
-        <item name="android:padding">12dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:background">@drawable/grant_dialog_permission_rationale_background</item>
     </style>
@@ -211,6 +214,8 @@
         <item name="android:layout_marginStart">12dp</item>
         <item name="android:layout_marginEnd">12dp</item>
         <item name="android:textSize">14sp</item>
+        <item name="android:lineHeight">20sp</item>
+        <item name="android:lineSpacingMultiplier">1.25</item>
     </style>
 
     <style name="PermissionGrantPermissionRationaleMoreInfoIcon">
