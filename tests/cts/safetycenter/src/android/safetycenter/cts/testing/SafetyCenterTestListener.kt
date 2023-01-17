@@ -28,7 +28,7 @@ import kotlinx.coroutines.channels.Channel
  * An [OnSafetyCenterDataChangedListener] that facilitates receiving updates from SafetyCenter in
  * tests.
  */
-class SafetyCenterCtsListener : OnSafetyCenterDataChangedListener {
+class SafetyCenterTestListener : OnSafetyCenterDataChangedListener {
     private val dataChannel = Channel<SafetyCenterData>(Channel.UNLIMITED)
     private val errorChannel = Channel<SafetyCenterErrorDetails>(Channel.UNLIMITED)
 
@@ -50,7 +50,7 @@ class SafetyCenterCtsListener : OnSafetyCenterDataChangedListener {
     fun receiveSafetyCenterErrorDetails(timeout: Duration = TIMEOUT_LONG) =
         runBlockingWithTimeout(timeout) { errorChannel.receive() }
 
-    /** Cancels any pending update on this [SafetyCenterCtsListener]. */
+    /** Cancels any pending update on this [SafetyCenterTestListener]. */
     fun cancel() {
         dataChannel.cancel()
         errorChannel.cancel()

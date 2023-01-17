@@ -34,8 +34,8 @@ import java.util.concurrent.TimeoutException
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.channels.Channel
 
-/** Used in CTS tests to check whether expected notifications are present in the status bar. */
-class CtsNotificationListener : NotificationListenerService() {
+/** Used in tests to check whether expected notifications are present in the status bar. */
+class TestNotificationListener : NotificationListenerService() {
 
     private sealed class NotificationEvent(val statusBarNotification: StatusBarNotification)
 
@@ -82,15 +82,15 @@ class CtsNotificationListener : NotificationListenerService() {
     }
 
     companion object {
-        private const val TAG = "CtsNotificationListener"
+        private const val TAG = "TestNotificationListene"
 
         private val id: String =
-            "android.safetycenter.cts/" + CtsNotificationListener::class.java.name
+            "android.safetycenter.cts/" + TestNotificationListener::class.java.name
         private val componentName =
-            ComponentName("android.safetycenter.cts", CtsNotificationListener::class.java.name)
+            ComponentName("android.safetycenter.cts", TestNotificationListener::class.java.name)
 
         private val connected = ConditionVariable(false)
-        private var instance: CtsNotificationListener? = null
+        private var instance: TestNotificationListener? = null
 
         @Volatile
         private var safetyCenterNotificationEvents =
@@ -280,12 +280,12 @@ class CtsNotificationListener : NotificationListenerService() {
             }
         }
 
-        /** Prepare the [CtsNotificationListener] for a notification test */
+        /** Prepare the [TestNotificationListener] for a notification test */
         fun setup() {
             toggleListenerAccess(true)
         }
 
-        /** Clean up the [CtsNotificationListener] after executing a notification test. */
+        /** Clean up the [TestNotificationListener] after executing a notification test. */
         fun reset() {
             waitForNotificationsToSatisfy(
                 forAtLeast = Duration.ZERO,
