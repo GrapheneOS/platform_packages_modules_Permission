@@ -108,7 +108,7 @@
     <string name="other_permissions" msgid="2901186127193849594">"Колдонмонун башка мүмкүнчүлүктөрү"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"Уруксат суроо"</string>
     <string name="screen_overlay_title" msgid="6977038513913222078">"Колдонмонун үстүнө коюу күйүк"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"Бул уруксаттын жөндөөсүн өзгөртүү үчүн адегенде Жөндөөлөр &gt; Колдонмолор бөлүмүнөн колдонмонун үстүнө коюуну өчүрүңүз"</string>
+    <string name="screen_overlay_message" msgid="5622563069757142102">"Бул уруксаттын жөндөөсүн өзгөртүү үчүн адегенде Параметрлер &gt; Колдонмолор бөлүмүнөн колдонмонун үстүнө коюуну өчүрүңүз"</string>
     <string name="screen_overlay_button" msgid="4655005928054025250">"Жөндөөлөрдү ачуу"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Орнотуу/чыгарып салуу аракеттери Android Wear\'де колдоого алынбайт."</string>
@@ -323,7 +323,7 @@
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"Медиа файлдар үчүн гана бир да колдомого уруксат берилген жок"</string>
     <string name="no_apps_denied" msgid="7663435886986784743">"Бардык колдонмолорго уруксат берилген"</string>
     <string name="car_permission_selected" msgid="180837028920791596">"Тандалды"</string>
-    <string name="settings" msgid="5409109923158713323">"Жөндөөлөр"</string>
+    <string name="settings" msgid="5409109923158713323">"Параметрлер"</string>
     <string name="accessibility_service_dialog_title_single" msgid="7956432823014102366">"<xliff:g id="SERVICE_NAME">%s</xliff:g> кызматынын түзмөгүңүзгө кирүүгө толук мүмкүнчүлүгү бар"</string>
     <string name="accessibility_service_dialog_title_multiple" msgid="5527879210683548175">"<xliff:g id="NUM_SERVICES">%s</xliff:g> атайын мүмкүнчүлүктөр колдонмолорунун түзмөгүңүзгө кирүүгө толук мүмкүнчүлүгү бар"</string>
     <string name="accessibility_service_dialog_bottom_text_single" msgid="1128666197822205958">"<xliff:g id="SERVICE_NAME">%s</xliff:g> экраныңыздагы маалыматты, аракеттерди жана киргизүүлөрдү көрүп, аракеттерди аткарып, дисплейди көзөмөлдөйт."</string>
@@ -397,7 +397,7 @@
     <string name="ongoing_usage_dialog_last_separator" msgid="4170995004748832163">" жана "</string>
     <string name="default_app_search_keyword" msgid="8330125736889689743">"демейки колдонмолор"</string>
     <string name="permgroup_list_microphone_and_camera" msgid="962768198001487969">"Микрофон жана камера"</string>
-    <string name="settings_button" msgid="4414988414732479636">"Жөндөөлөр"</string>
+    <string name="settings_button" msgid="4414988414732479636">"Параметрлер"</string>
     <string name="default_apps" msgid="5119201969348748639">"Демейки колдонмолор"</string>
     <string name="no_default_apps" msgid="2593466527182950231">"Демейки колдонмолор жок"</string>
     <string name="default_apps_more" msgid="4078194675848858093">"Кошумча демейки колдонмолор"</string>
