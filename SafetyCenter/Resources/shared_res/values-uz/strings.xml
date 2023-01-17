@@ -42,4 +42,8 @@
     <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{Sozlama tekshirilmadi}other{Sozlamalar tekshirilmadi}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"Ish profili pauzada"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"Hali axborot olinmadi"</string>
+    <string name="notification_channel_group_name" msgid="7155072032524876859">"Xavfsizlik va maxfiylik"</string>
+    <string name="notification_channel_name_information" msgid="2966444432152990166">"Tavsiyalar"</string>
+    <string name="notification_channel_name_recommendation" msgid="7847408286580217922">"Ogohlantirishlar"</string>
+    <string name="notification_channel_name_critical_warning" msgid="5994320322108351769">"Jiddiy ogohlantirishlar"</string>
 </resources>
