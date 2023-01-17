@@ -1403,6 +1403,30 @@
         </permissions>
     </role>
 
+    <!--
+     ~ A role assigned to the device lock controller
+    -->
+    <role
+        name="android.app.role.SYSTEM_FINANCED_DEVICE_CONTROLLER"
+        defaultHolders="config_systemFinancedDeviceController"
+        exclusive="true"
+        minSdkVersion="34"
+        static="true"
+        systemOnly="true"
+        visible="false">
+        <permissions>
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_APPS_CONTROL" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_CALLS" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_DEBUGGING_FEATURES" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_LOCK_TASK" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_SAFE_BOOT" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_TIME" />
+            <permission name="android.permission.MASTER_CLEAR" />
+            <permission name="android.permission.INTERACT_ACROSS_USERS" />
+            <permission name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
+        </permissions>
+    </role>
+
     <!---
       ~ A role for the wear health service that handles health/fitness tracking features.
     -->
