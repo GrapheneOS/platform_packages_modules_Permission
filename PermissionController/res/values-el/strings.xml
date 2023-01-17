@@ -223,8 +223,10 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Καταργήθηκε η άδεια <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> και <xliff:g id="NUMBER">%2$s</xliff:g> ακόμη άδειες"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Εφαρμογές που δεν χρησιμοποιούνται"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Εάν μια εφαρμογή δεν χρησιμοποιηθεί για λίγους μήνες:\n\n• Οι άδειες καταργούνται για την προστασία των δεδομένων σας\n• Οι ειδοποιήσεις διακόπτονται για την εξοικονόμηση μπαταρίας\n• Τα προσωρινά αρχεία καταργούνται για την απελευθέρωση χώρου\n\nΓια να επιτρέψετε ξανά τις άδειες και τις ειδοποιήσεις, ανοίξτε την εφαρμογή."</string>
-    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Εάν μια εφαρμογή δεν χρησιμοποιηθεί για λίγους μήνες:\n\n• Οι άδειες καταργούνται για την προστασία των δεδομένων σας\n• Τα προσωρινά αρχεία καταργούνται για την απελευθέρωση χώρου\n\nΓια να επιτρέψετε ξανά τις άδειες, ανοίξτε την εφαρμογή."</string>
-    <string name="last_opened_category_title" msgid="7871347400611202595">"Τελευταίο άνοιγμα πάνω από <xliff:g id="NUMBER">%s</xliff:g> μήνες πριν"</string>
+    <!-- no translation found for unused_apps_page_tv_summary (2624911608663778308) -->
+    <skip />
+    <!-- no translation found for last_opened_category_title (8796557894614236128) -->
+    <skip />
     <string name="last_opened_summary" msgid="5248984030024968808">"Τελευταίο άνοιγμα εφαρμογής <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Τελευταίο άνοιγμα <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Εάν επιτρέψετε τη διαχείριση όλων των αρχείων, αυτή η εφαρμογή θα μπορεί να αποκτήσει πρόσβαση, να τροποποιήσει και να διαγράψει τυχόν αρχεία στον κοινό αποθηκευτικό χώρο αυτής της συσκευής ή συνδεδεμένων συσκευών αποθηκευτικού χώρου. Η εφαρμογή θα μπορεί να αποκτήσει πρόσβαση σε αρχεία χωρίς να σας ρωτήσει."</string>
@@ -402,14 +404,10 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"Η εφαρμογή <xliff:g id="APP_NAME">%1$s</xliff:g> θα επιτρέπεται να αλληλεπιδρά με τις ειδοποιήσεις σας και να μεταδίδει τις εφαρμογές σας μέσω ροής στη συνδεδεμένη συσκευή."</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"Η εφαρμογή <xliff:g id="APP_NAME">%1$s</xliff:g> θα μπορεί να κάνει ροή περιεχομένου σε κοντινές συσκευές."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Αυτή η υπηρεσία κοινοποιεί τις φωτογραφίες, τα μέσα και τις ειδοποιήσεις από το τηλέφωνό σας στις άλλες συσκευές σας."</string>
-    <!-- no translation found for role_notes_label (7694668779088299905) -->
-    <skip />
-    <!-- no translation found for role_notes_short_label (6617887820096092689) -->
-    <skip />
-    <!-- no translation found for role_notes_description (8486216423668803751) -->
-    <skip />
-    <!-- no translation found for role_notes_search_keywords (7710756695666744631) -->
-    <skip />
+    <string name="role_notes_label" msgid="7694668779088299905">"Προεπιλ. εφαρμ. δημ. σημειώσ."</string>
+    <string name="role_notes_short_label" msgid="6617887820096092689">"Εφαρμογή δημιουργ. σημειώσεων"</string>
+    <string name="role_notes_description" msgid="8486216423668803751">"Εφαρμογές που σας επιτρέπουν να κρατάτε σημειώσεις"</string>
+    <string name="role_notes_search_keywords" msgid="7710756695666744631">"σημειώσεις"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Τρέχουσα προεπιλογή"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Να μην ερωτηθώ ξανά"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Προεπιλογή"</string>
@@ -465,7 +463,7 @@
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Εμφάνιση εικονιδίου στη γραμμή κατάστασης όταν το μικρόφωνο χρησιμοποιείται για την ενεργοποίηση του φωνητικού βοηθού"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να έχει πρόσβαση σε φωτογραφίες και μέσα στη συσκευή σας;"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να έχει πρόσβαση στις επαφές σας;"</string>
-    <string name="permgrouprequest_location" msgid="6990232580121067883">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να έχει πρόσβαση στην τοποθεσία αυτής της συσκευής;"</string>
+    <string name="permgrouprequest_location" msgid="6990232580121067883">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση στην τοποθεσία αυτής της συσκευής;"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"Η εφαρμογή θα έχει πρόσβαση στην τοποθεσία μόνο κατά τη διάρκεια χρήσης της εφαρμογής"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να έχει πρόσβαση στην τοποθεσία αυτής της συσκευής;"</string>
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Αυτή η εφαρμογή θέλει να έχει συνεχώς πρόσβαση στην τοποθεσία σας, ακόμη και όταν δεν χρησιμοποιείτε την εφαρμογή. "<annotation id="link">"Εγκρίνετε το αίτημα στις ρυθμίσεις."</annotation></string>

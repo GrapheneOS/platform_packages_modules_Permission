@@ -223,8 +223,10 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> және тағы <xliff:g id="NUMBER">%2$s</xliff:g> рұқсат өшірілді"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Пайдаланылмайтын қолданбалар"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Қолданба бірнеше ай бойы пайдаланылмаса:\n\n• деректерді қорғау үшін рұқсаттар өшіріледі;\n• батарея үнемдеу үшін хабарландырулар тоқтатылады;\n• орын босату үшін уақытша файлдар өшіріледі.\n\nРұқсаттар мен хабарландыруларды қайта пайдалану үшін қолданбаны ашыңыз."</string>
-    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Қолданба бірнеше ай бойы пайдаланылмаса:\n\n• Деректерді қорғау үшін рұқсаттар өшіріледі.\n• Орын босату үшін уақытша файлдар жойылады.\n\nРұқсаттарды қайта пайдалану үшін қолданбаны ашыңыз."</string>
-    <string name="last_opened_category_title" msgid="7871347400611202595">"Соңғы рет <xliff:g id="NUMBER">%s</xliff:g> айдан астам уақыт бұрын ашылған"</string>
+    <!-- no translation found for unused_apps_page_tv_summary (2624911608663778308) -->
+    <skip />
+    <!-- no translation found for last_opened_category_title (8796557894614236128) -->
+    <skip />
     <string name="last_opened_summary" msgid="5248984030024968808">"Қолданбаның соңғы рет ашылуы: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Соңғы рет ашылуы: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Егер барлық файлдарды басқаруға рұқсат берілсе, бұл қолданба құрылғының жалпы жадындағы немесе жалғанған жад құрылғыларындағы кез келген файлды пайдалана, өзгерте және жоя алатын болады. Қолданба файлдарды сіздің рұқсатыңызсыз пайдалануы мүмкін."</string>
@@ -402,14 +404,10 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасы хабарландыруларды пайдаланып, қолданбаларыңызды жалғанған құрылғыға трансляциялай алатын болады."</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасына контентті маңайдағы құрылғыларға трансляциялауға рұқсат беріледі."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Бұл қызмет телефоныңыздағы фотосуреттерді, медиафайлдар мен хабарландыруларды басқа құрылғылармен бөліседі."</string>
-    <!-- no translation found for role_notes_label (7694668779088299905) -->
-    <skip />
-    <!-- no translation found for role_notes_short_label (6617887820096092689) -->
-    <skip />
-    <!-- no translation found for role_notes_description (8486216423668803751) -->
-    <skip />
-    <!-- no translation found for role_notes_search_keywords (7710756695666744631) -->
-    <skip />
+    <string name="role_notes_label" msgid="7694668779088299905">"Әдепкі ескертпе жасау қолданбасы"</string>
+    <string name="role_notes_short_label" msgid="6617887820096092689">"Ескертпе жасау қолданбасы"</string>
+    <string name="role_notes_description" msgid="8486216423668803751">"Ескертпелер жасауға мүмкіндік беретін қолданбалар"</string>
+    <string name="role_notes_search_keywords" msgid="7710756695666744631">"ескертпелер"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Ағымдағы әдепкі қолданба"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Қайта сұралмасын"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Әдепкі етіп орнату"</string>
