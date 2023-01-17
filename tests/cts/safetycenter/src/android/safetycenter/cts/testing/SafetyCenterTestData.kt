@@ -38,14 +38,14 @@ import android.safetycenter.SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_RECOMMENDATIO
 import android.safetycenter.SafetyCenterStatus
 import android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING
 import android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_GROUP_ID
-import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.CRITICAL_ISSUE_ACTION_ID
-import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.CRITICAL_ISSUE_ID
-import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.INFORMATION_ISSUE_ACTION_ID
-import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.INFORMATION_ISSUE_ID
-import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.ISSUE_TYPE_ID
-import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.RECOMMENDATION_ISSUE_ACTION_ID
-import android.safetycenter.cts.testing.SafetySourceCtsData.Companion.RECOMMENDATION_ISSUE_ID
+import android.safetycenter.cts.testing.SafetyCenterTestConfigs.Companion.SINGLE_SOURCE_GROUP_ID
+import android.safetycenter.cts.testing.SafetySourceTestData.Companion.CRITICAL_ISSUE_ACTION_ID
+import android.safetycenter.cts.testing.SafetySourceTestData.Companion.CRITICAL_ISSUE_ID
+import android.safetycenter.cts.testing.SafetySourceTestData.Companion.INFORMATION_ISSUE_ACTION_ID
+import android.safetycenter.cts.testing.SafetySourceTestData.Companion.INFORMATION_ISSUE_ID
+import android.safetycenter.cts.testing.SafetySourceTestData.Companion.ISSUE_TYPE_ID
+import android.safetycenter.cts.testing.SafetySourceTestData.Companion.RECOMMENDATION_ISSUE_ACTION_ID
+import android.safetycenter.cts.testing.SafetySourceTestData.Companion.RECOMMENDATION_ISSUE_ID
 import android.util.ArrayMap
 import androidx.annotation.RequiresApi
 import com.android.modules.utils.build.SdkLevel
@@ -61,10 +61,10 @@ import java.util.Locale
  * A class that provides [SafetyCenterData] objects and associated constants to facilitate asserting
  * on specific Safety Center states in SafetyCenter for testing.
  */
-class SafetyCenterCtsData(context: Context) {
+class SafetyCenterTestData(context: Context) {
 
     private val safetyCenterResourcesContext = SafetyCenterResourcesContext.forTests(context)
-    private val safetySourceCtsData = SafetySourceCtsData(context)
+    private val safetySourceTestData = SafetySourceTestData(context)
 
     /**
      * The [SafetyCenterStatus] used when the overall status is unknown and no scan is in progress.
@@ -112,14 +112,14 @@ class SafetyCenterCtsData(context: Context) {
 
     /**
      * Returns a [SafetyCenterEntry] builder with a grey icon (for unknown severity), the summary
-     * generally used for sources of the [SafetyCenterCtsConfigs], and a pending intent that
+     * generally used for sources of the [SafetyCenterTestConfigs], and a pending intent that
      * redirects to [TestActivity] for the given source, user id, and title.
      */
     fun safetyCenterEntryDefaultBuilder(
         sourceId: String,
         userId: Int = UserHandle.myUserId(),
         title: CharSequence = "OK",
-        pendingIntent: PendingIntent? = safetySourceCtsData.testActivityRedirectPendingIntent
+        pendingIntent: PendingIntent? = safetySourceTestData.testActivityRedirectPendingIntent
     ) =
         SafetyCenterEntry.Builder(entryId(sourceId, userId), title)
             .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNKNOWN)
@@ -129,19 +129,19 @@ class SafetyCenterCtsData(context: Context) {
 
     /**
      * Returns a [SafetyCenterEntry] with a grey icon (for unknown severity), the summary generally
-     * used for sources of the [SafetyCenterCtsConfigs], and a pending intent that redirects to
+     * used for sources of the [SafetyCenterTestConfigs], and a pending intent that redirects to
      * Safety Center for the given source, user id, and title.
      */
     fun safetyCenterEntryDefault(
         sourceId: String,
         userId: Int = UserHandle.myUserId(),
         title: CharSequence = "OK",
-        pendingIntent: PendingIntent? = safetySourceCtsData.testActivityRedirectPendingIntent
+        pendingIntent: PendingIntent? = safetySourceTestData.testActivityRedirectPendingIntent
     ) = safetyCenterEntryDefaultBuilder(sourceId, userId, title, pendingIntent).build()
 
     /**
      * Returns a [SafetyCenterEntry] builder with no icon, the summary generally used for sources of
-     * the [SafetyCenterCtsConfigs], and a pending intent that redirects to [TestActivity] for the
+     * the [SafetyCenterTestConfigs], and a pending intent that redirects to [TestActivity] for the
      * given source, user id, and title.
      */
     fun safetyCenterEntryDefaultStaticBuilder(
@@ -152,7 +152,7 @@ class SafetyCenterCtsData(context: Context) {
         SafetyCenterEntry.Builder(entryId(sourceId, userId), title)
             .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNSPECIFIED)
             .setSummary("OK")
-            .setPendingIntent(safetySourceCtsData.testActivityRedirectPendingIntent)
+            .setPendingIntent(safetySourceTestData.testActivityRedirectPendingIntent)
             .setSeverityUnspecifiedIconType(SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON)
 
     /**
@@ -169,7 +169,7 @@ class SafetyCenterCtsData(context: Context) {
      */
     fun safetyCenterEntryUnspecified(
         sourceId: String,
-        pendingIntent: PendingIntent? = safetySourceCtsData.testActivityRedirectPendingIntent
+        pendingIntent: PendingIntent? = safetySourceTestData.testActivityRedirectPendingIntent
     ) =
         SafetyCenterEntry.Builder(entryId(sourceId), "Unspecified title")
             .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNSPECIFIED)
@@ -192,7 +192,7 @@ class SafetyCenterCtsData(context: Context) {
         SafetyCenterEntry.Builder(entryId(sourceId, userId), title)
             .setSeverityLevel(ENTRY_SEVERITY_LEVEL_OK)
             .setSummary("Ok summary")
-            .setPendingIntent(safetySourceCtsData.testActivityRedirectPendingIntent)
+            .setPendingIntent(safetySourceTestData.testActivityRedirectPendingIntent)
             .setSeverityUnspecifiedIconType(SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION)
 
     /**
@@ -217,7 +217,7 @@ class SafetyCenterCtsData(context: Context) {
         SafetyCenterEntry.Builder(entryId(sourceId), "Recommendation title")
             .setSeverityLevel(ENTRY_SEVERITY_LEVEL_RECOMMENDATION)
             .setSummary(summary)
-            .setPendingIntent(safetySourceCtsData.testActivityRedirectPendingIntent)
+            .setPendingIntent(safetySourceTestData.testActivityRedirectPendingIntent)
             .setSeverityUnspecifiedIconType(SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION)
             .build()
 
@@ -229,13 +229,13 @@ class SafetyCenterCtsData(context: Context) {
         SafetyCenterEntry.Builder(entryId(sourceId), "Critical title")
             .setSeverityLevel(ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING)
             .setSummary("Critical summary")
-            .setPendingIntent(safetySourceCtsData.testActivityRedirectPendingIntent)
+            .setPendingIntent(safetySourceTestData.testActivityRedirectPendingIntent)
             .setSeverityUnspecifiedIconType(SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION)
             .build()
 
     /**
      * Returns an information [SafetyCenterIssue] for the given source and user id that is
-     * consistent with information [SafetySourceIssue]s used in [SafetySourceCtsData].
+     * consistent with information [SafetySourceIssue]s used in [SafetySourceTestData].
      */
     fun safetyCenterIssueInformation(
         sourceId: String,
@@ -260,7 +260,7 @@ class SafetyCenterCtsData(context: Context) {
                                 userId
                             ),
                             "Review",
-                            safetySourceCtsData.testActivityRedirectPendingIntent
+                            safetySourceTestData.testActivityRedirectPendingIntent
                         )
                         .build()
                 )
@@ -275,7 +275,7 @@ class SafetyCenterCtsData(context: Context) {
 
     /**
      * Returns a recommendation [SafetyCenterIssue] for the given source and user id that is
-     * consistent with recommendation [SafetySourceIssue]s used in [SafetySourceCtsData].
+     * consistent with recommendation [SafetySourceIssue]s used in [SafetySourceTestData].
      */
     fun safetyCenterIssueRecommendation(
         sourceId: String,
@@ -299,7 +299,7 @@ class SafetyCenterCtsData(context: Context) {
                                 userId
                             ),
                             "See issue",
-                            safetySourceCtsData.testActivityRedirectPendingIntent
+                            safetySourceTestData.testActivityRedirectPendingIntent
                         )
                         .build()
                 )
@@ -314,7 +314,7 @@ class SafetyCenterCtsData(context: Context) {
 
     /**
      * Returns a critical [SafetyCenterIssue] for the given source and user id that is consistent
-     * with critical [SafetySourceIssue]s used in [SafetySourceCtsData].
+     * with critical [SafetySourceIssue]s used in [SafetySourceTestData].
      */
     fun safetyCenterIssueCritical(
         sourceId: String,
@@ -339,7 +339,7 @@ class SafetyCenterCtsData(context: Context) {
                                 userId
                             ),
                             "Solve issue",
-                            safetySourceCtsData.criticalIssueActionPendingIntent
+                            safetySourceTestData.criticalIssueActionPendingIntent
                         )
                         .setWillResolve(true)
                         .setIsInFlight(isActionInFlight)

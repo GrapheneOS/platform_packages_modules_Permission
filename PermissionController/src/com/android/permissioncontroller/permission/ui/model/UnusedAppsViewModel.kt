@@ -62,10 +62,15 @@ class UnusedAppsViewModel(private val app: Application, private val sessionId: L
     }
 
     enum class UnusedPeriod(val duration: Duration) {
+        ONE_MONTH(30.days),
         THREE_MONTHS(90.days),
         SIX_MONTHS(180.days);
 
         val months: Int = (duration.inWholeDays / 30).toInt()
+
+        inline fun isNewlyUnused(): Boolean {
+            return (this == ONE_MONTH) || (this == THREE_MONTHS)
+        }
 
         companion object {
 
