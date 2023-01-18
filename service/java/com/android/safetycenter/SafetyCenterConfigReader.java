@@ -111,7 +111,7 @@ public final class SafetyCenterConfigReader {
 
     /** Returns the groups of {@link SafetySource}, in the order expected by the UI. */
     @NonNull
-    List<SafetySourcesGroup> getSafetySourcesGroups() {
+    public List<SafetySourcesGroup> getSafetySourcesGroups() {
         return getCurrentConfigInternal().getSafetyCenterConfig().getSafetySourcesGroups();
     }
 

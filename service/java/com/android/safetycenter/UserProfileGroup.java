@@ -98,7 +98,7 @@ public final class UserProfileGroup {
      * <p>The given {@code userId} could be related to the profile parent or any of its associated
      * managed profile(s).
      */
-    static UserProfileGroup from(@NonNull Context context, @UserIdInt int userId) {
+    public static UserProfileGroup from(@NonNull Context context, @UserIdInt int userId) {
         UserManager userManager = getUserManagerForUser(userId, context);
         List<UserHandle> userProfiles = getEnabledUserProfiles(userManager);
         UserHandle profileParent = getProfileParent(userManager, userId);
@@ -180,7 +180,7 @@ public final class UserProfileGroup {
     }
 
     /** Returns the managed profile user ids of the {@link UserProfileGroup}. */
-    int[] getManagedProfilesUserIds() {
+    public int[] getManagedProfilesUserIds() {
         return mManagedProfilesUserIds;
     }
 

@@ -88,7 +88,10 @@ public final class SafetyCenterRepository {
     @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
     @NonNull private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker;
     @NonNull private final SafetyCenterStatsdLogger mSafetyCenterStatsdLogger;
-    @NonNull private final SafetyCenterIssueRepository mSafetyCenterIssueRepository;
+
+    @NonNull
+    private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
+
     @NonNull private final PackageManager mPackageManager;
 
     public SafetyCenterRepository(
@@ -96,12 +99,12 @@ public final class SafetyCenterRepository {
             @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
             @NonNull SafetyCenterRefreshTracker safetyCenterRefreshTracker,
             @NonNull SafetyCenterStatsdLogger safetyCenterStatsdLogger,
-            @NonNull SafetyCenterIssueRepository safetyCenterIssueRepository) {
+            @NonNull SafetyCenterIssueDismissalRepository safetyCenterIssueDismissalRepository) {
         mContext = context;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
         mSafetyCenterRefreshTracker = safetyCenterRefreshTracker;
         mSafetyCenterStatsdLogger = safetyCenterStatsdLogger;
-        mSafetyCenterIssueRepository = safetyCenterIssueRepository;
+        mSafetyCenterIssueDismissalRepository = safetyCenterIssueDismissalRepository;
         mPackageManager = mContext.getPackageManager();
     }
 
@@ -115,9 +118,10 @@ public final class SafetyCenterRepository {
      * SafetySourceData} does not respect all constraints defined in the config.
      *
      * <p>Setting a {@code null} {@link SafetySourceData} evicts the current {@link
-     * SafetySourceData} entry and clears the {@link SafetyCenterIssueRepository} for the source.
+     * SafetySourceData} entry and clears the {@link SafetyCenterIssueDismissalRepository} for the
+     * source.
      *
-     * <p>This method may modify the {@link SafetyCenterIssueRepository}.
+     * <p>This method may modify the {@link SafetyCenterIssueDismissalRepository}.
      */
     public boolean setSafetySourceData(
             @Nullable SafetySourceData safetySourceData,
@@ -148,7 +152,8 @@ public final class SafetyCenterRepository {
                 issueIds.add(safetySourceData.getIssues().get(i).getId());
             }
         }
-        mSafetyCenterIssueRepository.updateIssuesForSource(issueIds, safetySourceId, userId);
+        mSafetyCenterIssueDismissalRepository.updateIssuesForSource(
+                issueIds, safetySourceId, userId);
 
         return true;
     }
@@ -290,10 +295,10 @@ public final class SafetyCenterRepository {
     /**
      * Dismisses the given {@link SafetyCenterIssueKey}.
      *
-     * <p>This method may modify the {@link SafetyCenterIssueRepository}.
+     * <p>This method may modify the {@link SafetyCenterIssueDismissalRepository}.
      */
     public void dismissSafetyCenterIssue(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
-        mSafetyCenterIssueRepository.dismissIssue(safetyCenterIssueKey);
+        mSafetyCenterIssueDismissalRepository.dismissIssue(safetyCenterIssueKey);
     }
 
     /**
@@ -327,7 +332,7 @@ public final class SafetyCenterRepository {
             return null;
         }
 
-        if (mSafetyCenterIssueRepository.isIssueDismissed(
+        if (mSafetyCenterIssueDismissalRepository.isIssueDismissed(
                 safetyCenterIssueKey, targetIssue.getSeverityLevel())) {
             return null;
         }

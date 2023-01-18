@@ -1667,7 +1667,6 @@ class SafetyCenterManagerTest {
         safetyCenterManager.dismissSafetyCenterIssueWithPermission(
             SafetyCenterTestData.issueId(SOURCE_ID_1, CRITICAL_ISSUE_ID)
         )
-        safetyCenterManager.getSafetyCenterDataWithPermission() // data used, 2nd issue dismissed
         safetyCenterTestHelper.setData(SOURCE_ID_1, SafetySourceTestData.issuesOnly())
 
         val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
@@ -1730,7 +1729,6 @@ class SafetyCenterManagerTest {
         safetyCenterManager.dismissSafetyCenterIssueWithPermission(
             SafetyCenterTestData.issueId(SOURCE_ID_1, CRITICAL_ISSUE_ID)
         )
-        safetyCenterManager.getSafetyCenterDataWithPermission() // data used, 2nd issue dismissed
         safetyCenterTestHelper.setData(SOURCE_ID_1, SafetySourceTestData.issuesOnly())
 
         val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
@@ -1794,7 +1792,6 @@ class SafetyCenterManagerTest {
             SafetyCenterTestData.issueId(SOURCE_ID_1, CRITICAL_ISSUE_ID)
         )
 
-        // data used, 2nd issue dismissed
         val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
         val apiSafetyCenterDismissedIssues = apiSafetyCenterData.dismissedIssues
 
@@ -1858,7 +1855,6 @@ class SafetyCenterManagerTest {
             SafetyCenterTestData.issueId(SOURCE_ID_1, CRITICAL_ISSUE_ID)
         )
 
-        // data used, 2nd issue dismissed
         val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
         val apiSafetyCenterDismissedIssues = apiSafetyCenterData.dismissedIssues
 

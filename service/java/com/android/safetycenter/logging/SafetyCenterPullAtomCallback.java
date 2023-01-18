@@ -47,6 +47,7 @@ import com.android.safetycenter.SafetyCenterFlags;
 import com.android.safetycenter.SafetySourceKey;
 import com.android.safetycenter.SafetySources;
 import com.android.safetycenter.UserProfileGroup;
+import com.android.safetycenter.data.SafetyCenterIssueDismissalRepository;
 import com.android.safetycenter.data.SafetyCenterIssueRepository;
 import com.android.safetycenter.data.SafetyCenterRepository;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
@@ -89,6 +90,10 @@ public final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback
 
     @GuardedBy("mApiLock")
     @NonNull
+    private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
+
+    @GuardedBy("mApiLock")
+    @NonNull
     private final SafetyCenterIssueRepository mSafetyCenterIssueRepository;
 
     public SafetyCenterPullAtomCallback(
@@ -98,6 +103,7 @@ public final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback
             @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
             @NonNull SafetyCenterRepository safetyCenterRepository,
             @NonNull SafetyCenterDataFactory safetyCenterDataFactory,
+            @NonNull SafetyCenterIssueDismissalRepository safetyCenterIssueDismissalRepository,
             @NonNull SafetyCenterIssueRepository safetyCenterIssueRepository) {
         mContext = context;
         mApiLock = apiLock;
@@ -105,6 +111,7 @@ public final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback
         mSafetyCenterConfigReader = safetyCenterConfigReader;
         mSafetyCenterRepository = safetyCenterRepository;
         mSafetyCenterDataFactory = safetyCenterDataFactory;
+        mSafetyCenterIssueDismissalRepository = safetyCenterIssueDismissalRepository;
         mSafetyCenterIssueRepository = safetyCenterIssueRepository;
     }
 
@@ -229,7 +236,7 @@ public final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback
                             .setUserId(userId)
                             .build();
 
-            if (mSafetyCenterIssueRepository.isIssueDismissed(
+            if (mSafetyCenterIssueDismissalRepository.isIssueDismissed(
                     safetyCenterIssueKey, safetySourceIssue.getSeverityLevel())) {
                 dismissedIssuesCount++;
             } else {
