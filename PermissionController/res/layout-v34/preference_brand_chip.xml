@@ -14,9 +14,12 @@
   ~ limitations under the License.
   -->
 
-<resources>
-    <dimen name="permission_rationale_purpose_list_bullet_radius">3dp</dimen>
-    <dimen name="permission_rationale_purpose_list_bullet_indent">9dp</dimen>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/SafetyCenterBrandChip">
 
-    <dimen name="sc_brand_chip_corner_radius">24dp</dimen>
-</resources>
+    <Button
+        android:id="@+id/brand_chip"
+        android:text="@string/security_privacy_brand_name"
+        style="@style/SafetyCenterBrandChipButton"/>
+</FrameLayout>

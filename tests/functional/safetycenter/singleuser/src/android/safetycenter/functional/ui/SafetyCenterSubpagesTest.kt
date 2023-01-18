@@ -578,6 +578,55 @@ class SafetyCenterSubpagesTest {
         }
     }
 
+    @Test
+    fun brandChip_openSubpageFromHomepage_homepageReopensOnClick() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
+        safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, safetySourceTestData.information)
+        val sourcesGroup = safetyCenterTestConfigs.singleSourceConfig.safetySourcesGroups.first()
+
+        context.launchSafetyCenterActivity {
+            // Verify that the homepage is opened
+            waitAllTextDisplayed(
+                    context.getString(sourcesGroup.titleResId),
+                    context.getString(sourcesGroup.summaryResId)
+            )
+
+            // Open subpage by clicking on the group title
+            waitDisplayed(By.text(context.getString(sourcesGroup.titleResId))) { it.click() }
+            waitDisplayed(By.desc(context.getString(sourcesGroup.titleResId)))
+            waitAllTextNotDisplayed(context.getString(sourcesGroup.summaryResId))
+
+            // Open homepage again by clicking on the brand chip
+            waitButtonDisplayed("Security & privacy") { it.click() }
+            waitAllTextDisplayed(
+                    context.getString(sourcesGroup.titleResId),
+                    context.getString(sourcesGroup.summaryResId)
+            )
+        }
+    }
+
+    @Test
+    fun brandChip_openSubpageFromIntent_homepageOpensOnClick() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
+        safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, safetySourceTestData.information)
+        val sourcesGroup = safetyCenterTestConfigs.singleSourceConfig.safetySourcesGroups.first()
+        val extras = Bundle()
+        extras.putString(EXTRA_SAFETY_SOURCES_GROUP_ID, sourcesGroup.id)
+
+        context.launchSafetyCenterActivity(extras) {
+            // Verify that the subpage is opened
+            waitDisplayed(By.desc(context.getString(sourcesGroup.titleResId)))
+            waitAllTextNotDisplayed(context.getString(sourcesGroup.summaryResId))
+
+            // Open homepage by clicking on the brand chip
+            waitButtonDisplayed("Security & privacy") { it.click() }
+            waitAllTextDisplayed(
+                    context.getString(sourcesGroup.titleResId),
+                    context.getString(sourcesGroup.summaryResId)
+            )
+        }
+    }
+
     private fun openSubpageAndExit(group: SafetySourcesGroup, block: () -> Unit) {
         val uiDevice = UiAutomatorUtils2.getUiDevice()
         uiDevice.waitForIdle()
