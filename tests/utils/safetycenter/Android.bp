@@ -33,6 +33,9 @@ android_library {
         // <option name="exclude-annotation" value="org.junit.Ignore"/>
         "guava-android",
         "guava-android-testlib",
+        "kotlinx-coroutines-android",
+        "safety-center-internal-data",
+        "safety-center-resources-lib",
     ],
     apex_available: [
         "com.android.permission",

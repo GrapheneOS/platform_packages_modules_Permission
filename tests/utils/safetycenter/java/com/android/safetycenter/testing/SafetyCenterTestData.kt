@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package android.safetycenter.cts.testing
+package com.android.safetycenter.testing
 
 import android.app.PendingIntent
 import android.content.Context
@@ -38,14 +38,6 @@ import android.safetycenter.SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_RECOMMENDATIO
 import android.safetycenter.SafetyCenterStatus
 import android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING
 import android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN
-import android.safetycenter.cts.testing.SafetyCenterTestConfigs.Companion.SINGLE_SOURCE_GROUP_ID
-import android.safetycenter.cts.testing.SafetySourceTestData.Companion.CRITICAL_ISSUE_ACTION_ID
-import android.safetycenter.cts.testing.SafetySourceTestData.Companion.CRITICAL_ISSUE_ID
-import android.safetycenter.cts.testing.SafetySourceTestData.Companion.INFORMATION_ISSUE_ACTION_ID
-import android.safetycenter.cts.testing.SafetySourceTestData.Companion.INFORMATION_ISSUE_ID
-import android.safetycenter.cts.testing.SafetySourceTestData.Companion.ISSUE_TYPE_ID
-import android.safetycenter.cts.testing.SafetySourceTestData.Companion.RECOMMENDATION_ISSUE_ACTION_ID
-import android.safetycenter.cts.testing.SafetySourceTestData.Companion.RECOMMENDATION_ISSUE_ID
 import android.util.ArrayMap
 import androidx.annotation.RequiresApi
 import com.android.modules.utils.build.SdkLevel
@@ -55,6 +47,14 @@ import com.android.safetycenter.internaldata.SafetyCenterIssueActionId
 import com.android.safetycenter.internaldata.SafetyCenterIssueId
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey
 import com.android.safetycenter.resources.SafetyCenterResourcesContext
+import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SINGLE_SOURCE_GROUP_ID
+import com.android.safetycenter.testing.SafetySourceTestData.Companion.CRITICAL_ISSUE_ACTION_ID
+import com.android.safetycenter.testing.SafetySourceTestData.Companion.CRITICAL_ISSUE_ID
+import com.android.safetycenter.testing.SafetySourceTestData.Companion.INFORMATION_ISSUE_ACTION_ID
+import com.android.safetycenter.testing.SafetySourceTestData.Companion.INFORMATION_ISSUE_ID
+import com.android.safetycenter.testing.SafetySourceTestData.Companion.ISSUE_TYPE_ID
+import com.android.safetycenter.testing.SafetySourceTestData.Companion.RECOMMENDATION_ISSUE_ACTION_ID
+import com.android.safetycenter.testing.SafetySourceTestData.Companion.RECOMMENDATION_ISSUE_ID
 import java.util.Locale
 
 /**

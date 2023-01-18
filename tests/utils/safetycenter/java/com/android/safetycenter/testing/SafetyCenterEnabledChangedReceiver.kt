@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package android.safetycenter.cts.testing
+package com.android.safetycenter.testing
 
 import android.Manifest.permission.READ_SAFETY_CENTER_STATUS
 import android.content.BroadcastReceiver
@@ -22,8 +22,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.safetycenter.SafetyCenterManager.ACTION_SAFETY_CENTER_ENABLED_CHANGED
-import android.safetycenter.cts.testing.Coroutines.TIMEOUT_LONG
-import android.safetycenter.cts.testing.Coroutines.runBlockingWithTimeout
+import com.android.safetycenter.testing.Coroutines.TIMEOUT_LONG
+import com.android.safetycenter.testing.Coroutines.runBlockingWithTimeout
 import com.android.compatibility.common.util.SystemUtil
 import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
 import java.time.Duration
