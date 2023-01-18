@@ -50,10 +50,10 @@ import com.android.permissioncontroller.PermissionControllerApplication;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity;
 import com.android.permissioncontroller.permission.ui.handheld.SettingsWithLargeHeader;
-import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModelNew;
-import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModelNew.AppPermissionAccessUiInfo;
-import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModelNew.PermissionUsageDetailsUiInfo;
-import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModelNew.PermissionUsageDetailsViewModelNewFactory;
+import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel;
+import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel.AppPermissionAccessUiInfo;
+import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel.PermissionUsageDetailsUiInfo;
+import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel.PermissionUsageDetailsViewModelFactory;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -68,11 +68,11 @@ import java.util.concurrent.atomic.AtomicReference;
 
 /** The permission details page showing the history/timeline of a permission */
 @RequiresApi(Build.VERSION_CODES.S)
-public class PermissionDetailsFragment extends SettingsWithLargeHeader {
+public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
     private static final String KEY_SESSION_ID = "_session_id";
     private static final String SESSION_ID_KEY =
-            PermissionDetailsFragment.class.getName() + KEY_SESSION_ID;
-    private static final String TAG = PermissionDetailsFragment.class.getName();
+            PermissionUsageDetailsFragment.class.getName() + KEY_SESSION_ID;
+    private static final String TAG = PermissionUsageDetailsFragment.class.getName();
 
     private static final int MENU_SHOW_7_DAYS_DATA = Menu.FIRST + 4;
     private static final int MENU_SHOW_24_HOURS_DATA = Menu.FIRST + 5;
@@ -94,7 +94,7 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader {
     private MenuItem mShow7DaysDataMenu;
     private MenuItem mShow24HoursDataMenu;
 
-    private PermissionUsageDetailsViewModelNew mViewModel;
+    private PermissionUsageDetailsViewModel mViewModel;
 
     private long mSessionId;
 
@@ -108,13 +108,11 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader {
             return;
         }
 
-        PermissionUsageDetailsViewModelNewFactory factory =
-                new PermissionUsageDetailsViewModelNewFactory(
-                        PermissionControllerApplication.get(),
-                        this,
-                        mPermissionGroup);
+        PermissionUsageDetailsViewModelFactory factory =
+                new PermissionUsageDetailsViewModelFactory(
+                        PermissionControllerApplication.get(), this, mPermissionGroup);
         mViewModel =
-                new ViewModelProvider(this, factory).get(PermissionUsageDetailsViewModelNew.class);
+                new ViewModelProvider(this, factory).get(PermissionUsageDetailsViewModel.class);
 
         if (savedInstanceState != null) {
             mSessionId = savedInstanceState.getLong(SESSION_ID_KEY);

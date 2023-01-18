@@ -19,94 +19,78 @@ package com.android.permissioncontroller.permission.ui.model.v31
 import android.Manifest
 import android.app.AppOpsManager
 import android.app.Application
-import android.app.LoaderManager
 import android.app.role.RoleManager
 import android.content.Context
-import android.content.pm.ApplicationInfo
 import android.content.res.Resources
-import android.graphics.drawable.Drawable
 import android.os.Build
+import android.os.Bundle
 import android.os.UserHandle
 import androidx.annotation.RequiresApi
+import androidx.lifecycle.AbstractSavedStateViewModelFactory
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.savedstate.SavedStateRegistryOwner
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.R
-import com.android.permissioncontroller.permission.model.AppPermissionGroup
-import com.android.permissioncontroller.permission.model.legacy.PermissionApps.PermissionApp
-import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
-import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage.TimelineUsage
-import com.android.permissioncontroller.permission.model.v31.PermissionUsages
+import com.android.permissioncontroller.permission.data.AppPermGroupUiInfoLiveData
+import com.android.permissioncontroller.permission.data.LightPackageInfoLiveData
+import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
+import com.android.permissioncontroller.permission.data.v31.AllLightHistoricalPackageOpsLiveData
+import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
+import com.android.permissioncontroller.permission.model.livedatatypes.v31.LightHistoricalPackageOps
+import com.android.permissioncontroller.permission.model.livedatatypes.v31.LightHistoricalPackageOps.AppPermissionDiscreteAccesses
+import com.android.permissioncontroller.permission.model.livedatatypes.v31.LightHistoricalPackageOps.AppPermissionId
+import com.android.permissioncontroller.permission.model.livedatatypes.v31.LightHistoricalPackageOps.AttributedAppPermissionDiscreteAccesses
+import com.android.permissioncontroller.permission.model.livedatatypes.v31.LightHistoricalPackageOps.DiscreteAccess
 import com.android.permissioncontroller.permission.ui.handheld.v31.getDurationUsedStr
 import com.android.permissioncontroller.permission.ui.handheld.v31.shouldShowSubattributionInPermissionsDashboard
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPackageLabel
 import com.android.permissioncontroller.permission.utils.PermissionMapping
-import com.android.permissioncontroller.permission.utils.StringUtils
 import com.android.permissioncontroller.permission.utils.SubattributionUtils
 import com.android.permissioncontroller.permission.utils.Utils
 import java.time.Instant
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.TimeUnit.DAYS
-import kotlin.math.max
 
-/** View model for the permission details fragment. */
+/** [ViewModel] for the Permission Usage Details page. */
 @RequiresApi(Build.VERSION_CODES.S)
 class PermissionUsageDetailsViewModel(
     val application: Application,
-    val roleManager: RoleManager,
+    private val state: SavedStateHandle,
     private val permissionGroup: String,
-    val sessionId: Long
 ) : ViewModel() {
 
-    companion object {
-        private const val ONE_HOUR_MS = 3_600_000
-        private const val ONE_MINUTE_MS = 60_000
-        private const val CLUSTER_SPACING_MINUTES: Long = 1L
-        private val TIME_7_DAYS_DURATION: Long = DAYS.toMillis(7)
-        private val TIME_24_HOURS_DURATION: Long = DAYS.toMillis(1)
+    val allLightHistoricalPackageOpsLiveData =
+        AllLightHistoricalPackageOpsLiveData(application, opNames)
+    private val appPermGroupUiInfoLiveDataList =
+        mutableMapOf<AppPermissionId, AppPermGroupUiInfoLiveData>()
+    private val lightPackageInfoLiveDataMap =
+        mutableMapOf<Pair<String, UserHandle>, LightPackageInfoLiveData>()
+    val showSystemLiveData = state.getLiveData(SHOULD_SHOW_SYSTEM_KEY, false)
+    val show7DaysLiveData = state.getLiveData(SHOULD_SHOW_7_DAYS_KEY, false)
+
+    private val roleManager =
+        Utils.getSystemServiceSafe(application.applicationContext, RoleManager::class.java)
+
+    /** Updates whether system app permissions usage should be displayed in the UI. */
+    fun updateShowSystem(showSystem: Boolean) {
+        if (showSystem != state[PermissionUsageViewModel.SHOULD_SHOW_SYSTEM_KEY]) {
+            state[PermissionUsageViewModel.SHOULD_SHOW_SYSTEM_KEY] = showSystem
+        }
     }
 
-    private val mTimeFilterItemMs = mutableListOf<TimeFilterItemMs>()
-
-    init {
-        initializeTimeFilterItems(application)
+    /** Updates whether 7 days usage or 1 day usage should be displayed in the UI. */
+    fun updateShow7Days(show7Days: Boolean) {
+        if (show7Days != state[PermissionUsageViewModel.SHOULD_SHOW_7_DAYS_KEY]) {
+            state[PermissionUsageViewModel.SHOULD_SHOW_7_DAYS_KEY] = show7Days
+        }
     }
 
-    /** Loads permission usages using [PermissionUsages]. Response is returned to the [callback]. */
-    fun loadPermissionUsages(
-        loaderManager: LoaderManager,
-        permissionUsages: PermissionUsages,
-        callback: PermissionUsages.PermissionsUsagesChangeCallback,
-        filterTimesIndex: Int
-    ) {
-        val timeFilterItemMs: TimeFilterItemMs = mTimeFilterItemMs[filterTimesIndex]
-        val filterTimeBeginMillis = max(System.currentTimeMillis() - timeFilterItemMs.timeMs, 0)
-        permissionUsages.load(
-            /* filterPackageName= */ null,
-            /* filterPermissionGroups= */ null,
-            filterTimeBeginMillis,
-            Long.MAX_VALUE,
-            PermissionUsages.USAGE_FLAG_LAST or PermissionUsages.USAGE_FLAG_HISTORICAL,
-            loaderManager,
-            /* getUiInfo= */ false,
-            /* getNonPlatformPermissions= */ false,
-            /* callback= */ callback,
-            /* sync= */ false)
-    }
-
-    /**
-     * Create a [PermissionUsageDetailsUiData] based on the provided data.
-     *
-     * @param appPermissionUsages data about app permission usages
-     * @param showSystem whether system apps should be shown
-     * @param show7Days whether the last 7 days of history should be shown
-     */
-    fun buildPermissionUsageDetailsUiData(
-        appPermissionUsages: List<AppPermissionUsage>,
-        showSystem: Boolean,
-        show7Days: Boolean
-    ): PermissionUsageDetailsUiData {
+    /** Creates a [PermissionUsageDetailsUiInfo] containing all information to render the UI. */
+    fun buildPermissionUsageDetailsUiInfo(): PermissionUsageDetailsUiInfo {
+        val showSystem: Boolean = state[SHOULD_SHOW_SYSTEM_KEY] ?: false
+        val show7Days: Boolean = state[SHOULD_SHOW_7_DAYS_KEY] ?: false
         val showPermissionUsagesDuration =
             if (KotlinUtils.is7DayToggleEnabled() && show7Days) {
                 TIME_7_DAYS_DURATION
@@ -116,287 +100,282 @@ class PermissionUsageDetailsViewModel(
         val startTime =
             (System.currentTimeMillis() - showPermissionUsagesDuration).coerceAtLeast(
                 Instant.EPOCH.toEpochMilli())
-        val appPermissionTimelineUsages: List<AppPermissionTimelineUsage> =
-            extractAppPermissionTimelineUsagesForGroup(appPermissionUsages, permissionGroup)
-        val shouldDisplayShowSystemToggle =
-            shouldDisplayShowSystemToggle(appPermissionTimelineUsages)
-        val permissionApps: List<PermissionApp> =
-            getPermissionAppsWithRecentDiscreteUsage(
-                appPermissionTimelineUsages, showSystem, startTime)
-        val appPermissionUsageEntries =
-            buildDiscreteAccessClusterData(appPermissionTimelineUsages, showSystem, startTime)
 
-        return PermissionUsageDetailsUiData(
-            permissionApps, shouldDisplayShowSystemToggle, appPermissionUsageEntries)
-    }
-
-    private fun getHistoryPreferenceData(
-        discreteAccessClusterData: DiscreteAccessClusterData,
-    ): HistoryPreferenceData {
-        val context = application
-        val accessTimeList =
-            discreteAccessClusterData.discreteAccessDataList.map { p -> p.accessTimeMs }
-        val durationSummaryLabel =
-            getDurationSummary(discreteAccessClusterData, accessTimeList, context)
-        val proxyLabel = getProxyPackageLabel(discreteAccessClusterData)
-        val subattributionLabel = getSubattributionLabel(discreteAccessClusterData)
-        val showingSubattribution =
-            subattributionLabel != null && subattributionLabel!!.isNotEmpty()
-        val summary =
-            buildUsageSummary(durationSummaryLabel, proxyLabel, subattributionLabel, context)
-
-        return HistoryPreferenceData(
-            UserHandle.getUserHandleForUid(
-                discreteAccessClusterData.appPermissionTimelineUsage.permissionApp.uid),
-            discreteAccessClusterData.appPermissionTimelineUsage.permissionApp.packageName,
-            discreteAccessClusterData.appPermissionTimelineUsage.permissionApp.icon,
-            discreteAccessClusterData.appPermissionTimelineUsage.permissionApp.label,
-            permissionGroup,
-            discreteAccessClusterData.discreteAccessDataList.last().accessTimeMs,
-            discreteAccessClusterData.discreteAccessDataList.first().accessTimeMs,
-            summary,
-            showingSubattribution,
-            discreteAccessClusterData.appPermissionTimelineUsage.attributionTags,
-            sessionId)
+        return PermissionUsageDetailsUiInfo(
+            buildAppPermissionAccessUiInfoList(
+                allLightHistoricalPackageOpsLiveData, startTime, showSystem),
+            shouldDisplayShowSystemToggle(allLightHistoricalPackageOpsLiveData, startTime),
+            show7Days)
     }
 
     /**
-     * Returns whether the provided [AppPermissionUsage] instances contains the provided platform
-     * permission group.
+     * Returns whether the "show/hide system" toggle should be displayed in the UI for the provided
+     * [AllLightHistoricalPackageOpsLiveData].
      */
-    fun containsPlatformAppPermissionGroup(
-        appPermissionUsages: List<AppPermissionUsage>,
-        groupName: String,
-    ) = appPermissionUsages.extractAllPlatformAppPermissionGroups().any { it.name == groupName }
-
-    /** Extracts a list of [AppPermissionTimelineUsage] for a particular permission group. */
-    private fun extractAppPermissionTimelineUsagesForGroup(
-        appPermissionUsages: List<AppPermissionUsage>,
-        group: String
-    ): List<AppPermissionTimelineUsage> =
-        appPermissionUsages
-            .filter { !Utils.getExemptedPackages(roleManager).contains(it.packageName) }
-            .map { appPermissionUsage ->
-                getAppPermissionTimelineUsages(
-                    appPermissionUsage.app,
-                    appPermissionUsage.groupUsages.firstOrNull { it.group.name == group })
-            }
-            .flatten()
-
-    /** Returns whether the show/hide system toggle should be displayed in the UI. */
     private fun shouldDisplayShowSystemToggle(
-        appPermissionTimelineUsages: List<AppPermissionTimelineUsage>,
-    ): Boolean =
-        appPermissionTimelineUsages
-            .map { it.timelineUsage }
-            .filter { it.hasDiscreteData() }
-            .any { it.group.isSystem() }
-
-    /**
-     * Returns a list of [PermissionApp] instances which had recent discrete permission usage
-     * (recent here refers to usages occurring after the provided start time).
-     */
-    private fun getPermissionAppsWithRecentDiscreteUsage(
-        appPermissionTimelineUsageList: List<AppPermissionTimelineUsage>,
-        showSystem: Boolean,
-        startTime: Long,
-    ): List<PermissionApp> =
-        appPermissionTimelineUsageList
-            .filter { it.timelineUsage.hasDiscreteData() }
-            .filter { showSystem || !it.timelineUsage.group.isSystem() }
-            .filter { it.timelineUsage.allDiscreteAccessTime.any { it.first >= startTime } }
-            .map { it.permissionApp }
-
-    /**
-     * Builds a list of [DiscreteAccessClusterData] from the provided list of
-     * [AppPermissionTimelineUsage].
-     */
-    private fun buildDiscreteAccessClusterData(
-        appPermissionTimelineUsageList: List<AppPermissionTimelineUsage>,
-        showSystem: Boolean,
-        startTime: Long,
-    ): List<DiscreteAccessClusterData> =
-        appPermissionTimelineUsageList
-            .map { appPermissionTimelineUsages ->
-                val accessDataList =
-                    extractRecentDiscreteAccessData(
-                        appPermissionTimelineUsages.timelineUsage, showSystem, startTime)
-
-                if (accessDataList.size <= 1) {
-                    return@map accessDataList.map {
-                        DiscreteAccessClusterData(appPermissionTimelineUsages, listOf(it))
-                    }
-                }
-
-                clusterDiscreteAccessData(appPermissionTimelineUsages, accessDataList)
+        allLightHistoricalPackageOpsLiveData: AllLightHistoricalPackageOpsLiveData,
+        startTime: Long
+    ): Boolean {
+        return allLightHistoricalPackageOpsLiveData
+            .getLightHistoricalPackageOps()
+            ?.flatMap {
+                it.appPermissionDiscreteAccesses
+                    .map { it.withLabel() }
+                    .filterOutExemptAppPermissions(true)
+                    .filterAccessesLaterThan(startTime)
             }
-            .flatten()
-            .sortedWith(
-                compareBy(
-                    { -it.discreteAccessDataList.first().accessTimeMs },
-                    { it.appPermissionTimelineUsage.permissionApp.label }))
-            .toList()
+            ?.any { isAppPermissionSystem(it.appPermissionId) }
+            ?: false
+    }
+
+    private fun isAppPermissionSystem(appPermissionId: AppPermissionId): Boolean {
+        val appPermGroupUiInfo = appPermGroupUiInfoLiveDataList[appPermissionId]?.value
+
+        if (appPermGroupUiInfo != null) {
+            return appPermGroupUiInfo.isSystem
+        } else
+        // The AppPermGroupUiInfo may be null if it has either not loaded yet or if the app has not
+        // requested any permissions from the permission group in question.
+        // The Telecom doesn't request microphone or camera permissions. However, telecom app may
+        // use these permissions and they are considered system app permissions, so we return true
+        // even if the AppPermGroupUiInfo is unavailable.
+        if (appPermissionId.packageName == TELECOM_PACKAGE &&
+            (appPermissionId.permGroup == Manifest.permission_group.CAMERA ||
+                appPermissionId.permGroup == Manifest.permission_group.MICROPHONE)) {
+            return true
+        }
+        return false
+    }
 
     /**
-     * Clusters a list of [DiscreteAccessData] into a list of [DiscreteAccessClusterData] instances.
+     * Extracts access data from [AllLightHistoricalPackageOpsLiveData] and composes
+     * [AppPermissionAccessUiInfo]s to be displayed in the UI.
+     */
+    private fun buildAppPermissionAccessUiInfoList(
+        allLightHistoricalPackageOpsLiveData: AllLightHistoricalPackageOpsLiveData,
+        startTime: Long,
+        showSystem: Boolean
+    ): List<AppPermissionAccessUiInfo> {
+        return allLightHistoricalPackageOpsLiveData
+            .getLightHistoricalPackageOps()
+            ?.flatMap { it.clusterAccesses(startTime, showSystem) }
+            ?.sortedBy { -1 * it.discreteAccesses.first().accessTimeMs }
+            ?.map { it.buildAppPermissionAccessUiInfo() }
+            ?: listOf()
+    }
+
+    private fun LightHistoricalPackageOps.clusterAccesses(
+        startTime: Long,
+        showSystem: Boolean
+    ): List<AppPermissionDiscreteAccessCluster> {
+        return if (!shouldShowSubAttributionForApp(getLightPackageInfo(packageName, userHandle)))
+            this.clusterAccessesWithoutAttribution(startTime, showSystem)
+        else {
+            this.clusterAccessesWithAttribution(startTime, showSystem)
+        }
+    }
+
+    /**
+     * Clusters accesses that are close enough together in time such that they can be displayed as a
+     * single access to the user.
      *
-     * [DiscreteAccessData] which have accesses sufficiently close together in time will be places
-     * in the same cluster.
+     * Accesses are clustered taking into account any app subattribution, so each cluster will
+     * pertain a particular attribution label.
      */
-    private fun clusterDiscreteAccessData(
-        appPermissionTimelineUsage: AppPermissionTimelineUsage,
-        discreteAccessDataList: List<DiscreteAccessData>
-    ): List<DiscreteAccessClusterData> {
-        val clusterDataList = mutableListOf<DiscreteAccessClusterData>()
-        val currentDiscreteAccessDataList: MutableList<DiscreteAccessData> = mutableListOf()
-        for (discreteAccessData in discreteAccessDataList) {
-            if (currentDiscreteAccessDataList.isEmpty()) {
-                currentDiscreteAccessDataList.add(discreteAccessData)
-            } else if (!canAccessBeAddedToCluster(
-                discreteAccessData, currentDiscreteAccessDataList)) {
-                clusterDataList.add(
-                    DiscreteAccessClusterData(
-                        appPermissionTimelineUsage, currentDiscreteAccessDataList.toMutableList()))
-                currentDiscreteAccessDataList.clear()
-                currentDiscreteAccessDataList.add(discreteAccessData)
+    private fun LightHistoricalPackageOps.clusterAccessesWithAttribution(
+        startTime: Long,
+        showSystem: Boolean
+    ): List<AppPermissionDiscreteAccessCluster> =
+        this.attributedAppPermissionDiscreteAccesses
+            .flatMap { it.groupAccessesByLabel(getLightPackageInfo(packageName, userHandle)) }
+            .filterOutExemptAppPermissions(showSystem)
+            .filterAccessesLaterThan(startTime)
+            .flatMap { createAccessClusters(it) }
+
+    /**
+     * Clusters accesses that are close enough together in time such that they can be displayed as a
+     * single access to the user.
+     *
+     * Accesses are clustered disregarding any app subattribution.
+     */
+    private fun LightHistoricalPackageOps.clusterAccessesWithoutAttribution(
+        startTime: Long,
+        showSystem: Boolean
+    ): List<AppPermissionDiscreteAccessCluster> =
+        this.appPermissionDiscreteAccesses
+            .map { it.withLabel() }
+            .filterOutExemptAppPermissions(showSystem)
+            .filterAccessesLaterThan(startTime)
+            .flatMap { createAccessClusters(it) }
+
+    /** Filters out accesses earlier than the provided start time. */
+    private fun List<AppPermissionDiscreteAccessesWithLabel>.filterAccessesLaterThan(
+        startTime: Long,
+    ): List<AppPermissionDiscreteAccessesWithLabel> =
+        this.mapNotNull {
+            val updatedDiscreteAccesses =
+                it.discreteAccesses.filter { access -> access.accessTimeMs > startTime }
+            if (updatedDiscreteAccesses.isEmpty()) null
+            else
+                AppPermissionDiscreteAccessesWithLabel(
+                    it.appPermissionId,
+                    it.attributionLabel,
+                    it.attributionTags,
+                    updatedDiscreteAccesses)
+        }
+
+    /** Filters out data for apps and permissions that don't need to be displayed in the UI. */
+    private fun List<AppPermissionDiscreteAccessesWithLabel>.filterOutExemptAppPermissions(
+        showSystem: Boolean
+    ): List<AppPermissionDiscreteAccessesWithLabel> {
+        return this.filter {
+                !Utils.getExemptedPackages(roleManager).contains(it.appPermissionId.packageName)
+            }
+            .filter { it.appPermissionId.permGroup == permissionGroup }
+            .filter { showSystem || !isAppPermissionSystem(it.appPermissionId) }
+    }
+
+    /**
+     * Converts the provided [AppPermissionDiscreteAccesses] to a
+     * [AppPermissionDiscreteAccessesWithLabel] by adding a label.
+     */
+    private fun AppPermissionDiscreteAccesses.withLabel(): AppPermissionDiscreteAccessesWithLabel =
+        AppPermissionDiscreteAccessesWithLabel(
+            this.appPermissionId,
+            Resources.ID_NULL,
+            attributionTags = emptyList(),
+            this.discreteAccesses)
+
+    /** Groups tag-attributed accesses for the provided app and permission by attribution label. */
+    private fun AttributedAppPermissionDiscreteAccesses.groupAccessesByLabel(
+        lightPackageInfo: LightPackageInfo?
+    ): List<AppPermissionDiscreteAccessesWithLabel> {
+        if (lightPackageInfo == null) return emptyList()
+
+        val appPermissionId = this.appPermissionId
+        val labelsToDiscreteAccesses = mutableMapOf<Int, MutableList<DiscreteAccess>>()
+        val labelsToTags = mutableMapOf<Int, MutableList<String>>()
+
+        val appPermissionDiscreteAccessWithLabels =
+            mutableListOf<AppPermissionDiscreteAccessesWithLabel>()
+
+        for ((tag, discreteAccesses) in this.attributedDiscreteAccesses) {
+            val label: Int? = lightPackageInfo.attributionTagsToLabels[tag]
+
+            if (label != null && !labelsToDiscreteAccesses.containsKey(label)) {
+                labelsToDiscreteAccesses[label] = mutableListOf()
+            }
+            labelsToDiscreteAccesses[label]?.addAll(discreteAccesses)
+
+            if (label != null && !labelsToTags.containsKey(label)) {
+                labelsToTags[label] = mutableListOf()
+            }
+            labelsToTags[label]?.add(tag)
+        }
+
+        for ((label, discreteAccesses) in labelsToDiscreteAccesses.entries) {
+            val tags = labelsToTags[label]?.toList() ?: listOf()
+
+            appPermissionDiscreteAccessWithLabels.add(
+                AppPermissionDiscreteAccessesWithLabel(
+                    appPermissionId,
+                    label,
+                    tags,
+                    discreteAccesses.sortedBy { -1 * it.accessTimeMs }))
+        }
+
+        return appPermissionDiscreteAccessWithLabels
+    }
+
+    /**
+     * Clusters [DiscreteAccess]es represented by a [AppPermissionDiscreteAccessesWithLabel] into
+     * smaller groups to form a list of [AppPermissionDiscreteAccessCluster] instances.
+     *
+     * [DiscreteAccess]es which have accesses sufficiently close together in time will be places in
+     * the same cluster.
+     */
+    private fun createAccessClusters(
+        appPermAccesses: AppPermissionDiscreteAccessesWithLabel,
+    ): List<AppPermissionDiscreteAccessCluster> {
+        val clusters = mutableListOf<AppPermissionDiscreteAccessCluster>()
+        val currentDiscreteAccesses = mutableListOf<DiscreteAccess>()
+        for (discreteAccess in appPermAccesses.discreteAccesses) {
+            if (currentDiscreteAccesses.isEmpty()) {
+                currentDiscreteAccesses.add(discreteAccess)
+            } else if (!canAccessBeAddedToCluster(discreteAccess, currentDiscreteAccesses)) {
+                clusters.add(
+                    AppPermissionDiscreteAccessCluster(
+                        appPermAccesses.appPermissionId,
+                        appPermAccesses.attributionLabel,
+                        appPermAccesses.attributionTags,
+                        currentDiscreteAccesses.toMutableList()))
+                currentDiscreteAccesses.clear()
+                currentDiscreteAccesses.add(discreteAccess)
             } else {
-                currentDiscreteAccessDataList.add(discreteAccessData)
+                currentDiscreteAccesses.add(discreteAccess)
             }
         }
-        if (currentDiscreteAccessDataList.isNotEmpty()) {
-            clusterDataList.add(
-                DiscreteAccessClusterData(
-                    appPermissionTimelineUsage, currentDiscreteAccessDataList))
+
+        if (currentDiscreteAccesses.isNotEmpty()) {
+            clusters.add(
+                AppPermissionDiscreteAccessCluster(
+                    appPermAccesses.appPermissionId,
+                    appPermAccesses.attributionLabel,
+                    appPermAccesses.attributionTags,
+                    currentDiscreteAccesses.toMutableList()))
         }
-        return clusterDataList
+        return clusters
     }
 
     /**
-     * Extract recent [DiscreteAccessData] from a list of [TimelineUsage] instances, and return them
-     * ordered descending by access time (recent here refers to accesses occurring after the
-     * provided start time).
-     */
-    private fun extractRecentDiscreteAccessData(
-        timelineUsages: TimelineUsage,
-        showSystem: Boolean,
-        startTime: Long
-    ): List<DiscreteAccessData> {
-        return if (timelineUsages.hasDiscreteData() &&
-            (showSystem || !timelineUsages.group.isSystem())) {
-            getRecentDiscreteAccessData(timelineUsages, startTime)
-                .sortedWith(compareBy { -it.accessTimeMs })
-                .toList()
-        } else {
-            listOf()
-        }
-    }
-
-    /**
-     * Extract recent [DiscreteAccessData] from a [TimelineUsage]. (recent here refers to accesses
-     * occurring after the provided start time).
-     */
-    private fun getRecentDiscreteAccessData(
-        timelineUsage: TimelineUsage,
-        startTime: Long
-    ): List<DiscreteAccessData> {
-        return timelineUsage.allDiscreteAccessTime
-            .filter { it.first >= startTime }
-            .map {
-                DiscreteAccessData(
-                    it.first,
-                    it.second,
-                    it.third,
-                )
-            }
-    }
-
-    /**
-     * Returns whether the provided [DiscreteAccessData] occurred close enough to those in the
-     * clustered list that it can be added to the cluster
+     * Returns whether the provided [DiscreteAccess] occurred close enough to those in the clustered
+     * list that it can be added to the cluster.
      */
     private fun canAccessBeAddedToCluster(
-        accessData: DiscreteAccessData,
-        clusteredAccessDataList: List<DiscreteAccessData>
+        discreteAccess: DiscreteAccess,
+        clusteredAccesses: List<DiscreteAccess>
     ): Boolean =
-        accessData.accessTimeMs / ONE_HOUR_MS ==
-            clusteredAccessDataList.first().accessTimeMs / ONE_HOUR_MS &&
-            clusteredAccessDataList.last().accessTimeMs / ONE_MINUTE_MS -
-                accessData.accessTimeMs / ONE_MINUTE_MS > CLUSTER_SPACING_MINUTES
+        discreteAccess.accessTimeMs / ONE_HOUR_MS ==
+            clusteredAccesses.first().accessTimeMs / ONE_HOUR_MS &&
+            clusteredAccesses.last().accessTimeMs / ONE_MINUTE_MS -
+                discreteAccess.accessTimeMs / ONE_MINUTE_MS > CLUSTER_SPACING_MINUTES
 
     /**
-     * Returns whether the provided [AppPermissionGroup] is considered a system group.
-     *
-     * For the purpose of Permissions Hub UI, non user-sensitive [AppPermissionGroup]s are
-     * considered "system" and should be hidden from the main page unless requested by the user
-     * through the "show/hide system" toggle.
+     * Composes all UI information from a [AppPermissionDiscreteAccessCluster] into a
+     * [AppPermissionAccessUiInfo].
      */
-    private fun AppPermissionGroup.isSystem() = !Utils.isGroupOrBgGroupUserSensitive(this)
+    private fun AppPermissionDiscreteAccessCluster.buildAppPermissionAccessUiInfo():
+        AppPermissionAccessUiInfo {
+        val context = application
+        val accessTimeList = this.discreteAccesses.map { it.accessTimeMs }
+        val durationSummaryLabel = getDurationSummary(context, this, accessTimeList)
+        val proxyLabel = getProxyPackageLabel(this)
+        val subAttributionLabel = getSubAttributionLabel(this)
+        val showingSubAttribution = subAttributionLabel != null && subAttributionLabel.isNotEmpty()
+        val summary =
+            buildUsageSummary(context, durationSummaryLabel, proxyLabel, subAttributionLabel)
 
-    /** Returns whether app subattribution should be shown. */
-    private fun shouldShowSubattributionForApp(appInfo: ApplicationInfo): Boolean {
-        return shouldShowSubattributionInPermissionsDashboard() &&
-            SubattributionUtils.isSubattributionSupported(application, appInfo)
+        return AppPermissionAccessUiInfo(
+            this.appPermissionId.userHandle,
+            this.appPermissionId.packageName,
+            permissionGroup,
+            this.discreteAccesses.last().accessTimeMs,
+            this.discreteAccesses.first().accessTimeMs,
+            summary,
+            showingSubAttribution,
+            ArrayList(this.attributionTags))
     }
-
-    /** Returns a summary of the duration the permission was accessed for. */
-    private fun getDurationSummary(
-        usage: DiscreteAccessClusterData,
-        accessTimeList: List<Long>,
-        context: Context
-    ): String? {
-        if (accessTimeList.isEmpty()) {
-            return null
-        }
-
-        var durationMs: Long
-
-        // Since Location accesses are atomic, we manually calculate the access duration
-        // by comparing the first and last access within the cluster.
-        if (permissionGroup == Manifest.permission_group.LOCATION) {
-            durationMs = accessTimeList[0] - accessTimeList[accessTimeList.size - 1]
-        } else {
-            durationMs =
-                usage.discreteAccessDataList.map { it.accessDurationMs }.filter { it > 0 }.sum()
-        }
-        // Only show the duration summary if it is at least (CLUSTER_SPACING_MINUTES + 1) minutes.
-        // Displaying a time that is shorter than the cluster granularity
-        // (CLUSTER_SPACING_MINUTES) will not convey useful information.
-        if (durationMs >= TimeUnit.MINUTES.toMillis(CLUSTER_SPACING_MINUTES + 1)) {
-            return getDurationUsedStr(context, durationMs)
-        }
-
-        return null
-    }
-
-    /** Returns the proxied package label if the permission access was proxied. */
-    private fun getProxyPackageLabel(usage: DiscreteAccessClusterData): String? =
-        usage.discreteAccessDataList
-            .firstOrNull { it.proxy?.packageName != null }
-            ?.let {
-                getPackageLabel(
-                    PermissionControllerApplication.get(),
-                    it.proxy!!.packageName!!,
-                    UserHandle.getUserHandleForUid(it.proxy!!.uid))
-            }
-
-    /** Returns the attribution label for the permission access, if any. */
-    private fun getSubattributionLabel(usage: DiscreteAccessClusterData): String? =
-        if (usage.appPermissionTimelineUsage.label == Resources.ID_NULL) null
-        else
-            usage.appPermissionTimelineUsage.permissionApp.attributionLabels?.let {
-                it[usage.appPermissionTimelineUsage.label]
-            }
 
     /** Builds a summary of the permission access. */
     private fun buildUsageSummary(
-        subattributionLabel: String?,
+        context: Context,
+        subAttributionLabel: String?,
         proxyPackageLabel: String?,
-        durationSummary: String?,
-        context: Context
+        durationSummary: String?
     ): String? {
-        val subTextStrings: MutableList<String?> = mutableListOf()
+        val subTextStrings: MutableList<String> = mutableListOf()
 
-        subattributionLabel?.let { subTextStrings.add(subattributionLabel) }
+        subAttributionLabel?.let { subTextStrings.add(subAttributionLabel) }
         proxyPackageLabel?.let { subTextStrings.add(it) }
         durationSummary?.let { subTextStrings.add(it) }
         return when (subTextStrings.size) {
@@ -414,145 +393,240 @@ class PermissionUsageDetailsViewModel(
         }
     }
 
-    /**
-     * Builds a list of [AppPermissionTimelineUsage] from the provided
-     * [AppPermissionUsage.GroupUsage].
-     */
-    private fun getAppPermissionTimelineUsages(
-        app: PermissionApp,
-        groupUsage: AppPermissionUsage.GroupUsage?
-    ): List<AppPermissionTimelineUsage> {
-        if (groupUsage == null) {
-            return listOf()
+    /** Returns whether app subattribution should be shown. */
+    private fun shouldShowSubAttributionForApp(lightPackageInfo: LightPackageInfo?): Boolean {
+        return lightPackageInfo != null &&
+            shouldShowSubattributionInPermissionsDashboard() &&
+            SubattributionUtils.isSubattributionSupported(lightPackageInfo)
+    }
+
+    /** Returns a summary of the duration the permission was accessed for. */
+    private fun getDurationSummary(
+        context: Context,
+        accessCluster: AppPermissionDiscreteAccessCluster,
+        accessTimeList: List<Long>,
+    ): String? {
+        if (accessTimeList.isEmpty()) {
+            return null
         }
 
-        if (shouldShowSubattributionForApp(app.appInfo)) {
-            return groupUsage.attributionLabelledGroupUsages.map {
-                AppPermissionTimelineUsage(permissionGroup, app, it, it.label)
+        val durationMs: Long =
+        // Since Location accesses are atomic, we manually calculate the access duration
+        // by comparing the first and last access within the cluster.
+        if (permissionGroup == Manifest.permission_group.LOCATION) {
+                accessTimeList[0] - accessTimeList[accessTimeList.size - 1]
+            } else {
+                accessCluster.discreteAccesses
+                    .filter { it.accessDurationMs > 0 }
+                    .sumOf { it.accessDurationMs }
             }
+
+        // Only show the duration summary if it is at least (CLUSTER_SPACING_MINUTES + 1) minutes.
+        // Displaying a time that is shorter than the cluster granularity
+        // (CLUSTER_SPACING_MINUTES) will not convey useful information.
+        if (durationMs >= TimeUnit.MINUTES.toMillis(CLUSTER_SPACING_MINUTES + 1)) {
+            return getDurationUsedStr(context, durationMs)
         }
 
-        return listOf(
-            AppPermissionTimelineUsage(permissionGroup, app, groupUsage, Resources.ID_NULL))
+        return null
     }
 
-    /** Extracts to a set all the permission groups declared by the platform. */
-    private fun List<AppPermissionUsage>.extractAllPlatformAppPermissionGroups():
-        Set<AppPermissionGroup> =
-        this.flatMap { it.groupUsages }
-            .map { it.group }
-            .filter { PermissionMapping.isPlatformPermissionGroup(it.name) }
-            .toSet()
+    /** Returns the proxied package label if the permission access was proxied. */
+    private fun getProxyPackageLabel(accessCluster: AppPermissionDiscreteAccessCluster): String? =
+        accessCluster.discreteAccesses
+            .firstOrNull { it.proxy?.packageName != null }
+            ?.let {
+                getPackageLabel(
+                    PermissionControllerApplication.get(),
+                    it.proxy!!.packageName!!,
+                    UserHandle.getUserHandleForUid(it.proxy.uid))
+            }
 
-    /** Initialize all relevant [TimeFilterItemMs] values. */
-    private fun initializeTimeFilterItems(context: Context) {
-        mTimeFilterItemMs.add(
-            TimeFilterItemMs(Long.MAX_VALUE, context.getString(R.string.permission_usage_any_time)))
-        mTimeFilterItemMs.add(
-            TimeFilterItemMs(
-                DAYS.toMillis(7),
-                StringUtils.getIcuPluralsString(context, R.string.permission_usage_last_n_days, 7)))
-        mTimeFilterItemMs.add(
-            TimeFilterItemMs(
-                DAYS.toMillis(1),
-                StringUtils.getIcuPluralsString(context, R.string.permission_usage_last_n_days, 1)))
+    /** Returns the attribution label for the permission access, if any. */
+    private fun getSubAttributionLabel(accessCluster: AppPermissionDiscreteAccessCluster): String? =
+        if (accessCluster.attributionLabel == Resources.ID_NULL) null
+        else {
+            val lightPackageInfo = getLightPackageInfo(accessCluster.appPermissionId)
+            getSubAttributionLabels(lightPackageInfo)?.get(accessCluster.attributionLabel)
+        }
 
-        // TODO: theianchen add code for filtering by time here.
-    }
+    private fun getSubAttributionLabels(lightPackageInfo: LightPackageInfo?): Map<Int, String>? =
+        if (lightPackageInfo == null) null
+        else SubattributionUtils.getAttributionLabels(application, lightPackageInfo)
+
+    private fun getLightPackageInfo(appPermissionId: AppPermissionId) =
+        lightPackageInfoLiveDataMap[Pair(appPermissionId.packageName, appPermissionId.userHandle)]
+            ?.value
+
+    private fun getLightPackageInfo(packageName: String, userHandle: UserHandle) =
+        lightPackageInfoLiveDataMap[Pair(packageName, userHandle)]?.value
+
+    private fun AllLightHistoricalPackageOpsLiveData.getLightHistoricalPackageOps() =
+        this.value?.values
 
     /** Data used to create a preference for an app's permission usage. */
-    data class HistoryPreferenceData(
+    data class AppPermissionAccessUiInfo(
         val userHandle: UserHandle,
         val pkgName: String,
-        val appIcon: Drawable?,
-        val preferenceTitle: String,
         val permissionGroup: String,
         val accessStartTime: Long,
         val accessEndTime: Long,
         val summaryText: CharSequence?,
         val showingAttribution: Boolean,
         val attributionTags: ArrayList<String>,
-        val sessionId: Long
     )
-
-    /**
-     * A class representing a given time, e.g., "in the last hour".
-     *
-     * @param timeMs the time represented by this object in milliseconds.
-     * @param label the label to describe the timeframe
-     */
-    data class TimeFilterItemMs(val timeMs: Long, val label: String)
 
     /**
      * Class containing all the information needed by the permission usage details fragments to
      * render UI.
      */
-    inner class PermissionUsageDetailsUiData(
-        /** List of [PermissionApp] instances */
-        // Note that these are used only to cache app data for the permission usage details
-        // fragment, and have no bearing on the UI on the main permission usage page.
-        val permissionApps: List<PermissionApp>,
+    data class PermissionUsageDetailsUiInfo(
+        /** List of [AppPermissionAccessUiInfo]s to be displayed in the UI. */
+        val appPermissionAccessUiInfoList: List<AppPermissionAccessUiInfo>,
         /** Whether to show the "show/hide system" toggle. */
         val shouldDisplayShowSystemToggle: Boolean,
-        /** [DiscreteAccessClusterData] instances ordered for display in UI */
-        private val discreteAccessClusterDataList: List<DiscreteAccessClusterData>,
-    ) {
-        // Note that the HistoryPreferenceData are not initialized within the
-        // PermissionUsageDetailsUiData instance as the need to be constructed only after the
-        // calling fragment loads the necessary PermissionApp instances. We will attempt to remove
-        // this dependency in b/240978905.
-        /** Builds a list of [HistoryPreferenceData] to be displayed in the UI. */
-        fun getHistoryPreferenceDataList(): List<HistoryPreferenceData> {
-            return discreteAccessClusterDataList.map {
-                this@PermissionUsageDetailsViewModel.getHistoryPreferenceData(it)
-            }
-        }
-    }
+        /** Whether to show data over the last 7 days. */
+        val show7Days: Boolean
+    )
 
     /**
-     * Data class representing a cluster of accesses, to be represented as a single entry in the UI.
+     * Data class representing a cluster of permission accesses close enough together to be
+     * displayed as a single access in the UI.
      */
-    data class DiscreteAccessClusterData(
-        val appPermissionTimelineUsage: AppPermissionTimelineUsage,
-        val discreteAccessDataList: List<DiscreteAccessData>
+    private data class AppPermissionDiscreteAccessCluster(
+        val appPermissionId: AppPermissionId,
+        val attributionLabel: Int,
+        val attributionTags: List<String>,
+        val discreteAccesses: List<DiscreteAccess>,
     )
 
-    /** Data class representing a discrete permission access. */
-    data class DiscreteAccessData(
-        val accessTimeMs: Long,
-        val accessDurationMs: Long,
-        val proxy: AppOpsManager.OpEventProxyInfo?
+    /**
+     * Data class representing all permission accesses for a particular package, user, permission
+     * and attribution label.
+     */
+    private data class AppPermissionDiscreteAccessesWithLabel(
+        val appPermissionId: AppPermissionId,
+        val attributionLabel: Int,
+        val attributionTags: List<String>,
+        val discreteAccesses: List<DiscreteAccess>
     )
 
-    /** Data class representing an app's permissions usages for a particular permission group. */
-    data class AppPermissionTimelineUsage(
-        /** Permission group whose usage is being tracked. */
-        val permissionGroup: String,
-        // we need a PermissionApp because the loader takes the PermissionApp
-        // object and loads the icon and label information asynchronously
-        /** App whose permissions are being tracked. */
-        val permissionApp: PermissionApp,
-        /** Timeline usage for the given app and permission. */
-        val timelineUsage: TimelineUsage,
-        val label: Int
-    ) {
-        val attributionTags: java.util.ArrayList<String>
-            get() = ArrayList(timelineUsage.attributionTags)
+    /** [LiveData] object for [PermissionUsageDetailsUiInfo]. */
+    val permissionUsagesDetailsInfoUiLiveData =
+        object : SmartUpdateMediatorLiveData<@JvmSuppressWildcards PermissionUsageDetailsUiInfo>() {
+
+            private var appPermGroupListPopulated: Boolean = false
+            private val getAppPermGroupUiInfoLiveData = { appPermissionId: AppPermissionId ->
+                AppPermGroupUiInfoLiveData[
+                    Triple(
+                        appPermissionId.packageName,
+                        appPermissionId.permGroup,
+                        appPermissionId.userHandle,
+                    )]
+            }
+            private val getLightPackageInfoLiveData =
+                { packageWithUserHandle: Pair<String, UserHandle> ->
+                    LightPackageInfoLiveData[packageWithUserHandle]
+                }
+
+            init {
+                addSource(allLightHistoricalPackageOpsLiveData) { update() }
+                addSource(showSystemLiveData) { update() }
+                addSource(show7DaysLiveData) { update() }
+            }
+
+            override fun onUpdate() {
+                if (!allLightHistoricalPackageOpsLiveData.isInitialized) {
+                    return
+                }
+
+                if (appPermGroupUiInfoLiveDataList.isEmpty()) {
+                    val appPermissionIds = mutableSetOf<AppPermissionId>()
+                    val allPackages: Set<Pair<String, UserHandle>> =
+                        allLightHistoricalPackageOpsLiveData.value?.keys ?: setOf()
+                    for (packageWithUserHandle: Pair<String, UserHandle> in allPackages) {
+                        val appPermGroupIds =
+                            allLightHistoricalPackageOpsLiveData.value
+                                ?.get(packageWithUserHandle)
+                                ?.appPermissionDiscreteAccesses
+                                ?.map { it.appPermissionId }
+                                ?.toSet()
+                                ?: setOf()
+
+                        appPermissionIds.addAll(appPermGroupIds)
+                    }
+
+                    setSourcesToDifference(
+                        appPermissionIds,
+                        appPermGroupUiInfoLiveDataList,
+                        getAppPermGroupUiInfoLiveData) {
+                            update()
+                        }
+                    setSourcesToDifference(
+                        allPackages, lightPackageInfoLiveDataMap, getLightPackageInfoLiveData) {
+                            update()
+                        }
+                    appPermGroupListPopulated = true
+
+                    return
+                }
+
+                if (appPermGroupUiInfoLiveDataList.any { !it.value.isInitialized }) {
+                    return
+                }
+
+                if (lightPackageInfoLiveDataMap.any { !it.value.isInitialized }) {
+                    return
+                }
+
+                if (isInitialized && appPermGroupUiInfoLiveDataList.any { it.value.isStale }) {
+                    return
+                }
+
+                if (isInitialized && lightPackageInfoLiveDataMap.any { it.value.isStale }) {
+                    return
+                }
+
+                value = buildPermissionUsageDetailsUiInfo()
+            }
+        }
+
+    /** Companion object for [PermissionUsageViewModel]. */
+    companion object {
+        private const val ONE_HOUR_MS = 3_600_000
+        private const val ONE_MINUTE_MS = 60_000
+        private const val CLUSTER_SPACING_MINUTES: Long = 1L
+        private const val TELECOM_PACKAGE = "com.android.server.telecom"
+        private val TIME_7_DAYS_DURATION: Long = DAYS.toMillis(7)
+        private val TIME_24_HOURS_DURATION: Long = DAYS.toMillis(1)
+        internal const val SHOULD_SHOW_SYSTEM_KEY = "showSystem"
+        internal const val SHOULD_SHOW_7_DAYS_KEY = "show7Days"
+
+        /** Returns all op names for all permissions in a list of permission groups. */
+        val opNames =
+            listOf(
+                    Manifest.permission_group.CAMERA,
+                    Manifest.permission_group.LOCATION,
+                    Manifest.permission_group.MICROPHONE)
+                .flatMap { group -> PermissionMapping.getPlatformPermissionNamesOfGroup(group) }
+                .mapNotNull { permName -> AppOpsManager.permissionToOp(permName) }
+                .toSet()
     }
-}
 
-/** Factory for an [PermissionUsageDetailsViewModel] */
-@RequiresApi(Build.VERSION_CODES.S)
-class PermissionUsageDetailsViewModelFactory(
-    private val application: Application,
-    private val roleManager: RoleManager,
-    private val filterGroup: String,
-    private val sessionId: Long
-) : ViewModelProvider.Factory {
-
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        @Suppress("UNCHECKED_CAST")
-        return PermissionUsageDetailsViewModel(application, roleManager, filterGroup, sessionId)
-            as T
+    /** Factory for [PermissionUsageViewModel]. */
+    @RequiresApi(Build.VERSION_CODES.S)
+    class PermissionUsageDetailsViewModelFactory(
+        val app: Application,
+        owner: SavedStateRegistryOwner,
+        private val permissionGroup: String,
+    ) : AbstractSavedStateViewModelFactory(owner, Bundle()) {
+        override fun <T : ViewModel?> create(
+            key: String,
+            modelClass: Class<T>,
+            handle: SavedStateHandle,
+        ): T {
+            @Suppress("UNCHECKED_CAST")
+            return PermissionUsageDetailsViewModel(app, handle, permissionGroup) as T
+        }
     }
 }
