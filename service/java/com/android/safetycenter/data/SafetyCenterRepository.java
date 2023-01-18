@@ -293,15 +293,6 @@ public final class SafetyCenterRepository {
     }
 
     /**
-     * Dismisses the given {@link SafetyCenterIssueKey}.
-     *
-     * <p>This method may modify the {@link SafetyCenterIssueDismissalRepository}.
-     */
-    public void dismissSafetyCenterIssue(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
-        mSafetyCenterIssueDismissalRepository.dismissIssue(safetyCenterIssueKey);
-    }
-
-    /**
      * Returns the {@link SafetySourceIssue} associated with the given {@link SafetyCenterIssueKey}.
      *
      * <p>Returns {@code null} if there is no such {@link SafetySourceIssue}, or if it's been

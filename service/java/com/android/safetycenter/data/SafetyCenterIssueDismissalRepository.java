@@ -121,7 +121,7 @@ public final class SafetyCenterIssueDismissalRepository {
      *
      * <p>This method may change the value reported by {@link #isDirty} to {@code true}.
      */
-    void dismissIssue(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
+    public void dismissIssue(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
         IssueData issueData = getOrWarn(safetyCenterIssueKey, "dismissing");
         if (issueData == null) {
             return;

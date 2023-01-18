@@ -554,7 +554,7 @@ public final class SafetyCenterService extends SystemService {
                     // button multiple times in a row.
                     return;
                 }
-                mSafetyCenterRepository.dismissSafetyCenterIssue(safetyCenterIssueKey);
+                mSafetyCenterIssueDismissalRepository.dismissIssue(safetyCenterIssueKey);
                 scheduleWriteSafetyCenterIssueRepositoryFileIfNeededLocked();
                 PendingIntent onDismissPendingIntent =
                         safetySourceIssue.getOnDismissPendingIntent();
