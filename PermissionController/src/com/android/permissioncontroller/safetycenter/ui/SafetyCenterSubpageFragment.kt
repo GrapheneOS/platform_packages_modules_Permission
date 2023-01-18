@@ -23,23 +23,29 @@ import android.safetycenter.SafetyCenterEntryOrGroup
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.preference.PreferenceGroup
+import com.android.settingslib.widget.IllustrationPreference
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterUiData
+import com.android.safetycenter.resources.SafetyCenterResourcesContext
 
 /** A fragment that represents a generic subpage in Safety Center. */
 @RequiresApi(UPSIDE_DOWN_CAKE)
 class SafetyCenterSubpageFragment : SafetyCenterFragment() {
 
     private lateinit var sourceGroupId: String
-    private var subpageIssueGroup: PreferenceGroup? = null
-    private var subpageEntryGroup: PreferenceGroup? = null
+    private lateinit var subpageIllustration: IllustrationPreference
+    private lateinit var subpageIssueGroup: PreferenceGroup
+    private lateinit var subpageEntryGroup: PreferenceGroup
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         super.onCreatePreferences(savedInstanceState, rootKey)
         setPreferencesFromResource(R.xml.safety_center_subpage, rootKey)
         sourceGroupId = requireArguments().getString(SOURCE_GROUP_ID_KEY)!!
-        subpageIssueGroup = getPreferenceScreen().findPreference(ISSUE_GROUP_KEY)
-        subpageEntryGroup = getPreferenceScreen().findPreference(ENTRY_GROUP_KEY)
+
+        subpageIllustration = getPreferenceScreen().findPreference(ILLUSTRATION_KEY)!!
+        subpageIssueGroup = getPreferenceScreen().findPreference(ISSUE_GROUP_KEY)!!
+        subpageEntryGroup = getPreferenceScreen().findPreference(ENTRY_GROUP_KEY)!!
+        setupIllustration()
     }
 
     override fun onResume() {
@@ -61,6 +67,22 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
         updateSafetyCenterEntries(entryGroup)
     }
 
+    private fun setupIllustration(){
+        val camelRegex = "(?<=[a-zA-Z])[A-Z]".toRegex()
+        val groupIdSnakeCase = camelRegex.replace(sourceGroupId) { "_${it.value}" }.lowercase()
+        val resName = "illustration_$groupIdSnakeCase"
+
+        val context = requireContext()
+        val drawable =
+                SafetyCenterResourcesContext(context).getDrawableByName(resName, context.theme)
+        if (drawable == null) {
+            Log.w(TAG, "$sourceGroupId doesn't have any matching illustration")
+            subpageIllustration.setVisible(false)
+        }
+
+        subpageIllustration.setImageDrawable(drawable)
+    }
+
     private fun getMatchingGroup(uiData: SafetyCenterUiData?): SafetyCenterEntryGroup? {
         val entryOrGroups: List<SafetyCenterEntryOrGroup>? =
             uiData?.safetyCenterData?.entriesOrGroups
@@ -69,19 +91,21 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
     }
 
     private fun updateSafetyCenterIssues(uiData: SafetyCenterUiData?) {
-        subpageIssueGroup?.removeAll()
+        subpageIssueGroup.removeAll()
         val subpageIssues = uiData?.safetyCenterData?.issues?.filter { it.groupId == sourceGroupId }
-        if (subpageIssues.isNullOrEmpty() || subpageIssueGroup == null) {
+        if (subpageIssues.isNullOrEmpty()) {
             Log.w(TAG, "$sourceGroupId doesn't have any matching SafetyCenterIssues")
-            // TODO(b/253171481): Display a placeholder image when there are no issues
+            if (subpageIllustration.imageDrawable == null) return
+            subpageIllustration.setVisible(true)
             return
         }
 
+        subpageIllustration.setVisible(false)
         collapsableIssuesCardHelper.addIssues(
             requireContext(),
             safetyCenterViewModel,
             getChildFragmentManager(),
-            subpageIssueGroup!!,
+            subpageIssueGroup,
             subpageIssues,
             uiData.resolvedIssues,
             requireActivity().getTaskId()
@@ -90,9 +114,9 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
 
     private fun updateSafetyCenterEntries(entryGroup: SafetyCenterEntryGroup) {
         Log.d(TAG, "updateSafetyCenterEntries called with $entryGroup")
-        subpageEntryGroup?.removeAll()
+        subpageEntryGroup.removeAll()
         for (entry in entryGroup.entries) {
-            subpageEntryGroup?.addPreference(
+            subpageEntryGroup.addPreference(
                 SafetySubpageEntryPreference(
                     requireContext(),
                     PendingIntentSender.getTaskIdForEntry(
@@ -108,6 +132,7 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
 
     companion object {
         private val TAG: String = SafetyCenterSubpageFragment::class.java.simpleName
+        private const val ILLUSTRATION_KEY: String = "subpage_illustration"
         private const val ISSUE_GROUP_KEY: String = "subpage_issue_group"
         private const val ENTRY_GROUP_KEY: String = "subpage_entry_group"
         private const val SOURCE_GROUP_ID_KEY: String = "source_group_id"
