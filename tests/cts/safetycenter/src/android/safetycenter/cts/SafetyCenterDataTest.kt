@@ -29,8 +29,6 @@ import android.safetycenter.SafetyCenterIssue
 import android.safetycenter.SafetyCenterStaticEntry
 import android.safetycenter.SafetyCenterStaticEntryGroup
 import android.safetycenter.SafetyCenterStatus
-import android.safetycenter.cts.testing.SafetyCenterTestData.Companion.withDismissedIssuesIfAtLeastU
-import android.safetycenter.cts.testing.SafetyCenterTestData.Companion.withExtrasIfAtLeastU
 import androidx.core.os.bundleOf
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.core.os.Parcelables.forceParcel
@@ -38,6 +36,8 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.ext.truth.os.ParcelableSubject.assertThat
 import androidx.test.filters.SdkSuppress
 import com.android.safetycenter.testing.EqualsHashCodeToStringTester
+import com.android.safetycenter.testing.SafetyCenterTestData.Companion.withDismissedIssuesIfAtLeastU
+import com.android.safetycenter.testing.SafetyCenterTestData.Companion.withExtrasIfAtLeastU
 import com.google.common.truth.Truth.assertThat
 import kotlin.test.assertFailsWith
 import org.junit.Test

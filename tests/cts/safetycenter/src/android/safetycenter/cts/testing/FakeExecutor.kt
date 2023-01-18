@@ -16,8 +16,8 @@
 
 package android.safetycenter.cts.testing
 
-import android.safetycenter.cts.testing.Coroutines.TIMEOUT_LONG
-import android.safetycenter.cts.testing.Coroutines.runBlockingWithTimeout
+import com.android.safetycenter.testing.Coroutines.TIMEOUT_LONG
+import com.android.safetycenter.testing.Coroutines.runBlockingWithTimeout
 import java.time.Duration
 import java.util.concurrent.Executor
 import kotlinx.coroutines.TimeoutCancellationException

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package android.safetycenter.cts.testing
+package com.android.safetycenter.testing
 
 import android.Manifest.permission.MANAGE_SAFETY_CENTER
 import android.Manifest.permission.READ_SAFETY_CENTER_STATUS

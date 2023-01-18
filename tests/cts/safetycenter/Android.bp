@@ -38,11 +38,8 @@ android_test {
         "compatibility-device-util-axt",
         "ctstestrunner-axt",
         "kotlin-stdlib",
-        "kotlinx-coroutines-android",
         "kotlin-test",
         "safety-center-config",
-        "safety-center-internal-data",
-        "safety-center-resources-lib",
         "safety-center-test-util-lib",
         "modules-utils-build",
         "truth-prebuilt",
@@ -54,8 +51,5 @@ android_test {
         "cts",
         "general-tests",
         "mts-permission",
-    ],
-    resource_dirs: [
-        "res",
     ],
 }

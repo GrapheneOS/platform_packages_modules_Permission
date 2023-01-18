@@ -18,11 +18,11 @@ package android.safetycenter.cts
 
 import android.content.Context
 import android.safetycenter.SafetyCenterManager
-import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.isSafetyCenterEnabledWithPermission
-import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.compatibility.common.util.SystemUtil
+import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.isSafetyCenterEnabledWithPermission
+import com.android.safetycenter.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith

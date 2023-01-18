@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package android.safetycenter.cts.testing
+package com.android.safetycenter.testing
 
 import android.content.Context
 import android.content.Intent
@@ -33,7 +33,7 @@ import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILE
 import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED
 import android.safetycenter.SafetySourceData
 import android.safetycenter.SafetySourceErrorDetails
-import android.safetycenter.cts.testing.SafetySourceTestData.Companion.EVENT_SOURCE_STATE_CHANGED
+import com.android.safetycenter.testing.SafetySourceTestData.Companion.EVENT_SOURCE_STATE_CHANGED
 import javax.annotation.concurrent.GuardedBy
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.Channel.Factory.UNLIMITED
@@ -288,28 +288,28 @@ class SafetySourceIntentHandler {
 
     companion object {
         /** An intent action to handle a resolving action. */
-        const val ACTION_RESOLVE_ACTION = "android.safetycenter.cts.testing.action.RESOLVE_ACTION"
+        const val ACTION_RESOLVE_ACTION = "com.android.safetycenter.testing.action.RESOLVE_ACTION"
 
         /** An intent action to handle an issue dismissed by Safety Center. */
-        const val ACTION_DISMISS_ISSUE = "android.safetycenter.cts.testing.action.DISMISS_ISSUE"
+        const val ACTION_DISMISS_ISSUE = "com.android.safetycenter.testing.action.DISMISS_ISSUE"
 
         /**
          * An extra to be used with [ACTION_RESOLVE_ACTION] or [ACTION_DISMISS_ISSUE] to specify the
          * target safety source id.
          */
-        const val EXTRA_SOURCE_ID = "android.safetycenter.cts.testing.extra.SOURCE_ID"
+        const val EXTRA_SOURCE_ID = "com.android.safetycenter.testing.extra.SOURCE_ID"
 
         /**
          * An extra to be used with [ACTION_RESOLVE_ACTION] to specify the target safety source
          * issue id of the resolving action.
          */
-        const val EXTRA_SOURCE_ISSUE_ID = "android.safetycenter.cts.testing.extra.SOURCE_ISSUE_ID"
+        const val EXTRA_SOURCE_ISSUE_ID = "com.android.safetycenter.testing.extra.SOURCE_ISSUE_ID"
 
         /**
          * An extra to be used with [ACTION_RESOLVE_ACTION] to specify the target safety source
          * issue action id of the resolving action.
          */
         const val EXTRA_SOURCE_ISSUE_ACTION_ID =
-            "android.safetycenter.cts.testing.extra.SOURCE_ISSUE_ACTION_ID"
+            "com.android.safetycenter.testing.extra.SOURCE_ISSUE_ACTION_ID"
     }
 }

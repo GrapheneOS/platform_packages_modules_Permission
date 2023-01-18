@@ -14,6 +14,33 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<manifest package="com.android.safetycenter.testing">
-    <application/>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.android.safetycenter.testing">
+    <application>
+        <receiver android:name=".SafetySourceReceiver"
+                  android:exported="false">
+            <intent-filter>
+                <action android:name="android.safetycenter.action.SAFETY_CENTER_ENABLED_CHANGED"/>
+                <action android:name="android.safetycenter.action.REFRESH_SAFETY_SOURCES"/>
+                <action android:name="com.android.safetycenter.testing.action.RESOLVE_ACTION"/>
+                <action android:name="com.android.safetycenter.testing.action.DISMISS_ISSUE"/>
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".SafetySourceReceiver$ForegroundService"
+                 android:foregroundServiceType="dataSync"
+                 android:exported="false"/>
+
+        <activity android:name=".TestActivity"
+                  android:exported="false">
+            <intent-filter>
+                <action android:name="com.android.safetycenter.testing.action.TEST_ACTIVITY"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+    </application>
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC"/>
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
 </manifest>
