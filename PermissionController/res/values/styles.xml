@@ -463,7 +463,6 @@
     <style name="AppPermissionRationaleContainer">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">16dp</item>
         <item name="android:layout_marginBottom">24dp</item>
         <item name="android:orientation">vertical</item>
     </style>
@@ -472,7 +471,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">16dp</item>
-        <item name="android:layout_marginBottom">24dp</item>
+        <item name="android:paddingStart">8dp</item>
         <item name="android:orientation">horizontal</item>
     </style>
 
@@ -500,8 +499,8 @@
     </style>
 
     <style name="AppPermissionRationaleIcon">
-        <item name="android:layout_width">20dp</item>
-        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_width">24dp</item>
+        <item name="android:layout_height">24dp</item>
         <item name="android:layout_gravity">start|center_vertical</item>
         <item name="android:scaleType">centerInside</item>
         <item name="android:tint">?android:attr/textColorSecondary</item>
