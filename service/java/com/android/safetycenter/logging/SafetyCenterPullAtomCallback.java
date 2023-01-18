@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 The Android Open Source Project
+ * Copyright (C) 2023 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.safetycenter;
+package com.android.safetycenter.logging;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
@@ -41,6 +41,12 @@ import androidx.annotation.RequiresApi;
 import com.android.internal.annotations.GuardedBy;
 import com.android.modules.utils.build.SdkLevel;
 import com.android.permission.PermissionStatsLog;
+import com.android.safetycenter.SafetyCenterConfigReader;
+import com.android.safetycenter.SafetyCenterDataFactory;
+import com.android.safetycenter.SafetyCenterFlags;
+import com.android.safetycenter.SafetySourceKey;
+import com.android.safetycenter.SafetySources;
+import com.android.safetycenter.UserProfileGroup;
 import com.android.safetycenter.data.SafetyCenterIssueRepository;
 import com.android.safetycenter.data.SafetyCenterRepository;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
@@ -54,18 +60,20 @@ import java.util.List;
  * <p>Whenever that atom, which describes the overall Safety Center, is pulled this class also
  * separately writes one {@code SAFETY_SOURCE_STATE_COLLECTED} atom for each active source (per
  * profile).
+ *
+ * @hide
  */
 @RequiresApi(TIRAMISU)
-final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback {
+public final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback {
 
-    private static final String TAG = "SafetyCenterPullAtomCal";
+    private static final String TAG = "SafetyCenterPullAtom";
 
     @NonNull private final Context mContext;
     @NonNull private final Object mApiLock;
 
     @GuardedBy("mApiLock")
     @NonNull
-    private final StatsdLogger mStatsdLogger;
+    private final SafetyCenterStatsdLogger mSafetyCenterStatsdLogger;
 
     @GuardedBy("mApiLock")
     @NonNull
@@ -83,17 +91,17 @@ final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback {
     @NonNull
     private final SafetyCenterIssueRepository mSafetyCenterIssueRepository;
 
-    SafetyCenterPullAtomCallback(
+    public SafetyCenterPullAtomCallback(
             @NonNull Context context,
             @NonNull Object apiLock,
-            @NonNull StatsdLogger statsdLogger,
+            @NonNull SafetyCenterStatsdLogger safetyCenterStatsdLogger,
             @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
             @NonNull SafetyCenterRepository safetyCenterRepository,
             @NonNull SafetyCenterDataFactory safetyCenterDataFactory,
             @NonNull SafetyCenterIssueRepository safetyCenterIssueRepository) {
         mContext = context;
         mApiLock = apiLock;
-        mStatsdLogger = statsdLogger;
+        mSafetyCenterStatsdLogger = safetyCenterStatsdLogger;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
         mSafetyCenterRepository = safetyCenterRepository;
         mSafetyCenterDataFactory = safetyCenterDataFactory;
@@ -144,7 +152,7 @@ final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback {
         long openIssuesCount = loggableData.getIssues().size();
         long dismissedIssuesCount = getDismissedIssuesCountLocked(loggableData, userProfileGroup);
 
-        return mStatsdLogger.createSafetyStateEvent(
+        return mSafetyCenterStatsdLogger.createSafetyStateEvent(
                 loggableData.getStatus().getSeverityLevel(), openIssuesCount, dismissedIssuesCount);
     }
 
@@ -234,7 +242,7 @@ final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback {
         }
         Integer maxSeverityOrNull = maxSeverityLevel > Integer.MIN_VALUE ? maxSeverityLevel : null;
 
-        mStatsdLogger.writeSafetySourceStateCollected(
+        mSafetyCenterStatsdLogger.writeSafetySourceStateCollected(
                 safetySource.getId(),
                 isUserManaged,
                 maxSeverityOrNull,

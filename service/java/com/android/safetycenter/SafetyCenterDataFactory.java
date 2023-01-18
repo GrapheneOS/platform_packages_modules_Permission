@@ -70,10 +70,12 @@ import javax.annotation.concurrent.NotThreadSafe;
  * with Safety Center listeners, including PermissionController.
  *
  * <p>This class isn't thread safe. Thread safety must be handled by the caller.
+ *
+ * @hide
  */
 @RequiresApi(TIRAMISU)
 @NotThreadSafe
-final class SafetyCenterDataFactory {
+public final class SafetyCenterDataFactory {
 
     private static final String TAG = "SafetyCenterDataFactory";
 
@@ -149,7 +151,7 @@ final class SafetyCenterDataFactory {
      * SafetyCenterConfig} is used.
      */
     @NonNull
-    SafetyCenterData assembleSafetyCenterData(
+    public SafetyCenterData assembleSafetyCenterData(
             @NonNull String packageName,
             @NonNull UserProfileGroup userProfileGroup,
             @NonNull List<SafetySourcesGroup> safetySourcesGroups) {
