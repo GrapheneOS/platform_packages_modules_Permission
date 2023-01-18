@@ -24,6 +24,7 @@ import android.provider.DeviceConfig
 import android.safetycenter.SafetyCenterManager
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
+import android.util.Log
 import com.android.permissioncontroller.R
 
 /**
@@ -40,7 +41,8 @@ class SafetyCenterQsTileService : TileService() {
             packageManager.setComponentEnabledSetting(
                 ComponentName(this, this::class.java),
                 PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-                qsTileComponentSettingFlags)
+                qsTileComponentSettingFlags
+            )
             disabled = true
         }
 
@@ -49,6 +51,10 @@ class SafetyCenterQsTileService : TileService() {
     override fun onStartListening() {
         super.onStartListening()
         if (disabled) {
+            return
+        }
+        if (qsTile == null) {
+            Log.w(TAG, "qsTile was null, skipping tile update")
             return
         }
 
@@ -70,5 +76,7 @@ class SafetyCenterQsTileService : TileService() {
          * tests and cause flakiness.
          */
         const val QS_TILE_COMPONENT_SETTING_FLAGS = "safety_center_qs_tile_component_setting_flags"
+
+        private const val TAG = "SafetyCenterQsTile"
     }
 }
