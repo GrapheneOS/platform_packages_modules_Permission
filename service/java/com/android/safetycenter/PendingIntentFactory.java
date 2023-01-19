@@ -27,6 +27,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.ResolveInfoFlags;
+import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
 import android.os.Binder;
 import android.os.UserHandle;
@@ -38,6 +39,7 @@ import androidx.annotation.RequiresApi;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 
 import java.util.Arrays;
+import java.util.List;
 
 /** Helps build or retrieve {@link PendingIntent} instances. */
 @RequiresApi(TIRAMISU)
@@ -70,8 +72,9 @@ final class PendingIntentFactory {
      * Creates or retrieves a {@link PendingIntent} that will start a new {@code Activity} matching
      * the given {@code intentAction}.
      *
-     * <p>If the given {@code intentAction} doesn't resolve implicitly, it will be matched
-     * explicitly using the given {@code packageName}.
+     * <p>If the given {@code intentAction} resolves for the given {@code packageName}, the {@link
+     * PendingIntent} will explicitly target the {@code packageName}. If the {@code intentAction}
+     * resolves elsewhere, the {@link PendingIntent} will be implicit.
      *
      * <p>The {@code PendingIntent} is associated with a specific source given by {@code sourceId}.
      *
@@ -229,13 +232,22 @@ final class PendingIntentFactory {
         if (isQuietModeEnabled) {
             return intent;
         }
+
+        // If the intent resolves for the package provided, then we make the assumption that it is
+        // the desired app and make the intent explicit. This is to workaround implicit internal
+        // intents that may not be exported which will stop working on Android U+.
+        // This assumes that the source or the caller has the highest priority to resolve the intent
+        // action.
+        Intent explicitIntent = new Intent(intent).setPackage(packageContext.getPackageName());
+        if (intentResolves(packageContext, explicitIntent)) {
+            return explicitIntent;
+        }
+
         if (intentResolves(packageContext, intent)) {
+            // TODO(b/265954624): Write tests for this code path.
             return intent;
         }
-        intent.setPackage(packageContext.getPackageName());
-        if (intentResolves(packageContext, intent)) {
-            return intent;
-        }
+
         return null;
     }
 
@@ -248,12 +260,18 @@ final class PendingIntentFactory {
     }
 
     private static boolean intentResolves(@NonNull Context packageContext, @NonNull Intent intent) {
+        return !queryIntentActivities(packageContext, intent).isEmpty();
+    }
+
+    @NonNull
+    private static List<ResolveInfo> queryIntentActivities(
+            @NonNull Context packageContext, @NonNull Intent intent) {
         PackageManager packageManager = packageContext.getPackageManager();
         // This call requires the INTERACT_ACROSS_USERS permission as the `packageContext` could
         // belong to another user.
         final long callingId = Binder.clearCallingIdentity();
         try {
-            return !packageManager.queryIntentActivities(intent, ResolveInfoFlags.of(0)).isEmpty();
+            return packageManager.queryIntentActivities(intent, ResolveInfoFlags.of(0));
         } finally {
             Binder.restoreCallingIdentity(callingId);
         }
