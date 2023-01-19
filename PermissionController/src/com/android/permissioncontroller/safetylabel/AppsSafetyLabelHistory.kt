@@ -45,15 +45,20 @@ data class AppsSafetyLabelHistory(val appSafetyLabelHistories: List<AppSafetyLab
 
         /**
          * Returns an [AppSafetyLabelHistory] with the original history as well the provided safety
-         * label.
+         * label, ensuring that the maximum number of safety labels stored for this app does not
+         * exceed [maxToPersist].
+         *
+         * If the storage already has [maxToPersist] labels or more, the oldest will be discarded to
+         * make space for the newly added safety label.
          */
-        fun withSafetyLabel(safetyLabel: SafetyLabel) =
+        fun withSafetyLabel(safetyLabel: SafetyLabel, maxToPersist: Int): AppSafetyLabelHistory =
             AppSafetyLabelHistory(
                 appInfo,
                 safetyLabelHistory
                     .toMutableList()
                     .apply { add(safetyLabel) }
-                    .sortedBy { it.receivedAt })
+                    .sortedBy { it.receivedAt }
+                    .takeLast(maxToPersist))
     }
 
     /** Data class representing the information about an app. */

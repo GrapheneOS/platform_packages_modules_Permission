@@ -19,6 +19,7 @@ package com.android.permissioncontroller.tests.mocking.safetylabel
 import android.content.Context
 import android.os.Build
 import android.provider.DeviceConfig
+import android.provider.DeviceConfig.NAMESPACE_PRIVACY
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.filters.SdkSuppress
 import com.android.dx.mockito.inline.extended.ExtendedMockito
@@ -30,12 +31,16 @@ import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.DataC
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.DataLabel
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.SafetyLabel
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistoryPersistence
+import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistoryPersistence.ChangeListener
 import com.google.common.truth.Truth.assertThat
 import java.io.File
 import java.time.ZonedDateTime
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
+import org.mockito.ArgumentMatchers.anyInt
+import org.mockito.ArgumentMatchers.eq
+import org.mockito.Mockito.`when` as whenever
 import org.mockito.MockitoAnnotations
 import org.mockito.MockitoSession
 import org.mockito.quality.Strictness
@@ -57,6 +62,7 @@ class AppsSafetyLabelHistoryPersistenceTest {
                 .mockStatic(DeviceConfig::class.java)
                 .strictness(Strictness.LENIENT)
                 .startMocking()
+        setMaxSafetyLabelsToPersist(20)
     }
 
     @After
@@ -178,6 +184,23 @@ class AppsSafetyLabelHistoryPersistenceTest {
     }
 
     @Test
+    fun recordSafetyLabel_whenMaximumSafetyLabelsAlreadyStoredForApp_dropsOldSafetyLabels() {
+        setMaxSafetyLabelsToPersist(2)
+        AppsSafetyLabelHistoryPersistence.recordSafetyLabel(SAFETY_LABEL_PKG_2_V1, dataFile)
+        AppsSafetyLabelHistoryPersistence.recordSafetyLabel(SAFETY_LABEL_PKG_2_V2, dataFile)
+
+        AppsSafetyLabelHistoryPersistence.recordSafetyLabel(SAFETY_LABEL_PKG_2_V3, dataFile)
+
+        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile))
+            .isEqualTo(
+                AppsSafetyLabelHistory(
+                    listOf(
+                        AppSafetyLabelHistory(
+                            AppInfo(PACKAGE_NAME_2),
+                            listOf(SAFETY_LABEL_PKG_2_V2, SAFETY_LABEL_PKG_2_V3)))))
+    }
+
+    @Test
     fun recordSafetyLabel_noChangeToLastLabel_doesNothing() {
         val appsSafetyLabelHistory =
             AppsSafetyLabelHistory(
@@ -284,6 +307,41 @@ class AppsSafetyLabelHistoryPersistenceTest {
         assertThat(packageNames).isEqualTo(setOf(PACKAGE_NAME_1, PACKAGE_NAME_2))
     }
 
+    @Test
+    fun registerListener_receivesUpdates() {
+        var onChangedCount = 0
+        val testChangeListener: ChangeListener =
+            object : ChangeListener {
+                override fun onSafetyLabelHistoryChanged() {
+                    onChangedCount++
+                }
+            }
+        AppsSafetyLabelHistoryPersistence.addListener(testChangeListener)
+
+        AppsSafetyLabelHistoryPersistence.recordSafetyLabel(SAFETY_LABEL_PKG_1_V1, dataFile)
+
+        assertThat(onChangedCount).isEqualTo(1)
+    }
+
+    @Test
+    fun unregisterListener_doesNotReceiveUpdates() {
+        var onChangedCount = 0
+        val testChangeListener: ChangeListener =
+            object : ChangeListener {
+                override fun onSafetyLabelHistoryChanged() {
+                    onChangedCount++
+                }
+            }
+        AppsSafetyLabelHistoryPersistence.addListener(testChangeListener)
+        AppsSafetyLabelHistoryPersistence.recordSafetyLabel(SAFETY_LABEL_PKG_1_V1, dataFile)
+        assertThat(onChangedCount).isEqualTo(1)
+
+        AppsSafetyLabelHistoryPersistence.removeListener(testChangeListener)
+        AppsSafetyLabelHistoryPersistence.recordSafetyLabel(SAFETY_LABEL_PKG_1_V2, dataFile)
+
+        assertThat(onChangedCount).isEqualTo(1)
+    }
+
     companion object {
         private const val TEST_FILE_NAME = "test_safety_label_history_file"
         private const val PACKAGE_NAME_1 = "package_name_1"
@@ -332,5 +390,18 @@ class AppsSafetyLabelHistoryPersistenceTest {
                 AppInfo(PACKAGE_NAME_2),
                 DATE_2022_12_30,
                 DataLabel(mapOf(FINANCIAL_CATEGORY to DataCategory(true))))
+
+        private const val PROPERTY_MAX_SAFETY_LABELS_PERSISTED_PER_APP =
+            "max_safety_labels_persisted_per_app"
+
+        /** Sets the value for the Permission Rationale feature [DeviceConfig] property. */
+        private fun setMaxSafetyLabelsToPersist(max: Int) {
+            whenever(
+                    DeviceConfig.getInt(
+                        eq(NAMESPACE_PRIVACY),
+                        eq(PROPERTY_MAX_SAFETY_LABELS_PERSISTED_PER_APP),
+                        anyInt()))
+                .thenReturn(max)
+        }
     }
 }
