@@ -23,4 +23,7 @@
     <instrumentation android:name="androidx.test.runner.AndroidJUnitRunner"
                      android:label="Functional tests for SafetyCenter"
                      android:targetPackage="android.safetycenter.functional"/>
+
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
 </manifest>
