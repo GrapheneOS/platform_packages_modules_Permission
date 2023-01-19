@@ -18,6 +18,7 @@ package com.android.permissioncontroller.permission.data.v34
 
 import android.app.Application
 import android.os.Build
+import android.provider.DeviceConfig
 import androidx.annotation.RequiresApi
 import com.android.permissioncontroller.permission.data.SmartAsyncMediatorLiveData
 import com.android.permissioncontroller.permission.model.v34.AppDataSharingUpdate
@@ -30,28 +31,49 @@ import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.Safet
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistoryPersistence
 import java.time.Instant
 import java.time.ZonedDateTime
-import java.util.concurrent.TimeUnit
 import kotlinx.coroutines.Job
+import java.time.Duration
 
 /** LiveData for [AppDataSharingUpdate]s. */
 @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
 class AppDataSharingUpdatesLiveData(val app: Application) :
-    SmartAsyncMediatorLiveData<List<AppDataSharingUpdate>>() {
+    SmartAsyncMediatorLiveData<List<AppDataSharingUpdate>>(),
+    AppsSafetyLabelHistoryPersistence.ChangeListener {
 
     override suspend fun loadDataAndPostValue(job: Job) {
         // TODO(b/261660881): This code serves to enable testing business logic in CTS. Remove when
-        //  package add broadcasts can invoke writing of safety labels to persistence.
+        //  we install apps with metadata in CTS tests.
         writeTestSafetyLabelsToPersistence()
+
+        val updatePeriod =
+                DeviceConfig.getLong(
+                        DeviceConfig.NAMESPACE_PRIVACY,
+                        PROPERTY_DATA_SHARING_UPDATE_PERIOD_MILLIS,
+                        Duration.ofDays(DEFAULT_DATA_SHARING_UPDATE_PERIOD_DAYS).toMillis())
+        val file =
+                AppsSafetyLabelHistoryPersistence.getSafetyLabelHistoryFile(app.applicationContext)
 
         val appSafetyLabelDiffsFromPersistence =
             AppsSafetyLabelHistoryPersistence.getAppSafetyLabelDiffs(
-                Instant.now()
-                    .minusSeconds(TimeUnit.DAYS.toSeconds(DATA_SHARING_UPDATE_PERIOD_DAYS)),
-                AppsSafetyLabelHistoryPersistence.getSafetyLabelHistoryFile(app.applicationContext))
+                Instant.now().minusMillis(updatePeriod), file)
         val updatesFromPersistence =
             appSafetyLabelDiffsFromPersistence.mapNotNull { it.buildUpdateIfSignificantChange() }
 
         postValue(updatesFromPersistence)
+    }
+
+    override fun onActive() {
+        super.onActive()
+        AppsSafetyLabelHistoryPersistence.addListener(this)
+    }
+
+    override fun onInactive() {
+        super.onInactive()
+        AppsSafetyLabelHistoryPersistence.removeListener(this)
+    }
+
+    override fun onSafetyLabelHistoryChanged() {
+        update()
     }
 
     /** Writes safety labels for a test app to safety label history. */
@@ -67,12 +89,10 @@ class AppDataSharingUpdatesLiveData(val app: Application) :
 
     /** Companion object for [AppDataSharingUpdatesLiveData]. */
     companion object {
-        private const val PLACEHOLDER_PACKAGE_NAME_1 = "com.android.systemui"
-        private const val PLACEHOLDER_PACKAGE_NAME_2 = "com.android.bluetooth"
         private const val TEST_PACKAGE_NAME = "android.permission3.cts.usepermission"
-        private const val PLACEHOLDER_SAFETY_LABEL_UPDATES_FLAG =
-            "placeholder_safety_label_updates_flag"
-        private const val DATA_SHARING_UPDATE_PERIOD_DAYS: Long = 30
+        private const val PROPERTY_DATA_SHARING_UPDATE_PERIOD_MILLIS =
+                "data_sharing_update_period_millis"
+        private const val DEFAULT_DATA_SHARING_UPDATE_PERIOD_DAYS: Long = 30
 
         private val SAFETY_LABEL_TEST_PACKAGE_V1 =
             SafetyLabel(
