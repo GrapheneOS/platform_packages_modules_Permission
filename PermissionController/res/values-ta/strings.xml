@@ -433,7 +433,7 @@
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"குரல் உதவியை இயக்க மைக்ரோஃபோனைப் பயன்படுத்தும்போது நிலைப் பட்டியில் ஐகானைக் காட்டு"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"இந்தச் சாதனத்திலுள்ள படங்களையும் மீடியாவையும் அணுகுவதற்கு &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"தொடர்புகளை அணுகுவதற்கு &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
-    <string name="permgrouprequest_location" msgid="6990232580121067883">"இந்தச் சாதனத்தின் இருப்பிடத்தை அணுகுவதற்கு &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
+    <string name="permgrouprequest_location" msgid="6990232580121067883">"இந்தச் சாதன இருப்பிடத்தை அணுகுவதற்கு &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"இந்த ஆப்ஸை நீங்கள் உபயோகிக்கும்போது மட்டுமே இருப்பிடத்தை அணுகும்"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"இந்தச் சாதனத்தின் இருப்பிடத்தை அணுகுவதற்கு &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"இந்த ஆப்ஸை நீங்கள் பயன்படுத்தாதபோதும்கூட உங்கள் இருப்பிடத்தை எந்நேரமும் அணுக இது விரும்பக்கூடும். "<annotation id="link">"அமைப்புகளில் அனுமதிக்கவும்"</annotation>"."</string>
