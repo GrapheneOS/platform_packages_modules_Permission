@@ -390,6 +390,8 @@ class GrantPermissionsViewModel(
                         buttonVisibilities[ALLOW_BUTTON] = false
                         buttonVisibilities[ALLOW_SELECTED_PHOTOS_BUTTON] = true
                         buttonVisibilities[ALLOW_ALL_PHOTOS_BUTTON] = true
+                        buttonVisibilities[DENY_AND_DONT_ASK_AGAIN_BUTTON] = isFgUserSet
+                        buttonVisibilities[DENY_BUTTON] = !isFgUserSet
                     }
                 } else if (groupState.group.packageInfo.targetSdkVersion >=
                         minSdkForOrderedSplitPermissions) {
@@ -780,7 +782,8 @@ class GrantPermissionsViewModel(
                     // is still grantable.
                     return true
                 }
-            } else if (perm == READ_MEDIA_VISUAL_USER_SELECTED) {
+            } else if (perm == READ_MEDIA_VISUAL_USER_SELECTED &&
+                lightPermission.isGrantedIncludingAppOp) {
                 // If USER_SELECTED is granted as fixed, we should immediately show the photo picker
                 return true
             }
