@@ -76,6 +76,7 @@ import com.android.modules.utils.BackgroundThread;
 import com.android.modules.utils.build.SdkLevel;
 import com.android.permission.util.ForegroundThread;
 import com.android.permission.util.UserUtils;
+import com.android.safetycenter.data.SafetyCenterInFlightIssueActionRepository;
 import com.android.safetycenter.data.SafetyCenterIssueDeduplicator;
 import com.android.safetycenter.data.SafetyCenterIssueDismissalRepository;
 import com.android.safetycenter.data.SafetyCenterIssueRepository;
@@ -179,6 +180,11 @@ public final class SafetyCenterService extends SystemService {
     @NonNull
     private final SafetyCenterBroadcastDispatcher mSafetyCenterBroadcastDispatcher;
 
+    @GuardedBy("mApiLock")
+    @NonNull
+    private final SafetyCenterInFlightIssueActionRepository
+            mSafetyCenterInFlightIssueActionRepository;
+
     @NonNull private final StatsPullAtomCallback mPullAtomCallback;
     @NonNull private final AppOpsManager mAppOpsManager;
     private final boolean mDeviceSupportsSafetyCenter;
@@ -192,6 +198,8 @@ public final class SafetyCenterService extends SystemService {
         mSafetyCenterConfigReader = new SafetyCenterConfigReader(mSafetyCenterResourcesContext);
         SafetyCenterStatsdLogger safetyCenterStatsdLogger =
                 new SafetyCenterStatsdLogger(context, mSafetyCenterConfigReader);
+        mSafetyCenterInFlightIssueActionRepository =
+                new SafetyCenterInFlightIssueActionRepository(safetyCenterStatsdLogger);
         mSafetyCenterRefreshTracker = new SafetyCenterRefreshTracker(safetyCenterStatsdLogger);
         mSafetyCenterIssueDismissalRepository =
                 new SafetyCenterIssueDismissalRepository(mSafetyCenterConfigReader);
@@ -201,7 +209,7 @@ public final class SafetyCenterService extends SystemService {
                         context,
                         mSafetyCenterConfigReader,
                         mSafetyCenterRefreshTracker,
-                        safetyCenterStatsdLogger,
+                        mSafetyCenterInFlightIssueActionRepository,
                         mSafetyCenterIssueDismissalRepository);
         mSafetyCenterIssueRepository =
                 new SafetyCenterIssueRepository(
@@ -218,6 +226,7 @@ public final class SafetyCenterService extends SystemService {
                         mSafetyCenterConfigReader,
                         mSafetyCenterRefreshTracker,
                         mPendingIntentFactory,
+                        mSafetyCenterInFlightIssueActionRepository,
                         mSafetyCenterIssueDismissalRepository,
                         mSafetyCenterRepository,
                         mSafetyCenterIssueRepository);
@@ -789,6 +798,9 @@ public final class SafetyCenterService extends SystemService {
                 if (all || subjects.contains("notifications")) {
                     mNotificationSender.dump(fout);
                 }
+                if (all || subjects.contains("inflight")) {
+                    mSafetyCenterInFlightIssueActionRepository.dump(fout);
+                }
             }
         }
 
@@ -946,10 +958,15 @@ public final class SafetyCenterService extends SystemService {
         public void run() {
             synchronized (mApiLock) {
                 mSafetyCenterTimeouts.remove(this);
+                SafetySourceIssue safetySourceIssue =
+                        mSafetyCenterRepository.getSafetySourceIssue(
+                                mSafetyCenterIssueActionId.getSafetyCenterIssueKey());
                 boolean safetyCenterDataHasChanged =
-                        mSafetyCenterRepository.unmarkSafetyCenterIssueActionInFlight(
-                                mSafetyCenterIssueActionId,
-                                SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__TIMEOUT);
+                        mSafetyCenterInFlightIssueActionRepository
+                                .unmarkSafetyCenterIssueActionInFlight(
+                                        mSafetyCenterIssueActionId,
+                                        safetySourceIssue,
+                                        SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__TIMEOUT);
                 if (!safetyCenterDataHasChanged) {
                     return;
                 }
@@ -1036,6 +1053,7 @@ public final class SafetyCenterService extends SystemService {
         synchronized (mApiLock) {
             if (clearDataPermanently) {
                 mSafetyCenterRepository.clearForUser(userId);
+                mSafetyCenterInFlightIssueActionRepository.clearForUser(userId);
                 mSafetyCenterIssueDismissalRepository.clearForUser(userId);
                 mSafetyCenterIssueRepository.updateIssues(userId);
                 mNotificationSender.updateNotifications(userId);
@@ -1132,7 +1150,7 @@ public final class SafetyCenterService extends SystemService {
                 return;
             }
             if (safetySourceIssueAction.willResolve()) {
-                mSafetyCenterRepository.markSafetyCenterIssueActionInFlight(
+                mSafetyCenterInFlightIssueActionRepository.markSafetyCenterIssueActionInFlight(
                         safetyCenterIssueActionId);
                 ResolvingActionTimeout resolvingActionTimeout =
                         new ResolvingActionTimeout(safetyCenterIssueActionId, userProfileGroup);
@@ -1221,6 +1239,7 @@ public final class SafetyCenterService extends SystemService {
     @GuardedBy("mApiLock")
     private void clearDataLocked() {
         mSafetyCenterRepository.clear();
+        mSafetyCenterInFlightIssueActionRepository.clear();
         mSafetyCenterIssueDismissalRepository.clear();
         mSafetyCenterTimeouts.clear();
         mSafetyCenterRefreshTracker.clearRefresh();

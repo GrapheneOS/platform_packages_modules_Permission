@@ -49,6 +49,7 @@ import android.util.Log;
 import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.build.SdkLevel;
+import com.android.safetycenter.data.SafetyCenterInFlightIssueActionRepository;
 import com.android.safetycenter.data.SafetyCenterIssueDismissalRepository;
 import com.android.safetycenter.data.SafetyCenterIssueRepository;
 import com.android.safetycenter.data.SafetyCenterRepository;
@@ -87,6 +88,10 @@ public final class SafetyCenterDataFactory {
     @NonNull private final PendingIntentFactory mPendingIntentFactory;
 
     @NonNull
+    private final SafetyCenterInFlightIssueActionRepository
+            mSafetyCenterInFlightIssueActionRepository;
+
+    @NonNull
     private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
 
     @NonNull private final SafetyCenterRepository mSafetyCenterRepository;
@@ -97,6 +102,9 @@ public final class SafetyCenterDataFactory {
             @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
             @NonNull SafetyCenterRefreshTracker safetyCenterRefreshTracker,
             @NonNull PendingIntentFactory pendingIntentFactory,
+            @NonNull
+                    SafetyCenterInFlightIssueActionRepository
+                            safetyCenterInFlightIssueActionRepository,
             @NonNull SafetyCenterIssueDismissalRepository safetyCenterIssueDismissalRepository,
             @NonNull SafetyCenterRepository safetyCenterRepository,
             @NonNull SafetyCenterIssueRepository safetyCenterIssueRepository) {
@@ -104,6 +112,7 @@ public final class SafetyCenterDataFactory {
         mSafetyCenterConfigReader = safetyCenterConfigReader;
         mSafetyCenterRefreshTracker = safetyCenterRefreshTracker;
         mPendingIntentFactory = pendingIntentFactory;
+        mSafetyCenterInFlightIssueActionRepository = safetyCenterInFlightIssueActionRepository;
         mSafetyCenterIssueDismissalRepository = safetyCenterIssueDismissalRepository;
         mSafetyCenterRepository = safetyCenterRepository;
         mSafetyCenterIssueRepository = safetyCenterIssueRepository;
@@ -327,7 +336,9 @@ public final class SafetyCenterDataFactory {
                         safetySourceIssueAction.getLabel(),
                         requireNonNull(issueActionPendingIntent))
                 .setSuccessMessage(safetySourceIssueAction.getSuccessMessage())
-                .setIsInFlight(mSafetyCenterRepository.actionIsInFlight(safetyCenterIssueActionId))
+                .setIsInFlight(
+                        mSafetyCenterInFlightIssueActionRepository.actionIsInFlight(
+                                safetyCenterIssueActionId))
                 .setWillResolve(safetySourceIssueAction.willResolve())
                 .build();
     }
