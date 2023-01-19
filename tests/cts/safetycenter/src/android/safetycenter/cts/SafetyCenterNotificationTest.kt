@@ -28,7 +28,6 @@ import android.safetycenter.SafetyCenterStatus
 import android.safetycenter.SafetySourceIssue
 import android.safetycenter.cts.testing.NotificationCharacteristics
 import android.safetycenter.cts.testing.TestNotificationListener
-import android.safetycenter.cts.testing.UiTestHelper.waitSourceIssueDisplayed
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
@@ -49,6 +48,7 @@ import com.android.safetycenter.testing.SafetySourceIntentHandler.Response
 import com.android.safetycenter.testing.SafetySourceReceiver
 import com.android.safetycenter.testing.SafetySourceTestData
 import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
+import com.android.safetycenter.testing.UiTestHelper.waitSourceIssueDisplayed
 import com.google.common.truth.Truth.assertThat
 import kotlin.test.assertFailsWith
 import kotlinx.coroutines.TimeoutCancellationException
