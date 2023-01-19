@@ -18,8 +18,8 @@ package com.android.safetycenter.data;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
-import static com.android.safetycenter.StatsdLogger.toSystemEventResult;
 import static com.android.safetycenter.internaldata.SafetyCenterIds.toUserFriendlyString;
+import static com.android.safetycenter.logging.SafetyCenterStatsdLogger.toSystemEventResult;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
@@ -49,10 +49,10 @@ import com.android.safetycenter.SafetyCenterFlags;
 import com.android.safetycenter.SafetyCenterRefreshTracker;
 import com.android.safetycenter.SafetySourceKey;
 import com.android.safetycenter.SafetySources;
-import com.android.safetycenter.StatsdLogger;
 import com.android.safetycenter.UserProfileGroup;
 import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
+import com.android.safetycenter.logging.SafetyCenterStatsdLogger;
 
 import java.io.PrintWriter;
 import java.time.Duration;
@@ -87,7 +87,7 @@ public final class SafetyCenterRepository {
     @NonNull private final Context mContext;
     @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
     @NonNull private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker;
-    @NonNull private final StatsdLogger mStatsdLogger;
+    @NonNull private final SafetyCenterStatsdLogger mSafetyCenterStatsdLogger;
     @NonNull private final SafetyCenterIssueRepository mSafetyCenterIssueRepository;
     @NonNull private final PackageManager mPackageManager;
 
@@ -95,12 +95,12 @@ public final class SafetyCenterRepository {
             @NonNull Context context,
             @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
             @NonNull SafetyCenterRefreshTracker safetyCenterRefreshTracker,
-            @NonNull StatsdLogger statsdLogger,
+            @NonNull SafetyCenterStatsdLogger safetyCenterStatsdLogger,
             @NonNull SafetyCenterIssueRepository safetyCenterIssueRepository) {
         mContext = context;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
         mSafetyCenterRefreshTracker = safetyCenterRefreshTracker;
-        mStatsdLogger = statsdLogger;
+        mSafetyCenterStatsdLogger = safetyCenterStatsdLogger;
         mSafetyCenterIssueRepository = safetyCenterIssueRepository;
         mPackageManager = mContext.getPackageManager();
     }
@@ -257,7 +257,7 @@ public final class SafetyCenterRepository {
      */
     public boolean unmarkSafetyCenterIssueActionInFlight(
             @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId,
-            @StatsdLogger.SystemEventResult int result) {
+            @SafetyCenterStatsdLogger.SystemEventResult int result) {
         Long startElapsedMillis =
                 mSafetyCenterIssueActionsInFlight.remove(safetyCenterIssueActionId);
         if (startElapsedMillis == null) {
@@ -273,7 +273,7 @@ public final class SafetyCenterRepository {
         String issueTypeId = issue == null ? null : issue.getIssueTypeId();
         Duration duration = Duration.ofMillis(SystemClock.elapsedRealtime() - startElapsedMillis);
 
-        mStatsdLogger.writeInlineActionSystemEvent(
+        mSafetyCenterStatsdLogger.writeInlineActionSystemEvent(
                 issueKey.getSafetySourceId(), issueKey.getUserId(), issueTypeId, duration, result);
 
         if (issue == null || getSafetySourceIssueAction(safetyCenterIssueActionId) == null) {

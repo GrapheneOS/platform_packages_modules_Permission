@@ -28,16 +28,20 @@ import android.safetycenter.SafetyCenterStatus
 import android.safetycenter.SafetySourceIssue
 import android.safetycenter.cts.testing.NotificationCharacteristics
 import android.safetycenter.cts.testing.TestNotificationListener
+import android.safetycenter.cts.testing.UiTestHelper.waitSourceIssueDisplayed
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import com.android.safetycenter.testing.Coroutines.TIMEOUT_SHORT
+import com.android.safetycenter.testing.SafetyCenterActivityLauncher.executeBlockAndExit
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.clearAllSafetySourceDataForTestsWithPermission
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.dismissSafetyCenterIssueWithPermission
 import com.android.safetycenter.testing.SafetyCenterFlags
 import com.android.safetycenter.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import com.android.safetycenter.testing.SafetyCenterTestConfigs
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SINGLE_SOURCE_ID
+import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SOURCE_ID_1
+import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SOURCE_ID_2
 import com.android.safetycenter.testing.SafetyCenterTestData
 import com.android.safetycenter.testing.SafetyCenterTestHelper
 import com.android.safetycenter.testing.SafetySourceIntentHandler.Request
@@ -254,7 +258,7 @@ class SafetyCenterNotificationTest {
                     SafetySourceIssue.Action.Builder("action1", "Custom action 1", intent1).build()
                 )
                 .addAction(
-                    SafetySourceIssue.Action.Builder("action2", "Custom action 2", intent1).build()
+                    SafetySourceIssue.Action.Builder("action2", "Custom action 2", intent2).build()
                 )
                 .build()
 
@@ -609,6 +613,45 @@ class SafetyCenterNotificationTest {
         assertThat(listenerData2.status.severityLevel)
             .isEqualTo(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING)
         TestNotificationListener.waitForSingleNotification()
+    }
+
+    @Test
+    fun sendContentPendingIntent_singleIssue_opensSafetyCenterWithIssueVisible() {
+        safetyCenterTestHelper.setData(
+            SINGLE_SOURCE_ID,
+            safetySourceTestData.recommendationWithDeviceIssue
+        )
+        val notificationWithChannel = TestNotificationListener.waitForSingleNotification()
+        val contentIntent = notificationWithChannel.statusBarNotification.notification.contentIntent
+
+        executeBlockAndExit(
+            launchActivity = { contentIntent.send() },
+            block = { waitSourceIssueDisplayed(safetySourceTestData.recommendationDeviceIssue) }
+        )
+    }
+
+    @Test
+    fun sendContentPendingIntent_anotherHigherSeverityIssue_opensSafetyCenterWithIssueVisible() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.multipleSourcesConfig)
+        SafetyCenterFlags.notificationsAllowedSources = setOf(SOURCE_ID_1)
+        safetyCenterTestHelper.setData(
+            SOURCE_ID_1,
+            safetySourceTestData.recommendationWithDeviceIssue
+        )
+        safetyCenterTestHelper.setData(
+            SOURCE_ID_2,
+            safetySourceTestData.criticalWithResolvingGeneralIssue
+        )
+        val notificationWithChannel = TestNotificationListener.waitForSingleNotification()
+        val contentIntent = notificationWithChannel.statusBarNotification.notification.contentIntent
+
+        executeBlockAndExit(
+            launchActivity = { contentIntent.send() },
+            block = {
+                waitSourceIssueDisplayed(safetySourceTestData.criticalResolvingGeneralIssue)
+                waitSourceIssueDisplayed(safetySourceTestData.recommendationGeneralIssue)
+            }
+        )
     }
 
     companion object {

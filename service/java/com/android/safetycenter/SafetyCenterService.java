@@ -82,6 +82,8 @@ import com.android.safetycenter.internaldata.SafetyCenterIds;
 import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
+import com.android.safetycenter.logging.SafetyCenterPullAtomCallback;
+import com.android.safetycenter.logging.SafetyCenterStatsdLogger;
 import com.android.safetycenter.persistence.PersistedSafetyCenterIssue;
 import com.android.safetycenter.persistence.PersistenceException;
 import com.android.safetycenter.persistence.SafetyCenterIssuesPersistence;
@@ -182,8 +184,9 @@ public final class SafetyCenterService extends SystemService {
         super(context);
         mSafetyCenterResourcesContext = new SafetyCenterResourcesContext(context);
         mSafetyCenterConfigReader = new SafetyCenterConfigReader(mSafetyCenterResourcesContext);
-        StatsdLogger statsdLogger = new StatsdLogger(context, mSafetyCenterConfigReader);
-        mSafetyCenterRefreshTracker = new SafetyCenterRefreshTracker(statsdLogger);
+        SafetyCenterStatsdLogger safetyCenterStatsdLogger =
+                new SafetyCenterStatsdLogger(context, mSafetyCenterConfigReader);
+        mSafetyCenterRefreshTracker = new SafetyCenterRefreshTracker(safetyCenterStatsdLogger);
         mSafetyCenterIssueRepository = new SafetyCenterIssueRepository(mSafetyCenterConfigReader);
         mPendingIntentFactory = new PendingIntentFactory(context, mSafetyCenterResourcesContext);
         mSafetyCenterRepository =
@@ -191,7 +194,7 @@ public final class SafetyCenterService extends SystemService {
                         context,
                         mSafetyCenterConfigReader,
                         mSafetyCenterRefreshTracker,
-                        statsdLogger,
+                        safetyCenterStatsdLogger,
                         mSafetyCenterIssueRepository);
         mSafetyCenterDataFactory =
                 new SafetyCenterDataFactory(
@@ -225,7 +228,7 @@ public final class SafetyCenterService extends SystemService {
                 new SafetyCenterPullAtomCallback(
                         context,
                         mApiLock,
-                        statsdLogger,
+                        safetyCenterStatsdLogger,
                         mSafetyCenterConfigReader,
                         mSafetyCenterRepository,
                         mSafetyCenterDataFactory,

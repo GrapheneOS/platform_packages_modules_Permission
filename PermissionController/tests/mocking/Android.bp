@@ -86,6 +86,7 @@ android_test {
         "SettingsLibSelectorWithWidgetPreference",
         "SettingsLibTwoTargetPreference",
         "SettingsLibActivityEmbedding",
+        "SettingsLibIllustrationPreference",
         "androidx.annotation_annotation",
         "permissioncontroller-statsd",
         // The PermissionController build file includes android.car-stubs in its libs dependency

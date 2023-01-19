@@ -1228,11 +1228,11 @@
     <string name="role_companion_device_computer_description">This service shares your photos, media, and notifications from your phone to other devices.</string>
 
     <!-- Label for the NOTES role. [CHAR LIMIT=30] -->
-    <string name="role_notes_label">Default note taking app</string>
+    <string name="role_notes_label">Default notes app</string>
     <!-- Short label for the NOTES role. [CHAR LIMIT=30] -->
-    <string name="role_notes_short_label">Note taking app</string>
+    <string name="role_notes_short_label">Notes app</string>
     <!-- Description for the NOTES role. [CHAR LIMIT=NONE] -->
-    <string name="role_notes_description">Apps that allow you to take notes</string>
+    <string name="role_notes_description">Apps that allow you to take notes on your device</string>
     <!-- Search keywords for the NOTES role. [CHAR LIMIT=NONE] -->
     <string name="role_notes_search_keywords">notes</string>
 

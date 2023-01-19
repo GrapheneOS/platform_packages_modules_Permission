@@ -178,7 +178,7 @@
     <string name="sort_by_app" msgid="4055799843051138087">"এপৰ ব্যৱহাৰ অনুসৰি সজাওক"</string>
     <string name="sort_by_time" msgid="5435045320002150456">"সময় অনুসৰি সজাওক"</string>
     <string name="item_separator" msgid="4030255389809224513">", "</string>
-    <string name="permission_usage_refresh" msgid="2264056346561305420">"ৰিফ্ৰে’শ্ব কৰক"</string>
+    <string name="permission_usage_refresh" msgid="2264056346561305420">"ৰিফ্ৰেশ্ব কৰক"</string>
     <string name="permission_history_title" msgid="8340081285133025225">"অনুমতিৰ ইতিহাস"</string>
     <string name="permission_history_category_today" msgid="7496389369158806620">"আজি"</string>
     <string name="permission_history_category_yesterday" msgid="7242517121222012521">"কালি"</string>
@@ -223,8 +223,10 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>ৰ আৰু <xliff:g id="NUMBER">%2$s</xliff:g> টা অন্য অনুমতি আঁতৰোৱা হ\'ল"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"অব্যৱহৃত এপ্‌"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"কোনো এপ্‌ কেইমাহমানৰ বাবে ব্যৱহাৰ নকৰাকৈ থাকিলে:\n\n• আপোনাৰ ডেটা সুৰক্ষিত কৰিবলৈ অনুমতিসমূহ আঁতৰোৱা হয়\n• বেটাৰী ৰাহি কৰিবলৈ জাননী বন্ধ কৰা হয়\n• ঠাই খালী কৰিবলৈ অস্থায়ী ফাইল আঁতৰোৱা হয়\n\nঅনুমতি আৰু জাননীত পুনৰ অনুমতি দিবলৈ, এপ্‌টো খোলক।"</string>
-    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"কোনো এপ্‌ কেইমাহমানৰ বাবে ব্যৱহাৰ নকৰাকৈ থাকিলে:\n\n• আপোনাৰ ডেটা সুৰক্ষিত কৰিবলৈ অনুমতিসমূহ আঁতৰোৱা হয়\n• ঠাই খালী কৰিবলৈ অস্থায়ী ফাইলসমূহ আঁতৰোৱা হয়\n\nপুনৰ অনুমতি দিবলৈ এপ্‌টো খোলক।"</string>
-    <string name="last_opened_category_title" msgid="7871347400611202595">"<xliff:g id="NUMBER">%s</xliff:g> মাহ পূর্বে অন্তিমবাৰ খোলা হৈছিল"</string>
+    <!-- no translation found for unused_apps_page_tv_summary (2624911608663778308) -->
+    <skip />
+    <!-- no translation found for last_opened_category_title (8796557894614236128) -->
+    <skip />
     <string name="last_opened_summary" msgid="5248984030024968808">"এপ্‌টো অন্তিমবাৰ <xliff:g id="DATE">%s</xliff:g>ত খোলা হৈছিল"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"অন্তিমবাৰ <xliff:g id="DATE">%s</xliff:g>ত খোলা হৈছিল"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"আপুনি যদি আটাইবোৰ ফাইল পৰিচালনাৰ অনুমতি দিয়ে, এই এপ্‌টোৱে এই ডিভাইচটোৰ যৌথ ষ্ট\'ৰেজত থকা যিকোনো ফাইল অথবা সংযুক্ত ষ্ট\'ৰেজ ডিভাইচসমূহ এক্সেছ কৰিব, সংশোধন কৰিব আৰু মচিব পাৰে। এপ্‌টোৱে আপোনাক নোসোধাকৈয়ে ফাইলসমূহ এক্সেছ কৰিব পাৰে।"</string>
@@ -402,14 +404,10 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g>ক আপোনাৰ জাননী ব্যৱহাৰ কৰিবলৈ আৰু সংযুক্ত ডিভাইচলৈ আপোনাৰ এপ্‌বোৰ ষ্ট্ৰীম কৰিবলৈ দিয়া হ’ব।"</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g>ক নিকটৱৰ্তী ডিভাইচসমূহলৈ সমল ষ্ট্ৰীম কৰিবলৈ দিয়া হ’ব।"</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"এইটো সেৱাই আপোনাৰ ফট’, মিডিয়া আৰু আপোনাৰ ফ’নৰ পৰা অন্য ডিভাইচলৈ দিয়া জাননী শ্বেয়াৰ কৰে।"</string>
-    <!-- no translation found for role_notes_label (7694668779088299905) -->
-    <skip />
-    <!-- no translation found for role_notes_short_label (6617887820096092689) -->
-    <skip />
-    <!-- no translation found for role_notes_description (8486216423668803751) -->
-    <skip />
-    <!-- no translation found for role_notes_search_keywords (7710756695666744631) -->
-    <skip />
+    <string name="role_notes_label" msgid="7694668779088299905">"টোকা লোৱা ডিফ’ল্ট এপ্‌"</string>
+    <string name="role_notes_short_label" msgid="6617887820096092689">"টোকা লোৱা এপ্‌"</string>
+    <string name="role_notes_description" msgid="8486216423668803751">"আপোনাক টোকা ল’বলৈ দিয়া এপ্‌"</string>
+    <string name="role_notes_search_keywords" msgid="7710756695666744631">"টোকা"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"বৰ্তমানৰ ডিফ’ল্ট"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"পুনৰায় নুসুধিব"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"ডিফ’ল্ট ৰূপে ছেট কৰক"</string>

@@ -39,7 +39,7 @@ public final class SafetySources {
      * Returns whether a {@link SafetySource} is external, i.e. if {@link SafetySourceData} can be
      * provided for it.
      */
-    static boolean isExternal(@NonNull SafetySource safetySource) {
+    public static boolean isExternal(@NonNull SafetySource safetySource) {
         int safetySourceType = safetySource.getType();
         switch (safetySourceType) {
             case SafetySource.SAFETY_SOURCE_TYPE_STATIC:
@@ -53,7 +53,7 @@ public final class SafetySources {
     }
 
     /** Returns whether a {@link SafetySource} is issue-only. */
-    static boolean isIssueOnly(@NonNull SafetySource safetySource) {
+    public static boolean isIssueOnly(@NonNull SafetySource safetySource) {
         int safetySourceType = safetySource.getType();
         return safetySourceType == SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY;
     }

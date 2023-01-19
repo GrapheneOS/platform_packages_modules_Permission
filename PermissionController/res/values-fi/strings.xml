@@ -189,7 +189,7 @@
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"Salli kaikkien tiedostojen ylläpito"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Salli pääsy vain mediaan"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Salli aina"</string>
-    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Salli vain, kun sovellus on käytössä"</string>
+    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Salli vain käytön aikana"</string>
     <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"Salli kaikki kuvat"</string>
     <string name="app_permission_button_select_photos" msgid="1022930616634145364">"Salli valitut kuvat"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Kysy aina"</string>
@@ -223,8 +223,10 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ja <xliff:g id="NUMBER">%2$s</xliff:g> muuta käyttöoikeutta poistettiin"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Käyttämättömät sovellukset"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Jos sovellusta ei käytetä muutamaan kuukauteen:\n\n• Luvat poistetaan datasi suojaamiseksi\n• Ilmoitukset lopetetaan akun säästämiseksi\n• Väliaikaiset tiedostot poistetaan tilan vapauttamiseksi\n\nJos haluat sallia luvat ja ilmoitukset uudelleen, avaa sovellus."</string>
-    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Jos sovellusta ei käytetä muutamaan kuukauteen:\n\n• Luvat poistetaan datasi suojaamiseksi\n• Väliaikaiset tiedostot poistetaan tilan vapauttamiseksi\n\nJos haluat sallia luvat uudelleen, avaa sovellus."</string>
-    <string name="last_opened_category_title" msgid="7871347400611202595">"Avattu viimeksi <xliff:g id="NUMBER">%s</xliff:g> kuukautta sitten"</string>
+    <!-- no translation found for unused_apps_page_tv_summary (2624911608663778308) -->
+    <skip />
+    <!-- no translation found for last_opened_category_title (8796557894614236128) -->
+    <skip />
     <string name="last_opened_summary" msgid="5248984030024968808">"Sovellus avattiin viimeksi <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Avattu viimeksi <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Jos sallit kaikkien tiedostojen ylläpidon, tämä sovellus voi nähdä, muokata ja poistaa kaikkia tiedostoja tämän laitteen yleisessä tallennustilassa ja yhdistetyillä tallennuslaitteilla. Sovelluksella on pääsy tiedostoihin ilman erillistä lupaasi."</string>
@@ -402,14 +404,10 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> saa reagoida ilmoituksiin ja striimata sovelluksiasi yhdistetylle laitteelle."</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> saa luvan striimata sisältöä lähellä oleviin laitteisiin."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Tämä palvelu jakaa kuvat, median ja ilmoitukset puhelimeltasi muille laitteille."</string>
-    <!-- no translation found for role_notes_label (7694668779088299905) -->
-    <skip />
-    <!-- no translation found for role_notes_short_label (6617887820096092689) -->
-    <skip />
-    <!-- no translation found for role_notes_description (8486216423668803751) -->
-    <skip />
-    <!-- no translation found for role_notes_search_keywords (7710756695666744631) -->
-    <skip />
+    <string name="role_notes_label" msgid="7694668779088299905">"Muistiinpanojen oletussovellus"</string>
+    <string name="role_notes_short_label" msgid="6617887820096092689">"Muistiinpanosovellus"</string>
+    <string name="role_notes_description" msgid="8486216423668803751">"Sovellukset joilla voit ottaa muistiinpanoja"</string>
+    <string name="role_notes_search_keywords" msgid="7710756695666744631">"muistiinpanot"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Nykyinen oletus"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Älä kysy uudelleen"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Aseta oletukseksi"</string>

@@ -62,7 +62,7 @@ public final class UserProfileGroup {
     }
 
     /** Returns all the alive {@link UserProfileGroup}s. */
-    static List<UserProfileGroup> getAllUserProfileGroups(@NonNull Context context) {
+    public static List<UserProfileGroup> getAllUserProfileGroups(@NonNull Context context) {
         List<UserProfileGroup> userProfileGroups = new ArrayList<>();
         List<UserHandle> userHandles = UserUtils.getUserHandles(context);
         for (int i = 0; i < userHandles.size(); i++) {
@@ -175,7 +175,7 @@ public final class UserProfileGroup {
     }
 
     /** Returns the profile parent user id of the {@link UserProfileGroup}. */
-    int getProfileParentUserId() {
+    public int getProfileParentUserId() {
         return mProfileParentUserId;
     }
 
@@ -185,7 +185,7 @@ public final class UserProfileGroup {
     }
 
     /** Returns the running managed profile user ids of the {@link UserProfileGroup}. */
-    int[] getManagedRunningProfilesUserIds() {
+    public int[] getManagedRunningProfilesUserIds() {
         return mManagedRunningProfilesUserIds;
     }
 
