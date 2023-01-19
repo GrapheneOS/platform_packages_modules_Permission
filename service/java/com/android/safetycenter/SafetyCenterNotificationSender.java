@@ -240,13 +240,18 @@ final class SafetyCenterNotificationSender {
             }
         }
         // On Android T all issues are assumed to have "unspecified" behavior
-        return getBehaviorForIssueWithUnspecifiedBehavior(issueKey);
+        return getBehaviorForIssueWithUnspecifiedBehavior(issue, issueKey);
     }
 
     @NotificationBehaviorInternal
-    private int getBehaviorForIssueWithUnspecifiedBehavior(@NonNull SafetyCenterIssueKey issueKey) {
-        // TODO(b/259083775): Make this implementation more useful/complex
-        return NOTIFICATION_BEHAVIOR_INTERNAL_IMMEDIATELY;
+    private int getBehaviorForIssueWithUnspecifiedBehavior(
+            @NonNull SafetySourceIssue issue, @NonNull SafetyCenterIssueKey issueKey) {
+        String flagKey = issueKey.getSafetySourceId() + "/" + issue.getIssueTypeId();
+        if (SafetyCenterFlags.getImmediateNotificationBehaviorIssues().contains(flagKey)) {
+            return NOTIFICATION_BEHAVIOR_INTERNAL_IMMEDIATELY;
+        } else {
+            return NOTIFICATION_BEHAVIOR_INTERNAL_NEVER;
+        }
     }
 
     private boolean areNotificationsAllowed(@NonNull String sourceId) {
