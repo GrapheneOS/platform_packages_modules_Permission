@@ -13,15 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package android.safetycenter.cts.ui
+
+package android.safetycenter.functional.ui
 
 import android.content.Context
-import android.safetycenter.cts.testing.UiTestHelper.RESCAN_BUTTON_LABEL
-import android.safetycenter.cts.testing.UiTestHelper.waitAllTextDisplayed
-import android.safetycenter.cts.testing.UiTestHelper.waitButtonDisplayed
-import android.safetycenter.cts.testing.UiTestHelper.waitButtonNotDisplayed
-import android.safetycenter.cts.testing.UiTestHelper.waitDisplayed
-import android.safetycenter.cts.testing.UiTestHelper.waitNotDisplayed
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.uiautomator.By
@@ -38,6 +33,12 @@ import com.android.safetycenter.testing.SafetySourceIntentHandler.Request
 import com.android.safetycenter.testing.SafetySourceIntentHandler.Response
 import com.android.safetycenter.testing.SafetySourceReceiver
 import com.android.safetycenter.testing.SafetySourceTestData
+import com.android.safetycenter.testing.UiTestHelper.RESCAN_BUTTON_LABEL
+import com.android.safetycenter.testing.UiTestHelper.waitAllTextDisplayed
+import com.android.safetycenter.testing.UiTestHelper.waitButtonDisplayed
+import com.android.safetycenter.testing.UiTestHelper.waitButtonNotDisplayed
+import com.android.safetycenter.testing.UiTestHelper.waitDisplayed
+import com.android.safetycenter.testing.UiTestHelper.waitNotDisplayed
 import org.junit.After
 import org.junit.Assume.assumeTrue
 import org.junit.Before
@@ -45,9 +46,8 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
-/** CTS tests for the Safety Center Status Card. */
+/** Functional tests for the Safety Center Status Card. */
 @RunWith(AndroidJUnit4::class)
-// TODO(b/244582705): Add CTS tests for device & account titles, status when unspecified entries.
 class SafetyCenterStatusCardTest {
 
     @get:Rule val disableAnimationRule = DisableAnimationRule()
@@ -62,7 +62,7 @@ class SafetyCenterStatusCardTest {
     private val safetyCenterTestData = SafetyCenterTestData(context)
     private val safetyCenterTestConfigs = SafetyCenterTestConfigs(context)
 
-    // JUnit's Assume is not supported in @BeforeClass by the CTS tests runner, so this is used to
+    // JUnit's Assume is not supported in @BeforeClass by the tests runner, so this is used to
     // manually skip the setup and teardown methods.
     private val shouldRunTests = context.deviceSupportsSafetyCenter()
 

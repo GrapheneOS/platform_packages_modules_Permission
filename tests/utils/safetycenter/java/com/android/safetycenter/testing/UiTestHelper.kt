@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 The Android Open Source Project
+ * Copyright (C) 2023 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package android.safetycenter.cts.testing
+package com.android.safetycenter.testing
 
 import android.os.SystemClock
 import android.safetycenter.SafetySourceData
 import android.safetycenter.SafetySourceIssue
+import android.util.Log
 import androidx.test.uiautomator.By
 import androidx.test.uiautomator.BySelector
 import androidx.test.uiautomator.StaleObjectException
 import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.UiObject2
-import android.util.Log
 import com.android.compatibility.common.util.SystemUtil.runShellCommand
 import com.android.compatibility.common.util.UiAutomatorUtils2.getUiDevice
 import com.android.compatibility.common.util.UiAutomatorUtils2.waitFindObject
@@ -132,7 +132,7 @@ object UiTestHelper {
         runShellCommand("settings put global animator_duration_scale $scale")
     }
 
-    internal fun UiDevice.rotate() {
+    fun UiDevice.rotate() {
         unfreezeRotation()
         if (isNaturalOrientation) {
             setOrientationLeft()
@@ -143,7 +143,7 @@ object UiTestHelper {
         waitForIdle()
     }
 
-    internal fun UiDevice.resetRotation() {
+    fun UiDevice.resetRotation() {
         if (!isNaturalOrientation) {
             unfreezeRotation()
             setOrientationNatural()

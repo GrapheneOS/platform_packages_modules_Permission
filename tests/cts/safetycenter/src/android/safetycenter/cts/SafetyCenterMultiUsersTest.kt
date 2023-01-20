@@ -33,8 +33,6 @@ import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyCenterStaticEntry
 import android.safetycenter.SafetyCenterStaticEntryGroup
 import android.safetycenter.SafetySourceData
-import android.safetycenter.cts.testing.UiTestHelper.waitAllTextDisplayed
-import android.safetycenter.cts.testing.UiTestHelper.waitAllTextNotDisplayed
 import androidx.test.core.app.ApplicationProvider
 import com.android.bedstead.harrier.BedsteadJUnit4
 import com.android.bedstead.harrier.DeviceState
@@ -76,6 +74,8 @@ import com.android.safetycenter.testing.SafetyCenterTestHelper
 import com.android.safetycenter.testing.SafetySourceTestData
 import com.android.safetycenter.testing.SafetySourceTestData.Companion.EVENT_SOURCE_STATE_CHANGED
 import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
+import com.android.safetycenter.testing.UiTestHelper.waitAllTextDisplayed
+import com.android.safetycenter.testing.UiTestHelper.waitAllTextNotDisplayed
 import com.google.common.base.Preconditions.checkState
 import com.google.common.truth.Truth.assertThat
 import kotlin.test.assertFailsWith

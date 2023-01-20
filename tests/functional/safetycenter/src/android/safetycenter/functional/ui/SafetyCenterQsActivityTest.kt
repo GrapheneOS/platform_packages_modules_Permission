@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package android.safetycenter.cts.ui
+package android.safetycenter.functional.ui
 
 import android.Manifest.permission.MANAGE_SENSOR_PRIVACY
 import android.Manifest.permission.OBSERVE_SENSOR_PRIVACY
@@ -23,8 +23,6 @@ import android.hardware.SensorPrivacyManager
 import android.hardware.SensorPrivacyManager.Sensors.CAMERA
 import android.hardware.SensorPrivacyManager.Sensors.MICROPHONE
 import android.hardware.SensorPrivacyManager.TOGGLE_TYPE_SOFTWARE
-import android.safetycenter.cts.testing.UiTestHelper.waitAllTextDisplayed
-import android.safetycenter.cts.testing.UiTestHelper.waitDisplayed
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.uiautomator.By
@@ -34,6 +32,8 @@ import com.android.safetycenter.testing.SafetyCenterActivityLauncher.launchSafet
 import com.android.safetycenter.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import com.android.safetycenter.testing.SafetyCenterTestHelper
 import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
+import com.android.safetycenter.testing.UiTestHelper.waitAllTextDisplayed
+import com.android.safetycenter.testing.UiTestHelper.waitDisplayed
 import org.junit.After
 import org.junit.Assume.assumeTrue
 import org.junit.Before
@@ -41,7 +41,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
-/** CTS tests for the Safety Center Quick Settings Activity. */
+/** Functional tests for the Safety Center Quick Settings Activity. */
 @RunWith(AndroidJUnit4::class)
 class SafetyCenterQsActivityTest {
 
