@@ -52,7 +52,7 @@ import androidx.annotation.RequiresApi;
 
 import com.android.permission.util.PackageUtils;
 import com.android.safetycenter.SafetyCenterConfigReader.Broadcast;
-import com.android.safetycenter.data.SafetyCenterRepository;
+import com.android.safetycenter.data.SafetySourceDataRepository;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -75,17 +75,17 @@ final class SafetyCenterBroadcastDispatcher {
     @NonNull private final Context mContext;
     @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
     @NonNull private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker;
-    @NonNull private final SafetyCenterRepository mSafetyCenterRepository;
+    @NonNull private final SafetySourceDataRepository mSafetySourceDataRepository;
 
     SafetyCenterBroadcastDispatcher(
             @NonNull Context context,
             @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
             @NonNull SafetyCenterRefreshTracker safetyCenterRefreshTracker,
-            @NonNull SafetyCenterRepository safetyCenterRepository) {
+            @NonNull SafetySourceDataRepository safetySourceDataRepository) {
         mContext = context;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
         mSafetyCenterRefreshTracker = safetyCenterRefreshTracker;
-        mSafetyCenterRepository = safetyCenterRepository;
+        mSafetySourceDataRepository = safetySourceDataRepository;
     }
 
     /**
@@ -400,7 +400,7 @@ final class SafetyCenterBroadcastDispatcher {
             String sourceId = allSourceIds.get(i);
             if (pageOpenSourceIds.contains(sourceId)
                     || flagAllowListedSourceIds.contains(sourceId)
-                    || mSafetyCenterRepository.getSafetySourceDataInternal(
+                    || mSafetySourceDataRepository.getSafetySourceDataInternal(
                                     SafetySourceKey.of(sourceId, userId))
                             == null) {
                 sourceIds.add(sourceId);

@@ -39,7 +39,7 @@ import androidx.annotation.RequiresApi;
 import com.android.modules.utils.build.SdkLevel;
 import com.android.safetycenter.data.SafetyCenterIssueDismissalRepository;
 import com.android.safetycenter.data.SafetyCenterIssueRepository;
-import com.android.safetycenter.data.SafetyCenterRepository;
+import com.android.safetycenter.data.SafetySourceDataRepository;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 
 import java.io.PrintWriter;
@@ -98,7 +98,7 @@ final class SafetyCenterNotificationSender {
     @NonNull
     private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
 
-    @NonNull private final SafetyCenterRepository mSafetyCenterRepository;
+    @NonNull private final SafetySourceDataRepository mSafetySourceDataRepository;
 
     @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
 
@@ -111,13 +111,13 @@ final class SafetyCenterNotificationSender {
             @NonNull Context context,
             @NonNull SafetyCenterNotificationFactory notificationFactory,
             @NonNull SafetyCenterIssueDismissalRepository safetyCenterIssueDismissalRepository,
-            @NonNull SafetyCenterRepository safetyCenterRepository,
+            @NonNull SafetySourceDataRepository safetySourceDataRepository,
             @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
             @NonNull SafetyCenterIssueRepository safetyCenterIssueRepository) {
         mContext = context;
         mNotificationFactory = notificationFactory;
         mSafetyCenterIssueDismissalRepository = safetyCenterIssueDismissalRepository;
-        mSafetyCenterRepository = safetyCenterRepository;
+        mSafetySourceDataRepository = safetySourceDataRepository;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
         mSafetyCenterIssueRepository = safetyCenterIssueRepository;
     }
@@ -215,7 +215,7 @@ final class SafetyCenterNotificationSender {
             }
 
             // Now retrieve the issue itself and use it to determine the behavior:
-            SafetySourceIssue issue = mSafetyCenterRepository.getSafetySourceIssue(issueKey);
+            SafetySourceIssue issue = mSafetySourceDataRepository.getSafetySourceIssue(issueKey);
             int behavior = getBehavior(issue, issueKey);
             if (behavior == NOTIFICATION_BEHAVIOR_INTERNAL_IMMEDIATELY) {
                 result.put(issueKey, issue);

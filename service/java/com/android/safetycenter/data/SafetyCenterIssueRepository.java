@@ -62,7 +62,7 @@ public final class SafetyCenterIssueRepository {
                     new SafetySourceIssuesInfoBySeverityDescending();
 
     @NonNull private final Context mContext;
-    @NonNull private final SafetyCenterRepository mSafetyCenterRepository;
+    @NonNull private final SafetySourceDataRepository mSafetySourceDataRepository;
     @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
 
     // Only available on Android U+.
@@ -74,11 +74,11 @@ public final class SafetyCenterIssueRepository {
 
     public SafetyCenterIssueRepository(
             @NonNull Context context,
-            @NonNull SafetyCenterRepository safetyCenterRepository,
+            @NonNull SafetySourceDataRepository safetySourceDataRepository,
             @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
             @Nullable SafetyCenterIssueDeduplicator safetyCenterIssueDeduplicator) {
         mContext = context;
-        mSafetyCenterRepository = safetyCenterRepository;
+        mSafetySourceDataRepository = safetySourceDataRepository;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
         mSafetyCenterIssueDeduplicator = safetyCenterIssueDeduplicator;
     }
@@ -205,7 +205,7 @@ public final class SafetyCenterIssueRepository {
             @UserIdInt int userId) {
         SafetySourceKey key = SafetySourceKey.of(safetySource.getId(), userId);
         SafetySourceData safetySourceData =
-                mSafetyCenterRepository.getSafetySourceDataInternal(key);
+                mSafetySourceDataRepository.getSafetySourceDataInternal(key);
 
         if (safetySourceData == null) {
             return;
