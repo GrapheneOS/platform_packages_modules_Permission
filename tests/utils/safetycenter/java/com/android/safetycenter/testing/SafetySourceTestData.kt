@@ -718,10 +718,10 @@ class SafetySourceTestData(private val context: Context) {
         fun createRedirectPendingIntent(context: Context, intent: Intent): PendingIntent {
             val explicitIntent = Intent(intent).setPackage(context.packageName)
             val redirectIntent =
-                if (intentResolves(context, intent)) {
-                    intent
-                } else if (intentResolves(context, explicitIntent)) {
+                if (intentResolves(context, explicitIntent)) {
                     explicitIntent
+                } else if (intentResolves(context, intent)) {
+                    intent
                 } else {
                     throw IllegalStateException("Intent doesn't resolve")
                 }
