@@ -24,24 +24,21 @@ import android.permission.cts.PermissionUtils.install
 import android.permission.cts.PermissionUtils.uninstallApp
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
+import androidx.test.uiautomator.By
 import com.android.compatibility.common.util.SystemUtil.eventually
 import com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity
-import org.junit.After
-import org.junit.Test
-import org.junit.runner.RunWith
-import org.junit.Before
-
-import androidx.test.uiautomator.By
 import com.android.compatibility.common.util.UiAutomatorUtils2.waitFindObject
 import com.android.permissioncontroller.permissionui.PermissionHub2Test
 import com.android.permissioncontroller.permissionui.wakeUpScreen
+import org.junit.After
+import org.junit.Before
+import org.junit.Test
+import org.junit.runner.RunWith
 
-/**
- * Simple tests for {@link PermissionUsageV2Fragment}
- */
+/** Simple tests for {@link PermissionUsageFragment} */
 @RunWith(AndroidJUnit4::class)
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.S)
-class PermissionUsageV2FragmentTest : PermissionHub2Test() {
+class PermissionUsageFragmentTest : PermissionHub2Test() {
     private val APK =
         "/data/local/tmp/permissioncontroller/tests/permissionui" +
             "/PermissionUiUseCameraPermissionApp.apk"
@@ -62,15 +59,15 @@ class PermissionUsageV2FragmentTest : PermissionHub2Test() {
         accessCamera()
 
         runWithShellPermissionIdentity {
-            context.startActivity(Intent(Intent.ACTION_REVIEW_PERMISSION_USAGE).apply {
-                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            })
+            context.startActivity(
+                Intent(Intent.ACTION_REVIEW_PERMISSION_USAGE).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                })
         }
 
         eventually {
             try {
-                waitFindObject(By.res("android:id/title")
-                    .textContains(CAMERA_PREF_LABEL)).click()
+                waitFindObject(By.res("android:id/title").textContains(CAMERA_PREF_LABEL)).click()
             } catch (e: Exception) {
                 waitFindObject(By.textContains(REFRESH)).click()
                 throw e
