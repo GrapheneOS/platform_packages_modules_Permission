@@ -574,6 +574,7 @@
             <permission name="android.permission.REQUEST_COMPANION_PROFILE_AUTOMOTIVE_PROJECTION" minSdkVersion="33" />
             <permission name="android.permission.SEND_SMS" />
             <permission name="android.permission.TOGGLE_AUTOMOTIVE_PROJECTION" minSdkVersion="33" />
+            <permission name="android.permission.ADD_TRUSTED_DISPLAY" minSdkVersion="34"/>
         </permissions>
     </role>
 
