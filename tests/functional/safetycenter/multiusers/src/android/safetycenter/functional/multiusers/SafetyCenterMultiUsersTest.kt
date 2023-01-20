@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package android.safetycenter.cts
+package android.safetycenter.functional.multiusers
 
 import android.Manifest.permission.INTERACT_ACROSS_USERS
 import android.Manifest.permission.INTERACT_ACROSS_USERS_FULL
@@ -89,13 +89,12 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 /**
- * CTS tests for our APIs and UI on a device with multiple users. e.g. with a managed or secondary
- * user(s).
+ * Functional tests for our APIs and UI on a device with multiple users. e.g. with a managed or
+ * secondary user(s).
  */
-@Ignore // Tests are causing flakiness in other tests.
+// TODO(b/264992293): Re-enable these tests and assess flakyness now that they are independent
+@Ignore
 @RunWith(BedsteadJUnit4::class)
-// TODO(b/234108780): Add these to presubmits when we figure a way to make sure they don't fail due
-// to timeouts with Bedstead.
 class SafetyCenterMultiUsersTest {
 
     companion object {

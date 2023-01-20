@@ -1,38 +1,7 @@
 {
-  "presubmit": [
+  "imports": [
     {
-      "name": "CtsSafetyCenterTestCases",
-      "options": [
-        {
-          "exclude-annotation": "com.android.bedstead.harrier.annotations.Postsubmit"
-        }
-      ]
-    },
-    {
-      "name": "SafetyCenterFunctionalTestCases",
-      "options": [
-        {
-          "exclude-annotation": "com.android.bedstead.harrier.annotations.Postsubmit"
-        }
-      ]
-    }
-  ],
-  "postsubmit": [
-    {
-      "name": "CtsSafetyCenterTestCases"
-    },
-    {
-      "name": "SafetyCenterFunctionalTestCases"
-    }
-  ],
-  "mainline-presubmit": [
-    {
-      "name": "CtsSafetyCenterTestCases[com.google.android.permission.apex]",
-      "options": [
-        {
-          "exclude-annotation": "android.platform.test.annotations.FlakyTest"
-        }
-      ]
+      "path": "packages/modules/Permission/SafetyCenter"
     }
   ]
 }
