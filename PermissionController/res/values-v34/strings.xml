@@ -79,17 +79,14 @@
     permission_rationale_purpose_message string in for of bullet list. [CHAR LIMIT=50] -->
     <string name="permission_rational_purpose_account_management">Account management</string>
 
-    <!-- TODO(b/259279178): update with finalized permission rationale strings -->
     <!-- Text for an app's permission rationale header [CHAR LIMIT=60]-->
-    <string name="app_permission_rationale_message">Data privacy</string>
+    <string name="app_permission_rationale_message">Data safety</string>
 
-    <!-- TODO(b/259279178): update with finalized permission rationale strings -->
     <!-- Text for linking to an app's location permission rationale dialog. [CHAR LIMIT=60] -->
-    <string name="app_location_permission_rationale_title">Your location may be shared</string>
+    <string name="app_location_permission_rationale_title">Your location data may be shared</string>
 
-    <!-- TODO(b/259279178): update with finalized permission rationale strings -->
     <!-- Description for the app's location permission rationale dialog content. [CHAR LIMIT=60] -->
-    <string name="app_location_permission_rationale_subtitle">This app declared it may share your location with third parties</string>
+    <string name="app_location_permission_rationale_subtitle">This app stated it may share location data with third parties</string>
 
     <!-- Permission Rationale - End -->
 
