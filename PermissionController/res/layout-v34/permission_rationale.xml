@@ -55,46 +55,67 @@
 
                     <TextView
                         android:id="@+id/permission_rationale_title"
-                        android:text="@string/permission_rationale_title"
                         style="@style/PermissionRationaleTitleMessage" />
 
                 </LinearLayout>
 
-                <LinearLayout style="@style/PermissionRationaleSectionOuterContainer">
+                <LinearLayout
+                    android:id="@+id/data_sharing_source_section"
+                    style="@style/PermissionRationaleSectionOuterContainer">
                     <ImageView
-                        android:id="@+id/purpose_icon"
+                        android:id="@+id/data_sharing_source_icon"
                         android:importantForAccessibility="no"
                         android:src="@drawable/ic_info"
                         style="@style/PermissionRationaleSectionIcon" />
                     <LinearLayout style="@style/PermissionRationaleSectionInnerContainer">
                         <TextView
-                            android:id="@+id/purpose_title"
-                            android:text="@string/permission_rationale_purpose_title"
+                            android:id="@+id/data_sharing_source_title"
+                            android:text="@string/permission_rationale_data_sharing_source_title"
                             style="@style/PermissionRationaleSectionTitle" />
                         <TextView
-                            android:id="@+id/purpose_message"
-                            android:text="@string/permission_rationale_purpose_message"
+                            android:id="@+id/data_sharing_source_message"
                             style="@style/PermissionRationaleSectionMessage" />
                     </LinearLayout>
                 </LinearLayout>
-                <LinearLayout style="@style/PermissionRationaleSectionOuterContainer">
+                <LinearLayout
+                    android:id="@+id/purpose_section"
+                    style="@style/PermissionRationaleSectionOuterContainer">
                     <ImageView
-                        android:id="@+id/third_party_icon"
+                        android:id="@+id/purpose_icon"
                         android:importantForAccessibility="no"
-                        android:src="@drawable/ic_business"
+                        android:src="@drawable/ic_help"
                         style="@style/PermissionRationaleSectionIcon" />
                     <LinearLayout style="@style/PermissionRationaleSectionInnerContainer">
                         <TextView
-                            android:id="@+id/third_party_title"
-                            android:text="@string/permission_rationale_thirdparty_title"
+                            android:id="@+id/purpose_title"
                             style="@style/PermissionRationaleSectionTitle" />
                         <TextView
-                            android:id="@+id/third_party_message"
-                            android:text="@string/permission_rationale_thirdparty_message"
+                            android:id="@+id/purpose_message"
+                            style="@style/PermissionRationaleSectionPurposeList" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/learn_more_section"
+                    style="@style/PermissionRationaleSectionOuterContainer">
+                    <ImageView
+                        android:id="@+id/learn_more_icon"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_collections_bookmark"
+                        style="@style/PermissionRationaleSectionIcon" />
+                    <LinearLayout style="@style/PermissionRationaleSectionInnerContainer">
+                        <TextView
+                            android:id="@+id/learn_more_title"
+                            android:text="@string/permission_rationale_permission_learn_more_title"
+                            style="@style/PermissionRationaleSectionTitle" />
+                        <TextView
+                            android:id="@+id/learn_more_message"
+                            android:text="@string/permission_rationale_permission_learn_more_message"
                             style="@style/PermissionRationaleSectionMessage" />
                     </LinearLayout>
                 </LinearLayout>
-                <LinearLayout style="@style/PermissionRationaleSectionOuterContainer">
+                <LinearLayout
+                    android:id="@+id/settings_section"
+                    style="@style/PermissionRationaleSectionOuterContainer">
                     <ImageView
                         android:id="@+id/settings_icon"
                         android:importantForAccessibility="no"
@@ -107,21 +128,7 @@
                             style="@style/PermissionRationaleSectionTitle" />
                         <TextView
                             android:id="@+id/settings_message"
-                            android:text="@string/permission_rationale_permission_settings_message"
                             style="@style/PermissionRationaleSectionMessage" />
-                    </LinearLayout>
-                </LinearLayout>
-                <LinearLayout style="@style/PermissionRationaleSectionOuterContainer">
-                    <ImageView
-                        android:id="@+id/learn_more_icon"
-                        android:importantForAccessibility="no"
-                        android:src="@drawable/ic_collections_bookmark"
-                        style="@style/PermissionRationaleSectionIcon" />
-                    <LinearLayout style="@style/PermissionRationaleSectionInnerContainer">
-                        <TextView
-                            android:id="@+id/learn_more_message"
-                            android:text="@string/permission_rationale_permission_learn_more_title"
-                            style="@style/PermissionRationaleSectionTitle" />
                     </LinearLayout>
                 </LinearLayout>
 

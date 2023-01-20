@@ -16,8 +16,11 @@
 
 package com.android.permissioncontroller.permission.ui.v34;
 
+import static android.Manifest.permission_group.LOCATION;
 import static android.content.Intent.EXTRA_PERMISSION_GROUP_NAME;
 import static android.view.WindowManager.LayoutParams.SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS;
+
+import static androidx.core.util.Preconditions.checkStringNotEmpty;
 
 import static com.android.permission.safetylabel.DataPurposeConstants.PURPOSE_ACCOUNT_MANAGEMENT;
 import static com.android.permission.safetylabel.DataPurposeConstants.PURPOSE_ADVERTISING;
@@ -30,12 +33,15 @@ import static com.android.permissioncontroller.permission.ui.model.v34.Permissio
 import static com.android.permissioncontroller.permission.ui.v34.PermissionRationaleViewHandler.Result.CANCELLED;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.icu.lang.UCharacter;
-import android.icu.text.ListFormatter;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Annotation;
+import android.text.Spannable;
 import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.text.style.BulletSpan;
 import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -46,6 +52,8 @@ import android.view.inputmethod.InputMethodManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.annotation.StringRes;
+import androidx.core.util.Preconditions;
 
 import com.android.permission.safetylabel.DataPurposeConstants.Purpose;
 import com.android.permissioncontroller.Constants;
@@ -58,6 +66,7 @@ import com.android.permissioncontroller.permission.ui.model.v34.PermissionRation
 import com.android.permissioncontroller.permission.ui.model.v34.PermissionRationaleViewModel.PermissionRationaleInfo;
 import com.android.permissioncontroller.permission.ui.model.v34.PermissionRationaleViewModelFactory;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
+import com.android.permissioncontroller.permission.utils.Utils;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -159,7 +168,7 @@ public class PermissionRationaleActivity extends SettingsActivity implements
 
         setFinishOnTouchOutside(false);
 
-        setTitle(R.string.permission_rationale_title);
+        setTitle(getTitleResIdForPermissionGroup(mPermissionGroupName));
 
         if (DeviceUtils.isTelevision(this)
                 || DeviceUtils.isWear(this)
@@ -298,54 +307,59 @@ public class PermissionRationaleActivity extends SettingsActivity implements
     }
 
     private void showPermissionRationale() {
+        @StringRes int titleResId = getTitleResIdForPermissionGroup(mPermissionGroupName);
+        setTitle(titleResId);
+        CharSequence title = getString(titleResId);
+
+        String installSourcePackageName = mPermissionRationaleInfo.getInstallSourcePackageName();
+        CharSequence installSourceLabel = mPermissionRationaleInfo.getInstallSourceLabel();
+        checkStringNotEmpty(installSourcePackageName,
+                "installSourcePackageName cannot be null or empty");
+        checkStringNotEmpty(installSourceLabel,
+                "installSourceLabel cannot be null or empty");
+        CharSequence dataSharingSourceMessage = createDataSharingSourceMessageWithSpans(
+                getText(R.string.permission_rationale_data_sharing_source_message),
+                installSourceLabel,
+                getLinkToAppStore(installSourcePackageName));
+
+        CharSequence purposeTitle =
+                getString(getPurposeTitleResIdForPermissionGroup(mPermissionGroupName));
+
+        // TODO(b/260144215): update ordering (enum ordering doesn't match expected ux ordering)
         List<String> purposesList =
                 new ArrayList<>(mPermissionRationaleInfo.getPurposeSet().size());
         for (@Purpose int purpose : mPermissionRationaleInfo.getPurposeSet()) {
             purposesList.add(getStringForPurpose(purpose));
         }
+        CharSequence purposeMessage =
+                createPurposeMessageWithBulletSpan(
+                        getText(R.string.permission_rationale_purpose_message),
+                        purposesList);
 
-        // TODO(b/260144215): update purposes join based on l18n feedback, also update ordering
-        //  (enum ordering doesn't match expected ux ordering)
-        String purposesString = ListFormatter.getInstance().format(purposesList);
-
-        String installSourcePackageName = mPermissionRationaleInfo.getInstallSourcePackageName();
-        CharSequence installSourceLabel = mPermissionRationaleInfo.getInstallSourceLabel();
-        CharSequence purposeMessage;
-        if (installSourcePackageName == null || installSourcePackageName.length() == 0
-                || installSourceLabel == null || installSourceLabel.length() == 0) {
-            purposeMessage = getString(
-                    R.string.permission_rationale_purpose_default_source_message,
-                    purposesString);
-        } else {
-            purposeMessage =
-                    createPurposeMessageWithSpans(
-                            getText(R.string.permission_rationale_purpose_message),
-                            installSourceLabel,
-                            purposesString,
-                            getLinkToAppStore(installSourcePackageName));
-        }
+        CharSequence learnMoreMessage =
+                setLink(
+                        getText(R.string.permission_rationale_permission_learn_more_message),
+                        getLearnMoreLink()
+                );
 
         String groupName = mPermissionRationaleInfo.getGroupName();
         String permissionGroupLabel =
                 KotlinUtils.INSTANCE.getPermGroupLabel(this, groupName).toString();
         CharSequence settingsMessage =
                 createSettingsMessageWithSpans(
-                        getText(R.string.permission_rationale_permission_settings_message),
+                        getText(getSettingsMessageResIdForPermissionGroup(groupName)),
                         UCharacter.toLowerCase(permissionGroupLabel),
                         getLinkToSettings()
                 );
 
-        CharSequence learnMoreMessage =
-                setLink(
-                        getText(R.string.permission_rationale_permission_learn_more_title),
-                        getLearnMoreLink()
-                );
-
         mViewHandler.updateUi(
                 groupName,
+                title,
+                dataSharingSourceMessage,
+                purposeTitle,
                 purposeMessage,
-                settingsMessage,
-                learnMoreMessage
+                learnMoreMessage,
+                settingsMessage
         );
 
         getWindow().setDimAmount(mOriginalDimAmount);
@@ -354,6 +368,44 @@ public class PermissionRationaleActivity extends SettingsActivity implements
             manager.hideSoftInputFromWindow(mRootView.getWindowToken(), 0);
             mRootView.setVisibility(View.VISIBLE);
         }
+    }
+
+    @StringRes
+    private int getTitleResIdForPermissionGroup(String permissionGroupName) {
+        if (LOCATION.equals(permissionGroupName)) {
+            return R.string.permission_rationale_location_title;
+        }
+
+        String exceptionString =
+                String.format("Permission Rationale does not support %s", permissionGroupName);
+        throw new IllegalArgumentException(exceptionString);
+    }
+
+    @StringRes
+    private int getPurposeTitleResIdForPermissionGroup(String permissionGroupName) {
+        if (LOCATION.equals(permissionGroupName)) {
+            return R.string.permission_rationale_location_purpose_title;
+        }
+
+        String exceptionString =
+                String.format("Permission Rationale does not support %s", permissionGroupName);
+        throw new IllegalArgumentException(exceptionString);
+    }
+
+    /**
+     * Returns permission settings message string resource id for the given permission group.
+     *
+     * <p> Supported permission groups: LOCATION
+     *
+     * @param permissionGroupName permission group for which to get a message string id
+     * @throws IllegalArgumentException if passing unsupported permission group
+     */
+    @StringRes
+    private int getSettingsMessageResIdForPermissionGroup(String permissionGroupName) {
+        Preconditions.checkArgument(LOCATION.equals(permissionGroupName),
+                "Permission Rationale does not support %s", permissionGroupName);
+
+        return R.string.permission_rationale_permission_location_settings_message;
     }
 
     private String getStringForPurpose(@Purpose int purpose) {
@@ -377,15 +429,38 @@ public class PermissionRationaleActivity extends SettingsActivity implements
         }
     }
 
-    private CharSequence createPurposeMessageWithSpans(
+    private CharSequence createDataSharingSourceMessageWithSpans(
             CharSequence baseText,
             CharSequence installSourceLabel,
-            CharSequence purposes,
             ClickableSpan link) {
         CharSequence updatedText =
                 replaceSpan(baseText, INSTALL_SOURCE_ANNOTATION_ID, installSourceLabel);
-        updatedText = replaceSpan(updatedText, PURPOSE_LIST_ANNOTATION_ID, purposes);
         updatedText = setLink(updatedText, link);
+        return updatedText;
+    }
+
+    private CharSequence createPurposeMessageWithBulletSpan(
+            CharSequence baseText,
+            List<String> purposesList) {
+        Resources res = getResources();
+        final int bulletSize =
+                res.getDimensionPixelSize(R.dimen.permission_rationale_purpose_list_bullet_radius);
+        final int bulletIndent =
+                res.getDimensionPixelSize(R.dimen.permission_rationale_purpose_list_bullet_indent);
+
+        final int bulletColor =
+                getColor(Utils.getColorResId(this, android.R.attr.textColorSecondary));
+
+        String purposesString = TextUtils.join("\n", purposesList);
+        SpannableStringBuilder purposesSpan = SpannableStringBuilder.valueOf(purposesString);
+        int spanStart = 0;
+        for (int i = 0; i < purposesList.size(); i++) {
+            final int length = purposesList.get(i).length();
+            purposesSpan.setSpan(new BulletSpan(bulletIndent, bulletColor, bulletSize),
+                    spanStart, spanStart + length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            spanStart += length + 1;
+        }
+        CharSequence updatedText = replaceSpan(baseText, PURPOSE_LIST_ANNOTATION_ID, purposesSpan);
         return updatedText;
     }
 

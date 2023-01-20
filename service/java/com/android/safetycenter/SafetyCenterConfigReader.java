@@ -120,7 +120,7 @@ public final class SafetyCenterConfigReader {
      * SafetySources#isLoggable(SafetySource)} is false (and any resultingly empty groups).
      */
     @NonNull
-    List<SafetySourcesGroup> getLoggableSafetySourcesGroups() {
+    public List<SafetySourcesGroup> getLoggableSafetySourcesGroups() {
         return getCurrentConfigInternal().getLoggableSourcesGroups();
     }
 
@@ -153,7 +153,7 @@ public final class SafetyCenterConfigReader {
     }
 
     /** Returns whether the {@link SafetyCenterConfig} allows logging to statsd. */
-    boolean allowsStatsdLogging() {
+    public boolean allowsStatsdLogging() {
         if (!isOverrideForTestsActive()) {
             return true;
         }

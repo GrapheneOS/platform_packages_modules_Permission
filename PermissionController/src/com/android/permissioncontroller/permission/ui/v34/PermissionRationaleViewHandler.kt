@@ -58,15 +58,22 @@ interface PermissionRationaleViewHandler {
      * initialize the UI.
      *
      * @param groupName the name of the permission group
+     * @param title the title for the dialog
+     * @param dataSharingSourceMessage the data sharing source data usage comes from message to
+     * display the user
+     * @param purposeTitle the data usage purposes title to display the user
      * @param purposeMessage the data usage purposes message to display the user
-     * @param settingsMessage the settings link message to display the user
      * @param learnMoreMessage the more info about safety labels message to display the user
+     * @param settingsMessage the settings link message to display the user
      */
     fun updateUi(
         groupName: String,
+        title: CharSequence,
+        dataSharingSourceMessage: CharSequence,
+        purposeTitle: CharSequence,
         purposeMessage: CharSequence,
-        settingsMessage: CharSequence,
-        learnMoreMessage: CharSequence
+        learnMoreMessage: CharSequence,
+        settingsMessage: CharSequence
     )
 
     /**

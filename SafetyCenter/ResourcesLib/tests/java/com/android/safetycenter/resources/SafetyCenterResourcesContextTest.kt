@@ -29,6 +29,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class SafetyCenterResourcesContextTest {
     private val context: Context = getApplicationContext()
+    private val theme: Resources.Theme? = context.theme
 
     @Test
     fun validDataWithValidInputs() {
@@ -117,6 +118,27 @@ class SafetyCenterResourcesContextTest {
             .isEqualTo("I exist!")
         assertFailsWith(Resources.NotFoundException::class) {
             safetyCenterResourcesContext.getStringByName("invalid_string")
+        }
+    }
+
+    @Test
+    fun getDrawableByName_withFallback_nullResourceForInvalidId() {
+        val safetyCenterResourcesContext =
+            SafetyCenterResourcesContext(context, RESOURCES_APK_ACTION, null, CONFIG_NAME, 0, true)
+        assertThat(safetyCenterResourcesContext.getDrawableByName("valid_drawable", theme))
+                .isNotNull()
+        assertThat(safetyCenterResourcesContext.getDrawableByName("invalid_drawable", theme))
+                .isNull()
+    }
+
+    @Test
+    fun getDrawableByName_withoutFallback_crashesForInvalidId() {
+        val safetyCenterResourcesContext =
+            SafetyCenterResourcesContext(context, RESOURCES_APK_ACTION, null, CONFIG_NAME, 0, false)
+        assertThat(safetyCenterResourcesContext.getDrawableByName("valid_drawable", theme))
+                .isNotNull()
+        assertFailsWith(Resources.NotFoundException::class) {
+            safetyCenterResourcesContext.getDrawableByName("invalid_drawable", theme)
         }
     }
 

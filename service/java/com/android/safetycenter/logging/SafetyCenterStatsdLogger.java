@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 The Android Open Source Project
+ * Copyright (C) 2023 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.safetycenter;
+package com.android.safetycenter.logging;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
@@ -61,6 +61,7 @@ import androidx.annotation.RequiresApi;
 
 import com.android.permission.PermissionStatsLog;
 import com.android.permission.util.UserUtils;
+import com.android.safetycenter.SafetyCenterConfigReader;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -81,9 +82,9 @@ import javax.annotation.concurrent.NotThreadSafe;
  */
 @RequiresApi(TIRAMISU)
 @NotThreadSafe
-public final class StatsdLogger {
+public final class SafetyCenterStatsdLogger {
 
-    private static final String TAG = "StatsdLogger";
+    private static final String TAG = "SafetyCenterStatsdLog";
     private static final long UNSET_SOURCE_ID = 0;
     private static final long UNSET_ISSUE_TYPE_ID = 0;
 
@@ -105,7 +106,7 @@ public final class StatsdLogger {
     @NonNull private final Context mContext;
     @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
 
-    StatsdLogger(
+    public SafetyCenterStatsdLogger(
             @NonNull Context context, @NonNull SafetyCenterConfigReader safetyCenterConfigReader) {
         mContext = context;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
@@ -159,7 +160,7 @@ public final class StatsdLogger {
      * Writes a {@link PermissionStatsLog#SAFETY_CENTER_SYSTEM_EVENT_REPORTED} atom of type {@code
      * SINGLE_SOURCE_RESCAN} or {@code SINGLE_SOURCE_GET_DATA}.
      */
-    void writeSourceRefreshSystemEvent(
+    public void writeSourceRefreshSystemEvent(
             @RefreshRequestType int refreshType,
             @NonNull String sourceId,
             @UserIdInt int userId,
@@ -182,7 +183,7 @@ public final class StatsdLogger {
      * Writes a {@link PermissionStatsLog#SAFETY_CENTER_SYSTEM_EVENT_REPORTED} atom of type {@code
      * COMPLETE_RESCAN} or {@code COMPLETE_GET_DATA}.
      */
-    void writeWholeRefreshSystemEvent(
+    public void writeWholeRefreshSystemEvent(
             @RefreshRequestType int refreshType,
             @NonNull Duration duration,
             @SystemEventResult int result) {

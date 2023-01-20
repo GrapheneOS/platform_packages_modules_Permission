@@ -17,6 +17,9 @@
 package com.android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
+import static android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_ID;
+import static android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_ISSUE_ID;
+import static android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_USER_HANDLE;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
@@ -27,11 +30,13 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.safetycenter.SafetySourceIssue;
 
 import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.build.SdkLevel;
+import com.android.safetycenter.internaldata.SafetyCenterIds;
 import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 
@@ -96,7 +101,7 @@ final class SafetyCenterNotificationFactory {
                         .setExtras(getNotificationExtras())
                         .setContentTitle(title)
                         .setContentText(text)
-                        .setContentIntent(newSafetyCenterPendingIntent(issue))
+                        .setContentIntent(newSafetyCenterPendingIntent(issueKey))
                         .setDeleteIntent(
                                 SafetyCenterNotificationReceiver.newNotificationDismissedIntent(
                                         mContext, issueKey));
@@ -111,9 +116,16 @@ final class SafetyCenterNotificationFactory {
     }
 
     @NonNull
-    private PendingIntent newSafetyCenterPendingIntent(@NonNull SafetySourceIssue targetIssue) {
-        // TODO(b/259398419): Add target issue to intent so it's highlighted when SC opens
+    private PendingIntent newSafetyCenterPendingIntent(@NonNull SafetyCenterIssueKey issueKey) {
         Intent intent = new Intent(Intent.ACTION_SAFETY_CENTER);
+        // Set the encoded issue key as the intent's identifier to ensure the PendingIntents of
+        // different notifications do not collide:
+        intent.setIdentifier(SafetyCenterIds.encodeToString(issueKey));
+        intent.putExtra(EXTRA_SAFETY_SOURCE_ID, issueKey.getSafetySourceId());
+        intent.putExtra(EXTRA_SAFETY_SOURCE_ISSUE_ID, issueKey.getSafetySourceIssueId());
+        intent.putExtra(EXTRA_SAFETY_SOURCE_USER_HANDLE, UserHandle.of(issueKey.getUserId()));
+        // This extra is defined in the PermissionController APK, cannot be referenced directly:
+        intent.putExtra("navigation_source_intent_extra", "NOTIFICATION");
         return PendingIntentFactory.getActivityPendingIntent(
                 mContext, OPEN_SAFETY_CENTER_REQUEST_CODE, intent, PendingIntent.FLAG_IMMUTABLE);
     }

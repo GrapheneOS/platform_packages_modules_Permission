@@ -67,7 +67,9 @@
                 packageName="com.android.permissioncontroller"
                 profile="primary_profile_only"
                 initialDisplayState="hidden"
-                refreshOnPageOpenAllowed="true"/>
+                refreshOnPageOpenAllowed="true"
+                title="@com.android.safetycenter.resources:string/app_data_sharing_updates_title"
+                searchTerms="@com.android.safetycenter.resources:string/app_data_sharing_updates_search_terms"/>
             <static-safety-source
                 id="AndroidHealthConnect"
                 profile="primary_profile_only"

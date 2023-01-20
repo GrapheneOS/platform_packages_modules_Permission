@@ -223,8 +223,10 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> e altre <xliff:g id="NUMBER">%2$s</xliff:g> autorizzazioni rimosse"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"App inutilizzate"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Se un\'app non viene usata per alcuni mesi:\n\n• Vengono rimosse le autorizzazioni per proteggere i tuoi dati\n• Vengono interrotte le notifiche per risparmiare batteria\n• Vengono rimossi i file temporanei per liberare spazio\n\nApri l\'app per consentire di nuovo autorizzazioni e notifiche."</string>
-    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Se un\'app non viene usata per alcuni mesi:\n\n• vengono rimosse le autorizzazioni per proteggere i tuoi dati;\n• vengono rimossi i file temporanei per liberare spazio.\n\nApri l\'app per consentire di nuovo le autorizzazioni."</string>
-    <string name="last_opened_category_title" msgid="7871347400611202595">"Aperte l\'ultima volta più di <xliff:g id="NUMBER">%s</xliff:g> mesi fa"</string>
+    <!-- no translation found for unused_apps_page_tv_summary (2624911608663778308) -->
+    <skip />
+    <!-- no translation found for last_opened_category_title (8796557894614236128) -->
+    <skip />
     <string name="last_opened_summary" msgid="5248984030024968808">"Ultimo utilizzo dell\'app: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Ultimo utilizzo: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Se consenti la gestione di tutti i file, questa app potrà accedere, modificare ed eliminare tutti i file salvati in spazi di archiviazione comuni su questo dispositivo o su qualsiasi dispositivo di archiviazione connesso. L\'app potrà accedere ai file senza informarti."</string>
@@ -402,14 +404,10 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> potrà interagire con le tue notifiche e trasmettere le tue app al dispositivo connesso."</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> potrà riprodurre contenuti alle app nelle vicinanze."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Questo servizio condivide le tue foto, i tuoi contenuti multimediali e le tue notifiche dal telefono ad altri dispositivi."</string>
-    <!-- no translation found for role_notes_label (7694668779088299905) -->
-    <skip />
-    <!-- no translation found for role_notes_short_label (6617887820096092689) -->
-    <skip />
-    <!-- no translation found for role_notes_description (8486216423668803751) -->
-    <skip />
-    <!-- no translation found for role_notes_search_keywords (7710756695666744631) -->
-    <skip />
+    <string name="role_notes_label" msgid="7694668779088299905">"App predefinita per le note"</string>
+    <string name="role_notes_short_label" msgid="6617887820096092689">"App per creare note"</string>
+    <string name="role_notes_description" msgid="8486216423668803751">"App che ti permettono di creare note"</string>
+    <string name="role_notes_search_keywords" msgid="7710756695666744631">"note"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Valore predefinito attuale"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Non chiedermelo più"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Imposta predefinito"</string>

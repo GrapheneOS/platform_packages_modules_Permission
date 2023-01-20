@@ -140,7 +140,7 @@ public final class SafetyCenterFlags {
     }
 
     /** Returns whether Safety Center is enabled. */
-    static boolean getSafetyCenterEnabled() {
+    public static boolean getSafetyCenterEnabled() {
         return getBoolean(PROPERTY_SAFETY_CENTER_ENABLED, false);
     }
 

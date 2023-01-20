@@ -223,8 +223,10 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> અને અન્ય <xliff:g id="NUMBER">%2$s</xliff:g> પરવાનગીઓ કાઢી નાખવામાં આવી"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"બિનવપરાયેલી ઍપ"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"જો થોડા મહિના માટે કોઈ ઍપનો ઉપયોગ કરવામાં ન આવે, તો:\n\n• તમારો ડેટા સુરક્ષિત રાખવા માટે પરવાનગીઓ કાઢી લેવામાં આવે છે\n• બૅટરીની બચત કરવા માટે, નોટિફિકેશન બંધ કરવામાં આવે છે\n• સ્પેસ ખાલી કરવા માટે, હંગામી ફાઇલો કાઢી નાખવામાં આવે છે\n\nપરવાનગીઓ અને નોટિફિકેશનની મંજૂરી ફરીથી આપવા માટે, ઍપ ખોલો."</string>
-    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"જો થોડા મહિના માટે કોઈ ઍપનો ઉપયોગ કરવામાં ન આવે, તો:\n\n• તમારો ડેટા સુરક્ષિત રાખવા માટે પરવાનગીઓ કાઢી લેવામાં આવે છે\n• સ્પેસ ખાલી કરવા માટે, હંગામી ફાઇલો કાઢી નાખવામાં આવે છે\n\nપરવાનગીઓની મંજૂરી ફરીથી આપવા માટે, ઍપ ખોલો."</string>
-    <string name="last_opened_category_title" msgid="7871347400611202595">"છેલ્લે <xliff:g id="NUMBER">%s</xliff:g> મહિના કરતાં પર વધારે સમય અગાઉ ખોલી હતી"</string>
+    <!-- no translation found for unused_apps_page_tv_summary (2624911608663778308) -->
+    <skip />
+    <!-- no translation found for last_opened_category_title (8796557894614236128) -->
+    <skip />
     <string name="last_opened_summary" msgid="5248984030024968808">"ઍપ છેલ્લે <xliff:g id="DATE">%s</xliff:g>ના રોજ ખોલી"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"છેલ્લે <xliff:g id="DATE">%s</xliff:g>ના રોજ ખોલી"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"તમે બધી ફાઇલો મેનેજ કરવાની મંજૂરી આપશો, તો આ ઍપ, આ ડિવાઇસના સામાન્ય સ્ટોરેજમાં અથવા કનેક્ટ કરેલા સ્ટોરેજ ડિવાઇસમાં રહેલી કોઈપણ ફાઇલને ઍક્સેસ કરી શકશે, તેમાં ફેરફાર કરી શકશે અથવા તેને ડિલીટ કરી શકશે. ઍપ તમને પૂછ્યા વિના ફાઇલો ઍક્સેસ કરે તેમ બની શકે છે."</string>
@@ -402,14 +404,10 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g>ને તમારા નોટિફિકેશન સાથે ક્રિયાપ્રતિક્રિયા કરવાની અને કનેક્ટ કરેલા ડિવાઇસ સાથે તમારી ઍપનું કન્ટેન્ટ સ્ટ્રીમ કરવાની મંજૂરી આપવામાં આવશે."</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g>ને નજીકના ડિવાઇસ પર કન્ટેન્ટ સ્ટ્રીમ કરવાની મંજૂરી આપવામાં આવશે."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"આ સેવા તમારા ફોનમાંથી તમારા ફોટા, મીડિયા અને નોટિફિકેશન અન્ય ડિવાઇસમાં શેર કરે છે."</string>
-    <!-- no translation found for role_notes_label (7694668779088299905) -->
-    <skip />
-    <!-- no translation found for role_notes_short_label (6617887820096092689) -->
-    <skip />
-    <!-- no translation found for role_notes_description (8486216423668803751) -->
-    <skip />
-    <!-- no translation found for role_notes_search_keywords (7710756695666744631) -->
-    <skip />
+    <string name="role_notes_label" msgid="7694668779088299905">"નોંધ લેવા માટેની ડિફૉલ્ટ ઍપ"</string>
+    <string name="role_notes_short_label" msgid="6617887820096092689">"નોંધ લેવા માટેની ઍપ"</string>
+    <string name="role_notes_description" msgid="8486216423668803751">"તમને નોંધ લેવાની મંજૂરી આપતી ઍપ"</string>
+    <string name="role_notes_search_keywords" msgid="7710756695666744631">"નોંધ"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"હાલની ડિફૉલ્ટ"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"ફરીથી પૂછશો નહીં"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"ડિફૉલ્ટ તરીકે સેટ"</string>
