@@ -28,23 +28,21 @@ import androidx.preference.PreferenceFragmentCompat;
 
 import com.android.permissioncontroller.permission.ui.handheld.PermissionsCollapsingToolbarBaseFragment;
 
-/**
- * Wrapper over PermissionUsageV2Fragment
- */
+/** Wrapper over PermissionUsageFragment */
 @RequiresApi(Build.VERSION_CODES.S)
-public class PermissionUsageV2WrapperFragment extends PermissionsCollapsingToolbarBaseFragment{
+public class PermissionUsageWrapperFragment extends PermissionsCollapsingToolbarBaseFragment {
     @NonNull
     @Override
     public PreferenceFragmentCompat createPreferenceFragment() {
-        return new PermissionUsageV2Fragment();
+        return new PermissionUsageFragment();
     }
 
     /**
      * @return A new fragment
      */
-    public static @NonNull PermissionUsageV2WrapperFragment newInstance(long numMillis,
-            long sessionId) {
-        PermissionUsageV2WrapperFragment fragment = new PermissionUsageV2WrapperFragment();
+    public static @NonNull PermissionUsageWrapperFragment newInstance(
+            long numMillis, long sessionId) {
+        PermissionUsageWrapperFragment fragment = new PermissionUsageWrapperFragment();
         Bundle arguments = new Bundle();
         arguments.putLong(Intent.EXTRA_DURATION_MILLIS, numMillis);
         arguments.putLong(EXTRA_SESSION_ID, sessionId);

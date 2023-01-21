@@ -42,7 +42,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.ui.handheld.SettingsWithLargeHeader;
-import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageViewModelNew;
+import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageViewModel;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.settingslib.HelpUtils;
 
@@ -52,9 +52,8 @@ import java.util.List;
 import java.util.Map;
 
 /** The main page for the privacy dashboard. */
-// TODO(b/257317510): Remove "V2" suffix.
 @RequiresApi(Build.VERSION_CODES.S)
-public class PermissionUsageV2Fragment extends SettingsWithLargeHeader {
+public class PermissionUsageFragment extends SettingsWithLargeHeader {
 
     private static final Map<String, Integer> PERMISSION_GROUP_ORDER =
             Map.of(
@@ -72,13 +71,13 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader {
     private static final String KEY_SESSION_ID = "_session_id";
 
     private static final String SESSION_ID_KEY =
-            PermissionUsageV2Fragment.class.getName() + KEY_SESSION_ID;
+            PermissionUsageFragment.class.getName() + KEY_SESSION_ID;
 
     private static final int MENU_SHOW_7_DAYS_DATA = Menu.FIRST + 4;
     private static final int MENU_SHOW_24_HOURS_DATA = Menu.FIRST + 5;
     private static final int MENU_REFRESH = Menu.FIRST + 6;
 
-    private PermissionUsageViewModelNew mViewModel;
+    private PermissionUsageViewModel mViewModel;
 
     private boolean mHasSystemApps;
     private MenuItem mShowSystemMenu;
@@ -102,10 +101,10 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader {
             mSessionId = getArguments().getLong(EXTRA_SESSION_ID, INVALID_SESSION_ID);
         }
 
-        PermissionUsageViewModelNew.PermissionUsageViewModelFactory factory =
-                new PermissionUsageViewModelNew.PermissionUsageViewModelFactory(
+        PermissionUsageViewModel.PermissionUsageViewModelFactory factory =
+                new PermissionUsageViewModel.PermissionUsageViewModelFactory(
                         getActivity().getApplication(), this, new Bundle());
-        mViewModel = new ViewModelProvider(this, factory).get(PermissionUsageViewModelNew.class);
+        mViewModel = new ViewModelProvider(this, factory).get(PermissionUsageViewModel.class);
 
         // By default, do not show system app usages.
         mViewModel.updateShowSystem(false);
@@ -291,7 +290,7 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader {
     }
 
     private void updateUI(
-            PermissionUsageViewModelNew.PermissionUsagesUiData permissionUsagesUiData) {
+            PermissionUsageViewModel.PermissionUsagesUiData permissionUsagesUiData) {
         if (getActivity() == null) {
             return;
         }
@@ -421,8 +420,8 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader {
         for (int i = 0; i < permissionGroupWithUsageCounts.size(); i++) {
             Map.Entry<String, Integer> permissionGroupWithUsageCount =
                     permissionGroupWithUsageCounts.get(i);
-            PermissionUsageV2ControlPreference permissionUsagePreference =
-                    new PermissionUsageV2ControlPreference(
+            PermissionUsageControlPreference permissionUsagePreference =
+                    new PermissionUsageControlPreference(
                             context,
                             permissionGroupWithUsageCount.getKey(),
                             permissionGroupWithUsageCount.getValue(),

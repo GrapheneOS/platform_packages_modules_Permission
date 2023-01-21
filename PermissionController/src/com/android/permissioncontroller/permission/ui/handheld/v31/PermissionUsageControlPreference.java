@@ -29,21 +29,24 @@ import androidx.preference.PreferenceViewHolder;
 import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageControlPreferenceUtils;
 
-/**
- * Preference for the top level privacy hub page
- */
+/** Preference for the top level privacy hub page */
 @RequiresApi(Build.VERSION_CODES.S)
-public class PermissionUsageV2ControlPreference extends Preference {
+public class PermissionUsageControlPreference extends Preference {
 
     private final Context mContext;
 
-    public PermissionUsageV2ControlPreference(@NonNull Context context, @NonNull String groupName,
-            int count, boolean showSystem, long sessionId, boolean show7Days) {
+    public PermissionUsageControlPreference(
+            @NonNull Context context,
+            @NonNull String groupName,
+            int count,
+            boolean showSystem,
+            long sessionId,
+            boolean show7Days) {
         super(context);
         mContext = context;
 
-        PermissionUsageControlPreferenceUtils.initPreference(this, mContext, groupName,
-                count, showSystem, sessionId, show7Days);
+        PermissionUsageControlPreferenceUtils.initPreference(
+                this, mContext, groupName, count, showSystem, sessionId, show7Days);
     }
 
     @Override
@@ -52,8 +55,9 @@ public class PermissionUsageV2ControlPreference extends Preference {
 
         if (SdkLevel.isAtLeastS()) {
             TextView titleView = (TextView) view.findViewById(android.R.id.title);
-            TypedArray ta = mContext.obtainStyledAttributes(
-                    new int[]{android.R.attr.textAppearanceListItem});
+            TypedArray ta =
+                    mContext.obtainStyledAttributes(
+                            new int[] {android.R.attr.textAppearanceListItem});
             int resId = ta.getResourceId(0, 0);
             ta.recycle();
             titleView.setTextAppearance(resId);

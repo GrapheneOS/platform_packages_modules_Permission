@@ -17,81 +17,68 @@
 package com.android.permissioncontroller.permission.ui.model.v31
 
 import android.Manifest
-import android.app.LoaderManager
+import android.app.Application
 import android.app.role.RoleManager
-import android.content.Context
 import android.os.Build
+import android.os.Bundle
+import android.os.UserHandle
 import androidx.annotation.RequiresApi
+import androidx.lifecycle.AbstractSavedStateViewModelFactory
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import com.android.permissioncontroller.permission.model.AppPermissionGroup
-import com.android.permissioncontroller.permission.model.legacy.PermissionApps.PermissionApp
-import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
-import com.android.permissioncontroller.permission.model.v31.PermissionUsages
+import androidx.savedstate.SavedStateRegistryOwner
+import com.android.permissioncontroller.permission.data.AppPermGroupUiInfoLiveData
+import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
+import com.android.permissioncontroller.permission.data.v31.AllLightPackageOpsLiveData
+import com.android.permissioncontroller.permission.model.livedatatypes.v31.LightPackageOps
 import com.android.permissioncontroller.permission.utils.KotlinUtils
-import com.android.permissioncontroller.permission.utils.KotlinUtils.getPermGroupLabel
-import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.Utils
 import java.time.Instant
 import java.util.concurrent.TimeUnit
 import kotlin.math.max
 
-/** [ViewModel] for Permission Usage fragments. */
-@RequiresApi(Build.VERSION_CODES.S)
-class PermissionUsageViewModel(val roleManager: RoleManager) : ViewModel() {
-
+/**
+ * [ViewModel] for handheld Permissions Usage UI.
+ *
+ * Note that this class replaces [PermissionUsageViewModelLegacy] to rely on [LiveData] instead of
+ * [PermissionUsages] loader.
+ */
+// TODO(b/257317510): Remove "new" suffix and deprecate PermissionUsageViewModel.
+class PermissionUsageViewModel(
+    private val state: SavedStateHandle,
+    app: Application,
+) : AndroidViewModel(app) {
+    private val roleManager =
+        Utils.getSystemServiceSafe(app.applicationContext, RoleManager::class.java)
     private val exemptedPackages: Set<String> = Utils.getExemptedPackages(roleManager)
 
-    /** Companion object for [PermissionUsageViewModel]. */
-    companion object {
-        /** TODO(ewol): Use the config setting to determine amount of time to show. */
-        private val TIME_FILTER_MILLIS = TimeUnit.DAYS.toMillis(7)
-        private val TIME_7_DAYS_DURATION = TimeUnit.DAYS.toMillis(7)
-        private val TIME_24_HOURS_DURATION = TimeUnit.DAYS.toMillis(1)
-        /** Permission groups that should be hidden from the permissions usage UI. */
-        private val EXEMPTED_PERMISSION_GROUPS = setOf(Manifest.permission_group.NOTIFICATIONS)
-        @JvmStatic
-                /** Map to represent ordering for permission groups in the permissions usage UI. */
-        val PERMISSION_GROUP_ORDER: Map<String, Int> =
-            mapOf(
-                Manifest.permission_group.LOCATION to 0,
-                Manifest.permission_group.CAMERA to 1,
-                Manifest.permission_group.MICROPHONE to 2)
-        private const val DEFAULT_ORDER = 3
+    private val mAllLightPackageOpsLiveData = AllLightPackageOpsLiveData(app)
+    private val appPermGroupUiInfoLiveDataList =
+        mutableMapOf<AppPermissionId, AppPermGroupUiInfoLiveData>()
+
+    val showSystemLiveData = state.getLiveData(SHOULD_SHOW_SYSTEM_KEY, false)
+    val show7DaysLiveData = state.getLiveData(SHOULD_SHOW_7_DAYS_KEY, false)
+
+    /** Updates whether system app permissions usage should be displayed in the UI. */
+    fun updateShowSystem(showSystem: Boolean) {
+        if (showSystem != state[SHOULD_SHOW_SYSTEM_KEY]) {
+            state[SHOULD_SHOW_SYSTEM_KEY] = showSystem
+        }
     }
 
-    /** Loads data from [PermissionUsages] using the [LoaderManager] pattern. */
-    fun loadPermissionUsages(
-        loaderManager: LoaderManager,
-        permissionUsages: PermissionUsages,
-        callback: PermissionUsages.PermissionsUsagesChangeCallback
-    ) {
-        val filterTimeBeginMillis =
-            max(System.currentTimeMillis() - TIME_FILTER_MILLIS, Instant.EPOCH.toEpochMilli())
-        permissionUsages.load(
-            null /*filterPackageName*/,
-            null /*filterPermissionGroups*/,
-            filterTimeBeginMillis,
-            Long.MAX_VALUE,
-            PermissionUsages.USAGE_FLAG_LAST or PermissionUsages.USAGE_FLAG_HISTORICAL,
-            loaderManager,
-            false /*getUiInfo*/,
-            false /*getNonPlatformPermissions*/,
-            callback /*callback*/,
-            false /*sync*/)
+    /** Updates whether 7 days usage or 1 day usage should be displayed in the UI. */
+    fun updateShow7Days(show7Days: Boolean) {
+        if (show7Days != state[SHOULD_SHOW_7_DAYS_KEY]) {
+            state[SHOULD_SHOW_7_DAYS_KEY] = show7Days
+        }
     }
 
-    /**
-     * Parses the provided list of [AppPermissionUsage] instances to build data for the UI to
-     * display.
-     */
-    fun buildPermissionUsagesUiData(
-        appPermissionUsages: List<AppPermissionUsage>,
-        show7Days: Boolean,
-        showSystem: Boolean,
-        context: Context,
-    ): PermissionUsagesUiData {
+    /** Builds a [PermissionUsagesUiData] containing all the data necessary to render the UI. */
+    private fun buildPermissionUsagesUiData(): PermissionUsagesUiData {
         val curTime = System.currentTimeMillis()
+        val showSystem: Boolean = state[SHOULD_SHOW_SYSTEM_KEY] ?: false
+        val show7Days: Boolean = state[SHOULD_SHOW_7_DAYS_KEY] ?: false
         val showPermissionUsagesDuration =
             if (KotlinUtils.is7DayToggleEnabled() && show7Days) {
                 TIME_7_DAYS_DURATION
@@ -99,144 +86,273 @@ class PermissionUsageViewModel(val roleManager: RoleManager) : ViewModel() {
                 TIME_24_HOURS_DURATION
             }
         val startTime = max(curTime - showPermissionUsagesDuration, Instant.EPOCH.toEpochMilli())
-
-        val filteredAppPermissionUsages =
-            appPermissionUsages.filter { !exemptedPackages.contains(it.packageName) }
-        val displayShowSystemToggle: Boolean =
-            filteredAppPermissionUsages.displayShowSystemToggle(startTime)
-        val permissionApps = filteredAppPermissionUsages.getRecentPermissionApps(startTime)
-        val orderedPermissionGroupsWithUsage =
-            filteredAppPermissionUsages.buildOrderedPermissionGroupsWithUsageCount(
-                context,
-                startTime,
-                showSystem
-            )
-
         return PermissionUsagesUiData(
-            permissionApps,
-            displayShowSystemToggle,
-            orderedPermissionGroupsWithUsage
-        )
+            mAllLightPackageOpsLiveData.displayShowSystemToggle(startTime),
+            showSystem,
+            show7Days,
+            mAllLightPackageOpsLiveData.buildPermissionGroupsWithUsageCounts(startTime, showSystem))
     }
 
-    /**
-     * Creates an ordered list of [PermissionGroupWithUsageCount] instances to show in the UI,
-     * representing a mapping of permission groups to the number of apps that recently accessed
-     * them.
-     *
-     * The list is ordered as follows:
-     *
-     * 1. Location
-     * 2. Camera
-     * 3. Microphone
-     * 4. Remaining permission groups, ordered alphabetically
-     */
-    private fun List<AppPermissionUsage>.buildOrderedPermissionGroupsWithUsageCount(
-        context: Context,
+    /** Builds a map of permission groups to the number of apps that recently accessed them. */
+    private fun AllLightPackageOpsLiveData.buildPermissionGroupsWithUsageCounts(
         startTime: Long,
-        showSystem: Boolean
-    ): List<PermissionGroupWithUsageCount> {
-        val permissionGroupsUsageCountMap: MutableMap<String, Int> = HashMap()
-        extractPlatformAppPermissionGroupsToDisplay().forEach {
-            permissionGroupsUsageCountMap[it] = 0
+        showSystem: Boolean,
+    ): Map<String, Int> {
+        val permissionUsageCountMap: MutableMap<String, Int> = HashMap()
+        for (permissionGroup: String in getAllEligiblePermissionGroups()) {
+            permissionUsageCountMap[permissionGroup] = 0
         }
 
-        for (appUsage in this) {
-            appUsage.groupUsages
-                .filter { showSystem || !it.group.isSystem() }
-                .filter { !EXEMPTED_PERMISSION_GROUPS.contains(it.group.name) }
-                .filter { it.lastAccessTime >= startTime }
-                .forEach {
-                    permissionGroupsUsageCountMap[it.group.name] =
-                        permissionGroupsUsageCountMap.getOrDefault(it.group.name, 0) + 1
-                }
-        }
-        return permissionGroupsUsageCountMap.entries.map {
-            PermissionGroupWithUsageCount(
-                it.key,
-                it.value
-            )
-        }
-            .sortedWith(
-                compareBy(
-                    { PERMISSION_GROUP_ORDER.getOrDefault(it.permGroup, DEFAULT_ORDER) },
-                    { getPermGroupLabel(context, it.permGroup).toString() })
-            )
-    }
+        val eligibleLightPackageOpsList: List<LightPackageOps> =
+            getAllLightPackageOps()?.filterOutExemptedApps() ?: listOf()
 
-    /** Extracts [PermissionApp] where there has been recent permission usage. */
-    private fun List<AppPermissionUsage>.getRecentPermissionApps(
-        startTime: Long,
-    ): java.util.ArrayList<PermissionApp> {
-        return ArrayList(
-            filter { appPermissionUsage ->
-                appPermissionUsage.groupUsages
-                    .filter { !EXEMPTED_PERMISSION_GROUPS.contains(it.group.name) }
-                    .any { it.lastAccessTime >= startTime || it.lastAccessTime == 0L }
+        for (lightPackageOps: LightPackageOps in eligibleLightPackageOpsList) {
+            val permGroupsToLastAccess: List<Map.Entry<String, Long>> =
+                lightPackageOps.lastPermissionGroupAccessTimesMs.entries
+                    .filterOutExemptedPermissionGroupsFromKeys()
+                    .filterOutSystemAppPermissionsIfNecessary(
+                        showSystem, lightPackageOps.packageName, lightPackageOps.userHandle)
+                    .filterAccessTimeLaterThan(startTime)
+            val recentlyUsedPermissions: List<String> = permGroupsToLastAccess.map { it.key }
+
+            for (permissionGroup: String in recentlyUsedPermissions) {
+                permissionUsageCountMap[permissionGroup] =
+                    permissionUsageCountMap.getOrDefault(permissionGroup, 0) + 1
             }
-                .map { it.app })
+        }
+        return permissionUsageCountMap
     }
 
     /**
-     * Returns whether there are any user-sensitive app permission groups with recent usage, and
-     * therefore if the "show/hide system" toggle needs to be displayed in the UI
+     * Determines whether there are any system app permissions with recent usage, in which case the
+     * "show/hide system" toggle should be displayed in the UI.
      */
-    private fun List<AppPermissionUsage>.displayShowSystemToggle(
-        startTime: Long,
-    ): Boolean {
-        return flatMap { it.groupUsages }
-            .filter { !EXEMPTED_PERMISSION_GROUPS.contains(it.group.name) }
-            .filter { it.lastAccessTime > startTime && it.lastAccessTime > 0L }
-            .any { it.group.isSystem() }
+    private fun AllLightPackageOpsLiveData.displayShowSystemToggle(startTime: Long): Boolean {
+        val eligibleLightPackageOpsList: List<LightPackageOps> =
+            getAllLightPackageOps()?.filterOutExemptedApps() ?: listOf()
+
+        for (lightPackageOps: LightPackageOps in eligibleLightPackageOpsList) {
+            val recentlyUsedPermissions: Set<String> =
+                lightPackageOps.lastPermissionGroupAccessTimesMs.entries
+                    .filterAccessTimeLaterThan(startTime)
+                    .map { it.key }
+                    .toSet()
+            if (recentlyUsedPermissions
+                .filterOutExemptedPermissionGroups()
+                .containsSystemAppPermission(
+                    lightPackageOps.packageName, lightPackageOps.userHandle)) {
+                return true
+            }
+        }
+
+        return false
     }
 
     /**
-     * Extracts to a set all the permission groups declared by the platform that should be displayed
-     * in the UI.
+     * Returns all permission groups tracked in the [AllLightPackageOpsLiveData] eligible for
+     * display in the UI.
      */
-    private fun List<AppPermissionUsage>.extractPlatformAppPermissionGroupsToDisplay():
-            Set<String> =
-        this.flatMap { it.groupUsages }
-            .map { it.group.name }
-            .filter { PermissionMapping.isPlatformPermissionGroup(it) }
-            .filter { !EXEMPTED_PERMISSION_GROUPS.contains(it) }
-            .toSet()
+    private fun AllLightPackageOpsLiveData.getAllEligiblePermissionGroups(): Set<String> {
+        val eligibleLightPackageOpsList =
+            getAllLightPackageOps()?.filterOutExemptedApps() ?: listOf()
+
+        val allPermissionGroups: Set<String> =
+            eligibleLightPackageOpsList.flatMap { it.lastPermissionGroupAccessTimesMs.keys }.toSet()
+
+        return allPermissionGroups.filterOutExemptedPermissionGroups().toSet()
+    }
+
+    private fun isAppPermissionSystem(appPermissionId: AppPermissionId): Boolean {
+        val appPermGroupUiInfo = appPermGroupUiInfoLiveDataList[appPermissionId]?.value
+
+        if (appPermGroupUiInfo != null) {
+            return appPermGroupUiInfo.isSystem
+        } else
+        // The AppPermGroupUiInfo may be null if it has either not loaded yet or if the app has not
+        // requested any permissions from the permission group in question.
+        // The Telecom doesn't request microphone or camera permissions. However, telecom app may
+        // use these permissions and they are considered system app permissions, so we return true
+        // even if the AppPermGroupUiInfo is unavailable.
+        if (appPermissionId.packageName == TELECOM_PACKAGE &&
+            (appPermissionId.permissionGroup == Manifest.permission_group.CAMERA ||
+                appPermissionId.permissionGroup == Manifest.permission_group.MICROPHONE)) {
+            return true
+        }
+        return false
+    }
+
+    private fun AllLightPackageOpsLiveData.getAllLightPackageOps() = value?.values
 
     /**
-     * Returns whether the [AppPermissionGroup] is considered a system group.
-     *
-     * For the purpose of Permissions Hub UI, non user-sensitive [AppPermissionGroup]s are
-     * considered "system" and should be hidden from the main page unless requested by the user
-     * through the "show/hide system" toggle.
+     * Filters out accesses earlier than the provided start time from a map of permission last
+     * accesses.
      */
-    private fun AppPermissionGroup.isSystem() = !Utils.isGroupOrBgGroupUserSensitive(this)
+    private fun Collection<Map.Entry<String, Long>>.filterAccessTimeLaterThan(startTime: Long) =
+        filter {
+            it.value > startTime
+        }
+
+    /**
+     * Filters out system app permissions from a map of permission last accesses, if showSystem is
+     * false.
+     */
+    private fun Collection<Map.Entry<String, Long>>.filterOutSystemAppPermissionsIfNecessary(
+        showSystem: Boolean,
+        packageName: String,
+        userHandle: UserHandle
+    ) = filter {
+        showSystem || !isAppPermissionSystem(AppPermissionId(packageName, userHandle, it.key))
+    }
+
+    /**
+     * Filters out permission groups that are exempt from permission usage tracking from a map of
+     * permission last accesses.
+     */
+    private fun Collection<Map.Entry<String, Long>>.filterOutExemptedPermissionGroupsFromKeys() =
+        filter {
+            !EXEMPTED_PERMISSION_GROUPS.contains(it.key)
+        }
+
+    /**
+     * Filters out permission groups that are exempt from permission usage tracking from a map of
+     * permission last accesses.
+     */
+    private fun Collection<String>.filterOutExemptedPermissionGroups() = filter {
+        !EXEMPTED_PERMISSION_GROUPS.contains(it)
+    }
+
+    /** Filters out [LightPackageOps] for apps that are exempt from permission usage tracking. */
+    private fun Collection<LightPackageOps>.filterOutExemptedApps() = filter {
+        !exemptedPackages.contains(it.packageName)
+    }
+
+    /**
+     * Returns from a list of permissions whether any permission along with the provided package
+     * name and user handle are considered a system app permission.
+     */
+    private fun Collection<String>.containsSystemAppPermission(
+        packageName: String,
+        userHandle: UserHandle
+    ) = any { isAppPermissionSystem(AppPermissionId(packageName, userHandle, it)) }
+
+    /** Identifier for an app permission group combination. */
+    data class AppPermissionId(
+        val packageName: String,
+        val userHandle: UserHandle,
+        val permissionGroup: String
+    )
 
     /** Data class to hold all the information required to configure the UI. */
     data class PermissionUsagesUiData(
-        /** List of [PermissionApp] instances */
-        // Note that these are used only to cache app data for the permission usage details
-        // fragment, and have no bearing on the UI on the main permission usage page.
-        val permissionApps: ArrayList<PermissionApp>,
         /** Whether to show the "show/hide system" toggle. */
         val displayShowSystemToggle: Boolean,
-        // TODO(b/243970988): Consider moving ordering logic to fragment.
-        /** [PermissionGroupWithUsageCount] instances ordered for display in UI */
-        val orderedPermissionGroupsWithUsageCount: List<PermissionGroupWithUsageCount>,
+        /** Whether to show system app permissions in the UI. */
+        val showSystemAppPermissions: Boolean,
+        /** Whether to show usage data for 7 days or 1 day. */
+        val show7DaysUsage: Boolean,
+        /** Map instances for display in UI */
+        val permissionGroupsWithUsageCount: Map<String, Int>,
     )
 
-    /**
-     * Data class to associate permission groups with the number of apps that recently accessed
-     * them.
-     */
-    data class PermissionGroupWithUsageCount(val permGroup: String, val appCount: Int)
-}
+    /** LiveData object for [PermissionUsagesUiData]. */
+    val permissionUsagesUiLiveData =
+        object : SmartUpdateMediatorLiveData<@JvmSuppressWildcards PermissionUsagesUiData>() {
 
-/** Factory for [PermissionUsageViewModel]. */
-@RequiresApi(Build.VERSION_CODES.S)
-class PermissionUsageViewModelFactory(private val roleManager: RoleManager) :
-    ViewModelProvider.Factory {
+            private var appPermGroupListPopulated: Boolean = false
+            private val getAppPermGroupUiInfoLiveData = { appPermissionId: AppPermissionId ->
+                AppPermGroupUiInfoLiveData[
+                    Triple(
+                        appPermissionId.packageName,
+                        appPermissionId.permissionGroup,
+                        appPermissionId.userHandle,
+                    )]
+            }
 
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        @Suppress("UNCHECKED_CAST") return PermissionUsageViewModel(roleManager) as T
+            init {
+                addSource(mAllLightPackageOpsLiveData) { update() }
+                addSource(showSystemLiveData) { update() }
+                addSource(show7DaysLiveData) { update() }
+            }
+
+            override fun onUpdate() {
+                if (!mAllLightPackageOpsLiveData.isInitialized) {
+                    return
+                }
+
+                if (appPermGroupUiInfoLiveDataList.isEmpty()) {
+                    val appPermissionIds = mutableListOf<AppPermissionId>()
+                    val allPackages = mAllLightPackageOpsLiveData.value?.keys ?: setOf()
+                    for (packageWithUserHandle: Pair<String, UserHandle> in allPackages) {
+                        val lastPermissionGroupAccessTimesMs =
+                            mAllLightPackageOpsLiveData.value
+                                ?.get(packageWithUserHandle)
+                                ?.lastPermissionGroupAccessTimesMs
+                                ?: mapOf()
+
+                        for (permissionGroupToAccess in lastPermissionGroupAccessTimesMs) {
+                            appPermissionIds.add(
+                                AppPermissionId(
+                                    packageWithUserHandle.first,
+                                    packageWithUserHandle.second,
+                                    permissionGroupToAccess.key,
+                                ))
+                        }
+                    }
+
+                    setSourcesToDifference(
+                        appPermissionIds,
+                        appPermGroupUiInfoLiveDataList,
+                        getAppPermGroupUiInfoLiveData) {
+                            update()
+                        }
+                    appPermGroupListPopulated = true
+
+                    return
+                }
+
+                if (appPermGroupUiInfoLiveDataList.any { !it.value.isInitialized }) {
+                    return
+                }
+
+                if (isInitialized && appPermGroupUiInfoLiveDataList.any { it.value.isStale }) {
+                    return
+                }
+
+                val uiData = buildPermissionUsagesUiData()
+                // We include this check as we don't want UX updates unless the data to be displayed
+                // has changed. SmartUpdateMediatorLiveData sends updates if the data has changed OR
+                // if the data has changed from stale to fresh.
+                if (value != uiData) {
+                    value = uiData
+                }
+            }
+        }
+
+    /** Companion class for [PermissionUsageViewModel]. */
+    companion object {
+        private val TIME_7_DAYS_DURATION = TimeUnit.DAYS.toMillis(7)
+        private val TIME_24_HOURS_DURATION = TimeUnit.DAYS.toMillis(1)
+        internal const val SHOULD_SHOW_SYSTEM_KEY = "showSystem"
+        internal const val SHOULD_SHOW_7_DAYS_KEY = "show7Days"
+        private const val TELECOM_PACKAGE = "com.android.server.telecom"
+
+        /** Permission groups that should be hidden from the permissions usage UI. */
+        private val EXEMPTED_PERMISSION_GROUPS = setOf(Manifest.permission_group.NOTIFICATIONS)
+    }
+
+    /** Factory for [PermissionUsageViewModel]. */
+    @RequiresApi(Build.VERSION_CODES.S)
+    class PermissionUsageViewModelFactory(
+        val app: Application,
+        owner: SavedStateRegistryOwner,
+        defaultArgs: Bundle
+    ) : AbstractSavedStateViewModelFactory(owner, defaultArgs) {
+        override fun <T : ViewModel?> create(
+            key: String,
+            modelClass: Class<T>,
+            handle: SavedStateHandle
+        ): T {
+            @Suppress("UNCHECKED_CAST") return PermissionUsageViewModel(handle, app) as T
+        }
     }
 }
