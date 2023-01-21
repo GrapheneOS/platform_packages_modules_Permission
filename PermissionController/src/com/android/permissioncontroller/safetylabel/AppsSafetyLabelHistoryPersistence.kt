@@ -18,6 +18,7 @@ package com.android.permissioncontroller.safetylabel
 
 import android.content.Context
 import android.os.Build
+import android.provider.DeviceConfig
 import android.util.AtomicFile
 import android.util.Log
 import android.util.Xml
@@ -57,6 +58,18 @@ object AppsSafetyLabelHistoryPersistence {
         "apps_safety_label_history_persistence.xml"
     private val LOG_TAG = "AppsSafetyLabelHistoryPersistence".take(23)
     private val readWriteLock = Any()
+
+    private var listeners = mutableSetOf<ChangeListener>()
+
+    /** Adds a listener to listen for changes to persisted safety labels. */
+    fun addListener(listener: ChangeListener) {
+        listeners.add(listener)
+    }
+
+    /** Removes a listener from listening for changes to persisted safety labels. */
+    fun removeListener(listener: ChangeListener) {
+        listeners.remove(listener)
+    }
 
     /**
      * Reads the provided file storing safety label history and returns the parsed
@@ -132,6 +145,7 @@ object AppsSafetyLabelHistoryPersistence {
             serializer.serializeAllAppSafetyLabelHistory(appsSafetyLabelHistory)
             serializer.endDocument()
             atomicFile.finishWrite(outputStream)
+            listeners.forEach { it.onSafetyLabelHistoryChanged() }
         } catch (e: Exception) {
             Log.i(
                 LOG_TAG, "Failed to write to $file. Previous version of file will be restored.", e)
@@ -399,7 +413,7 @@ object AppsSafetyLabelHistoryPersistence {
     ): AppSafetyLabelHistory {
         val latestSafetyLabel = safetyLabelHistory.lastOrNull()
         return if (latestSafetyLabel?.dataLabel == safetyLabel.dataLabel) this
-        else this.withSafetyLabel(safetyLabel)
+        else this.withSafetyLabel(safetyLabel, getMaxSafetyLabelsToPersist())
     }
 
     private fun AppSafetyLabelHistory.getLatestSafetyLabel() = safetyLabelHistory.lastOrNull()
@@ -415,4 +429,23 @@ object AppsSafetyLabelHistoryPersistence {
         }
             ?: // the first safety label received after startTime, as a fallback
         safetyLabelHistory.firstOrNull { it.receivedAt.isAfter(startTime) }
+
+    private const val PROPERTY_MAX_SAFETY_LABELS_PERSISTED_PER_APP =
+        "max_safety_labels_persisted_per_app"
+
+    /**
+     * Returns the maximum number of safety labels to persist per app.
+     *
+     * Note that this will be checked at the time of adding a new safety label to storage for an
+     * app; simply changing this Device Config property will not result in any storage being purged.
+     */
+    private fun getMaxSafetyLabelsToPersist() =
+        DeviceConfig.getInt(
+            DeviceConfig.NAMESPACE_PRIVACY, PROPERTY_MAX_SAFETY_LABELS_PERSISTED_PER_APP, 20)
+
+    /** An interface to listen to changes to persisted safety labels. */
+    interface ChangeListener {
+        /** Callback when the persisted safety labels are changed. */
+        fun onSafetyLabelHistoryChanged()
+    }
 }

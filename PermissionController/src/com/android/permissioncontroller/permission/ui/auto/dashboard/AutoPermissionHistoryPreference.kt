@@ -22,12 +22,12 @@ import android.text.format.DateFormat
 import androidx.preference.Preference.OnPreferenceClickListener
 import com.android.car.ui.preference.CarUiPreference
 import com.android.permissioncontroller.R
-import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel
+import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModelLegacy
 
 /** Preference that displays a permission usage for an app. */
 class AutoPermissionHistoryPreference(
     context: Context,
-    historyPreferenceData: PermissionUsageDetailsViewModel.HistoryPreferenceData
+    historyPreferenceData: PermissionUsageDetailsViewModelLegacy.HistoryPreferenceData
 ) : CarUiPreference(context) {
 
     init {

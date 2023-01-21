@@ -41,8 +41,8 @@ import com.android.permissioncontroller.permission.model.v31.PermissionUsages
 import com.android.permissioncontroller.permission.model.v31.PermissionUsages.PermissionsUsagesChangeCallback
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity
 import com.android.permissioncontroller.permission.ui.auto.AutoDividerPreference
-import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel
-import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModelFactory
+import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModelFactoryLegacy
+import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModelLegacy
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPermGroupLabel
 import com.android.permissioncontroller.permission.utils.Utils
 import java.time.Clock
@@ -92,7 +92,7 @@ class AutoPermissionUsageDetailsFragment :
     private val SESSION_ID_KEY = (AutoPermissionUsageFragment::class.java.name + KEY_SESSION_ID)
 
     private lateinit var permissionUsages: PermissionUsages
-    private lateinit var usageViewModel: PermissionUsageDetailsViewModel
+    private lateinit var usageViewModel: PermissionUsageDetailsViewModelLegacy
     private lateinit var filterGroup: String
     private lateinit var roleManager: RoleManager
 
@@ -133,11 +133,11 @@ class AutoPermissionUsageDetailsFragment :
         permissionUsages = PermissionUsages(context)
         roleManager = Utils.getSystemServiceSafe(context, RoleManager::class.java)
         val usageViewModelFactory =
-            PermissionUsageDetailsViewModelFactory(
+            PermissionUsageDetailsViewModelFactoryLegacy(
                 PermissionControllerApplication.get(), roleManager, filterGroup, sessionId)
         usageViewModel =
             ViewModelProvider(this, usageViewModelFactory)[
-                PermissionUsageDetailsViewModel::class.java]
+                PermissionUsageDetailsViewModelLegacy::class.java]
 
         reloadData()
     }
@@ -229,7 +229,7 @@ class AutoPermissionUsageDetailsFragment :
     }
 
     fun createPermissionHistoryPreference(
-        historyPreferenceData: PermissionUsageDetailsViewModel.HistoryPreferenceData
+        historyPreferenceData: PermissionUsageDetailsViewModelLegacy.HistoryPreferenceData
     ): Preference {
         return AutoPermissionHistoryPreference(requireContext(), historyPreferenceData)
     }
@@ -269,7 +269,8 @@ class AutoPermissionUsageDetailsFragment :
 
     /** Render the provided [historyPreferenceDataList] into the [preferenceScreen] UI. */
     fun renderHistoryPreferences(
-        historyPreferenceDataList: List<PermissionUsageDetailsViewModel.HistoryPreferenceData>,
+        historyPreferenceDataList:
+            List<PermissionUsageDetailsViewModelLegacy.HistoryPreferenceData>,
         category: AtomicReference<PreferenceCategory>,
         preferenceScreen: PreferenceScreen,
     ) {
@@ -292,9 +293,7 @@ class AutoPermissionUsageDetailsFragment :
                 } else if (usageTimestamp > MIDNIGHT_YESTERDAY) {
                     category.get().setTitle(R.string.permission_history_category_yesterday)
                 } else {
-                    category
-                        .get()
-                        .setTitle(DateFormat.getDateFormat(context).format(currentDateMs))
+                    category.get().setTitle(DateFormat.getDateFormat(context).format(currentDateMs))
                 }
                 previousDateMs = currentDateMs
             }

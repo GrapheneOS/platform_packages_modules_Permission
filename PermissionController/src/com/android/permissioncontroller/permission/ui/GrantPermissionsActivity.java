@@ -18,6 +18,7 @@ package com.android.permissioncontroller.permission.ui;
 
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
+import static android.Manifest.permission_group.LOCATION;
 import static android.Manifest.permission_group.READ_MEDIA_VISUAL;
 import static android.healthconnect.HealthPermissions.HEALTH_PERMISSION_GROUP;
 import static android.view.WindowManager.LayoutParams.SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS;
@@ -41,7 +42,6 @@ import android.content.pm.PackageItemInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.drawable.Icon;
-import android.icu.lang.UCharacter;
 import android.os.Bundle;
 import android.os.Process;
 import android.text.Annotation;
@@ -59,7 +59,9 @@ import android.view.inputmethod.InputMethodManager;
 
 import androidx.annotation.GuardedBy;
 import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
 import androidx.core.util.Consumer;
+import androidx.core.util.Preconditions;
 
 import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.DeviceUtils;
@@ -490,12 +492,10 @@ public class GrantPermissionsActivity extends SettingsActivity
 
         CharSequence permissionRationaleMessage = null;
         if (info.getShowPermissionRationale()) {
-            String permissionGroupLabel =
-                    KotlinUtils.INSTANCE.getPermGroupLabel(this, info.getGroupName())
-                            .toString();
-
-            permissionRationaleMessage = getString(R.string.permission_rationale_message_template,
-                    UCharacter.toLowerCase(permissionGroupLabel));
+            permissionRationaleMessage =
+                    getString(
+                            getPermissionRationaleMessageResIdForPermissionGroup(
+                                    info.getGroupName()));
         }
 
         ArrayList<Integer> idxs = new ArrayList<>();
@@ -836,5 +836,21 @@ public class GrantPermissionsActivity extends SettingsActivity
                 }
             }
         }
+    }
+
+    /**
+     * Returns permission rationale message string resource id for the given permission group.
+     *
+     * <p> Supported permission groups: LOCATION
+     *
+     * @param permissionGroupName permission group for which to get a message string id
+     * @throws IllegalArgumentException if passing unsupported permission group
+     */
+    @StringRes
+    private int getPermissionRationaleMessageResIdForPermissionGroup(String permissionGroupName) {
+        Preconditions.checkArgument(LOCATION.equals(permissionGroupName),
+                "Permission Rationale does not support %s", permissionGroupName);
+
+        return R.string.permission_rationale_message_location;
     }
 }
