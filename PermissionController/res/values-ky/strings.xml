@@ -84,8 +84,8 @@
     <string name="menu_show_24_hours_data" msgid="8228054833323380780">"24 саатты көрсөтүү"</string>
     <string name="manage_permission" msgid="2895385393037061964">"Уруксатты башкаруу"</string>
     <string name="no_apps" msgid="2412612731628386816">"Бир да колдонмо жок"</string>
-    <string name="location_settings" msgid="3624412509133422562">"Жайгашкан жерди аныктоо жөндөөлөрү"</string>
-    <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> - бул түзмөктөгү жайгашкан жерди аныктоо кызматынын жабдуучусу. Жайгашкан жерди көрүү мүмкүнчүлүгүн жайгашкан жерди аныктоо жөндөөлөрүнөн өзгөртсө болот."</string>
+    <string name="location_settings" msgid="3624412509133422562">"Жайгашкан жерди аныктоо параметрлери"</string>
+    <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> - бул түзмөктөгү жайгашкан жерди аныктоо кызматынын жабдуучусу. Жайгашкан жерди көрүү мүмкүнчүлүгүн жайгашкан жерди аныктоо параметрлеринен өзгөртсө болот."</string>
     <string name="system_warning" msgid="1173400963234358816">"Эгер бул уруксатты четке каксаңыз, түзмөгүңүздүн негизги функциялары талаптагыдай иштебей калышы мүмкүн."</string>
     <string name="deny_read_media_visual_warning" msgid="3982586279917232827">"Бул колдонмо эски Android версиясы үчүн түзүлгөн. Эгер бул колдонмого сүрөттөр менен видеолорду колдонууга тыюу салсаңыз, музыка менен башка аудио файлдарды да колдонууга мүмкүн болбой калат."</string>
     <string name="deny_read_media_aural_warning" msgid="8928699919508646732">"Бул колдонмо эски Android версиясы үчүн түзүлгөн. Эгер бул колдонмого музыка менен башка аудио файлдарды колдонууга тыюу салсаңыз, сүрөттөр менен видеолорду да колдонууга мүмкүн болбой калат."</string>
@@ -199,7 +199,7 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Бардык <xliff:g id="APP">%1$s</xliff:g> уруксаттарын көрүү"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Ушундай уруксат берилген бардык колдонмолорду көрүү"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Кошумча микрофондун иштешин көрсөтүү"</string>
-    <string name="unused_apps_category_title" msgid="2988455616845243901">"Колдонулбаган колдонмолордун жөндөөлөрү"</string>
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"Колдонулбаган колдонмолордун параметрлери"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Эгер колдонмо пайдаланылбаса, уруксаттар өчүрүлсүн"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Уруксаттарды өчүрүп, орун бошотуу"</string>
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"Колдонулбаган колдонмолордун ишин тындыруу"</string>
@@ -523,7 +523,7 @@
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Жок"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"Параметрлер"</string>
     <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"Коопсуздук жана купуялык статусу. <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>. <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
-    <string name="security_settings" msgid="3808106921175271317">"Коопсуздук жөндөөлөрү"</string>
+    <string name="security_settings" msgid="3808106921175271317">"Коопсуздук параметрлери"</string>
     <string name="sensor_permissions_qs" msgid="1022267900031317472">"Уруксаттар"</string>
     <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"Коопсуздук жана купуялык"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Статусту текшерүү"</string>
