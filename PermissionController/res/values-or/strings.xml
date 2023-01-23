@@ -223,10 +223,8 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ଏବଂ ଅନ୍ୟ <xliff:g id="NUMBER">%2$s</xliff:g>ଟି ଅନୁମତି କାଢ଼ି ଦିଆଯାଇଛି"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"ଅବ୍ୟବହୃତ ଆପଗୁଡ଼ିକ"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"ଯଦି ଏକ ଆପ୍ କିଛି ମାସ ପାଇଁ ଅବ୍ୟବହୃତ ଅଛି, ତେବେ:\n\n• ଆପଣଙ୍କ ଡାଟାକୁ ସୁରକ୍ଷା ଦେବା ପାଇଁ ଅନୁମତିଗୁଡ଼ିକୁ କାଢ଼ି ଦିଆଯାଏ\n• ବ୍ୟାଟେରୀ ସେଭ୍ କରିବାକୁ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକୁ ବନ୍ଦ କରାଯାଏ\n• ସ୍ପେସ୍ ଖାଲି କରିବା ପାଇଁ ଅସ୍ଥାୟୀ ଫାଇଲଗୁଡ଼ିକୁ କାଢ଼ି ଦିଆଯାଏ\n\nଅନୁମତି ଏବଂ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକୁ ପୁଣି ଅନୁମତି ଦେବା ପାଇଁ, ଆପ୍ ଖୋଲନ୍ତୁ।"</string>
-    <!-- no translation found for unused_apps_page_tv_summary (2624911608663778308) -->
-    <skip />
-    <!-- no translation found for last_opened_category_title (8796557894614236128) -->
-    <skip />
+    <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"ଯଦି କୌଣସି ଆପକୁ ଏକ ମାସ ପାଇଁ ବ୍ୟବହାର କରାଯାଇନାହିଁ, ତେବେ:\n\n• ଆପଣଙ୍କ ଡାଟାକୁ ସୁରକ୍ଷିତ ରଖିବା ପାଇଁ ଅନୁମତିଗୁଡ଼ିକୁ କାଢ଼ି ଦିଆଯାଏ\n• ସ୍ପେସ ଖାଲି କରିବା ପାଇଁ ଅସ୍ଥାୟୀ ଫାଇଲଗୁଡ଼ିକୁ କାଢ଼ି ଦିଆଯାଏ\n\nପୁଣି ଅନୁମତିଗୁଡ଼ିକ ଦେବା ପାଇଁ, ଆପକୁ ଖୋଲନ୍ତୁ।"</string>
+    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{# ମାସରୁ ଅଧିକ ସମୟ ପୂର୍ବେ ଖୋଲାଯାଇଥିଲା}other{# ମାସରୁ ଅଧିକ ସମୟ ପୂର୍ବେ ଖୋଲାଯାଇଥିଲା}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ଗତ ଥର <xliff:g id="DATE">%s</xliff:g>ରେ ଆପକୁ ଖୋଲାଯାଇଥିଲା"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"ଗତ ଥର <xliff:g id="DATE">%s</xliff:g>ରେ ଖୋଲାଯାଇଥିଲା"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"ଯଦି ଆପଣ ସମସ୍ତ ଫାଇଲର ପରିଚାଳନାକୁ ଅନୁମତି ଦିଅନ୍ତି, ତେବେ ଏହି ଆପ୍ ଏ ଡିଭାଇସ୍ କିମ୍ବା ସଂଯୋଗ ହୋଇଥିବା ଷ୍ଟୋରେଜ୍ ଡିଭାଇସର ସାଧାରଣ ଷ୍ଟୋରେଜରେ ଥିବା ଯେ କୌଣସି ଫାଇଲକୁ ଆକ୍ସେସ୍, ପରିବର୍ତ୍ତନ ଏବଂ ଡିଲିଟ୍ କରିପାରିବ। ଆପଟି ଆପଣଙ୍କୁ ନ ପଚାରି ଫାଇଲଗୁଡ଼ିକୁ ଆକ୍ସେସ୍ କରିପାରେ।"</string>
@@ -404,9 +402,12 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"ଆପଣଙ୍କ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକ ସହ ଇଣ୍ଟରାକ୍ଟ କରିବା ଏବଂ ସଂଯୋଗ କରାଯାଇଥିବା ଡିଭାଇସଗୁଡ଼ିକରେ ଆପଣଙ୍କର ଆପଗୁଡ଼ିକ ଷ୍ଟ୍ରିମ କରିବା ପାଇଁ <xliff:g id="APP_NAME">%1$s</xliff:g>କୁ ଅନୁମତି ଦିଆଯିବ।"</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"ଆଖପାଖର ଡିଭାଇସଗୁଡ଼ିକରେ ବିଷୟବସ୍ତୁ ଷ୍ଟ୍ରିମ କରିବା ପାଇଁ <xliff:g id="APP_NAME">%1$s</xliff:g>କୁ ଅନୁମତି ଦିଆଯିବ।"</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"ଏହି ସେବା ଆପଣଙ୍କ ଫୋନରୁ ଆପଣଙ୍କ ଫଟୋ, ମିଡିଆ ଏବଂ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକୁ ଅନ୍ୟ ଡିଭାଇସଗୁଡ଼ିକ ସହ ସେୟାର କରେ।"</string>
-    <string name="role_notes_label" msgid="7694668779088299905">"ନୋଟ ନେଉଥିବା ଡିଫଲ୍ଟ ଆପ"</string>
-    <string name="role_notes_short_label" msgid="6617887820096092689">"ନୋଟ ନେଉଥିବା ଆପ"</string>
-    <string name="role_notes_description" msgid="8486216423668803751">"ଆପଣଙ୍କୁ ନୋଟ ନେବା ପାଇଁ ଅନୁମତି ଦେଉଥିବା ଆପ୍ସ"</string>
+    <!-- no translation found for role_notes_label (7451627001058089536) -->
+    <skip />
+    <!-- no translation found for role_notes_short_label (8796604147546125285) -->
+    <skip />
+    <!-- no translation found for role_notes_description (8496852798616883551) -->
+    <skip />
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"ନୋଟ"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"ସମ୍ପ୍ରତ୍ତି ଡିଫଲ୍ଟ"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"ଆଉ ପଚାରନ୍ତୁ ନାହିଁ"</string>
@@ -593,5 +594,6 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"ଯେତେବେଳେ ଆପଣ କପି କରିଥିବା ଟେକ୍ସଟ, ଇମେଜ କିମ୍ବା ଅନ୍ୟ ବିଷୟବସ୍ତୁକୁ ଆପ୍ସ ଆକ୍ସେସ କରେ, ସେତେବେଳେ ଏକ ମେସେଜ ଦେଖାନ୍ତୁ"</string>
     <string name="show_password_title" msgid="2877269286984684659">"ପାସୱାର୍ଡଗୁଡ଼ିକ ଦେଖାନ୍ତୁ"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"ଆପଣ ଟାଇପ କରିବା ସମୟରେ କେରେକ୍ଟରଗୁଡ଼ିକୁ କିଛି ସମୟ ପାଇଁ ଡିସପ୍ଲେ କରନ୍ତୁ"</string>
-    <string name="permission_rationale_message_template" msgid="4497650516269082051">"ଏହି ଆପ ଉଲ୍ଲେଖ କରିଛି ଯେ ଏହା ତୃତୀୟ ପକ୍ଷଗୁଡ଼ିକ ସହ <xliff:g id="PERMISSION_NAME">%s</xliff:g> ଡାଟା ସେୟାର କରିପାରେ"</string>
+    <!-- no translation found for permission_rationale_message_location (2153841534298068414) -->
+    <skip />
 </resources>

@@ -223,10 +223,8 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"L\'autorisation \"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>\" et <xliff:g id="NUMBER">%2$s</xliff:g> autres ont été révoquées"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Applis inutilisées"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Si vous n\'utilisez pas une appli pendant quelques mois :\n\n• Les autorisations sont supprimées pour protéger vos données.\n• Les notifications sont désactivées pour économiser la batterie.\n• Les fichiers temporaires sont supprimés pour libérer de l\'espace.\n\nPour réactiver les autorisations et les notifications, ouvrez l\'application."</string>
-    <!-- no translation found for unused_apps_page_tv_summary (2624911608663778308) -->
-    <skip />
-    <!-- no translation found for last_opened_category_title (8796557894614236128) -->
-    <skip />
+    <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"Si vous n\'utilisez pas une appli pendant un mois :\n\n• Les autorisations sont supprimées pour protéger vos données\n• Les fichiers temporaires sont supprimés pour libérer de l\'espace\n\nPour réactiver les autorisations, ouvrez l\'appli."</string>
+    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Ouvertes pour la dernière fois il y a plus de # mois}one{Ouvertes pour la dernière fois il y a plus de # mois}many{Ouvertes pour la dernière fois il y a plus de # mois}other{Ouvertes pour la dernière fois il y a plus de # mois}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Dernière ouverture de l\'application le <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Dernière ouverture : <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Si vous l\'autorisez à gérer tous les fichiers, cette application pourra y accéder, les modifier et les supprimer, sur cet appareil et sur les périphériques de stockage connectés. L\'application pourra accéder aux fichiers sans vous le demander."</string>
@@ -404,9 +402,12 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> aura l\'autorisation d\'interagir avec vos notifications et de lire vos applis en streaming sur l\'appareil connecté."</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> aura l\'autorisation de diffuser des contenus en streaming sur les appareils à proximité."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Ce service partage vos photos, contenus multimédias et notifications avec d\'autres appareils depuis votre téléphone."</string>
-    <string name="role_notes_label" msgid="7694668779088299905">"Appli prise notes par défaut"</string>
-    <string name="role_notes_short_label" msgid="6617887820096092689">"Appli de prise de notes"</string>
-    <string name="role_notes_description" msgid="8486216423668803751">"Applis vous permettant de prendre des notes"</string>
+    <!-- no translation found for role_notes_label (7451627001058089536) -->
+    <skip />
+    <!-- no translation found for role_notes_short_label (8796604147546125285) -->
+    <skip />
+    <!-- no translation found for role_notes_description (8496852798616883551) -->
+    <skip />
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"notes"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Appli par défaut actuelle"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Ne plus me demander"</string>
@@ -593,5 +594,6 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Afficher un message lorsque les applis accèdent à du texte, à des images ou à d\'autres contenus que vous avez copiés"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Afficher les mots de passe"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Afficher brièvement les caractères pendant la saisie"</string>
-    <string name="permission_rationale_message_template" msgid="4497650516269082051">"Cette appli a indiqué qu\'elle peut partager des données de <xliff:g id="PERMISSION_NAME">%s</xliff:g> avec des tiers"</string>
+    <!-- no translation found for permission_rationale_message_location (2153841534298068414) -->
+    <skip />
 </resources>

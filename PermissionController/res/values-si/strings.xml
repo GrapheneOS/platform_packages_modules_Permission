@@ -223,10 +223,8 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> සහ තවත් අවසර <xliff:g id="NUMBER">%2$s</xliff:g>ක් ඉවත් කර ඇත"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"භාවිත නොකළ යෙදුම්"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"යෙදුමක් මාස කිහිපයක් භාවිත නොකළහොත්:\n\n• ඔබගේ දත්ත ආරක්ෂා කිරීමට අවසර ඉවත් කෙරේ\n• බැටරිය සුරැකීමට දැනුම්දීම් නවත්වනු ඇත\n• ඉඩ නිදහස් කිරීමට තාවකාලික ගොනු ඉවත් කෙරේ\n\nනැවත අවසර සහ දැනුම්දීම්වලට ඉඩ දීමට, යෙදුම විවෘත කරන්න."</string>
-    <!-- no translation found for unused_apps_page_tv_summary (2624911608663778308) -->
-    <skip />
-    <!-- no translation found for last_opened_category_title (8796557894614236128) -->
-    <skip />
+    <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"යෙදුමක් මාසයක් තිස්සේ භාවිතා නොකළහොත්:\n\n• ඔබේ දත්ත ආරක්ෂා කිරීමට අවසර ඉවත් කරනු ලැබේ\n• ඉඩ නිදහස් කිරීමට තාවකාලික ගොනු ඉවත් කරනු ලැබේ\n\nනැවත අවසරවලට ඉඩ දීම සඳහා, යෙදුම විවෘත කරන්න."</string>
+    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{අවසන් වරට විවෘත කළේ මාස #කට පෙරයි}one{අවසන් වරට විවෘත කළේ මාස #කට පෙරයි}other{අවසන් වරට විවෘත කළේ මාස #කට පෙරයි}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"යෙදුම අවසන් වරට විවෘත කළේ <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"අවසාන විවෘත කළේ <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"ඔබ සියලු ගොනු කළමනාකරණය කිරීමට ඉඩ දෙන්නේ නම්, මෙම යෙදුමට මෙම උපාංගයේ හෝ සම්බන්ධිත ගබඩා උපාංගවල පොදු ගබඩාවේ ඇති ඕනෑම ගොනුවක් වෙත ප්‍රවේශ වීමට, වෙනස් කිරීමට සහ මැකීටම හැකිය. යෙදුම ඔබෙන් විමසීමෙන් තොරව ගොනු වෙත ප්‍රවේශ විය හැකිය."</string>
@@ -404,9 +402,12 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> හට ඔබගේ දැනුම්දීම් සමඟ අන්තර්ක්‍රියා කිරීමට සහ ඔබගේ යෙදුම් සම්බන්ධිත උපාංගයට ප්‍රවාහ කිරීමට ඉඩ දෙනු ඇත."</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> හට අවට උපාංග වෙත අන්තර්ගතය ප්‍රවාහ කිරීමට ඉඩ දෙනු ඇත."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"මෙම සේවාව ඔබගේ ඡායාරූප, මාධ්‍ය සහ දැනුම්දීම් ඔබගේ දුරකථනයෙන් වෙනත් උපාංග වෙත බෙදා ගනී."</string>
-    <string name="role_notes_label" msgid="7694668779088299905">"පෙරනිමි සටහන් ගැනීමේ යෙදුම"</string>
-    <string name="role_notes_short_label" msgid="6617887820096092689">"සටහන් ගැනීමේ යෙදුම"</string>
-    <string name="role_notes_description" msgid="8486216423668803751">"ඔබට සටහන් ගැනීමට ඉඩ දෙන යෙදුම්"</string>
+    <!-- no translation found for role_notes_label (7451627001058089536) -->
+    <skip />
+    <!-- no translation found for role_notes_short_label (8796604147546125285) -->
+    <skip />
+    <!-- no translation found for role_notes_description (8496852798616883551) -->
+    <skip />
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"සටහන්"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"වත්මන් පෙරනිමිය"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"නැවත නොඅසන්න"</string>
@@ -593,5 +594,6 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"යෙදුම් ඔබ පිටපත් කර ඇති පාඨ, රූප හෝ වෙනත් අන්තර්ගතය වෙත ප්‍රවේශ වන විට පණිවුඩයක් පෙන්වන්න"</string>
     <string name="show_password_title" msgid="2877269286984684659">"මුරපද පෙන්වන්න"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"ඔබ ටයිප් කරන විට අනුලකුණු කෙටියෙන් පෙන්වන්න"</string>
-    <string name="permission_rationale_message_template" msgid="4497650516269082051">"මෙම යෙදුම තෙවන පාර්ශව සමග <xliff:g id="PERMISSION_NAME">%s</xliff:g> දත්ත බෙදා ගත හැකි යැයි මෙය සඳහන් කළා"</string>
+    <!-- no translation found for permission_rationale_message_location (2153841534298068414) -->
+    <skip />
 </resources>
