@@ -189,6 +189,24 @@ public final class UserProfileGroup {
         return mManagedRunningProfilesUserIds;
     }
 
+    /**
+     * Convenience method that combines the results of {@link
+     * UserProfileGroup#getProfileParentUserId()} and {@link
+     * UserProfileGroup#getManagedRunningProfilesUserIds()}.
+     */
+    public int[] getProfileParentAndManagedRunningProfilesUserIds() {
+        int[] profileParentAndManagedRunningProfilesUserIds =
+                new int[mManagedRunningProfilesUserIds.length + 1];
+        profileParentAndManagedRunningProfilesUserIds[0] = mProfileParentUserId;
+        System.arraycopy(
+                mManagedRunningProfilesUserIds,
+                0,
+                profileParentAndManagedRunningProfilesUserIds,
+                1,
+                mManagedRunningProfilesUserIds.length);
+        return profileParentAndManagedRunningProfilesUserIds;
+    }
+
     /** Returns whether the {@link UserProfileGroup} contains the given {@code userId}. */
     public boolean contains(@UserIdInt int userId) {
         if (userId == mProfileParentUserId) {

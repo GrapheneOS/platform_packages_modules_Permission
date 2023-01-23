@@ -319,9 +319,8 @@ public final class SafetyCenterService extends SystemService {
                 if (hasUpdate) {
                     mSafetyCenterIssueRepository.updateIssues(userId);
                     mNotificationSender.updateNotifications(userId);
+                    mSafetyCenterListeners.deliverDataForUserProfileGroup(userProfileGroup);
                 }
-                mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
-                        userProfileGroup, hasUpdate, null);
             }
         }
 
@@ -383,9 +382,12 @@ public final class SafetyCenterService extends SystemService {
                 if (hasUpdate) {
                     mSafetyCenterIssueRepository.updateIssues(userId);
                     mNotificationSender.updateNotifications(userId);
+                    mSafetyCenterListeners.deliverDataForUserProfileGroup(userProfileGroup);
                 }
-                mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
-                        userProfileGroup, hasUpdate, safetyCenterErrorDetails);
+                if (safetyCenterErrorDetails != null) {
+                    mSafetyCenterListeners.deliverErrorForUserProfileGroup(
+                            userProfileGroup, safetyCenterErrorDetails);
+                }
             }
         }
 
@@ -479,11 +481,10 @@ public final class SafetyCenterService extends SystemService {
                 if (registeredListener == null) {
                     return;
                 }
-                SafetyCenterListeners.deliverUpdateForListener(
+                SafetyCenterListeners.deliverDataForListener(
                         registeredListener,
                         mSafetyCenterDataFactory.assembleSafetyCenterData(
-                                packageName, userProfileGroup),
-                        null);
+                                packageName, userProfileGroup));
             }
         }
 
@@ -550,8 +551,7 @@ public final class SafetyCenterService extends SystemService {
                 }
                 mSafetyCenterIssueRepository.updateIssues(userId);
                 mNotificationSender.updateNotifications(userId);
-                mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
-                        userProfileGroup, true, null);
+                mSafetyCenterListeners.deliverDataForUserProfileGroup(userProfileGroup);
             }
         }
 
@@ -605,8 +605,7 @@ public final class SafetyCenterService extends SystemService {
             synchronized (mApiLock) {
                 // TODO(b/236693607): Should tests leave real data untouched?
                 clearDataLocked();
-                mSafetyCenterListeners.deliverUpdateForUserProfileGroups(
-                        userProfileGroups, true, null);
+                mSafetyCenterListeners.deliverDataForUserProfileGroups(userProfileGroups);
             }
         }
 
@@ -626,8 +625,7 @@ public final class SafetyCenterService extends SystemService {
                 mSafetyCenterConfigReader.setConfigOverrideForTests(safetyCenterConfig);
                 // TODO(b/236693607): Should tests leave real data untouched?
                 clearDataLocked();
-                mSafetyCenterListeners.deliverUpdateForUserProfileGroups(
-                        userProfileGroups, true, null);
+                mSafetyCenterListeners.deliverDataForUserProfileGroups(userProfileGroups);
             }
         }
 
@@ -646,8 +644,7 @@ public final class SafetyCenterService extends SystemService {
                 mSafetyCenterConfigReader.clearConfigOverrideForTests();
                 // TODO(b/236693607): Should tests leave real data untouched?
                 clearDataLocked();
-                mSafetyCenterListeners.deliverUpdateForUserProfileGroups(
-                        userProfileGroups, true, null);
+                mSafetyCenterListeners.deliverDataForUserProfileGroups(userProfileGroups);
             }
         }
 
@@ -883,14 +880,14 @@ public final class SafetyCenterService extends SystemService {
                     }
                 }
                 mSafetyCenterIssueRepository.updateIssues(mUserProfileGroup);
-                mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
-                        mUserProfileGroup,
-                        true,
-                        showErrorEntriesOnTimeout
-                                ? null
-                                : new SafetyCenterErrorDetails(
-                                        mSafetyCenterResourcesContext.getStringByName(
-                                                "refresh_timeout")));
+                mSafetyCenterListeners.deliverDataForUserProfileGroup(mUserProfileGroup);
+                if (!showErrorEntriesOnTimeout) {
+                    mSafetyCenterListeners.deliverErrorForUserProfileGroup(
+                            mUserProfileGroup,
+                            new SafetyCenterErrorDetails(
+                                    mSafetyCenterResourcesContext.getStringByName(
+                                            "refresh_timeout")));
+                }
             }
 
             Log.v(
@@ -939,9 +936,9 @@ public final class SafetyCenterService extends SystemService {
                 if (!safetyCenterDataHasChanged) {
                     return;
                 }
-                mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
+                mSafetyCenterListeners.deliverDataForUserProfileGroup(mUserProfileGroup);
+                mSafetyCenterListeners.deliverErrorForUserProfileGroup(
                         mUserProfileGroup,
-                        true,
                         new SafetyCenterErrorDetails(
                                 mSafetyCenterResourcesContext.getStringByName(
                                         "resolving_action_error")));
@@ -1029,7 +1026,7 @@ public final class SafetyCenterService extends SystemService {
             }
             mSafetyCenterListeners.clearForUser(userId);
             mSafetyCenterRefreshTracker.clearRefreshForUser(userId);
-            mSafetyCenterListeners.deliverUpdateForUserProfileGroup(userProfileGroup, true, null);
+            mSafetyCenterListeners.deliverDataForUserProfileGroup(userProfileGroup);
         }
     }
 
@@ -1058,7 +1055,7 @@ public final class SafetyCenterService extends SystemService {
             mSafetyCenterTimeouts.add(
                     refreshTimeout, SafetyCenterFlags.getRefreshSourcesTimeout(refreshReason));
 
-            mSafetyCenterListeners.deliverUpdateForUserProfileGroup(userProfileGroup, true, null);
+            mSafetyCenterListeners.deliverDataForUserProfileGroup(userProfileGroup);
         }
     }
 
@@ -1114,8 +1111,8 @@ public final class SafetyCenterService extends SystemService {
                     errorMessage =
                             mSafetyCenterResourcesContext.getStringByName("redirecting_error");
                 }
-                mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
-                        userProfileGroup, false, new SafetyCenterErrorDetails(errorMessage));
+                mSafetyCenterListeners.deliverErrorForUserProfileGroup(
+                        userProfileGroup, new SafetyCenterErrorDetails(errorMessage));
                 return;
             }
             if (safetySourceIssueAction.willResolve()) {
@@ -1125,8 +1122,7 @@ public final class SafetyCenterService extends SystemService {
                         new ResolvingActionTimeout(safetyCenterIssueActionId, userProfileGroup);
                 mSafetyCenterTimeouts.add(
                         resolvingActionTimeout, SafetyCenterFlags.getResolvingActionTimeout());
-                mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
-                        userProfileGroup, true, null);
+                mSafetyCenterListeners.deliverDataForUserProfileGroup(userProfileGroup);
             }
         }
     }
