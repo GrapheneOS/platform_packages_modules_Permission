@@ -42,12 +42,8 @@
     <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{सेटिंग तपासता आले नाही}other{सेटिंग्ज तपासता आली नाहीत}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"कार्य प्रोफाइल थांबवली आहे"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"अद्याप कोणतीही माहिती नाही"</string>
-    <!-- no translation found for notification_channel_group_name (7155072032524876859) -->
-    <skip />
-    <!-- no translation found for notification_channel_name_information (2966444432152990166) -->
-    <skip />
-    <!-- no translation found for notification_channel_name_recommendation (7847408286580217922) -->
-    <skip />
-    <!-- no translation found for notification_channel_name_critical_warning (5994320322108351769) -->
-    <skip />
+    <string name="notification_channel_group_name" msgid="7155072032524876859">"सुरक्षा आणि गोपनीयता"</string>
+    <string name="notification_channel_name_information" msgid="2966444432152990166">"शिफारशी"</string>
+    <string name="notification_channel_name_recommendation" msgid="7847408286580217922">"चेतावण्या"</string>
+    <string name="notification_channel_name_critical_warning" msgid="5994320322108351769">"महत्त्वाच्या चेतावण्या"</string>
 </resources>
