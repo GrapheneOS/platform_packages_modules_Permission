@@ -1,38 +1,13 @@
 {
-  "presubmit": [
+  "imports": [
     {
-      "name": "CtsSafetyCenterTestCases",
-      "options": [
-        {
-          "exclude-annotation": "com.android.bedstead.harrier.annotations.Postsubmit"
-        }
-      ]
+      "path": "packages/modules/Permission/tests/cts/safetycenter/"
     },
     {
-      "name": "SafetyCenterFunctionalTestCases",
-      "options": [
-        {
-          "exclude-annotation": "com.android.bedstead.harrier.annotations.Postsubmit"
-        }
-      ]
-    }
-  ],
-  "postsubmit": [
-    {
-      "name": "CtsSafetyCenterTestCases"
+      "path": "packages/modules/Permission/tests/functional/safetycenter/multiusers/"
     },
     {
-      "name": "SafetyCenterFunctionalTestCases"
-    }
-  ],
-  "mainline-presubmit": [
-    {
-      "name": "CtsSafetyCenterTestCases[com.google.android.permission.apex]",
-      "options": [
-        {
-          "exclude-annotation": "android.platform.test.annotations.FlakyTest"
-        }
-      ]
+      "path": "packages/modules/Permission/tests/functional/safetycenter/singleuser/"
     }
   ]
 }

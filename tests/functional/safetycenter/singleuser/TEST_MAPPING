@@ -1,12 +1,12 @@
 {
   "presubmit": [
     {
-      "name": "SafetyCenterConfigTests"
+      "name": "SafetyCenterFunctionalTestCases"
     }
   ],
   "mainline-presubmit": [
     {
-      "name": "SafetyCenterConfigTests[com.google.android.permission.apex]",
+      "name": "SafetyCenterFunctionalTestCases[com.google.android.permission.apex]",
       "options": [
         {
           "exclude-annotation": "android.platform.test.annotations.FlakyTest"
