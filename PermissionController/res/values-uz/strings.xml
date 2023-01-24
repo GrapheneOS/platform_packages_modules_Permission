@@ -402,9 +402,9 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> ilovasiga bildirishnomalar bilan ishlash va ulangan qurilmalarga ilovalarni translatsiya qilishga ruxsat beriladi"</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> ilovasiga yaqin-atrofdagi qurilmalarga kontent uzatish ruxsati beriladi."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Bu xizmat telefoningizdagi suratlar, media va bildirishnomalarni boshqa qurilmalarga ulashadi."</string>
-    <string name="role_notes_label" msgid="7694668779088299905">"Birlamchi qayd yozish ilovasi"</string>
-    <string name="role_notes_short_label" msgid="6617887820096092689">"Qayd yozish ilovasi"</string>
-    <string name="role_notes_description" msgid="8486216423668803751">"Qaydlar yozish imkonini beruvchi ilovalar"</string>
+    <string name="role_notes_label" msgid="7451627001058089536">"Birlamchi qaydlar ilovasi"</string>
+    <string name="role_notes_short_label" msgid="8796604147546125285">"Qaydlar ilovasi"</string>
+    <string name="role_notes_description" msgid="8496852798616883551">"Qurilmangizda qaydlar olish imkonini beruvchi ilovalar"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"qaydlar"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Hozirda asosiy ilova"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Boshqa soʻralmasin"</string>
@@ -591,5 +591,6 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Ilovalar siz nusxa olgan matn, rasmlar yoki boshqa kontentdan foydalanganda xabar chiqarish"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Parollar ochiq tursin"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Parolni kiritishda belgilar qisqa muddat ochiq turadi"</string>
-    <string name="permission_rationale_message_template" msgid="4497650516269082051">"Bu ilovaning <xliff:g id="PERMISSION_NAME">%s</xliff:g> maʼlumotlarini begonalarga ulashishi mumkinligi xabar berildi"</string>
+    <!-- no translation found for permission_rationale_message_location (2153841534298068414) -->
+    <skip />
 </resources>

@@ -223,10 +223,8 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> en <xliff:g id="NUMBER">%2$s</xliff:g> andere rechten zijn verwijderd"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Niet-gebruikte apps"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Als je een app een paar maanden niet gebruikt, gebeurt het volgende:\n\n• De rechten worden ingetrokken om je gegevens te beschermen.\n• Meldingen worden stopgezet om de batterij te sparen.\n• Tijdelijke bestanden worden verwijderd om ruimte vrij te maken.\n\nOpen de app als je de rechten en meldingen weer wilt toestaan."</string>
-    <!-- no translation found for unused_apps_page_tv_summary (2624911608663778308) -->
-    <skip />
-    <!-- no translation found for last_opened_category_title (8796557894614236128) -->
-    <skip />
+    <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"Als je een app een maand niet gebruikt, gebeurt het volgende:\n\n• De rechten worden verwijderd om je gegevens te beschermen.\n• Tijdelijke bestanden worden verwijderd om ruimte vrij te maken.\n\nOpen de app als je de rechten weer wilt toestaan."</string>
+    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Meer dan # maand geleden voor het laatst geopend}other{Meer dan # maanden geleden voor het laatst geopend}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"App laatst geopend op <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Laatst geopend op <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Als je het beheer van alle bestanden toestaat, kan deze app alle bestanden in de algemene opslag van dit apparaat of gekoppelde opslagapparaten openen, bewerken en verwijderen. De app kan toegang tot bestanden krijgen zonder je dat te vragen."</string>
@@ -404,9 +402,9 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> mag interactie hebben met je meldingen en je apps streamen naar het verbonden apparaat."</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> krijgt toestemming om content te streamen naar apparaten in de buurt."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Deze service deelt foto\'s, media en meldingen van je telefoon met andere apparaten."</string>
-    <string name="role_notes_label" msgid="7694668779088299905">"Standaard-app voor notities"</string>
-    <string name="role_notes_short_label" msgid="6617887820096092689">"Notitie-app"</string>
-    <string name="role_notes_description" msgid="8486216423668803751">"Apps waarmee je notities kunt maken"</string>
+    <string name="role_notes_label" msgid="7451627001058089536">"Standaard notitie-app"</string>
+    <string name="role_notes_short_label" msgid="8796604147546125285">"Notitie-app"</string>
+    <string name="role_notes_description" msgid="8496852798616883551">"Apps waarmee je notities op je apparaat kunt maken"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"notities"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Huidige standaard-app"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Niet meer vragen"</string>
@@ -593,5 +591,6 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Toon een bericht als apps toegang hebben tot tekst, afbeeldingen of andere content die je hebt gekopieerd"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Wachtwoorden tonen"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Tekens kort tonen terwijl je typt"</string>
-    <string name="permission_rationale_message_template" msgid="4497650516269082051">"Deze app heeft vermeld dat deze <xliff:g id="PERMISSION_NAME">%s</xliff:g>-gegevens kan delen met derden."</string>
+    <!-- no translation found for permission_rationale_message_location (2153841534298068414) -->
+    <skip />
 </resources>
