@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.ui.handheld.v33;
+package com.android.permissioncontroller.safetycenter.ui;
 
 import static android.Manifest.permission_group.CAMERA;
 import static android.Manifest.permission_group.LOCATION;
@@ -55,8 +55,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.android.permissioncontroller.R;
-import com.android.permissioncontroller.permission.ui.model.v33.SafetyCenterQsViewModel;
-import com.android.permissioncontroller.permission.ui.model.v33.SafetyCenterQsViewModelFactory;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.permissioncontroller.safetycenter.ui.Action;
@@ -65,6 +63,8 @@ import com.android.permissioncontroller.safetycenter.ui.SafetyCenterDashboardFra
 import com.android.permissioncontroller.safetycenter.ui.SafetyCenterTouchTarget;
 import com.android.permissioncontroller.safetycenter.ui.Sensor;
 import com.android.permissioncontroller.safetycenter.ui.model.LiveSafetyCenterViewModelFactory;
+import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterQsViewModel;
+import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterQsViewModelFactory;
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel;
 
 import com.google.android.material.button.MaterialButton;

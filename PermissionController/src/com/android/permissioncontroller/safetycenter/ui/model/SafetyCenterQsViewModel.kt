@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.ui.model.v33
+package com.android.permissioncontroller.safetycenter.ui.model
 
 import android.Manifest.permission_group.CAMERA
 import android.Manifest.permission_group.LOCATION
@@ -95,10 +95,13 @@ class SafetyCenterQsViewModel(
         }
 
     fun shouldAllowRevoke(usage: PermissionGroupUsage): Boolean {
-        val group = lightAppPermMap[LightAppPermissionGroupUsageKey(
-                usage.packageName,
-                usage.permissionGroupName,
-                UserHandle.getUserHandleForUid(usage.uid))] ?: return false
+        val group =
+            lightAppPermMap[
+                LightAppPermissionGroupUsageKey(
+                    usage.packageName,
+                    usage.permissionGroupName,
+                    UserHandle.getUserHandleForUid(usage.uid))]
+                ?: return false
         return group.supportsRuntimePerms &&
             !group.hasInstallToRuntimeSplit &&
             !group.isBackgroundFixed &&
@@ -108,7 +111,8 @@ class SafetyCenterQsViewModel(
 
     fun revokePermission(usage: PermissionGroupUsage) {
         val group =
-            lightAppPermMap[LightAppPermissionGroupUsageKey(
+            lightAppPermMap[
+                LightAppPermissionGroupUsageKey(
                     usage.packageName,
                     usage.permissionGroupName,
                     UserHandle.getUserHandleForUid(usage.uid))]
@@ -235,7 +239,7 @@ class SafetyCenterQsViewModel(
 }
 
 /**
- * Factory for a SafetyCenterViewModel
+ * Factory for a SafetyCenterQsViewModel
  *
  * @param app The current application
  * @param sessionId A session ID used in logs to identify this particular session
