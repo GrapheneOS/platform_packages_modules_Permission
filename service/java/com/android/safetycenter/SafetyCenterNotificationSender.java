@@ -44,6 +44,7 @@ import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 import java.io.PrintWriter;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
 
@@ -189,6 +190,8 @@ final class SafetyCenterNotificationSender {
         List<SafetyCenterIssueKey> allIssueKeys =
                 mSafetyCenterIssueRepository.getIssuesForUser(userId);
 
+        Duration minNotificationsDelay = SafetyCenterFlags.getNotificationsMinDelay();
+
         for (int i = 0; i < allIssueKeys.size(); i++) {
             SafetyCenterIssueKey issueKey = allIssueKeys.get(i);
 
@@ -200,7 +203,7 @@ final class SafetyCenterNotificationSender {
             // TODO(b/259084807): Consider extracting this policy to a separate class
             Instant dismissedAt = mSafetyCenterIssueRepository.getNotificationDismissedAt(issueKey);
             if (dismissedAt != null) {
-                // Issue was previously dismissed and is skipped
+                // Notification for issue was previously dismissed and is skipped
                 continue;
             }
 
@@ -209,8 +212,16 @@ final class SafetyCenterNotificationSender {
             int behavior = getBehavior(issue, issueKey);
             if (behavior == NOTIFICATION_BEHAVIOR_INTERNAL_IMMEDIATELY) {
                 result.put(issueKey, issue);
+            } else if (behavior == NOTIFICATION_BEHAVIOR_INTERNAL_DELAYED) {
+                Instant delayedNotificationTime =
+                        mSafetyCenterIssueRepository
+                                .getIssueFirstSeenAt(issueKey)
+                                .plus(minNotificationsDelay);
+                if (Instant.now().isAfter(delayedNotificationTime)) {
+                    result.put(issueKey, issue);
+                }
+                // TODO(b/259094736): else handle delayed notifications using a scheduled job
             }
-            // TODO(b/259094736): handle delayed notifications using a scheduled job to post later
         }
         return result;
     }
