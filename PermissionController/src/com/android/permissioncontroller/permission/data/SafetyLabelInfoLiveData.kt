@@ -25,6 +25,7 @@ import com.android.permission.safetylabel.DataCategoryConstants
 import com.android.permission.safetylabel.DataLabelConstants
 import com.android.permission.safetylabel.DataTypeConstants
 import com.android.permission.safetylabel.SafetyLabel
+import com.android.permission.safetylabel.SafetyLabel.KEY_VERSION
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.model.livedatatypes.SafetyLabelInfo
 import com.android.permissioncontroller.permission.utils.KotlinUtils.isPlaceholderSafetyLabelDataEnabled
@@ -136,16 +137,21 @@ private constructor(
                 putPersistableBundle(DataLabelConstants.DATA_USAGE_SHARED, dataSharedBundle)
             }
 
-        val safetyLabelBundle =
-            PersistableBundle().apply { putPersistableBundle("data_labels", dataLabelBundle) }
+        val safetyLabelBundle = PersistableBundle().apply {
+            putLong(KEY_VERSION, INITIAL_SAFETY_LABELS_VERSION)
+            putPersistableBundle("data_labels", dataLabelBundle)
+        }
 
         return PersistableBundle().apply {
+            putLong(KEY_VERSION, INITIAL_METADATA_VERSION)
             putPersistableBundle("safety_labels", safetyLabelBundle)
         }
     }
 
-    companion object :
-        DataRepositoryForPackage<Pair<String, UserHandle>, SafetyLabelInfoLiveData>() {
+    companion object : DataRepositoryForPackage<Pair<String, UserHandle>, SafetyLabelInfoLiveData>(
+    ) {
+        private const val INITIAL_METADATA_VERSION = 1L
+        private const val INITIAL_SAFETY_LABELS_VERSION = 1L
         private val LOG_TAG = SafetyLabelInfoLiveData::class.java.simpleName
 
         override fun newValue(key: Pair<String, UserHandle>): SafetyLabelInfoLiveData {
