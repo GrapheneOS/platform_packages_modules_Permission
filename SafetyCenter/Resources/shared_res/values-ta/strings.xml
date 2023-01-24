@@ -42,12 +42,8 @@
     <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{அமைப்பைச் சரிபார்க்க முடியவில்லை}other{அமைப்புகளைச் சரிபார்க்க முடியவில்லை}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"பணிக் கணக்கு இடைநிறுத்தப்பட்டது"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"தகவல்கள் எதுவுமில்லை"</string>
-    <!-- no translation found for notification_channel_group_name (7155072032524876859) -->
-    <skip />
-    <!-- no translation found for notification_channel_name_information (2966444432152990166) -->
-    <skip />
-    <!-- no translation found for notification_channel_name_recommendation (7847408286580217922) -->
-    <skip />
-    <!-- no translation found for notification_channel_name_critical_warning (5994320322108351769) -->
-    <skip />
+    <string name="notification_channel_group_name" msgid="7155072032524876859">"பாதுகாப்பு &amp; தனியுரிமை"</string>
+    <string name="notification_channel_name_information" msgid="2966444432152990166">"பரிந்துரைகள்"</string>
+    <string name="notification_channel_name_recommendation" msgid="7847408286580217922">"எச்சரிக்கைகள்"</string>
+    <string name="notification_channel_name_critical_warning" msgid="5994320322108351769">"முக்கிய எச்சரிக்கைகள்"</string>
 </resources>
