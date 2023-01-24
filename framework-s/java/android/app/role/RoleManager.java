@@ -173,6 +173,10 @@ public final class RoleManager {
     /**
      * The name of the financed device kiosk role.
      *
+     * A financed device is a device purchased through a creditor and typically paid back under an
+     * installment plan.
+     * The creditor has the ability to lock a financed device in case of payment default.
+     *
      * @hide
      */
     @SystemApi
