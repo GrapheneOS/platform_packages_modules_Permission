@@ -31,6 +31,7 @@ import android.safetycenter.cts.testing.TestNotificationListener
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
+import com.android.safetycenter.testing.Coroutines.TIMEOUT_LONG
 import com.android.safetycenter.testing.Coroutines.TIMEOUT_SHORT
 import com.android.safetycenter.testing.SafetyCenterActivityLauncher.executeBlockAndExit
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.clearAllSafetySourceDataForTestsWithPermission
@@ -50,6 +51,7 @@ import com.android.safetycenter.testing.SafetySourceTestData
 import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
 import com.android.safetycenter.testing.UiTestHelper.waitSourceIssueDisplayed
 import com.google.common.truth.Truth.assertThat
+import java.time.Duration
 import kotlin.test.assertFailsWith
 import kotlinx.coroutines.TimeoutCancellationException
 import org.junit.After
@@ -150,6 +152,97 @@ class SafetyCenterNotificationTest {
         safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, data)
 
         TestNotificationListener.waitForZeroNotifications()
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun setSafetySourceData_withNotificationBehaviorDelay_noImmediateNotification() {
+        SafetyCenterFlags.notificationsMinDelay = Duration.ofDays(1)
+        val data =
+            safetySourceTestData
+                .defaultRecommendationDataBuilder()
+                .addIssue(
+                    safetySourceTestData
+                        .defaultRecommendationIssueBuilder()
+                        .setNotificationBehavior(SafetySourceIssue.NOTIFICATION_BEHAVIOR_DELAYED)
+                        .build()
+                )
+                .build()
+
+        safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, data)
+
+        TestNotificationListener.waitForZeroNotifications(TIMEOUT_LONG)
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun setSafetySourceData_withNotificationBehaviorDelay_sendsNotificationAfterDelay() {
+        SafetyCenterFlags.notificationsMinDelay = Duration.ofDays(1)
+        val delayedNotificationIssue =
+            safetySourceTestData
+                .defaultRecommendationIssueBuilder("Notify later", "This is not urgent.")
+                .setNotificationBehavior(SafetySourceIssue.NOTIFICATION_BEHAVIOR_DELAYED)
+                .build()
+        val neverNotifyIssue =
+            safetySourceTestData
+                .defaultInformationIssueBuilder()
+                .setNotificationBehavior(SafetySourceIssue.NOTIFICATION_BEHAVIOR_NEVER)
+                .build()
+        val data1 =
+            safetySourceTestData
+                .defaultRecommendationDataBuilder()
+                .addIssue(delayedNotificationIssue)
+                .build()
+        val data2 =
+            safetySourceTestData
+                .defaultRecommendationDataBuilder()
+                .addIssue(delayedNotificationIssue)
+                .addIssue(neverNotifyIssue)
+                .build()
+
+        safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, data1)
+        TestNotificationListener.waitForZeroNotifications()
+
+        SafetyCenterFlags.notificationsMinDelay = TIMEOUT_SHORT
+
+        // Sending new data causes Safety Center to recompute which issues to send notifications
+        // about and this should now include the delayed issue sent in data1 above.
+        Thread.sleep(TIMEOUT_SHORT.toMillis())
+        safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, data2)
+
+        TestNotificationListener.waitForSingleNotificationMatching(
+            NotificationCharacteristics(
+                title = "Notify later",
+                text = "This is not urgent.",
+                actions = listOf("See issue")
+            )
+        )
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun setSafetySourceData_withNotificationBehaviorDelayOfZero_sendsNotificationImmediately() {
+        SafetyCenterFlags.notificationsMinDelay = Duration.ofSeconds(0)
+        val data =
+            safetySourceTestData
+                .defaultRecommendationDataBuilder()
+                .addIssue(
+                    safetySourceTestData
+                        .defaultRecommendationIssueBuilder("Notify immediately", "This is urgent!")
+                        .setNotificationBehavior(SafetySourceIssue.NOTIFICATION_BEHAVIOR_DELAYED)
+                        .build()
+                )
+                .build()
+
+        safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, data)
+
+        TestNotificationListener.waitForSingleNotificationMatching(
+            NotificationCharacteristics(
+                title = "Notify immediately",
+                text = "This is urgent!",
+                actions = listOf("See issue")
+            )
+        )
     }
 
     @Test

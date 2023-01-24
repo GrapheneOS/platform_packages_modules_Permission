@@ -219,7 +219,7 @@ public final class SafetyCenterIssueRepository {
      * Center.
      */
     @Nullable
-    Instant getIssueFirstSeenAt(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
+    public Instant getIssueFirstSeenAt(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
         IssueData issueData = getOrWarn(safetyCenterIssueKey, "getting first seen");
         if (issueData == null) {
             return null;

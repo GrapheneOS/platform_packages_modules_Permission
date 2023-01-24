@@ -54,6 +54,9 @@ public final class SafetyCenterFlags {
     private static final String PROPERTY_NOTIFICATIONS_ALLOWED_SOURCES =
             "safety_center_notifications_allowed_sources";
 
+    private static final String PROPERTY_NOTIFICATIONS_MIN_DELAY =
+            "safety_center_notifications_min_delay";
+
     private static final String PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT =
             "safety_center_show_error_entries_on_timeout";
 
@@ -102,12 +105,15 @@ public final class SafetyCenterFlags {
 
     private static final Duration RESURFACE_ISSUE_DEFAULT_DELAY = Duration.ofDays(180);
 
+    private static final Duration NOTIFICATIONS_MIN_DELAY_DEFAULT_DURATION = Duration.ofDays(180);
+
     /** Dumps state for debugging purposes. */
     static void dump(@NonNull PrintWriter fout) {
         fout.println("FLAGS");
         printFlag(fout, PROPERTY_SAFETY_CENTER_ENABLED, getSafetyCenterEnabled());
         printFlag(fout, PROPERTY_NOTIFICATIONS_ENABLED, getNotificationsEnabled());
         printFlag(fout, PROPERTY_NOTIFICATIONS_ALLOWED_SOURCES, getNotificationsAllowedSourceIds());
+        printFlag(fout, PROPERTY_NOTIFICATIONS_MIN_DELAY, getNotificationsMinDelay());
         printFlag(fout, PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT, getShowErrorEntriesOnTimeout());
         printFlag(fout, PROPERTY_REPLACE_LOCK_SCREEN_ICON_ACTION, getReplaceLockScreenIconAction());
         printFlag(fout, PROPERTY_RESOLVING_ACTION_TIMEOUT_MILLIS, getResolvingActionTimeout());
@@ -166,6 +172,17 @@ public final class SafetyCenterFlags {
         return getCommaSeparatedStrings(PROPERTY_NOTIFICATIONS_ALLOWED_SOURCES);
     }
 
+    /*
+     * Returns the minimum delay before Safety Center sends a notification with
+     * {@link android.safetycenter.SafetySourceIssue.NotificationBehavior.NOTIFICATION_BEHAVIOR_DELAYED}.
+     *
+     * The actual delay used may be longer.
+     */
+    @NonNull
+    static Duration getNotificationsMinDelay() {
+        return getDuration(
+                PROPERTY_NOTIFICATIONS_MIN_DELAY, NOTIFICATIONS_MIN_DELAY_DEFAULT_DURATION);
+    }
     /**
      * Returns whether we should show error entries for sources that timeout when refreshing them.
      */
