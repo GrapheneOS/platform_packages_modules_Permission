@@ -75,30 +75,30 @@
 
     <style name="SafetyCenterQsPreferences">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/sc_spacing_xsmall</item>
     </style>
 
     <style name="SafetyCenterQsToggleContainer">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">fill_parent</item>
-        <item name="android:gravity">center_horizontal</item>
-        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">vertical</item>
         <item name="android:layout_marginStart">@dimen/sc_list_margin</item>
         <item name="android:layout_marginEnd">@dimen/sc_list_margin</item>
-        <item name="android:paddingStart">@dimen/sc_list_margin</item>
-        <item name="android:paddingEnd">@dimen/sc_list_margin</item>
-    </style>
-
-    <style name="SafetyCenterQsToggleContainer.Top">
         <item name="android:layout_marginTop">@dimen/sc_spacing_large</item>
-        <item name="android:paddingTop">@dimen/sc_spacing_large</item>
-        <item name="android:paddingBottom">@dimen/sc_spacing_xsmall</item>
+        <item name="android:layout_marginBottom">@dimen/sc_spacing_large</item>
+        <item name="android:paddingStart">@dimen/sc_spacing_small</item>
+        <item name="android:paddingEnd">@dimen/sc_spacing_small</item>
+        <item name="android:paddingTop">@dimen/sc_spacing_small</item>
+        <item name="android:paddingBottom">@dimen/sc_spacing_small</item>
     </style>
 
-    <style name="SafetyCenterQsToggleContainer.Bottom">
-        <item name="android:paddingBottom">@dimen/sc_spacing_large</item>
-        <item name="android:layout_marginBottom">@dimen/sc_spacing_large</item>
+    <style name="SafetyCenterQsToggleRow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:orientation">horizontal</item>
     </style>
 
     <style name="SafetyCenterQsToggleButton">
@@ -108,14 +108,10 @@
         <item name="android:orientation">horizontal</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:layout_weight">0.5</item>
-    </style>
-
-    <style name="SafetyCenterQsToggleButton.Start">
-        <item name="android:layout_marginEnd">@dimen/sc_spacing_xxsmall</item>
-    </style>
-
-    <style name="SafetyCenterQsToggleButton.End">
         <item name="android:layout_marginStart">@dimen/sc_spacing_xxsmall</item>
+        <item name="android:layout_marginEnd">@dimen/sc_spacing_xxsmall</item>
+        <item name="android:layout_marginTop">@dimen/sc_spacing_xxsmall</item>
+        <item name="android:layout_marginBottom">@dimen/sc_spacing_xxsmall</item>
     </style>
 
     <style name="SafetyCenterQsToggleTextContainer">
