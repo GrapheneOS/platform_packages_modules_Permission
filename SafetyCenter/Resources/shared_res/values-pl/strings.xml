@@ -42,12 +42,8 @@
     <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{Nie udało się sprawdzić ustawienia}few{Nie udało się sprawdzić ustawień}many{Nie udało się sprawdzić ustawień}other{Nie udało się sprawdzić ustawień}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"Wstrzymano profil służbowy"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"Nie ma jeszcze informacji"</string>
-    <!-- no translation found for notification_channel_group_name (7155072032524876859) -->
-    <skip />
-    <!-- no translation found for notification_channel_name_information (2966444432152990166) -->
-    <skip />
-    <!-- no translation found for notification_channel_name_recommendation (7847408286580217922) -->
-    <skip />
-    <!-- no translation found for notification_channel_name_critical_warning (5994320322108351769) -->
-    <skip />
+    <string name="notification_channel_group_name" msgid="7155072032524876859">"Bezpieczeństwo i prywatność"</string>
+    <string name="notification_channel_name_information" msgid="2966444432152990166">"Rekomendacje"</string>
+    <string name="notification_channel_name_recommendation" msgid="7847408286580217922">"Ostrzeżenia"</string>
+    <string name="notification_channel_name_critical_warning" msgid="5994320322108351769">"Ostrzeżenia o znaczeniu krytycznym"</string>
 </resources>

@@ -16,11 +16,18 @@
 
 package com.android.permission.safetylabel
 
-import android.os.PersistableBundle
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.android.permission.safetylabel.SafetyLabel.KEY_SAFETY_LABEL
+import com.android.permission.safetylabel.SafetyLabel.KEY_VERSION
 import com.android.permission.safetylabel.SafetyLabelTestPersistableBundles.createInvalidMetadataPersistableBundle
 import com.android.permission.safetylabel.SafetyLabelTestPersistableBundles.createMetadataPersistableBundle
+import com.android.permission.safetylabel.SafetyLabelTestPersistableBundles.createMetadataPersistableBundleInvalidVersion
 import com.android.permission.safetylabel.SafetyLabelTestPersistableBundles.createMetadataPersistableBundleWithInvalidSafetyLabel
+import com.android.permission.safetylabel.SafetyLabelTestPersistableBundles.createMetadataPersistableBundleWithoutVersion
+import com.android.permission.safetylabel.SafetyLabelTestPersistableBundles.createNonVersionedEmptyMetadataPersistableBundle
+import com.android.permission.safetylabel.SafetyLabelTestPersistableBundles.createSafetyLabelPersistableBundleWithInvalidVersion
+import com.android.permission.safetylabel.SafetyLabelTestPersistableBundles.createSafetyLabelPersistableBundleWithoutVersion
+import com.android.permission.safetylabel.SafetyLabelTestPersistableBundles.createVersionedEmptyMetadataPersistableBundle
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -29,42 +36,94 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class SafetyLabelTest {
 
-    @Test
-    fun getSafetyLabelFromMetaData_nullMetadataBundle_nullSafetyLabel() {
-        val safetyLabel = SafetyLabel.getSafetyLabelFromMetadata(null)
+  @Test
+  fun getSafetyLabelFromMetadata_nullMetadataBundle_nullSafetyLabel() {
+    val safetyLabel = SafetyLabel.getSafetyLabelFromMetadata(null)
 
-        assertThat(safetyLabel).isNull()
-    }
+    assertThat(safetyLabel).isNull()
+  }
 
-    @Test
-    fun getSafetyLabelFromMetaData_emptyMetadataBundle_nullSafetyLabel() {
-        val safetyLabel = SafetyLabel.getSafetyLabelFromMetadata(PersistableBundle.EMPTY)
+  @Test
+  fun getSafetyLabelFromMetadata_emptyMetadataBundle_nullSafetyLabel() {
+    val safetyLabel =
+        SafetyLabel.getSafetyLabelFromMetadata(createNonVersionedEmptyMetadataPersistableBundle())
 
-        assertThat(safetyLabel).isNull()
-    }
+    assertThat(safetyLabel).isNull()
+  }
 
-    @Test
-    fun getSafetyLabelFromMetaData_invalidMetadataBundle_nullSafetyLabel() {
-        val safetyLabel =
-            SafetyLabel.getSafetyLabelFromMetadata(createInvalidMetadataPersistableBundle())
+  @Test
+  fun getSafetyLabelFromMetadata_emptyVersionedMetadataBundle_nullSafetyLabel() {
+    val safetyLabel =
+        SafetyLabel.getSafetyLabelFromMetadata(createVersionedEmptyMetadataPersistableBundle())
 
-        assertThat(safetyLabel).isNull()
-    }
+    assertThat(safetyLabel).isNull()
+  }
 
-    @Test
-    fun getSafetyLabelFromMetaData_invalidSafetyLabelBundle_dataSharedEmpty() {
-        val safetyLabel =
-            SafetyLabel.getSafetyLabelFromMetadata(
-                createMetadataPersistableBundleWithInvalidSafetyLabel())
+  @Test
+  fun getSafetyLabelFromMetadata_invalidMetadataBundle_nullSafetyLabel() {
+    val safetyLabel =
+        SafetyLabel.getSafetyLabelFromMetadata(createInvalidMetadataPersistableBundle())
 
-        assertThat(safetyLabel).isNull()
-    }
+    assertThat(safetyLabel).isNull()
+  }
 
-    @Test
-    fun getSafetyLabelFromMetaData_validBundle_hasDataShared() {
-        val safetyLabel = SafetyLabel.getSafetyLabelFromMetadata(createMetadataPersistableBundle())
+  @Test
+  fun getSafetyLabelFromMetadata_invalidSafetyLabelBundle_dataSharedEmpty() {
+    val safetyLabel =
+        SafetyLabel.getSafetyLabelFromMetadata(
+            createMetadataPersistableBundleWithInvalidSafetyLabel())
 
-        assertThat(safetyLabel).isNotNull()
-        assertThat(safetyLabel?.dataLabel).isNotNull()
-    }
+    assertThat(safetyLabel).isNull()
+  }
+
+  @Test
+  fun getSafetyLabelFromMetadata_validBundle_hasDataShared() {
+    val bundle = createMetadataPersistableBundle(TOP_LEVEL_VERSION, SAFETY_LABELS_VERSION)
+    val topLevelVersion = bundle.getLong(KEY_VERSION)
+    val safetyLabelBundle = bundle.getPersistableBundle(KEY_SAFETY_LABEL)
+    val safetyLabelsVersion = safetyLabelBundle?.getLong(KEY_VERSION)
+    val safetyLabel = SafetyLabel.getSafetyLabelFromMetadata(bundle)
+
+    assertThat(topLevelVersion).isEqualTo(TOP_LEVEL_VERSION)
+    assertThat(safetyLabelsVersion).isEqualTo(SAFETY_LABELS_VERSION)
+    assertThat(safetyLabel).isNotNull()
+    assertThat(safetyLabel?.dataLabel).isNotNull()
+  }
+
+  @Test
+  fun getSafetyLabelFromMetadata_invalidBundle_noTopLevelBundleVersion() {
+    val safetyLabel =
+        SafetyLabel.getSafetyLabelFromMetadata(createMetadataPersistableBundleWithoutVersion())
+    assertThat(safetyLabel).isNull()
+  }
+
+  @Test
+  fun getSafetyLabelFromMetadata_invalidBundle_InvalidTopLevelBundleVersion() {
+    val safetyLabel =
+        SafetyLabel.getSafetyLabelFromMetadata(createMetadataPersistableBundleInvalidVersion())
+    assertThat(safetyLabel).isNull()
+  }
+
+  @Test
+  fun getSafetyLabelFromMetadata_invalidBundle_NoSafetyLabelBundleVersion() {
+    val bundle = createVersionedEmptyMetadataPersistableBundle()
+    bundle.putPersistableBundle(
+        SafetyLabel.KEY_SAFETY_LABEL, createSafetyLabelPersistableBundleWithoutVersion())
+    val safetyLabel = SafetyLabel.getSafetyLabelFromMetadata(bundle)
+    assertThat(safetyLabel).isNull()
+  }
+
+  @Test
+  fun getSafetyLabelFromMetadata_invalidBundle_InvalidSafetyLabelBundleVersion() {
+    val bundle = createVersionedEmptyMetadataPersistableBundle()
+    bundle.putPersistableBundle(
+        SafetyLabel.KEY_SAFETY_LABEL, createSafetyLabelPersistableBundleWithInvalidVersion())
+    val safetyLabel = SafetyLabel.getSafetyLabelFromMetadata(bundle)
+    assertThat(safetyLabel).isNull()
+  }
+
+  companion object {
+    private const val TOP_LEVEL_VERSION = 3L
+    private const val SAFETY_LABELS_VERSION = 2L
+  }
 }

@@ -223,10 +223,8 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>-н болон бусад <xliff:g id="NUMBER">%2$s</xliff:g> зөвшөөрлийг хассан"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Ашиглаагүй аппууд"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Хэрэв аппыг хэдэн сарын турш ашиглахгүй бол:\n\n• Таны өгөгдлийг хамгаалахын тулд зөвшөөрлийг устгана\n• Батарей хэмнэхийн тулд мэдэгдлийг зогсооно\n• Сул зай гаргахын тулд түр зуурын файлуудыг устгана\n\nЗөвшөөрөл болон мэдэгдлийг дахин зөвшөөрөхийн тулд аппыг нээнэ үү."</string>
-    <!-- no translation found for unused_apps_page_tv_summary (2624911608663778308) -->
-    <skip />
-    <!-- no translation found for last_opened_category_title (8796557894614236128) -->
-    <skip />
+    <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"Хэрэв аппыг нэг сарын турш ашиглаагүй бол:\n\n• Таны өгөгдлийг хамгаалахын тулд зөвшөөрлийг хасна\n• Сул зай гаргахын тулд түр зуурын файлуудыг хасна\n\nЗөвшөөрлийг дахин олгохын тулд аппыг нээнэ үү."</string>
+    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Сүүлд # сараас дээш хугацааны өмнө нээсэн}other{Сүүлд # сараас дээш хугацааны өмнө нээсэн}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Аппыг хамгийн сүүлд <xliff:g id="DATE">%s</xliff:g>-нд нээсэн"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Хамгийн сүүлд <xliff:g id="DATE">%s</xliff:g>-нд нээсэн"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Хэрэв та бүх файлыг удирдахыг зөвшөөрвөл энэ апп нь уг төхөөрөмжийн нийтлэг хадгалах сан дахь эсвэл холбогдсон хадгалах төхөөрөмж дэх дурын файлд хандах, түүнийг өөрчлөх болон устгах боломжтой. Апп танаас асуухгүйгээр файлуудад хандаж болзошгүй."</string>
@@ -404,9 +402,9 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g>-д таны мэдэгдэлтэй харилцах болон таны аппуудыг холбогдсон төхөөрөмжид дамжуулахыг зөвшөөрөх болно."</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g>-д ойролцоох төхөөрөмжүүдэд контент дамжуулахыг зөвшөөрнө."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Энэ үйлчилгээ таны утаснаас зураг, медиа болон мэдэгдлийг тань бусад төхөөрөмжтэй хуваалцана."</string>
-    <string name="role_notes_label" msgid="7694668779088299905">"Өгөгдмөл тэмдэглэл хөтлөх апп"</string>
-    <string name="role_notes_short_label" msgid="6617887820096092689">"Тэмдэглэл хөтлөх апп"</string>
-    <string name="role_notes_description" msgid="8486216423668803751">"Тэмдэглэл хөтлөх боломж олгодог аппууд"</string>
+    <string name="role_notes_label" msgid="7451627001058089536">"Тэмдэглэлийн өгөгдмөл апп"</string>
+    <string name="role_notes_short_label" msgid="8796604147546125285">"Тэмдэглэлийн апп"</string>
+    <string name="role_notes_description" msgid="8496852798616883551">"Таныг төхөөрөмж дээрээ тэмдэглэл хөтлөх боломж олгодог аппууд"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"тэмдэглэл"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Одоогийн өгөгдмөл апп"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Дахиж бүү асуу"</string>
@@ -593,5 +591,6 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Аппууд таны хуулсан текст, зураг эсвэл бусад контентод хандах үед мессеж харуулах"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Нууц үгнүүдийг харуулах"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Таныг бичиж явцад тэмдэгтүүдийг түр үзүүлэх"</string>
-    <string name="permission_rationale_message_template" msgid="4497650516269082051">"Энэ апп <xliff:g id="PERMISSION_NAME">%s</xliff:g>-н өгөгдлийг гуравдагч талуудтай хуваалцаж болохыг мэдэгдсэн"</string>
+    <!-- no translation found for permission_rationale_message_location (2153841534298068414) -->
+    <skip />
 </resources>

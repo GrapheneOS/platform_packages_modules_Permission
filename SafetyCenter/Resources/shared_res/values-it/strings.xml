@@ -42,12 +42,8 @@
     <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{Impossibile controllare l\'impostazione}many{Impossibile controllare le impostazioni}other{Impossibile controllare le impostazioni}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"Profilo di lavoro in pausa"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"Ancora nessuna informazione"</string>
-    <!-- no translation found for notification_channel_group_name (7155072032524876859) -->
-    <skip />
-    <!-- no translation found for notification_channel_name_information (2966444432152990166) -->
-    <skip />
-    <!-- no translation found for notification_channel_name_recommendation (7847408286580217922) -->
-    <skip />
-    <!-- no translation found for notification_channel_name_critical_warning (5994320322108351769) -->
-    <skip />
+    <string name="notification_channel_group_name" msgid="7155072032524876859">"Sicurezza e privacy"</string>
+    <string name="notification_channel_name_information" msgid="2966444432152990166">"Consigli"</string>
+    <string name="notification_channel_name_recommendation" msgid="7847408286580217922">"Avvisi"</string>
+    <string name="notification_channel_name_critical_warning" msgid="5994320322108351769">"Avvisi critici"</string>
 </resources>

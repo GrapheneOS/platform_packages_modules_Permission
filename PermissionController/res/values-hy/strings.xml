@@ -223,10 +223,8 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>ն օգտագործելու թույլտվությունն ու ևս <xliff:g id="NUMBER">%2$s</xliff:g> թույլտվություն հեռացվել են"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Չօգտագործվող հավելվածներ"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Եթե դուք մի քանի ամիս չեք օգտագործում հավելվածը.\n\n• թույլտվությունները հեռացվում են՝ ձեր տվյալները պաշտպանելու համար,\n• ծանուցումներն անջատվում են՝ մարտկոցի լիցքը խնայելու համար,\n• ժամանակավոր ֆայլերը հեռացվում են՝ տարածք ազատելու համար։\n\nԲացեք հավելվածը, որպեսզի նորից տրամադրեք թույլտվությունները և միացնեք ծանուցումները։"</string>
-    <!-- no translation found for unused_apps_page_tv_summary (2624911608663778308) -->
-    <skip />
-    <!-- no translation found for last_opened_category_title (8796557894614236128) -->
-    <skip />
+    <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"Եթե դուք մեկ ամիս չեք օգտագործում հավելվածը.\n\n• թույլտվությունները հեռացվում են՝ ձեր տվյալները պաշտպանելու համար,\n• ժամանակավոր ֆայլերը հեռացվում են՝ տարածք ազատելու համար։\n\nԲացեք հավելվածը, որպեսզի նորից տրամադրեք թույլտվությունները։"</string>
+    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Վերջին անգամ բացվել է ավելի քան # ամիս առաջ}one{Վերջին անգամ բացվել է ավելի քան # ամիս առաջ}other{Վերջին անգամ բացվել է ավելի քան # ամիս առաջ}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Հավելվածը վերջին անգամ բացվել է՝ <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Վերջին անգամ բացվել է՝ <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Եթե թույլատրեք ձեր բոլոր ֆայլերի կառավարումը, այս հավելվածը կկարողանա օգտագործել, փոփոխել և ջնջել այս սարքի ընդհանուր հիշողությունում պահված կամ միացված կրիչների ֆայլերը։ Հավելվածը կկարողանա օգտագործել ֆայլերը՝ առանց ձեզ հարցնելու։"</string>
@@ -404,9 +402,9 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածը կկարողանա փոխազդել ձեր ծանուցումների հետ և հեռարձակել ձեր հավելվածները միացված սարքին։"</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածը կկարողանա բովանդակություն հեռարձակել մոտակա սարքերին։"</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Այս ծառայությունը ձեր հեռախոսից այլ սարքեր է փոխանցում ձեր լուսանկարները, մեդիա բովանդակությունը և ծանուցումները։"</string>
-    <string name="role_notes_label" msgid="7694668779088299905">"Նշումների կանխադրված հավելված"</string>
-    <string name="role_notes_short_label" msgid="6617887820096092689">"Նշումների ստեղծման հավելված"</string>
-    <string name="role_notes_description" msgid="8486216423668803751">"Հավելվածներ, որոնք թույլ են տալիս ձեզ նշումներ ստեղծել"</string>
+    <string name="role_notes_label" msgid="7451627001058089536">"Նշումների կանխադրված հավելված"</string>
+    <string name="role_notes_short_label" msgid="8796604147546125285">"Նշումների հավելված"</string>
+    <string name="role_notes_description" msgid="8496852798616883551">"Հավելվածներ, որոնք թույլ են տալիս նշումներ ստեղծել ձեր սարքում"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"նշումներ"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Օգտագործվում է ըստ կանխադրման"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Նորից չհարցնել"</string>
@@ -593,5 +591,6 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Ցուցադրել հաղորդագրություն, երբ հավելվածներին հասանելի են դառնում ձեր պատճենած տեքստը, պատկերները կամ այլ բովանդակություն"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Ցուցադրել գաղտնաբառերը"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Տեքստ մուտքագրելիս կարճ ժամանակով ցուցադրել գրանշանները"</string>
-    <string name="permission_rationale_message_template" msgid="4497650516269082051">"Այս հավելվածը կարող է երրորդ կողմերի հետ կիսվել «<xliff:g id="PERMISSION_NAME">%s</xliff:g>» կատեգորիային առնչվող տվյալներով"</string>
+    <!-- no translation found for permission_rationale_message_location (2153841534298068414) -->
+    <skip />
 </resources>

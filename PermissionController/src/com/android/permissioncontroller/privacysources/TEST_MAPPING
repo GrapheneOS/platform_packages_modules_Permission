@@ -1,4 +1,9 @@
 {
+  "imports": [
+    {
+      "path": "packages/modules/Permission/SafetyCenter"
+    }
+  ],
   "presubmit": [
     {
       "name": "PermissionControllerMockingTests",
@@ -18,22 +23,6 @@
       ]
     },
     {
-      "name": "CtsSafetyCenterTestCases",
-      "options": [
-        {
-          "exclude-annotation": "com.android.bedstead.harrier.annotations.Postsubmit"
-        }
-      ]
-    },
-    {
-      "name": "SafetyCenterFunctionalTestCases",
-      "options": [
-        {
-          "exclude-annotation": "com.android.bedstead.harrier.annotations.Postsubmit"
-        }
-      ]
-    },
-    {
       "name": "CtsPermissionTestCases",
       "options": [
         {
@@ -46,38 +35,6 @@
           "exclude-annotation": "androidx.test.filters.FlakyTest"
         }
       ]
-    }
-  ],
-  "mainline-presubmit": [
-    {
-      "name": "CtsSafetyCenterTestCases[com.google.android.permission.apex]",
-      "options": [
-        {
-          "exclude-annotation": "android.platform.test.annotations.FlakyTest"
-        }
-      ]
-    }
-  ],
-  "postsubmit": [
-    {
-      "name": "CtsPermissionTestCases",
-      "options": [
-        {
-          "include-filter": "android.permission.cts.NotificationListenerCheckTest"
-        },
-        {
-          "include-filter": "android.permission.cts.AccessibilityPrivacySourceTest"
-        },
-        {
-          "exclude-annotation": "androidx.test.filters.FlakyTest"
-        }
-      ]
-    },
-    {
-      "name": "CtsSafetyCenterTestCases"
-    },
-    {
-      "name": "SafetyCenterFunctionalTestCases"
     }
   ]
 }

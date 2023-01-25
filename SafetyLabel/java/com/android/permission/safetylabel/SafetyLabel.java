@@ -17,14 +17,19 @@
 package com.android.permission.safetylabel;
 
 import android.os.PersistableBundle;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 
+import java.util.Locale;
+
 /** Safety Label representation containing zero or more {@link DataCategory} for data shared */
 public class SafetyLabel {
+    private static final String TAG = "SafetyLabel";
     @VisibleForTesting static final String KEY_SAFETY_LABEL = "safety_labels";
+    public static final String KEY_VERSION = "version";
     private final DataLabel mDataLabel;
 
     private SafetyLabel(@NonNull DataLabel dataLabel) {
@@ -34,13 +39,26 @@ public class SafetyLabel {
     /** Returns {@link SafetyLabel} created by parsing a metadata {@link PersistableBundle} */
     @Nullable
     public static SafetyLabel getSafetyLabelFromMetadata(@Nullable PersistableBundle bundle) {
-        // TODO(b/261069412): add versioning and nonnull empty/invalid cases
-        if (bundle == null) {
+        if (bundle == null || bundle.isEmpty()) {
+            return null;
+        }
+
+        if (bundle.getLong(KEY_VERSION, 0L) <= 0) {
+            Log.w(TAG, String.format(
+                    Locale.US, "The top level metadata bundle have an invalid version %d",
+                    bundle.getLong(KEY_VERSION, 0L)));
             return null;
         }
 
         PersistableBundle safetyLabelBundle = bundle.getPersistableBundle(KEY_SAFETY_LABEL);
         if (safetyLabelBundle == null) {
+            return null;
+        }
+
+        long safetyLabelsVersion = safetyLabelBundle.getLong(KEY_VERSION, 0L);
+        if (safetyLabelsVersion <= 0) {
+            Log.w(TAG, String.format(Locale.US,
+                    "The safety labels have an invalid version %d", safetyLabelsVersion));
             return null;
         }
 
