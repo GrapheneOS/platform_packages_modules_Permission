@@ -27,6 +27,7 @@
                 title="@com.android.safetycenter.resources:string/lock_screen_title"
                 summary="@com.android.safetycenter.resources:string/lock_screen_summary_disabled"
                 searchTerms="@com.android.safetycenter.resources:string/lock_screen_search_terms"
+                notificationsAllowed="true"
                 initialDisplayState="disabled"/>
             <dynamic-safety-source
                 id="AndroidBiometrics"
@@ -81,21 +82,25 @@
                 id="AndroidAccessibility"
                 packageName="com.android.permissioncontroller"
                 profile="all_profiles"
+                notificationsAllowed="true"
                 refreshOnPageOpenAllowed="true"/>
             <issue-only-safety-source
                 id="AndroidNotificationListener"
                 packageName="com.android.permissioncontroller"
                 profile="primary_profile_only"
+                notificationsAllowed="true"
                 refreshOnPageOpenAllowed="true"/>
             <issue-only-safety-source
                 id="AndroidBackgroundLocation"
                 packageName="com.android.permissioncontroller"
                 profile="all_profiles"
+                notificationsAllowed="true"
                 refreshOnPageOpenAllowed="true"/>
             <issue-only-safety-source
                 id="AndroidPermissionAutoRevoke"
                 packageName="com.android.permissioncontroller"
                 profile="all_profiles"
+                notificationsAllowed="true"
                 refreshOnPageOpenAllowed="true"/>
         </safety-sources-group>
         <safety-sources-group
