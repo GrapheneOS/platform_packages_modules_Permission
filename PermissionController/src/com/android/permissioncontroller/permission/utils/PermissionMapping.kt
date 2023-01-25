@@ -172,6 +172,14 @@ object PermissionMapping {
                 Manifest.permission_group.SENSORS
         }
 
+        if (SdkLevel.isAtLeastU()) {
+            PLATFORM_PERMISSIONS[Manifest.permission.BODY_SENSORS_WRIST_TEMPERATURE] =
+                    Manifest.permission_group.SENSORS
+            PLATFORM_PERMISSIONS[Manifest
+                    .permission.BODY_SENSORS_WRIST_TEMPERATURE_BACKGROUND] =
+                    Manifest.permission_group.SENSORS
+        }
+
         for ((permission, permissionGroup) in PLATFORM_PERMISSIONS) {
             PLATFORM_PERMISSION_GROUPS.getOrPut(permissionGroup) { mutableListOf() }.add(permission)
         }
