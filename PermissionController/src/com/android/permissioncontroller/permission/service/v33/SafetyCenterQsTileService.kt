@@ -16,6 +16,8 @@
 
 package com.android.permissioncontroller.permission.service.v33
 
+import android.app.PendingIntent
+import android.app.PendingIntent.FLAG_IMMUTABLE
 import android.content.ComponentName
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -25,6 +27,7 @@ import android.safetycenter.SafetyCenterManager
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 import android.util.Log
+import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.R
 
 /**
@@ -71,7 +74,11 @@ class SafetyCenterQsTileService : TileService() {
     override fun onClick() {
         val intent = Intent(Intent.ACTION_VIEW_SAFETY_CENTER_QS)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        startActivityAndCollapse(intent)
+        if (SdkLevel.isAtLeastU()) {
+            startActivityAndCollapse(PendingIntent.getActivity(this, 0, intent, FLAG_IMMUTABLE))
+        } else {
+            startActivityAndCollapse(intent)
+        }
     }
 
     companion object {
