@@ -39,6 +39,7 @@ import androidx.annotation.RequiresApi;
 import com.android.modules.utils.build.SdkLevel;
 import com.android.safetycenter.data.SafetyCenterIssueDismissalRepository;
 import com.android.safetycenter.data.SafetyCenterIssueRepository;
+import com.android.safetycenter.internaldata.SafetyCenterIds;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 
 import java.io.PrintWriter;
@@ -303,8 +304,8 @@ final class SafetyCenterNotificationSender {
 
     @NonNull
     private static String getNotificationTag(@NonNull SafetyCenterIssueKey issueKey) {
-        // TODO(b/259084094): Make this tag creation more robust
-        return issueKey.getSafetySourceId() + ":" + issueKey.getSafetySourceIssueId();
+        // Base 64 encoding of the issueKey proto:
+        return SafetyCenterIds.encodeToString(issueKey);
     }
 
     /** Returns a {@link NotificationManager} which will send notifications to the given user. */
