@@ -39,7 +39,6 @@ import androidx.annotation.RequiresApi;
 import com.android.modules.utils.build.SdkLevel;
 import com.android.safetycenter.data.SafetyCenterIssueDismissalRepository;
 import com.android.safetycenter.data.SafetyCenterIssueRepository;
-import com.android.safetycenter.data.SafetyCenterRepository;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 
 import java.io.PrintWriter;
@@ -98,10 +97,6 @@ final class SafetyCenterNotificationSender {
     @NonNull
     private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
 
-    @NonNull private final SafetyCenterRepository mSafetyCenterRepository;
-
-    @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
-
     @NonNull private final SafetyCenterIssueRepository mSafetyCenterIssueRepository;
 
     private final ArrayMap<SafetyCenterIssueKey, SafetySourceIssue> mNotifiedIssues =
@@ -111,14 +106,10 @@ final class SafetyCenterNotificationSender {
             @NonNull Context context,
             @NonNull SafetyCenterNotificationFactory notificationFactory,
             @NonNull SafetyCenterIssueDismissalRepository safetyCenterIssueDismissalRepository,
-            @NonNull SafetyCenterRepository safetyCenterRepository,
-            @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
             @NonNull SafetyCenterIssueRepository safetyCenterIssueRepository) {
         mContext = context;
         mNotificationFactory = notificationFactory;
         mSafetyCenterIssueDismissalRepository = safetyCenterIssueDismissalRepository;
-        mSafetyCenterRepository = safetyCenterRepository;
-        mSafetyCenterConfigReader = safetyCenterConfigReader;
         mSafetyCenterIssueRepository = safetyCenterIssueRepository;
     }
 
@@ -193,15 +184,16 @@ final class SafetyCenterNotificationSender {
     private ArrayMap<SafetyCenterIssueKey, SafetySourceIssue> getIssuesToNotify(
             @UserIdInt int userId) {
         ArrayMap<SafetyCenterIssueKey, SafetySourceIssue> result = new ArrayMap<>();
-        List<SafetyCenterIssueKey> allIssueKeys =
+        List<SafetySourceIssueInfo> allIssuesInfo =
                 mSafetyCenterIssueRepository.getIssuesForUser(userId);
 
         Duration minNotificationsDelay = SafetyCenterFlags.getNotificationsMinDelay();
 
-        for (int i = 0; i < allIssueKeys.size(); i++) {
-            SafetyCenterIssueKey issueKey = allIssueKeys.get(i);
+        for (int i = 0; i < allIssuesInfo.size(); i++) {
+            SafetySourceIssueInfo issueInfo = allIssuesInfo.get(i);
+            SafetyCenterIssueKey issueKey = issueInfo.getSafetyCenterIssueKey();
 
-            if (!areNotificationsAllowed(issueKey.getSafetySourceId())) {
+            if (!areNotificationsAllowed(issueInfo)) {
                 // Notifications are not allowed for this source
                 continue;
             }
@@ -215,7 +207,7 @@ final class SafetyCenterNotificationSender {
             }
 
             // Now retrieve the issue itself and use it to determine the behavior:
-            SafetySourceIssue issue = mSafetyCenterRepository.getSafetySourceIssue(issueKey);
+            SafetySourceIssue issue = issueInfo.getSafetySourceIssue();
             int behavior = getBehavior(issue, issueKey);
             if (behavior == NOTIFICATION_BEHAVIOR_INTERNAL_IMMEDIATELY) {
                 result.put(issueKey, issue);
@@ -261,16 +253,14 @@ final class SafetyCenterNotificationSender {
         }
     }
 
-    private boolean areNotificationsAllowed(@NonNull String sourceId) {
+    private boolean areNotificationsAllowed(@NonNull SafetySourceIssueInfo issueInfo) {
         if (SdkLevel.isAtLeastU()) {
-            SafetyCenterConfigReader.ExternalSafetySource externalSafetySource =
-                    mSafetyCenterConfigReader.getExternalSafetySource(sourceId);
-            if (externalSafetySource != null
-                    && externalSafetySource.getSafetySource().areNotificationsAllowed()) {
+            if (issueInfo.getSafetySource().areNotificationsAllowed()) {
                 return true;
             }
         }
-        return SafetyCenterFlags.getNotificationsAllowedSourceIds().contains(sourceId);
+        return SafetyCenterFlags.getNotificationsAllowedSourceIds()
+                .contains(issueInfo.getSafetySource().getId());
     }
 
     private boolean postNotificationForIssue(

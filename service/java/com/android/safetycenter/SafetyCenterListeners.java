@@ -61,79 +61,71 @@ final class SafetyCenterListeners {
     }
 
     /**
-     * Delivers a {@link SafetyCenterData} and/or {@link SafetyCenterErrorDetails} update to a
-     * single {@link IOnSafetyCenterDataChangedListener}.
+     * Delivers a {@link SafetyCenterData} update to a single {@link
+     * IOnSafetyCenterDataChangedListener}.
      */
-    static void deliverUpdateForListener(
+    static void deliverDataForListener(
             @NonNull IOnSafetyCenterDataChangedListener listener,
-            @Nullable SafetyCenterData safetyCenterData,
-            @Nullable SafetyCenterErrorDetails safetyCenterErrorDetails) {
-        if (safetyCenterData != null) {
-            try {
-                listener.onSafetyCenterDataChanged(safetyCenterData);
-            } catch (RemoteException e) {
-                Log.e(TAG, "Error delivering SafetyCenterData to listener", e);
-            }
-        }
-        if (safetyCenterErrorDetails != null) {
-            try {
-                listener.onError(safetyCenterErrorDetails);
-            } catch (RemoteException e) {
-                Log.e(TAG, "Error delivering SafetyCenterErrorDetails to listener", e);
-            }
+            @NonNull SafetyCenterData safetyCenterData) {
+        try {
+            listener.onSafetyCenterDataChanged(safetyCenterData);
+        } catch (RemoteException e) {
+            Log.e(TAG, "Error delivering SafetyCenterData to listener", e);
         }
     }
 
     /**
-     * Same as {@link #deliverUpdateForUserProfileGroup} but for all the given {@code
-     * userProfileGroups}.
+     * Delivers a {@link SafetyCenterErrorDetails} update to a single {@link
+     * IOnSafetyCenterDataChangedListener}.
      */
-    void deliverUpdateForUserProfileGroups(
-            @NonNull List<UserProfileGroup> userProfileGroups,
-            boolean updateSafetyCenterData,
-            @Nullable SafetyCenterErrorDetails safetyCenterErrorDetails) {
+    private static void deliverErrorForListener(
+            @NonNull IOnSafetyCenterDataChangedListener listener,
+            @NonNull SafetyCenterErrorDetails safetyCenterErrorDetails) {
+        try {
+            listener.onError(safetyCenterErrorDetails);
+        } catch (RemoteException e) {
+            Log.e(TAG, "Error delivering SafetyCenterErrorDetails to listener", e);
+        }
+    }
+
+    /**
+     * Same as {@link SafetyCenterListeners#deliverDataForUserProfileGroup}, but for all given
+     * {@link UserProfileGroup}s.
+     */
+    void deliverDataForUserProfileGroups(@NonNull List<UserProfileGroup> userProfileGroups) {
         for (int i = 0; i < userProfileGroups.size(); i++) {
-            deliverUpdateForUserProfileGroup(
-                    userProfileGroups.get(i), updateSafetyCenterData, safetyCenterErrorDetails);
+            deliverDataForUserProfileGroup(userProfileGroups.get(i));
         }
     }
 
     /**
-     * Delivers a {@link SafetyCenterData} and {@link SafetyCenterErrorDetails} update on all
-     * listeners of the given {@link UserProfileGroup}, if applicable.
-     *
-     * @param userProfileGroup the {@link UserProfileGroup} to deliver this update on
-     * @param updateSafetyCenterData whether a new {@link SafetyCenterData} should be computed and
-     *     delivered to listeners
-     * @param safetyCenterErrorDetails the relevant {@link SafetyCenterErrorDetails} to deliver to
-     *     listeners, if any
+     * Delivers a {@link SafetyCenterData} update on all listeners of the given {@link
+     * UserProfileGroup}.
      */
-    void deliverUpdateForUserProfileGroup(
-            @NonNull UserProfileGroup userProfileGroup,
-            boolean updateSafetyCenterData,
-            @Nullable SafetyCenterErrorDetails safetyCenterErrorDetails) {
-        boolean needToUpdateListeners = updateSafetyCenterData || safetyCenterErrorDetails != null;
-        if (!needToUpdateListeners) {
-            return;
-        }
-
+    void deliverDataForUserProfileGroup(@NonNull UserProfileGroup userProfileGroup) {
         ArrayMap<String, SafetyCenterData> safetyCenterDataCache = new ArrayMap<>();
-        deliverUpdateForUser(
-                userProfileGroup.getProfileParentUserId(),
-                userProfileGroup,
-                safetyCenterDataCache,
-                updateSafetyCenterData,
-                safetyCenterErrorDetails);
-
-        int[] managedRunningProfilesUserIds = userProfileGroup.getManagedRunningProfilesUserIds();
-        for (int i = 0; i < managedRunningProfilesUserIds.length; i++) {
-            int managedRunningProfileUserId = managedRunningProfilesUserIds[i];
-
+        int[] relevantUserIds = userProfileGroup.getProfileParentAndManagedRunningProfilesUserIds();
+        for (int i = 0; i < relevantUserIds.length; i++) {
             deliverUpdateForUser(
-                    managedRunningProfileUserId,
+                    relevantUserIds[i], userProfileGroup, safetyCenterDataCache, true, null);
+        }
+    }
+
+    /**
+     * Delivers a given {@link SafetyCenterErrorDetails} in an update on all listeners of the given
+     * {@link UserProfileGroup}.
+     */
+    void deliverErrorForUserProfileGroup(
+            @NonNull UserProfileGroup userProfileGroup,
+            @NonNull SafetyCenterErrorDetails safetyCenterErrorDetails) {
+        ArrayMap<String, SafetyCenterData> safetyCenterDataCache = new ArrayMap<>();
+        int[] relevantUserIds = userProfileGroup.getProfileParentAndManagedRunningProfilesUserIds();
+        for (int i = 0; i < relevantUserIds.length; i++) {
+            deliverUpdateForUser(
+                    relevantUserIds[i],
                     userProfileGroup,
                     safetyCenterDataCache,
-                    updateSafetyCenterData,
+                    false,
                     safetyCenterErrorDetails);
         }
     }
@@ -224,34 +216,25 @@ final class SafetyCenterListeners {
         try {
             while (i > 0) {
                 i--;
-                deliverUpdateForListenerWrapper(
+                OnSafetyCenterDataChangedListenerWrapper listenerWrapper =
                         (OnSafetyCenterDataChangedListenerWrapper)
-                                listenersForUserId.getBroadcastItem(i),
-                        userProfileGroup,
-                        safetyCenterDataCache,
-                        updateSafetyCenterData,
-                        safetyCenterErrorDetails);
+                                listenersForUserId.getBroadcastItem(i);
+                if (updateSafetyCenterData) {
+                    SafetyCenterData safetyCenterData =
+                            assembleSafetyCenterDataIfAbsent(
+                                    safetyCenterDataCache,
+                                    listenerWrapper.getPackageName(),
+                                    userProfileGroup);
+
+                    deliverDataForListener(listenerWrapper, safetyCenterData);
+                }
+                if (safetyCenterErrorDetails != null) {
+                    deliverErrorForListener(listenerWrapper, safetyCenterErrorDetails);
+                }
             }
         } finally {
             listenersForUserId.finishBroadcast();
         }
-    }
-
-    private void deliverUpdateForListenerWrapper(
-            OnSafetyCenterDataChangedListenerWrapper listenerWrapper,
-            @NonNull UserProfileGroup userProfileGroup,
-            @NonNull ArrayMap<String, SafetyCenterData> safetyCenterDataCache,
-            boolean updateSafetyCenterData,
-            @Nullable SafetyCenterErrorDetails safetyCenterErrorDetails) {
-        SafetyCenterData safetyCenterData = null;
-        if (updateSafetyCenterData) {
-            safetyCenterData =
-                    assembleSafetyCenterDataIfAbsent(
-                            safetyCenterDataCache,
-                            listenerWrapper.getPackageName(),
-                            userProfileGroup);
-        }
-        deliverUpdateForListener(listenerWrapper, safetyCenterData, safetyCenterErrorDetails);
     }
 
     @NonNull

@@ -23,6 +23,9 @@ import static com.android.safetycenter.internaldata.SafetyCenterIds.toUserFriend
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
+import android.annotation.WorkerThread;
+import android.content.ApexEnvironment;
+import android.os.Handler;
 import android.safetycenter.SafetySourceData;
 import android.util.ArrayMap;
 import android.util.ArraySet;
@@ -30,13 +33,21 @@ import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
+import com.android.modules.utils.BackgroundThread;
 import com.android.safetycenter.SafetyCenterConfigReader;
 import com.android.safetycenter.SafetyCenterFlags;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 import com.android.safetycenter.persistence.PersistedSafetyCenterIssue;
+import com.android.safetycenter.persistence.PersistenceException;
+import com.android.safetycenter.persistence.SafetyCenterIssuesPersistence;
 
+import java.io.File;
+import java.io.FileDescriptor;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -48,10 +59,10 @@ import javax.annotation.concurrent.NotThreadSafe;
 /**
  * Repository to manage data about all issue dismissals in Safety Center.
  *
- * <p>The contents of this repository can be populated from and persisted to disk using the {@link
- * #load(List)} and {@link #snapshot()} methods. When {@link #isDirty()} returns {@code true} that
- * means that the contents of the repository may have changed since the last load or snapshot
- * occurred.
+ * <p>It stores the state of this class automatically into a file. After the class is first
+ * instantiated the user should call {@link
+ * SafetyCenterIssueDismissalRepository#loadStateFromFile()} to initialize the state with what was
+ * stored in the file.
  *
  * <p>This class isn't thread safe. Thread safety must be handled by the caller.
  *
@@ -63,13 +74,27 @@ public final class SafetyCenterIssueDismissalRepository {
 
     private static final String TAG = "SafetyCenterIssueDis";
 
+    /** The APEX name used to retrieve the APEX owned data directories. */
+    private static final String APEX_MODULE_NAME = "com.android.permission";
+
+    /** The name of the file used to persist the {@link SafetyCenterIssueDismissalRepository}. */
+    private static final String ISSUE_DISMISSAL_REPOSITORY_FILE_NAME = "safety_center_issues.xml";
+
+    /** The time delay used to throttle and aggregate writes to disk. */
+    private static final Duration WRITE_DELAY = Duration.ofMillis(500);
+
+    private final Handler mWriteHandler = BackgroundThread.getHandler();
+
+    @NonNull private final Object mApiLock;
+
     @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
 
     private final ArrayMap<SafetyCenterIssueKey, IssueData> mIssues = new ArrayMap<>();
-    private boolean mIsDirty = false;
+    private boolean mWriteStateToFileScheduled = false;
 
     public SafetyCenterIssueDismissalRepository(
-            @NonNull SafetyCenterConfigReader safetyCenterConfigReader) {
+            @NonNull Object apiLock, @NonNull SafetyCenterConfigReader safetyCenterConfigReader) {
+        mApiLock = apiLock;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
     }
 
@@ -118,8 +143,6 @@ public final class SafetyCenterIssueDismissalRepository {
      * Marks the issue with the given key as dismissed.
      *
      * <p>That issue's notification (if any) is also marked as dismissed.
-     *
-     * <p>This method may change the value reported by {@link #isDirty} to {@code true}.
      */
     public void dismissIssue(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
         IssueData issueData = getOrWarn(safetyCenterIssueKey, "dismissing");
@@ -130,7 +153,7 @@ public final class SafetyCenterIssueDismissalRepository {
         issueData.setDismissedAt(now);
         issueData.setDismissCount(issueData.getDismissCount() + 1);
         issueData.setNotificationDismissedAt(now);
-        mIsDirty = true;
+        scheduleWriteStateToFile();
     }
 
     /**
@@ -149,7 +172,7 @@ public final class SafetyCenterIssueDismissalRepository {
 
         dataTo.setDismissedAt(dataFrom.getDismissedAt());
         dataTo.setDismissCount(dataFrom.getDismissCount());
-        mIsDirty = true;
+        scheduleWriteStateToFile();
     }
 
     /**
@@ -157,8 +180,6 @@ public final class SafetyCenterIssueDismissalRepository {
      *
      * <p>The issue itself is <strong>not</strong> marked as dismissed and its warning card can
      * still appear in the Safety Center UI.
-     *
-     * <p>This method may change the value reported by {@link #isDirty} to {@code true}.
      */
     public void dismissNotification(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
         IssueData issueData = getOrWarn(safetyCenterIssueKey, "dismissing notification");
@@ -166,7 +187,7 @@ public final class SafetyCenterIssueDismissalRepository {
             return;
         }
         issueData.setNotificationDismissedAt(Instant.now());
-        mIsDirty = true;
+        scheduleWriteStateToFile();
     }
 
     /**
@@ -204,6 +225,8 @@ public final class SafetyCenterIssueDismissalRepository {
             @NonNull ArraySet<String> safetySourceIssueIds,
             @NonNull String safetySourceId,
             @UserIdInt int userId) {
+        boolean someDataChanged = false;
+
         // Remove issues no longer reported by the source.
         // Loop in reverse index order to be able to remove entries while iterating.
         for (int i = mIssues.size() - 1; i >= 0; i--) {
@@ -218,7 +241,7 @@ public final class SafetyCenterIssueDismissalRepository {
                     !safetySourceIssueIds.contains(issueKey.getSafetySourceIssueId());
             if (isIssueNoLongerReported) {
                 mIssues.removeAt(i);
-                mIsDirty = true;
+                someDataChanged = true;
             }
         }
         // Add newly reported issues.
@@ -232,27 +255,17 @@ public final class SafetyCenterIssueDismissalRepository {
             boolean isIssueNewlyReported = !mIssues.containsKey(issueKey);
             if (isIssueNewlyReported) {
                 mIssues.put(issueKey, new IssueData(Instant.now()));
-                mIsDirty = true;
+                someDataChanged = true;
             }
+        }
+        if (someDataChanged) {
+            scheduleWriteStateToFile();
         }
     }
 
-    /**
-     * Returns {@code true} if the contents of the repository may have changed since the last {@link
-     * #load(List)} or {@link #snapshot()} occurred.
-     */
-    public boolean isDirty() {
-        return mIsDirty;
-    }
-
-    /**
-     * Takes a snapshot of the contents of the repository to be written to persistent storage.
-     *
-     * <p>This method will reset the value reported by {@link #isDirty} to {@code false}.
-     */
+    /** Takes a snapshot of the contents of the repository to be written to persistent storage. */
     @NonNull
-    public List<PersistedSafetyCenterIssue> snapshot() {
-        mIsDirty = false;
+    private List<PersistedSafetyCenterIssue> snapshot() {
         List<PersistedSafetyCenterIssue> persistedIssues = new ArrayList<>();
         for (int i = 0; i < mIssues.size(); i++) {
             String encodedKey = SafetyCenterIds.encodeToString(mIssues.keyAt(i));
@@ -264,10 +277,9 @@ public final class SafetyCenterIssueDismissalRepository {
 
     /**
      * Replaces the contents of the repository with the given issues read from persistent storage.
-     *
-     * <p>This method may change the value reported by {@link #isDirty} to {@code true}.
      */
-    public void load(@NonNull List<PersistedSafetyCenterIssue> persistedSafetyCenterIssues) {
+    private void load(@NonNull List<PersistedSafetyCenterIssue> persistedSafetyCenterIssues) {
+        boolean someDataChanged = false;
         mIssues.clear();
         for (int i = 0; i < persistedSafetyCenterIssues.size(); i++) {
             PersistedSafetyCenterIssue persistedIssue = persistedSafetyCenterIssues.get(i);
@@ -277,54 +289,67 @@ public final class SafetyCenterIssueDismissalRepository {
             // from the Safety Center config or the device might have rebooted with data persisted
             // from a temporary Safety Center config.
             if (!mSafetyCenterConfigReader.isExternalSafetySourceActive(key.getSafetySourceId())) {
-                mIsDirty = true;
+                someDataChanged = true;
                 continue;
             }
 
             IssueData issueData = IssueData.fromPersistedIssue(persistedIssue);
             mIssues.put(key, issueData);
         }
+        if (someDataChanged) {
+            scheduleWriteStateToFile();
+        }
     }
 
-    /**
-     * Clears all the data in the repository.
-     *
-     * <p>This method will change the value reported by {@link #isDirty} to {@code true}.
-     */
+    /** Clears all the data in the repository. */
     public void clear() {
         mIssues.clear();
-        mIsDirty = true;
+        scheduleWriteStateToFile();
     }
 
-    /**
-     * Clears all the data in the repository for the given user.
-     *
-     * <p>This method may change the value reported by {@link #isDirty} to {@code true}.
-     */
+    /** Clears all the data in the repository for the given user. */
     public void clearForUser(@UserIdInt int userId) {
+        boolean someDataChanged = false;
         // Loop in reverse index order to be able to remove entries while iterating.
         for (int i = mIssues.size() - 1; i >= 0; i--) {
             SafetyCenterIssueKey issueKey = mIssues.keyAt(i);
             if (issueKey.getUserId() == userId) {
                 mIssues.removeAt(i);
-                mIsDirty = true;
+                someDataChanged = true;
             }
+        }
+        if (someDataChanged) {
+            scheduleWriteStateToFile();
         }
     }
 
     /** Dumps state for debugging purposes. */
-    public void dump(@NonNull PrintWriter fout) {
+    public void dump(@NonNull FileDescriptor fd, @NonNull PrintWriter fout) {
         int issueRepositoryCount = mIssues.size();
         fout.println(
                 "ISSUE DISMISSAL REPOSITORY ("
                         + issueRepositoryCount
-                        + ", dirty="
-                        + mIsDirty
+                        + ", mWriteStateToFileScheduled="
+                        + mWriteStateToFileScheduled
                         + ")");
         for (int i = 0; i < issueRepositoryCount; i++) {
             SafetyCenterIssueKey key = mIssues.keyAt(i);
             IssueData data = mIssues.valueAt(i);
             fout.println("\t[" + i + "] " + toUserFriendlyString(key) + " -> " + data);
+        }
+        fout.println();
+
+        File issueDismissalRepositoryFile = getIssueDismissalRepositoryFile();
+        fout.println(
+                "ISSUE DISMISSAL REPOSITORY FILE ("
+                        + issueDismissalRepositoryFile.getAbsolutePath()
+                        + ")");
+        fout.flush();
+        try {
+            Files.copy(issueDismissalRepositoryFile.toPath(), new FileOutputStream(fd));
+        } catch (IOException e) {
+            // TODO(b/266202404)
+            e.printStackTrace(fout);
         }
         fout.println();
     }
@@ -342,6 +367,54 @@ public final class SafetyCenterIssueDismissalRepository {
             return null;
         }
         return issueData;
+    }
+
+    /** Schedule writing the {@link SafetyCenterIssueDismissalRepository} to file. */
+    private void scheduleWriteStateToFile() {
+        if (!mWriteStateToFileScheduled) {
+            mWriteHandler.postDelayed(this::writeStateToFile, WRITE_DELAY.toMillis());
+            mWriteStateToFileScheduled = true;
+        }
+    }
+
+    @WorkerThread
+    private void writeStateToFile() {
+        List<PersistedSafetyCenterIssue> persistedSafetyCenterIssues;
+
+        synchronized (mApiLock) {
+            mWriteStateToFileScheduled = false;
+            persistedSafetyCenterIssues = snapshot();
+            // Since all write operations are scheduled in the same background thread, we can safely
+            // release the lock after creating a snapshot and know that all snapshots will be
+            // written in the correct order even if we are not holding the lock.
+        }
+
+        SafetyCenterIssuesPersistence.write(
+                persistedSafetyCenterIssues, getIssueDismissalRepositoryFile());
+    }
+
+    /** Read the contents of the file and load them into this class. */
+    public void loadStateFromFile() {
+        List<PersistedSafetyCenterIssue> persistedSafetyCenterIssues = new ArrayList<>();
+
+        try {
+            persistedSafetyCenterIssues =
+                    SafetyCenterIssuesPersistence.read(getIssueDismissalRepositoryFile());
+            Log.i(TAG, "Safety Center persisted issues read successfully");
+        } catch (PersistenceException e) {
+            Log.e(TAG, "Cannot read Safety Center persisted issues", e);
+        }
+
+        load(persistedSafetyCenterIssues);
+        scheduleWriteStateToFile();
+    }
+
+    @NonNull
+    private static File getIssueDismissalRepositoryFile() {
+        ApexEnvironment apexEnvironment = ApexEnvironment.getApexEnvironment(APEX_MODULE_NAME);
+        File dataDirectory = apexEnvironment.getDeviceProtectedDataDir();
+        // It should resolve to /data/misc/apexdata/com.android.permission/safety_center_issues.xml
+        return new File(dataDirectory, ISSUE_DISMISSAL_REPOSITORY_FILE_NAME);
     }
 
     /**

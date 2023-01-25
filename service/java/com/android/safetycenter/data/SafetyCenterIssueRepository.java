@@ -18,6 +18,9 @@ package com.android.safetycenter.data;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
+import static java.util.Collections.emptyList;
+import static java.util.Collections.unmodifiableList;
+
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
@@ -37,7 +40,6 @@ import com.android.safetycenter.SafetySourceIssueInfo;
 import com.android.safetycenter.SafetySourceKey;
 import com.android.safetycenter.SafetySources;
 import com.android.safetycenter.UserProfileGroup;
-import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -62,7 +64,7 @@ public final class SafetyCenterIssueRepository {
                     new SafetySourceIssuesInfoBySeverityDescending();
 
     @NonNull private final Context mContext;
-    @NonNull private final SafetyCenterRepository mSafetyCenterRepository;
+    @NonNull private final SafetySourceDataRepository mSafetySourceDataRepository;
     @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
 
     // Only available on Android U+.
@@ -74,11 +76,11 @@ public final class SafetyCenterIssueRepository {
 
     public SafetyCenterIssueRepository(
             @NonNull Context context,
-            @NonNull SafetyCenterRepository safetyCenterRepository,
+            @NonNull SafetySourceDataRepository safetySourceDataRepository,
             @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
             @Nullable SafetyCenterIssueDeduplicator safetyCenterIssueDeduplicator) {
         mContext = context;
-        mSafetyCenterRepository = safetyCenterRepository;
+        mSafetySourceDataRepository = safetySourceDataRepository;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
         mSafetyCenterIssueDeduplicator = safetyCenterIssueDeduplicator;
     }
@@ -108,7 +110,7 @@ public final class SafetyCenterIssueRepository {
         List<SafetySourceIssueInfo> issues =
                 getAllStoredIssuesFromRawSourceData(userId, isManagedProfile);
         processIssues(issues);
-        mUserIdToIssuesInfo.put(userId, issues);
+        mUserIdToIssuesInfo.put(userId, unmodifiableList(issues));
     }
 
     /**
@@ -143,16 +145,13 @@ public final class SafetyCenterIssueRepository {
         return issueCount;
     }
 
-    /** Gets all active issues for the given {@code userId}. */
+    /**
+     * Gets an unmodifiable list of all issues for the given {@code userId}, or an empty list if no
+     * issues are found.
+     */
     @NonNull
-    public List<SafetyCenterIssueKey> getIssuesForUser(@UserIdInt int userId) {
-        ArrayList<SafetyCenterIssueKey> result = new ArrayList<>();
-
-        List<SafetySourceIssueInfo> issues = mUserIdToIssuesInfo.get(userId, new ArrayList<>());
-        for (int i = 0; i < issues.size(); i++) {
-            result.add(issues.get(i).getSafetyCenterIssueKey());
-        }
-        return result;
+    public List<SafetySourceIssueInfo> getIssuesForUser(@UserIdInt int userId) {
+        return mUserIdToIssuesInfo.get(userId, emptyList());
     }
 
     private void processIssues(@NonNull List<SafetySourceIssueInfo> issuesInfo) {
@@ -205,7 +204,7 @@ public final class SafetyCenterIssueRepository {
             @UserIdInt int userId) {
         SafetySourceKey key = SafetySourceKey.of(safetySource.getId(), userId);
         SafetySourceData safetySourceData =
-                mSafetyCenterRepository.getSafetySourceDataInternal(key);
+                mSafetySourceDataRepository.getSafetySourceDataInternal(key);
 
         if (safetySourceData == null) {
             return;
@@ -226,15 +225,11 @@ public final class SafetyCenterIssueRepository {
     private List<SafetySourceIssueInfo> getActiveIssuesForUserProfileGroup(
             @NonNull UserProfileGroup userProfileGroup) {
         List<SafetySourceIssueInfo> issues =
-                new ArrayList<>(
-                        mUserIdToIssuesInfo.get(
-                                userProfileGroup.getProfileParentUserId(), new ArrayList<>()));
+                new ArrayList<>(getIssuesForUser(userProfileGroup.getProfileParentUserId()));
 
         int[] managedRunningProfileUserIds = userProfileGroup.getManagedRunningProfilesUserIds();
         for (int i = 0; i < managedRunningProfileUserIds.length; i++) {
-            List<SafetySourceIssueInfo> managedProfileIssues =
-                    mUserIdToIssuesInfo.get(managedRunningProfileUserIds[i], new ArrayList<>());
-            issues.addAll(managedProfileIssues);
+            issues.addAll(new ArrayList<>(getIssuesForUser(managedRunningProfileUserIds[i])));
         }
 
         return issues;

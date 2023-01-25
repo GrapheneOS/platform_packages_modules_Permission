@@ -68,9 +68,9 @@ import javax.annotation.concurrent.NotThreadSafe;
  */
 @RequiresApi(TIRAMISU)
 @NotThreadSafe
-public final class SafetyCenterRepository {
+public final class SafetySourceDataRepository {
 
-    private static final String TAG = "SafetyCenterRepository";
+    private static final String TAG = "SafetySourceDataRepo";
 
     private final ArrayMap<SafetySourceKey, SafetySourceData> mSafetySourceDataForKey =
             new ArrayMap<>();
@@ -90,7 +90,7 @@ public final class SafetyCenterRepository {
 
     @NonNull private final PackageManager mPackageManager;
 
-    public SafetyCenterRepository(
+    public SafetySourceDataRepository(
             @NonNull Context context,
             @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
             @NonNull SafetyCenterRefreshTracker safetyCenterRefreshTracker,
