@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.ui.handheld.v33;
+package com.android.permissioncontroller.safetycenter.ui;
 
 import static android.Manifest.permission_group.CAMERA;
 import static android.Manifest.permission_group.LOCATION;
@@ -55,8 +55,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.android.permissioncontroller.R;
-import com.android.permissioncontroller.permission.ui.model.v33.SafetyCenterQsViewModel;
-import com.android.permissioncontroller.permission.ui.model.v33.SafetyCenterQsViewModelFactory;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.permissioncontroller.safetycenter.ui.Action;
@@ -65,6 +63,8 @@ import com.android.permissioncontroller.safetycenter.ui.SafetyCenterDashboardFra
 import com.android.permissioncontroller.safetycenter.ui.SafetyCenterTouchTarget;
 import com.android.permissioncontroller.safetycenter.ui.Sensor;
 import com.android.permissioncontroller.safetycenter.ui.model.LiveSafetyCenterViewModelFactory;
+import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterQsViewModel;
+import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterQsViewModelFactory;
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel;
 
 import com.google.android.material.button.MaterialButton;
@@ -175,21 +175,23 @@ public class SafetyCenterQsFragment extends Fragment {
                 (v) ->
                         mSafetyCenterViewModel.navigateToSafetyCenter(
                                 this, NavigationSource.QUICK_SETTINGS_TILE));
-        TextView securitySettingsText =
-                securitySettings.findViewById(R.id.toggle_sensor_name);
+        TextView securitySettingsText = securitySettings.findViewById(R.id.toggle_sensor_name);
         securitySettingsText.setText(R.string.settings);
         securitySettingsText.setSelected(true);
         securitySettings.findViewById(R.id.toggle_sensor_status).setVisibility(View.GONE);
-        ImageView securitySettingsIcon =
-                securitySettings.findViewById(R.id.toggle_sensor_icon);
-        securitySettingsIcon.setImageDrawable(Utils.applyTint(mContext,
-                mContext.getDrawable(R.drawable.ic_safety_center_shield),
-                android.R.attr.textColorPrimaryInverse));
+        ImageView securitySettingsIcon = securitySettings.findViewById(R.id.toggle_sensor_icon);
+        securitySettingsIcon.setImageDrawable(
+                Utils.applyTint(
+                        mContext,
+                        mContext.getDrawable(R.drawable.ic_safety_center_shield),
+                        android.R.attr.textColorPrimaryInverse));
         securitySettings.findViewById(R.id.arrow_icon).setVisibility(View.VISIBLE);
         ((ImageView) securitySettings.findViewById(R.id.arrow_icon))
-                .setImageDrawable(Utils.applyTint(mContext,
-                        mContext.getDrawable(R.drawable.ic_chevron_right),
-                        android.R.attr.textColorSecondaryInverse));
+                .setImageDrawable(
+                        Utils.applyTint(
+                                mContext,
+                                mContext.getDrawable(R.drawable.ic_chevron_right),
+                                android.R.attr.textColorSecondaryInverse));
         ViewCompat.replaceAccessibilityAction(
                 securitySettings,
                 AccessibilityNodeInfoCompat.AccessibilityActionCompat.ACTION_CLICK,

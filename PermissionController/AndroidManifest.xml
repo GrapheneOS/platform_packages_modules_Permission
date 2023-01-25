@@ -297,7 +297,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.android.permissioncontroller.permission.ui.SafetyCenterQsActivity"
+        <activity android:name="com.android.permissioncontroller.safetycenter.ui.SafetyCenterQsActivity"
                   android:excludeFromRecents="true"
                   android:launchMode="singleInstance"
                   android:exported="true"
