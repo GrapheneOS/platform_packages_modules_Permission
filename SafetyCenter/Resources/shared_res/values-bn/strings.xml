@@ -42,12 +42,8 @@
     <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{সেটিং চেক করা যায়নি}one{সেটিংস চেক করা যায়নি}other{সেটিংস চেক করা যায়নি}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"অফিস প্রোফাইল পজ করা আছে"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"এখনও কোনও তথ্য নেই"</string>
-    <!-- no translation found for notification_channel_group_name (7155072032524876859) -->
-    <skip />
-    <!-- no translation found for notification_channel_name_information (2966444432152990166) -->
-    <skip />
-    <!-- no translation found for notification_channel_name_recommendation (7847408286580217922) -->
-    <skip />
-    <!-- no translation found for notification_channel_name_critical_warning (5994320322108351769) -->
-    <skip />
+    <string name="notification_channel_group_name" msgid="7155072032524876859">"নিরাপত্তা এবং গোপনীয়তা"</string>
+    <string name="notification_channel_name_information" msgid="2966444432152990166">"সাজেশন"</string>
+    <string name="notification_channel_name_recommendation" msgid="7847408286580217922">"সতর্কতা"</string>
+    <string name="notification_channel_name_critical_warning" msgid="5994320322108351769">"গুরুত্বপূর্ণ সতর্কতা"</string>
 </resources>

@@ -223,10 +223,8 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> അനുമതിയും മറ്റ് <xliff:g id="NUMBER">%2$s</xliff:g> അനുമതികളും നീക്കം ചെയ്തു"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"ഉപയോഗിക്കാത്ത ആപ്പുകൾ"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"ഒരു ആപ്പ് ഏതാനും മാസങ്ങളായി ഉപയോഗിക്കുന്നില്ലെങ്കിൽ:\n\n• നിങ്ങളുടെ ഡാറ്റ സംരക്ഷിക്കാൻ, അനുമതികൾ നീക്കം ചെയ്യുന്നു\n• ബാറ്ററി ലാഭിക്കാൻ, അറിയിപ്പുകൾ നൽകുന്നത് നിർത്തുന്നു\n• ഇടമുണ്ടാക്കാൻ, താൽക്കാലിക ഫയലുകൾ നീക്കം ചെയ്യുന്നു\n\nഅനുമതികളും അറിയിപ്പുകളും വീണ്ടും അനുവദിക്കാൻ, ആപ്പ് തുറക്കുക."</string>
-    <!-- no translation found for unused_apps_page_tv_summary (2624911608663778308) -->
-    <skip />
-    <!-- no translation found for last_opened_category_title (8796557894614236128) -->
-    <skip />
+    <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"ആപ്പ് ഒരു മാസമായി ഉപയോഗിച്ചിട്ടില്ലെങ്കിൽ:\n\n• നിങ്ങളുടെ ഡാറ്റ സംരക്ഷിക്കാൻ അനുമതികൾ നീക്കം ചെയ്യും\n• ഇടമുണ്ടാക്കാൻ താൽക്കാലിക ഫയലുകൾ നീക്കം ചെയ്യും\n\nഅനുമതികൾ വീണ്ടും അനുവദിക്കാൻ ആപ്പ് തുറക്കുക."</string>
+    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{അവസാനം തുറന്നിട്ട് # മാസത്തിൽ കൂടുതലായവ}other{അവസാനം തുറന്നിട്ട് # മാസത്തിൽ കൂടുതലായവ}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ആപ്പ് അവസാനം തുറന്നത് <xliff:g id="DATE">%s</xliff:g>-നാണ്"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"അവസാനം തുറന്നത് <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"എല്ലാ ഫയലുകളും മാനേജ് ചെയ്യാൻ അനുവദിച്ചാൽ ഈ ഉപകരണത്തിലെയോ കണക്റ്റ് ചെയ്‌തിരിക്കുന്ന സ്റ്റോറേജ് ഉപകരണങ്ങളിലെയോ പൊതു സ്റ്റോറേജിലുള്ള ഏത് ഫയലും ആക്‌സസ് ചെയ്യാനും പരിഷ്‌കരിക്കാനും ഇല്ലാതാക്കാനും ഈ ആപ്പിന് കഴിയും. നിങ്ങളോട് ചോദിക്കാതെ തന്നെ ആപ്പ് ഫയലുകൾ ആക്‌സസ് ചെയ്തേക്കാം."</string>
@@ -404,9 +402,9 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"നിങ്ങളുടെ അറിയിപ്പുകളുമായി സംവദിക്കാനും കണക്‌റ്റ് ചെയ്‌ത ഉപകരണത്തിലേക്ക് നിങ്ങളുടെ ആപ്പുകൾ സ്ട്രീം ചെയ്യാനും <xliff:g id="APP_NAME">%1$s</xliff:g> ആപ്പിനെ അനുവദിക്കും."</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"സമീപമുള്ള ഉപകരണങ്ങളിലേക്ക് ഉള്ളടക്കം സ്ട്രീം ചെയ്യാൻ <xliff:g id="APP_NAME">%1$s</xliff:g> എന്നതിനെ അനുവദിക്കും."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"ഈ സേവനം, നിങ്ങളുടെ ഫോണിൽ നിന്നുള്ള ഫോട്ടോകളും മീഡിയയും അറിയിപ്പുകളും മറ്റ് ഉപകരണങ്ങളിലേക്ക് പങ്കിടുന്നു."</string>
-    <string name="role_notes_label" msgid="7694668779088299905">"ഡിഫോൾട്ട് കുറിപ്പെടുക്കൽ ആപ്പ്"</string>
-    <string name="role_notes_short_label" msgid="6617887820096092689">"കുറിപ്പുകൾ എടുക്കാനുള്ള ആപ്പ്"</string>
-    <string name="role_notes_description" msgid="8486216423668803751">"കുറിപ്പുകൾ എടുക്കാൻ നിങ്ങളെ അനുവദിക്കുന്ന ആപ്പുകൾ"</string>
+    <string name="role_notes_label" msgid="7451627001058089536">"ഡിഫോൾട്ട് കുറിപ്പ് ആപ്പ്"</string>
+    <string name="role_notes_short_label" msgid="8796604147546125285">"കുറിപ്പ് ആപ്പ്"</string>
+    <string name="role_notes_description" msgid="8496852798616883551">"നിങ്ങളുടെ ഉപകരണത്തിൽ കുറിപ്പുകൾ രേഖപ്പെടുത്താൻ അനുവദിക്കുന്ന ആപ്പുകൾ"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"കുറിപ്പുകൾ"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"നിലവിലെ ഡിഫോൾട്ട്"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"വീണ്ടും ആവശ്യപ്പെടരുത്"</string>
@@ -593,5 +591,6 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"നിങ്ങൾ പകർത്തിയ ടെക്‌സ്‌റ്റോ ചിത്രങ്ങളോ മറ്റ് ഉള്ളടക്കമോ ആപ്പുകൾ ആക്‌സസ് ചെയ്യുമ്പോൾ ഒരു സന്ദേശം കാണിക്കുക"</string>
     <string name="show_password_title" msgid="2877269286984684659">"പാസ്‌വേ‌ഡുകൾ കാണിക്കുക"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"ടൈപ്പ് ചെയ്യുന്ന അക്ഷരങ്ങൾ പ്രദർശിപ്പിക്കുക"</string>
-    <string name="permission_rationale_message_template" msgid="4497650516269082051">"<xliff:g id="PERMISSION_NAME">%s</xliff:g> ഡാറ്റ മൂന്നാം കക്ഷികളുമായി പങ്കിട്ടേക്കാമെന്ന് ഈ ആപ്പ് പ്രസ്താവിക്കുന്നു"</string>
+    <!-- no translation found for permission_rationale_message_location (2153841534298068414) -->
+    <skip />
 </resources>

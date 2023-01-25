@@ -223,10 +223,8 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Se quitaron <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> y <xliff:g id="NUMBER">%2$s</xliff:g> otros permisos"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Apps que no usas"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Si una app permanece en desuso algunos meses, ocurre lo siguiente:\n\n• Se quitan los permisos para proteger tus datos.\n• Se detienen las notificaciones para ahorrar batería.\n• Se quitan los archivos temporales para liberar espacio.\n\nPara volver a habilitar los permisos y las notificaciones, abre la app."</string>
-    <!-- no translation found for unused_apps_page_tv_summary (2624911608663778308) -->
-    <skip />
-    <!-- no translation found for last_opened_category_title (8796557894614236128) -->
-    <skip />
+    <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"Si no usas una app durante un mes, ocurre lo siguiente:\n\n• Se quitan los permisos para proteger tus datos.\n• Se quitan los archivos temporales para liberar espacio.\n\nPara volver a habilitar los permisos, abre la app."</string>
+    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Se abrió por última vez hace más de # mes}many{Se abrió por última vez hace más de # de meses}other{Se abrió por última vez hace más de # meses}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"App abierta por última vez el <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Abierta por última vez el <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Si permites que se administren todos los archivos, esta app podrá consultar, modificar y borrar los archivos que haya en el almacenamiento común de este dispositivo o en los dispositivos de almacenamiento conectados. Podrá acceder a los archivos sin consultarte."</string>
@@ -404,9 +402,9 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> podrá interactuar con tus notificaciones y transmitir tus apps al dispositivo conectado."</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> podrá reproducir contenido en dispositivos cercanos."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Este servicio comparte las fotos, el contenido multimedia y las notificaciones de tu teléfono con otros dispositivos."</string>
-    <string name="role_notes_label" msgid="7694668779088299905">"App predeterminada para notas"</string>
-    <string name="role_notes_short_label" msgid="6617887820096092689">"App para tomar notas"</string>
-    <string name="role_notes_description" msgid="8486216423668803751">"Apps que te permiten tomar notas"</string>
+    <string name="role_notes_label" msgid="7451627001058089536">"App de notas predeterminada"</string>
+    <string name="role_notes_short_label" msgid="8796604147546125285">"App de notas"</string>
+    <string name="role_notes_description" msgid="8496852798616883551">"Apps que te permiten tomar notas en tu dispositivo"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"notas"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"App predeterminada actualmente"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"No volver a preguntar"</string>
@@ -593,5 +591,6 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Mostrar un mensaje cuando las apps accedan a textos, imágenes y otro contenido que hayas copiado"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Mostrar contraseñas"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Mostrar caracteres brevemente mientras escribes"</string>
-    <string name="permission_rationale_message_template" msgid="4497650516269082051">"Esta app indicó que podría compartir datos de <xliff:g id="PERMISSION_NAME">%s</xliff:g> con terceros"</string>
+    <!-- no translation found for permission_rationale_message_location (2153841534298068414) -->
+    <skip />
 </resources>

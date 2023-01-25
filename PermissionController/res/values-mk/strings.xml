@@ -223,10 +223,8 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Дозволата за „<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>“ и уште <xliff:g id="NUMBER">%2$s</xliff:g> други дозволи се отстранети"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Некористени апликации"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Ако некоја апликација не се користи неколку месеци:\n\n• дозволите се отстрануваат за да се заштитат вашите податоци\n• известувањата се стопираат за да се заштеди батерија\n• привремените датотеки се отстрануваат за да се ослободи простор\n\nЗа да повторно се овозможат дозволите и известувањата, отворете ја апликацијата."</string>
-    <!-- no translation found for unused_apps_page_tv_summary (2624911608663778308) -->
-    <skip />
-    <!-- no translation found for last_opened_category_title (8796557894614236128) -->
-    <skip />
+    <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"Ако некоја апликација не се користи еден месец:\n\n• дозволите се отстрануваат за да се заштитат вашите податоци\n• привремените датотеки се отстрануваат за да се ослободи простор\n\nЗа да ги овозможите дозволите повторно, отворете ја апликацијата."</string>
+    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Последно отворени пред повеќе од # месец}one{Последно отворени пред повеќе од # месец}other{Последно отворени пред повеќе од # месеци}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Последно отворање на апликацијата: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Последно отворање: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Ако дозволите управување со сите датотеки, апликацијава ќе може да ги менува, да ги брише, како и да пристапува до сите датотеки во заедничката меморија на уредов или на поврзаните уреди за складирање. Апликацијата може да пристапува до датотеките без да ве праша."</string>
@@ -404,9 +402,9 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> ќе може да остварува интеракција со известувањата и да пренесува од вашите апликации на поврзаниот уред."</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> ќе добие дозвола да стримува содржини на уреди во близина."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Услугава споделува ваши фотографии, содржини и известувања од телефонот на други уреди."</string>
-    <string name="role_notes_label" msgid="7694668779088299905">"Стандардна апликација за белешки"</string>
-    <string name="role_notes_short_label" msgid="6617887820096092689">"Апликација за белешки"</string>
-    <string name="role_notes_description" msgid="8486216423668803751">"Апликации што ви овозможуваат да запишувате белешки"</string>
+    <string name="role_notes_label" msgid="7451627001058089536">"Стандардна апликација за белешки"</string>
+    <string name="role_notes_short_label" msgid="8796604147546125285">"Апликација за белешки"</string>
+    <string name="role_notes_description" msgid="8496852798616883551">"Апликации што ви овозможуваат да запишувате белешки на вашиот уред"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"белешки"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Стандардна апликација сега"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Не прашувај повторно"</string>
@@ -593,5 +591,6 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Нека се прикажува известување кога апликациите пристапуваат до текст, слики или други содржини што сте ги копирале"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Прикажувај ги лозинките"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Прикажувај ги знаците накратко додека пишувам"</string>
-    <string name="permission_rationale_message_template" msgid="4497650516269082051">"Апликацијава изјави дека можеби ќе споделува податоци за <xliff:g id="PERMISSION_NAME">%s</xliff:g> со трети страни"</string>
+    <!-- no translation found for permission_rationale_message_location (2153841534298068414) -->
+    <skip />
 </resources>

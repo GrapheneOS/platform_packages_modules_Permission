@@ -223,10 +223,8 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> and <xliff:g id="NUMBER">%2$s</xliff:g> other permissions removed"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Unused apps"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"If an app is unused for a few months:\n\n• Permissions are removed to protect your data\n• Notifications are stopped to save battery\n• Temporary files are removed to free up space\n\nTo allow permissions and notifications again, open the app."</string>
-    <!-- no translation found for unused_apps_page_tv_summary (2624911608663778308) -->
-    <skip />
-    <!-- no translation found for last_opened_category_title (8796557894614236128) -->
-    <skip />
+    <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"If an app is unused for a month:\n\n• Permissions are removed to protect your data\n• Temporary files are removed to free up space\n\nTo allow permissions again, open the app."</string>
+    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Last opened more than # month ago}other{Last opened more than # months ago}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"App last opened on <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Last opened <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"If you allow management of all files, this app can access, modify and delete any files in common storage on this device or connected storage devices. The app may access files without asking you."</string>
@@ -404,9 +402,9 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> will be allowed to interact with your notifications and stream your apps to the connected device."</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> will be allowed to stream content to nearby devices."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"This service shares your photos, media and notifications from your phone to other devices."</string>
-    <string name="role_notes_label" msgid="7694668779088299905">"Default note-taking app"</string>
-    <string name="role_notes_short_label" msgid="6617887820096092689">"Note-taking app"</string>
-    <string name="role_notes_description" msgid="8486216423668803751">"Apps that allow you to take notes"</string>
+    <string name="role_notes_label" msgid="7451627001058089536">"Default notes app"</string>
+    <string name="role_notes_short_label" msgid="8796604147546125285">"Notes app"</string>
+    <string name="role_notes_description" msgid="8496852798616883551">"Apps that allow you to take notes on your device"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"notes"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Current default"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Don\'t ask again"</string>
@@ -593,5 +591,6 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Show a message when apps access text, images or other content that you’ve copied"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Show passwords"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Display characters briefly as you type"</string>
-    <string name="permission_rationale_message_template" msgid="4497650516269082051">"This app stated that it may share <xliff:g id="PERMISSION_NAME">%s</xliff:g> data with third parties"</string>
+    <!-- no translation found for permission_rationale_message_location (2153841534298068414) -->
+    <skip />
 </resources>

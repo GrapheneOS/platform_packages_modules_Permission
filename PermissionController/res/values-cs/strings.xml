@@ -223,10 +223,8 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Bylo odebráno oprávnění <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> a další oprávnění (<xliff:g id="NUMBER">%2$s</xliff:g>)"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Nepoužívané aplikace"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Když aplikaci několik měsíců nepoužíváte:\n\n• Oprávnění jsou odstraněna kvůli ochraně dat\n• Oznámení se přestanou zobrazovat kvůli úspoře baterie\n• Dočasné soubory jsou odstraněny kvůli uvolnění místa\n\nPokud chcete oprávnění a oznámení znovu povolit, otevřete aplikaci."</string>
-    <!-- no translation found for unused_apps_page_tv_summary (2624911608663778308) -->
-    <skip />
-    <!-- no translation found for last_opened_category_title (8796557894614236128) -->
-    <skip />
+    <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"Když nějakou aplikaci měsíc nepoužíváte:\n\n• Kvůli ochraně dat se odstraní oprávnění.\n• Kvůli uvolnění místa se odstraní dočasné soubory.\n\nPokud chcete oprávnění znovu povolit, otevřete aplikaci."</string>
+    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Aplikace nainstalované před více než # měsícem}few{Naposledy otevřeno před více než # měsíci}many{Naposledy otevřeno před více než # měsíce}other{Naposledy otevřeno před více než # měsíci}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Aplikace byla naposledy otevřena <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Naposledy otevřeno <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Pokud povolíte správu všech souborů, tato aplikace může číst, upravovat a mazat všechny soubory ve společném úložišti na tomto zařízení i na připojených úložných zařízeních. Aplikace se může dostat k souborům, aniž by se vás zeptala."</string>
@@ -404,9 +402,9 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"Aplikace <xliff:g id="APP_NAME">%1$s</xliff:g> bude moci interagovat s vašimi oznámeními a streamovat vaše aplikace do připojeného zařízení."</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"Aplikace <xliff:g id="APP_NAME">%1$s</xliff:g> bude moci streamovat obsah do zařízení v okolí."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Tato služba sdílí vaše fotky, média a oznámení z telefonu s ostatními zařízeními."</string>
-    <string name="role_notes_label" msgid="7694668779088299905">"Výchozí aplikace pro poznámky"</string>
-    <string name="role_notes_short_label" msgid="6617887820096092689">"Aplikace na psaní poznámek"</string>
-    <string name="role_notes_description" msgid="8486216423668803751">"Aplikace, které umožňují psát si poznámky"</string>
+    <string name="role_notes_label" msgid="7451627001058089536">"Výchozí aplikace pro poznámky"</string>
+    <string name="role_notes_short_label" msgid="8796604147546125285">"Aplikace pro poznámky"</string>
+    <string name="role_notes_description" msgid="8496852798616883551">"Aplikace, které umožňují dělat si na zařízení poznámky"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"poznámky"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Aktuálně výchozí"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Příště se neptat"</string>
@@ -593,5 +591,6 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Zobrazovat zprávu, když aplikace použijí text, obrázky nebo jiný obsah, který jste zkopírovali"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Zobrazovat hesla"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Při psaní se budou krátce zobrazovat zadané znaky"</string>
-    <string name="permission_rationale_message_template" msgid="4497650516269082051">"Tato aplikace uvedla, že může sdílet data <xliff:g id="PERMISSION_NAME">%s</xliff:g> se třetími stranami"</string>
+    <!-- no translation found for permission_rationale_message_location (2153841534298068414) -->
+    <skip />
 </resources>

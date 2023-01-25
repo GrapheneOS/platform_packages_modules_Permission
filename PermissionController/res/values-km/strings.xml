@@ -223,10 +223,8 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"បានដក​ការអនុញ្ញាត​<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> និង​ការអនុញ្ញាត <xliff:g id="NUMBER">%2$s</xliff:g> ទៀត"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"កម្មវិធី​ដែលមិន​ប្រើ"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"ប្រសិនបើ​កម្មវិធី​មិនត្រូវបានប្រើ​រយៈពេលពីរបីខែ៖\n\n• ការអនុញ្ញាតត្រូវបាន​ដកចេញ ដើម្បីការពារ​ទិន្នន័យ​របស់អ្នក\n• ការជូនដំណឹង​ត្រូវបានបញ្ឈប់ ដើម្បីសន្សំថ្ម\n• ឯកសារ​បណ្ដោះអាសន្នត្រូវបាន​លុបចេញ ដើម្បីបង្កើន​ទំហំផ្ទុក\n\nដើម្បីផ្ដល់​ការអនុញ្ញាត និង​អនុញ្ញាតឱ្យ​ជូនដំណឹង​ម្ដងទៀត សូមបើក​កម្មវិធីនោះ។"</string>
-    <!-- no translation found for unused_apps_page_tv_summary (2624911608663778308) -->
-    <skip />
-    <!-- no translation found for last_opened_category_title (8796557894614236128) -->
-    <skip />
+    <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"ប្រសិនបើ​កម្មវិធីណាមួយ​មិនត្រូវបានប្រើ​រយៈពេលមួយខែ៖\n\n• ការអនុញ្ញាតត្រូវបានដកចេញ ដើម្បីការពារ​ទិន្នន័យ​របស់អ្នក\n• ឯកសារ​បណ្ដោះអាសន្នត្រូវបាន​ដកចេញ ដើម្បីបង្កើន​ទំហំផ្ទុកទំនេរ\n\nដើម្បីផ្ដល់​ការអនុញ្ញាតម្ដងទៀត សូមបើក​កម្មវិធីនោះ។"</string>
+    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{បានបើកចុងក្រោយច្រើនជាង # ខែមុន}other{បានបើកចុងក្រោយច្រើនជាង # ខែមុន}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"បានបើក​កម្មវិធី​លើកចុងក្រោយ​នៅថ្ងៃទី <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"បានបើក​លើកចុងក្រោយ​នៅថ្ងៃទី <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"ប្រសិនបើអ្នកអនុញ្ញាតឱ្យគ្រប់គ្រងឯកសារទាំងអស់ កម្មវិធី​នេះអាច​ចូលប្រើ កែសម្រួល និងលុបឯកសារទាំងឡាយនៅក្នុងទំហំផ្ទុកទូទៅនៅលើឧបករណ៍នេះ ឬឧបករណ៍ផ្ទុក​ដែលបានភ្ជាប់ទាំងឡាយ។ កម្មវិធីនេះអាចចូលប្រើឯកសារដោយមិនចាំបាច់សួរអ្នក។"</string>
@@ -404,9 +402,9 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> នឹងត្រូវបាន​អនុញ្ញាតឱ្យ​ធ្វើអន្តរកម្មជាមួយ​ការជូនដំណឹងរបស់អ្នក និងចាក់កម្មវិធី​របស់អ្នកទៅឧបករណ៍​ដែលបានភ្ជាប់។"</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> នឹងត្រូវបានអនុញ្ញាតឱ្យផ្សាយខ្លឹមសារទៅកាន់ឧបករណ៍នៅជិត។"</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"សេវាកម្មនេះចែករំលែករូបថត មេឌៀ និងការជូនដំណឹងរបស់អ្នក ពីទូរសព្ទរបស់អ្នកទៅឧបករណ៍ផ្សេងទៀត។"</string>
-    <string name="role_notes_label" msgid="7694668779088299905">"កម្មវិធី​កត់ចំណាំ​លំនាំដើម"</string>
-    <string name="role_notes_short_label" msgid="6617887820096092689">"កម្មវិធី​កត់ចំណាំ"</string>
-    <string name="role_notes_description" msgid="8486216423668803751">"កម្មវិធីដែល​អនុញ្ញាតឱ្យអ្នក​កត់ចំណាំ"</string>
+    <string name="role_notes_label" msgid="7451627001058089536">"កម្មវិធីកំណត់ចំណាំលំនាំដើម"</string>
+    <string name="role_notes_short_label" msgid="8796604147546125285">"កម្មវិធី​កំណត់ចំណាំ"</string>
+    <string name="role_notes_description" msgid="8496852798616883551">"កម្មវិធីដែលអនុញ្ញាតឱ្យអ្នក​កត់ចំណាំនៅលើឧបករណ៍របស់អ្នក"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"កំណត់ចំណាំ"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"លំនាំដើម​បច្ចុប្បន្ន"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"កុំសួរទៀត"</string>
@@ -593,5 +591,6 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"បង្ហាញសារ នៅពេលកម្មវិធីចូលប្រើអត្ថបទ រូបភាព ឬខ្លឹមសារផ្សេងទៀតដែលអ្នកបានចម្លង"</string>
     <string name="show_password_title" msgid="2877269286984684659">"បង្ហាញ​ពាក្យ​សម្ងាត់"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"បង្ហាញ​តួអក្សរ​មួយភ្លែត​ខណៈ​ពេល​អ្នក​វាយ​បញ្ចូល"</string>
-    <string name="permission_rationale_message_template" msgid="4497650516269082051">"កម្មវិធីនេះបានបញ្ជាក់ថា វាអាចចែករំលែកទិន្នន័យ <xliff:g id="PERMISSION_NAME">%s</xliff:g> ជាមួយភាគីទីបី"</string>
+    <!-- no translation found for permission_rationale_message_location (2153841534298068414) -->
+    <skip />
 </resources>
