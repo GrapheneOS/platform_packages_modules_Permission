@@ -26,6 +26,7 @@ import static com.android.permissioncontroller.Constants.INVALID_SESSION_ID;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
@@ -64,8 +65,11 @@ import com.android.permissioncontroller.safetycenter.ui.SafetyCenterTouchTarget;
 import com.android.permissioncontroller.safetycenter.ui.Sensor;
 import com.android.permissioncontroller.safetycenter.ui.model.LiveSafetyCenterViewModelFactory;
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterQsViewModel;
+import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterQsViewModel.SensorState;
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterQsViewModelFactory;
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel;
+import com.android.settingslib.RestrictedLockUtils;
+import com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 
 import com.google.android.material.button.MaterialButton;
 
@@ -562,7 +566,7 @@ public class SafetyCenterQsFragment extends Fragment {
         return layered;
     }
 
-    private void setSensorToggleState(Map<String, Boolean> sensorState, View rootView) {
+    private void setSensorToggleState(Map<String, SensorState> sensorStates, View rootView) {
         if (rootView == null) {
             if (getView() == null) {
                 return;
@@ -573,23 +577,36 @@ public class SafetyCenterQsFragment extends Fragment {
             }
         }
 
-        if (sensorState == null) {
-            sensorState = new ArrayMap<>();
+        if (sensorStates == null) {
+            sensorStates = new ArrayMap<>();
         }
 
         for (int i = 0; i < sToggleButtons.size(); i++) {
             View toggle = rootView.findViewById(sToggleButtons.valueAt(i));
             String groupName = sToggleButtons.keyAt(i);
+            EnforcedAdmin admin =
+                    sensorStates.containsKey(groupName)
+                            ? sensorStates.get(groupName).getAdmin()
+                            : null;
+            boolean sensorBlockedByAdmin = admin != null;
             if (!toggle.hasOnClickListeners()) {
-                toggle.setOnClickListener(
-                        (v) -> {
-                            mViewModel.toggleSensor(groupName);
-                            mSafetyCenterViewModel
-                                    .getInteractionLogger()
-                                    .recordForSensor(
-                                            Action.PRIVACY_CONTROL_TOGGLE_CLICKED,
-                                            Sensor.fromPermissionGroupName(groupName));
-                        });
+                if (sensorBlockedByAdmin) {
+                    toggle.setOnClickListener(
+                            (v) ->
+                                    startActivity(
+                                            RestrictedLockUtils.getShowAdminSupportDetailsIntent(
+                                                    mContext, admin)));
+                } else {
+                    toggle.setOnClickListener(
+                            (v) -> {
+                                mViewModel.toggleSensor(groupName);
+                                mSafetyCenterViewModel
+                                        .getInteractionLogger()
+                                        .recordForSensor(
+                                                Action.PRIVACY_CONTROL_TOGGLE_CLICKED,
+                                                Sensor.fromPermissionGroupName(groupName));
+                            });
+                }
             }
 
             TextView groupLabel = toggle.findViewById(R.id.toggle_sensor_name);
@@ -601,16 +618,21 @@ public class SafetyCenterQsFragment extends Fragment {
             blockedStatus.setSelected(true);
             ImageView iconView = toggle.findViewById(R.id.toggle_sensor_icon);
             boolean sensorEnabled =
-                    !sensorState.containsKey(groupName) || sensorState.get(groupName);
+                    !sensorStates.containsKey(groupName)
+                            || sensorStates.get(groupName).getEnabled();
 
             Drawable icon;
-            int colorPrimary = getTextColor(true, sensorEnabled);
-            int colorSecondary = getTextColor(false, sensorEnabled);
-            if (sensorEnabled) {
+            boolean useEnabledBackground = sensorEnabled && !sensorBlockedByAdmin;
+            int colorPrimary = getTextColor(true, useEnabledBackground, sensorBlockedByAdmin);
+            int colorSecondary = getTextColor(false, useEnabledBackground, sensorBlockedByAdmin);
+            if (useEnabledBackground) {
                 toggle.setBackgroundResource(R.drawable.safety_center_sensor_toggle_enabled);
-                icon = KotlinUtils.INSTANCE.getPermGroupIcon(mContext, groupName, colorPrimary);
             } else {
                 toggle.setBackgroundResource(R.drawable.safety_center_sensor_toggle_disabled);
+            }
+            if (sensorEnabled) {
+                icon = KotlinUtils.INSTANCE.getPermGroupIcon(mContext, groupName, colorPrimary);
+            } else {
                 icon = mContext.getDrawable(getBlockedIconResId(groupName));
                 icon.setTint(colorPrimary);
             }
@@ -634,7 +656,7 @@ public class SafetyCenterQsFragment extends Fragment {
     }
 
     @ColorInt
-    private Integer getTextColor(boolean primary, boolean inverse) {
+    private int getTextColor(boolean primary, boolean inverse, boolean useLowerOpacity) {
         int primaryAttribute =
                 inverse ? android.R.attr.textColorPrimaryInverse : android.R.attr.textColorPrimary;
         int secondaryAttribute =
@@ -645,7 +667,20 @@ public class SafetyCenterQsFragment extends Fragment {
         TypedValue value = new TypedValue();
         mContext.getTheme().resolveAttribute(attribute, value, true);
         int colorRes = value.resourceId != 0 ? value.resourceId : value.data;
-        return mContext.getColor(colorRes);
+        int color = mContext.getColor(colorRes);
+        if (useLowerOpacity) {
+            color = colorWithAdjustedAlpha(color, 0.5f);
+        }
+        return color;
+    }
+
+    @ColorInt
+    private int colorWithAdjustedAlpha(@ColorInt int color, float factor) {
+        return Color.argb(
+                Math.round(Color.alpha(color) * factor),
+                Color.red(color),
+                Color.green(color),
+                Color.blue(color));
     }
 
     private CharSequence getPermGroupLabel(String permissionGroup) {
