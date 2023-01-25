@@ -170,7 +170,7 @@ public final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback
             return loggableData.getDismissedIssues().size();
         }
         long openIssuesCount = loggableData.getIssues().size();
-        return mSafetyCenterIssueRepository.countActiveLoggableIssues(userProfileGroup)
+        return mSafetyCenterIssueRepository.countLoggableIssuesFor(userProfileGroup)
                 - openIssuesCount;
     }
 
