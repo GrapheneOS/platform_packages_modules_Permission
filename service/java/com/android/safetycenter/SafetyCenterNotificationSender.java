@@ -37,6 +37,7 @@ import android.util.Log;
 import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.build.SdkLevel;
+import com.android.safetycenter.data.SafetyCenterIssueDismissalRepository;
 import com.android.safetycenter.data.SafetyCenterIssueRepository;
 import com.android.safetycenter.data.SafetyCenterRepository;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
@@ -94,11 +95,14 @@ final class SafetyCenterNotificationSender {
 
     @NonNull private final SafetyCenterNotificationFactory mNotificationFactory;
 
-    @NonNull private final SafetyCenterIssueRepository mSafetyCenterIssueRepository;
+    @NonNull
+    private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
 
     @NonNull private final SafetyCenterRepository mSafetyCenterRepository;
 
     @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
+
+    @NonNull private final SafetyCenterIssueRepository mSafetyCenterIssueRepository;
 
     private final ArrayMap<SafetyCenterIssueKey, SafetySourceIssue> mNotifiedIssues =
             new ArrayMap<>();
@@ -106,14 +110,16 @@ final class SafetyCenterNotificationSender {
     SafetyCenterNotificationSender(
             @NonNull Context context,
             @NonNull SafetyCenterNotificationFactory notificationFactory,
-            @NonNull SafetyCenterIssueRepository safetyCenterIssueRepository,
+            @NonNull SafetyCenterIssueDismissalRepository safetyCenterIssueDismissalRepository,
             @NonNull SafetyCenterRepository safetyCenterRepository,
-            @NonNull SafetyCenterConfigReader safetyCenterConfigReader) {
+            @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
+            @NonNull SafetyCenterIssueRepository safetyCenterIssueRepository) {
         mContext = context;
         mNotificationFactory = notificationFactory;
-        mSafetyCenterIssueRepository = safetyCenterIssueRepository;
+        mSafetyCenterIssueDismissalRepository = safetyCenterIssueDismissalRepository;
         mSafetyCenterRepository = safetyCenterRepository;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
+        mSafetyCenterIssueRepository = safetyCenterIssueRepository;
     }
 
     /**
@@ -201,7 +207,8 @@ final class SafetyCenterNotificationSender {
             }
 
             // TODO(b/259084807): Consider extracting this policy to a separate class
-            Instant dismissedAt = mSafetyCenterIssueRepository.getNotificationDismissedAt(issueKey);
+            Instant dismissedAt =
+                    mSafetyCenterIssueDismissalRepository.getNotificationDismissedAt(issueKey);
             if (dismissedAt != null) {
                 // Notification for issue was previously dismissed and is skipped
                 continue;
@@ -214,7 +221,7 @@ final class SafetyCenterNotificationSender {
                 result.put(issueKey, issue);
             } else if (behavior == NOTIFICATION_BEHAVIOR_INTERNAL_DELAYED) {
                 Instant delayedNotificationTime =
-                        mSafetyCenterIssueRepository
+                        mSafetyCenterIssueDismissalRepository
                                 .getIssueFirstSeenAt(issueKey)
                                 .plus(minNotificationsDelay);
                 if (Instant.now().isAfter(delayedNotificationTime)) {
