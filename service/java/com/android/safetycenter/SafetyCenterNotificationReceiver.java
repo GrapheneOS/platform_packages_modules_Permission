@@ -129,14 +129,20 @@ final class SafetyCenterNotificationReceiver extends BroadcastReceiver {
     @NonNull
     private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
 
+    @GuardedBy("mApiLock")
+    @NonNull
+    private final SafetyCenterDataChangeNotifier mSafetyCenterDataChangeNotifier;
+
     @NonNull private final Object mApiLock;
 
     SafetyCenterNotificationReceiver(
             @NonNull SafetyCenterService service,
             @NonNull SafetyCenterIssueDismissalRepository safetyCenterIssueDismissalRepository,
+            @NonNull SafetyCenterDataChangeNotifier safetyCenterDataChangeNotifier,
             @NonNull Object apiLock) {
         mService = service;
         mSafetyCenterIssueDismissalRepository = safetyCenterIssueDismissalRepository;
+        mSafetyCenterDataChangeNotifier = safetyCenterDataChangeNotifier;
         mApiLock = apiLock;
     }
 
@@ -169,7 +175,7 @@ final class SafetyCenterNotificationReceiver extends BroadcastReceiver {
 
         switch (action) {
             case ACTION_NOTIFICATION_DISMISSED:
-                onNotificationDismissed(intent);
+                onNotificationDismissed(context, intent);
                 break;
             case ACTION_NOTIFICATION_ACTION_CLICKED:
                 onNotificationActionClicked(intent);
@@ -180,13 +186,16 @@ final class SafetyCenterNotificationReceiver extends BroadcastReceiver {
         }
     }
 
-    private void onNotificationDismissed(@NonNull Intent intent) {
+    private void onNotificationDismissed(@NonNull Context context, @NonNull Intent intent) {
         SafetyCenterIssueKey issueKey = getIssueKeyExtra(intent);
         if (issueKey == null) {
             return;
         }
+        int userId = issueKey.getUserId();
+        UserProfileGroup userProfileGroup = UserProfileGroup.from(context, userId);
         synchronized (mApiLock) {
             mSafetyCenterIssueDismissalRepository.dismissNotification(issueKey);
+            mSafetyCenterDataChangeNotifier.updateDataConsumers(userProfileGroup, userId);
         }
     }
 

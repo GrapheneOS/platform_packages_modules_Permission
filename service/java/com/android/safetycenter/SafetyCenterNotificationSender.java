@@ -113,10 +113,23 @@ final class SafetyCenterNotificationSender {
         mSafetyCenterIssueRepository = safetyCenterIssueRepository;
     }
 
+    /** Updates Safety Center notifications for the given {@link UserProfileGroup}. */
+    void updateNotifications(@NonNull UserProfileGroup userProfileGroup) {
+        updateNotifications(userProfileGroup.getProfileParentUserId());
+
+        int[] managedProfileUserIds = userProfileGroup.getManagedProfilesUserIds();
+        for (int i = 0; i < managedProfileUserIds.length; i++) {
+            updateNotifications(managedProfileUserIds[i]);
+        }
+    }
+
     /**
      * Updates Safety Center notifications, usually in response to a change in the issues for the
      * given userId.
      */
+    // TODO(b/266819195): Make sure to do the right thing if this method is called for a userId
+    //   which is not running. We might want to update data related to it, but not send
+    //   the notification...
     void updateNotifications(@UserIdInt int userId) {
         if (!SafetyCenterFlags.getNotificationsEnabled()) {
             return;
