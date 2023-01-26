@@ -152,6 +152,13 @@ android_app {
         "lottie",
         "safety-label",
         "role-controller",
+        "androidx.compose.runtime_runtime",
+        "androidx.annotation_annotation",
+        "androidx.compose.ui_ui",
+        "androidx.compose.foundation_foundation",
+        "androidx.wear.compose_compose-foundation",
+        "androidx.compose.material3_material3",
+        "androidx.activity_activity-compose",
     ],
 
     proto: {

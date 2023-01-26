@@ -96,8 +96,7 @@ class PermissionAppsViewModel(
     val categorizedAppsLiveData = CategorizedAppsLiveData(groupName)
 
     @get:RequiresApi(Build.VERSION_CODES.S)
-    val sensorStatusLiveData: SensorStatusLiveData by lazy(LazyThreadSafetyMode.NONE)
-    @RequiresApi(Build.VERSION_CODES.S) {
+    val sensorStatusLiveData: SensorStatusLiveData by lazy(LazyThreadSafetyMode.NONE) {
         SensorStatusLiveData()
     }
 
