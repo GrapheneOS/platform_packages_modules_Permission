@@ -18,7 +18,6 @@ package com.android.safetycenter.data;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
-import static com.android.safetycenter.internaldata.SafetyCenterIds.toUserFriendlyString;
 import static com.android.safetycenter.logging.SafetyCenterStatsdLogger.toSystemEventResult;
 
 import android.annotation.NonNull;
@@ -27,7 +26,6 @@ import android.annotation.UserIdInt;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
-import android.os.SystemClock;
 import android.safetycenter.SafetyCenterData;
 import android.safetycenter.SafetyEvent;
 import android.safetycenter.SafetySourceData;
@@ -52,10 +50,8 @@ import com.android.safetycenter.SafetySources;
 import com.android.safetycenter.UserProfileGroup;
 import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
-import com.android.safetycenter.logging.SafetyCenterStatsdLogger;
 
 import java.io.PrintWriter;
-import java.time.Duration;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -64,7 +60,7 @@ import javax.annotation.concurrent.NotThreadSafe;
 
 /**
  * Repository for {@link SafetySourceData} and other data managed by Safety Center including {@link
- * SafetySourceErrorDetails} and metadata about which issue actions are in-flight.
+ * SafetySourceErrorDetails}.
  *
  * <p>This class isn't thread safe. Thread safety must be handled by the caller.
  *
@@ -72,36 +68,41 @@ import javax.annotation.concurrent.NotThreadSafe;
  */
 @RequiresApi(TIRAMISU)
 @NotThreadSafe
-public final class SafetyCenterRepository {
+public final class SafetySourceDataRepository {
 
-    private static final String TAG = "SafetyCenterRepository";
+    private static final String TAG = "SafetySourceDataRepo";
 
     private final ArrayMap<SafetySourceKey, SafetySourceData> mSafetySourceDataForKey =
             new ArrayMap<>();
 
     private final ArraySet<SafetySourceKey> mSafetySourceErrors = new ArraySet<>();
 
-    private final ArrayMap<SafetyCenterIssueActionId, Long> mSafetyCenterIssueActionsInFlight =
-            new ArrayMap<>();
-
     @NonNull private final Context mContext;
     @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
     @NonNull private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker;
-    @NonNull private final SafetyCenterStatsdLogger mSafetyCenterStatsdLogger;
-    @NonNull private final SafetyCenterIssueRepository mSafetyCenterIssueRepository;
+
+    @NonNull
+    private final SafetyCenterInFlightIssueActionRepository
+            mSafetyCenterInFlightIssueActionRepository;
+
+    @NonNull
+    private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
+
     @NonNull private final PackageManager mPackageManager;
 
-    public SafetyCenterRepository(
+    public SafetySourceDataRepository(
             @NonNull Context context,
             @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
             @NonNull SafetyCenterRefreshTracker safetyCenterRefreshTracker,
-            @NonNull SafetyCenterStatsdLogger safetyCenterStatsdLogger,
-            @NonNull SafetyCenterIssueRepository safetyCenterIssueRepository) {
+            @NonNull
+                    SafetyCenterInFlightIssueActionRepository
+                            safetyCenterInFlightIssueActionRepository,
+            @NonNull SafetyCenterIssueDismissalRepository safetyCenterIssueDismissalRepository) {
         mContext = context;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
         mSafetyCenterRefreshTracker = safetyCenterRefreshTracker;
-        mSafetyCenterStatsdLogger = safetyCenterStatsdLogger;
-        mSafetyCenterIssueRepository = safetyCenterIssueRepository;
+        mSafetyCenterInFlightIssueActionRepository = safetyCenterInFlightIssueActionRepository;
+        mSafetyCenterIssueDismissalRepository = safetyCenterIssueDismissalRepository;
         mPackageManager = mContext.getPackageManager();
     }
 
@@ -115,9 +116,10 @@ public final class SafetyCenterRepository {
      * SafetySourceData} does not respect all constraints defined in the config.
      *
      * <p>Setting a {@code null} {@link SafetySourceData} evicts the current {@link
-     * SafetySourceData} entry and clears the {@link SafetyCenterIssueRepository} for the source.
+     * SafetySourceData} entry and clears the {@link SafetyCenterIssueDismissalRepository} for the
+     * source.
      *
-     * <p>This method may modify the {@link SafetyCenterIssueRepository}.
+     * <p>This method may modify the {@link SafetyCenterIssueDismissalRepository}.
      */
     public boolean setSafetySourceData(
             @Nullable SafetySourceData safetySourceData,
@@ -148,7 +150,8 @@ public final class SafetyCenterRepository {
                 issueIds.add(safetySourceData.getIssues().get(i).getId());
             }
         }
-        mSafetyCenterIssueRepository.updateIssuesForSource(issueIds, safetySourceId, userId);
+        mSafetyCenterIssueDismissalRepository.updateIssuesForSource(
+                issueIds, safetySourceId, userId);
 
         return true;
     }
@@ -243,59 +246,6 @@ public final class SafetyCenterRepository {
         }
     }
 
-    /** Marks the given {@link SafetyCenterIssueActionId} as in-flight. */
-    public void markSafetyCenterIssueActionInFlight(
-            @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
-        mSafetyCenterIssueActionsInFlight.put(
-                safetyCenterIssueActionId, SystemClock.elapsedRealtime());
-    }
-
-    /**
-     * Unmarks the given {@link SafetyCenterIssueActionId} as in-flight, logs that event to statsd
-     * with the given {@code result} value, and returns {@code true} if the underlying {@link
-     * SafetyCenterData} changed.
-     */
-    public boolean unmarkSafetyCenterIssueActionInFlight(
-            @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId,
-            @SafetyCenterStatsdLogger.SystemEventResult int result) {
-        Long startElapsedMillis =
-                mSafetyCenterIssueActionsInFlight.remove(safetyCenterIssueActionId);
-        if (startElapsedMillis == null) {
-            Log.w(
-                    TAG,
-                    "Attempt to unmark unknown in-flight action: "
-                            + toUserFriendlyString(safetyCenterIssueActionId));
-            return false;
-        }
-
-        SafetyCenterIssueKey issueKey = safetyCenterIssueActionId.getSafetyCenterIssueKey();
-        SafetySourceIssue issue = getSafetySourceIssue(issueKey);
-        String issueTypeId = issue == null ? null : issue.getIssueTypeId();
-        Duration duration = Duration.ofMillis(SystemClock.elapsedRealtime() - startElapsedMillis);
-
-        mSafetyCenterStatsdLogger.writeInlineActionSystemEvent(
-                issueKey.getSafetySourceId(), issueKey.getUserId(), issueTypeId, duration, result);
-
-        if (issue == null || getSafetySourceIssueAction(safetyCenterIssueActionId) == null) {
-            Log.w(
-                    TAG,
-                    "Attempt to unmark in-flight action for a non-existent issue or action: "
-                            + toUserFriendlyString(safetyCenterIssueActionId));
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
-     * Dismisses the given {@link SafetyCenterIssueKey}.
-     *
-     * <p>This method may modify the {@link SafetyCenterIssueRepository}.
-     */
-    public void dismissSafetyCenterIssue(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
-        mSafetyCenterIssueRepository.dismissIssue(safetyCenterIssueKey);
-    }
-
     /**
      * Returns the {@link SafetySourceIssue} associated with the given {@link SafetyCenterIssueKey}.
      *
@@ -327,7 +277,7 @@ public final class SafetyCenterRepository {
             return null;
         }
 
-        if (mSafetyCenterIssueRepository.isIssueDismissed(
+        if (mSafetyCenterIssueDismissalRepository.isIssueDismissed(
                 safetyCenterIssueKey, targetIssue.getSeverityLevel())) {
             return null;
         }
@@ -354,29 +304,14 @@ public final class SafetyCenterRepository {
             return null;
         }
 
-        if (actionIsInFlight(safetyCenterIssueActionId)) {
-            return null;
-        }
-
-        List<SafetySourceIssue.Action> safetySourceIssueActions = safetySourceIssue.getActions();
-        for (int i = 0; i < safetySourceIssueActions.size(); i++) {
-            SafetySourceIssue.Action safetySourceIssueAction = safetySourceIssueActions.get(i);
-
-            if (safetyCenterIssueActionId
-                    .getSafetySourceIssueActionId()
-                    .equals(safetySourceIssueAction.getId())) {
-                return safetySourceIssueAction;
-            }
-        }
-
-        return null;
+        return mSafetyCenterInFlightIssueActionRepository.getSafetySourceIssueAction(
+                safetyCenterIssueActionId, safetySourceIssue);
     }
 
     /** Clears all {@link SafetySourceData}, errors, issues and in flight actions for all users. */
     public void clear() {
         mSafetySourceDataForKey.clear();
         mSafetySourceErrors.clear();
-        mSafetyCenterIssueActionsInFlight.clear();
     }
 
     /**
@@ -396,13 +331,6 @@ public final class SafetyCenterRepository {
             SafetySourceKey sourceKey = mSafetySourceErrors.valueAt(i);
             if (sourceKey.getUserId() == userId) {
                 mSafetySourceErrors.removeAt(i);
-            }
-        }
-        // Loop in reverse index order to be able to remove entries while iterating.
-        for (int i = mSafetyCenterIssueActionsInFlight.size() - 1; i >= 0; i--) {
-            SafetyCenterIssueActionId issueActionId = mSafetyCenterIssueActionsInFlight.keyAt(i);
-            if (issueActionId.getSafetyCenterIssueKey().getUserId() == userId) {
-                mSafetyCenterIssueActionsInFlight.removeAt(i);
             }
         }
     }
@@ -425,21 +353,6 @@ public final class SafetyCenterRepository {
             fout.println("\t[" + i + "] " + key);
         }
         fout.println();
-
-        int actionInFlightCount = mSafetyCenterIssueActionsInFlight.size();
-        fout.println("ACTIONS IN FLIGHT (" + actionInFlightCount + ")");
-        for (int i = 0; i < actionInFlightCount; i++) {
-            String printableId = toUserFriendlyString(mSafetyCenterIssueActionsInFlight.keyAt(i));
-            long startElapsedMillis = mSafetyCenterIssueActionsInFlight.valueAt(i);
-            long durationMillis = SystemClock.elapsedRealtime() - startElapsedMillis;
-            fout.println("\t[" + i + "] " + printableId + "(duration=" + durationMillis + "ms)");
-        }
-        fout.println();
-    }
-
-    /** Returns {@code true} if the given issue action is in flight. */
-    public boolean actionIsInFlight(@NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
-        return mSafetyCenterIssueActionsInFlight.containsKey(safetyCenterIssueActionId);
     }
 
     /** Returns {@code true} if the given source has an error. */
@@ -647,7 +560,11 @@ public final class SafetyCenterRepository {
                                 .build();
                 boolean success = type == SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED;
                 int result = toSystemEventResult(success);
-                return unmarkSafetyCenterIssueActionInFlight(safetyCenterIssueActionId, result);
+                return mSafetyCenterInFlightIssueActionRepository
+                        .unmarkSafetyCenterIssueActionInFlight(
+                                safetyCenterIssueActionId,
+                                getSafetySourceIssue(safetyCenterIssueKey),
+                                result);
             case SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED:
             case SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_LOCALE_CHANGED:
             case SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_REBOOTED:

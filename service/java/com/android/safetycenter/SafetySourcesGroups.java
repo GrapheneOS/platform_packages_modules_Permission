@@ -23,6 +23,8 @@ import android.safetycenter.config.SafetySourcesGroup;
 
 import androidx.annotation.RequiresApi;
 
+import com.android.modules.utils.build.SdkLevel;
+
 /** Static utilities for working with {@link SafetySourcesGroup} objects. */
 @RequiresApi(TIRAMISU)
 final class SafetySourcesGroups {
@@ -34,11 +36,16 @@ final class SafetySourcesGroups {
     @NonNull
     static SafetySourcesGroup.Builder copyToBuilderWithoutSources(
             @NonNull SafetySourcesGroup group) {
-        return new SafetySourcesGroup.Builder()
-                .setId(group.getId())
-                .setTitleResId(group.getTitleResId())
-                .setSummaryResId(group.getSummaryResId())
-                .setStatelessIconType(group.getStatelessIconType());
+        SafetySourcesGroup.Builder safetySourcesGroupBuilder =
+                new SafetySourcesGroup.Builder()
+                        .setId(group.getId())
+                        .setTitleResId(group.getTitleResId())
+                        .setSummaryResId(group.getSummaryResId())
+                        .setStatelessIconType(group.getStatelessIconType());
+        if (SdkLevel.isAtLeastU()) {
+            safetySourcesGroupBuilder.setType(group.getType());
+        }
+        return safetySourcesGroupBuilder;
     }
 
     private SafetySourcesGroups() {}

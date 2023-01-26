@@ -72,24 +72,29 @@
                 style="@style/SafetyCenterQsSectionTitle"/>
 
             <LinearLayout
-                android:background="@drawable/safety_entity_top_large_bottom_flat_background"
-                style="@style/SafetyCenterQsToggleContainer.Top">
-                <include android:id="@+id/camera_toggle"
-                         layout="@layout/safety_center_toggle_button"
-                         style="@style/SafetyCenterQsToggleButton.Start"/>
-                <include android:id="@+id/mic_toggle"
-                         layout="@layout/safety_center_toggle_button"
-                         style="@style/SafetyCenterQsToggleButton.End"/>
-            </LinearLayout>
-            <LinearLayout
-                android:background="@drawable/safety_entity_top_flat_bottom_large_background"
-                style="@style/SafetyCenterQsToggleContainer.Bottom">
-                <include android:id="@+id/location_toggle"
-                         layout="@layout/safety_center_toggle_button"
-                         style="@style/SafetyCenterQsToggleButton.Start"/>
-                <include android:id="@+id/security_settings_button"
-                         layout="@layout/safety_center_toggle_button"
-                         style="@style/SafetyCenterQsToggleButton.End"/>
+                android:background="@drawable/safety_entity_top_large_bottom_large_background"
+                style="@style/SafetyCenterQsToggleContainer">
+
+                <LinearLayout
+                    style="@style/SafetyCenterQsToggleRow">
+                    <include android:id="@+id/camera_toggle"
+                             layout="@layout/safety_center_toggle_button"
+                             style="@style/SafetyCenterQsToggleButton"/>
+                    <include android:id="@+id/mic_toggle"
+                             layout="@layout/safety_center_toggle_button"
+                             style="@style/SafetyCenterQsToggleButton"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/SafetyCenterQsToggleRow">
+                    <include android:id="@+id/location_toggle"
+                             layout="@layout/safety_center_toggle_button"
+                             style="@style/SafetyCenterQsToggleButton"/>
+                    <include android:id="@+id/security_settings_button"
+                             layout="@layout/safety_center_toggle_button"
+                             style="@style/SafetyCenterQsToggleButton"/>
+                </LinearLayout>
+
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

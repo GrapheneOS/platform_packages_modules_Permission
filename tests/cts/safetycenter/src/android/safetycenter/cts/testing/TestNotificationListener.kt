@@ -252,16 +252,17 @@ class TestNotificationListener : NotificationListenerService() {
             // SafetyCenterNotificationReceiver#onReceive and subsequent calls that set source data
             // and that race makes tests flaky because the dismissal status of the previous
             // notification is not well defined.
-            fun dumpIssueCacheState(): String =
-                SystemUtil.runShellCommand("dumpsys safety_center issues")
+            fun dumpIssueDismissalsRepositoryState(): String =
+                SystemUtil.runShellCommand("dumpsys safety_center dismissals")
             try {
                 waitForWithTimeout {
-                    dumpIssueCacheState().contains(Regex("""mNotificationDismissedAt=\d+"""))
+                    dumpIssueDismissalsRepositoryState()
+                        .contains(Regex("""mNotificationDismissedAt=\d+"""))
                 }
             } catch (e: TimeoutCancellationException) {
                 throw IllegalStateException(
                     "Notification dismissal was not recorded in the issue cache: " +
-                        dumpIssueCacheState(),
+                        dumpIssueDismissalsRepositoryState(),
                     e
                 )
             }

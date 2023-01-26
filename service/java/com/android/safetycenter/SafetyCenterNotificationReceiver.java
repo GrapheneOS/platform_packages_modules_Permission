@@ -30,7 +30,7 @@ import android.util.Log;
 import androidx.annotation.RequiresApi;
 
 import com.android.internal.annotations.GuardedBy;
-import com.android.safetycenter.data.SafetyCenterIssueRepository;
+import com.android.safetycenter.data.SafetyCenterIssueDismissalRepository;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
 import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
@@ -127,16 +127,16 @@ final class SafetyCenterNotificationReceiver extends BroadcastReceiver {
 
     @GuardedBy("mApiLock")
     @NonNull
-    private final SafetyCenterIssueRepository mSafetyCenterIssueRepository;
+    private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
 
     @NonNull private final Object mApiLock;
 
     SafetyCenterNotificationReceiver(
             @NonNull SafetyCenterService service,
-            @NonNull SafetyCenterIssueRepository safetyCenterIssueRepository,
+            @NonNull SafetyCenterIssueDismissalRepository safetyCenterIssueDismissalRepository,
             @NonNull Object apiLock) {
         mService = service;
-        mSafetyCenterIssueRepository = safetyCenterIssueRepository;
+        mSafetyCenterIssueDismissalRepository = safetyCenterIssueDismissalRepository;
         mApiLock = apiLock;
     }
 
@@ -186,7 +186,7 @@ final class SafetyCenterNotificationReceiver extends BroadcastReceiver {
             return;
         }
         synchronized (mApiLock) {
-            mSafetyCenterIssueRepository.dismissNotification(issueKey);
+            mSafetyCenterIssueDismissalRepository.dismissNotification(issueKey);
         }
     }
 

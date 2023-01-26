@@ -31,7 +31,6 @@ import android.safetycenter.cts.testing.TestNotificationListener
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
-import com.android.safetycenter.testing.Coroutines.TIMEOUT_LONG
 import com.android.safetycenter.testing.Coroutines.TIMEOUT_SHORT
 import com.android.safetycenter.testing.SafetyCenterActivityLauncher.executeBlockAndExit
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.clearAllSafetySourceDataForTestsWithPermission
@@ -48,6 +47,7 @@ import com.android.safetycenter.testing.SafetySourceIntentHandler.Request
 import com.android.safetycenter.testing.SafetySourceIntentHandler.Response
 import com.android.safetycenter.testing.SafetySourceReceiver
 import com.android.safetycenter.testing.SafetySourceTestData
+import com.android.safetycenter.testing.SafetySourceTestData.Companion.ISSUE_TYPE_ID
 import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
 import com.android.safetycenter.testing.UiTestHelper.waitSourceIssueDisplayed
 import com.google.common.truth.Truth.assertThat
@@ -90,6 +90,8 @@ class SafetyCenterNotificationTest {
         TestNotificationListener.setup()
         SafetyCenterFlags.notificationsEnabled = true
         SafetyCenterFlags.notificationsAllowedSources = setOf(SINGLE_SOURCE_ID)
+        SafetyCenterFlags.immediateNotificationBehaviorIssues =
+            setOf("$SINGLE_SOURCE_ID/$ISSUE_TYPE_ID")
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
     }
 
@@ -107,6 +109,18 @@ class SafetyCenterNotificationTest {
     @Test
     fun setSafetySourceData_withNoIssue_noNotification() {
         safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, safetySourceTestData.information)
+
+        TestNotificationListener.waitForZeroNotifications()
+    }
+
+    @Test
+    fun setSafetySourceData_withoutImmediateNotificationBehavior_noNotification() {
+        SafetyCenterFlags.immediateNotificationBehaviorIssues = emptySet()
+
+        safetyCenterTestHelper.setData(
+            SINGLE_SOURCE_ID,
+            safetySourceTestData.recommendationWithAccountIssue
+        )
 
         TestNotificationListener.waitForZeroNotifications()
     }
@@ -171,7 +185,7 @@ class SafetyCenterNotificationTest {
 
         safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, data)
 
-        TestNotificationListener.waitForZeroNotifications(TIMEOUT_LONG)
+        TestNotificationListener.waitForZeroNotifications()
     }
 
     @Test
@@ -222,6 +236,7 @@ class SafetyCenterNotificationTest {
     @Test
     @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun setSafetySourceData_withNotificationBehaviorDelayOfZero_sendsNotificationImmediately() {
+        SafetyCenterFlags.immediateNotificationBehaviorIssues = emptySet()
         SafetyCenterFlags.notificationsMinDelay = Duration.ofSeconds(0)
         val data =
             safetySourceTestData
@@ -248,6 +263,7 @@ class SafetyCenterNotificationTest {
     @Test
     @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun setSafetySourceData_withNotificationBehaviorImmediately_sendsNotification() {
+        SafetyCenterFlags.immediateNotificationBehaviorIssues = emptySet()
         val data =
             safetySourceTestData
                 .defaultRecommendationDataBuilder()
@@ -324,6 +340,8 @@ class SafetyCenterNotificationTest {
     @Test
     @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun setSafetySourceData_withNotificationsAllowedForSourceByConfig_sendsNotification() {
+        SafetyCenterFlags.notificationsAllowedSources = emptySet()
+        SafetyCenterFlags.immediateNotificationBehaviorIssues = emptySet()
         safetyCenterTestHelper.setConfig(
             safetyCenterTestConfigs.singleSourceConfig(
                 safetyCenterTestConfigs
@@ -332,7 +350,18 @@ class SafetyCenterNotificationTest {
                     .build()
             )
         )
-        val data = safetySourceTestData.recommendationWithAccountIssue
+        val data =
+            safetySourceTestData
+                .defaultRecommendationDataBuilder()
+                .addIssue(
+                    safetySourceTestData
+                        .defaultRecommendationIssueBuilder("Notify immediately", "This is urgent!")
+                        .setNotificationBehavior(
+                            SafetySourceIssue.NOTIFICATION_BEHAVIOR_IMMEDIATELY
+                        )
+                        .build()
+                )
+                .build()
 
         safetyCenterTestHelper.setData("MyNotifiableSource", data)
 
@@ -727,6 +756,8 @@ class SafetyCenterNotificationTest {
     fun sendContentPendingIntent_anotherHigherSeverityIssue_opensSafetyCenterWithIssueVisible() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.multipleSourcesConfig)
         SafetyCenterFlags.notificationsAllowedSources = setOf(SOURCE_ID_1)
+        SafetyCenterFlags.immediateNotificationBehaviorIssues =
+            setOf("$SOURCE_ID_1/$ISSUE_TYPE_ID", "$SOURCE_ID_2/$ISSUE_TYPE_ID")
         safetyCenterTestHelper.setData(
             SOURCE_ID_1,
             safetySourceTestData.recommendationWithDeviceIssue

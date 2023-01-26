@@ -76,6 +76,17 @@ object SafetyCenterFlags {
         )
 
     /**
+     * Flag containing a comma-delimited list of the issue type IDs for which, if otherwise
+     * undefined, Safety Center should use the "immediate" notification behavior.
+     */
+    private val immediateNotificationBehaviorIssuesFlag =
+        Flag(
+            "safety_center_notifications_immediate_behavior_issues",
+            defaultValue = emptySet(),
+            SetParser(StringParser())
+        )
+
+    /**
      * Flag that determines whether we should show error entries for sources that timeout when
      * refreshing them.
      */
@@ -259,6 +270,7 @@ object SafetyCenterFlags {
             notificationsFlag,
             notificationsAllowedSourcesFlag,
             notificationsMinDelayFlag,
+            immediateNotificationBehaviorIssuesFlag,
             showErrorEntriesOnTimeoutFlag,
             replaceLockScreenIconActionFlag,
             refreshSourceTimeoutsFlag,
@@ -290,11 +302,14 @@ object SafetyCenterFlags {
     /** A property that allows getting and setting the [notificationsFlag]. */
     var notificationsEnabled: Boolean by notificationsFlag
 
-    /** A property that allowed getting and setting the [notificationsAllowedSourcesFlag]. */
+    /** A property that allows getting and setting the [notificationsAllowedSourcesFlag]. */
     var notificationsAllowedSources: Set<String> by notificationsAllowedSourcesFlag
 
     /** A property that allows getting and setting the [notificationsMinDelayFlag]. */
     var notificationsMinDelay: Duration by notificationsMinDelayFlag
+
+    /** A property that allows getting and setting the [immediateNotificationBehaviorIssuesFlag]. */
+    var immediateNotificationBehaviorIssues: Set<String> by immediateNotificationBehaviorIssuesFlag
 
     /** A property that allows getting and setting the [showErrorEntriesOnTimeoutFlag]. */
     var showErrorEntriesOnTimeout: Boolean by showErrorEntriesOnTimeoutFlag
