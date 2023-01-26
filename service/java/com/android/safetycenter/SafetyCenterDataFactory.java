@@ -195,7 +195,7 @@ public final class SafetyCenterDataFactory {
         }
 
         List<SafetySourceIssueInfo> issuesInfo =
-                mSafetyCenterIssueRepository.getActiveIssuesDedupedSortedDesc(userProfileGroup);
+                mSafetyCenterIssueRepository.getIssuesDedupedSortedDescFor(userProfileGroup);
 
         List<SafetyCenterIssue> safetyCenterIssues = new ArrayList<>();
         List<SafetyCenterIssue> safetyCenterDismissedIssues = new ArrayList<>();
