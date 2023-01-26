@@ -591,6 +591,5 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Tunjukkan mesej apabila apl mengakses teks, imej atau kandungan lain yang telah anda salin"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Tunjukkan kata laluan"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Paparkan aksara seketika sambil anda menaip"</string>
-    <!-- no translation found for permission_rationale_message_location (2153841534298068414) -->
-    <skip />
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"Apl ini menyatakan bahawa data lokasi mungkin dikongsi dengan pihak ketiga"</string>
 </resources>
