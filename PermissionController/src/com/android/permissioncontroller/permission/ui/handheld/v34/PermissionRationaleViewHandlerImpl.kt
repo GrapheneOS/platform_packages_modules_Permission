@@ -46,7 +46,8 @@ import com.android.permissioncontroller.permission.ui.v34.PermissionRationaleVie
 @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
 class PermissionRationaleViewHandlerImpl(
     private val mActivity: Activity,
-    private val resultListener: PermissionRationaleViewHandler.ResultListener
+    private val resultListener: PermissionRationaleViewHandler.ResultListener,
+    private val shouldShowSettingsSection: Boolean
 ) : PermissionRationaleViewHandler, OnClickListener {
 
     private var groupName: String? = null
@@ -158,6 +159,10 @@ class PermissionRationaleViewHandlerImpl(
         settingsMessageView = rootView.findViewById(R.id.settings_message)
         settingsMessageView!!.movementMethod = LinkMovementMethod.getInstance()
 
+        if (!shouldShowSettingsSection) {
+            val settingsSectionView: ViewGroup? = rootView.findViewById(R.id.settings_section)
+            settingsSectionView?.visibility = View.GONE
+        }
         backButton = rootView.findViewById<Button>(R.id.back_button)!!.apply {
             setOnClickListener(this@PermissionRationaleViewHandlerImpl)
 
