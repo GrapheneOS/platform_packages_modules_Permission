@@ -34,12 +34,14 @@ import android.os.Process
 import android.os.UserHandle
 import android.os.UserManager
 import android.permission.PermissionGroupUsage
+import android.provider.DeviceConfig
 import android.provider.Settings
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.data.LightAppPermGroupLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
@@ -55,6 +57,8 @@ class SafetyCenterQsViewModel(
     private val sessionId: Long,
     private val permGroupUsages: List<PermissionGroupUsage>
 ) : AndroidViewModel(app) {
+    private val configMicToggleEnabled = app.getString(R.string.mic_toggle_enable_config)
+    private val configCameraToggleEnabled = app.getString(R.string.camera_toggle_enable_config)
 
     private val sensorPrivacyManager: SensorPrivacyManager =
         app.getSystemService(SensorPrivacyManager::class.java)!!
@@ -154,7 +158,7 @@ class SafetyCenterQsViewModel(
         fragment.startActivity(Intent(Settings.ACTION_SECURITY_SETTINGS))
     }
 
-    data class SensorState(val enabled: Boolean, val admin: EnforcedAdmin?)
+    data class SensorState(val visible: Boolean, val enabled: Boolean, val admin: EnforcedAdmin?)
 
     val sensorPrivacyLiveData: SmartUpdateMediatorLiveData<Map<String, SensorState>> =
         object :
@@ -170,11 +174,16 @@ class SafetyCenterQsViewModel(
                 value =
                     mapOf(
                         CAMERA to
-                            getSensorState(Sensors.CAMERA, UserManager.DISALLOW_CAMERA_TOGGLE),
+                            getSensorState(
+                                Sensors.CAMERA,
+                                UserManager.DISALLOW_CAMERA_TOGGLE,
+                                configCameraToggleEnabled),
                         MICROPHONE to
                             getSensorState(
-                                Sensors.MICROPHONE, UserManager.DISALLOW_MICROPHONE_TOGGLE),
-                        LOCATION to SensorState(locationEnabled, locationEnforcedAdmin))
+                                Sensors.MICROPHONE,
+                                UserManager.DISALLOW_MICROPHONE_TOGGLE,
+                                configMicToggleEnabled),
+                        LOCATION to SensorState(true, locationEnabled, locationEnforcedAdmin))
             }
 
             override fun onSensorPrivacyChanged(sensor: Int, enabled: Boolean) {
@@ -201,10 +210,18 @@ class SafetyCenterQsViewModel(
             }
         }
 
-    private fun getSensorState(sensor: Int, restriction: String) =
-        SensorState(
+    private fun getSensorState(
+        sensor: Int,
+        restriction: String,
+        enableConfig: String
+    ): SensorState {
+        val sensorConfigEnabled =
+            DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY, enableConfig, true)
+        return SensorState(
+            sensorConfigEnabled && sensorPrivacyManager.supportsSensorToggle(sensor),
             !sensorPrivacyManager.isSensorPrivacyEnabled(TOGGLE_TYPE_SOFTWARE, sensor),
             getEnforcedAdmin(restriction))
+    }
 
     private fun getEnforcedAdmin(restriction: String) =
         if (userManager
