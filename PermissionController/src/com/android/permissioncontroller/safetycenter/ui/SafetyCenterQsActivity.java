@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.ui;
+package com.android.permissioncontroller.safetycenter.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,7 +24,6 @@ import android.permission.PermissionManager;
 import androidx.fragment.app.FragmentActivity;
 
 import com.android.modules.utils.build.SdkLevel;
-import com.android.permissioncontroller.permission.ui.handheld.v33.SafetyCenterQsFragment;
 import com.android.permissioncontroller.permission.utils.Utils;
 
 /** Activity for the Safety Center Quick Settings Activity */

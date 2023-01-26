@@ -20,21 +20,25 @@ import static android.os.Build.VERSION_CODES.TIRAMISU;
 
 import static com.android.safetycenter.internaldata.SafetyCenterIds.toUserFriendlyString;
 
+import android.annotation.NonNull;
 import android.annotation.UserIdInt;
 import android.safetycenter.SafetySourceIssue;
 import android.safetycenter.config.SafetySource;
 import android.safetycenter.config.SafetySourcesGroup;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 
 import java.util.Objects;
 
-/** Contains various information about a {@link SafetySourceIssue}. */
+/**
+ * Contains various information about a {@link SafetySourceIssue}.
+ *
+ * @hide
+ */
 @RequiresApi(TIRAMISU)
-final class SafetySourceIssueInfo {
+public final class SafetySourceIssueInfo {
 
     @NonNull private final SafetySourceIssue mSafetySourceIssue;
     @NonNull private final SafetySource mSafetySource;
@@ -42,7 +46,7 @@ final class SafetySourceIssueInfo {
     @NonNull private final SafetyCenterIssueKey mSafetyCenterIssueKey;
 
     /** Creates a new {@link SafetySourceIssueInfo} instance. */
-    SafetySourceIssueInfo(
+    public SafetySourceIssueInfo(
             @NonNull SafetySourceIssue safetySourceIssue,
             @NonNull SafetySource safetySource,
             @NonNull SafetySourcesGroup safetySourcesGroup,
@@ -60,24 +64,24 @@ final class SafetySourceIssueInfo {
 
     /** Returns the {@link SafetyCenterIssueKey} related to this {@link SafetySourceIssue}. */
     @NonNull
-    SafetyCenterIssueKey getSafetyCenterIssueKey() {
+    public SafetyCenterIssueKey getSafetyCenterIssueKey() {
         return mSafetyCenterIssueKey;
     }
     /** Returns the {@link SafetySourceIssue}. */
     @NonNull
-    SafetySourceIssue getSafetySourceIssue() {
+    public SafetySourceIssue getSafetySourceIssue() {
         return mSafetySourceIssue;
     }
 
     /** Returns the {@link SafetySource} related to this {@link SafetySourceIssue}. */
     @NonNull
-    SafetySource getSafetySource() {
+    public SafetySource getSafetySource() {
         return mSafetySource;
     }
 
     /** Returns the {@link SafetySourcesGroup} related to this {@link SafetySourceIssue}. */
     @NonNull
-    SafetySourcesGroup getSafetySourcesGroup() {
+    public SafetySourcesGroup getSafetySourcesGroup() {
         return mSafetySourcesGroup;
     }
 

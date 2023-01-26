@@ -98,7 +98,7 @@ public final class UserProfileGroup {
      * <p>The given {@code userId} could be related to the profile parent or any of its associated
      * managed profile(s).
      */
-    static UserProfileGroup from(@NonNull Context context, @UserIdInt int userId) {
+    public static UserProfileGroup from(@NonNull Context context, @UserIdInt int userId) {
         UserManager userManager = getUserManagerForUser(userId, context);
         List<UserHandle> userProfiles = getEnabledUserProfiles(userManager);
         UserHandle profileParent = getProfileParent(userManager, userId);
@@ -180,13 +180,31 @@ public final class UserProfileGroup {
     }
 
     /** Returns the managed profile user ids of the {@link UserProfileGroup}. */
-    int[] getManagedProfilesUserIds() {
+    public int[] getManagedProfilesUserIds() {
         return mManagedProfilesUserIds;
     }
 
     /** Returns the running managed profile user ids of the {@link UserProfileGroup}. */
     public int[] getManagedRunningProfilesUserIds() {
         return mManagedRunningProfilesUserIds;
+    }
+
+    /**
+     * Convenience method that combines the results of {@link
+     * UserProfileGroup#getProfileParentUserId()} and {@link
+     * UserProfileGroup#getManagedRunningProfilesUserIds()}.
+     */
+    public int[] getProfileParentAndManagedRunningProfilesUserIds() {
+        int[] profileParentAndManagedRunningProfilesUserIds =
+                new int[mManagedRunningProfilesUserIds.length + 1];
+        profileParentAndManagedRunningProfilesUserIds[0] = mProfileParentUserId;
+        System.arraycopy(
+                mManagedRunningProfilesUserIds,
+                0,
+                profileParentAndManagedRunningProfilesUserIds,
+                1,
+                mManagedRunningProfilesUserIds.length);
+        return profileParentAndManagedRunningProfilesUserIds;
     }
 
     /** Returns whether the {@link UserProfileGroup} contains the given {@code userId}. */

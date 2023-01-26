@@ -57,6 +57,9 @@ public final class SafetyCenterFlags {
     private static final String PROPERTY_NOTIFICATIONS_MIN_DELAY =
             "safety_center_notifications_min_delay";
 
+    private static final String PROPERTY_NOTIFICATIONS_IMMEDIATE_BEHAVIOR_ISSUES =
+            "safety_center_notifications_immediate_behavior_issues";
+
     private static final String PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT =
             "safety_center_show_error_entries_on_timeout";
 
@@ -114,6 +117,10 @@ public final class SafetyCenterFlags {
         printFlag(fout, PROPERTY_NOTIFICATIONS_ENABLED, getNotificationsEnabled());
         printFlag(fout, PROPERTY_NOTIFICATIONS_ALLOWED_SOURCES, getNotificationsAllowedSourceIds());
         printFlag(fout, PROPERTY_NOTIFICATIONS_MIN_DELAY, getNotificationsMinDelay());
+        printFlag(
+                fout,
+                PROPERTY_NOTIFICATIONS_IMMEDIATE_BEHAVIOR_ISSUES,
+                getImmediateNotificationBehaviorIssues());
         printFlag(fout, PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT, getShowErrorEntriesOnTimeout());
         printFlag(fout, PROPERTY_REPLACE_LOCK_SCREEN_ICON_ACTION, getReplaceLockScreenIconAction());
         printFlag(fout, PROPERTY_RESOLVING_ACTION_TIMEOUT_MILLIS, getResolvingActionTimeout());
@@ -183,6 +190,20 @@ public final class SafetyCenterFlags {
         return getDuration(
                 PROPERTY_NOTIFICATIONS_MIN_DELAY, NOTIFICATIONS_MIN_DELAY_DEFAULT_DURATION);
     }
+    /**
+     * Returns the issue type IDs for which, if otherwise undefined, Safety Center should use the
+     * "immediate" notification behavior.
+     *
+     * <p>If a safety source specifies the notification behavior of an issue explicitly this flag
+     * has no effect, even if the issue matches one of the entries in this flag.
+     *
+     * <p>Entries in this set should be strings of the form "safety_source_id/issue_type_id".
+     */
+    @NonNull
+    static ArraySet<String> getImmediateNotificationBehaviorIssues() {
+        return getCommaSeparatedStrings(PROPERTY_NOTIFICATIONS_IMMEDIATE_BEHAVIOR_ISSUES);
+    }
+
     /**
      * Returns whether we should show error entries for sources that timeout when refreshing them.
      */

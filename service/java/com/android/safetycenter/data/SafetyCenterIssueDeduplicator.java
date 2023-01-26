@@ -14,18 +14,19 @@
  * limitations under the License.
  */
 
-package com.android.safetycenter;
+package com.android.safetycenter.data;
 
 import static android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
 
 import android.annotation.NonNull;
+import android.annotation.Nullable;
+import android.annotation.UserIdInt;
 import android.util.ArrayMap;
 import android.util.ArraySet;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
-import com.android.safetycenter.data.SafetyCenterIssueRepository;
+import com.android.safetycenter.SafetySourceIssueInfo;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 
 import java.util.ArrayList;
@@ -35,16 +36,21 @@ import java.util.Objects;
 
 import javax.annotation.concurrent.NotThreadSafe;
 
-/** Deduplicates issues based on deduplication info provided by the source and the issue. */
+/**
+ * Deduplicates issues based on deduplication info provided by the source and the issue.
+ *
+ * @hide
+ */
 @RequiresApi(UPSIDE_DOWN_CAKE)
 @NotThreadSafe
-final class SafetyCenterIssueDeduplicator {
+public final class SafetyCenterIssueDeduplicator {
 
-    @NonNull private final SafetyCenterIssueRepository mSafetyCenterIssueRepository;
+    @NonNull
+    private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
 
-    SafetyCenterIssueDeduplicator(
-            @NonNull SafetyCenterIssueRepository safetyCenterIssueRepository) {
-        this.mSafetyCenterIssueRepository = safetyCenterIssueRepository;
+    public SafetyCenterIssueDeduplicator(
+            @NonNull SafetyCenterIssueDismissalRepository safetyCenterIssueDismissalRepository) {
+        this.mSafetyCenterIssueDismissalRepository = safetyCenterIssueDismissalRepository;
     }
 
     /**
@@ -110,7 +116,8 @@ final class SafetyCenterIssueDeduplicator {
                     && issueInfo.getSafetySourceIssue().getSeverityLevel()
                             <= topDismissedSeverityLevel) {
                 // all duplicate issues should have same dismissals data as top dismissed issue
-                mSafetyCenterIssueRepository.copyDismissalData(topDismissedIssueKey, issueKey);
+                mSafetyCenterIssueDismissalRepository.copyDismissalData(
+                        topDismissedIssueKey, issueKey);
             }
         }
     }
@@ -120,7 +127,7 @@ final class SafetyCenterIssueDeduplicator {
             @NonNull List<SafetySourceIssueInfo> duplicates) {
         for (int i = 0; i < duplicates.size(); i++) {
             SafetySourceIssueInfo issueInfo = duplicates.get(i);
-            if (mSafetyCenterIssueRepository.isIssueDismissed(
+            if (mSafetyCenterIssueDismissalRepository.isIssueDismissed(
                     issueInfo.getSafetyCenterIssueKey(),
                     issueInfo.getSafetySourceIssue().getSeverityLevel())) {
                 return issueInfo;
@@ -171,7 +178,7 @@ final class SafetyCenterIssueDeduplicator {
         return dedupBuckets;
     }
 
-    /** Returns deduplication key of the given issueInfo. */
+    /** Returns deduplication key of the given {@code issueInfo}. */
     @Nullable
     private static DeduplicationKey getDedupKey(@NonNull SafetySourceIssueInfo issueInfo) {
         String deduplicationGroup = issueInfo.getSafetySource().getDeduplicationGroup();
@@ -180,23 +187,30 @@ final class SafetyCenterIssueDeduplicator {
         if (deduplicationGroup == null || deduplicationId == null) {
             return null;
         }
-        return new DeduplicationKey(deduplicationGroup, deduplicationId);
+        return new DeduplicationKey(
+                deduplicationGroup,
+                deduplicationId,
+                issueInfo.getSafetyCenterIssueKey().getUserId());
     }
 
     private static class DeduplicationKey {
 
         @NonNull private final String mDeduplicationGroup;
         @NonNull private final String mDeduplicationId;
+        private final int mUserId;
 
         private DeduplicationKey(
-                @NonNull String deduplicationGroup, @NonNull String deduplicationId) {
+                @NonNull String deduplicationGroup,
+                @NonNull String deduplicationId,
+                @UserIdInt int userId) {
             mDeduplicationGroup = deduplicationGroup;
             mDeduplicationId = deduplicationId;
+            mUserId = userId;
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(mDeduplicationGroup, mDeduplicationId);
+            return Objects.hash(mDeduplicationGroup, mDeduplicationId, mUserId);
         }
 
         @Override
@@ -205,7 +219,8 @@ final class SafetyCenterIssueDeduplicator {
             if (!(o instanceof DeduplicationKey)) return false;
             DeduplicationKey dedupKey = (DeduplicationKey) o;
             return mDeduplicationGroup.equals(dedupKey.mDeduplicationGroup)
-                    && mDeduplicationId.equals(dedupKey.mDeduplicationId);
+                    && mDeduplicationId.equals(dedupKey.mDeduplicationId)
+                    && mUserId == dedupKey.mUserId;
         }
     }
 }

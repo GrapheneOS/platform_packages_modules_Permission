@@ -40,11 +40,13 @@ class AppDataSharingUpdatesLiveData(val app: Application) :
     SmartAsyncMediatorLiveData<List<AppDataSharingUpdate>>(),
     AppsSafetyLabelHistoryPersistence.ChangeListener {
 
-    override suspend fun loadDataAndPostValue(job: Job) {
+    init {
         // TODO(b/261660881): This code serves to enable testing business logic in CTS. Remove when
         //  we install apps with metadata in CTS tests.
         writeTestSafetyLabelsToPersistence()
+    }
 
+    override suspend fun loadDataAndPostValue(job: Job) {
         val updatePeriod =
                 DeviceConfig.getLong(
                         DeviceConfig.NAMESPACE_PRIVACY,

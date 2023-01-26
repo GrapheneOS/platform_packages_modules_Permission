@@ -18,45 +18,40 @@ package com.android.safetycenter.data;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
-import static com.android.safetycenter.internaldata.SafetyCenterIds.toUserFriendlyString;
+import static java.util.Collections.emptyList;
+import static java.util.Collections.unmodifiableList;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
+import android.content.Context;
 import android.safetycenter.SafetySourceData;
-import android.util.ArrayMap;
-import android.util.ArraySet;
-import android.util.Log;
+import android.safetycenter.SafetySourceIssue;
+import android.safetycenter.config.SafetySource;
+import android.safetycenter.config.SafetySourcesGroup;
+import android.util.SparseArray;
 
 import androidx.annotation.RequiresApi;
 
+import com.android.modules.utils.build.SdkLevel;
+import com.android.permission.util.UserUtils;
 import com.android.safetycenter.SafetyCenterConfigReader;
-import com.android.safetycenter.SafetyCenterFlags;
+import com.android.safetycenter.SafetySourceIssueInfo;
+import com.android.safetycenter.SafetySourceKey;
 import com.android.safetycenter.SafetySources;
 import com.android.safetycenter.UserProfileGroup;
-import com.android.safetycenter.internaldata.SafetyCenterIds;
-import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
-import com.android.safetycenter.persistence.PersistedSafetyCenterIssue;
 
 import java.io.PrintWriter;
-import java.time.Duration;
-import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
 
 import javax.annotation.concurrent.NotThreadSafe;
 
 /**
- * Repository to manage data about all the issues sent to Safety Center, in particular whether a
- * given issue should currently be considered dismissed.
+ * Contains issue related data.
  *
- * <p>The contents of this repository can be populated from and persisted to disk using the {@link
- * #load(List)} and {@link #snapshot()} methods. When {@link #isDirty()} returns {@code true} that
- * means that the contents of the repository may have changed since the last load or snapshot
- * occurred.
- *
- * <p>This class isn't thread safe. Thread safety must be handled by the caller.
+ * <p>Responsible for generating lists of issues and deduplication of issues.
  *
  * @hide
  */
@@ -64,32 +59,86 @@ import javax.annotation.concurrent.NotThreadSafe;
 @NotThreadSafe
 public final class SafetyCenterIssueRepository {
 
-    private static final String TAG = "SafetyCenterIssueRepo";
+    private static final SafetySourceIssuesInfoBySeverityDescending
+            SAFETY_SOURCE_ISSUES_INFO_BY_SEVERITY_DESCENDING =
+                    new SafetySourceIssuesInfoBySeverityDescending();
 
+    @NonNull private final Context mContext;
+    @NonNull private final SafetySourceDataRepository mSafetySourceDataRepository;
     @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
 
-    private final ArrayMap<SafetyCenterIssueKey, IssueData> mIssues = new ArrayMap<>();
-    private boolean mIsDirty = false;
+    // Only available on Android U+.
+    @Nullable private final SafetyCenterIssueDeduplicator mSafetyCenterIssueDeduplicator;
 
-    public SafetyCenterIssueRepository(@NonNull SafetyCenterConfigReader safetyCenterConfigReader) {
+    // userId -> sorted and deduplicated list of issues
+    private final SparseArray<List<SafetySourceIssueInfo>> mUserIdToIssuesInfo =
+            new SparseArray<>();
+
+    public SafetyCenterIssueRepository(
+            @NonNull Context context,
+            @NonNull SafetySourceDataRepository safetySourceDataRepository,
+            @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
+            @Nullable SafetyCenterIssueDeduplicator safetyCenterIssueDeduplicator) {
+        mContext = context;
+        mSafetySourceDataRepository = safetySourceDataRepository;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
+        mSafetyCenterIssueDeduplicator = safetyCenterIssueDeduplicator;
     }
 
     /**
-     * Counts the total number of issues in the issue repository, from currently-active, loggable
-     * sources, in the given {@link UserProfileGroup}.
+     * Updates the class as per the current state of issues. Should be called after any state update
+     * that can affect issues.
+     */
+    public void updateIssues(@NonNull UserProfileGroup userProfileGroup) {
+        updateIssues(userProfileGroup.getProfileParentUserId(), /* isManagedProfile= */ false);
+
+        int[] managedProfileUserIds = userProfileGroup.getManagedProfilesUserIds();
+        for (int i = 0; i < managedProfileUserIds.length; i++) {
+            updateIssues(managedProfileUserIds[i], /* isManagedProfile= */ true);
+        }
+    }
+
+    /**
+     * Updates the class as per the current state of issues. Should be called after any state update
+     * that can affect issues.
+     */
+    public void updateIssues(@UserIdInt int userId) {
+        updateIssues(userId, UserUtils.isManagedProfile(userId, mContext));
+    }
+
+    private void updateIssues(@UserIdInt int userId, boolean isManagedProfile) {
+        List<SafetySourceIssueInfo> issues =
+                getAllStoredIssuesFromRawSourceData(userId, isManagedProfile);
+        processIssues(issues);
+        mUserIdToIssuesInfo.put(userId, unmodifiableList(issues));
+    }
+
+    /**
+     * Fetches a list of active issues related to the given {@link UserProfileGroup}.
+     *
+     * <p>Issues in the list are sorted in descending order and deduplicated (if applicable, only on
+     * Android U+).
+     */
+    @NonNull
+    public List<SafetySourceIssueInfo> getActiveIssuesDedupedSortedDesc(
+            @NonNull UserProfileGroup userProfileGroup) {
+        List<SafetySourceIssueInfo> issuesInfo =
+                getActiveIssuesForUserProfileGroup(userProfileGroup);
+        issuesInfo.sort(SAFETY_SOURCE_ISSUES_INFO_BY_SEVERITY_DESCENDING);
+        return issuesInfo;
+    }
+
+    /**
+     * Counts the total number of issues from currently-active, loggable sources, in the given
+     * {@link UserProfileGroup}.
      */
     public int countActiveLoggableIssues(@NonNull UserProfileGroup userProfileGroup) {
+        List<SafetySourceIssueInfo> relevantIssues =
+                getActiveIssuesForUserProfileGroup(userProfileGroup);
         int issueCount = 0;
-        for (int i = 0; i < mIssues.size(); i++) {
-            SafetyCenterIssueKey issueKey = mIssues.keyAt(i);
-            String safetySourceId = issueKey.getSafetySourceId();
-            SafetyCenterConfigReader.ExternalSafetySource externalSafetySource =
-                    mSafetyCenterConfigReader.getExternalSafetySource(safetySourceId);
-            if (mSafetyCenterConfigReader.isExternalSafetySourceActive(safetySourceId)
-                    && externalSafetySource != null
-                    && SafetySources.isLoggable(externalSafetySource.getSafetySource())
-                    && userProfileGroup.contains(issueKey.getUserId())) {
+        for (int i = 0; i < relevantIssues.size(); i++) {
+            SafetySourceIssueInfo safetySourceIssueInfo = relevantIssues.get(i);
+            if (SafetySources.isLoggable(safetySourceIssueInfo.getSafetySource())) {
                 issueCount++;
             }
         }
@@ -97,372 +146,125 @@ public final class SafetyCenterIssueRepository {
     }
 
     /**
-     * Gets all the issues in the issue repository for the given {@code userId}.
-     *
-     * <p>Only issues from "active" sources are included. Active sources are those for which {@link
-     * SafetyCenterConfigReader#isExternalSafetySourceActive(String)} returns {@code true}.
+     * Gets an unmodifiable list of all issues for the given {@code userId}, or an empty list if no
+     * issues are found.
      */
     @NonNull
-    public List<SafetyCenterIssueKey> getIssuesForUser(@UserIdInt int userId) {
-        ArrayList<SafetyCenterIssueKey> result = new ArrayList<>();
-        for (int i = 0; i < mIssues.size(); i++) {
-            SafetyCenterIssueKey issueKey = mIssues.keyAt(i);
-            if (issueKey.getUserId() != userId) {
+    public List<SafetySourceIssueInfo> getIssuesForUser(@UserIdInt int userId) {
+        return mUserIdToIssuesInfo.get(userId, emptyList());
+    }
+
+    private void processIssues(@NonNull List<SafetySourceIssueInfo> issuesInfo) {
+        issuesInfo.sort(SAFETY_SOURCE_ISSUES_INFO_BY_SEVERITY_DESCENDING);
+
+        if (SdkLevel.isAtLeastU() && mSafetyCenterIssueDeduplicator != null) {
+            mSafetyCenterIssueDeduplicator.deduplicateIssues(issuesInfo);
+        }
+    }
+
+    @NonNull
+    private List<SafetySourceIssueInfo> getAllStoredIssuesFromRawSourceData(
+            @UserIdInt int userId, boolean isManagedProfile) {
+        List<SafetySourceIssueInfo> allIssuesInfo = new ArrayList<>();
+
+        List<SafetySourcesGroup> safetySourcesGroups =
+                mSafetyCenterConfigReader.getSafetySourcesGroups();
+        for (int j = 0; j < safetySourcesGroups.size(); j++) {
+            addSafetySourceIssuesInfo(
+                    allIssuesInfo, safetySourcesGroups.get(j), userId, isManagedProfile);
+        }
+
+        return allIssuesInfo;
+    }
+
+    private void addSafetySourceIssuesInfo(
+            @NonNull List<SafetySourceIssueInfo> issuesInfo,
+            @NonNull SafetySourcesGroup safetySourcesGroup,
+            @UserIdInt int userId,
+            boolean isManagedProfile) {
+        List<SafetySource> safetySources = safetySourcesGroup.getSafetySources();
+        for (int i = 0; i < safetySources.size(); i++) {
+            SafetySource safetySource = safetySources.get(i);
+
+            if (!SafetySources.isExternal(safetySource)) {
                 continue;
             }
-            String safetySourceId = issueKey.getSafetySourceId();
-            if (mSafetyCenterConfigReader.isExternalSafetySourceActive(safetySourceId)) {
-                result.add(issueKey);
+            if (isManagedProfile && !SafetySources.supportsManagedProfiles(safetySource)) {
+                continue;
             }
+
+            addSafetySourceIssuesInfo(issuesInfo, safetySource, safetySourcesGroup, userId);
         }
-        return result;
     }
 
-    /**
-     * Returns {@code true} if the issue with the given key and severity level is currently
-     * dismissed.
-     *
-     * <p>An issue which is dismissed at one time may become "un-dismissed" later, after the
-     * resurface delay (which depends on severity level) has elapsed.
-     *
-     * <p>If the given issue key is not found in the repository this method returns {@code false}.
-     */
-    public boolean isIssueDismissed(
-            @NonNull SafetyCenterIssueKey safetyCenterIssueKey,
-            @SafetySourceData.SeverityLevel int safetySourceIssueSeverityLevel) {
-        IssueData issueData = getOrWarn(safetyCenterIssueKey, "checking if dismissed");
-        if (issueData == null) {
-            return false;
-        }
-
-        Instant dismissedAt = issueData.getDismissedAt();
-        boolean isNotCurrentlyDismissed = dismissedAt == null;
-        if (isNotCurrentlyDismissed) {
-            return false;
-        }
-
-        long maxCount = SafetyCenterFlags.getResurfaceIssueMaxCount(safetySourceIssueSeverityLevel);
-        Duration delay = SafetyCenterFlags.getResurfaceIssueDelay(safetySourceIssueSeverityLevel);
-
-        boolean hasAlreadyResurfacedTheMaxAllowedNumberOfTimes =
-                issueData.getDismissCount() > maxCount;
-        if (hasAlreadyResurfacedTheMaxAllowedNumberOfTimes) {
-            return true;
-        }
-
-        Duration timeSinceLastDismissal = Duration.between(dismissedAt, Instant.now());
-        boolean isTimeToResurface = timeSinceLastDismissal.compareTo(delay) >= 0;
-        if (isTimeToResurface) {
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
-     * Marks the issue with the given key as dismissed.
-     *
-     * <p>That issue's notification (if any) is also marked as dismissed.
-     *
-     * <p>This method may change the value reported by {@link #isDirty} to {@code true}.
-     */
-    void dismissIssue(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
-        IssueData issueData = getOrWarn(safetyCenterIssueKey, "dismissing");
-        if (issueData == null) {
-            return;
-        }
-        Instant now = Instant.now();
-        issueData.setDismissedAt(now);
-        issueData.setDismissCount(issueData.getDismissCount() + 1);
-        issueData.setNotificationDismissedAt(now);
-        mIsDirty = true;
-    }
-
-    /**
-     * Copy dismissal data from one issue to the other.
-     *
-     * <p>This will align dismissal state of these issues, unless issues are of different
-     * severities, in which case they can potentially differ in resurface times.
-     */
-    public void copyDismissalData(
-            @NonNull SafetyCenterIssueKey keyFrom, @NonNull SafetyCenterIssueKey keyTo) {
-        IssueData dataFrom = getOrWarn(keyFrom, "copying dismissed data");
-        IssueData dataTo = getOrWarn(keyTo, "copying dismissed data");
-        if (dataFrom == null || dataTo == null) {
-            return;
-        }
-
-        dataTo.setDismissedAt(dataFrom.getDismissedAt());
-        dataTo.setDismissCount(dataFrom.getDismissCount());
-        mIsDirty = true;
-    }
-
-    /**
-     * Marks the notification (if any) of the issue with the given key as dismissed.
-     *
-     * <p>The issue itself is <strong>not</strong> marked as dismissed and its warning card can
-     * still appear in the Safety Center UI.
-     *
-     * <p>This method may change the value reported by {@link #isDirty} to {@code true}.
-     */
-    public void dismissNotification(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
-        IssueData issueData = getOrWarn(safetyCenterIssueKey, "dismissing notification");
-        if (issueData == null) {
-            return;
-        }
-        issueData.setNotificationDismissedAt(Instant.now());
-        mIsDirty = true;
-    }
-
-    /**
-     * Returns the {@link Instant} when the issue with the given key was first reported to Safety
-     * Center.
-     */
-    @Nullable
-    public Instant getIssueFirstSeenAt(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
-        IssueData issueData = getOrWarn(safetyCenterIssueKey, "getting first seen");
-        if (issueData == null) {
-            return null;
-        }
-        return issueData.getFirstSeenAt();
-    }
-
-    /**
-     * Returns the {@link Instant} when the notification for the issue with the given key was last
-     * dismissed.
-     */
-    // TODO(b/261429824): Handle mNotificationDismissedAt w.r.t. issue deduplication
-    @Nullable
-    public Instant getNotificationDismissedAt(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
-        IssueData issueData = getOrWarn(safetyCenterIssueKey, "getting notification dismissed");
-        if (issueData == null) {
-            return null;
-        }
-        return issueData.getNotificationDismissedAt();
-    }
-
-    /**
-     * Updates the issue repository to contain exactly the given {@code safetySourceIssueIds} for
-     * the supplied source and user.
-     */
-    void updateIssuesForSource(
-            @NonNull ArraySet<String> safetySourceIssueIds,
-            @NonNull String safetySourceId,
+    private void addSafetySourceIssuesInfo(
+            @NonNull List<SafetySourceIssueInfo> issuesInfo,
+            @NonNull SafetySource safetySource,
+            @NonNull SafetySourcesGroup safetySourcesGroup,
             @UserIdInt int userId) {
-        // Remove issues no longer reported by the source.
-        // Loop in reverse index order to be able to remove entries while iterating.
-        for (int i = mIssues.size() - 1; i >= 0; i--) {
-            SafetyCenterIssueKey issueKey = mIssues.keyAt(i);
-            boolean doesNotBelongToUserOrSource =
-                    issueKey.getUserId() != userId
-                            || !Objects.equals(issueKey.getSafetySourceId(), safetySourceId);
-            if (doesNotBelongToUserOrSource) {
-                continue;
-            }
-            boolean isIssueNoLongerReported =
-                    !safetySourceIssueIds.contains(issueKey.getSafetySourceIssueId());
-            if (isIssueNoLongerReported) {
-                mIssues.removeAt(i);
-                mIsDirty = true;
-            }
+        SafetySourceKey key = SafetySourceKey.of(safetySource.getId(), userId);
+        SafetySourceData safetySourceData =
+                mSafetySourceDataRepository.getSafetySourceDataInternal(key);
+
+        if (safetySourceData == null) {
+            return;
         }
-        // Add newly reported issues.
-        for (int i = 0; i < safetySourceIssueIds.size(); i++) {
-            SafetyCenterIssueKey issueKey =
-                    SafetyCenterIssueKey.newBuilder()
-                            .setUserId(userId)
-                            .setSafetySourceId(safetySourceId)
-                            .setSafetySourceIssueId(safetySourceIssueIds.valueAt(i))
-                            .build();
-            boolean isIssueNewlyReported = !mIssues.containsKey(issueKey);
-            if (isIssueNewlyReported) {
-                mIssues.put(issueKey, new IssueData(Instant.now()));
-                mIsDirty = true;
-            }
+
+        List<SafetySourceIssue> safetySourceIssues = safetySourceData.getIssues();
+        for (int i = 0; i < safetySourceIssues.size(); i++) {
+            SafetySourceIssue safetySourceIssue = safetySourceIssues.get(i);
+
+            SafetySourceIssueInfo safetySourceIssueInfo =
+                    new SafetySourceIssueInfo(
+                            safetySourceIssue, safetySource, safetySourcesGroup, userId);
+            issuesInfo.add(safetySourceIssueInfo);
         }
     }
 
-    /**
-     * Returns {@code true} if the contents of the repository may have changed since the last {@link
-     * #load(List)} or {@link #snapshot()} occurred.
-     */
-    public boolean isDirty() {
-        return mIsDirty;
-    }
-
-    /**
-     * Takes a snapshot of the contents of the repository to be written to persistent storage.
-     *
-     * <p>This method will reset the value reported by {@link #isDirty} to {@code false}.
-     */
     @NonNull
-    public List<PersistedSafetyCenterIssue> snapshot() {
-        mIsDirty = false;
-        List<PersistedSafetyCenterIssue> persistedIssues = new ArrayList<>();
-        for (int i = 0; i < mIssues.size(); i++) {
-            String encodedKey = SafetyCenterIds.encodeToString(mIssues.keyAt(i));
-            IssueData issueData = mIssues.valueAt(i);
-            persistedIssues.add(issueData.toPersistedIssueBuilder().setKey(encodedKey).build());
+    private List<SafetySourceIssueInfo> getActiveIssuesForUserProfileGroup(
+            @NonNull UserProfileGroup userProfileGroup) {
+        List<SafetySourceIssueInfo> issues =
+                new ArrayList<>(getIssuesForUser(userProfileGroup.getProfileParentUserId()));
+
+        int[] managedRunningProfileUserIds = userProfileGroup.getManagedRunningProfilesUserIds();
+        for (int i = 0; i < managedRunningProfileUserIds.length; i++) {
+            issues.addAll(new ArrayList<>(getIssuesForUser(managedRunningProfileUserIds[i])));
         }
-        return persistedIssues;
+
+        return issues;
     }
 
-    /**
-     * Replaces the contents of the repository with the given issues read from persistent storage.
-     *
-     * <p>This method may change the value reported by {@link #isDirty} to {@code true}.
-     */
-    public void load(@NonNull List<PersistedSafetyCenterIssue> persistedSafetyCenterIssues) {
-        mIssues.clear();
-        for (int i = 0; i < persistedSafetyCenterIssues.size(); i++) {
-            PersistedSafetyCenterIssue persistedIssue = persistedSafetyCenterIssues.get(i);
-            SafetyCenterIssueKey key = SafetyCenterIds.issueKeyFromString(persistedIssue.getKey());
+    /** A comparator to order {@link SafetySourceIssueInfo} by severity level descending. */
+    private static final class SafetySourceIssuesInfoBySeverityDescending
+            implements Comparator<SafetySourceIssueInfo> {
 
-            // Check the source associated with this issue still exists, it might have been removed
-            // from the Safety Center config or the device might have rebooted with data persisted
-            // from a temporary Safety Center config.
-            if (!mSafetyCenterConfigReader.isExternalSafetySourceActive(key.getSafetySourceId())) {
-                mIsDirty = true;
-                continue;
-            }
+        private SafetySourceIssuesInfoBySeverityDescending() {}
 
-            IssueData issueData = IssueData.fromPersistedIssue(persistedIssue);
-            mIssues.put(key, issueData);
-        }
-    }
-
-    /**
-     * Clears all the data in the repository.
-     *
-     * <p>This method will change the value reported by {@link #isDirty} to {@code true}.
-     */
-    public void clear() {
-        mIssues.clear();
-        mIsDirty = true;
-    }
-
-    /**
-     * Clears all the data in the repository for the given user.
-     *
-     * <p>This method may change the value reported by {@link #isDirty} to {@code true}.
-     */
-    public void clearForUser(@UserIdInt int userId) {
-        // Loop in reverse index order to be able to remove entries while iterating.
-        for (int i = mIssues.size() - 1; i >= 0; i--) {
-            SafetyCenterIssueKey issueKey = mIssues.keyAt(i);
-            if (issueKey.getUserId() == userId) {
-                mIssues.removeAt(i);
-                mIsDirty = true;
-            }
+        @Override
+        public int compare(
+                @NonNull SafetySourceIssueInfo left, @NonNull SafetySourceIssueInfo right) {
+            return Integer.compare(
+                    right.getSafetySourceIssue().getSeverityLevel(),
+                    left.getSafetySourceIssue().getSeverityLevel());
         }
     }
 
     /** Dumps state for debugging purposes. */
     public void dump(@NonNull PrintWriter fout) {
-        int issueRepositoryCount = mIssues.size();
-        fout.println("ISSUE REPOSITORY (" + issueRepositoryCount + ", dirty=" + mIsDirty + ")");
-        for (int i = 0; i < issueRepositoryCount; i++) {
-            SafetyCenterIssueKey key = mIssues.keyAt(i);
-            IssueData data = mIssues.valueAt(i);
-            fout.println("\t[" + i + "] " + toUserFriendlyString(key) + " -> " + data);
+        fout.println("ISSUE REPOSITORY");
+        for (int i = 0; i < mUserIdToIssuesInfo.size(); i++) {
+            List<SafetySourceIssueInfo> issues = mUserIdToIssuesInfo.valueAt(i);
+            fout.println("\tUSER ID: " + mUserIdToIssuesInfo.keyAt(i));
+            for (int j = 0; j < issues.size(); j++) {
+                fout.println("\t\tSafetySourceIssueInfo = " + issues.get(j));
+            }
         }
         fout.println();
     }
 
-    @Nullable
-    private IssueData getOrWarn(@NonNull SafetyCenterIssueKey issueKey, @NonNull String reason) {
-        IssueData issueData = mIssues.get(issueKey);
-        if (issueData == null) {
-            Log.w(
-                    TAG,
-                    "Issue missing when reading from repository for "
-                            + reason
-                            + ": "
-                            + toUserFriendlyString(issueKey));
-            return null;
-        }
-        return issueData;
-    }
-
-    /**
-     * An internal mutable data structure containing issue metadata which is used to determine
-     * whether an issue should be dismissed/hidden from the user.
-     */
-    private static final class IssueData {
-
-        @NonNull
-        private static IssueData fromPersistedIssue(
-                @NonNull PersistedSafetyCenterIssue persistedIssue) {
-            IssueData issueData = new IssueData(persistedIssue.getFirstSeenAt());
-            issueData.setDismissedAt(persistedIssue.getDismissedAt());
-            issueData.setDismissCount(persistedIssue.getDismissCount());
-            issueData.setNotificationDismissedAt(persistedIssue.getNotificationDismissedAt());
-            return issueData;
-        }
-
-        @NonNull private final Instant mFirstSeenAt;
-
-        @Nullable private Instant mDismissedAt;
-        private int mDismissCount;
-
-        @Nullable private Instant mNotificationDismissedAt;
-
-        private IssueData(@NonNull Instant firstSeenAt) {
-            mFirstSeenAt = firstSeenAt;
-        }
-
-        @NonNull
-        private Instant getFirstSeenAt() {
-            return mFirstSeenAt;
-        }
-
-        @Nullable
-        private Instant getDismissedAt() {
-            return mDismissedAt;
-        }
-
-        private void setDismissedAt(@Nullable Instant dismissedAt) {
-            mDismissedAt = dismissedAt;
-        }
-
-        private int getDismissCount() {
-            return mDismissCount;
-        }
-
-        private void setDismissCount(int dismissCount) {
-            mDismissCount = dismissCount;
-        }
-
-        @Nullable
-        private Instant getNotificationDismissedAt() {
-            return mNotificationDismissedAt;
-        }
-
-        private void setNotificationDismissedAt(@Nullable Instant notificationDismissedAt) {
-            mNotificationDismissedAt = notificationDismissedAt;
-        }
-
-        @NonNull
-        private PersistedSafetyCenterIssue.Builder toPersistedIssueBuilder() {
-            return new PersistedSafetyCenterIssue.Builder()
-                    .setFirstSeenAt(mFirstSeenAt)
-                    .setDismissedAt(mDismissedAt)
-                    .setDismissCount(mDismissCount)
-                    .setNotificationDismissedAt(mNotificationDismissedAt);
-        }
-
-        @Override
-        public String toString() {
-            return "IssueData{"
-                    + "mFirstSeenAt="
-                    + mFirstSeenAt
-                    + ", mDismissedAt="
-                    + mDismissedAt
-                    + ", mDismissCount="
-                    + mDismissCount
-                    + ", mNotificationDismissedAt="
-                    + mNotificationDismissedAt
-                    + '}';
-        }
+    /** Clears all the data from the repository. */
+    public void clear() {
+        mUserIdToIssuesInfo.clear();
     }
 }
