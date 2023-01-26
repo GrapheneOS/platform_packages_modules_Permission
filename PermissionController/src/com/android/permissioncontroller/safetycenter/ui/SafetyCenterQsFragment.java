@@ -620,6 +620,11 @@ public class SafetyCenterQsFragment extends Fragment {
                 }
             }
 
+            boolean sensorVisible =
+                    !sensorStates.containsKey(groupName)
+                            || sensorStates.get(groupName).getVisible();
+            toggle.setVisibility(sensorVisible ? View.VISIBLE : View.GONE);
+
             TextView groupLabel = toggle.findViewById(R.id.toggle_sensor_name);
             groupLabel.setText(getPermGroupLabel(groupName));
             // Set the text as selected to get marquee to work
