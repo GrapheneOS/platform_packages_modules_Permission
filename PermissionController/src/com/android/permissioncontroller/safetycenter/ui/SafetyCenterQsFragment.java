@@ -80,7 +80,9 @@ import java.util.Map;
  */
 @RequiresApi(TIRAMISU)
 public class SafetyCenterQsFragment extends Fragment {
-    private static final ArrayMap<String, Integer> sToggleButtons = new ArrayMap<>();
+    private static final List<String> TOGGLE_BUTTONS = List.of(CAMERA, MICROPHONE, LOCATION);
+    private static final String SETTINGS_TOGGLE_TAG = "settings_toggle";
+    private static final int MAX_TOGGLES_PER_ROW = 2;
 
     private Context mContext;
     private long mSessionId;
@@ -88,12 +90,6 @@ public class SafetyCenterQsFragment extends Fragment {
     private SafetyCenterQsViewModel mViewModel;
     private boolean mIsPermissionUsageReady;
     private boolean mAreSensorTogglesReady;
-
-    static {
-        sToggleButtons.put(CAMERA, R.id.camera_toggle);
-        sToggleButtons.put(MICROPHONE, R.id.mic_toggle);
-        sToggleButtons.put(LOCATION, R.id.location_toggle);
-    }
 
     private SafetyCenterViewModel mSafetyCenterViewModel;
 
@@ -166,33 +162,6 @@ public class SafetyCenterQsFragment extends Fragment {
                                 new LiveSafetyCenterViewModelFactory(
                                         requireActivity().getApplication()))
                         .get(SafetyCenterViewModel.class);
-        View securitySettings = root.findViewById(R.id.security_settings_button);
-        securitySettings.setOnClickListener(
-                (v) ->
-                        mSafetyCenterViewModel.navigateToSafetyCenter(
-                                mContext, NavigationSource.QUICK_SETTINGS_TILE));
-        TextView securitySettingsText = securitySettings.findViewById(R.id.toggle_sensor_name);
-        securitySettingsText.setText(R.string.settings);
-        securitySettingsText.setSelected(true);
-        securitySettings.findViewById(R.id.toggle_sensor_status).setVisibility(View.GONE);
-        ImageView securitySettingsIcon = securitySettings.findViewById(R.id.toggle_sensor_icon);
-        securitySettingsIcon.setImageDrawable(
-                Utils.applyTint(
-                        mContext,
-                        mContext.getDrawable(R.drawable.ic_safety_center_shield),
-                        android.R.attr.textColorPrimaryInverse));
-        securitySettings.findViewById(R.id.arrow_icon).setVisibility(View.VISIBLE);
-        ((ImageView) securitySettings.findViewById(R.id.arrow_icon))
-                .setImageDrawable(
-                        Utils.applyTint(
-                                mContext,
-                                mContext.getDrawable(R.drawable.ic_chevron_right),
-                                android.R.attr.textColorSecondaryInverse));
-        ViewCompat.replaceAccessibilityAction(
-                securitySettings,
-                AccessibilityNodeInfoCompat.AccessibilityActionCompat.ACTION_CLICK,
-                mContext.getString(R.string.safety_center_qs_open_action),
-                null);
 
         getChildFragmentManager()
                 .beginTransaction()
@@ -578,8 +547,86 @@ public class SafetyCenterQsFragment extends Fragment {
         if (!mAreSensorTogglesReady) {
             mAreSensorTogglesReady = true;
             maybeEnableView(getView());
+            setupSensorToggles(sensorStates, getView());
         }
         updateSensorToggleState(sensorStates, getView());
+    }
+
+    private void setupSensorToggles(
+            Map<String, SensorState> sensorStates, @Nullable View rootView) {
+        if (rootView == null) {
+            return;
+        }
+
+        if (sensorStates == null) {
+            sensorStates = new ArrayMap<>();
+        }
+
+        LinearLayout toggleContainer = rootView.findViewById(R.id.toggle_container);
+
+        LinearLayout row = addRow(toggleContainer);
+
+        for (String groupName : TOGGLE_BUTTONS) {
+            boolean sensorVisible =
+                    !sensorStates.containsKey(groupName)
+                            || sensorStates.get(groupName).getVisible();
+            if (!sensorVisible) {
+                continue;
+            }
+
+            addToggle(groupName, row);
+
+            if (row.getChildCount() >= MAX_TOGGLES_PER_ROW) {
+                row = addRow(toggleContainer);
+            }
+        }
+        addSettingsToggle(row);
+    }
+
+    private LinearLayout addRow(ViewGroup parent) {
+        LinearLayout row =
+                new LinearLayout(parent.getContext(), null, 0, R.style.SafetyCenterQsToggleRow);
+        parent.addView(row);
+        return row;
+    }
+
+    private View addToggle(String tag, ViewGroup parent) {
+        View toggle =
+                getLayoutInflater().inflate(R.layout.safety_center_toggle_button, parent, false);
+        toggle.setTag(tag);
+        parent.addView(toggle);
+        return toggle;
+    }
+
+    private View addSettingsToggle(ViewGroup parent) {
+        View securitySettings = addToggle(SETTINGS_TOGGLE_TAG, parent);
+        securitySettings.setOnClickListener(
+                (v) ->
+                        mSafetyCenterViewModel.navigateToSafetyCenter(
+                                mContext, NavigationSource.QUICK_SETTINGS_TILE));
+        TextView securitySettingsText = securitySettings.findViewById(R.id.toggle_sensor_name);
+        securitySettingsText.setText(R.string.settings);
+        securitySettingsText.setSelected(true);
+        securitySettings.findViewById(R.id.toggle_sensor_status).setVisibility(View.GONE);
+        ImageView securitySettingsIcon = securitySettings.findViewById(R.id.toggle_sensor_icon);
+        securitySettingsIcon.setImageDrawable(
+                Utils.applyTint(
+                        mContext,
+                        mContext.getDrawable(R.drawable.ic_safety_center_shield),
+                        android.R.attr.textColorPrimaryInverse));
+        securitySettings.findViewById(R.id.arrow_icon).setVisibility(View.VISIBLE);
+        ((ImageView) securitySettings.findViewById(R.id.arrow_icon))
+                .setImageDrawable(
+                        Utils.applyTint(
+                                mContext,
+                                mContext.getDrawable(R.drawable.ic_chevron_right),
+                                android.R.attr.textColorSecondaryInverse));
+        ViewCompat.replaceAccessibilityAction(
+                securitySettings,
+                AccessibilityNodeInfoCompat.AccessibilityActionCompat.ACTION_CLICK,
+                mContext.getString(R.string.safety_center_qs_open_action),
+                null);
+        return securitySettings;
     }
 
     private void updateSensorToggleState(
@@ -592,38 +639,34 @@ public class SafetyCenterQsFragment extends Fragment {
             sensorStates = new ArrayMap<>();
         }
 
-        for (int i = 0; i < sToggleButtons.size(); i++) {
-            View toggle = rootView.findViewById(sToggleButtons.valueAt(i));
-            String groupName = sToggleButtons.keyAt(i);
+        for (String groupName : TOGGLE_BUTTONS) {
+            View toggle = rootView.findViewWithTag(groupName);
+            if (toggle == null) {
+                continue;
+            }
             EnforcedAdmin admin =
                     sensorStates.containsKey(groupName)
                             ? sensorStates.get(groupName).getAdmin()
                             : null;
             boolean sensorBlockedByAdmin = admin != null;
-            if (!toggle.hasOnClickListeners()) {
-                if (sensorBlockedByAdmin) {
-                    toggle.setOnClickListener(
-                            (v) ->
-                                    startActivity(
-                                            RestrictedLockUtils.getShowAdminSupportDetailsIntent(
-                                                    mContext, admin)));
-                } else {
-                    toggle.setOnClickListener(
-                            (v) -> {
-                                mViewModel.toggleSensor(groupName);
-                                mSafetyCenterViewModel
-                                        .getInteractionLogger()
-                                        .recordForSensor(
-                                                Action.PRIVACY_CONTROL_TOGGLE_CLICKED,
-                                                Sensor.fromPermissionGroupName(groupName));
-                            });
-                }
-            }
 
-            boolean sensorVisible =
-                    !sensorStates.containsKey(groupName)
-                            || sensorStates.get(groupName).getVisible();
-            toggle.setVisibility(sensorVisible ? View.VISIBLE : View.GONE);
+            if (sensorBlockedByAdmin) {
+                toggle.setOnClickListener(
+                        (v) ->
+                                startActivity(
+                                        RestrictedLockUtils.getShowAdminSupportDetailsIntent(
+                                                mContext, admin)));
+            } else {
+                toggle.setOnClickListener(
+                        (v) -> {
+                            mViewModel.toggleSensor(groupName);
+                            mSafetyCenterViewModel
+                                    .getInteractionLogger()
+                                    .recordForSensor(
+                                            Action.PRIVACY_CONTROL_TOGGLE_CLICKED,
+                                            Sensor.fromPermissionGroupName(groupName));
+                        });
+            }
 
             TextView groupLabel = toggle.findViewById(R.id.toggle_sensor_name);
             groupLabel.setText(getPermGroupLabel(groupName));
