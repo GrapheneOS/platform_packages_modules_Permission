@@ -114,27 +114,31 @@ public final class SafetyCenterIssueRepository {
     }
 
     /**
-     * Fetches a list of active issues related to the given {@link UserProfileGroup}.
+     * Fetches a list of issues related to the given {@link UserProfileGroup}.
      *
      * <p>Issues in the list are sorted in descending order and deduplicated (if applicable, only on
      * Android U+).
+     *
+     * <p>Only includes issues related to active/running {@code userId}s in the given {@link
+     * UserProfileGroup}.
      */
     @NonNull
-    public List<SafetySourceIssueInfo> getActiveIssuesDedupedSortedDesc(
+    public List<SafetySourceIssueInfo> getIssuesDedupedSortedDescFor(
             @NonNull UserProfileGroup userProfileGroup) {
-        List<SafetySourceIssueInfo> issuesInfo =
-                getActiveIssuesForUserProfileGroup(userProfileGroup);
+        List<SafetySourceIssueInfo> issuesInfo = getIssuesFor(userProfileGroup);
         issuesInfo.sort(SAFETY_SOURCE_ISSUES_INFO_BY_SEVERITY_DESCENDING);
         return issuesInfo;
     }
 
     /**
-     * Counts the total number of issues from currently-active, loggable sources, in the given
-     * {@link UserProfileGroup}.
+     * Counts the total number of issues from loggable sources, in the given {@link
+     * UserProfileGroup}.
+     *
+     * <p>Only includes issues related to active/running {@code userId}s in the given {@link
+     * UserProfileGroup}.
      */
-    public int countActiveLoggableIssues(@NonNull UserProfileGroup userProfileGroup) {
-        List<SafetySourceIssueInfo> relevantIssues =
-                getActiveIssuesForUserProfileGroup(userProfileGroup);
+    public int countLoggableIssuesFor(@NonNull UserProfileGroup userProfileGroup) {
+        List<SafetySourceIssueInfo> relevantIssues = getIssuesFor(userProfileGroup);
         int issueCount = 0;
         for (int i = 0; i < relevantIssues.size(); i++) {
             SafetySourceIssueInfo safetySourceIssueInfo = relevantIssues.get(i);
@@ -145,10 +149,7 @@ public final class SafetyCenterIssueRepository {
         return issueCount;
     }
 
-    /**
-     * Gets an unmodifiable list of all issues for the given {@code userId}, or an empty list if no
-     * issues are found.
-     */
+    /** Gets an unmodifiable list of all issues for the given {@code userId}. */
     @NonNull
     public List<SafetySourceIssueInfo> getIssuesForUser(@UserIdInt int userId) {
         return mUserIdToIssuesInfo.get(userId, emptyList());
@@ -221,15 +222,18 @@ public final class SafetyCenterIssueRepository {
         }
     }
 
+    /**
+     * Only includes issues related to active/running {@code userId}s in the given {@link
+     * UserProfileGroup}.
+     */
     @NonNull
-    private List<SafetySourceIssueInfo> getActiveIssuesForUserProfileGroup(
-            @NonNull UserProfileGroup userProfileGroup) {
+    private List<SafetySourceIssueInfo> getIssuesFor(@NonNull UserProfileGroup userProfileGroup) {
         List<SafetySourceIssueInfo> issues =
                 new ArrayList<>(getIssuesForUser(userProfileGroup.getProfileParentUserId()));
 
         int[] managedRunningProfileUserIds = userProfileGroup.getManagedRunningProfilesUserIds();
         for (int i = 0; i < managedRunningProfileUserIds.length; i++) {
-            issues.addAll(new ArrayList<>(getIssuesForUser(managedRunningProfileUserIds[i])));
+            issues.addAll(getIssuesForUser(managedRunningProfileUserIds[i]));
         }
 
         return issues;

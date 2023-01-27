@@ -113,6 +113,13 @@ public class PermissionRationaleActivity extends SettingsActivity implements
      */
     public static final String PERMISSION_NAME_ANNOTATION_ID = "permission_name";
 
+    /**
+     * key to the boolean if to show settings_section on the permission rationale dialog provide via
+     * intent extra
+     */
+    public static final String EXTRA_SHOULD_SHOW_SETTINGS_SECTION =
+            "com.android.permissioncontroller.extra.SHOULD_SHOW_SETTINGS_SECTION";
+
     /** Unique Id of a request. Inherited from GrantPermissionDialog if provide via intent extra */
     private long mSessionId;
     /** Package that shall have permissions granted */
@@ -175,7 +182,10 @@ public class PermissionRationaleActivity extends SettingsActivity implements
                 || DeviceUtils.isAuto(this)) {
             finishAfterTransition();
         } else {
-            mViewHandler = new PermissionRationaleViewHandlerImpl(this, this);
+            var shouldShowSettingsSection =
+                    getIntent().getBooleanExtra(EXTRA_SHOULD_SHOW_SETTINGS_SECTION, true);
+            mViewHandler = new PermissionRationaleViewHandlerImpl(this, this,
+                    shouldShowSettingsSection);
         }
 
         PermissionRationaleViewModelFactory factory = new PermissionRationaleViewModelFactory(

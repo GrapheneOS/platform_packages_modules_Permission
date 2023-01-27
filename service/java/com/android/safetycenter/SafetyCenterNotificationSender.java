@@ -30,6 +30,7 @@ import android.content.Context;
 import android.os.Binder;
 import android.os.UserHandle;
 import android.safetycenter.SafetySourceIssue;
+import android.safetycenter.config.SafetySource;
 import android.util.ArrayMap;
 import android.util.ArraySet;
 import android.util.Log;
@@ -39,6 +40,7 @@ import androidx.annotation.RequiresApi;
 import com.android.modules.utils.build.SdkLevel;
 import com.android.safetycenter.data.SafetyCenterIssueDismissalRepository;
 import com.android.safetycenter.data.SafetyCenterIssueRepository;
+import com.android.safetycenter.internaldata.SafetyCenterIds;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 
 import java.io.PrintWriter;
@@ -193,7 +195,7 @@ final class SafetyCenterNotificationSender {
             SafetySourceIssueInfo issueInfo = allIssuesInfo.get(i);
             SafetyCenterIssueKey issueKey = issueInfo.getSafetyCenterIssueKey();
 
-            if (!areNotificationsAllowed(issueInfo)) {
+            if (!areNotificationsAllowed(issueInfo.getSafetySource())) {
                 // Notifications are not allowed for this source
                 continue;
             }
@@ -253,14 +255,13 @@ final class SafetyCenterNotificationSender {
         }
     }
 
-    private boolean areNotificationsAllowed(@NonNull SafetySourceIssueInfo issueInfo) {
+    private boolean areNotificationsAllowed(@NonNull SafetySource safetySource) {
         if (SdkLevel.isAtLeastU()) {
-            if (issueInfo.getSafetySource().areNotificationsAllowed()) {
+            if (safetySource.areNotificationsAllowed()) {
                 return true;
             }
         }
-        return SafetyCenterFlags.getNotificationsAllowedSourceIds()
-                .contains(issueInfo.getSafetySource().getId());
+        return SafetyCenterFlags.getNotificationsAllowedSourceIds().contains(safetySource.getId());
     }
 
     private boolean postNotificationForIssue(
@@ -303,8 +304,8 @@ final class SafetyCenterNotificationSender {
 
     @NonNull
     private static String getNotificationTag(@NonNull SafetyCenterIssueKey issueKey) {
-        // TODO(b/259084094): Make this tag creation more robust
-        return issueKey.getSafetySourceId() + ":" + issueKey.getSafetySourceIssueId();
+        // Base 64 encoding of the issueKey proto:
+        return SafetyCenterIds.encodeToString(issueKey);
     }
 
     /** Returns a {@link NotificationManager} which will send notifications to the given user. */

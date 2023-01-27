@@ -24,6 +24,7 @@ import android.safetycenter.SafetyCenterManager
 import android.text.TextUtils
 import androidx.annotation.RequiresApi
 import androidx.preference.Preference
+import com.android.permissioncontroller.safetycenter.SafetyCenterConstants
 import java.util.Objects
 
 /**
@@ -46,6 +47,7 @@ internal class SafetyHomepageEntryPreference(
         // TODO(b/260822348): Check if there is a better way to open the subpage fragment
         val intent = Intent(Intent.ACTION_SAFETY_CENTER)
         intent.putExtra(SafetyCenterManager.EXTRA_SAFETY_SOURCES_GROUP_ID, entryGroup.id)
+        intent.putExtra(SafetyCenterConstants.EXTRA_OPENED_FROM_HOMEPAGE, true)
         setIntent(intent)
     }
 

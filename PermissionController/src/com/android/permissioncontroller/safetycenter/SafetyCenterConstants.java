@@ -31,4 +31,7 @@ public class SafetyCenterConstants {
             "expand_issue_group_qs_fragment_key";
 
     public static final String EXTRA_NAVIGATION_SOURCE = "navigation_source_intent_extra";
+
+    /** Intent extra indicating whether a subpage in Safety Center was opened from the homepage */
+    public static final String EXTRA_OPENED_FROM_HOMEPAGE = "opened_from_homepage_intent_extra";
 }

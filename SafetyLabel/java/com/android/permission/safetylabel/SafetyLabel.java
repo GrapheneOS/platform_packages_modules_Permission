@@ -66,7 +66,6 @@ public class SafetyLabel {
         if (dataLabel == null) {
             return null;
         }
-
         return new SafetyLabel(dataLabel);
     }
 
