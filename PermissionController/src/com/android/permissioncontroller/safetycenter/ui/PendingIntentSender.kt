@@ -16,7 +16,6 @@
 
 package com.android.permissioncontroller.safetycenter.ui
 
-import android.app.ActivityOptions
 import android.app.PendingIntent
 import android.os.Build.VERSION_CODES.TIRAMISU
 import androidx.annotation.RequiresApi
@@ -32,13 +31,7 @@ object PendingIntentSender {
         if (pi == null) {
             return
         }
-        if (launchTaskId != null) {
-            val options = ActivityOptions.makeBasic()
-            options.launchTaskId = launchTaskId
-            pi.send(null, 0, null, null, null, null, options.toBundle())
-        } else {
-            pi.send()
-        }
+        com.android.safetycenter.pendingintents.PendingIntentSender.send(pi, launchTaskId)
     }
 
     /**
