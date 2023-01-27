@@ -58,11 +58,6 @@ import androidx.lifecycle.ViewModelProvider;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
-import com.android.permissioncontroller.safetycenter.ui.Action;
-import com.android.permissioncontroller.safetycenter.ui.NavigationSource;
-import com.android.permissioncontroller.safetycenter.ui.SafetyCenterDashboardFragment;
-import com.android.permissioncontroller.safetycenter.ui.SafetyCenterTouchTarget;
-import com.android.permissioncontroller.safetycenter.ui.Sensor;
 import com.android.permissioncontroller.safetycenter.ui.model.LiveSafetyCenterViewModelFactory;
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterQsViewModel;
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterQsViewModel.SensorState;
@@ -91,7 +86,8 @@ public class SafetyCenterQsFragment extends Fragment {
     private long mSessionId;
     private List<PermissionGroupUsage> mPermGroupUsages;
     private SafetyCenterQsViewModel mViewModel;
-    private View mRootView;
+    private boolean mIsPermissionUsageReady;
+    private boolean mAreSensorTogglesReady;
 
     static {
         sToggleButtons.put(CAMERA, R.id.camera_toggle);
@@ -142,13 +138,13 @@ public class SafetyCenterQsFragment extends Fragment {
         mViewModel =
                 new ViewModelProvider(requireActivity(), factory)
                         .get(SafetyCenterQsViewModel.class);
-        mViewModel
-                .getSensorPrivacyLiveData()
-                .observe(this, (v) -> setSensorToggleState(v, getView()));
+        mViewModel.getSensorPrivacyLiveData().observe(this, this::setSensorToggleState);
         // LightAppPermGroupLiveDatas are kept track of in the view model,
         // we need to start observing them here
         if (!mPermGroupUsages.isEmpty()) {
             mViewModel.getPermDataLoadedLiveData().observe(this, this::onPermissionGroupsLoaded);
+        } else {
+            mIsPermissionUsageReady = true;
         }
     }
 
@@ -156,12 +152,8 @@ public class SafetyCenterQsFragment extends Fragment {
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.safety_center_qs, container, false);
-        mRootView = root;
-        if (mPermGroupUsages.isEmpty()) {
-            mRootView.setVisibility(View.VISIBLE);
-        } else {
-            mRootView.setVisibility(View.GONE);
-        }
+        root.setVisibility(View.GONE);
+
         root.setBackgroundColor(android.R.color.background_dark);
         View closeButton = root.findViewById(R.id.close_button);
         closeButton.setOnClickListener((v) -> requireActivity().finish());
@@ -212,14 +204,26 @@ public class SafetyCenterQsFragment extends Fragment {
         return root;
     }
 
-    private void onPermissionGroupsLoaded(boolean initialized) {
-        if (initialized) {
-            mRootView.setVisibility(View.VISIBLE);
-            addPermissionUsageInformation(mRootView);
+    private void maybeEnableView(@Nullable View rootView) {
+        if (rootView == null) {
+            return;
+        }
+        if (mIsPermissionUsageReady && mAreSensorTogglesReady) {
+            rootView.setVisibility(View.VISIBLE);
         }
     }
 
-    private void addPermissionUsageInformation(View rootView) {
+    private void onPermissionGroupsLoaded(boolean initialized) {
+        if (initialized) {
+            if (!mIsPermissionUsageReady) {
+                mIsPermissionUsageReady = true;
+                maybeEnableView(getView());
+            }
+            addPermissionUsageInformation(getView());
+        }
+    }
+
+    private void addPermissionUsageInformation(@Nullable View rootView) {
         if (rootView == null) {
             return;
         }
@@ -422,16 +426,20 @@ public class SafetyCenterQsFragment extends Fragment {
             ConstraintLayout parentIndicatorLayout,
             ConstraintLayout expandedLayout,
             ImageView expandView) {
+        View rootView = getView();
+        if (rootView == null) {
+            return;
+        }
         parentIndicatorLayout.setOnClickListener(
-                createExpansionListener(expandedLayout, expandView));
+                createExpansionListener(expandedLayout, expandView, rootView));
     }
 
     private View.OnClickListener createExpansionListener(
-            ConstraintLayout expandedLayout, ImageView expandView) {
+            ConstraintLayout expandedLayout, ImageView expandView, View rootView) {
         AutoTransition transition = new AutoTransition();
         // Get the entire fragment as a viewgroup in order to animate it nicely in case of
         // expand/collapse
-        ViewGroup indicatorCardViewGroup = (ViewGroup) mRootView;
+        ViewGroup indicatorCardViewGroup = (ViewGroup) rootView;
         return v -> {
             if (expandedLayout.getVisibility() == View.VISIBLE) {
                 // Enable -> Press -> Hide the expanded card for a continuous ripple effect
@@ -566,15 +574,18 @@ public class SafetyCenterQsFragment extends Fragment {
         return layered;
     }
 
-    private void setSensorToggleState(Map<String, SensorState> sensorStates, View rootView) {
+    private void setSensorToggleState(Map<String, SensorState> sensorStates) {
+        if (!mAreSensorTogglesReady) {
+            mAreSensorTogglesReady = true;
+            maybeEnableView(getView());
+        }
+        updateSensorToggleState(sensorStates, getView());
+    }
+
+    private void updateSensorToggleState(
+            Map<String, SensorState> sensorStates, @Nullable View rootView) {
         if (rootView == null) {
-            if (getView() == null) {
-                return;
-            }
-            rootView = getView();
-            if (rootView == null) {
-                return;
-            }
+            return;
         }
 
         if (sensorStates == null) {
@@ -608,6 +619,11 @@ public class SafetyCenterQsFragment extends Fragment {
                             });
                 }
             }
+
+            boolean sensorVisible =
+                    !sensorStates.containsKey(groupName)
+                            || sensorStates.get(groupName).getVisible();
+            toggle.setVisibility(sensorVisible ? View.VISIBLE : View.GONE);
 
             TextView groupLabel = toggle.findViewById(R.id.toggle_sensor_name);
             groupLabel.setText(getPermGroupLabel(groupName));

@@ -77,6 +77,7 @@ import com.android.permissioncontroller.permission.ui.model.AppPermissionViewMod
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.LOCATION_ACCURACY
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.SELECT_PHOTOS
 import com.android.permissioncontroller.permission.ui.v34.PermissionRationaleActivity
+import com.android.permissioncontroller.permission.ui.v34.PermissionRationaleActivity.EXTRA_SHOULD_SHOW_SETTINGS_SECTION
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getDefaultPrecision
 import com.android.permissioncontroller.permission.utils.KotlinUtils.isLocationAccuracyEnabled
@@ -606,6 +607,7 @@ class AppPermissionViewModel(
             putExtra(Intent.EXTRA_PACKAGE_NAME, packageName)
             putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, groupName)
             putExtra(Constants.EXTRA_SESSION_ID, sessionId)
+            putExtra(EXTRA_SHOULD_SHOW_SETTINGS_SECTION, false)
         }
         activity.startActivity(intent)
     }

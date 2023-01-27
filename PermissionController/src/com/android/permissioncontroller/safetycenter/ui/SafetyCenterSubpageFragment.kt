@@ -16,23 +16,27 @@
 
 package com.android.permissioncontroller.safetycenter.ui
 
+import android.content.Intent
 import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.os.Bundle
 import android.safetycenter.SafetyCenterEntryGroup
 import android.safetycenter.SafetyCenterEntryOrGroup
 import android.util.Log
+import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.preference.PreferenceGroup
-import com.android.settingslib.widget.IllustrationPreference
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.safetycenter.SafetyCenterConstants
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterUiData
 import com.android.safetycenter.resources.SafetyCenterResourcesContext
+import com.android.settingslib.widget.IllustrationPreference
 
 /** A fragment that represents a generic subpage in Safety Center. */
 @RequiresApi(UPSIDE_DOWN_CAKE)
 class SafetyCenterSubpageFragment : SafetyCenterFragment() {
 
     private lateinit var sourceGroupId: String
+    private lateinit var subpageBrandChip: SafetyBrandChipPreference
     private lateinit var subpageIllustration: IllustrationPreference
     private lateinit var subpageIssueGroup: PreferenceGroup
     private lateinit var subpageEntryGroup: PreferenceGroup
@@ -42,9 +46,11 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
         setPreferencesFromResource(R.xml.safety_center_subpage, rootKey)
         sourceGroupId = requireArguments().getString(SOURCE_GROUP_ID_KEY)!!
 
+        subpageBrandChip = getPreferenceScreen().findPreference(BRAND_CHIP_KEY)!!
         subpageIllustration = getPreferenceScreen().findPreference(ILLUSTRATION_KEY)!!
         subpageIssueGroup = getPreferenceScreen().findPreference(ISSUE_GROUP_KEY)!!
         subpageEntryGroup = getPreferenceScreen().findPreference(ENTRY_GROUP_KEY)!!
+        setupBrandChip()
         setupIllustration()
     }
 
@@ -65,6 +71,21 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
         requireActivity().setTitle(entryGroup.title)
         updateSafetyCenterIssues(uiData)
         updateSafetyCenterEntries(entryGroup)
+    }
+
+    private fun setupBrandChip(){
+        subpageBrandChip.brandChipClickListener = View.OnClickListener{
+            val fragmentActivity = requireActivity()
+            val openedFromHomepage =
+                fragmentActivity
+                    .getIntent()
+                    .getBooleanExtra(SafetyCenterConstants.EXTRA_OPENED_FROM_HOMEPAGE, false)
+            if (!openedFromHomepage) {
+                val intent = Intent(Intent.ACTION_SAFETY_CENTER)
+                requireContext().startActivity(intent)
+            }
+            fragmentActivity.finish()
+        }
     }
 
     private fun setupIllustration(){
@@ -132,6 +153,7 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
 
     companion object {
         private val TAG: String = SafetyCenterSubpageFragment::class.java.simpleName
+        private const val BRAND_CHIP_KEY: String = "subpage_brand_chip"
         private const val ILLUSTRATION_KEY: String = "subpage_illustration"
         private const val ISSUE_GROUP_KEY: String = "subpage_issue_group"
         private const val ENTRY_GROUP_KEY: String = "subpage_entry_group"
