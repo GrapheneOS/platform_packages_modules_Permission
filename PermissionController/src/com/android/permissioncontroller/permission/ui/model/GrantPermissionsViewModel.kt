@@ -32,9 +32,9 @@ import android.content.pm.PackageManager
 import android.content.pm.PackageManager.FLAG_PERMISSION_POLICY_FIXED
 import android.content.pm.PackageManager.FLAG_PERMISSION_USER_FIXED
 import android.content.pm.PackageManager.FLAG_PERMISSION_USER_SET
-import android.healthconnect.HealthConnectManager.ACTION_REQUEST_HEALTH_PERMISSIONS
-import android.healthconnect.HealthConnectManager.isHealthPermission
-import android.healthconnect.HealthPermissions.HEALTH_PERMISSION_GROUP
+import android.health.connect.HealthConnectManager.ACTION_REQUEST_HEALTH_PERMISSIONS
+import android.health.connect.HealthConnectManager.isHealthPermission
+import android.health.connect.HealthPermissions.HEALTH_PERMISSION_GROUP
 import android.os.Build
 import android.os.Bundle
 import android.os.Process
