@@ -1187,6 +1187,182 @@ class SafetyCenterManagerTest {
     }
 
     @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getSafetyCenterData_infoStatusTipFirstIssueSingleTip_infoStatusWithTipSummary() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.issueOnlySourceConfig)
+        safetyCenterTestHelper.setData(
+            ISSUE_ONLY_ALL_OPTIONAL_ID,
+            SafetySourceTestData.issuesOnly(
+                safetySourceTestData
+                    .defaultInformationIssueBuilder()
+                    .setIssueActionability(SafetySourceIssue.ISSUE_ACTIONABILITY_TIP)
+                    .build()
+            )
+        )
+
+        val apiSafetyCenterStatus = safetyCenterManager.getSafetyCenterDataWithPermission().status
+
+        assertThat(apiSafetyCenterStatus)
+            .isEqualTo(safetyCenterTestData.safetyCenterStatusTips(numTipIssues = 1))
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getSafetyCenterData_infoStatusTipFirstIssueMultiTips_infoStatusWithTipsSummary() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.issueOnlySourceConfig)
+        safetyCenterTestHelper.setData(
+            ISSUE_ONLY_ALL_OPTIONAL_ID,
+            SafetySourceTestData.issuesOnly(
+                safetySourceTestData
+                    .defaultInformationIssueBuilder("id_1")
+                    .setIssueActionability(SafetySourceIssue.ISSUE_ACTIONABILITY_TIP)
+                    .build(),
+                safetySourceTestData
+                    .defaultInformationIssueBuilder("id_2")
+                    .setIssueActionability(SafetySourceIssue.ISSUE_ACTIONABILITY_MANUAL)
+                    .build(),
+                safetySourceTestData
+                    .defaultInformationIssueBuilder("id_3")
+                    .setIssueActionability(SafetySourceIssue.ISSUE_ACTIONABILITY_AUTOMATIC)
+                    .build(),
+                safetySourceTestData
+                    .defaultInformationIssueBuilder("id_4")
+                    .setIssueActionability(SafetySourceIssue.ISSUE_ACTIONABILITY_TIP)
+                    .build(),
+                safetySourceTestData
+                    .defaultInformationIssueBuilder("id_5")
+                    .setIssueActionability(SafetySourceIssue.ISSUE_ACTIONABILITY_TIP)
+                    .build(),
+            )
+        )
+
+        val apiSafetyCenterStatus = safetyCenterManager.getSafetyCenterDataWithPermission().status
+
+        assertThat(apiSafetyCenterStatus)
+            .isEqualTo(safetyCenterTestData.safetyCenterStatusTips(numTipIssues = 3))
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getSafetyCenterData_infoStatusActionFirstIssueSingleAction_infoStatusWithActionSummary() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.issueOnlySourceConfig)
+        safetyCenterTestHelper.setData(
+            ISSUE_ONLY_ALL_OPTIONAL_ID,
+            SafetySourceTestData.issuesOnly(
+                safetySourceTestData
+                    .defaultInformationIssueBuilder()
+                    .setIssueActionability(SafetySourceIssue.ISSUE_ACTIONABILITY_AUTOMATIC)
+                    .build()
+            )
+        )
+
+        val apiSafetyCenterStatus = safetyCenterManager.getSafetyCenterDataWithPermission().status
+
+        assertThat(apiSafetyCenterStatus)
+            .isEqualTo(safetyCenterTestData.safetyCenterStatusActionsTaken(numAutomaticIssues = 1))
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getSafetyCenterData_infoStatusActionFirstIssueMultiActions_infoStatusWithActionsSummary() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.issueOnlySourceConfig)
+        safetyCenterTestHelper.setData(
+            ISSUE_ONLY_ALL_OPTIONAL_ID,
+            SafetySourceTestData.issuesOnly(
+                safetySourceTestData
+                    .defaultInformationIssueBuilder("id_1")
+                    .setIssueActionability(SafetySourceIssue.ISSUE_ACTIONABILITY_AUTOMATIC)
+                    .build(),
+                safetySourceTestData
+                    .defaultInformationIssueBuilder("id_2")
+                    .setIssueActionability(SafetySourceIssue.ISSUE_ACTIONABILITY_TIP)
+                    .build(),
+                safetySourceTestData
+                    .defaultInformationIssueBuilder("id_3")
+                    .setIssueActionability(SafetySourceIssue.ISSUE_ACTIONABILITY_AUTOMATIC)
+                    .build(),
+                safetySourceTestData
+                    .defaultInformationIssueBuilder("id_4")
+                    .setIssueActionability(SafetySourceIssue.ISSUE_ACTIONABILITY_TIP)
+                    .build(),
+                safetySourceTestData
+                    .defaultInformationIssueBuilder("id_5")
+                    .setIssueActionability(SafetySourceIssue.ISSUE_ACTIONABILITY_MANUAL)
+                    .build(),
+            )
+        )
+
+        val apiSafetyCenterStatus = safetyCenterManager.getSafetyCenterDataWithPermission().status
+
+        assertThat(apiSafetyCenterStatus)
+            .isEqualTo(safetyCenterTestData.safetyCenterStatusActionsTaken(numAutomaticIssues = 2))
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getSafetyCenterData_infoStatusManualFirstIssueSingleManual_infoStatusWithAlertSummary() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.issueOnlySourceConfig)
+        safetyCenterTestHelper.setData(
+            ISSUE_ONLY_ALL_OPTIONAL_ID,
+            SafetySourceTestData.issuesOnly(
+                safetySourceTestData
+                    .defaultInformationIssueBuilder()
+                    .setIssueActionability(SafetySourceIssue.ISSUE_ACTIONABILITY_MANUAL)
+                    .build(),
+            )
+        )
+
+        val apiSafetyCenterStatus = safetyCenterManager.getSafetyCenterDataWithPermission().status
+
+        assertThat(apiSafetyCenterStatus)
+            .isEqualTo(
+                safetyCenterTestData.safetyCenterStatusNAlerts(
+                    "overall_severity_level_ok_title",
+                    OVERALL_SEVERITY_LEVEL_OK,
+                    numAlerts = 1
+                )
+            )
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getSafetyCenterData_infoStatusManualFirstIssueMultiManual_infoStatusWithAlertsSummary() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.issueOnlySourceConfig)
+        safetyCenterTestHelper.setData(
+            ISSUE_ONLY_ALL_OPTIONAL_ID,
+            SafetySourceTestData.issuesOnly(
+                safetySourceTestData
+                    .defaultInformationIssueBuilder("id_1")
+                    .setIssueActionability(SafetySourceIssue.ISSUE_ACTIONABILITY_MANUAL)
+                    .build(),
+                safetySourceTestData
+                    .defaultInformationIssueBuilder("id_2")
+                    .setIssueActionability(SafetySourceIssue.ISSUE_ACTIONABILITY_TIP)
+                    .build(),
+                safetySourceTestData
+                    .defaultInformationIssueBuilder("id_3")
+                    .setIssueActionability(SafetySourceIssue.ISSUE_ACTIONABILITY_MANUAL)
+                    .build(),
+                safetySourceTestData
+                    .defaultInformationIssueBuilder("id_4")
+                    .setIssueActionability(SafetySourceIssue.ISSUE_ACTIONABILITY_AUTOMATIC)
+                    .build(),
+            )
+        )
+
+        val apiSafetyCenterStatus = safetyCenterManager.getSafetyCenterDataWithPermission().status
+
+        assertThat(apiSafetyCenterStatus)
+            .isEqualTo(
+                safetyCenterTestData.safetyCenterStatusNAlerts(
+                    "overall_severity_level_ok_title",
+                    OVERALL_SEVERITY_LEVEL_OK,
+                    numAlerts = 2
+                )
+            )
+    }
+
+    @Test
     fun getSafetyCenterData_singleSourceIssues_returnsOverallStatusBasedOnHigherSeverityIssue() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
         safetyCenterTestHelper.setData(

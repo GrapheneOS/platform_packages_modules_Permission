@@ -37,6 +37,7 @@ import android.safetycenter.SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_OK
 import android.safetycenter.SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_RECOMMENDATION
 import android.safetycenter.SafetyCenterStatus
 import android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING
+import android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK
 import android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN
 import android.util.ArrayMap
 import androidx.annotation.RequiresApi
@@ -88,12 +89,56 @@ class SafetyCenterTestData(context: Context) {
     fun safetyCenterStatusOneAlert(
         statusResource: String,
         overallSeverityLevel: Int
+    ): SafetyCenterStatus = safetyCenterStatusNAlerts(statusResource, overallSeverityLevel, 1)
+
+    /**
+     * Returns a [SafetyCenterStatus] with [numAlerts] and the given [statusResource] and
+     * [overallSeverityLevel].
+     */
+    fun safetyCenterStatusNAlerts(
+        statusResource: String,
+        overallSeverityLevel: Int,
+        numAlerts: Int,
     ): SafetyCenterStatus =
         SafetyCenterStatus.Builder(
                 safetyCenterResourcesContext.getStringByName(statusResource),
-                getAlertString(1)
+                getAlertString(numAlerts)
             )
             .setSeverityLevel(overallSeverityLevel)
+            .build()
+
+    /**
+     * Returns an information [SafetyCenterStatus] that has "Tip(s) available" as a summary for the
+     * given [numTipIssues].
+     */
+    fun safetyCenterStatusTips(
+        numTipIssues: Int,
+    ): SafetyCenterStatus =
+        SafetyCenterStatus.Builder(
+                safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_title"),
+                safetyCenterResourcesContext.getStringByName(
+                    "overall_severity_level_tip_summary",
+                    numTipIssues
+                )
+            )
+            .setSeverityLevel(OVERALL_SEVERITY_LEVEL_OK)
+            .build()
+
+    /**
+     * Returns an information [SafetyCenterStatus] that has "Action(s) taken" as a summary for the
+     * given [numAutomaticIssues].
+     */
+    fun safetyCenterStatusActionsTaken(
+        numAutomaticIssues: Int,
+    ): SafetyCenterStatus =
+        SafetyCenterStatus.Builder(
+                safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_title"),
+                safetyCenterResourcesContext.getStringByName(
+                    "overall_severity_level_action_taken_summary",
+                    numAutomaticIssues
+                )
+            )
+            .setSeverityLevel(OVERALL_SEVERITY_LEVEL_OK)
             .build()
 
     /**

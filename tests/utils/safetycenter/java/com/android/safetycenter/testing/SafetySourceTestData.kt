@@ -101,16 +101,11 @@ class SafetySourceTestData(private val context: Context) {
      * A [SafetySourceIssue.Builder] with a [SEVERITY_LEVEL_INFORMATION] and a redirecting [Action].
      */
     fun defaultInformationIssueBuilder(
+        id: String = INFORMATION_ISSUE_ID,
         title: String = "Information issue title",
         summary: String = "Information issue summary"
     ) =
-        SafetySourceIssue.Builder(
-                INFORMATION_ISSUE_ID,
-                title,
-                summary,
-                SEVERITY_LEVEL_INFORMATION,
-                ISSUE_TYPE_ID
-            )
+        SafetySourceIssue.Builder(id, title, summary, SEVERITY_LEVEL_INFORMATION, ISSUE_TYPE_ID)
             .addAction(
                 Action.Builder(
                         INFORMATION_ISSUE_ACTION_ID,

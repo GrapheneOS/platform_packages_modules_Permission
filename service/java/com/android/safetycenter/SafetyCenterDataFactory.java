@@ -17,6 +17,8 @@
 package com.android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
+import static android.safetycenter.SafetySourceIssue.ISSUE_ACTIONABILITY_AUTOMATIC;
+import static android.safetycenter.SafetySourceIssue.ISSUE_ACTIONABILITY_TIP;
 
 import static java.util.Collections.emptyList;
 import static java.util.Objects.requireNonNull;
@@ -200,6 +202,8 @@ public final class SafetyCenterDataFactory {
         List<SafetyCenterIssue> safetyCenterIssues = new ArrayList<>();
         List<SafetyCenterIssue> safetyCenterDismissedIssues = new ArrayList<>();
         SafetySourceIssueInfo topNonDismissedIssueInfo = null;
+        int numTipIssues = 0;
+        int numAutomaticIssues = 0;
 
         for (int i = 0; i < issuesInfo.size(); i++) {
             SafetySourceIssueInfo issueInfo = issuesInfo.get(i);
@@ -208,6 +212,7 @@ public final class SafetyCenterDataFactory {
                             issueInfo.getSafetySourceIssue(),
                             issueInfo.getSafetySourcesGroup(),
                             issueInfo.getSafetyCenterIssueKey());
+
             if (mSafetyCenterIssueDismissalRepository.isIssueDismissed(
                     issueInfo.getSafetyCenterIssueKey(),
                     issueInfo.getSafetySourceIssue().getSeverityLevel())) {
@@ -219,6 +224,11 @@ public final class SafetyCenterDataFactory {
                                 issueInfo.getSafetySourceIssue().getSeverityLevel()));
                 if (topNonDismissedIssueInfo == null) {
                     topNonDismissedIssueInfo = issueInfo;
+                }
+                if (hasActionability(issueInfo, ISSUE_ACTIONABILITY_TIP)) {
+                    numTipIssues++;
+                } else if (hasActionability(issueInfo, ISSUE_ACTIONABILITY_AUTOMATIC)) {
+                    numAutomaticIssues++;
                 }
             }
         }
@@ -232,10 +242,12 @@ public final class SafetyCenterDataFactory {
                                         refreshStatus,
                                         safetyCenterOverallState.hasSettingsToReview()),
                                 getSafetyCenterStatusSummary(
-                                        safetyCenterOverallState.getOverallSeverityLevel(),
+                                        safetyCenterOverallState,
+                                        topNonDismissedIssueInfo,
                                         refreshStatus,
-                                        safetyCenterIssues.size(),
-                                        safetyCenterOverallState.hasSettingsToReview()))
+                                        numTipIssues,
+                                        numAutomaticIssues,
+                                        safetyCenterIssues.size()))
                         .setSeverityLevel(safetyCenterOverallState.getOverallSeverityLevel())
                         .setRefreshStatus(refreshStatus)
                         .build();
@@ -1092,33 +1104,55 @@ public final class SafetyCenterDataFactory {
 
     @NonNull
     private String getSafetyCenterStatusSummary(
-            @SafetyCenterStatus.OverallSeverityLevel int overallSeverityLevel,
+            @NonNull SafetyCenterOverallState safetyCenterOverallState,
+            @Nullable SafetySourceIssueInfo topNonDismissedIssue,
             @SafetyCenterStatus.RefreshStatus int refreshStatus,
-            int numberOfIssues,
-            boolean hasSettingsToReview) {
+            int numTipIssues,
+            int numAutomaticIssues,
+            int numIssues) {
         String refreshStatusSummary = getSafetyCenterRefreshStatusSummary(refreshStatus);
         if (refreshStatusSummary != null) {
             return refreshStatusSummary;
         }
+        int overallSeverityLevel = safetyCenterOverallState.getOverallSeverityLevel();
         switch (overallSeverityLevel) {
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN:
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK:
-                if (numberOfIssues == 0) {
-                    if (hasSettingsToReview) {
+                if (numIssues == 0) {
+                    if (safetyCenterOverallState.hasSettingsToReview()) {
                         return mSafetyCenterResourcesContext.getStringByName(
                                 "overall_severity_level_ok_review_summary");
                     }
                     return mSafetyCenterResourcesContext.getStringByName(
                             "overall_severity_level_ok_summary");
+                } else if (hasActionability(topNonDismissedIssue, ISSUE_ACTIONABILITY_TIP)) {
+                    return mSafetyCenterResourcesContext.getStringByName(
+                            "overall_severity_level_tip_summary", numTipIssues);
+
+                } else if (hasActionability(topNonDismissedIssue, ISSUE_ACTIONABILITY_AUTOMATIC)) {
+                    return mSafetyCenterResourcesContext.getStringByName(
+                            "overall_severity_level_action_taken_summary", numAutomaticIssues);
                 }
                 // Fall through.
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_RECOMMENDATION:
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING:
-                return getIcuPluralsString("overall_severity_n_alerts_summary", numberOfIssues);
+                return getIcuPluralsString("overall_severity_n_alerts_summary", numIssues);
         }
 
         Log.w(TAG, "Unexpected SafetyCenterStatus.OverallSeverityLevel: " + overallSeverityLevel);
         return "";
+    }
+
+    private static boolean hasActionability(
+            @Nullable SafetySourceIssueInfo issueInfo,
+            @SafetySourceIssue.IssueActionability int issueActionability) {
+        if (issueInfo == null) {
+            return false;
+        }
+        if (!SdkLevel.isAtLeastU()) {
+            return issueActionability == SafetySourceIssue.ISSUE_ACTIONABILITY_MANUAL;
+        }
+        return issueActionability == issueInfo.getSafetySourceIssue().getIssueActionability();
     }
 
     @NonNull
