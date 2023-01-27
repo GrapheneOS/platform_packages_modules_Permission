@@ -543,7 +543,7 @@ public class SafetyCenterQsFragment extends Fragment {
         return layered;
     }
 
-    private void setSensorToggleState(Map<String, SensorState> sensorStates) {
+    private void setSensorToggleState(@Nullable Map<String, SensorState> sensorStates) {
         if (!mAreSensorTogglesReady) {
             mAreSensorTogglesReady = true;
             maybeEnableView(getView());
@@ -553,7 +553,7 @@ public class SafetyCenterQsFragment extends Fragment {
     }
 
     private void setupSensorToggles(
-            Map<String, SensorState> sensorStates, @Nullable View rootView) {
+            @Nullable Map<String, SensorState> sensorStates, @Nullable View rootView) {
         if (rootView == null) {
             return;
         }
@@ -630,7 +630,7 @@ public class SafetyCenterQsFragment extends Fragment {
     }
 
     private void updateSensorToggleState(
-            Map<String, SensorState> sensorStates, @Nullable View rootView) {
+            @Nullable Map<String, SensorState> sensorStates, @Nullable View rootView) {
         if (rootView == null) {
             return;
         }
