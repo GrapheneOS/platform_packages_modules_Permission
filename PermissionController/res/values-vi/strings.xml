@@ -408,7 +408,7 @@
     <string name="default_app_no_apps" msgid="115720991680586885">"Không có ứng dụng nào"</string>
     <string name="car_default_app_selected" msgid="5416420830430644174">"Đã chọn"</string>
     <string name="car_default_app_selected_with_info" msgid="1932204186080593500">"Đã chọn – <xliff:g id="ADDITIONAL_INFO">%1$s</xliff:g>"</string>
-    <string name="special_app_access_search_keyword" msgid="8032347212290774210">"quyền truy cập ứng dụng đặc biệt"</string>
+    <string name="special_app_access_search_keyword" msgid="8032347212290774210">"quyền truy cập đặc biệt"</string>
     <string name="special_app_access" msgid="5019319067120213797">"Quyền truy cập đặc biệt"</string>
     <string name="no_special_app_access" msgid="6950277571805106247">"Không có quyền truy cập đặc biệt"</string>
     <string name="special_app_access_no_apps" msgid="4102911722787886970">"Không có ứng dụng"</string>
