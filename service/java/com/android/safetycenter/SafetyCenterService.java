@@ -155,6 +155,10 @@ public final class SafetyCenterService extends SystemService {
 
     @GuardedBy("mApiLock")
     @NonNull
+    private final SafetyCenterDataChangeNotifier mSafetyCenterDataChangeNotifier;
+
+    @GuardedBy("mApiLock")
+    @NonNull
     private final SafetyCenterInFlightIssueActionRepository
             mSafetyCenterInFlightIssueActionRepository;
 
@@ -229,6 +233,8 @@ public final class SafetyCenterService extends SystemService {
                         mSafetyCenterDataFactory,
                         mSafetyCenterIssueDismissalRepository,
                         mSafetyCenterIssueRepository);
+        mSafetyCenterDataChangeNotifier =
+                new SafetyCenterDataChangeNotifier(mNotificationSender, mSafetyCenterListeners);
         mAppOpsManager = requireNonNull(context.getSystemService(AppOpsManager.class));
         mDeviceSupportsSafetyCenter =
                 context.getResources()
@@ -251,7 +257,10 @@ public final class SafetyCenterService extends SystemService {
                     mSafetyCenterIssueDismissalRepository.loadStateFromFile();
                     new UserBroadcastReceiver().register(getContext());
                     new SafetyCenterNotificationReceiver(
-                                    this, mSafetyCenterIssueDismissalRepository, mApiLock)
+                                    this,
+                                    mSafetyCenterIssueDismissalRepository,
+                                    mSafetyCenterDataChangeNotifier,
+                                    mApiLock)
                             .register(getContext());
                 }
             }
@@ -318,8 +327,7 @@ public final class SafetyCenterService extends SystemService {
                                 safetySourceData, safetySourceId, safetyEvent, packageName, userId);
                 if (hasUpdate) {
                     mSafetyCenterIssueRepository.updateIssues(userId);
-                    mNotificationSender.updateNotifications(userId);
-                    mSafetyCenterListeners.deliverDataForUserProfileGroup(userProfileGroup);
+                    mSafetyCenterDataChangeNotifier.updateDataConsumers(userProfileGroup, userId);
                 }
             }
         }
@@ -381,8 +389,7 @@ public final class SafetyCenterService extends SystemService {
                 }
                 if (hasUpdate) {
                     mSafetyCenterIssueRepository.updateIssues(userId);
-                    mNotificationSender.updateNotifications(userId);
-                    mSafetyCenterListeners.deliverDataForUserProfileGroup(userProfileGroup);
+                    mSafetyCenterDataChangeNotifier.updateDataConsumers(userProfileGroup, userId);
                 }
                 if (safetyCenterErrorDetails != null) {
                     mSafetyCenterListeners.deliverErrorForUserProfileGroup(
@@ -550,8 +557,7 @@ public final class SafetyCenterService extends SystemService {
                     // anymore.
                 }
                 mSafetyCenterIssueRepository.updateIssues(userId);
-                mNotificationSender.updateNotifications(userId);
-                mSafetyCenterListeners.deliverDataForUserProfileGroup(userProfileGroup);
+                mSafetyCenterDataChangeNotifier.updateDataConsumers(userProfileGroup, userId);
             }
         }
 
@@ -605,7 +611,7 @@ public final class SafetyCenterService extends SystemService {
             synchronized (mApiLock) {
                 // TODO(b/236693607): Should tests leave real data untouched?
                 clearDataLocked();
-                mSafetyCenterListeners.deliverDataForUserProfileGroups(userProfileGroups);
+                mSafetyCenterDataChangeNotifier.updateDataConsumers(userProfileGroups);
             }
         }
 
@@ -625,7 +631,7 @@ public final class SafetyCenterService extends SystemService {
                 mSafetyCenterConfigReader.setConfigOverrideForTests(safetyCenterConfig);
                 // TODO(b/236693607): Should tests leave real data untouched?
                 clearDataLocked();
-                mSafetyCenterListeners.deliverDataForUserProfileGroups(userProfileGroups);
+                mSafetyCenterDataChangeNotifier.updateDataConsumers(userProfileGroups);
             }
         }
 
@@ -644,7 +650,7 @@ public final class SafetyCenterService extends SystemService {
                 mSafetyCenterConfigReader.clearConfigOverrideForTests();
                 // TODO(b/236693607): Should tests leave real data untouched?
                 clearDataLocked();
-                mSafetyCenterListeners.deliverDataForUserProfileGroups(userProfileGroups);
+                mSafetyCenterDataChangeNotifier.updateDataConsumers(userProfileGroups);
             }
         }
 
@@ -880,7 +886,7 @@ public final class SafetyCenterService extends SystemService {
                     }
                 }
                 mSafetyCenterIssueRepository.updateIssues(mUserProfileGroup);
-                mSafetyCenterListeners.deliverDataForUserProfileGroup(mUserProfileGroup);
+                mSafetyCenterDataChangeNotifier.updateDataConsumers(mUserProfileGroup);
                 if (!showErrorEntriesOnTimeout) {
                     mSafetyCenterListeners.deliverErrorForUserProfileGroup(
                             mUserProfileGroup,
@@ -936,7 +942,7 @@ public final class SafetyCenterService extends SystemService {
                 if (!safetyCenterDataHasChanged) {
                     return;
                 }
-                mSafetyCenterListeners.deliverDataForUserProfileGroup(mUserProfileGroup);
+                mSafetyCenterDataChangeNotifier.updateDataConsumers(mUserProfileGroup);
                 mSafetyCenterListeners.deliverErrorForUserProfileGroup(
                         mUserProfileGroup,
                         new SafetyCenterErrorDetails(
@@ -1017,16 +1023,18 @@ public final class SafetyCenterService extends SystemService {
     private void removeUser(@UserIdInt int userId, boolean clearDataPermanently) {
         UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
         synchronized (mApiLock) {
+            mSafetyCenterListeners.clearForUser(userId);
+            mSafetyCenterRefreshTracker.clearRefreshForUser(userId);
+
             if (clearDataPermanently) {
                 mSafetySourceDataRepository.clearForUser(userId);
                 mSafetyCenterInFlightIssueActionRepository.clearForUser(userId);
                 mSafetyCenterIssueDismissalRepository.clearForUser(userId);
                 mSafetyCenterIssueRepository.updateIssues(userId);
-                mNotificationSender.updateNotifications(userId);
+                mSafetyCenterDataChangeNotifier.updateDataConsumers(userProfileGroup, userId);
+            } else {
+                mSafetyCenterListeners.deliverDataForUserProfileGroup(userProfileGroup);
             }
-            mSafetyCenterListeners.clearForUser(userId);
-            mSafetyCenterRefreshTracker.clearRefreshForUser(userId);
-            mSafetyCenterListeners.deliverDataForUserProfileGroup(userProfileGroup);
         }
     }
 
@@ -1055,7 +1063,7 @@ public final class SafetyCenterService extends SystemService {
             mSafetyCenterTimeouts.add(
                     refreshTimeout, SafetyCenterFlags.getRefreshSourcesTimeout(refreshReason));
 
-            mSafetyCenterListeners.deliverDataForUserProfileGroup(userProfileGroup);
+            mSafetyCenterDataChangeNotifier.updateDataConsumers(userProfileGroup);
         }
     }
 
@@ -1122,7 +1130,7 @@ public final class SafetyCenterService extends SystemService {
                         new ResolvingActionTimeout(safetyCenterIssueActionId, userProfileGroup);
                 mSafetyCenterTimeouts.add(
                         resolvingActionTimeout, SafetyCenterFlags.getResolvingActionTimeout());
-                mSafetyCenterListeners.deliverDataForUserProfileGroup(userProfileGroup);
+                mSafetyCenterDataChangeNotifier.updateDataConsumers(userProfileGroup);
             }
         }
     }

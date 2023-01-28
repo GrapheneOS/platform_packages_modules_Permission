@@ -111,7 +111,7 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
     private fun getSummaryForLocationUpdateType(type: DataSharingUpdateType): String {
         return when (type) {
             DataSharingUpdateType.ADDS_ADVERTISING_PURPOSE ->
-                getString(R.string.shares_location_for_advertising)
+                getString(R.string.shares_location_with_third_parties_for_advertising)
             DataSharingUpdateType.ADDS_SHARING_WITHOUT_ADVERTISING_PURPOSE ->
                 getString(R.string.shares_location_with_third_parties)
             DataSharingUpdateType.ADDS_SHARING_WITH_ADVERTISING_PURPOSE ->
@@ -141,16 +141,16 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
             it.isVisible = true
         }
         footerPreference?.let {
-            it.title =
-                StringUtils.getIcuPluralsString(requireContext(), R.string.updated_in_last_days, 30)
             it.footerMessage = getString(R.string.data_sharing_updates_footer_message)
-            it.footerLink = getString(R.string.learn_more_about_data_sharing)
+            it.footerLink = getString(R.string.learn_about_data_sharing)
             it.onFooterLinkClick =
                 View.OnClickListener { viewModel.openSafetyLabelsHelpCenterPage(requireActivity()) }
             it.isVisible = true
         }
     }
 
+    // TODO(b/261666772): Once spec is final, consider extracting common elements with
+    //  showUpdatesPresentUi into a separate method.
     private fun showNoUpdatesPresentUi() {
         if (preferenceScreen == null) {
             return
@@ -163,11 +163,22 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
             preferenceScreen?.findPreference<PreferenceCategory>(
                 LAST_PERIOD_UPDATES_PREFERENCE_CATEGORY_ID)
         subtitlePreference?.let {
-            it.summary = getString(R.string.no_recent_updates)
+            it.summary = getString(R.string.data_sharing_updates_subtitle)
             it.isVisible = true
         }
-        dataSharingUpdatesCategory?.isVisible = false
-        footerPreference?.isVisible = false
+        dataSharingUpdatesCategory?.let {
+            // TODO(b/261666772): Refactor how the "no updates" message is shown to align with spec.
+            //  The same preference category may not be usable for UI with and without updates.
+            it.title = getString(R.string.no_updates_at_this_time)
+            it.isVisible = true
+        }
+        footerPreference?.let {
+            it.footerMessage = getString(R.string.data_sharing_updates_footer_message)
+            it.footerLink = getString(R.string.learn_about_data_sharing)
+            it.onFooterLinkClick =
+                View.OnClickListener { viewModel.openSafetyLabelsHelpCenterPage(requireActivity()) }
+            it.isVisible = true
+        }
     }
 
     /** Creates an identifier for a preference. */

@@ -200,7 +200,7 @@ class AppDataSharingUpdatesPrivacySourceTest {
         var context: Context = ApplicationProvider.getApplicationContext()
         const val DATA_SHARING_UPDATES_TITLE: String = "Data sharing updates"
         const val DATA_SHARING_UPDATES_SUMMARY: String =
-            "Review apps that changed the way they share location data."
+            "Review apps that changed the way they share location data"
         const val REFRESH_ID: String = "refresh_id"
 
         /**
