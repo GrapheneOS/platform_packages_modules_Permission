@@ -154,7 +154,7 @@ class GrantRevokeTests {
                     Build.VERSION_CODES.LOLLIPOP
                 } else {
                     Build.VERSION_CODES.R
-                }, isInstantApp, isInstantApp, 0, 0L, false, emptyMap())
+                }, isInstantApp, isInstantApp, 0, 0L, 0L, false, emptyMap())
     }
 
     /**

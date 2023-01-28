@@ -160,6 +160,7 @@ class HibernationControllerTest {
             true /* enabled */,
             0 /* appFlags */,
             0 /* firstInstallTime */,
+            0 /* lastUpdateTime */,
             false /* areAttributionsUserVisible */,
             emptyMap() /* attributionTagsToLabels */)
     }
