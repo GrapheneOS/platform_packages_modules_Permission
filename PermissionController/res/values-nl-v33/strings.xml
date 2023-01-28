@@ -22,7 +22,7 @@
     <string name="work_policy_title" msgid="832967780713677409">"Informatie over je werkbeleid"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"Instellingen beheerd door je IT-beheerder"</string>
     <string name="safety_center_entry_group_expand_action" msgid="5358289574941779652">"Uitvouwen en lijst tonen"</string>
-    <string name="safety_center_entry_group_collapse_action" msgid="1525710152244405656">"Lijst samenvouwen en instellingen bewerken"</string>
+    <string name="safety_center_entry_group_collapse_action" msgid="1525710152244405656">"Lijst samenvouwen en instellingen verbergen"</string>
     <string name="safety_center_entry_group_content_description" msgid="7048420958214443333">"Lijst. <xliff:g id="ENTRY_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>."</string>
     <string name="safety_center_entry_group_with_actions_needed_content_description" msgid="2708884606775932657">"Lijst. <xliff:g id="ENTRY_TITLE">%1$s</xliff:g>. Acties vereist. <xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>."</string>
     <string name="safety_center_entry_group_item_content_description" msgid="7348298582877249787">"Lijstitem. <xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>."</string>
