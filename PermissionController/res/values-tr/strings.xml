@@ -402,12 +402,9 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> adlı uygulamanın bildirimlerinizle etkileşimde bulunup uygulamalarınızı bağlı cihazda canlı oynatmasına izin verilecek."</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> adlı uygulamanın yakındaki cihazlarda içerikleri canlı oynatmasına izin verilir."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Bu hizmet, telefonunuzdaki fotoğraf, medya ve bildirimleri diğer cihazlarla paylaşır."</string>
-    <!-- no translation found for role_notes_label (7451627001058089536) -->
-    <skip />
-    <!-- no translation found for role_notes_short_label (8796604147546125285) -->
-    <skip />
-    <!-- no translation found for role_notes_description (8496852798616883551) -->
-    <skip />
+    <string name="role_notes_label" msgid="7451627001058089536">"Varsayılan not uygulaması"</string>
+    <string name="role_notes_short_label" msgid="8796604147546125285">"Notlar uygulaması"</string>
+    <string name="role_notes_description" msgid="8496852798616883551">"Cihazınızda not almanıza olanak tanıyan uygulamalar"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"notlar"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Mevcut varsayılan"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Tekrar sorma"</string>

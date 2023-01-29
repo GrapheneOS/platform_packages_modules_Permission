@@ -402,12 +402,9 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> tindrà permís per interaccionar amb les teves notificacions i reproduir en continu les teves aplicacions al dispositiu connectat."</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> tindrà permís per reproduir contingut en continu en dispositius propers."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Aquest servei comparteix les fotos, el contingut multimèdia i les notificacions del telèfon amb altres dispositius."</string>
-    <!-- no translation found for role_notes_label (7451627001058089536) -->
-    <skip />
-    <!-- no translation found for role_notes_short_label (8796604147546125285) -->
-    <skip />
-    <!-- no translation found for role_notes_description (8496852798616883551) -->
-    <skip />
+    <string name="role_notes_label" msgid="7451627001058089536">"App de notes predeterminada"</string>
+    <string name="role_notes_short_label" msgid="8796604147546125285">"Aplicació de notes"</string>
+    <string name="role_notes_description" msgid="8496852798616883551">"Aplicacions que et permeten prendre notes al dispositiu"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"notes"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Predeterminada actualment"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"No m\'ho tornis a preguntar"</string>

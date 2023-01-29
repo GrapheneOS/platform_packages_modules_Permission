@@ -591,6 +591,5 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Колдонмолор көчүрүлгөн текстти, сүрөттөрдү же башка нерселерди пайдаланганда билдирүүлөр көрүнөт"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Сырсөз көрүнсүн"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Сырсөз терилип жатканда символдор бир саамга көрүнөт"</string>
-    <!-- no translation found for permission_rationale_message_location (2153841534298068414) -->
-    <skip />
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"Бул колдонмо жайгашкан жер тууралуу маалыматты үчүнчү тараптар менен бөлүшүүгө уруксат сурап жатат"</string>
 </resources>

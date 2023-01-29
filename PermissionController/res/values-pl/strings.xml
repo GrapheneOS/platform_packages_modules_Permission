@@ -402,12 +402,9 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"Aplikacja <xliff:g id="APP_NAME">%1$s</xliff:g> będzie mogła korzystać z powiadomień oraz odtwarzać strumieniowo dane z aplikacji na połączonych urządzeniach."</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"Aplikacja <xliff:g id="APP_NAME">%1$s</xliff:g> będzie mogła odtwarzać strumieniowo treści na urządzeniach w pobliżu."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Ta usługa udostępnia Twoje zdjęcia, multimedia i powiadomienia z telefonu innym urządzeniom."</string>
-    <!-- no translation found for role_notes_label (7451627001058089536) -->
-    <skip />
-    <!-- no translation found for role_notes_short_label (8796604147546125285) -->
-    <skip />
-    <!-- no translation found for role_notes_description (8496852798616883551) -->
-    <skip />
+    <string name="role_notes_label" msgid="7451627001058089536">"Domyślna aplikacja do notatek"</string>
+    <string name="role_notes_short_label" msgid="8796604147546125285">"Aplikacja do notatek"</string>
+    <string name="role_notes_description" msgid="8496852798616883551">"Aplikacje umożliwiające robienie notatek na urządzeniu"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"notatki"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Bieżąca aplikacja domyślna"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Nie pytaj ponownie"</string>
