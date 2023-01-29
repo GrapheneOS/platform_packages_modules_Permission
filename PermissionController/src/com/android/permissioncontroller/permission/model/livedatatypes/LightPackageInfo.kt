@@ -49,6 +49,7 @@ data class LightPackageInfo(
     val enabled: Boolean,
     val appFlags: Int,
     val firstInstallTime: Long,
+    val lastUpdateTime: Long,
     val areAttributionsUserVisible: Boolean,
     val attributionTagsToLabels: Map<String, Int>
 ) {
@@ -65,6 +66,7 @@ data class LightPackageInfo(
         pI.applicationInfo.enabled,
         pI.applicationInfo.flags,
         pI.firstInstallTime,
+        pI.lastUpdateTime,
         if (SdkLevel.isAtLeastS()) pI.applicationInfo.areAttributionsUserVisible() else false,
         if (SdkLevel.isAtLeastS()) buildAttributionTagsToLabelsMap(pI.attributions) else emptyMap())
 

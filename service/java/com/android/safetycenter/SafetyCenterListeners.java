@@ -34,7 +34,6 @@ import android.util.SparseArray;
 import androidx.annotation.RequiresApi;
 
 import java.io.PrintWriter;
-import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
 import javax.annotation.concurrent.NotThreadSafe;
@@ -85,16 +84,6 @@ final class SafetyCenterListeners {
             listener.onError(safetyCenterErrorDetails);
         } catch (RemoteException e) {
             Log.e(TAG, "Error delivering SafetyCenterErrorDetails to listener", e);
-        }
-    }
-
-    /**
-     * Same as {@link SafetyCenterListeners#deliverDataForUserProfileGroup}, but for all given
-     * {@link UserProfileGroup}s.
-     */
-    void deliverDataForUserProfileGroups(@NonNull List<UserProfileGroup> userProfileGroups) {
-        for (int i = 0; i < userProfileGroups.size(); i++) {
-            deliverDataForUserProfileGroup(userProfileGroups.get(i));
         }
     }
 
