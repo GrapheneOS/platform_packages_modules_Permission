@@ -467,8 +467,6 @@ public final class SafetySourceDataRepository {
                             + safetySourceId);
         }
 
-        // TODO(b/222327845): Security: check package is installed for user?
-
         if (!SdkLevel.isAtLeastU()) {
             // No more validation checks possible on T devices
             return;
