@@ -88,7 +88,7 @@ class AppsSafetyLabelHistoryTest {
         private const val PACKAGE_NAME_1 = "package_name_1"
         private const val PACKAGE_NAME_2 = "package_name_2"
         private const val LOCATION_CATEGORY = "location"
-        private const val APPROX_LOCATION = "APPROX_LOCATION"
+        private const val APPROX_LOCATION = "approx_location"
         private const val PURPOSE_FRAUD_PREVENTION_SECURITY = 4
         private const val PURPOSE_ADVERTISING = 5
         private const val SAFETY_LABEL_KEY = "safety_labels"
