@@ -19,7 +19,7 @@
     <string name="role_dialer_request_description" msgid="6188305064871543419">"Esta aplicación vai ter permiso para enviarche notificacións e tamén poderá acceder á cámara, aos contactos, ao micrófono, ao teléfono e ás SMS"</string>
     <string name="role_sms_request_description" msgid="1506966389698625395">"Esta aplicación vai ter permiso para enviarche notificacións e tamén poderá acceder á cámara, aos contactos, aos ficheiros, ao micrófono, ao teléfono e ás SMS"</string>
     <string name="permission_description_summary_storage" msgid="1917071243213043858">"As aplicacións que contan con este permiso poden acceder a todos os ficheiros deste dispositivo"</string>
-    <string name="work_policy_title" msgid="832967780713677409">"Información sobre a túa política de traballo"</string>
+    <string name="work_policy_title" msgid="832967780713677409">"Información sobre a política do teu traballo"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"A configuración xestiónaa o teu administrador de TI"</string>
     <string name="safety_center_entry_group_expand_action" msgid="5358289574941779652">"Despregar e mostrar lista"</string>
     <string name="safety_center_entry_group_collapse_action" msgid="1525710152244405656">"Contraer lista e ocultar configuración"</string>

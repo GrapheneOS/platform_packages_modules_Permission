@@ -402,12 +402,9 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g>-কে আপনার বিজ্ঞপ্তির সাথে কথোপকথন এবং কানেক্ট করা ডিভাইসের অ্যাপ স্ট্রিম করতে অনুমতি দেওয়া হবে।"</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"আশেপাশের ডিভাইসে কন্টেন্ট স্ট্রিম করার জন্য <xliff:g id="APP_NAME">%1$s</xliff:g>-কে অনুমোদন দেওয়া হবে।"</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"এই পরিষেবাটি আপনার ফোনের ফটো, মিডিয়া ও বিজ্ঞপ্তি অন্যান্য ডিভাইসে শেয়ার করে।"</string>
-    <!-- no translation found for role_notes_label (7451627001058089536) -->
-    <skip />
-    <!-- no translation found for role_notes_short_label (8796604147546125285) -->
-    <skip />
-    <!-- no translation found for role_notes_description (8496852798616883551) -->
-    <skip />
+    <string name="role_notes_label" msgid="7451627001058089536">"নোট নেওয়ার ডিফল্ট অ্যাপ"</string>
+    <string name="role_notes_short_label" msgid="8796604147546125285">"নোট অ্যাপ"</string>
+    <string name="role_notes_description" msgid="8496852798616883551">"অ্যাপ, যা আপনার ডিভাইসে নোট নেওয়ার অনুমতি দেয়"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"নোট"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"বর্তমান ডিফল্ট"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"আর দেখতে চাই না"</string>
@@ -594,6 +591,5 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"আপনার কপি করা টেক্সট, ছবি বা অন্যান্য কন্টেন্ট অ্যাপ অ্যাক্সেস করলে মেসেজ দেখায়"</string>
     <string name="show_password_title" msgid="2877269286984684659">"পাসওয়ার্ড দেখুন"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"টাইপ করার সময় অক্ষরগুলি কয়েক মুহূর্তের জন্য দেখুন"</string>
-    <!-- no translation found for permission_rationale_message_location (2153841534298068414) -->
-    <skip />
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"এই অ্যাপ, থার্ড-পার্টির সাথে লোকেশন ডেটা শেয়ার করার অনুমতি চাইতে পারে"</string>
 </resources>

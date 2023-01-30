@@ -402,9 +402,9 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"「<xliff:g id="APP_NAME">%1$s</xliff:g>」將可存取通知，並可在已連結的裝置上串流播放應用程式。"</string>
     <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"「<xliff:g id="APP_NAME">%1$s</xliff:g>」的內容將可在附近的裝置上串流播放。"</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"此服務會將您手機中的相片、媒體和通知與其他裝置共用。"</string>
-    <string name="role_notes_label" msgid="7451627001058089536">"預設的記事應用程式"</string>
-    <string name="role_notes_short_label" msgid="8796604147546125285">"記事應用程式"</string>
-    <string name="role_notes_description" msgid="8496852798616883551">"可在裝置上記事的應用程式"</string>
+    <string name="role_notes_label" msgid="7451627001058089536">"預設筆記應用程式"</string>
+    <string name="role_notes_short_label" msgid="8796604147546125285">"筆記應用程式"</string>
+    <string name="role_notes_description" msgid="8496852798616883551">"讓您可以在裝置上寫筆記的應用程式"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"筆記"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"目前預設"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"不要再詢問"</string>
