@@ -54,17 +54,17 @@ public class DataTypeConstants {
             })
     public @interface PersonalType {}
 
-    public static final String PERSONAL_NAME = "NAME";
-    public static final String PERSONAL_EMAIL_ADDRESS = "EMAIL_ADDRESS";
-    public static final String PERSONAL_PHYSICAL_ADDRESS = "PHYSICAL_ADDRESS";
-    public static final String PERSONAL_PHONE_NUMBER = "PHONE_NUMBER";
-    public static final String PERSONAL_RACE_ETHNICITY = "RACE_ETHNICITY";
+    public static final String PERSONAL_NAME = "name";
+    public static final String PERSONAL_EMAIL_ADDRESS = "email_address";
+    public static final String PERSONAL_PHYSICAL_ADDRESS = "physical_address";
+    public static final String PERSONAL_PHONE_NUMBER = "phone_number";
+    public static final String PERSONAL_RACE_ETHNICITY = "race_ethnicity";
     public static final String PERSONAL_POLITICAL_OR_RELIGIOUS_BELIEFS =
-            "POLITICAL_OR_RELIGIOUS_BELIEFS";
+            "political_or_religious_beliefs";
     public static final String PERSONAL_SEXUAL_ORIENTATION_OR_GENDER_IDENTITY =
-            "SEXUAL_ORIENTATION_OR_GENDER_IDENTITY";
-    public static final String PERSONAL_IDENTIFIERS = "PERSONAL_IDENTIFIERS";
-    public static final String PERSONAL_OTHER = "OTHER";
+            "sexual_orientation_or_gender_identity";
+    public static final String PERSONAL_IDENTIFIERS = "personal_identifiers";
+    public static final String PERSONAL_OTHER = "other";
 
     @PersonalType
     private static final Set<String> VALID_TYPES_PERSONAL =
@@ -96,10 +96,10 @@ public class DataTypeConstants {
             })
     public @interface FinancialType {}
 
-    public static final String FINANCIAL_CARD_BANK_ACCOUNT = "CARD_BANK_ACCOUNT";
-    public static final String FINANCIAL_PURCHASE_HISTORY = "PURCHASE_HISTORY";
-    public static final String FINANCIAL_CREDIT_SCORE = "CREDIT_SCORE";
-    public static final String FINANCIAL_OTHER = "OTHER";
+    public static final String FINANCIAL_CARD_BANK_ACCOUNT = "card_bank_account";
+    public static final String FINANCIAL_PURCHASE_HISTORY = "purchase_history";
+    public static final String FINANCIAL_CREDIT_SCORE = "credit_score";
+    public static final String FINANCIAL_OTHER = "other";
 
     @FinancialType
     private static final Set<String> VALID_TYPES_FINANCIAL =
@@ -124,8 +124,8 @@ public class DataTypeConstants {
             })
     public @interface LocationType {}
 
-    public static final String LOCATION_APPROX_LOCATION = "APPROX_LOCATION";
-    public static final String LOCATION_PRECISE_LOCATION = "PRECISE_LOCATION";
+    public static final String LOCATION_APPROX_LOCATION = "approx_location";
+    public static final String LOCATION_PRECISE_LOCATION = "precise_location";
 
     @LocationType
     private static final Set<String> VALID_TYPES_LOCATION =
@@ -147,9 +147,9 @@ public class DataTypeConstants {
             })
     public @interface EmailTextMessageType {}
 
-    public static final String EMAIL_TEXT_MESSAGE_EMAILS = "EMAILS";
-    public static final String EMAIL_TEXT_MESSAGE_TEXT_MESSAGES = "TEXT_MESSAGES";
-    public static final String EMAIL_TEXT_MESSAGE_OTHER = "OTHER";
+    public static final String EMAIL_TEXT_MESSAGE_EMAILS = "emails";
+    public static final String EMAIL_TEXT_MESSAGE_TEXT_MESSAGES = "text_messages";
+    public static final String EMAIL_TEXT_MESSAGE_OTHER = "other";
 
     @EmailTextMessageType
     private static final Set<String> VALID_TYPES_EMAIL_TEXT_MESSAGE =
@@ -173,8 +173,8 @@ public class DataTypeConstants {
             })
     public @interface PhotoVideoType {}
 
-    public static final String PHOTO_VIDEO_PHOTOS = "PHOTOS";
-    public static final String PHOTO_VIDEO_VIDEOS = "VIDEOS";
+    public static final String PHOTO_VIDEO_PHOTOS = "photos";
+    public static final String PHOTO_VIDEO_VIDEOS = "videos";
 
     @PhotoVideoType
     private static final Set<String> VALID_TYPES_PHOTO_VIDEO =
@@ -191,9 +191,9 @@ public class DataTypeConstants {
             value = {AUDIO_SOUND_RECORDINGS, AUDIO_MUSIC_FILES, AUDIO_OTHER})
     public @interface AudioType {}
 
-    public static final String AUDIO_SOUND_RECORDINGS = "SOUND_RECORDINGS";
-    public static final String AUDIO_MUSIC_FILES = "MUSIC_FILES";
-    public static final String AUDIO_OTHER = "OTHER";
+    public static final String AUDIO_SOUND_RECORDINGS = "sound_recordings";
+    public static final String AUDIO_MUSIC_FILES = "music_files";
+    public static final String AUDIO_OTHER = "other";
 
     @AudioType
     private static final Set<String> VALID_TYPES_AUDIO =
@@ -213,7 +213,7 @@ public class DataTypeConstants {
             })
     public @interface StorageType {}
 
-    public static final String STORAGE_FILES_DOCS = "FILES_DOCS";
+    public static final String STORAGE_FILES_DOCS = "files_docs";
 
     @StorageType
     private static final Set<String> VALID_TYPES_STORAGE =
@@ -232,8 +232,8 @@ public class DataTypeConstants {
             })
     public @interface HealthFitnessType {}
 
-    public static final String HEALTH_FITNESS_HEALTH = "HEALTH";
-    public static final String HEALTH_FITNESS_FITNESS = "FITNESS";
+    public static final String HEALTH_FITNESS_HEALTH = "health";
+    public static final String HEALTH_FITNESS_FITNESS = "fitness";
 
     @HealthFitnessType
     private static final Set<String> VALID_TYPES_HEALTH_FITNESS =
@@ -252,7 +252,7 @@ public class DataTypeConstants {
             })
     public @interface ContactsType {}
 
-    public static final String CONTACTS_CONTACTS = "CONTACTS";
+    public static final String CONTACTS_CONTACTS = "contacts";
 
     @ContactsType
     private static final Set<String> VALID_TYPES_CONTACTS =
@@ -270,7 +270,7 @@ public class DataTypeConstants {
             })
     public @interface CalendarType {}
 
-    public static final String CALENDAR_CALENDAR = "CALENDAR";
+    public static final String CALENDAR_CALENDAR = "calendar";
 
     @CalendarType
     private static final Set<String> VALID_TYPES_CALENDAR =
@@ -288,7 +288,7 @@ public class DataTypeConstants {
             })
     public @interface IdentifiersType {}
 
-    public static final String IDENTIFIERS_OTHER = "OTHER";
+    public static final String IDENTIFIERS_OTHER = "other";
 
     @IdentifiersType
     private static final Set<String> VALID_TYPES_IDENTIFIERS =
@@ -308,9 +308,9 @@ public class DataTypeConstants {
             })
     public @interface AppPerformanceType {}
 
-    public static final String APP_PERFORMANCE_CRASH_LOGS = "CRASH_LOGS";
-    public static final String APP_PERFORMANCE_PERFORMANCE_DIAGNOSTICS = "PERFORMANCE_DIAGNOSTICS";
-    public static final String APP_PERFORMANCE_OTHER = "OTHER";
+    public static final String APP_PERFORMANCE_CRASH_LOGS = "crash_logs";
+    public static final String APP_PERFORMANCE_PERFORMANCE_DIAGNOSTICS = "performance_diagnostics";
+    public static final String APP_PERFORMANCE_OTHER = "other";
 
     @AppPerformanceType
     private static final Set<String> VALID_TYPES_APP_PERFORMANCE =
@@ -337,11 +337,11 @@ public class DataTypeConstants {
             })
     public @interface ActionsInAppType {}
 
-    public static final String ACTIONS_IN_APP_USER_INTERACTION = "USER_INTERACTION";
-    public static final String ACTIONS_IN_APP_IN_APP_SEARCH_HISTORY = "IN_APP_SEARCH_HISTORY";
-    public static final String ACTIONS_IN_APP_INSTALLED_APPS = "INSTALLED_APPS";
-    public static final String ACTIONS_IN_APP_USER_GENERATED_CONTENT = "USER_GENERATED_CONTENT";
-    public static final String ACTIONS_IN_APP_OTHER = "OTHER";
+    public static final String ACTIONS_IN_APP_USER_INTERACTION = "user_interaction";
+    public static final String ACTIONS_IN_APP_IN_APP_SEARCH_HISTORY = "in_app_search_history";
+    public static final String ACTIONS_IN_APP_INSTALLED_APPS = "installed_apps";
+    public static final String ACTIONS_IN_APP_USER_GENERATED_CONTENT = "user_generated_content";
+    public static final String ACTIONS_IN_APP_OTHER = "other";
 
     @ActionsInAppType
     private static final Set<String> VALID_TYPES_ACTIONS_IN_APP =
@@ -366,7 +366,7 @@ public class DataTypeConstants {
             })
     public @interface SearchAndBrowsingType {}
 
-    public static final String SEARCH_AND_BROWSING_WEB_BROWSING_HISTORY = "WEB_BROWSING_HISTORY";
+    public static final String SEARCH_AND_BROWSING_WEB_BROWSING_HISTORY = "web_browsing_history";
 
     @SearchAndBrowsingType
     private static final Set<String> VALID_TYPES_SEARCH_AND_BROWSING =

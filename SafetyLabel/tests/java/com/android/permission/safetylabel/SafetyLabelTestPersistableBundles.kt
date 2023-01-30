@@ -26,7 +26,7 @@ import com.android.permission.safetylabel.DataPurposeConstants.PURPOSE_ADVERTISI
 import com.android.permission.safetylabel.DataPurposeConstants.PURPOSE_APP_FUNCTIONALITY
 import com.android.permission.safetylabel.DataType.KEY_EPHEMERAL
 import com.android.permission.safetylabel.DataType.KEY_PURPOSES
-import com.android.permission.safetylabel.DataType.KEY_USER_CONTROL
+import com.android.permission.safetylabel.DataType.KEY_IS_COLLECTION_OPTIONAL
 import com.android.permission.safetylabel.SafetyLabel.KEY_VERSION
 
 /** A class that facilitates creating test safety label persistable bundles. */
@@ -341,7 +341,7 @@ object SafetyLabelTestPersistableBundles {
   fun createTypePersistableBundle(): PersistableBundle {
     return PersistableBundle().apply {
       putIntArray(KEY_PURPOSES, intArrayOf(PURPOSE_APP_FUNCTIONALITY, PURPOSE_ADVERTISING))
-      putBoolean(KEY_USER_CONTROL, true)
+      putBoolean(KEY_IS_COLLECTION_OPTIONAL, true)
       putBoolean(KEY_EPHEMERAL, true)
     }
   }
