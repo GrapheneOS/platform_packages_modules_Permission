@@ -39,6 +39,7 @@ android_test {
         "kotlin-stdlib",
         "kotlin-test",
         "safety-center-config",
+        "safety-center-pending-intents",
         "safety-center-test-util-lib",
         "modules-utils-build",
         "truth-prebuilt",

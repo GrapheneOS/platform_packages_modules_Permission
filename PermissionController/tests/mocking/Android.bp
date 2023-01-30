@@ -109,6 +109,7 @@ android_test {
         "modules-utils-build_system",
         "safety-center-resources-lib",
         "safety-center-internal-data",
+        "safety-center-pending-intents",
         "safety-label",
         "role-controller",
         "lottie",
