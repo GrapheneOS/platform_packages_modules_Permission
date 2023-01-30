@@ -290,7 +290,7 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
     }
 
     private void updatePreferences(Map<Category, List<GroupUiInfo>> groupMap) {
-        if (groupMap == null && mViewModel.getPackagePermGroupsLiveData().isInitialized()) {
+        if (groupMap == null && !mViewModel.getPackagePermGroupsLiveData().isStale()) {
             // null because explicitly set to null
             Toast.makeText(
                     getActivity(), R.string.app_not_found_dlg_title, Toast.LENGTH_LONG).show();

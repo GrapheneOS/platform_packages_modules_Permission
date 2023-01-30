@@ -378,7 +378,7 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
     }
 
     private void setRadioButtonsState(Map<ButtonType, ButtonState> states) {
-        if (states == null && mViewModel.getButtonStateLiveData().isInitialized()) {
+        if (states == null && !mViewModel.getButtonStateLiveData().isStale()) {
             pressBack(this);
             Log.w(LOG_TAG, "invalid package " + mPackageName + " or perm group "
                     + mPermGroupName);
