@@ -23,7 +23,7 @@ import com.android.permission.safetylabel.DataPurposeConstants.PURPOSE_ADVERTISI
 import com.android.permission.safetylabel.DataPurposeConstants.PURPOSE_APP_FUNCTIONALITY
 import com.android.permission.safetylabel.DataType.KEY_EPHEMERAL
 import com.android.permission.safetylabel.DataType.KEY_PURPOSES
-import com.android.permission.safetylabel.DataType.KEY_USER_CONTROL
+import com.android.permission.safetylabel.DataType.KEY_IS_COLLECTION_OPTIONAL
 import com.android.permission.safetylabel.DataTypeConstants.LOCATION_APPROX_LOCATION
 import com.android.permission.safetylabel.SafetyLabelTestPersistableBundles.INVALID_KEY
 import com.android.permission.safetylabel.SafetyLabelTestPersistableBundles.createInvalidTypeMapPersistableBundle
@@ -168,7 +168,7 @@ class DataTypeTest {
         assertThat(dataTypeMap).containsKey(LOCATION_APPROX_LOCATION)
         val type = dataTypeMap[LOCATION_APPROX_LOCATION]!!
         assertThat(type.purposeSet).containsExactly(PURPOSE_APP_FUNCTIONALITY, PURPOSE_ADVERTISING)
-        assertThat(type.userControl).isTrue()
+        assertThat(type.isCollectionOptional).isTrue()
         assertThat(type.ephemeral).isTrue()
     }
 
@@ -184,7 +184,7 @@ class DataTypeTest {
         assertThat(dataTypeMap).containsKey(LOCATION_APPROX_LOCATION)
         val type = dataTypeMap[LOCATION_APPROX_LOCATION]!!
         assertThat(type.purposeSet).containsExactly(PURPOSE_APP_FUNCTIONALITY, PURPOSE_ADVERTISING)
-        assertThat(type.userControl).isNull()
+        assertThat(type.isCollectionOptional).isNull()
         assertThat(type.ephemeral).isNull()
     }
 
@@ -206,7 +206,7 @@ class DataTypeTest {
         assertThat(dataType).isNotNull()
         assertThat(dataType?.purposeSet)
             .containsExactly(PURPOSE_APP_FUNCTIONALITY, PURPOSE_ADVERTISING)
-        assertThat(dataType?.userControl).isTrue()
+        assertThat(dataType?.isCollectionOptional).isTrue()
         assertThat(dataType?.ephemeral).isTrue()
     }
 
@@ -219,7 +219,7 @@ class DataTypeTest {
         assertThat(dataType).isNotNull()
         assertThat(dataType?.purposeSet)
             .containsExactly(PURPOSE_APP_FUNCTIONALITY, PURPOSE_ADVERTISING)
-        assertThat(dataType?.userControl).isNull()
+        assertThat(dataType?.isCollectionOptional).isNull()
         assertThat(dataType?.ephemeral).isNull()
     }
 
@@ -266,7 +266,7 @@ class DataTypeTest {
     @Test
     fun getDataType_dataCollected_validDataType_noUserControl_noEphemeral() {
         val bundle = createTypePersistableBundle()
-        bundle.remove(KEY_USER_CONTROL)
+        bundle.remove(KEY_IS_COLLECTION_OPTIONAL)
         bundle.remove(KEY_EPHEMERAL)
 
         val dataType = DataType.getDataType(bundle, DataLabelConstants.DATA_USAGE_COLLECTED)
@@ -274,7 +274,7 @@ class DataTypeTest {
         assertThat(dataType).isNotNull()
         assertThat(dataType?.purposeSet)
             .containsExactly(PURPOSE_APP_FUNCTIONALITY, PURPOSE_ADVERTISING)
-        assertThat(dataType?.userControl).isNull()
+        assertThat(dataType?.isCollectionOptional).isNull()
         assertThat(dataType?.ephemeral).isNull()
     }
 }

@@ -18,6 +18,7 @@ package com.android.permissioncontroller.safetycenter.ui;
 import static android.content.Intent.ACTION_SAFETY_CENTER;
 import static android.content.Intent.FLAG_ACTIVITY_FORWARD_RESULT;
 import static android.os.Build.VERSION_CODES.TIRAMISU;
+import static android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
 import static android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCES_GROUP_ID;
 
 import static com.android.permissioncontroller.PermissionControllerStatsLog.PRIVACY_SIGNAL_NOTIFICATION_INTERACTION;
@@ -38,6 +39,8 @@ import com.android.permissioncontroller.PermissionControllerStatsLog;
 import com.android.permissioncontroller.R;
 import com.android.settingslib.activityembedding.ActivityEmbeddingUtils;
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
+
+import java.util.Objects;
 
 /** Entry-point activity for SafetyCenter. */
 @RequiresApi(TIRAMISU)
@@ -70,9 +73,7 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
         if (SafetyCenterUiFlags.getShowSubpages()
                 && getIntent().getAction().equals(ACTION_SAFETY_CENTER)
                 && getIntent().hasExtra(EXTRA_SAFETY_SOURCES_GROUP_ID)) {
-            frag =
-                    SafetyCenterSubpageFragment.newInstance(
-                            getIntent().getStringExtra(EXTRA_SAFETY_SOURCES_GROUP_ID));
+            frag = openRelevantSubpage();
         } else if (getIntent().getAction().equals(PRIVACY_CONTROLS_ACTION)) {
             setTitle(R.string.privacy_controls_title);
             frag = PrivacyControlsFragment.newInstance();
@@ -175,5 +176,14 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
                     PRIVACY_SIGNAL_NOTIFICATION_INTERACTION__ACTION__NOTIFICATION_CLICKED,
                     sessionId);
         }
+    }
+
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    private SafetyCenterFragment openRelevantSubpage() {
+        String groupId = getIntent().getStringExtra(EXTRA_SAFETY_SOURCES_GROUP_ID);
+        if (Objects.equals(groupId, "AndroidPrivacySources")) {
+            return new PrivacySubpageFragment();
+        }
+        return SafetyCenterSubpageFragment.newInstance(groupId);
     }
 }

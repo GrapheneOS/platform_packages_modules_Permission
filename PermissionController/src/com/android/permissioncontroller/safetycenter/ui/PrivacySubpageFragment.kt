@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 The Android Open Source Project
+ * Copyright (C) 2023 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,30 +24,29 @@ import androidx.annotation.RequiresApi
 import androidx.preference.PreferenceGroup
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterUiData
-import com.android.safetycenter.resources.SafetyCenterResourcesContext
-import com.android.settingslib.widget.IllustrationPreference
+import com.android.safetycenter.internaldata.SafetyCenterIds
 
-/** A fragment that represents a generic subpage in Safety Center. */
+/** A fragment that represents the privacy subpage in Safety Center. */
 @RequiresApi(UPSIDE_DOWN_CAKE)
-class SafetyCenterSubpageFragment : SafetyCenterFragment() {
+class PrivacySubpageFragment : SafetyCenterFragment() {
 
-    private lateinit var sourceGroupId: String
+    private val sourceGroupId: String = "AndroidPrivacySources"
     private lateinit var subpageBrandChip: SafetyBrandChipPreference
-    private lateinit var subpageIllustration: IllustrationPreference
     private lateinit var subpageIssueGroup: PreferenceGroup
-    private lateinit var subpageEntryGroup: PreferenceGroup
+    private lateinit var subpageGenericEntryGroup: PreferenceGroup
+    private lateinit var subpageControlsEntryGroup: PreferenceGroup
+    private lateinit var subpageDataEntryGroup: PreferenceGroup
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         super.onCreatePreferences(savedInstanceState, rootKey)
-        setPreferencesFromResource(R.xml.safety_center_subpage, rootKey)
-        sourceGroupId = requireArguments().getString(SOURCE_GROUP_ID_KEY)!!
+        setPreferencesFromResource(R.xml.privacy_subpage, rootKey)
 
         subpageBrandChip = getPreferenceScreen().findPreference(BRAND_CHIP_KEY)!!
-        subpageIllustration = getPreferenceScreen().findPreference(ILLUSTRATION_KEY)!!
         subpageIssueGroup = getPreferenceScreen().findPreference(ISSUE_GROUP_KEY)!!
-        subpageEntryGroup = getPreferenceScreen().findPreference(ENTRY_GROUP_KEY)!!
+        subpageGenericEntryGroup = getPreferenceScreen().findPreference(GENERIC_ENTRY_GROUP_KEY)!!
+        subpageControlsEntryGroup = getPreferenceScreen().findPreference(CONTROLS_ENTRY_GROUP_KEY)!!
+        subpageDataEntryGroup = getPreferenceScreen().findPreference(DATA_ENTRY_GROUP_KEY)!!
         subpageBrandChip.setupListener(requireActivity(), requireContext())
-        setupIllustration()
     }
 
     override fun onResume() {
@@ -69,33 +68,14 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
         updateSafetyCenterEntries(entryGroup)
     }
 
-    private fun setupIllustration() {
-        val camelRegex = "(?<=[a-zA-Z])[A-Z]".toRegex()
-        val groupIdSnakeCase = camelRegex.replace(sourceGroupId) { "_${it.value}" }.lowercase()
-        val resName = "illustration_$groupIdSnakeCase"
-
-        val context = requireContext()
-        val drawable =
-            SafetyCenterResourcesContext(context).getDrawableByName(resName, context.theme)
-        if (drawable == null) {
-            Log.w(TAG, "$sourceGroupId doesn't have any matching illustration")
-            subpageIllustration.setVisible(false)
-        }
-
-        subpageIllustration.setImageDrawable(drawable)
-    }
-
     private fun updateSafetyCenterIssues(uiData: SafetyCenterUiData?) {
         subpageIssueGroup.removeAll()
         val subpageIssues = uiData?.safetyCenterData?.issues?.filter { it.groupId == sourceGroupId }
         if (subpageIssues.isNullOrEmpty()) {
             Log.w(TAG, "$sourceGroupId doesn't have any matching SafetyCenterIssues")
-            if (subpageIllustration.imageDrawable == null) return
-            subpageIllustration.setVisible(true)
             return
         }
 
-        subpageIllustration.setVisible(false)
         collapsableIssuesCardHelper.addIssues(
             requireContext(),
             safetyCenterViewModel,
@@ -109,39 +89,49 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
 
     private fun updateSafetyCenterEntries(entryGroup: SafetyCenterEntryGroup) {
         Log.d(TAG, "updateSafetyCenterEntries called with $entryGroup")
-        subpageEntryGroup.removeAll()
+        subpageGenericEntryGroup.removeAll()
+        subpageControlsEntryGroup.removeAll()
+        subpageDataEntryGroup.removeAll()
+
         for (entry in entryGroup.entries) {
-            subpageEntryGroup.addPreference(
+            val entryId = entry.id
+            val sourceId = SafetyCenterIds.entryIdFromString(entryId).getSafetySourceId()
+
+            val subpageEntry =
                 SafetySubpageEntryPreference(
                     requireContext(),
                     PendingIntentSender.getTaskIdForEntry(
-                        entry.id,
+                        entryId,
                         sameTaskSourceIds,
                         requireActivity()
                     ),
                     entry
                 )
-            )
+
+            when (sourceId) {
+                "AndroidPermissionUsage",
+                "AndroidPermissionManager",
+                "AndroidAdsPrivacy",
+                "AndroidHealthConnect" -> {
+                    subpageGenericEntryGroup.addPreference(subpageEntry)
+                }
+                "AndroidPrivacyControls" -> {
+                    // TODO(b/256093168): Replace static entry with privacy toggles
+                    subpageControlsEntryGroup.addPreference(subpageEntry)
+                }
+                else -> {
+                    subpageDataEntryGroup.addPreference(subpageEntry)
+                }
+            }
         }
     }
 
     companion object {
-        private val TAG: String = SafetyCenterSubpageFragment::class.java.simpleName
+        private val TAG: String = PrivacySubpageFragment::class.java.simpleName
         private const val BRAND_CHIP_KEY: String = "subpage_brand_chip"
-        private const val ILLUSTRATION_KEY: String = "subpage_illustration"
         private const val ISSUE_GROUP_KEY: String = "subpage_issue_group"
-        private const val ENTRY_GROUP_KEY: String = "subpage_entry_group"
-        private const val SOURCE_GROUP_ID_KEY: String = "source_group_id"
-
-        /** Creates an instance of SafetyCenterSubpageFragment with the arguments set */
-        @JvmStatic
-        fun newInstance(groupId: String): SafetyCenterSubpageFragment {
-            val args = Bundle()
-            args.putString(SOURCE_GROUP_ID_KEY, groupId)
-
-            val subpageFragment = SafetyCenterSubpageFragment()
-            subpageFragment.setArguments(args)
-            return subpageFragment
-        }
+        private const val GENERIC_ENTRY_GROUP_KEY: String = "subpage_generic_entry_group"
+        private const val CONTROLS_ENTRY_GROUP_KEY: String = "subpage_controls_entry_group"
+        private const val DATA_ENTRY_GROUP_KEY: String = "subpage_data_entry_group"
     }
 }

@@ -17,13 +17,16 @@
 package com.android.permissioncontroller.safetycenter.ui
 
 import android.content.Context
+import android.content.Intent
 import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.util.AttributeSet
 import android.view.View
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.FragmentActivity
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.safetycenter.SafetyCenterConstants
 
 /** A preference that displays the Security and Privacy brand name on a Safety Center subpage. */
 @RequiresApi(UPSIDE_DOWN_CAKE)
@@ -34,11 +37,32 @@ internal class SafetyBrandChipPreference(context: Context, attrs: AttributeSet) 
         setLayoutResource(R.layout.preference_brand_chip)
     }
 
-    var brandChipClickListener: View.OnClickListener? = null
+    private var brandChipClickListener: View.OnClickListener? = null
 
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
         super.onBindViewHolder(holder)
         val brandChipButton = holder.findViewById(R.id.brand_chip)
         brandChipButton.setOnClickListener(brandChipClickListener)
+    }
+
+    /**
+     * Sets the listener that handles clicks for the brand chip
+     *
+     * @param activity represents the parent activity of the fragment
+     * @param context represents the context associated with the fragment
+     */
+    fun setupListener(activity: FragmentActivity, context: Context) {
+        brandChipClickListener =
+            View.OnClickListener {
+                val openedFromHomepage =
+                    activity
+                        .getIntent()
+                        .getBooleanExtra(SafetyCenterConstants.EXTRA_OPENED_FROM_HOMEPAGE, false)
+                if (!openedFromHomepage) {
+                    val intent = Intent(Intent.ACTION_SAFETY_CENTER)
+                    context.startActivity(intent)
+                }
+                activity.finish()
+            }
     }
 }
