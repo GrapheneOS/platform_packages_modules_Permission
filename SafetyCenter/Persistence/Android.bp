@@ -21,7 +21,6 @@ java_library {
     name: "safety-center-persistence",
     sdk_version: "system_current",
     min_sdk_version: "30",
-    target_sdk_version: "32",
     srcs: [
         "java/**/*.java",
     ],
