@@ -20,25 +20,22 @@
   ~ Be sure to update both files when making changes.
   -->
 
-<!-- In (hopefully very rare) case dialog is too high: allow scrolling -->
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    style="@style/PermissionRationaleScrollView">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/permission_rationale_singleton"
+    android:importantForAccessibility="no"
+    android:focusable="false"
+    style="@style/PermissionRationaleSingleton">
 
+    <!-- The dialog -->
     <LinearLayout
-        android:id="@+id/grant_singleton"
+        android:id="@+id/permission_rationale_dialog"
+        android:theme="@style/Theme.PermissionRationaleDialog"
         android:importantForAccessibility="no"
-        android:focusable="false"
-        style="@style/PermissionRationaleSingleton">
+        style="@style/PermissionRationaleDialog">
 
-        <!-- The dialog -->
-        <LinearLayout
-            android:id="@+id/grant_dialog"
-            android:theme="@style/Theme.PermissionGrantDialog"
-            android:importantForAccessibility="no"
-            style="@style/PermissionRationaleDialog">
+        <!-- In (hopefully very rare) case dialog is too high: allow scrolling -->
+        <ScrollView
+            style="@style/PermissionRationaleScrollView">
 
             <LinearLayout
                 android:id="@+id/content_container"
@@ -131,16 +128,16 @@
                             style="@style/PermissionRationaleSectionMessage" />
                     </LinearLayout>
                 </LinearLayout>
-
-                <LinearLayout style="@style/PermissionRationaleButtonContainer">
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/back_button"
-                        android:text="@string/back"
-                        android:theme="@style/Theme.Material3.DayNight"
-                        style="@style/PermissionRationaleBackButton" />
-                </LinearLayout>
-
             </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout style="@style/PermissionRationaleButtonContainer">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/back_button"
+                android:text="@string/back"
+                android:theme="@style/Theme.Material3.DayNight"
+                style="@style/PermissionRationaleBackButton" />
         </LinearLayout>
+
     </LinearLayout>
-</ScrollView>
+</LinearLayout>

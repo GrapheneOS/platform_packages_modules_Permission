@@ -36,19 +36,19 @@ import java.util.Set;
  */
 public class DataType {
     @VisibleForTesting static final String KEY_PURPOSES = "purposes";
-    @VisibleForTesting static final String KEY_USER_CONTROL = "user_control";
+    @VisibleForTesting static final String KEY_IS_COLLECTION_OPTIONAL = "is_collection_optional";
     @VisibleForTesting static final String KEY_EPHEMERAL = "ephemeral";
 
     @Purpose private final Set<Integer> mPurposeSet;
-    private final Boolean mUserControl;
+    private final Boolean mIsCollectionOptional;
     private final Boolean mEphemeral;
 
     private DataType(
             @NonNull @Purpose Set<Integer> purposeSet,
-            @Nullable Boolean userControl,
+            @Nullable Boolean isCollectionOptional,
             @Nullable Boolean ephemeral) {
         this.mPurposeSet = purposeSet;
-        this.mUserControl = userControl;
+        this.mIsCollectionOptional = isCollectionOptional;
         this.mEphemeral = ephemeral;
     }
 
@@ -109,12 +109,12 @@ public class DataType {
         }
 
         // Only set/expected for DATA COLLECTED. DATA SHARED should be null
-        Boolean userControl = null;
+        Boolean isCollectionOptional = null;
         Boolean ephemeral = null;
         if (DataLabelConstants.DATA_USAGE_COLLECTED.equals(dataUsage)) {
-            userControl =
-                    dataTypeBundle.containsKey(KEY_USER_CONTROL)
-                            ? dataTypeBundle.getBoolean(KEY_USER_CONTROL)
+            isCollectionOptional =
+                    dataTypeBundle.containsKey(KEY_IS_COLLECTION_OPTIONAL)
+                            ? dataTypeBundle.getBoolean(KEY_IS_COLLECTION_OPTIONAL)
                             : null;
             ephemeral =
                     dataTypeBundle.containsKey(KEY_EPHEMERAL)
@@ -122,7 +122,7 @@ public class DataType {
                             : null;
         }
 
-        return new DataType(purposeSet, userControl, ephemeral);
+        return new DataType(purposeSet, isCollectionOptional, ephemeral);
     }
 
     /**
@@ -139,8 +139,8 @@ public class DataType {
      * data usage is required. Should return {@code null} for data-shared.
      */
     @Nullable
-    public Boolean getUserControl() {
-        return mUserControl;
+    public Boolean getIsCollectionOptional() {
+        return mIsCollectionOptional;
     }
 
     /**

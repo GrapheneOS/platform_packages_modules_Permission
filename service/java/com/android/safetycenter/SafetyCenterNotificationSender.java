@@ -147,8 +147,9 @@ final class SafetyCenterNotificationSender {
         ArrayMap<SafetyCenterIssueKey, SafetySourceIssue> issuesToNotify =
                 getIssuesToNotify(userId);
 
-        // Post or update notifications for notifiable issues, depending on their behavior,
-        // keeping track of which issues notifications were posted/updated for:
+        // Post or update notifications for notifiable issues. We keep track of the "fresh" issues
+        // keys of those issues which were just notified because doing so allows us to cancel any
+        // notifications for other, non-fresh issues.
         ArraySet<SafetyCenterIssueKey> freshIssueKeys = new ArraySet<>();
         for (int i = 0; i < issuesToNotify.size(); i++) {
             SafetyCenterIssueKey issueKey = issuesToNotify.keyAt(i);
@@ -166,7 +167,6 @@ final class SafetyCenterNotificationSender {
             }
         }
 
-        // Cancel previously-posted notifications, for this user, which were not just updated:
         cancelStaleNotifications(notificationManager, userId, freshIssueKeys);
     }
 
@@ -207,22 +207,30 @@ final class SafetyCenterNotificationSender {
         for (int i = 0; i < allIssuesInfo.size(); i++) {
             SafetySourceIssueInfo issueInfo = allIssuesInfo.get(i);
             SafetyCenterIssueKey issueKey = issueInfo.getSafetyCenterIssueKey();
+            SafetySourceIssue issue = issueInfo.getSafetySourceIssue();
 
             if (!areNotificationsAllowed(issueInfo.getSafetySource())) {
-                // Notifications are not allowed for this source
                 continue;
             }
 
-            // TODO(b/259084807): Consider extracting this policy to a separate class
+            // TODO(b/266680614): Notification resurfacing
             Instant dismissedAt =
                     mSafetyCenterIssueDismissalRepository.getNotificationDismissedAt(issueKey);
             if (dismissedAt != null) {
-                // Notification for issue was previously dismissed and is skipped
                 continue;
             }
 
-            // Now retrieve the issue itself and use it to determine the behavior:
-            SafetySourceIssue issue = issueInfo.getSafetySourceIssue();
+            // The current code for dismissing an issue/warning card also dismisses any
+            // corresponding notification, but it is still necessary to check the issue dismissal
+            // status, in addition to the notification dismissal (above) because some issues were
+            // dismissed by an earlier version of the code which lacked this functionality.
+            if (mSafetyCenterIssueDismissalRepository.isIssueDismissed(
+                    issueKey, issue.getSeverityLevel())) {
+                continue;
+            }
+
+            // Get the notification behavior for this issue which determines whether we should
+            // send a notification about it now
             int behavior = getBehavior(issue, issueKey);
             if (behavior == NOTIFICATION_BEHAVIOR_INTERNAL_IMMEDIATELY) {
                 result.put(issueKey, issue);
@@ -285,10 +293,8 @@ final class SafetyCenterNotificationSender {
                 mNotificationFactory.newNotificationForIssue(
                         notificationManager, safetySourceIssue, key);
         if (notification == null) {
-            // Could not make a Notification for this issue!
             return false;
         }
-        // The fixed notification ID is OK because notifications are keyed by (tag, id)
         String tag = getNotificationTag(key);
         boolean wasPosted = notifyFromSystem(notificationManager, tag, notification);
         if (wasPosted) {
@@ -307,7 +313,6 @@ final class SafetyCenterNotificationSender {
         for (int i = mNotifiedIssues.size() - 1; i >= 0; i--) {
             SafetyCenterIssueKey key = mNotifiedIssues.keyAt(i);
             if (key.getUserId() == userId && !freshIssueKeys.contains(key)) {
-                // Notification should no longer be shown
                 String tag = getNotificationTag(key);
                 cancelNotificationFromSystem(notificationManager, tag);
                 mNotifiedIssues.removeAt(i);
@@ -344,6 +349,7 @@ final class SafetyCenterNotificationSender {
         // necessary POST_NOTIFICATIONS permission.
         final long callingId = Binder.clearCallingIdentity();
         try {
+            // The fixed notification ID is OK because notifications are keyed by (tag, id)
             notificationManager.notify(tag, FIXED_NOTIFICATION_ID, notification);
             return true;
         } catch (Throwable e) {

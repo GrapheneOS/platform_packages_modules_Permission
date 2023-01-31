@@ -136,14 +136,15 @@ class PermissionRationaleViewHandlerImpl(
             .inflate(R.layout.permission_rationale, null) as ViewGroup
 
         // Uses the vertical gravity of the PermissionGrantSingleton style to position the window
-        val gravity = rootView.requireViewById<LinearLayout>(R.id.grant_singleton).gravity
+        val gravity =
+            rootView.requireViewById<LinearLayout>(R.id.permission_rationale_singleton).gravity
         val verticalGravity = Gravity.VERTICAL_GRAVITY_MASK and gravity
         mActivity.window.setGravity(Gravity.CENTER_HORIZONTAL or verticalGravity)
 
         // Cancel dialog
-        rootView.findViewById<View>(R.id.grant_singleton)!!.setOnClickListener(this)
+        rootView.findViewById<View>(R.id.permission_rationale_singleton)!!.setOnClickListener(this)
         // Swallow click event
-        rootView.findViewById<View>(R.id.grant_dialog)!!.setOnClickListener(this)
+        rootView.findViewById<View>(R.id.permission_rationale_dialog)!!.setOnClickListener(this)
 
         titleView = rootView.findViewById(R.id.permission_rationale_title)
 
@@ -184,7 +185,7 @@ class PermissionRationaleViewHandlerImpl(
     override fun onClick(view: View) {
         val id = view.id
 
-        if (id == R.id.grant_singleton) {
+        if (id == R.id.permission_rationale_singleton) {
             onCancelled()
             return
         }

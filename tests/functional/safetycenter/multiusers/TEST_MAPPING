@@ -11,7 +11,7 @@
   ],
   "postsubmit": [
     {
-      "name": "SafetyCenterFunctionalMultiUserTestCases"
+      "name": "SafetyCenterFunctionalMultiUsersTestCases"
     }
   ],
   "mainline-presubmit": [

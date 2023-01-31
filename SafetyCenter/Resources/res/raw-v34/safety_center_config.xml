@@ -32,8 +32,9 @@
             <dynamic-safety-source
                 id="AndroidBiometrics"
                 packageName="com.android.settings"
-                profile="primary_profile_only"
+                profile="all_profiles"
                 title="@com.android.safetycenter.resources:string/biometrics_title"
+                titleForWork="@com.android.safetycenter.resources:string/biometrics_title_for_work"
                 searchTerms="@com.android.safetycenter.resources:string/biometrics_search_terms"
                 initialDisplayState="hidden"/>
         </safety-sources-group>
