@@ -19,7 +19,7 @@ package com.android.permissioncontroller.permission.utils
 import android.Manifest
 import android.content.pm.PackageManager
 import android.content.pm.PermissionInfo
-import android.healthconnect.HealthPermissions.HEALTH_PERMISSION_GROUP
+import android.health.connect.HealthPermissions.HEALTH_PERMISSION_GROUP
 import android.util.Log
 import com.android.modules.utils.build.SdkLevel
 
