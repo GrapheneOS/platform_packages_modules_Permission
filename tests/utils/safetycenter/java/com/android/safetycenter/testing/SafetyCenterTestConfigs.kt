@@ -38,7 +38,8 @@ import java.security.MessageDigest
  * up safety sources for testing.
  */
 class SafetyCenterTestConfigs(private val context: Context) {
-    private val packageCertHash =
+    /** The certificate hash signing the current package. */
+    val packageCertHash =
         MessageDigest.getInstance("SHA256")!!.digest(
                 context.packageManager
                     .getPackageInfo(

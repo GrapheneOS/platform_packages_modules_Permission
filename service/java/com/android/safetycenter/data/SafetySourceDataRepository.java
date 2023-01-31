@@ -478,6 +478,23 @@ public final class SafetySourceDataRepository {
             return;
         }
 
+        if (!checkCerts(packageName, certificateHashes)
+                && !checkCerts(
+                        packageName,
+                        SafetyCenterFlags.getAdditionalAllowedPackageCerts(packageName))) {
+            Log.e(
+                    TAG,
+                    "Package "
+                            + packageName
+                            + " for source "
+                            + safetySourceId
+                            + " signed with invalid signature");
+            throw new IllegalArgumentException("Invalid signature for package " + packageName);
+        }
+    }
+
+    private boolean checkCerts(
+            @NonNull String packageName, @NonNull Set<String> certificateHashes) {
         boolean hasMatchingCert = false;
         for (String certHash : certificateHashes) {
             try {
@@ -493,17 +510,7 @@ public final class SafetySourceDataRepository {
                         "Failed to parse signing certificate: " + certHash, e);
             }
         }
-
-        if (!hasMatchingCert) {
-            Log.e(
-                    TAG,
-                    "Package "
-                            + packageName
-                            + " for source "
-                            + safetySourceId
-                            + " signed with invalid signature");
-            throw new IllegalArgumentException("Invalid signature for package " + packageName);
-        }
+        return hasMatchingCert;
     }
 
     private boolean processSafetyEvent(
