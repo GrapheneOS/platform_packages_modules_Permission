@@ -21,7 +21,6 @@ android_test {
     defaults: ["mts-target-sdk-version-current"],
     sdk_version: "test_current",
     min_sdk_version: "30",
-    target_sdk_version: "32",
     srcs: ["java/**/*.kt"],
     data: ["data/*"],
     static_libs: [
