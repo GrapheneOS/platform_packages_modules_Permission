@@ -47,9 +47,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.android.modules.utils.build.SdkLevel
-import com.android.permission.safetylabel.DataCategory
-import com.android.permission.safetylabel.DataType
-import com.android.permission.safetylabel.DataTypeConstants
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.PermissionControllerStatsLog
 import com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_FRAGMENT_ACTION_REPORTED
@@ -84,7 +81,7 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils.isLocationA
 import com.android.permissioncontroller.permission.utils.KotlinUtils.isPermissionRationaleEnabled
 import com.android.permissioncontroller.permission.utils.LocationUtils
 import com.android.permissioncontroller.permission.utils.PermissionMapping
-import com.android.permissioncontroller.permission.utils.SafetyLabelPermissionMapping
+import com.android.permissioncontroller.permission.utils.PermissionRationales
 import com.android.permissioncontroller.permission.utils.SafetyNetLogger
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.navigateSafe
@@ -557,39 +554,12 @@ class AppPermissionViewModel(
         return true
     }
 
-    // TODO(b/264309196): extract should show permission rationale logic as a util method.
     fun shouldShowPermissionRationale(
         safetyLabelInfo: SafetyLabelInfo,
         groupName: String
     ): Boolean {
-        val safetyLabel = safetyLabelInfo.safetyLabel
-        if (safetyLabel == null) {
-            return false
-        }
-        if (safetyLabel.dataLabel.dataShared.isEmpty()) {
-            return false
-        }
-        val categoriesForPermission: List<String> =
-            SafetyLabelPermissionMapping.getCategoriesForPermissionGroup(groupName)
-        categoriesForPermission.forEach categoryLoop@{ category ->
-            val dataCategory: DataCategory? = safetyLabel.dataLabel.dataShared[category]
-            if (dataCategory == null) {
-                // Continue to next
-                return@categoryLoop
-            }
-            val typesForCategory = DataTypeConstants.getValidDataTypesForCategory(category)
-            typesForCategory.forEach typeLoop@{ type ->
-                val dataType: DataType? = dataCategory.dataTypes[type]
-                if (dataType == null) {
-                    // Continue to next
-                    return@typeLoop
-                }
-                if (dataType.purposeSet.isNotEmpty()) {
-                    return true
-                }
-            }
-        }
-        return false
+        return PermissionRationales.shouldShowPermissionRationale(
+            safetyLabelInfo.safetyLabel, groupName)
     }
 
     /**

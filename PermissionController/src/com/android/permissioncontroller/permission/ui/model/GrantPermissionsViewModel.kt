@@ -46,9 +46,6 @@ import androidx.core.util.Consumer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.android.modules.utils.build.SdkLevel
-import com.android.permission.safetylabel.DataCategory
-import com.android.permission.safetylabel.DataType
-import com.android.permission.safetylabel.DataTypeConstants
 import com.android.permission.safetylabel.SafetyLabel
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.DeviceUtils
@@ -127,7 +124,7 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils.grantForegr
 import com.android.permissioncontroller.permission.utils.KotlinUtils.isLocationAccuracyEnabled
 import com.android.permissioncontroller.permission.utils.KotlinUtils.isPermissionRationaleEnabled
 import com.android.permissioncontroller.permission.utils.PermissionMapping
-import com.android.permissioncontroller.permission.utils.SafetyLabelPermissionMapping
+import com.android.permissioncontroller.permission.utils.PermissionRationales
 import com.android.permissioncontroller.permission.utils.SafetyNetLogger
 import com.android.permissioncontroller.permission.utils.Utils
 
@@ -622,33 +619,8 @@ class GrantPermissionsViewModel(
         safetyLabel: SafetyLabel?,
         groupState: GroupState
     ): Boolean {
-        if (safetyLabel == null || safetyLabel.dataLabel.dataShared.isEmpty()) {
-            return false
-        }
-
-        val groupName = groupState.group.permGroupName
-        val categoriesForPermission: List<String> =
-            SafetyLabelPermissionMapping.getCategoriesForPermissionGroup(groupName)
-        categoriesForPermission.forEach categoryLoop@ { category ->
-            val dataCategory: DataCategory? = safetyLabel.dataLabel.dataShared[category]
-            if (dataCategory == null) {
-                // Continue to next
-                return@categoryLoop
-            }
-            val typesForCategory = DataTypeConstants.getValidDataTypesForCategory(category)
-            typesForCategory.forEach typeLoop@ { type ->
-                val dataType: DataType? = dataCategory.dataTypes[type]
-                if (dataType == null) {
-                    // Continue to next
-                    return@typeLoop
-                }
-                if (dataType.purposeSet.isNotEmpty()) {
-                    return true
-                }
-            }
-        }
-
-        return false
+        return PermissionRationales.shouldShowPermissionRationale(
+            safetyLabel, groupState.group.permGroupName)
     }
 
     /**
