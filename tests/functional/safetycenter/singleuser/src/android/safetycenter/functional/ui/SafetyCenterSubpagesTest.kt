@@ -585,6 +585,120 @@ class SafetyCenterSubpagesTest {
     }
 
     @Test
+    fun dismissedIssuesCard_expandWithOnlyDismissedIssues_showsAdditionalCard() {
+        val sourceData = safetySourceTestData.criticalWithIssueWithAttributionTitle
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
+        safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, sourceData)
+        val sourcesGroup = safetyCenterTestConfigs.singleSourceConfig.safetySourcesGroups.first()
+        val issue = sourceData.issues[0]
+
+        context.launchSafetyCenterActivity {
+            openPageAndExit(context.getString(sourcesGroup.titleResId)) {
+                waitSourceIssueDisplayed(issue)
+                waitDisplayed(By.desc("Dismiss")) { it.click() }
+                waitAllTextDisplayed("Dismiss this alert?")
+                waitButtonDisplayed("Dismiss") { it.click() }
+                waitSourceIssueNotDisplayed(issue)
+
+                waitDisplayed(By.text("Dismissed alerts")) { it.click() }
+
+                waitAllTextDisplayed("Dismissed alerts")
+                waitSourceIssueDisplayed(issue)
+            }
+        }
+    }
+
+    @Test
+    fun dismissedIssuesCard_collapseWithOnlyDismissedIssues_hidesAdditionalCard() {
+        val sourceData = safetySourceTestData.criticalWithIssueWithAttributionTitle
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
+        safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, sourceData)
+        val sourcesGroup = safetyCenterTestConfigs.singleSourceConfig.safetySourcesGroups.first()
+        val issue = sourceData.issues[0]
+
+        context.launchSafetyCenterActivity {
+            openPageAndExit(context.getString(sourcesGroup.titleResId)) {
+                waitSourceIssueDisplayed(issue)
+                waitDisplayed(By.desc("Dismiss")) { it.click() }
+                waitAllTextDisplayed("Dismiss this alert?")
+                waitButtonDisplayed("Dismiss") { it.click() }
+                waitSourceIssueNotDisplayed(issue)
+                waitDisplayed(By.text("Dismissed alerts")) { it.click() }
+                waitSourceIssueDisplayed(issue)
+
+                waitDisplayed(By.text("Dismissed alerts")) { it.click() }
+
+                waitSourceIssueNotDisplayed(issue)
+            }
+        }
+    }
+
+    @Test
+    fun moreIssuesCard_expandWithDismissedIssues_showsAdditionalCards() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.multipleSourcesConfig)
+
+        val firstSourceData = safetySourceTestData.criticalWithIssueWithAttributionTitle
+        val secondSourceData = safetySourceTestData.informationWithIssueWithAttributionTitle
+        val thirdSourceData = safetySourceTestData.informationWithIssueWithAttributionTitle
+
+        safetyCenterTestHelper.setData(SOURCE_ID_3, firstSourceData)
+        safetyCenterTestHelper.setData(SOURCE_ID_4, secondSourceData)
+        safetyCenterTestHelper.setData(SOURCE_ID_5, thirdSourceData)
+
+        val sourcesGroup = safetyCenterTestConfigs.multipleSourcesConfig.safetySourcesGroups.last()
+        val issue = firstSourceData.issues[0]
+
+        context.launchSafetyCenterActivity {
+            openPageAndExit(context.getString(sourcesGroup.titleResId)) {
+                waitSourceIssueDisplayed(issue)
+                waitDisplayed(By.desc("Dismiss")) { it.click() }
+                waitAllTextDisplayed("Dismiss this alert?")
+                waitButtonDisplayed("Dismiss") { it.click() }
+                waitSourceIssueNotDisplayed(issue)
+
+                clickMoreIssuesCard()
+
+                waitAllTextDisplayed(MORE_ISSUES_LABEL)
+                waitAllTextDisplayed("Dismissed alerts")
+                waitSourceIssueDisplayed(issue)
+            }
+        }
+    }
+
+    @Test
+    fun moreIssuesCard_collapseWithDismissedIssues_hidesAdditionalCards() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.multipleSourcesConfig)
+
+        val firstSourceData = safetySourceTestData.criticalWithIssueWithAttributionTitle
+        val secondSourceData = safetySourceTestData.informationWithIssueWithAttributionTitle
+        val thirdSourceData = safetySourceTestData.informationWithIssueWithAttributionTitle
+
+        safetyCenterTestHelper.setData(SOURCE_ID_3, firstSourceData)
+        safetyCenterTestHelper.setData(SOURCE_ID_4, secondSourceData)
+        safetyCenterTestHelper.setData(SOURCE_ID_5, thirdSourceData)
+
+        val sourcesGroup = safetyCenterTestConfigs.multipleSourcesConfig.safetySourcesGroups.last()
+        val issue = firstSourceData.issues[0]
+
+        context.launchSafetyCenterActivity {
+            openPageAndExit(context.getString(sourcesGroup.titleResId)) {
+                waitSourceIssueDisplayed(issue)
+                waitDisplayed(By.desc("Dismiss")) { it.click() }
+                waitButtonDisplayed("Dismiss") { it.click() }
+                waitSourceIssueNotDisplayed(issue)
+                clickMoreIssuesCard()
+                waitSourceIssueDisplayed(issue)
+
+                clickMoreIssuesCard()
+
+                waitAllTextDisplayed(MORE_ISSUES_LABEL)
+                waitAllTextNotDisplayed("Dismissed alerts")
+                waitSourceIssueNotDisplayed(issue)
+            }
+        }
+    }
+
+    @Test
     fun brandChip_openSubpageFromHomepage_homepageReopensOnClick() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
         safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, safetySourceTestData.information)
