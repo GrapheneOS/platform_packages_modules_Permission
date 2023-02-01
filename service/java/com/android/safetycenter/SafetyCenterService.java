@@ -37,7 +37,6 @@ import static java.util.Objects.requireNonNull;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
-import android.app.ActivityOptions;
 import android.app.PendingIntent;
 import android.app.StatsManager;
 import android.app.StatsManager.StatsPullAtomCallback;
@@ -88,6 +87,7 @@ import com.android.safetycenter.internaldata.SafetyCenterIssueId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 import com.android.safetycenter.logging.SafetyCenterPullAtomCallback;
 import com.android.safetycenter.logging.SafetyCenterStatsdLogger;
+import com.android.safetycenter.pendingintents.PendingIntentSender;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 import com.android.server.SystemService;
 
@@ -1173,23 +1173,13 @@ public final class SafetyCenterService extends SystemService {
     }
 
     private boolean dispatchPendingIntent(
-            @NonNull PendingIntent pendingIntent, @Nullable Integer taskId) {
-        try {
-            if (taskId != null
-                    && pendingIntent.isActivity()
-                    && getContext().checkCallingOrSelfPermission(START_TASKS_FROM_RECENTS)
-                            == PERMISSION_GRANTED) {
-                ActivityOptions options = ActivityOptions.makeBasic();
-                options.setLaunchTaskId(taskId);
-                pendingIntent.send(null, 0, null, null, null, null, options.toBundle());
-            } else {
-                pendingIntent.send();
-            }
-            return true;
-        } catch (PendingIntent.CanceledException ex) {
-            Log.w(TAG, "Couldn't dispatch PendingIntent", ex);
-            return false;
+            @NonNull PendingIntent pendingIntent, @Nullable Integer launchTaskId) {
+        if (launchTaskId != null
+                && getContext().checkCallingOrSelfPermission(START_TASKS_FROM_RECENTS)
+                        != PERMISSION_GRANTED) {
+            launchTaskId = null;
         }
+        return PendingIntentSender.trySend(pendingIntent, launchTaskId);
     }
 
     @GuardedBy("mApiLock")

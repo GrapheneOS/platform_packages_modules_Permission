@@ -97,6 +97,9 @@ public final class SafetyCenterFlags {
     private static final String PROPERTY_OVERRIDE_REFRESH_ON_PAGE_OPEN_SOURCES =
             "safety_center_override_refresh_on_page_open_sources";
 
+    private static final String PROPERTY_ADDITIONAL_ALLOW_PACKAGE_CERTS =
+            "safety_center_additional_allow_package_certs";
+
     private static final Duration REFRESH_SOURCES_TIMEOUT_DEFAULT_DURATION = Duration.ofSeconds(15);
 
     private static final Duration RESOLVING_ACTION_TIMEOUT_DEFAULT_DURATION =
@@ -141,6 +144,10 @@ public final class SafetyCenterFlags {
                 fout,
                 PROPERTY_OVERRIDE_REFRESH_ON_PAGE_OPEN_SOURCES,
                 getOverrideRefreshOnPageOpenSourceIds());
+        printFlag(
+                fout,
+                PROPERTY_ADDITIONAL_ALLOW_PACKAGE_CERTS,
+                getAdditionalAllowedPackageCertsString());
         fout.println();
     }
 
@@ -355,6 +362,17 @@ public final class SafetyCenterFlags {
         return false;
     }
 
+    /** Returns a set of package certificates allowlisted for the given package name. */
+    @NonNull
+    public static ArraySet<String> getAdditionalAllowedPackageCerts(@NonNull String packageName) {
+        String property = getAdditionalAllowedPackageCertsString();
+        String allowlistedCertString = getStringValueFromStringMapping(property, packageName);
+        if (allowlistedCertString == null) {
+            return new ArraySet<>();
+        }
+        return new ArraySet<String>(allowlistedCertString.split("\\|"));
+    }
+
     /**
      * Returns a comma-delimited list of colon-delimited pairs where the left value is an issue
      * {@link SafetySourceIssue.IssueCategory} and the right value is a vertical-bar-delimited list
@@ -363,6 +381,11 @@ public final class SafetyCenterFlags {
     @NonNull
     private static String getIssueCategoryAllowlists() {
         return getString(PROPERTY_ISSUE_CATEGORY_ALLOWLISTS, "");
+    }
+
+    @NonNull
+    private static String getAdditionalAllowedPackageCertsString() {
+        return getString(PROPERTY_ADDITIONAL_ALLOW_PACKAGE_CERTS, "");
     }
 
     /** Returns whether we allow statsd logging in tests. */

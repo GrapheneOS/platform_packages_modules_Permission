@@ -58,8 +58,8 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.yield
 
 /**
- * Runs a monthly job that performs Safety Labels-related tasks, e.g., data policy changes
- * notification, hygiene, etc.
+ * Runs a monthly job that performs Safety Labels-related tasks. (E.g., data policy changes
+ * notification, hygiene, etc.)
  */
 @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
 class SafetyLabelChangesJobService : JobService() {
@@ -67,13 +67,17 @@ class SafetyLabelChangesJobService : JobService() {
 
     class Receiver : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
+            if (DEBUG) {
+                Log.d(LOG_TAG, "Received broadcast with intent action '${intent.action}'")
+            }
             if (!KotlinUtils.isSafetyLabelChangeNotificationsEnabled()) {
+                Log.w(LOG_TAG, "onReceive: Safety label change notifications are not enabled.")
                 return
             }
-            if (intent.action != ACTION_BOOT_COMPLETED) {
+            if (intent.action != ACTION_BOOT_COMPLETED &&
+                intent.action != ACTION_SET_UP_SAFETY_LABEL_CHANGES_JOB) {
                 return
             }
-            Log.i(LOG_TAG, "Received broadcast")
             schedulePeriodicJob(context)
         }
     }
@@ -83,7 +87,11 @@ class SafetyLabelChangesJobService : JobService() {
      * [PERIODIC_SAFETY_LABEL_CHANGES_JOB_ID], then for the main job [SAFETY_LABEL_CHANGES_JOB_ID].
      */
     override fun onStartJob(params: JobParameters): Boolean {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "Starting safety label change job Id: ${params.jobId}")
+        }
         if (!KotlinUtils.isSafetyLabelChangeNotificationsEnabled()) {
+            Log.w(LOG_TAG, "onStartJob: Safety label change notifications are not enabled.")
             return false
         }
         when (params.jobId) {
@@ -92,24 +100,26 @@ class SafetyLabelChangesJobService : JobService() {
                 dispatchMainJobTask(params)
                 return true
             }
-            else -> Log.w(LOG_TAG, "Unexpected job ID")
+            else -> Log.w(LOG_TAG, "Unexpected job Id: ${params.jobId}")
+        }
+        if (DEBUG) {
+            Log.d(LOG_TAG, "safety label change job Id: ${params.jobId} completed.")
         }
         return false
     }
 
     private fun dispatchMainJobTask(params: JobParameters) {
-        mainJobTask = GlobalScope.launch(Dispatchers.Default) {
-            try {
-                Log.i(LOG_TAG, "Job started")
-                runMainJob()
-                Log.i(LOG_TAG, "Job finished successfully")
-            } catch (e: Throwable) {
-                Log.e(LOG_TAG, "Job failed", e)
-                throw e
-            } finally {
-                jobFinished(params, false)
+        mainJobTask =
+            GlobalScope.launch(Dispatchers.Default) {
+                try {
+                    runMainJob()
+                } catch (e: Throwable) {
+                    Log.e(LOG_TAG, "Main Job failed", e)
+                    throw e
+                } finally {
+                    jobFinished(params, false)
+                }
             }
-        }
     }
 
     private suspend fun runMainJob() {
@@ -138,8 +148,8 @@ class SafetyLabelChangesJobService : JobService() {
                     packageName, receivedAt = Instant.now(), safetyLabel)
             // TODO(b/265380622): Add a method to record safety labels in bulk rather than calling
             //  recordSafetyLabel once per package
-            AppsSafetyLabelHistoryPersistence
-                .recordSafetyLabel(safetyLabelForPersistence, historyFile)
+            AppsSafetyLabelHistoryPersistence.recordSafetyLabel(
+                safetyLabelForPersistence, historyFile)
         }
     }
 
@@ -155,9 +165,7 @@ class SafetyLabelChangesJobService : JobService() {
             .keys
 
     private suspend fun isPreinstalledPackage(pkg: Pair<String, UserHandle>): Boolean =
-        LightInstallSourceInfoLiveData[pkg]
-            .getInitializedValue()
-            .installingPackageName == null
+        LightInstallSourceInfoLiveData[pkg].getInitializedValue().installingPackageName == null
 
     private fun postSafetyLabelChangedNotification() {
         if (hasDataSharingChanged()) {
@@ -169,9 +177,14 @@ class SafetyLabelChangesJobService : JobService() {
     }
 
     override fun onStopJob(params: JobParameters?): Boolean {
-        runBlocking {
-            mainJobTask?.cancelAndJoin()
-            mainJobTask = null
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onStopJob: stopping job ${params?.jobId}")
+        }
+        if (params?.jobId == SAFETY_LABEL_CHANGES_JOB_ID) {
+            runBlocking {
+                mainJobTask?.cancelAndJoin()
+                mainJobTask = null
+            }
         }
         return true
     }
@@ -184,15 +197,15 @@ class SafetyLabelChangesJobService : JobService() {
     private fun showNotification() {
         val context = PermissionControllerApplication.get() as Context
         val notificationManager = getSystemServiceSafe(context, NotificationManager::class.java)
-
         createNotificationChannel(context, notificationManager)
 
+        val title = context.getString(R.string.safety_label_changes_notification_title)
+        val text = context.getString(R.string.safety_label_changes_notification_desc)
         val notification =
             NotificationCompat.Builder(context, PERMISSION_REMINDER_CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_info)
-                .setContentTitle(
-                    context.getString(R.string.safety_label_changes_notification_title))
-                .setContentText(context.getString(R.string.safety_label_changes_notification_desc))
+                .setContentTitle(title)
+                .setContentText(text)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setLocalOnly(true)
                 .setAutoCancel(true)
@@ -201,13 +214,17 @@ class SafetyLabelChangesJobService : JobService() {
                 .build()
 
         notificationManager.notify(SAFETY_LABEL_CHANGES_NOTIFICATION_ID, notification)
+        if (DEBUG) {
+            Log.v(LOG_TAG, "Safety label change notification sent.")
+        }
     }
 
     private fun createIntentToOpenAppDataSharingUpdates(context: Context): PendingIntent? {
         return PendingIntent.getActivity(
-            context, 0, Intent(Intent.ACTION_REVIEW_APP_DATA_SHARING_UPDATES),
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-        )
+            context,
+            0,
+            Intent(Intent.ACTION_REVIEW_APP_DATA_SHARING_UPDATES),
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
     }
 
     private fun createNotificationChannel(
@@ -225,28 +242,30 @@ class SafetyLabelChangesJobService : JobService() {
 
     companion object {
         private val LOG_TAG = SafetyLabelChangesJobService::class.java.simpleName
+        private const val DEBUG = true
+
+        private const val ACTION_SET_UP_SAFETY_LABEL_CHANGES_JOB =
+            "com.android.permissioncontroller.action.SET_UP_SAFETY_LABEL_CHANGES_JOB"
 
         private fun schedulePeriodicJob(context: Context) {
             try {
                 val jobScheduler = getSystemServiceSafe(context, JobScheduler::class.java)
-
                 if (jobScheduler.getPendingJob(PERIODIC_SAFETY_LABEL_CHANGES_JOB_ID) != null) {
-                    Log.i(LOG_TAG, "Not scheduling periodic job: already scheduled")
+                    Log.i(LOG_TAG, "Safety label change periodic job already scheduled.")
                     return
                 }
 
-                Log.i(LOG_TAG, "Scheduling periodic job")
-                val job =
-                    JobInfo.Builder(
-                            PERIODIC_SAFETY_LABEL_CHANGES_JOB_ID,
-                            ComponentName(context, SafetyLabelChangesJobService::class.java))
-                        .setPersisted(true)
-                        .setRequiresDeviceIdle(
-                            KotlinUtils.runSafetyLabelChangesJobOnlyWhenDeviceIdle())
-                        .setPeriodic(KotlinUtils.getSafetyLabelChangesJobIntervalMillis())
-                        .build()
-                jobScheduler.schedule(job)
-                Log.i(LOG_TAG, "Periodic job scheduled successfully")
+                val job = JobInfo.Builder(PERIODIC_SAFETY_LABEL_CHANGES_JOB_ID,
+                    ComponentName(context, SafetyLabelChangesJobService::class.java)
+                ).setPeriodic(KotlinUtils.getSafetyLabelChangesJobIntervalMillis())
+                .setPersisted(true)
+                .build()
+                val result = jobScheduler.schedule(job)
+                if (result != JobScheduler.RESULT_SUCCESS) {
+                    Log.w(LOG_TAG, "Safety label job not scheduled, result code: $result")
+                } else {
+                    Log.d(LOG_TAG, "Safety label job scheduled.")
+                }
             } catch (e: Throwable) {
                 Log.e(LOG_TAG, "Failed to schedule periodic job", e)
                 throw e
@@ -259,22 +278,23 @@ class SafetyLabelChangesJobService : JobService() {
                 val jobScheduler = getSystemServiceSafe(context, JobScheduler::class.java)
 
                 if (jobScheduler.getPendingJob(SAFETY_LABEL_CHANGES_JOB_ID) != null) {
-                    Log.i(LOG_TAG, "Not scheduling job: already scheduled")
+                    Log.w(LOG_TAG, "safety label change job (one time) already scheduled")
                     return
                 }
 
-                Log.i(LOG_TAG, "Scheduling job")
-                val job =
-                    JobInfo.Builder(
-                            SAFETY_LABEL_CHANGES_JOB_ID,
-                            ComponentName(context, SafetyLabelChangesJobService::class.java))
-                        .setPersisted(true)
-                        .setRequiresDeviceIdle(
-                            KotlinUtils.runSafetyLabelChangesJobOnlyWhenDeviceIdle())
-                        .setMinimumLatency(KotlinUtils.getSafetyLabelChangesJobDelayMillis())
-                        .build()
-                jobScheduler.schedule(job)
-                Log.i(LOG_TAG, "Job scheduled successfully")
+                val job = JobInfo.Builder(SAFETY_LABEL_CHANGES_JOB_ID,
+                        ComponentName(context, SafetyLabelChangesJobService::class.java)
+                ).setPersisted(true)
+                .setRequiresDeviceIdle(KotlinUtils.runSafetyLabelChangesJobOnlyWhenDeviceIdle())
+                .setMinimumLatency(KotlinUtils.getSafetyLabelChangesJobDelayMillis())
+                .build()
+                val result = jobScheduler.schedule(job)
+                if (result == JobScheduler.RESULT_SUCCESS) {
+                    Log.i(LOG_TAG, "main job scheduled successfully")
+                } else {
+                    Log.i(LOG_TAG, "main job not scheduled, result: $result")
+                }
+                Log.i(LOG_TAG, "periodic job running completes.")
             } catch (e: Throwable) {
                 Log.e(LOG_TAG, "Failed to schedule job", e)
                 throw e
