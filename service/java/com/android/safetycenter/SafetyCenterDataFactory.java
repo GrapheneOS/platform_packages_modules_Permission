@@ -577,10 +577,14 @@ public final class SafetyCenterDataFactory {
                                 mSafetySourceDataRepository.getSafetySourceDataInternal(key));
                 boolean defaultEntryDueToQuietMode = isUserManaged && !isManagedUserRunning;
                 if (safetySourceStatus == null || defaultEntryDueToQuietMode) {
+                    int severityLevel =
+                            defaultEntryDueToQuietMode
+                                    ? SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED
+                                    : SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN;
                     return toDefaultSafetyCenterEntry(
                             safetySource,
                             safetySource.getPackageName(),
-                            SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN,
+                            severityLevel,
                             SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION,
                             userId,
                             isUserManaged,
@@ -774,11 +778,10 @@ public final class SafetyCenterDataFactory {
         if (staticEntry == null) {
             return;
         }
-        boolean isQuietModeEnabled = isUserManaged && !isManagedUserRunning;
         boolean hasError =
                 mSafetySourceDataRepository.sourceHasError(
                         SafetySourceKey.of(safetySource.getId(), userId));
-        if (isQuietModeEnabled || hasError) {
+        if (hasError) {
             safetyCenterOverallState.addEntryOverallSeverityLevel(
                     SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN);
         }
