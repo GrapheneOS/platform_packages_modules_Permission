@@ -15,6 +15,14 @@
             ]
         },
         {
+            "name": "CtsPermission3TestCases",
+            "options": [
+                {
+                    "include-filter": "android.permission3.cts.SafetyLabelChangesJobServiceTest"
+                }
+            ]
+        },
+        {
             "name": "CtsPermissionTestCases",
             "options": [
                 {
