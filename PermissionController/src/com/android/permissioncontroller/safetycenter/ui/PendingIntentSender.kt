@@ -23,6 +23,7 @@ import androidx.fragment.app.FragmentActivity
 import com.android.safetycenter.internaldata.SafetyCenterIds
 
 /** An object which sends pendingIntents, in a proper task, if needed. */
+@RequiresApi(TIRAMISU)
 object PendingIntentSender {
 
     @JvmStatic
@@ -42,7 +43,6 @@ object PendingIntentSender {
      * @param activity represents the parent activity of the fragment
      */
     @JvmStatic
-    @RequiresApi(TIRAMISU)
     fun getTaskIdForEntry(
         entryId: String,
         sameTaskSourceIds: List<String>,

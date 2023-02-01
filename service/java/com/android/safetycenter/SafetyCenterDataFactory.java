@@ -17,8 +17,6 @@
 package com.android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
-import static android.safetycenter.SafetySourceIssue.ISSUE_ACTIONABILITY_AUTOMATIC;
-import static android.safetycenter.SafetySourceIssue.ISSUE_ACTIONABILITY_TIP;
 
 import static java.util.Collections.emptyList;
 import static java.util.Objects.requireNonNull;
@@ -225,9 +223,9 @@ public final class SafetyCenterDataFactory {
                 if (topNonDismissedIssueInfo == null) {
                     topNonDismissedIssueInfo = issueInfo;
                 }
-                if (hasActionability(issueInfo, ISSUE_ACTIONABILITY_TIP)) {
+                if (isTip(issueInfo.getSafetySourceIssue())) {
                     numTipIssues++;
-                } else if (hasActionability(issueInfo, ISSUE_ACTIONABILITY_AUTOMATIC)) {
+                } else if (isAutomatic(issueInfo.getSafetySourceIssue())) {
                     numAutomaticIssues++;
                 }
             }
@@ -1118,18 +1116,18 @@ public final class SafetyCenterDataFactory {
         switch (overallSeverityLevel) {
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN:
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK:
-                if (numIssues == 0) {
+                if (topNonDismissedIssue == null) {
                     if (safetyCenterOverallState.hasSettingsToReview()) {
                         return mSafetyCenterResourcesContext.getStringByName(
                                 "overall_severity_level_ok_review_summary");
                     }
                     return mSafetyCenterResourcesContext.getStringByName(
                             "overall_severity_level_ok_summary");
-                } else if (hasActionability(topNonDismissedIssue, ISSUE_ACTIONABILITY_TIP)) {
+                } else if (isTip(topNonDismissedIssue.getSafetySourceIssue())) {
                     return mSafetyCenterResourcesContext.getStringByName(
                             "overall_severity_level_tip_summary", numTipIssues);
 
-                } else if (hasActionability(topNonDismissedIssue, ISSUE_ACTIONABILITY_AUTOMATIC)) {
+                } else if (isAutomatic(topNonDismissedIssue.getSafetySourceIssue())) {
                     return mSafetyCenterResourcesContext.getStringByName(
                             "overall_severity_level_action_taken_summary", numAutomaticIssues);
                 }
@@ -1143,16 +1141,16 @@ public final class SafetyCenterDataFactory {
         return "";
     }
 
-    private static boolean hasActionability(
-            @Nullable SafetySourceIssueInfo issueInfo,
-            @SafetySourceIssue.IssueActionability int issueActionability) {
-        if (issueInfo == null) {
-            return false;
-        }
-        if (!SdkLevel.isAtLeastU()) {
-            return issueActionability == SafetySourceIssue.ISSUE_ACTIONABILITY_MANUAL;
-        }
-        return issueActionability == issueInfo.getSafetySourceIssue().getIssueActionability();
+    private static boolean isTip(@NonNull SafetySourceIssue safetySourceIssue) {
+        return SdkLevel.isAtLeastU()
+                && safetySourceIssue.getIssueActionability()
+                        == SafetySourceIssue.ISSUE_ACTIONABILITY_TIP;
+    }
+
+    private static boolean isAutomatic(@NonNull SafetySourceIssue safetySourceIssue) {
+        return SdkLevel.isAtLeastU()
+                && safetySourceIssue.getIssueActionability()
+                        == SafetySourceIssue.ISSUE_ACTIONABILITY_AUTOMATIC;
     }
 
     @NonNull
