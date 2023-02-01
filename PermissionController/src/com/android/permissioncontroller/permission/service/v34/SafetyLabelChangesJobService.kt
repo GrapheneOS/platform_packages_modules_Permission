@@ -30,7 +30,11 @@ import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_BOOT_COMPLETED
 import android.os.Build
+import android.os.PersistableBundle
+import android.os.Process
 import android.os.UserHandle
+import android.os.UserManager
+import android.provider.DeviceConfig
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
@@ -43,6 +47,7 @@ import com.android.permissioncontroller.Constants.SAFETY_LABEL_CHANGES_NOTIFICAT
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.data.LightInstallSourceInfoLiveData
+import com.android.permissioncontroller.permission.data.LightPackageInfoLiveData
 import com.android.permissioncontroller.permission.data.SinglePermGroupPackagesUiInfoLiveData
 import com.android.permissioncontroller.permission.data.v34.AppDataSharingUpdatesLiveData
 import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo
@@ -52,9 +57,13 @@ import com.android.permissioncontroller.permission.model.v34.AppDataSharingUpdat
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.Utils.getSystemServiceSafe
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory
+import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.AppInfo
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.SafetyLabel as SafetyLabelForPersistence
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistoryPersistence
+import java.io.File
+import java.time.Duration
 import java.time.Instant
+import java.time.ZoneId
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
@@ -67,10 +76,13 @@ import kotlinx.coroutines.yield
  * Runs a monthly job that performs Safety Labels-related tasks. (E.g., data policy changes
  * notification, hygiene, etc.)
  */
+// TODO(b/265202443): Review support for safe cancellation of this Job. Currently this is
+//  implemented by implementing `onStopJob` method and including `yield()` calls in computation
+//  loops.
 @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
 class SafetyLabelChangesJobService : JobService() {
     private var mainJobTask: Job? = null
-    private val context = PermissionControllerApplication.get()
+    private val context = this@SafetyLabelChangesJobService
 
     class Receiver : BroadcastReceiver() {
         override fun onReceive(receiverContext: Context, intent: Intent) {
@@ -78,7 +90,14 @@ class SafetyLabelChangesJobService : JobService() {
                 Log.d(LOG_TAG, "Received broadcast with intent action '${intent.action}'")
             }
             if (!KotlinUtils.isSafetyLabelChangeNotificationsEnabled()) {
-                Log.w(LOG_TAG, "onReceive: Safety label change notifications are not enabled.")
+                Log.i(LOG_TAG, "onReceive: Safety label change notifications are not enabled.")
+                return
+            }
+            if (isContextInProfileUser(receiverContext)) {
+                Log.i(
+                    LOG_TAG,
+                    "onReceive: Received broadcast in profile, not scheduling safety label" +
+                        " change job")
                 return
             }
             if (intent.action != ACTION_BOOT_COMPLETED &&
@@ -86,6 +105,12 @@ class SafetyLabelChangesJobService : JobService() {
                 return
             }
             schedulePeriodicJob(receiverContext)
+        }
+
+        private fun isContextInProfileUser(context: Context): Boolean {
+            val userManager: UserManager =
+                (context.getSystemService(UserManager::class.java) as UserManager?)!!
+            return userManager.isProfile
         }
     }
 
@@ -130,58 +155,198 @@ class SafetyLabelChangesJobService : JobService() {
     }
 
     private suspend fun runMainJob() {
-        initializeSafetyLabels()
+        performHygieneOnSafetyLabelHistoryPersistence()
         postSafetyLabelChangedNotification()
     }
 
-    private suspend fun initializeSafetyLabels() {
+    private suspend fun performHygieneOnSafetyLabelHistoryPersistence() {
         val historyFile = AppsSafetyLabelHistoryPersistence.getSafetyLabelHistoryFile(context)
+        val safetyLabelsLastUpdatedTimes: Map<AppInfo, Instant> =
+            AppsSafetyLabelHistoryPersistence.getSafetyLabelsLastUpdatedTimes(historyFile)
+        // Retrieve all installed packages that are not pre-installed on the system and
+        // that request the location permission; these are the packages that we care about for the
+        // safety labels feature. The variable name does not specify all these filters for brevity.
+        val packagesRequestingLocation: Set<Pair<String, UserHandle>> =
+            getAllNonPreinstalledPackagesRequestingLocation()
 
-        val packageNamesWithPersistedSafetyLabels: Set<String> =
-            AppsSafetyLabelHistoryPersistence.getAppsWithSafetyLabels(historyFile)
-                .map { it.packageName }
-                .toSet()
-        val packageNamesWithRelevantSafetyLabels: Set<String> =
-            getAllNonPreinstalledPackageNamesRequestingLocation()
-        val packageNamesToInitialize: Set<String> =
-            packageNamesWithRelevantSafetyLabels - packageNamesWithPersistedSafetyLabels
+        recordSafetyLabelsIfMissing(
+            historyFile, packagesRequestingLocation, safetyLabelsLastUpdatedTimes)
+        deleteSafetyLabelsNoLongerNeeded(
+            historyFile, packagesRequestingLocation, safetyLabelsLastUpdatedTimes)
+    }
 
-        val safetyLabelsToPersist = mutableSetOf<SafetyLabelForPersistence>()
+    /**
+     * Records safety labels for apps that may not have propagated their safety labels to
+     * persistence through [SafetyLabelChangedBroadcastReceiver].
+     *
+     * This is done by:
+     * 1. Initializing safety labels for apps that are relevant, but have no persisted safety labels
+     *    yet.
+     * 2. Update safety labels for apps that are relevant and have persisted safety labels, if we
+     *    identify that we have missed an update for them.
+     */
+    private suspend fun recordSafetyLabelsIfMissing(
+        historyFile: File,
+        packagesRequestingLocation: Set<Pair<String, UserHandle>>,
+        safetyLabelsLastUpdatedTimes: Map<AppInfo, Instant>
+    ) {
+        val safetyLabelsToRecord = mutableSetOf<SafetyLabelForPersistence>()
+        val packageNamesWithPersistedSafetyLabels =
+            safetyLabelsLastUpdatedTimes.keys.map { it.packageName }
 
-        for (packageName in packageNamesToInitialize) {
+        // Partition relevant apps by whether we already store safety labels for them.
+        val (packagesToConsiderUpdate, packagesToInitialize) =
+            packagesRequestingLocation.partition { (packageName, _) ->
+                packageName in packageNamesWithPersistedSafetyLabels
+            }
+        if (DEBUG) {
+            Log.d(
+                LOG_TAG,
+                "recording safety labels if missing:" +
+                    " packagesRequestingLocation:" +
+                    " $packagesRequestingLocation, packageNamesWithPersistedSafetyLabels:" +
+                    " $packageNamesWithPersistedSafetyLabels")
+        }
+        safetyLabelsToRecord.addAll(getSafetyLabels(packagesToInitialize))
+        safetyLabelsToRecord.addAll(
+            getSafetyLabelsIfUpdatesMissed(packagesToConsiderUpdate, safetyLabelsLastUpdatedTimes))
+
+        AppsSafetyLabelHistoryPersistence.recordSafetyLabels(safetyLabelsToRecord, historyFile)
+    }
+
+    private suspend fun getSafetyLabels(
+        packages: List<Pair<String, UserHandle>>
+    ): List<SafetyLabelForPersistence> {
+        val safetyLabelsToPersist = mutableListOf<SafetyLabelForPersistence>()
+
+        for ((packageName, user) in packages) {
+            yield() // cancellation point
+            val safetyLabelToPersist = getSafetyLabelToPersist(Pair(packageName, user))
+            if (safetyLabelToPersist != null) {
+                safetyLabelsToPersist.add(safetyLabelToPersist)
+            }
+        }
+        return safetyLabelsToPersist
+    }
+
+    private suspend fun getSafetyLabelsIfUpdatesMissed(
+        packages: List<Pair<String, UserHandle>>,
+        safetyLabelsLastUpdatedTimes: Map<AppInfo, Instant>
+    ): List<SafetyLabelForPersistence> {
+        val safetyLabelsToPersist = mutableListOf<SafetyLabelForPersistence>()
+        for ((packageName, user) in packages) {
             yield() // cancellation point
 
-            val appMetadataBundle = context.packageManager.getAppMetadata(packageName)
-            val appMetadataSafetyLabel: AppMetadataSafetyLabel =
-                AppMetadataSafetyLabel.getSafetyLabelFromMetadata(appMetadataBundle) ?: continue
-            // TODO(b/264884404): Use install time or last update time for an app for the time a
-            //  safety label is received instead of current time.
-            val safetyLabelForPersistence: SafetyLabelForPersistence =
-                AppsSafetyLabelHistory.SafetyLabel.fromAppMetadataSafetyLabel(
-                    packageName, receivedAt = Instant.now(), appMetadataSafetyLabel)
+            // If safety labels are considered up-to-date, continue as there is no need to retrieve
+            // the latest safety label; it was already captured.
+            if (areSafetyLabelsUpToDate(Pair(packageName, user), safetyLabelsLastUpdatedTimes)) {
+                continue
+            }
 
-            safetyLabelsToPersist.add(safetyLabelForPersistence)
+            val safetyLabelToPersist = getSafetyLabelToPersist(Pair(packageName, user))
+            if (safetyLabelToPersist != null) {
+                safetyLabelsToPersist.add(safetyLabelToPersist)
+            }
         }
 
-        AppsSafetyLabelHistoryPersistence.recordSafetyLabels(safetyLabelsToPersist, historyFile)
+        return safetyLabelsToPersist
+    }
+
+    /**
+     * Returns whether the provided app's safety labels are up-to-date by checking that there have
+     * been no app updates since the persisted safety label history was last updated.
+     */
+    private suspend fun areSafetyLabelsUpToDate(
+        packageKey: Pair<String, UserHandle>,
+        safetyLabelsLastUpdatedTimes: Map<AppInfo, Instant>
+    ): Boolean {
+        val lastAppUpdateTime: Instant =
+            Instant.ofEpochMilli(
+                LightPackageInfoLiveData[packageKey].getInitializedValue().lastUpdateTime)
+        val latestSafetyLabelUpdateTime: Instant? =
+            safetyLabelsLastUpdatedTimes[AppInfo(packageKey.first)]
+        return latestSafetyLabelUpdateTime != null &&
+            !lastAppUpdateTime.isAfter(latestSafetyLabelUpdateTime)
+    }
+
+    private suspend fun getSafetyLabelToPersist(
+        packageKey: Pair<String, UserHandle>
+    ): SafetyLabelForPersistence? {
+        val (packageName, user) = packageKey
+
+        // Get the context for the user in which the app is installed.
+        val userContext =
+            if (user == Process.myUserHandle()) {
+                context
+            } else {
+                context.createContextAsUser(user, 0)
+            }
+        val appMetadataBundle: PersistableBundle =
+            userContext.packageManager.getAppMetadata(packageName)
+        val appMetadataSafetyLabel: AppMetadataSafetyLabel =
+            AppMetadataSafetyLabel.getSafetyLabelFromMetadata(appMetadataBundle) ?: return null
+        val lastUpdateTime =
+            Instant.ofEpochMilli(
+                LightPackageInfoLiveData[packageKey].getInitializedValue().lastUpdateTime)
+
+        val safetyLabelForPersistence: SafetyLabelForPersistence =
+            AppsSafetyLabelHistory.SafetyLabel.fromAppMetadataSafetyLabel(
+                packageName, lastUpdateTime, appMetadataSafetyLabel)
+
+        return safetyLabelForPersistence
+    }
+
+    /**
+     * Deletes safety labels from persistence that are no longer necessary to persist.
+     *
+     * This is done by:
+     * 1. Deleting safety labels for apps that are no longer relevant (e.g. app not installed or app
+     *    not requesting location permission).
+     * 2. Delete safety labels if there are multiple safety labels prior to the update period; at
+     *    most one safety label is necessary to be persisted prior to the update period to determine
+     *    updates to safety labels.
+     */
+    private fun deleteSafetyLabelsNoLongerNeeded(
+        historyFile: File,
+        packagesRequestingLocation: Set<Pair<String, UserHandle>>,
+        safetyLabelsLastUpdatedTimes: Map<AppInfo, Instant>
+    ) {
+        val packageNamesWithPersistedSafetyLabels: List<String> =
+            safetyLabelsLastUpdatedTimes.keys.map { appInfo -> appInfo.packageName }
+        val packageNamesWithRelevantSafetyLabels: List<String> =
+            packagesRequestingLocation.map { (packageName, _) -> packageName }
+
+        val appInfosToDelete: Set<AppInfo> =
+            packageNamesWithPersistedSafetyLabels
+                .filter { packageName -> packageName !in packageNamesWithRelevantSafetyLabels }
+                .map { packageName -> AppInfo(packageName) }
+                .toSet()
+        AppsSafetyLabelHistoryPersistence.deleteSafetyLabelsForApps(appInfosToDelete, historyFile)
+
+        val updatePeriod =
+            DeviceConfig.getLong(
+                DeviceConfig.NAMESPACE_PRIVACY,
+                DATA_SHARING_UPDATE_PERIOD_PROPERTY,
+                Duration.ofDays(DEFAULT_DATA_SHARING_UPDATE_PERIOD_DAYS).toMillis())
+        AppsSafetyLabelHistoryPersistence.deleteSafetyLabelsOlderThan(
+            Instant.now().atZone(ZoneId.systemDefault()).toInstant().minusMillis(updatePeriod),
+            historyFile)
     }
 
     // TODO(b/261607291): Modify this logic when we enable safety label change notifications for
     //  preinstalled apps.
-    private suspend fun getAllNonPreinstalledPackageNamesRequestingLocation(): Set<String> =
-        getAllPackagesRequestingLocation()
-            .filter { !isPreinstalledPackage(it) }
-            .map { (packageName, _) -> packageName }
-            .toSet()
+    private suspend fun getAllNonPreinstalledPackagesRequestingLocation():
+        Set<Pair<String, UserHandle>> =
+        getAllPackagesRequestingLocation().filter { !isPreinstalledPackage(it) }.toSet()
 
     private suspend fun getAllPackagesRequestingLocation(): Set<Pair<String, UserHandle>> =
         SinglePermGroupPackagesUiInfoLiveData[Manifest.permission_group.LOCATION]
-            .getInitializedValue()
+            .getInitializedValue(staleOk = false, forceUpdate = true)
             .keys
 
     private suspend fun getAllPackagesGrantedLocation(): Set<Pair<String, UserHandle>> =
         SinglePermGroupPackagesUiInfoLiveData[Manifest.permission_group.LOCATION]
-            .getInitializedValue()
+            .getInitializedValue(staleOk = false, forceUpdate = true)
             .filter { (packageKey, appPermGroupUiInfo) -> appPermGroupUiInfo.isPermissionGranted() }
             .keys
 
@@ -214,7 +379,9 @@ class SafetyLabelChangesJobService : JobService() {
     }
 
     private suspend fun hasDataSharingChanged(): Boolean {
-        val appDataSharingUpdates = AppDataSharingUpdatesLiveData(context).getInitializedValue()
+        val appDataSharingUpdates =
+            AppDataSharingUpdatesLiveData(PermissionControllerApplication.get())
+                .getInitializedValue()
         val packageNamesWithLocationDataSharingUpdates: List<String> =
             appDataSharingUpdates
                 .filter { it.containsLocationCategoryUpdate() }
@@ -290,6 +457,9 @@ class SafetyLabelChangesJobService : JobService() {
 
         private const val ACTION_SET_UP_SAFETY_LABEL_CHANGES_JOB =
             "com.android.permissioncontroller.action.SET_UP_SAFETY_LABEL_CHANGES_JOB"
+
+        private const val DATA_SHARING_UPDATE_PERIOD_PROPERTY = "data_sharing_update_period_millis"
+        private const val DEFAULT_DATA_SHARING_UPDATE_PERIOD_DAYS: Long = 30
 
         private fun schedulePeriodicJob(context: Context) {
             try {

@@ -23,6 +23,7 @@ import android.app.job.JobScheduler
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import android.os.UserManager
 import android.provider.DeviceConfig
 import android.safetylabel.SafetyLabelConstants
 import androidx.test.core.app.ApplicationProvider
@@ -64,6 +65,8 @@ class SafetyLabelChangesJobServiceTest {
 
     @Mock private lateinit var mockJobScheduler: JobScheduler
 
+    @Mock private lateinit var mockUserManager: UserManager
+
     @Mock private lateinit var mockNotificationManager: NotificationManager
 
     @Before
@@ -86,12 +89,15 @@ class SafetyLabelChangesJobServiceTest {
         whenever(application.resources).thenReturn(context.resources)
         whenever(application.applicationInfo).thenReturn(context.applicationInfo)
         whenever(application.applicationContext).thenReturn(application)
+        whenever(mockUserManager.isProfile).thenReturn(false)
 
         // Mock services
         whenever(application.getSystemService(eq(NotificationManager::class.java)))
             .thenReturn(mockNotificationManager)
         whenever(application.getSystemService(eq(JobScheduler::class.java)))
             .thenReturn(mockJobScheduler)
+        whenever(application.getSystemService(eq(UserManager::class.java)))
+            .thenReturn(mockUserManager)
         doNothing().`when`(service).jobFinished(any(), anyBoolean())
     }
 
