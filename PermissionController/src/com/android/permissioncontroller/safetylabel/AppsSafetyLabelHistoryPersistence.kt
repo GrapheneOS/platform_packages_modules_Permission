@@ -96,11 +96,13 @@ object AppsSafetyLabelHistoryPersistence {
     }
 
     /**
-     * Returns the set of names of packages that have safety label data persisted in history [file].
+     * Returns a set of [AppInfo]s representing apps that have safety label data persisted in
+     * history [file].
      */
-    fun getPackagesWithSafetyLabels(file: File): Set<String> {
+    fun getAppsWithSafetyLabels(file: File): Set<AppInfo> {
         val appHistories = read(file)?.appSafetyLabelHistories
-        return appHistories?.map { it.appInfo.packageName }?.toSet() ?: setOf()
+
+        return appHistories?.map { it.appInfo }?.toSet() ?: setOf()
     }
 
     /**
@@ -128,6 +130,94 @@ object AppsSafetyLabelHistoryPersistence {
                 }
 
             write(file, updatedAppsSafetyLabelHistory)
+        }
+    }
+
+    /**
+     * Writes new safety labels to the provided file, if the provided safety labels have changed
+     * from the last recorded (when considered in order of [SafetyLabel.receivedAt]).
+     */
+    fun recordSafetyLabels(safetyLabelsToAdd: Set<SafetyLabel>, file: File) {
+        synchronized(readWriteLock) {
+            val currentAppsSafetyLabelHistory = read(file) ?: AppsSafetyLabelHistory(listOf())
+            val appInfoToOrderedSafetyLabels =
+                safetyLabelsToAdd
+                    .groupBy { it.appInfo }
+                    .mapValues { (appInfo, safetyLabels) ->
+                        safetyLabels.sortedBy { it.receivedAt }
+                    }
+            val currentAppHistories = currentAppsSafetyLabelHistory.appSafetyLabelHistories
+            val newApps =
+                appInfoToOrderedSafetyLabels.keys - currentAppHistories.map { it.appInfo }.toSet()
+
+            // For apps that already have some safety labels persisted, add the provided safety
+            // labels to the history.
+            var updatedAppHistories: List<AppSafetyLabelHistory> =
+                currentAppHistories.map { currentAppHistory: AppSafetyLabelHistory ->
+                    val safetyLabels = appInfoToOrderedSafetyLabels[currentAppHistory.appInfo]
+                    if (safetyLabels != null) {
+                        currentAppHistory.addSafetyLabelsIfChanged(safetyLabels)
+                    } else {
+                        currentAppHistory
+                    }
+                }
+
+            // For apps that don't already have some safety labels persisted, add new
+            // AppSafetyLabelHistory instances for them with the provided safety labels.
+            updatedAppHistories =
+                updatedAppHistories.toMutableList().apply {
+                    newApps.forEach { newAppInfo ->
+                        val safetyLabelsForNewApp = appInfoToOrderedSafetyLabels[newAppInfo]
+                        if (safetyLabelsForNewApp != null) {
+                            add(AppSafetyLabelHistory(newAppInfo, safetyLabelsForNewApp))
+                        }
+                    }
+                }
+
+            write(file, AppsSafetyLabelHistory(updatedAppHistories))
+        }
+    }
+
+    /** Deletes stored safety labels for all apps in [appInfosToRemove]. */
+    fun deleteSafetyLabelsForApps(appInfosToRemove: Set<AppInfo>, file: File) {
+        synchronized(readWriteLock) {
+            val currentAppsSafetyLabelHistory = read(file) ?: AppsSafetyLabelHistory(listOf())
+            val historiesWithAppsRemoved =
+                currentAppsSafetyLabelHistory.appSafetyLabelHistories.filter {
+                    it.appInfo !in appInfosToRemove
+                }
+
+            write(file, AppsSafetyLabelHistory(historiesWithAppsRemoved))
+        }
+    }
+
+    /**
+     * Deletes stored safety labels so that there is at most one safety label for each app with
+     * [SafetyLabel.receivedAt] earlier that [startTime].
+     */
+    fun deleteSafetyLabelsOlderThan(startTime: Instant, file: File) {
+        synchronized(readWriteLock) {
+            val currentAppsSafetyLabelHistory = read(file) ?: AppsSafetyLabelHistory(listOf())
+            val updatedAppHistories =
+                currentAppsSafetyLabelHistory.appSafetyLabelHistories.map { appHistory ->
+                    val history = appHistory.safetyLabelHistory
+                    // Retrieve the last safety label that was received prior to startTime.
+                    val last =
+                        history.indexOfLast { safetyLabels -> safetyLabels.receivedAt <= startTime }
+                    if (last <= 0) {
+                        // If there is only one or no safety labels received prior to startTime,
+                        // then return the history as is.
+                        appHistory
+                    } else {
+                        // Else, discard all safety labels other than the last safety label prior
+                        // to startTime. The aim is retain one safety label prior to start time to
+                        // be used as the "before" safety label when determining updates.
+                        AppSafetyLabelHistory(
+                            appHistory.appInfo, history.subList(last, history.size))
+                    }
+                }
+
+            write(file, AppsSafetyLabelHistory(updatedAppHistories))
         }
     }
 
@@ -414,6 +504,21 @@ object AppsSafetyLabelHistoryPersistence {
         val latestSafetyLabel = safetyLabelHistory.lastOrNull()
         return if (latestSafetyLabel?.dataLabel == safetyLabel.dataLabel) this
         else this.withSafetyLabel(safetyLabel, getMaxSafetyLabelsToPersist())
+    }
+
+    private fun AppSafetyLabelHistory.addSafetyLabelsIfChanged(
+        safetyLabels: List<SafetyLabel>
+    ): AppSafetyLabelHistory {
+        var updatedAppHistory = this
+        val maxSafetyLabels = getMaxSafetyLabelsToPersist()
+        for (safetyLabel in safetyLabels) {
+            val latestSafetyLabel = updatedAppHistory.safetyLabelHistory.lastOrNull()
+            if (latestSafetyLabel?.dataLabel != safetyLabel.dataLabel) {
+                updatedAppHistory = updatedAppHistory.withSafetyLabel(safetyLabel, maxSafetyLabels)
+            }
+        }
+
+        return updatedAppHistory
     }
 
     private fun AppSafetyLabelHistory.getLatestSafetyLabel() = safetyLabelHistory.lastOrNull()

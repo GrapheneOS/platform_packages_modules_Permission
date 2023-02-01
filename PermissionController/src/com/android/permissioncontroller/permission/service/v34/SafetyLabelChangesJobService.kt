@@ -34,7 +34,7 @@ import android.os.UserHandle
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
-import com.android.permission.safetylabel.SafetyLabel
+import com.android.permission.safetylabel.SafetyLabel as AppMetadataSafetyLabel
 import com.android.permissioncontroller.Constants.PERIODIC_SAFETY_LABEL_CHANGES_JOB_ID
 import com.android.permissioncontroller.Constants.PERMISSION_REMINDER_CHANNEL_ID
 import com.android.permissioncontroller.Constants.SAFETY_LABEL_CHANGES_JOB_ID
@@ -46,8 +46,8 @@ import com.android.permissioncontroller.permission.data.SinglePermGroupPackagesU
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.Utils.getSystemServiceSafe
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory
+import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.SafetyLabel as SafetyLabelForPersistence
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistoryPersistence
-import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistoryPersistence.getPackagesWithSafetyLabels
 import java.time.Instant
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -131,28 +131,37 @@ class SafetyLabelChangesJobService : JobService() {
         val context = PermissionControllerApplication.get() as Context
         val historyFile = AppsSafetyLabelHistoryPersistence.getSafetyLabelHistoryFile(context)
 
-        val packageNamesWithoutPersistedSafetyLabels: Set<String> =
-            getAllNonPreinstalledPackageNamesRequestingLocation() -
-                getPackagesWithSafetyLabels(historyFile)
+        val packageNamesWithPersistedSafetyLabels: Set<String> =
+            AppsSafetyLabelHistoryPersistence.getAppsWithSafetyLabels(historyFile)
+                .map { it.packageName }
+                .toSet()
+        val packageNamesWithRelevantSafetyLabels: Set<String> =
+            getAllNonPreinstalledPackageNamesRequestingLocation()
+        val packageNamesToInitialize: Set<String> =
+            packageNamesWithRelevantSafetyLabels - packageNamesWithPersistedSafetyLabels
 
-        for (packageName in packageNamesWithoutPersistedSafetyLabels) {
+        val safetyLabelsToPersist = mutableSetOf<SafetyLabelForPersistence>()
+
+        for (packageName in packageNamesToInitialize) {
             yield() // cancellation point
 
             val appMetadataBundle = context.packageManager.getAppMetadata(packageName)
-            val safetyLabel: SafetyLabel =
-                SafetyLabel.getSafetyLabelFromMetadata(appMetadataBundle) ?: continue
+            val appMetadataSafetyLabel: AppMetadataSafetyLabel =
+                AppMetadataSafetyLabel.getSafetyLabelFromMetadata(appMetadataBundle) ?: continue
             // TODO(b/264884404): Use install time or last update time for an app for the time a
             //  safety label is received instead of current time.
-            val safetyLabelForPersistence =
+            val safetyLabelForPersistence: SafetyLabelForPersistence =
                 AppsSafetyLabelHistory.SafetyLabel.fromAppMetadataSafetyLabel(
-                    packageName, receivedAt = Instant.now(), safetyLabel)
-            // TODO(b/265380622): Add a method to record safety labels in bulk rather than calling
-            //  recordSafetyLabel once per package
-            AppsSafetyLabelHistoryPersistence.recordSafetyLabel(
-                safetyLabelForPersistence, historyFile)
+                    packageName, receivedAt = Instant.now(), appMetadataSafetyLabel)
+
+            safetyLabelsToPersist.add(safetyLabelForPersistence)
         }
+
+        AppsSafetyLabelHistoryPersistence.recordSafetyLabels(safetyLabelsToPersist, historyFile)
     }
 
+    // TODO(b/261607291): Modify this logic when we enable safety label change notifications for
+    //  preinstalled apps.
     private suspend fun getAllNonPreinstalledPackageNamesRequestingLocation(): Set<String> =
         getAllPackagesRequestingLocation()
             .filter { !isPreinstalledPackage(it) }
@@ -255,11 +264,13 @@ class SafetyLabelChangesJobService : JobService() {
                     return
                 }
 
-                val job = JobInfo.Builder(PERIODIC_SAFETY_LABEL_CHANGES_JOB_ID,
-                    ComponentName(context, SafetyLabelChangesJobService::class.java)
-                ).setPeriodic(KotlinUtils.getSafetyLabelChangesJobIntervalMillis())
-                .setPersisted(true)
-                .build()
+                val job =
+                    JobInfo.Builder(
+                            PERIODIC_SAFETY_LABEL_CHANGES_JOB_ID,
+                            ComponentName(context, SafetyLabelChangesJobService::class.java))
+                        .setPeriodic(KotlinUtils.getSafetyLabelChangesJobIntervalMillis())
+                        .setPersisted(true)
+                        .build()
                 val result = jobScheduler.schedule(job)
                 if (result != JobScheduler.RESULT_SUCCESS) {
                     Log.w(LOG_TAG, "Safety label job not scheduled, result code: $result")
@@ -282,12 +293,15 @@ class SafetyLabelChangesJobService : JobService() {
                     return
                 }
 
-                val job = JobInfo.Builder(SAFETY_LABEL_CHANGES_JOB_ID,
-                        ComponentName(context, SafetyLabelChangesJobService::class.java)
-                ).setPersisted(true)
-                .setRequiresDeviceIdle(KotlinUtils.runSafetyLabelChangesJobOnlyWhenDeviceIdle())
-                .setMinimumLatency(KotlinUtils.getSafetyLabelChangesJobDelayMillis())
-                .build()
+                val job =
+                    JobInfo.Builder(
+                            SAFETY_LABEL_CHANGES_JOB_ID,
+                            ComponentName(context, SafetyLabelChangesJobService::class.java))
+                        .setPersisted(true)
+                        .setRequiresDeviceIdle(
+                            KotlinUtils.runSafetyLabelChangesJobOnlyWhenDeviceIdle())
+                        .setMinimumLatency(KotlinUtils.getSafetyLabelChangesJobDelayMillis())
+                        .build()
                 val result = jobScheduler.schedule(job)
                 if (result == JobScheduler.RESULT_SUCCESS) {
                     Log.i(LOG_TAG, "main job scheduled successfully")
