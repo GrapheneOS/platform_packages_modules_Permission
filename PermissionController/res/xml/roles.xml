@@ -1489,5 +1489,8 @@
                 </intent-filter>
             </preferred-activity>
         </preferred-activities>
+        <permissions>
+            <permission name="android.permission.LAUNCH_CAPTURE_CONTENT_ACTIVITY_FOR_NOTE" minSdkVersion="34"/>
+        </permissions>
     </role>
 </roles>
