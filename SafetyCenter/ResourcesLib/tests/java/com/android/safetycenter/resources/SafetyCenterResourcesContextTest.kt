@@ -65,7 +65,8 @@ class SafetyCenterResourcesContextTest {
                 "/apex/com.android.permission",
                 CONFIG_NAME,
                 0,
-                false)
+                false
+            )
         assertThat(safetyCenterResourcesContext.resourcesApkPkgName).isNull()
         assertThat(safetyCenterResourcesContext.safetyCenterConfig).isNull()
         assertThat(safetyCenterResourcesContext.assets).isNull()
@@ -82,7 +83,8 @@ class SafetyCenterResourcesContextTest {
                 null,
                 CONFIG_NAME,
                 PackageManager.MATCH_SYSTEM_ONLY,
-                false)
+                false
+            )
         assertThat(safetyCenterResourcesContext.resourcesApkPkgName).isNull()
         assertThat(safetyCenterResourcesContext.safetyCenterConfig).isNull()
         assertThat(safetyCenterResourcesContext.assets).isNull()
@@ -126,9 +128,9 @@ class SafetyCenterResourcesContextTest {
         val safetyCenterResourcesContext =
             SafetyCenterResourcesContext(context, RESOURCES_APK_ACTION, null, CONFIG_NAME, 0, true)
         assertThat(safetyCenterResourcesContext.getDrawableByName("valid_drawable", theme))
-                .isNotNull()
+            .isNotNull()
         assertThat(safetyCenterResourcesContext.getDrawableByName("invalid_drawable", theme))
-                .isNull()
+            .isNull()
     }
 
     @Test
@@ -136,7 +138,7 @@ class SafetyCenterResourcesContextTest {
         val safetyCenterResourcesContext =
             SafetyCenterResourcesContext(context, RESOURCES_APK_ACTION, null, CONFIG_NAME, 0, false)
         assertThat(safetyCenterResourcesContext.getDrawableByName("valid_drawable", theme))
-                .isNotNull()
+            .isNotNull()
         assertFailsWith(Resources.NotFoundException::class) {
             safetyCenterResourcesContext.getDrawableByName("invalid_drawable", theme)
         }

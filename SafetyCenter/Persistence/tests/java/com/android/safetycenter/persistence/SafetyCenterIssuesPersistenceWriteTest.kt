@@ -83,6 +83,9 @@ class SafetyCenterIssuesPersistenceWriteTest {
                             .setKey("key5")
                             .setFirstSeenAt(Instant.ofEpochMilli(1654128000000))
                             .setNotificationDismissedAt(Instant.ofEpochMilli(1654214400000))
-                            .build())))
+                            .build()
+                    )
+                )
+            )
     }
 }

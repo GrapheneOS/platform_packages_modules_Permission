@@ -54,7 +54,8 @@ class ParserConfigValidTest {
                                 .setSummaryResId(R.string.reference)
                                 .setIntentAction("intent")
                                 .setProfile(SafetySource.PROFILE_PRIMARY)
-                                .build())
+                                .build()
+                        )
                         .addSafetySource(
                             SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                                 .setId("dynamic_all_optional")
@@ -77,7 +78,8 @@ class ParserConfigValidTest {
                                         addPackageCertificateHash("feed2")
                                     }
                                 }
-                                .build())
+                                .build()
+                        )
                         .addSafetySource(
                             SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                                 .setId("dynamic_all_references")
@@ -100,7 +102,8 @@ class ParserConfigValidTest {
                                         addPackageCertificateHash("feed2")
                                     }
                                 }
-                                .build())
+                                .build()
+                        )
                         .addSafetySource(
                             SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                                 .setId("dynamic_disabled")
@@ -109,14 +112,16 @@ class ParserConfigValidTest {
                                 .setSummaryResId(R.string.reference)
                                 .setProfile(SafetySource.PROFILE_PRIMARY)
                                 .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_DISABLED)
-                                .build())
+                                .build()
+                        )
                         .addSafetySource(
                             SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                                 .setId("dynamic_hidden")
                                 .setPackageName("package")
                                 .setProfile(SafetySource.PROFILE_ALL)
                                 .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_HIDDEN)
-                                .build())
+                                .build()
+                        )
                         .addSafetySource(
                             SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                                 .setId("dynamic_hidden_with_search")
@@ -128,8 +133,10 @@ class ParserConfigValidTest {
                                 .setProfile(SafetySource.PROFILE_ALL)
                                 .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_HIDDEN)
                                 .setSearchTermsResId(R.string.reference)
-                                .build())
-                        .build())
+                                .build()
+                        )
+                        .build()
+                )
                 .addSafetySourcesGroup(
                     SafetySourcesGroup.Builder()
                         .setId("static")
@@ -140,7 +147,8 @@ class ParserConfigValidTest {
                                 .setTitleResId(R.string.reference)
                                 .setIntentAction("intent")
                                 .setProfile(SafetySource.PROFILE_PRIMARY)
-                                .build())
+                                .build()
+                        )
                         .addSafetySource(
                             SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_STATIC)
                                 .setId("static_all_optional")
@@ -151,8 +159,10 @@ class ParserConfigValidTest {
                                 .setIntentAction("intent")
                                 .setProfile(SafetySource.PROFILE_ALL)
                                 .setSearchTermsResId(R.string.reference)
-                                .build())
-                        .build())
+                                .build()
+                        )
+                        .build()
+                )
                 .addSafetySourcesGroup(
                     SafetySourcesGroup.Builder()
                         .setId("issue_only")
@@ -161,7 +171,8 @@ class ParserConfigValidTest {
                                 .setId("issue_only_barebone")
                                 .setPackageName("package")
                                 .setProfile(SafetySource.PROFILE_PRIMARY)
-                                .build())
+                                .build()
+                        )
                         .addSafetySource(
                             SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY)
                                 .setId("issue_only_all_optional")
@@ -178,14 +189,17 @@ class ParserConfigValidTest {
                                         addPackageCertificateHash("feed2")
                                     }
                                 }
-                                .build())
+                                .build()
+                        )
                         .addSafetySource(
                             SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY)
                                 .setId("id_test_abcxyz_ABCXYZ_012789")
                                 .setPackageName("package")
                                 .setProfile(SafetySource.PROFILE_PRIMARY)
-                                .build())
-                        .build())
+                                .build()
+                        )
+                        .build()
+                )
                 .addSafetySourcesGroup(
                     SafetySourcesGroup.Builder()
                         .setId("mixed")
@@ -198,21 +212,25 @@ class ParserConfigValidTest {
                                 .setSummaryResId(R.string.reference)
                                 .setIntentAction("intent")
                                 .setProfile(SafetySource.PROFILE_PRIMARY)
-                                .build())
+                                .build()
+                        )
                         .addSafetySource(
                             SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY)
                                 .setId("mixed_issue_only_barebone")
                                 .setPackageName("package")
                                 .setProfile(SafetySource.PROFILE_PRIMARY)
-                                .build())
+                                .build()
+                        )
                         .addSafetySource(
                             SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_STATIC)
                                 .setId("mixed_static_barebone")
                                 .setTitleResId(R.string.reference)
                                 .setIntentAction("intent")
                                 .setProfile(SafetySource.PROFILE_PRIMARY)
-                                .build())
-                        .build())
+                                .build()
+                        )
+                        .build()
+                )
                 .apply {
                     if (SdkLevel.isAtLeastU()) {
                         addSafetySourcesGroup(
@@ -226,8 +244,10 @@ class ParserConfigValidTest {
                                         .setTitleResId(R.string.reference)
                                         .setIntentAction("intent")
                                         .setProfile(SafetySource.PROFILE_PRIMARY)
-                                        .build())
-                                .build())
+                                        .build()
+                                )
+                                .build()
+                        )
                         addSafetySourcesGroup(
                             SafetySourcesGroup.Builder()
                                 .setType(SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_STATEFUL)
@@ -235,15 +255,18 @@ class ParserConfigValidTest {
                                 .setTitleResId(R.string.reference)
                                 .setSummaryResId(R.string.reference)
                                 .setStatelessIconType(
-                                    SafetySourcesGroup.STATELESS_ICON_TYPE_PRIVACY)
+                                    SafetySourcesGroup.STATELESS_ICON_TYPE_PRIVACY
+                                )
                                 .addSafetySource(
                                     SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_STATIC)
                                         .setId("stateful_all_optional_source")
                                         .setTitleResId(R.string.reference)
                                         .setIntentAction("intent")
                                         .setProfile(SafetySource.PROFILE_PRIMARY)
-                                        .build())
-                                .build())
+                                        .build()
+                                )
+                                .build()
+                        )
                         addSafetySourcesGroup(
                             SafetySourcesGroup.Builder()
                                 .setType(SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_STATELESS)
@@ -255,8 +278,10 @@ class ParserConfigValidTest {
                                         .setTitleResId(R.string.reference)
                                         .setIntentAction("intent")
                                         .setProfile(SafetySource.PROFILE_PRIMARY)
-                                        .build())
-                                .build())
+                                        .build()
+                                )
+                                .build()
+                        )
                         addSafetySourcesGroup(
                             SafetySourcesGroup.Builder()
                                 .setType(SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_STATELESS)
@@ -264,15 +289,18 @@ class ParserConfigValidTest {
                                 .setTitleResId(R.string.reference)
                                 .setSummaryResId(R.string.reference)
                                 .setStatelessIconType(
-                                    SafetySourcesGroup.STATELESS_ICON_TYPE_PRIVACY)
+                                    SafetySourcesGroup.STATELESS_ICON_TYPE_PRIVACY
+                                )
                                 .addSafetySource(
                                     SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_STATIC)
                                         .setId("stateless_all_optional_source")
                                         .setTitleResId(R.string.reference)
                                         .setIntentAction("intent")
                                         .setProfile(SafetySource.PROFILE_PRIMARY)
-                                        .build())
-                                .build())
+                                        .build()
+                                )
+                                .build()
+                        )
                         addSafetySourcesGroup(
                             SafetySourcesGroup.Builder()
                                 .setType(SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_HIDDEN)
@@ -282,8 +310,10 @@ class ParserConfigValidTest {
                                         .setId("hidden_barebone_source")
                                         .setPackageName("package")
                                         .setProfile(SafetySource.PROFILE_PRIMARY)
-                                        .build())
-                                .build())
+                                        .build()
+                                )
+                                .build()
+                        )
                         addSafetySourcesGroup(
                             SafetySourcesGroup.Builder()
                                 .setType(SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_HIDDEN)
@@ -291,14 +321,17 @@ class ParserConfigValidTest {
                                 .setTitleResId(R.string.reference)
                                 .setSummaryResId(R.string.reference)
                                 .setStatelessIconType(
-                                    SafetySourcesGroup.STATELESS_ICON_TYPE_PRIVACY)
+                                    SafetySourcesGroup.STATELESS_ICON_TYPE_PRIVACY
+                                )
                                 .addSafetySource(
                                     SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY)
                                         .setId("hidden_all_optional_source")
                                         .setPackageName("package")
                                         .setProfile(SafetySource.PROFILE_PRIMARY)
-                                        .build())
-                                .build())
+                                        .build()
+                                )
+                                .build()
+                        )
                     }
                 }
                 .build()

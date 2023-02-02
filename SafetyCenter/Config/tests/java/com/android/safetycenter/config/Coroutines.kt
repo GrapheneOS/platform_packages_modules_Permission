@@ -17,14 +17,14 @@
 package com.android.safetycenter.config
 
 import android.util.Log
+import java.time.Duration
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withTimeout
-import java.time.Duration
 
 /**
- * A class that facilitates interacting with coroutines.
- * TODO(b/228823159) Consolidate with other Coroutines helper functions
+ * A class that facilitates interacting with coroutines. TODO(b/228823159) Consolidate with other
+ * Coroutines helper functions
  */
 object Coroutines {
 

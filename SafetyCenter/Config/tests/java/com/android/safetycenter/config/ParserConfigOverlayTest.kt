@@ -113,7 +113,8 @@ class ParserConfigOverlayTest {
             .hasMessageThat()
             .isEqualTo(
                 "Resource name \"@com.android.safetycenter.config.tests:string/reference_overlay" +
-                    "\" in static-safety-source.summary missing or invalid")
+                    "\" in static-safety-source.summary missing or invalid"
+            )
     }
 
     companion object {
