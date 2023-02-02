@@ -31,6 +31,7 @@ import android.safetycenter.cts.testing.TestNotificationListener
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
+import com.android.safetycenter.pendingintents.PendingIntentSender
 import com.android.safetycenter.testing.Coroutines.TIMEOUT_SHORT
 import com.android.safetycenter.testing.SafetyCenterActivityLauncher.executeBlockAndExit
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.clearAllSafetySourceDataForTestsWithPermission
@@ -747,7 +748,7 @@ class SafetyCenterNotificationTest {
         val contentIntent = notificationWithChannel.statusBarNotification.notification.contentIntent
 
         executeBlockAndExit(
-            launchActivity = { contentIntent.send() },
+            launchActivity = { PendingIntentSender.send(contentIntent) },
             block = { waitSourceIssueDisplayed(safetySourceTestData.recommendationDeviceIssue) }
         )
     }
@@ -770,7 +771,7 @@ class SafetyCenterNotificationTest {
         val contentIntent = notificationWithChannel.statusBarNotification.notification.contentIntent
 
         executeBlockAndExit(
-            launchActivity = { contentIntent.send() },
+            launchActivity = { PendingIntentSender.send(contentIntent) },
             block = {
                 waitSourceIssueDisplayed(safetySourceTestData.criticalResolvingGeneralIssue)
                 waitSourceIssueDisplayed(safetySourceTestData.recommendationGeneralIssue)
@@ -784,7 +785,7 @@ class SafetyCenterNotificationTest {
 
         private fun sendActionPendingIntentAndWaitWithPermission(action: Notification.Action) {
             callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
-                action.actionIntent.send()
+                PendingIntentSender.send(action.actionIntent)
                 // Sending the action's PendingIntent above is asynchronous and we need to wait for
                 // it to be received by the fake receiver below.
                 SafetySourceReceiver.receiveResolveAction()

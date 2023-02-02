@@ -201,9 +201,10 @@
         <receiver
             android:name="com.android.permissioncontroller.permission.service.v34.SafetyLabelChangesJobService$Receiver"
             android:enabled="@bool/is_at_least_u"
-            android:exported="false">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="com.android.permissioncontroller.action.SET_UP_SAFETY_LABEL_CHANGES_JOB" />
             </intent-filter>
         </receiver>
 

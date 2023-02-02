@@ -19,7 +19,7 @@ package com.android.permissioncontroller.permission.ui.model
 import android.Manifest
 import android.app.Application
 import android.content.Intent
-import android.healthconnect.HealthPermissions.HEALTH_PERMISSION_GROUP
+import android.health.connect.HealthPermissions.HEALTH_PERMISSION_GROUP
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.AndroidViewModel

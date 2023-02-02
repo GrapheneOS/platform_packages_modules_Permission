@@ -256,6 +256,14 @@ object SafetyCenterFlags {
             DurationParser()
         )
 
+    /** Flag for allowlisting additional certificates for a given package. */
+    private val allowedAdditionalPackageCertsFlag =
+        Flag(
+            "safety_center_additional_allow_package_certs",
+            defaultValue = emptyMap(),
+            MapParser(StringParser(), SetParser(StringParser(), delimiter = "|"))
+        )
+
     /**
      * Flag that determines whether background refreshes require charging in
      * [SafetyCenterBackgroundRefreshJobService]. See [JobInfo.setRequiresCharging] for details.
@@ -280,6 +288,7 @@ object SafetyCenterFlags {
             resurfaceIssueMaxCountsFlag,
             resurfaceIssueDelaysFlag,
             issueCategoryAllowlistsFlag,
+            allowedAdditionalPackageCertsFlag,
             backgroundRefreshDeniedSourcesFlag,
             allowStatsdLoggingInTestsFlag,
             qsTileComponentSettingFlag,
@@ -337,6 +346,8 @@ object SafetyCenterFlags {
 
     /** A property that allows getting and setting the [issueCategoryAllowlistsFlag]. */
     var issueCategoryAllowlists: Map<Int, Set<String>> by issueCategoryAllowlistsFlag
+
+    var allowedAdditionalPackageCerts: Map<String, Set<String>> by allowedAdditionalPackageCertsFlag
 
     /** A property that allows getting and setting the [backgroundRefreshDeniedSourcesFlag]. */
     var backgroundRefreshDeniedSources: Set<String> by backgroundRefreshDeniedSourcesFlag

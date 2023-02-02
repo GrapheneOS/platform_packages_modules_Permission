@@ -19,16 +19,19 @@ package com.android.permissioncontroller.permission.ui.model.v34
 import android.Manifest
 import android.app.Activity
 import android.app.Application
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.Intent.ACTION_MANAGE_APP_PERMISSIONS
-import android.content.Intent.ACTION_MANAGE_PERMISSIONS
 import android.content.Intent.EXTRA_PACKAGE_NAME
 import android.content.Intent.EXTRA_USER
+import android.net.Uri
 import android.os.Build
 import android.os.Process
 import android.os.UserHandle
 import android.provider.DeviceConfig
+import android.util.Log
 import androidx.annotation.RequiresApi
+import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.data.SinglePermGroupPackagesUiInfoLiveData
 import com.android.permissioncontroller.permission.data.SmartAsyncMediatorLiveData
 import com.android.permissioncontroller.permission.data.v34.AppDataSharingUpdatesLiveData
@@ -37,6 +40,7 @@ import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGr
 import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo.PermGrantState.PERMS_ALLOWED_FOREGROUND_ONLY
 import com.android.permissioncontroller.permission.model.v34.AppDataSharingUpdate.Companion.LOCATION_CATEGORY
 import com.android.permissioncontroller.permission.model.v34.DataSharingUpdateType
+import com.android.settingslib.HelpUtils
 import kotlinx.coroutines.Job
 
 /** View model for data sharing updates UI. */
@@ -49,8 +53,18 @@ class AppDataSharingUpdatesViewModel(app: Application) {
 
     /** Opens the Safety Label Help Center web page. */
     fun openSafetyLabelsHelpCenterPage(activity: Activity) {
-        // TODO(b/263838996): Link to Safety Label Help Center.
-        activity.startActivity(Intent(ACTION_MANAGE_PERMISSIONS))
+        val helpUrlString = activity.getString(R.string.data_sharing_help_center_link)
+        // Add in some extra locale query parameters
+        val fullUri = HelpUtils.uriWithAddedParameters(activity, Uri.parse(helpUrlString))
+        val intent = Intent(Intent.ACTION_VIEW, fullUri).apply {
+            setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)
+        }
+        try {
+            activity.startActivity(intent)
+        } catch (e: ActivityNotFoundException) {
+            // TODO(b/266755891): show snackbar when help center intent unable to be opened
+            Log.w(LOG_TAG, "Unable to open help center URL.", e)
+        }
     }
 
     /** Start the App Permissions fragment for the provided packageName and userHandle. */
@@ -162,6 +176,8 @@ class AppDataSharingUpdatesViewModel(app: Application) {
 
     /** Companion object for [AppDataSharingUpdatesViewModel]. */
     companion object {
+        private val LOG_TAG = AppDataSharingUpdatesViewModel::class.java.simpleName
+
         private const val PLACEHOLDER_PACKAGE_NAME_1 = "com.android.systemui"
         private const val PLACEHOLDER_PACKAGE_NAME_2 = "com.android.bluetooth"
         private const val PLACEHOLDER_SAFETY_LABEL_UPDATES_FLAG =

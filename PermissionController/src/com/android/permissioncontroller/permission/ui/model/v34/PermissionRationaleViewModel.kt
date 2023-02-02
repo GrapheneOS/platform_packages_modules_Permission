@@ -18,8 +18,10 @@ package com.android.permissioncontroller.permission.ui.model.v34
 
 import android.app.Activity
 import android.app.Application
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Process
@@ -32,6 +34,7 @@ import com.android.permission.safetylabel.DataType
 import com.android.permission.safetylabel.DataTypeConstants
 import com.android.permission.safetylabel.SafetyLabel
 import com.android.permissioncontroller.Constants
+import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.data.SafetyLabelInfoLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.data.get
@@ -43,6 +46,7 @@ import com.android.permissioncontroller.permission.ui.v34.PermissionRationaleAct
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getAppStoreIntent
 import com.android.permissioncontroller.permission.utils.SafetyLabelPermissionMapping
+import com.android.settingslib.HelpUtils
 
 /**
  * [ViewModel] for the [PermissionRationaleActivity]. Gets all information required safety label and
@@ -196,8 +200,18 @@ class PermissionRationaleViewModel(
      * @param activity The current activity
      */
     fun sendToLearnMore(activity: Activity) {
-        // TODO(b/259963582): link to safety label help center article
-        Log.d(LOG_TAG, "Link to safety label help center not provided")
+        val helpUrlString = activity.getString(R.string.data_sharing_help_center_link)
+        // Add in some extra locale query parameters
+        val fullUri = HelpUtils.uriWithAddedParameters(activity, Uri.parse(helpUrlString))
+        val intent = Intent(Intent.ACTION_VIEW, fullUri).apply {
+            setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)
+        }
+        try {
+            activity.startActivity(intent)
+        } catch (e: ActivityNotFoundException) {
+            // TODO(b/266755891): show snackbar when help center intent unable to be opened
+            Log.w(LOG_TAG, "Unable to open help center URL.", e)
+        }
     }
 
     private fun startAppPermissionFragment(activity: Activity, groupName: String) {

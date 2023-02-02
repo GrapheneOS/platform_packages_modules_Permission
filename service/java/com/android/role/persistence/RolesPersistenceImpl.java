@@ -19,6 +19,7 @@ package com.android.role.persistence;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.content.ApexEnvironment;
+import android.os.FileUtils;
 import android.os.UserHandle;
 import android.util.ArrayMap;
 import android.util.ArraySet;
@@ -26,6 +27,7 @@ import android.util.AtomicFile;
 import android.util.Log;
 import android.util.Xml;
 
+import com.android.internal.annotations.VisibleForTesting;
 import com.android.permission.persistence.IoUtils;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -54,6 +56,7 @@ public class RolesPersistenceImpl implements RolesPersistence {
     private static final String APEX_MODULE_NAME = "com.android.permission";
 
     private static final String ROLES_FILE_NAME = "roles.xml";
+    private static final String ROLES_RESERVE_COPY_FILE_NAME = ROLES_FILE_NAME + ".reservecopy";
 
     private static final String TAG_ROLES = "roles";
     private static final String TAG_ROLE = "role";
@@ -74,8 +77,19 @@ public class RolesPersistenceImpl implements RolesPersistence {
         } catch (FileNotFoundException e) {
             Log.i(LOG_TAG, "roles.xml not found");
             return null;
-        } catch (XmlPullParserException | IOException e) {
-            throw new IllegalStateException("Failed to read roles.xml: " + file , e);
+        } catch (Exception e) {
+            File reserveFile = getReserveCopyFile(user);
+            Log.wtf(LOG_TAG, "Reading from reserve copy: " + reserveFile, e);
+            try (FileInputStream inputStream = new AtomicFile(reserveFile).openRead()) {
+                XmlPullParser parser = Xml.newPullParser();
+                parser.setInput(inputStream, null);
+                return parseXml(parser);
+            } catch (Exception exceptionReadingReserveFile) {
+                Log.e(LOG_TAG, "Failed to read reserve copy: " + reserveFile,
+                        exceptionReadingReserveFile);
+                // Reserve copy failed, rethrow the original exception wrapped as runtime.
+                throw new IllegalStateException("Failed to read roles.xml: " + file , e);
+            }
         }
     }
 
@@ -147,6 +161,9 @@ public class RolesPersistenceImpl implements RolesPersistence {
 
     @Override
     public void writeForUser(@NonNull RolesState roles, @NonNull UserHandle user) {
+        File reserveFile = getReserveCopyFile(user);
+        reserveFile.delete();
+
         File file = getFile(user);
         AtomicFile atomicFile = new AtomicFile(file);
         FileOutputStream outputStream = null;
@@ -166,8 +183,17 @@ public class RolesPersistenceImpl implements RolesPersistence {
             Log.wtf(LOG_TAG, "Failed to write roles.xml, restoring backup: " + file,
                     e);
             atomicFile.failWrite(outputStream);
+            return;
         } finally {
             IoUtils.closeQuietly(outputStream);
+        }
+
+        try (FileInputStream in = new FileInputStream(file);
+             FileOutputStream out = new FileOutputStream(reserveFile)) {
+            FileUtils.copy(in, out);
+            out.getFD().sync();
+        } catch (Exception e) {
+            Log.e(LOG_TAG, "Failed to write reserve copy: " + reserveFile, e);
         }
     }
 
@@ -207,12 +233,21 @@ public class RolesPersistenceImpl implements RolesPersistence {
     @Override
     public void deleteForUser(@NonNull UserHandle user) {
         getFile(user).delete();
+        getReserveCopyFile(user).delete();
     }
 
+    @VisibleForTesting
     @NonNull
-    private static File getFile(@NonNull UserHandle user) {
+    static File getFile(@NonNull UserHandle user) {
         ApexEnvironment apexEnvironment = ApexEnvironment.getApexEnvironment(APEX_MODULE_NAME);
         File dataDirectory = apexEnvironment.getDeviceProtectedDataDirForUser(user);
         return new File(dataDirectory, ROLES_FILE_NAME);
+    }
+
+    @NonNull
+    private static File getReserveCopyFile(@NonNull UserHandle user) {
+        ApexEnvironment apexEnvironment = ApexEnvironment.getApexEnvironment(APEX_MODULE_NAME);
+        File dataDirectory = apexEnvironment.getDeviceProtectedDataDirForUser(user);
+        return new File(dataDirectory, ROLES_RESERVE_COPY_FILE_NAME);
     }
 }

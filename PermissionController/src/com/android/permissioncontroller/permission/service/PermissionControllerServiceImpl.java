@@ -680,10 +680,16 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
                             oneTimeGrantedPermissions.toArray(new String[0]));
                 }
                 for (String permissionName : oneTimeGrantedPermissions) {
-                    // We only reset the USER_SET flag if the permission was granted.
+                    // We only reset the USER_SET and REVOKED_COMPAT flags if the permission was
+                    // granted.
                     Permission permission = group.getPermission(permissionName);
                     if (permission != null) {
                         permission.setUserSet(false);
+                        if (!permission.isGranted() && permission.isRevokedCompat()) {
+                            // If we revoked the permission, but the Revoked Compat flag is set,
+                            // reset it
+                            permission.setRevokedCompat(false);
+                        }
                     }
                 }
                 if (bgGroup != null) {
