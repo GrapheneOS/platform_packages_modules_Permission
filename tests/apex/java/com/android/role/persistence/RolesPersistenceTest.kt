@@ -24,6 +24,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.android.dx.mockito.inline.extended.ExtendedMockito.mockitoSession
 import com.google.common.truth.Truth.assertThat
+import java.io.File
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -35,7 +36,6 @@ import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations.initMocks
 import org.mockito.MockitoSession
 import org.mockito.quality.Strictness
-import java.io.File
 
 @RunWith(AndroidJUnit4::class)
 class RolesPersistenceTest {
@@ -44,8 +44,7 @@ class RolesPersistenceTest {
     private lateinit var mockDataDirectory: File
 
     private lateinit var mockitoSession: MockitoSession
-    @Mock
-    lateinit var apexEnvironment: ApexEnvironment
+    @Mock lateinit var apexEnvironment: ApexEnvironment
 
     private val persistence = RolesPersistence.createInstance()
     private val state = RolesState(1, "packagesHash", mapOf("role" to setOf("holder1", "holder2")))
@@ -60,10 +59,11 @@ class RolesPersistenceTest {
     @Before
     fun mockApexEnvironment() {
         initMocks(this)
-        mockitoSession = mockitoSession()
-            .mockStatic(ApexEnvironment::class.java)
-            .strictness(Strictness.LENIENT)
-            .startMocking()
+        mockitoSession =
+            mockitoSession()
+                .mockStatic(ApexEnvironment::class.java)
+                .strictness(Strictness.LENIENT)
+                .startMocking()
         `when`(ApexEnvironment.getApexEnvironment(eq(APEX_MODULE_NAME))).thenReturn(apexEnvironment)
         `when`(apexEnvironment.getDeviceProtectedDataDirForUser(any(UserHandle::class.java))).then {
             File(mockDataDirectory, it.arguments[0].toString()).also { it.mkdirs() }
@@ -87,8 +87,8 @@ class RolesPersistenceTest {
     fun testWriteCorruptReadFromReserveCopy() {
         persistence.writeForUser(state, user)
         // Corrupt the primary file.
-        RolesPersistenceImpl.getFile(user).writeText(
-                "<roles version=\"-1\"><role name=\"com.foo.bar\"><holder")
+        RolesPersistenceImpl.getFile(user)
+            .writeText("<roles version=\"-1\"><role name=\"com.foo.bar\"><holder")
         val persistedState = persistence.readForUser(user)
 
         checkPersistedState(persistedState!!)
