@@ -200,6 +200,8 @@ public final class SafetyCenterDataFactory {
         List<SafetyCenterIssue> safetyCenterIssues = new ArrayList<>();
         List<SafetyCenterIssue> safetyCenterDismissedIssues = new ArrayList<>();
         SafetySourceIssueInfo topNonDismissedIssueInfo = null;
+        int numTipIssues = 0;
+        int numAutomaticIssues = 0;
 
         for (int i = 0; i < issuesInfo.size(); i++) {
             SafetySourceIssueInfo issueInfo = issuesInfo.get(i);
@@ -208,6 +210,7 @@ public final class SafetyCenterDataFactory {
                             issueInfo.getSafetySourceIssue(),
                             issueInfo.getSafetySourcesGroup(),
                             issueInfo.getSafetyCenterIssueKey());
+
             if (mSafetyCenterIssueDismissalRepository.isIssueDismissed(
                     issueInfo.getSafetyCenterIssueKey(),
                     issueInfo.getSafetySourceIssue().getSeverityLevel())) {
@@ -219,6 +222,11 @@ public final class SafetyCenterDataFactory {
                                 issueInfo.getSafetySourceIssue().getSeverityLevel()));
                 if (topNonDismissedIssueInfo == null) {
                     topNonDismissedIssueInfo = issueInfo;
+                }
+                if (isTip(issueInfo.getSafetySourceIssue())) {
+                    numTipIssues++;
+                } else if (isAutomatic(issueInfo.getSafetySourceIssue())) {
+                    numAutomaticIssues++;
                 }
             }
         }
@@ -232,10 +240,12 @@ public final class SafetyCenterDataFactory {
                                         refreshStatus,
                                         safetyCenterOverallState.hasSettingsToReview()),
                                 getSafetyCenterStatusSummary(
-                                        safetyCenterOverallState.getOverallSeverityLevel(),
+                                        safetyCenterOverallState,
+                                        topNonDismissedIssueInfo,
                                         refreshStatus,
-                                        safetyCenterIssues.size(),
-                                        safetyCenterOverallState.hasSettingsToReview()))
+                                        numTipIssues,
+                                        numAutomaticIssues,
+                                        safetyCenterIssues.size()))
                         .setSeverityLevel(safetyCenterOverallState.getOverallSeverityLevel())
                         .setRefreshStatus(refreshStatus)
                         .build();
@@ -565,10 +575,14 @@ public final class SafetyCenterDataFactory {
                                 mSafetySourceDataRepository.getSafetySourceDataInternal(key));
                 boolean defaultEntryDueToQuietMode = isUserManaged && !isManagedUserRunning;
                 if (safetySourceStatus == null || defaultEntryDueToQuietMode) {
+                    int severityLevel =
+                            defaultEntryDueToQuietMode
+                                    ? SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED
+                                    : SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN;
                     return toDefaultSafetyCenterEntry(
                             safetySource,
                             safetySource.getPackageName(),
-                            SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN,
+                            severityLevel,
                             SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION,
                             userId,
                             isUserManaged,
@@ -762,11 +776,10 @@ public final class SafetyCenterDataFactory {
         if (staticEntry == null) {
             return;
         }
-        boolean isQuietModeEnabled = isUserManaged && !isManagedUserRunning;
         boolean hasError =
                 mSafetySourceDataRepository.sourceHasError(
                         SafetySourceKey.of(safetySource.getId(), userId));
-        if (isQuietModeEnabled || hasError) {
+        if (hasError) {
             safetyCenterOverallState.addEntryOverallSeverityLevel(
                     SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN);
         }
@@ -1092,33 +1105,55 @@ public final class SafetyCenterDataFactory {
 
     @NonNull
     private String getSafetyCenterStatusSummary(
-            @SafetyCenterStatus.OverallSeverityLevel int overallSeverityLevel,
+            @NonNull SafetyCenterOverallState safetyCenterOverallState,
+            @Nullable SafetySourceIssueInfo topNonDismissedIssue,
             @SafetyCenterStatus.RefreshStatus int refreshStatus,
-            int numberOfIssues,
-            boolean hasSettingsToReview) {
+            int numTipIssues,
+            int numAutomaticIssues,
+            int numIssues) {
         String refreshStatusSummary = getSafetyCenterRefreshStatusSummary(refreshStatus);
         if (refreshStatusSummary != null) {
             return refreshStatusSummary;
         }
+        int overallSeverityLevel = safetyCenterOverallState.getOverallSeverityLevel();
         switch (overallSeverityLevel) {
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN:
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK:
-                if (numberOfIssues == 0) {
-                    if (hasSettingsToReview) {
+                if (topNonDismissedIssue == null) {
+                    if (safetyCenterOverallState.hasSettingsToReview()) {
                         return mSafetyCenterResourcesContext.getStringByName(
                                 "overall_severity_level_ok_review_summary");
                     }
                     return mSafetyCenterResourcesContext.getStringByName(
                             "overall_severity_level_ok_summary");
+                } else if (isTip(topNonDismissedIssue.getSafetySourceIssue())) {
+                    return mSafetyCenterResourcesContext.getStringByName(
+                            "overall_severity_level_tip_summary", numTipIssues);
+
+                } else if (isAutomatic(topNonDismissedIssue.getSafetySourceIssue())) {
+                    return mSafetyCenterResourcesContext.getStringByName(
+                            "overall_severity_level_action_taken_summary", numAutomaticIssues);
                 }
                 // Fall through.
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_RECOMMENDATION:
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING:
-                return getIcuPluralsString("overall_severity_n_alerts_summary", numberOfIssues);
+                return getIcuPluralsString("overall_severity_n_alerts_summary", numIssues);
         }
 
         Log.w(TAG, "Unexpected SafetyCenterStatus.OverallSeverityLevel: " + overallSeverityLevel);
         return "";
+    }
+
+    private static boolean isTip(@NonNull SafetySourceIssue safetySourceIssue) {
+        return SdkLevel.isAtLeastU()
+                && safetySourceIssue.getIssueActionability()
+                        == SafetySourceIssue.ISSUE_ACTIONABILITY_TIP;
+    }
+
+    private static boolean isAutomatic(@NonNull SafetySourceIssue safetySourceIssue) {
+        return SdkLevel.isAtLeastU()
+                && safetySourceIssue.getIssueActionability()
+                        == SafetySourceIssue.ISSUE_ACTIONABILITY_AUTOMATIC;
     }
 
     @NonNull

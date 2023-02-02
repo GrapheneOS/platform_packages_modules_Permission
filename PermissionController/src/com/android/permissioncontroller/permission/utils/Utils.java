@@ -41,7 +41,7 @@ import static android.content.pm.PackageManager.FLAG_PERMISSION_RESTRICTION_UPGR
 import static android.content.pm.PackageManager.FLAG_PERMISSION_USER_SENSITIVE_WHEN_DENIED;
 import static android.content.pm.PackageManager.FLAG_PERMISSION_USER_SENSITIVE_WHEN_GRANTED;
 import static android.content.pm.PackageManager.MATCH_SYSTEM_ONLY;
-import static android.healthconnect.HealthConnectManager.ACTION_MANAGE_HEALTH_PERMISSIONS;
+import static android.health.connect.HealthConnectManager.ACTION_MANAGE_HEALTH_PERMISSIONS;
 import static android.os.UserHandle.myUserId;
 
 import static com.android.permissioncontroller.Constants.EXTRA_SESSION_ID;

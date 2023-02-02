@@ -22,7 +22,7 @@ import android.app.AppOpsManager.OP_FLAG_TRUSTED_PROXIED
 import android.app.AppOpsManager.OP_FLAG_TRUSTED_PROXY
 import android.app.AppOpsManager.PackageOps
 import android.app.AppOpsManager.opToPermission
-import android.healthconnect.HealthPermissions.HEALTH_PERMISSION_GROUP
+import android.health.connect.HealthPermissions.HEALTH_PERMISSION_GROUP
 import android.os.UserHandle
 import com.android.permissioncontroller.permission.utils.PermissionMapping.getGroupOfPlatformPermission
 

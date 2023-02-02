@@ -82,7 +82,7 @@
             <static-safety-source
                 id="AndroidHealthConnect"
                 profile="primary_profile_only"
-                intentAction="android.healthconnect.action.HEALTH_HOME_SETTINGS"
+                intentAction="android.health.connect.action.HEALTH_HOME_SETTINGS"
                 title="@com.android.safetycenter.resources:string/health_connect_title"
                 summary="@com.android.safetycenter.resources:string/health_connect_summary"
                 searchTerms="@com.android.safetycenter.resources:string/health_connect_search_terms"/>
