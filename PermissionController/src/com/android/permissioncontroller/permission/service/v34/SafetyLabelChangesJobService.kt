@@ -34,6 +34,7 @@ import android.os.UserHandle
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
+import com.android.permission.safetylabel.DataCategoryConstants.CATEGORY_LOCATION
 import com.android.permission.safetylabel.SafetyLabel as AppMetadataSafetyLabel
 import com.android.permissioncontroller.Constants.PERIODIC_SAFETY_LABEL_CHANGES_JOB_ID
 import com.android.permissioncontroller.Constants.PERMISSION_REMINDER_CHANNEL_ID
@@ -43,6 +44,11 @@ import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.data.LightInstallSourceInfoLiveData
 import com.android.permissioncontroller.permission.data.SinglePermGroupPackagesUiInfoLiveData
+import com.android.permissioncontroller.permission.data.v34.AppDataSharingUpdatesLiveData
+import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo
+import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo.PermGrantState.PERMS_ALLOWED_ALWAYS
+import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo.PermGrantState.PERMS_ALLOWED_FOREGROUND_ONLY
+import com.android.permissioncontroller.permission.model.v34.AppDataSharingUpdate
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.Utils.getSystemServiceSafe
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory
@@ -64,9 +70,10 @@ import kotlinx.coroutines.yield
 @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
 class SafetyLabelChangesJobService : JobService() {
     private var mainJobTask: Job? = null
+    private val context = PermissionControllerApplication.get()
 
     class Receiver : BroadcastReceiver() {
-        override fun onReceive(context: Context, intent: Intent) {
+        override fun onReceive(receiverContext: Context, intent: Intent) {
             if (DEBUG) {
                 Log.d(LOG_TAG, "Received broadcast with intent action '${intent.action}'")
             }
@@ -78,7 +85,7 @@ class SafetyLabelChangesJobService : JobService() {
                 intent.action != ACTION_SET_UP_SAFETY_LABEL_CHANGES_JOB) {
                 return
             }
-            schedulePeriodicJob(context)
+            schedulePeriodicJob(receiverContext)
         }
     }
 
@@ -128,7 +135,6 @@ class SafetyLabelChangesJobService : JobService() {
     }
 
     private suspend fun initializeSafetyLabels() {
-        val context = PermissionControllerApplication.get() as Context
         val historyFile = AppsSafetyLabelHistoryPersistence.getSafetyLabelHistoryFile(context)
 
         val packageNamesWithPersistedSafetyLabels: Set<String> =
@@ -173,10 +179,19 @@ class SafetyLabelChangesJobService : JobService() {
             .getInitializedValue()
             .keys
 
+    private suspend fun getAllPackagesGrantedLocation(): Set<Pair<String, UserHandle>> =
+        SinglePermGroupPackagesUiInfoLiveData[Manifest.permission_group.LOCATION]
+            .getInitializedValue()
+            .filter { (packageKey, appPermGroupUiInfo) -> appPermGroupUiInfo.isPermissionGranted() }
+            .keys
+
+    private fun AppPermGroupUiInfo.isPermissionGranted() =
+        permGrantState in setOf(PERMS_ALLOWED_ALWAYS, PERMS_ALLOWED_FOREGROUND_ONLY)
+
     private suspend fun isPreinstalledPackage(pkg: Pair<String, UserHandle>): Boolean =
         LightInstallSourceInfoLiveData[pkg].getInitializedValue().installingPackageName == null
 
-    private fun postSafetyLabelChangedNotification() {
+    private suspend fun postSafetyLabelChangedNotification() {
         if (hasDataSharingChanged()) {
             Log.i(LOG_TAG, "Showing notification: data sharing has changed")
             showNotification()
@@ -198,10 +213,30 @@ class SafetyLabelChangesJobService : JobService() {
         return true
     }
 
-    private fun hasDataSharingChanged(): Boolean {
-        // TODO(b/261663886): Check whether data sharing has changed
-        return true
+    private suspend fun hasDataSharingChanged(): Boolean {
+        val appDataSharingUpdates = AppDataSharingUpdatesLiveData(context).getInitializedValue()
+        val packageNamesWithLocationDataSharingUpdates: List<String> =
+            appDataSharingUpdates
+                .filter { it.containsLocationCategoryUpdate() }
+                .map { it.packageName }
+        val packageNamesWithLocationGranted: List<String> =
+            getAllPackagesGrantedLocation().map { (packageName, user) -> packageName }
+
+        val packageNamesWithLocationGrantedAndUpdates =
+            packageNamesWithLocationDataSharingUpdates.intersect(packageNamesWithLocationGranted)
+        if (DEBUG) {
+            Log.i(
+                LOG_TAG,
+                "Checking whether data sharing has changed. Packages with location" +
+                    " updates: $packageNamesWithLocationDataSharingUpdates; Packages with" +
+                    " location permission granted: $packageNamesWithLocationGranted")
+        }
+
+        return packageNamesWithLocationGrantedAndUpdates.isNotEmpty()
     }
+
+    private fun AppDataSharingUpdate.containsLocationCategoryUpdate() =
+        categorySharingUpdates[CATEGORY_LOCATION] != null
 
     private fun showNotification() {
         val context = PermissionControllerApplication.get() as Context
