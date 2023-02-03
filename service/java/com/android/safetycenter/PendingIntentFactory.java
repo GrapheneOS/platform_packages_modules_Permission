@@ -244,7 +244,6 @@ final class PendingIntentFactory {
         }
 
         if (intentResolves(packageContext, intent)) {
-            // TODO(b/265954624): Write tests for this code path.
             return intent;
         }
 
