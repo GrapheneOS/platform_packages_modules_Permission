@@ -235,7 +235,7 @@ class SafetyCenterTestConfigs(private val context: Context) {
         get() =
             SafetyCenterConfig.Builder()
                 .addSafetySourcesGroup(
-                    safetySourcesGroupBuilder(PRIVACY_SOURCES_GROUP_ID)
+                    safetySourcesGroupBuilder(ANDROID_PRIVACY_SOURCES_GROUP_ID)
                         .addSafetySource(dynamicSafetySource(PRIVACY_SOURCE_ID_1))
                         .addSafetySource(dynamicSafetySource(PRIVACY_SOURCE_ID_2))
                         .build()
@@ -966,6 +966,6 @@ class SafetyCenterTestConfigs(private val context: Context) {
          * ID of a [SafetySourcesGroup] provided by [privacySubpageConfig], to replicate the privacy
          * sources group.
          */
-        const val PRIVACY_SOURCES_GROUP_ID = "AndroidPrivacySources"
+        const val ANDROID_PRIVACY_SOURCES_GROUP_ID = "AndroidPrivacySources"
     }
 }

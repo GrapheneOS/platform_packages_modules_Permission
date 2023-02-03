@@ -31,9 +31,7 @@ import com.android.permissioncontroller.safetycenter.ui.model.PrivacyControlsVie
 
 import java.util.Map;
 
-/**
- * Fragment that shows several privacy toggle controls, alongside a link to location settings
- */
+/** Fragment that shows several privacy toggle controls, alongside a link to location settings */
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 public final class PrivacyControlsFragment extends PreferenceFragmentCompat {
 
@@ -51,8 +49,8 @@ public final class PrivacyControlsFragment extends PreferenceFragmentCompat {
         mRootKey = rootKey;
         mPrefsSet = false;
 
-        PrivacyControlsViewModelFactory factory = new PrivacyControlsViewModelFactory(
-                getActivity().getApplication());
+        PrivacyControlsViewModelFactory factory =
+                new PrivacyControlsViewModelFactory(getActivity().getApplication());
         mViewModel = new ViewModelProvider(this, factory).get(PrivacyControlsViewModel.class);
         mViewModel.getControlStateLiveData().observe(this, this::setPreferences);
     }
@@ -63,34 +61,22 @@ public final class PrivacyControlsFragment extends PreferenceFragmentCompat {
             setPreferencesFromResource(R.xml.privacy_controls, mRootKey);
             mPrefsSet = true;
         }
-        setSwitchPreference(prefStates.get(Pref.MIC), Pref.MIC);
-        setSwitchPreference(prefStates.get(Pref.CAMERA), Pref.CAMERA);
-        setSwitchPreference(prefStates.get(Pref.CLIPBOARD), Pref.CLIPBOARD);
-        setSwitchPreference(prefStates.get(Pref.SHOW_PASSWORD), Pref.SHOW_PASSWORD);
-        findPreference(Pref.LOCATION.getKey()).setOnPreferenceClickListener((v) -> {
-            mViewModel.handlePrefClick(this, Pref.LOCATION, null);
-            return true;
-        });
+
+        setSwitchPreference(prefStates, Pref.MIC);
+        setSwitchPreference(prefStates, Pref.CAMERA);
+        setSwitchPreference(prefStates, Pref.CLIPBOARD);
+        setSwitchPreference(prefStates, Pref.SHOW_PASSWORD);
+
+        findPreference(Pref.LOCATION.getKey())
+                .setOnPreferenceClickListener(
+                        (v) -> {
+                            mViewModel.handlePrefClick(this, Pref.LOCATION, null);
+                            return true;
+                        });
     }
 
-    private void setSwitchPreference(PrefState prefState, Pref prefType) {
+    private void setSwitchPreference(Map<Pref, PrefState> prefStates, Pref prefType) {
         ClickableDisabledSwitchPreference preference = findPreference(prefType.getKey());
-
-        preference.setVisible(prefState.getVisible());
-        preference.setChecked(prefState.getChecked());
-        preference.setAppearDisabled(prefState.getAdmin() != null);
-        preference.setOnPreferenceClickListener((v) -> {
-            mViewModel.handlePrefClick(this, prefType, prefState.getAdmin());
-            return true;
-        });
-        if (prefState.getAdmin() != null && prefState.getChecked()) {
-            preference.setSummary(R.string.enabled_by_admin);
-        } else if (prefState.getAdmin() != null) {
-            preference.setSummary(R.string.disabled_by_admin);
-        } else if (prefType.equals(Pref.MIC)) {
-            preference.setSummary(R.string.mic_toggle_description);
-        } else if (prefType.equals(Pref.CAMERA)) {
-            preference.setSummary(R.string.perm_toggle_description);
-        }
+        preference.setupState(prefStates.get(prefType), prefType, mViewModel, this);
     }
 }
