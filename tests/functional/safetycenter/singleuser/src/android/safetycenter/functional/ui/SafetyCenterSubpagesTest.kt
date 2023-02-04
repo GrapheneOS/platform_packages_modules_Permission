@@ -22,7 +22,6 @@ import android.os.Bundle
 import android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCES_GROUP_ID
 import android.safetycenter.SafetySourceData
 import android.safetycenter.config.SafetySource
-import android.safetycenter.config.SafetySourcesGroup
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
@@ -182,7 +181,7 @@ class SafetyCenterSubpagesTest {
                 context.getString(lastGroup.summaryResId)
             )
 
-            openSubpageAndExit(lastGroup) {
+            openPageAndExit(context.getString(lastGroup.titleResId)) {
                 // Verifying that the subpage is opened with collapsing toolbar title
                 waitDisplayed(By.desc(context.getString(lastGroup.titleResId)))
                 waitAllTextNotDisplayed(context.getString(lastGroup.summaryResId))
@@ -238,7 +237,7 @@ class SafetyCenterSubpagesTest {
                 context.getString(firstGroup.summaryResId)
             )
 
-            openSubpageAndExit(firstGroup) {
+            openPageAndExit(context.getString(firstGroup.titleResId)) {
                 // Verifying that only collapsing toolbar title is displayed for subpage
                 waitDisplayed(By.desc(context.getString(firstGroup.titleResId)))
                 waitAllTextNotDisplayed(context.getString(firstGroup.summaryResId))
@@ -286,7 +285,7 @@ class SafetyCenterSubpagesTest {
 
         context.launchSafetyCenterActivity {
             // Verifying that subpage entries of the first group are displayed
-            openSubpageAndExit(firstGroup) {
+            openPageAndExit(context.getString(firstGroup.titleResId)) {
                 waitAllTextNotDisplayed(context.getString(firstGroup.summaryResId))
                 waitAllTextDisplayed(
                     SAFETY_SOURCE_1_TITLE,
@@ -297,7 +296,7 @@ class SafetyCenterSubpagesTest {
             }
 
             // Verifying that subpage entries of the second group are displayed
-            openSubpageAndExit(secondGroup) {
+            openPageAndExit(context.getString(secondGroup.titleResId)) {
                 waitAllTextNotDisplayed(context.getString(secondGroup.summaryResId))
                 waitAllTextDisplayed(SAFETY_SOURCE_3_TITLE, SAFETY_SOURCE_3_SUMMARY)
             }
@@ -311,7 +310,7 @@ class SafetyCenterSubpagesTest {
         val source: SafetySource = sourcesGroup.safetySources.first()
 
         context.launchSafetyCenterActivity {
-            openSubpageAndExit(sourcesGroup) {
+            openPageAndExit(context.getString(sourcesGroup.titleResId)) {
                 waitDisplayed(By.text(context.getString(source.titleResId))) { it.click() }
                 waitButtonDisplayed("Exit test activity") { it.click() }
                 waitAllTextDisplayed(
@@ -330,7 +329,7 @@ class SafetyCenterSubpagesTest {
         val sourcesGroup = safetyCenterTestConfigs.singleSourceConfig.safetySourcesGroups.first()
 
         context.launchSafetyCenterActivity {
-            openSubpageAndExit(sourcesGroup) {
+            openPageAndExit(context.getString(sourcesGroup.titleResId)) {
                 waitDisplayed(By.desc("Information")) { it.click() }
                 waitButtonDisplayed("Exit test activity") { it.click() }
                 waitAllTextDisplayed(sourceTestData.status!!.title, sourceTestData.status!!.summary)
@@ -346,7 +345,7 @@ class SafetyCenterSubpagesTest {
         val sourcesGroup = safetyCenterTestConfigs.singleSourceConfig.safetySourcesGroups.first()
 
         context.launchSafetyCenterActivity {
-            openSubpageAndExit(sourcesGroup) {
+            openPageAndExit(context.getString(sourcesGroup.titleResId)) {
                 waitDisplayed(By.desc("Settings")) { it.click() }
                 waitButtonDisplayed("Exit test activity") { it.click() }
                 waitAllTextDisplayed(sourceTestData.status!!.title, sourceTestData.status!!.summary)
@@ -363,7 +362,7 @@ class SafetyCenterSubpagesTest {
             safetyCenterTestConfigs.singleSourceInvalidIntentConfig.safetySourcesGroups.first()
 
         context.launchSafetyCenterActivity {
-            openSubpageAndExit(sourcesGroup) {
+            openPageAndExit(context.getString(sourcesGroup.titleResId)) {
                 waitDisplayed(By.text(sourceTestData.status!!.title.toString())) { it.click() }
 
                 // Verifying that clicking on the entry doesn't redirect to any other screen
@@ -379,7 +378,7 @@ class SafetyCenterSubpagesTest {
         val source: SafetySource = sourcesGroup.safetySources.first()
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
-            openSubpageAndExit(sourcesGroup) {
+            openPageAndExit(context.getString(sourcesGroup.titleResId)) {
                 waitAllTextDisplayed(
                     context.getString(source.titleResId),
                     context.getString(source.summaryResId)
@@ -397,7 +396,7 @@ class SafetyCenterSubpagesTest {
                 )
             )
 
-            openSubpageAndExit(sourcesGroup) {
+            openPageAndExit(context.getString(sourcesGroup.titleResId)) {
                 waitAllTextNotDisplayed(
                     context.getString(source.titleResId),
                     context.getString(source.summaryResId)
@@ -414,7 +413,7 @@ class SafetyCenterSubpagesTest {
         val source: SafetySource = sourcesGroup.safetySources.first()
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
-            openSubpageAndExit(sourcesGroup) {
+            openPageAndExit(context.getString(sourcesGroup.titleResId)) {
                 waitAllTextDisplayed(
                     context.getString(source.titleResId),
                     context.getString(source.summaryResId)
@@ -459,9 +458,13 @@ class SafetyCenterSubpagesTest {
             waitSourceIssueDisplayed(issue)
 
             // Verify that irrelevant subpage doesn't have the issue card
-            openSubpageAndExit(firstGroup) { waitSourceIssueNotDisplayed(issue) }
+            openPageAndExit(context.getString(firstGroup.titleResId)) {
+                waitSourceIssueNotDisplayed(issue)
+            }
             // Verify that relevant subpage has the issue card
-            openSubpageAndExit(secondGroup) { waitSourceIssueDisplayed(issue) }
+            openPageAndExit(context.getString(secondGroup.titleResId)) {
+                waitSourceIssueDisplayed(issue)
+            }
         }
     }
 
@@ -475,7 +478,7 @@ class SafetyCenterSubpagesTest {
         safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, initialDataToDisplay)
 
         context.launchSafetyCenterActivity {
-            openSubpageAndExit(sourcesGroup) {
+            openPageAndExit(context.getString(sourcesGroup.titleResId)) {
                 waitSourceIssueDisplayed(initialDataToDisplay.issues[0])
 
                 safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, updatedDataToDisplay)
@@ -501,7 +504,7 @@ class SafetyCenterSubpagesTest {
         )
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
-            openSubpageAndExit(sourcesGroup) {
+            openPageAndExit(context.getString(sourcesGroup.titleResId)) {
                 waitSourceIssueDisplayed(issue)
                 waitButtonDisplayed(action.label) { it.click() }
 
@@ -521,7 +524,7 @@ class SafetyCenterSubpagesTest {
         val issue = sourceData.issues[0]
 
         context.launchSafetyCenterActivity {
-            openSubpageAndExit(sourcesGroup) {
+            openPageAndExit(context.getString(sourcesGroup.titleResId)) {
                 waitSourceIssueDisplayed(issue)
                 waitDisplayed(By.desc("Dismiss")) { it.click() }
 
@@ -542,7 +545,7 @@ class SafetyCenterSubpagesTest {
         val issue = sourceData.issues[0]
 
         context.launchSafetyCenterActivity {
-            openSubpageAndExit(sourcesGroup) {
+            openPageAndExit(context.getString(sourcesGroup.titleResId)) {
                 waitSourceIssueDisplayed(issue)
                 waitDisplayed(By.desc("Dismiss")) { it.click() }
                 waitAllTextDisplayed("Dismiss this alert?")
@@ -566,7 +569,7 @@ class SafetyCenterSubpagesTest {
         safetyCenterTestHelper.setData(SOURCE_ID_2, secondSourceData)
 
         context.launchSafetyCenterActivity {
-            openSubpageAndExit(sourcesGroup) {
+            openPageAndExit(context.getString(sourcesGroup.titleResId)) {
                 waitSourceIssueDisplayed(firstSourceData.issues[0])
                 waitAllTextDisplayed("See all alerts")
                 waitSourceIssueNotDisplayed(secondSourceData.issues[0])
@@ -694,19 +697,59 @@ class SafetyCenterSubpagesTest {
         }
     }
 
-    private fun openSubpageAndExit(group: SafetySourcesGroup, block: () -> Unit) {
+    @Test
+    fun privacySubpage_openWithIntentExtra_showsPrivacyControls() {
+        val config = safetyCenterTestConfigs.privacySubpageConfig
+        safetyCenterTestHelper.setConfig(config)
+        val extras = Bundle()
+        extras.putString(EXTRA_SAFETY_SOURCES_GROUP_ID, config.safetySourcesGroups.first().id)
+
+        context.launchSafetyCenterActivity(extras) {
+            waitAllTextDisplayed(
+                "Camera access",
+                "Microphone access",
+                "Show clipboard access",
+                "Show passwords",
+                "Location Settings"
+            )
+        }
+    }
+
+    @Test
+    fun privacySubpage_clickingOnLocationEntry_redirectsToLocationScreen() {
+        val config = safetyCenterTestConfigs.privacySubpageConfig
+        safetyCenterTestHelper.setConfig(config)
+        val sourcesGroup = config.safetySourcesGroups.first()
+        val source: SafetySource = sourcesGroup.safetySources.first()
+        val extras = Bundle()
+        extras.putString(EXTRA_SAFETY_SOURCES_GROUP_ID, sourcesGroup.id)
+
+        context.launchSafetyCenterActivity(extras) {
+            openPageAndExit("Location Settings") {
+                waitDisplayed(By.desc("Location"))
+                waitAllTextDisplayed("Use location")
+            }
+
+            waitAllTextDisplayed(
+                context.getString(source.titleResId),
+                context.getString(source.summaryResId)
+            )
+        }
+    }
+
+    private fun openPageAndExit(entryPoint: String, block: () -> Unit) {
         val uiDevice = UiAutomatorUtils2.getUiDevice()
         uiDevice.waitForIdle()
 
-        // Opens subpage by clicking on the group title
-        waitDisplayed(By.text(context.getString(group.titleResId))) { it.click() }
+        // Opens page by clicking on the entry point
+        waitDisplayed(By.text(entryPoint)) { it.click() }
         uiDevice.waitForIdle()
 
         // Executes the required verifications
         block()
         uiDevice.waitForIdle()
 
-        // Exits subpage by pressing the back button
+        // Exits page by pressing the back button
         uiDevice.pressBack()
         uiDevice.waitForIdle()
     }

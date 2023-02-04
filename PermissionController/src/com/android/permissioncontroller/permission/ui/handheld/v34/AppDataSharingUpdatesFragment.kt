@@ -100,7 +100,7 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
                 summary = getSummaryForLocationUpdateType(updateUiInfo.dataSharingUpdateType)
                 settingsGearClick =
                     View.OnClickListener { _ ->
-                        viewModel.startAppPermissionsPage(
+                        viewModel.startAppLocationPermissionPage(
                             requireActivity(), updateUiInfo.packageName, updateUiInfo.userHandle)
                     }
                 updatesCategory.addPreference(this)

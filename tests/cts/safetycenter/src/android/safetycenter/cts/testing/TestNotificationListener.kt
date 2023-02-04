@@ -70,6 +70,7 @@ class TestNotificationListener : NotificationListenerService() {
     override fun onListenerConnected() {
         Log.d(TAG, "onListenerConnected")
         super.onListenerConnected()
+        disconnected.close()
         instance = this
         connected.open()
     }
@@ -79,6 +80,7 @@ class TestNotificationListener : NotificationListenerService() {
         super.onListenerDisconnected()
         connected.close()
         instance = null
+        disconnected.open()
     }
 
     companion object {
@@ -90,6 +92,7 @@ class TestNotificationListener : NotificationListenerService() {
             ComponentName("android.safetycenter.cts", TestNotificationListener::class.java.name)
 
         private val connected = ConditionVariable(false)
+        private val disconnected = ConditionVariable(true)
         private var instance: TestNotificationListener? = null
 
         @Volatile
@@ -215,18 +218,50 @@ class TestNotificationListener : NotificationListenerService() {
         }
 
         private fun getSafetyCenterNotifications(): List<StatusBarNotificationWithChannel> {
-            return with(instance!!) {
-                fun getChannel(key: String): NotificationChannel {
-                    return Ranking().let { result ->
-                        // This API uses a result parameter:
-                        currentRanking.getRanking(key, result)
-                        result.channel
+            return with(getInstanceOrThrow()) {
+                val notificationsSnapshot =
+                    checkNotNull(getActiveNotifications()) {
+                        "getActiveNotifications() returned null"
+                    }
+                val rankingSnapshot =
+                    checkNotNull(getCurrentRanking()) { "getCurrentRanking() returned null" }
+
+                fun getChannel(key: String): NotificationChannel? {
+                    // This API uses a result parameter:
+                    val rankingOut = Ranking()
+                    val success = rankingSnapshot.getRanking(key, rankingOut)
+                    return if (success) {
+                        rankingOut.channel
+                    } else {
+                        null
                     }
                 }
-                activeNotifications
+
+                notificationsSnapshot
                     .filter { it.isSafetyCenterNotification() }
-                    .map { StatusBarNotificationWithChannel(it, getChannel(it.key)) }
+                    .mapNotNull { statusBarNotification ->
+                        val channel = getChannel(statusBarNotification.key)
+                        if (channel != null) {
+                            StatusBarNotificationWithChannel(statusBarNotification, channel)
+                        } else {
+                            null
+                        }
+                    }
             }
+        }
+
+        private fun getInstanceOrThrow(): TestNotificationListener {
+            // We want to check the current values of the connected and disconnected
+            // ConditionVariables, but importantly block(0) actually does not timeout immediately!
+            val isConnected = connected.block(1)
+            val isDisconnected = disconnected.block(1)
+            check(isConnected == !isDisconnected) {
+                "Notification listener condition variables are inconsistent"
+            }
+            check(isConnected && !isDisconnected) {
+                "Notification listener was unexpectedly disconnected"
+            }
+            return checkNotNull(instance) { "Notification listener was unexpectedly null" }
         }
 
         /**
@@ -235,7 +270,7 @@ class TestNotificationListener : NotificationListenerService() {
          * within [timeout].
          */
         fun cancelAndWait(key: String, timeout: Duration = TIMEOUT_LONG) {
-            instance!!.cancelNotification(key)
+            getInstanceOrThrow().cancelNotification(key)
             waitForNotificationsToSatisfy(
                 timeout,
                 description = "no notification with the key $key"
@@ -276,7 +311,13 @@ class TestNotificationListener : NotificationListenerService() {
             if (allowed) {
                 requestRebind(componentName)
                 if (!connected.block(TIMEOUT_LONG.toMillis())) {
-                    throw TimeoutException("Notification listener not connected")
+                    throw TimeoutException("Notification listener did not connect in $TIMEOUT_LONG")
+                }
+            } else {
+                if (!disconnected.block(TIMEOUT_LONG.toMillis())) {
+                    throw TimeoutException(
+                        "Notification listener did not disconnect in $TIMEOUT_LONG"
+                    )
                 }
             }
         }

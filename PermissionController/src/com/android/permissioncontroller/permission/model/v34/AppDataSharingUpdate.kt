@@ -18,6 +18,7 @@ package com.android.permissioncontroller.permission.model.v34
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import com.android.permission.safetylabel.DataCategoryConstants.CATEGORY_LOCATION
 import com.android.permissioncontroller.permission.model.v34.DataSharingUpdateType.ADDS_ADVERTISING_PURPOSE
 import com.android.permissioncontroller.permission.model.v34.DataSharingUpdateType.ADDS_SHARING_WITHOUT_ADVERTISING_PURPOSE
 import com.android.permissioncontroller.permission.model.v34.DataSharingUpdateType.ADDS_SHARING_WITH_ADVERTISING_PURPOSE
@@ -47,7 +48,7 @@ data class AppDataSharingUpdate(
         fun AppSafetyLabelDiff.buildUpdateIfSignificantChange(): AppDataSharingUpdate? {
             // In Android U, only updates for the location data category will be displayed in
             // the UI.
-            val updates = getUpdatesForCategories(listOf(LOCATION_CATEGORY))
+            val updates = getUpdatesForCategories(listOf(CATEGORY_LOCATION))
 
             return if (updates.isEmpty()) null
             else AppDataSharingUpdate(safetyLabelBefore.appInfo.packageName, updates)
@@ -86,9 +87,6 @@ data class AppDataSharingUpdate(
 
             return categoryUpdateMap
         }
-
-        // TODO(b/263153040): Use categories from safety label library.
-        const val LOCATION_CATEGORY = "location"
 
         private fun SafetyLabel.sharesData(category: String) =
             dataLabel.dataShared.containsKey(category)

@@ -73,7 +73,8 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
         if (SafetyCenterUiFlags.getShowSubpages()
                 && getIntent().getAction().equals(ACTION_SAFETY_CENTER)
                 && getIntent().hasExtra(EXTRA_SAFETY_SOURCES_GROUP_ID)) {
-            frag = openRelevantSubpage();
+            String groupId = getIntent().getStringExtra(EXTRA_SAFETY_SOURCES_GROUP_ID);
+            frag = openRelevantSubpage(groupId);
         } else if (getIntent().getAction().equals(PRIVACY_CONTROLS_ACTION)) {
             setTitle(R.string.privacy_controls_title);
             frag = PrivacyControlsFragment.newInstance();
@@ -179,9 +180,8 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
     }
 
     @RequiresApi(UPSIDE_DOWN_CAKE)
-    private SafetyCenterFragment openRelevantSubpage() {
-        String groupId = getIntent().getStringExtra(EXTRA_SAFETY_SOURCES_GROUP_ID);
-        if (Objects.equals(groupId, "AndroidPrivacySources")) {
+    private SafetyCenterFragment openRelevantSubpage(String groupId) {
+        if (Objects.equals(groupId, PrivacySubpageFragment.SOURCE_GROUP_ID)) {
             return new PrivacySubpageFragment();
         }
         return SafetyCenterSubpageFragment.newInstance(groupId);
