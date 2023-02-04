@@ -58,7 +58,8 @@ class SafetyCenterInteractionLoggingHostTest : BaseHostJUnit4Test() {
         ConfigUtils.uploadConfigForPushedAtom(
             device,
             getSafetyCenterPackageName(),
-            Atom.SAFETY_CENTER_INTERACTION_REPORTED_FIELD_NUMBER)
+            Atom.SAFETY_CENTER_INTERACTION_REPORTED_FIELD_NUMBER
+        )
         Thread.sleep(AtomTestUtils.WAIT_TIME_LONG.toLong())
 
         DeviceUtils.installTestApp(device, HELPER_APK_NAME, HELPER_PACKAGE, build)
@@ -78,7 +79,11 @@ class SafetyCenterInteractionLoggingHostTest : BaseHostJUnit4Test() {
     @Test
     fun openSafetyCenter_recordsSafetyCenterViewedEvent() {
         DeviceUtils.runDeviceTests(
-            device, HELPER_PACKAGE, HELPER_TEST_CLASS_NAME, "openSafetyCenter")
+            device,
+            HELPER_PACKAGE,
+            HELPER_TEST_CLASS_NAME,
+            "openSafetyCenter"
+        )
         Thread.sleep(AtomTestUtils.WAIT_TIME_LONG.toLong()) // Wait for report to be updated
 
         val safetyCenterViewedEvents =
