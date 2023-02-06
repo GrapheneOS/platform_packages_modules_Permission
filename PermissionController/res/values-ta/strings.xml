@@ -591,6 +591,5 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"நீங்கள் நகலெடுத்த வார்த்தைகளையோ படங்களையோ பிறவற்றையோ ஆப்ஸ் அணுகும்போது ஓர் அறிவிப்பைக் காட்டும்"</string>
     <string name="show_password_title" msgid="2877269286984684659">"கடவுச்சொற்களைக் காட்டுதல்"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"டைப் செய்யும்போதே எழுத்துகளைச் சற்று நேரம் காட்டும்"</string>
-    <!-- no translation found for permission_rationale_message_location (2153841534298068414) -->
-    <skip />
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"மூன்றாம் தரப்பினருடன் இருப்பிடத் தரவைப் பகிரலாம் என இந்த ஆப்ஸ் குறிப்பிடுகிறது"</string>
 </resources>
