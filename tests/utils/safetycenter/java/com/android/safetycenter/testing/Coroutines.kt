@@ -16,6 +16,7 @@
 
 package com.android.safetycenter.testing
 
+import android.util.Log
 import java.time.Duration
 import kotlinx.coroutines.DEBUG_PROPERTY_NAME
 import kotlinx.coroutines.DEBUG_PROPERTY_VALUE_AUTO
@@ -26,8 +27,13 @@ import kotlinx.coroutines.withTimeout
 import kotlinx.coroutines.withTimeoutOrNull
 
 /** A class that facilitates interacting with coroutines. */
-// TODO(b/228823159) Consolidate with other Coroutines helper functions
 object Coroutines {
+
+    /** A long timeout, to be used for actions that are expected to complete. */
+    val TIMEOUT_LONG: Duration = Duration.ofSeconds(25)
+
+    /** A short timeout, to be used for actions that are expected not to complete. */
+    val TIMEOUT_SHORT: Duration = Duration.ofSeconds(1)
 
     /** Shorthand for [runBlocking] combined with [withTimeout]. */
     fun <T> runBlockingWithTimeout(timeout: Duration = TIMEOUT_LONG, block: suspend () -> T): T =
@@ -50,23 +56,22 @@ object Coroutines {
         runBlockingWithTimeout(timeout) { waitFor(checkPeriod, condition) }
     }
 
-    /** Check a condition using coroutines. */
-    private suspend fun waitFor(checkPeriod: Duration = CHECK_PERIOD, condition: () -> Boolean) {
-        while (!condition()) {
-            delay(checkPeriod.toMillis())
+    /** Retries a [fallibleAction] until no errors are thrown or a timeout occurs. */
+    fun waitForSuccessWithTimeout(
+        timeout: Duration = TIMEOUT_LONG,
+        checkPeriod: Duration = CHECK_PERIOD,
+        fallibleAction: () -> Unit
+    ) {
+        waitForWithTimeout(timeout, checkPeriod) {
+            try {
+                fallibleAction()
+                true
+            } catch (ex: Throwable) {
+                Log.w(TAG, "Encountered failure, retrying until timeout: $ex")
+                false
+            }
         }
     }
-
-    /** A medium period, to be used for conditions that are expected to change. */
-    private val CHECK_PERIOD = Duration.ofMillis(250)
-
-    /** A long timeout, to be used for actions that are expected to complete. */
-    val TIMEOUT_LONG: Duration = Duration.ofSeconds(25)
-
-    /** A short timeout, to be used for actions that are expected not to complete. */
-    val TIMEOUT_SHORT: Duration = Duration.ofSeconds(1)
-
-    private val debugMode = System.getProperty(DEBUG_PROPERTY_NAME, DEBUG_PROPERTY_VALUE_AUTO)
 
     /**
      * Enables debug mode for coroutines, in particular this enables stack traces in case of
@@ -80,4 +85,19 @@ object Coroutines {
     fun resetDebugging() {
         System.setProperty(DEBUG_PROPERTY_NAME, debugMode)
     }
+
+    /** Check a condition using coroutines. */
+    private suspend fun waitFor(checkPeriod: Duration = CHECK_PERIOD, condition: () -> Boolean) {
+        while (!condition()) {
+            delay(checkPeriod.toMillis())
+        }
+    }
+
+    private const val TAG: String = "Coroutines"
+
+    /** A medium period, to be used for conditions that are expected to change. */
+    private val CHECK_PERIOD: Duration = Duration.ofMillis(250)
+
+    private val debugMode: String? =
+        System.getProperty(DEBUG_PROPERTY_NAME, DEBUG_PROPERTY_VALUE_AUTO)
 }
