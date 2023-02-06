@@ -503,7 +503,7 @@
     <string name="privdash_label_microphone" msgid="8415035835803511693">"Mikrofon"</string>
     <string name="privdash_label_location" msgid="6882400763866489291">"Məkan"</string>
     <string name="privdash_label_other" msgid="3710394147423236033">"Digər"</string>
-    <string name="privdash_label_none" msgid="5991866260360484858">"Heç bir"</string>
+    <string name="privdash_label_none" msgid="5991866260360484858">"Heç biri"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Ötən\n24 saat"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Son\n7 gün"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> Android tərəfindən qorunur. Məlumatlarınız bu cihazda işləndiyinə görə bu tətbiqin icazə istifadəsi status panelində və ya məxfilik panelinizdə göstərilmir."</string>

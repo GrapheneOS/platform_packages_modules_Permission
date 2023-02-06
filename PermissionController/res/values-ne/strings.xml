@@ -337,7 +337,7 @@
     <string name="no_permissions_allowed" msgid="6081976856354669209">"कुनै पनि अनुमति छैन"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"कुनै पनि अनुमति अस्वीकार गरिएको छैन"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"कुनै पनि एपलाई अनुमति दिइएको छैन"</string>
-    <string name="no_apps_allowed_full" msgid="8011716991498934104">"सबै फाइलहरू कुनै पनि एपमा राख्न सकिँदैन"</string>
+    <string name="no_apps_allowed_full" msgid="8011716991498934104">"कुनै एपलाई सबै फाइलको अनुमति दिइएको छैन"</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"कुनै पनि एपलाई मिडिया फाइल मात्र प्रयोग गर्ने अनुमति दिइएको छैन"</string>
     <string name="no_apps_denied" msgid="7663435886986784743">"सबै एपलाई अनुमति दिइएको छ"</string>
     <string name="car_permission_selected" msgid="180837028920791596">"चयन गरिएको"</string>

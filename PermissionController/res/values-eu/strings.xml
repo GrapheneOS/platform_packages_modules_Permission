@@ -79,7 +79,7 @@
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> aplikaziok du(te) baimena"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"Baimena daukaten <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> aplikazio"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Erakutsi sistemaren aplikazioak"</string>
-    <string name="menu_hide_system" msgid="3855390843744028465">"Ezkutatu sistema"</string>
+    <string name="menu_hide_system" msgid="3855390843744028465">"Ezkutatu sistemaren aplikazioak"</string>
     <string name="menu_show_7_days_data" msgid="8979611198508523706">"Erakutsi azken zazpi egunak"</string>
     <string name="menu_show_24_hours_data" msgid="8228054833323380780">"Erakutsi azken 24 orduak"</string>
     <string name="manage_permission" msgid="2895385393037061964">"Kudeatu baimena"</string>
@@ -200,7 +200,7 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Ikusi baimen hau duten aplikazio guztiak"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Erakutsi laguntzaileak mikrofonoa erabiltzeko duen baimena"</string>
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Erabili gabeko aplikazio-ezarpenak"</string>
-    <string name="auto_revoke_label" msgid="5068393642936571656">"Kendu baimenak aplikazioa ez bada erabiltzen"</string>
+    <string name="auto_revoke_label" msgid="5068393642936571656">"Kendu baimenak aplikazioa erabiltzen ez bada"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Kendu baimenak eta egin tokia"</string>
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"Pausatu erabiltzen ez diren aplikazioetako jarduerak"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"Kendu baimenak, ezabatu aldi baterako fitxategiak eta geldiarazi jakinarazpenak"</string>
