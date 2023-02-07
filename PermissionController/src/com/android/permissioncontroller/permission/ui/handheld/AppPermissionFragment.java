@@ -113,7 +113,7 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
     private @NonNull RadioButton mAllowForegroundButton;
     private @NonNull RadioButton mAskOneTimeButton;
     private @NonNull RadioButton mAskButton;
-    private @NonNull RadioButton mSelectButton;
+    private @NonNull RadioButton mSelectPhotosButton;
     private @NonNull RadioButton mDenyButton;
     private @NonNull RadioButton mDenyForegroundButton;
     private @NonNull View mLocationAccuracy;
@@ -261,7 +261,7 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         mAllowForegroundButton = root.requireViewById(R.id.allow_foreground_only_radio_button);
         mAskOneTimeButton = root.requireViewById(R.id.ask_one_time_radio_button);
         mAskButton = root.requireViewById(R.id.ask_radio_button);
-        mSelectButton = root.requireViewById(R.id.select_photos_radio_button);
+        mSelectPhotosButton = root.requireViewById(R.id.select_photos_radio_button);
         mDenyButton = root.requireViewById(R.id.deny_radio_button);
         mDenyForegroundButton = root.requireViewById(R.id.deny_foreground_radio_button);
         mDivider = root.requireViewById(R.id.two_target_divider);
@@ -422,18 +422,11 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
                     APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__ASK_EVERY_TIME);
             setResult(DENIED);
         });
-        mSelectButton.setOnClickListener((v) -> {
+        mSelectPhotosButton.setOnClickListener((v) -> {
             int buttonPressed =
                     APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__PHOTOS_SELECTED;
-            mViewModel.openPhotoPicker(result -> {
-                if (result == RESULT_OK) {
-                    mViewModel.requestChange(false, this, this, ChangeRequest.PHOTOS_SELECTED,
-                            buttonPressed);
-                } else {
-                    // Reset the button state to what is was previously
-                    setRadioButtonsState(states);
-                }
-            });
+            mViewModel.requestChange(false, this, this, ChangeRequest.PHOTOS_SELECTED,
+                    buttonPressed);
         });
         mDenyButton.setOnClickListener((v) -> {
             if (mViewModel.getFullStorageStateLiveData().getValue() != null
@@ -472,8 +465,8 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         setButtonState(mAskButton, states.get(ButtonType.ASK));
         setButtonState(mDenyButton, states.get(ButtonType.DENY));
         setButtonState(mDenyForegroundButton, states.get(ButtonType.DENY_FOREGROUND));
-        setButtonState(mSelectButton, states.get(ButtonType.SELECT_PHOTOS));
-        if (mSelectButton.getVisibility() == View.VISIBLE) {
+        setButtonState(mSelectPhotosButton, states.get(ButtonType.SELECT_PHOTOS));
+        if (mSelectPhotosButton.getVisibility() == View.VISIBLE) {
             mAllowButton.setText(R.string.app_permission_button_allow_all_photos);
         } else {
             mAllowButton.setText(R.string.app_permission_button_allow);
