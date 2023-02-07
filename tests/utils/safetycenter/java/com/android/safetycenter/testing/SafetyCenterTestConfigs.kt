@@ -64,6 +64,22 @@ class SafetyCenterTestConfigs(private val context: Context) {
             dynamicSafetySourceBuilder(SINGLE_SOURCE_ID).setIntentAction("stub").build()
         )
 
+    /**
+     * Same as [singleSourceConfig] but with an [intentAction] that will resolve implicitly; i.e.
+     * the source's [packageName] does not own the activity resolved by the [intentAction].
+     */
+    val implicitIntentSingleSourceConfig =
+        singleSourceConfig(
+            dynamicSafetySourceBuilder(SINGLE_SOURCE_ID)
+                // A valid package name that is *not* CTS.
+                .setPackageName(context.packageManager.permissionControllerPackageName)
+                // Exported activity that lives in the CTS package. The PC package does
+                // implement this intent action so the activity has to resolve
+                // implicitly.
+                .setIntentAction(ACTION_TEST_ACTIVITY_EXPORTED)
+                .build()
+        )
+
     /** A simple [SafetyCenterConfig] for tests with a source max severity level of 0. */
     val severityZeroConfig =
         singleSourceConfig(
@@ -734,8 +750,15 @@ class SafetyCenterTestConfigs(private val context: Context) {
         /** ID of a source not used in any config. */
         const val SAMPLE_SOURCE_ID = "test_sample_source_id"
 
-        /** Activity action: Launch the [TestActivity] used to check redirects in tests. */
+        /** Activity action: Launches the [TestActivity] used to check redirects in tests. */
         const val ACTION_TEST_ACTIVITY = "com.android.safetycenter.testing.action.TEST_ACTIVITY"
+
+        /**
+         * Activity action: Launches the [TestActivity] used to check redirects in tests, but with
+         * an exported activity alias.
+         */
+        private const val ACTION_TEST_ACTIVITY_EXPORTED =
+            "com.android.safetycenter.testing.action.TEST_ACTIVITY_EXPORTED"
 
         /**
          * ID of the only source provided in [singleSourceConfig], [severityZeroConfig] and

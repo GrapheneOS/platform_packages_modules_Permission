@@ -48,7 +48,8 @@ class ParserExceptionDetectorTest : LintDetectorTest() {
         lint()
             .files(
                 xml("res/raw/safety_center_config.xml", VALID_TIRAMISU_CONFIG),
-                STRINGS_WITH_REFERENCE_XML)
+                STRINGS_WITH_REFERENCE_XML
+            )
             .run()
             .expectClean()
     }
@@ -58,7 +59,8 @@ class ParserExceptionDetectorTest : LintDetectorTest() {
         lint()
             .files(
                 xml("res/raw-99/safety_center_config.xml", VALID_TIRAMISU_CONFIG),
-                STRINGS_WITH_REFERENCE_XML)
+                STRINGS_WITH_REFERENCE_XML
+            )
             .run()
             .expectClean()
     }
@@ -72,7 +74,8 @@ class ParserExceptionDetectorTest : LintDetectorTest() {
             .expect(
                 "res/raw-v34/safety_center_config.xml: Error: Parser exception at sdk=34: " +
                     "\"Element safety-center-config missing\", cause: \"null\" " +
-                    "[InvalidSafetyCenterConfig]\n1 errors, 0 warnings")
+                    "[InvalidSafetyCenterConfig]\n1 errors, 0 warnings"
+            )
     }
 
     @Test
@@ -87,7 +90,8 @@ class ParserExceptionDetectorTest : LintDetectorTest() {
                     "[InvalidSafetyCenterConfig]\nres/raw/safety_center_config.xml: " +
                     "Error: Parser exception at sdk=34: " +
                     "\"Element safety-center-config missing\", cause: \"null\" " +
-                    "[InvalidSafetyCenterConfig]\n2 errors, 0 warnings")
+                    "[InvalidSafetyCenterConfig]\n2 errors, 0 warnings"
+            )
     }
 
     @Test
@@ -96,12 +100,14 @@ class ParserExceptionDetectorTest : LintDetectorTest() {
         lint()
             .files(
                 xml("res/raw/safety_center_config.xml", VALID_UDC_CONFIG),
-                STRINGS_WITH_REFERENCE_XML)
+                STRINGS_WITH_REFERENCE_XML
+            )
             .run()
             .expect(
                 "res/raw/safety_center_config.xml: Error: Parser exception at sdk=33: " +
                     "\"Unexpected attribute dynamic-safety-source.notificationsAllowed\", cause: " +
-                    "\"null\" [InvalidSafetyCenterConfig]\n1 errors, 0 warnings")
+                    "\"null\" [InvalidSafetyCenterConfig]\n1 errors, 0 warnings"
+            )
     }
 
     @Test
@@ -122,7 +128,8 @@ class ParserExceptionDetectorTest : LintDetectorTest() {
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="reference" translatable="false">Reference</string>
 </resources>
-                """)
+                """
+            )
 
         const val VALID_TIRAMISU_CONFIG =
             """

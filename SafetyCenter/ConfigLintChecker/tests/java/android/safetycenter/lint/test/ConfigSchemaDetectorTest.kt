@@ -64,7 +64,9 @@ class ConfigSchemaDetectorTest : LintDetectorTest() {
         </safety-sources-group>
     </safety-sources-config>
 </safety-center-config>
-                    """)))
+                    """
+                ))
+            )
             .run()
             .expectClean()
     }
@@ -91,7 +93,9 @@ class ConfigSchemaDetectorTest : LintDetectorTest() {
         </safety-sources-group>
     </safety-sources-config>
 </safety-center-config>
-                    """)))
+                    """
+                ))
+            )
             .run()
             .expectClean()
     }
@@ -105,7 +109,8 @@ class ConfigSchemaDetectorTest : LintDetectorTest() {
             .expect(
                 "res/raw-v34/safety_center_config.xml: Error: SAXException exception at sdk=34: " +
                     "\"cvc-elt.1.a: Cannot find the declaration of element 'invalid-root'.\" " +
-                    "[InvalidSafetyCenterConfigSchema]\n1 errors, 0 warnings")
+                    "[InvalidSafetyCenterConfigSchema]\n1 errors, 0 warnings"
+            )
     }
 
     @Test
@@ -120,7 +125,8 @@ class ConfigSchemaDetectorTest : LintDetectorTest() {
                     "[InvalidSafetyCenterConfigSchema]\nres/raw/safety_center_config.xml: " +
                     "Error: SAXException exception at sdk=34: \"cvc-elt.1.a: Cannot find the " +
                     "declaration of element 'invalid-root'.\" " +
-                    "[InvalidSafetyCenterConfigSchema]\n2 errors, 0 warnings")
+                    "[InvalidSafetyCenterConfigSchema]\n2 errors, 0 warnings"
+            )
     }
 
     @Test
@@ -148,13 +154,16 @@ class ConfigSchemaDetectorTest : LintDetectorTest() {
         </safety-sources-group>
     </safety-sources-config>
 </safety-center-config>
-                    """)))
+                    """
+                ))
+            )
             .run()
             .expect(
                 "res/raw/safety_center_config.xml: Error: SAXException exception at sdk=33: " +
                     "\"cvc-complex-type.3.2.2: Attribute 'notificationsAllowed' is not allowed " +
                     "to appear in element 'dynamic-safety-source'.\" " +
-                    "[InvalidSafetyCenterConfigSchema]\n1 errors, 0 warnings")
+                    "[InvalidSafetyCenterConfigSchema]\n1 errors, 0 warnings"
+            )
     }
 
     @Test

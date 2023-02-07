@@ -49,7 +49,8 @@ class ConfigSchemaDetector : Detector(), OtherFileScanner {
                 severity = Severity.ERROR,
                 implementation =
                     Implementation(ConfigSchemaDetector::class.java, Scope.OTHER_SCOPE),
-                androidSpecific = true)
+                androidSpecific = true
+            )
     }
 
     override fun appliesTo(folderType: ResourceFolderType): Boolean {
@@ -74,7 +75,8 @@ class ConfigSchemaDetector : Detector(), OtherFileScanner {
             context.report(
                 ISSUE,
                 Location.create(context.file),
-                "No schema found for SDK level: $fileSdk, was it deleted?")
+                "No schema found for SDK level: $fileSdk, was it deleted?"
+            )
         }
         // Test new schemas for backward compatibility.
         for (sdk in fileSdk + 1..FileSdk.getMaxSdkVersion()) {
@@ -95,12 +97,14 @@ class ConfigSchemaDetector : Detector(), OtherFileScanner {
             context.report(
                 ISSUE,
                 Location.create(context.file),
-                "SAXException exception at sdk=$sdk: \"${e.message}\"")
+                "SAXException exception at sdk=$sdk: \"${e.message}\""
+            )
         } catch (e: IOException) {
             context.report(
                 ISSUE,
                 Location.create(context.file),
-                "IOException exception at sdk=$sdk: \"${e.message}\"")
+                "IOException exception at sdk=$sdk: \"${e.message}\""
+            )
         }
         return true
     }

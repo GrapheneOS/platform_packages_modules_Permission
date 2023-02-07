@@ -62,79 +62,99 @@ class SafetyCenterIssuesPersistenceInvalidTest {
                     "Corrupted",
                     "invalid_file_corrupted.txt",
                     "Failed to read file: ${PATH}invalid_file_corrupted.txt",
-                    null),
+                    null
+                ),
                 Params(
                     "ExtraAttribute",
                     "invalid_file_extra_attribute.xml",
                     "Unexpected attribute extra",
-                    null),
+                    null
+                ),
                 Params(
                     "ExtraElement",
                     "invalid_file_extra_element.xml",
                     "Element issue not closed",
-                    null),
+                    null
+                ),
                 Params(
                     "ExtraRoot",
                     "invalid_file_extra_root.txt",
                     "Unexpected extra root element",
-                    null),
+                    null
+                ),
                 Params(
                     "InconsistentDismissCount",
                     "invalid_file_inconsistent_dismiss_count.xml",
                     "Element issue invalid",
-                    "dismissCount cannot be 0 if dismissedAt is present"),
+                    "dismissCount cannot be 0 if dismissedAt is present"
+                ),
                 Params(
                     "InconsistentDismissedAt",
                     "invalid_file_inconsistent_dismissed_at.xml",
                     "Element issue invalid",
-                    "dismissedAt must be present if dismissCount is greater than 0"),
+                    "dismissedAt must be present if dismissCount is greater than 0"
+                ),
                 Params(
                     "InvalidDismissCount",
                     "invalid_file_invalid_dismiss_count.xml",
                     "Attribute value \"NaN\" for dismiss_count invalid",
-                    null),
+                    null
+                ),
                 Params(
                     "InvalidDismissedAt",
                     "invalid_file_invalid_dismissed_at.xml",
                     "Attribute value \"NaN\" for dismissed_at_epoch_millis invalid",
-                    null),
+                    null
+                ),
                 Params(
                     "InvalidFirstSeenAt",
                     "invalid_file_invalid_first_seen_at.xml",
                     "Attribute value \"NaN\" for first_seen_at_epoch_millis invalid",
-                    null),
+                    null
+                ),
                 Params(
                     "InvalidNotificationDismissedAt",
                     "invalid_file_invalid_notification_dismissed_at.xml",
                     "Attribute value \"NaN\" for notification_dismissed_at_epoch_millis invalid",
-                    null),
+                    null
+                ),
                 Params(
                     "InvalidVersion",
                     "invalid_file_invalid_version.xml",
                     "Attribute value \"NaN\" for version invalid",
-                    null),
+                    null
+                ),
                 Params(
                     "MissingFirstSeenAt",
                     "invalid_file_missing_first_seen_at.xml",
                     "Element issue invalid",
-                    "Required attribute firstSeenAt missing"),
+                    "Required attribute firstSeenAt missing"
+                ),
                 Params(
                     "MissingKey",
                     "invalid_file_missing_key.xml",
                     "Element issue invalid",
-                    "Required attribute key missing"),
+                    "Required attribute key missing"
+                ),
                 Params(
-                    "MissingVersion", "invalid_file_missing_version.xml", "Missing version", null),
+                    "MissingVersion",
+                    "invalid_file_missing_version.xml",
+                    "Missing version",
+                    null
+                ),
                 Params(
                     "NegativeDismissCount",
                     "invalid_file_negative_dismiss_count.xml",
                     "Attribute value \"-1\" for dismiss_count invalid",
-                    null),
+                    null
+                ),
                 Params("WrongRoot", "invalid_file_wrong_root.xml", "Element issues missing", null),
                 Params(
                     "WrongVersion",
                     "invalid_file_wrong_version.xml",
                     "Unsupported version: 99",
-                    null))
+                    null
+                )
+            )
     }
 }

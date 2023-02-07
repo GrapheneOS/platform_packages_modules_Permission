@@ -56,7 +56,9 @@ class SafetyCenterIssuesPersistenceValidTest {
                 Params(
                     "ValidV2",
                     "valid_file_v2.xml",
-                    listOf(ISSUE_0, ISSUE_1, ISSUE_2, ISSUE_3, ISSUE_4, ISSUE_5)))
+                    listOf(ISSUE_0, ISSUE_1, ISSUE_2, ISSUE_3, ISSUE_4, ISSUE_5)
+                )
+            )
 
         private val ISSUE_0 =
             PersistedSafetyCenterIssue.Builder()
