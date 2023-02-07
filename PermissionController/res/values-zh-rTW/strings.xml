@@ -591,6 +591,5 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"系統會在應用程式存取你複製的文字、圖片或其他內容時顯示通知訊息"</string>
     <string name="show_password_title" msgid="2877269286984684659">"顯示密碼"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"輸入密碼時，短暫顯示剛輸入的字元"</string>
-    <!-- no translation found for permission_rationale_message_location (2153841534298068414) -->
-    <skip />
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"這個應用程式表示可能會將位置資料分享給第三方"</string>
 </resources>

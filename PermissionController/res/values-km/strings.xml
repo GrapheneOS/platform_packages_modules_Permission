@@ -591,6 +591,5 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"បង្ហាញសារ នៅពេលកម្មវិធីចូលប្រើអត្ថបទ រូបភាព ឬខ្លឹមសារផ្សេងទៀតដែលអ្នកបានចម្លង"</string>
     <string name="show_password_title" msgid="2877269286984684659">"បង្ហាញ​ពាក្យ​សម្ងាត់"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"បង្ហាញ​តួអក្សរ​មួយភ្លែត​ខណៈ​ពេល​អ្នក​វាយ​បញ្ចូល"</string>
-    <!-- no translation found for permission_rationale_message_location (2153841534298068414) -->
-    <skip />
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"កម្មវិធីនេះបានបញ្ជាក់ថា វាអាចចែករំលែកទិន្នន័យទីតាំងជាមួយភាគីទីបី"</string>
 </resources>
