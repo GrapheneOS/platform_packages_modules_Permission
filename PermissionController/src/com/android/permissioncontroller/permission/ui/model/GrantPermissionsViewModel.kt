@@ -1028,9 +1028,9 @@ class GrantPermissionsViewModel(
     private fun grantUserSelectedVisualGroupPermissions(groupState: GroupState) {
         val userSelectedPerm =
             groupState.group.permissions[READ_MEDIA_VISUAL_USER_SELECTED] ?: return
-        val nonSelectedPerms = groupState.affectedPermissions
-            .filter { it != READ_MEDIA_VISUAL_USER_SELECTED }
         if (userSelectedPerm.isImplicit) {
+            val nonSelectedPerms = groupState.group.permissions.keys
+                .filter { it != READ_MEDIA_VISUAL_USER_SELECTED }
             // If the permission is implicit, grant USER_SELECTED as user set, and all other
             // permissions as one time, and without app ops.
             KotlinUtils.grantForegroundRuntimePermissions(app, groupState.group,
@@ -1044,6 +1044,8 @@ class GrantPermissionsViewModel(
             appPermGroup.setSelfRevoked()
             appPermGroup.persistChanges(false, null, nonSelectedPerms.toSet())
         } else {
+            val nonSelectedPerms = groupState.affectedPermissions
+                .filter { it != READ_MEDIA_VISUAL_USER_SELECTED }
             val setUserFixed = userSelectedPerm.isUserFixed || userSelectedPerm.isUserSet
             KotlinUtils.grantForegroundRuntimePermissions(app, groupState.group,
                 listOf(READ_MEDIA_VISUAL_USER_SELECTED), userFixed = setUserFixed)
