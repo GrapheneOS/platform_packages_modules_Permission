@@ -16,10 +16,12 @@
 
 package com.android.safetycenter.testing
 
+import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.SystemClock
 import android.safetycenter.SafetySourceData
 import android.safetycenter.SafetySourceIssue
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.test.uiautomator.By
 import androidx.test.uiautomator.BySelector
 import androidx.test.uiautomator.StaleObjectException
@@ -92,6 +94,7 @@ object UiTestHelper {
      *
      * This includes its UI entry and its issues.
      */
+    @RequiresApi(TIRAMISU)
     fun waitSourceDataDisplayed(sourceData: SafetySourceData) {
         waitAllTextDisplayed(sourceData.status?.title, sourceData.status?.summary)
 
@@ -101,6 +104,7 @@ object UiTestHelper {
     }
 
     /** Waits for most of the [SafetySourceIssue] information to be displayed. */
+    @RequiresApi(TIRAMISU)
     fun waitSourceIssueDisplayed(sourceIssue: SafetySourceIssue) {
         waitAllTextDisplayed(sourceIssue.title, sourceIssue.subtitle, sourceIssue.summary)
 
@@ -110,6 +114,7 @@ object UiTestHelper {
     }
 
     /** Waits for most of the [SafetySourceIssue] information not to be displayed. */
+    @RequiresApi(TIRAMISU)
     fun waitSourceIssueNotDisplayed(sourceIssue: SafetySourceIssue) {
         waitAllTextNotDisplayed(sourceIssue.title)
     }

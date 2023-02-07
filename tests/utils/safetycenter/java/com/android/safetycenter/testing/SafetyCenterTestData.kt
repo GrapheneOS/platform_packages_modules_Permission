@@ -19,6 +19,7 @@ package com.android.safetycenter.testing
 import android.app.PendingIntent
 import android.content.Context
 import android.icu.text.MessageFormat
+import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.os.Bundle
 import android.os.UserHandle
@@ -62,6 +63,7 @@ import java.util.Locale
  * A class that provides [SafetyCenterData] objects and associated constants to facilitate asserting
  * on specific Safety Center states in SafetyCenter for testing.
  */
+@RequiresApi(TIRAMISU)
 class SafetyCenterTestData(context: Context) {
 
     private val safetyCenterResourcesContext = SafetyCenterResourcesContext.forTests(context)

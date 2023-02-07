@@ -19,11 +19,13 @@ package com.android.safetycenter.testing
 import android.Manifest.permission.READ_SAFETY_CENTER_STATUS
 import android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE
 import android.content.Context
+import android.os.Build.VERSION_CODES.TIRAMISU
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetySourceData
 import android.safetycenter.config.SafetyCenterConfig
 import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_STATIC
+import androidx.annotation.RequiresApi
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.addOnSafetyCenterDataChangedListenerWithPermission
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.clearAllSafetySourceDataForTestsWithPermission
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.clearSafetyCenterConfigForTestsWithPermission
@@ -38,6 +40,7 @@ import com.android.safetycenter.testing.ShellPermissions.callWithShellPermission
 import com.google.common.util.concurrent.MoreExecutors.directExecutor
 
 /** A class that facilitates settings up Safety Center in tests. */
+@RequiresApi(TIRAMISU)
 class SafetyCenterTestHelper(private val context: Context) {
 
     private val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)!!

@@ -25,10 +25,12 @@ import android.app.Service
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.IBinder
 import android.os.UserManager
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyCenterManager.ACTION_SAFETY_CENTER_ENABLED_CHANGED
+import androidx.annotation.RequiresApi
 import androidx.test.core.app.ApplicationProvider
 import com.android.compatibility.common.util.SystemUtil
 import com.android.safetycenter.testing.Coroutines.TIMEOUT_LONG
@@ -46,6 +48,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 /** Broadcast receiver used for testing broadcasts sent to safety sources. */
+@RequiresApi(TIRAMISU)
 class SafetySourceReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent?) {
         val userManager = context.getSystemService(UserManager::class.java)!!
