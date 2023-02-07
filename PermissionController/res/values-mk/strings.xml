@@ -336,13 +336,13 @@
     <string name="role_browser_description" msgid="3465253637499842671">"Апликации што ви даваат пристап до интернет и ги прикажуваат линковите што ги допирате"</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"Да се постави <xliff:g id="APP_NAME">%1$s</xliff:g> како ваша стандардна апликација за прелистување?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"Не се потреби дозволи"</string>
-    <string name="role_dialer_label" msgid="1100224146343237968">"Стандардна апл. за телефон"</string>
+    <string name="role_dialer_label" msgid="1100224146343237968">"Стандардна апл. за тел."</string>
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Апликација за телефон"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Апликации што ви овозможуваат да упатувате и примате телефонски повици преку уредов"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Да се постави <xliff:g id="APP_NAME">%1$s</xliff:g> како ваша стандардна апликација за телефон?"</string>
     <string name="role_dialer_request_description" msgid="6288839625724909320">"Апликацијава ќе има пристап до камерата, контактите, микрофонот, телефонот и SMS-пораките"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"бирач"</string>
-    <string name="role_sms_label" msgid="8456999857547686640">"Стандардна апликација за SMS"</string>
+    <string name="role_sms_label" msgid="8456999857547686640">"Стандардна апл. за SMS"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"Апликација за SMS"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Апликации што ви овозможуваат да го користите телефонскиот број за испраќање и примање кратки SMS-пораки, фотографии, видеа и друго"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Да се постави <xliff:g id="APP_NAME">%1$s</xliff:g> како ваша стандардна апликација за SMS?"</string>
