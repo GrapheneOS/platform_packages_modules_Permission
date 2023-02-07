@@ -65,8 +65,8 @@ class SafetyCenterTestConfigs(private val context: Context) {
         )
 
     /**
-     * Same as [singleSourceConfig] but with an [intentAction] that will resolve implicitly; i.e.
-     * the source's [packageName] does not own the activity resolved by the [intentAction].
+     * Same as [singleSourceConfig] but with an `intentAction` that will resolve implicitly; i.e.
+     * the source's `packageName` does not own the activity resolved by the `intentAction`.
      */
     val implicitIntentSingleSourceConfig =
         singleSourceConfig(
@@ -757,7 +757,7 @@ class SafetyCenterTestConfigs(private val context: Context) {
          * Activity action: Launches the [TestActivity] used to check redirects in tests, but with
          * an exported activity alias.
          */
-        private const val ACTION_TEST_ACTIVITY_EXPORTED =
+        const val ACTION_TEST_ACTIVITY_EXPORTED =
             "com.android.safetycenter.testing.action.TEST_ACTIVITY_EXPORTED"
 
         /**
