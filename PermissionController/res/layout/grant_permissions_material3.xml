@@ -147,11 +147,6 @@
                     style="@style/PermissionGrantButtonAllowAllPhotosMaterial3" />
 
                 <com.android.permissioncontroller.permission.ui.widget.SecureButton
-                    android:id="@+id/permission_allow_more_selected_photos_button"
-                    android:text="@string/grant_dialog_button_allow_more_selected_photos"
-                    style="@style/PermissionGrantButtonAllowMorePhotosMaterial3" />
-
-                <com.android.permissioncontroller.permission.ui.widget.SecureButton
                     android:id="@+id/permission_allow_selected_photos_button"
                     android:text="@string/grant_dialog_button_allow_selected_photos"
                     style="@style/PermissionGrantButtonAllowSelectedPhotosMaterial3" />
@@ -160,11 +155,6 @@
                     android:id="@+id/permission_deny_button"
                     android:text="@string/grant_dialog_button_deny"
                     style="@style/PermissionGrantButtonDenyMaterial3" />
-
-                <com.android.permissioncontroller.permission.ui.widget.SecureButton
-                    android:id="@+id/permission_dont_allow_more_selected_photos_button"
-                    android:text="@string/grant_dialog_button_dont_allow_more_selected_photos"
-                    style="@style/PermissionGrantButtonDontAllowMorePhotosMaterial3" />
 
                 <com.android.permissioncontroller.permission.ui.widget.SecureButton
                     android:id="@+id/permission_deny_and_dont_ask_again_button"

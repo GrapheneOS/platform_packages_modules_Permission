@@ -146,11 +146,6 @@
                     style="@style/PermissionGrantButtonAllowAllPhotos" />
 
                 <com.android.permissioncontroller.permission.ui.widget.SecureButton
-                    android:id="@+id/permission_allow_more_selected_photos_button"
-                    android:text="@string/grant_dialog_button_allow_more_selected_photos"
-                    style="@style/PermissionGrantButtonAllowMorePhotos" />
-
-                <com.android.permissioncontroller.permission.ui.widget.SecureButton
                     android:id="@+id/permission_allow_selected_photos_button"
                     android:text="@string/grant_dialog_button_allow_selected_photos"
                     style="@style/PermissionGrantButtonAllowSelectedPhotos" />
@@ -158,11 +153,6 @@
                 <com.android.permissioncontroller.permission.ui.widget.SecureButton
                     android:id="@+id/permission_deny_button"
                     android:text="@string/grant_dialog_button_deny"
-                    style="@style/PermissionGrantButtonDeny" />
-
-                <com.android.permissioncontroller.permission.ui.widget.SecureButton
-                    android:id="@+id/permission_dont_allow_more_selected_photos_button"
-                    android:text="@string/grant_dialog_button_dont_allow_more_selected_photos"
                     style="@style/PermissionGrantButtonDeny" />
 
                 <com.android.permissioncontroller.permission.ui.widget.SecureButton
