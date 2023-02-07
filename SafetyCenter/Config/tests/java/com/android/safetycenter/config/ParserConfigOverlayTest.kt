@@ -20,9 +20,9 @@ import android.content.Context
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.compatibility.common.util.SystemUtil.runShellCommand
-import com.android.safetycenter.config.Coroutines.waitForTestToPass
-import com.android.safetycenter.config.Coroutines.waitForWithTimeout
 import com.android.safetycenter.config.tests.R
+import com.android.safetycenter.testing.Coroutines.waitForSuccessWithTimeout
+import com.android.safetycenter.testing.Coroutines.waitForWithTimeout
 import com.google.common.truth.Truth.assertThat
 import org.junit.AfterClass
 import org.junit.Assert.assertThrows
@@ -35,7 +35,7 @@ class ParserConfigOverlayTest {
     private val context: Context = getApplicationContext()
 
     @Test
-    fun validNotOverlayableConfig_matchesExpected() = waitForTestToPass {
+    fun validNotOverlayableConfig_matchesExpected() = waitForSuccessWithTimeout {
         val inputStream = context.resources.openRawResource(R.raw.config_valid_not_overlayable)
 
         val safetyCenterConfig =
@@ -69,7 +69,7 @@ class ParserConfigOverlayTest {
     }
 
     @Test
-    fun validOverlayableConfig_matchesExpected() = waitForTestToPass {
+    fun validOverlayableConfig_matchesExpected() = waitForSuccessWithTimeout {
         val inputStream = context.resources.openRawResource(R.raw.config_valid_overlayable)
 
         val safetyCenterConfig =
@@ -100,7 +100,7 @@ class ParserConfigOverlayTest {
     }
 
     @Test
-    fun invalidOverlayableConfig_StringResourceNameInvalid_throws() = waitForTestToPass {
+    fun invalidOverlayableConfig_StringResourceNameInvalid_throws() = waitForSuccessWithTimeout {
         val inputStream =
             context.resources.openRawResource(R.raw.config_string_resource_name_invalid_overlayable)
 
@@ -113,7 +113,8 @@ class ParserConfigOverlayTest {
             .hasMessageThat()
             .isEqualTo(
                 "Resource name \"@com.android.safetycenter.config.tests:string/reference_overlay" +
-                    "\" in static-safety-source.summary missing or invalid")
+                    "\" in static-safety-source.summary missing or invalid"
+            )
     }
 
     companion object {

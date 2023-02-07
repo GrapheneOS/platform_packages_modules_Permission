@@ -55,8 +55,10 @@ class ParserExceptionDetector : Detector(), OtherFileScanner, XmlScanner {
                 implementation =
                     Implementation(
                         ParserExceptionDetector::class.java,
-                        EnumSet.of(Scope.RESOURCE_FILE, Scope.OTHER)),
-                androidSpecific = true)
+                        EnumSet.of(Scope.RESOURCE_FILE, Scope.OTHER)
+                    ),
+                androidSpecific = true
+            )
 
         val STRING_MAP_BUILD_PHASE = 1
         val CONFIG_PARSE_PHASE = 2
@@ -80,8 +82,10 @@ class ParserExceptionDetector : Detector(), OtherFileScanner, XmlScanner {
     }
 
     override fun visitElement(context: XmlContext, element: Element) {
-        if (context.driver.phase != STRING_MAP_BUILD_PHASE ||
-            context.resourceFolderType != ResourceFolderType.VALUES) {
+        if (
+            context.driver.phase != STRING_MAP_BUILD_PHASE ||
+                context.resourceFolderType != ResourceFolderType.VALUES
+        ) {
             return
         }
         val name = element.getAttribute(ATTR_NAME)
@@ -100,8 +104,10 @@ class ParserExceptionDetector : Detector(), OtherFileScanner, XmlScanner {
 
     /** Implements OtherFileScanner and parses the XML config in the second phase */
     override fun run(context: Context) {
-        if (context.driver.phase != CONFIG_PARSE_PHASE ||
-            context.file.name != "safety_center_config.xml") {
+        if (
+            context.driver.phase != CONFIG_PARSE_PHASE ||
+                context.file.name != "safety_center_config.xml"
+        ) {
             return
         }
         val minSdk = FileSdk.getSdkQualifier(context.file)
@@ -123,13 +129,15 @@ class ParserExceptionDetector : Detector(), OtherFileScanner, XmlScanner {
                         // the target package or on packages that refer to Android global resources.
                         // However, we cannot use a custom linter with the default soong overlay
                         // build rule regardless.
-                        Resources(context.project.`package`, mNameToIndex, mIndexToValue))
+                        Resources(context.project.`package`, mNameToIndex, mIndexToValue)
+                    )
                 } catch (e: ParseException) {
                     context.report(
                         ISSUE,
                         Location.create(context.file),
                         "Parser exception at sdk=$sdk: \"${e.message}\", cause: " +
-                            "\"${e.cause?.message}\"")
+                            "\"${e.cause?.message}\""
+                    )
                 }
             }
         }

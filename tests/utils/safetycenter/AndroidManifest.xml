@@ -38,6 +38,15 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
+
+        <activity-alias android:name=".TestActivityExported"
+                        android:targetActivity=".TestActivity"
+                        android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.safetycenter.testing.action.TEST_ACTIVITY_EXPORTED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity-alias>
     </application>
 
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
