@@ -19,19 +19,26 @@ package com.android.safetycenter.testing
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.pm.PackageManager.ResolveInfoFlags
+import android.os.Build.VERSION_CODES.TIRAMISU
 import android.provider.Settings
+import androidx.annotation.RequiresApi
 
 /** A class that knows the Settings app package name. */
 object SettingsPackage {
 
     /** Returns the Settings app package name. */
+    @RequiresApi(TIRAMISU) // For call to resolveActivity with ResolveInfoFlags.
     fun Context.getSettingsPackageName() =
         packageManager
             .resolveActivity(
                 Intent(Settings.ACTION_SETTINGS),
-                PackageManager.MATCH_DEFAULT_ONLY or
-                    PackageManager.MATCH_DIRECT_BOOT_AWARE or
-                    PackageManager.MATCH_DIRECT_BOOT_UNAWARE
+                ResolveInfoFlags.of(
+                    (PackageManager.MATCH_DEFAULT_ONLY or
+                            PackageManager.MATCH_DIRECT_BOOT_AWARE or
+                            PackageManager.MATCH_DIRECT_BOOT_UNAWARE)
+                        .toLong()
+                )
             )!!
             .activityInfo
             .packageName

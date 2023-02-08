@@ -21,6 +21,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.Intent.FLAG_RECEIVER_FOREGROUND
 import android.content.pm.PackageManager.ResolveInfoFlags
+import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetySourceData
@@ -49,6 +50,7 @@ import kotlin.math.max
  * A class that provides [SafetySourceData] objects and associated constants to facilitate setting
  * up specific states in SafetyCenter for testing.
  */
+@RequiresApi(TIRAMISU)
 class SafetySourceTestData(private val context: Context) {
 
     /** A [PendingIntent] that redirects to the [TestActivity] page. */
