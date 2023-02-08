@@ -591,6 +591,5 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Onyesha ujumbe programu zinapofikia maandishi, picha au maudhui mengine uliyonakili"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Onyesha manenosiri"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Onyesha herufi kwa muda mfupi unapoandika"</string>
-    <!-- no translation found for permission_rationale_message_location (2153841534298068414) -->
-    <skip />
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"Maelezo ya programu yanasema kuwa inaweza kushiriki data na kampuni za wengine"</string>
 </resources>

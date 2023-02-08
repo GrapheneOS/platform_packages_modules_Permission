@@ -591,6 +591,5 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"အက်ပ်များက သင်မိတ္တူကူးထားသော စာသား၊ ပုံများ (သို့) အခြားအကြောင်းအရာကို သုံးသောအခါ အကြောင်းကြားပါ"</string>
     <string name="show_password_title" msgid="2877269286984684659">"စကားဝှက်များပြရန်"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"စာရိုက်သည့်အခါ အက္ခရာများကို ခဏတာပြသည်"</string>
-    <!-- no translation found for permission_rationale_message_location (2153841534298068414) -->
-    <skip />
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"ဤအက်ပ်က ၎င်းသည် ဒေတာကို ပြင်ပအဖွဲ့များနှင့် မျှဝေနိုင်ကြောင်း ဖော်ပြထားသည်"</string>
 </resources>

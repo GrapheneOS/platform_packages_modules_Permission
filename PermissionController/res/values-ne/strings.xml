@@ -341,7 +341,7 @@
     <string name="no_permissions_allowed" msgid="6081976856354669209">"कुनै पनि अनुमति छैन"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"कुनै पनि अनुमति अस्वीकार गरिएको छैन"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"कुनै पनि एपलाई अनुमति दिइएको छैन"</string>
-    <string name="no_apps_allowed_full" msgid="8011716991498934104">"सबै फाइलहरू कुनै पनि एपमा राख्न सकिँदैन"</string>
+    <string name="no_apps_allowed_full" msgid="8011716991498934104">"कुनै एपलाई सबै फाइलको अनुमति दिइएको छैन"</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"कुनै पनि एपलाई मिडिया फाइल मात्र प्रयोग गर्ने अनुमति दिइएको छैन"</string>
     <string name="no_apps_denied" msgid="7663435886986784743">"सबै एपलाई अनुमति दिइएको छ"</string>
     <string name="car_permission_selected" msgid="180837028920791596">"चयन गरिएको"</string>
@@ -591,6 +591,5 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"मैले कपी गरेका टेक्स्ट, फोटो वा अन्य सामग्री एपहरूले प्रयोग गर्दा म्यासेज देखाइयोस्"</string>
     <string name="show_password_title" msgid="2877269286984684659">"पासवर्डहरू देखाइयोस्"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"टाइप गर्दै गर्दा वर्णहरू झलक्क देखाइयोस्"</string>
-    <!-- no translation found for permission_rationale_message_location (2153841534298068414) -->
-    <skip />
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"यो एपले यसले लोकेसन डेटा तेस्रो पक्षसँग सेयर गर्न सक्छ भन्ने जानकारी दिएको छ"</string>
 </resources>

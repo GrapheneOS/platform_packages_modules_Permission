@@ -103,7 +103,7 @@
 
                     <RadioButton
                         android:id="@+id/select_photos_radio_button"
-                        android:text="@string/app_permission_button_select_photos"
+                        android:text="@string/app_permission_button_ask"
                         style="@style/AppPermissionRadioButton" />
 
                     <RadioButton

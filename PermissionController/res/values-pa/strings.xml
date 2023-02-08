@@ -591,6 +591,5 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"ਜਦੋਂ ਐਪਾਂ ਲਿਖਤ, ਚਿੱਤਰ ਜਾਂ ਤੁਹਾਡੇ ਵੱਲੋਂ ਕਾਪੀ ਕੀਤੀ ਹੋਰ ਸਮੱਗਰੀ ਤੱਕ ਪਹੁੰਚ ਕਰਦੀਆਂ ਹਨ, ਤਾਂ ਕੋਈ ਸੁਨੇਹਾ ਦਿਖਾਓ"</string>
     <string name="show_password_title" msgid="2877269286984684659">"ਪਾਸਵਰਡ ਦਿਖਾਓ"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"ਟਾਈਪ ਕਰਨ ਵੇਲੇ ਅੱਖਰ-ਚਿੰਨ੍ਹਾਂ ਨੂੰ ਥੋੜ੍ਹੇ ਸਮੇਂ ਲਈ ਦਿਖਾਓ"</string>
-    <!-- no translation found for permission_rationale_message_location (2153841534298068414) -->
-    <skip />
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"ਇਸ ਐਪ ਨੇ ਸਪਸ਼ਟ ਕੀਤਾ ਕਿ ਇਹ ਤੀਜੀਆਂ ਧਿਰਾਂ ਨਾਲ ਟਿਕਾਣੇ ਦੇ ਡਾਟੇ ਨੂੰ ਸਾਂਝਾ ਕਰ ਸਕਦੀ ਹੈ"</string>
 </resources>

@@ -394,7 +394,7 @@
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"କୌଣସି ଅନୁମତି ଆବଶ୍ୟକ ନାହିଁ"</string>
     <string name="role_automotive_navigation_label" msgid="2701890757955474751">"ଡିଫଲ୍ଟ ନାଭିଗେସନ ଆପ"</string>
     <string name="role_automotive_navigation_short_label" msgid="5165823092506922457">"ନାଭିଗେସନ ଆପ"</string>
-    <string name="role_automotive_navigation_description" msgid="7834601873792870134">"ଉଲ୍ଲେଖନୀୟ-ସ୍ଥାନର ସନ୍ଧାନ ଏବଂ ପର୍ଯ୍ୟାୟକ୍ରମେ ନାଭିଗେସନ ପାଇଁ ମାର୍ଗଦର୍ଶନର ସୁବିଧା ପ୍ରଦାନ କରିପାରୁଥିବା ଆପଗୁଡ଼ିକ"</string>
+    <string name="role_automotive_navigation_description" msgid="7834601873792870134">"ଉଲ୍ଲେଖନୀୟ-ସ୍ଥାନର ସର୍ଚ୍ଚ ଏବଂ ପର୍ଯ୍ୟାୟକ୍ରମେ ନାଭିଗେସନ ପାଇଁ ମାର୍ଗଦର୍ଶନର ସୁବିଧା ପ୍ରଦାନ କରିପାରୁଥିବା ଆପ୍ସ"</string>
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g>କୁ ଆପଣଙ୍କ ଡିଫଲ୍ଟ ନାଭିଗେସନ ଆପ ଭାବେ ସେଟ କରିବେ?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"କୌଣସି ଅନୁମତି ଆବଶ୍ୟକ ନାହିଁ"</string>
     <string name="role_watch_description" msgid="267003778693177779">"ଆପଣଙ୍କ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକ ସହ ଇଣ୍ଟରାକ୍ଟ କରିବା ଏବଂ ଆପଣଙ୍କ ଫୋନ୍, SMS, ଯୋଗାଯୋଗ ଓ କ୍ୟାଲେଣ୍ଡର ଅନୁମତିଗୁଡ଼ିକୁ ଆକ୍ସେସ୍ କରିବା ପାଇଁ <xliff:g id="APP_NAME">%1$s</xliff:g>କୁ ଅନୁମତି ଦିଆଯିବ।"</string>
@@ -591,6 +591,5 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"ଯେତେବେଳେ ଆପଣ କପି କରିଥିବା ଟେକ୍ସଟ, ଇମେଜ କିମ୍ବା ଅନ୍ୟ ବିଷୟବସ୍ତୁକୁ ଆପ୍ସ ଆକ୍ସେସ କରେ, ସେତେବେଳେ ଏକ ମେସେଜ ଦେଖାନ୍ତୁ"</string>
     <string name="show_password_title" msgid="2877269286984684659">"ପାସୱାର୍ଡଗୁଡ଼ିକ ଦେଖାନ୍ତୁ"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"ଆପଣ ଟାଇପ କରିବା ସମୟରେ କେରେକ୍ଟରଗୁଡ଼ିକୁ କିଛି ସମୟ ପାଇଁ ଡିସପ୍ଲେ କରନ୍ତୁ"</string>
-    <!-- no translation found for permission_rationale_message_location (2153841534298068414) -->
-    <skip />
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"ଏହି ଆପ ଉଲ୍ଲେଖ କରିଛି ଯେ ଏହା ତୃତୀୟ ପକ୍ଷଗୁଡ଼ିକ ସହ ଲୋକେସନ ଡାଟା ସେୟାର କରିପାରେ"</string>
 </resources>

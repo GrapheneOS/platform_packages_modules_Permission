@@ -451,11 +451,6 @@ class AppPermissionViewModel(
         }
     }
 
-    fun openPhotoPicker(onResult: Consumer<Int>) {
-        photoPickerResultConsumer = onResult
-        photoPickerLauncher?.launch(Unit)
-    }
-
     private fun isFineLocationChecked(group: LightAppPermGroup): Boolean {
         if (shouldShowLocationAccuracy == true) {
             val coarseLocation = group.permissions[ACCESS_COARSE_LOCATION]!!

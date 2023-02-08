@@ -591,6 +591,5 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"तुम्ही कॉपी केलेला मजकूर, इमेज किंवा इतर आशय ॲप्स अ‍ॅक्सेस करतात तेव्हा, मेसेज दाखवा"</string>
     <string name="show_password_title" msgid="2877269286984684659">"पासवर्ड दाखवा"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"तुम्ही टाइप कराल त्‍याप्रमाणे वर्ण थोडक्‍यात डिस्प्ले करा"</string>
-    <!-- no translation found for permission_rationale_message_location (2153841534298068414) -->
-    <skip />
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"हे अ‍ॅप तृतीय पक्षांसोबत स्थान डेटा शेअर करू शकते असे या अ‍ॅपने नमूद केले आहे"</string>
 </resources>

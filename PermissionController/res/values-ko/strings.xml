@@ -591,6 +591,5 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"앱이 복사된 텍스트, 이미지 또는 기타 콘텐츠에 액세스할 때 메시지 표시"</string>
     <string name="show_password_title" msgid="2877269286984684659">"비밀번호 표시"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"입력할 때 잠깐 표시"</string>
-    <!-- no translation found for permission_rationale_message_location (2153841534298068414) -->
-    <skip />
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"앱에서 위치 데이터를 서드 파티와 공유할 수 있다고 명시했습니다."</string>
 </resources>

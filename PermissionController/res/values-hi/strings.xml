@@ -591,6 +591,5 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"जब कोई ऐप्लिकेशन आपके कॉपी किए गए टेक्स्ट, इमेज या अन्य कॉन्टेंट को ऐक्सेस करे, तो मैसेज से इसकी सूचना पाएं"</string>
     <string name="show_password_title" msgid="2877269286984684659">"पासवर्ड दिखाएं"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"टाइप करते समय वर्ण दिखाएं"</string>
-    <!-- no translation found for permission_rationale_message_location (2153841534298068414) -->
-    <skip />
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"इस ऐप्लिकेशन ने बताया है कि यह जगह की जानकारी का डेटा, तीसरे पक्ष के साथ शेयर कर सकता है"</string>
 </resources>
