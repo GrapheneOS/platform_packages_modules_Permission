@@ -39,6 +39,8 @@ import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.privacysources.WorkPolicyInfo.Companion.WORK_POLICY_INFO_SOURCE_ID
 import com.android.permissioncontroller.privacysources.v34.AppDataSharingUpdatesPrivacySource
 import com.android.permissioncontroller.privacysources.v34.AppDataSharingUpdatesPrivacySource.Companion.APP_DATA_SHARING_UPDATES_SOURCE_ID
+import com.android.permissioncontroller.privacysources.v34.HealthConnectPrivacySource
+import com.android.permissioncontroller.privacysources.v34.HealthConnectPrivacySource.Companion.HEALTH_CONNECT_SOURCE_ID
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Default
@@ -57,6 +59,7 @@ private fun createMapOfSourceIdsToSources(context: Context): Map<String, Privacy
 
     if (SdkLevel.isAtLeastU()) {
         sourceMap[APP_DATA_SHARING_UPDATES_SOURCE_ID] = AppDataSharingUpdatesPrivacySource()
+        sourceMap[HEALTH_CONNECT_SOURCE_ID] = HealthConnectPrivacySource()
     }
 
     return sourceMap
@@ -82,7 +85,8 @@ class SafetyCenterReceiver(
         val safetyCenterManager: SafetyCenterManager =
             Utils.getSystemServiceSafe(
                 PermissionControllerApplication.get().applicationContext,
-                SafetyCenterManager::class.java)
+                SafetyCenterManager::class.java
+            )
 
         val mapOfSourceIdsToSources = getMapOfSourceIdsToSources(context)
 
@@ -91,7 +95,8 @@ class SafetyCenterReceiver(
                 safetyCenterEnabledChanged(
                     context,
                     safetyCenterManager.isSafetyCenterEnabled,
-                    mapOfSourceIdsToSources.values)
+                    mapOfSourceIdsToSources.values
+                )
             }
             ACTION_REFRESH_SAFETY_SOURCES -> {
                 if (safetyCenterManager.isSafetyCenterEnabled) {
@@ -102,11 +107,11 @@ class SafetyCenterReceiver(
                             intent,
                             RefreshEvent.EVENT_REFRESH_REQUESTED,
                             mapOfSourceIdsToSources,
-                            sourceIdsExtra.toList())
+                            sourceIdsExtra.toList()
+                        )
                     }
                 }
             }
-
             ACTION_BOOT_COMPLETED -> {
                 updateTileVisibility(context, safetyCenterManager.isSafetyCenterEnabled)
                 if (safetyCenterManager.isSafetyCenterEnabled) {
@@ -115,7 +120,8 @@ class SafetyCenterReceiver(
                         intent,
                         RefreshEvent.EVENT_DEVICE_REBOOTED,
                         mapOfSourceIdsToSources,
-                        mapOfSourceIdsToSources.keys.toList())
+                        mapOfSourceIdsToSources.keys.toList()
+                    )
                 }
             }
         }
@@ -142,18 +148,23 @@ class SafetyCenterReceiver(
             context.packageManager?.getComponentEnabledSetting(tileComponent) !=
                 PackageManager.COMPONENT_ENABLED_STATE_DISABLED
         val qsTileComponentSettingFlags =
-            DeviceConfig.getInt(DeviceConfig.NAMESPACE_PRIVACY, QS_TILE_COMPONENT_SETTING_FLAGS,
-            PackageManager.DONT_KILL_APP)
+            DeviceConfig.getInt(
+                DeviceConfig.NAMESPACE_PRIVACY,
+                QS_TILE_COMPONENT_SETTING_FLAGS,
+                PackageManager.DONT_KILL_APP
+            )
         if (enabled && !wasEnabled) {
             context.packageManager.setComponentEnabledSetting(
                 tileComponent,
                 PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
-                qsTileComponentSettingFlags)
+                qsTileComponentSettingFlags
+            )
         } else if (!enabled && wasEnabled) {
             context.packageManager.setComponentEnabledSetting(
                 tileComponent,
                 PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-                qsTileComponentSettingFlags)
+                qsTileComponentSettingFlags
+            )
         }
     }
 
