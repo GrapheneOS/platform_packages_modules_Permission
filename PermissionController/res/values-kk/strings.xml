@@ -591,6 +591,5 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Қолданбалар көшірілген мәтінді, суреттерді немесе басқа контентті пайдаланған кезде хабар көрсету"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Құпия сөздерді көрсету"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Таңбалар терілген кезде аз уақыт көрсетіледі."</string>
-    <!-- no translation found for permission_rationale_message_location (2153841534298068414) -->
-    <skip />
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"Бұл қолданба геодеректі үшінші тараптармен бөлісуі мүмкін екенін мәлімдеді."</string>
 </resources>

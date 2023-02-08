@@ -591,6 +591,5 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"යෙදුම් ඔබ පිටපත් කර ඇති පාඨ, රූප හෝ වෙනත් අන්තර්ගතය වෙත ප්‍රවේශ වන විට පණිවුඩයක් පෙන්වන්න"</string>
     <string name="show_password_title" msgid="2877269286984684659">"මුරපද පෙන්වන්න"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"ඔබ ටයිප් කරන විට අනුලකුණු කෙටියෙන් පෙන්වන්න"</string>
-    <!-- no translation found for permission_rationale_message_location (2153841534298068414) -->
-    <skip />
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"මෙම යෙදුම තෙවන පාර්ශ්වයන් සමග ස්ථාන දත්ත බෙදා ගත හැකි බව ප්‍රකාශ කර ඇත"</string>
 </resources>

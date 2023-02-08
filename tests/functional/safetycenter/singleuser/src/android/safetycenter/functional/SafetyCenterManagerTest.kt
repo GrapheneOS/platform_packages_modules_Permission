@@ -16,7 +16,9 @@
 
 package android.safetycenter.functional
 
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
@@ -67,6 +69,7 @@ import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.rep
 import com.android.safetycenter.testing.SafetyCenterFlags
 import com.android.safetycenter.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import com.android.safetycenter.testing.SafetyCenterTestConfigs
+import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.ACTION_TEST_ACTIVITY_EXPORTED
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.ANDROID_LOCK_SCREEN_SOURCES_GROUP_ID
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.DYNAMIC_ALL_OPTIONAL_ID
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.DYNAMIC_BAREBONE_ID
@@ -111,6 +114,7 @@ import com.android.safetycenter.testing.SafetySourceTestData.Companion.CRITICAL_
 import com.android.safetycenter.testing.SafetySourceTestData.Companion.EVENT_SOURCE_STATE_CHANGED
 import com.android.safetycenter.testing.SafetySourceTestData.Companion.INFORMATION_ISSUE_ID
 import com.android.safetycenter.testing.SafetySourceTestData.Companion.RECOMMENDATION_ISSUE_ID
+import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
 import com.google.common.base.Preconditions.checkState
 import com.google.common.truth.Truth.assertThat
 import java.time.Duration
@@ -792,6 +796,28 @@ class SafetyCenterManagerTest {
         val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
 
         assertThat(apiSafetyCenterData).isEqualTo(safetyCenterDataFromConfig)
+    }
+
+    @Test
+    fun getSafetyCenterData_withoutDataImplicitIntentConfig_defaultEntryHasImplicitIntent() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.implicitIntentSingleSourceConfig)
+
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+
+        val implicitPendingIntentCreatedByCts =
+            PendingIntent.getActivity(
+                context,
+                0 /* requestCode */,
+                Intent(ACTION_TEST_ACTIVITY_EXPORTED),
+                PendingIntent.FLAG_IMMUTABLE
+            )
+        val defaultEntryPendingIntent =
+            apiSafetyCenterData.entriesOrGroups.firstOrNull()?.entry?.pendingIntent
+        val defaultEntryIntentFilterEqualsToImplicitIntent =
+            callWithShellPermissionIdentity("android.permission.GET_INTENT_SENDER_INTENT") {
+                implicitPendingIntentCreatedByCts.intentFilterEquals(defaultEntryPendingIntent)
+            }
+        assertThat(defaultEntryIntentFilterEqualsToImplicitIntent).isTrue()
     }
 
     @Test

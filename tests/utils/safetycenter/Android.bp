@@ -20,7 +20,7 @@ package {
 android_library {
     name: "safety-center-test-util-lib",
     sdk_version: "test_current",
-    min_sdk_version: "30",
+    min_sdk_version: "29",
     srcs: [
         "java/**/*.kt",
     ],
@@ -41,4 +41,8 @@ android_library {
         "test_com.android.permission",
     ],
     installable: false,
+    visibility: [
+        "//packages/modules/Permission:__subpackages__",
+        "//vendor:__subpackages__",
+    ],
 }

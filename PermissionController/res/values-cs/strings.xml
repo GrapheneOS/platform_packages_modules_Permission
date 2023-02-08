@@ -591,6 +591,5 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Zobrazovat zprávu, když aplikace použijí text, obrázky nebo jiný obsah, který jste zkopírovali"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Zobrazovat hesla"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Při psaní se budou krátce zobrazovat zadané znaky"</string>
-    <!-- no translation found for permission_rationale_message_location (2153841534298068414) -->
-    <skip />
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"Tato aplikace uvedla, že může sdílet údaje o poloze se třetími stranami"</string>
 </resources>

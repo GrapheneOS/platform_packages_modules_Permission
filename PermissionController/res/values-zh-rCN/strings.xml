@@ -591,6 +591,5 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"系统会在应用访问您复制的文字、图片或其他内容时显示一条消息"</string>
     <string name="show_password_title" msgid="2877269286984684659">"显示密码"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"输入时短暂显示字符"</string>
-    <!-- no translation found for permission_rationale_message_location (2153841534298068414) -->
-    <skip />
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"此应用已声明它可能会与第三方共享位置数据"</string>
 </resources>
