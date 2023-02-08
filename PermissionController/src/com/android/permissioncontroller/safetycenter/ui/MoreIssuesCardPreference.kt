@@ -17,102 +17,44 @@
 package com.android.permissioncontroller.safetycenter.ui
 
 import android.content.Context
-import android.safetycenter.SafetyCenterIssue
-import android.util.Log
-import android.widget.ImageView
-import android.widget.TextView
+import android.os.Build
 import androidx.annotation.DrawableRes
-import androidx.core.view.ViewCompat
-import androidx.core.view.accessibility.AccessibilityNodeInfoCompat.AccessibilityActionCompat.ACTION_CLICK
+import androidx.annotation.RequiresApi
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
 import com.android.permissioncontroller.R
-import com.android.permissioncontroller.permission.utils.StringUtils
-import java.text.NumberFormat
+import com.android.permissioncontroller.safetycenter.ui.view.MoreIssuesHeaderView
 
 /** A preference that displays a card linking to a list of more {@link SafetyCenterIssue}. */
-class MoreIssuesCardPreference(
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
+internal class MoreIssuesCardPreference(
     context: Context,
     @DrawableRes val preferenceWidgetIconResourceId: Int,
-    val previousMoreIssuesCardData: MoreIssuesCardData?,
-    val newMoreIssuesCardData: MoreIssuesCardData,
-    val onClickListener: OnPreferenceClickListener
+    private var previousMoreIssuesCardData: MoreIssuesCardData?,
+    private var newMoreIssuesCardData: MoreIssuesCardData,
+    private val onClickListener: () -> Unit
 ) : Preference(context), ComparablePreference {
-
-    private var moreIssuesCardAnimator = MoreIssuesCardAnimator()
 
     init {
         layoutResource = R.layout.preference_more_issues_card
-        widgetLayoutResource = R.layout.preference_expand_more_issues_widget
-        onPreferenceClickListener = onClickListener
     }
 
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
         super.onBindViewHolder(holder)
 
-        val statusIcon = holder.findViewById(R.id.status_icon) as ImageView
-        setCurrentSeverityLevel(statusIcon)
-        val widgetIcon = holder.findViewById(R.id.widget_icon) as ImageView
-        widgetIcon.setImageResource(preferenceWidgetIconResourceId)
-        val widgetTitle = holder.findViewById(R.id.widget_title) as TextView
-        updateHiddenIssueCount(widgetTitle)
-
-        val expansionString =
-            StringUtils.getIcuPluralsString(
-                context,
-                R.string.safety_center_more_issues_card_expand_action,
-                newMoreIssuesCardData.hiddenIssueCount)
-        // Replacing the on-click label to indicate the number of hidden issues. The on-click
-        // command is set to null so that it uses the existing expansion behaviour.
-        ViewCompat.replaceAccessibilityAction(holder.itemView, ACTION_CLICK, expansionString, null)
+        val issueHeaderView = holder.itemView as MoreIssuesHeaderView
+        issueHeaderView.showExpandableHeader(
+            previousMoreIssuesCardData,
+            newMoreIssuesCardData,
+            context.getString(R.string.safety_center_more_issues_card_title),
+            onClickListener
+        )
     }
 
-    private fun updateHiddenIssueCount(textView: TextView) {
-        moreIssuesCardAnimator.cancelTextChangeAnimation(textView)
-
-        val numberFormat = NumberFormat.getInstance()
-        val previousText = previousMoreIssuesCardData?.hiddenIssueCount?.let(numberFormat::format)
-        val newText = numberFormat.format(newMoreIssuesCardData.hiddenIssueCount)
-        val animateTextChange = !previousText.isNullOrEmpty() && previousText != newText
-
-        if (animateTextChange) {
-            textView.text = previousText
-            moreIssuesCardAnimator.animateChangeText(textView, newText)
-        } else {
-            textView.text = newText
-        }
-    }
-
-    private fun setCurrentSeverityLevel(statusIcon: ImageView) {
-        moreIssuesCardAnimator.cancelStatusAnimation(statusIcon)
-
-        if (previousMoreIssuesCardData != null &&
-            previousMoreIssuesCardData.severityLevel != newMoreIssuesCardData.severityLevel) {
-            moreIssuesCardAnimator.animateStatusIconsChange(
-                statusIcon,
-                previousMoreIssuesCardData.severityLevel,
-                newMoreIssuesCardData.severityLevel,
-                selectIconResId(newMoreIssuesCardData.severityLevel))
-        } else {
-            statusIcon.setImageResource(selectIconResId(newMoreIssuesCardData.severityLevel))
-        }
-    }
-
-    @DrawableRes
-    private fun selectIconResId(severityLevel: Int): Int {
-        return when (severityLevel) {
-            SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_OK -> R.drawable.ic_safety_info
-            SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_RECOMMENDATION ->
-                R.drawable.ic_safety_recommendation
-            SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_CRITICAL_WARNING -> R.drawable.ic_safety_warn
-            else -> {
-                Log.e(
-                    TAG,
-                    String.format(
-                        "Unexpected SafetyCenterIssue.IssueSeverityLevel: %d", severityLevel))
-                R.drawable.ic_safety_null_state
-            }
-        }
+    fun setNewMoreIssuesCardData(moreIssuesCardData: MoreIssuesCardData) {
+        previousMoreIssuesCardData = newMoreIssuesCardData
+        newMoreIssuesCardData = moreIssuesCardData
+        notifyChanged()
     }
 
     override fun isSameItem(preference: Preference): Boolean {
@@ -131,4 +73,8 @@ class MoreIssuesCardPreference(
     }
 }
 
-data class MoreIssuesCardData(val severityLevel: Int, val hiddenIssueCount: Int)
+internal data class MoreIssuesCardData(
+    val severityLevel: Int,
+    val hiddenIssueCount: Int,
+    val isExpanded: Boolean
+)

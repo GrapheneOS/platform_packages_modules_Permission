@@ -388,6 +388,8 @@
 
             <item type="drawable" name="ic_check" />
             <item type="drawable" name="ic_chevron_right" />
+            <item type="drawable" name="ic_collapse_issues" />
+            <item type="drawable" name="ic_expand_issues" />
             <item type="drawable" name="ic_expand_less" />
             <item type="drawable" name="ic_expand_more" />
             <item type="drawable" name="ic_privacy" />
@@ -403,6 +405,8 @@
             <item type="drawable" name="ic_settings_gear" />
             <item type="drawable" name="ic_settings_info" />
             <item type="drawable" name="indicator_background_circle" />
+            <item type="drawable" name="more_issues_collapse_anim" />
+            <item type="drawable" name="more_issues_expand_anim" />
             <item type="drawable" name="safety_center_card_background" />
             <item type="drawable" name="safety_center_card_widget_background" />
             <item type="drawable" name="safety_center_group_collapse_anim" />
