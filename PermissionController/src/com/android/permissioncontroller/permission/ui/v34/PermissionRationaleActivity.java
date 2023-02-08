@@ -182,7 +182,7 @@ public class PermissionRationaleActivity extends SettingsActivity implements
                 || DeviceUtils.isAuto(this)) {
             finishAfterTransition();
         } else {
-            var shouldShowSettingsSection =
+            boolean shouldShowSettingsSection =
                     getIntent().getBooleanExtra(EXTRA_SHOULD_SHOW_SETTINGS_SECTION, true);
             mViewHandler = new PermissionRationaleViewHandlerImpl(this, this,
                     shouldShowSettingsSection);
