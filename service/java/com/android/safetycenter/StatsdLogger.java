@@ -32,6 +32,7 @@ import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_SYSTEM_EVE
 import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_SYSTEM_EVENT_REPORTED__SAFETY_SOURCE_PROFILE_TYPE__PROFILE_TYPE_PERSONAL;
 import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_SYSTEM_EVENT_REPORTED__SAFETY_SOURCE_PROFILE_TYPE__PROFILE_TYPE_UNKNOWN;
 import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED;
+import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__COLLECTION_TYPE__AUTOMATIC;
 import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SAFETY_SOURCE_PROFILE_TYPE__PROFILE_TYPE_MANAGED;
 import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SAFETY_SOURCE_PROFILE_TYPE__PROFILE_TYPE_PERSONAL;
 import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SEVERITY_LEVEL__SAFETY_SEVERITY_CRITICAL_WARNING;
@@ -39,6 +40,8 @@ import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLL
 import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SEVERITY_LEVEL__SAFETY_SEVERITY_OK;
 import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SEVERITY_LEVEL__SAFETY_SEVERITY_RECOMMENDATION;
 import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SEVERITY_LEVEL__SAFETY_SEVERITY_UNSPECIFIED;
+import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__SOURCE_STATE_UNKNOWN;
+import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__UPDATE_TYPE__UPDATE_TYPE_UNKNOWN;
 import static com.android.permission.PermissionStatsLog.SAFETY_STATE;
 import static com.android.permission.PermissionStatsLog.SAFETY_STATE__OVERALL_SEVERITY_LEVEL__SAFETY_SEVERITY_CRITICAL_WARNING;
 import static com.android.permission.PermissionStatsLog.SAFETY_STATE__OVERALL_SEVERITY_LEVEL__SAFETY_SEVERITY_LEVEL_UNKNOWN;
@@ -145,7 +148,20 @@ final class StatsdLogger {
                 profileType,
                 toSafetySourceStateCollectedSeverityLevel(sourceSeverityLevel),
                 openIssuesCount,
-                dismissedIssuesCount);
+                dismissedIssuesCount,
+                // TODO(b/268307189): Implement logging for dismissed issues.
+                /* duplicateFilteredOutIssuesCount= */ 0L,
+                // TODO(b/268309177): Implement source state logging
+                SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__SOURCE_STATE_UNKNOWN,
+                // TODO(b/268309211): Record this event when sources provide data
+                SAFETY_SOURCE_STATE_COLLECTED__COLLECTION_TYPE__AUTOMATIC,
+                // TODO(b/268309213): Log updateType, refreshReason, and dataChanged when sources
+                // update their data.
+                SAFETY_SOURCE_STATE_COLLECTED__UPDATE_TYPE__UPDATE_TYPE_UNKNOWN,
+                /* refreshReason= */ 0L,
+                /* dataChanged= */ false,
+                // TODO(b/268311158): Implement last updated time logging
+                /* lastUpdatedElapsedTimeMillis= */ 0L);
     }
 
     /**
@@ -168,7 +184,10 @@ final class StatsdLogger {
                 toSystemEventProfileType(userId),
                 UNSET_ISSUE_TYPE_ID,
                 duration.toMillis(),
-                result);
+                result,
+                // TODO(b/268328334): Track refreshReason and dataChanged for system events
+                /* refreshReason= */ 0L,
+                /* dataChanged= */ false);
     }
 
     /**
@@ -189,7 +208,10 @@ final class StatsdLogger {
                 SAFETY_CENTER_SYSTEM_EVENT_REPORTED__SAFETY_SOURCE_PROFILE_TYPE__PROFILE_TYPE_UNKNOWN,
                 UNSET_ISSUE_TYPE_ID,
                 duration.toMillis(),
-                result);
+                result,
+                // TODO(b/268328334): Track refreshReason and dataChanged for system events
+                /* refreshReason= */ 0L,
+                /* dataChanged= */ false);
     }
 
     /**
@@ -212,7 +234,11 @@ final class StatsdLogger {
                 toSystemEventProfileType(userId),
                 issueTypeId == null ? UNSET_ISSUE_TYPE_ID : idStringToLong(issueTypeId),
                 duration.toMillis(),
-                result);
+                result,
+                // Fields aren't relevant for inline action events, but must be written anyway due
+                // to the statsd APIs:
+                /* refreshReason= */ 0,
+                /* dataChanged= */ false);
     }
 
     /**
