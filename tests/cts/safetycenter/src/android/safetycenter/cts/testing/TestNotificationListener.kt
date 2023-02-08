@@ -288,7 +288,7 @@ class TestNotificationListener : NotificationListenerService() {
             // and that race makes tests flaky because the dismissal status of the previous
             // notification is not well defined.
             fun dumpIssueDismissalsRepositoryState(): String =
-                SystemUtil.runShellCommand("dumpsys safety_center dismissals")
+                SystemUtil.runShellCommand("dumpsys safety_center data")
             try {
                 waitForWithTimeout {
                     dumpIssueDismissalsRepositoryState()

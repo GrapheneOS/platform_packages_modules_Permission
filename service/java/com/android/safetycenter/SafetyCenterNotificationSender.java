@@ -38,8 +38,7 @@ import android.util.Log;
 import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.build.SdkLevel;
-import com.android.safetycenter.data.SafetyCenterIssueDismissalRepository;
-import com.android.safetycenter.data.SafetyCenterIssueRepository;
+import com.android.safetycenter.data.SafetyCenterDataManager;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 
@@ -96,10 +95,7 @@ final class SafetyCenterNotificationSender {
 
     @NonNull private final SafetyCenterNotificationFactory mNotificationFactory;
 
-    @NonNull
-    private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
-
-    @NonNull private final SafetyCenterIssueRepository mSafetyCenterIssueRepository;
+    @NonNull private final SafetyCenterDataManager mSafetyCenterDataManager;
 
     private final ArrayMap<SafetyCenterIssueKey, SafetySourceIssue> mNotifiedIssues =
             new ArrayMap<>();
@@ -107,12 +103,10 @@ final class SafetyCenterNotificationSender {
     SafetyCenterNotificationSender(
             @NonNull Context context,
             @NonNull SafetyCenterNotificationFactory notificationFactory,
-            @NonNull SafetyCenterIssueDismissalRepository safetyCenterIssueDismissalRepository,
-            @NonNull SafetyCenterIssueRepository safetyCenterIssueRepository) {
+            @NonNull SafetyCenterDataManager safetyCenterDataManager) {
         mContext = context;
         mNotificationFactory = notificationFactory;
-        mSafetyCenterIssueDismissalRepository = safetyCenterIssueDismissalRepository;
-        mSafetyCenterIssueRepository = safetyCenterIssueRepository;
+        mSafetyCenterDataManager = safetyCenterDataManager;
     }
 
     /** Updates Safety Center notifications for the given {@link UserProfileGroup}. */
@@ -200,7 +194,7 @@ final class SafetyCenterNotificationSender {
             @UserIdInt int userId) {
         ArrayMap<SafetyCenterIssueKey, SafetySourceIssue> result = new ArrayMap<>();
         List<SafetySourceIssueInfo> allIssuesInfo =
-                mSafetyCenterIssueRepository.getIssuesForUser(userId);
+                mSafetyCenterDataManager.getIssuesForUser(userId);
 
         Duration minNotificationsDelay = SafetyCenterFlags.getNotificationsMinDelay();
 
@@ -214,8 +208,7 @@ final class SafetyCenterNotificationSender {
             }
 
             // TODO(b/266680614): Notification resurfacing
-            Instant dismissedAt =
-                    mSafetyCenterIssueDismissalRepository.getNotificationDismissedAt(issueKey);
+            Instant dismissedAt = mSafetyCenterDataManager.getNotificationDismissedAt(issueKey);
             if (dismissedAt != null) {
                 continue;
             }
@@ -224,8 +217,7 @@ final class SafetyCenterNotificationSender {
             // corresponding notification, but it is still necessary to check the issue dismissal
             // status, in addition to the notification dismissal (above) because some issues were
             // dismissed by an earlier version of the code which lacked this functionality.
-            if (mSafetyCenterIssueDismissalRepository.isIssueDismissed(
-                    issueKey, issue.getSeverityLevel())) {
+            if (mSafetyCenterDataManager.isIssueDismissed(issueKey, issue.getSeverityLevel())) {
                 continue;
             }
 
@@ -236,7 +228,7 @@ final class SafetyCenterNotificationSender {
                 result.put(issueKey, issue);
             } else if (behavior == NOTIFICATION_BEHAVIOR_INTERNAL_DELAYED) {
                 Instant delayedNotificationTime =
-                        mSafetyCenterIssueDismissalRepository
+                        mSafetyCenterDataManager
                                 .getIssueFirstSeenAt(issueKey)
                                 .plus(minNotificationsDelay);
                 if (Instant.now().isAfter(delayedNotificationTime)) {
