@@ -54,15 +54,20 @@ import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_RECOMMENDATION
 import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED
 import android.safetycenter.SafetySourceErrorDetails
 import android.safetycenter.SafetySourceIssue
+import android.safetycenter.config.SafetyCenterConfig
+import android.safetycenter.config.SafetySource
+import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import com.android.compatibility.common.preconditions.ScreenLockHelper
+import com.android.safetycenter.internaldata.SafetyCenterIds
 import com.android.safetycenter.resources.SafetyCenterResourcesContext
 import com.android.safetycenter.testing.Coroutines.TIMEOUT_LONG
 import com.android.safetycenter.testing.Coroutines.TIMEOUT_SHORT
 import com.android.safetycenter.testing.Coroutines.waitForWithTimeout
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.dismissSafetyCenterIssueWithPermission
+import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.getSafetyCenterConfigWithPermission
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.getSafetyCenterDataWithPermission
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.refreshSafetySourcesWithPermission
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.reportSafetySourceErrorWithPermission
@@ -114,6 +119,7 @@ import com.android.safetycenter.testing.SafetySourceTestData.Companion.CRITICAL_
 import com.android.safetycenter.testing.SafetySourceTestData.Companion.EVENT_SOURCE_STATE_CHANGED
 import com.android.safetycenter.testing.SafetySourceTestData.Companion.INFORMATION_ISSUE_ID
 import com.android.safetycenter.testing.SafetySourceTestData.Companion.RECOMMENDATION_ISSUE_ID
+import com.android.safetycenter.testing.SettingsPackage.getSettingsPackageName
 import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
 import com.google.common.base.Preconditions.checkState
 import com.google.common.truth.Truth.assertThat
@@ -3203,6 +3209,44 @@ class SafetyCenterManagerTest {
     }
 
     @Test
+    fun refreshSafetySources_forSettingsSources_providesDataToSafetyCenter() {
+        val settingsSourcesWithEntries =
+            safetyCenterManager.getSafetyCenterConfigWithPermission().getDynamicSettingsSources()
+        assumeFalse(settingsSourcesWithEntries.isEmpty())
+        val listener = safetyCenterTestHelper.addListener()
+
+        safetyCenterManager.refreshSafetySourcesWithPermission(REFRESH_REASON_RESCAN_BUTTON_CLICK)
+
+        // Wait until some data is provided by all the Settings sources that have a user-visible
+        // entry. This will exclude the hidden-by-default entries (unless some data ends up being
+        // provided for them).
+        waitForWithTimeout {
+            val data = listener.receiveSafetyCenterData()
+            val entries =
+                data.entriesOrGroups.flatMap {
+                    val entry = it.entry
+                    if (entry != null) {
+                        listOf(entry)
+                    } else {
+                        it.entryGroup!!.entries
+                    }
+                }
+            val visibleSettingsEntries =
+                settingsSourcesWithEntries.mapNotNull { settingsSource ->
+                    entries.find { entry ->
+                        val entrySourceId =
+                            SafetyCenterIds.entryIdFromString(entry.id).safetySourceId
+                        entrySourceId == settingsSource.id
+                    }
+                }
+            val visibleSettingEntriesHaveData =
+                visibleSettingsEntries.all { it.severityLevel != ENTRY_SEVERITY_LEVEL_UNKNOWN }
+
+            visibleSettingEntriesHaveData
+        }
+    }
+
+    @Test
     fun lockScreenSource_withoutReplaceLockScreenIconActionFlag_doesntReplace() {
         // Must have a screen lock for the icon action to be set
         assumeTrue(ScreenLockHelper.isDeviceSecure(context))
@@ -3244,6 +3288,18 @@ class SafetyCenterManagerTest {
 
     private fun SafetyCenterData.getGroup(groupId: String): SafetyCenterEntryGroup =
         entriesOrGroups.first { it.entryGroup?.id == groupId }.entryGroup!!
+
+    private fun SafetyCenterConfig?.getDynamicSettingsSources(): List<SafetySource> {
+        if (this == null) {
+            return emptyList()
+        }
+        return safetySourcesGroups
+            .flatMap { it.safetySources }
+            .filter {
+                it.type == SAFETY_SOURCE_TYPE_DYNAMIC &&
+                    it.packageName == context.getSettingsPackageName()
+            }
+    }
 
     companion object {
         private val RESURFACE_DELAY = Duration.ofMillis(500)
