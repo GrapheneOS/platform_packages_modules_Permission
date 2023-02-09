@@ -47,9 +47,6 @@ java_library {
         "framework-annotations-lib",
         "unsupportedappusage",
     ],
-    static_libs: [
-        "modules-utils-build",
-    ],
     apex_available: [
         "com.android.permission",
         "test_com.android.permission",
@@ -71,6 +68,7 @@ java_sdk_library {
     ],
     static_libs: [
         "framework-permission-s-shared",
+        "modules-utils-build",
     ],
     apex_available: [
         "com.android.permission",
@@ -83,7 +81,7 @@ java_sdk_library {
         "//packages/modules/Permission:__subpackages__",
     ],
     installable: true,
-    jarjar_rules: ":permission-jarjar-rules",
+    jarjar_rules: "jarjar-rules.txt",
     lint: {
         strict_updatability_linting: true,
     },
@@ -93,8 +91,6 @@ java_sdk_library {
         "android.app.role",
         "android.safetycenter",
         "android.safetylabel",
-        // For com.android.permission.jarjar.
-        "com.android.permission",
     ],
 }
 
