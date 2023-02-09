@@ -97,7 +97,7 @@ class AppDataSharingUpdatesViewModel(app: Application) {
         // TODO(b/264811607): This code serves to ensures that there is some UI to see when testing
         //  feature locally. Remove when app stores start providing safety labels.
         if (DeviceConfig.getBoolean(
-            DeviceConfig.NAMESPACE_PRIVACY, PLACEHOLDER_SAFETY_LABEL_UPDATES_FLAG, false)) {
+            DeviceConfig.NAMESPACE_PRIVACY, PLACEHOLDER_SAFETY_LABEL_UPDATES_ENABLED, false)) {
             updateUiInfoList.add(
                 AppLocationDataSharingUpdateUiInfo(
                     PLACEHOLDER_PACKAGE_NAME_1,
@@ -189,7 +189,7 @@ class AppDataSharingUpdatesViewModel(app: Application) {
 
         private const val PLACEHOLDER_PACKAGE_NAME_1 = "com.android.systemui"
         private const val PLACEHOLDER_PACKAGE_NAME_2 = "com.android.bluetooth"
-        private const val PLACEHOLDER_SAFETY_LABEL_UPDATES_FLAG =
-            "placeholder_safety_label_updates_flag"
+        private const val PLACEHOLDER_SAFETY_LABEL_UPDATES_ENABLED =
+            "placeholder_safety_label_updates_enabled"
     }
 }
