@@ -24,11 +24,14 @@ import android.content.Intent.ACTION_SAFETY_CENTER
 import android.content.Intent.ACTION_VIEW_SAFETY_CENTER_QS
 import android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
+import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.Bundle
+import androidx.annotation.RequiresApi
 import com.android.compatibility.common.util.UiAutomatorUtils2.getUiDevice
 import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
 
 /** A class that provides a way to launch the SafetyCenter activity in tests. */
+@RequiresApi(TIRAMISU)
 object SafetyCenterActivityLauncher {
 
     /**

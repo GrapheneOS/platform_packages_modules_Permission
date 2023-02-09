@@ -19,6 +19,7 @@ package com.android.safetycenter.testing
 import android.Manifest.permission.MANAGE_SAFETY_CENTER
 import android.Manifest.permission.READ_SAFETY_CENTER_STATUS
 import android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE
+import android.os.Build.VERSION_CODES.TIRAMISU
 import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyCenterManager.OnSafetyCenterDataChangedListener
@@ -26,6 +27,7 @@ import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetySourceData
 import android.safetycenter.SafetySourceErrorDetails
 import android.safetycenter.config.SafetyCenterConfig
+import androidx.annotation.RequiresApi
 import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
 import java.util.concurrent.Executor
 
@@ -33,6 +35,7 @@ import java.util.concurrent.Executor
  * Extension methods for [SafetyCenterManager] that delegate to the relevant implementation, but
  * making each call with the appropriate permission.
  */
+@RequiresApi(TIRAMISU)
 object SafetyCenterApisWithShellPermissions {
 
     /**

@@ -36,6 +36,7 @@ import static com.android.permissioncontroller.permission.ui.model.GrantPermissi
 import static com.android.permissioncontroller.permission.utils.Utils.getRequestMessage;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.KeyguardManager;
 import android.content.Intent;
 import android.content.pm.PackageItemInfo;
@@ -257,8 +258,10 @@ public class GrantPermissionsActivity extends SettingsActivity
 
         GrantPermissionsViewModelFactory factory = new GrantPermissionsViewModelFactory(
                 getApplication(), mTargetPackage, mRequestedPermissions, mSessionId, icicle);
-        mViewModel = factory.create(GrantPermissionsViewModel.class);
-        mViewModel.getRequestInfosLiveData().observe(this, this::onRequestInfoLoad);
+        if (!mDelegated) {
+            mViewModel = factory.create(GrantPermissionsViewModel.class);
+            mViewModel.getRequestInfosLiveData().observe(this, this::onRequestInfoLoad);
+        }
 
         mRootView = mViewHandler.createView();
         mRootView.setVisibility(View.GONE);
@@ -314,6 +317,7 @@ public class GrantPermissionsActivity extends SettingsActivity
         if (follower != null) {
             // Ensure the list of follower activities is a stack
             mFollowerActivities.add(0, follower);
+            follower.mViewModel = mViewModel;
         }
 
         boolean isShowingGroup = mRootView != null && mRootView.getVisibility() == View.VISIBLE;
@@ -345,6 +349,9 @@ public class GrantPermissionsActivity extends SettingsActivity
                 mSessionId, oldState);
         mViewModel = factory.create(GrantPermissionsViewModel.class);
         mViewModel.getRequestInfosLiveData().observe(this, this::onRequestInfoLoad);
+        if (follower != null) {
+            follower.mViewModel = mViewModel;
+        }
     }
 
     /**
@@ -388,17 +395,19 @@ public class GrantPermissionsActivity extends SettingsActivity
 
         RequestInfo info = mRequestInfos.get(0);
 
+        // Only the top activity can receive activity results
+        Activity top = mFollowerActivities.isEmpty() ? this : mFollowerActivities.get(0);
         if (info.getSendToSettingsImmediately()) {
-            mViewModel.sendDirectlyToSettings(this, info.getGroupName());
+            mViewModel.sendDirectlyToSettings(top, info.getGroupName());
             return;
         } else if (info.getOpenPhotoPicker()) {
-            mViewModel.openPhotoPicker(this, GRANTED_USER_SELECTED);
+            mViewModel.openPhotoPicker(top, GRANTED_USER_SELECTED);
             return;
         }
 
         if (Utils.isHealthPermissionUiEnabled() && HEALTH_PERMISSION_GROUP.equals(
                 info.getGroupName())) {
-            mViewModel.handleHealthConnectPermissions(this);
+            mViewModel.handleHealthConnectPermissions(top);
             return;
         }
 
@@ -607,7 +616,9 @@ public class GrantPermissionsActivity extends SettingsActivity
 
         if (Objects.equals(READ_MEDIA_VISUAL, name)
                 && result == GrantPermissionsViewHandler.GRANTED_USER_SELECTED) {
-            mViewModel.openPhotoPicker(this, result);
+            // Only the top activity can receive activity results
+            Activity top = mFollowerActivities.isEmpty() ? this : mFollowerActivities.get(0);
+            mViewModel.openPhotoPicker(top, result);
             return;
         }
 
@@ -656,11 +667,11 @@ public class GrantPermissionsActivity extends SettingsActivity
      */
     private void removeActivityFromMap() {
         synchronized (sCurrentGrantRequests) {
-            GrantPermissionsActivity top = sCurrentGrantRequests.get(mKey);
-            if (this.equals(top)) {
+            GrantPermissionsActivity leader = sCurrentGrantRequests.get(mKey);
+            if (this.equals(leader)) {
                 sCurrentGrantRequests.remove(mKey);
-            } else if (top != null) {
-                top.mFollowerActivities.remove(this);
+            } else if (leader != null) {
+                leader.mFollowerActivities.remove(this);
             }
         }
         for (GrantPermissionsActivity activity: mFollowerActivities) {

@@ -16,9 +16,11 @@
 
 package com.android.safetycenter.testing
 
+import android.os.Build.VERSION_CODES.TIRAMISU
 import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterErrorDetails
 import android.safetycenter.SafetyCenterManager.OnSafetyCenterDataChangedListener
+import androidx.annotation.RequiresApi
 import com.android.safetycenter.testing.Coroutines.TIMEOUT_LONG
 import com.android.safetycenter.testing.Coroutines.runBlockingWithTimeout
 import java.time.Duration
@@ -28,6 +30,7 @@ import kotlinx.coroutines.channels.Channel
  * An [OnSafetyCenterDataChangedListener] that facilitates receiving updates from SafetyCenter in
  * tests.
  */
+@RequiresApi(TIRAMISU)
 class SafetyCenterTestListener : OnSafetyCenterDataChangedListener {
     private val dataChannel = Channel<SafetyCenterData>(Channel.UNLIMITED)
     private val errorChannel = Channel<SafetyCenterErrorDetails>(Channel.UNLIMITED)

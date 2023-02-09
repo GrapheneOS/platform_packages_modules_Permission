@@ -18,6 +18,7 @@ package com.android.safetycenter.testing
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.UserHandle
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyCenterManager.ACTION_REFRESH_SAFETY_SOURCES
@@ -33,6 +34,7 @@ import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILE
 import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED
 import android.safetycenter.SafetySourceData
 import android.safetycenter.SafetySourceErrorDetails
+import androidx.annotation.RequiresApi
 import com.android.safetycenter.testing.SafetySourceTestData.Companion.EVENT_SOURCE_STATE_CHANGED
 import javax.annotation.concurrent.GuardedBy
 import kotlinx.coroutines.channels.Channel
@@ -46,6 +48,7 @@ import kotlinx.coroutines.sync.withLock
  *
  * This is meant to emulate how Safety Sources will typically react to Safety Center intents.
  */
+@RequiresApi(TIRAMISU)
 class SafetySourceIntentHandler {
 
     private val refreshSafetySourcesChannel = Channel<String>(UNLIMITED)

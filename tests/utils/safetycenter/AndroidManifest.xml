@@ -16,6 +16,10 @@
   -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.android.safetycenter.testing">
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC"/>
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
+
     <application>
         <receiver android:name=".SafetySourceReceiver"
                   android:exported="false">
@@ -48,8 +52,4 @@
             </intent-filter>
         </activity-alias>
     </application>
-
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC"/>
-    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
 </manifest>

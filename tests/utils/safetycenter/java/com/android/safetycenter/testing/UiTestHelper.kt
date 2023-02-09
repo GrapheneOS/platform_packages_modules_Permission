@@ -16,10 +16,12 @@
 
 package com.android.safetycenter.testing
 
+import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.SystemClock
 import android.safetycenter.SafetySourceData
 import android.safetycenter.SafetySourceIssue
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.test.uiautomator.By
 import androidx.test.uiautomator.BySelector
 import androidx.test.uiautomator.StaleObjectException
@@ -38,6 +40,8 @@ object UiTestHelper {
 
     /** The label of the rescan button. */
     const val RESCAN_BUTTON_LABEL = "Scan device"
+    /** The title of collapsible card that controls the visibility of additional issue cards. */
+    const val MORE_ISSUES_LABEL = "More alerts"
 
     private val WAIT_TIMEOUT = Duration.ofSeconds(25)
     private val NOT_DISPLAYED_TIMEOUT = Duration.ofMillis(500)
@@ -92,6 +96,7 @@ object UiTestHelper {
      *
      * This includes its UI entry and its issues.
      */
+    @RequiresApi(TIRAMISU)
     fun waitSourceDataDisplayed(sourceData: SafetySourceData) {
         waitAllTextDisplayed(sourceData.status?.title, sourceData.status?.summary)
 
@@ -101,6 +106,7 @@ object UiTestHelper {
     }
 
     /** Waits for most of the [SafetySourceIssue] information to be displayed. */
+    @RequiresApi(TIRAMISU)
     fun waitSourceIssueDisplayed(sourceIssue: SafetySourceIssue) {
         waitAllTextDisplayed(sourceIssue.title, sourceIssue.subtitle, sourceIssue.summary)
 
@@ -110,13 +116,14 @@ object UiTestHelper {
     }
 
     /** Waits for most of the [SafetySourceIssue] information not to be displayed. */
+    @RequiresApi(TIRAMISU)
     fun waitSourceIssueNotDisplayed(sourceIssue: SafetySourceIssue) {
         waitAllTextNotDisplayed(sourceIssue.title)
     }
 
-    /** Expands the more issues card button. */
-    fun expandMoreIssuesCard() {
-        waitDisplayed(By.text("See all alerts")) { it.click() }
+    /** Clicks the more issues card button to show or hide additional issues. */
+    fun clickMoreIssuesCard() {
+        waitDisplayed(By.text(MORE_ISSUES_LABEL)) { it.click() }
     }
 
     /** Enables or disables animations based on [enabled]. */
