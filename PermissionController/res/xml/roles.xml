@@ -615,6 +615,8 @@
             <permission name="android.permission.SUBSCRIBE_TO_KEYGUARD_LOCKED_STATE"
                 minSdkVersion="33" />
             <permission name="android.permission.MANAGE_DEVICE_LOCK_STATE" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_APP_EXEMPTIONS"
+                minSdkVersion="34" />
         </permissions>
     </role>
 
