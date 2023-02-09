@@ -47,7 +47,8 @@ import com.android.safetycenter.testing.SafetySourceIntentHandler.Request
 import com.android.safetycenter.testing.SafetySourceIntentHandler.Response
 import com.android.safetycenter.testing.SafetySourceReceiver
 import com.android.safetycenter.testing.SafetySourceTestData
-import com.android.safetycenter.testing.UiTestHelper.expandMoreIssuesCard
+import com.android.safetycenter.testing.UiTestHelper.MORE_ISSUES_LABEL
+import com.android.safetycenter.testing.UiTestHelper.clickMoreIssuesCard
 import com.android.safetycenter.testing.UiTestHelper.resetRotation
 import com.android.safetycenter.testing.UiTestHelper.rotate
 import com.android.safetycenter.testing.UiTestHelper.waitAllTextDisplayed
@@ -571,13 +572,13 @@ class SafetyCenterSubpagesTest {
         context.launchSafetyCenterActivity {
             openPageAndExit(context.getString(sourcesGroup.titleResId)) {
                 waitSourceIssueDisplayed(firstSourceData.issues[0])
-                waitAllTextDisplayed("See all alerts")
+                waitAllTextDisplayed(MORE_ISSUES_LABEL)
                 waitSourceIssueNotDisplayed(secondSourceData.issues[0])
 
-                expandMoreIssuesCard()
+                clickMoreIssuesCard()
 
                 waitSourceIssueDisplayed(firstSourceData.issues[0])
-                waitAllTextNotDisplayed("See all alerts")
+                waitAllTextDisplayed(MORE_ISSUES_LABEL)
                 waitSourceIssueDisplayed(secondSourceData.issues[0])
             }
         }
@@ -686,13 +687,13 @@ class SafetyCenterSubpagesTest {
 
         context.launchSafetyCenterActivity(extras) {
             waitSourceIssueDisplayed(firstSourceData.issues[0])
-            waitAllTextDisplayed("See all alerts")
+            waitAllTextDisplayed(MORE_ISSUES_LABEL)
             waitSourceIssueNotDisplayed(secondSourceData.issues[0])
 
-            expandMoreIssuesCard()
+            clickMoreIssuesCard()
 
             waitSourceIssueDisplayed(firstSourceData.issues[0])
-            waitAllTextNotDisplayed("See all alerts")
+            waitAllTextDisplayed(MORE_ISSUES_LABEL)
             waitSourceIssueDisplayed(secondSourceData.issues[0])
         }
     }

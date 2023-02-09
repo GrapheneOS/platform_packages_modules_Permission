@@ -14,8 +14,20 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="?android:colorControlHighlight">
 
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="?attr/colorSurface" />
-    <corners android:radius="20dp"/>
-</shape>
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/sc_card_corner_radius_medium" />
+            <solid android:color="?attr/colorSurface" />
+        </shape>
+    </item>
+
+    <item android:id="@android:id/mask">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/sc_card_corner_radius_medium" />
+            <solid android:color="#FFFF" />
+        </shape>
+    </item>
+</ripple>

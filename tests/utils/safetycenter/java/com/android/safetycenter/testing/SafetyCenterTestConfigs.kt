@@ -21,6 +21,7 @@ import android.content.pm.PackageManager.GET_SIGNING_CERTIFICATES
 import android.content.pm.PackageManager.PackageInfoFlags
 import android.content.res.Resources
 import android.os.Build
+import android.os.Build.VERSION_CODES.TIRAMISU
 import android.safetycenter.SafetySourceData
 import android.safetycenter.config.SafetyCenterConfig
 import android.safetycenter.config.SafetySource
@@ -37,10 +38,12 @@ import java.security.MessageDigest
  * A class that provides [SafetyCenterConfig] objects and associated constants to facilitate setting
  * up safety sources for testing.
  */
+@RequiresApi(TIRAMISU)
 class SafetyCenterTestConfigs(private val context: Context) {
     /** The certificate hash signing the current package. */
     val packageCertHash =
-        MessageDigest.getInstance("SHA256")!!.digest(
+        MessageDigest.getInstance("SHA256")
+            .digest(
                 context.packageManager
                     .getPackageInfo(
                         context.packageName,
