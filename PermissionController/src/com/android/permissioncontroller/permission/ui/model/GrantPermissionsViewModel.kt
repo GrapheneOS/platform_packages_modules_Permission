@@ -786,6 +786,14 @@ class GrantPermissionsViewModel(
             packageInfo.targetSdkVersion <= Build.VERSION_CODES.S_V2 &&
             group.foreground.isUserSet) {
             return STATE_SKIPPED
+        } else if (perm == READ_MEDIA_VISUAL_USER_SELECTED) {
+            val otherRequestedPerms = unfilteredAffectedPermissions.filter { otherPerm ->
+                otherPerm in group.permissions && otherPerm != READ_MEDIA_VISUAL_USER_SELECTED
+            }
+            if (otherRequestedPerms.isEmpty()) {
+                // If the user only requested USER_SELECTED, skip the request
+                return STATE_SKIPPED
+            }
         }
 
         val isBackground = perm in group.backgroundPermNames
@@ -1313,7 +1321,8 @@ class GrantPermissionsViewModel(
         }
         activity.startActivityForResult(Intent(MediaStore.ACTION_USER_SELECT_IMAGES_FOR_APP)
             .putExtra(Intent.EXTRA_UID, packageInfo.uid)
-            .setType(KotlinUtils.getMimeTypeForPermissions(permissions)), PHOTO_PICKER_REQUEST_CODE)
+            .setType(KotlinUtils.getMimeTypeForPermissions(unfilteredAffectedPermissions)),
+            PHOTO_PICKER_REQUEST_CODE)
     }
 
     /**
