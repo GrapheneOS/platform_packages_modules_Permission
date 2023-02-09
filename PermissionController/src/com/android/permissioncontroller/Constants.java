@@ -308,6 +308,17 @@ public class Constants {
      */
     public static final String UNUSED_APPS_SAFETY_CENTER_SEE_UNUSED_APPS_ID = "see_unused_apps";
 
+    /**
+     * Fallback Settings package name
+     */
+    public static final String SETTINGS_PACKAGE_NAME_FALLBACK = "com.android.settings";
+
+    /**
+     * Extra launcher icon for notification
+     */
+    public static final String NOTIFICATION_EXTRA_USE_LAUNCHER_ICON =
+            "com.android.car.notification.EXTRA_USE_LAUNCHER_ICON";
+
     // TODO(b/231624295) add to API
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     public static final String OPSTR_RECEIVE_AMBIENT_TRIGGER_AUDIO =
