@@ -193,9 +193,6 @@ class GrantPermissionsViewHandlerImpl(
     }
 
     override fun createView(): View {
-        // Make this activity be Non-IME target to prevent hiding keyboard flicker when it show up.
-        mActivity.window.addFlags(LayoutParams.FLAG_ALT_FOCUSABLE_IM)
-
         val useMaterial3PermissionGrantDialog = mActivity.resources
                 .getBoolean(R.bool.config_useMaterial3PermissionGrantDialog)
         val rootView = if (useMaterial3PermissionGrantDialog || SdkLevel.isAtLeastT()) {
