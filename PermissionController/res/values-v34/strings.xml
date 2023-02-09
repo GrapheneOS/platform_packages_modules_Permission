@@ -137,6 +137,9 @@
     <!-- Notification description for safety label changes notification [CHAR LIMIT=100] -->
     <string name="safety_label_changes_notification_desc">The way some apps share location data has changed</string>
 
+    <!-- Content description for the Gear icon -->
+    <string name="safety_label_changes_gear_description">Settings</string>
+
     <!-- Safety Label Change Notifications End -->
 
     <!-- String representing the security and privacy brand name [CHAR LIMIT=NONE] -->

@@ -40,7 +40,7 @@ class AppDataSharingUpdatePreference(
 ) : SmartIconLoadPackagePermissionPreference(app, packageName, user, context) {
 
     init {
-        widgetLayoutResource = R.xml.settings_button_with_divider_preference_widget
+        layoutResource = R.layout.app_data_sharing_settings_preference
     }
 
     /** [View.OnClickListener] for the settings gear icon. */
