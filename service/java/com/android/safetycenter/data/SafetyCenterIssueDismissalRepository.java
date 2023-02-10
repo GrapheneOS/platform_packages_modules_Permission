@@ -34,6 +34,7 @@ import android.util.Log;
 import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.BackgroundThread;
+import com.android.safetycenter.ApiLock;
 import com.android.safetycenter.SafetyCenterConfigReader;
 import com.android.safetycenter.SafetyCenterFlags;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
@@ -83,7 +84,7 @@ final class SafetyCenterIssueDismissalRepository {
 
     private final Handler mWriteHandler = BackgroundThread.getHandler();
 
-    @NonNull private final Object mApiLock;
+    @NonNull private final ApiLock mApiLock;
 
     @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
 
@@ -91,7 +92,7 @@ final class SafetyCenterIssueDismissalRepository {
     private boolean mWriteStateToFileScheduled = false;
 
     SafetyCenterIssueDismissalRepository(
-            @NonNull Object apiLock, @NonNull SafetyCenterConfigReader safetyCenterConfigReader) {
+            @NonNull ApiLock apiLock, @NonNull SafetyCenterConfigReader safetyCenterConfigReader) {
         mApiLock = apiLock;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
     }

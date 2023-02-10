@@ -41,6 +41,7 @@ import androidx.annotation.RequiresApi;
 import com.android.internal.annotations.GuardedBy;
 import com.android.modules.utils.build.SdkLevel;
 import com.android.permission.PermissionStatsLog;
+import com.android.safetycenter.ApiLock;
 import com.android.safetycenter.SafetyCenterConfigReader;
 import com.android.safetycenter.SafetyCenterDataFactory;
 import com.android.safetycenter.SafetyCenterFlags;
@@ -68,7 +69,7 @@ public final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback
     private static final String TAG = "SafetyCenterPullAtom";
 
     @NonNull private final Context mContext;
-    @NonNull private final Object mApiLock;
+    @NonNull private final ApiLock mApiLock;
 
     @GuardedBy("mApiLock")
     @NonNull
@@ -88,7 +89,7 @@ public final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback
 
     public SafetyCenterPullAtomCallback(
             @NonNull Context context,
-            @NonNull Object apiLock,
+            @NonNull ApiLock apiLock,
             @NonNull SafetyCenterStatsdLogger safetyCenterStatsdLogger,
             @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
             @NonNull SafetyCenterDataFactory safetyCenterDataFactory,

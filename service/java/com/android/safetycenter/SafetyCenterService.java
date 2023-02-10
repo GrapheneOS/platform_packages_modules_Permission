@@ -105,7 +105,7 @@ public final class SafetyCenterService extends SystemService {
 
     private static final String TAG = "SafetyCenterService";
 
-    private final Object mApiLock = new Object();
+    private final ApiLock mApiLock = new ApiLock();
 
     @GuardedBy("mApiLock")
     private final SafetyCenterTimeouts mSafetyCenterTimeouts = new SafetyCenterTimeouts();
