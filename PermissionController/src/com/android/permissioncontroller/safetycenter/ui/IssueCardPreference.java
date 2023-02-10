@@ -72,6 +72,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
     private final SafetyCenterIssueId mDecodedIssueId;
     @Nullable private String mResolvedIssueActionId;
     @Nullable private final Integer mTaskId;
+    private final boolean mIsDismissed;
 
     public IssueCardPreference(
             Context context,
@@ -79,7 +80,8 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
             SafetyCenterIssue issue,
             @Nullable String resolvedIssueActionId,
             FragmentManager dialogFragmentManager,
-            @Nullable Integer launchTaskId) {
+            @Nullable Integer launchTaskId,
+            boolean isDismissed) {
         super(context);
         setLayoutResource(R.layout.preference_issue_card);
 
@@ -89,6 +91,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
         mDecodedIssueId = SafetyCenterIds.issueIdFromString(mIssue.getId());
         mResolvedIssueActionId = resolvedIssueActionId;
         mTaskId = launchTaskId;
+        mIsDismissed = isDismissed;
     }
 
     @Override
@@ -151,6 +154,9 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
             builder.isLargeScreen(buttonList instanceof EqualWidthContainer);
             if (isFirstButton) {
                 builder.setAsPrimaryButton();
+                if (!mIsDismissed) {
+                    builder.setAsFilledButton();
+                }
                 isFirstButton = false;
             }
             builder.buildAndAddToView(buttonList);
@@ -198,7 +204,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
     }
 
     private void configureDismissButton(View dismissButton) {
-        if (mIssue.isDismissible()) {
+        if (mIssue.isDismissible() && !mIsDismissed) {
             dismissButton.setOnClickListener(
                     mIssue.shouldConfirmDismissal()
                             ? new ConfirmDismissalOnClickListener()
@@ -295,7 +301,8 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
         private final SafetyCenterIssue.Action mAction;
         private final Context mContext;
         private final ContextThemeWrapper mContextThemeWrapper;
-        private boolean mIsFirstButton = false;
+        private boolean mIsPrimaryButton = false;
+        private boolean mIsFilled = false;
         private boolean mIsLargeScreen = false;
 
         ActionButtonBuilder(SafetyCenterIssue.Action action, Context context) {
@@ -306,7 +313,12 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
         }
 
         public ActionButtonBuilder setAsPrimaryButton() {
-            mIsFirstButton = true;
+            mIsPrimaryButton = true;
+            return this;
+        }
+
+        public ActionButtonBuilder setAsFilledButton() {
+            mIsFilled = true;
             return this;
         }
 
@@ -337,7 +349,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
                         mSafetyCenterViewModel
                                 .getInteractionLogger()
                                 .recordForIssue(
-                                        mIsFirstButton
+                                        mIsPrimaryButton
                                                 ? Action.ISSUE_PRIMARY_ACTION_CLICKED
                                                 : Action.ISSUE_SECONDARY_ACTION_CLICKED,
                                         mIssue);
@@ -348,7 +360,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
         }
 
         private void maybeAddSpaceToView(LinearLayout buttonList) {
-            if (mIsFirstButton) {
+            if (mIsPrimaryButton) {
                 return;
             }
 
@@ -361,13 +373,11 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
         }
 
         private int getStyle() {
-            return mIsFirstButton
-                    ? R.attr.scActionButtonStyle
-                    : R.attr.scSecondaryActionButtonStyle;
+            return mIsFilled ? R.attr.scActionButtonStyle : R.attr.scSecondaryActionButtonStyle;
         }
 
         private void setButtonColors(MaterialButton button) {
-            if (mIsFirstButton) {
+            if (mIsFilled) {
                 button.setBackgroundTintList(
                         ContextCompat.getColorStateList(
                                 mContext,

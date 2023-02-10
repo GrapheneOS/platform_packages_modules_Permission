@@ -32,6 +32,8 @@ internal class MoreIssuesCardPreference(
     @DrawableRes val preferenceWidgetIconResourceId: Int,
     private var previousMoreIssuesCardData: MoreIssuesCardData?,
     private var newMoreIssuesCardData: MoreIssuesCardData,
+    private val dismissedOnly: Boolean,
+    val isStaticHeader: Boolean,
     private val onClickListener: () -> Unit
 ) : Preference(context), ComparablePreference {
 
@@ -43,12 +45,24 @@ internal class MoreIssuesCardPreference(
         super.onBindViewHolder(holder)
 
         val issueHeaderView = holder.itemView as MoreIssuesHeaderView
-        issueHeaderView.showExpandableHeader(
-            previousMoreIssuesCardData,
-            newMoreIssuesCardData,
-            context.getString(R.string.safety_center_more_issues_card_title),
-            onClickListener
-        )
+        if (isStaticHeader) {
+            issueHeaderView.showStaticHeader(
+                context.getString(R.string.safety_center_dismissed_issues_card_title)
+            )
+        } else {
+            issueHeaderView.showExpandableHeader(
+                previousMoreIssuesCardData,
+                newMoreIssuesCardData,
+                context.getString(
+                    if (dismissedOnly) {
+                        R.string.safety_center_dismissed_issues_card_title
+                    } else {
+                        R.string.safety_center_more_issues_card_title
+                    }
+                ),
+                onClickListener
+            )
+        }
     }
 
     fun setNewMoreIssuesCardData(moreIssuesCardData: MoreIssuesCardData) {
@@ -58,14 +72,16 @@ internal class MoreIssuesCardPreference(
     }
 
     override fun isSameItem(preference: Preference): Boolean {
-        return preference is MoreIssuesCardPreference
+        return preference is MoreIssuesCardPreference && isStaticHeader == preference.isStaticHeader
     }
 
     override fun hasSameContents(preference: Preference): Boolean {
         return preference is MoreIssuesCardPreference &&
+            isStaticHeader == preference.isStaticHeader &&
             previousMoreIssuesCardData == preference.previousMoreIssuesCardData &&
             newMoreIssuesCardData == preference.newMoreIssuesCardData &&
-            preferenceWidgetIconResourceId == preference.preferenceWidgetIconResourceId
+            preferenceWidgetIconResourceId == preference.preferenceWidgetIconResourceId &&
+            dismissedOnly == preference.dismissedOnly
     }
 
     companion object {

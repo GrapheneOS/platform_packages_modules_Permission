@@ -84,7 +84,9 @@ class PrivacySubpageFragment : SafetyCenterFragment() {
         subpageIssueGroup.removeAll()
         val subpageIssues =
             uiData?.safetyCenterData?.issues?.filter { it.groupId == SOURCE_GROUP_ID }
-        if (subpageIssues.isNullOrEmpty()) {
+        val subpageDismissedIssues =
+            uiData?.safetyCenterData?.dismissedIssues?.filter { it.groupId == SOURCE_GROUP_ID }
+        if (subpageIssues.isNullOrEmpty() && subpageDismissedIssues.isNullOrEmpty()) {
             Log.w(TAG, "$SOURCE_GROUP_ID doesn't have any matching SafetyCenterIssues")
             return
         }
@@ -95,6 +97,7 @@ class PrivacySubpageFragment : SafetyCenterFragment() {
             getChildFragmentManager(),
             subpageIssueGroup,
             subpageIssues,
+            subpageDismissedIssues,
             uiData.resolvedIssues,
             requireActivity().getTaskId()
         )
