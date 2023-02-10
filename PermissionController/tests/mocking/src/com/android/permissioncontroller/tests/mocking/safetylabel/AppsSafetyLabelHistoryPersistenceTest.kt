@@ -317,14 +317,15 @@ class AppsSafetyLabelHistoryPersistenceTest {
     }
 
     @Test
-    fun givenNoAppsPersisted_getAppsWithSafetyLabels_returnsNoApps() {
-        val apps = AppsSafetyLabelHistoryPersistence.getAppsWithSafetyLabels(dataFile)
+    fun givenNoAppsPersisted_getSafetyLabelsLastUpdatedTimes_returnsEmptyMap() {
+        val lastUpdatedTimes =
+            AppsSafetyLabelHistoryPersistence.getSafetyLabelsLastUpdatedTimes(dataFile)
 
-        assertThat(apps).isEmpty()
+        assertThat(lastUpdatedTimes).isEmpty()
     }
 
     @Test
-    fun givenSomeAppsPersisted_getAppsWithSafetyLabels_returnsPersistedApps() {
+    fun givenSomeAppsPersisted_getSafetyLabelsLastUpdatedTimes_returnsLastUpdatedTimes() {
         val appsSafetyLabelHistory =
             AppsSafetyLabelHistory(
                 listOf(
@@ -337,9 +338,14 @@ class AppsSafetyLabelHistoryPersistenceTest {
                             SAFETY_LABEL_PKG_2_V1, SAFETY_LABEL_PKG_2_V2, SAFETY_LABEL_PKG_2_V3))))
         AppsSafetyLabelHistoryPersistence.write(dataFile, appsSafetyLabelHistory)
 
-        val apps = AppsSafetyLabelHistoryPersistence.getAppsWithSafetyLabels(dataFile)
+        val lastUpdatedTimes =
+            AppsSafetyLabelHistoryPersistence.getSafetyLabelsLastUpdatedTimes(dataFile)
 
-        assertThat(apps).isEqualTo(setOf(AppInfo(PACKAGE_NAME_1), AppInfo(PACKAGE_NAME_2)))
+        assertThat(lastUpdatedTimes)
+            .isEqualTo(
+                mapOf(
+                    AppInfo(PACKAGE_NAME_1) to DATE_2022_10_14,
+                    AppInfo(PACKAGE_NAME_2) to DATE_2022_12_30))
     }
 
     @Test
