@@ -127,6 +127,12 @@ java_sdk_library {
         "test_com.android.permission",
     ],
     installable: true,
+    permitted_packages: [
+        "com.android.access",
+        "com.android.permission",
+        "com.android.role",
+        "com.android.safetycenter",
+    ],
 }
 
 genrule {
