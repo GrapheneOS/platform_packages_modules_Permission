@@ -28,7 +28,7 @@ import androidx.preference.PreferenceViewHolder
 import com.android.permissioncontroller.R
 
 /** A preference for a footer with an icon and a link. */
-class FooterWithLinkPreference : Preference {
+class AppDataSharingUpdatesFooterPreference : Preference {
     constructor(c: Context) : super(c)
     constructor(c: Context, a: AttributeSet) : super(c, a)
     constructor(c: Context, a: AttributeSet, attr: Int) : super(c, a, attr)
@@ -38,7 +38,7 @@ class FooterWithLinkPreference : Preference {
     private var footerLinkView: TextView? = null
 
     init {
-        layoutResource = R.layout.footer_with_link_preference
+        layoutResource = R.layout.app_data_sharing_updates_footer_preference
     }
 
     /** Message for the footer. */
