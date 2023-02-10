@@ -738,6 +738,44 @@ class SafetyCenterSubpagesTest {
         }
     }
 
+    @Test
+    fun settingsSearch_openWithGenericIntentExtra_showsGenericSubpage() {
+        val config = safetyCenterTestConfigs.multipleSourcesConfig
+        safetyCenterTestHelper.setConfig(config)
+        val sourcesGroup = config.safetySourcesGroups.first()
+        val source = sourcesGroup.safetySources.first()
+        val preferenceKey = "${source.id}_personal"
+        val extras = Bundle()
+        extras.putString(EXTRA_SETTINGS_FRAGMENT_ARGS_KEY, preferenceKey)
+
+        context.launchSafetyCenterActivity(extras) {
+            waitDisplayed(By.desc(context.getString(sourcesGroup.titleResId)))
+            waitAllTextDisplayed(
+                context.getString(source.titleResId),
+                context.getString(source.summaryResId)
+            )
+        }
+    }
+
+    @Test
+    fun settingsSearch_openWithPrivacyIntentExtra_showsPrivacySubpage() {
+        val config = safetyCenterTestConfigs.privacySubpageConfig
+        val sourcesGroup = safetyCenterTestConfigs.singleSourceConfig.safetySourcesGroups.first()
+        val source: SafetySource = sourcesGroup.safetySources.first()
+        safetyCenterTestHelper.setConfig(config)
+        val extras = Bundle()
+        extras.putString(EXTRA_SETTINGS_FRAGMENT_ARGS_KEY, "privacy_camera_toggle")
+
+        context.launchSafetyCenterActivity(extras) {
+            waitAllTextDisplayed(
+                context.getString(source.titleResId),
+                context.getString(source.summaryResId),
+                "Controls",
+                "Data",
+            )
+        }
+    }
+
     private fun openPageAndExit(entryPoint: String, block: () -> Unit) {
         val uiDevice = UiAutomatorUtils2.getUiDevice()
         uiDevice.waitForIdle()
@@ -762,5 +800,6 @@ class SafetyCenterSubpagesTest {
         private const val SAFETY_SOURCE_2_SUMMARY = "Safety Source 2 Summary"
         private const val SAFETY_SOURCE_3_TITLE = "Safety Source 3 Title"
         private const val SAFETY_SOURCE_3_SUMMARY = "Safety Source 3 Summary"
+        private const val EXTRA_SETTINGS_FRAGMENT_ARGS_KEY = ":settings:fragment_args_key"
     }
 }

@@ -27,6 +27,7 @@ import android.os.UserManager
 import android.provider.DeviceConfig
 import android.provider.Settings
 import androidx.annotation.RequiresApi
+import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
@@ -51,12 +52,16 @@ class PrivacyControlsViewModel(private val app: Application) : AndroidViewModel(
     private val CONFIG_MIC_TOGGLE_ENABLED = app.getString(R.string.mic_toggle_enable_config)
     private val CONFIG_CAMERA_TOGGLE_ENABLED = app.getString(R.string.camera_toggle_enable_config)
 
-    enum class Pref(val key: String) {
-        MIC("privacy_mic_toggle"),
-        CAMERA("privacy_camera_toggle"),
-        LOCATION("privacy_location_access"),
-        CLIPBOARD("show_clip_access_notification"),
-        SHOW_PASSWORD("show_password")
+    enum class Pref(val key: String, @StringRes val titleResId: Int) {
+        MIC("privacy_mic_toggle", R.string.camera_toggle_title),
+        CAMERA("privacy_camera_toggle", R.string.mic_toggle_title),
+        LOCATION("privacy_location_access", R.string.show_clip_access_notification_title),
+        CLIPBOARD("show_clip_access_notification", R.string.show_password_title),
+        SHOW_PASSWORD("show_password", R.string.location_settings);
+
+        companion object {
+            @JvmStatic fun findByKey(inputKey: String) = values().find { it.key == inputKey }
+        }
     }
 
     data class PrefState(val visible: Boolean, val checked: Boolean, val admin: EnforcedAdmin?)
@@ -72,19 +77,22 @@ class PrivacyControlsViewModel(private val app: Application) : AndroidViewModel(
                     getSensorToggleState(
                         Sensors.CAMERA,
                         UserManager.DISALLOW_CAMERA_TOGGLE,
-                        CONFIG_CAMERA_TOGGLE_ENABLED)
+                        CONFIG_CAMERA_TOGGLE_ENABLED
+                    )
                 shownPrefs[Pref.MIC] =
                     getSensorToggleState(
                         Sensors.MICROPHONE,
                         UserManager.DISALLOW_MICROPHONE_TOGGLE,
-                        CONFIG_MIC_TOGGLE_ENABLED)
+                        CONFIG_MIC_TOGGLE_ENABLED
+                    )
                 shownPrefs[Pref.CLIPBOARD] =
                     PrefState(visible = true, checked = isClipboardEnabled(), admin = null)
                 shownPrefs[Pref.SHOW_PASSWORD] =
                     PrefState(
                         visible = shouldDisplayShowPasswordToggle(),
                         checked = isShowPasswordEnabled(),
-                        admin = null)
+                        admin = null
+                    )
                 value = shownPrefs
             }
 
@@ -139,28 +147,40 @@ class PrivacyControlsViewModel(private val app: Application) : AndroidViewModel(
             visible = sensorConfigEnabled && sensorPrivacyManager.supportsSensorToggle(sensor),
             checked = !sensorPrivacyManager.isSensorPrivacyEnabled(TOGGLE_TYPE_SOFTWARE, sensor),
             admin =
-                if (userManager
-                    .getUserRestrictionSources(restriction, Process.myUserHandle())
-                    .isNotEmpty()) {
+                if (
+                    userManager
+                        .getUserRestrictionSources(restriction, Process.myUserHandle())
+                        .isNotEmpty()
+                ) {
                     admin
                 } else {
                     null
-                })
+                }
+        )
     }
 
     private fun isClipboardEnabled(): Boolean {
         val clipboardDefaultEnabled =
             DeviceConfig.getBoolean(
-                DeviceConfig.NAMESPACE_CLIPBOARD, CONFIG_SHOW_ACCESS_NOTIFICATIONS_DEFAULT, true)
+                DeviceConfig.NAMESPACE_CLIPBOARD,
+                CONFIG_SHOW_ACCESS_NOTIFICATIONS_DEFAULT,
+                true
+            )
         val defaultSetting = if (clipboardDefaultEnabled) 1 else 0
         return Settings.Secure.getInt(
-            app.contentResolver, CONFIG_CLIPBOARD_SHOW_ACCESS_NOTIFICATIONS, defaultSetting) != 0
+            app.contentResolver,
+            CONFIG_CLIPBOARD_SHOW_ACCESS_NOTIFICATIONS,
+            defaultSetting
+        ) != 0
     }
 
     private fun toggleClipboard() {
         val newState = if (isClipboardEnabled()) 0 else 1
         Settings.Secure.putInt(
-            app.contentResolver, CONFIG_CLIPBOARD_SHOW_ACCESS_NOTIFICATIONS, newState)
+            app.contentResolver,
+            CONFIG_CLIPBOARD_SHOW_ACCESS_NOTIFICATIONS,
+            newState
+        )
     }
 
     private fun isShowPasswordEnabled(): Boolean {
@@ -172,7 +192,8 @@ class PrivacyControlsViewModel(private val app: Application) : AndroidViewModel(
         Settings.System.putInt(
             app.contentResolver,
             Settings.System.TEXT_SHOW_PASSWORD,
-            if (isShowPasswordEnabled()) 0 else 1)
+            if (isShowPasswordEnabled()) 0 else 1
+        )
     }
 
     private fun shouldDisplayShowPasswordToggle(): Boolean {

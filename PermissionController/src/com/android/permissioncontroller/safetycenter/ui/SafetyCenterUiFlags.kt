@@ -17,7 +17,7 @@
 package com.android.permissioncontroller.safetycenter.ui
 
 import android.provider.DeviceConfig
-import androidx.core.os.BuildCompat
+import com.android.modules.utils.build.SdkLevel
 
 /** A class to access the Safety Center UI related {@link DeviceConfig} flags. */
 object SafetyCenterUiFlags {
@@ -29,7 +29,7 @@ object SafetyCenterUiFlags {
      */
     @JvmStatic
     fun getShowSubpages(): Boolean {
-        return BuildCompat.isAtLeastU() &&
+        return SdkLevel.isAtLeastU() &&
             DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY, PROPERTY_SHOW_SUBPAGES, false)
     }
 }
