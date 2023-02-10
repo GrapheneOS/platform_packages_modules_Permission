@@ -183,8 +183,18 @@ class SafetyCenterTestConfigs(private val context: Context) {
                             .setRefreshOnPageOpenAllowed(false)
                             .build()
                     )
-                    .addSafetySource(dynamicSafetySource(SOURCE_ID_4))
-                    .addSafetySource(dynamicSafetySource(SOURCE_ID_5))
+                    .build()
+            )
+            .build()
+
+    /** A simple [SafetyCenterConfig] with multiple sources in a single [SafetySourcesGroup]. */
+    val multipleSourcesInSingleGroupConfig =
+        SafetyCenterConfig.Builder()
+            .addSafetySourcesGroup(
+                safetySourcesGroupBuilder(MULTIPLE_SOURCES_GROUP_ID_1)
+                    .addSafetySource(dynamicSafetySource(SOURCE_ID_1))
+                    .addSafetySource(dynamicSafetySource(SOURCE_ID_2))
+                    .addSafetySource(dynamicSafetySource(SOURCE_ID_3))
                     .build()
             )
             .build()

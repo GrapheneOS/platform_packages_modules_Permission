@@ -635,17 +635,18 @@ class SafetyCenterSubpagesTest {
 
     @Test
     fun moreIssuesCard_expandWithDismissedIssues_showsAdditionalCards() {
-        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.multipleSourcesConfig)
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.multipleSourcesInSingleGroupConfig)
 
         val firstSourceData = safetySourceTestData.criticalWithIssueWithAttributionTitle
         val secondSourceData = safetySourceTestData.informationWithIssueWithAttributionTitle
         val thirdSourceData = safetySourceTestData.informationWithIssueWithAttributionTitle
 
-        safetyCenterTestHelper.setData(SOURCE_ID_3, firstSourceData)
-        safetyCenterTestHelper.setData(SOURCE_ID_4, secondSourceData)
-        safetyCenterTestHelper.setData(SOURCE_ID_5, thirdSourceData)
+        safetyCenterTestHelper.setData(SOURCE_ID_1, firstSourceData)
+        safetyCenterTestHelper.setData(SOURCE_ID_2, secondSourceData)
+        safetyCenterTestHelper.setData(SOURCE_ID_3, thirdSourceData)
 
-        val sourcesGroup = safetyCenterTestConfigs.multipleSourcesConfig.safetySourcesGroups.last()
+        val sourcesGroup =
+            safetyCenterTestConfigs.multipleSourcesInSingleGroupConfig.safetySourcesGroups.first()
         val issue = firstSourceData.issues[0]
 
         context.launchSafetyCenterActivity {
@@ -667,17 +668,18 @@ class SafetyCenterSubpagesTest {
 
     @Test
     fun moreIssuesCard_collapseWithDismissedIssues_hidesAdditionalCards() {
-        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.multipleSourcesConfig)
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.multipleSourcesInSingleGroupConfig)
 
         val firstSourceData = safetySourceTestData.criticalWithIssueWithAttributionTitle
         val secondSourceData = safetySourceTestData.informationWithIssueWithAttributionTitle
         val thirdSourceData = safetySourceTestData.informationWithIssueWithAttributionTitle
 
-        safetyCenterTestHelper.setData(SOURCE_ID_3, firstSourceData)
-        safetyCenterTestHelper.setData(SOURCE_ID_4, secondSourceData)
-        safetyCenterTestHelper.setData(SOURCE_ID_5, thirdSourceData)
+        safetyCenterTestHelper.setData(SOURCE_ID_1, firstSourceData)
+        safetyCenterTestHelper.setData(SOURCE_ID_2, secondSourceData)
+        safetyCenterTestHelper.setData(SOURCE_ID_3, thirdSourceData)
 
-        val sourcesGroup = safetyCenterTestConfigs.multipleSourcesConfig.safetySourcesGroups.last()
+        val sourcesGroup =
+            safetyCenterTestConfigs.multipleSourcesInSingleGroupConfig.safetySourcesGroups.first()
         val issue = firstSourceData.issues[0]
 
         context.launchSafetyCenterActivity {
