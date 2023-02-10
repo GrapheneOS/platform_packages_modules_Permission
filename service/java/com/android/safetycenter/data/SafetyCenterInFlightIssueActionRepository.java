@@ -41,14 +41,10 @@ import java.util.List;
 
 import javax.annotation.concurrent.NotThreadSafe;
 
-/**
- * Maintains data about in-flight issue actions.
- *
- * @hide
- */
+/** Maintains data about in-flight issue actions. */
 @RequiresApi(TIRAMISU)
 @NotThreadSafe
-public final class SafetyCenterInFlightIssueActionRepository {
+final class SafetyCenterInFlightIssueActionRepository {
 
     private static final String TAG = "SafetyCenterInFlight";
 
@@ -58,13 +54,13 @@ public final class SafetyCenterInFlightIssueActionRepository {
             new ArrayMap<>();
 
     /** Constructs a new instance of {@link SafetyCenterInFlightIssueActionRepository}. */
-    public SafetyCenterInFlightIssueActionRepository(
+    SafetyCenterInFlightIssueActionRepository(
             @NonNull SafetyCenterStatsdLogger safetyCenterStatsdLogger) {
         mSafetyCenterStatsdLogger = safetyCenterStatsdLogger;
     }
 
     /** Marks the given {@link SafetyCenterIssueActionId} as in-flight. */
-    public void markSafetyCenterIssueActionInFlight(
+    void markSafetyCenterIssueActionInFlight(
             @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
         mSafetyCenterIssueActionsInFlight.put(
                 safetyCenterIssueActionId, SystemClock.elapsedRealtime());
@@ -75,7 +71,7 @@ public final class SafetyCenterInFlightIssueActionRepository {
      * with the given {@code result} value, and returns {@code true} if the underlying {@link
      * SafetyCenterData} changed.
      */
-    public boolean unmarkSafetyCenterIssueActionInFlight(
+    boolean unmarkSafetyCenterIssueActionInFlight(
             @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId,
             @NonNull SafetySourceIssue safetySourceIssue,
             @SafetyCenterStatsdLogger.SystemEventResult int result) {
@@ -110,7 +106,7 @@ public final class SafetyCenterInFlightIssueActionRepository {
     }
 
     /** Returns {@code true} if the given issue action is in flight. */
-    public boolean actionIsInFlight(@NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
+    boolean actionIsInFlight(@NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
         return mSafetyCenterIssueActionsInFlight.containsKey(safetyCenterIssueActionId);
     }
 
@@ -141,7 +137,7 @@ public final class SafetyCenterInFlightIssueActionRepository {
     }
 
     /** Dumps in-flight action data for debugging purposes. */
-    public void dump(@NonNull PrintWriter fout) {
+    void dump(@NonNull PrintWriter fout) {
         int actionInFlightCount = mSafetyCenterIssueActionsInFlight.size();
         fout.println("ACTIONS IN FLIGHT (" + actionInFlightCount + ")");
         for (int i = 0; i < actionInFlightCount; i++) {
@@ -154,12 +150,12 @@ public final class SafetyCenterInFlightIssueActionRepository {
     }
 
     /** Clears all in-flight action data. */
-    public void clear() {
+    void clear() {
         mSafetyCenterIssueActionsInFlight.clear();
     }
 
     /** Clears in-flight action data for given {@code userId}. */
-    public void clearForUser(@UserIdInt int userId) {
+    void clearForUser(@UserIdInt int userId) {
         // Loop in reverse index order to be able to remove entries while iterating.
         for (int i = mSafetyCenterIssueActionsInFlight.size() - 1; i >= 0; i--) {
             SafetyCenterIssueActionId issueActionId = mSafetyCenterIssueActionsInFlight.keyAt(i);
