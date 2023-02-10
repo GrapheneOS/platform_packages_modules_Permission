@@ -20,7 +20,7 @@
     <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"Ressourcen für Sicherheitscenter"</string>
     <string name="lock_screen_sources_title" msgid="3317906280484627707">"Gerätesperre"</string>
     <string name="lock_screen_sources_summary" msgid="7220439741282516496"></string>
-    <string name="lock_screen_title" msgid="4069104894527169877">"Displaysperre"</string>
+    <string name="lock_screen_title" msgid="4069104894527169877">"Dis­play­sper­re"</string>
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"Noch keine Daten erhalten"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"Datenschutz"</string>
     <string name="privacy_sources_summary" msgid="4089719981155120864">"Dashboard, Berechtigungen, Einstellungen"</string>
