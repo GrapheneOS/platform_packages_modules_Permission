@@ -156,6 +156,10 @@ public final class Utils {
     /** Whether or not app hibernation is enabled on the device **/
     public static final String PROPERTY_APP_HIBERNATION_ENABLED = "app_hibernation_enabled";
 
+    /** Whether the system exempt from hibernation is enabled on the device **/
+    public static final String PROPERTY_SYSTEM_EXEMPT_HIBERNATION_ENABLED =
+            "system_exempt_hibernation_enabled";
+
     /** Whether to show the Permissions Hub. */
     private static final String PROPERTY_PERMISSIONS_HUB_ENABLED = "permissions_hub_enabled";
 
