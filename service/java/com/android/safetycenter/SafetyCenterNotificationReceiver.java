@@ -133,13 +133,13 @@ final class SafetyCenterNotificationReceiver extends BroadcastReceiver {
     @NonNull
     private final SafetyCenterDataChangeNotifier mSafetyCenterDataChangeNotifier;
 
-    @NonNull private final Object mApiLock;
+    @NonNull private final ApiLock mApiLock;
 
     SafetyCenterNotificationReceiver(
             @NonNull SafetyCenterService service,
             @NonNull SafetyCenterDataManager safetyCenterDataManager,
             @NonNull SafetyCenterDataChangeNotifier safetyCenterDataChangeNotifier,
-            @NonNull Object apiLock) {
+            @NonNull ApiLock apiLock) {
         mService = service;
         mSafetyCenterDataManager = safetyCenterDataManager;
         mSafetyCenterDataChangeNotifier = safetyCenterDataChangeNotifier;
