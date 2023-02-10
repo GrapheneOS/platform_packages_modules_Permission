@@ -27,7 +27,7 @@
     <string name="safety_center_entry_group_with_actions_needed_content_description" msgid="2708884606775932657">"リスト。<xliff:g id="ENTRY_TITLE">%1$s</xliff:g>。対応が必要です。<xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_entry_group_item_content_description" msgid="7348298582877249787">"リストアイテム。<xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>。<xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_entry_content_description" msgid="3639565652938224321">"<xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>。<xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
-    <string name="safety_center_more_issues_card_title" msgid="8599419758014246517">"すべてのアラートを表示"</string>
+    <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"その他のアラート"</string>
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{1 個以上のアラートを開いて表示する}other{# 個以上のアラートを開いて表示する}}"</string>
     <string name="safety_center_issue_card_content_description" msgid="1281390769721765363">"アラート。<xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>。<xliff:g id="ISSUE_CARD_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_issue_card_content_description_with_subtitle" msgid="5504040663935313539">"アラート。<xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>。<xliff:g id="ISSUE_CARD_SUBTITLE">%2$s</xliff:g>。<xliff:g id="ISSUE_CARD_SUMMARY">%3$s</xliff:g>"</string>
