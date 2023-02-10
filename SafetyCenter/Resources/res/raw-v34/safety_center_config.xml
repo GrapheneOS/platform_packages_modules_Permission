@@ -123,17 +123,10 @@
             <static-safety-source
                 id="AndroidAdvancedSecurity"
                 profile="primary_profile_only"
-                intentAction="com.android.settings.security.SECURITY_ADVANCED_SETTINGS"
-                title="@com.android.safetycenter.resources:string/advanced_security_title"
-                summary="@com.android.safetycenter.resources:string/advanced_security_summary"
-                searchTerms="@com.android.safetycenter.resources:string/advanced_security_search_terms"/>
-            <static-safety-source
-                id="AndroidAdvancedPrivacy"
-                profile="primary_profile_only"
-                intentAction="android.settings.PRIVACY_ADVANCED_SETTINGS"
-                title="@com.android.safetycenter.resources:string/advanced_privacy_title"
-                summary="@com.android.safetycenter.resources:string/advanced_privacy_summary"
-                searchTerms="@com.android.safetycenter.resources:string/advanced_privacy_search_terms"/>
+                intentAction="com.android.settings.MORE_SECURITY_PRIVACY_SETTINGS"
+                title="@com.android.safetycenter.resources:string/more_settings_title"
+                summary="@com.android.safetycenter.resources:string/more_settings_summary"
+                searchTerms="@com.android.safetycenter.resources:string/more_settings_search_terms"/>
         </safety-sources-group>
     </safety-sources-config>
 </safety-center-config>
