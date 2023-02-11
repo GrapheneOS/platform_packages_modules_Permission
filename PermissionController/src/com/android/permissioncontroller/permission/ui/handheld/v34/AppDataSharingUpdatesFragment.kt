@@ -6,7 +6,6 @@ import android.os.UserHandle
 import android.view.MenuItem
 import android.view.View
 import androidx.annotation.RequiresApi
-import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
 import com.android.permissioncontroller.Constants.EXTRA_SESSION_ID
 import com.android.permissioncontroller.R
@@ -124,15 +123,16 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
         if (preferenceScreen == null) {
             return
         }
-        val subtitlePreference =
-            preferenceScreen?.findPreference<Preference>(SUBTITLE_PREFERENCE_ID)
+        val detailsPreference =
+            preferenceScreen?.findPreference<AppDataSharingDetailsPreference>(DETAILS_PREFERENCE_ID)
         val footerPreference =
             preferenceScreen?.findPreference<FooterWithLinkPreference>(FOOTER_PREFERENCE_ID)
         val dataSharingUpdatesCategory =
             preferenceScreen?.findPreference<PreferenceCategory>(
                 LAST_PERIOD_UPDATES_PREFERENCE_CATEGORY_ID)
-        subtitlePreference?.let {
-            it.summary = getString(R.string.data_sharing_updates_subtitle)
+
+        detailsPreference?.let {
+            it.showNoUpdates = false
             it.isVisible = true
         }
         dataSharingUpdatesCategory?.let {
@@ -155,22 +155,20 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
         if (preferenceScreen == null) {
             return
         }
-        val subtitlePreference =
-            preferenceScreen?.findPreference<Preference>(SUBTITLE_PREFERENCE_ID)
+        val detailsPreference =
+            preferenceScreen?.findPreference<AppDataSharingDetailsPreference>(DETAILS_PREFERENCE_ID)
         val footerPreference =
             preferenceScreen?.findPreference<FooterWithLinkPreference>(FOOTER_PREFERENCE_ID)
         val dataSharingUpdatesCategory =
             preferenceScreen?.findPreference<PreferenceCategory>(
                 LAST_PERIOD_UPDATES_PREFERENCE_CATEGORY_ID)
-        subtitlePreference?.let {
-            it.summary = getString(R.string.data_sharing_updates_subtitle)
+
+        detailsPreference?.let {
+            it.showNoUpdates = true
             it.isVisible = true
         }
         dataSharingUpdatesCategory?.let {
-            // TODO(b/261666772): Refactor how the "no updates" message is shown to align with spec.
-            //  The same preference category may not be usable for UI with and without updates.
-            it.title = getString(R.string.no_updates_at_this_time)
-            it.isVisible = true
+            it.isVisible = false
         }
         footerPreference?.let {
             it.footerMessage = getString(R.string.data_sharing_updates_footer_message)
@@ -200,7 +198,7 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
          */
         fun createArgs(sessionId: Long) = Bundle().apply { putLong(EXTRA_SESSION_ID, sessionId) }
 
-        private const val SUBTITLE_PREFERENCE_ID = "subtitle"
+        private const val DETAILS_PREFERENCE_ID = "details"
         private const val FOOTER_PREFERENCE_ID = "info_footer"
         private const val LAST_PERIOD_UPDATES_PREFERENCE_CATEGORY_ID = "last_period_updates"
     }

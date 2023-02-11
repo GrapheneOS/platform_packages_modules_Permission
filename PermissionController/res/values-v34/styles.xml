@@ -158,6 +158,49 @@
 
     <!-- END PERMISSION RATIONALE DIALOG -->
 
+    <!-- START APP DATA SHARING UPDATES PAGE -->
+
+    <style name="AppDataSharingDetailsContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:layout_marginEnd">24dp</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:clipToPadding">false</item>
+    </style>
+
+    <style name="AppDataSharingDetailsTextAppearance"
+        parent="@android:style/TextAppearance.DeviceDefault">
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineHeight">20sp</item>
+    </style>
+
+    <style name="AppDataSharingDetailsMessage">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">12dp</item>
+        <item name="android:textAppearance">@style/AppDataSharingDetailsTextAppearance</item>
+    </style>
+
+    <style name="AppDataSharingNoUpdatesTextAppearance"
+        parent="@android:style/TextAppearance.DeviceDefault">
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:lineHeight">24sp</item>
+    </style>
+
+    <style name="AppDataSharingNoUpdatesMessage">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">28dp</item>
+        <item name="android:layout_marginBottom">24dp</item>
+        <item name="android:textAppearance">@style/AppDataSharingNoUpdatesTextAppearance</item>
+    </style>
+
+    <!-- END APP DATA SHARING UPDATES PAGE -->
+
     <!-- START SAFETY CENTER SUBPAGE -->
 
     <style name="SafetyCenterBrandChip">
