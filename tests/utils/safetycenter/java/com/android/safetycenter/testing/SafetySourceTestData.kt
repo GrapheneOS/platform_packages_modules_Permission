@@ -36,6 +36,7 @@ import android.safetycenter.SafetySourceStatus.IconAction
 import android.safetycenter.SafetySourceStatus.IconAction.ICON_TYPE_GEAR
 import android.safetycenter.SafetySourceStatus.IconAction.ICON_TYPE_INFO
 import androidx.annotation.RequiresApi
+import com.android.modules.utils.build.SdkLevel
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.ACTION_TEST_ACTIVITY
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SINGLE_SOURCE_ID
 import com.android.safetycenter.testing.SafetySourceIntentHandler.Companion.ACTION_DISMISS_ISSUE
@@ -299,7 +300,8 @@ class SafetySourceTestData(private val context: Context) {
      */
     fun defaultRecommendationIssueBuilder(
         title: String = "Recommendation issue title",
-        summary: String = "Recommendation issue summary"
+        summary: String = "Recommendation issue summary",
+        confirmationDialog: Boolean = false
     ) =
         SafetySourceIssue.Builder(
                 RECOMMENDATION_ISSUE_ID,
@@ -314,6 +316,18 @@ class SafetySourceTestData(private val context: Context) {
                         "See issue",
                         testActivityRedirectPendingIntent
                     )
+                    .apply {
+                        if (confirmationDialog && SdkLevel.isAtLeastU()) {
+                            setConfirmationDialogDetails(
+                                SafetySourceIssue.Action.ConfirmationDialogDetails(
+                                    "Confirmation title",
+                                    "Confirmation text",
+                                    "Confirmation yes",
+                                    "Confirmation no"
+                                )
+                            )
+                        }
+                    }
                     .build()
             )
 
@@ -330,6 +344,10 @@ class SafetySourceTestData(private val context: Context) {
     @RequiresApi(UPSIDE_DOWN_CAKE)
     fun recommendationIssueWithDeduplicationId(deduplicationId: String) =
         defaultRecommendationIssueBuilder().setDeduplicationId(deduplicationId).build()
+
+    val recommendationIssueWithActionConfirmation: SafetySourceIssue
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        get() = defaultRecommendationIssueBuilder(confirmationDialog = true).build()
 
     /**
      * A [SafetySourceIssue] with a [SEVERITY_LEVEL_RECOMMENDATION], account category and a
@@ -381,6 +399,13 @@ class SafetySourceTestData(private val context: Context) {
      */
     val recommendationWithGeneralIssue =
         defaultRecommendationDataBuilder().addIssue(recommendationGeneralIssue).build()
+
+    val recommendationWithIssueWithActionConfirmation: SafetySourceData
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        get() =
+            defaultRecommendationDataBuilder()
+                .addIssue(recommendationIssueWithActionConfirmation)
+                .build()
 
     /**
      * A [SafetySourceData] with a [SEVERITY_LEVEL_RECOMMENDATION] redirecting [SafetySourceIssue]
