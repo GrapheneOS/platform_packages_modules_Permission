@@ -41,15 +41,14 @@ import androidx.annotation.RequiresApi;
 import com.android.internal.annotations.GuardedBy;
 import com.android.modules.utils.build.SdkLevel;
 import com.android.permission.PermissionStatsLog;
+import com.android.safetycenter.ApiLock;
 import com.android.safetycenter.SafetyCenterConfigReader;
 import com.android.safetycenter.SafetyCenterDataFactory;
 import com.android.safetycenter.SafetyCenterFlags;
 import com.android.safetycenter.SafetySourceKey;
 import com.android.safetycenter.SafetySources;
 import com.android.safetycenter.UserProfileGroup;
-import com.android.safetycenter.data.SafetyCenterIssueDismissalRepository;
-import com.android.safetycenter.data.SafetyCenterIssueRepository;
-import com.android.safetycenter.data.SafetySourceDataRepository;
+import com.android.safetycenter.data.SafetyCenterDataManager;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 
 import java.util.List;
@@ -70,7 +69,7 @@ public final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback
     private static final String TAG = "SafetyCenterPullAtom";
 
     @NonNull private final Context mContext;
-    @NonNull private final Object mApiLock;
+    @NonNull private final ApiLock mApiLock;
 
     @GuardedBy("mApiLock")
     @NonNull
@@ -82,37 +81,25 @@ public final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback
 
     @GuardedBy("mApiLock")
     @NonNull
-    private final SafetySourceDataRepository mSafetySourceDataRepository;
-
-    @GuardedBy("mApiLock")
-    @NonNull
     private final SafetyCenterDataFactory mSafetyCenterDataFactory;
 
     @GuardedBy("mApiLock")
     @NonNull
-    private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
-
-    @GuardedBy("mApiLock")
-    @NonNull
-    private final SafetyCenterIssueRepository mSafetyCenterIssueRepository;
+    private final SafetyCenterDataManager mSafetyCenterDataManager;
 
     public SafetyCenterPullAtomCallback(
             @NonNull Context context,
-            @NonNull Object apiLock,
+            @NonNull ApiLock apiLock,
             @NonNull SafetyCenterStatsdLogger safetyCenterStatsdLogger,
             @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
-            @NonNull SafetySourceDataRepository safetySourceDataRepository,
             @NonNull SafetyCenterDataFactory safetyCenterDataFactory,
-            @NonNull SafetyCenterIssueDismissalRepository safetyCenterIssueDismissalRepository,
-            @NonNull SafetyCenterIssueRepository safetyCenterIssueRepository) {
+            @NonNull SafetyCenterDataManager safetyCenterDataManager) {
         mContext = context;
         mApiLock = apiLock;
         mSafetyCenterStatsdLogger = safetyCenterStatsdLogger;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
-        mSafetySourceDataRepository = safetySourceDataRepository;
         mSafetyCenterDataFactory = safetyCenterDataFactory;
-        mSafetyCenterIssueDismissalRepository = safetyCenterIssueDismissalRepository;
-        mSafetyCenterIssueRepository = safetyCenterIssueRepository;
+        mSafetyCenterDataManager = safetyCenterDataManager;
     }
 
     @Override
@@ -170,8 +157,7 @@ public final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback
             return loggableData.getDismissedIssues().size();
         }
         long openIssuesCount = loggableData.getIssues().size();
-        return mSafetyCenterIssueRepository.countLoggableIssuesFor(userProfileGroup)
-                - openIssuesCount;
+        return mSafetyCenterDataManager.countLoggableIssuesFor(userProfileGroup) - openIssuesCount;
     }
 
     @GuardedBy("mApiLock")
@@ -214,7 +200,7 @@ public final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback
             @NonNull SafetySource safetySource, @UserIdInt int userId, boolean isUserManaged) {
         SafetySourceKey key = SafetySourceKey.of(safetySource.getId(), userId);
         SafetySourceData safetySourceData =
-                mSafetySourceDataRepository.getSafetySourceDataInternal(key);
+                mSafetyCenterDataManager.getSafetySourceDataInternal(key);
         SafetySourceStatus safetySourceStatus =
                 safetySourceData == null ? null : safetySourceData.getStatus();
         List<SafetySourceIssue> safetySourceIssues =
@@ -236,7 +222,7 @@ public final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback
                             .setUserId(userId)
                             .build();
 
-            if (mSafetyCenterIssueDismissalRepository.isIssueDismissed(
+            if (mSafetyCenterDataManager.isIssueDismissed(
                     safetyCenterIssueKey, safetySourceIssue.getSeverityLevel())) {
                 dismissedIssuesCount++;
             } else {

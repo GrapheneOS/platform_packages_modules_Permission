@@ -63,12 +63,10 @@ import javax.annotation.concurrent.NotThreadSafe;
  * SafetySourceErrorDetails}.
  *
  * <p>This class isn't thread safe. Thread safety must be handled by the caller.
- *
- * @hide
  */
 @RequiresApi(TIRAMISU)
 @NotThreadSafe
-public final class SafetySourceDataRepository {
+final class SafetySourceDataRepository {
 
     private static final String TAG = "SafetySourceDataRepo";
 
@@ -90,7 +88,7 @@ public final class SafetySourceDataRepository {
 
     @NonNull private final PackageManager mPackageManager;
 
-    public SafetySourceDataRepository(
+    SafetySourceDataRepository(
             @NonNull Context context,
             @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
             @NonNull SafetyCenterRefreshTracker safetyCenterRefreshTracker,
@@ -121,7 +119,7 @@ public final class SafetySourceDataRepository {
      *
      * <p>This method may modify the {@link SafetyCenterIssueDismissalRepository}.
      */
-    public boolean setSafetySourceData(
+    boolean setSafetySourceData(
             @Nullable SafetySourceData safetySourceData,
             @NonNull String safetySourceId,
             @NonNull SafetyEvent safetyEvent,
@@ -167,7 +165,7 @@ public final class SafetySourceDataRepository {
      * {@link #setSafetySourceData} with a {@code null} value.
      */
     @Nullable
-    public SafetySourceData getSafetySourceData(
+    SafetySourceData getSafetySourceData(
             @NonNull String safetySourceId, @NonNull String packageName, @UserIdInt int userId) {
         if (!validateRequest(null, safetySourceId, packageName, userId)) {
             return null;
@@ -186,7 +184,7 @@ public final class SafetySourceDataRepository {
      * {@link #setSafetySourceData} with a {@code null} value.
      */
     @Nullable
-    public SafetySourceData getSafetySourceDataInternal(@NonNull SafetySourceKey safetySourceKey) {
+    SafetySourceData getSafetySourceDataInternal(@NonNull SafetySourceKey safetySourceKey) {
         return mSafetySourceDataForKey.get(safetySourceKey);
     }
 
@@ -198,7 +196,7 @@ public final class SafetySourceDataRepository {
      * <p>Throws if the request is invalid based on the {@link SafetyCenterConfig}: the given {@code
      * safetySourceId}, {@code packageName} and/or {@code userId} are unexpected.
      */
-    public boolean reportSafetySourceError(
+    boolean reportSafetySourceError(
             @NonNull SafetySourceErrorDetails safetySourceErrorDetails,
             @NonNull String safetySourceId,
             @NonNull String packageName,
@@ -222,8 +220,11 @@ public final class SafetySourceDataRepository {
         return safetyEventChangedSafetyCenterData || safetySourceErrorChangedSafetyCenterData;
     }
 
-    /** Marks the given {@link SafetySourceKey} as having errored-out. */
-    public boolean setSafetySourceError(@NonNull SafetySourceKey safetySourceKey) {
+    /**
+     * Marks the given {@link SafetySourceKey} as having errored-out and returns whether there was a
+     * change to the underlying {@link SafetyCenterData}.
+     */
+    boolean setSafetySourceError(@NonNull SafetySourceKey safetySourceKey) {
         boolean removingSafetySourceDataChangedSafetyCenterData =
                 mSafetySourceDataForKey.remove(safetySourceKey) != null;
         boolean addingSafetySourceErrorChangedSafetyCenterData =
@@ -236,7 +237,7 @@ public final class SafetySourceDataRepository {
      * Clears all safety source errors received so far for the given {@link UserProfileGroup}, this
      * is useful e.g. when starting a new broadcast.
      */
-    public void clearSafetySourceErrors(@NonNull UserProfileGroup userProfileGroup) {
+    void clearSafetySourceErrors(@NonNull UserProfileGroup userProfileGroup) {
         // Loop in reverse index order to be able to remove entries while iterating.
         for (int i = mSafetySourceErrors.size() - 1; i >= 0; i--) {
             SafetySourceKey sourceKey = mSafetySourceErrors.valueAt(i);
@@ -253,8 +254,7 @@ public final class SafetySourceDataRepository {
      * dismissed.
      */
     @Nullable
-    public SafetySourceIssue getSafetySourceIssue(
-            @NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
+    SafetySourceIssue getSafetySourceIssue(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
         SafetySourceKey key =
                 SafetySourceKey.of(
                         safetyCenterIssueKey.getSafetySourceId(), safetyCenterIssueKey.getUserId());
@@ -295,7 +295,7 @@ public final class SafetySourceDataRepository {
      * <p>Returns {@code null} if the {@link SafetySourceIssue.Action} is currently in flight.
      */
     @Nullable
-    public SafetySourceIssue.Action getSafetySourceIssueAction(
+    SafetySourceIssue.Action getSafetySourceIssueAction(
             @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
         SafetySourceIssue safetySourceIssue =
                 getSafetySourceIssue(safetyCenterIssueActionId.getSafetyCenterIssueKey());
@@ -309,7 +309,7 @@ public final class SafetySourceDataRepository {
     }
 
     /** Clears all {@link SafetySourceData}, errors, issues and in flight actions for all users. */
-    public void clear() {
+    void clear() {
         mSafetySourceDataForKey.clear();
         mSafetySourceErrors.clear();
     }
@@ -318,7 +318,7 @@ public final class SafetySourceDataRepository {
      * Clears all {@link SafetySourceData}, errors, issues and in flight actions, for the given
      * user.
      */
-    public void clearForUser(@UserIdInt int userId) {
+    void clearForUser(@UserIdInt int userId) {
         // Loop in reverse index order to be able to remove entries while iterating.
         for (int i = mSafetySourceDataForKey.size() - 1; i >= 0; i--) {
             SafetySourceKey sourceKey = mSafetySourceDataForKey.keyAt(i);
@@ -336,7 +336,7 @@ public final class SafetySourceDataRepository {
     }
 
     /** Dumps state for debugging purposes. */
-    public void dump(@NonNull PrintWriter fout) {
+    void dump(@NonNull PrintWriter fout) {
         int dataCount = mSafetySourceDataForKey.size();
         fout.println("SOURCE DATA (" + dataCount + ")");
         for (int i = 0; i < dataCount; i++) {
@@ -356,7 +356,7 @@ public final class SafetySourceDataRepository {
     }
 
     /** Returns {@code true} if the given source has an error. */
-    public boolean sourceHasError(@NonNull SafetySourceKey safetySourceKey) {
+    boolean sourceHasError(@NonNull SafetySourceKey safetySourceKey) {
         return mSafetySourceErrors.contains(safetySourceKey);
     }
 

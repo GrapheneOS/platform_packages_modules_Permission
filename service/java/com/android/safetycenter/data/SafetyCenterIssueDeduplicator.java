@@ -36,19 +36,15 @@ import java.util.Objects;
 
 import javax.annotation.concurrent.NotThreadSafe;
 
-/**
- * Deduplicates issues based on deduplication info provided by the source and the issue.
- *
- * @hide
- */
+/** Deduplicates issues based on deduplication info provided by the source and the issue. */
 @RequiresApi(UPSIDE_DOWN_CAKE)
 @NotThreadSafe
-public final class SafetyCenterIssueDeduplicator {
+final class SafetyCenterIssueDeduplicator {
 
     @NonNull
     private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
 
-    public SafetyCenterIssueDeduplicator(
+    SafetyCenterIssueDeduplicator(
             @NonNull SafetyCenterIssueDismissalRepository safetyCenterIssueDismissalRepository) {
         this.mSafetyCenterIssueDismissalRepository = safetyCenterIssueDismissalRepository;
     }

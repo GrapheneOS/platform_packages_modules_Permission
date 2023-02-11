@@ -187,6 +187,18 @@ class SafetyCenterTestConfigs(private val context: Context) {
             )
             .build()
 
+    /** A simple [SafetyCenterConfig] with multiple sources in a single [SafetySourcesGroup]. */
+    val multipleSourcesInSingleGroupConfig =
+        SafetyCenterConfig.Builder()
+            .addSafetySourcesGroup(
+                safetySourcesGroupBuilder(MULTIPLE_SOURCES_GROUP_ID_1)
+                    .addSafetySource(dynamicSafetySource(SOURCE_ID_1))
+                    .addSafetySource(dynamicSafetySource(SOURCE_ID_2))
+                    .addSafetySource(dynamicSafetySource(SOURCE_ID_3))
+                    .build()
+            )
+            .build()
+
     /** A simple [SafetyCenterConfig] for tests with multiple sources with deduplication info. */
     val multipleSourcesWithDeduplicationInfoConfig: SafetyCenterConfig
         @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)

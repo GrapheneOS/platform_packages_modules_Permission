@@ -30,7 +30,7 @@ import android.util.Log;
 import androidx.annotation.RequiresApi;
 
 import com.android.internal.annotations.GuardedBy;
-import com.android.safetycenter.data.SafetyCenterIssueDismissalRepository;
+import com.android.safetycenter.data.SafetyCenterDataManager;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
 import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
@@ -127,21 +127,21 @@ final class SafetyCenterNotificationReceiver extends BroadcastReceiver {
 
     @GuardedBy("mApiLock")
     @NonNull
-    private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
+    private final SafetyCenterDataManager mSafetyCenterDataManager;
 
     @GuardedBy("mApiLock")
     @NonNull
     private final SafetyCenterDataChangeNotifier mSafetyCenterDataChangeNotifier;
 
-    @NonNull private final Object mApiLock;
+    @NonNull private final ApiLock mApiLock;
 
     SafetyCenterNotificationReceiver(
             @NonNull SafetyCenterService service,
-            @NonNull SafetyCenterIssueDismissalRepository safetyCenterIssueDismissalRepository,
+            @NonNull SafetyCenterDataManager safetyCenterDataManager,
             @NonNull SafetyCenterDataChangeNotifier safetyCenterDataChangeNotifier,
-            @NonNull Object apiLock) {
+            @NonNull ApiLock apiLock) {
         mService = service;
-        mSafetyCenterIssueDismissalRepository = safetyCenterIssueDismissalRepository;
+        mSafetyCenterDataManager = safetyCenterDataManager;
         mSafetyCenterDataChangeNotifier = safetyCenterDataChangeNotifier;
         mApiLock = apiLock;
     }
@@ -194,7 +194,7 @@ final class SafetyCenterNotificationReceiver extends BroadcastReceiver {
         int userId = issueKey.getUserId();
         UserProfileGroup userProfileGroup = UserProfileGroup.from(context, userId);
         synchronized (mApiLock) {
-            mSafetyCenterIssueDismissalRepository.dismissNotification(issueKey);
+            mSafetyCenterDataManager.dismissNotification(issueKey);
             mSafetyCenterDataChangeNotifier.updateDataConsumers(userProfileGroup, userId);
         }
     }

@@ -41,21 +41,17 @@ import androidx.annotation.RequiresApi
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.service.BaseSearchIndexablesProvider
+import com.android.permissioncontroller.safetycenter.SafetyCenterConstants.PERSONAL_PROFILE_SUFFIX
+import com.android.permissioncontroller.safetycenter.SafetyCenterConstants.WORK_PROFILE_SUFFIX
+import com.android.permissioncontroller.safetycenter.ui.SafetyCenterUiFlags
+import com.android.permissioncontroller.safetycenter.ui.model.PrivacyControlsViewModel.Pref
 import com.android.safetycenter.internaldata.SafetyCenterEntryId
 import com.android.safetycenter.internaldata.SafetyCenterIds
 import com.android.safetycenter.resources.SafetyCenterResourcesContext
 
-/**
- * {@link android.provider.SearchIndexablesProvider} for Safety Center.
- */
+/** [android.provider.SearchIndexablesProvider] for Safety Center. */
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class SafetyCenterSearchIndexablesProvider : BaseSearchIndexablesProvider() {
-
-    private companion object {
-        private const val BIOMETRIC_SOURCE_ID = "AndroidBiometrics"
-        private const val PERSONAL_PROFILE_SUFFIX = "personal"
-        private const val WORK_PROFILE_SUFFIX = "work"
-    }
 
     override fun queryRawData(projection: Array<out String>?): Cursor {
         val cursor = MatrixCursor(INDEXABLES_RAW_COLUMNS)
@@ -65,23 +61,27 @@ class SafetyCenterSearchIndexablesProvider : BaseSearchIndexablesProvider() {
 
         val context = requireContext()
         val safetyCenterManager: SafetyCenterManager? =
-                context.getSystemService(SafetyCenterManager::class.java)
+            context.getSystemService(SafetyCenterManager::class.java)
         val resourcesContext = SafetyCenterResourcesContext(context)
 
         val screenTitle = context.getString(R.string.safety_center_dashboard_page_title)
 
-        safetyCenterManager?.safetySources
-                ?.filter { it.type != SAFETY_SOURCE_TYPE_ISSUE_ONLY }
-                ?.forEach { safetySource ->
-                    cursor.addSafetySourceRow(
-                            context,
-                            safetySource,
-                            resourcesContext,
-                            safetyCenterManager,
-                            screenTitle
-                    )
-                }
+        safetyCenterManager
+            ?.safetySources
+            ?.filter { it.type != SAFETY_SOURCE_TYPE_ISSUE_ONLY }
+            ?.forEach { safetySource ->
+                cursor.addSafetySourceRow(
+                    context,
+                    safetySource,
+                    resourcesContext,
+                    safetyCenterManager,
+                    screenTitle
+                )
+            }
 
+        if (SdkLevel.isAtLeastU()) {
+            cursor.indexPrivacyControls(context, screenTitle)
+        }
         return cursor
     }
 
@@ -106,9 +106,11 @@ class SafetyCenterSearchIndexablesProvider : BaseSearchIndexablesProvider() {
             collectAllRemovableKeys(safetyCenterManager, keysToRemove) { true }
         }
 
-        keysToRemove.forEach { key ->
-            cursor.newRow().add(NonIndexableKey.COLUMN_KEY_VALUE, key)
+        if (shouldRemovePrivacyControlKeys(safetyCenterManager)) {
+            keysToRemove.addAll(privacyControlKeys)
         }
+
+        keysToRemove.forEach { key -> cursor.newRow().add(NonIndexableKey.COLUMN_KEY_VALUE, key) }
         return cursor
     }
 
@@ -124,30 +126,30 @@ class SafetyCenterSearchIndexablesProvider : BaseSearchIndexablesProvider() {
         var isWorkEntryAdded = false
 
         fun MatrixCursor.addIndexableRow(title: CharSequence, isWorkProfile: Boolean) =
-                newRow()
-                        .add(COLUMN_RANK, 0)
-                        .add(COLUMN_TITLE, title)
-                        .add(COLUMN_KEYWORDS, searchTerms?.let { "$title, $it" } ?: title)
-                        .add(COLUMN_KEY, safetySource.id.addSuffix(isWorkProfile))
-                        .add(COLUMN_INTENT_ACTION, Intent.ACTION_SAFETY_CENTER)
-                        .add(COLUMN_SCREEN_TITLE, screenTitle)
+            newRow()
+                .add(COLUMN_RANK, 0)
+                .add(COLUMN_TITLE, title)
+                .add(COLUMN_KEYWORDS, searchTerms?.let { "$title, $it" } ?: title)
+                .add(COLUMN_KEY, safetySource.id.addSuffix(isWorkProfile))
+                .add(COLUMN_INTENT_ACTION, Intent.ACTION_SAFETY_CENTER)
+                .add(COLUMN_SCREEN_TITLE, screenTitle)
 
         if (safetySource.id == BIOMETRIC_SOURCE_ID) {
             // correct Biometric Unlock title is only available when
             // Biometric SafetySource have sent the data to SafetyCenter
             context.getSystemService(UserManager::class.java)?.let { userManager ->
                 safetyCenterManager.safetyEntries
-                        .associateBy { it.entryId }
-                        .filter { it.key.safetySourceId == BIOMETRIC_SOURCE_ID }
-                        .forEach {
-                            val isWorkProfile = userManager.isManagedProfile(it.key.userId)
-                            if (isWorkProfile) {
-                                isWorkEntryAdded = true
-                            } else {
-                                isPersonalEntryAdded = true
-                            }
-                            addIndexableRow(it.value.title, isWorkProfile)
+                    .associateBy { it.entryId }
+                    .filter { it.key.safetySourceId == BIOMETRIC_SOURCE_ID }
+                    .forEach {
+                        val isWorkProfile = userManager.isManagedProfile(it.key.userId)
+                        if (isWorkProfile) {
+                            isWorkEntryAdded = true
+                        } else {
+                            isPersonalEntryAdded = true
                         }
+                        addIndexableRow(it.value.title, isWorkProfile)
+                    }
             }
         }
 
@@ -165,35 +167,29 @@ class SafetyCenterSearchIndexablesProvider : BaseSearchIndexablesProvider() {
     }
 
     private fun Context.getNotEmptyStringOrNull(resId: Int): String? =
-            if (resId != Resources.ID_NULL) {
-                getString(resId).takeIf { it.isNotEmpty() }
-            } else {
-                null
-            }
+        if (resId != Resources.ID_NULL) {
+            getString(resId).takeIf { it.isNotEmpty() }
+        } else {
+            null
+        }
 
     private fun String.addSuffix(isWorkProfile: Boolean): String =
-            "${this}_${if (isWorkProfile) WORK_PROFILE_SUFFIX else PERSONAL_PROFILE_SUFFIX}"
+        "${this}_${if (isWorkProfile) WORK_PROFILE_SUFFIX else PERSONAL_PROFILE_SUFFIX}"
 
     private val SafetyCenterManager.safetySources: Sequence<SafetySource>?
-        get() = safetyCenterConfig
-                ?.safetySourcesGroups
-                ?.asSequence()
-                ?.flatMap { it.safetySources }
+        get() = safetyCenterConfig?.safetySourcesGroups?.asSequence()?.flatMap { it.safetySources }
 
     private fun collectAllRemovableKeys(
         safetyCenterManager: SafetyCenterManager?,
         keysToRemove: MutableSet<String>,
         filter: (SafetySource) -> Boolean
     ) {
-        safetyCenterManager?.safetySources
-                ?.asSequence()
-                ?.filter(filter)
-                ?.forEach { safetySource ->
-                    keysToRemove.add(safetySource.id.addSuffix(isWorkProfile = false))
-                    if (safetySource.profile == SafetySource.PROFILE_ALL) {
-                        keysToRemove.add(safetySource.id.addSuffix(isWorkProfile = true))
-                    }
-                }
+        safetyCenterManager?.safetySources?.asSequence()?.filter(filter)?.forEach { safetySource ->
+            keysToRemove.add(safetySource.id.addSuffix(isWorkProfile = false))
+            if (safetySource.profile == SafetySource.PROFILE_ALL) {
+                keysToRemove.add(safetySource.id.addSuffix(isWorkProfile = true))
+            }
+        }
     }
 
     private fun keepActiveEntriesFromRemoval(
@@ -217,15 +213,44 @@ class SafetyCenterSearchIndexablesProvider : BaseSearchIndexablesProvider() {
     }
 
     private val SafetyCenterManager.safetyEntries: Sequence<SafetyCenterEntry>
-        get() = safetyCenterData
-                .entriesOrGroups
-                .asSequence()
-                .flatMap { groupOrEntry ->
-                    groupOrEntry.entryGroup?.entries?.asSequence()
-                            ?: groupOrEntry.entry?.let { sequenceOf(it) }
-                            ?: emptySequence()
-                }
+        get() =
+            safetyCenterData.entriesOrGroups.asSequence().flatMap { groupOrEntry ->
+                groupOrEntry.entryGroup?.entries?.asSequence()
+                    ?: groupOrEntry.entry?.let { sequenceOf(it) } ?: emptySequence()
+            }
 
     private val SafetyCenterEntry.entryId: SafetyCenterEntryId
         get() = SafetyCenterIds.entryIdFromString(id)
+
+    companion object {
+        private const val BIOMETRIC_SOURCE_ID = "AndroidBiometrics"
+
+        private val privacyControlKeys: List<String>
+            get() = Pref.values().map { it.key }
+
+        private fun MatrixCursor.indexPrivacyControls(context: Context, screenTitle: String) {
+            for (pref in Pref.values()) {
+                val preferenceTitle = context.getString(pref.titleResId)
+                newRow()
+                    .add(COLUMN_RANK, 0)
+                    .add(COLUMN_TITLE, preferenceTitle)
+                    .add(COLUMN_KEY, pref.key)
+                    .add(COLUMN_KEYWORDS, preferenceTitle)
+                    .add(COLUMN_INTENT_ACTION, Intent.ACTION_SAFETY_CENTER)
+                    .add(COLUMN_SCREEN_TITLE, screenTitle)
+            }
+        }
+
+        private fun shouldRemovePrivacyControlKeys(
+            safetyCenterManager: SafetyCenterManager?
+        ): Boolean {
+            if (!SdkLevel.isAtLeastU()) {
+                // The keys were never added in the first place, no need to remove.
+                return false
+            }
+            val safetyCenterDisabled = safetyCenterManager?.isSafetyCenterEnabled != true
+            val subpagesDisabled = !SafetyCenterUiFlags.getShowSubpages()
+            return safetyCenterDisabled || subpagesDisabled
+        }
+    }
 }

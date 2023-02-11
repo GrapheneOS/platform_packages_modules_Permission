@@ -23,11 +23,16 @@ import static android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCES_GROU
 
 import static com.android.permissioncontroller.PermissionControllerStatsLog.PRIVACY_SIGNAL_NOTIFICATION_INTERACTION;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.PRIVACY_SIGNAL_NOTIFICATION_INTERACTION__ACTION__NOTIFICATION_CLICKED;
+import static com.android.permissioncontroller.safetycenter.SafetyCenterConstants.PERSONAL_PROFILE_SUFFIX;
+import static com.android.permissioncontroller.safetycenter.SafetyCenterConstants.WORK_PROFILE_SUFFIX;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.safetycenter.SafetyCenterManager;
+import android.safetycenter.config.SafetyCenterConfig;
+import android.safetycenter.config.SafetySource;
+import android.safetycenter.config.SafetySourcesGroup;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
@@ -37,9 +42,11 @@ import androidx.fragment.app.Fragment;
 import com.android.permissioncontroller.Constants;
 import com.android.permissioncontroller.PermissionControllerStatsLog;
 import com.android.permissioncontroller.R;
+import com.android.permissioncontroller.safetycenter.ui.model.PrivacyControlsViewModel.Pref;
 import com.android.settingslib.activityembedding.ActivityEmbeddingUtils;
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
 
+import java.util.List;
 import java.util.Objects;
 
 /** Entry-point activity for SafetyCenter. */
@@ -53,6 +60,7 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
             "android.provider.extra.SETTINGS_EMBEDDED_DEEP_LINK_INTENT_URI";
     private static final String EXTRA_SETTINGS_EMBEDDED_DEEP_LINK_HIGHLIGHT_MENU_KEY =
             "android.provider.extra.SETTINGS_EMBEDDED_DEEP_LINK_HIGHLIGHT_MENU_KEY";
+    private static final String EXTRA_SETTINGS_FRAGMENT_ARGS_KEY = ":settings:fragment_args_key";
 
     private SafetyCenterManager mSafetyCenterManager;
 
@@ -70,10 +78,15 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
         }
 
         Fragment frag;
-        if (SafetyCenterUiFlags.getShowSubpages()
-                && getIntent().getAction().equals(ACTION_SAFETY_CENTER)
-                && getIntent().hasExtra(EXTRA_SAFETY_SOURCES_GROUP_ID)) {
+        final boolean maybeOpenSubpage =
+                SafetyCenterUiFlags.getShowSubpages()
+                        && getIntent().getAction().equals(ACTION_SAFETY_CENTER);
+        if (maybeOpenSubpage && getIntent().hasExtra(EXTRA_SAFETY_SOURCES_GROUP_ID)) {
             String groupId = getIntent().getStringExtra(EXTRA_SAFETY_SOURCES_GROUP_ID);
+            frag = openRelevantSubpage(groupId);
+        } else if (maybeOpenSubpage && getIntent().hasExtra(EXTRA_SETTINGS_FRAGMENT_ARGS_KEY)) {
+            String preferenceKey = getIntent().getStringExtra(EXTRA_SETTINGS_FRAGMENT_ARGS_KEY);
+            String groupId = getParentGroupId(preferenceKey);
             frag = openRelevantSubpage(groupId);
         } else if (getIntent().getAction().equals(PRIVACY_CONTROLS_ACTION)) {
             setTitle(R.string.privacy_controls_title);
@@ -185,5 +198,34 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
             return new PrivacySubpageFragment();
         }
         return SafetyCenterSubpageFragment.newInstance(groupId);
+    }
+
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    private String getParentGroupId(String preferenceKey) {
+        if (Pref.findByKey(preferenceKey) != null) {
+            return PrivacySubpageFragment.SOURCE_GROUP_ID;
+        }
+
+        SafetyCenterConfig safetyCenterConfig = mSafetyCenterManager.getSafetyCenterConfig();
+        String[] splitKey;
+        if (preferenceKey.endsWith(PERSONAL_PROFILE_SUFFIX)) {
+            splitKey = preferenceKey.split("_" + PERSONAL_PROFILE_SUFFIX);
+        } else {
+            splitKey = preferenceKey.split("_" + WORK_PROFILE_SUFFIX);
+        }
+
+        if (safetyCenterConfig == null || splitKey.length == 0) {
+            return "";
+        }
+
+        List<SafetySourcesGroup> groups = safetyCenterConfig.getSafetySourcesGroups();
+        for (SafetySourcesGroup group : groups) {
+            for (SafetySource source : group.getSafetySources()) {
+                if (Objects.equals(source.getId(), splitKey[0])) {
+                    return group.getId();
+                }
+            }
+        }
+        return "";
     }
 }

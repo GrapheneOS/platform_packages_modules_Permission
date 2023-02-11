@@ -43,6 +43,8 @@
     <string name="safety_center_entry_content_description"> <xliff:g id="entry item title" example="App security">%1$s</xliff:g>. <xliff:g id="entry item summary" example="Scanning is on">%2$s</xliff:g></string>
     <!-- Title for the "More alerts" card in Safety Center [CHAR LIMIT=NONE]-->
     <string name="safety_center_more_issues_card_title">More alerts</string>
+    <!-- Title for the "Dismissed alerts" card in Safety Center [CHAR LIMIT=NONE]-->
+    <string name="safety_center_dismissed_issues_card_title">Dismissed alerts</string>
     <!-- Label for expanding the "See all alerts"/"More issues" card in Safety Center [CHAR LIMIT=NONE] -->
     <string name="safety_center_more_issues_card_expand_action">
         {count, plural,
