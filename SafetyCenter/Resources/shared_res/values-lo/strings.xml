@@ -21,10 +21,8 @@
     <string name="loading_summary" msgid="3740846439782713910">"ກໍາລັງກວດການຕັ້ງຄ່າອຸປະກອນ…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"ເບິ່ງໃຊ້ໄດ້"</string>
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"ບໍ່ພົບບັນຫາໃດໆ"</string>
-    <!-- no translation found for overall_severity_level_tip_summary (5582440812368113766) -->
-    <skip />
-    <!-- no translation found for overall_severity_level_action_taken_summary (8064091657855656545) -->
-    <skip />
+    <string name="overall_severity_level_tip_summary" msgid="5582440812368113766">"{count,plural, =1{ເຄັດລັບທີ່ພ້ອມໃຫ້ນຳໃຊ້}other{ເຄັດລັບທີ່ພ້ອມໃຫ້ນຳໃຊ້}}"</string>
+    <string name="overall_severity_level_action_taken_summary" msgid="8064091657855656545">"{count,plural, =1{ດຳເນີນການແລ້ວ}other{ດຳເນີນການແລ້ວ}}"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"ກວດເບິ່ງການຕັ້ງຄ່າ"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"ກວດລາຍການການຕັ້ງຄ່າ"</string>
     <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"ອຸປະກອນອາດມີຄວາມສ່ຽງ"</string>
@@ -39,8 +37,7 @@
     <string name="overall_severity_level_critical_safety_warning_title" msgid="6666640109779586868">"ພົບຄວາມສ່ຽງ"</string>
     <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"ບັນຊີອາດຕົກຢູ່ໃນຄວາມສ່ຽງ"</string>
     <string name="overall_severity_level_critical_account_warning_title" msgid="4402278408972158353">"ບັນຊີຕົກຢູ່ໃນຄວາມສ່ຽງ"</string>
-    <!-- no translation found for overall_severity_n_alerts_summary (6527386677095695234) -->
-    <skip />
+    <string name="overall_severity_n_alerts_summary" msgid="6527386677095695234">"{count,plural, =1{ເບິ່ງການແຈ້ງເຕືອນລຸ່ມນີ້}other{ເບິ່ງການແຈ້ງເຕືອນລຸ່ມນີ້}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"ບໍ່ສາມາດເປີດໜ້າໄດ້"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"ບໍ່ສາມາດແກ້ໄຂແຈ້ງເຕືອນໄດ້"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"ບໍ່ສາມາດໂຫຼດການຕັ້ງຄ່າຄືນໃໝ່"</string>
