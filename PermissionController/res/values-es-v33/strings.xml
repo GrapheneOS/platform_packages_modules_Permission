@@ -27,7 +27,8 @@
     <string name="safety_center_entry_group_with_actions_needed_content_description" msgid="2708884606775932657">"Lista. <xliff:g id="ENTRY_TITLE">%1$s</xliff:g>. Acciones necesarias. <xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>."</string>
     <string name="safety_center_entry_group_item_content_description" msgid="7348298582877249787">"Elemento de lista. <xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>."</string>
     <string name="safety_center_entry_content_description" msgid="3639565652938224321">"<xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>."</string>
-    <string name="safety_center_more_issues_card_title" msgid="8599419758014246517">"Ver todas las alertas"</string>
+    <!-- no translation found for safety_center_more_issues_card_title (7425844746197493312) -->
+    <skip />
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{Ampliar para ver una alerta más}many{Ampliar para ver # alertas más}other{Ampliar para ver # alertas más}}"</string>
     <string name="safety_center_issue_card_content_description" msgid="1281390769721765363">"Alerta. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%2$s</xliff:g>."</string>
     <string name="safety_center_issue_card_content_description_with_subtitle" msgid="5504040663935313539">"Alerta. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUBTITLE">%2$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%3$s</xliff:g>."</string>
