@@ -92,9 +92,7 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
             setTitle(R.string.privacy_controls_title);
             frag = PrivacyControlsFragment.newInstance();
         } else {
-            logPrivacySourceMetric();
-            setTitle(getString(R.string.safety_center_dashboard_page_title));
-            frag = new SafetyCenterScrollWrapperFragment();
+            frag = openHomepage();
         }
 
         if (savedInstanceState == null) {
@@ -192,11 +190,22 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
         }
     }
 
+    private Fragment openHomepage() {
+        logPrivacySourceMetric();
+        setTitle(getString(R.string.safety_center_dashboard_page_title));
+        return new SafetyCenterScrollWrapperFragment();
+    }
+
     @RequiresApi(UPSIDE_DOWN_CAKE)
-    private SafetyCenterFragment openRelevantSubpage(String groupId) {
+    private Fragment openRelevantSubpage(String groupId) {
+        if (groupId.isEmpty()) {
+            return openHomepage();
+        }
+
         if (Objects.equals(groupId, PrivacySubpageFragment.SOURCE_GROUP_ID)) {
             return new PrivacySubpageFragment();
         }
+
         return SafetyCenterSubpageFragment.newInstance(groupId);
     }
 
