@@ -120,5 +120,8 @@
 
     <!-- The name of the notification channel where high-severity Security and Privacy notifications are posted. These notifications are typically critical warnings of the highest severity. [CHAR LIMIT=35] -->
     <string name="notification_channel_name_critical_warning">Critical warnings</string>
+
+    <!-- Summary of the subpage footer used for Safety Center UI tests -->
+    <string name="test_single_source_group_id_footer" translatable="false">Summary text for the footer</string>
 </resources>
 
