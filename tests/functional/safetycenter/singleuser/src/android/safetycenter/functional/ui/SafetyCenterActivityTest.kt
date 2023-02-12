@@ -1327,6 +1327,43 @@ class SafetyCenterActivityTest {
         }
     }
 
+    @Test
+    @SdkSuppress(maxSdkVersion = TIRAMISU)
+    fun launchSafetyCenter_enableSubpagesFlagOnT_stillShowsExpandAndCollapseEntries() {
+        // TODO(b/258228790): Remove after U is no longer in pre-release
+        assumeFalse(CODENAME == "UpsideDownCake")
+
+        SafetyCenterFlags.showSubpages = true
+        val sourceTestData = safetySourceTestData.information
+        val config = safetyCenterTestConfigs.multipleSourceGroupsConfig
+        with(safetyCenterTestHelper) {
+            setConfig(config)
+            setData(SOURCE_ID_1, sourceTestData)
+            setData(SOURCE_ID_2, sourceTestData)
+            setData(SOURCE_ID_3, sourceTestData)
+            setData(SOURCE_ID_4, sourceTestData)
+            setData(SOURCE_ID_5, sourceTestData)
+        }
+        val firstGroup = config.safetySourcesGroups.first()
+        val lastGroup = config.safetySourcesGroups.last()
+
+        context.launchSafetyCenterActivity {
+            waitAllTextDisplayed(
+                context.getString(lastGroup.titleResId),
+                context.getString(lastGroup.summaryResId)
+            )
+
+            waitDisplayed(By.text(context.getString(firstGroup.titleResId))) { it.click() }
+
+            waitAllTextDisplayed(
+                sourceTestData.status!!.title,
+                sourceTestData.status!!.summary,
+                context.getString(lastGroup.titleResId),
+                context.getString(lastGroup.summaryResId),
+            )
+        }
+    }
+
     companion object {
         private const val EXPAND_ISSUE_GROUP_QS_FRAGMENT_KEY = "expand_issue_group_qs_fragment_key"
 
