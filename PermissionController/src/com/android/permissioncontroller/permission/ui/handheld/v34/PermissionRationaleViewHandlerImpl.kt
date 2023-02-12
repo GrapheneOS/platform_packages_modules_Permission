@@ -129,9 +129,6 @@ class PermissionRationaleViewHandlerImpl(
     }
 
     override fun createView(): View {
-        // Make this activity be Non-IME target to prevent hiding keyboard flicker when it show up.
-        mActivity.window.addFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM)
-
         val rootView = LayoutInflater.from(mActivity)
             .inflate(R.layout.permission_rationale, null) as ViewGroup
 
