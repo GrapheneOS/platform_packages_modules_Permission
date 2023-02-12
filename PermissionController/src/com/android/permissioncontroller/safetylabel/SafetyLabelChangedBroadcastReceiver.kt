@@ -82,8 +82,12 @@ class SafetyLabelChangedBroadcastReceiver : BroadcastReceiver() {
 
         val user: UserHandle =
             intent.getParcelableExtra(Intent.EXTRA_USER, UserHandle::class.java) ?: currentUser
+
+        val pendingResult: PendingResult = goAsync()
+
         GlobalScope.launch(Dispatchers.Main) {
-            processPackageChange(context, packageName, user, packageChangeEvent)
+            processPackageChange(context, packageName, user)
+            pendingResult.finish()
         }
     }
 
@@ -92,14 +96,13 @@ class SafetyLabelChangedBroadcastReceiver : BroadcastReceiver() {
         context: Context,
         packageName: String,
         user: UserHandle,
-        packageChangeEvent: PackageChangeEvent
     ) {
         val lightPackageInfo =
             LightPackageInfoLiveData[Pair(packageName, user)].getInitializedValue()
         if (!isAppRequestingLocationPermission(lightPackageInfo)) {
             return
         }
-        writeSafetyLabel(context, lightPackageInfo, user, packageChangeEvent)
+        writeSafetyLabel(context, lightPackageInfo, user)
     }
 
     /**
@@ -112,7 +115,6 @@ class SafetyLabelChangedBroadcastReceiver : BroadcastReceiver() {
         context: Context,
         lightPackageInfo: LightPackageInfo,
         user: UserHandle,
-        packageChangeEvent: PackageChangeEvent
     ) {
         val packageName = lightPackageInfo.packageName
         if (DEBUG) {
@@ -137,12 +139,8 @@ class SafetyLabelChangedBroadcastReceiver : BroadcastReceiver() {
         val safetyLabel: AppMetadataSafetyLabel =
             AppMetadataSafetyLabel.getSafetyLabelFromMetadata(appMetadataBundle) ?: return
 
-        val receivedAtMs: Long =
-            if (packageChangeEvent == PackageChangeEvent.NEW_INSTALL) {
-                lightPackageInfo.firstInstallTime
-            } else {
-                lightPackageInfo.lastUpdateTime
-            }
+        val receivedAtMs: Long = lightPackageInfo.lastUpdateTime
+
         val safetyLabelForPersistence: SafetyLabelForPersistence =
             AppsSafetyLabelHistory.SafetyLabel.fromAppMetadataSafetyLabel(
                 packageName, Instant.ofEpochMilli(receivedAtMs), safetyLabel)

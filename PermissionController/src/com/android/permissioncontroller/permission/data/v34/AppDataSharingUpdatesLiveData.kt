@@ -26,6 +26,7 @@ import com.android.permissioncontroller.permission.model.v34.AppDataSharingUpdat
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistoryPersistence
 import java.time.Duration
 import java.time.Instant
+import java.time.ZoneId
 import kotlinx.coroutines.Job
 
 /** LiveData for [AppDataSharingUpdate]s. */
@@ -45,7 +46,8 @@ class AppDataSharingUpdatesLiveData(val app: Application) :
 
         val appSafetyLabelDiffsFromPersistence =
             AppsSafetyLabelHistoryPersistence.getAppSafetyLabelDiffs(
-                Instant.now().minusMillis(updatePeriod), file)
+                Instant.now().atZone(ZoneId.systemDefault()).toInstant().minusMillis(updatePeriod),
+                file)
         val updatesFromPersistence =
             appSafetyLabelDiffsFromPersistence.mapNotNull { it.buildUpdateIfSignificantChange() }
 
