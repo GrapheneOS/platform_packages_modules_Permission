@@ -77,6 +77,14 @@ constructor(
         )
     }
 
+    fun showStaticHeader(title: String) {
+        titleView.text = title
+        statusIconView.isVisible = false
+        expandCollapseLayout.isVisible = false
+        setOnClickListener(null)
+        isClickable = false
+    }
+
     private fun updateExpandCollapseButton(wasExpanded: Boolean?, isExpanded: Boolean) {
         expandCollapseLayout.isVisible = true
         if (wasExpanded != null && wasExpanded != isExpanded) {

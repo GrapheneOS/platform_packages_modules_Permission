@@ -585,6 +585,122 @@ class SafetyCenterSubpagesTest {
     }
 
     @Test
+    fun dismissedIssuesCard_expandWithOnlyDismissedIssues_showsAdditionalCard() {
+        val sourceData = safetySourceTestData.criticalWithIssueWithAttributionTitle
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
+        safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, sourceData)
+        val sourcesGroup = safetyCenterTestConfigs.singleSourceConfig.safetySourcesGroups.first()
+        val issue = sourceData.issues[0]
+
+        context.launchSafetyCenterActivity {
+            openPageAndExit(context.getString(sourcesGroup.titleResId)) {
+                waitSourceIssueDisplayed(issue)
+                waitDisplayed(By.desc("Dismiss")) { it.click() }
+                waitAllTextDisplayed("Dismiss this alert?")
+                waitButtonDisplayed("Dismiss") { it.click() }
+                waitSourceIssueNotDisplayed(issue)
+
+                waitDisplayed(By.text("Dismissed alerts")) { it.click() }
+
+                waitAllTextDisplayed("Dismissed alerts")
+                waitSourceIssueDisplayed(issue)
+            }
+        }
+    }
+
+    @Test
+    fun dismissedIssuesCard_collapseWithOnlyDismissedIssues_hidesAdditionalCard() {
+        val sourceData = safetySourceTestData.criticalWithIssueWithAttributionTitle
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
+        safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, sourceData)
+        val sourcesGroup = safetyCenterTestConfigs.singleSourceConfig.safetySourcesGroups.first()
+        val issue = sourceData.issues[0]
+
+        context.launchSafetyCenterActivity {
+            openPageAndExit(context.getString(sourcesGroup.titleResId)) {
+                waitSourceIssueDisplayed(issue)
+                waitDisplayed(By.desc("Dismiss")) { it.click() }
+                waitAllTextDisplayed("Dismiss this alert?")
+                waitButtonDisplayed("Dismiss") { it.click() }
+                waitSourceIssueNotDisplayed(issue)
+                waitDisplayed(By.text("Dismissed alerts")) { it.click() }
+                waitSourceIssueDisplayed(issue)
+
+                waitDisplayed(By.text("Dismissed alerts")) { it.click() }
+
+                waitSourceIssueNotDisplayed(issue)
+            }
+        }
+    }
+
+    @Test
+    fun moreIssuesCard_expandWithDismissedIssues_showsAdditionalCards() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.multipleSourcesInSingleGroupConfig)
+
+        val firstSourceData = safetySourceTestData.criticalWithIssueWithAttributionTitle
+        val secondSourceData = safetySourceTestData.informationWithIssueWithAttributionTitle
+        val thirdSourceData = safetySourceTestData.informationWithIssueWithAttributionTitle
+
+        safetyCenterTestHelper.setData(SOURCE_ID_1, firstSourceData)
+        safetyCenterTestHelper.setData(SOURCE_ID_2, secondSourceData)
+        safetyCenterTestHelper.setData(SOURCE_ID_3, thirdSourceData)
+
+        val sourcesGroup =
+            safetyCenterTestConfigs.multipleSourcesInSingleGroupConfig.safetySourcesGroups.first()
+        val issue = firstSourceData.issues[0]
+
+        context.launchSafetyCenterActivity {
+            openPageAndExit(context.getString(sourcesGroup.titleResId)) {
+                waitSourceIssueDisplayed(issue)
+                waitDisplayed(By.desc("Dismiss")) { it.click() }
+                waitAllTextDisplayed("Dismiss this alert?")
+                waitButtonDisplayed("Dismiss") { it.click() }
+                waitSourceIssueNotDisplayed(issue)
+
+                clickMoreIssuesCard()
+
+                waitAllTextDisplayed(MORE_ISSUES_LABEL)
+                waitAllTextDisplayed("Dismissed alerts")
+                waitSourceIssueDisplayed(issue)
+            }
+        }
+    }
+
+    @Test
+    fun moreIssuesCard_collapseWithDismissedIssues_hidesAdditionalCards() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.multipleSourcesInSingleGroupConfig)
+
+        val firstSourceData = safetySourceTestData.criticalWithIssueWithAttributionTitle
+        val secondSourceData = safetySourceTestData.informationWithIssueWithAttributionTitle
+        val thirdSourceData = safetySourceTestData.informationWithIssueWithAttributionTitle
+
+        safetyCenterTestHelper.setData(SOURCE_ID_1, firstSourceData)
+        safetyCenterTestHelper.setData(SOURCE_ID_2, secondSourceData)
+        safetyCenterTestHelper.setData(SOURCE_ID_3, thirdSourceData)
+
+        val sourcesGroup =
+            safetyCenterTestConfigs.multipleSourcesInSingleGroupConfig.safetySourcesGroups.first()
+        val issue = firstSourceData.issues[0]
+
+        context.launchSafetyCenterActivity {
+            openPageAndExit(context.getString(sourcesGroup.titleResId)) {
+                waitSourceIssueDisplayed(issue)
+                waitDisplayed(By.desc("Dismiss")) { it.click() }
+                waitButtonDisplayed("Dismiss") { it.click() }
+                waitSourceIssueNotDisplayed(issue)
+                clickMoreIssuesCard()
+                waitSourceIssueDisplayed(issue)
+
+                clickMoreIssuesCard()
+
+                waitAllTextDisplayed(MORE_ISSUES_LABEL)
+                waitAllTextNotDisplayed("Dismissed alerts")
+                waitSourceIssueNotDisplayed(issue)
+            }
+        }
+    }
+
+    @Test
     fun brandChip_openSubpageFromHomepage_homepageReopensOnClick() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
         safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, safetySourceTestData.information)
@@ -738,6 +854,44 @@ class SafetyCenterSubpagesTest {
         }
     }
 
+    @Test
+    fun settingsSearch_openWithGenericIntentExtra_showsGenericSubpage() {
+        val config = safetyCenterTestConfigs.multipleSourcesConfig
+        safetyCenterTestHelper.setConfig(config)
+        val sourcesGroup = config.safetySourcesGroups.first()
+        val source = sourcesGroup.safetySources.first()
+        val preferenceKey = "${source.id}_personal"
+        val extras = Bundle()
+        extras.putString(EXTRA_SETTINGS_FRAGMENT_ARGS_KEY, preferenceKey)
+
+        context.launchSafetyCenterActivity(extras) {
+            waitDisplayed(By.desc(context.getString(sourcesGroup.titleResId)))
+            waitAllTextDisplayed(
+                context.getString(source.titleResId),
+                context.getString(source.summaryResId)
+            )
+        }
+    }
+
+    @Test
+    fun settingsSearch_openWithPrivacyIntentExtra_showsPrivacySubpage() {
+        val config = safetyCenterTestConfigs.privacySubpageConfig
+        val sourcesGroup = safetyCenterTestConfigs.singleSourceConfig.safetySourcesGroups.first()
+        val source: SafetySource = sourcesGroup.safetySources.first()
+        safetyCenterTestHelper.setConfig(config)
+        val extras = Bundle()
+        extras.putString(EXTRA_SETTINGS_FRAGMENT_ARGS_KEY, "privacy_camera_toggle")
+
+        context.launchSafetyCenterActivity(extras) {
+            waitAllTextDisplayed(
+                context.getString(source.titleResId),
+                context.getString(source.summaryResId),
+                "Controls",
+                "Data",
+            )
+        }
+    }
+
     private fun openPageAndExit(entryPoint: String, block: () -> Unit) {
         val uiDevice = UiAutomatorUtils2.getUiDevice()
         uiDevice.waitForIdle()
@@ -762,5 +916,6 @@ class SafetyCenterSubpagesTest {
         private const val SAFETY_SOURCE_2_SUMMARY = "Safety Source 2 Summary"
         private const val SAFETY_SOURCE_3_TITLE = "Safety Source 3 Title"
         private const val SAFETY_SOURCE_3_SUMMARY = "Safety Source 3 Summary"
+        private const val EXTRA_SETTINGS_FRAGMENT_ARGS_KEY = ":settings:fragment_args_key"
     }
 }

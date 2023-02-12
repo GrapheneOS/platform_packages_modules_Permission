@@ -95,14 +95,19 @@ object AppsSafetyLabelHistoryPersistence {
         return null
     }
 
-    /**
-     * Returns a set of [AppInfo]s representing apps that have safety label data persisted in
-     * history [file].
-     */
-    fun getAppsWithSafetyLabels(file: File): Set<AppInfo> {
-        val appHistories = read(file)?.appSafetyLabelHistories
+    /** Returns the last updated time for each stored [AppSafetyLabelHistory]. */
+    fun getSafetyLabelsLastUpdatedTimes(file: File): Map<AppInfo, Instant> {
+        val appHistories = read(file)?.appSafetyLabelHistories ?: return emptyMap()
 
-        return appHistories?.map { it.appInfo }?.toSet() ?: setOf()
+        val lastUpdatedTimes = mutableMapOf<AppInfo, Instant>()
+        for (appHistory in appHistories) {
+            val lastSafetyLabelReceiptTime: Instant? = appHistory.getLastReceiptTime()
+            if (lastSafetyLabelReceiptTime != null) {
+                lastUpdatedTimes[appHistory.appInfo] = lastSafetyLabelReceiptTime
+            }
+        }
+
+        return lastUpdatedTimes
     }
 
     /**
@@ -273,6 +278,9 @@ object AppsSafetyLabelHistoryPersistence {
     /** Returns the file persisting safety label history for installed apps. */
     fun getSafetyLabelHistoryFile(context: Context): File =
         File(context.filesDir, APPS_SAFETY_LABEL_HISTORY_PERSISTENCE_FILE_NAME)
+
+    private fun AppSafetyLabelHistory.getLastReceiptTime(): Instant? =
+        this.safetyLabelHistory.lastOrNull()?.receivedAt
 
     private fun XmlPullParser.parseHistoryFile(): AppsSafetyLabelHistory {
         if (eventType != XmlPullParser.START_DOCUMENT) {

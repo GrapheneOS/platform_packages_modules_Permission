@@ -49,10 +49,7 @@ import android.util.Log;
 import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.build.SdkLevel;
-import com.android.safetycenter.data.SafetyCenterInFlightIssueActionRepository;
-import com.android.safetycenter.data.SafetyCenterIssueDismissalRepository;
-import com.android.safetycenter.data.SafetyCenterIssueRepository;
-import com.android.safetycenter.data.SafetySourceDataRepository;
+import com.android.safetycenter.data.SafetyCenterDataManager;
 import com.android.safetycenter.internaldata.SafetyCenterEntryId;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
 import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
@@ -87,35 +84,19 @@ public final class SafetyCenterDataFactory {
     @NonNull private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker;
     @NonNull private final PendingIntentFactory mPendingIntentFactory;
 
-    @NonNull
-    private final SafetyCenterInFlightIssueActionRepository
-            mSafetyCenterInFlightIssueActionRepository;
-
-    @NonNull
-    private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
-
-    @NonNull private final SafetySourceDataRepository mSafetySourceDataRepository;
-    @NonNull private final SafetyCenterIssueRepository mSafetyCenterIssueRepository;
+    @NonNull private final SafetyCenterDataManager mSafetyCenterDataManager;
 
     SafetyCenterDataFactory(
             @NonNull SafetyCenterResourcesContext safetyCenterResourcesContext,
             @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
             @NonNull SafetyCenterRefreshTracker safetyCenterRefreshTracker,
             @NonNull PendingIntentFactory pendingIntentFactory,
-            @NonNull
-                    SafetyCenterInFlightIssueActionRepository
-                            safetyCenterInFlightIssueActionRepository,
-            @NonNull SafetyCenterIssueDismissalRepository safetyCenterIssueDismissalRepository,
-            @NonNull SafetySourceDataRepository safetySourceDataRepository,
-            @NonNull SafetyCenterIssueRepository safetyCenterIssueRepository) {
+            @NonNull SafetyCenterDataManager safetyCenterDataManager) {
         mSafetyCenterResourcesContext = safetyCenterResourcesContext;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
         mSafetyCenterRefreshTracker = safetyCenterRefreshTracker;
         mPendingIntentFactory = pendingIntentFactory;
-        mSafetyCenterInFlightIssueActionRepository = safetyCenterInFlightIssueActionRepository;
-        mSafetyCenterIssueDismissalRepository = safetyCenterIssueDismissalRepository;
-        mSafetySourceDataRepository = safetySourceDataRepository;
-        mSafetyCenterIssueRepository = safetyCenterIssueRepository;
+        mSafetyCenterDataManager = safetyCenterDataManager;
     }
 
     /**
@@ -195,7 +176,7 @@ public final class SafetyCenterDataFactory {
         }
 
         List<SafetySourceIssueInfo> issuesInfo =
-                mSafetyCenterIssueRepository.getIssuesDedupedSortedDescFor(userProfileGroup);
+                mSafetyCenterDataManager.getIssuesDedupedSortedDescFor(userProfileGroup);
 
         List<SafetyCenterIssue> safetyCenterIssues = new ArrayList<>();
         List<SafetyCenterIssue> safetyCenterDismissedIssues = new ArrayList<>();
@@ -211,7 +192,7 @@ public final class SafetyCenterDataFactory {
                             issueInfo.getSafetySourcesGroup(),
                             issueInfo.getSafetyCenterIssueKey());
 
-            if (mSafetyCenterIssueDismissalRepository.isIssueDismissed(
+            if (mSafetyCenterDataManager.isIssueDismissed(
                     issueInfo.getSafetyCenterIssueKey(),
                     issueInfo.getSafetySourceIssue().getSeverityLevel())) {
                 safetyCenterDismissedIssues.add(safetyCenterIssue);
@@ -346,9 +327,7 @@ public final class SafetyCenterDataFactory {
                         safetySourceIssueAction.getLabel(),
                         requireNonNull(issueActionPendingIntent))
                 .setSuccessMessage(safetySourceIssueAction.getSuccessMessage())
-                .setIsInFlight(
-                        mSafetyCenterInFlightIssueActionRepository.actionIsInFlight(
-                                safetyCenterIssueActionId))
+                .setIsInFlight(mSafetyCenterDataManager.actionIsInFlight(safetyCenterIssueActionId))
                 .setWillResolve(safetySourceIssueAction.willResolve())
                 .build();
     }
@@ -468,7 +447,7 @@ public final class SafetyCenterDataFactory {
 
                     SafetySourceKey key = toSafetySourceKey(entry.getId());
                     SafetySourceData safetySourceData =
-                            mSafetySourceDataRepository.getSafetySourceDataInternal(key);
+                            mSafetyCenterDataManager.getSafetySourceDataInternal(key);
                     boolean hasIssues =
                             safetySourceData != null && !safetySourceData.getIssues().isEmpty();
 
@@ -486,7 +465,7 @@ public final class SafetyCenterDataFactory {
                     SafetyCenterEntry entry = entries.get(i);
 
                     SafetySourceKey key = toSafetySourceKey(entry.getId());
-                    if (mSafetySourceDataRepository.sourceHasError(key)) {
+                    if (mSafetyCenterDataManager.sourceHasError(key)) {
                         errorEntries++;
                     }
                 }
@@ -572,7 +551,7 @@ public final class SafetyCenterDataFactory {
                 SafetySourceKey key = SafetySourceKey.of(safetySource.getId(), userId);
                 SafetySourceStatus safetySourceStatus =
                         getSafetySourceStatus(
-                                mSafetySourceDataRepository.getSafetySourceDataInternal(key));
+                                mSafetyCenterDataManager.getSafetySourceDataInternal(key));
                 boolean defaultEntryDueToQuietMode = isUserManaged && !isManagedUserRunning;
                 if (safetySourceStatus == null || defaultEntryDueToQuietMode) {
                     int severityLevel =
@@ -687,7 +666,7 @@ public final class SafetyCenterDataFactory {
                                 safetySource.getTitleForWorkResId())
                         : mSafetyCenterResourcesContext.getString(safetySource.getTitleResId());
         CharSequence summary =
-                mSafetySourceDataRepository.sourceHasError(
+                mSafetyCenterDataManager.sourceHasError(
                                 SafetySourceKey.of(safetySource.getId(), userId))
                         ? getRefreshErrorString(1)
                         : mSafetyCenterResourcesContext.getOptionalString(
@@ -777,7 +756,7 @@ public final class SafetyCenterDataFactory {
             return;
         }
         boolean hasError =
-                mSafetySourceDataRepository.sourceHasError(
+                mSafetyCenterDataManager.sourceHasError(
                         SafetySourceKey.of(safetySource.getId(), userId));
         if (hasError) {
             safetyCenterOverallState.addEntryOverallSeverityLevel(
@@ -800,7 +779,7 @@ public final class SafetyCenterDataFactory {
                 SafetySourceKey key = SafetySourceKey.of(safetySource.getId(), userId);
                 SafetySourceStatus safetySourceStatus =
                         getSafetySourceStatus(
-                                mSafetySourceDataRepository.getSafetySourceDataInternal(key));
+                                mSafetyCenterDataManager.getSafetySourceDataInternal(key));
                 boolean defaultEntryDueToQuietMode = isUserManaged && !isManagedUserRunning;
                 if (safetySourceStatus != null && !defaultEntryDueToQuietMode) {
                     PendingIntent pendingIntent = safetySourceStatus.getPendingIntent();
@@ -864,7 +843,7 @@ public final class SafetyCenterDataFactory {
                                 safetySource.getTitleForWorkResId())
                         : mSafetyCenterResourcesContext.getString(safetySource.getTitleResId());
         CharSequence summary =
-                mSafetySourceDataRepository.sourceHasError(
+                mSafetyCenterDataManager.sourceHasError(
                                 SafetySourceKey.of(safetySource.getId(), userId))
                         ? getRefreshErrorString(1)
                         : mSafetyCenterResourcesContext.getOptionalString(
