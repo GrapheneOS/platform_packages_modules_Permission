@@ -26,6 +26,7 @@ import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING
 import android.safetycenter.SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN
 import android.safetycenter.SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED
+import android.safetycenter.SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION
 import android.safetycenter.SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_PRIVACY
 import android.safetycenter.SafetyCenterEntryGroup
 import android.safetycenter.SafetyCenterEntryOrGroup
@@ -510,6 +511,9 @@ class SafetyCenterMultiUsersTest {
                                 )
                             )
                             .setEntries(listOf(dynamicBareboneDefault, dynamicDisabledDefault))
+                            .setSeverityUnspecifiedIconType(
+                                SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION
+                            )
                             .build()
                     ),
                     SafetyCenterEntryOrGroup(
@@ -550,6 +554,9 @@ class SafetyCenterMultiUsersTest {
                                     dynamicDisabledDefault,
                                     dynamicDisabledForWorkDefault
                                 )
+                            )
+                            .setSeverityUnspecifiedIconType(
+                                SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION
                             )
                             .build()
                     ),
@@ -596,6 +603,9 @@ class SafetyCenterMultiUsersTest {
                                     dynamicDisabledForWorkDefault,
                                     dynamicHiddenUpdated
                                 )
+                            )
+                            .setSeverityUnspecifiedIconType(
+                                SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION
                             )
                             .build()
                     ),
@@ -704,6 +714,9 @@ class SafetyCenterMultiUsersTest {
                                     dynamicHiddenForWorkUpdated
                                 )
                             )
+                            .setSeverityUnspecifiedIconType(
+                                SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION
+                            )
                             .build()
                     ),
                     SafetyCenterEntryOrGroup(
@@ -758,6 +771,9 @@ class SafetyCenterMultiUsersTest {
                                     dynamicDisabledForWorkPaused,
                                     dynamicHiddenUpdated
                                 )
+                            )
+                            .setSeverityUnspecifiedIconType(
+                                SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION
                             )
                             .build()
                     ),
@@ -847,6 +863,9 @@ class SafetyCenterMultiUsersTest {
                                             )
                                     )
                                 )
+                            )
+                            .setSeverityUnspecifiedIconType(
+                                SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION
                             )
                             .build()
                     )
