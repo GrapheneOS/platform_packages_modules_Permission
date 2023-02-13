@@ -35,7 +35,7 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
 
         if (preferenceScreen == null) {
             addPreferencesFromResource(R.xml.app_data_sharing_updates)
-            showNoUpdatesPresentUi()
+            setLoading(/* loading= */ true, /* animate= */ false)
         }
 
         viewModel.appLocationDataSharingUpdateUiInfoLiveData.observe(this, this::updatePreferences)
@@ -51,6 +51,8 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
     }
 
     private fun updatePreferences(updateUiInfos: List<AppLocationDataSharingUpdateUiInfo>) {
+        setLoading(/* loading= */ false, /* animate= */ true)
+
         if (updateUiInfos.isNotEmpty()) {
             showUpdatesPresentUi()
         } else {
