@@ -18,18 +18,17 @@ package com.android.safetycenter.persistence;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
 /** Exception thrown when there is an error accessing persistent data. */
 @RequiresApi(TIRAMISU)
 public final class PersistenceException extends Exception {
 
-    public PersistenceException(@NonNull String message) {
+    public PersistenceException(String message) {
         super(message);
     }
 
-    public PersistenceException(@NonNull String message, @NonNull Throwable ex) {
+    public PersistenceException(String message, Throwable ex) {
         super(message, ex);
     }
 }

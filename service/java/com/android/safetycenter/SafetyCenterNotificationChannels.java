@@ -18,7 +18,6 @@ package com.android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
-import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.app.NotificationChannel;
 import android.app.NotificationChannelGroup;
@@ -43,10 +42,9 @@ final class SafetyCenterNotificationChannels {
     private static final String CHANNEL_ID_RECOMMENDATION = "safety_center_recommendation";
     private static final String CHANNEL_ID_CRITICAL_WARNING = "safety_center_critical_warning";
 
-    @NonNull private final SafetyCenterResourcesContext mResourcesContext;
+    private final SafetyCenterResourcesContext mResourcesContext;
 
-    SafetyCenterNotificationChannels(
-            @NonNull SafetyCenterResourcesContext safetyCenterResourceContext) {
+    SafetyCenterNotificationChannels(SafetyCenterResourcesContext safetyCenterResourceContext) {
         mResourcesContext = safetyCenterResourceContext;
     }
 
@@ -55,8 +53,7 @@ final class SafetyCenterNotificationChannels {
      * given {@code issue} after ensuring that channel has been created.
      */
     @Nullable
-    String createAndGetChannelId(
-            @NonNull NotificationManager notificationManager, @NonNull SafetySourceIssue issue) {
+    String createAndGetChannelId(NotificationManager notificationManager, SafetySourceIssue issue) {
         try {
             createAllChannelsWithoutCallingIdentity(notificationManager);
         } catch (RuntimeException e) {
@@ -67,7 +64,7 @@ final class SafetyCenterNotificationChannels {
     }
 
     @Nullable
-    private String getChannelIdForIssue(@NonNull SafetySourceIssue issue) {
+    private String getChannelIdForIssue(SafetySourceIssue issue) {
         switch (issue.getSeverityLevel()) {
             case SafetySourceData.SEVERITY_LEVEL_INFORMATION:
                 return CHANNEL_ID_INFORMATION;
@@ -89,8 +86,7 @@ final class SafetyCenterNotificationChannels {
      */
     // TODO(b/265277413): Recreate/update these channels on locale changes by calling this method
     @Nullable
-    private void createAllChannelsWithoutCallingIdentity(
-            @NonNull NotificationManager notificationManager) {
+    private void createAllChannelsWithoutCallingIdentity(NotificationManager notificationManager) {
         // Clearing calling identity to be able to make unblockable system notification channels
         final long callingId = Binder.clearCallingIdentity();
         try {
@@ -103,13 +99,11 @@ final class SafetyCenterNotificationChannels {
         }
     }
 
-    @NonNull
     private NotificationChannelGroup getChannelGroupDefinition() {
         return new NotificationChannelGroup(
                 CHANNEL_GROUP_ID, getString("notification_channel_group_name"));
     }
 
-    @NonNull
     private NotificationChannel getGreenChannelDefinition() {
         NotificationChannel channel =
                 new NotificationChannel(
@@ -121,7 +115,6 @@ final class SafetyCenterNotificationChannels {
         return channel;
     }
 
-    @NonNull
     private NotificationChannel getYellowChannelDefinition() {
         NotificationChannel channel =
                 new NotificationChannel(
@@ -133,7 +126,6 @@ final class SafetyCenterNotificationChannels {
         return channel;
     }
 
-    @NonNull
     private NotificationChannel getRedChannelDefinition() {
         NotificationChannel channel =
                 new NotificationChannel(
@@ -145,8 +137,7 @@ final class SafetyCenterNotificationChannels {
         return channel;
     }
 
-    @NonNull
-    private String getString(@NonNull String name) {
+    private String getString(String name) {
         return mResourcesContext.getStringByName(name);
     }
 }

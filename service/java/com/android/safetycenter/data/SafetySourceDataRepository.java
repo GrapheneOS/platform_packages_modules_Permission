@@ -20,7 +20,6 @@ import static android.os.Build.VERSION_CODES.TIRAMISU;
 
 import static com.android.safetycenter.logging.SafetyCenterStatsdLogger.toSystemEventResult;
 
-import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.content.Context;
@@ -75,27 +74,23 @@ final class SafetySourceDataRepository {
 
     private final ArraySet<SafetySourceKey> mSafetySourceErrors = new ArraySet<>();
 
-    @NonNull private final Context mContext;
-    @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
-    @NonNull private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker;
+    private final Context mContext;
+    private final SafetyCenterConfigReader mSafetyCenterConfigReader;
+    private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker;
 
-    @NonNull
     private final SafetyCenterInFlightIssueActionRepository
             mSafetyCenterInFlightIssueActionRepository;
 
-    @NonNull
     private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
 
-    @NonNull private final PackageManager mPackageManager;
+    private final PackageManager mPackageManager;
 
     SafetySourceDataRepository(
-            @NonNull Context context,
-            @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
-            @NonNull SafetyCenterRefreshTracker safetyCenterRefreshTracker,
-            @NonNull
-                    SafetyCenterInFlightIssueActionRepository
-                            safetyCenterInFlightIssueActionRepository,
-            @NonNull SafetyCenterIssueDismissalRepository safetyCenterIssueDismissalRepository) {
+            Context context,
+            SafetyCenterConfigReader safetyCenterConfigReader,
+            SafetyCenterRefreshTracker safetyCenterRefreshTracker,
+            SafetyCenterInFlightIssueActionRepository safetyCenterInFlightIssueActionRepository,
+            SafetyCenterIssueDismissalRepository safetyCenterIssueDismissalRepository) {
         mContext = context;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
         mSafetyCenterRefreshTracker = safetyCenterRefreshTracker;
@@ -121,9 +116,9 @@ final class SafetySourceDataRepository {
      */
     boolean setSafetySourceData(
             @Nullable SafetySourceData safetySourceData,
-            @NonNull String safetySourceId,
-            @NonNull SafetyEvent safetyEvent,
-            @NonNull String packageName,
+            String safetySourceId,
+            SafetyEvent safetyEvent,
+            String packageName,
             @UserIdInt int userId) {
         if (!validateRequest(safetySourceData, safetySourceId, packageName, userId)) {
             return false;
@@ -166,7 +161,7 @@ final class SafetySourceDataRepository {
      */
     @Nullable
     SafetySourceData getSafetySourceData(
-            @NonNull String safetySourceId, @NonNull String packageName, @UserIdInt int userId) {
+            String safetySourceId, String packageName, @UserIdInt int userId) {
         if (!validateRequest(null, safetySourceId, packageName, userId)) {
             return null;
         }
@@ -184,7 +179,7 @@ final class SafetySourceDataRepository {
      * {@link #setSafetySourceData} with a {@code null} value.
      */
     @Nullable
-    SafetySourceData getSafetySourceDataInternal(@NonNull SafetySourceKey safetySourceKey) {
+    SafetySourceData getSafetySourceDataInternal(SafetySourceKey safetySourceKey) {
         return mSafetySourceDataForKey.get(safetySourceKey);
     }
 
@@ -197,9 +192,9 @@ final class SafetySourceDataRepository {
      * safetySourceId}, {@code packageName} and/or {@code userId} are unexpected.
      */
     boolean reportSafetySourceError(
-            @NonNull SafetySourceErrorDetails safetySourceErrorDetails,
-            @NonNull String safetySourceId,
-            @NonNull String packageName,
+            SafetySourceErrorDetails safetySourceErrorDetails,
+            String safetySourceId,
+            String packageName,
             @UserIdInt int userId) {
         if (!validateRequest(null, safetySourceId, packageName, userId)) {
             return false;
@@ -224,7 +219,7 @@ final class SafetySourceDataRepository {
      * Marks the given {@link SafetySourceKey} as having errored-out and returns whether there was a
      * change to the underlying {@link SafetyCenterData}.
      */
-    boolean setSafetySourceError(@NonNull SafetySourceKey safetySourceKey) {
+    boolean setSafetySourceError(SafetySourceKey safetySourceKey) {
         boolean removingSafetySourceDataChangedSafetyCenterData =
                 mSafetySourceDataForKey.remove(safetySourceKey) != null;
         boolean addingSafetySourceErrorChangedSafetyCenterData =
@@ -237,7 +232,7 @@ final class SafetySourceDataRepository {
      * Clears all safety source errors received so far for the given {@link UserProfileGroup}, this
      * is useful e.g. when starting a new broadcast.
      */
-    void clearSafetySourceErrors(@NonNull UserProfileGroup userProfileGroup) {
+    void clearSafetySourceErrors(UserProfileGroup userProfileGroup) {
         // Loop in reverse index order to be able to remove entries while iterating.
         for (int i = mSafetySourceErrors.size() - 1; i >= 0; i--) {
             SafetySourceKey sourceKey = mSafetySourceErrors.valueAt(i);
@@ -254,7 +249,7 @@ final class SafetySourceDataRepository {
      * dismissed.
      */
     @Nullable
-    SafetySourceIssue getSafetySourceIssue(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
+    SafetySourceIssue getSafetySourceIssue(SafetyCenterIssueKey safetyCenterIssueKey) {
         SafetySourceKey key =
                 SafetySourceKey.of(
                         safetyCenterIssueKey.getSafetySourceId(), safetyCenterIssueKey.getUserId());
@@ -296,7 +291,7 @@ final class SafetySourceDataRepository {
      */
     @Nullable
     SafetySourceIssue.Action getSafetySourceIssueAction(
-            @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
+            SafetyCenterIssueActionId safetyCenterIssueActionId) {
         SafetySourceIssue safetySourceIssue =
                 getSafetySourceIssue(safetyCenterIssueActionId.getSafetyCenterIssueKey());
 
@@ -336,7 +331,7 @@ final class SafetySourceDataRepository {
     }
 
     /** Dumps state for debugging purposes. */
-    void dump(@NonNull PrintWriter fout) {
+    void dump(PrintWriter fout) {
         int dataCount = mSafetySourceDataForKey.size();
         fout.println("SOURCE DATA (" + dataCount + ")");
         for (int i = 0; i < dataCount; i++) {
@@ -356,7 +351,7 @@ final class SafetySourceDataRepository {
     }
 
     /** Returns {@code true} if the given source has an error. */
-    boolean sourceHasError(@NonNull SafetySourceKey safetySourceKey) {
+    boolean sourceHasError(SafetySourceKey safetySourceKey) {
         return mSafetySourceErrors.contains(safetySourceKey);
     }
 
@@ -366,8 +361,8 @@ final class SafetySourceDataRepository {
      */
     private boolean validateRequest(
             @Nullable SafetySourceData safetySourceData,
-            @NonNull String safetySourceId,
-            @NonNull String packageName,
+            String safetySourceId,
+            String packageName,
             @UserIdInt int userId) {
         SafetyCenterConfigReader.ExternalSafetySource externalSafetySource =
                 mSafetyCenterConfigReader.getExternalSafetySource(safetySourceId);
@@ -456,9 +451,7 @@ final class SafetySourceDataRepository {
     }
 
     private void validateCallingPackage(
-            @NonNull SafetySource safetySource,
-            @NonNull String packageName,
-            @NonNull String safetySourceId) {
+            SafetySource safetySource, String packageName, String safetySourceId) {
         if (!packageName.equals(safetySource.getPackageName())) {
             throw new IllegalArgumentException(
                     "Unexpected package name: "
@@ -493,8 +486,7 @@ final class SafetySourceDataRepository {
         }
     }
 
-    private boolean checkCerts(
-            @NonNull String packageName, @NonNull Set<String> certificateHashes) {
+    private boolean checkCerts(String packageName, Set<String> certificateHashes) {
         boolean hasMatchingCert = false;
         for (String certHash : certificateHashes) {
             try {
@@ -514,8 +506,8 @@ final class SafetySourceDataRepository {
     }
 
     private boolean processSafetyEvent(
-            @NonNull String safetySourceId,
-            @NonNull SafetyEvent safetyEvent,
+            String safetySourceId,
+            SafetyEvent safetyEvent,
             @UserIdInt int userId,
             boolean isError) {
         int type = safetyEvent.getType();

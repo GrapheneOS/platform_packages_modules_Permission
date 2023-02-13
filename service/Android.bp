@@ -91,6 +91,7 @@ java_sdk_library {
         // Soong fails to automatically add this dependency because all the
         // *.kt sources are inside a filegroup.
         "kotlin-annotations",
+        "safety-center-annotations",
     ],
     static_libs: [
         "kotlin-stdlib",

@@ -23,7 +23,6 @@ import android.safetycenter.SafetyCenterStaticEntry;
 import android.text.TextUtils;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.preference.Preference;
@@ -73,7 +72,7 @@ public class StaticSafetyEntryPreference extends Preference implements Comparabl
     }
 
     @Override
-    public boolean isSameItem(@NonNull Preference preference) {
+    public boolean isSameItem(Preference preference) {
         return preference instanceof StaticSafetyEntryPreference
                 && TextUtils.equals(
                         mEntry.getTitle(),
@@ -81,7 +80,7 @@ public class StaticSafetyEntryPreference extends Preference implements Comparabl
     }
 
     @Override
-    public boolean hasSameContents(@NonNull Preference preference) {
+    public boolean hasSameContents(Preference preference) {
         return preference instanceof StaticSafetyEntryPreference
                 && mEntry.equals(((StaticSafetyEntryPreference) preference).mEntry);
     }

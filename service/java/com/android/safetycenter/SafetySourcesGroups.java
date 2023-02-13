@@ -18,7 +18,6 @@ package com.android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
-import android.annotation.NonNull;
 import android.safetycenter.config.SafetySourcesGroup;
 
 import androidx.annotation.RequiresApi;
@@ -33,9 +32,7 @@ final class SafetySourcesGroups {
      * Returns a builder with all fields of the original group copied other than {@link
      * SafetySourcesGroup#getSafetySources()}.
      */
-    @NonNull
-    static SafetySourcesGroup.Builder copyToBuilderWithoutSources(
-            @NonNull SafetySourcesGroup group) {
+    static SafetySourcesGroup.Builder copyToBuilderWithoutSources(SafetySourcesGroup group) {
         SafetySourcesGroup.Builder safetySourcesGroupBuilder =
                 new SafetySourcesGroup.Builder()
                         .setId(group.getId())

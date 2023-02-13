@@ -37,7 +37,6 @@ import android.widget.Space;
 import android.widget.TextView;
 
 import androidx.annotation.ColorRes;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.view.ContextThemeWrapper;
@@ -219,14 +218,14 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
     }
 
     @Override
-    public boolean isSameItem(@NonNull Preference preference) {
+    public boolean isSameItem(Preference preference) {
         return (preference instanceof IssueCardPreference)
                 && TextUtils.equals(
                         mIssue.getId(), ((IssueCardPreference) preference).mIssue.getId());
     }
 
     @Override
-    public boolean hasSameContents(@NonNull Preference preference) {
+    public boolean hasSameContents(Preference preference) {
         return (preference instanceof IssueCardPreference)
                 && mIssue.equals(((IssueCardPreference) preference).mIssue)
                 && Objects.equals(
