@@ -876,7 +876,7 @@ class SafetyCenterSubpagesTest {
     @Test
     fun settingsSearch_openWithPrivacyIntentExtra_showsPrivacySubpage() {
         val config = safetyCenterTestConfigs.privacySubpageConfig
-        val sourcesGroup = safetyCenterTestConfigs.singleSourceConfig.safetySourcesGroups.first()
+        val sourcesGroup = config.safetySourcesGroups.first()
         val source: SafetySource = sourcesGroup.safetySources.first()
         safetyCenterTestHelper.setConfig(config)
         val extras = Bundle()
@@ -888,6 +888,23 @@ class SafetyCenterSubpagesTest {
                 context.getString(source.summaryResId),
                 "Controls",
                 "Data",
+            )
+        }
+    }
+
+    @Test
+    fun settingsSearch_openWithInvalidKey_showsHomepage() {
+        val config = safetyCenterTestConfigs.singleSourceConfig
+        val sourcesGroup = config.safetySourcesGroups.first()
+        safetyCenterTestHelper.setConfig(config)
+        val extras = Bundle()
+        extras.putString(EXTRA_SETTINGS_FRAGMENT_ARGS_KEY, "invalid_preference_key")
+
+        context.launchSafetyCenterActivity(extras) {
+            waitDisplayed(By.desc("Security & privacy"))
+            waitAllTextDisplayed(
+                context.getString(sourcesGroup.titleResId),
+                context.getString(sourcesGroup.summaryResId)
             )
         }
     }
