@@ -328,7 +328,8 @@ class SafetyCenterTestData(context: Context) {
         sourceId: String,
         userId: Int = UserHandle.myUserId(),
         attributionTitle: String? = "OK",
-        groupId: String? = SINGLE_SOURCE_GROUP_ID
+        groupId: String? = SINGLE_SOURCE_GROUP_ID,
+        confirmationDialog: Boolean = false
     ) =
         SafetyCenterIssue.Builder(
                 issueId(sourceId, RECOMMENDATION_ISSUE_ID, userId = userId),
@@ -348,6 +349,18 @@ class SafetyCenterTestData(context: Context) {
                             "See issue",
                             safetySourceTestData.testActivityRedirectPendingIntent
                         )
+                        .apply {
+                            if (confirmationDialog && SdkLevel.isAtLeastU()) {
+                                setConfirmationDialogDetails(
+                                    SafetyCenterIssue.Action.ConfirmationDialogDetails(
+                                        "Confirmation title",
+                                        "Confirmation text",
+                                        "Confirmation yes",
+                                        "Confirmation no"
+                                    )
+                                )
+                            }
+                        }
                         .build()
                 )
             )

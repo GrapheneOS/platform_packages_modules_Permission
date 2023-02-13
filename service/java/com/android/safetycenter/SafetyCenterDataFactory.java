@@ -33,6 +33,7 @@ import android.safetycenter.SafetyCenterEntry;
 import android.safetycenter.SafetyCenterEntryGroup;
 import android.safetycenter.SafetyCenterEntryOrGroup;
 import android.safetycenter.SafetyCenterIssue;
+import android.safetycenter.SafetyCenterIssue.Action.ConfirmationDialogDetails;
 import android.safetycenter.SafetyCenterStaticEntry;
 import android.safetycenter.SafetyCenterStaticEntryGroup;
 import android.safetycenter.SafetyCenterStatus;
@@ -322,14 +323,31 @@ public final class SafetyCenterDataFactory {
                         safetyCenterIssueKey.getSafetySourceId(),
                         safetySourceIssueAction.getPendingIntent(),
                         false);
-        return new SafetyCenterIssue.Action.Builder(
-                        SafetyCenterIds.encodeToString(safetyCenterIssueActionId),
-                        safetySourceIssueAction.getLabel(),
-                        requireNonNull(issueActionPendingIntent))
-                .setSuccessMessage(safetySourceIssueAction.getSuccessMessage())
-                .setIsInFlight(mSafetyCenterDataManager.actionIsInFlight(safetyCenterIssueActionId))
-                .setWillResolve(safetySourceIssueAction.willResolve())
-                .build();
+
+        SafetyCenterIssue.Action.Builder builder =
+                new SafetyCenterIssue.Action.Builder(
+                                SafetyCenterIds.encodeToString(safetyCenterIssueActionId),
+                                safetySourceIssueAction.getLabel(),
+                                requireNonNull(issueActionPendingIntent))
+                        .setSuccessMessage(safetySourceIssueAction.getSuccessMessage())
+                        .setIsInFlight(
+                                mSafetyCenterDataManager.actionIsInFlight(
+                                        safetyCenterIssueActionId))
+                        .setWillResolve(safetySourceIssueAction.willResolve());
+        if (SdkLevel.isAtLeastU()) {
+            if (safetySourceIssueAction.getConfirmationDialogDetails() != null) {
+                SafetySourceIssue.Action.ConfirmationDialogDetails detailsFrom =
+                        safetySourceIssueAction.getConfirmationDialogDetails();
+                ConfirmationDialogDetails detailsTo =
+                        new ConfirmationDialogDetails(
+                                detailsFrom.getTitle(),
+                                detailsFrom.getText(),
+                                detailsFrom.getAcceptButtonText(),
+                                detailsFrom.getDenyButtonText());
+                builder.setConfirmationDialogDetails(detailsTo);
+            }
+        }
+        return builder.build();
     }
 
     private void addSafetyCenterEntryGroup(
