@@ -20,8 +20,8 @@
   <string name="health_connect_title" description="Health connect title">Health&#160;Connect</string>
   <string name="health_connect_summary" description="Health connect summary, which describes what user can do when they click Health Connect">App permissions and data management</string>
   <string name="health_connect_search_terms" description="Health connect search words">Health, Health Connect</string>
-  <string name="app_data_sharing_updates_title" description="App data sharing updates title">Data sharing updates</string>
-  <string name="app_data_sharing_updates_search_terms" description="App data sharing updates search words">Data, Data sharing, Data sharing updates, sharing</string>
+  <string name="app_data_sharing_updates_title" description="App data sharing updates title">Data sharing updates for location</string>
+  <string name="app_data_sharing_updates_search_terms" description="App data sharing updates search words">Data, Data sharing, Data sharing updates, Data sharing updates for location, sharing</string>
   <string name="ads_privacy_title" description="Ads privacy setting title">Ads privacy</string>
   <string name="ads_privacy_summary" description="Ads privacy setting summary">Customize info apps use to show you ads</string>
   <string name="ads_privacy_search_terms" description="Search keywords of the Ads privacy setting">ads, ad privacy, privacy sandbox, ad topics, app-suggested ads, ad measurement</string>
