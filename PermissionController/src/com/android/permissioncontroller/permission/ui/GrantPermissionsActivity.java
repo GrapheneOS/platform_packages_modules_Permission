@@ -30,6 +30,7 @@ import static com.android.permissioncontroller.permission.ui.GrantPermissionsVie
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.GRANTED_FOREGROUND_ONLY;
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.GRANTED_ONE_TIME;
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.GRANTED_USER_SELECTED;
+import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.LINKED_TO_PERMISSION_RATIONALE;
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.LINKED_TO_SETTINGS;
 import static com.android.permissioncontroller.permission.ui.model.GrantPermissionsViewModel.APP_PERMISSION_REQUEST_CODE;
 import static com.android.permissioncontroller.permission.ui.model.GrantPermissionsViewModel.PHOTO_PICKER_REQUEST_CODE;
@@ -97,7 +98,7 @@ public class GrantPermissionsActivity extends SettingsActivity
             + "_REQUEST_ID";
     public static final String ANNOTATION_ID = "link";
 
-    public static final int NEXT_BUTTON = 16;
+    public static final int NEXT_BUTTON = 17;
     public static final int ALLOW_BUTTON = 0;
     public static final int ALLOW_ALWAYS_BUTTON = 1; // Used in auto
     public static final int ALLOW_FOREGROUND_BUTTON = 2;
@@ -118,6 +119,7 @@ public class GrantPermissionsActivity extends SettingsActivity
     // after the user has used the picker, the allow all button shows below all other buttons, with
     // a different style.
     public static final int ALLOW_ALL_SINGLETON_BUTTON = 15;
+    public static final int LINK_TO_PERMISSION_RATIONALE = 16;
 
     public static final int NEXT_LOCATION_DIALOG = 6;
     public static final int LOCATION_ACCURACY_LAYOUT = 0;
@@ -514,14 +516,6 @@ public class GrantPermissionsActivity extends SettingsActivity
             setTitle(message);
         }
 
-        CharSequence permissionRationaleMessage = null;
-        if (info.getShowPermissionRationale()) {
-            permissionRationaleMessage =
-                    getString(
-                            getPermissionRationaleMessageResIdForPermissionGroup(
-                                    info.getGroupName()));
-        }
-
         ArrayList<Integer> idxs = new ArrayList<>();
         mButtonVisibilities = new boolean[info.getButtonVisibilities().size()];
         for (int i = 0; i < info.getButtonVisibilities().size(); i++) {
@@ -529,6 +523,14 @@ public class GrantPermissionsActivity extends SettingsActivity
             if (mButtonVisibilities[i]) {
                 idxs.add(i);
             }
+        }
+
+        CharSequence permissionRationaleMessage = null;
+        if (isPermissionRationaleVisible()) {
+            permissionRationaleMessage =
+                getString(
+                    getPermissionRationaleMessageResIdForPermissionGroup(
+                        info.getGroupName()));
         }
 
         boolean[] locationVisibilities = new boolean[info.getLocationVisibilities().size()];
@@ -651,6 +653,9 @@ public class GrantPermissionsActivity extends SettingsActivity
 
     @Override
     public void onPermissionRationaleClicked(String groupName) {
+        logGrantPermissionActivityButtons(groupName,
+                /* affectedForegroundPermissions= */ null,
+                LINKED_TO_PERMISSION_RATIONALE);
         mViewModel.showPermissionRationaleActivity(this, groupName);
     }
 
@@ -814,6 +819,10 @@ public class GrantPermissionsActivity extends SettingsActivity
                 break;
             case LINKED_TO_SETTINGS:
                 clickedButton = 1 << LINK_TO_SETTINGS;
+                break;
+            case LINKED_TO_PERMISSION_RATIONALE:
+                clickedButton = 1 << LINK_TO_PERMISSION_RATIONALE;
+                break;
             case CANCELED:
                 // fall through
             default:
@@ -830,7 +839,7 @@ public class GrantPermissionsActivity extends SettingsActivity
         }
 
         mViewModel.logClickedButtons(permissionGroupName, selectedPrecision, clickedButton,
-                presentedButtons);
+                presentedButtons, isPermissionRationaleVisible());
     }
 
     private int getButtonState() {
@@ -845,6 +854,10 @@ public class GrantPermissionsActivity extends SettingsActivity
             }
         }
         return buttonState;
+    }
+
+    private boolean isPermissionRationaleVisible() {
+        return mButtonVisibilities != null && mButtonVisibilities[LINK_TO_PERMISSION_RATIONALE];
     }
 
     private boolean isResultSet() {

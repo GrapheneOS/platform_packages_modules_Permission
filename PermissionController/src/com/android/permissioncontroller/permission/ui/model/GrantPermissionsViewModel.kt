@@ -52,6 +52,7 @@ import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.DeviceUtils
 import com.android.permissioncontroller.PermissionControllerStatsLog
 import com.android.permissioncontroller.PermissionControllerStatsLog.GRANT_PERMISSIONS_ACTIVITY_BUTTON_ACTIONS
+import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_GRANT_REQUEST_RESULT_REPORTED
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_GRANT_REQUEST_RESULT_REPORTED__RESULT__AUTO_DENIED
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_GRANT_REQUEST_RESULT_REPORTED__RESULT__AUTO_GRANTED
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_GRANT_REQUEST_RESULT_REPORTED__RESULT__IGNORED
@@ -98,6 +99,7 @@ import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.D
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DONT_ALLOW_MORE_SELECTED_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.FINE_RADIO_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.INTENT_PHOTOS_SELECTED
+import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.LINK_TO_PERMISSION_RATIONALE
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.LINK_TO_SETTINGS
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.LOCATION_ACCURACY_LAYOUT
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.NEXT_BUTTON
@@ -129,7 +131,7 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils.revokeBackg
 import com.android.permissioncontroller.permission.utils.KotlinUtils.revokeForegroundRuntimePermissions
 import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.PermissionMapping.getPartialStorageGrantPermissionsForGroup
-import com.android.permissioncontroller.permission.utils.PermissionRationales
+import com.android.permissioncontroller.permission.utils.PermissionRationales.shouldShowPermissionRationale
 import com.android.permissioncontroller.permission.utils.SafetyNetLogger
 import com.android.permissioncontroller.permission.utils.Utils
 
@@ -190,7 +192,6 @@ class GrantPermissionsViewModel(
         val detailMessage: RequestMessage = RequestMessage.NO_MESSAGE,
         val sendToSettingsImmediately: Boolean = false,
         val openPhotoPicker: Boolean = false,
-        val showPermissionRationale: Boolean = false
     ) {
         val groupName = groupInfo.name
     }
@@ -586,14 +587,16 @@ class GrantPermissionsViewModel(
                     }
                 }
 
+                val showPermissionRationale =
+                    shouldShowPermissionRationale(safetyLabel, groupState.group.permGroupName)
+                buttonVisibilities[LINK_TO_PERMISSION_RATIONALE] = showPermissionRationale
+
                 requestInfos.add(RequestInfo(
                     groupInfo,
                     buttonVisibilities,
                     locationVisibilities,
                     message,
-                    detailMessage,
-                    showPermissionRationale = shouldShowPermissionRationale(
-                        safetyLabel, groupState)))
+                    detailMessage))
             }
 
             sortPermissionGroups(requestInfos)
@@ -623,14 +626,6 @@ class GrantPermissionsViewModel(
                 rhs.groupName.compareTo(lhs.groupName)
             }
         }
-    }
-
-    private fun shouldShowPermissionRationale(
-        safetyLabel: SafetyLabel?,
-        groupState: GroupState
-    ): Boolean {
-        return PermissionRationales.shouldShowPermissionRationale(
-            safetyLabel, groupState.group.permGroupName)
     }
 
     /**
@@ -1223,15 +1218,18 @@ class GrantPermissionsViewModel(
      */
     private fun reportRequestResult(permission: String, result: Int) {
         val isImplicit = permission !in requestedPermissions
+        val isPermissionRationaleShown = shouldShowPermissionRationale(safetyLabel,
+            PermissionMapping.getGroupOfPlatformPermission(permission))
 
         Log.v(LOG_TAG, "Permission grant result requestId=$sessionId " +
             "callingUid=${packageInfo.uid} callingPackage=$packageName permission=$permission " +
-            "isImplicit=$isImplicit result=$result")
+            "isImplicit=$isImplicit result=$result " +
+            "isPermissionRationaleShown=$isPermissionRationaleShown")
 
         PermissionControllerStatsLog.write(
-            PermissionControllerStatsLog.PERMISSION_GRANT_REQUEST_RESULT_REPORTED, sessionId,
+            PERMISSION_GRANT_REQUEST_RESULT_REPORTED, sessionId,
             packageInfo.uid, packageName, permission, isImplicit, result,
-            /* permission_rationale_shown = */ false)
+            isPermissionRationaleShown)
     }
 
     /**
@@ -1494,26 +1492,31 @@ class GrantPermissionsViewModel(
         groupName: String?,
         selectedPrecision: Int,
         clickedButton: Int,
-        presentedButtons: Int
+        presentedButtons: Int,
+        isPermissionRationaleShown: Boolean
     ) {
         if (groupName == null) {
             return
         }
+
         if (!requestInfosLiveData.isInitialized || !packageInfoLiveData.isInitialized) {
             Log.wtf(LOG_TAG, "Logged buttons presented and clicked permissionGroupName=" +
                     "$groupName package=$packageName presentedButtons=$presentedButtons " +
-                    "clickedButton=$clickedButton sessionId=$sessionId, but requests were not yet" +
+                    "clickedButton=$clickedButton isPermissionRationaleShown=" +
+                    "$isPermissionRationaleShown sessionId=$sessionId, but requests were not yet" +
                     "initialized", IllegalStateException())
             return
         }
 
         PermissionControllerStatsLog.write(GRANT_PERMISSIONS_ACTIVITY_BUTTON_ACTIONS,
                 groupName, packageInfo.uid, packageName, presentedButtons, clickedButton, sessionId,
-                packageInfo.targetSdkVersion, selectedPrecision, false)
+                packageInfo.targetSdkVersion, selectedPrecision,
+                isPermissionRationaleShown)
         Log.v(LOG_TAG, "Logged buttons presented and clicked permissionGroupName=" +
                 "$groupName uid=${packageInfo.uid} selectedPrecision=$selectedPrecision " +
                 "package=$packageName presentedButtons=$presentedButtons " +
-                "clickedButton=$clickedButton sessionId=$sessionId " +
+                "clickedButton=$clickedButton isPermissionRationaleShown=" +
+                "$isPermissionRationaleShown sessionId=$sessionId " +
                 "targetSdk=${packageInfo.targetSdkVersion}")
     }
 
