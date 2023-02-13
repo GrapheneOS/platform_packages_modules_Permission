@@ -108,20 +108,15 @@ class SafetyCenterSubpagesTest {
 
     @Test
     fun launchSafetyCenter_withSubpagesIntentExtra_showsSubpageTitle() {
-        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.multipleSourceGroupsConfig)
+        val config = safetyCenterTestConfigs.multipleSourceGroupsConfig
+        safetyCenterTestHelper.setConfig(config)
         val extras = Bundle()
         extras.putString(EXTRA_SAFETY_SOURCES_GROUP_ID, MULTIPLE_SOURCES_GROUP_ID_1)
 
         context.launchSafetyCenterActivity(extras) {
             // CollapsingToolbar title can't be found by text, so using description instead.
             waitDisplayed(
-                By.desc(
-                    context.getString(
-                        safetyCenterTestConfigs.multipleSourceGroupsConfig.safetySourcesGroups
-                            .first()!!
-                            .titleResId
-                    )
-                )
+                By.desc(context.getString(config.safetySourcesGroups.first()!!.titleResId))
             )
         }
     }
@@ -140,21 +135,17 @@ class SafetyCenterSubpagesTest {
     }
 
     @Test
-    fun launchSafetyCenter_withNonExistingGroupID_displaysNothing() {
-        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.multipleSourceGroupsConfig)
+    fun launchSafetyCenter_withNonExistingGroupID_opensHomepageAsFallback() {
+        val config = safetyCenterTestConfigs.multipleSourceGroupsConfig
+        safetyCenterTestHelper.setConfig(config)
         val extras = Bundle()
         extras.putString(EXTRA_SAFETY_SOURCES_GROUP_ID, "non_existing_group_id")
 
         context.launchSafetyCenterActivity(extras) {
             waitNotDisplayed(
-                By.desc(
-                    context.getString(
-                        safetyCenterTestConfigs.multipleSourceGroupsConfig.safetySourcesGroups
-                            .first()!!
-                            .titleResId
-                    )
-                )
+                By.desc(context.getString(config.safetySourcesGroups.first()!!.titleResId))
             )
+            waitDisplayed(By.desc("Security & privacy"))
         }
     }
 

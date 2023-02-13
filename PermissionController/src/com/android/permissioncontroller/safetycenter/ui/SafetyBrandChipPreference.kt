@@ -52,17 +52,26 @@ internal class SafetyBrandChipPreference(context: Context, attrs: AttributeSet) 
      * @param context represents the context associated with the fragment
      */
     fun setupListener(activity: FragmentActivity, context: Context) {
-        brandChipClickListener =
-            View.OnClickListener {
-                val openedFromHomepage =
-                    activity
-                        .getIntent()
-                        .getBooleanExtra(SafetyCenterConstants.EXTRA_OPENED_FROM_HOMEPAGE, false)
-                if (!openedFromHomepage) {
-                    val intent = Intent(Intent.ACTION_SAFETY_CENTER)
-                    context.startActivity(intent)
-                }
-                activity.finish()
+        brandChipClickListener = View.OnClickListener { closeSubpage(activity, context) }
+    }
+
+    companion object {
+        /**
+         * Closes the subpage and optionally opens up the homepage
+         *
+         * @param fragmentActivity represents the parent activity of the fragment
+         * @param fragmentContext represents the context associated with the fragment
+         */
+        fun closeSubpage(fragmentActivity: FragmentActivity, fragmentContext: Context) {
+            val openedFromHomepage =
+                fragmentActivity
+                    .getIntent()
+                    .getBooleanExtra(SafetyCenterConstants.EXTRA_OPENED_FROM_HOMEPAGE, false)
+            if (!openedFromHomepage) {
+                val intent = Intent(Intent.ACTION_SAFETY_CENTER)
+                fragmentContext.startActivity(intent)
             }
+            fragmentActivity.finish()
+        }
     }
 }
