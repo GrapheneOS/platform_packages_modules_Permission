@@ -17,7 +17,9 @@
 <!-- TODO(b/261666772): Extract to styles where necessary and update to final spec. -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-        <Preference android:key="subtitle"/>
+        <com.android.permissioncontroller.permission.ui.handheld.v34.AppDataSharingDetailsPreference
+            android:key="details"
+            android:selectable="false" />
         <PreferenceCategory android:key="last_period_updates" />
         <com.android.permissioncontroller.permission.ui.handheld.v34.FooterWithLinkPreference
             android:key="info_footer"
