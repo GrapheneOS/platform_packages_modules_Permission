@@ -133,7 +133,8 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
         val detailsPreference =
             preferenceScreen?.findPreference<AppDataSharingDetailsPreference>(DETAILS_PREFERENCE_ID)
         val footerPreference =
-            preferenceScreen?.findPreference<FooterWithLinkPreference>(FOOTER_PREFERENCE_ID)
+            preferenceScreen?.findPreference<AppDataSharingUpdatesFooterPreference>(
+                FOOTER_PREFERENCE_ID)
         val dataSharingUpdatesCategory =
             preferenceScreen?.findPreference<PreferenceCategory>(
                 LAST_PERIOD_UPDATES_PREFERENCE_CATEGORY_ID)
@@ -165,7 +166,8 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
         val detailsPreference =
             preferenceScreen?.findPreference<AppDataSharingDetailsPreference>(DETAILS_PREFERENCE_ID)
         val footerPreference =
-            preferenceScreen?.findPreference<FooterWithLinkPreference>(FOOTER_PREFERENCE_ID)
+            preferenceScreen?.findPreference<AppDataSharingUpdatesFooterPreference>(
+                FOOTER_PREFERENCE_ID)
         val dataSharingUpdatesCategory =
             preferenceScreen?.findPreference<PreferenceCategory>(
                 LAST_PERIOD_UPDATES_PREFERENCE_CATEGORY_ID)
@@ -174,9 +176,7 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
             it.showNoUpdates = true
             it.isVisible = true
         }
-        dataSharingUpdatesCategory?.let {
-            it.isVisible = false
-        }
+        dataSharingUpdatesCategory?.let { it.isVisible = false }
         footerPreference?.let {
             it.footerMessage = getString(R.string.data_sharing_updates_footer_message)
             it.footerLink = getString(R.string.learn_about_data_sharing)

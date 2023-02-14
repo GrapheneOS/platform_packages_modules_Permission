@@ -199,6 +199,53 @@
         <item name="android:textAppearance">@style/AppDataSharingNoUpdatesTextAppearance</item>
     </style>
 
+    <style name="AppDataSharingUpdatesFooterContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:layout_marginEnd">24dp</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:clipToPadding">false</item>
+    </style>
+
+    <style name="AppDataSharingUpdatesFooterIconFrame">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="AppDataSharingUpdatesFooterIcon">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="maxHeight">24dp</item>
+        <item name="maxWidth">24dp</item>
+    </style>
+
+    <style name="AppDataSharingUpdatesFooterTextAppearance"
+        parent="@android:style/TextAppearance.DeviceDefault">
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineHeight">20sp</item>
+    </style>
+
+    <style name="AppDataSharingUpdatesFooterMessage">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:textAppearance">@style/AppDataSharingUpdatesFooterTextAppearance</item>
+    </style>
+
+    <style name="AppDataSharingUpdatesFooterLink"
+        parent="@android:style/TextAppearance.DeviceDefault">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineHeight">20sp</item>
+        <item name="android:textColorLink">@color/permission_rationale_accent_primary_variant</item>
+    </style>
+
     <!-- END APP DATA SHARING UPDATES PAGE -->
 
     <!-- START SAFETY CENTER SUBPAGE -->

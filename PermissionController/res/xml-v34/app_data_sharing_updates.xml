@@ -21,7 +21,7 @@
             android:key="details"
             android:selectable="false" />
         <PreferenceCategory android:key="last_period_updates" />
-        <com.android.permissioncontroller.permission.ui.handheld.v34.FooterWithLinkPreference
+        <com.android.permissioncontroller.permission.ui.handheld.v34.AppDataSharingUpdatesFooterPreference
             android:key="info_footer"
             android:icon="@drawable/ic_info_outline"
             android:selectable="false" />
