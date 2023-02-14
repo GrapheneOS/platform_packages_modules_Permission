@@ -479,6 +479,23 @@ class SafetyCenterManagerTest {
             emptyList()
         )
 
+    private val safetyCenterDataGeneralRecommendationAlertWithConfirmation =
+        SafetyCenterData(
+            safetyCenterStatusGeneralRecommendationOneAlert,
+            listOf(
+                safetyCenterTestData.safetyCenterIssueRecommendation(
+                    SINGLE_SOURCE_ID,
+                    confirmationDialog = true
+                )
+            ),
+            listOf(
+                SafetyCenterEntryOrGroup(
+                    safetyCenterTestData.safetyCenterEntryRecommendation(SINGLE_SOURCE_ID)
+                )
+            ),
+            emptyList()
+        )
+
     private val safetyCenterDataAccountRecommendationOneAlert =
         SafetyCenterData(
             safetyCenterStatusAccountRecommendationOneAlert,
@@ -1001,6 +1018,21 @@ class SafetyCenterManagerTest {
         val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
 
         assertThat(apiSafetyCenterData).isEqualTo(safetyCenterDataGeneralRecommendationOneAlert)
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getSafetyCenterData_withActionConfirmation_returnsRecommendationWithActionConfirmation() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
+        safetyCenterTestHelper.setData(
+            SINGLE_SOURCE_ID,
+            safetySourceTestData.recommendationWithIssueWithActionConfirmation
+        )
+
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+
+        assertThat(apiSafetyCenterData)
+            .isEqualTo(safetyCenterDataGeneralRecommendationAlertWithConfirmation)
     }
 
     @Test
