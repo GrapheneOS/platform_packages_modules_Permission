@@ -44,13 +44,6 @@
             summary="@com.android.safetycenter.resources:string/privacy_sources_summary"
             statelessIconType="privacy">
             <static-safety-source
-                id="AndroidPermissionUsage"
-                profile="primary_profile_only"
-                intentAction="android.intent.action.REVIEW_PERMISSION_USAGE"
-                title="@com.android.safetycenter.resources:string/permission_usage_title"
-                summary="@com.android.safetycenter.resources:string/permission_usage_summary"
-                searchTerms="@com.android.safetycenter.resources:string/permission_usage_search_terms"/>
-            <static-safety-source
                 id="AndroidPermissionManager"
                 profile="primary_profile_only"
                 intentAction="android.intent.action.MANAGE_PERMISSIONS"
@@ -58,12 +51,12 @@
                 summary="@com.android.safetycenter.resources:string/permission_manager_summary"
                 searchTerms="@com.android.safetycenter.resources:string/permission_manager_search_terms"/>
             <static-safety-source
-                id="AndroidPrivacyControls"
+                id="AndroidPermissionUsage"
                 profile="primary_profile_only"
-                intentAction="android.settings.PRIVACY_CONTROLS"
-                title="@com.android.safetycenter.resources:string/privacy_controls_title"
-                summary="@com.android.safetycenter.resources:string/privacy_controls_summary"
-                searchTerms="@com.android.safetycenter.resources:string/privacy_controls_search_terms"/>
+                intentAction="android.intent.action.REVIEW_PERMISSION_USAGE"
+                title="@com.android.safetycenter.resources:string/permission_usage_title"
+                summary="@com.android.safetycenter.resources:string/permission_usage_summary"
+                searchTerms="@com.android.safetycenter.resources:string/permission_usage_search_terms"/>
             <static-safety-source
                 id="AndroidAdsPrivacy"
                 profile="primary_profile_only"
@@ -71,6 +64,20 @@
                 title="@com.android.safetycenter.resources:string/ads_privacy_title"
                 summary="@com.android.safetycenter.resources:string/ads_privacy_summary"
                 searchTerms="@com.android.safetycenter.resources:string/ads_privacy_search_terms"/>
+            <static-safety-source
+                id="AndroidHealthConnect"
+                profile="primary_profile_only"
+                intentAction="android.health.connect.action.HEALTH_HOME_SETTINGS"
+                title="@com.android.safetycenter.resources:string/health_connect_title"
+                summary="@com.android.safetycenter.resources:string/health_connect_summary"
+                searchTerms="@com.android.safetycenter.resources:string/health_connect_search_terms"/>
+            <static-safety-source
+                id="AndroidPrivacyControls"
+                profile="primary_profile_only"
+                intentAction="android.settings.PRIVACY_CONTROLS"
+                title="@com.android.safetycenter.resources:string/privacy_controls_title"
+                summary="@com.android.safetycenter.resources:string/privacy_controls_summary"
+                searchTerms="@com.android.safetycenter.resources:string/privacy_controls_search_terms"/>
             <dynamic-safety-source
                 id="AndroidPrivacyAppDataSharingUpdates"
                 packageName="com.android.permissioncontroller"
@@ -79,13 +86,6 @@
                 refreshOnPageOpenAllowed="true"
                 title="@com.android.safetycenter.resources:string/app_data_sharing_updates_title"
                 searchTerms="@com.android.safetycenter.resources:string/app_data_sharing_updates_search_terms"/>
-            <static-safety-source
-                id="AndroidHealthConnect"
-                profile="primary_profile_only"
-                intentAction="android.health.connect.action.HEALTH_HOME_SETTINGS"
-                title="@com.android.safetycenter.resources:string/health_connect_title"
-                summary="@com.android.safetycenter.resources:string/health_connect_summary"
-                searchTerms="@com.android.safetycenter.resources:string/health_connect_search_terms"/>
             <issue-only-safety-source
                 id="AndroidAccessibility"
                 packageName="com.android.permissioncontroller"

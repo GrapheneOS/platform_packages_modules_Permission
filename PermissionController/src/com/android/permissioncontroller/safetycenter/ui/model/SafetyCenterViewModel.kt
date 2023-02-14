@@ -41,6 +41,12 @@ abstract class SafetyCenterViewModel(protected val app: Application) : AndroidVi
 
     abstract fun dismissIssue(issue: SafetyCenterIssue)
 
+    /**
+     * Execute the [action] to act on the given [issue]
+     *
+     * If [launchTaskId] is provided, this should be used to force the action to be associated with
+     * a particular taskId (if applicable).
+     */
     abstract fun executeIssueAction(
         issue: SafetyCenterIssue,
         action: SafetyCenterIssue.Action,
