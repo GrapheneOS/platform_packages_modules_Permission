@@ -97,31 +97,30 @@
 
     <!-- Title for Data Sharing updates page, which displays updates from apps on their data sharing
      practices. Also used as the title for Data Sharing updates page entry point from Safety Center.
-      [CHAR LIMIT=50] -->
-    <string name="data_sharing_updates_title">Data sharing updates</string>
+      [CHAR LIMIT=70] -->
+    <string name="data_sharing_updates_title">Data sharing updates for location</string>
     <!-- Summary for Data Sharing updates page entry point in Safety Center. Clicking on the entry
     will navigate to Data Sharing updates page, which displays updates from apps on their data
-    sharing practices. [CHAR LIMIT=100] -->
-    <string name="data_sharing_updates_summary">Review apps that changed the way they share location data</string>
+    sharing practices. [CHAR LIMIT=130] -->
+    <string name="data_sharing_updates_summary">Review apps that changed the way they may share your location data</string>
     <!-- Subtitle for Data Sharing updates page, which displays updates from apps on their data
-     sharing practices. [CHAR LIMIT=200] -->
-    <string name="data_sharing_updates_subtitle">These apps have changed the way they share location data. They may not have shared it before, or may now share it for advertising or marketing purposes.</string>
+     sharing practices. [CHAR LIMIT=320] -->
+    <string name="data_sharing_updates_subtitle">These apps have changed the way they may share your location data. They may not have shared it before, or may now share it for advertising or marketing purposes.</string>
     <!-- Footer message for Data Sharing updates page, which displays updates from apps on their
-     data sharing practices. [CHAR LIMIT=400] -->
-    <!-- TODO(b/261914980): Update with final string. -->
-    <string name="data_sharing_updates_footer_message">The developers of these apps provided info about their data sharing practices and may update it over time.\n\nData sharing practices may vary based on your app version, use, region, and age.</string>
+     data sharing practices. [CHAR LIMIT=420] -->
+    <string name="data_sharing_updates_footer_message">The developers of these apps provided info about their data sharing practices to an app store. They may update it over time.\n\nData sharing practices may vary based on your app version, use, region, and age.</string>
     <!-- Link for Data Sharing Help Center page, which will open a web page detailing what app data
      sharing policies mean. [CHAR LIMIT=60] -->
     <string name="learn_about_data_sharing">Learn about data sharing</string>
     <!-- Message indicating that an app now shares location data with third parties for the purpose
      of advertising, when it earlier did not share location data for the purpose of advertising, but
       did for other purposes. Third parties are other companies or organizations.
-       [CHAR LIMIT=80] -->
-    <string name="shares_location_with_third_parties">Location data now shared with third parties</string>
+       [CHAR LIMIT=90] -->
+    <string name="shares_location_with_third_parties">Your location data is shared with third parties</string>
     <!-- Message indicating that an app now shares location data with third parties for the purpose
      of advertising, when it earlier did not. Third parties are other companies or organizations.
-      [CHAR LIMIT=160] -->
-    <string name="shares_location_with_third_parties_for_advertising">Location data now shared with third parties for advertising or marketing purposes</string>
+      [CHAR LIMIT=150] -->
+    <string name="shares_location_with_third_parties_for_advertising">Your location data is shared with third parties for advertising or marketing</string>
     <!-- Header for the number of updates in the last days. [CHAR LIMIT=40] -->
     <!-- TODO(b/261914980): Update with final strings for 0 and 1 case. -->
     <string name="updated_in_last_days">{count, plural,
@@ -133,9 +132,9 @@
     <string name="no_updates_at_this_time">No updates at this time</string>
 
     <!-- Notification title for safety label changes notification [CHAR LIMIT=70] -->
-    <string name="safety_label_changes_notification_title">Review data sharing updates</string>
-    <!-- Notification description for safety label changes notification [CHAR LIMIT=100] -->
-    <string name="safety_label_changes_notification_desc">The way some apps share location data has changed</string>
+    <string name="safety_label_changes_notification_title">Data sharing updates</string>
+    <!-- Notification description for safety label changes notification [CHAR LIMIT=120] -->
+    <string name="safety_label_changes_notification_desc">Some apps changed the way they may share your location data</string>
 
     <!-- Safety Label Change Notifications End -->
 
