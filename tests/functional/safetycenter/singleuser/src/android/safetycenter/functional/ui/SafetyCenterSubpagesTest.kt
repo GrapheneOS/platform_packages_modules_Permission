@@ -47,14 +47,20 @@ import com.android.safetycenter.testing.SafetySourceIntentHandler.Response
 import com.android.safetycenter.testing.SafetySourceReceiver
 import com.android.safetycenter.testing.SafetySourceTestData
 import com.android.safetycenter.testing.UiTestHelper.MORE_ISSUES_LABEL
+import com.android.safetycenter.testing.UiTestHelper.clickConfirmDismissal
+import com.android.safetycenter.testing.UiTestHelper.clickDismissIssueCard
 import com.android.safetycenter.testing.UiTestHelper.clickMoreIssuesCard
+import com.android.safetycenter.testing.UiTestHelper.clickOpenSubpage
+import com.android.safetycenter.testing.UiTestHelper.clickSubpageBrandChip
 import com.android.safetycenter.testing.UiTestHelper.resetRotation
 import com.android.safetycenter.testing.UiTestHelper.rotate
 import com.android.safetycenter.testing.UiTestHelper.waitAllTextDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitAllTextNotDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitButtonDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitDisplayed
-import com.android.safetycenter.testing.UiTestHelper.waitNotDisplayed
+import com.android.safetycenter.testing.UiTestHelper.waitGroupShownOnHomepage
+import com.android.safetycenter.testing.UiTestHelper.waitPageTitleDisplayed
+import com.android.safetycenter.testing.UiTestHelper.waitPageTitleNotDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitSourceIssueDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitSourceIssueNotDisplayed
 import org.junit.After
@@ -108,15 +114,14 @@ class SafetyCenterSubpagesTest {
     @Test
     fun launchSafetyCenter_withSubpagesIntentExtra_showsSubpageTitle() {
         val config = safetyCenterTestConfigs.multipleSourceGroupsConfig
+        val sourceGroup = config.safetySourcesGroups.first()!!
         safetyCenterTestHelper.setConfig(config)
         val extras = Bundle()
         extras.putString(EXTRA_SAFETY_SOURCES_GROUP_ID, MULTIPLE_SOURCES_GROUP_ID_1)
 
         context.launchSafetyCenterActivity(extras) {
             // CollapsingToolbar title can't be found by text, so using description instead.
-            waitDisplayed(
-                By.desc(context.getString(config.safetySourcesGroups.first()!!.titleResId))
-            )
+            waitPageTitleDisplayed(context.getString(sourceGroup.titleResId))
         }
     }
 
@@ -129,22 +134,21 @@ class SafetyCenterSubpagesTest {
 
         context.launchSafetyCenterActivity(extras) {
             // CollapsingToolbar title can't be found by text, so using description instead.
-            waitDisplayed(By.desc("Security & privacy"))
+            waitPageTitleDisplayed("Security & privacy")
         }
     }
 
     @Test
     fun launchSafetyCenter_withNonExistingGroupID_opensHomepageAsFallback() {
         val config = safetyCenterTestConfigs.multipleSourceGroupsConfig
+        val sourceGroup = config.safetySourcesGroups.first()!!
         safetyCenterTestHelper.setConfig(config)
         val extras = Bundle()
         extras.putString(EXTRA_SAFETY_SOURCES_GROUP_ID, "non_existing_group_id")
 
         context.launchSafetyCenterActivity(extras) {
-            waitNotDisplayed(
-                By.desc(context.getString(config.safetySourcesGroups.first()!!.titleResId))
-            )
-            waitDisplayed(By.desc("Security & privacy"))
+            waitPageTitleNotDisplayed(context.getString(sourceGroup.titleResId))
+            waitPageTitleDisplayed("Security & privacy")
         }
     }
 
@@ -173,8 +177,7 @@ class SafetyCenterSubpagesTest {
             )
 
             openPageAndExit(context.getString(lastGroup.titleResId)) {
-                // Verifying that the subpage is opened with collapsing toolbar title
-                waitDisplayed(By.desc(context.getString(lastGroup.titleResId)))
+                waitPageTitleDisplayed(context.getString(lastGroup.titleResId))
                 waitAllTextNotDisplayed(context.getString(lastGroup.summaryResId))
             }
         }
@@ -222,23 +225,14 @@ class SafetyCenterSubpagesTest {
             safetyCenterTestConfigs.multipleSourceGroupsConfig.safetySourcesGroups.first()
 
         context.launchSafetyCenterActivity {
-            // Verifying that both entry title and summary are displayed on homepage
-            waitAllTextDisplayed(
-                context.getString(firstGroup.titleResId),
-                context.getString(firstGroup.summaryResId)
-            )
+            waitGroupShownOnHomepage(context, firstGroup)
 
             openPageAndExit(context.getString(firstGroup.titleResId)) {
-                // Verifying that only collapsing toolbar title is displayed for subpage
-                waitDisplayed(By.desc(context.getString(firstGroup.titleResId)))
+                waitPageTitleDisplayed(context.getString(firstGroup.titleResId))
                 waitAllTextNotDisplayed(context.getString(firstGroup.summaryResId))
             }
 
-            // Verifying that the homepage is opened again
-            waitAllTextDisplayed(
-                context.getString(firstGroup.titleResId),
-                context.getString(firstGroup.summaryResId)
-            )
+            waitGroupShownOnHomepage(context, firstGroup)
         }
     }
 
@@ -517,10 +511,10 @@ class SafetyCenterSubpagesTest {
         context.launchSafetyCenterActivity {
             openPageAndExit(context.getString(sourcesGroup.titleResId)) {
                 waitSourceIssueDisplayed(issue)
-                waitDisplayed(By.desc("Dismiss")) { it.click() }
+                clickDismissIssueCard()
 
                 waitAllTextDisplayed("Dismiss this alert?")
-                waitButtonDisplayed("Dismiss") { it.click() }
+                clickConfirmDismissal()
 
                 waitSourceIssueNotDisplayed(issue)
             }
@@ -538,7 +532,7 @@ class SafetyCenterSubpagesTest {
         context.launchSafetyCenterActivity {
             openPageAndExit(context.getString(sourcesGroup.titleResId)) {
                 waitSourceIssueDisplayed(issue)
-                waitDisplayed(By.desc("Dismiss")) { it.click() }
+                clickDismissIssueCard()
                 waitAllTextDisplayed("Dismiss this alert?")
 
                 UiAutomatorUtils2.getUiDevice().rotate()
@@ -585,9 +579,9 @@ class SafetyCenterSubpagesTest {
         context.launchSafetyCenterActivity {
             openPageAndExit(context.getString(sourcesGroup.titleResId)) {
                 waitSourceIssueDisplayed(issue)
-                waitDisplayed(By.desc("Dismiss")) { it.click() }
+                clickDismissIssueCard()
                 waitAllTextDisplayed("Dismiss this alert?")
-                waitButtonDisplayed("Dismiss") { it.click() }
+                clickConfirmDismissal()
                 waitSourceIssueNotDisplayed(issue)
 
                 waitDisplayed(By.text("Dismissed alerts")) { it.click() }
@@ -609,15 +603,15 @@ class SafetyCenterSubpagesTest {
         context.launchSafetyCenterActivity {
             openPageAndExit(context.getString(sourcesGroup.titleResId)) {
                 waitSourceIssueDisplayed(issue)
-                waitDisplayed(By.desc("Dismiss")) { it.click() }
+                clickDismissIssueCard()
                 waitAllTextDisplayed("Dismiss this alert?")
-                waitButtonDisplayed("Dismiss") { it.click() }
+                clickConfirmDismissal()
                 waitSourceIssueNotDisplayed(issue)
+
                 waitDisplayed(By.text("Dismissed alerts")) { it.click() }
                 waitSourceIssueDisplayed(issue)
 
                 waitDisplayed(By.text("Dismissed alerts")) { it.click() }
-
                 waitSourceIssueNotDisplayed(issue)
             }
         }
@@ -642,9 +636,9 @@ class SafetyCenterSubpagesTest {
         context.launchSafetyCenterActivity {
             openPageAndExit(context.getString(sourcesGroup.titleResId)) {
                 waitSourceIssueDisplayed(issue)
-                waitDisplayed(By.desc("Dismiss")) { it.click() }
+                clickDismissIssueCard()
                 waitAllTextDisplayed("Dismiss this alert?")
-                waitButtonDisplayed("Dismiss") { it.click() }
+                clickConfirmDismissal()
                 waitSourceIssueNotDisplayed(issue)
 
                 clickMoreIssuesCard()
@@ -675,14 +669,14 @@ class SafetyCenterSubpagesTest {
         context.launchSafetyCenterActivity {
             openPageAndExit(context.getString(sourcesGroup.titleResId)) {
                 waitSourceIssueDisplayed(issue)
-                waitDisplayed(By.desc("Dismiss")) { it.click() }
-                waitButtonDisplayed("Dismiss") { it.click() }
+                clickDismissIssueCard()
+                clickConfirmDismissal()
                 waitSourceIssueNotDisplayed(issue)
+
                 clickMoreIssuesCard()
                 waitSourceIssueDisplayed(issue)
 
                 clickMoreIssuesCard()
-
                 waitAllTextDisplayed(MORE_ISSUES_LABEL)
                 waitAllTextNotDisplayed("Dismissed alerts")
                 waitSourceIssueNotDisplayed(issue)
@@ -697,23 +691,14 @@ class SafetyCenterSubpagesTest {
         val sourcesGroup = safetyCenterTestConfigs.singleSourceConfig.safetySourcesGroups.first()
 
         context.launchSafetyCenterActivity {
-            // Verify that the homepage is opened
-            waitAllTextDisplayed(
-                context.getString(sourcesGroup.titleResId),
-                context.getString(sourcesGroup.summaryResId)
-            )
+            waitGroupShownOnHomepage(context, sourcesGroup)
 
-            // Open subpage by clicking on the group title
-            waitDisplayed(By.text(context.getString(sourcesGroup.titleResId))) { it.click() }
-            waitDisplayed(By.desc(context.getString(sourcesGroup.titleResId)))
+            clickOpenSubpage(context, sourcesGroup)
+            waitPageTitleDisplayed(context.getString(sourcesGroup.titleResId))
             waitAllTextNotDisplayed(context.getString(sourcesGroup.summaryResId))
 
-            // Open homepage again by clicking on the brand chip
-            waitButtonDisplayed("Security & privacy") { it.click() }
-            waitAllTextDisplayed(
-                context.getString(sourcesGroup.titleResId),
-                context.getString(sourcesGroup.summaryResId)
-            )
+            clickSubpageBrandChip()
+            waitGroupShownOnHomepage(context, sourcesGroup)
         }
     }
 
@@ -726,16 +711,11 @@ class SafetyCenterSubpagesTest {
         extras.putString(EXTRA_SAFETY_SOURCES_GROUP_ID, sourcesGroup.id)
 
         context.launchSafetyCenterActivity(extras) {
-            // Verify that the subpage is opened
-            waitDisplayed(By.desc(context.getString(sourcesGroup.titleResId)))
+            waitPageTitleDisplayed(context.getString(sourcesGroup.titleResId))
             waitAllTextNotDisplayed(context.getString(sourcesGroup.summaryResId))
 
-            // Open homepage by clicking on the brand chip
-            waitButtonDisplayed("Security & privacy") { it.click() }
-            waitAllTextDisplayed(
-                context.getString(sourcesGroup.titleResId),
-                context.getString(sourcesGroup.summaryResId)
-            )
+            clickSubpageBrandChip()
+            waitGroupShownOnHomepage(context, sourcesGroup)
         }
     }
 
@@ -750,7 +730,7 @@ class SafetyCenterSubpagesTest {
         extras.putString(EXTRA_SETTINGS_FRAGMENT_ARGS_KEY, preferenceKey)
 
         context.launchSafetyCenterActivity(extras) {
-            waitDisplayed(By.desc(context.getString(sourcesGroup.titleResId)))
+            waitPageTitleDisplayed(context.getString(sourcesGroup.titleResId))
             waitAllTextDisplayed(
                 context.getString(source.titleResId),
                 context.getString(source.summaryResId)
@@ -767,11 +747,8 @@ class SafetyCenterSubpagesTest {
         extras.putString(EXTRA_SETTINGS_FRAGMENT_ARGS_KEY, "invalid_preference_key")
 
         context.launchSafetyCenterActivity(extras) {
-            waitDisplayed(By.desc("Security & privacy"))
-            waitAllTextDisplayed(
-                context.getString(sourcesGroup.titleResId),
-                context.getString(sourcesGroup.summaryResId)
-            )
+            waitPageTitleDisplayed("Security & privacy")
+            waitGroupShownOnHomepage(context, sourcesGroup)
         }
     }
 
