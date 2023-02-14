@@ -1173,6 +1173,7 @@
         <permissions>
             <permission name="android.permission.ACCESS_INSTANT_APPS"/>
             <permission name="android.permission.KILL_UID" minSdkVersion="34"/>
+            <permission name="android.permission.MANAGE_DEFAULT_APPLICATIONS" minSdkVersion="34"/>
             <permission name="android.permission.SUSPEND_APPS"/>
             <permission name="android.permission.SYSTEM_APPLICATION_OVERLAY"/>
         </permissions>
