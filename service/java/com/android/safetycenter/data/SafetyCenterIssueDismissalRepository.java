@@ -161,14 +161,30 @@ final class SafetyCenterIssueDismissalRepository {
      * severities, in which case they can potentially differ in resurface times.
      */
     void copyDismissalData(SafetyCenterIssueKey keyFrom, SafetyCenterIssueKey keyTo) {
-        IssueData dataFrom = getOrWarn(keyFrom, "copying dismissed data");
-        IssueData dataTo = getOrWarn(keyTo, "copying dismissed data");
+        IssueData dataFrom = getOrWarn(keyFrom, "copying dismissal data");
+        IssueData dataTo = getOrWarn(keyTo, "copying dismissal data");
         if (dataFrom == null || dataTo == null) {
             return;
         }
 
         dataTo.setDismissedAt(dataFrom.getDismissedAt());
         dataTo.setDismissCount(dataFrom.getDismissCount());
+        scheduleWriteStateToFile();
+    }
+
+    /**
+     * Copy notification dismissal data from one issue to the other.
+     *
+     * <p>This will align notification dismissal state of these issues.
+     */
+    void copyNotificationDismissalData(SafetyCenterIssueKey keyFrom, SafetyCenterIssueKey keyTo) {
+        IssueData dataFrom = getOrWarn(keyFrom, "copying notification dismissal data");
+        IssueData dataTo = getOrWarn(keyTo, "copying notification dismissal data");
+        if (dataFrom == null || dataTo == null) {
+            return;
+        }
+
+        dataTo.setNotificationDismissedAt(dataFrom.getNotificationDismissedAt());
         scheduleWriteStateToFile();
     }
 
@@ -204,7 +220,6 @@ final class SafetyCenterIssueDismissalRepository {
      * Returns the {@link Instant} when the notification for the issue with the given key was last
      * dismissed.
      */
-    // TODO(b/261429824): Handle mNotificationDismissedAt w.r.t. issue deduplication
     @Nullable
     Instant getNotificationDismissedAt(SafetyCenterIssueKey safetyCenterIssueKey) {
         IssueData issueData = getOrWarn(safetyCenterIssueKey, "getting notification dismissed");
