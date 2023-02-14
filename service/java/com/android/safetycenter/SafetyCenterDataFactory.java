@@ -989,7 +989,7 @@ public final class SafetyCenterDataFactory {
             @SafetySourcesGroup.StatelessIconType int statelessIconType) {
         switch (statelessIconType) {
             case SafetySourcesGroup.STATELESS_ICON_TYPE_NONE:
-                return SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON;
+                return SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION;
             case SafetySourcesGroup.STATELESS_ICON_TYPE_PRIVACY:
                 return SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_PRIVACY;
         }
