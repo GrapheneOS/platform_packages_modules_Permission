@@ -30,6 +30,7 @@ import com.android.compatibility.common.util.SystemUtil.runWithShellPermissionId
 import com.android.compatibility.common.util.UiAutomatorUtils2.waitFindObject
 import com.android.permissioncontroller.permissionui.PermissionHub2Test
 import com.android.permissioncontroller.permissionui.wakeUpScreen
+import com.android.permissioncontroller.permissionui.pressHome
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -80,5 +81,6 @@ class PermissionUsageFragmentTest : PermissionHub2Test() {
     @After
     fun uninstallTestApp() {
         uninstallApp(APP)
+        pressHome()
     }
 }
