@@ -29,6 +29,7 @@ import androidx.test.uiautomator.By
 import com.android.compatibility.common.util.DisableAnimationRule
 import com.android.compatibility.common.util.FreezeRotationRule
 import com.android.compatibility.common.util.UiAutomatorUtils2
+import com.android.safetycenter.resources.SafetyCenterResourcesContext
 import com.android.safetycenter.testing.SafetyCenterActivityLauncher.launchSafetyCenterActivity
 import com.android.safetycenter.testing.SafetyCenterActivityLauncher.openPageAndExit
 import com.android.safetycenter.testing.SafetyCenterFlags
@@ -77,6 +78,7 @@ class SafetyCenterSubpagesTest {
     private val safetyCenterTestHelper = SafetyCenterTestHelper(context)
     private val safetySourceTestData = SafetySourceTestData(context)
     private val safetyCenterTestConfigs = SafetyCenterTestConfigs(context)
+    private val safetyCenterResourcesContext = SafetyCenterResourcesContext.forTests(context)
 
     // JUnit's Assume is not supported in @BeforeClass by the tests runner, so this is used to
     // manually skip the setup and teardown methods.
@@ -772,6 +774,26 @@ class SafetyCenterSubpagesTest {
                 context.getString(sourcesGroup.titleResId),
                 context.getString(sourcesGroup.summaryResId)
             )
+        }
+    }
+
+    @Test
+    fun footerSummary_openGenericSubpageHavingFooter_showsExpectedText() {
+        val config = safetyCenterTestConfigs.singleSourceConfig
+        val sourcesGroup = config.safetySourcesGroups.first()
+        val source: SafetySource = sourcesGroup.safetySources.first()
+        safetyCenterTestHelper.setConfig(config)
+
+        context.launchSafetyCenterActivity {
+            openPageAndExit(context.getString(sourcesGroup.titleResId)) {
+                waitAllTextDisplayed(
+                    context.getString(source.titleResId),
+                    context.getString(source.summaryResId),
+                    safetyCenterResourcesContext.getStringByName(
+                        "test_single_source_group_id_footer"
+                    )
+                )
+            }
         }
     }
 
