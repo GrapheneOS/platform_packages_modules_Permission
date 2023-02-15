@@ -27,7 +27,8 @@
     <string name="safety_center_entry_group_with_actions_needed_content_description" msgid="2708884606775932657">"Zoznam. <xliff:g id="ENTRY_TITLE">%1$s</xliff:g>. Vyžaduje sa akcia. <xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>."</string>
     <string name="safety_center_entry_group_item_content_description" msgid="7348298582877249787">"Položka zoznamu. <xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>."</string>
     <string name="safety_center_entry_content_description" msgid="3639565652938224321">"<xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
-    <!-- no translation found for safety_center_more_issues_card_title (7425844746197493312) -->
+    <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"Ďalšie upozornenia"</string>
+    <!-- no translation found for safety_center_dismissed_issues_card_title (2340129842725145733) -->
     <skip />
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{Po rozbalení sa zobrazí jedno ďalšie upozornenie}few{Po rozbalení sa zobrazia # ďalšie upozornenia}many{Expand and see # more alerts}other{Po rozbalení sa zobrazí # ďalších upozornení}}"</string>
     <string name="safety_center_issue_card_content_description" msgid="1281390769721765363">"Upozornenie. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%2$s</xliff:g>"</string>
