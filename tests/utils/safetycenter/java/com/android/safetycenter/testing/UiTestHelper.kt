@@ -126,11 +126,13 @@ object UiTestHelper {
 
     /** Waits for the specified screen title to be displayed. */
     fun waitPageTitleDisplayed(title: String) {
+        // CollapsingToolbar title can't be found by text, so using description instead.
         waitDisplayed(By.desc(title))
     }
 
     /** Waits for the specified screen title not to be displayed. */
     fun waitPageTitleNotDisplayed(title: String) {
+        // CollapsingToolbar title can't be found by text, so using description instead.
         waitNotDisplayed(By.desc(title))
     }
 
