@@ -24,6 +24,7 @@ java_library {
     ],
     libs: [
         "androidx.annotation_annotation",
+        "safety-center-annotations",
     ],
     static_libs: [
         "modules-utils-build_system",

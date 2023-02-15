@@ -18,7 +18,6 @@ package com.android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
-import android.annotation.NonNull;
 import android.annotation.UserIdInt;
 import android.safetycenter.SafetySourceData;
 
@@ -36,22 +35,20 @@ import java.util.Objects;
 @RequiresApi(TIRAMISU)
 public final class SafetySourceKey {
 
-    @NonNull private final String mSourceId;
+    private final String mSourceId;
     @UserIdInt private final int mUserId;
 
-    private SafetySourceKey(@NonNull String sourceId, @UserIdInt int userId) {
+    private SafetySourceKey(String sourceId, @UserIdInt int userId) {
         mSourceId = sourceId;
         mUserId = userId;
     }
 
     /** Creates a {@link SafetySourceKey} for the given {@code sourceId} and {@code userId}. */
-    @NonNull
-    public static SafetySourceKey of(@NonNull String sourceId, @UserIdInt int userId) {
+    public static SafetySourceKey of(String sourceId, @UserIdInt int userId) {
         return new SafetySourceKey(sourceId, userId);
     }
 
     /** Returns the source id of this {@link SafetySourceKey}. */
-    @NonNull
     public String getSourceId() {
         return mSourceId;
     }

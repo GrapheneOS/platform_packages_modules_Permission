@@ -18,7 +18,6 @@ package com.android.safetycenter.persistence;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
@@ -31,15 +30,15 @@ import java.util.Objects;
  */
 @RequiresApi(TIRAMISU)
 public final class PersistedSafetyCenterIssue {
-    @NonNull private final String mKey;
-    @NonNull private final Instant mFirstSeenAt;
+    private final String mKey;
+    private final Instant mFirstSeenAt;
     @Nullable private final Instant mDismissedAt;
     private final int mDismissCount;
     @Nullable private final Instant mNotificationDismissedAt;
 
     private PersistedSafetyCenterIssue(
-            @NonNull String key,
-            @NonNull Instant firstSeenAt,
+            String key,
+            Instant firstSeenAt,
             @Nullable Instant dismissedAt,
             int dismissCount,
             @Nullable Instant notificationDismissedAt) {
@@ -51,13 +50,11 @@ public final class PersistedSafetyCenterIssue {
     }
 
     /** The unique key for a safety source issue. */
-    @NonNull
     public String getKey() {
         return mKey;
     }
 
     /** The instant when this issue was first seen. */
-    @NonNull
     public Instant getFirstSeenAt() {
         return mFirstSeenAt;
     }
@@ -128,28 +125,24 @@ public final class PersistedSafetyCenterIssue {
         public Builder() {}
 
         /** The unique key for a safety source issue. */
-        @NonNull
         public Builder setKey(@Nullable String key) {
             mKey = key;
             return this;
         }
 
         /** The instant when this issue was first seen. */
-        @NonNull
         public Builder setFirstSeenAt(@Nullable Instant firstSeenAt) {
             mFirstSeenAt = firstSeenAt;
             return this;
         }
 
         /** The instant when this issue was dismissed. */
-        @NonNull
         public Builder setDismissedAt(@Nullable Instant dismissedAt) {
             mDismissedAt = dismissedAt;
             return this;
         }
 
         /** The number of times this issue was dismissed. */
-        @NonNull
         public Builder setDismissCount(int dismissCount) {
             if (dismissCount < 0) {
                 throw new IllegalArgumentException("Dismiss count cannot be negative");
@@ -159,7 +152,6 @@ public final class PersistedSafetyCenterIssue {
         }
 
         /** The instant when this issue's notification was dismissed. */
-        @NonNull
         public Builder setNotificationDismissedAt(@Nullable Instant notificationDismissedAt) {
             mNotificationDismissedAt = notificationDismissedAt;
             return this;
@@ -170,7 +162,6 @@ public final class PersistedSafetyCenterIssue {
          *
          * <p>Throws an {@link IllegalStateException} if any constraint is violated.
          */
-        @NonNull
         public PersistedSafetyCenterIssue build() {
             validateRequiredAttribute(mKey, "key");
             validateRequiredAttribute(mFirstSeenAt, "firstSeenAt");
@@ -189,8 +180,7 @@ public final class PersistedSafetyCenterIssue {
         }
     }
 
-    private static void validateRequiredAttribute(
-            @Nullable Object attribute, @NonNull String name) {
+    private static void validateRequiredAttribute(@Nullable Object attribute, String name) {
         if (attribute == null) {
             throw new IllegalStateException("Required attribute " + name + " missing");
         }

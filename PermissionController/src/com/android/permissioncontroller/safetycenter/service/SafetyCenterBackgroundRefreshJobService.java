@@ -35,7 +35,6 @@ import android.content.Intent;
 import android.safetycenter.SafetyCenterManager;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.android.modules.utils.build.SdkLevel;
@@ -54,7 +53,7 @@ public final class SafetyCenterBackgroundRefreshJobService extends JobService {
     /** Schedules a periodic background refresh. */
     public static final class SetupSafetyCenterBackgroundRefreshReceiver extends BroadcastReceiver {
         @Override
-        public void onReceive(@NonNull Context context, @NonNull Intent intent) {
+        public void onReceive(Context context, Intent intent) {
             schedulePeriodicBackgroundRefresh(context, intent.getAction());
         }
     }
@@ -74,7 +73,7 @@ public final class SafetyCenterBackgroundRefreshJobService extends JobService {
      * broadcast if this flag gets enabled.
      */
     private static void schedulePeriodicBackgroundRefresh(
-            @NonNull Context context, @Nullable String actionString) {
+            Context context, @Nullable String actionString) {
 
         if (!isActionStringValid(actionString)) {
             Log.v(TAG, "Ignoring a " + actionString + " broadcast.");
@@ -136,7 +135,7 @@ public final class SafetyCenterBackgroundRefreshJobService extends JobService {
     }
 
     @Override
-    public boolean onStartJob(@NonNull JobParameters params) {
+    public boolean onStartJob(JobParameters params) {
         // background thread not required, PC APK makes all API calls in main thread
         if (!SafetyCenterJobServiceFlags.areBackgroundRefreshesEnabled()) {
             Log.v(TAG, "Background refreshes are not enabled, skipping job.");
@@ -158,7 +157,7 @@ public final class SafetyCenterBackgroundRefreshJobService extends JobService {
     }
 
     @Override
-    public boolean onStopJob(@NonNull JobParameters params) {
+    public boolean onStopJob(JobParameters params) {
         return false; // never want job to be rescheduled
     }
 
