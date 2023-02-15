@@ -23,14 +23,14 @@
     <!-- Permission Rationale - Start -->
 
     <!-- Title message shown for Permission Rationale dialog for Location permission [CHAR LIMIT=50] -->
-    <string name="permission_rationale_location_title">Data safety and your location</string>
+    <string name="permission_rationale_location_title">Data sharing and location</string>
 
-    <!-- Title shown for Permission Rationale "where data sharing come from" section [CHAR LIMIT=50] -->
-    <string name="permission_rationale_data_sharing_source_title">Where info about sharing comes from</string>
+    <!-- Title shown for Permission Rationale "where data sharing come from" section [CHAR LIMIT=70] -->
+    <string name="permission_rationale_data_sharing_source_title">Where data sharing info comes from</string>
 
     <!-- Message shown to the user letting them know where data usage information came from which
     will map to app store labels/names." [CHAR LIMIT=200] -->
-    <string name="permission_rationale_data_sharing_source_message">The developer provided info to <annotation id="link"><annotation id="install_source" example="App Store">%1$s</annotation></annotation> about how its app shares data, and it may update this info over time.</string>
+    <string name="permission_rationale_data_sharing_source_message">The developer provided info to <annotation id="link"><annotation id="install_source" example="App Store">%1$s</annotation></annotation> about how this app shares data. It may update this info over time.</string>
 
     <!-- Title shown for Permission Rationale data sharing purposes section [CHAR LIMIT=50] -->
     <string name="permission_rationale_location_purpose_title">The app may share location data for:</string>
@@ -42,54 +42,54 @@
     [CHAR LIMIT=NONE] -->
     <string name="permission_rationale_purpose_message"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">%1$s</annotation></string>
 
-    <!-- Title shown for Permission Rationale "learn more about data sharing" section [CHAR LIMIT=50] -->
-    <string name="permission_rationale_permission_learn_more_title">Data sharing varies</string>
+    <!-- Title shown for Permission Rationale "Data sharing varies" section [CHAR LIMIT=50] -->
+    <string name="permission_rationale_permission_data_sharing_varies_title">Data sharing varies</string>
 
-    <!-- Title shown for Permission Rationale "learn more about data sharing" section [CHAR LIMIT=200] -->
-    <string name="permission_rationale_permission_learn_more_message">Data practices may vary based on your app version, use, region, and age. <annotation id="link">More about data sharing</annotation></string>
+    <!-- Message shown for Permission Rationale "Data sharing varies" section [CHAR LIMIT=200] -->
+    <string name="permission_rationale_data_sharing_varies_message">Data practices may vary based on your app version, use, region, and age. <annotation id="link">More about data sharing</annotation></string>
 
-    <!-- Title shown for Permission Rationale permission settings section [CHAR LIMIT=50] -->
-    <string name="permission_rationale_permission_settings_title">Control access to your data</string>
+    <!-- Title shown for Permission Rationale location permission settings section [CHAR LIMIT=40] -->
+    <string name="permission_rationale_location_settings_title">Your location data</string>
 
     <!-- Message shown to the user letting them where to change permission settings in the future [CHAR LIMIT=100] -->
-    <string name="permission_rationale_permission_location_settings_message">You can change this app’s access to your location in <annotation id="link">privacy settings</annotation></string>
+    <string name="permission_rationale_permission_settings_message">Change this app’s access in <annotation id="link">privacy settings</annotation></string>
 
     <!-- Permission usage purpose shown for Permission Rationale. This will be used with the
     permission_rationale_purpose_message string in for of bullet list. [CHAR LIMIT=30] -->
-    <string name="permission_rational_purpose_app_functionality">App functionality</string>
+    <string name="permission_rationale_purpose_app_functionality">App functionality</string>
 
     <!-- Permission usage purpose shown for Permission Rationale. This will be used with the
     permission_rationale_purpose_message string in for of bullet list. [CHAR LIMIT=30] -->
-    <string name="permission_rational_purpose_analytics">Analytics</string>
+    <string name="permission_rationale_purpose_analytics">Analytics</string>
 
     <!-- Permission usage purpose shown for Permission Rationale. This will be used with the
     permission_rationale_purpose_message string in for of bullet list. [CHAR LIMIT=50] -->
-    <string name="permission_rational_purpose_developer_communications">Developer communications</string>
+    <string name="permission_rationale_purpose_developer_communications">Developer communications</string>
 
     <!-- Permission usage purpose shown for Permission Rationale. This will be used with the
     permission_rationale_purpose_message string in for of bullet list. [CHAR LIMIT=50] -->
-    <string name="permission_rational_purpose_advertising">Advertising or marketing</string>
+    <string name="permission_rationale_purpose_advertising">Advertising or marketing</string>
 
     <!-- Permission usage purpose shown for Permission Rationale. This will be used with the
     permission_rationale_purpose_message string in for of bullet list. [CHAR LIMIT=75] -->
-    <string name="permission_rational_purpose_fraud_prevention_security">Fraud prevention, security, and compliance</string>
+    <string name="permission_rationale_purpose_fraud_prevention_security">Fraud prevention, security, and compliance</string>
 
     <!-- Permission usage purpose shown for Permission Rationale. This will be used with the
     permission_rationale_purpose_message string in for of bullet list. [CHAR LIMIT=50] -->
-    <string name="permission_rational_purpose_personalization">Personalization</string>
+    <string name="permission_rationale_purpose_personalization">Personalization</string>
 
     <!-- Permission usage purpose shown for Permission Rationale. This will be used with the
     permission_rationale_purpose_message string in for of bullet list. [CHAR LIMIT=50] -->
-    <string name="permission_rational_purpose_account_management">Account management</string>
+    <string name="permission_rationale_purpose_account_management">Account management</string>
 
     <!-- Text for an app's permission rationale header [CHAR LIMIT=60]-->
     <string name="app_permission_rationale_message">Data safety</string>
 
     <!-- Text for linking to an app's location permission rationale dialog. [CHAR LIMIT=60] -->
-    <string name="app_location_permission_rationale_title">Your location data may be shared</string>
+    <string name="app_location_permission_rationale_title">Location data may be shared</string>
 
-    <!-- Description for the app's location permission rationale dialog content. [CHAR LIMIT=60] -->
-    <string name="app_location_permission_rationale_subtitle">This app stated it may share location data with third parties</string>
+    <!-- Description for the app's location permission rationale dialog content. [CHAR LIMIT=130] -->
+    <string name="app_location_permission_rationale_subtitle">This app stated it may share your location data with third parties</string>
 
     <!-- Permission Rationale - End -->
 
@@ -115,12 +115,12 @@
     <!-- Message indicating that an app now shares location data with third parties for the purpose
      of advertising, when it earlier did not share location data for the purpose of advertising, but
       did for other purposes. Third parties are other companies or organizations.
-       [CHAR LIMIT=90] -->
-    <string name="shares_location_with_third_parties">Your location data is shared with third parties</string>
+       [CHAR LIMIT=100] -->
+    <string name="shares_location_with_third_parties">Your location data is now shared with third parties</string>
     <!-- Message indicating that an app now shares location data with third parties for the purpose
      of advertising, when it earlier did not. Third parties are other companies or organizations.
-      [CHAR LIMIT=150] -->
-    <string name="shares_location_with_third_parties_for_advertising">Your location data is shared with third parties for advertising or marketing</string>
+      [CHAR LIMIT=160] -->
+    <string name="shares_location_with_third_parties_for_advertising">Your location data is now shared with third parties for advertising or marketing</string>
     <!-- Header for the number of updates in the last days. [CHAR LIMIT=40] -->
     <!-- TODO(b/261914980): Update with final strings for 0 and 1 case. -->
     <string name="updated_in_last_days">{count, plural,
