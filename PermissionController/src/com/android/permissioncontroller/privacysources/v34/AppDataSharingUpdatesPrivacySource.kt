@@ -29,7 +29,7 @@ import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_REBOOTED
 import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED
 import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED
 import android.safetycenter.SafetySourceData
-import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED
+import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_INFORMATION
 import android.safetycenter.SafetySourceStatus
 import androidx.annotation.RequiresApi
 import com.android.permissioncontroller.R
@@ -71,7 +71,7 @@ class AppDataSharingUpdatesPrivacySource : PrivacySource {
                         SafetySourceStatus.Builder(
                                 context.getString(R.string.data_sharing_updates_title),
                                 context.getString(R.string.data_sharing_updates_summary),
-                                SEVERITY_LEVEL_UNSPECIFIED)
+                                SEVERITY_LEVEL_INFORMATION)
                             .setPendingIntent(
                                 PendingIntent.getActivity(
                                     context,

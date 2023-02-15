@@ -23,6 +23,7 @@ import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.preference.PreferenceGroup
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.safetycenter.ui.SafetyBrandChipPreference.Companion.closeSubpage
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterUiData
 import com.android.safetycenter.resources.SafetyCenterResourcesContext
 import com.android.settingslib.widget.IllustrationPreference
@@ -60,7 +61,7 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
         val entryGroup = uiData?.getMatchingGroup(sourceGroupId)
         if (entryGroup == null) {
             Log.w(TAG, "$sourceGroupId doesn't match any of the existing SafetySourcesGroup IDs")
-            requireActivity().finish()
+            closeSubpage(requireActivity(), requireContext())
             return
         }
 

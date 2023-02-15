@@ -6,6 +6,7 @@ import android.os.UserHandle
 import android.view.MenuItem
 import android.view.View
 import androidx.annotation.RequiresApi
+import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
 import com.android.permissioncontroller.Constants.EXTRA_SESSION_ID
 import com.android.permissioncontroller.R
@@ -17,16 +18,19 @@ import com.android.permissioncontroller.permission.ui.model.v34.AppDataSharingUp
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.StringUtils
 import java.lang.IllegalArgumentException
+import java.text.Collator
 
 /** Fragment to display data sharing updates for installed apps. */
 @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
 class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
-    lateinit var viewModel: AppDataSharingUpdatesViewModel
+    private lateinit var viewModel: AppDataSharingUpdatesViewModel
+    private lateinit var collator: Collator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requireActivity().title = getString(R.string.data_sharing_updates_title)
         setHasOptionsMenu(true)
+        collator = Collator.getInstance(requireContext().resources.configuration.locales[0])
 
         val ab = activity?.actionBar
         ab?.setDisplayHomeAsUpEnabled(true)
@@ -107,6 +111,7 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
                 updatesCategory.addPreference(this)
             }
         }
+        KotlinUtils.sortPreferenceGroup(updatesCategory, this::compareUpdatePreferences, false)
     }
 
     private fun getSummaryForLocationUpdateType(type: DataSharingUpdateType): String {
@@ -128,7 +133,8 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
         val detailsPreference =
             preferenceScreen?.findPreference<AppDataSharingDetailsPreference>(DETAILS_PREFERENCE_ID)
         val footerPreference =
-            preferenceScreen?.findPreference<FooterWithLinkPreference>(FOOTER_PREFERENCE_ID)
+            preferenceScreen?.findPreference<AppDataSharingUpdatesFooterPreference>(
+                FOOTER_PREFERENCE_ID)
         val dataSharingUpdatesCategory =
             preferenceScreen?.findPreference<PreferenceCategory>(
                 LAST_PERIOD_UPDATES_PREFERENCE_CATEGORY_ID)
@@ -160,7 +166,8 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
         val detailsPreference =
             preferenceScreen?.findPreference<AppDataSharingDetailsPreference>(DETAILS_PREFERENCE_ID)
         val footerPreference =
-            preferenceScreen?.findPreference<FooterWithLinkPreference>(FOOTER_PREFERENCE_ID)
+            preferenceScreen?.findPreference<AppDataSharingUpdatesFooterPreference>(
+                FOOTER_PREFERENCE_ID)
         val dataSharingUpdatesCategory =
             preferenceScreen?.findPreference<PreferenceCategory>(
                 LAST_PERIOD_UPDATES_PREFERENCE_CATEGORY_ID)
@@ -169,9 +176,7 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
             it.showNoUpdates = true
             it.isVisible = true
         }
-        dataSharingUpdatesCategory?.let {
-            it.isVisible = false
-        }
+        dataSharingUpdatesCategory?.let { it.isVisible = false }
         footerPreference?.let {
             it.footerMessage = getString(R.string.data_sharing_updates_footer_message)
             it.footerLink = getString(R.string.learn_about_data_sharing)
@@ -188,6 +193,14 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
         update: DataSharingUpdateType
     ): String {
         return "$packageName:${user.identifier}:${update.name}"
+    }
+
+    private fun compareUpdatePreferences(lhs: Preference, rhs: Preference): Int {
+        var result = collator.compare(lhs.title.toString(), rhs.title.toString())
+        if (result == 0) {
+            result = lhs.key.compareTo(rhs.key)
+        }
+        return result
     }
 
     /** Companion object for [AppDataSharingUpdatesFragment]. */

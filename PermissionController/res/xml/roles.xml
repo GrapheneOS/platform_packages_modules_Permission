@@ -1173,6 +1173,7 @@
         <permissions>
             <permission name="android.permission.ACCESS_INSTANT_APPS"/>
             <permission name="android.permission.KILL_UID" minSdkVersion="34"/>
+            <permission name="android.permission.MANAGE_DEFAULT_APPLICATIONS" minSdkVersion="34"/>
             <permission name="android.permission.SUSPEND_APPS"/>
             <permission name="android.permission.SYSTEM_APPLICATION_OVERLAY"/>
         </permissions>
@@ -1243,6 +1244,40 @@
             <permission name="android.permission.QUERY_ADMIN_POLICY" />
             <permission name="android.permission.TRIGGER_LOST_MODE" />
             <permission name="android.permission.MANAGE_DEVICE_POLICY_APP_EXEMPTIONS" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_ACCOUNT_MANAGEMENT" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_AIRPLANE_MODE" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_CAMERA" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_CERTIFICATES" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_COMMON_CRITERIA_MODE" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_DEFAULT_SMS" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_FACTORY_RESET" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_INPUT_METHODS" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_INSTALL_UNKNOWN_SOURCES" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_KEYGUARD" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_LOCK" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_LOCK_CREDENTIALS" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_MOBILE_NETWORK" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_MTE" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_PACKAGE_STATE" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_PROFILES" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_RESTRICT_PRIVATE_DNS" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_SCREEN_CAPTURE" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_SECURITY_LOGGING" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_SUSPEND_PERSONAL_APPS" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_SYSTEM_UPDATES" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_TIME" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_USB_DATA_SIGNALLING" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_WIFI" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_WIPE_DATA" minSdkVersion="34" />
+            <permission name="android.permission.SET_TIME" minSdkVersion="34" />
+            <permission name="android.permission.SET_TIME_ZONE" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_DEBUGGING_FEATURES" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_MODIFY_USERS" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_SAFE_BOOT" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_MICROPHONE" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_USB_FILE_TRANSFER" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_ACROSS_USERS_SECURITY_CRITICAL" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_ACROSS_USERS" minSdkVersion="34" />
         </permissions>
     </role>
 

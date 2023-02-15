@@ -30,12 +30,11 @@ import com.android.compatibility.common.util.DisableAnimationRule
 import com.android.compatibility.common.util.FreezeRotationRule
 import com.android.compatibility.common.util.UiAutomatorUtils2
 import com.android.safetycenter.testing.SafetyCenterActivityLauncher.launchSafetyCenterActivity
+import com.android.safetycenter.testing.SafetyCenterActivityLauncher.openPageAndExit
 import com.android.safetycenter.testing.SafetyCenterFlags
 import com.android.safetycenter.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import com.android.safetycenter.testing.SafetyCenterTestConfigs
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.MULTIPLE_SOURCES_GROUP_ID_1
-import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.PRIVACY_SOURCE_ID_1
-import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.PRIVACY_SOURCE_ID_2
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SINGLE_SOURCE_ID
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SOURCE_ID_1
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SOURCE_ID_2
@@ -108,20 +107,15 @@ class SafetyCenterSubpagesTest {
 
     @Test
     fun launchSafetyCenter_withSubpagesIntentExtra_showsSubpageTitle() {
-        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.multipleSourceGroupsConfig)
+        val config = safetyCenterTestConfigs.multipleSourceGroupsConfig
+        safetyCenterTestHelper.setConfig(config)
         val extras = Bundle()
         extras.putString(EXTRA_SAFETY_SOURCES_GROUP_ID, MULTIPLE_SOURCES_GROUP_ID_1)
 
         context.launchSafetyCenterActivity(extras) {
             // CollapsingToolbar title can't be found by text, so using description instead.
             waitDisplayed(
-                By.desc(
-                    context.getString(
-                        safetyCenterTestConfigs.multipleSourceGroupsConfig.safetySourcesGroups
-                            .first()!!
-                            .titleResId
-                    )
-                )
+                By.desc(context.getString(config.safetySourcesGroups.first()!!.titleResId))
             )
         }
     }
@@ -140,21 +134,17 @@ class SafetyCenterSubpagesTest {
     }
 
     @Test
-    fun launchSafetyCenter_withNonExistingGroupID_displaysNothing() {
-        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.multipleSourceGroupsConfig)
+    fun launchSafetyCenter_withNonExistingGroupID_opensHomepageAsFallback() {
+        val config = safetyCenterTestConfigs.multipleSourceGroupsConfig
+        safetyCenterTestHelper.setConfig(config)
         val extras = Bundle()
         extras.putString(EXTRA_SAFETY_SOURCES_GROUP_ID, "non_existing_group_id")
 
         context.launchSafetyCenterActivity(extras) {
             waitNotDisplayed(
-                By.desc(
-                    context.getString(
-                        safetyCenterTestConfigs.multipleSourceGroupsConfig.safetySourcesGroups
-                            .first()!!
-                            .titleResId
-                    )
-                )
+                By.desc(context.getString(config.safetySourcesGroups.first()!!.titleResId))
             )
+            waitDisplayed(By.desc("Security & privacy"))
         }
     }
 
@@ -750,111 +740,6 @@ class SafetyCenterSubpagesTest {
     }
 
     @Test
-    fun privacySubpage_openWithIntentExtra_showsSubpageData() {
-        val config = safetyCenterTestConfigs.privacySubpageConfig
-        safetyCenterTestHelper.setConfig(config)
-        val sourcesGroup = config.safetySourcesGroups.first()
-        val firstSource: SafetySource = sourcesGroup.safetySources.first()
-        val lastSource: SafetySource = sourcesGroup.safetySources.last()
-        val extras = Bundle()
-        extras.putString(EXTRA_SAFETY_SOURCES_GROUP_ID, sourcesGroup.id)
-
-        context.launchSafetyCenterActivity(extras) {
-            waitAllTextDisplayed(
-                context.getString(firstSource.titleResId),
-                context.getString(firstSource.summaryResId),
-                "Controls",
-                "Data",
-                context.getString(lastSource.titleResId),
-                context.getString(lastSource.summaryResId)
-            )
-        }
-    }
-
-    @Test
-    fun privacySubpage_clickingOnEntry_redirectsToDifferentScreen() {
-        val config = safetyCenterTestConfigs.privacySubpageConfig
-        safetyCenterTestHelper.setConfig(config)
-        val sourcesGroup = config.safetySourcesGroups.first()
-        val source: SafetySource = sourcesGroup.safetySources.first()
-        val extras = Bundle()
-        extras.putString(EXTRA_SAFETY_SOURCES_GROUP_ID, sourcesGroup.id)
-
-        context.launchSafetyCenterActivity(extras) {
-            waitDisplayed(By.text(context.getString(source.titleResId))) { it.click() }
-            waitButtonDisplayed("Exit test activity") { it.click() }
-            waitAllTextDisplayed(
-                context.getString(source.titleResId),
-                context.getString(source.summaryResId)
-            )
-        }
-    }
-
-    @Test
-    fun privacySubpage_withMultipleIssues_displaysExpectedWarningCards() {
-        val config = safetyCenterTestConfigs.privacySubpageConfig
-        safetyCenterTestHelper.setConfig(config)
-        val firstSourceData = safetySourceTestData.criticalWithIssueWithAttributionTitle
-        val secondSourceData = safetySourceTestData.informationWithIssueWithAttributionTitle
-        safetyCenterTestHelper.setData(PRIVACY_SOURCE_ID_1, firstSourceData)
-        safetyCenterTestHelper.setData(PRIVACY_SOURCE_ID_2, secondSourceData)
-        val extras = Bundle()
-        extras.putString(EXTRA_SAFETY_SOURCES_GROUP_ID, config.safetySourcesGroups.first().id)
-
-        context.launchSafetyCenterActivity(extras) {
-            waitSourceIssueDisplayed(firstSourceData.issues[0])
-            waitAllTextDisplayed(MORE_ISSUES_LABEL)
-            waitSourceIssueNotDisplayed(secondSourceData.issues[0])
-
-            clickMoreIssuesCard()
-
-            waitSourceIssueDisplayed(firstSourceData.issues[0])
-            waitAllTextDisplayed(MORE_ISSUES_LABEL)
-            waitSourceIssueDisplayed(secondSourceData.issues[0])
-        }
-    }
-
-    @Test
-    fun privacySubpage_openWithIntentExtra_showsPrivacyControls() {
-        val config = safetyCenterTestConfigs.privacySubpageConfig
-        safetyCenterTestHelper.setConfig(config)
-        val extras = Bundle()
-        extras.putString(EXTRA_SAFETY_SOURCES_GROUP_ID, config.safetySourcesGroups.first().id)
-
-        context.launchSafetyCenterActivity(extras) {
-            waitAllTextDisplayed(
-                "Camera access",
-                "Microphone access",
-                "Show clipboard access",
-                "Show passwords",
-                "Location Settings"
-            )
-        }
-    }
-
-    @Test
-    fun privacySubpage_clickingOnLocationEntry_redirectsToLocationScreen() {
-        val config = safetyCenterTestConfigs.privacySubpageConfig
-        safetyCenterTestHelper.setConfig(config)
-        val sourcesGroup = config.safetySourcesGroups.first()
-        val source: SafetySource = sourcesGroup.safetySources.first()
-        val extras = Bundle()
-        extras.putString(EXTRA_SAFETY_SOURCES_GROUP_ID, sourcesGroup.id)
-
-        context.launchSafetyCenterActivity(extras) {
-            openPageAndExit("Location Settings") {
-                waitDisplayed(By.desc("Location"))
-                waitAllTextDisplayed("Use location")
-            }
-
-            waitAllTextDisplayed(
-                context.getString(source.titleResId),
-                context.getString(source.summaryResId)
-            )
-        }
-    }
-
-    @Test
     fun settingsSearch_openWithGenericIntentExtra_showsGenericSubpage() {
         val config = safetyCenterTestConfigs.multipleSourcesConfig
         safetyCenterTestHelper.setConfig(config)
@@ -874,25 +759,6 @@ class SafetyCenterSubpagesTest {
     }
 
     @Test
-    fun settingsSearch_openWithPrivacyIntentExtra_showsPrivacySubpage() {
-        val config = safetyCenterTestConfigs.privacySubpageConfig
-        val sourcesGroup = config.safetySourcesGroups.first()
-        val source: SafetySource = sourcesGroup.safetySources.first()
-        safetyCenterTestHelper.setConfig(config)
-        val extras = Bundle()
-        extras.putString(EXTRA_SETTINGS_FRAGMENT_ARGS_KEY, "privacy_camera_toggle")
-
-        context.launchSafetyCenterActivity(extras) {
-            waitAllTextDisplayed(
-                context.getString(source.titleResId),
-                context.getString(source.summaryResId),
-                "Controls",
-                "Data",
-            )
-        }
-    }
-
-    @Test
     fun settingsSearch_openWithInvalidKey_showsHomepage() {
         val config = safetyCenterTestConfigs.singleSourceConfig
         val sourcesGroup = config.safetySourcesGroups.first()
@@ -907,23 +773,6 @@ class SafetyCenterSubpagesTest {
                 context.getString(sourcesGroup.summaryResId)
             )
         }
-    }
-
-    private fun openPageAndExit(entryPoint: String, block: () -> Unit) {
-        val uiDevice = UiAutomatorUtils2.getUiDevice()
-        uiDevice.waitForIdle()
-
-        // Opens page by clicking on the entry point
-        waitDisplayed(By.text(entryPoint)) { it.click() }
-        uiDevice.waitForIdle()
-
-        // Executes the required verifications
-        block()
-        uiDevice.waitForIdle()
-
-        // Exits page by pressing the back button
-        uiDevice.pressBack()
-        uiDevice.waitForIdle()
     }
 
     companion object {
