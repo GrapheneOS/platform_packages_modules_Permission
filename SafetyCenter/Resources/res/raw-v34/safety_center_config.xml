@@ -64,12 +64,13 @@
                 title="@com.android.safetycenter.resources:string/ads_privacy_title"
                 summary="@com.android.safetycenter.resources:string/ads_privacy_summary"
                 searchTerms="@com.android.safetycenter.resources:string/ads_privacy_search_terms"/>
-            <static-safety-source
+            <dynamic-safety-source
                 id="AndroidHealthConnect"
                 profile="primary_profile_only"
-                intentAction="android.health.connect.action.HEALTH_HOME_SETTINGS"
+                packageName="com.android.permissioncontroller"
+                initialDisplayState="hidden"
+                refreshOnPageOpenAllowed="true"
                 title="@com.android.safetycenter.resources:string/health_connect_title"
-                summary="@com.android.safetycenter.resources:string/health_connect_summary"
                 searchTerms="@com.android.safetycenter.resources:string/health_connect_search_terms"/>
             <static-safety-source
                 id="AndroidPrivacyControls"

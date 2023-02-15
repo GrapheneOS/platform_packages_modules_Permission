@@ -147,4 +147,8 @@
     <string name="privacy_subpage_controls_header">Controls</string>
     <!-- Header for the data category on the privacy subpage of Safety Center [CHAR LIMIT=NONE] -->
     <string name="privacy_subpage_data_header">Data</string>
+
+    <!-- Title shown for Health Connect [CHAR LIMIT=50] -->
+    <string name="health_connect_title" description="Health connect title">Health&#160;Connect</string>
+    <string name="health_connect_summary" description="Health connect summary, which describes what user can do when they click Health Connect">App permissions and data management</string>
 </resources>
