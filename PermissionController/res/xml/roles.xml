@@ -614,7 +614,6 @@
             <permission name="android.permission.ADD_ALWAYS_UNLOCKED_DISPLAY" minSdkVersion="33" />
             <permission name="android.permission.SUBSCRIBE_TO_KEYGUARD_LOCKED_STATE"
                 minSdkVersion="33" />
-            <permission name="android.permission.MANAGE_DEVICE_LOCK_STATE" minSdkVersion="34" />
             <permission name="android.permission.MANAGE_DEVICE_POLICY_ACCOUNT_MANAGEMENT"
                 minSdkVersion="34" />
             <permission name="android.permission.MANAGE_DEVICE_POLICY_AIRPLANE_MODE"
