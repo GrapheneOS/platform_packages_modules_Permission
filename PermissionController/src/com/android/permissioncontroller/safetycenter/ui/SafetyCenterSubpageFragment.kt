@@ -76,7 +76,7 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
     }
 
     private fun setupIllustration() {
-        val resName = "illustration_${convertToSnakeCase(sourceGroupId)}"
+        val resName = "illustration_${SnakeCaseConverter.fromCamelCase(sourceGroupId)}"
         val context = requireContext()
         val drawable =
             SafetyCenterResourcesContext(context).getDrawableByName(resName, context.theme)
@@ -89,7 +89,7 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
     }
 
     private fun setupFooter() {
-        val resName = "${convertToSnakeCase(sourceGroupId)}_footer"
+        val resName = "${SnakeCaseConverter.fromCamelCase(sourceGroupId)}_footer"
         val footerText = SafetyCenterResourcesContext(requireContext()).getStringByName(resName)
         if (footerText.isEmpty()) {
             Log.w(TAG, "$sourceGroupId doesn't have any matching footer")
@@ -161,17 +161,6 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
             val subpageFragment = SafetyCenterSubpageFragment()
             subpageFragment.setArguments(args)
             return subpageFragment
-        }
-
-        // TODO(b/265771201): Add unit tests to cover this conversion
-        private fun convertToSnakeCase(input: String): String {
-            if (input.contains("_")) {
-                // String is already in snake case so returning as is
-                return input
-            }
-
-            val camelRegex = "(?<=[a-zA-Z])[A-Z]".toRegex()
-            return camelRegex.replace(input) { "_${it.value}" }.lowercase()
         }
     }
 }
