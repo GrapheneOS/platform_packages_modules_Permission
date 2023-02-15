@@ -35,7 +35,6 @@ import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_REBOOTED
 import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED
 import android.safetycenter.SafetySourceData
 import android.safetycenter.SafetySourceStatus
-import android.safetylabel.SafetyLabelConstants.PERMISSION_RATIONALE_ENABLED
 import android.safetylabel.SafetyLabelConstants.SAFETY_LABEL_CHANGE_NOTIFICATIONS_ENABLED
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -88,7 +87,6 @@ class AppDataSharingUpdatesPrivacySourceTest {
 
         appDataSharingUpdatesPrivacySource = AppDataSharingUpdatesPrivacySource()
 
-        setPermissionRationaleEnabled(true)
         setSafetyLabelChangeNotificationsEnabled(true)
     }
 
@@ -158,26 +156,7 @@ class AppDataSharingUpdatesPrivacySourceTest {
     }
 
     @Test
-    fun rescanAndPushSafetyCenterData_permissionRationaleDisabled_setsNullData() {
-        setPermissionRationaleEnabled(false)
-        val refreshIntent =
-            Intent(ACTION_REFRESH_SAFETY_SOURCES)
-                .putExtra(EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID, REFRESH_ID)
-
-        appDataSharingUpdatesPrivacySource.rescanAndPushSafetyCenterData(
-            context, refreshIntent, EVENT_REFRESH_REQUESTED)
-
-        val expectedSafetyEvent =
-            SafetyEvent.Builder(SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
-                .setRefreshBroadcastId(REFRESH_ID)
-                .build()
-        verify(mockSafetyCenterManager)
-            .setSafetySourceData(APP_DATA_SHARING_UPDATES_SOURCE_ID, null, expectedSafetyEvent)
-    }
-
-    @Test
     fun rescanAndPushSafetyCenterData_bothFeaturesDisabled_setsNullData() {
-        setPermissionRationaleEnabled(false)
         setSafetyLabelChangeNotificationsEnabled(false)
         val refreshIntent =
             Intent(ACTION_REFRESH_SAFETY_SOURCES)
@@ -212,14 +191,6 @@ class AppDataSharingUpdatesPrivacySourceTest {
                         eq(NAMESPACE_PRIVACY),
                         eq(SAFETY_LABEL_CHANGE_NOTIFICATIONS_ENABLED),
                         anyBoolean()))
-                .thenReturn(enabled)
-        }
-
-        /** Sets the value for the Permission Rationale feature [DeviceConfig] property. */
-        private fun setPermissionRationaleEnabled(enabled: Boolean) {
-            whenever(
-                    DeviceConfig.getBoolean(
-                        eq(NAMESPACE_PRIVACY), eq(PERMISSION_RATIONALE_ENABLED), anyBoolean()))
                 .thenReturn(enabled)
         }
     }
