@@ -73,18 +73,20 @@ class SafetyCenterTestHelper(private val context: Context) {
 
     /** Enables or disables SafetyCenter based on [value]. */
     fun setEnabled(value: Boolean) {
-        val currentValue = SafetyCenterFlags.isEnabled
-        if (currentValue == value) {
-            return
-        }
         val safetyCenterConfig = safetyCenterManager.getSafetyCenterConfigWithPermission()
         if (safetyCenterConfig == null) {
             // No broadcasts are dispatched when toggling the flag when SafetyCenter is not
-            // supported by the device.
+            // supported by the device. In this case, toggling this flag should end up being a no-op
+            // as Safety Center will remain disabled regardless, but we still toggle it so that this
+            // no-op behavior can be covered.
             SafetyCenterFlags.isEnabled = value
-        } else {
-            setEnabledWaitingForSafetyCenterBroadcastIdle(value, safetyCenterConfig)
+            return
         }
+        val currentValue = safetyCenterManager.isSafetyCenterEnabledWithPermission()
+        if (currentValue == value) {
+            return
+        }
+        setEnabledWaitingForSafetyCenterBroadcastIdle(value, safetyCenterConfig)
     }
 
     /** Sets the given [SafetyCenterConfig]. */

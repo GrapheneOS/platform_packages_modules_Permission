@@ -22,13 +22,14 @@ import static android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
 
 import android.app.ActivityOptions;
 import android.app.PendingIntent;
-import android.os.Build;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RequiresPermission;
+
+import com.android.modules.utils.build.SdkLevel;
 
 /** A class to facilitate sending {@link PendingIntent}s associated with Safety Center. */
 @RequiresApi(TIRAMISU)
@@ -116,14 +117,14 @@ public final class PendingIntentSender {
         if (!pendingIntent.isActivity()) {
             return null;
         }
-        if (launchTaskId == null && Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+        if (launchTaskId == null && !SdkLevel.isAtLeastU()) {
             return null;
         }
         ActivityOptions activityOptions = ActivityOptions.makeBasic();
         if (launchTaskId != null) {
             activityOptions.setLaunchTaskId(launchTaskId);
         }
-        if (Build.VERSION.SDK_INT >= UPSIDE_DOWN_CAKE) {
+        if (SdkLevel.isAtLeastU()) {
             setBackgroundActivityStartModeAllowed(activityOptions);
         }
         return activityOptions;

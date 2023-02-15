@@ -27,8 +27,10 @@ import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.Bundle
 import androidx.annotation.RequiresApi
+import androidx.test.uiautomator.By
 import com.android.compatibility.common.util.UiAutomatorUtils2.getUiDevice
 import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
+import com.android.safetycenter.testing.UiTestHelper.waitDisplayed
 
 /** A class that provides a way to launch the SafetyCenter activity in tests. */
 @RequiresApi(TIRAMISU)
@@ -64,6 +66,11 @@ object SafetyCenterActivityLauncher {
                 startActivity(launchSafetyCenterQsIntent)
             }
         }
+    }
+
+    /** Launches a page in Safety Center and exits it once [block] completes. */
+    fun openPageAndExit(entryPoint: String, block: () -> Unit) {
+        executeBlockAndExit(block) { waitDisplayed(By.text(entryPoint)) { it.click() } }
     }
 
     private fun createIntent(intentAction: String, intentExtras: Bundle?): Intent {
