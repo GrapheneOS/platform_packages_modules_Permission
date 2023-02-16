@@ -100,16 +100,18 @@ class TestNotificationListener : NotificationListenerService() {
             Channel<NotificationEvent>(capacity = Channel.UNLIMITED)
 
         /**
-         * Blocks until there are zero Safety Center notifications, or throw an [AssertionError] if
-         * that doesn't happen within [timeout].
+         * Blocks until there are zero Safety Center notifications and there remain zero for a short
+         * duration. Throws an [AssertionError] if a this condition is not met within [timeout], or
+         * if it is met and then violated.
          */
         fun waitForZeroNotifications(timeout: Duration = TIMEOUT_LONG) {
             waitForNotificationCount(0, timeout)
         }
 
         /**
-         * Blocks until there is exactly one Safety Center notification and then return it, or throw
-         * an [AssertionError] if that doesn't happen within [timeout].
+         * Blocks until there is exactly one Safety Center notification and ensures that remains
+         * true for a short duration. Returns that notification, or throws an [AssertionError] if a
+         * this condition is not met within [timeout], or if it is met and then violated.
          */
         fun waitForSingleNotification(
             timeout: Duration = TIMEOUT_LONG
@@ -118,8 +120,10 @@ class TestNotificationListener : NotificationListenerService() {
         }
 
         /**
-         * Blocks until there are exactly [count] Safety Center notifications and then return them,
-         * or throw an [AssertionError] if that doesn't happen within [timeout].
+         * Blocks until there are exactly [count] Safety Center notifications and ensures that
+         * remains true for a short duration. Returns those notifications, or throws an
+         * [AssertionError] if a this condition is not met within [timeout], or if it is met and
+         * then violated.
          */
         private fun waitForNotificationCount(
             count: Int,
@@ -131,9 +135,10 @@ class TestNotificationListener : NotificationListenerService() {
         }
 
         /**
-         * Blocks until there is a single Safety Center notification matching the given
-         * [characteristics] and then return it, or throw an [AssertionError] if that doesn't happen
-         * within [timeout].
+         * Blocks until there is a single Safety Center notification, which matches the given
+         * [characteristics] and ensures that remains true for a short duration. Returns that
+         * notification, or throws an [AssertionError] if a this condition is not met within
+         * [timeout], or if it is met and then violated.
          */
         fun waitForSingleNotificationMatching(
             characteristics: NotificationCharacteristics,
@@ -143,9 +148,10 @@ class TestNotificationListener : NotificationListenerService() {
         }
 
         /**
-         * Blocks until the set of Safety Center notifications matches the given [characteristics]
-         * and then return them, or throw an [AssertionError] if that doesn't happen within
-         * [timeout].
+         * Blocks until the Safety Center notifications match the given [characteristics] and
+         * ensures that remains true for a short duration. Returns those notifications, or throws an
+         * [AssertionError] if a this condition is not met within [timeout], or if it is met and
+         * then violated.
          */
         fun waitForNotificationsMatching(
             vararg characteristics: NotificationCharacteristics,
