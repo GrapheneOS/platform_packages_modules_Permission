@@ -1738,7 +1738,7 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     other organizations outside of the app developer. These could be companies or even governmental
     organizations. But because we aren't able to be inclusive of all possibilities, phrasing should
     be as generic as possible while still helping users understand they aren't just sharing data
-    with the developer company. [CHAR LIMIT=100] -->
-    <string name="permission_rationale_message_location">This app stated it may share location data with third parties</string>
+    with the developer company. [CHAR LIMIT=130] -->
+    <string name="permission_rationale_message_location">This app stated it may share your location data with third parties</string>
 
 </resources>
