@@ -55,6 +55,8 @@ import com.android.safetycenter.testing.SafetySourceTestData.Companion.CRITICAL_
 import com.android.safetycenter.testing.SafetySourceTestData.Companion.RECOMMENDATION_ISSUE_ID
 import com.android.safetycenter.testing.UiTestHelper.MORE_ISSUES_LABEL
 import com.android.safetycenter.testing.UiTestHelper.RESCAN_BUTTON_LABEL
+import com.android.safetycenter.testing.UiTestHelper.clickConfirmDismissal
+import com.android.safetycenter.testing.UiTestHelper.clickDismissIssueCard
 import com.android.safetycenter.testing.UiTestHelper.clickMoreIssuesCard
 import com.android.safetycenter.testing.UiTestHelper.resetRotation
 import com.android.safetycenter.testing.UiTestHelper.rotate
@@ -571,7 +573,7 @@ class SafetyCenterActivityTest {
         safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, safetySourceTestData.informationWithIssue)
 
         context.launchSafetyCenterActivity {
-            waitDisplayed(By.desc("Dismiss")) { it.click() }
+            clickDismissIssueCard()
 
             waitSourceIssueNotDisplayed(safetySourceTestData.informationIssue)
             waitSourceDataDisplayed(safetySourceTestData.information)
@@ -588,9 +590,9 @@ class SafetyCenterActivityTest {
         )
 
         context.launchSafetyCenterActivity {
-            waitDisplayed(By.desc("Dismiss")) { it.click() }
+            clickDismissIssueCard()
             waitAllTextDisplayed("Dismiss this alert?")
-            waitButtonDisplayed("Dismiss") { it.click() }
+            clickConfirmDismissal()
 
             waitSourceIssueNotDisplayed(safetySourceTestData.criticalResolvingGeneralIssue)
             waitButtonDisplayed(RESCAN_BUTTON_LABEL)
@@ -606,7 +608,7 @@ class SafetyCenterActivityTest {
         )
 
         context.launchSafetyCenterActivity {
-            waitDisplayed(By.desc("Dismiss")) { it.click() }
+            clickDismissIssueCard()
             waitAllTextDisplayed(
                 "Dismiss this alert?",
                 "Review your security and privacy settings any time to add more protection"
@@ -620,7 +622,7 @@ class SafetyCenterActivityTest {
                 "Dismiss this alert?",
                 "Review your security and privacy settings any time to add more protection"
             )
-            waitButtonDisplayed("Dismiss") { it.click() }
+            clickConfirmDismissal()
 
             waitSourceIssueNotDisplayed(safetySourceTestData.criticalResolvingGeneralIssue)
             waitButtonDisplayed(RESCAN_BUTTON_LABEL)
@@ -636,7 +638,7 @@ class SafetyCenterActivityTest {
         )
 
         context.launchSafetyCenterActivity {
-            waitDisplayed(By.desc("Dismiss")) { it.click() }
+            clickDismissIssueCard()
             waitAllTextDisplayed("Dismiss this alert?")
             waitButtonDisplayed("Cancel") { it.click() }
 
@@ -653,7 +655,7 @@ class SafetyCenterActivityTest {
         )
 
         context.launchSafetyCenterActivity {
-            waitDisplayed(By.desc("Dismiss")) { it.click() }
+            clickDismissIssueCard()
             waitAllTextDisplayed("Dismiss this alert?")
 
             getUiDevice().rotate()
