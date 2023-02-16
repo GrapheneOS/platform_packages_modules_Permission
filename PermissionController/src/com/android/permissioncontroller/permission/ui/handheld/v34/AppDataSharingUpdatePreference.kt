@@ -21,7 +21,6 @@ import android.content.Context
 import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.os.UserHandle
 import android.view.View
-import android.widget.ImageButton
 import androidx.annotation.RequiresApi
 import androidx.preference.PreferenceViewHolder
 import com.android.permissioncontroller.R
@@ -43,8 +42,8 @@ class AppDataSharingUpdatePreference(
         layoutResource = R.layout.app_data_sharing_settings_preference
     }
 
-    /** [View.OnClickListener] for the settings gear icon. */
-    var settingsGearClick: View.OnClickListener? = null
+    /** [View.OnClickListener] for the preference. */
+    var preferenceClick: View.OnClickListener? = null
         set(value) {
             field = value
             notifyChanged()
@@ -53,7 +52,6 @@ class AppDataSharingUpdatePreference(
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
         super.onBindViewHolder(holder)
 
-        val settingsGearButton = holder.findViewById(R.id.settings_button) as ImageButton
-        settingsGearButton.setOnClickListener(settingsGearClick)
+        holder.itemView.setOnClickListener(preferenceClick)
     }
 }

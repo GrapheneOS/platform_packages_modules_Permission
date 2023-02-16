@@ -258,7 +258,7 @@
         <item name="android:clipToPadding">false</item>
     </style>
 
-    <style name="AppDataSharingUpdatePreferenceIconContainer">
+    <style name="AppDataSharingUpdateAppIconFrame">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:gravity">start|center_vertical</item>
@@ -266,7 +266,7 @@
         <item name="android:paddingRight">20dp</item>
     </style>
 
-    <style name="AppDataSharingUpdatePreferenceIcon">
+    <style name="AppDataSharingUpdateAppIcon">
         <item name="android:id">@android:id/icon</item>
         <item name="android:layout_width">32dp</item>
         <item name="android:layout_height">32dp</item>
@@ -297,7 +297,7 @@
         <item name="android:maxLines">10</item>
     </style>
 
-    <style name="AppDataSharingUpdatePreferenceButtonContainer">
+    <style name="AppDataSharingUpdateSettingsIconFrame">
         <item name="android:layout_width">48dp</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:gravity">right|center_vertical</item>
@@ -305,7 +305,7 @@
         <item name="android:paddingLeft">24dp</item>
     </style>
 
-    <style name="AppDataSharingUpdatePreferenceButton">
+    <style name="AppDataSharingUpdateSettingsIcon">
         <item name="android:layout_width">24dp</item>
         <item name="android:layout_height">24dp</item>
         <item name="android:layout_gravity">end|center_vertical</item>
