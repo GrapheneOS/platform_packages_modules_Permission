@@ -19,7 +19,7 @@
     <!-- TODO(evanseverson) rename this overlayable -->
     <overlayable name="PermissionControllerStyles">
 
-        <policy type="product|system|vendor">
+        <policy type="product|system|vendor|odm|oem">
 
             <!-- START HELP LINKS -->
             <item type="string" name="help_app_permissions" />
@@ -334,6 +334,28 @@
             <item type="string" name="show_access_notifications_default_config"/>
             <item type="bool" name="config_display_show_password_toggle"/>
             <!-- END PRIVACY CONTROLS CONFIGS -->
+
+            <!-- START SAFETY LABELS STYLE -->
+            <item type="style" name="AppDataSharingDetailsContainer" />
+            <item type="style" name="AppDataSharingDetailsTextAppearance" />
+            <item type="style" name="AppDataSharingDetailsMessage" />
+            <item type="style" name="AppDataSharingNoUpdatesTextAppearance" />
+            <item type="style" name="AppDataSharingNoUpdatesMessage" />
+            <item type="style" name="AppDataSharingUpdatesFooterContainer" />
+            <item type="style" name="AppDataSharingUpdatesFooterIconFrame" />
+            <item type="style" name="AppDataSharingUpdatesFooterIcon" />
+            <item type="style" name="AppDataSharingUpdatesFooterTextAppearance" />
+            <item type="style" name="AppDataSharingUpdatesFooterMessage" />
+            <item type="style" name="AppDataSharingUpdatesFooterLink" />
+            <item type="style" name="AppDataSharingUpdatePreference" />
+            <item type="style" name="AppDataSharingUpdateAppIconFrame" />
+            <item type="style" name="AppDataSharingUpdateAppIcon" />
+            <item type="style" name="AppDataSharingUpdatePreferenceTitleAndSummaryContainer" />
+            <item type="style" name="AppDataSharingUpdatePreferenceTitle" />
+            <item type="style" name="AppDataSharingUpdatePreferenceSummary" />
+            <item type="style" name="AppDataSharingUpdateSettingsIconFrame" />
+            <item type="style" name="AppDataSharingUpdateSettingsIcon" />
+            <!-- END SAFETY LABELS STYLE -->
 
         </policy>
 
