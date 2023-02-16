@@ -18,7 +18,6 @@ package com.android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
-import android.annotation.NonNull;
 import android.annotation.UserIdInt;
 
 import androidx.annotation.RequiresApi;
@@ -35,31 +34,31 @@ import javax.annotation.concurrent.NotThreadSafe;
 @NotThreadSafe
 final class SafetyCenterDataChangeNotifier {
 
-    @NonNull private final SafetyCenterNotificationSender mSafetyCenterNotificationSender;
-    @NonNull private final SafetyCenterListeners mSafetyCenterListeners;
+    private final SafetyCenterNotificationSender mSafetyCenterNotificationSender;
+    private final SafetyCenterListeners mSafetyCenterListeners;
 
     /** Initializes a new instance of {@link SafetyCenterDataChangeNotifier}. */
     SafetyCenterDataChangeNotifier(
-            @NonNull SafetyCenterNotificationSender safetyCenterNotificationSender,
-            @NonNull SafetyCenterListeners safetyCenterListeners) {
+            SafetyCenterNotificationSender safetyCenterNotificationSender,
+            SafetyCenterListeners safetyCenterListeners) {
         mSafetyCenterNotificationSender = safetyCenterNotificationSender;
         mSafetyCenterListeners = safetyCenterListeners;
     }
 
     /** Updates classes that depend on data changes (changes of state in the data subpackage). */
-    void updateDataConsumers(@NonNull UserProfileGroup userProfileGroup, @UserIdInt int userId) {
+    void updateDataConsumers(UserProfileGroup userProfileGroup, @UserIdInt int userId) {
         mSafetyCenterNotificationSender.updateNotifications(userId);
         mSafetyCenterListeners.deliverDataForUserProfileGroup(userProfileGroup);
     }
 
     /** Updates classes that depend on data changes (changes of state in the data subpackage). */
-    void updateDataConsumers(@NonNull UserProfileGroup userProfileGroup) {
+    void updateDataConsumers(UserProfileGroup userProfileGroup) {
         mSafetyCenterNotificationSender.updateNotifications(userProfileGroup);
         mSafetyCenterListeners.deliverDataForUserProfileGroup(userProfileGroup);
     }
 
     /** Updates classes that depend on data changes (changes of state in the data subpackage). */
-    void updateDataConsumers(@NonNull List<UserProfileGroup> userProfileGroups) {
+    void updateDataConsumers(List<UserProfileGroup> userProfileGroups) {
         for (int i = 0; i < userProfileGroups.size(); i++) {
             updateDataConsumers(userProfileGroups.get(i));
         }

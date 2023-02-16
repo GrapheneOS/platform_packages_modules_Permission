@@ -18,6 +18,7 @@ package com.android.permissioncontroller.permission.data.v31
 
 import android.app.AppOpsManager
 import android.app.AppOpsManager.HISTORY_FLAG_DISCRETE
+import android.app.AppOpsManager.HISTORY_FLAG_GET_ATTRIBUTION_CHAINS
 import android.app.AppOpsManager.HistoricalOps
 import android.app.AppOpsManager.HistoricalOpsRequest
 import android.app.AppOpsManager.OP_FLAG_SELF
@@ -140,12 +141,5 @@ class AllLightHistoricalPackageOpsLiveData(app: Application, val opNames: Set<St
         result: Int
     ) {
         update()
-    }
-
-    /** Companion object for [AllLightHistoricalPackageOpsLiveData]. */
-    companion object {
-        // TODO(b/257317733): Add
-        // http://cs/android-internal/frameworks/base/core/java/android/app/AppOpsManager.java?rcl=07feded3186ec30d8da280d85fb68933fc628a31&l=4506 to API.
-        const val HISTORY_FLAG_GET_ATTRIBUTION_CHAINS = 1 shl 2
     }
 }

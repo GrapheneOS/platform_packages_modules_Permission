@@ -74,6 +74,7 @@ import android.telephony.TelephonyManager.CARRIER_PRIVILEGE_STATUS_NO_ACCESS
 import android.text.Html
 import android.util.Log
 import android.view.inputmethod.InputMethod
+import androidx.annotation.ChecksSdkIntAtLeast
 import androidx.annotation.MainThread
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.MutableLiveData
@@ -161,6 +162,13 @@ fun hibernationTargetsPreSApps(): Boolean {
     return DeviceConfig.getBoolean(NAMESPACE_APP_HIBERNATION,
         Utils.PROPERTY_HIBERNATION_TARGETS_PRE_S_APPS,
         false /* defaultValue */)
+}
+
+@ChecksSdkIntAtLeast(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codename = "UpsideDownCake")
+fun isSystemExemptFromHibernationEnabled(): Boolean {
+    return SdkLevel.isAtLeastU() && DeviceConfig.getBoolean(NAMESPACE_APP_HIBERNATION,
+            Utils.PROPERTY_SYSTEM_EXEMPT_HIBERNATION_ENABLED,
+            true /* defaultValue */)
 }
 
 /**
@@ -604,6 +612,18 @@ suspend fun isPackageHibernationExemptBySystem(
             }
             return true
         }
+    }
+
+    if (isSystemExemptFromHibernationEnabled() && AppOpLiveData[pkg.packageName,
+          AppOpsManager.OPSTR_SYSTEM_EXEMPT_FROM_HIBERNATION,
+          pkg.uid].getInitializedValue() == AppOpsManager.MODE_ALLOWED) {
+        if (DEBUG_HIBERNATION_POLICY) {
+            DumpableLog.i(
+                LOG_TAG,
+                "Exempted ${pkg.packageName} - has OP_SYSTEM_EXEMPT_FROM_HIBERNATION"
+            )
+        }
+        return true
     }
 
     return false

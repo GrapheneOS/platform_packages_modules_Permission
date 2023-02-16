@@ -18,7 +18,6 @@ package com.android.safetycenter.data;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
-import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.content.Context;
@@ -61,24 +60,22 @@ import javax.annotation.concurrent.NotThreadSafe;
 @NotThreadSafe
 public final class SafetyCenterDataManager {
 
-    @NonNull private final SafetySourceDataRepository mSafetySourceDataRepository;
+    private final SafetySourceDataRepository mSafetySourceDataRepository;
 
-    @NonNull
     private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
 
-    @NonNull private final SafetyCenterIssueRepository mSafetyCenterIssueRepository;
+    private final SafetyCenterIssueRepository mSafetyCenterIssueRepository;
 
-    @NonNull
     private final SafetyCenterInFlightIssueActionRepository
             mSafetyCenterInFlightIssueActionRepository;
 
     /** Creates an instance of {@link SafetyCenterDataManager}. */
     public SafetyCenterDataManager(
-            @NonNull Context context,
-            @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
-            @NonNull SafetyCenterRefreshTracker safetyCenterRefreshTracker,
-            @NonNull SafetyCenterStatsdLogger safetyCenterStatsdLogger,
-            @NonNull ApiLock apiLock) {
+            Context context,
+            SafetyCenterConfigReader safetyCenterConfigReader,
+            SafetyCenterRefreshTracker safetyCenterRefreshTracker,
+            SafetyCenterStatsdLogger safetyCenterStatsdLogger,
+            ApiLock apiLock) {
         mSafetyCenterInFlightIssueActionRepository =
                 new SafetyCenterInFlightIssueActionRepository(safetyCenterStatsdLogger);
         mSafetyCenterIssueDismissalRepository =
@@ -122,9 +119,9 @@ public final class SafetyCenterDataManager {
      */
     public boolean setSafetySourceData(
             @Nullable SafetySourceData safetySourceData,
-            @NonNull String safetySourceId,
-            @NonNull SafetyEvent safetyEvent,
-            @NonNull String packageName,
+            String safetySourceId,
+            SafetyEvent safetyEvent,
+            String packageName,
             @UserIdInt int userId) {
         boolean dataUpdated =
                 mSafetySourceDataRepository.setSafetySourceData(
@@ -141,7 +138,7 @@ public final class SafetyCenterDataManager {
      *
      * <p>That issue's notification (if any) is also marked as dismissed.
      */
-    public void dismissSafetyCenterIssue(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
+    public void dismissSafetyCenterIssue(SafetyCenterIssueKey safetyCenterIssueKey) {
         mSafetyCenterIssueDismissalRepository.dismissIssue(safetyCenterIssueKey);
         mSafetyCenterIssueRepository.updateIssues(safetyCenterIssueKey.getUserId());
     }
@@ -152,7 +149,7 @@ public final class SafetyCenterDataManager {
      * <p>The issue itself is <strong>not</strong> marked as dismissed and its warning card can
      * still appear in the Safety Center UI.
      */
-    public void dismissNotification(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
+    public void dismissNotification(SafetyCenterIssueKey safetyCenterIssueKey) {
         mSafetyCenterIssueDismissalRepository.dismissNotification(safetyCenterIssueKey);
         mSafetyCenterIssueRepository.updateIssues(safetyCenterIssueKey.getUserId());
     }
@@ -166,9 +163,9 @@ public final class SafetyCenterDataManager {
      * safetySourceId}, {@code packageName} and/or {@code userId} are unexpected.
      */
     public boolean reportSafetySourceError(
-            @NonNull SafetySourceErrorDetails safetySourceErrorDetails,
-            @NonNull String safetySourceId,
-            @NonNull String packageName,
+            SafetySourceErrorDetails safetySourceErrorDetails,
+            String safetySourceId,
+            String packageName,
             @UserIdInt int userId) {
         boolean dataUpdated =
                 mSafetySourceDataRepository.reportSafetySourceError(
@@ -184,7 +181,7 @@ public final class SafetyCenterDataManager {
      * Marks the given {@link SafetySourceKey} as having errored-out and returns whether there was a
      * change to the underlying {@link SafetyCenterData}.
      */
-    public boolean setSafetySourceError(@NonNull SafetySourceKey safetySourceKey) {
+    public boolean setSafetySourceError(SafetySourceKey safetySourceKey) {
         boolean dataUpdated = mSafetySourceDataRepository.setSafetySourceError(safetySourceKey);
         if (dataUpdated) {
             mSafetyCenterIssueRepository.updateIssues(safetySourceKey.getUserId());
@@ -197,14 +194,14 @@ public final class SafetyCenterDataManager {
      * Clears all safety source errors received so far for the given {@link UserProfileGroup}, this
      * is useful e.g. when starting a new broadcast.
      */
-    public void clearSafetySourceErrors(@NonNull UserProfileGroup userProfileGroup) {
+    public void clearSafetySourceErrors(UserProfileGroup userProfileGroup) {
         mSafetySourceDataRepository.clearSafetySourceErrors(userProfileGroup);
         mSafetyCenterIssueRepository.updateIssues(userProfileGroup);
     }
 
     /** Marks the given {@link SafetyCenterIssueActionId} as in-flight. */
     public void markSafetyCenterIssueActionInFlight(
-            @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
+            SafetyCenterIssueActionId safetyCenterIssueActionId) {
         mSafetyCenterInFlightIssueActionRepository.markSafetyCenterIssueActionInFlight(
                 safetyCenterIssueActionId);
         mSafetyCenterIssueRepository.updateIssues(
@@ -217,8 +214,8 @@ public final class SafetyCenterDataManager {
      * SafetyCenterData} changed.
      */
     public boolean unmarkSafetyCenterIssueActionInFlight(
-            @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId,
-            @NonNull SafetySourceIssue safetySourceIssue,
+            SafetyCenterIssueActionId safetyCenterIssueActionId,
+            SafetySourceIssue safetySourceIssue,
             @SafetyCenterStatsdLogger.SystemEventResult int result) {
         boolean dataUpdated =
                 mSafetyCenterInFlightIssueActionRepository.unmarkSafetyCenterIssueActionInFlight(
@@ -261,7 +258,7 @@ public final class SafetyCenterDataManager {
      * <p>If the given issue key is not found in the repository this method returns {@code false}.
      */
     public boolean isIssueDismissed(
-            @NonNull SafetyCenterIssueKey safetyCenterIssueKey,
+            SafetyCenterIssueKey safetyCenterIssueKey,
             @SafetySourceData.SeverityLevel int safetySourceIssueSeverityLevel) {
         return mSafetyCenterIssueDismissalRepository.isIssueDismissed(
                 safetyCenterIssueKey, safetySourceIssueSeverityLevel);
@@ -272,7 +269,7 @@ public final class SafetyCenterDataManager {
      * dismissed.
      */
     @Nullable
-    public Instant getNotificationDismissedAt(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
+    public Instant getNotificationDismissedAt(SafetyCenterIssueKey safetyCenterIssueKey) {
         return mSafetyCenterIssueDismissalRepository.getNotificationDismissedAt(
                 safetyCenterIssueKey);
     }
@@ -291,7 +288,7 @@ public final class SafetyCenterDataManager {
      * Center.
      */
     @Nullable
-    public Instant getIssueFirstSeenAt(@NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
+    public Instant getIssueFirstSeenAt(SafetyCenterIssueKey safetyCenterIssueKey) {
         return mSafetyCenterIssueDismissalRepository.getIssueFirstSeenAt(safetyCenterIssueKey);
     }
 
@@ -308,9 +305,8 @@ public final class SafetyCenterDataManager {
      * <p>Only includes issues related to active/running {@code userId}s in the given {@link
      * UserProfileGroup}.
      */
-    @NonNull
     public List<SafetySourceIssueInfo> getIssuesDedupedSortedDescFor(
-            @NonNull UserProfileGroup userProfileGroup) {
+            UserProfileGroup userProfileGroup) {
         return mSafetyCenterIssueRepository.getIssuesDedupedSortedDescFor(userProfileGroup);
     }
 
@@ -321,12 +317,11 @@ public final class SafetyCenterDataManager {
      * <p>Only includes issues related to active/running {@code userId}s in the given {@link
      * UserProfileGroup}.
      */
-    public int countLoggableIssuesFor(@NonNull UserProfileGroup userProfileGroup) {
+    public int countLoggableIssuesFor(UserProfileGroup userProfileGroup) {
         return mSafetyCenterIssueRepository.countLoggableIssuesFor(userProfileGroup);
     }
 
     /** Gets an unmodifiable list of all issues for the given {@code userId}. */
-    @NonNull
     public List<SafetySourceIssueInfo> getIssuesForUser(@UserIdInt int userId) {
         return mSafetyCenterIssueRepository.getIssuesForUser(userId);
     }
@@ -336,7 +331,7 @@ public final class SafetyCenterDataManager {
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
     /** Returns {@code true} if the given issue action is in flight. */
-    public boolean actionIsInFlight(@NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
+    public boolean actionIsInFlight(SafetyCenterIssueActionId safetyCenterIssueActionId) {
         return mSafetyCenterInFlightIssueActionRepository.actionIsInFlight(
                 safetyCenterIssueActionId);
     }
@@ -357,7 +352,7 @@ public final class SafetyCenterDataManager {
      */
     @Nullable
     public SafetySourceData getSafetySourceData(
-            @NonNull String safetySourceId, @NonNull String packageName, @UserIdInt int userId) {
+            String safetySourceId, String packageName, @UserIdInt int userId) {
         return mSafetySourceDataRepository.getSafetySourceData(safetySourceId, packageName, userId);
     }
 
@@ -372,12 +367,12 @@ public final class SafetyCenterDataManager {
      * {@link #setSafetySourceData} with a {@code null} value.
      */
     @Nullable
-    public SafetySourceData getSafetySourceDataInternal(@NonNull SafetySourceKey safetySourceKey) {
+    public SafetySourceData getSafetySourceDataInternal(SafetySourceKey safetySourceKey) {
         return mSafetySourceDataRepository.getSafetySourceDataInternal(safetySourceKey);
     }
 
     /** Returns {@code true} if the given source has an error. */
-    public boolean sourceHasError(@NonNull SafetySourceKey safetySourceKey) {
+    public boolean sourceHasError(SafetySourceKey safetySourceKey) {
         return mSafetySourceDataRepository.sourceHasError(safetySourceKey);
     }
 
@@ -388,8 +383,7 @@ public final class SafetyCenterDataManager {
      * dismissed.
      */
     @Nullable
-    public SafetySourceIssue getSafetySourceIssue(
-            @NonNull SafetyCenterIssueKey safetyCenterIssueKey) {
+    public SafetySourceIssue getSafetySourceIssue(SafetyCenterIssueKey safetyCenterIssueKey) {
         return mSafetySourceDataRepository.getSafetySourceIssue(safetyCenterIssueKey);
     }
 
@@ -404,7 +398,7 @@ public final class SafetyCenterDataManager {
      */
     @Nullable
     public SafetySourceIssue.Action getSafetySourceIssueAction(
-            @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
+            SafetyCenterIssueActionId safetyCenterIssueActionId) {
         return mSafetySourceDataRepository.getSafetySourceIssueAction(safetyCenterIssueActionId);
     }
 
@@ -413,7 +407,7 @@ public final class SafetyCenterDataManager {
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
     /** Dumps state for debugging purposes. */
-    public void dump(@NonNull FileDescriptor fd, @NonNull PrintWriter fout) {
+    public void dump(FileDescriptor fd, PrintWriter fout) {
         mSafetySourceDataRepository.dump(fout);
         mSafetyCenterIssueDismissalRepository.dump(fd, fout);
         mSafetyCenterInFlightIssueActionRepository.dump(fout);

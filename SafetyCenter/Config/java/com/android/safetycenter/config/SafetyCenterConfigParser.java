@@ -28,7 +28,6 @@ import static org.xmlpull.v1.XmlPullParser.TEXT;
 import static java.util.Locale.ROOT;
 import static java.util.Objects.requireNonNull;
 
-import android.annotation.NonNull;
 import android.annotation.StringRes;
 import android.content.res.Resources;
 import android.safetycenter.config.SafetyCenterConfig;
@@ -100,9 +99,8 @@ public final class SafetyCenterConfigParser {
      * @param resources the {@link Resources} retrieved from the package that contains the Safety
      *     Center configuration
      */
-    @NonNull
-    public static SafetyCenterConfig parseXmlResource(
-            @NonNull InputStream in, @NonNull Resources resources) throws ParseException {
+    public static SafetyCenterConfig parseXmlResource(InputStream in, Resources resources)
+            throws ParseException {
         requireNonNull(in);
         requireNonNull(resources);
         try {
@@ -127,9 +125,8 @@ public final class SafetyCenterConfigParser {
         }
     }
 
-    @NonNull
     private static SafetyCenterConfig parseSafetyCenterConfig(
-            @NonNull XmlPullParser parser, @NonNull Resources resources)
+            XmlPullParser parser, Resources resources)
             throws XmlPullParserException, IOException, ParseException {
         validateElementHasNoAttribute(parser, TAG_SAFETY_CENTER_CONFIG);
         parser.nextTag();
@@ -152,9 +149,8 @@ public final class SafetyCenterConfigParser {
         }
     }
 
-    @NonNull
     private static SafetySourcesGroup parseSafetySourcesGroup(
-            @NonNull XmlPullParser parser, @NonNull Resources resources)
+            XmlPullParser parser, Resources resources)
             throws XmlPullParserException, IOException, ParseException {
         String name = TAG_SAFETY_SOURCES_GROUP;
         SafetySourcesGroup.Builder builder = new SafetySourcesGroup.Builder();
@@ -236,12 +232,8 @@ public final class SafetyCenterConfigParser {
         }
     }
 
-    @NonNull
     private static SafetySource parseSafetySource(
-            @NonNull XmlPullParser parser,
-            @NonNull Resources resources,
-            int safetySourceType,
-            @NonNull String name)
+            XmlPullParser parser, Resources resources, int safetySourceType, String name)
             throws XmlPullParserException, IOException, ParseException {
         SafetySource.Builder builder = new SafetySource.Builder(safetySourceType);
         for (int i = 0; i < parser.getAttributeCount(); i++) {
@@ -396,71 +388,62 @@ public final class SafetyCenterConfigParser {
         }
     }
 
-    private static void validateElementStart(@NonNull XmlPullParser parser, @NonNull String name)
+    private static void validateElementStart(XmlPullParser parser, String name)
             throws XmlPullParserException, ParseException {
         if (parser.getEventType() != START_TAG || !parser.getName().equals(name)) {
             throw elementMissing(name);
         }
     }
 
-    private static void validateElementEnd(@NonNull XmlPullParser parser, @NonNull String name)
+    private static void validateElementEnd(XmlPullParser parser, String name)
             throws XmlPullParserException, ParseException {
         if (parser.getEventType() != END_TAG || !parser.getName().equals(name)) {
             throw elementNotClosed(name);
         }
     }
 
-    private static void validateElementHasNoAttribute(
-            @NonNull XmlPullParser parser, @NonNull String name) throws ParseException {
+    private static void validateElementHasNoAttribute(XmlPullParser parser, String name)
+            throws ParseException {
         if (parser.getAttributeCount() != 0) {
             throw elementInvalid(name);
         }
     }
 
-    private static ParseException elementMissing(@NonNull String name) {
+    private static ParseException elementMissing(String name) {
         return new ParseException(String.format("Element %s missing", name));
     }
 
-    private static ParseException elementNotClosed(@NonNull String name) {
+    private static ParseException elementNotClosed(String name) {
         return new ParseException(String.format("Element %s not closed", name));
     }
 
-    private static ParseException elementInvalid(@NonNull String name) {
+    private static ParseException elementInvalid(String name) {
         return new ParseException(String.format("Element %s invalid", name));
     }
 
-    private static ParseException elementInvalid(@NonNull String name, @NonNull Throwable e) {
+    private static ParseException elementInvalid(String name, Throwable e) {
         return new ParseException(String.format("Element %s invalid", name), e);
     }
 
-    private static ParseException attributeUnexpected(
-            @NonNull String parent, @NonNull String name) {
+    private static ParseException attributeUnexpected(String parent, String name) {
         return new ParseException(String.format("Unexpected attribute %s.%s", parent, name));
     }
 
-    private static String attributeInvalidString(
-            @NonNull String valueString, @NonNull String parent, @NonNull String name) {
+    private static String attributeInvalidString(String valueString, String parent, String name) {
         return String.format("Attribute value \"%s\" in %s.%s invalid", valueString, parent, name);
     }
 
-    private static ParseException attributeInvalid(
-            @NonNull String valueString, @NonNull String parent, @NonNull String name) {
+    private static ParseException attributeInvalid(String valueString, String parent, String name) {
         return new ParseException(attributeInvalidString(valueString, parent, name));
     }
 
     private static ParseException attributeInvalid(
-            @NonNull String valueString,
-            @NonNull String parent,
-            @NonNull String name,
-            @NonNull Throwable ex) {
+            String valueString, String parent, String name, Throwable ex) {
         return new ParseException(attributeInvalidString(valueString, parent, name), ex);
     }
 
     private static int parseInteger(
-            @NonNull String valueString,
-            @NonNull String parent,
-            @NonNull String name,
-            @NonNull Resources resources)
+            String valueString, String parent, String name, Resources resources)
             throws ParseException {
         String valueToParse = getValueToParse(valueString, parent, name, resources);
         try {
@@ -471,10 +454,7 @@ public final class SafetyCenterConfigParser {
     }
 
     private static boolean parseBoolean(
-            @NonNull String valueString,
-            @NonNull String parent,
-            @NonNull String name,
-            @NonNull Resources resources)
+            String valueString, String parent, String name, Resources resources)
             throws ParseException {
         String valueToParse =
                 getValueToParse(valueString, parent, name, resources).toLowerCase(ROOT);
@@ -488,10 +468,7 @@ public final class SafetyCenterConfigParser {
 
     @StringRes
     private static int parseStringResourceName(
-            @NonNull String valueString,
-            @NonNull String parent,
-            @NonNull String name,
-            @NonNull Resources resources)
+            String valueString, String parent, String name, Resources resources)
             throws ParseException {
         if (valueString.isEmpty()) {
             throw new ParseException(
@@ -536,20 +513,13 @@ public final class SafetyCenterConfigParser {
         return id;
     }
 
-    @NonNull
     private static String parseStringResourceValue(
-            @NonNull String valueString,
-            @NonNull String parent,
-            @NonNull String name,
-            @NonNull Resources resources) {
+            String valueString, String parent, String name, Resources resources) {
         return getValueToParse(valueString, parent, name, resources);
     }
 
     private static int parseStatelessIconType(
-            @NonNull String valueString,
-            @NonNull String parent,
-            @NonNull String name,
-            @NonNull Resources resources)
+            String valueString, String parent, String name, Resources resources)
             throws ParseException {
         String valueToParse = getValueToParse(valueString, parent, name, resources);
         switch (valueToParse) {
@@ -563,10 +533,7 @@ public final class SafetyCenterConfigParser {
     }
 
     private static int parseGroupType(
-            @NonNull String valueString,
-            @NonNull String parent,
-            @NonNull String name,
-            @NonNull Resources resources)
+            String valueString, String parent, String name, Resources resources)
             throws ParseException {
         String valueToParse = getValueToParse(valueString, parent, name, resources);
         switch (valueToParse) {
@@ -582,10 +549,7 @@ public final class SafetyCenterConfigParser {
     }
 
     private static int parseProfile(
-            @NonNull String valueString,
-            @NonNull String parent,
-            @NonNull String name,
-            @NonNull Resources resources)
+            String valueString, String parent, String name, Resources resources)
             throws ParseException {
         String valueToParse = getValueToParse(valueString, parent, name, resources);
         switch (valueToParse) {
@@ -599,10 +563,7 @@ public final class SafetyCenterConfigParser {
     }
 
     private static int parseInitialDisplayState(
-            @NonNull String valueString,
-            @NonNull String parent,
-            @NonNull String name,
-            @NonNull Resources resources)
+            String valueString, String parent, String name, Resources resources)
             throws ParseException {
         String valueToParse = getValueToParse(valueString, parent, name, resources);
         switch (valueToParse) {
@@ -617,12 +578,8 @@ public final class SafetyCenterConfigParser {
         }
     }
 
-    @NonNull
     private static String getValueToParse(
-            @NonNull String valueString,
-            @NonNull String parent,
-            @NonNull String name,
-            @NonNull Resources resources) {
+            String valueString, String parent, String name, Resources resources) {
         try {
             int id = parseStringResourceName(valueString, parent, name, resources);
             return resources.getString(id);

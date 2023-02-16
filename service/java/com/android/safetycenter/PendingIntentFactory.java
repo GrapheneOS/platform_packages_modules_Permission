@@ -18,7 +18,6 @@ package com.android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
-import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.app.PendingIntent;
@@ -58,12 +57,11 @@ final class PendingIntentFactory {
     private static final int ANDROID_LOCK_SCREEN_ENTRY_REQ_CODE = 1;
     private static final int ANDROID_LOCK_SCREEN_ICON_ACTION_REQ_CODE = 2;
 
-    @NonNull private final Context mContext;
-    @NonNull private final SafetyCenterResourcesContext mSafetyCenterResourcesContext;
+    private final Context mContext;
+    private final SafetyCenterResourcesContext mSafetyCenterResourcesContext;
 
     PendingIntentFactory(
-            @NonNull Context context,
-            @NonNull SafetyCenterResourcesContext safetyCenterResourcesContext) {
+            Context context, SafetyCenterResourcesContext safetyCenterResourcesContext) {
         mContext = context;
         mSafetyCenterResourcesContext = safetyCenterResourcesContext;
     }
@@ -83,9 +81,9 @@ final class PendingIntentFactory {
      */
     @Nullable
     PendingIntent getPendingIntent(
-            @NonNull String sourceId,
+            String sourceId,
             @Nullable String intentAction,
-            @NonNull String packageName,
+            String packageName,
             @UserIdInt int userId,
             boolean isQuietModeEnabled) {
         if (intentAction == null) {
@@ -118,7 +116,7 @@ final class PendingIntentFactory {
      */
     @Nullable
     PendingIntent maybeOverridePendingIntent(
-            @NonNull String sourceId, @Nullable PendingIntent pendingIntent, boolean isIconAction) {
+            String sourceId, @Nullable PendingIntent pendingIntent, boolean isIconAction) {
         if (!ANDROID_LOCK_SCREEN_SOURCE_ID.equals(sourceId) || pendingIntent == null) {
             return pendingIntent;
         }
@@ -169,7 +167,7 @@ final class PendingIntentFactory {
                 newLockScreenIntent(settingsPackageName));
     }
 
-    private static boolean hasFixedSettingsIssue(@NonNull Context settingsPackageContext) {
+    private static boolean hasFixedSettingsIssue(Context settingsPackageContext) {
         Resources settingsResources = settingsPackageContext.getResources();
         int hasSettingsFixedIssueResourceId =
                 settingsResources.getIdentifier(
@@ -182,8 +180,7 @@ final class PendingIntentFactory {
         return false;
     }
 
-    @NonNull
-    private static Intent newBaseLockScreenIntent(@NonNull String settingsPackageName) {
+    private static Intent newBaseLockScreenIntent(String settingsPackageName) {
         return new Intent(Intent.ACTION_MAIN)
                 .setComponent(
                         new ComponentName(
@@ -191,8 +188,7 @@ final class PendingIntentFactory {
                 .putExtra(":settings:source_metrics", 1917);
     }
 
-    @NonNull
-    private static Intent newLockScreenIntent(@NonNull String settingsPackageName) {
+    private static Intent newLockScreenIntent(String settingsPackageName) {
         String targetFragment =
                 settingsPackageName + ".password.ChooseLockGeneric$ChooseLockGenericFragment";
         return newBaseLockScreenIntent(settingsPackageName)
@@ -200,8 +196,7 @@ final class PendingIntentFactory {
                 .putExtra("page_transition_type", 1);
     }
 
-    @NonNull
-    private static Intent newLockScreenIconActionIntent(@NonNull String settingsPackageName) {
+    private static Intent newLockScreenIconActionIntent(String settingsPackageName) {
         String targetFragment = settingsPackageName + ".security.screenlock.ScreenLockSettings";
         return newBaseLockScreenIntent(settingsPackageName)
                 .putExtra(":settings:show_fragment", targetFragment)
@@ -210,9 +205,9 @@ final class PendingIntentFactory {
 
     @Nullable
     private Intent createIntent(
-            @NonNull Context packageContext,
-            @NonNull String sourceId,
-            @NonNull String intentAction,
+            Context packageContext,
+            String sourceId,
+            String intentAction,
             boolean isQuietModeEnabled) {
         Intent intent = new Intent(intentAction);
 
@@ -250,7 +245,7 @@ final class PendingIntentFactory {
         return null;
     }
 
-    private boolean shouldAddSettingsHomepageExtra(@NonNull String sourceId) {
+    private boolean shouldAddSettingsHomepageExtra(String sourceId) {
         return Arrays.asList(
                         mSafetyCenterResourcesContext
                                 .getStringByName("config_useSettingsHomepageIntentExtra")
@@ -258,13 +253,11 @@ final class PendingIntentFactory {
                 .contains(sourceId);
     }
 
-    private static boolean intentResolves(@NonNull Context packageContext, @NonNull Intent intent) {
+    private static boolean intentResolves(Context packageContext, Intent intent) {
         return !queryIntentActivities(packageContext, intent).isEmpty();
     }
 
-    @NonNull
-    private static List<ResolveInfo> queryIntentActivities(
-            @NonNull Context packageContext, @NonNull Intent intent) {
+    private static List<ResolveInfo> queryIntentActivities(Context packageContext, Intent intent) {
         PackageManager packageManager = packageContext.getPackageManager();
         // This call requires the INTERACT_ACROSS_USERS permission as the `packageContext` could
         // belong to another user.
@@ -276,9 +269,8 @@ final class PendingIntentFactory {
         }
     }
 
-    @NonNull
     private static PendingIntent getActivityPendingIntent(
-            @NonNull Context packageContext, int requestCode, @NonNull Intent intent) {
+            Context packageContext, int requestCode, Intent intent) {
         return getActivityPendingIntent(
                 packageContext, requestCode, intent, PendingIntent.FLAG_IMMUTABLE);
     }
@@ -291,7 +283,7 @@ final class PendingIntentFactory {
      */
     @Nullable
     static PendingIntent getActivityPendingIntent(
-            @NonNull Context packageContext, int requestCode, @NonNull Intent intent, int flags) {
+            Context packageContext, int requestCode, Intent intent, int flags) {
         // This call requires Binder identity to be cleared for getIntentSender() to be allowed to
         // send as another package.
         final long callingId = Binder.clearCallingIdentity();
@@ -311,7 +303,7 @@ final class PendingIntentFactory {
      */
     @Nullable
     static PendingIntent getNonProtectedSystemOnlyBroadcastPendingIntent(
-            @NonNull Context context, int requestCode, @NonNull Intent intent, int flags) {
+            Context context, int requestCode, Intent intent, int flags) {
         if ((flags & PendingIntent.FLAG_IMMUTABLE) == 0) {
             throw new IllegalArgumentException("flags must include FLAG_IMMUTABLE");
         }
@@ -326,7 +318,7 @@ final class PendingIntentFactory {
     }
 
     @Nullable
-    private Context createPackageContextAsUser(@NonNull String packageName, @UserIdInt int userId) {
+    private Context createPackageContextAsUser(String packageName, @UserIdInt int userId) {
         // This call requires the INTERACT_ACROSS_USERS permission.
         final long callingId = Binder.clearCallingIdentity();
         try {

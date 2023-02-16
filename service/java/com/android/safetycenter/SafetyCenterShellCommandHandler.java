@@ -27,7 +27,6 @@ import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_SAFETY_CEN
 
 import static java.util.Collections.unmodifiableMap;
 
-import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.content.Context;
@@ -52,15 +51,15 @@ import java.util.Map;
 @RequiresApi(TIRAMISU)
 final class SafetyCenterShellCommandHandler extends BasicShellCommandHandler {
 
-    @NonNull private static final Map<String, Integer> REASONS = createReasonMap();
+    private static final Map<String, Integer> REASONS = createReasonMap();
 
-    @NonNull private final Context mContext;
-    @NonNull private final ISafetyCenterManager mSafetyCenterManager;
+    private final Context mContext;
+    private final ISafetyCenterManager mSafetyCenterManager;
     private final boolean mDeviceSupportsSafetyCenter;
 
     SafetyCenterShellCommandHandler(
-            @NonNull Context context,
-            @NonNull ISafetyCenterManager safetyCenterManager,
+            Context context,
+            ISafetyCenterManager safetyCenterManager,
             boolean deviceSupportsSafetyCenter) {
         mContext = context;
         mSafetyCenterManager = safetyCenterManager;
@@ -187,7 +186,7 @@ final class SafetyCenterShellCommandHandler extends BasicShellCommandHandler {
     }
 
     /** Helper function to standardise pretty-printing of the help text. */
-    private void printCmd(@NonNull String cmd, @NonNull String... description) {
+    private void printCmd(String cmd, String... description) {
         PrintWriter pw = getOutPrintWriter();
         pw.println("  " + cmd);
         for (int i = 0; i < description.length; i++) {
@@ -195,7 +194,6 @@ final class SafetyCenterShellCommandHandler extends BasicShellCommandHandler {
         }
     }
 
-    @NonNull
     private static Map<String, Integer> createReasonMap() {
         // LinkedHashMap so that options get printed in order
         LinkedHashMap<String, Integer> reasons = new LinkedHashMap<>(6);

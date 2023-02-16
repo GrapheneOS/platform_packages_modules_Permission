@@ -39,7 +39,6 @@ import android.safetycenter.SafetyCenterStaticEntry;
 import android.safetycenter.SafetyCenterStaticEntryGroup;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.preference.PreferenceCategory;
@@ -161,7 +160,7 @@ public final class SafetyCenterDashboardFragment extends SafetyCenterFragment {
     }
 
     @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
+    public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         mCollapsableGroupCardHelper.saveState(outState);
     }

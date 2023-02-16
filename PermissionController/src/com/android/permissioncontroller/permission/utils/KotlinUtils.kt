@@ -291,15 +291,11 @@ object KotlinUtils {
 
     /**
      * Whether we should enable the safety label change notifications and data sharing updates UI.
-     *
-     * This feature has its own [DeviceConfig] flag, however, we also ensure it is only enabled
-     * when its preceding feature, Permission Rationale, is enabled.
      */
     @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codename = "UpsideDownCake")
     fun isSafetyLabelChangeNotificationsEnabled(): Boolean {
         return SdkLevel.isAtLeastU() && DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
-                SAFETY_LABEL_CHANGE_NOTIFICATIONS_ENABLED, false) &&
-                isPermissionRationaleEnabled()
+                SAFETY_LABEL_CHANGE_NOTIFICATIONS_ENABLED, false)
     }
 
     /**

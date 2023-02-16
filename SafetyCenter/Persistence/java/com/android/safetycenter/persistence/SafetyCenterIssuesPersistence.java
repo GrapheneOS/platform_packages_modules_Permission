@@ -31,7 +31,6 @@ import android.util.AtomicFile;
 import android.util.Log;
 import android.util.Xml;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -81,9 +80,7 @@ public final class SafetyCenterIssuesPersistence {
      * @return the list of issue states read or an empty list if the file does not exist
      * @throws PersistenceException if there is an unexpected error while reading the file
      */
-    @NonNull
-    public static List<PersistedSafetyCenterIssue> read(@NonNull File file)
-            throws PersistenceException {
+    public static List<PersistedSafetyCenterIssue> read(File file) throws PersistenceException {
         XmlPullParser parser = Xml.newPullParser();
         try (FileInputStream inputStream = new AtomicFile(file).openRead()) {
             parser.setFeature(FEATURE_PROCESS_NAMESPACES, true);
@@ -97,8 +94,7 @@ public final class SafetyCenterIssuesPersistence {
         }
     }
 
-    @NonNull
-    private static List<PersistedSafetyCenterIssue> parseXml(@NonNull XmlPullParser parser)
+    private static List<PersistedSafetyCenterIssue> parseXml(XmlPullParser parser)
             throws IOException, PersistenceException, XmlPullParserException {
         if (parser.getEventType() != START_DOCUMENT) {
             throw new PersistenceException("Unexpected parser state");
@@ -115,8 +111,7 @@ public final class SafetyCenterIssuesPersistence {
         return persistedSafetyCenterIssues;
     }
 
-    @NonNull
-    private static List<PersistedSafetyCenterIssue> parseIssues(@NonNull XmlPullParser parser)
+    private static List<PersistedSafetyCenterIssue> parseIssues(XmlPullParser parser)
             throws IOException, PersistenceException, XmlPullParserException {
         int version = NO_VERSION;
         for (int i = 0; i < parser.getAttributeCount(); i++) {
@@ -145,8 +140,7 @@ public final class SafetyCenterIssuesPersistence {
         return persistedSafetyCenterIssues;
     }
 
-    @NonNull
-    private static PersistedSafetyCenterIssue parseIssue(@NonNull XmlPullParser parser)
+    private static PersistedSafetyCenterIssue parseIssue(XmlPullParser parser)
             throws IOException, PersistenceException, XmlPullParserException {
         boolean hasDismissedAt = false;
         boolean hasDismissCount = false;
@@ -197,22 +191,21 @@ public final class SafetyCenterIssuesPersistence {
         }
     }
 
-    private static void validateElementStart(@NonNull XmlPullParser parser, @NonNull String name)
+    private static void validateElementStart(XmlPullParser parser, String name)
             throws PersistenceException, XmlPullParserException {
         if (parser.getEventType() != START_TAG || !parser.getName().equals(name)) {
             throw new PersistenceException(String.format("Element %s missing", name));
         }
     }
 
-    private static void validateElementEnd(@NonNull XmlPullParser parser, @NonNull String name)
+    private static void validateElementEnd(XmlPullParser parser, String name)
             throws PersistenceException, XmlPullParserException {
         if (parser.getEventType() != END_TAG || !parser.getName().equals(name)) {
             throw new PersistenceException(String.format("Element %s not closed", name));
         }
     }
 
-    private static int parseInteger(@NonNull String value, @NonNull String name)
-            throws PersistenceException {
+    private static int parseInteger(String value, String name) throws PersistenceException {
         try {
             return Integer.parseInt(value);
         } catch (NumberFormatException e) {
@@ -220,8 +213,7 @@ public final class SafetyCenterIssuesPersistence {
         }
     }
 
-    private static Instant parseInstant(@NonNull String value, @NonNull String name)
-            throws PersistenceException {
+    private static Instant parseInstant(String value, String name) throws PersistenceException {
         try {
             return Instant.ofEpochMilli(Long.parseLong(value));
         } catch (DateTimeException | NumberFormatException e) {
@@ -229,12 +221,11 @@ public final class SafetyCenterIssuesPersistence {
         }
     }
 
-    private static PersistenceException attributeUnexpected(@NonNull String name) {
+    private static PersistenceException attributeUnexpected(String name) {
         return new PersistenceException("Unexpected attribute " + name);
     }
 
-    private static PersistenceException attributeInvalid(
-            @NonNull String value, @NonNull String name, @NonNull Throwable ex) {
+    private static PersistenceException attributeInvalid(String value, String name, Throwable ex) {
         return new PersistenceException(
                 "Attribute value \"" + value + "\" for " + name + " invalid", ex);
     }
@@ -248,8 +239,7 @@ public final class SafetyCenterIssuesPersistence {
      * @param file the file to write to
      */
     public static void write(
-            @NonNull List<PersistedSafetyCenterIssue> persistedSafetyCenterIssues,
-            @NonNull File file) {
+            List<PersistedSafetyCenterIssue> persistedSafetyCenterIssues, File file) {
         AtomicFile atomicFile = new AtomicFile(file);
         FileOutputStream outputStream = null;
         try {
@@ -277,8 +267,7 @@ public final class SafetyCenterIssuesPersistence {
     }
 
     private static void serializeIssues(
-            @NonNull XmlSerializer serializer,
-            @NonNull List<PersistedSafetyCenterIssue> persistedSafetyCenterIssues)
+            XmlSerializer serializer, List<PersistedSafetyCenterIssue> persistedSafetyCenterIssues)
             throws IOException {
         serializer.startTag(null, TAG_ISSUES);
         serializer.attribute(null, ATTRIBUTE_VERSION, Integer.toString(CURRENT_VERSION));

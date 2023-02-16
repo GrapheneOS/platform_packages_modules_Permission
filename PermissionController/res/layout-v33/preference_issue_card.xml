@@ -30,25 +30,25 @@
     <TextView
         android:id="@+id/issue_card_attribution_title"
         android:text="@string/summary_placeholder"
-        android:importantForAccessibility="no"
+        android:screenReaderFocusable="false"
         style="@style/SafetyCenterIssueAttributionTitle" />
 
     <TextView
         android:id="@+id/issue_card_title"
         android:text="@string/summary_placeholder"
-        android:importantForAccessibility="no"
+        android:screenReaderFocusable="false"
         style="@style/SafetyCenterIssueTitle" />
 
     <TextView
         android:id="@+id/issue_card_subtitle"
         android:text="@string/summary_placeholder"
-        android:importantForAccessibility="no"
+        android:screenReaderFocusable="false"
         style="@style/SafetyCenterIssueSubtitle" />
 
     <TextView
         android:id="@+id/issue_card_summary"
         android:text="@string/summary_placeholder"
-        android:importantForAccessibility="no"
+        android:screenReaderFocusable="false"
         style="@style/SafetyCenterIssueSummary" />
 
     <include

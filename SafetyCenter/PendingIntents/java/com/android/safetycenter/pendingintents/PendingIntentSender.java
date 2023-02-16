@@ -24,7 +24,6 @@ import android.app.ActivityOptions;
 import android.app.PendingIntent;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RequiresPermission;
@@ -46,20 +45,18 @@ public final class PendingIntentSender {
      * ActivityOptions#MODE_BACKGROUND_ACTIVITY_START_ALLOWED}. This call opts-in this behavior as
      * the Safety Center intents come from trusted sources and are used for navigation purposes.
      */
-    public static void send(@NonNull PendingIntent pendingIntent)
-            throws PendingIntent.CanceledException {
+    public static void send(PendingIntent pendingIntent) throws PendingIntent.CanceledException {
         send(pendingIntent, createActivityOptions(pendingIntent, /* launchTaskId= */ null));
     }
 
     /** Same as {@link #send(PendingIntent)} but with the given optional {@code launchTaskId}. */
     @RequiresPermission(START_TASKS_FROM_RECENTS)
-    public static void send(@NonNull PendingIntent pendingIntent, @Nullable Integer launchTaskId)
+    public static void send(PendingIntent pendingIntent, @Nullable Integer launchTaskId)
             throws PendingIntent.CanceledException {
         send(pendingIntent, createActivityOptions(pendingIntent, launchTaskId));
     }
 
-    private static void send(
-            @NonNull PendingIntent pendingIntent, @Nullable ActivityOptions activityOptions)
+    private static void send(PendingIntent pendingIntent, @Nullable ActivityOptions activityOptions)
             throws PendingIntent.CanceledException {
         if (activityOptions == null) {
             pendingIntent.send();
@@ -79,7 +76,7 @@ public final class PendingIntentSender {
      * Same as {@link #send(PendingIntent)} but returns whether the call was successful instead of
      * throwing a {@link PendingIntent#CanceledException}.
      */
-    public static boolean trySend(@NonNull PendingIntent pendingIntent) {
+    public static boolean trySend(PendingIntent pendingIntent) {
         return trySend(
                 pendingIntent, createActivityOptions(pendingIntent, /* launchTaskId= */ null));
     }
@@ -89,13 +86,12 @@ public final class PendingIntentSender {
      * instead of throwing a {@link PendingIntent#CanceledException}.
      */
     @RequiresPermission(START_TASKS_FROM_RECENTS)
-    public static boolean trySend(
-            @NonNull PendingIntent pendingIntent, @Nullable Integer launchTaskId) {
+    public static boolean trySend(PendingIntent pendingIntent, @Nullable Integer launchTaskId) {
         return trySend(pendingIntent, createActivityOptions(pendingIntent, launchTaskId));
     }
 
     private static boolean trySend(
-            @NonNull PendingIntent pendingIntent, @Nullable ActivityOptions activityOptions) {
+            PendingIntent pendingIntent, @Nullable ActivityOptions activityOptions) {
         try {
             send(pendingIntent, activityOptions);
             return true;
@@ -113,7 +109,7 @@ public final class PendingIntentSender {
 
     @Nullable
     private static ActivityOptions createActivityOptions(
-            @NonNull PendingIntent pendingIntent, @Nullable Integer launchTaskId) {
+            PendingIntent pendingIntent, @Nullable Integer launchTaskId) {
         if (!pendingIntent.isActivity()) {
             return null;
         }
@@ -131,8 +127,7 @@ public final class PendingIntentSender {
     }
 
     @RequiresApi(UPSIDE_DOWN_CAKE)
-    private static void setBackgroundActivityStartModeAllowed(
-            @NonNull ActivityOptions activityOptions) {
+    private static void setBackgroundActivityStartModeAllowed(ActivityOptions activityOptions) {
         activityOptions.setPendingIntentBackgroundActivityStartMode(
                 ActivityOptions.MODE_BACKGROUND_ACTIVITY_START_ALLOWED);
     }

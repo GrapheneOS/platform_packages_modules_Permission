@@ -24,9 +24,8 @@ java_library {
     ],
     libs: [
         "androidx.annotation_annotation",
-    ],
-    static_libs: [
         "modules-utils-build_system",
+        "safety-center-annotations",
     ],
     apex_available: [
         "com.android.permission",

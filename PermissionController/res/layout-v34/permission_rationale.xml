@@ -62,7 +62,7 @@
                     <ImageView
                         android:id="@+id/data_sharing_source_icon"
                         android:importantForAccessibility="no"
-                        android:src="@drawable/ic_info"
+                        android:src="@drawable/ic_info_24dp"
                         style="@style/PermissionRationaleSectionIcon" />
                     <LinearLayout style="@style/PermissionRationaleSectionInnerContainer">
                         <TextView
