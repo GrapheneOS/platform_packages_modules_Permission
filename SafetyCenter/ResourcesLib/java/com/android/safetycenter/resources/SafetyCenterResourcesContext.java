@@ -28,7 +28,6 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.annotation.VisibleForTesting;
@@ -61,13 +60,13 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
     private static final String CONFIG_NAME = "safety_center_config";
 
     /** Intent action that is used to identify the Safety Center resources APK */
-    @NonNull private final String mResourcesApkAction;
+    private final String mResourcesApkAction;
 
     /** The path where the Safety Center resources APK is expected to be installed */
     @Nullable private final String mResourcesApkPath;
 
     /** Raw XML config resource name */
-    @NonNull private final String mConfigName;
+    private final String mConfigName;
 
     /** Specific flags used for retrieving resolve info */
     private final int mFlags;
@@ -84,12 +83,12 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
     @Nullable private Resources mResourcesFromApk;
     @Nullable private Resources.Theme mThemeFromApk;
 
-    public SafetyCenterResourcesContext(@NonNull Context contextBase) {
+    public SafetyCenterResourcesContext(Context contextBase) {
         this(contextBase, /* shouldFallbackIfNamedResourceNotFound */ true);
     }
 
     private SafetyCenterResourcesContext(
-            @NonNull Context contextBase, boolean shouldFallbackIfNamedResourceNotFound) {
+            Context contextBase, boolean shouldFallbackIfNamedResourceNotFound) {
         this(
                 contextBase,
                 RESOURCES_APK_ACTION,
@@ -101,10 +100,10 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
 
     @VisibleForTesting
     SafetyCenterResourcesContext(
-            @NonNull Context contextBase,
-            @NonNull String resourcesApkAction,
+            Context contextBase,
+            String resourcesApkAction,
             @Nullable String resourcesApkPath,
-            @NonNull String configName,
+            String configName,
             int flags,
             boolean shouldFallbackIfNamedResourceNotFound) {
         super(contextBase);
@@ -117,7 +116,7 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
 
     /** Creates a new {@link SafetyCenterResourcesContext} for testing. */
     @VisibleForTesting
-    public static SafetyCenterResourcesContext forTests(@NonNull Context contextBase) {
+    public static SafetyCenterResourcesContext forTests(Context contextBase) {
         return new SafetyCenterResourcesContext(
                 contextBase, /* shouldFallbackIfNamedResourceNotFound */ false);
     }
@@ -214,7 +213,7 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
 
     /** Same as {@link #getOptionalString(int)} but with the given {@code formatArgs}. */
     @Nullable
-    public String getOptionalString(@StringRes int stringId, @NonNull Object... formatArgs) {
+    public String getOptionalString(@StringRes int stringId, Object... formatArgs) {
         if (stringId == Resources.ID_NULL) {
             return null;
         }
@@ -226,22 +225,18 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
      * string if the resource does not exist (or throws a {@link Resources.NotFoundException} if
      * {@link #mShouldFallbackIfNamedResourceNotFound} is {@code false}).
      */
-    @NonNull
-    public String getStringByName(@NonNull String name) {
+    public String getStringByName(String name) {
         int id = getStringRes(name);
         return maybeFallbackIfNamedResourceIsNull(name, getOptionalString(id));
     }
 
     /** Same as {@link #getStringByName(String)} but with the given {@code formatArgs}. */
-    @NonNull
-    public String getStringByName(@NonNull String name, Object... formatArgs) {
+    public String getStringByName(String name, Object... formatArgs) {
         int id = getStringRes(name);
         return maybeFallbackIfNamedResourceIsNull(name, getOptionalString(id, formatArgs));
     }
 
-    @NonNull
-    private String maybeFallbackIfNamedResourceIsNull(
-            @NonNull String name, @Nullable String value) {
+    private String maybeFallbackIfNamedResourceIsNull(String name, @Nullable String value) {
         if (value != null) {
             return value;
         }
@@ -253,7 +248,7 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
     }
 
     @StringRes
-    private int getStringRes(@NonNull String name) {
+    private int getStringRes(String name) {
         String resourcePkgName = getResourcesApkPkgName();
         if (resourcePkgName == null) {
             return Resources.ID_NULL;
@@ -326,7 +321,7 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
      * @param theme the theme used to style the drawable attributes, may be {@code null}
      */
     @Nullable
-    public Drawable getDrawableByName(@NonNull String name, @Nullable Resources.Theme theme) {
+    public Drawable getDrawableByName(String name, @Nullable Resources.Theme theme) {
         String resourcePkgName = getResourcesApkPkgName();
         if (resourcePkgName == null) {
             return null;

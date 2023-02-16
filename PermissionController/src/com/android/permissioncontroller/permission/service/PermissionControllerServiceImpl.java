@@ -29,6 +29,7 @@ import static com.android.permissioncontroller.PermissionControllerStatsLog.PERM
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 import android.Manifest;
+import android.app.admin.DevicePolicyManager;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -542,6 +543,8 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
                 new AutoGrantPermissionsNotifier(this, pkgInfo);
 
         final boolean isManagedProfile = getSystemService(UserManager.class).isManagedProfile();
+        DevicePolicyManager dpm = getSystemService(DevicePolicyManager.class);
+        final boolean isOrganizationOwnedDevice = dpm.isOrganizationOwnedDeviceWithManagedProfile();
 
         int numPerms = expandedPermissions.size();
         for (int i = 0; i < numPerms; i++) {
@@ -559,7 +562,8 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
             switch (grantState) {
                 case PERMISSION_GRANT_STATE_GRANTED:
                     if (AdminRestrictedPermissionsUtils.mayAdminGrantPermission(perm.getName(),
-                            canAdminGrantSensorsPermissions, isManagedProfile)) {
+                            canAdminGrantSensorsPermissions, isManagedProfile,
+                            isOrganizationOwnedDevice)) {
                         perm.setPolicyFixed(true);
                         group.grantRuntimePermissions(false, false, new String[]{permName});
                         autoGrantPermissionsNotifier.onPermissionAutoGranted(permName);

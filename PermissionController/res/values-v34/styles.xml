@@ -246,6 +246,73 @@
         <item name="android:textColorLink">@color/permission_rationale_accent_primary_variant</item>
     </style>
 
+    <style name="AppDataSharingUpdatePreference">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">?android:attr/listPreferredItemHeightSmall</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingTop">20dp</item>
+        <item name="android:paddingBottom">20dp</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingEnd">24dp</item>
+        <item name="android:clipToPadding">false</item>
+    </style>
+
+    <style name="AppDataSharingUpdatePreferenceIconContainer">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingRight">20dp</item>
+    </style>
+
+    <style name="AppDataSharingUpdatePreferenceIcon">
+        <item name="android:id">@android:id/icon</item>
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
+    <style name="AppDataSharingUpdatePreferenceTitleAndSummaryContainer">
+        <item name="android:layout_width">0px</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="AppDataSharingUpdatePreferenceTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceListItem</item>
+        <item name="android:ellipsize">marquee</item>
+    </style>
+
+    <style name="AppDataSharingUpdatePreferenceSummary">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_below">@android:id/title</item>
+        <item name="android:layout_alignStart">@android:id/title</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceListItemSecondary</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+        <item name="android:maxLines">10</item>
+    </style>
+
+    <style name="AppDataSharingUpdatePreferenceButtonContainer">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">right|center_vertical</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingLeft">24dp</item>
+    </style>
+
+    <style name="AppDataSharingUpdatePreferenceButton">
+        <item name="android:layout_width">24dp</item>
+        <item name="android:layout_height">24dp</item>
+        <item name="android:layout_gravity">end|center_vertical</item>
+        <item name="android:contentDescription">@string/settings</item>
+        <item name="android:src">@drawable/ic_settings_gear</item>
+    </style>
+
     <!-- END APP DATA SHARING UPDATES PAGE -->
 
     <!-- START SAFETY CENTER SUBPAGE -->

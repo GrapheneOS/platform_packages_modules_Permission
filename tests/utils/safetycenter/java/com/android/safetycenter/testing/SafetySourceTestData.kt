@@ -31,6 +31,7 @@ import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_RECOMMENDATION
 import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED
 import android.safetycenter.SafetySourceIssue
 import android.safetycenter.SafetySourceIssue.Action
+import android.safetycenter.SafetySourceIssue.Action.ConfirmationDialogDetails
 import android.safetycenter.SafetySourceStatus
 import android.safetycenter.SafetySourceStatus.IconAction
 import android.safetycenter.SafetySourceStatus.IconAction.ICON_TYPE_GEAR
@@ -318,14 +319,7 @@ class SafetySourceTestData(private val context: Context) {
                     )
                     .apply {
                         if (confirmationDialog && SdkLevel.isAtLeastU()) {
-                            setConfirmationDialogDetails(
-                                SafetySourceIssue.Action.ConfirmationDialogDetails(
-                                    "Confirmation title",
-                                    "Confirmation text",
-                                    "Confirmation yes",
-                                    "Confirmation no"
-                                )
-                            )
+                            setConfirmationDialogDetails(CONFIRMATION_DETAILS)
                         }
                     }
                     .build()
@@ -445,6 +439,19 @@ class SafetySourceTestData(private val context: Context) {
             .setWillResolve(true)
             .build()
 
+    /** A resolving Critical [Action] with confirmation */
+    val criticalResolvingActionWithConfirmation: SafetySourceIssue.Action
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        get() =
+            Action.Builder(
+                    CRITICAL_ISSUE_ACTION_ID,
+                    "Solve issue",
+                    criticalIssueActionPendingIntent
+                )
+                .setWillResolve(true)
+                .setConfirmationDialogDetails(CONFIRMATION_DETAILS)
+                .build()
+
     /** An action that redirects to [TestActivity] */
     val testActivityRedirectAction =
         Action.Builder(CRITICAL_ISSUE_ACTION_ID, "Redirect", testActivityRedirectPendingIntent)
@@ -500,6 +507,14 @@ class SafetySourceTestData(private val context: Context) {
             .clearActions()
             .addAction(testActivityRedirectAction)
             .build()
+
+    val criticalResolvingIssueWithConfirmation: SafetySourceIssue
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        get() =
+            defaultCriticalResolvingIssueBuilder()
+                .clearActions()
+                .addAction(criticalResolvingActionWithConfirmation)
+                .build()
 
     /**
      * [SafetySourceIssue.Builder] with a [SEVERITY_LEVEL_CRITICAL_WARNING] and a resolving [Action]
@@ -583,6 +598,15 @@ class SafetySourceTestData(private val context: Context) {
      */
     val criticalWithResolvingGeneralIssue =
         defaultCriticalDataBuilder().addIssue(criticalResolvingGeneralIssue).build()
+
+    /**
+     * A [SafetySourceData] with a [SEVERITY_LEVEL_CRITICAL_WARNING] resolving general
+     * [SafetySourceIssue] and [SafetySourceStatus], with confirmation dialog.
+     */
+    val criticalWithResolvingGeneralIssueWithConfirmation: SafetySourceData
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        get() =
+            defaultCriticalDataBuilder().addIssue(criticalResolvingIssueWithConfirmation).build()
 
     /**
      * A [SafetySourceData] with a [SEVERITY_LEVEL_CRITICAL_WARNING] with a [SafetySourceIssue] that
@@ -727,6 +751,20 @@ class SafetySourceTestData(private val context: Context) {
 
         /** Issue type ID for all the issues in this file */
         const val ISSUE_TYPE_ID = "issue_type_id"
+
+        const val CONFIRMATION_TITLE = "Confirmation title"
+        const val CONFIRMATION_TEXT = "Confirmation text"
+        const val CONFIRMATION_YES = "Confirmation yes"
+        const val CONFIRMATION_NO = "Confirmation no"
+        val CONFIRMATION_DETAILS: ConfirmationDialogDetails
+            @RequiresApi(UPSIDE_DOWN_CAKE)
+            get() =
+                ConfirmationDialogDetails(
+                    CONFIRMATION_TITLE,
+                    CONFIRMATION_TEXT,
+                    CONFIRMATION_YES,
+                    CONFIRMATION_NO
+                )
 
         /** A [SafetyEvent] to push arbitrary changes to Safety Center. */
         val EVENT_SOURCE_STATE_CHANGED =

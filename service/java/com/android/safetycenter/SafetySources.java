@@ -18,7 +18,6 @@ package com.android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
-import android.annotation.NonNull;
 import android.safetycenter.SafetySourceData;
 import android.safetycenter.config.SafetySource;
 import android.util.Log;
@@ -39,7 +38,7 @@ public final class SafetySources {
      * Returns whether a {@link SafetySource} is external, i.e. if {@link SafetySourceData} can be
      * provided for it.
      */
-    public static boolean isExternal(@NonNull SafetySource safetySource) {
+    public static boolean isExternal(SafetySource safetySource) {
         int safetySourceType = safetySource.getType();
         switch (safetySourceType) {
             case SafetySource.SAFETY_SOURCE_TYPE_STATIC:
@@ -53,13 +52,13 @@ public final class SafetySources {
     }
 
     /** Returns whether a {@link SafetySource} is issue-only. */
-    public static boolean isIssueOnly(@NonNull SafetySource safetySource) {
+    public static boolean isIssueOnly(SafetySource safetySource) {
         int safetySourceType = safetySource.getType();
         return safetySourceType == SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY;
     }
 
     /** Returns whether a {@link SafetySource} supports managed profiles. */
-    public static boolean supportsManagedProfiles(@NonNull SafetySource safetySource) {
+    public static boolean supportsManagedProfiles(SafetySource safetySource) {
         int safetySourceProfile = safetySource.getProfile();
         switch (safetySourceProfile) {
             case SafetySource.PROFILE_PRIMARY:
@@ -73,7 +72,7 @@ public final class SafetySources {
     }
 
     /** Returns whether a {@link SafetySource} default entry should be hidden in the UI. */
-    static boolean isDefaultEntryHidden(@NonNull SafetySource safetySource) {
+    static boolean isDefaultEntryHidden(SafetySource safetySource) {
         int safetySourceType = safetySource.getType();
         switch (safetySourceType) {
             case SafetySource.SAFETY_SOURCE_TYPE_STATIC:
@@ -88,7 +87,7 @@ public final class SafetySources {
     }
 
     /** Returns whether a {@link SafetySource} default entry should be disabled in the UI. */
-    static boolean isDefaultEntryDisabled(@NonNull SafetySource safetySource) {
+    static boolean isDefaultEntryDisabled(SafetySource safetySource) {
         int safetySourceType = safetySource.getType();
         switch (safetySourceType) {
             case SafetySource.SAFETY_SOURCE_TYPE_STATIC:
@@ -106,7 +105,7 @@ public final class SafetySources {
      * Returns whether a {@link SafetySource} can be logged, without requiring a check of source
      * type first.
      */
-    public static boolean isLoggable(@NonNull SafetySource safetySource) {
+    public static boolean isLoggable(SafetySource safetySource) {
         // Only external sources can have logging allowed values. Non-external sources cannot have
         // their loggability configured. Unfortunately isLoggingAllowed throws if called on a
         // non-external source.

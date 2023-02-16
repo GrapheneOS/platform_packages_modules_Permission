@@ -615,8 +615,58 @@
             <permission name="android.permission.SUBSCRIBE_TO_KEYGUARD_LOCKED_STATE"
                 minSdkVersion="33" />
             <permission name="android.permission.MANAGE_DEVICE_LOCK_STATE" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_ACCOUNT_MANAGEMENT"
+                minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_AIRPLANE_MODE"
+                minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_APPS_CONTROL"
+                minSdkVersion="34" />
             <permission name="android.permission.MANAGE_DEVICE_POLICY_APP_EXEMPTIONS"
                 minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_APP_RESTRICTIONS"
+                minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_BLUETOOTH"
+                minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_CALLS" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_CAMERA"
+                minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_DEBUGGING_FEATURES"
+                minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_FACTORY_RESET"
+                minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_FUN" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_INSTALL_UNKNOWN_SOURCES"
+                minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_KEYGUARD"
+                minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_LOCK" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_LOCK_TASK"
+                minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_MOBILE_NETWORK"
+                minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_MODIFY_USERS"
+                minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_PACKAGE_STATE"
+                minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_PHYSICAL_MEDIA"
+                minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_RESET_PASSWORD"
+                minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_RUNTIME_PERMISSIONS"
+                minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_SAFE_BOOT"
+                minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_SMS" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_STATUS_BAR"
+                minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_TIME" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_USB_FILE_TRANSFER"
+                minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_WINDOWS" minSdkVersion="34" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_WIPE_DATA"
+                minSdkVersion="34" />
+            <permission name="android.permission.SET_TIME" minSdkVersion="34" />
+            <permission name="android.permission.SET_TIME_ZONE" minSdkVersion="34" />
         </permissions>
     </role>
 
@@ -1529,5 +1579,29 @@
         <permissions>
             <permission name="android.permission.LAUNCH_CAPTURE_CONTENT_ACTIVITY_FOR_NOTE" minSdkVersion="34"/>
         </permissions>
+    </role>
+
+    <!---
+      ~ A role for the package that streams calls to other devices.
+    -->
+    <role
+        name="android.app.role.SYSTEM_CALL_STREAMING"
+        defaultHolders="config_systemCallStreaming"
+        exclusive="true"
+        minSdkVersion="34"
+        static="true"
+        systemOnly="true"
+        visible="false">
+        <permissions>
+            <permission name="android.permission.CALL_AUDIO_INTERCEPTION" />
+            <permission name="android.permission.RECORD_AUDIO" />
+        </permissions>
+        <required-components>
+            <service permission="android.permission.BIND_CALL_STREAMING_SERVICE">
+                <intent-filter>
+                    <action name="android.telecom.CallStreamingService" />
+                </intent-filter>
+            </service>
+        </required-components>
     </role>
 </roles>

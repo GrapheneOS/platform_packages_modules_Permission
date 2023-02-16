@@ -21,6 +21,7 @@ java_library_host {
     srcs: [
         "java/**/*.java",
         "java/**/*.kt",
+        ":safetycenter-annotations-sources",
         ":safetycenter-config-api-sources",
         ":safetycenter-config-parser-sources",
     ],

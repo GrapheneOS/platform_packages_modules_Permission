@@ -36,6 +36,7 @@ java_library {
         "framework-annotations-lib",
         "framework-permission-s",
         "modules-utils-build",
+        "safety-center-annotations",
     ],
     apex_available: [
         "com.android.permission",

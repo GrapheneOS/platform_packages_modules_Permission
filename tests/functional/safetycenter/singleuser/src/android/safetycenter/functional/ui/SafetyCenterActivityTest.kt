@@ -728,6 +728,84 @@ class SafetyCenterActivityTest {
     }
 
     @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun issueCard_resolveIssue_withDialogClickYes_resolves() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
+        safetyCenterTestHelper.setData(
+            SINGLE_SOURCE_ID,
+            safetySourceTestData.criticalWithResolvingGeneralIssueWithConfirmation
+        )
+
+        // Clear the data when action is triggered to simulate resolution.
+        SafetySourceReceiver.setResponse(
+            Request.ResolveAction(SINGLE_SOURCE_ID),
+            Response.ClearData
+        )
+
+        context.launchSafetyCenterActivity(withReceiverPermission = true) {
+            val action = safetySourceTestData.criticalResolvingActionWithConfirmation
+            waitButtonDisplayed(action.label) { it.click() }
+
+            waitAllTextDisplayed(SafetySourceTestData.CONFIRMATION_TITLE)
+            waitButtonDisplayed(SafetySourceTestData.CONFIRMATION_YES) { it.click() }
+
+            waitSourceIssueNotDisplayed(safetySourceTestData.criticalResolvingIssueWithConfirmation)
+        }
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun issueCard_resolveIssue_withDialog_rotates_clickYes_resolves() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
+        safetyCenterTestHelper.setData(
+            SINGLE_SOURCE_ID,
+            safetySourceTestData.criticalWithResolvingGeneralIssueWithConfirmation
+        )
+
+        // Clear the data when action is triggered to simulate resolution.
+        SafetySourceReceiver.setResponse(
+            Request.ResolveAction(SINGLE_SOURCE_ID),
+            Response.ClearData
+        )
+
+        context.launchSafetyCenterActivity(withReceiverPermission = true) {
+            val action = safetySourceTestData.criticalResolvingActionWithConfirmation
+            waitButtonDisplayed(action.label) { it.click() }
+
+            waitAllTextDisplayed(SafetySourceTestData.CONFIRMATION_TITLE)
+
+            getUiDevice().rotate()
+            getUiDevice()
+                .waitForWindowUpdate(/* from any window*/ null, DIALOG_ROTATION_TIMEOUT.toMillis())
+
+            waitAllTextDisplayed(SafetySourceTestData.CONFIRMATION_TITLE)
+            waitButtonDisplayed(SafetySourceTestData.CONFIRMATION_YES) { it.click() }
+
+            waitSourceIssueNotDisplayed(safetySourceTestData.criticalResolvingIssueWithConfirmation)
+        }
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun issueCard_resolveIssue_withDialogClicksNo_cancels() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
+        safetyCenterTestHelper.setData(
+            SINGLE_SOURCE_ID,
+            safetySourceTestData.criticalWithResolvingGeneralIssueWithConfirmation
+        )
+
+        context.launchSafetyCenterActivity(withReceiverPermission = true) {
+            val action = safetySourceTestData.criticalResolvingActionWithConfirmation
+            waitButtonDisplayed(action.label) { it.click() }
+
+            waitAllTextDisplayed(SafetySourceTestData.CONFIRMATION_TITLE)
+            waitButtonDisplayed(SafetySourceTestData.CONFIRMATION_NO) { it.click() }
+
+            waitSourceIssueDisplayed(safetySourceTestData.criticalResolvingIssueWithConfirmation)
+        }
+    }
+
+    @Test
     fun issueCard_resolveIssue_noSuccessMessage_noResolutionUiShown_issueDismisses() {
         SafetyCenterFlags.hideResolvedIssueUiTransitionDelay = TIMEOUT_LONG
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)

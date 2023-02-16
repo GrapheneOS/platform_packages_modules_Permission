@@ -18,7 +18,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
   <string name="health_connect_title" description="Health connect title">Health&#160;Connect</string>
-  <string name="health_connect_summary" description="Health connect summary, which describes what user can do when they click Health Connect">App permissions and data management</string>
   <string name="health_connect_search_terms" description="Health connect search words">Health, Health Connect</string>
   <string name="app_data_sharing_updates_title" description="App data sharing updates title">Data sharing updates for location</string>
   <string name="app_data_sharing_updates_search_terms" description="App data sharing updates search words">Data, Data sharing, Data sharing updates, Data sharing updates for location, sharing</string>

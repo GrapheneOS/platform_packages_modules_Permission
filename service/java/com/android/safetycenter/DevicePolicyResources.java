@@ -20,7 +20,6 @@ import static android.os.Build.VERSION_CODES.TIRAMISU;
 
 import static java.util.Objects.requireNonNull;
 
-import android.annotation.NonNull;
 import android.annotation.StringRes;
 import android.app.admin.DevicePolicyManager;
 import android.app.admin.DevicePolicyResourcesManager;
@@ -46,10 +45,9 @@ final class DevicePolicyResources {
      * Returns the updated string for the given {@code safetySourceId} by calling {@link
      * DevicePolicyResourcesManager#getString}.
      */
-    @NonNull
     static String getSafetySourceWorkString(
-            @NonNull SafetyCenterResourcesContext safetyCenterResourcesContext,
-            @NonNull String safetySourceId,
+            SafetyCenterResourcesContext safetyCenterResourcesContext,
+            String safetySourceId,
             @StringRes int workResId) {
         return getEnterpriseString(
                 safetyCenterResourcesContext,
@@ -61,20 +59,16 @@ final class DevicePolicyResources {
      * Returns the updated string for the {@code work_profile_paused} string by calling {@link
      * DevicePolicyResourcesManager#getString}.
      */
-    @NonNull
     static String getWorkProfilePausedString(
-            @NonNull SafetyCenterResourcesContext safetyCenterResourcesContext) {
+            SafetyCenterResourcesContext safetyCenterResourcesContext) {
         return getEnterpriseString(
                 safetyCenterResourcesContext,
                 WORK_PROFILE_PAUSED_TITLE,
                 () -> safetyCenterResourcesContext.getStringByName("work_profile_paused"));
     }
 
-    @NonNull
     private static String getEnterpriseString(
-            @NonNull Context context,
-            @NonNull String devicePolicyIdentifier,
-            @NonNull Supplier<String> defaultValueLoader) {
+            Context context, String devicePolicyIdentifier, Supplier<String> defaultValueLoader) {
         // This call requires the caller’s identity to match the package name of the given context.
         // However, the SafetyCenterResourcesContext’s has package name "android", which does not
         // necessarily match the caller’s package when making Binder calls, so the calling identity

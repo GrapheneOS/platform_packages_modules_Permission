@@ -18,7 +18,6 @@ package com.android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
-import android.annotation.NonNull;
 import android.os.Handler;
 
 import androidx.annotation.RequiresApi;
@@ -55,7 +54,7 @@ final class SafetyCenterTimeouts {
     SafetyCenterTimeouts() {}
 
     /** Adds the given {@link Runnable} to run as a timeout after the given {@link Duration}. */
-    void add(@NonNull Runnable timeoutAction, @NonNull Duration timeoutDuration) {
+    void add(Runnable timeoutAction, Duration timeoutDuration) {
         if (mTimeouts.size() + 1 >= MAX_TRACKED) {
             remove(mTimeouts.pollFirst());
         }
@@ -64,7 +63,7 @@ final class SafetyCenterTimeouts {
     }
 
     /** Removes the given {@link Runnable} to run as a timeout. */
-    void remove(@NonNull Runnable timeoutAction) {
+    void remove(Runnable timeoutAction) {
         mTimeouts.remove(timeoutAction);
         mForegroundHandler.removeCallbacks(timeoutAction);
     }
@@ -77,7 +76,7 @@ final class SafetyCenterTimeouts {
     }
 
     /** Dumps state for debugging purposes. */
-    void dump(@NonNull PrintWriter fout) {
+    void dump(PrintWriter fout) {
         int count = mTimeouts.size();
         fout.println("TIMEOUTS (" + count + ")");
         Iterator<Runnable> it = mTimeouts.iterator();

@@ -25,6 +25,8 @@ import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterIssue
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyCenterStatus
+import android.safetycenter.SafetyEvent
+import android.safetycenter.SafetySourceErrorDetails
 import android.safetycenter.SafetySourceIssue
 import android.safetycenter.cts.testing.NotificationCharacteristics
 import android.safetycenter.cts.testing.TestNotificationListener
@@ -36,6 +38,7 @@ import com.android.safetycenter.testing.Coroutines.TIMEOUT_SHORT
 import com.android.safetycenter.testing.SafetyCenterActivityLauncher.executeBlockAndExit
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.clearAllSafetySourceDataForTestsWithPermission
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.dismissSafetyCenterIssueWithPermission
+import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.reportSafetySourceErrorWithPermission
 import com.android.safetycenter.testing.SafetyCenterFlags
 import com.android.safetycenter.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import com.android.safetycenter.testing.SafetyCenterTestConfigs
@@ -533,6 +536,23 @@ class SafetyCenterNotificationTest {
         TestNotificationListener.waitForSingleNotification()
 
         safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, data2)
+
+        TestNotificationListener.waitForZeroNotifications()
+    }
+
+    @Test
+    fun reportSafetySourceError_sourceWithNotification_cancelsNotification() {
+        val data = safetySourceTestData.recommendationWithAccountIssue
+        val error =
+            SafetySourceErrorDetails(
+                SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
+            )
+
+        safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, data)
+
+        TestNotificationListener.waitForSingleNotification()
+
+        safetyCenterManager.reportSafetySourceErrorWithPermission(SINGLE_SOURCE_ID, error)
 
         TestNotificationListener.waitForZeroNotifications()
     }

@@ -26,6 +26,7 @@ import com.android.permissioncontroller.R
 import com.android.permissioncontroller.safetycenter.ui.SafetyBrandChipPreference.Companion.closeSubpage
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterUiData
 import com.android.safetycenter.resources.SafetyCenterResourcesContext
+import com.android.settingslib.widget.FooterPreference
 import com.android.settingslib.widget.IllustrationPreference
 
 /** A fragment that represents a generic subpage in Safety Center. */
@@ -37,6 +38,7 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
     private lateinit var subpageIllustration: IllustrationPreference
     private lateinit var subpageIssueGroup: PreferenceGroup
     private lateinit var subpageEntryGroup: PreferenceGroup
+    private lateinit var subpageFooter: FooterPreference
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         super.onCreatePreferences(savedInstanceState, rootKey)
@@ -47,8 +49,11 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
         subpageIllustration = getPreferenceScreen().findPreference(ILLUSTRATION_KEY)!!
         subpageIssueGroup = getPreferenceScreen().findPreference(ISSUE_GROUP_KEY)!!
         subpageEntryGroup = getPreferenceScreen().findPreference(ENTRY_GROUP_KEY)!!
+        subpageFooter = getPreferenceScreen().findPreference(FOOTER_KEY)!!
+
         subpageBrandChip.setupListener(requireActivity(), requireContext())
         setupIllustration()
+        setupFooter()
     }
 
     override fun onResume() {
@@ -71,10 +76,7 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
     }
 
     private fun setupIllustration() {
-        val camelRegex = "(?<=[a-zA-Z])[A-Z]".toRegex()
-        val groupIdSnakeCase = camelRegex.replace(sourceGroupId) { "_${it.value}" }.lowercase()
-        val resName = "illustration_$groupIdSnakeCase"
-
+        val resName = "illustration_${SnakeCaseConverter.fromCamelCase(sourceGroupId)}"
         val context = requireContext()
         val drawable =
             SafetyCenterResourcesContext(context).getDrawableByName(resName, context.theme)
@@ -84,6 +86,17 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
         }
 
         subpageIllustration.setImageDrawable(drawable)
+    }
+
+    private fun setupFooter() {
+        val resName = "${SnakeCaseConverter.fromCamelCase(sourceGroupId)}_footer"
+        val footerText = SafetyCenterResourcesContext(requireContext()).getStringByName(resName)
+        if (footerText.isEmpty()) {
+            Log.w(TAG, "$sourceGroupId doesn't have any matching footer")
+            subpageFooter.setVisible(false)
+        }
+
+        subpageFooter.setSummary(footerText)
     }
 
     private fun updateSafetyCenterIssues(uiData: SafetyCenterUiData?) {
@@ -136,6 +149,7 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
         private const val ILLUSTRATION_KEY: String = "subpage_illustration"
         private const val ISSUE_GROUP_KEY: String = "subpage_issue_group"
         private const val ENTRY_GROUP_KEY: String = "subpage_entry_group"
+        private const val FOOTER_KEY: String = "subpage_footer"
         private const val SOURCE_GROUP_ID_KEY: String = "source_group_id"
 
         /** Creates an instance of SafetyCenterSubpageFragment with the arguments set */

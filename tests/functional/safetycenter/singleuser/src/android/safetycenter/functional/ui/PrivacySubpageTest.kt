@@ -43,6 +43,7 @@ import com.android.safetycenter.testing.UiTestHelper.resetRotation
 import com.android.safetycenter.testing.UiTestHelper.waitAllTextDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitButtonDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitDisplayed
+import com.android.safetycenter.testing.UiTestHelper.waitPageTitleDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitSourceIssueDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitSourceIssueNotDisplayed
 import org.junit.After
@@ -187,7 +188,7 @@ class PrivacySubpageTest {
 
         context.launchSafetyCenterActivity(extras) {
             openPageAndExit("Location Settings") {
-                waitDisplayed(By.desc("Location"))
+                waitPageTitleDisplayed("Location")
                 waitAllTextDisplayed("Use location")
             }
 

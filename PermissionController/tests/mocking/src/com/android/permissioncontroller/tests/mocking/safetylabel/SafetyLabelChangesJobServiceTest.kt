@@ -82,7 +82,6 @@ class SafetyLabelChangesJobServiceTest {
 
         // Mock flags
         setSafetyLabelChangeNotificationsEnabled(true)
-        setPermissionRationaleEnabled(true)
 
         // Mock application context
         whenever(PermissionControllerApplication.get()).thenReturn(application)
@@ -170,15 +169,6 @@ class SafetyLabelChangesJobServiceTest {
                 DeviceConfig.getBoolean(
                     eq(DeviceConfig.NAMESPACE_PRIVACY),
                     eq(SafetyLabelConstants.SAFETY_LABEL_CHANGE_NOTIFICATIONS_ENABLED),
-                    anyBoolean()))
-            .thenReturn(flagValue)
-    }
-
-    private fun setPermissionRationaleEnabled(flagValue: Boolean) {
-        whenever(
-                DeviceConfig.getBoolean(
-                    eq(DeviceConfig.NAMESPACE_PRIVACY),
-                    eq(SafetyLabelConstants.PERMISSION_RATIONALE_ENABLED),
                     anyBoolean()))
             .thenReturn(flagValue)
     }

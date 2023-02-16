@@ -18,7 +18,6 @@ package com.android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
-import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.os.IBinder;
@@ -50,12 +49,12 @@ final class SafetyCenterListeners {
 
     private static final String TAG = "SafetyCenterListeners";
 
-    @NonNull private final SafetyCenterDataFactory mSafetyCenterDataFactory;
+    private final SafetyCenterDataFactory mSafetyCenterDataFactory;
 
     private final SparseArray<RemoteCallbackList<IOnSafetyCenterDataChangedListener>>
             mSafetyCenterDataChangedListeners = new SparseArray<>();
 
-    SafetyCenterListeners(@NonNull SafetyCenterDataFactory safetyCenterDataFactory) {
+    SafetyCenterListeners(SafetyCenterDataFactory safetyCenterDataFactory) {
         mSafetyCenterDataFactory = safetyCenterDataFactory;
     }
 
@@ -64,8 +63,7 @@ final class SafetyCenterListeners {
      * IOnSafetyCenterDataChangedListener}.
      */
     static void deliverDataForListener(
-            @NonNull IOnSafetyCenterDataChangedListener listener,
-            @NonNull SafetyCenterData safetyCenterData) {
+            IOnSafetyCenterDataChangedListener listener, SafetyCenterData safetyCenterData) {
         try {
             listener.onSafetyCenterDataChanged(safetyCenterData);
         } catch (RemoteException e) {
@@ -78,8 +76,8 @@ final class SafetyCenterListeners {
      * IOnSafetyCenterDataChangedListener}.
      */
     private static void deliverErrorForListener(
-            @NonNull IOnSafetyCenterDataChangedListener listener,
-            @NonNull SafetyCenterErrorDetails safetyCenterErrorDetails) {
+            IOnSafetyCenterDataChangedListener listener,
+            SafetyCenterErrorDetails safetyCenterErrorDetails) {
         try {
             listener.onError(safetyCenterErrorDetails);
         } catch (RemoteException e) {
@@ -91,7 +89,7 @@ final class SafetyCenterListeners {
      * Delivers a {@link SafetyCenterData} update on all listeners of the given {@link
      * UserProfileGroup}.
      */
-    void deliverDataForUserProfileGroup(@NonNull UserProfileGroup userProfileGroup) {
+    void deliverDataForUserProfileGroup(UserProfileGroup userProfileGroup) {
         ArrayMap<String, SafetyCenterData> safetyCenterDataCache = new ArrayMap<>();
         int[] relevantUserIds = userProfileGroup.getProfileParentAndManagedRunningProfilesUserIds();
         for (int i = 0; i < relevantUserIds.length; i++) {
@@ -105,8 +103,7 @@ final class SafetyCenterListeners {
      * {@link UserProfileGroup}.
      */
     void deliverErrorForUserProfileGroup(
-            @NonNull UserProfileGroup userProfileGroup,
-            @NonNull SafetyCenterErrorDetails safetyCenterErrorDetails) {
+            UserProfileGroup userProfileGroup, SafetyCenterErrorDetails safetyCenterErrorDetails) {
         ArrayMap<String, SafetyCenterData> safetyCenterDataCache = new ArrayMap<>();
         int[] relevantUserIds = userProfileGroup.getProfileParentAndManagedRunningProfilesUserIds();
         for (int i = 0; i < relevantUserIds.length; i++) {
@@ -128,8 +125,8 @@ final class SafetyCenterListeners {
      */
     @Nullable
     IOnSafetyCenterDataChangedListener addListener(
-            @NonNull IOnSafetyCenterDataChangedListener listener,
-            @NonNull String packageName,
+            IOnSafetyCenterDataChangedListener listener,
+            String packageName,
             @UserIdInt int userId) {
         RemoteCallbackList<IOnSafetyCenterDataChangedListener> listeners =
                 mSafetyCenterDataChangedListeners.get(userId);
@@ -152,8 +149,7 @@ final class SafetyCenterListeners {
      * <p>Returns whether the callback was unregistered. Returns {@code false} if the callback was
      * never registered.
      */
-    boolean removeListener(
-            @NonNull IOnSafetyCenterDataChangedListener listener, @UserIdInt int userId) {
+    boolean removeListener(IOnSafetyCenterDataChangedListener listener, @UserIdInt int userId) {
         RemoteCallbackList<IOnSafetyCenterDataChangedListener> listeners =
                 mSafetyCenterDataChangedListeners.get(userId);
         if (listeners == null) {
@@ -192,8 +188,8 @@ final class SafetyCenterListeners {
 
     private void deliverUpdateForUser(
             @UserIdInt int userId,
-            @NonNull UserProfileGroup userProfileGroup,
-            @NonNull ArrayMap<String, SafetyCenterData> safetyCenterDataCache,
+            UserProfileGroup userProfileGroup,
+            ArrayMap<String, SafetyCenterData> safetyCenterDataCache,
             boolean updateSafetyCenterData,
             @Nullable SafetyCenterErrorDetails safetyCenterErrorDetails) {
         RemoteCallbackList<IOnSafetyCenterDataChangedListener> listenersForUserId =
@@ -226,11 +222,10 @@ final class SafetyCenterListeners {
         }
     }
 
-    @NonNull
     private SafetyCenterData assembleSafetyCenterDataIfAbsent(
-            @NonNull ArrayMap<String, SafetyCenterData> safetyCenterDataCache,
-            @NonNull String packageName,
-            @NonNull UserProfileGroup userProfileGroup) {
+            ArrayMap<String, SafetyCenterData> safetyCenterDataCache,
+            String packageName,
+            UserProfileGroup userProfileGroup) {
         SafetyCenterData cachedSafetyCenterData = safetyCenterDataCache.get(packageName);
         if (cachedSafetyCenterData != null) {
             return cachedSafetyCenterData;
@@ -242,7 +237,7 @@ final class SafetyCenterListeners {
     }
 
     /** Dumps state for debugging purposes. */
-    void dump(@NonNull PrintWriter fout) {
+    void dump(PrintWriter fout) {
         int userIdCount = mSafetyCenterDataChangedListeners.size();
         fout.println("DATA CHANGED LISTENERS (" + userIdCount + " user IDs)");
         for (int i = 0; i < userIdCount; i++) {
@@ -268,20 +263,20 @@ final class SafetyCenterListeners {
     private static final class OnSafetyCenterDataChangedListenerWrapper
             implements IOnSafetyCenterDataChangedListener {
 
-        @NonNull private final IOnSafetyCenterDataChangedListener mDelegate;
-        @NonNull private final String mPackageName;
+        private final IOnSafetyCenterDataChangedListener mDelegate;
+        private final String mPackageName;
 
         private final AtomicReference<SafetyCenterData> mLastSafetyCenterData =
                 new AtomicReference<>();
 
         OnSafetyCenterDataChangedListenerWrapper(
-                @NonNull IOnSafetyCenterDataChangedListener delegate, @NonNull String packageName) {
+                IOnSafetyCenterDataChangedListener delegate, String packageName) {
             mDelegate = delegate;
             mPackageName = packageName;
         }
 
         @Override
-        public void onSafetyCenterDataChanged(@NonNull SafetyCenterData safetyCenterData)
+        public void onSafetyCenterDataChanged(SafetyCenterData safetyCenterData)
                 throws RemoteException {
             if (safetyCenterData.equals(mLastSafetyCenterData.getAndSet(safetyCenterData))) {
                 return;
@@ -290,7 +285,7 @@ final class SafetyCenterListeners {
         }
 
         @Override
-        public void onError(@NonNull SafetyCenterErrorDetails safetyCenterErrorDetails)
+        public void onError(SafetyCenterErrorDetails safetyCenterErrorDetails)
                 throws RemoteException {
             mDelegate.onError(safetyCenterErrorDetails);
         }
@@ -300,7 +295,6 @@ final class SafetyCenterListeners {
             return mDelegate.asBinder();
         }
 
-        @NonNull
         public String getPackageName() {
             return mPackageName;
         }

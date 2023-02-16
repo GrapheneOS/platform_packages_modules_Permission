@@ -32,7 +32,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.preference.Preference;
@@ -45,10 +44,10 @@ import com.android.permissioncontroller.safetycenter.ui.model.StatusUiData;
 
 import com.google.android.material.button.MaterialButton;
 
+import kotlin.Pair;
+
 import java.util.List;
 import java.util.Objects;
-
-import kotlin.Pair;
 
 /** Preference which displays a visual representation of {@link SafetyCenterStatus}. */
 @RequiresApi(TIRAMISU)
@@ -57,13 +56,10 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
     @Nullable private StatusUiData mStatus;
     @Nullable private SafetyCenterViewModel mViewModel;
 
-    @NonNull
     private final TextFadeAnimator mTitleTextAnimator = new TextFadeAnimator(R.id.status_title);
 
-    @NonNull
     private final TextFadeAnimator mSummaryTextAnimator = new TextFadeAnimator(R.id.status_summary);
 
-    @NonNull
     private final TextFadeAnimator mAllTextAnimator =
             new TextFadeAnimator(List.of(R.id.status_title, R.id.status_summary));
 
@@ -144,7 +140,7 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
                     holder.itemView.getPaddingStart(),
                     holder.itemView.getPaddingTop(),
                     holder.itemView.getPaddingEnd(),
-                    /* bottom = */ getContext()
+                    /* bottom= */ getContext()
                             .getResources()
                             .getDimensionPixelSize(R.dimen.sc_card_margin_bottom));
         } else {
@@ -152,7 +148,7 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
                     holder.itemView.getPaddingStart(),
                     holder.itemView.getPaddingTop(),
                     holder.itemView.getPaddingEnd(),
-                    /* bottom = */ 0);
+                    /* bottom= */ 0);
         }
     }
 
@@ -384,13 +380,13 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
     }
 
     @Override
-    public boolean isSameItem(@NonNull Preference preference) {
+    public boolean isSameItem(Preference preference) {
         return preference instanceof SafetyStatusPreference
                 && TextUtils.equals(getKey(), preference.getKey());
     }
 
     @Override
-    public boolean hasSameContents(@NonNull Preference preference) {
+    public boolean hasSameContents(Preference preference) {
         if (!(preference instanceof SafetyStatusPreference)) {
             return false;
         }
