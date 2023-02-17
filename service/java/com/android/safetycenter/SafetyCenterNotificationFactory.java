@@ -54,11 +54,15 @@ final class SafetyCenterNotificationFactory {
 
     private final Context mContext;
     private final SafetyCenterNotificationChannels mNotificationChannels;
+    private final PendingIntentFactory mPendingIntentFactory;
 
     SafetyCenterNotificationFactory(
-            Context context, SafetyCenterNotificationChannels notificationChannels) {
+            Context context,
+            SafetyCenterNotificationChannels notificationChannels,
+            PendingIntentFactory pendingIntentFactory) {
         mContext = context;
         mNotificationChannels = notificationChannels;
+        mPendingIntentFactory = pendingIntentFactory;
     }
 
     /**
@@ -136,6 +140,21 @@ final class SafetyCenterNotificationFactory {
 
     private Notification.Action toNotificationAction(
             SafetyCenterIssueKey issueKey, SafetySourceIssue.Action issueAction) {
+        PendingIntent pendingIntent = getPendingIntentForAction(issueKey, issueAction);
+        return new Notification.Action.Builder(null, issueAction.getLabel(), pendingIntent).build();
+    }
+
+    private PendingIntent getPendingIntentForAction(
+            SafetyCenterIssueKey issueKey, SafetySourceIssue.Action issueAction) {
+        if (issueAction.willResolve()) {
+            return getReceiverPendingIntentForResolvingAction(issueKey, issueAction);
+        } else {
+            return getDirectPendingIntentForNonResolvingAction(issueKey, issueAction);
+        }
+    }
+
+    private PendingIntent getReceiverPendingIntentForResolvingAction(
+            SafetyCenterIssueKey issueKey, SafetySourceIssue.Action issueAction) {
         // We do not use the action's PendingIntent directly here instead we build a new PI which
         // will be handled by our SafetyCenterNotificationReceiver which will in turn dispatch
         // the source-provided action PI. This ensures that action execution is consistent across
@@ -146,10 +165,13 @@ final class SafetyCenterNotificationFactory {
                         .setSafetyCenterIssueKey(issueKey)
                         .setSafetySourceIssueActionId(issueAction.getId())
                         .build();
-        PendingIntent receiverPendingIntent =
-                SafetyCenterNotificationReceiver.newNotificationActionClickedIntent(
-                        mContext, issueActionId);
-        return new Notification.Action.Builder(null, issueAction.getLabel(), receiverPendingIntent)
-                .build();
+        return SafetyCenterNotificationReceiver.newNotificationActionClickedIntent(
+                mContext, issueActionId);
+    }
+
+    private PendingIntent getDirectPendingIntentForNonResolvingAction(
+            SafetyCenterIssueKey issueKey, SafetySourceIssue.Action issueAction) {
+        return mPendingIntentFactory.maybeOverridePendingIntent(
+                issueKey.getSafetySourceId(), issueAction.getPendingIntent(), false);
     }
 }

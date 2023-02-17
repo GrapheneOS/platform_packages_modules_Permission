@@ -17,14 +17,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/AppDataSharingUpdatePreference">
 
-    <LinearLayout
+    <FrameLayout
         android:id="@android:id/icon_frame"
-        style="@style/AppDataSharingUpdatePreferenceIconContainer">
+        style="@style/AppDataSharingUpdateAppIconFrame">
 
         <androidx.preference.internal.PreferenceImageView
-            style="@style/AppDataSharingUpdatePreferenceIcon" />
+            style="@style/AppDataSharingUpdateAppIcon" />
 
-    </LinearLayout>
+    </FrameLayout>
 
     <RelativeLayout style="@style/AppDataSharingUpdatePreferenceTitleAndSummaryContainer">
 
@@ -38,13 +38,13 @@
 
     </RelativeLayout>
 
-    <LinearLayout style="@style/AppDataSharingUpdatePreferenceButtonContainer">
+    <FrameLayout style="@style/AppDataSharingUpdateSettingsIconFrame">
 
-        <ImageButton
+        <androidx.preference.internal.PreferenceImageView
             android:id="@+id/settings_button"
-            style="@style/AppDataSharingUpdatePreferenceButton"
+            style="@style/AppDataSharingUpdateSettingsIcon"
             android:contentDescription="@string/safety_label_changes_gear_description" />
 
-    </LinearLayout>
+    </FrameLayout>
 
 </LinearLayout>

@@ -1,5 +1,8 @@
 package com.android.permissioncontroller.permission.ui.handheld.v34
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.os.UserHandle
@@ -17,7 +20,6 @@ import com.android.permissioncontroller.permission.ui.model.v34.AppDataSharingUp
 import com.android.permissioncontroller.permission.ui.model.v34.AppDataSharingUpdatesViewModel.AppLocationDataSharingUpdateUiInfo
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.StringUtils
-import java.lang.IllegalArgumentException
 import java.text.Collator
 
 /** Fragment to display data sharing updates for installed apps. */
@@ -43,6 +45,10 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
         }
 
         viewModel.appLocationDataSharingUpdateUiInfoLiveData.observe(this, this::updatePreferences)
+    }
+
+    override fun setDivider(divider: Drawable?) {
+        super.setDivider(ColorDrawable(Color.TRANSPARENT))
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -103,7 +109,7 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
                         updateUiInfo.packageName,
                         updateUiInfo.userHandle)
                 summary = getSummaryForLocationUpdateType(updateUiInfo.dataSharingUpdateType)
-                settingsGearClick =
+                preferenceClick =
                     View.OnClickListener { _ ->
                         viewModel.startAppLocationPermissionPage(
                             requireActivity(), updateUiInfo.packageName, updateUiInfo.userHandle)

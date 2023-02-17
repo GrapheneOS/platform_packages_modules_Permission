@@ -34,6 +34,7 @@ import com.android.safetycenter.testing.SafetyCenterTestHelper
 import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
 import com.android.safetycenter.testing.UiTestHelper.waitAllTextDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitDisplayed
+import com.android.safetycenter.testing.UiTestHelper.waitPageTitleDisplayed
 import org.junit.After
 import org.junit.Assume.assumeTrue
 import org.junit.Before
@@ -103,9 +104,8 @@ class SafetyCenterQsActivityTest {
 
     @Test
     fun launchActivity_fromQuickSettings_hasContentDescriptions() {
-        context.launchSafetyCenterQsActivity() {
-            // Verify page landing descriptions
-            waitDisplayed(By.desc("Security and privacy quick settings"))
+        context.launchSafetyCenterQsActivity {
+            waitPageTitleDisplayed("Security and privacy quick settings")
             waitAllTextDisplayed("Your privacy controls")
             waitDisplayed(By.desc("Close"))
 
@@ -117,7 +117,7 @@ class SafetyCenterQsActivityTest {
 
     @Test
     fun launchActivity_togglePrivacyControls_hasUpdatedDescriptions() {
-        context.launchSafetyCenterQsActivity() {
+        context.launchSafetyCenterQsActivity {
             // Toggle privacy controls
             waitDisplayed(By.desc("Switch. Camera access. Available")) { it.click() }
             waitDisplayed(By.desc("Switch. Mic access. Available")) { it.click() }
