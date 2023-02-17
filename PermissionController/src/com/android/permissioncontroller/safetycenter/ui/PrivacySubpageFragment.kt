@@ -128,7 +128,8 @@ class PrivacySubpageFragment : SafetyCenterFragment() {
                 "AndroidPermissionUsage",
                 "AndroidPermissionManager",
                 "AndroidAdsPrivacy",
-                "AndroidHealthConnect" -> {
+                "AndroidHealthConnect",
+                "AndroidPrivacyAppDataSharingUpdates" -> {
                     subpageGenericEntryGroup.addPreference(subpageEntry)
                 }
                 "AndroidPrivacyControls" -> {
