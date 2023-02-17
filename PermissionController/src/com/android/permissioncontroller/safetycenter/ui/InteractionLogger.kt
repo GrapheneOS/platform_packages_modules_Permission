@@ -30,6 +30,7 @@ import android.safetycenter.SafetyCenterStatus
 import androidx.annotation.RequiresApi
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.PermissionControllerStatsLog
+import com.android.permissioncontroller.PermissionControllerStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__ISSUE_STATE__ISSUE_STATE_UNKNOWN
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.safetycenter.SafetyCenterConstants
 import com.android.safetycenter.internaldata.SafetyCenterIds
@@ -99,7 +100,12 @@ class InteractionLogger(
             encodeStringId(sourceId),
             sourceProfileType.statsLogValue,
             encodeStringId(issueTypeId),
-            (if (sensor != Sensor.UNKNOWN) sensor else navigationSensor).statsLogValue)
+            (if (sensor != Sensor.UNKNOWN) sensor else navigationSensor).statsLogValue,
+            // TODO(b/268309208): Log group ID and subpage viewType for subpages
+            /* encodedSafetySourcesGroupId= */ 0,
+            // TODO(b/268309491): Log issue state for dismissed and un-dismissed issues.
+            SAFETY_CENTER_INTERACTION_REPORTED__ISSUE_STATE__ISSUE_STATE_UNKNOWN
+        )
     }
 
     private companion object {
