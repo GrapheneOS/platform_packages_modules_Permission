@@ -29,6 +29,7 @@ import com.android.safetycenter.testing.SafetyCenterTestHelper
 import com.android.safetycenter.testing.SettingsPackage.getSettingsPackageName
 import com.android.safetycenter.testing.UiTestHelper.resetRotation
 import com.android.safetycenter.testing.UiTestHelper.waitDisplayed
+import com.android.safetycenter.testing.UiTestHelper.waitPageTitleDisplayed
 import org.junit.After
 import org.junit.Assume.assumeTrue
 import org.junit.Before
@@ -75,10 +76,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun launchActivity_withFlagEnabled_showsSecurityAndPrivacyTitle() {
-        context.launchSafetyCenterActivity {
-            // CollapsingToolbar title can't be found by text, so using description instead.
-            waitDisplayed(By.desc("Security & privacy"))
-        }
+        context.launchSafetyCenterActivity { waitPageTitleDisplayed("Security & privacy") }
     }
 
     @Test

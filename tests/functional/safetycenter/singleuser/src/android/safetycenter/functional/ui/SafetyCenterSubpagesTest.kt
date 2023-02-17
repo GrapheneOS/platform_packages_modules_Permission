@@ -122,7 +122,6 @@ class SafetyCenterSubpagesTest {
         extras.putString(EXTRA_SAFETY_SOURCES_GROUP_ID, MULTIPLE_SOURCES_GROUP_ID_1)
 
         context.launchSafetyCenterActivity(extras) {
-            // CollapsingToolbar title can't be found by text, so using description instead.
             waitPageTitleDisplayed(context.getString(sourceGroup.titleResId))
         }
     }
@@ -134,10 +133,7 @@ class SafetyCenterSubpagesTest {
         val extras = Bundle()
         extras.putString(EXTRA_SAFETY_SOURCES_GROUP_ID, MULTIPLE_SOURCES_GROUP_ID_1)
 
-        context.launchSafetyCenterActivity(extras) {
-            // CollapsingToolbar title can't be found by text, so using description instead.
-            waitPageTitleDisplayed("Security & privacy")
-        }
+        context.launchSafetyCenterActivity(extras) { waitPageTitleDisplayed("Security & privacy") }
     }
 
     @Test
