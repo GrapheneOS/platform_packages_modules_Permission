@@ -261,8 +261,6 @@
     <style name="AppDataSharingUpdateAppIconFrame">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:gravity">start|center_vertical</item>
-        <item name="android:orientation">horizontal</item>
         <item name="android:paddingRight">20dp</item>
     </style>
 
@@ -270,7 +268,7 @@
         <item name="android:id">@android:id/icon</item>
         <item name="android:layout_width">32dp</item>
         <item name="android:layout_height">32dp</item>
-        <item name="android:scaleType">fitCenter</item>
+        <item name="android:layout_gravity">center_vertical</item>
     </style>
 
     <style name="AppDataSharingUpdatePreferenceTitleAndSummaryContainer">
