@@ -1100,7 +1100,7 @@ class AppPermissionViewModel(
     fun logAppPermissionFragmentViewed() {
         val uid = KotlinUtils.getPackageUid(app, packageName, user) ?: return
         PermissionControllerStatsLog.write(APP_PERMISSION_FRAGMENT_VIEWED, sessionId,
-            uid, packageName, permGroupName)
+            uid, packageName, permGroupName, /* permission_rationale_shown = */ false)
         Log.v(LOG_TAG, "AppPermission fragment viewed with sessionId=$sessionId uid=" +
             "$uid packageName=$packageName" +
             "permGroupName=$permGroupName")
