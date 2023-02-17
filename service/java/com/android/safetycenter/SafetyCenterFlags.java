@@ -101,6 +101,9 @@ public final class SafetyCenterFlags {
 
     private static final Duration FGS_ALLOWLIST_DEFAULT_DURATION = Duration.ofSeconds(20);
 
+    private static final String PROPERTY_TEMP_HIDDEN_ISSUE_RESURFACE_DELAY_MILLIS =
+            "safety_center_temp_hidden_issue_resurface_delay_millis";
+
     private static final Duration RESOLVING_ACTION_TIMEOUT_DEFAULT_DURATION =
             Duration.ofSeconds(10);
 
@@ -123,6 +126,9 @@ public final class SafetyCenterFlags {
                     + "AndroidNotificationListener,AndroidPermissionAutoRevoke";
 
     private static final String BACKGROUND_REFRESH_DENY_DEFAULT = "";
+
+    private static final Duration TEMP_HIDDEN_ISSUE_RESURFACE_DELAY_DEFAULT_DURATION =
+            Duration.ofDays(2);
 
     /** Dumps state for debugging purposes. */
     static void dump(PrintWriter fout) {
@@ -342,6 +348,13 @@ public final class SafetyCenterFlags {
      */
     private static String getResurfaceIssueDelaysMillis() {
         return getString(PROPERTY_RESURFACE_ISSUE_DELAYS_MILLIS, RESURFACE_ISSUE_DELAYS_DEFAULT);
+    }
+
+    /** Returns a duration after which a temporarily hidden issue will resurface. */
+    public static Duration getTemporarilyHiddenIssueResurfaceDelay() {
+        return getDuration(
+                PROPERTY_TEMP_HIDDEN_ISSUE_RESURFACE_DELAY_MILLIS,
+                TEMP_HIDDEN_ISSUE_RESURFACE_DELAY_DEFAULT_DURATION);
     }
 
     /**
