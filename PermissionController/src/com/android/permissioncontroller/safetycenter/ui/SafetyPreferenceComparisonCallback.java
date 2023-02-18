@@ -20,18 +20,18 @@ import static android.os.Build.VERSION_CODES.TIRAMISU;
 
 import androidx.annotation.RequiresApi;
 import androidx.preference.Preference;
-import androidx.preference.PreferenceManager.PreferenceComparisonCallback;
+import androidx.preference.PreferenceManager.SimplePreferenceComparisonCallback;
 
 /** A {@link PreferenceComparisonCallback} to identify changed preferences of Safety Center. */
 @RequiresApi(TIRAMISU)
-class SafetyPreferenceComparisonCallback extends PreferenceComparisonCallback {
+class SafetyPreferenceComparisonCallback extends SimplePreferenceComparisonCallback {
 
     @Override
     public boolean arePreferenceItemsTheSame(Preference oldPreference, Preference newPreference) {
         if (oldPreference instanceof ComparablePreference) {
             return ((ComparablePreference) oldPreference).isSameItem(newPreference);
         }
-        return false;
+        return super.arePreferenceItemsTheSame(oldPreference, newPreference);
     }
 
     @Override
@@ -40,6 +40,6 @@ class SafetyPreferenceComparisonCallback extends PreferenceComparisonCallback {
         if (oldPreference instanceof ComparablePreference) {
             return ((ComparablePreference) oldPreference).hasSameContents(newPreference);
         }
-        return false;
+        return super.arePreferenceContentsTheSame(oldPreference, newPreference);
     }
 }
