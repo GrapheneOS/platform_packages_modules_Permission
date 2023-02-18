@@ -250,6 +250,7 @@ class SafetyCenterIssueTest {
     fun getGroupId_withVersionLessThanU_throwsUnsupportedOperationException() {
         // TODO(b/258228790): Remove after U is no longer in pre-release
         assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
+        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         val issue =
             SafetyCenterIssue.Builder("issue_id", "Everything's good", "Please acknowledge this")
                 .build()
@@ -274,6 +275,7 @@ class SafetyCenterIssueTest {
     fun setGroupId_withVersionLessThanU_throwsUnsupportedOperationException() {
         // TODO(b/258228790): Remove after U is no longer in pre-release
         assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
+        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
 
         val exception =
             assertFailsWith(UnsupportedOperationException::class) {
@@ -374,6 +376,7 @@ class SafetyCenterIssueTest {
     fun action_getConfirmationDialogDetails_withVersionLessThanU_throwsUnsupportedOperation() {
         // TODO(b/258228790): Remove after U is no longer in pre-release
         assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
+        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
 
         assertFailsWith(UnsupportedOperationException::class) { action1.confirmationDialogDetails }
     }
@@ -383,6 +386,7 @@ class SafetyCenterIssueTest {
     fun action_setConfirmationDialogDetails_withVersionLessThanU_throwsUnsupportedOperation() {
         // TODO(b/258228790): Remove after U is no longer in pre-release
         assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
+        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         assertFailsWith(UnsupportedOperationException::class) {
             SafetyCenterIssue.Action.Builder("action_id", "Action label", pendingIntent1)
                 .setConfirmationDialogDetails(
