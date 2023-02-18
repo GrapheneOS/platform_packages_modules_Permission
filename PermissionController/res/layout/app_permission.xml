@@ -45,6 +45,7 @@
                     style="@style/AppPermissionRationaleContainer">
                     <TextView
                         android:id="@+id/app_permission_rationale_message"
+                        android:text="@string/app_permission_rationale_message"
                         style="@style/AppPermissionMessage" />
 
                     <LinearLayout
@@ -66,10 +67,12 @@
                             <TextView
                                 android:duplicateParentState="true"
                                 android:id="@+id/app_permission_rationale_title"
+                                android:text="@string/app_location_permission_rationale_title"
                                 style="@style/AppPermissionRationaleTitle" />
                             <TextView
                                 android:duplicateParentState="true"
                                 android:id="@+id/app_permission_rationale_subtitle"
+                                android:text="@string/app_location_permission_rationale_subtitle"
                                 style="@style/AppPermissionRationaleSubtitle" />
                         </LinearLayout>
 
