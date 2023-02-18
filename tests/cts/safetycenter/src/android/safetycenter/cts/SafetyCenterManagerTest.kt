@@ -1604,6 +1604,7 @@ class SafetyCenterManagerTest {
     fun refreshSafetySources_versionLessThanU_throwsUnsupportedOperationException() {
         // TODO(b/258228790): Remove after U is no longer in pre-release
         assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
+        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.multipleSourcesConfig)
 
         val exception =
