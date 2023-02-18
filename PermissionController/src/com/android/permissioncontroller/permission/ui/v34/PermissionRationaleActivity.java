@@ -348,7 +348,7 @@ public class PermissionRationaleActivity extends SettingsActivity implements
 
         CharSequence learnMoreMessage =
                 setLink(
-                        getText(R.string.permission_rationale_permission_learn_more_message),
+                        getText(R.string.permission_rationale_data_sharing_varies_message),
                         getLearnMoreLink()
                 );
 
@@ -415,25 +415,25 @@ public class PermissionRationaleActivity extends SettingsActivity implements
         Preconditions.checkArgument(LOCATION.equals(permissionGroupName),
                 "Permission Rationale does not support %s", permissionGroupName);
 
-        return R.string.permission_rationale_permission_location_settings_message;
+        return R.string.permission_rationale_permission_settings_message;
     }
 
     private String getStringForPurpose(@Purpose int purpose) {
         switch (purpose) {
             case PURPOSE_APP_FUNCTIONALITY:
-                return getString(R.string.permission_rational_purpose_app_functionality);
+                return getString(R.string.permission_rationale_purpose_app_functionality);
             case PURPOSE_ANALYTICS:
-                return getString(R.string.permission_rational_purpose_analytics);
+                return getString(R.string.permission_rationale_purpose_analytics);
             case PURPOSE_DEVELOPER_COMMUNICATIONS:
-                return getString(R.string.permission_rational_purpose_developer_communications);
+                return getString(R.string.permission_rationale_purpose_developer_communications);
             case PURPOSE_FRAUD_PREVENTION_SECURITY:
-                return getString(R.string.permission_rational_purpose_fraud_prevention_security);
+                return getString(R.string.permission_rationale_purpose_fraud_prevention_security);
             case PURPOSE_ADVERTISING:
-                return getString(R.string.permission_rational_purpose_advertising);
+                return getString(R.string.permission_rationale_purpose_advertising);
             case PURPOSE_PERSONALIZATION:
-                return getString(R.string.permission_rational_purpose_personalization);
+                return getString(R.string.permission_rationale_purpose_personalization);
             case PURPOSE_ACCOUNT_MANAGEMENT:
-                return getString(R.string.permission_rational_purpose_account_management);
+                return getString(R.string.permission_rationale_purpose_account_management);
             default:
                 throw new IllegalArgumentException("Invalid purpose: " + purpose);
         }
