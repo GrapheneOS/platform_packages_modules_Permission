@@ -102,11 +102,11 @@
                     <LinearLayout style="@style/PermissionRationaleSectionInnerContainer">
                         <TextView
                             android:id="@+id/learn_more_title"
-                            android:text="@string/permission_rationale_permission_learn_more_title"
+                            android:text="@string/permission_rationale_permission_data_sharing_varies_title"
                             style="@style/PermissionRationaleSectionTitle" />
                         <TextView
                             android:id="@+id/learn_more_message"
-                            android:text="@string/permission_rationale_permission_learn_more_message"
+                            android:text="@string/permission_rationale_data_sharing_varies_message"
                             style="@style/PermissionRationaleSectionMessage" />
                     </LinearLayout>
                 </LinearLayout>
@@ -121,7 +121,7 @@
                     <LinearLayout style="@style/PermissionRationaleSectionInnerContainer">
                         <TextView
                             android:id="@+id/settings_title"
-                            android:text="@string/permission_rationale_permission_settings_title"
+                            android:text="@string/permission_rationale_location_settings_title"
                             style="@style/PermissionRationaleSectionTitle" />
                         <TextView
                             android:id="@+id/settings_message"
