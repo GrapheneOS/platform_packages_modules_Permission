@@ -243,7 +243,7 @@ public final class SafetyCenterFlags {
      * longer than this.
      */
     @Nullable
-    static Duration getNotificationResurfaceInterval() {
+    public static Duration getNotificationResurfaceInterval() {
         long millis = getLong(PROPERTY_NOTIFICATION_RESURFACE_INTERVAL, -1);
         if (millis < 0) {
             return null;
