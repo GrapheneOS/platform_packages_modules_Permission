@@ -16,6 +16,8 @@
 
 package android.util;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashSet;
 
 /**
@@ -25,4 +27,16 @@ import java.util.HashSet;
  *
  * @param <E> the type of elements maintained by this set
  */
-public final class ArraySet<E> extends HashSet<E> {}
+public final class ArraySet<E> extends HashSet<E> {
+    public ArraySet() {
+        super();
+    }
+
+    public ArraySet(Collection<? extends E> c) {
+        super(c);
+    }
+
+    public ArraySet(E[] array) {
+        super(Arrays.stream(array).toList());
+    }
+}
