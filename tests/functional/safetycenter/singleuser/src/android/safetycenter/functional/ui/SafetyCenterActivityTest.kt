@@ -927,6 +927,7 @@ class SafetyCenterActivityTest {
     fun issueCard_attributionNotSetBySourceOnTiramisu_doesNotDisplayAttributionTitle() {
         // TODO(b/258228790): Remove after U is no longer in pre-release
         assumeFalse(CODENAME == "UpsideDownCake")
+        assumeFalse(CODENAME == "VanillaIceCream")
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
 
         val data = safetySourceTestData.recommendationWithGeneralIssue
@@ -1412,6 +1413,7 @@ class SafetyCenterActivityTest {
     fun launchSafetyCenter_enableSubpagesFlagOnT_stillShowsExpandAndCollapseEntries() {
         // TODO(b/258228790): Remove after U is no longer in pre-release
         assumeFalse(CODENAME == "UpsideDownCake")
+        assumeFalse(CODENAME == "VanillaIceCream")
 
         SafetyCenterFlags.showSubpages = true
         val sourceTestData = safetySourceTestData.information

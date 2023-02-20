@@ -122,6 +122,7 @@ class SafetySourceIssueTest {
     fun action_getConfirmationDialogDetails_withVersionLessThanU_throwsUnsupportedOperation() {
         // TODO(b/258228790): Remove after U is no longer in pre-release
         assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
+        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         val action = Action.Builder("action_id", "Action label", pendingIntent1).build()
 
         assertFailsWith(UnsupportedOperationException::class) { action.confirmationDialogDetails }
@@ -132,6 +133,7 @@ class SafetySourceIssueTest {
     fun action_setConfirmationDialogDetails_withVersionLessThanU_throwsUnsupportedOperation() {
         // TODO(b/258228790): Remove after U is no longer in pre-release
         assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
+        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         assertFailsWith(UnsupportedOperationException::class) {
             Action.Builder("action_id", "Action label", pendingIntent1)
                 .setConfirmationDialogDetails(
@@ -673,6 +675,7 @@ class SafetySourceIssueTest {
     fun getAttributionTitle_withVersionLessThanU_throwsUnsupportedOperationException() {
         // TODO(b/258228790): Remove after U is no longer in pre-release
         assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
+        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         val safetySourceIssue =
             SafetySourceIssue.Builder(
                     "Issue id",
@@ -692,6 +695,7 @@ class SafetySourceIssueTest {
     fun setAttributionTitle_withVersionLessThanU_throwsUnsupportedOperationException() {
         // TODO(b/258228790): Remove after U is no longer in pre-release
         assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
+        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         val safetySourceIssueBuilder =
             SafetySourceIssue.Builder(
                 "Issue id",
@@ -919,6 +923,7 @@ class SafetySourceIssueTest {
     fun getDeduplicationId_withVersionLessThanU_throwsUnsupportedOperationException() {
         // TODO(b/258228790): Remove after U is no longer in pre-release
         assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
+        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         val safetySourceIssue =
             SafetySourceIssue.Builder(
                     "Issue id",
@@ -938,6 +943,7 @@ class SafetySourceIssueTest {
     fun setDeduplicationId_withVersionLessThanU_throwsUnsupportedOperationException() {
         // TODO(b/258228790): Remove after U is no longer in pre-release
         assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
+        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         val safetySourceIssueBuilder =
             SafetySourceIssue.Builder(
                 "Issue id",
@@ -1017,6 +1023,7 @@ class SafetySourceIssueTest {
     fun getCustomNotification_withVersionLessThanU_throwsUnsupportedOperationException() {
         // TODO(b/258228790): Remove after U is no longer in pre-release
         assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
+        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         val safetySourceIssue =
             SafetySourceIssue.Builder(
                     "Issue id",
@@ -1038,6 +1045,7 @@ class SafetySourceIssueTest {
     fun setCustomNotification_withVersionLessThanU_throwsUnsupportedOperationException() {
         // TODO(b/258228790): Remove after U is no longer in pre-release
         assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
+        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         val safetySourceIssueBuilder =
             SafetySourceIssue.Builder(
                 "Issue id",
@@ -1094,6 +1102,7 @@ class SafetySourceIssueTest {
     fun getNotificationBehavior_withVersionLessThanU_throwsUnsupportedOperationException() {
         // TODO(b/258228790): Remove after U is no longer in pre-release
         assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
+        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         val safetySourceIssue =
             SafetySourceIssue.Builder(
                     "Issue id",
@@ -1135,6 +1144,7 @@ class SafetySourceIssueTest {
     fun setNotificationBehavior_withVersionLessThanU_throwsUnsupportedOperationException() {
         // TODO(b/258228790): Remove after U is no longer in pre-release
         assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
+        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         val safetySourceIssueBuilder =
             SafetySourceIssue.Builder(
                 "Issue id",
@@ -1191,6 +1201,7 @@ class SafetySourceIssueTest {
     fun getIssueActionability_withVersionLessThanU_throwsUnsupportedOperationException() {
         // TODO(b/258228790): Remove after U is no longer in pre-release
         assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
+        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         val safetySourceIssue =
             SafetySourceIssue.Builder(
                     "Issue id",
@@ -1232,6 +1243,7 @@ class SafetySourceIssueTest {
     fun setIssueActionability_withVersionLessThanU_throwsUnsupportedOperationException() {
         // TODO(b/258228790): Remove after U is no longer in pre-release
         assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
+        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         val safetySourceIssueBuilder =
             SafetySourceIssue.Builder(
                 "Issue id",
@@ -1356,6 +1368,7 @@ class SafetySourceIssueTest {
     fun build_withUIssueCategoryValueOnT_throwsIllegalArgumentException() {
         // TODO(b/258228790): Remove after U is no longer in pre-release
         assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
+        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         val builder =
             SafetySourceIssue.Builder(
                     "Issue id",
