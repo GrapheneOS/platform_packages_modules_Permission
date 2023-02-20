@@ -120,9 +120,9 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
             mSessionId = getArguments().getLong(EXTRA_SESSION_ID, INVALID_SESSION_ID);
         }
 
-        mViewModel.updateShowSystem(
+        mViewModel.updateShowSystemAppsToggle(
                 getArguments().getBoolean(ManagePermissionsActivity.EXTRA_SHOW_SYSTEM, false));
-        mViewModel.updateShow7Days(
+        mViewModel.updateShow7DaysToggle(
                 KotlinUtils.INSTANCE.is7DayToggleEnabled()
                         && getArguments()
                                 .getBoolean(ManagePermissionsActivity.EXTRA_SHOW_7_DAYS, false));
@@ -132,10 +132,9 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
         if (ab != null) {
             ab.setDisplayHomeAsUpEnabled(true);
         }
+        setLoading(true, false);
 
-        mViewModel.getPermissionUsagesDetailsInfoUiLiveData().observe(this, this::updateUI);
-        mViewModel.getShowSystemLiveData().observe(this, this::updateShowSystem);
-        mViewModel.getShow7DaysLiveData().observe(this, this::updateShow7Days);
+        mViewModel.getPermissionUsagesDetailsInfoUiLiveData().observe(this, this::updateAllUI);
     }
 
     @Override
@@ -217,6 +216,11 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
                 menu.add(Menu.NONE, MENU_SHOW_SYSTEM, Menu.NONE, R.string.menu_show_system);
         mHideSystemMenu =
                 menu.add(Menu.NONE, MENU_HIDE_SYSTEM, Menu.NONE, R.string.menu_hide_system);
+        boolean showSystem = false;
+        if (mViewModel.getShowSystemLiveData().getValue() != null) {
+            showSystem = mViewModel.getShowSystemLiveData().getValue();
+        }
+        updateShowSystemToggle(showSystem);
 
         if (KotlinUtils.INSTANCE.is7DayToggleEnabled()) {
             mShow7DaysDataMenu =
@@ -231,6 +235,11 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
                             MENU_SHOW_24_HOURS_DATA,
                             Menu.NONE,
                             R.string.menu_show_24_hours_data);
+            boolean show7Days = false;
+            if (mViewModel.getShow7DaysLiveData().getValue() != null) {
+                show7Days = mViewModel.getShow7DaysLiveData().getValue();
+            }
+            updateShow7DaysToggle(show7Days);
         }
     }
 
@@ -242,23 +251,24 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
                 getActivity().finishAfterTransition();
                 return true;
             case MENU_SHOW_SYSTEM:
-                mViewModel.updateShowSystem(true);
+                mViewModel.updateShowSystemAppsToggle(true);
                 break;
             case MENU_HIDE_SYSTEM:
-                mViewModel.updateShowSystem(false);
+                mViewModel.updateShowSystemAppsToggle(false);
                 break;
             case MENU_SHOW_7_DAYS_DATA:
-                mViewModel.updateShow7Days(KotlinUtils.INSTANCE.is7DayToggleEnabled());
+                mViewModel.updateShow7DaysToggle(KotlinUtils.INSTANCE.is7DayToggleEnabled());
                 break;
             case MENU_SHOW_24_HOURS_DATA:
-                mViewModel.updateShow7Days(false);
+                mViewModel.updateShow7DaysToggle(false);
                 break;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    private void updateUI(PermissionUsageDetailsUiInfo uiData) {
+    /** Updates page content and menu items. */
+    private void updateAllUI(PermissionUsageDetailsUiInfo uiData) {
         if (getActivity() == null) {
             return;
         }
@@ -269,10 +279,15 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
             setPreferenceScreen(screen);
         }
         screen.removeAll();
+        boolean show7Days =
+                mViewModel.getShow7DaysLiveData().getValue() != null
+                        ? mViewModel.getShow7DaysLiveData().getValue()
+                        : false;
 
         Preference subtitlePreference = new Preference(context);
+        updateShow7DaysToggle(show7Days);
         mUsageSubtitle =
-                uiData.getShow7Days()
+                show7Days
                         ? R.string.permission_group_usage_subtitle_7d
                         : R.string.permission_group_usage_subtitle_24h;
 
@@ -285,12 +300,15 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
         subtitlePreference.setSelectable(false);
         screen.addPreference(subtitlePreference);
 
-        boolean seenSystemApp = uiData.getShouldDisplayShowSystemToggle();
-
-        if (mHasSystemApps != seenSystemApp) {
-            mHasSystemApps = seenSystemApp;
-            getActivity().invalidateOptionsMenu();
+        boolean containsSystemAppAccesses = uiData.getContainsSystemAppAccesses();
+        if (mHasSystemApps != containsSystemAppAccesses) {
+            mHasSystemApps = containsSystemAppAccesses;
         }
+        boolean showSystem =
+                mViewModel.getShowSystemLiveData().getValue() != null
+                        ? mViewModel.getShowSystemLiveData().getValue()
+                        : false;
+        updateShowSystemToggle(showSystem);
 
         // Make these variables effectively final so that
         // we can use these captured variables in the below lambda expression
@@ -369,7 +387,7 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
         }
     }
 
-    private void updateShowSystem(boolean showSystem) {
+    private void updateShowSystemToggle(boolean showSystem) {
         if (mHasSystemApps) {
             if (mShowSystemMenu != null) {
                 mShowSystemMenu.setVisible(!showSystem);
@@ -393,7 +411,7 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
         }
     }
 
-    private void updateShow7Days(boolean show7Days) {
+    private void updateShow7DaysToggle(boolean show7Days) {
         if (mShow7DaysDataMenu != null) {
             mShow7DaysDataMenu.setVisible(!show7Days);
         }

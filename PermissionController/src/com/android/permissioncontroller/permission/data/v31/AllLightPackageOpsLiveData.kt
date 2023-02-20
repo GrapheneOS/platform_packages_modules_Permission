@@ -17,8 +17,13 @@
 package com.android.permissioncontroller.permission.data.v31
 
 import android.app.AppOpsManager
+import android.app.AppOpsManager.OPSTR_PHONE_CALL_CAMERA
+import android.app.AppOpsManager.OPSTR_PHONE_CALL_MICROPHONE
+import android.app.AppOpsManager.OPSTR_RECEIVE_AMBIENT_TRIGGER_AUDIO
 import android.app.Application
 import android.os.UserHandle
+import android.os.UserManager
+import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.permission.data.SmartAsyncMediatorLiveData
 import com.android.permissioncontroller.permission.data.StandardPermGroupNamesLiveData
 import com.android.permissioncontroller.permission.model.livedatatypes.v31.LightPackageOps
@@ -39,11 +44,19 @@ class AllLightPackageOpsLiveData(app: Application) :
     AppOpsManager.OnOpChangedListener {
 
     private val appOpsManager = app.getSystemService(AppOpsManager::class.java)!!
-    private var opNames: Set<String> = getOpNames(StandardPermGroupNamesLiveData.value)
+    private val userManager = app.getSystemService(UserManager::class.java)!!
+    private var opNames: MutableSet<String> =
+        getOpNames(StandardPermGroupNamesLiveData.value).toMutableSet()
 
     init {
         addSource(StandardPermGroupNamesLiveData) {
-            opNames = getOpNames(it)
+            opNames = getOpNames(it).toMutableSet()
+            opNames.add(OPSTR_PHONE_CALL_MICROPHONE)
+            opNames.add(OPSTR_PHONE_CALL_CAMERA)
+            if (SdkLevel.isAtLeastT()) {
+                opNames.add(OPSTR_RECEIVE_AMBIENT_TRIGGER_AUDIO)
+            }
+
             update()
         }
     }
@@ -51,17 +64,28 @@ class AllLightPackageOpsLiveData(app: Application) :
     override fun onActive() {
         super.onActive()
 
-        try {
-            appOpsManager.startWatchingActive(opNames.toTypedArray(), { it.run() }, this)
-        } catch (ignored: IllegalArgumentException) {
-            // Older builds may not support all requested app ops.
-        }
-
-        opNames.forEach {
+        opNames.forEach { opName ->
+            // TODO(b/262035952): We watch each active op individually as startWatchingActive only
+            // registers the callback if all ops are valid. Fix this behavior so if one op is
+            // invalid it doesn't affect the other ops.
             try {
-                appOpsManager.startWatchingMode(it, /* all packages */ null, this)
+                appOpsManager.startWatchingActive(arrayOf(opName), { it.run() }, this)
             } catch (ignored: IllegalArgumentException) {
                 // Older builds may not support all requested app ops.
+            }
+
+            try {
+                appOpsManager.startWatchingMode(opName, /* all packages */ null, this)
+            } catch (ignored: IllegalArgumentException) {
+                // Older builds may not support all requested app ops.
+            }
+
+            if (SdkLevel.isAtLeastU()) {
+                try {
+                    appOpsManager.startWatchingNoted(arrayOf(opName), this)
+                } catch (ignored: IllegalArgumentException) {
+                    // Older builds may not support all requested app ops.
+                }
             }
         }
     }
@@ -82,10 +106,14 @@ class AllLightPackageOpsLiveData(app: Application) :
                 emptyList<AppOpsManager.PackageOps>()
             }
 
+        val allProfilesInCurrentUser = userManager.userProfiles
+
         postValue(
-            packageOpsList.associateBy(
-                { Pair(it.packageName, UserHandle.getUserHandleForUid(it.uid)) },
-                { LightPackageOps(opNames, it) }))
+            packageOpsList
+                .filter { UserHandle.getUserHandleForUid(it.uid) in allProfilesInCurrentUser }
+                .associateBy(
+                    { Pair(it.packageName, UserHandle.getUserHandleForUid(it.uid)) },
+                    { LightPackageOps(opNames, it) }))
     }
 
     override fun onOpChanged(op: String?, packageName: String?) {
