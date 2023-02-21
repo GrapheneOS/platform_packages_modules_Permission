@@ -54,11 +54,6 @@ android_app_certificate {
     certificate: "com.android.permission",
 }
 
-filegroup {
-    name: "permission-jarjar-rules",
-    srcs: ["jarjar-rules.txt"],
-}
-
 sdk {
     name: "permission-module-sdk",
     apexes: [
@@ -110,9 +105,9 @@ bootclasspath_fragment {
         // result in a build failure due to inconsistent flags.
         package_prefixes: [
             "android.app.role",
+            "android.permission.jarjar",
             "android.safetycenter",
             "android.safetylabel",
-            "com.android.permission",
         ],
     },
 }
