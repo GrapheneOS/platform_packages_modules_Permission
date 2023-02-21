@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  ~ Copyright (C) 2022 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+   -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="health_connect_title" msgid="8318152190040327804">"Povezivanje zdravlja"</string>
+    <string name="health_connect_search_terms" msgid="4998970586245680829">"zdravlje, povezivanje zdravlja"</string>
+    <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Ažuriranja deljenja podataka za lokaciju"</string>
+    <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"podaci, deljenje podataka, ažuriranja deljenja podataka, ažuriranja deljenja podataka za lokaciju, deljenje"</string>
+    <string name="ads_privacy_title" msgid="538822387058714869">"Privatnost sa oglasima"</string>
+    <string name="ads_privacy_summary" msgid="4977699525670966049">"Prilagodite informacije koje aplikacije koriste da bi vam prikazivale oglase"</string>
+    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"oglasi, privatnost sa oglasima, zaštićeno okruženje privatnosti, teme oglasa, oglasi koje predlažu aplikacije, merenje oglasa"</string>
+    <string name="biometrics_title_for_work" msgid="1842284049407771568">"Biometrija za posao"</string>
+    <string name="more_settings_title" msgid="663808090772098924">"Još podešavanja"</string>
+    <string name="more_settings_summary" msgid="3942352615407872716">"Šifrovanje, akreditivi i drugo"</string>
+    <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
+</resources>
