@@ -28,8 +28,7 @@
     <string name="safety_center_entry_group_item_content_description" msgid="7348298582877249787">"ലിസ്‌റ്റ് ഇനം. <xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_entry_content_description" msgid="3639565652938224321">"<xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"കൂടുതൽ മുന്നറിയിപ്പുകൾ"</string>
-    <!-- no translation found for safety_center_dismissed_issues_card_title (2340129842725145733) -->
-    <skip />
+    <string name="safety_center_dismissed_issues_card_title" msgid="2340129842725145733">"ഡിസ്‌മിസ് ചെയ്‌ത മുന്നറിയിപ്പുകൾ"</string>
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{വികസിപ്പിച്ച് ഒരു മുന്നറിയിപ്പ് കൂടി കാണുക}other{വികസിപ്പിച്ച് # മുന്നറിയിപ്പ് കൂടി കാണുക}}"</string>
     <string name="safety_center_issue_card_content_description" msgid="1281390769721765363">"മുന്നറിയിപ്പ്. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_issue_card_content_description_with_subtitle" msgid="5504040663935313539">"മുന്നറിയിപ്പ്. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUBTITLE">%2$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%3$s</xliff:g>"</string>
