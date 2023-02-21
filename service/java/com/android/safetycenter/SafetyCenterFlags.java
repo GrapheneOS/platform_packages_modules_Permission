@@ -99,18 +99,30 @@ public final class SafetyCenterFlags {
     private static final String PROPERTY_ADDITIONAL_ALLOW_PACKAGE_CERTS =
             "safety_center_additional_allow_package_certs";
 
-    private static final Duration REFRESH_SOURCES_TIMEOUT_DEFAULT_DURATION = Duration.ofSeconds(15);
+    private static final Duration FGS_ALLOWLIST_DEFAULT_DURATION = Duration.ofSeconds(20);
 
     private static final Duration RESOLVING_ACTION_TIMEOUT_DEFAULT_DURATION =
             Duration.ofSeconds(10);
 
-    private static final Duration FGS_ALLOWLIST_DEFAULT_DURATION = Duration.ofSeconds(20);
-
-    private static final long RESURFACE_ISSUE_DEFAULT_MAX_COUNT = 0;
-
-    private static final Duration RESURFACE_ISSUE_DEFAULT_DELAY = Duration.ofDays(180);
-
     private static final Duration NOTIFICATIONS_MIN_DELAY_DEFAULT_DURATION = Duration.ofDays(180);
+
+    private static final String ISSUE_CATEGORY_ALLOWLIST_DEFAULT = "";
+
+    private static final String REFRESH_SOURCES_TIMEOUT_DEFAULT =
+            "100:15000,200:60000,300:30000,400:30000,500:30000,600:3600000";
+    private static final Duration REFRESH_SOURCES_TIMEOUT_DEFAULT_DURATION = Duration.ofSeconds(15);
+
+    private static final String RESURFACE_ISSUE_MAX_COUNT_DEFAULT = "200:0,300:1,400:1";
+    private static final long RESURFACE_ISSUE_MAX_COUNT_DEFAULT_COUNT = 0;
+
+    private static final String RESURFACE_ISSUE_DELAYS_DEFAULT = "";
+    private static final Duration RESURFACE_ISSUE_DELAYS_DEFAULT_DURATION = Duration.ofDays(180);
+
+    private static final String UNTRACKED_SOURCES_DEFAULT =
+            "AndroidAccessibility,AndroidBackgroundLocation,"
+                    + "AndroidNotificationListener,AndroidPermissionAutoRevoke";
+
+    private static final String BACKGROUND_REFRESH_DENY_DEFAULT = "";
 
     /** Dumps state for debugging purposes. */
     static void dump(PrintWriter fout) {
@@ -247,7 +259,7 @@ public final class SafetyCenterFlags {
      * mid-rollout. Broadcasts are still sent to these sources.
      */
     static ArraySet<String> getUntrackedSourceIds() {
-        return getCommaSeparatedStrings(PROPERTY_UNTRACKED_SOURCES);
+        return getCommaSeparatedStrings(PROPERTY_UNTRACKED_SOURCES, UNTRACKED_SOURCES_DEFAULT);
     }
 
     /**
@@ -255,7 +267,8 @@ public final class SafetyCenterFlags {
      * will refresh these sources only on page open and when the scan button is clicked.
      */
     static ArraySet<String> getBackgroundRefreshDeniedSourceIds() {
-        return getCommaSeparatedStrings(PROPERTY_BACKGROUND_REFRESH_DENIED_SOURCES);
+        return getCommaSeparatedStrings(
+                PROPERTY_BACKGROUND_REFRESH_DENIED_SOURCES, BACKGROUND_REFRESH_DENY_DEFAULT);
     }
 
     /**
@@ -278,7 +291,7 @@ public final class SafetyCenterFlags {
      * a refresh.
      */
     private static String getRefreshSourcesTimeoutsMillis() {
-        return getString(PROPERTY_REFRESH_SOURCES_TIMEOUTS_MILLIS, "");
+        return getString(PROPERTY_REFRESH_SOURCES_TIMEOUTS_MILLIS, REFRESH_SOURCES_TIMEOUT_DEFAULT);
     }
 
     /**
@@ -292,7 +305,7 @@ public final class SafetyCenterFlags {
         if (maxCount != null) {
             return maxCount;
         }
-        return RESURFACE_ISSUE_DEFAULT_MAX_COUNT;
+        return RESURFACE_ISSUE_MAX_COUNT_DEFAULT_COUNT;
     }
 
     /**
@@ -301,7 +314,7 @@ public final class SafetyCenterFlags {
      * this {@link SafetySourceData.SeverityLevel} should be resurfaced.
      */
     private static String getResurfaceIssueMaxCounts() {
-        return getString(PROPERTY_RESURFACE_ISSUE_MAX_COUNTS, "");
+        return getString(PROPERTY_RESURFACE_ISSUE_MAX_COUNTS, RESURFACE_ISSUE_MAX_COUNT_DEFAULT);
     }
 
     /**
@@ -317,7 +330,7 @@ public final class SafetyCenterFlags {
         if (delayMillis != null) {
             return Duration.ofMillis(delayMillis);
         }
-        return RESURFACE_ISSUE_DEFAULT_DELAY;
+        return RESURFACE_ISSUE_DELAYS_DEFAULT_DURATION;
     }
 
     /**
@@ -328,7 +341,7 @@ public final class SafetyCenterFlags {
      * should be resurfaced.
      */
     private static String getResurfaceIssueDelaysMillis() {
-        return getString(PROPERTY_RESURFACE_ISSUE_DELAYS_MILLIS, "");
+        return getString(PROPERTY_RESURFACE_ISSUE_DELAYS_MILLIS, RESURFACE_ISSUE_DELAYS_DEFAULT);
     }
 
     /**
@@ -368,7 +381,7 @@ public final class SafetyCenterFlags {
      * of IDs of safety sources that are allowed to send issues with this category.
      */
     private static String getIssueCategoryAllowlists() {
-        return getString(PROPERTY_ISSUE_CATEGORY_ALLOWLISTS, "");
+        return getString(PROPERTY_ISSUE_CATEGORY_ALLOWLISTS, ISSUE_CATEGORY_ALLOWLIST_DEFAULT);
     }
 
     private static String getAdditionalAllowedPackageCertsString() {
@@ -422,7 +435,11 @@ public final class SafetyCenterFlags {
     }
 
     private static ArraySet<String> getCommaSeparatedStrings(String property) {
-        return new ArraySet<>(getString(property, "").split(","));
+        return getCommaSeparatedStrings(property, "");
+    }
+
+    private static ArraySet<String> getCommaSeparatedStrings(String property, String defaultValue) {
+        return new ArraySet<>(getString(property, defaultValue).split(","));
     }
 
     private static String getString(String property, String defaultValue) {
