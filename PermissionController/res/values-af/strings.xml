@@ -591,5 +591,44 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Wys ’n boodskap wanneer programme toegang het tot teks, prente of ander inhoud wat jy gekopieer het"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Wys wagwoorde"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Wys karakters kortliks terwyl jy tik"</string>
-    <string name="permission_rationale_message_location" msgid="2153841534298068414">"Hierdie app het verklaar dat dit dalk liggingdata met derde party sal deel"</string>
+    <string name="permission_rationale_message_location" msgid="5559450538205092588">"Hierdie app het verklaar dat dit jou liggingdata met derde partye kan deel"</string>
+    <!-- no translation found for permission_rationale_location_title (2404797182678793506) -->
+    <skip />
+    <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Waar datadelinginligting vandaan kom"</string>
+    <!-- no translation found for permission_rationale_data_sharing_source_message (2229631836873747309) -->
+    <skip />
+    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"Hierdie app kan liggingdata deel vir:"</string>
+    <!-- no translation found for permission_rationale_purpose_message (2136810388727916997) -->
+    <skip />
+    <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Datadeling verskil"</string>
+    <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Datapraktyke kan verskil op grond van jou appweergawe en -gebruik, streek en ouderdom. "<annotation id="link">"Meer oor datadeling"</annotation></string>
+    <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Jou liggingdata"</string>
+    <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Verander hierdie app se toegang in "<annotation id="link">"privaatheidinstellings"</annotation></string>
+    <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"Appfunksies"</string>
+    <!-- no translation found for permission_rationale_purpose_analytics (2070800501189620712) -->
+    <skip />
+    <string name="permission_rationale_purpose_developer_communications" msgid="6453047018892062374">"Ontwikkelaarkommunikasie"</string>
+    <string name="permission_rationale_purpose_advertising" msgid="7156966429245180236">"Reklame of bemarking"</string>
+    <string name="permission_rationale_purpose_fraud_prevention_security" msgid="4262104770357031902">"Bedrogvoorkoming, sekuriteit en voldoening"</string>
+    <!-- no translation found for permission_rationale_purpose_personalization (1589973273682238708) -->
+    <skip />
+    <string name="permission_rationale_purpose_account_management" msgid="2985772421946688879">"Rekeningbestuur"</string>
+    <string name="app_permission_rationale_message" msgid="8511466916077100713">"Dataveiligheid"</string>
+    <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Liggingdata sal dalk gedeel word"</string>
+    <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Hierdie app het verklaar dat dit jou liggingdata met derde partye kan deel"</string>
+    <string name="data_sharing_updates_title" msgid="7996933386875213859">"Datadelingopdaterings vir ligging"</string>
+    <string name="data_sharing_updates_summary" msgid="764113985772233889">"Gaan apps na wat die manier waarop hulle jou liggingdata kan deel, verander het"</string>
+    <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Hierdie apps het die manier waarop hulle jou liggingdata kan deel, verander. Hulle het dit dalk nie voorheen gedeel nie, of kan dit nou vir reklame- of bemarkingdoeleindes deel."</string>
+    <!-- no translation found for data_sharing_updates_footer_message (1582711655172892107) -->
+    <skip />
+    <string name="learn_about_data_sharing" msgid="4200480587079488045">"Kom meer te wete oor datadeling"</string>
+    <!-- no translation found for shares_location_with_third_parties (2278051743742057767) -->
+    <skip />
+    <!-- no translation found for shares_location_with_third_parties_for_advertising (1918588064014480513) -->
+    <skip />
+    <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{In die afgelope dag opgedateer}=1{In die afgelope dag opgedateer}other{In die afgelope # dae opgedateer}}"</string>
+    <string name="no_updates_at_this_time" msgid="9031085635689982935">"Geen opdaterings op hierdie tydstip nie"</string>
+    <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"Datadelingopdaterings"</string>
+    <string name="safety_label_changes_notification_desc" msgid="7808764283266234675">"Sommige apps het die manier waarop hulle jou liggingdata kan deel, verander"</string>
+    <string name="safety_label_changes_gear_description" msgid="2655887555599138509">"Instellings"</string>
 </resources>
