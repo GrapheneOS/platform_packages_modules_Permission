@@ -1887,6 +1887,7 @@ class SafetyCenterManagerTest {
     @Test
     @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun getSafetyCenterData_dupIssuesTopOneDismissedThenDisappears_bottomOneReemergesTimely() {
+        SafetyCenterFlags.tempHiddenIssueResurfaceDelay = Duration.ZERO
         SafetyCenterFlags.resurfaceIssueMaxCounts = mapOf(SEVERITY_LEVEL_CRITICAL_WARNING to 99L)
         SafetyCenterFlags.resurfaceIssueDelays =
             mapOf(SEVERITY_LEVEL_CRITICAL_WARNING to RESURFACE_DELAY)
@@ -1940,6 +1941,7 @@ class SafetyCenterManagerTest {
     @Test
     @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun getSafetyCenterData_dupsOfDiffSeveritiesTopOneDismissedThenGone_bottomOneReemergesTimely() {
+        SafetyCenterFlags.tempHiddenIssueResurfaceDelay = Duration.ZERO
         SafetyCenterFlags.resurfaceIssueMaxCounts =
             mapOf(
                 SEVERITY_LEVEL_INFORMATION to 0L,
@@ -2117,6 +2119,50 @@ class SafetyCenterManagerTest {
                         safetyCenterTestData.safetyCenterIssueCritical(
                             SOURCE_ID_1,
                             groupId = MULTIPLE_SOURCES_GROUP_ID_1
+                        )
+                    )
+            hasResurfaced
+        }
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getSafetyCenterData_dupIssuesTopOneResolved_bottomOneReemergesAfterTemporaryHiddenPeriod() {
+        SafetyCenterFlags.tempHiddenIssueResurfaceDelay = RESURFACE_DELAY
+        safetyCenterTestHelper.setConfig(
+            safetyCenterTestConfigs.multipleSourcesWithDeduplicationInfoConfig
+        )
+        // Belongs to DEDUPLICATION_GROUP_1
+        safetyCenterTestHelper.setData(
+            SOURCE_ID_1,
+            SafetySourceTestData.issuesOnly(
+                safetySourceTestData.criticalIssueWithDeduplicationId("same")
+            )
+        )
+        // Belongs to DEDUPLICATION_GROUP_1
+        safetyCenterTestHelper.setData(
+            SOURCE_ID_5,
+            SafetySourceTestData.issuesOnly(
+                safetySourceTestData.criticalIssueWithDeduplicationId("same")
+            )
+        )
+
+        val listener = safetyCenterTestHelper.addListener()
+        safetyCenterTestHelper.setData(SOURCE_ID_1, SafetySourceTestData.issuesOnly())
+
+        val apiSafetyCenterIssues = listener.receiveSafetyCenterData().issues
+
+        assertThat(apiSafetyCenterIssues).isEmpty()
+
+        waitForWithTimeout(timeout = RESURFACE_TIMEOUT, checkPeriod = RESURFACE_CHECK) {
+            val hasResurfaced =
+                safetyCenterManager
+                    .getSafetyCenterDataWithPermission()
+                    .issues
+                    .contains(
+                        safetyCenterTestData.safetyCenterIssueCritical(
+                            SOURCE_ID_5,
+                            groupId = MULTIPLE_SOURCES_GROUP_ID_2
                         )
                     )
             hasResurfaced

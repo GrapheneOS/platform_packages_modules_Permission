@@ -120,6 +120,14 @@ object SafetyCenterFlags {
             DurationParser()
         )
 
+    /** Flag that determines a duration after which a temporarily hidden issue will resurface. */
+    private val tempHiddenIssueResurfaceDelayFlag =
+        Flag(
+            "safety_center_temp_hidden_issue_resurface_delay_millis",
+            defaultValue = Duration.ofDays(2),
+            DurationParser()
+        )
+
     /**
      * Flag that determines the time for which Safety Center will wait before starting dismissal of
      * resolved issue UI
@@ -283,6 +291,7 @@ object SafetyCenterFlags {
             replaceLockScreenIconActionFlag,
             refreshSourceTimeoutsFlag,
             resolveActionTimeoutFlag,
+            tempHiddenIssueResurfaceDelayFlag,
             hideResolveUiTransitionDelayFlag,
             untrackedSourcesFlag,
             resurfaceIssueMaxCountsFlag,
@@ -331,6 +340,9 @@ object SafetyCenterFlags {
 
     /** A property that allows getting and setting the [resolveActionTimeoutFlag]. */
     var resolveActionTimeout: Duration by resolveActionTimeoutFlag
+
+    /** A property that allows getting and setting the [tempHiddenIssueResurfaceDelayFlag]. */
+    var tempHiddenIssueResurfaceDelay: Duration by tempHiddenIssueResurfaceDelayFlag
 
     /** A property that allows getting and setting the [hideResolveUiTransitionDelayFlag]. */
     var hideResolvedIssueUiTransitionDelay: Duration by hideResolveUiTransitionDelayFlag
