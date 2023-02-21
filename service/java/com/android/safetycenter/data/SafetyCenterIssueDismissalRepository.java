@@ -273,6 +273,62 @@ final class SafetyCenterIssueDismissalRepository {
         }
     }
 
+    /** Returns whether the issue is currently hidden. */
+    boolean isIssueHidden(SafetyCenterIssueKey safetyCenterIssueKey) {
+        IssueData issueData = getOrWarn(safetyCenterIssueKey, "checking if issue hidden");
+        if (issueData == null || !issueData.isHidden()) {
+            return false;
+        }
+
+        Instant timerStart = issueData.getResurfaceTimerStartTime();
+        if (timerStart == null) {
+            return true;
+        }
+
+        Duration delay = SafetyCenterFlags.getTemporarilyHiddenIssueResurfaceDelay();
+        Duration timeSinceTimerStarted = Duration.between(timerStart, Instant.now());
+        boolean isTimeToResurface = timeSinceTimerStarted.compareTo(delay) >= 0;
+
+        if (isTimeToResurface) {
+            issueData.setHidden(false);
+            issueData.setResurfaceTimerStartTime(null);
+            return false;
+        }
+        return true;
+    }
+
+    /** Hides the issue with the given {@link SafetyCenterIssueKey}. */
+    void hideIssue(SafetyCenterIssueKey safetyCenterIssueKey) {
+        IssueData issueData = getOrWarn(safetyCenterIssueKey, "hiding issue");
+        if (issueData != null) {
+            issueData.setHidden(true);
+            // to abide by the method was called last: hideIssue or resurfaceHiddenIssueAfterPeriod
+            issueData.setResurfaceTimerStartTime(null);
+        }
+    }
+
+    /**
+     * The issue with the given {@link SafetyCenterIssueKey} will be resurfaced (marked as not
+     * hidden) after a period of time defined by {@link
+     * SafetyCenterFlags#getTemporarilyHiddenIssueResurfaceDelay()}, such that {@link
+     * SafetyCenterIssueDismissalRepository#isIssueHidden} will start returning {@code false} for
+     * the given issue.
+     *
+     * <p>If this method is called multiple times in a row, the period will be set by the first call
+     * and all following calls won't have any effect.
+     */
+    void resurfaceHiddenIssueAfterPeriod(SafetyCenterIssueKey safetyCenterIssueKey) {
+        IssueData issueData = getOrWarn(safetyCenterIssueKey, "resurfaceIssueAfterPeriod");
+        if (issueData == null) {
+            return;
+        }
+
+        // if timer already started, we don't want to restart
+        if (issueData.getResurfaceTimerStartTime() == null) {
+            issueData.setResurfaceTimerStartTime(Instant.now());
+        }
+    }
+
     /** Takes a snapshot of the contents of the repository to be written to persistent storage. */
     private List<PersistedSafetyCenterIssue> snapshot() {
         List<PersistedSafetyCenterIssue> persistedIssues = new ArrayList<>();
@@ -446,6 +502,11 @@ final class SafetyCenterIssueDismissalRepository {
 
         @Nullable private Instant mNotificationDismissedAt;
 
+        // TODO(b/270015734): maybe persist those as well
+        private boolean mHidden = false;
+        // Moment when a theoretical timer starts - when it ends the issue gets unmarked as hidden.
+        @Nullable private Instant mResurfaceTimerStartTime;
+
         private IssueData(Instant firstSeenAt) {
             mFirstSeenAt = firstSeenAt;
         }
@@ -478,6 +539,23 @@ final class SafetyCenterIssueDismissalRepository {
 
         private void setNotificationDismissedAt(@Nullable Instant notificationDismissedAt) {
             mNotificationDismissedAt = notificationDismissedAt;
+        }
+
+        private boolean isHidden() {
+            return mHidden;
+        }
+
+        private void setHidden(boolean hidden) {
+            mHidden = hidden;
+        }
+
+        @Nullable
+        private Instant getResurfaceTimerStartTime() {
+            return mResurfaceTimerStartTime;
+        }
+
+        private void setResurfaceTimerStartTime(@Nullable Instant resurfaceTimerStartTime) {
+            this.mResurfaceTimerStartTime = resurfaceTimerStartTime;
         }
 
         private PersistedSafetyCenterIssue.Builder toPersistedIssueBuilder() {
