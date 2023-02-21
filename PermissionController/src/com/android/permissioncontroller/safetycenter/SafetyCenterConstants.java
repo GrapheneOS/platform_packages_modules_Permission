@@ -40,4 +40,7 @@ public class SafetyCenterConstants {
 
     /** Suffix used to identify a source in the Safety Center work profile */
     public static final String WORK_PROFILE_SUFFIX = "work";
+
+    /** Intent extra representing the preference key of a search result */
+    public static final String EXTRA_SETTINGS_FRAGMENT_ARGS_KEY = ":settings:fragment_args_key";
 }
