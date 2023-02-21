@@ -17,7 +17,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="scanning_title" msgid="5424849039854311398">"Analizan&amp;#173;do"</string>
+    <string name="scanning_title" msgid="5424849039854311398">"Analizan­do"</string>
     <string name="loading_summary" msgid="3740846439782713910">"Comprobando los ajustes del dispositivo…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Todo correcto"</string>
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"No se ha encontrado ningún problema"</string>
