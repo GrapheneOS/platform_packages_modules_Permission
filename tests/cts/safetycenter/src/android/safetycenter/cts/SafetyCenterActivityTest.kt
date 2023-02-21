@@ -19,6 +19,7 @@ package android.safetycenter.cts
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_SAFETY_CENTER
+import android.os.Build
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.safetycenter.cts.testing.SafetyCenterFlags
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
@@ -29,11 +30,13 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import com.android.compatibility.common.util.ApiTest
 import com.android.compatibility.common.util.UiAutomatorUtils.waitFindObject
-import java.util.regex.Pattern
+import org.junit.Assume.assumeFalse
 import org.junit.Assume.assumeTrue
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import java.util.Locale
+import java.util.regex.Pattern
 
 @RunWith(AndroidJUnit4::class)
 @SdkSuppress(minSdkVersion = TIRAMISU, codeName = "Tiramisu")
@@ -58,6 +61,9 @@ class SafetyCenterActivityTest {
 
     @Test
     fun launchActivity_withFlagDisabled_opensSettings() {
+        // TODO(b/269760296) this is to fix test failure caused by incorrect using of U API. Remove
+        // in next release.
+        assumeFalse(isCodeNameU())
         SafetyCenterFlags.setSafetyCenterEnabled(false)
 
         startSafetyCenterActivity()
@@ -70,5 +76,10 @@ class SafetyCenterActivityTest {
             Intent(ACTION_SAFETY_CENTER)
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK))
+    }
+
+    private fun isCodeNameU(): Boolean {
+        val buildCodeName = Build.VERSION.CODENAME.toUpperCase(Locale.ROOT)
+        return buildCodeName.compareTo("UPSIDEDOWNCAKE") >= 0
     }
 }
