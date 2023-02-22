@@ -60,7 +60,6 @@ import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveD
 import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPermission
-import com.android.permissioncontroller.permission.model.livedatatypes.SafetyLabelInfo
 import com.android.permissioncontroller.permission.service.PermissionChangeStorageImpl
 import com.android.permissioncontroller.permission.service.v33.PermissionDecisionStorageImpl
 import com.android.permissioncontroller.permission.ui.AdvancedConfirmDialogArgs
@@ -78,10 +77,8 @@ import com.android.permissioncontroller.permission.ui.v34.PermissionRationaleAct
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getDefaultPrecision
 import com.android.permissioncontroller.permission.utils.KotlinUtils.isLocationAccuracyEnabled
-import com.android.permissioncontroller.permission.utils.KotlinUtils.isPermissionRationaleEnabled
 import com.android.permissioncontroller.permission.utils.LocationUtils
 import com.android.permissioncontroller.permission.utils.PermissionMapping
-import com.android.permissioncontroller.permission.utils.PermissionRationales
 import com.android.permissioncontroller.permission.utils.SafetyNetLogger
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.navigateSafe
@@ -113,8 +110,6 @@ class AppPermissionViewModel(
         private const val DEVICE_PROFILE_ROLE_PREFIX = "android.app.role"
         const val PHOTO_PICKER_REQUEST_CODE = 1
     }
-
-    val safetyLabelInfoLiveData = SafetyLabelInfoLiveData[packageName, user]
 
     interface ConfirmDialogShowingFragment {
         fun showConfirmDialog(
@@ -182,6 +177,36 @@ class AppPermissionViewModel(
      * A livedata which stores the device admin, if there is one
      */
     val showAdminSupportLiveData = MutableLiveData<RestrictedLockUtils.EnforcedAdmin>()
+
+    /**
+     * A livedata for determining the display state of safety label information
+     */
+    val showPermissionRationaleLiveData = object : SmartUpdateMediatorLiveData<Boolean>() {
+        private val safetyLabelInfoLiveData = SafetyLabelInfoLiveData[packageName, user]
+
+        init {
+            if (PermissionMapping.isSafetyLabelAwarePermission(permGroupName)) {
+                addSource(safetyLabelInfoLiveData) { update() }
+            } else {
+                value = false
+            }
+        }
+
+        override fun onUpdate() {
+            if (safetyLabelInfoLiveData.isStale) {
+                return
+            }
+
+            val safetyLabel = safetyLabelInfoLiveData.value?.safetyLabel
+            if (safetyLabel == null) {
+                value = false
+                return
+            }
+
+            value = PermissionMapping.getSafetyLabelSharingPurposesForGroup(
+                    safetyLabel, permGroupName).any()
+        }
+    }
 
     /**
      * A livedata which determines which detail string, if any, should be shown
@@ -549,14 +574,6 @@ class AppPermissionViewModel(
         return true
     }
 
-    fun shouldShowPermissionRationale(
-        safetyLabelInfo: SafetyLabelInfo,
-        groupName: String
-    ): Boolean {
-        return PermissionRationales.shouldShowPermissionRationale(
-            safetyLabelInfo.safetyLabel, groupName)
-    }
-
     /**
      * Shows the Permission Rationale Dialog. For use with U+ only, otherwise no-op.
      *
@@ -564,10 +581,6 @@ class AppPermissionViewModel(
      * @param groupName The name of the permission group whose fragment should be opened
      */
     fun showPermissionRationaleActivity(activity: Activity, groupName: String) {
-        if (!isPermissionRationaleEnabled()) {
-            return
-        }
-
         val intent = Intent(activity, PermissionRationaleActivity::class.java).apply {
             putExtra(Intent.EXTRA_PACKAGE_NAME, packageName)
             putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, groupName)

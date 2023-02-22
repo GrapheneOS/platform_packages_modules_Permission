@@ -32,7 +32,10 @@ import java.util.Map;
  * {@link DataCategory}
  */
 public class DataLabel {
-    @VisibleForTesting static final String KEY_DATA_LABEL = "data_labels";
+
+    @VisibleForTesting(otherwise = VisibleForTesting.PACKAGE_PRIVATE)
+    static final String KEY_DATA_LABEL = "data_labels";
+
     private final Map<String, DataCategory> mDataCollected;
     private final Map<String, DataCategory> mDataShared;
 
