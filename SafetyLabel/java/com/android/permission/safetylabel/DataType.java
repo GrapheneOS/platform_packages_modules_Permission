@@ -35,7 +35,10 @@ import java.util.Set;
  * metadata related to the data usage purpose.
  */
 public class DataType {
-    @VisibleForTesting static final String KEY_PURPOSES = "purposes";
+
+    @VisibleForTesting(otherwise = VisibleForTesting.PACKAGE_PRIVATE)
+    static final String KEY_PURPOSES = "purposes";
+
     @VisibleForTesting static final String KEY_IS_COLLECTION_OPTIONAL = "is_collection_optional";
     @VisibleForTesting static final String KEY_EPHEMERAL = "ephemeral";
 

@@ -21,7 +21,13 @@ import android.content.pm.PackageManager
 import android.content.pm.PermissionInfo
 import android.health.connect.HealthPermissions.HEALTH_PERMISSION_GROUP
 import android.util.Log
+
 import com.android.modules.utils.build.SdkLevel
+import com.android.permission.safetylabel.DataCategory
+import com.android.permission.safetylabel.DataCategoryConstants
+import com.android.permission.safetylabel.DataType
+import com.android.permission.safetylabel.DataTypeConstants
+import com.android.permission.safetylabel.SafetyLabel
 
 /**
  * This file contains the canonical mapping of permission to permission group, used in the
@@ -30,6 +36,9 @@ import com.android.modules.utils.build.SdkLevel
 object PermissionMapping {
 
     private val LOG_TAG = "PermissionMapping"
+
+    private val PERMISSION_GROUPS_TO_DATA_CATEGORIES: Map<String, List<String>> = mapOf(
+        Manifest.permission_group.LOCATION to listOf(DataCategoryConstants.CATEGORY_LOCATION))
 
     @JvmField
     val SENSOR_DATA_PERMISSIONS: List<String> =
@@ -325,5 +334,65 @@ object PermissionMapping {
     @JvmStatic
     fun isHealthPermission(permissionName: String): Boolean {
         return HEALTH_PERMISSIONS_SET.contains(permissionName)
+    }
+
+    /**
+     * Get the sharing purposes for a SafetyLabel related to a specific permission group.
+     */
+    @JvmStatic
+    fun getSafetyLabelSharingPurposesForGroup(
+        safetyLabel: SafetyLabel,
+        groupName: String
+    ): Set<Int> {
+        val purposeSet = mutableSetOf<Int>()
+        val categoriesForPermission = getDataCategoriesForPermissionGroup(groupName)
+        categoriesForPermission.forEach categoryLoop@{ category ->
+            val dataCategory: DataCategory? = safetyLabel.dataLabel.dataShared[category]
+            if (dataCategory == null) {
+                // Continue to next
+                return@categoryLoop
+            }
+            val typesForCategory = DataTypeConstants.getValidDataTypesForCategory(category)
+            typesForCategory.forEach typeLoop@{ type ->
+                val dataType: DataType? = dataCategory.dataTypes[type]
+                if (dataType == null) {
+                    // Continue to next
+                    return@typeLoop
+                }
+                if (dataType.purposeSet.isNotEmpty()) {
+                    purposeSet.addAll(dataType.purposeSet)
+                }
+            }
+        }
+
+        return purposeSet
+    }
+
+    /**
+     * Get the SafetyLabel categories pertaining to a specified permission group.
+     *
+     * @return The categories, or an empty list if the group does not have a supported mapping
+     * to safety label category
+     */
+    fun getDataCategoriesForPermissionGroup(permissionGroupName: String): List<String> {
+        return if (isSafetyLabelAwarePermission(permissionGroupName)) {
+            PERMISSION_GROUPS_TO_DATA_CATEGORIES[permissionGroupName] ?: emptyList()
+        } else {
+            emptyList()
+        }
+    }
+
+    /**
+     * Whether this permission group maps to a SafetyLabel data category.
+     *
+     * @param permissionGroupName the permission group name
+     */
+    @JvmStatic
+    fun isSafetyLabelAwarePermission(permissionGroupName: String): Boolean {
+        if (!KotlinUtils.isPermissionRationaleEnabled()) {
+            return false
+        }
+
+        return PERMISSION_GROUPS_TO_DATA_CATEGORIES.containsKey(permissionGroupName)
     }
 }
