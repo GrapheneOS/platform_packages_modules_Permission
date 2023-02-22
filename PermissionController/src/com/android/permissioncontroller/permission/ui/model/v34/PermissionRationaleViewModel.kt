@@ -29,18 +29,23 @@ import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.android.permission.safetylabel.DataCategory
+import com.android.permission.safetylabel.DataType
+import com.android.permission.safetylabel.DataTypeConstants
+import com.android.permission.safetylabel.SafetyLabel
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.data.SafetyLabelInfoLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.data.get
+import com.android.permissioncontroller.permission.model.livedatatypes.SafetyLabelInfo.Companion.UNAVAILABLE
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_RESULT_PERMISSION_INTERACTED
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_RESULT_PERMISSION_RESULT
 import com.android.permissioncontroller.permission.ui.v34.PermissionRationaleActivity
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getAppStoreIntent
-import com.android.permissioncontroller.permission.utils.PermissionMapping
+import com.android.permissioncontroller.permission.utils.SafetyLabelPermissionMapping
 import com.android.settingslib.HelpUtils
 
 /**
@@ -85,7 +90,7 @@ class PermissionRationaleViewModel(
     data class PermissionRationaleInfo(
         val groupName: String,
         val installSourcePackageName: String?,
-        val installSourceLabel: String?,
+        val installSourceLabel: CharSequence?,
         val purposeSet: Set<Int>
     )
 
@@ -106,15 +111,18 @@ class PermissionRationaleViewModel(
                 }
 
                 val safetyLabelInfo = safetyLabelInfoLiveData.value
+                val safetyLabel = safetyLabelInfo?.safetyLabel
 
-                if (safetyLabelInfo?.safetyLabel == null) {
+                if (safetyLabelInfo == null ||
+                    safetyLabelInfo == UNAVAILABLE ||
+                    safetyLabel == null) {
                     Log.e(LOG_TAG, "Safety label for $packageName not found")
                     value = null
                     return
                 }
 
                 val installSourcePackageName = safetyLabelInfo.installSourcePackageName
-                val installSourceLabel: String? =
+                val installSourceLabel: CharSequence? =
                     installSourcePackageName?.let {
                         KotlinUtils.getPackageLabel(app, it, Process.myUserHandle())
                     }
@@ -124,8 +132,36 @@ class PermissionRationaleViewModel(
                         permissionGroupName,
                         installSourcePackageName,
                         installSourceLabel,
-                        PermissionMapping.getSafetyLabelSharingPurposesForGroup(
-                                safetyLabelInfo.safetyLabel, permissionGroupName))
+                        getSafetyLabelSharingPurposesForGroup(safetyLabel, permissionGroupName))
+            }
+
+            private fun getSafetyLabelSharingPurposesForGroup(
+                safetyLabel: SafetyLabel,
+                groupName: String
+            ): Set<Int> {
+                val purposeSet = mutableSetOf<Int>()
+                val categoriesForPermission: List<String> =
+                    SafetyLabelPermissionMapping.getCategoriesForPermissionGroup(groupName)
+                categoriesForPermission.forEach categoryLoop@{ category ->
+                    val dataCategory: DataCategory? = safetyLabel.dataLabel.dataShared[category]
+                    if (dataCategory == null) {
+                        // Continue to next
+                        return@categoryLoop
+                    }
+                    val typesForCategory = DataTypeConstants.getValidDataTypesForCategory(category)
+                    typesForCategory.forEach typeLoop@{ type ->
+                        val dataType: DataType? = dataCategory.dataTypes[type]
+                        if (dataType == null) {
+                            // Continue to next
+                            return@typeLoop
+                        }
+                        if (dataType.purposeSet.isNotEmpty()) {
+                            purposeSet.addAll(dataType.purposeSet)
+                        }
+                    }
+                }
+
+                return purposeSet
             }
         }
 
