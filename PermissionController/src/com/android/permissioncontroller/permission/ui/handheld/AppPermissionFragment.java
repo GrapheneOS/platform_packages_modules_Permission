@@ -73,7 +73,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.data.FullStoragePermissionAppsLiveData.FullStoragePackageState;
-import com.android.permissioncontroller.permission.model.livedatatypes.SafetyLabelInfo;
 import com.android.permissioncontroller.permission.ui.AdvancedConfirmDialogArgs;
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel;
@@ -87,11 +86,12 @@ import com.android.settingslib.RestrictedLockUtils;
 import com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 import com.android.settingslib.widget.ActionBarShadowController;
 
+import kotlin.Pair;
+
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
-
-import kotlin.Pair;
 
 /**
  * Show and manage a single permission group for an app.
@@ -195,10 +195,9 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
                 getActivity().getApplication(), mPackageName, mPermGroupName, mUser, mSessionId);
         mViewModel = new ViewModelProvider(this, factory).get(AppPermissionViewModel.class);
         Handler delayHandler = new Handler(Looper.getMainLooper());
-        if (KotlinUtils.INSTANCE.isPermissionRationaleEnabled()) {
-            mViewModel.getSafetyLabelInfoLiveData().observe(this,
-                    this::showPermissionRationaleDialog);
-        }
+        mViewModel.getShowPermissionRationaleLiveData().observe(this, show -> {
+            showPermissionRationaleDialog(Optional.ofNullable(show).orElse(false));
+        });
         mViewModel.getButtonStateLiveData().observe(this, buttonState -> {
             if (mIsInitialLoad) {
                 setRadioButtonsState(buttonState);
@@ -295,11 +294,6 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
                 root.requireViewById(R.id.app_permission_rationale_container);
         mAppPermissionRationaleContent =
                 root.requireViewById(R.id.app_permission_rationale_content);
-        if (!KotlinUtils.INSTANCE.isPermissionRationaleEnabled()) {
-            hidePermissionRationaleContainer();
-        } else {
-            setPermissionRationaleContainer(root, context);
-        }
 
         getActivity().setTitle(
                 getPreferenceManager().getContext().getString(R.string.app_permission_title,
@@ -307,29 +301,15 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         return root;
     }
 
-    private void setPermissionRationaleContainer(View root, Context context) {
-        ((TextView) root.requireViewById(R.id.app_permission_rationale_message)).setText(
-                context.getString(R.string.app_permission_rationale_message));
-        ((TextView) root.requireViewById(R.id.app_permission_rationale_title)).setText(
-                context.getString(R.string.app_location_permission_rationale_title));
-        ((TextView) root.requireViewById(R.id.app_permission_rationale_subtitle)).setText(
-                context.getString(R.string.app_location_permission_rationale_subtitle));
-    }
-
-    private void showPermissionRationaleDialog(@Nullable SafetyLabelInfo safetyLabelInfo) {
-        if (safetyLabelInfo == null
-                || !mViewModel.shouldShowPermissionRationale(safetyLabelInfo, mPermGroupName)) {
-            hidePermissionRationaleContainer();
+    private void showPermissionRationaleDialog(boolean showPermissionRationale) {
+        if (!showPermissionRationale) {
+            mAppPermissionRationaleContainer.setVisibility(View.GONE);
         } else {
             mAppPermissionRationaleContainer.setVisibility(View.VISIBLE);
             mAppPermissionRationaleContent.setOnClickListener((v) -> {
                 mViewModel.showPermissionRationaleActivity(getActivity(), mPermGroupName);
             });
         }
-    }
-
-    private void hidePermissionRationaleContainer() {
-        mAppPermissionRationaleContainer.setVisibility(View.GONE);
     }
 
     private void setBottomLinkState(TextView view, String caller, String action) {
