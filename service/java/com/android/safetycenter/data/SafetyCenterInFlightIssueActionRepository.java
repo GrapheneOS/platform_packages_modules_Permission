@@ -70,7 +70,7 @@ final class SafetyCenterInFlightIssueActionRepository {
      */
     boolean unmarkSafetyCenterIssueActionInFlight(
             SafetyCenterIssueActionId safetyCenterIssueActionId,
-            SafetySourceIssue safetySourceIssue,
+            @Nullable SafetySourceIssue safetySourceIssue,
             @SafetyCenterStatsdLogger.SystemEventResult int result) {
         Long startElapsedMillis =
                 mSafetyCenterIssueActionsInFlight.remove(safetyCenterIssueActionId);
