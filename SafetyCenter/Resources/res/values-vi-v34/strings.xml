@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  ~ Copyright (C) 2022 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+   -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- no translation found for health_connect_title (8318152190040327804) -->
+    <skip />
+    <!-- no translation found for health_connect_search_terms (4998970586245680829) -->
+    <skip />
+    <!-- no translation found for app_data_sharing_updates_title (7428862330643262588) -->
+    <skip />
+    <!-- no translation found for app_data_sharing_updates_search_terms (8414777373734245398) -->
+    <skip />
+    <!-- no translation found for ads_privacy_title (538822387058714869) -->
+    <skip />
+    <!-- no translation found for ads_privacy_summary (4977699525670966049) -->
+    <skip />
+    <!-- no translation found for ads_privacy_search_terms (8008413316055240046) -->
+    <skip />
+    <!-- no translation found for biometrics_title_for_work (1842284049407771568) -->
+    <skip />
+    <!-- no translation found for more_settings_title (663808090772098924) -->
+    <skip />
+    <!-- no translation found for more_settings_summary (3942352615407872716) -->
+    <skip />
+    <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
+</resources>
