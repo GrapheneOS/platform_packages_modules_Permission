@@ -245,8 +245,7 @@ final class SafetySourceDataRepository {
     /**
      * Returns the {@link SafetySourceIssue} associated with the given {@link SafetyCenterIssueKey}.
      *
-     * <p>Returns {@code null} if there is no such {@link SafetySourceIssue}, or if it's been
-     * dismissed.
+     * <p>Returns {@code null} if there is no such {@link SafetySourceIssue}.
      */
     @Nullable
     SafetySourceIssue getSafetySourceIssue(SafetyCenterIssueKey safetyCenterIssueKey) {
@@ -268,14 +267,6 @@ final class SafetySourceDataRepository {
                 break;
             }
         }
-        if (targetIssue == null) {
-            return null;
-        }
-
-        if (mSafetyCenterIssueDismissalRepository.isIssueDismissed(
-                safetyCenterIssueKey, targetIssue.getSeverityLevel())) {
-            return null;
-        }
 
         return targetIssue;
     }
@@ -284,8 +275,7 @@ final class SafetySourceDataRepository {
      * Returns the {@link SafetySourceIssue.Action} associated with the given {@link
      * SafetyCenterIssueActionId}.
      *
-     * <p>Returns {@code null} if there is no associated {@link SafetySourceIssue}, or if it's been
-     * dismissed.
+     * <p>Returns {@code null} if there is no associated {@link SafetySourceIssue}.
      *
      * <p>Returns {@code null} if the {@link SafetySourceIssue.Action} is currently in flight.
      */
