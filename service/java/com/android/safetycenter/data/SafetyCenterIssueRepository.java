@@ -18,9 +18,6 @@ package com.android.safetycenter.data;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
-import static java.util.Collections.emptyList;
-import static java.util.Collections.unmodifiableList;
-
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.content.Context;
@@ -63,11 +60,13 @@ final class SafetyCenterIssueRepository {
     private final Context mContext;
     private final SafetySourceDataRepository mSafetySourceDataRepository;
     private final SafetyCenterConfigReader mSafetyCenterConfigReader;
+    private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
 
     // Only available on Android U+.
     @Nullable private final SafetyCenterIssueDeduplicator mSafetyCenterIssueDeduplicator;
 
     // userId -> sorted and deduplicated list of issues
+    // can contain temporarily hidden issues
     private final SparseArray<List<SafetySourceIssueInfo>> mUserIdToIssuesInfo =
             new SparseArray<>();
 
@@ -75,10 +74,12 @@ final class SafetyCenterIssueRepository {
             Context context,
             SafetySourceDataRepository safetySourceDataRepository,
             SafetyCenterConfigReader safetyCenterConfigReader,
+            SafetyCenterIssueDismissalRepository safetyCenterIssueDismissalRepository,
             @Nullable SafetyCenterIssueDeduplicator safetyCenterIssueDeduplicator) {
         mContext = context;
         mSafetySourceDataRepository = safetySourceDataRepository;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
+        mSafetyCenterIssueDismissalRepository = safetyCenterIssueDismissalRepository;
         mSafetyCenterIssueDeduplicator = safetyCenterIssueDeduplicator;
     }
 
@@ -107,7 +108,7 @@ final class SafetyCenterIssueRepository {
         List<SafetySourceIssueInfo> issues =
                 getAllStoredIssuesFromRawSourceData(userId, isManagedProfile);
         processIssues(issues);
-        mUserIdToIssuesInfo.put(userId, unmodifiableList(issues));
+        mUserIdToIssuesInfo.put(userId, issues);
     }
 
     /**
@@ -144,9 +145,21 @@ final class SafetyCenterIssueRepository {
         return issueCount;
     }
 
-    /** Gets an unmodifiable list of all issues for the given {@code userId}. */
+    /** Gets a list of all issues for the given {@code userId}. */
     List<SafetySourceIssueInfo> getIssuesForUser(@UserIdInt int userId) {
-        return mUserIdToIssuesInfo.get(userId, emptyList());
+        return filterOutHiddenIssues(mUserIdToIssuesInfo.get(userId, new ArrayList<>()));
+    }
+
+    private List<SafetySourceIssueInfo> filterOutHiddenIssues(List<SafetySourceIssueInfo> issues) {
+        List<SafetySourceIssueInfo> result = new ArrayList<>();
+        for (int i = 0; i < issues.size(); i++) {
+            SafetySourceIssueInfo issueInfo = issues.get(i);
+            if (!mSafetyCenterIssueDismissalRepository.isIssueHidden(
+                    issueInfo.getSafetyCenterIssueKey())) {
+                result.add(issueInfo);
+            }
+        }
+        return result;
     }
 
     private void processIssues(List<SafetySourceIssueInfo> issuesInfo) {

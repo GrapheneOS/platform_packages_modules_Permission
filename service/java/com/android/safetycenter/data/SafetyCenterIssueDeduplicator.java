@@ -22,6 +22,7 @@ import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.util.ArrayMap;
 import android.util.ArraySet;
+import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
@@ -39,6 +40,8 @@ import javax.annotation.concurrent.NotThreadSafe;
 @RequiresApi(UPSIDE_DOWN_CAKE)
 @NotThreadSafe
 final class SafetyCenterIssueDeduplicator {
+
+    private static final String TAG = "SafetyCenterDedup";
 
     private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
 
@@ -74,14 +77,37 @@ final class SafetyCenterIssueDeduplicator {
         ArraySet<SafetyCenterIssueKey> duplicatesToFilterOut =
                 getDuplicatesToFilterOut(dedupBuckets);
 
+        resurfaceHiddenIssuesIfNeeded(dedupBuckets);
+
         if (duplicatesToFilterOut.isEmpty()) {
             return;
         }
 
         Iterator<SafetySourceIssueInfo> it = sortedIssues.iterator();
         while (it.hasNext()) {
-            if (duplicatesToFilterOut.contains(it.next().getSafetyCenterIssueKey())) {
+            SafetyCenterIssueKey issueKey = it.next().getSafetyCenterIssueKey();
+            if (duplicatesToFilterOut.contains(issueKey)) {
                 it.remove();
+                // mark as temporarily hidden, which will delay showing these issues if the top
+                // issue gets resolved.
+                mSafetyCenterIssueDismissalRepository.hideIssue(issueKey);
+            }
+        }
+    }
+
+    private void resurfaceHiddenIssuesIfNeeded(
+            ArrayMap<DeduplicationKey, List<SafetySourceIssueInfo>> dedupBuckets) {
+        for (int i = 0; i < dedupBuckets.size(); i++) {
+            List<SafetySourceIssueInfo> duplicates = dedupBuckets.valueAt(i);
+            if (duplicates.isEmpty()) {
+                Log.w(TAG, "List of duplicates in a dedupBucket is empty");
+                continue;
+            }
+
+            // top issue in the bucket, if hidden, should resurface after certain period
+            SafetyCenterIssueKey topIssueKey = duplicates.get(0).getSafetyCenterIssueKey();
+            if (mSafetyCenterIssueDismissalRepository.isIssueHidden(topIssueKey)) {
+                mSafetyCenterIssueDismissalRepository.resurfaceHiddenIssueAfterPeriod(topIssueKey);
             }
         }
     }
@@ -196,15 +222,17 @@ final class SafetyCenterIssueDeduplicator {
     }
 
     /** Returns a set of duplicate issues that need to be filtered out. */
-    private static ArraySet<SafetyCenterIssueKey> getDuplicatesToFilterOut(
+    private ArraySet<SafetyCenterIssueKey> getDuplicatesToFilterOut(
             ArrayMap<DeduplicationKey, List<SafetySourceIssueInfo>> dedupBuckets) {
         ArraySet<SafetyCenterIssueKey> duplicatesToFilterOut = new ArraySet<>();
 
         for (int i = 0; i < dedupBuckets.size(); i++) {
             List<SafetySourceIssueInfo> duplicates = dedupBuckets.valueAt(i);
+
             // all but the top one in the bucket
             for (int j = 1; j < duplicates.size(); j++) {
-                duplicatesToFilterOut.add(duplicates.get(j).getSafetyCenterIssueKey());
+                SafetyCenterIssueKey issueKey = duplicates.get(j).getSafetyCenterIssueKey();
+                duplicatesToFilterOut.add(issueKey);
             }
         }
 
