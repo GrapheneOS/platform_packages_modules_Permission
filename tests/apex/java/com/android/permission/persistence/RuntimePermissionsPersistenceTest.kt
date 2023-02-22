@@ -46,7 +46,7 @@ class RuntimePermissionsPersistenceTest {
     private lateinit var mockitoSession: MockitoSession
     @Mock lateinit var apexEnvironment: ApexEnvironment
 
-    private val persistence = RuntimePermissionsPersistence.createInstance()
+    private val persistence = RuntimePermissionsPersistenceImpl {}
     private val permissionState = RuntimePermissionsState.PermissionState("permission", true, 3)
     private val state =
         RuntimePermissionsState(

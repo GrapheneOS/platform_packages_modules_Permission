@@ -46,7 +46,7 @@ class RolesPersistenceTest {
     private lateinit var mockitoSession: MockitoSession
     @Mock lateinit var apexEnvironment: ApexEnvironment
 
-    private val persistence = RolesPersistence.createInstance()
+    private val persistence = RolesPersistenceImpl {}
     private val state = RolesState(1, "packagesHash", mapOf("role" to setOf("holder1", "holder2")))
     private val user = Process.myUserHandle()
 
