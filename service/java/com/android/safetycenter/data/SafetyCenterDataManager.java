@@ -61,11 +61,8 @@ import javax.annotation.concurrent.NotThreadSafe;
 public final class SafetyCenterDataManager {
 
     private final SafetySourceDataRepository mSafetySourceDataRepository;
-
     private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
-
     private final SafetyCenterIssueRepository mSafetyCenterIssueRepository;
-
     private final SafetyCenterInFlightIssueActionRepository
             mSafetyCenterInFlightIssueActionRepository;
 

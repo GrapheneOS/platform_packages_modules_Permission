@@ -312,11 +312,7 @@ public final class SafetyCenterDataFactory {
                         .setSafetyCenterIssueKey(safetyCenterIssueKey)
                         .setSafetySourceIssueActionId(safetySourceIssueAction.getId())
                         .build();
-        PendingIntent issueActionPendingIntent =
-                mPendingIntentFactory.maybeOverridePendingIntent(
-                        safetyCenterIssueKey.getSafetySourceId(),
-                        safetySourceIssueAction.getPendingIntent(),
-                        false);
+        PendingIntent issueActionPendingIntent = safetySourceIssueAction.getPendingIntent();
 
         SafetyCenterIssue.Action.Builder builder =
                 new SafetyCenterIssue.Action.Builder(
@@ -610,16 +606,12 @@ public final class SafetyCenterDataFactory {
                                 .setSummary(safetySourceStatus.getSummary())
                                 .setEnabled(enabled)
                                 .setSeverityUnspecifiedIconType(severityUnspecifiedIconType)
-                                .setPendingIntent(
-                                        mPendingIntentFactory.maybeOverridePendingIntent(
-                                                safetySource.getId(), entryPendingIntent, false));
+                                .setPendingIntent(entryPendingIntent);
                 SafetySourceStatus.IconAction iconAction = safetySourceStatus.getIconAction();
                 if (iconAction == null) {
                     return builder.build();
                 }
-                PendingIntent iconActionPendingIntent =
-                        mPendingIntentFactory.maybeOverridePendingIntent(
-                                safetySource.getId(), iconAction.getPendingIntent(), true);
+                PendingIntent iconActionPendingIntent = iconAction.getPendingIntent();
                 return builder.setIconAction(
                                 new SafetyCenterEntry.IconAction(
                                         toSafetyCenterEntryIconActionType(iconAction.getIconType()),
