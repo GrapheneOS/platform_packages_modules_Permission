@@ -74,7 +74,7 @@ private constructor(
                     getInstallSourceInfo(userContext, packageName).installingPackageName)
             } catch (e: PackageManager.NameNotFoundException) {
                 Log.w(LOG_TAG, "InstallSourceInfo for $packageName not found")
-                LightInstallSourceInfoLiveData.invalidateSingle(packageName to user)
+                SafetyLabelInfoLiveData.invalidateSingle(packageName to user)
                 UNKNOWN_INSTALL_SOURCE
             }
         postValue(lightInstallSourceInfo)

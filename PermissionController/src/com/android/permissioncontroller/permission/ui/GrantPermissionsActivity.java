@@ -89,7 +89,7 @@ import java.util.Random;
 public class GrantPermissionsActivity extends SettingsActivity
         implements GrantPermissionsViewHandler.ResultListener {
 
-    private static final String LOG_TAG = "GrantPermissionsActivity";
+    private static final String LOG_TAG = "GrantPermissionsActivit";
 
     private static final String KEY_SESSION_ID = GrantPermissionsActivity.class.getName()
             + "_REQUEST_ID";
