@@ -92,6 +92,7 @@ public final class SafetyCenterDataManager {
                         context,
                         mSafetySourceDataRepository,
                         safetyCenterConfigReader,
+                        mSafetyCenterIssueDismissalRepository,
                         SdkLevel.isAtLeastU()
                                 ? new SafetyCenterIssueDeduplicator(
                                         mSafetyCenterIssueDismissalRepository)
