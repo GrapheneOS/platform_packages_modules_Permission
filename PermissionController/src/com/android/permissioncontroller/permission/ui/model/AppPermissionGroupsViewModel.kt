@@ -229,9 +229,9 @@ class AppPermissionGroupsViewModel(
     fun setAutoRevoke(enabled: Boolean) {
         GlobalScope.launch(IPC) {
             val aom = app.getSystemService(AppOpsManager::class.java)!!
-            val uid = LightPackageInfoLiveData[packageName, user].getInitializedValue()?.uid
+            val lightPackageInfo = LightPackageInfoLiveData[packageName, user].getInitializedValue()
 
-            if (uid != null) {
+            if (lightPackageInfo != null) {
                 Log.i(LOG_TAG, "sessionId $sessionId setting auto revoke enabled to $enabled for" +
                     "$packageName $user")
                 val tag = if (enabled) {
@@ -240,15 +240,15 @@ class AppPermissionGroupsViewModel(
                     APP_PERMISSION_GROUPS_FRAGMENT_AUTO_REVOKE_ACTION__ACTION__SWITCH_DISABLED
                 }
                 PermissionControllerStatsLog.write(
-                    APP_PERMISSION_GROUPS_FRAGMENT_AUTO_REVOKE_ACTION, sessionId, uid, packageName,
-                    tag)
+                    APP_PERMISSION_GROUPS_FRAGMENT_AUTO_REVOKE_ACTION, sessionId,
+                    lightPackageInfo.uid, packageName, tag)
 
                 val mode = if (enabled) {
                     MODE_ALLOWED
                 } else {
                     MODE_IGNORED
                 }
-                aom.setUidMode(OPSTR_AUTO_REVOKE_PERMISSIONS_IF_UNUSED, uid, mode)
+                aom.setUidMode(OPSTR_AUTO_REVOKE_PERMISSIONS_IF_UNUSED, lightPackageInfo.uid, mode)
                 if (isHibernationEnabled() &&
                     SdkLevel.isAtLeastSv2() &&
                     !enabled) {
