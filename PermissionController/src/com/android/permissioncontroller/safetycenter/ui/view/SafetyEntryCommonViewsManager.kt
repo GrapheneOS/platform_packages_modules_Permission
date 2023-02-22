@@ -28,8 +28,8 @@ import com.android.permissioncontroller.safetycenter.ui.SeverityIconPicker
 
 internal class SafetyEntryCommonViewsManager(rootEntryView: ViewGroup?) {
 
-    private val titleView: TextView? by lazy { rootEntryView?.findViewById(R.id.title) }
-    private val summaryView: TextView? by lazy { rootEntryView?.findViewById(R.id.summary) }
+    val titleView: TextView? by lazy { rootEntryView?.findViewById(R.id.title) }
+    val summaryView: TextView? by lazy { rootEntryView?.findViewById(R.id.summary) }
     private val iconView: ImageView? by lazy { rootEntryView?.findViewById(R.id.icon) }
     private val iconFrame: View? by lazy { rootEntryView?.findViewById(R.id.icon_frame) }
     private val emptySpace: View? by lazy { rootEntryView?.findViewById(R.id.empty_space) }
@@ -43,23 +43,15 @@ internal class SafetyEntryCommonViewsManager(rootEntryView: ViewGroup?) {
         titleView?.text = title
         summaryView?.showText(summary)
 
-        iconView?.setImageResource(SeverityIconPicker.selectIconResId(
-                severityLevel, severityUnspecifiedIconType))
+        iconView?.setImageResource(
+            SeverityIconPicker.selectIconResId(severityLevel, severityUnspecifiedIconType)
+        )
 
-        val hideIcon = (severityLevel == ENTRY_SEVERITY_LEVEL_UNSPECIFIED &&
+        val hideIcon =
+            (severityLevel == ENTRY_SEVERITY_LEVEL_UNSPECIFIED &&
                 severityUnspecifiedIconType == SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON)
         iconFrame?.visibility = if (hideIcon) LinearLayout.GONE else LinearLayout.VISIBLE
         emptySpace?.visibility = if (hideIcon) LinearLayout.VISIBLE else LinearLayout.GONE
-    }
-
-    fun changeEnabledState(isEnabled: Boolean) {
-        if (isEnabled) {
-            titleView?.alpha = 1f
-            summaryView?.alpha = 1f
-        } else {
-            titleView?.alpha = 0.4f
-            summaryView?.alpha = 0.4f
-        }
     }
 
     private fun TextView.showText(text: CharSequence?) {
@@ -68,6 +60,26 @@ internal class SafetyEntryCommonViewsManager(rootEntryView: ViewGroup?) {
             this.text = text
         } else {
             visibility = View.GONE
+        }
+    }
+
+    companion object {
+
+        /**
+         * Change opacity to make some entries to look disabled but still be clickable
+         *
+         * @param isEnabled whether the [android.safetycenter.SafetyCenterEntry] is enabled
+         * @param titleView view displaying the title text of the entry
+         * @param summaryView view displaying the summary text of the entry
+         */
+        fun changeEnabledState(isEnabled: Boolean, titleView: TextView?, summaryView: TextView?) {
+            if (isEnabled) {
+                titleView?.alpha = 1f
+                summaryView?.alpha = 1f
+            } else {
+                titleView?.alpha = 0.4f
+                summaryView?.alpha = 0.4f
+            }
         }
     }
 }
