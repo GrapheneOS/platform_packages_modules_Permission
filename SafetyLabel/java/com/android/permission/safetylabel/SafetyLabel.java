@@ -28,10 +28,6 @@ import java.util.Locale;
 /** Safety Label representation containing zero or more {@link DataCategory} for data shared */
 public class SafetyLabel {
     private static final String TAG = "SafetyLabel";
-
-    private static final long INITIAL_METADATA_VERSION = 1L;
-    private static final long INITIAL_SAFETY_LABELS_VERSION = 1L;
-
     @VisibleForTesting static final String KEY_SAFETY_LABEL = "safety_labels";
     public static final String KEY_VERSION = "version";
     private final DataLabel mDataLabel;
@@ -71,44 +67,6 @@ public class SafetyLabel {
             return null;
         }
         return new SafetyLabel(dataLabel);
-    }
-
-    /**
-     * Create a placeholder SafetyLabel for use for testing.
-     * This is accessible through device configs.
-     */
-    @NonNull
-    public static SafetyLabel getPlaceholderSafetyLabel() {
-        return getSafetyLabelFromMetadata(getPlaceholderMetadataBundle());
-    }
-
-    @NonNull
-    private static PersistableBundle getPlaceholderMetadataBundle() {
-        PersistableBundle approximateLocationBundle = new PersistableBundle();
-        approximateLocationBundle.putIntArray(DataType.KEY_PURPOSES,
-                new int[] { 1, 2, 3, 4, 5, 6, 7 });
-
-        PersistableBundle locationBundle = new PersistableBundle();
-        locationBundle.putPersistableBundle(DataTypeConstants.LOCATION_APPROX_LOCATION,
-                approximateLocationBundle);
-
-        PersistableBundle dataSharedBundle = new PersistableBundle();
-        dataSharedBundle.putPersistableBundle(DataCategoryConstants.CATEGORY_LOCATION,
-                locationBundle);
-
-        PersistableBundle dataLabelBundle = new PersistableBundle();
-        dataLabelBundle.putPersistableBundle(DataLabelConstants.DATA_USAGE_SHARED,
-                dataSharedBundle);
-
-        PersistableBundle safetyLabelBundle = new PersistableBundle();
-        safetyLabelBundle.putLong(KEY_VERSION, INITIAL_SAFETY_LABELS_VERSION);
-        safetyLabelBundle.putPersistableBundle(DataLabel.KEY_DATA_LABEL, dataLabelBundle);
-
-        PersistableBundle metadataBundle = new PersistableBundle();
-        metadataBundle.putLong(KEY_VERSION, INITIAL_METADATA_VERSION);
-        metadataBundle.putPersistableBundle(KEY_SAFETY_LABEL, safetyLabelBundle);
-
-        return metadataBundle;
     }
 
     /** Returns the data label for the safety label */
