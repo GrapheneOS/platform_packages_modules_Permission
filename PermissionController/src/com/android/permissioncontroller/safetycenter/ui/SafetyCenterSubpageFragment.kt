@@ -51,7 +51,7 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
         subpageEntryGroup = getPreferenceScreen().findPreference(ENTRY_GROUP_KEY)!!
         subpageFooter = getPreferenceScreen().findPreference(FOOTER_KEY)!!
 
-        subpageBrandChip.setupListener(requireActivity(), requireContext())
+        subpageBrandChip.setupListener(requireActivity())
         setupIllustration()
         setupFooter()
     }
