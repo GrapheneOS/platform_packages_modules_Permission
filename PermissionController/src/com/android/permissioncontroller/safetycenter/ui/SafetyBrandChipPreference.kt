@@ -49,9 +49,8 @@ internal class SafetyBrandChipPreference(context: Context, attrs: AttributeSet) 
      * Sets the listener that handles clicks for the brand chip
      *
      * @param activity represents the parent activity of the fragment
-     * @param context represents the context associated with the fragment
      */
-    fun setupListener(activity: FragmentActivity, context: Context) {
+    fun setupListener(activity: FragmentActivity) {
         brandChipClickListener = View.OnClickListener { closeSubpage(activity, context) }
     }
 
