@@ -591,5 +591,36 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"แสดงข้อความเมื่อแอปเข้าถึงข้อความ รูปภาพ หรือเนื้อหาอื่นๆ ที่คุณคัดลอก"</string>
     <string name="show_password_title" msgid="2877269286984684659">"แสดงรหัสผ่าน"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"แสดงอักขระชั่วครู่ขณะพิมพ์"</string>
-    <string name="permission_rationale_message_location" msgid="2153841534298068414">"แอปนี้ระบุว่าแอปอาจแชร์ข้อมูลตำแหน่งกับองค์กรบุคคลที่สามของแอป"</string>
+    <string name="permission_rationale_message_location" msgid="5559450538205092588">"แอปนี้ระบุว่าอาจแชร์ข้อมูลตำแหน่งของคุณกับบุคคลที่สาม"</string>
+    <string name="permission_rationale_location_title" msgid="2404797182678793506">"การแชร์ข้อมูลและตำแหน่ง"</string>
+    <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"แหล่งที่มาของรายละเอียดการแชร์ข้อมูล"</string>
+    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"นักพัฒนาแอปได้ให้ข้อมูลไว้ใน "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" เกี่ยวกับวิธีที่แอปนี้แชร์ข้อมูล โดยอาจอัปเดตข้อมูลนี้เมื่อเวลาผ่านไป"</string>
+    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"แอปอาจแชร์ข้อมูลตำแหน่งเพื่อวัตถุประสงค์ต่อไปนี้"</string>
+    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
+    <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"การแชร์ข้อมูลแตกต่างกันไปตามปัจจัยต่างๆ"</string>
+    <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"วิธีจัดการข้อมูลอาจแตกต่างกันไปตามเวอร์ชันแอป การใช้งาน ภูมิภาค และอายุของผู้ใช้ "<annotation id="link">"รายละเอียดเพิ่มเติมเกี่ยวกับการแชร์ข้อมูล"</annotation></string>
+    <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"ข้อมูลตำแหน่งของคุณ"</string>
+    <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"เปลี่ยนสิทธิ์เข้าถึงของแอปนี้ใน"<annotation id="link">"การตั้งค่าความเป็นส่วนตัว"</annotation></string>
+    <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"ฟังก์ชันการทำงานของแอป"</string>
+    <string name="permission_rationale_purpose_analytics" msgid="2070800501189620712">"การวิเคราะห์"</string>
+    <string name="permission_rationale_purpose_developer_communications" msgid="6453047018892062374">"การสื่อสารจากนักพัฒนาแอป"</string>
+    <string name="permission_rationale_purpose_advertising" msgid="7156966429245180236">"การโฆษณาหรือการตลาด"</string>
+    <string name="permission_rationale_purpose_fraud_prevention_security" msgid="4262104770357031902">"การป้องกันการประพฤติมิชอบ การรักษาความปลอดภัย และการปฏิบัติตามข้อกำหนด"</string>
+    <string name="permission_rationale_purpose_personalization" msgid="1589973273682238708">"การปรับเปลี่ยนในแบบของคุณ"</string>
+    <string name="permission_rationale_purpose_account_management" msgid="2985772421946688879">"การจัดการบัญชี"</string>
+    <string name="app_permission_rationale_message" msgid="8511466916077100713">"ความปลอดภัยของข้อมูล"</string>
+    <string name="app_location_permission_rationale_title" msgid="925420340572401350">"อาจมีการแชร์ข้อมูลตำแหน่ง"</string>
+    <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"แอปนี้ระบุว่าอาจแชร์ข้อมูลตำแหน่งของคุณกับบุคคลที่สาม"</string>
+    <string name="data_sharing_updates_title" msgid="7996933386875213859">"การอัปเดตการแชร์ข้อมูลตำแหน่ง"</string>
+    <string name="data_sharing_updates_summary" msgid="764113985772233889">"ตรวจสอบแอปที่เปลี่ยนแปลงวิธีที่อาจใช้แชร์ข้อมูลตำแหน่งของคุณ"</string>
+    <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"แอปต่อไปนี้ได้เปลี่ยนแปลงวิธีที่แอปอาจแชร์ข้อมูลตำแหน่งของคุณ โดยที่แอปอาจไม่เคยแชร์มาก่อน หรืออาจแชร์ในตอนนี้เพื่อวัตถุประสงค์ในการโฆษณาหรือการตลาดก็ได้"</string>
+    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"นักพัฒนาแอปเหล่านี้ได้ให้ข้อมูลเกี่ยวกับแนวทางปฏิบัติในการแชร์ข้อมูลไว้ใน App Store นักพัฒนาแอปอาจอัปเดตข้อมูลนี้เมื่อเวลาผ่านไป\n\nแนวทางปฏิบัติในการแชร์ข้อมูลอาจแตกต่างกันไปตามเวอร์ชันของแอป การใช้งาน ภูมิภาค และอายุ"</string>
+    <string name="learn_about_data_sharing" msgid="4200480587079488045">"ดูรายละเอียดเกี่ยวกับการแชร์ข้อมูล"</string>
+    <string name="shares_location_with_third_parties" msgid="2278051743742057767">"มีการแชร์ข้อมูลตำแหน่งกับบุคคลที่สามในขณะนี้"</string>
+    <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"มีการแชร์ข้อมูลตำแหน่งกับบุคคลที่สามเพื่อวัตถุประสงค์ในการโฆษณาหรือการตลาดในขณะนี้"</string>
+    <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{อัปเดตภายในวันที่ผ่านมา}=1{อัปเดตภายในวันที่ผ่านมา}other{อัปเดตภายใน # วันที่ผ่านมา}}"</string>
+    <string name="no_updates_at_this_time" msgid="9031085635689982935">"ยังไม่มีข้อมูลอัปเดตในขณะนี้"</string>
+    <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"การอัปเดตการแชร์ข้อมูล"</string>
+    <string name="safety_label_changes_notification_desc" msgid="7808764283266234675">"มีบางแอปเปลี่ยนแปลงวิธีที่แอปอาจแชร์ข้อมูลตำแหน่งของคุณ"</string>
+    <string name="safety_label_changes_gear_description" msgid="2655887555599138509">"การตั้งค่า"</string>
 </resources>

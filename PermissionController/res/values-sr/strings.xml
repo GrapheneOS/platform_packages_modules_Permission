@@ -591,5 +591,36 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Приказује поруку када апликације приступају тексту, сликама или другом садржају који сте копирали"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Приказуј лозинке"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Приказује знакове накратко док куцате"</string>
-    <string name="permission_rationale_message_location" msgid="2153841534298068414">"Ова апликација наводи да може да дели податке са трећим странама"</string>
+    <string name="permission_rationale_message_location" msgid="5559450538205092588">"Ова апликација наводи да може да дели податке о локацији са трећим странама"</string>
+    <string name="permission_rationale_location_title" msgid="2404797182678793506">"Дељење података и локација"</string>
+    <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Одакле информације о дељењу података потичу"</string>
+    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"Програмер је навео информације о томе како ова апликација дели податке за: "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>". Он може да ажурира те информације током времена."</string>
+    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"Апликација може да дели податке о локацији за:"</string>
+    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
+    <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Дељење података варира"</string>
+    <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Праксе за податке могу да се разликују у зависности од верзије апликације, коришћења, региона и узраста. "<annotation id="link">"Још о дељењу података"</annotation></string>
+    <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Подаци о локацији"</string>
+    <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Промените приступ ове апликације у "<annotation id="link">"подешавањима приватности"</annotation></string>
+    <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"Функције апликације"</string>
+    <string name="permission_rationale_purpose_analytics" msgid="2070800501189620712">"Аналитика"</string>
+    <string name="permission_rationale_purpose_developer_communications" msgid="6453047018892062374">"Поруке програмера"</string>
+    <string name="permission_rationale_purpose_advertising" msgid="7156966429245180236">"Оглашавање или маркетинг"</string>
+    <string name="permission_rationale_purpose_fraud_prevention_security" msgid="4262104770357031902">"Спречавање превара, безбедност и усаглашеност"</string>
+    <string name="permission_rationale_purpose_personalization" msgid="1589973273682238708">"Персонализација"</string>
+    <string name="permission_rationale_purpose_account_management" msgid="2985772421946688879">"Управљање налогом"</string>
+    <string name="app_permission_rationale_message" msgid="8511466916077100713">"Безбедност података"</string>
+    <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Подаци о локацији могу да се деле"</string>
+    <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Ова апликација наводи да може да дели податке о локацији са трећим странама"</string>
+    <string name="data_sharing_updates_title" msgid="7996933386875213859">"Ажурирања дељења података за локацију"</string>
+    <string name="data_sharing_updates_summary" msgid="764113985772233889">"Прегледајте апликације које су промениле начин на који могу да деле податке о локацији"</string>
+    <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Апликације су промениле начин на који могу да деле податке о локацији. Можда их нису делиле раније или их сада деле у сврхе оглашавања или маркетинга."</string>
+    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Програмери ових апликација су пружили податке о праксама за дељење података продавници апликација. Могу да их ажурирају током времена.\n\nПраксе за дељење података могу да се разликују у зависности од верзије апликације, коришћења, региона и узраста."</string>
+    <string name="learn_about_data_sharing" msgid="4200480587079488045">"Сазнајте више о дељењу података"</string>
+    <string name="shares_location_with_third_parties" msgid="2278051743742057767">"Подаци о локацији се сада деле са трећим странама"</string>
+    <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"Подаци о локацији се сада деле са трећим странама у сврху оглашавања или маркетинга"</string>
+    <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{Ажурирано током претходног дана}=1{Ажурирано током претходног дана}one{Ажурирано током претходног # дана}few{Ажурирано током претходна # дана}other{Ажурирано током претходних # дана}}"</string>
+    <string name="no_updates_at_this_time" msgid="9031085635689982935">"Тренутно нема ажурирања"</string>
+    <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"Ажурирања за дељење података"</string>
+    <string name="safety_label_changes_notification_desc" msgid="7808764283266234675">"Неке апликације су промениле начин на који могу да деле податке о локацији"</string>
+    <string name="safety_label_changes_gear_description" msgid="2655887555599138509">"Подешавања"</string>
 </resources>
