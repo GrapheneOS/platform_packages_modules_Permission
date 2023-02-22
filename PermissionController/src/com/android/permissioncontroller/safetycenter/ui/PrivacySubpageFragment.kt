@@ -60,6 +60,8 @@ class PrivacySubpageFragment : SafetyCenterFragment() {
             prefStates: Map<Pref, PrefState> ->
             renderPrivacyControls(prefStates)
         }
+
+        prerenderCurrentSafetyCenterData()
     }
 
     override fun onResume() {
