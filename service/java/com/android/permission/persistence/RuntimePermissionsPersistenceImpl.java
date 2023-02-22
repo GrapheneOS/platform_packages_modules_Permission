@@ -28,6 +28,8 @@ import android.util.Log;
 import android.util.Xml;
 
 import com.android.internal.annotations.VisibleForTesting;
+import com.android.modules.utils.build.SdkLevel;
+import com.android.server.security.FileIntegrity;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -69,6 +71,27 @@ public class RuntimePermissionsPersistenceImpl implements RuntimePermissionsPers
     private static final String ATTRIBUTE_GRANTED = "granted";
     private static final String ATTRIBUTE_NAME = "name";
     private static final String ATTRIBUTE_VERSION = "version";
+
+    @VisibleForTesting
+    interface Injector {
+        void enableFsVerity(@NonNull File file) throws IOException;
+    }
+
+    @NonNull
+    private final Injector mInjector;
+
+    RuntimePermissionsPersistenceImpl() {
+        this(file -> {
+            if (SdkLevel.isAtLeastU()) {
+                FileIntegrity.setUpFsVerity(file);
+            }
+        });
+    }
+
+    @VisibleForTesting
+    RuntimePermissionsPersistenceImpl(@NonNull Injector injector) {
+        mInjector = injector;
+    }
 
     @Nullable
     @Override
@@ -223,6 +246,13 @@ public class RuntimePermissionsPersistenceImpl implements RuntimePermissionsPers
             out.getFD().sync();
         } catch (Exception e) {
             Log.e(LOG_TAG, "Failed to write reserve copy: " + reserveFile, e);
+        }
+
+        try {
+            mInjector.enableFsVerity(file);
+            mInjector.enableFsVerity(reserveFile);
+        } catch (Exception e) {
+            Log.e(LOG_TAG, "Failed to verity-protect runtime-permissions", e);
         }
     }
 
