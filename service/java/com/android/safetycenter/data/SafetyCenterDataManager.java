@@ -216,7 +216,7 @@ public final class SafetyCenterDataManager {
      */
     public boolean unmarkSafetyCenterIssueActionInFlight(
             SafetyCenterIssueActionId safetyCenterIssueActionId,
-            SafetySourceIssue safetySourceIssue,
+            @Nullable SafetySourceIssue safetySourceIssue,
             @SafetyCenterStatsdLogger.SystemEventResult int result) {
         boolean dataUpdated =
                 mSafetyCenterInFlightIssueActionRepository.unmarkSafetyCenterIssueActionInFlight(
