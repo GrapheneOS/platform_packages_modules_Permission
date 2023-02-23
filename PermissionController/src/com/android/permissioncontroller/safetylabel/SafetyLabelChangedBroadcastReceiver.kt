@@ -98,7 +98,7 @@ class SafetyLabelChangedBroadcastReceiver : BroadcastReceiver() {
         user: UserHandle,
     ) {
         val lightPackageInfo =
-            LightPackageInfoLiveData[Pair(packageName, user)].getInitializedValue()
+            LightPackageInfoLiveData[Pair(packageName, user)].getInitializedValue() ?: return
         if (!isAppRequestingLocationPermission(lightPackageInfo)) {
             return
         }
