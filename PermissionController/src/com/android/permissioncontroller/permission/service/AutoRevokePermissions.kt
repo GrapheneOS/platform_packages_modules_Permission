@@ -81,12 +81,12 @@ suspend fun revokeAppPermissions(
         val pkgPermChanges = PermissionChangeStorageImpl.getInstance().loadEvents()
             .associateBy { it.packageName }
         // For each autorevoke-eligible app...
-        userApps.forEachInParallel(Main) { pkg: LightPackageInfo ->
+        userApps.forEachInParallel(Main) forEachInParallelOuter@ { pkg: LightPackageInfo ->
             if (pkg.grantedPermissions.isEmpty()) {
                 if (DEBUG_AUTO_REVOKE) {
                     DumpableLog.i(LOG_TAG, "${pkg.packageName}: no granted permissions")
                 }
-                return@forEachInParallel
+                return@forEachInParallelOuter
             }
             val packageName = pkg.packageName
             val pkgPermChange = pkgPermChanges[packageName]
@@ -96,7 +96,7 @@ suspend fun revokeAppPermissions(
                     DumpableLog.i(LOG_TAG, "Not revoking because permissions were changed " +
                         "recently for package $packageName")
                 }
-                return@forEachInParallel
+                return@forEachInParallelOuter
             }
             val targetSdk = pkg.targetSdkVersion
             val pkgPermGroups: Map<String, List<String>>? =
@@ -107,7 +107,7 @@ suspend fun revokeAppPermissions(
                 if (DEBUG_AUTO_REVOKE) {
                     DumpableLog.i(LOG_TAG, "$packageName: no permission groups found.")
                 }
-                return@forEachInParallel
+                return@forEachInParallelOuter
             }
 
             if (DEBUG_AUTO_REVOKE) {
@@ -173,8 +173,7 @@ suspend fun revokeAppPermissions(
             val anyPermsRevoked = AtomicBoolean(false)
             pkgPermGroups.entries
                 .filter { revocableGroups.contains(it.key) }
-                .forEachInParallel(Main) { (groupName, _) ->
-
+                .forEachInParallel(Main) forEachInParallelInner@ { (groupName, _) ->
                 val group: LightAppPermGroup =
                     LightAppPermGroupLiveData[packageName, groupName, user]
                         .getInitializedValue()!!
@@ -185,7 +184,7 @@ suspend fun revokeAppPermissions(
                     if (DEBUG_AUTO_REVOKE) {
                         DumpableLog.i(LOG_TAG, "$packageName: revocable permissions empty")
                     }
-                    return@forEachInParallel
+                    return@forEachInParallelInner
                 }
 
                 if (DEBUG_AUTO_REVOKE) {
