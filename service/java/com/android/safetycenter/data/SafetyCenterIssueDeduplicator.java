@@ -211,9 +211,9 @@ final class SafetyCenterIssueDeduplicator {
             List<SafetySourceIssueInfo> duplicates) {
         for (int i = 0; i < duplicates.size(); i++) {
             SafetySourceIssueInfo issueInfo = duplicates.get(i);
-            if (mSafetyCenterIssueDismissalRepository.getNotificationDismissedAt(
-                            issueInfo.getSafetyCenterIssueKey())
-                    != null) {
+            if (mSafetyCenterIssueDismissalRepository.isNotificationDismissedNow(
+                    issueInfo.getSafetyCenterIssueKey(),
+                    issueInfo.getSafetySourceIssue().getSeverityLevel())) {
                 return issueInfo;
             }
         }

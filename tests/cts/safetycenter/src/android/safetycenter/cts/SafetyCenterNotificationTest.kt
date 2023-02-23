@@ -600,6 +600,36 @@ class SafetyCenterNotificationTest {
     }
 
     @Test
+    fun setSafetySourceData_withDismissedIssueIdButResurfaceDelayZero_doesNotify() {
+        SafetyCenterFlags.notificationResurfaceInterval = Duration.ZERO
+        val data1 =
+            safetySourceTestData
+                .defaultRecommendationDataBuilder()
+                .addIssue(
+                    safetySourceTestData
+                        .defaultRecommendationIssueBuilder("Initial", "Blah")
+                        .build()
+                )
+                .build()
+        val data2 =
+            safetySourceTestData
+                .defaultRecommendationDataBuilder()
+                .addIssue(
+                    safetySourceTestData
+                        .defaultRecommendationIssueBuilder("Revised", "Different")
+                        .build()
+                )
+                .build()
+        safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, data1)
+        val notificationWithChannel = TestNotificationListener.waitForSingleNotification()
+        TestNotificationListener.cancelAndWait(notificationWithChannel.statusBarNotification.key)
+
+        safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, data2)
+
+        TestNotificationListener.waitForSingleNotification()
+    }
+
+    @Test
     @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun setSafetySourceData_duplicateIssues_sendsOneNotification() {
         safetyCenterTestHelper.setConfig(

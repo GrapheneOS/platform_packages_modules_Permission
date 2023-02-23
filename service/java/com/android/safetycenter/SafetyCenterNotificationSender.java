@@ -194,28 +194,17 @@ final class SafetyCenterNotificationSender {
         List<SafetySourceIssueInfo> allIssuesInfo =
                 mSafetyCenterDataManager.getIssuesForUser(userId);
 
-        Duration minNotificationsDelay = SafetyCenterFlags.getNotificationsMinDelay();
-
         for (int i = 0; i < allIssuesInfo.size(); i++) {
             SafetySourceIssueInfo issueInfo = allIssuesInfo.get(i);
             SafetyCenterIssueKey issueKey = issueInfo.getSafetyCenterIssueKey();
             SafetySourceIssue issue = issueInfo.getSafetySourceIssue();
 
-            if (!areNotificationsAllowed(issueInfo.getSafetySource())) {
+            if (!areNotificationsAllowedForSource(issueInfo.getSafetySource())) {
                 continue;
             }
 
-            // TODO(b/266680614): Notification resurfacing
-            Instant dismissedAt = mSafetyCenterDataManager.getNotificationDismissedAt(issueKey);
-            if (dismissedAt != null) {
-                continue;
-            }
-
-            // The current code for dismissing an issue/warning card also dismisses any
-            // corresponding notification, but it is still necessary to check the issue dismissal
-            // status, in addition to the notification dismissal (above) because some issues were
-            // dismissed by an earlier version of the code which lacked this functionality.
-            if (mSafetyCenterDataManager.isIssueDismissed(issueKey, issue.getSeverityLevel())) {
+            if (mSafetyCenterDataManager.isNotificationDismissedNow(
+                    issueKey, issue.getSeverityLevel())) {
                 continue;
             }
 
@@ -225,11 +214,7 @@ final class SafetyCenterNotificationSender {
             if (behavior == NOTIFICATION_BEHAVIOR_INTERNAL_IMMEDIATELY) {
                 result.put(issueKey, issue);
             } else if (behavior == NOTIFICATION_BEHAVIOR_INTERNAL_DELAYED) {
-                Instant delayedNotificationTime =
-                        mSafetyCenterDataManager
-                                .getIssueFirstSeenAt(issueKey)
-                                .plus(minNotificationsDelay);
-                if (Instant.now().isAfter(delayedNotificationTime)) {
+                if (canNotifyDelayedIssueNow(issueKey)) {
                     result.put(issueKey, issue);
                 }
                 // TODO(b/259094736): else handle delayed notifications using a scheduled job
@@ -265,13 +250,19 @@ final class SafetyCenterNotificationSender {
         }
     }
 
-    private boolean areNotificationsAllowed(SafetySource safetySource) {
+    private boolean areNotificationsAllowedForSource(SafetySource safetySource) {
         if (SdkLevel.isAtLeastU()) {
             if (safetySource.areNotificationsAllowed()) {
                 return true;
             }
         }
         return SafetyCenterFlags.getNotificationsAllowedSourceIds().contains(safetySource.getId());
+    }
+
+    private boolean canNotifyDelayedIssueNow(SafetyCenterIssueKey issueKey) {
+        Duration minNotificationsDelay = SafetyCenterFlags.getNotificationsMinDelay();
+        Instant threshold = Instant.now().minus(minNotificationsDelay);
+        return mSafetyCenterDataManager.getIssueFirstSeenAt(issueKey).isBefore(threshold);
     }
 
     private boolean postNotificationForIssue(
