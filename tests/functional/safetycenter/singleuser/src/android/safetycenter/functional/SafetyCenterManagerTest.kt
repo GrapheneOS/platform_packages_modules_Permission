@@ -62,6 +62,7 @@ import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import com.android.compatibility.common.preconditions.ScreenLockHelper
+import com.android.modules.utils.build.SdkLevel
 import com.android.safetycenter.internaldata.SafetyCenterIds
 import com.android.safetycenter.resources.SafetyCenterResourcesContext
 import com.android.safetycenter.testing.Coroutines.TIMEOUT_LONG
@@ -558,6 +559,22 @@ class SafetyCenterManagerTest {
             listOf(safetyCenterEntryOrGroupCritical),
             emptyList()
         )
+
+    private val safetyCenterDataOkReviewOneDismissedAlertInFlight =
+        SafetyCenterData(
+                safetyCenterStatusOkReview,
+                emptyList(),
+                listOf(safetyCenterEntryOrGroupCritical),
+                emptyList()
+            )
+            .withDismissedIssuesIfAtLeastU(
+                listOf(
+                    safetyCenterTestData.safetyCenterIssueCritical(
+                        SINGLE_SOURCE_ID,
+                        isActionInFlight = true
+                    )
+                )
+            )
 
     private val safetyCenterDataFromComplexConfig =
         SafetyCenterData(
@@ -3245,6 +3262,44 @@ class SafetyCenterManagerTest {
         val safetyCenterDataFromListenerDuringResolveAction = listener.receiveSafetyCenterData()
         assertThat(safetyCenterDataFromListenerDuringResolveAction)
             .isEqualTo(safetyCenterDataCriticalOneAlertInFlight)
+        val safetyCenterDataFromListenerAfterResolveAction = listener.receiveSafetyCenterData()
+        assertThat(safetyCenterDataFromListenerAfterResolveAction).isEqualTo(safetyCenterDataOk)
+    }
+
+    @Test
+    fun executeSafetyCenterIssueAction_allowsDismissedIssuesToExecuteActions() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
+        safetyCenterTestHelper.setData(
+            SINGLE_SOURCE_ID,
+            safetySourceTestData.criticalWithResolvingGeneralIssue
+        )
+        SafetySourceReceiver.setResponse(
+            Request.ResolveAction(SINGLE_SOURCE_ID),
+            Response.SetData(safetySourceTestData.information)
+        )
+        val issueId = SafetyCenterTestData.issueId(SINGLE_SOURCE_ID, CRITICAL_ISSUE_ID)
+        val listener = safetyCenterTestHelper.addListener()
+        safetyCenterManager.dismissSafetyCenterIssueWithPermission(issueId)
+        val safetyCenterDataAfterDismissal = listener.receiveSafetyCenterData()
+        checkState(safetyCenterDataAfterDismissal.status == safetyCenterStatusOkReview)
+
+        safetyCenterManager.executeSafetyCenterIssueActionWithPermissionAndWait(
+            issueId,
+            SafetyCenterTestData.issueActionId(
+                SINGLE_SOURCE_ID,
+                CRITICAL_ISSUE_ID,
+                CRITICAL_ISSUE_ACTION_ID
+            )
+        )
+
+        if (SdkLevel.isAtLeastU()) {
+            // On U+, the dismissed issue is marked as "in-flight" before resolving.
+            val safetyCenterDataFromListenerDuringResolveAction = listener.receiveSafetyCenterData()
+            assertThat(safetyCenterDataFromListenerDuringResolveAction)
+                .isEqualTo(safetyCenterDataOkReviewOneDismissedAlertInFlight)
+        }
+        // On T, the dismissed issue is never shown, so only the status will change after
+        // resolution.
         val safetyCenterDataFromListenerAfterResolveAction = listener.receiveSafetyCenterData()
         assertThat(safetyCenterDataFromListenerAfterResolveAction).isEqualTo(safetyCenterDataOk)
     }

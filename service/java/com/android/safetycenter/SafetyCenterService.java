@@ -482,10 +482,15 @@ public final class SafetyCenterService extends SystemService {
                 SafetySourceIssue safetySourceIssue =
                         mSafetyCenterDataManager.getSafetySourceIssue(safetyCenterIssueKey);
                 if (safetySourceIssue == null) {
-                    Log.w(
-                            TAG,
-                            "Attempt to dismiss an issue that is not provided by the source, or "
-                                    + "that was dismissed already");
+                    Log.w(TAG, "Attempt to dismiss an issue that is not provided by the source");
+                    // Don't send the error to the UI here, since it could happen when clicking the
+                    // button multiple times in a row (e.g. if the source is clearing the issue as a
+                    // result of the onDismissPendingIntent).
+                    return;
+                }
+                if (mSafetyCenterDataManager.isIssueDismissed(
+                        safetyCenterIssueKey, safetySourceIssue.getSeverityLevel())) {
+                    Log.w(TAG, "Attempt to dismiss an issue that is already dismissed");
                     // Don't send the error to the UI here, since it could happen when clicking the
                     // button multiple times in a row.
                     return;
