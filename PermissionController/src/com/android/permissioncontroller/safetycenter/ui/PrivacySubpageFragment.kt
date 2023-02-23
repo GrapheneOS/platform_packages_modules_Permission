@@ -51,7 +51,7 @@ class PrivacySubpageFragment : SafetyCenterFragment() {
         subpageIssueGroup = getPreferenceScreen().findPreference(ISSUE_GROUP_KEY)!!
         subpageGenericEntryGroup = getPreferenceScreen().findPreference(GENERIC_ENTRY_GROUP_KEY)!!
         subpageDataEntryGroup = getPreferenceScreen().findPreference(DATA_ENTRY_GROUP_KEY)!!
-        subpageBrandChip.setupListener(requireActivity(), requireContext())
+        subpageBrandChip.setupListener(requireActivity())
 
         val factory = PrivacyControlsViewModelFactory(requireActivity().getApplication())
         privacyControlsViewModel =
@@ -128,7 +128,8 @@ class PrivacySubpageFragment : SafetyCenterFragment() {
                 "AndroidPermissionUsage",
                 "AndroidPermissionManager",
                 "AndroidAdsPrivacy",
-                "AndroidHealthConnect" -> {
+                "AndroidHealthConnect",
+                "AndroidPrivacyAppDataSharingUpdates" -> {
                     subpageGenericEntryGroup.addPreference(subpageEntry)
                 }
                 "AndroidPrivacyControls" -> {

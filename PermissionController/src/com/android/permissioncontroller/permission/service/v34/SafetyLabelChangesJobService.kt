@@ -17,6 +17,7 @@
 package com.android.permissioncontroller.permission.service.v34
 
 import android.Manifest
+import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -30,6 +31,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_BOOT_COMPLETED
 import android.os.Build
+import android.os.Bundle
 import android.os.PersistableBundle
 import android.os.Process
 import android.os.UserHandle
@@ -55,6 +57,7 @@ import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGr
 import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo.PermGrantState.PERMS_ALLOWED_FOREGROUND_ONLY
 import com.android.permissioncontroller.permission.model.v34.AppDataSharingUpdate
 import com.android.permissioncontroller.permission.utils.KotlinUtils
+import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.Utils.getSystemServiceSafe
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.AppInfo
@@ -260,9 +263,9 @@ class SafetyLabelChangesJobService : JobService() {
         packageKey: Pair<String, UserHandle>,
         safetyLabelsLastUpdatedTimes: Map<AppInfo, Instant>
     ): Boolean {
+        val lightPackageInfo = LightPackageInfoLiveData[packageKey].getInitializedValue()
         val lastAppUpdateTime: Instant =
-            Instant.ofEpochMilli(
-                LightPackageInfoLiveData[packageKey].getInitializedValue().lastUpdateTime)
+            Instant.ofEpochMilli(lightPackageInfo?.lastUpdateTime ?: 0)
         val latestSafetyLabelUpdateTime: Instant? =
             safetyLabelsLastUpdatedTimes[AppInfo(packageKey.first)]
         return latestSafetyLabelUpdateTime != null &&
@@ -287,7 +290,7 @@ class SafetyLabelChangesJobService : JobService() {
             AppMetadataSafetyLabel.getSafetyLabelFromMetadata(appMetadataBundle) ?: return null
         val lastUpdateTime =
             Instant.ofEpochMilli(
-                LightPackageInfoLiveData[packageKey].getInitializedValue().lastUpdateTime)
+                LightPackageInfoLiveData[packageKey].getInitializedValue()?.lastUpdateTime ?: 0)
 
         val safetyLabelForPersistence: SafetyLabelForPersistence =
             AppsSafetyLabelHistory.SafetyLabel.fromAppMetadataSafetyLabel(
@@ -412,7 +415,7 @@ class SafetyLabelChangesJobService : JobService() {
 
         val title = context.getString(R.string.safety_label_changes_notification_title)
         val text = context.getString(R.string.safety_label_changes_notification_desc)
-        val notification =
+        var notificationBuilder =
             NotificationCompat.Builder(context, PERMISSION_REMINDER_CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_info)
                 .setContentTitle(title)
@@ -422,9 +425,23 @@ class SafetyLabelChangesJobService : JobService() {
                 .setAutoCancel(true)
                 .setSilent(true)
                 .setContentIntent(createIntentToOpenAppDataSharingUpdates(context))
-                .build()
 
-        notificationManager.notify(SAFETY_LABEL_CHANGES_NOTIFICATION_ID, notification)
+        val settingsAppLabel =
+            Utils.getSettingsLabelForNotifications(applicationContext.packageManager)
+        if (settingsAppLabel != null) {
+            notificationBuilder =
+                notificationBuilder
+                    .setSmallIcon(R.drawable.ic_settings_24dp)
+                    .addExtras(
+                        Bundle().apply {
+                            putString(
+                                Notification.EXTRA_SUBSTITUTE_APP_NAME, settingsAppLabel.toString())
+                        })
+        }
+
+        notificationManager.notify(
+            SAFETY_LABEL_CHANGES_NOTIFICATION_ID, notificationBuilder.build())
+
         if (DEBUG) {
             Log.v(LOG_TAG, "Safety label change notification sent.")
         }

@@ -23,10 +23,12 @@ import android.safetycenter.SafetyCenterEntry.IconAction.ICON_ACTION_TYPE_GEAR
 import android.text.TextUtils
 import android.util.Log
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.safetycenter.ui.view.SafetyEntryCommonViewsManager.Companion.changeEnabledState
 import com.android.settingslib.widget.TwoTargetPreference
 
 /**
@@ -56,7 +58,8 @@ class SafetySubpageEntryPreference(
                     R.layout.preference_entry_icon_action_gear_widget
                 } else {
                     R.layout.preference_entry_icon_action_info_widget
-                })
+                }
+            )
         }
     }
 
@@ -72,8 +75,10 @@ class SafetySubpageEntryPreference(
                     false
                 }
             }
+            setEnabled(true)
         } else {
             Log.w(TAG, "Pending intent is null for $entry")
+            setEnabled(false)
         }
     }
 
@@ -92,6 +97,10 @@ class SafetySubpageEntryPreference(
                 }
             }
         }
+
+        val titleView = holder.findViewById(android.R.id.title) as? TextView?
+        val summaryView = holder.findViewById(android.R.id.summary) as? TextView?
+        changeEnabledState(entry.isEnabled, titleView, summaryView)
     }
 
     override fun shouldHideSecondTarget(): Boolean = entry.iconAction == null

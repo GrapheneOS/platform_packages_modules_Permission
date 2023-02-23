@@ -32,6 +32,7 @@ import com.android.permissioncontroller.safetycenter.ui.Action
 import com.android.permissioncontroller.safetycenter.ui.PendingIntentSender
 import com.android.permissioncontroller.safetycenter.ui.PositionInCardList
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel
+import com.android.permissioncontroller.safetycenter.ui.view.SafetyEntryCommonViewsManager.Companion.changeEnabledState
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 internal class SafetyEntryView
@@ -80,7 +81,11 @@ constructor(
 
     private fun showEntryDetails(entry: SafetyCenterEntry) {
         commonEntryView?.showDetails(
-            entry.title, entry.summary, entry.severityLevel, entry.severityUnspecifiedIconType)
+            entry.title,
+            entry.summary,
+            entry.severityLevel,
+            entry.severityUnspecifiedIconType
+        )
     }
 
     private fun TextView.showText(text: CharSequence?) {
@@ -145,7 +150,8 @@ constructor(
                 paddingStart,
                 paddingTop,
                 context.resources.getDimensionPixelSize(R.dimen.sc_entry_padding_end),
-                paddingBottom)
+                paddingBottom
+            )
         }
     }
 
@@ -167,7 +173,11 @@ constructor(
         // otherwise be sent to the parent and cause the entry group to collapse.
         isClickable = true
         isEnabled = entry.pendingIntent != null
-        commonEntryView?.changeEnabledState(entry.isEnabled)
+        changeEnabledState(
+            entry.isEnabled,
+            commonEntryView?.titleView,
+            commonEntryView?.summaryView
+        )
     }
 
     private fun setContentDescription(entry: SafetyCenterEntry, isGroupEntry: Boolean) {

@@ -72,13 +72,6 @@
                 refreshOnPageOpenAllowed="true"
                 title="@com.android.safetycenter.resources:string/health_connect_title"
                 searchTerms="@com.android.safetycenter.resources:string/health_connect_search_terms"/>
-            <static-safety-source
-                id="AndroidPrivacyControls"
-                profile="primary_profile_only"
-                intentAction="android.settings.PRIVACY_CONTROLS"
-                title="@com.android.safetycenter.resources:string/privacy_controls_title"
-                summary="@com.android.safetycenter.resources:string/privacy_controls_summary"
-                searchTerms="@com.android.safetycenter.resources:string/privacy_controls_search_terms"/>
             <dynamic-safety-source
                 id="AndroidPrivacyAppDataSharingUpdates"
                 packageName="com.android.permissioncontroller"
@@ -87,6 +80,13 @@
                 refreshOnPageOpenAllowed="true"
                 title="@com.android.safetycenter.resources:string/app_data_sharing_updates_title"
                 searchTerms="@com.android.safetycenter.resources:string/app_data_sharing_updates_search_terms"/>
+            <static-safety-source
+                id="AndroidPrivacyControls"
+                profile="primary_profile_only"
+                intentAction="android.settings.PRIVACY_CONTROLS"
+                title="@com.android.safetycenter.resources:string/privacy_controls_title"
+                summary="@com.android.safetycenter.resources:string/privacy_controls_summary"
+                searchTerms="@com.android.safetycenter.resources:string/privacy_controls_search_terms"/>
             <issue-only-safety-source
                 id="AndroidAccessibility"
                 packageName="com.android.permissioncontroller"

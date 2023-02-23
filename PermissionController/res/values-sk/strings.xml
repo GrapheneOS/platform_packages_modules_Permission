@@ -591,5 +591,44 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Zobrazovať správu, keď sa aplikácie získajú pristup k textu, obrázkom alebo inému obsahu, ktorý ste skopírovali"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Zobrazovať heslá"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Pri písaní nakrátko zobrazovať zadávané znaky"</string>
-    <string name="permission_rationale_message_location" msgid="2153841534298068414">"V tejto aplikácii bolo uvedené, že môže zdieľať údaje o polohe s tretími stranami"</string>
+    <string name="permission_rationale_message_location" msgid="5559450538205092588">"V tejto aplikácii je uvedené, že môže zdieľať údaje o polohe s tretími stranami"</string>
+    <!-- no translation found for permission_rationale_location_title (2404797182678793506) -->
+    <skip />
+    <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Odkiaľ informácie o zdieľaní údajov pochádzajú"</string>
+    <!-- no translation found for permission_rationale_data_sharing_source_message (2229631836873747309) -->
+    <skip />
+    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"Aplikácia môže zdieľať údaje o polohe na účely:"</string>
+    <!-- no translation found for permission_rationale_purpose_message (2136810388727916997) -->
+    <skip />
+    <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Zdieľanie údajov sa líši"</string>
+    <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Nakladanie s údajmi sa môže líšiť v závislosti od verzie a používania aplikácie, ako aj regiónu a veku používateľa. "<annotation id="link">"Ďalšie informácie o zdieľaní údajov"</annotation></string>
+    <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Údaje o vašej polohe"</string>
+    <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Prístup tejto aplikácie môžete zmeniť v "<annotation id="link">"nastaveniach ochrany súkromia"</annotation></string>
+    <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"Funkcie aplikácie"</string>
+    <!-- no translation found for permission_rationale_purpose_analytics (2070800501189620712) -->
+    <skip />
+    <string name="permission_rationale_purpose_developer_communications" msgid="6453047018892062374">"Komunikácie vývojára"</string>
+    <string name="permission_rationale_purpose_advertising" msgid="7156966429245180236">"Reklama alebo marketing"</string>
+    <string name="permission_rationale_purpose_fraud_prevention_security" msgid="4262104770357031902">"Prevencia podvodov, zabezpečenie a dodržiavanie pravidiel"</string>
+    <!-- no translation found for permission_rationale_purpose_personalization (1589973273682238708) -->
+    <skip />
+    <string name="permission_rationale_purpose_account_management" msgid="2985772421946688879">"Správa účtu"</string>
+    <string name="app_permission_rationale_message" msgid="8511466916077100713">"Zabezpečenie údajov"</string>
+    <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Môžu sa zdieľať údaje o polohe"</string>
+    <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"V tejto aplikácii je uvedené, že môže zdieľať údaje o polohe s tretími stranami"</string>
+    <string name="data_sharing_updates_title" msgid="7996933386875213859">"Aktualizácie zdieľania údajov o polohe"</string>
+    <string name="data_sharing_updates_summary" msgid="764113985772233889">"Skontrolujte aplikácie, ktoré zmenili spôsob zdieľania údajov o vašej polohe"</string>
+    <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Tieto aplikácie zmenili spôsob zdieľania údajov o vašej polohe. Možno ich v minulosti nezdieľali alebo ich teraz zdieľajú na účely reklamy a marketingu."</string>
+    <!-- no translation found for data_sharing_updates_footer_message (1582711655172892107) -->
+    <skip />
+    <string name="learn_about_data_sharing" msgid="4200480587079488045">"Ďalšie informácie o zdieľaní údajov"</string>
+    <!-- no translation found for shares_location_with_third_parties (2278051743742057767) -->
+    <skip />
+    <!-- no translation found for shares_location_with_third_parties_for_advertising (1918588064014480513) -->
+    <skip />
+    <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{Aktualizované v priebehu uplynulého dňa}=1{Aktualizované v priebehu uplynulého dňa}few{Aktualizované v priebehu uplynulých # dní}many{Aktualizované v priebehu uplynulej # dňa}other{Aktualizované v priebehu uplynulých # dní}}"</string>
+    <string name="no_updates_at_this_time" msgid="9031085635689982935">"Momentálne nie sú k dispozícii žiadne aktualizácie"</string>
+    <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"Aktualizácie zdieľania údajov"</string>
+    <string name="safety_label_changes_notification_desc" msgid="7808764283266234675">"Niektoré aplikácie zmenili spôsob zdieľania údajov o polohe"</string>
+    <string name="safety_label_changes_gear_description" msgid="2655887555599138509">"Nastavenia"</string>
 </resources>
