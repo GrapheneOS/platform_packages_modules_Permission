@@ -263,9 +263,9 @@ class SafetyLabelChangesJobService : JobService() {
         packageKey: Pair<String, UserHandle>,
         safetyLabelsLastUpdatedTimes: Map<AppInfo, Instant>
     ): Boolean {
+        val lightPackageInfo = LightPackageInfoLiveData[packageKey].getInitializedValue()
         val lastAppUpdateTime: Instant =
-            Instant.ofEpochMilli(
-                LightPackageInfoLiveData[packageKey].getInitializedValue().lastUpdateTime)
+            Instant.ofEpochMilli(lightPackageInfo?.lastUpdateTime ?: 0)
         val latestSafetyLabelUpdateTime: Instant? =
             safetyLabelsLastUpdatedTimes[AppInfo(packageKey.first)]
         return latestSafetyLabelUpdateTime != null &&
@@ -290,7 +290,7 @@ class SafetyLabelChangesJobService : JobService() {
             AppMetadataSafetyLabel.getSafetyLabelFromMetadata(appMetadataBundle) ?: return null
         val lastUpdateTime =
             Instant.ofEpochMilli(
-                LightPackageInfoLiveData[packageKey].getInitializedValue().lastUpdateTime)
+                LightPackageInfoLiveData[packageKey].getInitializedValue()?.lastUpdateTime ?: 0)
 
         val safetyLabelForPersistence: SafetyLabelForPersistence =
             AppsSafetyLabelHistory.SafetyLabel.fromAppMetadataSafetyLabel(
