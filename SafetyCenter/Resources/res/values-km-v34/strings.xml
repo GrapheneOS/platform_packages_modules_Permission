@@ -21,8 +21,7 @@
     <skip />
     <!-- no translation found for health_connect_search_terms (4998970586245680829) -->
     <skip />
-    <!-- no translation found for app_data_sharing_updates_title (7428862330643262588) -->
-    <skip />
+    <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"ការធ្វើបច្ចុប្បន្នភាពការចែករំលែកទិន្នន័យសម្រាប់ទីតាំង"</string>
     <!-- no translation found for app_data_sharing_updates_search_terms (8414777373734245398) -->
     <skip />
     <!-- no translation found for ads_privacy_title (538822387058714869) -->
