@@ -591,68 +591,36 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Mostra unha mensaxe cando as aplicacións acceden ao texto, ás imaxes ou ao contido que copiaches"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Mostrar contrasinais"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Mostra os caracteres brevemente mentres escribes"</string>
-    <!-- no translation found for permission_rationale_message_location (5559450538205092588) -->
-    <skip />
-    <!-- no translation found for permission_rationale_location_title (2404797182678793506) -->
-    <skip />
-    <!-- no translation found for permission_rationale_data_sharing_source_title (6874604543125814316) -->
-    <skip />
-    <!-- no translation found for permission_rationale_data_sharing_source_message (2229631836873747309) -->
-    <skip />
-    <!-- no translation found for permission_rationale_location_purpose_title (513578159134670615) -->
-    <skip />
-    <!-- no translation found for permission_rationale_purpose_message (2136810388727916997) -->
-    <skip />
-    <!-- no translation found for permission_rationale_permission_data_sharing_varies_title (9103718980919908316) -->
-    <skip />
-    <!-- no translation found for permission_rationale_data_sharing_varies_message (4224469559084489222) -->
-    <skip />
-    <!-- no translation found for permission_rationale_location_settings_title (7204145004850190953) -->
-    <skip />
-    <!-- no translation found for permission_rationale_permission_settings_message (631286040979660267) -->
-    <skip />
-    <!-- no translation found for permission_rationale_purpose_app_functionality (8397736681065841405) -->
-    <skip />
-    <!-- no translation found for permission_rationale_purpose_analytics (2070800501189620712) -->
-    <skip />
-    <!-- no translation found for permission_rationale_purpose_developer_communications (6453047018892062374) -->
-    <skip />
-    <!-- no translation found for permission_rationale_purpose_advertising (7156966429245180236) -->
-    <skip />
-    <!-- no translation found for permission_rationale_purpose_fraud_prevention_security (4262104770357031902) -->
-    <skip />
-    <!-- no translation found for permission_rationale_purpose_personalization (1589973273682238708) -->
-    <skip />
-    <!-- no translation found for permission_rationale_purpose_account_management (2985772421946688879) -->
-    <skip />
-    <!-- no translation found for app_permission_rationale_message (8511466916077100713) -->
-    <skip />
-    <!-- no translation found for app_location_permission_rationale_title (925420340572401350) -->
-    <skip />
-    <!-- no translation found for app_location_permission_rationale_subtitle (6986985722752868692) -->
-    <skip />
-    <!-- no translation found for data_sharing_updates_title (7996933386875213859) -->
-    <skip />
-    <!-- no translation found for data_sharing_updates_summary (764113985772233889) -->
-    <skip />
-    <!-- no translation found for data_sharing_updates_subtitle (6311537708950632329) -->
-    <skip />
-    <!-- no translation found for data_sharing_updates_footer_message (1582711655172892107) -->
-    <skip />
-    <!-- no translation found for learn_about_data_sharing (4200480587079488045) -->
-    <skip />
-    <!-- no translation found for shares_location_with_third_parties (2278051743742057767) -->
-    <skip />
-    <!-- no translation found for shares_location_with_third_parties_for_advertising (1918588064014480513) -->
-    <skip />
-    <!-- no translation found for updated_in_last_days (8371811947153042322) -->
-    <skip />
-    <!-- no translation found for no_updates_at_this_time (9031085635689982935) -->
-    <skip />
-    <!-- no translation found for safety_label_changes_notification_title (4479955083472203839) -->
-    <skip />
-    <!-- no translation found for safety_label_changes_notification_desc (7808764283266234675) -->
-    <skip />
-    <!-- no translation found for safety_label_changes_gear_description (2655887555599138509) -->
-    <skip />
+    <string name="permission_rationale_message_location" msgid="5559450538205092588">"Esta aplicación indicou que é posible que comparta os teus datos de localización con terceiros"</string>
+    <string name="permission_rationale_location_title" msgid="2404797182678793506">"Uso compartido de datos e localización"</string>
+    <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"De onde provén a información sobre o uso compartido de datos?"</string>
+    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"A persoa que programou esta aplicación facilitoulle información acerca de como comparte datos a "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>". Esta información podería modificarse co paso do tempo."</string>
+    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"A app pode compartir datos de localización para:"</string>
+    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
+    <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"As prácticas de uso compartido de datos varían"</string>
+    <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"As prácticas relacionadas cos datos poden variar en función da versión da aplicación, o uso que lle deas, a rexión onde vivas e a idade que teñas. "<annotation id="link">"Máis información sobre o uso compartido de datos"</annotation></string>
+    <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Os teus datos de localización"</string>
+    <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Cambia o acceso desta aplicación na "<annotation id="link">"configuración de privacidade"</annotation></string>
+    <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"Funcións da aplicación"</string>
+    <string name="permission_rationale_purpose_analytics" msgid="2070800501189620712">"Estatísticas"</string>
+    <string name="permission_rationale_purpose_developer_communications" msgid="6453047018892062374">"Método de comunicación do programador"</string>
+    <string name="permission_rationale_purpose_advertising" msgid="7156966429245180236">"Publicidade ou márketing"</string>
+    <string name="permission_rationale_purpose_fraud_prevention_security" msgid="4262104770357031902">"Prevención de fraudes, seguranza e cumprimento normativo"</string>
+    <string name="permission_rationale_purpose_personalization" msgid="1589973273682238708">"Personalización"</string>
+    <string name="permission_rationale_purpose_account_management" msgid="2985772421946688879">"Xestión da conta"</string>
+    <string name="app_permission_rationale_message" msgid="8511466916077100713">"Seguranza dos datos"</string>
+    <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Poderían compartirse os datos de localización"</string>
+    <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Esta aplicación indicou que é posible que comparta os teus datos de localización con terceiros"</string>
+    <string name="data_sharing_updates_title" msgid="7996933386875213859">"Actualizacións de uso compartido de datos para a localización"</string>
+    <string name="data_sharing_updates_summary" msgid="764113985772233889">"Revisa as aplicacións que cambiaron a forma en que poden compartir os teus datos de localización"</string>
+    <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Estas aplicacións cambiaron a forma en que poden compartir os teus datos de localización. É posible que non os compartisen antes ou que agora os compartan con fins publicitarios ou de márketing."</string>
+    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"As persoas que programaron estas aplicacións facilitaron información sobre as súas prácticas á hora de compartir datos cunha tenda de aplicacións. É posible que modifiquen esta información co paso do tempo.\n\nAs súas prácticas á hora de compartir datos poderían variar segundo a versión da aplicación, o uso que lle deas, a rexión onde vivas e a idade que teñas."</string>
+    <string name="learn_about_data_sharing" msgid="4200480587079488045">"Máis información sobre o uso compartido de datos"</string>
+    <string name="shares_location_with_third_parties" msgid="2278051743742057767">"Agora, os teus datos de localización compártense con terceiros"</string>
+    <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"Agora, os teus datos de localización compártense con terceiros con fins publicitarios ou de márketing"</string>
+    <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{Publicaron cambios no último día}=1{Publicaron cambios no último día}other{Publicaron cambios nos últimos # días}}"</string>
+    <string name="no_updates_at_this_time" msgid="9031085635689982935">"Nestes momentos non hai ningunha novidade"</string>
+    <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"Actualizacións de uso compartido de datos"</string>
+    <string name="safety_label_changes_notification_desc" msgid="7808764283266234675">"Algunhas aplicacións cambiaron a forma en que poden compartir os teus datos de localización"</string>
+    <string name="safety_label_changes_gear_description" msgid="2655887555599138509">"Configuración"</string>
 </resources>
