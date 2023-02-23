@@ -380,8 +380,7 @@ public final class SafetyCenterDataManager {
     /**
      * Returns the {@link SafetySourceIssue} associated with the given {@link SafetyCenterIssueKey}.
      *
-     * <p>Returns {@code null} if there is no such {@link SafetySourceIssue}, or if it's been
-     * dismissed.
+     * <p>Returns {@code null} if there is no such {@link SafetySourceIssue}.
      */
     @Nullable
     public SafetySourceIssue getSafetySourceIssue(SafetyCenterIssueKey safetyCenterIssueKey) {
