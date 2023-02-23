@@ -20,6 +20,6 @@
     <string name="security_privacy_brand_name" msgid="7303621734258440812">"Sigurnost i privatnost"</string>
     <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"Kontrole"</string>
     <string name="privacy_subpage_data_header" msgid="5049237788244591274">"Podaci"</string>
-    <string name="health_connect_title" msgid="2132233890867430855">"Health Connect"</string>
-    <string name="health_connect_summary" msgid="8156987676957707740">"Dopuštenja aplikacije i upravljanje podacima"</string>
+    <string name="health_connect_title" msgid="2132233890867430855">"Health Connect"</string>
+    <string name="health_connect_summary" msgid="8156987676957707740">"Odobrenja za aplikaciju i upravljanje podacima"</string>
 </resources>

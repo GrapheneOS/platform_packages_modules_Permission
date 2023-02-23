@@ -593,16 +593,13 @@
     <string name="show_password_summary" msgid="1110166488865981610">"Bonisa izinhlamvu kancane njengoba uthayipha"</string>
     <!-- no translation found for permission_rationale_message_location (5559450538205092588) -->
     <skip />
-    <!-- no translation found for permission_rationale_location_title (2404797182678793506) -->
-    <skip />
+    <string name="permission_rationale_location_title" msgid="2404797182678793506">"Ukwabelana ngedatha nendawo"</string>
     <!-- no translation found for permission_rationale_data_sharing_source_title (6874604543125814316) -->
     <skip />
-    <!-- no translation found for permission_rationale_data_sharing_source_message (2229631836873747309) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"Unjiniyela unikeze ulwazi ku-"<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" mayelana nokuthi le-app yabelana kanjani ngedatha. Ingase ibuyekeze lolu lwazi ngokuhamba kwesikhathi."</string>
     <!-- no translation found for permission_rationale_location_purpose_title (513578159134670615) -->
     <skip />
-    <!-- no translation found for permission_rationale_purpose_message (2136810388727916997) -->
-    <skip />
+    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
     <!-- no translation found for permission_rationale_permission_data_sharing_varies_title (9103718980919908316) -->
     <skip />
     <!-- no translation found for permission_rationale_data_sharing_varies_message (4224469559084489222) -->
@@ -613,16 +610,14 @@
     <skip />
     <!-- no translation found for permission_rationale_purpose_app_functionality (8397736681065841405) -->
     <skip />
-    <!-- no translation found for permission_rationale_purpose_analytics (2070800501189620712) -->
-    <skip />
+    <string name="permission_rationale_purpose_analytics" msgid="2070800501189620712">"Izibalo"</string>
     <!-- no translation found for permission_rationale_purpose_developer_communications (6453047018892062374) -->
     <skip />
     <!-- no translation found for permission_rationale_purpose_advertising (7156966429245180236) -->
     <skip />
     <!-- no translation found for permission_rationale_purpose_fraud_prevention_security (4262104770357031902) -->
     <skip />
-    <!-- no translation found for permission_rationale_purpose_personalization (1589973273682238708) -->
-    <skip />
+    <string name="permission_rationale_purpose_personalization" msgid="1589973273682238708">"Ukwenza ngokomuntu ngamunye"</string>
     <!-- no translation found for permission_rationale_purpose_account_management (2985772421946688879) -->
     <skip />
     <!-- no translation found for app_permission_rationale_message (8511466916077100713) -->
@@ -637,14 +632,11 @@
     <skip />
     <!-- no translation found for data_sharing_updates_subtitle (6311537708950632329) -->
     <skip />
-    <!-- no translation found for data_sharing_updates_footer_message (1582711655172892107) -->
-    <skip />
+    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Onjiniyela balama-app banikeze ulwazi mayelana nezinqubo zabo zokwabelana ngedatha ku-app store. Bangase bayibuyekeze ngokuhamba kwesikhathi.\n\nIzinqubo zokwabelana ngedatha zingahluka kuya ngohlobo lwe-app yakho, ukusetshenziswa, indawo, nobudala."</string>
     <!-- no translation found for learn_about_data_sharing (4200480587079488045) -->
     <skip />
-    <!-- no translation found for shares_location_with_third_parties (2278051743742057767) -->
-    <skip />
-    <!-- no translation found for shares_location_with_third_parties_for_advertising (1918588064014480513) -->
-    <skip />
+    <string name="shares_location_with_third_parties" msgid="2278051743742057767">"Idatha yendawo yakho manje seyabiwe nezinkampani ezingahlangane ngqo"</string>
+    <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"Idatha yendawo yakho manje seyabiwe nezinkampani ezingahlangene ngqo zokukhangisa noma ukumaketha"</string>
     <!-- no translation found for updated_in_last_days (8371811947153042322) -->
     <skip />
     <!-- no translation found for no_updates_at_this_time (9031085635689982935) -->
