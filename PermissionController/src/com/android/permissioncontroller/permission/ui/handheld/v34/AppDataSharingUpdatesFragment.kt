@@ -78,12 +78,15 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
             preferenceScreen.findPreference<PreferenceCategory>(
                 LAST_PERIOD_UPDATES_PREFERENCE_CATEGORY_ID)
                 ?: return
+
+        val preferencesToRemove = mutableSetOf<Preference>()
         for (i in 0 until (updatesCategory.preferenceCount)) {
-            // Remove preferences that no longer need to be shown.
             if (!preferenceKeysToShow.contains(updatesCategory.getPreference(i).key)) {
-                updatesCategory.removePreference(updatesCategory.getPreference(i))
+                preferencesToRemove.add(updatesCategory.getPreference(i))
             }
         }
+        // Remove preferences that no longer need to be shown.
+        preferencesToRemove.forEach { updatesCategory.removePreference(it) }
 
         updateUiInfos.forEach { updateUiInfo ->
             val key =
