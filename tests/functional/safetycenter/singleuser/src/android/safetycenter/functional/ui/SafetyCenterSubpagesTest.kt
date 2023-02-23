@@ -337,12 +337,12 @@ class SafetyCenterSubpagesTest {
     }
 
     @Test
-    fun entryListWithSingleSource_clickingSourceWithNullPendingIntent_doesNothing() {
-        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceInvalidIntentConfig)
+    fun entryListWithSingleSource_clickingAnUnclickableDisabledEntry_doesNothing() {
+        val config = safetyCenterTestConfigs.singleSourceInvalidIntentConfig
+        safetyCenterTestHelper.setConfig(config)
         val sourceTestData = safetySourceTestData.informationWithNullIntent
         safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, sourceTestData)
-        val sourcesGroup =
-            safetyCenterTestConfigs.singleSourceInvalidIntentConfig.safetySourcesGroups.first()
+        val sourcesGroup = config.safetySourcesGroups.first()
 
         context.launchSafetyCenterActivity {
             openPageAndExit(context.getString(sourcesGroup.titleResId)) {
@@ -350,6 +350,23 @@ class SafetyCenterSubpagesTest {
 
                 // Verifying that clicking on the entry doesn't redirect to any other screen
                 waitAllTextDisplayed(sourceTestData.status!!.title, sourceTestData.status!!.summary)
+            }
+        }
+    }
+
+    @Test
+    fun entryListWithSingleSource_clickingAClickableDisabledEntry_redirectsToDifferentScreen() {
+        val config = safetyCenterTestConfigs.singleSourceConfig
+        safetyCenterTestHelper.setConfig(config)
+        val sourceTestData = safetySourceTestData.unspecifiedDisabledWithTestActivityRedirect
+        safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, sourceTestData)
+        val sourcesGroup = config.safetySourcesGroups.first()
+
+        context.launchSafetyCenterActivity {
+            openPageAndExit(context.getString(sourcesGroup.titleResId)) {
+                waitDisplayed(By.text(sourceTestData.status!!.title.toString())) { it.click() }
+
+                waitButtonDisplayed("Exit test activity") { it.click() }
             }
         }
     }

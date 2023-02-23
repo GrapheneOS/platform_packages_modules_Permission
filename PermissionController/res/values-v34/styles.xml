@@ -261,8 +261,6 @@
     <style name="AppDataSharingUpdateAppIconFrame">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:gravity">start|center_vertical</item>
-        <item name="android:orientation">horizontal</item>
         <item name="android:paddingRight">20dp</item>
     </style>
 
@@ -270,7 +268,7 @@
         <item name="android:id">@android:id/icon</item>
         <item name="android:layout_width">32dp</item>
         <item name="android:layout_height">32dp</item>
-        <item name="android:scaleType">fitCenter</item>
+        <item name="android:layout_gravity">center_vertical</item>
     </style>
 
     <style name="AppDataSharingUpdatePreferenceTitleAndSummaryContainer">
@@ -334,9 +332,9 @@
         <item name="android:layout_marginBottom">@dimen/sc_spacing_xxxlarge</item>
         <item name="android:paddingVertical">10dp</item>
         <item name="android:paddingHorizontal">@dimen/sc_spacing_large</item>
-        <item name="android:drawableStart">@drawable/ic_brand_shield</item>
+        <item name="android:drawableStart">@drawable/ic_safety_center_brand_chip</item>
         <item name="android:drawablePadding">9dp</item>
-        <item name="android:background">@drawable/brand_chip_background</item>
+        <item name="android:background">@drawable/safety_center_brand_chip_background</item>
         <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:textSize">12sp</item>
         <item name="android:lineHeight">18sp</item>

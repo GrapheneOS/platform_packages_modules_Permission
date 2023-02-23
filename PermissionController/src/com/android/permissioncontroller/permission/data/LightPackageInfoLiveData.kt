@@ -39,7 +39,7 @@ class LightPackageInfoLiveData private constructor(
     private val app: Application,
     private val packageName: String,
     private val user: UserHandle
-) : SmartAsyncMediatorLiveData<LightPackageInfo>(alwaysUpdateOnActive = false),
+) : SmartAsyncMediatorLiveData<LightPackageInfo?>(alwaysUpdateOnActive = false),
     PackageBroadcastReceiver.PackageBroadcastListener,
     PermissionListenerMultiplexer.PermissionChangeCallback {
 

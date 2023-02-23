@@ -28,7 +28,9 @@ import android.util.Log;
 import android.util.Xml;
 
 import com.android.internal.annotations.VisibleForTesting;
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permission.persistence.IoUtils;
+import com.android.server.security.FileIntegrity;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -65,6 +67,27 @@ public class RolesPersistenceImpl implements RolesPersistence {
     private static final String ATTRIBUTE_VERSION = "version";
     private static final String ATTRIBUTE_NAME = "name";
     private static final String ATTRIBUTE_PACKAGES_HASH = "packagesHash";
+
+    @VisibleForTesting
+    interface Injector {
+        void enableFsVerity(@NonNull File file) throws IOException;
+    }
+
+    @NonNull
+    private final Injector mInjector;
+
+    RolesPersistenceImpl() {
+        this(file -> {
+            if (SdkLevel.isAtLeastU()) {
+                FileIntegrity.setUpFsVerity(file);
+            }
+        });
+    }
+
+    @VisibleForTesting
+    RolesPersistenceImpl(@NonNull Injector injector) {
+        mInjector = injector;
+    }
 
     @Nullable
     @Override
@@ -194,6 +217,13 @@ public class RolesPersistenceImpl implements RolesPersistence {
             out.getFD().sync();
         } catch (Exception e) {
             Log.e(LOG_TAG, "Failed to write reserve copy: " + reserveFile, e);
+        }
+
+        try {
+            mInjector.enableFsVerity(file);
+            mInjector.enableFsVerity(reserveFile);
+        } catch (Exception e) {
+            Log.e(LOG_TAG, "Failed to verity-protect roles", e);
         }
     }
 
