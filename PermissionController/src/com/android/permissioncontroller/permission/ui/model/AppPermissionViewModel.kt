@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@file:Suppress("DEPRECATION")
 
 package com.android.permissioncontroller.permission.ui.model
 
@@ -250,7 +251,7 @@ class AppPermissionViewModel(
                 mediaStorageSupergroupPermGroups.remove(permGroupName)
                 value = null
             } else {
-                mediaStorageSupergroupPermGroups[permGroupName] = permGroup!!
+                mediaStorageSupergroupPermGroups[permGroupName] = permGroup
                 update()
             }
         }
@@ -631,13 +632,13 @@ class AppPermissionViewModel(
         }
 
         val groupsToUpdate = expandToSupergroup(group)
-        for (group in groupsToUpdate) {
-            var newGroup = group
-            val oldGroup = group
+        for (group2 in groupsToUpdate) {
+            var newGroup = group2
+            val oldGroup = group2
 
-            if (shouldRevokeBackground && group.hasBackgroundGroup &&
-                    (wasBackgroundGranted || group.background.isUserFixed ||
-                            group.isOneTime != setOneTime)) {
+            if (shouldRevokeBackground && group2.hasBackgroundGroup &&
+                    (wasBackgroundGranted || group2.background.isUserFixed ||
+                            group2.isOneTime != setOneTime)) {
                 newGroup = KotlinUtils
                         .revokeBackgroundRuntimePermissions(app, newGroup, oneTime = setOneTime)
 
@@ -648,7 +649,8 @@ class AppPermissionViewModel(
                 }
             }
 
-            if (shouldRevokeForeground && (wasForegroundGranted || group.isOneTime != setOneTime)) {
+            if (shouldRevokeForeground &&
+                    (wasForegroundGranted || group2.isOneTime != setOneTime)) {
                 newGroup = KotlinUtils
                         .revokeForegroundRuntimePermissions(app, newGroup, false, setOneTime)
 
@@ -672,7 +674,7 @@ class AppPermissionViewModel(
                 }
             }
 
-            if (shouldGrantBackground && group.hasBackgroundGroup) {
+            if (shouldGrantBackground && group2.hasBackgroundGroup) {
                 newGroup = KotlinUtils.grantBackgroundRuntimePermissions(app, newGroup)
 
                 if (!wasBackgroundGranted) {
@@ -794,10 +796,9 @@ class AppPermissionViewModel(
      *
      */
     fun onDenyAnyWay(changeRequest: ChangeRequest, buttonPressed: Int, oneTime: Boolean) {
-        val group = lightAppPermGroup ?: return
+        val unexpandedGroup = lightAppPermGroup ?: return
 
-        val groupsToUpdate = expandToSupergroup(group)
-        for (group in groupsToUpdate) {
+        for (group in expandToSupergroup(unexpandedGroup)) {
             val wasForegroundGranted = group.foreground.isGranted
             val wasBackgroundGranted = group.background.isGranted
             var hasDefaultPermissions = false

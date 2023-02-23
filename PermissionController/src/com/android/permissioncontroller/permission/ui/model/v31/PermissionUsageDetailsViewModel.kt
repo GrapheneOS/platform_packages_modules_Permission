@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@file:Suppress("DEPRECATION")
 
 package com.android.permissioncontroller.permission.ui.model.v31
 
@@ -172,7 +173,7 @@ class PermissionUsageDetailsViewModel(
                 // The DiscreteAccessTime is a Triple of (access time, access duration,
                 // proxy) of that app
                 val discreteAccessTimeList:
-                    MutableList<Triple<Long, Long, AppOpsManager.OpEventProxyInfo>> =
+                    MutableList<Triple<Long, Long, AppOpsManager.OpEventProxyInfo?>> =
                     mutableListOf()
                 val timelineUsages = usageData.timelineUsages
                 val numGroups = timelineUsages.size
@@ -217,7 +218,7 @@ class PermissionUsageDetailsViewModel(
                             mutableListOf(time))
                     } else {
                         val ongoingAccessTimeList:
-                            MutableList<Triple<Long, Long, AppOpsManager.OpEventProxyInfo>> =
+                            MutableList<Triple<Long, Long, AppOpsManager.OpEventProxyInfo?>> =
                             ongoingEntry.clusteredAccessTimeList
                         if (time.first / ONE_HOUR_MS !=
                             ongoingAccessTimeList[0].first / ONE_HOUR_MS ||
@@ -313,8 +314,7 @@ class PermissionUsageDetailsViewModel(
                 // Only show the duration if it is at least (cluster + 1) minutes. Displaying
                 // times that are the same as the cluster granularity does not convey useful
                 // information.
-                if (durationLong != null &&
-                    durationLong >=
+                if (durationLong >=
                     TimeUnit.MINUTES.toMillis((CLUSTER_MINUTES_APART + 1).toLong())) {
                     summaryLabel = getDurationUsedStr(context, durationLong)
                 }
@@ -558,7 +558,7 @@ class PermissionUsageDetailsViewModel(
     data class AppPermissionUsageEntry(
         val usageData: UsageData,
         val endTime: Long,
-        val clusteredAccessTimeList: MutableList<Triple<Long, Long, AppOpsManager.OpEventProxyInfo>>
+        val clusteredAccessTimeList: MutableList<Triple<Long, Long, AppOpsManager.OpEventProxyInfo?>>
     )
 }
 

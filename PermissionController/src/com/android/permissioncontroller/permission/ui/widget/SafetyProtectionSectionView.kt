@@ -62,7 +62,7 @@ class SafetyProtectionSectionView : LinearLayout {
             LayoutInflater.from(context).inflate(R.layout.safety_protection_section, this)
             val safetyProtectionDisplayTextView =
                 requireViewById<TextView>(R.id.safety_protection_display_text)
-            safetyProtectionDisplayTextView!!.setText(Html.fromHtml(
+            safetyProtectionDisplayTextView.setText(Html.fromHtml(
                 context.getString(android.R.string.safety_protection_display_text), 0))
         }
     }

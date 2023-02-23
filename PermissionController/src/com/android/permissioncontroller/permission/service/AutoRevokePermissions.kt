@@ -78,15 +78,15 @@ suspend fun revokeAppPermissions(
         }
 
         // For each autorevoke-eligible app...
-        userApps.forEachInParallel(Main) { pkg: LightPackageInfo ->
+        userApps.forEachInParallel(Main) forEachInParallelOuter@ { pkg: LightPackageInfo ->
             if (pkg.grantedPermissions.isEmpty()) {
-                return@forEachInParallel
+                return@forEachInParallelOuter
             }
             val packageName = pkg.packageName
             val targetSdk = pkg.targetSdkVersion
             val pkgPermGroups: Map<String, List<String>> =
                 PackagePermissionsLiveData[packageName, user]
-                    .getInitializedValue() ?: return@forEachInParallel
+                    .getInitializedValue() ?: return@forEachInParallelOuter
 
             // Determine which permGroups are revocable
             val revocableGroups = mutableSetOf<String>()
@@ -140,8 +140,7 @@ suspend fun revokeAppPermissions(
             val anyPermsRevoked = AtomicBoolean(false)
             pkgPermGroups.entries
                 .filter { revocableGroups.contains(it.key) }
-                .forEachInParallel(Main) { (groupName, _) ->
-
+                .forEachInParallel(Main) forEachInParallelInner@ { (groupName, _) ->
                 val group: LightAppPermGroup =
                     LightAppPermGroupLiveData[packageName, groupName, user]
                         .getInitializedValue()!!
@@ -149,7 +148,7 @@ suspend fun revokeAppPermissions(
                 val revocablePermissions = group.permissions.keys.toList()
 
                 if (revocablePermissions.isEmpty()) {
-                    return@forEachInParallel
+                    return@forEachInParallelInner
                 }
 
                 if (DEBUG_AUTO_REVOKE) {
