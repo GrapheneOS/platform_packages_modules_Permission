@@ -39,10 +39,12 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.KeyguardManager;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageItemInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.drawable.Icon;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Process;
 import android.text.Annotation;
@@ -60,6 +62,7 @@ import android.view.inputmethod.InputMethodManager;
 
 import androidx.annotation.GuardedBy;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.core.util.Consumer;
 import androidx.core.util.Preconditions;
@@ -76,7 +79,6 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -89,7 +91,7 @@ import java.util.Random;
 public class GrantPermissionsActivity extends SettingsActivity
         implements GrantPermissionsViewHandler.ResultListener {
 
-    private static final String LOG_TAG = "GrantPermissionsActivit";
+    private static final String LOG_TAG = "GrantPermissionsActivity";
 
     private static final String KEY_SESSION_ID = GrantPermissionsActivity.class.getName()
             + "_REQUEST_ID";
@@ -141,9 +143,9 @@ public class GrantPermissionsActivity extends SettingsActivity
     private String mPreMergeShownGroupName;
 
     /** The current list of permissions requested, across all current requests for this app */
-    private String[] mRequestedPermissions;
-    /** The list of permissions requested in the intent to this activity*/
-    private String[] mOriginalRequestedPermissions;
+    private List<String> mRequestedPermissions;
+    /** A copy of the list of permissions originally requested in the intent to this activity */
+    private String[] mOriginalRequestedPermissions = new String[0];
 
     private boolean[] mButtonVisibilities;
     private boolean[] mLocationVisibilities;
@@ -184,9 +186,7 @@ public class GrantPermissionsActivity extends SettingsActivity
 
         getWindow().addSystemFlags(SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
 
-        mRequestedPermissions = getIntent()
-                .getStringArrayExtra(PackageManager.EXTRA_REQUEST_PERMISSIONS_NAMES);
-
+        int permissionsSdkLevel;
         if (PackageManager.ACTION_REQUEST_PERMISSIONS_FOR_OTHER.equals(getIntent().getAction())) {
             mTargetPackage = getIntent().getStringExtra(Intent.EXTRA_PACKAGE_NAME);
             if (mTargetPackage == null) {
@@ -195,28 +195,43 @@ public class GrantPermissionsActivity extends SettingsActivity
                 finishAfterTransition();
                 return;
             }
-        } else if (getCallingPackage() == null) {
-            Log.e(LOG_TAG, "null callingPackageName. Please use \"RequestPermission\" to "
-                    + "request permissions");
-            finishAfterTransition();
-            return;
+            // We don't want to do any filtering in this case.
+            // These calls are coming from the system on behalf of the app.
+            permissionsSdkLevel = Build.VERSION_CODES.CUR_DEVELOPMENT;
         } else {
             // Cache this as this can only read on onCreate, not later.
             mTargetPackage = getCallingPackage();
-
-            // If this app is below the android T targetSdk, filter out the POST_NOTIFICATIONS
-            // permission, if present
-            mRequestedPermissions = GrantPermissionsViewModel.Companion
-                    .filterPermissionsIfNeededSync(
-                            mTargetPackage, mRequestedPermissions);
+            if (mTargetPackage == null) {
+                Log.e(LOG_TAG, "null callingPackageName. Please use \"RequestPermission\" to "
+                        + "request permissions");
+                finishAfterTransition();
+                return;
+            }
+            try {
+                PackageInfo packageInfo = getPackageManager().getPackageInfo(mTargetPackage, 0);
+                permissionsSdkLevel = packageInfo.applicationInfo.targetSdkVersion;
+            } catch (PackageManager.NameNotFoundException e) {
+                Log.e(LOG_TAG, "Unable to get package info for the calling package.", e);
+                finishAfterTransition();
+                return;
+            }
         }
 
-
-        if (mRequestedPermissions == null || mRequestedPermissions.length == 0) {
+        String[] requestedPermissionsArray = getIntent().getStringArrayExtra(
+            PackageManager.EXTRA_REQUEST_PERMISSIONS_NAMES);
+        if (requestedPermissionsArray == null) {
             setResultAndFinish();
             return;
         }
-        mOriginalRequestedPermissions = mRequestedPermissions;
+
+        mRequestedPermissions = GrantPermissionsViewModel.Companion.getSanitizedPermissionsList(
+            requestedPermissionsArray, permissionsSdkLevel);
+        if (mRequestedPermissions.isEmpty()) {
+            setResultAndFinish();
+            return;
+        }
+
+        mOriginalRequestedPermissions = mRequestedPermissions.toArray(new String[0]);
 
         synchronized (sCurrentGrantRequests) {
             mKey = new Pair<>(mTargetPackage, getTaskId());
@@ -311,7 +326,8 @@ public class GrantPermissionsActivity extends SettingsActivity
      *                 activity finishing
      * @param newPermissions The new permissions requested in the activity
      */
-    private void onNewFollowerActivity(GrantPermissionsActivity follower, String[] newPermissions) {
+    private void onNewFollowerActivity(@Nullable GrantPermissionsActivity follower,
+            @NonNull List<String> newPermissions) {
         if (follower != null) {
             // Ensure the list of follower activities is a stack
             mFollowerActivities.add(0, follower);
@@ -324,21 +340,19 @@ public class GrantPermissionsActivity extends SettingsActivity
                 && currentGroups != null && !currentGroups.isEmpty()) {
             mPreMergeShownGroupName = currentGroups.get(0).getGroupName();
         }
-        boolean newPermission = false;
-        ArrayList<String> currentPermissions =
-                new ArrayList<>(Arrays.asList(mRequestedPermissions));
-        for (String newPerm: newPermissions) {
-            if (!currentPermissions.contains(newPerm)) {
-                currentPermissions.add(newPerm);
-                newPermission = true;
-            }
-        }
 
-        if (!newPermission) {
+        if (mRequestedPermissions.containsAll(newPermissions)) {
             return;
         }
 
-        mRequestedPermissions = currentPermissions.toArray(new String[0]);
+        ArrayList<String> currentPermissions = new ArrayList<>(mRequestedPermissions);
+        for (String newPerm : newPermissions) {
+            if (!currentPermissions.contains(newPerm)) {
+                currentPermissions.add(newPerm);
+            }
+        }
+        mRequestedPermissions = currentPermissions;
+
         Bundle oldState = new Bundle();
         mViewModel.getRequestInfosLiveData().removeObservers(this);
         mViewModel.saveInstanceState(oldState);
@@ -709,21 +723,22 @@ public class GrantPermissionsActivity extends SettingsActivity
 
     private boolean setResultIfNeeded(int resultCode) {
         if (!isResultSet()) {
-            String[] oldRequestedPermissions = mRequestedPermissions;
+            List<String> oldRequestedPermissions = mRequestedPermissions;
             removeActivityFromMap();
             // If a new merge request came in before we managed to remove this activity from the
             // map, then cancel the result set for now.
-            if (!Arrays.equals(oldRequestedPermissions, mRequestedPermissions)) {
+            if (!oldRequestedPermissions.equals(mRequestedPermissions)) {
                 return false;
             }
+
             mResultCode = resultCode;
             if (mViewModel != null) {
                 mViewModel.logRequestedPermissionGroups();
             }
+
             // Only include the originally requested permissions in the result
             Intent result = new Intent(PackageManager.ACTION_REQUEST_PERMISSIONS);
-            String[] resultPermissions = mOriginalRequestedPermissions != null
-                    ? mOriginalRequestedPermissions : new String[0];
+            String[] resultPermissions = mOriginalRequestedPermissions;
             int[] grantResults = new int[resultPermissions.length];
 
             if ((mDelegated || (mViewModel != null && mViewModel.shouldReturnPermissionState()))
