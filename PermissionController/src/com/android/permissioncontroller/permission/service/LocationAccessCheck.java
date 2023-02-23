@@ -160,7 +160,7 @@ import java.util.stream.Collectors;
  */
 public class LocationAccessCheck {
     private static final String LOG_TAG = LocationAccessCheck.class.getSimpleName();
-    private static final boolean DEBUG = true;
+    private static final boolean DEBUG = false;
     private static final long DEFAULT_RENOTIFY_DURATION_MILLIS = DAYS.toMillis(90);
     private static final String ISSUE_ID_PREFIX = "bg_location_";
     private static final String ISSUE_TYPE_ID = "bg_location_privacy_issue";
