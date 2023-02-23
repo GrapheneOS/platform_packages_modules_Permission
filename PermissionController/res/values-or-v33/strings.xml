@@ -28,8 +28,7 @@
     <string name="safety_center_entry_group_item_content_description" msgid="7348298582877249787">"ତାଲିକା ଆଇଟମ। <xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>। <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_entry_content_description" msgid="3639565652938224321">"<xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>। <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"ଅଧିକ ଆଲର୍ଟ"</string>
-    <!-- no translation found for safety_center_dismissed_issues_card_title (2340129842725145733) -->
-    <skip />
+    <string name="safety_center_dismissed_issues_card_title" msgid="2340129842725145733">"ଖାରଜ କରାଯାଇଥିବା ଆଲର୍ଟଗୁଡ଼ିକ"</string>
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{ବିସ୍ତାର କରି ଆଉ ଗୋଟିଏ ଆଲର୍ଟ ଦେଖନ୍ତୁ}other{ବିସ୍ତାର କରି ଆଉ #ଟି ଆଲର୍ଟ ଦେଖନ୍ତୁ}}"</string>
     <string name="safety_center_issue_card_content_description" msgid="1281390769721765363">"ଆଲର୍ଟ। <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>। <xliff:g id="ISSUE_CARD_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_issue_card_content_description_with_subtitle" msgid="5504040663935313539">"ଆଲର୍ଟ। <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>। <xliff:g id="ISSUE_CARD_SUBTITLE">%2$s</xliff:g>। <xliff:g id="ISSUE_CARD_SUMMARY">%3$s</xliff:g>"</string>
