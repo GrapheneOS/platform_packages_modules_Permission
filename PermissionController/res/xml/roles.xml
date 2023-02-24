@@ -1453,6 +1453,7 @@
         visible="false">
         <permissions>
             <permission-set name="notifications" />
+            <permission name="android.permission.INTERACT_ACROSS_USERS_FULL" minSdkVersion="34" />
         </permissions>
     </role>
 
