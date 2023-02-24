@@ -27,8 +27,8 @@
                 title="@com.android.safetycenter.resources:string/lock_screen_title"
                 summary="@com.android.safetycenter.resources:string/lock_screen_summary_disabled"
                 searchTerms="@com.android.safetycenter.resources:string/lock_screen_search_terms"
-                notificationsAllowed="true"
-                initialDisplayState="disabled"/>
+                initialDisplayState="disabled"
+                notificationsAllowed="true"/>
             <dynamic-safety-source
                 id="AndroidBiometrics"
                 packageName="com.android.settings"
@@ -122,7 +122,7 @@
                 initialDisplayState="hidden"
                 refreshOnPageOpenAllowed="true"/>
             <static-safety-source
-                id="AndroidAdvancedSecurity"
+                id="AndroidMoreSettings"
                 profile="primary_profile_only"
                 intentAction="com.android.settings.MORE_SECURITY_PRIVACY_SETTINGS"
                 title="@com.android.safetycenter.resources:string/more_settings_title"
