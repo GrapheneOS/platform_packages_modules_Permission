@@ -591,68 +591,44 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"系統會在應用程式存取你複製的文字、圖片或其他內容時顯示通知訊息"</string>
     <string name="show_password_title" msgid="2877269286984684659">"顯示密碼"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"輸入密碼時，短暫顯示剛輸入的字元"</string>
-    <!-- no translation found for permission_rationale_message_location (5559450538205092588) -->
-    <skip />
+    <string name="permission_rationale_message_location" msgid="5559450538205092588">"這個應用程式表示可能會將位置資料分享給第三方"</string>
     <!-- no translation found for permission_rationale_location_title (2404797182678793506) -->
     <skip />
-    <!-- no translation found for permission_rationale_data_sharing_source_title (6874604543125814316) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"資料分享做法相關資訊的來源"</string>
     <!-- no translation found for permission_rationale_data_sharing_source_message (2229631836873747309) -->
     <skip />
-    <!-- no translation found for permission_rationale_location_purpose_title (513578159134670615) -->
-    <skip />
+    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"這個應用程式分享位置資料的可能目的如下："</string>
     <!-- no translation found for permission_rationale_purpose_message (2136810388727916997) -->
     <skip />
-    <!-- no translation found for permission_rationale_permission_data_sharing_varies_title (9103718980919908316) -->
-    <skip />
-    <!-- no translation found for permission_rationale_data_sharing_varies_message (4224469559084489222) -->
-    <skip />
-    <!-- no translation found for permission_rationale_location_settings_title (7204145004850190953) -->
-    <skip />
-    <!-- no translation found for permission_rationale_permission_settings_message (631286040979660267) -->
-    <skip />
-    <!-- no translation found for permission_rationale_purpose_app_functionality (8397736681065841405) -->
-    <skip />
+    <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"資料分享做法差異"</string>
+    <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"根據你的應用程式版本、使用方式、所在地區與年齡，資料相關做法可能會有所不同。"<annotation id="link">"進一步瞭解資料分享"</annotation></string>
+    <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"你的位置資料"</string>
+    <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"你可以前往"<annotation id="link">"隱私權設定"</annotation>"變更這個應用程式的存取權"</string>
+    <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"應用程式功能"</string>
     <!-- no translation found for permission_rationale_purpose_analytics (2070800501189620712) -->
     <skip />
-    <!-- no translation found for permission_rationale_purpose_developer_communications (6453047018892062374) -->
-    <skip />
-    <!-- no translation found for permission_rationale_purpose_advertising (7156966429245180236) -->
-    <skip />
-    <!-- no translation found for permission_rationale_purpose_fraud_prevention_security (4262104770357031902) -->
-    <skip />
+    <string name="permission_rationale_purpose_developer_communications" msgid="6453047018892062374">"開發人員通知"</string>
+    <string name="permission_rationale_purpose_advertising" msgid="7156966429245180236">"廣告或行銷"</string>
+    <string name="permission_rationale_purpose_fraud_prevention_security" msgid="4262104770357031902">"詐欺防範、安全性和法規遵循"</string>
     <!-- no translation found for permission_rationale_purpose_personalization (1589973273682238708) -->
     <skip />
-    <!-- no translation found for permission_rationale_purpose_account_management (2985772421946688879) -->
-    <skip />
-    <!-- no translation found for app_permission_rationale_message (8511466916077100713) -->
-    <skip />
-    <!-- no translation found for app_location_permission_rationale_title (925420340572401350) -->
-    <skip />
-    <!-- no translation found for app_location_permission_rationale_subtitle (6986985722752868692) -->
-    <skip />
-    <!-- no translation found for data_sharing_updates_title (7996933386875213859) -->
-    <skip />
-    <!-- no translation found for data_sharing_updates_summary (764113985772233889) -->
-    <skip />
-    <!-- no translation found for data_sharing_updates_subtitle (6311537708950632329) -->
-    <skip />
+    <string name="permission_rationale_purpose_account_management" msgid="2985772421946688879">"帳戶管理"</string>
+    <string name="app_permission_rationale_message" msgid="8511466916077100713">"資料安全"</string>
+    <string name="app_location_permission_rationale_title" msgid="925420340572401350">"可能會分享位置資料"</string>
+    <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"這個應用程式表示可能會將位置資料分享給第三方"</string>
+    <string name="data_sharing_updates_title" msgid="7996933386875213859">"位置資料分享更新"</string>
+    <string name="data_sharing_updates_summary" msgid="764113985772233889">"查看哪些應用程式變更了分享位置資料的做法"</string>
+    <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"以下應用程式變更了分享位置資料的做法。這些應用程式先前可能未曾分享位置資料，也可能是現在為了廣告或行銷目的而分享這些資料。"</string>
     <!-- no translation found for data_sharing_updates_footer_message (1582711655172892107) -->
     <skip />
-    <!-- no translation found for learn_about_data_sharing (4200480587079488045) -->
-    <skip />
+    <string name="learn_about_data_sharing" msgid="4200480587079488045">"瞭解資料分享做法"</string>
     <!-- no translation found for shares_location_with_third_parties (2278051743742057767) -->
     <skip />
     <!-- no translation found for shares_location_with_third_parties_for_advertising (1918588064014480513) -->
     <skip />
-    <!-- no translation found for updated_in_last_days (8371811947153042322) -->
-    <skip />
-    <!-- no translation found for no_updates_at_this_time (9031085635689982935) -->
-    <skip />
-    <!-- no translation found for safety_label_changes_notification_title (4479955083472203839) -->
-    <skip />
-    <!-- no translation found for safety_label_changes_notification_desc (7808764283266234675) -->
-    <skip />
-    <!-- no translation found for safety_label_changes_gear_description (2655887555599138509) -->
-    <skip />
+    <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{在一天內曾更新}=1{在一天內曾更新}other{在 # 天內曾更新}}"</string>
+    <string name="no_updates_at_this_time" msgid="9031085635689982935">"目前沒有更新"</string>
+    <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"資料分享做法更新"</string>
+    <string name="safety_label_changes_notification_desc" msgid="7808764283266234675">"部分應用程式變更了分享位置資料的做法"</string>
+    <string name="safety_label_changes_gear_description" msgid="2655887555599138509">"設定"</string>
 </resources>

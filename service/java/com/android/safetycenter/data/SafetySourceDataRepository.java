@@ -77,12 +77,9 @@ final class SafetySourceDataRepository {
     private final Context mContext;
     private final SafetyCenterConfigReader mSafetyCenterConfigReader;
     private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker;
-
     private final SafetyCenterInFlightIssueActionRepository
             mSafetyCenterInFlightIssueActionRepository;
-
     private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
-
     private final PackageManager mPackageManager;
 
     SafetySourceDataRepository(
@@ -129,18 +126,21 @@ final class SafetySourceDataRepository {
         SafetySourceKey key = SafetySourceKey.of(safetySourceId, userId);
         boolean removingSafetySourceErrorChangedSafetyCenterData = mSafetySourceErrors.remove(key);
         SafetySourceData existingSafetySourceData = mSafetySourceDataForKey.get(key);
-        if (Objects.equals(safetySourceData, existingSafetySourceData)) {
+        SafetySourceData fixedSafetySourceData =
+                AndroidLockScreenFix.maybeOverrideSafetySourceData(
+                        mContext, safetySourceId, safetySourceData);
+        if (Objects.equals(fixedSafetySourceData, existingSafetySourceData)) {
             return safetyEventChangedSafetyCenterData
                     || removingSafetySourceErrorChangedSafetyCenterData;
         }
 
         ArraySet<String> issueIds = new ArraySet<>();
-        if (safetySourceData == null) {
+        if (fixedSafetySourceData == null) {
             mSafetySourceDataForKey.remove(key);
         } else {
-            mSafetySourceDataForKey.put(key, safetySourceData);
-            for (int i = 0; i < safetySourceData.getIssues().size(); i++) {
-                issueIds.add(safetySourceData.getIssues().get(i).getId());
+            mSafetySourceDataForKey.put(key, fixedSafetySourceData);
+            for (int i = 0; i < fixedSafetySourceData.getIssues().size(); i++) {
+                issueIds.add(fixedSafetySourceData.getIssues().get(i).getId());
             }
         }
         mSafetyCenterIssueDismissalRepository.updateIssuesForSource(
@@ -245,8 +245,7 @@ final class SafetySourceDataRepository {
     /**
      * Returns the {@link SafetySourceIssue} associated with the given {@link SafetyCenterIssueKey}.
      *
-     * <p>Returns {@code null} if there is no such {@link SafetySourceIssue}, or if it's been
-     * dismissed.
+     * <p>Returns {@code null} if there is no such {@link SafetySourceIssue}.
      */
     @Nullable
     SafetySourceIssue getSafetySourceIssue(SafetyCenterIssueKey safetyCenterIssueKey) {
@@ -268,14 +267,6 @@ final class SafetySourceDataRepository {
                 break;
             }
         }
-        if (targetIssue == null) {
-            return null;
-        }
-
-        if (mSafetyCenterIssueDismissalRepository.isIssueDismissed(
-                safetyCenterIssueKey, targetIssue.getSeverityLevel())) {
-            return null;
-        }
 
         return targetIssue;
     }
@@ -284,8 +275,7 @@ final class SafetySourceDataRepository {
      * Returns the {@link SafetySourceIssue.Action} associated with the given {@link
      * SafetyCenterIssueActionId}.
      *
-     * <p>Returns {@code null} if there is no associated {@link SafetySourceIssue}, or if it's been
-     * dismissed.
+     * <p>Returns {@code null} if there is no associated {@link SafetySourceIssue}.
      *
      * <p>Returns {@code null} if the {@link SafetySourceIssue.Action} is currently in flight.
      */

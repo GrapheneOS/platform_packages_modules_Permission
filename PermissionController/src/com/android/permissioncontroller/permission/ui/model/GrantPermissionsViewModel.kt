@@ -49,7 +49,6 @@ import com.android.modules.utils.build.SdkLevel
 import com.android.permission.safetylabel.SafetyLabel
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.DeviceUtils
-import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.PermissionControllerStatsLog
 import com.android.permissioncontroller.PermissionControllerStatsLog.GRANT_PERMISSIONS_ACTIVITY_BUTTON_ACTIONS
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_GRANT_REQUEST_RESULT_REPORTED__RESULT__AUTO_DENIED
@@ -1514,27 +1513,21 @@ class GrantPermissionsViewModel(
             STORAGE_SUPERGROUP_MESSAGE_PRE_Q(7),
         }
 
-        fun filterPermissionsIfNeededSync(
-            packageName: String,
-            permissions: Array<String>?
-        ): Array<String>? {
-            if (permissions == null) {
-                return null
-            }
-
-            val targetSdk = try {
-                PermissionControllerApplication.get().packageManager
-                        .getPackageInfo(packageName, 0).applicationInfo.targetSdkVersion
-            } catch (e: PackageManager.NameNotFoundException) {
-                Build.VERSION_CODES.TIRAMISU
-            }
-            var permsList = permissions.toMutableList()
-
-            if (targetSdk < Build.VERSION_CODES.TIRAMISU) {
-                permsList.remove(POST_NOTIFICATIONS)
-            }
-
-            return permsList.toTypedArray()
+        /**
+         * Make a copy of a list of permissions that is filtered to remove permissions blocked
+         * according to the target SDK level.
+         */
+        fun getSanitizedPermissionsList(
+            permissions: Array<String?>,
+            targetSdkVersion: Int
+        ): List<String> {
+            return permissions
+                .filter { !it.isNullOrEmpty() }
+                // POST_NOTIFICATIONS is actively disallowed to be declared by apps below T.
+                // Others we don't care as much if they were declared but not used.
+                .filter { targetSdkVersion >= Build.VERSION_CODES.TIRAMISU ||
+                    it != POST_NOTIFICATIONS }
+                .filterIsInstance<String>()
         }
     }
 }
@@ -1548,13 +1541,13 @@ class GrantPermissionsViewModel(
 class GrantPermissionsViewModelFactory(
     private val app: Application,
     private val packageName: String,
-    private val requestedPermissions: Array<String>,
+    private val requestedPermissions: List<String>,
     private val sessionId: Long,
     private val savedState: Bundle?
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         @Suppress("UNCHECKED_CAST")
-        return GrantPermissionsViewModel(app, packageName, requestedPermissions.toList(),
+        return GrantPermissionsViewModel(app, packageName, requestedPermissions,
             sessionId, savedState) as T
     }
 }

@@ -101,9 +101,8 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
 
     private fun updateSafetyCenterIssues(uiData: SafetyCenterUiData?) {
         subpageIssueGroup.removeAll()
-        val subpageIssues = uiData?.safetyCenterData?.issues?.filter { it.groupId == sourceGroupId }
-        val subpageDismissedIssues =
-            uiData?.safetyCenterData?.dismissedIssues?.filter { it.groupId == sourceGroupId }
+        val subpageIssues = uiData?.getMatchingIssues(sourceGroupId)
+        val subpageDismissedIssues = uiData?.getMatchingDismissedIssues(sourceGroupId)
 
         subpageIllustration.isVisible =
             subpageIssues.isNullOrEmpty() && subpageIllustration.imageDrawable != null

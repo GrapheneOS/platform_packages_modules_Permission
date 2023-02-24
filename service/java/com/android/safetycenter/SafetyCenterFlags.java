@@ -59,6 +59,9 @@ public final class SafetyCenterFlags {
     private static final String PROPERTY_NOTIFICATIONS_IMMEDIATE_BEHAVIOR_ISSUES =
             "safety_center_notifications_immediate_behavior_issues";
 
+    private static final String PROPERTY_NOTIFICATION_RESURFACE_INTERVAL =
+            "safety_center_notification_resurface_interval";
+
     private static final String PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT =
             "safety_center_show_error_entries_on_timeout";
 
@@ -141,6 +144,8 @@ public final class SafetyCenterFlags {
                 fout,
                 PROPERTY_NOTIFICATIONS_IMMEDIATE_BEHAVIOR_ISSUES,
                 getImmediateNotificationBehaviorIssues());
+        printFlag(
+                fout, PROPERTY_NOTIFICATION_RESURFACE_INTERVAL, getNotificationResurfaceInterval());
         printFlag(fout, PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT, getShowErrorEntriesOnTimeout());
         printFlag(fout, PROPERTY_REPLACE_LOCK_SCREEN_ICON_ACTION, getReplaceLockScreenIconAction());
         printFlag(fout, PROPERTY_RESOLVING_ACTION_TIMEOUT_MILLIS, getResolvingActionTimeout());
@@ -202,20 +207,20 @@ public final class SafetyCenterFlags {
         return getCommaSeparatedStrings(PROPERTY_NOTIFICATIONS_ALLOWED_SOURCES);
     }
 
-    /*
-     * Returns the minimum delay before Safety Center sends a notification with
-     * {@link android.safetycenter.SafetySourceIssue.NotificationBehavior.NOTIFICATION_BEHAVIOR_DELAYED}.
+    /**
+     * Returns the minimum delay before Safety Center can send a notification for an issue with
+     * {@link SafetySourceIssue#NOTIFICATION_BEHAVIOR_DELAYED}.
      *
-     * The actual delay used may be longer.
+     * <p>The actual delay used may be longer.
      */
-
     static Duration getNotificationsMinDelay() {
         return getDuration(
                 PROPERTY_NOTIFICATIONS_MIN_DELAY, NOTIFICATIONS_MIN_DELAY_DEFAULT_DURATION);
     }
+
     /**
-     * Returns the issue type IDs for which, if otherwise undefined, Safety Center should use the
-     * "immediate" notification behavior.
+     * Returns the issue type IDs for which, if otherwise undefined, Safety Center should use {@link
+     * SafetySourceIssue#NOTIFICATION_BEHAVIOR_IMMEDIATELY}.
      *
      * <p>If a safety source specifies the notification behavior of an issue explicitly this flag
      * has no effect, even if the issue matches one of the entries in this flag.
@@ -224,6 +229,27 @@ public final class SafetyCenterFlags {
      */
     static ArraySet<String> getImmediateNotificationBehaviorIssues() {
         return getCommaSeparatedStrings(PROPERTY_NOTIFICATIONS_IMMEDIATE_BEHAVIOR_ISSUES);
+    }
+
+    /**
+     * Returns the minimum interval that must elapse before Safety Center can resurface a
+     * notification after it was dismissed, or {@code null} (the default) if dismissed notifications
+     * cannot resurface.
+     *
+     * <p>Returns {@code null} if the underlying device config flag is either unset or is set to a
+     * negative value.
+     *
+     * <p>There may be other conditions for resurfacing a notification and the actual delay may be
+     * longer than this.
+     */
+    @Nullable
+    public static Duration getNotificationResurfaceInterval() {
+        long millis = getLong(PROPERTY_NOTIFICATION_RESURFACE_INTERVAL, -1);
+        if (millis < 0) {
+            return null;
+        } else {
+            return Duration.ofMillis(millis);
+        }
     }
 
     /**
@@ -237,7 +263,7 @@ public final class SafetyCenterFlags {
      * Returns whether we should replace the lock screen source's {@link
      * android.safetycenter.SafetySourceStatus.IconAction}.
      */
-    static boolean getReplaceLockScreenIconAction() {
+    public static boolean getReplaceLockScreenIconAction() {
         return getBoolean(PROPERTY_REPLACE_LOCK_SCREEN_ICON_ACTION, true);
     }
 
