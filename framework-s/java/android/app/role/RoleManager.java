@@ -185,6 +185,15 @@ public final class RoleManager {
             "android.app.role.FINANCED_DEVICE_KIOSK";
 
     /**
+     * The name of the system call streaming role.
+     *
+     * @hide
+     */
+    @SystemApi
+    public static final String ROLE_SYSTEM_CALL_STREAMING =
+            "android.app.role.SYSTEM_CALL_STREAMING";
+
+    /**
      * @hide
      */
     @IntDef(flag = true, value = { MANAGE_HOLDERS_FLAG_DONT_KILL_APP })
