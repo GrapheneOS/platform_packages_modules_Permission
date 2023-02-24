@@ -121,9 +121,6 @@ public final class SafetyCenterService extends SystemService {
     private final SafetyCenterDataManager mSafetyCenterDataManager;
 
     @GuardedBy("mApiLock")
-    private final PendingIntentFactory mPendingIntentFactory;
-
-    @GuardedBy("mApiLock")
     private final SafetyCenterDataFactory mSafetyCenterDataFactory;
 
     @GuardedBy("mApiLock")
@@ -151,7 +148,6 @@ public final class SafetyCenterService extends SystemService {
         SafetyCenterStatsdLogger safetyCenterStatsdLogger =
                 new SafetyCenterStatsdLogger(context, mSafetyCenterConfigReader);
         mSafetyCenterRefreshTracker = new SafetyCenterRefreshTracker(safetyCenterStatsdLogger);
-        mPendingIntentFactory = new PendingIntentFactory(context, mSafetyCenterResourcesContext);
         mSafetyCenterDataManager =
                 new SafetyCenterDataManager(
                         context,
@@ -164,7 +160,7 @@ public final class SafetyCenterService extends SystemService {
                         mSafetyCenterResourcesContext,
                         mSafetyCenterConfigReader,
                         mSafetyCenterRefreshTracker,
-                        mPendingIntentFactory,
+                        new PendingIntentFactory(context, mSafetyCenterResourcesContext),
                         mSafetyCenterDataManager);
         mSafetyCenterListeners = new SafetyCenterListeners(mSafetyCenterDataFactory);
         mNotificationSender =
@@ -172,8 +168,8 @@ public final class SafetyCenterService extends SystemService {
                         context,
                         new SafetyCenterNotificationFactory(
                                 context,
-                                new SafetyCenterNotificationChannels(mSafetyCenterResourcesContext),
-                                mPendingIntentFactory),
+                                new SafetyCenterNotificationChannels(
+                                        mSafetyCenterResourcesContext)),
                         mSafetyCenterDataManager);
         mSafetyCenterBroadcastDispatcher =
                 new SafetyCenterBroadcastDispatcher(
@@ -1067,11 +1063,7 @@ public final class SafetyCenterService extends SystemService {
                 // button multiple times in a row.
                 return;
             }
-            PendingIntent issueActionPendingIntent =
-                    mPendingIntentFactory.maybeOverridePendingIntent(
-                            safetyCenterIssueKey.getSafetySourceId(),
-                            safetySourceIssueAction.getPendingIntent(),
-                            false);
+            PendingIntent issueActionPendingIntent = safetySourceIssueAction.getPendingIntent();
             if (!dispatchPendingIntent(issueActionPendingIntent, taskId)) {
                 Log.w(
                         TAG,

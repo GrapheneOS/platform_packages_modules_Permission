@@ -54,15 +54,11 @@ final class SafetyCenterNotificationFactory {
 
     private final Context mContext;
     private final SafetyCenterNotificationChannels mNotificationChannels;
-    private final PendingIntentFactory mPendingIntentFactory;
 
     SafetyCenterNotificationFactory(
-            Context context,
-            SafetyCenterNotificationChannels notificationChannels,
-            PendingIntentFactory pendingIntentFactory) {
+            Context context, SafetyCenterNotificationChannels notificationChannels) {
         mContext = context;
         mNotificationChannels = notificationChannels;
-        mPendingIntentFactory = pendingIntentFactory;
     }
 
     /**
@@ -171,7 +167,6 @@ final class SafetyCenterNotificationFactory {
 
     private PendingIntent getDirectPendingIntentForNonResolvingAction(
             SafetyCenterIssueKey issueKey, SafetySourceIssue.Action issueAction) {
-        return mPendingIntentFactory.maybeOverridePendingIntent(
-                issueKey.getSafetySourceId(), issueAction.getPendingIntent(), false);
+        return issueAction.getPendingIntent();
     }
 }

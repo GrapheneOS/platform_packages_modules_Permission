@@ -237,7 +237,7 @@ public final class SafetyCenterFlags {
      * Returns whether we should replace the lock screen source's {@link
      * android.safetycenter.SafetySourceStatus.IconAction}.
      */
-    static boolean getReplaceLockScreenIconAction() {
+    public static boolean getReplaceLockScreenIconAction() {
         return getBoolean(PROPERTY_REPLACE_LOCK_SCREEN_ICON_ACTION, true);
     }
 
