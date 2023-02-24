@@ -32,8 +32,6 @@
     <instrumentation android:name="androidx.test.runner.AndroidJUnitRunner"
                      android:label="CTS tests for SafetyCenter"
                      android:targetPackage="android.safetycenter.cts">
-        <meta-data android:name="listener"
-                   android:value="com.android.cts.runner.CtsTestRunListener"/>
     </instrumentation>
 
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
