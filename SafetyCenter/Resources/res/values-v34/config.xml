@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright (C) 2022 The Android Open Source Project
+  ~ Copyright (C) 2023 The Android Open Source Project
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -17,9 +17,7 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Comma separated list of safety source IDs to show in the same task as the safety center -->
-    <string name="config_same_task_safety_source_ids" translatable="false">AndroidAccessibility,AndroidAdvancedPrivacy,AndroidAdvancedSecurity,AndroidBackgroundLocation,AndroidBiometrics,AndroidLockScreen,AndroidNotificationListener,AndroidPermissionAutoRevoke,AndroidPermissionManager,AndroidPermissionUsage,AndroidPrivacyControls,AndroidWorkPolicyInfo</string>
-    <!-- Comma separated list of packages that are pregranted to enable a notification listener service. For T- platforms.-->
-    <string name="config_NotificationListenerServicePregrants" translatable="false"></string>
+    <string name="config_same_task_safety_source_ids" translatable="false">AndroidAccessibility,AndroidAdsPrivacy,AndroidBackgroundLocation,AndroidBiometrics,AndroidLockScreen,AndroidMoreSettings,AndroidNotificationListener,AndroidPermissionAutoRevoke,AndroidPermissionManager,AndroidPermissionUsage,AndroidPrivacyAppDataSharingUpdates,AndroidPrivacyControls,AndroidWorkPolicyInfo</string>
     <!-- Comma separated list of safety source IDs to add an Intent Extra confirming they should be displayed as if opened by a settings UI page. -->
-    <string name="config_useSettingsHomepageIntentExtra" translatable="false">AndroidAdvancedPrivacy,AndroidAdvancedSecurity</string>
+    <string name="config_useSettingsHomepageIntentExtra" translatable="false">AndroidMoreSettings</string>
 </resources>
