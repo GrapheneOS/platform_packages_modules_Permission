@@ -51,9 +51,9 @@ object SafetyCenterFlags {
     private val notificationsFlag =
         Flag("safety_center_notifications_enabled", defaultValue = false, BooleanParser())
 
-    /*
-     * Flag that determines the minimum delay before Safety Center sends a notification with
-     * {@link android.safetycenter.SafetySourceIssue.NotificationBehavior.NOTIFICATION_BEHAVIOR_DELAYED}.
+    /**
+     * Flag that determines the minimum delay before Safety Center can send a notification for an
+     * issue with [SafetySourceIssue.NOTIFICATION_BEHAVIOR_DELAYED].
      *
      * The actual delay used may be longer.
      */
@@ -77,13 +77,28 @@ object SafetyCenterFlags {
 
     /**
      * Flag containing a comma-delimited list of the issue type IDs for which, if otherwise
-     * undefined, Safety Center should use the "immediate" notification behavior.
+     * undefined, Safety Center should use [SafetySourceIssue.NOTIFICATION_BEHAVIOR_IMMEDIATELY].
      */
     private val immediateNotificationBehaviorIssuesFlag =
         Flag(
             "safety_center_notifications_immediate_behavior_issues",
             defaultValue = emptySet(),
             SetParser(StringParser())
+        )
+
+    /**
+     * Flag for the minimum interval which must elapse before Safety Center can resurface a
+     * notification after it was dismissed. A negative [Duration] (the default) means that dismissed
+     * notifications cannot resurface.
+     *
+     * There may be other conditions for resurfacing a notification and the actual delay may be
+     * longer than this.
+     */
+    private val notificationResurfaceIntervalFlag =
+        Flag(
+            "safety_center_notification_resurface_interval",
+            defaultValue = Duration.ofDays(-1),
+            DurationParser()
         )
 
     /**
@@ -287,6 +302,7 @@ object SafetyCenterFlags {
             notificationsAllowedSourcesFlag,
             notificationsMinDelayFlag,
             immediateNotificationBehaviorIssuesFlag,
+            notificationResurfaceIntervalFlag,
             showErrorEntriesOnTimeoutFlag,
             replaceLockScreenIconActionFlag,
             refreshSourceTimeoutsFlag,
@@ -328,6 +344,9 @@ object SafetyCenterFlags {
 
     /** A property that allows getting and setting the [immediateNotificationBehaviorIssuesFlag]. */
     var immediateNotificationBehaviorIssues: Set<String> by immediateNotificationBehaviorIssuesFlag
+
+    /** A property that allows getting and setting the [notificationResurfaceIntervalFlag]. */
+    var notificationResurfaceInterval: Duration by notificationResurfaceIntervalFlag
 
     /** A property that allows getting and setting the [showErrorEntriesOnTimeoutFlag]. */
     var showErrorEntriesOnTimeout: Boolean by showErrorEntriesOnTimeoutFlag
