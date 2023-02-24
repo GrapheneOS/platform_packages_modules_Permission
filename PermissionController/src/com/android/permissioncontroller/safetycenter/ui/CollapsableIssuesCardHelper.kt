@@ -303,12 +303,12 @@ class CollapsableIssuesCardHelper(
         previousMoreIssuesCardData: MoreIssuesCardData?,
         nextMoreIssuesCardData: MoreIssuesCardData
     ): MoreIssuesCardPreference {
-        val prefIconResourceId =
-            if (isQuickSettingsFragment) R.drawable.ic_chevron_right else R.drawable.ic_expand_more
+        val overrideChevronIconResId =
+            if (isQuickSettingsFragment) R.drawable.ic_chevron_right else null
 
         return MoreIssuesCardPreference(
             context,
-            prefIconResourceId,
+            overrideChevronIconResId,
             previousMoreIssuesCardData,
             nextMoreIssuesCardData,
             dismissedOnly,
