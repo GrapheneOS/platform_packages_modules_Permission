@@ -20,9 +20,6 @@ import android.app.Application
 import android.content.Context
 import android.os.Build
 import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
-import android.safetycenter.SafetyCenterData
-import android.safetycenter.SafetyCenterEntryGroup
-import android.safetycenter.SafetyCenterEntryOrGroup
 import android.safetycenter.SafetyCenterErrorDetails
 import android.safetycenter.SafetyCenterIssue
 import androidx.annotation.RequiresApi
@@ -88,14 +85,3 @@ abstract class SafetyCenterViewModel(protected val app: Application) : AndroidVi
 typealias IssueId = String
 
 typealias ActionId = String
-
-data class SafetyCenterUiData(
-    val safetyCenterData: SafetyCenterData,
-    val resolvedIssues: Map<IssueId, ActionId> = emptyMap()
-) {
-    fun getMatchingGroup(groupId: String): SafetyCenterEntryGroup? {
-        val entryOrGroups: List<SafetyCenterEntryOrGroup> = safetyCenterData.entriesOrGroups
-        val entryGroups = entryOrGroups.mapNotNull { it.entryGroup }
-        return entryGroups.find { it.id == groupId }
-    }
-}

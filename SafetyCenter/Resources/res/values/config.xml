@@ -17,7 +17,7 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Comma separated list of safety source IDs to show in the same task as the safety center -->
-    <string name="config_same_task_safety_source_ids" translatable="false">AndroidAccessibility,AndroidAdsPrivacy,AndroidAdvancedPrivacy,AndroidAdvancedSecurity,AndroidBackgroundLocation,AndroidBiometrics,AndroidLockScreen,AndroidNotificationListener,AndroidPermissionAutoRevoke,AndroidPermissionManager,AndroidPermissionUsage,AndroidPrivacyAppDataSharingUpdates,AndroidPrivacyControls,AndroidWorkPolicyInfo</string>
+    <string name="config_same_task_safety_source_ids" translatable="false">AndroidAccessibility,AndroidAdvancedPrivacy,AndroidAdvancedSecurity,AndroidBackgroundLocation,AndroidBiometrics,AndroidLockScreen,AndroidNotificationListener,AndroidPermissionAutoRevoke,AndroidPermissionManager,AndroidPermissionUsage,AndroidPrivacyControls,AndroidWorkPolicyInfo</string>
     <!-- Comma separated list of packages that are pregranted to enable a notification listener service. For T- platforms.-->
     <string name="config_NotificationListenerServicePregrants" translatable="false"></string>
     <!-- Comma separated list of safety source IDs to add an Intent Extra confirming they should be displayed as if opened by a settings UI page. -->

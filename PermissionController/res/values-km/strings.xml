@@ -591,68 +591,44 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"បង្ហាញសារ នៅពេលកម្មវិធីចូលប្រើអត្ថបទ រូបភាព ឬខ្លឹមសារផ្សេងទៀតដែលអ្នកបានចម្លង"</string>
     <string name="show_password_title" msgid="2877269286984684659">"បង្ហាញ​ពាក្យ​សម្ងាត់"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"បង្ហាញ​តួអក្សរ​មួយភ្លែត​ខណៈ​ពេល​អ្នក​វាយ​បញ្ចូល"</string>
-    <!-- no translation found for permission_rationale_message_location (5559450538205092588) -->
-    <skip />
+    <string name="permission_rationale_message_location" msgid="5559450538205092588">"កម្មវិធីនេះ​បានបញ្ជាក់ថា វាអាចចែករំលែក​ទិន្នន័យទីតាំងរបស់អ្នក​ជាមួយភាគីទីបី"</string>
     <!-- no translation found for permission_rationale_location_title (2404797182678793506) -->
     <skip />
-    <!-- no translation found for permission_rationale_data_sharing_source_title (6874604543125814316) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"កន្លែងដែលព័ត៌មាន​អំពីការចែករំលែក​ទិន្នន័យបានមកពី"</string>
     <!-- no translation found for permission_rationale_data_sharing_source_message (2229631836873747309) -->
     <skip />
-    <!-- no translation found for permission_rationale_location_purpose_title (513578159134670615) -->
-    <skip />
+    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"កម្មវិធីនេះ​អាចនឹងចែករំលែក​ទិន្នន័យទីតាំងសម្រាប់៖"</string>
     <!-- no translation found for permission_rationale_purpose_message (2136810388727916997) -->
     <skip />
-    <!-- no translation found for permission_rationale_permission_data_sharing_varies_title (9103718980919908316) -->
-    <skip />
-    <!-- no translation found for permission_rationale_data_sharing_varies_message (4224469559084489222) -->
-    <skip />
-    <!-- no translation found for permission_rationale_location_settings_title (7204145004850190953) -->
-    <skip />
-    <!-- no translation found for permission_rationale_permission_settings_message (631286040979660267) -->
-    <skip />
-    <!-- no translation found for permission_rationale_purpose_app_functionality (8397736681065841405) -->
-    <skip />
+    <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ភាពខុសគ្នានៃ​ការចែករំលែកទិន្នន័យ"</string>
+    <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"ការអនុវត្ត​ចំពោះ​ទិន្នន័យ​អាចខុសគ្នាទៅតាម​កំណែកម្មវិធី ការប្រើប្រាស់ តំបន់ និង​អាយុរបស់អ្នក។ "<annotation id="link">"ច្រើនទៀតអំពី​ការចែករំលែកទិន្នន័យ"</annotation></string>
+    <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"ទិន្នន័យ​ទីតាំង​របស់អ្នក"</string>
+    <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"ប្ដូរសិទ្ធិចូលប្រើ​របស់កម្មវិធីនេះ​នៅក្នុង"<annotation id="link">"ការកំណត់ឯកជនភាព"</annotation></string>
+    <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"មុខងារ​កម្មវិធី"</string>
     <!-- no translation found for permission_rationale_purpose_analytics (2070800501189620712) -->
     <skip />
-    <!-- no translation found for permission_rationale_purpose_developer_communications (6453047018892062374) -->
-    <skip />
-    <!-- no translation found for permission_rationale_purpose_advertising (7156966429245180236) -->
-    <skip />
-    <!-- no translation found for permission_rationale_purpose_fraud_prevention_security (4262104770357031902) -->
-    <skip />
+    <string name="permission_rationale_purpose_developer_communications" msgid="6453047018892062374">"ការធ្វើទំនាក់ទំនង​របស់​អ្នកអភិវឌ្ឍន៍"</string>
+    <string name="permission_rationale_purpose_advertising" msgid="7156966429245180236">"ការ​ផ្សាយ​ពាណិជ្ជកម្ម ឬការធ្វើទីផ្សារ"</string>
+    <string name="permission_rationale_purpose_fraud_prevention_security" msgid="4262104770357031902">"ការទប់ស្កាត់ការគៃបន្លំ សុវត្ថិភាព និងអនុលោមភាព"</string>
     <!-- no translation found for permission_rationale_purpose_personalization (1589973273682238708) -->
     <skip />
-    <!-- no translation found for permission_rationale_purpose_account_management (2985772421946688879) -->
-    <skip />
-    <!-- no translation found for app_permission_rationale_message (8511466916077100713) -->
-    <skip />
-    <!-- no translation found for app_location_permission_rationale_title (925420340572401350) -->
-    <skip />
-    <!-- no translation found for app_location_permission_rationale_subtitle (6986985722752868692) -->
-    <skip />
-    <!-- no translation found for data_sharing_updates_title (7996933386875213859) -->
-    <skip />
-    <!-- no translation found for data_sharing_updates_summary (764113985772233889) -->
-    <skip />
-    <!-- no translation found for data_sharing_updates_subtitle (6311537708950632329) -->
-    <skip />
+    <string name="permission_rationale_purpose_account_management" msgid="2985772421946688879">"ការគ្រប់គ្រង​គណនី"</string>
+    <string name="app_permission_rationale_message" msgid="8511466916077100713">"សុវត្ថិភាព​ទិន្នន័យ"</string>
+    <string name="app_location_permission_rationale_title" msgid="925420340572401350">"ទិន្នន័យទីតាំងអាចនឹង​ត្រូវបានចែករំលែក"</string>
+    <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"កម្មវិធីនេះ​បានបញ្ជាក់ថា វាអាចចែករំលែក​ទិន្នន័យទីតាំងរបស់អ្នក​ជាមួយភាគីទីបី"</string>
+    <string name="data_sharing_updates_title" msgid="7996933386875213859">"បច្ចុប្បន្នភាពការចែករំលែកទិន្នន័យសម្រាប់ទីតាំង"</string>
+    <string name="data_sharing_updates_summary" msgid="764113985772233889">"ពិនិត្យមើលកម្មវិធីដែលបានផ្លាស់ប្ដូររបៀបដែលកម្មវិធីទាំងនោះអាចចែករំលែកទិន្នន័យទីតាំងរបស់អ្នក"</string>
+    <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"កម្មវិធីទាំងនេះ​បានផ្លាស់ប្ដូររបៀបដែលវា​អាចចែករំលែកទិន្នន័យ​ទីតាំងរបស់អ្នក។ កម្មវិធីទាំងនេះ​ប្រហែលជាមិនបានចែករំលែកទិន្នន័យទីតាំងពីមុនទេ ឬឥឡូវនេះប្រហែលជា​ចែករំលែកទិន្នន័យទីតាំងនេះ​សម្រាប់គោលបំណង​ផ្សាយពាណិជ្ជកម្ម ឬធ្វើទីផ្សារ។"</string>
     <!-- no translation found for data_sharing_updates_footer_message (1582711655172892107) -->
     <skip />
-    <!-- no translation found for learn_about_data_sharing (4200480587079488045) -->
-    <skip />
+    <string name="learn_about_data_sharing" msgid="4200480587079488045">"ស្វែងយល់អំពី​ការចែករំលែកទិន្នន័យ"</string>
     <!-- no translation found for shares_location_with_third_parties (2278051743742057767) -->
     <skip />
     <!-- no translation found for shares_location_with_third_parties_for_advertising (1918588064014480513) -->
     <skip />
-    <!-- no translation found for updated_in_last_days (8371811947153042322) -->
-    <skip />
-    <!-- no translation found for no_updates_at_this_time (9031085635689982935) -->
-    <skip />
-    <!-- no translation found for safety_label_changes_notification_title (4479955083472203839) -->
-    <skip />
-    <!-- no translation found for safety_label_changes_notification_desc (7808764283266234675) -->
-    <skip />
-    <!-- no translation found for safety_label_changes_gear_description (2655887555599138509) -->
-    <skip />
+    <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{បានធ្វើបច្ចុប្បន្នភាព​នៅថ្ងៃចុងក្រោយ}=1{បានធ្វើបច្ចុប្បន្នភាព​នៅថ្ងៃចុងក្រោយ}other{បានធ្វើបច្ចុប្បន្នភាពក្នុងរយៈពេល # ថ្ងៃ}}"</string>
+    <string name="no_updates_at_this_time" msgid="9031085635689982935">"គ្មានបច្ចុប្បន្នភាព​នៅពេលនេះទេ"</string>
+    <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"បច្ចុប្បន្នភាពការចែករំលែកទិន្នន័យ"</string>
+    <string name="safety_label_changes_notification_desc" msgid="7808764283266234675">"កម្មវិធីមួយចំនួន​បានផ្លាស់ប្ដូររបៀបដែលវាអាចចែករំលែកទិន្នន័យ​ទីតាំងរបស់អ្នក"</string>
+    <string name="safety_label_changes_gear_description" msgid="2655887555599138509">"ការកំណត់"</string>
 </resources>

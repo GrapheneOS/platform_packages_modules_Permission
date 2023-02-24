@@ -61,11 +61,8 @@ import javax.annotation.concurrent.NotThreadSafe;
 public final class SafetyCenterDataManager {
 
     private final SafetySourceDataRepository mSafetySourceDataRepository;
-
     private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
-
     private final SafetyCenterIssueRepository mSafetyCenterIssueRepository;
-
     private final SafetyCenterInFlightIssueActionRepository
             mSafetyCenterInFlightIssueActionRepository;
 
@@ -265,14 +262,12 @@ public final class SafetyCenterDataManager {
                 safetyCenterIssueKey, safetySourceIssueSeverityLevel);
     }
 
-    /**
-     * Returns the {@link Instant} when the notification for the issue with the given key was last
-     * dismissed.
-     */
-    @Nullable
-    public Instant getNotificationDismissedAt(SafetyCenterIssueKey safetyCenterIssueKey) {
-        return mSafetyCenterIssueDismissalRepository.getNotificationDismissedAt(
-                safetyCenterIssueKey);
+    /** Returns {@code true} if an issue's notification is dismissed now. */
+    // TODO(b/259084807): Consider extracting notification dismissal logic to separate class
+    public boolean isNotificationDismissedNow(
+            SafetyCenterIssueKey issueKey, @SafetySourceData.SeverityLevel int severityLevel) {
+        return mSafetyCenterIssueDismissalRepository.isNotificationDismissedNow(
+                issueKey, severityLevel);
     }
 
     /**
@@ -380,8 +375,7 @@ public final class SafetyCenterDataManager {
     /**
      * Returns the {@link SafetySourceIssue} associated with the given {@link SafetyCenterIssueKey}.
      *
-     * <p>Returns {@code null} if there is no such {@link SafetySourceIssue}, or if it's been
-     * dismissed.
+     * <p>Returns {@code null} if there is no such {@link SafetySourceIssue}.
      */
     @Nullable
     public SafetySourceIssue getSafetySourceIssue(SafetyCenterIssueKey safetyCenterIssueKey) {

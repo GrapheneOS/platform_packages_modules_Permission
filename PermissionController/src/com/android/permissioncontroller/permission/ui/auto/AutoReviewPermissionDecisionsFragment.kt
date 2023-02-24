@@ -221,7 +221,7 @@ class AutoReviewPermissionDecisionsFragment : AutoSettingsFrameFragment() {
             PermissionControllerStatsLog.RECENT_PERMISSION_DECISIONS_INTERACTED,
             sessionId,
             RECENT_PERMISSION_DECISIONS_INTERACTED__ACTION__SCREEN_VIEWED,
-            null,
+            0,
             null)
     }
 
@@ -230,7 +230,7 @@ class AutoReviewPermissionDecisionsFragment : AutoSettingsFrameFragment() {
             PermissionControllerStatsLog.RECENT_PERMISSION_DECISIONS_INTERACTED,
             sessionId,
             RECENT_PERMISSION_DECISIONS_INTERACTED__ACTION__VIEW_ALL_CLICKED,
-            null,
+            0,
             null)
     }
 

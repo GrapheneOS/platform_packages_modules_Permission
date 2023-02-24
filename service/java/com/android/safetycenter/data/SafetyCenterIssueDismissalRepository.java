@@ -216,17 +216,41 @@ final class SafetyCenterIssueDismissalRepository {
         return issueData.getFirstSeenAt();
     }
 
-    /**
-     * Returns the {@link Instant} when the notification for the issue with the given key was last
-     * dismissed.
-     */
     @Nullable
-    Instant getNotificationDismissedAt(SafetyCenterIssueKey safetyCenterIssueKey) {
+    private Instant getNotificationDismissedAt(SafetyCenterIssueKey safetyCenterIssueKey) {
         IssueData issueData = getOrWarn(safetyCenterIssueKey, "getting notification dismissed");
         if (issueData == null) {
             return null;
         }
         return issueData.getNotificationDismissedAt();
+    }
+
+    /** Returns {@code true} if an issue's notification is dismissed now. */
+    // TODO(b/259084807): Consider extracting notification dismissal logic to separate class
+    boolean isNotificationDismissedNow(
+            SafetyCenterIssueKey issueKey, @SafetySourceData.SeverityLevel int severityLevel) {
+        // The current code for dismissing an issue/warning card also dismisses any
+        // corresponding notification, but it is still necessary to check the issue dismissal
+        // status, in addition to the notification dismissal (below) because issues may have been
+        // dismissed by an earlier version of the code which lacked this functionality.
+        if (isIssueDismissed(issueKey, severityLevel)) {
+            return true;
+        }
+
+        Instant dismissedAt = getNotificationDismissedAt(issueKey);
+        if (dismissedAt == null) {
+            // Notification was never dismissed
+            return false;
+        }
+
+        Duration resurfaceDelay = SafetyCenterFlags.getNotificationResurfaceInterval();
+        if (resurfaceDelay == null) {
+            // Null resurface delay means notifications may never resurface
+            return true;
+        }
+
+        Instant canResurfaceAt = dismissedAt.plus(resurfaceDelay);
+        return Instant.now().isBefore(canResurfaceAt);
     }
 
     /**
