@@ -475,10 +475,10 @@ public final class RoleManager {
     }
 
     /**
-     * Get package names of the applications holding the role for a default application.
+     * Get package name of the application holding the role for a default application.
      * <p>
-     * <strong>Note:</strong> Using this API requires holding
-     * {@code android.permission.MANAGE_DEFAULT_APPLICATIONS}.
+     * Only roles describing default applications can be used with this method. They can have
+     * at most one holder.
      *
      * @param roleName the name of the default application role to get
      *
@@ -506,8 +506,8 @@ public final class RoleManager {
     /**
      * Set a specific application as the default application.
      * <p>
-     * <strong>Note:</strong> Using this API requires holding
-     * {@code android.permission.MANAGE_DEFAULT_APPLICATIONS}.
+     * Only roles describing default applications can be used with this method. They can have
+     * at most one holder.
      *
      * @param roleName the name of the default application role to set the role holder for
      * @param packageName the package name of the application to set as the default application,
