@@ -20,13 +20,13 @@
     <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"Ressourcer i Sikkerhedscenter"</string>
     <string name="lock_screen_sources_title" msgid="3317906280484627707">"Enhedslås"</string>
     <string name="lock_screen_sources_summary" msgid="7220439741282516496"></string>
-    <string name="lock_screen_title" msgid="4069104894527169877">"Skærmlås"</string>
+    <string name="lock_screen_title" msgid="4069104894527169877">"Skærm­lås"</string>
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"Der er ingen oplysninger endnu"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"Privatliv"</string>
     <string name="privacy_sources_summary" msgid="4089719981155120864">"Kontrolpanel, tilladelser, styringselementer"</string>
     <string name="permission_usage_title" msgid="3633779688945350407">"Privatlivspanel"</string>
     <string name="permission_usage_summary" msgid="5323079206029964468">"Vis, hvilke apps der har brugt tilladelser for nylig"</string>
-    <string name="permission_manager_title" msgid="5277347862821255015">"Tilladelsesadministrator"</string>
+    <string name="permission_manager_title" msgid="5277347862821255015">"Tilladelses­administrator"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"Administrer appadgang til dine data"</string>
     <string name="privacy_controls_title" msgid="5322875777945432395">"Privatlivsindstillinger"</string>
     <string name="privacy_controls_summary" msgid="2402066941190435424">"Styr enhedens adgang til mikrofonen, kameraet og mere"</string>
