@@ -44,6 +44,7 @@ import com.android.safetycenter.ApiLock;
 import com.android.safetycenter.SafetyCenterConfigReader;
 import com.android.safetycenter.SafetyCenterDataFactory;
 import com.android.safetycenter.SafetyCenterFlags;
+import com.android.safetycenter.SafetySourceIssueInfo;
 import com.android.safetycenter.SafetySourceKey;
 import com.android.safetycenter.SafetySources;
 import com.android.safetycenter.UserProfileGroup;
@@ -226,12 +227,25 @@ public final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback
             maxSeverityLevel = Math.max(maxSeverityLevel, safetySourceStatus.getSeverityLevel());
         }
         Integer maxSeverityOrNull = maxSeverityLevel > Integer.MIN_VALUE ? maxSeverityLevel : null;
+        long duplicateFilteredOutIssuesCount = 0;
+        List<SafetySourceIssueInfo> filteredOutDuplicateIssues =
+                mSafetyCenterDataManager.getMostRecentFilteredOutDuplicateIssues(userId);
+        for (int i = 0; i < filteredOutDuplicateIssues.size(); i++) {
+            if (filteredOutDuplicateIssues
+                    .get(i)
+                    .getSafetySource()
+                    .getId()
+                    .equals(safetySource.getId())) {
+                duplicateFilteredOutIssuesCount++;
+            }
+        }
 
         mSafetyCenterStatsdLogger.writeSafetySourceStateCollected(
                 safetySource.getId(),
                 isUserManaged,
                 maxSeverityOrNull,
                 openIssuesCount,
-                dismissedIssuesCount);
+                dismissedIssuesCount,
+                duplicateFilteredOutIssuesCount);
     }
 }

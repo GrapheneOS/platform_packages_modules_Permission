@@ -18,6 +18,9 @@ package com.android.safetycenter.data;
 
 import static android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
 
+import static java.util.Collections.emptyList;
+import static java.util.Collections.unmodifiableList;
+
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.util.ArrayMap;
@@ -44,6 +47,9 @@ final class SafetyCenterIssueDeduplicator {
     private static final String TAG = "SafetyCenterDedup";
 
     private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
+
+    // issues removed due to being duplicates in the most recent call to deduplicateIssues()
+    private List<SafetySourceIssueInfo> mMostRecentlyFilteredOutDuplicates = emptyList();
 
     SafetyCenterIssueDeduplicator(
             SafetyCenterIssueDismissalRepository safetyCenterIssueDismissalRepository) {
@@ -83,16 +89,32 @@ final class SafetyCenterIssueDeduplicator {
             return;
         }
 
+        List<SafetySourceIssueInfo> filteredOut = new ArrayList<>(duplicatesToFilterOut.size());
         Iterator<SafetySourceIssueInfo> it = sortedIssues.iterator();
         while (it.hasNext()) {
-            SafetyCenterIssueKey issueKey = it.next().getSafetyCenterIssueKey();
+            SafetySourceIssueInfo issueInfo = it.next();
+            SafetyCenterIssueKey issueKey = issueInfo.getSafetyCenterIssueKey();
             if (duplicatesToFilterOut.contains(issueKey)) {
                 it.remove();
+                filteredOut.add(issueInfo);
                 // mark as temporarily hidden, which will delay showing these issues if the top
                 // issue gets resolved.
                 mSafetyCenterIssueDismissalRepository.hideIssue(issueKey);
             }
         }
+        mMostRecentlyFilteredOutDuplicates = unmodifiableList(filteredOut);
+    }
+
+    /**
+     * Returns the list of issues which were removed from the given list of issues in the most
+     * recent {@link SafetyCenterIssueDeduplicator#deduplicateIssues} call. These issues were
+     * removed because they were duplicates of other issues.
+     *
+     * <p>If this method is called before any calls to {@link
+     * SafetyCenterIssueDeduplicator#deduplicateIssues} then an empty list is returned.
+     */
+    List<SafetySourceIssueInfo> getMostRecentFilteredOutDuplicateIssues() {
+        return mMostRecentlyFilteredOutDuplicates;
     }
 
     private void resurfaceHiddenIssuesIfNeeded(

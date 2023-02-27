@@ -18,6 +18,8 @@ package com.android.safetycenter.data;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
+import static java.util.Collections.emptyList;
+
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.content.Context;
@@ -70,6 +72,11 @@ final class SafetyCenterIssueRepository {
     private final SparseArray<List<SafetySourceIssueInfo>> mUserIdToIssuesInfo =
             new SparseArray<>();
 
+    // userId -> issues filtered out from the rest due to being duplicates of other issues, in the
+    // last relevant call to SafetyCenterIssueDeduplicator#deduplicateIssues
+    private final SparseArray<List<SafetySourceIssueInfo>> mUserIdToFilteredOutIssues =
+            new SparseArray<>();
+
     SafetyCenterIssueRepository(
             Context context,
             SafetySourceDataRepository safetySourceDataRepository,
@@ -107,7 +114,7 @@ final class SafetyCenterIssueRepository {
     private void updateIssues(@UserIdInt int userId, boolean isManagedProfile) {
         List<SafetySourceIssueInfo> issues =
                 getAllStoredIssuesFromRawSourceData(userId, isManagedProfile);
-        processIssues(issues);
+        processIssues(userId, issues);
         mUserIdToIssuesInfo.put(userId, issues);
     }
 
@@ -150,6 +157,18 @@ final class SafetyCenterIssueRepository {
         return filterOutHiddenIssues(mUserIdToIssuesInfo.get(userId, new ArrayList<>()));
     }
 
+    /**
+     * Returns the list of issues for the given {@code userId} which were removed from the given
+     * list of issues in the most recent {@link SafetyCenterIssueDeduplicator#deduplicateIssues}
+     * call. These issues were removed because they were duplicates of other issues.
+     *
+     * <p>If this method is called before any calls to {@link
+     * SafetyCenterIssueDeduplicator#deduplicateIssues} then an empty list is returned.
+     */
+    List<SafetySourceIssueInfo> getMostRecentFilteredOutDuplicateIssues(@UserIdInt int userId) {
+        return mUserIdToFilteredOutIssues.get(userId, emptyList());
+    }
+
     private List<SafetySourceIssueInfo> filterOutHiddenIssues(List<SafetySourceIssueInfo> issues) {
         List<SafetySourceIssueInfo> result = new ArrayList<>();
         for (int i = 0; i < issues.size(); i++) {
@@ -162,11 +181,14 @@ final class SafetyCenterIssueRepository {
         return result;
     }
 
-    private void processIssues(List<SafetySourceIssueInfo> issuesInfo) {
+    private void processIssues(@UserIdInt int userId, List<SafetySourceIssueInfo> issuesInfo) {
         issuesInfo.sort(SAFETY_SOURCE_ISSUES_INFO_BY_SEVERITY_DESCENDING);
 
         if (SdkLevel.isAtLeastU() && mSafetyCenterIssueDeduplicator != null) {
             mSafetyCenterIssueDeduplicator.deduplicateIssues(issuesInfo);
+            mUserIdToFilteredOutIssues.put(
+                    userId,
+                    mSafetyCenterIssueDeduplicator.getMostRecentFilteredOutDuplicateIssues());
         }
     }
 
