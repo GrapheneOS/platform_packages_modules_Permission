@@ -21,18 +21,14 @@
     <skip />
     <!-- no translation found for health_connect_search_terms (4998970586245680829) -->
     <skip />
-    <!-- no translation found for app_data_sharing_updates_title (7428862330643262588) -->
-    <skip />
+    <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Kokapen-datuak partekatzeko moduaren inguruko berritasunak"</string>
     <!-- no translation found for app_data_sharing_updates_search_terms (8414777373734245398) -->
     <skip />
-    <!-- no translation found for ads_privacy_title (538822387058714869) -->
-    <skip />
-    <!-- no translation found for ads_privacy_summary (4977699525670966049) -->
-    <skip />
+    <string name="ads_privacy_title" msgid="538822387058714869">"Iragarkien pribatutasuna"</string>
+    <string name="ads_privacy_summary" msgid="4977699525670966049">"Pertsonalizatu aplikazioek iragarkiak erakusteko erabiltzen duten informazioa"</string>
     <!-- no translation found for ads_privacy_search_terms (8008413316055240046) -->
     <skip />
-    <!-- no translation found for biometrics_title_for_work (1842284049407771568) -->
-    <skip />
+    <string name="biometrics_title_for_work" msgid="1842284049407771568">"Lanerako aplikazioetarako sistema biometrikoak"</string>
     <!-- no translation found for more_settings_title (663808090772098924) -->
     <skip />
     <!-- no translation found for more_settings_summary (3942352615407872716) -->
