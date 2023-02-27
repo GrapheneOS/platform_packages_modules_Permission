@@ -69,7 +69,6 @@ import com.android.safetycenter.testing.UiTestHelper.waitNotDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitSourceDataDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitSourceIssueDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitSourceIssueNotDisplayed
-import java.time.Duration
 import org.junit.After
 import org.junit.Assume.assumeFalse
 import org.junit.Assume.assumeTrue
@@ -321,8 +320,6 @@ class SafetyCenterActivityTest {
             waitSourceIssueDisplayed(safetySourceTestData.informationIssue)
 
             safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, updatedDataToDisplay)
-            getUiDevice()
-                .waitForWindowUpdate(/* from any window*/ null, DATA_UPDATE_TIMEOUT.toMillis())
 
             waitSourceIssueDisplayed(safetySourceTestData.informationIssueWithSubtitle)
         }
@@ -340,8 +337,6 @@ class SafetyCenterActivityTest {
             waitSourceIssueDisplayed(safetySourceTestData.informationIssueWithSubtitle)
 
             safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, updatedDataToDisplay)
-            getUiDevice()
-                .waitForWindowUpdate(/* from any window*/ null, DATA_UPDATE_TIMEOUT.toMillis())
 
             waitAllTextNotDisplayed(safetySourceTestData.informationIssueWithSubtitle.subtitle)
             waitSourceIssueDisplayed(safetySourceTestData.informationIssue)
@@ -615,8 +610,6 @@ class SafetyCenterActivityTest {
             )
 
             getUiDevice().rotate()
-            getUiDevice()
-                .waitForWindowUpdate(/* from any window*/ null, DIALOG_ROTATION_TIMEOUT.toMillis())
 
             waitAllTextDisplayed(
                 "Dismiss this alert?",
@@ -659,8 +652,6 @@ class SafetyCenterActivityTest {
             waitAllTextDisplayed("Dismiss this alert?")
 
             getUiDevice().rotate()
-            getUiDevice()
-                .waitForWindowUpdate(/* from any window*/ null, DIALOG_ROTATION_TIMEOUT.toMillis())
 
             waitAllTextDisplayed("Dismiss this alert?")
             waitButtonDisplayed("Cancel") { it.click() }
@@ -777,8 +768,6 @@ class SafetyCenterActivityTest {
             waitAllTextDisplayed(SafetySourceTestData.CONFIRMATION_TITLE)
 
             getUiDevice().rotate()
-            getUiDevice()
-                .waitForWindowUpdate(/* from any window*/ null, DIALOG_ROTATION_TIMEOUT.toMillis())
 
             waitAllTextDisplayed(SafetySourceTestData.CONFIRMATION_TITLE)
             waitButtonDisplayed(SafetySourceTestData.CONFIRMATION_YES) { it.click() }
@@ -1448,10 +1437,6 @@ class SafetyCenterActivityTest {
 
     companion object {
         private const val EXPAND_ISSUE_GROUP_QS_FRAGMENT_KEY = "expand_issue_group_qs_fragment_key"
-
-        private val DATA_UPDATE_TIMEOUT = Duration.ofSeconds(1)
-        private val DIALOG_ROTATION_TIMEOUT = Duration.ofSeconds(1)
-
         private const val SAFETY_SOURCE_1_TITLE = "Safety Source 1 Title"
         private const val SAFETY_SOURCE_1_SUMMARY = "Safety Source 1 Summary"
         private const val SAFETY_SOURCE_2_TITLE = "Safety Source 2 Title"
