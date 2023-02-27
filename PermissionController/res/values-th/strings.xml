@@ -617,7 +617,7 @@
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"นักพัฒนาแอปเหล่านี้ได้ให้ข้อมูลเกี่ยวกับแนวทางปฏิบัติในการแชร์ข้อมูลไว้ใน App Store นักพัฒนาแอปอาจอัปเดตข้อมูลนี้เมื่อเวลาผ่านไป\n\nแนวทางปฏิบัติในการแชร์ข้อมูลอาจแตกต่างกันไปตามเวอร์ชันของแอป การใช้งาน ภูมิภาค และอายุ"</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"ดูรายละเอียดเกี่ยวกับการแชร์ข้อมูล"</string>
     <string name="shares_location_with_third_parties" msgid="2278051743742057767">"มีการแชร์ข้อมูลตำแหน่งกับบุคคลที่สามในขณะนี้"</string>
-    <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"มีการแชร์ข้อมูลตำแหน่งกับบุคคลที่สามเพื่อวัตถุประสงค์ในการโฆษณาหรือการตลาดในขณะนี้"</string>
+    <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"มีการแชร์ข้อมูลตำแหน่งของคุณกับบุคคลที่สามในขณะนี้ เพื่อวัตถุประสงค์ในการโฆษณาหรือการตลาด"</string>
     <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{อัปเดตภายในวันที่ผ่านมา}=1{อัปเดตภายในวันที่ผ่านมา}other{อัปเดตภายใน # วันที่ผ่านมา}}"</string>
     <string name="no_updates_at_this_time" msgid="9031085635689982935">"ยังไม่มีข้อมูลอัปเดตในขณะนี้"</string>
     <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"การอัปเดตการแชร์ข้อมูล"</string>

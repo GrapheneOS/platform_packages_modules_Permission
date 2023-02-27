@@ -592,26 +592,21 @@
     <string name="show_password_title" msgid="2877269286984684659">"Sýna aðgangsorð"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Birta stafi í stutta stund þegar þú skrifar"</string>
     <string name="permission_rationale_message_location" msgid="5559450538205092588">"Þetta forrit gaf til kynna að það kunni að deila staðsetningargögnum frá þér með þriðju aðilum"</string>
-    <!-- no translation found for permission_rationale_location_title (2404797182678793506) -->
-    <skip />
+    <string name="permission_rationale_location_title" msgid="2404797182678793506">"Gagnadeiling og staðsetning"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Hvaðan koma upplýsingar um gagnadeilingu"</string>
-    <!-- no translation found for permission_rationale_data_sharing_source_message (2229631836873747309) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"Þróunaraðilinn veitti "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" upplýsingar um hvernig þetta forrit deilir gögnum. Viðkomandi kann að uppfæra þessar upplýsingar síðar meir."</string>
     <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"Forritið kann að deila staðsetningargögnum til að:"</string>
-    <!-- no translation found for permission_rationale_purpose_message (2136810388727916997) -->
-    <skip />
+    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Gagnadeiling er mismunandi"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Gagnameðhöndlun getur verið breytileg miðað við útgáfu forritsins, notkun, svæði og aldur notandans. "<annotation id="link">"Nánar um gagnadeilingu"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Staðsetningargögnin þín"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Breyttu aðgangi þessa forrits í "<annotation id="link">"persónuverndarstillingunum"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"Forritseiginleikar"</string>
-    <!-- no translation found for permission_rationale_purpose_analytics (2070800501189620712) -->
-    <skip />
+    <string name="permission_rationale_purpose_analytics" msgid="2070800501189620712">"Greining"</string>
     <string name="permission_rationale_purpose_developer_communications" msgid="6453047018892062374">"Samskipti við þróunaraðila"</string>
     <string name="permission_rationale_purpose_advertising" msgid="7156966429245180236">"Auglýsingar eða markaðssetning"</string>
     <string name="permission_rationale_purpose_fraud_prevention_security" msgid="4262104770357031902">"Svikavörn, öryggi og reglufylgni"</string>
-    <!-- no translation found for permission_rationale_purpose_personalization (1589973273682238708) -->
-    <skip />
+    <string name="permission_rationale_purpose_personalization" msgid="1589973273682238708">"Sérstillingar"</string>
     <string name="permission_rationale_purpose_account_management" msgid="2985772421946688879">"Reikningsstjórnun"</string>
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Gagnaöryggi"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Staðsetningargögnum kann að vera deilt"</string>
@@ -619,13 +614,10 @@
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Uppfærslur um gagnadeilingu varðandi staðsetningu"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Yfirfarðu forrit sem breyttu því hvernig þau geta deilt staðsetningargögnunum þínum"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Deiling staðsetningargagna hefur breyst í þessum forritum. Þau hafa hugsanlega ekki deilt gögnunum áður eða deila þeim nú í auglýsinga- eða markaðssetningartilgangi."</string>
-    <!-- no translation found for data_sharing_updates_footer_message (1582711655172892107) -->
-    <skip />
+    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Þróunaraðilar þessa forrits veittu forritaverslun upplýsingar um vinnureglur sínar varðandi gagnadeilingu. Viðkomandi aðila kunna að uppfæra upplýsingarnar síðar.\n\nVinnureglur varðandi gagnadeilingu geta verið mismunandi eftir útgáfu forrits, notkun, svæði og aldri notanda."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"Nánar um gagnadeilingu"</string>
-    <!-- no translation found for shares_location_with_third_parties (2278051743742057767) -->
-    <skip />
-    <!-- no translation found for shares_location_with_third_parties_for_advertising (1918588064014480513) -->
-    <skip />
+    <string name="shares_location_with_third_parties" msgid="2278051743742057767">"Staðsetningargögnunum þínum er nú deilt með þriðju aðilum"</string>
+    <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"Staðsetningargögnunum þínum er nú deilt með þriðju aðilum í auglýsinga- eða markaðssetningartilgangi"</string>
     <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{Uppfært innan síðasta sólarhrings}=1{Uppfært innan síðasta sólarhrings}one{Uppfært innan # dags}other{Uppfært innan # daga}}"</string>
     <string name="no_updates_at_this_time" msgid="9031085635689982935">"Engar uppfærslur eins og er"</string>
     <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"Gagnadeilingaruppfærslur"</string>
