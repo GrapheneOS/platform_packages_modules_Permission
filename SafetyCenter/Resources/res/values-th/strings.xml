@@ -19,6 +19,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"แหล่งข้อมูลของศูนย์ความปลอดภัย"</string>
     <string name="lock_screen_sources_title" msgid="3317906280484627707">"การล็อกอุปกรณ์"</string>
+    <string name="lock_screen_sources_summary" msgid="7220439741282516496"></string>
     <string name="lock_screen_title" msgid="4069104894527169877">"ล็อกหน้าจอ"</string>
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"ยังไม่มีข้อมูล"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"ความเป็นส่วนตัว"</string>
@@ -27,7 +28,11 @@
     <string name="permission_usage_summary" msgid="5323079206029964468">"แสดงแอปที่ใช้สิทธิ์ล่าสุด"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"เครื่องมือจัดการสิทธิ์"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"ควมคุมสิทธิ์ของแอปในการเข้าถึงข้อมูล"</string>
+    <string name="privacy_controls_title" msgid="5322875777945432395">"การควบคุมความเป็นส่วนตัว"</string>
+    <string name="privacy_controls_summary" msgid="2402066941190435424">"ควบคุมสิทธิ์ของอุปกรณ์ในการเข้าถึงไมโครโฟน กล้อง และอื่นๆ"</string>
     <string name="advanced_title" msgid="8745436380690561172">"การตั้งค่าเพิ่มเติม"</string>
     <string name="advanced_security_title" msgid="1126833338772188155">"การตั้งค่าการรักษาความปลอดภัยเพิ่มเติม"</string>
     <string name="advanced_security_summary" msgid="6172253327022425123">"การเข้ารหัส ข้อมูลเข้าสู่ระบบ และอื่นๆ"</string>
+    <string name="advanced_privacy_title" msgid="1117725225706176643">"การตั้งค่าความเป็นส่วนตัวเพิ่มเติม"</string>
+    <string name="advanced_privacy_summary" msgid="2281203390575069543">"ป้อนข้อความอัตโนมัติ ส่วนควบคุมกิจกรรม และอื่นๆ"</string>
 </resources>
