@@ -617,7 +617,7 @@
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Os desenvolvedores desses apps oferecem informações sobre as práticas deles de compartilhamento de dados com uma app store. Eles podem atualizar essas informações com o tempo.\n\nAs práticas de compartilhamento de dados podem variar de acordo com a versão do app e com a idade, o uso e a região do usuário."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"Saiba mais sobre o compartilhamento de dados"</string>
     <string name="shares_location_with_third_parties" msgid="2278051743742057767">"Seus dados de local agora são compartilhados com terceiros"</string>
-    <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"Seus dados de local agora são compartilhados com terceiros para publicidade ou marketing"</string>
+    <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"Seus dados de local agora são compartilhados com terceiros para fins de publicidade ou marketing"</string>
     <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{Atualizado nas últimas 24 horas}=1{Atualizado nas últimas 24 horas}one{Atualizado há # dia}many{Atualizado há # de dias}other{Atualizado há # dias}}"</string>
     <string name="no_updates_at_this_time" msgid="9031085635689982935">"Não há atualizações no momento"</string>
     <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"Atualizações do compartilhamento de dados"</string>

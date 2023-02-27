@@ -17,9 +17,9 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="security_privacy_brand_name" msgid="7303621734258440812">"Usalama na faragha"</string>
-    <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"Vidhibiti"</string>
-    <string name="privacy_subpage_data_header" msgid="5049237788244591274">"Data"</string>
+    <string name="security_privacy_brand_name" msgid="7303621734258440812">"Varnost in zasebnost"</string>
+    <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"Kontrolniki"</string>
+    <string name="privacy_subpage_data_header" msgid="5049237788244591274">"Podatki"</string>
     <string name="health_connect_title" msgid="2132233890867430855">"Health Connect"</string>
-    <string name="health_connect_summary" msgid="8156987676957707740">"Ruhusa za programu na usimamizi wa data"</string>
+    <string name="health_connect_summary" msgid="8156987676957707740">"Dovoljenja za aplikacije in upravljanje podatkov"</string>
 </resources>
