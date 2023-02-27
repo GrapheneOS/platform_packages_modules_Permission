@@ -619,7 +619,7 @@
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"ਇਨ੍ਹਾਂ ਐਪਾਂ ਦੇ ਵਿਕਾਸਕਾਰਾਂ ਨੇ ਆਪਣੇ ਡਾਟਾ ਸਾਂਝਾਕਰਨ ਵਿਹਾਰਾਂ ਸੰਬੰਧੀ ਜਾਣਕਾਰੀ ਐਪ ਸਟੋਰ ਨੂੰ ਮੁਹੱਈਆ ਕਰਵਾਈ ਹੈ। ਉਹ ਇਸਨੂੰ ਸਮੇਂ-ਸਮੇਂ \'ਤੇ ਅੱਪਡੇਟ ਕਰ ਸਕਦੇ ਹਨ।\n\nਡਾਟਾ ਸਾਂਝਾਕਰਨ ਵਿਹਾਰ ਤੁਹਾਡੇ ਐਪ ਵਰਜਨ, ਵਰਤੋਂ, ਖੇਤਰ ਅਤੇ ਉਮਰ ਦੇ ਮੁਤਾਬਕ ਵੱਖ-ਵੱਖ ਹੋ ਸਕਦੇ ਹਨ।"</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"ਡਾਟਾ ਸਾਂਝਾਕਰਨ ਬਾਰੇ ਜਾਣੋ"</string>
     <string name="shares_location_with_third_parties" msgid="2278051743742057767">"ਤੁਹਾਡਾ ਟਿਕਾਣੇ ਦਾ ਡਾਟਾ ਹੁਣ ਤੀਜੀਆਂ ਧਿਰਾਂ ਨਾਲ ਸਾਂਝਾ ਕੀਤਾ ਗਿਆ ਹੈ"</string>
-    <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"ਤੁਹਾਡਾ ਟਿਕਾਣੇ ਦਾ ਡਾਟਾ ਹੁਣ ਵਿਗਿਆਪਨਬਾਜ਼ੀ ਜਾਂ ਮਾਰਕੀਟਿੰਗ ਲਈ ਤੀਜੀਆਂ ਧਿਰਾਂ ਨਾਲ ਸਾਂਝਾ ਕੀਤਾ ਗਿਆ ਹੈ"</string>
+    <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"ਤੁਹਾਡਾ ਟਿਕਾਣੇ ਦਾ ਡਾਟਾ ਹੁਣ ਵਿਗਿਆਪਨ ਜਾਂ ਮਾਰਕੀਟਿੰਗ ਲਈ ਤੀਜੀਆਂ ਧਿਰਾਂ ਨਾਲ ਸਾਂਝਾ ਕੀਤਾ ਗਿਆ ਹੈ"</string>
     <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{ਪਿਛਲੇ ਦਿਨ ਵਿੱਚ ਅੱਪਡੇਟ ਕੀਤਾ ਗਿਆ}=1{ਪਿਛਲੇ ਦਿਨ ਵਿੱਚ ਅੱਪਡੇਟ ਕੀਤਾ ਗਿਆ}other{ਪਿਛਲੇ # ਦਿਨਾਂ ਵਿੱਚ ਅੱਪਡੇਟ ਕੀਤਾ ਗਿਆ}}"</string>
     <string name="no_updates_at_this_time" msgid="9031085635689982935">"ਇਸ ਸਮੇਂ ਕੋਈ ਅੱਪਡੇਟ ਨਹੀਂ"</string>
     <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"ਡਾਟਾ ਸਾਂਝਾਕਰਨ ਅੱਪਡੇਟ"</string>

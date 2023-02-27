@@ -592,26 +592,21 @@
     <string name="show_password_title" msgid="2877269286984684659">"Показване на паролите"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Кратко показване на знаците, докато пишете"</string>
     <string name="permission_rationale_message_location" msgid="5559450538205092588">"Това приложение посочи, че може да споделя с трети страни данни за местоположението ви"</string>
-    <!-- no translation found for permission_rationale_location_title (2404797182678793506) -->
-    <skip />
+    <string name="permission_rationale_location_title" msgid="2404797182678793506">"Споделяне на данни и достъп до местоположението"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Източници на информацията за споделянето на данни"</string>
-    <!-- no translation found for permission_rationale_data_sharing_source_message (2229631836873747309) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"Програмистът предостави на "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" информация за начина, по който това приложение споделя данни. Тя може да бъде актуализирана с течение на времето."</string>
     <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"Прилож. може да споделя данни за местопол. с цел:"</string>
-    <!-- no translation found for permission_rationale_purpose_message (2136810388727916997) -->
-    <skip />
+    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Споделянето на данни варира"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Практиките за поверителност може да варират в зависимост от версията на приложението, употребата от ваша страна, региона и възрастта ви. "<annotation id="link">"Още за споделянето на данни"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Данни за местоположението ви"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Променете достъпа на това приложение от "<annotation id="link">"настройките за поверителност"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"функционалност на прилож.;"</string>
-    <!-- no translation found for permission_rationale_purpose_analytics (2070800501189620712) -->
-    <skip />
+    <string name="permission_rationale_purpose_analytics" msgid="2070800501189620712">"анализ;"</string>
     <string name="permission_rationale_purpose_developer_communications" msgid="6453047018892062374">"получаване на съобщения от програмиста;"</string>
     <string name="permission_rationale_purpose_advertising" msgid="7156966429245180236">"рекламиране или маркетинг;"</string>
     <string name="permission_rationale_purpose_fraud_prevention_security" msgid="4262104770357031902">"предотвратяване на измами, сигурност и спазване на изискванията;"</string>
-    <!-- no translation found for permission_rationale_purpose_personalization (1589973273682238708) -->
-    <skip />
+    <string name="permission_rationale_purpose_personalization" msgid="1589973273682238708">"персонализиране;"</string>
     <string name="permission_rationale_purpose_account_management" msgid="2985772421946688879">"управление на профила."</string>
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Безопасност на данните"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Възможно е да бъдат споделяни данни за местоположението"</string>
@@ -619,13 +614,10 @@
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Актуализации за споделянето на данни за местоположението"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Прегледайте приложенията, променили начина, по който могат да споделят данни за местоположението ви"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Тези приложения са променили начина, по който могат да споделят данни за местоположението ви. Може да не са ги споделяли преди или вече да го правят с рекламни или маркетингови цели."</string>
-    <!-- no translation found for data_sharing_updates_footer_message (1582711655172892107) -->
-    <skip />
+    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Програмистите на тези приложения са предоставили на магазин за приложения информация относно практиките си за споделяне на данни. Възможно е тя да бъде актуализирана с течение на времето.\n\nПрактиките за споделяне на данни може да варират в зависимост от версията на приложението, употребата от ваша страна, региона и възрастта ви."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"Научете повече за споделянето на данни"</string>
-    <!-- no translation found for shares_location_with_third_parties (2278051743742057767) -->
-    <skip />
-    <!-- no translation found for shares_location_with_third_parties_for_advertising (1918588064014480513) -->
-    <skip />
+    <string name="shares_location_with_third_parties" msgid="2278051743742057767">"Данните за местоположението ви вече се споделят с трети страни"</string>
+    <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"Данните за местоположението ви вече се споделят с трети страни с рекламни или маркетингови цели"</string>
     <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{Актуализирано през последния ден}=1{Актуализирано през последния ден}other{Актуализирано през последните # дни}}"</string>
     <string name="no_updates_at_this_time" msgid="9031085635689982935">"Понастоящем няма актуализации"</string>
     <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"Актуализации за споделянето на данни"</string>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
-  ~ Copyright (C) 2022 The Android Open Source Project
+  ~ Copyright (C) 2021 The Android Open Source Project
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -17,9 +17,5 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="security_privacy_brand_name" msgid="7303621734258440812">"Usalama na faragha"</string>
-    <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"Vidhibiti"</string>
-    <string name="privacy_subpage_data_header" msgid="5049237788244591274">"Data"</string>
-    <string name="health_connect_title" msgid="2132233890867430855">"Health Connect"</string>
-    <string name="health_connect_summary" msgid="8156987676957707740">"Ruhusa za programu na usimamizi wa data"</string>
+    <string name="unused_apps_page_summary" msgid="7505839764289846511">"Po nekaj mesecih neuporabe aplikacije se zgodi to:\n\n• Dovoljenja se odstranijo, da se zaščitijo vaši podatki.\n• Začasne datoteke se odstranijo, da se sprosti prostor."</string>
 </resources>
