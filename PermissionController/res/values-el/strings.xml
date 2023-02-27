@@ -433,7 +433,7 @@
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Εμφάνιση εικονιδίου στη γραμμή κατάστασης όταν το μικρόφωνο χρησιμοποιείται για την ενεργοποίηση του φωνητικού βοηθού"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να έχει πρόσβαση σε φωτογραφίες και μέσα στη συσκευή σας;"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να έχει πρόσβαση στις επαφές σας;"</string>
-    <string name="permgrouprequest_location" msgid="6990232580121067883">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να έχει πρόσβαση στην τοποθεσία αυτής της συσκευής;"</string>
+    <string name="permgrouprequest_location" msgid="6990232580121067883">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση στην τοποθεσία αυτής της συσκευής;"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"Η εφαρμογή θα έχει πρόσβαση στην τοποθεσία μόνο κατά τη διάρκεια χρήσης της εφαρμογής"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να έχει πρόσβαση στην τοποθεσία αυτής της συσκευής;"</string>
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Αυτή η εφαρμογή θέλει να έχει συνεχώς πρόσβαση στην τοποθεσία σας, ακόμη και όταν δεν χρησιμοποιείτε την εφαρμογή. "<annotation id="link">"Εγκρίνετε το αίτημα στις ρυθμίσεις."</annotation></string>

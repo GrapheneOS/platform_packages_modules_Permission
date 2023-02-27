@@ -372,7 +372,7 @@
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"କୌଣସି ଅନୁମତି ଆବଶ୍ୟକ ନାହିଁ"</string>
     <string name="role_automotive_navigation_label" msgid="2701890757955474751">"ଡିଫଲ୍ଟ ନାଭିଗେସନ ଆପ"</string>
     <string name="role_automotive_navigation_short_label" msgid="5165823092506922457">"ନାଭିଗେସନ ଆପ"</string>
-    <string name="role_automotive_navigation_description" msgid="7834601873792870134">"ଉଲ୍ଲେଖନୀୟ-ସ୍ଥାନର ସନ୍ଧାନ ଏବଂ ପର୍ଯ୍ୟାୟକ୍ରମେ ନାଭିଗେସନ ପାଇଁ ମାର୍ଗଦର୍ଶନର ସୁବିଧା ପ୍ରଦାନ କରିପାରୁଥିବା ଆପଗୁଡ଼ିକ"</string>
+    <string name="role_automotive_navigation_description" msgid="7834601873792870134">"ଉଲ୍ଲେଖନୀୟ-ସ୍ଥାନର ସର୍ଚ୍ଚ ଏବଂ ପର୍ଯ୍ୟାୟକ୍ରମେ ନାଭିଗେସନ ପାଇଁ ମାର୍ଗଦର୍ଶନର ସୁବିଧା ପ୍ରଦାନ କରିପାରୁଥିବା ଆପ୍ସ"</string>
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g>କୁ ଆପଣଙ୍କ ଡିଫଲ୍ଟ ନାଭିଗେସନ ଆପ ଭାବେ ସେଟ କରିବେ?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"କୌଣସି ଅନୁମତି ଆବଶ୍ୟକ ନାହିଁ"</string>
     <string name="role_watch_description" msgid="267003778693177779">"ଆପଣଙ୍କ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକ ସହ ଇଣ୍ଟରାକ୍ଟ କରିବା ଏବଂ ଆପଣଙ୍କ ଫୋନ୍, SMS, ଯୋଗାଯୋଗ ଓ କ୍ୟାଲେଣ୍ଡର ଅନୁମତିଗୁଡ଼ିକୁ ଆକ୍ସେସ୍ କରିବା ପାଇଁ <xliff:g id="APP_NAME">%1$s</xliff:g>କୁ ଅନୁମତି ଦିଆଯିବ।"</string>
@@ -433,7 +433,7 @@
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"ଭଏସ୍ ଆସିଷ୍ଟାଣ୍ଟ୍ ସକ୍ରିୟ କରିବା ପାଇଁ ମାଇକ୍ରୋଫାନ୍ ବ୍ୟବହାର କରୁଥିବା ସମୟରେ ସ୍ଥିତି ବାର୍‌ରେ ଆଇକନ୍ ଦେଖାନ୍ତୁ"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"ଆପଣଙ୍କ ଡିଭାଇସ୍‌ରେ ଥିବା ଫଟୋ ଓ ମିଡିଆ ଆକ୍‌ସେସ୍ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ?"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଆପଣଙ୍କ ଯୋଗାଯୋଗଗୁଡ଼ିକୁ ଆକ୍ସେସ୍‍ କରିବା ପାଇଁ ଅନୁମତି ଦେବେ କି?"</string>
-    <string name="permgrouprequest_location" msgid="6990232580121067883">"ଏହି ଡିଭାଇସ୍‌ର ଲୋକେସନ୍ ଆକ୍ସେସ୍ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ?"</string>
+    <string name="permgrouprequest_location" msgid="6990232580121067883">"ଏହି ଡିଭାଇସର ଲୋକେସନ ଆକ୍ସେସ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"ଆପଣ ଆପ୍ ବ୍ୟବହାର କରୁଥିବା ବେଳେ କେବଳ ଲୋକେସନ୍‍କୁ ଆପ୍‍ର ଆକ୍ସେସ୍‍ ରହିବ।"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"ଏହି ଡିଭାଇସ୍‌ର ଲୋକେସନ୍ ଆକ୍ସେସ୍ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ?"</string>
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"ଆପଣ ଆପ୍ ବ୍ୟବହାର କରୁନଥିଲେ ମଧ୍ୟ, ଏହି ଆପ୍ ସବୁ ସମୟରେ ଆପଣଙ୍କର ଲୋକେସନ୍ ଆକ୍ସେସ୍ କରିବାକୁ ଚାହିଁପାରେ। "<annotation id="link">"ସେଟିଂସରେ ଅନୁମତି ଦିଅନ୍ତୁ।"</annotation></string>

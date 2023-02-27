@@ -518,7 +518,7 @@
     <string name="active_app_usage_2_qs" msgid="6107866785243565283">"Em utilização pela app <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Utilizado recentemente pela app <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Segurança e privacidade"</string>
-    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Verificar estado"</string>
+    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Rever estado"</string>
     <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"Confirmar"</string>
     <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"Anterior"</string>
     <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"Também vai ter autorização para aceder a outros ficheiros"</string>

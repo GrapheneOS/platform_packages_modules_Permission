@@ -43,7 +43,7 @@
     <string name="permission_revoked_none" msgid="9213345075484381180">"ingen er deaktiveret"</string>
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Tillad"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Tillad altid"</string>
-    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Mens du bruger appen"</string>
+    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Mens appen bruges"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Skift til præcis lokation"</string>
     <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Behold omtrentlig lokation"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Kun denne gang"</string>
@@ -64,7 +64,7 @@
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{I dag}=1{For 1 dag siden}one{for # dag siden}other{for # dage siden}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Deaktiver appen"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Hvis du deaktiverer denne app, kan det medføre, at Android-apps og andre apps ikke fungerer korrekt. Vær opmærksom på, at du ikke kan slette denne app, da den er forudinstalleret på din enhed. Hvis du slår appen fra, deaktiveres og skjules den på din enhed."</string>
-    <string name="app_permission_manager" msgid="3903811137630909550">"Tilladelsesadministrator"</string>
+    <string name="app_permission_manager" msgid="3903811137630909550">"Tilladelses­administrator"</string>
     <string name="never_ask_again" msgid="4728762438198560329">"Spørg ikke igen"</string>
     <string name="no_permissions" msgid="3881676756371148563">"Ingen tilladelser"</string>
     <string name="additional_permissions" msgid="5801285469338873430">"Yderligere tilladelser"</string>

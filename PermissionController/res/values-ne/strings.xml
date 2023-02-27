@@ -319,7 +319,7 @@
     <string name="no_permissions_allowed" msgid="6081976856354669209">"कुनै पनि अनुमति छैन"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"कुनै पनि अनुमति अस्वीकार गरिएको छैन"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"कुनै पनि एपलाई अनुमति दिइएको छैन"</string>
-    <string name="no_apps_allowed_full" msgid="8011716991498934104">"सबै फाइलहरू कुनै पनि एपमा राख्न सकिँदैन"</string>
+    <string name="no_apps_allowed_full" msgid="8011716991498934104">"कुनै एपलाई सबै फाइलको अनुमति दिइएको छैन"</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"कुनै पनि एपलाई मिडिया फाइल मात्र प्रयोग गर्ने अनुमति दिइएको छैन"</string>
     <string name="no_apps_denied" msgid="7663435886986784743">"सबै एपलाई अनुमति दिइएको छ"</string>
     <string name="car_permission_selected" msgid="180837028920791596">"चयन गरिएको"</string>
@@ -432,7 +432,7 @@
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"सहायक ट्रिगर भएको पत्ता लागेमा देखाउनुहोस्"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"आवाज सहायक सक्रिय गर्न माइक्रोफोनको प्रयोग गरिँदा स्टाटस बारमा आइकन देखाउनुहोस्"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई आफ्नो डिभाइसका फोटो र मिडियामाथि पहुँच राख्न दिने हो?"</string>
-    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई सम्पर्क ठेगानाको सूची प्रयोग गर्न दिने हो?"</string>
+    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई कन्ट्याक्ट प्रयोग गर्न दिने हो?"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;लाई यो डिभाइसको लोकेसन प्रयोग दिने हो?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"तपाईंले एप प्रयोग गरिरहेका बेला मात्र उक्त एपले स्थानमाथि पहुँच राख्न सक्ने छ"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;लाई यो डिभाइसको लोकेसन प्रयोग दिने हो?"</string>
