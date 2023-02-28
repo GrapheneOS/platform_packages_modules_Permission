@@ -144,6 +144,7 @@ public final class SafetyCenterService extends SystemService {
     public SafetyCenterService(Context context) {
         super(context);
         mSafetyCenterResourcesContext = new SafetyCenterResourcesContext(context);
+        SafetyCenterFlags.init(mSafetyCenterResourcesContext);
         mSafetyCenterConfigReader = new SafetyCenterConfigReader(mSafetyCenterResourcesContext);
         SafetyCenterStatsdLogger safetyCenterStatsdLogger =
                 new SafetyCenterStatsdLogger(context, mSafetyCenterConfigReader);
@@ -203,6 +204,7 @@ public final class SafetyCenterService extends SystemService {
         publishBinderService(Context.SAFETY_CENTER_SERVICE, new Stub());
         if (mDeviceSupportsSafetyCenter) {
             synchronized (mApiLock) {
+                SafetyCenterFlags.init(mSafetyCenterResourcesContext);
                 mConfigAvailable = mSafetyCenterConfigReader.loadConfig();
                 if (mConfigAvailable) {
                     mSafetyCenterDataManager.loadPersistableDataStateFromFile();
