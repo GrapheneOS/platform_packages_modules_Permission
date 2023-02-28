@@ -99,7 +99,7 @@ class SafetyCenterTestHelper(private val context: Context) {
      * Adds and returns a [SafetyCenterTestListener] to SafetyCenter.
      *
      * @param skipInitialData whether the returned [SafetyCenterTestListener] should receive the
-     * initial SafetyCenter update
+     *   initial SafetyCenter update
      */
     fun addListener(skipInitialData: Boolean = true): SafetyCenterTestListener {
         require(isEnabled())
