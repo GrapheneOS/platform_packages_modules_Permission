@@ -18,6 +18,7 @@ package com.android.permissioncontroller.safetycenter.ui
 
 import android.content.Context
 import android.os.Build
+import android.os.UserManager
 import android.safetycenter.SafetyCenterEntry
 import android.safetycenter.SafetyCenterEntry.IconAction.ICON_ACTION_TYPE_GEAR
 import android.text.TextUtils
@@ -28,7 +29,11 @@ import androidx.annotation.RequiresApi
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.safetycenter.SafetyCenterConstants.PERSONAL_PROFILE_SUFFIX
+import com.android.permissioncontroller.safetycenter.SafetyCenterConstants.WORK_PROFILE_SUFFIX
 import com.android.permissioncontroller.safetycenter.ui.view.SafetyEntryCommonViewsManager.Companion.changeEnabledState
+import com.android.safetycenter.internaldata.SafetyCenterEntryId
+import com.android.safetycenter.internaldata.SafetyCenterIds
 import com.android.settingslib.widget.TwoTargetPreference
 
 /**
@@ -48,6 +53,7 @@ class SafetySubpageEntryPreference(
         setTitle(entry.title)
         setSummary(entry.summary)
         setSelectable(true)
+        setupPreferenceKey()
     }
 
     private fun setupIconActionButton() {
@@ -80,6 +86,14 @@ class SafetySubpageEntryPreference(
             Log.w(TAG, "Pending intent is null for $entry")
             setEnabled(false)
         }
+    }
+
+    private fun setupPreferenceKey() {
+        val entryId: SafetyCenterEntryId = SafetyCenterIds.entryIdFromString(entry.id)
+        val isWorkProfile =
+            context.getSystemService(UserManager::class.java).isManagedProfile(entryId.userId)
+        val keySuffix = if (isWorkProfile) WORK_PROFILE_SUFFIX else PERSONAL_PROFILE_SUFFIX
+        setKey("${entryId.safetySourceId}_$keySuffix")
     }
 
     override fun onBindViewHolder(holder: PreferenceViewHolder) {

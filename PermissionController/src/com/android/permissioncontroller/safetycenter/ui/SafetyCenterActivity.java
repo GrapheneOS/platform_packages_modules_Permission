@@ -23,6 +23,7 @@ import static android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCES_GROU
 
 import static com.android.permissioncontroller.PermissionControllerStatsLog.PRIVACY_SIGNAL_NOTIFICATION_INTERACTION;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.PRIVACY_SIGNAL_NOTIFICATION_INTERACTION__ACTION__NOTIFICATION_CLICKED;
+import static com.android.permissioncontroller.safetycenter.SafetyCenterConstants.EXTRA_SETTINGS_FRAGMENT_ARGS_KEY;
 import static com.android.permissioncontroller.safetycenter.SafetyCenterConstants.PERSONAL_PROFILE_SUFFIX;
 import static com.android.permissioncontroller.safetycenter.SafetyCenterConstants.WORK_PROFILE_SUFFIX;
 
@@ -60,7 +61,6 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
             "android.provider.extra.SETTINGS_EMBEDDED_DEEP_LINK_INTENT_URI";
     private static final String EXTRA_SETTINGS_EMBEDDED_DEEP_LINK_HIGHLIGHT_MENU_KEY =
             "android.provider.extra.SETTINGS_EMBEDDED_DEEP_LINK_HIGHLIGHT_MENU_KEY";
-    private static final String EXTRA_SETTINGS_FRAGMENT_ARGS_KEY = ":settings:fragment_args_key";
 
     private SafetyCenterManager mSafetyCenterManager;
 
