@@ -173,8 +173,12 @@ public final class SafetyCenterFlags {
         fout.println();
     }
 
-    private static void printFlag(PrintWriter pw, String key, Duration duration) {
-        printFlag(pw, key, duration.toMillis() + " (" + duration + ")");
+    private static void printFlag(PrintWriter pw, String key, @Nullable Duration duration) {
+        if (duration == null) {
+            printFlag(pw, key, "null");
+        } else {
+            printFlag(pw, key, duration.toMillis() + " (" + duration + ")");
+        }
     }
 
     private static void printFlag(PrintWriter pw, String key, Object value) {
