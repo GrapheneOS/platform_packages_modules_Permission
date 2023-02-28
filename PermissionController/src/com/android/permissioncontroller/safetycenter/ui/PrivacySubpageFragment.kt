@@ -106,6 +106,7 @@ class PrivacySubpageFragment : SafetyCenterFragment() {
         Log.d(TAG, "updateSafetyCenterEntries called with $entryGroup")
         subpageGenericEntryGroup.removeAll()
         subpageDataEntryGroup.removeAll()
+        var atLeastOneDataEntryVisible = false
 
         for (entry in entryGroup.entries) {
             val entryId = entry.id
@@ -136,9 +137,16 @@ class PrivacySubpageFragment : SafetyCenterFragment() {
                 }
                 else -> {
                     subpageDataEntryGroup.addPreference(subpageEntry)
+                    atLeastOneDataEntryVisible =
+                        atLeastOneDataEntryVisible || subpageEntry.isVisible()
                 }
             }
         }
+
+        /* The data entry group currently consists of only two sources which have an initial
+         * display state hidden. So if they are not visible, we should hide the entire category
+         * including the header */
+        subpageDataEntryGroup.setVisible(atLeastOneDataEntryVisible)
     }
 
     private fun renderPrivacyControls(prefStates: Map<Pref, PrefState>) {

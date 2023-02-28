@@ -260,8 +260,30 @@ class SafetyCenterTestConfigs(private val context: Context) {
                 )
                 .build()
 
-    /** A simple [SafetyCenterConfig] with multiple sources for testing the Privacy subpage. */
+    /**
+     * A simple [SafetyCenterConfig] for testing the Privacy subpage. Note that this config contains
+     * the [PRIVACY_SOURCE_ID_1] and [PRIVACY_SOURCE_ID_2] sources that are part of the generic
+     * category, and the [SOURCE_ID_1] that is part of the data category.
+     */
     val privacySubpageConfig: SafetyCenterConfig
+        @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+        get() =
+            SafetyCenterConfig.Builder()
+                .addSafetySourcesGroup(
+                    safetySourcesGroupBuilder(ANDROID_PRIVACY_SOURCES_GROUP_ID)
+                        .addSafetySource(dynamicSafetySource(PRIVACY_SOURCE_ID_1))
+                        .addSafetySource(dynamicSafetySource(PRIVACY_SOURCE_ID_2))
+                        .addSafetySource(dynamicSafetySource(SOURCE_ID_1))
+                        .build()
+                )
+                .build()
+
+    /**
+     * A simple [SafetyCenterConfig] without data sources for testing the Privacy subpage. Note that
+     * this config contains only [PRIVACY_SOURCE_ID_1] and [PRIVACY_SOURCE_ID_2] sources that are
+     * part of the generic category. Hence it doesn't have any data category sources.
+     */
+    val privacySubpageWithoutDataSourcesConfig: SafetyCenterConfig
         @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
         get() =
             SafetyCenterConfig.Builder()
