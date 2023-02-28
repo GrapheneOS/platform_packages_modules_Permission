@@ -19,7 +19,6 @@ package com.android.safetycenter;
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
 import static java.util.Collections.emptyList;
-import static java.util.Objects.requireNonNull;
 
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
@@ -312,13 +311,12 @@ public final class SafetyCenterDataFactory {
                         .setSafetyCenterIssueKey(safetyCenterIssueKey)
                         .setSafetySourceIssueActionId(safetySourceIssueAction.getId())
                         .build();
-        PendingIntent issueActionPendingIntent = safetySourceIssueAction.getPendingIntent();
 
         SafetyCenterIssue.Action.Builder builder =
                 new SafetyCenterIssue.Action.Builder(
                                 SafetyCenterIds.encodeToString(safetyCenterIssueActionId),
                                 safetySourceIssueAction.getLabel(),
-                                requireNonNull(issueActionPendingIntent))
+                                safetySourceIssueAction.getPendingIntent())
                         .setSuccessMessage(safetySourceIssueAction.getSuccessMessage())
                         .setIsInFlight(
                                 mSafetyCenterDataManager.actionIsInFlight(
@@ -611,11 +609,10 @@ public final class SafetyCenterDataFactory {
                 if (iconAction == null) {
                     return builder.build();
                 }
-                PendingIntent iconActionPendingIntent = iconAction.getPendingIntent();
                 return builder.setIconAction(
                                 new SafetyCenterEntry.IconAction(
                                         toSafetyCenterEntryIconActionType(iconAction.getIconType()),
-                                        requireNonNull(iconActionPendingIntent)))
+                                        iconAction.getPendingIntent()))
                         .build();
             case SafetySource.SAFETY_SOURCE_TYPE_STATIC:
                 return toDefaultSafetyCenterEntry(
