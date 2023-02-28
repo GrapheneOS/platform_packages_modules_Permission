@@ -32,6 +32,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Space;
@@ -73,6 +74,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
     @Nullable private String mResolvedIssueActionId;
     @Nullable private final Integer mTaskId;
     private final boolean mIsDismissed;
+    private final PositionInCardList mPositionInCardList;
 
     public IssueCardPreference(
             Context context,
@@ -81,7 +83,8 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
             @Nullable String resolvedIssueActionId,
             FragmentManager dialogFragmentManager,
             @Nullable Integer launchTaskId,
-            boolean isDismissed) {
+            boolean isDismissed,
+            PositionInCardList positionInCardList) {
         super(context);
         setLayoutResource(R.layout.preference_issue_card);
 
@@ -92,11 +95,20 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
         mResolvedIssueActionId = resolvedIssueActionId;
         mTaskId = launchTaskId;
         mIsDismissed = isDismissed;
+        mPositionInCardList = positionInCardList;
     }
 
     @Override
     public void onBindViewHolder(PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
+
+        holder.itemView.setBackgroundResource(mPositionInCardList.getBackgroundDrawableResId());
+        int topMargin = mPositionInCardList.getTopMargin(getContext());
+        MarginLayoutParams layoutParams = (MarginLayoutParams) holder.itemView.getLayoutParams();
+        if (layoutParams.topMargin != topMargin) {
+            layoutParams.topMargin = topMargin;
+            holder.itemView.setLayoutParams(layoutParams);
+        }
 
         // Set default group visibility in case view is being reused
         holder.findViewById(R.id.default_issue_content).setVisibility(View.VISIBLE);
@@ -231,7 +243,8 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
                 && mIssue.equals(((IssueCardPreference) preference).mIssue)
                 && Objects.equals(
                         mResolvedIssueActionId,
-                        ((IssueCardPreference) preference).mResolvedIssueActionId);
+                        ((IssueCardPreference) preference).mResolvedIssueActionId)
+                && mPositionInCardList == ((IssueCardPreference) preference).mPositionInCardList;
     }
 
     private class DismissOnClickListener implements View.OnClickListener {
@@ -466,8 +479,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
         }
 
         private void setButtonLayout(Button button) {
-            ViewGroup.MarginLayoutParams layoutParams =
-                    new ViewGroup.MarginLayoutParams(layoutWidth(), WRAP_CONTENT);
+            MarginLayoutParams layoutParams = new MarginLayoutParams(layoutWidth(), WRAP_CONTENT);
             button.setLayoutParams(layoutParams);
         }
 
