@@ -126,12 +126,10 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils.getDefaultP
 import com.android.permissioncontroller.permission.utils.KotlinUtils.grantBackgroundRuntimePermissions
 import com.android.permissioncontroller.permission.utils.KotlinUtils.grantForegroundRuntimePermissions
 import com.android.permissioncontroller.permission.utils.KotlinUtils.isLocationAccuracyEnabled
-import com.android.permissioncontroller.permission.utils.KotlinUtils.isPermissionRationaleEnabled
 import com.android.permissioncontroller.permission.utils.KotlinUtils.revokeBackgroundRuntimePermissions
 import com.android.permissioncontroller.permission.utils.KotlinUtils.revokeForegroundRuntimePermissions
 import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.PermissionMapping.getPartialStorageGrantPermissionsForGroup
-import com.android.permissioncontroller.permission.utils.PermissionRationales.shouldShowPermissionRationale
 import com.android.permissioncontroller.permission.utils.SafetyNetLogger
 import com.android.permissioncontroller.permission.utils.Utils
 
@@ -156,12 +154,18 @@ class GrantPermissionsViewModel(
     private val LOG_TAG = GrantPermissionsViewModel::class.java.simpleName
     private val user = Process.myUserHandle()
     private val packageInfoLiveData = LightPackageInfoLiveData[packageName, user]
-    private val safetyLabelInfoLiveData = SafetyLabelInfoLiveData[packageName, user]
+    private val safetyLabelInfoLiveData =
+        if (requestedPermissions
+                .mapNotNull { PermissionMapping.getGroupOfPlatformPermission(it) }
+                .any { PermissionMapping.isSafetyLabelAwarePermissionGroup(it) }) {
+            SafetyLabelInfoLiveData[packageName, user]
+        } else {
+            null
+        }
     private val dpm = app.getSystemService(DevicePolicyManager::class.java)!!
     private val permissionPolicy = dpm.getPermissionPolicy(null)
     private val permGroupsToSkip = mutableListOf<String>()
     private var groupStates = mutableMapOf<Pair<String, Boolean>, GroupState>()
-    private val permissionRationaleEnabled: Boolean by lazy { isPermissionRationaleEnabled() }
 
     private var autoGrantNotifier: AutoGrantPermissionsNotifier? = null
     private fun getAutoGrantNotifier(): AutoGrantPermissionsNotifier {
@@ -170,7 +174,6 @@ class GrantPermissionsViewModel(
     }
 
     private lateinit var packageInfo: LightPackageInfo
-    private var safetyLabel: SafetyLabel? = null
 
     // All permissions that could possibly be affected by the provided requested permissions, before
     // filtering system fixed, auto grant, etc.
@@ -206,12 +209,10 @@ class GrantPermissionsViewModel(
         private val LOG_TAG = GrantPermissionsViewModel::class.java.simpleName
         private val packagePermissionsLiveData = PackagePermissionsLiveData[packageName, user]
 
-        // TODO(b/260873483): only query safety label for supported permission groups. should only
-        //  query location, but currently queries for all groups
         init {
             addSource(packagePermissionsLiveData) { onPackageLoaded() }
             addSource(packageInfoLiveData) { onPackageLoaded() }
-            if (permissionRationaleEnabled) {
+            if (safetyLabelInfoLiveData != null) {
                 addSource(safetyLabelInfoLiveData) { onPackageLoaded() }
             }
 
@@ -222,16 +223,9 @@ class GrantPermissionsViewModel(
         private fun onPackageLoaded() {
             if (packageInfoLiveData.isStale ||
                 packagePermissionsLiveData.isStale ||
-                (permissionRationaleEnabled && safetyLabelInfoLiveData.isStale)) {
+                (safetyLabelInfoLiveData != null && safetyLabelInfoLiveData.isStale)) {
                 return
             }
-
-            safetyLabel =
-                if (permissionRationaleEnabled) {
-                    safetyLabelInfoLiveData.value?.safetyLabel
-                } else {
-                    null
-                }
 
             val groups = packagePermissionsLiveData.value
             val pI = packageInfoLiveData.value
@@ -587,6 +581,7 @@ class GrantPermissionsViewModel(
                     }
                 }
 
+                val safetyLabel = safetyLabelInfoLiveData?.value?.safetyLabel
                 val showPermissionRationale =
                     shouldShowPermissionRationale(safetyLabel, groupState.group.permGroupName)
                 buttonVisibilities[LINK_TO_PERMISSION_RATIONALE] = showPermissionRationale
@@ -626,6 +621,19 @@ class GrantPermissionsViewModel(
                 rhs.groupName.compareTo(lhs.groupName)
             }
         }
+    }
+
+    private fun shouldShowPermissionRationale(
+        safetyLabel: SafetyLabel?,
+        permissionGroupName: String?
+    ): Boolean {
+        if (safetyLabel == null || permissionGroupName == null) {
+            return false
+        }
+
+        val purposes = PermissionMapping.getSafetyLabelSharingPurposesForGroup(safetyLabel,
+            permissionGroupName)
+        return purposes.isNotEmpty()
     }
 
     /**
@@ -1218,7 +1226,8 @@ class GrantPermissionsViewModel(
      */
     private fun reportRequestResult(permission: String, result: Int) {
         val isImplicit = permission !in requestedPermissions
-        val isPermissionRationaleShown = shouldShowPermissionRationale(safetyLabel,
+        val isPermissionRationaleShown = shouldShowPermissionRationale(
+            safetyLabelInfoLiveData?.value?.safetyLabel,
             PermissionMapping.getGroupOfPlatformPermission(permission))
 
         Log.v(LOG_TAG, "Permission grant result requestId=$sessionId " +
