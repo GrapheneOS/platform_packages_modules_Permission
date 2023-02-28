@@ -53,11 +53,16 @@ constructor(
         previousData: MoreIssuesCardData?,
         nextData: MoreIssuesCardData,
         title: String,
+        @DrawableRes overrideChevronIconResId: Int?,
         onClick: () -> Unit
     ) {
         titleView.text = title
         updateStatusIcon(previousData?.severityLevel, nextData.severityLevel)
-        updateExpandCollapseButton(previousData?.isExpanded, nextData.isExpanded)
+        updateExpandCollapseButton(
+            previousData?.isExpanded,
+            nextData.isExpanded,
+            overrideChevronIconResId
+        )
         updateIssueCount(previousData?.hiddenIssueCount, nextData.hiddenIssueCount)
         setOnClickListener { onClick() }
 
@@ -85,9 +90,15 @@ constructor(
         isClickable = false
     }
 
-    private fun updateExpandCollapseButton(wasExpanded: Boolean?, isExpanded: Boolean) {
+    private fun updateExpandCollapseButton(
+        wasExpanded: Boolean?,
+        isExpanded: Boolean,
+        @DrawableRes overrideChevronIconResId: Int?
+    ) {
         expandCollapseLayout.isVisible = true
-        if (wasExpanded != null && wasExpanded != isExpanded) {
+        if (overrideChevronIconResId != null) {
+            expandCollapseIcon.setImageResource(overrideChevronIconResId)
+        } else if (wasExpanded != null && wasExpanded != isExpanded) {
             if (isExpanded) {
                 expandCollapseIcon.animate(
                     R.drawable.more_issues_expand_anim,
