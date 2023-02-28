@@ -439,6 +439,7 @@
         <item name="android:orientation">vertical</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">0dp</item>
     </style>
 
     <style name="SafetyCenterIssueDismiss"
@@ -552,6 +553,7 @@
 
     <style name="SafetyCenterMoreIssuesCollapsed"
            parent="SafetyCenterCard.Issue">
+        <item name="android:layout_marginTop">@dimen/sc_spacing_small</item>
         <item name="android:paddingTop">@dimen/sc_spacing_medium</item>
         <item name="android:paddingBottom">@dimen/sc_spacing_medium</item>
         <item name="android:background">@drawable/safety_center_more_issues_card_background</item>
@@ -572,6 +574,7 @@
         <item name="layout_constraintStart_toEndOf">@id/status_icon</item>
         <item name="layout_constraintEnd_toStartOf">@android:id/widget_frame</item>
         <item name="layout_constraintHorizontal_bias">0</item>
+        <item name="layout_goneMarginStart">0dp</item>
     </style>
 
     <style name="SafetyCenterMoreIssuesIcon"
