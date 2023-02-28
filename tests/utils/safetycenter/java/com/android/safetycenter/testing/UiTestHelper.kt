@@ -124,6 +124,24 @@ object UiTestHelper {
         waitAllTextNotDisplayed(sourceIssue.title)
     }
 
+    /**
+     * Waits for only one [SafetySourceIssue] to be displayed together with [MORE_ISSUES_LABEL]
+     * card, and for all other [SafetySourceIssue]s not to be diplayed.
+     */
+    fun waitCollapsedIssuesDisplayed(vararg sourceIssues: SafetySourceIssue) {
+        waitSourceIssueDisplayed(sourceIssues.first())
+        waitAllTextDisplayed(MORE_ISSUES_LABEL)
+        sourceIssues.asSequence().drop(1).forEach { waitSourceIssueNotDisplayed(it) }
+    }
+
+    /** Waits for all the [SafetySourceIssue] to be displayed with the [MORE_ISSUES_LABEL] card. */
+    fun waitExpandedIssuesDisplayed(vararg sourceIssues: SafetySourceIssue) {
+        // to make landscape checks less flaky it is important to match their order with visuals
+        waitSourceIssueDisplayed(sourceIssues.first())
+        waitAllTextDisplayed(MORE_ISSUES_LABEL)
+        sourceIssues.asSequence().drop(1).forEach { waitSourceIssueDisplayed(it) }
+    }
+
     /** Waits for the specified screen title to be displayed. */
     fun waitPageTitleDisplayed(title: String) {
         // CollapsingToolbar title can't be found by text, so using description instead.

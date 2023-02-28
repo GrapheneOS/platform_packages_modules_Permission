@@ -58,7 +58,9 @@ import com.android.safetycenter.testing.UiTestHelper.rotate
 import com.android.safetycenter.testing.UiTestHelper.waitAllTextDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitAllTextNotDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitButtonDisplayed
+import com.android.safetycenter.testing.UiTestHelper.waitCollapsedIssuesDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitDisplayed
+import com.android.safetycenter.testing.UiTestHelper.waitExpandedIssuesDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitGroupShownOnHomepage
 import com.android.safetycenter.testing.UiTestHelper.waitPageTitleDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitPageTitleNotDisplayed
@@ -570,15 +572,11 @@ class SafetyCenterSubpagesTest {
 
         context.launchSafetyCenterActivity {
             openPageAndExit(context.getString(sourcesGroup.titleResId)) {
-                waitSourceIssueDisplayed(firstSourceData.issues[0])
-                waitAllTextDisplayed(MORE_ISSUES_LABEL)
-                waitSourceIssueNotDisplayed(secondSourceData.issues[0])
+                waitCollapsedIssuesDisplayed(firstSourceData.issues[0], secondSourceData.issues[0])
 
                 clickMoreIssuesCard()
 
-                waitSourceIssueDisplayed(firstSourceData.issues[0])
-                waitAllTextDisplayed(MORE_ISSUES_LABEL)
-                waitSourceIssueDisplayed(secondSourceData.issues[0])
+                waitExpandedIssuesDisplayed(firstSourceData.issues[0], secondSourceData.issues[0])
             }
         }
     }
