@@ -592,26 +592,21 @@
     <string name="show_password_title" msgid="2877269286984684659">"මුරපද පෙන්වන්න"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"ඔබ ටයිප් කරන විට අනුලකුණු කෙටියෙන් පෙන්වන්න"</string>
     <string name="permission_rationale_message_location" msgid="5559450538205092588">"මෙම යෙදුම තෙවන පාර්ශ්වයන් සමග ඔබේ ස්ථාන දත්ත බෙදා ගත හැකි බව ප්‍රකාශ කර ඇත"</string>
-    <!-- no translation found for permission_rationale_location_title (2404797182678793506) -->
-    <skip />
+    <string name="permission_rationale_location_title" msgid="2404797182678793506">"දත්ත බෙදා ගැනීම සහ ස්ථානය"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"දත්ත බෙදා ගැනීමේ තතු පැමිණෙන තැන"</string>
-    <!-- no translation found for permission_rationale_data_sharing_source_message (2229631836873747309) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"මෙම යෙදුම දත්ත බෙදා ගන්නා ආකාරය පිළිබඳව සංවර්ධකයා "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" වෙත තතු සපයා ඇත. එය කාලයත් සමග මෙම තතු යාවත්කාලීන කළ හැක."</string>
     <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"යෙදුම මේ සඳහා ස්ථාන දත්ත බෙදා ගත හැක:"</string>
-    <!-- no translation found for permission_rationale_purpose_message (2136810388727916997) -->
-    <skip />
+    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"දත්ත බෙදා ගැනීම වෙනස් වේ"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"දත්ත පිළිවෙත් ඔබේ යෙදුම් අනුවාදය, භාවිතය, කලාපය, සහ වයස මත පදනම්ව වෙනස් විය හැක. "<annotation id="link">"දත්ත බෙදා ගැනීම පිළිබඳව වැඩිදුර"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"ඔබේ ස්ථාන දත්ත"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267"><annotation id="link">"පෞද්ගලිකත්ව සැකසීම්"</annotation>" තුළ මෙම යෙදුමේ ප්‍රවේශය වෙනස් කරන්න"</string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"යෙදුම් ක්‍රියාකාරීත්වය"</string>
-    <!-- no translation found for permission_rationale_purpose_analytics (2070800501189620712) -->
-    <skip />
+    <string name="permission_rationale_purpose_analytics" msgid="2070800501189620712">"විශ්ලේෂණ"</string>
     <string name="permission_rationale_purpose_developer_communications" msgid="6453047018892062374">"සංවර්ධක සන්නිවේදන"</string>
     <string name="permission_rationale_purpose_advertising" msgid="7156966429245180236">"වෙළඳ ප්‍රචාරණය හෝ අලෙවිකරණය"</string>
     <string name="permission_rationale_purpose_fraud_prevention_security" msgid="4262104770357031902">"වංචා වැළැක්වීම, ආරක්ෂාව, සහ අනුකූලතාව"</string>
-    <!-- no translation found for permission_rationale_purpose_personalization (1589973273682238708) -->
-    <skip />
+    <string name="permission_rationale_purpose_personalization" msgid="1589973273682238708">"පෞද්ගලීකරණය"</string>
     <string name="permission_rationale_purpose_account_management" msgid="2985772421946688879">"ගිණුම් කළමනාකරණය"</string>
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"දත්ත ආරක්ෂාව"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"ස්ථාන දත්ත බෙදා ගත හැක"</string>
@@ -619,13 +614,10 @@
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"ස්ථානය සඳහා දත්ත බෙදා ගැනීමේ යාවත්කාලීන"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"ඒවා ඔබේ ස්ථාන දත්ත බෙදා ගත හැකි ආකාරය වෙනස් කළ යෙදුම් සමාලෝචනය කරන්න"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"මෙම යෙදුම් ඔබේ ස්ථාන දත්ත බෙදා ගත හැකි ආකාරය වෙනස් කර ඇත. ඒවා එය කලින් බෙදා ගෙන නොතිබිය හැක, නැතහොත් දැන් එය වෙළඳ ප්‍රචාරණ හෝ අලෙවිකරණ අරමුණු සඳහා බෙදා ගත හැක."</string>
-    <!-- no translation found for data_sharing_updates_footer_message (1582711655172892107) -->
-    <skip />
+    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"මෙම යෙදුම්වල සංවර්ධකයින් යෙදුම් වෙළඳසැලකට ඔවුන්ගේ දත්ත බෙදා ගැනීමේ පිළිවෙත් පිළිබඳ තතු සපයන ලදි. ඔවුන් එය කාලයත් සමග යාවත්කාලීන කළ හැක.\n\nඔබේ යෙදුම් අනුවාදය, භාවිතය, කලාපය, සහ වයස මත පදනම්ව දත්ත බෙදා ගැනීමේ පිළිවෙත් වෙනස් විය හැක."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"දත්ත බෙදා ගැනීම පිළිබඳව තව දැන ගන්න"</string>
-    <!-- no translation found for shares_location_with_third_parties (2278051743742057767) -->
-    <skip />
-    <!-- no translation found for shares_location_with_third_parties_for_advertising (1918588064014480513) -->
-    <skip />
+    <string name="shares_location_with_third_parties" msgid="2278051743742057767">"ඔබේ ස්ථාන දත්ත දැන් තෙවන පාර්ශ්ව සමග බෙදා ගෙන ඇත"</string>
+    <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"ඔබේ ස්ථාන දත්ත දැන් වෙළඳ ප්‍රචාරණය හෝ අලෙවිකරණය සඳහා තෙවන පාර්ශ්ව සමග බෙදා ගෙන ඇත"</string>
     <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{පසුගිය දින තුළ යාවත්කාලීන කරන ලදි}=1{පසුගිය දින තුළ යාවත්කාලීන කරන ලදි}one{දින #ක් තුළ යාවත්කාලීන කරන ලදි}other{දින #ක් තුළ යාවත්කාලීන කරන ලදි}}"</string>
     <string name="no_updates_at_this_time" msgid="9031085635689982935">"මෙම අවස්ථාවේ දී යාවත්කාලීන නැත"</string>
     <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"දත්ත බෙදා ගැනීමේ යාවත්කාලීන"</string>

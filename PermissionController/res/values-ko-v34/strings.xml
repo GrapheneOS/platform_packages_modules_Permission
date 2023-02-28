@@ -20,7 +20,6 @@
     <string name="security_privacy_brand_name" msgid="7303621734258440812">"보안 및 개인 정보 보호"</string>
     <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"관리"</string>
     <string name="privacy_subpage_data_header" msgid="5049237788244591274">"데이터"</string>
-    <!-- no translation found for health_connect_title (2132233890867430855) -->
-    <skip />
+    <string name="health_connect_title" msgid="2132233890867430855">"헬스 커넥트"</string>
     <string name="health_connect_summary" msgid="8156987676957707740">"앱 권한 및 데이터 관리"</string>
 </resources>

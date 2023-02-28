@@ -592,26 +592,21 @@
     <string name="show_password_title" msgid="2877269286984684659">"પાસવર્ડ બતાવો"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"તમે ટાઇપ કરો ત્યારે થોડા સમય માટે અક્ષરો બતાવો"</string>
     <string name="permission_rationale_message_location" msgid="5559450538205092588">"આ ઍપ દ્વારા જણાવવામાં આવ્યું છે કે તે ત્રીજા પક્ષો સાથે તમારો લોકેશન ડેટા શેર કરી શકે છે"</string>
-    <!-- no translation found for permission_rationale_location_title (2404797182678793506) -->
-    <skip />
+    <string name="permission_rationale_location_title" msgid="2404797182678793506">"ડેટા શેરિંગ અને લોકેશન"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"ડેટા શેરિંગ સંબંધિત માહિતી ક્યાંથી આવે છે"</string>
-    <!-- no translation found for permission_rationale_data_sharing_source_message (2229631836873747309) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"ઍપના ડેવલપરે આ ઍપની ડેટા શેર કરવા વિશેની માહિતી "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>"ને પૂરી પાડી છે. સમય જતાં કદાચ તે આ માહિતી અપડેટ કરી શકે છે."</string>
     <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"ઍપ આ માટે લોકેશન ડેટા શેર કરી શકે છે:"</string>
-    <!-- no translation found for permission_rationale_purpose_message (2136810388727916997) -->
-    <skip />
+    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ડેટા શેરિંગમાં ફેરફાર થતો રહે છે"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"તમારી ઍપનું વર્ઝન, તેનો ઉપયોગ, ઉપયોગ કરવાનો પ્રદેશ અને તમારી ઉંમરના આધારે ડેટાના નિયમો કદાચ અલગ-અલગ હોઈ શકે છે. "<annotation id="link">"ડેટા શેરિંગ વિશે વધુ"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"તમારો લોકેશન ડેટા"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267"><annotation id="link">"પ્રાઇવસી સેટિંગ"</annotation>"માં જઈને આ ઍપનો ઍક્સેસ બદલો"</string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"ઍપની કાર્યક્ષમતા"</string>
-    <!-- no translation found for permission_rationale_purpose_analytics (2070800501189620712) -->
-    <skip />
+    <string name="permission_rationale_purpose_analytics" msgid="2070800501189620712">"Analytics"</string>
     <string name="permission_rationale_purpose_developer_communications" msgid="6453047018892062374">"ડેવલપર સાથેની વાતચીતો"</string>
     <string name="permission_rationale_purpose_advertising" msgid="7156966429245180236">"જાહેરાત અથવા માર્કેટિંગ"</string>
     <string name="permission_rationale_purpose_fraud_prevention_security" msgid="4262104770357031902">"કપટ અટકાવવું, સુરક્ષા અને અનુપાલન"</string>
-    <!-- no translation found for permission_rationale_purpose_personalization (1589973273682238708) -->
-    <skip />
+    <string name="permission_rationale_purpose_personalization" msgid="1589973273682238708">"મનગમતું બનાવવું"</string>
     <string name="permission_rationale_purpose_account_management" msgid="2985772421946688879">"એકાઉન્ટ મેનેજમેન્ટ"</string>
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"ડેટા સલામતી"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"લોકેશન ડેટા શેર કરવામાં આવી શકે છે"</string>
@@ -619,13 +614,10 @@
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"લોકેશન માટે ડેટા શેરિંગ સંબંધિત અપડેટ"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"તે ઍપનું રિવ્યૂ કરો જેમણે તમારા લોકેશન ડેટાને શેર કરવાની રીત બદલી છે"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"આ ઍપ દ્વારા તમારા લોકેશન ડેટાને શેર કરવાની રીત બદલવામાં આવી હોઈ શકે છે. તેઓએ તેને પહેલાં શેર કર્યો ન હોય એવું બની શકે છે અથવા હવે તેને જાહેરાત અથવા માર્કેટિંગ હેતુઓ માટે શેર કરી શકે છે."</string>
-    <!-- no translation found for data_sharing_updates_footer_message (1582711655172892107) -->
-    <skip />
+    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"આ ઍપના ડેવલપરે ડેટા શેરિંગના તેમના નિયમો વિશે ઍપ સ્ટોરને માહિતી પૂરી પાડી છે. સમય જતાં કદાચ તેઓ તેને અપડેટ કરી શકે છે.\n\nતમારી ઍપનું વર્ઝન, તેનો ઉપયોગ, ઉપયોગ કરવાનો પ્રદેશ અને તમારી ઉંમરના આધારે ડેટા શેરિંગના નિયમો કદાચ અલગ-અલગ હોઈ શકે છે."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"ડેટા શેરિંગ વિશે જાણો"</string>
-    <!-- no translation found for shares_location_with_third_parties (2278051743742057767) -->
-    <skip />
-    <!-- no translation found for shares_location_with_third_parties_for_advertising (1918588064014480513) -->
-    <skip />
+    <string name="shares_location_with_third_parties" msgid="2278051743742057767">"તમારો લોકેશન ડેટા હવે ત્રીજા પક્ષો સાથે શેર કરવામાં આવ્યો છે"</string>
+    <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"તમારો લોકેશન ડેટા હવે જાહેરાત અથવા માર્કેટિંગ માટે ત્રીજા પક્ષો સાથે શેર કરવામાં આવ્યો છે"</string>
     <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{છેલ્લા દિવસમાં કરેલી અપડેટ}=1{છેલ્લા દિવસમાં કરેલી અપડેટ}one{# દિવસમાં કરેલી અપડેટ}other{# દિવસમાં કરેલી અપડેટ}}"</string>
     <string name="no_updates_at_this_time" msgid="9031085635689982935">"અત્યારે કોઈ અપડેટ નથી"</string>
     <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"ડેટા શેરિંગ સંબંધિત અપડેટ"</string>

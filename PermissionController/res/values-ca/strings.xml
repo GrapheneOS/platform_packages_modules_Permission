@@ -592,26 +592,21 @@
     <string name="show_password_title" msgid="2877269286984684659">"Mostra les contrasenyes"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Mostra els caràcters breument mentre escrius"</string>
     <string name="permission_rationale_message_location" msgid="5559450538205092588">"Aquesta aplicació ha indicat que és possible que comparteixi les teves dades d\'ubicació amb tercers"</string>
-    <!-- no translation found for permission_rationale_location_title (2404797182678793506) -->
-    <skip />
+    <string name="permission_rationale_location_title" msgid="2404797182678793506">"Compartició de dades i ubicació"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"D\'on prové la informació de la compartició de dades"</string>
-    <!-- no translation found for permission_rationale_data_sharing_source_message (2229631836873747309) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"El desenvolupador ha proporcionat informació a "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" sobre com comparteix dades aquesta aplicació. És possible que actualitzi aquesta informació al llarg del temps."</string>
     <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"L\'aplicació pot compartir dades d\'ubicació per a:"</string>
-    <!-- no translation found for permission_rationale_purpose_message (2136810388727916997) -->
-    <skip />
+    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"La compartició de dades varia"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Les pràctiques relacionades amb les dades poden variar segons la versió de l\'aplicació, l\'ús que se\'n fa, la regió i l\'edat. "<annotation id="link">"Més informació sobre la compartició de dades"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Les teves dades d\'ubicació"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Canvia l\'accés d\'aquesta aplicació a la "<annotation id="link">"configuració de privadesa"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"Funcionalitat de l\'aplicació"</string>
-    <!-- no translation found for permission_rationale_purpose_analytics (2070800501189620712) -->
-    <skip />
+    <string name="permission_rationale_purpose_analytics" msgid="2070800501189620712">"Analítiques"</string>
     <string name="permission_rationale_purpose_developer_communications" msgid="6453047018892062374">"Comunicacions del desenvolupador"</string>
     <string name="permission_rationale_purpose_advertising" msgid="7156966429245180236">"Publicitat o màrqueting"</string>
     <string name="permission_rationale_purpose_fraud_prevention_security" msgid="4262104770357031902">"Prevenció de fraus, seguretat i compliment"</string>
-    <!-- no translation found for permission_rationale_purpose_personalization (1589973273682238708) -->
-    <skip />
+    <string name="permission_rationale_purpose_personalization" msgid="1589973273682238708">"Personalització"</string>
     <string name="permission_rationale_purpose_account_management" msgid="2985772421946688879">"Gestió del compte"</string>
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Seguretat de les dades"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Pot ser que les dades d\'ubicació es comparteixin"</string>
@@ -619,13 +614,10 @@
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Actualitzacions en la compartició de dades per a la ubicació"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Revisa les aplicacions que han canviat la manera en què poden compartir les teves dades d\'ubicació"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Aquestes aplicacions han canviat la manera en què poden compartir les teves dades d\'ubicació. Pot ser que no les hagin compartit abans o que ara les comparteixin amb finalitats publicitàries o de màrqueting."</string>
-    <!-- no translation found for data_sharing_updates_footer_message (1582711655172892107) -->
-    <skip />
+    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Els desenvolupadors d\'aquestes aplicacions han proporcionat informació sobre les seves pràctiques de compartició de dades a una botiga d\'aplicacions. És possible que actualitzin la informació al llarg del temps.\n\nLes pràctiques de compartició de dades poden variar segons la versió de l\'aplicació, l\'ús, la regió i l\'edat."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"Informació sobre la compartició de dades"</string>
-    <!-- no translation found for shares_location_with_third_parties (2278051743742057767) -->
-    <skip />
-    <!-- no translation found for shares_location_with_third_parties_for_advertising (1918588064014480513) -->
-    <skip />
+    <string name="shares_location_with_third_parties" msgid="2278051743742057767">"Les teves dades d\'ubicació ara es comparteixen amb tercers"</string>
+    <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"Les teves dades d\'ubicació ara es comparteixen amb tercers per a finalitats publicitàries o de màrqueting"</string>
     <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{S\'ha actualitzat durant el darrer dia}=1{S\'ha actualitzat durant el darrer dia}many{S\'ha actualitzat durant els # darrers dies}other{S\'ha actualitzat durant els # darrers dies}}"</string>
     <string name="no_updates_at_this_time" msgid="9031085635689982935">"En aquest moment no hi ha cap actualització"</string>
     <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"Actualitzacions de compartició de dades"</string>

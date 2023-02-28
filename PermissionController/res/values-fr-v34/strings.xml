@@ -20,7 +20,6 @@
     <string name="security_privacy_brand_name" msgid="7303621734258440812">"Sécurité et confidentialité"</string>
     <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"Commandes"</string>
     <string name="privacy_subpage_data_header" msgid="5049237788244591274">"Données"</string>
-    <!-- no translation found for health_connect_title (2132233890867430855) -->
-    <skip />
+    <string name="health_connect_title" msgid="2132233890867430855">"Santé Connect"</string>
     <string name="health_connect_summary" msgid="8156987676957707740">"Autorisations de l\'application et gestion des données"</string>
 </resources>

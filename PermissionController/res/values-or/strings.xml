@@ -592,26 +592,21 @@
     <string name="show_password_title" msgid="2877269286984684659">"ପାସୱାର୍ଡଗୁଡ଼ିକ ଦେଖାନ୍ତୁ"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"ଆପଣ ଟାଇପ କରିବା ସମୟରେ କେରେକ୍ଟରଗୁଡ଼ିକୁ କିଛି ସମୟ ପାଇଁ ଡିସପ୍ଲେ କରନ୍ତୁ"</string>
     <string name="permission_rationale_message_location" msgid="5559450538205092588">"ଏହି ଆପ ଉଲ୍ଲେଖ କରିଛି ଯେ ଏହା ତୃତୀୟ ପକ୍ଷଗୁଡ଼ିକ ସହ ଆପଣଙ୍କ ଲୋକେସନ ଡାଟା ସେୟାର କରିପାରେ"</string>
-    <!-- no translation found for permission_rationale_location_title (2404797182678793506) -->
-    <skip />
+    <string name="permission_rationale_location_title" msgid="2404797182678793506">"ଡାଟା ସେୟାରିଂ ଏବଂ ଲୋକେସନ"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"ଡାଟା ସେୟାରିଂ ସୂଚନା କେଉଁଠାରୁ ଆସିଥାଏ"</string>
-    <!-- no translation found for permission_rationale_data_sharing_source_message (2229631836873747309) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"ଏହି ଆପ କିପରି ଡାଟା ସେୟାର କରେ ସେ ବିଷୟରେ ଡେଭେଲପର "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>"ରେ ସୂଚନା ପ୍ରଦାନ କରିଛନ୍ତି। ଏହା ସମୟ ଅନୁସାରେ ଏହି ସୂଚନାକୁ ଅପଡେଟ କରିପାରେ।"</string>
     <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"ଏଥିପାଇଁ ଆପଟି ଲୋକେସନ ଡାଟା ସେୟାର କରିପାରେ:"</string>
-    <!-- no translation found for permission_rationale_purpose_message (2136810388727916997) -->
-    <skip />
+    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ଡାଟା ସେୟାରିଂ ଭିନ୍ନ ହୋଇଥାଏ"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"ଆପଣଙ୍କ ଆପର ସଂସ୍କରଣ, ବ୍ୟବହାର, ଅଞ୍ଚଳ ଏବଂ ବୟସ ଆଧାରରେ ଡାଟା କାର୍ଯ୍ୟପଦ୍ଧତିଗୁଡ଼ିକ ଭିନ୍ନ ହୋଇପାରେ। "<annotation id="link">"ଡାଟା ସେୟାରିଂ ବିଷୟରେ ଅଧିକ"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"ଆପଣଙ୍କ ଲୋକେସନ ଡାଟା"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267"><annotation id="link">"ଗୋପନୀୟତା ସେଟିଂସ"</annotation>"ରେ ଏହି ଆପର ଆକ୍ସେସ ପରିବର୍ତ୍ତନ କରନ୍ତୁ"</string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"ଆପ କାର୍ଯ୍ୟକ୍ଷମତା"</string>
-    <!-- no translation found for permission_rationale_purpose_analytics (2070800501189620712) -->
-    <skip />
+    <string name="permission_rationale_purpose_analytics" msgid="2070800501189620712">"ଆନାଲିଟିକ୍ସ"</string>
     <string name="permission_rationale_purpose_developer_communications" msgid="6453047018892062374">"ଡେଭେଲପର କମ୍ୟୁନିକେସନ"</string>
     <string name="permission_rationale_purpose_advertising" msgid="7156966429245180236">"ବିଜ୍ଞାପନ କିମ୍ବା ମାର୍କେଟିଂ"</string>
     <string name="permission_rationale_purpose_fraud_prevention_security" msgid="4262104770357031902">"ଠକାମୀର ପ୍ରତିରୋଧ, ସୁରକ୍ଷା ଏବଂ ଅନୁପାଳନ"</string>
-    <!-- no translation found for permission_rationale_purpose_personalization (1589973273682238708) -->
-    <skip />
+    <string name="permission_rationale_purpose_personalization" msgid="1589973273682238708">"ପର୍ସନାଲାଇଜେସନ"</string>
     <string name="permission_rationale_purpose_account_management" msgid="2985772421946688879">"ଆକାଉଣ୍ଟ ପରିଚାଳନା"</string>
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"ଡାଟା ସୁରକ୍ଷା"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"ଲୋକେସନ ଡାଟା ସେୟାର କରାଯାଇପାରେ"</string>
@@ -619,14 +614,11 @@
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"ଲୋକେସନ ପାଇଁ ଡାଟା ସେୟାରିଂ ଅପଡେଟଗୁଡ଼ିକ"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"ଆପଣଙ୍କ ଲୋକେସନ ଡାଟା ସେୟାର କରିବା ଉପାୟକୁ ପରିବର୍ତ୍ତନ କରିଥିବା ଆପ୍ସର ସମୀକ୍ଷା କରନ୍ତୁ"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"ଏହି ଆପ୍ସ ଆପଣଙ୍କ ଲୋକେସନ ଡାଟା ସେୟାର କରିବା ଉପାୟକୁ ପରିବର୍ତ୍ତନ କରିଛି। ସେଗୁଡ଼ିକ ଏହାକୁ ପୂର୍ବରୁ ସେୟାର କରିନଥାଇପାରେ କିମ୍ବା ବର୍ତ୍ତମାନ ଏହାକୁ ବିଜ୍ଞାପନ ବା ମାର୍କେଟିଂ ଉଦ୍ଦେଶ୍ୟରେ ସେୟାର କରିପାରେ।"</string>
-    <!-- no translation found for data_sharing_updates_footer_message (1582711655172892107) -->
-    <skip />
+    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"ଏହି ଆପ୍ସର ଡେଭେଲପରମାନେ ଏକ ଆପ ଷ୍ଟୋରରେ ସେମାନଙ୍କ ଡାଟା ସେୟାରିଂ କାର୍ଯ୍ୟପଦ୍ଧତିଗୁଡ଼ିକ ବିଷୟରେ ସୂଚନା ପ୍ରଦାନ କରିଛନ୍ତି। ସେମାନେ ସମୟ ଅନୁସାରେ ଏହାକୁ ଅପଡେଟ କରିପାରନ୍ତି।\n\nଆପଣଙ୍କ ଆପର ସଂସ୍କରଣ, ବ୍ୟବହାର, ଅଞ୍ଚଳ ଏବଂ ବୟସ ଆଧାରରେ ଡାଟା ସେୟାରିଂ କାର୍ଯ୍ୟପଦ୍ଧତିଗୁଡ଼ିକ ଭିନ୍ନ ହୋଇପାରେ।"</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"ଡାଟା ସେୟାରିଂ ବିଷୟରେ ଜାଣନ୍ତୁ"</string>
-    <!-- no translation found for shares_location_with_third_parties (2278051743742057767) -->
-    <skip />
-    <!-- no translation found for shares_location_with_third_parties_for_advertising (1918588064014480513) -->
-    <skip />
-    <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{ଶେଷ ଦିନ ମଧ୍ୟରେ ଅପଡେଟ କରାଯାଇଛି}=1{ଶେଷ ଦିନ ମଧ୍ୟରେ ଅପଡେଟ କରାଯାଇଛି}other{# ଦିନ ମଧ୍ୟରେ ଅପଡେଟ କରାଯାଇଛି}}"</string>
+    <string name="shares_location_with_third_parties" msgid="2278051743742057767">"ଆପଣଙ୍କ ଲୋକେସନ ଡାଟାକୁ ବର୍ତ୍ତମାନ ତୃତୀୟ ପକ୍ଷଗୁଡ଼ିକ ସହ ସେୟାର କରାଯାଇଛି"</string>
+    <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"ଆପଣଙ୍କ ଲୋକେସନ ଡାଟାକୁ ବର୍ତ୍ତମାନ ବିଜ୍ଞାପନ କିମ୍ବା ମାର୍କେଟିଂ ପାଇଁ ତୃତୀୟ ପକ୍ଷଗୁଡ଼ିକ ସହ ସେୟାର କରାଯାଇଛି"</string>
+    <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{ଗତକାଲି ଭିତରେ ଅପଡେଟ କରାଯାଇଛି}=1{ଗତକାଲି ଭିତରେ ଅପଡେଟ କରାଯାଇଛି}other{# ଦିନ ମଧ୍ୟରେ ଅପଡେଟ କରାଯାଇଛି}}"</string>
     <string name="no_updates_at_this_time" msgid="9031085635689982935">"ଏହି ସମୟରେ କୌଣସି ଅପଡେଟ ନାହିଁ"</string>
     <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"ଡାଟା ସେୟାରିଂ ଅପଡେଟଗୁଡ଼ିକ"</string>
     <string name="safety_label_changes_notification_desc" msgid="7808764283266234675">"କିଛି ଆପ୍ସ ଆପଣଙ୍କ ଲୋକେସନ ଡାଟା ସେୟାର କରିବା ଉପାୟକୁ ପରିବର୍ତ୍ତନ କରିଛି"</string>
