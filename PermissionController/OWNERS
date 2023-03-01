@@ -4,8 +4,8 @@ include platform/frameworks/base:/core/java/android/permission/OWNERS
 stenning@google.com
 
 # For television related changes
-rgl@google.com
-sergeynv@google.com
+aabdagic@google.com
+robhor@google.com
 
 # For incident report related changes
 joeo@google.com
