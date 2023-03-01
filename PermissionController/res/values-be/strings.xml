@@ -196,7 +196,7 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Паказаць усе дазволы праграмы \"<xliff:g id="APP">%1$s</xliff:g>\""</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Паказаць усе праграмы з гэтым дазволам"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Паказваць выкарыстанне мікрафона памочнікам"</string>
-    <string name="unused_apps_category_title" msgid="2988455616845243901">"Налады праграм, якія не выкарыстоўваліся"</string>
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"Налады неактыўных праграм"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Выдаляць дазволы, калі праграма не выкарыстоўваецца"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Выдаліць дазволы і вызваліць месца"</string>
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"Прыпыніць дзеянні ў неактыўнай праграме"</string>
@@ -236,8 +236,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Праграмы з гэтым дазволам могуць мець доступ да даных з датчыкаў пра вашы асноўныя фізіялагічныя паказчыкі"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Праграмы з гэтым дазволам могуць адпраўляць і праглядаць SMS-паведамленні"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Праграмы з такім дазволам могуць мець доступ да фота, мультымедыя і файлаў на вашай прыладзе"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"Праграмы з такім дазволам могуць атрымліваць доступ да музыкі і іншых аўдыяфайлаў на вашай прыладзе"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"Праграмы з такім дазволам могуць атрымліваць доступ да фота і відэа на вашай прыладзе"</string>
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"Праграмы з такім дазволам могуць атрымліваць доступ да музыкі і іншых аўдыяфайлаў на гэтай прыладзе"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"Праграмы з такім дазволам могуць атрымліваць доступ да фота і відэа на гэтай прыладзе"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Апошні доступ: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Цяпер адхілена / Апошні доступ: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Без доступаў"</string>
@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Дазволена кіраванне ўсімі файламі"</string>
     <string name="ask_header" msgid="2633816846459944376">"Заўсёды пытацца"</string>
     <string name="denied_header" msgid="903209608358177654">"Забаронена"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Некаторыя праграмы, якія адказваюць за асноўныя функцыі вашай прылады, могуць мець спецыяльны доступ да ўсіх файлаў"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Праглядзець праграмы з доступам да ўсіх файлаў"</string>
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Праглядзець іншыя праграмы, якія маюць доступ да ўсіх файлаў"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 дзень}one{# дзень}few{# дні}many{# дзён}other{# дня}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 гадзіна}one{# гадзіна}few{# гадзіны}many{# гадзін}other{# гадзіны}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 хвіліна}one{# хвіліна}few{# хвіліны}many{# хвілін}other{# хвіліны}}"</string>
@@ -332,8 +331,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"Стандартны лічбавы памочнік"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Лічбавы памочнік"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Праграмы-памочнікі кіруюцца інфармацыяй на экране. Для вашай зручнасці некаторыя з іх падтрымліваюць працу з панэллю запуску і галасавы ўвод."</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"Прызначыць \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" стандартнай праграмай-памочнікам?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"Патрабуе доступу да SMS і журнала выклікаў"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Стандартны браўзер"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Браўзер"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Праграмы, якія даюць доступ да інтэрнэту і паказваюць спасылкі, на якія вы націскаеце"</string>
@@ -343,13 +340,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Тэлефон"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Праграмы, якія дазваляюць вам рабіць і прымаць тэлефонныя выклікі на прыладзе"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Прызначыць \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" стандартнай праграмай для тэлефона?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"Патрабуе доступу да журнала выклікаў і да адпраўкі SMS"</string>
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"Гэта праграма атрымае доступ да камеры, кантактаў, мікрафона, тэлефона і SMS"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"набіральнік нумара"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Стандартная праграма для SMS"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"Праграма для SMS"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Праграмы, якія дазваляюць вам выкарыстоўваць нумар тэлефона для адпраўкі і атрымання кароткіх тэкставых паведамленняў, фота, відэа і іншага"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Зрабіць \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" стандартнай праграмай для SMS?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"Патрабуе доступу да кантактаў, SMS, тэлефона"</string>
+    <string name="role_sms_request_description" msgid="2691004766132144886">"Гэта праграма атрымае доступ да камеры, кантактаў, файлаў і мультымедыя, мікрафона, тэлефона і SMS"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"тэкставае паведамленне, SMS, паведамленні, абмен паведамленнямі"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"Праграма экстраннай дапамогі"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"Праграма экстраннай дапамогі"</string>
@@ -411,9 +408,9 @@
     <string name="default_app_no_apps" msgid="115720991680586885">"Няма праграм"</string>
     <string name="car_default_app_selected" msgid="5416420830430644174">"Выбрана"</string>
     <string name="car_default_app_selected_with_info" msgid="1932204186080593500">"Выбрана – <xliff:g id="ADDITIONAL_INFO">%1$s</xliff:g>"</string>
-    <string name="special_app_access_search_keyword" msgid="8032347212290774210">"спецыяльны доступ да праграм"</string>
-    <string name="special_app_access" msgid="5019319067120213797">"Спецыяльны доступ да праграм"</string>
-    <string name="no_special_app_access" msgid="6950277571805106247">"Няма доступу да праграм"</string>
+    <string name="special_app_access_search_keyword" msgid="8032347212290774210">"спецыяльны доступ для праграм"</string>
+    <string name="special_app_access" msgid="5019319067120213797">"Спецыяльны доступ для праграм"</string>
+    <string name="no_special_app_access" msgid="6950277571805106247">"Няма доступу для праграм"</string>
     <string name="special_app_access_no_apps" msgid="4102911722787886970">"Няма праграм"</string>
     <string name="home_missing_work_profile_support" msgid="1756855847669387977">"Працоўны профіль не падтрымліваецца"</string>
     <string name="encryption_unaware_confirmation_message" msgid="8274491794636402484">"Заўвага. Калі перазапусціць прыладу з наладжанай блакіроўкай экрана, праграма не запусціцца, пакуль вы не разблакіруеце прыладу."</string>
@@ -450,11 +447,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Прыблізна"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да вашага календара?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; адпраўляць і праглядаць SMS-паведамленні?"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да &lt;b&gt;файлаў і дакументаў&lt;/b&gt; на вашай прыладзе?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да &lt;b&gt;фота, відэа, музыкі і аўдыяфайлаў&lt;/b&gt; на вашай прыладзе?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да &lt;b&gt;фота, відэа, музыкі, аўдыя і іншых файлаў&lt;/b&gt; на вашай прыладзе?"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да музыкі і іншых аўдыяфайлаў на гэтай прыладзе?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да фота і відэа на гэтай прыладзе?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да фота, мультымедыя і файлаў на вашай прыладзе?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да &lt;b&gt;фота, відэа, музыкі і аўдыяфайлаў&lt;/b&gt; на гэтай прыладзе?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да &lt;b&gt;фота, відэа, музыкі, аўдыя і файлаў&lt;/b&gt; на гэтай прыладзе?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да музыкі і аўдыя на гэтай прыладзе?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да фота і відэа на гэтай прыладзе?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; запісваць аўдыя?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Гэта праграма зможа запісваць аўдыя толькі падчас яе выкарыстання"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; запісваць аўдыя?"</string>
@@ -476,7 +473,6 @@
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Каб дазволіць гэтай праграме мець пастаянны доступ да даных датчыкаў цела, нават калі яна не выкарыстоўваецца, "<annotation id="link">"перайдзіце ў налады."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Захаваць для праграмы \"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;” дазвол на доступ да даных датчыкаў цела ў час яе выкарыстання?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; адпраўляць вам апавяшчэнні?"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; і далей адпраўляць апавяшчэнні?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Кіраваныя дазволы"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Доступ да даных пра месцазнаходжанне атрыманы"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Ваш ІТ-адміністратар дазваляе праграме \"<xliff:g id="APP_NAME">%s</xliff:g>\" мець доступ да даных пра ваша месцазнаходжанне"</string>
@@ -523,4 +519,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Нядаўна выкарыстоўвалася праграмай \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Бяспека і прыватнасць"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Праверыць стан"</string>
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"Пацвердзіць"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"Назад"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"Атрымае доступ і да іншых файлаў"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"Не атрымае доступу і да іншых файлаў"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"Атрымае доступ і да іншых файлаў"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"Не атрымае доступу і да іншых файлаў"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"Атрымае доступ таксама да фота і відэа"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"Не атрымае доступу таксама да фота і відэа"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"Атрымае доступ таксама да музыкі і аўдыяфайлаў"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"Не атрымае доступу таксама да музыкі і аўдыяфайлаў"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"Гэта праграма не падтрымлівае апошнюю версію Android. Калі гэта праграма атрымае дазвол на доступ да музыкі і аўдыяфайлаў, у яе таксама будзе доступ да фота, відэа і іншых файлаў."</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"Гэта праграма не падтрымлівае апошнюю версію Android. Калі гэта праграма не атрымае дазволу на доступ да музыкі і аўдыяфайлаў, у яе таксама не будзе доступу да фота, відэа і іншых файлаў."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"Гэта праграма не падтрымлівае апошнюю версію Android. Калі гэта праграма атрымае дазвол на доступ да фота і відэа, у яе таксама будзе доступ да музыкі, аўдыя і іншых файлаў."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"Гэта праграма не падтрымлівае апошнюю версію Android. Калі гэта праграма не атрымае дазволу на доступ да фота і відэа, у яе таксама не будзе доступу да музыкі, аўдыя і іншых файлаў."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"Гэта праграма не падтрымлівае апошнюю версію Android. Калі гэта праграма атрымае дазвол на доступ да музыкі і аўдыяфайлаў, у яе таксама будзе доступ да фота і відэа."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Гэта праграма не падтрымлівае апошнюю версію Android. Калі гэта праграма не атрымае дазволу на доступ да музыкі і аўдыяфайлаў, у яе таксама не будзе доступу да фота і відэа."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Гэта праграма не падтрымлівае апошнюю версію Android. Калі гэта праграма атрымае дазвол на доступ да фота і відэа, у яе таксама будзе доступ да музыкі і аўдыяфайлаў."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Гэта праграма не падтрымлівае апошнюю версію Android. Калі гэта праграма не атрымае дазволу на доступ да музыкі і аўдыяфайлаў, у яе таксама не будзе доступу да фота і відэа."</string>
 </resources>

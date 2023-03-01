@@ -43,7 +43,7 @@
     <string name="permission_revoked_none" msgid="9213345075484381180">"ոչինչ չի չեղարկվել"</string>
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Թույլատրել"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Միշտ թույլատրել"</string>
-    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Հավելվածի օգտագործման ժամանակ"</string>
+    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Հավելվածն օգտագործելիս"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Միացնել ճշգրիտ տեղադրությունը"</string>
     <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Չանջատել մոտավոր տեղորոշումը"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Միայն այս անգամ"</string>
@@ -55,12 +55,12 @@
     <string name="unused_apps" msgid="2058057455175955094">"Չօգտագործվող հավելվածներ"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"Չօգտագործվող հավելվածներ չկան"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"Չօգտագործվող հավելվածներ չկան"</string>
-    <string name="review_permission_decisions" msgid="309559429150613632">"Գործողություններ թույլտվ. հետ"</string>
+    <string name="review_permission_decisions" msgid="309559429150613632">"Թույլտվության որոշումներ"</string>
     <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Թույլտվությունների հետ վերջերս արված բոլոր գործողությունները"</string>
     <string name="review_permission_decisions_empty" msgid="8120775336417279806">"Թույլտվությունների հետ վերջերս արված գործողություններ չկան"</string>
     <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Կառավարեք օրացույցի, կանչերի ցուցակի և այլ տվյալների հասանելիությունը"</string>
     <string name="granted_permission_decision" msgid="7824827491551861365">"Դուք տրամադրել եք «<xliff:g id="PERMISSION_NAME">%2$s</xliff:g>» թույլտվությունը <xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածին"</string>
-    <string name="denied_permission_decision" msgid="5308961501779563781">"Դուք չեք տրամադրել «<xliff:g id="PERMISSION_NAME">%2$s</xliff:g>» թույլտվությունը <xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածին"</string>
+    <string name="denied_permission_decision" msgid="5308961501779563781">"Դուք մերժել եք «<xliff:g id="PERMISSION_NAME">%2$s</xliff:g>» թույլտվությունը <xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածին"</string>
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Այսօր}=1{1 օր առաջ}one{# օր առաջ}other{# օր առաջ}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Անջատել հավելվածը"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Եթե անջատեք այս հավելվածը, համակարգը և այլ հավելվածներ հնարավոր է սխալներով աշխատեն։ Դուք չեք կարող ջնջել այս հավելվածը, քանի որ այն նախապես տեղադրված է եղել ձեր սարքում։ Անջատելու դեպքում հավելվածը կդադարի աշխատել և կթաքցվի։"</string>
@@ -121,7 +121,7 @@
     <string name="message_staging" msgid="9110563899955511866">"Սպասեք…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Անհայտ"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Հասանելիության կառավարման վահանակ"</string>
-    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Տեսնել՝ որ հավելվածներն են վերջերս թույլտվություն օգտագործել"</string>
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Տեսեք՝ որ հավելվածներն են վերջերս թույլտվություն օգտագործել"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"«<xliff:g id="PERMGROUP">%1$s</xliff:g>» թույլտվության օգտագործում"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Տեսնել այլ թույլտվություններ"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -160,7 +160,7 @@
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Թույլտվությունների օգտագործումը վերջին 1 րոպեում"</string>
     <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"Չի օգտագործվել վերջին 24 ժամվա ընթացքում"</string>
     <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"Չի օգտագործվել վերջին 7 օրվա ընթացքում"</string>
-    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Օգտագործվել է 1 հավելվածի կողմից}one{Օգտագործվել է # հավելվածի կողմից}other{Օգտագործվել է # հավելվածի կողմից}}"</string>
+    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Օգտագործվում է 1 հավելվածի կողմից}one{Օգտագործվում է # հավելվածի կողմից}other{Օգտագործվում է # հավելվածի կողմից}}"</string>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Դիտել բոլորը կառավարման վահանակում"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Զտիչ՝ <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Հեռացնել զտիչը"</string>
@@ -236,8 +236,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Այս թույլտվությունն ունեցող հավելվածներին հասանելի կլինեն տվիչների տվյալները ձեր կենսագործունեության մասին"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Այս թույլտվությունն ունեցող հավելվածները կարող են ուղարկել և կարդալ SMS-ներ"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Այս թույլտվությունն ունեցող հավելվածներին հասանելի են սարքում պահված լուսանկարները, մուլտիմեդիան և ֆայլերը"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"Այս թույլտվությունն ունեցող հավելվածներին հասանելի են ձեր սարքի երաժշտությունը և մյուս աուդիո ֆայլերը"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"Այս թույլտվությունն ունեցող հավելվածներին հասանելի են ձեր սարքի լուսանկարներն ու տեսանյութերը"</string>
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"Այս թույլտվությունն ունեցող հավելվածներին հասանելի են այս սարքի երաժշտությունը և մյուս աուդիո ֆայլերը"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"Այս թույլտվությունն ունեցող հավելվածներին հասանելի են այս սարքի լուսանկարներն ու տեսանյութերը"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Վերջին օգտագործումը՝ <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Մերժված է/Վերջին օգտագործումը՝ <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Երբեք չի օգտագործվել"</string>
@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Հավելվածներ, որոնց հասանելի են բոլոր ֆայլերը"</string>
     <string name="ask_header" msgid="2633816846459944376">"Ամեն անգամ հարցնել"</string>
     <string name="denied_header" msgid="903209608358177654">"Արգելված"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Ձեր բոլոր ֆայլերը կարող են հասանելի լինել որոշ հավելվածների, որոնք ապահովում են սարքի հիմնական գործառույթները"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Տեսնել հավելվածները, որոնց հասանելի են բոլոր ֆայլերը"</string>
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Տեսնել այլ հավելվածներ, որոնց հասանելի են բոլոր ֆայլերը"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 օր}one{# օր}other{# օր}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 ժամ}one{# ժամ}other{# ժամ}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 րոպե}one{# րոպե}other{# րոպե}}"</string>
@@ -300,23 +299,23 @@
     <string name="app_perms_24h_access" msgid="99069906850627181">"Վերջին անգամ օգտագործվել է <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Վերջին անգամ օգտագործվել է երեկ, <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_7d_access" msgid="4945055548894683751">"Վերջին օգտագործումը՝ <xliff:g id="TIME_DATE_0">%1$s</xliff:g>, <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
-    <string name="app_perms_content_provider_24h" msgid="1055526027667508972">"Վերջին օգտագործումը՝ անցած 24 ժամվա ընթացքում"</string>
-    <string name="app_perms_content_provider_7d" msgid="3215454898257814868">"Վերջին օգտագործումը՝ անցած 7 օրվա ընթացքում"</string>
+    <string name="app_perms_content_provider_24h" msgid="1055526027667508972">"Օգտագործվել է վերջին 24 ժամվա ընթացքում"</string>
+    <string name="app_perms_content_provider_7d" msgid="3215454898257814868">"Օգտագործվել է վերջին 7 օրվա ընթացքում"</string>
     <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Վերջին մուտքը՝ <xliff:g id="TIME_DATE">%1$s</xliff:g> • Միշտ թույլատրված է"</string>
     <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Վերջին մուտքը՝ երեկ, <xliff:g id="TIME_DATE">%1$s</xliff:g> • Միշտ թույլատրված է"</string>
     <string name="app_perms_7d_access_background" msgid="408099213372185627">"Վերջին օգտագործումը՝ <xliff:g id="TIME_DATE_0">%1$s</xliff:g>, <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Միշտ թույլատրված է"</string>
-    <string name="app_perms_content_provider_24h_background" msgid="3825902995186961496">"Վերջին օգտագործումը՝ անցած 24 ժամվա ընթացքում • Միշտ թույլատրված է"</string>
-    <string name="app_perms_content_provider_7d_background" msgid="4818839672116463542">"Վերջին օգտագործումը՝ անցած 7 օրվա ընթացքում • Միշտ թույլատրված է"</string>
+    <string name="app_perms_content_provider_24h_background" msgid="3825902995186961496">"Օգտագործվել է վերջին 24 ժամվա ընթացքում • Միշտ թույլատրված է"</string>
+    <string name="app_perms_content_provider_7d_background" msgid="4818839672116463542">"Օգտագործվել է վերջին 7 օրվա ընթացքում • Միշտ թույլատրված է"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Վերջին անգամ օգտագործվել է <xliff:g id="TIME_DATE">%1$s</xliff:g> • Մեդիաֆայլեր"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Վերջին անգամ օգտագործվել է երեկ, <xliff:g id="TIME_DATE">%1$s</xliff:g> • Մեդիաֆայլեր"</string>
     <string name="app_perms_7d_access_media_only" msgid="1031096653668235200">"Վերջին օգտագործումը՝ <xliff:g id="TIME_DATE_0">%1$s</xliff:g>, <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Մեդիաֆայլեր"</string>
-    <string name="app_perms_content_provider_24h_media_only" msgid="7797963000596179491">"Վերջին օգտագործումը՝ անցած 24 ժամվա ընթացքում • Մեդիաֆայլեր"</string>
-    <string name="app_perms_content_provider_7d_media_only" msgid="8446239884570262243">"Վերջին օգտագործումը՝ անցած 7 օրվա ընթացքում • Մեդիաֆայլեր"</string>
+    <string name="app_perms_content_provider_24h_media_only" msgid="7797963000596179491">"Օգտագործվել է վերջին 24 ժամվա ընթացքում • Մեդիաֆայլեր"</string>
+    <string name="app_perms_content_provider_7d_media_only" msgid="8446239884570262243">"Օգտագործվել է վերջին 7 օրվա ընթացքում • Մեդիաֆայլեր"</string>
     <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"Վերջին անգամ օգտագործվել է <xliff:g id="TIME_DATE">%1$s</xliff:g> • Բոլոր ֆայլերը"</string>
     <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"Վերջին անգամ օգտագործվել է երեկ, <xliff:g id="TIME_DATE">%1$s</xliff:g> • Բոլոր ֆայլերը"</string>
     <string name="app_perms_7d_access_all_files" msgid="8246193786397635824">"Վերջին օգտագործումը՝ <xliff:g id="TIME_DATE_0">%1$s</xliff:g>, <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Բոլոր ֆայլերը"</string>
-    <string name="app_perms_content_provider_24h_all_files" msgid="573104317727770850">"Վերջին օգտագործումը՝ անցած 24 ժամվա ընթացքում • Բոլոր ֆայլերը"</string>
-    <string name="app_perms_content_provider_7d_all_files" msgid="7962416229708835558">"Վերջին օգտագործումը՝ անցած 7 օրվա ընթացքում • Բոլոր ֆայլերը"</string>
+    <string name="app_perms_content_provider_24h_all_files" msgid="573104317727770850">"Օգտագործվել է վերջին 24 ժամվա ընթացքում • Բոլոր ֆայլերը"</string>
+    <string name="app_perms_content_provider_7d_all_files" msgid="7962416229708835558">"Օգտագործվել է վերջին 7 օրվա ընթացքում • Բոլոր ֆայլերը"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"Թույլտվությունները տրված չեն"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"Բոլոր թույլտվությունները տրված են"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"Թույլատրված չէ ոչ մի հավելվածի"</string>
@@ -332,8 +331,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"Կանխադրված թվային օգնական"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Թվային օգնականի հավելված"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Օգնական հավելվածներն աշխատում են էկրանին առկա տեղեկությունների հետ: Որոշ հավելվածներ աջակցում են և՛ գործարկիչի, և՛ ձայնային ներածման ծառայությունները, ինչը ավելի լայն հնարավորություններ է տալիս ձեզ:"</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"Նշե՞լ <xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածը որպես կանխադրված օգնական հավելված"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"Տրվում է SMS-ների և զանգերի մատյանի հասանելիություն"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Դիտարկիչի կանխադրված հավելված"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Դիտարկիչի հավելված"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Հավելվածներ, որոնց միջոցով կարող եք այցելել կայքեր և բացել հղումներ"</string>
@@ -343,13 +340,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Հեռախոսի հավելված"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Հավելվածներ, որոնք թույլ են տալիս զանգեր կատարել և ստանալ ձեր սարքում"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Նշե՞լ <xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածը որպես հեռախոսի կանխադրված հավելված"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"Տրվում է զանգերի մատյանի և SMS ուղարկելու հասանելիություն"</string>
-    <string name="role_dialer_search_keywords" msgid="3324448983559188087">"համարհավաքիչ"</string>
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"Այս հավելվածին հասանելի կլինեն ձեր Տեսախցիկը, Կոնտակտները, Խոսափողը, Հեռախոսը և SMS-ները։"</string>
+    <string name="role_dialer_search_keywords" msgid="3324448983559188087">"համարահավաքիչ"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"SMS-ների կանխադրված հավելվածը"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS-ների փոխանակման հավելված"</string>
-    <string name="role_sms_description" msgid="3424020199148153513">"Հավելվածներ, որոնք թույլ են տալիս ձեր հեռախոսահամարով ուղարկել և ստանալ կարճ տեքստային հաղորդագրություններ, լուսանկարներ, տեսանյութեր և այլն"</string>
+    <string name="role_sms_description" msgid="3424020199148153513">"Հավելվածներ, որոնք թույլ են տալիս ձեր հեռախոսահամարից ուղարկել և ստանալ կարճ տեքստային հաղորդագրություններ, լուսանկարներ, տեսանյութեր և այլն"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Նշե՞լ <xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածը որպես SMS-ների կանխադրված հավելված"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"Տրվում է կոնտակտների, SMS-ների և հեռախոսի հասանելիություն"</string>
+    <string name="role_sms_request_description" msgid="2691004766132144886">"Այս հավելվածը կկարողանա ծանուցումներ ուղարկել ձեզ, և հավելվածին հասանելի կլինեն ձեր Տեսախցիկը, Կոնտակտները, Ֆայլերն ու մեդիաֆայլերը, Խոսափողը, Հեռախոսը և SMS-ները։"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"տեքստային հաղորդագրություն, կարճ հաղորդագրությունների ուղարկում, հաղորդագրություններ, հաղորդակցում"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"Արտակարգ իրավիճակների կանխադրված հավելված"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"Արտակարգ իրավիճակների հավելված"</string>
@@ -368,7 +365,7 @@
     <string name="role_call_redirection_description" msgid="6091669882014664420">"Հավելվածներ, որոնք թույլ են տալիս վերահասցեավորել զանգերն այլ հեռախոսահամարի վրա"</string>
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"Նշե՞լ <xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածը որպես զանգերի վերահասցեավորման կանխադրված հավելված"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Թույլտվություններ հարկավոր չեն"</string>
-    <string name="role_call_screening_label" msgid="883935222060878724">"Համարների և սպամի ճանաչման կանխադրված հավելված"</string>
+    <string name="role_call_screening_label" msgid="883935222060878724">"Համարների և սպամի ճանաչում"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"Զանգողի ID-ի և սպամի հայտնաբերման հավելված"</string>
     <string name="role_call_screening_description" msgid="2349431420497468981">"Հավելվածներ, որոնք թույլ են տալիս ճանաչել հեռախոսահամարները, արգելափակել սպամը, ավտոմատ զանգերը և անցանկալի համարները"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Ընտրե՞լ <xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածը որպես համարների ավտոմատ որոշման և սպամից պաշտպանվելու կանխադված հավելված"</string>
@@ -450,11 +447,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Մոտավոր"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել ձեր օրացույցը:"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին ուղարկել և դիտել SMS հաղորդագրություններ:"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել ձեր սարքի &lt;b&gt;ֆայլերն ու փաստաթղթերը&lt;/b&gt;"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել սարքի &lt;b&gt;նկարները, երգերը, վիդեո և աուդիո ֆայլերը&lt;/b&gt;"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել սարքի &lt;b&gt;նկարները, երգերը, վիդեո, աուդիո և այլ ֆայլերը&lt;/b&gt;"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել այս սարքի երաժշտությունը և մյուս աուդիո ֆայլերը"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել այս սարքի լուսանկարներն ու տեսանյութերը"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել սարքում պահված լուսանկարները, մուլտիմեդիան և ֆայլերը"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել այս սարքի &lt;b&gt;լուսանկարները, տեսանյութերը, երաժշտությունը և աուդիո ֆայլերը&lt;/b&gt;"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել այս սարքի &lt;b&gt;նկարները, երգերը, տեսանյութերը, աուդիո ֆայլերը և մյուս ֆայլերը&lt;/b&gt;"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել այս սարքի երաժշտությունը և մյուս աուդիո ֆայլերը"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել այս սարքի լուսանկարներն ու տեսանյութերը"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին ձայնագրել"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Այս հավելվածը կկարողանա ձայնագրություններ անել միայն, երբ այն օգտագործելիս լինեք"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին ձայնագրություններ անել։"</string>
@@ -475,8 +472,7 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին ձեր կենսագործունեության տվյալները ստանալ սենսորներից"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Եթե ուզում եք, որ այս հավելվածին հասանելի լինեն մարմնի սենսորների տվյալները, նույնիսկ երբ չեք օգտվում հավելվածից, "<annotation id="link">"փոխեք կարգավորումները"</annotation>"։"</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Մարմնի սենսորների տվյալները հասանելի դարձնե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին, միայն երբ այն օգտագործվում է"</string>
-    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին ծանուցումներ ուղարկել ձեզ։"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին շարունակել ծանուցումներ ուղարկել ձեզ։"</string>
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին ծանուցումներ ուղարկել ձեզ"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Կառավարվող թույլտվություններ"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Հավելվածին հասանելի են ձեր տեղադրության մասին տվյալները"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Ձեր ՏՏ ադմինիստրատորը <xliff:g id="APP_NAME">%s</xliff:g> հավելվածին թույլատրել է օգտագործել ձեր տեղադրության մասին տվյալները։"</string>
@@ -523,4 +519,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Վերջերս օգտագործվել է <xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածի կողմից (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Անվտանգություն և գաղտնիություն"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Ստուգեք կարգավիճակը"</string>
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"Հաստատել"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"Հետ"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"Այլ ֆայլերի օգտագործումը նույնպես կթույլատրվի"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"Այլ ֆայլերի օգտագործումը նույնպես չի թույլատրվի"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"Այլ ֆայլերի օգտագործումը նույնպես կթույլատրվի"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"Այլ ֆայլերի օգտագործումը նույնպես չի թույլատրվի"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"Լուսանկարների և տեսանյութերի օգտագործումը նույնպես կթույլատրվի"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"Լուսանկարների և տեսանյութերի օգտագործումը նույնպես չի թույլատրվի"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"Երաժշտության և աուդիո ֆայլերի օգտագործումը նույնպես կթույլատրվի"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"Երաժշտության և աուդիո ֆայլերի օգտագործումը նույնպես չի թույլատրվի"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"Այս հավելվածը չի աջակցում Android-ի վերջին տարբերակը։ Եթե հավելվածն ունենա երաժշտության և աուդիո ֆայլերի օգտագործման թույլտվություն, նրան նաև հասանելի կլինեն լուսանկարները, տեսանյութերը և այլ ֆայլեր։"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"Այս հավելվածը չի աջակցում Android-ի վերջին տարբերակը։ Եթե հավելվածը չունենա երաժշտության և աուդիո ֆայլերի օգտագործման թույլտվություն, նրան նաև հասանելի չեն լինի լուսանկարները, տեսանյութերը և այլ ֆայլեր։"</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"Այս հավելվածը չի աջակցում Android-ի վերջին տարբերակը։ Եթե հավելվածն ունենա լուսանկարների և տեսանյութերի օգտագործման թույլտվություն, նրան նաև հասանելի կլինեն երաժշտությունը, աուդիոն և այլ ֆայլեր։"</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"Այս հավելվածը չի աջակցում Android-ի վերջին տարբերակը։ Եթե հավելվածը չունենա լուսանկարների և տեսանյութերի օգտագործման թույլտվություն, նրան նաև հասանելի չեն լինի երաժշտությունը, աուդիոն և այլ ֆայլեր։"</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"Այս հավելվածը չի աջակցում Android-ի վերջին տարբերակը։ Եթե հավելվածն ունենա երաժշտության և աուդիո ֆայլերի օգտագործման թույլտվություն, նրան նաև հասանելի կլինեն լուսանկարները և տեսանյութերը։"</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Այս հավելվածը չի աջակցում Android-ի վերջին տարբերակը։ Եթե հավելվածը չունենա երաժշտության և աուդիո ֆայլերի օգտագործման թույլտվություն, նրան նաև հասանելի չեն լինի լուսանկարները և տեսանյութերը։"</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Այս հավելվածը չի աջակցում Android-ի վերջին տարբերակը։ Եթե հավելվածն ունենա լուսանկարների և տեսանյութերի օգտագործման թույլտվություն, նրան նաև հասանելի կլինեն երաժշտությունը և աուդիո ֆայլերը։"</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Այս հավելվածը չի աջակցում Android-ի վերջին տարբերակը։ Եթե հավելվածը չունենա երաժշտության և աուդիո ֆայլերի օգտագործման թույլտվություն, նրան նաև հասանելի չեն լինի լուսանկարները և տեսանյութերը։"</string>
 </resources>
