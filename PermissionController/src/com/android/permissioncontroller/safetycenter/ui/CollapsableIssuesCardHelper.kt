@@ -183,9 +183,16 @@ class CollapsableIssuesCardHelper(
         dialogFragmentManager: FragmentManager,
         areDismissed: Boolean
     ): List<IssueCardPreference> =
-        this?.map { issue: SafetyCenterIssue ->
+        this?.mapIndexed { index: Int, issue: SafetyCenterIssue ->
             val resolvedActionId: ActionId? = resolvedIssues[issue.id]
             val resolvedTaskId = getLaunchTaskIdForIssue(issue, launchTaskId)
+            val positionInCardList =
+                when {
+                    !areDismissed && index in 0 until DEFAULT_NUMBER_SHOWN_ISSUES_COLLAPSED ->
+                        PositionInCardList.LIST_START_END
+                    index == this.size - 1 -> PositionInCardList.CARD_START_LIST_END
+                    else -> PositionInCardList.CARD_START_END
+                }
             IssueCardPreference(
                 context,
                 safetyCenterViewModel,
@@ -193,7 +200,8 @@ class CollapsableIssuesCardHelper(
                 resolvedActionId,
                 dialogFragmentManager,
                 resolvedTaskId,
-                areDismissed
+                areDismissed,
+                positionInCardList
             )
         }
             ?: emptyList()
@@ -303,12 +311,12 @@ class CollapsableIssuesCardHelper(
         previousMoreIssuesCardData: MoreIssuesCardData?,
         nextMoreIssuesCardData: MoreIssuesCardData
     ): MoreIssuesCardPreference {
-        val prefIconResourceId =
-            if (isQuickSettingsFragment) R.drawable.ic_chevron_right else R.drawable.ic_expand_more
+        val overrideChevronIconResId =
+            if (isQuickSettingsFragment) R.drawable.ic_chevron_right else null
 
         return MoreIssuesCardPreference(
             context,
-            prefIconResourceId,
+            overrideChevronIconResId,
             previousMoreIssuesCardData,
             nextMoreIssuesCardData,
             dismissedOnly,
