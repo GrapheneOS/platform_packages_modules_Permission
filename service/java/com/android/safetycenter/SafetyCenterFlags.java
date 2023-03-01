@@ -30,6 +30,7 @@ import android.util.Log;
 import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.build.SdkLevel;
+import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 
 import java.io.PrintWriter;
 import java.time.Duration;
@@ -112,7 +113,7 @@ public final class SafetyCenterFlags {
 
     private static final Duration NOTIFICATIONS_MIN_DELAY_DEFAULT_DURATION = Duration.ofDays(180);
 
-    private static final String ISSUE_CATEGORY_ALLOWLIST_DEFAULT = "";
+    private static String sIssueCategoryAllowlistDefault = "";
 
     private static final String REFRESH_SOURCES_TIMEOUT_DEFAULT =
             "100:15000,200:60000,300:30000,400:30000,500:30000,600:3600000";
@@ -124,11 +125,29 @@ public final class SafetyCenterFlags {
     private static final String RESURFACE_ISSUE_DELAYS_DEFAULT = "";
     private static final Duration RESURFACE_ISSUE_DELAYS_DEFAULT_DURATION = Duration.ofDays(180);
 
-    private static final String UNTRACKED_SOURCES_DEFAULT =
+    private static String sUntrackedSourcesDefault =
             "AndroidAccessibility,AndroidBackgroundLocation,"
                     + "AndroidNotificationListener,AndroidPermissionAutoRevoke";
 
-    private static final String BACKGROUND_REFRESH_DENY_DEFAULT = "";
+    private static String sBackgroundRefreshDenyDefault = "";
+
+    static void init(SafetyCenterResourcesContext resourceContext) {
+        String untrackedSourcesDefault =
+                resourceContext.getOptionalString("config_defaultUntrackedSources");
+        if (untrackedSourcesDefault != null) {
+            sUntrackedSourcesDefault = untrackedSourcesDefault;
+        }
+        String backgroundRefreshDenyDefault =
+                resourceContext.getOptionalString("config_defaultBackgroundRefreshDeny");
+        if (backgroundRefreshDenyDefault != null) {
+            sBackgroundRefreshDenyDefault = backgroundRefreshDenyDefault;
+        }
+        String issueCategoryAllowlistDefault =
+                resourceContext.getOptionalString("config_defaultIssueCategoryAllowlist");
+        if (issueCategoryAllowlistDefault != null) {
+            sIssueCategoryAllowlistDefault = issueCategoryAllowlistDefault;
+        }
+    }
 
     private static final Duration TEMP_HIDDEN_ISSUE_RESURFACE_DELAY_DEFAULT_DURATION =
             Duration.ofDays(2);
@@ -173,8 +192,12 @@ public final class SafetyCenterFlags {
         fout.println();
     }
 
-    private static void printFlag(PrintWriter pw, String key, Duration duration) {
-        printFlag(pw, key, duration.toMillis() + " (" + duration + ")");
+    private static void printFlag(PrintWriter pw, String key, @Nullable Duration duration) {
+        if (duration == null) {
+            printFlag(pw, key, "null");
+        } else {
+            printFlag(pw, key, duration.toMillis() + " (" + duration + ")");
+        }
     }
 
     private static void printFlag(PrintWriter pw, String key, Object value) {
@@ -291,7 +314,7 @@ public final class SafetyCenterFlags {
      * mid-rollout. Broadcasts are still sent to these sources.
      */
     static ArraySet<String> getUntrackedSourceIds() {
-        return getCommaSeparatedStrings(PROPERTY_UNTRACKED_SOURCES, UNTRACKED_SOURCES_DEFAULT);
+        return getCommaSeparatedStrings(PROPERTY_UNTRACKED_SOURCES, sUntrackedSourcesDefault);
     }
 
     /**
@@ -300,7 +323,7 @@ public final class SafetyCenterFlags {
      */
     static ArraySet<String> getBackgroundRefreshDeniedSourceIds() {
         return getCommaSeparatedStrings(
-                PROPERTY_BACKGROUND_REFRESH_DENIED_SOURCES, BACKGROUND_REFRESH_DENY_DEFAULT);
+                PROPERTY_BACKGROUND_REFRESH_DENIED_SOURCES, sBackgroundRefreshDenyDefault);
     }
 
     /**
@@ -420,7 +443,7 @@ public final class SafetyCenterFlags {
      * of IDs of safety sources that are allowed to send issues with this category.
      */
     private static String getIssueCategoryAllowlists() {
-        return getString(PROPERTY_ISSUE_CATEGORY_ALLOWLISTS, ISSUE_CATEGORY_ALLOWLIST_DEFAULT);
+        return getString(PROPERTY_ISSUE_CATEGORY_ALLOWLISTS, sIssueCategoryAllowlistDefault);
     }
 
     private static String getAdditionalAllowedPackageCertsString() {

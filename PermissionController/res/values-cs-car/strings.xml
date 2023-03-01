@@ -17,5 +17,5 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="unused_apps_page_summary" msgid="7505839764289846511">"Když aplikaci několik měsíců nepoužíváte:\n\n• Kvůli ochraně dat jí jsou odebrána oprávnění.\n• Z důvodu uvolnění místa jsou odstraněny její dočasné soubory."</string>
+    <string name="unused_apps_page_summary" msgid="7505839764289846511">"Když aplikaci několik měsíců nepoužíváte:\n\n• Oprávnění jsou odstraněna kvůli ochraně dat\n• Dočasné soubory jsou odstraněny kvůli uvolnění místa"</string>
 </resources>

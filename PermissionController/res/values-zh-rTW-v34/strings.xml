@@ -20,7 +20,6 @@
     <string name="security_privacy_brand_name" msgid="7303621734258440812">"安全性與隱私權"</string>
     <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"控制選項"</string>
     <string name="privacy_subpage_data_header" msgid="5049237788244591274">"資料"</string>
-    <!-- no translation found for health_connect_title (2132233890867430855) -->
-    <skip />
+    <string name="health_connect_title" msgid="2132233890867430855">"Health Connect"</string>
     <string name="health_connect_summary" msgid="8156987676957707740">"應用程式權限和資料管理"</string>
 </resources>

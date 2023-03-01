@@ -4,6 +4,8 @@ import android.content.Context
 import android.graphics.drawable.Animatable2
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.Drawable
+import android.graphics.drawable.GradientDrawable
+import android.graphics.drawable.RippleDrawable
 import android.os.Build
 import android.safetycenter.SafetyCenterIssue
 import android.text.TextUtils
@@ -53,12 +55,18 @@ constructor(
         previousData: MoreIssuesCardData?,
         nextData: MoreIssuesCardData,
         title: String,
+        @DrawableRes overrideChevronIconResId: Int?,
         onClick: () -> Unit
     ) {
         titleView.text = title
         updateStatusIcon(previousData?.severityLevel, nextData.severityLevel)
-        updateExpandCollapseButton(previousData?.isExpanded, nextData.isExpanded)
+        updateExpandCollapseButton(
+            previousData?.isExpanded,
+            nextData.isExpanded,
+            overrideChevronIconResId
+        )
         updateIssueCount(previousData?.hiddenIssueCount, nextData.hiddenIssueCount)
+        updateBackground(nextData.isExpanded)
         setOnClickListener { onClick() }
 
         val expansionString =
@@ -83,11 +91,18 @@ constructor(
         expandCollapseLayout.isVisible = false
         setOnClickListener(null)
         isClickable = false
+        updateBackground(true)
     }
 
-    private fun updateExpandCollapseButton(wasExpanded: Boolean?, isExpanded: Boolean) {
+    private fun updateExpandCollapseButton(
+        wasExpanded: Boolean?,
+        isExpanded: Boolean,
+        @DrawableRes overrideChevronIconResId: Int?
+    ) {
         expandCollapseLayout.isVisible = true
-        if (wasExpanded != null && wasExpanded != isExpanded) {
+        if (overrideChevronIconResId != null) {
+            expandCollapseIcon.setImageResource(overrideChevronIconResId)
+        } else if (wasExpanded != null && wasExpanded != isExpanded) {
             if (isExpanded) {
                 expandCollapseIcon.animate(
                     R.drawable.more_issues_expand_anim,
@@ -153,6 +168,38 @@ constructor(
             moreIssuesCardAnimator.animateChangeText(counterView, newText)
         } else {
             counterView.text = newText
+        }
+    }
+
+    private fun updateBackground(isExpanded: Boolean) {
+        // changing radius of existing background instead of switching backgrounds
+        // with PositionInCardList because of two reasons:
+        // 1) we will need to animate rounding the corners in TODO: b/270036109
+        // 2) this particular header has smaller radii than values from PositionInCardList
+        (background?.mutate() as? RippleDrawable)?.let { ripple ->
+            val topRadius = context.resources.getDimension(R.dimen.sc_card_corner_radius_medium)
+            val bottomRadius =
+                if (isExpanded) {
+                    context.resources.getDimension(R.dimen.sc_card_corner_radius_xsmall)
+                } else {
+                    topRadius
+                }
+            val cornerRadii =
+                floatArrayOf(
+                    topRadius,
+                    topRadius,
+                    topRadius,
+                    topRadius,
+                    bottomRadius,
+                    bottomRadius,
+                    bottomRadius,
+                    bottomRadius
+                )
+            for (index in 0 until ripple.numberOfLayers) {
+                (ripple.getDrawable(index).mutate() as? GradientDrawable)?.let {
+                    it.cornerRadii = cornerRadii
+                }
+            }
         }
     }
 

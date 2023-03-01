@@ -53,11 +53,11 @@ class PrivacyControlsViewModel(private val app: Application) : AndroidViewModel(
     private val CONFIG_CAMERA_TOGGLE_ENABLED = app.getString(R.string.camera_toggle_enable_config)
 
     enum class Pref(val key: String, @StringRes val titleResId: Int) {
-        MIC("privacy_mic_toggle", R.string.camera_toggle_title),
-        CAMERA("privacy_camera_toggle", R.string.mic_toggle_title),
-        LOCATION("privacy_location_access", R.string.show_clip_access_notification_title),
-        CLIPBOARD("show_clip_access_notification", R.string.show_password_title),
-        SHOW_PASSWORD("show_password", R.string.location_settings);
+        MIC("privacy_mic_toggle", R.string.mic_toggle_title),
+        CAMERA("privacy_camera_toggle", R.string.camera_toggle_title),
+        LOCATION("privacy_location_access", R.string.location_settings),
+        CLIPBOARD("show_clip_access_notification", R.string.show_clip_access_notification_title),
+        SHOW_PASSWORD("show_password", R.string.show_password_title);
 
         companion object {
             @JvmStatic fun findByKey(inputKey: String) = values().find { it.key == inputKey }
@@ -107,6 +107,7 @@ class PrivacyControlsViewModel(private val app: Application) : AndroidViewModel(
                 sensorPrivacyManager.removeSensorPrivacyListener(this)
             }
 
+            @Suppress("OVERRIDE_DEPRECATION")
             override fun onSensorPrivacyChanged(sensor: Int, enabled: Boolean) {
                 update()
             }

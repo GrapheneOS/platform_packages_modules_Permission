@@ -592,26 +592,21 @@
     <string name="show_password_title" msgid="2877269286984684659">"Hiển thị mật khẩu"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Hiển thị các ký tự ngắn gọn khi bạn nhập"</string>
     <string name="permission_rationale_message_location" msgid="5559450538205092588">"Nhà phát triển nêu rõ rằng ứng dụng này có thể chia sẻ dữ liệu vị trí với bên thứ ba"</string>
-    <!-- no translation found for permission_rationale_location_title (2404797182678793506) -->
-    <skip />
+    <string name="permission_rationale_location_title" msgid="2404797182678793506">"Chia sẻ dữ liệu và thông tin vị trí"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Nguồn cung cấp thông tin về cách thức chia sẻ dữ liệu"</string>
-    <!-- no translation found for permission_rationale_data_sharing_source_message (2229631836873747309) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"Nhà phát triển đã cung cấp thông tin cho "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" về cách thức ứng dụng này chia sẻ dữ liệu. Họ có thể cập nhật thông tin này theo thời gian."</string>
     <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"Ứng dụng này có thể chia sẻ dữ liệu vị trí cho:"</string>
-    <!-- no translation found for permission_rationale_purpose_message (2136810388727916997) -->
-    <skip />
+    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Nhiều cách thức chia sẻ dữ liệu"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Cách thức xử lý dữ liệu có thể thay đổi tuỳ theo phiên bản ứng dụng, cách sử dụng, khu vực và độ tuổi của bạn. "<annotation id="link">"Tìm hiểu thêm về chế độ chia sẻ dữ liệu"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Dữ liệu vị trí của bạn"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Thay đổi quyền truy cập của ứng dụng này trong "<annotation id="link">"chế độ cài đặt quyền riêng tư"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"Chức năng của ứng dụng"</string>
-    <!-- no translation found for permission_rationale_purpose_analytics (2070800501189620712) -->
-    <skip />
+    <string name="permission_rationale_purpose_analytics" msgid="2070800501189620712">"Số liệu phân tích"</string>
     <string name="permission_rationale_purpose_developer_communications" msgid="6453047018892062374">"Thông tin liên lạc của nhà phát triển"</string>
     <string name="permission_rationale_purpose_advertising" msgid="7156966429245180236">"Quảng cáo hoặc tiếp thị"</string>
     <string name="permission_rationale_purpose_fraud_prevention_security" msgid="4262104770357031902">"Chống lừa đảo, bảo mật và tuân thủ quy định"</string>
-    <!-- no translation found for permission_rationale_purpose_personalization (1589973273682238708) -->
-    <skip />
+    <string name="permission_rationale_purpose_personalization" msgid="1589973273682238708">"Cá nhân hoá"</string>
     <string name="permission_rationale_purpose_account_management" msgid="2985772421946688879">"Quản lý tài khoản"</string>
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"An toàn dữ liệu"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Dữ liệu vị trí có thể được chia sẻ"</string>
@@ -619,13 +614,10 @@
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Nội dung cập nhật về cách thức chia sẻ dữ liệu vị trí"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Xem xét những ứng dụng đã thay đổi cách thức có thể được dùng để chia sẻ dữ liệu vị trí của bạn"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Những ứng dụng này đã thay đổi cách thức có thể được dùng để chia sẻ dữ liệu vị trí của bạn. Có thể những ứng dụng này trước đây chưa từng chia sẻ dữ liệu vị trí, nhưng bây giờ mới chia sẻ dữ liệu đó nhằm mục đích quảng cáo hoặc tiếp thị."</string>
-    <!-- no translation found for data_sharing_updates_footer_message (1582711655172892107) -->
-    <skip />
+    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Nhà phát triển của những ứng dụng này đã cung cấp thông tin cho cửa hàng ứng dụng về cách thức ứng dụng của họ chia sẻ dữ liệu. Họ có thể cập nhật thông tin này theo thời gian.\n\nCách thức chia sẻ dữ liệu có thể thay đổi tuỳ theo phiên bản ứng dụng, cách sử dụng, khu vực và độ tuổi của bạn."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"Tìm hiểu về chế độ chia sẻ dữ liệu"</string>
-    <!-- no translation found for shares_location_with_third_parties (2278051743742057767) -->
-    <skip />
-    <!-- no translation found for shares_location_with_third_parties_for_advertising (1918588064014480513) -->
-    <skip />
+    <string name="shares_location_with_third_parties" msgid="2278051743742057767">"Dữ liệu vị trí của bạn nay được chia sẻ với bên thứ ba"</string>
+    <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"Dữ liệu vị trí của bạn giờ đây được chia sẻ với các bên thứ ba để quảng cáo hoặc tiếp thị"</string>
     <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{Cập nhật trong ngày vừa qua}=1{Cập nhật trong ngày vừa qua}other{Cập nhật trong # ngày vừa qua}}"</string>
     <string name="no_updates_at_this_time" msgid="9031085635689982935">"Hiện không có nội dung cập nhật nào"</string>
     <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"Nội dung cập nhật về cách thức chia sẻ dữ liệu"</string>

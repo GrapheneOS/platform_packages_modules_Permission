@@ -603,7 +603,7 @@
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Wijzig de toegang van deze app in de "<annotation id="link">"privacyinstellingen"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"App-functionaliteit"</string>
     <string name="permission_rationale_purpose_analytics" msgid="2070800501189620712">"Analytics"</string>
-    <string name="permission_rationale_purpose_developer_communications" msgid="6453047018892062374">"Communicaties van de ontwikkelaar"</string>
+    <string name="permission_rationale_purpose_developer_communications" msgid="6453047018892062374">"Berichten van de ontwikkelaar"</string>
     <string name="permission_rationale_purpose_advertising" msgid="7156966429245180236">"Advertenties of marketing"</string>
     <string name="permission_rationale_purpose_fraud_prevention_security" msgid="4262104770357031902">"Fraudepreventie, beveiliging en naleving"</string>
     <string name="permission_rationale_purpose_personalization" msgid="1589973273682238708">"Personalisatie"</string>

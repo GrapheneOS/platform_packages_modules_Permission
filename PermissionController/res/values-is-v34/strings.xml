@@ -20,7 +20,6 @@
     <string name="security_privacy_brand_name" msgid="7303621734258440812">"Öryggi og persónuvernd"</string>
     <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"Stýringar"</string>
     <string name="privacy_subpage_data_header" msgid="5049237788244591274">"Gögn"</string>
-    <!-- no translation found for health_connect_title (2132233890867430855) -->
-    <skip />
+    <string name="health_connect_title" msgid="2132233890867430855">"Heilsutenging"</string>
     <string name="health_connect_summary" msgid="8156987676957707740">"Forritsheimildir og gagnaumsjón"</string>
 </resources>
