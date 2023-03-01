@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+@file:Suppress("DEPRECATION")
 package com.android.permissioncontroller.permission.ui.model
 
 import android.Manifest
@@ -137,14 +137,6 @@ class ReviewOngoingUsageViewModel(
             if (permGroupUsages.value == null) {
                 value = null
                 return
-            }
-
-            // Update set of permGroupUiInfos if needed
-            val requiredUiInfos = permGroupUsages.value!!.flatMap {
-                (permissionGroupName, accesses) ->
-                accesses.map { access ->
-                    Triple(access.packageName, permissionGroupName, access.user)
-                }
             }
 
             // Filter out system package
@@ -559,7 +551,7 @@ class ReviewOngoingUsageViewModelFactory(
     owner: SavedStateRegistryOwner,
     defaultArgs: Bundle
 ) : AbstractSavedStateViewModelFactory(owner, defaultArgs) {
-    override fun <T : ViewModel?> create(p0: String, p1: Class<T>, state: SavedStateHandle): T {
+    override fun <T : ViewModel> create(p0: String, p1: Class<T>, state: SavedStateHandle): T {
         state.set(FIRST_OPENED_KEY, state.get<Long>(FIRST_OPENED_KEY)
             ?: System.currentTimeMillis())
         @Suppress("UNCHECKED_CAST")

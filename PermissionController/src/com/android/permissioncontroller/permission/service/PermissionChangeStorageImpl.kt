@@ -25,6 +25,7 @@ import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.hibernation.getUnusedThresholdMs
 import com.android.permissioncontroller.permission.data.PermissionChange
 import com.android.permissioncontroller.permission.utils.Utils
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -90,6 +91,7 @@ class PermissionChangeStorageImpl(
             return PermissionChangeStorageImpl(PermissionControllerApplication.get())
         }
 
+        @OptIn(DelicateCoroutinesApi::class)
         fun recordPermissionChange(packageName: String) {
             GlobalScope.launch(Dispatchers.IO) {
                 getInstance().storeEvent(PermissionChange(packageName, System.currentTimeMillis()))
@@ -162,7 +164,7 @@ class PermissionChangeStorageImpl(
                 ?: throw IllegalArgumentException(
                     "Could not parse date $changeDate on package $packageName")
             if (truncateToDay) {
-                changeTime = dateFormat.parse(dateFormat.format(Date(changeTime))).time
+                changeTime = dateFormat.parse(dateFormat.format(Date(changeTime)))!!.time
             }
             change = PermissionChange(packageName, changeTime)
         } catch (e: XmlPullParserException) {

@@ -347,7 +347,7 @@ class PermissionUsageViewModel(
         owner: SavedStateRegistryOwner,
         defaultArgs: Bundle
     ) : AbstractSavedStateViewModelFactory(owner, defaultArgs) {
-        override fun <T : ViewModel?> create(
+        override fun <T : ViewModel> create(
             key: String,
             modelClass: Class<T>,
             handle: SavedStateHandle
