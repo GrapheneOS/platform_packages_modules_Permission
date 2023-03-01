@@ -20,7 +20,6 @@
     <string name="security_privacy_brand_name" msgid="7303621734258440812">"Segurança e privacidade"</string>
     <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"Controlos"</string>
     <string name="privacy_subpage_data_header" msgid="5049237788244591274">"Dados"</string>
-    <!-- no translation found for health_connect_title (2132233890867430855) -->
-    <skip />
+    <string name="health_connect_title" msgid="2132233890867430855">"Saúde Connect"</string>
     <string name="health_connect_summary" msgid="8156987676957707740">"Autorizações da app e gestão de dados"</string>
 </resources>

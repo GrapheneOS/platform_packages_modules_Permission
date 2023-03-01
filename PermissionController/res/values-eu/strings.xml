@@ -592,12 +592,10 @@
     <string name="show_password_title" msgid="2877269286984684659">"Erakutsi pasahitzak"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Idatzi ahala, erakutsi karaktereak laburki"</string>
     <string name="permission_rationale_message_location" msgid="5559450538205092588">"Agian hirugarrenekin kokapen-datuak partekatuko dituela adierazi du aplikazioaren garatzaileak"</string>
-    <!-- no translation found for permission_rationale_location_title (2404797182678793506) -->
-    <skip />
+    <string name="permission_rationale_location_title" msgid="2404797182678793506">"Datuak partekatzeko moduak eta kokapena"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Nondik dator datuak partekatzeko moduei buruzko informazioa?"</string>
-    <!-- no translation found for permission_rationale_data_sharing_source_message (2229631836873747309) -->
-    <skip />
-    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"Baliteke aplikazioak hauetarako partekatzea kokapen-datuak:"</string>
+    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"Aplikazioak datuak partekatzeko dituen moduei buruzko informazioa eman du "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" dendan garatzaileak. Baliteke denboran zehar informazio hori eguneratzea."</string>
+    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"Baliteke hauetarako partekatzea kokapen-datuak:"</string>
     <!-- no translation found for permission_rationale_purpose_message (2136810388727916997) -->
     <skip />
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Datuak partekatzeko moduak hauen araberakoak dira:"</string>
@@ -605,13 +603,11 @@
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Kokapen-datuak"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Aldatu aplikazioaren sarbidea "<annotation id="link">"pribatutasun-ezarpenetan"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"aplikazioaren funtzioak"</string>
-    <!-- no translation found for permission_rationale_purpose_analytics (2070800501189620712) -->
-    <skip />
+    <string name="permission_rationale_purpose_analytics" msgid="2070800501189620712">"estatistikak"</string>
     <string name="permission_rationale_purpose_developer_communications" msgid="6453047018892062374">"garatzaileen komunikazioak"</string>
     <string name="permission_rationale_purpose_advertising" msgid="7156966429245180236">"publizitatea edo marketina"</string>
-    <string name="permission_rationale_purpose_fraud_prevention_security" msgid="4262104770357031902">"iruzur-saihestea, segurtasuna eta arau-gordetzea"</string>
-    <!-- no translation found for permission_rationale_purpose_personalization (1589973273682238708) -->
-    <skip />
+    <string name="permission_rationale_purpose_fraud_prevention_security" msgid="4262104770357031902">"iruzurra saihestea, segurtasuna eta arau-gordetzea"</string>
+    <string name="permission_rationale_purpose_personalization" msgid="1589973273682238708">"pertsonalizazioa"</string>
     <string name="permission_rationale_purpose_account_management" msgid="2985772421946688879">"kontuaren kudeaketa"</string>
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Datuen babesa"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Baliteke kokapen-datuak partekatzea"</string>
@@ -619,14 +615,11 @@
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Kokapen-datuak partekatzeko jardunbideen inguruko berritasunak"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Berrikusi kokapen-datuak partekatzeko modua aldatu duten aplikazioak"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Kokapen-datuak partekatzeko modua aldatu dute aplikazio hauek. Agian ez zuten daturik partekatzen lehen, edo baliteke orain publizitate- edo marketin-helburuetarako partekatzea."</string>
-    <!-- no translation found for data_sharing_updates_footer_message (1582711655172892107) -->
-    <skip />
-    <string name="learn_about_data_sharing" msgid="4200480587079488045">"Lortu datuak partekatzeko jardunbideei buruzko informazio gehiago"</string>
-    <!-- no translation found for shares_location_with_third_parties (2278051743742057767) -->
-    <skip />
-    <!-- no translation found for shares_location_with_third_parties_for_advertising (1918588064014480513) -->
-    <skip />
-    <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{Atzo jaso ziren berritasunak}=1{Atzo jaso ziren berritasunak}other{Azken # egunetan eguneratuta}}"</string>
+    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Datuak partekatzeko jardunbideei buruzko informazioa eman dute aplikazio-denda batean aplikazio hauen garatzaileek. Baliteke denboran zehar informazio hori eguneratzea.\n\nLitekeena da datuak partekatzeko jardunbideak aplikazioaren bertsioaren, erabileraren, lurraldearen eta adinaren araberakoak izatea."</string>
+    <string name="learn_about_data_sharing" msgid="4200480587079488045">"Datuak partekatzeko jardunbideei buruzko informazio gehiago"</string>
+    <string name="shares_location_with_third_parties" msgid="2278051743742057767">"Orain, kokapen-datuak hirugarrenekin partekatzen dira"</string>
+    <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"Orain, kokapen-datuak hirugarrenekin partekatzen dira publizitate- edo marketin-helburuetarako"</string>
+    <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{Atzo jaso ziren berritasunak}=1{Atzo jaso ziren berritasunak}other{Azken # egunetan jaso ziren berritasunak}}"</string>
     <string name="no_updates_at_this_time" msgid="9031085635689982935">"Une honetan, ez dago berritasunik"</string>
     <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"Datuak partekatzeko moduen inguruko berritasunak"</string>
     <string name="safety_label_changes_notification_desc" msgid="7808764283266234675">"Kokapen-datuak partekatzeko modua aldatu dute aplikazio batzuek"</string>
