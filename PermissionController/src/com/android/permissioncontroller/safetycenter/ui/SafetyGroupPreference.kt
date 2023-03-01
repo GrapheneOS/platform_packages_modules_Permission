@@ -59,12 +59,12 @@ class SafetyGroupPreference(
             onCollapsedListener)
     }
 
-    override fun isSameItem(other: Preference): Boolean =
-        other is SafetyGroupPreference && TextUtils.equals(group.id, other.group.id)
+    override fun isSameItem(preference: Preference): Boolean =
+        preference is SafetyGroupPreference && TextUtils.equals(group.id, preference.group.id)
 
-    override fun hasSameContents(other: Preference): Boolean =
-        other is SafetyGroupPreference &&
-            group == other.group &&
-            isFirstCard == other.isFirstCard &&
-            isLastCard == other.isLastCard
+    override fun hasSameContents(preference: Preference): Boolean =
+        preference is SafetyGroupPreference &&
+            group == preference.group &&
+            isFirstCard == preference.isFirstCard &&
+            isLastCard == preference.isLastCard
 }

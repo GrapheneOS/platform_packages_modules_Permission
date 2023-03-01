@@ -116,6 +116,7 @@ java_sdk_library {
     exclude_kotlinc_generated_files: true,
     jarjar_rules: "jarjar-rules.txt",
     kotlincflags: [
+        "-Werror",
         "-Xjvm-default=all",
         "-Xno-call-assertions",
         "-Xno-param-assertions",

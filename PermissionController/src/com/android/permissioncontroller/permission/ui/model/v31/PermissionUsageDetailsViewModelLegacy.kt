@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@file:Suppress("DEPRECATION")
 
 package com.android.permissioncontroller.permission.ui.model.v31
 
@@ -141,7 +142,7 @@ class PermissionUsageDetailsViewModelLegacy(
         val proxyLabel = getProxyPackageLabel(discreteAccessClusterData)
         val subattributionLabel = getSubattributionLabel(discreteAccessClusterData)
         val showingSubattribution =
-            subattributionLabel != null && subattributionLabel!!.isNotEmpty()
+            subattributionLabel != null && subattributionLabel.isNotEmpty()
         val summary =
             buildUsageSummary(durationSummaryLabel, proxyLabel, subattributionLabel, context)
 
@@ -376,7 +377,7 @@ class PermissionUsageDetailsViewModelLegacy(
                 getPackageLabel(
                     PermissionControllerApplication.get(),
                     it.proxy!!.packageName!!,
-                    UserHandle.getUserHandleForUid(it.proxy!!.uid))
+                    UserHandle.getUserHandleForUid(it.proxy.uid))
             }
 
     /** Returns the attribution label for the permission access, if any. */
