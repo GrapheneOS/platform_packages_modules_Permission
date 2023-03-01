@@ -32,7 +32,7 @@
     <string name="privacy_controls_summary" msgid="2402066941190435424">"کنترل دسترسی دستگاه به میکروفون، دوربین، و غیره"</string>
     <string name="advanced_title" msgid="8745436380690561172">"تنظیمات بیشتر"</string>
     <string name="advanced_security_title" msgid="1126833338772188155">"تنظیمات امنیتی بیشتر"</string>
-    <string name="advanced_security_summary" msgid="6172253327022425123">"رمزگذاری، اطلاعات کاربری، و غیره"</string>
+    <string name="advanced_security_summary" msgid="6172253327022425123">"رمزگذاری، اطلاعات اعتباری، و غیره"</string>
     <string name="advanced_privacy_title" msgid="1117725225706176643">"تنظیمات حریم خصوصی بیشتر"</string>
     <string name="advanced_privacy_summary" msgid="2281203390575069543">"تکمیل خودکار، کنترل‌های فعالیت، و غیره"</string>
 </resources>
