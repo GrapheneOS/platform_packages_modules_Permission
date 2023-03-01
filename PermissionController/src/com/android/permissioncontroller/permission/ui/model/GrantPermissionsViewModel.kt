@@ -82,19 +82,20 @@ import com.android.permissioncontroller.permission.service.PermissionChangeStora
 import com.android.permissioncontroller.permission.service.v33.PermissionDecisionStorageImpl
 import com.android.permissioncontroller.permission.ui.AutoGrantPermissionsNotifier
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_ALL_PHOTOS_BUTTON
+import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_ALL_BUTTON
+import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_ALL_SINGLETON_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_FOREGROUND_BUTTON
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_MORE_SELECTED_PHOTOS_BUTTON
+import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_MORE_SELECTED_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_ONE_TIME_BUTTON
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_SELECTED_PHOTOS_BUTTON
+import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_SELECTED_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.COARSE_RADIO_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DENY_AND_DONT_ASK_AGAIN_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DENY_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DIALOG_WITH_BOTH_LOCATIONS
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DIALOG_WITH_COARSE_LOCATION_ONLY
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DIALOG_WITH_FINE_LOCATION_ONLY
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DONT_ALLOW_MORE_SELECTED_PHOTOS_BUTTON
+import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DONT_ALLOW_MORE_SELECTED_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.FINE_RADIO_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.INTENT_PHOTOS_SELECTED
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.LINK_TO_SETTINGS
@@ -108,7 +109,7 @@ import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.N
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.CANCELED
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.DENIED
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.DENIED_DO_NOT_ASK_AGAIN
-import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.DENIED_MORE_PHOTOS
+import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.DENIED_MORE
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.GRANTED_ALWAYS
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.GRANTED_FOREGROUND_ONLY
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.GRANTED_ONE_TIME
@@ -380,23 +381,23 @@ class GrantPermissionsViewModel(
                         groupState.affectedPermissions == listOf(READ_MEDIA_VISUAL_USER_SELECTED)) {
                         requestInfos.add(RequestInfo(groupInfo, openPhotoPicker = true))
                         continue
-                    } else {
+                    } else if (isVisualUserSelectedOnlyGranted(groupState.group)) {
+                        // More photos dialog
+                        message = RequestMessage.MORE_PHOTOS_MESSAGE
                         buttonVisibilities[ALLOW_BUTTON] = false
-                        buttonVisibilities[ALLOW_ALL_PHOTOS_BUTTON] = true
-                        if (isVisualUserSelectedOnlyGranted(groupState.group)) {
-                            // More photos dialog
-                            message = RequestMessage.MORE_PHOTOS_MESSAGE
-                            buttonVisibilities[ALLOW_SELECTED_PHOTOS_BUTTON] = false
-                            buttonVisibilities[ALLOW_MORE_SELECTED_PHOTOS_BUTTON] = true
-                            buttonVisibilities[DONT_ALLOW_MORE_SELECTED_PHOTOS_BUTTON] = true
-                            buttonVisibilities[DENY_AND_DONT_ASK_AGAIN_BUTTON] = false
-                            buttonVisibilities[DENY_BUTTON] = false
-                        } else {
-                            // First time dialog
-                            buttonVisibilities[ALLOW_SELECTED_PHOTOS_BUTTON] = true
-                            buttonVisibilities[DENY_AND_DONT_ASK_AGAIN_BUTTON] = isFgUserSet
-                            buttonVisibilities[DENY_BUTTON] = !isFgUserSet
-                        }
+                        buttonVisibilities[ALLOW_SELECTED_BUTTON] = false
+                        buttonVisibilities[DENY_AND_DONT_ASK_AGAIN_BUTTON] = false
+                        buttonVisibilities[DENY_BUTTON] = false
+                        buttonVisibilities[ALLOW_MORE_SELECTED_BUTTON] = true
+                        buttonVisibilities[DONT_ALLOW_MORE_SELECTED_BUTTON] = true
+                        buttonVisibilities[ALLOW_ALL_SINGLETON_BUTTON] = true
+                    } else {
+                        // Standard photos dialog
+                        buttonVisibilities[ALLOW_BUTTON] = false
+                        buttonVisibilities[ALLOW_SELECTED_BUTTON] = true
+                        buttonVisibilities[ALLOW_ALL_BUTTON] = true
+                        buttonVisibilities[DENY_AND_DONT_ASK_AGAIN_BUTTON] = isFgUserSet
+                        buttonVisibilities[DENY_BUTTON] = !isFgUserSet
                     }
                 } else if (groupState.group.packageInfo.targetSdkVersion >=
                         minSdkForOrderedSplitPermissions) {
@@ -1008,7 +1009,7 @@ class GrantPermissionsViewModel(
                         doNotAskAgain = false)
                 }
             }
-            GRANTED_USER_SELECTED, DENIED_MORE_PHOTOS -> {
+            GRANTED_USER_SELECTED, DENIED_MORE -> {
                 if (foregroundGroupState != null) {
                     grantUserSelectedVisualGroupPermissions(foregroundGroupState)
                 }
