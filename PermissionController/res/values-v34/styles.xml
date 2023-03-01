@@ -342,6 +342,20 @@
         <item name="android:lineHeight">18sp</item>
     </style>
 
+    <style name="SafetyCenterIllustration">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:importantForAccessibility">noHideDescendants</item>
+        <item name="android:paddingHorizontal">@dimen/sc_spacing_large</item>
+    </style>
+
+    <style name="SafetyCenterIllustrationView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:adjustViewBounds">true</item>
+    </style>
+
     <!-- END SAFETY CENTER SUBPAGE -->
 
 </resources>
