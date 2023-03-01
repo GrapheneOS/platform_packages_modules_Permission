@@ -40,8 +40,8 @@ object SafetyCenterActivityLauncher {
      * Launches the SafetyCenter activity and exits it once [block] completes.
      *
      * @param withReceiverPermission whether we should hold the [SEND_SAFETY_CENTER_UPDATE]
-     * permission while the activity is on the screen (e.g. to ensure the CTS package can have its
-     * receiver called during refresh/rescan)
+     *   permission while the activity is on the screen (e.g. to ensure the CTS package can have its
+     *   receiver called during refresh/rescan)
      */
     fun Context.launchSafetyCenterActivity(
         intentExtras: Bundle? = null,
