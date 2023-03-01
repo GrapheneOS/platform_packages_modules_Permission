@@ -515,7 +515,9 @@ class SafetyCenterActivityTest {
         context.launchSafetyCenterActivity {
             waitDisplayed(
                 By.text(context.getString(safetyCenterTestConfigs.staticSource1.titleResId))
-            ) { it.click() }
+            ) {
+                it.click()
+            }
             waitButtonDisplayed("Exit test activity") { it.click() }
             waitAllTextDisplayed(
                 context.getString(safetyCenterTestConfigs.staticSource1.titleResId)
@@ -1237,7 +1239,9 @@ class SafetyCenterActivityTest {
         context.launchSafetyCenterActivity {
             waitDisplayed(
                 By.text(context.getString(safetyCenterTestConfigs.dynamicSourceGroup1.titleResId))
-            ) { it.click() }
+            ) {
+                it.click()
+            }
 
             waitAllTextNotDisplayed(
                 context.getString(safetyCenterTestConfigs.dynamicSourceGroup1.summaryResId)
@@ -1305,11 +1309,15 @@ class SafetyCenterActivityTest {
         context.launchSafetyCenterActivity {
             waitDisplayed(
                 By.text(context.getString(safetyCenterTestConfigs.dynamicSourceGroup1.titleResId))
-            ) { it.click() }
+            ) {
+                it.click()
+            }
 
             waitDisplayed(
                 By.text(context.getString(safetyCenterTestConfigs.dynamicSourceGroup1.titleResId))
-            ) { it.click() }
+            ) {
+                it.click()
+            }
 
             waitAllTextDisplayed(
                 context.getString(safetyCenterTestConfigs.dynamicSourceGroup1.titleResId)
@@ -1325,7 +1333,9 @@ class SafetyCenterActivityTest {
         context.launchSafetyCenterActivity {
             waitDisplayed(
                 By.text(context.getString(safetyCenterTestConfigs.dynamicSourceGroup1.titleResId))
-            ) { it.click() }
+            ) {
+                it.click()
+            }
 
             getUiDevice().rotate()
 
@@ -1394,7 +1404,9 @@ class SafetyCenterActivityTest {
         context.launchSafetyCenterActivity {
             waitDisplayed(
                 By.text(context.getString(safetyCenterTestConfigs.dynamicSourceGroup1.titleResId))
-            ) { it.click() }
+            ) {
+                it.click()
+            }
 
             waitAllTextNotDisplayed(
                 context.getString(safetyCenterTestConfigs.dynamicSourceGroup1.summaryResId)

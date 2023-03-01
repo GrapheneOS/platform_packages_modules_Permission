@@ -35,10 +35,10 @@ import com.google.common.testing.EquivalenceTester
  * This can be disabled by setting [ignoreToString] to `true`.
  *
  * @param parcelRoundTripEqualsEquivalence optionally provide an equivalence that also checks that
- * the [Parcelable] implementation is consistent with equality groups by recreating equal items from
- * their [Parcelable] implementation
+ *   the [Parcelable] implementation is consistent with equality groups by recreating equal items
+ *   from their [Parcelable] implementation
  * @param createCopy optionally provide a custom method to create an equal copy that will be applied
- * to all the items in provided in an equality group
+ *   to all the items in provided in an equality group
  */
 class EqualsHashCodeToStringTester<T>
 private constructor(
