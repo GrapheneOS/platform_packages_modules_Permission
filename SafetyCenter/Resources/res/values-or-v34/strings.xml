@@ -17,25 +17,15 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- no translation found for health_connect_title (8318152190040327804) -->
-    <skip />
-    <!-- no translation found for health_connect_search_terms (4998970586245680829) -->
-    <skip />
-    <!-- no translation found for app_data_sharing_updates_title (7428862330643262588) -->
-    <skip />
-    <!-- no translation found for app_data_sharing_updates_search_terms (8414777373734245398) -->
-    <skip />
-    <!-- no translation found for ads_privacy_title (538822387058714869) -->
-    <skip />
-    <!-- no translation found for ads_privacy_summary (4977699525670966049) -->
-    <skip />
-    <!-- no translation found for ads_privacy_search_terms (8008413316055240046) -->
-    <skip />
-    <!-- no translation found for biometrics_title_for_work (1842284049407771568) -->
-    <skip />
-    <!-- no translation found for more_settings_title (663808090772098924) -->
-    <skip />
-    <!-- no translation found for more_settings_summary (3942352615407872716) -->
-    <skip />
+    <string name="health_connect_title" msgid="8318152190040327804">"Health Connect"</string>
+    <string name="health_connect_search_terms" msgid="4998970586245680829">"ସ୍ୱାସ୍ଥ୍ୟ, Health Connect"</string>
+    <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"ଲୋକେସନ ପାଇଁ ଡାଟା ସେୟାରିଂ ଅପଡେଟଗୁଡ଼ିକ"</string>
+    <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"ଡାଟା, ଡାଟା ସେୟାରିଂ, ଡାଟା ସେୟାରିଂ ଅପଡେଟ, ଲୋକେସନ ପାଇଁ ଡାଟା ସେୟାରିଂ ଅପଡେଟ, ସେୟାରିଂ"</string>
+    <string name="ads_privacy_title" msgid="538822387058714869">"ବିଜ୍ଞାପନ ଗୋପନୀୟତା"</string>
+    <string name="ads_privacy_summary" msgid="4977699525670966049">"ଆପଣଙ୍କୁ ବିଜ୍ଞାପନଗୁଡ଼ିକ ଦେଖାଇବା ପାଇଁ ଆପ୍ସ ବ୍ୟବହାର କରୁଥିବା ସୂଚନାକୁ କଷ୍ଟମାଇଜ କରନ୍ତୁ"</string>
+    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"ବିଜ୍ଞାପନ, ବିଜ୍ଞାପନ ଗୋପନୀୟତା, ପ୍ରାଇଭେସି ସେଣ୍ଡବକ୍ସ, ବିଜ୍ଞାପନ ବିଷୟ, ଆପ ଦ୍ୱାରା-ପରାମର୍ଶ ଦିଆଯାଇଥିବା ବିଜ୍ଞାପନଗୁଡ଼ିକ, ବିଜ୍ଞାପନର ପରିମାପ"</string>
+    <string name="biometrics_title_for_work" msgid="1842284049407771568">"ୱାର୍କ ପାଇଁ ବାୟୋମେଟ୍ରିକ୍ସ"</string>
+    <string name="more_settings_title" msgid="663808090772098924">"ଅଧିକ ସେଟିଂସ"</string>
+    <string name="more_settings_summary" msgid="3942352615407872716">"ଏନକ୍ରିପସନ, କ୍ରେଡେନସିଆଲ ଏବଂ ଆହୁରି ଅନେକ କିଛି"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
 </resources>

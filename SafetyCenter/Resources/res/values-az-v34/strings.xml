@@ -17,25 +17,15 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- no translation found for health_connect_title (8318152190040327804) -->
-    <skip />
-    <!-- no translation found for health_connect_search_terms (4998970586245680829) -->
-    <skip />
-    <!-- no translation found for app_data_sharing_updates_title (7428862330643262588) -->
-    <skip />
-    <!-- no translation found for app_data_sharing_updates_search_terms (8414777373734245398) -->
-    <skip />
-    <!-- no translation found for ads_privacy_title (538822387058714869) -->
-    <skip />
-    <!-- no translation found for ads_privacy_summary (4977699525670966049) -->
-    <skip />
-    <!-- no translation found for ads_privacy_search_terms (8008413316055240046) -->
-    <skip />
-    <!-- no translation found for biometrics_title_for_work (1842284049407771568) -->
-    <skip />
-    <!-- no translation found for more_settings_title (663808090772098924) -->
-    <skip />
-    <!-- no translation found for more_settings_summary (3942352615407872716) -->
-    <skip />
+    <string name="health_connect_title" msgid="8318152190040327804">"Health Connect"</string>
+    <string name="health_connect_search_terms" msgid="4998970586245680829">"Sağlamlıq, Health Connect"</string>
+    <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Məkan üzrə data paylaşımı yenilikləri"</string>
+    <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"Data, Data paylaşımı, Data paylaşımı yenilikləri, Məkan üzrə data paylaşımı, paylaşım"</string>
+    <string name="ads_privacy_title" msgid="538822387058714869">"Reklam məxfiliyi"</string>
+    <string name="ads_privacy_summary" msgid="4977699525670966049">"Tətbiqlərin sizə reklam göstərmək üçün istifadə etdiyi məlumatları fərdiləşdirin"</string>
+    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"reklamlar, reklam məxfiliyi, təhlükəsiz sandbox, reklam mövzuları, tətbiq tərəfindən təklif edilən reklamlar, reklam ölçüsü"</string>
+    <string name="biometrics_title_for_work" msgid="1842284049407771568">"İş üçün biometrik seçimlər"</string>
+    <string name="more_settings_title" msgid="663808090772098924">"Digər ayarlar"</string>
+    <string name="more_settings_summary" msgid="3942352615407872716">"Şifrələmə, giriş məlumatları və s."</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
 </resources>
