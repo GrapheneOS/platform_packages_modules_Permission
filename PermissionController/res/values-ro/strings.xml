@@ -592,26 +592,21 @@
     <string name="show_password_title" msgid="2877269286984684659">"Afișează parolele"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Caracterele se afișează pentru scurt timp, pe măsură ce tastezi"</string>
     <string name="permission_rationale_message_location" msgid="5559450538205092588">"Aplicația afirmă că le poate trimite terților date privind locațiile tale"</string>
-    <!-- no translation found for permission_rationale_location_title (2404797182678793506) -->
-    <skip />
+    <string name="permission_rationale_location_title" msgid="2404797182678793506">"Locația și permiterea accesului la date"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"De unde provin informațiile despre permiterea accesului la date"</string>
-    <!-- no translation found for permission_rationale_data_sharing_source_message (2229631836873747309) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"Dezvoltatorul a trimis la "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" informații despre modul în care această aplicație permite accesul la date. Informațiile se pot actualiza în timp."</string>
     <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"Aplicația poate permite accesul la date pentru:"</string>
-    <!-- no translation found for permission_rationale_purpose_message (2136810388727916997) -->
-    <skip />
+    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Permiterea accesului la date variază"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Practicile privind datele pot varia în funcție de versiunea aplicației, de modul de utilizare a acesteia, de regiune și de vârsta ta. "<annotation id="link">"Mai multe despre permiterea accesului la date"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Datele privind locația ta"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Schimbă accesul acestei aplicații în "<annotation id="link">"setările de confidențialitate"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"Funcționalitatea aplicației"</string>
-    <!-- no translation found for permission_rationale_purpose_analytics (2070800501189620712) -->
-    <skip />
+    <string name="permission_rationale_purpose_analytics" msgid="2070800501189620712">"Date statistice"</string>
     <string name="permission_rationale_purpose_developer_communications" msgid="6453047018892062374">"Comunicări ale dezvoltatorilor"</string>
     <string name="permission_rationale_purpose_advertising" msgid="7156966429245180236">"Publicitate sau marketing"</string>
     <string name="permission_rationale_purpose_fraud_prevention_security" msgid="4262104770357031902">"Prevenirea fraudei, securitate și conformitate"</string>
-    <!-- no translation found for permission_rationale_purpose_personalization (1589973273682238708) -->
-    <skip />
+    <string name="permission_rationale_purpose_personalization" msgid="1589973273682238708">"Personalizare"</string>
     <string name="permission_rationale_purpose_account_management" msgid="2985772421946688879">"Gestionarea contului"</string>
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Siguranța datelor"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Se poate permite accesul la datele privind locațiile tale"</string>
@@ -619,13 +614,10 @@
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Actualizări privind permiterea accesului la date pentru locație"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Examinează aplicațiile care au schimbat modul în care pot permite accesul la datele tale privind locațiile"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Aceste aplicații au schimbat modul în care pot permite accesul la datele tale privind locațiile. Este posibil să nu fi permis accesul la ele anterior sau să-l permită acum în scopuri de publicitate sau de marketing."</string>
-    <!-- no translation found for data_sharing_updates_footer_message (1582711655172892107) -->
-    <skip />
+    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Dezvoltatorii acestor aplicații au oferit unui magazin de aplicații informații despre practicile lor de permitere a accesului la date. Acestea se pot actualiza în timp.\n\nPracticile de permitere a accesului la date pot varia în funcție de versiunea aplicației, de modul de utilizare, de regiune și de vârstă."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"Află despre permiterea accesului la date"</string>
-    <!-- no translation found for shares_location_with_third_parties (2278051743742057767) -->
-    <skip />
-    <!-- no translation found for shares_location_with_third_parties_for_advertising (1918588064014480513) -->
-    <skip />
+    <string name="shares_location_with_third_parties" msgid="2278051743742057767">"Terții au acum acces la datele tale privind locațiile"</string>
+    <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"Terții au acum acces la datele tale privind locațiile în scopuri de publicitate sau de marketing"</string>
     <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{Actualizări în ultima zi}=1{Actualizări în ultima zi}few{Actualizări în ultimele # zile}other{Actualizări în ultimele # de zile}}"</string>
     <string name="no_updates_at_this_time" msgid="9031085635689982935">"Nicio actualizare momentan"</string>
     <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"Actualizări privind permiterea accesului la date"</string>

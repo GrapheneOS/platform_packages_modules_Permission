@@ -592,26 +592,21 @@
     <string name="show_password_title" msgid="2877269286984684659">"Показувати паролі"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Ненадовго показувати символи під час введення"</string>
     <string name="permission_rationale_message_location" msgid="5559450538205092588">"Цей додаток повідомляє, що може передавати ваші геодані третім особам"</string>
-    <!-- no translation found for permission_rationale_location_title (2404797182678793506) -->
-    <skip />
+    <string name="permission_rationale_location_title" msgid="2404797182678793506">"Передавання даних і місцезнаходження"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Звідки надходить інформація про передавання даних"</string>
-    <!-- no translation found for permission_rationale_data_sharing_source_message (2229631836873747309) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"Розробник надав "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" інформацію про те, як цей додаток передає дані. Ця інформація може періодично оновлюватись."</string>
     <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"Цілі передавання геоданих додатком:"</string>
-    <!-- no translation found for permission_rationale_purpose_message (2136810388727916997) -->
-    <skip />
+    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Спосіб передавання даних може різнитися"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Способи роботи з даними можуть різнитися залежно від версії додатка, його використання, регіону та віку користувача. "<annotation id="link">"Докладніше про передавання даних"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Ваші геодані"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Змініть доступ цього додатка в "<annotation id="link">"налаштуваннях конфіденційності"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"Функції додатка"</string>
-    <!-- no translation found for permission_rationale_purpose_analytics (2070800501189620712) -->
-    <skip />
+    <string name="permission_rationale_purpose_analytics" msgid="2070800501189620712">"Аналітика"</string>
     <string name="permission_rationale_purpose_developer_communications" msgid="6453047018892062374">"Сповіщення від розробника"</string>
     <string name="permission_rationale_purpose_advertising" msgid="7156966429245180236">"Реклама й маркетинг"</string>
     <string name="permission_rationale_purpose_fraud_prevention_security" msgid="4262104770357031902">"Запобігання шахрайству, безпека й відповідність вимогам"</string>
-    <!-- no translation found for permission_rationale_purpose_personalization (1589973273682238708) -->
-    <skip />
+    <string name="permission_rationale_purpose_personalization" msgid="1589973273682238708">"Персоналізація"</string>
     <string name="permission_rationale_purpose_account_management" msgid="2985772421946688879">"Керування обліковим записом"</string>
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Безпека даних"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Можуть передаватися геодані"</string>
@@ -619,13 +614,10 @@
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Оновлення способу передавання геоданих"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Перегляньте додатки, які змінили спосіб передавання ваших геоданих"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Ці додатки змінили спосіб передавання ваших геоданих. Можливо, ваші дані раніше не передавалися або тепер вони можуть використовуватися для реклами й маркетингу."</string>
-    <!-- no translation found for data_sharing_updates_footer_message (1582711655172892107) -->
-    <skip />
+    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Розробники надали магазину додатків інформацію про свої методи передавання даних. Вони можуть періодично вносити зміни в цю інформацію.\n\nМетоди передавання даних можуть різнитися залежно від версії додатка, його використання, регіону й віку користувача."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"Докладніше про передавання даних"</string>
-    <!-- no translation found for shares_location_with_third_parties (2278051743742057767) -->
-    <skip />
-    <!-- no translation found for shares_location_with_third_parties_for_advertising (1918588064014480513) -->
-    <skip />
+    <string name="shares_location_with_third_parties" msgid="2278051743742057767">"Ваші геодані тепер передаються третім особам"</string>
+    <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"Ваші геодані тепер передаються третім особам для реклами чи маркетингу"</string>
     <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{Оновлено за останній день}=1{Оновлено за останній день}one{Оновлено за # день}few{Оновлено за # дні}many{Оновлено за # днів}other{Оновлено за # дня}}"</string>
     <string name="no_updates_at_this_time" msgid="9031085635689982935">"Наразі оновлень немає"</string>
     <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"Оновлення способу передавання даних"</string>
