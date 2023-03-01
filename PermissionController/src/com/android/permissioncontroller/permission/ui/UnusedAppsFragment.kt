@@ -21,6 +21,7 @@ import android.app.AlertDialog
 import android.app.Application
 import android.app.Dialog
 import android.content.Intent
+import android.icu.text.MessageFormat
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -42,8 +43,9 @@ import com.android.permissioncontroller.Constants.INVALID_SESSION_ID
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.hibernation.isHibernationEnabled
 import com.android.permissioncontroller.permission.ui.model.UnusedAppsViewModel
-import com.android.permissioncontroller.permission.ui.model.UnusedAppsViewModel.Months
 import com.android.permissioncontroller.permission.ui.model.UnusedAppsViewModel.UnusedPackageInfo
+import com.android.permissioncontroller.permission.ui.model.UnusedAppsViewModel.UnusedPeriod
+import com.android.permissioncontroller.permission.ui.model.UnusedAppsViewModel.UnusedPeriod.Companion.allPeriods
 import com.android.permissioncontroller.permission.ui.model.UnusedAppsViewModelFactory
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import java.text.Collator
@@ -53,8 +55,8 @@ import java.text.Collator
  * and to open them.
  */
 class UnusedAppsFragment<PF, UnusedAppPref> : Fragment()
-    where PF : PreferenceFragmentCompat, PF : UnusedAppsFragment.Parent<UnusedAppPref>,
-        UnusedAppPref : Preference, UnusedAppPref : RemovablePref {
+        where PF : PreferenceFragmentCompat, PF : UnusedAppsFragment.Parent<UnusedAppPref>,
+              UnusedAppPref : Preference, UnusedAppPref : RemovablePref {
 
     private lateinit var viewModel: UnusedAppsViewModel
     private lateinit var collator: Collator
@@ -62,7 +64,7 @@ class UnusedAppsFragment<PF, UnusedAppPref> : Fragment()
     private var isFirstLoad = false
 
     companion object {
-        public const val INFO_MSG_CATEGORY = "info_msg_category"
+        const val INFO_MSG_CATEGORY = "info_msg_category"
         private const val SHOW_LOAD_DELAY_MS = 200L
         private const val INFO_MSG_KEY = "info_msg"
         private const val ELEVATION_HIGH = 8f
@@ -70,8 +72,8 @@ class UnusedAppsFragment<PF, UnusedAppPref> : Fragment()
 
         @JvmStatic
         fun <PF, UnusedAppPref> newInstance(): UnusedAppsFragment<PF, UnusedAppPref>
-            where PF : PreferenceFragmentCompat, PF : UnusedAppsFragment.Parent<UnusedAppPref>,
-                  UnusedAppPref : Preference, UnusedAppPref : RemovablePref {
+                where PF : PreferenceFragmentCompat, PF : UnusedAppsFragment.Parent<UnusedAppPref>,
+                      UnusedAppPref : Preference, UnusedAppPref : RemovablePref {
             return UnusedAppsFragment()
         }
 
@@ -157,6 +159,13 @@ class UnusedAppsFragment<PF, UnusedAppPref> : Fragment()
             context!!,
             R.xml.unused_app_categories,
             /* rootPreferences= */ null)
+
+        for (period in allPeriods) {
+            val periodCat = PreferenceCategory(context!!)
+            periodCat.key = period.name
+            periodCat.order = 0
+            preferenceScreen.addPreference(periodCat)
+        }
         preferenceFragment.preferenceScreen = preferenceScreen
 
         val infoMsgCategory = preferenceScreen.findPreference<PreferenceCategory>(INFO_MSG_CATEGORY)
@@ -165,22 +174,24 @@ class UnusedAppsFragment<PF, UnusedAppPref> : Fragment()
         infoMsgCategory?.addPreference(footerPreference)
     }
 
-    private fun updatePackages(categorizedPackages: Map<Months, List<UnusedPackageInfo>>) {
+    private fun updatePackages(categorizedPackages: Map<UnusedPeriod, List<UnusedPackageInfo>>) {
         val preferenceFragment: PF = requirePreferenceFragment()
         if (preferenceFragment.preferenceScreen == null) {
             createPreferenceScreen()
         }
         val preferenceScreen: PreferenceScreen = preferenceFragment.preferenceScreen
 
+        // Remove stale preferences
         val removedPrefs = mutableMapOf<String, UnusedAppPref>()
-        for (month in Months.allMonths()) {
-            val category = preferenceScreen.findPreference<PreferenceCategory>(month.value)!!
+        for (period in allPeriods) {
+            val category = preferenceScreen.findPreference<PreferenceCategory>(period.name)!!
             for (i in 0 until category.preferenceCount) {
                 val pref = category.getPreference(i) as UnusedAppPref
-                val contains = categorizedPackages[Months.THREE]?.any { (pkgName, user, _) ->
-                    val key = createKey(pkgName, user)
-                    pref.key == key
-                }
+                val contains =
+                    categorizedPackages[period]?.any { (pkgName, user, _) ->
+                        val key = createKey(pkgName, user)
+                        pref.key == key
+                    }
                 if (contains != true) {
                     removedPrefs[pref.key] = pref
                 }
@@ -192,13 +203,12 @@ class UnusedAppsFragment<PF, UnusedAppPref> : Fragment()
         }
 
         var allCategoriesEmpty = true
-        for ((month, packages) in categorizedPackages) {
-            val category = preferenceScreen.findPreference<PreferenceCategory>(month.value)!!
-            category.title = if (month == Months.THREE) {
-                getString(R.string.last_opened_category_title, "3")
-            } else {
-                getString(R.string.last_opened_category_title, "6")
-            }
+        for ((period, packages) in categorizedPackages) {
+            val category = preferenceScreen.findPreference<PreferenceCategory>(period.name)!!
+            val months = period.months
+            category.title =
+                MessageFormat.format(getString(R.string.last_opened_category_title),
+                    mapOf("count" to months))
             category.isVisible = packages.isNotEmpty()
             if (packages.isNotEmpty()) {
                 allCategoriesEmpty = false
@@ -251,17 +261,18 @@ class UnusedAppsFragment<PF, UnusedAppPref> : Fragment()
         preferenceFragment.setEmptyState(allCategoriesEmpty)
 
         if (isFirstLoad) {
-            if (categorizedPackages[Months.SIX]!!.isNotEmpty() ||
-                categorizedPackages[Months.THREE]!!.isNotEmpty()) {
+            if (categorizedPackages.any { (_, packages) ->
+                    packages!!.isNotEmpty()
+                }) {
                 isFirstLoad = false
             }
             Log.i(LOG_TAG, "sessionId: $sessionId Showed Auto Revoke Page")
-            for (month in Months.values()) {
-                Log.i(LOG_TAG, "sessionId: $sessionId $month unused: " +
-                    "${categorizedPackages[month]}")
-                for (revokedPackageInfo in categorizedPackages[month]!!) {
+            for (period in allPeriods) {
+                Log.i(LOG_TAG, "sessionId: $sessionId $period unused: " +
+                        "${categorizedPackages[period]}")
+                for (revokedPackageInfo in categorizedPackages[period]!!) {
                     for (groupName in revokedPackageInfo.revokedGroups) {
-                        val isNewlyRevoked = month == Months.THREE
+                        val isNewlyRevoked = period.isNewlyUnused()
                         viewModel.logAppView(revokedPackageInfo.packageName,
                             revokedPackageInfo.user, groupName, isNewlyRevoked)
                     }
@@ -330,7 +341,7 @@ class UnusedAppsFragment<PF, UnusedAppPref> : Fragment()
      * Interface that the parent fragment must implement.
      */
     interface Parent<UnusedAppPref> where UnusedAppPref : Preference,
-                                           UnusedAppPref : RemovablePref {
+                                          UnusedAppPref : RemovablePref {
 
         /**
          * Set the title of the current settings page.
@@ -364,7 +375,7 @@ class UnusedAppsFragment<PF, UnusedAppPref> : Fragment()
         fun createUnusedAppPref(
             app: Application,
             packageName: String,
-            user: UserHandle
+            user: UserHandle,
         ): UnusedAppPref
 
         /**

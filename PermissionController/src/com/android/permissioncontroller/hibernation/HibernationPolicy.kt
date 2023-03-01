@@ -337,7 +337,7 @@ class HibernationBroadcastReceiver : BroadcastReceiver() {
  */
 @MainThread
 private suspend fun getAppsToHibernate(
-    context: Context
+    context: Context,
 ): Map<UserHandle, List<LightPackageInfo>> {
     val now = System.currentTimeMillis()
     val startTimeOfUnusedAppTracking = getStartTimeOfUnusedAppTracking(context.sharedPreferences)
@@ -484,7 +484,7 @@ private fun List<UsageStats>.lastTimePackageUsed(pkgName: String): Long {
  */
 suspend fun isPackageHibernationExemptBySystem(
     pkg: LightPackageInfo,
-    user: UserHandle
+    user: UserHandle,
 ): Boolean {
     if (!LauncherPackagesLiveData.getInitializedValue().contains(pkg.packageName)) {
         if (DEBUG_HIBERNATION_POLICY) {
@@ -501,6 +501,14 @@ suspend fun isPackageHibernationExemptBySystem(
         if (DEBUG_HIBERNATION_POLICY) {
             DumpableLog.i(LOG_TAG,
                     "Exempted ${pkg.packageName} - $user is disabled or a work profile")
+        }
+        return true
+    }
+
+    if (pkg.uid == Process.SYSTEM_UID){
+        if (DEBUG_HIBERNATION_POLICY) {
+            DumpableLog.i(LOG_TAG,
+                "Exempted ${pkg.packageName} - Package shares system uid")
         }
         return true
     }
@@ -598,7 +606,7 @@ suspend fun isPackageHibernationExemptBySystem(
  */
 suspend fun isPackageHibernationExemptByUser(
     context: Context,
-    pkg: LightPackageInfo
+    pkg: LightPackageInfo,
 ): Boolean {
     val packageName = pkg.packageName
     val packageUid = pkg.uid
