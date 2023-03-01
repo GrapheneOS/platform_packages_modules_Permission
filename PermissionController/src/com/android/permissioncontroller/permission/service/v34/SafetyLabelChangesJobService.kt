@@ -361,7 +361,7 @@ class SafetyLabelChangesJobService : JobService() {
         permGrantState in setOf(PERMS_ALLOWED_ALWAYS, PERMS_ALLOWED_FOREGROUND_ONLY)
 
     private suspend fun isPreinstalledPackage(pkg: Pair<String, UserHandle>): Boolean =
-        LightInstallSourceInfoLiveData[pkg].getInitializedValue().installingPackageName == null
+        LightInstallSourceInfoLiveData[pkg].getInitializedValue().initiatingPackageName == null
 
     private suspend fun postSafetyLabelChangedNotification() {
         if (hasDataSharingChanged()) {
