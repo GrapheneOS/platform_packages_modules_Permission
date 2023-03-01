@@ -111,8 +111,7 @@ class SafetyLabelChangesJobService : JobService() {
         }
 
         private fun isContextInProfileUser(context: Context): Boolean {
-            val userManager: UserManager =
-                (context.getSystemService(UserManager::class.java) as UserManager?)!!
+            val userManager: UserManager = context.getSystemService(UserManager::class.java)!!
             return userManager.isProfile
         }
     }
@@ -350,7 +349,7 @@ class SafetyLabelChangesJobService : JobService() {
     private suspend fun getAllPackagesGrantedLocation(): Set<Pair<String, UserHandle>> =
         SinglePermGroupPackagesUiInfoLiveData[Manifest.permission_group.LOCATION]
             .getInitializedValue(staleOk = false, forceUpdate = true)
-            .filter { (packageKey, appPermGroupUiInfo) -> appPermGroupUiInfo.isPermissionGranted() }
+            .filter { (_, appPermGroupUiInfo) -> appPermGroupUiInfo.isPermissionGranted() }
             .keys
 
     private fun AppPermGroupUiInfo.isPermissionGranted() =
@@ -390,7 +389,7 @@ class SafetyLabelChangesJobService : JobService() {
                 .filter { it.containsLocationCategoryUpdate() }
                 .map { it.packageName }
         val packageNamesWithLocationGranted: List<String> =
-            getAllPackagesGrantedLocation().map { (packageName, user) -> packageName }
+            getAllPackagesGrantedLocation().map { (packageName, _) -> packageName }
 
         val packageNamesWithLocationGrantedAndUpdates =
             packageNamesWithLocationDataSharingUpdates.intersect(packageNamesWithLocationGranted)

@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@file:Suppress("DEPRECATION")
 
 package com.android.permissioncontroller.permission.ui.model
 
@@ -156,7 +157,7 @@ class PermissionAppsViewModel(
             }
         }
 
-        private val listener = { sensor: Int, status: Boolean ->
+        private val listener = { _: Int, status: Boolean ->
             value = status
         }
 
@@ -464,7 +465,7 @@ class PermissionAppsViewModelFactory(
     defaultArgs: Bundle
 ) : AbstractSavedStateViewModelFactory(owner, defaultArgs) {
 
-    override fun <T : ViewModel?> create(p0: String, p1: Class<T>, state: SavedStateHandle): T {
+    override fun <T : ViewModel> create(p0: String, p1: Class<T>, state: SavedStateHandle): T {
         state.set(SHOULD_SHOW_SYSTEM_KEY, state.get<Boolean>(SHOULD_SHOW_SYSTEM_KEY) ?: false)
         state.set(HAS_SYSTEM_APPS_KEY, state.get<Boolean>(HAS_SYSTEM_APPS_KEY) ?: true)
         state.set(SHOW_ALWAYS_ALLOWED, state.get<Boolean>(SHOW_ALWAYS_ALLOWED) ?: false)

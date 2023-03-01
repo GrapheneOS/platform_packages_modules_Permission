@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@file:Suppress("DEPRECATION")
 
 package com.android.permissioncontroller.permission.ui.model.v31
 
@@ -620,7 +621,7 @@ class PermissionUsageDetailsViewModel(
         owner: SavedStateRegistryOwner,
         private val permissionGroup: String,
     ) : AbstractSavedStateViewModelFactory(owner, Bundle()) {
-        override fun <T : ViewModel?> create(
+        override fun <T : ViewModel> create(
             key: String,
             modelClass: Class<T>,
             handle: SavedStateHandle,
