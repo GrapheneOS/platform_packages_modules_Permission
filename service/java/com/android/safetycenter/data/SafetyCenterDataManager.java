@@ -322,6 +322,20 @@ public final class SafetyCenterDataManager {
         return mSafetyCenterIssueRepository.getIssuesForUser(userId);
     }
 
+    /**
+     * Returns the list of issues for the given {@code userId} which were removed from the given
+     * list of issues in the most recent {@link SafetyCenterIssueDeduplicator#deduplicateIssues}
+     * call. These issues were removed because they were duplicates of other issues (see {@link
+     * SafetySourceIssue#getDeduplicationId()} for more info).
+     *
+     * <p>If this method is called before any calls to {@link
+     * SafetyCenterIssueDeduplicator#deduplicateIssues} then an empty list is returned.
+     */
+    public List<SafetySourceIssueInfo> getMostRecentFilteredOutDuplicateIssues(
+            @UserIdInt int userId) {
+        return mSafetyCenterIssueRepository.getMostRecentFilteredOutDuplicateIssues(userId);
+    }
+
     ///////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////   SafetyCenterInFlightIssueActionRepository ////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////
