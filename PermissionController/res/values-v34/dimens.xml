@@ -15,7 +15,7 @@
   -->
 
 <resources>
-    <dimen name="permission_rationale_purpose_list_bullet_radius">3dp</dimen>
+    <dimen name="permission_rationale_purpose_list_bullet_radius">1.5dp</dimen>
     <dimen name="permission_rationale_purpose_list_bullet_indent">9dp</dimen>
 
     <dimen name="safety_center_brand_chip_corner_radius">24dp</dimen>
