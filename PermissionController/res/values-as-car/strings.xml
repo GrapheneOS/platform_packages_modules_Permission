@@ -17,5 +17,5 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="unused_apps_page_summary" msgid="7505839764289846511">"Wenn du eine App mehrere Monate nicht verwendest, geschieht Folgendes:\n\n• Die Berechtigungen der App werden entfernt, um deine Daten zu schützen\n• Temporäre Dateien werden gelöscht, um Speicherplatz freizugeben"</string>
+    <string name="unused_apps_page_summary" msgid="7505839764289846511">"কোনো এপ্‌ কেইমাহমান ব্যৱহাৰ নকৰাকৈ থাকিলে:\n\n• আপোনাৰ ডেটা সুৰক্ষিত কৰিবলৈ অনুমতিসমূহ আঁতৰোৱা হয়\n• ঠাই খালী কৰিবলৈ অস্থায়ী ফাইলসমূহ আঁতৰোৱা হয়"</string>
 </resources>
