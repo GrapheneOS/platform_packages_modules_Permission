@@ -83,6 +83,20 @@
         <item name="android:background">@drawable/grant_permissions_buttons_bottom</item>
     </style>
 
+    <style name="PermissionGrantButtonSingleton"
+        parent="@android:style/Widget.DeviceDefault.Button.Borderless.Colored">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:layout_marginLeft">24dp</item>
+        <item name="android:layout_marginRight">24dp</item>
+        <item name="android:layout_marginTop">7dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:fontFamily">google-sans-medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/system_neutral1_900</item>
+        <item name="android:background">@drawable/grant_permissions_buttons_singleton</item>
+    </style>
+
     <!-- for use in overlays -->
     <style name="PermissionGrantButtonAllowMaterial3"
            parent="@style/PermissionGrantButtonTop"></style>
@@ -91,9 +105,9 @@
     <style name="PermissionGrantButtonAllowOneTimeMaterial3"
            parent="@style/PermissionGrantButtonMiddle"></style>
     <style name="PermissionGrantButtonAllowAllPhotosMaterial3"
-        parent="@style/PermissionGrantButtonTop"></style>
+        parent="@style/PermissionGrantButtonSingleton"></style>
     <style name="PermissionGrantButtonAllowSelectedPhotosMaterial3"
-        parent="@style/PermissionGrantButtonMiddle"></style>
+        parent="@style/PermissionGrantButtonTop"></style>
     <style name="PermissionGrantButtonAllowMorePhotosMaterial3"
         parent="@style/PermissionGrantButtonTop"></style>
     <style name="PermissionGrantButtonDontAllowMorePhotosMaterial3"
