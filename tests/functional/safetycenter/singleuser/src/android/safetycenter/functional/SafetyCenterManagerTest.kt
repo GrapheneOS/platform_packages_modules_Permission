@@ -1527,6 +1527,99 @@ class SafetyCenterManagerTest {
 
     @Test
     @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getSafetyCenterData_duplicateIssuesInDifferentSourceGroups_topIssueRelevantForBothGroups() {
+        safetyCenterTestHelper.setConfig(
+            safetyCenterTestConfigs.multipleSourcesWithDeduplicationInfoConfig
+        )
+        // Belongs to DEDUPLICATION_GROUP_1 and source group MULTIPLE_SOURCES_GROUP_ID_1
+        safetyCenterTestHelper.setData(
+            SOURCE_ID_1,
+            SafetySourceTestData.issuesOnly(
+                safetySourceTestData.criticalIssueWithDeduplicationId("same")
+            )
+        )
+        // Belongs to DEDUPLICATION_GROUP_1 and source group MULTIPLE_SOURCES_GROUP_ID_2
+        safetyCenterTestHelper.setData(
+            SOURCE_ID_5,
+            SafetySourceTestData.issuesOnly(
+                safetySourceTestData.criticalIssueWithDeduplicationId("same")
+            )
+        )
+
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+        val issueId = apiSafetyCenterData.issues.first().id
+        val issueToGroupBelonging =
+            apiSafetyCenterData.extras.getBundle(ISSUES_TO_GROUPS_BUNDLE_KEY)
+
+        assertThat(issueToGroupBelonging!!.getStringArrayList(issueId))
+            .containsExactly(MULTIPLE_SOURCES_GROUP_ID_1, MULTIPLE_SOURCES_GROUP_ID_2)
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getSafetyCenterData_duplicateIssuesInSameSourceGroups_topIssueRelevantForThatGroup() {
+        safetyCenterTestHelper.setConfig(
+            safetyCenterTestConfigs.multipleSourcesWithDeduplicationInfoConfig
+        )
+        // Belongs to DEDUPLICATION_GROUP_1 and source group MULTIPLE_SOURCES_GROUP_ID_1
+        safetyCenterTestHelper.setData(
+            SOURCE_ID_1,
+            SafetySourceTestData.issuesOnly(
+                safetySourceTestData.criticalIssueWithDeduplicationId("same")
+            )
+        )
+        // Belongs to DEDUPLICATION_GROUP_1 and source group MULTIPLE_SOURCES_GROUP_ID_1
+        safetyCenterTestHelper.setData(
+            SOURCE_ID_2,
+            SafetySourceTestData.issuesOnly(
+                safetySourceTestData.criticalIssueWithDeduplicationId("same")
+            )
+        )
+
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+        val issueId = apiSafetyCenterData.issues.first().id
+        val issueToGroupBelonging =
+            apiSafetyCenterData.extras.getBundle(ISSUES_TO_GROUPS_BUNDLE_KEY)
+
+        assertThat(issueToGroupBelonging!!.getStringArrayList(issueId))
+            .containsExactly(MULTIPLE_SOURCES_GROUP_ID_1)
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getSafetyCenterData_noDuplicateIssues_issuesRelevantForTheirGroups() {
+        safetyCenterTestHelper.setConfig(
+            safetyCenterTestConfigs.multipleSourcesWithDeduplicationInfoConfig
+        )
+        // Belongs to DEDUPLICATION_GROUP_1 and source group MULTIPLE_SOURCES_GROUP_ID_1
+        safetyCenterTestHelper.setData(
+            SOURCE_ID_1,
+            SafetySourceTestData.issuesOnly(
+                safetySourceTestData.criticalIssueWithDeduplicationId("same")
+            )
+        )
+        // Belongs to DEDUPLICATION_GROUP_3 and source group MULTIPLE_SOURCES_GROUP_ID_2
+        safetyCenterTestHelper.setData(
+            SOURCE_ID_6,
+            SafetySourceTestData.issuesOnly(
+                safetySourceTestData.recommendationIssueWithDeduplicationId("same")
+            )
+        )
+
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+        val issueIdFirst = apiSafetyCenterData.issues[0].id
+        val issueIdSecond = apiSafetyCenterData.issues[1].id
+        val issueToGroupBelonging =
+            apiSafetyCenterData.extras.getBundle(ISSUES_TO_GROUPS_BUNDLE_KEY)
+
+        assertThat(issueToGroupBelonging!!.getStringArrayList(issueIdFirst))
+            .containsExactly(MULTIPLE_SOURCES_GROUP_ID_1)
+        assertThat(issueToGroupBelonging.getStringArrayList(issueIdSecond))
+            .containsExactly(MULTIPLE_SOURCES_GROUP_ID_2)
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun getSafetyCenterData_differentDuplicationId_bothIssuesShown() {
         safetyCenterTestHelper.setConfig(
             safetyCenterTestConfigs.multipleSourcesWithDeduplicationInfoConfig
@@ -3446,5 +3539,7 @@ class SafetyCenterManagerTest {
         // has not resurfaced. Use a different check logic (focused at the expected resurface time)
         // if we increase the delay considerably.
         private val RESURFACE_CHECK = RESURFACE_DELAY.dividedBy(4)
+
+        private val ISSUES_TO_GROUPS_BUNDLE_KEY = "IssuesToGroupsKey"
     }
 }

@@ -18,7 +18,11 @@ package com.android.safetycenter.data;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
+import static com.android.safetycenter.data.SafetyCenterIssueDeduplicator.AdditionalDeduplicationInfo;
+
 import static java.util.Collections.emptyList;
+import static java.util.Collections.emptyMap;
+import static java.util.Collections.emptySet;
 
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
@@ -38,11 +42,14 @@ import com.android.safetycenter.SafetySourceIssueInfo;
 import com.android.safetycenter.SafetySourceKey;
 import com.android.safetycenter.SafetySources;
 import com.android.safetycenter.UserProfileGroup;
+import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.concurrent.NotThreadSafe;
 
@@ -70,6 +77,10 @@ final class SafetyCenterIssueRepository {
     // userId -> sorted and deduplicated list of issues
     // can contain temporarily hidden issues
     private final SparseArray<List<SafetySourceIssueInfo>> mUserIdToIssuesInfo =
+            new SparseArray<>();
+
+    // userId -> (issueKey -> source groups)
+    private final SparseArray<Map<SafetyCenterIssueKey, Set<String>>> mUserIdToIssueToSourceGroup =
             new SparseArray<>();
 
     // userId -> issues filtered out from the rest due to being duplicates of other issues, in the
@@ -158,6 +169,16 @@ final class SafetyCenterIssueRepository {
     }
 
     /**
+     * Returns a set of {@link SafetySourcesGroup} IDs that the given {@link SafetyCenterIssueKey}
+     * is mapped to.
+     */
+    Set<String> getGroupMappingFor(SafetyCenterIssueKey issueKey) {
+        return mUserIdToIssueToSourceGroup
+                .get(issueKey.getUserId(), emptyMap())
+                .getOrDefault(issueKey, emptySet());
+    }
+
+    /**
      * Returns the list of issues for the given {@code userId} which were removed from the given
      * list of issues in the most recent {@link SafetyCenterIssueDeduplicator#deduplicateIssues}
      * call. These issues were removed because they were duplicates of other issues.
@@ -185,10 +206,10 @@ final class SafetyCenterIssueRepository {
         issuesInfo.sort(SAFETY_SOURCE_ISSUES_INFO_BY_SEVERITY_DESCENDING);
 
         if (SdkLevel.isAtLeastU() && mSafetyCenterIssueDeduplicator != null) {
-            mSafetyCenterIssueDeduplicator.deduplicateIssues(issuesInfo);
-            mUserIdToFilteredOutIssues.put(
-                    userId,
-                    mSafetyCenterIssueDeduplicator.getMostRecentFilteredOutDuplicateIssues());
+            AdditionalDeduplicationInfo dedupInfo =
+                    mSafetyCenterIssueDeduplicator.deduplicateIssues(issuesInfo);
+            mUserIdToFilteredOutIssues.put(userId, dedupInfo.getFilteredOutDuplicateIssues());
+            mUserIdToIssueToSourceGroup.put(userId, dedupInfo.getIssueToGroupMapping());
         }
     }
 
@@ -296,10 +317,12 @@ final class SafetyCenterIssueRepository {
     /** Clears all the data from the repository. */
     void clear() {
         mUserIdToIssuesInfo.clear();
+        mUserIdToIssueToSourceGroup.clear();
     }
 
     /** Clears all data related to the given {@code userId}. */
     void clearForUser(@UserIdInt int userId) {
         mUserIdToIssuesInfo.delete(userId);
+        mUserIdToIssueToSourceGroup.delete(userId);
     }
 }
