@@ -17,6 +17,7 @@
 package com.android.permissioncontroller.safetylabel
 
 import com.android.permission.safetylabel.DataCategory as AppMetadataDataCategory
+import com.android.permission.safetylabel.DataCategoryConstants
 import com.android.permission.safetylabel.DataLabel as AppMetadataDataLabel
 import com.android.permission.safetylabel.DataPurposeConstants.PURPOSE_ADVERTISING
 import com.android.permission.safetylabel.SafetyLabel as AppMetadataSafetyLabel
@@ -77,13 +78,11 @@ data class AppsSafetyLabelHistory(val appSafetyLabelHistories: List<AppSafetyLab
     ) {
         /** Companion object for [SafetyLabel]. */
         companion object {
-            // TODO(b/265176343): Currently names are identical to safety label parser library names
-            //  for brevity. Consider renaming to distinguish them better.
             /**
              * Creates a safety label for persistence from the safety label parsed from
              * PackageManager app metadata.
              */
-            fun fromAppMetadataSafetyLabel(
+            fun extractLocationSharingSafetyLabel(
                 packageName: String,
                 receivedAt: Instant,
                 appMetadataSafetyLabel: AppMetadataSafetyLabel
@@ -91,14 +90,13 @@ data class AppsSafetyLabelHistory(val appSafetyLabelHistories: List<AppSafetyLab
                 SafetyLabel(
                     AppInfo(packageName),
                     receivedAt,
-                    DataLabel.fromAppMetadataDataLabel(appMetadataSafetyLabel.dataLabel))
+                    DataLabel.extractLocationSharingDataLabel(appMetadataSafetyLabel.dataLabel))
         }
     }
 
     /** Data class representing an app's data use policies. */
     data class DataLabel(
         /** Map of category to [DataCategory] */
-        // TODO(b/263153040): Use Category constants from Safety Label library.
         val dataShared: Map<String, DataCategory>
     ) {
         /** Companion object for [DataCategory]. */
@@ -107,11 +105,15 @@ data class AppsSafetyLabelHistory(val appSafetyLabelHistories: List<AppSafetyLab
              * Creates a data label for persistence from a data label parsed from PackageManager app
              * metadata.
              */
-            fun fromAppMetadataDataLabel(appMetadataDataLabel: AppMetadataDataLabel): DataLabel =
+            fun extractLocationSharingDataLabel(
+                appMetadataDataLabel: AppMetadataDataLabel
+            ): DataLabel =
                 DataLabel(
-                    appMetadataDataLabel.dataShared.mapValues { categoryEntry ->
-                        DataCategory.fromAppMetadataDataCategory(categoryEntry.value)
-                    })
+                    appMetadataDataLabel.dataShared
+                        .filter { it.key == DataCategoryConstants.CATEGORY_LOCATION }
+                        .mapValues { categoryEntry ->
+                            DataCategory.fromAppMetadataDataCategory(categoryEntry.value)
+                        })
         }
     }
 
