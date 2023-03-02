@@ -80,6 +80,7 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getDefaultPrecision
 import com.android.permissioncontroller.permission.utils.KotlinUtils.isLocationAccuracyEnabled
 import com.android.permissioncontroller.permission.utils.KotlinUtils.isPermissionRationaleEnabled
+import com.android.permissioncontroller.permission.utils.KotlinUtils.isPhotoPickerPromptEnabled
 import com.android.permissioncontroller.permission.utils.LocationUtils
 import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.PermissionRationales
@@ -742,7 +743,8 @@ class AppPermissionViewModel(
                     (wasBackgroundGranted || group2.background.isUserFixed ||
                             group2.isOneTime != setOneTime)) {
                 newGroup = KotlinUtils
-                        .revokeBackgroundRuntimePermissions(app, newGroup, oneTime = setOneTime)
+                        .revokeBackgroundRuntimePermissions(app, newGroup, oneTime = setOneTime,
+                        forceRemoveRevokedCompat = shouldClearOneTimeRevokedCompat(newGroup))
 
                 // only log if we have actually denied permissions, not if we switch from
                 // "ask every time" to denied
@@ -754,7 +756,9 @@ class AppPermissionViewModel(
             if (shouldRevokeForeground &&
                     (wasForegroundGranted || group2.isOneTime != setOneTime)) {
                 newGroup = KotlinUtils
-                        .revokeForegroundRuntimePermissions(app, newGroup, false, setOneTime)
+                        .revokeForegroundRuntimePermissions(app, newGroup, userFixed = false,
+                            oneTime = setOneTime,
+                            forceRemoveRevokedCompat = shouldClearOneTimeRevokedCompat(newGroup))
 
                 // only log if we have actually denied permissions, not if we switch from
                 // "ask every time" to denied
@@ -791,6 +795,11 @@ class AppPermissionViewModel(
                 FullStoragePermissionAppsLiveData.recalculate()
             }
         }
+    }
+
+    private fun shouldClearOneTimeRevokedCompat(group: LightAppPermGroup): Boolean {
+        return isPhotoPickerPromptEnabled() && permGroupName == READ_MEDIA_VISUAL &&
+                group.permissions.values.any { it.isCompatRevoked && it.isOneTime }
     }
 
     @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.TIRAMISU)

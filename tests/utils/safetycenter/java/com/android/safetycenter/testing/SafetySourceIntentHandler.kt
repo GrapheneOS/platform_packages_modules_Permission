@@ -280,8 +280,8 @@ class SafetySourceIntentHandler {
          * Creates a [Response] to set the given [SafetySourceData].
          *
          * @param overrideBroadcastId an optional override of the broadcast id to use in the
-         * [SafetyEvent] sent to the [SafetyCenterManager], in case of [Request.Refresh] or
-         * [Request.Rescan]. This is used to simulate a misuse of the [SafetyCenterManager] APIs
+         *   [SafetyEvent] sent to the [SafetyCenterManager], in case of [Request.Refresh] or
+         *   [Request.Rescan]. This is used to simulate a misuse of the [SafetyCenterManager] APIs
          */
         data class SetData(
             val safetySourceData: SafetySourceData,

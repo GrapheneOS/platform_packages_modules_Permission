@@ -95,8 +95,6 @@ import org.junit.runner.RunWith
  * Functional tests for our APIs and UI on a device with multiple users. e.g. with a managed or
  * secondary user(s).
  */
-// TODO(b/264992293): Re-enable these tests and assess flakyness now that they are independent
-@Ignore
 @RunWith(BedsteadJUnit4::class)
 class SafetyCenterMultiUsersTest {
 
