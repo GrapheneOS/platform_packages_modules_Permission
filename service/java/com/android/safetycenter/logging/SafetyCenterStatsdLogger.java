@@ -140,7 +140,8 @@ public final class SafetyCenterStatsdLogger {
             boolean isManagedProfile,
             @Nullable @SafetySourceData.SeverityLevel Integer sourceSeverityLevel,
             long openIssuesCount,
-            long dismissedIssuesCount) {
+            long dismissedIssuesCount,
+            long duplicateFilteredOutIssuesCount) {
         if (!mSafetyCenterConfigReader.allowsStatsdLogging()) {
             return;
         }
@@ -155,8 +156,7 @@ public final class SafetyCenterStatsdLogger {
                 toSafetySourceStateCollectedSeverityLevel(sourceSeverityLevel),
                 openIssuesCount,
                 dismissedIssuesCount,
-                // TODO(b/268307189): Implement logging for dismissed issues.
-                /* duplicateFilteredOutIssuesCount= */ 0L,
+                duplicateFilteredOutIssuesCount,
                 // TODO(b/268309177): Implement source state logging
                 SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__SOURCE_STATE_UNKNOWN,
                 // TODO(b/268309211): Record this event when sources provide data
