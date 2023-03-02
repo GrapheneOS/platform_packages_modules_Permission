@@ -944,9 +944,11 @@ object KotlinUtils {
         group: LightAppPermGroup,
         userFixed: Boolean = false,
         oneTime: Boolean = false,
+        forceRemoveRevokedCompat: Boolean = false,
         filterPermissions: List<String> = group.permissions.keys.toList()
     ): LightAppPermGroup {
-        return revokeRuntimePermissions(app, group, false, userFixed, oneTime, filterPermissions)
+        return revokeRuntimePermissions(app, group, false, userFixed, oneTime,
+            forceRemoveRevokedCompat, filterPermissions)
     }
 
     /**
@@ -969,9 +971,11 @@ object KotlinUtils {
         group: LightAppPermGroup,
         userFixed: Boolean = false,
         oneTime: Boolean = false,
+        forceRemoveRevokedCompat: Boolean = false,
         filterPermissions: List<String> = group.permissions.keys.toList()
     ): LightAppPermGroup {
-        return revokeRuntimePermissions(app, group, true, userFixed, oneTime, filterPermissions)
+        return revokeRuntimePermissions(app, group, true, userFixed, oneTime,
+            forceRemoveRevokedCompat, filterPermissions)
     }
 
     private fun revokeRuntimePermissions(
@@ -980,6 +984,7 @@ object KotlinUtils {
         revokeBackground: Boolean,
         userFixed: Boolean,
         oneTime: Boolean,
+        forceRemoveRevokedCompat: Boolean = false,
         filterPermissions: List<String>
     ): LightAppPermGroup {
         val wasOneTime = group.isOneTime
@@ -990,7 +995,8 @@ object KotlinUtils {
             val isBackgroundPerm = permName in group.backgroundPermNames
             if (isBackgroundPerm == revokeBackground) {
                 val (newPerm, shouldKill) =
-                    revokeRuntimePermission(app, perm, userFixed, oneTime, group)
+                    revokeRuntimePermission(app, perm, userFixed, oneTime, forceRemoveRevokedCompat,
+                        group)
                 newPerms[newPerm.name] = newPerm
                 shouldKillForAnyPermission = shouldKillForAnyPermission || shouldKill
             }
@@ -1089,6 +1095,7 @@ object KotlinUtils {
         perm: LightPermission,
         userFixed: Boolean,
         oneTime: Boolean,
+        forceRemoveRevokedCompat: Boolean,
         group: LightAppPermGroup
     ): Pair<LightPermission, Boolean> {
         // Do not touch permissions fixed by the system.
@@ -1104,13 +1111,16 @@ object KotlinUtils {
 
         val affectsAppOp = permissionToOp(perm.name) != null || perm.isBackgroundPermission
 
-        if (perm.isGrantedIncludingAppOp) {
+        if (perm.isGrantedIncludingAppOp || (perm.isCompatRevoked && forceRemoveRevokedCompat)) {
             if (supportsRuntime && !isPermissionSplitFromNonRuntime(app, perm.name,
                             group.packageInfo.targetSdkVersion)) {
                 // Revoke the permission if needed.
                 app.packageManager.revokeRuntimePermission(group.packageInfo.packageName,
                     perm.name, user)
                 isGranted = false
+                if (forceRemoveRevokedCompat) {
+                    newFlags = newFlags.clearFlag(PackageManager.FLAG_PERMISSION_REVOKED_COMPAT)
+                }
             } else if (affectsAppOp) {
                 // If the permission has no corresponding app op, then it is a
                 // third-party one and we do not offer toggling of such permissions.
