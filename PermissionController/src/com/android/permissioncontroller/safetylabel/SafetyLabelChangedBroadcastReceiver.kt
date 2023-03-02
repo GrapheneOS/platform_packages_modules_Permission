@@ -21,6 +21,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_PACKAGE_ADDED
+import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Process
 import android.os.UserHandle
@@ -131,7 +132,13 @@ class SafetyLabelChangedBroadcastReceiver : BroadcastReceiver() {
             } else {
                 context.createContextAsUser(user, 0)
             }
-        val appMetadataBundle = userContext.packageManager.getAppMetadata(packageName)
+        val appMetadataBundle =
+            try {
+                userContext.packageManager.getAppMetadata(packageName)
+            } catch (e: PackageManager.NameNotFoundException) {
+                Log.w(TAG, "Package $packageName not found while retrieving app metadata")
+                return
+            }
 
         if (DEBUG) {
             Log.i(TAG, "appMetadataBundle $appMetadataBundle")
@@ -142,7 +149,7 @@ class SafetyLabelChangedBroadcastReceiver : BroadcastReceiver() {
         val receivedAtMs: Long = lightPackageInfo.lastUpdateTime
 
         val safetyLabelForPersistence: SafetyLabelForPersistence =
-            AppsSafetyLabelHistory.SafetyLabel.fromAppMetadataSafetyLabel(
+            AppsSafetyLabelHistory.SafetyLabel.extractLocationSharingSafetyLabel(
                 packageName, Instant.ofEpochMilli(receivedAtMs), safetyLabel)
         val historyFile = AppsSafetyLabelHistoryPersistence.getSafetyLabelHistoryFile(context)
 
