@@ -72,8 +72,13 @@ java_sdk_library {
     ],
     impl_library_visibility: [
         "//frameworks/base/apex/permission/tests",
+        "//frameworks/base/services/robotests/backup",
         "//frameworks/base/services/tests/mockingservicestests",
+        "//frameworks/base/services/tests/PackageManagerComponentOverrideTests",
         "//frameworks/base/services/tests/PackageManagerServiceTests/server",
+        "//frameworks/base/services/tests/servicestests",
+        "//frameworks/base/services/tests/uiservicestests",
+        "//frameworks/base/services/tests/wmtests",
         "//packages/modules/Permission/tests/apex",
     ],
     srcs: [
