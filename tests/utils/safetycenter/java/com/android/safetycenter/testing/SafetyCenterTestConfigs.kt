@@ -398,6 +398,14 @@ class SafetyCenterTestConfigs(private val context: Context) {
             .addSafetySourcesGroup(staticSourceGroup2)
             .build()
 
+    /**
+     * A [SafetyCenterConfig] with a single static source
+     *
+     * The particular source ID is configured in the same way as sources hosted by the Settings app,
+     * to launch as if it is part of the Settings app UI.
+     */
+    val singleStaticSettingsSource = singleSourceConfig(staticSafetySource("TestSource"))
+
     /** [SafetyCenterConfig] used in tests for Your Work Policy Info source. */
     val workPolicyInfoConfig =
         SafetyCenterConfig.Builder()
