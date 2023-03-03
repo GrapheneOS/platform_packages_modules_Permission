@@ -515,9 +515,7 @@ class SafetyCenterActivityTest {
         context.launchSafetyCenterActivity {
             waitDisplayed(
                 By.text(context.getString(safetyCenterTestConfigs.staticSource1.titleResId))
-            ) {
-                it.click()
-            }
+            ) { it.click() }
             waitButtonDisplayed("Exit test activity") { it.click() }
             waitAllTextDisplayed(
                 context.getString(safetyCenterTestConfigs.staticSource1.titleResId)
@@ -1239,9 +1237,7 @@ class SafetyCenterActivityTest {
         context.launchSafetyCenterActivity {
             waitDisplayed(
                 By.text(context.getString(safetyCenterTestConfigs.dynamicSourceGroup1.titleResId))
-            ) {
-                it.click()
-            }
+            ) { it.click() }
 
             waitAllTextNotDisplayed(
                 context.getString(safetyCenterTestConfigs.dynamicSourceGroup1.summaryResId)
@@ -1309,15 +1305,11 @@ class SafetyCenterActivityTest {
         context.launchSafetyCenterActivity {
             waitDisplayed(
                 By.text(context.getString(safetyCenterTestConfigs.dynamicSourceGroup1.titleResId))
-            ) {
-                it.click()
-            }
+            ) { it.click() }
 
             waitDisplayed(
                 By.text(context.getString(safetyCenterTestConfigs.dynamicSourceGroup1.titleResId))
-            ) {
-                it.click()
-            }
+            ) { it.click() }
 
             waitAllTextDisplayed(
                 context.getString(safetyCenterTestConfigs.dynamicSourceGroup1.titleResId)
@@ -1333,9 +1325,7 @@ class SafetyCenterActivityTest {
         context.launchSafetyCenterActivity {
             waitDisplayed(
                 By.text(context.getString(safetyCenterTestConfigs.dynamicSourceGroup1.titleResId))
-            ) {
-                it.click()
-            }
+            ) { it.click() }
 
             getUiDevice().rotate()
 
@@ -1404,9 +1394,7 @@ class SafetyCenterActivityTest {
         context.launchSafetyCenterActivity {
             waitDisplayed(
                 By.text(context.getString(safetyCenterTestConfigs.dynamicSourceGroup1.titleResId))
-            ) {
-                it.click()
-            }
+            ) { it.click() }
 
             waitAllTextNotDisplayed(
                 context.getString(safetyCenterTestConfigs.dynamicSourceGroup1.summaryResId)
@@ -1452,6 +1440,28 @@ class SafetyCenterActivityTest {
                 context.getString(lastGroup.titleResId),
                 context.getString(lastGroup.summaryResId),
             )
+        }
+    }
+
+    @Test
+    fun startStaticEntryActivity_noConfigToBeSettingsActivity_noExtraInBundle() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.implicitIntentSingleSourceConfig)
+
+        context.launchSafetyCenterActivity {
+            waitDisplayed(By.text("OK")) { it.click() }
+            waitDisplayed(By.text("is_from_settings_homepage false"))
+            waitButtonDisplayed("Exit test activity") { it.click() }
+        }
+    }
+
+    @Test
+    fun startStaticEntryActivity_withConfigToBeSettingsActivity_trueExtraInBundle() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleStaticSettingsSource)
+
+        context.launchSafetyCenterActivity {
+            waitDisplayed(By.text("OK")) { it.click() }
+            waitDisplayed(By.text("is_from_settings_homepage true"))
+            waitButtonDisplayed("Exit test activity") { it.click() }
         }
     }
 
