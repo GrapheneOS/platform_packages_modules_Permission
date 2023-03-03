@@ -36,6 +36,12 @@ internal class SafetyIllustrationPreference(context: Context, attrs: AttributeSe
     }
 
     var illustrationDrawable: Drawable? = null
+        set(drawable: Drawable?) {
+            if (drawable !== field) {
+                field = drawable
+                notifyChanged()
+            }
+        }
 
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
         super.onBindViewHolder(holder)
