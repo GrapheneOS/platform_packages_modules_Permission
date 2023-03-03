@@ -31,6 +31,7 @@ import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.DataC
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.DataLabel
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.SafetyLabel
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistoryPersistence
+import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistoryPersistence.AppsSafetyLabelHistoryFileContent
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistoryPersistence.ChangeListener
 import com.google.common.truth.Truth.assertThat
 import java.io.File
@@ -80,7 +81,8 @@ class AppsSafetyLabelHistoryPersistenceTest {
         AppsSafetyLabelHistoryPersistence.write(dataFile, appsSafetyLabelHistory)
         AppsSafetyLabelHistoryPersistence.clear(dataFile)
 
-        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile)).isEqualTo(null)
+        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile).appsSafetyLabelHistory)
+            .isEqualTo(null)
     }
 
     @Test
@@ -91,7 +93,7 @@ class AppsSafetyLabelHistoryPersistenceTest {
             )
         AppsSafetyLabelHistoryPersistence.write(dataFile, appsSafetyLabelHistory)
 
-        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile))
+        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile).appsSafetyLabelHistory)
             .isEqualTo(appsSafetyLabelHistory)
     }
 
@@ -103,7 +105,7 @@ class AppsSafetyLabelHistoryPersistenceTest {
                     AppSafetyLabelHistory(AppInfo(PACKAGE_NAME_2), listOf(SAFETY_LABEL_PKG_2_V2))))
         AppsSafetyLabelHistoryPersistence.write(dataFile, appsSafetyLabelHistory)
 
-        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile))
+        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile).appsSafetyLabelHistory)
             .isEqualTo(appsSafetyLabelHistory)
     }
 
@@ -118,8 +120,36 @@ class AppsSafetyLabelHistoryPersistenceTest {
                         listOf(SAFETY_LABEL_PKG_2_V1, SAFETY_LABEL_PKG_2_V2))))
         AppsSafetyLabelHistoryPersistence.write(dataFile, appsSafetyLabelHistory)
 
-        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile))
+        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile).appsSafetyLabelHistory)
             .isEqualTo(appsSafetyLabelHistory)
+    }
+
+    @Test
+    fun read_noFile_returnsInitialVersion() {
+        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile).version).isEqualTo(0)
+    }
+
+    @Test
+    fun read_afterWrite_defaultVersion_returnsInitialVersion() {
+        val appsSafetyLabelHistory =
+            AppsSafetyLabelHistory(
+                listOf(
+                    AppSafetyLabelHistory(AppInfo(PACKAGE_NAME_2), listOf(SAFETY_LABEL_PKG_2_V2))))
+        AppsSafetyLabelHistoryPersistence.write(dataFile, appsSafetyLabelHistory)
+
+        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile).version).isEqualTo(0)
+    }
+
+    @Test
+    fun read_afterWrite_specifiedVersion_returnsSpecifiedVersion() {
+        val appsSafetyLabelHistory =
+            AppsSafetyLabelHistory(
+                listOf(
+                    AppSafetyLabelHistory(AppInfo(PACKAGE_NAME_2), listOf(SAFETY_LABEL_PKG_2_V2))))
+        AppsSafetyLabelHistoryPersistence.write(
+            dataFile, AppsSafetyLabelHistoryFileContent(appsSafetyLabelHistory, 5))
+
+        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile).version).isEqualTo(5)
     }
 
     @Test
@@ -128,7 +158,7 @@ class AppsSafetyLabelHistoryPersistenceTest {
 
         AppsSafetyLabelHistoryPersistence.recordSafetyLabel(SAFETY_LABEL_PKG_1_V1, dataFile)
 
-        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile))
+        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile).appsSafetyLabelHistory)
             .isEqualTo(
                 AppsSafetyLabelHistory(
                     listOf(
@@ -146,7 +176,7 @@ class AppsSafetyLabelHistoryPersistenceTest {
 
         AppsSafetyLabelHistoryPersistence.recordSafetyLabel(SAFETY_LABEL_PKG_2_V1, dataFile)
 
-        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile))
+        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile).appsSafetyLabelHistory)
             .isEqualTo(
                 AppsSafetyLabelHistory(
                     listOf(
@@ -169,7 +199,7 @@ class AppsSafetyLabelHistoryPersistenceTest {
 
         AppsSafetyLabelHistoryPersistence.recordSafetyLabel(SAFETY_LABEL_PKG_2_V3, dataFile)
 
-        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile))
+        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile).appsSafetyLabelHistory)
             .isEqualTo(
                 AppsSafetyLabelHistory(
                     listOf(
@@ -191,7 +221,7 @@ class AppsSafetyLabelHistoryPersistenceTest {
 
         AppsSafetyLabelHistoryPersistence.recordSafetyLabel(SAFETY_LABEL_PKG_2_V3, dataFile)
 
-        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile))
+        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile).appsSafetyLabelHistory)
             .isEqualTo(
                 AppsSafetyLabelHistory(
                     listOf(
@@ -213,7 +243,7 @@ class AppsSafetyLabelHistoryPersistenceTest {
 
         AppsSafetyLabelHistoryPersistence.recordSafetyLabel(SAFETY_LABEL_PKG_1_V3, dataFile)
 
-        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile))
+        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile).appsSafetyLabelHistory)
             .isEqualTo(appsSafetyLabelHistory)
     }
 
@@ -234,7 +264,7 @@ class AppsSafetyLabelHistoryPersistenceTest {
                 SAFETY_LABEL_PKG_3_V1),
             dataFile)
 
-        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile))
+        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile).appsSafetyLabelHistory)
             .isEqualTo(
                 AppsSafetyLabelHistory(
                     listOf(
@@ -364,7 +394,7 @@ class AppsSafetyLabelHistoryPersistenceTest {
         AppsSafetyLabelHistoryPersistence.deleteSafetyLabelsForApps(
             setOf(AppInfo(PACKAGE_NAME_2)), dataFile)
 
-        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile))
+        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile).appsSafetyLabelHistory)
             .isEqualTo(
                 AppsSafetyLabelHistory(
                     listOf(
@@ -389,7 +419,7 @@ class AppsSafetyLabelHistoryPersistenceTest {
 
         AppsSafetyLabelHistoryPersistence.deleteSafetyLabelsOlderThan(DATE_2022_12_30, dataFile)
 
-        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile))
+        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile).appsSafetyLabelHistory)
             .isEqualTo(
                 AppsSafetyLabelHistory(
                     listOf(
@@ -415,7 +445,7 @@ class AppsSafetyLabelHistoryPersistenceTest {
 
         AppsSafetyLabelHistoryPersistence.deleteSafetyLabelsOlderThan(DATE_2022_10_14, dataFile)
 
-        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile))
+        assertThat(AppsSafetyLabelHistoryPersistence.read(dataFile).appsSafetyLabelHistory)
             .isEqualTo(
                 AppsSafetyLabelHistory(
                     listOf(
