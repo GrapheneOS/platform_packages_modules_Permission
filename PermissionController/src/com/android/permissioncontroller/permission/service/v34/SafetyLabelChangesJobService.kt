@@ -30,6 +30,7 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_BOOT_COMPLETED
+import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.os.PersistableBundle
@@ -263,8 +264,7 @@ class SafetyLabelChangesJobService : JobService() {
         safetyLabelsLastUpdatedTimes: Map<AppInfo, Instant>
     ): Boolean {
         val lightPackageInfo = LightPackageInfoLiveData[packageKey].getInitializedValue()
-        val lastAppUpdateTime: Instant =
-            Instant.ofEpochMilli(lightPackageInfo?.lastUpdateTime ?: 0)
+        val lastAppUpdateTime: Instant = Instant.ofEpochMilli(lightPackageInfo?.lastUpdateTime ?: 0)
         val latestSafetyLabelUpdateTime: Instant? =
             safetyLabelsLastUpdatedTimes[AppInfo(packageKey.first)]
         return latestSafetyLabelUpdateTime != null &&
@@ -284,7 +284,12 @@ class SafetyLabelChangesJobService : JobService() {
                 context.createContextAsUser(user, 0)
             }
         val appMetadataBundle: PersistableBundle =
-            userContext.packageManager.getAppMetadata(packageName)
+            try {
+                userContext.packageManager.getAppMetadata(packageName)
+            } catch (e: PackageManager.NameNotFoundException) {
+                Log.w(LOG_TAG, "Package $packageName not found while retrieving app metadata")
+                return null
+            }
         val appMetadataSafetyLabel: AppMetadataSafetyLabel =
             AppMetadataSafetyLabel.getSafetyLabelFromMetadata(appMetadataBundle) ?: return null
         val lastUpdateTime =
@@ -292,7 +297,7 @@ class SafetyLabelChangesJobService : JobService() {
                 LightPackageInfoLiveData[packageKey].getInitializedValue()?.lastUpdateTime ?: 0)
 
         val safetyLabelForPersistence: SafetyLabelForPersistence =
-            AppsSafetyLabelHistory.SafetyLabel.fromAppMetadataSafetyLabel(
+            AppsSafetyLabelHistory.SafetyLabel.extractLocationSharingSafetyLabel(
                 packageName, lastUpdateTime, appMetadataSafetyLabel)
 
         return safetyLabelForPersistence

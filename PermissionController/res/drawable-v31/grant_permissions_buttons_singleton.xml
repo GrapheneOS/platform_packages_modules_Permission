@@ -1,5 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~ Copyright (C) 2023 The Android Open Source Project
+  ~ Copyright (C) 2021 The Android Open Source Project
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -14,9 +15,9 @@
   ~ limitations under the License.
   -->
 
-<resources>
-    <dimen name="permission_rationale_purpose_list_bullet_radius">1.5dp</dimen>
-    <dimen name="permission_rationale_purpose_list_bullet_indent">9dp</dimen>
-
-    <dimen name="safety_center_brand_chip_corner_radius">24dp</dimen>
-</resources>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+       android:shape="rectangle">
+    <solid android:color="@android:color/system_accent1_100"/>
+    <corners android:topLeftRadius="12dp" android:topRightRadius="12dp"
+             android:bottomLeftRadius="12dp" android:bottomRightRadius="12dp"/>
+</shape>

@@ -244,6 +244,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
                 && Objects.equals(
                         mResolvedIssueActionId,
                         ((IssueCardPreference) preference).mResolvedIssueActionId)
+                && mIsDismissed == ((IssueCardPreference) preference).mIsDismissed
                 && mPositionInCardList == ((IssueCardPreference) preference).mPositionInCardList;
     }
 

@@ -19,8 +19,8 @@ package com.android.permissioncontroller.tests.mocking.safetylabel
 import android.os.Build
 import android.os.PersistableBundle
 import androidx.test.filters.SdkSuppress
-import com.android.permission.safetylabel.SafetyLabel.KEY_VERSION
 import com.android.permission.safetylabel.SafetyLabel as AppMetadataSafetyLabel
+import com.android.permission.safetylabel.SafetyLabel.KEY_VERSION
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.AppInfo
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.DataCategory
@@ -34,13 +34,13 @@ import org.junit.Test
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
 class AppsSafetyLabelHistoryTest {
     @Test
-    fun fromAppMetadataSafetyLabel_whenNoSharing_returnsSafetyLabelForPersistence() {
+    fun extractLocationSharingSafetyLabel_noSharing_returnsSafetyLabelForPersistence() {
         val metadataBundle = createMetadataWithDataShared(createDataSharedNoSharing())
         val appMetadataSafetyLabel =
             AppMetadataSafetyLabel.getSafetyLabelFromMetadata(metadataBundle)!!
 
         val safetyLabelForPersistence =
-            SafetyLabel.fromAppMetadataSafetyLabel(
+            SafetyLabel.extractLocationSharingSafetyLabel(
                 PACKAGE_NAME_1, DATE_2022_09_01, appMetadataSafetyLabel)
 
         assertThat(safetyLabelForPersistence)
@@ -48,13 +48,13 @@ class AppsSafetyLabelHistoryTest {
     }
 
     @Test
-    fun fromAppMetadataSafetyLabel_whenLocationSharingNoAds_returnsSafetyLabelForPersistence() {
+    fun extractLocationSharingSafetyLabel_locationSharingNoAds_returnsSafetyLabelForPersistence() {
         val metadataBundle = createMetadataWithDataShared(createDataSharedWithLocationNoAds())
         val appMetadataSafetyLabel =
             AppMetadataSafetyLabel.getSafetyLabelFromMetadata(metadataBundle)!!
 
         val safetyLabelForPersistence =
-            SafetyLabel.fromAppMetadataSafetyLabel(
+            SafetyLabel.extractLocationSharingSafetyLabel(
                 PACKAGE_NAME_1, DATE_2022_10_10, appMetadataSafetyLabel)
 
         assertThat(safetyLabelForPersistence)
@@ -66,13 +66,46 @@ class AppsSafetyLabelHistoryTest {
     }
 
     @Test
-    fun fromAppMetadataSafetyLabel_whenLocationSharingWithAds_returnsSafetyLabelForPersistence() {
+    fun extractLocationSharingSafetyLabel_locationSharingAds_returnsSafetyLabelForPersistence() {
         val metadataBundle = createMetadataWithDataShared(createDataSharedWithLocationWithAds())
         val appMetadataSafetyLabel =
             AppMetadataSafetyLabel.getSafetyLabelFromMetadata(metadataBundle)!!
 
         val safetyLabelForPersistence =
-            SafetyLabel.fromAppMetadataSafetyLabel(
+            SafetyLabel.extractLocationSharingSafetyLabel(
+                PACKAGE_NAME_2, DATE_2022_10_10, appMetadataSafetyLabel)
+
+        assertThat(safetyLabelForPersistence)
+            .isEqualTo(
+                SafetyLabel(
+                    AppInfo(PACKAGE_NAME_2),
+                    DATE_2022_10_10,
+                    DataLabel(mapOf(LOCATION_CATEGORY to DataCategory(true)))))
+    }
+
+    @Test
+    fun extractLocationSharingSafetyLabel_financeCategory_returnsEmptySafetyLabel() {
+        val metadataBundle = createMetadataWithDataShared(createDataSharedWithFinanceWithAds())
+        val appMetadataSafetyLabel =
+            AppMetadataSafetyLabel.getSafetyLabelFromMetadata(metadataBundle)!!
+
+        val safetyLabelForPersistence =
+            SafetyLabel.extractLocationSharingSafetyLabel(
+                PACKAGE_NAME_2, DATE_2022_10_10, appMetadataSafetyLabel)
+
+        assertThat(safetyLabelForPersistence)
+            .isEqualTo(SafetyLabel(AppInfo(PACKAGE_NAME_2), DATE_2022_10_10, DataLabel(mapOf())))
+    }
+
+    @Test
+    fun extractLocationSharingSafetyLabel_locationFinance_returnsLocationSafetyLabel() {
+        val metadataBundle =
+            createMetadataWithDataShared(createDataSharedWithLocationAndFinanceWithAds())
+        val appMetadataSafetyLabel =
+            AppMetadataSafetyLabel.getSafetyLabelFromMetadata(metadataBundle)!!
+
+        val safetyLabelForPersistence =
+            SafetyLabel.extractLocationSharingSafetyLabel(
                 PACKAGE_NAME_2, DATE_2022_10_10, appMetadataSafetyLabel)
 
         assertThat(safetyLabelForPersistence)
@@ -87,6 +120,8 @@ class AppsSafetyLabelHistoryTest {
     companion object {
         private const val PACKAGE_NAME_1 = "package_name_1"
         private const val PACKAGE_NAME_2 = "package_name_2"
+        private const val FINANCE_CATEGORY = "finance"
+        private const val FINANCIAL_PURCHASE_HISTORY = "purchase_history"
         private const val LOCATION_CATEGORY = "location"
         private const val APPROX_LOCATION = "approx_location"
         private const val PURPOSE_FRAUD_PREVENTION_SECURITY = 4
@@ -136,6 +171,45 @@ class AppsSafetyLabelHistoryTest {
             }
         }
 
+        fun createDataSharedWithFinanceWithAds(): PersistableBundle {
+            val financeBundle =
+                PersistableBundle().apply {
+                    putPersistableBundle(
+                        FINANCIAL_PURCHASE_HISTORY,
+                        PersistableBundle().apply {
+                            putIntArray(PURPOSES_KEY, listOf(PURPOSE_ADVERTISING).toIntArray())
+                        })
+                }
+
+            return PersistableBundle().apply {
+                putPersistableBundle(FINANCE_CATEGORY, financeBundle)
+            }
+        }
+
+        fun createDataSharedWithLocationAndFinanceWithAds(): PersistableBundle {
+            val locationBundle =
+                PersistableBundle().apply {
+                    putPersistableBundle(
+                        APPROX_LOCATION,
+                        PersistableBundle().apply {
+                            putIntArray(PURPOSES_KEY, listOf(PURPOSE_ADVERTISING).toIntArray())
+                        })
+                }
+            val financeBundle =
+                PersistableBundle().apply {
+                    putPersistableBundle(
+                        FINANCIAL_PURCHASE_HISTORY,
+                        PersistableBundle().apply {
+                            putIntArray(PURPOSES_KEY, listOf(PURPOSE_ADVERTISING).toIntArray())
+                        })
+                }
+
+            return PersistableBundle().apply {
+                putPersistableBundle(FINANCE_CATEGORY, financeBundle)
+                putPersistableBundle(LOCATION_CATEGORY, locationBundle)
+            }
+        }
+
         fun createMetadataWithDataShared(dataSharedBundle: PersistableBundle): PersistableBundle {
             val dataLabelBundle =
                 PersistableBundle().apply {
@@ -145,7 +219,8 @@ class AppsSafetyLabelHistoryTest {
             val safetyLabelBundle =
                 PersistableBundle().apply {
                     putLong(KEY_VERSION, SAFETY_LABELS_VERSION)
-                    putPersistableBundle(DATA_LABEL_KEY, dataLabelBundle) }
+                    putPersistableBundle(DATA_LABEL_KEY, dataLabelBundle)
+                }
 
             return PersistableBundle().apply {
                 putLong(KEY_VERSION, TOP_LEVEL_VERSION)

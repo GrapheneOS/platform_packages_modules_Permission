@@ -68,16 +68,16 @@
     <string name="grant_dialog_button_more_info">More info</string>
 
     <!-- Title for the dialog button to allow access to all photos. [CHAR LIMIT=60] -->
-    <string name="grant_dialog_button_allow_all_photos">Allow access to all photos</string>
+    <string name="grant_dialog_button_allow_all_photos">Allow access to all</string>
 
     <!-- Title for the dialog button to allow access to select photos to be shared. [CHAR LIMIT=60] -->
     <string name="grant_dialog_button_allow_selected_photos">Select photos</string>
 
     <!-- Title for the dialog button to allow access to select more photos to be shared. [CHAR LIMIT=60] -->
-    <string name="grant_dialog_button_allow_more_selected_photos">Select more photos</string>
+    <string name="grant_dialog_button_allow_more_selected_photos">Select more photos and videos</string>
 
     <!-- Title for the dialog button to not allow access to select more photos to be shared. [CHAR LIMIT=60] -->
-    <string name="grant_dialog_button_dont_allow_more_selected_photos">Don\u2019t select more photos</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos">Don\u2019t select more</string>
 
     <!-- Title for the dialog button to deny a permission grant despite a warning of implications. [CHAR LIMIT=30] -->
     <string name="grant_dialog_button_deny_anyway">Don\u2019t allow anyway</string>
@@ -1473,8 +1473,8 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="permgrouprequest_read_media_visual">Allow &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access photos and videos on this device?</string>
 
     <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
-    <string name="permgrouprequest_more_photos">Grant
-        &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> access to more photos?</string>
+    <string name="permgrouprequest_more_photos">Allow
+        &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> access to more photos and videos on this device?</string>
 
     <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
     <string name="permgrouprequest_microphone">Allow
