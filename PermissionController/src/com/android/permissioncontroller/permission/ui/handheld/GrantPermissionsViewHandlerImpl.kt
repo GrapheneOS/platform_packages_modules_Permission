@@ -46,20 +46,21 @@ import com.airbnb.lottie.LottieCompositionFactory
 import com.airbnb.lottie.LottieDrawable
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.R
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_ALL_PHOTOS_BUTTON
+import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_ALL_BUTTON
+import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_ALL_SINGLETON_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_ALWAYS_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_FOREGROUND_BUTTON
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_MORE_SELECTED_PHOTOS_BUTTON
+import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_MORE_SELECTED_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_ONE_TIME_BUTTON
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_SELECTED_PHOTOS_BUTTON
+import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_SELECTED_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.COARSE_RADIO_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DENY_AND_DONT_ASK_AGAIN_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DENY_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DIALOG_WITH_BOTH_LOCATIONS
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DIALOG_WITH_COARSE_LOCATION_ONLY
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DIALOG_WITH_FINE_LOCATION_ONLY
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DONT_ALLOW_MORE_SELECTED_PHOTOS_BUTTON
+import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DONT_ALLOW_MORE_SELECTED_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.FINE_RADIO_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.LOCATION_ACCURACY_LAYOUT
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.NEXT_BUTTON
@@ -72,7 +73,7 @@ import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandle
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.CANCELED
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.DENIED
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.DENIED_DO_NOT_ASK_AGAIN
-import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.DENIED_MORE_PHOTOS
+import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.DENIED_MORE
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.GRANTED_ALWAYS
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.GRANTED_FOREGROUND_ONLY
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.GRANTED_ONE_TIME
@@ -482,8 +483,7 @@ class GrantPermissionsViewHandlerImpl(
         }
 
         when (BUTTON_RES_ID_TO_NUM.get(id, -1)) {
-            ALLOW_ALL_PHOTOS_BUTTON,
-            ALLOW_BUTTON -> {
+            ALLOW_ALL_BUTTON, ALLOW_ALL_SINGLETON_BUTTON, ALLOW_BUTTON -> {
                 view.performAccessibilityAction(
                     AccessibilityNodeInfo.ACTION_CLEAR_ACCESSIBILITY_FOCUS, null)
                 resultListener.onPermissionGrantResult(groupName, affectedForegroundPermissions,
@@ -507,15 +507,15 @@ class GrantPermissionsViewHandlerImpl(
                 resultListener.onPermissionGrantResult(groupName, affectedForegroundPermissions,
                     GRANTED_ONE_TIME)
             }
-            ALLOW_SELECTED_PHOTOS_BUTTON, ALLOW_MORE_SELECTED_PHOTOS_BUTTON -> {
+            ALLOW_SELECTED_BUTTON, ALLOW_MORE_SELECTED_BUTTON -> {
                 view.performAccessibilityAction(
                     AccessibilityNodeInfo.ACTION_CLEAR_ACCESSIBILITY_FOCUS, null)
                 resultListener.onPermissionGrantResult(groupName, affectedForegroundPermissions,
                     GRANTED_USER_SELECTED)
             }
-            DONT_ALLOW_MORE_SELECTED_PHOTOS_BUTTON -> {
+            DONT_ALLOW_MORE_SELECTED_BUTTON -> {
                 resultListener.onPermissionGrantResult(groupName, affectedForegroundPermissions,
-                    DENIED_MORE_PHOTOS)
+                    DENIED_MORE)
             }
             DENY_BUTTON, NO_UPGRADE_BUTTON, NO_UPGRADE_OT_BUTTON -> {
                 view.performAccessibilityAction(
@@ -584,14 +584,16 @@ class GrantPermissionsViewHandlerImpl(
                 NO_UPGRADE_OT_BUTTON)
             BUTTON_RES_ID_TO_NUM.put(R.id.permission_no_upgrade_one_time_and_dont_ask_again_button,
                 NO_UPGRADE_OT_AND_DONT_ASK_AGAIN_BUTTON)
-            BUTTON_RES_ID_TO_NUM.put(R.id.permission_allow_all_photos_button,
-                ALLOW_ALL_PHOTOS_BUTTON)
-            BUTTON_RES_ID_TO_NUM.put(R.id.permission_allow_selected_photos_button,
-                ALLOW_SELECTED_PHOTOS_BUTTON)
-            BUTTON_RES_ID_TO_NUM.put(R.id.permission_allow_more_selected_photos_button,
-                ALLOW_MORE_SELECTED_PHOTOS_BUTTON)
-            BUTTON_RES_ID_TO_NUM.put(R.id.permission_dont_allow_more_selected_photos_button,
-                DONT_ALLOW_MORE_SELECTED_PHOTOS_BUTTON)
+            BUTTON_RES_ID_TO_NUM.put(R.id.permission_allow_all_button,
+                ALLOW_ALL_BUTTON)
+            BUTTON_RES_ID_TO_NUM.put(R.id.permission_allow_selected_button,
+                ALLOW_SELECTED_BUTTON)
+            BUTTON_RES_ID_TO_NUM.put(R.id.permission_allow_more_selected_button,
+                ALLOW_MORE_SELECTED_BUTTON)
+            BUTTON_RES_ID_TO_NUM.put(R.id.permission_dont_allow_more_selected_button,
+                DONT_ALLOW_MORE_SELECTED_BUTTON)
+            BUTTON_RES_ID_TO_NUM.put(R.id.permission_allow_all_singleton_button,
+                ALLOW_ALL_SINGLETON_BUTTON)
 
 
             LOCATION_RES_ID_TO_NUM.put(R.id.permission_location_accuracy, LOCATION_ACCURACY_LAYOUT)
