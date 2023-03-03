@@ -108,11 +108,39 @@ class SafetyCenterResourcesContextTest {
     }
 
     @Test
-    fun getDrawableByName_withFallback_nullResourceForInvalidId() {
+    fun getOptionalString_withValidId_returnsString() {
+        val safetyCenterResourcesContext =
+            createNewResourcesContext(fallbackIfResourceNotFound = true)
+        assertThat(safetyCenterResourcesContext.getOptionalString("valid_string"))
+            .isEqualTo("I exist!")
+    }
+
+    @Test
+    fun getOptionalString_invalidIdWithFallback_returnsNull() {
+        val safetyCenterResourcesContext =
+            createNewResourcesContext(fallbackIfResourceNotFound = true)
+        assertThat(safetyCenterResourcesContext.getOptionalString("invalid_string")).isNull()
+    }
+
+    @Test
+    fun getOptionalString_invalidIdWithoutFallback_returnsNull() {
+        val safetyCenterResourcesContext =
+            createNewResourcesContext(fallbackIfResourceNotFound = false)
+        assertThat(safetyCenterResourcesContext.getOptionalString("invalid_string")).isNull()
+    }
+
+    @Test
+    fun getDrawableByName_withValidId_returnsDrawable() {
         val safetyCenterResourcesContext =
             createNewResourcesContext(fallbackIfResourceNotFound = true)
         assertThat(safetyCenterResourcesContext.getDrawableByName("valid_drawable", theme))
             .isNotNull()
+    }
+
+    @Test
+    fun getDrawableByName_withFallback_nullResourceForInvalidId() {
+        val safetyCenterResourcesContext =
+            createNewResourcesContext(fallbackIfResourceNotFound = true)
         assertThat(safetyCenterResourcesContext.getDrawableByName("invalid_drawable", theme))
             .isNull()
     }
@@ -121,8 +149,6 @@ class SafetyCenterResourcesContextTest {
     fun getDrawableByName_withoutFallback_crashesForInvalidId() {
         val safetyCenterResourcesContext =
             createNewResourcesContext(fallbackIfResourceNotFound = false)
-        assertThat(safetyCenterResourcesContext.getDrawableByName("valid_drawable", theme))
-            .isNotNull()
         assertFailsWith(Resources.NotFoundException::class) {
             safetyCenterResourcesContext.getDrawableByName("invalid_drawable", theme)
         }
