@@ -54,6 +54,8 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
         subpageBrandChip.setupListener(requireActivity())
         setupIllustration()
         setupFooter()
+
+        prerenderCurrentSafetyCenterData()
     }
 
     override fun onResume() {
