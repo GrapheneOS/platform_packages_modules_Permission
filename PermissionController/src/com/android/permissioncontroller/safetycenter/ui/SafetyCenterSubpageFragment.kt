@@ -27,7 +27,6 @@ import com.android.permissioncontroller.safetycenter.ui.SafetyBrandChipPreferenc
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterUiData
 import com.android.safetycenter.resources.SafetyCenterResourcesContext
 import com.android.settingslib.widget.FooterPreference
-import com.android.settingslib.widget.IllustrationPreference
 
 /** A fragment that represents a generic subpage in Safety Center. */
 @RequiresApi(UPSIDE_DOWN_CAKE)
@@ -35,7 +34,7 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
 
     private lateinit var sourceGroupId: String
     private lateinit var subpageBrandChip: SafetyBrandChipPreference
-    private lateinit var subpageIllustration: IllustrationPreference
+    private lateinit var subpageIllustration: SafetyIllustrationPreference
     private lateinit var subpageIssueGroup: PreferenceGroup
     private lateinit var subpageEntryGroup: PreferenceGroup
     private lateinit var subpageFooter: FooterPreference
@@ -54,6 +53,8 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
         subpageBrandChip.setupListener(requireActivity())
         setupIllustration()
         setupFooter()
+
+        prerenderCurrentSafetyCenterData()
     }
 
     override fun onResume() {
@@ -85,7 +86,7 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
             subpageIllustration.setVisible(false)
         }
 
-        subpageIllustration.setImageDrawable(drawable)
+        subpageIllustration.illustrationDrawable = drawable
     }
 
     private fun setupFooter() {
@@ -105,7 +106,7 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
         val subpageDismissedIssues = uiData?.getMatchingDismissedIssues(sourceGroupId)
 
         subpageIllustration.isVisible =
-            subpageIssues.isNullOrEmpty() && subpageIllustration.imageDrawable != null
+            subpageIssues.isNullOrEmpty() && subpageIllustration.illustrationDrawable != null
 
         if (subpageIssues.isNullOrEmpty() && subpageDismissedIssues.isNullOrEmpty()) {
             Log.w(TAG, "$sourceGroupId doesn't have any matching SafetyCenterIssues")

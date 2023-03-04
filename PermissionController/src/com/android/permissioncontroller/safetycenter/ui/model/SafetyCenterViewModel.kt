@@ -80,6 +80,14 @@ abstract class SafetyCenterViewModel(protected val app: Application) : AndroidVi
     @RequiresApi(UPSIDE_DOWN_CAKE) abstract fun pageOpen(sourceGroupId: String)
 
     abstract fun changingConfigurations()
+
+    /**
+     * Returns the [SafetyCenterData] currently stored by the Safety Center service.
+     *
+     * Note about current impl: This is drawn directly from SafetyCenterManager and will not contain
+     * any data about currently in-flight issues.
+     */
+    abstract fun getCurrentSafetyCenterDataAsUiData(): SafetyCenterUiData
 }
 
 typealias IssueId = String

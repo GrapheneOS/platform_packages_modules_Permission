@@ -117,8 +117,9 @@ public final class SafetyCenterDashboardFragment extends SafetyCenterFragment {
             getPreferenceScreen().removePreference(mStaticEntriesGroup);
             mStaticEntriesGroup = null;
         }
-
         getSafetyCenterViewModel().getStatusUiLiveData().observe(this, this::updateStatus);
+
+        prerenderCurrentSafetyCenterData();
     }
 
     // Set the default divider line between preferences to be transparent

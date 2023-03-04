@@ -87,6 +87,9 @@ class LiveSafetyCenterViewModel(app: Application) : SafetyCenterViewModel(app) {
 
     private val safetyCenterManager = app.getSystemService(SafetyCenterManager::class.java)!!
 
+    override fun getCurrentSafetyCenterDataAsUiData(): SafetyCenterUiData =
+            SafetyCenterUiData(safetyCenterManager.safetyCenterData)
+
     override fun dismissIssue(issue: SafetyCenterIssue) {
         safetyCenterManager.dismissSafetyCenterIssue(issue.id)
     }
