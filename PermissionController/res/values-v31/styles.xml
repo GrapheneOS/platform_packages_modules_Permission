@@ -89,11 +89,11 @@
         <item name="android:layout_height">56dp</item>
         <item name="android:layout_marginLeft">24dp</item>
         <item name="android:layout_marginRight">24dp</item>
-        <item name="android:layout_marginTop">7dp</item>
+        <item name="android:layout_marginTop">14dp</item>
         <item name="android:layout_marginBottom">2dp</item>
         <item name="android:fontFamily">google-sans-medium</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@android:color/system_neutral1_900</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:background">@drawable/grant_permissions_buttons_singleton</item>
     </style>
 
@@ -104,18 +104,20 @@
            parent="@style/PermissionGrantButtonTop"></style>
     <style name="PermissionGrantButtonAllowOneTimeMaterial3"
            parent="@style/PermissionGrantButtonMiddle"></style>
-    <style name="PermissionGrantButtonAllowAllPhotosMaterial3"
-        parent="@style/PermissionGrantButtonSingleton"></style>
-    <style name="PermissionGrantButtonAllowSelectedPhotosMaterial3"
+    <style name="PermissionGrantButtonAllowAllMaterial3"
+        parent="@style/PermissionGrantButtonMiddle"></style>
+    <style name="PermissionGrantButtonAllowSelectedMaterial3"
         parent="@style/PermissionGrantButtonTop"></style>
-    <style name="PermissionGrantButtonAllowMorePhotosMaterial3"
+    <style name="PermissionGrantButtonAllowMoreMaterial3"
         parent="@style/PermissionGrantButtonTop"></style>
-    <style name="PermissionGrantButtonDontAllowMorePhotosMaterial3"
+    <style name="PermissionGrantButtonDontAllowMoreMaterial3"
         parent="@style/PermissionGrantButtonBottom"></style>
     <style name="PermissionGrantButtonDenyMaterial3"
            parent="@style/PermissionGrantButtonBottom"></style>
     <style name="PermissionGrantButtonNoUpgradeMaterial3"
            parent="@style/PermissionGrantButtonBottom"></style>
+    <style name="PermissionGrantButtonAllowAllSingletonMaterial3"
+        parent="@style/PermissionGrantButtonSingleton"></style>
 
     <!-- END PERMISSION GRANT DIALOG -->
 
