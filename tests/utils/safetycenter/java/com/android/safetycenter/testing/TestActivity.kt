@@ -18,12 +18,17 @@ package com.android.safetycenter.testing
 import android.app.Activity
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 
 /** An activity used in tests to assert the redirects. */
 class TestActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.test_activity)
+        val bundleText: TextView? = findViewById(R.id.bundle_text)
+        val isFromSettingsHomepage = getIntent().getBooleanExtra("is_from_settings_homepage", false)
+        bundleText?.text = "is_from_settings_homepage $isFromSettingsHomepage"
+
         val exitButton: View? = findViewById(R.id.button)
         exitButton?.setOnClickListener { finish() }
     }

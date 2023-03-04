@@ -21,5 +21,5 @@
     <!-- Comma separated list of packages that are pregranted to enable a notification listener service. For T- platforms.-->
     <string name="config_NotificationListenerServicePregrants" translatable="false"></string>
     <!-- Comma separated list of safety source IDs to add an Intent Extra confirming they should be displayed as if opened by a settings UI page. -->
-    <string name="config_useSettingsHomepageIntentExtra" translatable="false">AndroidAdvancedPrivacy,AndroidAdvancedSecurity</string>
+    <string name="config_useSettingsHomepageIntentExtra" translatable="false">AndroidAdvancedPrivacy,AndroidAdvancedSecurity,TestSource</string>
 </resources>
