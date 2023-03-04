@@ -842,6 +842,7 @@ object KotlinUtils {
         }
 
         var newFlags = perm.flags
+        var oldFlags = perm.flags
         var isGranted = perm.isGrantedIncludingAppOp
         var shouldKill = false
 
@@ -851,6 +852,14 @@ object KotlinUtils {
 
             // TODO 195016052: investigate adding split permission handling
             if (supportsRuntime) {
+                // If granting without app ops, explicitly disallow app op first, while setting the
+                // flag, so that the PermissionPolicyService doesn't reset the app op state
+                if (affectsAppOp && withoutAppOps) {
+                    oldFlags = oldFlags.setFlag(PackageManager.FLAG_PERMISSION_REVOKED_COMPAT)
+                    app.packageManager.updatePermissionFlags(perm.name, group.packageName,
+                        PERMISSION_CONTROLLER_CHANGED_FLAG_MASK, oldFlags, user)
+                    disallowAppOp(app, perm, group)
+                }
                 app.packageManager.grantRuntimePermission(group.packageName, perm.name, user)
                 isGranted = true
             } else if (affectsAppOp) {
@@ -861,7 +870,7 @@ object KotlinUtils {
                 shouldKill = true
                 isGranted = true
             }
-            newFlags = if (withoutAppOps) {
+            newFlags = if (affectsAppOp && withoutAppOps) {
                 newFlags.setFlag(PackageManager.FLAG_PERMISSION_REVOKED_COMPAT)
             } else {
                 newFlags.clearFlag(PackageManager.FLAG_PERMISSION_REVOKED_COMPAT)
@@ -913,7 +922,7 @@ object KotlinUtils {
             }
         }
 
-        if (perm.flags != newFlags) {
+        if (oldFlags != newFlags) {
             app.packageManager.updatePermissionFlags(perm.name, group.packageInfo.packageName,
                 PERMISSION_CONTROLLER_CHANGED_FLAG_MASK, newFlags, user)
         }

@@ -67,8 +67,11 @@
     <!-- Title for the dialog button to get more info about a permission. [CHAR LIMIT=15] -->
     <string name="grant_dialog_button_more_info">More info</string>
 
-    <!-- Title for the dialog button to allow access to all photos. [CHAR LIMIT=60] -->
-    <string name="grant_dialog_button_allow_all_photos">Allow access to all</string>
+    <!-- Title for the dialog button to allow access to all of a resource. [CHAR LIMIT=60] -->
+    <string name="grant_dialog_button_allow_all">Allow all</string>
+
+    <!-- Title for the dialog button to allow access to all of a resource always. [CHAR LIMIT=60] -->
+    <string name="grant_dialog_button_always_allow_all">Always allow all</string>
 
     <!-- Title for the dialog button to allow access to select photos to be shared. [CHAR LIMIT=60] -->
     <string name="grant_dialog_button_allow_selected_photos">Select photos</string>

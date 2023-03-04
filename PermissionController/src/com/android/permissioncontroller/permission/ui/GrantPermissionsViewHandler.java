@@ -36,7 +36,7 @@ import java.util.List;
 public interface GrantPermissionsViewHandler {
     @Retention(SOURCE)
     @IntDef({CANCELED, GRANTED_ALWAYS, GRANTED_FOREGROUND_ONLY, DENIED, DENIED_DO_NOT_ASK_AGAIN,
-            GRANTED_ONE_TIME, GRANTED_USER_SELECTED, DENIED_MORE_PHOTOS})
+            GRANTED_ONE_TIME, GRANTED_USER_SELECTED, DENIED_MORE})
     @interface Result {}
     int LINKED_TO_SETTINGS = -2;
     int CANCELED = -1;
@@ -45,8 +45,9 @@ public interface GrantPermissionsViewHandler {
     int DENIED = 2;
     int DENIED_DO_NOT_ASK_AGAIN = 3;
     int GRANTED_ONE_TIME = 4;
-    int GRANTED_USER_SELECTED = 5;
-    int DENIED_MORE_PHOTOS = 6;
+    int GRANTED_USER_SELECTED = 5; // The user has used a picker to select data to share
+    int DENIED_MORE = 6; // The user has used the picker at least once, but has denied a request
+                         // for more
 
     /**
      * Listener interface for getting notified when the user responds to a
