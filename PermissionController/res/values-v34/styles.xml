@@ -72,6 +72,7 @@
            parent="@android:style/TextAppearance.DeviceDefault">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">google-sans</item>
         <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:textSize">24sp</item>
         <item name="android:lineHeight">32sp</item>
@@ -103,6 +104,7 @@
            parent="@android:style/TextAppearance.DeviceDefault.Medium">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">google-sans-text-medium</item>
         <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:textColorLink">@color/permission_rationale_accent_primary_variant</item>
         <item name="android:textSize">14sp</item>
@@ -115,6 +117,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">4dp</item>
+        <item name="android:fontFamily">google-sans-text</item>
         <item name="android:textColor">?android:attr/textColorSecondary</item>
         <item name="android:textColorLink">@color/permission_rationale_accent_primary_variant</item>
         <item name="android:textSize">14sp</item>
@@ -151,6 +154,7 @@
         <item name="android:paddingBottom">8dp</item>
         <item name="android:paddingStart">16dp</item>
         <item name="android:paddingEnd">16dp</item>
+        <item name="android:fontFamily">google-sans-text-medium</item>
         <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:textSize">14sp</item>
         <item name="android:lineHeight">20sp</item>
