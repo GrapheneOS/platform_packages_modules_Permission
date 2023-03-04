@@ -233,18 +233,20 @@
            parent="@style/PermissionGrantButton"></style>
     <style name="PermissionGrantButtonAllowOneTime"
            parent="@style/PermissionGrantButton"></style>
-    <style name="PermissionGrantButtonAllowAllPhotos"
+    <style name="PermissionGrantButtonAllowAll"
            parent="@style/PermissionGrantButton"></style>
-    <style name="PermissionGrantButtonAllowMorePhotos"
+    <style name="PermissionGrantButtonAllowMore"
            parent="@style/PermissionGrantButton"></style>
-    <style name="PermissionGrantButtonAllowSelectedPhotos"
+    <style name="PermissionGrantButtonAllowSelected"
            parent="@style/PermissionGrantButton"></style>
-    <style name="PermissionGrantButtonDontAllowMorePhotos"
+    <style name="PermissionGrantButtonDontAllowMore"
            parent="@style/PermissionGrantButton"></style>
     <style name="PermissionGrantButtonDeny"
            parent="@style/PermissionGrantButton"></style>
     <style name="PermissionGrantButtonNoUpgrade"
            parent="@style/PermissionGrantButton"></style>
+    <style name="PermissionGrantButtonAllowAllSingleton"
+        parent="@style/PermissionGrantButton"></style>
 
     <style name="PermissionGrantButtonAllowMaterial3"
            parent="@style/PermissionGrantButton"></style>
@@ -256,7 +258,7 @@
            parent="@style/PermissionGrantButton"></style>
     <style name="PermissionGrantButtonNoUpgradeMaterial3"
            parent="@style/PermissionGrantButton"></style>
-    <style name="PermissionGrantButtonAllowAllPhotosMaterial3"
+    <style name="PermissionGrantButtonAllowAllMaterial3"
            parent="@style/PermissionGrantButton"></style>
     <style name="PermissionGrantButtonAllowSelectedPhotosMaterial3"
            parent="@style/PermissionGrantButton"></style>
@@ -264,6 +266,8 @@
            parent="@style/PermissionGrantButton"></style>
     <style name="PermissionGrantButtonDontAllowMorePhotosMaterial3"
            parent="@style/PermissionGrantButton"></style>
+    <style name="PermissionGrantButtonAllowAllSingletonMaterial3"
+        parent="@style/PermissionGrantButton"></style>
 
     <!-- END PERMISSION GRANT DIALOG -->
 
