@@ -131,6 +131,18 @@ abstract class SafetyCenterFragment : PreferenceFragmentCompat() {
         }
     }
 
+    /**
+     * Insert preferences for whatever Safety Center data we currently have available.
+     *
+     * This should contain the groups and entries to render the basic page structure, even if no
+     * source has responded with data at this point.
+     *
+     * This should be called by subclasses in [onCreatePreferences] after they've pulled out the
+     * preferences they will modify in [renderSafetyCenterData].
+     */
+    protected fun prerenderCurrentSafetyCenterData() =
+            renderSafetyCenterData(safetyCenterViewModel.getCurrentSafetyCenterDataAsUiData())
+
     abstract fun renderSafetyCenterData(uiData: SafetyCenterUiData?)
 
     private fun displayErrorDetails(errorDetails: SafetyCenterErrorDetails?) {
