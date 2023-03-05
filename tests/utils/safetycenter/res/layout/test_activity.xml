@@ -24,4 +24,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Exit test activity" />
+    <TextView android:id="@+id/bundle_text"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Missing" />
 </LinearLayout>

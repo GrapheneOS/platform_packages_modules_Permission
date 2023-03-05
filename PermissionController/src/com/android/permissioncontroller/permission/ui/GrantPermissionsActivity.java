@@ -97,7 +97,7 @@ public class GrantPermissionsActivity extends SettingsActivity
             + "_REQUEST_ID";
     public static final String ANNOTATION_ID = "link";
 
-    public static final int NEXT_BUTTON = 15;
+    public static final int NEXT_BUTTON = 16;
     public static final int ALLOW_BUTTON = 0;
     public static final int ALLOW_ALWAYS_BUTTON = 1; // Used in auto
     public static final int ALLOW_FOREGROUND_BUTTON = 2;
@@ -109,10 +109,15 @@ public class GrantPermissionsActivity extends SettingsActivity
     public static final int NO_UPGRADE_OT_BUTTON = 8; // one-time
     public static final int NO_UPGRADE_OT_AND_DONT_ASK_AGAIN_BUTTON = 9; // one-time
     public static final int LINK_TO_SETTINGS = 10;
-    public static final int ALLOW_ALL_PHOTOS_BUTTON = 11;
-    public static final int ALLOW_SELECTED_PHOTOS_BUTTON = 12;
-    public static final int ALLOW_MORE_SELECTED_PHOTOS_BUTTON = 13;
-    public static final int DONT_ALLOW_MORE_SELECTED_PHOTOS_BUTTON = 14;
+    public static final int ALLOW_ALL_BUTTON = 11; // button for options with a picker, allow all
+    public static final int ALLOW_SELECTED_BUTTON = 12; // allow selected, with picker
+    // button to add more after a user has used the picker once
+    public static final int ALLOW_MORE_SELECTED_BUTTON = 13;
+    // button to cancel a request for more data with a picker
+    public static final int DONT_ALLOW_MORE_SELECTED_BUTTON = 14;
+    // after the user has used the picker, the allow all button shows below all other buttons, with
+    // a different style.
+    public static final int ALLOW_ALL_SINGLETON_BUTTON = 15;
 
     public static final int NEXT_LOCATION_DIALOG = 6;
     public static final int LOCATION_ACCURACY_LAYOUT = 0;

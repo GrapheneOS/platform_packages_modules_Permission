@@ -22,7 +22,7 @@
         android:key="subpage_brand_chip"
         app:selectable="false"/>
 
-    <com.android.settingslib.widget.IllustrationPreference
+    <com.android.permissioncontroller.safetycenter.ui.SafetyIllustrationPreference
         android:key="subpage_illustration"
         app:selectable="false"/>
 
