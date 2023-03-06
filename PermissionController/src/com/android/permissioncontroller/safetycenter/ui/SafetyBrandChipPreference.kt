@@ -25,6 +25,7 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.FragmentActivity
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
+import com.android.permissioncontroller.Constants.EXTRA_SESSION_ID
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.safetycenter.SafetyCenterConstants
 
@@ -49,9 +50,10 @@ internal class SafetyBrandChipPreference(context: Context, attrs: AttributeSet) 
      * Sets the listener that handles clicks for the brand chip
      *
      * @param activity represents the parent activity of the fragment
+     * @param sessionId identifier for the current session
      */
-    fun setupListener(activity: FragmentActivity) {
-        brandChipClickListener = View.OnClickListener { closeSubpage(activity, context) }
+    fun setupListener(activity: FragmentActivity, sessionId: Long) {
+        brandChipClickListener = View.OnClickListener { closeSubpage(activity, context, sessionId) }
     }
 
     companion object {
@@ -60,14 +62,21 @@ internal class SafetyBrandChipPreference(context: Context, attrs: AttributeSet) 
          *
          * @param fragmentActivity represents the parent activity of the fragment
          * @param fragmentContext represents the context associated with the fragment
+         * @param sessionId identifier for the current session
          */
-        fun closeSubpage(fragmentActivity: FragmentActivity, fragmentContext: Context) {
+        fun closeSubpage(
+            fragmentActivity: FragmentActivity,
+            fragmentContext: Context,
+            sessionId: Long
+        ) {
             val openedFromHomepage =
                 fragmentActivity
                     .getIntent()
                     .getBooleanExtra(SafetyCenterConstants.EXTRA_OPENED_FROM_HOMEPAGE, false)
             if (!openedFromHomepage) {
                 val intent = Intent(Intent.ACTION_SAFETY_CENTER)
+                intent.putExtra(EXTRA_SESSION_ID, sessionId)
+                NavigationSource.SAFETY_CENTER.addToIntent(intent)
                 fragmentContext.startActivity(intent)
             }
             fragmentActivity.finish()
