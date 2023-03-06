@@ -21,7 +21,6 @@ import static com.android.permissioncontroller.PermissionControllerStatsLog.PERM
 import static com.android.permissioncontroller.PermissionControllerStatsLog.write;
 
 import android.content.ActivityNotFoundException;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -43,9 +42,9 @@ import androidx.annotation.Nullable;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
-import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.compat.IntentCompat;
+import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel;
 import com.android.permissioncontroller.permission.utils.Utils;
 
 import java.util.ArrayList;
@@ -147,14 +146,21 @@ public class PermissionHistoryPreference extends Preference {
         View dashLine = widget.findViewById(R.id.permission_history_dash_line);
         dashLine.setVisibility(mIsLastUsage ? View.GONE : View.VISIBLE);
 
-        Intent intent = getManagePermissionUsageIntent();
-        if (intent == null) {
-            intent = getDefaultManageAppPermissionsIntent();
-        }
+        // This Intent should ideally be part of the constructor, passed in from the ViewModel.
+        // It's temporarily created via a static method due to ongoing ViewModel refactoring.
+        Intent intent =
+                PermissionUsageDetailsViewModel.Companion.createHistoryPreferenceClickIntent(
+                    mContext,
+                    mUserHandle,
+                    mPackageName,
+                    mPermissionGroup,
+                    mAccessStartTime,
+                    mAccessEndTime,
+                    mShowingAttribution,
+                    mAttributionTags);
 
-        Intent finalIntent = intent;
         setOnPreferenceClickListener((preference) -> {
-            mContext.startActivityAsUser(finalIntent, mUserHandle);
+            mContext.startActivityAsUser(intent, mUserHandle);
             return true;
         });
     }
@@ -178,47 +184,6 @@ public class PermissionHistoryPreference extends Preference {
             preferenceRootView.setPaddingRelative(preferenceRootView.getPaddingStart(),
                     preferenceRootView.getPaddingTop(), 0, preferenceRootView.getPaddingBottom());
         }
-    }
-
-    private Intent getDefaultManageAppPermissionsIntent() {
-        Intent intent = new Intent(Intent.ACTION_MANAGE_APP_PERMISSIONS);
-        intent.putExtra(Intent.EXTRA_USER, mUserHandle);
-        intent.putExtra(Intent.EXTRA_PACKAGE_NAME, mPackageName);
-
-        return intent;
-    }
-
-    /**
-     * Get a {@link Intent#ACTION_MANAGE_PERMISSION_USAGE} intent, or null if the intent
-     * can't be handled.
-     *
-     * Suppressing the NewApi warning since we already have a isAtLeastT() check.
-     */
-    @Nullable
-    @SuppressWarnings("NewApi")
-    private Intent getManagePermissionUsageIntent() {
-        if (!mShowingAttribution || !SdkLevel.isAtLeastT() || mPackageName == null) {
-            return null;
-        }
-
-        Intent intent = new Intent(Intent.ACTION_MANAGE_PERMISSION_USAGE);
-        intent.setPackage(mPackageName);
-        intent.putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, mPermissionGroup);
-        intent.putExtra(Intent.EXTRA_ATTRIBUTION_TAGS, mAttributionTags.toArray(new String[0]));
-        intent.putExtra(Intent.EXTRA_START_TIME, mAccessStartTime);
-        intent.putExtra(Intent.EXTRA_END_TIME, mAccessEndTime);
-        intent.putExtra(IntentCompat.EXTRA_SHOWING_ATTRIBUTION, mShowingAttribution);
-
-        ResolveInfo resolveInfo = mUserPackageManager.resolveActivity(intent,
-                PackageManager.ResolveInfoFlags.of(0));
-        if (resolveInfo == null || resolveInfo.activityInfo == null || !Objects.equals(
-                resolveInfo.activityInfo.permission,
-                android.Manifest.permission.START_VIEW_PERMISSION_USAGE)) {
-            return null;
-        }
-        intent.setComponent(new ComponentName(mPackageName, resolveInfo.activityInfo.name));
-
-        return intent;
     }
 
     /**

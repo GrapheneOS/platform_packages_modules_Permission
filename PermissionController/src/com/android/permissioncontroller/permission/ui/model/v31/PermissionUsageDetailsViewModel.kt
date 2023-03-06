@@ -21,7 +21,10 @@ import android.Manifest
 import android.app.AppOpsManager
 import android.app.Application
 import android.app.role.RoleManager
+import android.content.ComponentName
 import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.res.Resources
 import android.os.Build
 import android.os.Bundle
@@ -31,8 +34,10 @@ import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
+import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.permission.compat.IntentCompat
 import com.android.permissioncontroller.permission.data.AppPermGroupUiInfoLiveData
 import com.android.permissioncontroller.permission.data.LightPackageInfoLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
@@ -51,6 +56,7 @@ import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.SubattributionUtils
 import com.android.permissioncontroller.permission.utils.Utils
 import java.time.Instant
+import java.util.Objects
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.TimeUnit.DAYS
 
@@ -612,6 +618,78 @@ class PermissionUsageDetailsViewModel(
                 .flatMap { group -> PermissionMapping.getPlatformPermissionNamesOfGroup(group) }
                 .mapNotNull { permName -> AppOpsManager.permissionToOp(permName) }
                 .toSet()
+
+        /** Creates the [Intent] for the click action of a privacy dashboard app usage event. */
+        fun createHistoryPreferenceClickIntent(
+            context: Context,
+            userHandle: UserHandle,
+            packageName: String,
+            permissionGroup: String,
+            accessStartTime: Long,
+            accessEndTime: Long,
+            showingAttribution: Boolean,
+            attributionTags: List<String>
+        ): Intent {
+            return getManagePermissionUsageIntent(
+                context,
+                packageName,
+                permissionGroup,
+                accessStartTime,
+                accessEndTime,
+                showingAttribution,
+                attributionTags)
+                ?: getDefaultManageAppPermissionsIntent(packageName, userHandle)
+        }
+
+        /**
+         * Gets an [Intent.ACTION_MANAGE_PERMISSION_USAGE] intent, or null if attribution shouldn't
+         * be shown or the intent can't be handled.
+         */
+        private fun getManagePermissionUsageIntent(
+            context: Context,
+            packageName: String,
+            permissionGroup: String,
+            accessStartTime: Long,
+            accessEndTime: Long,
+            showingAttribution: Boolean,
+            attributionTags: List<String>
+        ): Intent? {
+            // TODO(b/255992934) only location provider apps should be able to provide this intent
+            if (!showingAttribution || !SdkLevel.isAtLeastT()) {
+                return null
+            }
+            val intent =
+                Intent(Intent.ACTION_MANAGE_PERMISSION_USAGE).apply {
+                    setPackage(packageName)
+                    putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, permissionGroup)
+                    putExtra(Intent.EXTRA_ATTRIBUTION_TAGS, attributionTags.toTypedArray())
+                    putExtra(Intent.EXTRA_START_TIME, accessStartTime)
+                    putExtra(Intent.EXTRA_END_TIME, accessEndTime)
+                    putExtra(IntentCompat.EXTRA_SHOWING_ATTRIBUTION, showingAttribution)
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }
+            val resolveInfo =
+                context.packageManager.resolveActivity(
+                    intent, PackageManager.ResolveInfoFlags.of(0))
+            if (resolveInfo?.activityInfo == null ||
+                !Objects.equals(
+                    resolveInfo.activityInfo.permission,
+                    Manifest.permission.START_VIEW_PERMISSION_USAGE)) {
+                return null
+            }
+            intent.component = ComponentName(packageName, resolveInfo.activityInfo.name)
+            return intent
+        }
+
+        private fun getDefaultManageAppPermissionsIntent(
+            packageName: String,
+            userHandle: UserHandle
+        ): Intent {
+            return Intent(Intent.ACTION_MANAGE_APP_PERMISSIONS).apply {
+                putExtra(Intent.EXTRA_USER, userHandle)
+                putExtra(Intent.EXTRA_PACKAGE_NAME, packageName)
+            }
+        }
     }
 
     /** Factory for [PermissionUsageViewModel]. */
