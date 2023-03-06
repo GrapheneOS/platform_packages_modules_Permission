@@ -20,6 +20,8 @@
     <option name="test-tag" value="SafetyCenterPersistenceTests" />
     <object type="module_controller" class="com.android.tradefed.testtype.suite.module.Sdk33ModuleController" />
 
+    <option name="config-descriptor:metadata" key="parameter" value="no_foldable_states" />
+
     <!-- Install test -->
     <target_preparer class="com.android.tradefed.targetprep.suite.SuiteApkInstaller">
         <option name="test-file-name" value="SafetyCenterPersistenceTests.apk" />
