@@ -217,6 +217,33 @@ final class SafetyCenterNotificationReceiver extends BroadcastReceiver {
         if (issueActionId == null) {
             return;
         }
+
         mService.executeIssueActionInternal(issueActionId);
+        logNotificationActionClicked(issueActionId);
+    }
+
+    private void logNotificationActionClicked(SafetyCenterIssueActionId issueActionId) {
+        SafetyCenterIssueKey issueKey = issueActionId.getSafetyCenterIssueKey();
+        SafetySourceIssue issue;
+        synchronized (mApiLock) {
+            issue = mSafetyCenterDataManager.getSafetySourceIssue(issueKey);
+        }
+        if (issue != null) {
+            mStatsdLogger.writeNotificationActionClickedEvent(
+                    issueKey.getSafetySourceId(),
+                    issueKey.getUserId(),
+                    issue.getIssueTypeId(),
+                    issue.getSeverityLevel(),
+                    isPrimaryAction(issue, issueActionId));
+        }
+    }
+
+    /** Returns {@code true} if {@code actionId} is the first action of {@code issue}. */
+    private boolean isPrimaryAction(SafetySourceIssue issue, SafetyCenterIssueActionId actionId) {
+        return !issue.getActions().isEmpty()
+                && issue.getActions()
+                        .get(0)
+                        .getId()
+                        .equals(actionId.getSafetySourceIssueActionId());
     }
 }
