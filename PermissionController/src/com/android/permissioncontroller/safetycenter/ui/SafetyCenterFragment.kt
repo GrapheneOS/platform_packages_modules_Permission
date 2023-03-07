@@ -113,6 +113,12 @@ abstract class SafetyCenterFragment : PreferenceFragmentCompat() {
         highlightManager.unregisterObserverIfNeeded()
     }
 
+    override fun onStart() {
+        super.onStart()
+        configureInteractionLogger()
+        safetyCenterViewModel.interactionLogger.record(Action.SAFETY_CENTER_VIEWED)
+    }
+
     override fun onResume() {
         super.onResume()
         highlightManager.highlightPreferenceIfNeeded()
@@ -141,9 +147,11 @@ abstract class SafetyCenterFragment : PreferenceFragmentCompat() {
      * preferences they will modify in [renderSafetyCenterData].
      */
     protected fun prerenderCurrentSafetyCenterData() =
-            renderSafetyCenterData(safetyCenterViewModel.getCurrentSafetyCenterDataAsUiData())
+        renderSafetyCenterData(safetyCenterViewModel.getCurrentSafetyCenterDataAsUiData())
 
     abstract fun renderSafetyCenterData(uiData: SafetyCenterUiData?)
+
+    abstract fun configureInteractionLogger()
 
     private fun displayErrorDetails(errorDetails: SafetyCenterErrorDetails?) {
         if (errorDetails == null) return
