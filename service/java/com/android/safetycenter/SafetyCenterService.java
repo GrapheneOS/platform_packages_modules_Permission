@@ -169,8 +169,8 @@ public final class SafetyCenterService extends SystemService {
                         context,
                         new SafetyCenterNotificationFactory(
                                 context,
-                                new SafetyCenterNotificationChannels(
-                                        mSafetyCenterResourcesContext)),
+                                new SafetyCenterNotificationChannels(mSafetyCenterResourcesContext),
+                                mSafetyCenterResourcesContext),
                         mSafetyCenterDataManager);
         mSafetyCenterBroadcastDispatcher =
                 new SafetyCenterBroadcastDispatcher(
