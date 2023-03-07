@@ -976,8 +976,8 @@ object KotlinUtils {
                 val appOpName = permissionToOp(foregroundPermName) ?: continue
 
                 if (fgPerm != null && fgPerm.isGrantedIncludingAppOp) {
-                    wasChanged = wasChanged || setOpMode(appOpName, uid, packageName, MODE_ALLOWED,
-                        appOpsManager)
+                    wasChanged = setOpMode(appOpName, uid, packageName, MODE_ALLOWED,
+                        appOpsManager) || wasChanged
                 }
             }
         } else {
