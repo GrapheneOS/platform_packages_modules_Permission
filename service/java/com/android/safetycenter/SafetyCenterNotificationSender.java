@@ -40,6 +40,7 @@ import com.android.modules.utils.build.SdkLevel;
 import com.android.safetycenter.data.SafetyCenterDataManager;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
+import com.android.safetycenter.logging.SafetyCenterStatsdLogger;
 
 import java.io.PrintWriter;
 import java.lang.annotation.Retention;
@@ -96,16 +97,20 @@ final class SafetyCenterNotificationSender {
 
     private final SafetyCenterDataManager mSafetyCenterDataManager;
 
+    private final SafetyCenterStatsdLogger mStatsdLogger;
+
     private final ArrayMap<SafetyCenterIssueKey, SafetySourceIssue> mNotifiedIssues =
             new ArrayMap<>();
 
     SafetyCenterNotificationSender(
             Context context,
             SafetyCenterNotificationFactory notificationFactory,
-            SafetyCenterDataManager safetyCenterDataManager) {
+            SafetyCenterDataManager safetyCenterDataManager,
+            SafetyCenterStatsdLogger statsdLogger) {
         mContext = context;
         mNotificationFactory = notificationFactory;
         mSafetyCenterDataManager = safetyCenterDataManager;
+        mStatsdLogger = statsdLogger;
     }
 
     /** Updates Safety Center notifications for the given {@link UserProfileGroup}. */
@@ -267,22 +272,24 @@ final class SafetyCenterNotificationSender {
 
     private boolean postNotificationForIssue(
             NotificationManager notificationManager,
-            SafetySourceIssue safetySourceIssue,
+            SafetySourceIssue issue,
             SafetyCenterIssueKey key) {
         Notification notification =
-                mNotificationFactory.newNotificationForIssue(
-                        notificationManager, safetySourceIssue, key);
+                mNotificationFactory.newNotificationForIssue(notificationManager, issue, key);
         if (notification == null) {
             return false;
         }
         String tag = getNotificationTag(key);
         boolean wasPosted = notifyFromSystem(notificationManager, tag, notification);
         if (wasPosted) {
-            mNotifiedIssues.put(key, safetySourceIssue);
-            return true;
-        } else {
-            return false;
+            mNotifiedIssues.put(key, issue);
+            mStatsdLogger.writeNotificationPostedEvent(
+                    key.getSafetySourceId(),
+                    key.getUserId(),
+                    issue.getIssueTypeId(),
+                    issue.getSeverityLevel());
         }
+        return wasPosted;
     }
 
     private void cancelStaleNotifications(
