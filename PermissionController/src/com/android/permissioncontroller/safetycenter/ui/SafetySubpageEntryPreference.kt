@@ -31,6 +31,7 @@ import androidx.preference.PreferenceViewHolder
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.safetycenter.SafetyCenterConstants.PERSONAL_PROFILE_SUFFIX
 import com.android.permissioncontroller.safetycenter.SafetyCenterConstants.WORK_PROFILE_SUFFIX
+import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel
 import com.android.permissioncontroller.safetycenter.ui.view.SafetyEntryCommonViewsManager.Companion.changeEnabledState
 import com.android.safetycenter.internaldata.SafetyCenterEntryId
 import com.android.safetycenter.internaldata.SafetyCenterIds
@@ -44,7 +45,8 @@ import com.android.settingslib.widget.TwoTargetPreference
 class SafetySubpageEntryPreference(
     context: Context,
     private val launchTaskId: Int?,
-    private val entry: SafetyCenterEntry
+    private val entry: SafetyCenterEntry,
+    private val viewModel: SafetyCenterViewModel
 ) : TwoTargetPreference(context), ComparablePreference {
 
     init {
@@ -75,6 +77,7 @@ class SafetySubpageEntryPreference(
             setOnPreferenceClickListener {
                 try {
                     PendingIntentSender.send(pendingIntent, launchTaskId)
+                    viewModel.interactionLogger.recordForEntry(Action.ENTRY_CLICKED, entry)
                     true
                 } catch (ex: Exception) {
                     Log.e(TAG, "Failed to execute pending intent for $entry", ex)
@@ -106,6 +109,10 @@ class SafetySubpageEntryPreference(
             iconActionButton?.setOnClickListener {
                 try {
                     PendingIntentSender.send(iconAction.pendingIntent, launchTaskId)
+                    viewModel.interactionLogger.recordForEntry(
+                        Action.ENTRY_ICON_ACTION_CLICKED,
+                        entry
+                    )
                 } catch (ex: Exception) {
                     Log.e(TAG, "Failed to execute icon action intent for $entry", ex)
                 }
