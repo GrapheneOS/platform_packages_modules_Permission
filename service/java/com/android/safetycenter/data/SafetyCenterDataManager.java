@@ -27,6 +27,7 @@ import android.safetycenter.SafetySourceData;
 import android.safetycenter.SafetySourceErrorDetails;
 import android.safetycenter.SafetySourceIssue;
 import android.safetycenter.config.SafetyCenterConfig;
+import android.safetycenter.config.SafetySourcesGroup;
 
 import androidx.annotation.RequiresApi;
 
@@ -45,6 +46,7 @@ import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.time.Instant;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.concurrent.NotThreadSafe;
 
@@ -334,6 +336,16 @@ public final class SafetyCenterDataManager {
     public List<SafetySourceIssueInfo> getMostRecentFilteredOutDuplicateIssues(
             @UserIdInt int userId) {
         return mSafetyCenterIssueRepository.getMostRecentFilteredOutDuplicateIssues(userId);
+    }
+
+    /**
+     * Returns a set of {@link SafetySourcesGroup} IDs that the given {@link SafetyCenterIssueKey}
+     * is mapped to.
+     *
+     * <p>Issue being mapped to a group means that this issue is relevant to that group.
+     */
+    public Set<String> getGroupMappingFor(SafetyCenterIssueKey issueKey) {
+        return mSafetyCenterIssueRepository.getGroupMappingFor(issueKey);
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////
