@@ -16,15 +16,12 @@
 
 package com.android.permissioncontroller.permission.model.livedatatypes.v31
 
-import android.app.AppOpsManager.OPSTR_READ_WRITE_HEALTH_DATA
 import android.app.AppOpsManager.OP_FLAG_SELF
 import android.app.AppOpsManager.OP_FLAG_TRUSTED_PROXIED
 import android.app.AppOpsManager.OP_FLAG_TRUSTED_PROXY
 import android.app.AppOpsManager.PackageOps
-import android.app.AppOpsManager.opToPermission
-import android.health.connect.HealthPermissions.HEALTH_PERMISSION_GROUP
 import android.os.UserHandle
-import com.android.permissioncontroller.permission.utils.PermissionMapping.getGroupOfPlatformPermission
+import com.android.permissioncontroller.permission.utils.PermissionMapping.getPlatformPermissionGroupForOp
 
 /**
  * Light version of [PackageOps] class, tracking the last permission access for system permission
@@ -57,18 +54,19 @@ data class LightPackageOps(
 
         /** Creates a mapping from permission group to the last time it was accessed. */
         private fun createLastPermissionGroupAccessTimesMap(
-                opNames: Set<String>,
-                packageOps: PackageOps
+            opNames: Set<String>,
+            packageOps: PackageOps
         ): Map<String, Long> {
             val lastAccessTimeMs = mutableMapOf<String, Long>()
             // Add keys for all permissions groups covered by the provided ops, regardless of
             // whether they have been observed recently.
-            for (permissionGroup in opNames.mapNotNull { getPermissionGroupForOp(it) }.toSet()) {
+            for (permissionGroup in
+                opNames.mapNotNull { getPlatformPermissionGroupForOp(it) }.toSet()) {
                 lastAccessTimeMs[permissionGroup] = -1
             }
 
             for (opEntry in packageOps.ops) {
-                val permissionGroupOfOp = getPermissionGroupForOp(opEntry.opStr) ?: continue
+                val permissionGroupOfOp = getPlatformPermissionGroupForOp(opEntry.opStr) ?: continue
                 lastAccessTimeMs[permissionGroupOfOp] =
                     maxOf(
                         lastAccessTimeMs[permissionGroupOfOp] ?: -1,
@@ -76,19 +74,6 @@ data class LightPackageOps(
             }
 
             return lastAccessTimeMs
-        }
-
-        /** Returns the permission group for the permission that the provided op backs, if any. */
-        private fun getPermissionGroupForOp(opName: String): String? {
-            // The OPSTR_READ_WRITE_HEALTH_DATA is a special case as unlike other ops, it does not
-            // map to a single permission. However it is safe to retrieve a permission group for it,
-            // as all permissions it maps to, map to the same permission group
-            // HEALTH_PERMISSION_GROUP.
-            if (opName == OPSTR_READ_WRITE_HEALTH_DATA) {
-                return HEALTH_PERMISSION_GROUP
-            }
-
-            return opToPermission(opName)?.let { getGroupOfPlatformPermission(it) }
         }
     }
 }

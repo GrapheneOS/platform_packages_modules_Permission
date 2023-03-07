@@ -20,15 +20,12 @@ import android.app.AppOpsManager.AttributedHistoricalOps
 import android.app.AppOpsManager.AttributedOpEntry
 import android.app.AppOpsManager.HistoricalOp
 import android.app.AppOpsManager.HistoricalPackageOps
-import android.app.AppOpsManager.OPSTR_READ_WRITE_HEALTH_DATA
 import android.app.AppOpsManager.OP_FLAG_SELF
 import android.app.AppOpsManager.OP_FLAG_TRUSTED_PROXIED
 import android.app.AppOpsManager.OP_FLAG_TRUSTED_PROXY
 import android.app.AppOpsManager.OpEventProxyInfo
-import android.app.AppOpsManager.opToPermission
-import android.health.connect.HealthPermissions.HEALTH_PERMISSION_GROUP
 import android.os.UserHandle
-import com.android.permissioncontroller.permission.utils.PermissionMapping.getGroupOfPlatformPermission
+import com.android.permissioncontroller.permission.utils.PermissionMapping.getPlatformPermissionGroupForOp
 
 /**
  * Light version of [HistoricalPackageOps] class, tracking the last permission access for system
@@ -203,31 +200,10 @@ data class LightHistoricalPackageOps(
             return discreteAccessList.sortedWith(compareBy { -it.accessTimeMs })
         }
 
-        /** Returns the permission group for the permission that the provided op backs, if any. */
-        private fun getPermissionGroupForOp(opName: String): String {
-            // The OPSTR_READ_WRITE_HEALTH_DATA is a special case as unlike other ops, it does not
-            // map to a single permission. However it is safe to retrieve a permission group for it,
-            // as all permissions it maps to, map to the same permission group
-            // HEALTH_PERMISSION_GROUP.
-            if (opName == OPSTR_READ_WRITE_HEALTH_DATA) {
-                return HEALTH_PERMISSION_GROUP
-            }
-
-            return opToPermission(opName)?.let { getGroupOfPlatformPermission(it) } ?: NO_PERM_GROUP
-        }
-
         private fun partitionOpsByPermission(ops: Set<String>): Map<String, List<String>> =
-            ops.groupBy { getPermissionGroupForOp(it) }.filter { it.key != NO_PERM_GROUP }
+            ops.groupBy { getPlatformPermissionGroupForOp(it) ?: NO_PERM_GROUP }
+                .filter { it.key != NO_PERM_GROUP }
     }
-
-    // TODO(b/257317733): Move out of this class so this class can be shared across both the main
-    // and the timeline permission usage UI.
-    /** Identifier for an app permission group combination. */
-    data class AppPermissionId(
-        val packageName: String,
-        val userHandle: UserHandle,
-        val permGroup: String,
-    )
 
     /**
      * Data class representing permissions accesses for a particular permission group by a
