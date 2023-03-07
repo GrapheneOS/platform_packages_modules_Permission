@@ -26,6 +26,7 @@ import android.content.pm.ResolveInfo;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Icon;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
@@ -348,6 +349,35 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
         }
 
         Log.w(TAG, "Drawable resource " + name + " not found");
+        return null;
+    }
+
+    /**
+     * Returns an {@link Icon} instance containing a drawable with the given name. If no such
+     * drawable exists, returns {@code null} or throws {@link Resources.NotFoundException}.
+     */
+    @Nullable
+    public Icon getIconByDrawableName(String drawableResName) {
+        String packageName = getResourcesApkPkgName();
+        if (packageName == null) {
+            return null;
+        }
+
+        Resources resources = getResources();
+        if (resources == null) {
+            return null;
+        }
+
+        int resId = resources.getIdentifier(drawableResName, "drawable", packageName);
+        if (resId != Resources.ID_NULL) {
+            return Icon.createWithResource(packageName, resId);
+        }
+
+        if (!mShouldFallbackIfNamedResourceNotFound) {
+            throw new Resources.NotFoundException();
+        }
+
+        Log.w(TAG, "Drawable resource " + drawableResName + " not found");
         return null;
     }
 }
