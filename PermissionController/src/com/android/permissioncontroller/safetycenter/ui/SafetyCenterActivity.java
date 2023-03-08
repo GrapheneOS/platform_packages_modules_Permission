@@ -25,6 +25,7 @@ import static com.android.permissioncontroller.PermissionControllerStatsLog.PRIV
 import static com.android.permissioncontroller.PermissionControllerStatsLog.PRIVACY_SIGNAL_NOTIFICATION_INTERACTION__ACTION__NOTIFICATION_CLICKED;
 import static com.android.permissioncontroller.safetycenter.SafetyCenterConstants.EXTRA_SETTINGS_FRAGMENT_ARGS_KEY;
 import static com.android.permissioncontroller.safetycenter.SafetyCenterConstants.PERSONAL_PROFILE_SUFFIX;
+import static com.android.permissioncontroller.safetycenter.SafetyCenterConstants.PRIVACY_SOURCES_GROUP_ID;
 import static com.android.permissioncontroller.safetycenter.SafetyCenterConstants.WORK_PROFILE_SUFFIX;
 
 import android.content.Intent;
@@ -202,7 +203,7 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
             return openHomepage();
         }
 
-        if (Objects.equals(groupId, PrivacySubpageFragment.SOURCE_GROUP_ID)) {
+        if (Objects.equals(groupId, PRIVACY_SOURCES_GROUP_ID)) {
             logPrivacySourceMetric();
             return new PrivacySubpageFragment();
         }
@@ -213,7 +214,7 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
     @RequiresApi(UPSIDE_DOWN_CAKE)
     private String getParentGroupId(String preferenceKey) {
         if (Pref.findByKey(preferenceKey) != null) {
-            return PrivacySubpageFragment.SOURCE_GROUP_ID;
+            return PRIVACY_SOURCES_GROUP_ID;
         }
 
         SafetyCenterConfig safetyCenterConfig = mSafetyCenterManager.getSafetyCenterConfig();
