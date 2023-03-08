@@ -79,17 +79,16 @@ public class Constants {
      */
     public static final int SAFETY_CENTER_BACKGROUND_REFRESH_JOB_ID = 7;
 
-    /**
-     * ID for the periodic job in
-     * {@link SafetyLabelChangesJobService}.
-     */
-    public static final int PERIODIC_SAFETY_LABEL_CHANGES_JOB_ID = 8;
 
     /**
-     * ID for the on-demand, but delayed job in
-     * {@link SafetyLabelChangesJobService}.
+     * ID for the detect updates job in {@link SafetyLabelChangesJobService}.
      */
-    public static final int SAFETY_LABEL_CHANGES_JOB_ID = 9;
+    public static final int SAFETY_LABEL_CHANGES_DETECT_UPDATES_JOB_ID = 8;
+
+    /**
+     * ID for the periodic notification job in {@link SafetyLabelChangesJobService}.
+     */
+    public static final int SAFETY_LABEL_CHANGES_PERIODIC_NOTIFICATION_JOB_ID = 9;
 
     /**
      * Name of file to containing the packages we already showed a notification for.
