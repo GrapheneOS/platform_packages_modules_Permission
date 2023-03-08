@@ -24,9 +24,8 @@ import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.Preference
 import androidx.preference.PreferenceGroup
-import com.android.permissioncontroller.Constants
+import com.android.permissioncontroller.Constants.EXTRA_SESSION_ID
 import com.android.permissioncontroller.R
-import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.safetycenter.SafetyCenterConstants.PRIVACY_SOURCES_GROUP_ID
 import com.android.permissioncontroller.safetycenter.ui.SafetyBrandChipPreference.Companion.closeSubpage
 import com.android.permissioncontroller.safetycenter.ui.model.PrivacyControlsViewModel
@@ -45,18 +44,16 @@ class PrivacySubpageFragment : SafetyCenterFragment() {
     private lateinit var subpageGenericEntryGroup: PreferenceGroup
     private lateinit var subpageDataEntryGroup: PreferenceGroup
     private lateinit var privacyControlsViewModel: PrivacyControlsViewModel
-    private var sessionId = Constants.INVALID_SESSION_ID
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         super.onCreatePreferences(savedInstanceState, rootKey)
         setPreferencesFromResource(R.xml.privacy_subpage, rootKey)
-        sessionId = Utils.getOrGenerateSessionId(requireActivity().getIntent())
 
         subpageBrandChip = getPreferenceScreen().findPreference(BRAND_CHIP_KEY)!!
         subpageIssueGroup = getPreferenceScreen().findPreference(ISSUE_GROUP_KEY)!!
         subpageGenericEntryGroup = getPreferenceScreen().findPreference(GENERIC_ENTRY_GROUP_KEY)!!
         subpageDataEntryGroup = getPreferenceScreen().findPreference(DATA_ENTRY_GROUP_KEY)!!
-        subpageBrandChip.setupListener(requireActivity(), sessionId)
+        subpageBrandChip.setupListener(requireActivity(), safetyCenterSessionId)
 
         val factory = PrivacyControlsViewModelFactory(requireActivity().getApplication())
         privacyControlsViewModel =
@@ -71,7 +68,7 @@ class PrivacySubpageFragment : SafetyCenterFragment() {
 
     override fun configureInteractionLogger() {
         val logger = safetyCenterViewModel.interactionLogger
-        logger.sessionId = sessionId
+        logger.sessionId = safetyCenterSessionId
         logger.navigationSource = NavigationSource.fromIntent(requireActivity().getIntent())
         logger.viewType = ViewType.SUBPAGE
         logger.groupId = PRIVACY_SOURCES_GROUP_ID
@@ -90,7 +87,7 @@ class PrivacySubpageFragment : SafetyCenterFragment() {
                 TAG,
                 "$PRIVACY_SOURCES_GROUP_ID doesn't match any of the existing SafetySourcesGroup IDs"
             )
-            closeSubpage(requireActivity(), requireContext(), sessionId)
+            closeSubpage(requireActivity(), requireContext(), safetyCenterSessionId)
             return
         }
 
@@ -197,5 +194,16 @@ class PrivacySubpageFragment : SafetyCenterFragment() {
         private const val ISSUE_GROUP_KEY: String = "subpage_issue_group"
         private const val GENERIC_ENTRY_GROUP_KEY: String = "subpage_generic_entry_group"
         private const val DATA_ENTRY_GROUP_KEY: String = "subpage_data_entry_group"
+
+        /** Creates an instance of PrivacySubpageFragment with the arguments set */
+        @JvmStatic
+        fun newInstance(sessionId: Long): PrivacySubpageFragment {
+            val args = Bundle()
+            args.putLong(EXTRA_SESSION_ID, sessionId)
+
+            val subpageFragment = PrivacySubpageFragment()
+            subpageFragment.setArguments(args)
+            return subpageFragment
+        }
     }
 }

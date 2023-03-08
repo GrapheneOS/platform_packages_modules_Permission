@@ -44,6 +44,7 @@ import androidx.fragment.app.Fragment;
 import com.android.permissioncontroller.Constants;
 import com.android.permissioncontroller.PermissionControllerStatsLog;
 import com.android.permissioncontroller.R;
+import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.permissioncontroller.safetycenter.ui.model.PrivacyControlsViewModel.Pref;
 import com.android.settingslib.activityembedding.ActivityEmbeddingUtils;
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
@@ -203,12 +204,13 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
             return openHomepage();
         }
 
+        long sessionId = Utils.getOrGenerateSessionId(getIntent());
         if (Objects.equals(groupId, PRIVACY_SOURCES_GROUP_ID)) {
             logPrivacySourceMetric();
-            return new PrivacySubpageFragment();
+            return PrivacySubpageFragment.newInstance(sessionId);
         }
 
-        return SafetyCenterSubpageFragment.newInstance(groupId);
+        return SafetyCenterSubpageFragment.newInstance(sessionId, groupId);
     }
 
     @RequiresApi(UPSIDE_DOWN_CAKE)
