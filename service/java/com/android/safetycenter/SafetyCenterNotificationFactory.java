@@ -108,6 +108,7 @@ final class SafetyCenterNotificationFactory {
                         .setSmallIcon(getNotificationIcon(issue.getSeverityLevel()))
                         .setColor(getNotificationColor(issue.getSeverityLevel()))
                         .setExtras(getNotificationExtras())
+                        .setShowWhen(true)
                         .setContentTitle(title)
                         .setContentText(text)
                         .setContentIntent(newSafetyCenterPendingIntent(issueKey))
