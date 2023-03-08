@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package android.safetycenter.cts.testing
+package android.safetycenter.functional.testing
 
 import android.app.NotificationChannel
 import android.content.ComponentName
@@ -87,9 +87,12 @@ class TestNotificationListener : NotificationListenerService() {
         private const val TAG = "TestNotificationListene"
 
         private val id: String =
-            "android.safetycenter.cts/" + TestNotificationListener::class.java.name
+            "android.safetycenter.functional/" + TestNotificationListener::class.java.name
         private val componentName =
-            ComponentName("android.safetycenter.cts", TestNotificationListener::class.java.name)
+            ComponentName(
+                "android.safetycenter.functional",
+                TestNotificationListener::class.java.name
+            )
 
         private val connected = ConditionVariable(false)
         private val disconnected = ConditionVariable(true)
@@ -161,9 +164,7 @@ class TestNotificationListener : NotificationListenerService() {
             return waitForNotificationsToSatisfy(
                 timeout,
                 description = "notification(s) matching characteristics $charsList"
-            ) {
-                NotificationCharacteristics.areMatching(it, charsList)
-            }
+            ) { NotificationCharacteristics.areMatching(it, charsList) }
         }
 
         /**
@@ -282,9 +283,7 @@ class TestNotificationListener : NotificationListenerService() {
             waitForNotificationsToSatisfy(
                 timeout,
                 description = "no notification with the key $key"
-            ) { notifications ->
-                notifications.none { it.statusBarNotification.key == key }
-            }
+            ) { notifications -> notifications.none { it.statusBarNotification.key == key } }
 
             waitForIssueCacheToContainAnyDismissedNotification()
         }
@@ -342,9 +341,7 @@ class TestNotificationListener : NotificationListenerService() {
             waitForNotificationsToSatisfy(
                 forAtLeast = Duration.ZERO,
                 description = "all Safety Center notifications removed in tear down"
-            ) {
-                it.isEmpty()
-            }
+            ) { it.isEmpty() }
             toggleListenerAccess(false)
             safetyCenterNotificationEvents.cancel()
             safetyCenterNotificationEvents = Channel(capacity = Channel.UNLIMITED)
