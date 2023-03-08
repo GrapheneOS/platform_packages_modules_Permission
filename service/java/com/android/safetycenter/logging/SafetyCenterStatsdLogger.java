@@ -18,6 +18,21 @@ package com.android.safetycenter.logging;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
+import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_INTERACTION_REPORTED;
+import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__ACTION__ISSUE_PRIMARY_ACTION_CLICKED;
+import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__ACTION__ISSUE_SECONDARY_ACTION_CLICKED;
+import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__ACTION__NOTIFICATION_DISMISSED;
+import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__ACTION__NOTIFICATION_POSTED;
+import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__ISSUE_STATE__ACTIVE;
+import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__NAVIGATION_SOURCE__SOURCE_UNKNOWN;
+import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__SAFETY_SOURCE_PROFILE_TYPE__PROFILE_TYPE_MANAGED;
+import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__SAFETY_SOURCE_PROFILE_TYPE__PROFILE_TYPE_PERSONAL;
+import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__SENSOR__SENSOR_UNKNOWN;
+import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__SEVERITY_LEVEL__SAFETY_SEVERITY_CRITICAL_WARNING;
+import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__SEVERITY_LEVEL__SAFETY_SEVERITY_OK;
+import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__SEVERITY_LEVEL__SAFETY_SEVERITY_RECOMMENDATION;
+import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__SEVERITY_LEVEL__SAFETY_SEVERITY_UNSPECIFIED;
+import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__VIEW_TYPE__VIEW_TYPE_NOTIFICATION;
 import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_SYSTEM_EVENT_REPORTED;
 import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_SYSTEM_EVENT_REPORTED__EVENT_TYPE__COMPLETE_GET_NEW_DATA;
 import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_SYSTEM_EVENT_REPORTED__EVENT_TYPE__COMPLETE_RESCAN;
@@ -89,6 +104,8 @@ public final class SafetyCenterStatsdLogger {
     private static final String TAG = "SafetyCenterStatsdLog";
     private static final long UNSET_SOURCE_ID = 0;
     private static final long UNSET_ISSUE_TYPE_ID = 0;
+    private static final long UNSET_SESSION_ID = 0;
+    private static final long UNSET_SOURCE_GROUP_ID = 0;
 
     /**
      * The different results for a system event reported by Safety Center.
@@ -246,6 +263,82 @@ public final class SafetyCenterStatsdLogger {
     }
 
     /**
+     * Writes a {@link PermissionStatsLog#SAFETY_CENTER_INTERACTION_REPORTED} atom with the action
+     * {@code NOTIFICATION_POSTED}.
+     */
+    public void writeNotificationPostedEvent(
+            String sourceId,
+            @UserIdInt int userId,
+            @Nullable String issueTypeId,
+            @SafetySourceData.SeverityLevel int sourceSeverityLevel) {
+        writeNotificationInteractionReportedEvent(
+                SAFETY_CENTER_INTERACTION_REPORTED__ACTION__NOTIFICATION_POSTED,
+                sourceId,
+                userId,
+                issueTypeId,
+                sourceSeverityLevel);
+    }
+
+    /**
+     * Writes a {@link PermissionStatsLog#SAFETY_CENTER_INTERACTION_REPORTED} atom with the action
+     * {@code NOTIFICATION_DISMISSED}.
+     */
+    public void writeNotificationDismissedEvent(
+            String sourceId,
+            @UserIdInt int userId,
+            @Nullable String issueTypeId,
+            @SafetySourceData.SeverityLevel int sourceSeverityLevel) {
+        writeNotificationInteractionReportedEvent(
+                SAFETY_CENTER_INTERACTION_REPORTED__ACTION__NOTIFICATION_DISMISSED,
+                sourceId,
+                userId,
+                issueTypeId,
+                sourceSeverityLevel);
+    }
+
+    /**
+     * Writes a {@link PermissionStatsLog#SAFETY_CENTER_INTERACTION_REPORTED} atom with the action
+     * {@code ISSUE_PRIMARY_ACTION_CLICKED} or {@code ISSUE_SECONDARY_ACTION_CLICKED}.
+     */
+    public void writeNotificationActionClickedEvent(
+            String sourceId,
+            @UserIdInt int userId,
+            @Nullable String issueTypeId,
+            @SafetySourceData.SeverityLevel int sourceSeverityLevel,
+            boolean isPrimaryAction) {
+        int action =
+                isPrimaryAction
+                        ? SAFETY_CENTER_INTERACTION_REPORTED__ACTION__ISSUE_PRIMARY_ACTION_CLICKED
+                        : SAFETY_CENTER_INTERACTION_REPORTED__ACTION__ISSUE_SECONDARY_ACTION_CLICKED;
+        writeNotificationInteractionReportedEvent(
+                action, sourceId, userId, issueTypeId, sourceSeverityLevel);
+    }
+
+    private void writeNotificationInteractionReportedEvent(
+            int interactionReportedAction,
+            String sourceId,
+            @UserIdInt int userId,
+            @Nullable String issueTypeId,
+            @SafetySourceData.SeverityLevel int sourceSeverityLevel) {
+        if (!mSafetyCenterConfigReader.allowsStatsdLogging()) {
+            return;
+        }
+        PermissionStatsLog.write(
+                SAFETY_CENTER_INTERACTION_REPORTED,
+                UNSET_SESSION_ID,
+                interactionReportedAction,
+                SAFETY_CENTER_INTERACTION_REPORTED__VIEW_TYPE__VIEW_TYPE_NOTIFICATION,
+                SAFETY_CENTER_INTERACTION_REPORTED__NAVIGATION_SOURCE__SOURCE_UNKNOWN,
+                toInteractionReportedSeverityLevel(sourceSeverityLevel),
+                idStringToLong(sourceId),
+                toInteractionReportedProfileType(userId),
+                idStringToLong(issueTypeId),
+                SAFETY_CENTER_INTERACTION_REPORTED__SENSOR__SENSOR_UNKNOWN,
+                UNSET_SOURCE_GROUP_ID,
+                SAFETY_CENTER_INTERACTION_REPORTED__ISSUE_STATE__ACTIVE);
+    }
+
+    /**
      * Returns a {@link SystemEventResult} based on whether the given operation was {@code
      * successful}.
      */
@@ -282,6 +375,12 @@ public final class SafetyCenterStatsdLogger {
         return UserUtils.isManagedProfile(userId, mContext)
                 ? SAFETY_CENTER_SYSTEM_EVENT_REPORTED__SAFETY_SOURCE_PROFILE_TYPE__PROFILE_TYPE_MANAGED
                 : SAFETY_CENTER_SYSTEM_EVENT_REPORTED__SAFETY_SOURCE_PROFILE_TYPE__PROFILE_TYPE_PERSONAL;
+    }
+
+    private int toInteractionReportedProfileType(@UserIdInt int userId) {
+        return UserUtils.isManagedProfile(userId, mContext)
+                ? SAFETY_CENTER_INTERACTION_REPORTED__SAFETY_SOURCE_PROFILE_TYPE__PROFILE_TYPE_MANAGED
+                : SAFETY_CENTER_INTERACTION_REPORTED__SAFETY_SOURCE_PROFILE_TYPE__PROFILE_TYPE_PERSONAL;
     }
 
     /**
@@ -333,5 +432,21 @@ public final class SafetyCenterStatsdLogger {
         }
         Log.w(TAG, "Unexpected SafetySourceData.SeverityLevel: " + safetySourceSeverityLevel);
         return SAFETY_SOURCE_STATE_COLLECTED__SEVERITY_LEVEL__SAFETY_SEVERITY_LEVEL_UNKNOWN;
+    }
+
+    private static int toInteractionReportedSeverityLevel(
+            @SafetySourceData.SeverityLevel int severityLevel) {
+        switch (severityLevel) {
+            case SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED:
+                return SAFETY_CENTER_INTERACTION_REPORTED__SEVERITY_LEVEL__SAFETY_SEVERITY_UNSPECIFIED;
+            case SafetySourceData.SEVERITY_LEVEL_INFORMATION:
+                return SAFETY_CENTER_INTERACTION_REPORTED__SEVERITY_LEVEL__SAFETY_SEVERITY_OK;
+            case SafetySourceData.SEVERITY_LEVEL_RECOMMENDATION:
+                return SAFETY_CENTER_INTERACTION_REPORTED__SEVERITY_LEVEL__SAFETY_SEVERITY_RECOMMENDATION;
+            case SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING:
+                return SAFETY_CENTER_INTERACTION_REPORTED__SEVERITY_LEVEL__SAFETY_SEVERITY_CRITICAL_WARNING;
+        }
+        Log.w(TAG, "Unexpected SafetySourceData.SeverityLevel: " + severityLevel);
+        return SAFETY_STATE__OVERALL_SEVERITY_LEVEL__SAFETY_SEVERITY_LEVEL_UNKNOWN;
     }
 }

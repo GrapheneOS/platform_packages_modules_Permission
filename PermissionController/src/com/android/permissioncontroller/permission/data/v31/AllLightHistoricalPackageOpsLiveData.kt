@@ -25,11 +25,12 @@ import android.app.AppOpsManager.OP_FLAG_SELF
 import android.app.AppOpsManager.OP_FLAG_TRUSTED_PROXIED
 import android.app.Application
 import android.os.UserHandle
+import android.os.UserManager
+import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.permission.data.SmartAsyncMediatorLiveData
 import com.android.permissioncontroller.permission.model.livedatatypes.v31.LightHistoricalPackageOps
-import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
-import java.util.concurrent.atomic.AtomicReference
+import kotlin.coroutines.suspendCoroutine
 import kotlinx.coroutines.Job
 
 /**
@@ -46,6 +47,7 @@ class AllLightHistoricalPackageOpsLiveData(app: Application, val opNames: Set<St
     AppOpsManager.OnOpChangedListener {
 
     private val appOpsManager = app.getSystemService(AppOpsManager::class.java)!!
+    private val userManager = app.getSystemService(UserManager::class.java)!!
 
     override fun onActive() {
         super.onActive()
@@ -64,6 +66,14 @@ class AllLightHistoricalPackageOpsLiveData(app: Application, val opNames: Set<St
                 appOpsManager.startWatchingMode(opName, /* all packages */ null, this)
             } catch (ignored: IllegalArgumentException) {
                 // Older builds may not support all requested app ops.
+            }
+
+            if (SdkLevel.isAtLeastU()) {
+                try {
+                    appOpsManager.startWatchingNoted(arrayOf(opName), this)
+                } catch (ignored: IllegalArgumentException) {
+                    // Older builds may not support all requested app ops.
+                }
             }
         }
     }
@@ -84,36 +94,28 @@ class AllLightHistoricalPackageOpsLiveData(app: Application, val opNames: Set<St
             mutableMapOf<Pair<String, UserHandle>, LightHistoricalPackageOps>()
 
         val endTimeMillis = System.currentTimeMillis()
-        // TODO(b/257317733): Consider setting timeframe according to whether we are displaying 7
-        // days data.
         val beginTimeMillis = endTimeMillis - TimeUnit.DAYS.toMillis(7)
 
-        // TODO(b/257317733): The following AppOpsManager call has been copied from legacy code in
-        // PermissionUsages.
-        // Rewrite it once we have confidence in the rest of the LiveData pattern for the Permission
-        // Usage Details page. Can we use a coroutine here?
-        val historicalOpsRef = AtomicReference<HistoricalOps>()
-        val latch = CountDownLatch(1)
+        val allProfilesInCurrentUser = userManager.userProfiles
 
         val request =
             HistoricalOpsRequest.Builder(beginTimeMillis, endTimeMillis)
                 .setFlags(OP_FLAG_SELF or OP_FLAG_TRUSTED_PROXIED)
                 .setHistoryFlags(HISTORY_FLAG_DISCRETE or HISTORY_FLAG_GET_ATTRIBUTION_CHAINS)
                 .build()
-        appOpsManager.getHistoricalOps(request, { obj: Runnable -> obj.run() }) { ops: HistoricalOps
-            ->
-            historicalOpsRef.set(ops)
-            latch.countDown()
-        }
 
-        try {
-            latch.await(5, TimeUnit.DAYS)
-        } catch (ignored: InterruptedException) {}
-        val historicalOps = historicalOpsRef.get()
+        val historicalOps = suspendCoroutine {
+            appOpsManager.getHistoricalOps(request, { it.run() }) { ops: HistoricalOps ->
+                it.resumeWith(Result.success(ops))
+            }
+        }
 
         for (i in 0 until historicalOps.uidCount) {
             val historicalUidOps = historicalOps.getUidOpsAt(i)
             val userHandle = UserHandle.getUserHandleForUid(historicalUidOps.uid)
+            if (userHandle !in allProfilesInCurrentUser) {
+                continue
+            }
             for (j in 0 until historicalUidOps.packageCount) {
                 val historicalPackageOps = historicalUidOps.getPackageOpsAt(j)
                 allLightHistoricalPackageOps[Pair(historicalPackageOps.packageName, userHandle)] =

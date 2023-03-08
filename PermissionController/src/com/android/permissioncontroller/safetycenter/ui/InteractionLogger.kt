@@ -33,6 +33,7 @@ import com.android.permissioncontroller.PermissionControllerStatsLog
 import com.android.permissioncontroller.PermissionControllerStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__ISSUE_STATE__ISSUE_STATE_UNKNOWN
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.safetycenter.SafetyCenterConstants
+import com.android.permissioncontroller.safetycenter.SafetyCenterConstants.EXTRA_SETTINGS_FRAGMENT_ARGS_KEY
 import com.android.safetycenter.internaldata.SafetyCenterIds
 import java.math.BigInteger
 import java.security.MessageDigest
@@ -43,7 +44,8 @@ class InteractionLogger(
     var sessionId: Long = Constants.INVALID_SESSION_ID,
     var viewType: ViewType = ViewType.UNKNOWN,
     var navigationSource: NavigationSource = NavigationSource.UNKNOWN,
-    var navigationSensor: Sensor = Sensor.UNKNOWN
+    var navigationSensor: Sensor = Sensor.UNKNOWN,
+    var groupId: String? = null
 ) {
     fun record(action: Action) {
         writeAtom(action)
@@ -57,7 +59,8 @@ class InteractionLogger(
             sourceId = decodedId.safetyCenterIssueKey.safetySourceId,
             sourceProfileType =
                 SafetySourceProfileType.fromUserId(decodedId.safetyCenterIssueKey.userId),
-            issueTypeId = decodedId.issueTypeId)
+            issueTypeId = decodedId.issueTypeId
+        )
     }
 
     fun recordForEntry(action: Action, entry: SafetyCenterEntry) {
@@ -66,7 +69,8 @@ class InteractionLogger(
             action,
             LogSeverityLevel.fromEntrySeverityLevel(entry.severityLevel),
             sourceId = decodedId.safetySourceId,
-            sourceProfileType = SafetySourceProfileType.fromUserId(decodedId.userId))
+            sourceProfileType = SafetySourceProfileType.fromUserId(decodedId.userId)
+        )
     }
 
     fun recordForSensor(action: Action, sensor: Sensor) {
@@ -101,10 +105,10 @@ class InteractionLogger(
             sourceProfileType.statsLogValue,
             encodeStringId(issueTypeId),
             (if (sensor != Sensor.UNKNOWN) sensor else navigationSensor).statsLogValue,
-            // TODO(b/268309208): Log group ID and subpage viewType for subpages
-            /* encodedSafetySourcesGroupId= */ 0,
+            encodeStringId(groupId),
             // TODO(b/268309491): Log issue state for dismissed and un-dismissed issues.
-            SAFETY_CENTER_INTERACTION_REPORTED__ISSUE_STATE__ISSUE_STATE_UNKNOWN)
+            SAFETY_CENTER_INTERACTION_REPORTED__ISSUE_STATE__ISSUE_STATE_UNKNOWN
+        )
     }
 
     private companion object {
@@ -127,76 +131,100 @@ class InteractionLogger(
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 enum class Action(val statsLogValue: Int) {
     UNKNOWN(
-        PermissionControllerStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__ACTION__ACTION_UNKNOWN),
+        PermissionControllerStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__ACTION__ACTION_UNKNOWN
+    ),
     SAFETY_CENTER_VIEWED(
         PermissionControllerStatsLog
-            .SAFETY_CENTER_INTERACTION_REPORTED__ACTION__SAFETY_CENTER_VIEWED),
+            .SAFETY_CENTER_INTERACTION_REPORTED__ACTION__SAFETY_CENTER_VIEWED
+    ),
     SAFETY_ISSUE_VIEWED(
-        PermissionControllerStatsLog
-            .SAFETY_CENTER_INTERACTION_REPORTED__ACTION__SAFETY_ISSUE_VIEWED),
+        PermissionControllerStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__ACTION__SAFETY_ISSUE_VIEWED
+    ),
     SCAN_INITIATED(
-        PermissionControllerStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__ACTION__SCAN_INITIATED),
+        PermissionControllerStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__ACTION__SCAN_INITIATED
+    ),
     ISSUE_PRIMARY_ACTION_CLICKED(
         PermissionControllerStatsLog
-            .SAFETY_CENTER_INTERACTION_REPORTED__ACTION__ISSUE_PRIMARY_ACTION_CLICKED),
+            .SAFETY_CENTER_INTERACTION_REPORTED__ACTION__ISSUE_PRIMARY_ACTION_CLICKED
+    ),
     ISSUE_SECONDARY_ACTION_CLICKED(
         PermissionControllerStatsLog
-            .SAFETY_CENTER_INTERACTION_REPORTED__ACTION__ISSUE_SECONDARY_ACTION_CLICKED),
+            .SAFETY_CENTER_INTERACTION_REPORTED__ACTION__ISSUE_SECONDARY_ACTION_CLICKED
+    ),
     ISSUE_DISMISS_CLICKED(
         PermissionControllerStatsLog
-            .SAFETY_CENTER_INTERACTION_REPORTED__ACTION__ISSUE_DISMISS_CLICKED),
+            .SAFETY_CENTER_INTERACTION_REPORTED__ACTION__ISSUE_DISMISS_CLICKED
+    ),
     MORE_ISSUES_CLICKED(
-        PermissionControllerStatsLog
-            .SAFETY_CENTER_INTERACTION_REPORTED__ACTION__MORE_ISSUES_CLICKED),
+        PermissionControllerStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__ACTION__MORE_ISSUES_CLICKED
+    ),
     ENTRY_CLICKED(
-        PermissionControllerStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__ACTION__ENTRY_CLICKED),
+        PermissionControllerStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__ACTION__ENTRY_CLICKED
+    ),
     ENTRY_ICON_ACTION_CLICKED(
         PermissionControllerStatsLog
-            .SAFETY_CENTER_INTERACTION_REPORTED__ACTION__ENTRY_ICON_ACTION_CLICKED),
+            .SAFETY_CENTER_INTERACTION_REPORTED__ACTION__ENTRY_ICON_ACTION_CLICKED
+    ),
     STATIC_ENTRY_CLICKED(
         PermissionControllerStatsLog
-            .SAFETY_CENTER_INTERACTION_REPORTED__ACTION__STATIC_ENTRY_CLICKED),
+            .SAFETY_CENTER_INTERACTION_REPORTED__ACTION__STATIC_ENTRY_CLICKED
+    ),
     PRIVACY_CONTROL_TOGGLE_CLICKED(
         PermissionControllerStatsLog
-            .SAFETY_CENTER_INTERACTION_REPORTED__ACTION__PRIVACY_CONTROL_TOGGLE_CLICKED),
+            .SAFETY_CENTER_INTERACTION_REPORTED__ACTION__PRIVACY_CONTROL_TOGGLE_CLICKED
+    ),
     SENSOR_PERMISSION_REVOKE_CLICKED(
         PermissionControllerStatsLog
-            .SAFETY_CENTER_INTERACTION_REPORTED__ACTION__SENSOR_PERMISSION_REVOKE_CLICKED),
+            .SAFETY_CENTER_INTERACTION_REPORTED__ACTION__SENSOR_PERMISSION_REVOKE_CLICKED
+    ),
     SENSOR_PERMISSION_SEE_USAGES_CLICKED(
         PermissionControllerStatsLog
-            .SAFETY_CENTER_INTERACTION_REPORTED__ACTION__SENSOR_PERMISSION_SEE_USAGES_CLICKED),
+            .SAFETY_CENTER_INTERACTION_REPORTED__ACTION__SENSOR_PERMISSION_SEE_USAGES_CLICKED
+    ),
     REVIEW_SETTINGS_CLICKED(
         PermissionControllerStatsLog
-            .SAFETY_CENTER_INTERACTION_REPORTED__ACTION__REVIEW_SETTINGS_CLICKED)
+            .SAFETY_CENTER_INTERACTION_REPORTED__ACTION__REVIEW_SETTINGS_CLICKED
+    )
 }
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 enum class ViewType(val statsLogValue: Int) {
     UNKNOWN(
         PermissionControllerStatsLog
-            .SAFETY_CENTER_INTERACTION_REPORTED__VIEW_TYPE__VIEW_TYPE_UNKNOWN),
+            .SAFETY_CENTER_INTERACTION_REPORTED__VIEW_TYPE__VIEW_TYPE_UNKNOWN
+    ),
     FULL(PermissionControllerStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__VIEW_TYPE__FULL),
     QUICK_SETTINGS(
-        PermissionControllerStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__VIEW_TYPE__QUICK_SETTINGS)
+        PermissionControllerStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__VIEW_TYPE__QUICK_SETTINGS
+    ),
+    SUBPAGE(PermissionControllerStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__VIEW_TYPE__SUBPAGE)
 }
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 enum class NavigationSource(val statsLogValue: Int) {
     UNKNOWN(
         PermissionControllerStatsLog
-            .SAFETY_CENTER_INTERACTION_REPORTED__NAVIGATION_SOURCE__SOURCE_UNKNOWN),
+            .SAFETY_CENTER_INTERACTION_REPORTED__NAVIGATION_SOURCE__SOURCE_UNKNOWN
+    ),
     NOTIFICATION(
         PermissionControllerStatsLog
-            .SAFETY_CENTER_INTERACTION_REPORTED__NAVIGATION_SOURCE__NOTIFICATION),
+            .SAFETY_CENTER_INTERACTION_REPORTED__NAVIGATION_SOURCE__NOTIFICATION
+    ),
     QUICK_SETTINGS_TILE(
         PermissionControllerStatsLog
-            .SAFETY_CENTER_INTERACTION_REPORTED__NAVIGATION_SOURCE__QUICK_SETTINGS_TILE),
+            .SAFETY_CENTER_INTERACTION_REPORTED__NAVIGATION_SOURCE__QUICK_SETTINGS_TILE
+    ),
     SETTINGS(
-        PermissionControllerStatsLog
-            .SAFETY_CENTER_INTERACTION_REPORTED__NAVIGATION_SOURCE__SETTINGS),
+        PermissionControllerStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__NAVIGATION_SOURCE__SETTINGS
+    ),
     SENSOR_INDICATOR(
         PermissionControllerStatsLog
-            .SAFETY_CENTER_INTERACTION_REPORTED__NAVIGATION_SOURCE__SENSOR_INDICATOR);
+            .SAFETY_CENTER_INTERACTION_REPORTED__NAVIGATION_SOURCE__SENSOR_INDICATOR
+    ),
+    SAFETY_CENTER(
+        PermissionControllerStatsLog
+            .SAFETY_CENTER_INTERACTION_REPORTED__NAVIGATION_SOURCE__SAFETY_CENTER
+    );
 
     fun addToIntent(intent: Intent) {
         intent.putExtra(SafetyCenterConstants.EXTRA_NAVIGATION_SOURCE, this.toString())
@@ -215,9 +243,12 @@ enum class NavigationSource(val statsLogValue: Int) {
             val intentNavigationSource =
                 intent.getStringExtra(SafetyCenterConstants.EXTRA_NAVIGATION_SOURCE)
             val sourceIssueId = intent.getStringExtra(EXTRA_SAFETY_SOURCE_ISSUE_ID)
+            val searchKey = intent.getStringExtra(EXTRA_SETTINGS_FRAGMENT_ARGS_KEY)
 
             return if (sourceIssueId != null) {
                 NOTIFICATION
+            } else if (searchKey != null) {
+                SETTINGS
             } else if (intentNavigationSource != null) {
                 valueOf(intentNavigationSource)
             } else {
@@ -228,7 +259,9 @@ enum class NavigationSource(val statsLogValue: Int) {
         private fun fromQuickSettingsIntent(intent: Intent): NavigationSource {
             val usages =
                 intent.getParcelableArrayListExtra(
-                    PermissionManager.EXTRA_PERMISSION_USAGES, PermissionGroupUsage::class.java)
+                    PermissionManager.EXTRA_PERMISSION_USAGES,
+                    PermissionGroupUsage::class.java
+                )
 
             return if (usages != null && usages.isNotEmpty()) {
                 SENSOR_INDICATOR
@@ -243,19 +276,24 @@ enum class NavigationSource(val statsLogValue: Int) {
 enum class LogSeverityLevel(val statsLogValue: Int) {
     UNKNOWN(
         PermissionControllerStatsLog
-            .SAFETY_CENTER_INTERACTION_REPORTED__SEVERITY_LEVEL__SAFETY_SEVERITY_LEVEL_UNKNOWN),
+            .SAFETY_CENTER_INTERACTION_REPORTED__SEVERITY_LEVEL__SAFETY_SEVERITY_LEVEL_UNKNOWN
+    ),
     UNSPECIFIED(
         PermissionControllerStatsLog
-            .SAFETY_CENTER_INTERACTION_REPORTED__SEVERITY_LEVEL__SAFETY_SEVERITY_UNSPECIFIED),
+            .SAFETY_CENTER_INTERACTION_REPORTED__SEVERITY_LEVEL__SAFETY_SEVERITY_UNSPECIFIED
+    ),
     OK(
         PermissionControllerStatsLog
-            .SAFETY_CENTER_INTERACTION_REPORTED__SEVERITY_LEVEL__SAFETY_SEVERITY_OK),
+            .SAFETY_CENTER_INTERACTION_REPORTED__SEVERITY_LEVEL__SAFETY_SEVERITY_OK
+    ),
     RECOMMENDATION(
         PermissionControllerStatsLog
-            .SAFETY_CENTER_INTERACTION_REPORTED__SEVERITY_LEVEL__SAFETY_SEVERITY_RECOMMENDATION),
+            .SAFETY_CENTER_INTERACTION_REPORTED__SEVERITY_LEVEL__SAFETY_SEVERITY_RECOMMENDATION
+    ),
     CRITICAL_WARNING(
         PermissionControllerStatsLog
-            .SAFETY_CENTER_INTERACTION_REPORTED__SEVERITY_LEVEL__SAFETY_SEVERITY_CRITICAL_WARNING);
+            .SAFETY_CENTER_INTERACTION_REPORTED__SEVERITY_LEVEL__SAFETY_SEVERITY_CRITICAL_WARNING
+    );
 
     companion object {
         @JvmStatic
@@ -293,13 +331,16 @@ enum class LogSeverityLevel(val statsLogValue: Int) {
 enum class SafetySourceProfileType(val statsLogValue: Int) {
     UNKNOWN(
         PermissionControllerStatsLog
-            .SAFETY_CENTER_INTERACTION_REPORTED__SAFETY_SOURCE_PROFILE_TYPE__PROFILE_TYPE_UNKNOWN),
+            .SAFETY_CENTER_INTERACTION_REPORTED__SAFETY_SOURCE_PROFILE_TYPE__PROFILE_TYPE_UNKNOWN
+    ),
     PERSONAL(
         PermissionControllerStatsLog
-            .SAFETY_CENTER_INTERACTION_REPORTED__SAFETY_SOURCE_PROFILE_TYPE__PROFILE_TYPE_PERSONAL),
+            .SAFETY_CENTER_INTERACTION_REPORTED__SAFETY_SOURCE_PROFILE_TYPE__PROFILE_TYPE_PERSONAL
+    ),
     MANAGED(
         PermissionControllerStatsLog
-            .SAFETY_CENTER_INTERACTION_REPORTED__SAFETY_SOURCE_PROFILE_TYPE__PROFILE_TYPE_MANAGED);
+            .SAFETY_CENTER_INTERACTION_REPORTED__SAFETY_SOURCE_PROFILE_TYPE__PROFILE_TYPE_MANAGED
+    );
 
     companion object {
         @JvmStatic
@@ -311,7 +352,8 @@ enum class SafetySourceProfileType(val statsLogValue: Int) {
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 enum class Sensor(val statsLogValue: Int) {
     UNKNOWN(
-        PermissionControllerStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__SENSOR__SENSOR_UNKNOWN),
+        PermissionControllerStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__SENSOR__SENSOR_UNKNOWN
+    ),
     MICROPHONE(PermissionControllerStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__SENSOR__MICROPHONE),
     CAMERA(PermissionControllerStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__SENSOR__CAMERA),
     LOCATION(PermissionControllerStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__SENSOR__LOCATION);
@@ -323,7 +365,9 @@ enum class Sensor(val statsLogValue: Int) {
 
             val usages =
                 intent.getParcelableArrayListExtra(
-                    PermissionManager.EXTRA_PERMISSION_USAGES, PermissionGroupUsage::class.java)
+                    PermissionManager.EXTRA_PERMISSION_USAGES,
+                    PermissionGroupUsage::class.java
+                )
 
             // Multiple usages may be in effect, but we can only log one. Log unknown in this
             // scenario until we have a better solution (an explicit value approved for

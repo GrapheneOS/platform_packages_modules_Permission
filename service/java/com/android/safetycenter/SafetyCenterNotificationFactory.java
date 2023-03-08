@@ -21,6 +21,7 @@ import static android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_ID;
 import static android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_ISSUE_ID;
 import static android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_USER_HANDLE;
 
+import android.annotation.ColorInt;
 import android.annotation.Nullable;
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -28,9 +29,14 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.graphics.Color;
+import android.graphics.drawable.Icon;
 import android.os.Bundle;
 import android.os.UserHandle;
+import android.safetycenter.SafetySourceData;
 import android.safetycenter.SafetySourceIssue;
+import android.text.TextUtils;
 
 import androidx.annotation.RequiresApi;
 
@@ -38,6 +44,7 @@ import com.android.modules.utils.build.SdkLevel;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
 import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
+import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 
 import java.util.List;
 
@@ -54,11 +61,15 @@ final class SafetyCenterNotificationFactory {
 
     private final Context mContext;
     private final SafetyCenterNotificationChannels mNotificationChannels;
+    private final SafetyCenterResourcesContext mResourcesContext;
 
     SafetyCenterNotificationFactory(
-            Context context, SafetyCenterNotificationChannels notificationChannels) {
+            Context context,
+            SafetyCenterNotificationChannels notificationChannels,
+            SafetyCenterResourcesContext resourcesContext) {
         mContext = context;
         mNotificationChannels = notificationChannels;
+        mResourcesContext = resourcesContext;
     }
 
     /**
@@ -94,8 +105,8 @@ final class SafetyCenterNotificationFactory {
 
         Notification.Builder builder =
                 new Notification.Builder(mContext, channelId)
-                        // TODO(b/259399024): Use correct icon here
-                        .setSmallIcon(android.R.drawable.ic_dialog_alert)
+                        .setSmallIcon(getNotificationIcon(issue.getSeverityLevel()))
+                        .setColor(getNotificationColor(issue.getSeverityLevel()))
                         .setExtras(getNotificationExtras())
                         .setContentTitle(title)
                         .setContentText(text)
@@ -127,10 +138,38 @@ final class SafetyCenterNotificationFactory {
                 mContext, OPEN_SAFETY_CENTER_REQUEST_CODE, intent, PendingIntent.FLAG_IMMUTABLE);
     }
 
+    private Icon getNotificationIcon(@SafetySourceData.SeverityLevel int severityLevel) {
+        // TODO(b/271083000): Add final general notification icon
+        // String iconResName = "ic_notification_badge_general";
+        String iconResName = "ic_notification_badge_critical";
+        if (severityLevel == SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING) {
+            iconResName = "ic_notification_badge_critical";
+        }
+        Icon icon = mResourcesContext.getIconByDrawableName(iconResName);
+        if (icon == null) {
+            // In case it was impossible to fetch the above drawable for any reason use this
+            // fallback which should be present on all Android devices:
+            icon = Icon.createWithResource(mContext, android.R.drawable.ic_dialog_alert);
+        }
+        return icon;
+    }
+
+    @ColorInt
+    private int getNotificationColor(@SafetySourceData.SeverityLevel int severityLevel) {
+        boolean isDarkTheme = isDarkTheme(mContext);
+        if (severityLevel == SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING) {
+            return isDarkTheme ? Color.parseColor("#EE675C") : Color.parseColor("#D93025");
+        } else {
+            return isDarkTheme ? Color.parseColor("#8AB4F8") : Color.parseColor("#1A73E8");
+        }
+    }
+
     private Bundle getNotificationExtras() {
         Bundle extras = new Bundle();
-        // TODO(b/259399024): Use suitable string resource here
-        extras.putString(Notification.EXTRA_SUBSTITUTE_APP_NAME, "Safety Center");
+        String appName = mResourcesContext.getStringByName("notification_channel_group_name");
+        if (!TextUtils.isEmpty(appName)) {
+            extras.putString(Notification.EXTRA_SUBSTITUTE_APP_NAME, appName);
+        }
         return extras;
     }
 
@@ -168,5 +207,10 @@ final class SafetyCenterNotificationFactory {
     private PendingIntent getDirectPendingIntentForNonResolvingAction(
             SafetyCenterIssueKey issueKey, SafetySourceIssue.Action issueAction) {
         return issueAction.getPendingIntent();
+    }
+
+    private static boolean isDarkTheme(Context context) {
+        return (context.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK)
+                == Configuration.UI_MODE_NIGHT_YES;
     }
 }

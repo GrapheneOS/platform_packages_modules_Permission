@@ -26,6 +26,7 @@ import android.app.PendingIntent;
 import android.icu.text.ListFormatter;
 import android.icu.text.MessageFormat;
 import android.icu.util.ULocale;
+import android.os.Bundle;
 import android.safetycenter.SafetyCenterData;
 import android.safetycenter.SafetyCenterEntry;
 import android.safetycenter.SafetyCenterEntryGroup;
@@ -59,6 +60,7 @@ import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 import javax.annotation.concurrent.NotThreadSafe;
 
@@ -77,6 +79,7 @@ public final class SafetyCenterDataFactory {
     private static final String TAG = "SafetyCenterDataFactory";
 
     private static final String ANDROID_LOCK_SCREEN_SOURCES_GROUP_ID = "AndroidLockScreenSources";
+    private static final String ISSUES_TO_GROUPS_BUNDLE_KEY = "IssuesToGroupsKey";
 
     private final SafetyCenterResourcesContext mSafetyCenterResourcesContext;
     private final SafetyCenterConfigReader mSafetyCenterConfigReader;
@@ -179,6 +182,7 @@ public final class SafetyCenterDataFactory {
         SafetySourceIssueInfo topNonDismissedIssueInfo = null;
         int numTipIssues = 0;
         int numAutomaticIssues = 0;
+        Bundle issueToGroupBelonging = new Bundle();
 
         for (int i = 0; i < issuesInfo.size(); i++) {
             SafetySourceIssueInfo issueInfo = issuesInfo.get(i);
@@ -205,6 +209,14 @@ public final class SafetyCenterDataFactory {
                 } else if (isAutomatic(issueInfo.getSafetySourceIssue())) {
                     numAutomaticIssues++;
                 }
+            }
+
+            if (SdkLevel.isAtLeastU()) {
+                Set<String> groups =
+                        mSafetyCenterDataManager.getGroupMappingFor(
+                                issueInfo.getSafetyCenterIssueKey());
+                issueToGroupBelonging.putStringArrayList(
+                        safetyCenterIssue.getId(), new ArrayList<>(groups));
             }
         }
 
@@ -241,6 +253,10 @@ public final class SafetyCenterDataFactory {
             for (int i = 0; i < safetyCenterDismissedIssues.size(); i++) {
                 builder.addDismissedIssue(safetyCenterDismissedIssues.get(i));
             }
+            Bundle extras = new Bundle();
+            extras.putBundle(ISSUES_TO_GROUPS_BUNDLE_KEY, issueToGroupBelonging);
+            builder.setExtras(extras);
+
             return builder.build();
         } else {
             return new SafetyCenterData(

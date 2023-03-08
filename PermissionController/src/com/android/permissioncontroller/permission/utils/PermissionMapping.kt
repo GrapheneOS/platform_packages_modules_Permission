@@ -18,6 +18,7 @@
 package com.android.permissioncontroller.permission.utils
 
 import android.Manifest
+import android.app.AppOpsManager
 import android.content.pm.PackageManager
 import android.content.pm.PermissionInfo
 import android.health.connect.HealthPermissions.HEALTH_PERMISSION_GROUP
@@ -326,5 +327,32 @@ object PermissionMapping {
     @JvmStatic
     fun isHealthPermission(permissionName: String): Boolean {
         return HEALTH_PERMISSIONS_SET.contains(permissionName)
+    }
+
+    /**
+     * Returns the platform permission group for the permission that the provided op backs, if any.
+     */
+    fun getPlatformPermissionGroupForOp(opName: String): String? {
+        // The OPSTR_READ_WRITE_HEALTH_DATA is a special case as unlike other ops, it does not
+        // map to a single permission. However it is safe to retrieve a permission group for it,
+        // as all permissions it maps to, map to the same permission group
+        // HEALTH_PERMISSION_GROUP.
+        if (opName == AppOpsManager.OPSTR_READ_WRITE_HEALTH_DATA) {
+            return HEALTH_PERMISSION_GROUP
+        }
+
+        // The following app ops are special cased as they don't back any permissions on their own,
+        // but do indicate usage of certain permissions.
+        if (opName == AppOpsManager.OPSTR_PHONE_CALL_MICROPHONE) {
+            return Manifest.permission_group.MICROPHONE
+        }
+        if (SdkLevel.isAtLeastT() && opName == AppOpsManager.OPSTR_RECEIVE_AMBIENT_TRIGGER_AUDIO) {
+            return Manifest.permission_group.MICROPHONE
+        }
+        if (opName == AppOpsManager.OPSTR_PHONE_CALL_CAMERA) {
+            return Manifest.permission_group.CAMERA
+        }
+
+        return AppOpsManager.opToPermission(opName)?.let { getGroupOfPlatformPermission(it) }
     }
 }
