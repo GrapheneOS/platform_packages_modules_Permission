@@ -20,9 +20,11 @@ package com.android.permissioncontroller.permission.model.livedatatypes
  * A lighter version of the system's InstallSourceInfo class, containing select information about
  * the install source.
  *
- * @param installingPackageName The package name of the install source (usually the app store)
+ * @param initiatingPackageName The package name of the install source (usually the app store)
  */
-class LightInstallSourceInfo(val installingPackageName: String?) {
+data class LightInstallSourceInfo(
+    val initiatingPackageName: String?,
+) {
 
     companion object {
         val UNKNOWN_INSTALL_SOURCE = LightInstallSourceInfo(null)
