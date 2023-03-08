@@ -35,6 +35,7 @@ internal class SafetyEntryCommonViewsManager(rootEntryView: ViewGroup?) {
     private val emptySpace: View? by lazy { rootEntryView?.findViewById(R.id.empty_space) }
 
     fun showDetails(
+        id: String,
         title: CharSequence,
         summary: CharSequence?,
         severityLevel: Int,
@@ -44,7 +45,7 @@ internal class SafetyEntryCommonViewsManager(rootEntryView: ViewGroup?) {
         summaryView?.showText(summary)
 
         iconView?.setImageResource(
-            SeverityIconPicker.selectIconResId(severityLevel, severityUnspecifiedIconType)
+            SeverityIconPicker.selectIconResId(id, severityLevel, severityUnspecifiedIconType)
         )
 
         val hideIcon =

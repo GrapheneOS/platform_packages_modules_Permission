@@ -18,13 +18,18 @@ package com.android.permissioncontroller.safetycenter.ui
 import android.safetycenter.SafetyCenterEntry
 import android.util.Log
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.safetycenter.SafetyCenterConstants.PRIVACY_SOURCES_GROUP_ID
 
 internal object SeverityIconPicker {
 
     private val TAG = SeverityIconPicker::class.java.simpleName
 
     @JvmStatic
-    fun selectIconResId(severityLevel: Int, severityUnspecifiedIconType: Int): Int {
+    fun selectIconResId(id: String, severityLevel: Int, severityUnspecifiedIconType: Int): Int {
+        if (id == PRIVACY_SOURCES_GROUP_ID) {
+            return R.drawable.ic_privacy
+        }
+
         when (severityLevel) {
             SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN -> return R.drawable.ic_safety_null_state
             SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED ->
@@ -35,8 +40,10 @@ internal object SeverityIconPicker {
             SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING ->
                 return R.drawable.ic_safety_warn
         }
-        Log.e(TAG, String.format(
-                "Unexpected SafetyCenterEntry.EntrySeverityLevel: %s", severityLevel))
+        Log.e(
+            TAG,
+            String.format("Unexpected SafetyCenterEntry.EntrySeverityLevel: %s", severityLevel)
+        )
         return R.drawable.ic_safety_null_state
     }
 
@@ -48,9 +55,13 @@ internal object SeverityIconPicker {
             SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION ->
                 return R.drawable.ic_safety_null_state
         }
-        Log.e(TAG, String.format(
+        Log.e(
+            TAG,
+            String.format(
                 "Unexpected SafetyCenterEntry.SeverityNoneIconType: %s",
-                severityUnspecifiedIconType))
+                severityUnspecifiedIconType
+            )
+        )
         return R.drawable.ic_safety_null_state
     }
 }
