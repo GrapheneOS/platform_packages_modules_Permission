@@ -31,7 +31,6 @@ import android.safetycenter.config.SafetySourcesGroup;
 
 import androidx.annotation.RequiresApi;
 
-import com.android.modules.utils.build.SdkLevel;
 import com.android.safetycenter.ApiLock;
 import com.android.safetycenter.SafetyCenterConfigReader;
 import com.android.safetycenter.SafetyCenterRefreshTracker;
@@ -91,10 +90,7 @@ public final class SafetyCenterDataManager {
                         mSafetySourceDataRepository,
                         safetyCenterConfigReader,
                         mSafetyCenterIssueDismissalRepository,
-                        SdkLevel.isAtLeastU()
-                                ? new SafetyCenterIssueDeduplicator(
-                                        mSafetyCenterIssueDismissalRepository)
-                                : null);
+                        new SafetyCenterIssueDeduplicator(mSafetyCenterIssueDismissalRepository));
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////
