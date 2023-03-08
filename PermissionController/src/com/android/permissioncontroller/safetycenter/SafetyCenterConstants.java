@@ -43,4 +43,7 @@ public class SafetyCenterConstants {
 
     /** Intent extra representing the preference key of a search result */
     public static final String EXTRA_SETTINGS_FRAGMENT_ARGS_KEY = ":settings:fragment_args_key";
+
+    /** Identifier for the group of privacy safety sources */
+    public static final String PRIVACY_SOURCES_GROUP_ID = "AndroidPrivacySources";
 }

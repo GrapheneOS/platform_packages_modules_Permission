@@ -44,6 +44,7 @@ internal class SafetyHomepageEntryPreference(
         setSummary(entryGroup.summary)
         setIcon(
             SeverityIconPicker.selectIconResId(
+                entryGroup.id,
                 entryGroup.severityLevel,
                 entryGroup.severityUnspecifiedIconType
             )
