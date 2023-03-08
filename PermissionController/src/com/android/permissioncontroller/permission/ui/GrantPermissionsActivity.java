@@ -31,6 +31,7 @@ import static com.android.permissioncontroller.permission.utils.Utils.getRequest
 
 import android.app.KeyguardManager;
 import android.content.Intent;
+import android.content.pm.AppPermissionUtils;
 import android.content.pm.GosPackageState;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
@@ -698,7 +699,7 @@ public class GrantPermissionsActivity extends SettingsActivity
                     grantResults[i] = pm.checkPermission(resultPermissions[i], mTargetPackage);
 
                     if (ps != null && grantResults[i] != PackageManager.PERMISSION_GRANTED) {
-                        if (ps.shouldSpoofRuntimePermissionCheck(resultPermissions[i])) {
+                        if (AppPermissionUtils.shouldSpoofPermissionRequestResult(ps, resultPermissions[i])) {
                             grantResults[i] = PackageManager.PERMISSION_GRANTED;
                         }
                     }
@@ -825,7 +826,7 @@ public class GrantPermissionsActivity extends SettingsActivity
         }
 
         return Arrays.stream(requestedPermissions)
-                .filter(perm -> !ps.shouldSkipRuntimePermissionRequest(perm))
+                .filter(perm -> !AppPermissionUtils.shouldSkipPermissionRequestDialog(ps, perm))
                 .toArray(String[]::new);
     }
 }
