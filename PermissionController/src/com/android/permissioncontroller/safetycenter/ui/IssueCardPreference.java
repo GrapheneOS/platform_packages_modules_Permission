@@ -183,7 +183,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
 
         mSafetyCenterViewModel
                 .getInteractionLogger()
-                .recordForIssue(Action.SAFETY_ISSUE_VIEWED, mIssue);
+                .recordForIssue(Action.SAFETY_ISSUE_VIEWED, mIssue, mIsDismissed);
     }
 
     private void configureSafetyProtectionView(PreferenceViewHolder holder) {
@@ -254,7 +254,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
             mSafetyCenterViewModel.dismissIssue(mIssue);
             mSafetyCenterViewModel
                     .getInteractionLogger()
-                    .recordForIssue(Action.ISSUE_DISMISS_CLICKED, mIssue);
+                    .recordForIssue(Action.ISSUE_DISMISS_CLICKED, mIssue, mIsDismissed);
         }
     }
 
@@ -296,7 +296,11 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
                                 safetyCenterViewModel.dismissIssue(issue);
                                 safetyCenterViewModel
                                         .getInteractionLogger()
-                                        .recordForIssue(Action.ISSUE_DISMISS_CLICKED, issue);
+                                        .recordForIssue(
+                                                Action.ISSUE_DISMISS_CLICKED,
+                                                issue,
+                                                // You can only dismiss non-dismissed issues
+                                                /* isDismissed= */ false);
                             })
                     .setNegativeButton(
                             R.string.safety_center_issue_card_cancel_dismiss_button, null)
@@ -311,22 +315,27 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
         private static final String ACTION_KEY = "action";
         private static final String TASK_ID_KEY = "taskId";
         private static final String IS_PRIMARY_BUTTON_KEY = "isPrimaryButton";
+        private static final String IS_DISMISSED_KEY = "isDismissed";
 
         /** Create new fragment with the data it will need. */
         public static ConfirmActionDialogFragment newInstance(
                 SafetyCenterIssue issue,
                 SafetyCenterIssue.Action action,
                 @Nullable Integer taskId,
-                boolean isFirstButton) {
+                boolean isFirstButton,
+                boolean isDismissed) {
             ConfirmActionDialogFragment fragment = new ConfirmActionDialogFragment();
 
             Bundle args = new Bundle();
             args.putParcelable(ISSUE_KEY, issue);
             args.putParcelable(ACTION_KEY, action);
             args.putBoolean(IS_PRIMARY_BUTTON_KEY, isFirstButton);
+            args.putBoolean(IS_DISMISSED_KEY, isDismissed);
+
             if (taskId != null) {
                 args.putInt(TASK_ID_KEY, taskId);
             }
+
             fragment.setArguments(args);
 
             return fragment;
@@ -344,6 +353,8 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
                             requireArguments()
                                     .getParcelable(ACTION_KEY, SafetyCenterIssue.Action.class));
             boolean isPrimaryButton = requireArguments().getBoolean(IS_PRIMARY_BUTTON_KEY);
+            boolean isDismissed = requireArguments().getBoolean(IS_DISMISSED_KEY);
+
             Integer taskId =
                     requireArguments().containsKey(TASK_ID_KEY)
                             ? requireArguments().getInt(TASK_ID_KEY)
@@ -363,7 +374,8 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
                                                 isPrimaryButton
                                                         ? Action.ISSUE_PRIMARY_ACTION_CLICKED
                                                         : Action.ISSUE_SECONDARY_ACTION_CLICKED,
-                                                issue);
+                                                issue,
+                                                isDismissed);
                             })
                     .setNegativeButton(
                             action.getConfirmationDialogDetails().getDenyButtonText(), null)
@@ -419,7 +431,11 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
                         if (SdkLevel.isAtLeastU()
                                 && mAction.getConfirmationDialogDetails() != null) {
                             ConfirmActionDialogFragment.newInstance(
-                                            mIssue, mAction, mTaskId, mIsPrimaryButton)
+                                            mIssue,
+                                            mAction,
+                                            mTaskId,
+                                            mIsPrimaryButton,
+                                            mIsDismissed)
                                     .showNow(mDialogFragmentManager, /* tag= */ null);
                         } else {
                             if (mAction.willResolve()) {
@@ -439,7 +455,8 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
                                             mIsPrimaryButton
                                                     ? Action.ISSUE_PRIMARY_ACTION_CLICKED
                                                     : Action.ISSUE_SECONDARY_ACTION_CLICKED,
-                                            mIssue);
+                                            mIssue,
+                                            mIsDismissed);
                         }
                     });
 
