@@ -30,6 +30,6 @@ object SafetyCenterUiFlags {
     @JvmStatic
     fun getShowSubpages(): Boolean {
         return SdkLevel.isAtLeastU() &&
-            DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY, PROPERTY_SHOW_SUBPAGES, false)
+            DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY, PROPERTY_SHOW_SUBPAGES, true)
     }
 }

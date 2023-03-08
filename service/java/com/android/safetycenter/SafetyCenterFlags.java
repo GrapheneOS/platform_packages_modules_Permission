@@ -460,7 +460,6 @@ public final class SafetyCenterFlags {
      * expand-and-collapse list implementation.
      */
     static boolean getShowSubpages() {
-        // TODO(b/260822348): Add CTS test to verify that the flag is disabled when turned on for T
         return SdkLevel.isAtLeastU() && getBoolean(PROPERTY_SHOW_SUBPAGES, true);
     }
 
