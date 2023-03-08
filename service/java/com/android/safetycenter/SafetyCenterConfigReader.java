@@ -148,25 +148,12 @@ public final class SafetyCenterConfigReader {
         return getCurrentConfigInternal().getExternalSafetySources().containsKey(safetySourceId);
     }
 
-    /** Returns whether the {@link SafetyCenterConfig} allows logging to statsd. */
-    public boolean allowsStatsdLogging() {
-        if (!isOverrideForTestsActive()) {
-            return true;
-        }
-        return SafetyCenterFlags.getAllowStatsdLoggingInTests();
-    }
-
     /**
      * Returns the {@link Broadcast} defined in the {@link SafetyCenterConfig}, with all the sources
      * that they should handle and the profile on which they should be dispatched.
      */
     List<Broadcast> getBroadcasts() {
         return getCurrentConfigInternal().getBroadcasts();
-    }
-
-    /** Returns whether the {@link SafetyCenterConfig} is currently overridden for tests. */
-    private boolean isOverrideForTestsActive() {
-        return mConfigInternalOverrideForTests != null;
     }
 
     private SafetyCenterConfigInternal getCurrentConfigInternal() {
