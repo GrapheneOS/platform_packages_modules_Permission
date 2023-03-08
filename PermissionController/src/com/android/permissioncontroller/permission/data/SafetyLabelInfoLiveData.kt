@@ -83,9 +83,9 @@ private constructor(
             return
         }
 
-        // TODO(b/261607291): Add support preinstall apps that provide SafetyLabel. Installing
+        // TODO(b/261607291): Add support for preinstall apps that provide SafetyLabel. Initiating
         //  package is null until updated from an app store
-        val installSourcePackageName = lightInstallSourceInfoLiveData.value?.installingPackageName
+        val installSourcePackageName = lightInstallSourceInfoLiveData.value?.initiatingPackageName
         if (installSourcePackageName == null) {
             postValue(SafetyLabelInfo.UNAVAILABLE)
             return
