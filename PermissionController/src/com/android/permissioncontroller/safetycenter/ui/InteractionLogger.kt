@@ -30,6 +30,8 @@ import android.safetycenter.SafetyCenterStatus
 import androidx.annotation.RequiresApi
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.PermissionControllerStatsLog
+import com.android.permissioncontroller.PermissionControllerStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__ISSUE_STATE__ACTIVE
+import com.android.permissioncontroller.PermissionControllerStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__ISSUE_STATE__DISMISSED
 import com.android.permissioncontroller.PermissionControllerStatsLog.SAFETY_CENTER_INTERACTION_REPORTED__ISSUE_STATE__ISSUE_STATE_UNKNOWN
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.safetycenter.SafetyCenterConstants
@@ -40,7 +42,7 @@ import java.security.MessageDigest
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class InteractionLogger(
-    val noLogSourceIds: Set<String>,
+    private val noLogSourceIds: Set<String?>,
     var sessionId: Long = Constants.INVALID_SESSION_ID,
     var viewType: ViewType = ViewType.UNKNOWN,
     var navigationSource: NavigationSource = NavigationSource.UNKNOWN,
@@ -51,7 +53,7 @@ class InteractionLogger(
         writeAtom(action)
     }
 
-    fun recordForIssue(action: Action, issue: SafetyCenterIssue) {
+    fun recordForIssue(action: Action, issue: SafetyCenterIssue, isDismissed: Boolean) {
         val decodedId = SafetyCenterIds.issueIdFromString(issue.id)
         writeAtom(
             action,
@@ -59,7 +61,13 @@ class InteractionLogger(
             sourceId = decodedId.safetyCenterIssueKey.safetySourceId,
             sourceProfileType =
                 SafetySourceProfileType.fromUserId(decodedId.safetyCenterIssueKey.userId),
-            issueTypeId = decodedId.issueTypeId
+            issueTypeId = decodedId.issueTypeId,
+            issueState =
+                if (isDismissed) {
+                    SAFETY_CENTER_INTERACTION_REPORTED__ISSUE_STATE__DISMISSED
+                } else {
+                    SAFETY_CENTER_INTERACTION_REPORTED__ISSUE_STATE__ACTIVE
+                }
         )
     }
 
@@ -83,7 +91,8 @@ class InteractionLogger(
         sourceId: String? = null,
         sourceProfileType: SafetySourceProfileType = SafetySourceProfileType.UNKNOWN,
         issueTypeId: String? = null,
-        sensor: Sensor = Sensor.UNKNOWN
+        issueState: Int = SAFETY_CENTER_INTERACTION_REPORTED__ISSUE_STATE__ISSUE_STATE_UNKNOWN,
+        sensor: Sensor = Sensor.UNKNOWN,
     ) {
         if (noLogSourceIds.contains(sourceId)) {
             return
@@ -106,8 +115,7 @@ class InteractionLogger(
             encodeStringId(issueTypeId),
             (if (sensor != Sensor.UNKNOWN) sensor else navigationSensor).statsLogValue,
             encodeStringId(groupId),
-            // TODO(b/268309491): Log issue state for dismissed and un-dismissed issues.
-            SAFETY_CENTER_INTERACTION_REPORTED__ISSUE_STATE__ISSUE_STATE_UNKNOWN
+            issueState
         )
     }
 
