@@ -73,10 +73,9 @@ public final class SafetyCenterDataManager {
             Context context,
             SafetyCenterConfigReader safetyCenterConfigReader,
             SafetyCenterRefreshTracker safetyCenterRefreshTracker,
-            SafetyCenterStatsdLogger safetyCenterStatsdLogger,
             ApiLock apiLock) {
         mSafetyCenterInFlightIssueActionRepository =
-                new SafetyCenterInFlightIssueActionRepository(safetyCenterStatsdLogger);
+                new SafetyCenterInFlightIssueActionRepository(context);
         mSafetyCenterIssueDismissalRepository =
                 new SafetyCenterIssueDismissalRepository(apiLock, safetyCenterConfigReader);
         mSafetySourceDataRepository =

@@ -80,7 +80,6 @@ import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 import com.android.safetycenter.logging.SafetyCenterPullAtomCallback;
-import com.android.safetycenter.logging.SafetyCenterStatsdLogger;
 import com.android.safetycenter.pendingintents.PendingIntentSender;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 import com.android.server.SystemService;
@@ -110,8 +109,6 @@ public final class SafetyCenterService extends SystemService {
     private final SafetyCenterTimeouts mSafetyCenterTimeouts = new SafetyCenterTimeouts();
 
     private final SafetyCenterResourcesContext mSafetyCenterResourcesContext;
-
-    private final SafetyCenterStatsdLogger mSafetyCenterStatsdLogger;
 
     @GuardedBy("mApiLock")
     private final SafetyCenterConfigReader mSafetyCenterConfigReader;
@@ -148,16 +145,10 @@ public final class SafetyCenterService extends SystemService {
         mSafetyCenterResourcesContext = new SafetyCenterResourcesContext(context);
         SafetyCenterFlags.init(mSafetyCenterResourcesContext);
         mSafetyCenterConfigReader = new SafetyCenterConfigReader(mSafetyCenterResourcesContext);
-        mSafetyCenterStatsdLogger =
-                new SafetyCenterStatsdLogger(context, mSafetyCenterConfigReader);
-        mSafetyCenterRefreshTracker = new SafetyCenterRefreshTracker(mSafetyCenterStatsdLogger);
+        mSafetyCenterRefreshTracker = new SafetyCenterRefreshTracker(context);
         mSafetyCenterDataManager =
                 new SafetyCenterDataManager(
-                        context,
-                        mSafetyCenterConfigReader,
-                        mSafetyCenterRefreshTracker,
-                        mSafetyCenterStatsdLogger,
-                        mApiLock);
+                        context, mSafetyCenterConfigReader, mSafetyCenterRefreshTracker, mApiLock);
         mSafetyCenterDataFactory =
                 new SafetyCenterDataFactory(
                         mSafetyCenterResourcesContext,
@@ -173,8 +164,7 @@ public final class SafetyCenterService extends SystemService {
                                 context,
                                 new SafetyCenterNotificationChannels(mSafetyCenterResourcesContext),
                                 mSafetyCenterResourcesContext),
-                        mSafetyCenterDataManager,
-                        mSafetyCenterStatsdLogger);
+                        mSafetyCenterDataManager);
         mSafetyCenterBroadcastDispatcher =
                 new SafetyCenterBroadcastDispatcher(
                         context,
@@ -185,7 +175,6 @@ public final class SafetyCenterService extends SystemService {
                 new SafetyCenterPullAtomCallback(
                         context,
                         mApiLock,
-                        mSafetyCenterStatsdLogger,
                         mSafetyCenterConfigReader,
                         mSafetyCenterDataFactory,
                         mSafetyCenterDataManager);
@@ -216,8 +205,7 @@ public final class SafetyCenterService extends SystemService {
                                     this,
                                     mSafetyCenterDataManager,
                                     mSafetyCenterDataChangeNotifier,
-                                    mApiLock,
-                                    mSafetyCenterStatsdLogger)
+                                    mApiLock)
                             .register(getContext());
                 }
             }

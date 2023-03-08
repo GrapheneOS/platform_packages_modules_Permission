@@ -25,6 +25,7 @@ import static com.android.safetycenter.logging.SafetyCenterStatsdLogger.toSystem
 import android.annotation.ElapsedRealtimeLong;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
+import android.content.Context;
 import android.os.SystemClock;
 import android.safetycenter.SafetyCenterManager.RefreshReason;
 import android.safetycenter.SafetyCenterStatus;
@@ -35,6 +36,7 @@ import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
+import com.android.permission.util.UserUtils;
 import com.android.safetycenter.logging.SafetyCenterStatsdLogger;
 
 import java.io.PrintWriter;
@@ -56,6 +58,8 @@ import javax.annotation.concurrent.NotThreadSafe;
 public final class SafetyCenterRefreshTracker {
     private static final String TAG = "SafetyCenterRefreshTrac";
 
+    private final Context mContext;
+
     @Nullable
     // TODO(b/229060064): Should we allow one refresh at a time per UserProfileGroup rather than
     //  one global refresh?
@@ -63,10 +67,8 @@ public final class SafetyCenterRefreshTracker {
 
     private int mRefreshCounter = 0;
 
-    private final SafetyCenterStatsdLogger mSafetyCenterStatsdLogger;
-
-    SafetyCenterRefreshTracker(SafetyCenterStatsdLogger safetyCenterStatsdLogger) {
-        mSafetyCenterStatsdLogger = safetyCenterStatsdLogger;
+    SafetyCenterRefreshTracker(Context context) {
+        mContext = context;
     }
 
     /**
@@ -149,8 +151,12 @@ public final class SafetyCenterRefreshTracker {
 
         if (duration != null) {
             int sourceResult = toSystemEventResult(successful);
-            mSafetyCenterStatsdLogger.writeSourceRefreshSystemEvent(
-                    requestType, sourceId, userId, duration, sourceResult);
+            SafetyCenterStatsdLogger.writeSourceRefreshSystemEvent(
+                    requestType,
+                    sourceId,
+                    UserUtils.isManagedProfile(userId, mContext),
+                    duration,
+                    sourceResult);
         }
 
         if (!mRefreshInProgress.isComplete()) {
@@ -160,7 +166,7 @@ public final class SafetyCenterRefreshTracker {
         Log.v(TAG, "Refresh with id: " + mRefreshInProgress.getId() + " completed");
         int wholeResult =
                 toSystemEventResult(/* success= */ !mRefreshInProgress.hasAnyTrackedSourceErrors());
-        mSafetyCenterStatsdLogger.writeWholeRefreshSystemEvent(
+        SafetyCenterStatsdLogger.writeWholeRefreshSystemEvent(
                 requestType, mRefreshInProgress.getDurationSinceStart(), wholeResult);
         mRefreshInProgress = null;
         return true;
@@ -238,16 +244,16 @@ public final class SafetyCenterRefreshTracker {
             SafetySourceKey sourceKey = timedOutSources.valueAt(i);
             Duration duration = clearedRefresh.getDurationSinceSourceStart(sourceKey);
             if (duration != null) {
-                mSafetyCenterStatsdLogger.writeSourceRefreshSystemEvent(
+                SafetyCenterStatsdLogger.writeSourceRefreshSystemEvent(
                         requestType,
                         sourceKey.getSourceId(),
-                        sourceKey.getUserId(),
+                        UserUtils.isManagedProfile(sourceKey.getUserId(), mContext),
                         duration,
                         SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__TIMEOUT);
             }
         }
 
-        mSafetyCenterStatsdLogger.writeWholeRefreshSystemEvent(
+        SafetyCenterStatsdLogger.writeWholeRefreshSystemEvent(
                 requestType,
                 clearedRefresh.getDurationSinceStart(),
                 SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__TIMEOUT);
