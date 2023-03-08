@@ -37,6 +37,7 @@ import android.util.Log;
 import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.build.SdkLevel;
+import com.android.permission.util.UserUtils;
 import com.android.safetycenter.data.SafetyCenterDataManager;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
@@ -97,20 +98,16 @@ final class SafetyCenterNotificationSender {
 
     private final SafetyCenterDataManager mSafetyCenterDataManager;
 
-    private final SafetyCenterStatsdLogger mStatsdLogger;
-
     private final ArrayMap<SafetyCenterIssueKey, SafetySourceIssue> mNotifiedIssues =
             new ArrayMap<>();
 
     SafetyCenterNotificationSender(
             Context context,
             SafetyCenterNotificationFactory notificationFactory,
-            SafetyCenterDataManager safetyCenterDataManager,
-            SafetyCenterStatsdLogger statsdLogger) {
+            SafetyCenterDataManager safetyCenterDataManager) {
         mContext = context;
         mNotificationFactory = notificationFactory;
         mSafetyCenterDataManager = safetyCenterDataManager;
-        mStatsdLogger = statsdLogger;
     }
 
     /** Updates Safety Center notifications for the given {@link UserProfileGroup}. */
@@ -283,9 +280,9 @@ final class SafetyCenterNotificationSender {
         boolean wasPosted = notifyFromSystem(notificationManager, tag, notification);
         if (wasPosted) {
             mNotifiedIssues.put(key, issue);
-            mStatsdLogger.writeNotificationPostedEvent(
+            SafetyCenterStatsdLogger.writeNotificationPostedEvent(
                     key.getSafetySourceId(),
-                    key.getUserId(),
+                    UserUtils.isManagedProfile(key.getUserId(), mContext),
                     issue.getIssueTypeId(),
                     issue.getSeverityLevel());
         }
