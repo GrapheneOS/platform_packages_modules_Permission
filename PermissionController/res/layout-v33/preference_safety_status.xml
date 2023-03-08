@@ -14,52 +14,7 @@
   ~ limitations under the License.
   -->
 
-<androidx.constraintlayout.widget.ConstraintLayout
+<com.android.permissioncontroller.safetycenter.ui.view.StatusCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:clickable="false"
-    style="@style/SafetyCenterCard.Status">
-
-    <ImageView
-        android:id="@+id/status_image"
-        android:importantForAccessibility="no"
-        android:src="@drawable/safety_status_info"
-        style="@style/SafetyCenterStatusImage" />
-
-    <LinearLayout
-        android:id="@+id/status_title_and_summary"
-        style="@style/SafetyCenterStatusTitleAndSummaryContainer">
-
-        <TextView
-            android:id="@+id/status_title"
-            android:text="@string/summary_placeholder"
-            style="@style/SafetyCenterStatusTitle" />
-
-        <TextView
-            android:id="@+id/status_summary"
-            android:text="@string/summary_placeholder"
-            style="@style/SafetyCenterStatusSummary" />
-    </LinearLayout>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/review_settings_button"
-        android:text="@string/safety_center_review_settings_button"
-        android:visibility="gone"
-        style="@style/SafetyCenterStatusButton.ReviewSettings" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/rescan_button"
-        android:text="@string/safety_center_rescan_button"
-        style="@style/SafetyCenterStatusButton.Rescan" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/pending_actions_rescan_button"
-        android:text="@string/safety_center_rescan_button"
-        android:visibility="gone"
-        style="@style/SafetyCenterStatusButton.PendingActionsRescan" />
-
-    <com.android.permissioncontroller.permission.ui.widget.SafetyProtectionSectionView
-        android:id="@+id/safety_protection_section_view"
-        android:importantForAccessibility="noHideDescendants"
-        style="@style/SafetyCenterStatusSafetyProtectionView" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    style="@style/SafetyCenterCard.Status" />
