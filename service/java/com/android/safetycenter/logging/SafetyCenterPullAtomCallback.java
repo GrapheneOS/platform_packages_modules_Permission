@@ -72,9 +72,6 @@ public final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback
     private final ApiLock mApiLock;
 
     @GuardedBy("mApiLock")
-    private final SafetyCenterStatsdLogger mSafetyCenterStatsdLogger;
-
-    @GuardedBy("mApiLock")
     private final SafetyCenterConfigReader mSafetyCenterConfigReader;
 
     @GuardedBy("mApiLock")
@@ -86,13 +83,11 @@ public final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback
     public SafetyCenterPullAtomCallback(
             Context context,
             ApiLock apiLock,
-            SafetyCenterStatsdLogger safetyCenterStatsdLogger,
             SafetyCenterConfigReader safetyCenterConfigReader,
             SafetyCenterDataFactory safetyCenterDataFactory,
             SafetyCenterDataManager safetyCenterDataManager) {
         mContext = context;
         mApiLock = apiLock;
-        mSafetyCenterStatsdLogger = safetyCenterStatsdLogger;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
         mSafetyCenterDataFactory = safetyCenterDataFactory;
         mSafetyCenterDataManager = safetyCenterDataManager;
@@ -111,8 +106,8 @@ public final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback
         List<UserProfileGroup> userProfileGroups =
                 UserProfileGroup.getAllUserProfileGroups(mContext);
         synchronized (mApiLock) {
-            if (!mSafetyCenterConfigReader.allowsStatsdLogging()) {
-                Log.w(TAG, "Skipping pulling and writing atoms due to a test config override");
+            if (!SafetyCenterFlags.getAllowStatsdLogging()) {
+                Log.w(TAG, "Skipping pulling and writing atoms due to logging being disabled");
                 return StatsManager.PULL_SKIP;
             }
             Log.i(TAG, "Pulling and writing atoms…");
@@ -140,7 +135,7 @@ public final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback
         long openIssuesCount = loggableData.getIssues().size();
         long dismissedIssuesCount = getDismissedIssuesCountLocked(loggableData, userProfileGroup);
 
-        return mSafetyCenterStatsdLogger.createSafetyStateEvent(
+        return SafetyCenterStatsdLogger.createSafetyStateEvent(
                 loggableData.getStatus().getSeverityLevel(), openIssuesCount, dismissedIssuesCount);
     }
 
@@ -240,7 +235,7 @@ public final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback
             }
         }
 
-        mSafetyCenterStatsdLogger.writeSafetySourceStateCollected(
+        SafetyCenterStatsdLogger.writeSafetySourceStateCollected(
                 safetySource.getId(),
                 isUserManaged,
                 maxSeverityOrNull,
