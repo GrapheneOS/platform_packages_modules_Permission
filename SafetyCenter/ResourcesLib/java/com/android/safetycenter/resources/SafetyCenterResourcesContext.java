@@ -212,12 +212,6 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
         return getString(stringId);
     }
 
-    /** Same as {@link #getOptionalString(int)} but using the string name rather than ID. */
-    @Nullable
-    public String getOptionalString(String name) {
-        return getOptionalString(getStringRes(name));
-    }
-
     /** Same as {@link #getOptionalString(int)} but with the given {@code formatArgs}. */
     @Nullable
     public String getOptionalString(@StringRes int stringId, Object... formatArgs) {
@@ -225,6 +219,12 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
             return null;
         }
         return getString(stringId, formatArgs);
+    }
+
+    /** Same as {@link #getOptionalString(int)} but using the string name rather than ID. */
+    @Nullable
+    public String getOptionalStringByName(String name) {
+        return getOptionalString(getStringRes(name));
     }
 
     /**

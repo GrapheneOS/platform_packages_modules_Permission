@@ -113,8 +113,6 @@ public final class SafetyCenterFlags {
 
     private static final Duration NOTIFICATIONS_MIN_DELAY_DEFAULT_DURATION = Duration.ofDays(180);
 
-    private static String sIssueCategoryAllowlistDefault = "";
-
     private static final String REFRESH_SOURCES_TIMEOUT_DEFAULT =
             "100:15000,200:60000,300:30000,400:30000,500:30000,600:3600000";
     private static final Duration REFRESH_SOURCES_TIMEOUT_DEFAULT_DURATION = Duration.ofSeconds(15);
@@ -125,25 +123,27 @@ public final class SafetyCenterFlags {
     private static final String RESURFACE_ISSUE_DELAYS_DEFAULT = "";
     private static final Duration RESURFACE_ISSUE_DELAYS_DEFAULT_DURATION = Duration.ofDays(180);
 
-    private static String sUntrackedSourcesDefault =
+    private static volatile String sUntrackedSourcesDefault =
             "AndroidAccessibility,AndroidBackgroundLocation,"
                     + "AndroidNotificationListener,AndroidPermissionAutoRevoke";
 
-    private static String sBackgroundRefreshDenyDefault = "";
+    private static volatile String sBackgroundRefreshDenyDefault = "";
+
+    private static volatile String sIssueCategoryAllowlistDefault = "";
 
     static void init(SafetyCenterResourcesContext resourceContext) {
         String untrackedSourcesDefault =
-                resourceContext.getOptionalString("config_defaultUntrackedSources");
+                resourceContext.getOptionalStringByName("config_defaultUntrackedSources");
         if (untrackedSourcesDefault != null) {
             sUntrackedSourcesDefault = untrackedSourcesDefault;
         }
         String backgroundRefreshDenyDefault =
-                resourceContext.getOptionalString("config_defaultBackgroundRefreshDeny");
+                resourceContext.getOptionalStringByName("config_defaultBackgroundRefreshDeny");
         if (backgroundRefreshDenyDefault != null) {
             sBackgroundRefreshDenyDefault = backgroundRefreshDenyDefault;
         }
         String issueCategoryAllowlistDefault =
-                resourceContext.getOptionalString("config_defaultIssueCategoryAllowlist");
+                resourceContext.getOptionalStringByName("config_defaultIssueCategoryAllowlist");
         if (issueCategoryAllowlistDefault != null) {
             sIssueCategoryAllowlistDefault = issueCategoryAllowlistDefault;
         }
