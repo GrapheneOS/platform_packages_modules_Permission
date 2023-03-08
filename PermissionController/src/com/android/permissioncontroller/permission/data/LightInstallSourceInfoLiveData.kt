@@ -71,10 +71,10 @@ private constructor(
             try {
                 val userContext = Utils.getUserContext(app, user)
                 LightInstallSourceInfo(
-                    getInstallSourceInfo(userContext, packageName).installingPackageName)
+                    getInstallSourceInfo(userContext, packageName).initiatingPackageName)
             } catch (e: PackageManager.NameNotFoundException) {
                 Log.w(LOG_TAG, "InstallSourceInfo for $packageName not found")
-                SafetyLabelInfoLiveData.invalidateSingle(packageName to user)
+                invalidateSingle(packageName to user)
                 UNKNOWN_INSTALL_SOURCE
             }
         postValue(lightInstallSourceInfo)
