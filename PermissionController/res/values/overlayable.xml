@@ -387,10 +387,11 @@
             <item type="dimen" name="sc_entry_group_collapsed_padding_bottom" />
             <item type="dimen" name="sc_card_margin_bottom" />
             <item type="dimen" name="sc_button_corner_radius" />
+            <item type="dimen" name="sc_button_corner_radius_small" />
             <item type="dimen" name="sc_card_corner_radius_large" />
             <item type="dimen" name="sc_card_corner_radius_medium" />
             <item type="dimen" name="sc_card_corner_radius_xsmall" />
-            <item type="dimen" name="safety_center_brand_chip_corner_radius" />
+            <item type="dimen" name="sc_brand_chip_corner_radius" />
 
             <item type="color" name="safety_center_button_info" />
             <item type="color" name="safety_center_button_recommend" />
