@@ -1178,7 +1178,6 @@
     <role
         name="android.app.role.COMPANION_DEVICE_GLASSES"
         behavior="CompanionDeviceGlassesRoleBehavior"
-        description="@string/role_companion_device_glasses_description"
         exclusive="false"
         minSdkVersion="34"
         systemOnly="false"
@@ -1199,7 +1198,6 @@
     <role
         name="android.app.role.COMPANION_DEVICE_NEARBY_DEVICE_STREAMING"
         allowBypassingQualification="true"
-        description="@string/role_companion_device_nearby_device_streaming_description"
         exclusive="false"
         minSdkVersion="34"
         systemOnly="true"
