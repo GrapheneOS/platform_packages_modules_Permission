@@ -22,6 +22,7 @@ import static com.android.safetycenter.internaldata.SafetyCenterIds.toUserFriend
 
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
+import android.content.Context;
 import android.os.SystemClock;
 import android.safetycenter.SafetyCenterData;
 import android.safetycenter.SafetySourceIssue;
@@ -30,6 +31,7 @@ import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
+import com.android.permission.util.UserUtils;
 import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 import com.android.safetycenter.logging.SafetyCenterStatsdLogger;
@@ -47,14 +49,14 @@ final class SafetyCenterInFlightIssueActionRepository {
 
     private static final String TAG = "SafetyCenterInFlight";
 
-    private final SafetyCenterStatsdLogger mSafetyCenterStatsdLogger;
-
     private final ArrayMap<SafetyCenterIssueActionId, Long> mSafetyCenterIssueActionsInFlight =
             new ArrayMap<>();
 
+    private final Context mContext;
+
     /** Constructs a new instance of {@link SafetyCenterInFlightIssueActionRepository}. */
-    SafetyCenterInFlightIssueActionRepository(SafetyCenterStatsdLogger safetyCenterStatsdLogger) {
-        mSafetyCenterStatsdLogger = safetyCenterStatsdLogger;
+    SafetyCenterInFlightIssueActionRepository(Context context) {
+        mContext = context;
     }
 
     /** Marks the given {@link SafetyCenterIssueActionId} as in-flight. */
@@ -86,8 +88,12 @@ final class SafetyCenterInFlightIssueActionRepository {
         String issueTypeId = safetySourceIssue == null ? null : safetySourceIssue.getIssueTypeId();
         Duration duration = Duration.ofMillis(SystemClock.elapsedRealtime() - startElapsedMillis);
 
-        mSafetyCenterStatsdLogger.writeInlineActionSystemEvent(
-                issueKey.getSafetySourceId(), issueKey.getUserId(), issueTypeId, duration, result);
+        SafetyCenterStatsdLogger.writeInlineActionSystemEvent(
+                issueKey.getSafetySourceId(),
+                UserUtils.isManagedProfile(issueKey.getUserId(), mContext),
+                issueTypeId,
+                duration,
+                result);
 
         if (safetySourceIssue == null
                 || getSafetySourceIssueAction(safetyCenterIssueActionId, safetySourceIssue)
