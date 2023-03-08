@@ -27,6 +27,7 @@ import androidx.preference.PreferenceGroup
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.utils.Utils
+import com.android.permissioncontroller.safetycenter.SafetyCenterConstants.PRIVACY_SOURCES_GROUP_ID
 import com.android.permissioncontroller.safetycenter.ui.SafetyBrandChipPreference.Companion.closeSubpage
 import com.android.permissioncontroller.safetycenter.ui.model.PrivacyControlsViewModel
 import com.android.permissioncontroller.safetycenter.ui.model.PrivacyControlsViewModel.Pref
@@ -73,19 +74,22 @@ class PrivacySubpageFragment : SafetyCenterFragment() {
         logger.sessionId = sessionId
         logger.navigationSource = NavigationSource.fromIntent(requireActivity().getIntent())
         logger.viewType = ViewType.SUBPAGE
-        logger.groupId = SOURCE_GROUP_ID
+        logger.groupId = PRIVACY_SOURCES_GROUP_ID
     }
 
     override fun onResume() {
         super.onResume()
-        safetyCenterViewModel.pageOpen(SOURCE_GROUP_ID)
+        safetyCenterViewModel.pageOpen(PRIVACY_SOURCES_GROUP_ID)
     }
 
     override fun renderSafetyCenterData(uiData: SafetyCenterUiData?) {
         Log.d(TAG, "renderSafetyCenterEntryGroup called with $uiData")
-        val entryGroup = uiData?.getMatchingGroup(SOURCE_GROUP_ID)
+        val entryGroup = uiData?.getMatchingGroup(PRIVACY_SOURCES_GROUP_ID)
         if (entryGroup == null) {
-            Log.w(TAG, "$SOURCE_GROUP_ID doesn't match any of the existing SafetySourcesGroup IDs")
+            Log.w(
+                TAG,
+                "$PRIVACY_SOURCES_GROUP_ID doesn't match any of the existing SafetySourcesGroup IDs"
+            )
             closeSubpage(requireActivity(), requireContext(), sessionId)
             return
         }
@@ -97,10 +101,10 @@ class PrivacySubpageFragment : SafetyCenterFragment() {
 
     private fun updateSafetyCenterIssues(uiData: SafetyCenterUiData?) {
         subpageIssueGroup.removeAll()
-        val subpageIssues = uiData?.getMatchingIssues(SOURCE_GROUP_ID)
-        val subpageDismissedIssues = uiData?.getMatchingDismissedIssues(SOURCE_GROUP_ID)
+        val subpageIssues = uiData?.getMatchingIssues(PRIVACY_SOURCES_GROUP_ID)
+        val subpageDismissedIssues = uiData?.getMatchingDismissedIssues(PRIVACY_SOURCES_GROUP_ID)
         if (subpageIssues.isNullOrEmpty() && subpageDismissedIssues.isNullOrEmpty()) {
-            Log.w(TAG, "$SOURCE_GROUP_ID doesn't have any matching SafetyCenterIssues")
+            Log.w(TAG, "$PRIVACY_SOURCES_GROUP_ID doesn't have any matching SafetyCenterIssues")
             return
         }
 
@@ -193,6 +197,5 @@ class PrivacySubpageFragment : SafetyCenterFragment() {
         private const val ISSUE_GROUP_KEY: String = "subpage_issue_group"
         private const val GENERIC_ENTRY_GROUP_KEY: String = "subpage_generic_entry_group"
         private const val DATA_ENTRY_GROUP_KEY: String = "subpage_data_entry_group"
-        const val SOURCE_GROUP_ID: String = "AndroidPrivacySources"
     }
 }
