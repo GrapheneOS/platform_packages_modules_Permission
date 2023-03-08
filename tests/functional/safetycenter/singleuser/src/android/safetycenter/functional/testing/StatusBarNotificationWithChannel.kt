@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package android.safetycenter.cts.testing
+package android.safetycenter.functional.testing
 
 import android.app.NotificationChannel
 import android.service.notification.StatusBarNotification
