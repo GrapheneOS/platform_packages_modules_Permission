@@ -43,7 +43,7 @@ import org.mockito.ArgumentMatchers.eq
 import org.mockito.Mock
 import org.mockito.Mockito.doNothing
 import org.mockito.Mockito.mock
-import org.mockito.Mockito.timeout
+import org.mockito.Mockito.times
 import org.mockito.Mockito.verify
 import org.mockito.Mockito.verifyZeroInteractions
 import org.mockito.Mockito.`when` as whenever
@@ -115,18 +115,6 @@ class SafetyLabelChangesJobServiceTest {
     }
 
     @Test
-    fun flagsDisabled_onMainJobStart_notificationNotShown() {
-        setSafetyLabelChangeNotificationsEnabled(false)
-
-        val jobId = mockJobParamsForJobId(Constants.SAFETY_LABEL_CHANGES_JOB_ID)
-        val jobStillRunning = service.onStartJob(jobId)
-
-        assertThat(jobStillRunning).isEqualTo(false)
-
-        verifyZeroInteractions(mockNotificationManager)
-    }
-
-    @Test
     fun onReceiveInvalidIntentAction_jobNotScheduled() {
         receiver.onReceive(application, Intent(Intent.ACTION_DEFAULT))
 
@@ -134,28 +122,16 @@ class SafetyLabelChangesJobServiceTest {
     }
 
     @Test
-    fun onReceiveValidIntentAction_periodicJobScheduled() {
+    fun onReceiveValidIntentAction_jobsScheduled() {
         receiver.onReceive(application, Intent(Intent.ACTION_BOOT_COMPLETED))
 
         val captor = ArgumentCaptor.forClass(JobInfo::class.java)
-        verify(mockJobScheduler).schedule(captor.capture())
-        assertThat(captor.value.id).isEqualTo(Constants.PERIODIC_SAFETY_LABEL_CHANGES_JOB_ID)
-    }
-
-    @Test
-    fun onStartPeriodicJob_scheduleJob() {
-        val jobParams = mockJobParamsForJobId(Constants.PERIODIC_SAFETY_LABEL_CHANGES_JOB_ID)
-        val jobStillRunning = service.onStartJob(jobParams)
-
-        assertThat(jobStillRunning).isEqualTo(false)
-
-        val captor = ArgumentCaptor.forClass(JobInfo::class.java)
-        verify(mockJobScheduler, timeout(5000)).schedule(captor.capture())
-        assertThat(captor.value.id).isEqualTo(Constants.SAFETY_LABEL_CHANGES_JOB_ID)
-    }
-
-    private fun waitForJobFinished() {
-        verify(service, timeout(5000)).jobFinished(any(), anyBoolean())
+        verify(mockJobScheduler, times(2)).schedule(captor.capture())
+        val capturedJobIds = captor.getAllValues()
+        assertThat(capturedJobIds[0].id).isEqualTo(
+            Constants.SAFETY_LABEL_CHANGES_DETECT_UPDATES_JOB_ID)
+        assertThat(capturedJobIds[1].id)
+            .isEqualTo(Constants.SAFETY_LABEL_CHANGES_PERIODIC_NOTIFICATION_JOB_ID)
     }
 
     private fun mockJobParamsForJobId(jobId: Int): JobParameters {
