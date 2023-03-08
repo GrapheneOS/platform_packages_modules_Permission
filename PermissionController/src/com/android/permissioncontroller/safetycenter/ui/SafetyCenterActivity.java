@@ -203,6 +203,7 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
         }
 
         if (Objects.equals(groupId, PrivacySubpageFragment.SOURCE_GROUP_ID)) {
+            logPrivacySourceMetric();
             return new PrivacySubpageFragment();
         }
 

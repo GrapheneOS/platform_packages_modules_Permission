@@ -1,12 +1,15 @@
 package com.android.permissioncontroller.safetycenter.ui.model
 
 import android.content.Context
+import android.os.Build.VERSION_CODES.TIRAMISU
 import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterStatus
 import android.util.Log
+import androidx.annotation.RequiresApi
 import com.android.permissioncontroller.R
 
 /** UI model representation of a Status Card. */
+@RequiresApi(TIRAMISU)
 data class StatusUiData(
     private val status: SafetyCenterStatus,
     @get:JvmName("hasIssues") val hasIssues: Boolean = false,
@@ -21,16 +24,9 @@ data class StatusUiData(
     fun copyForPendingActions(hasPendingActions: Boolean) =
         copy(hasPendingActions = hasPendingActions)
 
-    private companion object {
-        val TAG: String = StatusUiData::class.java.simpleName
-    }
-
-    val title: CharSequence by status::title
-    val originalSummary: CharSequence by status::summary
-    val severityLevel: Int by status::severityLevel
-
-    val statusImageResId: Int
-        get() =
+    companion object {
+        private val TAG: String = StatusUiData::class.java.simpleName
+        fun getStatusImageResId(severityLevel: Int) =
             when (severityLevel) {
                 SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN,
                 SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK -> R.drawable.safety_status_info
@@ -43,6 +39,14 @@ data class StatusUiData(
                     R.drawable.safety_status_info
                 }
             }
+    }
+
+    val title: CharSequence by status::title
+    val originalSummary: CharSequence by status::summary
+    val severityLevel: Int by status::severityLevel
+
+    val statusImageResId: Int
+        get() = getStatusImageResId(severityLevel)
 
     fun getSummary(context: Context): CharSequence {
         return if (hasPendingActions) {

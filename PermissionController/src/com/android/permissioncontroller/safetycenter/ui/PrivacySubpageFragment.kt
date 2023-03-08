@@ -24,7 +24,9 @@ import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.Preference
 import androidx.preference.PreferenceGroup
+import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.safetycenter.ui.SafetyBrandChipPreference.Companion.closeSubpage
 import com.android.permissioncontroller.safetycenter.ui.model.PrivacyControlsViewModel
 import com.android.permissioncontroller.safetycenter.ui.model.PrivacyControlsViewModel.Pref
@@ -42,16 +44,18 @@ class PrivacySubpageFragment : SafetyCenterFragment() {
     private lateinit var subpageGenericEntryGroup: PreferenceGroup
     private lateinit var subpageDataEntryGroup: PreferenceGroup
     private lateinit var privacyControlsViewModel: PrivacyControlsViewModel
+    private var sessionId = Constants.INVALID_SESSION_ID
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         super.onCreatePreferences(savedInstanceState, rootKey)
         setPreferencesFromResource(R.xml.privacy_subpage, rootKey)
+        sessionId = Utils.getOrGenerateSessionId(requireActivity().getIntent())
 
         subpageBrandChip = getPreferenceScreen().findPreference(BRAND_CHIP_KEY)!!
         subpageIssueGroup = getPreferenceScreen().findPreference(ISSUE_GROUP_KEY)!!
         subpageGenericEntryGroup = getPreferenceScreen().findPreference(GENERIC_ENTRY_GROUP_KEY)!!
         subpageDataEntryGroup = getPreferenceScreen().findPreference(DATA_ENTRY_GROUP_KEY)!!
-        subpageBrandChip.setupListener(requireActivity())
+        subpageBrandChip.setupListener(requireActivity(), sessionId)
 
         val factory = PrivacyControlsViewModelFactory(requireActivity().getApplication())
         privacyControlsViewModel =
@@ -64,6 +68,14 @@ class PrivacySubpageFragment : SafetyCenterFragment() {
         prerenderCurrentSafetyCenterData()
     }
 
+    override fun configureInteractionLogger() {
+        val logger = safetyCenterViewModel.interactionLogger
+        logger.sessionId = sessionId
+        logger.navigationSource = NavigationSource.fromIntent(requireActivity().getIntent())
+        logger.viewType = ViewType.SUBPAGE
+        logger.groupId = SOURCE_GROUP_ID
+    }
+
     override fun onResume() {
         super.onResume()
         safetyCenterViewModel.pageOpen(SOURCE_GROUP_ID)
@@ -74,7 +86,7 @@ class PrivacySubpageFragment : SafetyCenterFragment() {
         val entryGroup = uiData?.getMatchingGroup(SOURCE_GROUP_ID)
         if (entryGroup == null) {
             Log.w(TAG, "$SOURCE_GROUP_ID doesn't match any of the existing SafetySourcesGroup IDs")
-            closeSubpage(requireActivity(), requireContext())
+            closeSubpage(requireActivity(), requireContext(), sessionId)
             return
         }
 
@@ -122,7 +134,8 @@ class PrivacySubpageFragment : SafetyCenterFragment() {
                         sameTaskSourceIds,
                         requireActivity()
                     ),
-                    entry
+                    entry,
+                    safetyCenterViewModel
                 )
 
             when (sourceId) {

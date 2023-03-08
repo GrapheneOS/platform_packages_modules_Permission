@@ -24,6 +24,7 @@ import android.safetycenter.SafetyCenterManager
 import android.text.TextUtils
 import androidx.annotation.RequiresApi
 import androidx.preference.Preference
+import com.android.permissioncontroller.Constants.EXTRA_SESSION_ID
 import com.android.permissioncontroller.safetycenter.SafetyCenterConstants
 import java.util.Objects
 
@@ -34,7 +35,8 @@ import java.util.Objects
 @RequiresApi(UPSIDE_DOWN_CAKE)
 internal class SafetyHomepageEntryPreference(
     context: Context,
-    private val entryGroup: SafetyCenterEntryGroup
+    private val entryGroup: SafetyCenterEntryGroup,
+    sessionId: Long
 ) : Preference(context), ComparablePreference {
 
     init {
@@ -42,12 +44,16 @@ internal class SafetyHomepageEntryPreference(
         setSummary(entryGroup.summary)
         setIcon(
             SeverityIconPicker.selectIconResId(
-                entryGroup.severityLevel, entryGroup.severityUnspecifiedIconType))
+                entryGroup.severityLevel,
+                entryGroup.severityUnspecifiedIconType
+            )
+        )
 
-        // TODO(b/260822348): Check if there is a better way to open the subpage fragment
         val intent = Intent(Intent.ACTION_SAFETY_CENTER)
         intent.putExtra(SafetyCenterManager.EXTRA_SAFETY_SOURCES_GROUP_ID, entryGroup.id)
         intent.putExtra(SafetyCenterConstants.EXTRA_OPENED_FROM_HOMEPAGE, true)
+        intent.putExtra(EXTRA_SESSION_ID, sessionId)
+        NavigationSource.SAFETY_CENTER.addToIntent(intent)
         setIntent(intent)
     }
 

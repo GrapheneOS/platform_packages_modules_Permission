@@ -19,10 +19,14 @@ package com.android.safetycenter.data;
 import static android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
 
 import static java.util.Collections.emptyList;
+import static java.util.Collections.emptyMap;
 import static java.util.Collections.unmodifiableList;
+import static java.util.Collections.unmodifiableMap;
+import static java.util.Collections.unmodifiableSet;
 
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
+import android.safetycenter.config.SafetySourcesGroup;
 import android.util.ArrayMap;
 import android.util.ArraySet;
 import android.util.Log;
@@ -35,7 +39,9 @@ import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.annotation.concurrent.NotThreadSafe;
 
@@ -47,9 +53,6 @@ final class SafetyCenterIssueDeduplicator {
     private static final String TAG = "SafetyCenterDedup";
 
     private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
-
-    // issues removed due to being duplicates in the most recent call to deduplicateIssues()
-    private List<SafetySourceIssueInfo> mMostRecentlyFilteredOutDuplicates = emptyList();
 
     SafetyCenterIssueDeduplicator(
             SafetyCenterIssueDismissalRepository safetyCenterIssueDismissalRepository) {
@@ -67,15 +70,17 @@ final class SafetyCenterIssueDeduplicator {
      * same or lower severity will be dismissed as well.
      *
      * <p>This method modifies the given argument.
+     *
+     * @return additional deduplication information gathered in the process
      */
-    void deduplicateIssues(List<SafetySourceIssueInfo> sortedIssues) {
+    AdditionalDeduplicationInfo deduplicateIssues(List<SafetySourceIssueInfo> sortedIssues) {
         // (dedup key) -> list(issues)
         ArrayMap<DeduplicationKey, List<SafetySourceIssueInfo>> dedupBuckets =
                 createDedupBuckets(sortedIssues);
 
         // There is no further work to do when there are no dedup buckets
         if (dedupBuckets.isEmpty()) {
-            return;
+            return new AdditionalDeduplicationInfo(emptyList(), emptyMap());
         }
 
         alignAllDismissals(dedupBuckets);
@@ -85,8 +90,11 @@ final class SafetyCenterIssueDeduplicator {
 
         resurfaceHiddenIssuesIfNeeded(dedupBuckets);
 
+        ArrayMap<SafetyCenterIssueKey, Set<String>> issueToGroupMap =
+                getTopIssueToGroupMapping(dedupBuckets);
+
         if (duplicatesToFilterOut.isEmpty()) {
-            return;
+            return new AdditionalDeduplicationInfo(emptyList(), issueToGroupMap);
         }
 
         List<SafetySourceIssueInfo> filteredOut = new ArrayList<>(duplicatesToFilterOut.size());
@@ -102,19 +110,8 @@ final class SafetyCenterIssueDeduplicator {
                 mSafetyCenterIssueDismissalRepository.hideIssue(issueKey);
             }
         }
-        mMostRecentlyFilteredOutDuplicates = unmodifiableList(filteredOut);
-    }
 
-    /**
-     * Returns the list of issues which were removed from the given list of issues in the most
-     * recent {@link SafetyCenterIssueDeduplicator#deduplicateIssues} call. These issues were
-     * removed because they were duplicates of other issues.
-     *
-     * <p>If this method is called before any calls to {@link
-     * SafetyCenterIssueDeduplicator#deduplicateIssues} then an empty list is returned.
-     */
-    List<SafetySourceIssueInfo> getMostRecentFilteredOutDuplicateIssues() {
-        return mMostRecentlyFilteredOutDuplicates;
+        return new AdditionalDeduplicationInfo(filteredOut, issueToGroupMap);
     }
 
     private void resurfaceHiddenIssuesIfNeeded(
@@ -132,6 +129,29 @@ final class SafetyCenterIssueDeduplicator {
                 mSafetyCenterIssueDismissalRepository.resurfaceHiddenIssueAfterPeriod(topIssueKey);
             }
         }
+    }
+
+    /**
+     * Creates a mapping from the top issue in each dedupBucket to all groups in that dedupBucket.
+     */
+    private ArrayMap<SafetyCenterIssueKey, Set<String>> getTopIssueToGroupMapping(
+            ArrayMap<DeduplicationKey, List<SafetySourceIssueInfo>> dedupBuckets) {
+        ArrayMap<SafetyCenterIssueKey, Set<String>> issueToGroupMap = new ArrayMap<>();
+        for (int i = 0; i < dedupBuckets.size(); i++) {
+            List<SafetySourceIssueInfo> duplicates = dedupBuckets.valueAt(i);
+
+            SafetyCenterIssueKey topIssueKey = duplicates.get(0).getSafetyCenterIssueKey();
+            for (int j = 0; j < duplicates.size(); j++) {
+                Set<String> groups = issueToGroupMap.getOrDefault(topIssueKey, new ArraySet<>());
+                groups.add(duplicates.get(j).getSafetySourcesGroup().getId());
+                if (j == duplicates.size() - 1) { // last element, no more modifications
+                    groups = unmodifiableSet(groups);
+                }
+                issueToGroupMap.put(topIssueKey, groups);
+            }
+        }
+
+        return issueToGroupMap;
     }
 
     /**
@@ -297,6 +317,42 @@ final class SafetyCenterIssueDeduplicator {
                 deduplicationGroup,
                 deduplicationId,
                 issueInfo.getSafetyCenterIssueKey().getUserId());
+    }
+
+    /** Contains more information about deduplication details. */
+    static final class AdditionalDeduplicationInfo {
+        private final List<SafetySourceIssueInfo> mFilteredOutDuplicates;
+        private final Map<SafetyCenterIssueKey, Set<String>> mIssueToGroup;
+
+        /** Creates a new {@link AdditionalDeduplicationInfo}. */
+        AdditionalDeduplicationInfo(
+                List<SafetySourceIssueInfo> filteredOutDuplicates,
+                Map<SafetyCenterIssueKey, Set<String>> issueToGroup) {
+            mFilteredOutDuplicates = unmodifiableList(filteredOutDuplicates);
+            mIssueToGroup = unmodifiableMap(issueToGroup);
+        }
+
+        /**
+         * Returns the list of issues which were removed from the given list of issues in the most
+         * recent {@link SafetyCenterIssueDeduplicator#deduplicateIssues} call. These issues were
+         * removed because they were duplicates of other issues.
+         */
+        List<SafetySourceIssueInfo> getFilteredOutDuplicateIssues() {
+            return mFilteredOutDuplicates;
+        }
+
+        /**
+         * Returns a mapping between a {@link SafetyCenterIssueKey} and {@link SafetySourcesGroup}
+         * IDs, that was a result of the most recent {@link
+         * SafetyCenterIssueDeduplicator#deduplicateIssues} call.
+         *
+         * <p>If present, such an entry represents an issue mapping to all the safety source groups
+         * of others issues which were filtered out as its duplicates. It also contains a mapping to
+         * its own source group.
+         */
+        Map<SafetyCenterIssueKey, Set<String>> getIssueToGroupMapping() {
+            return mIssueToGroup;
+        }
     }
 
     private static final class DeduplicationKey {
