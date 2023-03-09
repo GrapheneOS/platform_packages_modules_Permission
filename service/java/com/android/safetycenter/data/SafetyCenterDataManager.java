@@ -31,7 +31,6 @@ import android.safetycenter.config.SafetySourcesGroup;
 
 import androidx.annotation.RequiresApi;
 
-import com.android.modules.utils.build.SdkLevel;
 import com.android.safetycenter.ApiLock;
 import com.android.safetycenter.SafetyCenterConfigReader;
 import com.android.safetycenter.SafetyCenterRefreshTracker;
@@ -73,10 +72,9 @@ public final class SafetyCenterDataManager {
             Context context,
             SafetyCenterConfigReader safetyCenterConfigReader,
             SafetyCenterRefreshTracker safetyCenterRefreshTracker,
-            SafetyCenterStatsdLogger safetyCenterStatsdLogger,
             ApiLock apiLock) {
         mSafetyCenterInFlightIssueActionRepository =
-                new SafetyCenterInFlightIssueActionRepository(safetyCenterStatsdLogger);
+                new SafetyCenterInFlightIssueActionRepository(context);
         mSafetyCenterIssueDismissalRepository =
                 new SafetyCenterIssueDismissalRepository(apiLock, safetyCenterConfigReader);
         mSafetySourceDataRepository =
@@ -92,10 +90,7 @@ public final class SafetyCenterDataManager {
                         mSafetySourceDataRepository,
                         safetyCenterConfigReader,
                         mSafetyCenterIssueDismissalRepository,
-                        SdkLevel.isAtLeastU()
-                                ? new SafetyCenterIssueDeduplicator(
-                                        mSafetyCenterIssueDismissalRepository)
-                                : null);
+                        new SafetyCenterIssueDeduplicator(mSafetyCenterIssueDismissalRepository));
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////

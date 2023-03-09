@@ -41,7 +41,9 @@ import com.android.permissioncontroller.safetycenter.ui.PositionInCardList
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
-internal class SafetyEntryGroupView @JvmOverloads constructor(
+internal class SafetyEntryGroupView
+@JvmOverloads
+constructor(
     context: Context?,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0,
@@ -88,18 +90,17 @@ internal class SafetyEntryGroupView @JvmOverloads constructor(
         showGroupDetails(group)
         showGroupEntries(group, getTaskIdForEntry, viewModel)
         setupExpandedState(group, initiallyExpanded(group.id))
-        setOnClickListener {
-            toggleExpandedState(group, onGroupExpanded, onGroupCollapsed)
-        }
+        setOnClickListener { toggleExpandedState(group, onGroupExpanded, onGroupCollapsed) }
     }
 
     private fun applyPosition(isFirstCard: Boolean, isLastCard: Boolean) {
-        val position = when {
-            isFirstCard && isLastCard -> PositionInCardList.LIST_START_END
-            isFirstCard && !isLastCard -> PositionInCardList.LIST_START_CARD_END
-            !isFirstCard && isLastCard -> PositionInCardList.CARD_START_LIST_END
-            /* !isFirstCard && !isLastCard */ else -> PositionInCardList.CARD_START_END
-        }
+        val position =
+            when {
+                isFirstCard && isLastCard -> PositionInCardList.LIST_START_END
+                isFirstCard && !isLastCard -> PositionInCardList.LIST_START_CARD_END
+                !isFirstCard && isLastCard -> PositionInCardList.CARD_START_LIST_END
+                /* !isFirstCard && !isLastCard */ else -> PositionInCardList.CARD_START_END
+            }
         setBackgroundResource(position.backgroundDrawableResId)
         val topMargin: Int = position.getTopMargin(context)
 
@@ -113,10 +114,12 @@ internal class SafetyEntryGroupView @JvmOverloads constructor(
     private fun showGroupDetails(group: SafetyCenterEntryGroup) {
         expandedTitleView?.text = group.title
         commonEntryView?.showDetails(
-                group.title,
-                group.summary,
-                group.severityLevel,
-                group.severityUnspecifiedIconType)
+            group.id,
+            group.title,
+            group.summary,
+            group.severityLevel,
+            group.severityUnspecifiedIconType
+        )
     }
 
     private fun setupExpandedState(group: SafetyCenterEntryGroup, shouldBeExpanded: Boolean) {
@@ -136,37 +139,42 @@ internal class SafetyEntryGroupView @JvmOverloads constructor(
 
         if (isExpanded == null) {
             chevronIconView?.setImageResource(
-                    if (shouldBeExpanded) {
-                        R.drawable.ic_safety_group_collapse
-                    } else {
-                        R.drawable.ic_safety_group_expand
-                    })
+                if (shouldBeExpanded) {
+                    R.drawable.ic_safety_group_collapse
+                } else {
+                    R.drawable.ic_safety_group_expand
+                }
+            )
         } else if (shouldBeExpanded) {
             chevronIconView?.animate(
-                    R.drawable.safety_center_group_expand_anim,
-                    R.drawable.ic_safety_group_collapse
+                R.drawable.safety_center_group_expand_anim,
+                R.drawable.ic_safety_group_collapse
             )
         } else {
             chevronIconView?.animate(
-                    R.drawable.safety_center_group_collapse_anim,
-                    R.drawable.ic_safety_group_expand
+                R.drawable.safety_center_group_collapse_anim,
+                R.drawable.ic_safety_group_expand
             )
         }
 
         isExpanded = shouldBeExpanded
 
-        val newPaddingTop = context.resources.getDimensionPixelSize(
+        val newPaddingTop =
+            context.resources.getDimensionPixelSize(
                 if (shouldBeExpanded) {
                     R.dimen.sc_entry_group_expanded_padding_top
                 } else {
                     R.dimen.sc_entry_group_collapsed_padding_top
-                })
-        val newPaddingBottom = context.resources.getDimensionPixelSize(
+                }
+            )
+        val newPaddingBottom =
+            context.resources.getDimensionPixelSize(
                 if (shouldBeExpanded) {
                     R.dimen.sc_entry_group_expanded_padding_bottom
                 } else {
                     R.dimen.sc_entry_group_collapsed_padding_bottom
-                })
+                }
+            )
         setPaddingRelative(paddingStart, newPaddingTop, paddingEnd, newPaddingBottom)
 
         // accessibility attributes depend on the expanded state
@@ -178,11 +186,13 @@ internal class SafetyEntryGroupView @JvmOverloads constructor(
         (drawable as? AnimatedVectorDrawable)?.clearAnimationCallbacks()
         setImageResource(animationRes)
         (drawable as? AnimatedVectorDrawable)?.apply {
-            registerAnimationCallback(object : AnimationCallback() {
-                override fun onAnimationEnd(drawable: Drawable?) {
-                    setImageResource(imageRes)
+            registerAnimationCallback(
+                object : AnimationCallback() {
+                    override fun onAnimationEnd(drawable: Drawable?) {
+                        setImageResource(imageRes)
+                    }
                 }
-            })
+            )
             start()
         }
     }
@@ -208,36 +218,44 @@ internal class SafetyEntryGroupView @JvmOverloads constructor(
             val childAt = entriesContainerView?.getChildAt(index)
             val entryView = childAt as? SafetyEntryView
             entryView?.showEntry(
-                    entry, PositionInCardList.INSIDE_GROUP, getTaskIdForEntry(entry.id), viewModel)
+                entry,
+                PositionInCardList.INSIDE_GROUP,
+                getTaskIdForEntry(entry.id),
+                viewModel
+            )
         }
     }
 
     private fun setAccessibilityAttributes(group: SafetyCenterEntryGroup) {
         // When status is yellow/red, adding an "Actions needed" before the summary is read.
-        contentDescription = if (isExpanded == true) {
-            null
-        } else {
-            val isActionNeeded = group.severityLevel >= ENTRY_SEVERITY_LEVEL_RECOMMENDATION
-            val contentDescriptionResId = if (isActionNeeded) {
-                R.string.safety_center_entry_group_with_actions_needed_content_description
+        contentDescription =
+            if (isExpanded == true) {
+                null
             } else {
-                R.string.safety_center_entry_group_content_description
+                val isActionNeeded = group.severityLevel >= ENTRY_SEVERITY_LEVEL_RECOMMENDATION
+                val contentDescriptionResId =
+                    if (isActionNeeded) {
+                        R.string.safety_center_entry_group_with_actions_needed_content_description
+                    } else {
+                        R.string.safety_center_entry_group_content_description
+                    }
+                context.getString(contentDescriptionResId, group.title, group.summary)
             }
-            context.getString(contentDescriptionResId, group.title, group.summary)
-        }
 
         // Replacing the on-click label to indicate the expand/collapse action. The on-click command
         // is set to null so that it uses the existing expand/collapse behaviour.
-        val accessibilityActionResId = if (isExpanded == true) {
-            R.string.safety_center_entry_group_collapse_action
-        } else {
-            R.string.safety_center_entry_group_expand_action
-        }
+        val accessibilityActionResId =
+            if (isExpanded == true) {
+                R.string.safety_center_entry_group_collapse_action
+            } else {
+                R.string.safety_center_entry_group_expand_action
+            }
         ViewCompat.replaceAccessibilityAction(
-                this,
-                AccessibilityNodeInfoCompat.AccessibilityActionCompat.ACTION_CLICK,
-                context.getString(accessibilityActionResId),
-                null)
+            this,
+            AccessibilityNodeInfoCompat.AccessibilityActionCompat.ACTION_CLICK,
+            context.getString(accessibilityActionResId),
+            null
+        )
     }
 
     private fun toggleExpandedState(
