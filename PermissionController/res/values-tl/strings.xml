@@ -32,10 +32,11 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Panatilihin ang “Habang ginagamit ang app”"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Panatilihing “Sa pagkakataong ito lang”"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Higit pang info"</string>
-    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"Magbigay ng access sa lahat ng larawan"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Pahintulutan lahat"</string>
+    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Palaging pahintulutan lahat"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"Pumili ng mga larawan"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"Pumili ng higit pang larawan"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"Huwag pumili ng higit pang larawan"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"Pumili pa ng mga larawan at video"</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Huwag nang pumili pa"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Huwag pa ring payagan"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"I-dismiss"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> sa <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -398,9 +399,7 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Itakda ang <xliff:g id="APP_NAME">%1$s</xliff:g> bilang iyong default na app sa pag-navigate?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Walang kailangang pahintulot"</string>
     <string name="role_watch_description" msgid="267003778693177779">"Papayagan ang <xliff:g id="APP_NAME">%1$s</xliff:g> na makipag-ugnayan sa iyong mga notification at ma-access ang iyong mga pahintulot sa Telepono, SMS, Mga Contact, at Kalendaryo."</string>
-    <string name="role_companion_device_glasses_description" msgid="1775655849566169630">"Papayagan ang <xliff:g id="APP_NAME">%1$s</xliff:g> na makipag-ugnayan sa mga notification mo at i-access ang iyong mga pahintulot sa Telepono, SMS, Mga Contact, Mikropono, at Mga kalapit na device."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"Papayagan ang <xliff:g id="APP_NAME">%1$s</xliff:g> na makipag-ugnayan sa iyong mga notification at i-stream ang iyong mga app sa nakakonektang device."</string>
-    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"Papayagan ang <xliff:g id="APP_NAME">%1$s</xliff:g> na mag-stream ng content sa mga kalapit na device."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Ibinabahagi ng serbisyong ito ang iyong mga larawan, media, at notification sa ibang device mula sa iyong telepono."</string>
     <string name="role_notes_label" msgid="7451627001058089536">"Default na app sa pagtatala"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"App sa pagtatala"</string>
@@ -480,7 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang &lt;b&gt;mga larawan, video, musika, audio, at iba pang file&lt;/b&gt; sa device?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang musika at audio sa device na ito?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang mga larawan at video sa device na ito?"</string>
-    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"Payagan ang access ng &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; sa higit pang larawan?"</string>
+    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"Bigyan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ng access sa higit pang larawan at video sa device na ito?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na mag-record ng audio?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Makakapag-record lang ng audio ang app habang ginagamit mo ang app"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na mag-record ng audio?"</string>
@@ -591,12 +590,13 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Magpakita ng mensahe kapag ina-access ng mga app ang text, mga larawan, o iba pang content na nakopya mo"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Ipakita ang mga password"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Ipakita sandali ang mga character habang nagta-type ka"</string>
-    <string name="permission_rationale_message_location" msgid="5559450538205092588">"Isinaad ng app na ito na puwede nitong ibahagi ang iyong data ng lokasyon sa mga third party"</string>
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"Isinaad ng app na ito na puwede nitong ibahagi ang data ng lokasyon sa mga third party"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Pagbabahagi ng data at lokasyon"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Saan nanggagaling ang impormasyon sa pagbabahagi ng data"</string>
-    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"Nagbigay ang developer ng impormasyon sa "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" tungkol sa kung paano nagbabahagi ng data ang app na ito. Puwede nitong i-update ang impormasyong ito sa paglipas ng panahon."</string>
-    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"Puwedeng magbahagi ng data ng lokasyon para sa:"</string>
-    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
+    <skip />
+    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
+    <skip />
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Nag-iiba ang pagbabahagi ng data"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Posibleng mag-iba ang mga kagawian sa data batay sa iyong bersyon ng app, paggamit, rehiyon, at edad. "<annotation id="link">"Higit pa tungkol sa pagbabahagi ng data"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Iyong data ng lokasyon"</string>
@@ -621,6 +621,6 @@
     <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{Na-update sa loob ng huling araw}=1{Na-update sa loob ng huling araw}one{Na-update sa loob ng # araw}other{Na-update sa loob ng # na araw}}"</string>
     <string name="no_updates_at_this_time" msgid="9031085635689982935">"Walang update sa ngayon"</string>
     <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"Update sa pagbabahagi ng data"</string>
-    <string name="safety_label_changes_notification_desc" msgid="7808764283266234675">"Binago ng ilang app ang paraan kung paano posibleng ibahagi ng mga ito ang iyong data ng lokasyon"</string>
+    <string name="safety_label_changes_notification_desc" msgid="7808764283266234675">"Binago ng ilang app kung paano posibleng ibahagi ng mga ito ang iyong data ng lokasyon"</string>
     <string name="safety_label_changes_gear_description" msgid="2655887555599138509">"Mga Setting"</string>
 </resources>

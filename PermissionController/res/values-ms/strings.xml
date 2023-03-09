@@ -32,10 +32,11 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Kekalkan “Semasa apl sedang digunakan”"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Simpan “Kali ini sahaja”"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Lagi maklumat"</string>
-    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"Benarkan akses kepada semua foto"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Benarkan semua"</string>
+    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Sentiasa benarkan semua"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"Pilih foto"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"Pilih lagi foto"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"Jangan pilih lebih banyak foto"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"Pilih lebih banyak foto dan video"</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Jangan pilih lagi"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Jangan benarkan juga"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Tolak"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> daripada <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -398,9 +399,7 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Tetapkan <xliff:g id="APP_NAME">%1$s</xliff:g> sebagai apl navigasi lalai anda?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Kebenaran tidak diperlukan"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> akan dibenarkan berinteraksi dengan pemberitahuan anda dan mengakses kebenaran Telefon, SMS, Kenalan dan Kalendar anda."</string>
-    <string name="role_companion_device_glasses_description" msgid="1775655849566169630">"<xliff:g id="APP_NAME">%1$s</xliff:g> akan dibenarkan untuk berinteraksi dengan pemberitahuan anda dan mengakses kebenaran Telefon, SMS, Kenalan, Mikrofon dan Peranti berdekatan anda."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> akan dibenarkan untuk berinteraksi dengan pemberitahuan anda dan menstrim apl anda pada peranti tersambung."</string>
-    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> akan dibenarkan menstrim kandungan kepada peranti berdekatan."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Perkhidmatan ini berkongsi foto, media dan pemberitahuan anda daripada telefon anda ke peranti lain."</string>
     <string name="role_notes_label" msgid="7451627001058089536">"Apl nota lalai"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"Apl nota"</string>
@@ -480,7 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses &lt;b&gt;foto, video, muzik, audio dan fail lain&lt;/b&gt; pada peranti ini?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses muzik dan audio pada peranti ini?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses foto dan video pada peranti ini?"</string>
-    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"Beri &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; akses kepada lebih banyak foto?"</string>
+    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses lebih banyak foto dan video pada peranti ini?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; merakam audio?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Apl hanya boleh merakam audio semasa anda menggunakan apl tersebut"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; merakam audio?"</string>
@@ -591,12 +590,13 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Tunjukkan mesej apabila apl mengakses teks, imej atau kandungan lain yang telah anda salin"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Tunjukkan kata laluan"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Paparkan aksara seketika sambil anda menaip"</string>
-    <string name="permission_rationale_message_location" msgid="5559450538205092588">"Apl ini menyatakan bahawa data lokasi anda mungkin dikongsi dengan pihak ketiga"</string>
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"Apl ini menyatakan bahawa data lokasi mungkin dikongsi dengan pihak ketiga"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Perkongsian data dan lokasi"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Sumber maklumat perkongsian data"</string>
-    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"Pembangun memberikan maklumat kepada "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" tentang cara apl ini berkongsi data. Pembangun mungkin mengemaskinikan maklumat ini dari semasa ke semasa."</string>
-    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"Apl ini mungkin berkongsi data lokasi untuk:"</string>
-    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
+    <skip />
+    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
+    <skip />
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Perkongsian data berbeza-beza"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Amalan privasi data mungkin berbeza-beza berdasarkan versi apl, penggunaan, rantau dan umur anda. "<annotation id="link">"Lagi tentang perkongsian data"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Data lokasi anda"</string>
@@ -612,7 +612,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Data lokasi mungkin dikongsi"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Apl ini menyatakan bahawa data lokasi anda mungkin dikongsi dengan pihak ketiga"</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Kemaskinian perkongsian data untuk lokasi"</string>
-    <string name="data_sharing_updates_summary" msgid="764113985772233889">"Semak apl yang mengubah cara apl boleh berkongsi data lokasi anda"</string>
+    <string name="data_sharing_updates_summary" msgid="764113985772233889">"Semak apl yang mengubah cara apl itu boleh berkongsi data lokasi anda"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Apl ini telah mengubah cara apl boleh berkongsi data lokasi anda. Apl mungkin tidak berkongsi data lokasi sebelum ini atau mungkin berkongsi data lokasi sekarang untuk tujuan pengiklanan atau pemasaran."</string>
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Pembangun apl ini memberikan maklumat tentang amalan perkongsian data mereka kepada gedung apl. Mereka mungkin mengemaskinikan maklumat tersebut dari semasa ke semasa.\n\nAmalan perkongsian data mungkin berbeza-beza berdasarkan versi apl, penggunaan, wilayah dan umur anda."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"Ketahui tentang perkongsian data"</string>

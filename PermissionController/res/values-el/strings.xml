@@ -32,10 +32,11 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Διατήρηση της επιλογής \"Όταν χρησιμοποιείται η εφαρμογή\""</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Διατήρηση μόνο αυτήν τη φορά"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Περισσότερα"</string>
-    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"Να επιτρέπεται η πρόσβαση σε όλες τις φωτογραφίες"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Να επιτρέπονται όλα"</string>
+    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Να επιτρέπονται πάντα όλα"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"Επιλογή φωτογραφιών"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"Επιλογή περισσότερων φωτογραφιών"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"Να μην επιλεγούν περισσότερες φωτογραφίες"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"Επιλογή περισσότερων φωτογραφιών και βίντεο"</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Να μην γίνει επιλογή περισσότερων"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Να μην επιτρέπεται καθόλου"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Παράβλεψη"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> από <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -398,9 +399,7 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Ορισμός <xliff:g id="APP_NAME">%1$s</xliff:g> ως προεπιλεγμένης εφαρμογής πλοήγησης;"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Δεν απαιτούνται άδειες"</string>
     <string name="role_watch_description" msgid="267003778693177779">"Η εφαρμογή <xliff:g id="APP_NAME">%1$s</xliff:g> θα επιτρέπεται να αλληλεπιδρά με τις ειδοποιήσεις σας και να έχει πρόσβαση στις άδειες Τηλεφώνου, SMS, Επαφών και Ημερολογίου."</string>
-    <string name="role_companion_device_glasses_description" msgid="1775655849566169630">"Θα επιτρέπεται στην εφαρμογή <xliff:g id="APP_NAME">%1$s</xliff:g> να αλληλεπιδρά με τις ειδοποιήσεις σας και να αποκτά πρόσβαση στις άδειες για το Τηλέφωνο, τα SMS, τις Επαφές, το Μικρόφωνο και τις Συσκευές σε κοντινή απόσταση."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"Η εφαρμογή <xliff:g id="APP_NAME">%1$s</xliff:g> θα επιτρέπεται να αλληλεπιδρά με τις ειδοποιήσεις σας και να μεταδίδει τις εφαρμογές σας μέσω ροής στη συνδεδεμένη συσκευή."</string>
-    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"Η εφαρμογή <xliff:g id="APP_NAME">%1$s</xliff:g> θα μπορεί να κάνει ροή περιεχομένου σε κοντινές συσκευές."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Αυτή η υπηρεσία κοινοποιεί τις φωτογραφίες, τα μέσα και τις ειδοποιήσεις από το τηλέφωνό σας στις άλλες συσκευές σας."</string>
     <string name="role_notes_label" msgid="7451627001058089536">"Προεπιλεγ. εφαρμογή σημειώσεων"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"Εφαρμογή σημειώσεων"</string>
@@ -480,7 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση σε &lt;b&gt;φωτογραφίες, βίντεο, μουσική, ήχο και άλλα αρχεία&lt;/b&gt; της συσκευής;"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση στη μουσική και στα αρχεία ήχου αυτής της συσκευής;"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση στις φωτογραφίες και τα βίντεο αυτής της συσκευής;"</string>
-    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"Εκχώρηση πρόσβασης στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; σε περισσότερες φωτογραφίες;"</string>
+    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση σε περισσότερες φωτογραφίες και βίντεο αυτής της συσκευής;"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η εγγραφή ήχου;"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Αυτή η εφαρμογή θα μπορεί να εγγράφει ήχο μόνο όταν τη χρησιμοποιείτε"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η εγγραφή ήχου;"</string>
@@ -591,12 +590,13 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Να εμφανίζεται ένα μήνυμα όταν οι εφαρμογές αποκτούν πρόσβαση σε κείμενο, εικόνες ή άλλο περιεχόμενο που έχετε αντιγράψει"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Εμφάνιση κωδικών πρόσβασης"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Σύντομη εμφάνιση χαρακτήρων κατά την πληκτρολόγηση"</string>
-    <string name="permission_rationale_message_location" msgid="5559450538205092588">"Αυτή η εφαρμογή έχει δηλώσει ότι ενδέχεται να κοινοποιήσει τα δεδομένα τοποθεσίας σας σε τρίτα μέρη"</string>
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"Αυτή η εφαρμογή έχει δηλώσει ότι ενδέχεται να κοινοποιήσει δεδομένα τοποθεσίας σε τρίτα μέρη."</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Κοινοποίηση δεδομένων και τοποθεσία"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Προέλευση πληροφοριών κοινοποίησης δεδομένων"</string>
-    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"Ο προγραμματιστής έχει καταχωρίσει πληροφορίες στο "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" σχετικά με το πώς αυτή η εφαρμογή κοινοποιεί δεδομένα. Αυτές οι πληροφορίες ενδέχεται να ενημερωθούν με την πάροδο του χρόνου."</string>
-    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"Η εφαρμ. μπορεί να κοινοποιεί δεδομ. τοποθεσ. για:"</string>
-    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
+    <skip />
+    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
+    <skip />
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Η κοινοποίηση δεδομένων διαφέρει"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Οι πρακτικές απορρήτου μπορεί να διαφέρουν ανάλογα με την έκδοση και τη χρήση της εφαρμογής, καθώς και με την περιοχή και την ηλικία σας. "<annotation id="link">"Περισσότερα σχετικά με την κοινοποίηση δεδομένων"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Τα δεδομένα τοποθεσίας σας"</string>
@@ -611,7 +611,7 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Ασφάλεια δεδομένων"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Τα δεδομένα τοποθεσίας ενδέχεται να κοινοποιούνται"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Αυτή η εφαρμογή έχει δηλώσει ότι ενδέχεται να κοινοποιήσει τα δεδομένα τοποθεσίας σας σε τρίτα μέρη"</string>
-    <string name="data_sharing_updates_title" msgid="7996933386875213859">"Ενημερώσεις στην κοινοποίηση δεδομένων για την τοποθεσία"</string>
+    <string name="data_sharing_updates_title" msgid="7996933386875213859">"Ενημερώσεις στην κοινοποίηση δεδ. για τοποθεσία"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Ελέγξτε εφαρμογές που άλλαξαν τον τρόπο με τον οποίο ενδέχεται να κοινοποιούν τα δεδομένα τοποθεσίας"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Αυτές οι εφαρμογές έχουν αλλάξει τον τρόπο με τον οποίο μπορούν να κοινοποιούν τα δεδομένα τοποθεσία σας. Ενδέχεται να μην τα έχουν κοινοποιήσει στο παρελθόν ή να τα κοινοποιούν τώρα για σκοπούς διαφήμισης ή μάρκετινγκ."</string>
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Οι προγραμματιστές αυτών των εφαρμογών έχουν καταχωρίσει πληροφορίες σχετικά με τις πρακτικές κοινοποίησης δεδομένων σε ένα app store. Ενδέχεται να τις ενημερώσουν με την πάροδο του χρόνου.\n\nΟι πρακτικές κοινοποίησης δεδομένων ενδέχεται να διαφέρουν ανάλογα με την έκδοση και τη χρήση της εφαρμογής, καθώς και με την περιοχή και την ηλικία σας."</string>

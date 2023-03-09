@@ -20,7 +20,7 @@
     <string name="ok" msgid="1936281769725676272">"OK"</string>
     <string name="permission_search_keyword" msgid="1214451577494730543">"зөвшөөрөл"</string>
     <string name="cancel" msgid="8943320028373963831">"Болих"</string>
-    <string name="back" msgid="6249950659061523680">"Арын"</string>
+    <string name="back" msgid="6249950659061523680">"Буцах"</string>
     <string name="available" msgid="6007778121920339498">"Боломжтой"</string>
     <string name="blocked" msgid="9195547604866033708">"Блоклосон"</string>
     <string name="on" msgid="280241003226755921">"Асаалттай"</string>
@@ -32,10 +32,13 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"\"Аппыг ашиглаж байх үед\" хэвээр үлдээх"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"“Зөвхөн энэ удаад зөвшөөрөх”-г хэвээр хадгалах"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Дэлгэрэнгүй мэдээлэл"</string>
-    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"Бүх зурагт хандахыг зөвшөөрөх"</string>
+    <!-- no translation found for grant_dialog_button_allow_all (5939066403732409516) -->
+    <skip />
+    <!-- no translation found for grant_dialog_button_always_allow_all (1719900027660252167) -->
+    <skip />
     <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"Зураг сонгох"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"Илүү олон зураг сонгох"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"Илүү олон зураг сонгохгүй"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"Зураг болон видео нэмж сонгох"</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Нэмж зураг сонгохгүй"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Ямартай ч бүү зөвшөөр"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Үл хэрэгсэх"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>-н <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>"</string>
@@ -398,9 +401,7 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g>-г өгөгдмөл зам заагч аппаарaa тохируулах уу?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Ямар ч зөвшөөрөл шаардлагагүй"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g>-г таны мэдэгдлүүдтэй харилцаж, таны Утас, SMS, Харилцагчид болон Календарийн зөвшөөрөлд хандахыг зөвшөөрнө."</string>
-    <string name="role_companion_device_glasses_description" msgid="1775655849566169630">"<xliff:g id="APP_NAME">%1$s</xliff:g>-г таны мэдэгдлүүдтэй харилцаж, мөн таны утас, SMS, харилцагчид, микрофон болон ойролцоох төхөөрөмжүүдийн зөвшөөрөлд хандахыг зөвшөөрнө."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g>-д таны мэдэгдэлтэй харилцах болон таны аппуудыг холбогдсон төхөөрөмжид дамжуулахыг зөвшөөрөх болно."</string>
-    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g>-д ойролцоох төхөөрөмжүүдэд контент дамжуулахыг зөвшөөрнө."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Энэ үйлчилгээ таны утаснаас зураг, медиа болон мэдэгдлийг тань бусад төхөөрөмжтэй хуваалцана."</string>
     <string name="role_notes_label" msgid="7451627001058089536">"Тэмдэглэлийн өгөгдмөл апп"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"Тэмдэглэлийн апп"</string>
@@ -480,7 +481,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д энэ төхөөрөмжийн &lt;b&gt;зураг, видео, хөгжим, аудио, бусад файлд&lt;/b&gt; хандахыг зөвшөөрөх үү?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д энэ төхөөрөмж дээрх хөгжим болон аудионд хандахыг зөвшөөрөх үү?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д энэ төхөөрөмж дээрх зураг болон видеонд хандахыг зөвшөөрөх үү?"</string>
-    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д илүү олон зурагт хандах эрх өгөх үү?"</string>
+    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д энэ төхөөрөмж дээрх бусад зураг болон видеонд хандахыг зөвшөөрөх үү?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д аудио бичихийг зөвшөөрөх үү?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Энэ апп зөвхөн таныг ашиглаж байх үед л аудио бичих боломжтой болно"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д аудио бичихийг зөвшөөрөх үү?"</string>
@@ -591,12 +592,13 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Аппууд таны хуулсан текст, зураг эсвэл бусад контентод хандах үед мессеж харуулах"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Нууц үгнүүдийг харуулах"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Таныг бичиж явцад тэмдэгтүүдийг түр үзүүлэх"</string>
-    <string name="permission_rationale_message_location" msgid="5559450538205092588">"Энэ апп таны байршлын өгөгдлийг гуравдагч талуудтай хуваалцаж магадгүйг мэдэгдсэн"</string>
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"Энэ апп байршлын өгөгдлийг гуравдагч талуудтай хуваалцаж болохыг мэдэгдсэн"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Өгөгдөл хуваалцах болон байршил"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Өгөгдөл хуваалцах мэдээллийг хаанаас авдаг вэ?"</string>
-    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"Хөгжүүлэгч энэ апп өгөгдөл хэрхэн хуваалцдаг талаарх мэдээллийг "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s-д"</annotation></annotation>" өгсөн. Энэ нь тухайн мэдээллийг цагийн аясаар шинэчилж магадгүй."</string>
-    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"Апп байршлын өгөгдлийг дараах зорилгоор хуваалцана:"</string>
-    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
+    <skip />
+    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
+    <skip />
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Өгөгдөл хуваалцах нь ялгаатай"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Өгөгдлийн практик нь таны аппын хувилбар, хэрэглээ, бүс нутаг болон наснаас хамаарч янз бүр байж болно. "<annotation id="link">"Өгөгдөл хуваалцах тухай дэлгэрэнгүй"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Таны байршлын өгөгдөл"</string>

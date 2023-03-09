@@ -32,10 +32,13 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“ਐਪ ਵਰਤੋਂ ਵਿੱਚ ਹੋਣ ਵੇਲੇ” ਨੂੰ ਰੱਖੋ"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"“ਸਿਰਫ਼ ਇਸ ਸਮੇਂ ਲਈ ਇਜਾਜ਼ਤ ਦਿਓ” ਰੱਖੋ"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"ਹੋਰ ਜਾਣਕਾਰੀ"</string>
-    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"ਸਾਰੀਆਂ ਫ਼ੋਟੋਆਂ ਤੱਕ ਪਹੁੰਚ ਦੀ ਆਗਿਆ ਦਿਓ"</string>
+    <!-- no translation found for grant_dialog_button_allow_all (5939066403732409516) -->
+    <skip />
+    <!-- no translation found for grant_dialog_button_always_allow_all (1719900027660252167) -->
+    <skip />
     <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"ਫ਼ੋਟੋਆਂ ਚੁਣੋ"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"ਹੋਰ ਫ਼ੋਟੋਆਂ ਚੁਣੋ"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"ਹੋਰ ਫ਼ੋਟੋਆਂ ਨਾ ਚੁਣੋ"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"ਹੋਰ ਫ਼ੋਟੋਆਂ ਅਤੇ ਵੀਡੀਓ ਚੁਣੋ"</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"ਹੋਰ ਫ਼ੋਟੋਆਂ ਨਾ ਚੁਣੋ"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"ਫਿਰ ਵੀ ਆਗਿਆ ਨਾ ਦਿਓ"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"ਖਾਰਜ ਕਰੋ"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g> ਵਿੱਚੋਂ <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>"</string>
@@ -398,9 +401,7 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"ਕੀ <xliff:g id="APP_NAME">%1$s</xliff:g> ਨੂੰ ਤੁਹਾਡੀ ਪੂਰਵ-ਨਿਰਧਾਰਿਤ ਨੈਵੀਗੇਸ਼ਨ ਐਪ ਵਜੋਂ ਸੈੱਟ ਕਰਨਾ ਹੈ?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"ਕਿਸੇ ਇਜਾਜ਼ਤ ਦੀ ਲੋੜ ਨਹੀਂ ਹੈ"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> ਨੂੰ ਤੁਹਾਡੀਆਂ ਸੂਚਨਾਵਾਂ ਨਾਲ ਅੰਤਰਕਿਰਿਆ ਕਰਨ ਅਤੇ ਤੁਹਾਡੇ ਫ਼ੋਨ, SMS, ਸੰਪਰਕ ਅਤੇ ਕੈਲੰਡਰ ਦੀਆਂ ਇਜਾਜ਼ਤਾਂ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੀ ਇਜਾਜ਼ਤ ਹੋਵੇਗੀ।"</string>
-    <string name="role_companion_device_glasses_description" msgid="1775655849566169630">"<xliff:g id="APP_NAME">%1$s</xliff:g> ਨੂੰ ਤੁਹਾਡੀਆਂ ਸੂਚਨਾਵਾਂ ਨਾਲ ਅੰਤਰਕਿਰਿਆ ਕਰਨ ਅਤੇ ਤੁਹਾਡੇ ਫ਼ੋਨ, SMS, ਸੰਪਰਕਾਂ, ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਅਤੇ ਨਜ਼ਦੀਕੀ ਡੀਵਾਈਸਾਂ ਸੰਬੰਧੀ ਇਜਾਜ਼ਤਾਂ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੀ ਆਗਿਆ ਹੋਵੇਗੀ।"</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> ਨੂੰ ਤੁਹਾਡੀਆਂ ਸੂਚਨਾਵਾਂ ਨਾਲ ਅੰਤਰਕਿਰਿਆ ਕਰਨ ਅਤੇ ਤੁਹਾਡੀਆਂ ਐਪਾਂ ਨੂੰ ਕਨੈਕਟ ਕੀਤੇ ਡੀਵਾਈਸ \'ਤੇ ਸਟ੍ਰੀਮ ਕਰਨ ਦੀ ਆਗਿਆ ਹੋਵੇਗੀ।"</string>
-    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> ਨੂੰ ਨਜ਼ਦੀਕੀ ਡੀਵਾਈਸਾਂ ਦੀ ਸਮੱਗਰੀ ਨੂੰ ਸਟ੍ਰੀਮ ਕਰਨ ਦੀ ਆਗਿਆ ਹੋਵੇਗੀ।"</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"ਇਹ ਸੇਵਾ ਤੁਹਾਡੀਆਂ ਫ਼ੋਟੋਆਂ, ਮੀਡੀਆ ਅਤੇ ਸੂਚਨਾਵਾਂ ਨੂੰ ਤੁਹਾਡੇ ਫ਼ੋਨ ਤੋਂ ਹੋਰ ਡੀਵਾਈਸਾਂ ਨਾਲ ਸਾਂਝਾ ਕਰਦੀ ਹੈ।"</string>
     <string name="role_notes_label" msgid="7451627001058089536">"ਨੋਟ-ਕਥਨਾਂ ਲਈ ਪੂਰਵ-ਨਿਰਧਾਰਿਤ ਐਪ"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"ਨੋਟ-ਕਥਨਾਂ ਲਈ ਐਪ"</string>
@@ -480,7 +481,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਇਸ ਡੀਵਾਈਸ \'ਤੇ &lt;b&gt;ਫ਼ੋਟੋਆਂ, ਵੀਡੀਓ, ਸੰਗੀਤ, ਆਡੀਓ ਅਤੇ ਹੋਰ ਫ਼ਾਈਲਾਂ&lt;/b&gt; ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਇਸ ਡੀਵਾਈਸ \'ਤੇ ਸੰਗੀਤ ਅਤੇ ਆਡੀਓ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਇਸ ਡੀਵਾਈਸ \'ਤੇ ਫ਼ੋਟੋਆਂ ਅਤੇ ਵੀਡੀਓ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
-    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਹੋਰ ਫ਼ੋਟੋਆਂ ਤੱਕ ਪਹੁੰਚ ਦੇਣੀ ਹੈ?"</string>
+    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਇਸ ਡੀਵਾਈਸ \'ਤੇ ਹੋਰ ਫ਼ੋਟੋਆਂ ਅਤੇ ਵੀਡੀਓ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੀ ਆਗਿਆ ਦੇਣੀ ਹੈ?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਆਡੀਓ ਰਿਕਾਰਡ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"ਤੁਹਾਡੇ ਵੱਲੋਂ ਐਪ ਦੀ ਵਰਤੋਂ ਕਰਨ ਵੇਲੇ ਹੀ ਐਪ ਆਡੀਓ ਰਿਕਾਰਡ ਕਰ ਸਕੇਗੀ"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਆਡੀਓ ਰਿਕਾਰਡ ਕਰਨ ਦੀ ਇਜਾਜ਼ਤ ਦੇਣੀ ਹੈ?"</string>
@@ -591,13 +592,12 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"ਜਦੋਂ ਐਪਾਂ ਲਿਖਤ, ਚਿੱਤਰ ਜਾਂ ਤੁਹਾਡੇ ਵੱਲੋਂ ਕਾਪੀ ਕੀਤੀ ਹੋਰ ਸਮੱਗਰੀ ਤੱਕ ਪਹੁੰਚ ਕਰਦੀਆਂ ਹਨ, ਤਾਂ ਕੋਈ ਸੁਨੇਹਾ ਦਿਖਾਓ"</string>
     <string name="show_password_title" msgid="2877269286984684659">"ਪਾਸਵਰਡ ਦਿਖਾਓ"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"ਟਾਈਪ ਕਰਨ ਵੇਲੇ ਅੱਖਰ-ਚਿੰਨ੍ਹਾਂ ਨੂੰ ਥੋੜ੍ਹੇ ਸਮੇਂ ਲਈ ਦਿਖਾਓ"</string>
-    <string name="permission_rationale_message_location" msgid="5559450538205092588">"ਇਸ ਐਪ ਨੇ ਸਪਸ਼ਟ ਕੀਤਾ ਕਿ ਇਹ ਤੀਜੀਆਂ ਧਿਰਾਂ ਨਾਲ ਤੁਹਾਡੇ ਟਿਕਾਣੇ ਦੇ ਡਾਟੇ ਨੂੰ ਸਾਂਝਾ ਕਰ ਸਕਦੀ ਹੈ"</string>
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"ਇਸ ਐਪ ਨੇ ਸਪਸ਼ਟ ਕੀਤਾ ਕਿ ਇਹ ਤੀਜੀਆਂ ਧਿਰਾਂ ਨਾਲ ਟਿਕਾਣੇ ਦੇ ਡਾਟੇ ਨੂੰ ਸਾਂਝਾ ਕਰ ਸਕਦੀ ਹੈ"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"ਡਾਟਾ ਸਾਂਝਾਕਰਨ ਅਤੇ ਟਿਕਾਣਾ"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"ਡਾਟਾ ਸਾਂਝਾਕਰਨ ਜਾਣਕਾਰੀ ਕਿੱਥੋਂ ਆਉਂਦੀ ਹੈ"</string>
-    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"ਵਿਕਾਸਕਾਰ ਨੇ ਇਸ ਐਪ ਵੱਲੋਂ ਡਾਟਾ ਸਾਂਝਾ ਕੀਤੇ ਜਾਣ ਦੇ ਤਰੀਕੇ ਬਾਰੇ ਜਾਣਕਾਰੀ "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" ਨੂੰ ਮੁਹੱਈਆ ਕਰਵਾਈ ਹੈ। ਇਹ ਸਮੇਂ-ਸਮੇਂ \'ਤੇ ਇਸ ਜਾਣਕਾਰੀ ਨੂੰ ਅੱਪਡੇਟ ਕਰ ਸਕਦਾ ਹੈ।"</string>
-    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"ਐਪ ਇਸ ਲਈ ਟਿਕਾਣੇ ਦਾ ਡਾਟਾ ਸਾਂਝਾ ਕਰ ਸਕਦੀ ਹੈ:"</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for permission_rationale_purpose_message (2136810388727916997) -->
+    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
+    <skip />
+    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
     <skip />
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ਡਾਟਾ ਸਾਂਝਾਕਰਨ ਵੱਖ-ਵੱਖ ਹੁੰਦਾ ਹੈ"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"ਡਾਟਾ ਵਿਹਾਰ ਤੁਹਾਡੀ ਐਪ ਦੇ ਵਰਜਨ, ਵਰਤੋਂ, ਖੇਤਰ ਅਤੇ ਉਮਰ ਦੇ ਮੁਤਾਬਕ ਵੱਖ-ਵੱਖ ਹੋ ਸਕਦੇ ਹਨ। "<annotation id="link">"ਡਾਟਾ ਸਾਂਝਾਕਰਨ ਬਾਰੇ ਹੋਰ"</annotation></string>
@@ -618,11 +618,11 @@
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"ਇਨ੍ਹਾਂ ਐਪਾਂ ਨੇ ਉਨ੍ਹਾਂ ਵੱਲੋਂ ਤੁਹਾਡੇ ਟਿਕਾਣੇ ਦੇ ਡਾਟੇ ਨੂੰ ਸਾਂਝਾ ਕੀਤੇ ਜਾਣ ਦਾ ਤਰੀਕਾ ਬਦਲ ਦਿੱਤਾ ਹੈ। ਉਨ੍ਹਾਂ ਨੇ ਸ਼ਾਇਦ ਇਸਨੂੰ ਪਹਿਲਾਂ ਸਾਂਝਾ ਨਾ ਕੀਤਾ ਹੋਵੇ, ਜਾਂ ਉਹ ਸ਼ਾਇਦ ਹੁਣ ਵਿਗਿਆਪਨ ਜਾਂ ਮਾਰਕੀਟਿੰਗ ਸੰਬੰਧੀ ਉਦੇਸ਼ਾਂ ਲਈ ਹੁਣ ਇਸਨੂੰ ਸਾਂਝਾ ਕਰਨ।"</string>
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"ਇਨ੍ਹਾਂ ਐਪਾਂ ਦੇ ਵਿਕਾਸਕਾਰਾਂ ਨੇ ਆਪਣੇ ਡਾਟਾ ਸਾਂਝਾਕਰਨ ਵਿਹਾਰਾਂ ਸੰਬੰਧੀ ਜਾਣਕਾਰੀ ਐਪ ਸਟੋਰ ਨੂੰ ਮੁਹੱਈਆ ਕਰਵਾਈ ਹੈ। ਉਹ ਇਸਨੂੰ ਸਮੇਂ-ਸਮੇਂ \'ਤੇ ਅੱਪਡੇਟ ਕਰ ਸਕਦੇ ਹਨ।\n\nਡਾਟਾ ਸਾਂਝਾਕਰਨ ਵਿਹਾਰ ਤੁਹਾਡੇ ਐਪ ਵਰਜਨ, ਵਰਤੋਂ, ਖੇਤਰ ਅਤੇ ਉਮਰ ਦੇ ਮੁਤਾਬਕ ਵੱਖ-ਵੱਖ ਹੋ ਸਕਦੇ ਹਨ।"</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"ਡਾਟਾ ਸਾਂਝਾਕਰਨ ਬਾਰੇ ਜਾਣੋ"</string>
-    <string name="shares_location_with_third_parties" msgid="2278051743742057767">"ਤੁਹਾਡਾ ਟਿਕਾਣੇ ਦਾ ਡਾਟਾ ਹੁਣ ਤੀਜੀਆਂ ਧਿਰਾਂ ਨਾਲ ਸਾਂਝਾ ਕੀਤਾ ਗਿਆ ਹੈ"</string>
+    <string name="shares_location_with_third_parties" msgid="2278051743742057767">"ਤੁਹਾਡਾ ਟਿਕਾਣੇ ਦਾ ਡਾਟਾ ਹੁਣ ਤੀਜੀਆਂ ਧਿਰਾਂ ਨਾਲ ਸਾਂਝਾ ਕੀਤਾ ਜਾਂਦਾ ਹੈ"</string>
     <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"ਤੁਹਾਡਾ ਟਿਕਾਣੇ ਦਾ ਡਾਟਾ ਹੁਣ ਵਿਗਿਆਪਨ ਜਾਂ ਮਾਰਕੀਟਿੰਗ ਲਈ ਤੀਜੀਆਂ ਧਿਰਾਂ ਨਾਲ ਸਾਂਝਾ ਕੀਤਾ ਗਿਆ ਹੈ"</string>
     <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{ਪਿਛਲੇ ਦਿਨ ਵਿੱਚ ਅੱਪਡੇਟ ਕੀਤਾ ਗਿਆ}=1{ਪਿਛਲੇ ਦਿਨ ਵਿੱਚ ਅੱਪਡੇਟ ਕੀਤਾ ਗਿਆ}other{ਪਿਛਲੇ # ਦਿਨਾਂ ਵਿੱਚ ਅੱਪਡੇਟ ਕੀਤਾ ਗਿਆ}}"</string>
     <string name="no_updates_at_this_time" msgid="9031085635689982935">"ਇਸ ਸਮੇਂ ਕੋਈ ਅੱਪਡੇਟ ਨਹੀਂ"</string>
     <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"ਡਾਟਾ ਸਾਂਝਾਕਰਨ ਅੱਪਡੇਟ"</string>
-    <string name="safety_label_changes_notification_desc" msgid="7808764283266234675">"ਕੁਝ ਐਪਾਂ ਨੇ ਤੁਹਾਡੇ ਟਿਕਾਣੇ ਦੇ ਡਾਟੇ ਨੂੰ ਸਾਂਝਾ ਕੀਤੇ ਜਾਣ ਦਾ ਤਰੀਕਾ ਬਦਲ ਦਿੱਤਾ ਹੈ"</string>
+    <string name="safety_label_changes_notification_desc" msgid="7808764283266234675">"ਕੁਝ ਐਪਾਂ ਨੇ ਤੁਹਾਡੇ ਟਿਕਾਣੇ ਦੇ ਡਾਟੇ ਨੂੰ ਸਾਂਝਾ ਕਰਨ ਦਾ ਤਰੀਕਾ ਬਦਲ ਦਿੱਤਾ ਹੈ"</string>
     <string name="safety_label_changes_gear_description" msgid="2655887555599138509">"ਸੈਟਿੰਗਾਂ"</string>
 </resources>

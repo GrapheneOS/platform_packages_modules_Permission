@@ -32,10 +32,11 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"[アプリが使用中の場合] を保持"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"「今回のみ」の設定を維持"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"詳細"</string>
-    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"すべての写真へのアクセスを許可"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"すべて許可"</string>
+    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"常にすべて許可"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"写真を選択"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"他の写真を選択"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"他の写真を選択しない"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"他の写真や動画を選択する"</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"他を選択しない"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"許可しない"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"閉じる"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>/<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -398,9 +399,7 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g> をデフォルトのナビゲーション アプリとして設定しますか？"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"必要な権限がありません"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> は通知を使用でき、スマートフォン、SMS、連絡先、カレンダーの権限にもアクセスできるようになります。"</string>
-    <string name="role_companion_device_glasses_description" msgid="1775655849566169630">"<xliff:g id="APP_NAME">%1$s</xliff:g> は、通知を操作し、電話、SMS、連絡先、マイク、付近のデバイスの権限を利用することができます。"</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> は通知を使用して、接続済みのデバイスにアプリをストリーミングできるようになります。"</string>
-    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> は付近のデバイスにコンテンツをストリーミングできるようになります。"</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"このサービスは、スマートフォンから他のデバイスに写真、メディア、通知を共有します。"</string>
     <string name="role_notes_label" msgid="7451627001058089536">"デフォルトのメモアプリ"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"メモアプリ"</string>
@@ -480,7 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"このデバイス内の&lt;b&gt;写真、動画、音楽、音声など&lt;/b&gt;へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"このデバイス内の音楽と音声へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"このデバイス内の写真と動画へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
-    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に他の写真へのアクセスを許可しますか？"</string>
+    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"このデバイス内の他の写真や動画へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"音声の録音を「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」に許可しますか？"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"アプリは、ユーザーがアプリを使用している場合のみ音声を録音できます"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"音声の録音を &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
@@ -591,16 +590,17 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"クリップボードにコピーしたテキストや画像などにアプリがアクセスすると、メッセージで通知する"</string>
     <string name="show_password_title" msgid="2877269286984684659">"パスワードの表示"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"入力した文字を短い間表示する"</string>
-    <string name="permission_rationale_message_location" msgid="5559450538205092588">"このアプリは位置情報をサードパーティと共有することがあります"</string>
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"このアプリは、位置情報をサードパーティと共有する可能性があります"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"データ共有と位置情報"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"データ共有情報の提供元"</string>
-    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"デベロッパーは、このアプリがデータを共有する方法に関する情報を "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" に提供しています。この情報は時間が経つと更新される可能性があります。"</string>
-    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"このアプリが位置情報を共有する目的"</string>
-    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
+    <skip />
+    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
+    <skip />
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"さまざまなデータ共有方法"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"データの取り扱いは、アプリのバージョンや使用方法、ユーザーの年齢やお住まいの地域によって異なることがあります。"<annotation id="link">"データ共有の詳細"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"ユーザーの位置情報"</string>
-    <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"このアプリのアクセス権は"<annotation id="link">"プライバシー設定"</annotation>"で変更できます"</string>
+    <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"このアプリのアクセス権は"<annotation id="link">"プライバシー設定"</annotation>"で変更できます。"</string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"アプリの機能"</string>
     <string name="permission_rationale_purpose_analytics" msgid="2070800501189620712">"分析"</string>
     <string name="permission_rationale_purpose_developer_communications" msgid="6453047018892062374">"デベロッパーによる情報伝達"</string>
@@ -612,8 +612,8 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"位置情報が共有されることがあります"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"このアプリは位置情報をサードパーティと共有することがあります"</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"位置情報を共有する方法の更新"</string>
-    <string name="data_sharing_updates_summary" msgid="764113985772233889">"位置情報を共有する方法が変更されたアプリを確認できます"</string>
-    <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"これらのアプリで、位置情報を共有する方法が変更されました。以前は共有していなかったか、広告またはマーケティングの目的で共有されるようになった可能性があります。"</string>
+    <string name="data_sharing_updates_summary" msgid="764113985772233889">"ユーザーの位置情報を共有する方法が変更されたアプリを確認できます"</string>
+    <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"これらのアプリで、ユーザーの位置情報を共有する方法が変更されました。以前は共有していなかったか、広告またはマーケティングの目的で共有されるようになった可能性があります。"</string>
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"これらのアプリのデベロッパーは、データの共有方法に関する情報をアプリストアに提供しています。この情報は時間が経つと更新される可能性があります。\n\nデータの共有方法は、アプリのバージョンや使用方法、ユーザーの年齢やお住まいの地域によって異なることがあります。"</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"データ共有の詳細"</string>
     <string name="shares_location_with_third_parties" msgid="2278051743742057767">"位置情報がサードパーティと共有されるようになりました"</string>
@@ -621,6 +621,6 @@
     <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{更新日: 過去 1 日以内}=1{更新日: 過去 1 日以内}other{更新日: # 日以内}}"</string>
     <string name="no_updates_at_this_time" msgid="9031085635689982935">"現時点で更新はありません"</string>
     <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"データ共有に関する更新"</string>
-    <string name="safety_label_changes_notification_desc" msgid="7808764283266234675">"位置情報を共有する方法が変更されたアプリがあります"</string>
+    <string name="safety_label_changes_notification_desc" msgid="7808764283266234675">"ユーザーの位置情報を共有する方法が変更されたアプリがあります"</string>
     <string name="safety_label_changes_gear_description" msgid="2655887555599138509">"設定"</string>
 </resources>
