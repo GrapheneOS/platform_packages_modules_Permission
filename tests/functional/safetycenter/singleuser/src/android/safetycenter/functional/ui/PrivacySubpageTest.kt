@@ -34,7 +34,7 @@ import com.android.safetycenter.testing.SafetyCenterFlags
 import com.android.safetycenter.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import com.android.safetycenter.testing.SafetyCenterTestConfigs
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.PRIVACY_SOURCE_ID_1
-import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.PRIVACY_SOURCE_ID_2
+import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SOURCE_ID_1
 import com.android.safetycenter.testing.SafetyCenterTestHelper
 import com.android.safetycenter.testing.SafetySourceTestData
 import com.android.safetycenter.testing.UiTestHelper.MORE_ISSUES_LABEL
@@ -162,7 +162,7 @@ class PrivacySubpageTest {
         val firstSourceData = safetySourceTestData.criticalWithIssueWithAttributionTitle
         val secondSourceData = safetySourceTestData.informationWithIssueWithAttributionTitle
         safetyCenterTestHelper.setData(PRIVACY_SOURCE_ID_1, firstSourceData)
-        safetyCenterTestHelper.setData(PRIVACY_SOURCE_ID_2, secondSourceData)
+        safetyCenterTestHelper.setData(SOURCE_ID_1, secondSourceData)
         val extras = Bundle()
         extras.putString(EXTRA_SAFETY_SOURCES_GROUP_ID, config.safetySourcesGroups.first().id)
 
