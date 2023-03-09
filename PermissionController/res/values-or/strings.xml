@@ -32,10 +32,11 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“ଆପଟି ବ୍ୟବହାରରେ ଥିବା ସମୟରେ”କୁ ରଖନ୍ତୁ"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"“କେବଳ ଏହି ସମୟ” ରଖନ୍ତୁ"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"ଅଧିକ ସୂଚନା"</string>
-    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"ସମସ୍ତ ଫଟୋକୁ ଆକ୍ସେସ କରିବାର ଅନୁମତି ଦିଅନ୍ତୁ"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"ସବୁକୁ ଅନୁମତି ଦିଅନ୍ତୁ"</string>
+    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"ସର୍ବଦା ସବୁକୁ ଅନୁମତି ଦିଅନ୍ତୁ"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"ଫଟୋଗୁଡ଼ିକୁ ଚୟନ କରନ୍ତୁ"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"ଅଧିକ ଫଟୋ ଚୟନ କରନ୍ତୁ"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"ଅଧିକ ଫଟୋ ଚୟନ କରନ୍ତୁ ନାହିଁ"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"ଅଧିକ ଫଟୋ ଏବଂ ଭିଡିଓ ଚୟନ କରନ୍ତୁ"</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"ଅଧିକ ଚୟନ କରନ୍ତୁ ନାହିଁ"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"ଯେ କୌଣସି ମତେ ଅନୁମତି ଦିଅ ନାହିଁ"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"ଖାରଜ କରନ୍ତୁ"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g> ରୁ <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>"</string>
@@ -398,9 +399,7 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g>କୁ ଆପଣଙ୍କ ଡିଫଲ୍ଟ ନାଭିଗେସନ ଆପ ଭାବେ ସେଟ କରିବେ?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"କୌଣସି ଅନୁମତି ଆବଶ୍ୟକ ନାହିଁ"</string>
     <string name="role_watch_description" msgid="267003778693177779">"ଆପଣଙ୍କ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକ ସହ ଇଣ୍ଟରାକ୍ଟ କରିବା ଏବଂ ଆପଣଙ୍କ ଫୋନ୍, SMS, ଯୋଗାଯୋଗ ଓ କ୍ୟାଲେଣ୍ଡର ଅନୁମତିଗୁଡ଼ିକୁ ଆକ୍ସେସ୍ କରିବା ପାଇଁ <xliff:g id="APP_NAME">%1$s</xliff:g>କୁ ଅନୁମତି ଦିଆଯିବ।"</string>
-    <string name="role_companion_device_glasses_description" msgid="1775655849566169630">"ଆପଣଙ୍କ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକ ସହ ଇଣ୍ଟରାକ୍ଟ କରିବା ଏବଂ ଆପଣଙ୍କର ଫୋନ, SMS, କଣ୍ଟାକ୍ଟ, ମାଇକ୍ରୋଫୋନ ଓ ଆଖପାଖର ଡିଭାଇସ ଅନୁମତିଗୁଡ଼ିକୁ ଆକ୍ସେସ କରିବା ପାଇଁ <xliff:g id="APP_NAME">%1$s</xliff:g>କୁ ଅନୁମତି ଦିଆଯିବ।"</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"ଆପଣଙ୍କ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକ ସହ ଇଣ୍ଟରାକ୍ଟ କରିବା ଏବଂ ସଂଯୋଗ କରାଯାଇଥିବା ଡିଭାଇସଗୁଡ଼ିକରେ ଆପଣଙ୍କର ଆପଗୁଡ଼ିକ ଷ୍ଟ୍ରିମ କରିବା ପାଇଁ <xliff:g id="APP_NAME">%1$s</xliff:g>କୁ ଅନୁମତି ଦିଆଯିବ।"</string>
-    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"ଆଖପାଖର ଡିଭାଇସଗୁଡ଼ିକରେ ବିଷୟବସ୍ତୁ ଷ୍ଟ୍ରିମ କରିବା ପାଇଁ <xliff:g id="APP_NAME">%1$s</xliff:g>କୁ ଅନୁମତି ଦିଆଯିବ।"</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"ଏହି ସେବା ଆପଣଙ୍କ ଫୋନରୁ ଆପଣଙ୍କ ଫଟୋ, ମିଡିଆ ଏବଂ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକୁ ଅନ୍ୟ ଡିଭାଇସଗୁଡ଼ିକ ସହ ସେୟାର କରେ।"</string>
     <string name="role_notes_label" msgid="7451627001058089536">"ଡିଫଲ୍ଟ ନୋଟ୍ସ ଆପ"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"ନୋଟ୍ସ ଆପ"</string>
@@ -480,7 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"ଏହି ଡିଭାଇସରେ ଥିବା&lt;b&gt;ଫଟୋ, ଭିଡିଓ, ମ୍ୟୁଜିକ, ଅଡିଓ ଓ ଅନ୍ୟ ଫାଇଲ&lt;/b&gt; ଆକ୍ସେସ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"ଏହି ଡିଭାଇସରେ ଥିବା ମ୍ୟୁଜିକ ଏବଂ ଅଡିଓକୁ ଆକ୍ସେସ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"ଏହି ଡିଭାଇସରେ ଥିବା ଫଟୋ ଏବଂ ଭିଡିଓଗୁଡ଼ିକୁ ଆକ୍ସେସ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ?"</string>
-    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"ଅଧିକ ଫଟୋକୁ ଆକ୍ସେସ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ?"</string>
+    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"ଏହି ଡିଭାଇସରେ ଥିବା ଅଧିକ ଫଟୋ ଏବଂ ଭିଡିଓକୁ ଆକ୍ସେସ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅଡିଓ ରେକର୍ଡ କରିବା ପାଇଁ ଅନୁମତି ଦେବେ କି?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"ଆପଣ ଆପକୁ ବ୍ୟବହାର କରୁଥିବା ସମୟରେ କେବଳ ଏହା ଅଡିଓ ରେକର୍ଡ କରିବାକୁ ସକ୍ଷମ ହେବ"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅଡିଓ ରେକର୍ଡ କରିବାକୁ ଅନୁମତି ଦେବେ କି?"</string>
@@ -591,12 +590,13 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"ଯେତେବେଳେ ଆପଣ କପି କରିଥିବା ଟେକ୍ସଟ, ଇମେଜ କିମ୍ବା ଅନ୍ୟ ବିଷୟବସ୍ତୁକୁ ଆପ୍ସ ଆକ୍ସେସ କରେ, ସେତେବେଳେ ଏକ ମେସେଜ ଦେଖାନ୍ତୁ"</string>
     <string name="show_password_title" msgid="2877269286984684659">"ପାସୱାର୍ଡଗୁଡ଼ିକ ଦେଖାନ୍ତୁ"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"ଆପଣ ଟାଇପ କରିବା ସମୟରେ କେରେକ୍ଟରଗୁଡ଼ିକୁ କିଛି ସମୟ ପାଇଁ ଡିସପ୍ଲେ କରନ୍ତୁ"</string>
-    <string name="permission_rationale_message_location" msgid="5559450538205092588">"ଏହି ଆପ ଉଲ୍ଲେଖ କରିଛି ଯେ ଏହା ତୃତୀୟ ପକ୍ଷଗୁଡ଼ିକ ସହ ଆପଣଙ୍କ ଲୋକେସନ ଡାଟା ସେୟାର କରିପାରେ"</string>
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"ଏହି ଆପ ଉଲ୍ଲେଖ କରିଛି ଯେ ଏହା ତୃତୀୟ ପକ୍ଷଗୁଡ଼ିକ ସହ ଲୋକେସନ ଡାଟା ସେୟାର କରିପାରେ"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"ଡାଟା ସେୟାରିଂ ଏବଂ ଲୋକେସନ"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"ଡାଟା ସେୟାରିଂ ସୂଚନା କେଉଁଠାରୁ ଆସିଥାଏ"</string>
-    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"ଏହି ଆପ କିପରି ଡାଟା ସେୟାର କରେ ସେ ବିଷୟରେ ଡେଭେଲପର "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>"ରେ ସୂଚନା ପ୍ରଦାନ କରିଛନ୍ତି। ଏହା ସମୟ ଅନୁସାରେ ଏହି ସୂଚନାକୁ ଅପଡେଟ କରିପାରେ।"</string>
-    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"ଏଥିପାଇଁ ଆପଟି ଲୋକେସନ ଡାଟା ସେୟାର କରିପାରେ:"</string>
-    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
+    <skip />
+    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
+    <skip />
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ଡାଟା ସେୟାରିଂ ଭିନ୍ନ ହୋଇଥାଏ"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"ଆପଣଙ୍କ ଆପର ସଂସ୍କରଣ, ବ୍ୟବହାର, ଅଞ୍ଚଳ ଏବଂ ବୟସ ଆଧାରରେ ଡାଟା କାର୍ଯ୍ୟପଦ୍ଧତିଗୁଡ଼ିକ ଭିନ୍ନ ହୋଇପାରେ। "<annotation id="link">"ଡାଟା ସେୟାରିଂ ବିଷୟରେ ଅଧିକ"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"ଆପଣଙ୍କ ଲୋକେସନ ଡାଟା"</string>

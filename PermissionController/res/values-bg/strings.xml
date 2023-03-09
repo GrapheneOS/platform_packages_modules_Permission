@@ -32,10 +32,11 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Запазване на опцията „Докато приложението се използва“"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Запазване на настройката „Само този път“"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Още информация"</string>
-    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"Разрешаване на достъп до всички снимки"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Разрешаване на пълен достъп"</string>
+    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Винаги да се разрешава пълен достъп"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"Избиране на снимки"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"Избиране на още снимки"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"Без избиране на още снимки"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"Избиране на още снимки и видеоклипове"</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Без избиране на още"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Забраняване въпреки това"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Отхвърляне"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> от <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -398,9 +399,7 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Да се зададе ли <xliff:g id="APP_NAME">%1$s</xliff:g> като основно приложение за навигация?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Не са необходими разрешения"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> ще получи разрешение да взаимодейства с известията ви и ще получи достъп до разрешенията за телефона, SMS съобщенията, контактите и календара."</string>
-    <string name="role_companion_device_glasses_description" msgid="1775655849566169630">"<xliff:g id="APP_NAME">%1$s</xliff:g> ще получи право да взаимодейства с известията ви, както и достъп до разрешенията за телефона, SMS съобщенията, контактите, микрофона и устройствата в близост."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> ще получи разрешение да взаимодейства с известията ви и да предава поточно приложенията ви към свързаните устройства."</string>
-    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> ще получи разрешение за поточно предаване на съдържание към устройства в близост."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Тази услуга споделя вашите снимки, мултимедия и известия от телефона ви на други устройства."</string>
     <string name="role_notes_label" msgid="7451627001058089536">"Основно приложение за бележки"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"Приложение за бележки"</string>
@@ -480,7 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Разр. на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; достъп до &lt;b&gt;снимките, видео- и аудиосъдърж. и другите файлове&lt;/b&gt; на у-вото?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Да се разреши ли на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да осъществява достъп до музиката и аудиофайловете на това устройство?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Да се разреши ли на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да осъществява достъп до снимките и видеоклиповете на това устройство?"</string>
-    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"Да се предостави ли достъп на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; до още снимки?"</string>
+    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"Да се разреши ли на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да осъществява достъп до още снимки и видеоклипове на това устройство?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Да се разреши ли на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да записва аудио?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Приложението ще може да записва аудио само когато го използвате"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Да се разреши ли на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да записва аудио?"</string>
@@ -591,12 +590,13 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Показване на съобщение, когато приложенията осъществяват достъп до копирани от вас текст, изображения или друго съдържание"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Показване на паролите"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Кратко показване на знаците, докато пишете"</string>
-    <string name="permission_rationale_message_location" msgid="5559450538205092588">"Това приложение посочи, че може да споделя с трети страни данни за местоположението ви"</string>
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"Това приложение посочи, че може да споделя с трети страни данни за местоположението"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Споделяне на данни и достъп до местоположението"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Източници на информацията за споделянето на данни"</string>
-    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"Програмистът предостави на "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" информация за начина, по който това приложение споделя данни. Тя може да бъде актуализирана с течение на времето."</string>
-    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"Прилож. може да споделя данни за местопол. с цел:"</string>
-    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
+    <skip />
+    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
+    <skip />
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Споделянето на данни варира"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Практиките за поверителност може да варират в зависимост от версията на приложението, употребата от ваша страна, региона и възрастта ви. "<annotation id="link">"Още за споделянето на данни"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Данни за местоположението ви"</string>
@@ -604,7 +604,7 @@
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"функционалност на прилож.;"</string>
     <string name="permission_rationale_purpose_analytics" msgid="2070800501189620712">"анализ;"</string>
     <string name="permission_rationale_purpose_developer_communications" msgid="6453047018892062374">"получаване на съобщения от програмиста;"</string>
-    <string name="permission_rationale_purpose_advertising" msgid="7156966429245180236">"рекламиране или маркетинг;"</string>
+    <string name="permission_rationale_purpose_advertising" msgid="7156966429245180236">"рекламиране или маркетинг."</string>
     <string name="permission_rationale_purpose_fraud_prevention_security" msgid="4262104770357031902">"предотвратяване на измами, сигурност и спазване на изискванията;"</string>
     <string name="permission_rationale_purpose_personalization" msgid="1589973273682238708">"персонализиране;"</string>
     <string name="permission_rationale_purpose_account_management" msgid="2985772421946688879">"управление на профила."</string>
@@ -621,6 +621,6 @@
     <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{Актуализирано през последния ден}=1{Актуализирано през последния ден}other{Актуализирано през последните # дни}}"</string>
     <string name="no_updates_at_this_time" msgid="9031085635689982935">"Понастоящем няма актуализации"</string>
     <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"Актуализации за споделянето на данни"</string>
-    <string name="safety_label_changes_notification_desc" msgid="7808764283266234675">"Някои приложения са променили начина, по който могат да споделят данни за местоположението ви"</string>
+    <string name="safety_label_changes_notification_desc" msgid="7808764283266234675">"Някои приложения са променили как може да споделят данни за местоположението ви"</string>
     <string name="safety_label_changes_gear_description" msgid="2655887555599138509">"Настройки"</string>
 </resources>

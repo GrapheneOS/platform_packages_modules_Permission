@@ -32,10 +32,13 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Usibadilishe “Wakati programu inatumika”"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Usibadilishe “Wakati huu pekee”"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Maelezo zaidi"</string>
-    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"Ruhusu picha zote zifikiwe"</string>
+    <!-- no translation found for grant_dialog_button_allow_all (5939066403732409516) -->
+    <skip />
+    <!-- no translation found for grant_dialog_button_always_allow_all (1719900027660252167) -->
+    <skip />
     <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"Chagua picha"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"Chagua picha zaidi"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"Usichague picha zaidi"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"Chagua picha na video zaidi"</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Usichague zaidi"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Usiruhusu hata hivyo"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Ondoa"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> kati ya <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -398,9 +401,7 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Je, ungependa kuweka <xliff:g id="APP_NAME">%1$s</xliff:g> iwe programu yako chaguomsingi ya maelekezo?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Hakuna ruhusa zinazohitajika"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> itaruhusiwa kushirikiana na arifa zako na kufikia ruhusa za Simu, SMS, Anwani na Kalenda yako."</string>
-    <string name="role_companion_device_glasses_description" msgid="1775655849566169630">"<xliff:g id="APP_NAME">%1$s</xliff:g> itaruhusiwa kutumia arifa zako na kufikia ruhusa zako za Simu, SMS, Anwani, Maikrofoni na Vifaa vilivyo Karibu."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> itaruhusiwa kufikia arifa zako na kutiririsha programu zako kwenye kifaa kilichounganishwa."</string>
-    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> itaruhusiwa kutiririsha maudhui kwenye vifaa vilivyo karibu."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Huduma hii inashiriki picha, maudhui na arifa zako kutoka kwenye simu yako hadi vifaa vingine."</string>
     <string name="role_notes_label" msgid="7451627001058089536">"Programu chaguomsingi ya madokezo"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"Programu ya madokezo"</string>
@@ -480,7 +481,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie &lt;b&gt;picha, video, muziki, sauti na faili zingine&lt;/b&gt; kwenye kifaa hiki?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie muziki na sauti kwenye kifaa hiki?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie picha na video kwenye kifaa hiki?"</string>
-    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"Ungependa kuipatia &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; idhini ya kufikia picha zaidi?"</string>
+    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie picha na video zaidi kwenye kifaa hiki?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; kurekodi sauti?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Programu itaweza kurekodi sauti unapoitumia tu"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; irekodi sauti?"</string>
@@ -591,12 +592,13 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Onyesha ujumbe programu zinapofikia maandishi, picha au maudhui mengine uliyonakili"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Onyesha manenosiri"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Onyesha herufi kwa muda mfupi unapoandika"</string>
-    <string name="permission_rationale_message_location" msgid="5559450538205092588">"Maelezo haya ya programu yanasema kuwa inaweza kushiriki data yako ya mahali na kampuni za wengine"</string>
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"Maelezo ya programu yanasema kuwa inaweza kushiriki data na kampuni za wengine"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Kushiriki data na mahali"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Maelezo ya kushiriki data yanakotokea"</string>
-    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"Wasanidi programu wametoa maelezo kwenye "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" kuhusu jinsi programu hii inavyoshiriki data. Inaweza kusasisha maelezo haya kadiri muda unavyosonga."</string>
-    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"Programu inaweza kushiriki data ya mahali ili:"</string>
-    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
+    <skip />
+    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
+    <skip />
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Kanuni za kushiriki data hutofautiana"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Kanuni za data zinaweza kutofautiana kulingana na toleo la programu yako, matumizi, eneo na umri wako. "<annotation id="link">"Maelezo zaidi kuhusu kushiriki data"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Data ya mahali ulipo"</string>
@@ -610,10 +612,10 @@
     <string name="permission_rationale_purpose_account_management" msgid="2985772421946688879">"Usimamizi wa akaunti"</string>
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Usalama wa data"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Data ya mahali inaweza kushirikiwa"</string>
-    <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Maelezo haya ya programu yanasema kuwa inaweza kushiriki data yako ya mahali na kampuni za wengine"</string>
+    <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Programu hii ilitaja kuwa inaweza kushiriki data yako ya mahali na washirika wengine"</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Masasisho ya kushiriki data ya mahali"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Kagua programu zilizobadilisha jinsi zinavyoweza kushiriki data ya mahali ulipo"</string>
-    <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Programu hizi zimebadilisha jinsi zinavyoweza kushiriki data ya mahali ulipo. Huenda hazikuishiriki hapo awali au sasa zinaweza kuishiriki kwa madhumuni ya utangazaji au uuzaji."</string>
+    <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Programu hizi zimebadilisha jinsi zinavyoweza kushiriki data ya mahali ulipo. Huenda zilikuwa haziishiriki hapo awali au sasa zinaweza kuishiriki kwa madhumuni ya utangazaji au uuzaji."</string>
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Wasanidi wa programu hizi wametoa maelezo kuhusu mbinu zao za kushiriki data kwenye duka la programu. Wanaweza kuyasasisha kadiri muda unavyosonga.\n\nMbinu za kushiriki data zinaweza kutofautiana kulingana na toleo la programu, matumizi, eneo na umri wako."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"Pata maelezo kuhusu kushiriki data"</string>
     <string name="shares_location_with_third_parties" msgid="2278051743742057767">"Sasa data ya mahali ulipo inashirikiwa na wengine"</string>
