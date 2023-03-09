@@ -33,7 +33,7 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
-/** Host-side test for statsd interaction logging in the Safety Center UI. */
+/** Host-side tests for Safety Center statsd logging. */
 @RunWith(DeviceJUnit4ClassRunner::class)
 class SafetyCenterInteractionLoggingHostTest : BaseHostJUnit4Test() {
 
@@ -92,6 +92,28 @@ class SafetyCenterInteractionLoggingHostTest : BaseHostJUnit4Test() {
                     SafetyCenterInteractionReported.Action.SAFETY_CENTER_VIEWED
             }
         assertThat(safetyCenterViewedEvents).isNotEmpty()
+    }
+
+    @Test
+    fun sendNotification_recordsNotificationPostedEvent() {
+        DeviceUtils.runDeviceTests(
+            device,
+            HELPER_PACKAGE,
+            ".NotificationLoggingHelperTests",
+            "sendNotification"
+        )
+        Thread.sleep(AtomTestUtils.WAIT_TIME_LONG.toLong()) // Wait for report to be updated
+
+        val notificationPostedEvents =
+            ReportUtils.getEventMetricDataList(device).filter {
+                it.atom.safetyCenterInteractionReported.action ==
+                    SafetyCenterInteractionReported.Action.NOTIFICATION_POSTED
+            }
+
+        assertThat(notificationPostedEvents).hasSize(1)
+        val atom = notificationPostedEvents.first().atom.safetyCenterInteractionReported
+        assertThat(atom.viewType)
+            .isEqualTo(SafetyCenterInteractionReported.ViewType.VIEW_TYPE_NOTIFICATION)
     }
 
     // TODO(b/239682646): Add more tests
