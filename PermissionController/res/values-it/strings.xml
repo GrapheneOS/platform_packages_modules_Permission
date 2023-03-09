@@ -32,10 +32,13 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Mantieni \"Mentre l\'app è in uso\""</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Mantieni solo questa volta"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Altre info"</string>
-    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"Consenti l\'accesso a tutte le foto"</string>
+    <!-- no translation found for grant_dialog_button_allow_all (5939066403732409516) -->
+    <skip />
+    <!-- no translation found for grant_dialog_button_always_allow_all (1719900027660252167) -->
+    <skip />
     <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"Seleziona foto"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"Seleziona altre foto"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"Non selezionare altre foto"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"Seleziona altri video e foto"</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Non selezionarne altre"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Non consentire comunque"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Ignora"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> di <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -398,9 +401,7 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Impostare <xliff:g id="APP_NAME">%1$s</xliff:g> come app di navigazione predefinita?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Nessuna autorizzazione necessaria"</string>
     <string name="role_watch_description" msgid="267003778693177779">"L\'app <xliff:g id="APP_NAME">%1$s</xliff:g> potrà interagire con le tue notifiche e accedere a telefono, SMS, contatti e calendario."</string>
-    <string name="role_companion_device_glasses_description" msgid="1775655849566169630">"<xliff:g id="APP_NAME">%1$s</xliff:g> potrà interagire con le tue notifiche e accedere alle autorizzazioni Telefono, SMS, Contatti, Microfono e Dispositivi nelle vicinanze."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> potrà interagire con le tue notifiche e trasmettere le tue app al dispositivo connesso."</string>
-    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> potrà riprodurre contenuti alle app nelle vicinanze."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Questo servizio condivide le tue foto, i tuoi contenuti multimediali e le tue notifiche dal telefono ad altri dispositivi."</string>
     <string name="role_notes_label" msgid="7451627001058089536">"App per le note predefinita"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"App per le note"</string>
@@ -480,7 +481,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere a &lt;b&gt;foto, video, musica, audio e altri file&lt;/b&gt; sul dispositivo?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere a musica e audio sul dispositivo?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere a foto e video sul dispositivo?"</string>
-    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"Vuoi consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere ad altre foto?"</string>
+    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere ad altri video e foto sul dispositivo?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di registrare audio?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"L\'app potrà registrare audio soltanto quando la usi"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Vuoi consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di registrare audio?"</string>
@@ -591,12 +592,13 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Viene mostrato un messaggio quando le app accedono a testo, immagini o altri contenuti che hai copiato"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Mostra password"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Mostra brevemente i caratteri durante la digitazione"</string>
-    <string name="permission_rationale_message_location" msgid="5559450538205092588">"Questa app ha dichiarato che potrebbe condividere i tuoi dati sulla posizione con terze parti"</string>
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"Questa app ha dichiarato che potrebbe condividere dati sulla posizione con terze parti"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Condivisione dei dati e posizione"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Da dove provengono le informazioni sulla condivisione dei dati"</string>
-    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"Lo sviluppatore ha fornito informazioni relative alla modalità di condivisione dei dati in questa app su "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>". Le informazioni potrebbero essere aggiornate nel tempo."</string>
-    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"L\'app può condividere dati sulla posizione per:"</string>
-    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
+    <skip />
+    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
+    <skip />
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"La condivisione dei dati varia"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Le pratiche relative ai dati potrebbero variare in base alla versione e all\'utilizzo dell\'app, alla regione e all\'età. "<annotation id="link">"Scopri di più sulla condivisione dei dati"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"I tuoi dati sulla posizione"</string>
@@ -614,11 +616,11 @@
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Aggiornamenti relativi alla condivisione dei dati sulla posizione"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Controlla le app che hanno cambiato la modalità di condivisione dei tuoi dati sulla posizione"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Le app che seguono hanno cambiato la modalità di condivisione dei tuoi dati sulla posizione. Potrebbero non averli condivisi in precedenza oppure ora potrebbero condividerli per scopi pubblicitari o di marketing."</string>
-    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Gli sviluppatori di queste app hanno fornito informazioni relative alle loro prassi di condivisione dei dati su uno store. Le informazioni potrebbero essere aggiornate nel tempo.\n\nLe prassi di condivisione dei dati potrebbero variare in base alla versione e all\'utilizzo dell\'app, alla regione e all\'età."</string>
+    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Gli sviluppatori di queste app hanno fornito a uno store informazioni relative alle loro prassi di condivisione dei dati. Le informazioni potrebbero essere aggiornate nel tempo.\n\nLe prassi di condivisione dei dati potrebbero variare in base alla versione e all\'utilizzo dell\'app, alla regione e all\'età."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"Scopri di più sulla condivisione dei dati"</string>
     <string name="shares_location_with_third_parties" msgid="2278051743742057767">"Ora i tuoi dati sulla posizione vengono condivisi con terze parti"</string>
     <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"Ora i tuoi dati sulla posizione vengono condivisi con terze parti per scopi pubblicitari o di marketing"</string>
-    <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{App aggiornate nelle ultime 24 ore}=1{App aggiornate nelle ultime 24 ore}many{App aggiornate negli ultimi # giorni}other{App aggiornate negli ultimi # giorni}}"</string>
+    <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{Aggiornamenti nelle ultime 24 ore}=1{Aggiornamenti nelle ultime 24 ore}many{Aggiornamenti negli ultimi # giorni}other{Aggiornamenti negli ultimi # giorni}}"</string>
     <string name="no_updates_at_this_time" msgid="9031085635689982935">"Nessun aggiornamento al momento"</string>
     <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"Aggiornamenti relativi alla condivisione dei dati"</string>
     <string name="safety_label_changes_notification_desc" msgid="7808764283266234675">"Alcune app hanno cambiato la modalità di condivisione dei tuoi dati sulla posizione"</string>

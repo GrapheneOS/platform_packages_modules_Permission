@@ -32,10 +32,11 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"\'앱 사용 중에만 허용\' 유지"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"\'이번만 허용\' 유지"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"추가 정보"</string>
-    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"모든 사진에 대한 액세스 허용"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"모두 허용"</string>
+    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"항상 모두 허용"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"사진 선택"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"추가 사진 선택"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"추가 사진 선택 안함"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"더 많은 사진 및 동영상 선택"</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"추가 선택 안함"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"무시하고 허용 안함"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"닫기"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>/<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -398,9 +399,7 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g> 앱을 기본 내비게이션 앱으로 설정하시겠습니까?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"권한 필요 없음"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g>에서 알림과 상호작용하고 전화, SMS, 연락처, 캘린더에 대한 권한을 갖게 됩니다."</string>
-    <string name="role_companion_device_glasses_description" msgid="1775655849566169630">"<xliff:g id="APP_NAME">%1$s</xliff:g>에서 알림과 상호작용하고 내 전화, SMS, 연락처, 마이크, 근처 기기에 대한 권한을 갖게 됩니다."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g>에서 알림과 상호작용하고 앱의 콘텐츠를 연결된 기기로 스트리밍할 수 있게 됩니다."</string>
-    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g>에서 콘텐츠를 근처 기기에 스트리밍할 수 있게 됩니다."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"서비스는 휴대전화의 사진, 미디어, 알림을 다른 기기로 공유합니다."</string>
     <string name="role_notes_label" msgid="7451627001058089536">"기본 메모 앱"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"메모 앱"</string>
@@ -480,7 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 기기의 &lt;b&gt;사진, 동영상, 음악, 오디오, 기타 파일&lt;/b&gt;에 액세스하도록 허용하시겠습니까?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 기기의 음악과 오디오에 액세스하도록 허용하시겠습니까?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 기기의 사진과 동영상에 액세스하도록 허용하시겠습니까?"</string>
-    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에 추가 사진에 대한 액세스를 허용하시겠습니까?"</string>
+    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 기기의 다른 사진과 동영상에 액세스하도록 허용하시겠습니까?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 오디오를 녹음하도록 허용하시겠습니까?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"앱을 사용하고 있는 동안에만 앱에서 오디오를 녹음할 수 있습니다."</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 오디오를 녹음하도록 허용하시겠습니까?"</string>
@@ -584,23 +583,24 @@
     <string name="privacy_controls_title" msgid="7605929972256835199">"개인 정보 보호 설정"</string>
     <string name="camera_toggle_title" msgid="1251201397431837666">"카메라 액세스"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"마이크 액세스"</string>
-    <string name="perm_toggle_description" msgid="7801326363741451379">"앱 및 서비스에 적용됩니다."</string>
+    <string name="perm_toggle_description" msgid="7801326363741451379">"앱 및 서비스에 적용"</string>
     <string name="mic_toggle_description" msgid="9163104307990677157">"앱 및 서비스에 적용됩니다. 설정이 꺼져 있어도 긴급 전화번호로 전화를 걸 때는 마이크 데이터가 공유될 수 있습니다."</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"위치에 액세스할 수 있는 앱과 서비스 보기"</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"클립보드 액세스 시 알림 표시"</string>
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"앱이 복사된 텍스트, 이미지 또는 기타 콘텐츠에 액세스할 때 메시지 표시"</string>
     <string name="show_password_title" msgid="2877269286984684659">"비밀번호 표시"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"입력할 때 잠깐 표시"</string>
-    <string name="permission_rationale_message_location" msgid="5559450538205092588">"앱에서 위치 데이터를 서드 파티와 공유할 수 있다고 명시했습니다."</string>
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"앱에서 위치 데이터를 서드 파티와 공유할 수 있다고 명시했습니다."</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"데이터 공유 및 위치"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"데이터 공유 정보 출처"</string>
-    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"개발자가 "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>"에게 이 앱의 데이터 공유 방법에 관한 정보를 제공했습니다. 이는 추후 업데이트될 수 있습니다."</string>
-    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"이 앱은 다음 목적으로 위치 데이터를 공유할 수 있습니다."</string>
-    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
+    <skip />
+    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
+    <skip />
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"다양한 데이터 공유 방식"</string>
-    <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"데이터 방식은 앱 버전, 데이터 사용 방식, 사용자의 지역과 연령에 따라 다를 수 있습니다. "<annotation id="link">"데이터 공유 자세히 알아보기"</annotation></string>
+    <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"데이터 관행은 앱 버전, 데이터 사용 방식, 사용자의 지역과 연령에 따라 다를 수 있습니다. "<annotation id="link">"데이터 공유 자세히 알아보기"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"내 위치 데이터"</string>
-    <string name="permission_rationale_permission_settings_message" msgid="631286040979660267"><annotation id="link">"개인 정보 보호 설정"</annotation>"에서 앱의 액세스 권한 변경"</string>
+    <string name="permission_rationale_permission_settings_message" msgid="631286040979660267"><annotation id="link">"개인 정보 보호 설정"</annotation>"에서 앱의 액세스 권한을 변경할 수 있습니다."</string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"앱 기능"</string>
     <string name="permission_rationale_purpose_analytics" msgid="2070800501189620712">"분석"</string>
     <string name="permission_rationale_purpose_developer_communications" msgid="6453047018892062374">"개발자 커뮤니케이션"</string>
@@ -611,9 +611,9 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"데이터 보안"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"위치 데이터가 공유될 수 있습니다."</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"앱에서 위치 데이터를 서드 파티와 공유할 수 있다고 명시했습니다."</string>
-    <string name="data_sharing_updates_title" msgid="7996933386875213859">"위치 정보를 위한 데이터 공유 방법 업데이트"</string>
-    <string name="data_sharing_updates_summary" msgid="764113985772233889">"위치 데이터 공유 방법이 변경된 앱을 검토합니다."</string>
-    <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"이러한 앱에서 위치 데이터 공유 방법이 변경되었습니다. 이전에 위치 데이터를 공유한 적이 없거나 이제 광고나 마케팅 목적으로 공유될 수 있습니다."</string>
+    <string name="data_sharing_updates_title" msgid="7996933386875213859">"위치 데이터 공유 방법 업데이트"</string>
+    <string name="data_sharing_updates_summary" msgid="764113985772233889">"위치 데이터 공유 방법을 변경한 앱 검토"</string>
+    <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"다음 앱에서 위치 데이터 공유 방법을 변경했습니다. 이전에 위치 데이터를 공유하지 않았던 앱이거나, 이제 광고 또는 마케팅 목적으로 데이터를 공유하는 앱일 수 있습니다."</string>
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"이 앱의 개발자가 앱 스토어에 데이터 공유 관행에 관한 정보를 제공했습니다. 추후 업데이트될 수 있습니다.\n\n데이터 공유 관행은 앱 버전, 데이터 사용 방식, 사용자의 지역과 연령에 따라 다를 수 있습니다."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"데이터 공유 자세히 알아보기"</string>
     <string name="shares_location_with_third_parties" msgid="2278051743742057767">"이제 위치 데이터가 서드 파티와 공유됩니다."</string>
