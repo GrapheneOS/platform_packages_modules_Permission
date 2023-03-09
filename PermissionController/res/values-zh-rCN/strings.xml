@@ -219,8 +219,8 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"已移除<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>权限及另外 <xliff:g id="NUMBER">%2$s</xliff:g> 项权限"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"未使用的应用"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"如果您连续几个月未使用某个应用，系统将对该应用采取以下措施：\n\n• 移除权限以保护您的数据\n• 停止通知功能以节省电量\n• 移除临时文件以释放空间\n\n如需重新授予权限以继续接收通知，请打开该应用。"</string>
-    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"如果您连续几个月未使用某个应用，系统将对该应用采取以下措施：\n\n• 取消权限以保护您的数据\n• 移除临时文件以释放空间\n\n如需重新授予权限，请打开该应用。"</string>
-    <string name="last_opened_category_title" msgid="7871347400611202595">"距上次打开已超过 <xliff:g id="NUMBER">%s</xliff:g> 个月"</string>
+    <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"如果您连续 1 个月未使用某个应用，系统将对该应用采取以下措施：\n\n• 撤消权限以保护您的数据\n• 移除临时文件以释放空间\n\n如需重新授予权限，请打开该应用。"</string>
+    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{距上次打开已超过 # 个月}other{距上次打开已超过 # 个月}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"应用上次打开时间是 <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"上次打开时间是 <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"如果您允许此应用管理所有文件，此应用将可以访问、修改和删除本设备或连接的存储设备上通用存储空间中的任何文件。此应用可能会在您不知情的情况下访问文件。"</string>
@@ -511,7 +511,7 @@
     <string name="blocked_camera_title" msgid="1128510551791284384">"设备摄像头已被屏蔽"</string>
     <string name="blocked_microphone_title" msgid="1631517143648232585">"设备麦克风已被屏蔽"</string>
     <string name="blocked_location_title" msgid="2005608279812892383">"设备位置信息功能已关闭"</string>
-    <string name="blocked_sensor_summary" msgid="4443707628305027375">"针对应用和服务"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"会影响应用和服务"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"当您拨打紧急电话号码时，系统可能仍会分享麦克风数据。"</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"更改"</string>
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"安全和隐私"</string>
@@ -574,7 +574,7 @@
     <string name="camera_toggle_title" msgid="1251201397431837666">"摄像头使用权限"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"麦克风使用权限"</string>
     <string name="perm_toggle_description" msgid="7801326363741451379">"针对应用和服务"</string>
-    <string name="mic_toggle_description" msgid="9163104307990677157">"针对应用和服务。如果您关闭此设置，那么当您拨打紧急电话号码时，系统可能仍会分享麦克风数据。"</string>
+    <string name="mic_toggle_description" msgid="9163104307990677157">"会影响应用和服务。如果您关闭此设置，那么当您拨打紧急电话号码时，系统可能仍会分享麦克风数据。"</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"查看能够访问位置信息的应用和服务"</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"显示剪贴板访问通知"</string>
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"系统会在应用访问您复制的文字、图片或其他内容时显示一条消息"</string>

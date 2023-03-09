@@ -219,8 +219,8 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ו-<xliff:g id="NUMBER">%2$s</xliff:g> הרשאות נוספות הוסרו"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"אפליקציות שמזמן לא השתמשת בהן"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"אם האפליקציה לא נמצאת בשימוש במשך מספר חודשים:\n\n• ההרשאות יבוטלו כדי להגן על הנתונים שלך\n• ההתראות יושבתו כדי לחסוך בצריכת הסוללה\n• הקבצים הזמניים יוסרו כדי לפנות מקום אחסון\n\nכדי לאשר שוב את מתן ההרשאות והפעלת ההתראות, צריך לפתוח את האפליקציה."</string>
-    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"אם האפליקציה לא בשימוש במשך מספר חודשים:\n\n• ההרשאות יבוטלו כדי להגן על הנתונים שלך\n• הקבצים הזמניים יוסרו כדי לפנות שטח אחסון\n\nכדי להעניק הרשאות שוב, צריך לפתוח את האפליקציה."</string>
-    <string name="last_opened_category_title" msgid="7871347400611202595">"נפתחו לאחרונה לפני יותר מ-<xliff:g id="NUMBER">%s</xliff:g> חודשים"</string>
+    <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"אם האפליקציה לא בשימוש במשך חודש:\n\n• ההרשאות יבוטלו כדי להגן על הנתונים שלך\n• הקבצים הזמניים יוסרו כדי לפנות נפח אחסון\n\nכדי להעניק הרשאות שוב, צריך לפתוח את האפליקציה."</string>
+    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{נפתחו לאחרונה לפני יותר מחודש (#)}one{נפתחו לאחרונה לפני יותר מ-# חודשים}two{נפתחו לאחרונה לפני יותר מחודשיים (#)}other{נפתחו לאחרונה לפני יותר מ-# חודשים}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"האפליקציה נפתחה לאחרונה בתאריך <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"נפתחה לאחרונה: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"‏אם מאשרים ניהול של כל הקבצים, האפליקציה הזו תוכל לגשת לקבצים באחסון משותף (Common storage) במכשיר הזה או בהתקני אחסון מחוברים, ולשנות או למחוק אותם. האפליקציה תוכל לגשת לקבצים בלי לבקש ממך אישור."</string>

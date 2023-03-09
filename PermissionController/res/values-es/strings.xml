@@ -219,8 +219,8 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Permisos <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> y <xliff:g id="NUMBER">%2$s</xliff:g> más quitados"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Aplicaciones no usadas"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Si una aplicación lleva varios meses sin usarse:\n\n• Se le quitan los permisos para proteger tus datos\n• Se detienen sus notificaciones para ahorrar batería\n• Se eliminan sus archivos temporales para liberar espacio\n\nSi quieres volver a dar permisos a la aplicación y activar de nuevo sus notificaciones, ábrela."</string>
-    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Si una aplicación lleva varios meses sin usarse:\n\n• Se le quitan los permisos para proteger tus datos\n• Se eliminan sus archivos temporales para liberar espacio\n\nSi quieres volver a dar permisos a la aplicación, ábrela."</string>
-    <string name="last_opened_category_title" msgid="7871347400611202595">"Abiertas por última vez hace más de <xliff:g id="NUMBER">%s</xliff:g> meses"</string>
+    <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"Si una aplicación lleva un mes sin usarse:\n\n• Se le quitan los permisos para proteger tus datos\n• Se eliminan sus archivos temporales para liberar espacio\n\nSi quieres volver a dar permisos a la aplicación, ábrela."</string>
+    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Abiertas por última vez hace más de # mes}many{Abiertas por última vez hace más de # meses}other{Abiertas por última vez hace más de # meses}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"La aplicación se abrió por última vez el <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Se abrió por última vez el <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Si permites la gestión de todos los archivos, esta aplicación podrá consultar, modificar y eliminar cualquier archivo que haya en el almacenamiento común de este dispositivo o en los dispositivos de almacenamiento conectados. Es posible que acceda a archivos sin preguntarte."</string>
@@ -427,7 +427,7 @@
     <string name="car_default_app_selected" msgid="5416420830430644174">"Seleccionada"</string>
     <string name="car_default_app_selected_with_info" msgid="1932204186080593500">"Seleccionada: <xliff:g id="ADDITIONAL_INFO">%1$s</xliff:g>"</string>
     <string name="special_app_access_search_keyword" msgid="8032347212290774210">"aplicaciones con accesos especiales"</string>
-    <string name="special_app_access" msgid="5019319067120213797">"Aplicaciones con accesos especiales"</string>
+    <string name="special_app_access" msgid="5019319067120213797">"aplicaciones con accesos especiales"</string>
     <string name="no_special_app_access" msgid="6950277571805106247">"Sin acceso especial de apps"</string>
     <string name="special_app_access_no_apps" msgid="4102911722787886970">"No hay aplicaciones"</string>
     <string name="home_missing_work_profile_support" msgid="1756855847669387977">"No admite perfiles de trabajo"</string>

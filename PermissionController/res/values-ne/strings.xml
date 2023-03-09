@@ -219,8 +219,8 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> र अन्य <xliff:g id="NUMBER">%2$s</xliff:g> अनुमतिहरू हटाइए"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"प्रयोग नगरिएका एपहरू"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"कुनै एप केही महिनादेखि चलाइएको छैन भने:\n\n• तपाईंको डेटा सुरक्षित राख्न उक्त एपलाई दिइएका अनुमतिहरू रद्द गरिन्छन्\n• ब्याट्री बचत गर्न सूचनाहरू बन्द गरिन्छन्\n• ठाउँ खाली गर्न अस्थायी फाइलहरू हटाइन्छन्\n\nसो एपलाई फेरि ती अनुमतिहरू दिन र सो एपबाट सूचनाहरू प्राप्त गर्न सो एप खोल्नुहोस्।"</string>
-    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"कुनै एप केही महिनादेखि चलाइएको छैन भने:\n\n• तपाईंको डेटा सुरक्षित राख्न उक्त एपलाई दिइएका अनुमति रद्द गरिन्छन्\n• ठाउँ खाली गर्न अस्थायी फाइलहरू हटाइन्छन्\n\nउक्त एपलाई फेरि ती अनुमति दिन र सो एपबाट सूचनाहरू प्राप्त गर्न सो एप खोल्नुहोस्।"</string>
-    <string name="last_opened_category_title" msgid="7871347400611202595">"पछिल्लो पटक <xliff:g id="NUMBER">%s</xliff:g> महिनाभन्दा पहिले प्रयोग गरिएको"</string>
+    <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"कुनै एप एक महिनादेखि चलाइएको छैन भने:\n\n• तपाईंको डेटा सुरक्षित राख्न उक्त एपलाई दिइएका अनुमति रद्द गरिन्छन्\n• ठाउँ खाली गर्न अस्थायी फाइलहरू हटाइन्छन्\n\nउक्त एपलाई फेरि ती अनुमति दिन र सो एपबाट सूचनाहरू प्राप्त गर्न सो एप खोल्नुहोस्।"</string>
+    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{पछिल्लो पटक # महिनाअघि खोलिएका}other{पछिल्लो पटक # महिनाभन्दा पहिले खोलिएका}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"यो एप पछिल्लो पटक <xliff:g id="DATE">%s</xliff:g> मा खोलिएको थियो"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"पछिल्लो पटक <xliff:g id="DATE">%s</xliff:g> मा खोलिएको थियो"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"तपाईंले सबै फाइलहरू व्यवस्थापन गर्ने अनुमति दिनुभयो भने यो एपले यस डिभाइस वा यस डिभाइससँग कनेक्ट गरिएका अन्य डिभाइसको साझा भण्डारणमा भएका सबै फाइलहरू प्रयोग गर्न, परिमार्जन गर्न र मेटाउन सक्छ। यो एपले तपाईंलाई जानकारी नदिइकन ‌फाइलहरू प्रयोग गर्न सक्छ।"</string>
@@ -451,9 +451,9 @@
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"आवाज सहायक सक्रिय गर्न माइक्रोफोनको प्रयोग गरिँदा स्टाटस बारमा आइकन देखाउनुहोस्"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई आफ्नो डिभाइसका फोटो र मिडियामाथि पहुँच राख्न दिने हो?"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई कन्ट्याक्ट प्रयोग गर्न दिने हो?"</string>
-    <string name="permgrouprequest_location" msgid="6990232580121067883">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;लाई यो डिभाइसको लोकेसन प्रयोग दिने हो?"</string>
+    <string name="permgrouprequest_location" msgid="6990232580121067883">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई यो डिभाइसको लोकेसन प्रयोग दिने हो?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"तपाईंले एप प्रयोग गरिरहेका बेला मात्र उक्त एपले स्थानमाथि पहुँच राख्न सक्ने छ"</string>
-    <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;लाई यो डिभाइसको लोकेसन प्रयोग दिने हो?"</string>
+    <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई यो डिभाइसको लोकेसन प्रयोग दिने हो?"</string>
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"तपाईं उक्त एप प्रयोग नगरिरहेका बेलामा लगायत जुनसुकै समयमा यो एपले तपाईंको स्थानमाथि पहुँच राख्न सक्छ। "<annotation id="link">"सेटिङमा गई अनुमति दिनुहोस्।"</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; का लागि स्थानसम्बन्धी पहुँच परिवर्तन गर्ने हो?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"तपाईं उक्त एप प्रयोग नगरिरहेका बेलामा लगायत जुनसुकै समयमा यो एपले तपाईंको स्थानमाथि पहुँच राख्न खोज्छ। "<annotation id="link">"सेटिङमा गई अनुमति दिनुहोस्।"</annotation></string>

@@ -20,7 +20,7 @@
     <string name="ok" msgid="1936281769725676272">"OK"</string>
     <string name="permission_search_keyword" msgid="1214451577494730543">"зөвшөөрөл"</string>
     <string name="cancel" msgid="8943320028373963831">"Болих"</string>
-    <string name="back" msgid="6249950659061523680">"Арын"</string>
+    <string name="back" msgid="6249950659061523680">"Буцах"</string>
     <string name="available" msgid="6007778121920339498">"Боломжтой"</string>
     <string name="blocked" msgid="9195547604866033708">"Блоклосон"</string>
     <string name="on" msgid="280241003226755921">"Асаалттай"</string>
@@ -219,8 +219,8 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>-н болон бусад <xliff:g id="NUMBER">%2$s</xliff:g> зөвшөөрлийг хассан"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Ашиглаагүй аппууд"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Хэрэв аппыг хэдэн сарын турш ашиглахгүй бол:\n\n• Таны өгөгдлийг хамгаалахын тулд зөвшөөрлийг устгана\n• Батарей хэмнэхийн тулд мэдэгдлийг зогсооно\n• Сул зай гаргахын тулд түр зуурын файлуудыг устгана\n\nЗөвшөөрөл болон мэдэгдлийг дахин зөвшөөрөхийн тулд аппыг нээнэ үү."</string>
-    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Хэрэв аппыг хэдэн сар ашиглаагүй бол:\n\n• Таны өгөгдлийг хамгаалахын тулд зөвшөөрлийг хасна\n• Сул зай гаргахын тулд түр зуурын файлууыг хасна\n\nЗөвшөөрлийг дахин олгохын тулд аппыг нээнэ үү."</string>
-    <string name="last_opened_category_title" msgid="7871347400611202595">"Хамгийн сүүлд <xliff:g id="NUMBER">%s</xliff:g>-с олон сарын өмнө нээсэн"</string>
+    <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"Хэрэв аппыг нэг сарын турш ашиглаагүй бол:\n\n• Таны өгөгдлийг хамгаалахын тулд зөвшөөрлийг хасна\n• Сул зай гаргахын тулд түр зуурын файлуудыг хасна\n\nЗөвшөөрлийг дахин олгохын тулд аппыг нээнэ үү."</string>
+    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Сүүлд # сараас дээш хугацааны өмнө нээсэн}other{Сүүлд # сараас дээш хугацааны өмнө нээсэн}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Аппыг хамгийн сүүлд <xliff:g id="DATE">%s</xliff:g>-нд нээсэн"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Хамгийн сүүлд <xliff:g id="DATE">%s</xliff:g>-нд нээсэн"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Хэрэв та бүх файлыг удирдахыг зөвшөөрвөл энэ апп нь уг төхөөрөмжийн нийтлэг хадгалах сан дахь эсвэл холбогдсон хадгалах төхөөрөмж дэх дурын файлд хандах, түүнийг өөрчлөх болон устгах боломжтой. Апп танаас асуухгүйгээр файлуудад хандаж болзошгүй."</string>
