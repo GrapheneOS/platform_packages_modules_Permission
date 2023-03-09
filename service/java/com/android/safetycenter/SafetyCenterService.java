@@ -143,7 +143,6 @@ public final class SafetyCenterService extends SystemService {
     public SafetyCenterService(Context context) {
         super(context);
         mSafetyCenterResourcesContext = new SafetyCenterResourcesContext(context);
-        SafetyCenterFlags.init(mSafetyCenterResourcesContext);
         mSafetyCenterConfigReader = new SafetyCenterConfigReader(mSafetyCenterResourcesContext);
         mSafetyCenterRefreshTracker = new SafetyCenterRefreshTracker(context);
         mSafetyCenterDataManager =
