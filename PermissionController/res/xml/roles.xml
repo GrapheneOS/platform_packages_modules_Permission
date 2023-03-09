@@ -1509,6 +1509,7 @@
             <permission name="android.permission.MANAGE_DEVICE_POLICY_APPS_CONTROL" />
             <permission name="android.permission.MANAGE_DEVICE_POLICY_CALLS" />
             <permission name="android.permission.MANAGE_DEVICE_POLICY_DEBUGGING_FEATURES" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_INSTALL_UNKNOWN_SOURCES" />
             <permission name="android.permission.MANAGE_DEVICE_POLICY_LOCK_TASK" />
             <permission name="android.permission.MANAGE_DEVICE_POLICY_SAFE_BOOT" />
             <permission name="android.permission.MANAGE_DEVICE_POLICY_TIME" />
