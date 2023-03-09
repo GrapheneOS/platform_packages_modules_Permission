@@ -166,6 +166,10 @@ object KotlinUtils {
     private const val PROPERTY_SAFETY_LABEL_CHANGES_JOB_RUN_WHEN_IDLE =
         "safety_label_changes_job_run_when_idle"
 
+    /** Whether the kill switch is set for [SafetyLabelChangesJobService]. */
+    private const val PROPERTY_SAFETY_LABEL_CHANGES_JOB_SERVICE_KILL_SWITCH =
+        "safety_label_changes_job_service_kill_switch"
+
     /**
      * Whether the Permissions Hub 2 flag is enabled
      *
@@ -297,6 +301,16 @@ object KotlinUtils {
     fun isSafetyLabelChangeNotificationsEnabled(): Boolean {
         return SdkLevel.isAtLeastU() && DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
                 SAFETY_LABEL_CHANGE_NOTIFICATIONS_ENABLED, false)
+    }
+
+    /**
+     * Whether the kill switch is set for [SafetyLabelChangesJobService]. If {@code true}, the
+     * service is effectively disabled and will not run or schedule any jobs.
+     */
+    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codename = "UpsideDownCake")
+    fun safetyLabelChangesJobServiceKillSwitch(): Boolean {
+        return SdkLevel.isAtLeastU() && DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
+            PROPERTY_SAFETY_LABEL_CHANGES_JOB_SERVICE_KILL_SWITCH, false)
     }
 
     /**
