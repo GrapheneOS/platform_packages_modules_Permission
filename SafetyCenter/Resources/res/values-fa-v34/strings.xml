@@ -19,7 +19,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="health_connect_title" msgid="8318152190040327804">"Health Connect"</string>
     <string name="health_connect_search_terms" msgid="4998970586245680829">"‏سلامت، Health Connect"</string>
-    <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"به‌روزرسانی‌های مربوط به هم‌رسانی داده‌های مکان"</string>
+    <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"به‌روزرسانی‌های هم‌رسانی داده برای مکان"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"داده، هم‌رسانی داده، به‌روزرسانی‌های هم‌رسانی داده، به‌روزرسانی‌های هم‌رسانی داده مکان، هم‌رسانی"</string>
     <string name="ads_privacy_title" msgid="538822387058714869">"حریم خصوصی آگهی‌ها"</string>
     <string name="ads_privacy_summary" msgid="4977699525670966049">"سفارشی‌سازی اطلاعات مورداستفاده برنامه‌ها برای نمایش آگهی به شما"</string>
