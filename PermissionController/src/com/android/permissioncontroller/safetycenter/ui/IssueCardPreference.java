@@ -51,9 +51,6 @@ import androidx.preference.PreferenceViewHolder;
 import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel;
-import com.android.safetycenter.internaldata.SafetyCenterIds;
-import com.android.safetycenter.internaldata.SafetyCenterIssueId;
-import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.shape.AbsoluteCornerSize;
@@ -73,7 +70,6 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
     private final SafetyCenterViewModel mSafetyCenterViewModel;
     private final SafetyCenterIssue mIssue;
     private final FragmentManager mDialogFragmentManager;
-    private final SafetyCenterIssueId mDecodedIssueId;
     @Nullable private String mResolvedIssueActionId;
     @Nullable private final Integer mTaskId;
     private final boolean mIsDismissed;
@@ -94,7 +90,6 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
         mSafetyCenterViewModel = requireNonNull(safetyCenterViewModel);
         mIssue = requireNonNull(issue);
         mDialogFragmentManager = dialogFragmentManager;
-        mDecodedIssueId = SafetyCenterIds.issueIdFromString(mIssue.getId());
         mResolvedIssueActionId = resolvedIssueActionId;
         mTaskId = launchTaskId;
         mIsDismissed = isDismissed;
@@ -106,7 +101,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
         super.onBindViewHolder(holder);
 
         holder.itemView.setBackgroundResource(mPositionInCardList.getBackgroundDrawableResId());
-        int topMargin = mPositionInCardList.getTopMargin(getContext());
+        int topMargin = getTopMargin(mPositionInCardList, getContext());
         MarginLayoutParams layoutParams = (MarginLayoutParams) holder.itemView.getLayoutParams();
         if (layoutParams.topMargin != topMargin) {
             layoutParams.topMargin = topMargin;
@@ -185,6 +180,18 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
         }
     }
 
+    private int getTopMargin(PositionInCardList position, Context context) {
+        switch (position) {
+            case LIST_START_END:
+            case LIST_START_CARD_END:
+                return context.getResources()
+                        .getDimensionPixelSize(
+                                mIsDismissed ? R.dimen.sc_card_margin : R.dimen.sc_spacing_large);
+            default:
+                return position.getTopMargin(context);
+        }
+    }
+
     private void configureSafetyProtectionView(PreferenceViewHolder holder) {
         View safetyProtectionSectionView =
                 holder.findViewById(R.id.issue_card_protected_by_android);
@@ -220,11 +227,6 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
 
     public int getSeverityLevel() {
         return mIssue.getSeverityLevel();
-    }
-
-    /** Returns the {@link SafetyCenterIssueKey} associated with this {@link IssueCardPreference} */
-    public SafetyCenterIssueKey getIssueKey() {
-        return mDecodedIssueId.getSafetyCenterIssueKey();
     }
 
     private void configureDismissButton(View dismissButton) {
