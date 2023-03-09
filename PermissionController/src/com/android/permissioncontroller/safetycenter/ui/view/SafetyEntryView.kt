@@ -81,6 +81,7 @@ constructor(
 
     private fun showEntryDetails(entry: SafetyCenterEntry) {
         commonEntryView?.showDetails(
+            entry.id,
             entry.title,
             entry.summary,
             entry.severityLevel,

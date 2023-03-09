@@ -33,6 +33,7 @@ android_test {
         "compatibility-device-preconditions",
         "kotlin-test",
         "safety-center-test-util-lib",
+        "safety-center-pending-intents",
     ],
     test_suites: [
         "general-tests",

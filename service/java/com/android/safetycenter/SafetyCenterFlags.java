@@ -92,8 +92,8 @@ public final class SafetyCenterFlags {
     private static final String PROPERTY_ISSUE_CATEGORY_ALLOWLISTS =
             "safety_center_issue_category_allowlists";
 
-    private static final String PROPERTY_ALLOW_STATSD_LOGGING_IN_TESTS =
-            "safety_center_allow_statsd_logging_in_tests";
+    private static final String PROPERTY_ALLOW_STATSD_LOGGING =
+            "safety_center_allow_statsd_logging";
 
     private static final String PROPERTY_SHOW_SUBPAGES = "safety_center_show_subpages";
 
@@ -179,7 +179,7 @@ public final class SafetyCenterFlags {
         printFlag(
                 fout, PROPERTY_REFRESH_SOURCES_TIMEOUTS_MILLIS, getRefreshSourcesTimeoutsMillis());
         printFlag(fout, PROPERTY_ISSUE_CATEGORY_ALLOWLISTS, getIssueCategoryAllowlists());
-        printFlag(fout, PROPERTY_ALLOW_STATSD_LOGGING_IN_TESTS, getAllowStatsdLoggingInTests());
+        printFlag(fout, PROPERTY_ALLOW_STATSD_LOGGING, getAllowStatsdLogging());
         printFlag(fout, PROPERTY_SHOW_SUBPAGES, getShowSubpages());
         printFlag(
                 fout,
@@ -450,9 +450,9 @@ public final class SafetyCenterFlags {
         return getString(PROPERTY_ADDITIONAL_ALLOW_PACKAGE_CERTS, "");
     }
 
-    /** Returns whether we allow statsd logging in tests. */
-    static boolean getAllowStatsdLoggingInTests() {
-        return getBoolean(PROPERTY_ALLOW_STATSD_LOGGING_IN_TESTS, false);
+    /** Returns whether we allow statsd logging. */
+    public static boolean getAllowStatsdLogging() {
+        return getBoolean(PROPERTY_ALLOW_STATSD_LOGGING, true);
     }
 
     /**
@@ -460,7 +460,6 @@ public final class SafetyCenterFlags {
      * expand-and-collapse list implementation.
      */
     static boolean getShowSubpages() {
-        // TODO(b/260822348): Add CTS test to verify that the flag is disabled when turned on for T
         return SdkLevel.isAtLeastU() && getBoolean(PROPERTY_SHOW_SUBPAGES, true);
     }
 

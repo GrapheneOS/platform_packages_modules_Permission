@@ -43,10 +43,10 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import com.android.permission.safetylabel.DataCategoryConstants.CATEGORY_LOCATION
 import com.android.permission.safetylabel.SafetyLabel as AppMetadataSafetyLabel
-import com.android.permissioncontroller.Constants.PERIODIC_SAFETY_LABEL_CHANGES_JOB_ID
-import com.android.permissioncontroller.Constants.PERMISSION_REMINDER_CHANNEL_ID
-import com.android.permissioncontroller.Constants.SAFETY_LABEL_CHANGES_JOB_ID
+import com.android.permissioncontroller.Constants.SAFETY_LABEL_CHANGES_DETECT_UPDATES_JOB_ID
 import com.android.permissioncontroller.Constants.SAFETY_LABEL_CHANGES_NOTIFICATION_ID
+import com.android.permissioncontroller.Constants.SAFETY_LABEL_CHANGES_PERIODIC_NOTIFICATION_JOB_ID
+import com.android.permissioncontroller.Constants.PERMISSION_REMINDER_CHANNEL_ID
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.data.LightInstallSourceInfoLiveData
@@ -64,7 +64,6 @@ import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.AppInfo
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.SafetyLabel as SafetyLabelForPersistence
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistoryPersistence
-import java.io.File
 import java.time.Duration
 import java.time.Instant
 import java.time.ZoneId
@@ -75,6 +74,8 @@ import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.yield
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 
 /**
  * Runs a monthly job that performs Safety Labels-related tasks. (E.g., data policy changes
@@ -85,7 +86,9 @@ import kotlinx.coroutines.yield
 //  loops.
 @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
 class SafetyLabelChangesJobService : JobService() {
-    private var mainJobTask: Job? = null
+    private val mutex = Mutex()
+    private var detectUpdatesJob: Job? = null
+    private var notificationJob: Job? = null
     private val context = this@SafetyLabelChangesJobService
 
     class Receiver : BroadcastReceiver() {
@@ -108,7 +111,8 @@ class SafetyLabelChangesJobService : JobService() {
                 intent.action != ACTION_SET_UP_SAFETY_LABEL_CHANGES_JOB) {
                 return
             }
-            schedulePeriodicJob(receiverContext)
+            scheduleDetectUpdatesJob(receiverContext)
+            schedulePeriodicNotificationJob(receiverContext)
         }
 
         private fun isContextInProfileUser(context: Context): Boolean {
@@ -118,38 +122,42 @@ class SafetyLabelChangesJobService : JobService() {
     }
 
     /**
-     * Called twice each interval, first for the periodic job
-     * [PERIODIC_SAFETY_LABEL_CHANGES_JOB_ID], then for the main job [SAFETY_LABEL_CHANGES_JOB_ID].
+     * Called for two different jobs: the detect updates job
+     * [SAFETY_LABEL_CHANGES_DETECT_UPDATES_JOB_ID] and the notification job
+     * [SAFETY_LABEL_CHANGES_PERIODIC_NOTIFICATION_JOB_ID].
      */
     override fun onStartJob(params: JobParameters): Boolean {
         if (DEBUG) {
-            Log.d(LOG_TAG, "Starting safety label change job Id: ${params.jobId}")
+            Log.d(LOG_TAG, "onStartJob called for job id: ${params.jobId}")
         }
         if (!KotlinUtils.isSafetyLabelChangeNotificationsEnabled()) {
-            Log.w(LOG_TAG, "onStartJob: Safety label change notifications are not enabled.")
+            Log.w(LOG_TAG, "Not starting job: safety label change notifications are not enabled.")
             return false
         }
         when (params.jobId) {
-            PERIODIC_SAFETY_LABEL_CHANGES_JOB_ID -> scheduleMainJobWithDelay()
-            SAFETY_LABEL_CHANGES_JOB_ID -> {
-                dispatchMainJobTask(params)
+            SAFETY_LABEL_CHANGES_DETECT_UPDATES_JOB_ID -> {
+                dispatchDetectUpdatesJob(params)
+                return true
+            }
+            SAFETY_LABEL_CHANGES_PERIODIC_NOTIFICATION_JOB_ID -> {
+                dispatchNotificationJob(params)
                 return true
             }
             else -> Log.w(LOG_TAG, "Unexpected job Id: ${params.jobId}")
         }
-        if (DEBUG) {
-            Log.d(LOG_TAG, "safety label change job Id: ${params.jobId} completed.")
-        }
         return false
     }
 
-    private fun dispatchMainJobTask(params: JobParameters) {
-        mainJobTask =
+    private fun dispatchDetectUpdatesJob(params: JobParameters) {
+        Log.i(LOG_TAG, "Dispatching detect updates job")
+        detectUpdatesJob =
             GlobalScope.launch(Dispatchers.Default) {
                 try {
-                    runMainJob()
+                    Log.i(LOG_TAG, "Detect updates job started")
+                    runDetectUpdatesJob()
+                    Log.i(LOG_TAG, "Detect updates job finished successfully")
                 } catch (e: Throwable) {
-                    Log.e(LOG_TAG, "Main Job failed", e)
+                    Log.e(LOG_TAG, "Detect updates job failed", e)
                     throw e
                 } finally {
                     jobFinished(params, false)
@@ -157,25 +165,35 @@ class SafetyLabelChangesJobService : JobService() {
             }
     }
 
-    private suspend fun runMainJob() {
-        performHygieneOnSafetyLabelHistoryPersistence()
-        postSafetyLabelChangedNotification()
+    private fun dispatchNotificationJob(params: JobParameters) {
+        Log.i(LOG_TAG, "Dispatching notification job")
+        notificationJob =
+            GlobalScope.launch(Dispatchers.Default) {
+                try {
+                    Log.i(LOG_TAG, "Notification job started")
+                    runNotificationJob()
+                    Log.i(LOG_TAG, "Notification job finished successfully")
+                } catch (e: Throwable) {
+                    Log.e(LOG_TAG, "Notification job failed", e)
+                    throw e
+                } finally {
+                    jobFinished(params, false)
+                }
+            }
     }
 
-    private suspend fun performHygieneOnSafetyLabelHistoryPersistence() {
-        val historyFile = AppsSafetyLabelHistoryPersistence.getSafetyLabelHistoryFile(context)
-        val safetyLabelsLastUpdatedTimes: Map<AppInfo, Instant> =
-            AppsSafetyLabelHistoryPersistence.getSafetyLabelsLastUpdatedTimes(historyFile)
-        // Retrieve all installed packages that are not pre-installed on the system and
-        // that request the location permission; these are the packages that we care about for the
-        // safety labels feature. The variable name does not specify all these filters for brevity.
-        val packagesRequestingLocation: Set<Pair<String, UserHandle>> =
-            getAllNonPreinstalledPackagesRequestingLocation()
+    private suspend fun runDetectUpdatesJob() {
+        mutex.withLock {
+            recordSafetyLabelsIfMissing()
+        }
+    }
 
-        recordSafetyLabelsIfMissing(
-            historyFile, packagesRequestingLocation, safetyLabelsLastUpdatedTimes)
-        deleteSafetyLabelsNoLongerNeeded(
-            historyFile, packagesRequestingLocation, safetyLabelsLastUpdatedTimes)
+    private suspend fun runNotificationJob() {
+        mutex.withLock {
+            recordSafetyLabelsIfMissing()
+            deleteSafetyLabelsNoLongerNeeded()
+            postSafetyLabelChangedNotification()
+        }
     }
 
     /**
@@ -188,11 +206,16 @@ class SafetyLabelChangesJobService : JobService() {
      * 2. Update safety labels for apps that are relevant and have persisted safety labels, if we
      *    identify that we have missed an update for them.
      */
-    private suspend fun recordSafetyLabelsIfMissing(
-        historyFile: File,
-        packagesRequestingLocation: Set<Pair<String, UserHandle>>,
-        safetyLabelsLastUpdatedTimes: Map<AppInfo, Instant>
-    ) {
+    private suspend fun recordSafetyLabelsIfMissing() {
+        val historyFile = AppsSafetyLabelHistoryPersistence.getSafetyLabelHistoryFile(context)
+        val safetyLabelsLastUpdatedTimes: Map<AppInfo, Instant> =
+            AppsSafetyLabelHistoryPersistence.getSafetyLabelsLastUpdatedTimes(historyFile)
+        // Retrieve all installed packages that are not pre-installed on the system and
+        // that request the location permission; these are the packages that we care about for the
+        // safety labels feature. The variable name does not specify all these filters for brevity.
+        val packagesRequestingLocation: Set<Pair<String, UserHandle>> =
+            getAllNonPreinstalledPackagesRequestingLocation()
+
         val safetyLabelsToRecord = mutableSetOf<SafetyLabelForPersistence>()
         val packageNamesWithPersistedSafetyLabels =
             safetyLabelsLastUpdatedTimes.keys.map { it.packageName }
@@ -313,11 +336,16 @@ class SafetyLabelChangesJobService : JobService() {
      *    most one safety label is necessary to be persisted prior to the update period to determine
      *    updates to safety labels.
      */
-    private fun deleteSafetyLabelsNoLongerNeeded(
-        historyFile: File,
-        packagesRequestingLocation: Set<Pair<String, UserHandle>>,
-        safetyLabelsLastUpdatedTimes: Map<AppInfo, Instant>
-    ) {
+    private suspend fun deleteSafetyLabelsNoLongerNeeded() {
+        val historyFile = AppsSafetyLabelHistoryPersistence.getSafetyLabelHistoryFile(context)
+        val safetyLabelsLastUpdatedTimes: Map<AppInfo, Instant> =
+            AppsSafetyLabelHistoryPersistence.getSafetyLabelsLastUpdatedTimes(historyFile)
+        // Retrieve all installed packages that are not pre-installed on the system and
+        // that request the location permission; these are the packages that we care about for the
+        // safety labels feature. The variable name does not specify all these filters for brevity.
+        val packagesRequestingLocation: Set<Pair<String, UserHandle>> =
+            getAllNonPreinstalledPackagesRequestingLocation()
+
         val packageNamesWithPersistedSafetyLabels: List<String> =
             safetyLabelsLastUpdatedTimes.keys.map { appInfo -> appInfo.packageName }
         val packageNamesWithRelevantSafetyLabels: List<String> =
@@ -361,7 +389,7 @@ class SafetyLabelChangesJobService : JobService() {
         permGrantState in setOf(PERMS_ALLOWED_ALWAYS, PERMS_ALLOWED_FOREGROUND_ONLY)
 
     private suspend fun isPreinstalledPackage(pkg: Pair<String, UserHandle>): Boolean =
-        LightInstallSourceInfoLiveData[pkg].getInitializedValue().installingPackageName == null
+        LightInstallSourceInfoLiveData[pkg].getInitializedValue().initiatingPackageName == null
 
     private suspend fun postSafetyLabelChangedNotification() {
         if (hasDataSharingChanged()) {
@@ -374,13 +402,22 @@ class SafetyLabelChangesJobService : JobService() {
 
     override fun onStopJob(params: JobParameters?): Boolean {
         if (DEBUG) {
-            Log.d(LOG_TAG, "onStopJob: stopping job ${params?.jobId}")
+            Log.d(LOG_TAG, "onStopJob called for job id: ${params?.jobId}")
         }
-        if (params?.jobId == SAFETY_LABEL_CHANGES_JOB_ID) {
-            runBlocking {
-                mainJobTask?.cancelAndJoin()
-                mainJobTask = null
-            }
+        runBlocking {
+           when (params?.jobId) {
+               SAFETY_LABEL_CHANGES_DETECT_UPDATES_JOB_ID -> {
+                   Log.i(LOG_TAG, "onStopJob: cancelling detect updates job")
+                   detectUpdatesJob?.cancelAndJoin()
+                   detectUpdatesJob = null
+               }
+               SAFETY_LABEL_CHANGES_PERIODIC_NOTIFICATION_JOB_ID -> {
+                   Log.i(LOG_TAG, "onStopJob: cancelling notification job")
+                   notificationJob?.cancelAndJoin()
+                   notificationJob = null
+               }
+               else -> Log.w(LOG_TAG, "onStopJob: unexpected job Id: ${params?.jobId}")
+           }
         }
         return true
     }
@@ -482,61 +519,61 @@ class SafetyLabelChangesJobService : JobService() {
         private const val DATA_SHARING_UPDATE_PERIOD_PROPERTY = "data_sharing_update_period_millis"
         private const val DEFAULT_DATA_SHARING_UPDATE_PERIOD_DAYS: Long = 30
 
-        private fun schedulePeriodicJob(context: Context) {
+        private fun scheduleDetectUpdatesJob(context: Context) {
             try {
                 val jobScheduler = getSystemServiceSafe(context, JobScheduler::class.java)
-                if (jobScheduler.getPendingJob(PERIODIC_SAFETY_LABEL_CHANGES_JOB_ID) != null) {
-                    Log.i(LOG_TAG, "Safety label change periodic job already scheduled.")
+
+                if (jobScheduler.getPendingJob(SAFETY_LABEL_CHANGES_DETECT_UPDATES_JOB_ID)
+                        != null) {
+                    Log.i(LOG_TAG, "Not scheduling detect updates job: already scheduled.")
                     return
                 }
 
                 val job =
                     JobInfo.Builder(
-                            PERIODIC_SAFETY_LABEL_CHANGES_JOB_ID,
+                            SAFETY_LABEL_CHANGES_DETECT_UPDATES_JOB_ID,
                             ComponentName(context, SafetyLabelChangesJobService::class.java))
+                        .setRequiresDeviceIdle(
+                            KotlinUtils.runSafetyLabelChangesJobOnlyWhenDeviceIdle())
+                        .build()
+                    val result = jobScheduler.schedule(job)
+                if (result != JobScheduler.RESULT_SUCCESS) {
+                   Log.w(LOG_TAG, "Detect updates job not scheduled, result code: $result")
+                } else {
+                   Log.i(LOG_TAG, "Detect updates job scheduled successfully.")
+                }
+            } catch (e: Throwable) {
+                Log.e(LOG_TAG, "Failed to schedule detect updates job", e)
+                throw e
+            }
+        }
+
+        private fun schedulePeriodicNotificationJob(context: Context) {
+            try {
+                val jobScheduler = getSystemServiceSafe(context, JobScheduler::class.java)
+                if (jobScheduler.getPendingJob(SAFETY_LABEL_CHANGES_PERIODIC_NOTIFICATION_JOB_ID)
+                        != null) {
+                    Log.i(LOG_TAG, "Not scheduling notification job: already scheduled.")
+                    return
+                }
+
+                val job =
+                    JobInfo.Builder(
+                            SAFETY_LABEL_CHANGES_PERIODIC_NOTIFICATION_JOB_ID,
+                            ComponentName(context, SafetyLabelChangesJobService::class.java))
+                        .setRequiresDeviceIdle(
+                            KotlinUtils.runSafetyLabelChangesJobOnlyWhenDeviceIdle())
                         .setPeriodic(KotlinUtils.getSafetyLabelChangesJobIntervalMillis())
                         .setPersisted(true)
                         .build()
                 val result = jobScheduler.schedule(job)
                 if (result != JobScheduler.RESULT_SUCCESS) {
-                    Log.w(LOG_TAG, "Safety label job not scheduled, result code: $result")
+                   Log.w(LOG_TAG, "Notification job not scheduled, result code: $result")
                 } else {
-                    Log.d(LOG_TAG, "Safety label job scheduled.")
+                   Log.i(LOG_TAG, "Notification job scheduled successfully.")
                 }
             } catch (e: Throwable) {
-                Log.e(LOG_TAG, "Failed to schedule periodic job", e)
-                throw e
-            }
-        }
-
-        private fun scheduleMainJobWithDelay() {
-            try {
-                val context = PermissionControllerApplication.get() as Context
-                val jobScheduler = getSystemServiceSafe(context, JobScheduler::class.java)
-
-                if (jobScheduler.getPendingJob(SAFETY_LABEL_CHANGES_JOB_ID) != null) {
-                    Log.w(LOG_TAG, "safety label change job (one time) already scheduled")
-                    return
-                }
-
-                val job =
-                    JobInfo.Builder(
-                            SAFETY_LABEL_CHANGES_JOB_ID,
-                            ComponentName(context, SafetyLabelChangesJobService::class.java))
-                        .setPersisted(true)
-                        .setRequiresDeviceIdle(
-                            KotlinUtils.runSafetyLabelChangesJobOnlyWhenDeviceIdle())
-                        .setMinimumLatency(KotlinUtils.getSafetyLabelChangesJobDelayMillis())
-                        .build()
-                val result = jobScheduler.schedule(job)
-                if (result == JobScheduler.RESULT_SUCCESS) {
-                    Log.i(LOG_TAG, "main job scheduled successfully")
-                } else {
-                    Log.i(LOG_TAG, "main job not scheduled, result: $result")
-                }
-                Log.i(LOG_TAG, "periodic job running completes.")
-            } catch (e: Throwable) {
-                Log.e(LOG_TAG, "Failed to schedule job", e)
+                Log.e(LOG_TAG, "Failed to schedule notification job", e)
                 throw e
             }
         }
