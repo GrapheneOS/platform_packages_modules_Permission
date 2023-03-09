@@ -25,7 +25,7 @@
     <string name="privacy_sources_title" msgid="4061110826457365957">"ความเป็นส่วนตัว"</string>
     <string name="privacy_sources_summary" msgid="4089719981155120864">"หน้าแดชบอร์ด สิทธิ์ การควบคุม"</string>
     <string name="permission_usage_title" msgid="3633779688945350407">"แดชบอร์ดความเป็นส่วนตัว"</string>
-    <string name="permission_usage_summary" msgid="5323079206029964468">"แสดงแอปที่ใช้สิทธิ์ล่าสุด"</string>
+    <string name="permission_usage_summary" msgid="5323079206029964468">"แสดงแอปล่าสุดที่ใช้สิทธิ์"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"เครื่องมือจัดการสิทธิ์"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"ควมคุมสิทธิ์ของแอปในการเข้าถึงข้อมูล"</string>
     <string name="privacy_controls_title" msgid="5322875777945432395">"การควบคุมความเป็นส่วนตัว"</string>
