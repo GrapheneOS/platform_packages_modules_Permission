@@ -189,8 +189,8 @@
     <string name="app_permission_button_deny" msgid="6016454069832050300">"મંજૂરી આપશો નહીં"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"ચોક્કસ સ્થાન"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"અંદાજિત સ્થાન"</string>
-    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"ચોક્કસ સ્થાનનો ઉપયોગ કરો"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"જ્યારે ચોક્કસ સ્થાન બંધ હોય, ત્યારે ઍપ તમારા અંદાજિત સ્થાનને ઍક્સેસ કરી શકે છે"</string>
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"ચોક્કસ લોકેશનનો ઉપયોગ કરો"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"જ્યારે ચોક્કસ લોકેશન બંધ હોય, ત્યારે ઍપ તમારા અંદાજિત લોકેશનને ઍક્સેસ કરી શકે છે"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>ની પરવાનગી"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"આ ઍપ માટે <xliff:g id="PERM">%1$s</xliff:g>નો ઍક્સેસ"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g>ની બધી પરવાનગીઓ જુઓ"</string>
