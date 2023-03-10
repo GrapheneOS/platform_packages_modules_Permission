@@ -25,6 +25,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceScreen
 import androidx.recyclerview.widget.RecyclerView
+import com.android.permissioncontroller.Constants.EXTRA_SESSION_ID
+import com.android.permissioncontroller.Constants.INVALID_SESSION_ID
 import com.android.permissioncontroller.safetycenter.SafetyCenterConstants.QUICK_SETTINGS_SAFETY_CENTER_FRAGMENT
 import com.android.permissioncontroller.safetycenter.ui.ParsedSafetyCenterIntent.Companion.toSafetyCenterIntent
 import com.android.permissioncontroller.safetycenter.ui.model.LiveSafetyCenterViewModelFactory
@@ -39,6 +41,7 @@ abstract class SafetyCenterFragment : PreferenceFragmentCompat() {
     lateinit var safetyCenterViewModel: SafetyCenterViewModel
     lateinit var sameTaskSourceIds: List<String>
     lateinit var collapsableIssuesCardHelper: CollapsableIssuesCardHelper
+    var safetyCenterSessionId = INVALID_SESSION_ID
     private val highlightManager = PreferenceHighlightManager(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,6 +75,7 @@ abstract class SafetyCenterFragment : PreferenceFragmentCompat() {
             SafetyCenterResourcesContext(requireContext())
                 .getStringByName("config_same_task_safety_source_ids")
                 .split(",")
+        safetyCenterSessionId = requireArguments().getLong(EXTRA_SESSION_ID, INVALID_SESSION_ID)
 
         safetyCenterViewModel =
             ViewModelProvider(

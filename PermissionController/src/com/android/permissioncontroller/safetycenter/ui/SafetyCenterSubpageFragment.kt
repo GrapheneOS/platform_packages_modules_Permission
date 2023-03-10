@@ -22,9 +22,8 @@ import android.safetycenter.SafetyCenterEntryGroup
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.preference.PreferenceGroup
-import com.android.permissioncontroller.Constants
+import com.android.permissioncontroller.Constants.EXTRA_SESSION_ID
 import com.android.permissioncontroller.R
-import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.safetycenter.ui.SafetyBrandChipPreference.Companion.closeSubpage
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterUiData
 import com.android.safetycenter.resources.SafetyCenterResourcesContext
@@ -40,13 +39,11 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
     private lateinit var subpageIssueGroup: PreferenceGroup
     private lateinit var subpageEntryGroup: PreferenceGroup
     private lateinit var subpageFooter: FooterPreference
-    private var sessionId = Constants.INVALID_SESSION_ID
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         super.onCreatePreferences(savedInstanceState, rootKey)
         setPreferencesFromResource(R.xml.safety_center_subpage, rootKey)
         sourceGroupId = requireArguments().getString(SOURCE_GROUP_ID_KEY)!!
-        sessionId = Utils.getOrGenerateSessionId(requireActivity().getIntent())
 
         subpageBrandChip = getPreferenceScreen().findPreference(BRAND_CHIP_KEY)!!
         subpageIllustration = getPreferenceScreen().findPreference(ILLUSTRATION_KEY)!!
@@ -54,7 +51,7 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
         subpageEntryGroup = getPreferenceScreen().findPreference(ENTRY_GROUP_KEY)!!
         subpageFooter = getPreferenceScreen().findPreference(FOOTER_KEY)!!
 
-        subpageBrandChip.setupListener(requireActivity(), sessionId)
+        subpageBrandChip.setupListener(requireActivity(), safetyCenterSessionId)
         setupIllustration()
         setupFooter()
 
@@ -63,7 +60,7 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
 
     override fun configureInteractionLogger() {
         val logger = safetyCenterViewModel.interactionLogger
-        logger.sessionId = sessionId
+        logger.sessionId = safetyCenterSessionId
         logger.navigationSource = NavigationSource.fromIntent(requireActivity().getIntent())
         logger.viewType = ViewType.SUBPAGE
         logger.groupId = sourceGroupId
@@ -79,7 +76,7 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
         val entryGroup = uiData?.getMatchingGroup(sourceGroupId)
         if (entryGroup == null) {
             Log.w(TAG, "$sourceGroupId doesn't match any of the existing SafetySourcesGroup IDs")
-            closeSubpage(requireActivity(), requireContext(), sessionId)
+            closeSubpage(requireActivity(), requireContext(), safetyCenterSessionId)
             return
         }
 
@@ -167,8 +164,9 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
 
         /** Creates an instance of SafetyCenterSubpageFragment with the arguments set */
         @JvmStatic
-        fun newInstance(groupId: String): SafetyCenterSubpageFragment {
+        fun newInstance(sessionId: Long, groupId: String): SafetyCenterSubpageFragment {
             val args = Bundle()
+            args.putLong(EXTRA_SESSION_ID, sessionId)
             args.putString(SOURCE_GROUP_ID_KEY, groupId)
 
             val subpageFragment = SafetyCenterSubpageFragment()

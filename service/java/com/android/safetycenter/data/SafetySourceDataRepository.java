@@ -355,7 +355,7 @@ final class SafetySourceDataRepository {
             String packageName,
             @UserIdInt int userId) {
         SafetyCenterConfigReader.ExternalSafetySource externalSafetySource =
-                mSafetyCenterConfigReader.getExternalSafetySource(safetySourceId);
+                mSafetyCenterConfigReader.getExternalSafetySource(safetySourceId, packageName);
         if (externalSafetySource == null) {
             throw new IllegalArgumentException("Unexpected safety source: " + safetySourceId);
         }

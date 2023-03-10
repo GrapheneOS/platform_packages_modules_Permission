@@ -116,24 +116,24 @@ class SafetyCenterResourcesContextTest {
     }
 
     @Test
-    fun getOptionalString_validString_returnsString() {
+    fun getOptionalStringByName_validString_returnsString() {
         val resourcesContext = createNewResourcesContext()
 
-        assertThat(resourcesContext.getOptionalString("valid_string")).isEqualTo("I exist!")
+        assertThat(resourcesContext.getOptionalStringByName("valid_string")).isEqualTo("I exist!")
     }
 
     @Test
-    fun getOptionalString_invalidStringWithFallback_returnsNull() {
+    fun getOptionalStringByName_invalidStringWithFallback_returnsNull() {
         val resourcesContext = createNewResourcesContext(fallback = true)
 
-        assertThat(resourcesContext.getOptionalString("invalid_string")).isNull()
+        assertThat(resourcesContext.getOptionalStringByName("invalid_string")).isNull()
     }
 
     @Test
-    fun getOptionalString_invalidStringWithoutFallback_returnsNull() {
+    fun getOptionalStringByName_invalidStringWithoutFallback_returnsNull() {
         val resourcesContext = createNewResourcesContext(fallback = false)
 
-        assertThat(resourcesContext.getOptionalString("invalid_string")).isNull()
+        assertThat(resourcesContext.getOptionalStringByName("invalid_string")).isNull()
     }
 
     @Test
