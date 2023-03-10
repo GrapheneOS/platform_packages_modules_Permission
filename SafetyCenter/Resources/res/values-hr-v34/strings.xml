@@ -19,7 +19,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="health_connect_title" msgid="8318152190040327804">"Health Connect"</string>
     <string name="health_connect_search_terms" msgid="4998970586245680829">"Zdravlje, Health Connect"</string>
-    <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Ažuriranja dijeljenja podataka za lokaciju"</string>
+    <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Ažuriranja o dijeljenju podataka za lokaciju"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"podaci, dijeljenje podataka, ažuriranja dijeljenja podataka, ažuriranja dijeljenja podataka za lokaciju, dijeljenje"</string>
     <string name="ads_privacy_title" msgid="538822387058714869">"Zaštita privatnosti u online oglašavanju"</string>
     <string name="ads_privacy_summary" msgid="4977699525670966049">"Prilagodite podatke koje aplikacije koriste da bi vam prikazivale oglase"</string>
