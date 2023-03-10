@@ -35,6 +35,7 @@ import com.android.modules.utils.build.SdkLevel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A representation of the safety state of the device.
@@ -44,6 +45,9 @@ import java.util.Objects;
 @SystemApi
 @RequiresApi(TIRAMISU)
 public final class SafetyCenterData implements Parcelable {
+
+    /** Known key we store in the 'extras' bundle. */
+    private static final String ISSUES_TO_GROUPS_BUNDLE_KEY = "IssuesToGroupsKey";
 
     @NonNull
     public static final Creator<SafetyCenterData> CREATOR =
@@ -188,13 +192,74 @@ public final class SafetyCenterData implements Parcelable {
                 && Objects.equals(mIssues, that.mIssues)
                 && Objects.equals(mEntriesOrGroups, that.mEntriesOrGroups)
                 && Objects.equals(mStaticEntryGroups, that.mStaticEntryGroups)
-                && Objects.equals(mDismissedIssues, that.mDismissedIssues);
+                && Objects.equals(mDismissedIssues, that.mDismissedIssues)
+                && areKnownExtrasContentsEqual(mExtras, that.mExtras);
+    }
+
+    /** We're only comparing the bundle data that we know of. */
+    private boolean areKnownExtrasContentsEqual(@NonNull Bundle first, @NonNull Bundle second) {
+        Bundle firstIssuesKeys = first.getBundle(ISSUES_TO_GROUPS_BUNDLE_KEY);
+        Bundle secondIssuesKeys = second.getBundle(ISSUES_TO_GROUPS_BUNDLE_KEY);
+
+        if (firstIssuesKeys == null && secondIssuesKeys == null) { // both
+            return true;
+        }
+        if (firstIssuesKeys == null || secondIssuesKeys == null) { // exactly one
+            return false;
+        }
+
+        // We know exactly how these bundles are structured, they're made of comparable elements
+        // so we can compare them. They're essentially a Map<String, ArrayList<String>>.
+        return areIssuesToGroupsBundlesEqual(firstIssuesKeys, secondIssuesKeys);
+    }
+
+    private boolean areIssuesToGroupsBundlesEqual(@NonNull Bundle first, @NonNull Bundle second) {
+        Set<String> firstKeys = first.keySet();
+        Set<String> secondKeys = second.keySet();
+
+        if (!Objects.equals(firstKeys, secondKeys)) {
+            return false;
+        }
+
+        if (firstKeys == null) {
+            return true;
+        }
+
+        for (String key : firstKeys) {
+            if (!Objects.equals(first.getStringArrayList(key), second.getStringArrayList(key))) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(
-                mStatus, mIssues, mEntriesOrGroups, mStaticEntryGroups, mDismissedIssues);
+                mStatus,
+                mIssues,
+                mEntriesOrGroups,
+                mStaticEntryGroups,
+                mDismissedIssues,
+                getExtrasHash());
+    }
+
+    /** We're only hashing bundle data that we know of. */
+    private int getExtrasHash() {
+        Bundle issuesToGroups = mExtras.getBundle(ISSUES_TO_GROUPS_BUNDLE_KEY);
+        if (issuesToGroups == null) {
+            return 0;
+        }
+
+        // Following the standard implementation found in HashMap and AbstractMap
+        int hash = 0;
+        for (String key : issuesToGroups.keySet()) {
+            hash +=
+                    Objects.hashCode(key)
+                            ^ Objects.hashCode(issuesToGroups.getStringArrayList(key));
+        }
+        return hash;
     }
 
     @Override
@@ -210,8 +275,41 @@ public final class SafetyCenterData implements Parcelable {
                 + mStaticEntryGroups
                 + ", mDismissedIssues="
                 + mDismissedIssues
-                + (!mExtras.isEmpty() ? ", (has extras)" : "")
+                + ", mExtras="
+                + extrasToString()
                 + '}';
+    }
+
+    /** We're only including bundle data that we know of. */
+    @NonNull
+    private String extrasToString() {
+        Bundle issuesToGroups = mExtras.getBundle(ISSUES_TO_GROUPS_BUNDLE_KEY);
+        boolean hasKnownExtras = issuesToGroups != null;
+
+        int keyNum = mExtras.keySet().size();
+        boolean hasUnknownExtras =
+                (!hasKnownExtras && keyNum > 0) || (hasKnownExtras && keyNum > 1);
+
+        if (!hasKnownExtras && !hasUnknownExtras) {
+            return "(no extras)";
+        }
+        StringBuilder sb = new StringBuilder();
+        if (hasKnownExtras) {
+            sb.append("IssuesToGroups:[");
+            for (String key : issuesToGroups.keySet()) {
+                sb.append("(key=")
+                        .append(key)
+                        .append(";value=")
+                        .append(issuesToGroups.getStringArrayList(key))
+                        .append("),");
+            }
+            sb.append("]");
+        }
+        if (hasUnknownExtras) {
+            sb.append("(has unknown extras)");
+        }
+
+        return sb.toString();
     }
 
     @Override
@@ -301,7 +399,7 @@ public final class SafetyCenterData implements Parcelable {
         /**
          * Sets additional information for the {@link SafetyCenterData}.
          *
-         * If not set, the default value is {@link Bundle#EMPTY}.
+         * <p>If not set, the default value is {@link Bundle#EMPTY}.
          */
         @NonNull
         public SafetyCenterData.Builder setExtras(@NonNull Bundle extras) {
