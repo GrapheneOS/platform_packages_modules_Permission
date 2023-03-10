@@ -32,10 +32,11 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"אני רוצה להשאיר את האפשרות \"כשהאפליקציה נמצאת בשימוש\""</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"אני רוצה לשמור על ההגדרה “רק הפעם”"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"מידע נוסף"</string>
-    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"אישור גישה לכל התמונות"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"אישור של הכול"</string>
+    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"אישור של הכול תמיד"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"בחירת תמונות"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"בחירת תמונות נוספות"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"לא לבחור תמונות נוספות"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"בחירת תמונות וסרטונים נוספים"</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"לא לבחור תמונות נוספות"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"אין אישור בכל זאת"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"סגירה"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> מתוך <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -398,9 +399,7 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"להגדיר את <xliff:g id="APP_NAME">%1$s</xliff:g> כאפליקציית ברירת המחדל לניווט?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"אין צורך בהרשאות"</string>
     <string name="role_watch_description" msgid="267003778693177779">"‏האפליקציה <xliff:g id="APP_NAME">%1$s</xliff:g> תוכל לבצע פעולות בהתראות ותקבל הרשאות גישה לטלפון, ל-SMS לאנשי הקשר וליומן."</string>
-    <string name="role_companion_device_glasses_description" msgid="1775655849566169630">"‏האפליקציה <xliff:g id="APP_NAME">%1$s</xliff:g> תוכל לבצע פעולות בהתראות ותקבל הרשאות גישה לטלפון, ל-SMS לאנשי הקשר, למיקרופון ולמכשירים בקרבת מקום."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"לאפליקציה <xliff:g id="APP_NAME">%1$s</xliff:g> יהיו הרשאות לביצוע פעולות בהתראות שלך ולביצוע סטרימינג של האפליקציות למכשיר המחובר."</string>
-    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"האפליקציה <xliff:g id="APP_NAME">%1$s</xliff:g> תוכל להעביר תוכן בסטרימינג למכשירים בקרבת מקום."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"התמונות, המדיה וההתראות מהטלפון שלך ישותפו למכשירים אחרים על ידי השירות הזה."</string>
     <string name="role_notes_label" msgid="7451627001058089536">"אפליקציית ברירת המחדל לפתקים"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"אפליקציית פתקים"</string>
@@ -480,7 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"‏לתת לאפליקציה ‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‎‏ הרשאת גישה ‎&lt;b&gt;‎‏לתמונות, לסרטונים, למוזיקה, לאודיו ולקבצים אחרים‎&lt;/b&gt;‎‏ במכשיר?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"‏לתת לאפליקציה ‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‎‏ הרשאת גישה למוזיקה ולקובצי אודיו במכשיר?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"‏לתת לאפליקציה ‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‎‏ הרשאת גישה לתמונות ולסרטונים במכשיר?"</string>
-    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; גישה לתמונות נוספות?"</string>
+    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"‏לתת לאפליקציה ‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‎‏ הרשאת גישה לתמונות ולסרטונים נוספים במכשיר?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"‏לאשר לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; להקליט אודיו?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"האפליקציה תוכל להקליט אודיו רק כאשר היא בשימוש"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאה להקליט אודיו?"</string>
@@ -591,12 +590,13 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"הצגת הודעה בזמן גישה של אפליקציות לטקסט, לתמונות או לכל תוכן אחר שהעתקת"</string>
     <string name="show_password_title" msgid="2877269286984684659">"הצגת סיסמאות"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"התווים יופיעו לפרקי זמן קצרים בזמן ההקלדה"</string>
-    <string name="permission_rationale_message_location" msgid="5559450538205092588">"מפתחי האפליקציה הזו הצהירו שהאפליקציה עשויה לשתף את נתוני המיקום שלך עם צדדים שלישיים"</string>
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"האפליקציה הזו הצהירה שהיא עשויה לשתף נתוני מיקום עם צדדים שלישיים"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"שיתוף נתונים ומיקום"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"מאיפה מגיע המידע לגבי שיתוף הנתונים"</string>
-    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"‏המפתחים סיפקו מידע על האופן שבו האפליקציה משתפת נתונים כאן: "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>". המידע עשוי להתעדכן עם הזמן."</string>
-    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"האפליקציה עשויה לשתף את נתוני המיקום למטרות הבאות:"</string>
-    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
+    <skip />
+    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
+    <skip />
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"שיתוף הנתונים עשוי להיות שונה"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"נוהלי הטיפול בנתונים עשויים להשתנות בהתאם לגרסת האפליקציה, לשימוש בה, לאזור ולגיל המשתמש. "<annotation id="link">"מידע נוסף על שיתוף נתונים"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"נתוני המיקום שלך"</string>
@@ -611,8 +611,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"אבטחת נתונים"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"ייתכן שנתוני המיקום ישותפו"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"מפתחי האפליקציה הזו הצהירו שהאפליקציה עשויה לשתף את נתוני המיקום שלך עם צדדים שלישיים"</string>
-    <string name="data_sharing_updates_title" msgid="7996933386875213859">"עדכונים לגבי שיתוף נתונים בנוגע למיקום"</string>
-    <string name="data_sharing_updates_summary" msgid="764113985772233889">"בדיקת אפליקציות שהשתנה האופן שבו הן עשויות לשתף את נתוני המיקום"</string>
+    <string name="data_sharing_updates_title" msgid="7996933386875213859">"עדכונים לגבי שיתוף נתוני מיקום"</string>
+    <string name="data_sharing_updates_summary" msgid="764113985772233889">"בדיקת אפליקציות שהדרך שלהן לשתף נתוני מיקום השתנתה"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"באפליקציות האלה, השתנה האופן שבו הן עשויות לשתף את נתוני המיקום שלך. יכול להיות שהן לא שיתפו את הנתונים האלה בעבר, או שעכשיו הן משתפות את נתוני המיקום לצורכי פרסום ושיווק."</string>
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"המפתחים של האפליקציות האלה סיפקו מידע לגבי האופן שבו הנתונים משותפים עם חנות אפליקציות. המידע עשוי להתעדכן עם הזמן.\n\nנוהלי שיתוף הנתונים עשויים להשתנות בהתאם לגרסת האפליקציה, לשימוש בה, לאזור ולגיל המשתמש."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"מידע נוסף על שיתוף נתונים"</string>

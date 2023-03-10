@@ -32,10 +32,13 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Пакінуць \"У актыўным рэжыме праграмы\""</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Захаваць толькі на гэты раз"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Падрабязней"</string>
-    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"Дазволіць доступ да ўсіх фота"</string>
+    <!-- no translation found for grant_dialog_button_allow_all (5939066403732409516) -->
+    <skip />
+    <!-- no translation found for grant_dialog_button_always_allow_all (1719900027660252167) -->
+    <skip />
     <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"Выбраць фота"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"Выбраць больш фота"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"Больш не выбіраць фота"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"Выбраць больш фота і відэа"</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Больш не выбіраць"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Усё роўна не дазваляць"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Адхіліць"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> з <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -398,9 +401,7 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Прызначыць праграму \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" стандартнай праграмай навігацыі?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Дазволы не патрэбныя"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> зможа ўзаемадзейнічаць з вашымі апавяшчэннямі і атрымае доступ да тэлефона, SMS, кантактаў і календара."</string>
-    <string name="role_companion_device_glasses_description" msgid="1775655849566169630">"<xliff:g id="APP_NAME">%1$s</xliff:g> зможа ўзаемадзейнічаць з вашымі апавяшчэннямі і атрымае доступ да тэлефона, SMS, кантактаў, мікрафона і прылад паблізу."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> зможа ўзаемадзейнічаць з вашымі апавяшчэннямі і перадаваць праграмы плынню на падключаную прыладу."</string>
-    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> зможа перадаваць змесціва плынню на прылады паблізу."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Гэты сэрвіс абагульвае з іншымі прыладамі фота, мультымедыя і апавяшчэнні, якія захоўваюцца на вашым тэлефоне."</string>
     <string name="role_notes_label" msgid="7451627001058089536">"Стандартная праграма для нататак"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"Праграма для нататак"</string>
@@ -480,7 +481,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да &lt;b&gt;фота, відэа, музыкі, аўдыя і файлаў&lt;/b&gt; на гэтай прыладзе?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да музыкі і аўдыя на гэтай прыладзе?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да фота і відэа на гэтай прыладзе?"</string>
-    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"Адкрыць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да большай колькасці фота?"</string>
+    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да дадатковых фота і відэа на гэтай прыладзе?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; запісваць аўдыя?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Гэта праграма зможа запісваць аўдыя толькі падчас яе выкарыстання"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; запісваць аўдыя?"</string>
@@ -591,12 +592,13 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Паказваць паведамленне, калі праграмы атрымліваюць доступ да тэксту, відарысаў ці іншага змесціва, якое вы скапіравалі"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Паказваць паролі"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Падчас уводу сімвалаў на кароткі час паказваць іх"</string>
-    <string name="permission_rationale_message_location" msgid="5559450538205092588">"Гэта праграма можа абагульваць даныя пра месцазнаходжанне з трэцімі бакамі"</string>
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"Гэта праграма можа абагульваць даныя пра месцазнаходжанне з трэцімі бакамі"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Абагульванне даных і даныя пра месцазнаходжанне"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Адкуль бярэцца інфармацыя пра абагульванне даных"</string>
-    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"Распрацоўшчык дадаў (сюды: "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>") інфармацыю пра тое, як гэта праграма абагульвае даныя. З цягам часу гэта інфармацыя можа быць зменена."</string>
-    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"Праграма можа абагульваць геаданыя для наступнага:"</string>
-    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
+    <skip />
+    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
+    <skip />
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Абагульванне даных залежыць ад розных умоў"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Практыкі збору і апрацоўкі даных залежаць ад версіі праграмы, яе выкарыстання, месца пражывання і ўзросту карыстальніка. "<annotation id="link">"Больш пра абагульванне даных"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Даныя пра ваша месцазнаходжанне"</string>
