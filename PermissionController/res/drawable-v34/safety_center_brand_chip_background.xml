@@ -16,5 +16,5 @@
 
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <solid android:color="?attr/colorSurface" />
-    <corners android:radius="@dimen/safety_center_brand_chip_corner_radius"/>
+    <corners android:radius="@dimen/sc_brand_chip_corner_radius"/>
 </shape>

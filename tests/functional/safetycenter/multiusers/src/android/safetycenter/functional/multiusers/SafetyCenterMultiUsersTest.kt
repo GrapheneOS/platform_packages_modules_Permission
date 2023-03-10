@@ -664,6 +664,14 @@ class SafetyCenterMultiUsersTest {
                         groupId = ISSUE_ONLY_GROUP_ID
                     ),
                     safetyCenterTestData.safetyCenterIssueInformation(
+                        DYNAMIC_IN_STATELESS_ID,
+                        groupId = MIXED_STATELESS_GROUP_ID
+                    ),
+                    safetyCenterTestData.safetyCenterIssueInformation(
+                        ISSUE_ONLY_IN_STATELESS_ID,
+                        groupId = MIXED_STATELESS_GROUP_ID
+                    ),
+                    safetyCenterTestData.safetyCenterIssueInformation(
                         DYNAMIC_DISABLED_ID,
                         managedUserId,
                         groupId = DYNAMIC_GROUP_ID
@@ -681,15 +689,7 @@ class SafetyCenterMultiUsersTest {
                     ),
                     safetyCenterTestData.safetyCenterIssueInformation(
                         DYNAMIC_IN_STATELESS_ID,
-                        groupId = MIXED_STATELESS_GROUP_ID
-                    ),
-                    safetyCenterTestData.safetyCenterIssueInformation(
-                        DYNAMIC_IN_STATELESS_ID,
                         managedUserId,
-                        groupId = MIXED_STATELESS_GROUP_ID
-                    ),
-                    safetyCenterTestData.safetyCenterIssueInformation(
-                        ISSUE_ONLY_IN_STATELESS_ID,
                         groupId = MIXED_STATELESS_GROUP_ID
                     ),
                     safetyCenterTestData.safetyCenterIssueInformation(

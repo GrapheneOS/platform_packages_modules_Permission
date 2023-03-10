@@ -18,5 +18,7 @@
     <dimen name="permission_rationale_purpose_list_bullet_radius">1.5dp</dimen>
     <dimen name="permission_rationale_purpose_list_bullet_indent">9dp</dimen>
 
-    <dimen name="safety_center_brand_chip_corner_radius">24dp</dimen>
+    <dimen name="sc_action_button_list_margin">@dimen/sc_spacing_xxsmall</dimen>
+    <dimen name="sc_button_corner_radius_small">4dp</dimen>
+    <dimen name="sc_brand_chip_corner_radius">24dp</dimen>
 </resources>
