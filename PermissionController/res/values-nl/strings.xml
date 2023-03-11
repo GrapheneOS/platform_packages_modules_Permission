@@ -32,10 +32,11 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Instelling \'Terwijl de app wordt gebruikt\' behouden"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"\'Alleen deze keer\' behouden"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Meer informatie"</string>
-    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"Toegang geven tot alle foto\'s"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Alles toestaan"</string>
+    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Altijd alles toestaan"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"Foto\'s selecteren"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"Meer foto\'s selecteren"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"Geen foto\'s meer selecteren"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"Meer foto\'s en video\'s selecteren"</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Niet meer selecteren"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Toch niet toestaan"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Sluiten"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> van <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -398,9 +399,7 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g> instellen als je standaard navigatie-app?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Geen rechten nodig"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> kan interactie hebben met je meldingen en toegang krijgen tot je rechten voor telefoon, sms, contacten en agenda."</string>
-    <string name="role_companion_device_glasses_description" msgid="1775655849566169630">"<xliff:g id="APP_NAME">%1$s</xliff:g> mag interactie hebben met je meldingen en krijgt toegang tot de rechten Telefoon, Sms, Contacten, Microfoon en Apparaten in de buurt."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> mag interactie hebben met je meldingen en je apps streamen naar het verbonden apparaat."</string>
-    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> krijgt toestemming om content te streamen naar apparaten in de buurt."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Deze service deelt foto\'s, media en meldingen van je telefoon met andere apparaten."</string>
     <string name="role_notes_label" msgid="7451627001058089536">"Standaard notitie-app"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"Notitie-app"</string>
@@ -480,7 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot &lt;b&gt;foto\'s, video\'s, muziek, audio en andere bestanden&lt;/b&gt; op dit apparaat?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot muziek en audio op dit apparaat?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot foto\'s en video\'s op dit apparaat?"</string>
-    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot meer foto\'s?"</string>
+    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot meer foto\'s en video\'s op dit apparaat?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toestaan om audio op te nemen?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Deze app kan alleen audio opnemen als je de app gebruikt"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toestaan om audio op te nemen?"</string>
@@ -591,26 +590,27 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Toon een bericht als apps toegang hebben tot tekst, afbeeldingen of andere content die je hebt gekopieerd"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Wachtwoorden tonen"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Tekens kort tonen terwijl je typt"</string>
-    <string name="permission_rationale_message_location" msgid="5559450538205092588">"Deze app geeft aan dat je locatiegegevens kunnen worden gedeeld met derden"</string>
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"Deze app geeft aan dat locatiegegevens kunnen worden gedeeld met derden"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Gegevens delen en locatie"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Waar informatie over gegevens delen vandaan komt"</string>
-    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"De ontwikkelaar heeft informatie gegeven aan "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" over hoe deze app gegevens deelt. Deze informatie kan in de loop van de tijd worden geüpdatet."</string>
-    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"Deze app kan locatiegegevens delen voor:"</string>
-    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
+    <skip />
+    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
+    <skip />
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Gegevens delen verschilt"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Gegevensprocedures kunnen variëren op basis van je app-versie, gebruik, regio en leeftijd. "<annotation id="link">"Meer informatie over gegevens delen"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Je locatiegegevens"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Wijzig de toegang van deze app in de "<annotation id="link">"privacyinstellingen"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"App-functionaliteit"</string>
     <string name="permission_rationale_purpose_analytics" msgid="2070800501189620712">"Analytics"</string>
-    <string name="permission_rationale_purpose_developer_communications" msgid="6453047018892062374">"Communicaties van de ontwikkelaar"</string>
+    <string name="permission_rationale_purpose_developer_communications" msgid="6453047018892062374">"Berichten van de ontwikkelaar"</string>
     <string name="permission_rationale_purpose_advertising" msgid="7156966429245180236">"Advertenties of marketing"</string>
     <string name="permission_rationale_purpose_fraud_prevention_security" msgid="4262104770357031902">"Fraudepreventie, beveiliging en naleving"</string>
     <string name="permission_rationale_purpose_personalization" msgid="1589973273682238708">"Personalisatie"</string>
     <string name="permission_rationale_purpose_account_management" msgid="2985772421946688879">"Accountbeheer"</string>
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Veiligheid van gegevens"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Locatiegegevens kunnen worden gedeeld"</string>
-    <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Deze app geeft aan dat je locatiegegevens kunnen worden gedeeld met derden"</string>
+    <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Deze app geeft aan dat je locatiegegevens met derden kunnen worden gedeeld"</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Updates voor het delen van locatiegegevens"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Check apps die de manier hebben veranderd waarop je locatiegegevens worden gedeeld"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Deze apps hebben de manier veranderd waarop ze je locatiegegevens kunnen delen. Misschien deelden ze de gegevens eerder niet, of kunnen ze deze nu delen voor reclame- en marketingdoeleinden."</string>
@@ -621,6 +621,6 @@
     <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{Geüpdatet in de afgelopen dag}=1{Geüpdatet in de afgelopen dag}other{Geüpdatet in de afgelopen # dagen}}"</string>
     <string name="no_updates_at_this_time" msgid="9031085635689982935">"Er zijn op dit moment geen updates"</string>
     <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"Updates voor gegevens delen"</string>
-    <string name="safety_label_changes_notification_desc" msgid="7808764283266234675">"Sommige apps hebben de manier veranderd waarop ze je locatiegegevens kunnen delen"</string>
+    <string name="safety_label_changes_notification_desc" msgid="7808764283266234675">"Sommige apps kunnen je locatiegegevens nu op een andere manier delen"</string>
     <string name="safety_label_changes_gear_description" msgid="2655887555599138509">"Instellingen"</string>
 </resources>

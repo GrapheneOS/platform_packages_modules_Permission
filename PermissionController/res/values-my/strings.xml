@@ -32,10 +32,11 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"\"အက်ပ်ကို အသုံးပြုနေစဉ်\" ကို ဆက်ထားရန်"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"\"ဤတစ်ကြိမ်သာ\" ကို မှတ်ထားရန်"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"နောက်ထပ်"</string>
-    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"ဓာတ်ပုံအားလုံး သုံးခွင့်ပြုရန်"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"အားလုံး ခွင့်ပြုရန်"</string>
+    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"အားလုံး အမြဲခွင့်ပြုရန်"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"ဓာတ်ပုံများရွေးရန်"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"နောက်ထပ်ဓာတ်ပုံများ ရွေးရန်"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"နောက်ထပ်ဓာတ်ပုံများ မရွေးပါနှင့်"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"နောက်ထပ်ဓာတ်ပုံနှင့် ဗီဒီယို ရွေးရန်"</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"နောက်ထပ်မရွေးပါနှင့်"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"မည်သို့ပင်ဖြစ်စေ ခွင့်မပြုပါ"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"ပယ်ရန်"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g> ထဲမှ <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>"</string>
@@ -398,9 +399,7 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g> ကို မူရင်းလမ်းညွှန်အက်ပ်အဖြစ် သတ်မှတ်မလား။"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"ခွင့်ပြုချက် မလိုပါ"</string>
     <string name="role_watch_description" msgid="267003778693177779">"သင်၏ ‘ဖုန်း’၊ ‘SMS စာတိုစနစ်’၊ ‘အဆက်အသွယ်များ’ နှင့် ‘ပြက္ခဒိန်’ ခွင့်ပြုချက်များကို သုံးရန်နှင့် အကြောင်းကြားချက်များကို ပြန်လှန်တုံ့ပြန်ရန် <xliff:g id="APP_NAME">%1$s</xliff:g> ကို ခွင့်ပြုပါမည်။"</string>
-    <string name="role_companion_device_glasses_description" msgid="1775655849566169630">"သင့်အကြောင်းကြားချက်များနှင့် ပြန်လှန်တုံ့ပြန်ရန်နှင့် သင့်ဖုန်း၊ SMS စာတိုစနစ်၊ အဆက်အသွယ်၊ မိုက်ခရိုဖုန်းနှင့် အနီးတစ်ဝိုက်ရှိ စက်များ၏ ခွင့်ပြုချက်များအား <xliff:g id="APP_NAME">%1$s</xliff:g> ကို သုံးခွင့်ပြုပါမည်။"</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"သင့်အကြောင်းကြားချက်များကို ပြန်လှန်တုံ့ပြန်ရန်နှင့် သင့်အက်ပ်များကို ချိတ်ဆက်ထားသောစက်သို့ တိုက်ရိုက်လွှင့်ရန် <xliff:g id="APP_NAME">%1$s</xliff:g> ကို ခွင့်ပြုပါမည်။"</string>
-    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> ကို အနီးတစ်ဝိုက်ရှိ စက်များထံသို့ အကြောင်းအရာ တိုက်ရိုက်ထုတ်လွှင့်ခွင့်ပြုမည်။"</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"ဤဝန်ဆောင်မှုသည် သင်၏ဖုန်းမှ ဓာတ်ပုံ၊ မီဒီယာနှင့် အကြောင်းကြားချက်များကို အခြားစက်ပစ္စည်းများသို့ မျှဝေသည်။"</string>
     <string name="role_notes_label" msgid="7451627001058089536">"မူလ မှတ်စုရေးသောအက်ပ်"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"မှတ်စုရေးသောအက်ပ်"</string>
@@ -480,7 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"စက်ရှိ &lt;b&gt;ဓာတ်ပုံ၊ ဗီဒီယို၊ တေးဂီတ၊ အသံနှင့်အခြားဖိုင်များ&lt;/b&gt; ကို &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သုံးခွင့်ပေးမလား။"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"ဤစက်ရှိ တေးဂီတနှင့် အသံဖိုင်ကို &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သုံးခွင့်ပေးမလား။"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"ဤစက်ရှိ ဓာတ်ပုံနှင့် ဗီဒီယိုများကို &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သုံးခွင့်ပေးမလား။"</string>
-    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ကို နောက်ထပ်ဓာတ်ပုံများ သုံးခွင့်ပေးမလား။"</string>
+    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"စက်ရှိ နောက်ထပ်ဓာတ်ပုံနှင့် ဗီဒီယိုကို &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အားသုံးခွင့်ပေးမလား။"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ကို အသံဖမ်းယူခွင့် ပေးလိုပါသလား။"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"ဤအက်ပ်ကို အသုံးပြုနေသည့် အချိန်တွင်သာ ၎င်းက အသံဖမ်းနိုင်သည်။"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ကို အသံဖမ်းခွင့် ပေးလိုပါသလား။"</string>
@@ -591,12 +590,13 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"အက်ပ်များက သင်မိတ္တူကူးထားသော စာသား၊ ပုံများ (သို့) အခြားအကြောင်းအရာကို သုံးသောအခါ အကြောင်းကြားပါ"</string>
     <string name="show_password_title" msgid="2877269286984684659">"စကားဝှက်များပြရန်"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"စာရိုက်သည့်အခါ အက္ခရာများကို ခဏတာပြသည်"</string>
-    <string name="permission_rationale_message_location" msgid="5559450538205092588">"ဤအက်ပ်က ၎င်းသည် သင်၏ တည်နေရာဒေတာကို ပြင်ပကုမ္ပဏီများနှင့် မျှဝေနိုင်ကြောင်း ဖော်ပြထားသည်"</string>
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"ဤအက်ပ်က ၎င်းသည် ဒေတာကို ပြင်ပအဖွဲ့များနှင့် မျှဝေနိုင်ကြောင်း ဖော်ပြထားသည်"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"ဒေတာမျှဝေခြင်းနှင့် တည်နေရာ"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"ဒေတာမျှဝေခြင်း အချက်အလက် ရလာသောနေရာ"</string>
-    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"ဆော့ဖ်ဝဲရေးသူသည် ဤအက်ပ် ဒေတာမျှဝေပုံအကြောင်း အချက်အလက်ကို "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" သို့ ပေးထားသည်။ ၎င်းက ဤအချက်အလက်ကို အချိန်နှင့်အမျှ အပ်ဒိတ်လုပ်နိုင်သည်။"</string>
-    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"အက်ပ်က အောက်ပါတို့နှင့် တည်နေရာဒေတာမျှဝေနိုင်သည်-"</string>
-    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
+    <skip />
+    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
+    <skip />
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ဒေတာမျှဝေခြင်း ကွဲပြားပုံ"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"ဒေတာလုပ်ထုံးလုပ်နည်းများသည် သင်၏ အက်ပ်ဗားရှင်း၊ အသုံးပြုမှု၊ ဒေသနှင့် အသက်အပေါ် အခြေခံ၍ ကွဲပြားနိုင်သည်။ "<annotation id="link">"ဒေတာမျှဝေခြင်းအကြောင်း နောက်ထပ်အချက်အလက်"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"သင်၏ တည်နေရာဒေတာ"</string>

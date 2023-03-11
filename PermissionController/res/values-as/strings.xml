@@ -32,10 +32,13 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“এপ্‌টো ব্যৱহাৰ হৈ থকা অৱস্থাত” ৰাখক"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"“কেৱল এইবাৰৰ বাবে অনুমতি দিয়ক” বিকল্পটো ৰাখক"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"অধিক তথ্য"</string>
-    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"আটাইবোৰ ফট’ এক্সেছৰ অনুমতি দিয়ক"</string>
+    <!-- no translation found for grant_dialog_button_allow_all (5939066403732409516) -->
+    <skip />
+    <!-- no translation found for grant_dialog_button_always_allow_all (1719900027660252167) -->
+    <skip />
     <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"ফট’ বাছনি কৰক"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"অধিক ফট’ বাছক"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"অধিক ফট’ বাছনি নকৰিব"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"অধিক ফট’ আৰু ভিডিঅ’ বাছনি কৰক"</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"আৰু অধিক বাছনি নকৰিব"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"তথাপি অনুমতি নিদিব"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"অগ্ৰাহ্য কৰক"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>ৰ ভিতৰত <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>টা"</string>
@@ -398,9 +401,7 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g>ক আপোনাৰ ডিফ’ল্ট নেভিগেশ্বনৰ এপ্ হিচাপে ছেট কৰিবনে?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"কোনো অনুমতিৰ প্ৰয়োজন নাই"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g>ক আপোনাৰ জাননী ব্যৱহাৰ কৰিবলৈ আৰু আপোনাৰ ফ’ন, এছএমএছ, সম্পৰ্ক আৰু কেলেণ্ডাৰৰ অনুমতি এক্সেছ কৰিবলৈ দিয়া হ’ব।"</string>
-    <string name="role_companion_device_glasses_description" msgid="1775655849566169630">"<xliff:g id="APP_NAME">%1$s</xliff:g>ক এই অনুমতিসমূহৰ সৈতে ভাব-বিনিময় কৰিবলৈ আৰু আপোনাৰ ফ’ন, এছএমএছ, সম্পৰ্ক, মাইক্ৰ’ফ’ন আৰু নিকটৱৰ্তী ডিভাইচৰ অনুমতিসমূহ এক্সেছ কৰিবলৈ দিয়া হ’ব।"</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g>ক আপোনাৰ জাননী ব্যৱহাৰ কৰিবলৈ আৰু সংযুক্ত ডিভাইচলৈ আপোনাৰ এপ্‌বোৰ ষ্ট্ৰীম কৰিবলৈ দিয়া হ’ব।"</string>
-    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g>ক নিকটৱৰ্তী ডিভাইচসমূহলৈ সমল ষ্ট্ৰীম কৰিবলৈ দিয়া হ’ব।"</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"এইটো সেৱাই আপোনাৰ ফট’, মিডিয়া আৰু আপোনাৰ ফ’নৰ পৰা অন্য ডিভাইচলৈ দিয়া জাননী শ্বেয়াৰ কৰে।"</string>
     <string name="role_notes_label" msgid="7451627001058089536">"ডিফ’ল্ট টোকা লোৱা এপ্‌"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"টোকা লোৱা এপ্‌"</string>
@@ -480,7 +481,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক এই ডিভাইচটোত থকা &lt;b&gt;ফট’, ভিডিঅ’, সংগীত, অডিঅ’ আৰু অন্য ফাইল&lt;/b&gt; এক্সেছ কৰিবলৈ দিবনে?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক এই ডিভাইচটোত থকা সংগীত আৰু অডিঅ’ এক্সেছ কৰিবলৈ অনুমতি দিবনে?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক এই ডিভাইচটোত থকা ফট’ আৰু ভিডিঅ’ এক্সেছ কৰিবলৈ অনুমতি দিবনে?"</string>
-    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক অধিক ফট’ এক্সেছ কৰাৰ অনুমতি দিবনে?"</string>
+    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক এই ডিভাইচটোত থকা আৰু অধিক ফট’ আৰু ভিডিঅ’ এক্সেছ কৰিবলৈ অনুমতি দিবনে?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক অডিঅ\' ৰেকৰ্ড কৰিবলৈ অনুমতি দিবনে?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"আপুনি এই এপ্‌টো ব্যৱহাৰ কৰি থকাৰ সময়তহে কেৱল ই অডিঅ’ ৰেকৰ্ড কৰিব পাৰিব"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক অডিঅ’ ৰেকৰ্ড কৰিবলৈ অনুমতি দিবনে?"</string>
@@ -591,12 +592,13 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"এপে আপুনি প্ৰতিলিপি কৰা পাঠ, প্ৰতিচ্ছবি অথবা অন্য সমল এক্সেছ কৰিলে এটা বাৰ্তা দেখুৱাওক"</string>
     <string name="show_password_title" msgid="2877269286984684659">"পাছৱৰ্ডবোৰ দেখুৱাওক"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"আপুনি টাইপ কৰাৰ লগে লগে বৰ্ণসমূহ খন্তেকৰ বাবে দেখুৱাওক"</string>
-    <string name="permission_rationale_message_location" msgid="5559450538205092588">"এই এপ্‌টোৱে তৃতীয় পক্ষৰ সৈতে আপোনাৰ অৱস্থানৰ ডেটা শ্বেয়াৰ কৰিব পাৰে বুলি জনাইছে"</string>
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"এই এপ্‌টোৱে তৃতীয় পক্ষৰ সৈতে অৱস্থানৰ ডেটা শ্বেয়াৰ কৰিব পাৰে বুলি জনাইছে"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"ডেটা শ্বেয়াৰ কৰা আৰু অৱস্থান"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"ডেটা শ্বেয়াৰ কৰাৰ তথ্যখিনি ক’ৰ পৰা আহে"</string>
-    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"এই এপ্‌টোৱে কেনেকৈ ডেটা শ্বেয়াৰ কৰে সেই বিষয়ে বিকাশকৰ্তাই "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>"ক তথ্য দিছে। এইটোৱে এই তথ্যখিনি সময়ৰ লগে লগে আপডে’ট কৰিব পাৰে।"</string>
-    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"এপ্‌টোৱে ইয়াৰ বাবে অৱস্থানৰ ডেটা শ্বেয়াৰ কৰিব পাৰে:"</string>
-    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
+    <skip />
+    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
+    <skip />
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ডেটা শ্বেয়াৰ কৰা কার্যটো ভিন্ন হয়"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"ডেটা শ্বেয়াৰ কৰা কাৰ্যটো আপোনাৰ এপৰ সংস্কৰণ, ব্যৱহাৰ, অঞ্চল আৰু বয়সৰ ওপৰত ভিত্তি কৰি ভিন্ন হ’ব পাৰে। "<annotation id="link">"ডেটা শ্বেয়াৰ কৰাৰ বিষয়ে অধিক"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"আপোনাৰ অৱস্থানৰ ডেটা"</string>
