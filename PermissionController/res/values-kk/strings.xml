@@ -32,10 +32,13 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"\"Қолданба пайдаланылатын кезде\" түймесін басып тұрыңыз"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"\"Тек осы жолы\" күйінде қалдыру"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Толығырақ"</string>
-    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"Барлық фотосуретті пайдалануға рұқсат беру"</string>
+    <!-- no translation found for grant_dialog_button_allow_all (5939066403732409516) -->
+    <skip />
+    <!-- no translation found for grant_dialog_button_always_allow_all (1719900027660252167) -->
+    <skip />
     <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"Фотосурет таңдау"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"Көбірек фотосурет таңдау"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"Басқа фотосурет таңдамау"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"Тағы басқа фотосуреттер мен бейнелер таңдау"</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Тағы басқасын таңдамау"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Бәрібір рұқсат бермеу"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Жабу"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>/<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -398,9 +401,7 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасы әдепкі навигация қолданбасы етіп орнатылсын ба?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Ешқандай рұқсат қажет емес."</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасы хабарландыруларды, телефонды, SMS, контактілерді және күнтізбе рұқсаттарын пайдалана алады."</string>
-    <string name="role_companion_device_glasses_description" msgid="1775655849566169630">"<xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасына хабарландыруларды оқуға, телефонды, хабарларды, контактілерді, микрофон мен маңайдағы құрылғыларды пайдалануға рұқсат беріледі."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасы хабарландыруларды пайдаланып, қолданбаларыңызды жалғанған құрылғыға трансляциялай алатын болады."</string>
-    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасына контентті маңайдағы құрылғыларға трансляциялауға рұқсат беріледі."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Бұл қызмет телефоныңыздағы фотосуреттерді, медиафайлдар мен хабарландыруларды басқа құрылғылармен бөліседі."</string>
     <string name="role_notes_label" msgid="7451627001058089536">"Әдепкі ескертпелер қолданбасы"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"Ескертпелер қолданбасы"</string>
@@ -480,7 +481,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына осы құрылғыдағы &lt;b&gt;фотосурет, бейне, музыка, аудио мен басқа файлдарды&lt;/b&gt; пайдалану рұқсаты берілсін бе?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына осы құрылғыдағы музыка мен аудионы пайдалану рұқсаты берілсін бе?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына осы құрылғыдағы фотосурет пен бейнені пайдалану рұқсаты берілсін бе?"</string>
-    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына көбірек фотосурет пайдалануға рұқсат беру керек пе?"</string>
+    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына осы құрылғыдағы тағы басқа фотосуреттер мен бейнелерді пайдалану рұқсаты берілсін бе?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына дыбыс жазуға рұқсат берілсін бе?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Қолданба тек жұмыс кезінде ғана аудиомазмұн жаза алады."</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына аудиомазмұн жазуға рұқсат берілсін бе?"</string>
@@ -591,12 +592,13 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Қолданбалар көшірілген мәтінді, суреттерді немесе басқа контентті пайдаланған кезде хабар көрсету"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Құпия сөздерді көрсету"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Таңбалар терілген кезде аз уақыт көрсетіледі."</string>
-    <string name="permission_rationale_message_location" msgid="5559450538205092588">"Бұл қолданба локация деректеріңізді үшінші тараптармен бөлісе алатынын мәлімдеді."</string>
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"Бұл қолданба геодеректі үшінші тараптармен бөлісуі мүмкін екенін мәлімдеді."</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Деректерді бөлісу және локация"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Деректерді бөлісу туралы ақпарат қайдан алынады?"</string>
-    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"Әзірлеуші "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" қызметінде бұл қолданбаның деректерді бөлісу жолы туралы ақпарат берді. Ол бұл ақпаратты уақыт өте келе жаңарта алады."</string>
-    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"Қолданбада локация деректерін бөлісу мақсаттары:"</string>
-    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
+    <skip />
+    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
+    <skip />
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Деректерді бөлісу әртүрлі болады"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Деректермен жұмыс істеу тәртібі қолданбаңыздың нұсқасына, пайдаланылуына, аймағыңыз бен жасыңызға байланысты әртүрлі болуы мүмкін. "<annotation id="link">"Деректерді бөлісу туралы толық ақпарат"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Локация деректеріңіз"</string>
@@ -611,9 +613,9 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Дерек қауіпсіздігі"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Локация деректері жіберілуі мүмкін."</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Бұл қолданба локация деректеріңізді үшінші тараптармен бөлісе алатынын мәлімдеді."</string>
-    <string name="data_sharing_updates_title" msgid="7996933386875213859">"Локация деректерін бөлісуге қатысты жаңалық"</string>
+    <string name="data_sharing_updates_title" msgid="7996933386875213859">"Локация деректерін бөлісу жаңартулары"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Локация деректеріңізді бөлісу жолын өзгерткен қолданбаларды қарап шығыңыз."</string>
-    <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Осы қолданбалар локация деректеріңізді бөлісу жолын өзгертті. Олар деректерді бұрын бөліспеген болуы мүмкін, бірақ енді жарнамалау не маркетинг мақсатында бөлісуі мүмкін."</string>
+    <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Осы қолданбалар локация деректерін бөлісу жолын өзгертті. Олар деректерді бұрын бөліспей, енді жарнамалау не маркетинг үшін бөлісуі мүмкін."</string>
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Бұл қолданбалардың әзірлеушілері App Store дүкенінде өздерінің деректерді бөлісу тәртібі туралы ақпарат берді. Олар уақыт өте келе оны жаңарта алады.\n\nДеректерді бөлісу тәртібі қолданбаңыздың нұсқасына, пайдаланылуына, аймағыңыз бен жасыңызға байланысты әртүрлі болуы мүмкін."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"Деректерді бөлісу туралы ақпарат"</string>
     <string name="shares_location_with_third_parties" msgid="2278051743742057767">"Енді локация деректеріңіз үшінші тараптарға жіберіледі."</string>

@@ -19,7 +19,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="health_connect_title" msgid="8318152190040327804">"Health Connect"</string>
     <string name="health_connect_search_terms" msgid="4998970586245680829">"Health, Health Connect"</string>
-    <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Aktualisierungen der Weitergabe von Standortdaten"</string>
+    <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Änderungen bei der Weitergabe von Standortdaten"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"Daten, Datenweitergabe, Aktualisierungen der Datenweitergabe, Aktualisierungen der Weitergabe von Standortdaten, Weitergabe"</string>
     <string name="ads_privacy_title" msgid="538822387058714869">"Datenschutz bei Werbung"</string>
     <string name="ads_privacy_summary" msgid="4977699525670966049">"Informationen anpassen, die Apps verwenden, um dir Werbung anzuzeigen"</string>
