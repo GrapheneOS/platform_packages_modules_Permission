@@ -19,8 +19,8 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="health_connect_title" msgid="8318152190040327804">"Health Connect"</string>
     <string name="health_connect_search_terms" msgid="4998970586245680829">"Денсаулық, Health Connect"</string>
-    <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Локация деректерін бөлісуге қатысты жаңалық"</string>
-    <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"Деректер, Деректерді бөлісу, Деректерді бөлісуге қатысты жаңалық, Локация деректерін бөлісуге қатысты жаңалық"</string>
+    <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Локация деректерін бөлісу жаңартулары"</string>
+    <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"Деректер, Деректерді бөлісу, Деректерді бөлісу жаңартулары, Локация деректерін бөлісу жаңартулары"</string>
     <string name="ads_privacy_title" msgid="538822387058714869">"Жарнамадағы құпиялық"</string>
     <string name="ads_privacy_summary" msgid="4977699525670966049">"Қолданбалардың сізге жарнама көрсету үшін пайдаланатын ақпаратын реттеңіз."</string>
     <string name="ads_privacy_search_terms" msgid="8008413316055240046">"жарнамалар, жарнамадағы құпиялық, privacy sandbox, жарнама тақырыптары, қолданба ұсынған жарнамалар, жарнама көрсеткіштерін өлшеу"</string>

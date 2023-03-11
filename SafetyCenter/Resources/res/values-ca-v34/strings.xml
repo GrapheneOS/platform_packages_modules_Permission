@@ -19,8 +19,8 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="health_connect_title" msgid="8318152190040327804">"Salut connectada"</string>
     <string name="health_connect_search_terms" msgid="4998970586245680829">"salut, salut connectada"</string>
-    <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Actualitzacions en la compartició de dades per a la ubicació"</string>
-    <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"dades, compartició de dades, actualitzacions de compartició de dades, actualitzacions en la compartició de dades per a la ubicació, compartició"</string>
+    <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Canvis en la compartició de dades per a la ubicació"</string>
+    <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"dades, compartició de dades, canvis en la compartició de dades, canvis en la compartició de dades per a la ubicació, compartició"</string>
     <string name="ads_privacy_title" msgid="538822387058714869">"Privadesa d\'anuncis"</string>
     <string name="ads_privacy_summary" msgid="4977699525670966049">"Personalitza la informació que les aplicacions utilitzen per mostrar-te anuncis"</string>
     <string name="ads_privacy_search_terms" msgid="8008413316055240046">"anuncis, privadesa d\'anuncis, privacy sandbox, temes d\'anuncis, anuncis suggerits per aplicacions, mesurament d\'anuncis"</string>
