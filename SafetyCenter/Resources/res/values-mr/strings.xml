@@ -27,7 +27,7 @@
     <string name="permission_usage_title" msgid="3633779688945350407">"गोपनीयता डॅशबोर्ड"</string>
     <string name="permission_usage_summary" msgid="5323079206029964468">"कोणत्या ॲप्सनी अलीकडे परवानग्या वापरल्या ते दाखवा"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"परवानगी व्यवस्थापक"</string>
-    <string name="permission_manager_summary" msgid="8099852107340970790">"अ‍ॅपचा तुमचा डेटा अ‍ॅक्सेस नियंत्रित करा"</string>
+    <string name="permission_manager_summary" msgid="8099852107340970790">"तुमच्या डेटासाठीचा अ‍ॅप अ‍ॅक्सेस नियंत्रित करा"</string>
     <string name="privacy_controls_title" msgid="5322875777945432395">"गोपनीयता नियंत्रणे"</string>
     <string name="privacy_controls_summary" msgid="2402066941190435424">"मायक्रोफोन, कॅमेरा आणि आणखी बऱ्याच ठिकणी डिव्हाइस अ‍ॅक्सेस नियंत्रित करा"</string>
     <string name="advanced_title" msgid="8745436380690561172">"आणखी सेटिंग्ज"</string>
