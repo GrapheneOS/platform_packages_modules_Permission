@@ -150,12 +150,12 @@ public class GrantPermissionsActivity extends SettingsActivity
     private String mPreMergeShownGroupName;
 
     /** The current list of permissions requested, across all current requests for this app */
-    private List<String> mRequestedPermissions;
+    private List<String> mRequestedPermissions = new ArrayList<>();
     /** A copy of the list of permissions originally requested in the intent to this activity */
     private String[] mOriginalRequestedPermissions = new String[0];
 
     private boolean[] mButtonVisibilities;
-    private boolean[] mLocationVisibilities;
+    private int mRequestCounts = 0;
     private List<RequestInfo> mRequestInfos = new ArrayList<>();
     private GrantPermissionsViewHandler mViewHandler;
     private GrantPermissionsViewModel mViewModel;
@@ -172,7 +172,6 @@ public class GrantPermissionsActivity extends SettingsActivity
     private String mTargetPackage;
     /** A key representing this activity, defined by the target package and task ID */
     private Pair<String, Integer> mKey;
-    private int mTotalRequests = 0;
     private int mCurrentRequestIdx = 0;
     private float mOriginalDimAmount;
     private View mRootView;
@@ -393,9 +392,6 @@ public class GrantPermissionsActivity extends SettingsActivity
             return;
         }
 
-        if (mRequestInfos == null) {
-            mTotalRequests = requests.size();
-        }
         mRequestInfos = requests;
 
         // If we were already showing a group, and then another request came in with more groups,
@@ -408,7 +404,7 @@ public class GrantPermissionsActivity extends SettingsActivity
     }
 
     private void showNextRequest() {
-        if (mRequestInfos == null || mRequestInfos.isEmpty()) {
+        if (mRequestInfos.isEmpty()) {
             return;
         }
 
@@ -535,14 +531,18 @@ public class GrantPermissionsActivity extends SettingsActivity
             }
         }
 
-        mLocationVisibilities = new boolean[info.getLocationVisibilities().size()];
+        boolean[] locationVisibilities = new boolean[info.getLocationVisibilities().size()];
         for (int i = 0; i < info.getLocationVisibilities().size(); i++) {
-            mLocationVisibilities[i] = info.getLocationVisibilities().get(i);
+            locationVisibilities[i] = info.getLocationVisibilities().get(i);
         }
 
-        mViewHandler.updateUi(info.getGroupName(), mTotalRequests, mCurrentRequestIdx, icon,
+        if (mRequestCounts < mRequestInfos.size()) {
+            mRequestCounts = mRequestInfos.size();
+        }
+
+        mViewHandler.updateUi(info.getGroupName(), mRequestCounts, mCurrentRequestIdx, icon,
                 message, detailMessage, permissionRationaleMessage, mButtonVisibilities,
-                mLocationVisibilities);
+                locationVisibilities);
         if (showingNewGroup) {
             mCurrentRequestIdx++;
         }
