@@ -19,8 +19,24 @@
         errorLine2="                                       ~~~~~~~~~~~~~~~~~~~">
         <location
             file="packages/modules/Permission/service/java/com/android/safetycenter/SafetyCenterService.java"
-            line="660"
+            line="651"
             column="40"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 34 (current min is 33): `getDeduplicationGroup`">
+        <location
+            file="packages/modules/Permission/service/java/com/android/safetycenter/data/SafetyCenterIssueDeduplicator.java"
+            line="315"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 34 (current min is 33): `getDeduplicationId`">
+        <location
+            file="packages/modules/Permission/service/java/com/android/safetycenter/data/SafetyCenterIssueDeduplicator.java"
+            line="316"/>
     </issue>
 
 </issues>

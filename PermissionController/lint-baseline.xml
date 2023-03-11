@@ -3,61 +3,6 @@
 
     <issue
         id="NewApi"
-        message="Call requires API level 31 (current min is 30): `android.app.AppOpsManager.HistoricalOp#getDiscreteAccessAt`"
-        errorLine1="                    val attributedOpEntry: AttributedOpEntry = it.getDiscreteAccessAt(i)"
-        errorLine2="                                                                  ~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/permission/model/livedatatypes/v31/LightHistoricalPackageOps.kt"
-            line="191"
-            column="67"/>
-    </issue>
-
-    <issue
-        id="NewApi"
-        message="Call requires API level 31 (current min is 30): `android.app.AppOpsManager.HistoricalOp#getDiscreteAccessAt`"
-        errorLine1="                    val opEntry: AttributedOpEntry = it.getDiscreteAccessAt(i)"
-        errorLine2="                                                        ~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/permission/model/livedatatypes/v31/LightHistoricalPackageOps.kt"
-            line="156"
-            column="57"/>
-    </issue>
-
-    <issue
-        id="NewApi"
-        message="Call requires API level 31 (current min is 30): `android.app.AppOpsManager.HistoricalOp#getDiscreteAccessCount`"
-        errorLine1="                for (i in 0 until it.discreteAccessCount) {"
-        errorLine2="                                     ~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/permission/model/livedatatypes/v31/LightHistoricalPackageOps.kt"
-            line="155"
-            column="38"/>
-    </issue>
-
-    <issue
-        id="NewApi"
-        message="Call requires API level 31 (current min is 30): `android.app.AppOpsManager.HistoricalOp#getDiscreteAccessCount`"
-        errorLine1="                for (i in 0 until it.discreteAccessCount) {"
-        errorLine2="                                     ~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/permission/model/livedatatypes/v31/LightHistoricalPackageOps.kt"
-            line="190"
-            column="38"/>
-    </issue>
-
-    <issue
-        id="NewApi"
-        message="Call requires API level 31 (current min is 30): `android.app.AppOpsManager.HistoricalOpsRequest.Builder#setHistoryFlags`"
-        errorLine1="                .setHistoryFlags(HISTORY_FLAG_DISCRETE or HISTORY_FLAG_GET_ATTRIBUTION_CHAINS)"
-        errorLine2="                 ~~~~~~~~~~~~~~~">
-        <location
-            file="packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/permission/data/v31/AllLightHistoricalPackageOpsLiveData.kt"
-            line="101"
-            column="18"/>
-    </issue>
-
-    <issue
-        id="NewApi"
         message="Call requires API level 31 (current min is 30): `android.apphibernation.AppHibernationManager#isHibernatingForUser`"
         errorLine1="                    if (hibernationManager.isHibernatingForUser(pkg.packageName)) {"
         errorLine2="                                           ~~~~~~~~~~~~~~~~~~~~">
@@ -180,17 +125,6 @@
     <issue
         id="NewApi"
         message="Call requires API level 33 (current min is 30): `android.safetycenter.SafetyCenterData#getIssues`"
-        errorLine1="    ) : this(safetyCenterData.status, hasIssues = safetyCenterData.issues.size &gt; 0)"
-        errorLine2="                                                                   ~~~~~~">
-        <location
-            file="packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/safetycenter/ui/model/StatusUiData.kt"
-            line="18"
-            column="68"/>
-    </issue>
-
-    <issue
-        id="NewApi"
-        message="Call requires API level 33 (current min is 30): `android.safetycenter.SafetyCenterData#getIssues`"
         errorLine1="    issues"
         errorLine2="    ~~~~~~">
         <location
@@ -208,17 +142,6 @@
             file="packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/safetycenter/ui/model/LiveSafetyCenterViewModel.kt"
             line="323"
             column="64"/>
-    </issue>
-
-    <issue
-        id="NewApi"
-        message="Call requires API level 33 (current min is 30): `android.safetycenter.SafetyCenterData#getStatus`"
-        errorLine1="    ) : this(safetyCenterData.status, hasIssues = safetyCenterData.issues.size &gt; 0)"
-        errorLine2="                              ~~~~~~">
-        <location
-            file="packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/safetycenter/ui/model/StatusUiData.kt"
-            line="18"
-            column="31"/>
     </issue>
 
     <issue
@@ -356,17 +279,6 @@
     <issue
         id="NewApi"
         message="Call requires API level 33 (current min is 30): `android.safetycenter.SafetyCenterStatus#getRefreshStatus`"
-        errorLine1="            when (status.refreshStatus) {"
-        errorLine2="                         ~~~~~~~~~~~~~">
-        <location
-            file="packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/safetycenter/ui/model/StatusUiData.kt"
-            line="65"
-            column="26"/>
-    </issue>
-
-    <issue
-        id="NewApi"
-        message="Call requires API level 33 (current min is 30): `android.safetycenter.SafetyCenterStatus#getRefreshStatus`"
         errorLine1="    status.refreshStatus == SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS"
         errorLine2="           ~~~~~~~~~~~~~">
         <location
@@ -421,39 +333,6 @@
 
     <issue
         id="NewApi"
-        message="Call requires API level 34 (current min is 33): `getParentGroupId`"
-        errorLine1="            String groupId = getParentGroupId(preferenceKey);"
-        errorLine2="                             ~~~~~~~~~~~~~~~~">
-        <location
-            file="packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/safetycenter/ui/SafetyCenterActivity.java"
-            line="89"
-            column="30"/>
-    </issue>
-
-    <issue
-        id="NewApi"
-        message="Call requires API level 34 (current min is 33): `openRelevantSubpage`"
-        errorLine1="            frag = openRelevantSubpage(groupId);"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/safetycenter/ui/SafetyCenterActivity.java"
-            line="86"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="NewApi"
-        message="Call requires API level 34 (current min is 33): `openRelevantSubpage`"
-        errorLine1="            frag = openRelevantSubpage(groupId);"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/safetycenter/ui/SafetyCenterActivity.java"
-            line="90"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="NewApi"
         message="Class requires API level 31 (current min is 30): `android.apphibernation.AppHibernationManager`"
         errorLine1="                userContext.getSystemService(APP_HIBERNATION_SERVICE) as AppHibernationManager"
         errorLine2="                                                                         ~~~~~~~~~~~~~~~~~~~~~">
@@ -498,28 +377,6 @@
 
     <issue
         id="NewApi"
-        message="Class requires API level 34 (current min is 30): `android.app.AppOpsManager.OnOpNotedListener`"
-        errorLine1="    AppOpsManager.OnOpNotedListener,"
-        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/permission/data/v31/AllLightHistoricalPackageOpsLiveData.kt"
-            line="45"
-            column="5"/>
-    </issue>
-
-    <issue
-        id="NewApi"
-        message="Class requires API level 34 (current min is 30): `android.app.AppOpsManager.OnOpNotedListener`"
-        errorLine1="    AppOpsManager.OnOpNotedListener,"
-        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/permission/data/v31/AllLightPackageOpsLiveData.kt"
-            line="38"
-            column="5"/>
-    </issue>
-
-    <issue
-        id="NewApi"
         message="Field requires API level 33 (current min is 30): `getTAG`"
         errorLine1="                    MoreIssuesCardPreference.TAG,"
         errorLine2="                                             ~~~">
@@ -531,35 +388,82 @@
 
     <issue
         id="NewApi"
-        message="Method reference requires API level 33 (current min is 30): `android.safetycenter.SafetyCenterStatus::severityLevel`"
-        errorLine1="    val severityLevel: Int by status::severityLevel"
-        errorLine2="                              ~~~~~~~~~~~~~~~~~~~~~">
+        message="Call requires API level 31 (current min is 30): `android.app.AppOpsManager.HistoricalOp#getDiscreteAccessAt`">
         <location
-            file="packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/safetycenter/ui/model/StatusUiData.kt"
-            line="30"
-            column="31"/>
+            file="packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/permission/model/livedatatypes/v31/LightHistoricalPackageOps.kt"
+            line="153"/>
     </issue>
 
     <issue
         id="NewApi"
-        message="Method reference requires API level 33 (current min is 30): `android.safetycenter.SafetyCenterStatus::summary`"
-        errorLine1="    val originalSummary: CharSequence by status::summary"
-        errorLine2="                                         ~~~~~~~~~~~~~~~">
+        message="Call requires API level 31 (current min is 30): `android.app.AppOpsManager.HistoricalOp#getDiscreteAccessAt`">
         <location
-            file="packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/safetycenter/ui/model/StatusUiData.kt"
-            line="29"
-            column="42"/>
+            file="packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/permission/model/livedatatypes/v31/LightHistoricalPackageOps.kt"
+            line="188"/>
     </issue>
 
     <issue
         id="NewApi"
-        message="Method reference requires API level 33 (current min is 30): `android.safetycenter.SafetyCenterStatus::title`"
-        errorLine1="    val title: CharSequence by status::title"
-        errorLine2="                               ~~~~~~~~~~~~~">
+        message="Call requires API level 31 (current min is 30): `android.app.AppOpsManager.HistoricalOp#getDiscreteAccessCount`">
         <location
-            file="packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/safetycenter/ui/model/StatusUiData.kt"
-            line="28"
-            column="32"/>
+            file="packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/permission/model/livedatatypes/v31/LightHistoricalPackageOps.kt"
+            line="152"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 31 (current min is 30): `android.app.AppOpsManager.HistoricalOp#getDiscreteAccessCount`">
+        <location
+            file="packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/permission/model/livedatatypes/v31/LightHistoricalPackageOps.kt"
+            line="187"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 31 (current min is 30): `android.app.AppOpsManager.HistoricalOpsRequest.Builder#setHistoryFlags`">
+        <location
+            file="packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/permission/data/v31/AllLightHistoricalPackageOpsLiveData.kt"
+            line="104"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 34 (current min is 33): `getParentGroupId`">
+        <location
+            file="packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/safetycenter/ui/SafetyCenterActivity.java"
+            line="91"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 34 (current min is 33): `openRelevantSubpage`">
+        <location
+            file="packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/safetycenter/ui/SafetyCenterActivity.java"
+            line="88"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 34 (current min is 33): `openRelevantSubpage`">
+        <location
+            file="packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/safetycenter/ui/SafetyCenterActivity.java"
+            line="92"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Class requires API level 34 (current min is 30): `android.app.AppOpsManager.OnOpNotedListener`">
+        <location
+            file="packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/permission/data/v31/AllLightHistoricalPackageOpsLiveData.kt"
+            line="46"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Class requires API level 34 (current min is 30): `android.app.AppOpsManager.OnOpNotedListener`">
+        <location
+            file="packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/permission/data/v31/AllLightPackageOpsLiveData.kt"
+            line="43"/>
     </issue>
 
 </issues>
