@@ -32,10 +32,13 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"عدم تغيير الإذن \"السماح فقط أثناء استخدام التطبيق\""</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"مواصلة استخدام الإذن \"هذه المرة فقط\""</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"معلومات أكثر"</string>
-    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"السماح بالوصول إلى كل الصور"</string>
+    <!-- no translation found for grant_dialog_button_allow_all (5939066403732409516) -->
+    <skip />
+    <!-- no translation found for grant_dialog_button_always_allow_all (1719900027660252167) -->
+    <skip />
     <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"اختيار صور"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"اختيار المزيد من الصور"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"عدم اختيار المزيد من الصور"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"اختيار المزيد من الصور والفيديوهات"</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"عدم اختيار المزيد"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"عدم السماح على أي حال"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"رفض"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> من <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -398,9 +401,7 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"هل تريد ضبط <xliff:g id="APP_NAME">%1$s</xliff:g> باعتباره التطبيق التلقائي للتنقّل؟"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"ما مِن أذونات مطلوبة."</string>
     <string name="role_watch_description" msgid="267003778693177779">"سيتم السماح لتطبيق <xliff:g id="APP_NAME">%1$s</xliff:g> بالتفاعل مع الإشعارات والوصول إلى أذونات الهاتف والرسائل القصيرة وجهات الاتصال والتقويم."</string>
-    <string name="role_companion_device_glasses_description" msgid="1775655849566169630">"سيتم السماح لتطبيق \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" بالتفاعل مع الإشعارات والوصول إلى أذونات الهاتف والرسائل القصيرة وجهات الاتصال والميكروفون والأجهزة المجاورة."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"سيتم السماح لتطبيق <xliff:g id="APP_NAME">%1$s</xliff:g> بالتفاعل مع الإشعارات وبث التطبيقات إلى الجهاز المتصل."</string>
-    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"سيتم السماح للتطبيق \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" ببث المحتوى إلى الأجهزة المجاورة."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"هذه الخدمة تشارك الصور والوسائط والإشعارات من هاتفك مع أجهزة أخرى."</string>
     <string name="role_notes_label" msgid="7451627001058089536">"تطبيق تدوين الملاحظات التلقائي"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"تطبيق تدوين الملاحظات"</string>
@@ -480,7 +481,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"‏هل تسمح بوصول &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; إلى &lt;b&gt;الصور والفيديوهات والموسيقى والملفات الصوتية وملفات أخرى&lt;/b&gt; على هذا الجهاز؟"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"‏هل تريد السماح بوصول &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; إلى المقاطع الموسيقية والملفات الصوتية على هذا الجهاز؟"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"‏هل تريد السماح بوصول &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; إلى الصور والفيديوهات على هذا الجهاز؟"</string>
-    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"‏هل تريد منح &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; الإذن بالوصول إلى الصور؟"</string>
+    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"‏هل تريد السماح بوصول &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; إلى المزيد من الصور والفيديوهات على هذا الجهاز؟"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بتسجيل الصوت؟"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"لن يتمكن هذا التطبيق من تسجيل الصوت إلا عندما يكون قيد الاستخدام"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بتسجيل الصوت؟"</string>
@@ -591,12 +592,13 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"عرض رسالة عندما يصل التطبيق إلى نص أو صور أو محتوى آخر تم نسخه."</string>
     <string name="show_password_title" msgid="2877269286984684659">"عرض كلمات المرور"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"عرض الأحرف لفترة وجيزة أثناء الكتابة"</string>
-    <string name="permission_rationale_message_location" msgid="5559450538205092588">"وضَّح هذا التطبيق أنّه قد يشارك بيانات موقعك الجغرافي مع جهات خارجية."</string>
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"وضَّح هذا التطبيق أنه يمكنه مشاركة بيانات الموقع الجغرافي مع جهات خارجية."</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"مشاركة البيانات والموقع الجغرافي"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"من أين تأتي معلومات مشاركة البيانات؟"</string>
-    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"‏قدَّم المطوّر معلومات لـ "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" عن كيفية مشاركة هذا التطبيق للبيانات. قد يتم تعديل هذه المعلومات بمرور الوقت."</string>
-    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"قد يشارك التطبيق بيانات الموقع الجغرافي من أجل:"</string>
-    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
+    <skip />
+    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
+    <skip />
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"اختلاف مشاركة البيانات"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"قد تختلف الممارسات المتعلقة بالبيانات حسب إصدار تطبيقك وآلية استخدامك له ومنطقتك وعمرك. "<annotation id="link">"مزيد من المعلومات عن مشاركة البيانات"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"بيانات موقعك الجغرافي"</string>
@@ -609,7 +611,7 @@
     <string name="permission_rationale_purpose_personalization" msgid="1589973273682238708">"التخصيص"</string>
     <string name="permission_rationale_purpose_account_management" msgid="2985772421946688879">"إدارة الحساب"</string>
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"أمان البيانات"</string>
-    <string name="app_location_permission_rationale_title" msgid="925420340572401350">"قد تتم مشاركة بيانات الموقع الجغرافي."</string>
+    <string name="app_location_permission_rationale_title" msgid="925420340572401350">"قد تتم مشاركة بيانات الموقع الجغرافي"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"وضَّح هذا التطبيق أنّه قد يشارك بيانات موقعك الجغرافي مع جهات خارجية."</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"تعديلات مشاركة بيانات الموقع الجغرافي"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"راجِع التطبيقات التي غيّرت الطريقة التي قد تشارك بها بيانات موقعك الجغرافي."</string>

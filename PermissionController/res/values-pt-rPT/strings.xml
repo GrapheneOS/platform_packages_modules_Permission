@@ -32,10 +32,13 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Manter \"Enquanto a app está a ser utilizada”"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Manter “Apenas desta vez”"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Mais informação"</string>
-    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"Permitir acesso a todas as fotos"</string>
+    <!-- no translation found for grant_dialog_button_allow_all (5939066403732409516) -->
+    <skip />
+    <!-- no translation found for grant_dialog_button_always_allow_all (1719900027660252167) -->
+    <skip />
     <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"Selecionar fotos"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"Selecionar mais fotos"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"Não selecionar mais fotos"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"Selecionar mais fotos e vídeos"</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Não selecionar mais"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Não permitir mesmo assim"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Ignorar"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> de <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -398,9 +401,7 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Definir a app <xliff:g id="APP_NAME">%1$s</xliff:g> como a sua app de navegação predefinida?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Não são necessárias autorizações"</string>
     <string name="role_watch_description" msgid="267003778693177779">"A app <xliff:g id="APP_NAME">%1$s</xliff:g> poderá interagir com as suas notificações e aceder às autorizações do Telefone, SMS, Contactos e Calendário."</string>
-    <string name="role_companion_device_glasses_description" msgid="1775655849566169630">"A app <xliff:g id="APP_NAME">%1$s</xliff:g> vai poder interagir com as suas notificações e aceder às autorizações do Telemóvel, SMS, Contactos, Microfone e Dispositivos próximos."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"A app <xliff:g id="APP_NAME">%1$s</xliff:g> poderá interagir com as suas notificações e fazer stream das suas apps para o dispositivo ligado."</string>
-    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"A app <xliff:g id="APP_NAME">%1$s</xliff:g> vai poder fazer stream de conteúdo para dispositivos próximos."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Este serviço partilha as fotos, o conteúdo multimédia e as notificações do seu telemóvel com outros dispositivos."</string>
     <string name="role_notes_label" msgid="7451627001058089536">"App de notas predefinida"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"App de notas"</string>
@@ -480,7 +481,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aceda a &lt;b&gt;fotos, vídeos, música, áudio, etc.&lt;/b&gt; neste dispositivo?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aceda a música e áudio neste dispositivo?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aceda a fotos e vídeos neste dispositivo?"</string>
-    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"Concede à app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acesso a mais fotos?"</string>
+    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aceda a mais fotos e vídeos neste dispositivo?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; grave áudio?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"A app apenas poderá gravar áudio enquanto a estiver a utilizar."</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; grave áudio?"</string>
@@ -591,12 +592,13 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Apresente uma mensagem quando as apps acedem a texto, imagens ou outro conteúdo que copiou"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Mostrar palavras-passe"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Apresente rapidamente os carateres ao escrever"</string>
-    <string name="permission_rationale_message_location" msgid="5559450538205092588">"Esta app declarou que pode partilhar os seus dados de localização com terceiros"</string>
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"Esta app declarou que pode partilhar dados de localização com terceiros"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Localização e partilha de dados"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Qual é a origem das informações da partilha de dados"</string>
-    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"O programador forneceu informações a "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" sobre como esta app partilha dados. Pode atualizar estas informações ao longo do tempo."</string>
-    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"A app pode partilhar dados de localização para:"</string>
-    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
+    <skip />
+    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
+    <skip />
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"A partilha de dados varia"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"As práticas de dados podem variar consoante a versão da app, a utilização, a região e a idade. "<annotation id="link">"Mais informações sobre a partilha de dados"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Os seus dados de localização"</string>

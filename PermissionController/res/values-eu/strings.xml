@@ -32,10 +32,11 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Mantendu “Aplikazioa abian denean” aukera"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Mantendu \"Oraingo honetan soilik\""</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Datu gehiago"</string>
-    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"Eman argazki guztiak erabiltzeko baimena"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Eman guztirako baimena"</string>
+    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Eman guztirako baimena beti"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"Hautatu argazkiak"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"Hautatu argazki gehiago"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"Ez hautatu argazki gehiago"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"Hautatu argazki eta bideo gehiago"</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Ez hautatu gehiago"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Ez eman baimenik halere"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Baztertu"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>/<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -398,9 +399,7 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g> ezarri nahi duzu nabigatzeko aplikazio lehenetsi gisa?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Ez du behar baimenik"</string>
     <string name="role_watch_description" msgid="267003778693177779">"Honako hauek erabiltzeko baimena izango du <xliff:g id="APP_NAME">%1$s</xliff:g> aplikazioak: jakinarazpenak, Telefonoa aplikazioa, SMSak, kontaktuak eta egutegia."</string>
-    <string name="role_companion_device_glasses_description" msgid="1775655849566169630">"Jakinarazpenekin interakzioan aritzeko, eta telefonoa, SMSak, kontaktuak, mikrofonoa eta inguruko gailuak erabiltzeko baimena izango du <xliff:g id="APP_NAME">%1$s</xliff:g> aplikazioak."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"Jakinarazpenekin interakzioan aritzeko eta aplikazioak konektatutako gailura igortzeko baimena izango du <xliff:g id="APP_NAME">%1$s</xliff:g> aplikazioak."</string>
-    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> aplikazioak edukia inguruko gailuetara igorri ahalko du."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Zerbitzu honek zure telefonoko argazkiak, multimedia-edukia eta jakinarazpenak partekatzen ditu beste gailuekin."</string>
     <string name="role_notes_label" msgid="7451627001058089536">"Oharren aplikazio lehenetsia"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"Oharren aplikazioa"</string>
@@ -480,7 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Gailuko &lt;b&gt;argazkiak, bideoak, musika, audioa eta bestelako fitxategiak&lt;/b&gt; erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Gailuko musika eta audioa erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Gailuko argazkiak eta bideoak erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
-    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"Argazki gehiago erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
+    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"Gailuko argazki eta bideo gehiago erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Audioa grabatzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Aplikazioak hura erabiltzean soilik grabatuko du audioa"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Audioa grabatzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
@@ -591,14 +590,14 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Erakutsi mezu bat aplikazio batek kopiatu dituzun testuak, irudiak edo edukiak atzitzen dituenean"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Erakutsi pasahitzak"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Idatzi ahala, erakutsi karaktereak laburki"</string>
-    <string name="permission_rationale_message_location" msgid="5559450538205092588">"Agian hirugarrenekin kokapen-datuak partekatuko dituela adierazi du aplikazioaren garatzaileak"</string>
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"Agian hirugarrenekin kokapen-datuak partekatuko dituela adierazi du aplikazioaren garatzaileak"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Datuak partekatzeko moduak eta kokapena"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Nondik dator datuak partekatzeko moduei buruzko informazioa?"</string>
-    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"Aplikazioak datuak partekatzeko dituen moduei buruzko informazioa eman du "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" dendan garatzaileak. Baliteke denboran zehar informazio hori eguneratzea."</string>
-    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"Baliteke hauetarako partekatzea kokapen-datuak:"</string>
-    <!-- no translation found for permission_rationale_purpose_message (2136810388727916997) -->
+    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
     <skip />
-    <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Datuak partekatzeko moduak hauen araberakoak dira:"</string>
+    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
+    <skip />
+    <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Datuak partekatzeko moduak aldatu egiten dira"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Litekeena da datuen inguruko jardunbideak aplikazioaren bertsioaren, erabileraren, lurraldearen eta adinaren araberakoak izatea. "<annotation id="link">"Datuak partekatzeko moduei buruzko informazio gehiago"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Kokapen-datuak"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Aldatu aplikazioaren sarbidea "<annotation id="link">"pribatutasun-ezarpenetan"</annotation></string>
@@ -619,7 +618,7 @@
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"Datuak partekatzeko jardunbideei buruzko informazio gehiago"</string>
     <string name="shares_location_with_third_parties" msgid="2278051743742057767">"Orain, kokapen-datuak hirugarrenekin partekatzen dira"</string>
     <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"Orain, kokapen-datuak hirugarrenekin partekatzen dira publizitate- edo marketin-helburuetarako"</string>
-    <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{Atzo jaso ziren berritasunak}=1{Atzo jaso ziren berritasunak}other{Azken # egunetan jaso ziren berritasunak}}"</string>
+    <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{Atzo jaso ziren berritasunak}=1{Atzo jaso ziren berritasunak}other{Azken # egunetan jaso dira berritasunak}}"</string>
     <string name="no_updates_at_this_time" msgid="9031085635689982935">"Une honetan, ez dago berritasunik"</string>
     <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"Datuak partekatzeko moduen inguruko berritasunak"</string>
     <string name="safety_label_changes_notification_desc" msgid="7808764283266234675">"Kokapen-datuak partekatzeko modua aldatu dute aplikazio batzuek"</string>
