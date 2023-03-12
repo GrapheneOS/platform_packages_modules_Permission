@@ -32,10 +32,13 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Išlaikyti režimą „Kai programa naudojama“ įjungtą"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Palikti „Tik šį kartą“"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Daugiau inform."</string>
-    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"Leisti pasiekti visas nuotraukas"</string>
+    <!-- no translation found for grant_dialog_button_allow_all (5939066403732409516) -->
+    <skip />
+    <!-- no translation found for grant_dialog_button_always_allow_all (1719900027660252167) -->
+    <skip />
     <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"Pasirinkti nuotraukas"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"Pasirinkti daugiau nuotraukų"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"Nesirinkti daugiau nuotraukų"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"Pasirinkti daugiau nuotraukų ir vaizdo įrašų"</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Nesirinkti daugiau"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Vis tiek neleisti"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Atmesti"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> iš <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -398,9 +401,7 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Nustatyti „<xliff:g id="APP_NAME">%1$s</xliff:g>“ kaip numatytąją navigacijos programą?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Nereikia jokių leidimų"</string>
     <string name="role_watch_description" msgid="267003778693177779">"„<xliff:g id="APP_NAME">%1$s</xliff:g>“ galės sąveikauti su pranešimų funkcija ir pasiekti telefoną, SMS, kontaktus ir kalendorių."</string>
-    <string name="role_companion_device_glasses_description" msgid="1775655849566169630">"Programai „<xliff:g id="APP_NAME">%1$s</xliff:g>“ bus leidžiama sąveikauti su jūsų pranešimais ir pasiekti jūsų leidimus „Telefonas“, „SMS“, „Kontaktai“, „Mikrofonas“ ir „Įrenginiai netoliese“."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"„<xliff:g id="APP_NAME">%1$s</xliff:g>“ galės sąveikauti su pranešimų funkcija ir srautu perduoti programas į prijungtą įrenginį."</string>
-    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"Programai „<xliff:g id="APP_NAME">%1$s</xliff:g>“ bus leidžiama srautu perduoti turinį netoliese esantiems įrenginiams."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Ši paslauga bendrina jūsų nuotraukas, mediją ir pranešimus iš telefono ir kitų įrenginių."</string>
     <string name="role_notes_label" msgid="7451627001058089536">"Numatytoji užrašų programa"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"Užrašų programa"</string>
@@ -480,7 +481,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Leisti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pasiekti &lt;b&gt;nuotrauk., vaizdo, garso įrašus, muziką, kitus failus&lt;/b&gt; įrenginyje?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Leisti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pasiekti muziką ir garso failus šiame įrenginyje?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Leisti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pasiekti nuotraukas ir vaizdo įrašus šiame įrenginyje?"</string>
-    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"Leisti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pasiekti daugiau nuotraukų?"</string>
+    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"Leisti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pasiekti daugiau nuotraukų ir vaizdo įrašų šiame įrenginyje?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Leisti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; įrašyti garsą?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Programa galės įrašyti garsą, tik kai ją naudosite"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Leisti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; įrašyti garsą?"</string>
@@ -591,12 +592,13 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Rodyti pranešimą, kai programos pasiekia nukopijuotą tekstą, vaizdus ar kitą turinį"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Rodyti slaptažodžius"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Trumpai rodyti simbolius vedant tekstą"</string>
-    <string name="permission_rationale_message_location" msgid="5559450538205092588">"Ši programa nurodė, kad gali bendrinti vietovės duomenis su trečiosiomis šalimis"</string>
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"Ši programa nurodė, kad gali bendrinti vietovės duomenis su trečiosiomis šalimis"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Duomenų bendrinimas ir vietovė"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Iš kur gaunama duomenų bendrinimo informacija"</string>
-    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"Kūrėjas pateikė informacijos "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" apie duomenų bendrinimą šioje programoje. Jis gali atnaujinti šią informaciją per laiką."</string>
-    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"Programoje bendrinami vietovės duomenys"</string>
-    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
+    <skip />
+    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
+    <skip />
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Duomenų bendrinimas skiriasi"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Duomenų praktika gali skirtis, atsižvelgiant į jūsų programos versiją, naudojimą, regioną ir amžių. "<annotation id="link">"Daugiau apie duomenų bendrinimą"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Jūsų vietovės duomenys"</string>

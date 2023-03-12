@@ -32,10 +32,11 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“ಆ್ಯಪ್ ಬಳಕೆಯಲ್ಲಿರುವಾಗ” ಹಾಗೆಯೇ ಇರಿಸಿ"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"“ಈ ಬಾರಿ ಮಾತ್ರ” ಇರಿಸಿ"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"ಹೆಚ್ಚಿನ ಮಾಹಿತಿ"</string>
-    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"ಎಲ್ಲಾ ಫೋಟೋಗಳಿಗೆ ಆ್ಯಕ್ಸೆಸ್ ಅನ್ನು ಅನುಮತಿಸಿ"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"ಎಲ್ಲವನ್ನೂ ಅನುಮತಿಸಿ"</string>
+    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"ಯಾವಾಗಲೂ ಎಲ್ಲವನ್ನೂ ಅನುಮತಿಸಿ"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"ಫೋಟೋಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"ಇನ್ನಷ್ಟು ಫೋಟೋಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"ಇನ್ನಷ್ಟು ಫೋಟೋಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಬೇಡಿ"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"ಹೆಚ್ಚಿನ ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ"</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"ಹೆಚ್ಚಿನ ಫೋಟೋಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಬೇಡಿ"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"ಯಾವುದೇ ರೀತಿಯಲ್ಲೂ ಅನುಮತಿಸಬೇಡಿ"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"ವಜಾಗೊಳಿಸಿ"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g> ರಲ್ಲಿ <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>"</string>
@@ -398,9 +399,7 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g> ಅನ್ನು ಡೀಫಾಲ್ಟ್ ನ್ಯಾವಿಗೇಷನ್ ಆ್ಯಪ್ ಆಗಿ ಸೆಟ್ ಮಾಡಬೇಕೇ?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"ಯಾವುದೇ ಅನುಮತಿಗಳ ಅಗತ್ಯವಿಲ್ಲ"</string>
     <string name="role_watch_description" msgid="267003778693177779">"ನಿಮ್ಮ ಅಧಿಸೂಚನೆಗಳೊಂದಿಗೆ ಸಂವಹನ ನಡೆಸಲು ಮತ್ತು ನಿಮ್ಮ ಫೋನ್, ಎಸ್ಎಂಎಸ್, ಸಂಪರ್ಕಗಳು ಮತ್ತು Calendar ಅನುಮತಿಗಳನ್ನು ಪ್ರವೇಶಿಸಲು <xliff:g id="APP_NAME">%1$s</xliff:g> ಗೆ ಅನುಮತಿಸಲಾಗುತ್ತದೆ."</string>
-    <string name="role_companion_device_glasses_description" msgid="1775655849566169630">"ನಿಮ್ಮ ಫೋನ್, SMS, ಸಂಪರ್ಕಗಳು, ಮೈಕ್ರೊಫೋನ್ ಮತ್ತು ಸಮೀಪದಲ್ಲಿರುವ ಸಾಧನಗಳ ಅನುಮತಿಗಳನ್ನು ಆ್ಯಕ್ಸೆಸ್ ಮಾಡಲು ಹಾಗೂ ನಿಮ್ಮ ಅಧಿಸೂಚನೆಗಳೊಂದಿಗೆ ಸಂವಹನ ನಡೆಸಲು <xliff:g id="APP_NAME">%1$s</xliff:g> ಗೆ ಅನುಮತಿಸಲಾಗುತ್ತದೆ."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"ನಿಮ್ಮ ಅಧಿಸೂಚನೆಗಳೊಂದಿಗೆ ಸಂವಹನ ನಡೆಸಲು ಮತ್ತು ನಿಮ್ಮ ಆ್ಯಪ್‌ಗಳನ್ನು ಸಂಪರ್ಕಿತ ಸಾಧನಕ್ಕೆ ಸ್ಟ್ರೀಮ್ ಮಾಡಲು <xliff:g id="APP_NAME">%1$s</xliff:g> ಗೆ ಅನುಮತಿಸಲಾಗುತ್ತದೆ."</string>
-    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"ಸಮೀಪದಲ್ಲಿರುವ ಸಾಧನಗಳಲ್ಲಿ ವಿಷಯವನ್ನು ಸ್ಟ್ರೀಮ್ ಮಾಡಲು <xliff:g id="APP_NAME">%1$s</xliff:g> ಗೆ ಅನುಮತಿಸಲಾಗುತ್ತದೆ."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"ಈ ಸೇವೆಯು ನಿಮ್ಮ ಫೋಟೋಗಳು, ಮಾಧ್ಯಮ ಹಾಗೂ ಅಧಿಸೂಚನೆಗಳನ್ನು ನಿಮ್ಮ ಫೋನ್‌ನಿಂದ ಇತರ ಸಾಧನಗಳ ಜೊತೆ ಹಂಚಿಕೊಳ್ಳುತ್ತದೆ."</string>
     <string name="role_notes_label" msgid="7451627001058089536">"ಡೀಫಾಲ್ಟ್ ಟಿಪ್ಪಣಿಗಳ ಆ್ಯಪ್"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"ಟಿಪ್ಪಣಿಗಳ ಆ್ಯಪ್"</string>
@@ -480,7 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"ಈ ಸಾಧನದಲ್ಲಿರುವ &lt;b&gt;ಫೋಟೋಗಳು, ವೀಡಿಯೊಗಳು, ಸಂಗೀತ, ಆಡಿಯೋ, ಇತರ ಫೈಲ್‌ಗಳನ್ನು&lt;/b&gt; ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೆ?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"ಈ ಸಾಧನದಲ್ಲಿರುವ ಸಂಗೀತ ಮತ್ತು ಆಡಿಯೊವನ್ನು ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೆ?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"ಈ ಸಾಧನದಲ್ಲಿರುವ ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳನ್ನು ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೆ?"</string>
-    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"ಇನ್ನಷ್ಟು ಫೋಟೋಗಳಿಗೆ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಆ್ಯಕ್ಸೆಸ್ ನೀಡಬೇಕೇ?"</string>
+    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"ಈ ಸಾಧನದಲ್ಲಿರುವ ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳನ್ನು ಆ್ಯಕ್ಸೆಸ್ ಮಾಡಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೆ?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"ಆಡಿಯೋ ರೆಕಾರ್ಡ್‌ ಮಾಡಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"ನೀವು ಆ್ಯಪ್ ಬಳಸುತ್ತಿರುವಾಗ ಮಾತ್ರ ಆ್ಯಪ್‌ಗೆ ಆಡಿಯೋ ರೆಕಾರ್ಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗುತ್ತದೆ"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"ಆಡಿಯೋ ರೆಕಾರ್ಡ್‌ ಮಾಡಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಆ್ಯಪ್‌ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
@@ -591,12 +590,13 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"ನೀವು ನಕಲಿಸಿರುವ ಪಠ್ಯ, ಚಿತ್ರಗಳು ಅಥವಾ ಇತರ ವಿಷಯವನ್ನು ಆ್ಯಪ್‌ಗಳು ಪ್ರವೇಶಿಸಿದಾಗ ಸಂದೇಶವೊಂದನ್ನು ತೋರಿಸಿ"</string>
     <string name="show_password_title" msgid="2877269286984684659">"ಪಾಸ್‌ವರ್ಡ್‌ಗಳನ್ನು ತೋರಿಸಿ"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"ನೀವು ಟೈಪ್ ಮಾಡಿದಂತೆ ಅಕ್ಷರಗಳನ್ನು ಸಂಕ್ಷಿಪ್ತವಾಗಿ ಪ್ರದರ್ಶಿಸಿ"</string>
-    <string name="permission_rationale_message_location" msgid="5559450538205092588">"ಈ ಆ್ಯಪ್, ಥರ್ಡ್-ಪಾರ್ಟಿಗಳೊಂದಿಗೆ ನಿಮ್ಮ ಸ್ಥಳ ಡೇಟಾವನ್ನು ಹಂಚಿಕೊಳ್ಳಬಹುದು ಎಂದು ತಿಳಿಸಿದೆ"</string>
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"ಈ ಆ್ಯಪ್ ಥರ್ಡ್ ಪಾರ್ಟಿಗಳೊಂದಿಗೆ ಸ್ಥಳ ಡೇಟಾವನ್ನು ಹಂಚಿಕೊಳ್ಳಬಹುದು ಎಂದು ಉಲ್ಲೇಖಿಸಿದೆ"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"ಡೇಟಾ ಹಂಚಿಕೆ ಮತ್ತು ಸ್ಥಳ"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"ಡೇಟಾ ಹಂಚಿಕೆಯ ಮಾಹಿತಿಯು ಎಲ್ಲಿಂದ ಬರುತ್ತದೆ"</string>
-    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"ಈ ಆ್ಯಪ್‌ ಡೇಟಾವನ್ನು ಹೇಗೆ ಹಂಚಿಕೊಳ್ಳುತ್ತದೆ ಎಂಬುದರ ಕುರಿತು, ಡೆವಲಪರ್ "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" ಗೆ ಮಾಹಿತಿಯನ್ನು ಒದಗಿಸಿದ್ದಾರೆ. ಇದು ಕಾಲಾನಂತರದಲ್ಲಿ ಈ ಮಾಹಿತಿಯನ್ನು ಅಪ್‌ಡೇಟ್‌ ಮಾಡುತ್ತದೆ."</string>
-    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"ಆ್ಯಪ್, ಇವುಗಳಿಗಾಗಿ ಸ್ಥಳ ಡೇಟಾವನ್ನು ಹಂಚಿಕೊಳ್ಳಬಹುದು:"</string>
-    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
+    <skip />
+    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
+    <skip />
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ಡೇಟಾ ಹಂಚಿಕೆ ಬದಲಾಗುತ್ತದೆ"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"ನಿಮ್ಮ ಆ್ಯಪ್‌ನ ಆವೃತ್ತಿ, ಬಳಕೆ, ಪ್ರದೇಶ ಮತ್ತು ವಯಸ್ಸನ್ನು ಆಧರಿಸಿ ಡೇಟಾ ನಿರ್ವಹಣಾ ಅಭ್ಯಾಸಗಳು ಬದಲಾಗಬಹುದು. "<annotation id="link">"ಡೇಟಾ ಹಂಚಿಕೆಯ ಕುರಿತು ಇನ್ನಷ್ಟು"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"ನಿಮ್ಮ ಸ್ಥಳ ಡೇಟಾ"</string>
@@ -613,7 +613,7 @@
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"ಈ ಆ್ಯಪ್, ಥರ್ಡ್-ಪಾರ್ಟಿಗಳೊಂದಿಗೆ ನಿಮ್ಮ ಸ್ಥಳ ಡೇಟಾವನ್ನು ಹಂಚಿಕೊಳ್ಳಬಹುದು ಎಂದು ತಿಳಿಸಿದೆ"</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"ಸ್ಥಳಕ್ಕಾಗಿ ಡೇಟಾ ಹಂಚಿಕೊಳ್ಳುವಿಕೆ ಕುರಿತ ಅಪ್‌ಡೇಟ್‌ಗಳು"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"ನಿಮ್ಮ ಸ್ಥಳ ಡೇಟಾವನ್ನು ತಾವು ಹಂಚಿಕೊಳ್ಳಬಹುದಾದ ವಿಧಾನವನ್ನು ಬದಲಾಯಿಸಿದ ಆ್ಯಪ್‌ಗಳನ್ನು ಪರಿಶೀಲಿಸಿ"</string>
-    <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"ಈ ಆ್ಯಪ್‌ಗಳು ನಿಮ್ಮ ಸ್ಥಳ ಡೇಟಾವನ್ನು ಅವು ಹಂಚಿಕೊಳ್ಳಬಹುದಾದ ವಿಧಾನವನ್ನು ಬದಲಾಯಿಸಿವೆ. ಅವರು ಇದನ್ನು ಮೊದಲು ಹಂಚಿಕೊಂಡಿಲ್ಲದಿರಬಹುದು ಅಥವಾ ಈಗ ಅದನ್ನು ಜಾಹೀರಾತು ಅಥವಾ ಮಾರ್ಕೆಟಿಂಗ್ ಉದ್ದೇಶಗಳಿಗಾಗಿ ಹಂಚಿಕೊಳ್ಳಬಹುದು."</string>
+    <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"ನಿಮ್ಮ ಸ್ಥಳ ಡೇಟಾವನ್ನು ಈ ಆ್ಯಪ್‌ಗಳು ಹಂಚಿಕೊಳ್ಳಬಹುದಾದ ವಿಧಾನವನ್ನು ಅವು ಬದಲಾಯಿಸಿವೆ. ಇವು ಇದನ್ನು ಈ ಮೊದಲು ಹಂಚಿಕೊಂಡಿಲ್ಲದಿರಬಹುದು ಅಥವಾ ಈಗ ಅದನ್ನು ಜಾಹೀರಾತು ಅಥವಾ ಮಾರ್ಕೆಟಿಂಗ್ ಉದ್ದೇಶಗಳಿಗಾಗಿ ಹಂಚಿಕೊಳ್ಳುತ್ತಿರಬಹುದು."</string>
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"ಈ ಆ್ಯಪ್‌ಗಳ ಡೆವಲಪರ್‌ಗಳು ತಮ್ಮ ಡೇಟಾ ಹಂಚಿಕೆಯ ಅಭ್ಯಾಸಗಳ ಕುರಿತು ಆ್ಯಪ್ ಸ್ಟೋರ್‌ಗೆ ಮಾಹಿತಿಯನ್ನು ಒದಗಿಸಿದ್ದಾರೆ. ಅವರು ಅದನ್ನು ಕಾಲಾನಂತರದಲ್ಲಿ ಅಪ್‌ಡೇಟ್‌ ಮಾಡಬಹುದು.\n\nನಿಮ್ಮ ಆ್ಯಪ್‌ನ ಆವೃತ್ತಿ, ಬಳಕೆ, ಪ್ರದೇಶ ಮತ್ತು ವಯಸ್ಸಿನ ಆಧಾರದ ಮೇಲೆ ಡೇಟಾ ಹಂಚಿಕೆಯ ಅಭ್ಯಾಸಗಳು ಬದಲಾಗಬಹುದು."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"ಡೇಟಾ ಹಂಚಿಕೆಯ ಬಗ್ಗೆ ತಿಳಿಯಿರಿ"</string>
     <string name="shares_location_with_third_parties" msgid="2278051743742057767">"ನಿಮ್ಮ ಸ್ಥಳ ಡೇಟಾವನ್ನು ಈಗ ಥರ್ಡ್-ಪಾರ್ಟಿಗಳೊಂದಿಗೆ ಹಂಚಿಕೊಳ್ಳಲಾಗಿದೆ"</string>

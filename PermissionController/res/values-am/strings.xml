@@ -32,10 +32,13 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"«መተግበሪያው በጥቅም ላይ እያለ» አቆይ"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"«አሁን ብቻ»ን አቆይ"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"ተጨማሪ መረጃ"</string>
-    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"ለሁሉም ፎቶዎች መዳረሻ ፍቀድ"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"ሁሉንም ፍቀድ"</string>
+    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"ሁልጊዜ ሁሉንም ፍቀድ"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"ፎቶዎችን ምረጥ"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"ተጨማሪ ፎቶዎችን ምረጥ"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"ተጨማሪ ፎቶዎችን አትምረጥ"</string>
+    <!-- no translation found for grant_dialog_button_allow_more_selected_photos (6352088451101076245) -->
+    <skip />
+    <!-- no translation found for grant_dialog_button_dont_allow_more_selected_photos (7956647792328613790) -->
+    <skip />
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"ለማንኛውም አትፍቀድ"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"አሰናብት"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> ከ<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -398,9 +401,7 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g> እንደ ነባሪ የአሰሳ መተግበሪያዎ ይዋቀር?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"ምንም ፈቃዶች አያስፈልጉም"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> ከማሳወቂያዎችዎ ጋር መስተጋብር እንዲፈጥር እና የእርስዎን ስልክ፣ ኤስኤምኤስ፣ እውቂያዎች እና የቀን መቁጠሪያ ፈቃዶች እንዲደርስ ይፈቀድለታል።"</string>
-    <string name="role_companion_device_glasses_description" msgid="1775655849566169630">"<xliff:g id="APP_NAME">%1$s</xliff:g> ከማሳወቂያዎችዎ ጋር መስተጋብር እንዲፈጥር እና የእርስዎን ስልክ፣ ኤስኤምኤስ፣ ዕውቂያዎች፣ ማይክሮፎን እና በአቅራቢያ ያሉ መሣሪያዎች ፈቃዶችን እንዲደርስ ይፈቀድለታል።"</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> ከማሳወቂያዎችዎ ጋር መስተጋብር እንዲፈጥር እና መተግበሪያዎችዎን ወደ የተገናኘ መሣሪያ እንዲለቅ ይፈቀድለታል።"</string>
-    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> በአቅራቢያ ላሉ መሣሪያዎች ይዘት በዥረት እንዲለቅ ይፈቀድለታል።"</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"ይህ አገልግሎት የእርስዎን ፎቶዎች፣ ሚዲያዎች እና ማሳወቂያዎች ከስልክዎ ለሌሎች መሣሪያዎች ያጋራል።"</string>
     <string name="role_notes_label" msgid="7451627001058089536">"ነባሪ የማስታወሻዎች መተግበሪያ"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"የማስታወሻዎች መተግበሪያ"</string>
@@ -480,7 +481,8 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; በመሣሪያዎ ላይ ያሉ &lt;b&gt;ፎቶዎችን፣ ቪዲዮዎችን፣ ሙዚቃን፣ ኦዲዮን፣ ቪዲዮዎችን እና ሌሎች ፋይሎችን&lt;/b&gt; ዘንድ እንዲደርስ ይፈቀድለት?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; በዚህ መሣሪያ ላይ ያለ ሙዚቃን እና ሌሎች የኦዲዮ ፋይሎችን እንዲደርስ ይፈቀድለት?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; በዚህ መሣሪያ ላይ ያሉ ፎቶዎችን እና ቪዲዮዎችን እንዲደርስ ይፈቀድለት?"</string>
-    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"ለ&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ለተጨማሪ ፎቶዎች መዳረሻ ይሰጥ?"</string>
+    <!-- no translation found for permgrouprequest_more_photos (1735590169295777717) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ኦዲዮን እንዲቀዳ ይፈቀድለት?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"መተግበሪያው ኦዲዮን መቅዳት የሚችለው መተግበሪያውን እርስዎ ሲጠቀሙበት ብቻ ነው"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ኦዲዮን እንዲቀዳ ይፈቀድለት?"</string>
@@ -591,12 +593,12 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"መተግበሪያዎች ጽሑፍን፣ ምስሎችን ወይም እርስዎ የቀዱትን ሌላ ይዘት ሲደርሱ መልዕክት አሳይ"</string>
     <string name="show_password_title" msgid="2877269286984684659">"የይለፍ ቃላትን አሳይ"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"እርስዎ በሚተይቡበት ጊዜ ቁምፊዎችን በአጭሩ ያሳይ"</string>
-    <string name="permission_rationale_message_location" msgid="5559450538205092588">"ይህ መተግበሪያ የአካባቢ ውሂብዎን ከሦስተኛ ወገኖች ጋር ሊያጋራ እንደሚችል ገልጿል"</string>
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"ይህ መተግበሪያ የአካባቢ ውሂብን ከሦስተኛ ወገኖች ጋር ሊያጋራ እንደሚችል ገልጿል"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"ውሂብ ማጋራት እና አካባቢ"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"የውሂብ ማጋራት መረጃ ከየት እንደሚመጣ"</string>
-    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"ገንቢው ይህ መተግበሪያ እንዴት ውሂብ እንደሚያጋራ መረጃ ለ"<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" አቅርቧል። ይህን መረጃ በጊዜ ሂደት ሊያዘምነው ይችላል።"</string>
-    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"መተግበሪያው የአካባቢ ውሂብን ለሚከተሉት ሊያጋራ ይችላል፦"</string>
-    <!-- no translation found for permission_rationale_purpose_message (2136810388727916997) -->
+    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
+    <skip />
+    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
     <skip />
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"የውሂብ ማጋራት ይለያያል"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"የውሂብ ልማዶች በመተግበሪያዎ ስሪት፣ አጠቃቀምዎ፣ ክልልዎ እና እድሜዎ መሰረት ሊለያዩ ይችላሉ። "<annotation id="link">"ስለውሂብ ማጋራት ተጨማሪ"</annotation></string>
@@ -615,7 +617,7 @@
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"የአካባቢ የውሂብ ማጋራት ዝማኔዎች"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"የእርስዎን የአካባቢ ውሂብ ሊያጋሩ የሚችሉበትን መንገድ የለወጡ መተግበሪያዎችን ይገምግሙ"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"እነዚህ መተግበሪያዎች የእርስዎን የአካባቢ ውሂብ ሊያጋሩ የሚችሉበትን መንገድ ለውጠዋል። ከዚህ በፊት አጋርተውት ላይሆን ይችላል፣ ወይም አሁን ለማስታወቂያ ወይም የገበያ ሥራ ዓላማዎች ሊያጋሩት ይችላሉ።"</string>
-    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"የእነዚህ መተግበሪያዎች ገንቢዎች ስለውሂብ ማጋራት ልማዶቻቸው ለመተግበሪያ መደብር መረጃ አቅርበዋል። በጊዜ ሂደት ሊያዘምኑት ይችላሉ።\n\nየውሂብ ማጋራት ልማዶች በመተግበሪያዎ ስሪት፣ አጠቃቀም፣ ክልል እና እድሜ መሰረት ሊለያዩ ይችላሉ።"</string>
+    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"የእነዚህ መተግበሪያዎች ገንቢዎች ስለውሂብ ማጋራት ልማዶቻቸው ለመተግበሪያ መደብር መረጃ አቅርበዋል። በጊዜ ሂደት ሊያዘምኑት ይችላሉ።\n\nየውሂብ ማጋራት ልማዶች በመተግበሪያዎ ስሪት፣ አጠቃቀም፣ ክልል እና ዕድሜ መሠረት ሊለያዩ ይችላሉ።"</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"ስለውሂብ ማጋራት የበለጠ ይወቁ"</string>
     <string name="shares_location_with_third_parties" msgid="2278051743742057767">"የእርስዎ የአካባቢ ውሂብ አሁን ከሦስተኛ ወገኖች ጋር ተጋርቷል"</string>
     <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"የእርስዎ የአካባቢ ውሂብ አሁን ለማስታወቂያ ወይም የገበያ ሥራ ከሦስተኛ ወገኖች ጋር ተጋርቷል"</string>

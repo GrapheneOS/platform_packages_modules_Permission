@@ -20,7 +20,6 @@
     <string name="security_privacy_brand_name" msgid="7303621734258440812">"ደህንነት እና ግላዊነት"</string>
     <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"መቆጣጠሪያዎች"</string>
     <string name="privacy_subpage_data_header" msgid="5049237788244591274">"ውሂብ"</string>
-    <!-- no translation found for health_connect_title (2132233890867430855) -->
-    <skip />
+    <string name="health_connect_title" msgid="2132233890867430855">"የጤና አገናኝ"</string>
     <string name="health_connect_summary" msgid="8156987676957707740">"የመተግበሪያ ፈቃዶች እና ውሂብ አስተዳደር"</string>
 </resources>

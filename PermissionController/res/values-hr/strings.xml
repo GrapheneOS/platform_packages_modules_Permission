@@ -32,10 +32,11 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Zadržite \"Dok se aplikacija koristi\""</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Zadrži \"Samo ovaj put\""</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Više podataka"</string>
-    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"Dopusti pristup svim fotografijama"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Dopusti sve"</string>
+    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Uvijek dopusti sve"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"Odaberi fotografije"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"Odaberi više fotografija"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"Ne biraj više slika"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"Odaberite više fotografija i videozapisa"</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Nemojte odabrati više"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Ipak nemoj dopustiti"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Odbaci"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> od <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -398,9 +399,7 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Želite li postaviti aplikaciju <xliff:g id="APP_NAME">%1$s</xliff:g> kao zadanu aplikaciju za navigaciju?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Nije potrebno nijedno dopuštenje"</string>
     <string name="role_watch_description" msgid="267003778693177779">"Aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g> moći će stupati u interakciju s vašim obavijestima i pristupati dopuštenjima za telefon, SMS-ove, kontakte i kalendar."</string>
-    <string name="role_companion_device_glasses_description" msgid="1775655849566169630">"Aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g> moći će stupati u interakciju s vašim obavijestima i pristupati vašim dopuštenjima za telefon, SMS-ove, kontakte, mikrofon i uređaje u blizini."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"Aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g> moći će stupati u interakciju s vašim obavijestima i streamati aplikacije na povezanom uređaju."</string>
-    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"Aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g> moći će emitirati sadržaj na uređaje u blizini."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Usluga dijeli vaše fotografije, medije i obavijesti s telefona s drugim uređajima."</string>
     <string name="role_notes_label" msgid="7451627001058089536">"Zadana aplikacija za bilješke"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"Aplikacija za bilješke"</string>
@@ -480,7 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Dopustiti apl. &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristup &lt;b&gt;foto/video/audio i drugim datotekama te glazbi&lt;/b&gt; na uređaju?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristup glazbi i audiodatotekama na ovom uređaju?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristup fotografijama i videozapisima na ovom uređaju?"</string>
-    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; omogućiti pristup dodatnim fotografijama?"</string>
+    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristup fotografijama i videozapisima na ovom uređaju?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da snima audiozapise?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Aplikacija će moći snimati audiozapise samo dok je upotrebljavate"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da snima audiozapise?"</string>
@@ -591,27 +590,28 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Primite poruku kad aplikacije pristupe tekstu, slikama ili drugom kopiranom sadržaju"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Prikaži zaporke"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Nakratko prikaži znakove tijekom unosa"</string>
-    <string name="permission_rationale_message_location" msgid="5559450538205092588">"Aplikacija je navela da vaše podatke o lokaciji može dijeliti s trećim stranama"</string>
-    <string name="permission_rationale_location_title" msgid="2404797182678793506">"Dijeljenje podataka i lokacija"</string>
-    <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Odakle potječe dijeljenje informacija"</string>
-    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"Razvojni programer je usluzi "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" poslao informacije o načinu na koji aplikacija dijeli podatke. Te informacije s vremenom može ažurirati."</string>
-    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"Aplikacija može dijeliti podatke o lokaciji u ove svrhe:"</string>
-    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
-    <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Dijeljenje podataka može se razlikovati"</string>
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"Aplikacija je navela da može dijeliti podatke o lokaciji s trećim stranama"</string>
+    <string name="permission_rationale_location_title" msgid="2404797182678793506">"Dijeljenje podataka i lokacije"</string>
+    <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Tko određuje kako se podaci dijele"</string>
+    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
+    <skip />
+    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
+    <skip />
+    <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Način dijeljenja može se razlikovati"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Postupanje s podacima može se razlikovati ovisno o verziji aplikacije, upotrebi, regiji i dobi. "<annotation id="link">"Više o dijeljenju podataka"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Vaši podaci o lokaciji"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Promijenite pristup aplikacije u "<annotation id="link">"postavkama privatnosti"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"funkcije aplikacije"</string>
     <string name="permission_rationale_purpose_analytics" msgid="2070800501189620712">"Analitika"</string>
     <string name="permission_rationale_purpose_developer_communications" msgid="6453047018892062374">"komunikacije s razvojnim programerom"</string>
-    <string name="permission_rationale_purpose_advertising" msgid="7156966429245180236">"oglašavanje ili marketing"</string>
+    <string name="permission_rationale_purpose_advertising" msgid="7156966429245180236">"oglašavanja ili marketinga"</string>
     <string name="permission_rationale_purpose_fraud_prevention_security" msgid="4262104770357031902">"sprječavanje prijevara, sigurnost i usklađenost"</string>
     <string name="permission_rationale_purpose_personalization" msgid="1589973273682238708">"Prilagodba"</string>
     <string name="permission_rationale_purpose_account_management" msgid="2985772421946688879">"upravljanje računom"</string>
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Sigurnost podataka"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Podaci o lokaciji mogu se dijeliti"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Aplikacija je navela da vaše podatke o lokaciji može dijeliti s trećim stranama"</string>
-    <string name="data_sharing_updates_title" msgid="7996933386875213859">"Ažuriranja dijeljenja podataka za lokaciju"</string>
+    <string name="data_sharing_updates_title" msgid="7996933386875213859">"Ažuriranja o dijeljenju podataka za lokaciju"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Pregledajte aplikacije koje su promijenile način na koji mogu dijeliti vaše podatke o lokaciji"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Ove su aplikacije promijenile način na koji mogu dijeliti vaše podatke o lokaciji. Ranije ih možda nisu dijelile ili ih sada mogu dijeliti u svrhe oglašavanja ili marketinga."</string>
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Razvojni programeri tih aplikacija su trgovini aplikacija poslali podatke o praksama dijeljenja podataka. S vremenom ih mogu ažurirati.\n\nPrakse dijeljenja podataka mogu se razlikovati ovisno o verziji aplikacije, upotrebi, regiji i dobi."</string>
@@ -620,7 +620,7 @@
     <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"Podaci o lokaciji sada se dijele s trećim stranama radi oglašavanja ili marketinga"</string>
     <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{Ažurirano tijekom posljednjeg dana}=1{Ažurirano tijekom posljednjeg dana}one{Ažurirano tijekom posljednjeg # dana}few{Ažurirano tijekom posljednja # dana}other{Ažurirano tijekom posljednjih # dana}}"</string>
     <string name="no_updates_at_this_time" msgid="9031085635689982935">"Trenutačno nema promjena"</string>
-    <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"Ažuriranja dijeljenja podataka"</string>
+    <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"Ažuriranja o dijeljenju podataka"</string>
     <string name="safety_label_changes_notification_desc" msgid="7808764283266234675">"Neke su aplikacije promijenile način na koji mogu dijeliti vaše podatke o lokaciji"</string>
     <string name="safety_label_changes_gear_description" msgid="2655887555599138509">"Postavke"</string>
 </resources>

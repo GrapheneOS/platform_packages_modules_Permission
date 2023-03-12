@@ -32,10 +32,11 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"คงไว้ที่ “เมื่อมีการใช้แอป”"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"คงไว้ที่ “เฉพาะครั้งนี้”"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"ข้อมูลเพิ่มเติม"</string>
-    <string name="grant_dialog_button_allow_all_photos" msgid="3688746146785304900">"ให้สิทธิ์เข้าถึงรูปภาพทั้งหมด"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"อนุญาตทั้งหมด"</string>
+    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"อนุญาตทั้งหมดตลอดเวลา"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"เลือกรูปภาพ"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="2003524111894640605">"เลือกรูปภาพเพิ่มเติม"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="6811842813929146242">"อย่าเลือกรูปภาพเพิ่มเติม"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"เลือกรูปภาพและวิดีโอเพิ่มเติม"</string>
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"ไม่ต้องเลือกเพิ่มเติม"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"ยังคงไม่อนุญาต"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"ปิด"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> จาก <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g> รายการ"</string>
@@ -398,9 +399,7 @@
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"ตั้งค่า <xliff:g id="APP_NAME">%1$s</xliff:g> เป็นแอปเริ่มต้นสำหรับการนำทางไหม"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"ไม่ต้องใช้สิทธิ์"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> จะได้รับอนุญาตให้โต้ตอบกับการแจ้งเตือนและได้รับสิทธิ์เข้าถึงโทรศัพท์, SMS, รายชื่อติดต่อ และปฏิทิน"</string>
-    <string name="role_companion_device_glasses_description" msgid="1775655849566169630">"<xliff:g id="APP_NAME">%1$s</xliff:g> จะได้รับอนุญาตให้โต้ตอบกับการแจ้งเตือนและได้รับสิทธิ์เข้าถึงโทรศัพท์, SMS, รายชื่อติดต่อ, ไมโครโฟน และอุปกรณ์ที่อยู่ใกล้เคียง"</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> จะได้รับอนุญาตให้โต้ตอบกับการแจ้งเตือนและสตรีมแอปไปยังอุปกรณ์ที่เชื่อมต่อ"</string>
-    <string name="role_companion_device_nearby_device_streaming_description" msgid="1177524993193492570">"<xliff:g id="APP_NAME">%1$s</xliff:g> จะได้รับอนุญาตให้สตรีมเนื้อหาไปยังอุปกรณ์ที่อยู่ใกล้เคียง"</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"บริการนี้แชร์รูปภาพ สื่อ และการแจ้งเตือนจากโทรศัพท์ของคุณไปยังอุปกรณ์อื่น"</string>
     <string name="role_notes_label" msgid="7451627001058089536">"แอปการจดบันทึกเริ่มต้น"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"แอปการจดบันทึก"</string>
@@ -480,7 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึง&lt;b&gt;รูปภาพ วิดีโอ เพลง เสียง และไฟล์อื่นๆ&lt;/b&gt; ในอุปกรณ์นี้ไหม"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึงเพลงและเสียงในอุปกรณ์นี้ไหม"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึงรูปภาพและวิดีโอในอุปกรณ์นี้ไหม"</string>
-    <string name="permgrouprequest_more_photos" msgid="4697813231897226261">"ให้สิทธ์ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึงรูปภาพเพิ่มเติมไหม"</string>
+    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึงรูปภาพและวิดีโอเพิ่มเติมในอุปกรณ์นี้ไหม"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; บันทึกเสียงไหม"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"แอปจะบันทึกเสียงได้ในขณะที่คุณใช้แอปอยู่เท่านั้น"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; บันทึกเสียงไหม"</string>
@@ -591,12 +590,13 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"แสดงข้อความเมื่อแอปเข้าถึงข้อความ รูปภาพ หรือเนื้อหาอื่นๆ ที่คุณคัดลอก"</string>
     <string name="show_password_title" msgid="2877269286984684659">"แสดงรหัสผ่าน"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"แสดงอักขระชั่วครู่ขณะพิมพ์"</string>
-    <string name="permission_rationale_message_location" msgid="5559450538205092588">"แอปนี้ระบุว่าอาจแชร์ข้อมูลตำแหน่งของคุณกับบุคคลที่สาม"</string>
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"แอปนี้ระบุว่าแอปอาจแชร์ข้อมูลตำแหน่งกับองค์กรบุคคลที่สามของแอป"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"การแชร์ข้อมูลและตำแหน่ง"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"แหล่งที่มาของรายละเอียดการแชร์ข้อมูล"</string>
-    <string name="permission_rationale_data_sharing_source_message" msgid="2229631836873747309">"นักพัฒนาแอปได้ให้ข้อมูลไว้ใน "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" เกี่ยวกับวิธีที่แอปนี้แชร์ข้อมูล โดยอาจอัปเดตข้อมูลนี้เมื่อเวลาผ่านไป"</string>
-    <string name="permission_rationale_location_purpose_title" msgid="513578159134670615">"แอปอาจแชร์ข้อมูลตำแหน่งเพื่อวัตถุประสงค์ต่อไปนี้"</string>
-    <string name="permission_rationale_purpose_message" msgid="2136810388727916997"><annotation id="purpose_list" example="purpose 1, purpose 2, purpose 3">"%1$s"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
+    <skip />
+    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
+    <skip />
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"การแชร์ข้อมูลแตกต่างกันไปตามปัจจัยต่างๆ"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"วิธีจัดการข้อมูลอาจแตกต่างกันไปตามเวอร์ชันแอป การใช้งาน ภูมิภาค และอายุของผู้ใช้ "<annotation id="link">"รายละเอียดเพิ่มเติมเกี่ยวกับการแชร์ข้อมูล"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"ข้อมูลตำแหน่งของคุณ"</string>
