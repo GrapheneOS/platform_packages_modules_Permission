@@ -93,13 +93,12 @@ final class SafetyCenterIssueDeduplicator {
 
         resurfaceHiddenIssuesIfNeeded(dedupBuckets);
 
+        if (duplicatesToFilterOut.isEmpty()) {
+            return new DeduplicationInfo(new ArrayList<>(sortedIssues), emptyList(), emptyMap());
+        }
+
         ArrayMap<SafetyCenterIssueKey, Set<String>> issueToGroupMap =
                 getTopIssueToGroupMapping(dedupBuckets);
-
-        if (duplicatesToFilterOut.isEmpty()) {
-            return new DeduplicationInfo(
-                    new ArrayList<>(sortedIssues), emptyList(), issueToGroupMap);
-        }
 
         List<SafetySourceIssueInfo> filteredOut = new ArrayList<>(duplicatesToFilterOut.size());
         List<SafetySourceIssueInfo> deduplicatedIssues = new ArrayList<>();
@@ -144,6 +143,11 @@ final class SafetyCenterIssueDeduplicator {
         ArrayMap<SafetyCenterIssueKey, Set<String>> issueToGroupMap = new ArrayMap<>();
         for (int i = 0; i < dedupBuckets.size(); i++) {
             List<SafetySourceIssueInfo> duplicates = dedupBuckets.valueAt(i);
+
+            boolean noMappingBecauseNoDuplicates = duplicates.size() < 2;
+            if (noMappingBecauseNoDuplicates) {
+                continue;
+            }
 
             SafetyCenterIssueKey topIssueKey = duplicates.get(0).getSafetyCenterIssueKey();
             for (int j = 0; j < duplicates.size(); j++) {
@@ -358,6 +362,8 @@ final class SafetyCenterIssueDeduplicator {
          * <p>If present, such an entry represents an issue mapping to all the safety source groups
          * of others issues which were filtered out as its duplicates. It also contains a mapping to
          * its own source group.
+         *
+         * <p>If an issue didn't have any duplicates, it won't be present in the result.
          */
         Map<SafetyCenterIssueKey, Set<String>> getIssueToGroupMapping() {
             return mIssueToGroup;
