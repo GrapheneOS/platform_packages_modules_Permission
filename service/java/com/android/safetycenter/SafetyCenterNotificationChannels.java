@@ -22,14 +22,19 @@ import android.annotation.Nullable;
 import android.app.NotificationChannel;
 import android.app.NotificationChannelGroup;
 import android.app.NotificationManager;
+import android.content.Context;
 import android.os.Binder;
+import android.os.UserHandle;
 import android.safetycenter.SafetySourceData;
 import android.safetycenter.SafetySourceIssue;
 import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
+import com.android.permission.util.UserUtils;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
+
+import java.util.List;
 
 /** Class responsible for creating and updating Safety Center's notification channels. */
 @RequiresApi(TIRAMISU)
@@ -48,6 +53,14 @@ final class SafetyCenterNotificationChannels {
         mResourcesContext = safetyCenterResourceContext;
     }
 
+    /** Returns a {@link NotificationManager} which will send notifications to the given user. */
+    @Nullable
+    static NotificationManager getNotificationManagerForUser(
+            Context baseContext, UserHandle userHandle) {
+        Context contextAsUser = baseContext.createContextAsUser(userHandle, 0);
+        return contextAsUser.getSystemService(NotificationManager.class);
+    }
+
     /**
      * Returns the ID of the appropriate {@link NotificationChannel} for a notification about the
      * given {@code issue} after ensuring that channel has been created.
@@ -61,6 +74,23 @@ final class SafetyCenterNotificationChannels {
             return null;
         }
         return getChannelIdForIssue(issue);
+    }
+
+    /**
+     * Creates all Safety Center {@link NotificationChannel}s instances and their group, for all
+     * current users, dropping any calling identity so those channels can be unblockable. Throws a
+     * {@link RuntimeException} if any channel is malformed and could not be created.
+     */
+    void createAllChannelsForAllUsers(Context context) {
+        List<UserHandle> users = UserUtils.getUserHandles(context);
+        for (int i = 0; i < users.size(); i++) {
+            try {
+                createAllChannelsWithoutCallingIdentity(
+                        getNotificationManagerForUser(context, users.get(i)));
+            } catch (RuntimeException e) {
+                Log.w(TAG, "Unable to create notification channels", e);
+            }
+        }
     }
 
     @Nullable
