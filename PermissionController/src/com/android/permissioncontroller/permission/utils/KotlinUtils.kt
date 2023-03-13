@@ -72,6 +72,7 @@ import androidx.navigation.NavController
 import androidx.preference.Preference
 import androidx.preference.PreferenceGroup
 import com.android.modules.utils.build.SdkLevel
+import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.data.LightAppPermGroupLiveData
 import com.android.permissioncontroller.permission.data.LightPackageInfoLiveData
@@ -534,6 +535,25 @@ object KotlinUtils {
     }
 
     /**
+     * Get the settings icon
+     *
+     * @param app The current application
+     * @param user The user for whom we want the icon
+     * @param pm The PackageManager
+     *
+     * @return Bitmap of the setting's icon, or null
+     */
+    fun getSettingsIcon(
+        app: Application,
+        user: UserHandle,
+        pm: PackageManager
+    ): Bitmap? {
+        val settingsPackageName = getPackageNameForIntent(pm,
+                Settings.ACTION_SETTINGS) ?: Constants.SETTINGS_PACKAGE_NAME_FALLBACK
+        return getBadgedPackageIconBitmap(app, user, settingsPackageName)
+    }
+
+    /**
      * Gets a package's badged icon from the system.
      *
      * @param app The current application
@@ -554,6 +574,33 @@ object KotlinUtils {
         } catch (e: PackageManager.NameNotFoundException) {
             null
         }
+    }
+
+    /**
+     * Get the icon of a package
+     *
+     * @param application The current application
+     * @param user The user for whom we want the icon
+     * @param packageName The name of the package whose icon we want
+     *
+     * @return Bitmap of the package icon, or null
+     */
+    fun getBadgedPackageIconBitmap(
+        application: Application,
+        user: UserHandle,
+        packageName: String
+    ): Bitmap? {
+        val drawable = getBadgedPackageIcon(
+                application,
+                packageName,
+                user)
+
+        val icon = if (drawable != null) {
+            convertToBitmap(drawable)
+        } else {
+            null
+        }
+        return icon
     }
 
     /**
@@ -583,6 +630,19 @@ object KotlinUtils {
         pkgIcon.setBounds(0, 0, pkgIcon.intrinsicWidth, pkgIcon.intrinsicHeight)
         pkgIcon.draw(canvas)
         return pkgIconBmp
+    }
+
+    /**
+     * Returns the name of the package that resolves the specified intent action
+     *
+     * @param pm The PackageManager
+     * @param intentAction The name of the intent action
+     *
+     * @return The package's name, or null
+     */
+    fun getPackageNameForIntent(pm: PackageManager, intentAction: String): String? {
+        val intent = Intent(intentAction)
+        return intent.resolveActivity(pm)?.packageName
     }
 
     /**

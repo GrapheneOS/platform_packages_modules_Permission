@@ -81,6 +81,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.preference.PreferenceManager
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.Constants
+import com.android.permissioncontroller.DeviceUtils
 import com.android.permissioncontroller.DumpableLog
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.R
@@ -842,7 +843,9 @@ class HibernationJobService : JobService() {
                         appsToHibernate, this@HibernationJobService, sessionId)
                 val unusedApps: Set<Pair<String, UserHandle>> = hibernatedApps + revokedApps
                 if (unusedApps.isNotEmpty()) {
-                    showUnusedAppsNotification(unusedApps.size, sessionId)
+                    showUnusedAppsNotification(unusedApps.size,
+                        sessionId,
+                        Process.myUserHandle())
                     if (SdkLevel.isAtLeastT() &&
                         revokedApps.isNotEmpty() &&
                         getSystemService(SafetyCenterManager::class.java)!!.isSafetyCenterEnabled) {
@@ -862,7 +865,11 @@ class HibernationJobService : JobService() {
         return true
     }
 
-    private suspend fun showUnusedAppsNotification(numUnused: Int, sessionId: Long) {
+    private suspend fun showUnusedAppsNotification(
+            numUnused: Int,
+            sessionId: Long,
+            user: UserHandle
+    ) {
         val notificationManager = getSystemService(NotificationManager::class.java)!!
 
         val permissionReminderChannel = NotificationChannel(
@@ -890,6 +897,13 @@ class HibernationJobService : JobService() {
             .setAutoCancel(true)
             .setContentIntent(makeUnusedAppsIntent(this, sessionId))
         val extras = Bundle()
+        if (DeviceUtils.isAuto(this)) {
+            val settingsIcon = KotlinUtils.getSettingsIcon(application,
+                    user,
+                    applicationContext.packageManager)
+            extras.putBoolean(Constants.NOTIFICATION_EXTRA_USE_LAUNCHER_ICON, false)
+            b.setLargeIcon(settingsIcon)
+        }
         if (SdkLevel.isAtLeastT() &&
             getSystemService(SafetyCenterManager::class.java)!!.isSafetyCenterEnabled) {
             if (KotlinUtils.shouldShowSafetyProtectionResources(this)) {

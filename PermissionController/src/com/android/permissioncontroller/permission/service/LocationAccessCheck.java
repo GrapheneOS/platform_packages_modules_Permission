@@ -75,6 +75,7 @@ import static java.util.concurrent.TimeUnit.DAYS;
 import android.app.AppOpsManager;
 import android.app.AppOpsManager.OpEntry;
 import android.app.AppOpsManager.PackageOps;
+import android.app.Application;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -123,6 +124,8 @@ import androidx.annotation.WorkerThread;
 import androidx.core.util.Preconditions;
 
 import com.android.modules.utils.build.SdkLevel;
+import com.android.permissioncontroller.Constants;
+import com.android.permissioncontroller.DeviceUtils;
 import com.android.permissioncontroller.PermissionControllerStatsLog;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
@@ -432,7 +435,7 @@ public class LocationAccessCheck {
                 }
 
                 addLocationNotificationIfNeeded(mAppOpsManager.getPackagesForOps(
-                        new String[]{OPSTR_FINE_LOCATION}));
+                        new String[]{OPSTR_FINE_LOCATION}), service.getApplication());
                 service.jobFinished(params, false);
             } catch (Exception e) {
                 Log.e(LOG_TAG, "Could not check for location access", e);
@@ -446,7 +449,7 @@ public class LocationAccessCheck {
         }
     }
 
-    private void addLocationNotificationIfNeeded(@NonNull List<PackageOps> ops)
+    private void addLocationNotificationIfNeeded(@NonNull List<PackageOps> ops, Application app)
             throws InterruptedException {
         synchronized (sLock) {
             List<UserPackage> packages = getLocationUsersLocked(ops);
@@ -503,7 +506,7 @@ public class LocationAccessCheck {
                 }
             }
             createPermissionReminderChannel(getUserHandleForUid(pkgInfo.applicationInfo.uid));
-            createNotificationForLocationUser(pkgInfo);
+            createNotificationForLocationUser(pkgInfo, app);
         }
     }
 
@@ -639,7 +642,7 @@ public class LocationAccessCheck {
      *
      * @param pkg The {@link PackageInfo} for the package to to be changed
      */
-    private void createNotificationForLocationUser(@NonNull PackageInfo pkg) {
+    private void createNotificationForLocationUser(@NonNull PackageInfo pkg, Application app) {
         CharSequence pkgLabel = mPackageManager.getApplicationLabel(pkg.applicationInfo);
 
         boolean safetyCenterBgLocationReminderEnabled = isSafetyCenterBgLocationReminderEnabled();
@@ -711,12 +714,18 @@ public class LocationAccessCheck {
             b.setLargeIcon(pkgIconBmp);
         }
 
+        Bundle extras = new Bundle();
+        if (DeviceUtils.isAuto(mContext)) {
+            Bitmap settingsIcon = KotlinUtils.INSTANCE.getSettingsIcon(app, user, mPackageManager);
+            b.setLargeIcon(settingsIcon);
+            extras.putBoolean(Constants.NOTIFICATION_EXTRA_USE_LAUNCHER_ICON, false);
+        }
+
         if (!TextUtils.isEmpty(appLabel)) {
-            Bundle extras = new Bundle();
             String appNameSubstitute = appLabel.toString();
             extras.putString(Notification.EXTRA_SUBSTITUTE_APP_NAME, appNameSubstitute);
-            b.addExtras(extras);
         }
+        b.addExtras(extras);
 
         notificationManager.notify(pkgName, LOCATION_ACCESS_CHECK_NOTIFICATION_ID, b.build());
         markAsNotified(pkgName, user, false);
