@@ -371,7 +371,8 @@ final class SafetySourceDataRepository {
 
         boolean retrievingOrClearingData = safetySourceData == null;
         if (retrievingOrClearingData) {
-            return mSafetyCenterConfigReader.isExternalSafetySourceActive(safetySourceId);
+            return mSafetyCenterConfigReader.isExternalSafetySourceActive(
+                    safetySourceId, packageName);
         }
 
         SafetySourceStatus safetySourceStatus = safetySourceData.getStatus();
@@ -437,7 +438,7 @@ final class SafetySourceDataRepository {
             }
         }
 
-        return mSafetyCenterConfigReader.isExternalSafetySourceActive(safetySourceId);
+        return mSafetyCenterConfigReader.isExternalSafetySourceActive(safetySourceId, packageName);
     }
 
     private void validateCallingPackage(
