@@ -593,6 +593,40 @@ class SafetySourceTestData(private val context: Context) {
                 .build()
 
     /**
+     * A [SafetySourceData] with a [SEVERITY_LEVEL_CRITICAL_WARNING] having a redirecting
+     * [SafetySourceIssue] with a [SafetySourceIssue.attributionTitle] and confirmation.
+     */
+    val criticalWithIssueWithConfirmationWithAttributionTitle: SafetySourceData
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        get() =
+            defaultCriticalDataBuilder()
+                .addIssue(
+                    defaultCriticalResolvingIssueBuilder()
+                        .setAttributionTitle("Attribution Title")
+                        .clearActions()
+                        .addAction(criticalResolvingActionWithConfirmation)
+                        .build()
+                )
+                .build()
+
+    /**
+     * A [SafetySourceData] with a [SEVERITY_LEVEL_CRITICAL_WARNING] having a redirecting
+     * [SafetySourceIssue] with a [SafetySourceIssue.attributionTitle].
+     */
+    val criticalWithTestActivityRedirectWithAttributionTitle: SafetySourceData
+        @RequiresApi(UPSIDE_DOWN_CAKE)
+        get() =
+            defaultCriticalDataBuilder()
+                .addIssue(
+                    defaultCriticalResolvingIssueBuilder()
+                        .setAttributionTitle("Attribution Title")
+                        .clearActions()
+                        .addAction(testActivityRedirectAction)
+                        .build()
+                )
+                .build()
+
+    /**
      * A [SafetySourceData] with a [SEVERITY_LEVEL_CRITICAL_WARNING] resolving general
      * [SafetySourceIssue] and [SafetySourceStatus].
      */
