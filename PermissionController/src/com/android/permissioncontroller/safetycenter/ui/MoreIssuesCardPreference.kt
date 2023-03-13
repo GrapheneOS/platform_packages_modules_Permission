@@ -47,7 +47,8 @@ internal class MoreIssuesCardPreference(
         val issueHeaderView = holder.itemView as MoreIssuesHeaderView
         if (isStaticHeader) {
             issueHeaderView.showStaticHeader(
-                context.getString(R.string.safety_center_dismissed_issues_card_title)
+                context.getString(R.string.safety_center_dismissed_issues_card_title),
+                newMoreIssuesCardData.severityLevel
             )
         } else {
             issueHeaderView.showExpandableHeader(

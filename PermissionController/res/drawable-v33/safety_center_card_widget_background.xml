@@ -17,5 +17,5 @@
 
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <solid android:color="?attr/colorSurfaceVariant" />
-    <corners android:radius="14dp"/>
+    <corners android:radius="@dimen/sc_card_widget_corner_radius"/>
 </shape>
