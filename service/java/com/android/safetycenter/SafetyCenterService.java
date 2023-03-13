@@ -110,6 +110,8 @@ public final class SafetyCenterService extends SystemService {
 
     private final SafetyCenterResourcesContext mSafetyCenterResourcesContext;
 
+    private final SafetyCenterNotificationChannels mNotificationChannels;
+
     @GuardedBy("mApiLock")
     private final SafetyCenterConfigReader mSafetyCenterConfigReader;
 
@@ -156,13 +158,12 @@ public final class SafetyCenterService extends SystemService {
                         new PendingIntentFactory(context, mSafetyCenterResourcesContext),
                         mSafetyCenterDataManager);
         mSafetyCenterListeners = new SafetyCenterListeners(mSafetyCenterDataFactory);
+        mNotificationChannels = new SafetyCenterNotificationChannels(mSafetyCenterResourcesContext);
         mNotificationSender =
                 new SafetyCenterNotificationSender(
                         context,
                         new SafetyCenterNotificationFactory(
-                                context,
-                                new SafetyCenterNotificationChannels(mSafetyCenterResourcesContext),
-                                mSafetyCenterResourcesContext),
+                                context, mNotificationChannels, mSafetyCenterResourcesContext),
                         mSafetyCenterDataManager);
         mSafetyCenterBroadcastDispatcher =
                 new SafetyCenterBroadcastDispatcher(
@@ -216,6 +217,7 @@ public final class SafetyCenterService extends SystemService {
         if (phase == SystemService.PHASE_BOOT_COMPLETED && canUseSafetyCenter()) {
             registerSafetyCenterEnabledListener();
             registerSafetyCenterPullAtomCallback();
+            mNotificationChannels.createAllChannelsForAllUsers(getContext());
         }
     }
 

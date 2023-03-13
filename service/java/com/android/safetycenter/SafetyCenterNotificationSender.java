@@ -311,9 +311,9 @@ final class SafetyCenterNotificationSender {
 
     /** Returns a {@link NotificationManager} which will send notifications to the given user. */
     @Nullable
-    private NotificationManager getNotificationManagerForUser(@UserIdInt int recipientUserId) {
-        Context contextAsUser = mContext.createContextAsUser(UserHandle.of(recipientUserId), 0);
-        return contextAsUser.getSystemService(NotificationManager.class);
+    private NotificationManager getNotificationManagerForUser(@UserIdInt int userId) {
+        return SafetyCenterNotificationChannels.getNotificationManagerForUser(
+                mContext, UserHandle.of(userId));
     }
 
     /**
