@@ -212,11 +212,10 @@ public final class SafetyCenterDataFactory {
             }
 
             if (SdkLevel.isAtLeastU()) {
-                Set<String> groups =
-                        mSafetyCenterDataManager.getGroupMappingFor(
-                                issueInfo.getSafetyCenterIssueKey());
-                issueToGroupBelonging.putStringArrayList(
-                        safetyCenterIssue.getId(), new ArrayList<>(groups));
+                updateIssueToGroupBelonging(
+                        issueToGroupBelonging,
+                        issueInfo.getSafetyCenterIssueKey(),
+                        safetyCenterIssue.getId());
             }
         }
 
@@ -253,9 +252,12 @@ public final class SafetyCenterDataFactory {
             for (int i = 0; i < safetyCenterDismissedIssues.size(); i++) {
                 builder.addDismissedIssue(safetyCenterDismissedIssues.get(i));
             }
-            Bundle extras = new Bundle();
-            extras.putBundle(ISSUES_TO_GROUPS_BUNDLE_KEY, issueToGroupBelonging);
-            builder.setExtras(extras);
+
+            if (!issueToGroupBelonging.isEmpty()) {
+                Bundle extras = new Bundle();
+                extras.putBundle(ISSUES_TO_GROUPS_BUNDLE_KEY, issueToGroupBelonging);
+                builder.setExtras(extras);
+            }
 
             return builder.build();
         } else {
@@ -269,6 +271,16 @@ public final class SafetyCenterDataFactory {
 
     private List<SafetySourcesGroup> getAllGroups() {
         return mSafetyCenterConfigReader.getSafetySourcesGroups();
+    }
+
+    private void updateIssueToGroupBelonging(
+            Bundle issueToGroupBelonging,
+            SafetyCenterIssueKey issueKey,
+            String safetyCenterIssueId) {
+        Set<String> groups = mSafetyCenterDataManager.getGroupMappingFor(issueKey);
+        if (!groups.isEmpty()) {
+            issueToGroupBelonging.putStringArrayList(safetyCenterIssueId, new ArrayList<>(groups));
+        }
     }
 
     @Nullable

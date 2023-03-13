@@ -335,7 +335,7 @@ public final class SafetyCenterDataManager {
 
     /**
      * Returns a set of {@link SafetySourcesGroup} IDs that the given {@link SafetyCenterIssueKey}
-     * is mapped to.
+     * is mapped to, or an empty list of no such mapping is configured.
      *
      * <p>Issue being mapped to a group means that this issue is relevant to that group.
      */
