@@ -374,10 +374,13 @@ final class SafetyCenterIssueDismissalRepository {
             PersistedSafetyCenterIssue persistedIssue = persistedSafetyCenterIssues.get(i);
             SafetyCenterIssueKey key = SafetyCenterIds.issueKeyFromString(persistedIssue.getKey());
 
-            // Check the source associated with this issue still exists, it might have been removed
-            // from the Safety Center config or the device might have rebooted with data persisted
-            // from a temporary Safety Center config.
-            if (!mSafetyCenterConfigReader.isExternalSafetySourceActive(key.getSafetySourceId())) {
+            // Only load the issues associated with the "real" config. We do not want to keep on
+            // persisting potentially stray issues from tests (they should supposedly be cleared,
+            // but may stick around if the data is not cleared after a test run).
+            // There is a caveat that if a real source was overridden in tests and the override
+            // provided data without clearing it, we will associate this issue with the real source.
+            if (!mSafetyCenterConfigReader.isExternalSafetySourceFromRealConfig(
+                    key.getSafetySourceId())) {
                 someDataChanged = true;
                 continue;
             }
