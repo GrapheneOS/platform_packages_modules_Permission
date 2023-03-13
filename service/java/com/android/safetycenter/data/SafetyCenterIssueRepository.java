@@ -167,7 +167,7 @@ final class SafetyCenterIssueRepository {
 
     /**
      * Returns a set of {@link SafetySourcesGroup} IDs that the given {@link SafetyCenterIssueKey}
-     * is mapped to.
+     * is mapped to, or an empty list if no such mapping is configured.
      */
     Set<String> getGroupMappingFor(SafetyCenterIssueKey issueKey) {
         return mUserIdToDedupInfo
