@@ -391,6 +391,7 @@
             <item type="dimen" name="sc_card_corner_radius_large" />
             <item type="dimen" name="sc_card_corner_radius_medium" />
             <item type="dimen" name="sc_card_corner_radius_xsmall" />
+            <item type="dimen" name="sc_card_widget_corner_radius" />
             <item type="dimen" name="sc_brand_chip_corner_radius" />
 
             <item type="color" name="safety_center_button_info" />
