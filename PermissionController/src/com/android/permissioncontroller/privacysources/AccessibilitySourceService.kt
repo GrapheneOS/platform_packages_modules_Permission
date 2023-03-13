@@ -416,6 +416,11 @@ class AccessibilitySourceService(
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         intent.putExtra(Constants.EXTRA_SESSION_ID, sessionId)
         intent.putExtra(Intent.EXTRA_UID, uid)
+
+        // Start this Settings activity using the same UX that settings slices uses. This allows
+        // settings to correctly support 2-pane layout with as-best-as-possible transition
+        // animation.
+        intent.putExtra(EXTRA_IS_FROM_SLICE, true)
         return PendingIntent.getActivity(
             context,
             0,
@@ -644,6 +649,7 @@ class AccessibilitySourceService(
         private const val PROPERTY_SC_ACCESSIBILITY_JOB_INTERVAL_MILLIS =
             "sc_accessibility_job_interval_millis"
         private val DEFAULT_SC_ACCESSIBILITY_JOB_INTERVAL_MILLIS = TimeUnit.DAYS.toMillis(1)
+        private val EXTRA_IS_FROM_SLICE = "is_from_slice"
 
         private val sourceStateChanged = SafetyEvent.Builder(
             SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
