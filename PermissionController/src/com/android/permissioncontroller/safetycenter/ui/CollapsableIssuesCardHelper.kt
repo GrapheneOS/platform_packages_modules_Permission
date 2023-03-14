@@ -61,9 +61,9 @@ class CollapsableIssuesCardHelper(
      * restoreState
      *
      * @param isQuickSettingsFragment {@code true} if CollapsableIssuesCardHelper is being used in
-     * quick settings fragment
+     *   quick settings fragment
      * @param issueCardsExpanded Whether issue cards should be expanded or not when added to
-     * preference screen
+     *   preference screen
      */
     fun setQuickSettingsState(isQuickSettingsFragment: Boolean, issueCardsExpanded: Boolean) {
         this.isQuickSettingsFragment = isQuickSettingsFragment
@@ -104,15 +104,28 @@ class CollapsableIssuesCardHelper(
         resolvedIssues: Map<IssueId, ActionId>,
         launchTaskId: Int
     ) {
-        val issueCardPreferenceList: List<IssueCardPreference> =
-            issues.mapToIssueCardPreferences(
+        val (reorderedIssues, numberOfIssuesToShowWhenCollapsed) =
+            maybeReorderFocusedSafetyCenterIssueInList(issues)
+
+        val onlyDismissedIssuesAreCollapsed =
+            reorderedIssues.size <= numberOfIssuesToShowWhenCollapsed
+
+        val issueCardPreferences: List<IssueCardPreference> =
+            reorderedIssues.mapToIssueCardPreferences(
                 resolvedIssues,
                 launchTaskId,
                 context,
                 safetyCenterViewModel,
                 dialogFragmentManager,
                 areDismissed = false
-            )
+            ) { index ->
+                when (index) {
+                    in 0 until numberOfIssuesToShowWhenCollapsed ->
+                        PositionInCardList.LIST_START_END
+                    this.size - 1 -> PositionInCardList.CARD_START_LIST_END
+                    else -> PositionInCardList.CARD_START_END
+                }
+            }
 
         val dismissedIssueCardPreferences: List<IssueCardPreference> =
             dismissedIssues.mapToIssueCardPreferences(
@@ -122,20 +135,24 @@ class CollapsableIssuesCardHelper(
                 safetyCenterViewModel,
                 dialogFragmentManager,
                 areDismissed = true
-            )
-
-        val (reorderedIssueCardPreferences, numberOfIssuesToShowWhenCollapsed) =
-            maybeReorderFocusedSafetyCenterIssueInList(issueCardPreferenceList)
+            ) { index ->
+                when {
+                    onlyDismissedIssuesAreCollapsed && index == size - 1 ->
+                        PositionInCardList.CARD_START_LIST_END
+                    onlyDismissedIssuesAreCollapsed -> PositionInCardList.CARD_START_END
+                    size == 1 -> PositionInCardList.LIST_START_END
+                    index == 0 -> PositionInCardList.LIST_START_CARD_END
+                    index == size - 1 -> PositionInCardList.CARD_START_LIST_END
+                    else -> PositionInCardList.CARD_START_END
+                }
+            }
 
         val nextMoreIssuesCardData =
             createMoreIssuesCardData(
-                reorderedIssueCardPreferences,
+                issueCardPreferences,
                 dismissedIssueCardPreferences,
                 numberOfIssuesToShowWhenCollapsed
             )
-
-        val onlyDismissedIssuesAreCollapsed =
-            reorderedIssueCardPreferences.size <= numberOfIssuesToShowWhenCollapsed
 
         val moreIssuesCardPreference =
             createMoreIssuesCardPreference(
@@ -144,7 +161,8 @@ class CollapsableIssuesCardHelper(
                 staticHeader = false,
                 issuesPreferenceGroup,
                 previousMoreIssuesCardData,
-                nextMoreIssuesCardData
+                nextMoreIssuesCardData,
+                numberOfIssuesToShowWhenCollapsed
             )
 
         val dismissedIssuesHeaderCardPreference =
@@ -155,7 +173,8 @@ class CollapsableIssuesCardHelper(
                     staticHeader = true,
                     issuesPreferenceGroup,
                     previousMoreIssuesCardData,
-                    nextMoreIssuesCardData
+                    nextMoreIssuesCardData,
+                    numberOfIssuesToShowWhenCollapsed
                 )
             } else {
                 null
@@ -166,7 +185,7 @@ class CollapsableIssuesCardHelper(
 
         addIssuesToPreferenceGroupAndSetVisibility(
             issuesPreferenceGroup,
-            reorderedIssueCardPreferences,
+            issueCardPreferences,
             dismissedIssueCardPreferences,
             moreIssuesCardPreference,
             dismissedIssuesHeaderCardPreference,
@@ -181,18 +200,13 @@ class CollapsableIssuesCardHelper(
         context: Context,
         safetyCenterViewModel: SafetyCenterViewModel,
         dialogFragmentManager: FragmentManager,
-        areDismissed: Boolean
+        areDismissed: Boolean,
+        position: List<SafetyCenterIssue>.(index: Int) -> PositionInCardList
     ): List<IssueCardPreference> =
         this?.mapIndexed { index: Int, issue: SafetyCenterIssue ->
             val resolvedActionId: ActionId? = resolvedIssues[issue.id]
             val resolvedTaskId = getLaunchTaskIdForIssue(issue, launchTaskId)
-            val positionInCardList =
-                when {
-                    !areDismissed && index in 0 until DEFAULT_NUMBER_SHOWN_ISSUES_COLLAPSED ->
-                        PositionInCardList.LIST_START_END
-                    index == this.size - 1 -> PositionInCardList.CARD_START_LIST_END
-                    else -> PositionInCardList.CARD_START_END
-                }
+            val positionInCardList = position(index)
             IssueCardPreference(
                 context,
                 safetyCenterViewModel,
@@ -207,45 +221,46 @@ class CollapsableIssuesCardHelper(
             ?: emptyList()
 
     data class ReorderedSafetyCenterIssueList(
-        val issueCardPreferences: List<IssueCardPreference>,
+        val issues: List<SafetyCenterIssue>,
         val numberOfIssuesToShowWhenCollapsed: Int
     )
     private fun maybeReorderFocusedSafetyCenterIssueInList(
-        issueCardPreferences: List<IssueCardPreference>
+        issues: List<SafetyCenterIssue>?
     ): ReorderedSafetyCenterIssueList {
-        val mutablePreferencesList = issueCardPreferences.toMutableList()
-        val focusedIssueCardPreference: IssueCardPreference? =
-            focusedSafetyCenterIssueKey?.let {
-                findAndRemovePreferenceInList(it, mutablePreferencesList)
-            }
+        if (issues == null) {
+            return ReorderedSafetyCenterIssueList(
+                emptyList(),
+                numberOfIssuesToShowWhenCollapsed = 0
+            )
+        }
+        val mutableIssuesList = issues.toMutableList()
+        val focusedIssue: SafetyCenterIssue? =
+            focusedSafetyCenterIssueKey?.let { findAndRemoveIssueInList(it, mutableIssuesList) }
 
         // If focused issue preference found, place at/near top of list and return new list and
         // correct number of issue to show while collapsed
-        if (focusedIssueCardPreference != null) {
-            val focusedIssuePlacement =
-                getFocusedIssuePlacement(focusedIssueCardPreference, mutablePreferencesList)
-            mutablePreferencesList.add(focusedIssuePlacement.index, focusedIssueCardPreference)
+        if (focusedIssue != null) {
+            val focusedIssuePlacement = getFocusedIssuePlacement(focusedIssue, mutableIssuesList)
+            mutableIssuesList.add(focusedIssuePlacement.index, focusedIssue)
             return ReorderedSafetyCenterIssueList(
-                mutablePreferencesList.toList(),
+                mutableIssuesList.toList(),
                 focusedIssuePlacement.numberForShownIssuesCollapsed
             )
         }
 
-        return ReorderedSafetyCenterIssueList(
-            issueCardPreferences,
-            DEFAULT_NUMBER_SHOWN_ISSUES_COLLAPSED
-        )
+        return ReorderedSafetyCenterIssueList(issues, DEFAULT_NUMBER_SHOWN_ISSUES_COLLAPSED)
     }
 
-    private fun findAndRemovePreferenceInList(
+    private fun findAndRemoveIssueInList(
         focusedIssueKey: SafetyCenterIssueKey,
-        issueCardPreferences: MutableList<IssueCardPreference>
-    ): IssueCardPreference? {
-        issueCardPreferences.forEachIndexed { index, issueCardPreference ->
-            if (focusedIssueKey == issueCardPreference.issueKey) {
+        issues: MutableList<SafetyCenterIssue>
+    ): SafetyCenterIssue? {
+        issues.forEachIndexed { index, issue ->
+            val issueKey = SafetyCenterIds.issueIdFromString(issue.id).safetyCenterIssueKey
+            if (focusedIssueKey == issueKey) {
                 // Remove focused issue from current placement in list and exit loop
-                issueCardPreferences.removeAt(index)
-                return issueCardPreference
+                issues.removeAt(index)
+                return issue
             }
         }
 
@@ -262,13 +277,10 @@ class CollapsableIssuesCardHelper(
     }
 
     private fun getFocusedIssuePlacement(
-        issueCardPreference: IssueCardPreference,
-        issueCardPreferenceList: List<IssueCardPreference>
+        issue: SafetyCenterIssue,
+        issueList: List<SafetyCenterIssue>
     ): FocusedIssuePlacement {
-        return if (
-            issueCardPreferenceList.isEmpty() ||
-                issueCardPreferenceList[0].severityLevel <= issueCardPreference.severityLevel
-        ) {
+        return if (issueList.isEmpty() || issueList[0].severityLevel <= issue.severityLevel) {
             FocusedIssuePlacement.FOCUSED_ISSUE_INDEX_0
         } else {
             FocusedIssuePlacement.FOCUSED_ISSUE_INDEX_1
@@ -287,7 +299,7 @@ class CollapsableIssuesCardHelper(
                 numberOfIssuesToShowWhenCollapsed
             )
         val firstHiddenIssueSeverityLevel: Int =
-            if (issueCardPreferences.isEmpty()) {
+            if (issueCardPreferences.size <= numberOfIssuesToShowWhenCollapsed) {
                 getFirstHiddenIssueSeverityLevel(dismissedIssueCardPreferences, 0)
             } else {
                 getFirstHiddenIssueSeverityLevel(
@@ -309,7 +321,8 @@ class CollapsableIssuesCardHelper(
         staticHeader: Boolean,
         issuesPreferenceGroup: PreferenceGroup,
         previousMoreIssuesCardData: MoreIssuesCardData?,
-        nextMoreIssuesCardData: MoreIssuesCardData
+        nextMoreIssuesCardData: MoreIssuesCardData,
+        numberOfIssuesToShowWhenCollapsed: Int
     ): MoreIssuesCardPreference {
         val overrideChevronIconResId =
             if (isQuickSettingsFragment) R.drawable.ic_chevron_right else null
@@ -325,13 +338,21 @@ class CollapsableIssuesCardHelper(
             if (isQuickSettingsFragment) {
                 goToSafetyCenter(context)
             } else {
-                setExpanded(issuesPreferenceGroup, !issueCardsExpanded)
+                setExpanded(
+                    issuesPreferenceGroup,
+                    !issueCardsExpanded,
+                    numberOfIssuesToShowWhenCollapsed
+                )
             }
             safetyCenterViewModel.interactionLogger.record(Action.MORE_ISSUES_CLICKED)
         }
     }
 
-    private fun setExpanded(issuesPreferenceGroup: PreferenceGroup, isExpanded: Boolean) {
+    private fun setExpanded(
+        issuesPreferenceGroup: PreferenceGroup,
+        isExpanded: Boolean,
+        numberOfIssuesToShowWhenCollapsed: Int
+    ) {
         if (issueCardsExpanded == isExpanded) {
             return
         }
@@ -341,7 +362,7 @@ class CollapsableIssuesCardHelper(
             when (val preference = issuesPreferenceGroup.getPreference(i)) {
                 // IssueCardPreference can all be visible now
                 is IssueCardPreference ->
-                    preference.isVisible = isExpanded || i < DEFAULT_NUMBER_SHOWN_ISSUES_COLLAPSED
+                    preference.isVisible = isExpanded || i < numberOfIssuesToShowWhenCollapsed
                 // MoreIssuesCardPreference must be hidden after expansion of issues
                 is MoreIssuesCardPreference -> {
                     if (preference.isStaticHeader) {

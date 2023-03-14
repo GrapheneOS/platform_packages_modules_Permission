@@ -324,9 +324,7 @@
     <style name="SafetyCenterBrandChip">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:minHeight">?android:attr/listPreferredItemHeight</item>
-        <item name="android:paddingEnd">?android:attr/listPreferredItemPaddingEnd</item>
-        <item name="android:paddingStart">?android:attr/listPreferredItemPaddingStart</item>
+        <item name="android:paddingHorizontal">@dimen/sc_spacing_large</item>
     </style>
 
     <style name="SafetyCenterBrandChipButton"
@@ -334,8 +332,6 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center_vertical|start</item>
-        <item name="android:layout_marginTop">@dimen/sc_spacing_xxxlarge</item>
-        <item name="android:layout_marginBottom">@dimen/sc_spacing_xxxlarge</item>
         <item name="android:paddingVertical">10dp</item>
         <item name="android:paddingHorizontal">@dimen/sc_spacing_large</item>
         <item name="android:drawableStart">@drawable/ic_safety_center_brand_chip</item>
@@ -350,6 +346,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:importantForAccessibility">noHideDescendants</item>
+        <item name="android:layout_marginTop">@dimen/sc_spacing_large</item>
         <item name="android:paddingHorizontal">@dimen/sc_spacing_large</item>
     </style>
 

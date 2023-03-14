@@ -22,14 +22,19 @@ import android.annotation.Nullable;
 import android.app.NotificationChannel;
 import android.app.NotificationChannelGroup;
 import android.app.NotificationManager;
+import android.content.Context;
 import android.os.Binder;
+import android.os.UserHandle;
 import android.safetycenter.SafetySourceData;
 import android.safetycenter.SafetySourceIssue;
 import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
+import com.android.permission.util.UserUtils;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
+
+import java.util.List;
 
 /** Class responsible for creating and updating Safety Center's notification channels. */
 @RequiresApi(TIRAMISU)
@@ -48,12 +53,20 @@ final class SafetyCenterNotificationChannels {
         mResourcesContext = safetyCenterResourceContext;
     }
 
+    /** Returns a {@link NotificationManager} which will send notifications to the given user. */
+    @Nullable
+    static NotificationManager getNotificationManagerForUser(
+            Context baseContext, UserHandle userHandle) {
+        Context contextAsUser = baseContext.createContextAsUser(userHandle, 0);
+        return contextAsUser.getSystemService(NotificationManager.class);
+    }
+
     /**
      * Returns the ID of the appropriate {@link NotificationChannel} for a notification about the
      * given {@code issue} after ensuring that channel has been created.
      */
     @Nullable
-    String createAndGetChannelId(NotificationManager notificationManager, SafetySourceIssue issue) {
+    String getCreatedChannelId(NotificationManager notificationManager, SafetySourceIssue issue) {
         try {
             createAllChannelsWithoutCallingIdentity(notificationManager);
         } catch (RuntimeException e) {
@@ -61,6 +74,31 @@ final class SafetyCenterNotificationChannels {
             return null;
         }
         return getChannelIdForIssue(issue);
+    }
+
+    /**
+     * Creates all Safety Center {@link NotificationChannel}s instances and their group, for all
+     * current users, dropping any calling identity so those channels can be unblockable. Throws a
+     * {@link RuntimeException} if any channel is malformed and could not be created.
+     */
+    void createAllChannelsForAllUsers(Context context) {
+        List<UserHandle> users = UserUtils.getUserHandles(context);
+        for (int i = 0; i < users.size(); i++) {
+            createAllChannelsForUser(context, users.get(i));
+        }
+    }
+
+    /**
+     * Creates all Safety Center {@link NotificationChannel}s instances and their group for the
+     * given {@link UserHandle}, dropping any calling identity so those channels can be unblockable.
+     * Throws a {@link RuntimeException} if any channel is malformed and could not be created.
+     */
+    void createAllChannelsForUser(Context context, UserHandle user) {
+        try {
+            createAllChannelsWithoutCallingIdentity(getNotificationManagerForUser(context, user));
+        } catch (RuntimeException e) {
+            Log.w(TAG, "Error creating notification channels for user " + user.getIdentifier(), e);
+        }
     }
 
     @Nullable
@@ -91,9 +129,9 @@ final class SafetyCenterNotificationChannels {
         final long callingId = Binder.clearCallingIdentity();
         try {
             notificationManager.createNotificationChannelGroup(getChannelGroupDefinition());
-            notificationManager.createNotificationChannel(getGreenChannelDefinition());
-            notificationManager.createNotificationChannel(getYellowChannelDefinition());
-            notificationManager.createNotificationChannel(getRedChannelDefinition());
+            notificationManager.createNotificationChannel(getInformationChannelDefinition());
+            notificationManager.createNotificationChannel(getRecommendationChannelDefinition());
+            notificationManager.createNotificationChannel(getCriticalWarningChannelDefinition());
         } finally {
             Binder.restoreCallingIdentity(callingId);
         }
@@ -104,7 +142,7 @@ final class SafetyCenterNotificationChannels {
                 CHANNEL_GROUP_ID, getString("notification_channel_group_name"));
     }
 
-    private NotificationChannel getGreenChannelDefinition() {
+    private NotificationChannel getInformationChannelDefinition() {
         NotificationChannel channel =
                 new NotificationChannel(
                         CHANNEL_ID_INFORMATION,
@@ -115,7 +153,7 @@ final class SafetyCenterNotificationChannels {
         return channel;
     }
 
-    private NotificationChannel getYellowChannelDefinition() {
+    private NotificationChannel getRecommendationChannelDefinition() {
         NotificationChannel channel =
                 new NotificationChannel(
                         CHANNEL_ID_RECOMMENDATION,
@@ -126,7 +164,7 @@ final class SafetyCenterNotificationChannels {
         return channel;
     }
 
-    private NotificationChannel getRedChannelDefinition() {
+    private NotificationChannel getCriticalWarningChannelDefinition() {
         NotificationChannel channel =
                 new NotificationChannel(
                         CHANNEL_ID_CRITICAL_WARNING,

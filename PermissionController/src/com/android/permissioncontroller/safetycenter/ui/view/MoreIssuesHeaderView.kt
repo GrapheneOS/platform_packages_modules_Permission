@@ -1,6 +1,5 @@
 package com.android.permissioncontroller.safetycenter.ui.view
 
-import android.animation.Animator
 import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.drawable.Animatable2
@@ -53,7 +52,7 @@ constructor(
     private val expandCollapseIcon: ImageView by lazy {
         expandCollapseLayout.findViewById(R.id.widget_icon)
     }
-    private var cornerAnimator: Animator? = null
+    private var cornerAnimator: ValueAnimator? = null
 
     fun showExpandableHeader(
         previousData: MoreIssuesCardData?,
@@ -89,13 +88,13 @@ constructor(
         )
     }
 
-    fun showStaticHeader(title: String) {
+    fun showStaticHeader(title: String, severityLevel: Int) {
         titleView.text = title
-        statusIconView.isVisible = false
+        updateStatusIcon(previousSeverityLevel = null, severityLevel)
         expandCollapseLayout.isVisible = false
         setOnClickListener(null)
         isClickable = false
-        updateBackground(wasExpanded = null, isExpanded = true)
+        setBackgroundResource(android.R.color.transparent)
     }
 
     private fun updateExpandCollapseButton(
@@ -176,8 +175,11 @@ constructor(
     }
 
     private fun updateBackground(wasExpanded: Boolean?, isExpanded: Boolean) {
+        if (background !is RippleDrawable) {
+            setBackgroundResource(R.drawable.safety_center_more_issues_card_background)
+        }
         (background?.mutate() as? RippleDrawable)?.let { ripple ->
-            val topRadius = context.resources.getDimension(R.dimen.sc_card_corner_radius_medium)
+            val topRadius = context.resources.getDimension(R.dimen.sc_card_corner_radius_large)
             val bottomRadiusStart =
                 if (wasExpanded ?: isExpanded) {
                     context.resources.getDimension(R.dimen.sc_card_corner_radius_xsmall)
@@ -203,6 +205,8 @@ constructor(
                 )
             setCornerRadii(ripple, cornerRadii)
             if (bottomRadiusEnd != bottomRadiusStart) {
+                cornerAnimator?.removeAllUpdateListeners()
+                cornerAnimator?.removeAllListeners()
                 cornerAnimator?.cancel()
                 val animator =
                     ValueAnimator.ofFloat(bottomRadiusStart, bottomRadiusEnd)
