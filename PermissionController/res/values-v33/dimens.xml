@@ -44,6 +44,7 @@
     <dimen name="sc_card_corner_radius_large">28dp</dimen>
     <dimen name="sc_card_corner_radius_medium">20dp</dimen>
     <dimen name="sc_card_corner_radius_xsmall">4dp</dimen>
+    <dimen name="sc_card_widget_corner_radius">16dp</dimen>
 
     <dimen name="sc_qs_max_width">492dp</dimen>
 </resources>

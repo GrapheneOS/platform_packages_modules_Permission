@@ -309,8 +309,6 @@
         <item name="android:paddingBottom">@dimen/sc_card_margin_bottom</item>
         <item name="android:layout_marginStart">@dimen/sc_spacing_large</item>
         <item name="android:layout_marginEnd">@dimen/sc_spacing_large</item>
-        <item name="android:layout_marginTop">@dimen/sc_spacing_xsmall</item>
-        <item name="android:layout_marginBottom">@dimen/sc_spacing_xsmall</item>
         <item name="android:background">@drawable/safety_center_card_background</item>
     </style>
 
@@ -553,15 +551,14 @@
 
     <style name="SafetyCenterMoreIssuesCollapsed"
            parent="SafetyCenterCard.Issue">
-        <item name="android:layout_marginTop">@dimen/sc_spacing_small</item>
-        <item name="android:paddingTop">@dimen/sc_spacing_medium</item>
-        <item name="android:paddingBottom">@dimen/sc_spacing_medium</item>
+        <item name="android:layout_marginTop">@dimen/sc_spacing_xlarge</item>
+        <item name="android:paddingVertical">@dimen/sc_spacing_xlarge</item>
         <item name="android:background">@drawable/safety_center_more_issues_card_background</item>
     </style>
 
     <style name="SafetyCenterMoreIssuesTitle"
            parent="SafetyCenterBaseTextContainer">
-        <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Body</item>
+        <item name="android:textAppearance">@style/TextAppearance.Material3.LabelLarge</item>
         <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">0dp</item>
@@ -589,7 +586,7 @@
 
     <style name="SafetyCenterMoreIssuesCounter"
            parent="android:Widget.DeviceDefault">
-        <item name="android:layout_height">28dp</item>
+        <item name="android:layout_height">24dp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:paddingStart">@dimen/sc_spacing_xsmall</item>

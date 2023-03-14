@@ -1587,7 +1587,7 @@ class SafetyCenterManagerTest {
 
     @Test
     @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
-    fun getSafetyCenterData_noDuplicateIssues_issuesRelevantForTheirGroups() {
+    fun getSafetyCenterData_noDuplicateIssues_noGroupBelongingSpecified() {
         safetyCenterTestHelper.setConfig(
             safetyCenterTestConfigs.multipleSourcesWithDeduplicationInfoConfig
         )
@@ -1607,15 +1607,10 @@ class SafetyCenterManagerTest {
         )
 
         val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
-        val issueIdFirst = apiSafetyCenterData.issues[0].id
-        val issueIdSecond = apiSafetyCenterData.issues[1].id
         val issueToGroupBelonging =
             apiSafetyCenterData.extras.getBundle(ISSUES_TO_GROUPS_BUNDLE_KEY)
 
-        assertThat(issueToGroupBelonging!!.getStringArrayList(issueIdFirst))
-            .containsExactly(MULTIPLE_SOURCES_GROUP_ID_1)
-        assertThat(issueToGroupBelonging.getStringArrayList(issueIdSecond))
-            .containsExactly(MULTIPLE_SOURCES_GROUP_ID_2)
+        assertThat(issueToGroupBelonging).isNull()
     }
 
     @Test

@@ -84,7 +84,7 @@ final class SafetyCenterNotificationFactory {
             NotificationManager notificationManager,
             SafetySourceIssue issue,
             SafetyCenterIssueKey issueKey) {
-        String channelId = mNotificationChannels.createAndGetChannelId(notificationManager, issue);
+        String channelId = mNotificationChannels.getCreatedChannelId(notificationManager, issue);
 
         if (channelId == null) {
             return null;

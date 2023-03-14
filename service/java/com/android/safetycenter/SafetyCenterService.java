@@ -110,6 +110,8 @@ public final class SafetyCenterService extends SystemService {
 
     private final SafetyCenterResourcesContext mSafetyCenterResourcesContext;
 
+    private final SafetyCenterNotificationChannels mNotificationChannels;
+
     @GuardedBy("mApiLock")
     private final SafetyCenterConfigReader mSafetyCenterConfigReader;
 
@@ -156,13 +158,12 @@ public final class SafetyCenterService extends SystemService {
                         new PendingIntentFactory(context, mSafetyCenterResourcesContext),
                         mSafetyCenterDataManager);
         mSafetyCenterListeners = new SafetyCenterListeners(mSafetyCenterDataFactory);
+        mNotificationChannels = new SafetyCenterNotificationChannels(mSafetyCenterResourcesContext);
         mNotificationSender =
                 new SafetyCenterNotificationSender(
                         context,
                         new SafetyCenterNotificationFactory(
-                                context,
-                                new SafetyCenterNotificationChannels(mSafetyCenterResourcesContext),
-                                mSafetyCenterResourcesContext),
+                                context, mNotificationChannels, mSafetyCenterResourcesContext),
                         mSafetyCenterDataManager);
         mSafetyCenterBroadcastDispatcher =
                 new SafetyCenterBroadcastDispatcher(
@@ -206,6 +207,7 @@ public final class SafetyCenterService extends SystemService {
                                     mSafetyCenterDataChangeNotifier,
                                     mApiLock)
                             .register(getContext());
+                    new LocaleBroadcastReceiver().register(getContext());
                 }
             }
         }
@@ -216,6 +218,7 @@ public final class SafetyCenterService extends SystemService {
         if (phase == SystemService.PHASE_BOOT_COMPLETED && canUseSafetyCenter()) {
             registerSafetyCenterEnabledListener();
             registerSafetyCenterPullAtomCallback();
+            mNotificationChannels.createAllChannelsForAllUsers(getContext());
         }
     }
 
@@ -926,6 +929,24 @@ public final class SafetyCenterService extends SystemService {
         return mDeviceSupportsSafetyCenter && mConfigAvailable;
     }
 
+    /** {@link BroadcastReceiver} which handles Locale changes. */
+    private final class LocaleBroadcastReceiver extends BroadcastReceiver {
+
+        private static final String TAG = "LocaleBroadcastReceiver";
+
+        void register(Context context) {
+            IntentFilter filter = new IntentFilter();
+            filter.addAction(Intent.ACTION_LOCALE_CHANGED);
+            context.registerReceiverForAllUsers(this, filter, null, null);
+        }
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Log.d(TAG, "Locale changed broadcast received");
+            mNotificationChannels.createAllChannelsForAllUsers(getContext());
+        }
+    }
+
     /**
      * {@link BroadcastReceiver} which handles user and work profile related broadcasts that Safety
      * Center is interested including quiet mode turning on/off and accounts being added/removed.
@@ -974,6 +995,7 @@ public final class SafetyCenterService extends SystemService {
                 case Intent.ACTION_MANAGED_PROFILE_ADDED:
                 case Intent.ACTION_MANAGED_PROFILE_AVAILABLE:
                     startRefreshingSafetySources(REFRESH_REASON_OTHER, userId);
+                    mNotificationChannels.createAllChannelsForUser(getContext(), userHandle);
                     break;
             }
         }
