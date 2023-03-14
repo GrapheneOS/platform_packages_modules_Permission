@@ -28,6 +28,8 @@ import android.provider.Settings;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.android.modules.utils.build.SdkLevel;
+import com.android.role.controller.model.AppOpPermissions;
 import com.android.role.controller.model.Permissions;
 import com.android.role.controller.model.Role;
 import com.android.role.controller.model.RoleBehavior;
@@ -50,6 +52,9 @@ public class HomeRoleBehavior implements RoleBehavior {
             android.Manifest.permission.READ_CALL_LOG,
             android.Manifest.permission.WRITE_CALL_LOG,
             android.Manifest.permission.READ_CONTACTS);
+
+    private static final List<String> WEAR_PERMISSIONS = Arrays.asList(
+            android.Manifest.permission.SYSTEM_ALERT_WINDOW);
 
     @Override
     public boolean isAvailableAsUser(@NonNull Role role, @NonNull UserHandle user,
@@ -132,6 +137,14 @@ public class HomeRoleBehavior implements RoleBehavior {
                     Arrays.asList(android.Manifest.permission.ALLOW_SLIPPERY_TOUCHES),
                     true, false, true, false, false, context);
         }
+
+        if (SdkLevel.isAtLeastT()) {
+            if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_WATCH)) {
+                for (String permission : WEAR_PERMISSIONS) {
+                    AppOpPermissions.grant(packageName, permission, true, context);
+                }
+            }
+        }
     }
 
     @Override
@@ -145,6 +158,14 @@ public class HomeRoleBehavior implements RoleBehavior {
             Permissions.revoke(packageName,
                     Arrays.asList(android.Manifest.permission.ALLOW_SLIPPERY_TOUCHES),
                     true, false, false, context);
+        }
+
+        if (SdkLevel.isAtLeastT()) {
+            if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_WATCH)) {
+                for (String permission : WEAR_PERMISSIONS) {
+                    AppOpPermissions.revoke(packageName, permission, context);
+                }
+            }
         }
     }
 

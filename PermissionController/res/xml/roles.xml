@@ -1101,7 +1101,6 @@
       -->
     <role
         name="android.app.role.SYSTEM_UI"
-        behavior="SystemUiRoleBehavior"
         defaultHolders="config_systemUi"
         exclusive="true"
         minSdkVersion="31"
