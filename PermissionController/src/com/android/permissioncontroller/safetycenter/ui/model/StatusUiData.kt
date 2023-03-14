@@ -4,6 +4,8 @@ import android.content.Context
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterStatus
+import android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK
+import android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN
 import android.util.Log
 import androidx.annotation.RequiresApi
 import com.android.permissioncontroller.R
@@ -28,8 +30,8 @@ data class StatusUiData(
         private val TAG: String = StatusUiData::class.java.simpleName
         fun getStatusImageResId(severityLevel: Int) =
             when (severityLevel) {
-                SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN,
-                SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK -> R.drawable.safety_status_info
+                OVERALL_SEVERITY_LEVEL_UNKNOWN,
+                OVERALL_SEVERITY_LEVEL_OK -> R.drawable.safety_status_info
                 SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_RECOMMENDATION ->
                     R.drawable.safety_status_recommendation
                 SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING ->
@@ -61,7 +63,8 @@ data class StatusUiData(
         return context.getString(
             R.string.safety_status_preference_title_and_summary_content_description,
             title,
-            getSummary(context))
+            getSummary(context)
+        )
     }
 
     val isRefreshInProgress: Boolean
@@ -76,9 +79,23 @@ data class StatusUiData(
         return !hasIssues &&
             !hasPendingActions &&
             when (severityLevel) {
-                SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK,
-                SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN -> true
+                OVERALL_SEVERITY_LEVEL_OK,
+                OVERALL_SEVERITY_LEVEL_UNKNOWN -> true
                 else -> false
             }
     }
+
+    enum class ButtonToShow {
+        RESCAN,
+        REVIEW_SETTINGS
+    }
+    val buttonToShow: ButtonToShow?
+        get() =
+            when {
+                hasIssues -> null
+                hasPendingActions -> ButtonToShow.REVIEW_SETTINGS
+                severityLevel == OVERALL_SEVERITY_LEVEL_OK ||
+                    severityLevel == OVERALL_SEVERITY_LEVEL_UNKNOWN -> ButtonToShow.RESCAN
+                else -> null
+            }
 }
