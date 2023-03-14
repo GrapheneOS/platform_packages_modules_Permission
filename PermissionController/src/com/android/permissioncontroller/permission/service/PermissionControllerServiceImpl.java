@@ -68,6 +68,8 @@ import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.role.controller.model.Role;
 import com.android.role.controller.model.Roles;
 
+import kotlin.Pair;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlSerializer;
 
@@ -89,7 +91,6 @@ import java.util.function.Consumer;
 import java.util.function.IntConsumer;
 import java.util.stream.Collectors;
 
-import kotlin.Pair;
 import kotlinx.coroutines.BuildersKt;
 import kotlinx.coroutines.GlobalScope;
 
@@ -737,7 +738,8 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
 
                 PermissionControllerStatsLog.write(
                         PermissionControllerStatsLog.PERMISSION_GRANT_REQUEST_RESULT_REPORTED,
-                        requestId, uid, packageName, permName, false, r);
+                        requestId, uid, packageName, permName, false, r,
+                        /* permission_rationale_shown = */ false);
             }
         }
     }

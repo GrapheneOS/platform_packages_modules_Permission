@@ -172,7 +172,8 @@ suspend fun revokeAppPermissions(
                 for (permName in revocablePermissions) {
                     PermissionControllerStatsLog.write(
                         PERMISSION_GRANT_REQUEST_RESULT_REPORTED,
-                        sessionId, uid, packageName, permName, false, SERVER_LOG_ID)
+                        sessionId, uid, packageName, permName, false, SERVER_LOG_ID,
+                        /* permission_rationale_shown = */ false)
                 }
 
                 if (DEBUG_AUTO_REVOKE) {
