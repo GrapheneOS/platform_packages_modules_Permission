@@ -204,7 +204,7 @@ public class Role {
      * The app op permissions to be granted by this role.
      */
     @NonNull
-    private final List<String> mAppOpPermissions;
+    private final List<Permission> mAppOpPermissions;
 
     /**
      * The app ops to be set to allowed by this role.
@@ -230,7 +230,7 @@ public class Role {
             @StringRes int searchKeywordsResource, @StringRes int shortLabelResource,
             boolean showNone, boolean statik, boolean systemOnly, boolean visible,
             @NonNull List<RequiredComponent> requiredComponents,
-            @NonNull List<Permission> permissions, @NonNull List<String> appOpPermissions,
+            @NonNull List<Permission> permissions, @NonNull List<Permission> appOpPermissions,
             @NonNull List<AppOp> appOps, @NonNull List<PreferredActivity> preferredActivities,
             @Nullable String uiBehaviorName) {
         mName = name;
@@ -338,7 +338,7 @@ public class Role {
     }
 
     @NonNull
-    public List<String> getAppOpPermissions() {
+    public List<Permission> getAppOpPermissions() {
         return mAppOpPermissions;
     }
 
@@ -787,9 +787,10 @@ public class Role {
                 SdkLevel.isAtLeastS() ? !mSystemOnly : true, overrideUser, true, false, false,
                 context);
 
-        int appOpPermissionsSize = mAppOpPermissions.size();
+        List<String> appOpPermissionsToGrant = Permissions.filterBySdkVersion(mAppOpPermissions);
+        int appOpPermissionsSize = appOpPermissionsToGrant.size();
         for (int i = 0; i < appOpPermissionsSize; i++) {
-            String appOpPermission = mAppOpPermissions.get(i);
+            String appOpPermission = appOpPermissionsToGrant.get(i);
             AppOpPermissions.grant(packageName, appOpPermission, overrideUser, context);
         }
 
@@ -841,11 +842,12 @@ public class Role {
         boolean permissionOrAppOpChanged = Permissions.revoke(packageName, permissionsToRevoke,
                 true, false, overrideSystemFixedPermissions, context);
 
-        List<String> appOpPermissionsToRevoke = new ArrayList<>(mAppOpPermissions);
+        List<String> appOpPermissionsToRevoke = Permissions.filterBySdkVersion(mAppOpPermissions);
         for (int i = 0; i < otherRoleNamesSize; i++) {
             String roleName = otherRoleNames.get(i);
             Role role = roles.get(roleName);
-            appOpPermissionsToRevoke.removeAll(role.mAppOpPermissions);
+            appOpPermissionsToRevoke.removeAll(
+                    Permissions.filterBySdkVersion(role.mAppOpPermissions));
         }
         int appOpPermissionsSize = appOpPermissionsToRevoke.size();
         for (int i = 0; i < appOpPermissionsSize; i++) {
