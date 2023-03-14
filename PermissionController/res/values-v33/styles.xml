@@ -358,6 +358,7 @@
         <item name="layout_constraintTop_toTopOf">parent</item>
         <item name="layout_constraintBottom_toBottomOf">@id/status_title_and_summary</item>
         <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintEnd_toStartOf">@id/status_title_and_summary</item>
         <item name="android:scaleType">centerInside</item>
         <item name="android:gravity">center</item>
     </style>
@@ -389,9 +390,7 @@
         <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Body</item>
     </style>
 
-    <style name="SafetyCenterStatusButton" parent="SafetyCenterActionButton" />
-
-    <style name="SafetyCenterStatusButton.ReviewSettings">
+    <style name="SafetyCenterStatusButton" parent="SafetyCenterActionButton">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="layout_constraintTop_toBottomOf">@id/status_title_and_summary</item>
@@ -400,26 +399,9 @@
         <item name="backgroundTint">@color/safety_center_button_info</item>
     </style>
 
-    <style name="SafetyCenterStatusButton.Rescan">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="layout_constraintTop_toBottomOf">@id/review_settings_button</item>
-        <item name="layout_constraintStart_toStartOf">parent</item>
-        <item name="android:layout_marginTop">@dimen/sc_spacing_xxxlarge</item>
-        <item name="backgroundTint">@color/safety_center_button_info</item>
-    </style>
-
-    <style name="SafetyCenterStatusButton.PendingActionsRescan">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="layout_constraintTop_toBottomOf">@id/review_settings_button</item>
-        <item name="layout_constraintStart_toStartOf">parent</item>
-        <item name="android:layout_marginTop">@dimen/sc_action_button_list_margin</item>
-        <item name="backgroundTint">@color/sc_surface_dark</item>
-        <item name="strokeWidth">@dimen/mtrl_btn_stroke_size</item>
-        <item name="strokeColor">@color/safety_center_button_info</item>
-        <item name="android:textColor">?android:attr/textColorPrimary</item>
-    </style>
+    <!-- Overridden for larger screens -->
+    <style name="SafetyCenterStatusButton.ReviewSettings" />
+    <style name="SafetyCenterStatusButton.Rescan" />
 
     <style name="SafetyCenterStatusSafetyProtectionView">
         <item name="android:layout_width">wrap_content</item>
