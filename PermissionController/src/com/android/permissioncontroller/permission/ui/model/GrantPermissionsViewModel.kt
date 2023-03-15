@@ -1216,7 +1216,8 @@ class GrantPermissionsViewModel(
 
         PermissionControllerStatsLog.write(
             PermissionControllerStatsLog.PERMISSION_GRANT_REQUEST_RESULT_REPORTED, sessionId,
-            packageInfo.uid, packageName, permission, isImplicit, result)
+            packageInfo.uid, packageName, permission, isImplicit, result,
+            /* permission_rationale_shown = */ false)
     }
 
     /**
@@ -1494,7 +1495,7 @@ class GrantPermissionsViewModel(
 
         PermissionControllerStatsLog.write(GRANT_PERMISSIONS_ACTIVITY_BUTTON_ACTIONS,
                 groupName, packageInfo.uid, packageName, presentedButtons, clickedButton, sessionId,
-                packageInfo.targetSdkVersion, selectedPrecision)
+                packageInfo.targetSdkVersion, selectedPrecision, false)
         Log.v(LOG_TAG, "Logged buttons presented and clicked permissionGroupName=" +
                 "$groupName uid=${packageInfo.uid} selectedPrecision=$selectedPrecision " +
                 "package=$packageName presentedButtons=$presentedButtons " +
