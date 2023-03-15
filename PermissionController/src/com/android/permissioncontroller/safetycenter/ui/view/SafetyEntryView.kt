@@ -176,6 +176,7 @@ constructor(
         isEnabled = entry.pendingIntent != null
         changeEnabledState(
             entry.isEnabled,
+            isEnabled,
             commonEntryView?.titleView,
             commonEntryView?.summaryView
         )
