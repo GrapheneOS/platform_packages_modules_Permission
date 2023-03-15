@@ -20,7 +20,6 @@ package com.android.permissioncontroller.permission.ui.model
 import android.Manifest
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
-import android.Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED
 import android.Manifest.permission_group.READ_MEDIA_VISUAL
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -83,6 +82,7 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils.isPermissio
 import com.android.permissioncontroller.permission.utils.KotlinUtils.isPhotoPickerPromptEnabled
 import com.android.permissioncontroller.permission.utils.LocationUtils
 import com.android.permissioncontroller.permission.utils.PermissionMapping
+import com.android.permissioncontroller.permission.utils.PermissionMapping.getPartialStorageGrantPermissionsForGroup
 import com.android.permissioncontroller.permission.utils.PermissionRationales
 import com.android.permissioncontroller.permission.utils.SafetyNetLogger
 import com.android.permissioncontroller.permission.utils.Utils
@@ -347,10 +347,8 @@ class AppPermissionViewModel(
                 selectState.isShown = true
 
                 deniedState.isChecked = !group.isGranted
-                val onlyUserSelectedGranted = group.isGranted && group.permissions.values.all {
-                    it.name == READ_MEDIA_VISUAL_USER_SELECTED || !it.isGrantedIncludingAppOp }
-                selectState.isChecked = onlyUserSelectedGranted
-                allowedState.isChecked = group.isGranted && !onlyUserSelectedGranted
+                selectState.isChecked = isPartialStorageGrant(group)
+                allowedState.isChecked = group.isGranted && !isPartialStorageGrant(group)
             } else {
                 // Allow / Deny case
                 allowedState.isShown = true
@@ -653,12 +651,12 @@ class AppPermissionViewModel(
         }
 
         if (changeRequest == ChangeRequest.PHOTOS_SELECTED) {
-            val nonSelectedPerms = group.permissions.keys.filter {
-                it != READ_MEDIA_VISUAL_USER_SELECTED }
+            val partialGrantPerms = getPartialStorageGrantPermissionsForGroup(group)
+            val nonSelectedPerms = group.permissions.keys.filter { it !in partialGrantPerms }
             var newGroup = KotlinUtils.revokeForegroundRuntimePermissions(app, group,
                 filterPermissions = nonSelectedPerms)
             newGroup = KotlinUtils.grantForegroundRuntimePermissions(app, newGroup,
-            filterPermissions = listOf(READ_MEDIA_VISUAL_USER_SELECTED))
+            filterPermissions = partialGrantPerms.toList())
             logPermissionChanges(group, newGroup, buttonClicked)
             return
         }
@@ -1104,6 +1102,24 @@ class AppPermissionViewModel(
         Log.v(LOG_TAG, "AppPermission fragment viewed with sessionId=$sessionId uid=" +
             "$uid packageName=$packageName" +
             "permGroupName=$permGroupName")
+    }
+
+    /**
+     * A partial storage grant happens when:
+     * An app which doesn't support the photo picker has READ_MEDIA_VISUAL_USER_SELECTED granted, or
+     * An app which does support the photo picker has READ_MEDIA_VISUAL_USER_SELECTED and/or
+     * ACCESS_MEDIA_LOCATION granted
+     */
+    private fun isPartialStorageGrant(group: LightAppPermGroup): Boolean {
+        if (!isPhotoPickerPromptEnabled() || group.permGroupName != READ_MEDIA_VISUAL) {
+            return false
+        }
+
+        val partialPerms = getPartialStorageGrantPermissionsForGroup(group)
+
+        return group.isGranted && group.permissions.values.all {
+            it.name in partialPerms || (it.name !in partialPerms && !it.isGrantedIncludingAppOp)
+        }
     }
 }
 
