@@ -67,17 +67,25 @@ internal class SafetyEntryCommonViewsManager(rootEntryView: ViewGroup?) {
     companion object {
 
         /**
-         * Change opacity to make some entries to look disabled but still be clickable
+         * Change opacity to make some entries look disabled but still be clickable
          *
-         * @param isEnabled whether the [android.safetycenter.SafetyCenterEntry] is enabled
+         * @param isEntryEnabled whether the [android.safetycenter.SafetyCenterEntry] is enabled
+         * @param isPreferenceEnabled whether the corresponding preference is enabled
          * @param titleView view displaying the title text of the entry
          * @param summaryView view displaying the summary text of the entry
          */
-        fun changeEnabledState(isEnabled: Boolean, titleView: TextView?, summaryView: TextView?) {
-            if (isEnabled) {
+        fun changeEnabledState(
+            isEntryEnabled: Boolean,
+            isPreferenceEnabled: Boolean,
+            titleView: TextView?,
+            summaryView: TextView?
+        ) {
+            if (isEntryEnabled) {
                 titleView?.alpha = 1f
                 summaryView?.alpha = 1f
-            } else {
+            } else if (isPreferenceEnabled) {
+                /* Check that preference is enabled before lowering because disabled preferences
+                 * already have a low visibility */
                 titleView?.alpha = 0.4f
                 summaryView?.alpha = 0.4f
             }
