@@ -173,6 +173,8 @@
         <item name="android:layout_marginEnd">24dp</item>
         <item name="android:orientation">vertical</item>
         <item name="android:clipToPadding">false</item>
+        <item name="android:textDirection">locale</item>
+        <item name="android:layoutDirection">locale</item>
     </style>
 
     <style name="AppDataSharingDetailsTextAppearance"
@@ -212,6 +214,8 @@
         <item name="android:layout_marginEnd">24dp</item>
         <item name="android:orientation">vertical</item>
         <item name="android:clipToPadding">false</item>
+        <item name="android:textDirection">locale</item>
+        <item name="android:layoutDirection">locale</item>
     </style>
 
     <style name="AppDataSharingUpdatesFooterIconFrame">
@@ -262,12 +266,14 @@
         <item name="android:paddingStart">24dp</item>
         <item name="android:paddingEnd">24dp</item>
         <item name="android:clipToPadding">false</item>
+        <item name="android:textDirection">locale</item>
+        <item name="android:layoutDirection">locale</item>
     </style>
 
     <style name="AppDataSharingUpdateAppIconFrame">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:paddingRight">20dp</item>
+        <item name="android:paddingEnd">20dp</item>
     </style>
 
     <style name="AppDataSharingUpdateAppIcon">
@@ -304,9 +310,9 @@
     <style name="AppDataSharingUpdateSettingsIconFrame">
         <item name="android:layout_width">48dp</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:gravity">right|center_vertical</item>
+        <item name="android:gravity">end|center_vertical</item>
         <item name="android:orientation">vertical</item>
-        <item name="android:paddingLeft">24dp</item>
+        <item name="android:paddingStart">24dp</item>
     </style>
 
     <style name="AppDataSharingUpdateSettingsIcon">
