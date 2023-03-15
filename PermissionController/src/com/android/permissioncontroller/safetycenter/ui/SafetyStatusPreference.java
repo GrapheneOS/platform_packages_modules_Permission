@@ -40,8 +40,7 @@ import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel;
 import com.android.permissioncontroller.safetycenter.ui.model.StatusUiData;
-
-import com.google.android.material.button.MaterialButton;
+import com.android.permissioncontroller.safetycenter.ui.view.StatusCardView;
 
 import kotlin.Pair;
 
@@ -81,68 +80,68 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
         }
 
         Context context = getContext();
-        ImageView statusImage = (ImageView) holder.findViewById(R.id.status_image);
-        MaterialButton rescanButton = (MaterialButton) holder.findViewById(R.id.rescan_button);
-        MaterialButton pendingActionsRescanButton =
-                (MaterialButton) holder.findViewById(R.id.pending_actions_rescan_button);
-        View reviewSettingsButton = holder.findViewById(R.id.review_settings_button);
-        if (mStatus.hasPendingActions()) {
-            reviewSettingsButton.setOnClickListener(
-                    l -> {
-                        requireViewModel()
-                                .navigateToSafetyCenter(
-                                        context, NavigationSource.QUICK_SETTINGS_TILE);
-                        requireViewModel()
-                                .getInteractionLogger()
-                                .record(Action.REVIEW_SETTINGS_CLICKED);
-                    });
-            reviewSettingsButton.setVisibility(View.VISIBLE);
-        } else {
-            reviewSettingsButton.setVisibility(View.GONE);
-        }
-        rescanButton = updateRescanButtonUi(rescanButton, pendingActionsRescanButton);
-        setRescanButtonState(rescanButton);
-
-        holder.findViewById(R.id.status_title_and_summary)
+        StatusCardView statusCardView = (StatusCardView) holder.itemView;
+        configureButtons(context, statusCardView);
+        statusCardView
+                .getTitleAndSummaryContainerView()
                 .setContentDescription(mStatus.getContentDescription(context));
 
-        rescanButton.setOnClickListener(
-                unused -> {
-                    SafetyCenterViewModel viewModel = requireViewModel();
-                    viewModel.rescan();
-                    viewModel.getInteractionLogger().record(Action.SCAN_INITIATED);
-                });
+        updateStatusIcon(statusCardView);
 
-        updateStatusIcon(statusImage, rescanButton);
+        updateStatusText(statusCardView.getTitleView(), statusCardView.getSummaryView());
 
-        TextView titleTextView = (TextView) holder.findViewById(R.id.status_title);
-        TextView summaryTextView = (TextView) holder.findViewById(R.id.status_summary);
-        updateStatusText(titleTextView, summaryTextView);
-
-        configureSafetyProtectionView(holder, context);
+        configureSafetyProtectionView(statusCardView, context);
         mFirstBind = false;
     }
 
-    private void configureSafetyProtectionView(PreferenceViewHolder holder, Context context) {
-        View safetyProtectionSectionView = holder.findViewById(R.id.safety_protection_section_view);
+    private void configureButtons(Context context, StatusCardView statusCardView) {
+        statusCardView
+                .getRescanButton()
+                .setOnClickListener(
+                        unused -> {
+                            SafetyCenterViewModel viewModel = requireViewModel();
+                            viewModel.rescan();
+                            viewModel.getInteractionLogger().record(Action.SCAN_INITIATED);
+                        });
+        statusCardView
+                .getReviewSettingsButton()
+                .setOnClickListener(
+                        unused -> {
+                            SafetyCenterViewModel viewModel = requireViewModel();
+                            viewModel.navigateToSafetyCenter(
+                                    context, NavigationSource.QUICK_SETTINGS_TILE);
+                            viewModel.getInteractionLogger().record(Action.REVIEW_SETTINGS_CLICKED);
+                        });
+
+        updateButtonState(statusCardView);
+    }
+
+    private void updateButtonState(StatusCardView statusCardView) {
+        if (mStatus == null) return; // Shouldn't happen in practice but we do it for null safety.
+        statusCardView.showButtons(mStatus);
+    }
+
+    private void configureSafetyProtectionView(StatusCardView statusCardView, Context context) {
+        View safetyProtectionSectionView =
+                statusCardView.findViewById(R.id.safety_protection_section_view);
         if (KotlinUtils.INSTANCE.shouldShowSafetyProtectionResources(context)) {
             // Hide the Safety Protection branding if there are any issue cards
             safetyProtectionSectionView.setVisibility(
                     mStatus.hasIssues() ? View.GONE : View.VISIBLE);
         }
         if (safetyProtectionSectionView.getVisibility() == View.GONE) {
-            holder.itemView.setPaddingRelative(
-                    holder.itemView.getPaddingStart(),
-                    holder.itemView.getPaddingTop(),
-                    holder.itemView.getPaddingEnd(),
+            statusCardView.setPaddingRelative(
+                    statusCardView.getPaddingStart(),
+                    statusCardView.getPaddingTop(),
+                    statusCardView.getPaddingEnd(),
                     /* bottom= */ getContext()
                             .getResources()
                             .getDimensionPixelSize(R.dimen.sc_card_margin_bottom));
         } else {
-            holder.itemView.setPaddingRelative(
-                    holder.itemView.getPaddingStart(),
-                    holder.itemView.getPaddingTop(),
-                    holder.itemView.getPaddingEnd(),
+            statusCardView.setPaddingRelative(
+                    statusCardView.getPaddingStart(),
+                    statusCardView.getPaddingTop(),
+                    statusCardView.getPaddingEnd(),
                     /* bottom= */ 0);
         }
     }
@@ -155,14 +154,13 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
         runTextAnimationIfNeeded(title, summary);
     }
 
-    private void updateStatusIcon(ImageView statusImage, View rescanButton) {
+    private void updateStatusIcon(StatusCardView statusCardView) {
         int severityLevel = mStatus.getSeverityLevel();
         boolean isRefreshing = mStatus.isRefreshInProgress();
 
         handleAnimationSequencerAction(
                 mSequencer.onUpdateReceived(isRefreshing, severityLevel),
-                statusImage,
-                rescanButton,
+                statusCardView,
                 /* scanningAnimation= */ null);
     }
 
@@ -191,8 +189,9 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
         }
     }
 
-    private void startScanningAnimation(ImageView statusImage, View rescanButton) {
+    private void startScanningAnimation(StatusCardView statusCardView) {
         mSequencer.onStartScanningAnimationStart();
+        ImageView statusImage = statusCardView.getStatusImageView();
         statusImage.setImageResource(
                 StatusAnimationResolver.getScanningStartAnimation(
                         mSequencer.getCurrentlyVisibleSeverityLevel()));
@@ -203,15 +202,16 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
                     public void onAnimationEnd(Drawable drawable) {
                         handleAnimationSequencerAction(
                                 mSequencer.onStartScanningAnimationEnd(),
-                                statusImage,
-                                rescanButton,
+                                statusCardView,
                                 /* scanningAnimation= */ null);
                     }
                 });
         animation.start();
     }
 
-    private void continueScanningAnimation(ImageView statusImage, View rescanButton) {
+    private void continueScanningAnimation(StatusCardView statusCardView) {
+        ImageView statusImage = statusCardView.getStatusImageView();
+
         // clear previous scan animation in case we need to continue with different severity level
         Drawable statusDrawable = statusImage.getDrawable();
         if (statusDrawable instanceof AnimatedVectorDrawable) {
@@ -229,25 +229,25 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
                         handleAnimationSequencerAction(
                                 mSequencer.onContinueScanningAnimationEnd(
                                         mStatus.isRefreshInProgress(), mStatus.getSeverityLevel()),
-                                statusImage,
-                                rescanButton,
+                                statusCardView,
                                 scanningAnim);
                     }
                 });
         scanningAnim.start();
     }
 
-    private void endScanningAnimation(ImageView statusImage, View rescanButton) {
+    private void endScanningAnimation(StatusCardView statusCardView) {
+        ImageView statusImage = statusCardView.getStatusImageView();
         Drawable statusDrawable = statusImage.getDrawable();
         int finishingSeverityLevel = mStatus.getSeverityLevel();
         if (!(statusDrawable instanceof AnimatedVectorDrawable)) {
-            finishScanAnimation(statusImage, rescanButton, finishingSeverityLevel);
+            finishScanAnimation(statusCardView, finishingSeverityLevel);
             return;
         }
         AnimatedVectorDrawable animatedStatusDrawable = (AnimatedVectorDrawable) statusDrawable;
 
         if (!animatedStatusDrawable.isRunning()) {
-            finishScanAnimation(statusImage, rescanButton, finishingSeverityLevel);
+            finishScanAnimation(statusCardView, finishingSeverityLevel);
             return;
         }
 
@@ -267,8 +267,7 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
                                     @Override
                                     public void onAnimationEnd(Drawable drawable) {
                                         super.onAnimationEnd(drawable);
-                                        finishScanAnimation(
-                                                statusImage, rescanButton, finishingSeverityLevel);
+                                        finishScanAnimation(statusCardView, finishingSeverityLevel);
                                     }
                                 });
                         animatedDrawable.start();
@@ -276,18 +275,16 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
                 });
     }
 
-    private void finishScanAnimation(
-            ImageView statusImage, View rescanButton, int finishedSeverityLevel) {
-        setRescanButtonState(rescanButton);
+    private void finishScanAnimation(StatusCardView statusCardView, int finishedSeverityLevel) {
+        updateButtonState(statusCardView);
         handleAnimationSequencerAction(
                 mSequencer.onFinishScanAnimationEnd(
                         mStatus.isRefreshInProgress(), finishedSeverityLevel),
-                statusImage,
-                rescanButton,
+                statusCardView,
                 /* scanningAnimation= */ null);
     }
 
-    private void startIconChangeAnimation(ImageView statusImage, View rescanButton) {
+    private void startIconChangeAnimation(StatusCardView statusCardView) {
         int finalSeverityLevel = mStatus.getSeverityLevel();
         int changeAnimationResId =
                 StatusAnimationResolver.getStatusChangeAnimation(
@@ -296,14 +293,14 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
             handleAnimationSequencerAction(
                     mSequencer.onCouldNotStartIconChangeAnimation(
                             mStatus.isRefreshInProgress(), finalSeverityLevel),
-                    statusImage,
-                    rescanButton,
+                    statusCardView,
                     /* scanningAnimation= */ null);
             return;
         }
         mSequencer.onIconChangeAnimationStart();
-        statusImage.setImageResource(changeAnimationResId);
-        AnimatedVectorDrawable animation = (AnimatedVectorDrawable) statusImage.getDrawable();
+        statusCardView.getStatusImageView().setImageResource(changeAnimationResId);
+        AnimatedVectorDrawable animation =
+                (AnimatedVectorDrawable) statusCardView.getStatusImageView().getDrawable();
         animation.clearAnimationCallbacks();
         animation.registerAnimationCallback(
                 new Animatable2.AnimationCallback() {
@@ -312,8 +309,7 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
                         handleAnimationSequencerAction(
                                 mSequencer.onIconChangeAnimationEnd(
                                         mStatus.isRefreshInProgress(), finalSeverityLevel),
-                                statusImage,
-                                rescanButton,
+                                statusCardView,
                                 /* scanningAnimation= */ null);
                     }
                 });
@@ -322,62 +318,47 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
 
     private void handleAnimationSequencerAction(
             @Nullable SafetyStatusAnimationSequencer.Action action,
-            ImageView statusImage,
-            View rescanButton,
+            StatusCardView statusCardView,
             @Nullable AnimatedVectorDrawable scanningAnimation) {
         if (action == null) {
             return;
         }
         switch (action) {
             case START_SCANNING_ANIMATION:
-                startScanningAnimation(statusImage, rescanButton);
+                startScanningAnimation(statusCardView);
                 break;
             case CONTINUE_SCANNING_ANIMATION:
                 if (scanningAnimation != null) {
                     scanningAnimation.start();
                 } else {
-                    continueScanningAnimation(statusImage, rescanButton);
+                    continueScanningAnimation(statusCardView);
                 }
                 break;
             case RESET_SCANNING_ANIMATION:
-                continueScanningAnimation(statusImage, rescanButton);
+                continueScanningAnimation(statusCardView);
                 break;
             case FINISH_SCANNING_ANIMATION:
-                endScanningAnimation(statusImage, rescanButton);
+                endScanningAnimation(statusCardView);
                 break;
             case START_ICON_CHANGE_ANIMATION:
-                startIconChangeAnimation(statusImage, rescanButton);
+                startIconChangeAnimation(statusCardView);
                 break;
             case CHANGE_ICON_WITHOUT_ANIMATION:
-                setSettledStatus(statusImage);
+                setSettledStatus(statusCardView);
                 break;
         }
     }
 
-    private void setSettledStatus(ImageView statusImage) {
-        Drawable statusDrawable = statusImage.getDrawable();
+    private void setSettledStatus(StatusCardView statusCardView) {
+        Drawable statusDrawable = statusCardView.getStatusImageView().getDrawable();
         if (statusDrawable instanceof AnimatedVectorDrawable) {
             ((AnimatedVectorDrawable) statusDrawable).clearAnimationCallbacks();
         }
-        statusImage.setImageResource(
-                StatusUiData.Companion.getStatusImageResId(
-                        mSequencer.getCurrentlyVisibleSeverityLevel()));
-    }
-
-    /**
-     * Updates UI for the rescan button depending on the pending actions state and returns the
-     * correctly styled rescan button
-     */
-    private MaterialButton updateRescanButtonUi(
-            MaterialButton rescanButton, MaterialButton pendingActionsRescanButton) {
-        if (mStatus.hasPendingActions()) {
-            rescanButton.setVisibility(View.GONE);
-            pendingActionsRescanButton.setVisibility(View.VISIBLE);
-            return pendingActionsRescanButton;
-        }
-        pendingActionsRescanButton.setVisibility(View.GONE);
-        rescanButton.setVisibility(View.VISIBLE);
-        return rescanButton;
+        statusCardView
+                .getStatusImageView()
+                .setImageResource(
+                        StatusUiData.Companion.getStatusImageResId(
+                                mSequencer.getCurrentlyVisibleSeverityLevel()));
     }
 
     void setData(StatusUiData statusUiData) {
@@ -391,11 +372,6 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
 
     private SafetyCenterViewModel requireViewModel() {
         return Objects.requireNonNull(mViewModel);
-    }
-
-    private void setRescanButtonState(View rescanButton) {
-        rescanButton.setVisibility(mStatus.shouldShowRescanButton() ? View.VISIBLE : View.GONE);
-        rescanButton.setEnabled(!mStatus.isRefreshInProgress());
     }
 
     // Calling notifyChanged while recyclerview is scrolling or computing layout will result in an

@@ -265,7 +265,7 @@ public class RoleParser {
             }
 
             if (parser.getName().equals(TAG_PERMISSION)) {
-                Permission permission = parsePermission(parser);
+                Permission permission = parsePermission(parser, TAG_PERMISSION);
                 if (permission == null) {
                     continue;
                 }
@@ -281,9 +281,9 @@ public class RoleParser {
     }
 
     @Nullable
-    private Permission parsePermission(@NonNull XmlResourceParser parser) throws IOException,
-            XmlPullParserException {
-        String name = requireAttributeValue(parser, ATTRIBUTE_NAME, TAG_PERMISSION);
+    private Permission parsePermission(@NonNull XmlResourceParser parser,
+            @NonNull String tagName) throws IOException, XmlPullParserException {
+        String name = requireAttributeValue(parser, ATTRIBUTE_NAME, tagName);
         if (name == null) {
             skipCurrentTag(parser);
             return null;
@@ -422,7 +422,7 @@ public class RoleParser {
 
         List<RequiredComponent> requiredComponents = null;
         List<Permission> permissions = null;
-        List<String> appOpPermissions = null;
+        List<Permission> appOpPermissions = null;
         List<AppOp> appOps = null;
         List<PreferredActivity> preferredActivities = null;
 
@@ -748,7 +748,7 @@ public class RoleParser {
                     break;
                 }
                 case TAG_PERMISSION: {
-                    Permission permission = parsePermission(parser);
+                    Permission permission = parsePermission(parser, TAG_PERMISSION);
                     if (permission == null) {
                         continue;
                     }
@@ -766,9 +766,9 @@ public class RoleParser {
     }
 
     @NonNull
-    private List<String> parseAppOpPermissions(@NonNull XmlResourceParser parser)
+    private List<Permission> parseAppOpPermissions(@NonNull XmlResourceParser parser)
             throws IOException, XmlPullParserException {
-        List<String> appOpPermissions = new ArrayList<>();
+        List<Permission> appOpPermissions = new ArrayList<>();
 
         int type;
         int depth;
@@ -781,8 +781,7 @@ public class RoleParser {
             }
 
             if (parser.getName().equals(TAG_APP_OP_PERMISSION)) {
-                String appOpPermission = requireAttributeValue(parser, ATTRIBUTE_NAME,
-                        TAG_APP_OP_PERMISSION);
+                Permission appOpPermission = parsePermission(parser, TAG_APP_OP_PERMISSION);
                 if (appOpPermission == null) {
                     continue;
                 }
@@ -1087,12 +1086,10 @@ public class RoleParser {
                 validateAppOp(appOp);
             }
 
-            List<String> appOpPermissions = role.getAppOpPermissions();
+            List<Permission> appOpPermissions = role.getAppOpPermissions();
             int appOpPermissionsSize = appOpPermissions.size();
             for (int i = 0; i < appOpPermissionsSize; i++) {
-                String appOpPermission = appOpPermissions.get(i);
-
-                validateAppOpPermission(appOpPermission);
+                validateAppOpPermission(appOpPermissions.get(i));
             }
 
             List<PreferredActivity> preferredActivities = role.getPreferredActivities();
@@ -1146,6 +1143,13 @@ public class RoleParser {
                         "Permission is not a runtime or role permission: " + permission);
             }
         }
+    }
+
+    private void validateAppOpPermission(@NonNull Permission appOpPermission) {
+        if (!appOpPermission.isAvailable()) {
+            return;
+        }
+        validateAppOpPermission(appOpPermission.getName());
     }
 
     private void validateAppOpPermission(@NonNull String appOpPermission) {
