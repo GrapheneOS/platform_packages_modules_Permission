@@ -121,7 +121,7 @@ class SafetySubpageEntryPreference(
 
         val titleView = holder.findViewById(android.R.id.title) as? TextView?
         val summaryView = holder.findViewById(android.R.id.summary) as? TextView?
-        changeEnabledState(entry.isEnabled, titleView, summaryView)
+        changeEnabledState(entry.isEnabled, isEnabled(), titleView, summaryView)
     }
 
     override fun shouldHideSecondTarget(): Boolean = entry.iconAction == null
