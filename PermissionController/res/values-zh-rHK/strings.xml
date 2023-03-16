@@ -199,7 +199,7 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"未使用的應用程式設定"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"如不使用應用程式，即移除權限"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"移除權限並騰出空間"</string>
-    <string name="unused_apps_label_v2" msgid="7058776770056517980">"如果未使用就暫停應用程式活動"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"暫停未使用應用程式的活動"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"移除權限、刪除暫存檔案和停止通知"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"為保護您的資料，系統已移除您在過去幾個月未曾使用的應用程式的權限。"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"為保護您的資料，如果應用程式在過去幾個月未曾使用，系統將會移除以下權限：<xliff:g id="PERMS">%1$s</xliff:g>。"</string>

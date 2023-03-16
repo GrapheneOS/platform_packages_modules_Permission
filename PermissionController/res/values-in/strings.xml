@@ -200,7 +200,7 @@
     <string name="auto_revoke_label" msgid="5068393642936571656">"Hapus izin jika aplikasi tidak digunakan"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Hapus izin &amp; kosongkan ruang penyimpanan"</string>
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"Jeda aktivitas aplikasi jika tak dipakai"</string>
-    <string name="unused_apps_summary" msgid="8839466950318403115">"Menghapus izin dan file sementara, serta menghentikan notifikasi"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Hapus izin dan file sementara, serta hentikan notifikasi"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Untuk melindungi data Anda, izin aplikasi ini akan dihapus jika aplikasi tidak digunakan dalam beberapa bulan."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Untuk melindungi data Anda, izin dari aplikasi yang tidak digunakan dalam beberapa bulan akan dihapus: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Untuk melindungi data Anda, izin dari aplikasi yang tidak digunakan dalam beberapa bulan telah dihapus."</string>
