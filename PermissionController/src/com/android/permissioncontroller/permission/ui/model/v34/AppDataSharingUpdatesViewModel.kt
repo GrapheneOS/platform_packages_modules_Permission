@@ -27,9 +27,7 @@ import android.content.Intent.EXTRA_PERMISSION_GROUP_NAME
 import android.content.Intent.EXTRA_USER
 import android.net.Uri
 import android.os.Build
-import android.os.Process
 import android.os.UserHandle
-import android.provider.DeviceConfig
 import android.util.Log
 import androidx.annotation.RequiresApi
 import com.android.permission.safetylabel.DataCategoryConstants.CATEGORY_LOCATION
@@ -57,9 +55,10 @@ class AppDataSharingUpdatesViewModel(app: Application) {
         val helpUrlString = activity.getString(R.string.data_sharing_help_center_link)
         // Add in some extra locale query parameters
         val fullUri = HelpUtils.uriWithAddedParameters(activity, Uri.parse(helpUrlString))
-        val intent = Intent(Intent.ACTION_VIEW, fullUri).apply {
-            setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)
-        }
+        val intent =
+            Intent(Intent.ACTION_VIEW, fullUri).apply {
+                setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)
+            }
         try {
             activity.startActivity(intent)
         } catch (e: ActivityNotFoundException) {
@@ -91,48 +90,27 @@ class AppDataSharingUpdatesViewModel(app: Application) {
      */
     private fun buildAppLocationDataSharingUpdateUiInfoList():
         List<AppLocationDataSharingUpdateUiInfo> {
-        // TODO(b/264830559): Add deterministic ordering for updates.
-        val updateUiInfoList = mutableListOf<AppLocationDataSharingUpdateUiInfo>()
-        // TODO(b/264947954): Move placeholder data to its own file.
-        // TODO(b/264811607): This code serves to ensures that there is some UI to see when testing
-        //  feature locally. Remove when app stores start providing safety labels.
-        if (DeviceConfig.getBoolean(
-            DeviceConfig.NAMESPACE_PRIVACY, PLACEHOLDER_SAFETY_LABEL_UPDATES_ENABLED, false)) {
-            updateUiInfoList.add(
-                AppLocationDataSharingUpdateUiInfo(
-                    PLACEHOLDER_PACKAGE_NAME_1,
-                    Process.myUserHandle(),
-                    DataSharingUpdateType.ADDS_SHARING_WITH_ADVERTISING_PURPOSE))
-            updateUiInfoList.add(
-                AppLocationDataSharingUpdateUiInfo(
-                    PLACEHOLDER_PACKAGE_NAME_2,
-                    Process.myUserHandle(),
-                    DataSharingUpdateType.ADDS_SHARING_WITHOUT_ADVERTISING_PURPOSE))
-        }
+        val appDataSharingUpdates = appDataSharingUpdatesLiveData.value ?: return listOf()
 
-        updateUiInfoList.addAll(
-            appDataSharingUpdatesLiveData.value
-                ?.map { appDataSharingUpdate ->
-                    val locationDataSharingUpdate =
-                        appDataSharingUpdate.categorySharingUpdates[CATEGORY_LOCATION]
+        return appDataSharingUpdates
+            .map { appDataSharingUpdate ->
+                val locationDataSharingUpdate =
+                    appDataSharingUpdate.categorySharingUpdates[CATEGORY_LOCATION]
 
-                    if (locationDataSharingUpdate == null) {
-                        emptyList()
-                    } else {
-                        val users =
-                            locationPermGroupPackagesUiInfoLiveData.getUsersWithPermGrantedForApp(
-                                appDataSharingUpdate.packageName)
-                        users.map { user ->
-                            // For each user profile under the current user, display one entry.
-                            AppLocationDataSharingUpdateUiInfo(
-                                appDataSharingUpdate.packageName, user, locationDataSharingUpdate)
-                        }
+                if (locationDataSharingUpdate == null) {
+                    emptyList()
+                } else {
+                    val users =
+                        locationPermGroupPackagesUiInfoLiveData.getUsersWithPermGrantedForApp(
+                            appDataSharingUpdate.packageName)
+                    users.map { user ->
+                        // For each user profile under the current user, display one entry.
+                        AppLocationDataSharingUpdateUiInfo(
+                            appDataSharingUpdate.packageName, user, locationDataSharingUpdate)
                     }
                 }
-                ?.flatten()
-                ?: listOf())
-
-        return updateUiInfoList
+            }
+            .flatten()
     }
 
     private fun SinglePermGroupPackagesUiInfoLiveData.getUsersWithPermGrantedForApp(
@@ -186,10 +164,5 @@ class AppDataSharingUpdatesViewModel(app: Application) {
     /** Companion object for [AppDataSharingUpdatesViewModel]. */
     companion object {
         private val LOG_TAG = AppDataSharingUpdatesViewModel::class.java.simpleName
-
-        private const val PLACEHOLDER_PACKAGE_NAME_1 = "com.android.systemui"
-        private const val PLACEHOLDER_PACKAGE_NAME_2 = "com.android.bluetooth"
-        private const val PLACEHOLDER_SAFETY_LABEL_UPDATES_ENABLED =
-            "placeholder_safety_label_updates_enabled"
     }
 }
