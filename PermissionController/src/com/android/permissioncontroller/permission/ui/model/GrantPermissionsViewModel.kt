@@ -128,6 +128,7 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils.isPermissio
 import com.android.permissioncontroller.permission.utils.KotlinUtils.revokeBackgroundRuntimePermissions
 import com.android.permissioncontroller.permission.utils.KotlinUtils.revokeForegroundRuntimePermissions
 import com.android.permissioncontroller.permission.utils.PermissionMapping
+import com.android.permissioncontroller.permission.utils.PermissionMapping.getPartialStorageGrantPermissionsForGroup
 import com.android.permissioncontroller.permission.utils.PermissionRationales
 import com.android.permissioncontroller.permission.utils.SafetyNetLogger
 import com.android.permissioncontroller.permission.utils.Utils
@@ -381,7 +382,7 @@ class GrantPermissionsViewModel(
                         groupState.affectedPermissions == listOf(READ_MEDIA_VISUAL_USER_SELECTED)) {
                         requestInfos.add(RequestInfo(groupInfo, openPhotoPicker = true))
                         continue
-                    } else if (isVisualUserSelectedOnlyGranted(groupState.group)) {
+                    } else if (isPartialStorageGrant(groupState.group)) {
                         // More photos dialog
                         message = RequestMessage.MORE_PHOTOS_MESSAGE
                         buttonVisibilities[ALLOW_BUTTON] = false
@@ -763,9 +764,10 @@ class GrantPermissionsViewModel(
                     // is still grantable.
                     return true
                 }
-            } else if (perm == READ_MEDIA_VISUAL_USER_SELECTED &&
+            } else if (perm in getPartialStorageGrantPermissionsForGroup(group) &&
                 lightPermission.isGrantedIncludingAppOp) {
-                // If USER_SELECTED is granted as fixed, we should immediately show the photo picker
+                // If a partial storage permission is granted as fixed, we should immediately show
+                // the photo picker
                 return true
             }
             reportRequestResult(perm,
@@ -795,11 +797,14 @@ class GrantPermissionsViewModel(
             group.foreground.isUserSet) {
             return STATE_SKIPPED
         } else if (perm == READ_MEDIA_VISUAL_USER_SELECTED) {
+            val partialPerms = getPartialStorageGrantPermissionsForGroup(group)
             val otherRequestedPerms = unfilteredAffectedPermissions.filter { otherPerm ->
-                otherPerm in group.permissions && otherPerm != READ_MEDIA_VISUAL_USER_SELECTED
+                otherPerm in group.permissions && otherPerm !in partialPerms
             }
             if (otherRequestedPerms.isEmpty()) {
-                // If the user only requested USER_SELECTED, skip the request
+                // If the app requested USER_SELECTED while not supporting the photo picker, or if
+                // the app explicitly requested only USER_SELECTED and/or ACCESS_MEDIA_LOCATION,
+                // then skip the request
                 return STATE_SKIPPED
             }
         }
@@ -861,18 +866,27 @@ class GrantPermissionsViewModel(
         }
         // If READ_MEDIA_VISUAL_USER_SELECTED is the only permission in the group that is granted,
         // do not grant.
-        if (isVisualUserSelectedOnlyGranted(group) ||
-            HEALTH_PERMISSION_GROUP == group.permGroupName) {
+        if (isPartialStorageGrant(group) || HEALTH_PERMISSION_GROUP == group.permGroupName) {
             return false
         }
         return true
     }
 
-    private fun isVisualUserSelectedOnlyGranted(group: LightAppPermGroup): Boolean {
-       return KotlinUtils.isPhotoPickerPromptEnabled() &&
-               group.permGroupName == READ_MEDIA_VISUAL && group.permissions.values.all {
-           (it.name == READ_MEDIA_VISUAL_USER_SELECTED) || !it.isGrantedIncludingAppOp } &&
-           group.permissions[READ_MEDIA_VISUAL_USER_SELECTED]?.isGrantedIncludingAppOp == true
+    /**
+     * A partial storage grant happens when:
+     * An app which doesn't support the photo picker has READ_MEDIA_VISUAL_USER_SELECTED granted, or
+     * An app which does support the photo picker has READ_MEDIA_VISUAL_USER_SELECTED and/or
+     * ACCESS_MEDIA_LOCATION granted
+     */
+    private fun isPartialStorageGrant(group: LightAppPermGroup): Boolean {
+        if (!KotlinUtils.isPhotoPickerPromptEnabled() || group.permGroupName != READ_MEDIA_VISUAL) {
+            return false
+        }
+
+        val partialPerms = getPartialStorageGrantPermissionsForGroup(group)
+        return group.isGranted && group.permissions.values.all {
+            it.name in partialPerms || (it.name !in partialPerms && !it.isGrantedIncludingAppOp)
+        }
     }
 
     private fun getStateFromPolicy(perm: String, group: LightAppPermGroup): Int {
@@ -1060,11 +1074,11 @@ class GrantPermissionsViewModel(
             appPermGroup.setSelfRevoked()
             appPermGroup.persistChanges(false, null, nonSelectedPerms.toSet())
         } else {
-            val nonSelectedPerms = groupState.affectedPermissions
-                .filter { it != READ_MEDIA_VISUAL_USER_SELECTED }
+            val partialPerms = getPartialStorageGrantPermissionsForGroup(groupState.group)
+            val nonSelectedPerms = groupState.affectedPermissions.filter { it !in partialPerms }
             val setUserFixed = userSelectedPerm.isUserFixed || userSelectedPerm.isUserSet
             grantForegroundRuntimePermissions(app, groupState.group,
-                listOf(READ_MEDIA_VISUAL_USER_SELECTED), userFixed = setUserFixed)
+                partialPerms.toList(), userFixed = setUserFixed)
             revokeForegroundRuntimePermissions(app, groupState.group,
                 userFixed = setUserFixed, oneTime = false, filterPermissions = nonSelectedPerms)
         }

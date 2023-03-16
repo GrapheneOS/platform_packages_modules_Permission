@@ -737,6 +737,9 @@
             <permission name="android.permission.SUSPEND_APPS"/>
             <permission name="android.permission.SYSTEM_APPLICATION_OVERLAY"/>
         </permissions>
+        <app-op-permissions>
+            <app-op-permission name="android.permission.SCHEDULE_EXACT_ALARM" minSdkVersion="34"/>
+        </app-op-permissions>
     </role>
 
     <!---

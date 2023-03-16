@@ -74,10 +74,10 @@
     <string name="grant_dialog_button_always_allow_all">Always allow all</string>
 
     <!-- Title for the dialog button to allow access to select photos to be shared. [CHAR LIMIT=60] -->
-    <string name="grant_dialog_button_allow_selected_photos">Select photos</string>
+    <string name="grant_dialog_button_allow_selected_photos">Select photos and videos</string>
 
     <!-- Title for the dialog button to allow access to select more photos to be shared. [CHAR LIMIT=60] -->
-    <string name="grant_dialog_button_allow_more_selected_photos">Select more photos and videos</string>
+    <string name="grant_dialog_button_allow_more_selected_photos">Select more</string>
 
     <!-- Title for the dialog button to not allow access to select more photos to be shared. [CHAR LIMIT=60] -->
     <string name="grant_dialog_button_dont_allow_more_selected_photos">Don\u2019t select more</string>

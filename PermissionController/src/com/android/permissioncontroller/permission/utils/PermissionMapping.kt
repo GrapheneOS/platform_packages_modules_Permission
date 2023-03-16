@@ -24,6 +24,7 @@ import android.content.pm.PermissionInfo
 import android.health.connect.HealthPermissions.HEALTH_PERMISSION_GROUP
 import android.util.Log
 import com.android.modules.utils.build.SdkLevel
+import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
 
 /**
  * This file contains the canonical mapping of permission to permission group, used in the
@@ -49,6 +50,8 @@ object PermissionMapping {
                 Manifest.permission_group.READ_MEDIA_AURAL,
                 Manifest.permission_group.READ_MEDIA_VISUAL)
 
+    val PARTIAL_MEDIA_PERMISSIONS: MutableSet<String> = mutableSetOf()
+
     /** Mapping permission -> group for all dangerous platform permissions */
     private val PLATFORM_PERMISSIONS: MutableMap<String, String> = mutableMapOf()
 
@@ -59,6 +62,7 @@ object PermissionMapping {
     private val ONE_TIME_PERMISSION_GROUPS: MutableSet<String> = mutableSetOf()
 
     private val HEALTH_PERMISSIONS_SET: MutableSet<String> = mutableSetOf()
+
 
     init {
         PLATFORM_PERMISSIONS[Manifest.permission.READ_CONTACTS] = Manifest.permission_group.CONTACTS
@@ -189,6 +193,11 @@ object PermissionMapping {
         ONE_TIME_PERMISSION_GROUPS.add(Manifest.permission_group.LOCATION)
         ONE_TIME_PERMISSION_GROUPS.add(Manifest.permission_group.CAMERA)
         ONE_TIME_PERMISSION_GROUPS.add(Manifest.permission_group.MICROPHONE)
+
+        if (SdkLevel.isAtLeastU()) {
+            PARTIAL_MEDIA_PERMISSIONS.add(Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED)
+            PARTIAL_MEDIA_PERMISSIONS.add(Manifest.permission.ACCESS_MEDIA_LOCATION)
+        }
     }
 
     /**
@@ -318,6 +327,23 @@ object PermissionMapping {
             PLATFORM_PERMISSIONS[permission] = HEALTH_PERMISSION_GROUP
             PLATFORM_PERMISSION_GROUPS[HEALTH_PERMISSION_GROUP]?.add(permission)
             HEALTH_PERMISSIONS_SET.add(permission)
+        }
+    }
+
+    /**
+     * Get the permissions that, if granted, are considered a "partial grant" of the
+     * READ_MEDIA_VISUAL permission group. If the app declares READ_MEDIA_VISUAL_USER_SELECTED, then
+     * both READ_MEDIA_VISUAL_USER_SELECTED and ACCESS_MEDIA_LOCATION are considered a partial
+     * grant. Otherwise, ACCESS_MEDIA_LOCATION is considered a full grant (for compatibility).
+     */
+    fun getPartialStorageGrantPermissionsForGroup(group: LightAppPermGroup): Set<String> {
+        val appSupportsPickerPrompt = group
+            .permissions[Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED]?.isImplicit == false
+
+        return if (appSupportsPickerPrompt) {
+            PARTIAL_MEDIA_PERMISSIONS
+        } else {
+            setOf(Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED)
         }
     }
 
