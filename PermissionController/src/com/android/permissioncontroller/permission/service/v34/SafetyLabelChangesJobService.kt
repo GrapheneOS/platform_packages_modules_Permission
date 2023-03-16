@@ -100,6 +100,10 @@ class SafetyLabelChangesJobService : JobService() {
                 Log.i(LOG_TAG, "onReceive: Safety label change notifications are not enabled.")
                 return
             }
+            if (KotlinUtils.safetyLabelChangesJobServiceKillSwitch()) {
+                Log.i(LOG_TAG, "onReceive: kill switch is set.")
+                return
+            }
             if (isContextInProfileUser(receiverContext)) {
                 Log.i(
                     LOG_TAG,
@@ -132,6 +136,10 @@ class SafetyLabelChangesJobService : JobService() {
         }
         if (!KotlinUtils.isSafetyLabelChangeNotificationsEnabled()) {
             Log.w(LOG_TAG, "Not starting job: safety label change notifications are not enabled.")
+            return false
+        }
+        if (KotlinUtils.safetyLabelChangesJobServiceKillSwitch()) {
+            Log.i(LOG_TAG, "Not starting job: kill switch is set.")
             return false
         }
         when (params.jobId) {
