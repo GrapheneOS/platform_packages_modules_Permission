@@ -20,6 +20,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.ComponentInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Build;
@@ -195,6 +196,11 @@ public abstract class RequiredComponent {
         for (int resolveInfosIndex = 0; resolveInfosIndex < resolveInfosSize; resolveInfosIndex++) {
             ResolveInfo resolveInfo = resolveInfos.get(resolveInfosIndex);
 
+            ComponentInfo componentInfo = getComponentComponentInfo(resolveInfo);
+            if (!componentInfo.exported) {
+                continue;
+            }
+
             if (mFlags != 0) {
                 int componentFlags = getComponentFlags(resolveInfo);
                 if ((componentFlags & mFlags) != mFlags) {
@@ -210,7 +216,7 @@ public abstract class RequiredComponent {
             }
 
             if (hasMetaData) {
-                Bundle componentMetaData = getComponentMetaData(resolveInfo);
+                Bundle componentMetaData = componentInfo.metaData;
                 if (componentMetaData == null) {
                     componentMetaData = Bundle.EMPTY;
                 }
@@ -229,13 +235,14 @@ public abstract class RequiredComponent {
                 }
             }
 
-            ComponentName componentName = getComponentComponentName(resolveInfo);
-            String componentPackageName = componentName.getPackageName();
+            String componentPackageName = componentInfo.packageName;
             if (componentPackageNames.contains(componentPackageName)) {
                 continue;
             }
-
             componentPackageNames.add(componentPackageName);
+
+            ComponentName componentName = new ComponentName(componentPackageName,
+                    componentInfo.name);
             componentNames.add(componentName);
         }
         return componentNames;
@@ -257,14 +264,14 @@ public abstract class RequiredComponent {
             int flags, @NonNull UserHandle user, @NonNull Context context);
 
     /**
-     * Get the {@code ComponentName} of a component.
+     * Get the {@code ComponentInfo} of a component.
      *
      * @param resolveInfo the {@code ResolveInfo} of the component
      *
-     * @return the {@code ComponentName} of the component
+     * @return the {@code ComponentInfo} of the component
      */
     @NonNull
-    protected abstract ComponentName getComponentComponentName(@NonNull ResolveInfo resolveInfo);
+    protected abstract ComponentInfo getComponentComponentInfo(@NonNull ResolveInfo resolveInfo);
 
     /**
      * Get the flags that have been set on a component.
@@ -284,16 +291,6 @@ public abstract class RequiredComponent {
      */
     @Nullable
     protected abstract String getComponentPermission(@NonNull ResolveInfo resolveInfo);
-
-    /**
-     * Get the meta data associated with a component.
-     *
-     * @param resolveInfo the {@code ResolveInfo} of the component
-     *
-     * @return the meta data associated with a component
-     */
-    @Nullable
-    protected abstract Bundle getComponentMetaData(@NonNull ResolveInfo resolveInfo);
 
     @Override
     public String toString() {

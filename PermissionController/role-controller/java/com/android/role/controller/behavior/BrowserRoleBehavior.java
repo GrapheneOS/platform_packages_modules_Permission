@@ -124,7 +124,7 @@ public class BrowserRoleBehavior implements RoleBehavior {
         for (int i = 0; i < resolveInfosSize; i++) {
             ResolveInfo resolveInfo = resolveInfos.get(i);
 
-            if (!resolveInfo.handleAllWebDataURI) {
+            if (!resolveInfo.activityInfo.exported || !resolveInfo.handleAllWebDataURI) {
                 continue;
             }
             packageNames.add(resolveInfo.activityInfo.packageName);
