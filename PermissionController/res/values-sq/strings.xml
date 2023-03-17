@@ -34,8 +34,10 @@
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Më shumë info."</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Lejoji të gjitha"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Lejoji gjithmonë të gjitha"</string>
-    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"Zgjidh fotografitë"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"Zgjidh fotografi dhe video të tjera"</string>
+    <!-- no translation found for grant_dialog_button_allow_selected_photos (5497042471576153842) -->
+    <skip />
+    <!-- no translation found for grant_dialog_button_allow_more_selected_photos (5145657877588697709) -->
+    <skip />
     <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Mos zgjidh të tjera"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Mos lejo gjithsesi"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Hiqe"</string>
@@ -611,6 +613,10 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Siguria e të dhënave"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Të dhënat e vendndodhjes mund të ndahen"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Ky aplikacion deklaroi se mund të ndajë të dhënat e vendndodhjes sate me palë të treta"</string>
+    <!-- no translation found for permission_rationale_data_sharing_link_error_title (4496607694785370249) -->
+    <skip />
+    <!-- no translation found for permission_rationale_data_sharing_link_error_message (7793746078634780418) -->
+    <skip />
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Përditësime për ndarjen e të dhënave për vendndodhjen"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Shqyrto aplikacionet që ndryshuan mënyrën se si mund të ndajnë të dhënat e vendndodhjes sate"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Këto aplikacione kanë ndryshuar mënyrën se si mund të ndajnë të dhënat e vendndodhjes sate. Ato mund të mos i kenë ndarë më parë ose mund t\'i ndajnë tani për qëllime reklamimi dhe marketingu."</string>
