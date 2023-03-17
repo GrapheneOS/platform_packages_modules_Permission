@@ -97,11 +97,12 @@ public class HomeRoleBehavior implements RoleBehavior {
     public static boolean isSettingsApplication(@NonNull ApplicationInfo applicationInfo,
             @NonNull Context context) {
         PackageManager packageManager = context.getPackageManager();
-        ResolveInfo resolveInfo = packageManager.resolveActivity(new Intent(
-                Settings.ACTION_SETTINGS), PackageManager.MATCH_DEFAULT_ONLY
+        ResolveInfo resolveInfo = packageManager.resolveActivity(
+                new Intent(Settings.ACTION_SETTINGS), PackageManager.MATCH_DEFAULT_ONLY
                 | PackageManager.MATCH_DIRECT_BOOT_AWARE
                 | PackageManager.MATCH_DIRECT_BOOT_UNAWARE);
-        if (resolveInfo == null || resolveInfo.activityInfo == null) {
+        if (resolveInfo == null || resolveInfo.activityInfo == null
+                || !resolveInfo.activityInfo.exported) {
             return false;
         }
         return Objects.equals(applicationInfo.packageName, resolveInfo.activityInfo.packageName);
