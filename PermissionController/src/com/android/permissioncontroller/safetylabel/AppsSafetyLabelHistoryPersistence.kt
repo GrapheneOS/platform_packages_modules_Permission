@@ -49,10 +49,14 @@ object AppsSafetyLabelHistoryPersistence {
     private const val TAG_SAFETY_LABEL = "sfty-lbl"
     private const val TAG_APP_SAFETY_LABEL_HISTORY = "app-hstry"
     private const val TAG_APPS_SAFETY_LABEL_HISTORY = "apps-hstry"
+    private const val ATTRIBUTE_VERSION = "vrs"
     private const val ATTRIBUTE_PACKAGE_NAME = "pkg-name"
     private const val ATTRIBUTE_RECEIVED_AT = "rcvd"
     private const val ATTRIBUTE_CATEGORY = "cat"
     private const val ATTRIBUTE_CONTAINS_ADS = "ads"
+    private const val CURRENT_VERSION = 0
+    private const val INITIAL_VERSION = 0
+
     /** The name of the file used to persist Safety Label history. */
     private const val APPS_SAFETY_LABEL_HISTORY_PERSISTENCE_FILE_NAME =
         "apps_safety_label_history_persistence.xml"
@@ -73,9 +77,9 @@ object AppsSafetyLabelHistoryPersistence {
 
     /**
      * Reads the provided file storing safety label history and returns the parsed
-     * [AppsSafetyLabelHistory].
+     * [AppsSafetyLabelHistoryFileContent].
      */
-    fun read(file: File): AppsSafetyLabelHistory? {
+    fun read(file: File): AppsSafetyLabelHistoryFileContent {
         val parser = Xml.newPullParser()
         try {
             AtomicFile(file).openRead().let { inputStream ->
@@ -92,12 +96,13 @@ object AppsSafetyLabelHistoryPersistence {
                 LOG_TAG, "Failed to parse file: $file, encountered exception ${e.localizedMessage}")
         }
 
-        return null
+        return AppsSafetyLabelHistoryFileContent(appsSafetyLabelHistory = null, INITIAL_VERSION)
     }
 
     /** Returns the last updated time for each stored [AppSafetyLabelHistory]. */
     fun getSafetyLabelsLastUpdatedTimes(file: File): Map<AppInfo, Instant> {
-        val appHistories = read(file)?.appSafetyLabelHistories ?: return emptyMap()
+        val appHistories =
+            read(file).appsSafetyLabelHistory?.appSafetyLabelHistories ?: return emptyMap()
 
         val lastUpdatedTimes = mutableMapOf<AppInfo, Instant>()
         for (appHistory in appHistories) {
@@ -116,7 +121,8 @@ object AppsSafetyLabelHistoryPersistence {
      */
     fun recordSafetyLabel(safetyLabel: SafetyLabel, file: File) {
         synchronized(readWriteLock) {
-            val currentAppsSafetyLabelHistory = read(file) ?: AppsSafetyLabelHistory(listOf())
+            val currentAppsSafetyLabelHistory =
+                read(file).appsSafetyLabelHistory ?: AppsSafetyLabelHistory(listOf())
             val appInfo = safetyLabel.appInfo
             val currentHistories = currentAppsSafetyLabelHistory.appSafetyLabelHistories
 
@@ -144,13 +150,12 @@ object AppsSafetyLabelHistoryPersistence {
      */
     fun recordSafetyLabels(safetyLabelsToAdd: Set<SafetyLabel>, file: File) {
         synchronized(readWriteLock) {
-            val currentAppsSafetyLabelHistory = read(file) ?: AppsSafetyLabelHistory(listOf())
+            val currentAppsSafetyLabelHistory =
+                read(file).appsSafetyLabelHistory ?: AppsSafetyLabelHistory(listOf())
             val appInfoToOrderedSafetyLabels =
                 safetyLabelsToAdd
                     .groupBy { it.appInfo }
-                    .mapValues { (_, safetyLabels) ->
-                        safetyLabels.sortedBy { it.receivedAt }
-                    }
+                    .mapValues { (_, safetyLabels) -> safetyLabels.sortedBy { it.receivedAt } }
             val currentAppHistories = currentAppsSafetyLabelHistory.appSafetyLabelHistories
             val newApps =
                 appInfoToOrderedSafetyLabels.keys - currentAppHistories.map { it.appInfo }.toSet()
@@ -186,7 +191,8 @@ object AppsSafetyLabelHistoryPersistence {
     /** Deletes stored safety labels for all apps in [appInfosToRemove]. */
     fun deleteSafetyLabelsForApps(appInfosToRemove: Set<AppInfo>, file: File) {
         synchronized(readWriteLock) {
-            val currentAppsSafetyLabelHistory = read(file) ?: AppsSafetyLabelHistory(listOf())
+            val currentAppsSafetyLabelHistory =
+                read(file).appsSafetyLabelHistory ?: AppsSafetyLabelHistory(listOf())
             val historiesWithAppsRemoved =
                 currentAppsSafetyLabelHistory.appSafetyLabelHistories.filter {
                     it.appInfo !in appInfosToRemove
@@ -202,7 +208,8 @@ object AppsSafetyLabelHistoryPersistence {
      */
     fun deleteSafetyLabelsOlderThan(startTime: Instant, file: File) {
         synchronized(readWriteLock) {
-            val currentAppsSafetyLabelHistory = read(file) ?: AppsSafetyLabelHistory(listOf())
+            val currentAppsSafetyLabelHistory =
+                read(file).appsSafetyLabelHistory ?: AppsSafetyLabelHistory(listOf())
             val updatedAppHistories =
                 currentAppsSafetyLabelHistory.appSafetyLabelHistories.map { appHistory ->
                     val history = appHistory.safetyLabelHistory
@@ -226,18 +233,27 @@ object AppsSafetyLabelHistoryPersistence {
         }
     }
 
-    /** Serializes and writes the provided [AppsSafetyLabelHistory] to the provided file. */
+    /**
+     * Serializes and writes the provided [AppsSafetyLabelHistory] with [CURRENT_VERSION] schema to
+     * the provided file.
+     */
     fun write(file: File, appsSafetyLabelHistory: AppsSafetyLabelHistory) {
+        write(file, AppsSafetyLabelHistoryFileContent(appsSafetyLabelHistory, CURRENT_VERSION))
+    }
+
+    /**
+     * Serializes and writes the provided [AppsSafetyLabelHistoryFileContent] to the provided file.
+     */
+    fun write(file: File, fileContent: AppsSafetyLabelHistoryFileContent) {
         val atomicFile = AtomicFile(file)
         var outputStream: FileOutputStream? = null
 
         try {
             outputStream = atomicFile.startWrite()
-            // TODO(b/263153094): Use BinaryXmlSerializer.
             val serializer = Xml.newSerializer()
             serializer.setOutput(outputStream, StandardCharsets.UTF_8.name())
             serializer.startDocument(null, true)
-            serializer.serializeAllAppSafetyLabelHistory(appsSafetyLabelHistory)
+            serializer.serializeAllAppSafetyLabelHistory(fileContent)
             serializer.endDocument()
             atomicFile.finishWrite(outputStream)
             listeners.forEach { it.onSafetyLabelHistoryChanged() }
@@ -256,7 +272,8 @@ object AppsSafetyLabelHistoryPersistence {
 
     /** Reads the provided history file and returns all safety label changes since [startTime]. */
     fun getAppSafetyLabelDiffs(startTime: Instant, file: File): List<AppSafetyLabelDiff> {
-        val currentAppsSafetyLabelHistory = read(file) ?: AppsSafetyLabelHistory(listOf())
+        val currentAppsSafetyLabelHistory =
+            read(file).appsSafetyLabelHistory ?: AppsSafetyLabelHistory(listOf())
 
         return currentAppsSafetyLabelHistory.appSafetyLabelHistories.mapNotNull {
             val before = it.getSafetyLabelAt(startTime)
@@ -282,7 +299,7 @@ object AppsSafetyLabelHistoryPersistence {
     private fun AppSafetyLabelHistory.getLastReceiptTime(): Instant? =
         this.safetyLabelHistory.lastOrNull()?.receivedAt
 
-    private fun XmlPullParser.parseHistoryFile(): AppsSafetyLabelHistory {
+    private fun XmlPullParser.parseHistoryFile(): AppsSafetyLabelHistoryFileContent {
         if (eventType != XmlPullParser.START_DOCUMENT) {
             throw IllegalArgumentException()
         }
@@ -300,9 +317,22 @@ object AppsSafetyLabelHistoryPersistence {
         return appsSafetyLabelHistory
     }
 
-    private fun XmlPullParser.parseAppsSafetyLabelHistory(): AppsSafetyLabelHistory {
-        // TODO(b/263153093): Add versioning.
+    private fun XmlPullParser.parseAppsSafetyLabelHistory(): AppsSafetyLabelHistoryFileContent {
         checkTagStart(TAG_APPS_SAFETY_LABEL_HISTORY)
+        var version: Int? = null
+        for (i in 0 until attributeCount) {
+            when (getAttributeName(i)) {
+                ATTRIBUTE_VERSION -> version = getAttributeValue(i).toInt()
+                else ->
+                    throw IllegalArgumentException(
+                        "Unexpected attribute ${getAttributeName(i)} in tag" +
+                            " $TAG_APPS_SAFETY_LABEL_HISTORY")
+            }
+        }
+        if (version == null) {
+            version = INITIAL_VERSION
+            Log.w(LOG_TAG, "Missing $ATTRIBUTE_VERSION in $TAG_APPS_SAFETY_LABEL_HISTORY")
+        }
         nextTag()
 
         val appSafetyLabelHistories = mutableListOf<AppSafetyLabelHistory>()
@@ -313,7 +343,8 @@ object AppsSafetyLabelHistoryPersistence {
         checkTagEnd(TAG_APPS_SAFETY_LABEL_HISTORY)
         next()
 
-        return AppsSafetyLabelHistory(appSafetyLabelHistories)
+        return AppsSafetyLabelHistoryFileContent(
+            AppsSafetyLabelHistory(appSafetyLabelHistories), version)
     }
 
     private fun XmlPullParser.parseAppSafetyLabelHistory(): AppSafetyLabelHistory {
@@ -451,10 +482,11 @@ object AppsSafetyLabelHistoryPersistence {
     }
 
     private fun XmlSerializer.serializeAllAppSafetyLabelHistory(
-        appsSafetyLabelHistory: AppsSafetyLabelHistory
+        fileContent: AppsSafetyLabelHistoryFileContent
     ) {
         startTag(null, TAG_APPS_SAFETY_LABEL_HISTORY)
-        appsSafetyLabelHistory.appSafetyLabelHistories.forEach {
+        attribute(null, ATTRIBUTE_VERSION, fileContent.version.toString())
+        fileContent.appsSafetyLabelHistory?.appSafetyLabelHistories?.forEach {
             serializeAppSafetyLabelHistory(it)
         }
         endTag(null, TAG_APPS_SAFETY_LABEL_HISTORY)
@@ -561,4 +593,10 @@ object AppsSafetyLabelHistoryPersistence {
         /** Callback when the persisted safety labels are changed. */
         fun onSafetyLabelHistoryChanged()
     }
+
+    /** Data class to hold an [AppsSafetyLabelHistory] along with the file schema version. */
+    data class AppsSafetyLabelHistoryFileContent(
+        val appsSafetyLabelHistory: AppsSafetyLabelHistory?,
+        val version: Int,
+    )
 }

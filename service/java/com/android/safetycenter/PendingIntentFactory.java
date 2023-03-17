@@ -111,6 +111,10 @@ public final class PendingIntentFactory {
             // In particular, the AOSP Settings app uses this to ensure that two-pane mode works
             // correctly.
             intent.putExtra(IS_SETTINGS_HOMEPAGE, true);
+            // Given we've added an extra to this intent, set an ID on it to ensure that it is not
+            // considered equal to the same intent without the extra. PendingIntents are cached
+            // using Intent equality as the key, and we want to make sure the extra is propagated.
+            intent.setIdentifier("with_settings_homepage_extra");
         }
 
         // queryIntentActivities does not return any activity when the work profile is in quiet
