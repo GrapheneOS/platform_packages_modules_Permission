@@ -34,11 +34,11 @@
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"ተጨማሪ መረጃ"</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"ሁሉንም ፍቀድ"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"ሁልጊዜ ሁሉንም ፍቀድ"</string>
-    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"ፎቶዎችን ምረጥ"</string>
-    <!-- no translation found for grant_dialog_button_allow_more_selected_photos (6352088451101076245) -->
+    <!-- no translation found for grant_dialog_button_allow_selected_photos (5497042471576153842) -->
     <skip />
-    <!-- no translation found for grant_dialog_button_dont_allow_more_selected_photos (7956647792328613790) -->
+    <!-- no translation found for grant_dialog_button_allow_more_selected_photos (5145657877588697709) -->
     <skip />
+    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"ተጨማሪ አትምረጥ"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"ለማንኛውም አትፍቀድ"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"አሰናብት"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> ከ<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -481,8 +481,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; በመሣሪያዎ ላይ ያሉ &lt;b&gt;ፎቶዎችን፣ ቪዲዮዎችን፣ ሙዚቃን፣ ኦዲዮን፣ ቪዲዮዎችን እና ሌሎች ፋይሎችን&lt;/b&gt; ዘንድ እንዲደርስ ይፈቀድለት?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; በዚህ መሣሪያ ላይ ያለ ሙዚቃን እና ሌሎች የኦዲዮ ፋይሎችን እንዲደርስ ይፈቀድለት?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; በዚህ መሣሪያ ላይ ያሉ ፎቶዎችን እና ቪዲዮዎችን እንዲደርስ ይፈቀድለት?"</string>
-    <!-- no translation found for permgrouprequest_more_photos (1735590169295777717) -->
-    <skip />
+    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; በዚህ መሣሪያ ላይ ያሉ ተጨማሪ ፎቶዎችን እና ቪድዮዎችን እንዲደርስ ይፈቀድለት?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ኦዲዮን እንዲቀዳ ይፈቀድለት?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"መተግበሪያው ኦዲዮን መቅዳት የሚችለው መተግበሪያውን እርስዎ ሲጠቀሙበት ብቻ ነው"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ኦዲዮን እንዲቀዳ ይፈቀድለት?"</string>
@@ -614,6 +613,10 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"የውሂብ ደህንነት"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"የአካባቢ ውሂብ ሊጋራ ይችላል"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"ይህ መተግበሪያ የአካባቢ ውሂብዎን ከሦስተኛ ወገኖች ጋር ሊያጋራ እንደሚችል ገልጿል"</string>
+    <!-- no translation found for permission_rationale_data_sharing_link_error_title (4496607694785370249) -->
+    <skip />
+    <!-- no translation found for permission_rationale_data_sharing_link_error_message (7793746078634780418) -->
+    <skip />
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"የአካባቢ የውሂብ ማጋራት ዝማኔዎች"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"የእርስዎን የአካባቢ ውሂብ ሊያጋሩ የሚችሉበትን መንገድ የለወጡ መተግበሪያዎችን ይገምግሙ"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"እነዚህ መተግበሪያዎች የእርስዎን የአካባቢ ውሂብ ሊያጋሩ የሚችሉበትን መንገድ ለውጠዋል። ከዚህ በፊት አጋርተውት ላይሆን ይችላል፣ ወይም አሁን ለማስታወቂያ ወይም የገበያ ሥራ ዓላማዎች ሊያጋሩት ይችላሉ።"</string>

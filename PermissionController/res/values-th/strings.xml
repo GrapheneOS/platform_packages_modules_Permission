@@ -34,8 +34,10 @@
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"ข้อมูลเพิ่มเติม"</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"อนุญาตทั้งหมด"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"อนุญาตทั้งหมดตลอดเวลา"</string>
-    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"เลือกรูปภาพ"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"เลือกรูปภาพและวิดีโอเพิ่มเติม"</string>
+    <!-- no translation found for grant_dialog_button_allow_selected_photos (5497042471576153842) -->
+    <skip />
+    <!-- no translation found for grant_dialog_button_allow_more_selected_photos (5145657877588697709) -->
+    <skip />
     <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"ไม่ต้องเลือกเพิ่มเติม"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"ยังคงไม่อนุญาต"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"ปิด"</string>
@@ -611,6 +613,10 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"ความปลอดภัยของข้อมูล"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"อาจมีการแชร์ข้อมูลตำแหน่ง"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"แอปนี้ระบุว่าอาจแชร์ข้อมูลตำแหน่งของคุณกับบุคคลที่สาม"</string>
+    <!-- no translation found for permission_rationale_data_sharing_link_error_title (4496607694785370249) -->
+    <skip />
+    <!-- no translation found for permission_rationale_data_sharing_link_error_message (7793746078634780418) -->
+    <skip />
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"การอัปเดตการแชร์ข้อมูลตำแหน่ง"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"ตรวจสอบแอปที่เปลี่ยนแปลงวิธีที่อาจใช้แชร์ข้อมูลตำแหน่งของคุณ"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"แอปต่อไปนี้ได้เปลี่ยนแปลงวิธีที่แอปอาจแชร์ข้อมูลตำแหน่งของคุณ โดยที่แอปอาจไม่เคยแชร์มาก่อน หรืออาจแชร์ในตอนนี้เพื่อวัตถุประสงค์ในการโฆษณาหรือการตลาดก็ได้"</string>

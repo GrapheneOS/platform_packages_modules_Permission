@@ -34,8 +34,10 @@
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Plus d\'infos"</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Tout autoriser"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Toujours tout autoriser"</string>
-    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"Sélectionner des photos"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"Sélectionner plus de photos et de vidéos"</string>
+    <!-- no translation found for grant_dialog_button_allow_selected_photos (5497042471576153842) -->
+    <skip />
+    <!-- no translation found for grant_dialog_button_allow_more_selected_photos (5145657877588697709) -->
+    <skip />
     <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Ne rien sélectionner de plus"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Ne pas autoriser"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Fermer"</string>
@@ -592,7 +594,7 @@
     <string name="show_password_summary" msgid="1110166488865981610">"Afficher brièvement les caractères pendant la saisie"</string>
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Cette appli a indiqué qu\'elle peut partager des données de localisation avec des tiers"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Partage des données et localisation"</string>
-    <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Origine des infos sur le partage des données"</string>
+    <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Origine des informations sur le partage des données"</string>
     <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
     <skip />
     <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
@@ -611,6 +613,10 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Sécurité des données"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Les données de localisation peuvent être partagées"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Cette appli a indiqué qu\'elle peut partager vos données de localisation avec des tiers"</string>
+    <!-- no translation found for permission_rationale_data_sharing_link_error_title (4496607694785370249) -->
+    <skip />
+    <!-- no translation found for permission_rationale_data_sharing_link_error_message (7793746078634780418) -->
+    <skip />
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Mises à jour du partage des données pour la localisation"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Consulter les applis qui ont modifié la manière dont elles peuvent partager vos données de localisation"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Ces applis ont modifié la manière dont elles peuvent partager vos données de localisation. Elles ne les partageaient peut-être pas auparavant ou peuvent désormais les partager à des fins de publicité ou de marketing."</string>
