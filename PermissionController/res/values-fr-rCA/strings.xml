@@ -32,12 +32,12 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Garder « Pendant l\'utilisation de l\'appli »"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Garder « Uniquement cette fois »"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"En savoir plus"</string>
-    <!-- no translation found for grant_dialog_button_allow_all (5939066403732409516) -->
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Tout autoriser"</string>
+    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Toujours tout autoriser"</string>
+    <!-- no translation found for grant_dialog_button_allow_selected_photos (5497042471576153842) -->
     <skip />
-    <!-- no translation found for grant_dialog_button_always_allow_all (1719900027660252167) -->
+    <!-- no translation found for grant_dialog_button_allow_more_selected_photos (5145657877588697709) -->
     <skip />
-    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"Sélectionner des photos"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"Sélectionner plus de photos et de vidéos"</string>
     <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Ne pas sélectionner plus de photos"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Ne pas autoriser quand même"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Fermer"</string>
@@ -613,6 +613,10 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Sécurité des données"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Les données de localisation peuvent être partagées"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Cette application indique qu\'elle peut partager vos données de localisation avec des tiers"</string>
+    <!-- no translation found for permission_rationale_data_sharing_link_error_title (4496607694785370249) -->
+    <skip />
+    <!-- no translation found for permission_rationale_data_sharing_link_error_message (7793746078634780418) -->
+    <skip />
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Mises à jour des pratiques de partage des données pour la localisation"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Passez en revue les applications qui ont changé la façon dont elles peuvent partager vos données de localisation"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Ces applications ont modifié la façon dont elles peuvent partager vos données de localisation. Elles peuvent ne pas les avoir partagées auparavant, ou peuvent maintenant les partager à des fins d\'annonces ou de marketing."</string>

@@ -32,12 +32,12 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Пакінуць \"У актыўным рэжыме праграмы\""</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Захаваць толькі на гэты раз"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Падрабязней"</string>
-    <!-- no translation found for grant_dialog_button_allow_all (5939066403732409516) -->
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Дазволіць усе"</string>
+    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Заўсёды дазваляць усе"</string>
+    <!-- no translation found for grant_dialog_button_allow_selected_photos (5497042471576153842) -->
     <skip />
-    <!-- no translation found for grant_dialog_button_always_allow_all (1719900027660252167) -->
+    <!-- no translation found for grant_dialog_button_allow_more_selected_photos (5145657877588697709) -->
     <skip />
-    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"Выбраць фота"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"Выбраць больш фота і відэа"</string>
     <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Больш не выбіраць"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Усё роўна не дазваляць"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Адхіліць"</string>
@@ -613,6 +613,10 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Бяспека даных"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Дазвол на абагульванне даных пра месцазнаходжанне"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Гэта праграма можа абагульваць даныя пра месцазнаходжанне з трэцімі бакамі"</string>
+    <!-- no translation found for permission_rationale_data_sharing_link_error_title (4496607694785370249) -->
+    <skip />
+    <!-- no translation found for permission_rationale_data_sharing_link_error_message (7793746078634780418) -->
+    <skip />
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Змяненні ў абагульванні даных пра месцазнаходжанне"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Праглядзець праграмы, для якіх быў зменены спосаб абагульвання даных пра месцазнаходжанне"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Для гэтых праграм спосаб абагульвання даных пра месцазнаходжанне змяніўся. Магчыма, яны раней увогуле не абагульвалі такія даныя альбо цяпер пачалі іх абагульваць у мэтах рэкламы ці маркетынгу."</string>

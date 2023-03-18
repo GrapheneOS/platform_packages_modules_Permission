@@ -34,8 +34,10 @@
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"更多資料"</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"全部允許"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"一律全部允許"</string>
-    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"選取相片"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"選取更多相片和影片"</string>
+    <!-- no translation found for grant_dialog_button_allow_selected_photos (5497042471576153842) -->
+    <skip />
+    <!-- no translation found for grant_dialog_button_allow_more_selected_photos (5145657877588697709) -->
+    <skip />
     <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"不選取更多相片"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"一律不允許"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"關閉"</string>
@@ -207,7 +209,7 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"未使用的應用程式設定"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"如不使用應用程式，即移除權限"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"移除權限並騰出空間"</string>
-    <string name="unused_apps_label_v2" msgid="7058776770056517980">"如果未使用就暫停應用程式活動"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"暫停未使用應用程式的活動"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"移除權限、刪除暫存檔案和停止通知"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"為保護您的資料，系統已移除您在過去幾個月未曾使用的應用程式的權限。"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"為保護您的資料，如果應用程式在過去幾個月未曾使用，系統將會移除以下權限：<xliff:g id="PERMS">%1$s</xliff:g>。"</string>
@@ -592,12 +594,12 @@
     <string name="show_password_summary" msgid="1110166488865981610">"輸入時短暫顯示字元"</string>
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"此應用程式表明可能會與第三方分享位置資料"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"資料分享和位置"</string>
-    <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"資料分享的資料來源"</string>
+    <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"資料分享詳情的來源"</string>
     <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
     <skip />
     <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
     <skip />
-    <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"資料分享方式差異"</string>
+    <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"資料分享方式因情況而異"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"資料處理方法可因應用程式版本、使用情況、所在地區和年齡而異。"<annotation id="link">"進一步瞭解資料分享"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"您的位置資料"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"如要變更此應用程式的存取權，請前往"<annotation id="link">"私隱權設定"</annotation></string>
@@ -611,6 +613,10 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"資料安全"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"系統可能會分享位置資料"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"此應用程式表明可能會與第三方分享您的位置資料"</string>
+    <!-- no translation found for permission_rationale_data_sharing_link_error_title (4496607694785370249) -->
+    <skip />
+    <!-- no translation found for permission_rationale_data_sharing_link_error_message (7793746078634780418) -->
+    <skip />
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"位置資料分享更新"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"查看已變更位置資料分享方式的應用程式"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"這些應用程式已變更位置資料分享方式。它們可能未曾分享位置資料，或現在可能分享這些資料作廣告或市場推廣用途。"</string>

@@ -32,12 +32,12 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Задржи ја „Додека се користи апликацијата“"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Задржи „Само овој пат“"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Уште информации"</string>
-    <!-- no translation found for grant_dialog_button_allow_all (5939066403732409516) -->
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Дозволи ги сите"</string>
+    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Секогаш дозволувај ги сите"</string>
+    <!-- no translation found for grant_dialog_button_allow_selected_photos (5497042471576153842) -->
     <skip />
-    <!-- no translation found for grant_dialog_button_always_allow_all (1719900027660252167) -->
+    <!-- no translation found for grant_dialog_button_allow_more_selected_photos (5145657877588697709) -->
     <skip />
-    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"Изберете фотографии"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"Изберете повеќе фотографии и видеа"</string>
     <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Не избирајте повеќе"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Сепак не дозволувај"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Отфрли"</string>
@@ -613,6 +613,10 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Безбедност на податоците"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Можно е да се споделуваат податоците за локација"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Апликацијава наведе дека можеби ќе ги споделува вашите податоци за локацијата со трети страни"</string>
+    <!-- no translation found for permission_rationale_data_sharing_link_error_title (4496607694785370249) -->
+    <skip />
+    <!-- no translation found for permission_rationale_data_sharing_link_error_message (7793746078634780418) -->
+    <skip />
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Промени во споделувањето на податоците за локација"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Прегледајте ги апликациите што го промениле начинот на кој може да ги споделуваат вашите податоци за локација"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Овие апликации го промениле начинот на кој може да ги споделуваат вашите податоци за локација. Претходно можеби не ги споделувале или можеби сега ги споделуваат во рекламни или маркетиншки цели."</string>

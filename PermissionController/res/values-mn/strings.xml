@@ -34,8 +34,10 @@
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Дэлгэрэнгүй мэдээлэл"</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Бүгдийг зөвшөөрөх"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Бүгдийг үргэлж зөвшөөрөх"</string>
-    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"Зураг сонгох"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"Зураг болон видео нэмж сонгох"</string>
+    <!-- no translation found for grant_dialog_button_allow_selected_photos (5497042471576153842) -->
+    <skip />
+    <!-- no translation found for grant_dialog_button_allow_more_selected_photos (5145657877588697709) -->
+    <skip />
     <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Нэмж зураг сонгохгүй"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Ямартай ч бүү зөвшөөр"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Үл хэрэгсэх"</string>
@@ -611,6 +613,10 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Өгөгдлийн аюулгүй байдал"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Байршлын өгөгдлийг хуваалцаж магадгүй"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Энэ апп таны байршлын өгөгдлийг гуравдагч талуудтай хуваалцаж магадгүйг мэдэгдсэн"</string>
+    <!-- no translation found for permission_rationale_data_sharing_link_error_title (4496607694785370249) -->
+    <skip />
+    <!-- no translation found for permission_rationale_data_sharing_link_error_message (7793746078634780418) -->
+    <skip />
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Байршлын өгөгдөл хуваалцах шинэчлэлтүүд"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Таны байршлын өгөгдлийг хуваалцдаг аргаа өөрчилсөн аппуудыг шалгана уу"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Эдгээр апп таны байршлын өгөгдлийг хуваалцдаг аргаа өөрчилсөн. Тэд үүнийг өмнө нь хуваалцаагүй байж магадгүй эсвэл одоо үүнийг сурталчилгаа, маркетингийн зорилгоор хуваалцаж болзошгүй."</string>

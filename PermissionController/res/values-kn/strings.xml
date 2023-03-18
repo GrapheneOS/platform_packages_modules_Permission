@@ -34,8 +34,10 @@
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"ಹೆಚ್ಚಿನ ಮಾಹಿತಿ"</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"ಎಲ್ಲವನ್ನೂ ಅನುಮತಿಸಿ"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"ಯಾವಾಗಲೂ ಎಲ್ಲವನ್ನೂ ಅನುಮತಿಸಿ"</string>
-    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"ಫೋಟೋಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"ಹೆಚ್ಚಿನ ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ"</string>
+    <!-- no translation found for grant_dialog_button_allow_selected_photos (5497042471576153842) -->
+    <skip />
+    <!-- no translation found for grant_dialog_button_allow_more_selected_photos (5145657877588697709) -->
+    <skip />
     <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"ಹೆಚ್ಚಿನ ಫೋಟೋಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಬೇಡಿ"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"ಯಾವುದೇ ರೀತಿಯಲ್ಲೂ ಅನುಮತಿಸಬೇಡಿ"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"ವಜಾಗೊಳಿಸಿ"</string>
@@ -611,6 +613,10 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"ಡೇಟಾ ಸುರಕ್ಷತೆ"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"ಸ್ಥಳ ಡೇಟಾವನ್ನು ಹಂಚಿಕೊಳ್ಳಬಹುದು"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"ಈ ಆ್ಯಪ್, ಥರ್ಡ್-ಪಾರ್ಟಿಗಳೊಂದಿಗೆ ನಿಮ್ಮ ಸ್ಥಳ ಡೇಟಾವನ್ನು ಹಂಚಿಕೊಳ್ಳಬಹುದು ಎಂದು ತಿಳಿಸಿದೆ"</string>
+    <!-- no translation found for permission_rationale_data_sharing_link_error_title (4496607694785370249) -->
+    <skip />
+    <!-- no translation found for permission_rationale_data_sharing_link_error_message (7793746078634780418) -->
+    <skip />
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"ಸ್ಥಳಕ್ಕಾಗಿ ಡೇಟಾ ಹಂಚಿಕೊಳ್ಳುವಿಕೆ ಕುರಿತ ಅಪ್‌ಡೇಟ್‌ಗಳು"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"ನಿಮ್ಮ ಸ್ಥಳ ಡೇಟಾವನ್ನು ತಾವು ಹಂಚಿಕೊಳ್ಳಬಹುದಾದ ವಿಧಾನವನ್ನು ಬದಲಾಯಿಸಿದ ಆ್ಯಪ್‌ಗಳನ್ನು ಪರಿಶೀಲಿಸಿ"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"ನಿಮ್ಮ ಸ್ಥಳ ಡೇಟಾವನ್ನು ಈ ಆ್ಯಪ್‌ಗಳು ಹಂಚಿಕೊಳ್ಳಬಹುದಾದ ವಿಧಾನವನ್ನು ಅವು ಬದಲಾಯಿಸಿವೆ. ಇವು ಇದನ್ನು ಈ ಮೊದಲು ಹಂಚಿಕೊಂಡಿಲ್ಲದಿರಬಹುದು ಅಥವಾ ಈಗ ಅದನ್ನು ಜಾಹೀರಾತು ಅಥವಾ ಮಾರ್ಕೆಟಿಂಗ್ ಉದ್ದೇಶಗಳಿಗಾಗಿ ಹಂಚಿಕೊಳ್ಳುತ್ತಿರಬಹುದು."</string>
