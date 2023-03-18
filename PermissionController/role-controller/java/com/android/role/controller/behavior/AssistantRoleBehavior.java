@@ -20,6 +20,7 @@ import android.app.ActivityManager;
 import android.app.role.RoleManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.pm.ServiceInfo;
@@ -54,10 +55,6 @@ public class AssistantRoleBehavior implements RoleBehavior {
 
     private static final String LOG_TAG = AssistantRoleBehavior.class.getSimpleName();
 
-    private static final Intent ASSIST_SERVICE_PROBE =
-            new Intent(VoiceInteractionService.SERVICE_INTERFACE);
-    private static final Intent ASSIST_ACTIVITY_PROBE = new Intent(Intent.ACTION_ASSIST);
-
     @Override
     public void onRoleAdded(@NonNull Role role, @NonNull Context context) {
         PackageManager packageManager = context.getPackageManager();
@@ -82,81 +79,75 @@ public class AssistantRoleBehavior implements RoleBehavior {
     @Override
     public List<String> getQualifyingPackagesAsUser(@NonNull Role role, @NonNull UserHandle user,
             @NonNull Context context) {
-        Context userContext = UserUtils.getUserContext(context, user);
-        ActivityManager userActivityManager = userContext.getSystemService(ActivityManager.class);
-        PackageManager userPackageManager = userContext.getPackageManager();
-        Set<String> availableAssistants = new ArraySet<>();
-
-        if (!userActivityManager.isLowRamDevice()) {
-            List<ResolveInfo> services = userPackageManager.queryIntentServices(
-                    ASSIST_SERVICE_PROBE, PackageManager.GET_META_DATA
-                            | PackageManager.MATCH_DIRECT_BOOT_AWARE
-                            | PackageManager.MATCH_DIRECT_BOOT_UNAWARE);
-            int numServices = services.size();
-            for (int i = 0; i < numServices; i++) {
-                ResolveInfo service = services.get(i);
-
-                if (isAssistantVoiceInteractionService(userPackageManager, service.serviceInfo)) {
-                    availableAssistants.add(service.serviceInfo.packageName);
-                }
-            }
-        }
-
-        List<ResolveInfo> activities = userPackageManager.queryIntentActivities(
-                ASSIST_ACTIVITY_PROBE, PackageManager.MATCH_DEFAULT_ONLY
-                        | PackageManager.MATCH_DIRECT_BOOT_AWARE
-                        | PackageManager.MATCH_DIRECT_BOOT_UNAWARE);
-        int numActivities = activities.size();
-        for (int i = 0; i < numActivities; i++) {
-            availableAssistants.add(activities.get(i).activityInfo.packageName);
-        }
-
-        return new ArrayList<>(availableAssistants);
+        return getQualifyingPackagesInternal(null, user, context);
     }
 
     @Nullable
     @Override
     public Boolean isPackageQualified(@NonNull Role role, @NonNull String packageName,
             @NonNull Context context) {
-        ActivityManager activityManager = context.getSystemService(ActivityManager.class);
-        PackageManager packageManager = context.getPackageManager();
+        return !getQualifyingPackagesInternal(packageName, Process.myUserHandle(), context)
+                .isEmpty();
+    }
 
-        boolean hasAssistantService = false;
-        if (!activityManager.isLowRamDevice()) {
-            Intent pkgServiceProbe = new Intent(ASSIST_SERVICE_PROBE).setPackage(packageName);
-            List<ResolveInfo> services = packageManager.queryIntentServices(pkgServiceProbe,
-                    PackageManager.GET_META_DATA | PackageManager.MATCH_DIRECT_BOOT_AWARE
+    @NonNull
+    private List<String> getQualifyingPackagesInternal(@Nullable String filterPackageName,
+            @NonNull UserHandle user, @NonNull Context context) {
+        Context userContext = UserUtils.getUserContext(context, user);
+        ActivityManager userActivityManager = userContext.getSystemService(ActivityManager.class);
+        PackageManager userPackageManager = userContext.getPackageManager();
+        Set<String> packageNames = new ArraySet<>();
+
+        if (!userActivityManager.isLowRamDevice()) {
+            Intent serviceIntent = new Intent(VoiceInteractionService.SERVICE_INTERFACE);
+            if (filterPackageName != null) {
+                serviceIntent.setPackage(filterPackageName);
+            }
+            List<ResolveInfo> serviceResolveInfos = userPackageManager.queryIntentServices(
+                    serviceIntent, PackageManager.GET_META_DATA
+                            | PackageManager.MATCH_DIRECT_BOOT_AWARE
                             | PackageManager.MATCH_DIRECT_BOOT_UNAWARE);
-            hasAssistantService = !services.isEmpty();
-            int numServices = services.size();
-            for (int i = 0; i < numServices; i++) {
-                ResolveInfo service = services.get(i);
+            int serviceResolveInfosSize = serviceResolveInfos.size();
+            for (int i = 0; i < serviceResolveInfosSize; i++) {
+                ResolveInfo serviceResolveInfo = serviceResolveInfos.get(i);
 
-                if (isAssistantVoiceInteractionService(packageManager, service.serviceInfo)) {
-                    return true;
+                ServiceInfo serviceInfo = serviceResolveInfo.serviceInfo;
+                if (!serviceInfo.exported) {
+                    continue;
                 }
+                if (!isAssistantVoiceInteractionService(userPackageManager, serviceInfo)) {
+                    if (filterPackageName != null) {
+                        Log.w(LOG_TAG, "Package " + filterPackageName
+                                + " has an unqualified voice interaction service");
+                    }
+                    continue;
+                }
+
+                packageNames.add(serviceInfo.packageName);
             }
         }
 
-        Intent pkgActivityProbe = new Intent(ASSIST_ACTIVITY_PROBE).setPackage(packageName);
-        boolean hasAssistantActivity = !packageManager.queryIntentActivities(pkgActivityProbe,
-                PackageManager.MATCH_DEFAULT_ONLY | PackageManager.MATCH_DIRECT_BOOT_AWARE
-                        | PackageManager.MATCH_DIRECT_BOOT_UNAWARE).isEmpty();
-        if (!hasAssistantActivity) {
-            Log.w(LOG_TAG, "Package " + packageName + " not qualified for " + role.getName()
-                    + " due to " + (hasAssistantService ? "unqualified" : "missing")
-                    + " service and missing activity");
+        Intent activityIntent = new Intent(Intent.ACTION_ASSIST);
+        if (filterPackageName != null) {
+            activityIntent.setPackage(filterPackageName);
+        }
+        List<ResolveInfo> activityResolveInfos = userPackageManager.queryIntentActivities(
+                activityIntent, PackageManager.MATCH_DEFAULT_ONLY
+                        | PackageManager.MATCH_DIRECT_BOOT_AWARE
+                        | PackageManager.MATCH_DIRECT_BOOT_UNAWARE);
+        int activityResolveInfosSize = activityResolveInfos.size();
+        for (int i = 0; i < activityResolveInfosSize; i++) {
+            ResolveInfo activityResolveInfo = activityResolveInfos.get(i);
+
+            ActivityInfo activityInfo = activityResolveInfo.activityInfo;
+            if (!activityInfo.exported) {
+                continue;
+            }
+
+            packageNames.add(activityInfo.packageName);
         }
 
-        return hasAssistantActivity;
-    }
-
-    @Override
-    public void grant(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
-    }
-
-    @Override
-    public void revoke(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
+        return new ArrayList<>(packageNames);
     }
 
     private boolean isAssistantVoiceInteractionService(@NonNull PackageManager pm,

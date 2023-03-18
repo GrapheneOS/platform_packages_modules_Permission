@@ -16,12 +16,11 @@
 
 package com.android.role.controller.model;
 
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ComponentInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.os.Bundle;
 import android.os.UserHandle;
 
 import androidx.annotation.NonNull;
@@ -53,9 +52,8 @@ public class RequiredBroadcastReceiver extends RequiredComponent {
 
     @NonNull
     @Override
-    protected ComponentName getComponentComponentName(@NonNull ResolveInfo resolveInfo) {
-        return new ComponentName(resolveInfo.activityInfo.packageName,
-                resolveInfo.activityInfo.name);
+    protected ComponentInfo getComponentComponentInfo(@NonNull ResolveInfo resolveInfo) {
+        return resolveInfo.activityInfo;
     }
 
     @Override
@@ -67,11 +65,5 @@ public class RequiredBroadcastReceiver extends RequiredComponent {
     @Override
     protected String getComponentPermission(@NonNull ResolveInfo resolveInfo) {
         return resolveInfo.activityInfo.permission;
-    }
-
-    @Nullable
-    @Override
-    protected Bundle getComponentMetaData(@NonNull ResolveInfo resolveInfo) {
-        return resolveInfo.activityInfo.metaData;
     }
 }
