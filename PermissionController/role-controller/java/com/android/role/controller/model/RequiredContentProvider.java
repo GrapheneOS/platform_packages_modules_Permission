@@ -16,11 +16,12 @@
 
 package com.android.role.controller.model;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ComponentInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.os.Bundle;
 import android.os.UserHandle;
 
 import androidx.annotation.NonNull;
@@ -52,8 +53,9 @@ public class RequiredContentProvider extends RequiredComponent {
 
     @NonNull
     @Override
-    protected ComponentInfo getComponentComponentInfo(@NonNull ResolveInfo resolveInfo) {
-        return resolveInfo.providerInfo;
+    protected ComponentName getComponentComponentName(@NonNull ResolveInfo resolveInfo) {
+        return new ComponentName(resolveInfo.providerInfo.packageName,
+                resolveInfo.providerInfo.name);
     }
 
     @Override
@@ -67,5 +69,11 @@ public class RequiredContentProvider extends RequiredComponent {
         // TODO: Which permission? Or both?
         //return resolveInfo.providerInfo.readPermission;
         throw new UnsupportedOperationException();
+    }
+
+    @Nullable
+    @Override
+    protected Bundle getComponentMetaData(@NonNull ResolveInfo resolveInfo) {
+        return resolveInfo.providerInfo.metaData;
     }
 }
