@@ -28,3 +28,11 @@ fun wakeUpScreen() {
     uiDevice.executeShellCommand("input keyevent KEYCODE_WAKEUP")
     uiDevice.executeShellCommand("wm dismiss-keyguard")
 }
+
+/**
+ * Press the home button
+ */
+fun pressHome() {
+    val uiDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
+    uiDevice.pressHome()
+}
