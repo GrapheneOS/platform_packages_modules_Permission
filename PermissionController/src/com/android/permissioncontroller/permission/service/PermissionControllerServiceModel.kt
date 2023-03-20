@@ -25,7 +25,7 @@ import androidx.core.util.Consumer
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
-import androidx.lifecycle.Transformations
+import androidx.lifecycle.map
 import com.android.permissioncontroller.DumpableLog
 import com.android.permissioncontroller.PermissionControllerProto.PermissionControllerDumpProto
 import com.android.permissioncontroller.permission.utils.PermissionMapping
@@ -88,13 +88,13 @@ class PermissionControllerServiceModel(private val service: PermissionController
 
             var updated = false
             val observer = object : Observer<T> {
-                override fun onChanged(data: T) {
+                override fun onChanged(value: T) {
                     if (updated) {
                         return
                     }
                     if ((liveData is SmartUpdateMediatorLiveData<T> && !liveData.isStale) ||
                         liveData !is SmartUpdateMediatorLiveData<T>) {
-                        onChangedFun(data)
+                        onChangedFun(value)
                         liveData.removeObserver(this)
                         updated = true
                     }
@@ -288,9 +288,7 @@ class PermissionControllerServiceModel(private val service: PermissionController
     fun onCountUnusedApps(
         callback: IntConsumer
     ) {
-        val unusedAppsCount = Transformations.map(getUnusedPackages()) {
-            it?.size ?: 0
-        }
+        val unusedAppsCount = getUnusedPackages().map { it?.size ?: 0 }
         observeAndCheckForLifecycleState(unusedAppsCount) { count -> callback.accept(count ?: 0) }
     }
 

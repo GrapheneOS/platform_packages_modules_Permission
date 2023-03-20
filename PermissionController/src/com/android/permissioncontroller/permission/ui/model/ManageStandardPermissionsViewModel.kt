@@ -23,7 +23,7 @@ import android.health.connect.HealthPermissions.HEALTH_PERMISSION_GROUP
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.Transformations
+import androidx.lifecycle.map
 import androidx.navigation.fragment.findNavController
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.data.PermGroupsPackagesLiveData
@@ -48,9 +48,7 @@ class ManageStandardPermissionsViewModel(
     val uiDataLiveData = PermGroupsPackagesUiInfoLiveData(app,
         StandardPermGroupNamesLiveData)
     val numCustomPermGroups = NumCustomPermGroupsWithPackagesLiveData()
-    val numAutoRevoked = Transformations.map(unusedAutoRevokePackagesLiveData) {
-        it?.size ?: 0
-    }
+    val numAutoRevoked = unusedAutoRevokePackagesLiveData.map { it?.size ?: 0 }
 
     /**
      * Navigate to the Custom Permissions screen

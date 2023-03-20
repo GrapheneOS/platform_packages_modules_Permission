@@ -45,14 +45,6 @@ abstract class SmartUpdateMediatorLiveData<T>(private val isStaticVal: Boolean =
     }
 
     /**
-     * Boolean, whether or not the value of this uiDataLiveData has been explicitly set yet.
-     * Differentiates between "null value because liveData is new" and "null value because
-     * liveData is invalid"
-     */
-    var isInitialized = false
-        private set
-
-    /**
      * Boolean, whether or not this liveData has a stale value or not. Every time the liveData goes
      * inactive, its data becomes stale, until it goes active again, and is explicitly set.
      */
@@ -66,7 +58,6 @@ abstract class SmartUpdateMediatorLiveData<T>(private val isStaticVal: Boolean =
         ensureMainThread()
 
         if (!isInitialized) {
-            isInitialized = true
             // If we have received an invalid value, and this is the first time we are set,
             // notify observers.
             if (newValue == null) {
@@ -247,6 +238,6 @@ abstract class SmartUpdateMediatorLiveData<T>(private val isStaticVal: Boolean =
                     update()
                 }
             },
-            isInitialized = { isInitialized && (staleOk || !isStale) })
+            isValueInitialized = { isInitialized && (staleOk || !isStale) })
     }
 }
