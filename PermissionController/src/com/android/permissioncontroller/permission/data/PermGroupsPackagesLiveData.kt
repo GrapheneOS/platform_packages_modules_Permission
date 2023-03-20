@@ -43,7 +43,7 @@ class PermGroupsPackagesLiveData private constructor(
 
     init {
         addSource(groupNamesLiveData) {
-            groupNames = it ?: emptyList()
+            groupNames = it
 
             val getLiveData = { groupName: String -> PermGroupLiveData[groupName] }
             setSourcesToDifference(groupNames, permGroupLiveDatas, getLiveData) {
