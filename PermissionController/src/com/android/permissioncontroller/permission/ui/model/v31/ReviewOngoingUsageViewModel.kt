@@ -551,10 +551,14 @@ class ReviewOngoingUsageViewModelFactory(
     owner: SavedStateRegistryOwner,
     defaultArgs: Bundle
 ) : AbstractSavedStateViewModelFactory(owner, defaultArgs) {
-    override fun <T : ViewModel> create(p0: String, p1: Class<T>, state: SavedStateHandle): T {
-        state.set(FIRST_OPENED_KEY, state.get<Long>(FIRST_OPENED_KEY)
+    override fun <T : ViewModel> create(
+        key: String,
+        modelClass: Class<T>,
+        handle: SavedStateHandle
+    ): T {
+        handle.set(FIRST_OPENED_KEY, handle.get<Long>(FIRST_OPENED_KEY)
             ?: System.currentTimeMillis())
         @Suppress("UNCHECKED_CAST")
-        return ReviewOngoingUsageViewModel(state, extraDurationMillis) as T
+        return ReviewOngoingUsageViewModel(handle, extraDurationMillis) as T
     }
 }

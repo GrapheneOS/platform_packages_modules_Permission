@@ -464,13 +464,16 @@ class PermissionAppsViewModelFactory(
     owner: SavedStateRegistryOwner,
     defaultArgs: Bundle
 ) : AbstractSavedStateViewModelFactory(owner, defaultArgs) {
-
-    override fun <T : ViewModel> create(p0: String, p1: Class<T>, state: SavedStateHandle): T {
-        state.set(SHOULD_SHOW_SYSTEM_KEY, state.get<Boolean>(SHOULD_SHOW_SYSTEM_KEY) ?: false)
-        state.set(HAS_SYSTEM_APPS_KEY, state.get<Boolean>(HAS_SYSTEM_APPS_KEY) ?: true)
-        state.set(SHOW_ALWAYS_ALLOWED, state.get<Boolean>(SHOW_ALWAYS_ALLOWED) ?: false)
-        state.set(CREATION_LOGGED_KEY, state.get<Boolean>(CREATION_LOGGED_KEY) ?: false)
+    override fun <T : ViewModel> create(
+        key: String,
+        modelClass: Class<T>,
+        handle: SavedStateHandle
+    ): T {
+        handle.set(SHOULD_SHOW_SYSTEM_KEY, handle.get<Boolean>(SHOULD_SHOW_SYSTEM_KEY) ?: false)
+        handle.set(HAS_SYSTEM_APPS_KEY, handle.get<Boolean>(HAS_SYSTEM_APPS_KEY) ?: true)
+        handle.set(SHOW_ALWAYS_ALLOWED, handle.get<Boolean>(SHOW_ALWAYS_ALLOWED) ?: false)
+        handle.set(CREATION_LOGGED_KEY, handle.get<Boolean>(CREATION_LOGGED_KEY) ?: false)
         @Suppress("UNCHECKED_CAST")
-        return PermissionAppsViewModel(state, app, groupName) as T
+        return PermissionAppsViewModel(handle, app, groupName) as T
     }
 }
