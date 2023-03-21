@@ -28,6 +28,7 @@ import static com.android.permissioncontroller.safetycenter.SafetyCenterConstant
 import static com.android.permissioncontroller.safetycenter.SafetyCenterConstants.PRIVACY_SOURCES_GROUP_ID;
 import static com.android.permissioncontroller.safetycenter.SafetyCenterConstants.WORK_PROFILE_SUFFIX;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -104,10 +105,18 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
                     .commitNow();
         }
 
-        if (getActionBar() != null
-                && ActivityEmbeddingUtils.shouldHideNavigateUpButton(this, true)) {
-            getActionBar().setDisplayHomeAsUpEnabled(false);
-            getActionBar().setHomeButtonEnabled(false);
+        ActionBar actionBar = getActionBar();
+        // Only the homepage can be considered a "second layer" page as it's the only one that
+        // can be reached from the Settings menu. The other pages are only reachable using
+        // a direct intent (e.g. notification, "first layer") and/or by navigating within Safety
+        // Center ("third layer").
+        // Note that the homepage can also be a "first layer" page, but that would only happen
+        // if the activity is not embedded.
+        boolean isSecondLayerPage = frag instanceof SafetyCenterScrollWrapperFragment;
+        if (actionBar != null
+                && ActivityEmbeddingUtils.shouldHideNavigateUpButton(this, isSecondLayerPage)) {
+            actionBar.setDisplayHomeAsUpEnabled(false);
+            actionBar.setHomeButtonEnabled(false);
         }
     }
 
