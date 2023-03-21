@@ -245,7 +245,7 @@
            parent="@style/PermissionGrantButton"></style>
     <style name="PermissionGrantButtonNoUpgrade"
            parent="@style/PermissionGrantButton"></style>
-    <style name="PermissionGrantButtonAllowAllSingleton"
+    <style name="PermissionGrantButtonAlwaysAllowAll"
         parent="@style/PermissionGrantButton"></style>
 
     <style name="PermissionGrantButtonAllowMaterial3"
@@ -266,7 +266,7 @@
            parent="@style/PermissionGrantButton"></style>
     <style name="PermissionGrantButtonDontAllowMorePhotosMaterial3"
            parent="@style/PermissionGrantButton"></style>
-    <style name="PermissionGrantButtonAllowAllSingletonMaterial3"
+    <style name="PermissionGrantButtonAlwaysAllowAllMaterial3"
         parent="@style/PermissionGrantButton"></style>
 
     <!-- END PERMISSION GRANT DIALOG -->
