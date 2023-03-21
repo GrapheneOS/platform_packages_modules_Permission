@@ -283,6 +283,12 @@
         <item name="android:lineHeight">20sp</item>
     </style>
 
+    <style name="TextAppearance.SafetyCenter.IssueSubtitle"
+        parent="TextAppearance.SafetyCenter.Medium">
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineHeight">24sp</item>
+    </style>
+
     <style name="TextAppearance.SafetyCenter.ActionButton"
         parent="TextAppearance.SafetyCenter.Medium">
         <item name="android:capitalize">sentences</item>

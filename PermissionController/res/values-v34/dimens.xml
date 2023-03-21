@@ -20,5 +20,6 @@
 
     <dimen name="sc_action_button_list_margin">@dimen/sc_spacing_xxsmall</dimen>
     <dimen name="sc_button_corner_radius_small">4dp</dimen>
-    <dimen name="sc_brand_chip_corner_radius">24dp</dimen>
+    <dimen name="sc_brand_chip_corner_radius">20dp</dimen>
+    <dimen name="sc_brand_chip_padding">6dp</dimen>
 </resources>
