@@ -29,6 +29,7 @@ import static com.android.permission.safetylabel.DataPurposeConstants.PURPOSE_AP
 import static com.android.permission.safetylabel.DataPurposeConstants.PURPOSE_DEVELOPER_COMMUNICATIONS;
 import static com.android.permission.safetylabel.DataPurposeConstants.PURPOSE_FRAUD_PREVENTION_SECURITY;
 import static com.android.permission.safetylabel.DataPurposeConstants.PURPOSE_PERSONALIZATION;
+import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_RATIONALE_DIALOG_ACTION_REPORTED__BUTTON_PRESSED__CANCEL;
 import static com.android.permissioncontroller.permission.ui.model.v34.PermissionRationaleViewModel.APP_PERMISSION_REQUEST_CODE;
 import static com.android.permissioncontroller.permission.ui.v34.PermissionRationaleViewHandler.Result.CANCELLED;
 
@@ -318,6 +319,8 @@ public class PermissionRationaleActivity extends SettingsActivity implements
     @Override
     public void onPermissionRationaleResult(@Nullable String groupName, int result) {
         if (result == CANCELLED) {
+            mViewModel.logPermissionRationaleDialogActionReported(
+                    PERMISSION_RATIONALE_DIALOG_ACTION_REPORTED__BUTTON_PRESSED__CANCEL);
             finishAfterTransition();
         }
     }
