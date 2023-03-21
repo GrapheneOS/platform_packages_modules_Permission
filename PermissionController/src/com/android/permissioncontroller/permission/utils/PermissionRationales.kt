@@ -34,9 +34,11 @@ object PermissionRationales {
      */
     fun shouldShowPermissionRationale(
         safetyLabel: SafetyLabel?,
-        groupName: String
+        groupName: String?
     ): Boolean {
-        if (safetyLabel == null || safetyLabel.dataLabel.dataShared.isEmpty()) {
+        if (groupName == null ||
+            safetyLabel == null ||
+            safetyLabel.dataLabel.dataShared.isEmpty()) {
             return false
         }
         val categoriesForPermission: List<String> =
