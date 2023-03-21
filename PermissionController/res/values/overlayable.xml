@@ -393,6 +393,7 @@
             <item type="dimen" name="sc_card_corner_radius_xsmall" />
             <item type="dimen" name="sc_card_widget_corner_radius" />
             <item type="dimen" name="sc_brand_chip_corner_radius" />
+            <item type="dimen" name="sc_brand_chip_padding" />
 
             <item type="color" name="safety_center_button_info" />
             <item type="color" name="safety_center_button_recommend" />
@@ -481,7 +482,6 @@
             <item type="drawable" name="status_scanning_end_anim_warn_to_warn" />
             <item type="drawable" name="status_warn_to_scanning_anim" />
             <item type="drawable" name="safety_center_brand_chip_background" />
-            <!--TODO(b/253171482) Confirm with UX about overlaying this-->
             <item type="drawable" name="ic_safety_center_brand_chip" />
 
             <item type="style" name="TextAppearance.SafetyCenter.Headline" />
@@ -492,6 +492,8 @@
             <item type="style" name="TextAppearance.SafetyCenter.Medium" />
             <item type="style" name="TextAppearance.SafetyCenter.ActionButton" />
             <item type="style" name="TextAppearance.SafetyCenter.ActionButton.Secondary" />
+            <item type="style" name="TextAppearance.SafetyCenter.IssueSubtitle" />
+            <item type="style" name="TextAppearance.SafetyCenter.BrandChip" />
         </policy>
     </overlayable>
 
