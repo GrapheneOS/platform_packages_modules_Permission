@@ -17,15 +17,14 @@
 package com.android.permissioncontroller.permission.data
 
 import android.app.Application
-import android.content.Context
 import android.content.pm.InstallSourceInfo
 import android.content.pm.PackageManager
+import android.os.Process
 import android.os.UserHandle
 import android.util.Log
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.model.livedatatypes.LightInstallSourceInfo
 import com.android.permissioncontroller.permission.model.livedatatypes.LightInstallSourceInfo.Companion.UNKNOWN_INSTALL_SOURCE
-import com.android.permissioncontroller.permission.utils.Utils
 import kotlinx.coroutines.Job
 
 /**
@@ -40,7 +39,8 @@ private constructor(
     private val app: Application,
     private val packageName: String,
     private val user: UserHandle
-) : SmartAsyncMediatorLiveData<LightInstallSourceInfo>(),
+) :
+    SmartAsyncMediatorLiveData<LightInstallSourceInfo>(),
     PackageBroadcastReceiver.PackageBroadcastListener {
 
     override fun onActive() {
@@ -69,15 +69,25 @@ private constructor(
 
         val lightInstallSourceInfo: LightInstallSourceInfo =
             try {
-                val userContext = Utils.getUserContext(app, user)
-                LightInstallSourceInfo(
-                    getInstallSourceInfo(userContext, packageName).initiatingPackageName)
+                LightInstallSourceInfo(getInstallSourceInfo(packageName).initiatingPackageName)
             } catch (e: PackageManager.NameNotFoundException) {
                 Log.w(LOG_TAG, "InstallSourceInfo for $packageName not found")
                 invalidateSingle(packageName to user)
                 UNKNOWN_INSTALL_SOURCE
             }
         postValue(lightInstallSourceInfo)
+    }
+
+    /** Returns the [InstallSourceInfo] for the given package. */
+    @Throws(PackageManager.NameNotFoundException::class)
+    private fun getInstallSourceInfo(packageName: String): InstallSourceInfo {
+        val userContext =
+            if (user == Process.myUserHandle()) {
+                app
+            } else {
+                app.createContextAsUser(user, /* flags= */ 0)
+            }
+        return userContext.packageManager.getInstallSourceInfo(packageName)
     }
 
     companion object :
@@ -87,12 +97,6 @@ private constructor(
         override fun newValue(key: Pair<String, UserHandle>): LightInstallSourceInfoLiveData {
             return LightInstallSourceInfoLiveData(
                 PermissionControllerApplication.get(), key.first, key.second)
-        }
-
-        /** Returns the [InstallSourceInfo] for the given package */
-        @Throws(PackageManager.NameNotFoundException::class)
-        private fun getInstallSourceInfo(context: Context, packageName: String): InstallSourceInfo {
-            return context.packageManager.getInstallSourceInfo(packageName)
         }
     }
 }
