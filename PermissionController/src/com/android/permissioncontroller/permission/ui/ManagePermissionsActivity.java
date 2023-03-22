@@ -39,6 +39,7 @@ import android.os.Bundle;
 import android.os.Process;
 import android.os.UserHandle;
 import android.permission.PermissionManager;
+import android.provider.Settings;
 import android.safetycenter.SafetyCenterManager;
 import android.safetycenter.SafetyEvent;
 import android.safetycenter.SafetySourceData;
@@ -139,6 +140,15 @@ public final class ManagePermissionsActivity extends SettingsActivity {
         // instance, re-use its Fragment instead of making a new one.
         if ((DeviceUtils.isTelevision(this) || DeviceUtils.isAuto(this)
                 || DeviceUtils.isWear(this)) && savedInstanceState != null) {
+            return;
+        }
+
+        boolean provisioned = Settings.Global.getInt(
+                getContentResolver(), Settings.Global.DEVICE_PROVISIONED, 0) != 0;
+        boolean completed = Settings.Secure.getInt(
+                getContentResolver(), Settings.Secure.USER_SETUP_COMPLETE, 0) != 0;
+        if (!provisioned || !completed) {
+            finishAfterTransition();
             return;
         }
 
