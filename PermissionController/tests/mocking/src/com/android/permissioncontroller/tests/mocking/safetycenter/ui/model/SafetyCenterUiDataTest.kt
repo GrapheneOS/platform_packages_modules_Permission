@@ -17,6 +17,7 @@
 package com.android.permissioncontroller.tests.mocking.safetycenter.ui.model
 
 import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
+import android.os.Bundle
 import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterEntryGroup
 import android.safetycenter.SafetyCenterEntryOrGroup
@@ -34,7 +35,7 @@ import org.junit.runner.RunWith
 class SafetyCenterUiDataTest {
 
     @Test
-    fun getMatchingGroup_withValidMatchingGroup_returnsExpectedEntryGroup() {
+    fun getMatchingGroup_validMatchingGroup_returnsExpectedEntryGroup() {
         val matchingGroup = createSafetyCenterEntryGroup(MATCHING_GROUP_ID)
         val nonMatchingGroup = createSafetyCenterEntryGroup(NON_MATCHING_GROUP_ID)
         val safetyCenterData =
@@ -46,7 +47,7 @@ class SafetyCenterUiDataTest {
     }
 
     @Test
-    fun getMatchingGroup_withNoMatchingGroup_returnsNull() {
+    fun getMatchingGroup_noMatchingGroup_returnsNull() {
         val nonMatchingGroup = createSafetyCenterEntryGroup(NON_MATCHING_GROUP_ID)
         val safetyCenterData = createSafetyCenterData(entryGroups = listOf(nonMatchingGroup))
 
@@ -56,21 +57,67 @@ class SafetyCenterUiDataTest {
     }
 
     @Test
-    fun getMatchingIssues_withValidMatchingIssue_returnsListOfIssues() {
-        val matchingIssue = createSafetyCenterIssue(MATCHING_GROUP_ID)
-        val nonMatchingIssue = createSafetyCenterIssue(NON_MATCHING_GROUP_ID)
+    fun getMatchingIssues_defaultMatchingIssue_noExtras_returnsListOfIssues() {
+        val defaultMatchingIssue = createSafetyCenterIssue("id1", MATCHING_GROUP_ID)
+        val nonMatchingIssue = createSafetyCenterIssue("id2", NON_MATCHING_GROUP_ID)
         val safetyCenterData =
-            createSafetyCenterData(issues = listOf(matchingIssue, nonMatchingIssue))
+            createSafetyCenterData(issues = listOf(defaultMatchingIssue, nonMatchingIssue))
 
         val result = SafetyCenterUiData(safetyCenterData).getMatchingIssues(MATCHING_GROUP_ID)
 
-        assertThat(result).containsExactly(matchingIssue)
+        assertThat(result).containsExactly(defaultMatchingIssue)
     }
 
     @Test
-    fun getMatchingIssues_withNoMatchingIssue_returnsEmptyList() {
-        val nonMatchingIssue = createSafetyCenterIssue(NON_MATCHING_GROUP_ID)
-        val dismissedIssue = createSafetyCenterIssue(MATCHING_GROUP_ID)
+    fun getMatchingIssues_defaultMatchingIssue_unrelatedExtras_returnsListOfIssues() {
+        val defaultMatchingIssue = createSafetyCenterIssue("id1", MATCHING_GROUP_ID)
+        val nonMatchingIssue = createSafetyCenterIssue("id2", NON_MATCHING_GROUP_ID)
+        val safetyCenterData =
+            createSafetyCenterData(
+                issues = listOf(defaultMatchingIssue, nonMatchingIssue),
+                extras =
+                    createSafetyCenterExtras(
+                        Bundle().apply {
+                            putStringArrayList(
+                                nonMatchingIssue.id,
+                                arrayListOf(NON_MATCHING_GROUP_ID)
+                            )
+                        }
+                    )
+            )
+
+        val result = SafetyCenterUiData(safetyCenterData).getMatchingIssues(MATCHING_GROUP_ID)
+
+        assertThat(result).containsExactly(defaultMatchingIssue)
+    }
+
+    @Test
+    fun getMatchingIssues_mappingMatchingIssue_returnsListOfIssues() {
+        val mappingMatchingIssue = createSafetyCenterIssue("id1", NON_MATCHING_GROUP_ID)
+        val nonMatchingIssue = createSafetyCenterIssue("id2", NON_MATCHING_GROUP_ID)
+        val safetyCenterData =
+            createSafetyCenterData(
+                issues = listOf(mappingMatchingIssue, nonMatchingIssue),
+                extras =
+                    createSafetyCenterExtras(
+                        Bundle().apply {
+                            putStringArrayList(
+                                mappingMatchingIssue.id,
+                                arrayListOf(MATCHING_GROUP_ID)
+                            )
+                        }
+                    )
+            )
+
+        val result = SafetyCenterUiData(safetyCenterData).getMatchingIssues(MATCHING_GROUP_ID)
+
+        assertThat(result).containsExactly(mappingMatchingIssue)
+    }
+
+    @Test
+    fun getMatchingIssues_noDefaultMatchingIssue_returnsEmptyList() {
+        val nonMatchingIssue = createSafetyCenterIssue("id1", NON_MATCHING_GROUP_ID)
+        val dismissedIssue = createSafetyCenterIssue("id2", MATCHING_GROUP_ID)
         val safetyCenterData =
             createSafetyCenterData(
                 issues = listOf(nonMatchingIssue),
@@ -83,24 +130,72 @@ class SafetyCenterUiDataTest {
     }
 
     @Test
-    fun getMatchingDismissedIssues_withValidMatchingDismissedIssue_returnsListOfDismissedIssues() {
-        val matchingDismissedIssue = createSafetyCenterIssue(MATCHING_GROUP_ID)
-        val nonMatchingDismissedIssue = createSafetyCenterIssue(NON_MATCHING_GROUP_ID)
+    fun getMatchingDismissedIssues_defaultMatchingDismissedIssue_returnsListOfDismissedIssues() {
+        val defaultMatchingDismissedIssue = createSafetyCenterIssue("id1", MATCHING_GROUP_ID)
+        val nonMatchingDismissedIssue = createSafetyCenterIssue("id2", NON_MATCHING_GROUP_ID)
         val safetyCenterData =
             createSafetyCenterData(
-                dismissedIssues = listOf(matchingDismissedIssue, nonMatchingDismissedIssue)
+                dismissedIssues = listOf(defaultMatchingDismissedIssue, nonMatchingDismissedIssue)
             )
 
         val result =
             SafetyCenterUiData(safetyCenterData).getMatchingDismissedIssues(MATCHING_GROUP_ID)
 
-        assertThat(result).containsExactly(matchingDismissedIssue)
+        assertThat(result).containsExactly(defaultMatchingDismissedIssue)
     }
 
     @Test
-    fun getMatchingDismissedIssues_withNoMatchingDismissedIssue_returnsEmptyList() {
-        val nonMatchingDismissedIssue = createSafetyCenterIssue(NON_MATCHING_GROUP_ID)
-        val nonDismissedIssue = createSafetyCenterIssue(MATCHING_GROUP_ID)
+    fun getMatchingDismissedIssues_defaultMatchingDismissedIssue2_returnsListOfDismissedIssues() {
+        val defaultMatchingDismissedIssue = createSafetyCenterIssue("id1", MATCHING_GROUP_ID)
+        val nonMatchingDismissedIssue = createSafetyCenterIssue("id2", NON_MATCHING_GROUP_ID)
+        val safetyCenterData =
+            createSafetyCenterData(
+                dismissedIssues = listOf(defaultMatchingDismissedIssue, nonMatchingDismissedIssue),
+                extras =
+                    createSafetyCenterExtras(
+                        Bundle().apply {
+                            putStringArrayList(
+                                nonMatchingDismissedIssue.id,
+                                arrayListOf(NON_MATCHING_GROUP_ID)
+                            )
+                        }
+                    )
+            )
+
+        val result =
+            SafetyCenterUiData(safetyCenterData).getMatchingDismissedIssues(MATCHING_GROUP_ID)
+
+        assertThat(result).containsExactly(defaultMatchingDismissedIssue)
+    }
+
+    @Test
+    fun getMatchingDismissedIssues_mappingMatchingDismissedIssue_returnsListOfDismissedIssues() {
+        val mappingMatchingDismissedIssue = createSafetyCenterIssue("id1", NON_MATCHING_GROUP_ID)
+        val nonMatchingDismissedIssue = createSafetyCenterIssue("id2", NON_MATCHING_GROUP_ID)
+        val safetyCenterData =
+            createSafetyCenterData(
+                dismissedIssues = listOf(mappingMatchingDismissedIssue, nonMatchingDismissedIssue),
+                extras =
+                    createSafetyCenterExtras(
+                        Bundle().apply {
+                            putStringArrayList(
+                                mappingMatchingDismissedIssue.id,
+                                arrayListOf(MATCHING_GROUP_ID)
+                            )
+                        }
+                    )
+            )
+
+        val result =
+            SafetyCenterUiData(safetyCenterData).getMatchingDismissedIssues(MATCHING_GROUP_ID)
+
+        assertThat(result).containsExactly(mappingMatchingDismissedIssue)
+    }
+
+    @Test
+    fun getMatchingDismissedIssues_noDefaultMatchingDismissedIssue_returnsEmptyList() {
+        val nonMatchingDismissedIssue = createSafetyCenterIssue("id1", NON_MATCHING_GROUP_ID)
+        val nonDismissedIssue = createSafetyCenterIssue("id2", MATCHING_GROUP_ID)
         val safetyCenterData =
             createSafetyCenterData(
                 issues = listOf(nonDismissedIssue),
@@ -116,11 +211,13 @@ class SafetyCenterUiDataTest {
     private companion object {
         const val MATCHING_GROUP_ID = "matching_group_id"
         const val NON_MATCHING_GROUP_ID = "non_matching_group_id"
+        const val ISSUES_TO_GROUPS_BUNDLE_KEY = "IssuesToGroupsKey"
 
         fun createSafetyCenterData(
             issues: List<SafetyCenterIssue> = listOf(),
             entryGroups: List<SafetyCenterEntryGroup> = listOf(),
-            dismissedIssues: List<SafetyCenterIssue> = listOf()
+            dismissedIssues: List<SafetyCenterIssue> = listOf(),
+            extras: Bundle = Bundle()
         ): SafetyCenterData {
             val safetyCenterStatus =
                 SafetyCenterStatus.Builder("status title", "status summary").build()
@@ -134,15 +231,19 @@ class SafetyCenterUiDataTest {
             for (dismissedIssue in dismissedIssues) {
                 builder.addDismissedIssue(dismissedIssue)
             }
+            builder.setExtras(extras)
             return builder.build()
         }
 
         fun createSafetyCenterEntryGroup(groupId: String) =
             SafetyCenterEntryGroup.Builder(groupId, "group title").build()
 
-        fun createSafetyCenterIssue(groupId: String) =
-            SafetyCenterIssue.Builder("issue id", "issue title", "issue summary")
+        fun createSafetyCenterIssue(issueId: String, groupId: String) =
+            SafetyCenterIssue.Builder(issueId, "issue title", "issue summary")
                 .setGroupId(groupId)
                 .build()
+
+        fun createSafetyCenterExtras(issuesToGroupsMapping: Bundle) =
+            Bundle().apply { putBundle(ISSUES_TO_GROUPS_BUNDLE_KEY, issuesToGroupsMapping) }
     }
 }
