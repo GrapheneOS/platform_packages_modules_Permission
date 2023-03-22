@@ -83,20 +83,6 @@
         <item name="android:background">@drawable/grant_permissions_buttons_bottom</item>
     </style>
 
-    <style name="PermissionGrantButtonSingleton"
-        parent="@android:style/Widget.DeviceDefault.Button.Borderless.Colored">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">56dp</item>
-        <item name="android:layout_marginLeft">24dp</item>
-        <item name="android:layout_marginRight">24dp</item>
-        <item name="android:layout_marginTop">14dp</item>
-        <item name="android:layout_marginBottom">2dp</item>
-        <item name="android:fontFamily">google-sans-medium</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">?android:attr/textColorPrimary</item>
-        <item name="android:background">@drawable/grant_permissions_buttons_singleton</item>
-    </style>
-
     <!-- for use in overlays -->
     <style name="PermissionGrantButtonAllowMaterial3"
            parent="@style/PermissionGrantButtonTop"></style>
@@ -116,8 +102,8 @@
            parent="@style/PermissionGrantButtonBottom"></style>
     <style name="PermissionGrantButtonNoUpgradeMaterial3"
            parent="@style/PermissionGrantButtonBottom"></style>
-    <style name="PermissionGrantButtonAllowAllSingletonMaterial3"
-        parent="@style/PermissionGrantButtonSingleton"></style>
+    <style name="PermissionGrantButtonAlwaysAllowAllMaterial3"
+        parent="@style/PermissionGrantButtonMiddle"></style>
 
     <!-- END PERMISSION GRANT DIALOG -->
 
