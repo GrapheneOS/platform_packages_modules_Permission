@@ -147,14 +147,19 @@
                     style="@style/PermissionGrantButtonAllowSelectedMaterial3" />
 
                 <com.android.permissioncontroller.permission.ui.widget.SecureButton
+                    android:id="@+id/permission_allow_more_selected_button"
+                    android:text="@string/grant_dialog_button_allow_more_selected_photos"
+                    style="@style/PermissionGrantButtonAllowMoreMaterial3" />
+
+                <com.android.permissioncontroller.permission.ui.widget.SecureButton
                     android:id="@+id/permission_allow_all_button"
                     android:text="@string/grant_dialog_button_allow_all"
                     style="@style/PermissionGrantButtonAllowAllMaterial3" />
 
                 <com.android.permissioncontroller.permission.ui.widget.SecureButton
-                    android:id="@+id/permission_allow_more_selected_button"
-                    android:text="@string/grant_dialog_button_allow_more_selected_photos"
-                    style="@style/PermissionGrantButtonAllowMoreMaterial3" />
+                    android:id="@+id/permission_allow_all_singleton_button"
+                    android:text="@string/grant_dialog_button_always_allow_all"
+                    style="@style/PermissionGrantButtonAlwaysAllowAllMaterial3" />
 
                 <com.android.permissioncontroller.permission.ui.widget.SecureButton
                     android:id="@+id/permission_deny_button"
@@ -190,11 +195,6 @@
                     android:id="@+id/permission_dont_allow_more_selected_button"
                     android:text="@string/grant_dialog_button_dont_allow_more_selected_photos"
                     style="@style/PermissionGrantButtonDontAllowMoreMaterial3" />
-
-                <com.android.permissioncontroller.permission.ui.widget.SecureButton
-                    android:id="@+id/permission_allow_all_singleton_button"
-                    android:text="@string/grant_dialog_button_always_allow_all"
-                    style="@style/PermissionGrantButtonAllowAllSingletonMaterial3" />
 
             </LinearLayout>
 

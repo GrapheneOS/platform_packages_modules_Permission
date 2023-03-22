@@ -336,16 +336,19 @@
     <style name="SafetyCenterBrandChipButton"
             parent="android:Widget.DeviceDefault.Button.Borderless">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">36dp</item>
         <item name="android:layout_gravity">center_vertical|start</item>
-        <item name="android:paddingVertical">10dp</item>
-        <item name="android:paddingHorizontal">@dimen/sc_spacing_large</item>
+        <item name="android:paddingVertical">@dimen/sc_brand_chip_padding</item>
+        <item name="android:paddingHorizontal">@dimen/sc_spacing_small</item>
         <item name="android:drawableStart">@drawable/ic_safety_center_brand_chip</item>
-        <item name="android:drawablePadding">9dp</item>
+        <item name="android:drawablePadding">@dimen/sc_brand_chip_padding</item>
         <item name="android:background">@drawable/safety_center_brand_chip_background</item>
+        <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.BrandChip</item>
+    </style>
+
+    <style name="TextAppearance.SafetyCenter.BrandChip"
+        parent="TextAppearance.SafetyCenter.IssueSubtitle">
         <item name="android:textColor">?android:attr/textColorPrimary</item>
-        <item name="android:textSize">12sp</item>
-        <item name="android:lineHeight">18sp</item>
     </style>
 
     <style name="SafetyCenterIllustration">
