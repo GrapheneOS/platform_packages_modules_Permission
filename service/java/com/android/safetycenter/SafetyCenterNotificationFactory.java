@@ -140,9 +140,7 @@ final class SafetyCenterNotificationFactory {
     }
 
     private Icon getNotificationIcon(@SafetySourceData.SeverityLevel int severityLevel) {
-        // TODO(b/271083000): Add final general notification icon
-        // String iconResName = "ic_notification_badge_general";
-        String iconResName = "ic_notification_badge_critical";
+        String iconResName = "ic_notification_badge_general";
         if (severityLevel == SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING) {
             iconResName = "ic_notification_badge_critical";
         }
