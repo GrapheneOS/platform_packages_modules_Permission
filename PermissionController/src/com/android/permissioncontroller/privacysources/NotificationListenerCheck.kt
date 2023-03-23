@@ -504,7 +504,7 @@ internal class NotificationListenerCheckInternal(
         pkg: PackageInfo,
         sessionId: Long
     ) {
-        val pkgLabel: CharSequence =
+        val pkgLabel =
             Utils.getApplicationLabel(parentUserContext, pkg.applicationInfo)
         val uid = pkg.applicationInfo.uid
 
@@ -520,7 +520,7 @@ internal class NotificationListenerCheckInternal(
                 R.string.notification_listener_reminder_notification_content, pkgLabel)
 
         // Use PbA branding if available, otherwise default to more generic branding
-        val appLabel: CharSequence?
+        val appLabel: String
         val smallIconResId: Int
         val colorResId: Int
         if (KotlinUtils.shouldShowSafetyProtectionResources(parentUserContext)) {
@@ -552,7 +552,7 @@ internal class NotificationListenerCheckInternal(
 
         if (appLabel.isNotEmpty()) {
             val appNameExtras = Bundle()
-            appNameExtras.putString(Notification.EXTRA_SUBSTITUTE_APP_NAME, appLabel.toString())
+            appNameExtras.putString(Notification.EXTRA_SUBSTITUTE_APP_NAME, appLabel)
             b.addExtras(appNameExtras)
         }
 
@@ -713,8 +713,7 @@ internal class NotificationListenerCheckInternal(
             }
             return null
         }
-        val pkgLabel: CharSequence =
-            Utils.getApplicationLabel(parentUserContext, pkgInfo.applicationInfo)
+        val pkgLabel = Utils.getApplicationLabel(parentUserContext, pkgInfo.applicationInfo)
         val safetySourceIssueId = getSafetySourceIssueIdFromComponentName(componentName)
         val uid = pkgInfo.applicationInfo.uid
 
