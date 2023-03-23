@@ -116,9 +116,8 @@ public class GrantPermissionsActivity extends SettingsActivity
     public static final int ALLOW_MORE_SELECTED_BUTTON = 13;
     // button to cancel a request for more data with a picker
     public static final int DONT_ALLOW_MORE_SELECTED_BUTTON = 14;
-    // after the user has used the picker, the allow all button shows below all other buttons, with
-    // a different style.
-    public static final int ALLOW_ALL_SINGLETON_BUTTON = 15;
+    // after the user has used the picker, the allow all button shows with a different string
+    public static final int ALWAYS_ALLOW_ALL_BUTTON = 15;
     public static final int LINK_TO_PERMISSION_RATIONALE = 16;
 
     public static final int NEXT_LOCATION_DIALOG = 6;
