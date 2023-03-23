@@ -84,7 +84,7 @@ import com.android.permissioncontroller.permission.service.v33.PermissionDecisio
 import com.android.permissioncontroller.permission.ui.AutoGrantPermissionsNotifier
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_ALL_BUTTON
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_ALL_SINGLETON_BUTTON
+import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALWAYS_ALLOW_ALL_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_FOREGROUND_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_MORE_SELECTED_BUTTON
@@ -392,7 +392,7 @@ class GrantPermissionsViewModel(
                         buttonVisibilities[DENY_BUTTON] = false
                         buttonVisibilities[ALLOW_MORE_SELECTED_BUTTON] = true
                         buttonVisibilities[DONT_ALLOW_MORE_SELECTED_BUTTON] = true
-                        buttonVisibilities[ALLOW_ALL_SINGLETON_BUTTON] = true
+                        buttonVisibilities[ALWAYS_ALLOW_ALL_BUTTON] = true
                     } else {
                         // Standard photos dialog
                         buttonVisibilities[ALLOW_BUTTON] = false
