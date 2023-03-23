@@ -1511,14 +1511,20 @@ object KotlinUtils {
      */
     @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.TIRAMISU)
     fun shouldShowSafetyProtectionResources(context: Context): Boolean {
-        return SdkLevel.isAtLeastT() &&
-            DeviceConfig.getBoolean(
-                DeviceConfig.NAMESPACE_PRIVACY, SAFETY_PROTECTION_RESOURCES_ENABLED, false) &&
-            context.getResources().getBoolean(
-                Resources.getSystem()
-                    .getIdentifier("config_safetyProtectionEnabled", "bool", "android")) &&
-            context.getDrawable(android.R.drawable.ic_safety_protection) != null &&
-            !context.getString(android.R.string.safety_protection_display_text).isNullOrEmpty()
+        return try {
+            SdkLevel.isAtLeastT() &&
+                DeviceConfig.getBoolean(
+                    DeviceConfig.NAMESPACE_PRIVACY, SAFETY_PROTECTION_RESOURCES_ENABLED, false) &&
+                context.getResources().getBoolean(
+                    Resources.getSystem()
+                        .getIdentifier("config_safetyProtectionEnabled", "bool", "android")) &&
+                context.getDrawable(android.R.drawable.ic_safety_protection) != null &&
+                !context.getString(android.R.string.safety_protection_display_text).isNullOrEmpty()
+        } catch (e: Resources.NotFoundException) {
+            // We should expect the resources to not exist for non-pixel devices
+            // (except for the OEMs that opt-in)
+            false
+        }
     }
 
     fun addHealthPermissions(context: Context) {
