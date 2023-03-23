@@ -253,12 +253,6 @@ public final class Utils {
     private static final String SYSTEM_VISUAL_INTELLIGENCE =
             "android.app.role.SYSTEM_VISUAL_INTELLIGENCE";
 
-    public static final String BODY_SENSORS_WRIST_TEMPERATURE =
-            "android.permission.BODY_SENSORS_WRIST_TEMPERATURE";
-
-    public static final String BODY_SENSORS_WRIST_TEMPERATURE_BACKGROUND =
-            "android.permission.BODY_SENSORS_WRIST_TEMPERATURE_BACKGROUND";
-
     // TODO: theianchen Using hardcoded values here as a WIP solution for now.
     private static final String[] EXEMPTED_ROLES = {
             SYSTEM_AMBIENT_AUDIO_INTELLIGENCE,
