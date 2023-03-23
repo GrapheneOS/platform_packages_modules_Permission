@@ -18,6 +18,7 @@ package com.android.permissioncontroller.permission.data
 
 import android.app.Application
 import android.content.pm.PackageManager
+import android.os.Process
 import android.os.UserHandle
 import android.util.Log
 import com.android.modules.utils.build.SdkLevel
@@ -93,8 +94,7 @@ private constructor(
 
         val safetyLabelInfo: SafetyLabelInfo =
             try {
-                val safetyLabel: SafetyLabel? = SafetyLabel.getSafetyLabelFromMetadata(
-                        app.packageManager.getAppMetadata(packageName))
+                val safetyLabel: SafetyLabel? = getSafetyLabel(packageName, user)
                 if (safetyLabel != null) {
                     SafetyLabelInfo(safetyLabel, installSourcePackageName)
                 } else {
@@ -108,8 +108,22 @@ private constructor(
         postValue(safetyLabelInfo)
     }
 
-    companion object : DataRepositoryForPackage<Pair<String, UserHandle>, SafetyLabelInfoLiveData>(
-    ) {
+    /** Returns the [SafetyLabel] for the given package and user. */
+    @Throws(PackageManager.NameNotFoundException::class)
+    private fun getSafetyLabel(packageName: String, user: UserHandle): SafetyLabel? {
+        val userContext =
+            if (user == Process.myUserHandle()) {
+                app
+            } else {
+                app.createContextAsUser(user, /* flags= */ 0)
+            }
+
+        return SafetyLabel.getSafetyLabelFromMetadata(
+            userContext.packageManager.getAppMetadata(packageName))
+    }
+
+    companion object :
+        DataRepositoryForPackage<Pair<String, UserHandle>, SafetyLabelInfoLiveData>() {
         private val LOG_TAG = SafetyLabelInfoLiveData::class.java.simpleName
 
         override fun newValue(key: Pair<String, UserHandle>): SafetyLabelInfoLiveData {
