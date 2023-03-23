@@ -608,11 +608,8 @@
     <!-- Title for the dialog button to allow a permission grant only when the app is in the foreground. [CHAR LIMIT=60] -->
     <string name="app_permission_button_allow_foreground">Allow only while using the app</string>
 
-    <!-- Title for the dialog button to allow the user to allow all photos. [CHAR LIMIT=60] -->
-    <string name="app_permission_button_allow_all_photos">Allow all photos</string>
-
-    <!-- Title for the dialog button to allow the user to select photos. [CHAR LIMIT=60] -->
-    <string name="app_permission_button_select_photos">Allow selected photos</string>
+    <!-- Title for the dialog button to allow the user to always allow access to all resources guarded by a permission. [CHAR LIMIT=60] -->
+    <string name="app_permission_button_always_allow_all">Always allow all</string>
 
     <!-- Title for the dialog button to require an app to ask for a permission next time they need it. [CHAR LIMIT=60] -->
     <string name="app_permission_button_ask">Ask every time</string>
