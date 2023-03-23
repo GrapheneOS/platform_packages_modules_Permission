@@ -68,12 +68,8 @@
     </permission-set>
 
     <permission-set name="sensors">
-        <permission name="android.permission.BODY_SENSORS"/>
-        <permission name="android.permission.BODY_SENSORS_BACKGROUND" minSdkVersion="33"/>
-        <permission name="android.permission.BODY_SENSORS_WRIST_TEMPERATURE"
-                    minSdkVersion="34"/>
-        <permission name="android.permission.BODY_SENSORS_WRIST_TEMPERATURE_BACKGROUND"
-                    minSdkVersion="34"/>
+        <permission name="android.permission.BODY_SENSORS" />
+        <permission name="android.permission.BODY_SENSORS_BACKGROUND" minSdkVersion="33" />
     </permission-set>
 
     <permission-set name="storage">
