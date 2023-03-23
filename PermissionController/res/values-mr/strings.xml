@@ -34,10 +34,8 @@
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"अधिक माहिती"</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"सर्वांना अनुमती द्या"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"नेहमी सर्वांना अनुमती द्या"</string>
-    <!-- no translation found for grant_dialog_button_allow_selected_photos (5497042471576153842) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_allow_more_selected_photos (5145657877588697709) -->
-    <skip />
+    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"फोटो आणि व्हिडिओ निवडा"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"आणखी निवडा"</string>
     <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"आणखी निवडू नका"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"तरीही अनुमती देऊ नका"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"डिसमिस करा"</string>
@@ -481,7 +479,8 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला या डिव्हाइसवरील &lt;b&gt;फोटो, व्हिडिओ, संगीत, ऑडिओ व इतर फाइल&lt;/b&gt; अ‍ॅक्सेस करू द्यायच्या?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला या डिव्हाइसवरील संगीत आणि ऑडिओ अ‍ॅक्सेस करण्याची अनुमती द्यायची आहे का?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला या डिव्हाइसवरील फोटो आणि व्हिडिओ अ‍ॅक्सेस करण्याची अनुमती द्यायची आहे का?"</string>
-    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला या डिव्हाइसवरील आणखी फोटो आणि व्हिडिओ अ‍ॅक्सेस करण्याची अनुमती द्यायची आहे का?"</string>
+    <!-- no translation found for permgrouprequest_more_photos (128933814654231321) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला ऑडिओ रेकॉर्ड करू द्यायचा?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"ॲप फक्त तुम्ही ॲप वापरत असतानाच ऑडिओ रेकॉर्ड करू शकते"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला ऑडिओ रेकॉर्ड करायची अनुमती द्यायची?"</string>

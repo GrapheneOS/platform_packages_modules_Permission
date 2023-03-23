@@ -34,10 +34,8 @@
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Περισσότερα"</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Να επιτρέπονται όλα"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Να επιτρέπονται πάντα όλα"</string>
-    <!-- no translation found for grant_dialog_button_allow_selected_photos (5497042471576153842) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_allow_more_selected_photos (5145657877588697709) -->
-    <skip />
+    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Επιλογή φωτογραφιών και βίντεο"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Επιλέξτε περισσότερα"</string>
     <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Να μην γίνει επιλογή περισσότερων"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Να μην επιτρέπεται καθόλου"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Παράβλεψη"</string>
@@ -481,7 +479,8 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση σε &lt;b&gt;φωτογραφίες, βίντεο, μουσική, ήχο και άλλα αρχεία&lt;/b&gt; της συσκευής;"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση στη μουσική και στα αρχεία ήχου αυτής της συσκευής;"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση στις φωτογραφίες και τα βίντεο αυτής της συσκευής;"</string>
-    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση σε περισσότερες φωτογραφίες και βίντεο αυτής της συσκευής;"</string>
+    <!-- no translation found for permgrouprequest_more_photos (128933814654231321) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η εγγραφή ήχου;"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Αυτή η εφαρμογή θα μπορεί να εγγράφει ήχο μόνο όταν τη χρησιμοποιείτε"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η εγγραφή ήχου;"</string>
