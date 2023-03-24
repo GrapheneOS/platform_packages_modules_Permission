@@ -20,6 +20,7 @@ package com.android.permissioncontroller.permission.data
 import android.app.Application
 import android.content.pm.PackageManager
 import android.os.UserHandle
+import android.os.UserManager
 import android.util.Log
 import androidx.annotation.MainThread
 import androidx.lifecycle.Observer
@@ -47,7 +48,6 @@ class LightPackageInfoLiveData private constructor(
     private val LOG_TAG = LightPackageInfoLiveData::class.java.simpleName
     private val userPackagesLiveData = UserPackageInfosLiveData[user]
 
-    private var context = Utils.getUserContext(app, user)
     private var uid: Int? = null
     /**
      * The currently registered UID on which this LiveData is listening for permission changes.
@@ -100,9 +100,17 @@ class LightPackageInfoLiveData private constructor(
             if (SdkLevel.isAtLeastS()) {
                 flags = flags or PackageManager.GET_ATTRIBUTIONS
             }
-            LightPackageInfo(context.packageManager.getPackageInfo(packageName, flags))
-        } catch (e: PackageManager.NameNotFoundException) {
-            Log.w(LOG_TAG, "Package \"$packageName\" not found")
+
+            LightPackageInfo(Utils.getUserContext(app, user).packageManager
+                .getPackageInfo(packageName, flags))
+        } catch (e: Exception) {
+            if (e is PackageManager.NameNotFoundException) {
+                Log.w(LOG_TAG, "Package \"$packageName\" not found for user $user")
+            } else {
+                val profiles = app.getSystemService(UserManager::class.java)!!.userProfiles
+                Log.e(LOG_TAG, "Failed to create context for user $user. " +
+                        "User exists : ${user in profiles }", e)
+            }
             invalidateSingle(packageName to user)
             null
         })
