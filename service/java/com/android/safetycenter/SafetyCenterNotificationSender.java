@@ -17,6 +17,7 @@
 package com.android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
+import static android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED;
 
 import static com.android.safetycenter.internaldata.SafetyCenterIds.toUserFriendlyString;
 
@@ -28,6 +29,7 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.os.Binder;
 import android.os.UserHandle;
+import android.safetycenter.SafetyEvent;
 import android.safetycenter.SafetySourceIssue;
 import android.safetycenter.config.SafetySource;
 import android.util.ArrayMap;
@@ -108,6 +110,84 @@ final class SafetyCenterNotificationSender {
         mContext = context;
         mNotificationFactory = notificationFactory;
         mSafetyCenterDataManager = safetyCenterDataManager;
+    }
+
+    /**
+     * Replaces an issue's notification with one displaying the success message of the {@link
+     * SafetySourceIssue.Action} that resolved that issue.
+     *
+     * <p>The given {@link SafetyEvent} have type {@link
+     * SafetyEvent#SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED} and include issue and action IDs
+     * that correspond to a {@link SafetySourceIssue} for which a notification is currently
+     * displayed. Otherwise this method has no effect.
+     *
+     * @param sourceId of the source which reported the issue
+     * @param safetyEvent the source provided upon successful action resolution
+     * @param userId to which the source, issue and notification belong
+     */
+    void notifyActionSuccess(String sourceId, SafetyEvent safetyEvent, @UserIdInt int userId) {
+        if (safetyEvent.getType() != SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED) {
+            Log.w(TAG, "Received safety event of wrong type");
+            return;
+        }
+
+        String sourceIssueId = safetyEvent.getSafetySourceIssueId();
+        if (sourceIssueId == null) {
+            Log.w(TAG, "Received safety event without a safety source issue id");
+            return;
+        }
+
+        String sourceIssueActionId = safetyEvent.getSafetySourceIssueActionId();
+        if (sourceIssueActionId == null) {
+            Log.w(TAG, "Received safety event without a safety source issue action id");
+            return;
+        }
+
+        SafetyCenterIssueKey issueKey =
+                SafetyCenterIssueKey.newBuilder()
+                        .setSafetySourceId(sourceId)
+                        .setSafetySourceIssueId(sourceIssueId)
+                        .setUserId(userId)
+                        .build();
+        SafetySourceIssue notifiedIssue = mNotifiedIssues.get(issueKey);
+        if (notifiedIssue == null) {
+            Log.w(TAG, "No notification for this issue");
+            return;
+        }
+
+        SafetySourceIssue.Action successfulAction = null;
+        for (int i = 0; i < notifiedIssue.getActions().size(); i++) {
+            if (notifiedIssue.getActions().get(i).getId().equals(sourceIssueActionId)) {
+                successfulAction = notifiedIssue.getActions().get(i);
+            }
+        }
+        if (successfulAction == null) {
+            Log.w(TAG, "Successful action not found");
+            return;
+        }
+
+        NotificationManager notificationManager = getNotificationManagerForUser(userId);
+
+        if (notificationManager == null) {
+            Log.w(TAG, "Could not retrieve NotificationManager for user " + userId);
+            return;
+        }
+
+        Notification notification =
+                mNotificationFactory.newNotificationForSuccessfulAction(
+                        notificationManager, notifiedIssue, successfulAction);
+        if (notification == null) {
+            Log.w(TAG, "Could not create successful action notification");
+            return;
+        }
+        String tag = getNotificationTag(issueKey);
+        boolean wasPosted = notifyFromSystem(notificationManager, tag, notification);
+        if (wasPosted) {
+            // If the original issue notification was successfully replaced the key removed from
+            // mNotifiedIssues to prevent the success notification from being removed by
+            // cancelStaleNotifications below.
+            mNotifiedIssues.remove(issueKey);
+        }
     }
 
     /** Updates Safety Center notifications for the given {@link UserProfileGroup}. */
