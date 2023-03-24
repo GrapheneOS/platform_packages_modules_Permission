@@ -836,9 +836,7 @@ class SafetyCenterNotificationTest {
     }
 
     @Test
-    fun sendActionPendingIntent_successful_updatesListenerRemovesNotification() {
-        // Here we cause a notification with an action to be posted and prepare the fake receiver
-        // to resolve that action successfully.
+    fun sendActionPendingIntent_successful_updatesListener() {
         safetyCenterTestHelper.setData(
             SINGLE_SOURCE_ID,
             safetySourceTestData.criticalWithResolvingGeneralIssue
@@ -861,7 +859,52 @@ class SafetyCenterNotificationTest {
         assertThat(listenerData2.issues).isEmpty()
         assertThat(listenerData2.status.severityLevel)
             .isEqualTo(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK)
+    }
+
+    @Test
+    fun sendActionPendingIntent_successfulNoSuccessMessage_removesNotification() {
+        safetyCenterTestHelper.setData(
+            SINGLE_SOURCE_ID,
+            safetySourceTestData.criticalWithResolvingGeneralIssue
+        )
+        val notificationWithChannel = TestNotificationListener.waitForSingleNotification()
+        val action =
+            notificationWithChannel.statusBarNotification.notification.actions.firstOrNull()
+        checkNotNull(action) { "Notification action unexpectedly null" }
+        SafetySourceReceiver.setResponse(
+            Request.ResolveAction(SINGLE_SOURCE_ID),
+            Response.SetData(safetySourceTestData.information)
+        )
+
+        sendActionPendingIntentAndWaitWithPermission(action)
+
         TestNotificationListener.waitForZeroNotifications()
+    }
+
+    @Test
+    fun sendActionPendingIntent_successfulWithSuccessMessage_successNotification() {
+        safetyCenterTestHelper.setData(
+            SINGLE_SOURCE_ID,
+            safetySourceTestData.criticalWithResolvingIssueWithSuccessMessage
+        )
+        val notificationWithChannel = TestNotificationListener.waitForSingleNotification()
+        val action =
+            notificationWithChannel.statusBarNotification.notification.actions.firstOrNull()
+        checkNotNull(action) { "Notification action unexpectedly null" }
+        SafetySourceReceiver.setResponse(
+            Request.ResolveAction(SINGLE_SOURCE_ID),
+            Response.SetData(safetySourceTestData.information)
+        )
+
+        sendActionPendingIntentAndWaitWithPermission(action)
+
+        TestNotificationListener.waitForSingleNotificationMatching(
+            NotificationCharacteristics(
+                "Issue solved",
+                "",
+                actions = emptyList(),
+            )
+        )
     }
 
     @Test
