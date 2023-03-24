@@ -261,7 +261,7 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         mAllowForegroundButton = root.requireViewById(R.id.allow_foreground_only_radio_button);
         mAskOneTimeButton = root.requireViewById(R.id.ask_one_time_radio_button);
         mAskButton = root.requireViewById(R.id.ask_radio_button);
-        mSelectPhotosButton = root.requireViewById(R.id.select_photos_radio_button);
+        mSelectPhotosButton = root.requireViewById(R.id.select_radio_button);
         mDenyButton = root.requireViewById(R.id.deny_radio_button);
         mDenyForegroundButton = root.requireViewById(R.id.deny_foreground_radio_button);
         mDivider = root.requireViewById(R.id.two_target_divider);
@@ -467,7 +467,7 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         setButtonState(mDenyForegroundButton, states.get(ButtonType.DENY_FOREGROUND));
         setButtonState(mSelectPhotosButton, states.get(ButtonType.SELECT_PHOTOS));
         if (mSelectPhotosButton.getVisibility() == View.VISIBLE) {
-            mAllowButton.setText(R.string.app_permission_button_allow_all_photos);
+            mAllowButton.setText(R.string.app_permission_button_always_allow_all);
         } else {
             mAllowButton.setText(R.string.app_permission_button_allow);
         }

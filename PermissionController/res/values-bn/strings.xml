@@ -34,10 +34,8 @@
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"আরও তথ্য"</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"সব অনুমোদন করুন"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"সবসময় সব অনুমতি দিন"</string>
-    <!-- no translation found for grant_dialog_button_allow_selected_photos (5497042471576153842) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_allow_more_selected_photos (5145657877588697709) -->
-    <skip />
+    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"ফটো এবং ভিডিও বেছে নিন"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"আরও বেছে নিন"</string>
     <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"আর বেছে নেবেন না"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"যাই হোক, অনুমতি দেবেন না"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"বাতিল করুন"</string>
@@ -481,7 +479,8 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"এই ডিভাইসে &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে &lt;b&gt;ফটো, ভিডিও, মিউজিক, অডিও ও অন্যান্য ফাইল&lt;/b&gt; অ্যাক্সেসের অনুমতি দেবেন?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"এই ডিভাইসে &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে মিউজিক ও অডিও ফাইল অ্যাক্সেসের অনুমতি দেবেন?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"এই ডিভাইসে &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে ফটো ও ভিডিও অ্যাক্সেসের অনুমতি দেবেন?"</string>
-    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"এই ডিভাইসে ফটো ও ভিডিও অ্যাক্সেসের জন্য &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে অনুমতি দেবেন?"</string>
+    <!-- no translation found for permgrouprequest_more_photos (128933814654231321) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে অডিও রেকর্ড করার অনুমতি দেবেন?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"আপনি এই অ্যাপ ব্যবহার করার সময়েই শুধুমাত্র সেটি অডিও রেকর্ড করতে পারবে"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে অডিও রেকর্ড করার অনুমতি দিতে চান?"</string>

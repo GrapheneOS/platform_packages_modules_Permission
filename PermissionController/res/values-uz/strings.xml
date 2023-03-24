@@ -34,10 +34,8 @@
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Batafsil"</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Hammasiga ruxsat berish"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Doim hammasiga ruxsat berish"</string>
-    <!-- no translation found for grant_dialog_button_allow_selected_photos (5497042471576153842) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_allow_more_selected_photos (5145657877588697709) -->
-    <skip />
+    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Surat va videolarni tanlash"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Yana"</string>
     <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Boshqa rasm tanlanmasin"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Baribir rad etilsin"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Yopish"</string>
@@ -481,7 +479,8 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"<xliff:g id="APP_NAME">%1$s</xliff:g> uchun ushbu qurilmadagi surat, video, musiqa, audio va fayllarga kirish ruxsati berilsinmi?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"<xliff:g id="APP_NAME">%1$s</xliff:g> uchun ushbu qurilmadagi musiqa va audio fayllarga kirish ruxsati berilsinmi?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"<xliff:g id="APP_NAME">%1$s</xliff:g> uchun qurilmadagi rasm va videolarga kirish ruxsati berilsinmi?"</string>
-    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"<xliff:g id="APP_NAME">%1$s</xliff:g> uchun qurilmadagi boshqa rasm va videolarga kirish ruxsati berilsinmi?"</string>
+    <!-- no translation found for permgrouprequest_more_photos (128933814654231321) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uchun audio yozib olish ruxsati berilsinmi?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Bu ilova faqat undan foydalanganingizda ovozlarni yozib oladi"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uchun audio yozib olishga ruxsat berilsinmi?"</string>
