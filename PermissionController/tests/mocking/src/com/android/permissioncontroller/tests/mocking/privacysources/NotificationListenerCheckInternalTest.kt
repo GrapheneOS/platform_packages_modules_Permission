@@ -442,7 +442,7 @@ class NotificationListenerCheckInternalTest {
     @Test
     fun createSafetySourceIssue() {
         val testComponent = ComponentName("com.test.package", "TestClass")
-        val testAppLabel: CharSequence = "TestApp Label"
+        val testAppLabel = "TestApp Label"
         doReturn(PackageInfo().apply { applicationInfo = ApplicationInfo() }).`when` {
             Utils.getPackageInfoForComponentName(
                 any(Context::class.java), any(ComponentName::class.java))
