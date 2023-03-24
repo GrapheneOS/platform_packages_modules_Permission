@@ -82,7 +82,7 @@ class RuntimePermissionsUpgradeControllerTest {
 
         init {
             whenever(application.applicationContext).thenReturn(application)
-            whenever(application.createPackageContextAsUser(any(), anyInt(), any())).thenReturn(
+            whenever(application.createContextAsUser(any(), anyInt())).thenReturn(
                     application)
 
             whenever(application.registerComponentCallbacks(any())).thenAnswer {

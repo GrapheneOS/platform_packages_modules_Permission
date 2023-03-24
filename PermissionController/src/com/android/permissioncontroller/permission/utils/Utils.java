@@ -360,12 +360,8 @@ public final class Utils {
      */
     public static @NonNull Context getUserContext(Context context, UserHandle user) {
         if (!sUserContexts.containsKey(user)) {
-            try {
-                sUserContexts.put(user, context.getApplicationContext()
-                        .createPackageContextAsUser(context.getPackageName(), 0, user));
-            } catch (PackageManager.NameNotFoundException neverHappens) {
-                throw new RuntimeException(neverHappens);
-            }
+            sUserContexts.put(user, context.getApplicationContext()
+                    .createContextAsUser(user, 0));
         }
         return Preconditions.checkNotNull(sUserContexts.get(user));
     }
