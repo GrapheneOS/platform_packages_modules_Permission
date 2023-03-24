@@ -667,6 +667,7 @@
             <permission name="android.permission.SET_TIME" minSdkVersion="34" />
             <permission name="android.permission.SET_TIME_ZONE" minSdkVersion="34" />
             <permission name="android.permission.SATELLITE_COMMUNICATION" minSdkVersion="34" />
+            <permission name="android.permission.ALWAYS_UPDATE_WALLPAPER" minSdkVersion="35" />
         </permissions>
     </role>
 
