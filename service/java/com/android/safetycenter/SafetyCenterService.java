@@ -26,6 +26,7 @@ import static android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
 import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_OTHER;
 import static android.safetycenter.SafetyCenterManager.RefreshReason;
 import static android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED;
+import static android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED;
 
 import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__TIMEOUT;
 import static com.android.permission.PermissionStatsLog.SAFETY_STATE;
@@ -273,6 +274,14 @@ public final class SafetyCenterService extends SystemService {
                         mSafetyCenterDataManager.setSafetySourceData(
                                 safetySourceData, safetySourceId, safetyEvent, packageName, userId);
                 if (hasUpdate) {
+                    // When an action is successfully resolved, call notifyActionSuccess before
+                    // updateDataConsumers: Calling the former first will turn any notification for
+                    // the resolved issue into a success notification, whereas calling the latter
+                    // will simply clear any issue notification and no success message will show.
+                    if (safetyEvent.getType() == SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED) {
+                        mNotificationSender.notifyActionSuccess(
+                                safetySourceId, safetyEvent, userId);
+                    }
                     mSafetyCenterDataChangeNotifier.updateDataConsumers(userProfileGroup, userId);
                 }
             }

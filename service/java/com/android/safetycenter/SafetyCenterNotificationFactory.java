@@ -46,6 +46,7 @@ import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 
+import java.time.Duration;
 import java.util.List;
 
 /**
@@ -56,8 +57,8 @@ import java.util.List;
 final class SafetyCenterNotificationFactory {
 
     private static final String TAG = "SafetyCenterNF";
-
     private static final int OPEN_SAFETY_CENTER_REQUEST_CODE = 1221;
+    private static final Duration SUCCESS_NOTIFICATION_TIMEOUT = Duration.ofSeconds(10);
 
     private final Context mContext;
     private final SafetyCenterNotificationChannels mNotificationChannels;
@@ -70,6 +71,38 @@ final class SafetyCenterNotificationFactory {
         mContext = context;
         mNotificationChannels = notificationChannels;
         mResourcesContext = resourcesContext;
+    }
+
+    /**
+     * Creates and returns a new {@link Notification} for a successful action, or {@code null} if
+     * none could be created.
+     *
+     * <p>The provided {@link NotificationManager} is used to create or update the {@link
+     * NotificationChannel} for the notification.
+     */
+    @Nullable
+    Notification newNotificationForSuccessfulAction(
+            NotificationManager notificationManager,
+            SafetySourceIssue issue,
+            SafetySourceIssue.Action action) {
+        String channelId = mNotificationChannels.getCreatedChannelId(notificationManager, issue);
+
+        if (channelId == null) {
+            return null;
+        }
+
+        Notification.Builder builder =
+                new Notification.Builder(mContext, channelId)
+                        .setSmallIcon(
+                                getNotificationIcon(SafetySourceData.SEVERITY_LEVEL_INFORMATION))
+                        .setColor(getNotificationColor(SafetySourceData.SEVERITY_LEVEL_INFORMATION))
+                        .setExtras(getNotificationExtras())
+                        .setContentTitle(action.getSuccessMessage())
+                        .setShowWhen(true)
+                        .setTimeoutAfter(SUCCESS_NOTIFICATION_TIMEOUT.toMillis())
+                        .setContentIntent(newSafetyCenterPendingIntent(null));
+
+        return builder.build();
     }
 
     /**
@@ -125,14 +158,20 @@ final class SafetyCenterNotificationFactory {
         return builder.build();
     }
 
-    private PendingIntent newSafetyCenterPendingIntent(SafetyCenterIssueKey issueKey) {
+    /**
+     * Returns a {@link PendingIntent} to open Safety Center, optionally navigating to and/or
+     * highlighting a specific issue if {@code issueKey} is given.
+     */
+    private PendingIntent newSafetyCenterPendingIntent(@Nullable SafetyCenterIssueKey issueKey) {
         Intent intent = new Intent(Intent.ACTION_SAFETY_CENTER);
-        // Set the encoded issue key as the intent's identifier to ensure the PendingIntents of
-        // different notifications do not collide:
-        intent.setIdentifier(SafetyCenterIds.encodeToString(issueKey));
-        intent.putExtra(EXTRA_SAFETY_SOURCE_ID, issueKey.getSafetySourceId());
-        intent.putExtra(EXTRA_SAFETY_SOURCE_ISSUE_ID, issueKey.getSafetySourceIssueId());
-        intent.putExtra(EXTRA_SAFETY_SOURCE_USER_HANDLE, UserHandle.of(issueKey.getUserId()));
+        if (issueKey != null) {
+            // Set the encoded issue key as the intent's identifier to ensure the PendingIntents of
+            // different notifications do not collide:
+            intent.setIdentifier(SafetyCenterIds.encodeToString(issueKey));
+            intent.putExtra(EXTRA_SAFETY_SOURCE_ID, issueKey.getSafetySourceId());
+            intent.putExtra(EXTRA_SAFETY_SOURCE_ISSUE_ID, issueKey.getSafetySourceIssueId());
+            intent.putExtra(EXTRA_SAFETY_SOURCE_USER_HANDLE, UserHandle.of(issueKey.getUserId()));
+        }
         // This extra is defined in the PermissionController APK, cannot be referenced directly:
         intent.putExtra("navigation_source_intent_extra", "NOTIFICATION");
         return PendingIntentFactory.getActivityPendingIntent(
