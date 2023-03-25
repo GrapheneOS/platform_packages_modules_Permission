@@ -52,7 +52,7 @@ data class NotificationCharacteristics(
             val notif = statusBarNotificationWithChannel.statusBarNotification.notification
             return notif != null &&
                 notif.extras.getString(Notification.EXTRA_TITLE) == characteristic.title &&
-                notif.extras.getString(Notification.EXTRA_TEXT) == characteristic.text &&
+                notif.extras.getString(Notification.EXTRA_TEXT).orEmpty() == characteristic.text &&
                 notif.actions.orEmpty().map { it.title } == characteristic.actions &&
                 importanceMatches(statusBarNotificationWithChannel, characteristic.importance) &&
                 blockableMatches(statusBarNotificationWithChannel, characteristic.blockable)
