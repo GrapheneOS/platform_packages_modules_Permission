@@ -30,6 +30,7 @@ android_test {
     static_libs: [
         "androidx.test.rules",
         "androidx.test.ext.junit",
+        "androidx.test.monitor",
         "compatibility-device-preconditions",
         "kotlin-test",
         "safety-center-test-util-lib",
