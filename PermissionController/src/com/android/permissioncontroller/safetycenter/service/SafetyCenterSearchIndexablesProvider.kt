@@ -33,10 +33,12 @@ import android.provider.SearchIndexablesContract.RawData.COLUMN_RANK
 import android.provider.SearchIndexablesContract.RawData.COLUMN_SCREEN_TITLE
 import android.provider.SearchIndexablesContract.RawData.COLUMN_TITLE
 import android.safetycenter.SafetyCenterEntry
+import android.safetycenter.SafetyCenterEntryOrGroup
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.config.SafetySource
 import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC
 import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY
+import android.safetycenter.config.SafetySourcesGroup
 import androidx.annotation.RequiresApi
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.R
@@ -66,18 +68,23 @@ class SafetyCenterSearchIndexablesProvider : BaseSearchIndexablesProvider() {
 
         val screenTitle = context.getString(R.string.safety_center_dashboard_page_title)
 
-        safetyCenterManager
-            ?.safetySources
-            ?.filter { it.type != SAFETY_SOURCE_TYPE_ISSUE_ONLY }
-            ?.forEach { safetySource ->
-                cursor.addSafetySourceRow(
-                    context,
-                    safetySource,
-                    resourcesContext,
-                    safetyCenterManager,
-                    screenTitle
-                )
+        safetyCenterManager?.safetySourcesGroups?.forEach { safetySourcesGroup ->
+            if (SdkLevel.isAtLeastU()) {
+                cursor.addSafetySourcesGroupRow(safetySourcesGroup, resourcesContext, screenTitle)
             }
+            safetySourcesGroup.safetySources
+                .asSequence()
+                .filter { it.type != SAFETY_SOURCE_TYPE_ISSUE_ONLY }
+                .forEach { safetySource ->
+                    cursor.addSafetySourceRow(
+                        context,
+                        safetySource,
+                        resourcesContext,
+                        safetyCenterManager,
+                        screenTitle
+                    )
+                }
+        }
 
         if (SdkLevel.isAtLeastU()) {
             cursor.indexPrivacyControls(context, screenTitle)
@@ -114,12 +121,29 @@ class SafetyCenterSearchIndexablesProvider : BaseSearchIndexablesProvider() {
         return cursor
     }
 
+    private fun MatrixCursor.addSafetySourcesGroupRow(
+        safetySourcesGroups: SafetySourcesGroup,
+        resourcesContext: SafetyCenterResourcesContext,
+        screenTitle: String,
+    ) {
+        val groupTitle =
+            resourcesContext.getNotEmptyStringOrNull(safetySourcesGroups.titleResId) ?: return
+
+        newRow()
+            .add(COLUMN_RANK, 0)
+            .add(COLUMN_TITLE, groupTitle)
+            .add(COLUMN_KEYWORDS, groupTitle)
+            .add(COLUMN_KEY, safetySourcesGroups.id)
+            .add(COLUMN_INTENT_ACTION, Intent.ACTION_SAFETY_CENTER)
+            .add(COLUMN_SCREEN_TITLE, screenTitle)
+    }
+
     private fun MatrixCursor.addSafetySourceRow(
         context: Context,
         safetySource: SafetySource,
         resourcesContext: SafetyCenterResourcesContext,
         safetyCenterManager: SafetyCenterManager,
-        screenTitle: String
+        screenTitle: String,
     ) {
         val searchTerms = resourcesContext.getNotEmptyStringOrNull(safetySource.searchTermsResId)
         var isPersonalEntryAdded = false
@@ -176,18 +200,23 @@ class SafetyCenterSearchIndexablesProvider : BaseSearchIndexablesProvider() {
     private fun String.addSuffix(isWorkProfile: Boolean): String =
         "${this}_${if (isWorkProfile) WORK_PROFILE_SUFFIX else PERSONAL_PROFILE_SUFFIX}"
 
-    private val SafetyCenterManager.safetySources: Sequence<SafetySource>?
-        get() = safetyCenterConfig?.safetySourcesGroups?.asSequence()?.flatMap { it.safetySources }
+    private val SafetyCenterManager.safetySourcesGroups: Sequence<SafetySourcesGroup>?
+        get() = safetyCenterConfig?.safetySourcesGroups?.asSequence()
 
     private fun collectAllRemovableKeys(
         safetyCenterManager: SafetyCenterManager?,
         keysToRemove: MutableSet<String>,
         filter: (SafetySource) -> Boolean
     ) {
-        safetyCenterManager?.safetySources?.asSequence()?.filter(filter)?.forEach { safetySource ->
-            keysToRemove.add(safetySource.id.addSuffix(isWorkProfile = false))
-            if (safetySource.profile == SafetySource.PROFILE_ALL) {
-                keysToRemove.add(safetySource.id.addSuffix(isWorkProfile = true))
+        safetyCenterManager?.safetySourcesGroups?.forEach { safetySourcesGroup ->
+            if (SdkLevel.isAtLeastU()) {
+                keysToRemove.add(safetySourcesGroup.id)
+            }
+            safetySourcesGroup.safetySources.asSequence().filter(filter).forEach { safetySource ->
+                keysToRemove.add(safetySource.id.addSuffix(isWorkProfile = false))
+                if (safetySource.profile == SafetySource.PROFILE_ALL) {
+                    keysToRemove.add(safetySource.id.addSuffix(isWorkProfile = true))
+                }
             }
         }
     }
@@ -197,8 +226,15 @@ class SafetyCenterSearchIndexablesProvider : BaseSearchIndexablesProvider() {
         userManager: UserManager,
         keysToRemove: MutableSet<String>
     ) {
-        safetyCenterManager?.safetyEntries?.forEach {
-            keepEntryFromRemoval(it, userManager, keysToRemove)
+        safetyCenterManager?.safetyEntriesOrGroups?.forEach { entryOrGroup ->
+            val entryGroup = entryOrGroup.entryGroup
+            if (entryGroup != null && SafetyCenterUiFlags.getShowSubpages()) {
+                keysToRemove.remove(entryGroup.id)
+                // Note that we will discard static or issue-only entry groups here; and only keep
+                // dynamic ones. This is desirable as highlighting isn't implemented for static
+                // entries; and most static entries are now within subpages anyway.
+            }
+            entryOrGroup.entries.forEach { keepEntryFromRemoval(it, userManager, keysToRemove) }
         }
     }
 
@@ -212,12 +248,15 @@ class SafetyCenterSearchIndexablesProvider : BaseSearchIndexablesProvider() {
         keysToRemove.remove(entryId.safetySourceId.addSuffix(isWorkProfile))
     }
 
+    private val SafetyCenterManager.safetyEntriesOrGroups: Sequence<SafetyCenterEntryOrGroup>
+        get() = safetyCenterData.entriesOrGroups.asSequence()
+
     private val SafetyCenterManager.safetyEntries: Sequence<SafetyCenterEntry>
+        get() = safetyEntriesOrGroups.flatMap { it.entries }
+
+    private val SafetyCenterEntryOrGroup.entries: Sequence<SafetyCenterEntry>
         get() =
-            safetyCenterData.entriesOrGroups.asSequence().flatMap { groupOrEntry ->
-                groupOrEntry.entryGroup?.entries?.asSequence()
-                    ?: groupOrEntry.entry?.let { sequenceOf(it) } ?: emptySequence()
-            }
+            entryGroup?.entries?.asSequence() ?: entry?.let { sequenceOf(it) } ?: emptySequence()
 
     private val SafetyCenterEntry.entryId: SafetyCenterEntryId
         get() = SafetyCenterIds.entryIdFromString(id)
