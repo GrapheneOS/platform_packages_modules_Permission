@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 The Android Open Source Project
+ * Copyright (C) 2023 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.safetycenter;
+package com.android.safetycenter.notifications;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
@@ -31,6 +31,12 @@ import androidx.annotation.RequiresApi;
 
 import com.android.internal.annotations.GuardedBy;
 import com.android.permission.util.UserUtils;
+import com.android.safetycenter.ApiLock;
+import com.android.safetycenter.PendingIntentFactory;
+import com.android.safetycenter.SafetyCenterDataChangeNotifier;
+import com.android.safetycenter.SafetyCenterFlags;
+import com.android.safetycenter.SafetyCenterService;
+import com.android.safetycenter.UserProfileGroup;
 import com.android.safetycenter.data.SafetyCenterDataManager;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
 import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
@@ -45,9 +51,11 @@ import com.android.safetycenter.logging.SafetyCenterStatsdLogger;
  * and use the {@link #newNotificationDismissedIntent(Context, SafetyCenterIssueKey)} and {@link
  * #newNotificationActionClickedIntent(Context, SafetyCenterIssueActionId)} factory methods to
  * create new {@link PendingIntent} instances for this receiver.
+ *
+ * @hide
  */
 @RequiresApi(TIRAMISU)
-final class SafetyCenterNotificationReceiver extends BroadcastReceiver {
+public final class SafetyCenterNotificationReceiver extends BroadcastReceiver {
 
     private static final String TAG = "SafetyCenterNR";
 
@@ -133,7 +141,7 @@ final class SafetyCenterNotificationReceiver extends BroadcastReceiver {
 
     private final ApiLock mApiLock;
 
-    SafetyCenterNotificationReceiver(
+    public SafetyCenterNotificationReceiver(
             SafetyCenterService service,
             SafetyCenterDataManager safetyCenterDataManager,
             SafetyCenterDataChangeNotifier safetyCenterDataChangeNotifier,
@@ -150,7 +158,7 @@ final class SafetyCenterNotificationReceiver extends BroadcastReceiver {
      *
      * @see #newNotificationDismissedIntent(Context, SafetyCenterIssueKey)
      */
-    void register(Context context) {
+    public void register(Context context) {
         IntentFilter filter = new IntentFilter();
         filter.addAction(ACTION_NOTIFICATION_DISMISSED);
         filter.addAction(ACTION_NOTIFICATION_ACTION_CLICKED);
