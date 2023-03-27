@@ -26,4 +26,9 @@
     <!-- Title shown for Health Connect [CHAR LIMIT=50] -->
     <string name="health_connect_title" description="Health connect title">Health&#160;Connect</string>
     <string name="health_connect_summary" description="Health connect summary, which describes what user can do when they click Health Connect">App permissions and data management</string>
+
+    <!-- Title for the link to location settings [CHAR LIMIT=30] -->
+    <string name="location_settings">Location access</string>
+    <!-- Subtitle for the link to location settings [CHAR LIMIT=NONE] -->
+    <string name="location_settings_subtitle">For apps and services</string>
 </resources>
