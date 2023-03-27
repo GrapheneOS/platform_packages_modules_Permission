@@ -232,8 +232,10 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
         String[] splitKey;
         if (preferenceKey.endsWith(PERSONAL_PROFILE_SUFFIX)) {
             splitKey = preferenceKey.split("_" + PERSONAL_PROFILE_SUFFIX);
-        } else {
+        } else if (preferenceKey.endsWith(WORK_PROFILE_SUFFIX)) {
             splitKey = preferenceKey.split("_" + WORK_PROFILE_SUFFIX);
+        } else {
+            return "";
         }
 
         if (safetyCenterConfig == null || splitKey.length == 0) {
