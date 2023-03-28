@@ -81,6 +81,9 @@ import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 import com.android.safetycenter.logging.SafetyCenterPullAtomCallback;
+import com.android.safetycenter.notifications.SafetyCenterNotificationChannels;
+import com.android.safetycenter.notifications.SafetyCenterNotificationReceiver;
+import com.android.safetycenter.notifications.SafetyCenterNotificationSender;
 import com.android.safetycenter.pendingintents.PendingIntentSender;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 import com.android.server.SystemService;
@@ -161,10 +164,10 @@ public final class SafetyCenterService extends SystemService {
         mSafetyCenterListeners = new SafetyCenterListeners(mSafetyCenterDataFactory);
         mNotificationChannels = new SafetyCenterNotificationChannels(mSafetyCenterResourcesContext);
         mNotificationSender =
-                new SafetyCenterNotificationSender(
+                SafetyCenterNotificationSender.newInstance(
                         context,
-                        new SafetyCenterNotificationFactory(
-                                context, mNotificationChannels, mSafetyCenterResourcesContext),
+                        mSafetyCenterResourcesContext,
+                        mNotificationChannels,
                         mSafetyCenterDataManager);
         mSafetyCenterBroadcastDispatcher =
                 new SafetyCenterBroadcastDispatcher(
@@ -1060,7 +1063,7 @@ public final class SafetyCenterService extends SystemService {
      *
      * <p>No validation is performed on the contents of the given ID.
      */
-    void executeIssueActionInternal(SafetyCenterIssueActionId safetyCenterIssueActionId) {
+    public void executeIssueActionInternal(SafetyCenterIssueActionId safetyCenterIssueActionId) {
         SafetyCenterIssueKey safetyCenterIssueKey =
                 safetyCenterIssueActionId.getSafetyCenterIssueKey();
         UserProfileGroup userProfileGroup =

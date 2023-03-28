@@ -210,7 +210,7 @@ public final class SafetyCenterFlags {
     }
 
     /** Returns whether Safety Center notifications are enabled. */
-    static boolean getNotificationsEnabled() {
+    public static boolean getNotificationsEnabled() {
         return getBoolean(PROPERTY_NOTIFICATIONS_ENABLED, false);
     }
 
@@ -226,7 +226,7 @@ public final class SafetyCenterFlags {
      * <p>Note that the {@code areNotificationsAllowed} config attribute is only available on API U+
      * and therefore this is the only way to enable notifications for sources on Android T.
      */
-    static ArraySet<String> getNotificationsAllowedSourceIds() {
+    public static ArraySet<String> getNotificationsAllowedSourceIds() {
         return getCommaSeparatedStrings(PROPERTY_NOTIFICATIONS_ALLOWED_SOURCES);
     }
 
@@ -236,7 +236,7 @@ public final class SafetyCenterFlags {
      *
      * <p>The actual delay used may be longer.
      */
-    static Duration getNotificationsMinDelay() {
+    public static Duration getNotificationsMinDelay() {
         return getDuration(
                 PROPERTY_NOTIFICATIONS_MIN_DELAY, NOTIFICATIONS_MIN_DELAY_DEFAULT_DURATION);
     }
@@ -250,7 +250,7 @@ public final class SafetyCenterFlags {
      *
      * <p>Entries in this set should be strings of the form "safety_source_id/issue_type_id".
      */
-    static ArraySet<String> getImmediateNotificationBehaviorIssues() {
+    public static ArraySet<String> getImmediateNotificationBehaviorIssues() {
         return getCommaSeparatedStrings(PROPERTY_NOTIFICATIONS_IMMEDIATE_BEHAVIOR_ISSUES);
     }
 

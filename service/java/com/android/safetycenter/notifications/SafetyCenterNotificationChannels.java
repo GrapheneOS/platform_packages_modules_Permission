@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.safetycenter;
+package com.android.safetycenter.notifications;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
@@ -36,9 +36,13 @@ import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 
 import java.util.List;
 
-/** Class responsible for creating and updating Safety Center's notification channels. */
+/**
+ * Class responsible for creating and updating Safety Center's notification channels.
+ *
+ * @hide
+ */
 @RequiresApi(TIRAMISU)
-final class SafetyCenterNotificationChannels {
+public final class SafetyCenterNotificationChannels {
 
     private static final String TAG = "SafetyCenterNC";
 
@@ -49,7 +53,8 @@ final class SafetyCenterNotificationChannels {
 
     private final SafetyCenterResourcesContext mResourcesContext;
 
-    SafetyCenterNotificationChannels(SafetyCenterResourcesContext safetyCenterResourceContext) {
+    public SafetyCenterNotificationChannels(
+            SafetyCenterResourcesContext safetyCenterResourceContext) {
         mResourcesContext = safetyCenterResourceContext;
     }
 
@@ -81,7 +86,7 @@ final class SafetyCenterNotificationChannels {
      * current users, dropping any calling identity so those channels can be unblockable. Throws a
      * {@link RuntimeException} if any channel is malformed and could not be created.
      */
-    void createAllChannelsForAllUsers(Context context) {
+    public void createAllChannelsForAllUsers(Context context) {
         List<UserHandle> users = UserUtils.getUserHandles(context);
         for (int i = 0; i < users.size(); i++) {
             createAllChannelsForUser(context, users.get(i));
@@ -93,7 +98,7 @@ final class SafetyCenterNotificationChannels {
      * given {@link UserHandle}, dropping any calling identity so those channels can be unblockable.
      * Throws a {@link RuntimeException} if any channel is malformed and could not be created.
      */
-    void createAllChannelsForUser(Context context, UserHandle user) {
+    public void createAllChannelsForUser(Context context, UserHandle user) {
         try {
             createAllChannelsWithoutCallingIdentity(getNotificationManagerForUser(context, user));
         } catch (RuntimeException e) {
@@ -122,7 +127,6 @@ final class SafetyCenterNotificationChannels {
      * unblockable. Throws a {@link RuntimeException} if any channel is malformed and could not be
      * created.
      */
-    // TODO(b/265277413): Recreate/update these channels on locale changes by calling this method
     @Nullable
     private void createAllChannelsWithoutCallingIdentity(NotificationManager notificationManager) {
         // Clearing calling identity to be able to make unblockable system notification channels
