@@ -192,7 +192,7 @@ public final class PendingIntentFactory {
      * <p>{@code flags} must include {@link PendingIntent#FLAG_IMMUTABLE}
      */
     @Nullable
-    static PendingIntent getNonProtectedSystemOnlyBroadcastPendingIntent(
+    public static PendingIntent getNonProtectedSystemOnlyBroadcastPendingIntent(
             Context context, int requestCode, Intent intent, int flags) {
         if ((flags & PendingIntent.FLAG_IMMUTABLE) == 0) {
             throw new IllegalArgumentException("flags must include FLAG_IMMUTABLE");
