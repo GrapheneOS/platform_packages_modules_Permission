@@ -494,20 +494,15 @@ public final class SafetyCenterDataFactory {
             case SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED:
                 return getDefaultGroupSummary(safetySourcesGroup, entries);
             case SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN:
-                int errorEntries = 0;
                 for (int i = 0; i < entries.size(); i++) {
-                    SafetyCenterEntry entry = entries.get(i);
-
-                    SafetySourceKey key = toSafetySourceKey(entry.getId());
+                    SafetySourceKey key = toSafetySourceKey(entries.get(i).getId());
                     if (mSafetyCenterDataManager.sourceHasError(key)) {
-                        errorEntries++;
+                        // We always use the singular form of the error string for groups because
+                        // they appear as single entries in the UI and this ensures consistency,
+                        // especially when subpages are enabled.
+                        return getRefreshErrorString(1);
                     }
                 }
-
-                if (errorEntries > 0) {
-                    return getRefreshErrorString(errorEntries);
-                }
-
                 return mSafetyCenterResourcesContext.getStringByName("group_unknown_summary");
         }
 
