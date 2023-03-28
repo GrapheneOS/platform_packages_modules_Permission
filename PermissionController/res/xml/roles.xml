@@ -189,6 +189,9 @@
           ~ Not need to set preferred activity because PackageManager handles browser intents
           ~ specially.
           -->
+        <permissions>
+            <permission name="android.permission.PROVIDE_OWN_AUTOFILL_SUGGESTIONS" minSdkVersion="34" />
+        </permissions>
     </role>
 
     <!--
