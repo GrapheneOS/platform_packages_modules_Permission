@@ -61,14 +61,13 @@ class ManageCustomPermissionsFragmentTest : BaseHandheldPermissionUiTest() {
                 addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             })
         }
-
-        waitFindObject(By.textContains(ADDITIONAL_PERMISSIONS_LABEL)).click()
     }
 
     @Test
     fun groupSummaryGetsUpdatedWhenPermissionGetsGranted() {
         install(ONE_PERMISSION_DEFINER_APK)
         install(PERMISSION_USER_APK)
+        waitFindObject(By.textContains(ADDITIONAL_PERMISSIONS_LABEL)).click()
         waitFindObject(By.textContains(PERM_LABEL))
 
         val original = getUsageCountsFromUi(PERM_LABEL)
@@ -83,6 +82,7 @@ class ManageCustomPermissionsFragmentTest : BaseHandheldPermissionUiTest() {
     fun groupSummaryGetsUpdatedWhenPermissionGetsRevoked() {
         install(ONE_PERMISSION_DEFINER_APK)
         install(PERMISSION_USER_APK)
+        waitFindObject(By.textContains(ADDITIONAL_PERMISSIONS_LABEL)).click()
         waitFindObject(By.textContains(PERM_LABEL))
 
         val original = getUsageCountsFromUi(PERM_LABEL)
