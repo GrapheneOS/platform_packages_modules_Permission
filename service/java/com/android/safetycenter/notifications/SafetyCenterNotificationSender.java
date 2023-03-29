@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 The Android Open Source Project
+ * Copyright (C) 2023 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.safetycenter;
+package com.android.safetycenter.notifications;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 import static android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED;
@@ -40,10 +40,14 @@ import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.build.SdkLevel;
 import com.android.permission.util.UserUtils;
+import com.android.safetycenter.SafetyCenterFlags;
+import com.android.safetycenter.SafetySourceIssueInfo;
+import com.android.safetycenter.UserProfileGroup;
 import com.android.safetycenter.data.SafetyCenterDataManager;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 import com.android.safetycenter.logging.SafetyCenterStatsdLogger;
+import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 
 import java.io.PrintWriter;
 import java.lang.annotation.Retention;
@@ -59,10 +63,12 @@ import javax.annotation.concurrent.NotThreadSafe;
  * Safety Center's issues change.
  *
  * <p>This class isn't thread safe. Thread safety must be handled by the caller.
+ *
+ * @hide
  */
 @RequiresApi(TIRAMISU)
 @NotThreadSafe
-final class SafetyCenterNotificationSender {
+public final class SafetyCenterNotificationSender {
 
     private static final String TAG = "SafetyCenterNS";
 
@@ -103,13 +109,25 @@ final class SafetyCenterNotificationSender {
     private final ArrayMap<SafetyCenterIssueKey, SafetySourceIssue> mNotifiedIssues =
             new ArrayMap<>();
 
-    SafetyCenterNotificationSender(
+    private SafetyCenterNotificationSender(
             Context context,
             SafetyCenterNotificationFactory notificationFactory,
             SafetyCenterDataManager safetyCenterDataManager) {
         mContext = context;
         mNotificationFactory = notificationFactory;
         mSafetyCenterDataManager = safetyCenterDataManager;
+    }
+
+    public static SafetyCenterNotificationSender newInstance(
+            Context context,
+            SafetyCenterResourcesContext resourcesContext,
+            SafetyCenterNotificationChannels notificationChannels,
+            SafetyCenterDataManager dataManager) {
+        return new SafetyCenterNotificationSender(
+                context,
+                new SafetyCenterNotificationFactory(
+                        context, notificationChannels, resourcesContext),
+                dataManager);
     }
 
     /**
@@ -125,7 +143,8 @@ final class SafetyCenterNotificationSender {
      * @param safetyEvent the source provided upon successful action resolution
      * @param userId to which the source, issue and notification belong
      */
-    void notifyActionSuccess(String sourceId, SafetyEvent safetyEvent, @UserIdInt int userId) {
+    public void notifyActionSuccess(
+            String sourceId, SafetyEvent safetyEvent, @UserIdInt int userId) {
         if (safetyEvent.getType() != SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED) {
             Log.w(TAG, "Received safety event of wrong type");
             return;
@@ -191,7 +210,7 @@ final class SafetyCenterNotificationSender {
     }
 
     /** Updates Safety Center notifications for the given {@link UserProfileGroup}. */
-    void updateNotifications(UserProfileGroup userProfileGroup) {
+    public void updateNotifications(UserProfileGroup userProfileGroup) {
         updateNotifications(userProfileGroup.getProfileParentUserId());
 
         int[] managedProfileUserIds = userProfileGroup.getManagedProfilesUserIds();
@@ -204,10 +223,7 @@ final class SafetyCenterNotificationSender {
      * Updates Safety Center notifications, usually in response to a change in the issues for the
      * given userId.
      */
-    // TODO(b/266819195): Make sure to do the right thing if this method is called for a userId
-    //   which is not running. We might want to update data related to it, but not send
-    //   the notification...
-    void updateNotifications(@UserIdInt int userId) {
+    public void updateNotifications(@UserIdInt int userId) {
         if (!SafetyCenterFlags.getNotificationsEnabled()) {
             return;
         }
@@ -246,7 +262,7 @@ final class SafetyCenterNotificationSender {
     }
 
     /** Cancels all notifications previously posted by this class */
-    void cancelAllNotifications() {
+    public void cancelAllNotifications() {
         // Loop in reverse index order to be able to remove entries while iterating
         for (int i = mNotifiedIssues.size() - 1; i >= 0; i--) {
             SafetyCenterIssueKey issueKey = mNotifiedIssues.keyAt(i);
@@ -258,7 +274,7 @@ final class SafetyCenterNotificationSender {
     }
 
     /** Dumps state for debugging purposes. */
-    void dump(PrintWriter fout) {
+    public void dump(PrintWriter fout) {
         int notifiedIssuesCount = mNotifiedIssues.size();
         fout.println("NOTIFICATION SENDER (" + notifiedIssuesCount + " notified issues)");
         for (int i = 0; i < notifiedIssuesCount; i++) {
