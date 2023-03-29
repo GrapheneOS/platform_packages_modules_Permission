@@ -18,4 +18,15 @@
 <resources>
     <!-- colorAccentPrimaryVariant is not visible from mainline, so UX provided this alternative -->
     <color name="permission_rationale_accent_primary_variant">@android:color/system_accent1_600</color>
+
+    <color name="sc_surface_light">@android:color/system_surface_bright_light</color>
+    <color name="sc_surface_dark">@android:color/system_surface_bright_dark</color>
+
+    <color name="sc_surface_variant_light">@android:color/system_surface_container_high_light</color>
+    <color name="sc_surface_variant_dark">@android:color/system_surface_container_high_dark</color>
+
+    <color name="sc_accent_primary_light">@android:color/system_primary_light</color>
+    <color name="sc_accent_primary_dark">@android:color/system_primary_dark</color>
+
+    <color name="sc_qs_background_color">@android:color/system_surface_container_dark</color>
 </resources>
