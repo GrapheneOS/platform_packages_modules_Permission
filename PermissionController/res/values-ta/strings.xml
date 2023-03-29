@@ -191,8 +191,8 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"மீடியா ஃபைல்களை மட்டும் அணுக அனுமதி"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"எப்போதும் அனுமதி"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"ஆப்ஸை உபயோகிக்கும்போது மட்டும் அனுமதி"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"அனைத்துப் படங்களையும் அனுமதி"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"தேர்ந்தெடுக்கப்பட்ட படங்களை அனுமதி"</string>
+    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
+    <skip />
     <string name="app_permission_button_ask" msgid="3342950658789427">"ஒவ்வொரு முறையும் கேள்"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"அனுமதிக்க வேண்டாம்"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"துல்லியமான இருப்பிடம்"</string>
@@ -479,8 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"சாதனத்திலுள்ள &lt;b&gt;படம், வீடியோ, இசை, ஆடியோ &amp; பிற ஃபைல்களின்&lt;/b&gt; அணுகலை &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸுக்கு வழங்கவா?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"இந்தச் சாதனத்திலுள்ள இசை மற்றும் ஆடியோவுக்கான அணுகலை &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸுக்கு வழங்கவா?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"இந்தச் சாதனத்திலுள்ள படங்கள் மற்றும் வீடியோக்களுக்கான அணுகலை &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸுக்கு வழங்கவா?"</string>
-    <!-- no translation found for permgrouprequest_more_photos (128933814654231321) -->
-    <skip />
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"இந்தச் சாதனத்திலுள்ள கூடுதல் படங்கள் மற்றும் வீடியோக்களுக்கான அணுகலை &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸுக்கு வழங்கவா?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"ஆடியோ ரெக்கார்டு செய்ய &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"இந்த ஆப்ஸை நீங்கள் உபயோகிக்கும்போது மட்டுமே ஆடியோ ரெக்கார்டு செய்யும்"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"ஆடியோ ரெக்கார்டு செய்ய &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>

@@ -191,8 +191,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Lejo qasjen vetëm në media"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Lejo gjithmonë"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Lejo vetëm kur përdor aplikacionin"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"Lejo të gjitha fotografitë"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"Lejo fotografitë e zgjedhura"</string>
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Lejoji gjithmonë të gjitha"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Pyet çdo herë"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Mos lejo"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Vendndodhja e saktë"</string>
@@ -479,8 +478,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Të lejohet që &lt;b&amp;gt<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të ketë qasje te &lt;b&gt;fotografitë, videot, muzika, audioja e të tjera&lt;/b&gt; në pajisje?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Të lejohet që &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të ketë qasje te muzika dhe te audioja në këtë pajisje?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Të lejohet që &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të ketë qasje te fotografitë dhe videot në këtë pajisje?"</string>
-    <!-- no translation found for permgrouprequest_more_photos (128933814654231321) -->
-    <skip />
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Të lejohet që &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të qaset te më shumë fotografi dhe video në pajisje?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Të lejohet që &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të regjistrojë audio?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Aplikacioni do të mund të regjistrojë audion vetëm kur ti po e përdor aplikacionin"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Të lejohet që &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të regjistrojë audio?"</string>

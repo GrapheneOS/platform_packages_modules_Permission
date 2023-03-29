@@ -22,4 +22,6 @@
     <string name="privacy_subpage_data_header" msgid="5049237788244591274">"Data"</string>
     <string name="health_connect_title" msgid="2132233890867430855">"Health Connect"</string>
     <string name="health_connect_summary" msgid="8156987676957707740">"App permissions and data management"</string>
+    <string name="location_settings" msgid="8863940440881290182">"Location access"</string>
+    <string name="location_settings_subtitle" msgid="6846532794702613851">"For apps and services"</string>
 </resources>

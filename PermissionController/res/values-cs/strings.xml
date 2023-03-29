@@ -191,8 +191,8 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Povolit pouze přístup k médiím"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Povolit vždy"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Povolit jen při používání aplikace"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"Povolit všechny fotky"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"Povolit vybrané fotky"</string>
+    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
+    <skip />
     <string name="app_permission_button_ask" msgid="3342950658789427">"Pokaždé se zeptat"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Nepovolovat"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Přesná poloha"</string>
@@ -479,8 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; přístup k &lt;b&gt;fotkám, videím, hudbě, zvuku a dalším souborům&lt;/b&gt; v zařízení?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; přístup k hudbě a zvuku v zařízení?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; přístup k fotkám a videím v zařízení?"</string>
-    <!-- no translation found for permgrouprequest_more_photos (128933814654231321) -->
-    <skip />
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; přístup k dalším fotkám a videím v zařízení?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; nahrávat zvuk?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Aplikace bude moci zaznamenávat zvuk, pouze když ji budete používat"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; nahrávat zvuk?"</string>
