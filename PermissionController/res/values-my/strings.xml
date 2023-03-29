@@ -34,8 +34,8 @@
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"နောက်ထပ်"</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"အားလုံး ခွင့်ပြုရန်"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"အားလုံး အမြဲခွင့်ပြုရန်"</string>
-    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"ဓာတ်ပုံများရွေးရန်"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"နောက်ထပ်ဓာတ်ပုံနှင့် ဗီဒီယို ရွေးရန်"</string>
+    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"ဓာတ်ပုံနှင့်ဗီဒီယိုများ ရွေးရန်"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"နောက်ထပ် ရွေးရန်"</string>
     <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"နောက်ထပ်မရွေးပါနှင့်"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"မည်သို့ပင်ဖြစ်စေ ခွင့်မပြုပါ"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"ပယ်ရန်"</string>
@@ -191,8 +191,8 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"မီဒီယာကိုသာ သုံးခွင့်ပြုရန်"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"အမြဲ ခွင့်ပြုရန်"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"အက်ပ်ကိုသုံးစဉ်သာ ခွင့်ပြုရန်"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"ဓာတ်ပုံအားလုံး ခွင့်ပြုရန်"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"ရွေးထားသောဓာတ်ပုံများ ခွင့်ပြုရန်"</string>
+    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
+    <skip />
     <string name="app_permission_button_ask" msgid="3342950658789427">"အမြဲမေးရန်"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"ခွင့်မပြုပါ"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"နေရာအတိအကျ"</string>
@@ -208,7 +208,7 @@
     <string name="auto_revoke_label" msgid="5068393642936571656">"အက်ပ်ကိုအသုံးမပြုလျှင် ခွင့်ပြုချက်များ ဖယ်ရှားရန်"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"ခွင့်ပြုချက်များဖယ်ရှားပြီး နေရာလွတ်ပြုလုပ်ရန်"</string>
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"အသုံးမပြုပါက အက်ပ်လုပ်ဆောင်ချက် ခဏရပ်ရန်"</string>
-    <string name="unused_apps_summary" msgid="8839466950318403115">"ခွင့်ပြုချက်များ ဖယ်ရှားခြင်း၊ ယာယီဖိုင်များ ဖျက်ခြင်းနှင့် အကြောင်းကြားချက်များ ရပ်ခြင်းတို့ ပြုလုပ်နိုင်သည်"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"ခွင့်ပြုချက် ဖယ်ရှားခြင်း၊ ယာယီဖိုင် ဖျက်ခြင်း၊ အကြောင်းကြားချက် ရပ်ခြင်း"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"အက်ပ်ကို လအနည်းငယ် အသုံးမပြုပါက သင်၏ဒေတာကိုကာကွယ်ရန် ဤအက်ပ်အတွက် ခွင့်ပြုချက်များကို ဖယ်ရှားပါမည်။"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"အက်ပ်ကို လအနည်းငယ် အသုံးမပြုပါက သင်၏ဒေတာကိုကာကွယ်ရန် အောက်ပါခွင့်ပြုချက်များကို ဖယ်ရှားပါမည်- <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"သင်၏ဒေတာကိုကာကွယ်ရန် လအနည်းငယ်အတွင်း အသုံးမပြုသော အက်ပ်များမှ ခွင့်ပြုချက်များကို ဖယ်ရှားလိုက်သည်။"</string>
@@ -479,7 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"စက်ရှိ &lt;b&gt;ဓာတ်ပုံ၊ ဗီဒီယို၊ တေးဂီတ၊ အသံနှင့်အခြားဖိုင်များ&lt;/b&gt; ကို &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သုံးခွင့်ပေးမလား။"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"ဤစက်ရှိ တေးဂီတနှင့် အသံဖိုင်ကို &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သုံးခွင့်ပေးမလား။"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"ဤစက်ရှိ ဓာတ်ပုံနှင့် ဗီဒီယိုများကို &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သုံးခွင့်ပေးမလား။"</string>
-    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"စက်ရှိ နောက်ထပ်ဓာတ်ပုံနှင့် ဗီဒီယိုကို &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အားသုံးခွင့်ပေးမလား။"</string>
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"ဤစက်ရှိ နောက်ထပ်ဓာတ်ပုံနှင့် ဗီဒီယိုများကို &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သုံးခွင့်ပေးမလား။"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ကို အသံဖမ်းယူခွင့် ပေးလိုပါသလား။"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"ဤအက်ပ်ကို အသုံးပြုနေသည့် အချိန်တွင်သာ ၎င်းက အသံဖမ်းနိုင်သည်။"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ကို အသံဖမ်းခွင့် ပေးလိုပါသလား။"</string>
@@ -593,10 +593,8 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"ဤအက်ပ်က ၎င်းသည် ဒေတာကို ပြင်ပအဖွဲ့များနှင့် မျှဝေနိုင်ကြောင်း ဖော်ပြထားသည်"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"ဒေတာမျှဝေခြင်းနှင့် တည်နေရာ"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"ဒေတာမျှဝေခြင်း အချက်အလက် ရလာသောနေရာ"</string>
-    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
-    <skip />
-    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"ဆော့ဖ်ဝဲရေးသူသည် ဤအက်ပ် ဒေတာမျှဝေပုံအကြောင်း အချက်အလက်ကို "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" သို့ ပေးထားသည်။ ဆော့ဖ်ဝဲရေးသူက ဤအချက်အလက်ကို အချိန်နှင့်အမျှ အပ်ဒိတ်လုပ်နိုင်သည်။"</string>
+    <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"ဤအက်ပ်က အောက်ပါတို့ကြောင့် တည်နေရာဒေတာမျှဝေနိုင်သည်-"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ဒေတာမျှဝေခြင်း ကွဲပြားပုံ"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"ဒေတာလုပ်ထုံးလုပ်နည်းများသည် သင်၏ အက်ပ်ဗားရှင်း၊ အသုံးပြုမှု၊ ဒေသနှင့် အသက်အပေါ် အခြေခံ၍ ကွဲပြားနိုင်သည်။ "<annotation id="link">"ဒေတာမျှဝေခြင်းအကြောင်း နောက်ထပ်အချက်အလက်"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"သင်၏ တည်နေရာဒေတာ"</string>
@@ -611,6 +609,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"ဒေတာ ဘေးကင်းလုံခြုံရေး"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"တည်နေရာဒေတာကို မျှဝေနိုင်သည်"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"ဤအက်ပ်က ၎င်းသည် သင်၏ တည်နေရာဒေတာကို ပြင်ပကုမ္ပဏီများနှင့် မျှဝေနိုင်ကြောင်း ဖော်ပြထားသည်"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"ဤလင့်ခ်ကို ဖွင့်၍မရပါ"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"ဤအကြောင်းအရာကြည့်ရန် ဘရောင်ဇာဝင်းဒိုးတွင် <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> ဟု ရိုက်ထည့်ကြည့်ပါ"</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"တည်နေရာအတွက် ဒေတာမျှဝေခြင်း အပ်ဒိတ်"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"သင်၏ တည်နေရာဒေတာ မျှဝေနိုင်သောနည်းလမ်းအား ပြောင်းထားသော အက်ပ်များကို စိစစ်ပါ"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"ဤအက်ပ်များသည် ၎င်းတို့က သင်၏ တည်နေရာဒေတာ မျှဝေနိုင်သော နည်းလမ်းကို ပြောင်းလိုက်ပါပြီ။ ၎င်းတို့သည် ဒေတာကို ယခင်က မျှဝေထားခြင်း မရှိနိုင်ပါ သို့မဟုတ် ကြော်ငြာခြင်း (သို့) အရောင်းမြှင့်တင်ခြင်းတို့အတွက် ဒေတာကို ယခုမျှဝေနိုင်သည်။"</string>

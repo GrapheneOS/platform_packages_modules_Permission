@@ -32,12 +32,10 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Задржи ја „Додека се користи апликацијата“"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Задржи „Само овој пат“"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Уште информации"</string>
-    <!-- no translation found for grant_dialog_button_allow_all (5939066403732409516) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_always_allow_all (1719900027660252167) -->
-    <skip />
-    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"Изберете фотографии"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"Изберете повеќе фотографии и видеа"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Дозволи ги сите"</string>
+    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Секогаш дозволувај ги сите"</string>
+    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Изберете фотографии и видеа"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Изберете повеќе"</string>
     <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Не избирајте повеќе"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Сепак не дозволувај"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Отфрли"</string>
@@ -193,8 +191,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Дозволи пристап само до аудиовизуелните содржини"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Дозволи цело време"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Дозволи само додека се користи апликацијата"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"Дозволете ги сите фотографии"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"Дозволете избрани фотографии"</string>
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Секогаш дозволувај ги сите"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Прашувај секогаш"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Не дозволувај"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Прецизна локација"</string>
@@ -481,7 +478,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до &lt;b&gt;фотографии, видеа, музика, аудио и други датотеки&lt;/b&gt; на уредов?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до музика и аудиодатотеки на уредов?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до фотографии и видеа на уредов?"</string>
-    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до фотографии и видеа на уредов?"</string>
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до повеќе фотографии и видеа на уредов?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да снима аудио?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Апликацијава ќе може да снима аудио само додека ја користите"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да снима аудио?"</string>
@@ -595,10 +592,8 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Апликацијава изјави дека можеби ќе споделува податоци за локацијата со трети страни"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Споделување податоци и локација"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Од каде доаѓаат информациите за споделувањето податоци"</string>
-    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
-    <skip />
-    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Програмерот доставил информации до "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" за начинот на кој апликацијава споделува податоци. Програмерот може да ги ажурира податоциве со текот на времето."</string>
+    <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Апл. може да споделува податоци за локацијата за:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Споделувањето податоци варира"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Практиките за споделување податоци може да се разликуваат според верзијата на апликацијата, користењето, регионот и вашата возраст. "<annotation id="link">"Повеќе информации за споделувањето податоци"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Вашите податоци за локација"</string>
@@ -613,6 +608,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Безбедност на податоците"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Можно е да се споделуваат податоците за локација"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Апликацијава наведе дека можеби ќе ги споделува вашите податоци за локацијата со трети страни"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Не може да се отвори линков"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"Обидете се да напишете <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> во прозорецот на вашиот прелистувач за да ги прегледате содржиниве"</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Промени во споделувањето на податоците за локација"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Прегледајте ги апликациите што го промениле начинот на кој може да ги споделуваат вашите податоци за локација"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Овие апликации го промениле начинот на кој може да ги споделуваат вашите податоци за локација. Претходно можеби не ги споделувале или можеби сега ги споделуваат во рекламни или маркетиншки цели."</string>

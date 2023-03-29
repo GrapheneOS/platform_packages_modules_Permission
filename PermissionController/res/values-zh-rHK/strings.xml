@@ -32,12 +32,10 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"保持為「使用應用程式時」"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"保留「只在這次允許」"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"更多資料"</string>
-    <!-- no translation found for grant_dialog_button_allow_all (5939066403732409516) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_always_allow_all (1719900027660252167) -->
-    <skip />
-    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"選取相片"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"選取更多相片和影片"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"全部允許"</string>
+    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"一律全部允許"</string>
+    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"選取相片和影片"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"選取更多項目"</string>
     <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"不選取更多相片"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"一律不允許"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"關閉"</string>
@@ -193,8 +191,8 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"僅允許存取媒體"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"一律允許"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"僅在使用此應用程式時允許"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"允許存取所有相片"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"允許存取所選相片"</string>
+    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
+    <skip />
     <string name="app_permission_button_ask" msgid="3342950658789427">"每次都詢問"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"不允許"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"精確位置"</string>
@@ -209,7 +207,7 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"未使用的應用程式設定"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"如不使用應用程式，即移除權限"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"移除權限並騰出空間"</string>
-    <string name="unused_apps_label_v2" msgid="7058776770056517980">"如果未使用就暫停應用程式活動"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"暫停未使用應用程式的活動"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"移除權限、刪除暫存檔案和停止通知"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"為保護您的資料，系統已移除您在過去幾個月未曾使用的應用程式的權限。"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"為保護您的資料，如果應用程式在過去幾個月未曾使用，系統將會移除以下權限：<xliff:g id="PERMS">%1$s</xliff:g>。"</string>
@@ -481,7 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"要允許 &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 存取此裝置上的&lt;b&gt;相片、影片、音樂、音訊和其他檔案&lt;/b&gt;嗎？"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"要允許 &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 存取此裝置上的音樂和音訊嗎？"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"要允許 &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 存取此裝置上的相片和影片嗎？"</string>
-    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"要允許 &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 存取此裝置上的相片和影片嗎？"</string>
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取此裝置上的相片和影片嗎？"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;錄音嗎？"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"此應用程式將只能在您使用期間錄音"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;錄音嗎？"</string>
@@ -594,12 +592,10 @@
     <string name="show_password_summary" msgid="1110166488865981610">"輸入時短暫顯示字元"</string>
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"此應用程式表明可能會與第三方分享位置資料"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"資料分享和位置"</string>
-    <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"資料分享的資料來源"</string>
-    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
-    <skip />
-    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
-    <skip />
-    <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"資料分享方式差異"</string>
+    <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"資料分享詳情的來源"</string>
+    <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"開發人員向"<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>"提供資料，說明此應用程式的資料分享方式，並可能會隨時間更新。"</string>
+    <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"應用程式可能分享位置資料作以下用途："</string>
+    <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"資料分享方式因情況而異"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"資料處理方法可因應用程式版本、使用情況、所在地區和年齡而異。"<annotation id="link">"進一步瞭解資料分享"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"您的位置資料"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"如要變更此應用程式的存取權，請前往"<annotation id="link">"私隱權設定"</annotation></string>
@@ -613,6 +609,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"資料安全"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"系統可能會分享位置資料"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"此應用程式表明可能會與第三方分享您的位置資料"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"無法開啟此連結"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"嘗試在瀏覽器視窗中輸入「<xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g>」即可查看此內容"</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"位置資料分享更新"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"查看已變更位置資料分享方式的應用程式"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"這些應用程式已變更位置資料分享方式。它們可能未曾分享位置資料，或現在可能分享這些資料作廣告或市場推廣用途。"</string>

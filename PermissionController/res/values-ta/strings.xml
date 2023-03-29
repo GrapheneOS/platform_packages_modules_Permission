@@ -32,12 +32,10 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“ஆப்ஸ் உபயோகத்தில் இருக்கும்போது” என்று வைக்கவும்"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"”இப்போது மட்டும்” வைத்திரு"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"மேலும் தகவல்"</string>
-    <!-- no translation found for grant_dialog_button_allow_all (5939066403732409516) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_always_allow_all (1719900027660252167) -->
-    <skip />
-    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"படங்களைத் தேர்ந்தெடு"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"கூடுதல் படங்களையும் வீடியோக்களையும் தேர்ந்தெடுத்தல்"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"அனைத்தையும் அனுமதி"</string>
+    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"எப்போதும் அனைத்தையும் அனுமதி"</string>
+    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"படங்களையும் வீடியோக்களையும் தேர்ந்தெடுங்கள்"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"இன்னும் தேர்ந்தெடுங்கள்"</string>
     <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"கூடுதலாகத் தேர்ந்தெடுக்க வேண்டாம்"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"பரவாயில்லை, அனுமதிக்க வேண்டாம்"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"நிராகரி"</string>
@@ -193,8 +191,8 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"மீடியா ஃபைல்களை மட்டும் அணுக அனுமதி"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"எப்போதும் அனுமதி"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"ஆப்ஸை உபயோகிக்கும்போது மட்டும் அனுமதி"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"அனைத்துப் படங்களையும் அனுமதி"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"தேர்ந்தெடுக்கப்பட்ட படங்களை அனுமதி"</string>
+    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
+    <skip />
     <string name="app_permission_button_ask" msgid="3342950658789427">"ஒவ்வொரு முறையும் கேள்"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"அனுமதிக்க வேண்டாம்"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"துல்லியமான இருப்பிடம்"</string>
@@ -481,7 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"சாதனத்திலுள்ள &lt;b&gt;படம், வீடியோ, இசை, ஆடியோ &amp; பிற ஃபைல்களின்&lt;/b&gt; அணுகலை &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸுக்கு வழங்கவா?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"இந்தச் சாதனத்திலுள்ள இசை மற்றும் ஆடியோவுக்கான அணுகலை &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸுக்கு வழங்கவா?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"இந்தச் சாதனத்திலுள்ள படங்கள் மற்றும் வீடியோக்களுக்கான அணுகலை &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸுக்கு வழங்கவா?"</string>
-    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"இந்தச் சாதனத்திலுள்ள கூடுதல் படங்கள் &amp; வீடியோக்களுக்கான அணுகலை &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸுக்கு வழங்கவா?"</string>
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"இந்தச் சாதனத்திலுள்ள கூடுதல் படங்கள் மற்றும் வீடியோக்களுக்கான அணுகலை &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸுக்கு வழங்கவா?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"ஆடியோ ரெக்கார்டு செய்ய &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"இந்த ஆப்ஸை நீங்கள் உபயோகிக்கும்போது மட்டுமே ஆடியோ ரெக்கார்டு செய்யும்"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"ஆடியோ ரெக்கார்டு செய்ய &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
@@ -595,10 +593,8 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"மூன்றாம் தரப்பினருடன் இருப்பிடத் தரவைப் பகிரலாம் என இந்த ஆப்ஸ் குறிப்பிடுகிறது"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"தரவுப் பகிர்வு மற்றும் இருப்பிடம்"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"தரவுப் பகிர்வு குறித்த தகவல்கள் எங்கிருந்து பெறப்படுகின்றன?"</string>
-    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
-    <skip />
-    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"இந்த ஆப்ஸ் எப்படித் தரவைப் பகிர்கிறது என்பது குறித்த தகவல்களை டெவெலப்பர் "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" என்பதற்கு வழங்கியுள்ளார். டெவெலப்பர் காலப்போக்கில் இந்தத் தகவல்களை மாற்றக்கூடும்."</string>
+    <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"ஆப்ஸ் இவற்றுக்காக இருப்பிடத் தரவைப் பகிரக்கூடும்:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"தரவுப் பகிர்வு வேறுபடுகிறது"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"உங்கள் ஆப்ஸ் பதிப்பு, உபயோகம், பிராந்தியம், வயது ஆகியவற்றின் அடிப்படையில் தரவு நடைமுறைகள் மாறுபடக்கூடும். "<annotation id="link">"தரவுப் பகிர்வு குறித்த கூடுதல் தகவல்கள்"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"உங்கள் இருப்பிடத் தரவு"</string>
@@ -613,6 +609,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"தரவுப் பாதுகாப்பு"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"இருப்பிடத் தரவு பகிரப்படலாம்"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"இந்த ஆப்ஸில் குறிப்பிட்டுள்ளபடி மூன்றாம் தரப்பினருடன் இருப்பிடத் தரவை இது பகிரலாம்"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"இந்த இணைப்பைத் திறக்க முடியவில்லை"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"இந்த உள்ளடக்கத்தைப் பார்க்க, உங்கள் உலாவியின் சாளரத்தில் <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> என டைப் செய்து பார்க்கவும்"</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"இருப்பிடத்திற்கான தரவுப் பகிர்வு குறித்த அறிவிப்புகள்"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"உங்கள் இருப்பிடத் தரவைப் பகிரும் விதத்தை மாற்றிய ஆப்ஸ் எவை எனப் பாருங்கள்"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"உங்கள் இருப்பிடத் தரவைப் பகிரும் விதத்தை இந்த ஆப்ஸ் மாற்றியுள்ளன. இதற்குமுன் அவற்றைப் பகிராமல் இருந்திருக்கலாம் அல்லது விளம்பரப்படுத்தல், மார்கெட்டிங் போன்ற நோக்கங்களுக்காக இப்போது பகிரக்கூடும்."</string>

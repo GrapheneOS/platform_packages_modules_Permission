@@ -34,8 +34,8 @@
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Batafsil"</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Hammasiga ruxsat berish"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Doim hammasiga ruxsat berish"</string>
-    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"Surat tanlash"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"Yana rasm va video tanlash"</string>
+    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Surat va videolarni tanlash"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Yana"</string>
     <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Boshqa rasm tanlanmasin"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Baribir rad etilsin"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Yopish"</string>
@@ -191,8 +191,8 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Faqat media fayllarga ruxsat"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Har doim ruxsat"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Faqat ilova faolligida ruxsat"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"Barcha suratlarga kirish ruxsati"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"Tanlangan suratlarga kirish ruxsati"</string>
+    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
+    <skip />
     <string name="app_permission_button_ask" msgid="3342950658789427">"Har safar soʻralsin"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Rad etish"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Aniq joylashuv"</string>
@@ -479,7 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"<xliff:g id="APP_NAME">%1$s</xliff:g> uchun ushbu qurilmadagi surat, video, musiqa, audio va fayllarga kirish ruxsati berilsinmi?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"<xliff:g id="APP_NAME">%1$s</xliff:g> uchun ushbu qurilmadagi musiqa va audio fayllarga kirish ruxsati berilsinmi?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"<xliff:g id="APP_NAME">%1$s</xliff:g> uchun qurilmadagi rasm va videolarga kirish ruxsati berilsinmi?"</string>
-    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"<xliff:g id="APP_NAME">%1$s</xliff:g> uchun qurilmadagi boshqa rasm va videolarga kirish ruxsati berilsinmi?"</string>
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uchun qurilmadagi boshqa rasm va videolarga kirish ruxsati berilsinmi?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uchun audio yozib olish ruxsati berilsinmi?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Bu ilova faqat undan foydalanganingizda ovozlarni yozib oladi"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uchun audio yozib olishga ruxsat berilsinmi?"</string>
@@ -593,10 +593,8 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Bu ilovaning maʼlumotlarini begonalarga ulashishi mumkinligi xabar berildi"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Maʼlumotlar ulashuvi va joylashuv axboroti"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Maʼlumotlar ulashuvi haqidagi axborot manbasi"</string>
-    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
-    <skip />
-    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Dasturchi "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" ga bu ilovadagi maʼlumotlar qanday ulashilishi haqida axborot bergan. Bu axborot keyinchalik yangilanishi mumkin."</string>
+    <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Ilova joylashuv axborotini quyidagicha ulashadi:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Maʼlumotlarning turlicha ulashuvi"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Axborot bilan ishlash amaliyotlari ilova versiyasi, foydalanish, hudud va yoshga qarab farq qilishi mumkin. "<annotation id="link">"Maʼlumotlar ulashuvi haqida batafsil"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Joylashuvingiz axboroti"</string>
@@ -611,6 +609,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Maʼlumotlar xavfsizligi"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Joylashuv axboroti ulashilishi mumkin"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Bu ilova tashqariga joylashuv axborotini ulashishi mumkinligi aniqlandi"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Bu havola ochilmadi"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"Bu kontentni ochish uchun brauzer oynasida <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> manzilini kiriting"</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Joylashuv axboroti ulashuvidagi oʻzgarishlar"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Joylashuv axboroti ulashuviga oʻzgartirish kiritgan ilovalarni tekshiring"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Quyidagi ilovalarda joylashuv axboroti ulashuvi oʻzgardi. Avval ulashilmagan boʻlishi yoki endi reklama va marketing maqsadlarida ulashilishi mumkin"</string>
