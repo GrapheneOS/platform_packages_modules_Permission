@@ -28,6 +28,7 @@ import com.android.compatibility.common.util.SystemUtil.eventually
 import com.android.compatibility.common.util.SystemUtil.getEventually
 import com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity
 import com.android.compatibility.common.util.UiAutomatorUtils2.waitFindObject
+import com.android.compatibility.common.util.UiAutomatorUtils2.waitFindObjectOrNull
 import com.android.permissioncontroller.permissionui.getUsageCountsFromUi
 import com.android.permissioncontroller.permissionui.wakeUpScreen
 import com.google.common.truth.Truth.assertThat
@@ -65,7 +66,7 @@ class ManageStandardPermissionsFragmentTest : BaseHandheldPermissionUiTest() {
      * @return number of additional permissions
      */
     private fun getAdditionalPermissionCount(): Int {
-        waitFindObject(By.textContains(ADDITIONAL_PERMISSIONS_LABEL))
+        waitFindObjectOrNull(By.textContains(ADDITIONAL_PERMISSIONS_LABEL)) ?: return 0
 
         val additionalPermissionsSummaryText = waitFindObject(By
             .textContains(ADDITIONAL_PERMISSIONS_SUMMARY)).getText()
