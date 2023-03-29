@@ -181,8 +181,8 @@
     <string name="permission_history_category_today" msgid="7496389369158806620">"ଆଜି"</string>
     <string name="permission_history_category_yesterday" msgid="7242517121222012521">"ଗତକାଲି"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"ଆପ୍‍ ଅନୁମତି ବ୍ୟବହାର"</string>
-    <string name="app_permission_usage_summary" msgid="390383661936709672">"ଆକ୍ସେସ୍‍: <xliff:g id="NUM">%1$s</xliff:g>ଥର। ସମୁଦାୟ ଅବଧି: <xliff:g id="DURATION">%2$s</xliff:g>। ଅନ୍ତିମ ଥର <xliff:g id="TIME">%3$s</xliff:g> ପୂର୍ବେ ବ୍ୟବହୃତ ହୋଇଥିଲା।"</string>
-    <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"ଆକ୍ସେସ୍‍: <xliff:g id="NUM">%1$s</xliff:g>ଥର। ଅନ୍ତିମ ଥର <xliff:g id="TIME">%2$s</xliff:g> ପୂର୍ବେ ବ୍ୟବହୃତ ହୋଇଥିଲା।"</string>
+    <string name="app_permission_usage_summary" msgid="390383661936709672">"ଆକ୍ସେସ: <xliff:g id="NUM">%1$s</xliff:g>ଥର। ସମୁଦାୟ ଅବଧି: <xliff:g id="DURATION">%2$s</xliff:g>। ଗତ ଥର <xliff:g id="TIME">%3$s</xliff:g> ପୂର୍ବେ ବ୍ୟବହୃତ ହୋଇଥିଲା।"</string>
+    <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"ଆକ୍ସେସ: <xliff:g id="NUM">%1$s</xliff:g>ଥର। ଗତ ଥର <xliff:g id="TIME">%2$s</xliff:g> ପୂର୍ବେ ବ୍ୟବହୃତ ହୋଇଥିଲା।"</string>
     <string name="app_permission_button_allow" msgid="5808039516494774647">"ଅନୁମତି ଦିଅନ୍ତୁ"</string>
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"ସମସ୍ତ ଫାଇଲର ପରିଚାଳନା ପାଇଁ ଅନୁମତି ଦିଅନ୍ତୁ"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"କେବଳ ମିଡିଆକୁ ଆକ୍ସେସ୍ ଅନୁମତି ଦିଅନ୍ତୁ"</string>
