@@ -32,12 +32,10 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“এপ্‌টো ব্যৱহাৰ হৈ থকা অৱস্থাত” ৰাখক"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"“কেৱল এইবাৰৰ বাবে অনুমতি দিয়ক” বিকল্পটো ৰাখক"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"অধিক তথ্য"</string>
-    <!-- no translation found for grant_dialog_button_allow_all (5939066403732409516) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_always_allow_all (1719900027660252167) -->
-    <skip />
-    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"ফট’ বাছনি কৰক"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"অধিক ফট’ আৰু ভিডিঅ’ বাছনি কৰক"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"আটাইবোৰকে অনুমতি দিয়ক"</string>
+    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"আটাইবোৰকে সদায় অনুমতি দিয়ক"</string>
+    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"ফট’ আৰু ভিডিঅ’ বাছনি কৰক"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"অধিক বাছনি কৰক"</string>
     <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"আৰু অধিক বাছনি নকৰিব"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"তথাপি অনুমতি নিদিব"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"অগ্ৰাহ্য কৰক"</string>
@@ -193,8 +191,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"কেৱল মিডিয়ালৈ এক্সেছৰ অনুমতি দিয়ক"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"সকলো সময়ৰ বাবে অনুমতি দিয়ক"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"কেৱল এপ্ ব্যৱহাৰ হৈ থাকোঁতে অনুমতি দিয়ক"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"আটাইবোৰ ফট’ৰ অনুমতি দিয়ক"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"বাছনি কৰা ফট’ৰ অনুমতি দিয়ক"</string>
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"আটাইবোৰকে সদায় অনুমতি দিয়ক"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"প্ৰতিবাৰতে সোধক"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"অনুমতি নিদিব"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"সঠিক অৱস্থান"</string>
@@ -481,7 +478,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক এই ডিভাইচটোত থকা &lt;b&gt;ফট’, ভিডিঅ’, সংগীত, অডিঅ’ আৰু অন্য ফাইল&lt;/b&gt; এক্সেছ কৰিবলৈ দিবনে?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক এই ডিভাইচটোত থকা সংগীত আৰু অডিঅ’ এক্সেছ কৰিবলৈ অনুমতি দিবনে?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক এই ডিভাইচটোত থকা ফট’ আৰু ভিডিঅ’ এক্সেছ কৰিবলৈ অনুমতি দিবনে?"</string>
-    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক এই ডিভাইচটোত থকা আৰু অধিক ফট’ আৰু ভিডিঅ’ এক্সেছ কৰিবলৈ অনুমতি দিবনে?"</string>
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক এই ডিভাইচটোত থকা অধিক ফট’ আৰু ভিডিঅ’ এক্সেছ কৰিবলৈ অনুমতি দিবনে?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক অডিঅ\' ৰেকৰ্ড কৰিবলৈ অনুমতি দিবনে?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"আপুনি এই এপ্‌টো ব্যৱহাৰ কৰি থকাৰ সময়তহে কেৱল ই অডিঅ’ ৰেকৰ্ড কৰিব পাৰিব"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক অডিঅ’ ৰেকৰ্ড কৰিবলৈ অনুমতি দিবনে?"</string>
@@ -595,10 +592,8 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"এই এপ্‌টোৱে তৃতীয় পক্ষৰ সৈতে অৱস্থানৰ ডেটা শ্বেয়াৰ কৰিব পাৰে বুলি জনাইছে"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"ডেটা শ্বেয়াৰ কৰা আৰু অৱস্থান"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"ডেটা শ্বেয়াৰ কৰাৰ তথ্যখিনি ক’ৰ পৰা আহে"</string>
-    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
-    <skip />
-    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"এই এপ্‌টোৱে কেনেকৈ ডেটা শ্বেয়াৰ কৰে সেই বিষয়ে বিকাশকৰ্তাই "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>"ক তথ্য দিছে। বিকাশকৰ্তাগৰাকীয়ে এই তথ্যখিনি সময়ৰ লগে লগে আপডে’ট কৰিব পাৰে।"</string>
+    <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"এপ্‌টোৱে ইয়াৰ বাবে অৱস্থানৰ ডেটা শ্বেয়াৰ কৰিব পাৰে:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ডেটা শ্বেয়াৰ কৰা কার্যটো ভিন্ন হয়"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"ডেটা শ্বেয়াৰ কৰা কাৰ্যটো আপোনাৰ এপৰ সংস্কৰণ, ব্যৱহাৰ, অঞ্চল আৰু বয়সৰ ওপৰত ভিত্তি কৰি ভিন্ন হ’ব পাৰে। "<annotation id="link">"ডেটা শ্বেয়াৰ কৰাৰ বিষয়ে অধিক"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"আপোনাৰ অৱস্থানৰ ডেটা"</string>
@@ -607,12 +602,14 @@
     <string name="permission_rationale_purpose_analytics" msgid="2070800501189620712">"বিশ্লেষণাত্মক পৰিসংখ্যা"</string>
     <string name="permission_rationale_purpose_developer_communications" msgid="6453047018892062374">"বিকাশকৰ্তাৰ যোগাযোগ"</string>
     <string name="permission_rationale_purpose_advertising" msgid="7156966429245180236">"বিজ্ঞাপন অথবা মাৰ্কেটিং"</string>
-    <string name="permission_rationale_purpose_fraud_prevention_security" msgid="4262104770357031902">"প্ৰৱঞ্চনা ৰোধ, সুৰক্ষা আৰু আজ্ঞানুবৰ্তিতা"</string>
+    <string name="permission_rationale_purpose_fraud_prevention_security" msgid="4262104770357031902">"প্ৰৱঞ্চনা ৰোধ, সুৰক্ষা আৰু নীতি পালন"</string>
     <string name="permission_rationale_purpose_personalization" msgid="1589973273682238708">"ব্যক্তিগতকৰণ"</string>
     <string name="permission_rationale_purpose_account_management" msgid="2985772421946688879">"একাউণ্ট পৰিচালনা"</string>
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"ডেটা সুৰক্ষা"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"অৱস্থানৰ ডেটা শ্বেয়াৰ কৰা হ’ব পাৰে"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"এই এপ্‌টোৱে তৃতীয় পক্ষৰ সৈতে আপোনাৰ অৱস্থানৰ ডেটা শ্বেয়াৰ কৰিব পাৰে বুলি জনাইছে"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"এই লিংকটো খুলিব নোৱাৰি"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"এই সমলটো চাবলৈ আপোনাৰ ব্ৰাউজাৰৰ ৱিণ্ড’ত <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> টাইপ কৰি চাওক"</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"অৱস্থানৰ বাবে ডেটা শ্বেয়াৰ কৰাৰ আপডে’ট"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"আপোনাৰ অৱস্থানৰ ডেটা শ্বেয়াৰ কৰিব পৰাৰ ধৰণসমূহ সলনি কৰা এপ্‌সমূহ পৰ্যালোচনা কৰক"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"এই এপ্‌সমূহে আপোনাৰ অৱস্থানৰ ডেটা শ্বেয়াৰ কৰিব পৰাৰ ধৰণসমূহ সলনি কৰিছে। সেইবোৰে পূৰ্বে এয়া শ্বেয়াৰ নকৰিব পাৰে অথবা এতিয়া বিজ্ঞাপন অথবা মাৰ্কেটিঙৰ উদ্দেশ্যে শ্বেয়াৰ কৰিব পাৰে।"</string>

@@ -34,8 +34,8 @@
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Meer inligting"</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Laat alles toe"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Laat altyd alles toe"</string>
-    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"Kies foto’s"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"Kies meer foto’s en video’s"</string>
+    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Kies foto’ en video’s"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Kies meer"</string>
     <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Moenie meer kies nie"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Moet steeds nie toelaat nie"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Maak toe"</string>
@@ -191,8 +191,8 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Laat net toegang tot media toe"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Laat altyd toe"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Laat net toe terwyl jy program gebruik"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"Laat alle foto’s toe"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"Laat geselekteerde foto’s toe"</string>
+    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
+    <skip />
     <string name="app_permission_button_ask" msgid="3342950658789427">"Vra elke keer"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Moenie toelaat nie"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Presiese ligging"</string>
@@ -479,7 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Gee &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang tot &lt;b&gt;foto\'s, video\'s, musiek, oudio en ander lêers&lt;/b&gt; op hierdie toestel?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Gee &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang tot musiek en oudio op hierdie toestel?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Gee &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang tot foto\'s en video\'s op hierdie toestel?"</string>
-    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"Gee &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang tot meer foto’s en video’s op hierdie toestel?"</string>
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Gee &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang tot meer foto\'s en video\'s op hierdie toestel?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Laat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toe om oudio op te neem?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Die program sal net kan oudio opneem terwyl jy die program gebruik"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Laat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toe om oudio op te neem?"</string>
@@ -593,10 +593,8 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Hierdie app het verklaar dat dit dalk liggingdata met derde party sal deel"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Datadeling en -ligging"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Waar datadelinginligting vandaan kom"</string>
-    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
-    <skip />
-    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Die ontwikkelaar het inligting aan "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" verskaf oor hoe hierdie app data deel. Die ontwikkelaar kan hierdie inligting mettertyd opdateer."</string>
+    <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Hierdie app kan liggingdata deel vir:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Datadeling verskil"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Datapraktyke kan verskil op grond van jou appweergawe en -gebruik, streek en ouderdom. "<annotation id="link">"Meer oor datadeling"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Jou liggingdata"</string>
@@ -611,6 +609,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Dataveiligheid"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Liggingdata sal dalk gedeel word"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Hierdie app het verklaar dat dit jou liggingdata met derde partye kan deel"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Kan nie hierdie skakel oopmaak nie"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"Probeer <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> by jou blaaiervenster intik om hierdie inhoud te bekyk"</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Datadelingopdaterings vir ligging"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Gaan apps na wat die manier waarop hulle jou liggingdata kan deel, verander het"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Hierdie apps het die manier waarop hulle jou liggingdata kan deel, verander. Hulle het dit dalk nie voorheen gedeel nie, of kan dit nou vir reklame- of bemarkingdoeleindes deel."</string>
