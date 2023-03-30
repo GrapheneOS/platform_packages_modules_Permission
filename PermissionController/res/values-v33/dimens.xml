@@ -47,4 +47,9 @@
     <dimen name="sc_card_widget_corner_radius">16dp</dimen>
 
     <dimen name="sc_qs_max_width">492dp</dimen>
+
+    <dimen name="sc_line_height_xlarge">28sp</dimen>
+    <dimen name="sc_line_height_large">24sp</dimen>
+    <dimen name="sc_line_height_medium">20sp</dimen>
+    <dimen name="sc_line_height_small">16dp</dimen>
 </resources>

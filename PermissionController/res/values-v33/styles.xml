@@ -145,11 +145,13 @@
     <style name="SafetyCenterQsToggleText.Title">
         <item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
         <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Medium</item>
+        <item name="android:lineHeight">@dimen/sc_line_height_medium</item>
     </style>
 
     <style name="SafetyCenterQsToggleText.Subtitle">
         <item name="android:textColor">?android:attr/textColorSecondary</item>
         <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Body</item>
+        <item name="android:lineHeight">@dimen/sc_line_height_medium</item>
     </style>
 
     <style name="SafetyCenterQsToggleArrow">
@@ -199,6 +201,7 @@
         <item name="android:layout_marginTop">@dimen/sc_spacing_xxxlarge</item>
         <item name="android:textAlignment">viewStart</item>
         <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Medium</item>
+        <item name="android:lineHeight">@dimen/sc_line_height_medium</item>
     </style>
 
     <style name="SafetyCenterIndicatorLabelText"
@@ -209,6 +212,7 @@
         <item name="android:layout_marginBottom">@dimen/sc_spacing_xxxlarge</item>
         <item name="android:textAlignment">viewStart</item>
         <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Body</item>
+        <item name="android:lineHeight">@dimen/sc_line_height_medium</item>
     </style>
 
     <style name="SafetyCenterIndicatorExpandView">
@@ -259,34 +263,33 @@
 
     <style name="TextAppearance.SafetyCenter.Headline.Status">
         <item name="android:textSize">22sp</item>
-        <item name="android:lineHeight">28sp</item>
     </style>
     <style name="TextAppearance.SafetyCenter.Headline.Issue">
-        <item name="android:textSize">18sp</item>
-        <item name="android:lineHeight">24sp</item>
+        <item name="android:textSize">20sp</item>
     </style>
     <style name="TextAppearance.SafetyCenter.Headline.Entry">
         <item name="android:textSize">20sp</item>
-        <item name="android:lineHeight">24sp</item>
     </style>
 
     <style name="TextAppearance.SafetyCenter.Body"
         parent="@android:style/TextAppearance.DeviceDefault.Small">
         <item name="android:textSize">14sp</item>
-        <item name="android:lineHeight">20sp</item>
         <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+
+    <style name="TextAppearance.SafetyCenter.IssueAttribution"
+        parent="TextAppearance.SafetyCenter.Body">
+        <item name="android:textSize">12sp</item>
     </style>
 
     <style name="TextAppearance.SafetyCenter.Medium"
         parent="@android:style/TextAppearance.DeviceDefault.Medium">
         <item name="android:textSize">14sp</item>
-        <item name="android:lineHeight">20sp</item>
     </style>
 
     <style name="TextAppearance.SafetyCenter.IssueSubtitle"
         parent="TextAppearance.SafetyCenter.Medium">
         <item name="android:textSize">16sp</item>
-        <item name="android:lineHeight">24sp</item>
     </style>
 
     <style name="TextAppearance.SafetyCenter.ActionButton"
@@ -385,7 +388,10 @@
           parent="SafetyCenterBaseTextWidget">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Headline.Status</item>
+        <item name="android:textAppearance">
+            @style/TextAppearance.SafetyCenter.Headline.Status
+        </item>
+        <item name="android:lineHeight">@dimen/sc_line_height_xlarge</item>
     </style>
 
     <style name="SafetyCenterStatusSummary"
@@ -394,6 +400,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="layout_constraintTop_toBottomOf">@id/status_title</item>
         <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Body</item>
+        <item name="android:lineHeight">@dimen/sc_line_height_medium</item>
     </style>
 
     <style name="SafetyCenterStatusButton" parent="SafetyCenterActionButton">
@@ -439,47 +446,59 @@
 
     <style name="SafetyCenterIssueAttributionTitle"
            parent="SafetyCenterBaseTextContainer">
-        <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Body</item>
-        <item name="android:layout_marginTop">@dimen/sc_spacing_xxsmall</item>
+        <item name="android:textAppearance">
+            @style/TextAppearance.SafetyCenter.IssueAttribution
+        </item>
+        <item name="android:lineHeight">@dimen/sc_line_height_small</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginEnd">@dimen/sc_spacing_xxxlarge</item>
         <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintBottom_toTopOf">@id/issue_card_title</item>
         <item name="layout_constraintStart_toStartOf">parent</item>
         <item name="layout_constraintEnd_toStartOf">@id/issue_card_dismiss_btn</item>
+        <item name="android:layout_marginBottom">@dimen/sc_spacing_medium</item>
+        <item name="android:layout_marginEnd">@dimen/sc_spacing_xxxlarge</item>
     </style>
 
     <style name="SafetyCenterIssueTitle"
            parent="SafetyCenterBaseTextContainer">
         <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Headline.Issue</item>
+        <item name="android:lineHeight">@dimen/sc_line_height_large</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="layout_constraintTop_toBottomOf">@id/issue_card_attribution_title</item>
+        <item name="layout_constraintBottom_toTopOf">@id/issue_card_subtitle</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintEnd_toStartOf">@id/issue_card_dismiss_btn</item>
         <item name="android:layout_marginEnd">@dimen/sc_spacing_xxxlarge</item>
         <item name="layout_constraintHorizontal_bias">0</item>
         <item name="layout_goneMarginEnd">0dp</item>
-        <item name="layout_constraintTop_toBottomOf">@id/issue_card_attribution_title</item>
-        <item name="layout_constraintStart_toStartOf">parent</item>
-        <item name="layout_constraintEnd_toStartOf">@id/issue_card_dismiss_btn</item>
     </style>
 
     <style name="SafetyCenterIssueSubtitle"
            parent="SafetyCenterBaseTextContainer">
-        <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Body</item>
-        <item name="android:layout_marginTop">@dimen/sc_spacing_xxsmall</item>
+        <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.IssueSubtitle</item>
+        <item name="android:lineHeight">@dimen/sc_line_height_large</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="layout_constraintStart_toStartOf">@id/issue_card_title</item>
         <item name="layout_constraintTop_toBottomOf">@id/issue_card_title</item>
+        <item name="layout_constraintBottom_toTopOf">@id/issue_card_summary</item>
+        <item name="android:layout_marginTop">@dimen/sc_spacing_xsmall</item>
     </style>
 
     <style name="SafetyCenterIssueSummary"
            parent="SafetyCenterBaseTextContainer">
         <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Body</item>
-        <item name="android:layout_marginTop">@dimen/sc_spacing_large</item>
+        <item name="android:lineHeight">@dimen/sc_line_height_medium</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="layout_constraintStart_toStartOf">@id/issue_card_title</item>
         <item name="layout_constraintTop_toBottomOf">@id/issue_card_subtitle</item>
+        <item name="layout_constraintBottom_toTopOf">@id/issue_card_action_button_list</item>
+        <item name="android:layout_marginTop">@dimen/sc_spacing_large</item>
+        <!-- Use a smaller margin when there's no subtitle -->
+        <item name="layout_goneMarginTop">@dimen/sc_spacing_medium</item>
     </style>
 
     <style name="SafetyCenterIssueActionButtonList"
@@ -589,6 +608,7 @@
     <style name="SafetyCenterMoreIssuesWidgetTitle"
            parent="SafetyCenterBaseTextContainer">
         <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Body</item>
+        <item name="android:lineHeight">@dimen/sc_line_height_medium</item>
         <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
@@ -667,7 +687,10 @@
            parent="SafetyCenterBaseTextWidget">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Headline.Entry</item>
+        <item name="android:textAppearance">
+            @style/TextAppearance.SafetyCenter.Headline.Entry
+        </item>
+        <item name="android:lineHeight">@dimen/sc_line_height_large</item>
         <item name="android:ellipsize">end</item>
         <item name="android:maxLines">4</item>
     </style>
@@ -677,6 +700,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Body</item>
+        <item name="android:lineHeight">@dimen/sc_line_height_medium</item>
         <item name="android:ellipsize">end</item>
         <item name="android:maxLines">4</item>
     </style>
@@ -738,6 +762,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Body</item>
+        <item name="android:lineHeight">@dimen/sc_line_height_medium</item>
         <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:ellipsize">end</item>
         <item name="android:maxLines">4</item>
