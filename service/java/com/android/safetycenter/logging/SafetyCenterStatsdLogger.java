@@ -141,7 +141,8 @@ public final class SafetyCenterStatsdLogger {
             @Nullable @SafetySourceData.SeverityLevel Integer sourceSeverityLevel,
             long openIssuesCount,
             long dismissedIssuesCount,
-            long duplicateFilteredOutIssuesCount) {
+            long duplicateFilteredOutIssuesCount,
+            long lastUpdatedElapsedTimeMillis) {
         if (!SafetyCenterFlags.getAllowStatsdLogging()) {
             return;
         }
@@ -158,12 +159,11 @@ public final class SafetyCenterStatsdLogger {
                 // TODO(b/268309211): Record this event when sources provide data
                 SAFETY_SOURCE_STATE_COLLECTED__COLLECTION_TYPE__AUTOMATIC,
                 // TODO(b/268309213): Log updateType, refreshReason, and dataChanged when sources
-                // update their data.
+                //  update their data.
                 SAFETY_SOURCE_STATE_COLLECTED__UPDATE_TYPE__UPDATE_TYPE_UNKNOWN,
                 /* refreshReason= */ 0L,
                 /* dataChanged= */ false,
-                // TODO(b/268311158): Implement last updated time logging
-                /* lastUpdatedElapsedTimeMillis= */ 0L);
+                lastUpdatedElapsedTimeMillis);
     }
 
     /**

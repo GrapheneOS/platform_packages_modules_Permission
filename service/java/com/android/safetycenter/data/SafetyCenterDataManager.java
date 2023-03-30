@@ -21,6 +21,7 @@ import static android.os.Build.VERSION_CODES.TIRAMISU;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.content.Context;
+import android.os.SystemClock;
 import android.safetycenter.SafetyCenterData;
 import android.safetycenter.SafetyEvent;
 import android.safetycenter.SafetySourceData;
@@ -416,6 +417,16 @@ public final class SafetyCenterDataManager {
     public SafetySourceIssue.Action getSafetySourceIssueAction(
             SafetyCenterIssueActionId safetyCenterIssueActionId) {
         return mSafetySourceDataRepository.getSafetySourceIssueAction(safetyCenterIssueActionId);
+    }
+
+    /**
+     * Returns the elapsed realtime millis of when the data of the given {@link SafetySourceKey} was
+     * last updated, or {@code 0L} if no update has occurred.
+     *
+     * @see SystemClock#elapsedRealtime()
+     */
+    public long getSafetySourceLastUpdated(SafetySourceKey safetySourceKey) {
+        return mSafetySourceDataRepository.getSafetySourceLastUpdated(safetySourceKey);
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////
