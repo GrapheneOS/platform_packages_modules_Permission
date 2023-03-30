@@ -188,10 +188,9 @@ object PermissionMapping {
         }
 
         if (SdkLevel.isAtLeastU()) {
-            PLATFORM_PERMISSIONS[Manifest.permission.BODY_SENSORS_WRIST_TEMPERATURE] =
+            PLATFORM_PERMISSIONS[Utils.BODY_SENSORS_WRIST_TEMPERATURE] =
                     Manifest.permission_group.SENSORS
-            PLATFORM_PERMISSIONS[Manifest
-                    .permission.BODY_SENSORS_WRIST_TEMPERATURE_BACKGROUND] =
+            PLATFORM_PERMISSIONS[Utils.BODY_SENSORS_WRIST_TEMPERATURE_BACKGROUND] =
                     Manifest.permission_group.SENSORS
         }
 

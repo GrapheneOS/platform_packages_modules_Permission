@@ -55,9 +55,9 @@ public final class AdminRestrictedPermissionsUtils {
         // New U permissions - do not add unless running on U and above.
         if (SdkLevel.isAtLeastU()) {
             ADMIN_RESTRICTED_SENSORS_PERMISSIONS.add(
-                    Manifest.permission.BODY_SENSORS_WRIST_TEMPERATURE);
+                    Utils.BODY_SENSORS_WRIST_TEMPERATURE);
             ADMIN_RESTRICTED_SENSORS_PERMISSIONS.add(
-                    Manifest.permission.BODY_SENSORS_WRIST_TEMPERATURE_BACKGROUND);
+                    Utils.BODY_SENSORS_WRIST_TEMPERATURE_BACKGROUND);
         }
     }
 
