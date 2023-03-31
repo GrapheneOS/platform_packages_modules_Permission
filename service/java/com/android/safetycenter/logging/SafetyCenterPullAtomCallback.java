@@ -205,7 +205,7 @@ public final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback
             maxSeverityLevel = Math.max(maxSeverityLevel, sourceStatus.getSeverityLevel());
         }
 
-        SafetyCenterStatsdLogger.writeSafetySourceStateCollected(
+        SafetyCenterStatsdLogger.writeSafetySourceStateCollectedAutomatic(
                 safetySource.getId(),
                 isUserManaged,
                 maxSeverityLevel > Integer.MIN_VALUE ? maxSeverityLevel : null,
