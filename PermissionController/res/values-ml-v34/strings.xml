@@ -22,4 +22,8 @@
     <string name="privacy_subpage_data_header" msgid="5049237788244591274">"ഡാറ്റ"</string>
     <string name="health_connect_title" msgid="2132233890867430855">"Health Connect"</string>
     <string name="health_connect_summary" msgid="8156987676957707740">"ആപ്പ് അനുമതികളും ഡാറ്റ മാനേജ് ചെയ്യലും"</string>
+    <!-- no translation found for location_settings (8863940440881290182) -->
+    <skip />
+    <!-- no translation found for location_settings_subtitle (6846532794702613851) -->
+    <skip />
 </resources>
