@@ -34,8 +34,8 @@
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"ព័ត៌មាន​បន្ថែម"</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"អនុញ្ញាតទាំងអស់"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"អនុញ្ញាតទាំងអស់ជានិច្ច"</string>
-    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"ជ្រើសរើសរូបថត"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"ជ្រើសរើសរូបថត និងវីដេអូច្រើនទៀត"</string>
+    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"ជ្រើសរើស​រូបថត និង​វីដេអូ"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"ជ្រើសរើស​ច្រើន​ទៀត"</string>
     <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"កុំជ្រើសរើសច្រើនទៀត"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"មិនអីទេ មិនអនុញ្ញាត"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"ច្រានចោល"</string>
@@ -191,8 +191,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"អនុញ្ញាតឱ្យចូលប្រើ​មេឌៀតែប៉ុណ្ណោះ"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"អនុញ្ញាតគ្រប់ពេល"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"អនុញ្ញាត​ពេល​កំពុង​ប្រើប្រាស់​កម្មវិធីតែ​ប៉ុណ្ណោះ"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"អនុញ្ញាតរូបថតទាំងអស់"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"អនុញ្ញាតរូបថតដែលបានជ្រើសរើស"</string>
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"អនុញ្ញាតទាំងអស់ជានិច្ច"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"សួរគ្រប់ពេល"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"មិនអនុញ្ញាត"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"ទីតាំងជាក់លាក់"</string>
@@ -479,7 +478,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ចូលប្រើ &lt;b&gt;រូបថត វីដេអូ តន្ត្រី សំឡេង និងឯកសារផ្សេងទៀត&lt;/b&gt;នៅលើឧបករណ៍នេះទេ?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ចូលប្រើប្រាស់តន្ត្រី និងសំឡេងនៅលើឧបករណ៍នេះទេ?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ចូលប្រើប្រាស់រូបថត និងវីដេអូនៅលើឧបករណ៍នេះទេ?"</string>
-    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ចូលប្រើប្រាស់រូបថត និងវីដេអូច្រើនទៀតនៅលើឧបករណ៍នេះទេ?"</string>
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ចូលប្រើប្រាស់រូបថត និងវីដេអូច្រើនទៀតនៅលើឧបករណ៍នេះឬ?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ថតសំឡេង?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"កម្មវិធីនេះនឹងអាចថតសំឡេង នៅពេលអ្នកកំពុងប្រើប្រាស់កម្មវិធីតែប៉ុណ្ណោះ"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ថតសំឡេងឬ?"</string>
@@ -593,10 +592,8 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"កម្មវិធីនេះបានបញ្ជាក់ថា វាអាចចែករំលែកទិន្នន័យទីតាំងជាមួយភាគីទីបី"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"ការចែករំលែកទិន្នន័យ និងទីតាំង"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"កន្លែងដែលព័ត៌មាន​អំពីការចែករំលែក​ទិន្នន័យបានមកពី"</string>
-    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
-    <skip />
-    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"អ្នកអភិវឌ្ឍន៍​បានផ្ដល់ព័ត៌មានដល់ "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" អំពីរបៀបដែល​កម្មវិធីនេះ​ចែករំលែកទិន្នន័យ។ អ្នក​អភិវឌ្ឍន៍អាចនឹងធ្វើបច្ចុប្បន្នភាព​ព័ត៌មាននេះ​ទៅតាមពេលវេលា។"</string>
+    <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"កម្មវិធីនេះ​អាចនឹងចែករំលែក​ទិន្នន័យទីតាំងសម្រាប់៖"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ភាពខុសគ្នានៃ​ការចែករំលែកទិន្នន័យ"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"ការអនុវត្ត​ចំពោះ​ទិន្នន័យ​អាចខុសគ្នាទៅតាម​កំណែកម្មវិធី ការប្រើប្រាស់ តំបន់ និង​អាយុរបស់អ្នក។ "<annotation id="link">"ច្រើនទៀតអំពី​ការចែករំលែកទិន្នន័យ"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"ទិន្នន័យ​ទីតាំង​របស់អ្នក"</string>
@@ -611,6 +608,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"សុវត្ថិភាព​ទិន្នន័យ"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"ទិន្នន័យទីតាំងអាចនឹង​ត្រូវបានចែករំលែក"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"កម្មវិធីនេះ​បានបញ្ជាក់ថា វាអាចចែករំលែក​ទិន្នន័យទីតាំងរបស់អ្នក​ជាមួយភាគីទីបី"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"មិនអាចបើកតំណនេះបានទេ"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"សាកល្បងវាយបញ្ចូល <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> ទៅក្នុងវិនដូកម្មវិធីរុករកតាមអ៊ីនធឺណិតរបស់អ្នក ដើម្បីមើលខ្លឹមសារនេះ"</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"បច្ចុប្បន្នភាពការចែករំលែកទិន្នន័យសម្រាប់ទីតាំង"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"ពិនិត្យមើលកម្មវិធីដែលបានផ្លាស់ប្ដូររបៀបដែលកម្មវិធីទាំងនោះអាចចែករំលែកទិន្នន័យទីតាំងរបស់អ្នក"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"កម្មវិធីទាំងនេះ​បានផ្លាស់ប្ដូររបៀបដែលវា​អាចចែករំលែកទិន្នន័យ​ទីតាំងរបស់អ្នក។ កម្មវិធីទាំងនេះ​ប្រហែលជាមិនបានចែករំលែកទិន្នន័យទីតាំងពីមុនទេ ឬឥឡូវនេះប្រហែលជា​ចែករំលែកទិន្នន័យទីតាំងនេះ​សម្រាប់គោលបំណង​ផ្សាយពាណិជ្ជកម្ម ឬធ្វើទីផ្សារ។"</string>

@@ -34,8 +34,8 @@
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Ďalšie info"</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Povoliť všetko"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Vždy povoliť všetko"</string>
-    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"Vybrať fotky"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"Vybrať ďalšie fotky a videá"</string>
+    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Vybrať fotky a videá"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Vybrať ďalšie"</string>
     <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Nevybrať ďalšie"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Aj tak nepovoliť"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Zavrieť"</string>
@@ -191,8 +191,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Povoliť prístup iba k médiám"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Povoliť vždy"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Povoliť iba pri používaní aplikácie"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"Povoliť všetky fotky"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"Povoliť vybrané fotky"</string>
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Vždy povoliť všetko"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Vždy sa opýtať"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Nepovoliť"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Presná poloha"</string>
@@ -479,7 +478,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k &lt;b&gt;fotkám, videám, hudbe, zvuku a ďalším súborom&lt;/b&gt; v tomto zariadení?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k hudbe a zvuku v tomto zariadení?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k fotkám a videám v tomto zariadení?"</string>
-    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k ďalším fotkám a videám v tomto zariadení?"</string>
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k ďalším fotkám a videám v tomto zariadení?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; nahrávať zvuk?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Táto aplikácia bude môcť nahrávať zvuk iba vtedy, keď ju budete používať"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; nahrávať zvuk?"</string>
@@ -593,10 +592,8 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"V tejto aplikácii bolo uvedené, že môže zdieľať údaje o polohe s tretími stranami"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Zdieľanie údajov a poloha"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Odkiaľ pochádzajú informácie o zdieľaní údajov"</string>
-    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
-    <skip />
-    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Vývojár poskytol v sekcii "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" informácie o tom, ako táto aplikácia zdieľa údaje. Priebežne môže dané informácie aktualizovať."</string>
+    <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Aplikácia môže zdieľať údaje o polohe na účely:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Zdieľanie údajov sa líši"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Nakladanie s údajmi sa môže líšiť v závislosti od verzie a používania aplikácie, ako aj regiónu a veku používateľa. "<annotation id="link">"Ďalšie informácie o zdieľaní údajov"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Údaje o vašej polohe"</string>
@@ -611,6 +608,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Zabezpečenie údajov"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Môžu sa zdieľať údaje o polohe"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"V tejto aplikácii je uvedené, že môže zdieľať údaje o polohe s tretími stranami"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Tento odkaz sa nedá otvoriť"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"Ak si chcete zobraziť tento obsah, skúste do okna prehliadača zadať <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g>"</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Aktualizácie zdieľania údajov o polohe"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Skontrolujte aplikácie, ktoré zmenili spôsob zdieľania údajov o vašej polohe"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Tieto aplikácie zmenili spôsob zdieľania údajov o vašej polohe. Možno ich v minulosti nezdieľali alebo ich teraz zdieľajú na účely reklamy a marketingu."</string>

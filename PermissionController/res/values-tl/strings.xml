@@ -34,8 +34,8 @@
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Higit pang info"</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Pahintulutan lahat"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Palaging pahintulutan lahat"</string>
-    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"Pumili ng mga larawan"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"Pumili pa ng mga larawan at video"</string>
+    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Pumili ng mga larawan at video"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Pumili pa"</string>
     <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Huwag nang pumili pa"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Huwag pa ring payagan"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"I-dismiss"</string>
@@ -191,8 +191,8 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Payagan lang ang pag-access ng media"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Payagan sa lahat ng oras"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Payagan lang habang ginagamit ang app"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"Payagan ang lahat ng larawan"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"Payagan ang mga piniling larawan"</string>
+    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
+    <skip />
     <string name="app_permission_button_ask" msgid="3342950658789427">"Magtanong palagi"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Huwag payagan"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Eksaktong lokasyon"</string>
@@ -479,7 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang &lt;b&gt;mga larawan, video, musika, audio, at iba pang file&lt;/b&gt; sa device?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang musika at audio sa device na ito?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang mga larawan at video sa device na ito?"</string>
-    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"Bigyan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ng access sa higit pang larawan at video sa device na ito?"</string>
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang higit pang larawan at video sa device na ito?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na mag-record ng audio?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Makakapag-record lang ng audio ang app habang ginagamit mo ang app"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na mag-record ng audio?"</string>
@@ -593,10 +593,8 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Isinaad ng app na ito na puwede nitong ibahagi ang data ng lokasyon sa mga third party"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Pagbabahagi ng data at lokasyon"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Saan nanggagaling ang impormasyon sa pagbabahagi ng data"</string>
-    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
-    <skip />
-    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Nagbigay ang developer ng impormasyon sa "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" tungkol sa kung paano nagbabahagi ng data ang app na ito. Posibleng i-update ng developer ang impormasyong ito sa paglipas ng panahon."</string>
+    <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Puwedeng magbahagi ng data ng lokasyon para sa:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Nag-iiba ang pagbabahagi ng data"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Posibleng mag-iba ang mga kagawian sa data batay sa iyong bersyon ng app, paggamit, rehiyon, at edad. "<annotation id="link">"Higit pa tungkol sa pagbabahagi ng data"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Iyong data ng lokasyon"</string>
@@ -611,6 +609,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Kaligtasan ng data"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Puwedeng ibahagi ang data ng lokasyon"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Isinaad ng app na ito na puwede nitong ibahagi ang iyong data ng lokasyon sa mga third party"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Hindi mabuksan ang link na ito"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"Subukang i-type ang <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> sa window ng iyong browser para tingnan ang content na ito"</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Mga update sa pagbabahagi ng data para sa lokasyon"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Suriin ang mga app na nagbago ng paraan kung paano nila posibleng ibahagi ang iyong data ng lokasyon"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Binago ng mga app na ito ang paraan kung paano posibleng ibahagi ng mga ito ang iyong data ng lokasyon. Posibleng hindi pa nila ito ibinahagi noon, o ibinabahagi nila ito ngayon para sa mga layunin sa pag-advertise o marketing."</string>

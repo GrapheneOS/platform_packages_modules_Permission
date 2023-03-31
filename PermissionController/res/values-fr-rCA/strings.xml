@@ -32,12 +32,10 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Garder « Pendant l\'utilisation de l\'appli »"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Garder « Uniquement cette fois »"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"En savoir plus"</string>
-    <!-- no translation found for grant_dialog_button_allow_all (5939066403732409516) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_always_allow_all (1719900027660252167) -->
-    <skip />
-    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"Sélectionner des photos"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"Sélectionner plus de photos et de vidéos"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Tout autoriser"</string>
+    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Toujours tout autoriser"</string>
+    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Sélectionner des photos et des vidéos"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Sélectionner d\'autres photos"</string>
     <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Ne pas sélectionner plus de photos"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Ne pas autoriser quand même"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Fermer"</string>
@@ -193,8 +191,8 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Autoriser à accéder aux éléments multimédias seulement"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Toujours autoriser"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Autoriser uniquement lorsque l\'appli est en cours d\'utilisation"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"Autoriser toutes les photos"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"Autoriser les photos sélectionnées"</string>
+    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
+    <skip />
     <string name="app_permission_button_ask" msgid="3342950658789427">"Toujours demander"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Ne pas autoriser"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Position exacte"</string>
@@ -481,7 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder &lt;b&gt;aux photos, aux vidéos, et aux fichiers musicaux, audio et autres&lt;/b&gt; sur cet appareil?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder aux fichiers musicaux et audio sur cet appareil?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder aux photos et aux vidéos sur cet appareil?"</string>
-    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder aux photos et aux vidéos sur cet appareil?"</string>
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder à plus de photos et de vidéos sur cet appareil?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à enregistrer l\'audio?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"L\'application pourra uniquement enregistrer de l\'audio lorsque vous l\'utilisez"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Autoriser « <xliff:g id="APP_NAME">%1$s</xliff:g> » à enregistrer de l\'audio?"</string>
@@ -595,10 +593,8 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Cette application indique qu\'elle peut partager des données de localisation avec des tiers"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Partage des données et localisation"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Provenance des renseignements sur le partage des données"</string>
-    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
-    <skip />
-    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Le développeur a fourni des renseignements à "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" sur la façon dont cette application partage les données. Le développeur peut mettre à jour ces renseignements au fil du temps."</string>
+    <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"L\'appli peut partager des données de loc. pour :"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Les pratiques de partage de données peuvent varier"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Les pratiques relatives aux données peuvent varier en fonction de la version de votre application, de son utilisation, de votre région et de votre âge. "<annotation id="link">"En savoir plus sur le partage des données"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Vos données de localisation"</string>
@@ -613,6 +609,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Sécurité des données"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Les données de localisation peuvent être partagées"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Cette application indique qu\'elle peut partager vos données de localisation avec des tiers"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Impossible d\'ouvrir ce lien"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"Essayez de taper <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> dans la fenêtre de votre navigateur pour afficher ce contenu"</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Mises à jour des pratiques de partage des données pour la localisation"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Passez en revue les applications qui ont changé la façon dont elles peuvent partager vos données de localisation"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Ces applications ont modifié la façon dont elles peuvent partager vos données de localisation. Elles peuvent ne pas les avoir partagées auparavant, ou peuvent maintenant les partager à des fins d\'annonces ou de marketing."</string>
