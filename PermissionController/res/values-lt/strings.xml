@@ -191,8 +191,8 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Leisti pasiekti tik mediją"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Leisti visą laiką"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Leisti tik naudojant programą"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"Leisti visas nuotraukas"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"Leisti pasirinktas nuotraukas"</string>
+    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
+    <skip />
     <string name="app_permission_button_ask" msgid="3342950658789427">"Klausti kaskart"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Neleisti"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Tiksli vietovė"</string>

@@ -191,8 +191,8 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"אישור גישה למדיה בלבד"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"כן, כל הזמן"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"רק כשהאפליקציה בשימוש"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"גישה לכל התמונות"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"גישה לתמונות נבחרות"</string>
+    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
+    <skip />
     <string name="app_permission_button_ask" msgid="3342950658789427">"יש לשאול בכל פעם"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"אין אישור"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"מיקום מדויק"</string>
@@ -479,8 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"‏לתת לאפליקציה ‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‎‏ הרשאת גישה ‎&lt;b&gt;‎‏לתמונות, לסרטונים, למוזיקה, לאודיו ולקבצים אחרים‎&lt;/b&gt;‎‏ במכשיר?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"‏לתת לאפליקציה ‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‎‏ הרשאת גישה למוזיקה ולקובצי אודיו במכשיר?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"‏לתת לאפליקציה ‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‎‏ הרשאת גישה לתמונות ולסרטונים במכשיר?"</string>
-    <!-- no translation found for permgrouprequest_more_photos (128933814654231321) -->
-    <skip />
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"‏לתת לאפליקציה ‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‎‏ הרשאת גישה לתמונות ולסרטונים נוספים במכשיר?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"‏לאשר לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; להקליט אודיו?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"האפליקציה תוכל להקליט אודיו רק כאשר היא בשימוש"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאה להקליט אודיו?"</string>

@@ -191,8 +191,8 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"ಮಾಧ್ಯಮಕ್ಕೆ ಮಾತ್ರ ಪ್ರವೇಶಿಸಲು ಅನುಮತಿಸಿ"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"ಎಲ್ಲಾ ಸಮಯದಲ್ಲೂ ಅನುಮತಿಸಿ"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"ಆ್ಯಪ್ ಬಳಸುವಾಗ ಮಾತ್ರ ಅನುಮತಿಸಿ"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"ಎಲ್ಲಾ ಫೋಟೋಗಳನ್ನು ಅನುಮತಿಸಿ"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"ಆಯ್ಕೆಮಾಡಿದ ಫೋಟೋಗಳನ್ನು ಅನುಮತಿಸಿ"</string>
+    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
+    <skip />
     <string name="app_permission_button_ask" msgid="3342950658789427">"ಪ್ರತಿ ಬಾರಿ ಕೇಳಿ"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"ಅನುಮತಿಸಬೇಡಿ"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"ನಿಖರವಾದ ಸ್ಥಾನ"</string>
@@ -293,8 +293,8 @@
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"ಮತ್ತಷ್ಟು ಆಯ್ಕೆಗಳನ್ನು ವೀಕ್ಷಿಸಿ"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"ಪ್ರವೇಶವನ್ನು ತೆಗೆದುಹಾಕಲಾಗಿದೆ"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"ಪೂರ್ಣ ಸಾಧನ ಪ್ರವೇಶ ಹೊಂದಿರುವ ಆ್ಯಪ್ ಅನ್ನು ಪರಿಶೀಲಿಸಿ"</string>
-    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> ಆ್ಯಪ್ ಸ್ಕ್ರೀನ್ ಅನ್ನು ವೀಕ್ಷಿಸಬಹುದು ಮತ್ತು ಸಾಧನದಲ್ಲಿ ಕ್ರಿಯೆಗಳನ್ನು ಮಾಡಬಹುದು. ಪ್ರವೇಶಿಸುವಿಕೆ ಆ್ಯಪ್‌ಗಳು ಸರಿಯಾಗಿ ಕಾರ್ಯನಿರ್ವಹಿಸಲು ಈ ರೀತಿಯ ಪ್ರವೇಶದ ಅಗತ್ಯವಿದೆ."</string>
-    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"ಈ ಆ್ಯಪ್ ಸ್ಕ್ರೀನ್ ಅನ್ನು ವೀಕ್ಷಿಸಬಹುದು ಮತ್ತು ಸಾಧನದಲ್ಲಿ ಕ್ರಿಯೆಗಳನ್ನು ಮಾಡಬಹುದು. ಪ್ರವೇಶಿಸುವಿಕೆ ಆ್ಯಪ್‌ಗಳು ಸರಿಯಾಗಿ ಕಾರ್ಯನಿರ್ವಹಿಸಲು ಈ ರೀತಿಯ ಪ್ರವೇಶದ ಅಗತ್ಯವಿದೆ, ಆದರೆ ಆ್ಯಪ್ ಅನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತು ನೀವು ಅದನ್ನು ನಂಬುತ್ತೀರಿ ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ."</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> ಆ್ಯಪ್ ಸ್ಕ್ರೀನ್ ಅನ್ನು ವೀಕ್ಷಿಸಬಹುದು ಮತ್ತು ಸಾಧನದಲ್ಲಿ ಕ್ರಿಯೆಗಳನ್ನು ಮಾಡಬಹುದು. ಆ್ಯಕ್ಸೆಸಿಬಿಲಿಟಿ ಆ್ಯಪ್‌ಗಳು ಸರಿಯಾಗಿ ಕಾರ್ಯನಿರ್ವಹಿಸಲು ಈ ರೀತಿಯ ಪ್ರವೇಶದ ಅಗತ್ಯವಿದೆ."</string>
+    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"ಈ ಆ್ಯಪ್ ಸ್ಕ್ರೀನ್ ಅನ್ನು ವೀಕ್ಷಿಸಬಹುದು ಮತ್ತು ಸಾಧನದಲ್ಲಿ ಕ್ರಿಯೆಗಳನ್ನು ಮಾಡಬಹುದು. ಆ್ಯಕ್ಸೆಸಿಬಿಲಿಟಿ ಆ್ಯಪ್‌ಗಳು ಸರಿಯಾಗಿ ಕಾರ್ಯನಿರ್ವಹಿಸಲು ಈ ರೀತಿಯ ಪ್ರವೇಶದ ಅಗತ್ಯವಿದೆ, ಆದರೆ ಆ್ಯಪ್ ಅನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತು ನೀವು ಅದನ್ನು ನಂಬುತ್ತೀರಿ ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ."</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"ಪ್ರವೇಶವನ್ನು ತೆಗೆದುಹಾಕಿ"</string>
     <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"ಪೂರ್ಣ ಪ್ರವೇಶದ ಮೂಲಕ ಆ್ಯಪ್‌ಗಳನ್ನು ವೀಕ್ಷಿಸಿ"</string>
     <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"ಪ್ರವೇಶವನ್ನು ತೆಗೆದುಹಾಕಲಾಗಿದೆ"</string>
@@ -479,8 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"ಈ ಸಾಧನದಲ್ಲಿರುವ &lt;b&gt;ಫೋಟೋಗಳು, ವೀಡಿಯೊಗಳು, ಸಂಗೀತ, ಆಡಿಯೋ, ಇತರ ಫೈಲ್‌ಗಳನ್ನು&lt;/b&gt; ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೆ?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"ಈ ಸಾಧನದಲ್ಲಿರುವ ಸಂಗೀತ ಮತ್ತು ಆಡಿಯೊವನ್ನು ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೆ?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"ಈ ಸಾಧನದಲ್ಲಿರುವ ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳನ್ನು ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೆ?"</string>
-    <!-- no translation found for permgrouprequest_more_photos (128933814654231321) -->
-    <skip />
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"ಈ ಸಾಧನದಲ್ಲಿರುವ ಇನ್ನಷ್ಟು ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳನ್ನು ಆ್ಯಕ್ಸೆಸ್ ಮಾಡಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"ಆಡಿಯೋ ರೆಕಾರ್ಡ್‌ ಮಾಡಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"ನೀವು ಆ್ಯಪ್ ಬಳಸುತ್ತಿರುವಾಗ ಮಾತ್ರ ಆ್ಯಪ್‌ಗೆ ಆಡಿಯೋ ರೆಕಾರ್ಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗುತ್ತದೆ"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"ಆಡಿಯೋ ರೆಕಾರ್ಡ್‌ ಮಾಡಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಆ್ಯಪ್‌ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>

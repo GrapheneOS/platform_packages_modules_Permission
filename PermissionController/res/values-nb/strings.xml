@@ -191,8 +191,8 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Har bare tilgang til medier"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Tillat hele tiden"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Bare tillat når appen brukes"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"Tillat alle bilder"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"Tillat valgte bilder"</string>
+    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
+    <skip />
     <string name="app_permission_button_ask" msgid="3342950658789427">"Spør hver gang"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Ikke tillat"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Nøyaktig posisjon"</string>
@@ -479,8 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; bruke &lt;b&gt;bilder, videoer, musikk, lyd og andre filer&lt;/b&gt; på denne enheten?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; bruke musikk og lyd på denne enheten?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; bruke bilder og videoer på denne enheten?"</string>
-    <!-- no translation found for permgrouprequest_more_photos (128933814654231321) -->
-    <skip />
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; bruke flere bilder og videoer på denne enheten?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ta opp lyd?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Appen kan bare ta opp lyd mens du bruker den."</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ta opp lyd?"</string>

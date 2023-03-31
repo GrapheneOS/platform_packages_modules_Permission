@@ -191,8 +191,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"మీడియాకు మాత్రమే యాక్సెస్‌ను అనుమతించండి"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"ఎల్లప్పుడూ అనుమతించండి"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"యాప్‌ను ఉపయోగిస్తున్నప్పుడు మాత్రమే అనుమతించండి"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"ఫోటోలన్నింటినీ అనుమతించండి"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"ఎంచుకోబడిన ఫోటోలను అనుమతించండి"</string>
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"అన్నింటినీ ఎల్లవేళలా అనుమతించండి"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"ప్రతిసారి అడగాలి"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"అనుమతించవద్దు"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"ఖచ్చితమైన లొకేషన్"</string>
@@ -479,8 +478,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"ఈపరికరంలో &lt;b&gt;ఫోటోలు, వీడియోలు, మ్యూజిక్, ఆడియో, ఇతర ఫైళ్ల&lt;/b&gt; యాక్సెస్‌కు &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"ఈ పరికరంలో మ్యూజిక్‌ను, ఆడియోను యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‌ను అనుమతించాలా?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"ఈ పరికరంలో ఫోటోలను, వీడియోలను యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‌ను అనుమతించాలా?"</string>
-    <!-- no translation found for permgrouprequest_more_photos (128933814654231321) -->
-    <skip />
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"ఈ పరికరంలోని మరిన్ని ఫోటోలను, వీడియోలను యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; యాప్‌ను అనుమతించాలా?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"ఆడియోను రికార్డ్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"మీరు యాప్‌ను ఉపయోగిస్తున్నప్పుడు మాత్రమే ఈ యాప్, ఆడియోను రికార్డ్ చేయగలుగుతుంది"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"ఆడియోను రికార్డ్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>

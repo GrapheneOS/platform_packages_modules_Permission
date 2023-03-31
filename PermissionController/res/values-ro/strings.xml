@@ -191,8 +191,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Permite accesul numai la fișierele media"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Permite întotdeauna"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Permite numai când folosești aplicația"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"Permite toate fotografiile"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"Permite fotografiile selectate"</string>
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Permite-le întotdeauna pe toate"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Întreabă de fiecare dată"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Nu permite"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Locația exactă"</string>
@@ -479,8 +478,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Permiți accesul &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; la &lt;b&gt;fotografii, clipuri, conținut audio, muzică și alte fișiere&lt;/b&gt; de pe dispozitiv?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Permiți accesul &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; la muzică și fișiere audio de pe acest dispozitiv?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să acceseze fotografiile și videoclipurile de pe dispozitiv?"</string>
-    <!-- no translation found for permgrouprequest_more_photos (128933814654231321) -->
-    <skip />
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să acceseze mai multe fotografii și videoclipuri de pe dispozitiv?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să înregistreze audio?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Aplicația va putea să înregistreze conținut audio doar când o folosești"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să înregistreze audio?"</string>

@@ -191,8 +191,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Solo permitir acceso al contenido multimedia"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Permitir todo el tiempo"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Permitir solo con la app en uso"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"Permitir todas las fotos"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"Permitir las fotos seleccionadas"</string>
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Permitir todo siempre"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Preguntar siempre"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"No permitir"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Ubicación precisa"</string>
@@ -479,8 +478,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a &lt;b&gt;fotos, videos, música, audio y otros archivos&lt;/b&gt; del dispositivo?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a la música y los archivos de audio de este dispositivo?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a las fotos y los videos de este dispositivo?"</string>
-    <!-- no translation found for permgrouprequest_more_photos (128933814654231321) -->
-    <skip />
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"¿Quieres permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a más fotos y videos del dispositivo?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; grabe audio?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"La app solo podrá grabar audio cuando esté en uso"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; grabe audio?"</string>

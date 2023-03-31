@@ -191,8 +191,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"सिर्फ़ मीडिया फ़ाइलें ऐक्सेस करने की अनुमति दें"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"हमेशा के लिए अनुमति दें"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"सिर्फ़ ऐप्लिकेशन इस्तेमाल करते समय अनुमति दें"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"सभी फ़ोटो को ऐक्सेस करने की अनुमति दें"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"चुनी गईं फ़ोटो को ऐक्सेस करने की अनुमति दें"</string>
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"हमेशा के लिए सभी को ऐक्सेस की अनुमति दें"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"हर बार पूछें"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"अनुमति न दें"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"सटीक जगह"</string>
