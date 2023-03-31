@@ -180,7 +180,7 @@ class HealthConnectPrivacySourceTest {
     companion object {
         // Real context, used in order to avoid mocking resources.
         const val HEALTH_CONNECT_TITLE: String = "Health Connect"
-        const val HEALTH_CONNECT_SUMMARY: String = "App permissions and data management"
+        const val HEALTH_CONNECT_SUMMARY: String = "Manage app access to health data"
         const val REFRESH_ID: String = "refresh_id"
         const val HEALTH_CONNECT_INTENT_ACTION =
             "android.health.connect.action.HEALTH_HOME_SETTINGS"

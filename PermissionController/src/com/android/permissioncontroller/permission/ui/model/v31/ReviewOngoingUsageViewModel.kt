@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 @file:Suppress("DEPRECATION")
-package com.android.permissioncontroller.permission.ui.model
+package com.android.permissioncontroller.permission.ui.model.v31
 
 import android.Manifest
 import android.Manifest.permission_group.CAMERA
