@@ -18,6 +18,11 @@ package com.android.safetycenter.data;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
+import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__DATA_PROVIDED;
+import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__NO_DATA_PROVIDED;
+import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__REFRESH_TIMEOUT;
+import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__SOURCE_CLEARED;
+import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__SOURCE_ERROR;
 import static com.android.safetycenter.logging.SafetyCenterStatsdLogger.toSystemEventResult;
 
 import android.annotation.Nullable;
@@ -50,6 +55,7 @@ import com.android.safetycenter.SafetySources;
 import com.android.safetycenter.UserProfileGroup;
 import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
+import com.android.safetycenter.logging.SafetyCenterStatsdLogger;
 
 import java.io.PrintWriter;
 import java.util.List;
@@ -73,6 +79,7 @@ final class SafetySourceDataRepository {
     private final ArrayMap<SafetySourceKey, SafetySourceData> mSafetySourceData = new ArrayMap<>();
     private final ArraySet<SafetySourceKey> mSafetySourceErrors = new ArraySet<>();
     private final ArrayMap<SafetySourceKey, Long> mSafetySourceLastUpdated = new ArrayMap<>();
+    private final ArrayMap<SafetySourceKey, Integer> mSourceStates = new ArrayMap<>();
 
     private final Context mContext;
     private final SafetyCenterConfigReader mSafetyCenterConfigReader;
@@ -141,11 +148,13 @@ final class SafetySourceDataRepository {
         ArraySet<String> issueIds = new ArraySet<>();
         if (fixedSafetySourceData == null) {
             mSafetySourceData.remove(key);
+            mSourceStates.put(key, SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__SOURCE_CLEARED);
         } else {
             mSafetySourceData.put(key, fixedSafetySourceData);
             for (int i = 0; i < fixedSafetySourceData.getIssues().size(); i++) {
                 issueIds.add(fixedSafetySourceData.getIssues().get(i).getId());
             }
+            mSourceStates.put(key, SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__DATA_PROVIDED);
         }
 
         mSafetyCenterIssueDismissalRepository.updateIssuesForSource(
@@ -195,8 +204,7 @@ final class SafetySourceDataRepository {
 
     /**
      * Reports the given {@link SafetySourceErrorDetails} for the given {@code safetySourceId} and
-     * {@code userId}, and returns whether there was a change to the underlying {@link
-     * SafetyCenterData}.
+     * {@code userId}, and returns {@code true} if this changed the repository's data.
      *
      * <p>Throws if the request is invalid based on the {@link SafetyCenterConfig}: the given {@code
      * safetySourceId}, {@code packageName} and/or {@code userId} are unexpected.
@@ -220,16 +228,26 @@ final class SafetySourceDataRepository {
             return safetyEventChangedSafetyCenterData;
         }
 
-        SafetySourceKey key = SafetySourceKey.of(safetySourceId, userId);
-        boolean safetySourceErrorChangedSafetyCenterData = setSafetySourceError(key);
+        SafetySourceKey sourceKey = SafetySourceKey.of(safetySourceId, userId);
+        mSourceStates.put(sourceKey, SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__SOURCE_ERROR);
+        boolean safetySourceErrorChangedSafetyCenterData = setSafetySourceError(sourceKey);
         return safetyEventChangedSafetyCenterData || safetySourceErrorChangedSafetyCenterData;
     }
 
     /**
-     * Marks the given {@link SafetySourceKey} as having errored-out and returns whether there was a
-     * change to the underlying {@link SafetyCenterData}.
+     * Marks the given {@link SafetySourceKey} as being in an error state due to a refresh timeout
+     * and returns {@code true} if this changed the repository's data.
      */
-    boolean setSafetySourceError(SafetySourceKey safetySourceKey) {
+    boolean markSafetySourceRefreshTimedOut(SafetySourceKey sourceKey) {
+        mSourceStates.put(sourceKey, SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__REFRESH_TIMEOUT);
+        return setSafetySourceError(sourceKey);
+    }
+
+    /**
+     * Marks the given {@link SafetySourceKey} as being in an error state and returns {@code true}
+     * if this changed the repository's data.
+     */
+    private boolean setSafetySourceError(SafetySourceKey safetySourceKey) {
         setLastUpdatedNow(safetySourceKey);
         boolean removingSafetySourceDataChangedSafetyCenterData =
                 mSafetySourceData.remove(safetySourceKey) != null;
@@ -323,11 +341,26 @@ final class SafetySourceDataRepository {
         mSafetySourceLastUpdated.put(sourceKey, SystemClock.elapsedRealtime());
     }
 
+    /**
+     * Returns the current {@link SafetyCenterStatsdLogger.SourceState} of the given {@link
+     * SafetySourceKey}.
+     */
+    @SafetyCenterStatsdLogger.SourceState
+    int getSourceState(SafetySourceKey sourceKey) {
+        Integer sourceState = mSourceStates.get(sourceKey);
+        if (sourceState != null) {
+            return sourceState;
+        } else {
+            return SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__NO_DATA_PROVIDED;
+        }
+    }
+
     /** Clears all data for all users. */
     void clear() {
         mSafetySourceData.clear();
         mSafetySourceErrors.clear();
         mSafetySourceLastUpdated.clear();
+        mSourceStates.clear();
     }
 
     /** Clears all data for the given user. */
@@ -351,6 +384,12 @@ final class SafetySourceDataRepository {
                 mSafetySourceLastUpdated.removeAt(i);
             }
         }
+        for (int i = mSourceStates.size() - 1; i >= 0; i--) {
+            SafetySourceKey sourceKey = mSourceStates.keyAt(i);
+            if (sourceKey.getUserId() == userId) {
+                mSourceStates.removeAt(i);
+            }
+        }
     }
 
     /** Dumps state for debugging purposes. */
@@ -363,6 +402,7 @@ final class SafetySourceDataRepository {
             fout.println("\t[" + i + "] " + key);
         }
         dumpArrayMap(fout, mSafetySourceLastUpdated, "LAST UPDATED");
+        dumpArrayMap(fout, mSourceStates, "SOURCE STATES");
         fout.println();
     }
 

@@ -174,16 +174,14 @@ public final class SafetyCenterDataManager {
     }
 
     /**
-     * Marks the given {@link SafetySourceKey} as having errored-out and returns {@code true} if
-     * this caused any changes which would alter {@link SafetyCenterData}.
+     * Marks the given {@link SafetySourceKey} as being in an error state due to a refresh timeout.
      */
-    public boolean setSafetySourceError(SafetySourceKey safetySourceKey) {
-        boolean dataUpdated = mSafetySourceDataRepository.setSafetySourceError(safetySourceKey);
+    public void markSafetySourceRefreshTimedOut(SafetySourceKey safetySourceKey) {
+        boolean dataUpdated =
+                mSafetySourceDataRepository.markSafetySourceRefreshTimedOut(safetySourceKey);
         if (dataUpdated) {
             mSafetyCenterIssueRepository.updateIssues(safetySourceKey.getUserId());
         }
-
-        return dataUpdated;
     }
 
     /**
@@ -427,6 +425,15 @@ public final class SafetyCenterDataManager {
      */
     public long getSafetySourceLastUpdated(SafetySourceKey safetySourceKey) {
         return mSafetySourceDataRepository.getSafetySourceLastUpdated(safetySourceKey);
+    }
+
+    /**
+     * Returns the current {@link SafetyCenterStatsdLogger.SourceState} of the given {@link
+     * SafetySourceKey}.
+     */
+    @SafetyCenterStatsdLogger.SourceState
+    public int getSourceState(SafetySourceKey safetySourceKey) {
+        return mSafetySourceDataRepository.getSourceState(safetySourceKey);
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////

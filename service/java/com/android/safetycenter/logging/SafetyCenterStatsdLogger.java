@@ -55,6 +55,12 @@ import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLL
 import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SEVERITY_LEVEL__SAFETY_SEVERITY_OK;
 import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SEVERITY_LEVEL__SAFETY_SEVERITY_RECOMMENDATION;
 import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SEVERITY_LEVEL__SAFETY_SEVERITY_UNSPECIFIED;
+import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__DATA_PROVIDED;
+import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__NO_DATA_PROVIDED;
+import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__REFRESH_ERROR;
+import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__REFRESH_TIMEOUT;
+import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__SOURCE_CLEARED;
+import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__SOURCE_ERROR;
 import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__SOURCE_STATE_UNKNOWN;
 import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__UPDATE_TYPE__UPDATE_TYPE_UNKNOWN;
 import static com.android.permission.PermissionStatsLog.SAFETY_STATE;
@@ -115,6 +121,25 @@ public final class SafetyCenterStatsdLogger {
     public @interface SystemEventResult {}
 
     /**
+     * The different results for a system event reported by Safety Center.
+     *
+     * @hide
+     */
+    @IntDef(
+            prefix = {"SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__"},
+            value = {
+                SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__SOURCE_STATE_UNKNOWN,
+                SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__DATA_PROVIDED,
+                SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__NO_DATA_PROVIDED,
+                SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__REFRESH_TIMEOUT,
+                SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__REFRESH_ERROR,
+                SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__SOURCE_ERROR,
+                SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__SOURCE_CLEARED
+            })
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface SourceState {}
+
+    /**
      * Creates a {@link PermissionStatsLog#SAFETY_STATE} {@link StatsEvent} with the given
      * parameters.
      */
@@ -142,6 +167,7 @@ public final class SafetyCenterStatsdLogger {
             long openIssuesCount,
             long dismissedIssuesCount,
             long duplicateFilteredOutIssuesCount,
+            @SourceState int sourceState,
             long lastUpdatedElapsedTimeMillis) {
         if (!SafetyCenterFlags.getAllowStatsdLogging()) {
             return;
@@ -154,8 +180,7 @@ public final class SafetyCenterStatsdLogger {
                 openIssuesCount,
                 dismissedIssuesCount,
                 duplicateFilteredOutIssuesCount,
-                // TODO(b/268309177): Implement source state logging
-                SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__SOURCE_STATE_UNKNOWN,
+                sourceState,
                 // TODO(b/268309211): Record this event when sources provide data
                 SAFETY_SOURCE_STATE_COLLECTED__COLLECTION_TYPE__AUTOMATIC,
                 // TODO(b/268309213): Log updateType, refreshReason, and dataChanged when sources

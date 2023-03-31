@@ -212,6 +212,7 @@ public final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback
                 openIssuesCount,
                 dismissedIssuesCount,
                 getDuplicateFilteredOutIssueCountLocked(userId, sourceKey.getSourceId()),
+                mDataManager.getSourceState(sourceKey),
                 mDataManager.getSafetySourceLastUpdated(sourceKey));
     }
 
