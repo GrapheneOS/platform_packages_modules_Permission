@@ -325,7 +325,7 @@
     <string name="car_permission_selected" msgid="180837028920791596">"Izbrano"</string>
     <string name="settings" msgid="5409109923158713323">"Nastavitve"</string>
     <string name="accessibility_service_dialog_title_single" msgid="7956432823014102366">"Storitev <xliff:g id="SERVICE_NAME">%s</xliff:g> ima poln dostop do naprave"</string>
-    <string name="accessibility_service_dialog_title_multiple" msgid="5527879210683548175">"Poln dostop do naprave ima toliko aplikacij za ljudi s posebnimi potrebami: <xliff:g id="NUM_SERVICES">%s</xliff:g>"</string>
+    <string name="accessibility_service_dialog_title_multiple" msgid="5527879210683548175">"Poln dostop do naprave ima toliko aplikacij za dostopnost: <xliff:g id="NUM_SERVICES">%s</xliff:g>"</string>
     <string name="accessibility_service_dialog_bottom_text_single" msgid="1128666197822205958">"Storitev <xliff:g id="SERVICE_NAME">%s</xliff:g> si lahko ogleduje zaslon, dejanja in vnose, izvaja dejanja in upravlja prikaz."</string>
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"Te aplikacije si lahko ogledujejo zaslon, dejanja in vnose, izvajajo dejanja in upravljajo prikaz."</string>
     <string name="role_assistant_label" msgid="4727586018198208128">"Privzeti digitalni pomočnik"</string>
