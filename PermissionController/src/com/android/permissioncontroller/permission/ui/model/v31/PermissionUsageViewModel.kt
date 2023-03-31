@@ -30,6 +30,7 @@ import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
 import com.android.permissioncontroller.permission.data.AppPermGroupUiInfoLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
+import com.android.permissioncontroller.permission.data.StandardPermGroupNamesLiveData
 import com.android.permissioncontroller.permission.data.v31.AllLightPackageOpsLiveData
 import com.android.permissioncontroller.permission.model.livedatatypes.v31.AppPermissionId
 import com.android.permissioncontroller.permission.model.livedatatypes.v31.LightPackageOps
@@ -58,6 +59,7 @@ class PermissionUsageViewModel(
     private val mAllLightPackageOpsLiveData = AllLightPackageOpsLiveData(app)
     private val appPermGroupUiInfoLiveDataList =
         mutableMapOf<AppPermissionId, AppPermGroupUiInfoLiveData>()
+    private val standardPermGroupNamesLiveData = StandardPermGroupNamesLiveData
 
     val showSystemAppsLiveData = state.getLiveData(SHOULD_SHOW_SYSTEM_KEY, false)
     val show7DaysLiveData = state.getLiveData(SHOULD_SHOW_7_DAYS_KEY, false)
@@ -150,19 +152,10 @@ class PermissionUsageViewModel(
         return false
     }
 
-    /**
-     * Returns all permission groups tracked in the [AllLightPackageOpsLiveData] eligible for
-     * display in the UI.
-     */
-    private fun AllLightPackageOpsLiveData.getAllEligiblePermissionGroups(): Set<String> {
-        val eligibleLightPackageOpsList =
-            getAllLightPackageOps()?.filterOutExemptedApps() ?: listOf()
-
-        val allPermissionGroups: Set<String> =
-            eligibleLightPackageOpsList.flatMap { it.lastPermissionGroupAccessTimesMs.keys }.toSet()
-
-        return allPermissionGroups.filterOutExemptedPermissionGroups().toSet()
-    }
+    /** Returns all permission groups eligible for display in the UI. */
+    private fun getAllEligiblePermissionGroups(): Set<String> =
+        standardPermGroupNamesLiveData.value?.filterOutExemptedPermissionGroups()?.toSet()
+            ?: setOf()
 
     private fun isAppPermissionSystem(appPermissionId: AppPermissionId): Boolean {
         val appPermGroupUiInfo = appPermGroupUiInfoLiveDataList[appPermissionId]?.value
@@ -275,6 +268,7 @@ class PermissionUsageViewModel(
                 addSource(mAllLightPackageOpsLiveData) { update() }
                 addSource(showSystemAppsLiveData) { update() }
                 addSource(show7DaysLiveData) { update() }
+                addSource(standardPermGroupNamesLiveData) { update() }
             }
 
             override fun onUpdate() {
@@ -285,18 +279,12 @@ class PermissionUsageViewModel(
                 val appPermissionIds = mutableListOf<AppPermissionId>()
                 val allPackages = mAllLightPackageOpsLiveData.value?.keys ?: setOf()
                 for (packageWithUserHandle: Pair<String, UserHandle> in allPackages) {
-                    val lastPermissionGroupAccessTimesMs =
-                        mAllLightPackageOpsLiveData.value
-                            ?.get(packageWithUserHandle)
-                            ?.lastPermissionGroupAccessTimesMs
-                            ?: mapOf()
-
-                    for (permissionGroupToAccess in lastPermissionGroupAccessTimesMs) {
+                    for (permissionGroup in getAllEligiblePermissionGroups()) {
                         appPermissionIds.add(
                             AppPermissionId(
                                 packageWithUserHandle.first,
                                 packageWithUserHandle.second,
-                                permissionGroupToAccess.key,
+                                permissionGroup,
                             ))
                     }
                 }
