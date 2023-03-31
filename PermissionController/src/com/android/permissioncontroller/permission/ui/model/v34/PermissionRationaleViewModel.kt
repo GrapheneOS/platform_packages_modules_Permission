@@ -170,15 +170,25 @@ class PermissionRationaleViewModel(
         startAppPermissionFragment(activity, groupName)
     }
 
+    /** Returns whether UI can provide link to help center */
+    fun canLinkToHelpCenter(context: Context): Boolean {
+        return !getHelpCenterUrlString(context).isNullOrEmpty()
+    }
+
     /**
      * Send the user to the Safety Label Android Help Center
      *
      * @param activity The current activity
      */
     fun sendToLearnMore(activity: Activity) {
-        val helpUrlString = activity.getString(R.string.data_sharing_help_center_link)
+        if (!canLinkToHelpCenter(activity)) {
+            Log.w(LOG_TAG, "Unable to open help center, no url provided.")
+            return
+        }
+
         // Add in some extra locale query parameters
-        val fullUri = HelpUtils.uriWithAddedParameters(activity, Uri.parse(helpUrlString))
+        val fullUri =
+            HelpUtils.uriWithAddedParameters(activity, Uri.parse(getHelpCenterUrlString(activity)))
         val intent = Intent(Intent.ACTION_VIEW, fullUri).apply {
             setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)
         }
@@ -220,6 +230,10 @@ class PermissionRationaleViewModel(
         val uid = KotlinUtils.getPackageUid(app, packageName, user) ?: return
         PermissionControllerStatsLog.write(PERMISSION_RATIONALE_DIALOG_ACTION_REPORTED, sessionId,
             uid, permissionGroupName, buttonPressed)
+    }
+
+    private fun getHelpCenterUrlString(context: Context): String? {
+        return context.getString(R.string.data_sharing_help_center_link)
     }
 
     companion object {

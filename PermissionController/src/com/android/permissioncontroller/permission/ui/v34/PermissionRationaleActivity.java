@@ -369,11 +369,16 @@ public class PermissionRationaleActivity extends SettingsActivity implements
                         getText(R.string.permission_rationale_purpose_message),
                         purposeStringList);
 
-        CharSequence learnMoreMessage =
-                setLink(
-                        getText(R.string.permission_rationale_data_sharing_varies_message),
-                        getLearnMoreLink()
-                );
+        CharSequence learnMoreMessage;
+        if (mViewModel.canLinkToHelpCenter(this)) {
+            learnMoreMessage = setLink(
+                    getText(R.string.permission_rationale_data_sharing_varies_message),
+                    getLearnMoreLink()
+            );
+        } else {
+            learnMoreMessage =
+                    getText(R.string.permission_rationale_data_sharing_varies_message_without_link);
+        }
 
         String groupName = mPermissionRationaleInfo.getGroupName();
         String permissionGroupLabel =

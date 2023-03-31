@@ -158,11 +158,16 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
                 StringUtils.getIcuPluralsString(requireContext(), R.string.updated_in_last_days, 30)
             it.isVisible = true
         }
+
+        val onFooterLinkClick = if (viewModel.canLinkToHelpCenter(requireActivity())) {
+            View.OnClickListener { viewModel.openSafetyLabelsHelpCenterPage(requireActivity()) }
+        } else {
+            null
+        }
         footerPreference?.let {
             it.footerMessage = getString(R.string.data_sharing_updates_footer_message)
             it.footerLink = getString(R.string.learn_about_data_sharing)
-            it.onFooterLinkClick =
-                View.OnClickListener { viewModel.openSafetyLabelsHelpCenterPage(requireActivity()) }
+            it.onFooterLinkClick = onFooterLinkClick
             it.isVisible = true
         }
     }
@@ -187,11 +192,15 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
             it.isVisible = true
         }
         dataSharingUpdatesCategory?.let { it.isVisible = false }
+
         footerPreference?.let {
             it.footerMessage = getString(R.string.data_sharing_updates_footer_message)
             it.footerLink = getString(R.string.learn_about_data_sharing)
-            it.onFooterLinkClick =
+            it.onFooterLinkClick = if (viewModel.canLinkToHelpCenter(requireActivity())) {
                 View.OnClickListener { viewModel.openSafetyLabelsHelpCenterPage(requireActivity()) }
+            } else {
+                null
+            }
             it.isVisible = true
         }
     }
