@@ -20,6 +20,7 @@ import android.Manifest
 import android.app.Activity
 import android.app.Application
 import android.content.ActivityNotFoundException
+import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_MANAGE_APP_PERMISSION
 import android.content.Intent.EXTRA_PACKAGE_NAME
@@ -50,11 +51,21 @@ class AppDataSharingUpdatesViewModel(app: Application) {
     private val locationPermGroupPackagesUiInfoLiveData =
         SinglePermGroupPackagesUiInfoLiveData[Manifest.permission_group.LOCATION]
 
+    /** Returns whether UI can provide link to help center */
+    fun canLinkToHelpCenter(context: Context): Boolean {
+        return !getHelpCenterUrlString(context).isNullOrEmpty()
+    }
+
     /** Opens the Safety Label Help Center web page. */
     fun openSafetyLabelsHelpCenterPage(activity: Activity) {
-        val helpUrlString = activity.getString(R.string.data_sharing_help_center_link)
+        if (!canLinkToHelpCenter(activity)) {
+            Log.w(LOG_TAG, "Unable to open help center, no url provided.")
+            return
+        }
+
         // Add in some extra locale query parameters
-        val fullUri = HelpUtils.uriWithAddedParameters(activity, Uri.parse(helpUrlString))
+        val fullUri =
+            HelpUtils.uriWithAddedParameters(activity, Uri.parse(getHelpCenterUrlString(activity)))
         val intent =
             Intent(Intent.ACTION_VIEW, fullUri).apply {
                 setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)
@@ -111,6 +122,10 @@ class AppDataSharingUpdatesViewModel(app: Application) {
                 }
             }
             .flatten()
+    }
+
+    private fun getHelpCenterUrlString(context: Context): String? {
+        return context.getString(R.string.data_sharing_help_center_link)
     }
 
     private fun SinglePermGroupPackagesUiInfoLiveData.getUsersWithPermGrantedForApp(
