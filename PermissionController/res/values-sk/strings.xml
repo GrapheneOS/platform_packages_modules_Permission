@@ -191,8 +191,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Povoliť prístup iba k médiám"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Povoliť vždy"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Povoliť iba pri používaní aplikácie"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"Povoliť všetky fotky"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"Povoliť vybrané fotky"</string>
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Vždy povoliť všetko"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Vždy sa opýtať"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Nepovoliť"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Presná poloha"</string>

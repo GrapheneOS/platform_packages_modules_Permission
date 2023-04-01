@@ -1727,7 +1727,7 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="show_password_summary">Display characters briefly as you type</string>
 
     <!-- Link for Safety Label Data Sharing help center page. [CHAR LIMIT=NONE]-->
-    <string name="data_sharing_help_center_link" translatable="false">https://support.google.com/android?p=data_sharing</string>
+    <string name="data_sharing_help_center_link" translatable="false"></string>
 
     <!-- Permission Rationale - Start -->
 
@@ -1763,6 +1763,9 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
 
     <!-- Message shown for Permission Rationale "Data sharing varies" section [CHAR LIMIT=200] -->
     <string name="permission_rationale_data_sharing_varies_message">Data practices may vary based on your app version, use, region, and age. <annotation id="link">More about data sharing</annotation></string>
+
+    <!-- Message shown for Permission Rationale "Data sharing varies" section, but without learn more link [CHAR LIMIT=200] -->
+    <string name="permission_rationale_data_sharing_varies_message_without_link">Data practices may vary based on your app version, use, region, and age.</string>
 
     <!-- Title shown for Permission Rationale location permission settings section [CHAR LIMIT=40] -->
     <string name="permission_rationale_location_settings_title">Your location data</string>
@@ -1810,8 +1813,8 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <!-- Title of error dialog when a link can't be launched automatically in a browser. [CHAR LIMIT=100] -->
     <string name="permission_rationale_data_sharing_link_error_title">Can\u2019t open this link</string>
 
-    <!-- Message shown in error dialog when a link can't be launched automatically in a browser. [CHAR LIMIT=200] -->
-    <string name="permission_rationale_data_sharing_link_error_message">Try typing  <xliff:g id="help_page"><b>g.co/android/datasharing</b></xliff:g> into your browser window to view this content</string>
+    <!-- Message shown in error dialog when a link can't be launched automatically in a browser. [CHAR LIMIT=NONE] -->
+    <string name="permission_rationale_data_sharing_link_error_message"></string>
 
     <!-- Permission Rationale - End -->
 

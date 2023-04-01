@@ -191,8 +191,8 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Ruhusu ufikiaji wa maudhui pekee"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Ruhusu kila wakati"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Ruhusu tu unapotumia programu"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"Ruhusu picha zote"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"Ruhusu picha zilizochaguliwa"</string>
+    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
+    <skip />
     <string name="app_permission_button_ask" msgid="3342950658789427">"Uliza kila wakati"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Usiruhusu"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Eneo mahususi"</string>
@@ -479,8 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie &lt;b&gt;picha, video, muziki, sauti na faili zingine&lt;/b&gt; kwenye kifaa hiki?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie muziki na sauti kwenye kifaa hiki?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie picha na video kwenye kifaa hiki?"</string>
-    <!-- no translation found for permgrouprequest_more_photos (128933814654231321) -->
-    <skip />
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie picha na video zaidi kwenye kifaa hiki?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; kurekodi sauti?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Programu itaweza kurekodi sauti unapoitumia tu"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; irekodi sauti?"</string>

@@ -191,8 +191,8 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Зөвхөн медиад хандахыг зөвшөөрөх"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Ямар ч үед зөвшөөрөх"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Зөвхөн аппыг ашиглаж байх үед зөвшөөрөх"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"Бүх зургийг зөвшөөрөх"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"Сонгосон зургуудыг зөвшөөрөх"</string>
+    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
+    <skip />
     <string name="app_permission_button_ask" msgid="3342950658789427">"Тухай бүрд асуух"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Бүү зөвшөөр"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Нарийвчилсан байршил"</string>
@@ -479,8 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д энэ төхөөрөмжийн &lt;b&gt;зураг, видео, хөгжим, аудио, бусад файлд&lt;/b&gt; хандахыг зөвшөөрөх үү?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д энэ төхөөрөмж дээрх хөгжим болон аудионд хандахыг зөвшөөрөх үү?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д энэ төхөөрөмж дээрх зураг болон видеонд хандахыг зөвшөөрөх үү?"</string>
-    <!-- no translation found for permgrouprequest_more_photos (128933814654231321) -->
-    <skip />
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д энэ төхөөрөмж дээрх бусад зураг болон видеонд хандахыг зөвшөөрөх үү?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д аудио бичихийг зөвшөөрөх үү?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Энэ апп зөвхөн таныг ашиглаж байх үед л аудио бичих боломжтой болно"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д аудио бичихийг зөвшөөрөх үү?"</string>

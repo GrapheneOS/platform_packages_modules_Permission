@@ -184,15 +184,15 @@
     <string name="permission_history_category_today" msgid="7496389369158806620">"ଆଜି"</string>
     <string name="permission_history_category_yesterday" msgid="7242517121222012521">"ଗତକାଲି"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"ଆପ୍‍ ଅନୁମତି ବ୍ୟବହାର"</string>
-    <string name="app_permission_usage_summary" msgid="390383661936709672">"ଆକ୍ସେସ୍‍: <xliff:g id="NUM">%1$s</xliff:g>ଥର। ସମୁଦାୟ ଅବଧି: <xliff:g id="DURATION">%2$s</xliff:g>। ଅନ୍ତିମ ଥର <xliff:g id="TIME">%3$s</xliff:g> ପୂର୍ବେ ବ୍ୟବହୃତ ହୋଇଥିଲା।"</string>
-    <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"ଆକ୍ସେସ୍‍: <xliff:g id="NUM">%1$s</xliff:g>ଥର। ଅନ୍ତିମ ଥର <xliff:g id="TIME">%2$s</xliff:g> ପୂର୍ବେ ବ୍ୟବହୃତ ହୋଇଥିଲା।"</string>
+    <string name="app_permission_usage_summary" msgid="390383661936709672">"ଆକ୍ସେସ: <xliff:g id="NUM">%1$s</xliff:g>ଥର। ସମୁଦାୟ ଅବଧି: <xliff:g id="DURATION">%2$s</xliff:g>। ଗତ ଥର <xliff:g id="TIME">%3$s</xliff:g> ପୂର୍ବେ ବ୍ୟବହୃତ ହୋଇଥିଲା।"</string>
+    <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"ଆକ୍ସେସ: <xliff:g id="NUM">%1$s</xliff:g>ଥର। ଗତ ଥର <xliff:g id="TIME">%2$s</xliff:g> ପୂର୍ବେ ବ୍ୟବହୃତ ହୋଇଥିଲା।"</string>
     <string name="app_permission_button_allow" msgid="5808039516494774647">"ଅନୁମତି ଦିଅନ୍ତୁ"</string>
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"ସମସ୍ତ ଫାଇଲର ପରିଚାଳନା ପାଇଁ ଅନୁମତି ଦିଅନ୍ତୁ"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"କେବଳ ମିଡିଆକୁ ଆକ୍ସେସ୍ ଅନୁମତି ଦିଅନ୍ତୁ"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"ସବୁ ସମୟ ପାଇଁ ଅନୁମତି ଦିଅନ୍ତୁ"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"ଆପ୍ ବ୍ୟବହାର ବେଳେ କେବଳ ଅନୁମତି ଦିଅନ୍ତୁ"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"ସମସ୍ତ ଫଟୋକୁ ଅନୁମତି ଦିଅନ୍ତୁ"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"ଚୟନିତ ଫଟୋଗୁଡ଼ିକୁ ଅନୁମତି ଦିଅନ୍ତୁ"</string>
+    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
+    <skip />
     <string name="app_permission_button_ask" msgid="3342950658789427">"ପ୍ରତ୍ୟେକ ଥର ପଚାରନ୍ତୁ"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"ଅନୁମତି ଦିଅନ୍ତୁ ନାହିଁ"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"ସଠିକ୍ ଲୋକେସନ୍"</string>
@@ -479,8 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"ଏହି ଡିଭାଇସରେ ଥିବା&lt;b&gt;ଫଟୋ, ଭିଡିଓ, ମ୍ୟୁଜିକ, ଅଡିଓ ଓ ଅନ୍ୟ ଫାଇଲ&lt;/b&gt; ଆକ୍ସେସ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"ଏହି ଡିଭାଇସରେ ଥିବା ମ୍ୟୁଜିକ ଏବଂ ଅଡିଓକୁ ଆକ୍ସେସ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"ଏହି ଡିଭାଇସରେ ଥିବା ଫଟୋ ଏବଂ ଭିଡିଓଗୁଡ଼ିକୁ ଆକ୍ସେସ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ?"</string>
-    <!-- no translation found for permgrouprequest_more_photos (128933814654231321) -->
-    <skip />
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"ଏହି ଡିଭାଇସରେ ଥିବା ଅଧିକ ଫଟୋ ଏବଂ ଭିଡିଓକୁ ଆକ୍ସେସ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅଡିଓ ରେକର୍ଡ କରିବା ପାଇଁ ଅନୁମତି ଦେବେ କି?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"ଆପଣ ଆପକୁ ବ୍ୟବହାର କରୁଥିବା ସମୟରେ କେବଳ ଏହା ଅଡିଓ ରେକର୍ଡ କରିବାକୁ ସକ୍ଷମ ହେବ"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅଡିଓ ରେକର୍ଡ କରିବାକୁ ଅନୁମତି ଦେବେ କି?"</string>

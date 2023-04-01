@@ -191,8 +191,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"മീഡിയ ഫയലുകളിലേക്ക് മാത്രം ആക്‌സസ് അനുവദിക്കുക"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"ഏതുസമയത്തും അനുവദിക്കുക"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"ആപ്പ് ഉപയോഗിക്കുമ്പോൾ മാത്രം"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"എല്ലാ ഫോട്ടോകളും ആക്‌സസ് ചെയ്യാൻ അനുവദിക്കുക"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"തിരഞ്ഞെടുത്ത ഫോട്ടോകൾ ആക്‌സസ് ചെയ്യാൻ അനുവദിക്കുക"</string>
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"എപ്പോഴും എല്ലാം അനുവദിക്കുക"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"എപ്പോഴും ചോദിക്കുക"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"അനുവദിക്കരുത്"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"കൃത്യമായ ലൊക്കേഷൻ"</string>
@@ -479,8 +478,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"&lt;b&gt;ഫോട്ടോ, വീഡിയോ, സംഗീതം, ഓഡിയോ, മറ്റ് ഫയലുകൾ&lt;/b&gt; എന്നിവയിലേക്ക് &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിന് ആക്സസ് നൽകണോ?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"ഈ ഉപകരണത്തിലെ സംഗീതവും ഓഡിയോയും ആക്സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കണോ?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"ഈ ഉപകരണത്തിലെ ഫോട്ടോകളും വീഡിയോകളും ആക്‌സസ് ചെയ്യാൻ &lt;b&gt; <xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കണോ?"</string>
-    <!-- no translation found for permgrouprequest_more_photos (128933814654231321) -->
-    <skip />
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"ഈ ഉപകരണത്തിലെ കൂടുതൽ ഫോട്ടോകളും വീഡിയോകളും ആക്‌സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കണോ?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"ഓഡിയോ റെക്കോർഡ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"നിങ്ങൾ ആപ്പ് ഉപയോഗിക്കുമ്പോൾ മാത്രമേ അതിന് ഓഡിയോ റെക്കോർഡ് ചെയ്യാൻ കഴിയൂ"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"ഓഡിയോ റെക്കോർഡ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>

@@ -186,13 +186,12 @@
     <string name="app_permission_usage_title" msgid="6676802437831981822">"アプリの権限の使用"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"アクセス: <xliff:g id="NUM">%1$s</xliff:g> 回。合計時間: <xliff:g id="DURATION">%2$s</xliff:g>。最終使用: <xliff:g id="TIME">%3$s</xliff:g>前。"</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"アクセス: <xliff:g id="NUM">%1$s</xliff:g> 回。最終使用: <xliff:g id="TIME">%2$s</xliff:g>前。"</string>
-    <string name="app_permission_button_allow" msgid="5808039516494774647">"許可"</string>
+    <string name="app_permission_button_allow" msgid="5808039516494774647">"許可する"</string>
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"すべてのファイルの管理を許可"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"メディアへのアクセスのみを許可"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"常に許可"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"アプリの使用中のみ許可"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"すべての写真を許可"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"一部の写真を許可"</string>
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"常にすべて許可"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"毎回確認する"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"許可しない"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"正確な現在地"</string>
@@ -479,8 +478,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"このデバイス内の&lt;b&gt;写真、動画、音楽、音声など&lt;/b&gt;へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"このデバイス内の音楽と音声へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"このデバイス内の写真と動画へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
-    <!-- no translation found for permgrouprequest_more_photos (128933814654231321) -->
-    <skip />
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"このデバイス内の他の写真や動画へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"音声の録音を「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」に許可しますか？"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"アプリは、ユーザーがアプリを使用している場合のみ音声を録音できます"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"音声の録音を &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
