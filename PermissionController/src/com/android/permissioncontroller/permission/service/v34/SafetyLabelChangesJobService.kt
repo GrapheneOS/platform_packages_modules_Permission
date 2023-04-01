@@ -43,11 +43,17 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import com.android.permission.safetylabel.DataCategoryConstants.CATEGORY_LOCATION
 import com.android.permission.safetylabel.SafetyLabel as AppMetadataSafetyLabel
+import com.android.permissioncontroller.Constants.EXTRA_SESSION_ID
+import com.android.permissioncontroller.Constants.INVALID_SESSION_ID
+import com.android.permissioncontroller.Constants.PERMISSION_REMINDER_CHANNEL_ID
 import com.android.permissioncontroller.Constants.SAFETY_LABEL_CHANGES_DETECT_UPDATES_JOB_ID
 import com.android.permissioncontroller.Constants.SAFETY_LABEL_CHANGES_NOTIFICATION_ID
 import com.android.permissioncontroller.Constants.SAFETY_LABEL_CHANGES_PERIODIC_NOTIFICATION_JOB_ID
-import com.android.permissioncontroller.Constants.PERMISSION_REMINDER_CHANNEL_ID
 import com.android.permissioncontroller.PermissionControllerApplication
+import com.android.permissioncontroller.PermissionControllerStatsLog
+import com.android.permissioncontroller.PermissionControllerStatsLog.APP_DATA_SHARING_UPDATES_NOTIFICATION_INTERACTION
+import com.android.permissioncontroller.PermissionControllerStatsLog.APP_DATA_SHARING_UPDATES_NOTIFICATION_INTERACTION__ACTION__DISMISSED
+import com.android.permissioncontroller.PermissionControllerStatsLog.APP_DATA_SHARING_UPDATES_NOTIFICATION_INTERACTION__ACTION__NOTIFICATION_SHOWN
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.data.LightInstallSourceInfoLiveData
 import com.android.permissioncontroller.permission.data.LightPackageInfoLiveData
@@ -67,15 +73,15 @@ import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistoryPersis
 import java.time.Duration
 import java.time.Instant
 import java.time.ZoneId
+import java.util.Random
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.yield
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.yield
 
 /**
  * Runs a monthly job that performs Safety Labels-related tasks. (E.g., data policy changes
@@ -84,12 +90,14 @@ import kotlinx.coroutines.sync.withLock
 // TODO(b/265202443): Review support for safe cancellation of this Job. Currently this is
 //  implemented by implementing `onStopJob` method and including `yield()` calls in computation
 //  loops.
+// TODO(b/276511043): Refactor this class into separate components
 @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
 class SafetyLabelChangesJobService : JobService() {
     private val mutex = Mutex()
     private var detectUpdatesJob: Job? = null
     private var notificationJob: Job? = null
     private val context = this@SafetyLabelChangesJobService
+    private val random = Random()
 
     class Receiver : BroadcastReceiver() {
         override fun onReceive(receiverContext: Context, intent: Intent) {
@@ -108,11 +116,14 @@ class SafetyLabelChangesJobService : JobService() {
                 Log.i(
                     LOG_TAG,
                     "onReceive: Received broadcast in profile, not scheduling safety label" +
-                        " change job")
+                        " change job"
+                )
                 return
             }
-            if (intent.action != ACTION_BOOT_COMPLETED &&
-                intent.action != ACTION_SET_UP_SAFETY_LABEL_CHANGES_JOB) {
+            if (
+                intent.action != ACTION_BOOT_COMPLETED &&
+                    intent.action != ACTION_SET_UP_SAFETY_LABEL_CHANGES_JOB
+            ) {
                 return
             }
             scheduleDetectUpdatesJob(receiverContext)
@@ -122,6 +133,28 @@ class SafetyLabelChangesJobService : JobService() {
         private fun isContextInProfileUser(context: Context): Boolean {
             val userManager: UserManager = context.getSystemService(UserManager::class.java)!!
             return userManager.isProfile
+        }
+    }
+
+    /** Handle the case where the notification is swiped away without further interaction. */
+    class NotificationDeleteHandler : BroadcastReceiver() {
+        override fun onReceive(receiverContext: Context, intent: Intent) {
+            Log.d(LOG_TAG, "NotificationDeleteHandler: received broadcast")
+            if (!KotlinUtils.isSafetyLabelChangeNotificationsEnabled()) {
+                Log.i(
+                    LOG_TAG,
+                    "NotificationDeleteHandler: " +
+                        "safety label change notifications are not enabled."
+                )
+                return
+            }
+            val sessionId = intent.getLongExtra(EXTRA_SESSION_ID, INVALID_SESSION_ID)
+            val numberOfAppUpdates = intent.getIntExtra(EXTRA_NUMBER_OF_APP_UPDATES, 0)
+            logAppDataSharingUpdatesNotificationInteraction(
+                sessionId,
+                APP_DATA_SHARING_UPDATES_NOTIFICATION_INTERACTION__ACTION__DISMISSED,
+                numberOfAppUpdates
+            )
         }
     }
 
@@ -191,9 +224,7 @@ class SafetyLabelChangesJobService : JobService() {
     }
 
     private suspend fun runDetectUpdatesJob() {
-        mutex.withLock {
-            recordSafetyLabelsIfMissing()
-        }
+        mutex.withLock { recordSafetyLabelsIfMissing() }
     }
 
     private suspend fun runNotificationJob() {
@@ -239,11 +270,13 @@ class SafetyLabelChangesJobService : JobService() {
                 "recording safety labels if missing:" +
                     " packagesRequestingLocation:" +
                     " $packagesRequestingLocation, packageNamesWithPersistedSafetyLabels:" +
-                    " $packageNamesWithPersistedSafetyLabels")
+                    " $packageNamesWithPersistedSafetyLabels"
+            )
         }
         safetyLabelsToRecord.addAll(getSafetyLabels(packagesToInitialize))
         safetyLabelsToRecord.addAll(
-            getSafetyLabelsIfUpdatesMissed(packagesToConsiderUpdate, safetyLabelsLastUpdatedTimes))
+            getSafetyLabelsIfUpdatesMissed(packagesToConsiderUpdate, safetyLabelsLastUpdatedTimes)
+        )
 
         AppsSafetyLabelHistoryPersistence.recordSafetyLabels(safetyLabelsToRecord, historyFile)
     }
@@ -325,11 +358,15 @@ class SafetyLabelChangesJobService : JobService() {
             AppMetadataSafetyLabel.getSafetyLabelFromMetadata(appMetadataBundle) ?: return null
         val lastUpdateTime =
             Instant.ofEpochMilli(
-                LightPackageInfoLiveData[packageKey].getInitializedValue()?.lastUpdateTime ?: 0)
+                LightPackageInfoLiveData[packageKey].getInitializedValue()?.lastUpdateTime ?: 0
+            )
 
         val safetyLabelForPersistence: SafetyLabelForPersistence =
             AppsSafetyLabelHistory.SafetyLabel.extractLocationSharingSafetyLabel(
-                packageName, lastUpdateTime, appMetadataSafetyLabel)
+                packageName,
+                lastUpdateTime,
+                appMetadataSafetyLabel
+            )
 
         return safetyLabelForPersistence
     }
@@ -370,10 +407,12 @@ class SafetyLabelChangesJobService : JobService() {
             DeviceConfig.getLong(
                 DeviceConfig.NAMESPACE_PRIVACY,
                 DATA_SHARING_UPDATE_PERIOD_PROPERTY,
-                Duration.ofDays(DEFAULT_DATA_SHARING_UPDATE_PERIOD_DAYS).toMillis())
+                Duration.ofDays(DEFAULT_DATA_SHARING_UPDATE_PERIOD_DAYS).toMillis()
+            )
         AppsSafetyLabelHistoryPersistence.deleteSafetyLabelsOlderThan(
             Instant.now().atZone(ZoneId.systemDefault()).toInstant().minusMillis(updatePeriod),
-            historyFile)
+            historyFile
+        )
     }
 
     // TODO(b/261607291): Modify this logic when we enable safety label change notifications for
@@ -400,10 +439,12 @@ class SafetyLabelChangesJobService : JobService() {
         LightInstallSourceInfoLiveData[pkg].getInitializedValue().initiatingPackageName == null
 
     private suspend fun postSafetyLabelChangedNotification() {
-        if (hasDataSharingChanged()) {
+        val numberOfAppUpdates = getNumberOfAppsWithDataSharingChanged()
+        if (numberOfAppUpdates > 0) {
             Log.i(LOG_TAG, "Showing notification: data sharing has changed")
-            showNotification()
+            showNotification(numberOfAppUpdates)
         } else {
+            cancelNotification()
             Log.i(LOG_TAG, "Not showing notification: data sharing has not changed")
         }
     }
@@ -413,51 +454,73 @@ class SafetyLabelChangesJobService : JobService() {
             Log.d(LOG_TAG, "onStopJob called for job id: ${params?.jobId}")
         }
         runBlocking {
-           when (params?.jobId) {
-               SAFETY_LABEL_CHANGES_DETECT_UPDATES_JOB_ID -> {
-                   Log.i(LOG_TAG, "onStopJob: cancelling detect updates job")
-                   detectUpdatesJob?.cancelAndJoin()
-                   detectUpdatesJob = null
-               }
-               SAFETY_LABEL_CHANGES_PERIODIC_NOTIFICATION_JOB_ID -> {
-                   Log.i(LOG_TAG, "onStopJob: cancelling notification job")
-                   notificationJob?.cancelAndJoin()
-                   notificationJob = null
-               }
-               else -> Log.w(LOG_TAG, "onStopJob: unexpected job Id: ${params?.jobId}")
-           }
+            when (params?.jobId) {
+                SAFETY_LABEL_CHANGES_DETECT_UPDATES_JOB_ID -> {
+                    Log.i(LOG_TAG, "onStopJob: cancelling detect updates job")
+                    detectUpdatesJob?.cancel()
+                    detectUpdatesJob = null
+                }
+                SAFETY_LABEL_CHANGES_PERIODIC_NOTIFICATION_JOB_ID -> {
+                    Log.i(LOG_TAG, "onStopJob: cancelling notification job")
+                    notificationJob?.cancel()
+                    notificationJob = null
+                }
+                else -> Log.w(LOG_TAG, "onStopJob: unexpected job Id: ${params?.jobId}")
+            }
         }
         return true
     }
 
-    private suspend fun hasDataSharingChanged(): Boolean {
+    /**
+     * Count the number of packages that have location granted and have location sharing updates.
+     */
+    private suspend fun getNumberOfAppsWithDataSharingChanged(): Int {
         val appDataSharingUpdates =
             AppDataSharingUpdatesLiveData(PermissionControllerApplication.get())
                 .getInitializedValue()
-        val packageNamesWithLocationDataSharingUpdates: List<String> =
-            appDataSharingUpdates
-                .filter { it.containsLocationCategoryUpdate() }
-                .map { it.packageName }
-        val packageNamesWithLocationGranted: List<String> =
-            getAllPackagesGrantedLocation().map { (packageName, _) -> packageName }
 
-        val packageNamesWithLocationGrantedAndUpdates =
-            packageNamesWithLocationDataSharingUpdates.intersect(packageNamesWithLocationGranted)
-        if (DEBUG) {
-            Log.i(
-                LOG_TAG,
-                "Checking whether data sharing has changed. Packages with location" +
-                    " updates: $packageNamesWithLocationDataSharingUpdates; Packages with" +
-                    " location permission granted: $packageNamesWithLocationGranted")
-        }
+        return appDataSharingUpdates
+            .map { appDataSharingUpdate ->
+                val locationDataSharingUpdate =
+                    appDataSharingUpdate.categorySharingUpdates[CATEGORY_LOCATION]
 
-        return packageNamesWithLocationGrantedAndUpdates.isNotEmpty()
+                if (locationDataSharingUpdate == null) {
+                    emptyList()
+                } else {
+                    val users =
+                        SinglePermGroupPackagesUiInfoLiveData[Manifest.permission_group.LOCATION]
+                            .getUsersWithPermGrantedForApp(appDataSharingUpdate.packageName)
+                    users
+                }
+            }
+            .flatten()
+            .count()
+    }
+
+    private fun SinglePermGroupPackagesUiInfoLiveData.getUsersWithPermGrantedForApp(
+        packageName: String
+    ): List<UserHandle> {
+        return value
+            ?.filter {
+                packageToPermInfoEntry: Map.Entry<Pair<String, UserHandle>, AppPermGroupUiInfo> ->
+                val appPermGroupUiInfo = packageToPermInfoEntry.value
+
+                appPermGroupUiInfo.isPermissionGranted()
+            }
+            ?.keys
+            ?.filter { packageUser: Pair<String, UserHandle> -> packageUser.first == packageName }
+            ?.map { packageUser: Pair<String, UserHandle> -> packageUser.second }
+            ?: listOf()
     }
 
     private fun AppDataSharingUpdate.containsLocationCategoryUpdate() =
         categorySharingUpdates[CATEGORY_LOCATION] != null
 
-    private fun showNotification() {
+    private fun showNotification(numberOfAppUpdates: Int) {
+        var sessionId = INVALID_SESSION_ID
+        while (sessionId == INVALID_SESSION_ID) {
+            sessionId = random.nextLong()
+        }
         val context = PermissionControllerApplication.get() as Context
         val notificationManager = getSystemServiceSafe(context, NotificationManager::class.java)
         createNotificationChannel(context, notificationManager)
@@ -473,7 +536,14 @@ class SafetyLabelChangesJobService : JobService() {
                 .setLocalOnly(true)
                 .setAutoCancel(true)
                 .setSilent(true)
-                .setContentIntent(createIntentToOpenAppDataSharingUpdates(context))
+                .setContentIntent(createIntentToOpenAppDataSharingUpdates(context, sessionId))
+                .setDeleteIntent(
+                    createIntentToLogDismissNotificationEvent(
+                        context,
+                        sessionId,
+                        numberOfAppUpdates
+                    )
+                )
 
         val settingsAppLabel =
             Utils.getSettingsLabelForNotifications(applicationContext.packageManager)
@@ -484,24 +554,62 @@ class SafetyLabelChangesJobService : JobService() {
                     .addExtras(
                         Bundle().apply {
                             putString(
-                                Notification.EXTRA_SUBSTITUTE_APP_NAME, settingsAppLabel.toString())
-                        })
+                                Notification.EXTRA_SUBSTITUTE_APP_NAME,
+                                settingsAppLabel.toString()
+                            )
+                        }
+                    )
         }
 
         notificationManager.notify(
-            SAFETY_LABEL_CHANGES_NOTIFICATION_ID, notificationBuilder.build())
+            SAFETY_LABEL_CHANGES_NOTIFICATION_ID,
+            notificationBuilder.build()
+        )
 
-        if (DEBUG) {
-            Log.v(LOG_TAG, "Safety label change notification sent.")
-        }
+        logAppDataSharingUpdatesNotificationInteraction(
+            sessionId,
+            APP_DATA_SHARING_UPDATES_NOTIFICATION_INTERACTION__ACTION__NOTIFICATION_SHOWN,
+            numberOfAppUpdates
+        )
+        Log.v(LOG_TAG, "Safety label change notification sent.")
     }
 
-    private fun createIntentToOpenAppDataSharingUpdates(context: Context): PendingIntent? {
+    private fun cancelNotification() {
+        val notificationManager = getSystemServiceSafe(context, NotificationManager::class.java)
+        notificationManager.cancel(SAFETY_LABEL_CHANGES_NOTIFICATION_ID)
+        Log.v(LOG_TAG, "Safety label change notification cancelled.")
+    }
+
+    private fun createIntentToOpenAppDataSharingUpdates(
+        context: Context,
+        sessionId: Long
+    ): PendingIntent {
         return PendingIntent.getActivity(
             context,
             0,
-            Intent(Intent.ACTION_REVIEW_APP_DATA_SHARING_UPDATES),
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+            Intent(Intent.ACTION_REVIEW_APP_DATA_SHARING_UPDATES).apply {
+                putExtra(EXTRA_SESSION_ID, sessionId)
+            },
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+    }
+
+    private fun createIntentToLogDismissNotificationEvent(
+        context: Context,
+        sessionId: Long,
+        numberOfAppUpdates: Int
+    ): PendingIntent {
+        return PendingIntent.getBroadcast(
+            context,
+            0,
+            Intent(context, NotificationDeleteHandler::class.java).apply {
+                putExtra(EXTRA_SESSION_ID, sessionId)
+                putExtra(EXTRA_NUMBER_OF_APP_UPDATES, numberOfAppUpdates)
+            },
+            PendingIntent.FLAG_ONE_SHOT or
+                PendingIntent.FLAG_UPDATE_CURRENT or
+                PendingIntent.FLAG_IMMUTABLE
+        )
     }
 
     private fun createNotificationChannel(
@@ -512,7 +620,8 @@ class SafetyLabelChangesJobService : JobService() {
             NotificationChannel(
                 PERMISSION_REMINDER_CHANNEL_ID,
                 context.getString(R.string.permission_reminders),
-                NotificationManager.IMPORTANCE_LOW)
+                NotificationManager.IMPORTANCE_LOW
+            )
 
         notificationManager.createNotificationChannel(notificationChannel)
     }
@@ -523,6 +632,8 @@ class SafetyLabelChangesJobService : JobService() {
 
         private const val ACTION_SET_UP_SAFETY_LABEL_CHANGES_JOB =
             "com.android.permissioncontroller.action.SET_UP_SAFETY_LABEL_CHANGES_JOB"
+        private const val EXTRA_NUMBER_OF_APP_UPDATES =
+            "com.android.permissioncontroller.extra.NUMBER_OF_APP_UPDATES"
 
         private const val DATA_SHARING_UPDATE_PERIOD_PROPERTY = "data_sharing_update_period_millis"
         private const val DEFAULT_DATA_SHARING_UPDATE_PERIOD_DAYS: Long = 30
@@ -531,8 +642,9 @@ class SafetyLabelChangesJobService : JobService() {
             try {
                 val jobScheduler = getSystemServiceSafe(context, JobScheduler::class.java)
 
-                if (jobScheduler.getPendingJob(SAFETY_LABEL_CHANGES_DETECT_UPDATES_JOB_ID)
-                        != null) {
+                if (
+                    jobScheduler.getPendingJob(SAFETY_LABEL_CHANGES_DETECT_UPDATES_JOB_ID) != null
+                ) {
                     Log.i(LOG_TAG, "Not scheduling detect updates job: already scheduled.")
                     return
                 }
@@ -540,15 +652,17 @@ class SafetyLabelChangesJobService : JobService() {
                 val job =
                     JobInfo.Builder(
                             SAFETY_LABEL_CHANGES_DETECT_UPDATES_JOB_ID,
-                            ComponentName(context, SafetyLabelChangesJobService::class.java))
+                            ComponentName(context, SafetyLabelChangesJobService::class.java)
+                        )
                         .setRequiresDeviceIdle(
-                            KotlinUtils.runSafetyLabelChangesJobOnlyWhenDeviceIdle())
+                            KotlinUtils.runSafetyLabelChangesJobOnlyWhenDeviceIdle()
+                        )
                         .build()
-                    val result = jobScheduler.schedule(job)
+                val result = jobScheduler.schedule(job)
                 if (result != JobScheduler.RESULT_SUCCESS) {
-                   Log.w(LOG_TAG, "Detect updates job not scheduled, result code: $result")
+                    Log.w(LOG_TAG, "Detect updates job not scheduled, result code: $result")
                 } else {
-                   Log.i(LOG_TAG, "Detect updates job scheduled successfully.")
+                    Log.i(LOG_TAG, "Detect updates job scheduled successfully.")
                 }
             } catch (e: Throwable) {
                 Log.e(LOG_TAG, "Failed to schedule detect updates job", e)
@@ -559,8 +673,10 @@ class SafetyLabelChangesJobService : JobService() {
         private fun schedulePeriodicNotificationJob(context: Context) {
             try {
                 val jobScheduler = getSystemServiceSafe(context, JobScheduler::class.java)
-                if (jobScheduler.getPendingJob(SAFETY_LABEL_CHANGES_PERIODIC_NOTIFICATION_JOB_ID)
-                        != null) {
+                if (
+                    jobScheduler.getPendingJob(SAFETY_LABEL_CHANGES_PERIODIC_NOTIFICATION_JOB_ID) !=
+                        null
+                ) {
                     Log.i(LOG_TAG, "Not scheduling notification job: already scheduled.")
                     return
                 }
@@ -568,22 +684,44 @@ class SafetyLabelChangesJobService : JobService() {
                 val job =
                     JobInfo.Builder(
                             SAFETY_LABEL_CHANGES_PERIODIC_NOTIFICATION_JOB_ID,
-                            ComponentName(context, SafetyLabelChangesJobService::class.java))
+                            ComponentName(context, SafetyLabelChangesJobService::class.java)
+                        )
                         .setRequiresDeviceIdle(
-                            KotlinUtils.runSafetyLabelChangesJobOnlyWhenDeviceIdle())
+                            KotlinUtils.runSafetyLabelChangesJobOnlyWhenDeviceIdle()
+                        )
                         .setPeriodic(KotlinUtils.getSafetyLabelChangesJobIntervalMillis())
                         .setPersisted(true)
                         .build()
                 val result = jobScheduler.schedule(job)
                 if (result != JobScheduler.RESULT_SUCCESS) {
-                   Log.w(LOG_TAG, "Notification job not scheduled, result code: $result")
+                    Log.w(LOG_TAG, "Notification job not scheduled, result code: $result")
                 } else {
-                   Log.i(LOG_TAG, "Notification job scheduled successfully.")
+                    Log.i(LOG_TAG, "Notification job scheduled successfully.")
                 }
             } catch (e: Throwable) {
                 Log.e(LOG_TAG, "Failed to schedule notification job", e)
                 throw e
             }
+        }
+
+        private fun logAppDataSharingUpdatesNotificationInteraction(
+            sessionId: Long,
+            interactionType: Int,
+            numberOfAppUpdates: Int
+        ) {
+            PermissionControllerStatsLog.write(
+                APP_DATA_SHARING_UPDATES_NOTIFICATION_INTERACTION,
+                sessionId,
+                interactionType,
+                numberOfAppUpdates
+            )
+            Log.v(
+                LOG_TAG,
+                "Notification interaction occurred with" +
+                    " sessionId=$sessionId" +
+                    " action=$interactionType" +
+                    " numberOfAppUpdates=$numberOfAppUpdates"
+            )
         }
     }
 }
