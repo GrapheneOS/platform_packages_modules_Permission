@@ -27,7 +27,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.compatibility.common.util.SystemUtil.eventually
 import com.android.compatibility.common.util.SystemUtil.getEventually
 import com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity
-import com.android.compatibility.common.util.UiAutomatorUtils2.waitFindObject
 import com.android.compatibility.common.util.UiAutomatorUtils2.waitFindObjectOrNull
 import com.android.permissioncontroller.permissionui.getUsageCountsFromUi
 import com.android.permissioncontroller.permissionui.wakeUpScreen
@@ -67,9 +66,11 @@ class ManageStandardPermissionsFragmentTest : BaseHandheldPermissionUiTest() {
      */
     private fun getAdditionalPermissionCount(): Int {
         waitFindObjectOrNull(By.textContains(ADDITIONAL_PERMISSIONS_LABEL)) ?: return 0
-
-        val additionalPermissionsSummaryText = waitFindObject(By
-            .textContains(ADDITIONAL_PERMISSIONS_SUMMARY)).getText()
+        // Sometimes the entire preference disappears while it's searching for the app count
+        // (during uninstalling). Hence also return the count as 0 if count doesn't exist
+        val additionalPermissionsSummary = waitFindObjectOrNull(
+            By.textContains(ADDITIONAL_PERMISSIONS_SUMMARY)) ?: return 0
+        val additionalPermissionsSummaryText = additionalPermissionsSummary.getText()
 
         // Matches a single number out of the summary line, i.e. "...3..." -> "3"
         return getEventually {
@@ -89,6 +90,8 @@ class ManageStandardPermissionsFragmentTest : BaseHandheldPermissionUiTest() {
             })
         }
 
+        reuninstallApp(LOCATION_USER_APK, LOCATION_USER_PKG)
+
         // Sleep before each test for 1 second for getUsageCountsFromUi to get the correct counts
         Thread.sleep(1000)
     }
@@ -107,6 +110,7 @@ class ManageStandardPermissionsFragmentTest : BaseHandheldPermissionUiTest() {
 
     @Test
     fun groupSummaryGetsUpdatedWhenAppGetsUninstalled() {
+        reuninstallApp(LOCATION_USER_APK, LOCATION_USER_PKG)
         val original = getUsageCountsFromUi(locationGroupLabel)
 
         install(LOCATION_USER_APK)
@@ -115,6 +119,7 @@ class ManageStandardPermissionsFragmentTest : BaseHandheldPermissionUiTest() {
         }
 
         uninstallApp(LOCATION_USER_PKG)
+        reuninstallApp(LOCATION_USER_APK, LOCATION_USER_PKG)
         eventually {
             assertThat(getUsageCountsFromUi(locationGroupLabel)).isEqualTo(original)
         }
@@ -201,6 +206,15 @@ class ManageStandardPermissionsFragmentTest : BaseHandheldPermissionUiTest() {
         eventually {
             assertThat(getAdditionalPermissionCount()).isEqualTo(additionalPermissionBefore)
         }
+    }
+
+    fun reuninstallApp(apk: String, pkg: String) {
+        // b/275752754: sometimes this test is flaky because inside @After it didn't uninstall the
+        // packages correctly. This caused the permission manager screen to still show the package
+        // as requesting the permission and caused the original usage count to be incorrect.
+        // Installing/uninstalling the packages again to ensure the package is correctly uninstalled
+        install(apk)
+        uninstallApp(pkg)
     }
 
     @After

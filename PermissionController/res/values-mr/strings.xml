@@ -32,12 +32,10 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“ॲप वापरत असताना” ठेवा"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"“फक्त यावेळेपुरते” ठेवा"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"अधिक माहिती"</string>
-    <!-- no translation found for grant_dialog_button_allow_all (5939066403732409516) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_always_allow_all (1719900027660252167) -->
-    <skip />
-    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"फोटो निवडा"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"आणखी फोटो आणि व्हिडिओ निवडा"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"सर्वांना अनुमती द्या"</string>
+    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"नेहमी सर्वांना अनुमती द्या"</string>
+    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"फोटो आणि व्हिडिओ निवडा"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"आणखी निवडा"</string>
     <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"आणखी निवडू नका"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"तरीही अनुमती देऊ नका"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"डिसमिस करा"</string>
@@ -193,8 +191,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"फक्त मीडिया ॲक्सेस करण्यासाठी अनुमती द्या"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"सर्व वेळी अनुमती द्या"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"फक्त अ‍ॅप वापरत असताना अनुमती द्या"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"सर्व फोटोना अनुमती द्या"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"निवडलेल्या फोटोना अनुमती द्या"</string>
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"सर्वांना नेहमी अनुमती द्या"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"प्रत्येक वेळी विचारा"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"अनुमती देऊ नका"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"अचूक स्थान"</string>
@@ -481,7 +478,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला या डिव्हाइसवरील &lt;b&gt;फोटो, व्हिडिओ, संगीत, ऑडिओ व इतर फाइल&lt;/b&gt; अ‍ॅक्सेस करू द्यायच्या?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला या डिव्हाइसवरील संगीत आणि ऑडिओ अ‍ॅक्सेस करण्याची अनुमती द्यायची आहे का?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला या डिव्हाइसवरील फोटो आणि व्हिडिओ अ‍ॅक्सेस करण्याची अनुमती द्यायची आहे का?"</string>
-    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला या डिव्हाइसवरील आणखी फोटो आणि व्हिडिओ अ‍ॅक्सेस करण्याची अनुमती द्यायची आहे का?"</string>
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला या डिव्हाइसवरील अधिक फोटो आणि व्हिडिओ अ‍ॅक्सेस करण्याची अनुमती द्यायची आहे का?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला ऑडिओ रेकॉर्ड करू द्यायचा?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"ॲप फक्त तुम्ही ॲप वापरत असतानाच ऑडिओ रेकॉर्ड करू शकते"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला ऑडिओ रेकॉर्ड करायची अनुमती द्यायची?"</string>
@@ -595,10 +592,8 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"हे अ‍ॅप तृतीय पक्षांसोबत स्थान डेटा शेअर करू शकते असे या अ‍ॅपने नमूद केले आहे"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"डेटा शेअरिंग आणि स्थान"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"डेटा शेअरिंग माहिती कुठून मिळते"</string>
-    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
-    <skip />
-    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"हे अ‍ॅप डेटा कसे शेअर करते याबद्दल डेव्हलपरने "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" यांना माहिती पुरवली. डेव्हलपर कालांतराने ही माहिती अपडेट करू शकतो."</string>
+    <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"अ‍ॅप पुढील गोष्टींसाठी स्‍थान डेटा शेअर करू शकते:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"डेटा शेअरिंग बदलते"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"तुमच्या अ‍ॅपची आवृत्ती, वापर, प्रदेश आणि वय यांनुसार डेटाविषयक कार्यपद्धती बदलू शकतात. "<annotation id="link">"डेटा शेअरिंगबद्दल आणखी माहिती"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"तुमचा स्थान डेटा"</string>
@@ -613,6 +608,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"डेटासंबंधित सुरक्षितता"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"स्‍थान डेटा शेअर केला जाऊ शकतो"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"हे अ‍ॅप तृतीय पक्षांसोबत तुमचा स्थान डेटा शेअर करू शकते असे या अ‍ॅपने नमूद केले आहे"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"ही लिंक उघडू शकत नाही"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"हा आशय पाहण्यासाठी, तुमच्या ब्राउझर विंडोमध्ये <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> टाइप करून पहा"</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"स्थानासाठी डेटा शेअरिंगसंबंधित अपडेट"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"ज्या अ‍ॅप्सनी तुमचा स्थान डेटा शेअर करण्याची त्यांची पद्धत बदलली अशा अ‍ॅप्सचे पुनरावलोकन करा"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"या अ‍ॅप्सनी तुमचा स्थान डेटा शेअर करण्याची त्यांची पद्धत बदलली आहे. त्यांनी तो पूर्वी शेअर केलेला नसू शकतो किंवा आता जाहिरात करणे अथवा मार्केटिंग उद्देशांसाठी शेअर करू शकतात."</string>

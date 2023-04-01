@@ -32,12 +32,10 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“Uygulama kullanılırken” tut"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"\"Yalnızca bu defa\" sakla"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Daha fazla bilgi"</string>
-    <!-- no translation found for grant_dialog_button_allow_all (5939066403732409516) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_always_allow_all (1719900027660252167) -->
-    <skip />
-    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"Fotoğraf seç"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"Daha fazla fotoğraf ve video seç"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Tümüne izin ver"</string>
+    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Tümüne her zaman izin ver"</string>
+    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Fotoğraf ve video seçin"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Daha fazla seçin"</string>
     <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Daha fazla seçme"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Yine de izin verme"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Kapat"</string>
@@ -193,8 +191,8 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Yalnızca medyaya erişim izni ver"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Her zaman izin ver"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Yalnızca uygulama kullanılırken izin ver"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"Tüm fotoğraflara izin ver"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"Seçilen fotoğraflara izin ver"</string>
+    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
+    <skip />
     <string name="app_permission_button_ask" msgid="3342950658789427">"Her zaman sor"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"İzin verme"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Tam konum"</string>
@@ -481,7 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; için cihazdaki &lt;b&gt;fotoğraf, video, müzik, ses vb. dosyalara&lt;/b&gt; erişim verilsin mi?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının bu cihazda müzik ve ses dosyalarına erişmesine izin verilsin mi?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının bu cihazdaki fotoğraf ve videolara erişmesine izin verilsin mi?"</string>
-    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının bu cihazdaki daha fazla fotoğraf ve videoya erişmesine izin verilsin mi?"</string>
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının bu cihazdaki diğer fotoğraf ve videolara erişmesine izin verilsin mi?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının ses kaydetmesine izin verilsin mi?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Bu uygulama, yalnızca kullanıldığı sırada ses kaydedebilir"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının ses kaydetmesine izin verilsin mi?"</string>
@@ -595,10 +593,8 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Bu uygulama, konum verilerini üçüncü taraflarla paylaşabileceğini belirtti"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Veri paylaşımı ve konum"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Veri paylaşımı bilgilerinin kaynağı"</string>
-    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
-    <skip />
-    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Geliştirici, "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" uygulama mağazasına bu uygulamanın veri paylaşımı yöntemleri hakkında bilgi sağladı. Geliştirici bu bilgiyi zaman içinde güncelleyebilir."</string>
+    <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Bu uygulama, konum verilerini paylaşabilir:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Veri paylaşımı değişir"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Veri uygulamaları; uygulama sürümünüz, kullanımınız, bölgeniz ve yaşınıza göre değişiklik gösterebilir. "<annotation id="link">"Veri paylaşımı hakkında daha fazla bilgi"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Konum verileriniz"</string>
@@ -613,6 +609,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Veri güvenliği"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Konum verileri paylaşılabilir"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Bu uygulama, konum verilerinizi üçüncü taraflarla paylaşabileceğini belirtti"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Bu bağlantı açılamıyor"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"Bu içeriği görüntülemek için tarayıcı pencerenize <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> yazmayı deneyin"</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Konum için veri paylaşımı güncellemeleri"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Konum verilerinizi paylaşma şekillerini değiştiren uygulamaları inceleyin"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Bu uygulamalar, konum verilerinizi paylaşma şekillerini değiştirdi. Daha önce paylaşmadıkları konum verilerinizi paylaşmaya başlamış olabilecekleri gibi reklam ya da pazarlama için paylaşmaya başlamış da olabilirler."</string>

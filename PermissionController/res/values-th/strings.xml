@@ -34,8 +34,8 @@
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"ข้อมูลเพิ่มเติม"</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"อนุญาตทั้งหมด"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"อนุญาตทั้งหมดตลอดเวลา"</string>
-    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"เลือกรูปภาพ"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"เลือกรูปภาพและวิดีโอเพิ่มเติม"</string>
+    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"เลือกรูปภาพและวิดีโอ"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"เลือกเพิ่มเติม"</string>
     <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"ไม่ต้องเลือกเพิ่มเติม"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"ยังคงไม่อนุญาต"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"ปิด"</string>
@@ -191,8 +191,8 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"อนุญาตให้เข้าถึงสื่อเท่านั้น"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"อนุญาตตลอด"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"อนุญาตขณะมีการใช้แอปเท่านั้น"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"อนุญาตรูปภาพทั้งหมด"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"อนุญาตรูปภาพที่เลือก"</string>
+    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
+    <skip />
     <string name="app_permission_button_ask" msgid="3342950658789427">"ถามทุกครั้ง"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"ไม่อนุญาต"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"ตำแหน่งที่แน่นอน"</string>
@@ -479,7 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึง&lt;b&gt;รูปภาพ วิดีโอ เพลง เสียง และไฟล์อื่นๆ&lt;/b&gt; ในอุปกรณ์นี้ไหม"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึงเพลงและเสียงในอุปกรณ์นี้ไหม"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึงรูปภาพและวิดีโอในอุปกรณ์นี้ไหม"</string>
-    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึงรูปภาพและวิดีโอเพิ่มเติมในอุปกรณ์นี้ไหม"</string>
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึงรูปภาพและวิดีโอเพิ่มเติมในอุปกรณ์นี้ไหม"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; บันทึกเสียงไหม"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"แอปจะบันทึกเสียงได้ในขณะที่คุณใช้แอปอยู่เท่านั้น"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; บันทึกเสียงไหม"</string>
@@ -593,10 +593,8 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"แอปนี้ระบุว่าแอปอาจแชร์ข้อมูลตำแหน่งกับองค์กรบุคคลที่สามของแอป"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"การแชร์ข้อมูลและตำแหน่ง"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"แหล่งที่มาของรายละเอียดการแชร์ข้อมูล"</string>
-    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
-    <skip />
-    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"นักพัฒนาแอปได้ให้รายละเอียดเกี่ยวกับวิธีที่แอปนี้แชร์ข้อมูลไว้ใน "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" โดยอาจอัปเดตข้อมูลนี้เมื่อเวลาผ่านไป"</string>
+    <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"แอปนี้อาจแชร์ข้อมูลตำแหน่งเพื่อ"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"การแชร์ข้อมูลแตกต่างกันไปตามปัจจัยต่างๆ"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"วิธีจัดการข้อมูลอาจแตกต่างกันไปตามเวอร์ชันแอป การใช้งาน ภูมิภาค และอายุของผู้ใช้ "<annotation id="link">"รายละเอียดเพิ่มเติมเกี่ยวกับการแชร์ข้อมูล"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"ข้อมูลตำแหน่งของคุณ"</string>
@@ -611,6 +609,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"ความปลอดภัยของข้อมูล"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"อาจมีการแชร์ข้อมูลตำแหน่ง"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"แอปนี้ระบุว่าอาจแชร์ข้อมูลตำแหน่งของคุณกับบุคคลที่สาม"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"เปิดลิงก์นี้ไม่ได้"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"ลองพิมพ์ <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> ลงในหน้าต่างเบราว์เซอร์เพื่อดูเนื้อหานี้"</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"การอัปเดตการแชร์ข้อมูลตำแหน่ง"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"ตรวจสอบแอปที่เปลี่ยนแปลงวิธีที่อาจใช้แชร์ข้อมูลตำแหน่งของคุณ"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"แอปต่อไปนี้ได้เปลี่ยนแปลงวิธีที่แอปอาจแชร์ข้อมูลตำแหน่งของคุณ โดยที่แอปอาจไม่เคยแชร์มาก่อน หรืออาจแชร์ในตอนนี้เพื่อวัตถุประสงค์ในการโฆษณาหรือการตลาดก็ได้"</string>

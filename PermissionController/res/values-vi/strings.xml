@@ -32,12 +32,10 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Duy trì tùy chọn “Khi đang dùng ứng dụng”"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Duy trì tùy chọn “Chỉ lần này”"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Thông tin khác"</string>
-    <!-- no translation found for grant_dialog_button_allow_all (5939066403732409516) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_always_allow_all (1719900027660252167) -->
-    <skip />
-    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"Chọn ảnh"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"Chọn thêm ảnh và video"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Cho phép tất cả"</string>
+    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Luôn cho phép tất cả"</string>
+    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Chọn ảnh và video"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Chọn thêm"</string>
     <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Không chọn thêm"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Vẫn không cho phép"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Đóng"</string>
@@ -193,8 +191,8 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Chỉ cho phép truy cập vào nội dung nghe nhìn"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Luôn cho phép"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Chỉ cho phép khi dùng ứng dụng"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"Cho phép truy cập vào toàn bộ ảnh"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"Cho phép truy cập vào ảnh đã chọn"</string>
+    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
+    <skip />
     <string name="app_permission_button_ask" msgid="3342950658789427">"Luôn hỏi"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Không cho phép"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Vị trí chính xác"</string>
@@ -481,7 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào &lt;b&gt;ảnh, video, nhạc, âm thanh và các tệp khác&lt;/b&gt; trên thiết bị này?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào nhạc và âm thanh trên thiết bị này?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào ảnh và video trên thiết bị này?"</string>
-    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập thêm ảnh và video trên thiết bị này?"</string>
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào ảnh và video khác trên thiết bị này?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ghi âm?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Ứng dụng này chỉ có thể ghi âm khi bạn đang dùng ứng dụng"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ghi âm?"</string>
@@ -595,10 +593,8 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Nhà phát triển nêu rõ ứng dụng này có thể chia sẻ dữ liệu vị trí với bên thứ ba"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Chia sẻ dữ liệu và thông tin vị trí"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Nguồn cung cấp thông tin về cách thức chia sẻ dữ liệu"</string>
-    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
-    <skip />
-    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Nhà phát triển đã cung cấp thông tin cho "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" về cách thức ứng dụng này chia sẻ dữ liệu. Nhà phát triển có thể cập nhật thông tin này theo thời gian."</string>
+    <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Ứng dụng này có thể chia sẻ dữ liệu vị trí cho:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Nhiều cách thức chia sẻ dữ liệu"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Cách thức xử lý dữ liệu có thể thay đổi tuỳ theo phiên bản ứng dụng, cách sử dụng, khu vực và độ tuổi của bạn. "<annotation id="link">"Tìm hiểu thêm về chế độ chia sẻ dữ liệu"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Dữ liệu vị trí của bạn"</string>
@@ -613,6 +609,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"An toàn dữ liệu"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Dữ liệu vị trí có thể được chia sẻ"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Nhà phát triển nêu rõ rằng ứng dụng này có thể chia sẻ dữ liệu vị trí với bên thứ ba"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Không mở được đường liên kết này"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"Hãy thử nhập <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> vào cửa sổ trình duyệt để xem nội dung này"</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Nội dung cập nhật về cách thức chia sẻ dữ liệu vị trí"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Xem xét những ứng dụng đã thay đổi cách thức có thể được dùng để chia sẻ dữ liệu vị trí của bạn"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Những ứng dụng này đã thay đổi cách thức có thể được dùng để chia sẻ dữ liệu vị trí của bạn. Có thể những ứng dụng này trước đây chưa từng chia sẻ dữ liệu vị trí, nhưng bây giờ mới chia sẻ dữ liệu đó nhằm mục đích quảng cáo hoặc tiếp thị."</string>

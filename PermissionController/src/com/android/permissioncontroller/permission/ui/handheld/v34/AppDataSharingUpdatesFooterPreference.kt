@@ -78,6 +78,7 @@ class AppDataSharingUpdatesFooterPreference : Preference {
             footerLink.length,
             0)
         footerLinkView?.let {
+            it.visibility = if (onFooterLinkClick == null) View.GONE else View.VISIBLE
             it.text = footerLinkText
             it.movementMethod = LinkMovementMethod.getInstance()
         }

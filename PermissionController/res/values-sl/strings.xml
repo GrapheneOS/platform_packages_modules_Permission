@@ -34,8 +34,8 @@
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Več informacij"</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Dovoli vse"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Vedno dovoli vse"</string>
-    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"Izbira fotografij"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"Izbira dodatnih fotografij in videoposnetkov"</string>
+    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Izberi fotografije in videoposnetke"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Izberi več"</string>
     <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Brez izbire dodatnih"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Ne dovoli kljub temu"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Opusti"</string>
@@ -191,8 +191,8 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Dovoli samo dostop do predstavnosti"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Vedno dovoli"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Dovoli samo med uporabo aplikacije"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"Dovoli vse fotografije"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"Dovoli izbrane fotografije"</string>
+    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
+    <skip />
     <string name="app_permission_button_ask" msgid="3342950658789427">"Vedno vprašaj"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Ne dovoli"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Natančna lokacija"</string>
@@ -479,7 +479,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Dovolite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dostop do &lt;b&gt;fotografij, videoposnetkov, glasbe, zvočnih datotek in drugih datotek&lt;/b&gt; v tej napravi?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Dovolite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dostop do glasbe in zvočnih datotek v tej napravi?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Dovolite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dostop do fotografij in videoposnetkov v tej napravi?"</string>
-    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"Dovolite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dostop do dodatnih fotografij in videoposnetkov v tej napravi?"</string>
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Želite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dovoliti dostop do več fotografij in videoposnetkov v tej napravi?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Dovolite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; snemanje zvoka?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Aplikacija bo lahko snemala zvok le med vašo uporabo aplikacije."</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Želite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; omogočiti snemanje zvoka?"</string>
@@ -593,10 +593,8 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Ta aplikacija navaja, da bo lokacijske podatke morda delila s tretjimi osebami."</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Deljenje podatkov in lokacija"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Vir informacij o deljenju podatkov"</string>
-    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
-    <skip />
-    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Razvijalec je z informacijami o tem, kako ta aplikacija deli podatke, seznanil trgovino z aplikacijami "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>". Razvijalec bo morda te informacije občasno posodobil."</string>
+    <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Ta aplikacija lahko deli lokacijske podatke za:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Načini deljenja podatkov se med seboj razlikujejo"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Postopki obdelave podatkov se morda razlikujejo glede na različico aplikacije, uporabo, območje in starost. "<annotation id="link">"Preberite več o deljenju podatkov"</annotation>"."</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Vaši lokacijski podatki"</string>
@@ -611,6 +609,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Varnost podatkov"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Lokacijski podatki so morda deljeni z drugimi"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Ta aplikacija navaja, da bo vaše lokacijske podatke morda delila s tretjimi osebami."</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Te povezave ni mogoče odpreti"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"Če si želite ogledati to vsebino, poskusite vnesti <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> v okno brskalnika."</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Posodobitve deljenja podatkov o lokaciji"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Pregled aplikacij s spremembami v načinu deljenja vaših lokacijskih podatkov"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Te aplikacije so spremenile način deljenja vaših lokacijskih podatkov. Prej jih morda sploh niso delile ali pa jih zdaj delijo za namene oglaševanja ali trženja."</string>

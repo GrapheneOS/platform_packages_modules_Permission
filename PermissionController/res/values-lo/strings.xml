@@ -32,12 +32,10 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"ໃຊ້ “ໃນຂະນະທີ່ມີການໃຊ້ແອັບຢູ່”"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"ໃຊ້ແບບ “ສະເພາະເທື່ອນີ້” ຕໍ່ໄປ"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"ຂໍ້ມູນເພີ່ມເຕີມ"</string>
-    <!-- no translation found for grant_dialog_button_allow_all (5939066403732409516) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_always_allow_all (1719900027660252167) -->
-    <skip />
-    <string name="grant_dialog_button_allow_selected_photos" msgid="4098620850512492892">"ເລືອກຮູບພາບ"</string>
-    <string name="grant_dialog_button_allow_more_selected_photos" msgid="6352088451101076245">"ເລືອກຮູບພາບ ແລະ ວິດີໂອເພີ່ມເຕີມ"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"ອະນຸຍາດທັງໝົດ"</string>
+    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"ອະນຸຍາດທັງໝົດຕະຫຼອດ"</string>
+    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"ເລືອກຮູບພາບ ແລະ ວິດີໂອ"</string>
+    <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"ເລືອກເພີ່ມເຕີມ"</string>
     <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"ຢ່າເລືອກເພີ່ມເຕີມ"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"ຢືນຢັນບໍ່ອະນຸຍາດ"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"ປິດໄວ້"</string>
@@ -193,8 +191,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"ອະນຸຍາດການເຂົ້າເຖິງມີເດຍເທົ່ານັ້ນ"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"ອະນຸຍາດຕະຫຼອດເວລາ"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"ອະນຸຍາດໃນເວລາທີ່ກຳລັງໃຊ້ແອັບເທົ່ານັ້ນ"</string>
-    <string name="app_permission_button_allow_all_photos" msgid="914762549054270764">"ອະນຸຍາດຮູບພາບທັງໝົດ"</string>
-    <string name="app_permission_button_select_photos" msgid="1022930616634145364">"ອະນຸຍາດຮູບພາບທີ່ເລືອກໄວ້"</string>
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"ອະນຸຍາດທັງໝົດຕະຫຼອດ"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"ຖາມທຸກເທື່ອ"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"ບໍ່ອະນຸຍາດ"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"ສະຖານທີ່ແບບລະອຽດ"</string>
@@ -481,7 +478,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"ອະນຸຍາດໃຫ້ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ເຂົ້າເຖິງ &lt;b&gt;ຮູບພາບ, ວິດີໂອ, ເພງ, ສຽງ ແລະ ໄຟລ໌ອື່ນໆ&lt;/b&gt; ຢູ່ອຸປະກອນນີ້ບໍ?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"ອະນຸຍາດໃຫ້ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ເຂົ້າເຖິງເພງ ແລະ ສຽງຢູ່ອຸປະກອນນີ້ບໍ?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"ອະນຸຍາດໃຫ້ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ເຂົ້າເຖິງຮູບພາບ ແລະ ວິດີໂອຢູ່ອຸປະກອນນີ້ບໍ?"</string>
-    <string name="permgrouprequest_more_photos" msgid="1735590169295777717">"ອະນຸຍາດໃຫ້ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ເຂົ້າເຖິງຮູບພາບ ແລະ ວິດີໂອເພີ່ມເຕີມຢູ່ອຸປະກອນນີ້ບໍ?"</string>
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"ອະນຸຍາດໃຫ້ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ເຂົ້າເຖິງຮູບພາບ ແລະ ວິດີໂອເພີ່ມເຕີມຢູ່ອຸປະກອນນີ້ບໍ?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"ອະນຸຍາດ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ໃຫ້ບັນທຶກສຽງບໍ?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"ແອັບນີ້ສາມາດບັນທຶກສຽງໃນຂະນະທີ່ທ່ານກຳລັງໃຊ້ແອັບເທົ່ານັ້ນ"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"ອະນຸຍາດ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ໃຫ້ບັນທຶກສຽງບໍ?"</string>
@@ -595,10 +592,8 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"ແອັບນີ້ລະບຸວ່າມັນອາດແບ່ງປັນຂໍ້ມູນສະຖານທີ່ກັບພາກສ່ວນທີສາມ"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"ການແບ່ງປັນຂໍ້ມູນ ແລະ ສະຖານທີ່"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"ແຫຼ່ງທີ່ມາຂອງລາຍລະອຽດການແບ່ງປັນຂໍ້ມູນ"</string>
-    <!-- no translation found for permission_rationale_data_sharing_source_message (8330794595417986883) -->
-    <skip />
-    <!-- no translation found for permission_rationale_location_purpose_title (5115877143670012618) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"ນັກພັດທະນາແອັບໄດ້ໃຫ້ຂໍ້ມູນໄວ້ໃນ "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" ກ່ຽວກັບວິທີທີ່ແອັບນີ້ແບ່ງປັນຂໍ້ມູນ. ນັກພັດທະນາອາດອັບເດດຂໍ້ມູນນີ້ເມື່ອເວລາຜ່ານໄປ."</string>
+    <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"ແອັບນີ້ອາດແບ່ງປັນຂໍ້ມູນສະຖານທີ່ຍ້ອນ:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ການແບ່ງປັນຂໍ້ມູນອາດແຕກຕ່າງກັນໄປ"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"ການເຝິກແອບຂໍ້ມູນອາດແຕກຕ່າງກັນໄປຕາມເວີຊັນຂອງແອັບ, ການນຳໃຊ້, ພາກພື້ນ ແລະ ອາຍຸຂອງທ່ານ. "<annotation id="link">"ຂໍ້ມູນເພີ່ມເຕີມກ່ຽວກັບການແບ່ງປັນຂໍ້ມູນ"</annotation></string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"ຂໍ້ມູນສະຖານທີ່ຂອງທ່ານ"</string>
@@ -613,6 +608,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"ຄວາມປອດໄພຂອງຂໍ້ມູນ"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"ອາດມີການແບ່ງປັນຂໍ້ມູນສະຖານທີ່"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"ແອັບນີ້ລະບຸວ່າມັນອາດແບ່ງປັນຂໍ້ມູນສະຖານທີ່ກັບພາກສ່ວນທີສາມ"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"ບໍ່ສາມາດເປີດລິ້ງນີ້ໄດ້"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"ລອງພິມ <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> ໃສ່ໃນໜ້າຈໍໂປຣແກຣມທ່ອງເວັບຂອງທ່ານເພື່ອເບິ່ງເນື້ອຫານີ້"</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"ການອັບເດດການແບ່ງປັນຂໍ້ມູນສະຖານທີ່"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"ກວດສອບແອັບທີ່ປ່ຽນແປງວິທີທີ່ແອັບອາດແບ່ງປັນຂໍ້ມູນສະຖານທີ່ຂອງທ່ານ"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"ແອັບເຫຼົ່ານີ້ໄດ້ປ່ຽນແປງວິທີທີ່ແອັບອາດແບ່ງປັນຂໍ້ມູນສະຖານທີ່ຂອງທ່ານແລ້ວ. ແອັບເຫຼົ່ານີ້ອາດບໍ່ເຄີຍແບ່ງປັນຂໍ້ມູນມາກ່ອນ ຫຼື ອາດແບ່ງປັນຂໍ້ມູນເພື່ອຈຸດປະສົງໃນການໂຄສະນາ ຫຼື ການຕະຫຼາດ."</string>
