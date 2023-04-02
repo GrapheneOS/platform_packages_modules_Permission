@@ -191,8 +191,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Ruhusu ufikiaji wa maudhui pekee"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Ruhusu kila wakati"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Ruhusu tu unapotumia programu"</string>
-    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
-    <skip />
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Ruhusu zote kila wakati"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Uliza kila wakati"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Usiruhusu"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Eneo mahususi"</string>
@@ -597,6 +596,8 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Programu hii inaweza kushiriki data ya mahali ili:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Kanuni za kushiriki data hutofautiana"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Kanuni za data zinaweza kutofautiana kulingana na toleo la programu yako, matumizi, eneo na umri wako. "<annotation id="link">"Maelezo zaidi kuhusu kushiriki data"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_varies_message_without_link (4912763761399025094) -->
+    <skip />
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Data ya mahali ulipo"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Badilisha ufikiaji wa programu hii kwenye "<annotation id="link">"mipangilio ya faragha"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"Utendaji wa programu"</string>
@@ -610,7 +611,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Data ya mahali inaweza kushirikiwa"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Programu hii ilitaja kuwa inaweza kushiriki data yako ya mahali na washirika wengine"</string>
     <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Huwezi kufungua kiungo hiki"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"Jaribu kuandika <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> kwenye dirisha la kivinjari chako ili uangalie maudhui haya"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Masasisho ya kushiriki data ya mahali"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Kagua programu zilizobadilisha jinsi zinavyoweza kushiriki data ya mahali ulipo"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Programu hizi zimebadilisha jinsi zinavyoweza kushiriki data ya mahali ulipo. Huenda zilikuwa haziishiriki hapo awali au sasa zinaweza kuishiriki kwa madhumuni ya utangazaji au uuzaji."</string>
