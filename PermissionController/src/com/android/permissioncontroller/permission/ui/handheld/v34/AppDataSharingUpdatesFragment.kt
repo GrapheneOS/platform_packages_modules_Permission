@@ -2,18 +2,27 @@
 
 package com.android.permissioncontroller.permission.ui.handheld.v34
 
+import android.app.Application
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.os.UserHandle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
 import com.android.permissioncontroller.Constants.EXTRA_SESSION_ID
+import com.android.permissioncontroller.Constants.INVALID_SESSION_ID
+import com.android.permissioncontroller.PermissionControllerStatsLog
+import com.android.permissioncontroller.PermissionControllerStatsLog.APP_DATA_SHARING_UPDATES_FRAGMENT_ACTION_REPORTED
+import com.android.permissioncontroller.PermissionControllerStatsLog.APP_DATA_SHARING_UPDATES_FRAGMENT_ACTION_REPORTED__DATA_SHARING_CHANGE__ADDS_ADVERTISING_PURPOSE
+import com.android.permissioncontroller.PermissionControllerStatsLog.APP_DATA_SHARING_UPDATES_FRAGMENT_ACTION_REPORTED__DATA_SHARING_CHANGE__ADDS_SHARING_WITHOUT_ADVERTISING_PURPOSE
+import com.android.permissioncontroller.PermissionControllerStatsLog.APP_DATA_SHARING_UPDATES_FRAGMENT_ACTION_REPORTED__DATA_SHARING_CHANGE__ADDS_SHARING_WITH_ADVERTISING_PURPOSE
+import com.android.permissioncontroller.PermissionControllerStatsLog.APP_DATA_SHARING_UPDATES_FRAGMENT_VIEWED
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.model.v34.DataSharingUpdateType
 import com.android.permissioncontroller.permission.ui.handheld.PermissionsFrameFragment
@@ -23,12 +32,14 @@ import com.android.permissioncontroller.permission.ui.model.v34.AppDataSharingUp
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.StringUtils
 import java.text.Collator
+import java.util.Random
 
 /** Fragment to display data sharing updates for installed apps. */
 @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
 class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
     private lateinit var viewModel: AppDataSharingUpdatesViewModel
     private lateinit var collator: Collator
+    private var sessionId: Long = INVALID_SESSION_ID
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +58,11 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
         }
 
         viewModel.appLocationDataSharingUpdateUiInfoLiveData.observe(this, this::updatePreferences)
+        sessionId =
+            savedInstanceState?.getLong(EXTRA_SESSION_ID, INVALID_SESSION_ID) ?: INVALID_SESSION_ID
+        while (sessionId == INVALID_SESSION_ID) {
+            sessionId = Random().nextLong()
+        }
     }
 
     override fun setDivider(divider: Drawable?) {
@@ -65,6 +81,8 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
     private fun updatePreferences(updateUiInfos: List<AppLocationDataSharingUpdateUiInfo>) {
         setLoading(/* loading= */ false, /* animate= */ true)
 
+        logAppDataSharingUpdatesFragmentViewed(sessionId, updateUiInfos.size)
+
         if (updateUiInfos.isNotEmpty()) {
             showUpdatesPresentUi()
         } else {
@@ -78,8 +96,8 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
 
         val updatesCategory =
             preferenceScreen.findPreference<PreferenceCategory>(
-                LAST_PERIOD_UPDATES_PREFERENCE_CATEGORY_ID)
-                ?: return
+                LAST_PERIOD_UPDATES_PREFERENCE_CATEGORY_ID
+            ) ?: return
 
         val preferencesToRemove = mutableSetOf<Preference>()
         for (i in 0 until (updatesCategory.preferenceCount)) {
@@ -95,7 +113,8 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
                 createUpdatePreferenceKey(
                     updateUiInfo.packageName,
                     updateUiInfo.userHandle,
-                    updateUiInfo.dataSharingUpdateType)
+                    updateUiInfo.dataSharingUpdateType
+                )
             if (updatesCategory.findPreference<AppDataSharingUpdatePreference>(key) != null) {
                 // If a preference is already shown, don't recreate it.
                 return@forEach
@@ -105,19 +124,30 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
                     requireActivity().application,
                     updateUiInfo.packageName,
                     updateUiInfo.userHandle,
-                    requireActivity().applicationContext)
+                    requireActivity().applicationContext
+                )
             appDataSharingUpdatePreference.apply {
                 this.key = key
                 title =
                     KotlinUtils.getPackageLabel(
                         requireActivity().application,
                         updateUiInfo.packageName,
-                        updateUiInfo.userHandle)
+                        updateUiInfo.userHandle
+                    )
                 summary = getSummaryForLocationUpdateType(updateUiInfo.dataSharingUpdateType)
                 preferenceClick =
                     View.OnClickListener { _ ->
+                        logAppDataSharingUpdatesFragmentActionReported(
+                            sessionId,
+                            requireActivity().application,
+                            updateUiInfo
+                        )
                         viewModel.startAppLocationPermissionPage(
-                            requireActivity(), updateUiInfo.packageName, updateUiInfo.userHandle)
+                            requireActivity(),
+                            sessionId,
+                            updateUiInfo.packageName,
+                            updateUiInfo.userHandle
+                        )
                     }
                 updatesCategory.addPreference(this)
             }
@@ -144,10 +174,12 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
             preferenceScreen?.findPreference<AppDataSharingDetailsPreference>(DETAILS_PREFERENCE_ID)
         val footerPreference =
             preferenceScreen?.findPreference<AppDataSharingUpdatesFooterPreference>(
-                FOOTER_PREFERENCE_ID)
+                FOOTER_PREFERENCE_ID
+            )
         val dataSharingUpdatesCategory =
             preferenceScreen?.findPreference<PreferenceCategory>(
-                LAST_PERIOD_UPDATES_PREFERENCE_CATEGORY_ID)
+                LAST_PERIOD_UPDATES_PREFERENCE_CATEGORY_ID
+            )
 
         detailsPreference?.let {
             it.showNoUpdates = false
@@ -182,10 +214,12 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
             preferenceScreen?.findPreference<AppDataSharingDetailsPreference>(DETAILS_PREFERENCE_ID)
         val footerPreference =
             preferenceScreen?.findPreference<AppDataSharingUpdatesFooterPreference>(
-                FOOTER_PREFERENCE_ID)
+                FOOTER_PREFERENCE_ID
+            )
         val dataSharingUpdatesCategory =
             preferenceScreen?.findPreference<PreferenceCategory>(
-                LAST_PERIOD_UPDATES_PREFERENCE_CATEGORY_ID)
+                LAST_PERIOD_UPDATES_PREFERENCE_CATEGORY_ID
+            )
 
         detailsPreference?.let {
             it.showNoUpdates = true
@@ -232,8 +266,55 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
          */
         fun createArgs(sessionId: Long) = Bundle().apply { putLong(EXTRA_SESSION_ID, sessionId) }
 
+        private val LOG_TAG = AppDataSharingUpdatesFragment::class.java.simpleName
+
         private const val DETAILS_PREFERENCE_ID = "details"
         private const val FOOTER_PREFERENCE_ID = "info_footer"
         private const val LAST_PERIOD_UPDATES_PREFERENCE_CATEGORY_ID = "last_period_updates"
+
+        private fun logAppDataSharingUpdatesFragmentViewed(
+            sessionId: Long,
+            numberOfAppUpdates: Int
+        ) {
+            PermissionControllerStatsLog.write(
+                APP_DATA_SHARING_UPDATES_FRAGMENT_VIEWED,
+                sessionId,
+                numberOfAppUpdates
+            )
+            Log.v(
+                LOG_TAG,
+                "AppDataSharingUpdatesFragment viewed with" +
+                    " sessionId=$sessionId" +
+                    " numberOfAppUpdates=$numberOfAppUpdates"
+            )
+        }
+
+        private fun logAppDataSharingUpdatesFragmentActionReported(
+            sessionId: Long,
+            app: Application,
+            updateUiInfo: AppLocationDataSharingUpdateUiInfo
+        ) {
+            val uid: Int =
+                KotlinUtils.getPackageUid(app, updateUiInfo.packageName, updateUiInfo.userHandle)
+                    ?: return
+            val dataSharingChangeValue: Int =
+                getStatsLogValueForLocationUpdateType(updateUiInfo.dataSharingUpdateType)
+            PermissionControllerStatsLog.write(
+                APP_DATA_SHARING_UPDATES_FRAGMENT_ACTION_REPORTED,
+                sessionId,
+                uid,
+                dataSharingChangeValue
+            )
+        }
+
+        private fun getStatsLogValueForLocationUpdateType(type: DataSharingUpdateType): Int =
+            when (type) {
+                DataSharingUpdateType.ADDS_ADVERTISING_PURPOSE ->
+                    APP_DATA_SHARING_UPDATES_FRAGMENT_ACTION_REPORTED__DATA_SHARING_CHANGE__ADDS_ADVERTISING_PURPOSE
+                DataSharingUpdateType.ADDS_SHARING_WITHOUT_ADVERTISING_PURPOSE ->
+                    APP_DATA_SHARING_UPDATES_FRAGMENT_ACTION_REPORTED__DATA_SHARING_CHANGE__ADDS_SHARING_WITHOUT_ADVERTISING_PURPOSE
+                DataSharingUpdateType.ADDS_SHARING_WITH_ADVERTISING_PURPOSE ->
+                    APP_DATA_SHARING_UPDATES_FRAGMENT_ACTION_REPORTED__DATA_SHARING_CHANGE__ADDS_SHARING_WITH_ADVERTISING_PURPOSE
+            }
     }
 }
