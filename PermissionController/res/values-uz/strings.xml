@@ -211,7 +211,7 @@
     <string name="auto_revocable_permissions_two" msgid="4874067408752041716">"<xliff:g id="PERM_0">%1$s</xliff:g> va <xliff:g id="PERM_1">%2$s</xliff:g> ruxsatlari olib tashlanadi."</string>
     <string name="auto_revocable_permissions_many" msgid="1521807896206032992">"Olib tashlanadigan ruxsatlar: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_manage_title" msgid="7693181026874842935">"Ruxsatlarni avtomatik boshqarish"</string>
-    <string name="off" msgid="1438489226422866263">"Yoqilmagan"</string>
+    <string name="off" msgid="1438489226422866263">"Oʻchiq"</string>
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"<xliff:g id="PERMISSION_NAME">%s</xliff:g> ruxsati olib tashlandi"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> va yana <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> ta ruxsat olib tashlandi"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> va yana <xliff:g id="NUMBER">%2$s</xliff:g> ta ruxsat olib tashlandi"</string>
