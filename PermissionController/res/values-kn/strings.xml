@@ -288,8 +288,8 @@
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"ಮತ್ತಷ್ಟು ಆಯ್ಕೆಗಳನ್ನು ವೀಕ್ಷಿಸಿ"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"ಪ್ರವೇಶವನ್ನು ತೆಗೆದುಹಾಕಲಾಗಿದೆ"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"ಪೂರ್ಣ ಸಾಧನ ಪ್ರವೇಶ ಹೊಂದಿರುವ ಆ್ಯಪ್ ಅನ್ನು ಪರಿಶೀಲಿಸಿ"</string>
-    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> ಆ್ಯಪ್ ಸ್ಕ್ರೀನ್ ಅನ್ನು ವೀಕ್ಷಿಸಬಹುದು ಮತ್ತು ಸಾಧನದಲ್ಲಿ ಕ್ರಿಯೆಗಳನ್ನು ಮಾಡಬಹುದು. ಪ್ರವೇಶಿಸುವಿಕೆ ಆ್ಯಪ್‌ಗಳು ಸರಿಯಾಗಿ ಕಾರ್ಯನಿರ್ವಹಿಸಲು ಈ ರೀತಿಯ ಪ್ರವೇಶದ ಅಗತ್ಯವಿದೆ."</string>
-    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"ಈ ಆ್ಯಪ್ ಸ್ಕ್ರೀನ್ ಅನ್ನು ವೀಕ್ಷಿಸಬಹುದು ಮತ್ತು ಸಾಧನದಲ್ಲಿ ಕ್ರಿಯೆಗಳನ್ನು ಮಾಡಬಹುದು. ಪ್ರವೇಶಿಸುವಿಕೆ ಆ್ಯಪ್‌ಗಳು ಸರಿಯಾಗಿ ಕಾರ್ಯನಿರ್ವಹಿಸಲು ಈ ರೀತಿಯ ಪ್ರವೇಶದ ಅಗತ್ಯವಿದೆ, ಆದರೆ ಆ್ಯಪ್ ಅನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತು ನೀವು ಅದನ್ನು ನಂಬುತ್ತೀರಿ ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ."</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> ಆ್ಯಪ್ ಸ್ಕ್ರೀನ್ ಅನ್ನು ವೀಕ್ಷಿಸಬಹುದು ಮತ್ತು ಸಾಧನದಲ್ಲಿ ಕ್ರಿಯೆಗಳನ್ನು ಮಾಡಬಹುದು. ಆ್ಯಕ್ಸೆಸಿಬಿಲಿಟಿ ಆ್ಯಪ್‌ಗಳು ಸರಿಯಾಗಿ ಕಾರ್ಯನಿರ್ವಹಿಸಲು ಈ ರೀತಿಯ ಪ್ರವೇಶದ ಅಗತ್ಯವಿದೆ."</string>
+    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"ಈ ಆ್ಯಪ್ ಸ್ಕ್ರೀನ್ ಅನ್ನು ವೀಕ್ಷಿಸಬಹುದು ಮತ್ತು ಸಾಧನದಲ್ಲಿ ಕ್ರಿಯೆಗಳನ್ನು ಮಾಡಬಹುದು. ಆ್ಯಕ್ಸೆಸಿಬಿಲಿಟಿ ಆ್ಯಪ್‌ಗಳು ಸರಿಯಾಗಿ ಕಾರ್ಯನಿರ್ವಹಿಸಲು ಈ ರೀತಿಯ ಪ್ರವೇಶದ ಅಗತ್ಯವಿದೆ, ಆದರೆ ಆ್ಯಪ್ ಅನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತು ನೀವು ಅದನ್ನು ನಂಬುತ್ತೀರಿ ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ."</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"ಪ್ರವೇಶವನ್ನು ತೆಗೆದುಹಾಕಿ"</string>
     <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"ಪೂರ್ಣ ಪ್ರವೇಶದ ಮೂಲಕ ಆ್ಯಪ್‌ಗಳನ್ನು ವೀಕ್ಷಿಸಿ"</string>
     <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"ಪ್ರವೇಶವನ್ನು ತೆಗೆದುಹಾಕಲಾಗಿದೆ"</string>
@@ -343,7 +343,7 @@
     <string name="car_permission_selected" msgid="180837028920791596">"ಆಯ್ಕೆಮಾಡಲಾಗಿದೆ"</string>
     <string name="settings" msgid="5409109923158713323">"ಸೆಟ್ಟಿಂಗ್‌ಗಳು"</string>
     <string name="accessibility_service_dialog_title_single" msgid="7956432823014102366">"<xliff:g id="SERVICE_NAME">%s</xliff:g> ಸೇವೆಯು ನಿಮ್ಮ ಸಾಧನಕ್ಕೆ ಸಂಪೂರ್ಣ ಪ್ರವೇಶವನ್ನು ಹೊಂದಿದೆ"</string>
-    <string name="accessibility_service_dialog_title_multiple" msgid="5527879210683548175">"<xliff:g id="NUM_SERVICES">%s</xliff:g> ಪ್ರವೇಶಿಸುವಿಕೆ ಆ್ಯಪ್‌ಗಳು ನಿಮ್ಮ ಸಾಧನಕ್ಕೆ ಸಂಪೂರ್ಣ ಪ್ರವೇಶವನ್ನು ಹೊಂದಿವೆ"</string>
+    <string name="accessibility_service_dialog_title_multiple" msgid="5527879210683548175">"<xliff:g id="NUM_SERVICES">%s</xliff:g> ಆ್ಯಕ್ಸೆಸಿಬಿಲಿಟಿ ಆ್ಯಪ್‌ಗಳು ನಿಮ್ಮ ಸಾಧನಕ್ಕೆ ಸಂಪೂರ್ಣ ಆ್ಯಕ್ಸೆಸ್ ಹೊಂದಿವೆ"</string>
     <string name="accessibility_service_dialog_bottom_text_single" msgid="1128666197822205958">"<xliff:g id="SERVICE_NAME">%s</xliff:g> ಸೇವೆಯು ನಿಮ್ಮ ಸ್ಕ್ರೀನ್, ಕ್ರಿಯೆಗಳು ಮತ್ತು ಇನ್‌ಪುಟ್‌ಗಳು, ಕೆಲಸ ನಿರ್ವಹಣೆ ಕ್ರಿಯೆಗಳು ಮತ್ತು ಡಿಸ್‌ಪ್ಲೇ ನಿಯಂತ್ರಣವನ್ನು ವೀಕ್ಷಿಸಬಹುದು."</string>
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"ಈ ಆ್ಯಪ್‌ಗಳು ನಿಮ್ಮ ಸ್ಕ್ರೀನ್, ಕ್ರಿಯೆಗಳು ಮತ್ತು ಇನ್‌ಪುಟ್‌ಗಳು, ಕೆಲಸ ನಿರ್ವಹಣೆ ಕ್ರಿಯೆಗಳನ್ನು ವೀಕ್ಷಿಸಬಹುದು ಮತ್ತು ಡಿಸ್‌ಪ್ಲೇ ಅನ್ನು ನಿಯಂತ್ರಿಸಬಹುದು."</string>
     <string name="role_assistant_label" msgid="4727586018198208128">"ಡೀಫಾಲ್ಟ್ ಡಿಜಿಟಲ್ ಅಸಿಸ್ಟೆಂಟ್ ಆ್ಯಪ್"</string>

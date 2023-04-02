@@ -288,8 +288,8 @@
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"Pokaži več možnosti"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Dostop je odstranjen"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"Pregled aplikacije s polnim dostopom do naprave"</string>
-    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"Aplikacija <xliff:g id="APP_NAME">%s</xliff:g> si lahko ogleduje zaslon in izvaja dejanja v napravi. Aplikacije s funkcijami za ljudi s posebnimi potrebami potrebujejo tovrstni dostop, da lahko delujejo, kot je predvideno."</string>
-    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"Ta aplikacija si lahko ogleduje zaslon in izvaja dejanja v napravi. Aplikacije s funkcijami za ljudi s posebnimi potrebami potrebujejo tovrstni dostop, da lahko delujejo, kot je predvideno, vendar pa preverite aplikacijo in se prepričajte, da ji zaupate."</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"Aplikacija <xliff:g id="APP_NAME">%s</xliff:g> si lahko ogleduje zaslon in izvaja dejanja v napravi. Aplikacije za dostopnost potrebujejo tovrstni dostop, da lahko delujejo, kot je predvideno."</string>
+    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"Ta aplikacija si lahko ogleduje zaslon in izvaja dejanja v napravi. Aplikacije za dostopnost potrebujejo tovrstni dostop, da lahko delujejo, kot je predvideno, vendar pa preverite aplikacijo in se prepričajte, da ji zaupate."</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Odstrani dostop"</string>
     <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"Prikaži aplikacije s polnim dostopom"</string>
     <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Dostop je odstranjen."</string>
@@ -343,7 +343,7 @@
     <string name="car_permission_selected" msgid="180837028920791596">"Izbrano"</string>
     <string name="settings" msgid="5409109923158713323">"Nastavitve"</string>
     <string name="accessibility_service_dialog_title_single" msgid="7956432823014102366">"Storitev <xliff:g id="SERVICE_NAME">%s</xliff:g> ima poln dostop do naprave"</string>
-    <string name="accessibility_service_dialog_title_multiple" msgid="5527879210683548175">"Poln dostop do naprave ima toliko aplikacij za ljudi s posebnimi potrebami: <xliff:g id="NUM_SERVICES">%s</xliff:g>"</string>
+    <string name="accessibility_service_dialog_title_multiple" msgid="5527879210683548175">"Poln dostop do naprave ima toliko aplikacij za dostopnost: <xliff:g id="NUM_SERVICES">%s</xliff:g>"</string>
     <string name="accessibility_service_dialog_bottom_text_single" msgid="1128666197822205958">"Storitev <xliff:g id="SERVICE_NAME">%s</xliff:g> si lahko ogleduje zaslon, dejanja in vnose, izvaja dejanja in upravlja prikaz."</string>
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"Te aplikacije si lahko ogledujejo zaslon, dejanja in vnose, izvajajo dejanja in upravljajo prikaz."</string>
     <string name="role_assistant_label" msgid="4727586018198208128">"Privzeti digitalni pomočnik"</string>

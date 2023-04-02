@@ -24,7 +24,7 @@
     <string name="available" msgid="6007778121920339498">"Mavjud"</string>
     <string name="blocked" msgid="9195547604866033708">"Bloklangan"</string>
     <string name="on" msgid="280241003226755921">"Yoniq"</string>
-    <string name="off" msgid="1438489226422866263">"Yoqilmagan"</string>
+    <string name="off" msgid="1438489226422866263">"Oʻchiq"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Oʻchirish yoki faolsizlantirish"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Ilova topilmadi"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"Rad etish"</string>
@@ -288,8 +288,8 @@
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"Boshqa variantlarni tanlash"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Ruxsat olib tashlandi"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"Toʻliq kirish imkoniyati bilan ilovani tekshiring"</string>
-    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> ekraningizni koʻra oladi va qurilmangizda amallarni bajara oladi. Maxsus imkoniyatlar ilovalari kutilganidek ishlashi uchun bunday ruxsatni talab qiladi."</string>
-    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"Bu ilova ekraningizni koʻra oladi va qurilmangizda amallarni bajara oladi. Maxsus imkoniyatlar ilovalari kutilganidek ishlashi uchun bunday ruxsatni talab qiladi, lekin ilovaning ishonchli ekanini tekshiring."</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> ekraningizni koʻra oladi va qurilmangizda amallarni bajara oladi. Qulayliklar ilovalari kutilganidek ishlashi uchun bunday ruxsatni talab qiladi."</string>
+    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"Bu ilova ekraningizni koʻra oladi va qurilmangizda amallarni bajara oladi. Qulayliklar ilovalari kutilganidek ishlashi uchun bunday ruxsatni talab qiladi, lekin ilovaning ishonchli ekanini tekshiring."</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Ruxsatni olib tashlash"</string>
     <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"Toʻliq ruxsatga ega ilovalarni koʻrsatish"</string>
     <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Ruxsat olib tashlandi"</string>
