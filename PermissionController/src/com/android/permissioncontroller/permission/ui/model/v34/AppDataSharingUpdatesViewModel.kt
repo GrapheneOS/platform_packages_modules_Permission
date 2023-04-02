@@ -32,6 +32,7 @@ import android.os.UserHandle
 import android.util.Log
 import androidx.annotation.RequiresApi
 import com.android.permission.safetylabel.DataCategoryConstants.CATEGORY_LOCATION
+import com.android.permissioncontroller.Constants.EXTRA_SESSION_ID
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.data.SinglePermGroupPackagesUiInfoLiveData
 import com.android.permissioncontroller.permission.data.SmartAsyncMediatorLiveData
@@ -84,15 +85,18 @@ class AppDataSharingUpdatesViewModel(app: Application) {
      */
     fun startAppLocationPermissionPage(
         activity: Activity,
+        sessionId: Long,
         packageName: String,
         userHandle: UserHandle
     ) {
         activity.startActivity(
             Intent(ACTION_MANAGE_APP_PERMISSION).apply {
+                putExtra(EXTRA_SESSION_ID, sessionId)
                 putExtra(EXTRA_PERMISSION_GROUP_NAME, Manifest.permission_group.LOCATION)
                 putExtra(EXTRA_PACKAGE_NAME, packageName)
                 putExtra(EXTRA_USER, userHandle)
-            })
+            }
+        )
     }
 
     /**
@@ -113,11 +117,15 @@ class AppDataSharingUpdatesViewModel(app: Application) {
                 } else {
                     val users =
                         locationPermGroupPackagesUiInfoLiveData.getUsersWithPermGrantedForApp(
-                            appDataSharingUpdate.packageName)
+                            appDataSharingUpdate.packageName
+                        )
                     users.map { user ->
                         // For each user profile under the current user, display one entry.
                         AppLocationDataSharingUpdateUiInfo(
-                            appDataSharingUpdate.packageName, user, locationDataSharingUpdate)
+                            appDataSharingUpdate.packageName,
+                            user,
+                            locationDataSharingUpdate
+                        )
                     }
                 }
             }
