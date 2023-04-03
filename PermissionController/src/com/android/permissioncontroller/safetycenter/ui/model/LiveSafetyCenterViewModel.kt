@@ -33,9 +33,9 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat.getMainExecutor
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.map
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.safetycenter.ui.InteractionLogger
 import com.android.permissioncontroller.safetycenter.ui.NavigationSource
@@ -47,7 +47,7 @@ class LiveSafetyCenterViewModel(app: Application) : SafetyCenterViewModel(app) {
 
     private val TAG: String = LiveSafetyCenterViewModel::class.java.simpleName
     override val statusUiLiveData: LiveData<StatusUiData>
-        get() = Transformations.map(safetyCenterUiLiveData) { StatusUiData(it.safetyCenterData) }
+        get() = safetyCenterUiLiveData.map { StatusUiData(it.safetyCenterData) }
     override val safetyCenterUiLiveData: LiveData<SafetyCenterUiData> by this::_safetyCenterLiveData
     override val errorLiveData: LiveData<SafetyCenterErrorDetails> by this::_errorLiveData
 
