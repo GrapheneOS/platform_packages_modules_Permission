@@ -55,7 +55,7 @@ import com.android.permissioncontroller.permission.ui.handheld.v31.shouldShowSub
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPackageLabel
 import com.android.permissioncontroller.permission.utils.PermissionMapping
-import com.android.permissioncontroller.permission.utils.SubattributionUtils
+import com.android.permissioncontroller.permission.utils.v31.SubattributionUtils
 import com.android.permissioncontroller.permission.utils.Utils
 import java.time.Instant
 import java.util.Objects
