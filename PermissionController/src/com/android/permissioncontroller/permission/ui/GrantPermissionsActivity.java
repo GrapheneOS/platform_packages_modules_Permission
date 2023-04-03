@@ -21,6 +21,7 @@ import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import static android.Manifest.permission_group.LOCATION;
 import static android.Manifest.permission_group.READ_MEDIA_VISUAL;
 import static android.health.connect.HealthPermissions.HEALTH_PERMISSION_GROUP;
+import static android.view.WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM;
 import static android.view.WindowManager.LayoutParams.SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS;
 
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.CANCELED;
@@ -194,6 +195,10 @@ public class GrantPermissionsActivity extends SettingsActivity
         }
 
         getWindow().addSystemFlags(SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
+        if (DeviceUtils.isWear(this)) {
+            // Do not grab input focus and hide keyboard.
+            getWindow().addFlags(FLAG_ALT_FOCUSABLE_IM);
+        }
 
         int permissionsSdkLevel;
         if (PackageManager.ACTION_REQUEST_PERMISSIONS_FOR_OTHER.equals(getIntent().getAction())) {
