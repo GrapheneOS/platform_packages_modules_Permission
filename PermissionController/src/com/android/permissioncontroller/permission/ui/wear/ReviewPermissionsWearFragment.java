@@ -16,13 +16,18 @@
 
 package com.android.permissioncontroller.permission.ui.wear;
 
+import static android.content.pm.PackageManager.FLAG_PERMISSION_REVIEW_REQUIRED;
+import static android.content.pm.PackageManager.FLAG_PERMISSION_USER_SET;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.RemoteCallback;
+import android.os.UserHandle;
 import android.text.Html;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
@@ -257,9 +262,6 @@ public class ReviewPermissionsWearFragment extends PreferenceFragmentCompat
             }
         }
 
-        if (preferenceGroups.isEmpty()) {
-            return;
-        }
         for (PreferenceGroup preferenceGroup: preferenceGroups) {
             final int preferenceCount = preferenceGroup.getPreferenceCount();
             for (int i = 0; i < preferenceCount; i++) {
@@ -275,6 +277,28 @@ public class ReviewPermissionsWearFragment extends PreferenceFragmentCompat
                     }
                     group.unsetReviewRequired();
                 }
+            }
+        }
+
+        // Some permission might be restricted and hence there is no AppPermissionGroup for it.
+        // Manually unset all review-required flags, regardless of restriction.
+        PackageManager pm = getContext().getPackageManager();
+        PackageInfo pkg = mAppPermissions.getPackageInfo();
+        UserHandle user = UserHandle.getUserHandleForUid(pkg.applicationInfo.uid);
+
+        if (pkg.requestedPermissions == null) {
+            // No flag updating to do
+            return;
+        }
+
+        for (String perm : pkg.requestedPermissions) {
+            try {
+                pm.updatePermissionFlags(perm, pkg.packageName,
+                        FLAG_PERMISSION_REVIEW_REQUIRED | FLAG_PERMISSION_USER_SET,
+                        FLAG_PERMISSION_USER_SET, user);
+            } catch (IllegalArgumentException e) {
+                Log.e(TAG, "Cannot unmark " + perm + " requested by " + pkg.packageName
+                        + " as review required", e);
             }
         }
     }
