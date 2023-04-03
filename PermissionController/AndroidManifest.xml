@@ -209,6 +209,11 @@
         </receiver>
 
         <receiver
+            android:name="com.android.permissioncontroller.permission.service.v34.SafetyLabelChangesJobService$NotificationDeleteHandler"
+            android:enabled="@bool/is_at_least_u">
+        </receiver>
+
+        <receiver
             android:name="com.android.permissioncontroller.privacysources.AccessibilityOnBootReceiver"
             android:enabled="@bool/is_at_least_t"
             android:exported="true">
