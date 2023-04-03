@@ -596,6 +596,8 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"මෙම යෙදුම මේ සඳහා ස්ථාන දත්ත බෙදා ගත හැක:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"දත්ත බෙදා ගැනීම වෙනස් වේ"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"දත්ත පිළිවෙත් ඔබේ යෙදුම් අනුවාදය, භාවිතය, කලාපය, සහ වයස මත පදනම්ව වෙනස් විය හැක. "<annotation id="link">"දත්ත බෙදා ගැනීම පිළිබඳව වැඩිදුර"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_varies_message_without_link (4912763761399025094) -->
+    <skip />
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"ඔබේ ස්ථාන දත්ත"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267"><annotation id="link">"පෞද්ගලිකත්ව සැකසීම්"</annotation>" තුළ මෙම යෙදුමේ ප්‍රවේශය වෙනස් කරන්න"</string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"යෙදුම් ක්‍රියාකාරීත්වය"</string>
@@ -609,7 +611,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"ස්ථාන දත්ත බෙදා ගත හැක"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"මෙම යෙදුම තෙවන පාර්ශ්වයන් සමග ඔබේ ස්ථාන දත්ත බෙදා ගත හැකි බව ප්‍රකාශ කර ඇත"</string>
     <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"මෙම සබැඳිය විවෘත කළ නොහැක"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"මෙම අන්තර්ගතය බැලීම සඳහා ඔබේ බ්‍රවුසර කවුළුව තුළ <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> ටයිප් කිරීමට උත්සාහ කරන්න"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"ස්ථානය සඳහා දත්ත බෙදා ගැනීමේ යාවත්කාලීන"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"ඒවා ඔබේ ස්ථාන දත්ත බෙදා ගත හැකි ආකාරය වෙනස් කළ යෙදුම් සමාලෝචනය කරන්න"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"මෙම යෙදුම් ඔබේ ස්ථාන දත්ත බෙදා ගත හැකි ආකාරය වෙනස් කර ඇත. ඒවා එය කලින් බෙදා ගෙන නොතිබිය හැක, නැතහොත් දැන් එය වෙළඳ ප්‍රචාරණ හෝ අලෙවිකරණ අරමුණු සඳහා බෙදා ගත හැක."</string>

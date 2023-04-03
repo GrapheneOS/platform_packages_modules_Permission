@@ -33,7 +33,7 @@
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"«فقط این بار» نگه داشته شود"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"اطلاعات بیشتر"</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"همه مجازاند"</string>
-    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"همه همیشه مجازاند"</string>
+    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"همه موارد همیشه مجازاند"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"انتخاب عکس و ویدیو"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"انتخاب موارد بیشتر"</string>
     <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"موارد بیشتری انتخاب نشود"</string>
@@ -191,8 +191,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"اجازه دادن فقط برای دسترسی به رسانه‌ها"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"همیشه مجاز است"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"فقط هنگام استفاده از برنامه مجاز است"</string>
-    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
-    <skip />
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"همه موارد همیشه مجازاند"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"هربار پرسیده شود"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"اجازه ندادن"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"مکان دقیق"</string>
@@ -597,6 +596,8 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"برنامه شاید داده‌های مکان را به این دلایل هم‌رسانی کند:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"روش‌های هم‌رسانی داده متفاوت است"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"شیوه‌های مدیریت داده ممکن است براساس نسخه برنامه، نحوه استفاده، منطقه، و سن کاربر متفاوت باشد. "<annotation id="link">"اطلاعات بیشتر درباره هم‌رسانی داده‌ها"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_varies_message_without_link (4912763761399025094) -->
+    <skip />
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"داده‌های مکان شما"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"دسترسی این برنامه را در "<annotation id="link">"تنظیمات حریم خصوصی"</annotation>" تغییر دهید"</string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"قابلیت‌های برنامه"</string>
@@ -610,7 +611,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"داده‌های مکان ممکن است هم‌رسانی شود"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"این برنامه اعلام کرده که ممکن است داده‌های مکانتان را با اشخاص ثالث هم‌رسانی کند"</string>
     <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"این پیوند باز نشد"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"برای مشاهده این محتوا، <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> را در پنجره مرورگرتان تایپ کنید"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"به‌روزرسانی‌های هم‌رسانی داده برای مکان"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"برنامه‌هایی که روش هم‌رسانی داده‌های مکان شما را تغییر داده‌اند مرور کنید"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"این برنامه‌ها روش هم‌رسانی داده‌های مکان شما را تغییر داده‌اند. شاید قبلاً آن را هم‌رسانی نکرده باشند، یا شاید اکنون آن را برای اهداف تبلیغاتی یا بازاریابی هم‌رسانی کنند."</string>
