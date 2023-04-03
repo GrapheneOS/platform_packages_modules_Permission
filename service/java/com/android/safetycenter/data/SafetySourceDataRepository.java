@@ -69,9 +69,7 @@ final class SafetySourceDataRepository {
 
     private static final String TAG = "SafetySourceDataRepo";
 
-    private final ArrayMap<SafetySourceKey, SafetySourceData> mSafetySourceDataForKey =
-            new ArrayMap<>();
-
+    private final ArrayMap<SafetySourceKey, SafetySourceData> mSafetySourceData = new ArrayMap<>();
     private final ArraySet<SafetySourceKey> mSafetySourceErrors = new ArraySet<>();
 
     private final Context mContext;
@@ -98,8 +96,8 @@ final class SafetySourceDataRepository {
 
     /**
      * Sets the latest {@link SafetySourceData} for the given {@code safetySourceId}, {@link
-     * SafetyEvent}, {@code packageName} and {@code userId}, and returns whether there was a change
-     * to the underlying {@link SafetyCenterData}.
+     * SafetyEvent}, {@code packageName} and {@code userId}, and returns {@code true} if this caused
+     * any changes which would alter {@link SafetyCenterData}.
      *
      * <p>Throws if the request is invalid based on the {@link SafetyCenterConfig}: the given {@code
      * safetySourceId}, {@code packageName} and/or {@code userId} are unexpected; or the {@link
@@ -120,32 +118,35 @@ final class SafetySourceDataRepository {
         if (!validateRequest(safetySourceData, safetySourceId, packageName, userId)) {
             return false;
         }
-        boolean safetyEventChangedSafetyCenterData =
-                processSafetyEvent(safetySourceId, safetyEvent, userId, false);
-
         SafetySourceKey key = SafetySourceKey.of(safetySourceId, userId);
-        boolean removingSafetySourceErrorChangedSafetyCenterData = mSafetySourceErrors.remove(key);
-        SafetySourceData existingSafetySourceData = mSafetySourceDataForKey.get(key);
         SafetySourceData fixedSafetySourceData =
                 AndroidLockScreenFix.maybeOverrideSafetySourceData(
                         mContext, safetySourceId, safetySourceData);
-        if (Objects.equals(fixedSafetySourceData, existingSafetySourceData)) {
-            return safetyEventChangedSafetyCenterData
-                    || removingSafetySourceErrorChangedSafetyCenterData;
+
+        boolean eventCausedChange = processSafetyEvent(safetySourceId, safetyEvent, userId, false);
+        boolean removedSourceError = mSafetySourceErrors.remove(key);
+        boolean sourceDataDiffers =
+                !Objects.equals(fixedSafetySourceData, mSafetySourceData.get(key));
+
+        // TODO(b/268309211): Record SafetySourceStateCollected event here and send
+        //  sourceDataDiffers as the value for that atom's dataChanged param
+
+        if (!sourceDataDiffers) {
+            return eventCausedChange || removedSourceError;
         }
 
         ArraySet<String> issueIds = new ArraySet<>();
         if (fixedSafetySourceData == null) {
-            mSafetySourceDataForKey.remove(key);
+            mSafetySourceData.remove(key);
         } else {
-            mSafetySourceDataForKey.put(key, fixedSafetySourceData);
+            mSafetySourceData.put(key, fixedSafetySourceData);
             for (int i = 0; i < fixedSafetySourceData.getIssues().size(); i++) {
                 issueIds.add(fixedSafetySourceData.getIssues().get(i).getId());
             }
         }
+
         mSafetyCenterIssueDismissalRepository.updateIssuesForSource(
                 issueIds, safetySourceId, userId);
-
         return true;
     }
 
@@ -180,7 +181,7 @@ final class SafetySourceDataRepository {
      */
     @Nullable
     SafetySourceData getSafetySourceDataInternal(SafetySourceKey safetySourceKey) {
-        return mSafetySourceDataForKey.get(safetySourceKey);
+        return mSafetySourceData.get(safetySourceKey);
     }
 
     /**
@@ -221,7 +222,7 @@ final class SafetySourceDataRepository {
      */
     boolean setSafetySourceError(SafetySourceKey safetySourceKey) {
         boolean removingSafetySourceDataChangedSafetyCenterData =
-                mSafetySourceDataForKey.remove(safetySourceKey) != null;
+                mSafetySourceData.remove(safetySourceKey) != null;
         boolean addingSafetySourceErrorChangedSafetyCenterData =
                 mSafetySourceErrors.add(safetySourceKey);
         return removingSafetySourceDataChangedSafetyCenterData
@@ -252,7 +253,7 @@ final class SafetySourceDataRepository {
         SafetySourceKey key =
                 SafetySourceKey.of(
                         safetyCenterIssueKey.getSafetySourceId(), safetyCenterIssueKey.getUserId());
-        SafetySourceData safetySourceData = mSafetySourceDataForKey.get(key);
+        SafetySourceData safetySourceData = mSafetySourceData.get(key);
         if (safetySourceData == null) {
             return null;
         }
@@ -295,7 +296,7 @@ final class SafetySourceDataRepository {
 
     /** Clears all {@link SafetySourceData}, errors, issues and in flight actions for all users. */
     void clear() {
-        mSafetySourceDataForKey.clear();
+        mSafetySourceData.clear();
         mSafetySourceErrors.clear();
     }
 
@@ -305,10 +306,10 @@ final class SafetySourceDataRepository {
      */
     void clearForUser(@UserIdInt int userId) {
         // Loop in reverse index order to be able to remove entries while iterating.
-        for (int i = mSafetySourceDataForKey.size() - 1; i >= 0; i--) {
-            SafetySourceKey sourceKey = mSafetySourceDataForKey.keyAt(i);
+        for (int i = mSafetySourceData.size() - 1; i >= 0; i--) {
+            SafetySourceKey sourceKey = mSafetySourceData.keyAt(i);
             if (sourceKey.getUserId() == userId) {
-                mSafetySourceDataForKey.removeAt(i);
+                mSafetySourceData.removeAt(i);
             }
         }
         // Loop in reverse index order to be able to remove entries while iterating.
@@ -322,11 +323,11 @@ final class SafetySourceDataRepository {
 
     /** Dumps state for debugging purposes. */
     void dump(PrintWriter fout) {
-        int dataCount = mSafetySourceDataForKey.size();
+        int dataCount = mSafetySourceData.size();
         fout.println("SOURCE DATA (" + dataCount + ")");
         for (int i = 0; i < dataCount; i++) {
-            SafetySourceKey key = mSafetySourceDataForKey.keyAt(i);
-            SafetySourceData data = mSafetySourceDataForKey.valueAt(i);
+            SafetySourceKey key = mSafetySourceData.keyAt(i);
+            SafetySourceData data = mSafetySourceData.valueAt(i);
             fout.println("\t[" + i + "] " + key + " -> " + data);
         }
         fout.println();
@@ -506,11 +507,7 @@ final class SafetySourceDataRepository {
             case SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED:
                 String refreshBroadcastId = safetyEvent.getRefreshBroadcastId();
                 if (refreshBroadcastId == null) {
-                    Log.w(
-                            TAG,
-                            "Received safety event of type "
-                                    + safetyEvent.getType()
-                                    + " without a refresh broadcast id");
+                    Log.w(TAG, "No refresh broadcast id in SafetyEvent of type " + type);
                     return false;
                 }
                 return mSafetyCenterRefreshTracker.reportSourceRefreshCompleted(
@@ -519,20 +516,12 @@ final class SafetySourceDataRepository {
             case SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED:
                 String safetySourceIssueId = safetyEvent.getSafetySourceIssueId();
                 if (safetySourceIssueId == null) {
-                    Log.w(
-                            TAG,
-                            "Received safety event of type "
-                                    + safetyEvent.getType()
-                                    + " without a safety source issue id");
+                    Log.w(TAG, "No safety source issue id in SafetyEvent of type " + type);
                     return false;
                 }
                 String safetySourceIssueActionId = safetyEvent.getSafetySourceIssueActionId();
                 if (safetySourceIssueActionId == null) {
-                    Log.w(
-                            TAG,
-                            "Received safety event of type "
-                                    + safetyEvent.getType()
-                                    + " without a safety source issue action id");
+                    Log.w(TAG, "No safety source issue action id in SafetyEvent of type " + type);
                     return false;
                 }
                 SafetyCenterIssueKey safetyCenterIssueKey =
