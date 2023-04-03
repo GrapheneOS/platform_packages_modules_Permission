@@ -30,7 +30,11 @@
     <skip />
     <string name="ads_privacy_summary" msgid="4977699525670966049">"உங்களுக்கு விளம்பரங்களைக் காட்டுவதற்காக ஆப்ஸ் பயன்படுத்தும் தகவல்களைப் பிரத்தியேகமாக்கலாம்"</string>
     <string name="ads_privacy_search_terms" msgid="8008413316055240046">"விளம்பரங்கள், விளம்பரங்கள் தொடர்பான தனியுரிமை, தனியுரிமை சாண்ட்பாக்ஸ், விளம்பரத் தலைப்புகள், ஆப்ஸால் பரிந்துரைக்கப்படும் விளம்பரங்கள், விளம்பர அளவீடு"</string>
-    <string name="more_settings_title" msgid="663808090772098924">"கூடுதல் அமைப்புகள்"</string>
-    <string name="more_settings_summary" msgid="3942352615407872716">"என்க்ரிப்ஷன், அனுமதிச் சான்றுகள் மற்றும் பல"</string>
+    <!-- no translation found for advanced_title (6259362998269627310) -->
+    <skip />
+    <!-- no translation found for more_settings_title (9033454654010697185) -->
+    <skip />
+    <!-- no translation found for more_settings_summary (7086620830002515710) -->
+    <skip />
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
 </resources>
