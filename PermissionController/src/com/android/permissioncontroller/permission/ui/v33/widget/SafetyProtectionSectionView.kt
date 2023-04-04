@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.ui.widget
+package com.android.permissioncontroller.permission.ui.v33.widget
 
 import android.content.Context
 import android.text.Html
