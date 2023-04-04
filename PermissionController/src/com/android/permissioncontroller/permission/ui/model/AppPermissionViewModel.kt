@@ -50,6 +50,7 @@ import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.PermissionControllerStatsLog
 import com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_FRAGMENT_ACTION_REPORTED
+import com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__PERMISSION_RATIONALE
 import com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_FRAGMENT_VIEWED
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.data.FullStoragePermissionAppsLiveData
@@ -268,9 +269,6 @@ class AppPermissionViewModel(
                     if (isStorageAndLessThanT && !fullStorageStateLiveData.isInitialized) {
                         return@addSource
                     }
-                    if (value == null) {
-                        logAppPermissionFragmentViewed()
-                    }
                     update()
                 }
             }
@@ -293,6 +291,10 @@ class AppPermissionViewModel(
                     }
                 }
             }
+
+            addSource(showPermissionRationaleLiveData) {
+                update()
+            }
         }
 
         private fun onMediaPermGroupUpdate(permGroupName: String, permGroup: LightAppPermGroup?) {
@@ -311,6 +313,10 @@ class AppPermissionViewModel(
                 if (!mediaGroupLiveData.isInitialized) {
                     return
                 }
+            }
+
+            if (!showPermissionRationaleLiveData.isInitialized) {
+                return
             }
 
             val admin = RestrictedLockUtils.getProfileOrDeviceOwner(app, user)
@@ -447,6 +453,10 @@ class AppPermissionViewModel(
                 locationAccuracyState.isEnabled = false
             }
 
+            if (value == null) {
+                logAppPermissionFragmentViewed()
+            }
+
             value = mapOf(
                 ALLOW to allowedState, ALLOW_ALWAYS to allowedAlwaysState,
                 ALLOW_FOREGROUND to allowedForegroundState, ASK_ONCE to askOneTimeState,
@@ -581,12 +591,26 @@ class AppPermissionViewModel(
      * @param groupName The name of the permission group whose fragment should be opened
      */
     fun showPermissionRationaleActivity(activity: Activity, groupName: String) {
-        val intent = Intent(activity, PermissionRationaleActivity::class.java).apply {
-            putExtra(Intent.EXTRA_PACKAGE_NAME, packageName)
-            putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, groupName)
-            putExtra(Constants.EXTRA_SESSION_ID, sessionId)
-            putExtra(EXTRA_SHOULD_SHOW_SETTINGS_SECTION, false)
+        if (!SdkLevel.isAtLeastU()) {
+            return
         }
+
+        // logPermissionChanges logs the button clicks for settings and any associated permission
+        // change that occurred. Since no permission change takes place, just pass the current
+        // permission state.
+        lightAppPermGroup?.let { group ->
+            logAppPermissionFragmentActionReportedForPermissionGroup(
+                /* changeId= */ Random().nextLong(),
+                group,
+                APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__PERMISSION_RATIONALE)
+        }
+
+        val intent = Intent(activity, PermissionRationaleActivity::class.java).apply {
+                putExtra(Intent.EXTRA_PACKAGE_NAME, packageName)
+                putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, groupName)
+                putExtra(Constants.EXTRA_SESSION_ID, sessionId)
+                putExtra(EXTRA_SHOULD_SHOW_SETTINGS_SECTION, false)
+            }
         activity.startActivity(intent)
     }
 
@@ -1090,6 +1114,16 @@ class AppPermissionViewModel(
         }
     }
 
+    private fun logAppPermissionFragmentActionReportedForPermissionGroup(
+        changeId: Long,
+        group: LightAppPermGroup,
+        buttonPressed: Int
+    ) {
+        group.permissions.forEach { (_, permission) ->
+            logAppPermissionFragmentActionReported(changeId, permission, buttonPressed)
+        }
+    }
+
     private fun logAppPermissionFragmentActionReported(
         changeId: Long,
         permission: LightPermission,
@@ -1105,16 +1139,23 @@ class AppPermissionViewModel(
             permission.flags + " buttonPressed=$buttonPressed")
     }
 
-    /**
-     * Logs information about this AppPermissionGroup and view session
-     */
+    /** Logs information about this AppPermissionGroup and view session */
     fun logAppPermissionFragmentViewed() {
         val uid = KotlinUtils.getPackageUid(app, packageName, user) ?: return
-        PermissionControllerStatsLog.write(APP_PERMISSION_FRAGMENT_VIEWED, sessionId,
-            uid, packageName, permGroupName, /* permission_rationale_shown = */ false)
-        Log.v(LOG_TAG, "AppPermission fragment viewed with sessionId=$sessionId uid=" +
-            "$uid packageName=$packageName" +
-            "permGroupName=$permGroupName")
+
+        val permissionRationaleShown = showPermissionRationaleLiveData.value ?: false
+        PermissionControllerStatsLog.write(
+            APP_PERMISSION_FRAGMENT_VIEWED,
+            sessionId,
+            uid,
+            packageName,
+            permGroupName,
+            permissionRationaleShown)
+        Log.v(
+            LOG_TAG,
+            "AppPermission fragment viewed with sessionId=$sessionId uid=$uid " +
+                "packageName=$packageName permGroupName=$permGroupName " +
+                "permissionRationaleShown=$permissionRationaleShown")
     }
 
     /**

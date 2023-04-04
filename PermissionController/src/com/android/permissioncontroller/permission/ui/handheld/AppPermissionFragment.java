@@ -71,6 +71,7 @@ import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.data.FullStoragePermissionAppsLiveData.FullStoragePackageState;
 import com.android.permissioncontroller.permission.ui.AdvancedConfirmDialogArgs;
@@ -307,6 +308,9 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         } else {
             mAppPermissionRationaleContainer.setVisibility(View.VISIBLE);
             mAppPermissionRationaleContent.setOnClickListener((v) -> {
+                if (!SdkLevel.isAtLeastU()) {
+                    return;
+                }
                 mViewModel.showPermissionRationaleActivity(getActivity(), mPermGroupName);
             });
         }
