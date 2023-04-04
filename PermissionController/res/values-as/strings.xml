@@ -191,8 +191,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"কেৱল মিডিয়ালৈ এক্সেছৰ অনুমতি দিয়ক"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"সকলো সময়ৰ বাবে অনুমতি দিয়ক"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"কেৱল এপ্ ব্যৱহাৰ হৈ থাকোঁতে অনুমতি দিয়ক"</string>
-    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
-    <skip />
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"আটাইবোৰকে সদায় অনুমতি দিয়ক"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"প্ৰতিবাৰতে সোধক"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"অনুমতি নিদিব"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"সঠিক অৱস্থান"</string>
@@ -597,6 +596,8 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"এপ্‌টোৱে ইয়াৰ বাবে অৱস্থানৰ ডেটা শ্বেয়াৰ কৰিব পাৰে:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ডেটা শ্বেয়াৰ কৰা কার্যটো ভিন্ন হয়"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"ডেটা শ্বেয়াৰ কৰা কাৰ্যটো আপোনাৰ এপৰ সংস্কৰণ, ব্যৱহাৰ, অঞ্চল আৰু বয়সৰ ওপৰত ভিত্তি কৰি ভিন্ন হ’ব পাৰে। "<annotation id="link">"ডেটা শ্বেয়াৰ কৰাৰ বিষয়ে অধিক"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_varies_message_without_link (4912763761399025094) -->
+    <skip />
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"আপোনাৰ অৱস্থানৰ ডেটা"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"এই এপ্‌টোৰ এক্সেছ "<annotation id="link">"গোপনীয়তাৰ ছেটিঙ"</annotation>"ত সলনি কৰক"</string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"এপৰ কাৰ্যক্ষমতা"</string>
@@ -610,7 +611,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"অৱস্থানৰ ডেটা শ্বেয়াৰ কৰা হ’ব পাৰে"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"এই এপ্‌টোৱে তৃতীয় পক্ষৰ সৈতে আপোনাৰ অৱস্থানৰ ডেটা শ্বেয়াৰ কৰিব পাৰে বুলি জনাইছে"</string>
     <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"এই লিংকটো খুলিব নোৱাৰি"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"এই সমলটো চাবলৈ আপোনাৰ ব্ৰাউজাৰৰ ৱিণ্ড’ত <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> টাইপ কৰি চাওক"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"অৱস্থানৰ বাবে ডেটা শ্বেয়াৰ কৰাৰ আপডে’ট"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"আপোনাৰ অৱস্থানৰ ডেটা শ্বেয়াৰ কৰিব পৰাৰ ধৰণসমূহ সলনি কৰা এপ্‌সমূহ পৰ্যালোচনা কৰক"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"এই এপ্‌সমূহে আপোনাৰ অৱস্থানৰ ডেটা শ্বেয়াৰ কৰিব পৰাৰ ধৰণসমূহ সলনি কৰিছে। সেইবোৰে পূৰ্বে এয়া শ্বেয়াৰ নকৰিব পাৰে অথবা এতিয়া বিজ্ঞাপন অথবা মাৰ্কেটিঙৰ উদ্দেশ্যে শ্বেয়াৰ কৰিব পাৰে।"</string>

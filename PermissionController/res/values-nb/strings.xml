@@ -191,8 +191,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Har bare tilgang til medier"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Tillat hele tiden"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Bare tillat når appen brukes"</string>
-    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
-    <skip />
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Tillat alltid alle"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Spør hver gang"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Ikke tillat"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Nøyaktig posisjon"</string>
@@ -597,6 +596,8 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Denne appen kan dele posisjonsdata for"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Datadeling varierer"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Databehandling kan variere basert på appversjon, bruk, region og alder. "<annotation id="link">"Mer informasjon om datadeling"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_varies_message_without_link (4912763761399025094) -->
+    <skip />
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Posisjonsdataene dine"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Du kan endre tilgangen denne appen har, i "<annotation id="link">"personverninnstillingene"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"appfunksjonalitet"</string>
@@ -610,7 +611,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Posisjonsdata kan deles"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Denne appen har oppgitt at den kan dele posisjonsdataene dine med tredjeparter"</string>
     <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Kan ikke åpne denne linken"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"Prøv å skrive <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> i vinduet i nettleseren for å se dette innholdet"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Oppdatering av datadeling for posisjon"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Gjennomgå apper som har endret hvordan de deler posisjonsdataene dine"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Disse appene har endret hvordan de kan dele posisjonsdataene dine. De har muligens ikke delt dem før eller kan nå dele dem for annonsering eller markedsføring."</string>

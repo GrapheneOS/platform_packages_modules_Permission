@@ -24,7 +24,7 @@
     <string name="available" msgid="6007778121920339498">"Mavjud"</string>
     <string name="blocked" msgid="9195547604866033708">"Bloklangan"</string>
     <string name="on" msgid="280241003226755921">"Yoniq"</string>
-    <string name="off" msgid="1438489226422866263">"Yoqilmagan"</string>
+    <string name="off" msgid="1438489226422866263">"Oʻchiq"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Oʻchirish yoki faolsizlantirish"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Ilova topilmadi"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"Rad etish"</string>
@@ -191,8 +191,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Faqat media fayllarga ruxsat"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Har doim ruxsat"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Faqat ilova faolligida ruxsat"</string>
-    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
-    <skip />
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Doim hammasiga ruxsat berish"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Har safar soʻralsin"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Rad etish"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Aniq joylashuv"</string>
@@ -293,8 +292,8 @@
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"Boshqa variantlarni tanlash"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Ruxsat olib tashlandi"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"Toʻliq kirish imkoniyati bilan ilovani tekshiring"</string>
-    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> ekraningizni koʻra oladi va qurilmangizda amallarni bajara oladi. Maxsus imkoniyatlar ilovalari kutilganidek ishlashi uchun bunday ruxsatni talab qiladi."</string>
-    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"Bu ilova ekraningizni koʻra oladi va qurilmangizda amallarni bajara oladi. Maxsus imkoniyatlar ilovalari kutilganidek ishlashi uchun bunday ruxsatni talab qiladi, lekin ilovaning ishonchli ekanini tekshiring."</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> ekraningizni koʻra oladi va qurilmangizda amallarni bajara oladi. Qulayliklar ilovalari kutilganidek ishlashi uchun bunday ruxsatni talab qiladi."</string>
+    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"Bu ilova ekraningizni koʻra oladi va qurilmangizda amallarni bajara oladi. Qulayliklar ilovalari kutilganidek ishlashi uchun bunday ruxsatni talab qiladi, lekin ilovaning ishonchli ekanini tekshiring."</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Ruxsatni olib tashlash"</string>
     <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"Toʻliq ruxsatga ega ilovalarni koʻrsatish"</string>
     <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Ruxsat olib tashlandi"</string>
@@ -597,6 +596,8 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Ilova joylashuv axborotini quyidagicha ulashadi:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Maʼlumotlarning turlicha ulashuvi"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Axborot bilan ishlash amaliyotlari ilova versiyasi, foydalanish, hudud va yoshga qarab farq qilishi mumkin. "<annotation id="link">"Maʼlumotlar ulashuvi haqida batafsil"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_varies_message_without_link (4912763761399025094) -->
+    <skip />
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Joylashuvingiz axboroti"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Bu ilovaning "<annotation id="link">"maxfiylik sozlamalariga"</annotation>" ruxsatini oʻzgartiring"</string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"Ilova funksiyalari"</string>
@@ -610,7 +611,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Joylashuv axboroti ulashilishi mumkin"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Bu ilova tashqariga joylashuv axborotini ulashishi mumkinligi aniqlandi"</string>
     <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Bu havola ochilmadi"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"Bu kontentni ochish uchun brauzer oynasida <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> manzilini kiriting"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Joylashuv axboroti ulashuvidagi oʻzgarishlar"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Joylashuv axboroti ulashuviga oʻzgartirish kiritgan ilovalarni tekshiring"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Quyidagi ilovalarda joylashuv axboroti ulashuvi oʻzgardi. Avval ulashilmagan boʻlishi yoki endi reklama va marketing maqsadlarida ulashilishi mumkin"</string>
