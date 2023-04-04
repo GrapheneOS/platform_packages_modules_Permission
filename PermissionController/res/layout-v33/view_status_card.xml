@@ -51,7 +51,7 @@
         android:text="@string/safety_center_rescan_button"
         style="@style/SafetyCenterStatusButton.Rescan" />
 
-    <com.android.permissioncontroller.permission.ui.widget.SafetyProtectionSectionView
+    <com.android.permissioncontroller.permission.ui.v33.widget.SafetyProtectionSectionView
         android:id="@+id/safety_protection_section_view"
         android:importantForAccessibility="noHideDescendants"
         style="@style/SafetyCenterStatusSafetyProtectionView" />

@@ -55,7 +55,7 @@
       android:id="@+id/issue_card_action_button_list"
       layout="@layout/action_button_list"/>
 
-    <com.android.permissioncontroller.permission.ui.widget.SafetyProtectionSectionView
+    <com.android.permissioncontroller.permission.ui.v33.widget.SafetyProtectionSectionView
         android:id="@+id/issue_card_protected_by_android"
         android:importantForAccessibility="no"
         style="@style/SafetyCenterIssueSafetyProtectionSection" />
