@@ -30,7 +30,11 @@
     <skip />
     <string name="ads_privacy_summary" msgid="4977699525670966049">"Tuỳ chỉnh thông tin được các ứng dụng dùng để hiển thị quảng cáo cho bạn"</string>
     <string name="ads_privacy_search_terms" msgid="8008413316055240046">"quảng cáo, quyền riêng tư trong quảng cáo, hộp cát về quyền riêng tư, chủ đề quảng cáo, quảng cáo do ứng dụng gợi ý, đo lường quảng cáo"</string>
-    <string name="more_settings_title" msgid="663808090772098924">"Chế độ cài đặt khác"</string>
-    <string name="more_settings_summary" msgid="3942352615407872716">"Mã hoá, thông tin xác thực, v.v."</string>
+    <!-- no translation found for advanced_title (6259362998269627310) -->
+    <skip />
+    <!-- no translation found for more_settings_title (9033454654010697185) -->
+    <skip />
+    <!-- no translation found for more_settings_summary (7086620830002515710) -->
+    <skip />
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
 </resources>
