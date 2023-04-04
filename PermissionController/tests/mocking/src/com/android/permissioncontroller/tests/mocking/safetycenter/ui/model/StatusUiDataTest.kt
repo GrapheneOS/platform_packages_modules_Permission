@@ -38,7 +38,7 @@ import org.mockito.Mock
 import org.mockito.Mockito.`when` as whenever
 import org.mockito.MockitoAnnotations
 
-@SdkSuppress(maxSdkVersion = Build.VERSION_CODES.TIRAMISU)
+@SdkSuppress(minSdkVersion = Build.VERSION_CODES.TIRAMISU)
 class StatusUiDataTest {
 
     @Mock private lateinit var mockContext: Context
