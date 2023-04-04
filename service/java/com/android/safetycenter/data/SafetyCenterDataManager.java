@@ -99,8 +99,8 @@ public final class SafetyCenterDataManager {
 
     /**
      * Sets the latest {@link SafetySourceData} for the given {@code safetySourceId}, {@link
-     * SafetyEvent}, {@code packageName} and {@code userId}, and returns whether there was a change
-     * to the underlying {@link SafetyCenterData}.
+     * SafetyEvent}, {@code packageName} and {@code userId}, and returns {@code true} if this caused
+     * any changes which would alter {@link SafetyCenterData}.
      *
      * <p>Throws if the request is invalid based on the {@link SafetyCenterConfig}: the given {@code
      * safetySourceId}, {@code packageName} and/or {@code userId} are unexpected; or the {@link
@@ -173,8 +173,8 @@ public final class SafetyCenterDataManager {
     }
 
     /**
-     * Marks the given {@link SafetySourceKey} as having errored-out and returns whether there was a
-     * change to the underlying {@link SafetyCenterData}.
+     * Marks the given {@link SafetySourceKey} as having errored-out and returns {@code true} if
+     * this caused any changes which would alter {@link SafetyCenterData}.
      */
     public boolean setSafetySourceError(SafetySourceKey safetySourceKey) {
         boolean dataUpdated = mSafetySourceDataRepository.setSafetySourceError(safetySourceKey);
@@ -204,9 +204,10 @@ public final class SafetyCenterDataManager {
     }
 
     /**
-     * Unmarks the given {@link SafetyCenterIssueActionId} as in-flight, logs that event to statsd
-     * with the given {@code result} value, and returns {@code true} if the underlying {@link
-     * SafetyCenterData} changed.
+     * Unmarks the given {@link SafetyCenterIssueActionId} as in-flight and returns {@code true} if
+     * this caused any changes which would alter {@link SafetyCenterData}.
+     *
+     * <p>Also logs an event to statsd with the given {@code result} value.
      */
     public boolean unmarkSafetyCenterIssueActionInFlight(
             SafetyCenterIssueActionId safetyCenterIssueActionId,
@@ -219,7 +220,6 @@ public final class SafetyCenterDataManager {
             mSafetyCenterIssueRepository.updateIssues(
                     safetyCenterIssueActionId.getSafetyCenterIssueKey().getUserId());
         }
-
         return dataUpdated;
     }
 

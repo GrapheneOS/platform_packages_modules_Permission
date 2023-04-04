@@ -24,7 +24,6 @@ import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.content.Context;
 import android.os.SystemClock;
-import android.safetycenter.SafetyCenterData;
 import android.safetycenter.SafetySourceIssue;
 import android.util.ArrayMap;
 import android.util.Log;
@@ -66,9 +65,10 @@ final class SafetyCenterInFlightIssueActionRepository {
     }
 
     /**
-     * Unmarks the given {@link SafetyCenterIssueActionId} as in-flight, logs that event to statsd
-     * with the given {@code result} value, and returns {@code true} if the underlying {@link
-     * SafetyCenterData} changed.
+     * Unmarks the given {@link SafetyCenterIssueActionId} as in-flight and returns {@code true} if
+     * the given action was valid and unmarked successfully.
+     *
+     * <p>Also logs an event to statsd with the given {@code result} value.
      */
     boolean unmarkSafetyCenterIssueActionInFlight(
             SafetyCenterIssueActionId safetyCenterIssueActionId,
