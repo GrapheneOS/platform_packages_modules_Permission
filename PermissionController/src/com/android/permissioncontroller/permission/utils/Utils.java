@@ -73,6 +73,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.hardware.SensorPrivacyManager;
+import android.os.Binder;
 import android.os.Build;
 import android.os.Parcelable;
 import android.os.Process;
@@ -942,8 +943,14 @@ public final class Utils {
      */
     @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codename = "UpsideDownCake")
     public static boolean isHealthPermissionUiEnabled() {
-        return SdkLevel.isAtLeastU() && DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
-                PROPERTY_HEALTH_PERMISSION_UI_ENABLED, true);
+        final long token = Binder.clearCallingIdentity();
+        try {
+            return SdkLevel.isAtLeastU()
+                    && DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
+                    PROPERTY_HEALTH_PERMISSION_UI_ENABLED, true);
+        } finally {
+            Binder.restoreCallingIdentity(token);
+        }
     }
 
     /**
