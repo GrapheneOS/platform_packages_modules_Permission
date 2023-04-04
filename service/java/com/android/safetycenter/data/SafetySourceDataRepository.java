@@ -128,39 +128,39 @@ final class SafetySourceDataRepository {
             return false;
         }
         SafetySourceKey key = SafetySourceKey.of(safetySourceId, userId);
-        SafetySourceData fixedSafetySourceData =
+        safetySourceData =
                 AndroidLockScreenFix.maybeOverrideSafetySourceData(
                         mContext, safetySourceId, safetySourceData);
 
         boolean eventCausedChange = processSafetyEvent(safetySourceId, safetyEvent, userId, false);
         boolean removedSourceError = mSafetySourceErrors.remove(key);
-        boolean sourceDataDiffers =
-                !Objects.equals(fixedSafetySourceData, mSafetySourceData.get(key));
+        boolean sourceDataDiffers = !Objects.equals(safetySourceData, mSafetySourceData.get(key));
+
+        if (sourceDataDiffers) {
+            setSafetySourceDataInternal(key, safetySourceData);
+        }
+        setLastUpdatedNow(key);
 
         // TODO(b/268309211): Record SafetySourceStateCollected event here and send
         //  sourceDataDiffers as the value for that atom's dataChanged param
 
-        if (!sourceDataDiffers) {
-            setLastUpdatedNow(key);
-            return eventCausedChange || removedSourceError;
-        }
+        return sourceDataDiffers || eventCausedChange || removedSourceError;
+    }
 
+    private void setSafetySourceDataInternal(SafetySourceKey key, SafetySourceData data) {
         ArraySet<String> issueIds = new ArraySet<>();
-        if (fixedSafetySourceData == null) {
+        if (data == null) {
             mSafetySourceData.remove(key);
             mSourceStates.put(key, SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__SOURCE_CLEARED);
         } else {
-            mSafetySourceData.put(key, fixedSafetySourceData);
-            for (int i = 0; i < fixedSafetySourceData.getIssues().size(); i++) {
-                issueIds.add(fixedSafetySourceData.getIssues().get(i).getId());
+            mSafetySourceData.put(key, data);
+            for (int i = 0; i < data.getIssues().size(); i++) {
+                issueIds.add(data.getIssues().get(i).getId());
             }
             mSourceStates.put(key, SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__DATA_PROVIDED);
         }
-
         mSafetyCenterIssueDismissalRepository.updateIssuesForSource(
-                issueIds, safetySourceId, userId);
-        setLastUpdatedNow(key);
-        return true;
+                issueIds, key.getSourceId(), key.getUserId());
     }
 
     /**
