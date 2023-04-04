@@ -191,8 +191,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Csak a médiatartalmakhoz való hozzáférés engedélyezése"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Mindig engedélyezett"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Csak az alkalmazás használatakor engedélyezett"</string>
-    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
-    <skip />
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Mindig az összes engedélyezése"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Mindig kérdezzen rá"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Tiltás"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Pontos hely"</string>
@@ -597,6 +596,8 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Az app helyadatokat oszthat meg az alábbi célból:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Az adatmegosztás változik"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Az adatkezelési gyakorlat az alkalmazásverziótól, az alkalmazáshasználattól, a régiótól és életkortól függően változhat. "<annotation id="link">"További információ az adatmegosztásról"</annotation>"."</string>
+    <!-- no translation found for permission_rationale_data_sharing_varies_message_without_link (4912763761399025094) -->
+    <skip />
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Helyadatok"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Az alkalmazás hozzáférésének módosítása az "<annotation id="link">"adatvédelmi beállításokban"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"Alkalmazásfunkciók"</string>
@@ -610,7 +611,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Az alkalmazás megoszthat helyadatokat"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Az alkalmazás jelezte, hogy megoszthatja az Ön helyadatait harmadik felekkel"</string>
     <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Nem sikerült megnyitni a linket"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"A tartalom megtekintéséshez írja be a következőt a böngészőablakba: <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g>"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"A helyadatok megosztását érintő frissítések"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Áttekintheti az appokat, amelyek módosították, hogy miként oszthatják meg a helyadatait"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Ezek az alkalmazások módosították, hogy miként oszthatják meg az Ön helyadatait. Előfordulhat, hogy korábban nem osztották meg az adatokat, illetve ezentúl hirdetési vagy marketing célokra oszthatják meg őket."</string>

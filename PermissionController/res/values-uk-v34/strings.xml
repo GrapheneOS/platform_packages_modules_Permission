@@ -21,9 +21,10 @@
     <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"Елементи керування"</string>
     <string name="privacy_subpage_data_header" msgid="5049237788244591274">"Дані"</string>
     <string name="health_connect_title" msgid="2132233890867430855">"Health Connect"</string>
-    <string name="health_connect_summary" msgid="8156987676957707740">"Дозволи для додатка та керування даними"</string>
-    <!-- no translation found for location_settings (8863940440881290182) -->
+    <!-- no translation found for health_connect_summary (815473513776882296) -->
     <skip />
-    <!-- no translation found for location_settings_subtitle (6846532794702613851) -->
+    <string name="location_settings" msgid="8863940440881290182">"Доступ до геоданих"</string>
+    <!-- no translation found for mic_toggle_description (1504101620086616040) -->
     <skip />
+    <string name="location_settings_subtitle" msgid="6846532794702613851">"Для додатків і сервісів"</string>
 </resources>

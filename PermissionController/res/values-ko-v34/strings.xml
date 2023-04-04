@@ -21,9 +21,10 @@
     <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"관리"</string>
     <string name="privacy_subpage_data_header" msgid="5049237788244591274">"데이터"</string>
     <string name="health_connect_title" msgid="2132233890867430855">"헬스 커넥트"</string>
-    <string name="health_connect_summary" msgid="8156987676957707740">"앱 권한 및 데이터 관리"</string>
-    <!-- no translation found for location_settings (8863940440881290182) -->
+    <!-- no translation found for health_connect_summary (815473513776882296) -->
     <skip />
-    <!-- no translation found for location_settings_subtitle (6846532794702613851) -->
+    <string name="location_settings" msgid="8863940440881290182">"위치 정보 액세스"</string>
+    <!-- no translation found for mic_toggle_description (1504101620086616040) -->
     <skip />
+    <string name="location_settings_subtitle" msgid="6846532794702613851">"앱 및 서비스에 적용됩니다."</string>
 </resources>
