@@ -79,8 +79,8 @@
     <!-- Title for the dialog button to allow access to select more photos to be shared. [CHAR LIMIT=60] -->
     <string name="grant_dialog_button_allow_more_selected_photos">Select more</string>
 
-    <!-- Title for the dialog button to not allow access to select more photos to be shared. [CHAR LIMIT=60] -->
-    <string name="grant_dialog_button_dont_allow_more_selected_photos">Don\u2019t select more</string>
+    <!-- Title for the dialog button to not select more data (example: photos or contacts) to be shared. [CHAR LIMIT=60] -->
+    <string name="grant_dialog_button_dont_select_more">Don\u2019t select more</string>
 
     <!-- Title for the dialog button to deny a permission grant despite a warning of implications. [CHAR LIMIT=30] -->
     <string name="grant_dialog_button_deny_anyway">Don\u2019t allow anyway</string>
