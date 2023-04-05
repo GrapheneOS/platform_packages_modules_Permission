@@ -126,7 +126,7 @@ class PermissionRationaleViewModel(
 
                 val purposes = PermissionMapping.getSafetyLabelSharingPurposesForGroup(
                         safetyLabelInfo.safetyLabel, permissionGroupName)
-                if (isStale) {
+                if (value == null) {
                     logPermissionRationaleDialogViewed(purposes)
                 }
                 value =
