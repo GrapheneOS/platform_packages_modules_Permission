@@ -198,7 +198,7 @@
 
             </LinearLayout>
 
-            <com.android.permissioncontroller.permission.ui.widget.SafetyProtectionSectionView
+            <com.android.permissioncontroller.permission.ui.v33.widget.SafetyProtectionSectionView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
