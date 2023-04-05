@@ -580,10 +580,10 @@ public final class SafetyCenterDataFactory {
                 SafetySourceStatus safetySourceStatus =
                         getSafetySourceStatus(
                                 mSafetyCenterDataManager.getSafetySourceDataInternal(key));
-                boolean defaultEntryDueToQuietMode = isUserManaged && !isManagedUserRunning;
-                if (safetySourceStatus == null || defaultEntryDueToQuietMode) {
+                boolean inQuietMode = isUserManaged && !isManagedUserRunning;
+                if (safetySourceStatus == null) {
                     int severityLevel =
-                            defaultEntryDueToQuietMode
+                            inQuietMode
                                     ? SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED
                                     : SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN;
                     return toDefaultSafetyCenterEntry(
@@ -596,7 +596,7 @@ public final class SafetyCenterDataFactory {
                             isManagedUserRunning);
                 }
                 PendingIntent entryPendingIntent = safetySourceStatus.getPendingIntent();
-                boolean enabled = safetySourceStatus.isEnabled();
+                boolean enabled = safetySourceStatus.isEnabled() && !inQuietMode;
                 if (entryPendingIntent == null) {
                     entryPendingIntent =
                             mPendingIntentFactory.getPendingIntent(
@@ -604,7 +604,7 @@ public final class SafetyCenterDataFactory {
                                     safetySource.getIntentAction(),
                                     safetySource.getPackageName(),
                                     userId,
-                                    false);
+                                    inQuietMode);
                     enabled = enabled && entryPendingIntent != null;
                 }
                 SafetyCenterEntryId safetyCenterEntryId =
@@ -624,7 +624,11 @@ public final class SafetyCenterDataFactory {
                                         SafetyCenterIds.encodeToString(safetyCenterEntryId),
                                         safetySourceStatus.getTitle())
                                 .setSeverityLevel(severityLevel)
-                                .setSummary(safetySourceStatus.getSummary())
+                                .setSummary(
+                                        inQuietMode
+                                                ? DevicePolicyResources.getWorkProfilePausedString(
+                                                        mSafetyCenterResourcesContext)
+                                                : safetySourceStatus.getSummary())
                                 .setEnabled(enabled)
                                 .setSeverityUnspecifiedIconType(severityUnspecifiedIconType)
                                 .setPendingIntent(entryPendingIntent);
@@ -803,8 +807,8 @@ public final class SafetyCenterDataFactory {
                 SafetySourceStatus safetySourceStatus =
                         getSafetySourceStatus(
                                 mSafetyCenterDataManager.getSafetySourceDataInternal(key));
-                boolean defaultEntryDueToQuietMode = isUserManaged && !isManagedUserRunning;
-                if (safetySourceStatus != null && !defaultEntryDueToQuietMode) {
+                boolean inQuietMode = isUserManaged && !isManagedUserRunning;
+                if (safetySourceStatus != null) {
                     PendingIntent pendingIntent = safetySourceStatus.getPendingIntent();
                     if (pendingIntent == null) {
                         // TODO(b/222838784): Decide strategy for static entries when the intent is
@@ -812,7 +816,11 @@ public final class SafetyCenterDataFactory {
                         return null;
                     }
                     return new SafetyCenterStaticEntry.Builder(safetySourceStatus.getTitle())
-                            .setSummary(safetySourceStatus.getSummary())
+                            .setSummary(
+                                    inQuietMode
+                                            ? DevicePolicyResources.getWorkProfilePausedString(
+                                                    mSafetyCenterResourcesContext)
+                                            : safetySourceStatus.getSummary())
                             .setPendingIntent(pendingIntent)
                             .build();
                 }
