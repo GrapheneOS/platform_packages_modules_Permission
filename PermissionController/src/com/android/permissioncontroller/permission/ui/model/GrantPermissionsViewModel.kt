@@ -84,10 +84,8 @@ import com.android.permissioncontroller.permission.service.v33.PermissionDecisio
 import com.android.permissioncontroller.permission.ui.AutoGrantPermissionsNotifier
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_ALL_BUTTON
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALWAYS_ALLOW_ALL_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_FOREGROUND_BUTTON
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_MORE_SELECTED_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_ONE_TIME_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_SELECTED_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.COARSE_RADIO_BUTTON
@@ -380,21 +378,17 @@ class GrantPermissionsViewModel(
                     } else if (isPartialStorageGrant(groupState.group)) {
                         // More photos dialog
                         message = RequestMessage.MORE_PHOTOS_MESSAGE
-                        buttonVisibilities[ALLOW_BUTTON] = false
-                        buttonVisibilities[ALLOW_SELECTED_BUTTON] = false
                         buttonVisibilities[DENY_AND_DONT_ASK_AGAIN_BUTTON] = false
                         buttonVisibilities[DENY_BUTTON] = false
-                        buttonVisibilities[ALLOW_MORE_SELECTED_BUTTON] = true
                         buttonVisibilities[DONT_ALLOW_MORE_SELECTED_BUTTON] = true
-                        buttonVisibilities[ALWAYS_ALLOW_ALL_BUTTON] = true
                     } else {
                         // Standard photos dialog
-                        buttonVisibilities[ALLOW_BUTTON] = false
-                        buttonVisibilities[ALLOW_SELECTED_BUTTON] = true
-                        buttonVisibilities[ALLOW_ALL_BUTTON] = true
                         buttonVisibilities[DENY_AND_DONT_ASK_AGAIN_BUTTON] = isFgUserSet
                         buttonVisibilities[DENY_BUTTON] = !isFgUserSet
                     }
+                    buttonVisibilities[ALLOW_SELECTED_BUTTON] = true
+                    buttonVisibilities[ALLOW_BUTTON] = false
+                    buttonVisibilities[ALLOW_ALL_BUTTON] = true
                 } else if (groupState.group.packageInfo.targetSdkVersion >=
                         minSdkForOrderedSplitPermissions) {
                     if (isBackground || Utils.hasPermWithBackgroundModeCompat(groupState.group)) {

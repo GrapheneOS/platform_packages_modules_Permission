@@ -47,11 +47,9 @@ import com.airbnb.lottie.LottieDrawable
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_ALL_BUTTON
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALWAYS_ALLOW_ALL_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_ALWAYS_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_FOREGROUND_BUTTON
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_MORE_SELECTED_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_ONE_TIME_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_SELECTED_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.COARSE_RADIO_BUTTON
@@ -483,7 +481,7 @@ class GrantPermissionsViewHandlerImpl(
         }
 
         when (BUTTON_RES_ID_TO_NUM.get(id, -1)) {
-            ALLOW_ALL_BUTTON, ALWAYS_ALLOW_ALL_BUTTON, ALLOW_BUTTON -> {
+            ALLOW_ALL_BUTTON, ALLOW_BUTTON -> {
                 view.performAccessibilityAction(
                     AccessibilityNodeInfo.ACTION_CLEAR_ACCESSIBILITY_FOCUS, null)
                 resultListener.onPermissionGrantResult(groupName, affectedForegroundPermissions,
@@ -507,7 +505,7 @@ class GrantPermissionsViewHandlerImpl(
                 resultListener.onPermissionGrantResult(groupName, affectedForegroundPermissions,
                     GRANTED_ONE_TIME)
             }
-            ALLOW_SELECTED_BUTTON, ALLOW_MORE_SELECTED_BUTTON -> {
+            ALLOW_SELECTED_BUTTON -> {
                 view.performAccessibilityAction(
                     AccessibilityNodeInfo.ACTION_CLEAR_ACCESSIBILITY_FOCUS, null)
                 resultListener.onPermissionGrantResult(groupName, affectedForegroundPermissions,
@@ -588,13 +586,8 @@ class GrantPermissionsViewHandlerImpl(
                 ALLOW_ALL_BUTTON)
             BUTTON_RES_ID_TO_NUM.put(R.id.permission_allow_selected_button,
                 ALLOW_SELECTED_BUTTON)
-            BUTTON_RES_ID_TO_NUM.put(R.id.permission_allow_more_selected_button,
-                ALLOW_MORE_SELECTED_BUTTON)
             BUTTON_RES_ID_TO_NUM.put(R.id.permission_dont_allow_more_selected_button,
                 DONT_ALLOW_MORE_SELECTED_BUTTON)
-            BUTTON_RES_ID_TO_NUM.put(R.id.permission_always_allow_all_button,
-                ALWAYS_ALLOW_ALL_BUTTON)
-
 
             LOCATION_RES_ID_TO_NUM.put(R.id.permission_location_accuracy, LOCATION_ACCURACY_LAYOUT)
             LOCATION_RES_ID_TO_NUM.put(R.id.permission_location_accuracy_radio_fine,
