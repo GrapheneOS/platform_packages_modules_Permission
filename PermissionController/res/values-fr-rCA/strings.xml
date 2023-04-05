@@ -191,8 +191,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Autoriser à accéder aux éléments multimédias seulement"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Toujours autoriser"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Autoriser uniquement lorsque l\'appli est en cours d\'utilisation"</string>
-    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
-    <skip />
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Toujours tout autoriser"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Toujours demander"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Ne pas autoriser"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Position exacte"</string>
@@ -597,6 +596,8 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"L\'appli peut partager des données de loc. pour :"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Les pratiques de partage de données peuvent varier"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Les pratiques relatives aux données peuvent varier en fonction de la version de votre application, de son utilisation, de votre région et de votre âge. "<annotation id="link">"En savoir plus sur le partage des données"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_varies_message_without_link (4912763761399025094) -->
+    <skip />
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Vos données de localisation"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Modifiez les autorisations d\'accès de cette application dans les "<annotation id="link">"paramètres de confidentialité"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"le fonctionnement de l\'appli;"</string>
@@ -610,7 +611,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Les données de localisation peuvent être partagées"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Cette application indique qu\'elle peut partager vos données de localisation avec des tiers"</string>
     <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Impossible d\'ouvrir ce lien"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"Essayez de taper <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> dans la fenêtre de votre navigateur pour afficher ce contenu"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Mises à jour des pratiques de partage des données pour la localisation"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Passez en revue les applications qui ont changé la façon dont elles peuvent partager vos données de localisation"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Ces applications ont modifié la façon dont elles peuvent partager vos données de localisation. Elles peuvent ne pas les avoir partagées auparavant, ou peuvent maintenant les partager à des fins d\'annonces ou de marketing."</string>

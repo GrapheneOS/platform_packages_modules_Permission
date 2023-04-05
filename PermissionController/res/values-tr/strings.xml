@@ -191,8 +191,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Yalnızca medyaya erişim izni ver"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Her zaman izin ver"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Yalnızca uygulama kullanılırken izin ver"</string>
-    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
-    <skip />
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Tümüne her zaman izin ver"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Her zaman sor"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"İzin verme"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Tam konum"</string>
@@ -597,6 +596,8 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Bu uygulama, konum verilerini paylaşabilir:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Veri paylaşımı değişir"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Veri uygulamaları; uygulama sürümünüz, kullanımınız, bölgeniz ve yaşınıza göre değişiklik gösterebilir. "<annotation id="link">"Veri paylaşımı hakkında daha fazla bilgi"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_varies_message_without_link (4912763761399025094) -->
+    <skip />
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Konum verileriniz"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Bu uygulamanın erişimini "<annotation id="link">"gizlilik ayarlarından"</annotation>" değiştirebilirsiniz"</string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"Uygulama işlevselliği"</string>
@@ -610,7 +611,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Konum verileri paylaşılabilir"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Bu uygulama, konum verilerinizi üçüncü taraflarla paylaşabileceğini belirtti"</string>
     <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Bu bağlantı açılamıyor"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"Bu içeriği görüntülemek için tarayıcı pencerenize <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> yazmayı deneyin"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Konum için veri paylaşımı güncellemeleri"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Konum verilerinizi paylaşma şekillerini değiştiren uygulamaları inceleyin"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Bu uygulamalar, konum verilerinizi paylaşma şekillerini değiştirdi. Daha önce paylaşmadıkları konum verilerinizi paylaşmaya başlamış olabilecekleri gibi reklam ya da pazarlama için paylaşmaya başlamış da olabilirler."</string>
