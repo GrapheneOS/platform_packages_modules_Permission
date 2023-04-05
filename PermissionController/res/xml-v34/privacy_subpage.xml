@@ -57,11 +57,11 @@
         <Preference
             android:key="privacy_location_access"
             android:title="@string/location_settings"
-            android:summary="@string/location_settings_subtitle"/>
-    </com.android.permissioncontroller.safetycenter.ui.ComparablePreferenceCategory>
+          android:summary="@string/location_settings_subtitle"/>
 
-    <com.android.permissioncontroller.safetycenter.ui.ComparablePreferenceCategory
-        android:key="subpage_data_entry_group"
-        android:title="@string/privacy_subpage_data_header"
-        app:selectable="false" />
+        <com.android.permissioncontroller.safetycenter.ui.ComparablePreferenceCategory
+            android:key="subpage_controls_extra_entry_group"
+            android:layout="@layout/preference_category_no_label"
+            app:selectable="false" />
+    </com.android.permissioncontroller.safetycenter.ui.ComparablePreferenceCategory>
 </PreferenceScreen>
