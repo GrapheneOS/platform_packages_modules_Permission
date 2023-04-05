@@ -114,46 +114,22 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
 
         configureDismissButton(holder.findViewById(R.id.issue_card_dismiss_btn));
 
-        ((TextView) holder.findViewById(R.id.issue_card_title)).setText(mIssue.getTitle());
+        TextView titleTextView = (TextView) holder.findViewById(R.id.issue_card_title);
+        titleTextView.setText(mIssue.getTitle());
         ((TextView) holder.findViewById(R.id.issue_card_summary)).setText(mIssue.getSummary());
 
-        CharSequence attributionTitle = SdkLevel.isAtLeastU() ? mIssue.getAttributionTitle() : null;
         TextView attributionTitleTextView =
                 (TextView) holder.findViewById(R.id.issue_card_attribution_title);
-        if (TextUtils.isEmpty(attributionTitle)) {
-            attributionTitleTextView.setVisibility(View.GONE);
-        } else {
-            attributionTitleTextView.setText(attributionTitle);
-            attributionTitleTextView.setVisibility(View.VISIBLE);
-        }
-        CharSequence subtitle = mIssue.getSubtitle();
+        maybeDisplayText(
+                SdkLevel.isAtLeastU() ? mIssue.getAttributionTitle() : null,
+                attributionTitleTextView);
+
         TextView subtitleTextView = (TextView) holder.findViewById(R.id.issue_card_subtitle);
-        CharSequence contentDescription;
-        // TODO(b/257972736): Add a11y support for attribution title.
-        if (TextUtils.isEmpty(subtitle)) {
-            subtitleTextView.setVisibility(View.GONE);
-            contentDescription =
-                    getContext()
-                            .getString(
-                                    R.string.safety_center_issue_card_content_description,
-                                    mIssue.getTitle(),
-                                    mIssue.getSummary());
-        } else {
-            subtitleTextView.setText(subtitle);
-            subtitleTextView.setVisibility(View.VISIBLE);
-            int contentDescriptionResId =
-                    R.string.safety_center_issue_card_content_description_with_subtitle;
-            contentDescription =
-                    getContext()
-                            .getString(
-                                    contentDescriptionResId,
-                                    mIssue.getTitle(),
-                                    mIssue.getSubtitle(),
-                                    mIssue.getSummary());
-        }
-        holder.itemView.setContentDescription(contentDescription);
+        maybeDisplayText(mIssue.getSubtitle(), subtitleTextView);
+
         holder.itemView.setClickable(false);
 
+        configureContentDescription(attributionTitleTextView, titleTextView);
         configureButtonList(holder);
         configureSafetyProtectionView(holder);
         maybeStartResolutionAnimation(holder);
@@ -161,6 +137,38 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
         mSafetyCenterViewModel
                 .getInteractionLogger()
                 .recordForIssue(Action.SAFETY_ISSUE_VIEWED, mIssue, mIsDismissed);
+    }
+
+    private void maybeDisplayText(@Nullable CharSequence maybeText, TextView textView) {
+        if (TextUtils.isEmpty(maybeText)) {
+            textView.setVisibility(View.GONE);
+        } else {
+            textView.setText(maybeText);
+            textView.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void configureContentDescription(
+            TextView attributionTitleTextView, TextView titleTextView) {
+        TextView firstVisibleTextView;
+        if (attributionTitleTextView.getVisibility() == View.VISIBLE) {
+            // Attribution title might not be present for an issue, title always is.
+            firstVisibleTextView = attributionTitleTextView;
+
+            // Clear the modified title description in case this view is reused.
+            titleTextView.setContentDescription(null);
+        } else {
+            firstVisibleTextView = titleTextView;
+        }
+
+        // We would like to say "alert" before reading the content of the issue card. Best way to
+        // do that is by modifying the content description of the first view that would be read
+        // in the issue card.
+        firstVisibleTextView.setContentDescription(
+                getContext()
+                        .getString(
+                                R.string.safety_center_issue_card_prefix_content_description,
+                                firstVisibleTextView.getText()));
     }
 
     private void configureButtonList(PreferenceViewHolder holder) {
