@@ -35,7 +35,6 @@ import androidx.annotation.RequiresApi;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Helps build or retrieve {@link PendingIntent} instances.
@@ -117,13 +116,6 @@ public final class PendingIntentFactory {
             intent.setIdentifier("with_settings_homepage_extra");
         }
 
-        // queryIntentActivities does not return any activity when the work profile is in quiet
-        // mode, even though it opens the quiet mode dialog. So, we assume that the intent will
-        // resolve to this dialog.
-        if (isQuietModeEnabled) {
-            return intent;
-        }
-
         // If the intent resolves for the package provided, then we make the assumption that it is
         // the desired app and make the intent explicit. This is to workaround implicit internal
         // intents that may not be exported which will stop working on Android U+.
@@ -138,6 +130,15 @@ public final class PendingIntentFactory {
             return intent;
         }
 
+        // resolveActivity does not return any activity when the work profile is in quiet mode, even
+        // though it opens the quiet mode dialog and/or the original intent would otherwise resolve
+        // when quiet mode is turned off. So, we assume that the explicit intent will always resolve
+        // to this dialog. This heuristic is preferable on U+ as it has a higher chance of resolving
+        // once the work profile is enabled considering the implicit internal intent restriction.
+        if (isQuietModeEnabled) {
+            return explicitIntent;
+        }
+
         return null;
     }
 
@@ -150,16 +151,17 @@ public final class PendingIntentFactory {
     }
 
     private static boolean intentResolves(Context packageContext, Intent intent) {
-        return !queryIntentActivities(packageContext, intent).isEmpty();
+        return resolveActivity(packageContext, intent) != null;
     }
 
-    private static List<ResolveInfo> queryIntentActivities(Context packageContext, Intent intent) {
+    @Nullable
+    private static ResolveInfo resolveActivity(Context packageContext, Intent intent) {
         PackageManager packageManager = packageContext.getPackageManager();
         // This call requires the INTERACT_ACROSS_USERS permission as the `packageContext` could
         // belong to another user.
         final long callingId = Binder.clearCallingIdentity();
         try {
-            return packageManager.queryIntentActivities(intent, ResolveInfoFlags.of(0));
+            return packageManager.resolveActivity(intent, ResolveInfoFlags.of(0));
         } finally {
             Binder.restoreCallingIdentity(callingId);
         }
