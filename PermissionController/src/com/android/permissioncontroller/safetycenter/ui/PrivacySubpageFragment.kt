@@ -42,7 +42,7 @@ class PrivacySubpageFragment : SafetyCenterFragment() {
     private lateinit var subpageBrandChip: SafetyBrandChipPreference
     private lateinit var subpageIssueGroup: PreferenceGroup
     private lateinit var subpageGenericEntryGroup: PreferenceGroup
-    private lateinit var subpageDataEntryGroup: PreferenceGroup
+    private lateinit var subpageControlsExtraEntryGroup: PreferenceGroup
     private lateinit var privacyControlsViewModel: PrivacyControlsViewModel
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
@@ -52,7 +52,8 @@ class PrivacySubpageFragment : SafetyCenterFragment() {
         subpageBrandChip = getPreferenceScreen().findPreference(BRAND_CHIP_KEY)!!
         subpageIssueGroup = getPreferenceScreen().findPreference(ISSUE_GROUP_KEY)!!
         subpageGenericEntryGroup = getPreferenceScreen().findPreference(GENERIC_ENTRY_GROUP_KEY)!!
-        subpageDataEntryGroup = getPreferenceScreen().findPreference(DATA_ENTRY_GROUP_KEY)!!
+        subpageControlsExtraEntryGroup =
+            getPreferenceScreen().findPreference(CONTROLS_EXTRA_ENTRY_GROUP_KEY)!!
         subpageBrandChip.setupListener(requireActivity(), safetyCenterSessionId)
 
         val factory = PrivacyControlsViewModelFactory(requireActivity().getApplication())
@@ -113,15 +114,13 @@ class PrivacySubpageFragment : SafetyCenterFragment() {
             subpageIssues,
             subpageDismissedIssues,
             uiData.resolvedIssues,
-            requireActivity().getTaskId()
-        )
+            requireActivity().getTaskId())
     }
 
     private fun updateSafetyCenterEntries(entryGroup: SafetyCenterEntryGroup) {
         Log.d(TAG, "updateSafetyCenterEntries called with $entryGroup")
         subpageGenericEntryGroup.removeAll()
-        subpageDataEntryGroup.removeAll()
-        var atLeastOneDataEntryVisible = false
+        subpageControlsExtraEntryGroup.removeAll()
 
         for (entry in entryGroup.entries) {
             val entryId = entry.id
@@ -131,49 +130,26 @@ class PrivacySubpageFragment : SafetyCenterFragment() {
                 SafetySubpageEntryPreference(
                     requireContext(),
                     PendingIntentSender.getTaskIdForEntry(
-                        entryId,
-                        sameTaskSourceIds,
-                        requireActivity()
-                    ),
+                        entryId, sameTaskSourceIds, requireActivity()),
                     entry,
-                    safetyCenterViewModel
-                )
+                    safetyCenterViewModel)
 
-            when (sourceId) {
-                "AndroidPermissionUsage",
-                "AndroidPermissionManager",
-                "AndroidAdsPrivacy",
-                "AndroidHealthConnect",
-                "AndroidPrivacyAppDataSharingUpdates" -> {
-                    subpageGenericEntryGroup.addPreference(subpageEntry)
-                }
-                "AndroidPrivacyControls" -> {
-                    // No action required here because the privacy controls are rendered separately
-                    // by this fragment as generic preferences.
-                }
-                else -> {
-                    subpageDataEntryGroup.addPreference(subpageEntry)
-                    atLeastOneDataEntryVisible =
-                        atLeastOneDataEntryVisible || subpageEntry.isVisible()
-                }
+            if (sourceId == "AndroidPrivacyControls") {
+                // No action required here because the privacy controls are rendered separately
+                // by this fragment as generic preferences.
+            } else if (sourceId.endsWith("ActivityControls")) {
+                subpageControlsExtraEntryGroup.addPreference(subpageEntry)
+            } else {
+                subpageGenericEntryGroup.addPreference(subpageEntry)
             }
         }
-
-        /* The data entry group currently consists of only two sources which have an initial
-         * display state hidden. So if they are not visible, we should hide the entire category
-         * including the header */
-        subpageDataEntryGroup.setVisible(atLeastOneDataEntryVisible)
     }
 
     private fun renderPrivacyControls(prefStates: Map<Pref, PrefState>) {
         fun setSwitchPreference(prefType: Pref) {
             val switchPreference: ClickableDisabledSwitchPreference? = findPreference(prefType.key)
             switchPreference?.setupState(
-                prefStates[prefType],
-                prefType,
-                privacyControlsViewModel,
-                this
-            )
+                prefStates[prefType], prefType, privacyControlsViewModel, this)
         }
 
         setSwitchPreference(Pref.MIC)
@@ -193,8 +169,8 @@ class PrivacySubpageFragment : SafetyCenterFragment() {
         private const val BRAND_CHIP_KEY: String = "subpage_brand_chip"
         private const val ISSUE_GROUP_KEY: String = "subpage_issue_group"
         private const val GENERIC_ENTRY_GROUP_KEY: String = "subpage_generic_entry_group"
-        private const val DATA_ENTRY_GROUP_KEY: String = "subpage_data_entry_group"
-
+        private const val CONTROLS_EXTRA_ENTRY_GROUP_KEY: String =
+            "subpage_controls_extra_entry_group"
         /** Creates an instance of PrivacySubpageFragment with the arguments set */
         @JvmStatic
         fun newInstance(sessionId: Long): PrivacySubpageFragment {

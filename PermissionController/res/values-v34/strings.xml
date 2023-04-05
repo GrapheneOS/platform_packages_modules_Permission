@@ -20,8 +20,6 @@
     <string name="security_privacy_brand_name">Security &amp; privacy</string>
     <!-- Header for the controls category on the privacy subpage of Safety Center [CHAR LIMIT=NONE] -->
     <string name="privacy_subpage_controls_header">Controls</string>
-    <!-- Header for the data category on the privacy subpage of Safety Center [CHAR LIMIT=NONE] -->
-    <string name="privacy_subpage_data_header">Data</string>
 
     <!-- Title shown for Health Connect [CHAR LIMIT=50] -->
     <string name="health_connect_title" description="Health connect title">Health&#160;Connect</string>
