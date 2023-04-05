@@ -19,6 +19,7 @@ package com.android.safetycenter.data;
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
 import android.annotation.Nullable;
+import android.annotation.UptimeMillisLong;
 import android.annotation.UserIdInt;
 import android.content.Context;
 import android.os.SystemClock;
@@ -423,6 +424,7 @@ public final class SafetyCenterDataManager {
      *
      * @see SystemClock#elapsedRealtime()
      */
+    @UptimeMillisLong
     public long getSafetySourceLastUpdated(SafetySourceKey safetySourceKey) {
         return mSafetySourceDataRepository.getSafetySourceLastUpdated(safetySourceKey);
     }

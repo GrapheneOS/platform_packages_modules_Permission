@@ -25,7 +25,10 @@ import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLL
 import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__SOURCE_ERROR;
 import static com.android.safetycenter.logging.SafetyCenterStatsdLogger.toSystemEventResult;
 
+import static java.util.Collections.emptyList;
+
 import android.annotation.Nullable;
+import android.annotation.UptimeMillisLong;
 import android.annotation.UserIdInt;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -132,6 +135,14 @@ final class SafetySourceDataRepository {
                 AndroidLockScreenFix.maybeOverrideSafetySourceData(
                         mContext, safetySourceId, safetySourceData);
 
+        // Must fetch refresh reason before calling processSafetyEvent because the latter may
+        // complete and clear the current refresh.
+        // TODO(b/277174417): Restructure this code to avoid this error-prone sequencing concern
+        Integer refreshReason = null;
+        if (safetyEvent.getType() == SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED) {
+            refreshReason = mSafetyCenterRefreshTracker.getRefreshReason();
+        }
+
         boolean eventCausedChange = processSafetyEvent(safetySourceId, safetyEvent, userId, false);
         boolean removedSourceError = mSafetySourceErrors.remove(key);
         boolean sourceDataDiffers = !Objects.equals(safetySourceData, mSafetySourceData.get(key));
@@ -139,10 +150,10 @@ final class SafetySourceDataRepository {
         if (sourceDataDiffers) {
             setSafetySourceDataInternal(key, safetySourceData);
         }
-        setLastUpdatedNow(key);
 
-        // TODO(b/268309211): Record SafetySourceStateCollected event here and send
-        //  sourceDataDiffers as the value for that atom's dataChanged param
+        setLastUpdatedNow(key);
+        logSafetySourceStateCollected(
+                key, userId, safetySourceData, refreshReason, sourceDataDiffers);
 
         return sourceDataDiffers || eventCausedChange || removedSourceError;
     }
@@ -328,6 +339,7 @@ final class SafetySourceDataRepository {
      *
      * @see SystemClock#elapsedRealtime()
      */
+    @UptimeMillisLong
     long getSafetySourceLastUpdated(SafetySourceKey sourceKey) {
         Long lastUpdated = mSafetySourceLastUpdated.get(sourceKey);
         if (lastUpdated != null) {
@@ -617,5 +629,63 @@ final class SafetySourceDataRepository {
         }
         Log.w(TAG, "Unexpected SafetyEvent.Type: " + type);
         return false;
+    }
+
+    private void logSafetySourceStateCollected(
+            SafetySourceKey sourceKey,
+            @UserIdInt int userId,
+            @Nullable SafetySourceData sourceData,
+            @Nullable Integer refreshReason,
+            boolean sourceDataDiffers) {
+        SafetySourceStatus sourceStatus = sourceData == null ? null : sourceData.getStatus();
+        List<SafetySourceIssue> sourceIssues =
+                sourceData == null ? emptyList() : sourceData.getIssues();
+
+        int maxSeverityLevel = Integer.MIN_VALUE;
+        if (sourceStatus != null) {
+            maxSeverityLevel = sourceStatus.getSeverityLevel();
+        } else if (sourceData != null) {
+            // In this case we know we have an issue-only source because of the checks carried out
+            // in the validateRequest function.
+            maxSeverityLevel = SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED;
+        }
+
+        long openIssuesCount = 0;
+        long dismissedIssuesCount = 0;
+        for (int i = 0; i < sourceIssues.size(); i++) {
+            SafetySourceIssue issue = sourceIssues.get(i);
+            if (isIssueDismissed(issue, sourceKey.getSourceId(), userId)) {
+                dismissedIssuesCount++;
+            } else {
+                openIssuesCount++;
+                maxSeverityLevel = Math.max(maxSeverityLevel, issue.getSeverityLevel());
+            }
+        }
+
+        // TODO(b/268309211): Log duplicate filtered out issue counts when sources update
+        int duplicateFilteredOutIssuesCount = 0;
+
+        SafetyCenterStatsdLogger.writeSafetySourceStateCollectedSourceUpdated(
+                sourceKey.getSourceId(),
+                UserUtils.isManagedProfile(userId, mContext),
+                maxSeverityLevel > Integer.MIN_VALUE ? maxSeverityLevel : null,
+                openIssuesCount,
+                dismissedIssuesCount,
+                duplicateFilteredOutIssuesCount,
+                getSourceState(sourceKey),
+                refreshReason,
+                sourceDataDiffers);
+    }
+
+    private boolean isIssueDismissed(
+            SafetySourceIssue issue, String sourceId, @UserIdInt int userId) {
+        SafetyCenterIssueKey issueKey =
+                SafetyCenterIssueKey.newBuilder()
+                        .setSafetySourceId(sourceId)
+                        .setSafetySourceIssueId(issue.getId())
+                        .setUserId(userId)
+                        .build();
+        return mSafetyCenterIssueDismissalRepository.isIssueDismissed(
+                issueKey, issue.getSeverityLevel());
     }
 }

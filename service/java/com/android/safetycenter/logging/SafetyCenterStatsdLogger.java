@@ -74,6 +74,7 @@ import static com.android.permission.PermissionStatsLog.SAFETY_STATE__OVERALL_SE
 
 import android.annotation.IntDef;
 import android.annotation.Nullable;
+import android.annotation.UptimeMillisLong;
 import android.safetycenter.SafetyCenterManager;
 import android.safetycenter.SafetyCenterManager.RefreshRequestType;
 import android.safetycenter.SafetyCenterStatus;
@@ -180,7 +181,7 @@ public final class SafetyCenterStatsdLogger {
             long dismissedIssuesCount,
             long duplicateFilteredOutIssuesCount,
             @SourceState int sourceState,
-            long lastUpdatedElapsedTimeMillis) {
+            @UptimeMillisLong long lastUpdatedElapsedTimeMillis) {
         writeSafetySourceStateCollected(
                 sourceId,
                 isManagedProfile,
@@ -209,8 +210,6 @@ public final class SafetyCenterStatsdLogger {
      * @param refreshReason is the {@link SafetyCenterManager.RefreshReason} of the refresh the
      *     source is responding to, or {@code null} if the source pushed data spontaneously.
      */
-    @SuppressWarnings("unused")
-    // TODO(b/268309211): Record this event when sources provide data
     public static void writeSafetySourceStateCollectedSourceUpdated(
             String sourceId,
             boolean isManagedProfile,

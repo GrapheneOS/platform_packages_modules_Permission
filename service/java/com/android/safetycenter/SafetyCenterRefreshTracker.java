@@ -113,6 +113,20 @@ public final class SafetyCenterRefreshTracker {
     }
 
     /**
+     * Returns the {@link RefreshReason} for the current refresh, or {@code null} if none is in
+     * progress.
+     */
+    @RefreshReason
+    @Nullable
+    public Integer getRefreshReason() {
+        if (mRefreshInProgress != null) {
+            return mRefreshInProgress.getReason();
+        } else {
+            return null;
+        }
+    }
+
+    /**
      * Reports that refresh requests have been sent to a collection of sources.
      *
      * <p>When those sources respond call {@link #reportSourceRefreshCompleted} to mark the request
