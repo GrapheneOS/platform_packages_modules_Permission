@@ -20,6 +20,7 @@ import android.Manifest.permission.READ_CONTACTS
 import android.Manifest.permission_group.CONTACTS
 import android.content.Context
 import android.content.Intent
+import android.content.res.Resources
 import androidx.test.platform.app.InstrumentationRegistry
 import com.android.permissioncontroller.Constants.EXTRA_SESSION_ID
 import com.android.permissioncontroller.Constants.INVALID_SESSION_ID
@@ -62,7 +63,19 @@ class UtilsTest {
         assertThat(Utils.getGroupPermissionInfos(INVALID_GROUP_NAME, context)).isNull()
     }
 
+    @Test
+    fun assertGetColorResIdValidId() {
+        assertThat(Utils.getColorResId(context, android.R.attr.colorPrimary))
+            .isNotEqualTo(Resources.ID_NULL)
+    }
+
+    @Test
+    fun assertGetColorResIdInValidId() {
+        assertThat(Utils.getColorResId(context, INVALID_ATTR_ID)).isEqualTo(Resources.ID_NULL)
+    }
+
     companion object {
+        private const val INVALID_ATTR_ID = 1000
         private const val VALID_SESSION_ID = 10000L
         private const val GROUP_NAME = CONTACTS
         private const val INVALID_GROUP_NAME = "invalid group name"

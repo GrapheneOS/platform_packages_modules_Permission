@@ -348,7 +348,7 @@ class PermissionUsageDetailsViewModel(
         discreteAccess.accessTimeMs / ONE_HOUR_MS ==
             clusteredAccesses.first().accessTimeMs / ONE_HOUR_MS &&
             clusteredAccesses.last().accessTimeMs / ONE_MINUTE_MS -
-                discreteAccess.accessTimeMs / ONE_MINUTE_MS > CLUSTER_SPACING_MINUTES
+                discreteAccess.accessTimeMs / ONE_MINUTE_MS <= CLUSTER_SPACING_MINUTES
 
     /**
      * Composes all UI information from a [AppPermissionDiscreteAccessCluster] into a
