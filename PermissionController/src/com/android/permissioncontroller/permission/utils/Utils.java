@@ -660,10 +660,6 @@ public final class Utils {
         return typedValue.resourceId;
     }
 
-    public static List<ApplicationInfo> getAllInstalledApplications(Context context) {
-        return context.getPackageManager().getInstalledApplications(0);
-    }
-
     /**
      * Is the group or background group user sensitive?
      *
