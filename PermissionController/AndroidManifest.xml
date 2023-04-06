@@ -356,11 +356,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.android.permissioncontroller.permission.ui.OverlayWarningDialog"
-                android:excludeFromRecents="true"
-                android:exported="false"
-                android:theme="@style/Theme.DeviceDefault.Dialog.NoActionBar.DayNight" />
-
         <activity android:name="com.android.permissioncontroller.permission.ui.LocationProviderInterceptDialog"
                   android:excludeFromRecents="true"
                   android:exported="false"

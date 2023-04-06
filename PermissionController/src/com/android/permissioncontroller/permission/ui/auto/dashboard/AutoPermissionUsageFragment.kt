@@ -40,9 +40,9 @@ import com.android.permissioncontroller.permission.model.v31.PermissionUsages
 import com.android.permissioncontroller.permission.model.v31.PermissionUsages.PermissionsUsagesChangeCallback
 import com.android.permissioncontroller.permission.ui.model.ManagePermissionsViewModel
 import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageControlPreferenceUtils
-import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageViewModelFactoryLegacy
-import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageViewModelLegacy
-import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageViewModelLegacy.PermissionGroupWithUsageCount
+import com.android.permissioncontroller.permission.ui.legacy.PermissionUsageViewModelFactoryLegacy
+import com.android.permissioncontroller.permission.ui.legacy.PermissionUsageViewModelLegacy
+import com.android.permissioncontroller.permission.ui.legacy.PermissionUsageViewModelLegacy.PermissionGroupWithUsageCount
 import com.android.permissioncontroller.permission.utils.Utils
 
 @RequiresApi(Build.VERSION_CODES.S)
