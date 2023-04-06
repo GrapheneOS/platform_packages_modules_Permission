@@ -18,7 +18,6 @@ package com.android.permissioncontroller.permission.ui.handheld.v34
 
 import android.content.Context
 import android.text.SpannableString
-import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.util.AttributeSet
 import android.view.View
@@ -26,6 +25,7 @@ import android.widget.TextView
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.permission.compat.LinkMovementMethodCompat
 
 /** A preference for a footer with an icon and a link. */
 class AppDataSharingUpdatesFooterPreference : Preference {
@@ -80,7 +80,7 @@ class AppDataSharingUpdatesFooterPreference : Preference {
         footerLinkView?.let {
             it.visibility = if (onFooterLinkClick == null) View.GONE else View.VISIBLE
             it.text = footerLinkText
-            it.movementMethod = LinkMovementMethod.getInstance()
+            it.movementMethod = LinkMovementMethodCompat.getInstance()
         }
         super.onBindViewHolder(holder)
     }
