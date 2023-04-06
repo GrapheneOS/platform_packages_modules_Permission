@@ -14,9 +14,8 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.utils;
+package com.android.permissioncontroller.permission.utils.v31;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.Attribution;
@@ -25,6 +24,7 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Build;
 
+import androidx.annotation.ChecksSdkIntAtLeast;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
@@ -42,6 +42,7 @@ public class SubattributionUtils {
     /**
      * Returns true if the app supports subattribution.
      */
+    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.S)
     public static boolean isSubattributionSupported(Context context, ApplicationInfo appInfo) {
         if (!SdkLevel.isAtLeastS()) {
             return false;
@@ -50,6 +51,7 @@ public class SubattributionUtils {
     }
 
     /** Returns whether the provided package supports subattribution. */
+    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.S)
     public static boolean isSubattributionSupported(LightPackageInfo lightPackageInfo) {
         return SdkLevel.isAtLeastS() && lightPackageInfo.getAreAttributionsUserVisible();
     }
@@ -59,7 +61,6 @@ public class SubattributionUtils {
      * {@code null} otherwise.
      */
     @Nullable
-    @SuppressLint("NewApi") // isSubattributionSupported checks api level
     public static Map<Integer, String> getAttributionLabels(Context context, PackageInfo pkgInfo) {
         if (!isSubattributionSupported(context, pkgInfo.applicationInfo)) {
             return null;
@@ -72,7 +73,6 @@ public class SubattributionUtils {
      * {@code null} otherwise.
      */
     @Nullable
-    @SuppressLint("NewApi") // isSubattributionSupported checks api level
     public static Map<Integer, String> getAttributionLabels(Context context,
             ApplicationInfo appInfo) {
         if (!isSubattributionSupported(context, appInfo)) {
@@ -114,7 +114,6 @@ public class SubattributionUtils {
 
     /** Returns the attribution label map for the package if the app supports subattribution. */
     @Nullable
-    @SuppressLint("NewApi") // isSubattributionSupported checks api level
     public static Map<Integer, String> getAttributionLabels(Context context,
             LightPackageInfo lightPackageInfo) {
         if (!isSubattributionSupported(lightPackageInfo)) {

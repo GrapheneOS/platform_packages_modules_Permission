@@ -53,6 +53,7 @@ import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage;
 import com.android.permissioncontroller.permission.model.v31.PermissionUsages;
 import com.android.permissioncontroller.permission.ui.Category;
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity;
+import com.android.permissioncontroller.permission.ui.handheld.v31.CardViewPreference;
 import com.android.permissioncontroller.permission.ui.model.PermissionAppsViewModel;
 import com.android.permissioncontroller.permission.ui.model.PermissionAppsViewModelFactory;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;

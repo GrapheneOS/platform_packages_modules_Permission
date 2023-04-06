@@ -14,13 +14,15 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.ui.handheld;
+package com.android.permissioncontroller.permission.ui.handheld.v31;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.annotation.RequiresApi;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
@@ -30,6 +32,7 @@ import com.android.permissioncontroller.R;
 /**
  * A Preference representing a banner message represented as a CardView
  */
+@RequiresApi(Build.VERSION_CODES.S)
 public class CardViewPreference extends Preference {
 
     private String mAction;
