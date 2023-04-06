@@ -59,12 +59,12 @@ import com.android.permissioncontroller.permission.model.Permission;
 import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo;
 import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo.PermGrantState;
 import com.android.permissioncontroller.permission.ui.AutoGrantPermissionsNotifier;
-import com.android.permissioncontroller.permission.utils.AdminRestrictedPermissionsUtils;
 import com.android.permissioncontroller.permission.utils.ArrayUtils;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.PermissionMapping;
 import com.android.permissioncontroller.permission.utils.UserSensitiveFlagsUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
+import com.android.permissioncontroller.permission.utils.v31.AdminRestrictedPermissionsUtils;
 import com.android.role.controller.model.Role;
 import com.android.role.controller.model.Roles;
 
