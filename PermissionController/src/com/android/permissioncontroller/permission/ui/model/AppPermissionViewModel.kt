@@ -63,7 +63,7 @@ import com.android.permissioncontroller.permission.model.livedatatypes.LightAppP
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPermission
 import com.android.permissioncontroller.permission.service.PermissionChangeStorageImpl
 import com.android.permissioncontroller.permission.service.v33.PermissionDecisionStorageImpl
-import com.android.permissioncontroller.permission.ui.AdvancedConfirmDialogArgs
+import com.android.permissioncontroller.permission.ui.v33.AdvancedConfirmDialogArgs
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.ALLOW
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.ALLOW_ALWAYS
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.ALLOW_FOREGROUND
