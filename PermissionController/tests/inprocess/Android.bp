@@ -46,6 +46,7 @@ android_test {
         "androidx.test.ext.junit",
         "androidx.test.uiautomator_uiautomator",
         "compatibility-device-util-axt",
+        "kotlin-test",
         "permission-test-util-lib",
     ],
 
