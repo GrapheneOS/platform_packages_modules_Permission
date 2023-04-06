@@ -21,7 +21,6 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.os.Build
 import android.os.Bundle
-import android.text.method.LinkMovementMethod
 import android.transition.ChangeBounds
 import android.transition.TransitionManager
 import android.view.Gravity
@@ -29,13 +28,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.permission.compat.LinkMovementMethodCompat
 import com.android.permissioncontroller.permission.ui.v34.PermissionRationaleViewHandler
 import com.android.permissioncontroller.permission.ui.v34.PermissionRationaleViewHandler.Result.Companion.CANCELLED
 
@@ -146,16 +145,16 @@ class PermissionRationaleViewHandlerImpl(
         titleView = rootView.findViewById(R.id.permission_rationale_title)
 
         dataSharingSourceMessageView = rootView.findViewById(R.id.data_sharing_source_message)
-        dataSharingSourceMessageView!!.movementMethod = LinkMovementMethod.getInstance()
+        dataSharingSourceMessageView!!.movementMethod = LinkMovementMethodCompat.getInstance()
 
         purposeTitleView = rootView.findViewById(R.id.purpose_title)
         purposeMessageView = rootView.findViewById(R.id.purpose_message)
 
         learnMoreMessageView = rootView.findViewById(R.id.learn_more_message)
-        learnMoreMessageView!!.movementMethod = LinkMovementMethod.getInstance()
+        learnMoreMessageView!!.movementMethod = LinkMovementMethodCompat.getInstance()
 
         settingsMessageView = rootView.findViewById(R.id.settings_message)
-        settingsMessageView!!.movementMethod = LinkMovementMethod.getInstance()
+        settingsMessageView!!.movementMethod = LinkMovementMethodCompat.getInstance()
 
         if (!shouldShowSettingsSection) {
             val settingsSectionView: ViewGroup? = rootView.findViewById(R.id.settings_section)
