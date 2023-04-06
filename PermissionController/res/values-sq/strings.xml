@@ -596,6 +596,8 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Apl. mund të ndajë të dhënat e vendndodhjes për:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Ndarja e të dhënave ndryshon"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Veprimet me të dhënat mund të ndryshojnë bazuar në versionin e aplikacionit, përdorimin, rajonin dhe moshën tënde. "<annotation id="link">"Më shumë rreth ndarjes së të dhënave"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_varies_message_without_link (4912763761399025094) -->
+    <skip />
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Të dhënat e vendndodhjes sate"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Ndrysho qasjen e këtij aplikacioni te "<annotation id="link">"cilësimet e privatësisë"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"Funksionaliteti i aplikacionit"</string>
@@ -609,7 +611,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Të dhënat e vendndodhjes mund të ndahen"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Ky aplikacion deklaroi se mund të ndajë të dhënat e vendndodhjes sate me palë të treta"</string>
     <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Kjo lidhje nuk mund të hapet"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"Provo të shkruash <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> në dritaren tënde të shfletuesit për të parë këtë përmbajtje"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Përditësime për ndarjen e të dhënave për vendndodhjen"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Shqyrto aplikacionet që ndryshuan mënyrën se si mund të ndajnë të dhënat e vendndodhjes sate"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Këto aplikacione kanë ndryshuar mënyrën se si mund të ndajnë të dhënat e vendndodhjes sate. Ato mund të mos i kenë ndarë më parë ose mund t\'i ndajnë tani për qëllime reklamimi dhe marketingu."</string>

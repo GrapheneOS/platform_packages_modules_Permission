@@ -596,6 +596,8 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"This app may share location data for:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Data sharing varies"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Data practices may vary based on your app version, use, region, and age. "<annotation id="link">"More about data sharing"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_varies_message_without_link (4912763761399025094) -->
+    <skip />
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Your location data"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Change this app’s access in "<annotation id="link">"privacy settings"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"App functionality"</string>
@@ -609,7 +611,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Location data may be shared"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"This app stated it may share your location data with third parties"</string>
     <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Can’t open this link"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"Try typing <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> into your browser window to view this content"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Data sharing updates for location"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Review apps that changed the way they may share your location data"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"These apps have changed the way they may share your location data. They may not have shared it before, or may now share it for advertising or marketing purposes."</string>

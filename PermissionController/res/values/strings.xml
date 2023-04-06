@@ -79,8 +79,8 @@
     <!-- Title for the dialog button to allow access to select more photos to be shared. [CHAR LIMIT=60] -->
     <string name="grant_dialog_button_allow_more_selected_photos">Select more</string>
 
-    <!-- Title for the dialog button to not allow access to select more photos to be shared. [CHAR LIMIT=60] -->
-    <string name="grant_dialog_button_dont_allow_more_selected_photos">Don\u2019t select more</string>
+    <!-- Title for the dialog button to not select more data (example: photos or contacts) to be shared. [CHAR LIMIT=60] -->
+    <string name="grant_dialog_button_dont_select_more">Don\u2019t select more</string>
 
     <!-- Title for the dialog button to deny a permission grant despite a warning of implications. [CHAR LIMIT=30] -->
     <string name="grant_dialog_button_deny_anyway">Don\u2019t allow anyway</string>
@@ -1689,8 +1689,8 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="safety_center_background_location_access_reminder_notification_content"><xliff:g id="app_name" example="Gmail">%s</xliff:g> can always access your location, even when the app is closed</string>
     <!-- Title for background location access reminder warning card [CHAR LIMIT=80]-->
     <string name="safety_center_background_location_access_reminder_title">Review app with background location access</string>
-    <!-- Content for background location access reminder warning card [CHAR LIMIT=80]-->
-    <string name="safety_center_background_location_access_reminder_summary">This app can always access your location, even when it\u2019s closed.</string>
+    <!-- Content for background location access reminder warning card [CHAR LIMIT=NONE] -->
+    <string name="safety_center_background_location_access_reminder_summary">This app can always access your location, even when it\u2019s closed.\u000a\u000aSome safety and emergency apps require access to your location in the background to work as intended.</string>
     <!-- Success message when background location access permission is changed [CHAR LIMIT=40]-->
     <string name="safety_center_background_location_access_revoked">Access changed</string>
     <!-- Label for button to view recent location access [CHAR LIMIT=60]-->

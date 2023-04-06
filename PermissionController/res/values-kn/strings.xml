@@ -191,8 +191,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"ಮಾಧ್ಯಮಕ್ಕೆ ಮಾತ್ರ ಪ್ರವೇಶಿಸಲು ಅನುಮತಿಸಿ"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"ಎಲ್ಲಾ ಸಮಯದಲ್ಲೂ ಅನುಮತಿಸಿ"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"ಆ್ಯಪ್ ಬಳಸುವಾಗ ಮಾತ್ರ ಅನುಮತಿಸಿ"</string>
-    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
-    <skip />
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"ಯಾವಾಗಲೂ ಎಲ್ಲವನ್ನೂ ಅನುಮತಿಸಿ"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"ಪ್ರತಿ ಬಾರಿ ಕೇಳಿ"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"ಅನುಮತಿಸಬೇಡಿ"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"ನಿಖರವಾದ ಸ್ಥಾನ"</string>
@@ -348,7 +347,7 @@
     <string name="car_permission_selected" msgid="180837028920791596">"ಆಯ್ಕೆಮಾಡಲಾಗಿದೆ"</string>
     <string name="settings" msgid="5409109923158713323">"ಸೆಟ್ಟಿಂಗ್‌ಗಳು"</string>
     <string name="accessibility_service_dialog_title_single" msgid="7956432823014102366">"<xliff:g id="SERVICE_NAME">%s</xliff:g> ಸೇವೆಯು ನಿಮ್ಮ ಸಾಧನಕ್ಕೆ ಸಂಪೂರ್ಣ ಪ್ರವೇಶವನ್ನು ಹೊಂದಿದೆ"</string>
-    <string name="accessibility_service_dialog_title_multiple" msgid="5527879210683548175">"<xliff:g id="NUM_SERVICES">%s</xliff:g> ಪ್ರವೇಶಿಸುವಿಕೆ ಆ್ಯಪ್‌ಗಳು ನಿಮ್ಮ ಸಾಧನಕ್ಕೆ ಸಂಪೂರ್ಣ ಪ್ರವೇಶವನ್ನು ಹೊಂದಿವೆ"</string>
+    <string name="accessibility_service_dialog_title_multiple" msgid="5527879210683548175">"<xliff:g id="NUM_SERVICES">%s</xliff:g> ಆ್ಯಕ್ಸೆಸಿಬಿಲಿಟಿ ಆ್ಯಪ್‌ಗಳು ನಿಮ್ಮ ಸಾಧನಕ್ಕೆ ಸಂಪೂರ್ಣ ಆ್ಯಕ್ಸೆಸ್ ಹೊಂದಿವೆ"</string>
     <string name="accessibility_service_dialog_bottom_text_single" msgid="1128666197822205958">"<xliff:g id="SERVICE_NAME">%s</xliff:g> ಸೇವೆಯು ನಿಮ್ಮ ಸ್ಕ್ರೀನ್, ಕ್ರಿಯೆಗಳು ಮತ್ತು ಇನ್‌ಪುಟ್‌ಗಳು, ಕೆಲಸ ನಿರ್ವಹಣೆ ಕ್ರಿಯೆಗಳು ಮತ್ತು ಡಿಸ್‌ಪ್ಲೇ ನಿಯಂತ್ರಣವನ್ನು ವೀಕ್ಷಿಸಬಹುದು."</string>
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"ಈ ಆ್ಯಪ್‌ಗಳು ನಿಮ್ಮ ಸ್ಕ್ರೀನ್, ಕ್ರಿಯೆಗಳು ಮತ್ತು ಇನ್‌ಪುಟ್‌ಗಳು, ಕೆಲಸ ನಿರ್ವಹಣೆ ಕ್ರಿಯೆಗಳನ್ನು ವೀಕ್ಷಿಸಬಹುದು ಮತ್ತು ಡಿಸ್‌ಪ್ಲೇ ಅನ್ನು ನಿಯಂತ್ರಿಸಬಹುದು."</string>
     <string name="role_assistant_label" msgid="4727586018198208128">"ಡೀಫಾಲ್ಟ್ ಡಿಜಿಟಲ್ ಅಸಿಸ್ಟೆಂಟ್ ಆ್ಯಪ್"</string>
@@ -597,6 +596,8 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"ಈ ಆ್ಯಪ್ ಇವುಗಳಿಗಾಗಿ ಸ್ಥಳ ಡೇಟಾವನ್ನು ಹಂಚಿಕೊಳ್ಳಬಹುದು:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ಡೇಟಾ ಹಂಚಿಕೆ ಬದಲಾಗುತ್ತದೆ"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"ನಿಮ್ಮ ಆ್ಯಪ್‌ನ ಆವೃತ್ತಿ, ಬಳಕೆ, ಪ್ರದೇಶ ಮತ್ತು ವಯಸ್ಸನ್ನು ಆಧರಿಸಿ ಡೇಟಾ ನಿರ್ವಹಣಾ ಅಭ್ಯಾಸಗಳು ಬದಲಾಗಬಹುದು. "<annotation id="link">"ಡೇಟಾ ಹಂಚಿಕೆಯ ಕುರಿತು ಇನ್ನಷ್ಟು"</annotation></string>
+    <!-- no translation found for permission_rationale_data_sharing_varies_message_without_link (4912763761399025094) -->
+    <skip />
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"ನಿಮ್ಮ ಸ್ಥಳ ಡೇಟಾ"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267"><annotation id="link">"ಗೌಪ್ಯತೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ"</annotation>" ಈ ಆ್ಯಪ್‌ನ ಆ್ಯಕ್ಸೆಸ್ ಅನ್ನು ಬದಲಾಯಿಸಿ"</string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"ಆ್ಯಪ್‌ನ ಕಾರ್ಯಚಟುವಟಿಕೆ"</string>
@@ -610,7 +611,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"ಸ್ಥಳ ಡೇಟಾವನ್ನು ಹಂಚಿಕೊಳ್ಳಬಹುದು"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"ಈ ಆ್ಯಪ್, ಥರ್ಡ್-ಪಾರ್ಟಿಗಳೊಂದಿಗೆ ನಿಮ್ಮ ಸ್ಥಳ ಡೇಟಾವನ್ನು ಹಂಚಿಕೊಳ್ಳಬಹುದು ಎಂದು ತಿಳಿಸಿದೆ"</string>
     <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"ಈ ಲಿಂಕ್ ತೆರೆಯಲು ಸಾಧ್ಯವಿಲ್ಲ"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"ಈ ಕಂಟೆಂಟ್ ವೀಕ್ಷಿಸಲು ನಿಮ್ಮ ಬ್ರೌಸರ್ ವಿಂಡೋದಲ್ಲಿ <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> ಟೈಪ್ ಮಾಡಿ ನೋಡಿ"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"ಸ್ಥಳಕ್ಕಾಗಿ ಡೇಟಾ ಹಂಚಿಕೊಳ್ಳುವಿಕೆ ಕುರಿತ ಅಪ್‌ಡೇಟ್‌ಗಳು"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"ನಿಮ್ಮ ಸ್ಥಳ ಡೇಟಾವನ್ನು ತಾವು ಹಂಚಿಕೊಳ್ಳಬಹುದಾದ ವಿಧಾನವನ್ನು ಬದಲಾಯಿಸಿದ ಆ್ಯಪ್‌ಗಳನ್ನು ಪರಿಶೀಲಿಸಿ"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"ನಿಮ್ಮ ಸ್ಥಳ ಡೇಟಾವನ್ನು ಈ ಆ್ಯಪ್‌ಗಳು ಹಂಚಿಕೊಳ್ಳಬಹುದಾದ ವಿಧಾನವನ್ನು ಅವು ಬದಲಾಯಿಸಿವೆ. ಇವು ಇದನ್ನು ಈ ಮೊದಲು ಹಂಚಿಕೊಂಡಿಲ್ಲದಿರಬಹುದು ಅಥವಾ ಈಗ ಅದನ್ನು ಜಾಹೀರಾತು ಅಥವಾ ಮಾರ್ಕೆಟಿಂಗ್ ಉದ್ದೇಶಗಳಿಗಾಗಿ ಹಂಚಿಕೊಳ್ಳುತ್ತಿರಬಹುದು."</string>

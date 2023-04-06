@@ -21,7 +21,10 @@
     <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"ಕಂಟ್ರೋಲ್‌ಗಳು"</string>
     <string name="privacy_subpage_data_header" msgid="5049237788244591274">"ಡೇಟಾ"</string>
     <string name="health_connect_title" msgid="2132233890867430855">"Health Connect"</string>
-    <string name="health_connect_summary" msgid="8156987676957707740">"ಆ್ಯಪ್ ಅನುಮತಿಗಳು ಮತ್ತು ಡೇಟಾ ನಿರ್ವಹಣೆ"</string>
+    <!-- no translation found for health_connect_summary (815473513776882296) -->
+    <skip />
     <string name="location_settings" msgid="8863940440881290182">"ಸ್ಥಳದ ಆ್ಯಕ್ಸೆಸ್"</string>
+    <!-- no translation found for mic_toggle_description (1504101620086616040) -->
+    <skip />
     <string name="location_settings_subtitle" msgid="6846532794702613851">"ಆ್ಯಪ್‌ಗಳು ಮತ್ತು ಸೇವೆಗಳಿಗಾಗಿ"</string>
 </resources>
