@@ -15,7 +15,7 @@
  */
 @file:Suppress("DEPRECATION")
 
-package com.android.permissioncontroller.permission.ui.model.v31
+package com.android.permissioncontroller.permission.ui.legacy
 
 import android.Manifest
 import android.app.LoaderManager
