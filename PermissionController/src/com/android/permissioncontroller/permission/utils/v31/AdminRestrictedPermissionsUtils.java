@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.utils;
+package com.android.permissioncontroller.permission.utils.v31;
 
 import android.Manifest;
 import android.app.admin.DevicePolicyManager;
@@ -24,6 +24,7 @@ import android.os.UserManager;
 import android.util.ArraySet;
 
 import com.android.modules.utils.build.SdkLevel;
+import com.android.permissioncontroller.permission.utils.Utils;
 
 /**
  * A class for dealing with permissions that the admin may not grant in certain configurations.

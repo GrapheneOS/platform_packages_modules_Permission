@@ -131,6 +131,9 @@ public final class SafetyCenterFlags {
 
     private static volatile String sIssueCategoryAllowlistDefault = "";
 
+    private static volatile String sRefreshOnPageOpenSourcesDefault =
+            "AndroidBiometrics,AndroidLockScreen";
+
     static void init(SafetyCenterResourcesContext resourceContext) {
         String untrackedSourcesDefault =
                 resourceContext.getOptionalStringByName("config_defaultUntrackedSources");
@@ -146,6 +149,11 @@ public final class SafetyCenterFlags {
                 resourceContext.getOptionalStringByName("config_defaultIssueCategoryAllowlist");
         if (issueCategoryAllowlistDefault != null) {
             sIssueCategoryAllowlistDefault = issueCategoryAllowlistDefault;
+        }
+        String refreshOnPageOpenSourcesDefault =
+                resourceContext.getOptionalStringByName("config_defaultRefreshOnPageOpenSources");
+        if (refreshOnPageOpenSourcesDefault != null) {
+            sRefreshOnPageOpenSourcesDefault = refreshOnPageOpenSourcesDefault;
         }
     }
 
@@ -468,7 +476,8 @@ public final class SafetyCenterFlags {
      * refreshOnPageOpenAllowed is false (the default) in the XML config.
      */
     static ArraySet<String> getOverrideRefreshOnPageOpenSourceIds() {
-        return getCommaSeparatedStrings(PROPERTY_OVERRIDE_REFRESH_ON_PAGE_OPEN_SOURCES);
+        return getCommaSeparatedStrings(
+                PROPERTY_OVERRIDE_REFRESH_ON_PAGE_OPEN_SOURCES, sRefreshOnPageOpenSourcesDefault);
     }
 
     private static Duration getDuration(String property, Duration defaultValue) {
