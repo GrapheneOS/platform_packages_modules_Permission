@@ -15,7 +15,7 @@
  */
 @file:Suppress("DEPRECATION")
 
-package com.android.permissioncontroller.permission.ui.model.v31
+package com.android.permissioncontroller.permission.ui.legacy
 
 import android.Manifest
 import android.app.AppOpsManager
@@ -44,7 +44,7 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPackageLabel
 import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.StringUtils
-import com.android.permissioncontroller.permission.utils.SubattributionUtils
+import com.android.permissioncontroller.permission.utils.v31.SubattributionUtils
 import com.android.permissioncontroller.permission.utils.Utils
 import java.time.Instant
 import java.util.concurrent.TimeUnit

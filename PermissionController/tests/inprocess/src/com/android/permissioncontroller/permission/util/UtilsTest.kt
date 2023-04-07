@@ -18,6 +18,7 @@ package com.android.permissioncontroller.permission.util
 
 import android.Manifest.permission.READ_CONTACTS
 import android.Manifest.permission_group.CONTACTS
+import android.Manifest.permission_group.UNDEFINED
 import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
@@ -61,6 +62,20 @@ class UtilsTest {
     @Test
     fun assertGetGroupPermissionInfosInValidGroup() {
         assertThat(Utils.getGroupPermissionInfos(INVALID_GROUP_NAME, context)).isNull()
+    }
+
+    @Test
+    fun assertGetGroupPermissionInfosUndefinedGroup() {
+        val permissionInfos = Utils.getGroupPermissionInfos(UNDEFINED, context)
+        assertThat(permissionInfos).isNotNull()
+    }
+
+    @Test
+    fun assertGetGroupPermissionInfoWithPermissionName() {
+        val permissionInfos = Utils.getGroupPermissionInfos(READ_CONTACTS, context)
+        assertThat(permissionInfos).isNotNull()
+        assertThat(permissionInfos!!.size).isEqualTo(1)
+        assertThat(permissionInfos[0].name).isEqualTo(READ_CONTACTS)
     }
 
     @Test
