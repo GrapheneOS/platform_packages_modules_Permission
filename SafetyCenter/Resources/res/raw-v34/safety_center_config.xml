@@ -67,9 +67,9 @@
             <dynamic-safety-source
                 id="AndroidHealthConnect"
                 profile="primary_profile_only"
-                packageName="com.android.permissioncontroller"
+                packageName="com.android.healthconnect.controller"
                 initialDisplayState="hidden"
-                refreshOnPageOpenAllowed="true"
+                refreshOnPageOpenAllowed="false"
                 title="@com.android.safetycenter.resources:string/health_connect_title"
                 searchTerms="@com.android.safetycenter.resources:string/health_connect_search_terms"/>
             <dynamic-safety-source

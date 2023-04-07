@@ -39,8 +39,6 @@ import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.privacysources.WorkPolicyInfo.Companion.WORK_POLICY_INFO_SOURCE_ID
 import com.android.permissioncontroller.privacysources.v34.AppDataSharingUpdatesPrivacySource
 import com.android.permissioncontroller.privacysources.v34.AppDataSharingUpdatesPrivacySource.Companion.APP_DATA_SHARING_UPDATES_SOURCE_ID
-import com.android.permissioncontroller.privacysources.v34.HealthConnectPrivacySource
-import com.android.permissioncontroller.privacysources.v34.HealthConnectPrivacySource.Companion.HEALTH_CONNECT_SOURCE_ID
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Default
@@ -59,7 +57,6 @@ private fun createMapOfSourceIdsToSources(context: Context): Map<String, Privacy
 
     if (SdkLevel.isAtLeastU()) {
         sourceMap[APP_DATA_SHARING_UPDATES_SOURCE_ID] = AppDataSharingUpdatesPrivacySource()
-        sourceMap[HEALTH_CONNECT_SOURCE_ID] = HealthConnectPrivacySource()
     }
 
     return sourceMap
