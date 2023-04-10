@@ -741,7 +741,7 @@ public class GrantPermissionsActivity extends SettingsActivity
             removeActivityFromMap();
             // If a new merge request came in before we managed to remove this activity from the
             // map, then cancel the result set for now.
-            if (!oldRequestedPermissions.equals(mRequestedPermissions)) {
+            if (!Objects.equals(oldRequestedPermissions, mRequestedPermissions)) {
                 return false;
             }
 
