@@ -16,6 +16,8 @@
 
 package com.android.permissioncontroller.permission.util
 
+import android.Manifest.permission.READ_MEDIA_IMAGES
+import android.Manifest.permission.READ_MEDIA_VIDEO
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_SHOW_APP_INFO
@@ -130,5 +132,34 @@ class KotlinUtilsTest {
         // Un-stubbed activity resolution will return null.
 
         assertThat(KotlinUtils.getAppStoreIntent(mockContext, "com.installer", "com.app")).isNull()
+    }
+
+    @Test
+    fun getMimeTypeForPermissions_onlyReadMediaImages_returnsImage() {
+        assertThat(KotlinUtils.getMimeTypeForPermissions(listOf(READ_MEDIA_IMAGES, "read memes")))
+            .isEqualTo("image/*")
+    }
+
+    @Test
+    fun getMimeTypeForPermissions_onlyReadMediaVideo_returnsVideo() {
+        assertThat(KotlinUtils.getMimeTypeForPermissions(listOf("write memes", READ_MEDIA_VIDEO)))
+            .isEqualTo("video/*")
+    }
+
+    @Test
+    fun getMimeTypeForPermissions_bothReadMediaPermissions_returnsNull() {
+        assertThat(
+            KotlinUtils.getMimeTypeForPermissions(listOf(READ_MEDIA_IMAGES, READ_MEDIA_VIDEO)))
+            .isNull()
+    }
+
+    @Test
+    fun getMimeTypeForPermissions_noReadMediaPermissions_returnsNull() {
+        assertThat(KotlinUtils.getMimeTypeForPermissions(listOf("amazing permission"))).isNull()
+    }
+
+    @Test
+    fun getMimeTypeForPermissions_emptyList_returnsNull() {
+        assertThat(KotlinUtils.getMimeTypeForPermissions(emptyList())).isNull()
     }
 }
