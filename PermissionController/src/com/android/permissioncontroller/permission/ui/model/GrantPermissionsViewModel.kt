@@ -130,6 +130,7 @@ import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.PermissionMapping.getPartialStorageGrantPermissionsForGroup
 import com.android.permissioncontroller.permission.utils.SafetyNetLogger
 import com.android.permissioncontroller.permission.utils.Utils
+import com.android.permissioncontroller.permission.utils.v34.SafetyLabelUtils
 
 /**
  * ViewModel for the GrantPermissionsActivity. Tracks all permission groups that are affected by
@@ -626,7 +627,7 @@ class GrantPermissionsViewModel(
             return false
         }
 
-        val purposes = PermissionMapping.getSafetyLabelSharingPurposesForGroup(safetyLabel,
+        val purposes = SafetyLabelUtils.getSafetyLabelSharingPurposesForGroup(safetyLabel,
             permissionGroupName)
         return purposes.isNotEmpty()
     }
