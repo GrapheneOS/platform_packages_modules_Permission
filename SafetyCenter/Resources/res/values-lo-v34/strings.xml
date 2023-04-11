@@ -17,20 +17,18 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- no translation found for lock_screen_sources_title (5493678510117489865) -->
-    <skip />
+    <string name="lock_screen_sources_title" msgid="5493678510117489865">"ການປົດລັອກອຸປະກອນ"</string>
     <string name="biometrics_title_for_work" msgid="1842284049407771568">"ລະບົບຊີວະມິຕິສຳລັບວຽກ"</string>
-    <!-- no translation found for privacy_sources_summary (4083646673569677049) -->
-    <skip />
+    <string name="privacy_sources_summary" msgid="4083646673569677049">"ການອະນຸຍາດ, ແຜງໜ້າປັດ, ການຄວບຄຸມ"</string>
     <string name="health_connect_title" msgid="8318152190040327804">"Health Connect"</string>
     <string name="health_connect_search_terms" msgid="4998970586245680829">"ສຸຂະພາບ, Health Connect"</string>
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"ການອັບເດດການແບ່ງປັນຂໍ້ມູນສະຖານທີ່"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"ຂໍ້ມູນ, ການແບ່ງປັນຂໍ້ມູນ, ການອັບເດດການແບ່ງປັນຂໍ້ມູນ, ການອັບເດດການແບ່ງປັນຂໍ້ມູນສະຖານທີ່, ການແບ່ງປັນ"</string>
-    <!-- no translation found for ads_privacy_title (2478678200445158640) -->
-    <skip />
+    <string name="ads_privacy_title" msgid="2478678200445158640">"ຄວາມເປັນສ່ວນກ່ຽວກັບຕົວໂຄສະນາ"</string>
     <string name="ads_privacy_summary" msgid="4977699525670966049">"ປັບແຕ່ງຂໍ້ມູນແອັບທີ່ໃຊ້ສະແດງໂຄສະນາໃຫ້ທ່ານເຫັນ"</string>
     <string name="ads_privacy_search_terms" msgid="8008413316055240046">"ໂຄສະນາ, ຄວາມເປັນສ່ວນຕົວກ່ຽວກັບຕົວໂຄສະນາ, Privacy Sandbox, ຫົວຂໍ້ໂຄສະນາ, ໂຄສະນາແນະນຳແອັບ, ການວັດແທກໂຄສະນາ"</string>
-    <string name="more_settings_title" msgid="663808090772098924">"ການຕັ້ງຄ່າເພີ່ມເຕີມ"</string>
-    <string name="more_settings_summary" msgid="3942352615407872716">"ການເຂົ້າລະຫັດ, ຂໍ້ມູນການເຂົ້າສູ່ລະບົບ ແລະ ອື່ນໆ"</string>
+    <string name="advanced_title" msgid="6259362998269627310">"ການຕັ້ງຄ່າອື່ນໆ"</string>
+    <string name="more_settings_title" msgid="9033454654010697185">"ຄວາມປອດໄພ ແລະ ຄວາມເປັນສ່ວນຕົວເພີ່ມເຕີມ"</string>
+    <string name="more_settings_summary" msgid="7086620830002515710">"ການຕື່ມຂໍ້ມູນອັດຕະໂນມັດ, ການແຈ້ງເຕືອນ ແລະ ອື່ນໆ"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
 </resources>

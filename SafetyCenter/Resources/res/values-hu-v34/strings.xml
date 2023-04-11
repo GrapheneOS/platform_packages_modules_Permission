@@ -17,20 +17,18 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- no translation found for lock_screen_sources_title (5493678510117489865) -->
-    <skip />
+    <string name="lock_screen_sources_title" msgid="5493678510117489865">"Eszköz feloldása"</string>
     <string name="biometrics_title_for_work" msgid="1842284049407771568">"Biometriai adatok munkahelyi alkalmazásoknál"</string>
-    <!-- no translation found for privacy_sources_summary (4083646673569677049) -->
-    <skip />
+    <string name="privacy_sources_summary" msgid="4083646673569677049">"Engedélyek, irányítópult, vezérlők"</string>
     <string name="health_connect_title" msgid="8318152190040327804">"Health Connect"</string>
     <string name="health_connect_search_terms" msgid="4998970586245680829">"Egészség, Health Connect"</string>
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"A helyadatok megosztását érintő frissítések"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"Adatok, adatmegosztás, adatmegosztási változások, helyadatokat érintő adatmegosztási változások, megosztás"</string>
-    <!-- no translation found for ads_privacy_title (2478678200445158640) -->
-    <skip />
+    <string name="ads_privacy_title" msgid="2478678200445158640">"Hirdetésekhez kapcsolódó adatvédelem"</string>
     <string name="ads_privacy_summary" msgid="4977699525670966049">"Személyre szabhatja azokat az információkat, amelyeket az alkalmazások arra használnak, hogy hirdetéseket jelenítsenek meg Önnek"</string>
     <string name="ads_privacy_search_terms" msgid="8008413316055240046">"hirdetések, hirdetésekhez kapcsolódó adatvédelem, privacy sandbox, hirdetéstéma, alkalmazások által javasolt hirdetések, hirdetésmérés"</string>
-    <string name="more_settings_title" msgid="663808090772098924">"További beállítások"</string>
-    <string name="more_settings_summary" msgid="3942352615407872716">"Titkosítás, hitelesítési adatok és egyebek"</string>
+    <string name="advanced_title" msgid="6259362998269627310">"Egyéb beállítások"</string>
+    <string name="more_settings_title" msgid="9033454654010697185">"További biztonsági és adatvédelmi beállítások"</string>
+    <string name="more_settings_summary" msgid="7086620830002515710">"Automatikus kitöltés, értesítések és egyebek"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
 </resources>
