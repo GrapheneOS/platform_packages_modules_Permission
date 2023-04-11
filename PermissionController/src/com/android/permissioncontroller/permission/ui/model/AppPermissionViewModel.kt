@@ -85,6 +85,7 @@ import com.android.permissioncontroller.permission.utils.PermissionMapping.getPa
 import com.android.permissioncontroller.permission.utils.SafetyNetLogger
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.navigateSafe
+import com.android.permissioncontroller.permission.utils.v34.SafetyLabelUtils
 import com.android.settingslib.RestrictedLockUtils
 import java.util.Random
 import kotlin.collections.component1
@@ -206,7 +207,7 @@ class AppPermissionViewModel(
                 return
             }
 
-            value = PermissionMapping.getSafetyLabelSharingPurposesForGroup(
+            value = SafetyLabelUtils.getSafetyLabelSharingPurposesForGroup(
                     safetyLabel, permGroupName).any()
         }
     }
