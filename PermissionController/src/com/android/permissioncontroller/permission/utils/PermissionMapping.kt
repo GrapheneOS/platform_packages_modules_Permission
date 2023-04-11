@@ -26,11 +26,7 @@ import android.util.Log
 
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
-import com.android.permission.safetylabel.DataCategory
 import com.android.permission.safetylabel.DataCategoryConstants
-import com.android.permission.safetylabel.DataType
-import com.android.permission.safetylabel.DataTypeConstants
-import com.android.permission.safetylabel.SafetyLabel
 
 /**
  * This file contains the canonical mapping of permission to permission group, used in the
@@ -381,38 +377,6 @@ object PermissionMapping {
         }
 
         return AppOpsManager.opToPermission(opName)?.let { getGroupOfPlatformPermission(it) }
-    }
-
-    /*
-     * Get the sharing purposes for a SafetyLabel related to a specific permission group.
-     */
-    @JvmStatic
-    fun getSafetyLabelSharingPurposesForGroup(
-        safetyLabel: SafetyLabel,
-        groupName: String
-    ): Set<Int> {
-        val purposeSet = mutableSetOf<Int>()
-        val categoriesForPermission = getDataCategoriesForPermissionGroup(groupName)
-        categoriesForPermission.forEach categoryLoop@{ category ->
-            val dataCategory: DataCategory? = safetyLabel.dataLabel.dataShared[category]
-            if (dataCategory == null) {
-                // Continue to next
-                return@categoryLoop
-            }
-            val typesForCategory = DataTypeConstants.getValidDataTypesForCategory(category)
-            typesForCategory.forEach typeLoop@{ type ->
-                val dataType: DataType? = dataCategory.dataTypes[type]
-                if (dataType == null) {
-                    // Continue to next
-                    return@typeLoop
-                }
-                if (dataType.purposeSet.isNotEmpty()) {
-                    purposeSet.addAll(dataType.purposeSet)
-                }
-            }
-        }
-
-        return purposeSet
     }
 
     /**
