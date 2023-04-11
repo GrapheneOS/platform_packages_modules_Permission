@@ -36,7 +36,8 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Összes engedélyezése mindig"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Jelöljön ki fotókat, videókat"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Több kijelölése"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Ne válasszon ki többet"</string>
+    <!-- no translation found for grant_dialog_button_dont_select_more (6643552729129461268) -->
+    <skip />
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Semmiképpen se engedélyezze"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Elvetés"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>/<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>."</string>
@@ -114,9 +115,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"Az összes engedély"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Egyéb alkalmazáslehetőségek"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"Engedélykérés"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"Képernyőfedvény észlelve"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"Ennek az engedélynek a módosításához először ki kell kapcsolnia a képernyőfedvényt a Beállítások &gt; Alkalmazások menüben"</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"Beállítások megnyitása"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"A Wear nem támogatja a telepítés/eltávolítás műveletet."</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"Válassza ki, hogy a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mihez férjen hozzá"</string>
@@ -576,7 +574,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Háttérbeli helyhozzáféréssel rendelkező alkalmazás áttekintése"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"A(z) <xliff:g id="APP_NAME">%s</xliff:g> mindig hozzáférhet az eszköz helyadataihoz, akkor is, ha be van zárva."</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Háttérbeli helyhozzáféréssel rendelkező alkalmazás áttekintése"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Ez az app mindig hozzáférhet az eszköz helyadataihoz, akkor is, ha be van zárva."</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Ez az alkalmazás mindig hozzáférhet az Ön helyadataihoz, akkor is, ha be van zárva.\n\nEgyes biztonsági és segélykérő alkalmazásoknak hozzá kell férniük a háttérben a helyadatokhoz, hogy rendeltetésszerűen működhessenek."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Hozzáférés módosítva"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Legutóbbi helyadathasználat megtekintése"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Adatvédelmi beállítások"</string>
@@ -596,8 +594,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Az app helyadatokat oszthat meg az alábbi célból:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Az adatmegosztás változik"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Az adatkezelési gyakorlat az alkalmazásverziótól, az alkalmazáshasználattól, a régiótól és életkortól függően változhat. "<annotation id="link">"További információ az adatmegosztásról"</annotation>"."</string>
-    <!-- no translation found for permission_rationale_data_sharing_varies_message_without_link (4912763761399025094) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"Az adatkezelési gyakorlat az alkalmazásverziótól, az alkalmazáshasználattól, a régiótól és életkortól függően változhat."</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Helyadatok"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Az alkalmazás hozzáférésének módosítása az "<annotation id="link">"adatvédelmi beállításokban"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"Alkalmazásfunkciók"</string>
