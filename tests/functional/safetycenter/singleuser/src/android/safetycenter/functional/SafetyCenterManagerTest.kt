@@ -62,6 +62,7 @@ import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import com.android.compatibility.common.preconditions.ScreenLockHelper
+import com.android.compatibility.common.util.SystemUtil
 import com.android.modules.utils.build.SdkLevel
 import com.android.safetycenter.internaldata.SafetyCenterIds
 import com.android.safetycenter.resources.SafetyCenterResourcesContext
@@ -3509,6 +3510,70 @@ class SafetyCenterManagerTest {
         val iconActionPendingIntent = lockScreenEntry.iconAction!!.pendingIntent
         assertThat(iconActionPendingIntent).isNotEqualTo(entryPendingIntent)
     }
+
+    @Test
+    fun beforeAnyDataSet_noLastUpdatedTimestamps() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
+
+        val lastUpdated = dumpLastUpdated()
+        assertThat(lastUpdated).isEmpty()
+    }
+
+    @Test
+    fun setSafetySourceData_setsLastUpdatedTimestamp() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
+
+        safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, safetySourceTestData.unspecified)
+
+        val lastUpdated = dumpLastUpdated()
+        val key = lastUpdated.keys.find { it.contains(SINGLE_SOURCE_ID) }
+        assertThat(key).isNotNull()
+        assertThat(lastUpdated[key]).isNotNull()
+    }
+
+    @Test
+    fun setSafetySourceData_twice_updatesLastUpdatedTimestamp() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
+
+        safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, safetySourceTestData.unspecified)
+
+        val initialEntry = dumpLastUpdated().entries.find { it.key.contains(SINGLE_SOURCE_ID) }
+        assertThat(initialEntry).isNotNull()
+
+        Thread.sleep(1) // Ensure uptime millis will actually be different
+        safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, safetySourceTestData.information)
+
+        val updatedValue = dumpLastUpdated()[initialEntry!!.key]
+        assertThat(updatedValue).isNotNull()
+        assertThat(updatedValue).isNotEqualTo(initialEntry.value)
+    }
+
+    @Test
+    fun setSafetySourceError_setsLastUpdatedTimestamp() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
+
+        safetyCenterManager.reportSafetySourceErrorWithPermission(
+            SINGLE_SOURCE_ID,
+            SafetySourceErrorDetails(EVENT_SOURCE_STATE_CHANGED)
+        )
+
+        val lastUpdated = dumpLastUpdated()
+        val key = lastUpdated.keys.find { it.contains(SINGLE_SOURCE_ID) }
+        assertThat(key).isNotNull()
+        assertThat(lastUpdated[key]).isNotNull()
+    }
+
+    private fun dumpLastUpdated(): Map<String, String> {
+        val dump = SystemUtil.runShellCommand("dumpsys safety_center data")
+        return dump
+            .linesAfter { it.contains("LAST UPDATED") }
+            .map { line -> Regex("""\[\d+] (.+) -> (\d+)""").matchEntire(line.trim()) }
+            .takeWhile { it != null }
+            .associate { matchResult -> matchResult!!.groupValues[1] to matchResult.groupValues[2] }
+    }
+
+    private fun String.linesAfter(predicate: (String) -> Boolean): List<String> =
+        split('\n').dropWhile { !predicate(it) }.drop(1)
 
     private fun SafetyCenterData.getGroup(groupId: String): SafetyCenterEntryGroup =
         entriesOrGroups.first { it.entryGroup?.id == groupId }.entryGroup!!
