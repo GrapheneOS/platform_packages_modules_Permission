@@ -36,7 +36,8 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Vedno dovoli vse"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Izberi fotografije in videoposnetke"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Izberi več"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Brez izbire dodatnih"</string>
+    <!-- no translation found for grant_dialog_button_dont_select_more (6643552729129461268) -->
+    <skip />
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Ne dovoli kljub temu"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Opusti"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> od <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -114,9 +115,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"Vsa dovoljenja"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Druge zmožnosti aplikacije"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"Zahteva za dovoljenje"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"Zaznano prekrivanje zaslona"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"Če želite spremeniti nastavitev tega dovoljenja, morate najprej izklopiti prekrivanje zaslona v »Nastavitve &gt; Aplikacije«"</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"Odpri nastavitve"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Dejanja namestitve in odstranitve v sistemu Android Wear niso podprta."</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"Izberite, do česa aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dovolite dostop"</string>
@@ -191,8 +189,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Dovoli samo dostop do predstavnosti"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Vedno dovoli"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Dovoli samo med uporabo aplikacije"</string>
-    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
-    <skip />
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Vedno dovoli vse"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Vedno vprašaj"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Ne dovoli"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Natančna lokacija"</string>
@@ -293,8 +290,8 @@
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"Pokaži več možnosti"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Dostop je odstranjen"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"Pregled aplikacije s polnim dostopom do naprave"</string>
-    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"Aplikacija <xliff:g id="APP_NAME">%s</xliff:g> si lahko ogleduje zaslon in izvaja dejanja v napravi. Aplikacije s funkcijami za ljudi s posebnimi potrebami potrebujejo tovrstni dostop, da lahko delujejo, kot je predvideno."</string>
-    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"Ta aplikacija si lahko ogleduje zaslon in izvaja dejanja v napravi. Aplikacije s funkcijami za ljudi s posebnimi potrebami potrebujejo tovrstni dostop, da lahko delujejo, kot je predvideno, vendar pa preverite aplikacijo in se prepričajte, da ji zaupate."</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"Aplikacija <xliff:g id="APP_NAME">%s</xliff:g> si lahko ogleduje zaslon in izvaja dejanja v napravi. Aplikacije za dostopnost potrebujejo tovrstni dostop, da lahko delujejo, kot je predvideno."</string>
+    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"Ta aplikacija si lahko ogleduje zaslon in izvaja dejanja v napravi. Aplikacije za dostopnost potrebujejo tovrstni dostop, da lahko delujejo, kot je predvideno, vendar pa preverite aplikacijo in se prepričajte, da ji zaupate."</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Odstrani dostop"</string>
     <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"Prikaži aplikacije s polnim dostopom"</string>
     <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Dostop je odstranjen."</string>
@@ -348,7 +345,7 @@
     <string name="car_permission_selected" msgid="180837028920791596">"Izbrano"</string>
     <string name="settings" msgid="5409109923158713323">"Nastavitve"</string>
     <string name="accessibility_service_dialog_title_single" msgid="7956432823014102366">"Storitev <xliff:g id="SERVICE_NAME">%s</xliff:g> ima poln dostop do naprave"</string>
-    <string name="accessibility_service_dialog_title_multiple" msgid="5527879210683548175">"Poln dostop do naprave ima toliko aplikacij za ljudi s posebnimi potrebami: <xliff:g id="NUM_SERVICES">%s</xliff:g>"</string>
+    <string name="accessibility_service_dialog_title_multiple" msgid="5527879210683548175">"Poln dostop do naprave ima toliko aplikacij za dostopnost: <xliff:g id="NUM_SERVICES">%s</xliff:g>"</string>
     <string name="accessibility_service_dialog_bottom_text_single" msgid="1128666197822205958">"Storitev <xliff:g id="SERVICE_NAME">%s</xliff:g> si lahko ogleduje zaslon, dejanja in vnose, izvaja dejanja in upravlja prikaz."</string>
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"Te aplikacije si lahko ogledujejo zaslon, dejanja in vnose, izvajajo dejanja in upravljajo prikaz."</string>
     <string name="role_assistant_label" msgid="4727586018198208128">"Privzeti digitalni pomočnik"</string>
@@ -577,7 +574,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Pregled aplikacije z dostopom do lokacije v ozadju"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"Aplikacija <xliff:g id="APP_NAME">%s</xliff:g> lahko vedno dostopa do vaše lokacije, tudi ko je aplikacija zaprta."</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Pregled aplikacije z dostopom do lokacije v ozadju"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Ta aplikacija lahko vedno dostopa do vaše lokacije, tudi ko je zaprta."</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Ta aplikacija lahko vedno dostopa do vaše lokacije, tudi ko je zaprta.\n\nNekatere varnostne aplikacije in aplikacije za nujne primere za pravilno delovanje potrebujejo dostop do lokacije v ozadju."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Dostop je bil spremenjen."</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Prikaži nedavno uporabo lokacije"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Nastavitve zasebnosti"</string>
@@ -597,6 +594,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Ta aplikacija lahko deli lokacijske podatke za:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Načini deljenja podatkov se med seboj razlikujejo"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Postopki obdelave podatkov se morda razlikujejo glede na različico aplikacije, uporabo, območje in starost. "<annotation id="link">"Preberite več o deljenju podatkov"</annotation>"."</string>
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"Postopki deljenja podatkov se morda razlikujejo glede na različico aplikacije, njeno uporabo, območje in vašo starost."</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Vaši lokacijski podatki"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Dostop te aplikacije lahko spremenite v "<annotation id="link">"nastavitvah zasebnosti"</annotation>"."</string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"Funkcija aplikacije"</string>
@@ -610,7 +608,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Lokacijski podatki so morda deljeni z drugimi"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Ta aplikacija navaja, da bo vaše lokacijske podatke morda delila s tretjimi osebami."</string>
     <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Te povezave ni mogoče odpreti"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"Če si želite ogledati to vsebino, poskusite vnesti <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> v okno brskalnika."</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Posodobitve deljenja podatkov o lokaciji"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Pregled aplikacij s spremembami v načinu deljenja vaših lokacijskih podatkov"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Te aplikacije so spremenile način deljenja vaših lokacijskih podatkov. Prej jih morda sploh niso delile ali pa jih zdaj delijo za namene oglaševanja ali trženja."</string>

@@ -36,7 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"อนุญาตทั้งหมดตลอดเวลา"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"เลือกรูปภาพและวิดีโอ"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"เลือกเพิ่มเติม"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"ไม่ต้องเลือกเพิ่มเติม"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"ไม่ต้องเลือกเพิ่มเติม"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"ยังคงไม่อนุญาต"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"ปิด"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> จาก <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g> รายการ"</string>
@@ -114,9 +114,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"สิทธิ์ทั้งหมด"</string>
     <string name="other_permissions" msgid="2901186127193849594">"ความสามารถอื่นๆ ของแอป"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"คำขอสิทธิ์"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"ตรวจพบการวางซ้อนหน้าจอ"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"หากต้องการเปลี่ยนแปลงการตั้งค่าสิทธิ์นี้ ก่อนอื่น คุณต้องปิดการวางซ้อนหน้าจอที่การตั้งค่า &gt; แอป"</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"เปิดการตั้งค่า"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"ไม่สามารถติดตั้ง/ถอนการติดตั้งบน Wear"</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"โปรดเลือกข้อมูลที่อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึง"</string>
@@ -191,8 +188,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"อนุญาตให้เข้าถึงสื่อเท่านั้น"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"อนุญาตตลอด"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"อนุญาตขณะมีการใช้แอปเท่านั้น"</string>
-    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
-    <skip />
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"อนุญาตทั้งหมดเสมอ"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"ถามทุกครั้ง"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"ไม่อนุญาต"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"ตำแหน่งที่แน่นอน"</string>
@@ -577,7 +573,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"ตรวจสอบแอปที่มีสิทธิ์เข้าถึงตำแหน่งในเบื้องหลัง"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> เข้าถึงตำแหน่งของคุณได้เสมอแม้แอปจะปิดอยู่ก็ตาม"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"ตรวจสอบแอปที่มีสิทธิ์เข้าถึงตำแหน่งในเบื้องหลัง"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"แอปนี้เข้าถึงตำแหน่งของคุณได้เสมอแม้แอปจะปิดอยู่ก็ตาม"</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"แอปนี้เข้าถึงตำแหน่งของคุณได้เสมอแม้จะปิดอยู่ก็ตาม\n\nแอปเพื่อความปลอดภัยและเหตุฉุกเฉินบางแอปต้องเข้าถึงตำแหน่งของคุณในเบื้องหลังเพื่อให้ทำงานได้อย่างที่ควรเป็น"</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"เปลี่ยนสิทธิ์เข้าถึงแล้ว"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"ดูการใช้งานตำแหน่งล่าสุด"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"การควบคุมความเป็นส่วนตัว"</string>
@@ -597,6 +593,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"แอปนี้อาจแชร์ข้อมูลตำแหน่งเพื่อ"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"การแชร์ข้อมูลแตกต่างกันไปตามปัจจัยต่างๆ"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"วิธีจัดการข้อมูลอาจแตกต่างกันไปตามเวอร์ชันแอป การใช้งาน ภูมิภาค และอายุของผู้ใช้ "<annotation id="link">"รายละเอียดเพิ่มเติมเกี่ยวกับการแชร์ข้อมูล"</annotation></string>
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"วิธีจัดการข้อมูลอาจแตกต่างกันไปตามเวอร์ชันแอป การใช้งาน ภูมิภาค และอายุของผู้ใช้"</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"ข้อมูลตำแหน่งของคุณ"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"เปลี่ยนสิทธิ์เข้าถึงของแอปนี้ใน"<annotation id="link">"การตั้งค่าความเป็นส่วนตัว"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"ฟังก์ชันการทำงานของแอป"</string>
@@ -610,7 +607,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"อาจมีการแชร์ข้อมูลตำแหน่ง"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"แอปนี้ระบุว่าอาจแชร์ข้อมูลตำแหน่งของคุณกับบุคคลที่สาม"</string>
     <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"เปิดลิงก์นี้ไม่ได้"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"ลองพิมพ์ <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> ลงในหน้าต่างเบราว์เซอร์เพื่อดูเนื้อหานี้"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"การอัปเดตการแชร์ข้อมูลตำแหน่ง"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"ตรวจสอบแอปที่เปลี่ยนแปลงวิธีที่อาจใช้แชร์ข้อมูลตำแหน่งของคุณ"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"แอปต่อไปนี้ได้เปลี่ยนแปลงวิธีที่แอปอาจแชร์ข้อมูลตำแหน่งของคุณ โดยที่แอปอาจไม่เคยแชร์มาก่อน หรืออาจแชร์ในตอนนี้เพื่อวัตถุประสงค์ในการโฆษณาหรือการตลาดก็ได้"</string>

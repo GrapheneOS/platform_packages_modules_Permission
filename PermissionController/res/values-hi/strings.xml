@@ -36,7 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"हमेशा के लिए सभी को अनुमति दें"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"फ़ोटो और वीडियो चुनें"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"ज़्यादा फ़ोटो चुनें"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"ज़्यादा फ़ोटो चुनने की अनुमति न दें"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"ज़्यादा डेटा न चुनें"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"फिर भी अनुमति न दें"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"खारिज करें"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g> में से <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>"</string>
@@ -114,9 +114,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"सभी अनुमतियां"</string>
     <string name="other_permissions" msgid="2901186127193849594">"ऐप्लिकेशन को ये अनुमतियां भी दी गई हैं"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"अनुमति पाने का अनुरोध"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"स्क्रीन ओवरले मौजूद है"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"इस अनुमति की सेटिंग बदलने के लिए, आपको पहले \'सेटिंग &gt; ऐप्लिकेशन\' पर जाकर स्क्रीन ओवरले बंद करना होगा"</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"सेटिंग खोलें"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Wear पर ऐप्लिकेशन इंस्टॉल या अनइंस्टॉल नहीं किए जा सकते."</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"चुनें कि &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को किन चीज़ों को ऐक्सेस करने की अनुमति दी जाए"</string>
@@ -478,8 +475,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को डिवाइस में मौजूद &lt;b&gt;फ़ोटो, वीडियो, संगीत, ऑडियो, और अन्य फ़ाइल&lt;/b&gt; का ऐक्सेस देना है?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को इस डिवाइस में मौजूद संगीत और ऑडियो ऐक्सेस करने की अनुमति देनी है?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को इस डिवाइस में मौजूद फ़ोटो और वीडियो ऐक्सेस करने की अनुमति देनी है?"</string>
-    <!-- no translation found for permgrouprequest_more_photos (128933814654231321) -->
-    <skip />
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"क्या &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को इस डिवाइस पर मौजूद अन्य फ़ोटो और वीडियो का ऐक्सेस देना है?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को ऑडियो रिकॉर्ड करने की अनुमति देनी है?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"ऐप्लिकेशन सिर्फ़ तब ही ऑडियो रिकॉर्ड कर पाएगा, जब आप ऐप्लिकेशन इस्तेमाल कर रहे हों"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"क्या आप &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को ऑडियो रिकॉर्ड करने की अनुमति देना चाहते हैं?"</string>
@@ -577,7 +573,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"बैकग्राउंड में जगह की जानकारी को ऐक्सेस करने वाले ऐप्लिकेशन की समीक्षा करें"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> बंद होने पर भी, आपके डिवाइस की जगह की जानकारी को ऐक्सेस कर सकता है"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"बैकग्राउंड में जगह की जानकारी को ऐक्सेस करने वाले ऐप्लिकेशन की समीक्षा करें"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"यह ऐप्लिकेशन बंद होने पर भी, आपके डिवाइस की जगह की जानकारी को ऐक्सेस कर सकता है."</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"यह ऐप्लिकेशन बंद होने पर भी, आपके डिवाइस की जगह की जानकारी को ऐक्सेस कर सकता है.\n\nसुरक्षा और आपातकालीन स्थितियों के लिए बनाए गए कुछ ऐप्लिकेशन को बैकग्राउंड में सही से काम करने के लिए, आपकी जगह की जानकारी की ज़रूरत होती है."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"ऐक्सेस से जुड़ी अनुमति बदली गई"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"हाल ही में ऐक्सेस की गई जगह की जानकारी देखें"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"निजता सेटिंग"</string>
@@ -597,6 +593,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"ऐप जगह की जानकारी का डेटा इनके लिए शेयर करता है:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"डेटा शेयर करने के अलग-अलग तरीके"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"डेटा शेयर करने के तरीके अलग-अलग हो सकते हैं. ये आपकी जगह, उम्र, ऐप्लिकेशन के वर्शन, और उसके इस्तेमाल के हिसाब से तय किए जाते हैं. "<annotation id="link">"डेटा शेयर करने के तरीके के बारे में ज़्यादा जानकारी"</annotation></string>
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"डेटा शेयर करने के तरीके अलग-अलग हो सकते हैं. ये आपकी जगह, उम्र, ऐप्लिकेशन के वर्शन, और उसके इस्तेमाल के हिसाब से तय किए जाते हैं."</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"आपकी जगह की जानकारी का डेटा"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267"><annotation id="link">"निजता सेटिंग"</annotation>" में जाकर, इस ऐप्लिकेशन को दी गई अनुमति में बदलाव किया जा सकता है"</string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"ऐप फ़ंक्शनैलिटी के लिए"</string>
@@ -610,7 +607,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"जगह की जानकारी का डेटा शेयर किया जा सकता है"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"इस ऐप्लिकेशन में बताया गया है कि यह तीसरे पक्ष के साथ जगह की जानकारी का डेटा शेयर कर सकता है"</string>
     <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"यह लिंक नहीं खोला जा सका"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"ब्राउज़र विंडो में यह कॉन्टेंट देखने के लिए, <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> टाइप करके देखें"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"जगह की जानकारी का डेटा शेयर करने के तरीके के बारे में अपडेट"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"ऐसे ऐप्लिकेशन देखें जिन्होंने आपकी जगह की जानकारी के डेटा को शेयर करने का तरीका बदल दिया है"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"इन ऐप्लिकेशन ने आपकी जगह की जानकारी के डेटा को शेयर करने का तरीका बदल दिया है. ऐसा हो सकता है कि ये ऐप्लिकेशन पहले जगह की जानकारी का डेटा शेयर न करते हों या फिर अब विज्ञापन या मार्केटिंग के लिए यह डेटा शेयर किया हो."</string>

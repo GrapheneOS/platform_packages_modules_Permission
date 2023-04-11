@@ -36,7 +36,8 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"আটাইবোৰকে সদায় অনুমতি দিয়ক"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"ফট’ আৰু ভিডিঅ’ বাছনি কৰক"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"অধিক বাছনি কৰক"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"আৰু অধিক বাছনি নকৰিব"</string>
+    <!-- no translation found for grant_dialog_button_dont_select_more (6643552729129461268) -->
+    <skip />
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"তথাপি অনুমতি নিদিব"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"অগ্ৰাহ্য কৰক"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>ৰ ভিতৰত <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>টা"</string>
@@ -114,9 +115,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"সকলো অনুমতি"</string>
     <string name="other_permissions" msgid="2901186127193849594">"অন্য এপৰ কার্যক্ষমতা"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"অনুমতি বিচাৰি কৰা অনুৰোধ"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"স্ক্ৰীন অভাৰলে\' চিনাক্ত কৰা হৈছে"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"এই অনুমতিৰ ছেটিং সলনি কৰিবলৈ আপুনি প্ৰথমে ছেটিংসমূহ &gt; এপসমূহলৈ গৈ স্ক্ৰীন অভাৰলে\' অফ কৰিব লাগিব"</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"ছেটিং খোলক"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"ইনষ্টল/আনইনষ্টল কাৰ্য Wearত কৰিব নোৱাৰি।"</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক ক’ত এক্সেছ দিব লাগে বাছনি কৰক"</string>
@@ -576,7 +574,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"নেপথ্যত অৱস্থানৰ এক্সেছ থকা এপ্‌সমূহ পৰ্যালোচনা কৰক"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g>এ যিকোনো সময়তে আপোনাৰ অৱস্থান এক্সেছ কৰিব পাৰে, আনকি এপ্‌টো বন্ধ থাকিলেও"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"নেপথ্যত অৱস্থানৰ এক্সেছ থকা এপ্‌সমূহ পৰ্যালোচনা কৰক"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"এই এপ্‌টোৱে যিকোনো সময়তে আপোনাৰ অৱস্থান এক্সেছ কৰিব পাৰে, আনকি ই বন্ধ থাকিলেও।"</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"এই এপ্‌টোৱে সকলো সময়তে আপোনাৰ অৱস্থান এক্সেছ কৰিব পাৰে, আনকি এইটো বন্ধ হৈ থাকিলেও।\n\nকিছুমান সুৰক্ষা আৰু জৰুৰীকালীন পৰিস্থিতি সম্পৰ্কীয় এপে বিচৰা ধৰণে কাম কৰিবলৈ নেপথ্যত আপোনাৰ অৱস্থান এক্সেছ কৰাৰ আৱশ্যক।"</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"এক্সেছ সলনি কৰা হৈছে"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"শেহতীয়া অৱস্থানৰ ব্যৱহাৰ চাওক"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"গোপনীয়তাৰ নিয়ন্ত্ৰণ"</string>
@@ -596,6 +594,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"এপ্‌টোৱে ইয়াৰ বাবে অৱস্থানৰ ডেটা শ্বেয়াৰ কৰিব পাৰে:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ডেটা শ্বেয়াৰ কৰা কার্যটো ভিন্ন হয়"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"ডেটা শ্বেয়াৰ কৰা কাৰ্যটো আপোনাৰ এপৰ সংস্কৰণ, ব্যৱহাৰ, অঞ্চল আৰু বয়সৰ ওপৰত ভিত্তি কৰি ভিন্ন হ’ব পাৰে। "<annotation id="link">"ডেটা শ্বেয়াৰ কৰাৰ বিষয়ে অধিক"</annotation></string>
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"ডেটা ব্যৱহাৰৰ ব্যৱস্থাসমূহ আপোনাৰ এপৰ সংস্কৰণ, ব্যৱহাৰ, অঞ্চল আৰু বয়সৰ ওপৰত ভিত্তি কৰি ভিন্ন হ’ব পাৰে।"</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"আপোনাৰ অৱস্থানৰ ডেটা"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"এই এপ্‌টোৰ এক্সেছ "<annotation id="link">"গোপনীয়তাৰ ছেটিঙ"</annotation>"ত সলনি কৰক"</string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"এপৰ কাৰ্যক্ষমতা"</string>
@@ -609,7 +608,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"অৱস্থানৰ ডেটা শ্বেয়াৰ কৰা হ’ব পাৰে"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"এই এপ্‌টোৱে তৃতীয় পক্ষৰ সৈতে আপোনাৰ অৱস্থানৰ ডেটা শ্বেয়াৰ কৰিব পাৰে বুলি জনাইছে"</string>
     <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"এই লিংকটো খুলিব নোৱাৰি"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"এই সমলটো চাবলৈ আপোনাৰ ব্ৰাউজাৰৰ ৱিণ্ড’ত <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> টাইপ কৰি চাওক"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"অৱস্থানৰ বাবে ডেটা শ্বেয়াৰ কৰাৰ আপডে’ট"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"আপোনাৰ অৱস্থানৰ ডেটা শ্বেয়াৰ কৰিব পৰাৰ ধৰণসমূহ সলনি কৰা এপ্‌সমূহ পৰ্যালোচনা কৰক"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"এই এপ্‌সমূহে আপোনাৰ অৱস্থানৰ ডেটা শ্বেয়াৰ কৰিব পৰাৰ ধৰণসমূহ সলনি কৰিছে। সেইবোৰে পূৰ্বে এয়া শ্বেয়াৰ নকৰিব পাৰে অথবা এতিয়া বিজ্ঞাপন অথবা মাৰ্কেটিঙৰ উদ্দেশ্যে শ্বেয়াৰ কৰিব পাৰে।"</string>

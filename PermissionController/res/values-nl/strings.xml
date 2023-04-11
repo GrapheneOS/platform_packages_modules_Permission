@@ -36,7 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Altijd alles toestaan"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Foto\'s en video\'s selecteren"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Meer selecteren"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Niet meer selecteren"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Niet meer selecteren"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Toch niet toestaan"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Sluiten"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> van <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -114,9 +114,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"Alle rechten"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Andere app-mogelijkheden"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"Rechtenverzoek"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"Schermoverlay gedetecteerd"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"Als je deze instelling voor rechten wilt wijzigen, moet je eerst de schermoverlay uitzetten via Instellingen &gt; Apps"</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"Instellingen openen"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Acties voor installeren/verwijderen niet ondersteund op Wear."</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"Kiezen waartoe &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang krijgt"</string>
@@ -191,8 +188,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Alleen toegang tot media toestaan"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Altijd toestaan"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Toestaan bij gebruik van app"</string>
-    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
-    <skip />
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Altijd alles toestaan"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Altijd vragen"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Niet toestaan"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Exacte locatie"</string>
@@ -577,7 +573,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Apps met toegang tot locatie op de achtergrond bekijken"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> heeft altijd toegang tot je locatie, ook als de app gesloten is"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Apps met toegang tot locatie op de achtergrond bekijken"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Deze app heeft altijd toegang tot je locatie, ook als de app gesloten is"</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Deze app heeft altijd toegang tot je locatie, ook als de app gesloten is.\n\nBepaalde veiligheids- en nood-apps hebben op de achtergrond toegang tot je locatie nodig voor een juiste werking."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Toegang gewijzigd"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Recent locatiegebruik bekijken"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Privacyopties"</string>
@@ -597,6 +593,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Deze app kan locatiegegevens delen voor:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Gegevens delen verschilt"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Gegevensprocedures kunnen variëren op basis van je app-versie, gebruik, regio en leeftijd. "<annotation id="link">"Meer informatie over gegevens delen"</annotation></string>
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"Gegevensprocedures kunnen variëren op basis van je app-versie, gebruik, regio en leeftijd."</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Je locatiegegevens"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Wijzig de toegang van deze app in de "<annotation id="link">"privacyinstellingen"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"App-functionaliteit"</string>
@@ -610,7 +607,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Locatiegegevens kunnen worden gedeeld"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Deze app geeft aan dat je locatiegegevens met derden kunnen worden gedeeld"</string>
     <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Link kan niet worden geopend"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"Typ <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> in je browser om deze content te bekijken"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Updates voor het delen van locatiegegevens"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Check apps die de manier hebben veranderd waarop je locatiegegevens worden gedeeld"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Deze apps hebben de manier veranderd waarop ze je locatiegegevens kunnen delen. Misschien deelden ze de gegevens eerder niet, of kunnen ze deze nu delen voor reclame- en marketingdoeleinden."</string>

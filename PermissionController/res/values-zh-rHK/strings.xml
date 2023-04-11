@@ -36,7 +36,8 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"一律全部允許"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"選取相片和影片"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"選取更多項目"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"不選取更多相片"</string>
+    <!-- no translation found for grant_dialog_button_dont_select_more (6643552729129461268) -->
+    <skip />
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"一律不允許"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"關閉"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"第 <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> 個 (共 <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g> 個)"</string>
@@ -114,9 +115,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"所有權限"</string>
     <string name="other_permissions" msgid="2901186127193849594">"其他應用程式功能"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"權限要求"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"偵測到重疊式畫面功能"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"如要變更此權限設定，請先前往 [設定] &gt; [應用程式]，以關閉重疊式畫面功能"</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"開啟設定"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Wear 不支援安裝/解除安裝操作。"</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"選擇允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取的內容"</string>
@@ -191,8 +189,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"僅允許存取媒體"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"一律允許"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"僅在使用此應用程式時允許"</string>
-    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
-    <skip />
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"一律全部允許"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"每次都詢問"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"不允許"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"精確位置"</string>
@@ -577,7 +574,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"查看擁有背景位置資訊存取權的應用程式"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"「<xliff:g id="APP_NAME">%s</xliff:g>」可隨時存取您的位置，即使應用程式關閉時亦然"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"查看擁有背景位置資訊存取權的應用程式"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"此應用程式可隨時存取您的位置，即使應用程式關閉時亦然。"</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"此應用程式可隨時存取您的位置，即使應用程式關閉時亦然。\n\n部分安全和緊急應用程式需要在背景存取您的位置，才能正常運作。"</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"已變更存取權"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"查看最近的位置資訊使用情況"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"私隱權設定"</string>
@@ -597,6 +594,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"應用程式可能分享位置資料作以下用途："</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"資料分享方式因情況而異"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"資料處理方法可因應用程式版本、使用情況、所在地區和年齡而異。"<annotation id="link">"進一步瞭解資料分享"</annotation></string>
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"資料處理方法可因應用程式版本、使用情況、所在地區和年齡而異。"</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"您的位置資料"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"如要變更此應用程式的存取權，請前往"<annotation id="link">"私隱權設定"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"應用程式功能"</string>
@@ -610,7 +608,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"系統可能會分享位置資料"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"此應用程式表明可能會與第三方分享您的位置資料"</string>
     <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"無法開啟此連結"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"嘗試在瀏覽器視窗中輸入「<xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g>」即可查看此內容"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"位置資料分享更新"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"查看已變更位置資料分享方式的應用程式"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"這些應用程式已變更位置資料分享方式。它們可能未曾分享位置資料，或現在可能分享這些資料作廣告或市場推廣用途。"</string>

@@ -36,7 +36,8 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Να επιτρέπονται πάντα όλα"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Επιλογή φωτογραφιών και βίντεο"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Επιλέξτε περισσότερα"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Να μην γίνει επιλογή περισσότερων"</string>
+    <!-- no translation found for grant_dialog_button_dont_select_more (6643552729129461268) -->
+    <skip />
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Να μην επιτρέπεται καθόλου"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Παράβλεψη"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> από <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -114,9 +115,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"Όλες οι άδειες"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Άλλες δυνατότητες εφαρμογής"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"Αίτημα άδειας"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"Εντοπίστηκε επικάλυψη οθόνης"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"Για να αλλάξετε αυτήν τη ρύθμιση άδειας, θα πρέπει πρώτα να απενεργοποιήσετε την επικάλυψη οθόνης από τις Ρυθμίσεις &gt; Εφαρμογές"</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"Άνοιγμα ρυθμίσεων"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Οι ενέργειες εγκατάστασης/απεγκατάστασης δεν υποστηρίζονται στο Wear."</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"Επιλέξτε σε τι θα έχει πρόσβαση η εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;"</string>
@@ -576,7 +574,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Έλεγχος εφαρμογής που έχει πρόσβαση στην τοποθεσία στο παρασκήνιο"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"Η εφαρμογή <xliff:g id="APP_NAME">%s</xliff:g> έχει πάντα πρόσβαση στην τοποθεσία σας, ακόμα και όταν είναι κλειστή"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Έλεγχος εφαρμογής που έχει πρόσβαση στην τοποθεσία στο παρασκήνιο"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Η εφαρμογή έχει πάντα πρόσβαση στην τοποθεσία σας, ακόμα και όταν είναι κλειστή."</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Αυτή η εφαρμογή έχει πάντα πρόσβαση στην τοποθεσία σας, ακόμα και όταν είναι κλειστή.\n\nΚάποιες εφαρμογές ασφάλειας και έκτακτης ανάγκης απαιτούν πρόσβαση στην τοποθεσία σας στο παρασκήνιο για να λειτουργούν με τον αναμενόμενο τρόπο."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Η πρόσβαση άλλαξε"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Δείτε την πρόσφατη χρήση τοποθεσίας"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Στοιχεία ελέγχου απορρήτου"</string>
@@ -596,6 +594,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Η εφαρμ. μπορεί να κοινοποιεί δεδομ. τοποθεσ. για:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Η κοινοποίηση δεδομένων διαφέρει"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Οι πρακτικές απορρήτου μπορεί να διαφέρουν ανάλογα με την έκδοση και τη χρήση της εφαρμογής, καθώς και με την περιοχή και την ηλικία σας. "<annotation id="link">"Περισσότερα σχετικά με την κοινοποίηση δεδομένων"</annotation></string>
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"Οι πρακτικές διαχείρισης δεδομένων μπορεί να διαφέρουν ανάλογα με την έκδοση και τη χρήση της εφαρμογής, καθώς και με την περιοχή και την ηλικία σας."</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Τα δεδομένα τοποθεσίας σας"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Αλλάξτε την πρόσβαση αυτής της εφαρμογής στις "<annotation id="link">"ρυθμίσεις απορρήτου"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"Λειτουργικότητα εφαρμογής"</string>
@@ -609,7 +608,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Τα δεδομένα τοποθεσίας ενδέχεται να κοινοποιούνται"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Αυτή η εφαρμογή έχει δηλώσει ότι ενδέχεται να κοινοποιήσει τα δεδομένα τοποθεσίας σας σε τρίτα μέρη"</string>
     <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Δεν είναι δυνατό το άνοιγμα αυτού του συνδέσμου"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"Δοκιμάστε να πληκτρολογήσετε <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> στο παράθυρο του προγράμματος περιήγησης για να δείτε αυτό το περιεχόμενο"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Ενημερώσεις στην κοινοποίηση δεδ. για τοποθεσία"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Ελέγξτε εφαρμογές που άλλαξαν τον τρόπο με τον οποίο ενδέχεται να κοινοποιούν τα δεδομένα τοποθεσίας"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Αυτές οι εφαρμογές έχουν αλλάξει τον τρόπο με τον οποίο μπορούν να κοινοποιούν τα δεδομένα τοποθεσία σας. Ενδέχεται να μην τα έχουν κοινοποιήσει στο παρελθόν ή να τα κοινοποιούν τώρα για σκοπούς διαφήμισης ή μάρκετινγκ."</string>

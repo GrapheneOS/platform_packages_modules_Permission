@@ -36,7 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Eman guztirako baimena beti"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Hautatu argazkiak eta bideoak"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Hautatu beste batzuk"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Ez hautatu gehiago"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Ez hautatu gehiago"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Ez eman baimenik halere"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Baztertu"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>/<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -114,9 +114,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"Baimen guztiak"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Aplikazioaren beste gaitasun batzuk"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"Baimen-eskaera"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"Pantaila-gainjartzea hauteman da"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"Baimen-ezarpen hau aldatzeko, pantailaren gainjartzea desaktibatu behar duzu Ezarpenak &gt; Aplikazioak atalean"</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"Ireki ezarpenak"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Instalatzeko eta desinstalatzeko ekintzak ezin dira gauzatu Wear gailuetan."</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"Aukeratu zer atzi dezakeen &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioak"</string>
@@ -576,7 +573,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Berrikusi kokapena atzeko planoan erabiltzeko baimena duen aplikazioa"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> aplikazioak beti atzi dezake kokapena, nahiz eta itxita egon"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Berrikusi kokapena atzeko planoan erabiltzeko baimena duen aplikazioa"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Aplikazioak beti atzi dezake kokapena, nahiz eta itxita egon."</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Aplikazioak beti erabil dezake kokapena, nahiz eta itxita egon.\n\nSegurtasun- eta larrialdi-aplikazio batzuek atzeko planoan kokapena erabiltzeko baimena behar dute behar bezala funtzionatzeko."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Aldatu da sarbidea"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Ikusi kokapenaren azken erabilera"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Pribatutasun-ezarpenak"</string>
@@ -596,6 +593,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Baliteke hauetarako partekatzea kokapen-datuak:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Datuak partekatzeko moduak aldatu egiten dira"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Litekeena da datuen inguruko jardunbideak aplikazioaren bertsioaren, erabileraren, lurraldearen eta adinaren araberakoak izatea. "<annotation id="link">"Datuak partekatzeko moduei buruzko informazio gehiago"</annotation></string>
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"Litekeena da datuen inguruko jardunbideak aplikazioaren bertsioaren, erabileraren, lurraldearen eta adinaren araberakoak izatea."</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Kokapen-datuak"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Aldatu aplikazioaren sarbidea "<annotation id="link">"pribatutasun-ezarpenetan"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"aplikazioaren funtzioak"</string>
@@ -609,7 +607,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Baliteke kokapen-datuak partekatzea"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Agian hirugarrenekin kokapen-datuak partekatuko dituela adierazi du aplikazioaren garatzaileak"</string>
     <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Ezin da ireki esteka"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"Edukia ikusteko, idatzi <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> arakatzailearen leihoan"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Kokapen-datuak partekatzeko jardunbideen inguruko berritasunak"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Berrikusi kokapen-datuak partekatzeko modua aldatu duten aplikazioak"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Kokapen-datuak partekatzeko modua aldatu dute aplikazio hauek. Agian ez zuten daturik partekatzen lehen, edo baliteke orain publizitate- edo marketin-helburuetarako partekatzea."</string>

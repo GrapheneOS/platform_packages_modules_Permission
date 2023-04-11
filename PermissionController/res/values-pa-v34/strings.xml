@@ -19,11 +19,9 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="security_privacy_brand_name" msgid="7303621734258440812">"ਸੁਰੱਖਿਆ ਅਤੇ ਪਰਦੇਦਾਰੀ"</string>
     <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"ਕੰਟਰੋਲ"</string>
-    <string name="privacy_subpage_data_header" msgid="5049237788244591274">"ਡਾਟਾ"</string>
     <string name="health_connect_title" msgid="2132233890867430855">"Health Connect"</string>
-    <string name="health_connect_summary" msgid="8156987676957707740">"ਐਪ ਇਜਾਜ਼ਤਾਂ ਅਤੇ ਡਾਟਾ ਪ੍ਰਬੰਧਨ"</string>
-    <!-- no translation found for location_settings (8863940440881290182) -->
-    <skip />
-    <!-- no translation found for location_settings_subtitle (6846532794702613851) -->
-    <skip />
+    <string name="health_connect_summary" msgid="815473513776882296">"ਸਿਹਤ ਸੰਬੰਧੀ ਡਾਟੇ ਤੱਕ ਐਪ ਦੀ ਪਹੁੰਚ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰੋ"</string>
+    <string name="location_settings" msgid="8863940440881290182">"ਟਿਕਾਣਾ ਪਹੁੰਚ"</string>
+    <string name="mic_toggle_description" msgid="1504101620086616040">"ਐਪਾਂ ਅਤੇ ਸੇਵਾਵਾਂ ਲਈ। ਇਸ ਸੈਟਿੰਗ ਦੇ ਬੰਦ ਹੋਣ \'ਤੇ, ਜਦੋਂ ਤੁਸੀਂ ਕਿਸੇ ਐਮਰਜੈਂਸੀ ਨੰਬਰ \'ਤੇ ਕਾਲ ਕਰਦੇ ਹੋ ਤਾਂ ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਡਾਟੇ ਨੂੰ ਫਿਰ ਵੀ ਸਾਂਝਾ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ"</string>
+    <string name="location_settings_subtitle" msgid="6846532794702613851">"ਐਪਾਂ ਅਤੇ ਸੇਵਾਵਾਂ ਲਈ"</string>
 </resources>
