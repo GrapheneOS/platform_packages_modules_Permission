@@ -17,7 +17,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name" msgid="6098036489833144040">"ଅନୁମତି ନିୟନ୍ତ୍ରକ"</string>
-    <string name="ok" msgid="1936281769725676272">"ଓକେ"</string>
+    <string name="ok" msgid="1936281769725676272">"ଠିକ ଅଛି"</string>
     <string name="permission_search_keyword" msgid="1214451577494730543">"ଅନୁମତିଗୁଡ଼ିକ"</string>
     <string name="cancel" msgid="8943320028373963831">"ବାତିଲ କରନ୍ତୁ"</string>
     <string name="back" msgid="6249950659061523680">"ପଛକୁ ଫେରନ୍ତୁ"</string>
