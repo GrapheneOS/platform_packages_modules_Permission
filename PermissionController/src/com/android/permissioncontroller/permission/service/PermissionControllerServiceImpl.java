@@ -34,6 +34,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Process;
@@ -50,6 +51,7 @@ import android.util.Xml;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import com.android.permissioncontroller.PermissionControllerProto.PermissionControllerDumpProto;
 import com.android.permissioncontroller.PermissionControllerStatsLog;
@@ -777,6 +779,7 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
     }
 
     @Override
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     public void onRevokeSelfPermissionsOnKill(@NonNull String packageName,
             @NonNull List<String> permissions, @NonNull Runnable callback) {
         PackageInfo pkgInfo = getPkgInfo(packageName);
