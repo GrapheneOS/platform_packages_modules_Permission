@@ -16,8 +16,6 @@
 
 package com.android.permissioncontroller.permission.utils;
 
-import android.util.ArraySet;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -56,29 +54,6 @@ public final class CollectionUtils {
     @Nullable
     public static <T> T firstOrNull(@Nullable List<T> list) {
         return !isEmpty(list) ? list.get(0) : null;
-    }
-
-    /**
-     * Remove all values in the array set that do <b>not</b> exist in the given collection.
-     *
-     * @param <T> the class of the elements to retain and of the {@code ArraySet}
-     * @param arraySet the {@code ArraySet} whose elements are to be removed or retained
-     * @param valuesToRetain the values to be used to determine which elements to retain
-     *
-     * @return {@code true} if any values were removed from the array set, {@code false} otherwise.
-     *
-     * @see ArraySet#retainAll(java.util.Collection)
-     */
-    @SafeVarargs
-    public static <T> boolean retainAll(ArraySet<T> arraySet, T... valuesToRetain) {
-        boolean removed = false;
-        for (int i = arraySet.size() - 1; i >= 0; i--) {
-            if (!ArrayUtils.contains(valuesToRetain, arraySet.valueAt(i))) {
-                arraySet.removeAt(i);
-                removed = true;
-            }
-        }
-        return removed;
     }
 
     /**
