@@ -76,7 +76,6 @@ import android.hardware.SensorPrivacyManager;
 import android.os.Binder;
 import android.os.Build;
 import android.os.Parcelable;
-import android.os.Process;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.provider.DeviceConfig;
@@ -110,8 +109,6 @@ import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup;
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo;
 
-import kotlin.Triple;
-
 import java.lang.annotation.Retention;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
@@ -122,6 +119,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 import java.util.Set;
+
+import kotlin.Triple;
 
 public final class Utils {
 
@@ -1060,38 +1059,6 @@ public final class Utils {
      */
     public static int getUpgradeRequestDetail(String groupName) {
         return PERM_GROUP_UPGRADE_REQUEST_DETAIL_RES.getOrDefault(groupName, 0);
-    }
-
-    /**
-     * Checks whether a package has an active one-time permission according to the system server's
-     * flags
-     *
-     * @param context the {@code Context} to retrieve {@code PackageManager}
-     * @param packageName The package to check for
-     * @return Whether a package has an active one-time permission
-     */
-    public static boolean hasOneTimePermissions(Context context, String packageName) {
-        String[] permissions;
-        PackageManager pm = context.getPackageManager();
-        try {
-            permissions = pm.getPackageInfo(packageName, PackageManager.GET_PERMISSIONS)
-                    .requestedPermissions;
-        } catch (NameNotFoundException e) {
-            Log.w(LOG_TAG, "Checking for one-time permissions in nonexistent package");
-            return false;
-        }
-        if (permissions == null) {
-            return false;
-        }
-        for (String permissionName : permissions) {
-            if ((pm.getPermissionFlags(permissionName, packageName, Process.myUserHandle())
-                    & PackageManager.FLAG_PERMISSION_ONE_TIME) != 0
-                    && pm.checkPermission(permissionName, packageName)
-                    == PackageManager.PERMISSION_GRANTED) {
-                return true;
-            }
-        }
-        return false;
     }
 
     /**
