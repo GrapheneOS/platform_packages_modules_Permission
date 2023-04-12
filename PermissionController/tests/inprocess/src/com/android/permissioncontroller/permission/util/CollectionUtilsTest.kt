@@ -54,7 +54,7 @@ class CollectionUtilsTest {
     companion object {
         private val TEST_BYTE_ARRAY_1 = "I".toByteArray()
         private val TEST_BYTE_ARRAY_2 = "love".toByteArray()
-        private val TEST_BYTE_ARRAY_3 = "Google".toByteArray()
+        private val TEST_BYTE_ARRAY_3 = "Android".toByteArray()
         private val TEST_BYTE_ARRAY_4 = "Hello".toByteArray()
     }
 }
