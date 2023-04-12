@@ -76,7 +76,7 @@
     <string name="storage_supergroup_warning_allow" msgid="103093462784523190">"Esta app se diseñó para una versión anterior de Android. Si otorgas este permiso, se podrá acceder a todo el almacenamiento, lo que incluye fotos, videos, música, audios y otros archivos."</string>
     <string name="storage_supergroup_warning_deny" msgid="6420765672683284347">"Esta app se diseñó para una versión anterior de Android. Si rechazas este permiso, no se podrá acceder a todo el almacenamiento, lo que incluye fotos, videos, música, audios y otros archivos."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"realizar una acción desconocida"</string>
-    <string name="app_permissions_group_summary" msgid="8788419008958284002">"Se otorgó el permiso a <xliff:g id="COUNT_0">%1$d</xliff:g> de <xliff:g id="COUNT_1">%2$d</xliff:g> apps"</string>
+    <string name="app_permissions_group_summary" msgid="8788419008958284002">"Permiso otorgado a <xliff:g id="COUNT_0">%1$d</xliff:g> de <xliff:g id="COUNT_1">%2$d</xliff:g> apps"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> apps permitidas"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Mostrar sistema"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Ocultar sistema"</string>

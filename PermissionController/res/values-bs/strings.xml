@@ -469,7 +469,7 @@
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Dozvoliti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa &lt;b&gt;foto/video/muzičkim/audio fajlovima&lt;/b&gt; na ovom uređaju?"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Dozvoliti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa &lt;b&gt;foto/video/muzičkim/audio i drugim fajlovima&lt;/b&gt; na uređaju?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Dozvoliti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa muzici i zvuku na ovom uređaju?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Dozvoliti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa fotografijama i videozapisima na ovom uređaju?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa fotografijama i videozapisima na ovom uređaju?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da snima zvuk?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Aplikacija će moći snimati zvuk samo za vrijeme korištenja"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; snimanje zvuka?"</string>

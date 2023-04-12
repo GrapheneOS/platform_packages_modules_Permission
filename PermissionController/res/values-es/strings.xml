@@ -426,9 +426,9 @@
     <string name="default_app_no_apps" msgid="115720991680586885">"No hay aplicaciones"</string>
     <string name="car_default_app_selected" msgid="5416420830430644174">"Seleccionada"</string>
     <string name="car_default_app_selected_with_info" msgid="1932204186080593500">"Seleccionada: <xliff:g id="ADDITIONAL_INFO">%1$s</xliff:g>"</string>
-    <string name="special_app_access_search_keyword" msgid="8032347212290774210">"aplicaciones con accesos especiales"</string>
-    <string name="special_app_access" msgid="5019319067120213797">"aplicaciones con accesos especiales"</string>
-    <string name="no_special_app_access" msgid="6950277571805106247">"Sin acceso especial de apps"</string>
+    <string name="special_app_access_search_keyword" msgid="8032347212290774210">"acceso especial de aplicaciones"</string>
+    <string name="special_app_access" msgid="5019319067120213797">"Acceso especial de aplicaciones"</string>
+    <string name="no_special_app_access" msgid="6950277571805106247">"Sin acceso especial de aplicaciones"</string>
     <string name="special_app_access_no_apps" msgid="4102911722787886970">"No hay aplicaciones"</string>
     <string name="home_missing_work_profile_support" msgid="1756855847669387977">"No admite perfiles de trabajo"</string>
     <string name="encryption_unaware_confirmation_message" msgid="8274491794636402484">"Nota: Si reinicias el dispositivo y y has definido un bloqueo de pantalla, esta aplicación no se podrá iniciar hasta que desbloquees el dispositivo."</string>
