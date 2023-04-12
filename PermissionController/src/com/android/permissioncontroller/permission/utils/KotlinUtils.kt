@@ -305,18 +305,6 @@ object KotlinUtils {
             PROPERTY_SAFETY_LABEL_CHANGES_JOB_SERVICE_KILL_SWITCH, false)
     }
 
-    /**
-     * The minimum amount of time to wait, after scheduling the safety label changes job, before
-     * the job actually runs for the first time.
-     */
-    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codename = "UpsideDownCake")
-    fun getSafetyLabelChangesJobDelayMillis(): Long {
-        return DeviceConfig.getLong(
-            DeviceConfig.NAMESPACE_PRIVACY,
-            PROPERTY_SAFETY_LABEL_CHANGES_JOB_DELAY_MILLIS,
-            Duration.ofMinutes(30).toMillis())
-    }
-
     /** How often the safety label changes job will run. */
     @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codename = "UpsideDownCake")
     fun getSafetyLabelChangesJobIntervalMillis(): Long {
