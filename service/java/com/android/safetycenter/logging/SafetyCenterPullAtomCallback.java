@@ -17,6 +17,7 @@
 package com.android.safetycenter.logging;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
+import static android.safetycenter.SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED;
 
 import static com.android.permission.PermissionStatsLog.SAFETY_STATE;
 
@@ -75,22 +76,22 @@ public final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback
     private final SafetyCenterConfigReader mSafetyCenterConfigReader;
 
     @GuardedBy("mApiLock")
-    private final SafetyCenterDataFactory mSafetyCenterDataFactory;
+    private final SafetyCenterDataFactory mDataFactory;
 
     @GuardedBy("mApiLock")
-    private final SafetyCenterDataManager mSafetyCenterDataManager;
+    private final SafetyCenterDataManager mDataManager;
 
     public SafetyCenterPullAtomCallback(
             Context context,
             ApiLock apiLock,
             SafetyCenterConfigReader safetyCenterConfigReader,
-            SafetyCenterDataFactory safetyCenterDataFactory,
-            SafetyCenterDataManager safetyCenterDataManager) {
+            SafetyCenterDataFactory dataFactory,
+            SafetyCenterDataManager dataManager) {
         mContext = context;
         mApiLock = apiLock;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
-        mSafetyCenterDataFactory = safetyCenterDataFactory;
-        mSafetyCenterDataManager = safetyCenterDataManager;
+        mDataFactory = dataFactory;
+        mDataManager = dataManager;
     }
 
     @Override
@@ -130,8 +131,7 @@ public final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback
     private StatsEvent createOverallSafetyStateAtomLocked(
             UserProfileGroup userProfileGroup, List<SafetySourcesGroup> loggableGroups) {
         SafetyCenterData loggableData =
-                mSafetyCenterDataFactory.assembleSafetyCenterData(
-                        "android", userProfileGroup, loggableGroups);
+                mDataFactory.assembleSafetyCenterData("android", userProfileGroup, loggableGroups);
         long openIssuesCount = loggableData.getIssues().size();
         long dismissedIssuesCount = getDismissedIssuesCountLocked(loggableData, userProfileGroup);
 
@@ -146,7 +146,7 @@ public final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback
             return loggableData.getDismissedIssues().size();
         }
         long openIssuesCount = loggableData.getIssues().size();
-        return mSafetyCenterDataManager.countLoggableIssuesFor(userProfileGroup) - openIssuesCount;
+        return mDataManager.countLoggableIssuesFor(userProfileGroup) - openIssuesCount;
     }
 
     @GuardedBy("mApiLock")
@@ -171,13 +171,9 @@ public final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback
                     continue;
                 }
 
-                int[] managedRunningProfilesUserIds =
-                        userProfileGroup.getManagedRunningProfilesUserIds();
-                for (int k = 0; k < managedRunningProfilesUserIds.length; k++) {
-                    writeSafetySourceStateCollectedAtomLocked(
-                            loggableSource,
-                            managedRunningProfilesUserIds[k],
-                            /* isUserManaged= */ true);
+                int[] managedIds = userProfileGroup.getManagedRunningProfilesUserIds();
+                for (int k = 0; k < managedIds.length; k++) {
+                    writeSafetySourceStateCollectedAtomLocked(loggableSource, managedIds[k], true);
                 }
             }
         }
@@ -186,61 +182,62 @@ public final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback
     @GuardedBy("mApiLock")
     private void writeSafetySourceStateCollectedAtomLocked(
             SafetySource safetySource, @UserIdInt int userId, boolean isUserManaged) {
-        SafetySourceKey key = SafetySourceKey.of(safetySource.getId(), userId);
-        SafetySourceData safetySourceData =
-                mSafetyCenterDataManager.getSafetySourceDataInternal(key);
-        SafetySourceStatus safetySourceStatus =
-                safetySourceData == null ? null : safetySourceData.getStatus();
-        List<SafetySourceIssue> safetySourceIssues =
-                safetySourceData == null ? emptyList() : safetySourceData.getIssues();
-        boolean isIssueOnlyAndHasData =
-                SafetySources.isIssueOnly(safetySource) && safetySourceData != null;
-        int maxSeverityLevel =
-                isIssueOnlyAndHasData
-                        ? SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED
-                        : Integer.MIN_VALUE;
+        SafetySourceKey sourceKey = SafetySourceKey.of(safetySource.getId(), userId);
+        SafetySourceData sourceData = mDataManager.getSafetySourceDataInternal(sourceKey);
+        SafetySourceStatus sourceStatus = sourceData == null ? null : sourceData.getStatus();
+        List<SafetySourceIssue> sourceIssues =
+                sourceData == null ? emptyList() : sourceData.getIssues();
+
+        boolean isIssueOnlyWithData = SafetySources.isIssueOnly(safetySource) && sourceData != null;
+        int maxSeverityLevel = isIssueOnlyWithData ? SEVERITY_LEVEL_UNSPECIFIED : Integer.MIN_VALUE;
         long openIssuesCount = 0;
         long dismissedIssuesCount = 0;
-        for (int i = 0; i < safetySourceIssues.size(); i++) {
-            SafetySourceIssue safetySourceIssue = safetySourceIssues.get(i);
-            SafetyCenterIssueKey safetyCenterIssueKey =
-                    SafetyCenterIssueKey.newBuilder()
-                            .setSafetySourceId(safetySource.getId())
-                            .setSafetySourceIssueId(safetySourceIssue.getId())
-                            .setUserId(userId)
-                            .build();
-
-            if (mSafetyCenterDataManager.isIssueDismissed(
-                    safetyCenterIssueKey, safetySourceIssue.getSeverityLevel())) {
+        for (int i = 0; i < sourceIssues.size(); i++) {
+            SafetySourceIssue issue = sourceIssues.get(i);
+            if (isIssueDismissedLocked(issue, safetySource.getId(), userId)) {
                 dismissedIssuesCount++;
             } else {
                 openIssuesCount++;
-                maxSeverityLevel = Math.max(maxSeverityLevel, safetySourceIssue.getSeverityLevel());
+                maxSeverityLevel = Math.max(maxSeverityLevel, issue.getSeverityLevel());
             }
         }
-        if (safetySourceStatus != null) {
-            maxSeverityLevel = Math.max(maxSeverityLevel, safetySourceStatus.getSeverityLevel());
+        if (sourceStatus != null) {
+            maxSeverityLevel = Math.max(maxSeverityLevel, sourceStatus.getSeverityLevel());
         }
-        Integer maxSeverityOrNull = maxSeverityLevel > Integer.MIN_VALUE ? maxSeverityLevel : null;
+
+        SafetyCenterStatsdLogger.writeSafetySourceStateCollectedAutomatic(
+                safetySource.getId(),
+                isUserManaged,
+                maxSeverityLevel > Integer.MIN_VALUE ? maxSeverityLevel : null,
+                openIssuesCount,
+                dismissedIssuesCount,
+                getDuplicateFilteredOutIssueCountLocked(userId, sourceKey.getSourceId()),
+                mDataManager.getSourceState(sourceKey),
+                mDataManager.getSafetySourceLastUpdated(sourceKey));
+    }
+
+    @GuardedBy("mApiLock")
+    private boolean isIssueDismissedLocked(
+            SafetySourceIssue issue, String sourceId, @UserIdInt int userId) {
+        SafetyCenterIssueKey issueKey =
+                SafetyCenterIssueKey.newBuilder()
+                        .setSafetySourceId(sourceId)
+                        .setSafetySourceIssueId(issue.getId())
+                        .setUserId(userId)
+                        .build();
+        return mDataManager.isIssueDismissed(issueKey, issue.getSeverityLevel());
+    }
+
+    @GuardedBy("mApiLock")
+    private long getDuplicateFilteredOutIssueCountLocked(@UserIdInt int userId, String sourceId) {
         long duplicateFilteredOutIssuesCount = 0;
         List<SafetySourceIssueInfo> filteredOutDuplicateIssues =
-                mSafetyCenterDataManager.getMostRecentFilteredOutDuplicateIssues(userId);
+                mDataManager.getMostRecentFilteredOutDuplicateIssues(userId);
         for (int i = 0; i < filteredOutDuplicateIssues.size(); i++) {
-            if (filteredOutDuplicateIssues
-                    .get(i)
-                    .getSafetySource()
-                    .getId()
-                    .equals(safetySource.getId())) {
+            if (filteredOutDuplicateIssues.get(i).getSafetySource().getId().equals(sourceId)) {
                 duplicateFilteredOutIssuesCount++;
             }
         }
-
-        SafetyCenterStatsdLogger.writeSafetySourceStateCollected(
-                safetySource.getId(),
-                isUserManaged,
-                maxSeverityOrNull,
-                openIssuesCount,
-                dismissedIssuesCount,
-                duplicateFilteredOutIssuesCount);
+        return duplicateFilteredOutIssuesCount;
     }
 }
