@@ -859,7 +859,8 @@ public final class SafetyCenterService extends SystemService {
                         SafetyCenterFlags.getShowErrorEntriesOnTimeout();
                 if (showErrorEntriesOnTimeout) {
                     for (int i = 0; i < stillInFlight.size(); i++) {
-                        mSafetyCenterDataManager.setSafetySourceError(stillInFlight.valueAt(i));
+                        mSafetyCenterDataManager.markSafetySourceRefreshTimedOut(
+                                stillInFlight.valueAt(i));
                     }
                 }
                 mSafetyCenterDataChangeNotifier.updateDataConsumers(mUserProfileGroup);
