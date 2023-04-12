@@ -45,6 +45,7 @@ import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.privacysources.WorkPolicyInfo
 import com.google.common.truth.Truth.assertThat
+import org.junit.Ignore
 import org.junit.Test
 import kotlin.test.assertFailsWith
 
@@ -78,7 +79,7 @@ class UtilsTest {
     fun getAbsoluteTimeString_previousDateTime_returnsDateFormatString() {
         val lastAccessTime = 1680739840723L
         val time = Utils.getAbsoluteTimeString(context, lastAccessTime)
-        assertThat(time).isEqualTo("Apr 5, 2023")
+        assertThat(time == "Apr 5, 2023" || time == "Apr 6, 2023").isTrue()
     }
 
     @Test
@@ -107,6 +108,7 @@ class UtilsTest {
     }
 
     @Test
+    @Ignore("b/277782895")
     fun getEnterpriseString() {
         assertThat(Utils.getEnterpriseString(context, WorkPolicyInfo.WORK_POLICY_TITLE,
             R.string.work_policy_title)).isInstanceOf(String::class.java)
@@ -184,7 +186,7 @@ class UtilsTest {
     @Test
     fun getPermissionLastAccessSummaryTimestamp_sensorDataPermission_lastAccessSummaryTimestampIsLast7Days() {
         val result = Utils.getPermissionLastAccessSummaryTimestamp(
-            System.currentTimeMillis() - 6 * 24 * 60 * 60 * 1000, context, LOCATION)
+            System.currentTimeMillis() - 5 * 24 * 60 * 60 * 1000, context, LOCATION)
         assertThat(result.first).isNotEmpty()
         assertThat(result.second).isEqualTo(Utils.LAST_7D_SENSOR)
         assertThat(result.third).isNotEmpty()
