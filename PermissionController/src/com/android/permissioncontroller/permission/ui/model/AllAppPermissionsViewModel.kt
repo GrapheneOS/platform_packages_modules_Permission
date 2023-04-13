@@ -81,6 +81,8 @@ class AllAppPermissionsViewModel(
                 .filter { filterGroup == null || it.key == filterGroup }
                 .filter { (it.key != Manifest.permission_group.STORAGE ||
                         Utils.shouldShowStorage(packageInfo)) }
+                .filter { (!Utils.isHealthPermissionGroup(it.key) ||
+                        Utils.shouldShowHealthPermission(packageInfo, it.key))}
         }
     }
 }
