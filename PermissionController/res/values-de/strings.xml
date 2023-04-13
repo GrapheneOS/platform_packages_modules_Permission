@@ -36,7 +36,8 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Immer vollen Zugriff erlauben"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Fotos und Videos auswählen"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Mehr auswählen"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Keine weiteren auswählen"</string>
+    <!-- no translation found for grant_dialog_button_dont_select_more (6643552729129461268) -->
+    <skip />
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Trotzdem nicht zulassen"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Schließen"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> von <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -114,9 +115,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"Alle Berechtigungen"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Andere App-Funktionen"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"Berechtigungsanfrage"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"Display-Overlay erkannt"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"Wenn du diese Berechtigungseinstellung ändern möchtest, musst du zuerst das Display-Overlay in \"Einstellungen\" &gt; \"Apps\" deaktivieren"</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"Einstellungen öffnen"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Installations-/Deinstallationsaktion auf Android Wear nicht unterstützt."</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"Worauf darf die App &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; zugreifen?"</string>
@@ -191,8 +189,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Zugriff nur auf Mediendateien zulassen"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Immer zulassen"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Zugriff nur während der Nutzung der App zulassen"</string>
-    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
-    <skip />
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Immer vollen Zugriff erlauben"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Jedes Mal fragen"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Nicht zulassen"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Auf genauen Standort zugreifen"</string>
@@ -440,7 +437,7 @@
     <string name="no_special_app_access" msgid="6950277571805106247">"Kein spezieller App-Zugriff"</string>
     <string name="special_app_access_no_apps" msgid="4102911722787886970">"Keine Apps"</string>
     <string name="home_missing_work_profile_support" msgid="1756855847669387977">"Unterstützt das Arbeitsprofil nicht"</string>
-    <string name="encryption_unaware_confirmation_message" msgid="8274491794636402484">"Hinweis: Hinweis: Wenn du dein Gerät neu startest und eine Displaysperre aktiviert ist, wird diese App erst gestartet, wenn du dein Gerät entsperrst."</string>
+    <string name="encryption_unaware_confirmation_message" msgid="8274491794636402484">"Hinweis: Wenn du dein Gerät neu startest und eine Displaysperre aktiviert ist, wird diese App erst gestartet, wenn du dein Gerät entsperrst."</string>
     <string name="assistant_confirmation_message" msgid="7476540402884416212">"Der Assistent kann Informationen zu Apps abrufen, die du auf deinem System verwendest, einschließlich Informationen, die auf deinem Bildschirm angezeigt werden oder die in Apps zugänglich sind."</string>
     <string name="incident_report_channel_name" msgid="3144954065936288440">"Daten zur Fehlerbehebung teilen"</string>
     <string name="incident_report_notification_title" msgid="4635984625656519773">"Detaillierte Daten zur Fehlerbehebung teilen?"</string>
@@ -479,8 +476,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf &lt;b&gt;Foto-, Video-, Musik-, Audio- und andere Dateien&lt;/b&gt; auf diesem Gerät zuzugreifen?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf Musik- und Audiodateien auf diesem Gerät zuzugreifen?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf Fotos und Videos auf diesem Gerät zuzugreifen?"</string>
-    <!-- no translation found for permgrouprequest_more_photos (128933814654231321) -->
-    <skip />
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Darf &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; auf weitere Fotos und Videos auf diesem Gerät zugreifen?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, Audioaufnahmen zu machen?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Diese App kann nur Audioaufnahmen machen, solange du sie verwendest"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, Audioaufnahmen zu machen?"</string>
@@ -578,7 +574,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"App mit Zugriff auf die Standortermittlung im Hintergrund prüfen"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> kann auch dann auf deinen Standort zugreifen, wenn die App geschlossen ist"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"App mit Zugriff auf die Standortermittlung im Hintergrund prüfen"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Diese App kann auch dann auf deinen Standort zugreifen, wenn sie geschlossen ist."</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Diese App kann auch dann auf deinen Standort zugreifen, wenn sie geschlossen ist.\n\nEinige Sicherheits- und Notfall-Apps benötigen Zugriff auf deinen Standort im Hintergrund, um wie vorgesehen zu funktionieren."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Zugriff geändert"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Kürzliche Standortnutzung ansehen"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Datenschutzeinstellungen"</string>
@@ -598,6 +594,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Diese App kann Standortdaten weitergeben für:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Datenweitergabe variiert"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Die Art der Datennutzung kann von der Version und Verwendung der App, von der Region und vom Alter des Nutzers abhängen. "<annotation id="link">"Weitere Informationen zur Datenweitergabe"</annotation></string>
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"Die Datenschutz- und Sicherheitspraktiken können je nach App-Version, Verwendung, Region und Alter des Nutzers variieren."</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Deine Standortdaten"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Du kannst den Zugriff dieser App in den "<annotation id="link">"Datenschutzeinstellungen"</annotation>" ändern"</string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"Funktionen der App"</string>
@@ -611,7 +608,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Die App kann Standortdaten weitergeben"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Für diese App wurde angegeben, dass deine Standortdaten an Dritte weitergegeben werden können"</string>
     <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Link konnte nicht geöffnet werden"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"Versuche, <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> in das Browserfenster einzugeben, um diesen Inhalt aufzurufen"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Änderungen bei der Weitergabe von Standortdaten"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Apps ansehen, bei denen sich die Art der Weitergabe deiner Standortdaten geändert hat"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Bei diesen Apps hat sich die Art der Weitergabe deiner Standortdaten geändert. Möglicherweise wurden sie zuvor nicht weitergegeben oder sie werden jetzt zu Werbe- oder Marketingzwecken weitergegeben."</string>

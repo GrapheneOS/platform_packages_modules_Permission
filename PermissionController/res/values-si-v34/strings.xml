@@ -19,11 +19,9 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="security_privacy_brand_name" msgid="7303621734258440812">"ආරක්ෂාව සහ පෞද්ගලිකත්වය"</string>
     <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"පාලන"</string>
-    <string name="privacy_subpage_data_header" msgid="5049237788244591274">"දත්ත"</string>
     <string name="health_connect_title" msgid="2132233890867430855">"Health Connect"</string>
-    <string name="health_connect_summary" msgid="8156987676957707740">"යෙදුම් අවසර සහ දත්ත කළමනාකරණය"</string>
-    <!-- no translation found for location_settings (8863940440881290182) -->
-    <skip />
-    <!-- no translation found for location_settings_subtitle (6846532794702613851) -->
-    <skip />
+    <string name="health_connect_summary" msgid="815473513776882296">"සෞඛ්‍ය දත්ත වෙත යෙදුම් ප්‍රවේශය කළමනාකරණය කරන්න"</string>
+    <string name="location_settings" msgid="8863940440881290182">"ස්ථාන ප්‍රවේශය"</string>
+    <string name="mic_toggle_description" msgid="1504101620086616040">"යෙදුම් සහ සේවා සඳහා. මෙම සැකසීම ක්‍රියාවිරහිත නම්, ඔබ හදිසි ඇමතුම් අංකයක් අමතන විට මයික්‍රෆෝනයේ දත්ත තවම බෙදා ගත හැක."</string>
+    <string name="location_settings_subtitle" msgid="6846532794702613851">"යෙදුම් සහ සේවා සඳහා"</string>
 </resources>

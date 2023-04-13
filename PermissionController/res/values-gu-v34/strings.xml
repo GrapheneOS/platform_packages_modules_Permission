@@ -19,11 +19,9 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="security_privacy_brand_name" msgid="7303621734258440812">"સુરક્ષા અને પ્રાઇવસી"</string>
     <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"નિયંત્રણો"</string>
-    <string name="privacy_subpage_data_header" msgid="5049237788244591274">"ડેટા"</string>
     <string name="health_connect_title" msgid="2132233890867430855">"Health Connect"</string>
-    <string name="health_connect_summary" msgid="8156987676957707740">"ઍપ પરવાનગીઓ અને ડેટા મેનેજમેન્ટ"</string>
-    <!-- no translation found for location_settings (8863940440881290182) -->
-    <skip />
-    <!-- no translation found for location_settings_subtitle (6846532794702613851) -->
-    <skip />
+    <string name="health_connect_summary" msgid="815473513776882296">"ઍપનો આરોગ્ય સંબંધિત ડેટાનો ઍક્સેસ મેનેજ કરો"</string>
+    <string name="location_settings" msgid="8863940440881290182">"લોકેશન ઍક્સેસ"</string>
+    <string name="mic_toggle_description" msgid="1504101620086616040">"ઍપ અને સેવાઓ માટે. આ સેટિંગ બંધ હોવા છતાં પણ, જ્યારે તમે ઇમર્જન્સી નંબર પર કૉલ કરો ત્યારે હજુ પણ માઇક્રોફોનનો ડેટા શેર કરવામાં આવી શકે"</string>
+    <string name="location_settings_subtitle" msgid="6846532794702613851">"ઍપ અને સેવાઓ માટે"</string>
 </resources>

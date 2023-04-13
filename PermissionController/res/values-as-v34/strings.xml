@@ -19,11 +19,9 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="security_privacy_brand_name" msgid="7303621734258440812">"সুৰক্ষা আৰু গোপনীয়তা"</string>
     <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"নিয়ন্ত্ৰণ"</string>
-    <string name="privacy_subpage_data_header" msgid="5049237788244591274">"ডেটা"</string>
     <string name="health_connect_title" msgid="2132233890867430855">"Health Connect"</string>
-    <string name="health_connect_summary" msgid="8156987676957707740">"এপৰ অনুমতি আৰু ডেটা পৰিচালনা"</string>
-    <!-- no translation found for location_settings (8863940440881290182) -->
-    <skip />
-    <!-- no translation found for location_settings_subtitle (6846532794702613851) -->
-    <skip />
+    <string name="health_connect_summary" msgid="815473513776882296">"স্বাস্থ্য সম্পৰ্কীয় ডেটালৈ এপৰ এক্সেছ পৰিচালনা কৰক"</string>
+    <string name="location_settings" msgid="8863940440881290182">"অৱস্থানৰ এক্সেছ"</string>
+    <string name="mic_toggle_description" msgid="1504101620086616040">"এপ্‌ আৰু সেৱাৰ বাবে। এই ছেটিংটো অফ হৈ থাকিলে, আপুনি কোনো জৰুৰীকালীন নম্বৰলৈ কল কৰিলে মাইক্ৰ’ফ’নৰ ডেটা তথাপি শ্বেয়াৰ কৰা হ’ব পাৰে"</string>
+    <string name="location_settings_subtitle" msgid="6846532794702613851">"এপ্‌ আৰু সেৱাৰ বাবে"</string>
 </resources>

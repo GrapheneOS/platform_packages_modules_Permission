@@ -36,7 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"ყოველთვის ყველას დაშვება"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"ფოტოებისა და ვიდეოების არჩევა"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"მეტის არჩევა"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"ნუ აირჩევთ მეტს"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"ნუ აირჩევთ მეტს"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"მაინც არ დაიშვას"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"დახურვა"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> / <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>-დან"</string>
@@ -114,9 +114,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"ყველა ნებართვა"</string>
     <string name="other_permissions" msgid="2901186127193849594">"აპის სხვა შესაძლებლობები"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"ნებართვის მოთხოვნა"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"ეკრანის გადაფარვა გამოვლინდა"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"ამ ნებართვის პარამეტრის შესაცვლელად, ჯერ უნდა გამორთოთ ეკრანის გადაფარვა პარამეტრებიდან &gt; აპებიდან"</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"პარამეტრების გახსნა"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"ინსტალაციის/დეინსტალაციის მოქმედებები არ არის მხარდაჭერილი Wear-ზე."</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"აირჩიეთ, რაზე ჰქონდეს წვდომა &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ს"</string>
@@ -474,10 +471,10 @@
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"გსურთ, მიანიჭოთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>-ს&lt;/b&gt; თქვენს კალენდარზე წვდომის ნებართვა?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"გსურთ, მიანიჭოთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>-ს&lt;/b&gt; SMS-შეტყობინებათა გაგზავნის და ნახვის ნებართვა?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"გსურთ, მიანიჭოთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>-ს&lt;/b&gt; თქვენს მოწყობილობაზე არსებულ ფოტოებზე, მედია-კონტენტზე და ფაილებზე წვდომის ნებართვა?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"მიანიჭებთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ის წვდომას ამ მოწყ. &lt;b&gt;ფოტოებზე, ვიდეოებზე, მუსიკასა და აუდიოფაილებზე&lt;/b&gt;?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"მიანიჭებთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ს წვდომას ამ მოწყ. &lt;b&gt;ფოტოებზე, ვიდეოებზე, მუსიკასა და აუდიოფაილებზე&lt;/b&gt;?"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"მიანიჭებთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ის წვდომას თქვენი მოწყ. &lt;b&gt;ფოტოებზე, ვიდეოებზე, მუსიკაზე, აუდიო და სხვა &lt;/b&gt;?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"მიანიჭებთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ს წვდომას თქვენი მოწყობილობის მუსიკასა და აუდიოფაილებზე?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"მიანიჭებთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ის წვდომას თქვენი მოწყობილობის ფოტოებსა და ვიდეოებზე?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"მიანიჭებთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ს წვდომას თქვენი მოწყობილობის ფოტოებსა და ვიდეოებზე?"</string>
     <string name="permgrouprequest_more_photos" msgid="128933814654231321">"მიანიჭეთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ს წვდომა თქვენი მოწყობილობის ფოტოებსა და ვიდეოებზე?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"გსურთ, მიანიჭოთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>-ს&lt;/b&gt; აუდიოს ჩაწერის ნებართვა?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"ეს აპი აუდიოს ჩაწერას მხოლოდ მაშინ შეძლებს, როცა მას იყენებთ"</string>
@@ -576,7 +573,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"გადახედეთ მდებარეობაზე ფონურ რეჟიმში წვდომის მქონე აპებს"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> აპს შეუძლია თქვენს მდებარეობაზე წვდომა მაშინაც კი, როცა აპი დახურულია"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"გადახედეთ მდებარეობაზე ფონურ რეჟიმში წვდომის მქონე აპებს"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"ამ აპს შეუძლია თქვენს მდებარეობაზე წვდომა მაშინაც კი, როცა აპი დახურულია."</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"ეს აპი ყოველთვის შეძლებს წვდომას თქვენს მდებარეობაზე, მაშინაც კი, როდესაც ის დახურულია.\n\nუსაფრთხოებისა და საგანგებო მდგომარეობათა ზოგიერთი აპი მოითხოვს წვდომას თქვენს მდებარეობაზე ფონურ რეჟიმში, რათა სათანადოდ იმუშაოს."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"წვდომა შეიცვალა"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"მდებარეობის ბოლო აქტივობის ნახვა"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"კონფიდენციალურობის მართვის პარამეტრები"</string>
@@ -596,6 +593,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"აპმა შესაძლოა, გაუზიაროს მდებარეობის მონაცემები:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"მონაცემთა გაზიარება განსხვავდება"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"მონაცემებთან მოპყრობის პრაქტიკა შეიძლება განსხვავდებოდეს თქვენი აპის ვერსიის, გამოყენების, რეგიონის და ასაკის მიხედვით. "<annotation id="link">"ვრცლად მონაცემთა გაზიარების შესახებ"</annotation></string>
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"მონაცემებთან მოპყრობის პრაქტიკა შეიძლება განსხვავდებოდეს თქვენი აპის ვერსიის, გამოყენების, რეგიონის და ასაკის მიხედვით."</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"თქვენი მდებარეობის მონაცემები"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"შეცვალეთ ამ აპის წვდომა "<annotation id="link">"კონფიდენციალურობის პარამეტრებში"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"აპის ფუნქციები"</string>
@@ -609,7 +607,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"მდებარეობის მონაცემები შესაძლოა გაზიარებულია"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"ამ აპის თანახმად, მან შესაძლოა გაუზიაროს თქვენი მდებარეობის მონაცემები მესამე მხარეს"</string>
     <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"ამ ბმულის გახსნა შეუძლებელია"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"ამ კონტენტის სანახავად თქვენი ბრაუზერის ფანჯარაში აკრიფეთ <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g>"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"მონაცემების გაზიარ. განახლებები მდებარეობისთვის"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"გადახედეთ აპებს, რომლებშიც შეიცვალა თქვენი მდებარეობის მონაცემების გაზიარების მეთოდი"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"ამ აპებმა შეცვალა თქვენი მდებარეობის მონაცემების გაზიარების გზები. შესაძლოა, ისინი ადრე არ გაუზიარებიათ, ან გაზიარდა ახლა რეკლამირების ან მარკეტინგული მიზნით."</string>

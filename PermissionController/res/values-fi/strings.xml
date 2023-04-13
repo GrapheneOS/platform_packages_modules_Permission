@@ -36,7 +36,8 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Salli aina kaikki"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Valitse kuvia ja videoita"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Valitse lisää"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Älä valitse enempää"</string>
+    <!-- no translation found for grant_dialog_button_dont_select_more (6643552729129461268) -->
+    <skip />
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Älä salli silti"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Ohita"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>/<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -114,9 +115,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"Kaikki luvat"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Muut sovellusluvat"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"Lupapyyntö"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"Näytön peittokuva havaittiin"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"Ennen kuin voit muokata tätä käyttöoikeusasetusta, sinun täytyy poistaa näytön peittokuva käytöstä Asetukset-valikon Sovellukset-kohdasta."</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"Avaa asetukset"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Wear ei tue asennus- ja poistotoimintoja."</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"Valitse, mitä käyttöoikeuksia sovellukselle &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; myönnetään."</string>
@@ -191,8 +189,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Salli pääsy vain mediaan"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Salli aina"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Salli vain käytön aikana"</string>
-    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
-    <skip />
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Salli aina kaikki"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Kysy aina"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Älä salli"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Tarkka sijainti"</string>
@@ -577,7 +574,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Tarkista sovellus, jolla on pääsy taustasijaintiin"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"Sovellus (<xliff:g id="APP_NAME">%s</xliff:g>) voi käyttää sijaintiasi aina, vaikka sovellus ei olisi päällä"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Tarkista sovellus, jolla on pääsy taustasijaintiin"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Sovellus voi käyttää sijaintiasi aina, vaikka sovellus ei olisi päällä."</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Sovellus voi käyttää sijaintiasi aina, vaikka sovellus ei olisi päällä.\n\nJotkin turva- ja hätäsovellukset edellyttävät pääsyä sijaintiin taustalla toimiakseen oikein."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Pääsyoikeudet muutettu"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Katso viimeisin sijainnin käyttö"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Yksityisyysasetukset"</string>
@@ -597,6 +594,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Sijaintitietoja voidaan jakaa näihin tarkoituksiin"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Datan jakaminen vaihtelee"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Datakäytännöt voivat vaihdella sovellusversion, käytön, alueen ja iän mukaan. "<annotation id="link">"Lisätietoa datan jakamisesta"</annotation></string>
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"Datakäytännöt voivat vaihdella sovellusversion, käytön, alueen ja iän mukaan."</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Sijaintitietosi"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Muuta tämän sovelluksen pääsyoikeuksia "<annotation id="link">"yksityisyysasetuksissa"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"Sovelluksen toiminnot"</string>
@@ -610,7 +608,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Sijaintitietoja voidaan jakaa"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Sovellus on ilmoittanut, että se saattaa jakaa sijaintitietoja kolmansille osapuolille"</string>
     <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Linkki ei avaudu"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"Kokeile kirjoittaa <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> selainikkunaan sisällön näkemiseksi"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Sijaintidatan jakamisen päivitykset"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Tarkista sovellukset, jotka ovat muuttaneet tapaa, jolla ne voivat jakaa sijaintitietoja"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Nämä sovellukset ovat muuttaneet tapaa, jolla ne voivat jakaa sijaintitietoja. Ne eivät ehkä ole jakaneet niitä aiemmin tai ne saattavat nyt jakaa niitä mainonta- tai markkinointitarkoituksiin."</string>

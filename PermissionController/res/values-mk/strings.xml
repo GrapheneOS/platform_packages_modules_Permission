@@ -36,7 +36,8 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Секогаш дозволувај ги сите"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Изберете фотографии и видеа"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Изберете повеќе"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Не избирајте повеќе"</string>
+    <!-- no translation found for grant_dialog_button_dont_select_more (6643552729129461268) -->
+    <skip />
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Сепак не дозволувај"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Отфрли"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> од <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -114,9 +115,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"Сите дозволи"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Други можности на апликацијата"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"Барање за дозвола"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"Откривме преклопување на екранот"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"За да ја измените оваа поставка за дозвола, прво мора да го исклучите преклопувањето на екранот од „Поставки &gt; Апликации“"</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"Отвори ги поставките"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Дејствата „Инсталирај/деинсталирај“ не се поддржани на Wear."</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"Изберете до што може да пристапува &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;"</string>
@@ -576,7 +574,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Прегледајте ги апликациите со пристап до локација во заднина"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> може секогаш да пристапува до вашата локација, дури и кога е затворена апликацијата"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Прегледајте ги апликациите со пристап до локација во заднина"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Апликацијава може секогаш да пристапува до вашата локација, дури и кога е затворена."</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Апликацијава може секогаш да пристапува до вашата локација, дури и кога е затворена.\n\nНа одредени апликации за безбедност и за итни случаи им е потребен пристап до вашата локација во заднината за правилно да функционираат."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Пристапот е променет"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Погледнете го неодамнешното користење на локацијата"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Контроли на приватноста"</string>
@@ -596,6 +594,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Апл. може да споделува податоци за локацијата за:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Споделувањето податоци варира"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Практиките за споделување податоци може да се разликуваат според верзијата на апликацијата, користењето, регионот и вашата возраст. "<annotation id="link">"Повеќе информации за споделувањето податоци"</annotation></string>
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"Практиките за споделување податоци може да се разликуваат според верзијата на апликацијата, користењето, регионот и вашата возраст."</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Вашите податоци за локација"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Променете го пристапот на апликацијава во "<annotation id="link">"поставките за приватност"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"Функционалност на апликацијата"</string>
@@ -609,7 +608,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Можно е да се споделуваат податоците за локација"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Апликацијава наведе дека можеби ќе ги споделува вашите податоци за локацијата со трети страни"</string>
     <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Не може да се отвори линков"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"Обидете се да напишете <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g> во прозорецот на вашиот прелистувач за да ги прегледате содржиниве"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Промени во споделувањето на податоците за локација"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Прегледајте ги апликациите што го промениле начинот на кој може да ги споделуваат вашите податоци за локација"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Овие апликации го промениле начинот на кој може да ги споделуваат вашите податоци за локација. Претходно можеби не ги споделувале или можеби сега ги споделуваат во рекламни или маркетиншки цели."</string>

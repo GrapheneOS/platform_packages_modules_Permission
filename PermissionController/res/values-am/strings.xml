@@ -36,7 +36,8 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"ሁልጊዜ ሁሉንም ፍቀድ"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"ፎቶዎችን እና ቪድዮዎችን ምረጥ"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"ተጨማሪ ምረጥ"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"ተጨማሪ አትምረጥ"</string>
+    <!-- no translation found for grant_dialog_button_dont_select_more (6643552729129461268) -->
+    <skip />
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"ለማንኛውም አትፍቀድ"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"አሰናብት"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> ከ<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -114,9 +115,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"ሁሉም ፍቃዶች"</string>
     <string name="other_permissions" msgid="2901186127193849594">"ሌሎች የመተግበሪያ ችሎታዎች"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"የፍቃድ ጥያቄ"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"የማያ ገጽ ተደራቢ ተገኝ"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"ይህን የፍቃድ ቅንብር ለመቀየር መጀመሪያ የማያ ገጽ ተደራቢውን ከቅንብሮች &gt; መተግበሪያዎች ማጥፋት አለብዎ"</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"ቅንብሮችን ክፈት"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"በWear ላይ የመጫን/ማራገፍ እርምጃዎች አይደገፉም።"</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ምን መድረስ እንደሚችል ይምረጡ"</string>
@@ -191,8 +189,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"ለሚዲያ ብቻ መዳረሻ ይፍቀዱ"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"ሁልጊዜ ፍቀድ"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"መተግበሪያዎን እየተጠቀሙ እያሉ ብቻ ይፍቀዱ"</string>
-    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
-    <skip />
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"ሁልጊዜ ሁሉንም ፍቀድ"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"ሁልጊዜ ጠይቅ"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"አትፍቀድ"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"ትክክለኛ አካባቢ"</string>
@@ -577,7 +574,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"የዳራ አካባቢ መዳረሻ ያለውን መተግበሪያ ይገምግሙ"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"የ<xliff:g id="APP_NAME">%s</xliff:g> መተግበሪያው ተዘግቶም እንኳ ሁልጊዜ አካባቢዎን መድረስ ይችላል"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"የዳራ አካባቢ መዳረሻ ያለውን መተግበሪያ ይገምግሙ"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"ይህ መተግበሪያ ተዘግቶም እንኳ ሁልጊዜ አካባቢዎን መድረስ ይችላል።"</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"ይህ መተግበሪያ ተዘግቶም እንኳን በማንኛውም ጊዜ አካባቢዎን መድረስ ይችላል።\n\nአንዳንድ የደህንነት እና የድንገተኛ ጊዜ መተግበሪያዎች እንደታሰበው ለመሥራት የአካባቢዎ መዳረሻ በዳራ ውስጥ ያስፈልጋቸዋል።"</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"መዳረሻ ተለውጧል"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"የቅርብ ጊዜ የአካባቢ አጠቃቀምን ይመልከቱ"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"የግላዊነት መቆጣጠሪያዎች"</string>
@@ -597,6 +594,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"ይህ መተግበሪያ የአካባቢ ውሂብን ለሚከተሉት ሊያጋራ ይችላል፦"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"የውሂብ ማጋራት ይለያያል"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"የውሂብ ልማዶች በመተግበሪያዎ ስሪት፣ አጠቃቀምዎ፣ ክልልዎ እና እድሜዎ መሰረት ሊለያዩ ይችላሉ። "<annotation id="link">"ስለውሂብ ማጋራት ተጨማሪ"</annotation></string>
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"የውሂብ ልማዶች በመተግበሪያዎ ስሪት፣ አጠቃቀምዎ፣ ክልልዎ እና እድሜዎ መሰረት ሊለያዩ ይችላሉ።"</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"የእርስዎ የአካባቢ ውሂብ"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"የዚህን መተግበሪያ መዳረሻ በ"<annotation id="link">"ግላዊነት ቅንብሮች"</annotation>" ውስጥ ይለውጡ"</string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"የመተግበሪያ ተግባራዊነት"</string>
@@ -610,7 +608,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"የአካባቢ ውሂብ ሊጋራ ይችላል"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"ይህ መተግበሪያ የአካባቢ ውሂብዎን ከሦስተኛ ወገኖች ጋር ሊያጋራ እንደሚችል ገልጿል"</string>
     <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"ይህን አገናኝ መክፈት አልተቻለም"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"ይህን ይዘት ለመመልከት በአሳሽዎ መስኮት ላይ <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g>ን ለመተየብ ይሞክሩ"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"የአካባቢ የውሂብ ማጋራት ዝማኔዎች"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"የእርስዎን የአካባቢ ውሂብ ሊያጋሩ የሚችሉበትን መንገድ የለወጡ መተግበሪያዎችን ይገምግሙ"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"እነዚህ መተግበሪያዎች የእርስዎን የአካባቢ ውሂብ ሊያጋሩ የሚችሉበትን መንገድ ለውጠዋል። ከዚህ በፊት አጋርተውት ላይሆን ይችላል፣ ወይም አሁን ለማስታወቂያ ወይም የገበያ ሥራ ዓላማዎች ሊያጋሩት ይችላሉ።"</string>

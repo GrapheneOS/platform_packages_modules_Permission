@@ -19,11 +19,10 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="security_privacy_brand_name" msgid="7303621734258440812">"Sécurité et confidentialité"</string>
     <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"Commandes"</string>
-    <string name="privacy_subpage_data_header" msgid="5049237788244591274">"Données"</string>
     <string name="health_connect_title" msgid="2132233890867430855">"Connexion santé"</string>
-    <string name="health_connect_summary" msgid="8156987676957707740">"Autorisations de l\'application et gestion des données"</string>
-    <!-- no translation found for location_settings (8863940440881290182) -->
+    <string name="health_connect_summary" msgid="815473513776882296">"Gérer l\'accès des applications aux données relatives à la santé"</string>
+    <string name="location_settings" msgid="8863940440881290182">"Accès à la position"</string>
+    <!-- no translation found for mic_toggle_description (1504101620086616040) -->
     <skip />
-    <!-- no translation found for location_settings_subtitle (6846532794702613851) -->
-    <skip />
+    <string name="location_settings_subtitle" msgid="6846532794702613851">"Pour les applications et les services"</string>
 </resources>

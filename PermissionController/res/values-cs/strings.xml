@@ -36,7 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Vždy zobrazit vše"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Vybrat fotky a videa"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Vybrat další"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Nevybírat další"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Nevybírat další"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Přesto nepovolit"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Zavřít"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> z <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -114,9 +114,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"Všechna oprávnění"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Ostatní oprávnění aplikace"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"Žádost o oprávnění"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"Byla zjištěna překryvná vrstva obrazovky"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"Chcete-li změnit nastavení tohoto oprávnění, v Nastavení &gt; Aplikace je třeba nejprve vypnout překryvnou vrstvu obrazovky"</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"Otevřít nastavení"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Akce instalace/odinstalace nejsou v zařízení Wear podporovány."</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"Určete, k čemu aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; povolíte přístup"</string>
@@ -191,8 +188,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Povolit pouze přístup k médiím"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Povolit vždy"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Povolit jen při používání aplikace"</string>
-    <!-- no translation found for app_permission_button_always_allow_all (4905699259378428855) -->
-    <skip />
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Vždy povolit vše"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Pokaždé se zeptat"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Nepovolovat"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Přesná poloha"</string>
@@ -577,7 +573,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Zkontrolujte aplikaci s přístupem k poloze na pozadí"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"Aplikace <xliff:g id="APP_NAME">%s</xliff:g> má vždy přístup k vaší poloze, i když je zavřená"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Zkontrolujte aplikaci s přístupem k poloze na pozadí"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Tato aplikace má vždy přístup k vaší poloze, i když je zavřená."</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Tato aplikace má vždy přístup k vaší poloze, i když je zavřená.\n\nNěkteré bezpečnostní a nouzové aplikace vyžadují přístup k vaší poloze na pozadí, aby fungovaly, jak mají."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Přístup změněn"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Zobrazit nedávné využití polohy"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Nastavení ochrany soukromí"</string>
@@ -597,6 +593,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Možné účely sdílení údajů o poloze touto aplikací:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Sdílení dat se liší"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Způsob nakládání s daty se může lišit podle verze aplikace, způsobu používání, oblasti a věku. "<annotation id="link">"Další informace o sdílení dat"</annotation></string>
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"Způsob nakládání s daty se může lišit podle verze aplikace, způsobu používání, oblasti a věku."</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Údaje o vaší poloze"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Přístup této aplikace můžete změnit v "<annotation id="link">"nastavení ochrany soukromí"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"Funkce aplikace"</string>
@@ -610,7 +607,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Mohou být sdíleny údaje o poloze"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Tato aplikace uvedla, že může sdílet údaje o vaší poloze se třetími stranami"</string>
     <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Odkaz nelze otevřít"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="7793746078634780418">"Pokud tento obsah chcete zobrazit, zkuste do okna prohlížeče napsat <xliff:g id="HELP_PAGE"><b>g.co/android/datasharing</b></xliff:g>"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Aktualizace sdílení údajů o poloze"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Zkontrolujte aplikace, které změnily způsob, jakým mohou sdílet údaje o vaší poloze"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Tyto aplikace změnily způsob, jakým mohou sdílet údaje o vaší poloze. Buď je dříve nesdílely, nebo je nyní mohou sdílet pro reklamní nebo marketingové účely."</string>

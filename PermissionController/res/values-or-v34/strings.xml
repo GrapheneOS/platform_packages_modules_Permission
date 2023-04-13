@@ -19,11 +19,9 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="security_privacy_brand_name" msgid="7303621734258440812">"ସୁରକ୍ଷା ଏବଂ ଗୋପନୀୟତା"</string>
     <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"ନିୟନ୍ତ୍ରଣଗୁଡ଼ିକ"</string>
-    <string name="privacy_subpage_data_header" msgid="5049237788244591274">"ଡାଟା"</string>
     <string name="health_connect_title" msgid="2132233890867430855">"Health Connect"</string>
-    <string name="health_connect_summary" msgid="8156987676957707740">"ଆପ ଅନୁମତି ଏବଂ ଡାଟା ପରିଚାଳନା"</string>
-    <!-- no translation found for location_settings (8863940440881290182) -->
-    <skip />
-    <!-- no translation found for location_settings_subtitle (6846532794702613851) -->
-    <skip />
+    <string name="health_connect_summary" msgid="815473513776882296">"ସ୍ୱାସ୍ଥ୍ୟ ଡାଟାକୁ ଆପର ଆକ୍ସେସକୁ ପରିଚାଳନା କରନ୍ତୁ"</string>
+    <string name="location_settings" msgid="8863940440881290182">"ଲୋକେସନ ଆକ୍ସେସ"</string>
+    <string name="mic_toggle_description" msgid="1504101620086616040">"ଆପ୍ସ ଏବଂ ସେବାଗୁଡ଼ିକ ପାଇଁ। ଯଦି ଏହି ସେଟିଂ ବନ୍ଦ ଥାଏ, ତେବେ ଆପଣ ଏକ ଜରୁରୀକାଳୀନ ନମ୍ବରକୁ କଲ କରିବା ସମୟରେ ମାଇକ୍ରୋଫୋନ ଡାଟା ଏବେ ବି ସେୟାର କରାଯାଇପାରେ"</string>
+    <string name="location_settings_subtitle" msgid="6846532794702613851">"ଆପ୍ସ ଏବଂ ସେବାଗୁଡ଼ିକ ପାଇଁ"</string>
 </resources>
