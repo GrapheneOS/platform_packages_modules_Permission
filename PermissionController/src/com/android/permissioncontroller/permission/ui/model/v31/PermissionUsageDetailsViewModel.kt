@@ -49,14 +49,15 @@ import com.android.permissioncontroller.permission.model.livedatatypes.v31.AppPe
 import com.android.permissioncontroller.permission.model.livedatatypes.v31.LightHistoricalPackageOps
 import com.android.permissioncontroller.permission.model.livedatatypes.v31.LightHistoricalPackageOps.AppPermissionDiscreteAccesses
 import com.android.permissioncontroller.permission.model.livedatatypes.v31.LightHistoricalPackageOps.AttributedAppPermissionDiscreteAccesses
+import com.android.permissioncontroller.permission.model.livedatatypes.v31.LightHistoricalPackageOps.Companion.NO_ATTRIBUTION_TAG
 import com.android.permissioncontroller.permission.model.livedatatypes.v31.LightHistoricalPackageOps.DiscreteAccess
 import com.android.permissioncontroller.permission.ui.handheld.v31.getDurationUsedStr
 import com.android.permissioncontroller.permission.ui.handheld.v31.shouldShowSubattributionInPermissionsDashboard
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPackageLabel
 import com.android.permissioncontroller.permission.utils.PermissionMapping
-import com.android.permissioncontroller.permission.utils.v31.SubattributionUtils
 import com.android.permissioncontroller.permission.utils.Utils
+import com.android.permissioncontroller.permission.utils.v31.SubattributionUtils
 import java.time.Instant
 import java.util.Objects
 import java.util.concurrent.TimeUnit
@@ -270,14 +271,16 @@ class PermissionUsageDetailsViewModel(
             mutableListOf<AppPermissionDiscreteAccessesWithLabel>()
 
         for ((tag, discreteAccesses) in this.attributedDiscreteAccesses) {
-            val label: Int? = lightPackageInfo.attributionTagsToLabels[tag]
+            val label: Int =
+                if (tag == NO_ATTRIBUTION_TAG) Resources.ID_NULL
+                else lightPackageInfo.attributionTagsToLabels[tag] ?: Resources.ID_NULL
 
-            if (label != null && !labelsToDiscreteAccesses.containsKey(label)) {
+            if (!labelsToDiscreteAccesses.containsKey(label)) {
                 labelsToDiscreteAccesses[label] = mutableListOf()
             }
             labelsToDiscreteAccesses[label]?.addAll(discreteAccesses)
 
-            if (label != null && !labelsToTags.containsKey(label)) {
+            if (!labelsToTags.containsKey(label)) {
                 labelsToTags[label] = mutableListOf()
             }
             labelsToTags[label]?.add(tag)
@@ -363,7 +366,7 @@ class PermissionUsageDetailsViewModel(
         val subAttributionLabel = getSubAttributionLabel(this)
         val showingSubAttribution = subAttributionLabel != null && subAttributionLabel.isNotEmpty()
         val summary =
-            buildUsageSummary(context, durationSummaryLabel, proxyLabel, subAttributionLabel)
+            buildUsageSummary(context, subAttributionLabel, proxyLabel, durationSummaryLabel)
 
         return AppPermissionAccessUiInfo(
             this.appPermissionId.userHandle,
