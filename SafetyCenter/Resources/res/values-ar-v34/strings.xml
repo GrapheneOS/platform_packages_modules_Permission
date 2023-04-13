@@ -17,20 +17,20 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- no translation found for lock_screen_sources_title (5493678510117489865) -->
-    <skip />
+    <string name="lock_screen_sources_title" msgid="5493678510117489865">"فتح قفل الجهاز"</string>
     <string name="biometrics_title_for_work" msgid="1842284049407771568">"المقاييس الحيوية لتطبيقات العمل"</string>
-    <!-- no translation found for privacy_sources_summary (4083646673569677049) -->
-    <skip />
+    <string name="privacy_sources_summary" msgid="4083646673569677049">"الأذونات ولوحة البيانات وعناصر التحكّم"</string>
     <string name="health_connect_title" msgid="8318152190040327804">"Health Connect"</string>
     <string name="health_connect_search_terms" msgid="4998970586245680829">"‏الصحة، Health Connect"</string>
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"تعديلات مشاركة بيانات الموقع الجغرافي"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"البيانات، مشاركة البيانات، تعديلات مشاركة البيانات، تعديلات مشاركة بيانات الموقع الجغرافي، المشاركة"</string>
-    <!-- no translation found for ads_privacy_title (2478678200445158640) -->
-    <skip />
+    <string name="ads_privacy_title" msgid="2478678200445158640">"الخصوصية في عرض الإعلانات"</string>
     <string name="ads_privacy_summary" msgid="4977699525670966049">"تخصيص المعلومات التي تستخدمها التطبيقات لعرض الإعلانات لك"</string>
     <string name="ads_privacy_search_terms" msgid="8008413316055240046">"الإعلانات، الخصوصية في عرض الإعلانات، مبادرة حماية الخصوصية، مواضيع الإعلانات، الإعلانات المقترَحة من التطبيقات، قياس أداء الإعلانات"</string>
-    <string name="more_settings_title" msgid="663808090772098924">"إعدادات إضافية"</string>
-    <string name="more_settings_summary" msgid="3942352615407872716">"التشفير وبيانات الاعتماد وغير ذلك"</string>
+    <!-- no translation found for advanced_title (6259362998269627310) -->
+    <skip />
+    <!-- no translation found for more_settings_title (9033454654010697185) -->
+    <skip />
+    <string name="more_settings_summary" msgid="7086620830002515710">"الملء التلقائي والإشعارات والمزيد"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
 </resources>
