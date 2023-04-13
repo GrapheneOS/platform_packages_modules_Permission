@@ -595,18 +595,26 @@ public final class SafetyCenterDataFactory {
                             isUserManaged,
                             isManagedUserRunning);
                 }
-                PendingIntent entryPendingIntent = safetySourceStatus.getPendingIntent();
-                boolean enabled = safetySourceStatus.isEnabled() && !inQuietMode;
-                if (entryPendingIntent == null || inQuietMode) {
-                    entryPendingIntent =
-                            mPendingIntentFactory.getPendingIntent(
-                                    safetySource.getId(),
-                                    safetySource.getIntentAction(),
-                                    safetySource.getPackageName(),
-                                    userId,
-                                    inQuietMode);
-                    enabled = enabled && entryPendingIntent != null;
-                }
+                PendingIntent sourceProvidedPendingIntent = safetySourceStatus.getPendingIntent();
+                boolean shouldFavorDefaultPendingIntent =
+                        sourceProvidedPendingIntent == null || inQuietMode;
+                PendingIntent defaultPendingIntent =
+                        shouldFavorDefaultPendingIntent
+                                ? mPendingIntentFactory.getPendingIntent(
+                                        safetySource.getId(),
+                                        safetySource.getIntentAction(),
+                                        safetySource.getPackageName(),
+                                        userId,
+                                        inQuietMode)
+                                : null;
+                PendingIntent entryPendingIntent =
+                        defaultPendingIntent != null
+                                ? defaultPendingIntent
+                                : sourceProvidedPendingIntent;
+                boolean enabled =
+                        safetySourceStatus.isEnabled()
+                                && !inQuietMode
+                                && entryPendingIntent != null;
                 SafetyCenterEntryId safetyCenterEntryId =
                         SafetyCenterEntryId.newBuilder()
                                 .setSafetySourceId(safetySource.getId())
@@ -809,7 +817,7 @@ public final class SafetyCenterDataFactory {
                                 mSafetyCenterDataManager.getSafetySourceDataInternal(key));
                 boolean inQuietMode = isUserManaged && !isManagedUserRunning;
                 if (safetySourceStatus != null) {
-                    PendingIntent pendingIntent =
+                    PendingIntent quietModePendingIntent =
                             inQuietMode
                                     ? mPendingIntentFactory.getPendingIntent(
                                             safetySource.getId(),
@@ -817,6 +825,10 @@ public final class SafetyCenterDataFactory {
                                             safetySource.getPackageName(),
                                             userId,
                                             true)
+                                    : null;
+                    PendingIntent pendingIntent =
+                            quietModePendingIntent != null
+                                    ? quietModePendingIntent
                                     : safetySourceStatus.getPendingIntent();
                     if (pendingIntent == null) {
                         // TODO(b/222838784): Decide strategy for static entries when the intent is
