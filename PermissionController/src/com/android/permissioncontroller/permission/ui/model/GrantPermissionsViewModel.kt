@@ -43,7 +43,6 @@ import android.os.UserManager
 import android.permission.PermissionManager
 import android.provider.MediaStore
 import android.util.Log
-import androidx.annotation.ChecksSdkIntAtLeast
 import androidx.core.util.Consumer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -622,7 +621,7 @@ class GrantPermissionsViewModel(
             if (rhsHasOneTime && !lhsHasOneTime) {
                 -1
             } else if ((!rhsHasOneTime && lhsHasOneTime) ||
-                isHealthPermissionGroup(rhs.groupName)
+                Utils.isHealthPermissionGroup(rhs.groupName)
             ) {
                 1
             } else {
@@ -1281,11 +1280,6 @@ class GrantPermissionsViewModel(
                 true
             }
         }
-    }
-
-    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
-    private fun isHealthPermissionGroup(permGroupName: String): Boolean {
-        return SdkLevel.isAtLeastU() && HEALTH_PERMISSION_GROUP.equals(permGroupName)
     }
 
     fun handleHealthConnectPermissions(activity: Activity) {
