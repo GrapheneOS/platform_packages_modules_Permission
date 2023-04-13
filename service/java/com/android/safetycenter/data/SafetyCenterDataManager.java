@@ -19,8 +19,10 @@ package com.android.safetycenter.data;
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
 import android.annotation.Nullable;
+import android.annotation.UptimeMillisLong;
 import android.annotation.UserIdInt;
 import android.content.Context;
+import android.os.SystemClock;
 import android.safetycenter.SafetyCenterData;
 import android.safetycenter.SafetyEvent;
 import android.safetycenter.SafetySourceData;
@@ -173,16 +175,14 @@ public final class SafetyCenterDataManager {
     }
 
     /**
-     * Marks the given {@link SafetySourceKey} as having errored-out and returns {@code true} if
-     * this caused any changes which would alter {@link SafetyCenterData}.
+     * Marks the given {@link SafetySourceKey} as being in an error state due to a refresh timeout.
      */
-    public boolean setSafetySourceError(SafetySourceKey safetySourceKey) {
-        boolean dataUpdated = mSafetySourceDataRepository.setSafetySourceError(safetySourceKey);
+    public void markSafetySourceRefreshTimedOut(SafetySourceKey safetySourceKey) {
+        boolean dataUpdated =
+                mSafetySourceDataRepository.markSafetySourceRefreshTimedOut(safetySourceKey);
         if (dataUpdated) {
             mSafetyCenterIssueRepository.updateIssues(safetySourceKey.getUserId());
         }
-
-        return dataUpdated;
     }
 
     /**
@@ -416,6 +416,26 @@ public final class SafetyCenterDataManager {
     public SafetySourceIssue.Action getSafetySourceIssueAction(
             SafetyCenterIssueActionId safetyCenterIssueActionId) {
         return mSafetySourceDataRepository.getSafetySourceIssueAction(safetyCenterIssueActionId);
+    }
+
+    /**
+     * Returns the elapsed realtime millis of when the data of the given {@link SafetySourceKey} was
+     * last updated, or {@code 0L} if no update has occurred.
+     *
+     * @see SystemClock#elapsedRealtime()
+     */
+    @UptimeMillisLong
+    public long getSafetySourceLastUpdated(SafetySourceKey safetySourceKey) {
+        return mSafetySourceDataRepository.getSafetySourceLastUpdated(safetySourceKey);
+    }
+
+    /**
+     * Returns the current {@link SafetyCenterStatsdLogger.SourceState} of the given {@link
+     * SafetySourceKey}.
+     */
+    @SafetyCenterStatsdLogger.SourceState
+    public int getSourceState(SafetySourceKey safetySourceKey) {
+        return mSafetySourceDataRepository.getSourceState(safetySourceKey);
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////
