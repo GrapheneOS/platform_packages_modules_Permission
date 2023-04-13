@@ -36,7 +36,8 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Toujours tout autoriser"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Sélectionner des photos et des vidéos"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Sélectionner d\'autres photos"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Ne pas sélectionner plus de photos"</string>
+    <!-- no translation found for grant_dialog_button_dont_select_more (6643552729129461268) -->
+    <skip />
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Ne pas autoriser quand même"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Fermer"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> sur <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -114,9 +115,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"Toutes les autorisations"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Autres autorisations de l\'application"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"Demande d\'autorisation"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"La superposition d\'écran a été détectée"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"Pour modifier ce paramètre d\'autorisation, vous devez tout d\'abord désactiver la superposition d\'écran en accédant à Paramètres &gt; Applications."</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"Ouvrir les paramètres"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Les actions d\'installation et de désinstallation ne sont pas prises en charge par Android Wear."</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"Définissez les autorisations d\'accès de l\'application « <xliff:g id="APP_NAME">%1$s</xliff:g> »"</string>
@@ -576,7 +574,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Voir les applications ayant accès aux données de localisation en arrière-plan"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> peut toujours accéder à votre position, même quand l\'application est fermée"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Voir les applications ayant accès aux données de localisation en arrière-plan"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Cette application peut toujours accéder à votre position, même si elle est fermée"</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Cette application peut toujours accéder à votre position, même lorsqu\'elle est fermée.\n\nCertaines applications de sécurité et d\'urgence requièrent l\'accès à votre position en arrière-plan pour fonctionner correctement."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Accès modifié"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Voir les utilisations récentes de la position"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Paramètres de confidentialité"</string>
@@ -596,8 +594,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"L\'appli peut partager des données de loc. pour :"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Les pratiques de partage de données peuvent varier"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Les pratiques relatives aux données peuvent varier en fonction de la version de votre application, de son utilisation, de votre région et de votre âge. "<annotation id="link">"En savoir plus sur le partage des données"</annotation></string>
-    <!-- no translation found for permission_rationale_data_sharing_varies_message_without_link (4912763761399025094) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"Les pratiques relatives aux données peuvent varier en fonction de la version de votre application, de son utilisation, de votre région et de votre âge."</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Vos données de localisation"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Modifiez les autorisations d\'accès de cette application dans les "<annotation id="link">"paramètres de confidentialité"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"le fonctionnement de l\'appli;"</string>

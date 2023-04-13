@@ -34,9 +34,9 @@
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"更多信息"</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"全部允许"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"始终全部允许"</string>
-    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"请选择照片和视频"</string>
+    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"选择照片和视频"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"选择更多"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"不允许选择更多照片和视频"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"不选择更多数据"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"仍然不允许"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"关闭"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"第 <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> 项权限（共 <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g> 项）"</string>
@@ -114,9 +114,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"所有权限"</string>
     <string name="other_permissions" msgid="2901186127193849594">"其他应用功能"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"权限请求"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"检测到屏幕叠加层"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"要更改此权限设置，您必须首先在“设置”&gt;“应用”中关闭屏幕叠加层"</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"打开“设置”"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Wear 不支持安装/卸载操作。"</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"请选择要向&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;授予哪些权限"</string>
@@ -576,7 +573,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"查看具有后台位置信息访问权限的应用"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"“<xliff:g id="APP_NAME">%s</xliff:g>”始终可以访问您的位置信息，即使应用已关闭"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"查看具有后台位置信息访问权限的应用"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"此应用始终可以访问您的位置信息，即使应用已关闭。"</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"此应用始终可以访问您的位置信息，即使应用已关闭。\n\n某些安全和紧急应用需要在后台访问您的位置信息，才能按预期运行。"</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"访问权限已更改"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"查看近期位置信息使用情况"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"隐私控制"</string>
@@ -596,8 +593,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"此应用可能会出于以下目的分享位置数据："</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"数据分享因情况而异"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"数据处理方式可能会因您的应用版本、使用情况、地区和年龄而异。"<annotation id="link">"详细了解数据分享"</annotation></string>
-    <!-- no translation found for permission_rationale_data_sharing_varies_message_without_link (4912763761399025094) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"数据方面的做法可能会因应用版本、使用情况、地区和年龄而异。"</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"您的位置数据"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"您可以在"<annotation id="link">"隐私设置"</annotation>"中更改此应用的访问权限"</string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"应用功能"</string>

@@ -36,7 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"အားလုံး အမြဲခွင့်ပြုရန်"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"ဓာတ်ပုံနှင့်ဗီဒီယိုများ ရွေးရန်"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"နောက်ထပ် ရွေးရန်"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"နောက်ထပ်မရွေးပါနှင့်"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"နောက်ထပ်မရွေးပါနှင့်"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"မည်သို့ပင်ဖြစ်စေ ခွင့်မပြုပါ"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"ပယ်ရန်"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g> ထဲမှ <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>"</string>
@@ -114,9 +114,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"ခွင့်ပြုချက် အားလုံး"</string>
     <string name="other_permissions" msgid="2901186127193849594">"အခြားအက်ပ်၏ စွမ်းရည်များ"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"ခွင့်ပြုချက် တောင်းခံမှု"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"ဖန်သားပြင်တွင် ထပ်ဆင့်ပြသခြင်းကို ရှာတွေ့ခဲ့သည်"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"ဤခွင့်ပြုချက် ဆက်တင်ကိုပြောင်းရန် သင်သည် ဆက်တင်များ &gt; အက်ပ်များသို့ သွား၍ ဖန်သားပြင်တွင် ထပ်ဆင့်ပြသခြင်းကို အရင်ဆုံး ပိတ်ရပါမည်"</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"ဆက်တင်များ ဖွင့်ရန်"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Wear ပေါ်တွင် ထည့်သွင်းခြင်း/ဖြုတ်ခြင်းများကို ပံ့ပိုးမထားပါ။"</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"&amp;It;b7gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&amp;It;/b&gt; က အသုံးပြုခွင့်ရမည့် အရာတို့ကို ရွေးပါ"</string>
@@ -576,7 +573,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"နောက်ခံတွင် တည်နေရာသုံးခွင့်ရှိသောအက်ပ်ကို စစ်ဆေးပါ"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> ကို ပိတ်ထားချိန်၌ပင် ၎င်းက သင့်တည်နေရာကို အမြဲဝင်ကြည့်နိုင်သည်"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"နောက်ခံတွင် တည်နေရာသုံးခွင့်ရှိသောအက်ပ်ကို စစ်ဆေးပါ"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"ဤအက်ပ်ကို ပိတ်ထားချိန်၌ပင် ၎င်းသည် သင့်တည်နေရာကို အမြဲဝင်ကြည့်နိုင်သည်။"</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"ဤအက်ပ်ကို ပိတ်ထားချိန်၌ပင် ၎င်းသည် သင့်တည်နေရာကို အမြဲကြည့်နိုင်သည်။\n\nလုံခြုံရေးနှင့် အရေးပေါ်အက်ပ်အချို့သည် ရည်ရွယ်ထားသည့်အတိုင်း အလုပ်လုပ်ရန် နောက်ခံတွင် သင့်တည်နေရာကြည့်ခွင့် လိုအပ်သည်။"</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"အသုံးပြုခွင့် ပြောင်းသွားသည်"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"မကြာသေးမီက တည်နေရာအသုံးပြုမှုကို ကြည့်ရန်"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"ကန့်သတ်ရန်ဆက်တင်များ"</string>
@@ -596,8 +593,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"ဤအက်ပ်က အောက်ပါတို့ကြောင့် တည်နေရာဒေတာမျှဝေနိုင်သည်-"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ဒေတာမျှဝေခြင်း ကွဲပြားပုံ"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"ဒေတာလုပ်ထုံးလုပ်နည်းများသည် သင်၏ အက်ပ်ဗားရှင်း၊ အသုံးပြုမှု၊ ဒေသနှင့် အသက်အပေါ် အခြေခံ၍ ကွဲပြားနိုင်သည်။ "<annotation id="link">"ဒေတာမျှဝေခြင်းအကြောင်း နောက်ထပ်အချက်အလက်"</annotation></string>
-    <!-- no translation found for permission_rationale_data_sharing_varies_message_without_link (4912763761399025094) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"ဒေတာလုပ်ထုံးလုပ်နည်းများသည် သင်၏ အက်ပ်ဗားရှင်း၊ အသုံးပြုမှု၊ ဒေသနှင့် အသက်အပေါ် အခြေခံ၍ ကွဲပြားနိုင်သည်။"</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"သင်၏ တည်နေရာဒေတာ"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"ဤအက်ပ်၏ သုံးခွင့်ကို "<annotation id="link">"ကိုယ်ရေးအချက်အလက်လုံခြုံမှု ဆက်တင်များ"</annotation>" တွင် ပြောင်းပါ"</string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"အက်ပ်လုပ်ဆောင်ချက်"</string>

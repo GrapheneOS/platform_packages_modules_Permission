@@ -36,7 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Permite-le întotdeauna pe toate"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Alege fotografii și videoclipuri."</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Selectează mai multe"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Nu selecta mai multe"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Nu selecta mai multe"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Nu permite în nicio situație"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Închide"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> din <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -114,9 +114,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"Toate permisiunile"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Alte funcții ale aplicației"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"Solicitare de permisiune"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"S-a detectat suprapunerea pe ecran"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"Ca să schimbi această setare pentru permisiuni, mai întâi trebuie să dezactivezi suprapunerea pe ecran din Setări &gt; Aplicații"</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"Deschide setările"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Acțiunile Instalează/Dezinstalează nu sunt acceptate pe Wear."</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"Alege ce va putea accesa &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;"</string>
@@ -576,7 +573,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Verifică aplicația cu acces la locație în fundal"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> îți poate accesa în permanență locația, chiar și când aplicația e închisă"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Verifică aplicația cu acces la locație în fundal"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Aplicația îți poate accesa în permanență locația, chiar și când e închisă."</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Aplicația îți poate accesa în permanență locația, chiar și când este închisă.\n\nUnele aplicații pentru siguranță și urgențe necesită acces la locație în fundal pentru a funcționa corect."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Permisiunea de acces a fost schimbată"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Vezi folosirea recentă a locației"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Opțiuni de confidențialitate"</string>
@@ -596,8 +593,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Aplicația poate permite accesul la date pentru:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Permiterea accesului la date variază"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Practicile privind datele pot varia în funcție de versiunea aplicației, de modul de utilizare a acesteia, de regiune și de vârsta ta. "<annotation id="link">"Mai multe despre permiterea accesului la date"</annotation></string>
-    <!-- no translation found for permission_rationale_data_sharing_varies_message_without_link (4912763761399025094) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"Practicile privind datele pot varia în funcție de versiunea aplicației, de modul de utilizare a acesteia, de regiune și de vârsta ta."</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Datele privind locația ta"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Schimbă accesul acestei aplicații în "<annotation id="link">"setările de confidențialitate"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"Funcționalitatea aplicației"</string>

@@ -19,12 +19,9 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="security_privacy_brand_name" msgid="7303621734258440812">"Xavfsizlik va maxfiylik"</string>
     <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"Boshqaruv"</string>
-    <string name="privacy_subpage_data_header" msgid="5049237788244591274">"Maʼlumotlar"</string>
     <string name="health_connect_title" msgid="2132233890867430855">"Health Connect"</string>
-    <!-- no translation found for health_connect_summary (815473513776882296) -->
-    <skip />
+    <string name="health_connect_summary" msgid="815473513776882296">"Salomatlik maʼlumotlariga ilova ruxsatini boshqaring"</string>
     <string name="location_settings" msgid="8863940440881290182">"Joylashuv axborotiga ruxsat"</string>
-    <!-- no translation found for mic_toggle_description (1504101620086616040) -->
-    <skip />
+    <string name="mic_toggle_description" msgid="1504101620086616040">"Ilovalar va xizmatlar uchun. Bu sozlama yoqilmasa, favqulodda xizmat raqamiga telefon qilganingizda mikrofon maʼlumotlari hamon ulashilishi mumkin"</string>
     <string name="location_settings_subtitle" msgid="6846532794702613851">"Ilovalar va xizmatlar uchun"</string>
 </resources>
