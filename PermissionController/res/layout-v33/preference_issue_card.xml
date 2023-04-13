@@ -19,6 +19,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/issue_card"
     android:clickable="false"
+    android:screenReaderFocusable="true"
     style="@style/SafetyCenterCard.Issue">
 
     <ImageButton
