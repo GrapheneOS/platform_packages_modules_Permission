@@ -62,6 +62,8 @@ data class LightHistoricalPackageOps(
 
     /** Companion object for [LightHistoricalPackageOps]. */
     companion object {
+        /** String to represent the absence of an attribution tag. */
+        const val NO_ATTRIBUTION_TAG = "no_attribution_tag"
         /** String to represent the absence of a permission group. */
         private const val NO_PERM_GROUP = "no_perm_group"
         private const val DISCRETE_ACCESS_OP_FLAGS =
@@ -106,21 +108,16 @@ data class LightHistoricalPackageOps(
 
             for (permissionToOpNames in permissionsToOpNames.entries) {
                 attributedHistoricalOpsList.forEach { attributedHistoricalOps ->
-                    if (attributedHistoricalOps.tag != null) {
-                        attributedHistoricalOps
-                            .getDiscreteAccesses(permissionToOpNames.value)
-                            ?.let { discAccessData ->
-                                val appPermissionId =
-                                    AppPermissionId(
-                                        packageName, userHandle, permissionToOpNames.key)
-                                if (!attributedAppPermissionDiscreteAccesses.containsKey(
-                                    appPermissionId)) {
-                                    attributedAppPermissionDiscreteAccesses[appPermissionId] =
-                                        mutableMapOf()
-                                }
-                                attributedAppPermissionDiscreteAccesses[appPermissionId]?.put(
-                                    attributedHistoricalOps.tag!!, discAccessData)
-                            }
+                    attributedHistoricalOps.getDiscreteAccesses(permissionToOpNames.value)?.let {
+                        discAccessData ->
+                        val appPermissionId =
+                            AppPermissionId(packageName, userHandle, permissionToOpNames.key)
+                        if (!attributedAppPermissionDiscreteAccesses.containsKey(appPermissionId)) {
+                            attributedAppPermissionDiscreteAccesses[appPermissionId] =
+                                mutableMapOf()
+                        }
+                        attributedAppPermissionDiscreteAccesses[appPermissionId]?.put(
+                            attributedHistoricalOps.tag ?: NO_ATTRIBUTION_TAG, discAccessData)
                     }
                 }
             }
