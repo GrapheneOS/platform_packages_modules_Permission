@@ -62,6 +62,7 @@ class AppPermGroupUiInfoLiveData private constructor(
     private val permGroupLiveData = PermGroupLiveData[permGroupName]
     private val permissionStateLiveData = PermStateLiveData[packageName, permGroupName, user]
     private val isStorage = permGroupName == STORAGE
+    private val isHealth = Utils.isHealthPermissionGroup(permGroupName)
 
     init {
         isSpecialLocation = LocationUtils.isLocationGroupAndProvider(app,
@@ -127,7 +128,8 @@ class AppPermGroupUiInfoLiveData private constructor(
 
         val shouldShow = packageInfo.enabled &&
             isGrantableAndNotLegacyPlatform(packageInfo, groupInfo, requestedPermissionInfos) &&
-            (!isStorage || Utils.shouldShowStorage(packageInfo))
+            (!isStorage || Utils.shouldShowStorage(packageInfo)) &&
+            (!isHealth || Utils.shouldShowHealthPermission(packageInfo, groupInfo.name))
 
         val isSystemApp = !isUserSensitive(permissionState)
 
