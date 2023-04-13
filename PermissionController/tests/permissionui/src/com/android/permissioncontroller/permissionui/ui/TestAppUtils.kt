@@ -24,6 +24,10 @@ import android.permission.cts.PermissionUtils.uninstallApp
 private const val APK_DIRECTORY = "/data/local/tmp/permissioncontroller/tests/permissionui/"
 private const val LOCATION_PERM_USER_APK = "$APK_DIRECTORY/AppThatRequestsLocation.apk"
 private const val CAMERA_PERM_USER_APK = "$APK_DIRECTORY/PermissionUiUseCameraPermissionApp.apk"
+private const val HEALTH_CONNECT_PERMISSION_USER_APK =
+    "$APK_DIRECTORY/PermissionUiUseHealthConnectPermissionApp.apk"
+private const val INVALID_HEALTH_CONNECT_PERMISSION_USER_APK =
+    "$APK_DIRECTORY/PermissionUiInvalidUseHealthConnectPermissionApp.apk"
 private const val ADDITIONAL_PERM_USER_APK =
     "$APK_DIRECTORY/PermissionUiUseAdditionalPermissionApp.apk"
 private const val TWO_ADDITIONAL_PERM_USER_APK =
@@ -32,10 +36,10 @@ private const val ADDITIONAL_PERM_DEFINER_APK =
     "$APK_DIRECTORY/PermissionUiDefineAdditionalPermissionApp.apk"
 
 // All 4 of the AppThatUses_X_Permission(s) applications share the same package name.
-private const val PERM_USER_PACKAGE =
-    "com.android.permissioncontroller.tests.appthatrequestpermission"
 private const val PERM_DEFINER_PACKAGE =
     "com.android.permissioncontroller.tests.appthatdefinespermission"
+const val PERM_USER_PACKAGE =
+    "com.android.permissioncontroller.tests.appthatrequestpermission"
 
 const val CAMERA_TEST_APP_LABEL = "CameraRequestApp"
 
@@ -49,6 +53,9 @@ const val TEST_APP_DEFINED_PERMISSION_C_LABEL = "Permission C"
 
 fun installTestAppThatRequestsLocation() = install(LOCATION_PERM_USER_APK)
 fun installTestAppThatUsesCameraPermission() = install(CAMERA_PERM_USER_APK)
+fun installTestAppThatUsesHealthConnectPermission() = install(HEALTH_CONNECT_PERMISSION_USER_APK)
+fun installInvalidTestAppThatUsesHealthConnectPermission() =
+    install(INVALID_HEALTH_CONNECT_PERMISSION_USER_APK)
 fun installTestAppThatUsesAdditionalPermission() = install(ADDITIONAL_PERM_USER_APK)
 fun installTestAppThatUsesTwoAdditionalPermissions() = install(TWO_ADDITIONAL_PERM_USER_APK)
 fun installTestAppThatDefinesAdditionalPermissions() = install(ADDITIONAL_PERM_DEFINER_APK)
