@@ -36,7 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Luôn cho phép tất cả"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Chọn ảnh và video"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Chọn thêm"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Không chọn thêm"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Không chọn thêm"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Vẫn không cho phép"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Đóng"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>/<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -114,9 +114,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"Tất cả các quyền"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Các khả năng khác của ứng dụng"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"Yêu cầu quyền"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"Đã phát hiện lớp phủ màn hình"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"Để thay đổi tùy chọn cài đặt quyền này, trước tiên, bạn phải tắt lớp phủ màn hình trong phần Cài đặt &gt; Ứng dụng"</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"Mở cài đặt"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Các hành động Cài đặt/Gỡ cài đặt không được hỗ trợ trên Wear."</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"Chọn nội dung &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; được phép truy cập vào"</string>
@@ -576,7 +573,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Xem lại ứng dụng có quyền truy cập thông tin vị trí ở chế độ nền"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> luôn truy cập được vào thông tin vị trí của bạn, ngay cả khi đang đóng"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Xem lại ứng dụng có quyền truy cập thông tin vị trí ở chế độ nền"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Ứng dụng này luôn truy cập được thông tin vị trí của bạn, ngay cả khi đang đóng"</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Ứng dụng này luôn truy cập được vào thông tin vị trí của bạn, kể cả khi đang đóng.\n\nMột số ứng dụng khẩn cấp và an toàn cần truy cập vào thông tin vị trí của bạn ở chế độ nền để hoạt động như mong đợi."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Đã thay đổi quyền truy cập"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Xem thông tin gần đây về việc sử dụng thông tin vị trí"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Chế độ kiểm soát quyền riêng tư"</string>
@@ -596,8 +593,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Ứng dụng này có thể chia sẻ dữ liệu vị trí cho:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Nhiều cách thức chia sẻ dữ liệu"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Cách thức xử lý dữ liệu có thể thay đổi tuỳ theo phiên bản ứng dụng, cách sử dụng, khu vực và độ tuổi của bạn. "<annotation id="link">"Tìm hiểu thêm về chế độ chia sẻ dữ liệu"</annotation></string>
-    <!-- no translation found for permission_rationale_data_sharing_varies_message_without_link (4912763761399025094) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"Cách thức xử lý dữ liệu có thể thay đổi tuỳ theo phiên bản ứng dụng, cách sử dụng, khu vực và độ tuổi của bạn."</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Dữ liệu vị trí của bạn"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Thay đổi quyền truy cập của ứng dụng này trong "<annotation id="link">"chế độ cài đặt quyền riêng tư"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"Chức năng của ứng dụng"</string>
