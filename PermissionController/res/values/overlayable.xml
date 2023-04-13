@@ -69,6 +69,8 @@
             <item type="style" name="PermissionGrantPermissionRationaleMessage" />
             <item type="style" name="PermissionGrantPermissionRationaleMoreInfoIcon" />
 
+            <item type="color" name="permission_rationale_overview_background" />
+
             <!-- END PERMISSION GRANT DIALOG -->
 
             <!-- START PERMISSION RATIONALE DIALOG -->
@@ -90,6 +92,8 @@
 
             <item type="style" name="PermissionRationaleButtonContainer" />
             <item type="style" name="PermissionRationaleBackButton" />
+
+            <item type="color" name="permission_rationale_accent_primary_variant" />
 
             <!-- END PERMISSION RATIONALE DIALOG -->
 

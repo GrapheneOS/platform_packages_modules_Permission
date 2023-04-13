@@ -28,4 +28,8 @@
     <color name="car_card_ripple_background">#27ffffff</color>
     <color name="car_accent">#ff60a8f0</color>
     <color name="car_divider_color">#1fffffff</color>
+
+    <!-- overviewBackground is not visible from mainline, so UX provided this alternative.
+    system_neutral2_200 is v31+ so use this placeholder provided by ux -->
+    <color name="permission_rationale_overview_background">#DADCE0</color>
 </resources>
