@@ -43,6 +43,10 @@
                 value="/data/local/tmp/permissioncontroller/tests/permissionui/PermissionUiUseStoragePermissionApp.apk" />
         <option name="push-file" key="PermissionUiUseCameraPermissionApp.apk"
                 value="/data/local/tmp/permissioncontroller/tests/permissionui/PermissionUiUseCameraPermissionApp.apk" />
+        <option name="push-file" key="PermissionUiUseHealthConnectPermissionApp.apk"
+            value="/data/local/tmp/permissioncontroller/tests/permissionui/PermissionUiUseHealthConnectPermissionApp.apk" />
+        <option name="push-file" key="PermissionUiInvalidUseHealthConnectPermissionApp.apk"
+            value="/data/local/tmp/permissioncontroller/tests/permissionui/PermissionUiInvalidUseHealthConnectPermissionApp.apk" />
         <option name="push-file" key="PermissionUiDefineAdditionalPermissionApp.apk"
                 value="/data/local/tmp/permissioncontroller/tests/permissionui/PermissionUiDefineAdditionalPermissionApp.apk" />
         <option name="push-file" key="PermissionUiUseAdditionalPermissionApp.apk"
