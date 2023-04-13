@@ -52,10 +52,8 @@
             other {Expand and see # more alerts}
         }
     </string>
-    <!-- Content description containing the title and summary of a safety center issue card preference [CHAR LIMIT=NONE]-->
-    <string name="safety_center_issue_card_content_description">Alert. <xliff:g id="issue card title" example="Protect your account">%1$s</xliff:g>. <xliff:g id="issue card summary" example="Secure your account in the Security Checkup">%2$s</xliff:g></string>
-    <!-- Content description containing the title, subtitle and summary of a safety center issue card preference [CHAR LIMIT=NONE]-->
-    <string name="safety_center_issue_card_content_description_with_subtitle">Alert. <xliff:g id="issue card title" example="Protect your account">%1$s</xliff:g>. <xliff:g id="issue card subtitle" example="testemail@google.com">%2$s</xliff:g>. <xliff:g id="issue card summary" example="Secure your account in the Security Checkup">%3$s</xliff:g></string>
+    <!-- Content description prefixing the first text view of a safety center issue card preference [CHAR LIMIT=NONE]-->
+    <string name="safety_center_issue_card_prefix_content_description">Alert. <xliff:g id="issue card title" example="Protect your account">%1$s</xliff:g></string>
 
     <!-- Issue resolution confirmation text [CHAR LIMIT=NONE]-->
     <string name="safety_center_resolved_issue_fallback">Action complete</string>
