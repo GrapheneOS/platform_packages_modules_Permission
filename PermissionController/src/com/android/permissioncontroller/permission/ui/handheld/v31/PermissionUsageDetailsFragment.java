@@ -76,15 +76,6 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
 
     private static final int MENU_SHOW_7_DAYS_DATA = Menu.FIRST + 4;
     private static final int MENU_SHOW_24_HOURS_DATA = Menu.FIRST + 5;
-    private static final long MIDNIGHT_TODAY =
-            ZonedDateTime.now(ZoneId.systemDefault()).truncatedTo(ChronoUnit.DAYS).toEpochSecond()
-                    * 1000L;
-    private static final long MIDNIGHT_YESTERDAY =
-            ZonedDateTime.now(ZoneId.systemDefault())
-                            .minusDays(1)
-                            .truncatedTo(ChronoUnit.DAYS)
-                            .toEpochSecond()
-                    * 1000L;
     private @Nullable String mPermissionGroup;
     private int mUsageSubtitle;
     private boolean mHasSystemApps;
@@ -334,6 +325,18 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
             PreferenceScreen preferenceScreen) {
         Context context = getContext();
         long previousDateMs = 0L;
+        long midnightToday =
+                ZonedDateTime.now(ZoneId.systemDefault())
+                                .truncatedTo(ChronoUnit.DAYS)
+                                .toEpochSecond()
+                        * 1000L;
+        long midnightYesterday =
+                ZonedDateTime.now(ZoneId.systemDefault())
+                                .minusDays(1)
+                                .truncatedTo(ChronoUnit.DAYS)
+                                .toEpochSecond()
+                        * 1000L;
+
         for (int i = 0; i < appPermissionAccessUiInfoList.size(); i++) {
             AppPermissionAccessUiInfo appPermissionAccessUiInfo =
                     appPermissionAccessUiInfoList.get(i);
@@ -350,9 +353,9 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
                     category.set(createDayCategoryPreference());
                     preferenceScreen.addPreference(category.get());
                 }
-                if (accessEndTime > MIDNIGHT_TODAY) {
+                if (accessEndTime > midnightToday) {
                     category.get().setTitle(R.string.permission_history_category_today);
-                } else if (accessEndTime > MIDNIGHT_YESTERDAY) {
+                } else if (accessEndTime > midnightYesterday) {
                     category.get().setTitle(R.string.permission_history_category_yesterday);
                 } else {
                     category.get()
