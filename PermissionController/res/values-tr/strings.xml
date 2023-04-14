@@ -36,7 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Tümüne her zaman izin ver"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Fotoğraf ve video seçin"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Daha fazla seçin"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Daha fazla seçme"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Daha fazla seçme"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Yine de izin verme"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Kapat"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> / <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -114,9 +114,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"Tüm izinler"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Diğer uygulama özellikleri"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"İzin isteği"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"Ekran yer paylaşımı tespit edildi"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"Bu izin ayarını değiştirmek için ilk olarak Ayarlar &gt; Uygulamalar\'dan ekran yer paylaşımını kapatmanız gerekir"</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"Ayarları aç"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Yükleme/Yüklemeyi Kaldırma işlemleri Wear\'da desteklenmiyor."</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının nelere erişmesine izin vereceğinizi seçin"</string>
@@ -576,7 +573,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Arka planda konum erişimine sahip olan uygulamayı inceleyin"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g>, uygulama kapalıyken bile konumunuza her zaman erişebilir"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Arka planda konum erişimine sahip olan uygulamayı inceleyin"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Bu uygulama, kapalıyken bile konumunuza her zaman erişebilir."</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Bu uygulama kapalı olduğunda bile her zaman konumunuza erişebilir.\n\nBazı güvenlik ve acil durum uygulamalarının doğru şekilde çalışabilmesi için arka planda konum bilginize erişmesi gerekir."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Erişim değiştirildi"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Son konum kullanımını göster"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Gizlilik denetimleri"</string>
@@ -596,8 +593,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Bu uygulama, konum verilerini paylaşabilir:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Veri paylaşımı değişir"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Veri uygulamaları; uygulama sürümünüz, kullanımınız, bölgeniz ve yaşınıza göre değişiklik gösterebilir. "<annotation id="link">"Veri paylaşımı hakkında daha fazla bilgi"</annotation></string>
-    <!-- no translation found for permission_rationale_data_sharing_varies_message_without_link (4912763761399025094) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"Veri uygulamaları; uygulama sürümünüz, kullanımınız, bölgeniz ve yaşınıza göre değişiklik gösterebilir."</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Konum verileriniz"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Bu uygulamanın erişimini "<annotation id="link">"gizlilik ayarlarından"</annotation>" değiştirebilirsiniz"</string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"Uygulama işlevselliği"</string>

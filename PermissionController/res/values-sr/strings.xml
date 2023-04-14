@@ -36,7 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Увек дозволи све"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Изаберите слике и видео снимке"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Изаберите још"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Не бирај још слика"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Не бирај више"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Ионако не дозволи"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Одбаци"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> од <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -114,9 +114,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"Све дозволе"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Остале могућности апликације"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"Захтев за дозволу"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"Откривен је елемент који прекрива садржај екрана"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"Да бисте променили подешавање ове дозволе, прво треба да искључите елемент који прекрива садржај екрана у одељку Подешавања &gt; Апликације"</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"Отвори подешавања"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Радње Инсталирај/Деинсталирај нису подржане у Wear-у."</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"Изаберите чему &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; може да приступа"</string>
@@ -576,7 +573,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Прегледајте апликацију са приступом локацији у позадини"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> увек може да приступа вашој локацији, чак и кад је апликација затворена"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Прегледајте апликацију са приступом локацији у позадини"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Ова апликација увек може да приступа вашој локацији, чак и кад је затворена."</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Ова апликација увек може да приступа вашој локацији, чак и кад је затворена.\n\nНеке апликације за безбедност и хитне случајеве захтевају приступ локацији у позадини да би радиле како треба."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Приступ је промењен"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Прикажи недавно коришћење локације"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Контроле приватности"</string>
@@ -596,8 +593,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Ова апликација може да дели податке о локацији за:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Дељење података варира"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Праксе за податке могу да се разликују у зависности од верзије апликације, коришћења, региона и узраста. "<annotation id="link">"Више о дељењу података"</annotation></string>
-    <!-- no translation found for permission_rationale_data_sharing_varies_message_without_link (4912763761399025094) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"Праксе за податке могу да се разликују у зависности од верзије апликације, коришћења, региона и узраста."</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Подаци о локацији"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Промените приступ ове апликације у "<annotation id="link">"подешавањима приватности"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"Функције апликације"</string>

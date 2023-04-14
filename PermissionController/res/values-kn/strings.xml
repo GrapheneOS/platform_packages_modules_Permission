@@ -36,7 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"ಯಾವಾಗಲೂ ಎಲ್ಲವನ್ನೂ ಅನುಮತಿಸಿ"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"ಇನ್ನಷ್ಟು ಆಯ್ಕೆಮಾಡಿ"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"ಹೆಚ್ಚಿನ ಫೋಟೋಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಬೇಡಿ"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"ಹೆಚ್ಚಿನ ಫೋಟೋಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಬೇಡಿ"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"ಯಾವುದೇ ರೀತಿಯಲ್ಲೂ ಅನುಮತಿಸಬೇಡಿ"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"ವಜಾಗೊಳಿಸಿ"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g> ರಲ್ಲಿ <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>"</string>
@@ -114,9 +114,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"ಎಲ್ಲಾ ಅನುಮತಿಗಳು"</string>
     <string name="other_permissions" msgid="2901186127193849594">"ಇತರ ಆ್ಯಪ್‌ ಸಾಮರ್ಥ್ಯಗಳು"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"ಅನುಮತಿಯ ವಿನಂತಿ"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"ಸ್ಕ್ರೀನ್ ಓವರ್‌ಲೇ ಪತ್ತೆಹಚ್ಚಲಾಗಿದೆ"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"ಈ ಅನುಮತಿ ಸೆಟ್ಟಿಂಗ್ ಬದಲಾಯಿಸಲು, ನೀವು ಮೊದಲು ಸೆಟ್ಟಿಂಗ್‌ಗಳು &gt; ಆ್ಯಪ್‌ಗಳಿಂದ ಸ್ಕ್ರೀನ್ ಓವರ್‌ಲೇ ಆಫ್ ಮಾಡಬೇಕು"</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"ಸೆಟ್ಟಿಂಗ್‍ಗಳನ್ನು ತೆರೆಯಿರಿ"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Wear ನಲ್ಲಿ ಇನ್‌ಸ್ಟಾಲ್/ಅನ್ಇನ್‌ಸ್ಟಾಲ್ ಕ್ರಿಯೆಗಳು ಬೆಂಬಲಿತವಾಗಿಲ್ಲ."</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಆ್ಯಪ್‌ಗೆ ಪ್ರವೇಶಿಸಲು ಯಾವುದನ್ನು ಅನುಮತಿಸಬೇಕು ಎಂಬುದನ್ನು ಆಯ್ಕೆಮಾಡಿ"</string>
@@ -474,10 +471,10 @@
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"ನಿಮ್ಮ ಕ್ಯಾಲೆಂಡರ್ ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"ಎಸ್‌ಎಂಎಸ್‌ ಸಂದೇಶಗಳನ್ನು ಕಳುಹಿಸಲು ಮತ್ತು ವೀಕ್ಷಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"ಸಾಧನದಲ್ಲಿ ಫೋಟೋಗಳು, ಮಾಧ್ಯಮ, ಫೈಲ್‌ಗಳನ್ನು ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"ಈ ಸಾಧನದಲ್ಲಿರುವ &lt;b&gt;ಫೋಟೋಗಳು, ವೀಡಿಯೊಗಳು, ಸಂಗೀತ, ಆಡಿಯೊವನ್ನು&lt;/b&gt; ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೆ?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"ಈ ಸಾಧನದಲ್ಲಿರುವ &lt;b&gt;ಫೋಟೋಗಳು, ವೀಡಿಯೊಗಳು, ಸಂಗೀತ, ಆಡಿಯೊವನ್ನು&lt;/b&gt; ಆ್ಯಕ್ಸೆಸ್ ಮಾಡಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೆ?"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"ಈ ಸಾಧನದಲ್ಲಿರುವ &lt;b&gt;ಫೋಟೋಗಳು, ವೀಡಿಯೊಗಳು, ಸಂಗೀತ, ಆಡಿಯೋ, ಇತರ ಫೈಲ್‌ಗಳನ್ನು&lt;/b&gt; ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೆ?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"ಈ ಸಾಧನದಲ್ಲಿರುವ ಸಂಗೀತ ಮತ್ತು ಆಡಿಯೊವನ್ನು ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೆ?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"ಈ ಸಾಧನದಲ್ಲಿರುವ ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳನ್ನು ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೆ?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"ಈ ಸಾಧನದಲ್ಲಿರುವ ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳನ್ನು ಆ್ಯಕ್ಸೆಸ್ ಮಾಡಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೆ?"</string>
     <string name="permgrouprequest_more_photos" msgid="128933814654231321">"ಈ ಸಾಧನದಲ್ಲಿರುವ ಇನ್ನಷ್ಟು ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳನ್ನು ಆ್ಯಕ್ಸೆಸ್ ಮಾಡಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"ಆಡಿಯೋ ರೆಕಾರ್ಡ್‌ ಮಾಡಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"ನೀವು ಆ್ಯಪ್ ಬಳಸುತ್ತಿರುವಾಗ ಮಾತ್ರ ಆ್ಯಪ್‌ಗೆ ಆಡಿಯೋ ರೆಕಾರ್ಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗುತ್ತದೆ"</string>
@@ -576,7 +573,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"ಹಿನ್ನೆಲೆ ಸ್ಥಳ ಪ್ರವೇಶದ ಮೂಲಕ ಆ್ಯಪ್ ಅನ್ನು ಪರಿಶೀಲಿಸಿ"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> ಆ್ಯಪ್ ಮುಚ್ಚಿದಾಗಲೂ ನಿಮ್ಮ ಸ್ಥಳವನ್ನು ಯಾವಾಗಲೂ ಪ್ರವೇಶಿಸಬಹುದು"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"ಹಿನ್ನೆಲೆ ಸ್ಥಳ ಪ್ರವೇಶದ ಮೂಲಕ ಆ್ಯಪ್ ಅನ್ನು ಪರಿಶೀಲಿಸಿ"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"ಈ ಆ್ಯಪ್‌ ಮುಚ್ಚಿರುವಾಗಲೂ ನಿಮ್ಮ ಸ್ಥಳವನ್ನು ಯಾವಾಗಲೂ ಪ್ರವೇಶಿಸಬಹುದು."</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"ಈ ಆ್ಯಪ್ ಮುಚ್ಚಿರುವ ಸ್ಥಿತಿಯಲ್ಲಿದ್ದರೂ ನಿಮ್ಮ ಸ್ಥಳದ ಮಾಹಿತಿಯನ್ನು ಯಾವಾಗ ಬೇಕಾದರೂ ಆ್ಯಕ್ಸೆಸ್ ಮಾಡಬಲ್ಲದು.\n\nಕೆಲವು ಸುರಕ್ಷತೆ ಮತ್ತು ತುರ್ತು ಆ್ಯಪ್‌ಗಳು ಉದ್ದೇಶಿಸಿದಂತೆ ಕಾರ್ಯನಿರ್ವಹಿಸಲು ಹಿನ್ನೆಲೆಯಲ್ಲಿ ನಿಮ್ಮ ಸ್ಥಳದ ಮಾಹಿತಿಯನ್ನು ಆ್ಯಕ್ಸೆಸ್ ಮಾಡುವುದು ಅಗತ್ಯವಿದೆ."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"ಆ್ಯಕ್ಸೆಸ್ ಬದಲಾಯಿಸಲಾಗಿದೆ"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"ಇತ್ತೀಚಿನ ಸ್ಥಳದ ಬಳಕೆಯನ್ನು ನೋಡಿ"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"ಗೌಪ್ಯತೆ ನಿಯಂತ್ರಣಗಳು"</string>
@@ -596,8 +593,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"ಈ ಆ್ಯಪ್ ಇವುಗಳಿಗಾಗಿ ಸ್ಥಳ ಡೇಟಾವನ್ನು ಹಂಚಿಕೊಳ್ಳಬಹುದು:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ಡೇಟಾ ಹಂಚಿಕೆ ಬದಲಾಗುತ್ತದೆ"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"ನಿಮ್ಮ ಆ್ಯಪ್‌ನ ಆವೃತ್ತಿ, ಬಳಕೆ, ಪ್ರದೇಶ ಮತ್ತು ವಯಸ್ಸನ್ನು ಆಧರಿಸಿ ಡೇಟಾ ನಿರ್ವಹಣಾ ಅಭ್ಯಾಸಗಳು ಬದಲಾಗಬಹುದು. "<annotation id="link">"ಡೇಟಾ ಹಂಚಿಕೆಯ ಕುರಿತು ಇನ್ನಷ್ಟು"</annotation></string>
-    <!-- no translation found for permission_rationale_data_sharing_varies_message_without_link (4912763761399025094) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"ನಿಮ್ಮ ಆ್ಯಪ್‌ನ ಆವೃತ್ತಿ, ಬಳಕೆ, ಪ್ರದೇಶ ಮತ್ತು ವಯಸ್ಸನ್ನು ಆಧರಿಸಿ ಡೇಟಾ ನಿರ್ವಹಣಾ ಅಭ್ಯಾಸಗಳು ಬದಲಾಗಬಹುದು."</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"ನಿಮ್ಮ ಸ್ಥಳ ಡೇಟಾ"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267"><annotation id="link">"ಗೌಪ್ಯತೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ"</annotation>" ಈ ಆ್ಯಪ್‌ನ ಆ್ಯಕ್ಸೆಸ್ ಅನ್ನು ಬದಲಾಯಿಸಿ"</string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"ಆ್ಯಪ್‌ನ ಕಾರ್ಯಚಟುವಟಿಕೆ"</string>

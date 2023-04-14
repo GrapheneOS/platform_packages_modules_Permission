@@ -36,7 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Uvijek dopusti sve"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Odaberite slike i videozapise"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Odaberite više"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Nemojte odabrati više"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Nemojte odabrati više"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Ipak nemoj dopustiti"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Odbaci"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> od <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -114,9 +114,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"Sva dopuštenja"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Ostale mogućnosti aplikacije"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"Zahtijevanje dopuštenja"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"Otkriveno je preklapanje na zaslonu"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"Da biste promijenili tu postavku dopuštenja, prvo morate isključiti preklapanje na zaslonu u Postavkama &gt; Aplikacije"</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"Otvori postavke"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Radnje instaliranja i deinstaliranja nisu podržane na Wearu."</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"Odaberite čemu će &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; moći pristupiti"</string>
@@ -576,7 +573,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Pregledajte aplikaciju s pristupom lokaciji u pozadini"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"Aplikacija <xliff:g id="APP_NAME">%s</xliff:g> može uvijek pristupiti vašoj lokaciji, čak i ako je zatvorena"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Pregledajte aplikaciju s pristupom lokaciji u pozadini"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Ova aplikacija može uvijek pristupiti vašoj lokaciji, čak i ako je zatvorena."</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Ova aplikacija može uvijek pristupiti vašoj lokaciji, čak i kad je zatvorena.\n\nNeke sigurnosne aplikacije i aplikacije za hitne slučajeve zahtijevaju pristup vašoj lokaciji u pozadini da bi funkcionirale onako kako je predviđeno."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Promijenjen je pristup"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Prikaži nedavnu upotrebu lokacije"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Kontrole privatnosti"</string>
@@ -596,8 +593,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Aplikacija može dijeliti podatke o lokaciji radi:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Način dijeljenja može se razlikovati"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Postupanje s podacima može se razlikovati ovisno o verziji aplikacije, upotrebi, regiji i dobi. "<annotation id="link">"Više o dijeljenju podataka"</annotation></string>
-    <!-- no translation found for permission_rationale_data_sharing_varies_message_without_link (4912763761399025094) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"Postupanje s podacima može se razlikovati ovisno o verziji aplikacije, upotrebi, regiji i dobi."</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Vaši podaci o lokaciji"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Promijenite pristup aplikacije u "<annotation id="link">"postavkama privatnosti"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"funkcije aplikacije"</string>
