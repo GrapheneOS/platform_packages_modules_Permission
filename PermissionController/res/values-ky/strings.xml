@@ -36,7 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Ар дайым баарына уруксат берүү"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Сүрөттөрдү жана видеолорду тандаңыз"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Дагы тандоо"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Башка тандалбасын"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Башка тандалбасын"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Баары бир тыюу салуу"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Жабуу"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g> уруксаттын ичинен <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>"</string>
@@ -114,9 +114,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"Бардык уруксаттар"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Колдонмонун башка мүмкүнчүлүктөрү"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"Уруксат суроо"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"Колдонмонун үстүнө коюу күйүк"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"Бул уруксаттын жөндөөсүн өзгөртүү үчүн адегенде Параметрлер &gt; Колдонмолор бөлүмүнөн колдонмонун үстүнө коюуну өчүрүңүз"</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"Жөндөөлөрдү ачуу"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Орнотуу/чыгарып салуу аракеттери Android Wear\'де колдоого алынбайт."</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосу үчүн уруксаттарды тандаңыз"</string>
@@ -576,7 +573,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Фондук режимде жайгашкан жерди аныктай алган колдонмону караңыз"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> жүргөн жериңизди ар дайым, колдонмо жабылып турганда да, көрө алат"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Фондук режимде жайгашкан жерди аныктай алган колдонмону караңыз"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Бул колдонмо жүргөн жериңизди ар дайым көрө алат (жабылып турса да)."</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Бул колдонмо жүргөн жериңизди ар дайым (жабылып турса да) көрө алат.\n\nКоопсуздукту камсыздаган жана кырсыктаганда жардам берген айрым колдонмолор туура иштөө үчүн жүргөн жериңизди фондо көрүп турушу керек."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Кирүү мүмкүнчүлүгү өзгөрдү"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Жайгашкан жер акыркы жолу качан аныкталганын көрүү"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Купуялыкты көзөмөлдөө каражаттары"</string>
@@ -596,8 +593,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Бул колдонмо турган жериңиз тууралуу маалыматты төмөнкүлөр үчүн бөлүшүшү мүмкүн:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Маалымат ар кандай жолдор менен бөлүшүлөт"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Маалыматтар колдонмонун версиясына, колдонулушуна, жашаган жериңизге жана курагыңызга жараша иштелет. "<annotation id="link">"Маалыматтарды бөлүшүү жөнүндө кеңири маалымат"</annotation></string>
-    <!-- no translation found for permission_rationale_data_sharing_varies_message_without_link (4912763761399025094) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"Маалыматтарды иштетүү жолдору колдонмоңуздун версиясы, колдонулушу, аймак жана курагыңызга жараша айырмаланышы мүмкүн."</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Турган жериңиз"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Бул колдонмонун кирүү мүмкүнчүлүгүн "<annotation id="link">"купуялык параметрлеринен"</annotation>" өзгөртүңүз"</string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"Колдонмонун функциялары"</string>

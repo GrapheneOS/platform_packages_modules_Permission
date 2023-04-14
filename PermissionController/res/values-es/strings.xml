@@ -36,7 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Permitir todos siempre"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Seleccionar fotos y vídeos"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Seleccionar más"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"No seleccionar más"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"No seleccionar más"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"No permitir de todas formas"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Cerrar"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> de <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -114,9 +114,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"Todos los permisos"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Otras funciones de la aplicación"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"Solicitud de permiso"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"Superposición de pantalla detectada"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"Para cambiar la configuración de este permiso, desactiva la superposición de pantalla en Ajustes &gt; Aplicaciones"</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"Abrir ajustes"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Las acciones de instalar y desinstalar no pueden realizarse en Wear"</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"Elige los permisos de acceso que quieres conceder a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;"</string>
@@ -434,9 +431,9 @@
     <string name="default_app_no_apps" msgid="115720991680586885">"No hay aplicaciones"</string>
     <string name="car_default_app_selected" msgid="5416420830430644174">"Seleccionada"</string>
     <string name="car_default_app_selected_with_info" msgid="1932204186080593500">"Seleccionada: <xliff:g id="ADDITIONAL_INFO">%1$s</xliff:g>"</string>
-    <string name="special_app_access_search_keyword" msgid="8032347212290774210">"aplicaciones con accesos especiales"</string>
-    <string name="special_app_access" msgid="5019319067120213797">"aplicaciones con accesos especiales"</string>
-    <string name="no_special_app_access" msgid="6950277571805106247">"Sin acceso especial de apps"</string>
+    <string name="special_app_access_search_keyword" msgid="8032347212290774210">"acceso especial de aplicaciones"</string>
+    <string name="special_app_access" msgid="5019319067120213797">"Acceso especial de aplicaciones"</string>
+    <string name="no_special_app_access" msgid="6950277571805106247">"Sin acceso especial de aplicaciones"</string>
     <string name="special_app_access_no_apps" msgid="4102911722787886970">"No hay aplicaciones"</string>
     <string name="home_missing_work_profile_support" msgid="1756855847669387977">"No admite perfiles de trabajo"</string>
     <string name="encryption_unaware_confirmation_message" msgid="8274491794636402484">"Nota: Si reinicias el dispositivo y y has definido un bloqueo de pantalla, esta aplicación no se podrá iniciar hasta que desbloquees el dispositivo."</string>
@@ -576,7 +573,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Revisa las aplicaciones con acceso a la ubicación en segundo plano"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> puede acceder siempre a tu ubicación, aunque la aplicación esté cerrada"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Revisa las aplicaciones con acceso a la ubicación en segundo plano"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Esta aplicación puede acceder siempre a tu ubicación, aunque esté cerrada."</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Esta aplicación puede acceder a tu ubicación siempre, aunque esté cerrada.\n\nAlgunas aplicaciones de seguridad y emergencias requieren acceso a tu ubicación en segundo plano para funcionar según lo previsto."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Acceso cambiado"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Ver el uso reciente de la ubicación"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Controles de privacidad"</string>
@@ -596,8 +593,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Esta app puede compartir datos de ubicación para:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"La forma de compartir datos varía"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Las prácticas relacionadas con datos pueden variar según la versión de la aplicación, el modo en que la utilices, la región donde la uses y tu edad. "<annotation id="link">"Más información sobre cómo se comparten los datos"</annotation></string>
-    <!-- no translation found for permission_rationale_data_sharing_varies_message_without_link (4912763761399025094) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"Las prácticas relacionadas con datos pueden variar según la versión de la aplicación, el modo en que la utilices, el país donde la uses y tu edad."</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Tus datos de ubicación"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Cambia el acceso de esta aplicación en la "<annotation id="link">"configuración de privacidad"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"Funcionalidad de la aplicación"</string>

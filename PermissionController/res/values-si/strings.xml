@@ -36,7 +36,8 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"සැම විටම සියල්ලට ඉඩ දෙන්න"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"ඡායාරූප සහ වීඩියෝ තෝරන්න"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"තවත් තෝරන්න"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"තවත් තෝරා නොගන්න"</string>
+    <!-- no translation found for grant_dialog_button_dont_select_more (6643552729129461268) -->
+    <skip />
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"කෙසේ වෙතත් ඉඩ නොදෙන්න"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"ඉවත ලන්න"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>කින් <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -114,9 +115,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"සියලු අවසර"</string>
     <string name="other_permissions" msgid="2901186127193849594">"වෙනත් යෙදුම් හැකියාවන්"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"අවසර ඉල්ලීම"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"තිර උඩැතිරියක් අනාවරණය කරන ලදි"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"මෙම අවසර සැකසීම වෙනස් කිරීම සඳහා, ඔබට මුලින්ම සැකසීම් &gt; යෙදුම් වෙතින් තිර උඩැතිරිය අක්‍රිය කර යුතුයි"</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"සැකසීම් විවෘත කරන්න"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Wear මත ස්ථාපන/අස්ථාපනය ක්‍රියා සහාය දක්වන්නේ නැත."</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; හට පිවිසීමට ඉඩ දෙන දේ තෝරන්න"</string>
@@ -576,7 +574,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"පසුබිම් ස්ථාන ප්‍රවේශය සහිත යෙදුම සමාලෝචනය කරන්න"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> හට යෙදුම වසා ඇති විට පවා ඔබේ ස්ථානයට සැම විටම ප්‍රවේශ විය හැක"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"පසුබිම් ස්ථාන ප්‍රවේශය සහිත යෙදුම සමාලෝචනය කරන්න"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"මෙම යෙදුම වසා ඇති විට පවා, ඔබේ ස්ථානයට සැම විටම ප්‍රවේශ විය හැක."</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"මෙම යෙදුමට එය වසා ඇති විට පවා, ඔබේ ස්ථානයට සැම විටම ප්‍රවේශ විය හැක.\n\nසමහර සුරක්ෂිතතා සහ හදිසි අවස්ථා යෙදුම්වලට අපේක්ෂිත පරිදි ක්‍රියා කිරීම සඳහා පසුබිම තුළ ඔබේ ස්ථානයට ප්‍රවේශය අවශ්‍ය වේ."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"ප්‍රවේශය වෙනස් කර ඇත"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"මෑත ස්ථාන භාවිතය බලන්න"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"පෞද්ගලිකත්ව පාලන"</string>
@@ -596,8 +594,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"මෙම යෙදුම මේ සඳහා ස්ථාන දත්ත බෙදා ගත හැක:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"දත්ත බෙදා ගැනීම වෙනස් වේ"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"දත්ත පිළිවෙත් ඔබේ යෙදුම් අනුවාදය, භාවිතය, කලාපය, සහ වයස මත පදනම්ව වෙනස් විය හැක. "<annotation id="link">"දත්ත බෙදා ගැනීම පිළිබඳව වැඩිදුර"</annotation></string>
-    <!-- no translation found for permission_rationale_data_sharing_varies_message_without_link (4912763761399025094) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"දත්ත භාවිතයන් ඔබේ යෙදුම් අනුවාදය, භාවිතය, කලාපය, සහ වයස මත පදනම්ව වෙනස් විය හැක."</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"ඔබේ ස්ථාන දත්ත"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267"><annotation id="link">"පෞද්ගලිකත්ව සැකසීම්"</annotation>" තුළ මෙම යෙදුමේ ප්‍රවේශය වෙනස් කරන්න"</string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"යෙදුම් ක්‍රියාකාරීත්වය"</string>

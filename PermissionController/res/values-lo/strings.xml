@@ -36,7 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"ອະນຸຍາດທັງໝົດຕະຫຼອດ"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"ເລືອກຮູບພາບ ແລະ ວິດີໂອ"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"ເລືອກເພີ່ມເຕີມ"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"ຢ່າເລືອກເພີ່ມເຕີມ"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"ຢ່າເລືອກເພີ່ມເຕີມ"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"ຢືນຢັນບໍ່ອະນຸຍາດ"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"ປິດໄວ້"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> ຈາກທັງໝົດ <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -114,9 +114,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"ທຸກການອະນຸຍາດ"</string>
     <string name="other_permissions" msgid="2901186127193849594">"ຄວາມສາມາດອື່ນຂອງແອັບ"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"ການຮ້ອງຂໍການອະນຸຍາດ"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"ກວດພົບການວາງຊ້ອນໜ້າຈໍ"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"ເພື່ອປ່ຽນການຕັ້ງຄ່າສິດອະນຸຍາດນີ້, ກ່ອນອື່ນທ່ານຕ້ອງປິດການວາງຊ້ອນໜ້າຈໍຈາກການຕັ້ງຄ່າ &gt; ແອັບ"</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"ເປີດການຕັ້ງຄ່າ"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"ຕິດຕັ້ງ/ຖອນການຕິດຕັ້ງ ຄຳສັ່ງທີ່ບໍ່ຮອງຮັບຢູ່ Wear."</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"ເລືອກວ່າຈະອະນຸຍາດໃຫ້ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ເຂົ້າເຖິງຫຍັງໄດ້ແດ່"</string>
@@ -576,7 +573,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"ກວດສອບແອັບທີ່ມີການເຂົ້າເຖິງສະຖານທີ່ໃນພື້ນຫຼັງ"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> ສາມາດເຂົ້າເຖິງສະຖານທີ່ຂອງທ່ານໄດ້ຕະຫຼອດເວລາ, ເຖິງແມ່ນວ່າແອັບຈະຖືກປິດຢູ່ກໍຕາມ"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"ກວດສອບແອັບທີ່ມີການເຂົ້າເຖິງສະຖານທີ່ໃນພື້ນຫຼັງ"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"ແອັບນີ້ສາມາດເຂົ້າເຖິງສະຖານທີ່ຂອງທ່ານໄດ້ທຸກເວລາ, ເຖິງແມ່ນວ່າມັນຈະຖືກປິດຢູ່ກໍຕາມ."</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"ແອັບນີ້ສາມາດເຂົ້າເຖິງສະຖານທີ່ຂອງທ່ານໄດ້ຕະຫຼອດເວລາ, ເຖິງແມ່ນວ່າແອັບຈະປິດຢູ່ກໍຕາມ.\n\nແອັບຄວາມປອດໄພ ແລະ ແອັບສຸກເສີນບາງແອັບຈຳເປັນຕ້ອງເຂົ້າເຖິງສະຖານທີ່ຂອງທ່ານໃນພື້ນຫຼັງເພື່ອໃຫ້ເຮັດວຽກໄດ້ຕາມທີ່ຕັ້ງໃຈໄວ້."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"ປ່ຽນແປງການເຂົ້າເຖິງແລ້ວ"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"ເບິ່ງການນໍາໃຊ້ສະຖານທີ່ຫຼ້າສຸດ"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"ການຄວບຄຸມຄວາມເປັນສ່ວນຕົວ"</string>
@@ -596,8 +593,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"ແອັບນີ້ອາດແບ່ງປັນຂໍ້ມູນສະຖານທີ່ຍ້ອນ:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ການແບ່ງປັນຂໍ້ມູນອາດແຕກຕ່າງກັນໄປ"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"ການເຝິກແອບຂໍ້ມູນອາດແຕກຕ່າງກັນໄປຕາມເວີຊັນຂອງແອັບ, ການນຳໃຊ້, ພາກພື້ນ ແລະ ອາຍຸຂອງທ່ານ. "<annotation id="link">"ຂໍ້ມູນເພີ່ມເຕີມກ່ຽວກັບການແບ່ງປັນຂໍ້ມູນ"</annotation></string>
-    <!-- no translation found for permission_rationale_data_sharing_varies_message_without_link (4912763761399025094) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"ການເຝິກແອບຂໍ້ມູນອາດແຕກຕ່າງກັນໄປຕາມເວີຊັນຂອງແອັບ, ການນຳໃຊ້, ພາກພື້ນ ແລະ ອາຍຸຂອງທ່ານ."</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"ຂໍ້ມູນສະຖານທີ່ຂອງທ່ານ"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"ປ່ຽນສິດເຂົ້າເຖິງຂອງແອັບນີ້ໃນ "<annotation id="link">"ການຕັ້ງຄ່າຄວາມເປັນສ່ວນຕົວ"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"ຟັງຊັນການນຳໃຊ້ແອັບ"</string>
