@@ -272,7 +272,7 @@ class PermissionUsageViewModel(
             }
 
             override fun onUpdate() {
-                if (!mAllLightPackageOpsLiveData.isInitialized) {
+                if (mAllLightPackageOpsLiveData.isStale) {
                     return
                 }
 
@@ -296,11 +296,8 @@ class PermissionUsageViewModel(
                         update()
                     }
 
-                if (appPermGroupUiInfoLiveDataList.any { !it.value.isInitialized }) {
-                    return
-                }
-
-                if (isInitialized && appPermGroupUiInfoLiveDataList.any { it.value.isStale }) {
+                if (appPermGroupUiInfoLiveDataList.isEmpty() ||
+                    appPermGroupUiInfoLiveDataList.any { it.value.isStale }) {
                     return
                 }
 
