@@ -588,19 +588,11 @@ class PermissionUsageDetailsViewModel(
                         update()
                     }
 
-                if (appPermGroupUiInfoLiveDataList.any { !it.value.isInitialized }) {
+                if (appPermGroupUiInfoLiveDataList.any { it.value.isStale }) {
                     return
                 }
 
-                if (lightPackageInfoLiveDataMap.any { !it.value.isInitialized }) {
-                    return
-                }
-
-                if (isInitialized && appPermGroupUiInfoLiveDataList.any { it.value.isStale }) {
-                    return
-                }
-
-                if (isInitialized && lightPackageInfoLiveDataMap.any { it.value.isStale }) {
+                if (lightPackageInfoLiveDataMap.any { it.value.isStale }) {
                     return
                 }
 
