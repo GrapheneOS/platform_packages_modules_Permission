@@ -139,6 +139,18 @@ class PermissionUsageDetailsViewModel(
             ?: false
     }
 
+    private fun isPermissionRequestedByApp(appPermissionId: AppPermissionId): Boolean {
+        val appRequestedPermissions =
+            lightPackageInfoLiveDataMap[
+                    Pair(appPermissionId.packageName, appPermissionId.userHandle)]
+                ?.value
+                ?.requestedPermissions
+                ?: listOf()
+        return appRequestedPermissions.any {
+            PermissionMapping.getGroupOfPlatformPermission(it) == appPermissionId.permissionGroup
+        }
+    }
+
     private fun isAppPermissionSystem(appPermissionId: AppPermissionId): Boolean {
         val appPermGroupUiInfo = appPermGroupUiInfoLiveDataList[appPermissionId]?.value
 
@@ -243,6 +255,7 @@ class PermissionUsageDetailsViewModel(
                 !Utils.getExemptedPackages(roleManager).contains(it.appPermissionId.packageName)
             }
             .filter { it.appPermissionId.permissionGroup == permissionGroup }
+            .filter { isPermissionRequestedByApp(it.appPermissionId) }
             .filter { showSystem || !isAppPermissionSystem(it.appPermissionId) }
     }
 
