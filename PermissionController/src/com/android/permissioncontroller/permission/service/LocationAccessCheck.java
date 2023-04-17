@@ -94,6 +94,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Icon;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -109,7 +110,6 @@ import android.safetycenter.SafetySourceData;
 import android.safetycenter.SafetySourceIssue;
 import android.safetycenter.SafetySourceIssue.Action;
 import android.service.notification.StatusBarNotification;
-import android.text.Html;
 import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.util.ArraySet;
@@ -672,20 +672,16 @@ public class LocationAccessCheck {
                 R.string.background_location_access_reminder_notification_content);
 
         CharSequence appLabel = appName;
-        int smallIconResId;
-        int colorResId = android.R.color.system_notification_accent_color;
+        Icon smallIcon;
+        int color = mContext.getColor(android.R.color.system_notification_accent_color);
         if (safetyCenterBgLocationReminderEnabled) {
-            if (KotlinUtils.INSTANCE.shouldShowSafetyProtectionResources(mContext)) {
-                appLabel = Html.fromHtml(
-                    mContext.getString(android.R.string.safety_protection_display_text), 0);
-                smallIconResId = android.R.drawable.ic_safety_protection;
-                colorResId = R.color.safety_center_info;
-            } else {
-                appLabel = mContext.getString(R.string.safety_center_notification_app_label);
-                smallIconResId = R.drawable.ic_settings_notification;
-            }
+            KotlinUtils.NotificationResources notifRes =
+                    KotlinUtils.INSTANCE.getSafetyCenterNotificationResources(mContext);
+            appLabel = notifRes.getAppLabel();
+            smallIcon = notifRes.getSmallIcon();
+            color = notifRes.getColor();
         } else {
-            smallIconResId = R.drawable.ic_pin_drop;
+            smallIcon = Icon.createWithResource(mContext, R.drawable.ic_pin_drop);
         }
 
         Notification.Builder b = (new Notification.Builder(mContext,
@@ -694,8 +690,8 @@ public class LocationAccessCheck {
                 .setContentTitle(notificationTitle)
                 .setContentText(notificationContent)
                 .setStyle(new Notification.BigTextStyle().bigText(notificationContent))
-                .setSmallIcon(smallIconResId)
-                .setColor(mContext.getColor(colorResId))
+                .setSmallIcon(smallIcon)
+                .setColor(color)
                 .setDeleteIntent(createNotificationDismissIntent(pkgName, sessionId, uid))
                 .setContentIntent(createNotificationClickIntent(pkgName, user, sessionId, uid))
                 .setAutoCancel(true);

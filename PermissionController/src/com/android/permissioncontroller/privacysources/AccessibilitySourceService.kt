@@ -39,7 +39,6 @@ import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetySourceData
 import android.safetycenter.SafetySourceIssue
 import android.service.notification.StatusBarNotification
-import android.text.Html
 import android.util.Log
 import android.view.accessibility.AccessibilityManager
 import androidx.annotation.ChecksSdkIntAtLeast
@@ -221,7 +220,8 @@ class AccessibilitySourceService(
             pkgLabel
         )
 
-        val notificationResource = getNotificationResource()
+        val (appLabel, smallIcon, color) =
+            KotlinUtils.getSafetyCenterNotificationResources(parentUserContext)
         val b: Notification.Builder =
             Notification.Builder(parentUserContext, Constants.PERMISSION_REMINDER_CHANNEL_ID)
                 .setLocalOnly(true)
@@ -229,8 +229,8 @@ class AccessibilitySourceService(
                 .setContentText(summary)
                 // Ensure entire text can be displayed, instead of being truncated to one line
                 .setStyle(Notification.BigTextStyle().bigText(summary))
-                .setSmallIcon(notificationResource.smallIconResId)
-                .setColor(context.getColor(notificationResource.colorResId))
+                .setSmallIcon(smallIcon)
+                .setColor(color)
                 .setAutoCancel(true)
                 .setDeleteIntent(
                     PendingIntent.getBroadcast(
@@ -242,8 +242,7 @@ class AccessibilitySourceService(
                 .setContentIntent(getSafetyCenterActivityIntent(context, uid, sessionId))
 
         val appNameExtras = Bundle()
-        appNameExtras.putString(Notification.EXTRA_SUBSTITUTE_APP_NAME,
-            notificationResource.appLabel)
+        appNameExtras.putString(Notification.EXTRA_SUBSTITUTE_APP_NAME, appLabel)
         b.addExtras(appNameExtras)
 
         notificationsManager.notify(
@@ -270,26 +269,6 @@ class AccessibilitySourceService(
             PRIVACY_SIGNAL_NOTIFICATION_INTERACTION__ACTION__NOTIFICATION_SHOWN,
             sessionId
         )
-    }
-
-    class NotificationResource(val appLabel: String, val smallIconResId: Int, val colorResId: Int)
-
-    private fun getNotificationResource(): NotificationResource {
-        // Use PbA branding if available, otherwise default to more generic branding
-        val appLabel: String
-        val smallIconResId: Int
-        val colorResId: Int
-        if (KotlinUtils.shouldShowSafetyProtectionResources(parentUserContext)) {
-            appLabel = Html.fromHtml(parentUserContext.getString(
-                    android.R.string.safety_protection_display_text), 0).toString()
-            smallIconResId = android.R.drawable.ic_safety_protection
-            colorResId = R.color.safety_center_info
-        } else {
-            appLabel = parentUserContext.getString(R.string.safety_center_notification_app_label)
-            smallIconResId = R.drawable.ic_settings_notification
-            colorResId = android.R.color.system_notification_accent_color
-        }
-        return NotificationResource(appLabel, smallIconResId, colorResId)
     }
 
     /** Create the channel for a11y notifications */

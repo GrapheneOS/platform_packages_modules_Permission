@@ -71,7 +71,6 @@ import android.service.voice.VoiceInteractionService
 import android.service.wallpaper.WallpaperService
 import android.telephony.TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS
 import android.telephony.TelephonyManager.CARRIER_PRIVILEGE_STATUS_NO_ACCESS
-import android.text.Html
 import android.util.Log
 import android.view.inputmethod.InputMethod
 import androidx.annotation.ChecksSdkIntAtLeast
@@ -892,21 +891,12 @@ class HibernationJobService : JobService() {
         val extras = Bundle()
         if (SdkLevel.isAtLeastT() &&
             getSystemService(SafetyCenterManager::class.java)!!.isSafetyCenterEnabled) {
-            if (KotlinUtils.shouldShowSafetyProtectionResources(this)) {
-                // Use Protected by Android branding
-                extras.putString(Notification.EXTRA_SUBSTITUTE_APP_NAME,
-                    Html.fromHtml(getString(android.R.string.safety_protection_display_text),
-                        /* flags= */ 0).toString())
-                b.setSmallIcon(android.R.drawable.ic_safety_protection)
-                    .setColor(getColor(R.color.safety_center_info))
-                    .addExtras(extras)
-            } else {
-                // Use non-GMS PbA branding
-                extras.putString(Notification.EXTRA_SUBSTITUTE_APP_NAME,
-                    getString(R.string.safety_center_notification_app_label))
-                b.setSmallIcon(R.drawable.ic_settings_notification)
-                    .addExtras(extras)
-            }
+            val notificationResources = KotlinUtils.getSafetyCenterNotificationResources(this)
+
+            extras.putString(Notification.EXTRA_SUBSTITUTE_APP_NAME, notificationResources.appLabel)
+            b.setSmallIcon(notificationResources.smallIcon)
+                .setColor(notificationResources.color)
+                .addExtras(extras)
         } else {
             // Use standard Settings branding
             Utils.getSettingsLabelForNotifications(applicationContext.packageManager)?.let {

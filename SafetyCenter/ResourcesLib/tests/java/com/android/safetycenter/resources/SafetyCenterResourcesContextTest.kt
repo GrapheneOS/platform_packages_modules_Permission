@@ -182,6 +182,29 @@ class SafetyCenterResourcesContextTest {
         }
     }
 
+    @Test
+    fun getColorByName_validColor_returnsColor() {
+        val resourcesContext = createNewResourcesContext()
+
+        assertThat(resourcesContext.getColorByName("valid_color")).isNotNull()
+    }
+
+    @Test
+    fun getColorByName_invalidColorWithFallback_returnsNull() {
+        val resourcesContext = createNewResourcesContext(fallback = true)
+
+        assertThat(resourcesContext.getColorByName("invalid_color")).isNull()
+    }
+
+    @Test
+    fun getColorByName_invalidColorWithoutFallback_throws() {
+        val resourcesContext = createNewResourcesContext(fallback = false)
+
+        assertFailsWith(Resources.NotFoundException::class) {
+            resourcesContext.getColorByName("invalid_color")
+        }
+    }
+
     private fun createNewResourcesContext(
         resourcesApkAction: String = RESOURCES_APK_ACTION,
         resourcesApkPath: String? = null,
@@ -190,13 +213,7 @@ class SafetyCenterResourcesContextTest {
         fallback: Boolean = false
     ) =
         SafetyCenterResourcesContext(
-            context,
-            resourcesApkAction,
-            resourcesApkPath,
-            configName,
-            flags,
-            fallback
-        )
+            context, resourcesApkAction, resourcesApkPath, configName, flags, fallback)
 
     companion object {
         const val RESOURCES_APK_ACTION =
