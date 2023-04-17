@@ -51,7 +51,7 @@ import kotlinx.coroutines.launch
 class SafetyLabelChangedBroadcastReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
-        if (!KotlinUtils.isSafetyLabelChangeNotificationsEnabled()) {
+        if (!KotlinUtils.isSafetyLabelChangeNotificationsEnabled(context)) {
             return
         }
 
