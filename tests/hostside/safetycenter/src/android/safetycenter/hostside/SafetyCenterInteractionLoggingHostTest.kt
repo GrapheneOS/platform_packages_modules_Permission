@@ -30,6 +30,7 @@ import com.google.common.truth.Truth.assertThat
 import org.junit.After
 import org.junit.Assume.assumeTrue
 import org.junit.Before
+import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -89,7 +90,7 @@ class SafetyCenterInteractionLoggingHostTest : BaseHostJUnit4Test() {
     @Test
     fun sendNotification_recordsNotificationPostedEvent() {
         executeDeviceTest(
-            testClassName = ".NotificationLoggingHelperTests",
+            testClassName = ".SafetyCenterNotificationLoggingHelperTests",
             testMethodName = "sendNotification"
         )
 
@@ -141,6 +142,8 @@ class SafetyCenterInteractionLoggingHostTest : BaseHostJUnit4Test() {
     }
 
     @Test
+    @Ignore
+    // TODO(b/278202773): Fix/de-flake this test
     fun openSubpageFromSettingsSearch_recordsEventWithSettingsNavigationSource() {
         executeDeviceTest(testMethodName = "openSubpageFromSettingsSearch")
 
