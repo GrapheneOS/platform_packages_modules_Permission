@@ -454,14 +454,7 @@ public final class ManagePermissionsActivity extends SettingsActivity {
             } break;
 
             case Intent.ACTION_REVIEW_APP_DATA_SHARING_UPDATES: {
-                if (KotlinUtils.INSTANCE.isSafetyLabelChangeNotificationsEnabled()) {
-                    if (DeviceUtils.isAuto(this) || DeviceUtils.isWear(this)
-                            || DeviceUtils.isTelevision(this)) {
-                        Log.e(LOG_TAG, "ACTION_REVIEW_APP_DATA_SHARING_UPDATES is not "
-                                + "supported on this device type");
-                        finishAfterTransition();
-                        return;
-                    }
+                if (KotlinUtils.INSTANCE.isSafetyLabelChangeNotificationsEnabled(this)) {
                     setNavGraph(AppDataSharingUpdatesFragment.Companion.createArgs(sessionId),
                             R.id.app_data_sharing_updates);
                 } else {

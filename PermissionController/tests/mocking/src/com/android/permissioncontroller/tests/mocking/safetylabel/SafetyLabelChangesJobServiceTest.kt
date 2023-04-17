@@ -22,6 +22,7 @@ import android.app.job.JobParameters
 import android.app.job.JobScheduler
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Build
 import android.os.UserManager
 import android.provider.DeviceConfig
@@ -69,6 +70,8 @@ class SafetyLabelChangesJobServiceTest {
 
     @Mock private lateinit var mockNotificationManager: NotificationManager
 
+    @Mock private lateinit var mockPackageManager: PackageManager
+
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
@@ -89,6 +92,13 @@ class SafetyLabelChangesJobServiceTest {
         whenever(application.applicationInfo).thenReturn(context.applicationInfo)
         whenever(application.applicationContext).thenReturn(application)
         whenever(mockUserManager.isProfile).thenReturn(false)
+        whenever(application.packageManager).thenReturn(mockPackageManager)
+        whenever(mockPackageManager.hasSystemFeature(eq(PackageManager.FEATURE_AUTOMOTIVE)))
+            .thenReturn(false)
+        whenever(mockPackageManager.hasSystemFeature(eq(PackageManager.FEATURE_LEANBACK)))
+            .thenReturn(false)
+        whenever(mockPackageManager.hasSystemFeature(eq(PackageManager.FEATURE_WATCH)))
+            .thenReturn(false)
 
         // Mock services
         whenever(application.getSystemService(eq(NotificationManager::class.java)))
