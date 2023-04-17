@@ -104,7 +104,7 @@ class SafetyLabelChangesJobService : JobService() {
             if (DEBUG) {
                 Log.d(LOG_TAG, "Received broadcast with intent action '${intent.action}'")
             }
-            if (!KotlinUtils.isSafetyLabelChangeNotificationsEnabled()) {
+            if (!KotlinUtils.isSafetyLabelChangeNotificationsEnabled(receiverContext)) {
                 Log.i(LOG_TAG, "onReceive: Safety label change notifications are not enabled.")
                 return
             }
@@ -140,7 +140,7 @@ class SafetyLabelChangesJobService : JobService() {
     class NotificationDeleteHandler : BroadcastReceiver() {
         override fun onReceive(receiverContext: Context, intent: Intent) {
             Log.d(LOG_TAG, "NotificationDeleteHandler: received broadcast")
-            if (!KotlinUtils.isSafetyLabelChangeNotificationsEnabled()) {
+            if (!KotlinUtils.isSafetyLabelChangeNotificationsEnabled(receiverContext)) {
                 Log.i(
                     LOG_TAG,
                     "NotificationDeleteHandler: " +
@@ -167,7 +167,7 @@ class SafetyLabelChangesJobService : JobService() {
         if (DEBUG) {
             Log.d(LOG_TAG, "onStartJob called for job id: ${params.jobId}")
         }
-        if (!KotlinUtils.isSafetyLabelChangeNotificationsEnabled()) {
+        if (!KotlinUtils.isSafetyLabelChangeNotificationsEnabled(context)) {
             Log.w(LOG_TAG, "Not starting job: safety label change notifications are not enabled.")
             return false
         }
