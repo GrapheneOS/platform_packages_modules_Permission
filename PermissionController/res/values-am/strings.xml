@@ -36,8 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"ሁልጊዜ ሁሉንም ፍቀድ"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"ፎቶዎችን እና ቪድዮዎችን ምረጥ"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"ተጨማሪ ምረጥ"</string>
-    <!-- no translation found for grant_dialog_button_dont_select_more (6643552729129461268) -->
-    <skip />
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"ተጨማሪ አትምረጥ"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"ለማንኛውም አትፍቀድ"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"አሰናብት"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> ከ<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -499,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"መተግበሪያ ስራ ላይ በሚውልበት ጊዜ የሰውነት ዳሳሽ ውሂብን እንዲደርስ ለ&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; መፍቀድ ይቀጥሉ?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ለእርስዎ ማሳወቂያዎች እንዲልክ ይፈቀድለት?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"ቁጥጥር የሚደረግባችድው ፈቃዶች"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"የመገኛ አካባቢ ሊደርስበት ይችላል"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"የእርስዎ አይቲ አስተዳዳሪ <xliff:g id="APP_NAME">%s</xliff:g> የእርስዎን መገኛ አካባቢን እንዲደርስ እየፈቀደ ነው"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"ሌሎች ፍቃዶች"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"በስርዓት ጥቅም ላይ የሚውል ፈቃድ"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"በስርዓት መተግበሪያዎችች ብቻ ጥቅም ላይ የሚውሉ ፈቃዶች።"</string>

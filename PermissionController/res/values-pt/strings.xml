@@ -498,8 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Continuar permitindo que o app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acesse dados do sensor corporal enquanto estiver em uso?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Permitir que o app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; envie notificações?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Permissões controladas"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"A localização pode ser acessada"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"O administrador de TI permitiu o acesso do app <xliff:g id="APP_NAME">%s</xliff:g> à sua localização"</string>
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"O app <xliff:g id="APP_NAME">%1$s</xliff:g> tem acesso à localização"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Sua organização permite que o app <xliff:g id="APP_NAME">%1$s</xliff:g> tenha acesso à sua localização"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"Outras permissões"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Permissões usadas pelo sistema"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Permissões usadas apenas pelos aplicativos do sistema."</string>

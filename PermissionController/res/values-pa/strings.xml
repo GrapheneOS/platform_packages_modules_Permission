@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ਕੀ ਐਪ ਦੇ ਵਰਤੋਂ ਵਿੱਚ ਹੋਣ ਵੇਲੇ ਸਰੀਰ ਸੰਬੰਧੀ ਸੈਂਸਰ ਦੇ ਡਾਟੇ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣ ਲਈ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਆਗਿਆ ਦੇਣਾ ਜਾਰੀ ਰੱਖਣੀ ਹੈ?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਤੁਹਾਨੂੰ ਸੂਚਨਾਵਾਂ ਭੇਜਣ ਦੀ ਆਗਿਆ ਦੇਣੀ ਹੈ?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"ਨਿਯੰਤਰਿਤ ਇਜਾਜ਼ਤਾਂ"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"ਟਿਕਾਣੇ ਤੱਕ ਪਹੁੰਚ ਕੀਤੀ ਜਾ ਸਕਦੀ ਹੈ"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"ਤੁਹਾਡਾ ਆਈ.ਟੀ. ਪ੍ਰਸ਼ਾਸਕ <xliff:g id="APP_NAME">%s</xliff:g> ਨੂੰ ਤੁਹਾਡੇ ਟਿਕਾਣੇ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇ ਰਿਹਾ ਹੈ"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"ਹੋਰ ਇਜਾਜ਼ਤਾਂ"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"ਸਿਸਟਮ ਵੱਲੋਂ ਵਰਤੀ ਗਈ ਇਜਾਜ਼ਤ"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"ਸਿਰਫ਼ ਸਿਸਟਮ ਐਪਲੀਕੇਸ਼ਨਾਂ ਵੱਲੋਂ ਵਰਤੀਆਂ ਗਈਆਂ ਇਜਾਜ਼ਤਾਂ"</string>

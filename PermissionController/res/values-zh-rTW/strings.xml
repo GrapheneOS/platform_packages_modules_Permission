@@ -36,8 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"一律全部允許"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"選取相片和影片"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"選取更多項目"</string>
-    <!-- no translation found for grant_dialog_button_dont_select_more (6643552729129461268) -->
-    <skip />
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"不要選取其他資料"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"仍不允許"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"關閉"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>/<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -499,8 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"要變更允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;應用程式在使用期間存取人體感應器資料嗎？"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;傳送通知嗎？"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"由管理員控管的權限"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"應用程式可存取你的位置資訊"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"目前 IT 管理員允許「<xliff:g id="APP_NAME">%s</xliff:g>」存取你的位置資訊"</string>
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"「<xliff:g id="APP_NAME">%1$s</xliff:g>」具有位置存取權"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"貴機構允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」存取你的位置資訊"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"其他權限"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"系統使用的權限"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"僅供系統應用程式使用的權限。"</string>

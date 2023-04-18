@@ -203,7 +203,7 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Erabili gabeko aplikazio-ezarpenak"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Kendu baimenak aplikazioa erabiltzen ez bada"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Kendu baimenak eta egin tokia"</string>
-    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Pausatu erabiltzen ez diren aplikazioetako jarduerak"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Pausatu aplikazioko jarduerak, erabiltzen ez bada"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"Kendu baimenak, ezabatu aldi baterako fitxategiak eta geldiarazi jakinarazpenak"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Zure datuak babeste aldera, aplikazio honen baimenak kendu egingo dira aplikazioa ez baduzu erabiltzen zenbait hilabetez."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Zure datuak babeste aldera, kendu egingo dira honako baimen hauek zenbait hilabetez aplikazioa erabiltzen ez baduzu: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erabili bitartean gorputz-sentsoreen datuak erabiltzeko baimena eman nahi diozu aplikazio horri?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Jakinarazpenak bidaltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Kontrolatutako baimenak"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Kokapena atzi daiteke"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"IKT saileko administratzaileak zure kokapena erabiltzeko baimena eman dio <xliff:g id="APP_NAME">%s</xliff:g> aplikazioari"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Beste baimen batzuk"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Sistemak erabilitako baimenak"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Sistema-aplikazioek soilik erabilitako baimenak."</string>

@@ -188,7 +188,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Faqat media fayllarga ruxsat"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Har doim ruxsat"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Faqat ilova faolligida ruxsat"</string>
-    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Doim hammasiga ruxsat berish"</string>
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Doim hammasiga ruxsat"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Har safar soʻralsin"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Rad etish"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Aniq joylashuv"</string>
@@ -196,7 +196,7 @@
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Aniq joylashuv axborotidan foydalanish"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Aniq joylashuv yoqilmasa, ilovalar taxminiy joylashuvingiz axborotidan foydalanadi"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> ruxsati"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"Bu ilova uchun <xliff:g id="PERM">%1$s</xliff:g>: ruxsati"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"Bu ilova uchun <xliff:g id="PERM">%1$s</xliff:g> ruxsati"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g> uchun berilgan barcha ruxsatlar"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Bu ruxsatga ega barcha ilovalar"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Assistent uchun mikrofondan foydalanishni koʻrsatish"</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ilovasining tanadagi sensor maʼlumotlaridan foydalanishiga ruxsat berilsinmi?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ilovasiga sizga bildirishnomalar yuborishi uchun ruxsat berilsinmi?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Boshqariluvchi ruxsatlar"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Joylashuv axborotiga ruxsati bor"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"AT administratori <xliff:g id="APP_NAME">%s</xliff:g> ilovasiga joylashuvingiz haqidagi axborotdan foydalanishga ruxsat bergan"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Boshqa ruxsatlar"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Tizim ishlatadigan ruxsatlar"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Faqat tizim ilovalari ishlatadigan ruxsatlar"</string>
