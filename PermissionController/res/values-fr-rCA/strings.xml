@@ -216,7 +216,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Les autorisations <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> et <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> ont été supprimées"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"L\'autorisation <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> et <xliff:g id="NUMBER">%2$s</xliff:g> autres ont été supprimées"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Applications non utilisées"</string>
-    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Si une application n\'est pas utilisée pendant quelques mois :\n\n• Les autorisations sont retirées pour protéger vos données.\n• Les notifications sont arrêtées pour économiser la pile.\n• Les fichiers temporaires sont retirés pour libérer de l\'espace de stockage.\n\nPour permettre d\'accéder de nouveau aux autorisations et aux notifications, ouvrez l\'application."</string>
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Si une application n\'est pas utilisée pendant quelques mois :\n\n• les autorisations sont retirées pour protéger vos données;\n• les notifications sont arrêtées pour économiser la pile;\n• les fichiers temporaires sont retirés pour libérer de l\'espace de stockage.\n\nPour permettre d\'accéder de nouveau aux autorisations et aux notifications, ouvrez l\'application."</string>
     <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Si une application n\'est pas utilisée pendant quelques mois :\n\n• Les autorisations sont retirées pour protéger vos données.\n• Les fichiers temporaires sont retirés pour libérer de l\'espace de stockage.\n\nPour réactiver les autorisations, ouvrez l\'application."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Dernière ouverture : il y a plus de <xliff:g id="NUMBER">%s</xliff:g> mois"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Dernière ouverture de l\'application le <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -337,7 +337,7 @@
     <string name="role_browser_request_title" msgid="2895200507835937192">"Définir <xliff:g id="APP_NAME">%1$s</xliff:g> comme application par défaut pour la navigation?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"Aucune autorisation nécessaire"</string>
     <string name="role_dialer_label" msgid="1100224146343237968">"Appli de téléphone par défaut"</string>
-    <string name="role_dialer_short_label" msgid="7186888549465352489">"Application Téléphone"</string>
+    <string name="role_dialer_short_label" msgid="7186888549465352489">"Application de téléphonie"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Applications qui vous permettent de faire et de recevoir des appels téléphoniques sur votre appareil"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Définir <xliff:g id="APP_NAME">%1$s</xliff:g> comme application de téléphonie par défaut?"</string>
     <string name="role_dialer_request_description" msgid="6288839625724909320">"Cette application aura accès à votre appareil photo, à vos contacts, à votre microphone, à votre téléphone et à vos messages texte"</string>
