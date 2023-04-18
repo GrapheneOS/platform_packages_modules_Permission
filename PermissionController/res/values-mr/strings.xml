@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ॲप वापरात असताना &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला शरीर सेन्सर डेटा अ‍ॅक्सेस करण्याची अनुमती देणे सुरू ठेवायचे आहे का?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला तुम्हाला सूचना पाठवू द्यायचे का?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"नियंत्रित परवानग्या"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"स्थान अ‍ॅक्सेस करता येऊ शकते"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"तुमचा आयटी ॲडमिन <xliff:g id="APP_NAME">%s</xliff:g> ला तुमचे स्थान अ‍ॅक्सेस करण्याची अनुमती देत आहे"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"इतर परवानग्या"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"सिस्टमद्वारे वापरल्या जाणाऱ्या परवानग्या"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"फक्त सिस्टम ॲप्लिकेशनद्वारे वापरल्या जाणाऱ्या परवानग्या."</string>

@@ -203,7 +203,7 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"关于未使用应用的设置"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"如果未使用此应用，则移除相关权限"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"撤消权限并释放空间"</string>
-    <string name="unused_apps_label_v2" msgid="7058776770056517980">"暂停未使用应用的活动"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"如果应用未使用，暂停其活动"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"移除权限、删除临时文件并停止发送通知"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"为了保护您的数据，如果您连续几个月未使用此应用，系统会移除它的权限。"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"为了保护您的数据，如果您连续几个月未使用此应用，系统会移除其以下权限：<xliff:g id="PERMS">%1$s</xliff:g>"</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"始终允许“<xliff:g id="APP_NAME">%1$s</xliff:g>”在使用中时访问身体传感器数据？"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;向您发送通知吗？"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"受控权限"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"应用可使用位置信息"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"您的 IT 管理员允许“<xliff:g id="APP_NAME">%s</xliff:g>”使用您的位置信息"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"其他权限"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"系统使用的权限"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"仅限系统应用使用的权限"</string>

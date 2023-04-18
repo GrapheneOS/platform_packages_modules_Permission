@@ -36,8 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Vedno dovoli vse"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Izberi fotografije in videoposnetke"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Izberi več"</string>
-    <!-- no translation found for grant_dialog_button_dont_select_more (6643552729129461268) -->
-    <skip />
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Brez izbire dodatnih"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Ne dovoli kljub temu"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Opusti"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> od <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -499,8 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Ali želite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; še naprej dovoliti dostop do podatkov tipal telesnih funkcij, ko je v uporabi?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Želite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; omogočiti, da vam pošilja obvestila?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Zunanje upravljana dovoljenja"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Omogočen je dostop do lokacije"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Skrbnik za IT aplikaciji <xliff:g id="APP_NAME">%s</xliff:g> dovoljuje dostop do vaše lokacije"</string>
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> ima dostop do lokacije"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Vaša organizacija aplikaciji <xliff:g id="APP_NAME">%1$s</xliff:g> dovoljuje dostop do vaše lokacije."</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"Druga dovoljenja"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Dovoljenje, ki ga uporablja sistem"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Dovoljenja, ki jih uporabljajo le sistemske aplikacije"</string>
@@ -574,7 +573,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Pregled aplikacije z dostopom do lokacije v ozadju"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"Aplikacija <xliff:g id="APP_NAME">%s</xliff:g> lahko vedno dostopa do vaše lokacije, tudi ko je aplikacija zaprta."</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Pregled aplikacije z dostopom do lokacije v ozadju"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Ta aplikacija lahko vedno dostopa do vaše lokacije, tudi ko je zaprta.\n\nNekatere varnostne aplikacije in aplikacije za nujne primere za pravilno delovanje potrebujejo dostop do lokacije v ozadju."</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Ta aplikacija lahko vedno dostopa do vaše lokacije, tudi ko je zaprta.\n\nNekatere varnostne aplikacije in aplikacije v sili za pravilno delovanje potrebujejo dostop do lokacije v ozadju."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Dostop je bil spremenjen."</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Prikaži nedavno uporabo lokacije"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Nastavitve zasebnosti"</string>

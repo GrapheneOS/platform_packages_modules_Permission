@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ಆ್ಯಪ್ ಬಳಕೆಯಲ್ಲಿರುವಾಗ ದೇಹದ ಸೆನ್ಸರ್‌ ಡೇಟಾವನ್ನು ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸುತ್ತಿರಬೇಕೇ?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"ನಿಮಗೆ ಅಧಿಸೂಚನೆಗಳನ್ನು ಕಳುಹಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"ನಿಯಂತ್ರಿತ ಅನುಮತಿಗಳು"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"ಸ್ಥಳವನ್ನು ಪ್ರವೇಶಿಸಬಹುದು"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"ನಿಮ್ಮ IT ನಿರ್ವಾಹಕರು <xliff:g id="APP_NAME">%s</xliff:g> ಗೆ ನಿಮ್ಮ ಸ್ಥಳವನ್ನು ಪ್ರವೇಶಿಸಲು ಅನುಮತಿಸುತ್ತಿದ್ದಾರೆ"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"ಇತರ ಅನುಮತಿಗಳು"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"ಸಿಸ್ಟಂನಿಂದ ಬಳಸಲ್ಪಡುವ ಅನುಮತಿಗಳು"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"ಸಿಸ್ಟಂ ಅಪ್ಲಿಕೇಶನ್‌ಗಳಿಂದ ಮಾತ್ರ ಬಳಸಲ್ಪಡುವ ಅನುಮತಿಗಳು."</string>
@@ -535,7 +537,7 @@
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"ಸ್ಥಿತಿ ಪರಿಶೀಲಿಸಿ"</string>
     <string name="privacy_controls_qs" msgid="5780144882040591169">"ನಿಮ್ಮ ಗೌಪ್ಯತೆ ನಿಯಂತ್ರಣಗಳು"</string>
     <string name="security_settings_button_label_qs" msgid="8280343822465962330">"ಇನ್ನಷ್ಟು ಸೆಟ್ಟಿಂಗ್‌ಗಳು"</string>
-    <string name="camera_toggle_label_qs" msgid="3880261453066157285">"ಕ್ಯಾಮರಾ ಪ್ರವೇಶದ ಅನುಮತಿ"</string>
+    <string name="camera_toggle_label_qs" msgid="3880261453066157285">"ಕ್ಯಾಮರಾ ಪ್ರವೇಶ"</string>
     <string name="microphone_toggle_label_qs" msgid="8132912469813396552">"ಮೈಕ್ ಆ್ಯಕ್ಸೆಸ್"</string>
     <string name="permissions_removed_qs" msgid="8957319130625294572">"ಅನುಮತಿಯನ್ನು ತೆಗೆದುಹಾಕಲಾಗಿದೆ"</string>
     <string name="camera_usage_qs" msgid="4394233566086665994">"ಇತ್ತೀಚಿನ ಕ್ಯಾಮರಾ ಬಳಕೆಯನ್ನು ನೋಡಿ"</string>

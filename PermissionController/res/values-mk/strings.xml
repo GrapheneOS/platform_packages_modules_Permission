@@ -21,7 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"дозволи"</string>
     <string name="cancel" msgid="8943320028373963831">"Откажи"</string>
     <string name="back" msgid="6249950659061523680">"Назад"</string>
-    <string name="available" msgid="6007778121920339498">"Достапен"</string>
+    <string name="available" msgid="6007778121920339498">"Дозволен"</string>
     <string name="blocked" msgid="9195547604866033708">"Блокиран"</string>
     <string name="on" msgid="280241003226755921">"Вклучено"</string>
     <string name="off" msgid="1438489226422866263">"Исклучи"</string>
@@ -36,8 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Секогаш дозволувај ги сите"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Изберете фотографии и видеа"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Изберете повеќе"</string>
-    <!-- no translation found for grant_dialog_button_dont_select_more (6643552729129461268) -->
-    <skip />
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Не избирајте повеќе"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Сепак не дозволувај"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Отфрли"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> од <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -127,7 +126,7 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"Непознатo"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Контролна табла за приватност"</string>
     <string name="auto_permission_usage_summary" msgid="7335667266743337075">"да прегледува кои апликации користеле дозволи неодамна"</string>
-    <string name="permission_group_usage_title" msgid="2595013198075285173">"Користење на <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"Користење <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Видете други дозволи"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> и уште <xliff:g id="NUM">%3$s</xliff:g> други"</string>
@@ -253,7 +252,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Со дозвола за управување со сите датотеки"</string>
     <string name="ask_header" msgid="2633816846459944376">"Прашувај секогаш"</string>
     <string name="denied_header" msgid="903209608358177654">"Без дозвола"</string>
-    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Видете уште апликации што може да пристапат до сите датотеки"</string>
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Прикажи уште апликации што имаат пристап до сите датотеки"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 ден}one{# ден}other{# дена}}"</string>
     <string name="hours" msgid="7302866489666950038">"{count,plural, =1{# час}one{# час}other{# часа}}"</string>
     <string name="minutes" msgid="4868414855445375753">"{count,plural, =1{# минута}one{# минута}other{# минути}}"</string>
@@ -499,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"И понатаму да се дозволи пристап на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; до податоци од телесните сензори додека се користи апликацијата?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да ви испраќа известувања?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Контролирани дозволи"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Може да се пристапи до локацијата"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"IT-администраторот дозволува <xliff:g id="APP_NAME">%s</xliff:g> да пристапува до вашата локација"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Други дозволи"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Дозволи што ги користи системот"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Дозволи што ги користат само системските апликации."</string>
@@ -534,7 +535,7 @@
     <string name="sensor_permissions_qs" msgid="1022267900031317472">"Дозволи"</string>
     <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"Безбедност и приватност"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Проверете го статусот"</string>
-    <string name="privacy_controls_qs" msgid="5780144882040591169">"Вашите контроли на приватноста"</string>
+    <string name="privacy_controls_qs" msgid="5780144882040591169">"Вашите контроли за приватност"</string>
     <string name="security_settings_button_label_qs" msgid="8280343822465962330">"Повеќе поставки"</string>
     <string name="camera_toggle_label_qs" msgid="3880261453066157285">"Пристап до камерата"</string>
     <string name="microphone_toggle_label_qs" msgid="8132912469813396552">"Пристап до микрофонот"</string>
@@ -574,7 +575,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Прегледајте ги апликациите со пристап до локација во заднина"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> може секогаш да пристапува до вашата локација, дури и кога е затворена апликацијата"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Прегледајте ги апликациите со пристап до локација во заднина"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Апликацијава може секогаш да пристапува до вашата локација, дури и кога е затворена.\n\nНа одредени апликации за безбедност и за итни случаи им е потребен пристап до вашата локација во заднината за правилно да функционираат."</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Апликацијава може секогаш да пристапува до вашата локација, дури и кога е затворена.\n\nНа одредени апликации за безбедност и итни случаи им е потребен пристап до вашата локација во заднината за правилно да функционираат."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Пристапот е променет"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Погледнете го неодамнешното користење на локацијата"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Контроли на приватноста"</string>
