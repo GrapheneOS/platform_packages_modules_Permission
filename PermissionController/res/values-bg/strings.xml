@@ -76,7 +76,7 @@
     <string name="storage_supergroup_warning_allow" msgid="103093462784523190">"Това приложение е създадено за по-стара версия на Android. Ако предоставите това разрешение, достъпът до цялото хранилище (включително снимките, видеоклиповете, музиката, аудиосъдържанието и другите файлове) ще бъде разрешен."</string>
     <string name="storage_supergroup_warning_deny" msgid="6420765672683284347">"Това приложение е създадено за по-стара версия на Android. Ако не предоставите това разрешение, достъпът до цялото хранилище (включително снимките, видеоклиповете, музиката, аудиосъдържанието и другите файлове) ще бъде отказан."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"извършване на неизвестно действие"</string>
-    <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g> от <xliff:g id="COUNT_1">%2$d</xliff:g> приложениe(я) имат разрешение"</string>
+    <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g> от <xliff:g id="COUNT_1">%2$d</xliff:g> приложениe(я) има(т) разрешение"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> приложения имат разрешение"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Показване на системн. приложения"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Скриване на системните приложения"</string>
@@ -195,7 +195,7 @@
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Използване на точното местоположение"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Когато точното местоположение е изключено, приложенията могат да осъществяват достъп до приблизителното ви местоположение"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Разрешение за: <xliff:g id="PERM">%1$s</xliff:g>"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"Достъп до <xliff:g id="PERM">%1$s</xliff:g> за това приложение"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"Достъп до „<xliff:g id="PERM">%1$s</xliff:g>“ за това приложение"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Преглед на всички разрешения, предоставени за <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Преглед на всички приложения с това разрешение"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Показване на употребата на микрофона за Асистент"</string>

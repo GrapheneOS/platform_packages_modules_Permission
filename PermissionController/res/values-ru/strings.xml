@@ -250,7 +250,7 @@
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Приложения с доступом только к медиафайлам"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Приложения с доступом ко всем файлам"</string>
     <string name="ask_header" msgid="2633816846459944376">"Спрашивать каждый раз"</string>
-    <string name="denied_header" msgid="903209608358177654">"Доступ запрещен"</string>
+    <string name="denied_header" msgid="903209608358177654">"Запрещено"</string>
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Ещё приложения с доступом ко всем файлам"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 день}one{# день}few{# дня}many{# дней}other{# дня}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 час}one{# час}few{# часа}many{# часов}other{# часа}}"</string>

@@ -347,7 +347,7 @@
     <string name="accessibility_service_dialog_bottom_text_single" msgid="1128666197822205958">"<xliff:g id="SERVICE_NAME">%s</xliff:g> pot veure la pantalla, les accions i el text que s\'introdueix, dur a terme accions i controlar la pantalla."</string>
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"Aquestes aplicacions poden veure la pantalla, les accions i el text que s\'introdueix, dur a terme accions i controlar la pantalla."</string>
     <string name="role_assistant_label" msgid="4727586018198208128">"Assistent digital predeterminat"</string>
-    <string name="role_assistant_short_label" msgid="3369003713187703399">"Aplicació de l\'assistent digital"</string>
+    <string name="role_assistant_short_label" msgid="3369003713187703399">"Aplicació d\'assistent digital"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Les aplicacions d\'assistència et poden ajudar en funció de la informació que es mostri a la pantalla. Algunes aplicacions admeten tant el menú d\'aplicacions com els serveis d\'entrada de veu per oferir-te una assistència integrada."</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Aplicació de navegador predeterminada"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Aplicació de navegador"</string>

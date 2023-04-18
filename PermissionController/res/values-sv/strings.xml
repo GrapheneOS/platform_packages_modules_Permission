@@ -225,7 +225,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Öppnades senast <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Om du tillåter hantering av alla filer kan appen komma åt, redigera och radera alla filer i det vanliga lagringsutrymmet på denna enhet eller anslutna lagringsenheter. Appen kan komma åt filer utan att du tillfrågas."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Vill du tillåta att den här appen får komma åt, redigera och radera filer på enheten och eventuella anslutna lagringsenheter? Appen kan komma åt filer utan att du tillfrågas."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Appar med den här behörigheten kan: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Appar med den här behörigheten kan <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Appar med den här behörigheten får åtkomst till din fysiska aktivitet, till exempel promenader, cykelturer, körning, stegräkning och annat"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Appar med den här behörigheten får åtkomst till din kalender"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Appar med den här behörigheten kan läsa och skriva samtalshistoriken"</string>

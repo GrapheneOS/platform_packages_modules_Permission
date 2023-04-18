@@ -501,7 +501,7 @@
     <string name="additional_permissions_description" msgid="2186611950890732112">"ઍપ્લિકેશન દ્વારા વ્યાખ્યાયિત પરવાનગીઓ."</string>
     <string name="privdash_label_camera" msgid="1426440033626198096">"કૅમેરા"</string>
     <string name="privdash_label_microphone" msgid="8415035835803511693">"માઇક્રોફોન"</string>
-    <string name="privdash_label_location" msgid="6882400763866489291">"સ્થાન"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"લોકેશન"</string>
     <string name="privdash_label_other" msgid="3710394147423236033">"અન્ય"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"એકપણ નહીં"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"છેલ્લા\n24 કલાક"</string>

@@ -55,7 +55,7 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Apps"</string>
     <string name="app_permissions" msgid="3369917736607944781">"Autorizações da app"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Apps não usadas"</string>
-    <string name="no_unused_apps" msgid="12809387670415295">"Nenhuma app não utilizada"</string>
+    <string name="no_unused_apps" msgid="12809387670415295">"Nenhuma app não usada"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"0 apps não utilizadas"</string>
     <string name="review_permission_decisions" msgid="309559429150613632">"Decisões de autorização recentes"</string>
     <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Ver todas as decisões de autorização recentes"</string>
@@ -218,7 +218,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Autorizações de <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> e <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> removidas."</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Autorização de <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> e mais <xliff:g id="NUMBER">%2$s</xliff:g> autorizações removidas."</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Apps não usadas"</string>
-    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Se uma app não for utilizada durante alguns meses:\n\n• As autorizações são removidas para proteger os seus dados\n• As notificações são interrompidas para poupar bateria\n• Os ficheiros temporários são removidos para libertar espaço\n\nPara voltar a permitir autorizações e notificações, abra a app."</string>
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Se uma app não for usada durante alguns meses:\n\n• As autorizações são removidas para proteger os seus dados\n• As notificações são interrompidas para poupar bateria\n• Os ficheiros temporários são removidos para libertar espaço\n\nPara voltar a permitir autorizações e notificações, abra a app."</string>
     <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"Se uma app não for usada durante um mês:\n\n• As autorizações são removidas para proteger os seus dados\n• Os ficheiros temporários são removidos para libertar espaço\n\nPara voltar a permitir autorizações, abra a app."</string>
     <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Abertas pela última vez há mais de # mês}many{Abertas pela última vez há mais de # de meses}other{Abertas pela última vez há mais de # meses}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"A app foi aberta pela última vez a <xliff:g id="DATE">%s</xliff:g>."</string>

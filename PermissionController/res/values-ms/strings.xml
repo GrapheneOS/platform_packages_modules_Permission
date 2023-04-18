@@ -384,7 +384,7 @@
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"Tetapkan <xliff:g id="APP_NAME">%1$s</xliff:g> sebagai apl pengubahhalaan panggilan lalai anda?"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Kebenaran tidak diperlukan"</string>
     <string name="role_call_screening_label" msgid="883935222060878724">"Apl ID pemanggil &amp; spam lalai"</string>
-    <string name="role_call_screening_short_label" msgid="2048465565063130834">"ID Pemanggil &amp; apl spam"</string>
+    <string name="role_call_screening_short_label" msgid="2048465565063130834">"Apl ID pemanggil &amp; spam"</string>
     <string name="role_call_screening_description" msgid="2349431420497468981">"Apl yang membenarkan anda mengenal pasti panggilan dan menyekat spam, robopanggilan atau nombor yang tidak dikehendaki"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Tetapkan <xliff:g id="APP_NAME">%1$s</xliff:g> sebagai apl ID pemanggil &amp; spam lalai anda?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Kebenaran tidak diperlukan"</string>
@@ -517,7 +517,7 @@
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Keselamatan &amp; privasi"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"Imbas peranti"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Ketepikan"</string>
-    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Ketepikan amaran ini?"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Ketepikan makluman ini?"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"Semak tetapan keselamatan dan privasi anda pada bila-bila masa untuk menambahkan lagi perlindungan"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Ketepikan"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Batal"</string>

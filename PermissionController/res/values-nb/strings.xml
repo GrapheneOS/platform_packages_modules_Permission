@@ -194,7 +194,7 @@
     <string name="approximate_image_description" msgid="938803699637069884">"Omtrentlig posisjon"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Bruk nøyaktig posisjon"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Når nøyaktig posisjon er av, har apper tilgang til den omtrentlige posisjonen din"</string>
-    <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> – tillatelse"</string>
+    <string name="app_permission_title" msgid="2090897901051370711">"Tillatelse: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"<xliff:g id="PERM">%1$s</xliff:g>: tilgang for denne appen"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Se alle tillatelsene <xliff:g id="APP">%1$s</xliff:g> har"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Se alle apper med denne tillatelsen"</string>
@@ -317,23 +317,23 @@
     <string name="app_perms_24h_access" msgid="99069906850627181">"Sist brukt <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Sist brukt i går klokken <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_7d_access" msgid="4945055548894683751">"Sist brukt <xliff:g id="TIME_DATE_0">%1$s</xliff:g> kl. <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
-    <string name="app_perms_content_provider_24h" msgid="1055526027667508972">"Brukt i løpet av de siste 24 timene"</string>
-    <string name="app_perms_content_provider_7d" msgid="3215454898257814868">"Brukt i løpet av de siste 7 dagene"</string>
+    <string name="app_perms_content_provider_24h" msgid="1055526027667508972">"Brukt de siste 24 timene"</string>
+    <string name="app_perms_content_provider_7d" msgid="3215454898257814868">"Brukt de siste 7 dagene"</string>
     <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Sist brukt <xliff:g id="TIME_DATE">%1$s</xliff:g> • Tillatt hele tiden"</string>
     <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Sist brukt i går klokken <xliff:g id="TIME_DATE">%1$s</xliff:g> • Tillatt hele tiden"</string>
     <string name="app_perms_7d_access_background" msgid="408099213372185627">"Sist brukt <xliff:g id="TIME_DATE_0">%1$s</xliff:g> kl. <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Tillatt hele tiden"</string>
-    <string name="app_perms_content_provider_24h_background" msgid="3825902995186961496">"Brukt i løpet av de siste 24 timene • Tillatt hele tiden"</string>
-    <string name="app_perms_content_provider_7d_background" msgid="4818839672116463542">"Brukt i løpet av de siste 7 dagene • Tillatt hele tiden"</string>
+    <string name="app_perms_content_provider_24h_background" msgid="3825902995186961496">"Brukt de siste 24 timene • Tillatt hele tiden"</string>
+    <string name="app_perms_content_provider_7d_background" msgid="4818839672116463542">"Brukt de siste 7 dagene • Tillatt hele tiden"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Sist brukt <xliff:g id="TIME_DATE">%1$s</xliff:g> • Medier"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Sist brukt i går klokken <xliff:g id="TIME_DATE">%1$s</xliff:g> • Medier"</string>
     <string name="app_perms_7d_access_media_only" msgid="1031096653668235200">"Sist brukt <xliff:g id="TIME_DATE_0">%1$s</xliff:g> kl. <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Medier"</string>
-    <string name="app_perms_content_provider_24h_media_only" msgid="7797963000596179491">"Brukt i løpet av de siste 24 timene • Medier"</string>
-    <string name="app_perms_content_provider_7d_media_only" msgid="8446239884570262243">"Brukt i løpet av de siste 7 dagene • Medier"</string>
+    <string name="app_perms_content_provider_24h_media_only" msgid="7797963000596179491">"Brukt de siste 24 timene • Medier"</string>
+    <string name="app_perms_content_provider_7d_media_only" msgid="8446239884570262243">"Brukt de siste 7 dagene • Medier"</string>
     <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"Sist brukt <xliff:g id="TIME_DATE">%1$s</xliff:g> • Alle filer"</string>
     <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"Sist brukt i går klokken <xliff:g id="TIME_DATE">%1$s</xliff:g> • Alle filer"</string>
     <string name="app_perms_7d_access_all_files" msgid="8246193786397635824">"Sist brukt <xliff:g id="TIME_DATE_0">%1$s</xliff:g> kl. <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Alle filer"</string>
-    <string name="app_perms_content_provider_24h_all_files" msgid="573104317727770850">"Brukt i løpet av de siste 24 timene • Alle filer"</string>
-    <string name="app_perms_content_provider_7d_all_files" msgid="7962416229708835558">"Brukt i løpet av de siste 7 dagene • Alle filer"</string>
+    <string name="app_perms_content_provider_24h_all_files" msgid="573104317727770850">"Brukt de siste 24 timene • Alle filer"</string>
+    <string name="app_perms_content_provider_7d_all_files" msgid="7962416229708835558">"Brukt de siste 7 dagene • Alle filer"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"Ingen tillatelser er gitt"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"Ingen tillatelser er nektet"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"Ingen apper har denne tillatelsen"</string>

@@ -232,7 +232,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်များက ဓာတ်ပုံနှင့် ဗီဒီယိုများ ရိုက်ယူနိုင်သည်"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်များက သင့်အဆက်အသွယ်များကို ဝင်သုံးနိုင်သည်"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်များက ဤစက်ပစ္စည်း၏ တည်နေရာကို ဝင်ကြည့်နိုင်သည်"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်များက အနီးရှိ စက်များ၏ ဆက်စပ်နေရာကို ရှာခြင်း၊ ချိတ်ဆက်ခြင်းနှင့် သတ်မှတ်ခြင်းတို့ လုပ်နိုင်သည်"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်များက အနီးရှိ စက်များ၏ မှန်းခြေနေရာကို ရှာခြင်း၊ ချိတ်ဆက်ခြင်းနှင့် သတ်မှတ်ခြင်းတို့ လုပ်နိုင်သည်"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်များက အသံဖမ်းယူနိုင်သည်"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်များက ဖုန်းခေါ်ဆိုမှုများကို ပြုလုပ်နိုင် စီမံနိုင်သည်"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်များက သင်၏အရေးကြီးသော ကျန်းမာရေးလက္ခဏာများနှင့်ဆိုင်သည့် အာရုံခံစနစ်ဒေတာကို ဝင်သုံးနိုင်သည်"</string>
@@ -457,8 +457,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"သင် အသုံးမပြုနေလျှင်တောင်မှ ဤအက်ပ်က သင့်တည်နေရာကို သုံးခွင့်ရနေပါမည်။ "<annotation id="link">"ဆက်တင်များတွင် ခွင့်ပြုပါ။"</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&amp;gt တို့အတွက် တည်နေရာ ဝင်ခွင့် ပြောင်းပေးမလား။"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"သင် အသုံးမပြုနေလျှင်တောင်မှ ဤအက်ပ်က သင့်တည်နေရာကို သုံးခွင့်ရလိုသည်။ "<annotation id="link">"ဆက်တင်များတွင် ခွင့်ပြုပါ။"</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"အနီးရှိ စက်များ၏ဆက်စပ်နေရာကို ရှာရန်၊ ချိတ်ဆက်ရန်နှင့် သတ်မှတ်ရန် &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား ခွင့်ပြုမလား။"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"အနီးရှိ စက်များ၏ဆက်စပ်နေရာကို ရှာရန်၊ ချိတ်ဆက်ရန်နှင့် သတ်မှတ်ရန် &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား ခွင့်ပြုမလား။ "<annotation id="link">"ဆက်တင်များတွင် ခွင့်ပြုပါ။"</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"အနီးရှိ စက်များ၏ မှန်းခြေနေရာ ရှာရန်၊ ချိတ်ဆက်ရန်နှင့် သတ်မှတ်ရန် &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ကို ခွင့်ပြုမလား။"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"အနီးရှိ စက်များ၏မှန်းခြေနေရာကို ရှာရန်၊ ချိတ်ဆက်ရန်နှင့် သတ်မှတ်ရန် &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား ခွင့်ပြုမလား။ "<annotation id="link">"ဆက်တင်များတွင် ခွင့်ပြုပါ။"</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> ၏ တည်နေရာသုံးခွင့်ကို ခန့်မှန်းခြေမှ အတိအကျသို့ ပြောင်းမလား။"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား ဤစက်၏ တည်နေရာခန့်မှန်းခြေကို သုံးခွင့်ပေးလိုပါသလား။"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"နေရာအတိအကျ"</string>
@@ -514,7 +514,7 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"အက်ပ်နှင့် ဝန်ဆောင်မှုများအတွက်"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"အရေးပေါ် နံပါတ်ကို သင်ခေါ်ဆိုချိန်တွင် မိုက်ခရိုဖုန်းဒေတာကို မျှဝေနိုင်သေးသည်။"</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"ပြောင်းရန်"</string>
-    <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"လုံခြုံရေး/အချက်အလက်လုံခြုံမှု"</string>
+    <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"လုံခြုံရေးနှင့် ကိုယ်ရေးဒေတာ"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"စက်ကိုစစ်ဆေးရန်"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"ပယ်ရန်"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"ဤသတိပေးချက်ကို ပယ်မလား။"</string>
@@ -525,7 +525,7 @@
     <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"လုံခြုံရေးနှင့် ကိုယ်ရေးအချက်အလက်လုံခြုံမှု အခြေအနေ။ <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>။ <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"လုံခြုံရေး ဆက်တင်များ"</string>
     <string name="sensor_permissions_qs" msgid="1022267900031317472">"ခွင့်ပြုချက်များ"</string>
-    <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"လုံခြုံရေးနှင့် ကိုယ်ရေးအချက်အလက်လုံခြုံမှု"</string>
+    <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"လုံခြုံရေးနှင့် ကိုယ်ရေးဒေတာ"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"အခြေအနေ စစ်ဆေးပါ"</string>
     <string name="privacy_controls_qs" msgid="5780144882040591169">"အချက်အလက်လုံခြုံမှု ဆက်တင်များ"</string>
     <string name="security_settings_button_label_qs" msgid="8280343822465962330">"နောက်ထပ်ဆက်တင်များ"</string>

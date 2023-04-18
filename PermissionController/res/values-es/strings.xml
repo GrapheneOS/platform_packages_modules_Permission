@@ -384,7 +384,7 @@
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"¿Quieres establecer a <xliff:g id="APP_NAME">%1$s</xliff:g> como tu aplicación de redirección de llamadas predeterminada?"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"No se necesita ningún permiso"</string>
     <string name="role_call_screening_label" msgid="883935222060878724">"Aplicación de filtro de identificación de llamada y spam"</string>
-    <string name="role_call_screening_short_label" msgid="2048465565063130834">"Aplicación de identificación de llamada y filtro de spam"</string>
+    <string name="role_call_screening_short_label" msgid="2048465565063130834">"Aplicación de identificación de llamadas y filtro de spam"</string>
     <string name="role_call_screening_description" msgid="2349431420497468981">"Aplicaciones que te permiten identificar llamadas y bloquear spam, llamadas automatizadas o números no deseados"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"¿Quieres establecer a <xliff:g id="APP_NAME">%1$s</xliff:g> como tu aplicación predeterminada de filtro de identificación de llamada y spam?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"No se necesita ningún permiso"</string>

@@ -128,7 +128,7 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Pogledajte ostala dopuštenja"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> i još <xliff:g id="NUM">%3$s</xliff:g>"</string>
-    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"Kad su aplikacije koristile dopuštenje <xliff:g id="PERMGROUP">%1$s</xliff:g> u posljednja 24 sata"</string>
+    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"Vremenski slijed u kojem su aplikacije koristile dopuštenje <xliff:g id="PERMGROUP">%1$s</xliff:g> u posljednja 24 sata"</string>
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Kad su aplikacije koristile dopuštenje <xliff:g id="PERMGROUP">%1$s</xliff:g> u posljednjih sedam dana"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Kad je ova aplikacija koristili vaše dopuštenje <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Saznajte više"</string>
@@ -361,7 +361,7 @@
     <string name="role_dialer_request_description" msgid="6288839625724909320">"Aplikacija će dobiti pristup vašoj kameri, kontaktima, mikrofonu, telefonu i SMS-ovima"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"brojčanik"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Zadana aplikacija za SMS"</string>
-    <string name="role_sms_short_label" msgid="4371444488034692243">"Aplikacija za SMS"</string>
+    <string name="role_sms_short_label" msgid="4371444488034692243">"Aplikacija za SMS-ove"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Aplikacije koje vam omogućuju upotrebu telefonskog broja za slanje i primanje tekstnih poruka, fotografija, videozapisa i ostalog"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Želite li postaviti aplikaciju <xliff:g id="APP_NAME">%1$s</xliff:g> kao zadanu aplikaciju za SMS-ove?"</string>
     <string name="role_sms_request_description" msgid="2691004766132144886">"Aplikacija će dobiti pristup vašoj kameri, kontaktima, datotekama i medijima, mikrofonu, telefonu i SMS-ovima"</string>
@@ -499,7 +499,7 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Dopuštenja koja upotrebljavaju samo aplikacije sustava."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"Dodatna dopuštenja"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"Dopuštenja koja definiraju aplikacije."</string>
-    <string name="privdash_label_camera" msgid="1426440033626198096">"Kamera"</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"Fotoaparat"</string>
     <string name="privdash_label_microphone" msgid="8415035835803511693">"Mikrofon"</string>
     <string name="privdash_label_location" msgid="6882400763866489291">"Lokacija"</string>
     <string name="privdash_label_other" msgid="3710394147423236033">"Drugo"</string>
@@ -518,7 +518,7 @@
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"Skeniranje uređaja"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Odbaci"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Želite li odbaciti ovo upozorenje?"</string>
-    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"Pregledajte postavke sigurnosti i privatnosti da biste dodali više zaštite"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"Pregledajte postavke sigurnosti i privatnosti za dodatnu zaštitu"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Odbaci"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Odustani"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"Postavke"</string>

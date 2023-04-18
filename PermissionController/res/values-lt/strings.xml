@@ -218,7 +218,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Leidimai „<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>“ ir „<xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>“ pašalinti"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Leidimas „<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>“ ir dar <xliff:g id="NUMBER">%2$s</xliff:g> pašalinti"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Nenaudojamos programos"</string>
-    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Jei programa nenaudojama kelis mėnesius:\n\n• pašalinami leidimai siekiant apsaugoti jūsų duomenis;\n• sustabdomi pranešimai, siekiant tausoti akumuliatoriaus energiją;\n• pašalinami laikinieji failai siekiant atlaisvinti vietos;\n\nNorėdami vėl suteikti leidimus ir leisti pranešimus, atidarykite programą."</string>
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Jei programa nenaudojama kelis mėnesius:\n\n• pašalinami leidimai siekiant apsaugoti jūsų duomenis;\n• sustabdomi pranešimai, siekiant tausoti akumuliatoriaus energiją;\n• pašalinami laikinieji failai siekiant atlaisvinti vietos.\n\nNorėdami vėl suteikti leidimus ir leisti pranešimus, atidarykite programą."</string>
     <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"Jei programa nenaudojama mėnesį:\n\n• pašalinami leidimai siekiant apsaugoti jūsų duomenis;\n• pašalinami laikinieji failai siekiant atlaisvinti vietos.\n\nNorėdami vėl suteikti leidimus, atidarykite programą."</string>
     <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Paskutinį kartą atidaryta daugiau nei prieš # mėnesį}one{Paskutinį kartą atidaryta daugiau nei prieš # mėnesį}few{Paskutinį kartą atidaryta daugiau nei prieš # mėnesius}many{Paskutinį kartą atidaryta daugiau nei prieš # mėnesio}other{Paskutinį kartą atidaryta daugiau nei prieš # mėnesių}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Programa paskutinį kartą atidaryta <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -499,7 +499,7 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Leidimai, kuriuos naudoja tik sistemos programos."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"Papildomi leidimai"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"Leidimai, kuriuos nustatė programos."</string>
-    <string name="privdash_label_camera" msgid="1426440033626198096">"Kamera"</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"Fotoaparatas"</string>
     <string name="privdash_label_microphone" msgid="8415035835803511693">"Mikrofonas"</string>
     <string name="privdash_label_location" msgid="6882400763866489291">"Vietovė"</string>
     <string name="privdash_label_other" msgid="3710394147423236033">"Kita"</string>

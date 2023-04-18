@@ -55,7 +55,7 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Aplikasi"</string>
     <string name="app_permissions" msgid="3369917736607944781">"Izin aplikasi"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Aplikasi tidak digunakan"</string>
-    <string name="no_unused_apps" msgid="12809387670415295">"Tak ada apl yang tidak dipakai"</string>
+    <string name="no_unused_apps" msgid="12809387670415295">"Tak ada aplikasi tidak dipakai"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"0 aplikasi tidak digunakan"</string>
     <string name="review_permission_decisions" msgid="309559429150613632">"Keputusan izin terbaru"</string>
     <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Lihat semua keputusan izin terbaru"</string>
@@ -205,7 +205,7 @@
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"Jeda aktivitas aplikasi jika tak dipakai"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"Hapus izin dan file sementara, serta hentikan notifikasi"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Untuk melindungi data Anda, izin aplikasi ini akan dihapus jika aplikasi tidak digunakan dalam beberapa bulan."</string>
-    <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Untuk melindungi data Anda, izin dari aplikasi yang tidak digunakan dalam beberapa bulan akan dihapus: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
+    <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Untuk melindungi data Anda, izin berikut akan dihapus jika aplikasi tidak digunakan dalam beberapa bulan: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Untuk melindungi data Anda, izin dari aplikasi yang tidak digunakan dalam beberapa bulan telah dihapus."</string>
     <string name="auto_revoke_open_app_message" msgid="8075556291711205039">"Jika Anda ingin memberikan izin lagi, buka aplikasi."</string>
     <string name="auto_revoke_disabled" msgid="8697684442991567188">"Penghapusan otomatis saat ini dinonaktifkan untuk aplikasi ini."</string>
@@ -384,7 +384,7 @@
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"Tetapkan <xliff:g id="APP_NAME">%1$s</xliff:g> sebagai aplikasi pengalihan panggilan default Anda?"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Tidak ada izin yang diperlukan"</string>
     <string name="role_call_screening_label" msgid="883935222060878724">"Aplikasi ID penelepon &amp; spam default"</string>
-    <string name="role_call_screening_short_label" msgid="2048465565063130834">"Apl ID penelepon &amp; spam"</string>
+    <string name="role_call_screening_short_label" msgid="2048465565063130834">"Aplikasi ID penelepon &amp; spam"</string>
     <string name="role_call_screening_description" msgid="2349431420497468981">"Aplikasi yang memungkinkan Anda mengidentifikasi panggilan telepon dan memblokir spam, robocall, atau nomor yang tidak diinginkan"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Tetapkan <xliff:g id="APP_NAME">%1$s</xliff:g> sebagai aplikasi ID penelepon &amp; spam default Anda?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Tidak ada izin yang diperlukan"</string>
@@ -518,7 +518,7 @@
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"Pindai perangkat"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Tutup"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Tutup peringatan ini?"</string>
-    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"Tinjau setelan keamanan dan privasi Anda kapan saja untuk menambahkan perlindungan tambahan"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"Tinjau setelan keamanan dan privasi Anda kapan saja untuk meningkatkan perlindungan"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Tutup"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Batal"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"Setelan"</string>

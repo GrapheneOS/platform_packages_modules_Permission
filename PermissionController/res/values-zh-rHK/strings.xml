@@ -457,7 +457,7 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"此應用程式可能想一直存取您的位置 (包括您沒有使用此應用程式時)。"<annotation id="link">"在設定中允許存取。"</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"要變更「<xliff:g id="APP_NAME">%1$s</xliff:g>」的位置存取權嗎？"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"此應用程式想一直存取您的位置 (包括您沒有使用此應用程式時)。"<annotation id="link">"在設定中允許存取。"</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"要允許 &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 尋找、連接及判斷附近裝置的相對位置嗎？"</string>
+    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"要允許&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;尋找、連接及判斷附近裝置的相對位置嗎？"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"要允許 &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 尋找、連接及判斷附近裝置的相對位置嗎？"<annotation id="link">"請在設定中授予權限。"</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"要將<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>存取的位置資訊從概略位置改為精確位置嗎？"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取此裝置的概略位置資訊嗎？"</string>

@@ -53,7 +53,7 @@
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Povolit správu všech souborů"</string>
     <string name="grant_dialog_button_allow_media_only" msgid="4832877658422573832">"Povolit pouze přístup k médiím"</string>
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Aplikace"</string>
-    <string name="app_permissions" msgid="3369917736607944781">"Oprávnění aplikací"</string>
+    <string name="app_permissions" msgid="3369917736607944781">"Oprávnění aplikace"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Nepoužívané aplikace"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"Žádné nepoužívané aplikace"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"Žádné nepoužívané aplikace"</string>
@@ -76,7 +76,7 @@
     <string name="storage_supergroup_warning_allow" msgid="103093462784523190">"Tato aplikace byla vytvořena pro starší verzi platformy Android. Pokud toto oprávnění povolíte, bude povolen přístup k celému úložišti (včetně fotek, videí, hudby, zvuků a dalších souborů)."</string>
     <string name="storage_supergroup_warning_deny" msgid="6420765672683284347">"Tato aplikace byla vytvořena pro starší verzi platformy Android. Pokud toto oprávnění odepřete, bude odepřen přístup k celému úložišti (včetně fotek, videí, hudby, zvuků a dalších souborů)."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"provést neznámou akci"</string>
-    <string name="app_permissions_group_summary" msgid="8788419008958284002">"Povoleno u aplikací: <xliff:g id="COUNT_0">%1$d</xliff:g> z <xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
+    <string name="app_permissions_group_summary" msgid="8788419008958284002">"Povoleno u aplikací: <xliff:g id="COUNT_0">%1$d</xliff:g> z <xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"Povolené aplikace: <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Zobrazit systémové aplikace"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Skrýt systémové aplikace"</string>
@@ -205,7 +205,7 @@
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"Pozastavit aktivitu při nepoužívání"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"Odebrat oprávnění, smazat dočasné soubory a zastavit oznámení"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Pokud tuto aplikaci několik měsíců nepoužijete, kvůli ochraně vašich dat jí budou oprávnění odebrána."</string>
-    <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Pokud tuto aplikaci několik měsíců nepoužijete, budou jí kvůli ochraně vašich dat odebrána následující oprávnění: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
+    <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Pokud tuto aplikaci několik měsíců nepoužijete, budou jí kvůli ochraně vašich dat odebrána následující oprávnění: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Za účelem ochrany vašich dat byla odebrána oprávnění aplikacím, které jste několik měsíců nepoužili."</string>
     <string name="auto_revoke_open_app_message" msgid="8075556291711205039">"Pokud chcete oprávnění znovu povolit, aplikaci otevřete."</string>
     <string name="auto_revoke_disabled" msgid="8697684442991567188">"Automatické odebrání je pro tuto aplikaci momentálně zakázáno."</string>
@@ -220,7 +220,7 @@
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Nepoužívané aplikace"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Když aplikaci několik měsíců nepoužíváte:\n\n• Oprávnění jsou odstraněna kvůli ochraně dat\n• Oznámení se přestanou zobrazovat kvůli úspoře baterie\n• Dočasné soubory jsou odstraněny kvůli uvolnění místa\n\nPokud chcete oprávnění a oznámení znovu povolit, otevřete aplikaci."</string>
     <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"Když nějakou aplikaci měsíc nepoužíváte:\n\n• Kvůli ochraně dat se odstraní oprávnění.\n• Kvůli uvolnění místa se odstraní dočasné soubory.\n\nPokud chcete oprávnění znovu povolit, otevřete aplikaci."</string>
-    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Aplikace nainstalované před více než # měsícem}few{Naposledy otevřeno před více než # měsíci}many{Naposledy otevřeno před více než # měsíce}other{Naposledy otevřeno před více než # měsíci}}"</string>
+    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Naposledy otevřeno před více než # měsícem}few{Naposledy otevřeno před více než # měsíci}many{Naposledy otevřeno před více než # měsíce}other{Naposledy otevřeno před více než # měsíci}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Aplikace byla naposledy otevřena <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Naposledy otevřeno <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Pokud povolíte správu všech souborů, tato aplikace může číst, upravovat a mazat všechny soubory ve společném úložišti na tomto zařízení i na připojených úložných zařízeních. Aplikace se může dostat k souborům, aniž by se vás zeptala."</string>
@@ -518,7 +518,7 @@
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"Zkontrolovat zařízení"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Zavřít"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Zavřít upozornění?"</string>
-    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"Pokud ochranu budete chtít zvýšit, kdykoli můžete zkontrolovat nastavení zabezpečení a soukromí"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"Nastavení zabezpečení a soukromí můžete kdykoliv zkontrolovat a ochranu zvýšit"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Zavřít"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Zrušit"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"Nastavení"</string>

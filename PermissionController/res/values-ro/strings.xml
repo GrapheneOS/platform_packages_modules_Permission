@@ -124,7 +124,7 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"Necunoscut"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Tablou de bord de confidențialitate"</string>
     <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Vezi aplicațiile care au folosit recent permisiuni"</string>
-    <string name="permission_group_usage_title" msgid="2595013198075285173">"Utilizarea <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"Folosirea grupului de permisiuni <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Vezi alte permisiuni"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g> <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> și încă <xliff:g id="NUM">%3$s</xliff:g>"</string>
@@ -163,7 +163,7 @@
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Folosirea permisiunii în ultimul minut"</string>
     <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"Nu s-a(u) folosit în ultimele 24 de ore"</string>
     <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"Nu a fost folosită în ultimele șapte zile"</string>
-    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Folosită de o aplicație}few{Folosită de # aplicații}other{Folosită de # de aplicații}}"</string>
+    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Folosit(ă) de o aplicație}few{Folosit(ă) de # aplicații}other{Folosit(ă) de # de aplicații}}"</string>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Vezi totul în Tabloul de bord"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtrat după: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Elimină filtrul"</string>
