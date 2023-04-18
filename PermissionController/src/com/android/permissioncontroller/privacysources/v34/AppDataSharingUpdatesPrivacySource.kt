@@ -65,7 +65,7 @@ class AppDataSharingUpdatesPrivacySource : PrivacySource {
             Utils.getSystemServiceSafe(context, SafetyCenterManager::class.java)
 
         val safetySourceData =
-            if (KotlinUtils.isSafetyLabelChangeNotificationsEnabled()) {
+            if (KotlinUtils.isSafetyLabelChangeNotificationsEnabled(context)) {
                 SafetySourceData.Builder()
                     .setStatus(
                         SafetySourceStatus.Builder(
