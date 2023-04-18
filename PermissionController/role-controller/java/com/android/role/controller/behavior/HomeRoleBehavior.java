@@ -22,11 +22,13 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PermissionInfo;
 import android.content.pm.ResolveInfo;
+import android.os.Build;
 import android.os.UserHandle;
 import android.provider.Settings;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.build.SdkLevel;
 import com.android.role.controller.model.AppOpPermissions;
@@ -53,7 +55,11 @@ public class HomeRoleBehavior implements RoleBehavior {
             android.Manifest.permission.WRITE_CALL_LOG,
             android.Manifest.permission.READ_CONTACTS);
 
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     private static final List<String> WEAR_PERMISSIONS = Arrays.asList(
+            android.Manifest.permission.POST_NOTIFICATIONS);
+
+    private static final List<String> WEAR_APP_OP_PERMISSIONS = Arrays.asList(
             android.Manifest.permission.SYSTEM_ALERT_WINDOW);
 
     @Override
@@ -140,7 +146,9 @@ public class HomeRoleBehavior implements RoleBehavior {
 
         if (SdkLevel.isAtLeastT()) {
             if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_WATCH)) {
-                for (String permission : WEAR_PERMISSIONS) {
+                Permissions.grant(packageName, WEAR_PERMISSIONS,
+                        true, false, true, false, false, context);
+                for (String permission : WEAR_APP_OP_PERMISSIONS) {
                     AppOpPermissions.grant(packageName, permission, true, context);
                 }
             }
@@ -162,7 +170,8 @@ public class HomeRoleBehavior implements RoleBehavior {
 
         if (SdkLevel.isAtLeastT()) {
             if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_WATCH)) {
-                for (String permission : WEAR_PERMISSIONS) {
+                Permissions.revoke(packageName, WEAR_PERMISSIONS, true, false, false, context);
+                for (String permission : WEAR_APP_OP_PERMISSIONS) {
                     AppOpPermissions.revoke(packageName, permission, context);
                 }
             }
