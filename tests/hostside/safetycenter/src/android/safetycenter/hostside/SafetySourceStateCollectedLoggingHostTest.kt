@@ -120,13 +120,17 @@ class SafetySourceStateCollectedLoggingHostTest : BaseHostJUnit4Test() {
             .filterNot {
                 // Installing/uninstalling the helper app can cause Play Protect to run a scan and
                 // push new data to Safety Center which interferes with the test results so we
-                // specifically filter the resultant atoms out using the real encoded source ID
+                // specifically filter the resultant atoms out using the real encoded source ID.
+                // Similar failures are also observed on Android Test Hub due to the background
+                // location source (b/278782808)
                 it.encodedSafetySourceId == PLAY_PROTECT_ENCODED_SOURCE_ID
+                        || it.encodedSafetySourceId == BACKGROUND_LOCATION_ENCODED_SOURCE_ID
             }
 
     private companion object {
         const val TEST_CLASS_NAME = ".SafetySourceStateCollectedLoggingHelperTests"
         const val PLAY_PROTECT_ENCODED_SOURCE_ID = 7711894340233229936L
+        const val BACKGROUND_LOCATION_ENCODED_SOURCE_ID = 7355693215512427559L
         const val SOURCE_1_ENCODED_SOURCE_ID = 6446219357586936066L
         const val SOURCE_2_ENCODED_SOURCE_ID = -5887429047684886602L
         const val SOURCE_3_ENCODED_SOURCE_ID = -619470868366498469L
