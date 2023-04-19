@@ -23,6 +23,7 @@ import static java.util.Collections.emptyList;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.icu.text.ListFormatter;
 import android.icu.text.MessageFormat;
 import android.icu.util.ULocale;
@@ -49,6 +50,7 @@ import android.util.Log;
 import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.build.SdkLevel;
+import com.android.permission.util.UserUtils;
 import com.android.safetycenter.data.SafetyCenterDataManager;
 import com.android.safetycenter.internaldata.SafetyCenterEntryId;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
@@ -81,6 +83,7 @@ public final class SafetyCenterDataFactory {
     private static final String ANDROID_LOCK_SCREEN_SOURCES_GROUP_ID = "AndroidLockScreenSources";
     private static final String ISSUES_TO_GROUPS_BUNDLE_KEY = "IssuesToGroupsKey";
 
+    private final Context mContext;
     private final SafetyCenterResourcesContext mSafetyCenterResourcesContext;
     private final SafetyCenterConfigReader mSafetyCenterConfigReader;
     private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker;
@@ -89,11 +92,13 @@ public final class SafetyCenterDataFactory {
     private final SafetyCenterDataManager mSafetyCenterDataManager;
 
     SafetyCenterDataFactory(
+            Context context,
             SafetyCenterResourcesContext safetyCenterResourcesContext,
             SafetyCenterConfigReader safetyCenterConfigReader,
             SafetyCenterRefreshTracker safetyCenterRefreshTracker,
             PendingIntentFactory pendingIntentFactory,
             SafetyCenterDataManager safetyCenterDataManager) {
+        mContext = context;
         mSafetyCenterResourcesContext = safetyCenterResourcesContext;
         mSafetyCenterConfigReader = safetyCenterConfigReader;
         mSafetyCenterRefreshTracker = safetyCenterRefreshTracker;
@@ -524,7 +529,14 @@ public final class SafetyCenterDataFactory {
                 && TextUtils.isEmpty(groupSummary)) {
             List<CharSequence> titles = new ArrayList<>();
             for (int i = 0; i < entries.size(); i++) {
-                titles.add(entries.get(i).getTitle());
+                SafetyCenterEntry entry = entries.get(i);
+                SafetyCenterEntryId entryId = SafetyCenterIds.entryIdFromString(entry.getId());
+
+                if (UserUtils.isManagedProfile(entryId.getUserId(), mContext)) {
+                    continue;
+                }
+
+                titles.add(entry.getTitle());
             }
             groupSummary =
                     ListFormatter.getInstance(
