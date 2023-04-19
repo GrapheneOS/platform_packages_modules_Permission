@@ -36,8 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"আটাইবোৰকে সদায় অনুমতি দিয়ক"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"ফট’ আৰু ভিডিঅ’ বাছনি কৰক"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"অধিক বাছনি কৰক"</string>
-    <!-- no translation found for grant_dialog_button_dont_select_more (6643552729129461268) -->
-    <skip />
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"আৰু অধিক বাছনি নকৰিব"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"তথাপি অনুমতি নিদিব"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"অগ্ৰাহ্য কৰক"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>ৰ ভিতৰত <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>টা"</string>
@@ -499,8 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"এপ্‌টো ব্যৱহাৰ কৰি থকাৰ সময়ত &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক শৰীৰৰ ছেন্সৰৰ ডেটা এক্সেছ কৰিবলৈ অনুমতি দি থাকিবনে?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক আপোনালৈ জাননী পঠিয়াবলৈ অনুমতি দিবনে?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"নিয়ন্ত্ৰিত অনুমতিসমূহ"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"অৱস্থান এক্সেছ কৰিব পাৰি"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"আপোনাৰ আইটি প্ৰশাসকে <xliff:g id="APP_NAME">%s</xliff:g>ক আপোনাৰ অৱস্থান এক্সেছ কৰাৰ অনুমতি দিছে"</string>
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g>এ অৱস্থানৰ এক্সেছ আছে"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"আপোনাৰ প্ৰতিষ্ঠানে <xliff:g id="APP_NAME">%1$s</xliff:g>ক আপোনাৰ অৱস্থান এক্সেছ কৰাৰ অনুমতি দিয়ে"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"অন্য অনুমতি"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"ছিষ্টেমটোৱে ব্যৱহাৰ কৰা অনুমতি"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"কেৱল ছিষ্টেম এপ্লিকেশ্বনে ব্যৱহাৰ কৰা অনুমতি।"</string>

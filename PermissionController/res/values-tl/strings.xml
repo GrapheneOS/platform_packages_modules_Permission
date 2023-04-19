@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Patuloy na pahintulutan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang data ng sensor ng katawan habang ginagamit ang app?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Payagan ang <xliff:g id="APP_NAME">%1$s</xliff:g> na padalhan ka ng mga notification?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Kontroladong pahintulot"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Puwedeng i-access ang lokasyon"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Pinapahintulutan ng iyong IT admin ang <xliff:g id="APP_NAME">%s</xliff:g> na i-access ang lokasyon mo"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Iba pang pahintulot"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Pahintulot na ginagamit ng system"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Mga pahintulot na mga application ng system lang ang gumagamit."</string>

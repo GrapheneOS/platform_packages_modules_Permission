@@ -36,8 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"一律全部允許"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"選取相片和影片"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"選取更多項目"</string>
-    <!-- no translation found for grant_dialog_button_dont_select_more (6643552729129461268) -->
-    <skip />
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"不選取更多資料"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"一律不允許"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"關閉"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"第 <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> 個 (共 <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g> 個)"</string>
@@ -463,7 +462,7 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"此應用程式可能想一直存取您的位置 (包括您沒有使用此應用程式時)。"<annotation id="link">"在設定中允許存取。"</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"要變更「<xliff:g id="APP_NAME">%1$s</xliff:g>」的位置存取權嗎？"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"此應用程式想一直存取您的位置 (包括您沒有使用此應用程式時)。"<annotation id="link">"在設定中允許存取。"</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"要允許 &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 尋找、連接及判斷附近裝置的相對位置嗎？"</string>
+    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"要允許&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;尋找、連接及判斷附近裝置的相對位置嗎？"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"要允許 &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 尋找、連接及判斷附近裝置的相對位置嗎？"<annotation id="link">"請在設定中授予權限。"</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"要將<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>存取的位置資訊從概略位置改為精確位置嗎？"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取此裝置的概略位置資訊嗎？"</string>
@@ -499,8 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"要讓「<xliff:g id="APP_NAME">%1$s</xliff:g>」應用程式&lt;b&gt;&lt;/b&gt;在使用時存取人體感應器資料嗎？"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"要允許 &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 傳送通知給您嗎？"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"由管理員控制的權限"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"應用程式可存取位置"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"您的 IT 管理員允許「<xliff:g id="APP_NAME">%s</xliff:g>」存取您的位置"</string>
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"「<xliff:g id="APP_NAME">%1$s</xliff:g>」具有位置存取權"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"貴機構允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」存取你的位置資訊"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"其他權限"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"系統使用的權限"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"僅系統應用程式使用的權限。"</string>

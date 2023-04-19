@@ -36,8 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"السماح بالكل دومًا"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"اختيار صور وفيديوهات"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"اختيار المزيد"</string>
-    <!-- no translation found for grant_dialog_button_dont_select_more (6643552729129461268) -->
-    <skip />
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"عدم اختيار المزيد"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"عدم السماح على أي حال"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"رفض"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> من <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -246,7 +245,7 @@
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"مرفوض حاليًا / تاريخ آخر وصول: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"لم يستخدم الإذن مطلقًا"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"تم الرفض / لم يسبق الحصول على الإذن"</string>
-    <string name="allowed_header" msgid="7769277978004790414">"التطبيقات الحاصلة على الإذن"</string>
+    <string name="allowed_header" msgid="7769277978004790414">"الأذونات المسموح بها"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"التطبيقات المسموح لها بالوصول طوال الوقت"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"تطبيقات يمكنها الوصول عند استخدامها فقط"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"التطبيقات المسموح لها بالوصول إلى الوسائط فقط"</string>
@@ -499,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"‏هل تريد مواصلة السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; عند استخدامه بالوصول إلى بيانات أجهزة استشعار الجسم؟"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بإرسال إشعارات إليك؟"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"الأذونات خاضعة لتحكّم المشرف"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"يمكن الوصول إلى الموقع الجغرافي"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"يسمح مشرف تكنولوجيا المعلومات لتطبيق <xliff:g id="APP_NAME">%s</xliff:g> بالوصول إلى موقعك الجغرافي."</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"الأذونات الأخرى"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"الأذونات المستخدمة من قِبل النظام"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"الأذونات المستخدمة من قِبل تطبيقات النظام فقط"</string>
@@ -574,7 +575,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"مراجعة تطبيق لديه الإذن برصد الموقع الجغرافي في الخلفية"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"يمكن لتطبيق <xliff:g id="APP_NAME">%s</xliff:g> الوصول دومًا إلى موقعك الجغرافي، حتى في حال كان التطبيق مغلقًا."</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"مراجعة تطبيق لديه الإذن برصد الموقع الجغرافي في الخلفية"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"يمكن لهذا التطبيق الوصول دومًا لموقعك الجغرافي، حتى إذا كان التطبيق مغلقًا.\n\nتتطلب بعض تطبيقات الأمان والطوارئ الوصول إلى موقعك الجغرافي في الخلفية لكي تعمل على الوجه المطلوب."</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"يمكن لهذا التطبيق الوصول دومًا لموقعك الجغرافي، حتى في حال كان التطبيق مغلقًا.\n\nتتطلب بعض تطبيقات الأمان والطوارئ الوصول إلى موقعك الجغرافي في الخلفية لكي تعمل على الوجه المطلوب."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"تم تغيير إذن الوصول."</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"عرض أحدث بيانات استخدام للموقع الجغرافي"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"عناصر التحكّم في الخصوصية"</string>

@@ -30,8 +30,7 @@
     <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"കൂടുതൽ മുന്നറിയിപ്പുകൾ"</string>
     <string name="safety_center_dismissed_issues_card_title" msgid="2340129842725145733">"ഡിസ്‌മിസ് ചെയ്‌ത മുന്നറിയിപ്പുകൾ"</string>
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{വികസിപ്പിച്ച് ഒരു മുന്നറിയിപ്പ് കൂടി കാണുക}other{വികസിപ്പിച്ച് # മുന്നറിയിപ്പ് കൂടി കാണുക}}"</string>
-    <string name="safety_center_issue_card_content_description" msgid="1281390769721765363">"മുന്നറിയിപ്പ്. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%2$s</xliff:g>"</string>
-    <string name="safety_center_issue_card_content_description_with_subtitle" msgid="5504040663935313539">"മുന്നറിയിപ്പ്. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUBTITLE">%2$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%3$s</xliff:g>"</string>
+    <string name="safety_center_issue_card_prefix_content_description" msgid="1447445289637043544">"മുന്നറിയിപ്പ്. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>"</string>
     <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"പ്രവർത്തനം പൂർത്തിയായി"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"നിങ്ങളുടെ ഉപകരണത്തിന് കൂടുതൽ പരിരക്ഷ നൽകാനാകുന്ന ക്രമീകരണങ്ങൾ പരിശോധിക്കുക"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"സുരക്ഷാ, സ്വകാര്യതാ ദ്രുത ക്രമീകരണം"</string>
