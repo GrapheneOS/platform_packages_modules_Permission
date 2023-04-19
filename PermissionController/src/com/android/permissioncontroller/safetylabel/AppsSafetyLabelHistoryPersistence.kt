@@ -67,12 +67,12 @@ object AppsSafetyLabelHistoryPersistence {
 
     /** Adds a listener to listen for changes to persisted safety labels. */
     fun addListener(listener: ChangeListener) {
-        listeners.add(listener)
+        synchronized(readWriteLock) { listeners.add(listener) }
     }
 
     /** Removes a listener from listening for changes to persisted safety labels. */
     fun removeListener(listener: ChangeListener) {
-        listeners.remove(listener)
+        synchronized(readWriteLock) { listeners.remove(listener) }
     }
 
     /**
@@ -101,18 +101,20 @@ object AppsSafetyLabelHistoryPersistence {
 
     /** Returns the last updated time for each stored [AppSafetyLabelHistory]. */
     fun getSafetyLabelsLastUpdatedTimes(file: File): Map<AppInfo, Instant> {
-        val appHistories =
-            read(file).appsSafetyLabelHistory?.appSafetyLabelHistories ?: return emptyMap()
+        synchronized(readWriteLock) {
+            val appHistories =
+                read(file).appsSafetyLabelHistory?.appSafetyLabelHistories ?: return emptyMap()
 
-        val lastUpdatedTimes = mutableMapOf<AppInfo, Instant>()
-        for (appHistory in appHistories) {
-            val lastSafetyLabelReceiptTime: Instant? = appHistory.getLastReceiptTime()
-            if (lastSafetyLabelReceiptTime != null) {
-                lastUpdatedTimes[appHistory.appInfo] = lastSafetyLabelReceiptTime
+            val lastUpdatedTimes = mutableMapOf<AppInfo, Instant>()
+            for (appHistory in appHistories) {
+                val lastSafetyLabelReceiptTime: Instant? = appHistory.getLastReceiptTime()
+                if (lastSafetyLabelReceiptTime != null) {
+                    lastUpdatedTimes[appHistory.appInfo] = lastSafetyLabelReceiptTime
+                }
             }
-        }
 
-        return lastUpdatedTimes
+            return lastUpdatedTimes
+        }
     }
 
     /**
@@ -149,6 +151,8 @@ object AppsSafetyLabelHistoryPersistence {
      * from the last recorded (when considered in order of [SafetyLabel.receivedAt]).
      */
     fun recordSafetyLabels(safetyLabelsToAdd: Set<SafetyLabel>, file: File) {
+        if (safetyLabelsToAdd.isEmpty()) return
+
         synchronized(readWriteLock) {
             val currentAppsSafetyLabelHistory =
                 read(file).appsSafetyLabelHistory ?: AppsSafetyLabelHistory(listOf())
@@ -190,6 +194,8 @@ object AppsSafetyLabelHistoryPersistence {
 
     /** Deletes stored safety labels for all apps in [appInfosToRemove]. */
     fun deleteSafetyLabelsForApps(appInfosToRemove: Set<AppInfo>, file: File) {
+        if (appInfosToRemove.isEmpty()) return
+
         synchronized(readWriteLock) {
             val currentAppsSafetyLabelHistory =
                 read(file).appsSafetyLabelHistory ?: AppsSafetyLabelHistory(listOf())
