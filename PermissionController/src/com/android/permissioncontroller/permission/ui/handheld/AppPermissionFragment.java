@@ -196,9 +196,6 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
                 getActivity().getApplication(), mPackageName, mPermGroupName, mUser, mSessionId);
         mViewModel = new ViewModelProvider(this, factory).get(AppPermissionViewModel.class);
         Handler delayHandler = new Handler(Looper.getMainLooper());
-        mViewModel.getShowPermissionRationaleLiveData().observe(this, show -> {
-            showPermissionRationaleDialog(Optional.ofNullable(show).orElse(false));
-        });
         mViewModel.getButtonStateLiveData().observe(this, buttonState -> {
             if (mIsInitialLoad) {
                 setRadioButtonsState(buttonState);
@@ -295,6 +292,9 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
                 root.requireViewById(R.id.app_permission_rationale_container);
         mAppPermissionRationaleContent =
                 root.requireViewById(R.id.app_permission_rationale_content);
+        mViewModel.getShowPermissionRationaleLiveData().observe(this, show -> {
+            showPermissionRationaleDialog(Optional.ofNullable(show).orElse(false));
+        });
 
         getActivity().setTitle(
                 getPreferenceManager().getContext().getString(R.string.app_permission_title,
