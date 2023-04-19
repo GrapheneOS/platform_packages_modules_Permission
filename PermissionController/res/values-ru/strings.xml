@@ -33,7 +33,7 @@
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Оставить \"Только в этот раз\""</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Подробнее"</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Разрешить все"</string>
-    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Всегда разрешать все"</string>
+    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Постоянный полный доступ"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Выбрать фотографии и видео"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Выбрать больше"</string>
     <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Больше не выбирать"</string>
@@ -188,7 +188,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Разрешить доступ только к медиафайлам"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Разрешить в любом режиме"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Разрешить только во время использования приложения"</string>
-    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Всегда разрешать все"</string>
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Постоянный полный доступ"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Спрашивать каждый раз"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Запретить"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Точное местоположение"</string>
@@ -251,7 +251,7 @@
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Приложения с доступом только к медиафайлам"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Приложения с доступом ко всем файлам"</string>
     <string name="ask_header" msgid="2633816846459944376">"Спрашивать каждый раз"</string>
-    <string name="denied_header" msgid="903209608358177654">"Доступ запрещен"</string>
+    <string name="denied_header" msgid="903209608358177654">"Запрещено"</string>
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Ещё приложения с доступом ко всем файлам"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 день}one{# день}few{# дня}many{# дней}other{# дня}}"</string>
     <string name="hours" msgid="7302866489666950038">"{count,plural, =1{# час}one{# час}few{# часа}many{# часов}other{# часа}}"</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Предоставлять приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным нательных датчиков, только когда оно используется?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Разрешить <xliff:g id="APP_NAME">%1$s</xliff:g> отправлять уведомления?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Контролируемые разрешения"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Приложению доступны ваши геоданные"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Администратор разрешил приложению \"<xliff:g id="APP_NAME">%s</xliff:g>\" доступ к вашему местоположению."</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Другие разрешения"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Разрешения, используемые системой"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Разрешения, используемые только системными приложениями"</string>

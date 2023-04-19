@@ -385,7 +385,7 @@
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"¿Quieres establecer a <xliff:g id="APP_NAME">%1$s</xliff:g> como tu aplicación de redirección de llamadas predeterminada?"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"No se necesita ningún permiso"</string>
     <string name="role_call_screening_label" msgid="883935222060878724">"Aplicación de filtro de identificación de llamada y spam"</string>
-    <string name="role_call_screening_short_label" msgid="2048465565063130834">"Aplicación de identificación de llamada y filtro de spam"</string>
+    <string name="role_call_screening_short_label" msgid="2048465565063130834">"Aplicación de identificación de llamadas y filtro de spam"</string>
     <string name="role_call_screening_description" msgid="2349431420497468981">"Aplicaciones que te permiten identificar llamadas y bloquear spam, llamadas automatizadas o números no deseados"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"¿Quieres establecer a <xliff:g id="APP_NAME">%1$s</xliff:g> como tu aplicación predeterminada de filtro de identificación de llamada y spam?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"No se necesita ningún permiso"</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"¿Seguir permitiendo que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a los datos de los sensores corporales mientras se usa?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; te envíe notificaciones?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Permisos controlados"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Se puede acceder a tu ubicación"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Tu administrador de TI permite que <xliff:g id="APP_NAME">%s</xliff:g> acceda a tu ubicación"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Otros permisos"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Permiso usado por el sistema"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Permisos usados solo por las aplicaciones del sistema."</string>

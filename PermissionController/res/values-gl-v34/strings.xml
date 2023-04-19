@@ -22,7 +22,6 @@
     <string name="health_connect_title" msgid="2132233890867430855">"Saúde conectada"</string>
     <string name="health_connect_summary" msgid="815473513776882296">"Xestiona o acceso das aplicacións aos datos de saúde"</string>
     <string name="location_settings" msgid="8863940440881290182">"Acceso á localización"</string>
-    <!-- no translation found for mic_toggle_description (1504101620086616040) -->
-    <skip />
+    <string name="mic_toggle_description" msgid="1504101620086616040">"Para aplicacións e servizos. Aínda que esta opción de configuración se atope desactivada, poderán compartirse datos do micrófono se chamas a un número de emerxencias"</string>
     <string name="location_settings_subtitle" msgid="6846532794702613851">"Para aplicacións e servizos"</string>
 </resources>

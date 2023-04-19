@@ -36,8 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Να επιτρέπονται πάντα όλα"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Επιλογή φωτογραφιών και βίντεο"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Επιλέξτε περισσότερα"</string>
-    <!-- no translation found for grant_dialog_button_dont_select_more (6643552729129461268) -->
-    <skip />
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Να μην γίνει επιλογή περισσότερων"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Να μην επιτρέπεται καθόλου"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Παράβλεψη"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> από <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -499,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Να συνεχίσει να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση σε δεδομένα αισθητήρων σώματος ενώ χρησιμοποιείται;"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Επιτρέπετε στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να σας στέλνει ειδοποιήσεις;"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Ελεγχόμενες άδειες"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Είναι δυνατή η πρόσβαση στην τοποθεσία."</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Ο διαχειριστής σας επιτρέπει στην εφαρμογή <xliff:g id="APP_NAME">%s</xliff:g> να αποκτά πρόσβαση στην τοποθεσία σας."</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Άλλες άδειες"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Άδεια που χρησιμοποιείται από το σύστημα"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Άδειες που χρησιμοποιούνται από εφαρμογές του συστήματος."</string>
@@ -574,7 +575,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Έλεγχος εφαρμογής που έχει πρόσβαση στην τοποθεσία στο παρασκήνιο"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"Η εφαρμογή <xliff:g id="APP_NAME">%s</xliff:g> έχει πάντα πρόσβαση στην τοποθεσία σας, ακόμα και όταν είναι κλειστή"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Έλεγχος εφαρμογής που έχει πρόσβαση στην τοποθεσία στο παρασκήνιο"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Αυτή η εφαρμογή έχει πάντα πρόσβαση στην τοποθεσία σας, ακόμα και όταν είναι κλειστή.\n\nΚάποιες εφαρμογές ασφάλειας και έκτακτης ανάγκης απαιτούν πρόσβαση στην τοποθεσία σας στο παρασκήνιο για να λειτουργούν με τον αναμενόμενο τρόπο."</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Αυτή η εφαρμογή έχει πάντα πρόσβαση στην τοποθεσία σας, ακόμα και όταν είναι κλειστή.\n\nΚάποιες εφαρμογές ασφάλειας και έκτακτης ανάγκης απαιτούν πρόσβαση στην τοποθεσία σας στο παρασκήνιο, για να λειτουργήσουν με τον αναμενόμενο τρόπο."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Η πρόσβαση άλλαξε"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Δείτε την πρόσφατη χρήση τοποθεσίας"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Στοιχεία ελέγχου απορρήτου"</string>

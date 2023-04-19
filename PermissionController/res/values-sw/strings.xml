@@ -385,7 +385,7 @@
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"Je, ungependa kuweka <xliff:g id="APP_NAME">%1$s</xliff:g> iwe programu yako chaguomsingi ya kuelekeza simu kwingine?"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Hakuna ruhusa zinazohitajika"</string>
     <string name="role_call_screening_label" msgid="883935222060878724">"Kutambua taka na anayepiga: programu msingi"</string>
-    <string name="role_call_screening_short_label" msgid="2048465565063130834">"Ya kukagua kitambulisho cha anayepiga na taka"</string>
+    <string name="role_call_screening_short_label" msgid="2048465565063130834">"Kutambua anayepiga na taka"</string>
     <string name="role_call_screening_description" msgid="2349431420497468981">"Programu zinazokuruhusu utambue simu zinazoingia na kuzuia taka, simu zinazopigwa kiotomatiki au nambari zisizohitajika"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Je, ungependa kuweka <xliff:g id="APP_NAME">%1$s</xliff:g> iwe programu chaguomsingi ya kukagua kitambulisho cha anayepiga na taka?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Hakuna ruhusa zinazohitajika"</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Ungependa kuendelea kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie data ya vitambuzi vya shughuli za mwili wakati programu inatumika?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ikutumie arifa?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Ruhusa zinazodhibitiwa"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Maelezo ya mahali yanaweza kufikiwa"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Msimamizi wako wa TEHAMA anaruhusu <xliff:g id="APP_NAME">%s</xliff:g> kufikia maelezo ya mahali ulipo"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Ruhusa nyinginezo"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Ruhusa zinazotumiwa na mfumo"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Ruhusa zinazotumiwa tu na programu za mfumo."</string>
