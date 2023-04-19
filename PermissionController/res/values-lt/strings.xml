@@ -36,8 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Visada leisti viską"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Pasirinkti nuotraukas ir vaizdo įrašus"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Pasirinkti daugiau"</string>
-    <!-- no translation found for grant_dialog_button_dont_select_more (6643552729129461268) -->
-    <skip />
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Nesirinkti daugiau"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Vis tiek neleisti"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Atmesti"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> iš <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -220,7 +219,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Leidimai „<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>“ ir „<xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>“ pašalinti"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Leidimas „<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>“ ir dar <xliff:g id="NUMBER">%2$s</xliff:g> pašalinti"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Nenaudojamos programos"</string>
-    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Jei programa nenaudojama kelis mėnesius:\n\n• pašalinami leidimai siekiant apsaugoti jūsų duomenis;\n• sustabdomi pranešimai, siekiant tausoti akumuliatoriaus energiją;\n• pašalinami laikinieji failai siekiant atlaisvinti vietos;\n\nNorėdami vėl suteikti leidimus ir leisti pranešimus, atidarykite programą."</string>
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Jei programa nenaudojama kelis mėnesius:\n\n• pašalinami leidimai siekiant apsaugoti jūsų duomenis;\n• sustabdomi pranešimai, siekiant tausoti akumuliatoriaus energiją;\n• pašalinami laikinieji failai siekiant atlaisvinti vietos.\n\nNorėdami vėl suteikti leidimus ir leisti pranešimus, atidarykite programą."</string>
     <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"Jei programa nenaudojama mėnesį:\n\n• pašalinami leidimai siekiant apsaugoti jūsų duomenis;\n• pašalinami laikinieji failai siekiant atlaisvinti vietos.\n\nNorėdami vėl suteikti leidimus, atidarykite programą."</string>
     <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Paskutinį kartą atidaryta daugiau nei prieš # mėnesį}one{Paskutinį kartą atidaryta daugiau nei prieš # mėnesį}few{Paskutinį kartą atidaryta daugiau nei prieš # mėnesius}many{Paskutinį kartą atidaryta daugiau nei prieš # mėnesio}other{Paskutinį kartą atidaryta daugiau nei prieš # mėnesių}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Programa paskutinį kartą atidaryta <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -499,14 +498,16 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Toliau leisti programai &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pasiekti kūno jutiklių duomenis, kai programa naudojama?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Leisti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; siųsti jums pranešimus?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Valdomi leidimai"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Vietovė pasiekiama"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"IT administratorius leidžia „<xliff:g id="APP_NAME">%s</xliff:g>“ pasiekti jūsų vietovę"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Kiti leidimai"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Leidimai, kuriuos naudoja sistema"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Leidimai, kuriuos naudoja tik sistemos programos."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"Papildomi leidimai"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"Leidimai, kuriuos nustatė programos."</string>
-    <string name="privdash_label_camera" msgid="1426440033626198096">"Kamera"</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"Fotoaparatas"</string>
     <string name="privdash_label_microphone" msgid="8415035835803511693">"Mikrofonas"</string>
     <string name="privdash_label_location" msgid="6882400763866489291">"Vietovė"</string>
     <string name="privdash_label_other" msgid="3710394147423236033">"Kita"</string>

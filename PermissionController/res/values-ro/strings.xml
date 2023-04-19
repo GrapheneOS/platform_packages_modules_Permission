@@ -126,7 +126,7 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"Necunoscut"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Tablou de bord de confidențialitate"</string>
     <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Vezi aplicațiile care au folosit recent permisiuni"</string>
-    <string name="permission_group_usage_title" msgid="2595013198075285173">"Utilizarea <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"Folosirea grupului de permisiuni <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Vezi alte permisiuni"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g> <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> și încă <xliff:g id="NUM">%3$s</xliff:g>"</string>
@@ -163,7 +163,7 @@
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Folosirea permisiunii în ultimul minut"</string>
     <string name="permission_usage_preference_summary_not_used_in_past_n_days" msgid="4771868094611359651">"{count,plural, =1{Permisiunea nu a fost folosită în ultima zi}few{Permisiunea nu a fost folosită în ultimele # zile}other{Permisiunea nu a fost folosită în ultimele # de zile}}"</string>
     <string name="permission_usage_preference_summary_not_used_in_past_n_hours" msgid="3828973177433435742">"{count,plural, =1{Permisiunea nu a fost folosită în ultima oră}few{Permisiunea nu a fost folosită în ultimele # ore}other{Permisiunea nu a fost folosită în ultimele # de ore}}"</string>
-    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Folosită de o aplicație}few{Folosită de # aplicații}other{Folosită de # de aplicații}}"</string>
+    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Folosit(ă) de o aplicație}few{Folosit(ă) de # aplicații}other{Folosit(ă) de # de aplicații}}"</string>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Vezi totul în Tabloul de bord"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtrat după: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Elimină filtrul"</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Permiți în continuare accesul &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; la datele de la senzorii corporali în timpul folosirii aplicației?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să-ți trimită notificări?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Permisiuni controlate"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Locația poate fi accesată"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Administratorul IT permite aplicației <xliff:g id="APP_NAME">%s</xliff:g> să-ți acceseze locația"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Alte permisiuni"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Permisiuni folosite de sistem"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Permisiuni folosite numai de aplicațiile sistemului."</string>

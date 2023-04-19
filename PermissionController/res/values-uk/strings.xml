@@ -36,8 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Завжди дозволяти всі"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Вибрати фото й відео"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Вибрати ще"</string>
-    <!-- no translation found for grant_dialog_button_dont_select_more (6643552729129461268) -->
-    <skip />
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Не вибирати більше"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Усе одно не дозволяти"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Закрити"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> з <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -499,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Надавати й надалі додатку <xliff:g id="APP_NAME">%1$s</xliff:g> доступ до показників датчиків на тілі, коли він використовується?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; надсилати вам сповіщення?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Керовані дозволи"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Відкрито доступ до місцезнаходження"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Ваш ІТ-адміністратор дозволяє додатку <xliff:g id="APP_NAME">%s</xliff:g> отримувати доступ до вашого місцезнаходження"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Інші дозволи"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Дозволи, які використовує система"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Дозволи, які використовують лише системні додатки."</string>
