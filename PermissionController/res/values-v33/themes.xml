@@ -24,21 +24,23 @@
         <item name="colorSurfaceVariant">@color/sc_surface_variant_dark</item>
         <item name="colorAccentPrimary">@color/sc_accent_primary_dark</item>
 
-        <item name="colorScStatusInfo">@color/gm_green_500</item>
-        <item name="colorScStatusRecommend">@color/gm_yellow_500</item>
-        <item name="colorScStatusWarn">@color/gm_red_500</item>
+        <item name="colorScStatusInfo">@color/sc_status_info_dark</item>
+        <item name="colorScStatusRecommend">@color/sc_status_recommend_dark</item>
+        <item name="colorScStatusWarn">@color/sc_status_warn_dark</item>
 
-        <item name="colorScStatusBackgroundInfo">?attr/colorSurfaceVariant</item>
-        <item name="colorScStatusBackgroundRecommend">?attr/colorSurfaceVariant</item>
-        <item name="colorScStatusBackgroundWarn">?attr/colorSurfaceVariant</item>
+        <item name="colorScStatusBackgroundInfo">@color/sc_status_background_info_dark</item>
+        <item name="colorScStatusBackgroundRecommend">
+            @color/sc_status_background_recommend_dark
+        </item>
+        <item name="colorScStatusBackgroundWarn">@color/sc_status_background_warn_dark</item>
 
         <item name="textColorScActionButton">@android:color/black</item>
-        <item name="textColorScSecondaryActionButton">?android:attr/textColorPrimaryInverse</item>
+        <item name="textColorScSecondaryActionButton">?android:attr/textColorPrimary</item>
 
-        <item name="colorScIconInfo">@color/gm_green_500</item>
-        <item name="colorScIconRecommend">@color/gm_yellow_500</item>
-        <item name="colorScIconWarn">@color/gm_red_500</item>
-        <item name="colorScIconNull">@color/gm_grey_600</item>
+        <item name="colorScIconInfo">@color/sc_icon_info_dark</item>
+        <item name="colorScIconRecommend">@color/sc_icon_recommend_dark</item>
+        <item name="colorScIconWarn">@color/sc_icon_warn_dark</item>
+        <item name="colorScIconNull">@color/sc_icon_null_dark</item>
 
         <!-- Buttons -->
         <!-- TODO: make the action button theme a theme value -->
@@ -55,21 +57,23 @@
         <item name="colorSurfaceVariant">@color/sc_surface_variant_light</item>
         <item name="colorAccentPrimary">@color/sc_accent_primary_light</item>
 
-        <item name="colorScStatusInfo">@color/gm_green_600</item>
-        <item name="colorScStatusRecommend">@color/gm_yellow_600</item>
-        <item name="colorScStatusWarn">@color/gm_red_600</item>
+        <item name="colorScStatusInfo">@color/sc_status_info_light</item>
+        <item name="colorScStatusRecommend">@color/sc_status_recommend_light</item>
+        <item name="colorScStatusWarn">@color/sc_status_warn_light</item>
 
-        <item name="colorScStatusBackgroundInfo">@color/gm_green_100</item>
-        <item name="colorScStatusBackgroundRecommend">@color/gm_yellow_100</item>
-        <item name="colorScStatusBackgroundWarn">@color/gm_red_100</item>
+        <item name="colorScStatusBackgroundInfo">@color/sc_status_background_info_light</item>
+        <item name="colorScStatusBackgroundRecommend">
+            @color/sc_status_background_recommend_light
+        </item>
+        <item name="colorScStatusBackgroundWarn">@color/sc_status_background_warn_light</item>
 
         <item name="textColorScActionButton">@android:color/black</item>
         <item name="textColorScSecondaryActionButton">?android:attr/textColorPrimary</item>
 
-        <item name="colorScIconInfo">@color/gm_green_500</item>
-        <item name="colorScIconRecommend">@color/gm_yellow_500</item>
-        <item name="colorScIconWarn">@color/gm_red_500</item>
-        <item name="colorScIconNull">@color/gm_grey_600</item>
+        <item name="colorScIconInfo">@color/sc_icon_info_light</item>
+        <item name="colorScIconRecommend">@color/sc_icon_recommend_light</item>
+        <item name="colorScIconWarn">@color/sc_icon_warn_light</item>
+        <item name="colorScIconNull">@color/sc_icon_null_light</item>
 
         <!-- Buttons -->
         <item name="scActionButtonStyle">@style/SafetyCenterActionButton</item>
