@@ -414,6 +414,8 @@
             <item type="color" name="sc_accent_primary_light" />
             <item type="color" name="sc_accent_primary_dark" />
             <item type="color" name="sc_shield_accent" />
+            <item type="color" name="sc_shield_accent_dark" />
+            <item type="color" name="sc_shield_accent_fixed_variant" />
             <item type="color" name="safety_center_info" />
             <item type="color" name="safety_center_recommend" />
             <item type="color" name="safety_center_warn" />
