@@ -17,62 +17,52 @@
 package android.safetycenter.hostside
 
 import android.cts.statsdatom.lib.ConfigUtils
-import android.cts.statsdatom.lib.DeviceUtils
 import android.cts.statsdatom.lib.ReportUtils
+import android.safetycenter.hostside.rules.HelperAppRule
+import android.safetycenter.hostside.rules.RequireSafetyCenterRule
 import com.android.os.AtomsProto.Atom
 import com.android.os.AtomsProto.SafetySourceStateCollected
 import com.android.tradefed.testtype.DeviceJUnit4ClassRunner
 import com.android.tradefed.testtype.junit4.BaseHostJUnit4Test
 import com.google.common.truth.Truth.assertThat
 import org.junit.After
-import org.junit.Assume.assumeTrue
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
+import org.junit.rules.RuleChain
 import org.junit.runner.RunWith
 
 /** Host-side tests for Safety Center statsd logging. */
 @RunWith(DeviceJUnit4ClassRunner::class)
 class SafetySourceStateCollectedLoggingHostTest : BaseHostJUnit4Test() {
 
-    // Use lazy here because device is not available when the test is first constructed
-    private val shouldRunTests: Boolean by lazy {
-        // TODO(b/239682646): These tests should enable Safety Center
-        device.supportsSafetyCenter() && device.isSafetyCenterEnabled()
-    }
+    private val safetyCenterRule = RequireSafetyCenterRule(this)
+    private val helperAppRule = HelperAppRule(this, HelperApp.APK_NAME, HelperApp.PACKAGE_NAME)
 
-    @Before
-    fun assumeDeviceSupportsSafetyCenterToRunTests() {
-        assumeTrue(shouldRunTests)
-    }
+    @Rule
+    @JvmField
+    val rules: RuleChain = RuleChain.outerRule(safetyCenterRule).around(helperAppRule)
 
     @Before
     fun setUp() {
-        if (!shouldRunTests) return
-
         ConfigUtils.removeConfig(device)
         ReportUtils.clearReports(device)
-
-        val config = ConfigUtils.createConfigBuilder(device.getSafetyCenterPackageName())
+        val config = ConfigUtils.createConfigBuilder(safetyCenterRule.getSafetyCenterPackageName())
         ConfigUtils.addGaugeMetric(config, Atom.SAFETY_STATE_FIELD_NUMBER)
         ConfigUtils.addEventMetric(config, Atom.SAFETY_SOURCE_STATE_COLLECTED_FIELD_NUMBER)
         ConfigUtils.uploadConfig(device, config)
-        DeviceUtils.installTestApp(device, HelperApp.APK_NAME, HelperApp.PACKAGE_NAME, build)
-
         // TODO(b/239682646): Consider adding a target preparer that unlocks the device (like CTS)
     }
 
     @After
     fun tearDown() {
-        if (!shouldRunTests) return
-
         ReportUtils.clearReports(device)
         ConfigUtils.removeConfig(device)
-        DeviceUtils.uninstallTestApp(device, HelperApp.PACKAGE_NAME)
     }
 
     @Test
     fun triggerStatsPull_atomsPushedForAllSources() {
-        device.runTest(TEST_CLASS_NAME, "triggerStatsPull")
+        helperAppRule.runTest(TEST_CLASS_NAME, "triggerStatsPull")
 
         val sourceStateAtoms = getSafetySourceStateCollectedAtoms()
 
@@ -86,7 +76,7 @@ class SafetySourceStateCollectedLoggingHostTest : BaseHostJUnit4Test() {
 
     @Test
     fun triggerStatsPull_atomsHaveCollectionTypeAutomatic() {
-        device.runTest(TEST_CLASS_NAME, "triggerStatsPull")
+        helperAppRule.runTest(TEST_CLASS_NAME, "triggerStatsPull")
 
         val sourceStateAtoms = getSafetySourceStateCollectedAtoms()
 
@@ -96,7 +86,7 @@ class SafetySourceStateCollectedLoggingHostTest : BaseHostJUnit4Test() {
 
     @Test
     fun setSafetySourceData_atomPushedForThatSource() {
-        device.runTest(TEST_CLASS_NAME, "setSafetySourceData_source1")
+        helperAppRule.runTest(TEST_CLASS_NAME, "setSafetySourceData_source1")
 
         val sourceStateAtoms = getSafetySourceStateCollectedAtoms()
 
@@ -106,7 +96,7 @@ class SafetySourceStateCollectedLoggingHostTest : BaseHostJUnit4Test() {
 
     @Test
     fun setSafetySourceData_atomHasCollectionTypeSourceUpdated() {
-        device.runTest(TEST_CLASS_NAME, "setSafetySourceData_source1")
+        helperAppRule.runTest(TEST_CLASS_NAME, "setSafetySourceData_source1")
 
         val sourceStateAtoms = getSafetySourceStateCollectedAtoms()
 
