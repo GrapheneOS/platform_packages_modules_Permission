@@ -23,16 +23,80 @@ import com.android.permission.safetylabel.SafetyLabel as AppMetadataSafetyLabel
 import com.android.permission.safetylabel.SafetyLabel.KEY_VERSION
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.AppInfo
+import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.AppSafetyLabelHistory
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.DataCategory
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.DataLabel
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.SafetyLabel
+import com.android.permissioncontroller.tests.mocking.safetylabel.TestSafetyLabels.DATE_2022_09_01
+import com.android.permissioncontroller.tests.mocking.safetylabel.TestSafetyLabels.DATE_2022_10_10
+import com.android.permissioncontroller.tests.mocking.safetylabel.TestSafetyLabels.LOCATION_CATEGORY
+import com.android.permissioncontroller.tests.mocking.safetylabel.TestSafetyLabels.PACKAGE_NAME_1
+import com.android.permissioncontroller.tests.mocking.safetylabel.TestSafetyLabels.PACKAGE_NAME_2
+import com.android.permissioncontroller.tests.mocking.safetylabel.TestSafetyLabels.SAFETY_LABEL_PKG_1_V1
+import com.android.permissioncontroller.tests.mocking.safetylabel.TestSafetyLabels.SAFETY_LABEL_PKG_1_V2
+import com.android.permissioncontroller.tests.mocking.safetylabel.TestSafetyLabels.SAFETY_LABEL_PKG_1_V3
+import com.android.permissioncontroller.tests.mocking.safetylabel.TestSafetyLabels.SAFETY_LABEL_PKG_2_V1
 import com.google.common.truth.Truth.assertThat
 import java.time.ZonedDateTime
+import org.junit.Assert
 import org.junit.Test
 
 /** Tests for [AppsSafetyLabelHistory]. */
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
 class AppsSafetyLabelHistoryTest {
+
+    @Test
+    fun createAppSafetyLabelHistory_requiresAllSafetyLabelsHaveSameApp() {
+        Assert.assertThrows(IllegalArgumentException::class.java) {
+            AppSafetyLabelHistory(
+                AppInfo(PACKAGE_NAME_1), listOf(SAFETY_LABEL_PKG_1_V1, SAFETY_LABEL_PKG_2_V1))
+        }
+    }
+
+    @Test
+    fun createAppSafetyLabelHistory_requiresOrderedByReceivedAt() {
+        Assert.assertThrows(IllegalArgumentException::class.java) {
+            AppSafetyLabelHistory(
+                AppInfo(PACKAGE_NAME_1), listOf(SAFETY_LABEL_PKG_1_V2, SAFETY_LABEL_PKG_1_V1))
+        }
+    }
+
+    @Test
+    fun withSafetyLabel_forDifferentApp_throwsIllegalArgumentException() {
+        val appSafetyLabelHistory =
+            AppSafetyLabelHistory(
+                AppInfo(PACKAGE_NAME_1), listOf(SAFETY_LABEL_PKG_1_V1, SAFETY_LABEL_PKG_1_V3))
+
+        Assert.assertThrows(IllegalArgumentException::class.java) {
+            appSafetyLabelHistory.withSafetyLabel(SAFETY_LABEL_PKG_2_V1, 20)
+        }
+    }
+
+    @Test
+    fun withSafetyLabel_returnsOrderdSafetyLabels() {
+        val appSafetyLabelHistory =
+            AppSafetyLabelHistory(
+                AppInfo(PACKAGE_NAME_1), listOf(SAFETY_LABEL_PKG_1_V1, SAFETY_LABEL_PKG_1_V3))
+
+        assertThat(appSafetyLabelHistory.withSafetyLabel(SAFETY_LABEL_PKG_1_V2, 20))
+            .isEqualTo(
+                AppSafetyLabelHistory(
+                    AppInfo(PACKAGE_NAME_1),
+                    listOf(SAFETY_LABEL_PKG_1_V1, SAFETY_LABEL_PKG_1_V2, SAFETY_LABEL_PKG_1_V3)))
+    }
+
+    @Test
+    fun withSafetyLabel_dropsOldLabelsWhenMaxPersisted() {
+        val appSafetyLabelHistory =
+            AppSafetyLabelHistory(
+                AppInfo(PACKAGE_NAME_1), listOf(SAFETY_LABEL_PKG_1_V1, SAFETY_LABEL_PKG_1_V3))
+
+        assertThat(appSafetyLabelHistory.withSafetyLabel(SAFETY_LABEL_PKG_1_V2, 2))
+            .isEqualTo(
+                AppSafetyLabelHistory(
+                    AppInfo(PACKAGE_NAME_1), listOf(SAFETY_LABEL_PKG_1_V2, SAFETY_LABEL_PKG_1_V3)))
+    }
+
     @Test
     fun extractLocationSharingSafetyLabel_noSharing_returnsSafetyLabelForPersistence() {
         val metadataBundle = createMetadataWithDataShared(createDataSharedNoSharing())

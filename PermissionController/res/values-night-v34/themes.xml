@@ -20,4 +20,8 @@
            parent="@android:style/Theme.DeviceDefault.Dialog">
         <item name="android:colorBackground">@color/google_grey_800</item>
     </style>
+
+    <style name="Theme.SafetyCenter" parent="Theme.SafetyCenterBase">
+        <item name="colorScShieldAccent">@color/sc_shield_accent_dark</item>
+    </style>
 </resources>

@@ -17,8 +17,9 @@
 package android.safetycenter.hostside
 
 import android.cts.statsdatom.lib.ConfigUtils
-import android.cts.statsdatom.lib.DeviceUtils
 import android.cts.statsdatom.lib.ReportUtils
+import android.safetycenter.hostside.rules.HelperAppRule
+import android.safetycenter.hostside.rules.RequireSafetyCenterRule
 import com.android.os.AtomsProto.Atom
 import com.android.os.AtomsProto.SafetyCenterInteractionReported
 import com.android.os.AtomsProto.SafetyCenterInteractionReported.Action
@@ -27,56 +28,45 @@ import com.android.tradefed.testtype.DeviceJUnit4ClassRunner
 import com.android.tradefed.testtype.junit4.BaseHostJUnit4Test
 import com.google.common.truth.Truth.assertThat
 import org.junit.After
-import org.junit.Assume.assumeTrue
 import org.junit.Before
 import org.junit.Ignore
+import org.junit.Rule
 import org.junit.Test
+import org.junit.rules.RuleChain
 import org.junit.runner.RunWith
 
 /** Host-side tests for Safety Center statsd logging. */
 @RunWith(DeviceJUnit4ClassRunner::class)
 class SafetyCenterInteractionLoggingHostTest : BaseHostJUnit4Test() {
 
-    private val shouldRunTests: Boolean by lazy {
-        // Device is not available when the test is first constructed
-        // TODO(b/239682646): These tests should enable safety center instead of only running when
-        // it's already enabled.
-        device.supportsSafetyCenter() && device.isSafetyCenterEnabled()
-    }
+    private val safetyCenterRule = RequireSafetyCenterRule(this)
+    private val helperAppRule = HelperAppRule(this, HelperApp.APK_NAME, HelperApp.PACKAGE_NAME)
 
-    @Before
-    fun assumeDeviceSupportsSafetyCenterToRunTests() {
-        assumeTrue(shouldRunTests)
-    }
+    @Rule
+    @JvmField
+    val rules: RuleChain = RuleChain.outerRule(safetyCenterRule).around(helperAppRule)
 
     @Before
     fun setUp() {
-        if (!shouldRunTests) return
-
         ConfigUtils.removeConfig(device)
         ReportUtils.clearReports(device)
         ConfigUtils.uploadConfigForPushedAtom(
             device,
-            device.getSafetyCenterPackageName(),
+            safetyCenterRule.getSafetyCenterPackageName(),
             Atom.SAFETY_CENTER_INTERACTION_REPORTED_FIELD_NUMBER
         )
-        DeviceUtils.installTestApp(device, HelperApp.APK_NAME, HelperApp.PACKAGE_NAME, build)
-
         // TODO(b/239682646): Consider adding a target preparer that unlocks the device (like CTS)
     }
 
     @After
     fun tearDown() {
-        if (!shouldRunTests) return
-
         ConfigUtils.removeConfig(device)
         ReportUtils.clearReports(device)
-        DeviceUtils.uninstallTestApp(device, HelperApp.PACKAGE_NAME)
     }
 
     @Test
     fun openSafetyCenter_recordsSafetyCenterViewedEvent() {
-        device.runTest(TEST_CLASS_NAME, testMethodName = "openSafetyCenter")
+        helperAppRule.runTest(TEST_CLASS_NAME, testMethodName = "openSafetyCenter")
 
         val safetyCenterViewedAtoms = getInteractionReportedAtoms(Action.SAFETY_CENTER_VIEWED)
 
@@ -85,7 +75,7 @@ class SafetyCenterInteractionLoggingHostTest : BaseHostJUnit4Test() {
 
     @Test
     fun sendNotification_recordsNotificationPostedEvent() {
-        device.runTest(
+        helperAppRule.runTest(
             testClassName = ".SafetyCenterNotificationLoggingHelperTests",
             testMethodName = "sendNotification"
         )
@@ -99,7 +89,7 @@ class SafetyCenterInteractionLoggingHostTest : BaseHostJUnit4Test() {
 
     @Test
     fun openSubpageFromIntentExtra_recordsEventWithUnknownNavigationSource() {
-        device.runTest(TEST_CLASS_NAME, testMethodName = "openSubpageFromIntentExtra")
+        helperAppRule.runTest(TEST_CLASS_NAME, testMethodName = "openSubpageFromIntentExtra")
 
         val safetyCenterViewedAtoms = getInteractionReportedAtoms(Action.SAFETY_CENTER_VIEWED)
 
@@ -116,7 +106,7 @@ class SafetyCenterInteractionLoggingHostTest : BaseHostJUnit4Test() {
     @Ignore
     // TODO(b/278202773): Fix/de-flake this test
     fun openSubpageFromHomepage_recordsEventWithSafetyCenterNavigationSource() {
-        device.runTest(TEST_CLASS_NAME, testMethodName = "openSubpageFromHomepage")
+        helperAppRule.runTest(TEST_CLASS_NAME, testMethodName = "openSubpageFromHomepage")
 
         val safetyCenterViewedAtoms = getInteractionReportedAtoms(Action.SAFETY_CENTER_VIEWED)
 
@@ -132,7 +122,7 @@ class SafetyCenterInteractionLoggingHostTest : BaseHostJUnit4Test() {
     @Ignore
     // TODO(b/278202773): Fix/de-flake this test
     fun openSubpageFromSettingsSearch_recordsEventWithSettingsNavigationSource() {
-        device.runTest(TEST_CLASS_NAME, testMethodName = "openSubpageFromSettingsSearch")
+        helperAppRule.runTest(TEST_CLASS_NAME, testMethodName = "openSubpageFromSettingsSearch")
 
         val safetyCenterViewedAtoms = getInteractionReportedAtoms(Action.SAFETY_CENTER_VIEWED)
 
