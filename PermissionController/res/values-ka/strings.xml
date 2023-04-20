@@ -189,7 +189,7 @@
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"ყოველთვის დაშვება"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"მხოლოდ აპის გამოყენებისას დაშვება"</string>
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"ყოველთვის ყველას დაშვება"</string>
-    <string name="app_permission_button_ask" msgid="3342950658789427">"ყოველთვის მკითხეთ"</string>
+    <string name="app_permission_button_ask" msgid="3342950658789427">"ყოველთვის მკითხე"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"არ დაიშვას"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"ზუსტი მდებარეობა"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"მიახლოებითი მდებარეობა"</string>
@@ -250,7 +250,7 @@
     <string name="allowed_foreground_header" msgid="6845655788447833353">"დაშვებულია მხოლოდ გამოყენებისას"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"დაშვებულია მხოლოდ მედიაზე წვდომა"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"დაშვებულია ყველა ფაილის მართვა"</string>
-    <string name="ask_header" msgid="2633816846459944376">"ყოველთვის მკითხეთ"</string>
+    <string name="ask_header" msgid="2633816846459944376">"ყოველთვის მკითხე"</string>
     <string name="denied_header" msgid="903209608358177654">"არ არის დაშვებული"</string>
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"სხვა აპების ნახვა, რომლებსაც ყველა ფაილზე წვდომა შეუძლია"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 დღე}other{# დღე}}"</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"გსურთ გამოყენებისას &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ს მიანიჭოთ სხეულის სენსორების მონაცემებზე წვდომა?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"მისცემთ უფლებას &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ს, გამოგიგზავნოთ შეტყობინებები?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"კონტროლირებული ნებართვები"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"მდებარეობაზე წვდომა შესაძლებელია"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"თქვენი IT ადმინისტრატორი <xliff:g id="APP_NAME">%s</xliff:g>-ს თქვენს მდებარეობაზე წვდომის საშუალებას აძლევს"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"სხვა ნებართვები"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"ნებართვები, რომლებსაც სისტემა იყენებს"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"ნებართვები, რომლებსაც მხოლოდ სისტემის აპლიკაციები იყენებს."</string>

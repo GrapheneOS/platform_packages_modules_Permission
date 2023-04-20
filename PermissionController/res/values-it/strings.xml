@@ -498,8 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Continuare a consentire a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere ai dati dei sensori del corpo mentre l\'app è in uso?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di inviarti notifiche?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Autorizzazioni controllate"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"È possibile accedere alla posizione"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"L\'amministratore IT consentirà all\'app <xliff:g id="APP_NAME">%s</xliff:g> di accedere alla tua posizione"</string>
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"L\'app <xliff:g id="APP_NAME">%1$s</xliff:g> ha accesso alla posizione"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"La tua organizzazione consente all\'app <xliff:g id="APP_NAME">%1$s</xliff:g> di accedere alla tua posizione"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"Altre autorizzazioni"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Autorizzazione usata dal sistema"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Autorizzazioni usate soltanto dalle applicazioni di sistema."</string>

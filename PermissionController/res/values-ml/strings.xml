@@ -498,8 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ആപ്പ് ഉപയോഗിക്കുമ്പോഴും ബോഡി സെൻസർ ഡാറ്റ ആക്‌സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കുന്നത് തുടരണോ?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"നിങ്ങൾക്ക് അറിയിപ്പുകൾ അയയ്ക്കാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കണോ?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"നിയന്ത്രിത അനുമതികൾ"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"ലൊക്കേഷൻ ആക്‌സസ് ചെയ്യാൻ കഴിയും"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"നിങ്ങളുടെ ലൊക്കേഷൻ ആക്‌സസ് ചെയ്യാൻ നിങ്ങളുടെ ഐടി അഡ്‌മിൻ <xliff:g id="APP_NAME">%s</xliff:g> എന്നതിനെ അനുവദിക്കുന്നു"</string>
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> എന്നതിന് ലൊക്കേഷൻ ആക്‌സസ് ഉണ്ട്"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"നിങ്ങളുടെ ലൊക്കേഷൻ ആക്‌സസ് ചെയ്യാൻ നിങ്ങളുടെ സ്ഥാപനം <xliff:g id="APP_NAME">%1$s</xliff:g> എന്നതിനെ അനുവദിക്കുന്നു"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"മറ്റ് അനുമതികൾ"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"സിസ്‌റ്റം ഉപയോഗിക്കുന്ന അനുമതി"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"സിസ്‌റ്റം ആപ്പുകൾ മാത്രം ഉപയോഗിക്കുന്ന അനുമതികൾ."</string>

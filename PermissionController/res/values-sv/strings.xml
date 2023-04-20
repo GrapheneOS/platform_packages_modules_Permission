@@ -36,8 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Tillåt alltid alla"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Välj foton och videor"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Välj fler"</string>
-    <!-- no translation found for grant_dialog_button_dont_select_more (6643552729129461268) -->
-    <skip />
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Välj inte fler"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Tillåt inte ändå"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Stäng"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> av <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -227,7 +226,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Öppnades senast <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Om du tillåter hantering av alla filer kan appen komma åt, redigera och radera alla filer i det vanliga lagringsutrymmet på denna enhet eller anslutna lagringsenheter. Appen kan komma åt filer utan att du tillfrågas."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Vill du tillåta att den här appen får komma åt, redigera och radera filer på enheten och eventuella anslutna lagringsenheter? Appen kan komma åt filer utan att du tillfrågas."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Appar med den här behörigheten kan: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Appar med den här behörigheten kan <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Appar med den här behörigheten får åtkomst till din fysiska aktivitet, till exempel promenader, cykelturer, körning, stegräkning och annat"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Appar med den här behörigheten får åtkomst till din kalender"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Appar med den här behörigheten kan läsa och skriva samtalshistoriken"</string>
@@ -499,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Ska &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ha åtkomst till data från kroppssensorer medan appen används även i fortsättningen?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Vill du ge &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; behörighet att skicka aviseringar?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Styrda behörigheter"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Plats kan kommas åt"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"IT-administratören tillåter att <xliff:g id="APP_NAME">%s</xliff:g> får åtkomst till din plats"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Andra behörigheter"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Behörighet som används av systemet"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Behörigheter som bara används av systemappar."</string>

@@ -498,8 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"యాప్‌ను వినియోగిస్తున్నప్పుడు బాడీ సెన్సార్ డేటాను యాక్సెస్ చేయగలిగేలా &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‌కు ఉన్న అనుమతిని కొనసాగించాలా?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"మీకు నోటిఫికేషన్‌లను పంపడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"నియంత్రణలో ఉన్న అనుమతులు"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"లొకేషన్‌ను యాక్సెస్ చేయవచ్చు"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"మీ IT అడ్మిన్ మీ లొకేషన్‌ను యాక్సెస్ చేయడానికి <xliff:g id="APP_NAME">%s</xliff:g>‌ని అనుమతిస్తున్నారు"</string>
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g>‌కు లొకేషన్ యాక్సెస్ ఉంది"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"మీ సంస్థ, మీ లొకేషన్‌ను యాక్సెస్ చేయడానికి <xliff:g id="APP_NAME">%1$s</xliff:g>‌నకు అనుమతి ఇస్తుంది"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"ఇతర అనుమతులు"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"సిస్టమ్ ఉపయోగించే అనుమతి"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"సిస్టమ్ యాప్‌లు మాత్రమే ఉపయోగించే అనుమతులు."</string>

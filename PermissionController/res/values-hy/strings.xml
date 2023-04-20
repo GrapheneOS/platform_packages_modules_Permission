@@ -36,8 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Միշտ թույլատրել բոլորը"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Ընտրել լուսանկարներ և տեսանյութեր"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Ընտրել այլ տարրեր"</string>
-    <!-- no translation found for grant_dialog_button_dont_select_more (6643552729129461268) -->
-    <skip />
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Չընտրել ավելի շատ"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Միևնույն է չթույլատրել"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Փակել"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>/<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -264,7 +263,7 @@
     <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"Թույլտվությունները հեռացվել են ձեր գաղտնիությունը պաշտպանելու նպատակով։ Հպեք՝ մանրամասները տեսնելու համար։"</string>
     <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"Չօգտագործվող հավելվածների թույլտվությունները հեռացվել են"</string>
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Որոշ հավելվածներ մի քանի ամիս է, ինչ չեն օգտագործվել։ Հպեք՝ մանրամասները տեսնելու համար։"</string>
-    <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# չօգտագործվող հավելված}one{# օգտագործվող հավելված}other{# օգտագործվող հավելված}}"</string>
+    <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# չօգտագործվող հավելված}one{# չօգտագործվող հավելված}other{# չօգտագործվող հավելված}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Թույլտվություններն ու ժամանակավոր ֆայլերը հեռացվել են, իսկ ծանուցումների ուղարկումը դադարեցվել է։ Հպեք՝ մանրամասներն իմանալու համար։"</string>
     <string name="unused_apps_safety_center_card_title" msgid="5638409355530099149">"Ստուգեք հավելվածները, որոնց թույլտվությունները հեռացվել են"</string>
     <string name="unused_apps_safety_center_card_content" msgid="1088557243627427820">"Հավելվածներում, որոնք վաղուց չեք օգտագործել, թույլտվություններն ու ժամանակավոր ֆայլերը հեռացվել են, իսկ ծանուցումները՝ դադարեցվել։"</string>
@@ -499,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Մարմնի սենսորների տվյալները հասանելի դարձնե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին, միայն երբ այն օգտագործվում է"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին ծանուցումներ ուղարկել ձեզ"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Կառավարվող թույլտվություններ"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Հավելվածին հասանելի են ձեր տեղադրության մասին տվյալները"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Ձեր ՏՏ ադմինիստրատորը <xliff:g id="APP_NAME">%s</xliff:g> հավելվածին թույլատրել է օգտագործել ձեր տեղադրության մասին տվյալները։"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Այլ թույլտվություններ"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Համակարգի կողմից օգտագործվող հավելվածներ"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Միայն համակարգի հավելվածների կողմից օգտագործվող թույլտվություններ"</string>
@@ -525,7 +526,7 @@
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"Սկանավորել սարքը"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Փակել"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Փակե՞լ այս ծանուցումը"</string>
-    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"Պաշտպանությունն ուժեցնելու համար ցանկացած ժամանակ ստուգեք ձեր անվտանգության և գաղտնիության կարգավորումները"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"Պաշտպանությունն ուժեղացնելու համար ցանկացած ժամանակ ստուգեք ձեր անվտանգության և գաղտնիության կարգավորումները"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Փակել"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Չեղարկել"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"Կարգավորումներ"</string>
