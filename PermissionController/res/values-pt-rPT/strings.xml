@@ -60,7 +60,7 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Apps"</string>
     <string name="app_permissions" msgid="3369917736607944781">"Autorizações da app"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Apps não usadas"</string>
-    <string name="no_unused_apps" msgid="12809387670415295">"Nenhuma app não utilizada"</string>
+    <string name="no_unused_apps" msgid="12809387670415295">"Nenhuma app não usada"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"0 apps não utilizadas"</string>
     <string name="review_permission_decisions" msgid="309559429150613632">"Decisões de autorização recentes"</string>
     <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Ver todas as decisões de autorização recentes"</string>
@@ -219,7 +219,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Autorizações de <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> e <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> removidas."</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Autorização de <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> e mais <xliff:g id="NUMBER">%2$s</xliff:g> autorizações removidas."</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Apps não usadas"</string>
-    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Se uma app não for utilizada durante alguns meses:\n\n• As autorizações são removidas para proteger os seus dados\n• As notificações são interrompidas para poupar bateria\n• Os ficheiros temporários são removidos para libertar espaço\n\nPara voltar a permitir autorizações e notificações, abra a app."</string>
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Se uma app não for usada durante alguns meses:\n\n• As autorizações são removidas para proteger os seus dados\n• As notificações são interrompidas para poupar bateria\n• Os ficheiros temporários são removidos para libertar espaço\n\nPara voltar a permitir autorizações e notificações, abra a app."</string>
     <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"Se uma app não for usada durante um mês:\n\n• As autorizações são removidas para proteger os seus dados\n• Os ficheiros temporários são removidos para libertar espaço\n\nPara voltar a permitir autorizações, abra a app."</string>
     <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Abertas pela última vez há mais de # mês}many{Abertas pela última vez há mais de # de meses}other{Abertas pela última vez há mais de # meses}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"A app foi aberta pela última vez a <xliff:g id="DATE">%s</xliff:g>."</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Continuar a permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aceda aos dados de sensores de corpo enquanto usa a app?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; lhe envie notificações?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Autorizações controladas"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"É possível aceder à localização"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"O seu administrador de TI está a permitir que a app <xliff:g id="APP_NAME">%s</xliff:g> aceda à sua localização"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Outras autorizações"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Autorização utilizada pelo sistema"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Autorizações utilizadas apenas pelas aplicações do sistema."</string>

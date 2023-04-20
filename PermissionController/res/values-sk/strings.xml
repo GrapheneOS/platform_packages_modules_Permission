@@ -23,7 +23,7 @@
     <string name="back" msgid="6249950659061523680">"Späť"</string>
     <string name="available" msgid="6007778121920339498">"Dostupné"</string>
     <string name="blocked" msgid="9195547604866033708">"Blokované"</string>
-    <string name="on" msgid="280241003226755921">"Zapnutý"</string>
+    <string name="on" msgid="280241003226755921">"Zapnuté"</string>
     <string name="off" msgid="1438489226422866263">"Vypnuté"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Odinštalovať alebo deaktivovať"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Aplikácia sa nenašla"</string>
@@ -219,7 +219,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Boli odstránené povolenia <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> a <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Bolo odstránené povolenie <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> a ďalšie (<xliff:g id="NUMBER">%2$s</xliff:g>)"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Nepoužívané aplikácie"</string>
-    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Ak aplikácia nebola používaná niekoľko mesiacov:\n\n• povolenia budú z dôvodu ochrany vašich údajov odstránené,\n• upozornenia prestanú fungovať, aby sa šetrila batéria,\n• dočasné súbory budú odstránené, aby sa uvoľnilo miesto.\n\nAk budete chcieť povolenia a upozornenia znova aktivovať, otvorte aplikáciu."</string>
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Ak aplikácia nebola používaná niekoľko mesiacov:\n\n• povolenia budú z dôvodu ochrany vašich údajov odstránené,\n• upozornenia sa zastavia, aby sa šetrila batéria,\n• dočasné súbory budú odstránené, aby sa uvoľnilo miesto.\n\nAk budete chcieť povolenia a upozornenia znova aktivovať, otvorte aplikáciu."</string>
     <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"Ak aplikácia nebola použitá mesiac:\n\n• povolenia budú z dôvodu ochrany vašich údajov odstránené;\n• dočasné súbory budú odstránené, aby sa uvoľnilo miesto.\n\nAk budete chcieť povolenia znova udeliť, otvorte aplikáciu."</string>
     <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Naposledy otvorené pred viac než # mesiacom}few{Naposledy otvorené pred viac než # mesiacmi}many{Naposledy otvorené pred viac než # mesiaca}other{Naposledy otvorené pred viac než # mesiacmi}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Aplikácia bola naposledy otvorená <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -239,7 +239,7 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Aplikácie s týmto povolením majú prístup k dátam senzorov o vašich životných funkciách"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Aplikácie s týmto povolením môžu odosielať a zobrazovať správy SMS"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Aplikácie s týmto povolením majú prístup k fotkám, médiám a súborom vo vašom zariadení"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"Aplikácie s týmto povolením majú prístup k hudbe a ďalším zvukovým súborom v tomto zariadení"</string>
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"Aplikácie s týmto povolením majú prístup k hudbe a ďalším zvukovým súborom v tomto zariadení."</string>
     <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"Aplikácie s týmto povolením majú prístup k fotkám a videám v tomto zariadení"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Posledný prístup: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Momentálne zamietnuté / posledný prístup <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
@@ -498,8 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k dátam telových senzorov počas jej používania?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; posielať vám upozornenia?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Ovládané povolenia"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Polohu je možné používať"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Váš správca IT povoľuje aplikácii <xliff:g id="APP_NAME">%s</xliff:g> používať vašu polohu"</string>
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> má prístup k polohe"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Vaša organizácia povoľuje aplikácii <xliff:g id="APP_NAME">%1$s</xliff:g> prístup k vašej polohe"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"Ďalšie povolenia"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Povolenia používané systémom"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Povolenia používané iba systémovými aplikáciami."</string>
@@ -521,10 +521,10 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Keď zavoláte na tiesňovú linku, môžu sa stále zdieľať údaje mikrofónu."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Zmeniť"</string>
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Zabezpečenie, ochrana súkromia"</string>
-    <string name="safety_center_rescan_button" msgid="4517514567809409596">"Prehľadať zariadenie"</string>
+    <string name="safety_center_rescan_button" msgid="4517514567809409596">"Skontrolovať zariadenie"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Zavrieť"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Chcete zavrieť toto upozornenie?"</string>
-    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"Kedykoľvek si môžete skontrolovať nastavenia zabezpečenia a ochrany súkromia a pridať tak ďalšiu ochranu"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"Kedykoľvek si môžete skontrolovať nastavenia zabezpečenia a ochrany súkromia a ochranu zlepšiť"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Zavrieť"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Zrušiť"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"Nastavenia"</string>

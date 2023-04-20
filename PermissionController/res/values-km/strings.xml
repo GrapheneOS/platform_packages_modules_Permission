@@ -498,8 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"បន្តអនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ចូលប្រើទិន្នន័យឧបករណ៍ចាប់សញ្ញារាងកាយ ខណៈពេលកំពុងប្រើកម្មវិធីឬ?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ផ្ញើ​ការជូនដំណឹង​ឱ្យអ្នកឬ?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"ការអនុញ្ញាត​ដែលស្ថិតក្រោម​ការគ្រប់គ្រង"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"អាចចូលប្រើទីតាំងបាន"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"អ្នកគ្រប់គ្រងផ្នែកព័ត៌មានវិទ្យារបស់អ្នកកំពុងអនុញ្ញាតឱ្យ <xliff:g id="APP_NAME">%s</xliff:g> ចូលប្រើទីតាំងរបស់អ្នក"</string>
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> មានសិទ្ធិចូលប្រើទីតាំង"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"ស្ថាប័នរបស់អ្នកអនុញ្ញាតឱ្យ <xliff:g id="APP_NAME">%1$s</xliff:g> ចូលប្រើទីតាំងរបស់អ្នក"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"ការអនុញ្ញាត​ផ្សេងទៀត"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"ការអនុញ្ញាត​ដែលត្រូវបានប្រើដោយ​ប្រព័ន្ធ"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"ការអនុញ្ញាត​ដែលត្រូវបានប្រើ​ដោយកម្មវិធីប្រព័ន្ធ​តែប៉ុណ្ណោះ។"</string>

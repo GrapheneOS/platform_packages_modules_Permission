@@ -36,8 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Әрдайым бәріне рұқсат беру"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Фотосуреттер мен бейнелерді таңдау"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Тағы таңдау"</string>
-    <!-- no translation found for grant_dialog_button_dont_select_more (6643552729129461268) -->
-    <skip />
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Тағы басқасын таңдамау"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Бәрібір рұқсат бермеу"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Жабу"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>/<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -463,8 +462,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Қолданбаны пайдаланбасаңыз да, ол үнемі геодеректеріңізді пайдаланғысы келуі мүмкін. "<annotation id="link">"Параметрлерден рұқсат беріңіз."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына геодеректі пайдалануға рұқсат етілсін бе?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Қолданбаны пайдаланбасаңыз да, ол үнемі геодеректеріңізді пайдаланғысы келеді. "<annotation id="link">"Параметрлерден рұқсат беріңіз."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына маңайдағы құрылғыларды табуға, олармен байланысуға және тиісті орнын анықтауға рұқсат етілсін бе?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына маңайдағы құрылғыларды табуға, олармен байланысуға және тиісті орнын анықтауға рұқсат етілсін бе? "<annotation id="link">"Параметрлерден рұқсат беру."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына маңайдағы құрылғыларды табуға, олармен байланысуға және олардың орналасуын анықтауға рұқсат берілсін бе?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына маңайдағы құрылғыларды табуға, олармен байланысуға және олардың орналасуын анықтауға рұқсат берілсін бе? "<annotation id="link">"Параметрлерден рұқсат бере аласыз."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> қолданбасының болжалды емес, нақты локацияны пайдалануына рұқсат беру керек пе?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына осы құрылғының болжалды орнын пайдалануға рұқсат берілсін бе?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Нақты"</string>
@@ -499,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Жұмыс кезінде &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасы дене датчигінен алынған деректі одан әрі пайдалана берсін бе?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасы хабарландыру жіберсін бе?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Басқарылатын рұқсаттар"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Локация пайдаланылады."</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Әкімшіңіз <xliff:g id="APP_NAME">%s</xliff:g> қолданбасына геодерегіңізді пайдалануға рұқсат береді."</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Басқа рұқсаттар"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Жүйе пайдаланатын рұқсаттар"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Тек жүйе қолданбалары пайдаланатын рұқсаттар."</string>

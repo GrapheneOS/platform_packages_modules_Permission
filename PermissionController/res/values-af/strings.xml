@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Gee &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; steeds toegang tot liggaamsensordata terwyl die program gebruik word?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Laat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toe om vir jou kennisgewings te stuur?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Beheerde toestemmings"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Kan toegang tot ligging kry"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Jou IT-admin laat <xliff:g id="APP_NAME">%s</xliff:g> toe om toegang tot jou ligging te kry"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Ander toestemmings"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Toestemming wat deur die stelsel gebruik word"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Toestemmings wat net deur die stelselprogramme gebruik word."</string>
