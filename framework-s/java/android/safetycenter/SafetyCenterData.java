@@ -46,8 +46,20 @@ import java.util.Set;
 @RequiresApi(TIRAMISU)
 public final class SafetyCenterData implements Parcelable {
 
-    /** Known key we store in the 'extras' bundle. */
-    private static final String ISSUES_TO_GROUPS_BUNDLE_KEY = "IssuesToGroupsKey";
+    /**
+     * A key used in {@link #getExtras()} to map {@link SafetyCenterIssue} ids to their associated
+     * {@link SafetyCenterEntryGroup} ids.
+     */
+    private static final String ISSUES_TO_GROUPS_BUNDLE_KEY = "IssuesToGroups";
+
+    /**
+     * A key used in {@link #getExtras()} to map {@link SafetyCenterStaticEntry} to their associated
+     * ids.
+     *
+     * <p>{@link SafetyCenterStaticEntry} are keyed by {@code
+     * SafetyCenterIds.toBundleKey(safetyCenterStaticEntry)}.
+     */
+    private static final String STATIC_ENTRIES_TO_IDS_BUNDLE_KEY = "StaticEntriesToIds";
 
     @NonNull
     public static final Creator<SafetyCenterData> CREATOR =
@@ -197,36 +209,64 @@ public final class SafetyCenterData implements Parcelable {
     }
 
     /** We're only comparing the bundle data that we know of. */
-    private boolean areKnownExtrasContentsEqual(@NonNull Bundle first, @NonNull Bundle second) {
-        Bundle firstIssuesKeys = first.getBundle(ISSUES_TO_GROUPS_BUNDLE_KEY);
-        Bundle secondIssuesKeys = second.getBundle(ISSUES_TO_GROUPS_BUNDLE_KEY);
-
-        if (firstIssuesKeys == null && secondIssuesKeys == null) { // both
-            return true;
-        }
-        if (firstIssuesKeys == null || secondIssuesKeys == null) { // exactly one
-            return false;
-        }
-
-        // We know exactly how these bundles are structured, they're made of comparable elements
-        // so we can compare them. They're essentially a Map<String, ArrayList<String>>.
-        return areIssuesToGroupsBundlesEqual(firstIssuesKeys, secondIssuesKeys);
+    private static boolean areKnownExtrasContentsEqual(
+            @NonNull Bundle left, @NonNull Bundle right) {
+        return areIssuesToGroupsEqual(left, right) && areStaticEntriesToIdsEqual(left, right);
     }
 
-    private boolean areIssuesToGroupsBundlesEqual(@NonNull Bundle first, @NonNull Bundle second) {
-        Set<String> firstKeys = first.keySet();
-        Set<String> secondKeys = second.keySet();
+    private static boolean areIssuesToGroupsEqual(@NonNull Bundle left, @NonNull Bundle right) {
+        Bundle leftIssuesToGroupsBundle = left.getBundle(ISSUES_TO_GROUPS_BUNDLE_KEY);
+        Bundle rightIssuesToGroupsBundle = right.getBundle(ISSUES_TO_GROUPS_BUNDLE_KEY);
 
-        if (!Objects.equals(firstKeys, secondKeys)) {
-            return false;
-        }
-
-        if (firstKeys == null) {
+        if (leftIssuesToGroupsBundle == null && rightIssuesToGroupsBundle == null) {
             return true;
         }
 
-        for (String key : firstKeys) {
-            if (!Objects.equals(first.getStringArrayList(key), second.getStringArrayList(key))) {
+        if (leftIssuesToGroupsBundle == null || rightIssuesToGroupsBundle == null) {
+            return false;
+        }
+
+        Set<String> leftKeys = leftIssuesToGroupsBundle.keySet();
+        Set<String> rightKeys = rightIssuesToGroupsBundle.keySet();
+
+        if (!Objects.equals(leftKeys, rightKeys)) {
+            return false;
+        }
+
+        for (String key : leftKeys) {
+            if (!Objects.equals(
+                    leftIssuesToGroupsBundle.getStringArrayList(key),
+                    rightIssuesToGroupsBundle.getStringArrayList(key))) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private static boolean areStaticEntriesToIdsEqual(@NonNull Bundle left, @NonNull Bundle right) {
+        Bundle leftStaticEntriesToIdsBundle = left.getBundle(STATIC_ENTRIES_TO_IDS_BUNDLE_KEY);
+        Bundle rightStaticEntriesToIdsBundle = right.getBundle(STATIC_ENTRIES_TO_IDS_BUNDLE_KEY);
+
+        if (leftStaticEntriesToIdsBundle == null && rightStaticEntriesToIdsBundle == null) {
+            return true;
+        }
+
+        if (leftStaticEntriesToIdsBundle == null || rightStaticEntriesToIdsBundle == null) {
+            return false;
+        }
+
+        Set<String> leftKeys = leftStaticEntriesToIdsBundle.keySet();
+        Set<String> rightKeys = rightStaticEntriesToIdsBundle.keySet();
+
+        if (!Objects.equals(leftKeys, rightKeys)) {
+            return false;
+        }
+
+        for (String key : leftKeys) {
+            if (!Objects.equals(
+                    leftStaticEntriesToIdsBundle.getString(key),
+                    rightStaticEntriesToIdsBundle.getString(key))) {
                 return false;
             }
         }
@@ -247,17 +287,33 @@ public final class SafetyCenterData implements Parcelable {
 
     /** We're only hashing bundle data that we know of. */
     private int getExtrasHash() {
+        return Objects.hash(getIssuesToGroupsHash(), getStaticEntriesToIdsHash());
+    }
+
+    private int getIssuesToGroupsHash() {
         Bundle issuesToGroups = mExtras.getBundle(ISSUES_TO_GROUPS_BUNDLE_KEY);
         if (issuesToGroups == null) {
             return 0;
         }
 
-        // Following the standard implementation found in HashMap and AbstractMap
         int hash = 0;
         for (String key : issuesToGroups.keySet()) {
             hash +=
                     Objects.hashCode(key)
                             ^ Objects.hashCode(issuesToGroups.getStringArrayList(key));
+        }
+        return hash;
+    }
+
+    private int getStaticEntriesToIdsHash() {
+        Bundle staticEntriesToIds = mExtras.getBundle(STATIC_ENTRIES_TO_IDS_BUNDLE_KEY);
+        if (staticEntriesToIds == null) {
+            return 0;
+        }
+
+        int hash = 0;
+        for (String key : staticEntriesToIds.keySet()) {
+            hash += Objects.hashCode(key) ^ Objects.hashCode(staticEntriesToIds.getString(key));
         }
         return hash;
     }
@@ -284,29 +340,41 @@ public final class SafetyCenterData implements Parcelable {
     @NonNull
     private String extrasToString() {
         Bundle issuesToGroups = mExtras.getBundle(ISSUES_TO_GROUPS_BUNDLE_KEY);
-        boolean hasKnownExtras = issuesToGroups != null;
-
-        int keyNum = mExtras.keySet().size();
-        boolean hasUnknownExtras =
-                (!hasKnownExtras && keyNum > 0) || (hasKnownExtras && keyNum > 1);
-
-        if (!hasKnownExtras && !hasUnknownExtras) {
-            return "(no extras)";
-        }
+        Bundle staticEntriesToIds = mExtras.getBundle(STATIC_ENTRIES_TO_IDS_BUNDLE_KEY);
+        int knownExtras = 0;
         StringBuilder sb = new StringBuilder();
-        if (hasKnownExtras) {
+
+        if (issuesToGroups != null) {
             sb.append("IssuesToGroups:[");
             for (String key : issuesToGroups.keySet()) {
                 sb.append("(key=")
                         .append(key)
                         .append(";value=")
                         .append(issuesToGroups.getStringArrayList(key))
-                        .append("),");
+                        .append(")");
             }
             sb.append("]");
+            knownExtras++;
         }
+
+        if (staticEntriesToIds != null) {
+            sb.append("StaticEntriesToIds:[");
+            for (String key : staticEntriesToIds.keySet()) {
+                sb.append("(key=")
+                        .append(key)
+                        .append(";value=")
+                        .append(staticEntriesToIds.getString(key))
+                        .append(")");
+            }
+            sb.append("]");
+            knownExtras++;
+        }
+
+        boolean hasUnknownExtras = knownExtras != mExtras.keySet().size();
         if (hasUnknownExtras) {
             sb.append("(has unknown extras)");
+        } else if (knownExtras == 0) {
+            sb.append("(no extras)");
         }
 
         return sb.toString();
