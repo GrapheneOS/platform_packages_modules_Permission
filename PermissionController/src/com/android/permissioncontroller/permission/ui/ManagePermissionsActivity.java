@@ -31,8 +31,10 @@ import static com.android.permissioncontroller.PermissionControllerStatsLog.PERM
 
 import android.Manifest;
 import android.app.ActionBar;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.PermissionInfo;
 import android.os.Build;
 import android.os.Bundle;
@@ -79,6 +81,7 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.PermissionMapping;
 import com.android.permissioncontroller.permission.utils.Utils;
 
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -121,11 +124,23 @@ public final class ManagePermissionsActivity extends SettingsActivity {
             + ".permissioncontroller.extra.SHOW_7_DAYS";
 
     /**
+     * Name of the aliased activity.
+     */
+    public static final String ALIAS_ACTIVITY_NAME =
+            "com.android.permissioncontroller.permission.ui.ManagePermissionsActivityAlias";
+
+    /**
      * The requestCode used when we decide not to use this activity, but instead launch
      * another activity in our place. When that activity finishes, we set it's result
      * as our result and then finish.
      */
     private static final int PROXY_ACTIVITY_REQUEST_CODE = 5;
+
+    private static final String LAUNCH_PERMISSION_SETTINGS =
+            "android.permission.LAUNCH_PERMISSION_SETTINGS";
+
+    private static final String APP_PERMISSIONS_SETTINGS =
+            "android.settings.APP_PERMISSIONS_SETTINGS";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -167,6 +182,16 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                 APP_PERMISSION_GROUPS_FRAGMENT_AUTO_REVOKE_ACTION__ACTION__OPENED_FOR_AUTO_REVOKE;
         int openFromIntentAction =
                 APP_PERMISSION_GROUPS_FRAGMENT_AUTO_REVOKE_ACTION__ACTION__OPENED_FROM_INTENT;
+
+        ComponentName component = getIntent().getComponent();
+        if (component != null
+                && Objects.equals(component.getClassName(), ALIAS_ACTIVITY_NAME)
+                && !Objects.equals(action, APP_PERMISSIONS_SETTINGS)) {
+            Log.w(LOG_TAG, ALIAS_ACTIVITY_NAME + " can only be launched with "
+                            + APP_PERMISSIONS_SETTINGS);
+            finishAfterTransition();
+            return;
+        }
 
         String permissionName;
         switch (action) {
@@ -274,7 +299,25 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                 return;
             }
 
-            case Intent.ACTION_MANAGE_APP_PERMISSIONS: {
+            case Intent.ACTION_MANAGE_APP_PERMISSIONS:
+            case APP_PERMISSIONS_SETTINGS: {
+                if (Objects.equals(action, APP_PERMISSIONS_SETTINGS)) {
+                    PermissionInfo permissionInfo;
+                    try {
+                        permissionInfo = getPackageManager()
+                                .getPermissionInfo(LAUNCH_PERMISSION_SETTINGS, 0);
+                    } catch (NameNotFoundException e) {
+                        permissionInfo = null;
+                    }
+                    if (permissionInfo == null
+                            || !Objects.equals(permissionInfo.packageName, Utils.OS_PKG)) {
+                        Log.w(LOG_TAG, LAUNCH_PERMISSION_SETTINGS
+                                + " must be defined by platform.");
+                        finishAfterTransition();
+                        return;
+                    }
+                }
+
                 String packageName = getIntent().getStringExtra(Intent.EXTRA_PACKAGE_NAME);
                 if (packageName == null) {
                     Log.i(LOG_TAG, "Missing mandatory argument EXTRA_PACKAGE_NAME");
@@ -338,7 +381,8 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                     setNavGraph(args, R.id.app_permission_groups);
                     return;
                 }
-            } break;
+                break;
+            }
 
             case Intent.ACTION_MANAGE_PERMISSION_APPS: {
                 permissionName = getIntent().getStringExtra(Intent.EXTRA_PERMISSION_NAME);
@@ -424,7 +468,9 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                     setNavGraph(UnusedAppsFragment.createArgs(sessionId), R.id.auto_revoke);
                     return;
                 }
-            } break;
+
+                break;
+            }
             case PermissionManager.ACTION_REVIEW_PERMISSION_DECISIONS: {
 
                 UserHandle userHandle = getIntent().getParcelableExtra(Intent.EXTRA_USER);
