@@ -163,7 +163,7 @@
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Azken minutuan baimenei eman zaien erabilera"</string>
     <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"Ez da erabili azken 24 orduetan"</string>
     <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"Ez da erabili azken zazpi egunetan"</string>
-    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Aplikazio batek erabili du}other{# aplikaziok erabili dute}}"</string>
+    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{1 aplikaziok erabili du}other{# aplikaziok erabili dute}}"</string>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Ikusi guztiak panelean"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Iragazteko irizpidea: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Kendu iragazkia"</string>
@@ -195,7 +195,7 @@
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Erabili kokapen zehatza"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Kokapen zehatza desaktibatuta dagoenean, aplikazioek gutxi gorabeherako kokapena atzi dezakete"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"\"<xliff:g id="PERM">%1$s</xliff:g>\" baimena"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"Aplikazio honek <xliff:g id="PERM">%1$s</xliff:g> erabiltzeko duen baimena"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"Aplikazio honek \"<xliff:g id="PERM">%1$s</xliff:g>\" erabiltzeko duen baimena"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Ikusi <xliff:g id="APP">%1$s</xliff:g> aplikazioaren baimen guztiak"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Ikusi baimen hau duten aplikazio guztiak"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Erakutsi laguntzaileak mikrofonoa erabiltzeko duen baimena"</string>

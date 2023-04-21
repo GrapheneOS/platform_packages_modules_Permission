@@ -55,7 +55,7 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Колдонмолор"</string>
     <string name="app_permissions" msgid="3369917736607944781">"Колдонмонун уруксаттары"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Колдонулбаган колдонмолор"</string>
-    <string name="no_unused_apps" msgid="12809387670415295">"Бардык колдонмолор иштетилүүдө"</string>
+    <string name="no_unused_apps" msgid="12809387670415295">"Бардык колдонмолор колдонулууда"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"Колдонулбаган колдонмолор: 0"</string>
     <string name="review_permission_decisions" msgid="309559429150613632">"Уруксаттарга байланыштуу аракеттер"</string>
     <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Уруксаттар боюнча көрүлгөн соңку аракеттер"</string>
@@ -111,7 +111,7 @@
     <string name="permission_request_title" msgid="8790310151025020126">"Уруксат суроо"</string>
     <string name="screen_overlay_title" msgid="6977038513913222078">"Колдонмонун үстүнө коюу күйүк"</string>
     <string name="screen_overlay_message" msgid="5622563069757142102">"Бул уруксаттын жөндөөсүн өзгөртүү үчүн адегенде Параметрлер &gt; Колдонмолор бөлүмүнөн колдонмонун үстүнө коюуну өчүрүңүз"</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"Жөндөөлөрдү ачуу"</string>
+    <string name="screen_overlay_button" msgid="4655005928054025250">"Параметрлерди ачуу"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Орнотуу/чыгарып салуу аракеттери Android Wear\'де колдоого алынбайт."</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосу үчүн уруксаттарды тандаңыз"</string>
@@ -350,9 +350,9 @@
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Санариптик жардамчы колдонмосу"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Көмөкчү колдонмолор экранда көргөн маалыматыңыздын негизинде сизге жардам бере алат. Айрым колдонмолор жүргүзгүчтү жана айтып киргизүү функциясын да колдоого алат."</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Демейки серепчи"</string>
-    <string name="role_browser_short_label" msgid="6745009127123292296">"\"Серепчи\" колдонмосу"</string>
+    <string name="role_browser_short_label" msgid="6745009127123292296">"Серепчи колдонмосу"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Сайттарга кирип, шилтемелер боюнча өткөнгө мүмкүнчүлүк берген колдонмолор."</string>
-    <string name="role_browser_request_title" msgid="2895200507835937192">"<xliff:g id="APP_NAME">%1$s</xliff:g> колдонмосун демейки \"серепчи\" колдонмосу катары коёсузбу?"</string>
+    <string name="role_browser_request_title" msgid="2895200507835937192">"<xliff:g id="APP_NAME">%1$s</xliff:g> колдонмосун демейки серепчи колдонмосу катары коёсузбу?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"Уруксаттардын кереги жок"</string>
     <string name="role_dialer_label" msgid="1100224146343237968">"Демейки телефон колдонмосу"</string>
     <string name="role_dialer_short_label" msgid="7186888549465352489">"\"Телефон\" колдонмосу"</string>

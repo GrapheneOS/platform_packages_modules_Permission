@@ -220,7 +220,7 @@
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Kullanılmayan uygulamalar"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Uygulama birkaç ay kullanılmazsa:\n\n• Verilerinizi korumak için izinler kaldırılır\n• Pilden tasarruf etmek için bildirimler durdurulur\n• Yer açmak için geçici dosyalar kaldırılır\n\nİzinleri ve bildirimleri yeniden etkinleştirmek için uygulamayı açın."</string>
     <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"Uygulama bir ay kullanılmazsa:\n\n• Verilerinizi korumak için izinler kaldırılır\n• Yer açmak için geçici dosyalar kaldırılır\n\nİzinleri yeniden etkinleştirmek için uygulamayı açın."</string>
-    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{En son # aydan fazla bir süre önce açıldı}other{En son # aydan uzun bir süre önce açıldı}}"</string>
+    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{En son # aydan uzun bir süre önce açıldı}other{En son # aydan uzun bir süre önce açıldı}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Uygulama en son <xliff:g id="DATE">%s</xliff:g> tarihinde açıldı"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"En son <xliff:g id="DATE">%s</xliff:g> tarihinde açıldı"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Tüm dosyaların yönetilmesine izin verirseniz bu uygulama, bu cihazdaki ortak depolama alanında veya bu cihaza bağlı depolama cihazlarında bulunan tüm dosyalara erişebilir, bunları değiştirebilir ve silebilir. Uygulama, size sormadan dosyalara erişebilir."</string>

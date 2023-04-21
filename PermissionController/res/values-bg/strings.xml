@@ -128,7 +128,7 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Вижте други разрешения"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> и още <xliff:g id="NUM">%3$s</xliff:g>"</string>
-    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"Хронология за използването на <xliff:g id="PERMGROUP">%1$s</xliff:g> от приложенията през последните 24 часа"</string>
+    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"Хронология за използването на „<xliff:g id="PERMGROUP">%1$s</xliff:g>“ от приложенията през последните 24 часа"</string>
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Хронология за използването на <xliff:g id="PERMGROUP">%1$s</xliff:g> от приложенията през последните 7 дни"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Кога това приложение е използвало разрешението за достъп до <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Научете повече"</string>
@@ -196,7 +196,7 @@
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Когато точното местоположение е изключено, приложенията могат да осъществяват достъп до приблизителното ви местоположение"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Разрешение за: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Достъп до „<xliff:g id="PERM">%1$s</xliff:g>“ за това приложение"</string>
-    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Преглед на всички разрешения, предоставени за <xliff:g id="APP">%1$s</xliff:g>"</string>
+    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Преглед на всички разрешения, предоставени за: <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Преглед на всички приложения с това разрешение"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Показване на употребата на микрофона за Асистент"</string>
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Настройки за неизползваните приложения"</string>
@@ -225,7 +225,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Последно отваряне на <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Ако разрешите управлението на всички файлове, това приложение може да осъществява достъп до, да променя и изтрива всички файлове в стандартното хранилище на устройството или в свързаните хранилища. Приложението може да осъществява достъп до файловете, без да ви пита."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Да се разреши ли на това приложение да осъществява достъп до, да променя и изтрива файлове на устройството или в свързаните хранилища? Приложението може да осъществява достъп до файловете, без да ви пита."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Приложенията с това разрешение могат да осъществяват <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Приложенията с това разрешение могат да <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Приложенията с това разрешение имат достъп до физическата ви активност, като например ходене, колоездене, шофиране, брой крачки и др."</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Приложенията с това разрешение имат достъп до календара ви"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Приложенията с това разрешение могат да четат списъка с телефонните обаждания и да записват в него"</string>

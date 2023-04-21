@@ -238,7 +238,7 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Aplikacije s ovim odobrenjem mogu pristupiti podacima senzora o vašim vitalnim znakovima"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Aplikacije s ovim odobrenjem mogu slati i pregledati SMS poruke"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Aplikacije s ovim odobrenjem mogu pristupiti fotografijama, medijima i drugim fajlovima na vašem uređaju"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"Aplikacije s ovim odobrenjem mogu pristupiti muzičkim i drugim audio fajlovima na ovom uređaju"</string>
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"Aplikacije s ovim odobrenjem mogu pristupati muzičkim i drugim audio fajlovima na ovom uređaju"</string>
     <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"Aplikacije s ovim odobrenjem mogu pristupiti fotografijama i videozapisima na ovom uređaju"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Posljednji pristup: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Trenutno odbijeno/posljednji pristup: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>

@@ -163,7 +163,7 @@
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Рұқсаттың соңғы 1 минутта пайдаланылуы"</string>
     <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"Соңғы 24 сағатта пайдаланылмады."</string>
     <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"Соңғы 7 күнде пайдаланылмады."</string>
-    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{1 қолданба пайдаланды}other{# қолданба пайдаланды}}"</string>
+    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{1 қолданба пайдаланды.}other{# қолданба пайдаланды.}}"</string>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Барлығын бақылау тақтасынан көру"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Сүзгі шарты: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Сүзгіні өшіру"</string>

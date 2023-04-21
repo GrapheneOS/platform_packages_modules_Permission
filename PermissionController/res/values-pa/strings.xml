@@ -194,7 +194,7 @@
     <string name="approximate_image_description" msgid="938803699637069884">"ਅੰਦਾਜ਼ਨ ਟਿਕਾਣਾ"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"ਸਹੀ ਟਿਕਾਣਾ ਵਰਤੋ"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"ਜਦੋਂ ਸਹੀ ਟਿਕਾਣੇ ਦੀ ਜਾਣਕਾਰੀ ਬੰਦ ਹੋਵੇ, ਤਾਂ ਐਪਾਂ ਤੁਹਾਡੀ ਅੰਦਾਜ਼ਨ ਟਿਕਾਣੇ ਦੀ ਜਾਣਕਾਰੀ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
-    <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> ਇਜਾਜ਼ਤ"</string>
+    <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> ਸੰਬੰਧੀ ਇਜਾਜ਼ਤ"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"ਇਸ ਐਪ ਲਈ <xliff:g id="PERM">%1$s</xliff:g> ਪਹੁੰਚ"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g> ਦੀਆਂ ਸਾਰੀਆਂ ਇਜਾਜ਼ਤਾਂ ਦੇਖੋ"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਸਾਰੀਆਂ ਐਪਾਂ ਦੇਖੋ"</string>
@@ -220,7 +220,7 @@
     <string name="unused_apps_page_title" msgid="6986983535677572559">"ਅਣਵਰਤੀਆਂ ਐਪਾਂ"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"ਜੇ ਕਿਸੇ ਐਪ ਨੂੰ ਕੁਝ ਮਹੀਨਿਆਂ ਤੱਕ ਵਰਤਿਆ ਨਹੀਂ ਜਾਂਦਾ ਹੈ, ਤਾਂ:\n\n• ਤੁਹਾਡੇ ਡਾਟੇ ਦੀ ਸੁਰੱਖਿਆ ਕਰਨ ਲਈ ਇਜਾਜ਼ਤਾਂ ਨੂੰ ਹਟਾ ਦਿੱਤਾ ਜਾਂਦਾ ਹੈ\n• ਬੈਟਰੀ ਬਚਾਉਣ ਲਈ ਸੂਚਨਾਵਾਂ ਬੰਦ ਕਰ ਦਿੱਤੀਆਂ ਜਾਂਦੀਆਂ ਹਨ\n• ਜਗ੍ਹਾ ਖਾਲੀ ਕਰਨ ਲਈ ਅਸਥਾਈ ਫ਼ਾਈਲਾਂ ਨੂੰ ਹਟਾ ਦਿੱਤਾ ਜਾਂਦਾ ਹੈ\n\nਦੁਬਾਰਾ ਇਜਾਜ਼ਤਾਂ ਦੇਣ ਅਤੇ ਸੂਚਨਾਵਾਂ ਪ੍ਰਾਪਤ ਕਰਨ ਲਈ, ਐਪ ਖੋਲ੍ਹੋ।"</string>
     <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"ਜੇ ਕਿਸੇ ਐਪ ਨੂੰ ਇੱਕ ਮਹੀਨੇ ਤੱਕ ਨਹੀਂ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ, ਤਾਂ:\n\n• ਤੁਹਾਡੇ ਡਾਟੇ ਦੀ ਸੁਰੱਖਿਆ ਕਰਨ ਲਈ ਇਜਾਜ਼ਤਾਂ ਨੂੰ ਹਟਾ ਦਿੱਤਾ ਜਾਂਦਾ ਹੈ\n• ਜਗ੍ਹਾ ਖਾਲੀ ਕਰਨ ਲਈ ਅਸਥਾਈ ਫ਼ਾਈਲਾਂ ਨੂੰ ਹਟਾ ਦਿੱਤਾ ਜਾਂਦਾ ਹੈ\n\nਇਜਾਜ਼ਤਾਂ ਦੀ ਦੁਬਾਰਾ ਆਗਿਆ ਦੇਣ ਲਈ, ਐਪ ਨੂੰ ਖੋਲ੍ਹੋ।"</string>
-    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{ਪਿਛਲੀ ਵਾਰ # ਮਹੀਨੇ ਤੋਂ ਵੱਧ ਪਹਿਲਾਂ ਖੋਲ੍ਹੀਆਂ ਗਈਆਂ}one{ਪਿਛਲੀ ਵਾਰ # ਮਹੀਨੇ ਤੋਂ ਵੱਧ ਪਹਿਲਾਂ ਖੋਲ੍ਹੀਆਂ ਗਈਆਂ}other{ਪਿਛਲੀ ਵਾਰ # ਮਹੀਨਿਆਂ ਤੋਂ ਵੱਧ ਪਹਿਲਾਂ ਖੋਲ੍ਹੀਆਂ ਗਈਆਂ}}"</string>
+    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{ਪਿਛਲੀ ਵਾਰ # ਮਹੀਨੇ ਤੋਂ ਵੱਧ ਸਮਾਂ ਪਹਿਲਾਂ ਖੋਲ੍ਹੀਆਂ ਗਈਆਂ}one{ਪਿਛਲੀ ਵਾਰ # ਮਹੀਨੇ ਤੋਂ ਵੱਧ ਸਮਾਂ ਪਹਿਲਾਂ ਖੋਲ੍ਹੀਆਂ ਗਈਆਂ}other{ਪਿਛਲੀ ਵਾਰ # ਮਹੀਨਿਆਂ ਤੋਂ ਵੱਧ ਸਮਾਂ ਪਹਿਲਾਂ ਖੋਲ੍ਹੀਆਂ ਗਈਆਂ}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ਐਪ ਨੂੰ ਆਖਰੀ ਵਾਰ <xliff:g id="DATE">%s</xliff:g> ਨੂੰ ਖੋਲ੍ਹਿਆ ਗਿਆ"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"ਆਖਰੀ ਵਾਰ <xliff:g id="DATE">%s</xliff:g> ਨੂੰ ਖੋਲ੍ਹਿਆ ਗਿਆ"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"ਜੇ ਤੁਸੀਂ ਸਾਰੀਆਂ ਫ਼ਾਈਲਾਂ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰਨ ਦਿੰਦੇ ਹੋ, ਤਾਂ ਇਹ ਐਪ ਇਸ ਡੀਵਾਈਸ ਜਾਂ ਕਨੈਕਟ ਕੀਤੇ ਸਟੋਰੇਜ ਡੀਵਾਈਸਾਂ ਦੀ ਸਾਂਝੀ ਸਟੋਰੇਜ ਵਿੱਚ ਕਿਸੇ ਵੀ ਫ਼ਾਈਲ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀ, ਉਸ ਵਿੱਚ ਸੋਧ ਕਰ ਸਕਦੀ ਅਤੇ ਉਸ ਨੂੰ ਮਿਟਾ ਸਕਦੀ ਹੈ। ਐਪ ਤੁਹਾਨੂੰ ਪੁੱਛੇ ਬਿਨਾਂ ਫ਼ਾਈਲਾਂ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀ ਹੈ।"</string>

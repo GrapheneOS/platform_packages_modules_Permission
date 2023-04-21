@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name" msgid="6098036489833144040">"Permission controller"</string>
+    <string name="app_name" msgid="6098036489833144040">"Управувач со дозволи"</string>
     <string name="ok" msgid="1936281769725676272">"Во ред"</string>
     <string name="permission_search_keyword" msgid="1214451577494730543">"дозволи"</string>
     <string name="cancel" msgid="8943320028373963831">"Откажи"</string>
@@ -79,7 +79,7 @@
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"Апликации со дозвола: <xliff:g id="COUNT_0">%1$d</xliff:g> од <xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> дозволени апликации"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Прикажи го системот"</string>
-    <string name="menu_hide_system" msgid="3855390843744028465">"Сокриј го системот"</string>
+    <string name="menu_hide_system" msgid="3855390843744028465">"Скриј го системот"</string>
     <string name="menu_show_7_days_data" msgid="8979611198508523706">"Прикажи 7 дена"</string>
     <string name="menu_show_24_hours_data" msgid="8228054833323380780">"Прикажи 24 часа"</string>
     <string name="manage_permission" msgid="2895385393037061964">"Управувајте со дозволата"</string>
@@ -127,7 +127,7 @@
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Користење <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Видете други дозволи"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
-    <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> и уште <xliff:g id="NUM">%3$s</xliff:g> други"</string>
+    <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> и уште <xliff:g id="NUM">%3$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"Кога ја користеле апликациите дозволата за <xliff:g id="PERMGROUP">%1$s</xliff:g> во минатите 24 часа"</string>
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Кога ја користеле апликациите дозволата за <xliff:g id="PERMGROUP">%1$s</xliff:g> во минатите 7 дена"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Кога апликацијава ја користела дозволата за <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
@@ -218,7 +218,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Дозволите за „<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>“ и „<xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>“ се отстранети"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Дозволата за „<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>“ и уште <xliff:g id="NUMBER">%2$s</xliff:g> други дозволи се отстранети"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Некористени апликации"</string>
-    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Ако некоја апликација не се користи неколку месеци:\n\n• дозволите се отстрануваат за да се заштитат вашите податоци\n• известувањата се стопираат за да се заштеди батерија\n• привремените датотеки се отстрануваат за да се ослободи простор\n\nЗа да повторно се овозможат дозволите и известувањата, отворете ја апликацијата."</string>
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Ако некоја апликација не се користи неколку месеци:\n\n• дозволите се отстрануваат за да се заштитат вашите податоци\n• известувањата се стопираат за да се заштеди батерија\n• привремените датотеки се отстрануваат за да се ослободи простор\n\nЗа повторно да се овозможат дозволите и известувањата, отворете ја апликацијата."</string>
     <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"Ако некоја апликација не се користи еден месец:\n\n• дозволите се отстрануваат за да се заштитат вашите податоци\n• привремените датотеки се отстрануваат за да се ослободи простор\n\nЗа да ги овозможите дозволите повторно, отворете ја апликацијата."</string>
     <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Последно отворени пред повеќе од # месец}one{Последно отворени пред повеќе од # месец}other{Последно отворени пред повеќе од # месеци}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Последно отворање на апликацијата: <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -305,7 +305,7 @@
     <string name="unused_apps_subtitle_after" msgid="2034267519506357898">"Дозволите се отстранети од"</string>
     <string name="unused_apps_subtitle_before" msgid="5233302577076132427">"Дозволите ќе се отстранат од"</string>
     <string name="unused_permissions_subtitle_two" msgid="2207266295008423015">"<xliff:g id="PERM_NAME_0">%1$s</xliff:g> и <xliff:g id="PERM_NAME_1">%2$s</xliff:g>"</string>
-    <string name="unused_permissions_subtitle_many" msgid="4387289202207450238">"<xliff:g id="PERM_NAME_0">%1$s</xliff:g>, <xliff:g id="PERM_NAME_1">%2$s</xliff:g> и уште <xliff:g id="NUMBER_OF_PERMISSIONS">%3$s</xliff:g> други"</string>
+    <string name="unused_permissions_subtitle_many" msgid="4387289202207450238">"<xliff:g id="PERM_NAME_0">%1$s</xliff:g>, <xliff:g id="PERM_NAME_1">%2$s</xliff:g> и уште <xliff:g id="NUMBER_OF_PERMISSIONS">%3$s</xliff:g>"</string>
     <string name="unused_app_permissions_removed_summary" msgid="6779039455326071033">"За заштита на податоците, отстранети се дозволите од апликациите што не сте ги користеле неколку месеци"</string>
     <string name="unused_app_permissions_removed_summary_some" msgid="5080490037831563441">"За заштита на податоците, отстранети се дозволите од некои апликации што не сте ги користеле неколку месеци."</string>
     <string name="one_unused_app_summary" msgid="7831913934488881991">"1 апликација не е користена неколку месеци"</string>

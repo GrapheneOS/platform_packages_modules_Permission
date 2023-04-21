@@ -108,7 +108,7 @@
     <string name="loading" msgid="4789365003890741082">"درحال بارگیری…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"همه مجوزها"</string>
     <string name="other_permissions" msgid="2901186127193849594">"سایر قابلیت‌های برنامه"</string>
-    <string name="permission_request_title" msgid="8790310151025020126">"درخواست مجوز"</string>
+    <string name="permission_request_title" msgid="8790310151025020126">"درخواست اجازه"</string>
     <string name="screen_overlay_title" msgid="6977038513913222078">"هم‌پوشانی صفحه شناسایی شد"</string>
     <string name="screen_overlay_message" msgid="5622563069757142102">"برای تغییر این تنظیم مجوز، ابتدا باید هم‌پوشانی صفحه را از «تنظیمات &gt; برنامه‌ها» خاموش کنید"</string>
     <string name="screen_overlay_button" msgid="4655005928054025250">"باز کردن تنظیمات"</string>

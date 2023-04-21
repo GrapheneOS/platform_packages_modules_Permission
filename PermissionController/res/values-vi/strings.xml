@@ -128,7 +128,7 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Xem các quyền khác"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> và <xliff:g id="NUM">%3$s</xliff:g> mục khác"</string>
-    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"Lịch trình các ứng dụng dùng <xliff:g id="PERMGROUP">%1$s</xliff:g> của bạn trong 24 giờ qua"</string>
+    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"Mốc thời gian các ứng dụng dùng <xliff:g id="PERMGROUP">%1$s</xliff:g> của bạn trong 24 giờ qua"</string>
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Lịch trình các ứng dụng dùng <xliff:g id="PERMGROUP">%1$s</xliff:g> của bạn trong 7 ngày qua"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Thời điểm ứng dụng này sử dụng quyền <xliff:g id="PERMGROUP">%1$s</xliff:g> của bạn"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Tìm hiểu thêm"</string>
@@ -220,7 +220,7 @@
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Ứng dụng không dùng đến"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Nếu một ứng dụng không được dùng đến trong vài tháng, hệ thống sẽ:\n\n• Thu hồi các quyền để bảo vệ dữ liệu của bạn\n• Chặn các thông báo để tiết kiệm pin\n• Xóa các tệp tạm thời để giải phóng bộ nhớ\n\nĐể cho phép lại các quyền và thông báo, hãy mở ứng dụng đó."</string>
     <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"Nếu bạn không dùng một ứng dụng trong một tháng, thì hệ thống sẽ:\n\n• Xoá các quyền để bảo vệ dữ liệu của bạn\n• Xoá các tệp tạm thời để giải phóng dung lượng\n\nĐể cấp lại các quyền, hãy mở ứng dụng đó."</string>
-    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Lần mở gần đây nhất là hơn # tháng trước}other{Lần mở gần đây nhất là hơn # tháng trước}}"</string>
+    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Không dùng trong hơn # tháng}other{Không dùng trong hơn # tháng}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Lần gần đây nhất bạn mở ứng dụng này là vào <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Lần mở gần đây nhất là vào <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Nếu bạn cho phép quản lý tất cả các tệp, thì ứng dụng này có thể truy cập, sửa đổi và xóa bất kỳ tệp nào trong bộ nhớ chung trên thiết bị này hoặc các thiết bị lưu trữ được kết nối. Ứng dụng có thể truy cập vào tệp mà không cần hỏi bạn."</string>

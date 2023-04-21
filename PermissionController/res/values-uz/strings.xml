@@ -122,7 +122,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"Joriy ruxsatlar"</string>
     <string name="message_staging" msgid="9110563899955511866">"Kutib turing…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Noaniq"</string>
-    <string name="permission_usage_title" msgid="1568233336351734538">"Maxfiylik boshqaruv paneli"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"Maxfiylik boshqaruvi"</string>
     <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Ruxsatlardan yaqinda foydalangan ilovalarni koʻrish"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> ruxsatidan foydalanish"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Boshqa ruxsatlarni koʻrish"</string>
@@ -469,7 +469,7 @@
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"<xliff:g id="APP_NAME">%1$s</xliff:g> uchun ushbu qurilmadagi surat, video, musiqa va audiolarga kirish ruxsati berilsinmi?"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"<xliff:g id="APP_NAME">%1$s</xliff:g> uchun ushbu qurilmadagi surat, video, musiqa, audio va fayllarga kirish ruxsati berilsinmi?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"<xliff:g id="APP_NAME">%1$s</xliff:g> uchun ushbu qurilmadagi musiqa va audio fayllarga kirish ruxsati berilsinmi?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"<xliff:g id="APP_NAME">%1$s</xliff:g> uchun qurilmadagi rasm va videolarga kirish ruxsati berilsinmi?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"<xliff:g id="APP_NAME">%1$s</xliff:g> uchun qurilmadagi suratlar va videolarga kirish ruxsati berilsinmi?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uchun audio yozib olish ruxsati berilsinmi?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Bu ilova faqat undan foydalanganingizda ovozlarni yozib oladi"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uchun audio yozib olishga ruxsat berilsinmi?"</string>

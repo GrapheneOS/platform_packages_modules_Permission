@@ -490,7 +490,7 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"ನಿಮ್ಮ ಜೀವನಾಧಾರವಾಗಿರುವ ಲಕ್ಷಣಗಳ ಕುರಿತ ಸೆನ್ಸರ್ ಡೇಟಾವನ್ನು ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"ನೀವು ಆ್ಯಪ್ ಅನ್ನು ಬಳಸದಿರುವಾಗಲೂ ಸಹ, ಎಲ್ಲಾ ಸಮಯದಲ್ಲೂ ದೇಹದ ಸೆನ್ಸರ್‌ ಡೇಟಾವನ್ನು ಪ್ರವೇಶಿಸಲು ಈ ಆ್ಯಪ್ ಅನ್ನು ಅನುಮತಿಸಲು, "<annotation id="link">"ಸೆಟ್ಟಿಂಗ್‌ಗಳಿಗೆ ಹೋಗಿ."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ಆ್ಯಪ್ ಬಳಕೆಯಲ್ಲಿರುವಾಗ ದೇಹದ ಸೆನ್ಸರ್‌ ಡೇಟಾವನ್ನು ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸುತ್ತಿರಬೇಕೇ?"</string>
-    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"ನಿಮಗೆ ಅಧಿಸೂಚನೆಗಳನ್ನು ಕಳುಹಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"ನಿಮಗೆ ನೋಟಿಫಿಕೇಶನ್‌ಗಳನ್ನು ಕಳುಹಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"ನಿಯಂತ್ರಿತ ಅನುಮತಿಗಳು"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"ಸ್ಥಳವನ್ನು ಪ್ರವೇಶಿಸಬಹುದು"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"ನಿಮ್ಮ IT ನಿರ್ವಾಹಕರು <xliff:g id="APP_NAME">%s</xliff:g> ಗೆ ನಿಮ್ಮ ಸ್ಥಳವನ್ನು ಪ್ರವೇಶಿಸಲು ಅನುಮತಿಸುತ್ತಿದ್ದಾರೆ"</string>

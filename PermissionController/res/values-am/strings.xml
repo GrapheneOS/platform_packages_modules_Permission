@@ -109,8 +109,8 @@
     <string name="all_permissions" msgid="6911125611996872522">"ሁሉም ፍቃዶች"</string>
     <string name="other_permissions" msgid="2901186127193849594">"ሌሎች የመተግበሪያ ችሎታዎች"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"የፍቃድ ጥያቄ"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"የማያ ገጽ ተደራቢ ተገኝ"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"ይህን የፍቃድ ቅንብር ለመቀየር መጀመሪያ የማያ ገጽ ተደራቢውን ከቅንብሮች &gt; መተግበሪያዎች ማጥፋት አለብዎ"</string>
+    <string name="screen_overlay_title" msgid="6977038513913222078">"የማያ ገፅ ተደራቢ ተገኝ"</string>
+    <string name="screen_overlay_message" msgid="5622563069757142102">"ይህን የፍቃድ ቅንብር ለመቀየር መጀመሪያ የማያ ገፅ ተደራቢውን ከቅንብሮች &gt; መተግበሪያዎች ማጥፋት አለብዎ"</string>
     <string name="screen_overlay_button" msgid="4655005928054025250">"ቅንብሮችን ክፈት"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"በWear ላይ የመጫን/ማራገፍ እርምጃዎች አይደገፉም።"</string>
@@ -288,8 +288,8 @@
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"ተጨማሪ አማራጮችን ይመልከቱ"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"መዳረሻ ተወግዷል"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"ሙሉ የመሣሪያ መዳረሻ ያለውን መተግበሪያ ይገምግሙ"</string>
-    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> የእርስዎን ማያ ገጽ ማየት እና በመሣሪያዎ ላይ እርምጃዎችን መውሰድ ይችላል። የተደራሽነት መተግበሪያዎች እንደታሰቡት እንዲሰሩ እንደዚህ አይነት መዳረሻ ያስፈልጋቸዋል።"</string>
-    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"ይህ መተግበሪያ ማያ ገጽዎን ማየት እና በመሣሪያዎ ላይ እርምጃዎችን ማከናወን ይችላል። የተደራሽነት መተግበሪያዎች እንደታሰቡት እንዲሰሩ እንደዚህ አይነት መዳረሻ ያስፈልጋቸዋል፣ ነገር ግን መተግበሪያውን ይፈትሹት እና እንደሚያምኑት ያረጋግጡ።"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> የእርስዎን ማያ ገፅ ማየት እና በመሣሪያዎ ላይ እርምጃዎችን መውሰድ ይችላል። የተደራሽነት መተግበሪያዎች እንደታሰቡት እንዲሰሩ እንደዚህ ዓይነት መዳረሻ ያስፈልጋቸዋል።"</string>
+    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"ይህ መተግበሪያ ማያ ገጽዎን ማየት እና በመሣሪያዎ ላይ እርምጃዎችን ማከናወን ይችላል። የተደራሽነት መተግበሪያዎች እንደታሰቡት እንዲሰሩ እንደዚህ ዓይነት መዳረሻ ያስፈልጋቸዋል፣ ነገር ግን መተግበሪያውን ይፈትሹት እና እንደሚያምኑት ያረጋግጡ።"</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"መዳረሻን አስወግድ"</string>
     <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"ሙሉ መዳረሻ ያላቸውን መተግበሪያዎች ይመልከቱ"</string>
     <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"መዳረሻ ተወግዷል"</string>
@@ -344,11 +344,11 @@
     <string name="settings" msgid="5409109923158713323">"ቅንብሮች"</string>
     <string name="accessibility_service_dialog_title_single" msgid="7956432823014102366">"<xliff:g id="SERVICE_NAME">%s</xliff:g> ወደ የእርስዎ መሣሪያ ሙሉ መዳረሻ አለው"</string>
     <string name="accessibility_service_dialog_title_multiple" msgid="5527879210683548175">"<xliff:g id="NUM_SERVICES">%s</xliff:g> ተደራሽነት መተግበሪያዎች ወደ የእርስዎ መሣሪያ ሙሉ መዳረሻ አላቸው"</string>
-    <string name="accessibility_service_dialog_bottom_text_single" msgid="1128666197822205958">"<xliff:g id="SERVICE_NAME">%s</xliff:g> የእርስዎን ማያ ገጽ፣ እርምጃዎች እና ግቤቶች መመልከት፣ እርምጃዎችን መውሰድ እና ማሳያን መቆጣጠር ይችላል።"</string>
-    <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"እነዚህ መተግበሪያዎች የእርስዎን ማያ ገጽ፣ እርምጃዎች እና ግቤቶች መመልከት፣ እርምጃዎችን መውሰድ እና ማሳያን መቆጣጠር ይችላሉ።"</string>
+    <string name="accessibility_service_dialog_bottom_text_single" msgid="1128666197822205958">"<xliff:g id="SERVICE_NAME">%s</xliff:g> የእርስዎን ማያ ገፅ፣ እርምጃዎች እና ግቤቶች መመልከት፣ እርምጃዎችን መውሰድ እና ማሳያን መቆጣጠር ይችላል።"</string>
+    <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"እነዚህ መተግበሪያዎች የእርስዎን ማያ ገፅ፣ እርምጃዎች እና ግቤቶች መመልከት፣ እርምጃዎችን መውሰድ እና ማሳያን መቆጣጠር ይችላሉ።"</string>
     <string name="role_assistant_label" msgid="4727586018198208128">"ነባሪ የዲጂታል ረዳት መተግበሪያ"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"የዲጂታል ረዳት መተግበሪያ"</string>
-    <string name="role_assistant_description" msgid="6622458130459922952">"ረዳት መተግበሪያዎች በሚያዩት ማያ ገጽ ላይ ባለ መረጃ ላይ ተመስርቶ ሊያግዘዎት ይችላል። አንዳንድ መተግበሪያዎች የተዋሃደ እርዳታ ለእርስዎ ለመስጠት ሁለቱንም ማስጀመሪያ እና የድምፅ ግቤት አገልግሎቶችን ይደግፋሉ።"</string>
+    <string name="role_assistant_description" msgid="6622458130459922952">"ረዳት መተግበሪያዎች በሚያዩት ማያ ገፅ ላይ ባለ መረጃ ላይ ተመስርቶ ሊያግዘዎት ይችላል። አንዳንድ መተግበሪያዎች የተዋሃደ እርዳታ ለእርስዎ ለመስጠት ሁለቱንም ማስጀመሪያ እና የድምፅ ግቤት አገልግሎቶችን ይደግፋሉ።"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"ነባሪ አሳሽ መተግበሪያ"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"የአሳሽ መተግበሪያ"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"ወደ በየነ መረብ ለእርስዎ መዳረሻ የሚሰጥዎትን እና እርስዎ መታ የሚያደርጓቸውን አገናኞች የሚያሳዩ መተግበሪያዎች"</string>
@@ -431,8 +431,8 @@
     <string name="no_special_app_access" msgid="6950277571805106247">"ምንም ልዩ መተግበሪያ መዳረሻ"</string>
     <string name="special_app_access_no_apps" msgid="4102911722787886970">"መተግበሪያዎች የሉም"</string>
     <string name="home_missing_work_profile_support" msgid="1756855847669387977">"የሥራ መገለጫን አይደግፍም"</string>
-    <string name="encryption_unaware_confirmation_message" msgid="8274491794636402484">"ማስታወሻ፦ የእርስዎን መሣሪያ ዳግም ካስጀምሩ እና ማያ ገጽ መቆለፊያው እንዲቀናበር ካደረጉ፣ ይህ መተግበሪያ የእርስዎን መሣሪያ ዳግም እስከሚከፍቱ ድረስ መጀመር አይችልም።"</string>
-    <string name="assistant_confirmation_message" msgid="7476540402884416212">"ረዳቱ በእርስዎ ስርዓት ላይ በአገልግሎት ላይ ስለሚውሉ መተግበሪያዎች መረጃን ማንበብ ይችላል፣ ይህም በእርስዎ ማያ ገጽ ላይ የሚታይ ወይም በመተግበሪያዎች ውስጥ የሚደረስበት መረጃን ይጨምራል።"</string>
+    <string name="encryption_unaware_confirmation_message" msgid="8274491794636402484">"ማስታወሻ፦ የእርስዎን መሣሪያ ዳግም ካስጀምሩ እና ማያ ገፅ መቆለፊያው እንዲቀናበር ካደረጉ፣ ይህ መተግበሪያ የእርስዎን መሣሪያ ዳግም እስከሚከፍቱ ድረስ መጀመር አይችልም።"</string>
+    <string name="assistant_confirmation_message" msgid="7476540402884416212">"ረዳቱ በእርስዎ ስርዓት ላይ በአገልግሎት ላይ ስለሚውሉ መተግበሪያዎች መረጃን ማንበብ ይችላል፣ ይህም በእርስዎ ማያ ገፅ ላይ የሚታይ ወይም በመተግበሪያዎች ውስጥ የሚደረስበት መረጃን ይጨምራል።"</string>
     <string name="incident_report_channel_name" msgid="3144954065936288440">"ሳንካ ማረሚያ ውሂብን አጋራ"</string>
     <string name="incident_report_notification_title" msgid="4635984625656519773">"ዝርዝር የሳንካ ማረሚያ መረጃ ይጋራ?"</string>
     <string name="incident_report_notification_text" msgid="3376480583513587923">"<xliff:g id="APP_NAME">%1$s</xliff:g> የሳንካ ማረሚያ መረጃን መስቀል ይፈልጋል።"</string>

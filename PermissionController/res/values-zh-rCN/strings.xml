@@ -54,8 +54,8 @@
     <string name="grant_dialog_button_allow_media_only" msgid="4832877658422573832">"允许访问媒体文件"</string>
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"应用"</string>
     <string name="app_permissions" msgid="3369917736607944781">"应用权限"</string>
-    <string name="unused_apps" msgid="2058057455175955094">"未使用的应用"</string>
-    <string name="no_unused_apps" msgid="12809387670415295">"没有未使用的应用"</string>
+    <string name="unused_apps" msgid="2058057455175955094">"闲置应用"</string>
+    <string name="no_unused_apps" msgid="12809387670415295">"无闲置应用"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"没有未使用的应用"</string>
     <string name="review_permission_decisions" msgid="309559429150613632">"最近的权限决定"</string>
     <string name="review_permission_decisions_view_all" msgid="90391040431566130">"查看最近的所有权限决定"</string>
@@ -195,14 +195,14 @@
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"使用确切位置"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"确切位置关闭时，应用可以获取您的大致位置"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>权限"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"是否允许这个应用访问<xliff:g id="PERM">%1$s</xliff:g>"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"是否允许此应用获得“<xliff:g id="PERM">%1$s</xliff:g>”权限"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"查看“<xliff:g id="APP">%1$s</xliff:g>”的所有权限"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"查看具有此权限的所有应用"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"显示 Google 助理麦克风使用情况"</string>
     <string name="unused_apps_category_title" msgid="2988455616845243901">"关于未使用应用的设置"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"如果未使用此应用，则移除相关权限"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"撤消权限并释放空间"</string>
-    <string name="unused_apps_label_v2" msgid="7058776770056517980">"如果应用未使用，暂停其活动"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"暂停闲置应用的活动"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"移除权限、删除临时文件并停止发送通知"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"为了保护您的数据，如果您连续几个月未使用此应用，系统会移除它的权限。"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"为了保护您的数据，如果您连续几个月未使用此应用，系统会移除其以下权限：<xliff:g id="PERMS">%1$s</xliff:g>"</string>
@@ -217,7 +217,7 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"已移除<xliff:g id="PERMISSION_NAME">%s</xliff:g>权限"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"已移除<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>以及<xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>权限"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"已移除<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>权限及另外 <xliff:g id="NUMBER">%2$s</xliff:g> 项权限"</string>
-    <string name="unused_apps_page_title" msgid="6986983535677572559">"未使用的应用"</string>
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"闲置应用"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"如果您连续几个月未使用某个应用，系统将对该应用采取以下措施：\n\n• 移除权限以保护您的数据\n• 停止通知功能以节省电量\n• 移除临时文件以释放空间\n\n如需重新授予权限以继续接收通知，请打开该应用。"</string>
     <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"如果您连续 1 个月未使用某个应用，系统将对该应用采取以下措施：\n\n• 撤消权限以保护您的数据\n• 移除临时文件以释放空间\n\n如需重新授予权限，请打开该应用。"</string>
     <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{距上次打开已超过 # 个月}other{距上次打开已超过 # 个月}}"</string>
@@ -232,7 +232,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"具有此权限的应用可以拍摄照片和录制视频"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"具有此权限的应用可以访问您的通讯录"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"具有此权限的应用可以使用此设备的位置信息"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"具有这项权限的应用可以查找、连接附近设备以及确定附近设备的相对位置"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"具有这项权限的应用可以查找、连接附近设备，以及确定附近设备的相对位置"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"具有此权限的应用可以录制音频"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"具有此权限的应用可以拨打电话及管理通话"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"具有此权限的应用可以获取与您的生命体征相关的传感器数据"</string>
@@ -301,7 +301,7 @@
     <string name="auto_revoke_before_notification_title_one" msgid="6758024954464359876">"1 个应用未使用"</string>
     <string name="auto_revoke_before_notification_title_many" msgid="4415543943846385685">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> 个应用未使用"</string>
     <string name="auto_revoke_before_notification_content_one" msgid="1156635373417068822">"为保护您的隐私，系统将移除这些权限。点按即可查看。"</string>
-    <string name="unused_apps_title" msgid="8589298917717872239">"未使用的应用"</string>
+    <string name="unused_apps_title" msgid="8589298917717872239">"闲置应用"</string>
     <string name="unused_apps_subtitle_after" msgid="2034267519506357898">"以下应用的权限已被移除"</string>
     <string name="unused_apps_subtitle_before" msgid="5233302577076132427">"以下应用的权限将被移除"</string>
     <string name="unused_permissions_subtitle_two" msgid="2207266295008423015">"“<xliff:g id="PERM_NAME_0">%1$s</xliff:g>”权限和“<xliff:g id="PERM_NAME_1">%2$s</xliff:g>”权限"</string>
@@ -499,7 +499,7 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"仅限系统应用使用的权限"</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"其他权限"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"应用定义的权限"</string>
-    <string name="privdash_label_camera" msgid="1426440033626198096">"摄像头"</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"相机"</string>
     <string name="privdash_label_microphone" msgid="8415035835803511693">"麦克风"</string>
     <string name="privdash_label_location" msgid="6882400763866489291">"位置信息"</string>
     <string name="privdash_label_other" msgid="3710394147423236033">"其他"</string>

@@ -217,7 +217,7 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"<xliff:g id="PERMISSION_NAME">%s</xliff:g> imvume isusiwe"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> nezimvume ze-<xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> zisusiwe"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> nezinye izimvume ezingu-<xliff:g id="NUMBER">%2$s</xliff:g> zisusiwe"</string>
-    <string name="unused_apps_page_title" msgid="6986983535677572559">"Unused apps"</string>
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"Ama-app angasetshenzisiwe"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Uma i-app ingasetshenziswa izinyanga ezimbalwa:\n\n• Izimvume ziyasuswa ukuze kuvikelwe idatha yakho\n• Izaziso ziyamiswa ukonga ibhethri\n• Amafayela okwesikhashana ayasuswa ukukhulula isikhala\n\nUkuze uphinde uvumele izimvume nezaziso, vula i-app."</string>
     <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"Uma i-app ingasetshenziswa inyanga:\n\n• Izimvume ziyasuswa ukuze kuvikelwe idatha yakho\n• Amafayela esikhashana ayasuswa ukuze kuvulwe isikhala\n\nUkuze uphinde uvumele izimvume, vula i-app."</string>
     <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Kugcine ukuvulwa ngaphezu kwenyanga e-# edlule}one{Kugcine ukuvulwa ngaphezu kwezinyanga ezingu-# ezedlule}other{Kugcine ukuvulwa ngaphezu kwezinyanga ezingu-# ezedlule}}"</string>
@@ -225,7 +225,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Kugcine ukuvulwa ngo-<xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Uma uvumela ukuphathwa kwawo wonke amafayela, lolu hlelo lokusebenza lungafinyelela, lulungise, futhi lususe noma yimaphi amafayela akusitoreji esifanayo kule divayisi noma isitoreji samadivayisi axhunyiwe. Uhlelo lokusebenza lungafinyelela amafayela ngaphandle kokukubuza."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Uvumela lolu hlelo lokusebenza lufinyelele, lulungise futhi lususe amafayela kudivayisi, noma kunoma yiziphi izitoreji zamadivayisi axhunyiwe? Lolu hlelo lokusebenza lungafinyelela amafayela ngaphandle kokukubuza."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Izinhlelo zokusebenza ezinale mvume zingenza lokhu <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Ama-app anale mvume angafunda idatha kumhlinzeki wokuqukethwe we-Google Talk <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Izinhlelo zokusebenza ezinale mvume zingafinyelela umsebenzi wakho, njengokuhamba, ukugibela ibhayisikili, ukushayela, ukubala izinyathelo, nokuningi"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Izinhlelo zokusebenza ezinale mvume zingafinyelela kukhalenda yakho"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Izinhlelo zokusebenza ezinale mvume zingafunda ziphinde zibhale irekhodi lamakholi"</string>
@@ -336,7 +336,7 @@
     <string name="app_perms_content_provider_7d_all_files" msgid="7962416229708835558">"Kufinyelelwe ezinsukwini ezi-7 ezedlule • Wonke Amafayela"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"Azikho izimvume ezivunyelwe"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"Azikho izimvume ezinqatshelwe"</string>
-    <string name="no_apps_allowed" msgid="7718822655254468631">"Azikho izinhlelo zokusebenza ezivunyelwe"</string>
+    <string name="no_apps_allowed" msgid="7718822655254468631">"Ama-app avunyelwe"</string>
     <string name="no_apps_allowed_full" msgid="8011716991498934104">"Azikho izinhlelo zokusebenza ezivunyelwe kuwo wonke amafayela"</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"Azikho izinhlelo zokusebenza ezivunyelwe imidiya kuphela"</string>
     <string name="no_apps_denied" msgid="7663435886986784743">"Azikho izinhlelo zokusebenza ezinqatshelwe"</string>

@@ -195,7 +195,7 @@
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"जगह की सटीक जानकारी का इस्तेमाल करें"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"जगह की सटीक जानकारी देने वाली सुविधा बंद होने पर, ऐप्लिकेशन आपकी अनुमानित जगह की जानकारी को ऐक्सेस कर सकते हैं"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> की अनुमति"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"इस ऐप्लिकेशन के लिए <xliff:g id="PERM">%1$s</xliff:g> की अनुमति चाहिए"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"इस ऐप्लिकेशन के लिए, <xliff:g id="PERM">%1$s</xliff:g> की अनुमति चाहिए"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g> को मिली सभी अनुमतियां देखें"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"इस अनुमति वाले सभी ऐप्लिकेशन देखें"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"असिस्टेंट माइक्रोफ़ोन के इस्तेमाल से जुड़ा डेटा दिखाएं"</string>
@@ -225,7 +225,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"पिछली बार <xliff:g id="DATE">%s</xliff:g> को खोला गया था"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"अगर आप इस ऐप्लिकेशन को सभी फ़ाइलों को मैनेज करने की अनुमति देते हैं, तो यह ऐप्लिकेशन इस डिवाइस या इससे जुड़े दूसरे डिवाइस के स्टोरेज में मौजूद किसी भी फ़ाइल को ऐक्सेस कर सकता है, उनमें बदलाव कर सकता है, और उन्हें मिटा भी सकता है. यह ऐप्लिकेशन आपसे पूछे बिना फ़ाइलें ऐक्सेस कर सकता है."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"क्या आप इस ऐप्लिकेशन को इस डिवाइस या इससे जुड़े दूसरे डिवाइस के स्टोरेज में मौजूद फ़ाइलें ऐक्सेस करने, उनमें बदलाव करने, और उन्हें मिटाने की अनुमति देना चाहते हैं? यह ऐप्लिकेशन आपसे पूछे बिना फ़ाइलें ऐक्सेस कर सकता है."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"इस अनुमति वाले ऐप्लिकेशन <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"इस अनुमति वाले ऐप्लिकेशन यह कर सकते हैं: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"इसकी अनुमति वाले ऐप्लिकेशन, आपकी शारीरिक गतिविधियों की जानकारी ऐक्सेस कर सकते हैं. इसमें पैदल चलने, बाइक चलाने, गाड़ी चलाने, और कदमों की संख्या जैसी कई जानकारी शामिल है"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"इस अनुमति वाले ऐप्लिकेशन आपके कैलेंडर को ऐक्सेस कर सकते हैं"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"ऐसे ऐप्लिकेशन जिनके पास अनुमति है, वे फ़ोन में कॉल लॉग को पढ़ सकते हैं और लिख सकते हैं"</string>

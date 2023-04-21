@@ -27,7 +27,7 @@
     <string name="off" msgid="1438489226422866263">"Väljas"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Desinstalli või keela"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Rakendust ei leitud"</string>
-    <string name="grant_dialog_button_deny" msgid="88262611492697192">"Ära luba"</string>
+    <string name="grant_dialog_button_deny" msgid="88262611492697192">"Ära anna"</string>
     <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"Ära luba ja ära enam küsi"</string>
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Säilita valik „Rakenduse kasutamise ajal”"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Säilita ainult sel korral"</string>
