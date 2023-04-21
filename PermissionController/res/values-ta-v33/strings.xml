@@ -30,8 +30,7 @@
     <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"கூடுதல் விழிப்பூட்டல்கள்"</string>
     <string name="safety_center_dismissed_issues_card_title" msgid="2340129842725145733">"நிராகரிக்கப்பட்ட விழிப்பூட்டல்கள்"</string>
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{விரிவாக்கி மேலும் ஒரு விழிப்பூட்டலைப் பாருங்கள்}other{விரிவாக்கி மேலும் # விழிப்பூட்டல்களைப் பாருங்கள்}}"</string>
-    <!-- no translation found for safety_center_issue_card_prefix_content_description (1447445289637043544) -->
-    <skip />
+    <string name="safety_center_issue_card_prefix_content_description" msgid="1447445289637043544">"விழிப்பூட்டும். <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>"</string>
     <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"செயல் நிறைவடைந்தது"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"உங்கள் சாதனத்திற்குப் பாதுகாப்பைச் சேர்க்கக்கூடிய அமைப்புகளைப் பாருங்கள்"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"பாதுகாப்பு &amp; தனியுரிமை விரைவு அமைப்புகள்"</string>

@@ -30,8 +30,7 @@
     <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"Autres alertes"</string>
     <string name="safety_center_dismissed_issues_card_title" msgid="2340129842725145733">"Alertes ignorées"</string>
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{Développer et voir 1 autre alerte}one{Développer et voir # autre alerte}many{Développer et voir # autres alertes}other{Développer et voir # autres alertes}}"</string>
-    <!-- no translation found for safety_center_issue_card_prefix_content_description (1447445289637043544) -->
-    <skip />
+    <string name="safety_center_issue_card_prefix_content_description" msgid="1447445289637043544">"Alerte. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>"</string>
     <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"Action terminée"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"Vérifiez les paramètres qui peuvent renforcer la protection de votre appareil"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"Réglages rapides de sécurité et de confidentialité"</string>

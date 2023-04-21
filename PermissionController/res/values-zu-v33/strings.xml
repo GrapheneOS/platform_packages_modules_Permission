@@ -30,8 +30,7 @@
     <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"Ezinye izexwayiso"</string>
     <string name="safety_center_dismissed_issues_card_title" msgid="2340129842725145733">"Chitha izexwayiso"</string>
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{Nweba futhi ubone esinye isexwayiso}one{Nweba futhi ubone ezinye izexwayiso ezingu-#}other{Nweba futhi ubone ezinye izexwayiso ezingu-#}}"</string>
-    <!-- no translation found for safety_center_issue_card_prefix_content_description (1447445289637043544) -->
-    <skip />
+    <string name="safety_center_issue_card_prefix_content_description" msgid="1447445289637043544">"Isexwayiso. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>"</string>
     <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"Isenzo siqediwe"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"Hlola amasethingi angangeza ukuvikeleka kudivayisi yakho"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"Amasethingi asheshayo wokuvikeleka nobumfihlo"</string>

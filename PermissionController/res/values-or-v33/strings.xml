@@ -30,8 +30,7 @@
     <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"ଅଧିକ ଆଲର୍ଟ"</string>
     <string name="safety_center_dismissed_issues_card_title" msgid="2340129842725145733">"ଖାରଜ କରାଯାଇଥିବା ଆଲର୍ଟଗୁଡ଼ିକ"</string>
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{ବିସ୍ତାର କରି ଆଉ ଗୋଟିଏ ଆଲର୍ଟ ଦେଖନ୍ତୁ}other{ବିସ୍ତାର କରି ଆଉ #ଟି ଆଲର୍ଟ ଦେଖନ୍ତୁ}}"</string>
-    <!-- no translation found for safety_center_issue_card_prefix_content_description (1447445289637043544) -->
-    <skip />
+    <string name="safety_center_issue_card_prefix_content_description" msgid="1447445289637043544">"ଆଲର୍ଟ। <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>"</string>
     <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"କାର୍ଯ୍ୟ ସମୂର୍ଣ୍ଣ ହୋଇଛି"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"ଆପଣଙ୍କ ଡିଭାଇସରେ ସୁରକ୍ଷା ଯୋଗ କରୁଥିବା ସେଟିଂସକୁ ଦେଖନ୍ତୁ"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"ସୁରକ୍ଷା ଏବଂ ଗୋପନୀୟତା କ୍ୱିକ ସେଟିଂସ"</string>

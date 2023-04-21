@@ -399,7 +399,7 @@
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Den här tjänsten delar dina foton, videor och aviseringar på telefonen med andra enheter."</string>
     <string name="role_notes_label" msgid="7451627001058089536">"Standardapp för anteckningar"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"Anteckningsapp"</string>
-    <string name="role_notes_description" msgid="8496852798616883551">"Appar som låter dig ta anteckningar på enheten"</string>
+    <string name="role_notes_description" msgid="8496852798616883551">"Appar som låter dig göra anteckningar på enheten"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"anteckningar"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Nuvarande standardapp"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Fråga inte igen"</string>
@@ -498,10 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Ska &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ha åtkomst till data från kroppssensorer medan appen används även i fortsättningen?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Vill du ge &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; behörighet att skicka aviseringar?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Styrda behörigheter"</string>
-    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
-    <skip />
-    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
-    <skip />
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> har platsåtkomst"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Din organisation tillåter att <xliff:g id="APP_NAME">%1$s</xliff:g> får åtkomst till din plats"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"Andra behörigheter"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Behörighet som används av systemet"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Behörigheter som bara används av systemappar."</string>
