@@ -98,6 +98,10 @@ class AllLightPackageOpsLiveData(app: Application) :
     }
 
     override suspend fun loadDataAndPostValue(job: Job) {
+        if (opNames.isEmpty()) {
+            return
+        }
+
         val packageOpsList =
             try {
                 appOpsManager.getPackagesForOps(opNames.toTypedArray())
