@@ -508,6 +508,12 @@ class SafetyCenterTestData(context: Context) {
                 copy(dismissedIssues = dismissedIssues)
             } else this
 
+        /** Returns a [SafetyCenterData] without extras. */
+        fun SafetyCenterData.withoutExtras() =
+            if (SdkLevel.isAtLeastU()) {
+                SafetyCenterData.Builder(this).clearExtras().build()
+            } else this
+
         /**
          * On U+, returns a new [SafetyCenterData] with [SafetyCenterIssue]s having the
          * [attributionTitle]. Prior to U, returns the passed in [SafetyCenterData].
