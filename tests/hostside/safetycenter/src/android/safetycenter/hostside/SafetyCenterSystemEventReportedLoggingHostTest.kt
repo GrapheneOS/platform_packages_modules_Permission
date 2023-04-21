@@ -141,7 +141,43 @@ class SafetyCenterSystemEventReportedLoggingHostTest : BaseHostJUnit4Test() {
         assertWithMessage("the system event atoms").that(systemEventAtoms).hasSize(4)
         assertWithMessage("the number of atoms with the button-click refresh reason")
             .that(systemEventAtoms.count { it.refreshReason == REFRESH_REASON_BUTTON_CLICK })
+    }
+
+    fun refreshAllSources_firstTime_allSourcesSuccessful_dataChangedTrueForAll() {
+        helperAppRule.runTest(
+            ".SafetySourceStateCollectedLoggingHelperTests",
+            "refreshAllSources_reasonPageOpen_allSuccessful"
+        )
+
+        val systemEventAtoms =
+            ReportUtils.getEventMetricDataList(device).mapNotNull {
+                it.atom.safetyCenterSystemEventReported
+            }
+
+        assertWithMessage("the number of atoms with dataChanged=true")
+            .that(systemEventAtoms.count { it.dataChanged })
             .isEqualTo(4)
+    }
+
+    @Test
+    fun refreshAllSources_secondTime_allSourcesUnchanged_dataChangedFalseForAll() {
+        helperAppRule.runTest(
+            ".SafetySourceStateCollectedLoggingHelperTests",
+            "refreshAllSources_twiceSameData_allSuccessful"
+        )
+
+        val systemEventAtoms =
+            ReportUtils.getEventMetricDataList(device).mapNotNull {
+                it.atom.safetyCenterSystemEventReported
+            }
+
+        // There are three sources in the multiple sources config, of which one is not allowed to
+        // refresh on page open, except when there is no data. Plus, for each refresh there is an
+        // overall refresh atom making seven atoms in total.
+        assertWithMessage("the number of atoms").that(systemEventAtoms).hasSize(7)
+        assertWithMessage("the number of atoms with dataChanged=false")
+            .that(systemEventAtoms.count { !it.dataChanged })
+            .isEqualTo(3)
     }
 
     companion object {

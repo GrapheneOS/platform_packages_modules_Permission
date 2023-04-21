@@ -149,18 +149,24 @@ public final class SafetyCenterRefreshTracker {
      *
      * <p>If a source calls {@code reportSafetySourceError}, then this method is also used to mark
      * the refresh as completed. The {@code successful} parameter indicates whether the refresh
-     * completed successfully or not.
+     * completed successfully or not. The {@code dataChanged} parameter indicates whether this
+     * source's data changed or not.
      *
      * <p>Completed refreshes are logged to statsd.
      */
     public boolean reportSourceRefreshCompleted(
-            String refreshBroadcastId, String sourceId, @UserIdInt int userId, boolean successful) {
+            String refreshBroadcastId,
+            String sourceId,
+            @UserIdInt int userId,
+            boolean successful,
+            boolean dataChanged) {
         if (!checkRefreshInProgress("reportSourceRefreshCompleted", refreshBroadcastId)) {
             return false;
         }
 
         SafetySourceKey sourceKey = SafetySourceKey.of(sourceId, userId);
-        Duration duration = mRefreshInProgress.markSourceRefreshComplete(sourceKey, successful);
+        Duration duration =
+                mRefreshInProgress.markSourceRefreshComplete(sourceKey, successful, dataChanged);
         int refreshReason = mRefreshInProgress.getReason();
         int requestType = RefreshReasons.toRefreshRequestType(refreshReason);
 
@@ -172,7 +178,8 @@ public final class SafetyCenterRefreshTracker {
                     UserUtils.isManagedProfile(userId, mContext),
                     duration,
                     sourceResult,
-                    refreshReason);
+                    refreshReason,
+                    dataChanged);
         }
 
         if (!mRefreshInProgress.isComplete()) {
@@ -186,7 +193,8 @@ public final class SafetyCenterRefreshTracker {
                 requestType,
                 mRefreshInProgress.getDurationSinceStart(),
                 wholeResult,
-                refreshReason);
+                refreshReason,
+                mRefreshInProgress.hasAnyTrackedSourceDataChanged());
         mRefreshInProgress = null;
         return true;
     }
@@ -270,7 +278,8 @@ public final class SafetyCenterRefreshTracker {
                         UserUtils.isManagedProfile(sourceKey.getUserId(), mContext),
                         duration,
                         SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__TIMEOUT,
-                        refreshReason);
+                        refreshReason,
+                        false);
             }
         }
 
@@ -278,7 +287,8 @@ public final class SafetyCenterRefreshTracker {
                 requestType,
                 clearedRefresh.getDurationSinceStart(),
                 SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__TIMEOUT,
-                refreshReason);
+                refreshReason,
+                clearedRefresh.hasAnyTrackedSourceDataChanged());
 
         return timedOutSources;
     }
@@ -348,6 +358,7 @@ public final class SafetyCenterRefreshTracker {
         private final ArrayMap<SafetySourceKey, Long> mSourceRefreshesInFlight = new ArrayMap<>();
 
         private boolean mAnyTrackedSourceErrors = false;
+        private boolean mAnyTrackedSourceDataChanged = false;
 
         RefreshInProgress(
                 String id,
@@ -400,6 +411,11 @@ public final class SafetyCenterRefreshTracker {
             return mAnyTrackedSourceErrors;
         }
 
+        /** Returns {@code true} if any refresh of a tracked source changed that source's data. */
+        private boolean hasAnyTrackedSourceDataChanged() {
+            return mAnyTrackedSourceDataChanged;
+        }
+
         private void markSourceRefreshInFlight(SafetySourceKey safetySourceKey) {
             boolean tracked = isTracked(safetySourceKey);
             long currentElapsedMillis = SystemClock.elapsedRealtime();
@@ -425,11 +441,12 @@ public final class SafetyCenterRefreshTracker {
 
         @Nullable
         private Duration markSourceRefreshComplete(
-                SafetySourceKey safetySourceKey, boolean successful) {
+                SafetySourceKey safetySourceKey, boolean successful, boolean dataChanged) {
             Long startElapsedMillis = mSourceRefreshesInFlight.remove(safetySourceKey);
 
             boolean tracked = isTracked(safetySourceKey);
             mAnyTrackedSourceErrors |= (tracked && !successful);
+            mAnyTrackedSourceDataChanged |= dataChanged;
             Duration duration =
                     (startElapsedMillis == null)
                             ? null
@@ -446,6 +463,8 @@ public final class SafetyCenterRefreshTracker {
                             + duration
                             + " successful:"
                             + successful
+                            + " dataChanged:"
+                            + dataChanged
                             + " & tracking:"
                             + tracked
                             + ", "
@@ -498,6 +517,8 @@ public final class SafetyCenterRefreshTracker {
                     + mStartElapsedMillis
                     + ", mAnyTrackedSourceErrors="
                     + mAnyTrackedSourceErrors
+                    + ", mAnyTrackedSourceDataChanged="
+                    + mAnyTrackedSourceDataChanged
                     + '}';
         }
     }
