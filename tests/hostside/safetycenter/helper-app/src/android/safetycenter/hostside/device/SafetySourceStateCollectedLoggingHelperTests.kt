@@ -17,14 +17,17 @@
 package android.safetycenter.hostside.device
 
 import android.content.Context
+import android.safetycenter.SafetyCenterManager
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.compatibility.common.util.SystemUtil
-import com.android.safetycenter.testing.SafetyCenterFlags
-import com.android.safetycenter.testing.SafetyCenterTestConfigs
+import com.android.safetycenter.testing.*
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SOURCE_ID_1
-import com.android.safetycenter.testing.SafetyCenterTestHelper
-import com.android.safetycenter.testing.SafetySourceTestData
+import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SOURCE_ID_2
+import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SOURCE_ID_3
+import com.android.safetycenter.testing.SafetySourceIntentHandler.Request
+import com.android.safetycenter.testing.SafetySourceIntentHandler.Response
+import com.android.safetycenter.testing.SafetySourceReceiver.Companion.refreshSafetySourcesWithReceiverPermissionAndWait
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -36,6 +39,7 @@ class SafetySourceStateCollectedLoggingHelperTests {
     private val safetyCenterTestHelper = SafetyCenterTestHelper(context)
     private val safetySourceTestData = SafetySourceTestData(context)
     private val safetyCenterTestConfigs = SafetyCenterTestConfigs(context)
+    private val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)!!
 
     @Before
     fun setUp() {
@@ -60,5 +64,35 @@ class SafetySourceStateCollectedLoggingHelperTests {
     @Test
     fun setSafetySourceData_source1() {
         safetyCenterTestHelper.setData(SOURCE_ID_1, safetySourceTestData.information)
+    }
+
+    @Test
+    fun refreshAllSources_reasonPageOpen_allSuccessful() {
+        simulateRefresh(
+            Response.SetData(safetySourceTestData.information),
+            Response.SetData(safetySourceTestData.recommendationWithAccountIssue),
+            Response.SetData(safetySourceTestData.criticalWithResolvingDeviceIssue)
+        )
+    }
+
+    @Test
+    fun refreshAllSources_reasonPageOpen_oneError() {
+        simulateRefresh(
+            Response.SetData(safetySourceTestData.information),
+            Response.SetData(safetySourceTestData.information),
+            Response.Error
+        )
+    }
+
+    private fun simulateRefresh(
+        source1Response: Response,
+        source2Response: Response,
+        source3Response: Response,
+        refreshReason: Int = SafetyCenterManager.REFRESH_REASON_PAGE_OPEN
+    ) {
+        SafetySourceReceiver.setResponse(Request.Refresh(SOURCE_ID_1), source1Response)
+        SafetySourceReceiver.setResponse(Request.Refresh(SOURCE_ID_2), source2Response)
+        SafetySourceReceiver.setResponse(Request.Refresh(SOURCE_ID_3), source3Response)
+        safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(refreshReason)
     }
 }
