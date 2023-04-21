@@ -30,8 +30,7 @@
     <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"আরও সতর্কতা"</string>
     <string name="safety_center_dismissed_issues_card_title" msgid="2340129842725145733">"বাতিল করা সতর্কতা"</string>
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{বড় করুন ও আরও একটি সতর্কতা দেখুন}one{বড় করুন ও আরও #টি সতর্কতা দেখুন}other{বড় করুন ও আরও #টি সতর্কতা দেখুন}}"</string>
-    <!-- no translation found for safety_center_issue_card_prefix_content_description (1447445289637043544) -->
-    <skip />
+    <string name="safety_center_issue_card_prefix_content_description" msgid="1447445289637043544">"সতর্কতা। <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>"</string>
     <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"অ্যাকশন সম্পূর্ণ হয়েছে"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"আপনার ডিভাইসকে আরও সুরক্ষিত করতে পারে এমন সেটিংস দেখুন"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"সুরক্ষা ও গোপনীয়তা সংক্রান্ত দ্রুত সেটিংস"</string>

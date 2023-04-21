@@ -30,8 +30,7 @@
     <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"การแจ้งเตือนเพิ่มเติม"</string>
     <string name="safety_center_dismissed_issues_card_title" msgid="2340129842725145733">"การแจ้งเตือนที่ปิดไป"</string>
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{ขยายและดูการแจ้งเตือนอีก 1 รายการ}other{ขยายและดูการแจ้งเตือนอีก # รายการ}}"</string>
-    <!-- no translation found for safety_center_issue_card_prefix_content_description (1447445289637043544) -->
-    <skip />
+    <string name="safety_center_issue_card_prefix_content_description" msgid="1447445289637043544">"การแจ้งเตือน <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>"</string>
     <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"การดำเนินการเสร็จสมบูรณ์"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"ตรวจสอบการตั้งค่าที่เพิ่มการปกป้องให้กับอุปกรณ์ได้"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"การตั้งค่าด่วนด้านความปลอดภัยและความเป็นส่วนตัว"</string>

@@ -30,8 +30,7 @@
     <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"هشدارهای بیشتر"</string>
     <string name="safety_center_dismissed_issues_card_title" msgid="2340129842725145733">"هشدارهای ردشده"</string>
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{گسترده کردن و دیدن یک هشدار دیگر}one{گسترده کردن و دیدن # هشدار دیگر}other{گسترده کردن و دیدن # هشدار دیگر}}"</string>
-    <!-- no translation found for safety_center_issue_card_prefix_content_description (1447445289637043544) -->
-    <skip />
+    <string name="safety_center_issue_card_prefix_content_description" msgid="1447445289637043544">"هشدار. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>"</string>
     <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"کنش کامل شد"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"بررسی کردن تنظیماتی که می‌تواند امنیت بیشتری به دستگاهتان اضافه کند"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"تنظیمات فوری امنیت و حریم خصوصی"</string>

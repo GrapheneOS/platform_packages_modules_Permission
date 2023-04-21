@@ -251,7 +251,7 @@
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Дазволены доступ толькі да мультымедыя"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Дазволена кіраванне ўсімі файламі"</string>
     <string name="ask_header" msgid="2633816846459944376">"Заўсёды пытацца"</string>
-    <string name="denied_header" msgid="903209608358177654">"Забаронена"</string>
+    <string name="denied_header" msgid="903209608358177654">"Забароненыя"</string>
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Праглядзець іншыя праграмы, якія маюць доступ да ўсіх файлаў"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 дзень}one{# дзень}few{# дні}many{# дзён}other{# дня}}"</string>
     <string name="hours" msgid="7302866489666950038">"{count,plural, =1{# гадзіна}one{# гадзіна}few{# гадзіны}many{# гадзін}other{# гадзіны}}"</string>
@@ -498,10 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Захаваць для праграмы \"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;” дазвол на доступ да даных датчыкаў цела ў час яе выкарыстання?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; адпраўляць вам апавяшчэнні?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Кіраваныя дазволы"</string>
-    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
-    <skip />
-    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
-    <skip />
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"Праграма \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" мае доступ да даных геалакацыі"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Ваша арганізацыя дазволіла праграме \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" мець доступ да вашага месцазнаходжання"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"Iншыя дазволы"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Дазвол, які выкарыстоўваецца сістэмай"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Дазволы, якія выкарыстоўваюцца толькі сістэмнымі праграмамі."</string>

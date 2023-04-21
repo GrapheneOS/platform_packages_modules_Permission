@@ -498,10 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Vil du fortsætte med at give &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; adgang til kropssensordata, mens appen er i brug?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Vil du give &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tilladelse til at sende dig notifikationer?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Administrerede tilladelser"</string>
-    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
-    <skip />
-    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
-    <skip />
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> har lokationsadgang"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Din organisation har givet <xliff:g id="APP_NAME">%1$s</xliff:g> tilladelse til at tilgå din lokation"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"Andre tilladelser"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Tilladelse, der anvendes af systemet"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Tilladelser, der kun anvendes af systemapps"</string>
