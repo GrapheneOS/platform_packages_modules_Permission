@@ -27,6 +27,7 @@ import static android.view.WindowManager.LayoutParams.SYSTEM_FLAG_HIDE_NON_SYSTE
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.CANCELED;
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.DENIED;
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.DENIED_DO_NOT_ASK_AGAIN;
+import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.DENIED_MORE;
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.GRANTED_ALWAYS;
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.GRANTED_FOREGROUND_ONLY;
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.GRANTED_ONE_TIME;
@@ -644,6 +645,7 @@ public class GrantPermissionsActivity extends SettingsActivity
             // Only the top activity can receive activity results
             Activity top = mFollowerActivities.isEmpty() ? this : mFollowerActivities.get(0);
             mViewModel.openPhotoPicker(top, result);
+            logGrantPermissionActivityButtons(name, affectedForegroundPermissions, result);
             return;
         }
 
@@ -791,7 +793,13 @@ public class GrantPermissionsActivity extends SettingsActivity
         int presentedButtons = getButtonState();
         switch (grantResult) {
             case GRANTED_ALWAYS:
-                clickedButton = 1 << ALLOW_BUTTON;
+                if (mButtonVisibilities[ALLOW_BUTTON]) {
+                    clickedButton = 1 << ALLOW_BUTTON;
+                } else if (mButtonVisibilities[ALLOW_ALWAYS_BUTTON]) {
+                    clickedButton = 1 << ALLOW_ALWAYS_BUTTON;
+                } else if (mButtonVisibilities[ALLOW_ALL_BUTTON]) {
+                    clickedButton = 1 << ALLOW_ALL_BUTTON;
+                }
                 break;
             case GRANTED_FOREGROUND_ONLY:
                 clickedButton = 1 << ALLOW_FOREGROUND_BUTTON;
@@ -823,6 +831,12 @@ public class GrantPermissionsActivity extends SettingsActivity
                 break;
             case LINKED_TO_SETTINGS:
                 clickedButton = 1 << LINK_TO_SETTINGS;
+                break;
+            case GRANTED_USER_SELECTED:
+                clickedButton = 1 << ALLOW_SELECTED_BUTTON;
+                break;
+            case DENIED_MORE:
+                clickedButton = 1 << DONT_ALLOW_MORE_SELECTED_BUTTON;
                 break;
             case LINKED_TO_PERMISSION_RATIONALE:
                 clickedButton = 1 << LINK_TO_PERMISSION_RATIONALE;

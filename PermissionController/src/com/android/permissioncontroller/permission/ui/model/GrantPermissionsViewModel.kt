@@ -1094,8 +1094,6 @@ class GrantPermissionsViewModel(
                 listOf(READ_MEDIA_VISUAL_USER_SELECTED))
             grantForegroundRuntimePermissions(app, groupState.group,
                 nonSelectedPerms, isOneTime = true, userFixed = false, withoutAppOps = true)
-            onPermissionGrantResultSingleState(groupState, listOf(READ_MEDIA_VISUAL_USER_SELECTED),
-                granted = true, isOneTime = false, doNotAskAgain = false)
             val appPermGroup = AppPermissionGroup.create(app, packageName,
             groupState.group.permGroupName, groupState.group.userHandle, false)
             appPermGroup.setSelfRevoked()
@@ -1366,7 +1364,6 @@ class GrantPermissionsViewModel(
             } else {
                 onPermissionGrantResult(READ_MEDIA_VISUAL, null, CANCELED)
             }
-            logPhotoPickerInteraction(result)
             requestInfosLiveData.update()
         }
         activity.startActivityForResult(Intent(MediaStore.ACTION_USER_SELECT_IMAGES_FOR_APP)
@@ -1436,20 +1433,6 @@ class GrantPermissionsViewModel(
 
     private fun getInstanceStateKey(groupName: String, isBackground: Boolean): String {
         return "${this::class.java.name}_${groupName}_$isBackground"
-    }
-
-    private fun logPhotoPickerInteraction(result: Int) {
-        val foregroundGroupState = groupStates[READ_MEDIA_VISUAL to false] ?: return
-        when (result) {
-            GRANTED_USER_SELECTED -> {
-                reportRequestResult(foregroundGroupState.affectedPermissions,
-                    PERMISSION_GRANT_REQUEST_RESULT_REPORTED__RESULT__PHOTOS_SELECTED)
-            }
-            CANCELED -> {
-                reportRequestResult(foregroundGroupState.affectedPermissions,
-                    PERMISSION_GRANT_REQUEST_RESULT_REPORTED__RESULT__IGNORED)
-            }
-        }
     }
 
     private fun logSettingsInteraction(groupName: String, result: Int) {
