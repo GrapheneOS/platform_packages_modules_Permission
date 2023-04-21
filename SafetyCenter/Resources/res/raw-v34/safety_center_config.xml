@@ -119,6 +119,7 @@
                 id="AndroidWorkPolicyInfo"
                 packageName="com.android.permissioncontroller"
                 profile="primary_profile_only"
+                title="@com.android.safetycenter.resources:string/work_policy_title"
                 initialDisplayState="hidden"
                 refreshOnPageOpenAllowed="true"/>
             <static-safety-source
