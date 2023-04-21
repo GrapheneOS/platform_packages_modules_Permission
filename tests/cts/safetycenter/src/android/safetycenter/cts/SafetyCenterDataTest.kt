@@ -34,6 +34,9 @@ import androidx.test.core.os.Parcelables.forceParcel
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.ext.truth.os.ParcelableSubject.assertThat
 import androidx.test.filters.SdkSuppress
+import com.android.safetycenter.internaldata.SafetyCenterBundles
+import com.android.safetycenter.internaldata.SafetyCenterBundles.ISSUES_TO_GROUPS_BUNDLE_KEY
+import com.android.safetycenter.internaldata.SafetyCenterBundles.STATIC_ENTRIES_TO_IDS_BUNDLE_KEY
 import com.android.safetycenter.testing.EqualsHashCodeToStringTester
 import com.android.safetycenter.testing.SafetyCenterTestData.Companion.withDismissedIssuesIfAtLeastU
 import com.android.safetycenter.testing.SafetyCenterTestData.Companion.withExtrasIfAtLeastU
@@ -107,14 +110,51 @@ class SafetyCenterDataTest {
     private val issueToGroupExtra1 =
         Bundle().apply { putStringArrayList(issue1.id, arrayListOf(entryGroup1.id)) }
 
-    private val filledExtras1 =
+    private val filledExtrasIssuesToGroups1 =
         Bundle().apply { putBundle(ISSUES_TO_GROUPS_BUNDLE_KEY, issueToGroupExtra1) }
 
     private val issueToGroupExtra2 =
         Bundle().apply { putStringArrayList(issue2.id, arrayListOf(entryGroup1.id)) }
 
-    private val filledExtras2 =
+    private val filledExtrasIssuesToGroups2 =
         Bundle().apply { putBundle(ISSUES_TO_GROUPS_BUNDLE_KEY, issueToGroupExtra2) }
+
+    private val staticEntryToId1 =
+        Bundle().apply {
+            putString(SafetyCenterBundles.toBundleKey(staticEntry1), "StaticEntryId1")
+        }
+
+    private val filledExtrasStaticEntriesToIds1 =
+        Bundle().apply { putBundle(STATIC_ENTRIES_TO_IDS_BUNDLE_KEY, staticEntryToId1) }
+
+    private val staticEntryToId2 =
+        Bundle().apply {
+            putString(SafetyCenterBundles.toBundleKey(staticEntry2), "StaticEntryId2")
+        }
+
+    private val filledExtrasStaticEntriesToIds2 =
+        Bundle().apply { putBundle(STATIC_ENTRIES_TO_IDS_BUNDLE_KEY, staticEntryToId2) }
+
+    private val filledAllExtras =
+        Bundle().apply {
+            val allIssuesToGroups = Bundle()
+            allIssuesToGroups.putAll(issueToGroupExtra1)
+            allIssuesToGroups.putAll(issueToGroupExtra2)
+            putBundle(ISSUES_TO_GROUPS_BUNDLE_KEY, allIssuesToGroups)
+            val allStaticEntriesToIds = Bundle()
+            allStaticEntriesToIds.putAll(staticEntryToId1)
+            allStaticEntriesToIds.putAll(staticEntryToId2)
+            putBundle(STATIC_ENTRIES_TO_IDS_BUNDLE_KEY, allStaticEntriesToIds)
+        }
+
+    private val filledOneKnownOneUnknown =
+        Bundle().apply {
+            val allIssuesToGroups = Bundle()
+            allIssuesToGroups.putAll(issueToGroupExtra1)
+            allIssuesToGroups.putAll(issueToGroupExtra2)
+            putBundle(ISSUES_TO_GROUPS_BUNDLE_KEY, allIssuesToGroups)
+            putInt("unknown_key", 1)
+        }
 
     private val unknownExtras = Bundle().apply { putString("key", "value") }
 
@@ -223,7 +263,8 @@ class SafetyCenterDataTest {
     @Test
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun getExtras_whenSetExplicitly_returnsExtras() {
-        val safetyCenterData = SafetyCenterData.Builder(status1).setExtras(filledExtras1).build()
+        val safetyCenterData =
+            SafetyCenterData.Builder(status1).setExtras(filledExtrasIssuesToGroups1).build()
 
         val extras = safetyCenterData.extras
         val issuesToGroups = extras.getBundle(ISSUES_TO_GROUPS_BUNDLE_KEY)
@@ -237,7 +278,10 @@ class SafetyCenterDataTest {
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun getExtras_whenCleared_returnsEmptyBundle() {
         val safetyCenterData =
-            SafetyCenterData.Builder(status1).setExtras(filledExtras1).clearExtras().build()
+            SafetyCenterData.Builder(status1)
+                .setExtras(filledExtrasIssuesToGroups1)
+                .clearExtras()
+                .build()
 
         assertThat(safetyCenterData.extras.keySet()).isEmpty()
     }
@@ -431,7 +475,7 @@ class SafetyCenterDataTest {
     @Test
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
     fun parcelRoundTrip_withExtras_recreatesEqual() {
-        val safetyCenterDataWithExtras = data1.withExtrasIfAtLeastU(filledExtras1)
+        val safetyCenterDataWithExtras = data1.withExtrasIfAtLeastU(filledAllExtras)
         val safetyCenterDatafromParcel =
             forceParcel(safetyCenterDataWithExtras, SafetyCenterData.CREATOR)
 
@@ -533,7 +577,39 @@ class SafetyCenterDataTest {
                     .addIssue(issue1)
                     .addEntryOrGroup(entryOrGroup1)
                     .addStaticEntryGroup(staticEntryGroup1)
-                    .setExtras(filledExtras1)
+                    .setExtras(filledExtrasIssuesToGroups1)
+                    .build()
+            )
+            .addEqualityGroup(
+                SafetyCenterData.Builder(status1)
+                    .addIssue(issue1)
+                    .addEntryOrGroup(entryOrGroup1)
+                    .addStaticEntryGroup(staticEntryGroup1)
+                    .setExtras(filledOneKnownOneUnknown)
+                    .build()
+            )
+            .addEqualityGroup(
+                SafetyCenterData.Builder(status1)
+                    .addIssue(issue1)
+                    .addEntryOrGroup(entryOrGroup1)
+                    .addStaticEntryGroup(staticEntryGroup1)
+                    .setExtras(filledAllExtras)
+                    .build()
+            )
+            .addEqualityGroup(
+                SafetyCenterData.Builder(status1)
+                    .addIssue(issue1)
+                    .addEntryOrGroup(entryOrGroup1)
+                    .addStaticEntryGroup(staticEntryGroup1)
+                    .setExtras(filledExtrasStaticEntriesToIds1)
+                    .build()
+            )
+            .addEqualityGroup(
+                SafetyCenterData.Builder(status1)
+                    .addIssue(issue1)
+                    .addEntryOrGroup(entryOrGroup1)
+                    .addStaticEntryGroup(staticEntryGroup1)
+                    .setExtras(filledExtrasStaticEntriesToIds2)
                     .build()
             )
             .addEqualityGroup(
@@ -556,14 +632,14 @@ class SafetyCenterDataTest {
                     .addEntryOrGroup(entryOrGroup1)
                     .addStaticEntryGroup(staticEntryGroup1)
                     .addIssue(issue1)
-                    .setExtras(filledExtras1)
+                    .setExtras(filledExtrasIssuesToGroups1)
                     .build(),
                 SafetyCenterData.Builder(status1)
                     .addIssue(issue2)
                     .addEntryOrGroup(entryOrGroup1)
                     .addStaticEntryGroup(staticEntryGroup1)
                     .addIssue(issue1)
-                    .setExtras(filledExtras1)
+                    .setExtras(filledExtrasIssuesToGroups1)
                     .build()
             )
             .addEqualityGroup(
@@ -572,7 +648,16 @@ class SafetyCenterDataTest {
                     .addEntryOrGroup(entryOrGroup1)
                     .addStaticEntryGroup(staticEntryGroup1)
                     .addIssue(issue1)
-                    .setExtras(filledExtras2)
+                    .setExtras(filledExtrasIssuesToGroups2)
+                    .build()
+            )
+            .addEqualityGroup(
+                SafetyCenterData.Builder(status1)
+                    .addIssue(issue2)
+                    .addEntryOrGroup(entryOrGroup1)
+                    .addStaticEntryGroup(staticEntryGroup2)
+                    .addIssue(issue1)
+                    .setExtras(filledExtrasStaticEntriesToIds2)
                     .build()
             )
             .addEqualityGroup(
@@ -596,22 +681,54 @@ class SafetyCenterDataTest {
 
     @Test
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
-    fun toString_withKnownExtras_containsKnownExtras() {
-        val safetyCenterDataWithExtras = data1.withExtrasIfAtLeastU(filledExtras1)
+    fun toString_withSingleKnownExtra_containsKnownExtra() {
+        val safetyCenterDataWithExtras = data1.withExtrasIfAtLeastU(filledExtrasIssuesToGroups1)
 
         val stringRepresentation = safetyCenterDataWithExtras.toString()
 
         assertThat(stringRepresentation).contains("IssuesToGroups")
+        assertThat(stringRepresentation).doesNotContain("StaticEntriesToIds")
+        assertThat(stringRepresentation).doesNotContain("has unknown extras")
+        assertThat(stringRepresentation).doesNotContain("no extras")
     }
 
     @Test
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
-    fun toString_withUnknownExtras_containsUnknownExtras() {
+    fun toString_withAllKnownExtras_containsKnownExtras() {
+        val safetyCenterDataWithAllExtras = data1.withExtrasIfAtLeastU(filledAllExtras)
+
+        val stringRepresentation = safetyCenterDataWithAllExtras.toString()
+
+        assertThat(stringRepresentation).contains("IssuesToGroups")
+        assertThat(stringRepresentation).contains("StaticEntriesToIds")
+        assertThat(stringRepresentation).doesNotContain("has unknown extras")
+        assertThat(stringRepresentation).doesNotContain("no extras")
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun toString_withOneKnowAndOneUnknownExtra_containsKnownAndUnknownExtras() {
+        val safetyCenterDataWithExtras = data1.withExtrasIfAtLeastU(filledOneKnownOneUnknown)
+
+        val stringRepresentation = safetyCenterDataWithExtras.toString()
+
+        assertThat(stringRepresentation).contains("IssuesToGroups")
+        assertThat(stringRepresentation).contains("has unknown extras")
+        assertThat(stringRepresentation).doesNotContain("StaticEntriesToIds")
+        assertThat(stringRepresentation).doesNotContain("no extras")
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun toString_withSingleUnknownExtra_containsUnknownExtras() {
         val safetyCenterDataWithExtras = data1.withExtrasIfAtLeastU(unknownExtras)
 
         val stringRepresentation = safetyCenterDataWithExtras.toString()
 
         assertThat(stringRepresentation).contains("has unknown extras")
+        assertThat(stringRepresentation).doesNotContain("IssuesToGroups")
+        assertThat(stringRepresentation).doesNotContain("StaticEntriesToIds")
+        assertThat(stringRepresentation).doesNotContain("no extras")
     }
 
     @Test
@@ -622,9 +739,8 @@ class SafetyCenterDataTest {
         val stringRepresentation = safetyCenterDataWithoutExtras.toString()
 
         assertThat(stringRepresentation).contains("no extras")
-    }
-
-    private companion object {
-        const val ISSUES_TO_GROUPS_BUNDLE_KEY = "IssuesToGroupsKey"
+        assertThat(stringRepresentation).doesNotContain("IssuesToGroups")
+        assertThat(stringRepresentation).doesNotContain("StaticEntriesToIds")
+        assertThat(stringRepresentation).doesNotContain("has unknown extras")
     }
 }

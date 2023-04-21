@@ -57,3 +57,11 @@ message SafetyCenterIssueActionId {
   // `SafetyCenterIssueKey` associated with this action.
   optional SafetyCenterIssueKey safety_center_issue_key = 3;
 }
+
+// A bundle key for static entries provided by the Safety Center.
+message SafetyCenterStaticEntryBundleKey {
+  // The title of the SafetyCenterStaticEntry.
+  optional string title = 1;
+  // The summary of the SafetyCenterStaticEntry.
+  optional string summary = 2;
+}

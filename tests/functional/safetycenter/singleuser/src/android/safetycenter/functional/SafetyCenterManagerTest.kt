@@ -22,6 +22,7 @@ import android.content.Intent
 import android.os.Build
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
+import android.os.UserHandle
 import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterEntry
 import android.safetycenter.SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING
@@ -64,6 +65,9 @@ import androidx.test.filters.SdkSuppress
 import com.android.compatibility.common.preconditions.ScreenLockHelper
 import com.android.compatibility.common.util.SystemUtil
 import com.android.modules.utils.build.SdkLevel
+import com.android.safetycenter.internaldata.SafetyCenterBundles
+import com.android.safetycenter.internaldata.SafetyCenterBundles.ISSUES_TO_GROUPS_BUNDLE_KEY
+import com.android.safetycenter.internaldata.SafetyCenterEntryId
 import com.android.safetycenter.internaldata.SafetyCenterIds
 import com.android.safetycenter.resources.SafetyCenterResourcesContext
 import com.android.safetycenter.testing.Coroutines.TIMEOUT_LONG
@@ -109,6 +113,7 @@ import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SUMMAR
 import com.android.safetycenter.testing.SafetyCenterTestData
 import com.android.safetycenter.testing.SafetyCenterTestData.Companion.withAttributionTitleInIssuesIfAtLeastU
 import com.android.safetycenter.testing.SafetyCenterTestData.Companion.withDismissedIssuesIfAtLeastU
+import com.android.safetycenter.testing.SafetyCenterTestData.Companion.withoutExtras
 import com.android.safetycenter.testing.SafetyCenterTestHelper
 import com.android.safetycenter.testing.SafetySourceIntentHandler.Request
 import com.android.safetycenter.testing.SafetySourceIntentHandler.Response
@@ -869,7 +874,7 @@ class SafetyCenterManagerTest {
 
         val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
 
-        assertThat(apiSafetyCenterData).isEqualTo(safetyCenterDataFromComplexConfig)
+        assertThat(apiSafetyCenterData.withoutExtras()).isEqualTo(safetyCenterDataFromComplexConfig)
     }
 
     @Test
@@ -1444,6 +1449,39 @@ class SafetyCenterManagerTest {
                     OVERALL_SEVERITY_LEVEL_OK,
                     numAlerts = 2
                 )
+            )
+    }
+
+    @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    fun getSafetyCenterData_withStaticEntryGroups_hasStaticEntriesToIdsMapping() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.staticSourcesConfig)
+
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+
+        assertThat(
+                SafetyCenterBundles.getStaticEntryId(
+                    apiSafetyCenterData,
+                    apiSafetyCenterData.staticEntryGroups[0].staticEntries[0]
+                )
+            )
+            .isEqualTo(
+                SafetyCenterEntryId.newBuilder()
+                    .setSafetySourceId("test_static_source_id_1")
+                    .setUserId(UserHandle.myUserId())
+                    .build()
+            )
+        assertThat(
+                SafetyCenterBundles.getStaticEntryId(
+                    apiSafetyCenterData,
+                    apiSafetyCenterData.staticEntryGroups[1].staticEntries[0]
+                )
+            )
+            .isEqualTo(
+                SafetyCenterEntryId.newBuilder()
+                    .setSafetySourceId("test_static_source_id_2")
+                    .setUserId(UserHandle.myUserId())
+                    .build()
             )
     }
 
@@ -2337,7 +2375,8 @@ class SafetyCenterManagerTest {
 
         val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
 
-        assertThat(apiSafetyCenterData).isEqualTo(safetyCenterDataFromComplexConfigUpdated)
+        assertThat(apiSafetyCenterData.withoutExtras())
+            .isEqualTo(safetyCenterDataFromComplexConfigUpdated)
     }
 
     @Test
@@ -3599,7 +3638,5 @@ class SafetyCenterManagerTest {
         // has not resurfaced. Use a different check logic (focused at the expected resurface time)
         // if we increase the delay considerably.
         private val RESURFACE_CHECK = RESURFACE_DELAY.dividedBy(4)
-
-        private val ISSUES_TO_GROUPS_BUNDLE_KEY = "IssuesToGroupsKey"
     }
 }
