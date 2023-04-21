@@ -35,6 +35,7 @@ java_library {
     ],
     static_libs: [
         "libprotobuf-java-lite",
+        "modules-utils-build_system",
     ],
     proto: {
         type: "lite",
