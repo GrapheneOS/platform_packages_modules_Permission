@@ -498,10 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Të lejohet akoma që &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të ketë qasje te të dhënat e sensorit të trupit kur aplikacioni përdoret?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Të lejohet që &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të të dërgojë njoftime?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Lejet e kontrolluara"</string>
-    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
-    <skip />
-    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
-    <skip />
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> ka qasje te vendndodhja"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Organizata jote lejon që <xliff:g id="APP_NAME">%1$s</xliff:g> të ketë qasje te vendndodhja jote"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"Leje të tjera"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Lejet e përdorura nga sistemi"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Lejet e përdorura vetëm nga aplikacionet e sistemit."</string>

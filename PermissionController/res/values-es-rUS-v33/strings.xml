@@ -30,8 +30,7 @@
     <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"Más alertas"</string>
     <string name="safety_center_dismissed_issues_card_title" msgid="2340129842725145733">"Alertas descartadas"</string>
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{Expande y ve una alerta más}many{Expande y ve # de alertas más}other{Expande y ve # alertas más}}"</string>
-    <!-- no translation found for safety_center_issue_card_prefix_content_description (1447445289637043544) -->
-    <skip />
+    <string name="safety_center_issue_card_prefix_content_description" msgid="1447445289637043544">"Alerta: <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>"</string>
     <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"Se completó la acción"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"Revisa los parámetros de configuración que pueden proteger aún más tu dispositivo"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"Configuración rápida de parámetros de seguridad y privacidad"</string>

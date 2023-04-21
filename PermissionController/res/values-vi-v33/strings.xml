@@ -30,8 +30,7 @@
     <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"Cảnh báo khác"</string>
     <string name="safety_center_dismissed_issues_card_title" msgid="2340129842725145733">"Cảnh báo bị loại bỏ"</string>
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{Mở rộng và xem một cảnh báo khác}other{Mở rộng và xem # cảnh báo khác}}"</string>
-    <!-- no translation found for safety_center_issue_card_prefix_content_description (1447445289637043544) -->
-    <skip />
+    <string name="safety_center_issue_card_prefix_content_description" msgid="1447445289637043544">"Cảnh báo. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>"</string>
     <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"Hoàn tất hành động"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"Kiểm tra các chế độ cài đặt có thể giúp tăng cường bảo vệ cho thiết bị của bạn"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"Các tùy chọn cài đặt nhanh về bảo mật và quyền riêng tư"</string>
