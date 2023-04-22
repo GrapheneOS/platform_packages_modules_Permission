@@ -73,6 +73,7 @@ import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.STATIC
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.STATIC_BAREBONE_ID
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.STATIC_GROUP_ID
 import com.android.safetycenter.testing.SafetyCenterTestData
+import com.android.safetycenter.testing.SafetyCenterTestData.Companion.withoutExtras
 import com.android.safetycenter.testing.SafetyCenterTestHelper
 import com.android.safetycenter.testing.SafetySourceTestData
 import com.android.safetycenter.testing.SafetySourceTestData.Companion.EVENT_SOURCE_STATE_CHANGED
@@ -522,7 +523,7 @@ class SafetyCenterMultiUsersTest {
                 ),
                 listOf(SafetyCenterStaticEntryGroup("OK", listOf(staticEntry, staticEntry)))
             )
-        assertThat(apiSafetyCenterData).isEqualTo(safetyCenterDataFromComplexConfig)
+        assertThat(apiSafetyCenterData.withoutExtras()).isEqualTo(safetyCenterDataFromComplexConfig)
     }
 
     @Test
@@ -573,7 +574,7 @@ class SafetyCenterMultiUsersTest {
                     )
                 )
             )
-        assertThat(apiSafetyCenterData).isEqualTo(safetyCenterDataFromComplexConfig)
+        assertThat(apiSafetyCenterData.withoutExtras()).isEqualTo(safetyCenterDataFromComplexConfig)
     }
 
     @Test
@@ -627,7 +628,7 @@ class SafetyCenterMultiUsersTest {
                     )
                 )
             )
-        assertThat(apiSafetyCenterData).isEqualTo(safetyCenterDataFromComplexConfig)
+        assertThat(apiSafetyCenterData.withoutExtras()).isEqualTo(safetyCenterDataFromComplexConfig)
     }
 
     @Test
@@ -737,7 +738,7 @@ class SafetyCenterMultiUsersTest {
                     )
                 )
             )
-        assertThat(apiSafetyCenterData).isEqualTo(safetyCenterDataFromComplexConfig)
+        assertThat(apiSafetyCenterData.withoutExtras()).isEqualTo(safetyCenterDataFromComplexConfig)
     }
 
     @Test
@@ -799,7 +800,7 @@ class SafetyCenterMultiUsersTest {
                     )
                 )
             )
-        assertThat(apiSafetyCenterData).isEqualTo(safetyCenterDataFromComplexConfig)
+        assertThat(apiSafetyCenterData.withoutExtras()).isEqualTo(safetyCenterDataFromComplexConfig)
     }
 
     @Test
