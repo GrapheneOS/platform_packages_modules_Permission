@@ -101,7 +101,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"Benarkan sepanjang masa"</string>
-    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Benarkan semasa menggunakn apl"</string>
+    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Benarkan hanya semasa menggunakan apl"</string>
     <string name="permission_access_never" msgid="4647014230217936900">"Jangan benarkan"</string>
     <string name="loading" msgid="4789365003890741082">"Memuatkan…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"Semua kebenaran"</string>
@@ -236,8 +236,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Apl dengan kebenaran ini boleh mengakses data penderia tentang tanda vital anda"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Apl dengan kebenaran ini boleh menghantar dan melihat mesej SMS"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Apl dengan kebenaran ini boleh mengakses foto, media dan fail pada peranti anda"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"Apl dengan kebenaran ini boleh mengakses muzik dan fail audio lain pada peranti anda"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"Apl dengan kebenaran ini boleh mengakses foto dan video pada peranti anda"</string>
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"Apl dengan kebenaran ini boleh mengakses muzik dan fail audio lain pada peranti ini"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"Apl dengan kebenaran ini boleh mengakses foto dan video pada peranti ini"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Akses terakhir: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Ditolak pada masa ini / Akses terakhir: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Tidak pernah mengakses"</string>
@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Dibenarkan mengurus semua fail"</string>
     <string name="ask_header" msgid="2633816846459944376">"Tanya setiap kali"</string>
     <string name="denied_header" msgid="903209608358177654">"Tidak dibenarkan"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Sesetengah apl yang menyediakan fungsi penting untuk peranti anda boleh mendapat akses khas kepada semua fail anda"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Lihat apl dengan akses semua fail"</string>
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Lihat lagi apl yang boleh mengakses semua fail"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 hari}other{# hari}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 jam}other{# jam}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 minit}other{# minit}}"</string>
@@ -332,8 +331,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"Apl pembantu digital lalai"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Apl pembantu digital"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Apl bantu dapat membantu anda berdasarkan maklumat daripada skrin yang sedang dilihat. Sesetengah apl menyokong perkhidmatan pelancar dan input suara untuk memberi anda bantuan bersepadu."</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"Tetapkan <xliff:g id="APP_NAME">%1$s</xliff:g> sebagai apl bantuan lalai anda?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"Mendapat akses kepada SMS, log panggilan"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Apl penyemak imbas lalai"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Apl penyemak imbas"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Apl yang memberi anda akses kepada Internet dan memaparkan pautan yang anda ketik"</string>
@@ -343,13 +340,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Apl Telefon"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Apl yang membenarkan anda membuat dan menerima panggilan telefon pada peranti anda"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Tetapkan <xliff:g id="APP_NAME">%1$s</xliff:g> sebagai apl telefon lalai anda?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"Mendapat akses kepada log panggilan, menghantar SMS"</string>
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"Apl ini akan diberikan akses kepada Kamera, Kenalan, Mikrofon, Telefon dan SMS anda"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"pendail"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Apl SMS lalai"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"Apl SMS"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Apl yang membenarkan anda menggunakan nombor telefon untuk menghantar dan menerima mesej teks pendek, foto, video dan pelbagai lagi"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Tetapkan <xliff:g id="APP_NAME">%1$s</xliff:g> sebagai apl SMS lalai anda?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"Mendapat akses kepada kenalan, SMS, telefon"</string>
+    <string name="role_sms_request_description" msgid="2691004766132144886">"Apl ini akan diberikan akses kepada Kamera, Kenalan, Fail dan media, Mikrofon, Telefon dan SMS anda"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"mesej teks, menghantar teks, mesej, pemesejan"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"Apl kecemasan lalai"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"Apl kecemasan"</string>
@@ -369,7 +366,7 @@
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"Tetapkan <xliff:g id="APP_NAME">%1$s</xliff:g> sebagai apl pengubahhalaan panggilan lalai anda?"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Kebenaran tidak diperlukan"</string>
     <string name="role_call_screening_label" msgid="883935222060878724">"Apl ID pemanggil &amp; spam lalai"</string>
-    <string name="role_call_screening_short_label" msgid="2048465565063130834">"ID Pemanggil &amp; apl spam"</string>
+    <string name="role_call_screening_short_label" msgid="2048465565063130834">"Apl ID pemanggil &amp; spam"</string>
     <string name="role_call_screening_description" msgid="2349431420497468981">"Apl yang membenarkan anda mengenal pasti panggilan dan menyekat spam, robopanggilan atau nombor yang tidak dikehendaki"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Tetapkan <xliff:g id="APP_NAME">%1$s</xliff:g> sebagai apl ID pemanggil &amp; spam lalai anda?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Kebenaran tidak diperlukan"</string>
@@ -450,11 +447,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Anggaran"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses kalendar anda?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; menghantar dan melihat mesej SMS?"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses &lt;b&gt;fail dan dokumen&lt;/b&gt; pada peranti anda?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses &lt;b&gt;foto, video, muzik dan audio&lt;/b&gt; pada peranti anda?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses &lt;b&gt;foto, video, muzik, audio dan fail lain&lt;/b&gt; pada peranti anda?"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; untuk mengakses muzik dan fail audio lain pada peranti ini?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; untuk mengakses foto dan video pada peranti ini?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses foto, media dan fail pada peranti anda?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses &lt;b&gt;foto, video, muzik dan audio&lt;/b&gt; pada peranti ini?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses &lt;b&gt;foto, video, muzik, audio dan fail lain&lt;/b&gt; pada peranti ini?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses muzik dan audio pada peranti ini?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses foto dan video pada peranti ini?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; merakam audio?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Apl hanya boleh merakam audio semasa anda menggunakan apl tersebut"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; merakam audio?"</string>
@@ -476,7 +473,6 @@
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Untuk membenarkan apl ini mengakses data penderia tubuh pada setiap masa, termasuk apabila anda tidak menggunakan apl, "<annotation id="link">"pergi ke tetapan."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Terus membenarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses data penderia tubuh semasa apl digunakan?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; menghantar pemberitahuan kepada anda?"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; terus menghantar pemberitahuan kepada anda?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Kebenaran terkawal"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Lokasi dapat diakses"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Pentadbir IT anda membenarkan <xliff:g id="APP_NAME">%s</xliff:g> mengakses lokasi anda"</string>
@@ -492,8 +488,8 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Tiada"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"24 jam\nyang lalu"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"7 hari\nyang lalu"</string>
-    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> dilindungi oleh Android. Oleh sebab data anda diproses pada peranti ini, penggunaan kebenaran apl ini tidak ditunjukkan pada bar status atau papan pemuka privasi anda."</string>
-    <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> dilindungi oleh Android. Oleh sebab data anda diproses pada peranti ini, penggunaan kebenaran apl ini tidak ditunjukkan pada papan pemuka privasi anda."</string>
+    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Ini ialah <xliff:g id="APP_NAME">%1$s</xliff:g> Protected by Android. Oleh sebab data anda diproses pada peranti ini, penggunaan kebenaran apl ini tidak ditunjukkan pada bar status atau papan pemuka privasi anda."</string>
+    <string name="exempt_info_label" msgid="6286190981253476699">"Ini ialah <xliff:g id="APP_NAME">%1$s</xliff:g> Protected by Android. Oleh sebab data anda diproses pada peranti ini, penggunaan kebenaran apl ini tidak ditunjukkan pada papan pemuka privasi anda."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Kamera peranti disekat"</string>
     <string name="blocked_microphone_title" msgid="1631517143648232585">"Mikrofon peranti disekat"</string>
     <string name="blocked_location_title" msgid="2005608279812892383">"Lokasi peranti dimatikan"</string>
@@ -523,4 +519,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Digunakan baru-baru ini oleh <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Keselamatan &amp; Privasi"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Semak status"</string>
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"Sahkan"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"Kembali"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"Akses kepada fail lain juga akan dibenarkan"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"Akses kepada fail lain juga tidak akan dibenarkan"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"Akses kepada fail lain juga akan dibenarkan"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"Akses kepada fail lain juga tidak akan dibenarkan"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"Akses kepada foto dan video juga akan dibenarkan"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"Akses kepada foto dan video juga tidak akan dibenarkan"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"Akses kepada fail muzik dan audio juga akan dibenarkan"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"Akses kepada fail muzik dan audio juga tidak akan dibenarkan"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"Apl ini tidak menyokong versi terkini Android. Jika apl ini boleh mengakses fail muzik dan audio, apl ini juga akan dibenarkan untuk mengakses foto, video dan fail lain."</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"Apl ini tidak menyokong versi terkini Android. Jika apl ini tidak boleh mengakses fail muzik dan audio, apl ini juga tidak akan dibenarkan untuk mengakses foto, video dan fail lain."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"Apl ini tidak menyokong versi terkini Android. Jika apl ini boleh mengakses foto dan video, apl ini juga akan dibenarkan untuk mengakses muzik, audio dan fail lain."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"Apl ini tidak menyokong versi terkini Android. Jika apl ini tidak boleh mengakses foto dan video, apl ini juga akan tidak dibenarkan untuk mengakses muzik, audio dan fail lain."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"Apl ini tidak menyokong versi terkini Android. Jika apl ini boleh mengakses fail muzik dan audio, apl ini juga akan dibenarkan untuk mengakses foto dan video."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Apl ini tidak menyokong versi terkini Android. Jika apl ini tidak boleh mengakses fail muzik dan audio, apl ini juga akan tidak dibenarkan untuk mengakses foto dan video."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Apl ini tidak menyokong versi terkini Android. Jika apl ini boleh mengakses foto dan video, apl ini juga akan dibenarkan untuk mengakses fail muzik dan audio."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Apl ini tidak menyokong versi terkini Android. Jika apl ini tidak boleh mengakses fail muzik dan audio, apl ini juga akan tidak dibenarkan untuk mengakses foto dan video."</string>
 </resources>

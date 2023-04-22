@@ -58,7 +58,7 @@
     <string name="review_permission_decisions" msgid="309559429150613632">"Действия с разрешениями"</string>
     <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Все недавние действия с разрешениями"</string>
     <string name="review_permission_decisions_empty" msgid="8120775336417279806">"Нет недавних действий с разрешениями"</string>
-    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Управление доступом к данным Календаря, Списка вызовов и др."</string>
+    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Управление доступом к календарю, списку вызовов и другим данным"</string>
     <string name="granted_permission_decision" msgid="7824827491551861365">"Вы предоставили приложению \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" доступ к разрешению \"<xliff:g id="PERMISSION_NAME">%2$s</xliff:g>\""</string>
     <string name="denied_permission_decision" msgid="5308961501779563781">"Вы запретили приложению \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" доступ к разрешению \"<xliff:g id="PERMISSION_NAME">%2$s</xliff:g>\""</string>
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Сегодня}=1{1 день назад}one{# день назад}few{# дня назад}many{# дней назад}other{# дня назад}}"</string>
@@ -223,7 +223,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Использовалось <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Если вы разрешите приложению управлять всеми файлами, оно сможет просматривать, изменять и удалять любые файлы в общем хранилище на этом устройстве, а также на подключенных запоминающих устройствах. При этом оно сможет получать доступ к файлам без вашего ведома."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Разрешить этому приложению просматривать, изменять и удалять любые файлы на этом устройстве, а также на подключенных запоминающих устройствах? Приложение сможет получать доступ к файлам без вашего ведома."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Приложения с этим разрешением могут <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Приложения с разрешением <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Приложения с этим разрешением могут получать доступ к данным о вашей физической активности, включая количество пройденных шагов и продолжительность прогулок и поездок на велосипеде."</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Приложения с этим разрешением могут получать доступ к календарю."</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Приложения с этим разрешением могут читать список вызовов и создавать записи в нем."</string>
@@ -236,8 +236,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Приложения с этим разрешением могут получать доступ к данным датчиков основных показателей жизнедеятельности."</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Приложения с этим разрешением могут отправлять и просматривать SMS-сообщения."</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Приложения с этим разрешением могут получать доступ к фотографиям, медиа и другим файлам на вашем устройстве."</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"У приложений с этим разрешением будет доступ к музыке и другим аудиофайлам на вашем устройстве."</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"У приложений с этим разрешением будет доступ к фото и видео на вашем устройстве."</string>
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"Приложения с этим разрешением могут получать доступ к музыке и другим аудиофайлам на устройстве."</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"Приложения с этим разрешением могут получать доступ к фото и видео на устройстве."</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Последний раз использовано: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Временно запрещено / Последний доступ: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Не использовалось"</string>
@@ -248,9 +248,8 @@
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Приложения с доступом только к медиафайлам"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Приложения с доступом ко всем файлам"</string>
     <string name="ask_header" msgid="2633816846459944376">"Спрашивать каждый раз"</string>
-    <string name="denied_header" msgid="903209608358177654">"Доступ запрещен"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Некоторые приложения, отвечающие за основные функции вашего устройства, могут получить специальный доступ ко всем файлам."</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Посмотреть приложения, у которых есть доступ ко всем файлам"</string>
+    <string name="denied_header" msgid="903209608358177654">"Запрещено"</string>
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Ещё приложения с доступом ко всем файлам"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 день}one{# день}few{# дня}many{# дней}other{# дня}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 час}one{# час}few{# часа}many{# часов}other{# часа}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 минута}one{# минута}few{# минуты}many{# минут}other{# минуты}}"</string>
@@ -319,10 +318,10 @@
     <string name="app_perms_content_provider_7d_all_files" msgid="7962416229708835558">"Использовалось в последние 7 дней • Все файлы"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"Разрешения не предоставлены"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"Предоставлены все разрешения"</string>
-    <string name="no_apps_allowed" msgid="7718822655254468631">"Не разрешено ни одному приложению."</string>
+    <string name="no_apps_allowed" msgid="7718822655254468631">"Не разрешено ни одному приложению"</string>
     <string name="no_apps_allowed_full" msgid="8011716991498934104">"Нет приложений с доступом ко всем файлам."</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"Нет приложений с доступом только к медиаконтенту."</string>
-    <string name="no_apps_denied" msgid="7663435886986784743">"Не запрещено ни одному приложению."</string>
+    <string name="no_apps_denied" msgid="7663435886986784743">"Не запрещено ни одному приложению"</string>
     <string name="car_permission_selected" msgid="180837028920791596">"Выбрано"</string>
     <string name="settings" msgid="5409109923158713323">"Настройки"</string>
     <string name="accessibility_service_dialog_title_single" msgid="7956432823014102366">"У сервиса \"<xliff:g id="SERVICE_NAME">%s</xliff:g>\" есть полный доступ к вашему устройству"</string>
@@ -332,8 +331,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"Цифровой помощник по умолчанию"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Цифровой помощник"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Приложения-помощники могут использовать информацию на экране. Для большего удобства некоторые из них поддерживают запуск других приложений и голосовой ввод."</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"Сделать приложение \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" Помощником по умолчанию?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"Будет предоставлен доступ к SMS и списку звонков."</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Браузер по умолчанию"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Браузер"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Приложения, с помощью которых можно просматривать сайты и переходить по ссылкам."</string>
@@ -343,13 +340,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Звонки"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Приложения, которые позволяют совершать и принимать звонки."</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Сделать \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" приложением для звонков по умолчанию?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"Будет предоставлен доступ к SMS и списку звонков."</string>
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"Этому приложению будут предоставлены следующие разрешения: Камера, Контакты, Микрофон, Телефон и SMS."</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"набор номера"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Приложение для SMS"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Приложения, которые позволяют отправлять и принимать короткие текстовые сообщения, фото, видео и другие данные, используя номер телефона."</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Сделать \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" приложением для обмена SMS по умолчанию?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"Будет предоставлен доступ к SMS, звонкам и контактам."</string>
+    <string name="role_sms_request_description" msgid="2691004766132144886">"Этому приложению будут предоставлены следующие разрешения: Камера, Контакты, Файлы и медиаконтент, Микрофон, Телефон и SMS."</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"сообщение, обмен сообщениями, текст, SMS"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"Экстренные случаи по умолчанию"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"Экстренные случаи"</string>
@@ -442,7 +439,7 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Этому приложению может потребоваться доступ к вашему местоположению, даже когда вы им не пользуетесь. Предоставьте разрешение в "<annotation id="link">"настройках"</annotation>"."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Изменить настройки доступа к данным о местоположении для приложения &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Этому приложению требуется доступ к вашему местоположению, даже когда вы им не пользуетесь. Предоставьте разрешение в "<annotation id="link">"настройках"</annotation>"."</string>
-    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Разрешить приложению \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" находить устройства поблизости, подключаться к ним и определять их относительное позиционирование?"</string>
+    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Разрешить приложению \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" находить устройства поблизости, подключаться к ним и определять их относительное положение?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Разрешить приложению \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" находить устройства поблизости, подключаться к ним и определять их относительное позиционирование? "<annotation id="link">"Открыть настройки"</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Изменить местоположение в приложении \"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>\" с приблизительного на точное?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным о приблизительном местоположении устройства?"</string>
@@ -450,11 +447,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Приблизительно"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к календарю?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; отправлять и просматривать SMS?"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к &lt;b&gt;файлам и документам&lt;/b&gt; на устройстве?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к &lt;b&gt;фото, видео и аудиофайлам&lt;/b&gt; на устройстве?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к &lt;b&gt;фото, видео, аудио и другим файлам&lt;/b&gt; на устройстве?"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к музыке и другим аудиофайлам на устройстве?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к фото и видео на устройстве?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к фото, мультимедиа и файлам на устройстве?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к &lt;b&gt;фото, видео, музыке и аудио&lt;/b&gt; на устройстве?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к &lt;b&gt;фото, видео, аудио и другим файлам&lt;/b&gt; на устройстве?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к музыке и аудио на устройстве?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к фото и видео на устройстве?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; записывать аудио?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Приложение будет записывать аудио, только когда вы им пользуетесь."</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; записывать аудио?"</string>
@@ -475,8 +472,7 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Разрешить приложению \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" доступ к данным датчиков на теле?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Чтобы предоставить приложению доступ к данным нательных датчиков, даже когда вы им не пользуетесь, "<annotation id="link">"измените настройки"</annotation>"."</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Предоставлять приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным нательных датчиков, только когда оно используется?"</string>
-    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Разрешить \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" отправлять уведомления?"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Разрешить приложению \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" и дальше отправлять уведомления?"</string>
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Разрешить <xliff:g id="APP_NAME">%1$s</xliff:g> отправлять уведомления?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Контролируемые разрешения"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Приложению доступны ваши геоданные"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Администратор разрешил приложению \"<xliff:g id="APP_NAME">%s</xliff:g>\" доступ к вашему местоположению."</string>
@@ -523,4 +519,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Недавно использовалось приложением \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Безопасность и конфиденциальность"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Проверьте статус."</string>
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"Подтвердить"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"Назад"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"Будет предоставлен доступ и к другим файлам"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"Доступа к другим файлам тоже не будет"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"Будет предоставлен доступ и к другим файлам"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"Доступа к другим файлам тоже не будет"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"Будет предоставлен доступ к фотографиям и видео"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"Доступа к фотографиям и видео тоже не будет"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"Будет предоставлен доступ к музыке и аудиофайлам"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"Доступа к музыке и аудиофайлам тоже не будет"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"Это приложение не поддерживает последнюю версию Android. Если у него есть доступ к музыке и аудиофайлам, ему также будет предоставлен доступ к фотографиям, видео и другому контенту."</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"Это приложение не поддерживает последнюю версию Android. Если у него нет доступа к музыке и аудиофайлам, у него также не будет доступа к фотографиям, видео и другому контенту."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"Это приложение не поддерживает последнюю версию Android. Если у него есть доступ к фотографиям и видео, ему также будет предоставлен доступ к музыке, аудиофайлам и другому контенту."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"Это приложение не поддерживает последнюю версию Android. Если у него нет доступа к фотографиям и видео, у него также не будет доступа к музыке, аудиофайлам и другому контенту."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"Это приложение не поддерживает последнюю версию Android. Если у него есть доступ к музыке и аудиофайлам, ему также будет предоставлен доступ к фотографиям и видео."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Это приложение не поддерживает последнюю версию Android. Если у него нет доступа к музыке и аудиофайлам, у него также не будет доступа к фотографиям и видео."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Это приложение не поддерживает последнюю версию Android. Если у него есть доступ к фотографиям и видео, ему также будет предоставлен доступ к музыке и аудиофайлам."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Это приложение не поддерживает последнюю версию Android. Если у него нет доступа к музыке и аудиофайлам, у него также не будет доступа к фотографиям и видео."</string>
 </resources>
