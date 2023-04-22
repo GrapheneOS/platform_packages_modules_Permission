@@ -19,6 +19,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"Nyenzo za Kituo cha Usalama"</string>
     <string name="lock_screen_sources_title" msgid="3317906280484627707">"Kufunga kifaa"</string>
+    <string name="lock_screen_sources_summary" msgid="7220439741282516496"></string>
     <string name="lock_screen_title" msgid="4069104894527169877">"Kufunga skrini"</string>
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"Bado hakuna maelezo"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"Faragha"</string>
@@ -27,7 +28,11 @@
     <string name="permission_usage_summary" msgid="5323079206029964468">"Onyesha programu zilizotumia ruhusa hivi majuzi"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"Kidhibiti cha ruhusa"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"Dhibiti uwezo wa programu kufikia data yako"</string>
+    <string name="privacy_controls_title" msgid="5322875777945432395">"Vidhibiti vya faragha"</string>
+    <string name="privacy_controls_summary" msgid="2402066941190435424">"Dhibiti ufikiaji wa maikrofoni, kamera na zaidi kwenye kifaa"</string>
     <string name="advanced_title" msgid="8745436380690561172">"Mipangilio zaidi"</string>
     <string name="advanced_security_title" msgid="1126833338772188155">"Mipangilio zaidi ya usalama"</string>
     <string name="advanced_security_summary" msgid="6172253327022425123">"Usimbaji fiche, vitambulisho na zaidi"</string>
+    <string name="advanced_privacy_title" msgid="1117725225706176643">"Mipangilio zaidi ya faragha"</string>
+    <string name="advanced_privacy_summary" msgid="2281203390575069543">"Kujaza kiotomatiki, vidhibiti vya shughuli na zaidi"</string>
 </resources>
