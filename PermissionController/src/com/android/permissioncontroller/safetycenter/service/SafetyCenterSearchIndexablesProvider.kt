@@ -49,6 +49,7 @@ import com.android.permissioncontroller.safetycenter.SafetyCenterConstants.PERSO
 import com.android.permissioncontroller.safetycenter.SafetyCenterConstants.WORK_PROFILE_SUFFIX
 import com.android.permissioncontroller.safetycenter.ui.SafetyCenterUiFlags
 import com.android.permissioncontroller.safetycenter.ui.model.PrivacyControlsViewModel.Pref
+import com.android.safetycenter.internaldata.SafetyCenterBundles
 import com.android.safetycenter.internaldata.SafetyCenterEntryId
 import com.android.safetycenter.internaldata.SafetyCenterIds
 import com.android.safetycenter.resources.SafetyCenterResourcesContext
@@ -111,17 +112,13 @@ class SafetyCenterSearchIndexablesProvider : BaseSearchIndexablesProvider() {
 
         if (safetyCenterManager.isSafetyCenterEnabled) {
             // SafetyCenterStaticEntry doesn't provide an ID, so we never remove these entries from
-            // search as we have no way to know if they're actually surfaced in the UI.
-            // We make the assumption that *every* SafetyCenterStaticEntry is always going to be
-            // shown in the UI. This means that some entries may surface in search when they
-            // shouldn't.
-            // In practice this means that things like "for work" static entries in static groups
-            // will always show in Settings search, even when there is no associated work profile.
-            // TODO(b/278872430): Fix this by adding an ID to the SafetyCenterStaticEntry objects.
+            // search as we have no way to know if they're actually surfaced in the UI on T.
+            // On U+, we implemented a workaround that provides an ID for these entries using
+            // SafetyCenterData#getExtras().
             collectAllRemovableKeys(
                 safetyCenterManager,
                 keysToRemove,
-                staticEntryGroupsAreRemovable = false
+                staticEntryGroupsAreRemovable = SdkLevel.isAtLeastU()
             )
             keepActiveEntriesFromRemoval(safetyCenterManager, userManager, keysToRemove)
         } else {
@@ -236,15 +233,21 @@ class SafetyCenterSearchIndexablesProvider : BaseSearchIndexablesProvider() {
                 it.type != SAFETY_SOURCES_GROUP_TYPE_STATELESS || staticEntryGroupsAreRemovable
             }
             .forEach { safetySourcesGroup ->
-                if (SdkLevel.isAtLeastU()) {
+                if (
+                    SdkLevel.isAtLeastU() &&
+                        safetySourcesGroup.type == SAFETY_SOURCES_GROUP_TYPE_STATEFUL
+                ) {
                     keysToRemove.add(safetySourcesGroup.id)
                 }
-                safetySourcesGroup.safetySources.asSequence().forEach { safetySource ->
-                    keysToRemove.add(safetySource.id.addSuffix(isWorkProfile = false))
-                    if (safetySource.profile == SafetySource.PROFILE_ALL) {
-                        keysToRemove.add(safetySource.id.addSuffix(isWorkProfile = true))
+                safetySourcesGroup.safetySources
+                    .asSequence()
+                    .filter { it.type != SAFETY_SOURCE_TYPE_ISSUE_ONLY }
+                    .forEach { safetySource ->
+                        keysToRemove.add(safetySource.id.addSuffix(isWorkProfile = false))
+                        if (safetySource.profile == SafetySource.PROFILE_ALL) {
+                            keysToRemove.add(safetySource.id.addSuffix(isWorkProfile = true))
+                        }
                     }
-                }
             }
     }
 
@@ -253,24 +256,35 @@ class SafetyCenterSearchIndexablesProvider : BaseSearchIndexablesProvider() {
         userManager: UserManager,
         keysToRemove: MutableSet<String>
     ) {
-        safetyCenterManager.safetyEntriesOrGroups.forEach { entryOrGroup ->
+        val safetyCenterData = safetyCenterManager.safetyCenterData
+        safetyCenterData.entriesOrGroups.forEach { entryOrGroup ->
             val entryGroup = entryOrGroup.entryGroup
             if (entryGroup != null && SafetyCenterUiFlags.getShowSubpages()) {
                 keysToRemove.remove(entryGroup.id)
-                // Note that we will discard static or issue-only entry groups here; and only keep
-                // dynamic ones. This is desirable as highlighting isn't implemented for static
-                // entries; and most static entries are now within subpages anyway.
             }
-            entryOrGroup.entries.forEach { keepEntryFromRemoval(it, userManager, keysToRemove) }
+            entryOrGroup.entries.forEach {
+                keepEntryFromRemoval(it.entryId, userManager, keysToRemove)
+            }
         }
+        if (!SdkLevel.isAtLeastU()) {
+            return
+        }
+        safetyCenterData.staticEntryGroups
+            .asSequence()
+            .flatMap { it.staticEntries.asSequence() }
+            .forEach { staticEntry ->
+                val entryId = SafetyCenterBundles.getStaticEntryId(safetyCenterData, staticEntry)
+                if (entryId != null) {
+                    keepEntryFromRemoval(entryId, userManager, keysToRemove)
+                }
+            }
     }
 
     private fun keepEntryFromRemoval(
-        safetyCenterEntry: SafetyCenterEntry,
+        entryId: SafetyCenterEntryId,
         userManager: UserManager,
         keysToRemove: MutableSet<String>
     ) {
-        val entryId = safetyCenterEntry.entryId
         val isWorkProfile = userManager.isManagedProfile(entryId.userId)
         keysToRemove.remove(entryId.safetySourceId.addSuffix(isWorkProfile))
     }
