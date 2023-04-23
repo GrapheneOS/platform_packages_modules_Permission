@@ -35,8 +35,6 @@ import com.android.permissioncontroller.safetycenter.ui.view.SafetyEntryView;
 @RequiresApi(TIRAMISU)
 public final class SafetyEntryPreference extends Preference implements ComparablePreference {
 
-    private static final String TAG = SafetyEntryPreference.class.getSimpleName();
-
     private final PositionInCardList mPosition;
     private final SafetyCenterEntry mEntry;
     private final SafetyCenterViewModel mViewModel;
