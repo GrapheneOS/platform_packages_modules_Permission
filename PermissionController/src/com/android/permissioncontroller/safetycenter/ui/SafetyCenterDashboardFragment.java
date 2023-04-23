@@ -47,6 +47,7 @@ import androidx.preference.PreferenceGroup;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterUiData;
 import com.android.permissioncontroller.safetycenter.ui.model.StatusUiData;
+import com.android.safetycenter.internaldata.SafetyCenterBundles;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 
 import kotlin.Unit;
@@ -188,7 +189,7 @@ public final class SafetyCenterDashboardFragment extends SafetyCenterFragment {
 
         if (!mIsQuickSettingsFragment) {
             updateSafetyEntries(context, data.getEntriesOrGroups());
-            updateStaticSafetyEntries(context, data.getStaticEntryGroups());
+            updateStaticSafetyEntries(context, data);
         }
     }
 
@@ -273,11 +274,10 @@ public final class SafetyCenterDashboardFragment extends SafetyCenterFragment {
                         }));
     }
 
-    private void updateStaticSafetyEntries(
-            Context context, List<SafetyCenterStaticEntryGroup> staticEntryGroups) {
+    private void updateStaticSafetyEntries(Context context, SafetyCenterData data) {
         mStaticEntriesGroup.removeAll();
 
-        for (SafetyCenterStaticEntryGroup group : staticEntryGroups) {
+        for (SafetyCenterStaticEntryGroup group : data.getStaticEntryGroups()) {
             PreferenceCategory category = new ComparablePreferenceCategory(context);
             category.setTitle(group.getTitle());
             mStaticEntriesGroup.addPreference(category);
@@ -288,6 +288,7 @@ public final class SafetyCenterDashboardFragment extends SafetyCenterFragment {
                                 context,
                                 requireActivity().getTaskId(),
                                 entry,
+                                SafetyCenterBundles.getStaticEntryId(data, entry),
                                 getSafetyCenterViewModel()));
             }
         }
