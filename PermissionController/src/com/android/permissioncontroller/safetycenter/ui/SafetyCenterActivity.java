@@ -244,6 +244,10 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
 
         List<SafetySourcesGroup> groups = safetyCenterConfig.getSafetySourcesGroups();
         for (SafetySourcesGroup group : groups) {
+            if (group.getType() != SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_STATEFUL) {
+                // Hidden and static groups are not opened in a subpage.
+                continue;
+            }
             for (SafetySource source : group.getSafetySources()) {
                 if (Objects.equals(source.getId(), splitKey[0])) {
                     return group.getId();
