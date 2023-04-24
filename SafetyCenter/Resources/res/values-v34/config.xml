@@ -17,7 +17,7 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Comma separated list of safety source IDs to show in the same task as the safety center -->
-    <string name="config_same_task_safety_source_ids" translatable="false">AndroidAccessibility,AndroidAdsPrivacy,AndroidBackgroundLocation,AndroidBiometrics,AndroidHealthConnect,AndroidLockScreen,AndroidMoreSettings,AndroidNotificationListener,AndroidPermissionAutoRevoke,AndroidPermissionManager,AndroidPermissionUsage,AndroidPrivacyAppDataSharingUpdates,AndroidPrivacyControls,AndroidWorkPolicyInfo</string>
+    <string name="config_same_task_safety_source_ids" translatable="false">AndroidAccessibility,AndroidBackgroundLocation,AndroidBiometrics,AndroidHealthConnect,AndroidLockScreen,AndroidMoreSettings,AndroidNotificationListener,AndroidPermissionAutoRevoke,AndroidPermissionManager,AndroidPermissionUsage,AndroidPrivacyAppDataSharingUpdates,AndroidPrivacyControls,AndroidWorkPolicyInfo</string>
     <!-- Comma separated list of safety source IDs to add an Intent Extra confirming they should be displayed as if opened by a settings UI page. -->
-    <string name="config_useSettingsHomepageIntentExtra" translatable="false">AndroidMoreSettings,AndroidAdsPrivacy,TestSource</string>
+    <string name="config_useSettingsHomepageIntentExtra" translatable="false">AndroidMoreSettings,TestSource</string>
 </resources>
