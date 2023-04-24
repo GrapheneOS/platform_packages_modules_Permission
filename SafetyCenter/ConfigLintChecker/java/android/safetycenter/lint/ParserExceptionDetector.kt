@@ -35,6 +35,7 @@ import com.android.tools.lint.detector.api.Severity
 import com.android.tools.lint.detector.api.XmlContext
 import com.android.tools.lint.detector.api.XmlScanner
 import java.util.EnumSet
+import kotlin.math.min
 import org.w3c.dom.Element
 import org.w3c.dom.Node
 
@@ -60,8 +61,8 @@ class ParserExceptionDetector : Detector(), OtherFileScanner, XmlScanner {
                 androidSpecific = true
             )
 
-        val STRING_MAP_BUILD_PHASE = 1
-        val CONFIG_PARSE_PHASE = 2
+        const val STRING_MAP_BUILD_PHASE = 1
+        const val CONFIG_PARSE_PHASE = 2
     }
 
     override fun appliesTo(folderType: ResourceFolderType): Boolean {
@@ -73,9 +74,10 @@ class ParserExceptionDetector : Detector(), OtherFileScanner, XmlScanner {
     }
 
     /** Implements XmlScanner and builds a map of string resources in the first phase */
-    val mNameToIndex: MutableMap<String, Int> = mutableMapOf()
-    val mIndexToValue: MutableMap<Int, String> = mutableMapOf()
-    var mIndex = 1000
+    private val mNameToIndex: MutableMap<String, Int> = mutableMapOf()
+    private val mIndexToValue: MutableMap<Int, String> = mutableMapOf()
+    private val mIndexToMinSdk: MutableMap<Int, Int> = mutableMapOf()
+    private var mIndex = 1000
 
     override fun getApplicableElements(): Collection<String>? {
         return listOf(TAG_STRING)
@@ -84,14 +86,21 @@ class ParserExceptionDetector : Detector(), OtherFileScanner, XmlScanner {
     override fun visitElement(context: XmlContext, element: Element) {
         if (
             context.driver.phase != STRING_MAP_BUILD_PHASE ||
-                context.resourceFolderType != ResourceFolderType.VALUES
+                context.resourceFolderType != ResourceFolderType.VALUES ||
+                !FileSdk.belongsToABasicConfiguration(context.file)
         ) {
             return
         }
+        val minSdk = FileSdk.getSdkQualifier(context.file)
         val name = element.getAttribute(ATTR_NAME)
+        val index = mNameToIndex[name]
+        if (index != null) {
+            mIndexToMinSdk[index] = min(mIndexToMinSdk[index]!!, minSdk)
+            return
+        }
         var value = ""
-        for (index in 0 until element.childNodes.length) {
-            val child = element.childNodes.item(index)
+        for (childIndex in 0 until element.childNodes.length) {
+            val child = element.childNodes.item(childIndex)
             if (child.nodeType == Node.TEXT_NODE) {
                 value = child.nodeValue
                 break
@@ -99,6 +108,7 @@ class ParserExceptionDetector : Detector(), OtherFileScanner, XmlScanner {
         }
         mNameToIndex[name] = mIndex
         mIndexToValue[mIndex] = value
+        mIndexToMinSdk[mIndex] = minSdk
         mIndex++
     }
 
@@ -129,7 +139,11 @@ class ParserExceptionDetector : Detector(), OtherFileScanner, XmlScanner {
                         // the target package or on packages that refer to Android global resources.
                         // However, we cannot use a custom linter with the default soong overlay
                         // build rule regardless.
-                        Resources(context.project.`package`, mNameToIndex, mIndexToValue)
+                        Resources(
+                            context.project.`package`,
+                            mNameToIndex.filterValues { sdk >= mIndexToMinSdk[it]!! },
+                            mIndexToValue.filterKeys { sdk >= mIndexToMinSdk[it]!! }
+                        )
                     )
                 } catch (e: ParseException) {
                     context.report(
