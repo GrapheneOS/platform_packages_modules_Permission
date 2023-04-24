@@ -1731,7 +1731,11 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <!-- Title shown for Permission Rationale "where data sharing come from" section [CHAR LIMIT=70] -->
     <string name="permission_rationale_data_sharing_source_title">Where data sharing info comes from</string>
 
-    <!-- Message shown to the user letting them know where data usage information came from which
+    <!-- Message shown to the user letting them know that data usage information was provided by
+     the developer to the device manufacturer." [CHAR LIMIT=200] -->
+    <string name="permission_rationale_data_sharing_device_manufacturer_message">The developer provided info to this device\'s manufacturer about how this app shares data. The developer may update this info over time.</string>
+
+   <!-- Message shown to the user letting them know where data usage information came from which
     will map to app store labels/names." [CHAR LIMIT=200] -->
     <string name="permission_rationale_data_sharing_source_message">The developer provided info to <annotation id="link"><annotation id="install_source" example="App Store">%1$s</annotation></annotation> about how this app shares data. The developer may update this info over time.</string>
 
