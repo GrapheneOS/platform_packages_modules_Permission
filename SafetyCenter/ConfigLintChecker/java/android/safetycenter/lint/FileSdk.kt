@@ -50,11 +50,26 @@ object FileSdk {
         if (lastQualifier.isEmpty() || lastQualifier[0] != 'v') {
             return TIRAMISU
         }
-        return try {
-            lastQualifier.substring(1).toInt()
-        } catch (nfe: NumberFormatException) {
-            TIRAMISU
+        return lastQualifier.substring(1).toIntOrNull() ?: TIRAMISU
+    }
+
+    /**
+     * Returns whether the file belongs to a basic configuration. By basic, we mean either the
+     * default configuration that has no qualifier, or a configuration that is defined only by an
+     * SDK level version.
+     */
+    fun belongsToABasicConfiguration(file: File): Boolean {
+        val directParentName = file.parentFile.name
+        val qualifierCount = directParentName.count { it == '-' }
+        val lastQualifier = directParentName.substringAfterLast("-", "")
+        if (
+            lastQualifier.isNotEmpty() &&
+                lastQualifier[0] == 'v' &&
+                lastQualifier.substring(1).toIntOrNull() != null
+        ) {
+            return qualifierCount == 1
         }
+        return qualifierCount == 0
     }
 
     /** Returns the schema for the specific SDK level provided or null if it doesn't exist. */

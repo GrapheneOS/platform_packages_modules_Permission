@@ -16,6 +16,7 @@
 
 package android.safetycenter.lint.test
 
+import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.safetycenter.lint.FileSdk
 import android.safetycenter.lint.ParserExceptionDetector
@@ -48,7 +49,7 @@ class ParserExceptionDetectorTest : LintDetectorTest() {
         lint()
             .files(
                 xml("res/raw/safety_center_config.xml", VALID_TIRAMISU_CONFIG),
-                STRINGS_WITH_REFERENCE_XML
+                STRINGS_WITH_REFERENCE_XML_DEFAULT
             )
             .run()
             .expectClean()
@@ -59,7 +60,7 @@ class ParserExceptionDetectorTest : LintDetectorTest() {
         lint()
             .files(
                 xml("res/raw-99/safety_center_config.xml", VALID_TIRAMISU_CONFIG),
-                STRINGS_WITH_REFERENCE_XML
+                STRINGS_WITH_REFERENCE_XML_DEFAULT
             )
             .run()
             .expectClean()
@@ -100,13 +101,47 @@ class ParserExceptionDetectorTest : LintDetectorTest() {
         lint()
             .files(
                 xml("res/raw/safety_center_config.xml", VALID_UDC_CONFIG),
-                STRINGS_WITH_REFERENCE_XML
+                STRINGS_WITH_REFERENCE_XML_DEFAULT
             )
             .run()
             .expect(
                 "res/raw/safety_center_config.xml: Error: Parser exception at sdk=33: " +
                     "\"Unexpected attribute dynamic-safety-source.notificationsAllowed\", cause: " +
                     "\"null\" [InvalidSafetyCenterConfig]\n1 errors, 0 warnings"
+            )
+    }
+
+    @Test
+    fun validTConfigWithUReference_throwsInT() {
+        FileSdk.maxVersionOverride = TIRAMISU
+        lint()
+            .files(
+                xml("res/raw/safety_center_config.xml", VALID_TIRAMISU_CONFIG),
+                xml("res/values-v34/strings.xml", STRINGS_WITH_REFERENCE_XML),
+            )
+            .run()
+            .expect(
+                "res/raw/safety_center_config.xml: Error: Parser exception at sdk=33: " +
+                    "\"Resource name \"@lint.test.pkg:string/reference\" in " +
+                    "safety-sources-group.title missing or invalid\", cause: \"null\" " +
+                    "[InvalidSafetyCenterConfig]\n1 errors, 0 warnings"
+            )
+    }
+
+    @Test
+    fun validTConfigWithOtherLanguageReference_throwsInT() {
+        FileSdk.maxVersionOverride = TIRAMISU
+        lint()
+            .files(
+                xml("res/raw/safety_center_config.xml", VALID_TIRAMISU_CONFIG),
+                xml("res/values-ar/strings.xml", STRINGS_WITH_REFERENCE_XML),
+            )
+            .run()
+            .expect(
+                "res/raw/safety_center_config.xml: Error: Parser exception at sdk=33: " +
+                    "\"Resource name \"@lint.test.pkg:string/reference\" in " +
+                    "safety-sources-group.title missing or invalid\", cause: \"null\" " +
+                    "[InvalidSafetyCenterConfig]\n1 errors, 0 warnings"
             )
     }
 
@@ -121,15 +156,15 @@ class ParserExceptionDetectorTest : LintDetectorTest() {
     }
 
     private companion object {
-        val STRINGS_WITH_REFERENCE_XML: TestFile =
-            xml(
-                "res/values/strings.xml",
-                """
+        const val STRINGS_WITH_REFERENCE_XML =
+            """
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="reference" translatable="false">Reference</string>
 </resources>
                 """
-            )
+
+        val STRINGS_WITH_REFERENCE_XML_DEFAULT: TestFile =
+            xml("res/values/strings.xml", STRINGS_WITH_REFERENCE_XML)
 
         const val VALID_TIRAMISU_CONFIG =
             """
