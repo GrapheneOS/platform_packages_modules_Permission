@@ -30,8 +30,7 @@
     <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"Більше сповіщень"</string>
     <string name="safety_center_dismissed_issues_card_title" msgid="2340129842725145733">"Закриті сповіщення"</string>
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{Розгорніть і перегляньте ще одне сповіщення}one{Розгорніть і перегляньте ще # сповіщення}few{Розгорніть і перегляньте ще # сповіщення}many{Розгорніть і перегляньте ще # сповіщень}other{Розгорніть і перегляньте ще # сповіщення}}"</string>
-    <!-- no translation found for safety_center_issue_card_prefix_content_description (1447445289637043544) -->
-    <skip />
+    <string name="safety_center_issue_card_prefix_content_description" msgid="1447445289637043544">"Сповіщення. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>"</string>
     <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"Дію виконано"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"Перевірте налаштування, які можуть посилити захист вашого пристрою"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"Швидкі налаштування безпеки й конфіденційності"</string>

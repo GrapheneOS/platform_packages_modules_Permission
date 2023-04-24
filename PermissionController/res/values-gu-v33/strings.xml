@@ -30,8 +30,7 @@
     <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"વધુ અલર્ટ"</string>
     <string name="safety_center_dismissed_issues_card_title" msgid="2340129842725145733">"છોડી દીધેલા અલર્ટ"</string>
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{મોટું કરો અને વધુ એક અલર્ટ જુઓ}one{મોટું કરો અને વધુ # અલર્ટ જુઓ}other{મોટું કરો અને વધુ # અલર્ટ જુઓ}}"</string>
-    <!-- no translation found for safety_center_issue_card_prefix_content_description (1447445289637043544) -->
-    <skip />
+    <string name="safety_center_issue_card_prefix_content_description" msgid="1447445289637043544">"અલર્ટ. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>"</string>
     <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"ક્રિયા પૂર્ણ થઈ"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"તમારા ડિવાઇસમાં સુરક્ષા ઉપાયો ઉમેરી શકે એવા સેટિંગ ચેક કરો"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"સુરક્ષા અને પ્રાઇવસી માટેના ઝડપી સેટિંગ"</string>
