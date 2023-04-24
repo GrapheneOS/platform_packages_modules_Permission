@@ -59,7 +59,8 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
 
         viewModel.appLocationDataSharingUpdateUiInfoLiveData.observe(this, this::updatePreferences)
         sessionId =
-            savedInstanceState?.getLong(EXTRA_SESSION_ID, INVALID_SESSION_ID) ?: INVALID_SESSION_ID
+            activity?.intent?.getLongExtra(EXTRA_SESSION_ID, INVALID_SESSION_ID)
+                ?: INVALID_SESSION_ID
         while (sessionId == INVALID_SESSION_ID) {
             sessionId = Random().nextLong()
         }
