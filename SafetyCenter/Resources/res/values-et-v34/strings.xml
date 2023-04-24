@@ -28,7 +28,7 @@
     <string name="ads_privacy_summary" msgid="4977699525670966049">"Kohandage teavet, mida rakendused kasutavad teile reklaamide näitamiseks"</string>
     <string name="ads_privacy_search_terms" msgid="8008413316055240046">"reklaamid, reklaamide privaatsus, privaatsuse liivakast, reklaamiteemad, rakenduse soovitatud reklaamid, reklaamide mõõtmine"</string>
     <string name="advanced_title" msgid="6259362998269627310">"Muud seaded"</string>
-    <string name="more_settings_title" msgid="9033454654010697185">"Rohkem turvalisust ja privaatsust"</string>
+    <string name="more_settings_title" msgid="9033454654010697185">"Rohkem turvalisuse ja privaatsuse kohta"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"Automaattäide, märguanded jm"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
 </resources>
