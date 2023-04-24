@@ -221,7 +221,7 @@
     <string name="unused_apps_page_title" msgid="6986983535677572559">"التطبيقات غير المستخدمة"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"في حال عدم استخدام التطبيق لبضعة أشهر:\n\n• تتم إزالة الأذونات لحماية بياناتك.\n• يتم إيقاف الإشعارات لتوفير شحن البطارية.\n• تتم إزالة الملفات المؤقتة لتوفير مساحة.\n\nلمنح الأذونات والسماح للتطبيقات مرة أخرى، افتح التطبيق."</string>
     <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"في حال عدم استخدام تطبيق لمدة شهر:\n\n• تتم إزالة الأذونات لحماية بياناتك.\n• تتم إزالة الملفات المؤقتة لإخلاء بعض المساحة.\n\nللسماح بالأذونات مرة أخرى، افتَح التطبيق."</string>
-    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{التطبيقات التي تم فتحها آخر مرة قبل أكثر من شهر واحد}zero{التطبيقات التي تم فتحها آخر مرة قبل أكثر من # شهر}two{التطبيقات التي تم فتحها آخر مرة قبل أكثر من شهرَين}few{التطبيقات التي تم فتحها آخر مرة قبل أكثر من # شهور}many{التطبيقات التي تم فتحها آخر مرة قبل أكثر من # شهرًا}other{التطبيقات التي تم فتحها آخر مرة قبل أكثر من # شهر}}"</string>
+    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{التطبيقات التي تم فتحها آخر مرة قبل أكثر من شهر واحد}zero{التطبيقات التي تم فتحها آخر مرة قبل أكثر من # شهر}two{التطبيقات التي تم فتحها آخر مرة قبل أكثر من شهرَين}few{التطبيقات التي تم فتحها آخر مرة قبل أكثر من # أشهر}many{التطبيقات التي تم فتحها آخر مرة قبل أكثر من # شهرًا}other{التطبيقات التي تم فتحها آخر مرة قبل أكثر من # شهر}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"آخر مرة تم فتح التطبيق فيها: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"آخر مرة تم فتحه: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"في حال السماح لهذا التطبيق بإدارة كل الملفات، سيتمكن من الوصول إلى أي ملفات وتعديلها وحذفها من مساحة التخزين العادية على هذا الجهاز أو أجهزة التخزين المتصلة. يمكن أن يصل التطبيق إلى الملفات بدون طلب موافقتك."</string>
@@ -245,13 +245,13 @@
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"مرفوض حاليًا / تاريخ آخر وصول: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"لم يستخدم الإذن مطلقًا"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"تم الرفض / لم يسبق الحصول على الإذن"</string>
-    <string name="allowed_header" msgid="7769277978004790414">"الأذونات المسموح بها"</string>
+    <string name="allowed_header" msgid="7769277978004790414">"التطبيقات المسموح لها"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"التطبيقات المسموح لها بالوصول طوال الوقت"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"تطبيقات يمكنها الوصول عند استخدامها فقط"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"التطبيقات المسموح لها بالوصول إلى الوسائط فقط"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"التطبيقات المسموح لها بإدارة كل الملفات"</string>
     <string name="ask_header" msgid="2633816846459944376">"الطلب في كل مرة"</string>
-    <string name="denied_header" msgid="903209608358177654">"الأذونات غير المسموح بها"</string>
+    <string name="denied_header" msgid="903209608358177654">"التطبيقات غير المسموح لها"</string>
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"الاطّلاع على تطبيقات أكثر يمكنها الوصول إلى كل الملفات"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{يوم واحد}zero{# يوم}two{يومان}few{# أيام}many{# يومًا}other{# يوم}}"</string>
     <string name="hours" msgid="7302866489666950038">"{count,plural, =1{ساعة واحدة}zero{# ساعة}two{ساعتان}few{# ساعات}many{# ساعةً}other{# ساعة}}"</string>
@@ -498,10 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"‏هل تريد مواصلة السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; عند استخدامه بالوصول إلى بيانات أجهزة استشعار الجسم؟"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بإرسال إشعارات إليك؟"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"الأذونات خاضعة لتحكّم المشرف"</string>
-    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
-    <skip />
-    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
-    <skip />
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"تطبيق \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" مسموح له بالوصول إلى الموقع الجغرافي"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"تسمح مؤسستك لتطبيق \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" بالوصول إلى موقعك الجغرافي."</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"الأذونات الأخرى"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"الأذونات المستخدمة من قِبل النظام"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"الأذونات المستخدمة من قِبل تطبيقات النظام فقط"</string>

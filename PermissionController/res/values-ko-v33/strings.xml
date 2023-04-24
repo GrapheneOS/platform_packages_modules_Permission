@@ -30,8 +30,7 @@
     <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"알림 더보기"</string>
     <string name="safety_center_dismissed_issues_card_title" msgid="2340129842725145733">"닫은 알림"</string>
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{펼쳐서 알림 1개 더보기}other{펼쳐서 알림 #개 더보기}}"</string>
-    <!-- no translation found for safety_center_issue_card_prefix_content_description (1447445289637043544) -->
-    <skip />
+    <string name="safety_center_issue_card_prefix_content_description" msgid="1447445289637043544">"주의. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>"</string>
     <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"작업 완료"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"기기 보안을 강화할 수 있는 설정 확인"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"보안 및 개인 정보 보호 빠른 설정"</string>

@@ -16,10 +16,10 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="role_dialer_request_description" msgid="6188305064871543419">"此應用程式將可傳送通知，並能存取您的相機、通訊錄、麥克風、電話及短訊"</string>
-    <string name="role_sms_request_description" msgid="1506966389698625395">"此應用程式將可傳送通知，並能存取您的相機、通訊錄、檔案、麥克風、電話及短訊"</string>
+    <string name="role_dialer_request_description" msgid="6188305064871543419">"此應用程式將可傳送通知，並能存取你的相機、通訊錄、麥克風、電話及短訊"</string>
+    <string name="role_sms_request_description" msgid="1506966389698625395">"此應用程式將可傳送通知，並能存取你的相機、通訊錄、檔案、麥克風、電話及短訊"</string>
     <string name="permission_description_summary_storage" msgid="1917071243213043858">"擁有此權限的應用程式可存取此裝置上的所有檔案"</string>
-    <string name="work_policy_title" msgid="832967780713677409">"您的工作政策資料"</string>
+    <string name="work_policy_title" msgid="832967780713677409">"你的工作政策資料"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"由 IT 管理員管理的設定"</string>
     <string name="safety_center_entry_group_expand_action" msgid="5358289574941779652">"展開並顯示清單"</string>
     <string name="safety_center_entry_group_collapse_action" msgid="1525710152244405656">"收合清單並隱藏設定"</string>

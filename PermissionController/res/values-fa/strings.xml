@@ -113,7 +113,7 @@
     <string name="loading" msgid="4789365003890741082">"درحال بارگیری…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"همه مجوزها"</string>
     <string name="other_permissions" msgid="2901186127193849594">"سایر قابلیت‌های برنامه"</string>
-    <string name="permission_request_title" msgid="8790310151025020126">"درخواست مجوز"</string>
+    <string name="permission_request_title" msgid="8790310151025020126">"درخواست اجازه"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"‏کنش‌های نصب/حذف نصب در Wear پشتیبانی نمی‌شود."</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"‏انتخاب کنید &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; اجازه دارد به چه چیزی دسترسی پیدا کند"</string>
@@ -498,10 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"‏به &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; همچنان اجازه داده شود درحین استفاده، به داده‌های حسگر بدن دسترسی داشته باشد؟"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"‏به &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; اجازه داده شود اعلان ارسال کند؟"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"مجوزهای کنترل‌شده"</string>
-    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
-    <skip />
-    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
-    <skip />
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> به مکان دسترسی دارد"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"سازمان شما به <xliff:g id="APP_NAME">%1$s</xliff:g> اجازه داده است به مکانتان دسترسی داشته باشد"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"اجازه‌های دیگر"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"اجازه‌هایی که سیستم استفاده می‌کند"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"اجازه‌هایی که فقط برنامه‌های سیستم استفاده می‌کنند."</string>
