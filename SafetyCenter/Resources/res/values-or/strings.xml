@@ -27,7 +27,7 @@
     <string name="biometrics_search_terms" msgid="6040319118762671981">"ଫିଙ୍ଗରପ୍ରିଣ୍ଟ, ଆଙ୍ଗୁଠି, ଫିଙ୍ଗରପ୍ରିଣ୍ଟ ଯୋଗ କରନ୍ତୁ, ଫେସ ଅନଲକ, ଫେସ"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"ଗୋପନୀୟତା"</string>
     <string name="privacy_sources_summary" msgid="4089719981155120864">"ଡ୍ୟାସବୋର୍ଡ, ଅନୁମତି, ନିୟନ୍ତ୍ରଣଗୁଡ଼ିକ"</string>
-    <string name="permission_usage_title" msgid="3633779688945350407">"ଗୋପନୀୟତା ଡ୍ୟାସବୋର୍ଡ"</string>
+    <string name="permission_usage_title" msgid="3633779688945350407">"ଗୋପନୀୟତା ଡେସବୋର୍ଡ"</string>
     <string name="permission_usage_summary" msgid="5323079206029964468">"କେଉଁ ଆପ୍ସ ଏବେ ଅନୁମତିଗୁଡ଼ିକ ବ୍ୟବହାର କରିଛି ତାହା ଦେଖାନ୍ତୁ"</string>
     <string name="permission_usage_search_terms" msgid="3852343592870257104">"ଗୋପନୀୟତା, ଗୋପନୀୟତା ଡ୍ୟାସବୋର୍ଡ"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"ଅନୁମତି ପରିଚାଳକ"</string>
