@@ -20,11 +20,11 @@
            parent="@android:style/Theme.DeviceDefault.Light.Dialog">
     </style>
 
-    <style name="Theme.SafetyCenter" parent="Theme.SafetyCenterBase">
-        <item name="colorScShieldAccent">@color/sc_shield_accent</item>
-    </style>
-
     <style name="Theme.SafetyCenterQs" parent="Theme.SafetyCenterQsBase">
         <item name="colorScShieldAccent">@color/sc_shield_accent_dark</item>
+    </style>
+
+    <style name="Theme.SafetyCenter" parent="Theme.SafetyCenterBase">
+        <item name="colorScShieldAccent">@color/sc_shield_accent_light</item>
     </style>
 </resources>
