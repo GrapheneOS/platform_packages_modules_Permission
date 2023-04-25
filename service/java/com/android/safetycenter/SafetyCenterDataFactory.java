@@ -615,22 +615,17 @@ public final class SafetyCenterDataFactory {
                             isUserManaged,
                             isManagedUserRunning);
                 }
-                PendingIntent sourceProvidedPendingIntent = safetySourceStatus.getPendingIntent();
-                boolean shouldFavorDefaultPendingIntent =
-                        sourceProvidedPendingIntent == null || inQuietMode;
-                PendingIntent defaultPendingIntent =
-                        shouldFavorDefaultPendingIntent
-                                ? mPendingIntentFactory.getPendingIntent(
+                PendingIntent sourceProvidedPendingIntent =
+                        inQuietMode ? null : safetySourceStatus.getPendingIntent();
+                PendingIntent entryPendingIntent =
+                        sourceProvidedPendingIntent != null
+                                ? sourceProvidedPendingIntent
+                                : mPendingIntentFactory.getPendingIntent(
                                         safetySource.getId(),
                                         safetySource.getIntentAction(),
                                         safetySource.getPackageName(),
                                         userId,
-                                        inQuietMode)
-                                : null;
-                PendingIntent entryPendingIntent =
-                        defaultPendingIntent != null
-                                ? defaultPendingIntent
-                                : sourceProvidedPendingIntent;
+                                        inQuietMode);
                 boolean enabled =
                         safetySourceStatus.isEnabled()
                                 && !inQuietMode
@@ -850,20 +845,18 @@ public final class SafetyCenterDataFactory {
                                 mSafetyCenterDataManager.getSafetySourceDataInternal(key));
                 boolean inQuietMode = isUserManaged && !isManagedUserRunning;
                 if (safetySourceStatus != null) {
-                    PendingIntent quietModePendingIntent =
-                            inQuietMode
-                                    ? mPendingIntentFactory.getPendingIntent(
+                    PendingIntent sourceProvidedPendingIntent =
+                            inQuietMode ? null : safetySourceStatus.getPendingIntent();
+                    PendingIntent entryPendingIntent =
+                            sourceProvidedPendingIntent != null
+                                    ? sourceProvidedPendingIntent
+                                    : mPendingIntentFactory.getPendingIntent(
                                             safetySource.getId(),
                                             safetySource.getIntentAction(),
                                             safetySource.getPackageName(),
                                             userId,
-                                            true)
-                                    : null;
-                    PendingIntent pendingIntent =
-                            quietModePendingIntent != null
-                                    ? quietModePendingIntent
-                                    : safetySourceStatus.getPendingIntent();
-                    if (pendingIntent == null) {
+                                            inQuietMode);
+                    if (entryPendingIntent == null) {
                         // TODO(b/222838784): Decide strategy for static entries when the intent is
                         //  null.
                         return null;
@@ -874,7 +867,7 @@ public final class SafetyCenterDataFactory {
                                             ? DevicePolicyResources.getWorkProfilePausedString(
                                                     mSafetyCenterResourcesContext)
                                             : safetySourceStatus.getSummary())
-                            .setPendingIntent(pendingIntent)
+                            .setPendingIntent(entryPendingIntent)
                             .build();
                 }
                 return toDefaultSafetyCenterStaticEntry(
