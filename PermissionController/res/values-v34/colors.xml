@@ -30,6 +30,7 @@
 
     <color name="sc_qs_background_color">@android:color/system_surface_container_dark</color>
 
+    <color name="sc_shield_accent_light">@color/sc_shield_accent</color>
     <color name="sc_shield_accent_dark">@color/gm_grey_900</color>
     <color name="sc_shield_accent_fixed_variant">@color/sc_shield_accent_dark</color>
     <color name="gm_grey_900">#202124</color>
