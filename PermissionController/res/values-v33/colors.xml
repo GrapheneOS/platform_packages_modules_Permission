@@ -38,9 +38,9 @@
     <color name="sc_status_background_recommend_light">@color/gm_yellow_100</color>
     <color name="sc_status_background_warn_light">@color/gm_red_100</color>
 
-    <color name="sc_status_background_info_dark">?attr/colorSurfaceVariant</color>
-    <color name="sc_status_background_recommend_dark">?attr/colorSurfaceVariant</color>
-    <color name="sc_status_background_warn_dark">?attr/colorSurfaceVariant</color>
+    <color name="sc_status_background_info_dark">@color/sc_surface_variant_dark</color>
+    <color name="sc_status_background_recommend_dark">@color/sc_surface_variant_dark</color>
+    <color name="sc_status_background_warn_dark">@color/sc_surface_variant_dark</color>
 
     <color name="sc_icon_info_light">@color/gm_green_500</color>
     <color name="sc_icon_recommend_light">@color/gm_yellow_500</color>
@@ -54,6 +54,11 @@
 
     <color name="sc_shield_accent">#FFFFFF</color>
 
+    <!-- Green status color aligned with Personal Safety app, instead of vanilla GM colors -->
+    <color name="sc_semantic_green">#0E8435</color>
+
+    <color name="gm_grey_900">#202124</color>
+
     <color name="gm_green_600">#1E8E3E</color>
     <color name="gm_yellow_600">#F9AB00</color>
     <color name="gm_red_600">#D93025</color>
@@ -66,6 +71,7 @@
     <color name="gm_green_400">#5BB974</color>
     <color name="gm_yellow_400">#FCC934</color>
     <color name="gm_red_400">#EE675C</color>
+    <color name="gm_grey_400">#BDC1C6</color>
 
     <color name="gm_green_300">#81C995</color>
     <color name="gm_yellow_300">#FDD663</color>
