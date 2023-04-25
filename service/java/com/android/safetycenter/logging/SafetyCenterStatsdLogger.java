@@ -280,7 +280,9 @@ public final class SafetyCenterStatsdLogger {
             String sourceId,
             boolean isManagedProfile,
             Duration duration,
-            @SystemEventResult int result) {
+            @SystemEventResult int result,
+            long refreshReason,
+            boolean dataChanged) {
         if (!SafetyCenterFlags.getAllowStatsdLogging()) {
             return;
         }
@@ -292,9 +294,8 @@ public final class SafetyCenterStatsdLogger {
                 UNSET_ISSUE_TYPE_ID,
                 duration.toMillis(),
                 result,
-                // TODO(b/268328334): Track refreshReason and dataChanged for system events
-                UNSET_REFRESH_REASON,
-                UNSET_DATA_CHANGED);
+                refreshReason,
+                dataChanged);
     }
 
     /**
@@ -302,7 +303,11 @@ public final class SafetyCenterStatsdLogger {
      * COMPLETE_RESCAN} or {@code COMPLETE_GET_DATA}.
      */
     public static void writeWholeRefreshSystemEvent(
-            @RefreshRequestType int refreshType, Duration duration, @SystemEventResult int result) {
+            @RefreshRequestType int refreshType,
+            Duration duration,
+            @SystemEventResult int result,
+            long refreshReason,
+            boolean dataChanged) {
         if (!SafetyCenterFlags.getAllowStatsdLogging()) {
             return;
         }
@@ -314,9 +319,8 @@ public final class SafetyCenterStatsdLogger {
                 UNSET_ISSUE_TYPE_ID,
                 duration.toMillis(),
                 result,
-                // TODO(b/268328334): Track refreshReason and dataChanged for system events
-                UNSET_REFRESH_REASON,
-                UNSET_DATA_CHANGED);
+                refreshReason,
+                dataChanged);
     }
 
     /**

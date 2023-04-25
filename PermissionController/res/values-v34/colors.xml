@@ -30,7 +30,18 @@
 
     <color name="sc_qs_background_color">@android:color/system_surface_container_dark</color>
 
+    <color name="sc_status_info_light">@color/sc_semantic_green</color>
+
+    <color name="sc_status_info_dark">@color/gm_green_400</color>
+    <color name="sc_status_recommend_dark">@color/gm_yellow_400</color>
+    <color name="sc_status_warn_dark">@color/gm_red_400</color>
+
+    <color name="sc_icon_info_dark">@color/gm_green_400</color>
+    <color name="sc_icon_recommend_dark">@color/gm_yellow_400</color>
+    <color name="sc_icon_warn_dark">@color/gm_red_400</color>
+    <color name="sc_icon_null_dark">@color/gm_grey_400</color>
+
+    <color name="sc_shield_accent_light">@color/sc_shield_accent</color>
     <color name="sc_shield_accent_dark">@color/gm_grey_900</color>
     <color name="sc_shield_accent_fixed_variant">@color/sc_shield_accent_dark</color>
-    <color name="gm_grey_900">#202124</color>
 </resources>

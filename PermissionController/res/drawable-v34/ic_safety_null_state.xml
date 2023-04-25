@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright (C) 2023 The Android Open Source Project
   ~
@@ -15,16 +14,15 @@
   ~ limitations under the License.
   -->
 
-<resources>
-    <style name="Theme.PermissionRationaleDialog"
-           parent="@android:style/Theme.DeviceDefault.Light.Dialog">
-    </style>
-
-    <style name="Theme.SafetyCenterQs" parent="Theme.SafetyCenterQsBase">
-        <item name="colorScShieldAccent">@color/sc_shield_accent_dark</item>
-    </style>
-
-    <style name="Theme.SafetyCenter" parent="Theme.SafetyCenterBase">
-        <item name="colorScShieldAccent">@color/sc_shield_accent_light</item>
-    </style>
-</resources>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="20dp"
+    android:height="20dp"
+    android:viewportWidth="20"
+    android:viewportHeight="20">
+  <path
+      android:pathData="M10,2a8,8 0,1 0,-0 16.001a8,8 0,1 0,-0 -16.001z"
+      android:fillColor="?attr/colorScIconNull"/>
+  <path
+      android:pathData="M14.232,9.002L5.772,9.002L5.772,11.005L14.232,11.005L14.232,9.002Z"
+      android:fillColor="?attr/colorScShieldAccent"/>
+</vector>

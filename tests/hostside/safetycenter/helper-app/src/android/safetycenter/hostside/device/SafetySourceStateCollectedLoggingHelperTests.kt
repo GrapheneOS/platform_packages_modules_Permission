@@ -76,6 +76,17 @@ class SafetySourceStateCollectedLoggingHelperTests {
     }
 
     @Test
+    fun refreshAllSources_twiceSameData_allSuccessful() {
+        repeat(2) {
+            simulateRefresh(
+                Response.SetData(safetySourceTestData.information),
+                Response.SetData(safetySourceTestData.recommendationWithAccountIssue),
+                Response.SetData(safetySourceTestData.criticalWithResolvingDeviceIssue)
+            )
+        }
+    }
+
+    @Test
     fun refreshAllSources_reasonPageOpen_oneError() {
         simulateRefresh(
             Response.SetData(safetySourceTestData.information),
@@ -84,15 +95,40 @@ class SafetySourceStateCollectedLoggingHelperTests {
         )
     }
 
+    @Test
+    fun refreshAllSources_reasonPageOpen_oneSuccessOneErrorOneTimeout() {
+        SafetyCenterFlags.setAllRefreshTimeoutsTo(Coroutines.TIMEOUT_SHORT)
+        simulateRefresh(Response.SetData(safetySourceTestData.information), Response.Error, null)
+    }
+
+    @Test
+    fun refreshAllSources_reasonButtonClick_oneSuccessOneErrorOneTimeout() {
+        SafetyCenterFlags.setAllRefreshTimeoutsTo(Coroutines.TIMEOUT_SHORT)
+        simulateRefresh(
+            Response.SetData(safetySourceTestData.information),
+            Response.Error,
+            null,
+            refreshReason = SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK
+        )
+    }
+
     private fun simulateRefresh(
-        source1Response: Response,
-        source2Response: Response,
-        source3Response: Response,
+        source1Response: Response?,
+        source2Response: Response?,
+        source3Response: Response?,
         refreshReason: Int = SafetyCenterManager.REFRESH_REASON_PAGE_OPEN
     ) {
-        SafetySourceReceiver.setResponse(Request.Refresh(SOURCE_ID_1), source1Response)
-        SafetySourceReceiver.setResponse(Request.Refresh(SOURCE_ID_2), source2Response)
-        SafetySourceReceiver.setResponse(Request.Refresh(SOURCE_ID_3), source3Response)
+        if (source1Response != null) {
+            SafetySourceReceiver.setResponse(Request.Refresh(SOURCE_ID_1), source1Response)
+        }
+        if (source2Response != null) {
+            SafetySourceReceiver.setResponse(Request.Refresh(SOURCE_ID_2), source2Response)
+        }
+        if (source3Response != null) {
+            SafetySourceReceiver.setResponse(Request.Refresh(SOURCE_ID_3), source3Response)
+        }
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(refreshReason)
+        // Give time for responses to all sources
+        Thread.sleep(Coroutines.TIMEOUT_SHORT.toMillis())
     }
 }
