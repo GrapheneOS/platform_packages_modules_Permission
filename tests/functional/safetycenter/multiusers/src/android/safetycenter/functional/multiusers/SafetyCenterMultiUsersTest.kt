@@ -38,8 +38,8 @@ import android.safetycenter.SafetySourceData
 import androidx.test.core.app.ApplicationProvider
 import com.android.bedstead.harrier.BedsteadJUnit4
 import com.android.bedstead.harrier.DeviceState
+import com.android.bedstead.harrier.annotations.EnsureHasAdditionalUser
 import com.android.bedstead.harrier.annotations.EnsureHasNoWorkProfile
-import com.android.bedstead.harrier.annotations.EnsureHasSecondaryUser
 import com.android.bedstead.harrier.annotations.EnsureHasWorkProfile
 import com.android.bedstead.harrier.annotations.Postsubmit
 import com.android.bedstead.harrier.annotations.enterprise.EnsureHasDeviceOwner
@@ -277,7 +277,7 @@ class SafetyCenterMultiUsersTest {
             .setPendingIntent(safetySourceTestData.testActivityRedirectPendingIntent)
             .build()
 
-    private val safetyCenterDataForSecondaryUser
+    private val safetyCenterDataForAdditionalUser
         get() =
             SafetyCenterData(
                 safetyCenterTestData.safetyCenterStatusUnknown,
@@ -286,10 +286,10 @@ class SafetyCenterMultiUsersTest {
                     SafetyCenterEntryOrGroup(
                         safetyCenterTestData.safetyCenterEntryDefault(
                             SINGLE_SOURCE_ALL_PROFILE_ID,
-                            deviceState.secondaryUser().id(),
+                            deviceState.additionalUser().id(),
                             pendingIntent =
                                 createTestActivityRedirectPendingIntentForUser(
-                                    deviceState.secondaryUser().userHandle()
+                                    deviceState.additionalUser().userHandle()
                                 )
                         )
                     )
@@ -379,27 +379,27 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @EnsureHasSecondaryUser(installInstrumentedApp = TRUE)
+    @EnsureHasAdditionalUser(installInstrumentedApp = TRUE)
     @Postsubmit(reason = "Test takes too much time to setup")
-    fun getSafetySourceData_afterSecondaryUserRemoved_returnsNull() {
+    fun getSafetySourceData_afterAdditionalUserRemoved_returnsNull() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceAllProfileConfig)
-        val secondaryUserSafetyCenterManager =
-            getSafetyCenterManagerForUser(deviceState.secondaryUser().userHandle())
-        val dataForSecondaryUser = safetySourceTestData.information
-        secondaryUserSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
+        val additionalUserSafetyCenterManager =
+            getSafetyCenterManagerForUser(deviceState.additionalUser().userHandle())
+        val dataForAdditionalUser = safetySourceTestData.information
+        additionalUserSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
             SINGLE_SOURCE_ALL_PROFILE_ID,
-            dataForSecondaryUser
+            dataForAdditionalUser
         )
         checkState(
-            secondaryUserSafetyCenterManager.getSafetySourceDataWithInteractAcrossUsersPermission(
+            additionalUserSafetyCenterManager.getSafetySourceDataWithInteractAcrossUsersPermission(
                 SINGLE_SOURCE_ALL_PROFILE_ID
-            ) == dataForSecondaryUser
+            ) == dataForAdditionalUser
         )
 
-        deviceState.secondaryUser().remove()
+        deviceState.additionalUser().remove()
 
         assertThat(
-                secondaryUserSafetyCenterManager
+                additionalUserSafetyCenterManager
                     .getSafetySourceDataWithInteractAcrossUsersPermission(
                         SINGLE_SOURCE_ALL_PROFILE_ID
                     )
@@ -804,7 +804,7 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @EnsureHasSecondaryUser(installInstrumentedApp = TRUE)
+    @EnsureHasAdditionalUser(installInstrumentedApp = TRUE)
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     @Postsubmit(reason = "Test takes too much time to setup")
     fun getSafetyCenterData_withDataForDifferentUserProfileGroup_shouldBeUnaffected() {
@@ -819,12 +819,13 @@ class SafetyCenterMultiUsersTest {
             dataForPrimaryUserWorkProfile
         )
 
-        val secondaryUserSafetyCenterManager =
-            getSafetyCenterManagerForUser(deviceState.secondaryUser().userHandle())
-        val apiSafetyCenterDataForSecondaryUser =
-            secondaryUserSafetyCenterManager.getSafetyCenterDataWithInteractAcrossUsersPermission()
+        val additionalUserSafetyCenterManager =
+            getSafetyCenterManagerForUser(deviceState.additionalUser().userHandle())
+        val apiSafetyCenterDataForAdditionalUser =
+            additionalUserSafetyCenterManager.getSafetyCenterDataWithInteractAcrossUsersPermission()
 
-        assertThat(apiSafetyCenterDataForSecondaryUser).isEqualTo(safetyCenterDataForSecondaryUser)
+        assertThat(apiSafetyCenterDataForAdditionalUser)
+            .isEqualTo(safetyCenterDataForAdditionalUser)
     }
 
     @Test
@@ -902,22 +903,22 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @EnsureHasSecondaryUser(installInstrumentedApp = TRUE)
+    @EnsureHasAdditionalUser(installInstrumentedApp = TRUE)
     @Postsubmit(reason = "Test takes too much time to setup")
-    fun getSafetyCenterData_afterSecondaryUserRemoved_returnsDefaultData() {
+    fun getSafetyCenterData_afterAdditionalUserRemoved_returnsDefaultData() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceAllProfileConfig)
-        val secondaryUserSafetyCenterManager =
-            getSafetyCenterManagerForUser(deviceState.secondaryUser().userHandle())
+        val additionalUserSafetyCenterManager =
+            getSafetyCenterManagerForUser(deviceState.additionalUser().userHandle())
         checkState(
-            secondaryUserSafetyCenterManager
+            additionalUserSafetyCenterManager
                 .getSafetyCenterDataWithInteractAcrossUsersPermission() ==
-                safetyCenterDataForSecondaryUser
+                safetyCenterDataForAdditionalUser
         )
 
-        deviceState.secondaryUser().remove()
+        deviceState.additionalUser().remove()
 
         assertThat(
-                secondaryUserSafetyCenterManager
+                additionalUserSafetyCenterManager
                     .getSafetyCenterDataWithInteractAcrossUsersPermission()
             )
             .isEqualTo(SafetyCenterTestData.DEFAULT)
@@ -1100,21 +1101,21 @@ class SafetyCenterMultiUsersTest {
 
     @Test
     @Postsubmit(reason = "Test takes too much time to setup")
-    @EnsureHasSecondaryUser(installInstrumentedApp = TRUE)
+    @EnsureHasAdditionalUser(installInstrumentedApp = TRUE)
     fun setSafetySourceData_forStoppedUser_shouldSetData() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
-        deviceState.secondaryUser().stop()
+        deviceState.additionalUser().stop()
 
         val dataForPrimaryUser = safetySourceTestData.unspecified
-        val secondaryUserSafetyCenterManager =
-            getSafetyCenterManagerForUser(deviceState.secondaryUser().userHandle())
-        secondaryUserSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
+        val additionalUserSafetyCenterManager =
+            getSafetyCenterManagerForUser(deviceState.additionalUser().userHandle())
+        additionalUserSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
             SINGLE_SOURCE_ID,
             dataForPrimaryUser
         )
 
         val apiSafetySourceData =
-            secondaryUserSafetyCenterManager.getSafetySourceDataWithInteractAcrossUsersPermission(
+            additionalUserSafetyCenterManager.getSafetySourceDataWithInteractAcrossUsersPermission(
                 SINGLE_SOURCE_ID
             )
         assertThat(apiSafetySourceData).isEqualTo(dataForPrimaryUser)
@@ -1122,42 +1123,42 @@ class SafetyCenterMultiUsersTest {
 
     @Test
     @Postsubmit(reason = "Test takes too much time to setup")
-    @EnsureHasSecondaryUser(installInstrumentedApp = TRUE)
-    fun setSafetySourceData_forBothPrimarySecondaryUser_shouldSetData() {
+    @EnsureHasAdditionalUser(installInstrumentedApp = TRUE)
+    fun setSafetySourceData_forBothPrimaryAdditionalUser_shouldSetData() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
 
         val dataForPrimaryUser = safetySourceTestData.information
         safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, dataForPrimaryUser)
-        val dataForSecondaryUser = safetySourceTestData.unspecified
-        val secondaryUserSafetyCenterManager =
-            getSafetyCenterManagerForUser(deviceState.secondaryUser().userHandle())
-        secondaryUserSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
+        val dataForAdditionalUser = safetySourceTestData.unspecified
+        val additionalUserSafetyCenterManager =
+            getSafetyCenterManagerForUser(deviceState.additionalUser().userHandle())
+        additionalUserSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
             SINGLE_SOURCE_ID,
-            dataForSecondaryUser
+            dataForAdditionalUser
         )
 
         val apiSafetySourceDataForPrimaryUser =
             safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
-        val apiSafetySourceDataForSecondaryUser =
-            secondaryUserSafetyCenterManager.getSafetySourceDataWithInteractAcrossUsersPermission(
+        val apiSafetySourceDataForAdditionalUser =
+            additionalUserSafetyCenterManager.getSafetySourceDataWithInteractAcrossUsersPermission(
                 SINGLE_SOURCE_ID
             )
         assertThat(apiSafetySourceDataForPrimaryUser).isEqualTo(dataForPrimaryUser)
-        assertThat(apiSafetySourceDataForSecondaryUser).isEqualTo(dataForSecondaryUser)
+        assertThat(apiSafetySourceDataForAdditionalUser).isEqualTo(dataForAdditionalUser)
     }
 
     @Test
     @Postsubmit(reason = "Test takes too much time to setup")
-    @EnsureHasSecondaryUser(installInstrumentedApp = TRUE)
-    fun setSafetySourceData_forSecondaryUser_shouldNotAffectDataForPrimaryUser() {
+    @EnsureHasAdditionalUser(installInstrumentedApp = TRUE)
+    fun setSafetySourceData_forAdditionalUser_shouldNotAffectDataForPrimaryUser() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
 
-        val dataForSecondaryUser = safetySourceTestData.unspecified
-        val secondaryUserSafetyCenterManager =
-            getSafetyCenterManagerForUser(deviceState.secondaryUser().userHandle())
-        secondaryUserSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
+        val dataForAdditionalUser = safetySourceTestData.unspecified
+        val additionalUserSafetyCenterManager =
+            getSafetyCenterManagerForUser(deviceState.additionalUser().userHandle())
+        additionalUserSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
             SINGLE_SOURCE_ID,
-            dataForSecondaryUser
+            dataForAdditionalUser
         )
 
         val apiSafetySourceDataForPrimaryUser =
