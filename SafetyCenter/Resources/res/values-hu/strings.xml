@@ -19,6 +19,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"Biztonsági központ erőforrásai"</string>
     <string name="lock_screen_sources_title" msgid="3317906280484627707">"Eszközzár"</string>
+    <string name="lock_screen_sources_summary" msgid="7220439741282516496"></string>
     <string name="lock_screen_title" msgid="4069104894527169877">"Képernyőzár"</string>
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"Még nincsenek adatok"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"Adatvédelem"</string>
@@ -27,7 +28,11 @@
     <string name="permission_usage_summary" msgid="5323079206029964468">"Az engedélyeket a közelmúltban használó alkalmazások megjelenítése"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"Engedélykezelő"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"Az adataihoz hozzáférő alkalmazások kezelése"</string>
+    <string name="privacy_controls_title" msgid="5322875777945432395">"Adatvédelmi beállítások"</string>
+    <string name="privacy_controls_summary" msgid="2402066941190435424">"Az eszköz mikrofonhoz, kamerához és egyebekhez való hozzáférésének vezérlése"</string>
     <string name="advanced_title" msgid="8745436380690561172">"További beállítások"</string>
     <string name="advanced_security_title" msgid="1126833338772188155">"További biztonsági beállítások"</string>
     <string name="advanced_security_summary" msgid="6172253327022425123">"Titkosítás, hitelesítési adatok és egyebek"</string>
+    <string name="advanced_privacy_title" msgid="1117725225706176643">"További adatvédelmi beállítások"</string>
+    <string name="advanced_privacy_summary" msgid="2281203390575069543">"Automatikus kitöltés, tevékenységvezérlők és egyebek"</string>
 </resources>

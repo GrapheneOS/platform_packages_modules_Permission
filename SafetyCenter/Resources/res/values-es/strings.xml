@@ -19,6 +19,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"Recursos del Centro de seguridad"</string>
     <string name="lock_screen_sources_title" msgid="3317906280484627707">"Bloqueo del dispositivo"</string>
+    <string name="lock_screen_sources_summary" msgid="7220439741282516496"></string>
     <string name="lock_screen_title" msgid="4069104894527169877">"Bloqueo de pantalla"</string>
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"Aún no hay información"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"Privacidad"</string>
@@ -27,7 +28,11 @@
     <string name="permission_usage_summary" msgid="5323079206029964468">"Muestra qué aplicaciones han usado permisos recientemente"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"Gestor de permisos"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"Controla el acceso de las aplicaciones a tus datos"</string>
+    <string name="privacy_controls_title" msgid="5322875777945432395">"Controles de privacidad"</string>
+    <string name="privacy_controls_summary" msgid="2402066941190435424">"Controla el acceso del dispositivo al micrófono, la cámara y más"</string>
     <string name="advanced_title" msgid="8745436380690561172">"Más ajustes"</string>
     <string name="advanced_security_title" msgid="1126833338772188155">"Más ajustes de seguridad"</string>
     <string name="advanced_security_summary" msgid="6172253327022425123">"Cifrado, credenciales y más"</string>
+    <string name="advanced_privacy_title" msgid="1117725225706176643">"Más ajustes de privacidad"</string>
+    <string name="advanced_privacy_summary" msgid="2281203390575069543">"Autocompletar, controles de actividad y más"</string>
 </resources>

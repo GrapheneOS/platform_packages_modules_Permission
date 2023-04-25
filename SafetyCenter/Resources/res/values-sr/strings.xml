@@ -19,6 +19,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"Ресурси Центра за безбедност"</string>
     <string name="lock_screen_sources_title" msgid="3317906280484627707">"Закључавање уређаја"</string>
+    <string name="lock_screen_sources_summary" msgid="7220439741282516496"></string>
     <string name="lock_screen_title" msgid="4069104894527169877">"Закључавање екрана"</string>
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"Још нема информација"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"Приватност"</string>
@@ -27,7 +28,11 @@
     <string name="permission_usage_summary" msgid="5323079206029964468">"Приказује које апликације су недавно користиле дозволе"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"Менаџер дозвола"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"Контролише приступ апликација подацима"</string>
+    <string name="privacy_controls_title" msgid="5322875777945432395">"Контроле приватности"</string>
+    <string name="privacy_controls_summary" msgid="2402066941190435424">"Контролише приступ уређаја микрофону, камери и другом"</string>
     <string name="advanced_title" msgid="8745436380690561172">"Још подешавања"</string>
     <string name="advanced_security_title" msgid="1126833338772188155">"Још безбедносних подешавања"</string>
     <string name="advanced_security_summary" msgid="6172253327022425123">"Шифровање, акредитиви и друго"</string>
+    <string name="advanced_privacy_title" msgid="1117725225706176643">"Још подешавања приватности"</string>
+    <string name="advanced_privacy_summary" msgid="2281203390575069543">"Аутоматско попуњавање, контроле активности и друго"</string>
 </resources>

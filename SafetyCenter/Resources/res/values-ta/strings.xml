@@ -19,6 +19,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"பாதுகாப்பு மையத் தகவல்கள்"</string>
     <string name="lock_screen_sources_title" msgid="3317906280484627707">"சாதனத்தைப் பூட்டுதல்"</string>
+    <string name="lock_screen_sources_summary" msgid="7220439741282516496"></string>
     <string name="lock_screen_title" msgid="4069104894527169877">"திரைப் பூட்டு"</string>
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"தகவல்கள் எதுவுமில்லை"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"தனியுரிமை"</string>
@@ -27,7 +28,11 @@
     <string name="permission_usage_summary" msgid="5323079206029964468">"சமீபத்தில் எந்தெந்த ஆப்ஸ் அனுமதிகளைப் பயன்படுத்தியுள்ளன என்பதைக் காட்டும்"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"அனுமதி நிர்வாகம்"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"உங்கள் தரவுக்கான ஆப்ஸ் அணுகலைக் கட்டுப்படுத்தும்"</string>
+    <string name="privacy_controls_title" msgid="5322875777945432395">"தனியுரிமைக் கட்டுப்பாடுகள்"</string>
+    <string name="privacy_controls_summary" msgid="2402066941190435424">"மைக்ரோஃபோன், கேமரா மற்றும் பலவற்றுக்கான சாதன அணுகலைக் கட்டுப்படுத்தலாம்"</string>
     <string name="advanced_title" msgid="8745436380690561172">"கூடுதல் அமைப்புகள்"</string>
     <string name="advanced_security_title" msgid="1126833338772188155">"கூடுதல் பாதுகாப்பு அமைப்புகள்"</string>
     <string name="advanced_security_summary" msgid="6172253327022425123">"என்க்ரிப்ஷன், அனுமதிச் சான்றுகள் மற்றும் பல"</string>
+    <string name="advanced_privacy_title" msgid="1117725225706176643">"கூடுதல் தனியுரிமை அமைப்புகள்"</string>
+    <string name="advanced_privacy_summary" msgid="2281203390575069543">"தன்னிரப்பி, செயல்பாட்டுக் கட்டுப்பாடுகள் மற்றும் பல"</string>
 </resources>
