@@ -498,10 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"यो एप प्रयोग गरिँदै गरेका बेला यसलाई &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; बडी सेन्सरसम्बन्धी डेटा हेर्ने र प्रयोग गर्ने अनुमति दिइरहने हो?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई तपाईंलाई सूचना पठाउन दिने हो?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"नियन्त्रित अनुमतिहरू"</string>
-    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
-    <skip />
-    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
-    <skip />
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> लाई लोकेसन प्रयोग गर्ने अनुमति दिइएको छ"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"तपाईंको सङ्गठनले <xliff:g id="APP_NAME">%1$s</xliff:g> लाई तपाईंको लोकेसन प्रयोग गर्ने अनुमति दिएको छ"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"अन्य अनुमतिहरू"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">" सिस्टमले प्रयोग गर्ने अनुमतिहरू"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"सिस्टमका एपहरूमा मात्र प्रयोग गरिने अनुमतिहरू।"</string>

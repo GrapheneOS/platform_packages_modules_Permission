@@ -161,8 +161,8 @@
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Autorisations utilisées (dernière heure)"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Autorisations utilisées (15 dernières minutes)"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Autorisations utilisées (dernière minute)"</string>
-    <string name="permission_usage_preference_summary_not_used_in_past_n_days" msgid="4771868094611359651">"{count,plural, =1{Non utilisée au cours du dernier jour (#)}one{Non utilisée au cours du dernier jour (#)}many{Non utilisée au cours des # derniers jours}other{Non utilisée au cours des # derniers jours}}"</string>
-    <string name="permission_usage_preference_summary_not_used_in_past_n_hours" msgid="3828973177433435742">"{count,plural, =1{Non utilisée au cours de la dernière heure (#)}one{Non utilisée au cours de la dernière heure (#)}many{Non utilisée au cours des # dernières heures}other{Non utilisée au cours des # dernières heures}}"</string>
+    <string name="permission_usage_preference_summary_not_used_in_past_n_days" msgid="4771868094611359651">"{count,plural, =1{Pas d\'utilisation sur le dernier jour (#)}one{Pas d\'utilisation sur le dernier jour (#)}many{Pas d\'utilisation sur les # derniers jours}other{Pas d\'utilisation sur les # derniers jours}}"</string>
+    <string name="permission_usage_preference_summary_not_used_in_past_n_hours" msgid="3828973177433435742">"{count,plural, =1{Pas d\'utilisation sur la dernière heure (#)}one{Pas d\'utilisation sur la dernière heure (#)}many{Pas d\'utilisation sur les # dernières heures}other{Pas d\'utilisation sur les # dernières heures}}"</string>
     <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Utilisation par 1 appli}one{Utilisation par # appli}many{Utilisation par # applis}other{Utilisation par # applis}}"</string>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Tout afficher dans le tableau de bord"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Données filtrées par : <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -498,10 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Continuer à autoriser <xliff:g id="APP_NAME">%1$s</xliff:g> à accéder aux données des capteurs corporels seulement en cours d\'utilisation ?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à vous envoyer des notifications ?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Autorisations contrôlées"</string>
-    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
-    <skip />
-    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
-    <skip />
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> a accès à votre position"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Votre organisation autorise <xliff:g id="APP_NAME">%1$s</xliff:g> à accéder à votre position"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"Autres autorisations"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Autorisation utilisée par le système"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Autorisations utilisées uniquement par les applications système."</string>
