@@ -30,7 +30,6 @@ apex_defaults {
     systemserverclasspath_fragments: ["com.android.permission-systemserverclasspath-fragment"],
     prebuilts: [
         "current_sdkinfo",
-        "privapp_allowlist_com.android.permissioncontroller.xml",
     ],
     key: "com.android.permission.key",
     certificate: ":com.android.permission.certificate",
