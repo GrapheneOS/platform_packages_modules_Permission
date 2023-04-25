@@ -143,9 +143,10 @@ final class SafetySourceDataRepository {
             refreshReason = mSafetyCenterRefreshTracker.getRefreshReason();
         }
 
-        boolean eventCausedChange = processSafetyEvent(safetySourceId, safetyEvent, userId, false);
-        boolean removedSourceError = mSafetySourceErrors.remove(key);
         boolean sourceDataDiffers = !Objects.equals(safetySourceData, mSafetySourceData.get(key));
+        boolean eventCausedChange =
+                processSafetyEvent(safetySourceId, safetyEvent, userId, false, sourceDataDiffers);
+        boolean removedSourceError = mSafetySourceErrors.remove(key);
 
         if (sourceDataDiffers) {
             setSafetySourceDataInternal(key, safetySourceData);
@@ -232,7 +233,7 @@ final class SafetySourceDataRepository {
         Log.w(TAG, "Error reported from source: " + safetySourceId + ", for event: " + safetyEvent);
 
         boolean safetyEventChangedSafetyCenterData =
-                processSafetyEvent(safetySourceId, safetyEvent, userId, true);
+                processSafetyEvent(safetySourceId, safetyEvent, userId, true, false);
         int safetyEventType = safetyEvent.getType();
         if (safetyEventType == SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED
                 || safetyEventType == SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED) {
@@ -581,7 +582,8 @@ final class SafetySourceDataRepository {
             String safetySourceId,
             SafetyEvent safetyEvent,
             @UserIdInt int userId,
-            boolean isError) {
+            boolean isError,
+            boolean sourceDataChanged) {
         int type = safetyEvent.getType();
         switch (type) {
             case SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED:
@@ -591,7 +593,7 @@ final class SafetySourceDataRepository {
                     return false;
                 }
                 return mSafetyCenterRefreshTracker.reportSourceRefreshCompleted(
-                        refreshBroadcastId, safetySourceId, userId, !isError);
+                        refreshBroadcastId, safetySourceId, userId, !isError, sourceDataChanged);
             case SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED:
             case SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED:
                 String safetySourceIssueId = safetyEvent.getSafetySourceIssueId();
