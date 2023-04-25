@@ -161,7 +161,8 @@ public final class SafetyCenterRefreshTracker {
 
         SafetySourceKey sourceKey = SafetySourceKey.of(sourceId, userId);
         Duration duration = mRefreshInProgress.markSourceRefreshComplete(sourceKey, successful);
-        int requestType = RefreshReasons.toRefreshRequestType(mRefreshInProgress.getReason());
+        int refreshReason = mRefreshInProgress.getReason();
+        int requestType = RefreshReasons.toRefreshRequestType(refreshReason);
 
         if (duration != null) {
             int sourceResult = toSystemEventResult(successful);
@@ -170,7 +171,8 @@ public final class SafetyCenterRefreshTracker {
                     sourceId,
                     UserUtils.isManagedProfile(userId, mContext),
                     duration,
-                    sourceResult);
+                    sourceResult,
+                    refreshReason);
         }
 
         if (!mRefreshInProgress.isComplete()) {
@@ -181,7 +183,10 @@ public final class SafetyCenterRefreshTracker {
         int wholeResult =
                 toSystemEventResult(/* success= */ !mRefreshInProgress.hasAnyTrackedSourceErrors());
         SafetyCenterStatsdLogger.writeWholeRefreshSystemEvent(
-                requestType, mRefreshInProgress.getDurationSinceStart(), wholeResult);
+                requestType,
+                mRefreshInProgress.getDurationSinceStart(),
+                wholeResult,
+                refreshReason);
         mRefreshInProgress = null;
         return true;
     }
@@ -252,7 +257,8 @@ public final class SafetyCenterRefreshTracker {
         }
 
         ArraySet<SafetySourceKey> timedOutSources = clearedRefresh.getSourceRefreshesInFlight();
-        int requestType = RefreshReasons.toRefreshRequestType(clearedRefresh.getReason());
+        int refreshReason = clearedRefresh.getReason();
+        int requestType = RefreshReasons.toRefreshRequestType(refreshReason);
 
         for (int i = 0; i < timedOutSources.size(); i++) {
             SafetySourceKey sourceKey = timedOutSources.valueAt(i);
@@ -263,14 +269,16 @@ public final class SafetyCenterRefreshTracker {
                         sourceKey.getSourceId(),
                         UserUtils.isManagedProfile(sourceKey.getUserId(), mContext),
                         duration,
-                        SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__TIMEOUT);
+                        SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__TIMEOUT,
+                        refreshReason);
             }
         }
 
         SafetyCenterStatsdLogger.writeWholeRefreshSystemEvent(
                 requestType,
                 clearedRefresh.getDurationSinceStart(),
-                SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__TIMEOUT);
+                SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__TIMEOUT,
+                refreshReason);
 
         return timedOutSources;
     }
