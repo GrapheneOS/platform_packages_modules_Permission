@@ -134,6 +134,11 @@ abstract class SafetyCenterFragment : PreferenceFragmentCompat() {
         highlightManager.saveState(outState)
     }
 
+    override fun onStop() {
+        super.onStop()
+        safetyCenterViewModel.interactionLogger.clearViewedIssues()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         if (activity?.isChangingConfigurations == true) {
