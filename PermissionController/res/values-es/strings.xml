@@ -397,7 +397,7 @@
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> podrá interactuar con tus notificaciones y acceder a tu teléfono, SMS, contactos y calendario."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> podrá interactuar con tus notificaciones y reproducir tus aplicaciones en el dispositivo conectado."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Este servicio comparte las fotos, el contenido multimedia y las notificaciones de tu teléfono con otros dispositivos."</string>
-    <string name="role_notes_label" msgid="7451627001058089536">"App de notas predeterminada"</string>
+    <string name="role_notes_label" msgid="7451627001058089536">"Aplicación de notas predeterminada"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"Aplicación de notas"</string>
     <string name="role_notes_description" msgid="8496852798616883551">"Aplicaciones que te permiten tomar notas en tu dispositivo"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"notas"</string>
@@ -498,10 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"¿Seguir permitiendo que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a los datos de los sensores corporales mientras se usa?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; te envíe notificaciones?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Permisos controlados"</string>
-    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
-    <skip />
-    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
-    <skip />
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> tiene acceso a la ubicación"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Tu organización permite que <xliff:g id="APP_NAME">%1$s</xliff:g> acceda a tu ubicación"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"Otros permisos"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Permiso usado por el sistema"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Permisos usados solo por las aplicaciones del sistema."</string>

@@ -474,8 +474,8 @@
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristup &lt;b&gt;foto/video/audiodatotekama i glazbi&lt;/b&gt; na ovom uređaju?"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Dopustiti apl. &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristup &lt;b&gt;foto/video/audio i drugim datotekama te glazbi&lt;/b&gt; na uređaju?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristup glazbi i audiodatotekama na ovom uređaju?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristup fotografijama i videozapisima na ovom uređaju?"</string>
-    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristup većem broju fotografija i videozapisa na ovom uređaju?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti pristup fotografijama i videozapisima na ovom uređaju?"</string>
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti pristup većem broju fotografija i videozapisa na ovom uređaju?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da snima audiozapise?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Aplikacija će moći snimati audiozapise samo dok je upotrebljavate"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da snima audiozapise?"</string>
@@ -498,10 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Nastaviti dopuštati aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristup podacima s biometrijskih senzora dok je upotrebljavate?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da vam šalje obavijesti?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Kontrolirana dopuštenja"</string>
-    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
-    <skip />
-    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
-    <skip />
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> ima pristup lokaciji"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Vaša organizacija dopušta da <xliff:g id="APP_NAME">%1$s</xliff:g> pristupa vašoj lokaciji"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"Ostala dopuštenja"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Dopuštenja koja upotrebljava sustav"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Dopuštenja koja upotrebljavaju samo aplikacije sustava."</string>

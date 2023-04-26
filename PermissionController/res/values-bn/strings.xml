@@ -498,10 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ব্যবহার করার সময় &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপকে বডি সেন্সর ডেটার অ্যাক্সেস দিয়ে রাখতে চান?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে বিজ্ঞপ্তি পাঠানোর অনুমতি দেবেন?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"নিয়ন্ত্রিত অনুমতি"</string>
-    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
-    <skip />
-    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
-    <skip />
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g>-এর লোকেশন অ্যাক্সেস আছে"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"আপনার সংস্থা <xliff:g id="APP_NAME">%1$s</xliff:g>-কে আপনার লোকেশন অ্যাক্সেস করার অনুমতি দেয়"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"অন্যান্য অনুমতি"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"যেসব অনুমতি শুধু সিস্টেম অ্যাপ ব্যবহার করেছে"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"যেসব অনুমতি শুধুমাত্র সিস্টেম অ্যাপ্লিকেশনে ব্যবহার করা হয়।"</string>

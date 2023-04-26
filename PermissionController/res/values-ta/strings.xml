@@ -498,10 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ஆப்ஸ் பயன்பாட்டில் இருக்கும்போது உடல் சென்சார் தரவை அணுக &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&amp;gt ஆப்ஸுக்குத் தொடர்ந்து அனுமதியளிக்கவா?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"உங்களுக்கு அறிவிப்புகளை அனுப்ப &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"கட்டுப்படுத்தப்பட்ட அனுமதிகள்"</string>
-    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
-    <skip />
-    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
-    <skip />
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> ஆப்ஸுக்கு இருப்பிட அணுகல் உள்ளது"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"உங்கள் இருப்பிடத்தை <xliff:g id="APP_NAME">%1$s</xliff:g> அணுக உங்கள் நிறுவனம் அனுமதிக்கிறது"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"பிற அனுமதிகள்"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"சிஸ்டத்தால் பயன்படுத்தப்படும் அனுமதி"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"சிஸ்டம் ஆப்ஸால் மட்டுமே பயன்படுத்தப்படும் அனுமதிகள்."</string>

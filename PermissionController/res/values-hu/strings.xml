@@ -34,7 +34,7 @@
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Bővebben"</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Összes engedélyezése"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Összes engedélyezése mindig"</string>
-    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Jelöljön ki fotókat, videókat"</string>
+    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Fotók és videók kijelölése"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Több kijelölése"</string>
     <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Ne válasszon ki többet"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Semmiképpen se engedélyezze"</string>
@@ -498,10 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Továbbra is hozzáférhessen használat közben a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; alkalmazás a testérzékelők adataihoz?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy értesítéseket küldjön Önnek?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Szabályozott engedélyek"</string>
-    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
-    <skip />
-    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
-    <skip />
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"A(z) <xliff:g id="APP_NAME">%1$s</xliff:g> hozzáfér a tartózkodási helyhez"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Szervezete lehetővé teszi a(z) <xliff:g id="APP_NAME">%1$s</xliff:g> számára, hogy hozzáférjen az Ön tartózkodási helyéhez"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"További engedélyek"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Rendszer által használt engedélyek"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Csak rendszeralkalmazások által használt engedélyek."</string>

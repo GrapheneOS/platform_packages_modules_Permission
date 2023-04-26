@@ -30,8 +30,7 @@
     <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"Daugiau įspėjimų"</string>
     <string name="safety_center_dismissed_issues_card_title" msgid="2340129842725145733">"Atsisakyta įspėjimų"</string>
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{Išskleiskite ir peržiūrėkite dar vieną įspėjimą}one{Išskleiskite ir peržiūrėkite dar # įspėjimą}few{Išskleiskite ir peržiūrėkite dar # įspėjimus}many{Išskleiskite ir peržiūrėkite dar # įspėjimo}other{Išskleiskite ir peržiūrėkite dar # įspėjimų}}"</string>
-    <!-- no translation found for safety_center_issue_card_prefix_content_description (1447445289637043544) -->
-    <skip />
+    <string name="safety_center_issue_card_prefix_content_description" msgid="1447445289637043544">"Įspėjimas. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>"</string>
     <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"Veiksmas atliktas"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"Patikrinkite nustatymus, kuriuos taikant galima užtikrinti papildomą įrenginio apsaugą"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"Spartieji saugos ir privatumo nustatymai"</string>

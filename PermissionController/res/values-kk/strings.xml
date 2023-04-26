@@ -163,7 +163,7 @@
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Рұқсаттың соңғы 1 минутта пайдаланылуы"</string>
     <string name="permission_usage_preference_summary_not_used_in_past_n_days" msgid="4771868094611359651">"{count,plural, =1{Соңғы # күнде пайдаланылмады.}other{Соңғы # күнде пайдаланылмады.}}"</string>
     <string name="permission_usage_preference_summary_not_used_in_past_n_hours" msgid="3828973177433435742">"{count,plural, =1{Соңғы # сағатта пайдаланылмады.}other{Соңғы # сағатта пайдаланылмады.}}"</string>
-    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{1 қолданба пайдаланды}other{# қолданба пайдаланды}}"</string>
+    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{1 қолданба пайдаланды.}other{# қолданба пайдаланды.}}"</string>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Барлығын бақылау тақтасынан көру"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Сүзгі шарты: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Сүзгіні өшіру"</string>
@@ -498,10 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Жұмыс кезінде &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасы дене датчигінен алынған деректі одан әрі пайдалана берсін бе?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасы хабарландыру жіберсін бе?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Басқарылатын рұқсаттар"</string>
-    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
-    <skip />
-    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
-    <skip />
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасы локацияны пайдаланады"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Ұйымыңыз <xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасына локацияңызды пайдалануға рұқсат береді."</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"Басқа рұқсаттар"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Жүйе пайдаланатын рұқсаттар"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Тек жүйе қолданбалары пайдаланатын рұқсаттар."</string>
