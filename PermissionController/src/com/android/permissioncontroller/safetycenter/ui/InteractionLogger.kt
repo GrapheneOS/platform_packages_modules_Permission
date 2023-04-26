@@ -27,6 +27,8 @@ import android.safetycenter.SafetyCenterEntry
 import android.safetycenter.SafetyCenterIssue
 import android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_ISSUE_ID
 import android.safetycenter.SafetyCenterStatus
+import android.safetycenter.config.SafetyCenterConfig
+import android.safetycenter.config.SafetySource
 import androidx.annotation.RequiresApi
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.PermissionControllerStatsLog
@@ -41,16 +43,37 @@ import java.math.BigInteger
 import java.security.MessageDigest
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
-class InteractionLogger(
-    private val noLogSourceIds: Set<String?>,
-    var sessionId: Long = Constants.INVALID_SESSION_ID,
-    var viewType: ViewType = ViewType.UNKNOWN,
-    var navigationSource: NavigationSource = NavigationSource.UNKNOWN,
-    var navigationSensor: Sensor = Sensor.UNKNOWN,
-    var groupId: String? = null
+class InteractionLogger
+private constructor(
+    private val noLogSourceIds: Set<String?>
 ) {
+    var sessionId: Long = Constants.INVALID_SESSION_ID
+    var viewType: ViewType = ViewType.UNKNOWN
+    var navigationSource: NavigationSource = NavigationSource.UNKNOWN
+    var navigationSensor: Sensor = Sensor.UNKNOWN
+    var groupId: String? = null
+
+    private val viewedIssueIds: MutableSet<String> = mutableSetOf()
+
+    constructor(
+        safetyCenterConfig: SafetyCenterConfig?
+    ) : this(extractNoLogSourceIds(safetyCenterConfig))
+
     fun record(action: Action) {
         writeAtom(action)
+    }
+
+    fun recordIssueViewed(issue: SafetyCenterIssue, isDismissed: Boolean) {
+        if (viewedIssueIds.contains(issue.id)) {
+            return
+        }
+
+        recordForIssue(Action.SAFETY_ISSUE_VIEWED, issue, isDismissed)
+        viewedIssueIds.add(issue.id)
+    }
+
+    fun clearViewedIssues() {
+        viewedIssueIds.clear()
     }
 
     fun recordForIssue(action: Action, issue: SafetyCenterIssue, isDismissed: Boolean) {
@@ -133,6 +156,26 @@ class InteractionLogger(
             // Truncate to the size of a long
             return BigInteger(digest.digest()).toLong()
         }
+
+        private fun extractNoLogSourceIds(safetyCenterConfig: SafetyCenterConfig?): Set<String?> {
+            if (safetyCenterConfig == null) return setOf()
+
+            return safetyCenterConfig.safetySourcesGroups
+                .asSequence()
+                .flatMap { it.safetySources }
+                .filterNot { it.isLoggable() }
+                .map { it.id }
+                .toSet()
+        }
+
+        private fun SafetySource.isLoggable(): Boolean =
+            try {
+                isLoggingAllowed
+            } catch (ex: UnsupportedOperationException) {
+                // isLoggingAllowed will throw if you call it on a static source :(
+                // Default to logging all sources that don't support this config value.
+                true
+            }
     }
 }
 
