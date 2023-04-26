@@ -136,7 +136,7 @@ public class GrantPermissionsActivity extends SettingsActivity
      * A map of the currently shown GrantPermissionsActivity for this user, per package and task ID
      */
     @GuardedBy("sCurrentGrantRequests")
-    private static final Map<Pair<String, Integer>, GrantPermissionsActivity>
+    public static final Map<Pair<String, Integer>, GrantPermissionsActivity>
             sCurrentGrantRequests = new HashMap<>();
 
     /** Unique Id of a request */
