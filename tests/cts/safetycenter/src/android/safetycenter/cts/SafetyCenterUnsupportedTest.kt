@@ -17,6 +17,7 @@
 package android.safetycenter.cts
 
 import android.content.Context
+import android.os.UserManager
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyCenterManager.REFRESH_REASON_PAGE_OPEN
 import android.safetycenter.SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK
@@ -201,6 +202,8 @@ class SafetyCenterUnsupportedTest {
 
     @Test
     fun safetyCenterEnabledChanged_withImplicitReceiver_doesntCallReceiver() {
+        // Implicit broadcast is only sent to system user.
+        assumeTrue(context.getSystemService(UserManager::class.java)!!.isSystemUser)
         val enabledChangedReceiver = SafetyCenterEnabledChangedReceiver(context)
 
         assertFailsWith(TimeoutCancellationException::class) {
