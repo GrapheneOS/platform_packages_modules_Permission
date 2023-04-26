@@ -56,7 +56,7 @@ import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.data.FullStoragePermissionAppsLiveData
 import com.android.permissioncontroller.permission.data.FullStoragePermissionAppsLiveData.FullStoragePackageState
 import com.android.permissioncontroller.permission.data.LightAppPermGroupLiveData
-import com.android.permissioncontroller.permission.data.SafetyLabelInfoLiveData
+import com.android.permissioncontroller.permission.data.v34.SafetyLabelInfoLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
@@ -186,10 +186,15 @@ class AppPermissionViewModel(
      * A livedata for determining the display state of safety label information
      */
     val showPermissionRationaleLiveData = object : SmartUpdateMediatorLiveData<Boolean>() {
-        private val safetyLabelInfoLiveData = SafetyLabelInfoLiveData[packageName, user]
+        private val safetyLabelInfoLiveData = if (SdkLevel.isAtLeastU()) {
+            SafetyLabelInfoLiveData[packageName, user]
+        } else {
+            null
+        }
 
         init {
-            if (PermissionMapping.isSafetyLabelAwarePermissionGroup(permGroupName)) {
+            if (safetyLabelInfoLiveData != null &&
+                PermissionMapping.isSafetyLabelAwarePermissionGroup(permGroupName)) {
                 addSource(safetyLabelInfoLiveData) { update() }
             } else {
                 value = false
@@ -197,11 +202,11 @@ class AppPermissionViewModel(
         }
 
         override fun onUpdate() {
-            if (safetyLabelInfoLiveData.isStale) {
+            if (safetyLabelInfoLiveData != null && safetyLabelInfoLiveData.isStale) {
                 return
             }
 
-            val safetyLabel = safetyLabelInfoLiveData.value?.safetyLabel
+            val safetyLabel = safetyLabelInfoLiveData?.value?.safetyLabel
             if (safetyLabel == null) {
                 value = false
                 return
