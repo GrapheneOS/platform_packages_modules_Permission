@@ -47,9 +47,15 @@ object SafetyCenterActivityLauncher {
     fun Context.launchSafetyCenterActivity(
         intentExtras: Bundle? = null,
         withReceiverPermission: Boolean = false,
+        preventTrampolineToSettings: Boolean = true,
         block: () -> Unit
     ) {
-        val launchSafetyCenterIntent = createIntent(ACTION_SAFETY_CENTER, intentExtras)
+        val launchSafetyCenterIntent =
+            createIntent(
+                ACTION_SAFETY_CENTER,
+                intentExtras,
+                preventTrampolineToSettings = preventTrampolineToSettings
+            )
         if (withReceiverPermission) {
             callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
                 executeBlockAndExit(block) { startActivity(launchSafetyCenterIntent) }
@@ -87,10 +93,17 @@ object SafetyCenterActivityLauncher {
         }
     }
 
-    private fun createIntent(intentAction: String, intentExtras: Bundle?): Intent {
+    private fun createIntent(
+        intentAction: String,
+        intentExtras: Bundle?,
+        preventTrampolineToSettings: Boolean = false
+    ): Intent {
         val launchIntent =
             Intent(intentAction).addFlags(FLAG_ACTIVITY_NEW_TASK).addFlags(FLAG_ACTIVITY_CLEAR_TASK)
         intentExtras?.let { launchIntent.putExtras(it) }
+        if (preventTrampolineToSettings) {
+            launchIntent.putExtra(EXTRA_PREVENT_TRAMPOLINE_TO_SETTINGS, true)
+        }
         return launchIntent
     }
 
@@ -103,4 +116,7 @@ object SafetyCenterActivityLauncher {
         uiDevice.pressBack()
         uiDevice.waitForIdle()
     }
+
+    private const val EXTRA_PREVENT_TRAMPOLINE_TO_SETTINGS: String =
+        "com.android.permissioncontroller.safetycenter.extra.PREVENT_TRAMPOLINE_TO_SETTINGS"
 }
