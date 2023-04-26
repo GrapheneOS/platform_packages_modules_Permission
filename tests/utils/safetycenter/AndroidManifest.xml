@@ -21,7 +21,10 @@
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
 
     <application>
+        <!-- The receiver is marked as disabled and is manually enabled in the tests for the desired
+             user(s); as it does not support multi-users calls for now. -->
         <receiver android:name=".SafetySourceReceiver"
+                  android:enabled="false"
                   android:exported="false">
             <intent-filter>
                 <action android:name="android.safetycenter.action.SAFETY_CENTER_ENABLED_CHANGED"/>

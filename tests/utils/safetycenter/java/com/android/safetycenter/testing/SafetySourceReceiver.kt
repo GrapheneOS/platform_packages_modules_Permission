@@ -23,11 +23,14 @@ import android.app.NotificationManager
 import android.app.NotificationManager.IMPORTANCE_DEFAULT
 import android.app.Service
 import android.content.BroadcastReceiver
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DISABLED
+import android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_ENABLED
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.IBinder
-import android.os.UserManager
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyCenterManager.ACTION_SAFETY_CENTER_ENABLED_CHANGED
 import androidx.annotation.RequiresApi
@@ -51,12 +54,6 @@ import kotlinx.coroutines.launch
 @RequiresApi(TIRAMISU)
 class SafetySourceReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent?) {
-        val userManager = context.getSystemService(UserManager::class.java)!!
-        if (!userManager.isSystemUser) {
-            // Ignore multi-users calls to this receiver for now, as we're not testing multi-users
-            // broadcasts. When we do, we'll ensure that they don't leak between the tests.
-            return
-        }
         if (intent == null) {
             throw IllegalArgumentException("Received null intent")
         }
@@ -131,11 +128,30 @@ class SafetySourceReceiver : BroadcastReceiver() {
         /** Whether this receiver should handle incoming intents in a foreground service instead. */
         @Volatile var runInForegroundService = false
 
+        /** Enables the [SafetySourceReceiver] for the user running the test. */
+        fun setup() {
+            setComponentEnabledState(true)
+        }
+
         /** Resets the state of the [SafetySourceReceiver] between tests. */
         fun reset() {
+            setComponentEnabledState(false)
             safetySourceIntentHandler.cancel()
             safetySourceIntentHandler = SafetySourceIntentHandler()
             runInForegroundService = false
+        }
+
+        private fun setComponentEnabledState(enabled: Boolean) {
+            val componentName =
+                ComponentName(getApplicationContext(), SafetySourceReceiver::class.java)
+            getApplicationContext()
+                .packageManager
+                .setComponentEnabledSetting(
+                    componentName,
+                    if (enabled) COMPONENT_ENABLED_STATE_ENABLED
+                    else COMPONENT_ENABLED_STATE_DISABLED,
+                    PackageManager.DONT_KILL_APP
+                )
         }
 
         /**
