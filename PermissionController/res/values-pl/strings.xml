@@ -226,7 +226,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Ostatnio otwarto <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Jeśli pozwolisz zarządzać wszystkimi plikami, ta aplikacja będzie mogła odczytywać, modyfikować i usuwać dowolne pliki na tym urządzeniu lub zewnętrznych urządzeniach do przechowywania danych. Ta aplikacja może bez pytania uzyskiwać dostęp do plików."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Zezwól tej aplikacji na odczytywanie, modyfikowanie i usuwanie plików na tym urządzeniu oraz wszelkich podłączonych zewnętrznych urządzeniach do przechowywania danych. Ta aplikacja może bez pytania uzyskiwać dostęp do plików."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Aplikacje z tym uprawnieniem mogą <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Aplikacje z tym uprawnieniem mają <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Aplikacje z tym uprawnieniem mają dostęp do danych o Twojej aktywności fizycznej takiej jak spacery, jazda na rowerze, jazda samochodem, liczba kroków i inne"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Aplikacje z tym uprawnieniem mają dostęp do kalendarza"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Aplikacje z tym uprawnieniem mogą odczytywać i zapisywać rejestr połączeń telefonicznych"</string>
@@ -498,10 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Czy nadal zezwalać aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na dostęp do czujników na ciele podczas jej używania?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na wysyłanie powiadomień?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Pozwolenia kontrolowane"</string>
-    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
-    <skip />
-    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
-    <skip />
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"Aplikacja <xliff:g id="APP_NAME">%1$s</xliff:g> ma dostęp do lokalizacji"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Organizacja zezwala na dostęp aplikacji <xliff:g id="APP_NAME">%1$s</xliff:g> do Twojej lokalizacji"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"Inne uprawnienia"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Uprawnienia używane przez system"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Uprawnienia używane tylko przez aplikacje systemowe."</string>

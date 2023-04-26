@@ -498,10 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Instelling behouden dat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang tot gegevens van lichaamssensoren heeft als de app wordt gebruikt?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Toestaan dat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; je meldingen stuurt?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Beheerde rechten"</string>
-    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
-    <skip />
-    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
-    <skip />
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> heeft toegang tot je locatie"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Je organisatie geeft <xliff:g id="APP_NAME">%1$s</xliff:g> toegang tot je locatie"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"Overige rechten"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Recht gebruikt door het systeem"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Rechten alleen gebruikt door systeem-apps."</string>

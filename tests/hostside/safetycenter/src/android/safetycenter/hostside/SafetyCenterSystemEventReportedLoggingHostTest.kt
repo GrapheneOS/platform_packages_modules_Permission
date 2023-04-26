@@ -26,6 +26,7 @@ import com.android.os.AtomsProto.SafetyCenterSystemEventReported.Result
 import com.android.tradefed.testtype.DeviceJUnit4ClassRunner
 import com.android.tradefed.testtype.junit4.BaseHostJUnit4Test
 import com.google.common.truth.Truth.assertThat
+import com.google.common.truth.Truth.assertWithMessage
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -105,5 +106,82 @@ class SafetyCenterSystemEventReportedLoggingHostTest : BaseHostJUnit4Test() {
                 Pair(EventType.SINGLE_SOURCE_GET_NEW_DATA, Result.SUCCESS),
                 2 // The remaining two sources
             )
+    }
+
+    @Test
+    fun refreshAllSources_anyResult_atomsIncludeRefreshReason() {
+        helperAppRule.runTest(
+            ".SafetySourceStateCollectedLoggingHelperTests",
+            "refreshAllSources_reasonPageOpen_oneSuccessOneErrorOneTimeout"
+        )
+
+        val systemEventAtoms =
+            ReportUtils.getEventMetricDataList(device).mapNotNull {
+                it.atom.safetyCenterSystemEventReported
+            }
+
+        assertWithMessage("the system event atoms").that(systemEventAtoms).hasSize(4)
+        assertWithMessage("the number of atoms with the page-open refresh reason")
+            .that(systemEventAtoms.count { it.refreshReason == REFRESH_REASON_PAGE_OPEN })
+            .isEqualTo(4)
+    }
+
+    @Test
+    fun refreshAllSources_differentRefreshReason_atomsIncludeCorrectRefreshReason() {
+        helperAppRule.runTest(
+            ".SafetySourceStateCollectedLoggingHelperTests",
+            "refreshAllSources_reasonButtonClick_oneSuccessOneErrorOneTimeout"
+        )
+
+        val systemEventAtoms =
+            ReportUtils.getEventMetricDataList(device).mapNotNull {
+                it.atom.safetyCenterSystemEventReported
+            }
+
+        assertWithMessage("the system event atoms").that(systemEventAtoms).hasSize(4)
+        assertWithMessage("the number of atoms with the button-click refresh reason")
+            .that(systemEventAtoms.count { it.refreshReason == REFRESH_REASON_BUTTON_CLICK })
+    }
+
+    fun refreshAllSources_firstTime_allSourcesSuccessful_dataChangedTrueForAll() {
+        helperAppRule.runTest(
+            ".SafetySourceStateCollectedLoggingHelperTests",
+            "refreshAllSources_reasonPageOpen_allSuccessful"
+        )
+
+        val systemEventAtoms =
+            ReportUtils.getEventMetricDataList(device).mapNotNull {
+                it.atom.safetyCenterSystemEventReported
+            }
+
+        assertWithMessage("the number of atoms with dataChanged=true")
+            .that(systemEventAtoms.count { it.dataChanged })
+            .isEqualTo(4)
+    }
+
+    @Test
+    fun refreshAllSources_secondTime_allSourcesUnchanged_dataChangedFalseForAll() {
+        helperAppRule.runTest(
+            ".SafetySourceStateCollectedLoggingHelperTests",
+            "refreshAllSources_twiceSameData_allSuccessful"
+        )
+
+        val systemEventAtoms =
+            ReportUtils.getEventMetricDataList(device).mapNotNull {
+                it.atom.safetyCenterSystemEventReported
+            }
+
+        // There are three sources in the multiple sources config, of which one is not allowed to
+        // refresh on page open, except when there is no data. Plus, for each refresh there is an
+        // overall refresh atom making seven atoms in total.
+        assertWithMessage("the number of atoms").that(systemEventAtoms).hasSize(7)
+        assertWithMessage("the number of atoms with dataChanged=false")
+            .that(systemEventAtoms.count { !it.dataChanged })
+            .isEqualTo(3)
+    }
+
+    companion object {
+        private const val REFRESH_REASON_PAGE_OPEN = 100L
+        private const val REFRESH_REASON_BUTTON_CLICK = 200L
     }
 }

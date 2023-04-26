@@ -498,10 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 앱을 사용하는 중에만 생체 신호 센서 데이터에 액세스하도록 허용하는 설정을 유지하시겠습니까?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 알림을 보내도록 허용하시겠습니까?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"관리 대상 권한"</string>
-    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
-    <skip />
-    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
-    <skip />
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> 앱이 위치 액세스 권한을 보유함"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"조직에서 <xliff:g id="APP_NAME">%1$s</xliff:g> 앱이 내 위치에 액세스하도록 허용했습니다."</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"기타 권한"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"시스템에서 사용하는 권한"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"시스템 애플리케이션에서만 사용하는 권한입니다."</string>

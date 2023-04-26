@@ -130,7 +130,7 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"અન્ય પરવાનગીઓ જુઓ"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> અને વધુ <xliff:g id="NUM">%3$s</xliff:g>"</string>
-    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"છેલ્લા 24 કલાકમાં ઍપ દ્વારા તમારા <xliff:g id="PERMGROUP">%1$s</xliff:g>નો ઉપયોગ ક્યારે કરવામાં આવ્યો, તેની સમયરેખા"</string>
+    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"છેલ્લા 24 કલાકમાં ઍપ દ્વારા તમારા <xliff:g id="PERMGROUP">%1$s</xliff:g>નો ઉપયોગ ક્યારે કરવામાં આવ્યો, તેની ટાઇમલાઇન"</string>
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"છેલ્લા 7 દિવસમાં ઍપ દ્વારા તમારા <xliff:g id="PERMGROUP">%1$s</xliff:g>નો ઉપયોગ ક્યારે કરવામાં આવ્યો, તેની સમયરેખા"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"જ્યારે આ ઍપ દ્વારા તમારી <xliff:g id="PERMGROUP">%1$s</xliff:g>ની પરવાનગીનો ઉપયોગ કરવામાં આવ્યો"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"વધુ જાણો"</string>
@@ -498,10 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ઍપ ઉપયોગમાં હોય ત્યારે &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને બૉડી સેન્સર ડેટા ઍક્સેસ કરવાની મંજૂરી આપવાનું ચાલુ રાખીએ?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"શું &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને તમને નોટિફિકેશન મોકલવાની મંજૂરી આપીએ?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"નિયંત્રિત પરવાનગીઓ"</string>
-    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
-    <skip />
-    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
-    <skip />
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> પાસે લોકેશન ઍક્સેસ છે"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"તમારી સંસ્થા <xliff:g id="APP_NAME">%1$s</xliff:g>ને તમારું લોકેશન ઍક્સેસ કરવાની મંજૂરી આપે છે"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"અન્ય પરવાનગીઓ"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"સિસ્ટમ દ્વારા ઉપયોગમાં લેવાતી પરવાનગીઓ"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"ફક્ત સિસ્ટમ ઍપ્લિકેશન દ્વારા ઉપયોગમાં લેવાતી પરવાનગીઓ."</string>

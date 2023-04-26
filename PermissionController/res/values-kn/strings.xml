@@ -398,7 +398,7 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"ನಿಮ್ಮ ಅಧಿಸೂಚನೆಗಳೊಂದಿಗೆ ಸಂವಹನ ನಡೆಸಲು ಮತ್ತು ನಿಮ್ಮ ಆ್ಯಪ್‌ಗಳನ್ನು ಸಂಪರ್ಕಿತ ಸಾಧನಕ್ಕೆ ಸ್ಟ್ರೀಮ್ ಮಾಡಲು <xliff:g id="APP_NAME">%1$s</xliff:g> ಗೆ ಅನುಮತಿಸಲಾಗುತ್ತದೆ."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"ಈ ಸೇವೆಯು ನಿಮ್ಮ ಫೋಟೋಗಳು, ಮಾಧ್ಯಮ ಹಾಗೂ ಅಧಿಸೂಚನೆಗಳನ್ನು ನಿಮ್ಮ ಫೋನ್‌ನಿಂದ ಇತರ ಸಾಧನಗಳ ಜೊತೆ ಹಂಚಿಕೊಳ್ಳುತ್ತದೆ."</string>
     <string name="role_notes_label" msgid="7451627001058089536">"ಡೀಫಾಲ್ಟ್ ಟಿಪ್ಪಣಿಗಳ ಆ್ಯಪ್"</string>
-    <string name="role_notes_short_label" msgid="8796604147546125285">"ಟಿಪ್ಪಣಿಗಳ ಆ್ಯಪ್"</string>
+    <string name="role_notes_short_label" msgid="8796604147546125285">"ಟಿಪ್ಪಣಿಗಳು ಆ್ಯಪ್"</string>
     <string name="role_notes_description" msgid="8496852798616883551">"ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿ ಟಿಪ್ಪಣಿಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳಲು ನಿಮಗೆ ಅನುಮತಿಸುವ ಆ್ಯಪ್‌ಗಳು"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"ಟಿಪ್ಪಣಿಗಳು"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"ಪ್ರಸ್ತುತ ಡೀಫಾಲ್ಟ್"</string>
@@ -496,12 +496,10 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"ನಿಮ್ಮ ಜೀವನಾಧಾರವಾಗಿರುವ ಲಕ್ಷಣಗಳ ಕುರಿತ ಸೆನ್ಸರ್ ಡೇಟಾವನ್ನು ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"ನೀವು ಆ್ಯಪ್ ಅನ್ನು ಬಳಸದಿರುವಾಗಲೂ ಸಹ, ಎಲ್ಲಾ ಸಮಯದಲ್ಲೂ ದೇಹದ ಸೆನ್ಸರ್‌ ಡೇಟಾವನ್ನು ಪ್ರವೇಶಿಸಲು ಈ ಆ್ಯಪ್ ಅನ್ನು ಅನುಮತಿಸಲು, "<annotation id="link">"ಸೆಟ್ಟಿಂಗ್‌ಗಳಿಗೆ ಹೋಗಿ."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ಆ್ಯಪ್ ಬಳಕೆಯಲ್ಲಿರುವಾಗ ದೇಹದ ಸೆನ್ಸರ್‌ ಡೇಟಾವನ್ನು ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸುತ್ತಿರಬೇಕೇ?"</string>
-    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"ನಿಮಗೆ ಅಧಿಸೂಚನೆಗಳನ್ನು ಕಳುಹಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"ನಿಮಗೆ ನೋಟಿಫಿಕೇಶನ್‌ಗಳನ್ನು ಕಳುಹಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"ನಿಯಂತ್ರಿತ ಅನುಮತಿಗಳು"</string>
-    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
-    <skip />
-    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
-    <skip />
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> ಸ್ಥಳ ಆ್ಯಕ್ಸೆಸ್ ಅನ್ನು ಹೊಂದಿದೆ"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"ನಿಮ್ಮ ಸಂಸ್ಥೆಯು ನಿಮ್ಮ ಸ್ಥಳವನ್ನು ಆ್ಯಕ್ಸೆಸ್ ಮಾಡಲು <xliff:g id="APP_NAME">%1$s</xliff:g> ಗೆ ಅನುಮತಿಸುತ್ತದೆ"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"ಇತರ ಅನುಮತಿಗಳು"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"ಸಿಸ್ಟಂನಿಂದ ಬಳಸಲ್ಪಡುವ ಅನುಮತಿಗಳು"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"ಸಿಸ್ಟಂ ಅಪ್ಲಿಕೇಶನ್‌ಗಳಿಂದ ಮಾತ್ರ ಬಳಸಲ್ಪಡುವ ಅನುಮತಿಗಳು."</string>
