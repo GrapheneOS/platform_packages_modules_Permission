@@ -420,7 +420,7 @@ class SafetyLabelChangesJobService : JobService() {
     private suspend fun getAllStoreInstalledPackagesRequestingLocation():
         Set<Pair<String, UserHandle>> =
         getAllPackagesRequestingLocation()
-            .filter { isStoreInstalledPackage(it) }
+            .filter { isSafetyLabelSupported(it) }
             .toSet()
 
     private suspend fun getAllPackagesRequestingLocation(): Set<Pair<String, UserHandle>> =
@@ -437,12 +437,10 @@ class SafetyLabelChangesJobService : JobService() {
     private fun AppPermGroupUiInfo.isPermissionGranted() =
         permGrantState in setOf(PERMS_ALLOWED_ALWAYS, PERMS_ALLOWED_FOREGROUND_ONLY)
 
-    private suspend fun isStoreInstalledPackage(
-        pkg: Pair<String, UserHandle>
-    ): Boolean {
+    private suspend fun isSafetyLabelSupported(packageUser: Pair<String, UserHandle>): Boolean {
         val lightInstallSourceInfo =
-            LightInstallSourceInfoLiveData[pkg].getInitializedValue()
-        return lightInstallSourceInfo.isStoreInstalled()
+                LightInstallSourceInfoLiveData[packageUser].getInitializedValue()
+        return lightInstallSourceInfo.supportsSafetyLabel
     }
 
     private suspend fun postSafetyLabelChangedNotification() {

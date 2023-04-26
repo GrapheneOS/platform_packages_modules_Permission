@@ -30,8 +30,8 @@ import android.util.Log
 import androidx.annotation.MainThread
 import androidx.annotation.RequiresApi
 import com.android.permission.safetylabel.SafetyLabel as AppMetadataSafetyLabel
-import com.android.permissioncontroller.permission.data.v34.LightInstallSourceInfoLiveData
 import com.android.permissioncontroller.permission.data.LightPackageInfoLiveData
+import com.android.permissioncontroller.permission.data.v34.LightInstallSourceInfoLiveData
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.PermissionMapping
@@ -104,9 +104,8 @@ class SafetyLabelChangedBroadcastReceiver : BroadcastReceiver() {
         if (!isAppRequestingLocationPermission(lightPackageInfo)) {
             return
         }
-        // TODO(b/261607291): Enable safety label change notifications feature for
-        //  preinstalled apps.
-        if (!isStoreInstalledPackage(Pair(packageName, user))) {
+
+        if (!isSafetyLabelSupported(Pair(packageName, user))) {
             return
         }
         writeSafetyLabel(context, lightPackageInfo, user)
@@ -188,12 +187,10 @@ class SafetyLabelChangedBroadcastReceiver : BroadcastReceiver() {
             return lightPackageInfo.requestedPermissions.any { LOCATION_PERMISSIONS.contains(it) }
         }
 
-        private suspend fun isStoreInstalledPackage(
-            packageUser: Pair<String, UserHandle>
-        ): Boolean {
+        private suspend fun isSafetyLabelSupported(packageUser: Pair<String, UserHandle>): Boolean {
             val lightInstallSourceInfo =
                 LightInstallSourceInfoLiveData[packageUser].getInitializedValue()
-            return lightInstallSourceInfo.isStoreInstalled()
+            return lightInstallSourceInfo.supportsSafetyLabel
         }
 
         private fun isPackageAddedBroadcast(intentAction: String?) =
