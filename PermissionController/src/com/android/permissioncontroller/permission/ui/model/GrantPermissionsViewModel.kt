@@ -72,7 +72,7 @@ import com.android.permissioncontroller.auto.DrivingDecisionReminderService
 import com.android.permissioncontroller.permission.data.LightAppPermGroupLiveData
 import com.android.permissioncontroller.permission.data.LightPackageInfoLiveData
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData
-import com.android.permissioncontroller.permission.data.SafetyLabelInfoLiveData
+import com.android.permissioncontroller.permission.data.v34.SafetyLabelInfoLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.model.AppPermissionGroup
@@ -154,7 +154,7 @@ class GrantPermissionsViewModel(
     private val user = Process.myUserHandle()
     private val packageInfoLiveData = LightPackageInfoLiveData[packageName, user]
     private val safetyLabelInfoLiveData =
-        if (requestedPermissions
+        if (SdkLevel.isAtLeastU() && requestedPermissions
                 .mapNotNull { PermissionMapping.getGroupOfPlatformPermission(it) }
                 .any { PermissionMapping.isSafetyLabelAwarePermissionGroup(it) }) {
             SafetyLabelInfoLiveData[packageName, user]

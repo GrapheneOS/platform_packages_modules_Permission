@@ -14,17 +14,20 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.data
+package com.android.permissioncontroller.permission.data.v34
 
 import android.app.Application
 import android.content.pm.PackageManager
 import android.os.Process
 import android.os.UserHandle
 import android.util.Log
-import com.android.modules.utils.build.SdkLevel
 import com.android.permission.safetylabel.SafetyLabel
 import com.android.permissioncontroller.PermissionControllerApplication
-import com.android.permissioncontroller.permission.model.livedatatypes.SafetyLabelInfo
+import com.android.permissioncontroller.permission.data.DataRepositoryForPackage
+import com.android.permissioncontroller.permission.data.PackageBroadcastReceiver
+import com.android.permissioncontroller.permission.data.SmartAsyncMediatorLiveData
+import com.android.permissioncontroller.permission.data.get
+import com.android.permissioncontroller.permission.model.livedatatypes.v34.SafetyLabelInfo
 import kotlinx.coroutines.Job
 
 /**
@@ -79,15 +82,10 @@ private constructor(
             return
         }
 
-        if (!SdkLevel.isAtLeastU()) {
-            postValue(SafetyLabelInfo.UNAVAILABLE)
-            return
-        }
-
         // TODO(b/261607291): Add support for preinstall apps that provide SafetyLabel. Initiating
         //  package is null until updated from an app store
-        val installSourcePackageName = lightInstallSourceInfoLiveData.value?.initiatingPackageName
-        if (installSourcePackageName == null) {
+        val lightInstallSourceInfo = lightInstallSourceInfoLiveData.value
+        if (lightInstallSourceInfo?.isStoreInstalled() != true) {
             postValue(SafetyLabelInfo.UNAVAILABLE)
             return
         }
@@ -96,7 +94,7 @@ private constructor(
             try {
                 val safetyLabel: SafetyLabel? = getSafetyLabel(packageName, user)
                 if (safetyLabel != null) {
-                    SafetyLabelInfo(safetyLabel, installSourcePackageName)
+                    SafetyLabelInfo(safetyLabel, lightInstallSourceInfo.initiatingPackageName)
                 } else {
                     SafetyLabelInfo.UNAVAILABLE
                 }

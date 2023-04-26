@@ -21,6 +21,7 @@ import android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE
 import android.content.Context
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
+import android.os.UserManager
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetySourceData
@@ -46,6 +47,7 @@ import com.google.common.util.concurrent.MoreExecutors.directExecutor
 class SafetyCenterTestHelper(private val context: Context) {
 
     private val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)!!
+    private val userManager = context.getSystemService(UserManager::class.java)!!
     private val listeners = mutableListOf<SafetyCenterTestListener>()
 
     /**
@@ -53,6 +55,7 @@ class SafetyCenterTestHelper(private val context: Context) {
      * values. To be called before each test.
      */
     fun setup() {
+        SafetySourceReceiver.setup()
         Coroutines.enableDebugging()
         SafetyCenterFlags.setup()
         setEnabled(true)
@@ -162,7 +165,10 @@ class SafetyCenterTestHelper(private val context: Context) {
             // asynchronously, a wrong sequencing could still cause failures (e.g: 1: flag switched,
             // 2: test finishes, 3: new test starts, 4: a test config is set, 5: broadcast from 1
             // dispatched).
-            enabledChangedReceiver.receiveSafetyCenterEnabledChanged()
+            if (userManager.isSystemUser) {
+                // The implicit broadcast is only sent to the system user.
+                enabledChangedReceiver.receiveSafetyCenterEnabledChanged()
+            }
             enabledChangedReceiver.unregister()
             // NOTE: We could be using ActivityManager#waitForBroadcastIdle() to achieve the same
             // thing.
