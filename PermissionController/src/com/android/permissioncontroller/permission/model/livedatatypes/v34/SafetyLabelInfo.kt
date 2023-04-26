@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.model.livedatatypes
+package com.android.permissioncontroller.permission.model.livedatatypes.v34
 
 import com.android.permission.safetylabel.SafetyLabel
 
